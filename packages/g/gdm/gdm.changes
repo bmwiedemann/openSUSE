@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Tue Sep 28 06:51:26 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase gdm-disable-gnome-initial-setup.patch.
+
+-------------------------------------------------------------------
+Tue Sep 21 14:37:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:30:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Tue Sep  7 07:49:33 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch:
+  Support to start X under root instead of regular user.
+  (bnc#1188912 jsc#SLE-17880).
+- Update X11-displaymanager-gdm file.
+
+-------------------------------------------------------------------
+Mon Sep  6 17:32:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Fix fallback to Xorg at login screen.
+  + Fix SessionType in AccountService user config.
+  + Reuse VT on log out.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 15:06:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Allow user session to be Wayland even when login screen is
+    Xorg.
+  + Allow wayland user sessions for single GPU vendor nvidia
+    machines.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 11 09:00:34 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Rebase patches:
+  + gdm-s390-not-require-g-s-d_wacom.patch
+  + gdm-disable-gnome-initial-setup.patch
+
+-------------------------------------------------------------------
+Tue Aug  3 12:23:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rebased gdm-default-wm.patch.
+
+-------------------------------------------------------------------
+Fri Jul 30 07:22:59 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop patches fixed upstream on SLE and Leap 15.4:
+  + gdm-enable-Wayland-on-Cirrus.patch
+  + gdm-Remove-deprecated-StandardOutput-syslog.patch
+  + gdm-fix-crash-when-using-Xvfb.patch
+  + gdm-display-Exit-with-failure-if-loading-existing-users-fails.patch
+
+-------------------------------------------------------------------
+Sat Jul 24 16:19:17 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Better support for unlocking gnome-keyring with disk password
+  + Better support for flatpak
+  + Misc auth fixes
+  + Improved error output in gdm-runtime-config
+  + Sort session list on login screen
+  + Support Session and SessionType properties from accountsservice
+  + Updated translations.
+- Rebase gdm-xauthlocalhostname.patch.
+- Disable gdm-default-wm.patch, needs reworking.
+
+-------------------------------------------------------------------
+Mon Jul  5 09:33:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
+Fri Apr 23 01:17:59 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-Remove-deprecated-StandardOutput-syslog.patch: Remove
+  deprecated StandardOutput=syslog in gdm.service file
+  (bsc#1185146, glgo#GNOME/gdm!623).
+
+-------------------------------------------------------------------
+Sat Apr 17 08:18:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + 100% CPU fix.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 17 12:43:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Fingerprint auth fixes.
+  + Fix timeout handling for graphics bringup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  9 15:54:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + xinit script improvements.
+  + Build goo fixes.
+  + Support systems that boot before the graphics subsystem fully
+    loads.
+  + Don't overwrite PATH set by user.
+  + Generalize gdm-disable-wayland into new gdm-runtime-config
+    tool.
+  + Fail hard if accountsservice fails.
+  + PAM integration improvements.
+  + Leak fixes.
+  + Stop using deprecated systemd functions.
+- Changes from version 3.38.2.1:
+  + Address autologin unlock bug issue (CVE-2020-27837).
+  + Updated translations.
+- Rebase gdm-disable-wayland-on-mgag200-chipsets.patch.
+- Drop gdm-UsrEtc.patch: merged upstream.
+
+-------------------------------------------------------------------
 Fri Jan 29 09:46:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fixup gdm.sysyers: gecos field needs to be quoted for multi-word
@@ -8,6 +135,28 @@ Fri Jan 29 09:46:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Jan 21 12:57:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers config file to generate gdm user
+
+-------------------------------------------------------------------
+Mon Jan 18 07:12:10 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gdm-fix-crash-when-using-Xvfb.patch: For some reason gdm
+  fails to get display and does not set it to NULL when using
+  with Xvfb, and it leads into a crash, this patch sets display
+  to NULL by default. (bsc#1178292, glgo#GNOME/gdm!118)
+
+-------------------------------------------------------------------
+Mon Jan  4 05:28:58 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch:
+  Fix switching user issue(bsc#1179968, bsc#1174533).
+
+-------------------------------------------------------------------
+Fri Nov 13 02:45:59 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-display-Exit-with-failure-if-loading-existing-users-fails.patch:
+  Exit with failure if loading existing users fails
+  (bsc#1178150 glgo#GNOME/gdm!117 CVE-2020-16125).
+- Update gdm-disable-gnome-initial-setup.patch
 
 -------------------------------------------------------------------
 Wed Nov  4 10:05:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -92,6 +241,12 @@ Sat Sep  5 10:48:29 UTC 2020 - dimstar@opensuse.org
   + Drop autogen.sh source file.
   + Replace configure/make/make_install macros with
     meson/meson_build/meson_install.
+
+-------------------------------------------------------------------
+Tue Aug 25 01:38:13 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add gdm-enable-Wayland-on-Cirrus.patch: Update udev rules to
+  enable Wayland on Cirrus (bsc#1168515, glgo#GNOME/gdm#586).
 
 -------------------------------------------------------------------
 Tue Jul 14 05:10:44 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

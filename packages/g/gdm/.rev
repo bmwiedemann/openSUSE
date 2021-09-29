@@ -1795,4 +1795,12 @@
 - Use sysusers config file to generate gdm user</comment>
     <requestid>867712</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>95d73435833204ea947f907d8f04166c</srcmd5>
+    <version>41.0</version>
+    <time>1632939491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921941</requestid>
+  </revision>
 </revisionlist>

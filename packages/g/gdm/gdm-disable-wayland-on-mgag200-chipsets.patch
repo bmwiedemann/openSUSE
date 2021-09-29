@@ -1,18 +1,18 @@
-Index: gdm-3.37.90/data/61-gdm.rules.in
+Index: gdm-41.alpha/data/61-gdm.rules.in
 ===================================================================
---- gdm-3.37.90.orig/data/61-gdm.rules.in
-+++ gdm-3.37.90/data/61-gdm.rules.in
-@@ -4,3 +4,13 @@ ATTR{vendor}=="0x19e5", ATTR{device}=="0
- DRIVER=="nvidia", RUN+="@libexecdir@/gdm-disable-wayland"
+--- gdm-41.alpha.orig/data/61-gdm.rules.in
++++ gdm-41.alpha/data/61-gdm.rules.in
+@@ -8,3 +8,13 @@ SUBSYSTEM=="drm", KERNEL=="card[1-9]*",
+ ACTION=="add", SUBSYSTEM=="module", KERNEL=="nvidia_drm", ATTR{parameters/modeset}=="N", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
  # disable Wayland if modesetting is disabled
- IMPORT{cmdline}="nomodeset", RUN+="@libexecdir@/gdm-disable-wayland"
+ IMPORT{cmdline}="nomodeset", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
 +# disable Wayland on Matrox Electronics Systems Ltd. MGA G200 server engines
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0530", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0532", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0533", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", RUN+="@libexecdir@/gdm-disable-wayland"
-+ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", RUN+="@libexecdir@/gdm-disable-wayland"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0524", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0530", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0532", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0533", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0534", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0536", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
++ATTR{vendor}=="0x102b", ATTR{device}=="0x0538", RUN+="@libexecdir@/gdm-runtime-config set daemon WaylandEnable false"
 +

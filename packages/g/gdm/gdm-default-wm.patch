@@ -1,7 +1,7 @@
-Index: gdm-3.36.2/daemon/gdm-session.c
+Index: gdm-40.1/daemon/gdm-session.c
 ===================================================================
---- gdm-3.36.2.orig/daemon/gdm-session.c
-+++ gdm-3.36.2/daemon/gdm-session.c
+--- gdm-40.1.orig/daemon/gdm-session.c
++++ gdm-40.1/daemon/gdm-session.c
 @@ -43,6 +43,8 @@
  #include <glib-object.h>
  #include <gio/gio.h>
@@ -11,12 +11,12 @@ Index: gdm-3.36.2/daemon/gdm-session.c
  #include "gdm-session.h"
  #include "gdm-session-glue.h"
  #include "gdm-dbus-util.h"
-@@ -562,6 +564,14 @@ get_fallback_session_name (GdmSession *s
+@@ -578,6 +580,14 @@ get_fallback_session_name (GdmSession *s
                  }
          }
  
 +        name = gdm_sysconfig_load_value ("/etc/sysconfig/windowmanager", "DEFAULT_WM");
-+        if (name && get_session_command_for_name (self, name, NULL)) {
++        if (name && get_session_command_for_name (self, name, NULL, NULL)) {
 +                g_free (self->fallback_session_name);
 +                self->fallback_session_name = name;
 +                goto out;
@@ -24,5 +24,5 @@ Index: gdm-3.36.2/daemon/gdm-session.c
 +        g_free (name);
 +
          name = g_strdup ("gnome");
-         if (get_session_command_for_name (self, name, NULL)) {
+         if (get_session_command_for_name (self, name, NULL, NULL)) {
                  g_free (self->fallback_session_name);

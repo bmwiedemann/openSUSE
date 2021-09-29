@@ -21,14 +21,14 @@
 %define enable_split_authentication 0
 
 Name:           gdm
-Version:        3.38.2
+Version:        41.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdm/41/%{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -63,12 +63,11 @@ Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 Patch14:        gdm-switch-user-tty7.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
-# PATCH-FIX-OPENSUSE gdm-UsrEtc.patch boo#1173049 boo#1173052 boo#1173053 -- needed changes for xdm/xinit/xmodmap move to /usr/etc/X11 
-Patch16:        gdm-UsrEtc.patch
-
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
+# PATCH-FIX-SLE gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch bnc#1188912 jsc#SLE-17880 xwang@suse.com -- Add runtime option to start X under root instead of regular user.
+Patch1001:      gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
@@ -81,17 +80,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.35
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.12
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.1
@@ -222,11 +220,11 @@ running display manager.
 %endif
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
 %patch1000 -p1
+%patch1001 -p1
 %endif
 
 %build
@@ -237,7 +235,7 @@ running display manager.
         -Dgnome-settings-daemon-dir=%{_libexecdir}/gnome-settings-daemon-3.0 \
         -Dinitial-vt=7 \
         -Dipv6=true \
-        -Dpam-mod-dir=/%{_lib}/security \
+        -Dpam-mod-dir=%{_pamdir} \
         -Dplymouth=enabled \
         -Drun-dir=/run/gdm \
 %if %{enable_split_authentication}
@@ -249,31 +247,31 @@ running display manager.
         -Dwayland-support=true \
         %nil
 %meson_build
-%sysusers_generate_pre %{SOURCE11} gdm
+%sysusers_generate_pre %{SOURCE11} gdm gdm.conf
 
 %install
 %meson_install
 ## Install PAM files.
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+mkdir -p %{buildroot}%{_distconfdir}/pam.d
 # Generic pam config
-cp %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/gdm
+cp %{SOURCE1} %{buildroot}%{_distconfdir}/pam.d/gdm
 # Pam config for autologin
-cp %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/gdm-autologin
+cp %{SOURCE2} %{buildroot}%{_distconfdir}/pam.d/gdm-autologin
 # Pam config for the greeter session
-cp %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/gdm-launch-environment
+cp %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/gdm-launch-environment
 %if %{enable_split_authentication}
 # Pam config for fingerprint authentication
-cp %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/gdm-fingerprint
+cp %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/gdm-fingerprint
 # Pam config for smartcard authentication
-cp %{SOURCE5} %{buildroot}%{_sysconfdir}/pam.d/gdm-smartcard
+cp %{SOURCE5} %{buildroot}%{_distconfdir}/pam.d/gdm-smartcard
 %endif
 # The default gdm pam configuration is the one to be used as pam-password too
 %if %{enable_split_authentication}
-rm %{buildroot}%{_sysconfdir}/pam.d/gdm-password
+rm %{buildroot}%{_distconfdir}/pam.d/gdm-password
 echo "We are not ready for this, we need to know what to put in gdm-fingerprint and gdm-smartcard pam config files."
 false
 %endif
-ln -s gdm %{buildroot}%{_sysconfdir}/pam.d/gdm-password
+ln -s gdm %{buildroot}%{_distconfdir}/pam.d/gdm-password
 ## Install other files
 # Install PostLogin script.
 mv %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default.sample %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default
@@ -339,7 +337,7 @@ dconf update
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
 %{_datadir}/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
-/%{_lib}/security/pam_gdm.so
+%{_pamdir}/pam_gdm.so
 %dir %{_libexecdir}/gdm
 %{_libexecdir}/gdm/gdm-*
 %{_libexecdir}/gdm/gdmflexiserver
@@ -347,14 +345,14 @@ dconf update
 %ghost %attr(711,root,gdm) %dir %{_localstatedir}/log/gdm
 %ghost %dir %{_localstatedir}/cache/gdm
 %ghost %attr(711,root,gdm) %dir /run/gdm
-%config %{_sysconfdir}/pam.d/gdm
-%config %{_sysconfdir}/pam.d/gdm-autologin
+%{_distconfdir}/pam.d/gdm
+%{_distconfdir}/pam.d/gdm-autologin
 %if %{enable_split_authentication}
-%config %{_sysconfdir}/pam.d/gdm-fingerprint
-%config %{_sysconfdir}/pam.d/gdm-smartcard
+%{_distconfdir}/pam.d/gdm-fingerprint
+%{_distconfdir}/pam.d/gdm-smartcard
 %endif
-%config %{_sysconfdir}/pam.d/gdm-password
-%config %{_sysconfdir}/pam.d/gdm-launch-environment
+%{_distconfdir}/pam.d/gdm-password
+%{_distconfdir}/pam.d/gdm-launch-environment
 %config %{_sysconfdir}/dbus-1/system.d/gdm.conf
 # /etc/xinit.d/xdm integration
 %dir %{_prefix}/lib/X11/displaymanagers
