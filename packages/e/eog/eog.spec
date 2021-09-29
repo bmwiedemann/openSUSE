@@ -17,20 +17,19 @@
 
 
 Name:           eog
-Version:        40.3
+Version:        41.0
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/EyeOfGnome
-Source0:        https://download.gnome.org/sources/eog/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/eog/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exempi-2.0) >= 1.99.5
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
@@ -71,7 +70,6 @@ developing eog plugins.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \

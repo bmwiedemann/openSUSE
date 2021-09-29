@@ -1174,4 +1174,12 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment>New stable rel (forwarded request 912265 from iznogood)</comment>
     <requestid>913688</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>7d247e5a6dddbdcae0e894a24f5d5a40</srcmd5>
+    <version>41.0</version>
+    <time>1632939448</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920916 from dimstar)</comment>
+    <requestid>921600</requestid>
+  </revision>
 </revisionlist>
