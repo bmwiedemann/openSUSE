@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Sep 22 18:27:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.0:
+  + Highlighted changes since 3.1:
+    - File creation time is now part of the stored metadata
+    - Show additional information in "tracker3 info"
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 06:15:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 21 14:22:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.beta:
+  + Save file creation time.
+  + Coverity fixes.
+  + Fix chaining up of errors after porting to TrackerBatch.
+  + Fixes for test flakiness.
+  + Avoid falling back to year 0 in extractors.
+  + Linking fixes on misc executables.
+  + CI improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 21 12:30:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.alpha.1:
+  + Brown paper bag release.
+- Changes from version 3.2.0.alpha:
+  + Remove default limit in "tracker3 search" command.
+  + Show additional information in "tracker3 info".
+  + Fix "tracker index" crash on broken XDG directory setups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 21 09:37:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.1.3:

@@ -256,4 +256,12 @@
 - Drop tracker-miner-control-rpath,patch: Fixed upstream. (forwarded request 920626 from iznogood)</comment>
     <requestid>920815</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>52110a92224e7e8e14f4d9b43d79eb49</srcmd5>
+    <version>3.2.0</version>
+    <time>1632939475</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920981 from dimstar)</comment>
+    <requestid>921657</requestid>
+  </revision>
 </revisionlist>
