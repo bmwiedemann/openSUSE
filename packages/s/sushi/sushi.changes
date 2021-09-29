@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 21 14:12:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Drop libmusicbrainz dependency (use libsoup directly).
+  + Account for scale-factor when estimating window size.
+  + Build against webkit2gtk-4.1
+  + Disable webkit sandboxing.
+  + Updated translations.
+- Drop pkgconfig(libmusicbrainz5) BuildRequires: No longer needed.
+- Replace pkgconfig(webkit2gtk-4.0) with pkgconfig(webkit2gtk-4.1)
+  BuildRequires following upstream changes.
+
+-------------------------------------------------------------------
 Fri Jun  4 09:43:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:

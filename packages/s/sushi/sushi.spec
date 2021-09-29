@@ -17,13 +17,13 @@
 
 
 Name:           sushi
-Version:        3.38.1
+Version:        41.0
 Release:        0
 Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/File utilities
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/sushi/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sushi/41/%{name}-%{version}.tar.xz
 Source99:       sushi-rpmlintrc
 
 BuildRequires:  meson
@@ -46,8 +46,7 @@ BuildRequires:  pkgconfig(gtk+-wayland-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
-BuildRequires:  pkgconfig(libmusicbrainz5)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Supplements:    nautilus
 
 %description
