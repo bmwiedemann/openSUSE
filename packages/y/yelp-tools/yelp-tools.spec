@@ -17,17 +17,17 @@
 
 
 Name:           yelp-tools
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Collection of utilities to help create documentation
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://projects.gnome.org/yelp/
-Source:         https://download.gnome.org/sources/yelp-tools/40/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/yelp-tools/41/%{name}-%{version}.tar.xz
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt
-BuildRequires:  meson
+BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  pkgconfig(yelp-xsl) >= 3.38.0

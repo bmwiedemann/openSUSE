@@ -233,4 +233,12 @@
     <comment>GNOME 40 - here we come (forwarded request 881007 from dimstar)</comment>
     <requestid>881175</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cdd328431e3936cab68b3dfdbd449763</srcmd5>
+    <version>41.0</version>
+    <time>1632939477</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920988 from dimstar)</comment>
+    <requestid>921660</requestid>
+  </revision>
 </revisionlist>
