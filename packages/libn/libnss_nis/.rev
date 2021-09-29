@@ -33,4 +33,12 @@
   - fix compiling with glibc 2.30</comment>
     <requestid>719812</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d45a0ac924237030bd6f89ea2b292737</srcmd5>
+    <version>3.1</version>
+    <time>1632939545</time>
+    <user>dimstar_suse</user>
+    <comment>- Install into _libdir [bsc#1191069] (forwarded request 922119 from kukuk)</comment>
+    <requestid>922120</requestid>
+  </revision>
 </revisionlist>

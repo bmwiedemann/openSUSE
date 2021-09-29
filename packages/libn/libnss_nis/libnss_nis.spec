@@ -1,7 +1,7 @@
 #
 # spec file for package libnss_nis
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        NSS NIS plugin for glibc
 License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            http://github.com/thkukuk/libnss_nis
+URL:            http://github.com/thkukuk/libnss_nis
 Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig
@@ -46,12 +46,12 @@ glibc. This version is IPv6 capable.
 %setup -q
 
 %build
-%configure --libdir=/%{_lib}
+%configure
 make %{?_smp_mflags}
 
 %install
 %make_install
-rm -v %{buildroot}/%{_lib}/%{name}.{a,la,so}
+rm -v %{buildroot}/%{_libdir}/%{name}.{a,la,so}
 
 %check
 make %{?_smp_mflags} check
@@ -61,6 +61,6 @@ make %{?_smp_mflags} check
 
 %files -n libnss_nis2
 %license COPYING
-/%{_lib}/libnss_nis.so.2*
+%{_libdir}/libnss_nis.so.2*
 
 %changelog

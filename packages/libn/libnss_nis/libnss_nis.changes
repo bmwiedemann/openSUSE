@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 29 07:39:22 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install into _libdir [bsc#1191069]
+
+-------------------------------------------------------------------
 Tue Jul 30 13:37:50 CEST 2019 - kukuk@suse.de
 
 - Update to version 3.1
