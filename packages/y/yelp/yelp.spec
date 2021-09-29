@@ -17,27 +17,26 @@
 
 
 Name:           yelp
-Version:        40.3
+Version:        41.1
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/yelp/41/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE yelp-lang-bundle.patch bnc#689979 vuntz@opensuse.org -- Support help documents shipped in bundles
 Patch1:         yelp-lang-bundle.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.3
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libxslt) >= 1.1.4
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.19.2
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.19.2
-BuildRequires:  pkgconfig(yelp-xsl) >= 3.31.90
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1)
+BuildRequires:  pkgconfig(yelp-xsl) >= 41.0
 # data/dtd/catalog references dtds from oasis-open.org, which we provide on docbook_4 package (bnc#770067)
 Requires:       docbook_4
 # We need the stylesheets from yelp-xsl
@@ -76,7 +75,6 @@ This package provides Yelp's development files.
 
 %prep
 %setup -q
-translation-update-upstream
 %autopatch -p1
 
 %build

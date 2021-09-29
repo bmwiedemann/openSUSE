@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Sep 25 20:31:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Fixed validation issues in appdata file.
+  + Updated yelp-xsl dependency.
+
+-------------------------------------------------------------------
+Wed Sep 22 18:28:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(webkit2gtk-4.0) and
+  pkgconfig(webkit2gtk-web-extension-4.0) with
+  pkgconfig(webkit2gtk-4.1) and
+  pkgconfig(webkit2gtk-web-extension-4.1) BuildRequires and no
+  longer pass --with-webkit2gtk-4-0, we now have the new symbols
+  available.
+
+-------------------------------------------------------------------
+Sun Sep 19 19:47:25 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:09:22 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Mon Aug 30 07:57:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta2:
+  + Fixed regression when opening document by file path.
+  + Added content rating and release info to appdata file.
+
+-------------------------------------------------------------------
+Mon Aug 23 13:33:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Revamped a lot of color code to avoid deprecated Gtk API.
+  + Search results and 'All Help' now use current styling.
+  + Fixed aliasing on the icon.
+  + Build against webkit2gtk-4.1 by default.
+  + Removed calls to deprecated Soup API.
+  + Updated translations.
+- Remporarily pass --with-webkit2gtk-4-0 to configure: we do not
+  yet have webkitgtk 4.1.
+
+-------------------------------------------------------------------
 Sat Jul 10 16:25:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:
