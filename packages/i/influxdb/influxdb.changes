@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:38:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_influxdb.service.patch
+  Modified:
+  * influxdb.service
+
+-------------------------------------------------------------------
 Mon May 24 09:08:30 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - convert to using the go modules service to create the tarball
