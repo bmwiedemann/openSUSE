@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 28 18:07:15 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.12.3
+
+ * Bug fixes
+
+   Elixir
+   [Code] Make sure that bindings in the default context returned by `Code.eval_*` functions are not returned as tagged tuples
+   [Kernel] Do not crash when handling ambiguity errors
+   [Range] Still match on old range patterns throughout the stdlib
+
+   IEx
+   [IEx.Autocomplete] Do not error autocompletion with module attribute
+
+   Mix
+   [Mix] Rename inconsistent `:exit_code` option to `:exit_status` on `Mix.raise/2`
+
+-------------------------------------------------------------------
 Mon Jul 12 07:26:51 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.12.2
