@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Tue Sep 28 11:42:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.0~alpha.3:
+  + Depend on GTK 4.4.0.
+  + Add a GtkInspector extension for simulating different system
+    appearance settings.
+  + Introduce AdwStyleManager for managing color schemes
+    (light/dark) and high contrast mode.
+  + Introduce AdwApplication to handle automatic initialization and
+    style loading.
+  + Avatar:
+    - Replace adw_avatar_draw_to_pixbuf() with
+      adw_avatar_draw_to_texture() that returns a GdkTexture
+      instead.
+    - Remove the size parameter, use the avatar's current size
+      instead.
+  + Carousel: Allow to shrink carousel if children are expanded.
+  + Clamp: Fix measuring with for_size = -1.
+  + Combo Row: Have a .combo style class.
+  + Leaflet:
+    - Remove hhomogeneous-folded, hhomogeneous-unfolded,
+      vhomogeneous-folded and vhomogeneous-unfolded properties.
+      Assume non-homogeneous layout when unfolded and homogeneous
+      when folded.
+    - Add a single homogeneous property that corresponds to folded
+      state and opposite orientation.
+    - Remove interpolate-size, assume it's set to true.
+    - Set the fold threshold policy to MINIMUM by default.
+  + Preferences Group:
+    - Fix default visibility of the internal list box.
+    - Allow markup on title and description.
+  + Squeezer
+    - Fix the child switch threshold in vertical orientation.
+    - Add switch-threshold-policy, matching AdwFlap and AdwLeaflet.
+    - Add allow-none property, allowing to hide the last child as
+      well.
+  + Status Page: Make icon optional.
+  + Tab View: Fix model updates when page selection changes.
+  + View Switchers:
+    - Remove AdwViewSwitcher:narrow-ellipsize.
+    - Remove the policy property from AdwViewSwitcherBar and
+      AdwViewSwitcherTitle.
+    - Remove the auto policy, applications can use two view
+      switchers and an AdwSqueezer instead.
+    - Switch to narrow layouts earlier.
+  + Window and Application Window: Rename the child property to
+    content to avoid the name clash with GtkWindow:child.
+  + Stylesheet:
+    - New style classes:
+      . headerbar.flat to remove headerbar's background and border.
+      . separator.spacer to create spacing in toolbars or header
+        bars.
+      . button.pill for prominent standalone buttons, for example
+        on status pages.
+      . statuspage.compact to make AdwStatusPage suitable for
+        contexts such as sidebars.
+      . .numeric as an easy way to enable tabular figures in a
+        label.
+  + Use flat buttons by default in header bars and action bars,
+    matching existing .toolbar.
+  + Use stripes for header bars in .devel windows instead of cogs
+    to make it work better with split header bars and flat header
+    bars.
+  + Updated translations.
+- Pass -Dinspector=false to meson: do not build the GTK Inspector
+  right now.
+
+-------------------------------------------------------------------
+Tue Aug 17 15:50:33 UTC 2021 - Florian "spirit" <sp1ritCS@protonmail.com>
+
+- Update to version 1.0.0~alpha.2:
+  + Stylesheet:
+    * Large redesign to make it flat and recolorable.
+    * Replace @theme_suggested_bg_color by @accent_bg_color and
+      @accent_color.
+    * Replace @theme_suggested_fg_color by @accent_fg_color.
+    * Add @destructive_bg_color, @destructive_fg_color and
+      @destructive_color.
+    * Add the .accent style class to give the accent color to labels.
+    * Add the palette colors in the form @hue_n, with hue being blue,
+      green, yellow, orange, red, purple, brown, light and dark, and n
+      being a darkness level from 1 to 5.
+  + View Switcher:
+    * Add the AdwViewStack widget to represent views.
+    * Use AdwViewStack instead of GtkStack.
+    * Display a badge on buttons to display the pages' value from the
+      AdwViewStack:badge-number property.
+    * Keep displaying needs-attention when active.
+  + Preferences Page:
+    * Add the name property.
+  + Preferences Window:
+    * Add the visible-child and visible-child-name properties.
+  + Leaflet and Flap:
+    * Add the AdwFoldThresholdPolicy enumeration.
+    * Add the fold-threshold-policy property to determine the size at
+      which the leaflet or flap should fold.
+  + Leaflet:
+    * Fix a crash by NULL-checking a pointer before dereferencing it when
+      there is no children.
+    * Annotate the values of the visible-child and visible-child-name
+      properties as nullable in their accessors.
+  + Action Row and Expander Row:
+    * Annotate the value of the icon-name property as nullable in its
+      accessors.
+  + Tab View:
+    * Fix updating the model at the right time after attaching pages.
+    * Fix emitting notify::selected-page after the model has been
+      completely updated.
+    * Prevent pages from receiving pointer events during drag and drop.
+  + Combo Row:
+    * Fix subtitles when the model is empty and when using expressions.
+  + Carousel:
+    * Fix a crash with 2 overlapping animations.
+    * Fix a crash when scrolling when there is no children.
+  + Avatar:
+    * Fix memory leaks in adw_avatar_draw_to_pixbuf().
+    * Fix a memory leak in the avatar demo.
+  + Fix crashes by freeing shaders at the right time.
+  + Specify the translation domain in UI files to avoid leaving them
+    unlocalized.
+  + Fix cross-compilation with -Dgtk_doc=true.
+  + Stop accepting NULL for most string properties, use the empty string
+    instead.
+  + Translation updates:
+    * German
+    * Indonesian
+    * Chinese (China)
+
+-------------------------------------------------------------------
 Thu Jun  3 10:19:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.0.0~alpha.1 (factually a downgrade, but

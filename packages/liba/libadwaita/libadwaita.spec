@@ -17,19 +17,19 @@
 
 
 Name:           libadwaita
-Version:        1.0.0~alpha.1
+Version:        1.0.0~alpha.3
 Release:        0
 Summary:        Adwaita library for mobile device UIs using GTK/GNOME
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  sassc
 BuildRequires:  vala
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.4.0
 %lang_package
 
 %description
@@ -66,7 +66,8 @@ This package provides the GObject Introspection bindings for Adwaita.
 %build
 %meson \
   -Dexamples=false \
-  -Dintrospection=enabled
+  -Dintrospection=enabled \
+  -Dinspector=false
 %meson_build
 
 %install
