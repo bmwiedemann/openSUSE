@@ -20,7 +20,7 @@ Name:           malcontent
 Version:        0.10.1
 Release:        0
 Summary:        Parental control system
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://gitlab.freedesktop.org/pwithnall/malcontent
 Source:         https://tecnocode.co.uk/downloads/%{name}-%{version}.tar.xz
 BuildRequires:  itstool
@@ -102,7 +102,7 @@ sed -i 's|env python3|python3|' malcontent-client/malcontent-client.py
 
 %build
 %meson \
-        -Dpamlibdir=/%{_lib}/security
+        -Dpamlibdir=%{_pam_moduledir}
 %meson_build
 
 %install
@@ -121,7 +121,7 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules 
 %license COPYING
 %doc NEWS README.md
 %doc com.endlessm.ParentalControls.rules
-/%{_lib}/security/pam_malcontent.so
+%{_pam_moduledir}/pam_malcontent.so
 %{_bindir}/malcontent-client
 %{_mandir}/man8/malcontent-client.8%{?ext_man}
 %{_datadir}/dbus-1/interfaces/com.endlessm.ParentalControls.*
