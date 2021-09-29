@@ -17,22 +17,23 @@
 
 
 Name:           gnome-terminal
-Version:        3.40.3
+Version:        3.42.0
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        https://download.gnome.org/sources/gnome-terminal/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-terminal/3.42/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # Needed for search provider. It should not be needed in my opinion,
 # we have to take this up with upstream, or just provide search
 # provider interface definition file as source.
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  gcc-c++
 BuildRequires:  gnome-shell
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dconf) >= 0.14.0
@@ -44,7 +45,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28.0
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.62.0
+BuildRequires:  pkgconfig(vte-2.91) >= 0.66.0
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 
@@ -77,30 +78,24 @@ arbitrary folders.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
-%configure \
-	--disable-static \
-	--with-gtk=3.0 \
-	--with-nautilus-extension \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS
+%doc AUTHORS ChangeLog
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnome-terminal
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Terminal.appdata.xml
+%{_datadir}/metainfo/org.gnome.Terminal.metainfo.xml
 %{_datadir}/applications/org.gnome.Terminal.desktop
 %{_libexecdir}/gnome-terminal-server
 %{_datadir}/dbus-1/services/org.gnome.Terminal.service

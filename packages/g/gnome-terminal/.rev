@@ -2275,4 +2275,31 @@
     <comment>GNOME 40.3 (forwarded request 906600 from dimstar)</comment>
     <requestid>907055</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>ed2b7f609ca13a4bcf63277c56862bce</srcmd5>
+    <version>3.42.0</version>
+    <time>1632939481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42.0:
+  + metainfo: Remove XML namespaces
+  + window: Add close button to info bar
+  + Revert &quot;screen: Use clean env when creating new tab&quot;
+  + Updated translations.
+- Changes from version 3.41.90:
+  + app: Remove stray semicolon
+  + metainfo: Add keyboard/pointer recommends
+  + client: Add more env vars not to forward
+  + Updated translations.
+
+- Update to version 3.41.0:
+  + Port to meson build system.
+  + nautilus: Fix extension library name.
+  + settings: Fix crash when loading the reference schema source
+    fails.
+  + Updated translations.
+- Add meson and gcc-c++ BuildRequires: new dependencies.
+- Replace configure/make/make_install macros with
+  meson/meson_build/meson_install. (forwarded request 921097 from iznogood)</comment>
+    <requestid>921666</requestid>
+  </revision>
 </revisionlist>
