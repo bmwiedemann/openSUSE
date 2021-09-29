@@ -20,13 +20,13 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.50.7
+Version:        2.52.0
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        https://download.gnome.org/sources/librsvg/2.50/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/librsvg/2.52/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cargo
@@ -130,8 +130,6 @@ BuildArch:      noarch
 This package contains a thumbnailer to render SVG (scalable vector
 graphics) data.
 
-%lang_package
-
 %prep
 %autosetup -p1
 
@@ -148,10 +146,11 @@ graphics) data.
 find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
-%find_lang %{name} %{?no_lang_C}
 
 %check
+%ifnarch %ix86 %arm
 %make_build check
+%endif
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
 
@@ -194,7 +193,5 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %doc %{_datadir}/gtk-doc/html/rsvg-2.0
-
-%files lang -f %{name}.lang
 
 %changelog

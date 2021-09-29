@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Sep 26 15:58:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable testsuite run on ix86 and arm.
+
+-------------------------------------------------------------------
+Fri Sep 17 08:06:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.52.0:
+  + The biggest user-visible change is that rsvg-convert has been
+    ported to Rust.
+  + rsvg-convert is now aware of physical units, and fixes a bug
+    where PDFs were created at the wrong size.
+  + Support for Accept-Language.
+  + rsvg-convert's default DPI is now 96, to better match W3C
+    standards.
+  + SVG2/CSS3 features:
+    - Transform property from SVG2; previously librsvg only
+      supported the transform attribute from SVG1.1, which has
+      different syntax.
+    - context-fill and context-stroke for <marker> and <use>
+      elements.
+    - markers now support orient="auto-start-reverse".
+    - paint-order for text elements.
+    - "auto" values for the width and height attributes of the
+      <image>, <rect>, and <svg> elements.
+    - All the <filter-function> types from the Filter Effects
+      Module Level 1 specification: blur(), brightness(),
+      contrast(), drop-shadow(), grayscale(), hue-rotate(),
+      invert(), opacity(), sepia(), saturate().
+    - The filter property now supports chains of uri() filters or
+      <filter-function> shortcuts.
+    - Support CSS selectors for attribute matching, like
+      rect[attr^="prefix"]
+  + New APIs: See the HTML documentation for details.
+- Drop -lang package: there are no translations available anymore.
+
+-------------------------------------------------------------------
 Sat Jun  5 11:55:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.7:
