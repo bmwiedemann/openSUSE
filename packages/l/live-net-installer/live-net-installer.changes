@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 14:52:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Install to /usr/bin/ on usrmerged systems
+
+-------------------------------------------------------------------
 Sun Aug 29 20:46:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Mount a tmpfs on repos.d to avoid influence on the running system

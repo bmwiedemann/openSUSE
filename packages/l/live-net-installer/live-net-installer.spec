@@ -97,11 +97,20 @@ sed -i"" "s=@URL@=${URL}=" %{SOURCE1}
 install -Dm 755 %{SOURCE1} %{buildroot}%{_sbindir}/start-install.sh
 install -Dm 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/installation.desktop
 install -Dm 644 %{SOURCE5} %{buildroot}%{_datadir}/applications/upgrade.desktop
+# YaST hardcodes "/bin/extend". On usrmerged systems, we can install to /usr/bin/ anyway.
+%if 0%{?suse_version} > 1500
+install -Dm 755 %{SOURCE4} %{buildroot}%{_bindir}/extend
+%else
 install -Dm 755 %{SOURCE4} %{buildroot}/bin/extend
+%endif
 
 %files
 %license COPYING
+%if 0%{?suse_version} > 1500
+%{_bindir}/extend
+%else
 /bin/extend
+%endif
 %{_sbindir}/start-install.sh
 %{_datadir}/applications/installation.desktop
 %{_datadir}/applications/upgrade.desktop
