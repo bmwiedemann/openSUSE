@@ -17,10 +17,10 @@
 
 
 Name:           moreutils
-Version:        0.65
+Version:        0.66
 Release:        0
 Summary:        Additional Unix Utilities
-License:        GPL-2.0-or-later AND GPL-2.0-only AND MIT
+License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 Group:          Productivity/File utilities
 URL:            https://joeyh.name/code/moreutils/
 Source:         https://git.joeyh.name/index.cgi/moreutils.git/snapshot/%{name}-%{version}.tar.gz

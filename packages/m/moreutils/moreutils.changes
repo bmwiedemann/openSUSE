@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:35:05 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.66:
+  * vipe: When no output is piped into vipe, and stdin is connected to
+    the terminal, don't read from stdin before opening the editor.
+    This allows eg: vipe | command
+  * chronic: With -v, flush stdout after printing "STDERR" header.
+
+-------------------------------------------------------------------
 Mon Feb  8 22:04:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.65:
