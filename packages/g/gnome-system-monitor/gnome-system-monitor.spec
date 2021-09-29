@@ -17,20 +17,19 @@
 
 
 Name:           gnome-system-monitor
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/SystemMonitor
-Source0:        https://download.gnome.org/sources/gnome-system-monitor/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-system-monitor/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(giomm-2.4) >= 2.46
@@ -54,7 +53,6 @@ processor time, memory, and disk space are being used.
 
 %prep
 %autosetup -p1
-translation-update-upstream po gnome-system-monitor
 
 %build
 %meson \

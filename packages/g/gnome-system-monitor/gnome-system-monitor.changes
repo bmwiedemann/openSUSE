@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep 19 19:41:17 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:43:25 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 19:43:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Removed leftover colors
+  + Y axis and CPU percentage labels marked as translatable
+  + Fix crash when changing the number of points
+  + meson checks for itstool
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:15:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.1:
