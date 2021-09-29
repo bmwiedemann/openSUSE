@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 20 19:46:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:38:11 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 20:13:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 24 07:35:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + xkb: Clear cached layouts when necessary.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 03:41:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Stop mounting ld.so.cache on non-glibc systems.
+  + Replace usage of non-portable `uselocale` with locale-dependent
+    functions.
+  + Fix starttime hour parsing in animated background.
+  + xkbinfo: only insert new layouts, skip over duplicate ones.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug 19 08:10:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:
