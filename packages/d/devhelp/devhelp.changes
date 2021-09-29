@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Sep 20 14:14:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Appdata fixes.
+- Changes from version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 20 03:41:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 20 03:41:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Fix build in sandboxed environments with no network.
+  + Update list of translatable files.
+  + Switch to gi-docgen to build the libdevhelp API reference.
+  + Move the "Show side panel" action from the menu to the header
+    bar.
+  + Fix donation link in the appdata information.
+  + Build against WebKitGTK 4.1.
+  + Build against GLib 2.70.
+  + Updated translations.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams port to gi-docgen.
+
+-------------------------------------------------------------------
+Mon Sep 20 03:41:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Drop the dependency on AMTK.
+  + Build fixes with newer versions of various dependencies.
+  + Follow the HIG best practices for the main menu button.
+  + Drop the old "simple" menu fallback.
+  + Display find shortcuts in the Keyboard Shortcuts dialog.
+  + Search for Devhelp files under `$datadir/doc`.
+  + Set the User Agent for client-side detection.
+  + Add a custom CSS to allow documentation generators to control
+    the rendering under Devhelp.
+  + Updated translations.
+- Drop pkgconfig(amtk-5) BuildRequires: no longer required.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:26:37 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Aug 27 18:24:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.1:
