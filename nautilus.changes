@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Sep 17 12:14:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:04:25 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 20:15:19 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Disable background "Properties" while searching
+  + Don't duplicate set wallpaper when not using portal
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 13:14:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Updtae to version 41.beta:
+  + Fix comma placement in the floating status bar.
+  + Use standard::edit-name attribute where appropriate.
+  + Bring "Open with..." options together in context menu.
+  + Fix "Compress..." acting on file that was not the selected one.
+  + Redesign "Compress..." dialog.
+  + Provide creation of password-protected ZIP archives.
+  + Fix search by date not working with Tracker engine'
+  + Add link to Privacy Settings from Trash'
+  + Indicate whether trash automatic emptying is enabled'
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:48:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Replace deprecated gexiv2 symbols.
+  + Make NautilusWindowSlot non-derivable.
+  + Prevent closing popover when "Show Hidden Files" is toggled.
+  + Hand preview updating over to FilesView.
+  + Provide source .svg icon.
+
+-------------------------------------------------------------------
 Fri Jun  4 17:09:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.2:
