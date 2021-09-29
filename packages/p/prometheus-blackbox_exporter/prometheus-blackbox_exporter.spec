@@ -32,7 +32,6 @@ BuildRequires:  libcap-progs
 BuildRequires:  golang(API) >= 1.14
 %{go_nostrip}
 %{?systemd_ordering}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
 
