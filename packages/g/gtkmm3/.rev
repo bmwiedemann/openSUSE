@@ -388,4 +388,12 @@
     <comment>Update to 3.24.4 (forwarded request 879916 from dimstar)</comment>
     <requestid>880099</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b25ac94c90ba7dc858a8d2232da872dc</srcmd5>
+    <version>3.24.5</version>
+    <time>1632939463</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920959 from dimstar)</comment>
+    <requestid>921638</requestid>
+  </revision>
 </revisionlist>

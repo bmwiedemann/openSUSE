@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  6 13:04:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.5:
+  + Gtk: TreeValueProxy: Mark the copy assignment operator as
+    deleted.
+  + Build:
+    - Meson build: Use relative paths to untracked/.
+    - [gdk|gtk]mmconfig.h.*: Don't dllimport on MinGW.
+    - Meson build: Make it possible to use gtkmm as a subproject.
+    - Meson build: No implicit_include_directories.
+    - MSVC build: Gtk::TreeModelColumnRecord: Export class
+      selectively.
+
+-------------------------------------------------------------------
 Thu Mar 18 15:17:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.4:
