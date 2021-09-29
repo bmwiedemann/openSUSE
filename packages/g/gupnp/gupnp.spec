@@ -21,23 +21,23 @@
 %define sover 1.2
 
 Name:           gupnp
-Version:        1.2.7
+Version:        1.4.0
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gupnp/1.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gupnp/1.4/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
-BuildRequires:  pkgconfig(gssdp-1.2) >= 1.2.3
+BuildRequires:  pkgconfig(gssdp-1.2) >= 1.3.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)
@@ -113,7 +113,7 @@ sed -i 's|env python3|python3|' tools/gupnp-binding-tool-1.2
 
 %files -n libgupnp-%{soname}
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-GUPnP-1_0

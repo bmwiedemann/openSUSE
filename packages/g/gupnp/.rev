@@ -548,4 +548,12 @@ Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comme
     <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909644 from yfjiang)</comment>
     <requestid>909732</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>e95b454f13b6ae42e52ddb1dbca8788f</srcmd5>
+    <version>1.4.0</version>
+    <time>1632939464</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920961 from dimstar)</comment>
+    <requestid>921640</requestid>
+  </revision>
 </revisionlist>
