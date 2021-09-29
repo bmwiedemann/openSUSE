@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 27 19:01:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.9.3:
+  * Added AES-ECB, SHA-3 and SHAKE-256 support to the wolfssl
+    plugin.
+  * Added AES-CCM support to the openssl plugin (#353).
+  * The x509 and the openssl plugins now consider the
+    authorityKeyIdentifier, if available, before verifying
+    signatures, which avoids unnecessary signature verifications
+    after a CA key rollover if both CA certificates are loaded.
+    The openssl plugin now does the same also for CRLs (the x509
+    plugin already did).
+  * The pkcs11 plugin better handles optional attributes like
+    CKA_TRUSTED, which previously depended on a version check.
+  * The NetworkManager backend (charon-nm) now supports using SANs
+    as client identities, not only full DNs (#437).
+  * charon-tkm now handles IKE encryption.
+  * Send a MOBIKE update again if a a change in the NAT mappings is
+    detected but the endpoints stay the same (e143a7d).
+  * A deadlock in the HA plugin introduced with 5.9.2 has been
+    fixed (#456).
+  * DSCP values are now also set for NAT keepalives.
+  * The ike_derived_keys() hook now receives more keys but in a
+    different order (4e29d6f).
+  * Converted most of the test case scenarios to the vici
+    interface.
+- Replace libsoup-devel with pkgconfig(libsoup-2.4) BuildRequires,
+  as this is what really checks for. Needed as libsoup-3.0 is
+  released.
+
+-------------------------------------------------------------------
 Mon Sep  7 08:38:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.9.0

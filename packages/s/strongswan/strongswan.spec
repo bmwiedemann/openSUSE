@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.0
+Version:        5.9.3
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -88,11 +88,11 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  libsoup-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
 BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libsoup-2.4)
 %if %{with mysql}
 BuildRequires:  libmysqlclient-devel
 %endif
