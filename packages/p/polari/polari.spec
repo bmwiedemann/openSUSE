@@ -18,30 +18,30 @@
 
 
 Name:           polari
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/41/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
 # PATCH-FIX-UPSTREAM polari-fix-nb-translation.patch glgo#GNOME/polari!145 -- Fix Norwegian bokmål translation
 Patch0:         polari-fix-nb-translation.patch
 
 BuildRequires:  gjs >= 1.57.3
-BuildRequires:  meson >= 0.43.0
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.57.3
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.21.6
+#BuildRequires:  pkgconfig(gtk+-3.0) >= 3.21.6
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(telepathy-glib)
 BuildRequires:  pkgconfig(telepathy-logger-0.2)
-Requires:       gjs >= 1.45.0
+Requires:       gjs >= 1.69.2
 Requires:       telepathy-idle
 Requires:       telepathy-logger
 Requires:       telepathy-mission-control
@@ -81,7 +81,7 @@ with GNOME 3.
 %dir %{_datadir}/telepathy
 %dir %{_datadir}/telepathy/clients
 %{_datadir}/telepathy/clients/Polari.client
-%{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/icons/hicolor/
 %dir %{_libdir}/polari
 %{_libdir}/polari/libpolari-1.0.so
 %dir %{_libdir}/polari/girepository-1.0

@@ -380,4 +380,12 @@
     <comment>GNOME 40.3 (forwarded request 906605 from dimstar)</comment>
     <requestid>907060</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>31a339cb952161bc80f2567b68d979d0</srcmd5>
+    <version>41.0</version>
+    <time>1632939470</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920973 from dimstar)</comment>
+    <requestid>921650</requestid>
+  </revision>
 </revisionlist>
