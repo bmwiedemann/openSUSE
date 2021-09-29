@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Sep  3 19:38:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.2.0:
+  + Add support for drawing a highlight line between the gutter and
+    text area. kate.xml uses this to more closely match Kate.
+  + Python 3 is now preferred over Python 2.
+  + Fixes for moving words.
+  + A new scheduler API to help with background buffer work
+  + Improvements to YARA syntax.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  1 16:53:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial package for openSUSE, version 5.1.0.
