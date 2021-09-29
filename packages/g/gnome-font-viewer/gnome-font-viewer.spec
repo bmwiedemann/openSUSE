@@ -17,13 +17,13 @@
 
 
 Name:           gnome-font-viewer
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        A font viewer utility for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
-Source0:        https://download.gnome.org/sources/gnome-font-viewer/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-font-viewer/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
