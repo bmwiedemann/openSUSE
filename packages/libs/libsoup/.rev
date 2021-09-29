@@ -977,4 +977,41 @@
     <comment></comment>
     <requestid>875531</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>04c65b2071a861bf25abe5634b08cca8</srcmd5>
+    <version>3.0.1</version>
+    <time>1632939482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1:
+  + Move python overrides to upstream pygobject.
+  + Fix minor build warnings.
+- Drop python3-Soup sub-package following upstream changes.
+
+- Update to version 3.0.0:
+  + Remove unused dependency on libxml.
+  + Use G_DECLARE_FINAL_TYPE when applicable and bump GLib
+    dependency to 2.69.1.
+  + Add PyGObject overrides for SoupMessageHeaders to behave like a
+    dict.
+  + Fix soup_message_add_status_code_handler() in Vala.
+  + Ensure that all header values are valid UTF-8, other encodings
+    are not supported.
+  + Support Content-Disposition headers missing a disposition-type.
+- Drop pkgconfig(libxml-2.0) BuildRequires: follow upstream.
+- Split out new python3-Soup package.
+
+- Update to version 2.99.9:
+  + Make soup_message_set_method() public API.
+  + Make SoupMessage:http-version read only.
+  + Prevent the same message being queued multiple times.
+  + Allow completing SoupMessage::tls-interaction with NULL
+    certificate.
+  + Replace soup_server_set_ssl_cert_file() with
+    soup_server_set_tls_certificate().
+  + Add SoupServer support for client certificates.
+  + Fallback to building meson wrap of sqlite if not found.
+  + Add soup_message_get_tls_protocol_version() and
+    soup_message_get_tls_ciphersuite_name() API. (forwarded request 921526 from iznogood)</comment>
+    <requestid>921671</requestid>
+  </revision>
 </revisionlist>

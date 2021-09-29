@@ -16,32 +16,29 @@
 #
 
 
+%define api_version 3.0
 Name:           libsoup
-Version:        2.72.0
+Version:        3.0.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
-Source0:        https://download.gnome.org/sources/libsoup/2.72/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsoup/3.0/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM tests: fix SSL test with glib-networking >= 2.65.90
-Patch0:         libsoup-fix-SSL-test.patch
-# PATCH-FIX-OPENSUSE disable tls_interaction-test https://gitlab.gnome.org/GNOME/libsoup/issues/120
-Patch1:         libsoup-skip-tls_interaction-test.patch
 BuildRequires:  glib-networking
-BuildRequires:  meson >= 0.50
+BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.69.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.69.1
+BuildRequires:  pkgconfig(gnutls) >= 3.6.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl) >= 0.20
-BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(vapigen)
 # We do not need these dependencies needed only for tests.
@@ -60,7 +57,7 @@ Features:
   * Server support for Digest and Basic authentication
   * XML-RPC support
 
-%package 2_4-1
+%package 3_0-0
 Summary:        HTTP client/server library for GNOME
 Group:          Development/Libraries/GNOME
 Requires:       glib-networking >= 2.27.90
@@ -70,7 +67,7 @@ Suggests:       samba-winbind
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description 2_4-1
+%description 3_0-0
 Libsoup is an HTTP client/server library for GNOME. It uses GObjects
 and the glib main loop, to integrate well with GNOME applications.
 
@@ -83,11 +80,11 @@ Features:
   * Server support for Digest and Basic authentication
   * XML-RPC support
 
-%package -n typelib-1_0-Soup-2_4
+%package -n typelib-1_0-Soup-3_0
 Summary:        HTTP client/server library for GNOME -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-Soup-2_4
+%description -n typelib-1_0-Soup-3_0
 Libsoup is an HTTP client/server library for GNOME. It uses GObjects
 and the glib main loop, to integrate well with GNOME applications.
 
@@ -97,7 +94,7 @@ This package provides the GObject Introspection bindings for libsoup.
 Summary:        HTTP client/server library for GNOME - Development Files
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Requires:       typelib-1_0-Soup-2_4 = %{version}
+Requires:       typelib-1_0-Soup-3_0 = %{version}
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 
@@ -118,7 +115,6 @@ Features:
 
 %prep
 %autosetup -p1
-translation-update-upstream po libsoup
 
 %build
 %meson \
@@ -128,43 +124,46 @@ translation-update-upstream po libsoup
     -Dgtk_doc=true \
     -Dntlm=disabled \
     -Dsysprof=disabled \
+    -Dautobahn=disabled \
+    -Dhttp2_tests=disabled \
     %{nil}
 %meson_build
+
+%install
+%meson_install
+%find_lang %{name}-3.0 %{?no_lang_C}
 
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
-%meson_test
+%meson_test \
+%ifarch %ix86
+ || :
+%endif
+%nil
 
-%install
-%meson_install
-%find_lang %{name} %{?no_lang_C}
+%post 3_0-0 -p /sbin/ldconfig
+%postun 3_0-0 -p /sbin/ldconfig
 
-%post 2_4-1 -p /sbin/ldconfig
-%postun 2_4-1 -p /sbin/ldconfig
-
-%files 2_4-1
+%files 3_0-0
 %license COPYING
 %doc NEWS
 %{_libdir}/*.so.*
 
-%files -n typelib-1_0-Soup-2_4
-%{_libdir}/girepository-1.0/Soup-2.4.typelib
-%{_libdir}/girepository-1.0/SoupGNOME-2.4.typelib
+%files -n typelib-1_0-Soup-3_0
+%{_libdir}/girepository-1.0/Soup-%{api_version}.typelib
 
 %files devel
 %doc AUTHORS README
-%{_includedir}/libsoup-2.4
+%{_includedir}/libsoup-%{api_version}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_includedir}/libsoup-gnome-2.4
-%doc %{_datadir}/gtk-doc/html/libsoup-2.4
-%{_datadir}/gir-1.0/Soup-2.4.gir
-%{_datadir}/gir-1.0/SoupGNOME-2.4.gir
+%doc %{_datadir}/gtk-doc/html/libsoup-%{api_version}
+%{_datadir}/gir-1.0/Soup-%{api_version}.gir
 %dir %{_datadir}/vala/vapi/
-%{_datadir}/vala/vapi/libsoup-2.4.vapi
-%{_datadir}/vala/vapi/libsoup-2.4.deps
+%{_datadir}/vala/vapi/libsoup-%{api_version}.vapi
+%{_datadir}/vala/vapi/libsoup-%{api_version}.deps
 
-%files lang -f %{name}.lang
+%files lang -f %{name}-3.0.lang
 
 %changelog
