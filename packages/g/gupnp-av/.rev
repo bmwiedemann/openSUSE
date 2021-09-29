@@ -316,4 +316,12 @@
     <comment>Update to 0.12.11 (forwarded request 648717 from dimstar)</comment>
     <requestid>649031</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>279f4e1972efc7f5444bf34d1b49924d</srcmd5>
+    <version>0.14.0</version>
+    <time>1632939465</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920962 from dimstar)</comment>
+    <requestid>921641</requestid>
+  </revision>
 </revisionlist>

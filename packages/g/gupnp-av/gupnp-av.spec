@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-av
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           gupnp-av
-Version:        0.12.11
+Version:        0.14.0
 Release:        0
 Summary:        Library to ease the handling and implementation of UPnP A/V profiles
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source:         http://download.gnome.org/sources/gupnp-av/0.12/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gupnp-av/0.14/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.38
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(vapigen)
@@ -67,12 +68,14 @@ implementation of UPnP A/V profiles.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+
+%check
+%meson_test
 
 %post -n libgupnp-av-1_0-2 -p /sbin/ldconfig
 %postun -n libgupnp-av-1_0-2 -p /sbin/ldconfig
@@ -82,7 +85,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libgupnp-av-1_0-2
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-GUPnPAV-1_0
@@ -93,9 +96,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/GUPnPAV-1.0.gir
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%{_datadir}/gtk-doc/html/%{name}
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gupnp-av-1.0.deps
 %{_datadir}/vala/vapi/gupnp-av-1.0.vapi
