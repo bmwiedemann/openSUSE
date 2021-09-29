@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-bin_prot</comment>
     <requestid>885025</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>34072f2d21caee86801d8a076e2c96a1</srcmd5>
+    <version>0.14.3</version>
+    <time>1632939514</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921276</requestid>
+  </revision>
 </revisionlist>

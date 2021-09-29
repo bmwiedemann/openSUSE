@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ppx_optcomp
-Version:        0.14.1
+Version:        0.14.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Optional compilation for OCaml
@@ -26,9 +26,9 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ppx_optcomp
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
-BuildRequires:  ocaml(ocaml_base_version) >= 4.04
+BuildRequires:  ocaml-dune >= 2.0
+BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(base)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(ppxlib)

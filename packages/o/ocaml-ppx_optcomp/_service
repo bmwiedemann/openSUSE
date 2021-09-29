@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ppx_optcomp</param>
-    <param name="revision">8f30ac19cc93996e4ade8993baafafd94f3a77cb</param>
+    <param name="revision">a4429abcad42230e8cb6a86bdf3462d229169482</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/janestreet/ppx_optcomp.git</param>
