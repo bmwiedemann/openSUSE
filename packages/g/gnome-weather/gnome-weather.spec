@@ -18,13 +18,13 @@
 
 %define _name org.gnome.Weather
 Name:           gnome-weather
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://live.gnome.org/Design/Apps/Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-weather/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson

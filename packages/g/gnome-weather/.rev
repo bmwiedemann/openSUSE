@@ -352,4 +352,12 @@
   + gnome-weather-fix-forever-loading.patch (forwarded request 912946 from iznogood)</comment>
     <requestid>913697</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ae268602cfdf53450cc7c4cb7c3f788e</srcmd5>
+    <version>41.0</version>
+    <time>1632939529</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920955 from dimstar)</comment>
+    <requestid>921634</requestid>
+  </revision>
 </revisionlist>
