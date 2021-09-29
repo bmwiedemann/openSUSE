@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 27 21:45:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add pyatspi-test-fixes.patch: fix tests on s390x (bsc#1190051).
+
+-------------------------------------------------------------------
 Wed Aug 11 08:43:40 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop build with python2.

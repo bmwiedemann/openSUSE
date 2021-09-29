@@ -1,5 +1,5 @@
 #
-# spec file for package python-atspi
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -41,6 +41,8 @@ License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://gitlab.gnome.org/GNOME/pyatspi2
 Source0:        https://download.gnome.org/sources/pyatspi/2.38/%{_name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM pyatspi-test-fixes.patch bsc#1190051 mgorse@suse.com -- testsuite fixes.
+Patch0:         pyatspi-test-fixes.patch
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
@@ -85,7 +87,7 @@ accessibility toolkit. This version is based on dbus.
 This package contains the python bindings for AT-SPI.
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 # Configure for out-of-tree builds
