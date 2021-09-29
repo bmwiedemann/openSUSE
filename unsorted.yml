@@ -2215,6 +2215,7 @@ unsorted:
   - conntrack-tools: [i586] 
   - conntrackd 
   - console-setup 
+  - consoleet-oldschoolpc-fonts 
   - container-build-checks 
   - container-build-checks-strict 
   - container-build-checks-vendor-SUSE 
@@ -10852,8 +10853,8 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc18 
-  - libgrpc_plugin_support1_39 
+  - libgrpc19 
+  - libgrpc_plugin_support1_41 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -11577,6 +11578,11 @@ unsorted:
   - liblinebreak-devel 
   - liblinebreak2 
   - liblink-grammar5 
+  - liblinphone++10 
+  - liblinphone-data 
+  - liblinphone-devel 
+  - liblinphone-lang 
+  - liblinphone10 
   - libliquid-devel 
   - liblirc0 
   - liblirc0-32bit: [x86_64] 
@@ -13983,7 +13989,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb18 
+  - libupb19 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14725,6 +14731,8 @@ unsorted:
   - link-grammar 
   - link-grammar-devel 
   - linkloop 
+  - linphone 
+  - linphone-cli 
   - linssid 
   - linstor 
   - linstor-common 
@@ -15691,6 +15699,7 @@ unsorted:
   - menu-cache-devel 
   - mercurial 
   - mercurial-lang 
+  - mercurial-tests 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
