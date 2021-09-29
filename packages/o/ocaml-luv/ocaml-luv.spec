@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-luv
 Name:           %{pkg}%{nsuffix}
-Version:        0.5.8
+Version:        0.5.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
@@ -40,7 +40,7 @@ Source0:        %{pkg}-%{version}.tar.xz
 Patch0:         %{pkg}.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(ctypes)
 BuildRequires:  ocamlfind(result)
 BuildRequires:  pkgconfig(libuv)
