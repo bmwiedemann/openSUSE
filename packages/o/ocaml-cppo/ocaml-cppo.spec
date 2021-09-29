@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-cppo
-Version:        1.6.7
+Version:        1.6.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        The C preprocessor written in OCaml
@@ -28,7 +28,7 @@ URL:            https://opam.ocaml.org/packages/cppo
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(unix)
 
