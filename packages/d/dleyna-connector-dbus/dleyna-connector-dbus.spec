@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-connector-dbus
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dleyna-connector-dbus
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        dLeyna connector interface -- DBus
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-Url:            http://01.org/dleyna
-Source:         https://01.org/sites/default/files/downloads/dleyna/%{name}-%{version}.tar_1.gz
+URL:            https://github.com/phako/dleyna-connector-dbus
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
+BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.7.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 Provides:       dleyna-connector(dbus)
@@ -37,25 +36,19 @@ Provides:       dleyna-connector(dbus)
 D-Bus connector for dLeyna services.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fi
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-make %{?_smp_mflags}
+%meson_build
 
 %install
-%make_install
-find %{buildroot}%{_libdir} -type f -name '*.la' -delete -print
-# There is no reason to install the .pc file: it's a dlopen()'d connector, not linked
-# Not providing this file until it makes sense avoids us from having to split a -devel package
-rm %{buildroot}%{_libdir}/pkgconfig/dleyna-connector-dbus-1.0.pc
+%meson_install
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %dir %{_libdir}/dleyna-1.0
 %dir %{_libdir}/dleyna-1.0/connectors
 %{_libdir}/dleyna-1.0/connectors/libdleyna-connector-dbus.so
