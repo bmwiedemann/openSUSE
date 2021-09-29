@@ -512,4 +512,12 @@
     <comment>New stable release (forwarded request 920035 from iznogood)</comment>
     <requestid>920046</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>f7a561bbf81ab9da1b1f093bf871b108</srcmd5>
+    <version>41.0</version>
+    <time>1632939455</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920942 from dimstar)</comment>
+    <requestid>921622</requestid>
+  </revision>
 </revisionlist>

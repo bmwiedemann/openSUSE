@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 18 08:29:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + State hardware support in appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 08:28:42 UTC 2021- Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Updated OSM POI types for editing.
+  + Refine usage of shopping cart icon in search result to be used
+    only for supermarket-like places.
+  + Updated screenshots to reflect the switch to osm.org tiles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 08:27:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Build librest for development Flatpaks.
+  + Build ical from the 3.0 branch for development Flakpaks.
+  + Update donation and wiki web links in appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 08:26:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Fix regression when signing in for OSM editing.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 18 08:21:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.5:
