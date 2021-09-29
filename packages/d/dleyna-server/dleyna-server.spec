@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-server
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,15 @@
 
 
 Name:           dleyna-server
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        A DLNA media server
 License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Other
-URL:            http://01.org/dleyna
-Source:         https://01.org/sites/default/files/downloads/dleyna/%{name}-%{version}.tar_2.gz
-# PATCH-FIX-UPSTREAM dleyna-server-port-gupnp1_2.patch -- Port to gupnp-1.2
-Patch0:         dleyna-server-port-gupnp1_2.patch
+URL:            https://github.com/phako/dleyna-server
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36
@@ -38,6 +36,7 @@ BuildRequires:  pkgconfig(gupnp-1.2) >= 0.20.3
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.11.5
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
+BuildRequires:  pkgconfig(libxml-2.0)
 # As dleyna-server publishes itself on DBus, it needs access to the DBus connector
 Requires:       dleyna-connector-dbus
 Provides:       dbus(com.intel.dleyna-server) = %{version}
@@ -61,15 +60,12 @@ DLNA Download System Use Case.
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-make %{?_smp_mflags}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %files
 %license COPYING
@@ -82,7 +78,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %config %{_sysconfdir}/dleyna-server-service.conf
 
 %files devel
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_includedir}/dleyna-1.0/
 %{_libdir}/%{name}/libdleyna-server-1.0.so
 %{_libdir}/pkgconfig/dleyna-server-service-1.0.pc
