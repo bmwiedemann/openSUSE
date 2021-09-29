@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-camlp5
-Version:        8.00.01
+Version:        8.00.02
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -26,8 +26,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         ocaml-camlp5.patch
-BuildRequires:  ocaml < 4.13
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml < 4.14
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(compiler-libs)
 
 %description
@@ -50,12 +50,6 @@ This package contains the development files.
 %ifarch ppc64
 ulimit -s $((1024 * 64))
 %endif
-pushd ocaml_stuff
-test -e '4.11.1' || ln -s 4.11.0 "$_"
-popd
-pushd ocaml_src/lib/versdep
-test -e '4.11.1.ml' || ln -s 4.11.0.ml "$_"
-popd
 ./configure \
 	--mandir %{_mandir}
 make %{?_smp_mflags} out
