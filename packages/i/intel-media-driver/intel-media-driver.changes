@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 29 08:56:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 21.3.4
+  * Fix regression:libva conformance failures since github issue#1229
+
+-------------------------------------------------------------------
 Mon Sep 27 13:15:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - covers jira#SLE/SLE-19446 

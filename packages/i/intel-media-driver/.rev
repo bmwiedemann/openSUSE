@@ -169,4 +169,13 @@ versions of libva(2)</comment>
     <comment>- covers jira#SLE/SLE-19446</comment>
     <requestid>921800</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>87dded2d224d455877ac44b2c0cf66a7</srcmd5>
+    <version>21.3.4</version>
+    <time>1632939548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.3.4
+  * Fix regression:libva conformance failures since github issue#1229</comment>
+    <requestid>922198</requestid>
+  </revision>
 </revisionlist>
