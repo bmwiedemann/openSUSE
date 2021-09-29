@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 22 17:29:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.12:
+  + Fix wrong order of addresses when restarting NetworkManager.
+  + Preserve the IPv6 ff00::/8 route added by kernel in the local
+    table, necessary for multicast communication.
+  + Fix emitting the signal for changed metered status of devices.
+  + Fix applying the ethtool autonegotiation and speed settings.
+  + initrd: fix crash parsing plain '=' without key.
+  + cloud-setup: use suppress_prefixlength rule to honor
+    non-default-routes in the main table.
+
+-------------------------------------------------------------------
 Wed Sep 22 02:25:11 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Drop nm-add-CAP_CHOWN-capability.patch: This solution was denied
