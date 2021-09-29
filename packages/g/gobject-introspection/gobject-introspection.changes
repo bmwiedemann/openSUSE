@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 17 17:38:27 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.70.0:
+  + Update the GIR data for GLib, GObject, and GIO.
+
+-------------------------------------------------------------------
+Wed Aug 25 10:55:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.69.0:
+  + Fix build when gobject-introspection is a subproject,
+  + Add more float types,
+  + Make test suite work with cross-related options,
+  + Fix several leaks found by Coverity,
+  + Fix enum member,
+  + Add g-ir-doc-tool man page,
+  + Export warnlib sources as variables,
+  + Update the GLib annotations,
+  + Add "final" class attribute,
+  + Add option to make .gir files installation paths configurable,
+  + Handle constructors with mismatched GTypes,
+  + Add property accessors annotations,
+
+-------------------------------------------------------------------
 Mon Jun 28 08:58:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Revert back o HOSTTYPE: RPM_ARCH is not available to the dep

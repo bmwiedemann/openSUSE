@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.68.0
+Version:        1.70.0
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.70/%{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
@@ -37,7 +37,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.50.1
+BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Mako
 BuildRequires:  python3-Markdown
@@ -136,9 +136,10 @@ sed -i "s|%{_bindir}/env python|%{_bindir}/python|" %{buildroot}%{_bindir}/*
 %{_bindir}/g-ir-generate
 %{_bindir}/g-ir-inspect
 %{_bindir}/g-ir-scanner
-%{_mandir}/man1/g-ir-compiler.1*
-%{_mandir}/man1/g-ir-generate.1*
-%{_mandir}/man1/g-ir-scanner.1*
+%{_mandir}/man1/g-ir-compiler.1%{?ext_man}
+%{_mandir}/man1/g-ir-generate.1%{?ext_man}
+%{_mandir}/man1/g-ir-scanner.1%{?ext_man}
+%{_mandir}/man1/g-ir-doc-tool.1%{?ext_man}
 %{_datadir}/aclocal/introspection.m4
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gir-1.0/gir-1.2.rnc
