@@ -17,13 +17,13 @@
 
 
 Name:           orca
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Orca
-Source0:        https://download.gnome.org/sources/orca/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/orca/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -35,7 +35,6 @@ BuildRequires:  python3-brlapi >= 0.5.1
 BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.18
@@ -63,7 +62,6 @@ braille, and/or magnification.
 
 %prep
 %autosetup
-translation-update-upstream po %{name}
 
 %build
 %configure

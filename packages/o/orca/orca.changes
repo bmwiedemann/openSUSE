@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Sep 16 12:59:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + General: Fix compatibility with Python 3.10
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:04:35 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 19:47:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Web:
+    - Fix several issues related to empty but "focusable" ARIA
+      tooltips
+    - Identify and work around (when possible) mismatched text and
+      hypertext implementations that can lead to looping inside
+      content
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 24 13:48:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + General: Use new AT-SPI device API for keyboard monitoring when
+    available.
+  + LibreOffice:
+    - Fix bug causing Orca to become silent due to setting
+      locusOfFocus to a defunct object.
+    - Work around missing focus event for Calc spreadsheet which
+      causes Orca to ignore subsequent events.
+  + Speech: Do not set voice name when it is the default.
+
+-------------------------------------------------------------------
+Fri Aug  6 12:34:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + General:
+    - Improve handling of accessible-event floods from apps.
+    - Fix bug in announcing selected items in icon views.
+  + Web:
+    - Improve recovery from destruction of current object.
+    - Improve performance in response to caret-moved events.
+    - Fix crash resulting from subtree becoming hidden.
+    - Fix bug in toolbar browse-mode navigation.
+    - Fix bug causing a live region event to be ignored.
+    - Fix bug causing us to incorrectly switch to browse mode in
+      VSCode.
+    - Ensure we present caret-moved events after Alt+Tabbing into
+      web app.
+    - Don't repeat posinset and setsize for multi-line list items.
+    - Don't announce unselected state of grid cells/rows in browse
+      mode.
+    - Don't announce row and column count when they are both 0.
+    - Fix braille presentation of grid cell in browse mode.
+    - Improve browse-mode navigation of trees and tree tables.
+    - Eliminate some chattiness entering elements with a caption.
+    - Prevent double-presentation of description for alerts.
+  + Email:
+    - Fix regression presenting plain-text messages in Thunderbird.
+    - Work around missing events from Evolution Add Accounts.
+  + LibreOffice:
+    - Work around missing state-changed:focused event that caused
+      caret-moved events in documents to be ignored.
+  + Speech:
+    - Ensure we enable/disable speech based on app-specific
+      settings.
+    - punctuation: Spell left/right_double_angle at level "most".
+    - Do not add mark within numbers (some synthesizers present
+      numbers incorrectly otherwise).
+    - Do not set language if it is empty (breaks output in older
+      versions of speech-dispatcher).
+  + Mouse Review:
+    - Check if we have Wnck in activate() so we don't spew errors.
+    - Gracefully handle lack of pointer.
+
+-------------------------------------------------------------------
 Sat Mar 20 09:10:34 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 40.0:
