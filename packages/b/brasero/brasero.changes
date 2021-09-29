@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 20 10:16:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.12.3:
+  + Blu-ray fixes.
+  + Support Tracker 3.0.
+  + Transcode plugin gstreamer plugin improvement.
+  + Fix crash with malformed URI.
+  + Fix default project label.
+  + Man page fixes.
+  + Header guard fix.
+  + Help improvements.
+  + Updated translations.
+- Re-enable tracker support, as Tracker 3.0 is now supported:
+  + Pass --enable-search to configure.
+  + Add tracker-devel BuildRequires.
+- Switch back to regular release tarball.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:24:01 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Mon Sep 07 13:39:34 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.12.2+20200906.5945fdff:

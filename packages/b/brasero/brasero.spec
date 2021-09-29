@@ -1,7 +1,7 @@
 #
 # spec file for package brasero
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           brasero
-Version:        3.12.2+20200906.5945fdff
+Version:        3.12.3
 Release:        0
 Summary:        CD/DVD burning application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://gnome.org/projects/brasero
-# Service generated tarball
-Source:         %{name}-%{version}.tar.xz
-#Source:         http://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  tracker-devel
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdk-x11-3.0)
@@ -167,14 +165,12 @@ This package provides the Brasero extension for Nautilus.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
         --disable-gtk-doc \
-        --disable-search \
+        --enable-search \
         --enable-playlist \
         --enable-nautilus \
         --enable-introspection \
@@ -202,6 +198,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %post -n libbrasero-burn3-1 -p /sbin/ldconfig
 %post -n libbrasero-media3-1 -p /sbin/ldconfig
 %post -n libbrasero-utils3-1 -p /sbin/ldconfig
+
 %post nautilus
 %desktop_database_post
 
@@ -215,6 +212,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libbrasero-burn3-1 -p /sbin/ldconfig
 %postun -n libbrasero-media3-1 -p /sbin/ldconfig
 %postun -n libbrasero-utils3-1 -p /sbin/ldconfig
+
 %postun nautilus
 %desktop_database_postun
 
@@ -251,6 +249,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libbrasero-utils3.so.1*
 
 %files devel
+%doc %{_datadir}/gtk-doc/html/libbrasero-*/
 %{_includedir}/brasero3/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libbrasero-media3.pc
