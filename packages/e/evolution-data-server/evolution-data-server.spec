@@ -19,7 +19,7 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-%define so_camel 62
+%define so_camel 63
 %define so_ebackend 10
 %define so_edataserver 26
 %define so_edataserverui 3
@@ -31,13 +31,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.40.4
+Version:        3.42.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.42/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -63,7 +63,6 @@ BuildRequires:  python3-base
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libphonenumber-devel
 BuildRequires:  sqlite3-devel >= 3.7.17
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.22.0
 BuildRequires:  pkgconfig(gcr-base-3) >= 3.4
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
@@ -308,7 +307,6 @@ This package contains developer documentation.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %if %{with_docs}
@@ -324,7 +322,7 @@ translation-update-upstream
     -DENABLE_IPV6=ON \
     -DENABLE_SMIME=ON \
     -DENABLE_UOA=OFF \
-    -DCMAKE_SKIP_RPATH=OFF \
+    -DCMAKE_SKIP_INSTALL_RPATH=OFF \
     %{?with_introspection:\
     -DENABLE_VALA_BINDINGS=ON \
     -DENABLE_INTROSPECTION=ON} \

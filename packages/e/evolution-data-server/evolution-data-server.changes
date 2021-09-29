@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Sep 20 10:15:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF
+  as that should be used with the newest cmake macros.
+
+-------------------------------------------------------------------
+Mon Sep 20 09:29:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.42.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 19 10:01:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.41.3:
+  + Slow down automatic background downloads when in power saver
+    mode.
+  + ERemindersWidget: Reverse order of the shown reminders.
+  + vala: FolderThreadNode is a compact class.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep 18 13:49:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.41.2:
+  + CamelMimeFilterToHTML: Speed up read of long lines.
+  + CamelMimeFilterToHTML: Correct filtering of text without new
+    line at the end.
+  + alarm-notify: Focus window on status icon click when shown.
+  + vala: Add support for the auth_type class field of CamelSasl.
+  + vala: Properly annotate CamelServiceAuthType.
+  + ESoupSession: Let it understand GSSAPI authentication method.
+  + Updated translations.
+- bump so_camel to 63: follow upstream changes.
+
+-------------------------------------------------------------------
+Fri Sep 17 03:41:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.41.1:
+  + EWebDAVCollectionBackend: Preset also auth method on the new
+    child.
+  + Camel: Fails to filter unread junk messages in a virtual Junk
+    folder.
+  + Add Yahoo! OAuth2 service objects into the developer
+    documentation.
+  + ESourceWebDAV: Fallback to SHA1 on SSL trust verification if
+    needed.
+  + ECalBackendSync: Ensure no Recurrence-ID set when removing all
+    components.
+  + PrintableOptions.cmake: Correct variable name comparison.
+  + libecal: Fix a warning caught by a gcc static analyzer.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:28:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Aug 13 15:23:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.40.4:

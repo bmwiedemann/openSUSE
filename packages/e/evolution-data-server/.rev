@@ -1957,4 +1957,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>New stable release (forwarded request 912014 from iznogood)</comment>
     <requestid>913682</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>592f0faae20b93444f8fe6e68f20678c</srcmd5>
+    <version>3.42.0</version>
+    <time>1632939449</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920920 from dimstar)</comment>
+    <requestid>921603</requestid>
+  </revision>
 </revisionlist>
