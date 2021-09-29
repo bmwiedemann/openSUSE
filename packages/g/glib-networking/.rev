@@ -590,4 +590,12 @@ a newer version not fitting</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 890067 from dimstar)</comment>
     <requestid>890129</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8c22b757f80ec4ccd6f1e75946bc9e69</srcmd5>
+    <version>2.70.0</version>
+    <time>1632939451</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920926 from dimstar)</comment>
+    <requestid>921608</requestid>
+  </revision>
 </revisionlist>

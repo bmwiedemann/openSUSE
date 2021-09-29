@@ -18,13 +18,13 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.68.1
+Version:        2.70.0
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/glib-networking/2.68/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib-networking/2.70/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  ca-certificates-mozilla
@@ -33,10 +33,9 @@ BuildRequires:  dbus-1
 BuildRequires:  libgcrypt-devel
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 # If this BuildRequires changes because of a gio library version change, change gio_real_package accordingly
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.67.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(gnutls) >= 3.6.5
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(libproxy-1.0) >= 0.3.1
@@ -55,7 +54,6 @@ Currently, there is only a proxy module based on libproxy.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:26:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:35:12 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Sep  3 15:35:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.rc:
+  + gnutls:
+    - revert AuthorityInformationAccess implementation for now.
+    - fix use of non-default GTlsDatabases, Geary crash on startup.
+    - fix leak in g_tls_certificate_gnutls_copy.
+    - Unbreak GTLS_GNUTLS_CHECK_VERSION.
+  + openssl: remove openssl-util.
+
+-------------------------------------------------------------------
+Mon Aug 23 13:48:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.beta:
+  + gnutls: Ensure that PKCS #11 pins are NUL terminated.
+  + openssl: Restore OCSP support.
+
+-------------------------------------------------------------------
+Fri Aug  6 13:07:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.alpha:
+  + Fix TLS channel bindings tests.
+  + Require OpenSSL 1.0.2.
+  + Fix threadsafety issue in certificate verification.
+  + dlopen libsoup for performing HTTP requests.
+  + OpenSSL: add DTLS support, plus many related improvements.
+  + Implement new GTlsCertificate details APIs.
+  + GnuTLS: improve error handling for PIN failures.
+  + GnuTLS: expose PIN type on PIN requests.
+  + GnuTLS: check cancellable in pull timeout callback.
+  + Improve automation of test certificate creation.
+  + GnuTLS: use GnuTLS to implement all channel bindings.
+  + GnuTLS: rework certificate verification to use TLS session.
+  + GnuTLS: improve peer identity verification.
+  + Bring back automatic downloading of missing intermediate
+    certificates (not fixed, may go away again).
+
+-------------------------------------------------------------------
 Fri Apr 30 12:51:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.68.1:
