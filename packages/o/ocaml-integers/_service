@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-integers</param>
-    <param name="revision">48522592d7493fb00f3919b881f331f18e2cb463</param>
+    <param name="revision">ba8a0d6996c4ba92214f1f185e014e7afc94ed0a</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocamllabs/ocaml-integers.git</param>

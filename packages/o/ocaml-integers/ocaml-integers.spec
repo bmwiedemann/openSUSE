@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-integers
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Various signed and unsigned integer types for OCaml
@@ -28,7 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 
 %description
 The ocaml-integers library provides a number of 8-, 16-, 32- and 64-bit
