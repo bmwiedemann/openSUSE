@@ -7,4 +7,12 @@
     <comment>new buildrequires of ocaml-luv</comment>
     <requestid>886240</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>483cad1cdeacf90296b7b1c33239ee42</srcmd5>
+    <version>0.18.0</version>
+    <time>1632939506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921264</requestid>
+  </revision>
 </revisionlist>

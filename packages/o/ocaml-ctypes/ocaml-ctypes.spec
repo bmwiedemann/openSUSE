@@ -38,8 +38,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ctypes
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-dune >= 2.6
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(bigarray-compat)
 BuildRequires:  ocamlfind(bisect_ppx)
 BuildRequires:  ocamlfind(dune.configurator)
