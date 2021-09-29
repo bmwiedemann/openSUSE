@@ -10,18 +10,11 @@ if the system administrator decides so.
 
 https://bugzilla.gnome.org/show_bug.cgi?id=646187
 ---
-diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/js/ui/status/network.js
---- gnome-shell-3.37.91.orig/js/ui/status/network.js	2020-08-24 10:54:20.009785700 -0500
-+++ gnome-shell-3.37.91/js/ui/status/network.js	2020-09-05 15:44:29.877496217 -0500
-@@ -1,6 +1,6 @@
- // -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
- /* exported NMApplet */
--const { Clutter, Gio, GLib, GObject, NM, St } = imports.gi;
-+const { Clutter, Gio, GLib, GObject, NM, St, Polkit } = imports.gi;
- const Signals = imports.signals;
- 
- const Animation = imports.ui.animation;
-@@ -356,6 +356,11 @@ var NMConnectionDevice = class NMConnect
+Index: gnome-shell-41.beta/js/ui/status/network.js
+===================================================================
+--- gnome-shell-41.beta.orig/js/ui/status/network.js
++++ gnome-shell-41.beta/js/ui/status/network.js
+@@ -362,6 +362,11 @@ var NMConnectionDevice = class NMConnect
  
      _autoConnect() {
          let connection = new NM.SimpleConnection();
@@ -29,11 +22,11 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
 +            let connectionSetting = new NM.SettingConnection();
 +            connectionSetting.add_permission('user', GLib.get_user_name(), null);
 +            connection.add_setting(connectionSetting);
-+        }   
++        }
          this._client.add_and_activate_connection_async(connection, this._device, null, null, null);
      }
  
-@@ -491,10 +496,11 @@ var NMConnectionDevice = class NMConnect
+@@ -497,10 +502,11 @@ var NMConnectionDevice = class NMConnect
  };
  
  var NMDeviceWired = class extends NMConnectionDevice {
@@ -46,7 +39,7 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
      }
  
      get category() {
-@@ -722,11 +728,12 @@ var NMWirelessDialogItem = GObject.regis
+@@ -755,11 +761,12 @@ var NMWirelessDialogItem = GObject.regis
  
  var NMWirelessDialog = GObject.registerClass(
  class NMWirelessDialog extends ModalDialog.ModalDialog {
@@ -60,7 +53,7 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
  
          this._wirelessEnabledChangedId = this._client.connect('notify::wireless-enabled',
                                                                this._syncView.bind(this));
-@@ -959,6 +966,11 @@ class NMWirelessDialog extends ModalDial
+@@ -997,6 +1004,11 @@ class NMWirelessDialog extends ModalDial
                      this._device.get_path(), accessPoints[0].get_path());
              } else {
                  let connection = new NM.SimpleConnection();
@@ -72,7 +65,7 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
                  this._client.add_and_activate_connection_async(connection, this._device, accessPoints[0].get_path(), null, null);
              }
          }
-@@ -1195,9 +1207,10 @@ class NMWirelessDialog extends ModalDial
+@@ -1257,9 +1269,10 @@ class NMWirelessDialog extends ModalDial
  });
  
  var NMDeviceWireless = class {
@@ -84,7 +77,7 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
  
          this._description = '';
  
-@@ -1282,7 +1295,7 @@ var NMDeviceWireless = class {
+@@ -1344,7 +1357,7 @@ var NMDeviceWireless = class {
      }
  
      _showDialog() {
@@ -93,11 +86,11 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
          this._dialog.connect('closed', this._dialogClosed.bind(this));
          this._dialog.open();
      }
-@@ -1660,6 +1673,20 @@ class Indicator extends PanelMenu.System
+@@ -1721,6 +1734,20 @@ class Indicator extends PanelMenu.System
      async _getClient() {
          this._client = await NM.Client.new_async(null);
  
-+        
++
 +        // Check if newly created connections should be private or not
 +        this._privateConnections = true;
 +        let authority = Polkit.Authority.get_sync(null);
@@ -110,11 +103,11 @@ diff -urp gnome-shell-3.37.91.orig/js/ui/status/network.js gnome-shell-3.37.91/j
 +                                                            null /* cancellable */);
 +        if (authResult)
 +            this._privateConnections = !authResult.get_is_authorized();
-+ 
++
          this._activeConnections = [];
          this._connections = [];
          this._connectivityQueue = [];
-@@ -1779,7 +1806,7 @@ class Indicator extends PanelMenu.System
+@@ -1850,7 +1877,7 @@ class Indicator extends PanelMenu.System
  
          let wrapperClass = this._dtypes[device.get_device_type()];
          if (wrapperClass) {

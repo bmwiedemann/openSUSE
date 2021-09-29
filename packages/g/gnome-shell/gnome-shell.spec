@@ -19,14 +19,14 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        40.5
+Version:        41.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
-Source:         https://download.gnome.org/sources/gnome-shell/40/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-shell/41/%{name}-%{version}.tar.xz
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
@@ -75,26 +75,26 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.65.1
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.69.2
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.9.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.35.90
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.1
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 41.alpha
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.19
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-8) >= 40.2
+BuildRequires:  pkgconfig(libmutter-9) >= 41.0
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -104,9 +104,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-8) >= 40.0
-BuildRequires:  pkgconfig(mutter-cogl-8) >= 40.0
-BuildRequires:  pkgconfig(mutter-cogl-pango-8) >= 40.0
+BuildRequires:  pkgconfig(mutter-clutter-9) >= 41.0
+BuildRequires:  pkgconfig(mutter-cogl-9) >= 41.0
+BuildRequires:  pkgconfig(mutter-cogl-pango-9) >= 41.0
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -120,7 +120,7 @@ Requires:       gnome-settings-daemon
 # "High Contrast" in accessibility status icon
 Requires:       gnome-themes-accessibility
 Requires:       gsettings-desktop-schemas
-Requires:       mutter >= 3.35.90
+Requires:       mutter >= 41.0
 Requires:       typelib(Rsvg)
 Recommends:     %{name}-calendar
 ## Finally, dependencies for session services that are needed for system icons and the user menu
@@ -237,9 +237,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libdir}/gnome-shell/libgnome-shell.so
 %{_libdir}/gnome-shell/libgvc.so
 %{_libdir}/gnome-shell/libst-1.0.so
-%dir %{_datadir}/GConf
-%dir %{_datadir}/GConf/gsettings
-%{_datadir}/GConf/gsettings/gnome-shell-overrides.convert
 %{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Shell.Extensions.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
@@ -253,6 +250,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.PortalHelper.service
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
+%{_datadir}/gnome-control-center/keybindings/50-gnome-shell-launchers.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
 # Own these dirs for extensions, search-providers and work around a race condition
 %dir %{_datadir}/gnome-shell/extensions

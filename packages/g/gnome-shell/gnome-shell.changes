@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Sep 22 19:25:03 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + Updated translations.
+- Up mutter dependency.
+
+-------------------------------------------------------------------
+Wed Sep 22 13:26:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc.1:
+  + Make tests optional.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:41:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Optimize rendering of fullscreen zoom.
+  + Fix glitchy launch animations when leaving overview.
+  + Show low priority notifications only in message list.
+  + Support Soup 3 instead of 2.4.
+  + Set log domain for extensions that use console.log().
+  + Fix wrong separator position in dash.
+  + Fix OSK not registering button presses on X11.
+  + Fix work area getting messed up by hidden panels.
+  + Fix IM candidate popover position.
+  + Restrict callers of private D-Bus APIs.
+  + Support committing preedit string on focus loss.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:41:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Unbreak Xwayland apps when not using systemd in user session.
+  + extension-tool: Always print location on successful creation.
+  + Fix distributed man pages.
+  + Immediately start app grid drags for non-touch devices.
+  + Avoid unnecessary icon shadow changes.
+  + Handle screencast failures more gracefully.
+  + Use symbolic icons in looking glass toolbar.
+  + Allow overriding super+number shortcuts in Settings.
+  + Don't include hidden search results in keynav.
+  + Use anaccelerated deltas in swipe tracker.
+  + status/network: Do not disable on login screen.
+  + Always take workarea into account when allocating workspaces.
+  + location: Split out geoclue agent from indicator.
+  + Add focus indication for switches.
+  + Honor switch-user lockdown settings in unlock screen.
+  + Fix glitch when dragging window preview in overview.
+  + Lock down "Show Text" in password entries.
+  + Add power mode selection to status menu.
+  + workspace: Handle skip-taskbar changes.
+  + status/network: Use WWan settings panel for GSM/LTE modems.
+  + extensionUtils: Add gettext convenience helpers.
+  + screenShield: Fix suspend inhibitor accounting.
+  + Unify app context menus.
+  + Use consistent terminology in window menu.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Rebase gnome-shell-private-connection.patch.
+
+-------------------------------------------------------------------
 Tue Sep 21 20:25:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.5:
