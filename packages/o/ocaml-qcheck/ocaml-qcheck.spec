@@ -16,27 +16,37 @@
 #
 
 
-%bcond_with     ocaml_alcotest
+%bcond_with ocaml_qcheck_testsuite
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%if %{without ocaml_qcheck_testsuite}
+ExclusiveArch:  do-not-build
+%endif
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
 
-Name:           ocaml-qcheck
-Version:        0.17
+%define     pkg ocaml-qcheck
+Name:           %{pkg}%{nsuffix}
+Version:        0.18
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
-
 URL:            https://opam.ocaml.org/packages/qcheck
-Source0:        %{name}-%{version}.tar.xz
-
-BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+Source0:        %{pkg}-%{version}.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml-dune >= 2.2
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(ounit2)
 BuildRequires:  ocamlfind(unix)
-%if %{with ocaml_alcotest}
+
+%if "%{build_flavor}" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
+BuildRequires:  ocamlfind(qcheck)
 %endif
 
 %description
@@ -55,26 +65,38 @@ developing applications that use %{name}.
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pkg}-%{version}
 
 %build
 dune_release_pkgs='qcheck,qcheck-core,qcheck-ounit'
-%if %{with ocaml_alcotest}
+%if "%{build_flavor}" == "testsuite"
 dune_release_pkgs="${dune_release_pkgs},qcheck-alcotest"
 %endif
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
+%if "%_lib" == "lib"
+: https://github.com/c-cube/qcheck/issues/152
+%else
 %ocaml_dune_test
+%endif
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
 %doc README.adoc
 
 %files devel -f %{name}.files.devel
+%endif
 
 %changelog
