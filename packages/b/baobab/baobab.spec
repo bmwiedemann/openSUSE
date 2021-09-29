@@ -20,13 +20,13 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
-Source0:        https://download.gnome.org/sources/baobab/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/baobab/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
