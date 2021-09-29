@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 28 20:24:30 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- udpate to version 2.0.0:
+  * Add preliminary support for adding images to feeds
+  * Update code for Python 3.6+
+  * Drop support for Python 2.7
+  * Fix double subtitles if both description & subtitle are
+    provided
+- skip python2 build: support dropped from upstream
+- add pytest to the BuildRequires: needed for the tests now
+- run the tests with pytest but skip coverage generation
+
+-------------------------------------------------------------------
 Wed Aug 18 19:16:18 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.9.2:

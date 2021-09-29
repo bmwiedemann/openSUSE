@@ -16,15 +16,17 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-feedgenerator
-Version:        1.9.2
+Version:        2.0.0
 Release:        0
 Summary:        Standalone version of django.utilsfeedgenerator, compatible with Py3k
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getpelican/feedgenerator
 Source:         https://files.pythonhosted.org/packages/source/f/feedgenerator/feedgenerator-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -51,7 +53,8 @@ It has evolved over time and includes numerous enhancements.
 
 %check
 export LC_ALL=en_US.utf8
-%pyunittest discover -v
+# skip coverage by using an empty configuration file
+%pytest -c /dev/null
 
 %files %{python_files}
 %license LICENSE
