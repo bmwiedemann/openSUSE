@@ -687,4 +687,18 @@
     <comment>Scripted push from GNOME:Factory</comment>
     <requestid>907579</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>333261aeb2dfd9212ad5bf551ebcbae3</srcmd5>
+    <version>1.8.16</version>
+    <time>1632939496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.16:
+  + Fix detection of OpenVPN 2.5.0
+  + Allow the connection to persist across network failures when
+    the VPN profile has 'vpn.persistent=yes'
+  + Fix parsing of incomplete IPv6 configurations pushed by server
+  + Improve logging message about deprecated tls-remote option
+  + Updated translations. (forwarded request 922118 from iznogood)</comment>
+    <requestid>922130</requestid>
+  </revision>
 </revisionlist>

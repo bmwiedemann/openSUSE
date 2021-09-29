@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 29 07:23:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.16:
+  + Fix detection of OpenVPN 2.5.0
+  + Allow the connection to persist across network failures when
+    the VPN profile has 'vpn.persistent=yes'
+  + Fix parsing of incomplete IPv6 configurations pushed by server
+  + Improve logging message about deprecated tls-remote option
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:18:33 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Jun 16 07:25:20 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add nm-openvpn-bsc#1186091.patch: service: Don't add cert and key

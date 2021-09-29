@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.8.14
+Version:        1.8.16
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
@@ -31,13 +31,12 @@ Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
 Patch1:         nm-openvpn-bsc#1186091.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnm) >= 1.2.0
 BuildRequires:  pkgconfig(libnma) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  sysuser-tools
 Requires:       NetworkManager >= 1.2.0
 Requires:       openvpn
 %sysusers_requires
@@ -62,7 +61,6 @@ OpenVPN.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure\
