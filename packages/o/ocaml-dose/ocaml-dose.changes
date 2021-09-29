@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Update to version 7.0.0
+  remove dependency to bz2, parmap and zip
+  move unused tools to extra package, which is not built here
+
+-------------------------------------------------------------------
 Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
 
 - Update to version 6.1

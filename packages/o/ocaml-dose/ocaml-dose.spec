@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-dose
 Name:           %{pkg}%{nsuffix}
-Version:        6.1
+Version:        7.0.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        An OCaml dependency toolkit
@@ -38,17 +38,14 @@ URL:            https://opam.ocaml.org/packages/dose3
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 %if 1
 BuildRequires:  ocamlfind(base64)
-BuildRequires:  ocamlfind(bz2)
 BuildRequires:  ocamlfind(cudf)
 BuildRequires:  ocamlfind(extlib)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(ocamlgraph)
-BuildRequires:  ocamlfind(parmap)
 BuildRequires:  ocamlfind(re.pcre)
-BuildRequires:  ocamlfind(zip)
 %endif
 
 %if "%{build_flavor}" == "testsuite"
@@ -109,7 +106,6 @@ git --no-pager tag '%{version}'
 
 %if "%{build_flavor}" == ""
 %files -f %{name}.files
-%{_bindir}/*
 
 %files devel -f %{name}.files.devel
 
