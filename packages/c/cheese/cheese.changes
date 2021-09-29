@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Sep 20 10:57:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.0:
+  + Allow headerbar to appear on all desktops.
+  + Update to runtime 40 and some meta-data fixes.
+  + Reference of [GtkChild] fields is handled by GtkBuilder, type
+    must be unowned.
+  + Change GLib.PtrArray into GLib.GenericArray.
+  + libcheese: Fix critical on failing to load cropping cursor.
+  + Allow device parameter to understand api.v4l2.path.
+  + Update flatpak manifest and appdata.
+  + Remember last used camera.
+  + Enable cameras with only MJPEG output.
+  + Preserve video/x-raw over image/jpeg.
+  + Support camera video formats with MJPEG output.
+  + Show better error when file info query fails.
+  + Fix infinite loop if thumbnailer is not available.
+  + Updated translations.
+- Rename typelib-1_0-Cheese-3_0 subpackage to
+  typelib-1_0-Cheese-41_0, following upstream.
+- Drop upstream fixed patches:
+  + 1c1e7fa0c4608331fd89683ccb342ed3518acccc.patch
+  + 5587daca748e9010f59250c5dcb8e8ea42266685.patch
+  + 58de82b3d463b69f4c0bef75667e47020924e28b.patch
+  + 7cf6268e54620bbbe5e6e61800c50fb0cb4bea57.patch
+  + 9f0825c3169047da75d3fe91a3cb02bfe6fb7f25.patch
+
+-------------------------------------------------------------------
+Thu Sep 16 01:24:22 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Mon Sep 13 13:19:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patches adding support for video MJPEG output:
+  + 58de82b3d463b69f4c0bef75667e47020924e28b.patch
+  + 1c1e7fa0c4608331fd89683ccb342ed3518acccc.patch
+  + 5587daca748e9010f59250c5dcb8e8ea42266685.patch
+  + 9f0825c3169047da75d3fe91a3cb02bfe6fb7f25.patch
+
+-------------------------------------------------------------------
 Thu Feb 18 12:15:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 7cf6268e54620bbbe5e6e61800c50fb0cb4bea57.patch: Fix build

@@ -20,15 +20,13 @@
 %define lib_gtk_major 25
 
 Name:           cheese
-Version:        3.38.0
+Version:        41.0
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://gitlab.gnome.org/GNOME/cheese/-/commit/7cf6268e54620bbbe5e6e61800c50fb0cb4bea57.patch
+Source0:        https://download.gnome.org/sources/cheese/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -36,7 +34,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.25.2
 BuildRequires:  yelp-tools
@@ -74,11 +71,11 @@ Requires:       libcheese-common >= %{version}
 Cheese is an application to take photos and videos with your webcam,
 with fun graphical effects.
 
-%package -n typelib-1_0-Cheese-3_0
+%package -n typelib-1_0-Cheese-41_0
 Summary:        Introspection bindings for libcheese
 Group:          System/Libraries
 
-%description -n typelib-1_0-Cheese-3_0
+%description -n typelib-1_0-Cheese-41_0
 Cheese is an application to take photos and videos with your webcam,
 with fun graphical effects.
 
@@ -117,7 +114,7 @@ Summary:        Development files for the Cheese webcam booth
 Group:          Development/Libraries/GNOME
 Requires:       libcheese%{lib_major} = %{version}
 Requires:       libcheese-gtk%{lib_gtk_major} = %{version}
-Requires:       typelib-1_0-Cheese-3_0 = %{version}
+Requires:       typelib-1_0-Cheese-41_0 = %{version}
 
 %description devel
 Cheese is an application to take photos and videos with your webcam,
@@ -127,7 +124,6 @@ with fun graphical effects.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson
@@ -147,7 +143,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS README ChangeLog
+%doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/cheese
 %dir %{_datadir}/metainfo
@@ -160,8 +156,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libcheese%{lib_major}
 %{_libdir}/libcheese.so.%{lib_major}*
 
-%files -n typelib-1_0-Cheese-3_0
-%{_libdir}/girepository-1.0/Cheese-3.0.typelib
+%files -n typelib-1_0-Cheese-41_0
+%{_libdir}/girepository-1.0/Cheese-41.0.typelib
 
 %files -n libcheese-gtk%{lib_gtk_major}
 %{_libdir}/libcheese-gtk.so.%{lib_gtk_major}*
@@ -170,12 +166,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/glib-2.0/schemas/org.gnome.Cheese.gschema.xml
 
 %files devel
+%doc AUTHORS README ChangeLog
 %{_includedir}/cheese/
 %{_libdir}/pkgconfig/cheese.pc
 %{_libdir}/pkgconfig/cheese-gtk.pc
 %{_libdir}/libcheese.so
 %{_libdir}/libcheese-gtk.so
-%{_datadir}/gir-1.0/Cheese-3.0.gir
+%{_datadir}/gir-1.0/Cheese-41.0.gir
 %{_datadir}/gtk-doc/html/cheese/
 
 %files lang -f %{name}.lang
