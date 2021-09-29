@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Sep 18 08:39:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Instead of showing all package-based apps as "potentially
+    unsafe", only use that language for 3rd party ones.
+  + Fix a bug where the "Show more" button on an app details page
+    would flicker when the window is resized.
+  + Fix a bug where Software sometimes shows an Uninstall button
+    after uninstalling something.
+  + Add GNOME Circle apps to the featured carousel.
+  + Fix a bug where Software would sometimes fail to execute an
+    install/remove operation for PackageKit software rather than
+    showing a PolicyKit password prompt.
+  + Fix a bug where Software would fail to upgrade the distribution
+    via PackageKit.
+  + Fix the hiding of rows on the Updates tab after they have been
+    updated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:43:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Tweaks to the context tiles and dialogs.
+  + Fixes to the details page for non-desktop apps.
+  + Re-add support for the add-ons categories.
+  + Sort new and updated apps by release date on the category page.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 24 07:39:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Many parts of the user interface reworked.
+  + Fix when the 'Launch' button is shown after an application
+    install.
+  + Fix appstream:// URL handling.
+  + Fix application freeze on Flatpak application
+    install/remove/update.
+  + Disable automatic update downloads when in power saver mode.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 03:41:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Many parts of the user interface reworked.
+  + Improve error reporting from flatpak when low on disk space.
+  + Fix issues with updating the UI when uninstalling apps with
+    add-ons.
+  + Don’t keep rpm-ostreed alive forever.
+  + Prevent polkit checks showing up for background operations.
+  + Disallow submitting reviews for an app you haven’t installed.
+  + Show download size in the Updates page.
+  + Notify when restart is needed when uninstalling an app.
+  + Fix some issues with searches not running.
+  + Allow non-integer average star ratings for apps.
+  + Reduce number of categories in the UI.
+  + Improve ‘pending updates’ notifications.
+  + Refine presentation of download and installed size on details
+    page.
+  + Remove left over gnome-online-account dependencies.
+  + Updated translations.
+- Drop pkgconfig(goa-1.0) BuildRequires: no longer needed.
+- Drop gnome-software-no-static-lib.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Aug 13 16:23:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:

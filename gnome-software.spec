@@ -19,19 +19,17 @@
 %define gs_plugin_api 16
 %define _version 40_0
 Name:           gnome-software
-Version:        40.4
+Version:        41.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/41/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
-# PATCH-FIX-OPENSUSE gnome-software-no-static-lib.patch dimstar@opensuse.org -- convert libgnomesoftware.a to a shared lib
-Patch2:         gnome-software-no-static-lib.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
@@ -43,14 +41,13 @@ BuildRequires:  pkgconfig(fwupd) >= 1.0.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.18.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.2
+BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
@@ -112,11 +109,9 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %dir %{_datadir}/app-info
 %dir %{_datadir}/app-info/xmls
 %{_datadir}/app-info/xmls/org.gnome.Software.Featured.xml
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.Software.appdata.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Flatpak.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Software.Plugin.Fwupd.metainfo.xml
-%{_datadir}/metainfo/org.gnome.Software.Plugin.Odrs.metainfo.xml
 %{_datadir}/applications/gnome-software-local-file.desktop
 %{_datadir}/applications/org.gnome.Software.desktop
 %{_datadir}/dbus-1/services/org.gnome.Software.service
@@ -128,7 +123,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_datadir}/icons/hicolor/*/*/*.svg
 %dir %{_libdir}/gnome-software
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}
-%{_libdir}/gnome-software/libgnomesoftware-%{gs_plugin_api}.so
+%{_libdir}/gnome-software/libgnomesoftware.so.%{gs_plugin_api}
 %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
 #{_libexecdir}/gnome-software-service
 %{_libexecdir}/gnome-software-cmd
@@ -143,6 +138,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %dir %{_datadir}/doc/gnome-software
 %{_includedir}/%{name}/*.h
 %{_libdir}/pkgconfig/gnome-software.pc
+%{_libdir}/gnome-software/libgnomesoftware.so
 
 %files lang -f %{name}.lang
 

@@ -764,4 +764,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>New stable release (forwarded request 912021 from iznogood)</comment>
     <requestid>913685</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ad85141b479ee03957216c9cb18b6774</srcmd5>
+    <version>41.0</version>
+    <time>1632939458</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920949 from dimstar)</comment>
+    <requestid>921629</requestid>
+  </revision>
 </revisionlist>
