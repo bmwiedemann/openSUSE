@@ -7,4 +7,12 @@
     <comment>new BuildRequires for coccinelle, which always carries outdated bundles</comment>
     <requestid>885396</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6e78f97433e5f0d4ba59f68a8271735</srcmd5>
+    <version>16</version>
+    <time>1632939517</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921283</requestid>
+  </revision>
 </revisionlist>

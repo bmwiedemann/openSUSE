@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-stdcompat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ocaml-stdcompat
-Version:        15
+Version:        16
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library 
@@ -31,7 +31,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bash
 BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocaml(ocaml.opt)
 
 %description
