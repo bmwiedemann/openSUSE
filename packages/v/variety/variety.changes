@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 25 02:06:54 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add missing requires on python3-gobject-Gdk and python3-pycairo.
+
+-------------------------------------------------------------------
 Wed Dec 16 01:30:32 UTC 2020 - malcolmlewis@opensuse.org
 
 - Updated to version 0.8.5:

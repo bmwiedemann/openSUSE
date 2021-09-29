@@ -1,8 +1,8 @@
 #
 # spec file for package variety
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2014-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2014-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,8 +49,10 @@ Requires:       python3-beautifulsoup4
 Requires:       python3-configobj
 Requires:       python3-dbus-python
 Requires:       python3-gexiv2
+Requires:       python3-gobject-Gdk
 Requires:       python3-httplib2
 Requires:       python3-lxml
+Requires:       python3-pycairo
 Requires:       python3-pycurl
 Requires:       yelp
 # MANUAL END
