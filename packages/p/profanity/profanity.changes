@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 28 18:03:56 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  * Fix typo in shade color theme (#1579)
+  * Fix memory leaks (#1583) (#1584) (#1585)
+  * Fix buffer overread (#1586)
+  * Don't handle /me in the middle of a message with mentions (#1586)
+  * Explicitly check for curl version (#1581)
+  * Fix OMEMO devicelist access model by reconfiguring it (#1538) (#1591)
+  * Cosmetic cleanup (#1593)
+  * Change attentionflag shortcut from alt-f to alt+v (#1580)
+  * Update man page and /help information
+  * Enable whole word only notifications by default (#1578)
+
+-------------------------------------------------------------------
 Wed Jul 14 14:29:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.0:
-- Fix 'headache' and 'whiteness' themes (#1471)
+  * Fix 'headache' and 'whiteness' themes (#1471)
   * Fix help text for `/logging` (#1470)
   * Fix theme loading with -t parameter when a disconnect happens (#1472)
   * Add `/mam` command (MAM is still experimental) (#660)

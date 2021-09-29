@@ -419,4 +419,24 @@
   * Use direct messages instead of MUC-PMs for non-anonymous MUCs (#1534)</comment>
     <requestid>906302</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c2d28ec4d4d3eae93558e55620f3be20</srcmd5>
+    <version>0.11.1</version>
+    <time>1632939537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Fix typo in shade color theme (#1579)
+  * Fix memory leaks (#1583) (#1584) (#1585)
+  * Fix buffer overread (#1586)
+  * Don't handle /me in the middle of a message with mentions (#1586)
+  * Explicitly check for curl version (#1581)
+  * Fix OMEMO devicelist access model by reconfiguring it (#1538) (#1591)
+  * Cosmetic cleanup (#1593)
+  * Change attentionflag shortcut from alt-f to alt+v (#1580)
+  * Update man page and /help information
+  * Enable whole word only notifications by default (#1578)
+
+  * Fix 'headache' and 'whiteness' themes (#1471)</comment>
+    <requestid>922050</requestid>
+  </revision>
 </revisionlist>
