@@ -5,6 +5,48 @@ Mon Sep 20 17:35:49 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
   (jsc#SLE-21105).
 
 -------------------------------------------------------------------
+Sat Sep 18 12:55:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Fix regression preventing onboarding dialog from loading.
+  - Fix regression preventing VM clone operations from completing.
+
+-------------------------------------------------------------------
+Fri Sep 17 14:20:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  3 13:24:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Make Boxes use Vnc when SPICE is not available.
+  + transfer-popover: Encapsulate widget setup internally.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 13:35:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Provide source for svg icons.
+  + Fix run-in-bg VMs for non-Flatpak builds.
+  + Replace uses of "open-menu-symbolic" with view-more-symbolic in
+    docs.
+  + Update recommended downloads to latest releases.
+  + Update the empty-state title and description text.
+  + Remove remaining UI references to remote capabilities.
+  + Override "--help" command line argument.
+  + Introduce script to auto-generate release notes.
+  + Display downloadable entries' URL in tooltip.
+  + Display image filepath in Discovered Sources tooltip.
+  + Add AlmaLinux logo.
+  + Add audio playback support for VNC connections.
+  + Fix wrong margin to scrollable area in troubleshooting logs
+    dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jul 10 16:38:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:
