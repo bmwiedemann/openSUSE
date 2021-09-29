@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 29 09:45:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + appdata: State hardware support.
+  + Updated translations.
+- Update Supplements syntax in sub-package to current standard.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:05:19 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 20:20:37 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.beta:
+  + pgp:
+    - Redesign of the PGP key properties dialog
+    - Also monitor .kbx in gpghomedir, making sure we get notified
+      of new keys
+    - Start adding (basic) unit tests
+    - Make pgp key id equality accept more values
+    - Make HKP keyid check more robust
+    - Fix expiration date for certain keys
+    - Allow building with GnuPG-2.3.x
+    - Fix segfault when built with LDAP disabled
+  + ui:
+    - Follow GNOME HIG more closely [!178]
+    - Datepicker now only pops down on double click
+  + gkr:
+    - Fix warnings for items with NULL labels
+    - Don't show "Details" if no attributes are shown
+  + appdata: Updated screenshot
+  + Update README.md
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr 13 06:39:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

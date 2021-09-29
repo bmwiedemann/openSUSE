@@ -17,13 +17,13 @@
 
 
 Name:           seahorse
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        https://download.gnome.org/sources/seahorse/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/seahorse/41/%{name}-%{version}.tar.xz
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2 >= 2.2.0
@@ -33,18 +33,17 @@ BuildRequires:  openldap2-devel
 BuildRequires:  openssh
 BuildRequires:  pkcs11-helper-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
 BuildRequires:  pkgconfig(gcr-3) >= 3.18
 BuildRequires:  pkgconfig(gcr-ui-3) >= 3.18
-BuildRequires:  pkgconfig(gio-2.0) >= 2.58
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.58
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.58
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gpgme) >= 1.14.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libhandy-1) >= 1.1.0
@@ -59,7 +58,7 @@ Seahorse is a GNOME interface for gnupg. It uses gpgme as the backend.
 %package -n gnome-shell-search-provider-seahorse
 Summary:        GNOME interface for gnupg -- Search Provider for GNOME Shell
 Group:          Productivity/Security
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-seahorse
 Seahorse is a GNOME interface for gnupg. It uses gpgme as the backend.
@@ -71,7 +70,6 @@ search results from seahorse.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \
