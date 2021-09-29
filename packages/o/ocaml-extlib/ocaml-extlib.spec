@@ -30,7 +30,7 @@ Patch0:         %{name}.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 
 %description
 ExtLib is a project aiming at providing a complete - yet small -
@@ -54,7 +54,6 @@ developing applications that use %{name}.
 
 %build
 dune_release_pkgs='extlib'
-mv opam ${dune_release_pkgs}.opam
 %ocaml_dune_setup
 %ocaml_dune_build
 

@@ -72,4 +72,12 @@
 - use ocaml-extlib.patch to build with dune</comment>
     <requestid>867933</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f9099564eb1ca398b0326a01a75a657c</srcmd5>
+    <version>1.7.8</version>
+    <time>1632939507</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921267</requestid>
+  </revision>
 </revisionlist>
