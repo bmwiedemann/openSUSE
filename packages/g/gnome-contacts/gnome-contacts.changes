@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 29 09:29:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Long names are wrapped over more lines, which makes them more
+    readable, especially in the case of a small screen.
+  + Updated translations.
+- Update Supplements syntax in sub-package to current standard.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:36:58 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 20:08:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.beta:
+  + When adding or updating a contact, Contacts will now scroll the
+    list to the newly-made contact.
+  + The Contacts title after cancelling selecting now correctly
+    shows "Contacts".
+  + When opening a contact, a previously entered birthday is now
+    shown.
+  + We now have a dedicated selection mode button, which makes the
+    UX for touchscreen devices much more intuitive.
+  + Several small UI improvements, like extra tooltips that follow
+    the GNOME HIG.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 23 09:29:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

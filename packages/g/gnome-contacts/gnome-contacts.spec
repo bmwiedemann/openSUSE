@@ -17,19 +17,18 @@
 
 
 Name:           gnome-contacts
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.40.10
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cheese)
@@ -70,7 +69,7 @@ Summary:        Contacts Manager for GNOME -- Search Provider for GNOME Shell
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-contacts
 The integraded address book for GNOME.
@@ -89,8 +88,6 @@ search results from contacts.
 
 %prep
 %autosetup -p1
-# t-u-u disabled since 3.35.x - execution failure
-#translation-update-upstream
 
 %build
 %meson \
