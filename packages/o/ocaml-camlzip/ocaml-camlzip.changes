@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Update to version 1.11
+  Zip.add_entry_generator ~level:0 was missing a CRC update
+  remove changes from ocaml-camlzip.patch wich are part of this release
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - Use ocaml-camlzip.patch to build with dune instead of oasis

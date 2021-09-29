@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-camlzip
-Version:        1.10
+Version:        1.11
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ZIP interface
@@ -28,9 +28,9 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         ocaml-camlzip.patch
 Provides:       ocaml-camlzip-test = %{version}-%{release}
 Obsoletes:      ocaml-camlzip-test < %{version}-%{release}
-BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml(ocaml_base_version) >= 4.02
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  pkg-config
@@ -54,6 +54,7 @@ Development file for the OCaml ZIP interface
 %autosetup -p1
 
 %build
+rm -fv *.opam
 dune_release_pkgs='zip'
 %ocaml_dune_setup
 %ocaml_dune_build
