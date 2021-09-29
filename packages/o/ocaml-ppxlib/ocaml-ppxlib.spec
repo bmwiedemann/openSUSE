@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-ppxlib
 Name:           %{pkg}%{nsuffix}
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
@@ -39,14 +39,13 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ppxlib
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 %if 1
 BuildRequires:  ocamlfind(compiler-libs.bytecomp)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(ocaml-compiler-libs.common)
 BuildRequires:  ocamlfind(ocaml-compiler-libs.shadow)
-BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(sexplib0)
 BuildRequires:  ocamlfind(stdlib-shims)
@@ -89,8 +88,6 @@ dune_release_pkgs='ppxlib'
 %install
 %if "%{build_flavor}" == ""
 %ocaml_dune_install
-# perl-PAR-Packer, issue #224
-mv -v %{buildroot}%{_bindir}/pp{,-%{name}}
 %ocaml_create_file_list
 %endif
 
@@ -102,7 +99,6 @@ mv -v %{buildroot}%{_bindir}/pp{,-%{name}}
 %if "%{build_flavor}" == ""
 %files -f %{name}.files
 %defattr(-,root,root,-)
-%{_bindir}/*
 
 %files devel -f %{name}.files.devel
 %defattr(-,root,root,-)
