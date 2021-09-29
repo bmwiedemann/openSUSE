@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 27 16:34:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -Dsniffer=false to meson: Disable build of sniffer. Allows
+  to drop pkgconfig(gtk4) BuildRequires and helps eliminate a build
+  cycle.
+- Allow for easy toggling using bcond_with sniffer.
+
+-------------------------------------------------------------------
+Mon Sep 20 11:15:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0.1:
+  + Fix building the sniffer when built as subproject
+  + Do not build docs by default
+- Changes from version 1.3.1:
+  + Implement MAC lookup on Windows
+  + Implement interface index lookup on Windows
+  + Fix distributing docs in the tarball
+  + Build docs by default
+- Changes from version 1.3.0:
+  + Sniffer: Various deprecated function clean-up
+  + Sniffer: Port to GTK4
+  + Docs: Ported to gi-docgen
+  + Docs: Clean-up and other improvements
+  + Client: Minor dead code clean-up
+  + Build: Make GSSDP usable as a subproject
+  + All: Fixes from scan-build
+  + All: Minor introspection fixes
+- Replace pkgconfig(gtl+-3.0) BuildRequires with pkgconfig(gtk4):
+  Follow upstreams port to GTK 4.
+- Enable test suite: enable meson_test in check section.
+
+-------------------------------------------------------------------
 Tue Jun 23 07:52:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.2.3:

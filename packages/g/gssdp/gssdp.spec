@@ -1,7 +1,7 @@
 #
 # spec file for package gssdp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,27 @@
 #
 
 
-# When bumping soname, do not forget to bump in baselibs.conf too.
 %define soname 1_2-0
 %define sover 1.2
-
+%bcond_with sniffer
 Name:           gssdp
-Version:        1.2.3
+Version:        1.4.0.1
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gssdp/1.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gssdp/1.4/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3-gi-docgen >= 2021.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
+%if %{with sniffer}
+BuildRequires:  pkgconfig(gtk4)
+%endif
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26.1
 BuildRequires:  pkgconfig(vapigen)
 
@@ -87,7 +88,9 @@ announcement over SSDP.
 %build
 %meson \
 	-Dgtk_doc=true \
-	-Dsniffer=true \
+%if %{without sniffer}
+	-Dsniffer=false \
+%endif
 	-Dintrospection=true \
 	-Dvapi=true \
 	-Dexamples=false \
@@ -98,18 +101,19 @@ announcement over SSDP.
 %meson_install
 
 %check
-### FIXME ###
-#meson_test
+%meson_test
 
 %post -n libgssdp-%{soname} -p /sbin/ldconfig
 %postun -n libgssdp-%{soname} -p /sbin/ldconfig
 
+%if %{with sniffer}
 %files utils
 %{_bindir}/*
+%endif
 
 %files -n libgssdp-%{soname}
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-GSSDP-1_0
@@ -120,9 +124,7 @@ announcement over SSDP.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/GSSDP-%{sover}.gir
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%{_datadir}/gtk-doc/html/%{name}
+%doc %{_datadir}/doc/gssdp-%{sover}/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gssdp-%{sover}.deps
 %{_datadir}/vala/vapi/gssdp-%{sover}.vapi
