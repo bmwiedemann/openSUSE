@@ -17,13 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        40.2
+Version:        41.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calendar/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
