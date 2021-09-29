@@ -2191,4 +2191,12 @@
   gnome-patch-translation support (jsc#SLE-21105). (forwarded request 920411 from sbrabec)</comment>
     <requestid>920577</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>451735a8b71a007a662edfb6c2db79a3</srcmd5>
+    <version>41.0</version>
+    <time>1632939457</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920948 from dimstar)</comment>
+    <requestid>921628</requestid>
+  </revision>
 </revisionlist>

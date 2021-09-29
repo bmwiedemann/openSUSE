@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        40.4
+Version:        41.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/41/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source5:        sle-classic.json
@@ -42,7 +42,7 @@ BuildRequires:  fdupes
 BuildRequires:  gnome-shell
 # gobject-introspection is needed for the typelib() rpm magic.
 BuildRequires:  gobject-introspection
-BuildRequires:  meson >= 0.44.0
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  sassc
 
 %description
@@ -158,6 +158,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 
 %files -n gnome-shell-classic
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.apps-menu.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %dir %{_datadir}/gnome-shell/extensions
