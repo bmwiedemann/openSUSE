@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Update to version 1.10.3
+  see included CHANGES for details
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - remove dependency to ounit via _multibuild

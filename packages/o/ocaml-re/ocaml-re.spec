@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-re
 Name:           %{pkg}%{nsuffix}
-Version:        1.9.0
+Version:        1.10.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
@@ -34,8 +34,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/re
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-dune >= 2.0
+BuildRequires:  ocaml-rpm-macros >= 20210911
 %if 1
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(str)
