@@ -16,20 +16,20 @@
 #
 
 
-%define         vala_version 0.52
-%define         vala_libversion 0_52
+%define         vala_version 0.54
+%define         vala_libversion 0_54
 # The priority defines which version of vala, in case of multiple ones are installed
 # is to be used by default. The rule-of-thumb for vala is to use MAJORMINOR without
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
-%define         vala_priority 52
+%define         vala_priority 54
 Name:           vala
-Version:        0.52.5
+Version:        0.54.1
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
 URL:            https://wiki.gnome.org/Projects/Vala
-Source0:        https://download.gnome.org/sources/vala/0.52/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/vala/0.54/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex

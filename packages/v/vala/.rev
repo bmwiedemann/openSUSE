@@ -1073,4 +1073,12 @@
       VariantDict.lookup_value() is nullable (forwarded request 912657 from iznogood)</comment>
     <requestid>913693</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>73fb70768e4831caddeffafe695757f3</srcmd5>
+    <version>0.54.1</version>
+    <time>1632939475</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920982 from dimstar)</comment>
+    <requestid>921658</requestid>
+  </revision>
 </revisionlist>

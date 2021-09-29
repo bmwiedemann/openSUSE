@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Sep 21 12:18:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.54.1:
+  + Regression and bug fixes:
+    - codegen:
+      . Add type declaration for implicit temporary local variable.
+      . Sealed class in external package is not special.
+  + Bindings:
+    - gstreamer: Update from 1.19.0+ git master.
+    - gtk4: Update to 4.5.0~3e20ecd6.
+
+-------------------------------------------------------------------
+Fri Sep 17 08:03:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.54.0:
+  + Various improvements and bug fixes:
+    - vala: Warn about unsupported cast to void and drop it.
+    - vala: Don't restrict element type of GLib.Array.
+    - valadoc: Correctly format background of inline @link's.
+  + Bindings:
+    - gio-2.0: Unhide a few usable symbols which are marked not
+      introspectable.
+
+-------------------------------------------------------------------
+Sat Sep  4 19:29:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.53.2:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Fix property access inside opaque compact class
+      . Add missing cast to access base-class members in
+        class/static ctor
+  + Bindings:
+    - glib-2.0: Current constants in GLib.Math are part of glib.h
+    - glib-2.0: Add RefString since 2.58
+    - gstreamer: Update from 1.19.0+ git master
+    - gtk4: Update to 4.5.0~e681fdd9
+    - vapi: Update GIR-based bindings
+
+-------------------------------------------------------------------
+Mon Aug 23 12:56:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.53.1:
+  + Highlights:
+     - Support explicit nullable var-type declarations,
+     - Add support for variadic delegates,
+     - Add support for sealed classes,
+     - Add support for null-safe access operator,
+     - Emit external creation methods in bindings,
+     - Introduce VALA_EXPORT for public symbols to improve
+       portability,
+     - girwriter:
+       + Use "optional" and "nullable" instead of deprecated
+         "allow-none",
+       + Improve struct creation method binding,
+     - girparser:
+       + Improve instance method detection,
+       + Never skip "function" elements,
+       + Add "move-to" value of functions as Version.replacement,
+  + Various improvements and bug fixes.
+  + Updated bindings.
+
+-------------------------------------------------------------------
 Tue Aug 17 10:54:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.52.5:
