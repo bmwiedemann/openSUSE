@@ -1,8 +1,7 @@
 #
 # spec file for package opam-file-format
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018 The openSUSE Project.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,22 +12,39 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           opam-file-format
-Version:        2.0.0
+%bcond_with opam_file_format_testsuite
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%if %{without opam_file_format_testsuite}
+ExclusiveArch:  do-not-build
+%endif
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
+
+%define     pkg opam-file-format
+Name:           %{pkg}%{nsuffix}
+Version:        2.1.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Parser and printer for the opam file syntax
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210911
+
+%if "%{build_flavor}" == "testsuite"
+BuildRequires:  ocamlfind(alcotest)
+BuildRequires:  ocamlfind(opam-file-format)
+%endif
 
 %description
 This is a parser and a printer for the opam file syntax.
@@ -44,22 +60,30 @@ This is a parser and a printer for the opam file syntax.
 This package contains development files for package %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pkg}-%{version}
 
 %build
 dune_release_pkgs='opam-file-format'
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
 %ocaml_dune_test
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
 
 %files devel -f %{name}.files.devel
+%endif
 
 %changelog
