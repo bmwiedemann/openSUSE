@@ -7,4 +7,12 @@
     <comment>Add new app</comment>
     <requestid>887805</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee551a49920816c120eb88e40d29e6e1</srcmd5>
+    <version>41.0</version>
+    <time>1632939525</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920935 from dimstar)</comment>
+    <requestid>921616</requestid>
+  </revision>
 </revisionlist>

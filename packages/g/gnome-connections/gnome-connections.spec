@@ -17,13 +17,13 @@
 
 
 Name:           gnome-connections
-Version:        40.0.1
+Version:        41.0
 Release:        0
 Summary:        A remote desktop client for GNOME
-# FIXME: Select a correct license from https://github.com/openSUSE/spec-cleaner#spdx-licenses
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
-Source:         https://download.gnome.org/sources/gnome-connections/40/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-connections/41/%{name}-%{version}.tar.xz
+
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtk-vnc-2.0) > 0.4.4
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(winpr2) >= 2.0.0
 
@@ -42,7 +43,7 @@ A remote desktop client for the GNOME desktop environment.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
@@ -58,7 +59,6 @@ rm %{buildroot}%{_datadir}/gnome-connections/gir-1.0/GtkFrdp-0.1.gir
 rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.deps
 rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.vapi
 
-
 %files
 %license COPYING
 %{_bindir}/gnome-connections
@@ -66,7 +66,7 @@ rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.vapi
 %dir %{_libdir}/gnome-connections/girepository-1.0
 %{_libdir}/gnome-connections/girepository-1.0/GtkFrdp-0.1.typelib
 %{_libdir}/gnome-connections/libgtk-frdp-0.1.so
-%{_datadir}/appdata/org.gnome.Connections.appdata.xml
+%{_datadir}/metainfo/org.gnome.Connections.appdata.xml
 %{_datadir}/applications/org.gnome.Connections.desktop
 %{_datadir}/dbus-1/services/org.gnome.Connections.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Connections.gschema.xml
