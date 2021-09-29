@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 30 08:57:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.99.13:
+  + Tweak default percentage levels to better match other operating
+    systems.
+  + Support large energy rates seen in some modern laptops.
+  + Fix touchpads showing up as mice.
+  + Fix composite battery state when multiple batteries are used
+    and one isn't drawing any power.
+  + Make the icon and warning properties respect the "low battery
+    level" configuration option.
+  + Stop the device being suspended during the 20-second "shutdown"
+    grace period.
+- Changes from version 0.99.12:
+  + Add a raft of new device types.
+  + Add support for iPhone XR, XS and newer models.
+  + Work-around incorrect battery percentage reported by MacBooks.
+  + Identify keyboard/pointing device combos as keyboards.
+  + Fix small memory leak in Bluetooth backend.
+  + Fix warning in Bluetooth backend.
+  + Set update time in Bluetooth backend.
+  + Remove support for obsolete CSR devices.
+- Drop upower-build-Use-a-newer-libplist-if-available.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Jan 25 13:10:08 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Use libplist-2.0 on Tumblewewd.

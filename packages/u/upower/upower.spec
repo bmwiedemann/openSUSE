@@ -23,7 +23,7 @@
 %endif
 
 Name:           upower
-Version:        0.99.11
+Version:        0.99.13
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         upower-hibernate-insteadof-hybridsleep.patch
 # PATCH-FEATURE-SLE upower-sle15.patch fcrozat@suse.com -- Disable some hardenings, don't work on SLE15 SP2+
 Patch1:         upower-sle15.patch
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/upower/upower/-/commit/694207d3f08bdd2095f01eee09eb523363800825
-Patch2:         upower-build-Use-a-newer-libplist-if-available.patch
 
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
@@ -115,7 +113,6 @@ system) are restricted using PolicyKit.
 %if 0%{?sle_version}
 %patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
