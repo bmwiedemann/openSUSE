@@ -1,7 +1,83 @@
 -------------------------------------------------------------------
+Fri Sep 17 12:12:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.70.0:
+  + Bug fixed: ci: Replace FreeBSD 11 with FreeBSD 13.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:35:28 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Tue Sep  7 21:45:09 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - desktop-file-utils: add Pantheon desktop environment
+
+-------------------------------------------------------------------
+Tue Sep  7 14:19:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.69.3:
+  + g_settings_schema_key_range_check() misbehaves for int versus
+    bool.
+  + Compiling anything with GCC <4.6 spews deprecation warnings.
+  + `g_invoke_closure` bindings API break..
+  + GPowerProfileMonitorPortal does not notice initial
+    power-saver-enabled status.
+  + doc: Explicitly said, that no null term. is needed.
+  + ci: Use C.UTF-8 locale on FreeBSD 12.
+  + gio: Fix conditions in memory-monitor test.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 02:19:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.69.2:
+  + The `DBUS_SESSION_BUS_ADDRESS` environment variable is once
+    more not used if the process is `AT_SECURE`
+    (setuid/setgid/setcap); this change was previously applied and
+    then reverted because it broke gnome-keyring
+  + Add `g_test_fail_printf()`, `g_test_skip_printf()`,
+    `g_test_incomplete_printf()` helper functions for printing
+    messages when tests end prematurely
+  + Add portal implementation of `GPowerProfileMonitor`
+  + Various bugs fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 02:19:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.69.1:
+  + Support categories in desktop notifications (`GNotification`)
+  + Add `GPowerProfileMonitor` for monitoring when to use less
+    power (due to being on battery power, electricity being
+    expensive or high-carbon, etc.)
+  + Allow static names to be set for `GSource`s to avoid
+    unnecessary string copies
+  + Various bugs fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 02:19:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.69.0:
+  + Fix a crash in `GKeyFile` when parsing a file which contains
+    translations using a `GKeyFile` instance which has loaded
+    another file previously.
+  + Ensure `dlerror()` is used with locking as it’s not thread-safe
+    in some libc implementations.
+  + Drop internal libpcre copy in favour of a subproject from
+    wrapdb.
+  + Optimise grefcount atomic operations.
+  + Fix `g_date_time_format()` return value encoding if `LC_TIME`
+    is not a UTF-8 locale but other locale settings are.
+  + Set app name in freedesktop.org notifications with
+    `GNotification`.
+  + Add PKCS#11 flags to `GTlsPasswordFlags`.
+  - Drop -Dinternal_pcre=false meson parameter: follow upstreams
+    build recipe changes.
 
 -------------------------------------------------------------------
 Fri Aug 20 16:20:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>

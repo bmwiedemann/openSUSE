@@ -19,13 +19,13 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.68.4
+Version:        2.70.0
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.68/glib-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib/2.70/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -58,7 +58,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.5
 # gdbus-codegen is run during the build, so we need python3-xml
 BuildRequires:  python3-xml
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 # Needed for gresource
 BuildRequires:  pkgconfig(libelf) >= 0.8.12
@@ -263,7 +262,6 @@ the functionality of the installed glib2 package.
 
 %prep
 %setup -q -n glib-%{version}
-translation-update-upstream
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -297,7 +295,6 @@ sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 	-Dsystemtap=false \
 	-Ddtrace=false \
 %endif
-	-Dinternal_pcre=false \
 	-Dinstalled_tests=true \
 	%{nil}
 %meson_build
