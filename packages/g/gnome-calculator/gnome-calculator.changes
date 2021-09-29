@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Sep 19 19:15:25 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + Use first translated symbol for conversion with button.
+  + Appdata includes hardware support information.
+  + Updated Translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:36:17 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sat Sep  4 20:01:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:42:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Adaptive preferences window.
+  + Fixed currency conversion using convert button.
+  + User interface reworked, adaptive UI.
+  + Enlarged calculator icon in help.
+  + Fixed kilohertz shorthand.
+  + Added support using calculator without currency conversion for
+    privacy.
+  + Added support for function description of custom functions
+    using @.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:13:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.1:

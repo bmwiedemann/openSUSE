@@ -20,20 +20,19 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        https://download.gnome.org/sources/gnome-calculator/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calculator/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  mpc-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
@@ -89,7 +88,6 @@ developing applications that use %{name}.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson
