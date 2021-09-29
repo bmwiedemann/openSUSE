@@ -7,4 +7,12 @@
     <comment>add to factory</comment>
     <requestid>921419</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd10b2c8a8bcb3793d69e33b78c71161</srcmd5>
+    <version>3.3.0</version>
+    <time>1632939545</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim conjecture from descriptions. (forwarded request 922067 from jengelh)</comment>
+    <requestid>922114</requestid>
+  </revision>
 </revisionlist>
