@@ -128,4 +128,12 @@
     <comment>- Update to version 2.1.0, for ocaml-4.12</comment>
     <requestid>885017</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>986371a0e8b9b200f89bd32dc8612b89</srcmd5>
+    <version>2.2.0</version>
+    <time>1632939512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921273</requestid>
+  </revision>
 </revisionlist>

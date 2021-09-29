@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-migrate-parsetree
 Name:           %{pkg}%{nsuffix}
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library for conversion between different OCaml parsetrees versions
@@ -40,7 +40,7 @@ URL:            https://opam.ocaml.org/packages/ocaml-migrate-parsetree
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 %if 1
 BuildRequires:  ocamlfind(compiler-libs.common)
 %endif
