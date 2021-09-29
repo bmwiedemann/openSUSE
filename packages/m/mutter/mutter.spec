@@ -19,17 +19,17 @@
 # don't enable sysprof support by default
 %bcond_with profiler
 
-%define api_major 8
+%define api_major 9
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        40.5
+Version:        41.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source:         https://download.gnome.org/sources/mutter/40/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/mutter/41/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
@@ -46,18 +46,18 @@ Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server
-BuildRequires:  xorg-x11-server-wayland
+BuildRequires:  xvfb-run
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gbm) >= 17.3
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.1
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.67.3
+BuildRequires:  pkgconfig(glib-2.0) >= 2.69.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
@@ -85,7 +85,7 @@ BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 %if !0%{?sle_version}
 BuildRequires:  pkgconfig(wayland-eglstream)
 %endif
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.21
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -105,6 +105,8 @@ BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(xwayland)
+Requires:       gnome-settings-daemon
 Requires:       zenity
 Provides:       windowmanager
 # Obsolete the now private typelib.
@@ -154,9 +156,9 @@ applications that want to make use of the mutter library.
 %endif
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
-	-Dtests=false \
+	-Dtests=true \
 	-Dinstalled_tests=false \
-	-Dxwayland_initfd=disabled \
+	-Dxwayland_initfd=auto \
 %if %{with profiler}
 	-Dprofiler=true \
 %else
@@ -193,12 +195,12 @@ applications that want to make use of the mutter library.
 # These typelibs are not split out since they are private to mutter
 %{_libdir}/mutter-%{api_major}/Cally-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.typelib
-%{_libdir}/mutter-%{api_major}/ClutterX11-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.typelib
 
 %{_libdir}/libmutter-%{api_major}.so.*
+%{_libdir}/libmutter-test-%{api_major}.so
 %dir %{_libdir}/mutter-%{api_major}/
 # users of libmutter need this directory
 %dir %{_libdir}/mutter-%{api_major}/plugins/
@@ -219,7 +221,6 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Cally-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Clutter-%{api_major}.gir
-%{_libdir}/mutter-%{api_major}/ClutterX11-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/Cogl-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.gir
 %{_libdir}/mutter-%{api_major}/libmutter-clutter-%{api_major}.so
@@ -227,8 +228,8 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
 %{_libdir}/libmutter-%{api_major}.so
 %{_libdir}/pkgconfig/libmutter-%{api_major}.pc
+%{_libdir}/pkgconfig/libmutter-test-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-clutter-%{api_major}.pc
-%{_libdir}/pkgconfig/mutter-clutter-x11-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc
 

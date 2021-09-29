@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep 22 19:29:14 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + Avoid race in wl_seat capabilities.
+  + Expose option groups/entries to introspection.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 22 13:04:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(xwayland) and drop xorg-x11-server-wayland
+  BuildRequires: use standalone xwayland during build and runtime.
+- Add explicit gnome-settings-daemon Requires and pass initfd=auto
+  to meson now that we are using the new standalone xwayland.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:41:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Add clutter_stage_paint_to_content().
+  + Add meta_cursor_tracker_get_scale().
+  + wayland: Make each wl_output correspond to one monitor.
+  + Expose 'inactive-since' timestamp to uresourced.
+  + Pass dirty rects to secondary GPU.
+  + Support commiting preedit string on focus loss.
+  + Improve auto-rotation support.
+  + Add meta_window_actor_paint_to_content().
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Add xvfb-run BuildRequires: new dependency for the test suite.
+
+-------------------------------------------------------------------
+Wed Sep 22 03:41:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Manage idle monitors via MetaIdleManager.
+  + Fix VKMS detection.
+  + Fix swipe cancellation.
+  + Fix mapping tablet to monitor.
+  + Fix area screencasts when window is unredirected.
+  + Don't require a newly attached buffer to apply state.
+  + Close unused mode setting and rendering devices.
+  + Only support super+scroll on wayland.
+  + Implement the xdg-activation protocol.
+  + Reduce input latency by computing max render time
+    heuristically.
+  + Apply dithering to dispatch time when needed.
+  + x11: Compute monitor scale per output.
+  + Shrink and optimize the rounded-background-clip shader.
+  + remote-desktop: Handle non-responding selection owners .
+  + Improve sysprof support.
+  + Allow clients to delegate titlebar gestures to the compositor.
+  + Fix upside-down Xshape surface with EGLstream.
+  + Fix 'kms-modifiers' experimental setting.
+  + Make default focus window on each workspace appear focused.
+  + Plugged memory leaks.
+  + Fixed crashes crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 21 20:23:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.5:

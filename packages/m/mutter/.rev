@@ -1475,4 +1475,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   + Updated translations. (forwarded request 920696 from iznogood)</comment>
     <requestid>920817</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>1840d265ceeb591e754eb72aad51b151</srcmd5>
+    <version>41.0</version>
+    <time>1632939468</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920969 from dimstar)</comment>
+    <requestid>921647</requestid>
+  </revision>
 </revisionlist>
