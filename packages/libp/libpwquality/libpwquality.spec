@@ -16,7 +16,6 @@
 #
 
 
-%define _pammoduledir /%{_lib}/security
 %define _secconfdir %{_sysconfdir}/security
 %define libname libpwquality1
 %bcond_without python2
@@ -86,7 +85,7 @@ Summary:        PAM module to disallow weak new passwords
 Group:          System/Libraries
 Requires:       pam
 Requires(post): pam-config
-Requires(postun): pam-config
+Requires(postun):pam-config
 
 %description -n pam_pwquality
 The pam_pwquality PAM module can be used instead of pam_cracklib to
@@ -122,7 +121,7 @@ This package provides Python 3 bindings for the libpwquality library.
 %build
 %configure \
 	--disable-static \
-	--with-securedir=%{_pammoduledir} \
+	--with-securedir=%{_pam_moduledir} \
 	--with-python-binary=%{_bindir}/python3 \
 	--with-pythonsitedir=%{python3_sitearch} \
 	%{nil}
@@ -181,7 +180,7 @@ fi
 %{_libdir}/pkgconfig/pwquality.pc
 
 %files -n pam_pwquality
-%{_pammoduledir}/pam_pwquality.so
+%{_pam_moduledir}/pam_pwquality.so
 %{_mandir}/man8/pam_pwquality.8%{?ext_man}
 
 %if %{with python2}

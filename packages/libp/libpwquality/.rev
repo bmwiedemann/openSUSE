@@ -156,4 +156,15 @@
     <comment> (forwarded request 860978 from jmoellers)</comment>
     <requestid>862308</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e680d7d06dacd4fd4e8e6b9a5e89d73a</srcmd5>
+    <version>1.4.4</version>
+    <time>1632939494</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %_pam_moduledir instead of hardcoding %{_lib}/security
+  (boo#1191042).
+
+Fixed bugref (forwarded request 922054 from dimstar)</comment>
+    <requestid>922106</requestid>
+  </revision>
 </revisionlist>
