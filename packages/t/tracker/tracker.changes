@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:16:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.0:
+  + Fuller docs, with updated examples
+  + Improved developer experience when designing ontologies, better
+    handling of inconsistent ontologies, and more accurate error
+    reporting.
+  + Added new GDateTime helper API to resources, cursors and
+    statements.
+  + Several fixes to build and run on MacOS, with a brew recipe now
+    available.
+  + Added support for libsoup 3.x.
+  + Fresher and more complete documentation, built with hotdoc.
+  + Many other code fixes and performance improvements.
+  + Updated translations.
+- Add pkgconfig(libsoup-3.0) BuildRequires, following upstreams
+  changes to allow build against multiple versions of libsoup.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:07:36 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Mon Sep  6 06:14:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.rc:
+  + Dropped bogus files from pre-generated documentation.
+
+-------------------------------------------------------------------
+Wed Sep  1 14:21:07 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.beta:
+  + Improved error reporting when parsing ontologies.
+  + Improvements to database rollback on ontology errors.
+  + Ontology parsing crash fixes.
+  + Make soup 2.x/3.x chosen at runtime.
+  + Disable GVFS in functional tests.
+  + Check accessible graphs when looking up resource URIs/IDs.
+  + Port documentation to hotdoc.
+  + Avoid "UPDATE ... FROM ..." SQL syntax only present in
+    recent SQLite versions.
+  + Multiple build, ci, website and maintenance improvements.
+  + Updated translations.
+- Drop gtk-doc BuildRequires with hotdoc: No longer needed, as
+  upstream switched to hotdoc and we ship the upstream pre-built
+  documentation.
+
+-------------------------------------------------------------------
+Fri Aug  6 12:05:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.0.alpha.1:
+  + Add support for libsoup 3.x.
+  + Documentation fixes and updates.
+  + Handle arbitrary order of SERVICE and regular graph patterns.
+  + Added new GDateTime helper API to resources, cursors and
+    statements.
+  + Implement missing TrackerSparqlConnection methods in bus
+    connections.
+  + Many code cleanups and improvements.
+  + Updated translatiosn.
+- Add python3-gobject BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Mon Jul 12 08:57:56 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Update BuildRequires of sqlite3 to version 3.35.2 and above,

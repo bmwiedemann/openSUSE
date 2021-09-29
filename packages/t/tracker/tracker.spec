@@ -21,27 +21,26 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.1.2
+Version:        3.2.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.1/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/3.2/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.52.0
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  libicu-devel >= 4.8.1.1
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.51
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  python3-gobject
 BuildRequires:  sqlite3-devel >= 3.35.2
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
@@ -49,6 +48,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.40
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
@@ -134,7 +134,6 @@ This subpackage contains the data files for the Tracker miners.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \
@@ -155,7 +154,6 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %fdupes %{buildroot}%{_datadir}/vala/
-%fdupes %{buildroot}%{_datadir}/gtk-doc
 
 #ifnarch %arm
 #check
@@ -169,6 +167,8 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %license COPYING
 %{_bindir}/tracker3
 %dir %{_libdir}/tracker-%{TrackerAPI}/
+%{_libdir}/tracker-%{TrackerAPI}/libtracker-remote-soup2.so
+%{_libdir}/tracker-%{TrackerAPI}/libtracker-remote-soup3.so
 %{_datadir}/bash-completion/completions/tracker3
 %dir %{_datadir}/tracker3/
 %{_libexecdir}/tracker3/
@@ -195,9 +195,8 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %files -n tracker-devel
 %doc AUTHORS README.md NEWS
+%doc %{_datadir}/devhelp/
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/libtracker-sparql-3/
-%{_datadir}/gtk-doc/html/ontology-3/
 %dir %{_datadir}/tracker3
 %dir %{_datadir}/tracker3/domain-ontologies
 %dir %{_datadir}/vala

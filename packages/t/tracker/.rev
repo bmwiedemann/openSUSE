@@ -1190,4 +1190,12 @@
   https://gitlab.gnome.org/GNOME/tracker/-/blob/tracker-3.1/meson.build#L324 (forwarded request 905794 from yfjiang)</comment>
     <requestid>906037</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>7b5e9a80356aefa9e47609439bc41e7f</srcmd5>
+    <version>3.2.0</version>
+    <time>1632939474</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920980 from dimstar)</comment>
+    <requestid>921656</requestid>
+  </revision>
 </revisionlist>
