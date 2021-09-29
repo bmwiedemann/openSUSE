@@ -19,7 +19,7 @@
 %global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
 
 Name:           stellarium
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -28,6 +28,9 @@ URL:            http://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch0:         stellarium-remove-qt-5_12-code.patch
+Patch1:         stellarium-minimum-qt-5_9.patch
+Patch2:         stellarium-documentation.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -35,19 +38,19 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5MultimediaWidgets) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Positioning) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Script) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5SerialPort)
-BuildRequires:  pkgconfig(Qt5Test) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.7.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(zlib)
@@ -62,6 +65,9 @@ binoculars or a small telescope.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 export QT_HASH_SEED=0

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 27 19:23:15 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.21.2:
+  * Annual aberration correction. Planet positions are finally very
+    accurate!
+  * Bookmarks replaced by Observation Lists
+  * Politically neutral geonames
+  * Right-click opens plugin configuration
+  * Improved computation of rising, transit, setting times
+  * "Goto next twilight" functionality
+  * Two new Greek skycultures
+  * Updated Mul-Apin skyculture with new artwork
+  * Improved fidelity of Lunar eclipses
+  * Fixed display of stellar proper motion
+  * Many fixes in core and plugins
+- Add patches from upstream to allow building with Qt >= 5.9.0
+  + stellarium-documentation.patch
+  + stellarium-remove-qt-5_12-code.patch
+  + stellarium-minimum-qt-5_9.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 16:04:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.21.1:
