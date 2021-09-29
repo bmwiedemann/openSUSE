@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 20 11:56:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.12.0:
+  + Re-tag of 0.11 as 0.12. No functional change
+- Changes from version 0.11.0:
+  + Drop GStreamer 0.10 back-end
+  + Drop old compatibility code
+  + Add meson support
+  + Port to more modern GObject
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install macros with respective
+    meson/meson_build/meson_install.
+- Enable test suite: add meson_test to check section.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:33:11 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

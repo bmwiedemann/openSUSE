@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-dlna
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gupnp-dlna
-Version:        0.10.5
+Version:        0.12.0
 Release:        0
 Summary:        A collection of helpers for building DLNA applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source:         http://download.gnome.org/sources/gupnp-dlna/0.10/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gupnp-dlna/0.12/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -33,17 +34,20 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(vapigen)
+# libgupnp-dlna-2_0-3 violated shared library packaging policy
+Conflicts:      libgupnp-dlna-2_0-3
 
 %description
 GUPnP-DLNA is a collection of helpers for building DLNA media sharing
 applications using GUPnP.
 
-%package -n libgupnp-dlna-2_0-3
+%package -n libgupnp-dlna-2_0-4
 Summary:        A collection of helpers for building DLNA applications
 Group:          System/Libraries
+Requires:       %{name} => %{version}
 Requires:       libgupnp-dlna-backend >= %{version}
 
-%description -n libgupnp-dlna-2_0-3
+%description -n libgupnp-dlna-2_0-4
 GUPnP-DLNA is a collection of helpers for building DLNA media sharing
 applications using GUPnP.
 
@@ -81,7 +85,7 @@ This package provides the GObject Introspection bindings for GUPnP-DLNA.
 %package -n libgupnp-dlna-devel
 Summary:        A collection of helpers for building DLNA applications - Development Files
 Group:          Development/Libraries/C and C++
-Requires:       libgupnp-dlna-2_0-3 = %{version}
+Requires:       libgupnp-dlna-2_0-4 = %{version}
 Requires:       typelib-1_0-GUPnPDLNA-2_0 = %{version}
 Requires:       typelib-1_0-GUPnPDLNAGst-2_0 = %{version}
 
@@ -101,24 +105,26 @@ applications using GUPnP.
 %setup -q
 
 %build
-%configure \
-    --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
-%post -n libgupnp-dlna-2_0-3 -p /sbin/ldconfig
-%postun -n libgupnp-dlna-2_0-3 -p /sbin/ldconfig
+%check
+%meson_test
 
-%files -n libgupnp-dlna-2_0-3
-%license COPYING
-%doc AUTHORS README TODO
-# This directory contains DLNA profiles, needed by the library
+%post -n libgupnp-dlna-2_0-4 -p /sbin/ldconfig
+%postun -n libgupnp-dlna-2_0-4 -p /sbin/ldconfig
+
+%files
 %{_datadir}/%{name}-2.0/
+
+%files -n libgupnp-dlna-2_0-4
+%license COPYING
+%doc AUTHORS TODO
 %dir %{_libdir}/gupnp-dlna
-%{_libdir}/lib*.so.3*
+%{_libdir}/lib*.so.4*
 
 %files -n libgupnp-dlna-backend-gstreamer
 %{_libdir}/gupnp-dlna/libgstreamer.so
@@ -139,9 +145,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gir-1.0/GUPnPDLNAGst-2.0.gir
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/*
-%doc %{_datadir}/gtk-doc/html/%{name}/
-%doc %{_datadir}/gtk-doc/html/%{name}-gst/
-%doc %{_datadir}/gtk-doc/html/%{name}-metadata/
 
 %files -n gupnp-dlna-tools
 %{_bindir}/gupnp-dlna-info-2.0
