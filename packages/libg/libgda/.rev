@@ -721,4 +721,12 @@ file is not available on the system.
   integer overflow (forwarded request 908448 from Andreas_Schwab)</comment>
     <requestid>908550</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>2412f59c026905f56ddc8f33a64f8b02</srcmd5>
+    <version>6.0.0</version>
+    <time>1632939530</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920966 from dimstar)</comment>
+    <requestid>921645</requestid>
+  </revision>
 </revisionlist>

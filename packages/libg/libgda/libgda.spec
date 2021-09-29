@@ -33,7 +33,8 @@ Source:         https://download.gnome.org/sources/libgda/6.0/%{_name}-%{version
 Patch1:         libgda-javadetection-biarch.patch
 # PATCH-FIX-UPSTREAM overflow-undefined-behavior.patch -- undefined behavior due to overflow
 Patch2:         overflow-undefined-behavior.patch
-
+# PATCH-FIX-UPSTREAM libgda-no-gtkdoc-markers.patch glgo#GNOME/libgda#254 dimstar@opensuse.org -- Fix build with GNOME 41 stack
+Patch3:         libgda-no-gtkdoc-markers.patch
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
