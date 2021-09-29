@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Sep 28 19:16:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add m4 BuildRequires: the generated gmmproc actually stores the
+  path to m4, as detected during build. Subsequent builds of other
+  *mm modules from git need a working setup for this.
+
+-------------------------------------------------------------------
+Thu Jun 17 07:22:58 UTC 2021 - Florian <sp1ritCS@protonmail.com>
+
+- Update to version 2.68.1
+  + Add dependencies to Doxygen tag files in subprojects
+  + Doxygen in a main project shall not be called before tag files
+    have been created or updated in subprojects.
+  + Fix build as subproject without building documentation
+  + meson.build: If mm-common-get is not found in maintainer-mode
+    with 'required: false', try with 'required: true'.
+    Don't try to use tag_file, if documentation is not built.
+  + docs/reference/meson.build: Don't use variables from modules
+    that don't define doxytagfile. These are subprojects that don't
+    build their documentation.
+  + Don't mark the Glib::Source class with GLIBMM_API
+    Instead, mark the individual members with GLIBMM_API so that we
+    avoid having the code tied to a particular STL and compiler
+    version.
+  + Update the classes that derive from Glib::Source accordingly as
+    well
+  + error.h Avoid exporting class deriving frm std::exception
+    This will avoid having the ABI tied to a particular STL and
+    compiler version, and so will eliminate C4275 compiler warnings
+    when building the code.  Also update gerror.m4 so that it will
+    generate code deriving from Glib::Error with the export macro
+    markings with the member functions, so that things continue to
+    build properly.
+  + fileattributeinfo.hg: Avoid exporting classes with std::string
+    members
+  + variantdbusstring.h: Don't mark classes with GLIBMM_API
+  + ustring.h: Avoid exporting classes with std::string members
+  + Glib::PatternSpec: Ignore deprecation of g_pattern_match()
+  + tests/glibmm_ustring_compare: Fix so it works for C++20
+  + Meson build: Make quiet installations possible
+  + Meson build: No implicit_include_directories
+  + Variant: Fix so it works with C++20. C++20 changed some aspects
+    of templates that broke variant.h on some compilers (GCC 11).
+  + Meson build: No implicit_include_directories. It shall not be
+    possible to find a glibmm header file with #include <xxx.h>
+    instead of #include <glibmm/xxx.h>. Not fully fixed until
+    https://github.com/mesonbuild/meson/issues/8562 has been fixed.
+  + Add tools/defs_gen/enumextract.py. A Python script that can
+    replace the Perl script tools/enum.pl.
+  + Meson build: Make it possible to use glibmm as a subproject
+    glib and sigc++ can be subprojects of glibmm.
+  + Meson build: examples and tests: Add dependency('threads')
+    Multithreaded examples and tests depend on 'threads'.
+    I noticed this when I started experimenting with subprojects.
+    Strange that it was not reported as a missing dependency long
+    ago.
+  + g[io|lib]mmconfig.h.*: Don't dllimport on MinGW. This will fix
+    warnings when building items using glibmm and giomm with
+    MinGW/GCC.
+  + tools/gen_scripts: Ignore gio/gwin32api-*.h. Ignore some new
+    glib header files when generating gio/src/gio_enums.defs and
+    gio/src/gio_methods.defs.
+  + docs/reference/Doxyfile.in: Remove obsolete entries
+  + Meson build: Use relative paths to untracked/. The paths to the
+    source code in untracked/ shall be relative to the meson.build
+    file, when library files are built from a tarball. With
+    absolute paths Meson may generate too long file names.
+
+-------------------------------------------------------------------
 Fri Dec 18 17:36:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.68.0:

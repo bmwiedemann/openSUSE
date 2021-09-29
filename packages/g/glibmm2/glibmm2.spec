@@ -1,7 +1,7 @@
 #
 # spec file for package glibmm2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.68.0
+Version:        2.68.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
@@ -35,6 +35,7 @@ Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  m4
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
@@ -81,6 +82,7 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
+chmod -x NEWS
 
 %build
 %meson \

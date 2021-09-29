@@ -774,4 +774,12 @@
 - No longer package documentation, not built by default on meson. (forwarded request 856995 from iznogood)</comment>
     <requestid>857828</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>bffdfe1e35c8a6bd90249f3987dc9e09</srcmd5>
+    <version>2.68.1</version>
+    <time>1632939494</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 922060 from iznogood)</comment>
+    <requestid>922107</requestid>
+  </revision>
 </revisionlist>
