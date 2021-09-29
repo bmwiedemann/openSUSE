@@ -122,6 +122,10 @@ ExclusiveArch:  do_not_build
 %define libslurm libslurm%{so_version}
 %{!?_rundir:%define _rundir /var/run}
 
+%if !0%{?_pam_moduledir:1}
+%define _pam_moduledir /%_lib
+%endif
+
 Name:           %{pname}%{?upgrade:%{_ver}}
 Version:        %{ver}
 Release:        0
@@ -560,6 +564,7 @@ autoreconf
            --without-rpath \
            --without-datawarp \
            --with-shared-libslurm \
+           --with-pam_dir=%_pam_moduledir \
            %{?with_pmix:--with-pmix=/usr/} \
 %if 0%{?build_slurmrestd}
            --enable-slurmrestd \
@@ -613,6 +618,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/%{pname}/plugstack.conf.d
 
 cp contribs/pam_slurm_adopt/README ../README.pam_slurm_adopt
 cp  contribs/pam/README ../README.pam_slurm
+# remove static pam libs
+rm -v %{buildroot}%{_pam_moduledir}/*la
 # change slurm.conf for our needs
 head -n -2 %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf.example | grep -v ReturnToService > %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
 sed -i 's#\(StateSaveLocation=\).*#\1%_localstatedir/lib/slurm#'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
@@ -1179,8 +1186,8 @@ exit 0
 %files pam_slurm
 %{?comp_at}
 %doc ../README.pam_slurm ../README.pam_slurm_adopt
-/%_lib/security/pam_slurm.so
-/%_lib/security/pam_slurm_adopt.so
+%{_pam_moduledir}/pam_slurm.so
+%{_pam_moduledir}/pam_slurm_adopt.so
 
 %if 0%{?build_slurmrestd}
 %files rest

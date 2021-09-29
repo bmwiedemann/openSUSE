@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 15:53:38 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- moved pam module from /lib64 to /usr/lib64 which fixes boo#1191095 
+  via the macro %_pam_moduledir
+
+-------------------------------------------------------------------
 Fri Sep 17 07:22:44 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to 21.08.1 with following bug fixes:

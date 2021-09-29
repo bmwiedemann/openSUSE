@@ -812,4 +812,13 @@
     <comment></comment>
     <requestid>921717</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>1b8fc43f9e43de13e10c97d262d01ca7</srcmd5>
+    <version>21.08.1</version>
+    <time>1632939535</time>
+    <user>dimstar_suse</user>
+    <comment>- moved pam module from /lib64 to /usr/lib64 which fixes boo#1191095 
+  via the macro %_pam_moduledir</comment>
+    <requestid>922117</requestid>
+  </revision>
 </revisionlist>
