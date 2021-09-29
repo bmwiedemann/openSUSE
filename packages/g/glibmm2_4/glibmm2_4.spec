@@ -20,7 +20,7 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.66.0
+Version:        2.66.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
@@ -28,11 +28,14 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org/
 Source0:        https://download.gnome.org/sources/glibmm/2.66/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM glibmm2_4-docs-without-timestamp.patch -- Do not add timestamps to generated doc files
+Patch0:         glibmm2_4-docs-without-timestamp.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-devel
+BuildRequires:  m4
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
@@ -89,6 +92,7 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
+chmod -x NEWS
 
 %build
 %meson \

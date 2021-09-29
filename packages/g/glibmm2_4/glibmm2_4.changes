@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 28 20:56:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.1:
+  + Glib: Variant: Fix template constructors so they work with
+    C++20.
+  + Build:
+    - Meson build:
+      . Use relative paths to untracked/
+      . examples and tests: Add dependency('threads')
+      . Make it possible to use glibmm as a subproject
+      . No implicit_include_directories
+      . Make quiet installations possible
+    - MSVC build:
+      . Export Glib::manage()
+      . Avoid exporting classes with std::string members
+    - [gio|glib]mmconfig.h.*: Don't dllimport on MinGW
+- Add glibmm2_4-docs-without-timestamp.patch: Do not add timestamps
+  to generated doc files.
+
+-------------------------------------------------------------------
+Tue Sep 28 16:57:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add m4 BuildRequires: the generated gmmproc actually stores the
+  path to m4, as detected during build. Subsequent builds of other
+  *mm modules from git need a working setup for this.
+
+-------------------------------------------------------------------
 Wed Jan 27 14:20:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.0:
