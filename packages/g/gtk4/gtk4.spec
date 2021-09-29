@@ -67,6 +67,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
+BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libavfilter)
