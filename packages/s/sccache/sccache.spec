@@ -16,7 +16,6 @@
 #
 
 
-%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 %define configdir %{_sysconfdir}/%{name}
 
 Name:           sccache
@@ -34,7 +33,7 @@ Source11:       sccache-dist-scheduler.service
 Source12:       builder.conf
 Source13:       scheduler.conf
 Source14:       client.example
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 Requires:       bubblewrap
 ExcludeArch:    s390 ppc ppc64
@@ -54,13 +53,12 @@ cp %{SOURCE2} .cargo/config
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
-export RUSTFLAGS="%{rustflags}"
 # 'dist-server' available only on x86_64 so far - https://github.com/mozilla/sccache/issues/656
 features="all,dist-client"
 %ifarch x86_64
 features="$features,dist-server"
 %endif
-cargo build --offline --release --features=$features
+%{cargo_build} --features=$features
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}

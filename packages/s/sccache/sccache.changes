@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 00:57:24 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Change from rust-packaging to cargo-packaging
+
+-------------------------------------------------------------------
 Mon Jul  5 05:15:58 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update vendored dependencies to resolve
