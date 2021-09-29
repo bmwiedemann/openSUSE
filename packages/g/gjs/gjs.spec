@@ -17,13 +17,13 @@
 
 
 Name:           gjs
-Version:        1.68.4
+Version:        1.70.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.68/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.70/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  git

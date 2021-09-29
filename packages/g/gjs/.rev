@@ -1648,4 +1648,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
   + Build fix backported from the development branch. (forwarded request 920116 from iznogood)</comment>
     <requestid>920250</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5f27adbefe974ed3bb07f8ccd75a9c2c</srcmd5>
+    <version>1.70.0</version>
+    <time>1632939451</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920925 from dimstar)</comment>
+    <requestid>921607</requestid>
+  </revision>
 </revisionlist>

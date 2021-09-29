@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep 20 09:59:15 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.70.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon Sep 20 01:59:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.69.90:
+  + Update ESLint to v8.
+  + gi: Enable pending tests which are now correctly handled.
+  + gi: Return null if return argument is a pointer type.
+  + gi: Assume native enums are signed, avoid asserting. [!660, Evan Welsh]
+  + Fix cppcheck failure.
+  + Strange behavior for strings with NUL character.
+  + 64-bit int GObject properties have some problems with
+    values > G_MAXINT32.
+  + Crash on dynamic import in interactive interpreter.
+  + 1.69.1: gjs test suite is failing when gjs is build with
+    -DG_DISABLE_ASSERT.
+  + function: Warn about unhandled promise rejections in
+    System.exit().
+  + attempting to wrap a new GObject mid-construction blows up.
+  + Fix IWYU CI job.
+  + Build fixes.
+
+-------------------------------------------------------------------
+Mon Sep 20 01:59:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.69.2:
+  + The TextEncoder and TextDecoder global objects are now
+    available.
+  + The 'console' global object is now available. This is for
+    compatibility with Node.js and browser environments, and for
+    familiarity for developers accustomed to them.
+  + Cairo.Surface has gained getDeviceScale(), setDeviceScale(),
+    getDeviceOffset(), and setDeviceOffset() methods.
+  + GLib.log_set_writer_func() and
+    GObject.Object.bind_property_full() now work.
+  + There is also a 'console' built-in module which exports
+    functions setConsoleLogDomain() and getConsoleLogDomain(), for
+    controlling the GLib log domain that the console methods use.
+  + The debugger has gained a 'set ignoreCaughtExceptions
+    (true/false)' option.
+
+-------------------------------------------------------------------
 Sun Sep 19 09:03:09 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.68.4:
