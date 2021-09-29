@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-sedlex
-Version:        2.3
+Version:        2.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
@@ -26,8 +26,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/sedlex
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(gen)
 BuildRequires:  ocamlfind(ppxlib)
 BuildRequires:  ocamlfind(uchar)
