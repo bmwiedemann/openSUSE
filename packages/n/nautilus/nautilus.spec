@@ -17,13 +17,13 @@
 
 
 Name:           nautilus
-Version:        40.2
+Version:        41.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/41/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -38,10 +38,9 @@ BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gail-3.0)
-BuildRequires:  pkgconfig(gexiv2) >= 0.10.0
+BuildRequires:  pkgconfig(gexiv2) >= 0.12.2
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
@@ -112,7 +111,6 @@ This package contains development files for nautilus.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \
