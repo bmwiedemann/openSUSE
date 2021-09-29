@@ -105,4 +105,24 @@
 - Remove aiohttp from BuildRequires, and add it to Recommends.</comment>
     <requestid>909653</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd4a1d1343f7a52e5949c3e21d6ac936</srcmd5>
+    <version>2.0.0</version>
+    <time>1632939536</time>
+    <user>dimstar_suse</user>
+    <comment>- Run test suite correctly (from tests/ directory moved elsewhere)
+- Update to 2.0.0
+  * drop Python 2.7 support
+  * retry ConnectionError and similar errors that occur mid-download
+- from version 1.3.3
+  * revert &quot;fix: add retry coverage to the streaming portion of a download&quot;
+- from version 1.3.2
+  * add retry coverage to the streaming portion of a download
+- from version 1.3.1
+  * **deps:** require six&gt;=1.4.0
+- Disable Python2 builds
+- Update BuildRequires and Requires from setup.py
+</comment>
+    <requestid>922071</requestid>
+  </revision>
 </revisionlist>

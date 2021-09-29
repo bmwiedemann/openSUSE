@@ -17,27 +17,27 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-google-resumable-media
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-resumable-media-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-%{version}.tar.gz
-BuildRequires:  %{python_module crcmod}
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module google-crc32c}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-crc32c
 Requires:       python-google-filesystem
-Requires:       python-six
 Recommends:     python-aiohttp
 Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
@@ -50,22 +50,22 @@ Utilities for Google Media Downloads and Resumable Uploads
 %setup -q -n google-resumable-media-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# We need the namespace in the buildroot, sigh
-%{python_expand touch %{buildroot}%{$python_sitelib}/google/__init__.py}
+# We shouldn't be running tests from the BUILD/*/ directory, where pytest finds another google/ subdirectory
+trap 'rm -rf -- ~/tests' INT TERM HUP EXIT
+cp -r tests ~/ && cd
 %pytest tests/unit
-%{python_expand rm %{buildroot}%{$python_sitelib}/google/__init__.py}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/google_resumable_media*egg-info
+%{python_sitelib}/google_resumable_media*-info
 %{python_sitelib}/google_resumable_media*pth
 %{python_sitelib}/google/resumable_media*
 %{python_sitelib}/google/_async_resumable_media*
