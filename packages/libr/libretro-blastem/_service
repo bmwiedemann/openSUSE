@@ -3,7 +3,7 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/libretro/blastem.git</param>
     <param name="filename">libretro-blastem</param>
-    <param name="revision">master</param>
+    <param name="revision">libretro</param>
     <param name="versionformat">0~git%cd</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">android</param>

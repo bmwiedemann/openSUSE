@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-blastem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libretro-blastem
-Version:        0~git20190620
+Version:        0~git20210810
 Release:        0
 Summary:        BlastEm libretro core for Sega Genesis emulation
 License:        GPL-3.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
-Patch0:         fix-enum-syntax.patch
 ExclusiveArch:  x86_64 i586
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -35,7 +34,6 @@ that runs on modest hardware. This package is for RetroArch/libretro front-end.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %ifarch x86_64

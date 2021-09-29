@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:15:18 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210810:
+  * retro_input_poll should be called early
+  * Don't link OpenGL on OSX
+  * Implement button bitmasks
+  * Add OSX x64 support
+  * [osx] fix build failure for osx due to sed command for %.db.c rule
+  * Fix 32bit Haiku build
+  * Allow Haiku build
+  * See if setting ABI to i686 works instead
+  * Rely on ARCH variable set by Gitlab CI template to set ABI to 32bit x86
+  * Add linux 32bit to gitlab
+
+-------------------------------------------------------------------
+Fri Sep 10 17:34:08 UTC 2021 - i@guoyunhe.me
+
+- Remove fix-enum-syntax.patch
+- Update to version 0~git20200719:
+  * Added Wii U controller image
+  * Fix VGM delay calculation overflow when a YM-2612 write follows a PSG write in close succession
+  * Add stubs for some functions in libblastem.c to fix link failures on windows libretro target
+  * Fix broken enum definitions that cause multiple definition errors when building with -fno-common which is now the default in GCC 10
+  * Fix libretro target on windows
+  * Enter debugger when a VDP data port read would cause a CPU lockup
+  * Fix regressions from most recent address/cd latch change. Need to do more research still, but probably good enough for now
+  * Update cycle to VGM sample conversion based on ValleyBell's suggestion
+  * Fix regressions in Monster World IV and Sonic 3D Blast caused by address latch changes
+
+-------------------------------------------------------------------
 Sat Jun  6 12:06:10 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Exclude android source
