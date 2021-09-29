@@ -17,22 +17,22 @@
 
 
 Name:           gnome-tour
-Version:        40.0
+Version:        41.rc
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-tour
-Source0:        https://download.gnome.org/sources/gnome-tour/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-tour/41/%{name}-%{version}.tar.xz
 
+BuildRequires:  cargo
 BuildRequires:  meson
-BuildRequires:  pkgconfig(glib-2.0) >= 2.64
-BuildRequires:  pkgconfig(gio-2.0) >= 2.56
+BuildRequires:  rust
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libhandy-1) >= 1
-BuildRequires:  rust
-BuildRequires:  cargo
 
 %description
 A guided tour and greeter for GNOME.
@@ -49,7 +49,6 @@ A guided tour and greeter for GNOME.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-
 
 %files
 %license LICENSE.md
