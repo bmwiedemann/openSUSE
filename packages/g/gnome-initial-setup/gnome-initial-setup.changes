@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:34:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.0:
+  + Bug fixed: software: call fedora-third-party properly.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  6 07:17:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Fix the polkit rule for Fedora third party setup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 24 11:04:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + The Software page, which allows the user to enable or disable
+    third-party repositories, has been resurrected. It is currently
+    Fedora-specific.
+  + Bug fixed: Cannot login as administrator if you set up
+    enterprise login in gnome-initial-setup.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Aug 15 12:58:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:
