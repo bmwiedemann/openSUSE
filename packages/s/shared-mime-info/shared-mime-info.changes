@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:05:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Jul 30 07:32:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not ghost own %{_datadir}/mime/[a-ms-vxX]*: as those
+  files/directories do not exist during build, RPM can't expand the
+  glob and adds it literally to the file list, not having any
+  effect in the end. A cleanup of the directory structure would not
+  work anyway, as there are also files generated inside.
+
+-------------------------------------------------------------------
 Wed Jan  6 12:41:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.1:

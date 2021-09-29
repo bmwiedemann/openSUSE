@@ -33,7 +33,6 @@ BuildRequires:  libxml2-devel
 # needed for xmllint
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
-#BuildRequires:  translation-update-upstream
 BuildRequires:  xmlto
 # libgio-2_0-0 Requires: shared-mime-info, but this can't exist yet. We explicitly ignore this dependency here.
 #!BuildIgnore:  shared-mime-info
@@ -53,8 +52,6 @@ This package contains:
 
 %prep
 %autosetup -p1
-# Broken as of 1.15
-#translation-update-upstream
 
 %build
 %meson
@@ -84,7 +81,6 @@ export PKGSYSTEM_ENABLE_FSYNC=0
 %{_datadir}/mime/packages/*.xml
 %{_datadir}/pkgconfig/*.pc
 %{_datadir}/gettext/its/shared-mime-info.*
-%ghost %{_datadir}/mime/[a-ms-vxX]*
 %{_mandir}/man?/*%{ext_man}
 %{_rpmmacrodir}/macros.shared-mime-info
 
