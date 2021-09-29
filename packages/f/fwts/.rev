@@ -746,4 +746,41 @@
   * acpi: dmar: add a warning when PCI device is not found</comment>
     <requestid>914215</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>93dbb46e55ab63e9d0ae1e6c285239e0</srcmd5>
+    <version>21.09.00</version>
+    <time>1632939547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.09.00:
+  * snapcraft: Fix incorrect core20 library path
+  * snapcraft: fix path to fwts
+  * lib: fwts_version.h - update to V21.09.00
+  * debian: update changelog
+  * acpi: replace fwts_firmware_detect() by fw-&gt;firmware_type
+  * lib: fwts_firmware: fix incorrect comments for fwts_firmware_detect
+  * uefi: uefirtmisc: reduce scope of some variables
+  * uefi: securebootcert: make some function arguments const
+  * src/pci/smccc: reduce scope of variable ret
+  * bios: smm: remove redundant variable n
+  * acpi: iort: constify some function arguments
+  * acpi: dmar: constify a pointer argument in acpi_parse_dev_scope
+  * acpi: cstates: remove redundant null check on entry
+  * smccc_test: fix missing ) in pr_info call
+  * opal: clean up some coding style issues
+  * opal: Fix a few memory leaks on asprint allocated buffers
+  * acpi: s3power: clean up pedantic static analysis warnings
+  * uefirtvariable: clean up pedantic static analysis warnings
+  * opal: mem_info: clean up pedantic static analysis warnings
+  * fwts_devicetree: clean up static analysis warning
+  * fwts_acpi_tables: NULLify table pointers
+  * snapcraft: update to use core20
+  * lib: use &lt;poll.h&gt; rather than &lt;sys/poll.h&gt;
+
+- Update to version 21.08.00:
+  * Manual: update number of tests, date and remove double spaces
+  * debian/control: Add device-tree-compiler as dependency for armel/armhf/arm64
+  * fwts_firmware: Rework Devicetree firmware detection
+  * Enable dt_sysinfo test for Power only</comment>
+    <requestid>922126</requestid>
+  </revision>
 </revisionlist>
