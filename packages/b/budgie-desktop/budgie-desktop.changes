@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 24 10:16:51 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.3+12:
+  * Clock applet: Don't show empty second/date label if not enabled (#2168)
+  * Revert "Use ibus daemonize to allow ibus popups to appear Closes: #729 (#2111)"
+  * Require GNOME Stack 41 (alpha+)
+  * Add Mutter 9 support (#2165)
+  * Update README with intentions going into B11.
+  * Use ibus daemonize to allow ibus popups to appear Closes: #729 (#2111)
+  * Enable Mod3 (Meta or Hyper) for Tab Switching (#2164)
+
+-------------------------------------------------------------------
 Sun Aug 08 11:19:09 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.3+5:

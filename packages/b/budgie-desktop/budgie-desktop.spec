@@ -20,7 +20,7 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.3+5
+Version:        10.5.3+12
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,7 +32,6 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7) or pkgconfig(libmutter-8))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -46,6 +45,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
+BuildRequires:  pkgconfig(libmutter-9)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -67,6 +67,8 @@ Recommends:     NetworkManager-applet
 Recommends:     budgie-desktop-doc
 Recommends:     gnome-backgrounds
 Recommends:     gnome-software
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
@@ -181,6 +183,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%ghost %{_sysconfdir}/alternatives/default.desktop
 
 %files -n libraven0
 %{_libdir}/libraven.so.*

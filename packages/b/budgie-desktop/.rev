@@ -319,4 +319,12 @@
     <comment>10.5.3+5</comment>
     <requestid>910707</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>389fd594f94582c9be3b4c064dd47488</srcmd5>
+    <version>10.5.3+12</version>
+    <time>1632939520</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>921290</requestid>
+  </revision>
 </revisionlist>
