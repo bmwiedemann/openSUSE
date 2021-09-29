@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep 19 19:21:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + USB protection: don't crash when screensaver service is
+    unavailable.
+  + Power: Fix location of comments for translators.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:40:56 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream and
+  gnome-patch-translation support (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Mon Aug 30 08:05:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Power:
+    - Enable power-saver profile when low on battery.
+    - Dim the screen quicker by default.
+    - Generalize laptop battery notifications.
+    - Refactor battery notifications for external devices.
+  + Media-keys:
+    - Replace deprecated calls.
+    - Add one second delay between each rfkill event.
+  + Housekeeping: Use GRefCount.
+  + USB-protection:
+    - Authorize devices after screen has been locked.
+    - Improve debug output.
+    - Misc. fixes.
+  + Xsettings: Add support for XFixes ClientDisconnectMode.
+  + Updated translations.
+- Add pkgconfig(xfixes) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Fri Jul 30 09:26:17 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop patches fixed upstream on SLE and Leap 15.4:

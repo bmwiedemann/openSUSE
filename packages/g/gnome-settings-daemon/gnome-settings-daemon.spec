@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        40.0.1
+Version:        41.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/41/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -53,13 +53,11 @@ Patch7:         gnome-settings-daemon-more-power-button-actions.patch
 
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
-BuildRequires:  gnome-patch-translation
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 # For directory ownership; it's fine to BuildRequire it since it's also a Requires
 BuildRequires:  polkit
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(colord) >= 1.3.5
@@ -69,7 +67,7 @@ BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.2
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.11.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.35.91
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
@@ -90,9 +88,10 @@ BuildRequires:  pkgconfig(pango) >= 1.20.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.12
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes) >= 6.0
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
 # Needed for tests
@@ -141,8 +140,6 @@ contact the settings daemon via its DBus interface.
 
 %prep
 %autosetup -N
-translation-update-upstream po %{name}
-gnome-patch-translation-prepare po %{name}
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -180,8 +177,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/gnome-settings-daemon/
 %{_libexecdir}/gsd-backlight-helper
 %{_libexecdir}/gsd-printer
-%dir %{_libdir}/gnome-settings-daemon-40/
-%{_libdir}/gnome-settings-daemon-40/libgsd.so
+%dir %{_libdir}/gnome-settings-daemon-41/
+%{_libdir}/gnome-settings-daemon-41/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gsd-a11y-settings
@@ -286,7 +283,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %files devel
 %doc AUTHORS ChangeLog
-%{_includedir}/gnome-settings-daemon-40/
+%{_includedir}/gnome-settings-daemon-41/
 %{_libdir}/pkgconfig/gnome-settings-daemon.pc
 
 %files lang -f %{name}.lang
