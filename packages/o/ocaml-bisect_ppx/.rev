@@ -7,4 +7,12 @@
     <comment>new buildrequires for ocaml-ctypes</comment>
     <requestid>886253</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb20901a59b80895974f41d52ef7016e</srcmd5>
+    <version>2.6.3</version>
+    <time>1632939503</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921261</requestid>
+  </revision>
 </revisionlist>

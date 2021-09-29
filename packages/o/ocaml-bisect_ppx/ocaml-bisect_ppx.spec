@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-bisect_ppx
 Name:           %{pkg}%{nsuffix}
-Version:        2.6.0
+Version:        2.6.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Code coverage for OCaml and Reason
@@ -39,7 +39,7 @@ URL:            https://opam.ocaml.org/packages/bisect_ppx
 Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 %if 1
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(ppxlib)
@@ -88,6 +88,7 @@ dune_release_pkgs='bisect_ppx'
 
 %if "%{build_flavor}" == ""
 %files -f %{name}.files
+%doc doc/CHANGES
 %{_bindir}/*
 
 %files devel -f %{name}.files.devel

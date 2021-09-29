@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-bisect_ppx</param>
-    <param name="revision">5a9db944d01e1bb78dbc8264ff96f9474fc9af53</param>
+    <param name="revision">eaa92a958bf840b9e37e501c4e6b4c1a661d9818</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/aantron/bisect_ppx.git</param>
