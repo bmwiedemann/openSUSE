@@ -1,11 +1,11 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/ncw/rclone.git</param>
+    <param name="url">https://github.com/rclone/rclone.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v1.55.1</param>
+    <param name="revision">v1.56.1</param>
     <param name="filename">rclone</param>
   </service>
   <service name="set_version" mode="disabled"/>

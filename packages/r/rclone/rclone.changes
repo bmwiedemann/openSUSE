@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  1 06:56:08 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.56.1
+  * See https://rclone.org/changelog/#v1-56-1-2021-09-19 for the
+    complete changelog.
+  * accounting: Fix maximum bwlimit by scaling scale max token bucket
+    size
+  * rc: Fix speed does not update in core/stats
+  * selfupdate: Fix --quiet option, not quite quiet
+  * serve http: Fix serve http exiting directly after starting
+  * Apply gofmt from golang 1.17
+  * Update Go to 1.16 and NDK to 22b for android/any
+- Changes in 1.56.0
+  * See https://rclone.org/changelog/#v1-56-0-2021-07-20 for the
+    complete changelog.
+
+-------------------------------------------------------------------
 Wed May 19 10:18:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.55.1
