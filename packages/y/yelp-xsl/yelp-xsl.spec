@@ -18,13 +18,13 @@
 
 
 Name:           yelp-xsl
-Version:        40.2
+Version:        41.0
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
-Source0:        https://download.gnome.org/sources/yelp-xsl/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/yelp-xsl/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  pkgconfig
