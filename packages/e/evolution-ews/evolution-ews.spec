@@ -20,20 +20,19 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution-ews
-Version:        3.40.4
+Version:        3.42.0
 Release:        0
 Summary:        Exchange Connector for Evolution, compatible with Exchange 2007 and later
 License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-ews/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-ews/3.42/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(camel-1.2) >= %{_version}
 BuildRequires:  pkgconfig(evolution-calendar-3.0) >= %{_version}
 BuildRequires:  pkgconfig(evolution-data-server-1.2) >= %{_version}
@@ -67,7 +66,6 @@ using exchange web services protocol.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %cmake \
