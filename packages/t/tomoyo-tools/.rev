@@ -187,4 +187,19 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
 - Remove gpg verify requirement; obs handles it</comment>
     <requestid>311213</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e4ef1e0300be44dd4183e7a80392a745</srcmd5>
+    <version>2.6.1.20210910</version>
+    <time>1632939553</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.6.1-20210910
+  - Add -DNCURSES_WIDECHAR=0 to programs using ncurses library.
+  - Loosen pathname/domainname validation.
+  - Limit wildcard recursion depth.
+  - Remove &quot;socket:[family=\\$:type=\\$:protocol=\\$]&quot; from ANY_PATHNAME group.
+  - Adjust to TOMOYO 2.6.
+  - Rebase to ccs-tools 1.8.5-2.
+- moved /sbin/tomoyo-init binary to /usr/sbin/tomoyo-init (bsc#1191101)</comment>
+    <requestid>922163</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tomoyo-tools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define downloadver 2.5.0-20140601
+%define downloadver 2.6.1-20210910
 Name:           tomoyo-tools
-Version:        2.5.0.20140601
+Version:        2.6.1.20210910
 Release:        0
 Summary:        Userspace tools for TOMOYO Linux 2.4.x
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            http://sourceforge.jp/projects/tomoyo/
-Source0:        http://osdn.dl.sourceforge.jp/tomoyo/53357/tomoyo-tools-%{downloadver}.tar.gz
-Source1:        http://osdn.dl.sourceforge.jp/tomoyo/53357/tomoyo-tools-%{downloadver}.tar.gz.asc
+URL:            http://sourceforge.jp/projects/tomoyo/
+Source0:        http://osdn.dl.sourceforge.jp/tomoyo/70710/tomoyo-tools-%{downloadver}.tar.gz
+Source1:        http://osdn.dl.sourceforge.jp/tomoyo/70710/tomoyo-tools-%{downloadver}.tar.gz.asc
 # http://i-love.sakura.ne.jp/kumaneko-key
 Source2:        %name.keyring
 BuildRequires:  ncurses-devel
@@ -42,7 +42,7 @@ Please see http://tomoyo.sourceforge.jp/2.4/ for documentation.
 make %{?_smp_mflags} USRLIBDIR=%{_libdir} CFLAGS="-Wall %{optflags}"
 
 %install
-make INSTALLDIR=%{buildroot} USRLIBDIR=%{_libdir} install
+make INSTALLDIR=%{buildroot} USRLIBDIR=%{_libdir} SBINDIR=%{_sbindir} install
 
 %post -p /sbin/ldconfig
 
@@ -51,7 +51,7 @@ make INSTALLDIR=%{buildroot} USRLIBDIR=%{_libdir} install
 %files
 %defattr(-, root, root)
 %doc COPYING.tomoyo README.tomoyo
-%attr(700,root,root) /sbin/tomoyo-init
+%attr(700,root,root) %_sbindir/tomoyo-init
 %{_libdir}/lib*.so*
 %dir %{_libdir}/tomoyo
 %{_libdir}/tomoyo/*

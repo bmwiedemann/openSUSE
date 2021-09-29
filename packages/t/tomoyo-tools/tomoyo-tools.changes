@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 29 11:23:05 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.6.1-20210910
+  - Add -DNCURSES_WIDECHAR=0 to programs using ncurses library.
+  - Loosen pathname/domainname validation.
+  - Limit wildcard recursion depth.
+  - Remove "socket:[family=\\$:type=\\$:protocol=\\$]" from ANY_PATHNAME group.
+  - Adjust to TOMOYO 2.6.
+  - Rebase to ccs-tools 1.8.5-2.
+- moved /sbin/tomoyo-init binary to /usr/sbin/tomoyo-init (bsc#1191101)
+
+-------------------------------------------------------------------
 Tue Jun  9 06:58:58 UTC 2015 - meissner@suse.com
 
 - tomoyo-tools.keyring: use new key from upstream maintainer
