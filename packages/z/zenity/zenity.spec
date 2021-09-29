@@ -1,7 +1,7 @@
 #
 # spec file for package zenity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,16 @@
 
 
 Name:           zenity
-Version:        3.32.0
+Version:        3.41.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.32/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM zenity-Fix-segfault-on-multiple-lists.patch -- src/forms.c: Fix segfault on multiple lists without values.
-Patch0:         zenity-Fix-segfault-on-multiple-lists.patch
-
+Source0:        https://download.gnome.org/sources/zenity/3.41/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
@@ -50,16 +47,13 @@ Zenity is especially useful in scripts.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
-%configure \
-	--disable-webkitgtk \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:09:35 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Mon Aug 23 13:43:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.41.0:
+  + Port to meson.
+  + Code cleanups.
+  + Updated translations.
+- Add meson BuildRequires and replace configure/make/make_install
+  with meson/meson_build/meson_install macros.
+- Drop zenity-Fix-segfault-on-multiple-lists.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Fri Jan 24 19:29:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(webkit2gtk-4.0) BuildRequires and pass
