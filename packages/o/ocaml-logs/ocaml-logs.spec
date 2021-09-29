@@ -28,7 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         ocaml-logs.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
 BuildRequires:  ocamlfind(fmt)
@@ -54,7 +54,6 @@ developing applications that use %{name}.
 
 %build
 dune_release_pkgs='logs'
-mv opam ${dune_release_pkgs}.opam
 %ocaml_dune_setup
 %ocaml_dune_build
 
