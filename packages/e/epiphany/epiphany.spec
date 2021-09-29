@@ -17,13 +17,13 @@
 
 
 Name:           epiphany
-Version:        40.3
+Version:        41.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
@@ -34,9 +34,9 @@ BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
-BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
+BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.13
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0) >= 3.22.13
@@ -49,13 +49,13 @@ BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
 BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
 BuildRequires:  pkgconfig(libportal) >= 0.0.2
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.29.3
-BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.0) >= 2.29.3
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.33.2
+BuildRequires:  pkgconfig(webkit2gtk-web-extension-4.1) >= 2.33.2
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates
@@ -103,6 +103,7 @@ search results from Web (epiphany)
 	-Ddeveloper_mode=false \
 	-Ddistributor_name=openSUSE \
 	-Dunit_tests=disabled \
+	-Dsoup2=disabled \
 	%{nil}
 %meson_build
 

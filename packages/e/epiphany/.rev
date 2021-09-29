@@ -1455,4 +1455,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
   (jsc#SLE-21105). (forwarded request 920394 from sbrabec)</comment>
     <requestid>920566</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>ca1043ce2f3c57ba801f87d6a03bc336</srcmd5>
+    <version>41.0</version>
+    <time>1632939521</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920917 from dimstar)</comment>
+    <requestid>921601</requestid>
+  </revision>
 </revisionlist>

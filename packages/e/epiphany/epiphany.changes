@@ -5,6 +5,53 @@ Mon Sep 20 17:33:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
   (jsc#SLE-21105).
 
 -------------------------------------------------------------------
+Fri Sep 17 08:25:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Fix several icons broken after updating PDF.js
+
+-------------------------------------------------------------------
+Thu Sep  2 17:54:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.rc:
+  + Ask user whether an unresponsive page should be killed.
+  + Fix crash when using Clear All passwords action.
+  + Fix missing security padlock after using reader mode.
+  + Update to highlight.js 11.2.0.
+  + Disable captive portal helper under Pantheon desktop.
+  + Disable system scrollbars when using Adwaita theme.
+
+-------------------------------------------------------------------
+Mon Aug 23 13:56:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Fix inconsistent capitalization in preferences.
+  + Always save pinned tabs in session.
+  + Update to PDF.js 2.10.377.
+  + Use real buttons in address bar.
+  + Move bookmark button to bottom bar in narrow mode.
+  + Update to highlight.js 11.1.0.
+  + Support Epiphany Canary builds.
+  + Don't open empty bookmarks or downloads popover.
+  + Adjust unresponsive process killer to be less aggressive.
+  + Various code cleanups.
+- Changes from version 41.alpha:
+  + User smaller address bar font in narrow mode.
+  + The address bar dropdown now supports various useful filters.
+  + Move Firefox Sync to toplevel window menu.
+  + Update to highlight.js 11.0.0.
+  + Highlight base domain in address bar.
+  + Use actual reader mode fonts in preferences dialog.
+  + Update to PDF.js 2.6.347.
+  + Minimize delays when toggling fullscreen mode.
+  + Use French quotes in St-Exupéry quotation.
+  + Fix various small memory leaks.
+  + Kill web process when it is unresponsive for too long.
+  + Add new keyboard shortcuts.
+  + Improvements to bookmarks properties view.
+  + Display WebKit Subversion revision for non-tarball builds.
+
+-------------------------------------------------------------------
 Fri Aug 13 09:38:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:
