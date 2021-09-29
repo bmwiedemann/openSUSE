@@ -24,15 +24,14 @@ License:        GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://gmplib.org/
 Source:         https://gmplib.org/download/gmp/gmp-%{version}.tar.xz
-
-#!BuildIgnore: post-build-checks
+Source1000:     %{name}-rpmlintrc
 BuildRequires:  m4
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%_mingw32_package_header_debug
+#!BuildIgnore:  post-build-checks
 BuildArch:      noarch
+%{_mingw32_package_header_debug}
 
 %description
 GMP is a free library for arbitrary precision arithmetic, operating on signed integers,
@@ -74,7 +73,7 @@ These libraries are needed to develop programs which calculate with huge numbers
 
 %build
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
-%{_mingw32_configure} \
+%_mingw32_configure \
 	  --enable-shared \
       --disable-static \
 	  --enable-cxx
@@ -82,7 +81,7 @@ echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
 %{_mingw32_make} %{?_smp_mflags} || %{_mingw32_make}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files -n mingw32-libgmp10
 %defattr(755,root,root,755)
