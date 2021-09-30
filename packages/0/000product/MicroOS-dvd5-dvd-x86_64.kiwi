@@ -477,7 +477,7 @@
       <repopackage name="libcairo-script-interpreter2" arch="x86_64"/>
       <repopackage name="libcairo2" arch="x86_64"/>
       <repopackage name="libcairomm-1_0-1" arch="x86_64"/>
-      <repopackage name="libcamel-1_2-62" arch="x86_64"/>
+      <repopackage name="libcamel-1_2-63" arch="x86_64"/>
       <repopackage name="libcamera-suse6" arch="x86_64"/>
       <repopackage name="libcanberra-gtk3-0" arch="x86_64"/>
       <repopackage name="libcanberra0" arch="x86_64"/>
@@ -715,6 +715,7 @@
       <repopackage name="libjack0" arch="x86_64"/>
       <repopackage name="libjansson4" arch="x86_64"/>
       <repopackage name="libjavascriptcoregtk-4_0-18" arch="x86_64"/>
+      <repopackage name="libjavascriptcoregtk-4_1-0" arch="x86_64"/>
       <repopackage name="libjbig2" arch="x86_64"/>
       <repopackage name="libjcat1" arch="x86_64"/>
       <repopackage name="libjpeg8" arch="x86_64"/>
@@ -1018,6 +1019,7 @@
       <repopackage name="libsord-0-0" arch="x86_64"/>
       <repopackage name="libSoundTouch1" arch="x86_64"/>
       <repopackage name="libsoup-2_4-1" arch="x86_64"/>
+      <repopackage name="libsoup-3_0-0" arch="x86_64"/>
       <repopackage name="libsoxr0" arch="x86_64"/>
       <repopackage name="libspandsp2" arch="x86_64"/>
       <repopackage name="libspeex1" arch="x86_64"/>
@@ -1103,6 +1105,7 @@
       <repopackage name="libwayland-server0" arch="x86_64"/>
       <repopackage name="libwbclient0" arch="x86_64"/>
       <repopackage name="libwebkit2gtk-4_0-37" arch="x86_64"/>
+      <repopackage name="libwebkit2gtk-4_1-0" arch="x86_64"/>
       <repopackage name="libwebp7" arch="x86_64"/>
       <repopackage name="libwebpdemux2" arch="x86_64"/>
       <repopackage name="libwebpmux3" arch="x86_64"/>
@@ -1559,6 +1562,7 @@
       <repopackage name="typelib-1_0-Rsvg-2_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-Secret-1" arch="x86_64"/>
       <repopackage name="typelib-1_0-Soup-2_4" arch="x86_64"/>
+      <repopackage name="typelib-1_0-Soup-3_0" arch="x86_64"/>
       <repopackage name="typelib-1_0-TelepathyGlib-0_12" arch="x86_64"/>
       <repopackage name="typelib-1_0-TelepathyLogger-0_2" arch="x86_64"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0" arch="x86_64"/>
@@ -1576,6 +1580,7 @@
       <repopackage name="vim-small" arch="x86_64"/>
       <repopackage name="wallpaper-branding-openSUSE" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles" arch="x86_64"/>
+      <repopackage name="webkit2gtk-4_1-injected-bundles" arch="x86_64"/>
       <repopackage name="wget" arch="x86_64"/>
       <repopackage name="which" arch="x86_64"/>
       <repopackage name="wicked" arch="x86_64"/>
