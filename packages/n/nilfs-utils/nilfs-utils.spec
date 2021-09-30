@@ -19,6 +19,12 @@
 %define libnilfs    libnilfs0
 %define libcleaner  libnilfscleaner0
 %define libgc       libnilfsgc0
+%if 0%{?suse_version} < 1550
+%define root_sbindir	/sbin
+%else
+%define root_sbindir	%{_sbindir}
+%endif
+
 Name:           nilfs-utils
 Version:        2.2.8
 Release:        0
@@ -76,21 +82,23 @@ This package contains the development files for NILFS v2.
 %make_build
 
 %install
-make install DESTDIR=%{buildroot} root_sbindir=/sbin root_libdir=/%{_lib}
+make install DESTDIR=%{buildroot} root_sbindir=%{root_sbindir}
 # remove unneeded files
 find %{buildroot} -type f -name "*.la" -delete -print
-chrpath -d %{buildroot}/sbin/*
+chrpath -d %{buildroot}%{root_sbindir}/*
 
-%post -n %{libnilfs}      -p /sbin/ldconfig
-%post -n %{libcleaner}    -p /sbin/ldconfig
-%post -n %{libgc}         -p /sbin/ldconfig
-%postun -n %{libnilfs}    -p /sbin/ldconfig
-%postun -n %{libcleaner}  -p /sbin/ldconfig
-%postun -n %{libgc}       -p /sbin/ldconfig
+%post -n %{libnilfs}      -p %run_ldconfig
+%post -n %{libcleaner}    -p %run_ldconfig
+%post -n %{libgc}         -p %run_ldconfig
+%postun -n %{libnilfs}    -p %run_ldconfig
+%postun -n %{libcleaner}  -p %run_ldconfig
+%postun -n %{libgc}       -p %run_ldconfig
 
 %files
 %config(noreplace) %{_sysconfdir}/nilfs_cleanerd.conf
-/sbin/*
+%if 0%{?suse_version} < 1550
+%{root_sbindir}/*
+%endif
 %{_sbindir}/*
 %{_bindir}/*
 %{_mandir}/man?/*

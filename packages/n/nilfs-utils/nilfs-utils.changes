@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 29 16:00:23 CEST 2021 - tiwai@suse.de
+
+- Move some files to /usr for UsrMerge (bsc#1191083)
+- Use macro for post scripts
+
+-------------------------------------------------------------------
 Sat May  8 19:00:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.8:
