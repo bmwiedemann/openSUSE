@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Sep 25 20:32:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Force the cairo renderer to avoid a crash.
+
+-------------------------------------------------------------------
+Sat Sep 18 09:06:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial package for openSUSE, version 41.0

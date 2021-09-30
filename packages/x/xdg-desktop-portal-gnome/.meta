@@ -1,0 +1,9 @@
+<package name="xdg-desktop-portal-gnome" project="openSUSE:Factory">
+  <title>A backend implementation for xdg-desktop-portal</title>
+  <description>A backend implementation for xdg-desktop-portal for the GNOME
+desktop environment.
+
+</description>
+  <devel project="GNOME:Factory" package="xdg-desktop-portal-gnome"/>
+  <url>https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome</url>
+</package>
