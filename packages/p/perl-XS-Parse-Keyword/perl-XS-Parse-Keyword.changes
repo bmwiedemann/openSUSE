@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 29 03:07:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.18    2021-09-28
+          [CHANGES]
+           * Define the XPI_OPERAND_ONLY_LOOK flag
+           * Define a callchecker for list/list infix operators. Add a
+             callchecker that can optimise out certain kinds of operations
+             (ref to padav or pkgav, anonlist if XPI_OPERAND_ONLY_LOOK is set)
+          [BUGFIXES]
+           * cygwin requires deparse_infix to be declared with XS_INTERNAL()
+             (RT139449)
+           * Some architectures require intermediate storage for values in the
+             test function pp_addpairs (RT139445)
+           * Fix conditions in lexical variable type checking (RT139444)
+  0.17    2021-09-23
+          [CHANGES]
+           * Support certain kinds of list operands on LHS of infix operators
+           * Generate wrapper functions around list-list infix operators, which
+             unpack their argument lists from two ARRAYrefs
+  0.16    2021-09-21
+          [CHANGES]
+           * Attempt automatic deparsing of infix operators
+           * Support certain kinds of list operands on RHS of infix operators
+
+-------------------------------------------------------------------
 Tue Sep  7 03:07:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.15
