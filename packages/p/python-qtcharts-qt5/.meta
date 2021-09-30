@@ -2,5 +2,5 @@
   <title>PyQtChart - python bindings for Qt5 Charts</title>
   <description>This package provides python bindings to Qt5 Charts module.
 </description>
-  <devel project="KDE:Qt5" package="python-qtcharts-qt5"/>
+  <devel project="KDE:Qt:PyQt" package="python-qtcharts-qt5"/>
 </package>

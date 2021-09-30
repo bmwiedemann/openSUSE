@@ -1,5 +1,5 @@
 <package name="python-qt5-sip" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="KDE:Qt5" package="python-qt5-sip"/>
+  <devel project="KDE:Qt:PyQt" package="python-qt5-sip"/>
 </package>
