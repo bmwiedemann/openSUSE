@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 07:06:52 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- system-user-radicale.conf: remove leading spaces, SLE15 does
+  not like them [bsc#1190203]
+
+-------------------------------------------------------------------
 Sun Aug 22 07:31:36 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
 
 - Add firewalld service description for Radicale
