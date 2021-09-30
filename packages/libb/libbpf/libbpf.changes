@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 27 11:02:49 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.5.0:
+  + New features and user-space APIs:
+    - libbpf_set_strict_mode() allowing to opt-in into backwards incompatible libbpf-1.0 changes. See "Libbpf: the road to 1.0" and "Libbpf 1.0 migration guide" for more details.
+    - streamlined error reporting for low-level APIs, high-level error-returning APIs, and pointer-returning APIs (as a libbpf-1.0 opt-in);
+    - "Light" BPF skeleton support;
+    - BPF_PROG_TYPE_SYSCALL support;
+    - BPF perf link support for kprobe, uprobe, tracepoint, and perf_event BPF programs;
+    - BPF cookie support for kprobe, uprobe, tracepoint, and perf_event BPF programs through bpf_program__attach_[ku]probe_opts() APIs;
+    - allow to specify ref_ctr_off for USDT semaphores through bpf_program__attach_uprobe_opts() API;
+    - btf_custom_path support in bpf_object_open_opts, allowing to specify custom BTF for CO-RE relocations;
+    - sk_reuseport/migrate program type support;
+    - btf_dump__dump_type_data() API, allowing to dump binary data according to BTF type description;
+    - btf__load_into_kernel() and btf__load_from_kernel_by_id(), and split BTF variants of them;
+    - btf__load_vmlinux_btf() and btf__load_module_btf() APIs;
+    - bpf_map__initial_value() API to get initial value of mmap-ed BPF maps;
+    - bpf_map_lookup_and_delete_elem_flags() API.
+  + BPF-side APIs and features:
+    - support for weak typed __ksym externs;
+    - BPF timer helpers: bpf_timer_init(), bpf_timer_set_callback(), bpf_timer_start(), bpf_timer_cancel();
+    - bpf_get_attach_cookie() helper to get BPF cookie from BPF program side;
+    - bpf_get_func_ip() helper;
+    - bpf_sys_bpf() helper;
+    - bpf_task_pt_regs() helper;
+    - bpf_btf_find_by_name_kind() helper;
+    - usability improvements for bpf_tracing.h when target architecture is missing.
+  + Bug fixes and compatibility improvements:
+    - improve BPF support detection on old Red Hat kernels with backported BPF patches;
+    - improvements for LTO builds with GCC 10+;
+    - pass NLM_F_EXCL when creating TC qdisc;
+    - better support of BPF map reuse on old kernels;
+    - fix the bug resulting in sometimes closing FD 0, which wasn't created and owned by libbpf itself.
+- Remove patches merged upstream
+  + libdir.patch
+  + libbpf-Fix-build-with-latest-gcc-binutils-with-LTO.patch
+
+-------------------------------------------------------------------
 Fri Aug 27 06:20:53 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix LTO build (bsc#1188749).

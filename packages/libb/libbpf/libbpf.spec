@@ -19,17 +19,13 @@
 %define sover_major 0
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
 URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/issues/337
-Patch:          libdir.patch
-# PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/pull/373
-Patch1:         libbpf-Fix-build-with-latest-gcc-binutils-with-LTO.patch
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  python3
