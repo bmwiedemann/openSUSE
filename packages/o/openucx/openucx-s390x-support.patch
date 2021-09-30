@@ -1,4 +1,4 @@
-commit b47dad27703f0b59072f5a8d8fba99c1d173f8f0
+commit 71d28736870f46080b8187bf2ba64920c87dc7e4
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Aug 9 07:41:24 2018 +0200
 
@@ -7,10 +7,10 @@ Date:   Thu Aug 9 07:41:24 2018 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git config/m4/ucm.m4 config/m4/ucm.m4
-index 9c7c820d9fff..8297fc7e6ec2 100644
+index 1e229edc51f2..3f74fca02976 100644
 --- config/m4/ucm.m4
 +++ config/m4/ucm.m4
-@@ -86,9 +86,20 @@ AC_CHECK_DECLS([SYS_ipc],
+@@ -73,9 +73,20 @@ AC_CHECK_DECLS([SYS_ipc],
                 [ipc_hooks_happy=no],
                 [#include <sys/syscall.h>])
  
@@ -33,22 +33,24 @@ index 9c7c820d9fff..8297fc7e6ec2 100644
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
-index 88d317670462..04d2c223b970 100644
+index 7c355a264c2b..52efadec096c 100644
 --- src/tools/info/sys_info.c
 +++ src/tools/info/sys_info.c
-@@ -38,6 +38,7 @@ static const char* cpu_vendor_names[] = {
-     [UCS_CPU_VENDOR_AMD]              = "AMD",
+@@ -44,7 +44,8 @@ static const char* cpu_vendor_names[] = {
      [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
      [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
-+    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM",
-     [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM"
+     [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM",
+-    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin"
++    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin",
++    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM"
  };
  
+ static double measure_memcpy_bandwidth(size_t size)
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
-index e53a30a46916..21bce848045d 100644
+index 55784d0c31f4..a6003eda0333 100644
 --- src/ucm/Makefile.am
 +++ src/ucm/Makefile.am
-@@ -30,7 +30,8 @@ noinst_HEADERS = \
+@@ -31,7 +31,8 @@ noinst_HEADERS = \
  	bistro/bistro.h \
  	bistro/bistro_x86_64.h \
  	bistro/bistro_aarch64.h \
@@ -59,7 +61,7 @@ index e53a30a46916..21bce848045d 100644
  libucm_la_SOURCES = \
  	event/event.c \
 diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
-index 16e988700c35..b4c2762fb5b2 100644
+index 101000455e66..0ae947429796 100644
 --- src/ucm/bistro/bistro.h
 +++ src/ucm/bistro/bistro.h
 @@ -20,6 +20,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
@@ -73,10 +75,10 @@ index 16e988700c35..b4c2762fb5b2 100644
  #endif
 diff --git src/ucm/bistro/bistro_s390x.h src/ucm/bistro/bistro_s390x.h
 new file mode 100644
-index 000000000000..334c0474e8b6
+index 000000000000..c0f427f4984a
 --- /dev/null
 +++ src/ucm/bistro/bistro_s390x.h
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,18 @@
 +#ifndef UCM_BISTRO_BISTRO_S390X_H_
 +#define UCM_BISTRO_BISTRO_S390X_H_
 +
@@ -88,46 +90,41 @@ index 000000000000..334c0474e8b6
 +#define UCM_BISTRO_PROLOGUE
 +#define UCM_BISTRO_EPILOGUE
 +
++static inline ucs_status_t ucm_bistro_patch(void *func_ptr, void *hook, const char *symbol,
++											void **orig_func_p,
++											ucm_bistro_restore_point_t **rp){
++	return UCS_ERR_UNSUPPORTED;
++}
 +
 +#endif
-diff --git src/ucm/mmap/install.c src/ucm/mmap/install.c
-index 6b46baaeecfa..522fd6eaa89f 100644
---- src/ucm/mmap/install.c
-+++ src/ucm/mmap/install.c
-@@ -331,7 +331,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
-                 status = ucm_reloc_modify(&entry->patch);
-             } else {
-                 ucs_assert(ucm_mmap_hook_mode() == UCM_MMAP_HOOK_BISTRO);
-+#if UCM_BISTRO_HOOKS
-                 status = ucm_bistro_patch(entry->patch.symbol, entry->patch.value, NULL);
-+#else
-+				status = UCS_ERR_UNSUPPORTED;
-+#endif
-             }
-             if (status != UCS_OK) {
-                 ucm_warn("failed to install %s hook for '%s'",
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index b612ddeb54ff..6d01521b697b 100644
+index 8cc77e87da3f..2fbb53188a58 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
-@@ -64,6 +64,7 @@ nobase_dist_libucs_la_HEADERS = \
- 	arch/x86_64/global_opts.h \
+@@ -21,6 +21,7 @@ libucs_la_LIBADD   = $(LIBM) $(top_builddir)/src/ucm/libucm.la
+ nobase_dist_libucs_la_HEADERS = \
+ 	arch/aarch64/bitops.h \
+ 	arch/ppc64/bitops.h \
++	arch/s390x/bitops.h \
+ 	arch/x86_64/bitops.h \
+ 	arch/bitops.h \
+ 	algorithm/crc.h \
+@@ -77,12 +78,14 @@ nobase_dist_libucs_la_HEADERS = \
  	arch/aarch64/global_opts.h \
+ 	arch/generic/atomic.h \
  	arch/ppc64/global_opts.h \
 +	arch/s390x/global_opts.h \
  	arch/global_opts.h
  
  noinst_HEADERS = \
-@@ -71,6 +72,8 @@ noinst_HEADERS = \
- 	arch/generic/atomic.h \
+ 	arch/aarch64/cpu.h \
  	arch/generic/cpu.h \
  	arch/ppc64/cpu.h \
-+	arch/s390x/bitops.h \
 +	arch/s390x/cpu.h \
- 	arch/x86_64/atomic.h \
  	arch/x86_64/cpu.h \
- 	arch/atomic.h \
-@@ -112,6 +115,7 @@ libucs_la_SOURCES = \
+ 	arch/cpu.h \
+ 	datastruct/arbiter.h \
+@@ -127,6 +130,7 @@ libucs_la_SOURCES = \
  	algorithm/qsort_r.c \
  	arch/aarch64/cpu.c \
  	arch/aarch64/global_opts.c \
@@ -136,7 +133,7 @@ index b612ddeb54ff..6d01521b697b 100644
  	arch/ppc64/global_opts.c \
  	arch/x86_64/cpu.c \
 diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
-index 99e53ca5d0f7..dfa83b757bb0 100644
+index 6a8551f592e1..e3a9f4641383 100644
 --- src/ucs/arch/atomic.h
 +++ src/ucs/arch/atomic.h
 @@ -15,6 +15,8 @@
@@ -149,10 +146,10 @@ index 99e53ca5d0f7..dfa83b757bb0 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index 10a86b53ca42..80084eea6260 100644
+index a890cd255295..badc12419b5b 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
-@@ -18,6 +18,8 @@ BEGIN_C_DECLS
+@@ -20,6 +20,8 @@ BEGIN_C_DECLS
  #  include "ppc64/bitops.h"
  #elif defined(__aarch64__)
  #  include "aarch64/bitops.h"
@@ -162,10 +159,10 @@ index 10a86b53ca42..80084eea6260 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index 6d9ebbafeaed..5cda2179efca 100644
+index 210a49c8e717..4018392ebed3 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
-@@ -60,6 +60,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+@@ -61,6 +61,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
      },
@@ -176,7 +173,7 @@ index 6d9ebbafeaed..5cda2179efca 100644
      [UCS_CPU_VENDOR_FUJITSU_ARM] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
-@@ -72,6 +76,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+@@ -77,6 +81,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
      [UCS_CPU_VENDOR_AMD]         = 5008 * UCS_MBYTE,
      [UCS_CPU_VENDOR_GENERIC_ARM] = 5800 * UCS_MBYTE,
      [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
@@ -185,18 +182,18 @@ index 6d9ebbafeaed..5cda2179efca 100644
  };
  
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index cb317a8db3a4..5174eeb7e1db 100644
+index e06f6b95ebb1..15f3198976a9 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
-@@ -58,6 +58,7 @@ typedef enum ucs_cpu_vendor {
+@@ -62,6 +62,7 @@ typedef enum ucs_cpu_vendor {
      UCS_CPU_VENDOR_AMD,
      UCS_CPU_VENDOR_GENERIC_ARM,
      UCS_CPU_VENDOR_GENERIC_PPC,
 +    UCS_CPU_VENDOR_GENERIC_IBM,
      UCS_CPU_VENDOR_FUJITSU_ARM,
+     UCS_CPU_VENDOR_ZHAOXIN,
      UCS_CPU_VENDOR_LAST
- } ucs_cpu_vendor_t;
-@@ -92,6 +93,8 @@ typedef struct ucs_cpu_builtin_memcpy {
+@@ -97,6 +98,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "ppc64/cpu.h"
  #elif defined(__aarch64__)
  #  include "aarch64/cpu.h"
@@ -408,10 +405,10 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index 62e555b409d1..8adc26241781 100644
+index 59836aaa51c2..3975db7f6be3 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
-@@ -1134,8 +1134,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
+@@ -1223,8 +1223,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
      if (old_ptr == NULL) {
          /* Note: Must pass the 0 offset as "long", otherwise it will be
           * partially undefined when converted to syscall arguments */

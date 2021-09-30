@@ -1,7 +1,74 @@
 -------------------------------------------------------------------
+Thu Sep 23 07:35:57 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.11.1 (jsc#SLE-19260)
+
+-------------------------------------------------------------------
 Wed Feb 24 16:34:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update openucx-s390x-support.patch to fix mmap syscall on s390x (bsc#1182691)
+  - Core:
+    - Added support for UCX monitoring using virtual file system (VFS)/FUSE
+    - Added support for applications with static CUDA runtime linking
+    - Added support for a configuration file
+    - Updated clang format configuration
+  - UCP
+    - Added rendezvous API for active messages
+    - Added user-defined name to context, worker, and endpoint objects
+    - Added flag to silence request leak check
+    - Added API for endpoint performance evaluation
+    - Added API - ucp_request_query
+    - Added API - ucp_lib_query
+    - Added bandwidth optimizations for new protocols multi-lane
+    - Added support for multi-rail over lanes with BW ratio >= 1/4
+    - Added support for tracking outstanding requests and aborting those in case of connection failure
+    - Refactored keep-alive protocol
+    - Added device id to wireup protocol
+    - Added support up to 128 transport layer resources in UCP context
+    - Added support CUDA memory allocations with ucp_mem_map
+    - Increased UCP_WORKER_MAX_EP_CONFIG to 64
+    - Adjusted memory type zcopy threshold when UCX_ZCOPY_THRESH set
+    - Refactored wireup protocols, rendezvous, get, zcopy protocols
+    - Added put zcopy multi-rail
+    - Improved logging for new protocols
+    - Added system topology information
+    - Added new protocols for eager offload protocols
+  - UCT
+    - Extended connection establishment API
+    - Added active message AM alignment in iface params
+    - Added active message short IOV API.
+    - Added support for interface query by operation and memory type
+    - Added API to get allocation base address and length
+    - Added md_dereg_v2 API
+  - UCS
+    - Added log filter by source file name.
+    - Added checking for last element in fraglist queue
+    - Added a method to get IP address from sockaddr.
+    - Added memory usage limits to registration cache
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added report of QP info in case of completion with error
+    - Refactored of FC send operations
+    - Added support for  DevX unique QPN allocation
+    - Optimized endpoint lookup for  DCI
+    - Added support for RDMA sub-function (SF)
+    - Added support for DCI via DEVX
+    - Added DCI pool per LAG port
+    - Added support  for RoCE IP reachability check using a subnet mask
+    - Added active message short IOV for UD/DC/RC mlx, UD/RC verbs
+    - Added endpoint keep alive check for UD
+    - Suppressed warning if device can't be opened
+    - Added support for multiple flush cancel without completion
+    - Added ignore for devices with invalid GID
+    - Added support for SRQ linked list reordering
+    - Added flush by flow control on old devices
+    - Added support for configurable rdma_resolve_addr/route timeout
+  - Shared memory
+    - Added active message short IOV support for posix, sysv, and self transports
+  - TCP
+    - Added support for peer failure in case of CONNECT_TO_EP
+    - Added support for active message short IOV
+  - See NEWS for a complete changelog and bug fixes
+- Refresh openucx-s390x-support against latest sources
 
 -------------------------------------------------------------------
 Mon Oct  5 13:21:34 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>

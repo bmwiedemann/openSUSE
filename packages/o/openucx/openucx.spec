@@ -17,7 +17,7 @@
 
 
 Name:           openucx
-Version:        1.9.0
+Version:        1.11.1
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -174,11 +174,15 @@ rm -fv "%buildroot/%_libdir"/*.la
 rm -fv "%buildroot/%_libdir"/ucx/*.la
 # Rename example dir for consistency with the package name
 mv %buildroot/%_datadir/ucx  %buildroot/%_datadir/openucx
+# io_demo should not be in %{bindir} and more likely in %{libexec}
+mkdir -p %buildroot/%_libexecdir/%{name}/
+mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 
 %files tools
 %defattr(-,root,root)
 %_bindir/ucx_*
 %_datadir/%{name}/
+%_libexecdir/%{name}
 %_libdir/pkgconfig/ucx.pc
 %doc LICENSE NEWS
 
