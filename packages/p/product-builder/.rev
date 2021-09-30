@@ -386,4 +386,13 @@ as requested by Michel</comment>
   * fixed architecture handling in version priority mode</comment>
     <requestid>919687</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e33c661d6561740289367ad038e0c809</srcmd5>
+    <version>1.4.6</version>
+    <time>1633038182</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.6
+  * fixed package tracking regression</comment>
+    <requestid>921794</requestid>
+  </revision>
 </revisionlist>
