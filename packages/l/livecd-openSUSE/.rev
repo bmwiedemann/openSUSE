@@ -1270,4 +1270,14 @@
     <comment>- config.sh: Also remove vmlinux.xz from UsrMerged kernel location
   in /usr/lib,</comment>
   </revision>
+  <revision rev="158" vrev="158">
+    <srcmd5>bd647d01706c7083645240be09a6fe96</srcmd5>
+    <version>unknown</version>
+    <time>1632987419</time>
+    <user>dimstar_suse</user>
+    <comment>- list-xfce: Ignore mugshot, incompatible with GNOME 41
+
+  in /usr/lib</comment>
+    <requestid>922287</requestid>
+  </revision>
 </revisionlist>

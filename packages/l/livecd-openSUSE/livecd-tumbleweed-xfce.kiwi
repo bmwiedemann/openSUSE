@@ -478,6 +478,8 @@
     <package name="xf86-video-vmware" arch="i686,x86_64"/>
     <package name="evince-plugin-pdfdocument"/>
     <package name="alsa-firmware"/>
+    <package name="aaa_base" replaces="mugshot"/>
+    <ignore name="mugshot"/>
     <package name="opensuse-welcome"/>
   </packages>
   <packages type="bootstrap">

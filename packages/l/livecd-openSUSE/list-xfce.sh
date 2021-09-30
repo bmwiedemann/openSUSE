@@ -41,5 +41,8 @@ install evince-plugin-pdfdocument
 # From rest_cd_core
 install alsa-firmware
 
+# Not compatible with GNOME 41 (nothing provides typelib(Cheese) = 3.0)
+buildignore mugshot
+
 # From x11_enhanced, but that pattern can't be installed
 install opensuse-welcome

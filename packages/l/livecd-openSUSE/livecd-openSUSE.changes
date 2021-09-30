@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 30 07:34:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-xfce: Ignore mugshot, incompatible with GNOME 41
+
+-------------------------------------------------------------------
 Tue Aug 24 14:39:26 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - config.sh: Also remove vmlinux.xz from UsrMerged kernel location
-  in /usr/lib,
+  in /usr/lib
 
 -------------------------------------------------------------------
 Tue Aug 24 06:22:09 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
