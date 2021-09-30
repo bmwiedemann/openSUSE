@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 26 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.106
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.106		2021-09-25	T. R. Wyant
+      Correct repository links in metadata.  Thanks to Keith Thompson for
+      finding and reporting this.
+
+-------------------------------------------------------------------
 Mon Sep  6 03:06:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.105
