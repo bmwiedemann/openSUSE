@@ -74,4 +74,12 @@
     Incorrect instruction reordering during JIT optimization</comment>
     <requestid>912037</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8611e924b4c3ac6de1169ea46fb23c24</srcmd5>
+    <version>78.14.0</version>
+    <time>1633038181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921790</requestid>
+  </revision>
 </revisionlist>
