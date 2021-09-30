@@ -160,4 +160,18 @@
     <comment></comment>
     <requestid>921532</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9652339303959302ed615358eb6911bc</srcmd5>
+    <version>1.0.2</version>
+    <time>1633038228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.2
+  Bug fixes:
+  * fix file replace dialog not working
+  * fix trackpad scroll with libinput
+  Misc:
+  * build with Qt 5.12 now works again!
+</comment>
+    <requestid>922350</requestid>
+  </revision>
 </revisionlist>

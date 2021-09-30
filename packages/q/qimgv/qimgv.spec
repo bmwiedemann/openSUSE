@@ -17,7 +17,7 @@
 
 
 Name:           qimgv
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.14
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
 Requires:       mpv >= 0.32.0

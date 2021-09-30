@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 30 10:54:56 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.2
+  Bug fixes:
+  * fix file replace dialog not working
+  * fix trackpad scroll with libinput
+  Misc:
+  * build with Qt 5.12 now works again!
+
+-------------------------------------------------------------------
 Sun Sep 26 19:40:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.1
