@@ -1897,7 +1897,6 @@
       <repopackage name="libjansson4"/>
       <repopackage name="libjavascriptcoregtk-4_0-18"/>
       <repopackage name="libjavascriptcoregtk-4_1-0"/>
-      <repopackage name="libjavascriptcoregtk-5_0-0"/>
       <repopackage name="libjbig2"/>
       <repopackage name="libjcat1"/>
       <repopackage name="libjd0"/>
@@ -2769,7 +2768,6 @@
       <repopackage name="libwbclient0"/>
       <repopackage name="libwebkit2gtk-4_0-37"/>
       <repopackage name="libwebkit2gtk-4_1-0"/>
-      <repopackage name="libwebkit2gtk-5_0-0"/>
       <repopackage name="libwebp7"/>
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
@@ -4719,7 +4717,7 @@
       <repopackage name="typelib-1_0-HarfBuzz-0_0"/>
       <repopackage name="typelib-1_0-IBus-1_0"/>
       <repopackage name="typelib-1_0-JavaScriptCore-4_0"/>
-      <repopackage name="typelib-1_0-JavaScriptCore-5_0"/>
+      <repopackage name="typelib-1_0-JavaScriptCore-4_1"/>
       <repopackage name="typelib-1_0-Json-1_0"/>
       <repopackage name="typelib-1_0-libdazzle-1_0"/>
       <repopackage name="typelib-1_0-Libosinfo-1_0"/>
@@ -4747,7 +4745,7 @@
       <repopackage name="typelib-1_0-Tracker-3_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
-      <repopackage name="typelib-1_0-WebKit2-5_0"/>
+      <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-XApp-1_0"/>
       <repopackage name="typelib-1_0-Xfconf-0"/>
@@ -4817,8 +4815,6 @@
       <repopackage name="WebKit2GTK-4.1-lang"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles"/>
       <repopackage name="webkit2gtk-4_1-injected-bundles"/>
-      <repopackage name="WebKit2GTK-5.0-lang"/>
-      <repopackage name="webkit2gtk-5_0-injected-bundles"/>
       <repopackage name="wget"/>
       <repopackage name="wget-lang"/>
       <repopackage name="which"/>
