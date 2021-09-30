@@ -5179,4 +5179,12 @@
   to apply cleanly against current version.</comment>
     <requestid>917452</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>1902d1d617195c3be29e556f837df4cf</srcmd5>
+    <version>92.0.1</version>
+    <time>1633038192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921893</requestid>
+  </revision>
 </revisionlist>

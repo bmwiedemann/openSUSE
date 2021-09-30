@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 25 10:10:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 92.0.1
+  * Fixed: Fixes an issue where audio playback was not working on
+    some Linux systems (bmo#1730499)
+  * Fixed: Fixes issues with the findbar close button on
+    different operating systems (bmo#1728368)
+
+-------------------------------------------------------------------
 Mon Sep  6 10:16:28 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 92.0
