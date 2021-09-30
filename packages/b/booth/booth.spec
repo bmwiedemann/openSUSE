@@ -67,7 +67,7 @@ Pacemaker.
 Summary:        Test scripts for Booth
 Group:          Productivity/Clustering/HA
 Requires:       booth
-Requires:       python
+Requires:       python3
 
 %description test
 This package contains automated tests for Booth,
