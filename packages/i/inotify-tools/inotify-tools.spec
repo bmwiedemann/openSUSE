@@ -1,7 +1,7 @@
 #
 # spec file for package inotify-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inotify-tools
-Version:        3.20.11.0
+Version:        3.21.9.5
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only
@@ -56,9 +56,7 @@ utilities for the kernel facility inotify.
 Summary:        Documentation for inotify-tools
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
-%if 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains the documentation for inotify-tools, which provides
@@ -90,6 +88,8 @@ rm %{buildroot}/%{_libdir}/libinotifytools.la
 %{_bindir}/inotifywatch
 %{_mandir}/man1/inotifywait.1%{?ext_man}
 %{_mandir}/man1/inotifywatch.1%{?ext_man}
+%{_mandir}/man1/fsnotifywait.1%{?ext_man}
+%{_mandir}/man1/fsnotifywatch.1%{?ext_man}
 
 %files -n libinotifytools0
 %license COPYING

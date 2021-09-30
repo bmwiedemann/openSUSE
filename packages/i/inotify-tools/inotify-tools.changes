@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 27 17:35:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21.9.5:
+  * Fix Wrong pointer passed to realloc
+  * Fix offset compiler warning
+  * various static code analyse annotations and fixes 
+
+-------------------------------------------------------------------
 Sun Dec 20 12:56:31 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.20.11.0:
