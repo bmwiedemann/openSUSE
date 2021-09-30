@@ -1496,4 +1496,12 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     InvalidURL to be raised.</comment>
     <requestid>919877</requestid>
   </revision>
+  <revision rev="158" vrev="9">
+    <srcmd5>ac99b84b67bc9f7fa1834a57e934e35e</srcmd5>
+    <version>2.7.18</version>
+    <time>1633038172</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronization of the package with SLE version.</comment>
+    <requestid>921455</requestid>
+  </revision>
 </revisionlist>

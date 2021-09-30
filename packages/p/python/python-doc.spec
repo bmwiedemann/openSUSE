@@ -31,6 +31,8 @@ Source0:        %{tarname}.tar.xz
 #Source3:        http://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-letter.tar.bz2
 Source2:        python-%{version}-docs-pdf-a4.tar.bz2
 Source3:        python-%{version}-docs-pdf-letter.tar.bz2
+# For Patch 66
+Source66:       recursion.tar
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-Sphinx
 %else
@@ -111,6 +113,14 @@ Patch63:        CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP
 Patch64:        CVE-2021-3733-fix-ReDoS-in-request.patch
 # PATCH-FIX-UPSTREAM sphinx-update-removed-function.patch bpo#35293 gh#python/cpython#22198 -- fix doc build
 Patch65:        sphinx-update-removed-function.patch
+# PATCH-FIX-UPSTREAM CVE-2019-20907_tarfile-inf-loop.patch bsc#1174091 mcepl@suse.com
+# avoid possible infinite loop in specifically crafted tarball (CVE-2019-20907)
+# REQUIRES SOURCE 66
+Patch66:        CVE-2019-20907_tarfile-inf-loop.patch
+# PATCH-FIX-UPSTREAM CVE-2020-26116-httplib-header-injection.patch bsc#1177211
+# Fixes httplib to disallow control characters in method to avoid header
+# injection
+Patch67:        CVE-2020-26116-httplib-header-injection.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -183,16 +193,15 @@ Python, and Macintosh Module Reference in PDF format.
 %patch63 -p1
 %patch64 -p1
 %patch65 -p1
+%patch66 -p1
+%patch67 -p1
+
+# For patch 66
+cp -v %{SOURCE66} Lib/test/recursion.tar
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
 # COMMON-PREP-END
-
-# Update documentation formatting for Sphinx 3.0 (bpo#40204)
-for i in `find Doc/ -type f -name "*.rst"`
-do
-  sed -i 's/:c:type:/:c:expr:/g' $i
-done
 
 %build
 TODAY_DATE=`date -r %{S:0} "+%B %d, %Y"`

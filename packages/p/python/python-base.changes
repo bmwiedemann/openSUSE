@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 21 14:54:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2019-20907_tarfile-inf-loop.patch fixing bsc#1174091
+  (CVE-2019-20907, bpo#39017) avoiding possible infinite loop
+  in specifically crafted tarball.
+  Add recursion.tar as a testing tarball for the patch.
+- Provide the newest setuptools wheel (bsc#1176262,
+  CVE-2019-20916) in their correct form (bsc#1180686).
+- Add CVE-2020-26116-httplib-header-injection.patch fixing bsc#1177211
+  (CVE-2020-26116, bpo#39603) no longer allowing special characters in
+  the method parameter of HTTPConnection.putrequest in httplib, stopping
+  injection of headers. Such characters now raise ValueError. 
+
+
+-------------------------------------------------------------------
 Thu Aug 26 15:35:10 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Renamed patch for assigned CVE:
@@ -75,10 +90,9 @@ Thu Apr 23 09:17:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
     by Ben Caller.
   - Fixed line numbers and column offsets for AST nodes for calls
     without arguments in decorators.
-  - Disallow control characters in hostnames in http.client,
-    addressing CVE-2019-18348 (bpo#38576, bsc#1155094). Such
-    potentially malicious header injection URLs now cause
-    InvalidURL to be raised.
+  - bsc#1155094 (CVE-2019-18348) Disallow control characters in
+    hostnames in http.client. Such potentially malicious header
+    injection URLs now cause a InvalidURL to be raised.
   - Fix urllib.urlretrieve failing on subsequent ftp transfers
     from the same host.
   - Fix problems identified by GCC's -Wstringop-truncation
@@ -302,8 +316,9 @@ Thu Apr  4 22:28:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Jan 25 16:53:50 CET 2019 - mcepl@suse.com
 
-- bsc#1109847: add CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
-  fixing bpo-34623.
+- bsc#1109847 (CVE-2018-14647): add
+  CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch fixing
+  bpo-34623.
 
 -------------------------------------------------------------------
 Fri Jan 25 16:02:21 CET 2019 - mcepl@suse.com
@@ -322,7 +337,7 @@ Fri Jan 25 16:02:21 CET 2019 - mcepl@suse.com
 Sat Jan 19 16:19:38 CET 2019 - mcepl@suse.com
 
 - bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
-  fixing bpo-35746.
+  fixing bpo-35746 (CVE-2019-5010).
   An exploitable denial-of-service vulnerability exists in the
   X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
   A specially crafted X509 certificate can cause a NULL pointer

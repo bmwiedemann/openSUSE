@@ -34,6 +34,11 @@ Source1:        macros.python2
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source5:        local.pth
+# Fixed bundled wheels
+Source10:       setuptools-44.1.1-py2.py3-none-any.whl
+Source11:       pip-20.2.3-py2.py3-none-any.whl
+# For Patch 66
+Source66:       recursion.tar
 Source99:       python-base-rpmlintrc
 # COMMON-PATCH-BEGIN
 Patch1:         python-2.7-dirs.patch
@@ -109,6 +114,14 @@ Patch63:        CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP
 Patch64:        CVE-2021-3733-fix-ReDoS-in-request.patch
 # PATCH-FIX-UPSTREAM sphinx-update-removed-function.patch bpo#35293 gh#python/cpython#22198 -- fix doc build
 Patch65:        sphinx-update-removed-function.patch
+# PATCH-FIX-UPSTREAM CVE-2019-20907_tarfile-inf-loop.patch bsc#1174091 mcepl@suse.com
+# avoid possible infinite loop in specifically crafted tarball (CVE-2019-20907)
+# REQUIRES SOURCE 66
+Patch66:        CVE-2019-20907_tarfile-inf-loop.patch
+# PATCH-FIX-UPSTREAM CVE-2020-26116-httplib-header-injection.patch bsc#1177211
+# Fixes httplib to disallow control characters in method to avoid header
+# injection
+Patch67:        CVE-2020-26116-httplib-header-injection.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -239,10 +252,24 @@ other applications.
 %patch63 -p1
 %patch64 -p1
 %patch65 -p1
+%patch66 -p1
+%patch67 -p1
+
+# For patch 66
+cp -v %{SOURCE66} Lib/test/recursion.tar
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
 # COMMON-PREP-END
+
+# Replace bundled wheels with the updates ones
+rm -v Lib/ensurepip/_bundled/*.whl
+cp -v %{SOURCE10} %{SOURCE11} Lib/ensurepip/_bundled/
+STVER=$(basename %{SOURCE10}|cut -d- -f2)
+PIPVER=$(basename %{SOURCE11}|cut -d- -f2)
+sed -i -e "s/^\(\s*_SETUPTOOLS_VERSION\s\+=\s\+\)\"[0-9.]\+\"/\1\"${STVER}\"/" \
+       -e "s/^\(\s*_PIP_VERSION\s\+=\s\+\)\"[0-9.]\+\"/\1\"${PIPVER}\"/" \
+    Lib/ensurepip/__init__.py
 
 %build
 %define _lto_cflags %{nil}
@@ -320,7 +347,7 @@ EXCLUDE="$EXCLUDE test_asynchat test_asyncore test_dircache test_multiprocessing
 if test $(ulimit -v) = unlimited || test $(ulimit -v) -gt 10000000; then
   ulimit -v 10000000 || :
 fi
-make test TESTOPTS="-l -x $EXCLUDE" TESTPYTHONOPTS="-R"
+make test TESTOPTS="-l -w -x $EXCLUDE" TESTPYTHONOPTS="-R"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif

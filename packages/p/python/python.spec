@@ -32,6 +32,8 @@ Source8:        sle_tls_checks_policy.py
 Source50:       idle.appdata.xml
 Source51:       idle.desktop
 # issues with copyrighted Unicode testing files
+# For Patch 66
+Source66:       recursion.tar
 
 # !!!!!!!!!!!!!!
 # do not add or edit patches here. please edit python-base.spec
@@ -111,6 +113,14 @@ Patch63:        CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP
 Patch64:        CVE-2021-3733-fix-ReDoS-in-request.patch
 # PATCH-FIX-UPSTREAM sphinx-update-removed-function.patch bpo#35293 gh#python/cpython#22198 -- fix doc build
 Patch65:        sphinx-update-removed-function.patch
+# PATCH-FIX-UPSTREAM CVE-2019-20907_tarfile-inf-loop.patch bsc#1174091 mcepl@suse.com
+# avoid possible infinite loop in specifically crafted tarball (CVE-2019-20907)
+# REQUIRES SOURCE 66
+Patch66:        CVE-2019-20907_tarfile-inf-loop.patch
+# PATCH-FIX-UPSTREAM CVE-2020-26116-httplib-header-injection.patch bsc#1177211
+# Fixes httplib to disallow control characters in method to avoid header
+# injection
+Patch67:        CVE-2020-26116-httplib-header-injection.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -297,6 +307,11 @@ that rely on earlier non-verification behavior.
 %patch63 -p1
 %patch64 -p1
 %patch65 -p1
+%patch66 -p1
+%patch67 -p1
+
+# For patch 66
+cp -v %{SOURCE66} Lib/test/recursion.tar
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
