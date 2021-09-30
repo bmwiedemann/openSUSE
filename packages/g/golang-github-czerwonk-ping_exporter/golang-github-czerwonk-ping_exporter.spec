@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        ping_exporter.yaml
 Source3:        ping_exporter.service
+Patch0:	harden_ping_exporter.service.patch
 BuildRequires:  golang-packaging
 Requires(post): %fillup_prereq
 %systemd_ordering
@@ -38,6 +39,7 @@ for Prometheus consumption.
 %prep
 %setup -q -n %{name}-%{version}
 %setup -q -n %{name}-%{version} -T -D -a 1
+%patch0 -p1
 
 %build
 %{goprep} github.com/czerwonk/ping_exporter

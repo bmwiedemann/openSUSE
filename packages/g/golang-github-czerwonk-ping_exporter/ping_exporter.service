@@ -2,6 +2,19 @@
 Description=Prometheus exporter for ICMP echo requests
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 ExecStart=/usr/bin/ping_exporter --config.path=/etc/ping_exporter.yaml
 DynamicUser=Yes
 AmbientCapabilities=CAP_NET_RAW
