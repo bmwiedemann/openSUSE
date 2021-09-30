@@ -42,6 +42,8 @@ Source1:        %{name}-rpmlintrc
 Patch0:         fix_compilation_JSON_wxWidgets.patch
 # PATCH-FIX-OPENSUSE  fix_node_env-script-interpreter.patch andythe_great@pm.me -- Fix RPMLINT warning env-script-interpreter.
 Patch1:         fix_node_env-script-interpreter.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

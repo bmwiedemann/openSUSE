@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 10:45:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Backport change from cppcheck:
+  * 0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch
+
+-------------------------------------------------------------------
 Sat Mar  6 18:31:35 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 15.0.0.
