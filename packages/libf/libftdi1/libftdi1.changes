@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 27 14:01:32 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 1.5.12+git.0684c1b:
+  * Don't set EEPROM serial when it's not used.
+  * Remove legacy EEPROM fields from FT4232H.
+  * Don't fail reading missing strings.
+  * Don't spam stderr when flashing FT232H eeprom
+  * examples/bitbang_cbus.c: Check return value of fgets()
+  ...
+- Integrated mainline:
+D Fix-building-unit-tests-without-FTDIPP.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 14:06:47 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.5:

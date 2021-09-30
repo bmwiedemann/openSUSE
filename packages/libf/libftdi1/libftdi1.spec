@@ -19,15 +19,14 @@
 %define sover -2
 %define libname %{name}%{sover}
 Name:           libftdi1
-Version:        1.5
+Version:        1.5.12+git.0684c1b
 Release:        0
 Summary:        Library to program and control the FTDI USB controller
 License:        LGPL-2.1-only AND GPL-2.0-only AND GPL-2.0-with-classpath-exception
 Group:          Hardware/Other
 URL:            https://www.intra2net.com/en/developer/libftdi
-Source:         https://www.intra2net.com/en/developer/libftdi/download/libftdi1-%{version}.tar.bz2
+Source:         libftdi1-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM -- http://developer.intra2net.com/git/?p=libftdi;a=patch;h=11a50ae5b80b3e03694a19e84513345d0794e563
-Patch0:         Fix-building-unit-tests-without-FTDIPP.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
