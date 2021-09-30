@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 27 16:39:34 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build error with fix_perl_5.34_build.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 08:03:41 UTC 2020 - pgajdos@suse.com
 
 - define %license for older codestreams

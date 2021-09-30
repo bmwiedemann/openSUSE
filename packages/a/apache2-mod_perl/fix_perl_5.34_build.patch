@@ -1,0 +1,24 @@
+diff -ur mod_perl-2.0.11/src/modules/perl/modperl_perl.c mod_perl-2.0.11_fix/src/modules/perl/modperl_perl.c
+--- mod_perl-2.0.11/src/modules/perl/modperl_perl.c	2019-10-05 13:04:42.000000000 +0200
++++ mod_perl-2.0.11_fix/src/modules/perl/modperl_perl.c	2021-09-27 18:45:52.566005007 +0200
+@@ -268,7 +268,7 @@
+ #ifdef MP_NEED_HASH_SEED_FIXUP
+     if (MP_init_hash_seed_set) {
+ #if MP_PERL_VERSION_AT_LEAST(5, 17, 6)
+-        memcpy(&PL_hash_seed, &MP_init_hash_seed,
++        memcpy(PL_hash_seed, &MP_init_hash_seed,
+                 sizeof(PL_hash_seed) > sizeof(MP_init_hash_seed) ?
+                     sizeof(MP_init_hash_seed) : sizeof(PL_hash_seed));
+         PL_hash_seed_set   = MP_init_hash_seed_set;
+diff -ur mod_perl-2.0.11/src/modules/perl/modperl_util.c mod_perl-2.0.11_fix/src/modules/perl/modperl_util.c
+--- mod_perl-2.0.11/src/modules/perl/modperl_util.c	2019-10-05 13:04:43.000000000 +0200
++++ mod_perl-2.0.11_fix/src/modules/perl/modperl_util.c	2021-09-27 18:38:17.156578770 +0200
+@@ -632,7 +632,7 @@
+ 
+     if (r->finfo.size != size) {
+         SvREFCNT_dec(sv);
+-        Perl_croak(aTHX_ "Error: read %d bytes, expected %d ('%s')",
++        Perl_croak(aTHX_ "Error: read %ld bytes, expected %ld ('%s')",
+                    size, (apr_size_t)r->finfo.size, r->filename);
+     }
+ 
