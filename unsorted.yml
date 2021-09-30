@@ -2216,6 +2216,7 @@ unsorted:
   - conntrackd 
   - console-setup 
   - consoleet-oldschoolpc-fonts 
+  - consoleet-terminus-fonts 
   - container-build-checks 
   - container-build-checks-strict 
   - container-build-checks-vendor-SUSE 
@@ -5680,7 +5681,6 @@ unsorted:
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
-  - gnome-builder-plugin-jedi 
   - gnome-builder-plugin-jhbuild 
   - gnome-calculator-devel 
   - gnome-calendar 
@@ -5778,6 +5778,8 @@ unsorted:
   - gnome-taquin-lang 
   - gnome-tetravex 
   - gnome-tetravex-lang 
+  - gnome-text-editor 
+  - gnome-text-editor-lang 
   - gnome-themes 
   - gnome-themes-extras 
   - gnome-themes-lang 
@@ -6177,7 +6179,6 @@ unsorted:
   - gsound-devel 
   - gspell 
   - gspell-devel 
-  - gssdp-utils 
   - gssntlmssp 
   - gssntlmssp-devel 
   - gssproxy 
@@ -6358,6 +6359,7 @@ unsorted:
   - gtksourceview2-devel 
   - gtksourceview2-lang 
   - gtksourceview4-devel 
+  - gtksourceview5-devel 
   - gtksourceviewmm-devel 
   - gtksourceviewmm3_0-devel 
   - gtkspell-devel 
@@ -6939,7 +6941,6 @@ unsorted:
   - influxdb 
   - influxdb-devel 
   - info2html 
-  - info4 
   - infos-creator-rpm 
   - ini4j 
   - ini4j-javadoc 
@@ -10498,7 +10499,7 @@ unsorted:
   - libfmt8-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
-  - libfolks-telepathy25 
+  - libfolks-telepathy26 
   - libfoma0 
   - libfont-specimen0 
   - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
@@ -11357,6 +11358,7 @@ unsorted:
   - libjasper4-32bit: [x86_64] 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
+  - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
   - libjaylink 
   - libjaylink-devel 
   - libjaylink0 
@@ -13513,8 +13515,11 @@ unsorted:
   - libsoundio-devel 
   - libsoundio2 
   - libsoup-2_4-1-32bit: [x86_64] 
+  - libsoup-3_0-0-32bit: [x86_64] 
   - libsoup-devel 
   - libsoup-devel-32bit: [x86_64] 
+  - libsoup2-devel 
+  - libsoup2-devel-32bit: [x86_64] 
   - libsource-highlight-devel 
   - libsource-highlight4 
   - libsource-highlight4-32bit: [x86_64] 
@@ -13869,6 +13874,10 @@ unsorted:
   - libtraceevent1-plugins 
   - libtracefs-devel 
   - libtracefs1 
+  - libtracker-common-2_0 
+  - libtracker-control-2_0-0 
+  - libtracker-miner-2_0-0 
+  - libtracker-sparql-2_0-0 
   - libtranscript-devel 
   - libtranscript1 
   - libtree-sitter0 
@@ -14056,10 +14065,10 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_52-0 
-  - libvala-0_52-devel 
-  - libvaladoc-0_52-0 
-  - libvaladoc-0_52-devel 
+  - libvala-0_54-0 
+  - libvala-0_54-devel 
+  - libvaladoc-0_54-0 
+  - libvaladoc-0_54-devel 
   - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
@@ -14227,6 +14236,7 @@ unsorted:
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
+  - libwebkit2gtk-4_1-0-32bit: [x86_64] 
   - libwebp-devel 
   - libwebp-devel-32bit: [x86_64] 
   - libwebp-tools 
@@ -15259,7 +15269,6 @@ unsorted:
   - makedepend 
   - makedev 
   - makeinfo 
-  - makeinfo4 
   - makeself 
   - makewhat 
   - mako 
@@ -16261,6 +16270,7 @@ unsorted:
   - muffin 
   - muffin-devel 
   - muffin-lang 
+  - mugshot 
   - mujs 
   - mujs-devel 
   - multimon-ng 
@@ -22162,6 +22172,7 @@ unsorted:
   - python36-dbus-deviation 
   - python36-dbus-python 
   - python36-dbus-python-devel 
+  - python36-dbus_next 
   - python36-ddg3 
   - python36-ddt 
   - python36-debian 
@@ -24972,6 +24983,7 @@ unsorted:
   - python38-dbfread 
   - python38-dbus-deviation 
   - python38-dbus-python-devel 
+  - python38-dbus_next 
   - python38-ddg3 
   - python38-ddt 
   - python38-deap 
@@ -27951,6 +27963,7 @@ unsorted:
   - python39-dbus-deviation 
   - python39-dbus-python 
   - python39-dbus-python-devel 
+  - python39-dbus_next 
   - python39-ddg3 
   - python39-ddt 
   - python39-deap 
@@ -32630,7 +32643,6 @@ unsorted:
   - texi2html-lang 
   - texi2roff 
   - texinfo 
-  - texinfo4 
   - texlive 
   - texlive-12many 
   - texlive-12many-doc 
@@ -40795,7 +40807,12 @@ unsorted:
   - tpm2.0-tools: [i586] 
   - trace-cmd 
   - tracker-devel 
+  - tracker2 
   - tracker2-devel 
+  - tracker2-lang 
+  - tracker2-miner-files 
+  - tracker2-miners 
+  - tracker2-miners-lang 
   - trader 
   - trader-lang 
   - traefik 
@@ -40993,6 +41010,7 @@ unsorted:
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
+  - typelib-1_0-Cheese-41_0 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-CloudProviders-0_3_0 
@@ -41024,12 +41042,13 @@ unsorted:
   - typelib-1_0-Farstream-0_2 
   - typelib-1_0-Fcitx-1_0 
   - typelib-1_0-Flatpak-1_0 
-  - typelib-1_0-Folks-0_6 
-  - typelib-1_0-FolksEds-0_6 
-  - typelib-1_0-FolksTelepathy-0_6 
+  - typelib-1_0-Folks-0_7 
+  - typelib-1_0-FolksEds-0_7 
+  - typelib-1_0-FolksTelepathy-0_7 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GExiv2-0_10 
+  - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-1_0 
@@ -41102,6 +41121,7 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
+  - typelib-1_0-JavaScriptCore-4_1 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -41160,7 +41180,10 @@ unsorted:
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_10 
   - typelib-1_0-Vte-2.91 
+  - typelib-1_0-WebKit2-4_1 
   - typelib-1_0-WebKit2WebExtension-4_0 
+  - typelib-1_0-WebKit2WebExtension-4_1 
+  - typelib-1_0-WebKit2WebExtension-5_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Xkl-1_0 
@@ -41690,8 +41713,14 @@ unsorted:
   - webdot 
   - webenginepart 
   - webkit-jsc-4 
+  - webkit-jsc-4.1 
+  - webkit-jsc-5.0 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
+  - webkit2gtk3-soup2-devel 
+  - webkit2gtk3-soup2-minibrowser 
+  - webkit2gtk4-devel 
+  - webkit2gtk4-minibrowser 
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
   - webp-pixbuf-loader 
