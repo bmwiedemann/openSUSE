@@ -276,6 +276,7 @@ unsorted:
   - VirtualGL-devel 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
+  - WebKit2GTK-5.0-lang 
   - WindowMaker-devel 
   - WoeUSB 
   - XSStrike 
@@ -11359,6 +11360,7 @@ unsorted:
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
+  - libjavascriptcoregtk-5_0-0 
   - libjaylink 
   - libjaylink-devel 
   - libjaylink0 
@@ -14237,6 +14239,7 @@ unsorted:
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit: [x86_64] 
   - libwebkit2gtk-4_1-0-32bit: [x86_64] 
+  - libwebkit2gtk-5_0-0 
   - libwebp-devel 
   - libwebp-devel-32bit: [x86_64] 
   - libwebp-tools 
@@ -41121,7 +41124,7 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-JavaScriptCore-4_1 
+  - typelib-1_0-JavaScriptCore-5_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -41180,7 +41183,7 @@ unsorted:
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_10 
   - typelib-1_0-Vte-2.91 
-  - typelib-1_0-WebKit2-4_1 
+  - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKit2WebExtension-5_0 
@@ -41715,6 +41718,7 @@ unsorted:
   - webkit-jsc-4 
   - webkit-jsc-4.1 
   - webkit-jsc-5.0 
+  - webkit2gtk-5_0-injected-bundles 
   - webkit2gtk3-devel 
   - webkit2gtk3-minibrowser 
   - webkit2gtk3-soup2-devel 
