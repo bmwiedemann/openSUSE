@@ -1,8 +1,8 @@
 #
 # spec file for package OpenImageDenoise
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 #
 
 
-%define sover 0
+%define sover 1
 %define libname lib%{name}%{sover}
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        1.2.2
+Version:        1.4.1
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
@@ -58,6 +58,7 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+sed -i 's|-${OIDN_VERSION}$||' cmake/oidn_install.cmake
 
 %build
 %cmake
