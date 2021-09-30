@@ -31,6 +31,7 @@ RUN zypper -n install \
               qemu-tools \
               qemu-x86 \
               socat \
+              timezone \
               vim \
               xorriso && \
     zypper clean -a && \

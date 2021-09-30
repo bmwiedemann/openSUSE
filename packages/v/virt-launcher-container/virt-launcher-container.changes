@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 29 11:26:27 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install timezone package (bsc#1190587)
+
+-------------------------------------------------------------------
+Wed Sep 29 08:35:32 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Send libvirtd debug logs to stderr (bsc#1190839)
+
+-------------------------------------------------------------------
 Tue Aug  3 08:23:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Reset cgroup_controllers in /etc/libvirt/qemu.conf

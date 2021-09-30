@@ -3,6 +3,8 @@ set /files/etc/libvirt/libvirtd.conf/listen_tls 0
 set /files/etc/libvirt/libvirtd.conf/listen_tcp 1
 set /files/etc/libvirt/libvirtd.conf/auth_tcp none
 
+# Send debug logs to stderr
+set /files/etc/libvirt/libvirtd.conf/log_outputs 1:stderr
 
 # Listen on all interfaces for now
 set /files/etc/libvirt/qemu.conf/stdio_handler logd
