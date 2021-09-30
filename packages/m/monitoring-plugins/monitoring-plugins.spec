@@ -115,11 +115,6 @@ BuildRequires:  radiusclient
 %endif
 %if 0%{?suse_version} > 910
 BuildRequires:  krb5-devel
-%if 0%{?suse_version} > 1310
-BuildRequires:  syslog
-%else
-BuildRequires:  syslog-ng
-%endif
 %else
 BuildRequires:  heimdal-devel
 %endif
