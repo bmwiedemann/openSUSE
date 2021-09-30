@@ -22,12 +22,11 @@ Version:        0.10.0
 Release:        0
 Summary:        Python module for declarative JSON document element extraction
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jmespath/jmespath.py
 Source:         https://github.com/jmespath/jmespath.py/archive/refs/tags/%{version}.tar.gz#/jmespath-%{version}.tar.gz
+Patch0:         remove-nose.patch
 # Testing
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
@@ -73,6 +72,7 @@ The expression: foo.*.name will return ["one", "two"].
 
 %prep
 %setup -q -n jmespath.py-%{version}
+%autopatch -p1
 
 %build
 %python_build

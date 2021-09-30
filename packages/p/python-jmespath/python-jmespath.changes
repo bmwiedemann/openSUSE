@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 27 03:03:07 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-nose.patch:
+  * Remove use of nose in the tests. 
+
+-------------------------------------------------------------------
 Mon May 31 08:00:06 UTC 2021 - pgajdos@suse.com
 
 - use github tarball to use upstream tests

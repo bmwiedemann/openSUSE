@@ -182,4 +182,13 @@
     <comment></comment>
     <requestid>898355</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7f30fb0fbb74a0dd52fdec1d31444b21</srcmd5>
+    <version>0.10.0</version>
+    <time>1633038175</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Remove use of nose in the tests.</comment>
+    <requestid>921548</requestid>
+  </revision>
 </revisionlist>
