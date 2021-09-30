@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 18 03:06:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302187
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302187  2021-09-17 06:59:05-07:00 America/Los_Angeles
+
+      - Fix tests for core boolean support
+
+-------------------------------------------------------------------
 Tue Jul 27 03:10:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302186
