@@ -18,13 +18,13 @@
 
 
 Name:           partclone
-Version:        0.3.17
+Version:        0.3.18
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://partclone.org/
-Source:         https://sourceforge.net/projects/partclone/files/unstable/partclone-%{version}.tar.gz
+Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel

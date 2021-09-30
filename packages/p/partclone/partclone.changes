@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:48:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.3.18:
+  * Add block_size and blocks_total in torrent.info to provide
+    partition info
+  * change C99 for loop init to C89 for compatibility
+  * try to fix ignore_crc not working properly
+
+-------------------------------------------------------------------
 Mon Mar 22 08:29:28 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop dependency on libreiserfs
