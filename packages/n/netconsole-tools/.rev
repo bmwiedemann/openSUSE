@@ -99,4 +99,12 @@
     <comment></comment>
     <requestid>590595</requestid>
   </revision>
+  <revision rev="16" vrev="157">
+    <srcmd5>f20753e164ec53b667d1da38cc246367</srcmd5>
+    <version>20030909</version>
+    <time>1633038232</time>
+    <user>dimstar_suse</user>
+    <comment>- Move to /usr for UsrMerge (boo#1191081)</comment>
+    <requestid>922363</requestid>
+  </revision>
 </revisionlist>

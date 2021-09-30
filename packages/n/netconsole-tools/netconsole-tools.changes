@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 11:45:02 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Move to /usr for UsrMerge (boo#1191081) 
+
+-------------------------------------------------------------------
 Fri Mar 16 15:19:04 UTC 2018 - mpluskal@suse.com
 
 - Modernise spec file using spec-cleaner
