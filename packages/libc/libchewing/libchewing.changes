@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 29 21:35:52 UTC 2021 - mcepl@suse.com
+
+- Update to version 0.5.1+git20200627.452f622:
+  * chewing.py supports platforms with 64bit pointer
+  * Change ︰ to ：
+  * Don't run tests in parallel
+  * Try Ubuntu 16.04 Xenial
+  * autotools: Build with -fPIC like the CMake-based one does
+  * Show compilation commands if the build system is autotools
+  * Tolerate unused const warnings
+  * Fix LSan
+  * Use internal-sqlite instead of static-sqlite, following 570ab6be
+
+-------------------------------------------------------------------
+Fri Sep 24 07:52:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-devel, and the conflicting
+  old py_* macros. 
+- Remove references to "Python 2", the module supports Python 3.
+- Mark COPYING as license.
+
+-------------------------------------------------------------------
 Thu Aug 22 19:38:10 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove pointless ldconfig call from chewing-utils subpackage.

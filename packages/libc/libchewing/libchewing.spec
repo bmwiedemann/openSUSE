@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 
 Name:           libchewing
 %define soname	3
-Version:        0.5.1+git20171114.3df07c9
+Version:        0.5.1+git20200627.452f622
 Release:        0
 Summary:        Intelligent Phonetic Input Method Library for Traditional Chinese
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/chewing
+URL:            https://github.com/chewing
 Source:         %{name}-%{version}.tar.xz
 Source1:        chewing-utils-%{utilver}.tar.gz
 #PATCH-FIX-UPSTREAM yuyichao@gmail.com fix a lot of errors in the code
@@ -42,17 +42,12 @@ BuildRequires:  autoconf >= 2.67
 BuildRequires:  gtk2-devel
 %endif
 BuildRequires:  libtool
-%if 0%{?suse_version} >= 1230
 BuildRequires:  makeinfo
-%else
-BuildRequires:  texinfo
-%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
 BuildRequires:  sqlite3-devel
-Requires(post):	info
-Requires(postun):	info
+Requires(post): info
+Requires(postun):info
 
 %description
 Intelligent phonetic input method library for traditional Chinese.
@@ -96,9 +91,8 @@ It's used to add, modify and remove entries in the chewing user database
 (usually located at ~/.chewing/uhash.dat).
 
 %package -n python-chewing
-Summary:        Python 2 bindings for %{name}
+Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
-%py_requires
 
 %description -n python-chewing
 This package contains python bindings for chewing, an intelligent phonetic
@@ -106,7 +100,6 @@ input method library for traditional Chinese.
 
 Only input method framework written in python (like very old versions of ibus)
 or developers will need it.
-
 
 %prep
 %autosetup -p1
@@ -149,11 +142,11 @@ find %{buildroot}%{_libdir} -name "*.la" -delete
 mkdir -p %{buildroot}%{_bindir}
 cp -r contrib/simple-select %{buildroot}%{_bindir}
 
-# install python 2 bindings
+# install python bindings
 mkdir -p %{buildroot}%{python_sitearch}/chewing/
 cp -r contrib/python/chewing.py %{buildroot}%{python_sitearch}/chewing/
 pushd %{buildroot}%{python_sitearch}/chewing/
-%py_compile -O .
+python3 -m py_compile *.py
 popd
 
 # install chewing-utils
@@ -176,7 +169,8 @@ popd
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -n %{name}%{soname}
-%doc AUTHORS COPYING NEWS README.md TODO
+%license COPYING
+%doc AUTHORS NEWS README.md TODO
 %{_libdir}/libchewing.so.3
 %{_libdir}/libchewing.so.3.3.1
 
