@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-AuthenticationResults
 Name:           perl-Mail-AuthenticationResults
-Version:        2.20210112
+Version:        2.20210915
 Release:        0
 Summary:        Object Oriented Authentication-Results Headers
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,8 +28,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Clone)
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(Test::Exception)
+Requires:       perl(Clone)
 Requires:       perl(JSON)
 %{perl_requires}
 
@@ -46,8 +48,6 @@ against RFC but has been seen in headers added by Yahoo!.
 
 Comments added between key/value pairs will be added after them in the data
 structures and when stringified.
-
-It is a work in progress..
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 16 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20210915
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20210915 2021-09-15 11:10:20+00:00 UTC
+    - Fix for older versions of Perl
+
+  2.20210914 2021-09-14 05:17:31+00:00 UTC
+    - New method to copy children from 1 object to another
+
+-------------------------------------------------------------------
 Wed Jan 13 03:07:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20210112
