@@ -39,4 +39,28 @@
   * Fix German and Slovak translations</comment>
     <requestid>889042</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bba968db88c3f8bdcf85d4505ce70cf7</srcmd5>
+    <version>0.5.0</version>
+    <time>1633038233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Added new Presets feature
+  * Now you can toggle sounds by clicking the row
+  * Added new dark mode option
+  * Added Tamil translation
+  * Added Simplified Chinese translation
+  * Added Russian translation
+  * Added Irish translation
+  * Added Japanese translation
+  * Added Indonesian translation
+  * Added Finnish translation
+  * Added Portuguese translation
+  * Added Swedish translation
+  * Added Czech translation
+  * Added Hungarian translation
+  * Added Persian (Farsi) translation
+  * Added Galician translation</comment>
+    <requestid>922361</requestid>
+  </revision>
 </revisionlist>
