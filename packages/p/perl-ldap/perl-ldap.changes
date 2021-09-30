@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 27 16:18:03 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with perl 5.34.0
+
+-------------------------------------------------------------------
 Wed Jun  9 16:10:30 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Add cpanspec.yml as source file
@@ -716,4 +721,3 @@ Fri Mar 24 17:34:08 MET 2000 - ug@suse.de
 Thu Mar 23 11:27:01 MET 2000 - ug@suse.de
 
 - added to distribution
-

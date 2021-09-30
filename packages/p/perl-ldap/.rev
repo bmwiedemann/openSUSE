@@ -264,4 +264,13 @@
     <comment></comment>
     <requestid>898856</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2d5c1d48fdf86d1d1d7650cd920e34d7</srcmd5>
+    <version>0.68</version>
+    <time>1633038191</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with perl 5.34.0
+</comment>
+    <requestid>921856</requestid>
+  </revision>
 </revisionlist>

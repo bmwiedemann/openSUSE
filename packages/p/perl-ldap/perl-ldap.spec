@@ -20,53 +20,48 @@
 Name:           perl-ldap
 Version:        0.68
 Release:        0
-Summary:        Client Interface for LDAP Servers
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/perl-ldap
+Summary:        Perl::ldap Perl module
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARSCHAP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRequires:  perl-Authen-SASL
-BuildRequires:  perl-Convert-ASN1
-BuildRequires:  perl-IO-Socket-SSL
-BuildRequires:  perl-XML-Parser
-BuildRequires:  perl-macros
-BuildRequires:  perl(XML::SAX::Base)
-BuildRequires:  perl(XML::SAX::Writer)
-Requires:       perl-Convert-ASN1
-Requires:       perl-URI
-Requires:       perl-XML-Parser
-Provides:       perl-Net-LDAP = %{version}
-Provides:       perl_ldp
-Obsoletes:      perl-Net-LDAP < %{version}
-Obsoletes:      perl_ldp
 BuildArch:      noarch
-# MANUAL BEGIN
-BuildRequires:  perl-Digest-MD5
-BuildRequires:  perl-IO-Socket-INET6
-BuildRequires:  perl-IO-Socket-IP
-BuildRequires:  perl-JSON
-BuildRequires:  perl-MIME-Base64
-BuildRequires:  perl-URI
-# MANUAL END
+BuildRequires:  perl
+BuildRequires:  perl-macros
+BuildRequires:  perl(Convert::ASN1) >= 0.2
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.42
+BuildRequires:  perl(Text::Soundex)
+Requires:       perl(Convert::ASN1) >= 0.2
+Recommends:     perl(Authen::SASL) >= 2.00
+Recommends:     perl(IO::Socket::INET6)
+Recommends:     perl(IO::Socket::SSL) >= 1.26
+Recommends:     perl(URI::ldap) >= 1.10
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Digest::MD5)
+BuildRequires:  perl(IO::Socket::INET6)
+BuildRequires:  perl(IO::Socket::IP)
+BuildRequires:  perl(JSON)
+BuildRequires:  perl(MIME::Base64)
+BuildRequires:  perl(URI)
+# MANUAL END
 
 %description
-A Client interface for LDAP servers.
+perl::ldap Perl module
 
 %prep
-%setup -q -n perl-ldap-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 find contrib -type f | xargs -n 1 sed -i "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@"
-
 # MANUAL END
+
 %build
-perl Makefile.PL INSTALLDIRS=vendor
+PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
-%make_build test
+make test
 
 %install
 %perl_make_install
@@ -74,7 +69,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CREDITS README TODO
 
 %changelog
