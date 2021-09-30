@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 30 11:12:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12:
+  * Color schemes and preview now support 24-bit colors.
+  * Depth of tree-view can now be limited and directories in it
+    can be folded.
+  * Textual preview of files is now done asynchronously.
+  * List of files can now be directly piped to programs via new macros.
+  * External editing now asks for a re-edit after a failure.
+  * Status line can now take up several lines.
+  * New keys for controlling viewer while in view mode.
+  * View column separators.
+  * Vifm has received a more advanced, but currently experimental,
+    extension interface in a form of Lua plugins.
+  * New logo.
+  * See https://vifm.info/news/2021-09-29.shtml for details
+
+-------------------------------------------------------------------
 Thu Sep 24 17:44:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11:

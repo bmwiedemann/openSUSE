@@ -1,7 +1,7 @@
 #
 # spec file for package vifm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vifm
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Ncurses based file manager with vi like keybindings
 License:        GPL-2.0-or-later
@@ -72,8 +72,11 @@ rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/vifm-app.txt
 %files
 %license COPYING
 %doc AUTHORS BUGS ChangeLog.* README TODO
-%doc %{_datadir}/%{name}/%{name}-help.txt
 %dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/vim-doc
+%dir %{_datadir}/%{name}/vim-doc/doc
+%doc %{_datadir}/%{name}/%{name}-help.txt
+%doc %{_datadir}/%{name}/vim-doc/doc/%{name}-lua.txt
 %{_bindir}/*
 %{_datadir}/%{name}/vim
 %{_datadir}/%{name}/%{name}rc
