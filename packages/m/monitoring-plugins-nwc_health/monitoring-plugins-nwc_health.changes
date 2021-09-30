@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 21 19:24:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.0.1.1
+  * remove broken line from Makefile.am
+  * improve cisco license checks
+  * add Versa Appliance, add HP Aruba
+  * tweak barracuda snmp params for interface/route checks
+  * improve Barracuda cluster-check
+
+-------------------------------------------------------------------
 Sun Jul  4 11:59:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.4
