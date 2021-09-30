@@ -42,7 +42,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 1.11.0
 Requires:       python-google-cloud-core >= 1.4.1
-Requires:       python-google-filesystem
 Requires:       python-google-resumable-media >= 1.2.0
 Requires:       python-googleapis-common-protos
 Requires:       python-requests >= 2.18.0
@@ -63,14 +62,13 @@ to users via direct download. This package provides client to it.
 
 %install
 %python_install
-%{python_expand touch %{buildroot}%{$python_sitelib}/google/cloud/__init__.py
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
-%{python_expand touch %{buildroot}%{$python_sitelib}/google/__init__.py}
-%pytest tests/unit -k 'not network'
-%{python_expand rm %{buildroot}%{$python_sitelib}/google/__init__.py}
+# We shouldn't be running tests from the BUILD/*/ directory, where pytest finds another google/ subdirectory
+trap 'rm -rf -- ~/tests' INT TERM HUP EXIT
+cp -r tests ~/ && cd
+%pytest tests/unit -m 'not network'
 
 %files %{python_files}
 %license LICENSE

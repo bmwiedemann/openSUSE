@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 30 09:04:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Copy the testsuite before we run it to avoid import problems.
+- Remove horrible workarounds creating __init__.py and then removing them. 
+- Drop Requires on python-google-filesystem.
+
+-------------------------------------------------------------------
 Tue Jun 22 06:34:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct Requires to googleapis-common-protos.

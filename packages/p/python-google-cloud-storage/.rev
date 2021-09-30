@@ -107,4 +107,14 @@
   - fall back to 'charset' of 'content_type' in</comment>
     <requestid>901276</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1c20ce3ede4943dd6602959847bdbccd</srcmd5>
+    <version>1.38.0</version>
+    <time>1633038224</time>
+    <user>dimstar_suse</user>
+    <comment>- Copy the testsuite before we run it to avoid import problems.
+- Remove horrible workarounds creating __init__.py and then removing them. 
+- Drop Requires on python-google-filesystem.</comment>
+    <requestid>922325</requestid>
+  </revision>
 </revisionlist>
