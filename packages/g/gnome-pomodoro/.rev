@@ -243,4 +243,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Support for GNOME Shell 41 (forwarded request 921536 from jubalh)</comment>
     <requestid>921594</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>31b05365fd7f9a495a47c8d8ca2a904b</srcmd5>
+    <version>0.20.0</version>
+    <time>1633038228</time>
+    <user>dimstar_suse</user>
+    <comment>Also fix Requires: gnome-shell to support 41</comment>
+    <requestid>922408</requestid>
+  </revision>
 </revisionlist>

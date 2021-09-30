@@ -30,7 +30,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell < 41
+BuildRequires:  gnome-shell < 42
 BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell < 41
+Requires:       gnome-shell < 42
 Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
