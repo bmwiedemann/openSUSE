@@ -1,7 +1,7 @@
 #
 # spec file for package readline6
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,9 +30,9 @@ BuildRequires:  sed
 Version:        %{rl_vers}
 Release:        0
 Summary:        The Readline Library
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Shells
-Url:            http://www.gnu.org/software/bash/bash.html
+URL:            http://www.gnu.org/software/bash/bash.html
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
 Source0:        ftp://ftp.gnu.org/gnu/readline/readline-%{rl_vers}.tar.gz
 Source1:        readline-%{rl_vers}-patches.tar.bz2
@@ -219,6 +219,7 @@ done
   make documentation
 
 %install
+%if !0%{?usrmerged}
   make install-shared libdir=/%{_lib} linkagedir=%{_libdir} DESTDIR=%{buildroot}
   chmod 0755 %{buildroot}/%{_lib}/libhistory.so.%{rl_vers}
   chmod 0755 %{buildroot}/%{_lib}/libreadline.so.%{rl_vers}
@@ -229,6 +230,18 @@ done
   mkdir -p  %{buildroot}/%{_libdir}/readline6
   ln -sf /%{_lib}/libhistory.so.%{rl_vers}  %{buildroot}/%{_libdir}/readline6/libhistory.so
   ln -sf /%{_lib}/libreadline.so.%{rl_vers} %{buildroot}/%{_libdir}/readline6/libreadline.so
+%else
+  make install-shared libdir=%{_libdir} linkagedir=%{_libdir} DESTDIR=%{buildroot}
+  chmod 0755 %{buildroot}%{_libdir}/libhistory.so.%{rl_vers}
+  chmod 0755 %{buildroot}%{_libdir}/libreadline.so.%{rl_vers}
+  rm -vf %{buildroot}%{_libdir}/libhistory.so.%{rl_vers}*old
+  rm -vf %{buildroot}%{_libdir}/libreadline.so.%{rl_vers}*old
+  rm -vf %{buildroot}%{_libdir}/libhistory.so
+  rm -vf %{buildroot}%{_libdir}/libreadline.so
+  mkdir -p  %{buildroot}%{_libdir}/readline6
+  ln -sf %{_libdir}/libhistory.so.%{rl_vers}  %{buildroot}/%{_libdir}/readline6/libhistory.so
+  ln -sf %{_libdir}/libreadline.so.%{rl_vers} %{buildroot}/%{_libdir}/readline6/libreadline.so
+%endif
   rm -fv %{buildroot}%{_mandir}/man3/history.3*
   rm -fv %{buildroot}%{_defaultdocdir}/readline/INSTALL
   mv %{buildroot}%{_mandir}/man3/readline.3 %{buildroot}%{_mandir}/man3/readline6.3
@@ -248,11 +261,22 @@ ldd -u -r %{buildroot}/%{_lib}/libreadline.so.* || true
 
 %files -n libreadline6
 %defattr(-,root,root)
+%if %{defined license}
+%license COPYING
+%else
 %doc COPYING
+%endif
+%if !0%{?usrmerged}
 /%{_lib}/libhistory.so.%{rl_major}
 /%{_lib}/libhistory.so.%{rl_vers}
 /%{_lib}/libreadline.so.%{rl_major}
 /%{_lib}/libreadline.so.%{rl_vers}
+%else
+%{_libdir}/libhistory.so.%{rl_major}
+%{_libdir}/libhistory.so.%{rl_vers}
+%{_libdir}/libreadline.so.%{rl_major}
+%{_libdir}/libreadline.so.%{rl_vers}
+%endif
 
 %files -n readline6-devel
 %defattr(-,root,root)

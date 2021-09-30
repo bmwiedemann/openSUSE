@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 11:10:09 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Move to /usr for UsrMerge (boo#1191091) 
+
+-------------------------------------------------------------------
 Wed May 17 13:55:23 UTC 2017 - werner@suse.de
 
 - Guess what ... shut up the licensedigger and add COPYING

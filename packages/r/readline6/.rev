@@ -7,4 +7,12 @@
     <comment>Ditto, shut up new licensedigger</comment>
     <requestid>495623</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91471370ade63ff4d04874171286baf1</srcmd5>
+    <version>6.3</version>
+    <time>1633038227</time>
+    <user>dimstar_suse</user>
+    <comment>- Move to /usr for UsrMerge (boo#1191091)</comment>
+    <requestid>922349</requestid>
+  </revision>
 </revisionlist>
