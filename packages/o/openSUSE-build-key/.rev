@@ -270,4 +270,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
 - spec-cleaner run (forwarded request 899435 from dirkmueller)</comment>
     <requestid>899447</requestid>
   </revision>
+  <revision rev="32" vrev="41">
+    <srcmd5>658bb2f5f54a176699a11b4cc64ad937</srcmd5>
+    <version>1.0</version>
+    <time>1633038182</time>
+    <user>dimstar_suse</user>
+    <comment>- Only add openSUSE Backports key when building for a Leap system
+  (sle_version &gt; 0). Tumbleweed does not use Backports.</comment>
+    <requestid>921797</requestid>
+  </revision>
 </revisionlist>

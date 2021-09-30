@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 27 12:59:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only add openSUSE Backports key when building for a Leap system
+  (sle_version > 0). Tumbleweed does not use Backports.
+
+-------------------------------------------------------------------
 Fri Jun 11 09:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove dumpsigs, unused since SLE12+ (rpm 4.x) (bsc#1186827)

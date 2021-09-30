@@ -72,7 +72,10 @@ cp %{SOURCE6} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
-for i in %{SOURCE0} %{SOURCE1} %{SOURCE2} %{SOURCE9} \
+for i in %{SOURCE0} %{SOURCE1} %{SOURCE2} \
+%if 0%{?sle_version}
+%{SOURCE9} \
+%endif
 %ifarch riscv64
 %{SOURCE3} \
 %endif
@@ -102,7 +105,9 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %{keydir}/gpg-pubkey-307e3d54-5aaa90a5.asc
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
+%if 0%{?sle_version}
 %{keydir}/gpg-pubkey-65176565-5d94a381.asc
+%endif
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
 %ifarch riscv64
