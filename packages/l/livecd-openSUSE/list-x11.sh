@@ -73,6 +73,10 @@ buildignore man
 buildignore groff
 buildignore libqt5-qttranslations
 
+# tumbler -> libgepup uses libwebkit2gtk-4_0-37, while epiphany uses libwebkit2gtk-4_1-0.
+# We can't have both, too big.
+buildignore tumbler
+
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
