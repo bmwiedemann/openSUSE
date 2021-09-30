@@ -1,4 +1,4 @@
-From 267868c148619be1eb89bcfa9c1184fa809fce2d Mon Sep 17 00:00:00 2001
+From db2573bebc90f6e1b445c34ddd707ad547c4325a Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Sat, 28 Jul 2018 22:59:04 +0200
 Subject: [PATCH] Use Adler32 algorithm to compute string checksums
@@ -14,38 +14,42 @@ Set default config option  for server_id hashing to False on minion
 Choose CRC method, default to faster but less reliable "adler32", if crc is in use
 
 Add warning for Sodium.
+
+Move server_id deprecation warning to reduce log spamming (bsc#1135567) (bsc#1135732)
+
+Remove deprecated warning that breaks miniion execution when "server_id_use_crc" opts are missing
 ---
- salt/config/__init__.py |  4 +++
- salt/grains/core.py     | 56 ++++++++++++++++++++++++++++++++++++++---
- 2 files changed, 56 insertions(+), 4 deletions(-)
+ salt/config/__init__.py |  4 ++++
+ salt/grains/core.py     | 49 +++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 49 insertions(+), 4 deletions(-)
 
 diff --git a/salt/config/__init__.py b/salt/config/__init__.py
-index 8b498ab9e2..6d30fca072 100644
+index e63489cbce..e05cdfafda 100644
 --- a/salt/config/__init__.py
 +++ b/salt/config/__init__.py
-@@ -945,6 +945,9 @@ VALID_OPTS = immutabletypes.freeze(
-         "disabled_requisites": (str, list),
+@@ -953,6 +953,9 @@ VALID_OPTS = immutabletypes.freeze(
          # Feature flag config
          "features": dict,
+         "fips_mode": bool,
 +        # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
 +        # Possible values are: False, adler32, crc32
 +        "server_id_use_crc": (bool, str),
      }
  )
  
-@@ -1243,6 +1246,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
-         "schedule": {},
-         "ssh_merge_pillar": True,
+@@ -1256,6 +1259,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
          "disabled_requisites": [],
+         "reactor_niceness": None,
+         "fips_mode": False,
 +        "server_id_use_crc": False,
      }
  )
  
 diff --git a/salt/grains/core.py b/salt/grains/core.py
-index 00bd0565bf..5535584d1b 100644
+index fdf0a6f0d8..e007f40c92 100644
 --- a/salt/grains/core.py
 +++ b/salt/grains/core.py
-@@ -20,6 +20,7 @@ import socket
+@@ -21,6 +21,7 @@ import subprocess
  import sys
  import time
  import uuid
@@ -53,7 +57,7 @@ index 00bd0565bf..5535584d1b 100644
  from errno import EACCES, EPERM
  
  import distro
-@@ -39,6 +40,7 @@ import salt.utils.path
+@@ -40,6 +41,7 @@ import salt.utils.path
  import salt.utils.pkg.rpm
  import salt.utils.platform
  import salt.utils.stringutils
@@ -61,7 +65,7 @@ index 00bd0565bf..5535584d1b 100644
  from salt.ext.six.moves import range
  from salt.utils.network import _get_interfaces
  
-@@ -2935,6 +2937,36 @@ def _hw_data(osdata):
+@@ -2981,6 +2983,36 @@ def _hw_data(osdata):
      return grains
  
  
@@ -98,7 +102,7 @@ index 00bd0565bf..5535584d1b 100644
  def get_server_id():
      """
      Provides an integer based on the FQDN of a machine.
-@@ -2945,10 +2977,26 @@ def get_server_id():
+@@ -2991,10 +3023,19 @@ def get_server_id():
      #   server_id
  
      if salt.utils.platform.is_proxy():
@@ -115,13 +119,6 @@ index 00bd0565bf..5535584d1b 100644
 +                & 0xFFFFFFFF
 +            )
 +        else:
-+            salt.utils.versions.warn_until(
-+                "Sodium",
-+                "This server_id is computed nor by Adler32 neither by CRC32. "
-+                'Please use "server_id_use_crc" option and define algorithm you'
-+                'prefer (default "Adler32"). The server_id will be computed with'
-+                "Adler32 by default.",
-+            )
 +            id_hash = _get_hash_by_shell()
 +        server_id = {"server_id": id_hash}
 +
@@ -130,6 +127,6 @@ index 00bd0565bf..5535584d1b 100644
  
  def get_master():
 -- 
-2.29.2
+2.33.0
 
 

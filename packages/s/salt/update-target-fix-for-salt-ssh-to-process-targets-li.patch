@@ -1,18 +1,20 @@
-From a603d31c4d3ace3590952ef848f4244c41abe7c8 Mon Sep 17 00:00:00 2001
+From eb51c650e39359851588b611a0802d06eedeb5b5 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Fri, 9 Apr 2021 16:01:32 +0300
-Subject: [PATCH] Update target fix for salt-ssh to process targets
- list (bsc#1179831) (#336)
+Subject: [PATCH] Update target fix for salt-ssh to process targets list
+ (bsc#1179831) (#336)
 
 * Update target fix for salt-ssh to process targets list (bsc#1179831)
 
 * Improvement for fixing (bsc#1179831)
+
+Regression fix of salt-ssh on processing targets (#353)
 ---
- salt/client/ssh/__init__.py | 48 ++++++++++++++++++++++++-------------
- 1 file changed, 31 insertions(+), 17 deletions(-)
+ salt/client/ssh/__init__.py | 46 +++++++++++++++++++++++--------------
+ 1 file changed, 29 insertions(+), 17 deletions(-)
 
 diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
-index 6570fba5b1..1edb7b3b23 100644
+index a4a74aa2c2..409d6e740e 100644
 --- a/salt/client/ssh/__init__.py
 +++ b/salt/client/ssh/__init__.py
 @@ -325,7 +325,7 @@ class SSH:
@@ -44,7 +46,7 @@ index 6570fba5b1..1edb7b3b23 100644
                              passwd=self.opts.get("ssh_passwd", ""),
                          )
                      )
-@@ -409,20 +409,34 @@ class SSH:
+@@ -409,20 +409,32 @@ class SSH:
          Uptade targets in case hostname was directly passed without the roster.
          :return:
          """
@@ -87,12 +89,10 @@ index 6570fba5b1..1edb7b3b23 100644
 +            self.opts["tgt"] = _hosts
 +        elif _hosts:
 +            self.opts["tgt"] = _hosts[0]
-+        else:
-+            self.opts["tgt"] = ""
  
      def get_pubkey(self):
          """
 -- 
-2.31.1
+2.33.0
 
 

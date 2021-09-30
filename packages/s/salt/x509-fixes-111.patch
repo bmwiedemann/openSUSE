@@ -1,4 +1,4 @@
-From d947df3004323a3d400aaf7b5d94580965bf4a11 Mon Sep 17 00:00:00 2001
+From e16881c36b535c4798d0bfda089efd9323957fec Mon Sep 17 00:00:00 2001
 From: Florian Bergmann <bergmannf@users.noreply.github.com>
 Date: Fri, 14 Sep 2018 10:30:39 +0200
 Subject: [PATCH] X509 fixes (#111)
@@ -32,11 +32,16 @@ PEP8: line too long
 * Do not return None if no matched minions found
 
 * Fix unit tests
+
+Fix for log checking in x509 test
+
+We are logging in debug and not in trace mode here.
 ---
- salt/modules/publish.py |  17 +++----
- salt/modules/x509.py    | 100 ++++++++++++++++++++--------------------
- salt/states/x509.py     |  75 ++++++++++++++++++++++++++++--
- 3 files changed, 129 insertions(+), 63 deletions(-)
+ salt/modules/publish.py         |  17 +++---
+ salt/modules/x509.py            | 100 ++++++++++++++++----------------
+ salt/states/x509.py             |  74 +++++++++++++++++++++--
+ tests/unit/modules/test_x509.py |   6 +-
+ 4 files changed, 131 insertions(+), 66 deletions(-)
 
 diff --git a/salt/modules/publish.py b/salt/modules/publish.py
 index 0926f3fa13..6d56c4d08e 100644
@@ -100,7 +105,7 @@ index 0926f3fa13..6d56c4d08e 100644
 -            return "'{0}' runner publish timed out".format(fun)
 +            return "'{}' runner publish timed out".format(fun)
 diff --git a/salt/modules/x509.py b/salt/modules/x509.py
-index ec9c92c008..9b475f3096 100644
+index 43a134625f..d8e6ae3baa 100644
 --- a/salt/modules/x509.py
 +++ b/salt/modules/x509.py
 @@ -30,16 +30,13 @@ from salt.utils.odict import OrderedDict
@@ -371,16 +376,14 @@ index ec9c92c008..9b475f3096 100644
  
      return ret
 diff --git a/salt/states/x509.py b/salt/states/x509.py
-index 8269df2f37..5ad7195b7c 100644
+index 80e1ecdd6d..3a54ad3ba3 100644
 --- a/salt/states/x509.py
 +++ b/salt/states/x509.py
-@@ -177,12 +177,14 @@ import os
+@@ -177,11 +177,12 @@ import os
  import re
  
  import salt.exceptions
 +import salt.utils.stringutils
- import salt.utils.versions
-+from salt.ext import six
  
  try:
      from M2Crypto.RSA import RSAError
@@ -390,7 +393,7 @@ index 8269df2f37..5ad7195b7c 100644
  
  log = logging.getLogger(__name__)
  
-@@ -194,7 +196,7 @@ def __virtual__():
+@@ -193,7 +194,7 @@ def __virtual__():
      if "x509.get_pem_entry" in __salt__:
          return "x509"
      else:
@@ -399,7 +402,7 @@ index 8269df2f37..5ad7195b7c 100644
  
  
  def _revoked_to_list(revs):
-@@ -696,7 +698,70 @@ def certificate_managed(
+@@ -683,7 +684,70 @@ def certificate_managed(name, days_remaining=90, append_certs=None, **kwargs):
              "Old": invalid_reason,
              "New": "Certificate will be valid and up to date",
          }
@@ -471,7 +474,7 @@ index 8269df2f37..5ad7195b7c 100644
  
      contents = __salt__["x509.create_certificate"](text=True, **kwargs)
      # Check the module actually returned a cert and not an error message as a string
-@@ -892,6 +957,8 @@ def pem_managed(name, text, backup=False, **kwargs):
+@@ -879,6 +943,8 @@ def pem_managed(name, text, backup=False, **kwargs):
          Any arguments supported by :py:func:`file.managed <salt.states.file.managed>` are supported.
      """
      file_args, kwargs = _get_file_args(name, **kwargs)
@@ -481,7 +484,24 @@ index 8269df2f37..5ad7195b7c 100644
 +    )
  
      return __states__["file.managed"](**file_args)
+diff --git a/tests/unit/modules/test_x509.py b/tests/unit/modules/test_x509.py
+index 20ca0d679a..8fa799437d 100644
+--- a/tests/unit/modules/test_x509.py
++++ b/tests/unit/modules/test_x509.py
+@@ -118,9 +118,9 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+ 
+         subj = FakeSubject()
+         x509._parse_subject(subj)
+-        assert x509.log.trace.call_args[0][0] == "Missing attribute '%s'. Error: %s"
+-        assert x509.log.trace.call_args[0][1] == list(subj.nid.keys())[0]
+-        assert isinstance(x509.log.trace.call_args[0][2], TypeError)
++        assert x509.log.debug.call_args[0][0] == "Missing attribute '%s'. Error: %s"
++        assert x509.log.debug.call_args[0][1] == list(subj.nid.keys())[0]
++        assert isinstance(x509.log.debug.call_args[0][2], TypeError)
+ 
+     @skipIf(not HAS_M2CRYPTO, "Skipping, M2Crypto is unavailable")
+     def test_get_pem_entry(self):
 -- 
-2.29.2
+2.33.0
 
 

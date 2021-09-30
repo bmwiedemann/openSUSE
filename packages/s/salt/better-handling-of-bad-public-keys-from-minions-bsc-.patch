@@ -1,4 +1,4 @@
-From cd64b9a063771829f85d6be0e42259825cfb10c8 Mon Sep 17 00:00:00 2001
+From f0025c6d00f174db587726bb15b78713cbbcf996 Mon Sep 17 00:00:00 2001
 From: "Daniel A. Wozniak" <dwozniak@saltstack.com>
 Date: Mon, 2 Aug 2021 13:50:37 -0700
 Subject: [PATCH] Better handling of bad public keys from minions
@@ -31,7 +31,7 @@ index 0000000000..0cd55b19a6
 @@ -0,0 +1 @@
 +Better handling of bad RSA public keys from minions
 diff --git a/salt/crypt.py b/salt/crypt.py
-index 0a8b728f50..e6e4f3181e 100644
+index f3da78f9ba..789c562e25 100644
 --- a/salt/crypt.py
 +++ b/salt/crypt.py
 @@ -36,6 +36,7 @@ import salt.utils.verify
@@ -42,7 +42,7 @@ index 0a8b728f50..e6e4f3181e 100644
      MasterExit,
      SaltClientError,
      SaltReqTimeoutError,
-@@ -217,10 +218,16 @@ def get_rsa_pub_key(path):
+@@ -220,10 +221,16 @@ def get_rsa_pub_key(path):
          with salt.utils.files.fopen(path, "rb") as f:
              data = f.read().replace(b"RSA ", b"")
          bio = BIO.MemoryBuffer(data)
@@ -79,18 +79,18 @@ index 033a19cc54..1da15f9e69 100644
      """
      Used in modules or grains when a required binary is not available
 diff --git a/salt/key.py b/salt/key.py
-index 75777ede06..59090c979c 100644
+index 16d20b1303..3b931152cc 100644
 --- a/salt/key.py
 +++ b/salt/key.py
-@@ -11,6 +11,7 @@ import fnmatch
+@@ -9,6 +9,7 @@ import itertools
  import logging
  import os
  import shutil
 +import sys
  
- # Import salt libs
  import salt.cache
-@@ -652,17 +653,27 @@ class Key(object):
+ import salt.client
+@@ -643,17 +644,27 @@ class Key:
              keydirs.append(self.REJ)
          if include_denied:
              keydirs.append(self.DEN)
@@ -112,7 +112,7 @@ index 75777ede06..59090c979c 100644
                      )
                      eload = {"result": True, "act": "accept", "id": key}
                      self.event.fire_event(eload, salt.utils.event.tagify(prefix="key"))
-                 except (IOError, OSError):
+                 except OSError:
                      pass
 +        for keydir, key in invalid_keys:
 +            matches[keydir].remove(key)
@@ -121,10 +121,10 @@ index 75777ede06..59090c979c 100644
  
      def accept_all(self):
 diff --git a/salt/transport/mixins/auth.py b/salt/transport/mixins/auth.py
-index 003cbd8275..0f0c615408 100644
+index 102af568f3..29b38d3027 100644
 --- a/salt/transport/mixins/auth.py
 +++ b/salt/transport/mixins/auth.py
-@@ -184,11 +184,11 @@ class AESReqServerMixin(object):
+@@ -174,11 +174,11 @@ class AESReqServerMixin:
          tagged "auth" and returns a dict with information about the auth
          event
  
@@ -141,7 +141,7 @@ index 003cbd8275..0f0c615408 100644
          """
  
          if not salt.utils.verify.valid_id(self.opts, load["id"]):
-@@ -460,7 +460,7 @@ class AESReqServerMixin(object):
+@@ -450,7 +450,7 @@ class AESReqServerMixin:
          # and an empty request comes in
          try:
              pub = salt.crypt.get_rsa_pub_key(pubfn)
@@ -151,10 +151,10 @@ index 003cbd8275..0f0c615408 100644
              return {"enc": "clear", "load": {"ret": False}}
  
 diff --git a/tests/pytests/integration/cli/test_salt_key.py b/tests/pytests/integration/cli/test_salt_key.py
-index 0edb2cf86c..2583348ce6 100644
+index 3ec87fe580..8f29929747 100644
 --- a/tests/pytests/integration/cli/test_salt_key.py
 +++ b/tests/pytests/integration/cli/test_salt_key.py
-@@ -328,3 +328,31 @@ def test_keys_generation_keysize_max(salt_key_cli):
+@@ -316,3 +316,31 @@ def test_keys_generation_keysize_max(salt_key_cli):
          )
          assert ret.exitcode != 0
          assert "error: The maximum value for keysize is 32768" in ret.stderr
@@ -213,6 +213,6 @@ index 0000000000..aa8f439b8c
 +    with pytest.raises(salt.crypt.InvalidKeyError):
 +        salt.crypt.get_rsa_pub_key(key_path)
 -- 
-2.32.0
+2.33.0
 
 

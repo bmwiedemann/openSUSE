@@ -1795,4 +1795,41 @@ let build start it or we will get libvirt errors.
 - transactional_updates: do not execute states in parallel but use a queue (bsc#1188170)</comment>
     <requestid>919452</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>42118c9bfc1f1380685615c58e19930b</srcmd5>
+    <version>3003.3</version>
+    <time>1633038180</time>
+    <user>dimstar_suse</user>
+    <comment>- Support querying for JSON data in external sql pillar
+- Added:
+  * 3003.3-postgresql-json-support-in-pillar-423.patch
+
+- Update to Salt release version 3003.3
+- See release notes: https://docs.saltstack.com/en/latest/topics/releases/3003.3.html
+- Added:
+  * allow-vendor-change-option-with-zypper.patch
+  * support-transactional-systems-microos.patch
+  * virt-enhancements.patch
+- Modified:
+  * adds-explicit-type-cast-for-port.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * fixes-56144-to-enable-hotadd-profile-support.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+  * debian-info_installed-compatibility-50453.patch
+  * fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * x509-fixes-111.patch
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * adding-preliminary-support-for-rocky.-59682-391.patch
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+  * fix-bsc-1065792.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch</comment>
+    <requestid>921725</requestid>
+  </revision>
 </revisionlist>

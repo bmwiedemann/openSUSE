@@ -1,7 +1,10 @@
-From 78faccbd063b8635550935057b8630262958f669 Mon Sep 17 00:00:00 2001
+From c25ee8158000770cb667b914de62f802467c204e Mon Sep 17 00:00:00 2001
 From: Mihai Dinca <mdinca@suse.de>
 Date: Fri, 16 Nov 2018 17:05:29 +0100
 Subject: [PATCH] Async batch implementation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Add find_job checks
 
@@ -24,25 +27,67 @@ Add the metadata to the start/done events
 Pass only metadata not all **kwargs
 
 Add separate batch presence_ping timeout
+
+Fix async batch race conditions
+
+Close batching when there is no next batch
+
+Add 'batch_presence_ping_timeout' and 'batch_presence_ping_gather_job_timeout' parameters for synchronous batching
+
+Fix async-batch multiple done events
+
+Fix memory leak produced by batch async find_jobs mechanism (bsc#1140912)
+
+Multiple fixes:
+
+- use different JIDs per find_job
+- fix bug in detection of find_job returns
+- fix timeout passed from request payload
+- better cleanup at the end of batching
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+Improve batch_async to release consumed memory (bsc#1140912)
+
+Use current IOLoop for the LocalClient instance of BatchAsync (bsc#1137642)
+
+Fix failing unit tests for batch async
+
+Remove unnecessary yield causing BadYieldError (bsc#1154620)
+
+Fixing StreamClosed issue
+
+Fix batch_async obsolete test
+
+batch_async: avoid using fnmatch to match event (#217)
+
+Batch Async: Catch exceptions and safety unregister and close instances
+
+Fix unit tests for batch async after refactor
+
+Changed imports to vendored Tornado
+
+Async batch implementation fix (#320)
+
+Remove deprecated usage of NO_MOCK and NO_MOCK_REASON
 ---
  salt/auth/__init__.py              |   2 +
- salt/cli/batch.py                  | 115 +++++++---
- salt/cli/batch_async.py            | 240 +++++++++++++++++++
- salt/client/__init__.py            |  14 ++
- salt/master.py                     |  26 ++-
- salt/netapi/__init__.py            |   3 +-
- salt/transport/ipc.py              |  43 ++--
+ salt/cli/batch.py                  | 109 ++++++--
+ salt/cli/batch_async.py            | 315 +++++++++++++++++++++++
+ salt/client/__init__.py            |  51 ++--
+ salt/master.py                     |  20 ++
+ salt/transport/ipc.py              |   9 +-
  salt/utils/event.py                |   8 +-
- tests/unit/cli/test_batch_async.py | 357 +++++++++++++++++++++++++++++
- 9 files changed, 741 insertions(+), 67 deletions(-)
+ tests/unit/cli/test_batch_async.py | 386 +++++++++++++++++++++++++++++
+ 8 files changed, 839 insertions(+), 61 deletions(-)
  create mode 100644 salt/cli/batch_async.py
  create mode 100644 tests/unit/cli/test_batch_async.py
 
 diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
-index ee1eac7ce4..22c54e8048 100644
+index 3b73c2ec08..6f300fe7c4 100644
 --- a/salt/auth/__init__.py
 +++ b/salt/auth/__init__.py
-@@ -52,6 +52,8 @@ AUTH_INTERNAL_KEYWORDS = frozenset(
+@@ -49,6 +49,8 @@ AUTH_INTERNAL_KEYWORDS = frozenset(
          "print_event",
          "raw",
          "yield_pub_data",
@@ -52,37 +97,18 @@ index ee1eac7ce4..22c54e8048 100644
  )
  
 diff --git a/salt/cli/batch.py b/salt/cli/batch.py
-index 155dc734b7..527cffdeb7 100644
+index 2a692e13f8..828a1ded5b 100644
 --- a/salt/cli/batch.py
 +++ b/salt/cli/batch.py
-@@ -1,10 +1,7 @@
--# -*- coding: utf-8 -*-
- """
- Execute batch runs
- """
- 
--# Import python libs
--from __future__ import absolute_import, print_function, unicode_literals
- 
- import copy
- 
-@@ -17,11 +14,8 @@ from datetime import datetime, timedelta
- import salt.client
- import salt.exceptions
+@@ -13,9 +13,88 @@ import salt.exceptions
  import salt.output
--
--# Import salt libs
  import salt.utils.stringutils
  
--# Import 3rd-party libs
- # pylint: disable=import-error,no-name-in-module,redefined-builtin
- from salt.ext import six
- from salt.ext.six.moves import range
-@@ -29,7 +23,77 @@ from salt.ext.six.moves import range
++# pylint: disable=import-error,no-name-in-module,redefined-builtin
++
  log = logging.getLogger(__name__)
  
  
--class Batch(object):
 +def get_bnum(opts, minions, quiet):
 +    """
 +    Return the active number of minions to maintain
@@ -137,6 +163,13 @@ index 155dc734b7..527cffdeb7 100644
 +        if key not in opts:
 +            opts[key] = val
 +
++    opts["batch_presence_ping_timeout"] = kwargs.get(
++        "batch_presence_ping_timeout", opts["timeout"]
++    )
++    opts["batch_presence_ping_gather_job_timeout"] = kwargs.get(
++        "batch_presence_ping_gather_job_timeout", opts["gather_job_timeout"]
++    )
++
 +    return opts
 +
 +
@@ -153,20 +186,41 @@ index 155dc734b7..527cffdeb7 100644
 +    return eauth
 +
 +
-+class Batch:
+ class Batch:
      """
      Manage the execution of batch runs
-     """
-@@ -75,7 +139,7 @@ class Batch(object):
-                 continue
-             else:
-                 try:
--                    m = next(six.iterkeys(ret))
-+                    m = next(iter(ret.keys()))
-                 except StopIteration:
-                     if not self.quiet:
-                         salt.utils.stringutils.print_cli(
-@@ -87,28 +151,7 @@ class Batch(object):
+@@ -39,6 +118,7 @@ class Batch:
+         self.pub_kwargs = eauth if eauth else {}
+         self.quiet = quiet
+         self.options = _parser
++        self.minions = set()
+         # Passing listen True to local client will prevent it from purging
+         # cahced events while iterating over the batches.
+         self.local = salt.client.get_local_client(opts["conf_file"], listen=True)
+@@ -51,7 +131,7 @@ class Batch:
+             self.opts["tgt"],
+             "test.ping",
+             [],
+-            self.opts["timeout"],
++            self.opts.get("batch_presence_ping_timeout", self.opts["timeout"]),
+         ]
+ 
+         selected_target_option = self.opts.get("selected_target_option", None)
+@@ -62,7 +142,12 @@ class Batch:
+ 
+         self.pub_kwargs["yield_pub_data"] = True
+         ping_gen = self.local.cmd_iter(
+-            *args, gather_job_timeout=self.opts["gather_job_timeout"], **self.pub_kwargs
++            *args,
++            gather_job_timeout=self.opts.get(
++                "batch_presence_ping_gather_job_timeout",
++                self.opts["gather_job_timeout"],
++            ),
++            **self.pub_kwargs
+         )
+ 
+         # Broadcast to targets
+@@ -87,25 +172,7 @@ class Batch:
          return (list(fret), ping_gen, nret.difference(fret))
  
      def get_bnum(self):
@@ -175,10 +229,7 @@ index 155dc734b7..527cffdeb7 100644
 -        """
 -        partition = lambda x: float(x) / 100.0 * len(self.minions)
 -        try:
--            if (
--                isinstance(self.opts["batch"], six.string_types)
--                and "%" in self.opts["batch"]
--            ):
+-            if isinstance(self.opts["batch"], str) and "%" in self.opts["batch"]:
 -                res = partition(float(self.opts["batch"].strip("%")))
 -                if res < 1:
 -                    return int(math.ceil(res))
@@ -189,83 +240,30 @@ index 155dc734b7..527cffdeb7 100644
 -        except ValueError:
 -            if not self.quiet:
 -                salt.utils.stringutils.print_cli(
--                    "Invalid batch data sent: {0}\nData must be in the "
+-                    "Invalid batch data sent: {}\nData must be in the "
 -                    "form of %10, 10% or 3".format(self.opts["batch"])
 -                )
 +        return get_bnum(self.opts, self.minions, self.quiet)
  
      def __update_wait(self, wait):
          now = datetime.now()
-@@ -161,7 +204,7 @@ class Batch(object):
-             # the user we won't be attempting to run a job on them
-             for down_minion in self.down_minions:
-                 salt.utils.stringutils.print_cli(
--                    "Minion {0} did not respond. No job will be sent.".format(
-+                    "Minion {} did not respond. No job will be sent.".format(
-                         down_minion
-                     )
-                 )
-@@ -190,7 +233,7 @@ class Batch(object):
-             if next_:
-                 if not self.quiet:
-                     salt.utils.stringutils.print_cli(
--                        "\nExecuting run on {0}\n".format(sorted(next_))
-+                        "\nExecuting run on {}\n".format(sorted(next_))
-                     )
-                 # create a new iterator for this batch of minions
-                 return_value = self.opts.get("return", self.opts.get("ret", ""))
-@@ -218,7 +261,7 @@ class Batch(object):
-             for ping_ret in self.ping_gen:
-                 if ping_ret is None:
-                     break
--                m = next(six.iterkeys(ping_ret))
-+                m = next(iter(ping_ret.keys()))
-                 if m not in self.minions:
-                     self.minions.append(m)
-                     to_run.append(m)
-@@ -243,7 +286,7 @@ class Batch(object):
-                                 )
-                             else:
-                                 salt.utils.stringutils.print_cli(
--                                    "minion {0} was already deleted from tracker, probably a duplicate key".format(
-+                                    "minion {} was already deleted from tracker, probably a duplicate key".format(
-                                         part["id"]
-                                     )
-                                 )
-@@ -254,7 +297,7 @@ class Batch(object):
-                                     minion_tracker[queue]["minions"].remove(id)
-                                 else:
-                                     salt.utils.stringutils.print_cli(
--                                        "minion {0} was already deleted from tracker, probably a duplicate key".format(
-+                                        "minion {} was already deleted from tracker, probably a duplicate key".format(
-                                             id
-                                         )
-                                     )
-@@ -274,7 +317,7 @@ class Batch(object):
-                                 parts[minion] = {}
-                                 parts[minion]["ret"] = {}
- 
--            for minion, data in six.iteritems(parts):
-+            for minion, data in parts.items():
-                 if minion in active:
-                     active.remove(minion)
-                     if bwait:
 diff --git a/salt/cli/batch_async.py b/salt/cli/batch_async.py
 new file mode 100644
-index 0000000000..1557e5105b
+index 0000000000..09aa85258b
 --- /dev/null
 +++ b/salt/cli/batch_async.py
-@@ -0,0 +1,240 @@
+@@ -0,0 +1,315 @@
 +"""
 +Execute a job on the targeted minions by using a moving window of fixed size `batch`.
 +"""
 +
-+import fnmatch
++import gc
 +
 +# pylint: enable=import-error,no-name-in-module,redefined-builtin
 +import logging
 +
 +import salt.client
++import salt.ext.tornado
 +import tornado
 +from salt.cli.batch import batch_get_eauth, batch_get_opts, get_bnum
 +
@@ -290,22 +288,24 @@ index 0000000000..1557e5105b
 +         - tag: salt/batch/<batch-jid>/start
 +         - data: {
 +             "available_minions": self.minions,
-+             "down_minions": self.down_minions
++             "down_minions": targeted_minions - presence_ping_minions
 +           }
 +
 +    When the batch ends, an `done` event is fired:
 +        - tag: salt/batch/<batch-jid>/done
 +        - data: {
 +             "available_minions": self.minions,
-+             "down_minions": self.down_minions,
++             "down_minions": targeted_minions - presence_ping_minions
 +             "done_minions": self.done_minions,
 +             "timedout_minions": self.timedout_minions
 +         }
 +    """
 +
 +    def __init__(self, parent_opts, jid_gen, clear_load):
-+        ioloop = tornado.ioloop.IOLoop.current()
-+        self.local = salt.client.get_local_client(parent_opts["conf_file"])
++        ioloop = salt.ext.tornado.ioloop.IOLoop.current()
++        self.local = salt.client.get_local_client(
++            parent_opts["conf_file"], io_loop=ioloop
++        )
 +        if "gather_job_timeout" in clear_load["kwargs"]:
 +            clear_load["gather_job_timeout"] = clear_load["kwargs"].pop(
 +                "gather_job_timeout"
@@ -326,15 +326,17 @@ index 0000000000..1557e5105b
 +        self.eauth = batch_get_eauth(clear_load["kwargs"])
 +        self.metadata = clear_load["kwargs"].get("metadata", {})
 +        self.minions = set()
-+        self.down_minions = set()
++        self.targeted_minions = set()
 +        self.timedout_minions = set()
 +        self.done_minions = set()
 +        self.active = set()
 +        self.initialized = False
++        self.jid_gen = jid_gen
 +        self.ping_jid = jid_gen()
 +        self.batch_jid = jid_gen()
 +        self.find_job_jid = jid_gen()
 +        self.find_job_returned = set()
++        self.ended = False
 +        self.event = salt.utils.event.get_event(
 +            "master",
 +            self.opts["sock_dir"],
@@ -344,48 +346,42 @@ index 0000000000..1557e5105b
 +            io_loop=ioloop,
 +            keep_loop=True,
 +        )
++        self.scheduled = False
++        self.patterns = set()
 +
 +    def __set_event_handler(self):
 +        ping_return_pattern = "salt/job/{}/ret/*".format(self.ping_jid)
 +        batch_return_pattern = "salt/job/{}/ret/*".format(self.batch_jid)
-+        find_job_return_pattern = "salt/job/{}/ret/*".format(self.find_job_jid)
 +        self.event.subscribe(ping_return_pattern, match_type="glob")
 +        self.event.subscribe(batch_return_pattern, match_type="glob")
-+        self.event.subscribe(find_job_return_pattern, match_type="glob")
-+        self.event.patterns = {
++        self.patterns = {
 +            (ping_return_pattern, "ping_return"),
 +            (batch_return_pattern, "batch_run"),
-+            (find_job_return_pattern, "find_job_return"),
 +        }
 +        self.event.set_event_handler(self.__event_handler)
 +
 +    def __event_handler(self, raw):
 +        if not self.event:
 +            return
-+        mtag, data = self.event.unpack(raw, self.event.serial)
-+        for (pattern, op) in self.event.patterns:
-+            if fnmatch.fnmatch(mtag, pattern):
-+                minion = data["id"]
-+                if op == "ping_return":
-+                    self.minions.add(minion)
-+                    self.down_minions.remove(minion)
-+                    if not self.down_minions:
-+                        self.event.io_loop.spawn_callback(self.start_batch)
-+                elif op == "find_job_return":
-+                    self.find_job_returned.add(minion)
-+                elif op == "batch_run":
-+                    if minion in self.active:
-+                        self.active.remove(minion)
-+                        self.done_minions.add(minion)
-+                        # call later so that we maybe gather more returns
-+                        self.event.io_loop.call_later(
-+                            self.batch_delay, self.schedule_next
-+                        )
-+
-+        if self.initialized and self.done_minions == self.minions.difference(
-+            self.timedout_minions
-+        ):
-+            self.end_batch()
++        try:
++            mtag, data = self.event.unpack(raw, self.event.serial)
++            for (pattern, op) in self.patterns:
++                if mtag.startswith(pattern[:-1]):
++                    minion = data["id"]
++                    if op == "ping_return":
++                        self.minions.add(minion)
++                        if self.targeted_minions == self.minions:
++                            self.event.io_loop.spawn_callback(self.start_batch)
++                    elif op == "find_job_return":
++                        if data.get("return", None):
++                            self.find_job_returned.add(minion)
++                    elif op == "batch_run":
++                        if minion in self.active:
++                            self.active.remove(minion)
++                            self.done_minions.add(minion)
++                            self.event.io_loop.spawn_callback(self.schedule_next)
++        except Exception as ex:
++            log.error("Exception occured while processing event: {}".format(ex))
 +
 +    def _get_next(self):
 +        to_run = (
@@ -399,111 +395,207 @@ index 0000000000..1557e5105b
 +        )
 +        return set(list(to_run)[:next_batch_size])
 +
-+    @tornado.gen.coroutine
-+    def check_find_job(self, minions):
-+        did_not_return = minions.difference(self.find_job_returned)
-+        if did_not_return:
-+            for minion in did_not_return:
-+                if minion in self.find_job_returned:
-+                    self.find_job_returned.remove(minion)
-+                if minion in self.active:
-+                    self.active.remove(minion)
-+                self.timedout_minions.add(minion)
-+        running = (
-+            minions.difference(did_not_return)
-+            .difference(self.done_minions)
-+            .difference(self.timedout_minions)
-+        )
-+        if running:
-+            self.event.io_loop.add_callback(self.find_job, running)
++    def check_find_job(self, batch_minions, jid):
++        if self.event:
++            find_job_return_pattern = "salt/job/{}/ret/*".format(jid)
++            self.event.unsubscribe(find_job_return_pattern, match_type="glob")
++            self.patterns.remove((find_job_return_pattern, "find_job_return"))
 +
-+    @tornado.gen.coroutine
++            timedout_minions = batch_minions.difference(
++                self.find_job_returned
++            ).difference(self.done_minions)
++            self.timedout_minions = self.timedout_minions.union(timedout_minions)
++            self.active = self.active.difference(self.timedout_minions)
++            running = batch_minions.difference(self.done_minions).difference(
++                self.timedout_minions
++            )
++
++            if timedout_minions:
++                self.schedule_next()
++
++            if self.event and running:
++                self.find_job_returned = self.find_job_returned.difference(running)
++                self.event.io_loop.spawn_callback(self.find_job, running)
++
++    @salt.ext.tornado.gen.coroutine
 +    def find_job(self, minions):
-+        not_done = minions.difference(self.done_minions)
-+        ping_return = yield self.local.run_job_async(
-+            not_done,
-+            "saltutil.find_job",
-+            [self.batch_jid],
-+            "list",
-+            gather_job_timeout=self.opts["gather_job_timeout"],
-+            jid=self.find_job_jid,
-+            **self.eauth
-+        )
-+        self.event.io_loop.call_later(
-+            self.opts["gather_job_timeout"], self.check_find_job, not_done
-+        )
++        if self.event:
++            not_done = minions.difference(self.done_minions).difference(
++                self.timedout_minions
++            )
++            try:
++                if not_done:
++                    jid = self.jid_gen()
++                    find_job_return_pattern = "salt/job/{}/ret/*".format(jid)
++                    self.patterns.add((find_job_return_pattern, "find_job_return"))
++                    self.event.subscribe(find_job_return_pattern, match_type="glob")
++                    ret = yield self.local.run_job_async(
++                        not_done,
++                        "saltutil.find_job",
++                        [self.batch_jid],
++                        "list",
++                        gather_job_timeout=self.opts["gather_job_timeout"],
++                        jid=jid,
++                        **self.eauth
++                    )
++                    yield salt.ext.tornado.gen.sleep(self.opts["gather_job_timeout"])
++                    if self.event:
++                        self.event.io_loop.spawn_callback(
++                            self.check_find_job, not_done, jid
++                        )
++            except Exception as ex:
++                log.error(
++                    "Exception occured handling batch async: {}. Aborting execution.".format(
++                        ex
++                    )
++                )
++                self.close_safe()
 +
-+    @tornado.gen.coroutine
++    @salt.ext.tornado.gen.coroutine
 +    def start(self):
-+        self.__set_event_handler()
-+        # start batching even if not all minions respond to ping
-+        self.event.io_loop.call_later(
-+            self.batch_presence_ping_timeout or self.opts["gather_job_timeout"],
-+            self.start_batch,
-+        )
-+        ping_return = yield self.local.run_job_async(
-+            self.opts["tgt"],
-+            "test.ping",
-+            [],
-+            self.opts.get("selected_target_option", self.opts.get("tgt_type", "glob")),
-+            gather_job_timeout=self.opts["gather_job_timeout"],
-+            jid=self.ping_jid,
-+            metadata=self.metadata,
-+            **self.eauth
-+        )
-+        self.down_minions = set(ping_return["minions"])
++        if self.event:
++            self.__set_event_handler()
++            ping_return = yield self.local.run_job_async(
++                self.opts["tgt"],
++                "test.ping",
++                [],
++                self.opts.get(
++                    "selected_target_option", self.opts.get("tgt_type", "glob")
++                ),
++                gather_job_timeout=self.opts["gather_job_timeout"],
++                jid=self.ping_jid,
++                metadata=self.metadata,
++                **self.eauth
++            )
++            self.targeted_minions = set(ping_return["minions"])
++            # start batching even if not all minions respond to ping
++            yield salt.ext.tornado.gen.sleep(
++                self.batch_presence_ping_timeout or self.opts["gather_job_timeout"]
++            )
++            if self.event:
++                self.event.io_loop.spawn_callback(self.start_batch)
 +
-+    @tornado.gen.coroutine
++    @salt.ext.tornado.gen.coroutine
 +    def start_batch(self):
 +        if not self.initialized:
 +            self.batch_size = get_bnum(self.opts, self.minions, True)
 +            self.initialized = True
 +            data = {
 +                "available_minions": self.minions,
-+                "down_minions": self.down_minions,
++                "down_minions": self.targeted_minions.difference(self.minions),
 +                "metadata": self.metadata,
 +            }
-+            self.event.fire_event(data, "salt/batch/{}/start".format(self.batch_jid))
-+            yield self.schedule_next()
++            ret = self.event.fire_event(
++                data, "salt/batch/{}/start".format(self.batch_jid)
++            )
++            if self.event:
++                self.event.io_loop.spawn_callback(self.run_next)
 +
++    @salt.ext.tornado.gen.coroutine
 +    def end_batch(self):
-+        data = {
-+            "available_minions": self.minions,
-+            "down_minions": self.down_minions,
-+            "done_minions": self.done_minions,
-+            "timedout_minions": self.timedout_minions,
-+            "metadata": self.metadata,
-+        }
-+        self.event.fire_event(data, "salt/batch/{}/done".format(self.batch_jid))
-+        self.event.remove_event_handler(self.__event_handler)
++        left = self.minions.symmetric_difference(
++            self.done_minions.union(self.timedout_minions)
++        )
++        if not left and not self.ended:
++            self.ended = True
++            data = {
++                "available_minions": self.minions,
++                "down_minions": self.targeted_minions.difference(self.minions),
++                "done_minions": self.done_minions,
++                "timedout_minions": self.timedout_minions,
++                "metadata": self.metadata,
++            }
++            self.event.fire_event(data, "salt/batch/{}/done".format(self.batch_jid))
 +
-+    @tornado.gen.coroutine
++            # release to the IOLoop to allow the event to be published
++            # before closing batch async execution
++            yield salt.ext.tornado.gen.sleep(1)
++            self.close_safe()
++
++    def close_safe(self):
++        for (pattern, label) in self.patterns:
++            self.event.unsubscribe(pattern, match_type="glob")
++        self.event.remove_event_handler(self.__event_handler)
++        self.event = None
++        self.local = None
++        self.ioloop = None
++        del self
++        gc.collect()
++
++    @salt.ext.tornado.gen.coroutine
 +    def schedule_next(self):
++        if not self.scheduled:
++            self.scheduled = True
++            # call later so that we maybe gather more returns
++            yield salt.ext.tornado.gen.sleep(self.batch_delay)
++            if self.event:
++                self.event.io_loop.spawn_callback(self.run_next)
++
++    @salt.ext.tornado.gen.coroutine
++    def run_next(self):
++        self.scheduled = False
 +        next_batch = self._get_next()
 +        if next_batch:
-+            yield self.local.run_job_async(
-+                next_batch,
-+                self.opts["fun"],
-+                self.opts["arg"],
-+                "list",
-+                raw=self.opts.get("raw", False),
-+                ret=self.opts.get("return", ""),
-+                gather_job_timeout=self.opts["gather_job_timeout"],
-+                jid=self.batch_jid,
-+                metadata=self.metadata,
-+            )
-+            self.event.io_loop.call_later(
-+                self.opts["timeout"], self.find_job, set(next_batch)
-+            )
 +            self.active = self.active.union(next_batch)
++            try:
++                ret = yield self.local.run_job_async(
++                    next_batch,
++                    self.opts["fun"],
++                    self.opts["arg"],
++                    "list",
++                    raw=self.opts.get("raw", False),
++                    ret=self.opts.get("return", ""),
++                    gather_job_timeout=self.opts["gather_job_timeout"],
++                    jid=self.batch_jid,
++                    metadata=self.metadata,
++                )
++
++                yield salt.ext.tornado.gen.sleep(self.opts["timeout"])
++
++                # The batch can be done already at this point, which means no self.event
++                if self.event:
++                    self.event.io_loop.spawn_callback(self.find_job, set(next_batch))
++            except Exception as ex:
++                log.error("Error in scheduling next batch: %s. Aborting execution", ex)
++                self.active = self.active.difference(next_batch)
++                self.close_safe()
++        else:
++            yield self.end_batch()
++        gc.collect()
++
++    def __del__(self):
++        self.local = None
++        self.event = None
++        self.ioloop = None
++        gc.collect()
 diff --git a/salt/client/__init__.py b/salt/client/__init__.py
-index 6fab45fcbf..1e9f11df4c 100644
+index 8ea8818d01..482d3ac7bd 100644
 --- a/salt/client/__init__.py
 +++ b/salt/client/__init__.py
-@@ -543,6 +543,20 @@ class LocalClient:
+@@ -584,47 +584,23 @@ class LocalClient:
+             {'dave': {...}}
+             {'stewart': {...}}
+         """
+-        # We need to re-import salt.utils.args here
+-        # even though it has already been imported.
+-        # when cmd_batch is called via the NetAPI
+-        # the module is unavailable.
+-        import salt.utils.args
+-
          # Late import - not used anywhere else in this file
          import salt.cli.batch
  
+-        arg = salt.utils.args.condition_input(arg, kwarg)
+-        opts = {
+-            "tgt": tgt,
+-            "fun": fun,
+-            "arg": arg,
+-            "tgt_type": tgt_type,
+-            "ret": ret,
+-            "batch": batch,
+-            "failhard": kwargs.get("failhard", self.opts.get("failhard", False)),
+-            "raw": kwargs.get("raw", False),
+-        }
 +        opts = salt.cli.batch.batch_get_opts(
 +            tgt,
 +            fun,
@@ -517,57 +609,63 @@ index 6fab45fcbf..1e9f11df4c 100644
 +        )
 +
 +        eauth = salt.cli.batch.batch_get_eauth(kwargs)
-+
-         arg = salt.utils.args.condition_input(arg, kwarg)
-         opts = {
-             "tgt": tgt,
+ 
+-        if "timeout" in kwargs:
+-            opts["timeout"] = kwargs["timeout"]
+-        if "gather_job_timeout" in kwargs:
+-            opts["gather_job_timeout"] = kwargs["gather_job_timeout"]
+-        if "batch_wait" in kwargs:
+-            opts["batch_wait"] = int(kwargs["batch_wait"])
+-
+-        eauth = {}
+-        if "eauth" in kwargs:
+-            eauth["eauth"] = kwargs.pop("eauth")
+-        if "username" in kwargs:
+-            eauth["username"] = kwargs.pop("username")
+-        if "password" in kwargs:
+-            eauth["password"] = kwargs.pop("password")
+-        if "token" in kwargs:
+-            eauth["token"] = kwargs.pop("token")
+-
+-        for key, val in self.opts.items():
+-            if key not in opts:
+-                opts[key] = val
+         batch = salt.cli.batch.Batch(opts, eauth=eauth, quiet=True)
+         for ret in batch.run():
+             yield ret
+@@ -1812,6 +1788,7 @@ class LocalClient:
+             "key": self.key,
+             "tgt_type": tgt_type,
+             "ret": ret,
++            "timeout": timeout,
+             "jid": jid,
+         }
+ 
 diff --git a/salt/master.py b/salt/master.py
-index 1c91c28209..b9bc1a7a67 100644
+index 37fe52159f..795aeef647 100644
 --- a/salt/master.py
 +++ b/salt/master.py
-@@ -3,7 +3,6 @@ This module contains all of the routines needed to set up a master server, this
- involves preparing the three listeners and the workers needed by the master.
- """
- 
--# Import python libs
- 
- import collections
- import copy
-@@ -21,10 +20,9 @@ import time
+@@ -19,6 +19,7 @@ import time
  
  import salt.acl
  import salt.auth
 +import salt.cli.batch_async
  import salt.client
  import salt.client.ssh.client
--
--# Import salt libs
  import salt.crypt
- import salt.daemons.masterapi
- import salt.defaults.exitcodes
-@@ -89,7 +87,6 @@ except ImportError:
-     # resource is not available on windows
-     HAS_RESOURCE = False
- 
--# Import halite libs
- try:
-     import halite  # pylint: disable=import-error
- 
-@@ -2232,6 +2229,24 @@ class ClearFuncs(TransportMethods):
+@@ -2167,6 +2168,22 @@ class ClearFuncs(TransportMethods):
              return False
          return self.loadauth.get_tok(clear_load["token"])
  
 +    def publish_batch(self, clear_load, minions, missing):
 +        batch_load = {}
 +        batch_load.update(clear_load)
-+        import salt.cli.batch_async
-+
 +        batch = salt.cli.batch_async.BatchAsync(
 +            self.local.opts,
 +            functools.partial(self._prep_jid, clear_load, {}),
 +            batch_load,
 +        )
-+        ioloop = tornado.ioloop.IOLoop.current()
++        ioloop = salt.ext.tornado.ioloop.IOLoop.current()
 +        ioloop.add_callback(batch.start)
 +
 +        return {
@@ -578,7 +676,7 @@ index 1c91c28209..b9bc1a7a67 100644
      def publish(self, clear_load):
          """
          This method sends out publications to the minions, it can only be used
-@@ -2349,6 +2364,9 @@ class ClearFuncs(TransportMethods):
+@@ -2284,6 +2301,9 @@ class ClearFuncs(TransportMethods):
                          ),
                      },
                  }
@@ -588,139 +686,11 @@ index 1c91c28209..b9bc1a7a67 100644
          jid = self._prep_jid(clear_load, extra)
          if jid is None:
              return {"enc": "clear", "load": {"error": "Master failed to assign jid"}}
-diff --git a/salt/netapi/__init__.py b/salt/netapi/__init__.py
-index 96f57f6c79..dec19b37ef 100644
---- a/salt/netapi/__init__.py
-+++ b/salt/netapi/__init__.py
-@@ -151,7 +151,8 @@ class NetapiClient:
-         :return: job ID
-         """
-         local = salt.client.get_local_client(mopts=self.opts)
--        return local.run_job(*args, **kwargs)
-+        ret = local.run_job(*args, **kwargs)
-+        return ret
- 
-     def local(self, *args, **kwargs):
-         """
 diff --git a/salt/transport/ipc.py b/salt/transport/ipc.py
-index 041718d058..f411907da2 100644
+index 29210d7522..3f430ba796 100644
 --- a/salt/transport/ipc.py
 +++ b/salt/transport/ipc.py
-@@ -1,10 +1,7 @@
--# -*- coding: utf-8 -*-
- """
- IPC transport classes
- """
- 
--# Import Python libs
--from __future__ import absolute_import, print_function, unicode_literals
- 
- import errno
- import logging
-@@ -12,15 +9,12 @@ import socket
- import sys
- import time
- 
--# Import Tornado libs
- import salt.ext.tornado
- import salt.ext.tornado.concurrent
- import salt.ext.tornado.gen
- import salt.ext.tornado.netutil
- import salt.transport.client
- import salt.transport.frame
--
--# Import Salt libs
- import salt.utils.msgpack
- from salt.ext import six
- from salt.ext.tornado.ioloop import IOLoop
-@@ -42,7 +36,7 @@ def future_with_timeout_callback(future):
- 
- class FutureWithTimeout(salt.ext.tornado.concurrent.Future):
-     def __init__(self, io_loop, future, timeout):
--        super(FutureWithTimeout, self).__init__()
-+        super().__init__()
-         self.io_loop = io_loop
-         self._future = future
-         if timeout is not None:
-@@ -85,7 +79,7 @@ class FutureWithTimeout(salt.ext.tornado.concurrent.Future):
-             self.set_exception(exc)
- 
- 
--class IPCServer(object):
-+class IPCServer:
-     """
-     A Tornado IPC server very similar to Tornado's TCPServer class
-     but using either UNIX domain sockets or TCP sockets
-@@ -181,10 +175,7 @@ class IPCServer(object):
-             # Under Py2 we still want raw to be set to True
-             msgpack_kwargs = {"raw": six.PY2}
-         else:
--            if six.PY2:
--                msgpack_kwargs = {"encoding": None}
--            else:
--                msgpack_kwargs = {"encoding": "utf-8"}
-+            msgpack_kwargs = {"encoding": "utf-8"}
-         unpacker = salt.utils.msgpack.Unpacker(**msgpack_kwargs)
-         while not stream.closed():
-             try:
-@@ -200,7 +191,7 @@ class IPCServer(object):
-             except StreamClosedError:
-                 log.trace("Client disconnected from IPC %s", self.socket_path)
-                 break
--            except socket.error as exc:
-+            except OSError as exc:
-                 # On occasion an exception will occur with
-                 # an error code of 0, it's a spurious exception.
-                 if exc.errno == 0:
-@@ -247,7 +238,7 @@ class IPCServer(object):
-     # pylint: enable=W1701
- 
- 
--class IPCClient(object):
-+class IPCClient:
-     """
-     A Tornado IPC client very similar to Tornado's TCPClient class
-     but using either UNIX domain sockets or TCP sockets
-@@ -282,10 +273,7 @@ class IPCClient(object):
-             # Under Py2 we still want raw to be set to True
-             msgpack_kwargs = {"raw": six.PY2}
-         else:
--            if six.PY2:
--                msgpack_kwargs = {"encoding": None}
--            else:
--                msgpack_kwargs = {"encoding": "utf-8"}
-+            msgpack_kwargs = {"encoding": "utf-8"}
-         self.unpacker = salt.utils.msgpack.Unpacker(**msgpack_kwargs)
- 
-     def connected(self):
-@@ -385,10 +373,10 @@ class IPCClient(object):
-         if self.stream is not None and not self.stream.closed():
-             try:
-                 self.stream.close()
--            except socket.error as exc:
-+            except OSError as exc:
-                 if exc.errno != errno.EBADF:
-                     # If its not a bad file descriptor error, raise
--                    six.reraise(*sys.exc_info())
-+                    raise
- 
- 
- class IPCMessageClient(IPCClient):
-@@ -483,7 +471,7 @@ class IPCMessageServer(IPCServer):
-     """
- 
- 
--class IPCMessagePublisher(object):
-+class IPCMessagePublisher:
-     """
-     A Tornado IPC Publisher similar to Tornado's TCPServer class
-     but using either UNIX domain sockets or TCP sockets
-@@ -645,10 +633,11 @@ class IPCMessageSubscriber(IPCClient):
-     """
- 
-     def __init__(self, socket_path, io_loop=None):
--        super(IPCMessageSubscriber, self).__init__(socket_path, io_loop=io_loop)
-+        super().__init__(socket_path, io_loop=io_loop)
+@@ -650,6 +650,7 @@ class IPCMessageSubscriber(IPCClient):
          self._read_stream_future = None
          self._saved_data = []
          self._read_in_progress = Lock()
@@ -728,7 +698,7 @@ index 041718d058..f411907da2 100644
  
      @salt.ext.tornado.gen.coroutine
      def _read(self, timeout, callback=None):
-@@ -725,8 +714,12 @@ class IPCMessageSubscriber(IPCClient):
+@@ -749,8 +750,12 @@ class IPCMessageSubscriber(IPCClient):
              return self._saved_data.pop(0)
          return self.io_loop.run_sync(lambda: self._read(timeout))
  
@@ -742,7 +712,7 @@ index 041718d058..f411907da2 100644
          """
          Asynchronously read messages and invoke a callback when they are ready.
  
-@@ -744,7 +737,7 @@ class IPCMessageSubscriber(IPCClient):
+@@ -768,7 +773,7 @@ class IPCMessageSubscriber(IPCClient):
              except Exception as exc:  # pylint: disable=broad-except
                  log.error("Exception occurred while Subscriber connecting: %s", exc)
                  yield salt.ext.tornado.gen.sleep(1)
@@ -751,20 +721,11 @@ index 041718d058..f411907da2 100644
  
      def close(self):
          """
-@@ -754,7 +747,7 @@ class IPCMessageSubscriber(IPCClient):
-         """
-         if self._closing:
-             return
--        super(IPCMessageSubscriber, self).close()
-+        super().close()
-         # This will prevent this message from showing up:
-         # '[ERROR   ] Future exception was never retrieved:
-         # StreamClosedError'
 diff --git a/salt/utils/event.py b/salt/utils/event.py
-index 6f7edef4e5..ae200f9dfa 100644
+index 3c91daa2b4..fd23197747 100644
 --- a/salt/utils/event.py
 +++ b/salt/utils/event.py
-@@ -867,6 +867,10 @@ class SaltEvent:
+@@ -920,6 +920,10 @@ class SaltEvent:
                      # Minion fired a bad retcode, fire an event
                      self._fire_ret_load_specific_fun(load)
  
@@ -775,7 +736,7 @@ index 6f7edef4e5..ae200f9dfa 100644
      def set_event_handler(self, event_handler):
          """
          Invoke the event_handler callback each time an event arrives.
-@@ -875,8 +879,10 @@ class SaltEvent:
+@@ -928,8 +932,10 @@ class SaltEvent:
  
          if not self.cpub:
              self.connect_pub()
@@ -789,18 +750,17 @@ index 6f7edef4e5..ae200f9dfa 100644
      def __del__(self):
 diff --git a/tests/unit/cli/test_batch_async.py b/tests/unit/cli/test_batch_async.py
 new file mode 100644
-index 0000000000..3f8626a2dd
+index 0000000000..c0b708de76
 --- /dev/null
 +++ b/tests/unit/cli/test_batch_async.py
-@@ -0,0 +1,357 @@
-+import tornado
+@@ -0,0 +1,386 @@
++import salt.ext.tornado
 +from salt.cli.batch_async import BatchAsync
-+from tests.support.mock import NO_MOCK, NO_MOCK_REASON, MagicMock, patch
++from salt.ext.tornado.testing import AsyncTestCase
++from tests.support.mock import MagicMock, patch
 +from tests.support.unit import TestCase, skipIf
-+from tornado.testing import AsyncTestCase
 +
 +
-+@skipIf(NO_MOCK, NO_MOCK_REASON)
 +class AsyncBatchTestCase(AsyncTestCase, TestCase):
 +    def setUp(self):
 +        self.io_loop = self.get_new_ioloop()
@@ -847,37 +807,37 @@ index 0000000000..3f8626a2dd
 +        self.batch.start_batch()
 +        self.assertEqual(self.batch.batch_size, 2)
 +
-+    @tornado.testing.gen_test
++    @salt.ext.tornado.testing.gen_test
 +    def test_batch_start_on_batch_presence_ping_timeout(self):
 +        self.batch.event = MagicMock()
-+        future = tornado.gen.Future()
++        future = salt.ext.tornado.gen.Future()
 +        future.set_result({"minions": ["foo", "bar"]})
 +        self.batch.local.run_job_async.return_value = future
 +        ret = self.batch.start()
 +        # assert start_batch is called later with batch_presence_ping_timeout as param
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (self.batch.batch_presence_ping_timeout, self.batch.start_batch),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.start_batch,),
 +        )
 +        # assert test.ping called
 +        self.assertEqual(
 +            self.batch.local.run_job_async.call_args[0], ("*", "test.ping", [], "glob")
 +        )
-+        # assert down_minions == all minions matched by tgt
-+        self.assertEqual(self.batch.down_minions, {"foo", "bar"})
++        # assert targeted_minions == all minions matched by tgt
++        self.assertEqual(self.batch.targeted_minions, {"foo", "bar"})
 +
-+    @tornado.testing.gen_test
++    @salt.ext.tornado.testing.gen_test
 +    def test_batch_start_on_gather_job_timeout(self):
 +        self.batch.event = MagicMock()
-+        future = tornado.gen.Future()
++        future = salt.ext.tornado.gen.Future()
 +        future.set_result({"minions": ["foo", "bar"]})
 +        self.batch.local.run_job_async.return_value = future
 +        self.batch.batch_presence_ping_timeout = None
 +        ret = self.batch.start()
 +        # assert start_batch is called later with gather_job_timeout as param
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (self.batch.opts["gather_job_timeout"], self.batch.start_batch),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.start_batch,),
 +        )
 +
 +    def test_batch_fire_start_event(self):
@@ -898,55 +858,81 @@ index 0000000000..3f8626a2dd
 +            ),
 +        )
 +
-+    @tornado.testing.gen_test
++    @salt.ext.tornado.testing.gen_test
 +    def test_start_batch_calls_next(self):
-+        self.batch.schedule_next = MagicMock(return_value=MagicMock())
++        self.batch.run_next = MagicMock(return_value=MagicMock())
 +        self.batch.event = MagicMock()
-+        future = tornado.gen.Future()
-+        future.set_result(None)
-+        self.batch.schedule_next = MagicMock(return_value=future)
 +        self.batch.start_batch()
 +        self.assertEqual(self.batch.initialized, True)
-+        self.assertEqual(len(self.batch.schedule_next.mock_calls), 1)
++        self.assertEqual(
++            self.batch.event.io_loop.spawn_callback.call_args[0], (self.batch.run_next,)
++        )
 +
 +    def test_batch_fire_done_event(self):
++        self.batch.targeted_minions = {"foo", "baz", "bar"}
 +        self.batch.minions = {"foo", "bar"}
++        self.batch.done_minions = {"foo"}
++        self.batch.timedout_minions = {"bar"}
 +        self.batch.event = MagicMock()
 +        self.batch.metadata = {"mykey": "myvalue"}
++        old_event = self.batch.event
 +        self.batch.end_batch()
 +        self.assertEqual(
-+            self.batch.event.fire_event.call_args[0],
++            old_event.fire_event.call_args[0],
 +            (
 +                {
 +                    "available_minions": {"foo", "bar"},
-+                    "done_minions": set(),
-+                    "down_minions": set(),
-+                    "timedout_minions": set(),
++                    "done_minions": self.batch.done_minions,
++                    "down_minions": {"baz"},
++                    "timedout_minions": self.batch.timedout_minions,
 +                    "metadata": self.batch.metadata,
 +                },
 +                "salt/batch/1235/done",
 +            ),
 +        )
-+        self.assertEqual(len(self.batch.event.remove_event_handler.mock_calls), 1)
 +
-+    @tornado.testing.gen_test
++    def test_batch__del__(self):
++        batch = BatchAsync(MagicMock(), MagicMock(), MagicMock())
++        event = MagicMock()
++        batch.event = event
++        batch.__del__()
++        self.assertEqual(batch.local, None)
++        self.assertEqual(batch.event, None)
++        self.assertEqual(batch.ioloop, None)
++
++    def test_batch_close_safe(self):
++        batch = BatchAsync(MagicMock(), MagicMock(), MagicMock())
++        event = MagicMock()
++        batch.event = event
++        batch.patterns = {
++            ("salt/job/1234/ret/*", "find_job_return"),
++            ("salt/job/4321/ret/*", "find_job_return"),
++        }
++        batch.close_safe()
++        self.assertEqual(batch.local, None)
++        self.assertEqual(batch.event, None)
++        self.assertEqual(batch.ioloop, None)
++        self.assertEqual(len(event.unsubscribe.mock_calls), 2)
++        self.assertEqual(len(event.remove_event_handler.mock_calls), 1)
++
++    @salt.ext.tornado.testing.gen_test
 +    def test_batch_next(self):
 +        self.batch.event = MagicMock()
 +        self.batch.opts["fun"] = "my.fun"
 +        self.batch.opts["arg"] = []
 +        self.batch._get_next = MagicMock(return_value={"foo", "bar"})
 +        self.batch.batch_size = 2
-+        future = tornado.gen.Future()
++        future = salt.ext.tornado.gen.Future()
 +        future.set_result({"minions": ["foo", "bar"]})
 +        self.batch.local.run_job_async.return_value = future
-+        ret = self.batch.schedule_next().result()
++        self.batch.run_next()
 +        self.assertEqual(
 +            self.batch.local.run_job_async.call_args[0],
 +            ({"foo", "bar"}, "my.fun", [], "list"),
 +        )
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (self.batch.opts["timeout"], self.batch.find_job, {"foo", "bar"}),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.find_job, {"foo", "bar"}),
 +        )
 +        self.assertEqual(self.batch.active, {"bar", "foo"})
 +
@@ -1000,7 +986,7 @@ index 0000000000..3f8626a2dd
 +        self.assertEqual(self.batch._get_next(), set())
 +
 +    def test_batch__event_handler_ping_return(self):
-+        self.batch.down_minions = {"foo"}
++        self.batch.targeted_minions = {"foo"}
 +        self.batch.event = MagicMock(
 +            unpack=MagicMock(return_value=("salt/job/1234/ret/foo", {"id": "foo"}))
 +        )
@@ -1011,7 +997,7 @@ index 0000000000..3f8626a2dd
 +        self.assertEqual(self.batch.done_minions, set())
 +
 +    def test_batch__event_handler_call_start_batch_when_all_pings_return(self):
-+        self.batch.down_minions = {"foo"}
++        self.batch.targeted_minions = {"foo"}
 +        self.batch.event = MagicMock(
 +            unpack=MagicMock(return_value=("salt/job/1234/ret/foo", {"id": "foo"}))
 +        )
@@ -1023,7 +1009,7 @@ index 0000000000..3f8626a2dd
 +        )
 +
 +    def test_batch__event_handler_not_call_start_batch_when_not_all_pings_return(self):
-+        self.batch.down_minions = {"foo", "bar"}
++        self.batch.targeted_minions = {"foo", "bar"}
 +        self.batch.event = MagicMock(
 +            unpack=MagicMock(return_value=("salt/job/1234/ret/foo", {"id": "foo"}))
 +        )
@@ -1041,72 +1027,68 @@ index 0000000000..3f8626a2dd
 +        self.assertEqual(self.batch.active, set())
 +        self.assertEqual(self.batch.done_minions, {"foo"})
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (self.batch.batch_delay, self.batch.schedule_next),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.schedule_next,),
 +        )
 +
 +    def test_batch__event_handler_find_job_return(self):
 +        self.batch.event = MagicMock(
-+            unpack=MagicMock(return_value=("salt/job/1236/ret/foo", {"id": "foo"}))
++            unpack=MagicMock(
++                return_value=(
++                    "salt/job/1236/ret/foo",
++                    {"id": "foo", "return": "deadbeaf"},
++                )
++            )
 +        )
 +        self.batch.start()
++        self.batch.patterns.add(("salt/job/1236/ret/*", "find_job_return"))
 +        self.batch._BatchAsync__event_handler(MagicMock())
 +        self.assertEqual(self.batch.find_job_returned, {"foo"})
 +
-+    @tornado.testing.gen_test
-+    def test_batch__event_handler_end_batch(self):
-+        self.batch.event = MagicMock(
-+            unpack=MagicMock(
-+                return_value=("salt/job/not-my-jid/ret/foo", {"id": "foo"})
-+            )
-+        )
-+        future = tornado.gen.Future()
-+        future.set_result({"minions": ["foo", "bar", "baz"]})
-+        self.batch.local.run_job_async.return_value = future
-+        self.batch.start()
-+        self.batch.initialized = True
-+        self.assertEqual(self.batch.down_minions, {"foo", "bar", "baz"})
++    @salt.ext.tornado.testing.gen_test
++    def test_batch_run_next_end_batch_when_no_next(self):
 +        self.batch.end_batch = MagicMock()
-+        self.batch.minions = {"foo", "bar", "baz"}
-+        self.batch.done_minions = {"foo", "bar"}
-+        self.batch.timedout_minions = {"baz"}
-+        self.batch._BatchAsync__event_handler(MagicMock())
++        self.batch._get_next = MagicMock(return_value={})
++        self.batch.run_next()
 +        self.assertEqual(len(self.batch.end_batch.mock_calls), 1)
 +
-+    @tornado.testing.gen_test
++    @salt.ext.tornado.testing.gen_test
 +    def test_batch_find_job(self):
 +        self.batch.event = MagicMock()
-+        future = tornado.gen.Future()
++        future = salt.ext.tornado.gen.Future()
 +        future.set_result({})
 +        self.batch.local.run_job_async.return_value = future
++        self.batch.minions = {"foo", "bar"}
++        self.batch.jid_gen = MagicMock(return_value="1234")
++        salt.ext.tornado.gen.sleep = MagicMock(return_value=future)
 +        self.batch.find_job({"foo", "bar"})
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (
-+                self.batch.opts["gather_job_timeout"],
-+                self.batch.check_find_job,
-+                {"foo", "bar"},
-+            ),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.check_find_job, {"foo", "bar"}, "1234"),
 +        )
 +
-+    @tornado.testing.gen_test
++    @salt.ext.tornado.testing.gen_test
 +    def test_batch_find_job_with_done_minions(self):
 +        self.batch.done_minions = {"bar"}
 +        self.batch.event = MagicMock()
-+        future = tornado.gen.Future()
++        future = salt.ext.tornado.gen.Future()
 +        future.set_result({})
 +        self.batch.local.run_job_async.return_value = future
++        self.batch.minions = {"foo", "bar"}
++        self.batch.jid_gen = MagicMock(return_value="1234")
++        salt.ext.tornado.gen.sleep = MagicMock(return_value=future)
 +        self.batch.find_job({"foo", "bar"})
 +        self.assertEqual(
-+            self.batch.event.io_loop.call_later.call_args[0],
-+            (self.batch.opts["gather_job_timeout"], self.batch.check_find_job, {"foo"}),
++            self.batch.event.io_loop.spawn_callback.call_args[0],
++            (self.batch.check_find_job, {"foo"}, "1234"),
 +        )
 +
 +    def test_batch_check_find_job_did_not_return(self):
 +        self.batch.event = MagicMock()
 +        self.batch.active = {"foo"}
 +        self.batch.find_job_returned = set()
-+        self.batch.check_find_job({"foo"})
++        self.batch.patterns = {("salt/job/1234/ret/*", "find_job_return")}
++        self.batch.check_find_job({"foo"}, jid="1234")
 +        self.assertEqual(self.batch.find_job_returned, set())
 +        self.assertEqual(self.batch.active, set())
 +        self.assertEqual(len(self.batch.event.io_loop.add_callback.mock_calls), 0)
@@ -1114,9 +1096,10 @@ index 0000000000..3f8626a2dd
 +    def test_batch_check_find_job_did_return(self):
 +        self.batch.event = MagicMock()
 +        self.batch.find_job_returned = {"foo"}
-+        self.batch.check_find_job({"foo"})
++        self.batch.patterns = {("salt/job/1234/ret/*", "find_job_return")}
++        self.batch.check_find_job({"foo"}, jid="1234")
 +        self.assertEqual(
-+            self.batch.event.io_loop.add_callback.call_args[0],
++            self.batch.event.io_loop.spawn_callback.call_args[0],
 +            (self.batch.find_job, {"foo"}),
 +        )
 +
@@ -1137,7 +1120,8 @@ index 0000000000..3f8626a2dd
 +        # both not yet done but only 'foo' responded to find_job
 +        not_done = {"foo", "bar"}
 +
-+        self.batch.check_find_job(not_done)
++        self.batch.patterns = {("salt/job/1234/ret/*", "find_job_return")}
++        self.batch.check_find_job(not_done, jid="1234")
 +
 +        # assert 'bar' removed from active
 +        self.assertEqual(self.batch.active, {"foo"})
@@ -1147,10 +1131,16 @@ index 0000000000..3f8626a2dd
 +
 +        # assert 'find_job' schedueled again only for 'foo'
 +        self.assertEqual(
-+            self.batch.event.io_loop.add_callback.call_args[0],
++            self.batch.event.io_loop.spawn_callback.call_args[0],
 +            (self.batch.find_job, {"foo"}),
 +        )
++
++    def test_only_on_run_next_is_scheduled(self):
++        self.batch.event = MagicMock()
++        self.batch.scheduled = True
++        self.batch.schedule_next()
++        self.assertEqual(len(self.batch.event.io_loop.spawn_callback.mock_calls), 0)
 -- 
-2.29.2
+2.33.0
 
 

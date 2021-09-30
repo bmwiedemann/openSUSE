@@ -1,9 +1,8 @@
-From 271826b0baa6b2281bc2eac9118a0fcc4675f106 Mon Sep 17 00:00:00 2001
+From 1b54843abe5fad0bac844d6d5d9707df3e501aae Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Wed, 19 May 2021 16:24:27 +0100
-Subject: [PATCH] Figure out Python interpreter to use inside
- containers
+Subject: [PATCH] Figure out Python interpreter to use inside containers
 
 Fix unit test for dockermod.call function
 ---
@@ -12,10 +11,10 @@ Fix unit test for dockermod.call function
  2 files changed, 41 insertions(+), 17 deletions(-)
 
 diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
-index 176b4db926..cad307e7af 100644
+index ab2296a945..6d60a9a5aa 100644
 --- a/salt/modules/dockermod.py
 +++ b/salt/modules/dockermod.py
-@@ -217,7 +217,6 @@ import re
+@@ -209,7 +209,6 @@ import re
  import shutil
  import string
  import subprocess
@@ -23,7 +22,7 @@ index 176b4db926..cad307e7af 100644
  import time
  import uuid
  
-@@ -6865,9 +6864,32 @@ def call(name, function, *args, **kwargs):
+@@ -6728,9 +6727,32 @@ def call(name, function, *args, **kwargs):
          name, thin_path, os.path.join(thin_dest_path, os.path.basename(thin_path))
      )
  
@@ -55,22 +54,22 @@ index 176b4db926..cad307e7af 100644
 -        "python",
 +        container_python_bin,
          "-c",
-         ("import tarfile; " 'tarfile.open("{0}/{1}").extractall(path="{0}")').format(
-             thin_dest_path, os.path.basename(thin_path)
-@@ -6880,7 +6902,7 @@ def call(name, function, *args, **kwargs):
+         "import tarfile; "
+         'tarfile.open("{0}/{1}").extractall(path="{0}")'.format(
+@@ -6744,7 +6766,7 @@ def call(name, function, *args, **kwargs):
      try:
          salt_argv = (
              [
--                "python{0}".format(sys.version_info[0]),
+-                "python{}".format(sys.version_info[0]),
 +                container_python_bin,
                  os.path.join(thin_dest_path, "salt-call"),
                  "--metadata",
                  "--local",
 diff --git a/tests/unit/modules/test_dockermod.py b/tests/unit/modules/test_dockermod.py
-index 48526acb71..ebe97a83f5 100644
+index 2c3665de85..fcedaf9272 100644
 --- a/tests/unit/modules/test_dockermod.py
 +++ b/tests/unit/modules/test_dockermod.py
-@@ -1049,33 +1049,35 @@ class DockerTestCase(TestCase, LoaderModuleMockMixin):
+@@ -987,33 +987,35 @@ class DockerTestCase(TestCase, LoaderModuleMockMixin):
          # [ call(name, [args]), ...
          self.maxDiff = None
          self.assertIn("mkdir", docker_run_all_mock.mock_calls[0][1][1])
@@ -121,6 +120,6 @@ index 48526acb71..ebe97a83f5 100644
  
          self.assertEqual({"retcode": 0, "comment": "container cmd"}, ret)
 -- 
-2.31.1
+2.33.0
 
 

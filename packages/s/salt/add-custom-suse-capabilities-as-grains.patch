@@ -1,18 +1,19 @@
-From 713ccfdc5c6733495d3ce7f26a8cfeddb8e9e9c4 Mon Sep 17 00:00:00 2001
+From bdb48ed82c755407bc413fa445e057a6da5f1e87 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 21 Jun 2018 11:57:57 +0100
 Subject: [PATCH] Add custom SUSE capabilities as Grains
 
+Add new custom SUSE capability for saltutil state module
 ---
- salt/grains/extra.py | 7 +++++++
- 1 file changed, 7 insertions(+)
+ salt/grains/extra.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/salt/grains/extra.py b/salt/grains/extra.py
-index 2fdbe6526a..ddc22293ea 100644
+index 2fdbe6526a..0eec27e628 100644
 --- a/salt/grains/extra.py
 +++ b/salt/grains/extra.py
-@@ -66,3 +66,10 @@ def config():
+@@ -66,3 +66,11 @@ def config():
                  log.warning("Bad syntax in grains file! Skipping.")
                  return {}
      return {}
@@ -21,9 +22,10 @@ index 2fdbe6526a..ddc22293ea 100644
 +def suse_backported_capabilities():
 +    return {
 +        '__suse_reserved_pkg_all_versions_support': True,
-+        '__suse_reserved_pkg_patches_support': True
++        '__suse_reserved_pkg_patches_support': True,
++        '__suse_reserved_saltutil_states_support': True
 +    }
 -- 
-2.29.2
+2.33.0
 
 

@@ -1,34 +1,17 @@
-From 1b9a160f578cf446f5ae622a450d23022e7e3ca5 Mon Sep 17 00:00:00 2001
+From 22fe4809712dbc59ba2d8c3c2045f531f81bc517 Mon Sep 17 00:00:00 2001
 From: Bo Maryniuk <bo@suse.de>
 Date: Thu, 14 Dec 2017 16:21:40 +0100
 Subject: [PATCH] Fix bsc#1065792
 
 ---
- salt/states/service.py | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ salt/states/service.py | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/salt/states/service.py b/salt/states/service.py
-index d19c245756..4ea36a78f6 100644
+index 536e64a430..27595f7703 100644
 --- a/salt/states/service.py
 +++ b/salt/states/service.py
-@@ -56,16 +56,12 @@ set the reload value to True:
-     :ref:`Requisites <requisites>` documentation.
- 
- """
--# Import Python libs
- 
- import time
- 
--# Import Salt libs
- import salt.utils.data
- import salt.utils.platform
- from salt.exceptions import CommandExecutionError
--
--# Import 3rd-party libs
- from salt.utils.args import get_function_argspec as _argspec
- from salt.utils.systemd import booted
- 
-@@ -79,6 +75,7 @@ def __virtual__():
+@@ -78,6 +78,7 @@ def __virtual__():
      Only make these states available if a service provider has been detected or
      assigned for this minion
      """
@@ -37,6 +20,6 @@ index d19c245756..4ea36a78f6 100644
          return __virtualname__
      else:
 -- 
-2.29.2
+2.33.0
 
 

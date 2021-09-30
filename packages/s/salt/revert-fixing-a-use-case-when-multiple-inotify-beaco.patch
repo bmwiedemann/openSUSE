@@ -1,31 +1,31 @@
-From 5ea2f10b15684dd417bad858642faafc92cd382a Mon Sep 17 00:00:00 2001
+From 93a38f70953f48d10e21ba8601e1a562a4b739fb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 5 Jan 2021 12:31:26 +0000
-Subject: [PATCH] Revert "Fixing a use case when multiple inotify
- beacons are defined but when notifications are fired the configuration fron
- the first beacon are used." Revert "Adding a util function to remove hidden
- (options starting with underscore) from the beacon configuration.  This is
- used when the beacons loop through the configuration, eg. status beacon, and
- expect certain options."
+Subject: [PATCH] Revert "Fixing a use case when multiple inotify beacons
+ are defined but when notifications are fired the configuration fron the first
+ beacon are used." Revert "Adding a util function to remove hidden (options
+ starting with underscore) from the beacon configuration. This is used when
+ the beacons loop through the configuration, eg. status beacon, and expect
+ certain options."
 
 This reverts commit 68a891ab2fe53ebf329b9c83b875f3575e87e266.
 This reverts commit 66c58dedf8c364eaeb35c5adce8bcc8fe5c1219a.
 ---
  salt/beacons/__init__.py           |  1 -
  salt/beacons/diskusage.py          |  3 ---
- salt/beacons/inotify.py            | 25 ++++++-------------
+ salt/beacons/inotify.py            | 25 +++++++------------
  salt/beacons/napalm_beacon.py      |  6 ++---
  salt/beacons/status.py             |  4 ---
  tests/unit/beacons/test_inotify.py | 39 ------------------------------
  tests/unit/test_beacons.py         | 25 +++----------------
- 7 files changed, 14 insertions(+), 89 deletions(-)
+ 7 files changed, 15 insertions(+), 88 deletions(-)
 
 diff --git a/salt/beacons/__init__.py b/salt/beacons/__init__.py
-index 6951a0ce47..0570006348 100644
+index cd00b15275..967f9ff64b 100644
 --- a/salt/beacons/__init__.py
 +++ b/salt/beacons/__init__.py
-@@ -72,7 +72,6 @@ class Beacon:
+@@ -70,7 +70,6 @@ class Beacon:
                  beacon_name = current_beacon_config["beacon_module"]
              else:
                  beacon_name = mod
@@ -34,10 +34,10 @@ index 6951a0ce47..0570006348 100644
              validate_str = "{}.validate".format(beacon_name)
              if fun_str in self.beacons:
 diff --git a/salt/beacons/diskusage.py b/salt/beacons/diskusage.py
-index c7d4acfa3a..475d520de6 100644
+index 5624ebaffd..a015eebdc7 100644
 --- a/salt/beacons/diskusage.py
 +++ b/salt/beacons/diskusage.py
-@@ -10,7 +10,6 @@ Beacon to monitor disk usage.
+@@ -8,7 +8,6 @@ Beacon to monitor disk usage.
  import logging
  import re
  
@@ -45,7 +45,7 @@ index c7d4acfa3a..475d520de6 100644
  import salt.utils.platform
  
  try:
-@@ -83,8 +82,6 @@ def beacon(config):
+@@ -81,8 +80,6 @@ def beacon(config):
      it will override the previously defined threshold.
  
      """
@@ -55,18 +55,18 @@ index c7d4acfa3a..475d520de6 100644
      ret = []
      for mounts in config:
 diff --git a/salt/beacons/inotify.py b/salt/beacons/inotify.py
-index b4bb6def5b..fa2f73c35f 100644
+index 4d9ffbeb87..031da181f0 100644
 --- a/salt/beacons/inotify.py
 +++ b/salt/beacons/inotify.py
-@@ -21,7 +21,6 @@ import os
+@@ -21,6 +21,7 @@ import os
  import re
  
- import salt.ext.six
--import salt.utils.beacons
+ import salt.utils.beacons
++import salt.ext.six
  
- # pylint: disable=import-error
- from salt.ext.six.moves import map
-@@ -71,19 +70,17 @@ def _get_notifier(config):
+ try:
+     import pyinotify
+@@ -65,19 +66,17 @@ def _get_notifier(config):
      """
      Check the context for the notifier and construct it if not present
      """
@@ -90,7 +90,7 @@ index b4bb6def5b..fa2f73c35f 100644
  
  
  def validate(config):
-@@ -259,10 +256,6 @@ def beacon(config):
+@@ -253,10 +252,6 @@ def beacon(config):
        affects all paths that are being watched. This is due to this option
        being at the Notifier level in pyinotify.
      """
@@ -101,7 +101,7 @@ index b4bb6def5b..fa2f73c35f 100644
      _config = {}
      list(map(_config.update, config))
  
-@@ -286,7 +279,7 @@ def beacon(config):
+@@ -280,7 +275,7 @@ def beacon(config):
                      break
                  path = os.path.dirname(path)
  
@@ -110,7 +110,7 @@ index b4bb6def5b..fa2f73c35f 100644
  
              if excludes and isinstance(excludes, list):
                  for exclude in excludes:
-@@ -373,8 +366,6 @@ def beacon(config):
+@@ -367,8 +362,6 @@ def beacon(config):
  
  
  def close(config):
@@ -149,10 +149,10 @@ index 3ca4d10512..d1bddccb8e 100644
      log.debug(config)
      ret = []
 diff --git a/salt/beacons/status.py b/salt/beacons/status.py
-index d6b6150f28..82ed19bc47 100644
+index bd7046aaa1..a30bf5f4e6 100644
 --- a/salt/beacons/status.py
 +++ b/salt/beacons/status.py
-@@ -93,7 +93,6 @@ import datetime
+@@ -91,7 +91,6 @@ import datetime
  import logging
  
  import salt.exceptions
@@ -160,7 +160,7 @@ index d6b6150f28..82ed19bc47 100644
  import salt.utils.platform
  
  log = logging.getLogger(__name__)
-@@ -121,9 +120,6 @@ def beacon(config):
+@@ -119,9 +118,6 @@ def beacon(config):
      log.debug(config)
      ctime = datetime.datetime.utcnow().isoformat()
  
@@ -265,6 +265,6 @@ index b7a5127179..be629f49d4 100644
 -                beacon.process(mock_opts["beacons"], mock_opts["grains"])
 -                patched[name].assert_has_calls(calls)
 -- 
-2.29.2
+2.33.0
 
 

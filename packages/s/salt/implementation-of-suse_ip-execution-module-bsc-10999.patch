@@ -1,4 +1,4 @@
-From fc15e6791deaac9b5ac52268b218e202481440a4 Mon Sep 17 00:00:00 2001
+From ebf90aaad969a61708673a9681d0d534134e16f8 Mon Sep 17 00:00:00 2001
 From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
 Date: Thu, 18 Feb 2021 15:56:01 +0300
 Subject: [PATCH] Implementation of suse_ip execution module
@@ -8,12 +8,12 @@ Subject: [PATCH] Implementation of suse_ip execution module
  salt/modules/linux_ip.py             |    2 +
  salt/modules/rh_ip.py                |    2 +-
  salt/modules/suse_ip.py              | 1151 ++++++++++++++++++++++++++
- salt/states/network.py               |   35 +-
+ salt/states/network.py               |   28 +-
  salt/templates/suse_ip/ifcfg.jinja   |   34 +
  salt/templates/suse_ip/ifroute.jinja |    8 +
  salt/templates/suse_ip/network.jinja |   30 +
  setup.py                             |    1 +
- 8 files changed, 1248 insertions(+), 15 deletions(-)
+ 8 files changed, 1248 insertions(+), 8 deletions(-)
  create mode 100644 salt/modules/suse_ip.py
  create mode 100644 salt/templates/suse_ip/ifcfg.jinja
  create mode 100644 salt/templates/suse_ip/ifroute.jinja
@@ -33,10 +33,10 @@ index bac0665de2..e7a268694d 100644
          return (False, "Module linux_ip: RedHat systems are not supported.")
      if __grains__["os_family"] == "Debian":
 diff --git a/salt/modules/rh_ip.py b/salt/modules/rh_ip.py
-index 2da954bdd0..fa13cc85d1 100644
+index d3bab3a1f8..790241a82e 100644
 --- a/salt/modules/rh_ip.py
 +++ b/salt/modules/rh_ip.py
-@@ -543,7 +543,7 @@ def _parse_settings_eth(opts, iface_type, enabled, iface):
+@@ -551,7 +551,7 @@ def _parse_settings_eth(opts, iface_type, enabled, iface):
      """
      result = {"name": iface}
      if "proto" in opts:
@@ -1203,7 +1203,7 @@ index 0000000000..92dad50351
 +
 +    return _read_file(_SUSE_NETWORK_FILE)
 diff --git a/salt/states/network.py b/salt/states/network.py
-index 30bd07810e..04d6a71f34 100644
+index f20863113b..49d7857f1d 100644
 --- a/salt/states/network.py
 +++ b/salt/states/network.py
 @@ -504,6 +504,8 @@ def managed(name, enabled=True, **kwargs):
@@ -1215,9 +1215,9 @@ index 30bd07810e..04d6a71f34 100644
      # Build interface
      try:
          old = __salt__["ip.get_interface"](name)
-@@ -649,25 +651,30 @@ def managed(name, enabled=True, **kwargs):
+@@ -649,17 +651,29 @@ def managed(name, enabled=True, **kwargs):
              present_slaves = __salt__["cmd.run"](
-                 ["cat", "/sys/class/net/{0}/bonding/slaves".format(name)]
+                 ["cat", "/sys/class/net/{}/bonding/slaves".format(name)]
              ).split()
 -            desired_slaves = kwargs["slaves"].split()
 +            if isinstance(kwargs['slaves'], list):
@@ -1250,16 +1250,8 @@ index 30bd07810e..04d6a71f34 100644
 +                    ret["changes"]["enslave"] = "Added slaves '{0}' to master '{1}'".format(
 +                        " ".join(missing_slaves), name
                      )
--                    cmd = [ifenslave_path, name] + list(missing_slaves)
--                    __salt__["cmd.run"](cmd, python_shell=False)
--                else:
--                    log.error("Command 'ifenslave' not found")
--                ret["changes"]["enslave"] = "Added slaves '{0}' to master '{1}'".format(
--                    " ".join(missing_slaves), name
--                )
-             else:
-                 log.info(
-                     "All slaves '%s' are already added to the master %s"
+                     cmd = [ifenslave_path, name] + list(missing_slaves)
+                     __salt__["cmd.run"](cmd, python_shell=False)
 diff --git a/salt/templates/suse_ip/ifcfg.jinja b/salt/templates/suse_ip/ifcfg.jinja
 new file mode 100644
 index 0000000000..8384d0eab7
@@ -1351,10 +1343,10 @@ index 0000000000..64ae911271
 +{%endif%}{% if wireless_regulatory_domain %}WIRELESS_REGULATORY_DOMAIN="{{wireless_regulatory_domain}}"
 +{%endif%}
 diff --git a/setup.py b/setup.py
-index d9c3d6e303..c6bd4a3c03 100755
+index e13e5485ed..866e8d91f9 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -1108,6 +1108,7 @@ class SaltDistribution(distutils.dist.Distribution):
+@@ -1106,6 +1106,7 @@ class SaltDistribution(distutils.dist.Distribution):
          package_data = {
              "salt.templates": [
                  "rh_ip/*.jinja",
@@ -1363,6 +1355,6 @@ index d9c3d6e303..c6bd4a3c03 100755
                  "virt/*.jinja",
                  "git/*",
 -- 
-2.30.0
+2.33.0
 
 

@@ -1,4 +1,4 @@
-From aa0f845e2bbc37332db04c583f475cfe25304db6 Mon Sep 17 00:00:00 2001
+From 90cc5349ed085729db43966bf290c76db5c7f6b9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Tue, 20 Apr 2021 11:01:26 +0100
@@ -33,26 +33,29 @@ Subject: [PATCH] Improvements on "ansiblegate" module (#354)
 * Fix pylint issue
 
 * Fix issue in documentation
+
+Fix issue parsing errors in ansiblegate state module
 ---
  salt/modules/ansiblegate.py                   | 166 +++++++++++++++++-
  salt/roster/ansible.py                        |  18 +-
+ salt/states/ansiblegate.py                    |  12 +-
  salt/utils/ansible.py                         |  44 +++++
  .../pytests/unit/modules/test_ansiblegate.py  |  94 +++++++++-
  .../example_playbooks/example-playbook2/hosts |   7 +
  .../example-playbook2/site.yml                |  28 +++
  .../playbooks/example_playbooks/playbook1.yml |   5 +
  tests/unit/roster/test_ansible.py             |   2 +-
- 8 files changed, 354 insertions(+), 10 deletions(-)
+ 9 files changed, 364 insertions(+), 12 deletions(-)
  create mode 100644 salt/utils/ansible.py
  create mode 100644 tests/unit/files/playbooks/example_playbooks/example-playbook2/hosts
  create mode 100644 tests/unit/files/playbooks/example_playbooks/example-playbook2/site.yml
  create mode 100644 tests/unit/files/playbooks/example_playbooks/playbook1.yml
 
 diff --git a/salt/modules/ansiblegate.py b/salt/modules/ansiblegate.py
-index 5d4b986ec2..4f96607a07 100644
+index 0279a26017..2b4d4b0bdf 100644
 --- a/salt/modules/ansiblegate.py
 +++ b/salt/modules/ansiblegate.py
-@@ -426,7 +426,171 @@ def playbooks(
+@@ -425,7 +425,171 @@ def playbooks(
      }
      ret = __salt__["cmd.run_all"](**cmd_kwargs)
      log.debug("Ansible Playbook Return: %s", ret)
@@ -276,6 +279,36 @@ index f17316bdd7..cc61f6fb7d 100644
              hosts.extend(_get_hosts_from_group(child))
      return hosts
  
+diff --git a/salt/states/ansiblegate.py b/salt/states/ansiblegate.py
+index 5daba0f37f..bd00653928 100644
+--- a/salt/states/ansiblegate.py
++++ b/salt/states/ansiblegate.py
+@@ -183,7 +183,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+         checks = __salt__["ansible.playbooks"](
+             name, rundir=rundir, check=True, diff=True, **ansible_kwargs
+         )
+-        if all(
++        if "stats" not in checks:
++            ret["comment"] = checks.get("stderr", checks)
++            ret["result"] = False
++            ret["changes"] = {}
++        elif all(
+             not check["changed"]
+             and not check["failures"]
+             and not check["unreachable"]
+@@ -212,7 +216,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+         results = __salt__["ansible.playbooks"](
+             name, rundir=rundir, diff=True, **ansible_kwargs
+         )
+-        if all(
++        if "stats" not in results:
++            ret["comment"] = results.get("stderr", results)
++            ret["result"] = False
++            ret["changes"] = {}
++        elif all(
+             not check["changed"]
+             and not check["failures"]
+             and not check["unreachable"]
 diff --git a/salt/utils/ansible.py b/salt/utils/ansible.py
 new file mode 100644
 index 0000000000..ee85cb656c
@@ -516,6 +549,6 @@ index a5cdcbbdbc..8bc9c1c6f7 100644
          return {ansible: {"__utils__": utils, "__opts__": {}, "__runner__": runner}}
  
 -- 
-2.31.1
+2.33.0
 
 

@@ -1,35 +1,35 @@
-From f3ac041e34952a4b753e4afc9dc4b6adaa1d0ff2 Mon Sep 17 00:00:00 2001
+From e3ef9165b66c3d74a3c3dbfe82ba58f7fa1613e2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
  <psuarezhernandez@suse.com>
 Date: Thu, 12 Mar 2020 13:26:51 +0000
-Subject: [PATCH] Fix wrong test_mod_del_repo_multiline_values test
- after rebase
+Subject: [PATCH] Fix wrong test_mod_del_repo_multiline_values test after
+ rebase
 
 ---
- tests/integration/modules/test_pkg.py | 63 ++++-----------------------
- 1 file changed, 8 insertions(+), 55 deletions(-)
+ tests/integration/modules/test_pkg.py | 34 +++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 7 deletions(-)
 
 diff --git a/tests/integration/modules/test_pkg.py b/tests/integration/modules/test_pkg.py
-index 3ece73074b..933755a9ec 100644
+index ccf69998fc..6a84ea0bc3 100644
 --- a/tests/integration/modules/test_pkg.py
 +++ b/tests/integration/modules/test_pkg.py
-@@ -143,6 +143,10 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -138,6 +138,10 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
                  self.run_function("pkg.del_repo", [repo])
  
-     @slowTest
-+    @destructiveTest
-+    @requires_salt_modules("pkg.mod_repo", "pkg.del_repo", "pkg.get_repo")
-+    @requires_network()
+     @pytest.mark.slow_test
++    @pytest.mark.destructive_test
++    @pytest.mark.requires_salt_modules("pkg.mod_repo", "pkg.del_repo", "pkg.get_repo")
++    @pytest.mark.requires_network()
 +    @requires_system_grains
      def test_mod_del_repo_multiline_values(self):
          """
          test modifying and deleting a software repository defined with multiline values
-@@ -150,10 +154,13 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+@@ -145,10 +149,13 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
          os_grain = self.run_function("grains.item", ["os"])["os"]
          repo = None
          try:
--            if os_grain in ["CentOS", "RedHat"]:
-+            if os_grain in ["CentOS", "RedHat", "SUSE"]:
+-            if os_grain in ["CentOS", "RedHat", "VMware Photon OS"]:
++            if os_grain in ["CentOS", "RedHat", "VMware Photon OS", "SUSE"]:
                  my_baseurl = (
                      "http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/"
                  )
@@ -39,68 +39,44 @@ index 3ece73074b..933755a9ec 100644
                  expected_get_repo_baseurl = (
                      "http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/"
                  )
-@@ -207,60 +214,6 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
-             if repo is not None:
-                 self.run_function("pkg.del_repo", [repo])
- 
--    def test_mod_del_repo_multiline_values(self):
--        """
--        test modifying and deleting a software repository defined with multiline values
--        """
--        os_grain = self.run_function("grains.item", ["os"])["os"]
--        repo = None
--        try:
--            if os_grain in ["CentOS", "RedHat", "SUSE"]:
--                my_baseurl = (
--                    "http://my.fake.repo/foo/bar/\n http://my.fake.repo.alt/foo/bar/"
--                )
--                expected_get_repo_baseurl_zypp = (
--                    "http://my.fake.repo/foo/bar/%0A%20http://my.fake.repo.alt/foo/bar/"
--                )
--                expected_get_repo_baseurl = (
--                    "http://my.fake.repo/foo/bar/\nhttp://my.fake.repo.alt/foo/bar/"
--                )
--                major_release = int(
--                    self.run_function("grains.item", ["osmajorrelease"])[
--                        "osmajorrelease"
--                    ]
--                )
--                repo = "fakerepo"
--                name = "Fake repo for RHEL/CentOS/SUSE"
--                baseurl = my_baseurl
--                gpgkey = "https://my.fake.repo/foo/bar/MY-GPG-KEY.pub"
--                failovermethod = "priority"
--                gpgcheck = 1
--                enabled = 1
--                ret = self.run_function(
--                    "pkg.mod_repo",
--                    [repo],
--                    name=name,
--                    baseurl=baseurl,
--                    gpgkey=gpgkey,
--                    gpgcheck=gpgcheck,
--                    enabled=enabled,
--                    failovermethod=failovermethod,
--                )
+@@ -174,17 +181,30 @@ class PkgModuleTest(ModuleCase, SaltReturnAssertsMixin):
+                     enabled=enabled,
+                     failovermethod=failovermethod,
+                 )
 -                # return data from pkg.mod_repo contains the file modified at
 -                # the top level, so use next(iter(ret)) to get that key
--                self.assertNotEqual(ret, {})
+                 self.assertNotEqual(ret, {})
 -                repo_info = ret[next(iter(ret))]
--                self.assertIn(repo, repo_info)
++                repo_info = {repo: ret}
+                 self.assertIn(repo, repo_info)
 -                self.assertEqual(repo_info[repo]["baseurl"], my_baseurl)
--                ret = self.run_function("pkg.get_repo", [repo])
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
++                else:
++                    self.assertEqual(repo_info[repo]["baseurl"], my_baseurl)
+                 ret = self.run_function("pkg.get_repo", [repo])
 -                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
--                self.run_function("pkg.mod_repo", [repo])
--                ret = self.run_function("pkg.get_repo", [repo])
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
++                else:
++                    self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
+                 self.run_function("pkg.mod_repo", [repo])
+                 ret = self.run_function("pkg.get_repo", [repo])
 -                self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
--        finally:
--            if repo is not None:
--                self.run_function("pkg.del_repo", [repo])
--
-     @requires_salt_modules("pkg.owner")
-     def test_owner(self):
-         """
++                if os_grain == "SUSE":
++                    self.assertEqual(
++                        repo_info[repo]["baseurl"], expected_get_repo_baseurl_zypp
++                    )
++                else:
++                    self.assertEqual(ret["baseurl"], expected_get_repo_baseurl)
+         finally:
+             if repo is not None:
+                 self.run_function("pkg.del_repo", [repo])
 -- 
-2.29.2
+2.33.0
 
 

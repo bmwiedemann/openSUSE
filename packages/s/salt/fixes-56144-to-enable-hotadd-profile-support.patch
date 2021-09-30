@@ -1,4 +1,4 @@
-From 5761a11227c8d78df62d1a1552a50c0a4b76ae33 Mon Sep 17 00:00:00 2001
+From 0def15837c3470f20ce85ec81e2c1d42cd933c23 Mon Sep 17 00:00:00 2001
 From: nicholasmhughes <nicholasmhughes@gmail.com>
 Date: Fri, 14 Feb 2020 22:03:42 -0500
 Subject: [PATCH] fixes #56144 to enable hotadd profile support
@@ -9,7 +9,7 @@ Subject: [PATCH] fixes #56144 to enable hotadd profile support
  2 files changed, 20 insertions(+)
 
 diff --git a/doc/topics/cloud/vmware.rst b/doc/topics/cloud/vmware.rst
-index e4cb607e8d..0ac7c255a8 100644
+index bbc5cdff11..1a18ebf226 100644
 --- a/doc/topics/cloud/vmware.rst
 +++ b/doc/topics/cloud/vmware.rst
 @@ -457,6 +457,14 @@ Set up an initial profile at ``/etc/salt/cloud.profiles`` or
@@ -28,10 +28,10 @@ index e4cb607e8d..0ac7c255a8 100644
      Specifies the additional configuration information for the virtual machine. This
      describes a set of modifications to the additional options. If the key is already
 diff --git a/salt/cloud/clouds/vmware.py b/salt/cloud/clouds/vmware.py
-index 5ebf448abc..edaca9618b 100644
+index 1e9943ad78..4999ca089f 100644
 --- a/salt/cloud/clouds/vmware.py
 +++ b/salt/cloud/clouds/vmware.py
-@@ -2824,6 +2824,12 @@ def create(vm_):
+@@ -2821,6 +2821,12 @@ def create(vm_):
      win_run_once = config.get_cloud_config_value(
          "win_run_once", vm_, __opts__, search_global=False, default=None
      )
@@ -44,7 +44,7 @@ index 5ebf448abc..edaca9618b 100644
  
      # Get service instance object
      si = _get_si()
-@@ -3042,6 +3048,12 @@ def create(vm_):
+@@ -3039,6 +3045,12 @@ def create(vm_):
          )
          config_spec.deviceChange = specs["device_specs"]
  
@@ -55,9 +55,9 @@ index 5ebf448abc..edaca9618b 100644
 +        config_spec.memoryHotAddEnabled = bool(mem_hot_add)
 +
      if extra_config:
-         for key, value in six.iteritems(extra_config):
+         for key, value in extra_config.items():
              option = vim.option.OptionValue(key=key, value=value)
 -- 
-2.29.2
+2.33.0
 
 
