@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 29 03:06:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.0015
+   see /usr/share/doc/packages/perl-Devel-Hide/Changes
+
+  0.0015      2021-09-28
+
+     - Test warnings more carefully to avoid spurious test failures caused by a
+       bug in Test2::Util (http://www.cpantesters.org/cpan/report/c01ff7be-1e8a-11ec-bc66-57723b537541)
+
+-------------------------------------------------------------------
 Wed Apr 28 03:06:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.0014

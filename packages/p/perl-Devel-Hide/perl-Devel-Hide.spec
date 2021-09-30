@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-Hide
 Name:           perl-Devel-Hide
-Version:        0.0014
+Version:        0.0015
 Release:        0
 Summary:        Forces the unavailability of specified Perl modules (for testing)
 License:        Artistic-1.0 OR GPL-1.0-or-later
