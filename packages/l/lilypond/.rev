@@ -361,4 +361,13 @@
 </comment>
     <requestid>913469</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1b3375ec60ae1be988031075b76308be</srcmd5>
+    <version>2.23.3</version>
+    <time>1633038237</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude all doc builds except Factory/Tumbleweed 64 bit.
+- Exclude all 32 bit builds.</comment>
+    <requestid>922378</requestid>
+  </revision>
 </revisionlist>

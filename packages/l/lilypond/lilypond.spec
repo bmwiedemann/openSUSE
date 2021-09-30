@@ -19,6 +19,8 @@
 %define fontdir %{_datadir}/fonts
 %define ttfdir  %{fontdir}/truetype
 %define ver %(echo %{version} | cut -d . -f 1,2)
+#Unsatisfied dependency for Factory i586
+ExcludeArch:    i586
 
 Name:           lilypond
 Version:        2.23.3
@@ -51,6 +53,7 @@ BuildRequires:  ghostscript-fonts-std
 BuildRequires:  makeinfo >= 6.1
 BuildRequires:  mftrace >= 1.1.19
 BuildRequires:  potrace-devel
+BuildRequires:  t1utils
 BuildRequires:  pkgconfig(guile-1.8)
 # Needed for pngtopnm
 BuildRequires:  netpbm

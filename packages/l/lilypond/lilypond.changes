@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 05:06:45 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Exclude all 32 bit builds.
+
+-------------------------------------------------------------------
 Sat Aug 21 08:23:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2.23.3
@@ -11,6 +16,11 @@ Sat Aug 21 08:23:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
   * add_dircategories_to_documentation.patch
   * use_cstring_and_ctype_includes.patch
 - Update _constraints to let lilypond-doc build.
+
+-------------------------------------------------------------------
+Sat Feb 20 07:12:11 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Fix factory build by requiring t1utils for the build.
 
 -------------------------------------------------------------------
 Tue Jan 12 12:15:54 UTC 2021 - Dave Plater <davejplater@gmail.com>
