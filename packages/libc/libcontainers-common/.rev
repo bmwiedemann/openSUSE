@@ -363,4 +363,12 @@
 - Comment out ostree_repo [boo#1189893]</comment>
     <requestid>919692</requestid>
   </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>edff6de948bf9efe9562946b5abf6d51</srcmd5>
+    <version>20210626</version>
+    <time>1633038180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921726</requestid>
+  </revision>
 </revisionlist>

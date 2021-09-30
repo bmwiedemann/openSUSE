@@ -17,16 +17,16 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.41.0
+%define commonver 0.44.0
 
 # podman - version from containers/podman
-%define podmanver 3.2.3
+%define podmanver 3.3.1
 
 # storagever - version from containers/storage
-%define storagever 1.32.6
+%define storagever 1.36.0
 
 # imagever - version from containers/image
-%define imagever 5.14.0
+%define imagever 5.16.0
 
 Name:           libcontainers-common
 Version:        20210626
@@ -88,7 +88,6 @@ rename '.md' '.1' docs/*
 cd ..
 # compile subset of containers/podman manpages
 cd podman-%{podmanver}
-go-md2man -in docs/source/markdown/containers-mounts.conf.5.md -out docs/source/markdown/containers-mounts.conf.5
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
@@ -130,7 +129,7 @@ install -D -m 0644 image-%{imagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 storage-%{storagever}/docs/*.1 %{buildroot}/%{_mandir}/man1/
 install -D -m 0644 storage-%{storagever}/docs/*.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 podman-%{podmanver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%{_mandir}/man5/
-install -D -m 0644 podman-%{podmanver}/docs/source/markdown/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
+install -D -m 0644 common-%{commonver}/docs/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
 %post
