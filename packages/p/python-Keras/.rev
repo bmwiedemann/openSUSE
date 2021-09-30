@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6847a7fca87ec29cf89896291252d980</srcmd5>
+    <version>2.6.0</version>
+    <time>1633038194</time>
+    <user>dimstar_suse</user>
+    <comment>- This is required by tensorflow2 again boo#1190856</comment>
+    <requestid>921350</requestid>
+  </revision>
+</revisionlist>
