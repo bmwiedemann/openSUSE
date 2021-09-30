@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Sep 25 09:17:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Only test the toplevel directory files by default.
+  Slower OBS workers take ages to complete otherwise.
+
+-------------------------------------------------------------------
+Fri Sep 24 10:07:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for v2.6.0
+- required by tensorflow2 2.6.0 -- boo#1190856

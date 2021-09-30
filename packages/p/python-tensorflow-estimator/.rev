@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f64930141d701e88a3772ad9c4a16385</srcmd5>
+    <version>2.6.0</version>
+    <time>1633038196</time>
+    <user>dimstar_suse</user>
+    <comment>required by tensorflow2 2.6.0 (currently specified in python-Keras:test)</comment>
+    <requestid>921785</requestid>
+  </revision>
+</revisionlist>
