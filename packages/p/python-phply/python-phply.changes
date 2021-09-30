@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 27 04:27:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-nose.patch
+  * Stop using nose.tools.
+- Use pytest rather than setup.py test 
+
+-------------------------------------------------------------------
 Wed May 20 07:26:13 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

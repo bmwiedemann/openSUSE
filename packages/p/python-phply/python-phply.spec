@@ -1,7 +1,7 @@
 #
 # spec file for package python-phply
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,15 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/viraptor/phply
 Source:         https://files.pythonhosted.org/packages/source/p/phply/phply-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module ply}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,6 +42,7 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 
 %prep
 %setup -q -n phply-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -53,7 +55,7 @@ phply is a parser for the PHP programming language written using PLY, a Lex/YACC
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 
 %check
-%python_exec setup.py test
+%pytest
 
 %post
 %python_install_alternative phpparse

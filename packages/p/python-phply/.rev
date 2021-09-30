@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>807654</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>efaaacf86c2ccd43e0438646c680a67a</srcmd5>
+    <version>1.2.5</version>
+    <time>1633038178</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch
+  * Stop using nose.tools.
+- Use pytest rather than setup.py test</comment>
+    <requestid>921553</requestid>
+  </revision>
 </revisionlist>
