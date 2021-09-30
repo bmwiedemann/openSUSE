@@ -17,7 +17,7 @@
 
 %define libname libuhd4_1_0
 Name:           uhd
-Version:        4.1.0.1
+Version:        4.1.0.3
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -163,7 +163,7 @@ cd host
   -DNEON_SIMD_ENABLE=OFF \
 %endif
   -DENABLE_GPSD=OFF
-%make_jobs
+%cmake_build
 
 %check
 # Do not run check for now - compilation of tests programs is broken:

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Sep 27 22:38:01 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.0.3
+  * This release addresses one issue in UHD regarding RX and TX
+    antenna configuration on the ZBX daughterboard.
+  * uhd
+    + zbx: Prevent TX antenna config from disrupting RX
+- Update to version 4.1.0.2
+  * This release fixes some minor issues in UHD:
+    + Some streaming issues with the B2xx, notably good data packets
+      being dropped in the event of an overrun and USB overflow
+      issues when using the sc12 data type, have been resolved.
+    + The semantics of calling recv() on a streamer with 0 for 
+      nsamps_per_buff was inadvertently changed in a previous
+      commit. The original correct semantics (return immediately
+      without regard for the timeout and availability of samples)
+      have been restored.
+    + Certain link establishment timeout cases could result in an
+      exception being thrown while another exception is in flight,
+      thus triggering process termination. The codepath triggering
+      the errant second exception has been corrected to avoid this
+      situation.
+  * b200
+    + Fix overflow handling
+  * fpga
+    + Re-order error and data packets
+    + Fix sc16 to sc12 converter
+  * host
+    + Add static_assert to prevent meta_range_t(0,0)
+  * mpm
+    + x4xx: update mboard_max_rev
+  * mpmd
+    * Add discoverable feature for trig i/o mode
+  * sim
+    + Update chdr_16sc_to_sc12 testbench
+  * tests
+    + Add recv(0) case to rx_streamer_test
+  * uhd
+    + transport: Avoid exceptions in disconnect_receiver()
+    + streamer: Restore original recv(0) semantics
+  * x4xx_bist
+    + use get_mpm_client in gpio bist
+
+-------------------------------------------------------------------
 Wed Jul 21 10:54:58 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.0.1
