@@ -21,8 +21,12 @@
 %define _lto_cflags %{nil}
 %endif
 
-# Temporarily stick to gcc10 to work around build failures
+# We need current gcc to build
+%if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
 %bcond_without  fixed_gcc
+%else
+%bcond_with     fixed_gcc
+%endif
 
 %define __builder ninja
 
@@ -30,7 +34,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        2.9.0
+Version:        3.1.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -43,8 +47,6 @@ Source1:        tg_owt-master.zip
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
-# PATCH-FIX-OPENSUSE boo#1149986
-Patch3:         0003-prioritize-gtk2.patch
 # PATCH-FIX-OPENSUSE
 Patch4:         0004-use-dynamic-x-libraries.patch
 # PATCH-FIX-OPENSUSE
@@ -87,6 +89,7 @@ BuildRequires:  yasm
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.15
 BuildRequires:  pkgconfig(Qt5Network) >= 5.15
+BuildRequires:  pkgconfig(Qt5Svg) >= 5.15
 BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.15
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
 BuildRequires:  pkgconfig(alsa)
@@ -133,6 +136,7 @@ BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(webkit2gtk-4.0)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
@@ -163,7 +167,6 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}-full
 %patch1 -p1
-%patch3 -p1
 %patch4 -p1
 %patch5 -p1
 

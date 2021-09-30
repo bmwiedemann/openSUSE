@@ -681,4 +681,18 @@
     <comment></comment>
     <requestid>915301</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9df9841f193b4b548ced1ce118c843d5</srcmd5>
+    <version>3.1.1</version>
+    <time>1633038221</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit BuildRequires for webkit2gtk-4.0
+
+- Update to 3.1.1
+- Update tg_owt
+- Remove 0003-prioritize-gtk2.patch, the file it was applied to
+  was removed upstream
+- Enable GCC11 again</comment>
+    <requestid>922426</requestid>
+  </revision>
 </revisionlist>
