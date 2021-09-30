@@ -44,7 +44,7 @@
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.4.0
+Version:        13.5.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -91,8 +91,6 @@ Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 # Remove -Wno-format-security from openh264
 Patch25:        electron-13-openh264-format-security.patch
 Patch26:        a9831f1cbf93fb18dd951453635f488037454ce9.patch
-Patch27:        https://raw.githubusercontent.com/electron/electron/13-x-y/patches/chromium/linux_sandbox_return_enosys_for_clone3.patch
-Patch28:        https://raw.githubusercontent.com/electron/electron/13-x-y/patches/chromium/linux_sandbox_update_syscall_numbers_for_all_platforms.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison

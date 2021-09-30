@@ -11,7 +11,7 @@ ELECTRON_PATH="${ELECTRON_TMPDIR}/${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 
 # The chromium version we want to base electron on. Use the same version
 # as in network:chromium/chromium if you update.
-CHROMIUM_VERSION="92.0.4515.159"
+CHROMIUM_VERSION="91.0.4472.164"
 
 echo "NAME:    $ELECTRON_PKGNAME"
 echo "VERSION: $ELECTRON_PKGVERSION"
