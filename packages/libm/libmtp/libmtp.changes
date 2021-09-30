@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 25 14:29:46 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.1.19 release
+  - Lots of USB ids added, especially Garmin devices
+  - use a local libusb context, not the global one
+  - various bugfixes
+
+-------------------------------------------------------------------
 Sun Oct 11 11:59:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.1.18 release

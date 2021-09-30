@@ -677,4 +677,15 @@
   - report &quot;error 6&quot; as &quot;busy / blocked by another device&quot;</comment>
     <requestid>841029</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>cffc23fd2209c6e466479aa012c966aa</srcmd5>
+    <version>1.1.19</version>
+    <time>1633038178</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.1.19 release
+  - Lots of USB ids added, especially Garmin devices
+  - use a local libusb context, not the global one
+  - various bugfixes</comment>
+    <requestid>921677</requestid>
+  </revision>
 </revisionlist>
