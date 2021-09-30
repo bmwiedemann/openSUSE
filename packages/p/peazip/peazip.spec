@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.0.0
+%define         _helpver 8.2.0
 Name:           peazip
-Version:        8.0.0
+Version:        8.2.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -130,10 +130,14 @@ ln -s %{_peazipinstalldir}/peazip %{buildroot}%{_bindir}/peazip
 install -m755 pea %{buildroot}%{_peazipinstalldir}/res
 ln -s %{_peazipinstalldir}/res/pea %{buildroot}%{_bindir}/pea
 
-install -D -m644 FreeDesktop_integration/peazip.desktop %{buildroot}%{_datadir}/applications/peazip.desktop
-install -D -m644 FreeDesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/peazip.png
+mkdir -p  %{buildroot}%{_datadir}/applications/
+cp %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.desktop %{buildroot}%{_datadir}/applications/
+rm %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.desktop
+mkdir -p %{buildroot}%{_datadir}/pixmaps/
+cp %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
+rm %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.png
 
-pushd FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus
+pushd %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 install -m644 *.desktop %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 popd

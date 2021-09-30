@@ -1,35 +1,6 @@
-Index: peazip-7.7.1.src/FreeDesktop_integration/peazip.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/peazip.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/peazip.desktop
-@@ -1,13 +1,16 @@
- [Desktop Entry]
--Version=1.0
--Encoding=UTF-8
- Name=PeaZip
--MimeType=application/x-gzip;application/x-lha;application/x-tar;application/x-tgz;application/x-tbz;application/x-tbz2;application/x-zip;application/zip;application/x-bzip;application/x-rar;application/x-tarz;application/x-archive;application/x-bzip2;application/x-jar;application/x-deb;application/x-ace;application/x-7z;application/x-arc;application/x-arj;application/x-compress;application/x-cpio;
--GenericName=Archiving Tool
--Exec=peazip %F
-+Exec=peazip
- Icon=peazip
- Type=Application
- Terminal=false
-+GenericName=Free Zip files utility
-+GenericName[de]=Freies Zip-Dateien Utility
-+Comment=Free Zip files utility, supports 150+ formats: 7Z, ISO, RAR, ZIP, ZIPX
-+Comment[de]=Freies Zip-Dateien Utility, unterstützt 150+ Formate: 7Z, ISO, RAR, ZIP, ZIPX
-+Comment[it]=Programma per file Zip gratuito, supporta 150+ formati: 7Z, ISO, RAR, ZIP, ZIPX
-+MimeType=application/x-gzip;application/x-lha;application/x-tar;application/x-tgz;application/x-tbz;application/x-tbz2;application/x-zip;application/zip;application/x-bzip;application/x-rar;application/x-tarz;application/x-archive;application/x-bzip2;application/x-jar;application/x-deb;application/x-ace;application/x-7z;application/x-arc;application/x-arj;application/x-compress;application/x-cpio;
- X-KDE-HasTempFileOption=true
--Categories=GTK;KDE;Utility;System;Archiving;
--Name[en_US]=PeaZip
-+Categories=Qt;KDE;Utility;System;Archiving;
-+X-KDE-StartupNotify=true
-+X-SuSE-translate=true
-Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2021-09-30 10:21:48.967391937 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -39,15 +10,14 @@ Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  
  [Desktop Entry]
  Type=Service
-@@ -11,3 +13,4 @@ Name=peazipadd
+@@ -11,3 +13,4 @@
  Name[en_US]=peazipadd
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2021-09-30 10:21:51.743403456 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -59,15 +29,14 @@ Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  
  [Desktop Entry]
  Type=Service
-@@ -11,3 +13,4 @@ Encoding=UTF-8
+@@ -11,3 +13,4 @@
  Name=peazipext
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2021-09-30 10:21:53.783411921 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -79,15 +48,14 @@ Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  
  [Desktop Entry]
  Type=Service
-@@ -11,3 +13,4 @@ Icon=peazip
+@@ -11,3 +13,4 @@
  Name=peazipextfolder
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2021-09-30 10:21:55.807420319 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -99,15 +67,14 @@ Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  
  [Desktop Entry]
  Type=Service
-@@ -11,3 +13,4 @@ Icon=peazip
+@@ -11,3 +13,4 @@
  Name=peazipexthere
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
-===================================================================
---- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
-+++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2021-09-30 10:21:58.735432468 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip
@@ -117,8 +84,134 @@ Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  
  [Desktop Entry]
  Type=Service
-@@ -11,3 +13,4 @@ Icon=peazip
+@@ -11,3 +13,4 @@
  Name=peazipopen
  Name[en_US]=peazipopen
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2021-09-30 10:21:39.779353810 +0200
+@@ -2,6 +2,8 @@
+ Exec=peazip -add2archive %F
+ Icon=peazip
+ Name=Archive with PeaZip
++Name[de]=Archivieren mit PeaZip
++Name[it]=Archivia con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name[en_US]=peazipadd
+ Icon=peazip
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2021-09-30 10:21:37.023342374 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipext]
+ Exec=peazip -ext2full %F
+ Icon=peazip
+-Name=Extract (PeaZip)
++Name=Extract with PeaZip
++Name[de]=Extrahieren mit PeaZip
++Name[it]=Estrai con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipext
+ Name[en_US]=peazipext
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2021-09-30 10:21:34.319331153 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipextfolder]
+ Exec=peazip -ext2folder %F
+ Icon=peazip
+-Name=Extract here to new folder (PeaZip)
++Name=Extract here to new folder with PeaZip
++Name[de]=Hier mit PeaZip in neues Verzeichnis extrahieren
++Name[it]=Estrai qui con PeaZip in una nuova cartella
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipextfolder
+ Name[en_US]=peazipextfolder
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2021-09-30 10:21:26.175297353 +0200
+@@ -1,7 +1,9 @@
+ [Desktop Action peazipexthere]
+ Exec=peazip -ext2here %F
+ Icon=peazip
+-Name=Extract here (PeaZip)
++Name=Extract here with PeaZip
++Name[de]=Hier mit PeaZip extrahieren
++Name[it]=Estrai qui con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipexthere
+ Name[en_US]=peazipexthere
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+--- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2021-09-30 10:21:21.987279972 +0200
+@@ -2,6 +2,8 @@
+ Exec=peazip -ext2browse %F
+ Icon=peazip
+ Name=Open with PeaZip
++Name[de]=Öffnen mit PeaZip
++Name[it]=Apri con PeaZip
+ 
+ [Desktop Entry]
+ Type=Service
+@@ -11,3 +13,4 @@
+ Name=peazipopen
+ Name[en_US]=peazipopen
+ ServiceTypes=KonqPopupMenu/Plugin,all/all
++X-SuSE-translate=true
+diff -ru a/res/batch/freedesktop_integration/peazip.desktop b/res/batch/freedesktop_integration/peazip.desktop
+--- a/res/batch/freedesktop_integration/peazip.desktop	2021-09-08 19:51:52.000000000 +0200
++++ b/res/batch/freedesktop_integration/peazip.desktop	2021-09-30 10:18:31.958574357 +0200
+@@ -1,14 +1,21 @@
+ [Desktop Entry]
+ Name=PeaZip
+ Comment=PeaZip archive manager
+-Exec=peazip %F
++Exec=peazip
+ TryExec=peazip
+ Icon=peazip
+ Type=Application
+ Terminal=false
+-Categories=Utility;Archiving;Compression;
++Categories=Qt;KDE;Utility;System;Archiving;
++X-KDE-StartupNotify=true
++X-SuSE-translate=true
+ Keywords=zip;rar;tar;compress;extract;unpack;
+-MimeType=application/bzip2;application/gzip;application/vnd.android.package-archive;application/vnd.ms-cab-compressed;application/vnd.debian.binary-package;application/x-7z-compressed;application/x-7z-compressed-tar;application/x-ace;application/x-alz;application/x-ar;application/x-archive;application/x-arj;application/x-brotli;application/x-bzip-brotli-tar;application/x-bzip;application/x-bzip-compressed-tar;application/x-bzip1;application/x-bzip1-compressed-tar;application/x-cabinet;application/x-cd-image;application/x-compress;application/x-compressed-tar;application/x-cpio;application/x-chrome-extension;application/x-deb;application/x-ear;application/x-ms-dos-executable;application/x-gtar;application/x-gzip;application/x-gzpostscript;application/x-java-archive;application/x-lha;application/x-lhz;application/x-lrzip;application/x-lrzip-compressed-tar;application/x-lz4;application/x-lzip;application/x-lzip-compressed-tar;application/x-lzma;application/x-lzma-compressed-tar;application/x-lzop;application/x-lz4-compressed-tar;application/x-ms-wim;application/x-rar;application/x-rar-compressed;application/x-rpm;application/x-source-rpm;application/x-rzip;application/x-rzip-compressed-tar;application/x-tar;application/x-tarz;application/x-tzo;application/x-stuffit;application/x-war;application/x-xar;application/x-xz;application/x-xz-compressed-tar;application/x-zip;application/x-zip-compressed;application/x-zstd-compressed-tar;application/x-zoo;application/zip;application/zstd;
++GenericName=Free Zip files utility
++GenericName[de]=Freies Zip-Dateien Utility
++Comment=Free Zip files utility, supports 150+ formats: 7Z, ISO, RAR, ZIP, ZIPX
++Comment[de]=Freies Zip-Dateien Utility, unterstützt 150+ Formate: 7Z, ISO, RAR, ZIP, ZIPX
++Comment[it]=Programma per file Zip gratuito, supporta 150+ formati: 7Z, ISO, RAR, ZIP, ZIPX
++MimeType=application/x-gzip;application/x-lha;application/x-tar;application/x-tgz;application/x-tbz;application/x-tbz2;application/x-zip;application/zip;application/x-bzip;application/x-rar;application/x-tarz;application/x-archive;application/x-bzip2;application/x-jar;application/x-deb;application/x-ace;application/x-7z;application/x-arc;application/x-arj;application/x-compress;application/x-cpio;
+ Actions=add;extract;extracthere;extractheresmart;
+ 
+ [Desktop Action add]
+@@ -29,4 +36,4 @@
+ [Desktop Action extractheresmart]
+ Name=PeaZip, extract here (smart new folder)
+ Exec=peazip -ext2folder %F
+-Icon=peazip_extract
+\ No newline at end of file
++Icon=peazip_extract

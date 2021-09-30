@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 30 05:35:33 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 8.2.0
+  * BACKEND
+    * Updated Brotli to 1.0.9 version
+    * Added read support (browse / test / extract) to Lzip .lz file type
+    * Added support for .apkm, .apks, and .aab packages Android package formats
+    * Updated Pea 1.02
+    * Updated Zstd 1.50
+    * Updated p7zip 17.04
+  * CODE
+    * maximum length of CL generated on Linux systems is now increased to
+      128 K characters in contrast to much more limited 32 K characters
+      allowed on Windows systems
+  * FILE MANAGER
+    * Improved system directories shown by default in navigation tree
+      on the left of file manager
+    * Updated list of apps automatically detected for Open with submenu;
+      apps and scripts can be customized in Options > Settings, Applications tab
+    * Enabled System tools submenu in context menu > File manager
+    * New Ctrl+Alt+A link to autoadjust file browser columns
+    * Themes: added "Presets" link on the right of Application accent color picker,
+      allowing to quickly customize both application and text accent colors accordingly to
+      common color themes of reference Operating Systems e.g. Mint, Ubuntu, Windows
+  * EXTRACTION and ARCHIVING
+    * Added XZ (Linux, Windows) and Zstd (Linux) as optional algorithms for ZIP/ZIPX compression,
+      from Advanced tab in archiving / conversion screen
+    * Improved extraction
+    * Improved raw file spanning, it is now possible to submit multiple separate
+      input files at once to be split to specified size
+    * Improved support for .xxxaa spanned files from Unix/Linux split command
+    * New option for default behavior at application startup: Extract all here (smart new folder)
+    * Added support (as container files) to .whl Python archives and .gem Ruby gem archives
+    * Added option to extract all, selected or displayed items to extraction dropdown menu,
+      replicating Extract button context menu
+    * Added actions to Test all, selected or displayed items in Test button context menu
+- Rebase peazip-desktop.patch
+
+-------------------------------------------------------------------
 Thu Jul 15 08:45:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 8.0.0
