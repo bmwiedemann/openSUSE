@@ -155,4 +155,12 @@
     <comment></comment>
     <requestid>720525</requestid>
   </revision>
+  <revision rev="22" vrev="139">
+    <srcmd5>55293a350ac11c46238ee8c0dcf160fe</srcmd5>
+    <version>5.2</version>
+    <time>1633038226</time>
+    <user>dimstar_suse</user>
+    <comment>- Move to /usr for UsrMerge (boo#1191091)</comment>
+    <requestid>922341</requestid>
+  </revision>
 </revisionlist>

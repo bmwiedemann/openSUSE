@@ -1,7 +1,7 @@
 #
 # spec file for package libreadline5
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        The Readline Library
 License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://www.gnu.org/software/bash/bash.html
+URL:            http://www.gnu.org/software/bash/bash.html
 Source0:        readline-%{rl_vers}.tar.bz2
 Source1:        readline-%{rl_vers}-patches.tar.bz2
 Source2:        baselibs.conf
@@ -49,7 +49,6 @@ The readline library is used by the Bourne Again Shell (bash, the
 standard command interpreter) for easy editing of command lines.  This
 includes history and search functionality.
 
-
 %package -n readline5-devel
 Summary:        Development files for the readline library version 5
 Group:          Development/Libraries/C and C++
@@ -63,7 +62,6 @@ Conflicts:      readline-devel
 %description -n readline5-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
-
 
 %prep
 %setup -q -n readline-%{rl_vers}
@@ -79,7 +77,7 @@ done
 %patch20 -p0
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
   autoconf
   cflags ()
   {
@@ -130,6 +128,7 @@ done
 
 %install
   make install htmldir=%{_defaultdocdir}/readline DESTDIR=%{buildroot}
+%if !0%{?usrmerged}
   make install-shared libdir=/%{_lib} linkagedir=%{_libdir} DESTDIR=%{buildroot}
   rm -rf %{buildroot}%{_defaultdocdir}/bash
   rm -rf %{buildroot}%{_defaultdocdir}/readline
@@ -140,6 +139,16 @@ done
   # remove unpackaged files
   rm -fv %{buildroot}%{_libdir}/libhistory.so.*
   rm -fv %{buildroot}%{_libdir}/libreadline.so.*
+%else
+  make install-shared libdir=%{_libdir} linkagedir=%{_libdir} DESTDIR=%{buildroot}
+  rm -rf %{buildroot}%{_defaultdocdir}/bash
+  rm -rf %{buildroot}%{_defaultdocdir}/readline
+  chmod 0755 %{buildroot}%{_libdir}/libhistory.so.%{rl_vers}
+  chmod 0755 %{buildroot}%{_libdir}/libreadline.so.%{rl_vers}
+  rm -f %{buildroot}%{_libdir}/libhistory.so.%{rl_vers}*old
+  rm -f %{buildroot}%{_libdir}/libreadline.so.%{rl_vers}*old
+%endif
+  # remove unpackaged files
   rm -fv %{buildroot}%{_mandir}/man3/history.3*
   rm -fv %{buildroot}%{_infodir}/*.info*
   rm -rfv %{buildroot}%{_infodir}/dir
@@ -149,7 +158,7 @@ done
 #
 mv %{buildroot}%{_incdir}/readline %{buildroot}%{_incdir}/readline5
 mkdir %{buildroot}%{_libdir}/readline5
-for lib in %{buildroot}%{_libdir}/lib*.*
+for lib in %{buildroot}%{_libdir}/lib*.{a,so}
 do
   mv $lib %{buildroot}%{_libdir}/readline5/
 done
@@ -161,11 +170,22 @@ mv %{buildroot}%{_mandir}/man3/readline.3 %{buildroot}%{_mandir}/man3/readline5.
 
 %files
 %defattr(-,root,root)
+%if %{defined license}
+%license COPYING
+%else
 %doc COPYING
+%endif
+%if !0%{?usrmerged}
 /%{_lib}/libhistory.so.5
 /%{_lib}/libhistory.so.%{rl_vers}
 /%{_lib}/libreadline.so.5
 /%{_lib}/libreadline.so.%{rl_vers}
+%else
+%{_libdir}/libhistory.so.5
+%{_libdir}/libhistory.so.%{rl_vers}
+%{_libdir}/libreadline.so.5
+%{_libdir}/libreadline.so.%{rl_vers}
+%endif
 
 %files -n readline5-devel
 %defattr(-,root,root)
