@@ -78,4 +78,13 @@
 - Actually use %pytest macro for testing</comment>
     <requestid>909842</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bfa513af3880c2ff26bf9774fc496356</srcmd5>
+    <version>1.7.2</version>
+    <time>1633038223</time>
+    <user>dimstar_suse</user>
+    <comment>- Add --import-mode=importlib to make test suite work.
+</comment>
+    <requestid>922324</requestid>
+  </revision>
 </revisionlist>

@@ -63,6 +63,7 @@ common helpers (e.g. base ``Client`` classes) used by all of the
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTEST_ADDOPTS="--import-mode=importlib"
 %pytest
 
 %files %{python_files}
