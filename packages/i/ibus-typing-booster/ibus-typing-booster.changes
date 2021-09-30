@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 29 18:52:37 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.14.13
+- Skip emoji tests which rely on the enchant results if enchants results change
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/244)
+- Make it possible to remove unwanted compose sequences by using
+  an empty replacement text
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/245)
+- The 🏴‍☠️ “pirate flag” needs a U+FE0F after the final character to be fully qualified
+- Update data files for Unicode 14.0.0
+
+-------------------------------------------------------------------
 Tue Sep 14 10:38:16 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.14.12
