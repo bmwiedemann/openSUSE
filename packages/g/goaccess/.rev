@@ -517,4 +517,21 @@
   - Increased the maximum number of files to monitor from '512' to '3072'.</comment>
     <requestid>904050</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>719ff1e8cdc5e1dca00d8d87f91fa35f</srcmd5>
+    <version>1.5.2</version>
+    <time>1633038234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Added .avi to the list of static requests/extensions.
+  * Changed label from 'Init. Proc. Time' to 'Log Parsing Time'.
+  * Fixed issue where lengthy static-file extension wouldn't account certain
+    valid requests.
+  * Fixed possible buffer underflow when checking static-file extension.
+  * Fixed segfault when attempting to parse an invalid JSON log while using a
+    JSON log format.
+  * Fixed segfault when ignoring a status code and processing a line &gt; '4096'
+    chars.</comment>
+    <requestid>922359</requestid>
+  </revision>
 </revisionlist>
