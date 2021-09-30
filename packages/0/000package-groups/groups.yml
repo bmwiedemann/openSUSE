@@ -254,6 +254,9 @@ dvd:
   - valgrind-devel: [locked]
   - wireshark: [locked]
 
+  ## at GNOME 41 times, nothing requires webkit 5.0 ABI yet. Block this off the DVD
+  - libjavascriptcoregtk-5_0-0: [locked]
+
   ## Further shrinkg the DVD - 20160330 by dimstar: [locked]
   - ImageMagick-doc: [locked]
   - python-doc: [locked]

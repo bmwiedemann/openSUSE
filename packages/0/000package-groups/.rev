@@ -1187,4 +1187,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Shrink DVD a bit - lock wireshark</comment>
   </revision>
+  <revision rev="164" vrev="162">
+    <srcmd5>cb4087cd34bc3c2bfae87cb8b8634ca1</srcmd5>
+    <version>unknown</version>
+    <time>1633006670</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
