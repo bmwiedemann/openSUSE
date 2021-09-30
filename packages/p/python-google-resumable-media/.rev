@@ -125,4 +125,14 @@
 </comment>
     <requestid>922071</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7a0697fcf0d51949bf1c23371b5ea5b0</srcmd5>
+    <version>2.0.0</version>
+    <time>1633038222</time>
+    <user>dimstar_suse</user>
+    <comment>- Changing pytest's import-mode=importlib seems to make the test
+  suite working as well.
+</comment>
+    <requestid>922323</requestid>
+  </revision>
 </revisionlist>

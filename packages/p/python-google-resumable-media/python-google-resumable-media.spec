@@ -37,7 +37,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-crc32c
-Requires:       python-google-filesystem
 Recommends:     python-aiohttp
 Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
@@ -57,9 +56,7 @@ Utilities for Google Media Downloads and Resumable Uploads
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# We shouldn't be running tests from the BUILD/*/ directory, where pytest finds another google/ subdirectory
-trap 'rm -rf -- ~/tests' INT TERM HUP EXIT
-cp -r tests ~/ && cd
+export PYTEST_ADDOPTS="--import-mode=importlib"
 %pytest tests/unit
 
 %files %{python_files}
