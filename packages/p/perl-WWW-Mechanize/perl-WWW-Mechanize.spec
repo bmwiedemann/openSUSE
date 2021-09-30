@@ -18,7 +18,7 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.04
+Version:        2.05
 Release:        0
 Summary:        Handy web browsing in a Perl object
 License:        Artistic-1.0 OR GPL-1.0-or-later
