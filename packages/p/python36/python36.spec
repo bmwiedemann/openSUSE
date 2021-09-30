@@ -48,10 +48,15 @@
 %else
 %define tarversion %{version}
 %endif
-%define         python_pkg_name python36
 # Will provide the python3-* provides
 # Will do the /usr/bin/python3 and all the core links
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
+%define         primary_interpreter 1
+%define         python_pkg_name python3
+%else
 %define         primary_interpreter 0
+%define         python_pkg_name python36
+%endif
 %define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
@@ -461,6 +466,10 @@ sed -E -i -e "s/^(\s*_SETUPTOOLS_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${STVER}\"/" \
     Lib/ensurepip/__init__.py
 
 %build
+%if 0%{?suse_version} < 1500
+%define make_build make %{?_smp_mflags} V=1 VERBOSE=1
+%endif
+
 %if %{with doc}
 TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 # TODO use not date of tarball but date of latest patch

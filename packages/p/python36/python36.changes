@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 23 19:53:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make python36 primary interpreter on SLE-15
+
+-------------------------------------------------------------------
+Thu Sep 23 14:05:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make build working even on older SLEs.
+
+-------------------------------------------------------------------
 Wed Sep 15 11:30:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.6.15:

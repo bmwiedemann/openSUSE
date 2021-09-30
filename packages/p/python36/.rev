@@ -3037,4 +3037,14 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
       control the HTTP server.</comment>
     <requestid>919164</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e35a9949df1291ae03eeda3cce888f67</srcmd5>
+    <version>3.6.15</version>
+    <time>1633038171</time>
+    <user>dimstar_suse</user>
+    <comment>- Make python36 primary interpreter on SLE-15
+- Make build working even on older SLEs.
+</comment>
+    <requestid>921423</requestid>
+  </revision>
 </revisionlist>
