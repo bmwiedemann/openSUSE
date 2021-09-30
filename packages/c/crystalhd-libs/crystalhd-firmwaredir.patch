@@ -1,0 +1,36 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -8,6 +8,7 @@ BCLIB_NAME=libcrystalhd.so
+ BCLIB_SL=$(BCLIB_NAME).$(BCLIB_MAJOR)
+ BCLIB=$(BCLIB_NAME).$(BCLIB_MAJOR).$(BCLIB_MINOR)
+ LIBDIR=/usr/lib
++FIRMWAREDIR=/lib/firmware
+ 
+ AT   = @
+ ECHO = ${AT} echo
+@@ -45,7 +46,7 @@ clean:
+ 
+ install:
+ 	mkdir -p $(DESTDIR)$(LIBDIR)
+-	mkdir -p $(DESTDIR)/lib/firmware
++	mkdir -p $(DESTDIR)$(FIRMWAREDIR)
+ 	mkdir -p $(DESTDIR)/usr/include/libcrystalhd
+ 	cp libcrystalhd_if.h $(DESTDIR)/usr/include/libcrystalhd/
+ 	chmod 0644 $(DESTDIR)/usr/include/libcrystalhd/libcrystalhd_if.h
+@@ -55,10 +56,10 @@ install:
+ 	chmod 0644 $(DESTDIR)/usr/include/libcrystalhd/bc_dts_types.h
+ 	cp libcrystalhd_version.h $(DESTDIR)/usr/include/libcrystalhd/
+ 	chmod 0644 $(DESTDIR)/usr/include/libcrystalhd/libcrystalhd_version.h
+-	cp bcm70012fw.bin $(DESTDIR)/lib/firmware/
+-	chmod 0644 $(DESTDIR)/lib/firmware/bcm70012fw.bin
+-	cp bcm70015fw.bin $(DESTDIR)/lib/firmware/
+-	chmod 0644 $(DESTDIR)/lib/firmware/bcm70015fw.bin
++	cp bcm70012fw.bin $(DESTDIR)$(FIRMWAREDIR)
++	chmod 0644 $(DESTDIR)$(FIRMWAREDIR)/bcm70012fw.bin
++	cp bcm70015fw.bin $(DESTDIR)$(FIRMWAREDIR)/
++	chmod 0644 $(DESTDIR)$(FIRMWAREDIR)/bcm70015fw.bin
+ 	install -m 755 $(BCLIB) $(DESTDIR)$(LIBDIR)
+ 	(cd $(DESTDIR)$(LIBDIR); ln -sf $(BCLIB) $(BCLIB_NAME))
+ 	(cd $(DESTDIR)$(LIBDIR); ln -sf $(BCLIB) $(BCLIB_SL))

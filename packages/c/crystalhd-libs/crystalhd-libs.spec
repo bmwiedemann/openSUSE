@@ -1,7 +1,7 @@
 #
 # spec file for package crystalhd-libs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%if %{undefined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
 Name:           crystalhd-libs
 Version:        3.6.5
 Release:        0
@@ -28,6 +31,7 @@ Source1:        README
 Source2:        LICENSE
 Source3:        baselibs.conf
 Patch0:         %{name}-define-first.patch
+Patch1:         crystalhd-firmwaredir.patch
 BuildRequires:  gcc-c++
 ExclusiveArch:  %ix86 x86_64
 
@@ -62,8 +66,9 @@ Group:          Hardware/Other
 Firmwares for the Broadcom Crystal HD video decoders.
 
 %prep
-%setup -q -n crystalhd-libs
+%setup -n crystalhd-libs
 %patch0
+%patch1
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 
@@ -72,9 +77,7 @@ export CXXFLAGS="%{optflags}"
 make %{?_smp_mflags}
 
 %install
-%make_install LIBDIR=%{_libdir}
-mkdir -p %{buildroot}/lib/firmware
-cp *.bin %{buildroot}/lib/firmware/
+%make_install LIBDIR=%{_libdir} FIRMWAREDIR="%{_firmwaredir}"
 
 %post -n libcrystalhd3 -p /sbin/ldconfig
 %postun -n libcrystalhd3 -p /sbin/ldconfig
@@ -89,6 +92,6 @@ cp *.bin %{buildroot}/lib/firmware/
 %{_libdir}/libcrystalhd.so
 
 %files -n crystalhd-firmware
-/lib/firmware/*
+%{_firmwaredir}/*
 
 %changelog

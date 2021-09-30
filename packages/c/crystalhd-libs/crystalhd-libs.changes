@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:41:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Use %_firmwaredir (boo#1029961, crystalhd-firmwaredir.patch)
+
+-------------------------------------------------------------------
 Tue Apr 10 20:51:39 UTC 2018 - jengelh@inai.de
 
 - Fix SRPM group.
