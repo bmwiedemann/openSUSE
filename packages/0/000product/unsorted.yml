@@ -3340,6 +3340,8 @@ unsorted:
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
   - etckeeper-zypp-plugin 
+  - eth-basic-tools: [x86_64] 
+  - eth-fastfabric: [x86_64] 
   - etherape 
   - etherape-lang 
   - etrophy 
@@ -5708,8 +5710,6 @@ unsorted:
   - gnome-firmware-lang 
   - gnome-font-viewer 
   - gnome-font-viewer-lang 
-  - gnome-games 
-  - gnome-games-lang 
   - gnome-games-scripts 
   - gnome-genius 
   - gnome-getting-started-docs 
@@ -5763,7 +5763,6 @@ unsorted:
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
-  - gnome-shell-search-provider-gnome-games 
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnote 
   - gnome-shell-search-provider-lollypop 
@@ -8732,7 +8731,7 @@ unsorted:
   - libOpenEXRUtil-3_1-30 
   - libOpenEXRUtil-3_1-30-32bit: [x86_64] 
   - libOpenIPMI0 
-  - libOpenImageDenoise0: [x86_64] 
+  - libOpenImageDenoise1: [x86_64] 
   - libOpenImageIO2_2 
   - libOpenImageIO_Util2_2 
   - libOpenSceneGraph-devel 
@@ -14722,20 +14721,20 @@ unsorted:
   - lighttpd-mod_vhostdb_pgsql 
   - lighttpd-mod_webdav 
   - lilv 
-  - lilypond 
-  - lilypond-doc 
-  - lilypond-doc-cs 
-  - lilypond-doc-de 
-  - lilypond-doc-es 
-  - lilypond-doc-fr 
-  - lilypond-doc-hu 
-  - lilypond-doc-it 
-  - lilypond-doc-ja 
-  - lilypond-doc-nl 
-  - lilypond-doc-zh 
-  - lilypond-emmentaler-fonts 
-  - lilypond-fonts-common 
-  - lilypond-texgy-fonts 
+  - lilypond: [x86_64] 
+  - lilypond-doc: [x86_64] 
+  - lilypond-doc-cs: [x86_64] 
+  - lilypond-doc-de: [x86_64] 
+  - lilypond-doc-es: [x86_64] 
+  - lilypond-doc-fr: [x86_64] 
+  - lilypond-doc-hu: [x86_64] 
+  - lilypond-doc-it: [x86_64] 
+  - lilypond-doc-ja: [x86_64] 
+  - lilypond-doc-nl: [x86_64] 
+  - lilypond-doc-zh: [x86_64] 
+  - lilypond-emmentaler-fonts: [x86_64] 
+  - lilypond-fonts-common: [x86_64] 
+  - lilypond-texgy-fonts: [x86_64] 
   - lime-devel 
   - limesuite 
   - limesuite-devel 
@@ -18723,7 +18722,6 @@ unsorted:
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
   - perl-Class-XSAccessor 
-  - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -21000,6 +20998,7 @@ unsorted:
   - python3-Hamlib 
   - python3-HepMC 
   - python3-HyperKitty 
+  - python3-Keras: [x86_64] 
   - python3-Keras-Preprocessing: [x86_64] 
   - python3-MapProxy 
   - python3-OpenColorIO 
@@ -21314,6 +21313,7 @@ unsorted:
   - python3-tdb-32bit: [x86_64] 
   - python3-tensorboard 
   - python3-tensorboard-cmd 
+  - python3-tensorflow-estimator: [x86_64] 
   - python3-tevent-32bit: [x86_64] 
   - python3-tooz 
   - python3-tvtk 
@@ -24907,7 +24907,6 @@ unsorted:
   - python38-construct 
   - python38-contexter 
   - python38-contextlib2 
-  - python38-contextvars 
   - python38-control 
   - python38-conu 
   - python38-convertdate 
@@ -25451,7 +25450,6 @@ unsorted:
   - python38-imbox 
   - python38-img2pdf 
   - python38-iminuit 
-  - python38-immutables 
   - python38-impacket 
   - python38-importlab 
   - python38-imread 
@@ -31009,9 +31007,6 @@ unsorted:
   - ruby2.7-rubygem-http 
   - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-rspec-rails-3.9 
-  - ruby2.7-rubygem-ruby_dep-doc 
-  - ruby2.7-rubygem-unicorn-doc 
-  - ruby2.7-rubygem-unicorn-testsuite 
   - ruby3.0-devel 
   - ruby3.0-devel-extra 
   - ruby3.0-doc 
@@ -32303,7 +32298,7 @@ unsorted:
   - syntax-highlighting-devel 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
@@ -32331,7 +32326,6 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
-  - system-tuning-common-SUSE 
   - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
@@ -41945,6 +41939,8 @@ unsorted:
   - xcwd 
   - xdbedizzy 
   - xdg-desktop-portal-devel 
+  - xdg-desktop-portal-gnome 
+  - xdg-desktop-portal-gnome-lang 
   - xdg-desktop-portal-wlr 
   - xdiskusage 
   - xditview 
