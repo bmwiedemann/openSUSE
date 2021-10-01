@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:44:22 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix auditd service start with systemd hardening directives (boo#1190918)
+  * add fix_auditd.patch
+
+-------------------------------------------------------------------
 Thu Sep  2 08:45:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Modified fix_systemd.patch to allow systemd gpt generator access to
