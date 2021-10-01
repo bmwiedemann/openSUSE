@@ -54,6 +54,7 @@ Source2:        keepalive-rpmlintrc
 Patch1:         keepalive-init.patch
 # PATCH-FIX-UPSTREAM: https://github.com/acassen/keepalived/pull/1915
 Patch2:         1915.patch
+Patch3:	harden_keepalived.service.patch
 BuildRequires:  file-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
@@ -104,6 +105,7 @@ resilient infrastructures.
 %patch1 -p1
 %patch2 -p1
 chmod 644 doc/samples/*
+%patch3 -p1
 
 %build
 export STRIP=true

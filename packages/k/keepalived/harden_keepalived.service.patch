@@ -1,0 +1,24 @@
+Index: keepalived-2.2.2/keepalived/keepalived.service.in
+===================================================================
+--- keepalived-2.2.2.orig/keepalived/keepalived.service.in
++++ keepalived-2.2.2/keepalived/keepalived.service.in
+@@ -4,6 +4,19 @@ After=network-online.target syslog.targe
+ Wants=network-online.target @SNMP_SERVICE@
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=@SYSTEMD_SERVICE_TYPE@
+ PIDFile=@RUN_DIR@/run/keepalived.pid
+ KillMode=process

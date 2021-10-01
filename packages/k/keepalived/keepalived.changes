@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 27 07:39:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_keepalived.service.patch
+
+-------------------------------------------------------------------
 Wed Jul 21 12:03:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add 1915.patch to fix build on tumbleweed
