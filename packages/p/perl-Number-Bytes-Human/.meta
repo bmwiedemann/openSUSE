@@ -1,0 +1,6 @@
+<package name="perl-Number-Bytes-Human" project="openSUSE:Factory">
+  <title>Convert byte count to human readable format</title>
+  <description>This module provides a formatter which turns byte counts to usual readable format, like '2.0K', '3.1G', '100B'. It was inspired in the '-h' option of Unix utilities like 'du', 'df' and 'ls' for &quot;human-readable&quot; output.</description>
+  <devel project="devel:languages:perl" package="perl-Number-Bytes-Human"/>
+  <url>https://metacpan.org/release/Number-Bytes-Human</url>
+</package>
