@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>316cf6fc060bdeac8e8e3d5b50868cbe</srcmd5>
+    <version>8.51</version>
+    <time>1633120138</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package 8.51
+ * created by cpanspec 1.81.01
+
+Would be nice to have this package for MirrorCache, as an alternative to the Maxmind module (https://build.opensuse.org/package/show/openSUSE:infrastructure:MirrorCache/MirrorCache)</comment>
+    <requestid>919784</requestid>
+  </revision>
+</revisionlist>
