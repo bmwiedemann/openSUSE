@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Sep 24 11:30:21 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the scripts and documentation regarding
+  fips-finish-install and test-fips-setup
+  * Add crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Fri Sep 24 09:34:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20210917.c9d86d1:
+  * openssl: fix disabling ChaCha20
+  * pacify pylint 2.11: use format strings
+  * pacify pylint 2.11: specify explicit encoding
+  * fix minor things found by new pylint
+  * update-crypto-policies: --check against regenerated
+  * update-crypto-policies: fix --check's walking order
+  * policygenerators/gnutls: revert disabling DTLS0.9...
+  * policygenerators/java: add javasystem backend
+  * LEGACY: bump 1023 key size to 1024
+  * cryptopolicies: fix 'and' in deprecation warnings
+  * *ssh: condition ecdh-sha2-nistp384 on SECP384R1
+  * nss: hopefully the last fix for nss sigalgs check
+  * cryptopolicies: Python 3.10 compatibility
+  * nss: postponing check + testing at least something
+  * Rename 'policy modules' to 'subpolicies'
+  * validation.rules: fix a missing word in error
+  * cryptopolicies: raise errors right after warnings
+  * update-crypto-policies: capitalize warnings
+  * cryptopolicies: syntax-precheck scope errors
+  * .gitlab-ci.yml, Makefile: enable codespell
+  * all: fix several typos
+  * docs: don't leave zero TLS/DTLS protocols on
+  * openssl: separate TLS/DTLS MinProtocol/MaxProtocol
+  * alg_lists: order protocols new-to-old for consistency
+  * alg_lists: max_{d,}tls_version
+  * update-crypto-policies: fix pregenerated + local.d
+  * openssh: allow validation with pre-8.5
+  * .gitlab-ci.yml: run commit-range against upstream
+  * openssh: Use the new name for PubkeyAcceptedKeyTypes
+  * sha1_in_dnssec: deprecate
+  * .gitlab-ci.yml: test commit ranges
+  * FIPS:OSPP: sign = -*-SHA2-224
+  * scoped policies: documentation update
+  * scoped policies: use new features to the fullest...
+  * scoped policies: rewrite + minimal policy changes
+  * scoped policies: rewrite preparations
+  * nss: postponing the version check again, to 3.64
+- Remove patches fixed upstream: crypto-policies-typos.patch
+- Rebase: crypto-policies-test_supported_modules_only.patch
+- Merge crypto-policies-asciidoc.patch into
+    crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
 Thu Feb 25 12:05:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to version 20210225.05203d2:

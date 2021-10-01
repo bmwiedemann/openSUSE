@@ -1,0 +1,72 @@
+Index: fedora-crypto-policies/Makefile
+===================================================================
+--- fedora-crypto-policies.orig/Makefile
++++ fedora-crypto-policies/Makefile
+@@ -5,8 +5,8 @@ MANDIR?=/usr/share/man
+ CONFDIR?=/etc/crypto-policies
+ DESTDIR?=
+ MAN7PAGES=crypto-policies.7
+-MAN8PAGES=update-crypto-policies.8 fips-finish-install.8 fips-mode-setup.8
+-SCRIPTS=update-crypto-policies fips-finish-install fips-mode-setup
++MAN8PAGES=update-crypto-policies.8 fips-finish-install.8
++SCRIPTS=update-crypto-policies fips-finish-install
+ NUM_PROCS = $$(getconf _NPROCESSORS_ONLN)
+ PYVERSION = -3
+ DIFFTOOL?=meld
+Index: fedora-crypto-policies/crypto-policies.7.txt
+===================================================================
+--- fedora-crypto-policies.orig/crypto-policies.7.txt
++++ fedora-crypto-policies/crypto-policies.7.txt
+@@ -144,9 +144,6 @@ PROVIDED POLICIES
+ 
+ *FIPS*::
+   A policy to aid conformance to the *FIPS 140-2* requirements.
+-  This policy is used internally by the *fips-mode-setup(8)* tool
+-  which can switch the system into the *FIPS 140-2* mode.
+-  This policy provides at least 112-bit security.
+ 
+   * MACs: all *HMAC* with *SHA1* or better
+   * Curves: all prime >= 256 bits
+@@ -255,12 +252,6 @@ COMMANDS
+   back ends and allows the system administrator to change the active
+   cryptographic policy.
+ 
+-*fips-mode-setup(8)*::
+-  This command allows the system administrator to enable, or disable the
+-  system FIPS mode and also apply the *FIPS* cryptographic policy
+-  which limits the allowed algorithms and protocols to these allowed by
+-  the FIPS 140-2 requirements.
+-
+ 
+ NOTES
+ -----
+@@ -427,7 +418,7 @@ FILES
+ 
+ SEE ALSO
+ --------
+-update-crypto-policies(8), fips-mode-setup(8)
++update-crypto-policies(8)
+ 
+ 
+ AUTHOR
+Index: fedora-crypto-policies/python/update-crypto-policies.py
+===================================================================
+--- fedora-crypto-policies.orig/python/update-crypto-policies.py
++++ fedora-crypto-policies/python/update-crypto-policies.py
+@@ -344,16 +344,12 @@ def apply_policy(pconfig, profile=None,
+                 eprint("Warning: Using 'update-crypto-policies --set FIPS' "
+                        "is not sufficient for")
+                 eprint("         FIPS compliance.")
+-                eprint("         Use 'fips-mode-setup --enable' "
+-                       "command instead.")
+             elif fips_mode():
+                 eprint("Warning: Using 'update-crypto-policies --set' "
+                        "in FIPS mode will make the system")
+                 eprint("         non-compliant with FIPS.")
+                 eprint("         It can also break "
+                        "the ssh access to the system.")
+-                eprint("         Use 'fips-mode-setup --disable' "
+-                       "to disable the system FIPS mode.")
+ 
+     if base_dir == DEFAULT_BASE_DIR:
+         if not os.geteuid() == 0:

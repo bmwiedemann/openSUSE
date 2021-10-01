@@ -1,7 +1,7 @@
 #
 # spec file for package crypto-policies
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _python_bytecompile_extra 0
 Name:           crypto-policies
-Version:        20210225.05203d2
+Version:        20210917.c9d86d1
 Release:        0
 Summary:        System-wide crypto policies
 License:        LGPL-2.1-or-later
@@ -28,18 +28,23 @@ Source0:        fedora-%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        crypto-policies.7.gz
 Source3:        update-crypto-policies.8.gz
-Patch0:         crypto-policies-asciidoc.patch
-Patch1:         crypto-policies-typos.patch
-Patch2:         crypto-policies-test_supported_modules_only.patch
-Patch3:         crypto-policies-no-build-manpages.patch
+Patch0:         crypto-policies-test_supported_modules_only.patch
+Patch1:         crypto-policies-no-build-manpages.patch
+Patch2:         crypto-policies-FIPS.patch
 BuildRequires:  python3-base
+# For testing, the following buildrequires need to be uncommented.
 # BuildRequires:  asciidoc
+# BuildRequires:  bind
 # BuildRequires:  gnutls >= 3.6.0
 # BuildRequires:  java-devel
 # BuildRequires:  libxslt
 # BuildRequires:  openssl
 # BuildRequires:  perl
+# BuildRequires:  python3-coverage
 # BuildRequires:  python3-devel >= 3.6
+# BuildRequires:  python3-flake8
+# BuildRequires:  python3-pylint
+# BuildRequires:  python3-pytest
 # BuildRequires:  perl(File::Copy)
 # BuildRequires:  perl(File::Temp)
 # BuildRequires:  perl(File::Which)
@@ -102,6 +107,11 @@ touch %{buildroot}%{_sysconfdir}/crypto-policies/state/CURRENT.pol
 # Drop pre-generated GOST-ONLY policy, we do not need to ship the files
 rm -rf %{buildroot}%{_datarootdir}/crypto-policies/GOST-ONLY
 
+# Remove fips-finish-install and test-fips-setup scripts and man
+find -type f -name fips-finish-install -delete
+find -type f -name fips-finish-install.8.txt -delete
+find -type f -name test-fips-setup.sh -delete
+
 # Create back-end configs for mounting with read-only /etc/
 for d in LEGACY DEFAULT FUTURE FIPS ; do
     mkdir -p -m 755 %{buildroot}%{_datarootdir}/crypto-policies/back-ends/$d
@@ -119,7 +129,7 @@ done
 cp %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
 
 %check
-%make_build check || :
+%make_build test || :
 
 %post -p <lua>
 if not posix.access("%{_sysconfdir}/crypto-policies/config") then
@@ -175,6 +185,7 @@ end
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/nss.config
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/bind.config
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/java.config
+%ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/javasystem.config
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/krb5.config
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/libreswan.config
 %ghost %config(missingok,noreplace) %{_sysconfdir}/crypto-policies/back-ends/libssh.config

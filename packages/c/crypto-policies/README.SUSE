@@ -1,2 +1,2 @@
-Currently only OpenSSL, GnuTLS, and NSS policies are supported.
+Currently only OpenSSL and GnuTLS policies are supported.
 The rest of the modules ignore the policy settings for the time being.
