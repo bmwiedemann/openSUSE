@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Thu Sep 30 15:39:37 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.7.0:
+  * Specify the "--snapshot-volumes=false" option explicitly when running backup with Restic
+  * Pin the base image for v1.7 (#4180)
+  * Fix plugins incompatible issue in upgrade test (#4141)
+  * run backup/restore describe in debug subcommand (#4161)
+  * Recovery the workround for aws pending issue
+  * Use velero debug command to dump the logs when case failed
+  * Fix the link and content for upgrade instruction
+  * Add upgrade instructions for v1.7.0
+  * Add upgrade test into E2E tests
+  * Generate v1.7 docs
+  * Generate 1.7 changelog
+  * Add `velero debug` to documentation
+  * Validate namespace in velero backup create command (#4057)
+  * Empty the "ClusterIPs" along with "ClusterIP" when "ClusterIP" isn't "None" (#4101)
+  * pass velero cli executable to crashd
+  * Skip restic backup/restore of DownwardAPI volumes (#4076)
+  * remove IsUnstructuredCRDReady (#4085)
+  * Several fixes to improve the stability of E2E testing (#4056)
+  * Enhance e2e test
+  * Implement `velero debug` (#4022)
+  * Install/uninstall velero by CLI in the E2E test case
+  * Fix log print error using a wrong var name (#4063)
+  * add changelog
+  * fixes for CVE-2021-3121 and CVE-2021-3580
+  * new roadmap for 1.7 (#4048)
+  * Change the base image to distroless (#4055)
+  * internal/delete: fix dropped error (#4016)
+  * Add documentation for TLS error 116 (#3811)
+  * Page list requests by default (#3823)
+  * Wait the namespace deletion completed before removing the CRDs (#4007)
+  * Update ibm-config.md (#4024)
+  * Changed format of download request name to use a random UUID rather than (#4034)
+  * Fix the random failure of E2E test cases (#4005)
+  * Use LabelSelector in Action ResourceSelector
+  * Skip restore of APIServices managed by Kubernetes
+  * Distinguish between different unnamed node ports when preserving
+  * Add Kubernetes v1.22 CI test
+  * Use appropriate CRD API during readiness check (#4015)
+  * Restic Backup: Add check if Pod is successful or failed for emptyDir.… (#3993)
+  * pkg/install: fix dropped error
+  * Bump up Go to 1.16 (#3990)
+  * Select the velero deployment with both label and container name (#3996)
+  * Updated uninstall to remove both v1beta1 and v1 CRDs if present (#3997)
+  * Patch the resources of velero and kibishii when running E2E testing
+  * Adding new meeting details to community documentation page (#4001)
+  * enable e2e tests to choose crd apiVersion
+  * Control the name of backup used in E2E test to avoid issue on vSphere (#3985)
+  * Change CRDs default API version v1
+  * Update the Tiltfile to use v1 CRDs
+  * Update site documentation
+  * Add CI CRD check on K8s v1.21.1
+  * Update CI codespell check
+  * Add changelog
+  * Add new flag --crds-version of default CRD version to generated
+  * Run script to generate both v1beta1 and v1 CRDs
+  * Update script to generate both v1beta1 and v1 CRDs
+  * Fixing multipleNamespaceTest bug - Missing expect statement in test (#3983)
+  * Run "Basic" test cases only on Github Action for pull requests (#3989)
+  * Bump up vSphere plugin version to v1.1.1
+  * Generate test report for the E2E testing
+  * Update stale bot setting (#3979)
+  * Update upgrade instructions to reference v1.6.2 (#3977)
+  * Add the design for `velero debug` (#3973)
+  * Fix push-build-image target
+  * Change restic image log messages to info level
+  * Adding Replicated logo to adopters page - take 2
+  * Update k8s libraries to latest patch version (#3953)
+  * pkg/restore: fix dropped error
+  * Allow registry to be configured at build time
+  * Nominate Wenkai Yin to become a maintainer
+  * Nominate Daniel Jiang to become a maintainer
+  * Enable stale bot
+  * Add changelog
+  * Upgrade Velero ClusterRoleBinding to use v1 API
+  * Fix -install-velero flag for e2e tests
+  * Enable the E2E test on Github Action
+  * So Long, and Thanks for All the Fish
+  * Update upgrade instructions to reference v1.6.1 (#3893)
+  * Fix:rss link blindly appends /blog/index.html (#3886)
+  * Fix the link of release information (#3883)
+  * regression introduced in 1.6 restore progress: fix CR restore (#3845)
+  * Added multiple namespace test (#3763)
+  * Add Labels field to BackupSpec (#3641)
+  * Skip volume restores from projected sources (#3877)
+  * API groups e2e tests remove controllers (#3564)
+  * fix typos for code spell test
+  * skip backuping projected volume
+  * Update changelog for new PR.
+  * Refactor GetRepoIdentifier tests and add new case
+  * Consolidate api clients for e2e tests (#3764)
+  * Remove ashish-amarnath as maintainer (#3842)
+  * Delete residual file caused by network interruption and so on. Fixes #3204 (#3241)
+  * Updated design to take into account protocol buffer limitations. (#3464)
+  * Add document describing manual test cases (#3601)
+  * Update Enable API Group Versions Feature docs (#3809)
+  * Update MinIO docs for correct AWS plugin version (#3814)
+  * Added BackupPhaseUploading and BackupPhaseUploadingPartialFailure backup (#3805)
+  * Remove Nolan Brubaker from active contributors
+  * Remove the [insert current year] in the code standards doc
+  * Add information about compression in Velero (#3818)
+  * Add PVC UID label to PVR (as we already have for PVB) (#3792)
+  * Remove nrb from PR review rotation (#3810)
+  * Support pulling plugins by digest (#3803)
+  * Update docs to state Kubernetes v1.12 is needed (#3787)
+  * Update docs to include schedule backup example (#3478)
+  * Add note about updating CRDs during development (#3784)
+  * service_action: use unstructured to marshal selective fields  (#3789)
+  * Fix gh action (#3743)
+  * Changed kibishii wait commands to output stdout/stderr, makes for better debugging (#3762)
+  * ✨ ⚠️ Remove CSI volumesnapshot artifact deletion (#3734)
+  * Added site bio/img for maintainer/contributor sseago (#3750)
+  * Storage Supported Providers hyperlink is updated to refer to the correct path (#3667)
+  * Design doc for upload progress monitoring (#3416)
+  * Changes to secrets design (#3413)
+  * Propose Scott Seago as a maintainer (#3747)
+  * A small refactor of the e2e tests (#3726)
+  * update other versions
+  * fix on-premise `--plugins` flag documentation
+  * Shorten OpenStack plugin documentation link text
+  * Add cpanato as Emeritus Maintainers (#3725)
+  * Fix typo in the restic document (#3728)
+  * Fix typo in restic documentation
+  * 🐛  Fix plugin name derivation from image name (#3711)
+  * Fix misspelled file name (#3712)
+  * Docs: include OpenStack plugin for version 1.6
+  * Define a Velero release schedule (#3551)
+  * Added release criteria to release-instructions (#3598)
+  * Improve plugin release instructions (#3591)
+  * Fix format
+  * Fix path
+  * Consolidate config files and fix path
+  * Add Abbie to PR review requests
+  * Add logo assets
+  * Fix incorrect links in BSL docs (#3680)
+  * Added Eleanor to Team Bios and to Maintainers page, removed Tim (#3593)
+  * Add blog post for Velero 1.6 (#3676)
+  * use region input to detect the Bucket region Signed-off-by: Jalaja Ganapathy <jalaja@replicated.com>
+  * Docs: Add OpenStack list item to plugin page
+  * Docs: include OpenStack plugin in community supported providers
+  * Correctly render links with fragments on docs pages
+
+-------------------------------------------------------------------
 Fri Aug 13 01:38:53 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.6.3:

@@ -17,11 +17,11 @@
 
 
 %define goipath github.com/vmware-tanzu/velero
-%define commit 3743ca4d533a343e5c5001b398e775f0d9c1bc25
+%define commit 4863ff4119bcf790cb4f017c6b9d6657bb8affb6
 %define gitstate clean
 
 Name:           velero
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
@@ -30,7 +30,7 @@ URL:            https://velero.io
 Source0:        https://github.com/vmware-tanzu/velero/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) = 1.16
 
 %description
 velero is a backup program. It supports verification, encryption,
