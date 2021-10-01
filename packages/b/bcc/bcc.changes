@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  1 02:10:01 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Use shared libbpf library instead of building it along with bcc
+    + Delete libbpf-0.5.tar.gz
+- Fix build on i586 due to use of shared libbpf library
+    + Do-not-export-USDT-function-when-ENABLE_USDT-is-OFF.patch
+
+-------------------------------------------------------------------
 Fri Sep 17 07:35:11 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to 0.22.0

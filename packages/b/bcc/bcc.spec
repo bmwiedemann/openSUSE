@@ -26,8 +26,6 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.5
-
 Name:           bcc
 Version:        0.22.0
 Release:        0
@@ -36,12 +34,14 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/libbpf/libbpf/archive/refs/tags/v%{libbpf_version}.0.tar.gz#/libbpf-%{libbpf_version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/iovisor/bcc/pull/3642
+Patch1:         Do-not-export-USDT-function-when-ENABLE_USDT-is-OFF.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  libbpf-devel
 BuildRequires:  libelf-devel
 BuildRequires:  llvm-clang-devel >= 3.7.0
 BuildRequires:  llvm-devel >= 3.7.0
@@ -130,10 +130,7 @@ Documentation on how to write programs with the BPF Compiler Collection.
 
 %prep
 %setup -q
-
-pushd src/cc/libbpf
-tar xf %{SOURCE1} --strip 1
-popd
+%autopatch -p1
 
 %build
 # Prevent the cpp examples from compilation and installation
@@ -154,6 +151,7 @@ export PATH="%{_builddir}/usr/bin":$PATH
 mkdir build
 pushd build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
+	-DCMAKE_USE_LIBBPF_PACKAGE=yes \
 	-DPYTHON_CMD=python3 \
 	-DREVISION_LAST=%{version} \
 	-DREVISION=%{version} \

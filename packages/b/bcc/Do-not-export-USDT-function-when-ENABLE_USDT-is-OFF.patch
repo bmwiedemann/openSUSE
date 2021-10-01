@@ -1,0 +1,49 @@
+From e3e181583bd417d981fa65b365db9ccfdde2174e Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Thu, 30 Sep 2021 14:11:46 +0800
+Subject: [PATCH 1/1] Do not export USDT function when ENABLE_USDT is OFF
+
+When compiling with CMAKE_USE_LIBBPF_PACKAGE=yes and ENABLE_USDT=OFF, linking
+of test_static will fail due to undefined references to
+`bcc_usdt_new_frompath', `bcc_usdt_close' and `bcc_usdt_new_frompid'. The
+reference comes from link_all.cc which references those functions irrespective
+of ENABLE_USDT.
+
+As a fix, introduce EXPORT_USDT and wrap references to USDT functions inside
+link_all.cc within #ifdef.
+---
+ src/cc/CMakeLists.txt | 1 +
+ src/cc/link_all.cc    | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/cc/CMakeLists.txt b/src/cc/CMakeLists.txt
+index 974fa49f..bcbbaebe 100644
+--- a/src/cc/CMakeLists.txt
++++ b/src/cc/CMakeLists.txt
+@@ -89,6 +89,7 @@ set_target_properties(bcc-shared PROPERTIES VERSION ${REVISION_LAST} SOVERSION 0
+ set_target_properties(bcc-shared PROPERTIES OUTPUT_NAME bcc)
+ 
+ if(ENABLE_USDT)
++  add_definitions(-DEXPORT_USDT)
+   set(bcc_usdt_sources usdt/usdt.cc usdt/usdt_args.cc)
+   # else undefined
+ endif()
+diff --git a/src/cc/link_all.cc b/src/cc/link_all.cc
+index e03ea76c..d3dbd9aa 100644
+--- a/src/cc/link_all.cc
++++ b/src/cc/link_all.cc
+@@ -13,9 +13,11 @@ namespace {
+       if (::getenv("bar") != (char *)-1)
+         return;
+ 
++#ifdef EXPORT_USDT
+       (void)bcc_usdt_new_frompid(-1, nullptr);
+       (void)bcc_usdt_new_frompath(nullptr);
+       (void)bcc_usdt_close(nullptr);
++#endif
+     }
+   } LinkAll;  // declare one instance to invoke the constructor
+ }
+-- 
+2.33.0
+
