@@ -19,7 +19,7 @@
 %define goipath github.com/vmware-tanzu/velero-plugin-for-aws
 
 Name:           velero-plugin-for-aws
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Velero plugin for AWS
 License:        Apache-2.0
