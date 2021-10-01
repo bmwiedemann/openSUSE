@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:23:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add meson-rust-1.55.patch: Fix test suite run with rust 1.55.
+
+-------------------------------------------------------------------
+Wed Sep 29 06:27:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.59.2:
+  + No upstream changes provided.
+
+-------------------------------------------------------------------
 Thu Aug 19 15:56:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.59.1:

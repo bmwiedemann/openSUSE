@@ -1,0 +1,12 @@
+Index: meson-0.59.2/test cases/rust/5 polyglot static/meson.build
+===================================================================
+--- meson-0.59.2.orig/test cases/rust/5 polyglot static/meson.build
++++ meson-0.59.2/test cases/rust/5 polyglot static/meson.build
+@@ -2,6 +2,7 @@ project('static rust and c polyglot exec
+ 
+ deps = [
+   meson.get_compiler('c').find_library('dl', required: false),
++  meson.get_compiler('c').find_library('m', required: false),
+   dependency('threads'),
+ ]
+ 
