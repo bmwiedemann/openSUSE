@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 09:05:44 UTC 2021 - pgajdos@suse.com
+
+- reenable gd/gd2 legacy formats, was disabled by upstream by
+  default [bsc#1190762]
+
+-------------------------------------------------------------------
 Tue Sep 14 08:48:46 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.3.3 [bsc#1190400]

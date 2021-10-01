@@ -539,4 +539,13 @@
   * gdImageScaleTwoPass() looses top row and left column</comment>
     <requestid>918865</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>32939481e9cee5d7a22df4297cdeaf4e</srcmd5>
+    <version>2.3.3</version>
+    <time>1633120134</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable gd/gd2 legacy formats, was disabled by upstream by
+  default [bsc#1190762]</comment>
+    <requestid>922326</requestid>
+  </revision>
 </revisionlist>

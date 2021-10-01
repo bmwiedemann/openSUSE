@@ -106,6 +106,7 @@ export CFLAGS="%{optflags} -ffp-contract=off"
 	--with-jpeg \
 	--with-png \
 	--with-xpm \
+        --enable-gd-formats=yes \
 	--with-webp \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 	--with-avif \
