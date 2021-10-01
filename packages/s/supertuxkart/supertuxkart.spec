@@ -18,7 +18,7 @@
 
 #
 Name:           supertuxkart
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        A 3D kart racing game
 License:        GPL-2.0-or-later AND GPL-3.0-or-later AND CC-BY-SA-3.0
@@ -28,9 +28,6 @@ Source:         https://github.com/supertuxkart/stk-code/releases/download/%{ver
 # Geeko kart add-on (CC-BY 3.0)
 Source1:        14e6ba25b17f0d.zip
 Source9:        supertuxkart.6
-# PATCH-FIX-UPSTREAM - fix building on SDL2 >= 2.0.14
-# See https://github.com/supertuxkart/stk-code/commit/61833c9c26da5520f2eaa02f2458971ba07f2aad
-Patch0:         supertuxkart-sdl.patch
 BuildRequires:  cmake >= 3
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -93,7 +90,6 @@ Data files for SuperTuxKart a Free 3d kart racing game.
 
 %prep
 %setup -q -n SuperTuxKart-%{version}-src
-%patch0 -p1
 find -name '*~' -delete -print
 find -name '.git*' -type f -delete -print
 rm -rfv ./.github
@@ -148,7 +144,6 @@ cp %{SOURCE9} %{buildroot}%{_mandir}/man6
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/supertuxkart.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/supertuxkart.png
 %{_datadir}/icons/hicolor/
 
 %files data

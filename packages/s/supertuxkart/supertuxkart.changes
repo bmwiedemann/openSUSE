@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep 29 18:09:14 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.3
+  * Networking
+    - Server bookmarks
+  * Graphics
+    - Introduce render resolution scaling for the modern renderer.
+      For users with limited GPU power, this allows to get significant performance (FPS) gains
+      at the cost of image quality.
+      It can also allow additional graphics effects at the same performance.
+      This is especially useful for users with high-resolution and high-DPI screens.
+      The scaling only affects the 3D scene, the UI remains crisp at full-resolution.
+    - Simplification through removal of unused deprecated graphical effects
+    - Many updates to texture-related code
+    - Auto-compute Level of Detail distances for 3D models set to use LOD depending on track complexity.
+      The geometry level parameter allows partial control over the drawing distances.
+    - Improved screen space reflection
+  * General
+    - Switch port
+    - Gamepad force feedback support
+    - Highscore screen
+    - Grand Prix highscores
+    - Updates to the bundled tinygettext library
+    - Enable custom skidding sounds for karts
+    - Greatly sped up loading of tracks with many checklines through optimization
+    - And many bugfixes and enhancements too small or specific to be detailed
+  * User Interface
+    - Display the skin-appropriate iconset without having to restart
+    - Fix some issues with the options menu when used during a pause
+    - Add a confirmation dialog before closing the game through the "go back" key/button
+    - In the result screen, display the race position with a number with 10 karts or more
+    - In the result screen, display the challenge result and the requirements met or failed
+    - Many small menu and dialogs improvements
+    - Usability and functionality improvements to the debug menu
+    - Clickable URLs in text
+  * In-race UI
+    Add visual and sound feedback when a timed challenge or timed game is about to end
+  * Tracks and modeling
+    - Alien Signal
+    - Ancient Colosseum Labyrinth
+    - Improved Las Dunas Soccer
+    - Add lap line extensions to Hacienda, Old Mine, Ravenbridge Mansion and Shifting Sands
+    - New Pepper kart
+    - Improved Adiumy, Emule, GNU and Sara karts
+- Drop supertuxkart-sdl.patch because now in upstream.
+
+-------------------------------------------------------------------
 Mon Mar 15 19:46:21 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add supertuxkart-sdl.patch to fix building on SDL2 >= 2.0.14
