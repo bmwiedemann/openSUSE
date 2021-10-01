@@ -1,5 +1,5 @@
 #
-# spec file for package python-Keras-Preprocessing-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -43,6 +43,7 @@ Recommends:     tensorflow2
 # match up with tensorflow
 ExcludeArch:    %{ix86}
 %if %{with test}
+BuildRequires:  %{python_module Keras}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module numpy >= 1.9.1}
 BuildRequires:  %{python_module pandas}
