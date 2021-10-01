@@ -29,9 +29,9 @@ BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  rust-packaging
 ExclusiveArch:  %{rust_arches}
 %python_subpackages
 

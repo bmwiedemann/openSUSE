@@ -17,4 +17,12 @@
     exception, instead of ValueError.</comment>
     <requestid>902652</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>288abf2ca74260c32e0015f5aa646ee0</srcmd5>
+    <version>0.5.0</version>
+    <time>1633120143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922494</requestid>
+  </revision>
 </revisionlist>
