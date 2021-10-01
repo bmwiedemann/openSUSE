@@ -26,6 +26,7 @@ URL:            https://github.com/ltworf/lapdog
 Source0:        https://github.com/ltworf/lapdog/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM lapdog-1.1-pass_cxxflags.patch -- include flags passed via command line -- aloisio@gmx.com
 Patch0:         lapdog-1.1-pass_cxxflags.patch
+Patch1:	harden_lapdog.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  systemd-rpm-macros
@@ -45,6 +46,7 @@ with DHCP.
 %patch0 -p1
 sed -e '/CHANGELOG/d' -e '/init.d/d' \
     -e 's|/lib/systemd/system/|%{_unitdir}|' -i CMakeLists.txt
+%patch1 -p1
 
 %build
 %cmake
