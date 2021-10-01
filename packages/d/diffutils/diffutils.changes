@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:45:41 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Skip stack overflow tests under qemu emulation (bsc#1190046)
+
+-------------------------------------------------------------------
 Sat Aug  7 08:57:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - diffutils 3.8:

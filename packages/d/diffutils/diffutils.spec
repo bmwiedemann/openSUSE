@@ -45,6 +45,12 @@ make source code patches, for instance.
 %make_build
 
 %check
+%if 0%{?qemu_user_space_build}
+# Stack overflow tests are difficult to emulate, skip them
+echo exit 77 > gnulib-tests/test-c-stack.sh
+echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow1.c
+echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow2.c
+%endif
 %make_build check
 
 %install
