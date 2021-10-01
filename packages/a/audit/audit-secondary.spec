@@ -22,7 +22,7 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -37,6 +37,9 @@ Patch4:         audit-ausearch-do-not-require-tclass.patch
 Patch5:         change-default-log_group.patch
 Patch6:         libev-werror.patch
 Patch7:         harden_auditd.service.patch
+Patch8:         change-default-log_format.patch
+Patch9:         fix-hardened-service.patch
+Patch10:        enable-stop-rules.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
@@ -129,6 +132,9 @@ rm -rf audisp/plugins/prelude
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.

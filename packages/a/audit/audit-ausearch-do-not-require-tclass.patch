@@ -11,7 +11,7 @@ Signed-off-by: Tony Jones <tonyj@suse.de>
 
 --- a/src/ausearch-parse.c
 +++ b/src/ausearch-parse.c
-@@ -1735,17 +1735,15 @@ static int parse_avc(const lnode *n, sea
+@@ -2061,17 +2061,15 @@ other_avc:
  
  	// Now get the class...its at the end, so we do things different
  	str = strstr(term, "tclass=");

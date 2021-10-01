@@ -1,0 +1,30 @@
+From: Enzo Matsumiya <ematsumiya@suse.de>
+Subject: init.d/auditd.service: make /etc/audit writable
+References: bsc#1181400
+
+systemd hardening effort (bsc#1181400) broke auditd.service when starting/
+restarting it. This was because auditd couldn't save/create audit.rules from
+/etc/audit/rules.d/* files.
+
+Make /etc/audit writable for the service.
+
+Also remove PrivateDevices=true so /dev/* are exposed to auditd.
+
+Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
+
+--- a/init.d/auditd.service
++++ b/init.d/auditd.service
+@@ -37,12 +37,12 @@ RestrictRealtime=true
+ # added automatically, for details please see
+ # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ ProtectSystem=full
+-PrivateDevices=true
+ ProtectHostname=true
+ ProtectClock=true
+ ProtectKernelTunables=true
+ ProtectKernelLogs=true
+ # end of automatic additions 
++ReadWritePaths=/etc/audit
+ 
+ [Install]
+ WantedBy=multi-user.target

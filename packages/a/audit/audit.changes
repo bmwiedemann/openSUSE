@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 16 03:46:19 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update to version 3.0.5:
+  * In auditd, flush uid/gid caches when user/group added/deleted/modified
+  * Fixed various issues when dealing with corrupted logs
+  * In auditd, check if log_file is valid before closing handle
+
+- Include fixed from 3.0.4:
+  * Apply performance speedups to auparse library
+  * Optimize rule loading in auditctl
+  * Fix an auparse memory leak caused by glibc-2.33 by replacing realpath
+  * Update syscall table to the 5.14 kernel
+  * Fixed various issues when dealing with corrupted logs
+
+-------------------------------------------------------------------
 Fri Jul 30 18:14:14 CEST 2021 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update to version 3.0.3:

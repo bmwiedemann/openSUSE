@@ -1,0 +1,24 @@
+From: Enzo Matsumiya <ematsumiya@suse.de>
+Subject: init.d/auditd.service: enable ExecStopPost directive in auditd.service
+References: bsc#1190227
+
+This has caused confusion for customers when relating stopping auditd service
+is the same as stopping system auditing. This is completely understandable, but
+it's by design, so kauditd can keep filling its queues for any other userspace
+daemon to consume.
+
+Disable audit when auditd.service stops, so kauditd stops logging/running.
+
+Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
+
+--- a/init.d/auditd.service
++++ b/init.d/auditd.service
+@@ -25,7 +25,7 @@ ExecStartPost=-/sbin/augenrules --load
+ #ExecStartPost=-/sbin/auditctl -R /etc/audit/audit.rules
+ # By default we don't clear the rules on exit. To enable this, uncomment
+ # the next line after copying the file to /etc/systemd/system/auditd.service
+-#ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
++ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
+ 
+ ### Security Settings ###
+ MemoryDenyWriteExecute=true
