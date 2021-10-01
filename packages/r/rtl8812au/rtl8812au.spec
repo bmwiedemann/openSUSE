@@ -23,6 +23,7 @@ Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/gordboy/rtl8812au-5.9.3.2
+ExcludeArch:    s390x
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-preamble
 Source2:        LICENSE
@@ -90,6 +91,7 @@ export ARCH=powerpc
 %ifarch riscv64
 export ARCH=riscv
 %endif
+
 for flavor in %{flavors_to_build} ; do
 	cp -a source obj/$flavor
         pushd obj/$flavor

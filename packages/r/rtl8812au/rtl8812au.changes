@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:29:22 UTC 2021 - Rashmi Lengade <rashmi.lengade@gmail.com>
+
+- Exclude the s390x Architecture
+ 
+-------------------------------------------------------------------
 Wed May 12 06:21:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to build with Leap 15.3's kernel which includes
