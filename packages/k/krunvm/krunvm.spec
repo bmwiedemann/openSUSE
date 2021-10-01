@@ -16,7 +16,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           krunvm
 Version:        0.1.4+git5add8c5
 Release:        0
@@ -27,9 +26,11 @@ Source0:        krunvm-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 ExclusiveArch:  x86_64 aarch64
-BuildRequires:  libkrun-devel >= 0.1.4
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
+BuildRequires:  libkrun >= 0.1.7
 Requires:       buildah
+Conflicts:      libkrun-devel
+Conflicts:      libkrun0
 
 %description
 Manage lightweight VMs created from OCI images
@@ -44,11 +45,11 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %make_build
 
 %install
-export RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="%{__rustflags}"
 %make_install PREFIX=%{_prefix}
 
 %changelog

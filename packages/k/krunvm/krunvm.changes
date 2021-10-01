@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  1 09:55:28 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix the build, after the libkrun pakaging changes and the switch to cargo
+  * libkrun-devel and libkrun0 packages no longer exist, while
+    libkrun does. Make sure that we depend on that one.
+  * fix quoting around RUSTFLAGS so that we don't miss flags
+
+-------------------------------------------------------------------
+Thu Sep 30 04:38:18 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Tue Mar 23 18:02:33 UTC 2021 - dfaggioli@suse.com
 
 - Update to version 0.1.4+git5add8c5:
