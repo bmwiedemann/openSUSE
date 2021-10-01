@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 01 13:56:58 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211001.62170202:
+  * Fix tests
+  * CI: Run Tumbleweed container as priveleged in docker
+
+-------------------------------------------------------------------
 Thu Sep 30 05:42:06 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210930.155a1eb6:
