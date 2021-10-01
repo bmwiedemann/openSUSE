@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Thu Sep 30 07:45:10 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.010:
+  * Add openSUSE design theme
+  * Fix mirror_error event logging
+  * Fix subtree to work with symlinks
+  * Package mirrorcache-subtree.service
+
+-------------------------------------------------------------------
+Thu Sep 23 07:30:36 UTC 2021 - Elisei Roca <eroca@suse.com>
+
+- Update to version 1.009:
+  * Add proper handling of local symlinks
+  * Erase info about folder on a mirror if it cannot be accessed
+
+-------------------------------------------------------------------
+Thu Sep 16 08:20:18 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.008:
+  * Add GeoIP support for IP2Location db format
+  * Scan all mirrors when mirrorlist is requested
+  * Always render content of directory on disk for local root
+  * Cleanup server_capability_check more aggressively
+  * Add json format for listing content of directory
+  * Add experimental subtree feature
+  * Add experimental MIRRORCACHE_PROXY_URL variable
+  * Fix rendering when local folder has broken symbolic links
+  * Fix multiroot location in task folder_hashes_create
+
+- Improve packaging, the conf.env is now in /etc/mirrorcache/
+  * Add script to generate and update cache.tar.xz
+
+-------------------------------------------------------------------
+Fri Sep 10 17:17:16 UTC 2021 - Elisei Roca <eroca@suse.com>
+
+- Update to version 1.007:
+  * UI: Solidify branding into lesser files
+  * Remove SUSE branding, it is not needed here
+  * Allow multiple folders in MIRRORCACHE_ROOT (#186)
+  * Show filestamps when rendering files with RootLocal (#184)
+  * Render error for when metalink and mirrorlist when file is not in DB (#185)
+  * Add parameter MIRRORCACHE_VPN_PREFIX (#182)
+  * Change origin in metalink to show metalink url
+  * [doc] fix in README command for geoip modules
+  * Use hostname_vpn in capability checks
+  * Fix one more typo (#179)
+
+- Remove 0001-Fix-one-more-typo-179.patch - included in 1.007
+
+-------------------------------------------------------------------
+Mon Aug 16 12:52:04 UTC 2021 - Elisei Roca <eroca@suse.com>
+
+- add 0001-Fix-one-more-typo-179.patch
+
+-------------------------------------------------------------------
+Thu Aug 12 11:42:34 UTC 2021 - andrii.nikitin@suse.com
+
+- Update to version 1.006:
+  * Fix a small but significant typo
+  * Tests: add rsync to Dockerfile
+  * Add metalink content-type and content-disposition
+
+- Update to version 1.005:
+  * Use hostname_vpn if defined for mirror scan
+  * Add support for requests over vpn
+  * Use the Digest::SHA builtin module (#175)
+  * Replace Sort::Naturally with Sort::Versions (#174)
+  * Do not show /download path in mirrorlist when TOP_FOLDERS is set
+  * Add mirrorcache-backstage-hashes.service
+  * Log no miss for mirrorlist requests from country outside of region of subsidiary
+  * Add test_local, test_docker and test_systemd to Makefile
+  * Add column mirrorlist to stat table
+  * Add concept of project
+
+- Update to version 1.006:
+  * Fix a small but significant typo
+  * Tests: add rsync to Dockerfile
+  * Add metalink content-type and content-disposition
+
+- Update to version 1.005:
+  * Use hostname_vpn if defined for mirror scan
+  * Add support for requests over vpn:
+    parameter MIRRORCACHE_REDIRECT_VPN and new column server.hostname_vpn
+  * Use the Digest::SHA builtin module
+  * Improve file sorting by using Sort::Versions instead of Sort::Naturally
+
+- Update to version 1.004:
+  * Do not show /download path in mirrorlist when TOP_FOLDERS is set
+  * Add mirrorcache-backstage-hashes.service
+
+- Update to version 1.003:
+  * Log no miss for mirrorlist requests from country outside of region of subsidiary
+  * Add test_local, test_docker and test_systemd to Makefile
+  * Add column mirrorlist to stat table
+  * Add concept of project
+  * Log miss if a mirror has newer file in pedantic mode
+  * Improve detecting unversioned files
+  * Show checksums in mirrorlist when available
+  * Dont redirect to subsidiary requests for media.1/media and repomd.xml
+
+- Update to version 1.002:
+  * Enforce pedantic mode unless file is versioned (#165)
+  * Fix stat reporting as miss when ROOT_COUNTRY is set
+  * Include subsidiaries in mirrorlist
+  * Add task which imports hashes from HEADQUARTER
+
+- Update to version 1.001:
+  * t: Fix test redirect from landing page when TOP_FOLDERS is set
+  * Verify size on mirrors for files with -Current suffix
+  * Fix redirect to https when mirror doesnt have it
+
+- Update to version 1.0:
+  * Add /rest/mystat 'My Statistics' menu item
+  * Schedule jobs from stat (#158)
+  * Fix Datamodule unsafe usage in async rendering
+  * Fix render greeting on landing page when TOP_FOLDERS is set
+
+- Update to version 0.9:
+  * UI: Add branding capability and footer info
+  * Render landing page if TOP_FOLDERS is set
+  * Truncate country code to two letters
+  * Log trailing slash in stat
+  * Fix double stats when no mirror in country
+  * t: Replace repo in docker to openSUSE:infrastructure
+  * salt: switch test to use 15.3
+
+- Update to version 0.8:
+  * Fix remote render dir when not in DB
+  * Add mirrors list page, reference it in file listing 'Metadata' column
+  * UI: Show title on every page
+  * Do not require /downloads path when TOP_FOLDERS is set
+  * Fix error "time_bad_sig: Return_to signature is not valid." during openid login
+  * Optimize /rest/stat (#148)
+  * Fix url for task MirrorCheckFromStat when metalink
+  * Add country region everywhere
+  * Performance improvements
+  * Set $app->secrets early
+  * dist: remove obsolete parts in salt
+
+- Update to version 0.7:
+  * Collect file hashes when HASHES_COLLECT is set
+  * Collect file stats in RootLocal
+  * Reduce permanent tasks' guard lifespan
+  * Improve file sorting in UI
+  * Switch to colspan instead of multiple </td>
+  * Use POST when logging out
+  * Use only class "name" for content that is too long
+  * Fix wrong redirect when no mirror for media.1/media
+  * Fix filtering audit logs by id
+
+- Update to version 0.6:
+  * Permanently set MOJO_LISTEN to http://*:__port
+  * docs: update guide on running docker tests
+  * dist: rework creation of mirrorcache user and its home dir (#127)
+  * Add job mirror_scan_from_stat to ensure quality of responses
+  * t: Rename folder environs -> environ
+  * t: Switch to the new reworked environ framework
+  * Consider 403 code as server is reachable
+  * Add MIRRORCACHE_AUTH_URL, fake auth for testing
+  * Add audit log (#122)
+  * ui: css wrap only filename
+
+- Update to version 0.5:
+  * Adjust github address to openSUSE
+  * Obsolete MIRRORCACHE_FALLBACK_REDIRECT in favor of MIRRORCACHE_REDIRECT
+
+- Update to version 0.4:
+  * Add favicon and initial version of logo
+  * Support nginx file origin with autoindex
+
+- Update to version 0.3:
+  * Remove column db_sync_for_country from /app/folder
+
+- Update to version 0.2:
+  * Introduce timeout of folder rescan per country
+  * Also dont scan every country when scan of two countries was requested
+
+- Update to version 0.1:
+  * Auto deploy db on start
