@@ -3643,6 +3643,7 @@
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
       <repopackage name="perl-Class-Inspector" arch="x86_64"/>
+      <repopackage name="perl-Clone"/>
       <repopackage name="perl-common-sense"/>
       <repopackage name="perl-Config-General"/>
       <repopackage name="perl-Convert-ASN1"/>
@@ -3989,6 +3990,7 @@
       <repopackage name="python38-colorama"/>
       <repopackage name="python38-configobj"/>
       <repopackage name="python38-constantly"/>
+      <repopackage name="python38-contextvars"/>
       <repopackage name="python38-cramjam"/>
       <repopackage name="python38-cryptography"/>
       <repopackage name="python38-cssselect"/>
@@ -4037,6 +4039,7 @@
       <repopackage name="python38-hyperframe"/>
       <repopackage name="python38-hyperlink"/>
       <repopackage name="python38-idna"/>
+      <repopackage name="python38-immutables"/>
       <repopackage name="python38-importlib-metadata"/>
       <repopackage name="python38-importlib-resources"/>
       <repopackage name="python38-incremental"/>
@@ -4581,7 +4584,6 @@
       <repopackage name="ruby2.7-rubygem-ruby-progressbar"/>
       <repopackage name="ruby2.7-rubygem-ruby-rc4"/>
       <repopackage name="ruby2.7-rubygem-ruby2_keywords"/>
-      <repopackage name="ruby2.7-rubygem-ruby_dep"/>
       <repopackage name="ruby2.7-rubygem-ruby_parser"/>
       <repopackage name="ruby2.7-rubygem-rubyntlm"/>
       <repopackage name="ruby2.7-rubygem-rubyzip"/>
@@ -4641,7 +4643,6 @@
       <repopackage name="ruby2.7-rubygem-unf_ext"/>
       <repopackage name="ruby2.7-rubygem-unicode-display_width"/>
       <repopackage name="ruby2.7-rubygem-unicode-display_width-1"/>
-      <repopackage name="ruby2.7-rubygem-unicorn"/>
       <repopackage name="ruby2.7-rubygem-vagrant-spec"/>
       <repopackage name="ruby2.7-rubygem-validate_email"/>
       <repopackage name="ruby2.7-rubygem-validate_url"/>
@@ -4858,7 +4859,6 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
-      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>

@@ -655,6 +655,7 @@
       <repopackage name="python38-cffi" arch="x86_64"/>
       <repopackage name="python38-chardet" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
+      <repopackage name="python38-contextvars" arch="x86_64"/>
       <repopackage name="python38-cryptography" arch="x86_64"/>
       <repopackage name="python38-Cycler" arch="x86_64"/>
       <repopackage name="python38-dbus-python" arch="x86_64"/>
@@ -662,6 +663,7 @@
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-greenlet" arch="x86_64"/>
       <repopackage name="python38-idna" arch="x86_64"/>
+      <repopackage name="python38-immutables" arch="x86_64"/>
       <repopackage name="python38-importlib-metadata" arch="x86_64"/>
       <repopackage name="python38-iniconfig" arch="x86_64"/>
       <repopackage name="python38-Jinja2" arch="x86_64"/>
