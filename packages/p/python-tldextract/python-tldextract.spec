@@ -1,7 +1,7 @@
 #
 # spec file for package python-tldextract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           python-tldextract
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
@@ -30,8 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tlde
 Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module filelock >= 3.0.8}
 BuildRequires:  %{python_module idna >= 2.1.0}
-BuildRequires:  %{python_module requests-file >= 1.4}
 BuildRequires:  %{python_module requests >= 2.1.0}
+BuildRequires:  %{python_module requests-file >= 1.4}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 ### SECTION test requirements
@@ -47,7 +47,7 @@ Requires:       python-requests >= 2.1.0
 Requires:       python-requests-file >= 1.4
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Obsoletes:      %{oldpython}-tldextract <= 2.0.1
 BuildArch:      noarch
 %python_subpackages

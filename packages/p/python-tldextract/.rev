@@ -169,4 +169,16 @@ Needed for python-dns-lexicon</comment>
     <comment></comment>
     <requestid>869865</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8422bc17747514fcb91422d87786682c</srcmd5>
+    <version>3.1.2</version>
+    <time>1633120145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2 (no visible changes)
+- Changes in 3.1.1:
+  * Bugfixes
+    + Support Python 3.9
+    + Drop support for EOL Python 3.5</comment>
+    <requestid>922516</requestid>
+  </revision>
 </revisionlist>
