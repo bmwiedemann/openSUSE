@@ -17,8 +17,14 @@
 #
 
 
-%global version_suffix 1.54
-%global version_current 1.54.0
+%global version_suffix 1.55
+%global version_current 1.55.0
+
+%define obsolete_rust_versioned() \
+Obsoletes:      %{1}1.54%{?2:-%{2}} \
+Obsoletes:      %{1}1.53%{?2:-%{2}} \
+Obsoletes:      %{1}1.52%{?2:-%{2}} \
+Obsoletes:      %{1}1.51%{?2:-%{2}}
 
 # === rust arch support tiers ===
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html
@@ -46,8 +52,7 @@ URL:            https://www.rust-lang.org
 Source:         README
 Source99:       %{name}-rpmlintrc
 Requires:       rust%{version_suffix}
-Conflicts:      rust < %{version}
-Obsoletes:      rust < %{version}
+%obsolete_rust_versioned rust
 
 %description
 Rust is a systems programming language focused on three goals: safety,
@@ -68,10 +73,8 @@ Summary:        Gdb integration for rust binaries
 License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       rust = %{version}
-Requires:       rust%{version_suffix}
 Requires:       rust%{version_suffix}-gdb
-Conflicts:      rust-gdb < %{version}
-Obsoletes:      rust-gdb < %{version}
+%obsolete_rust_versioned rust gdb
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 # Legacy SUSE-only form
@@ -86,20 +89,15 @@ This subpackage provides pretty printers and a wrapper script for
 invoking gdb on rust binaries.
 
 
-
-
-
-
 # As this is masked by tier1, this is arch specific even if it has no content.
+
 %package -n rls
 Summary:        Language server for Rust lang
 License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       rls%{version_suffix}
 Requires:       rust = %{version}
-Requires:       rust%{version_suffix}
-Conflicts:      rls < %{version}
-Obsoletes:      rls < %{version}
+%obsolete_rust_versioned rls
 
 %description -n rls
 The RLS provides a server that runs in the background, providing IDEs,
@@ -114,9 +112,7 @@ License:        Apache-2.0 OR MIT
 Group:          Development/Languages/Rust
 Requires:       cargo%{version_suffix}
 Requires:       rust = %{version}
-Requires:       rust%{version_suffix}
-Conflicts:      cargo < %{version}
-Obsoletes:      cargo < %{version}
+%obsolete_rust_versioned cargo
 
 %description -n cargo
 Cargo downloads dependencies of Rust projects and compiles it.

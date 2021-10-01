@@ -595,4 +595,15 @@
     <comment></comment>
     <requestid>909459</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>66112f3f3c7b91d49035b2048f9cfa24</srcmd5>
+    <version>1.55.0</version>
+    <time>1633120136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.55
+
+- Change expression of dependency requirements to resolve zypper dup
+  issues</comment>
+    <requestid>920193</requestid>
+  </revision>
 </revisionlist>

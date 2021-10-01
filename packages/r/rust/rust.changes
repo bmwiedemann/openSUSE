@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 10 03:07:24 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 1.55
+
+-------------------------------------------------------------------
+Mon Aug 16 02:27:30 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Change expression of dependency requirements to resolve zypper dup
+  issues
+
+-------------------------------------------------------------------
 Fri Jul 30 03:40:08 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update to version 1.54
