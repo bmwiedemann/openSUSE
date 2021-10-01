@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        22.1.1
+Version:        22.2.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
