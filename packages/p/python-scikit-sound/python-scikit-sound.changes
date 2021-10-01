@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  1 05:42:32 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on nose. 
+
+-------------------------------------------------------------------
 Fri Feb 12 14:09:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 build 

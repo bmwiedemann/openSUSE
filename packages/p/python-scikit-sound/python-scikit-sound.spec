@@ -35,7 +35,6 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module docutils >= 0.3}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tk}
