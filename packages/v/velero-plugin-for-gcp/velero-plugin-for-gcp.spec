@@ -19,7 +19,7 @@
 %define goipath github.com/vmware-tanzu/velero-plugin-for-gcp
 
 Name:           velero-plugin-for-gcp
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Velero plugin for GCP
 License:        Apache-2.0
