@@ -64,8 +64,13 @@ of bootdef variables need to be specified:
                  spaces. Example:
                  SLEModules: sle-module-basesystem,sle-module-server-applications,sle-module-web-scripting,sle-module-hpc
 
+Examples
+========
+Example defintions for SLE12-SP5 and SLE15-SP3 are in the same 
+directory as README.SUSE
+
 ProductPGP
-======
+==========
 SLEpgp: -----BEGIN PGP PUBLIC KEY BLOCK-----\n\
 Version: rpm-4.11.2 (NSS-3)\n\
 \n\

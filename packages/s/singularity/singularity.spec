@@ -29,6 +29,8 @@ Release:        0
 URL:            https://github.com/hpcng/singularity
 Source0:        https://github.com/hpcng/singularity/releases/download/v%{version}/singularity-%{version}.tar.gz
 Source1:        README.SUSE
+Source2:        SLE-12SP5.def
+Source3:        SLE-15SP3.def
 Source5:        %{name}-rpmlintrc
 Patch1:         useful_error_message.patch
 BuildRequires:  cryptsetup
@@ -56,7 +58,7 @@ containers that can be used across host environments.
 
 %prep
 %setup -q -n gopath/%{singgopath} -c
-cp %{S:1} .
+cp %{S:1} %{S:2} %{S:3} .
 mv %{name}-%{version} %{name}
 cd %{_builddir}/gopath
 pwd
@@ -128,6 +130,8 @@ exit 0
 %doc singularity/CHANGELOG.md
 %doc singularity/CONTRIBUTORS.md
 %doc %{basename:%{S:1}}
+%doc %{basename:%{S:2}}
+%doc %{basename:%{S:3}}
 %license singularity/LICENSE-LBNL.md
 %license singularity/COPYRIGHT.md
 %license singularity/LICENSE.md

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  1 13:09:02 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+-  added example definitions for SLE12-SP5 and SLE15-SP3
+   * added files:
+     SLE-12SP5.def
+     SLE-15SP3.def
+
+-------------------------------------------------------------------
 Mon Sep 13 08:47:48 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Updated to version 3.8.3 which fixes regression introduced in 3.8.1 that

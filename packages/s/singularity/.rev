@@ -274,4 +274,15 @@
     <comment></comment>
     <requestid>918668</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e0cbd47d9a94124df3f010c06da0ad6a</srcmd5>
+    <version>3.8.3</version>
+    <time>1633120150</time>
+    <user>dimstar_suse</user>
+    <comment>-  added example definitions for SLE12-SP5 and SLE15-SP3
+   * added files:
+     SLE-12SP5.def
+     SLE-15SP3.def</comment>
+    <requestid>922563</requestid>
+  </revision>
 </revisionlist>
