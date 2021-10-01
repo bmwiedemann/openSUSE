@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 06 16:56:33 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Thu Aug 22 16:26:38 CEST 2019 - schubi@suse.de
 
 - Using rb_default_ruby_abi tag in the spec file in order to
