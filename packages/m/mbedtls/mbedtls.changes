@@ -191,7 +191,7 @@ Thu Apr 15 16:00:07 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Mon Mar 22 15:54:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Update to 2.26.0:
+- Update to 2.26.0: [bsc#1189589, CVE-2021-24119]
   * * This release of Mbed TLS provides bug fixes, minor enhancements and new
   features. This release includes fixes for security issues.
   * see https://github.com/ARMmbed/mbedtls/releases/tag/v2.26.0

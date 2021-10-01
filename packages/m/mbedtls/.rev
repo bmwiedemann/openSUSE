@@ -334,4 +334,12 @@
     <comment></comment>
     <requestid>909961</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2df9068a388bf5a14b6ce929d85070ba</srcmd5>
+    <version>2.27.0</version>
+    <time>1633120143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26.0: [bsc#1189589, CVE-2021-24119]</comment>
+    <requestid>922415</requestid>
+  </revision>
 </revisionlist>
