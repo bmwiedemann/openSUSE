@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 27 08:59:35 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build with gcc 11
+  + ctags-gcc11.patch
+
+-------------------------------------------------------------------
 Tue May  4 11:15:01 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Revert ghosting changes, fix real cause for build failure

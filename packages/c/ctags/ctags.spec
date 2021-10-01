@@ -46,6 +46,7 @@ Patch16:        0016-CVE-2014-7204.patch
 Patch17:        0017-Go-language-support.patch
 Patch18:        0018-SUSE-man-page-changes.patch
 Patch19:        0019-Do-not-include-build-time-in-binary.patch
+Patch20:        ctags-gcc11.patch
 BuildRequires:  update-alternatives
 Requires(pre):  update-alternatives
 Requires(post): update-alternatives
@@ -59,25 +60,7 @@ Emacs, and several other editors.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
+%autopatch -p1
 
 %build
 %configure
