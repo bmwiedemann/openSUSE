@@ -19,11 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-%if 0%{?sle_version} && 0%{?sle_version} < 150300
-  %define mpiver  openmpi
-%else
-  %define mpiver  openmpi4
-%endif
+
 Name:           python-mpi4py
 Version:        3.1.1
 Release:        0
@@ -31,17 +27,15 @@ Summary:        MPI for Python
 License:        BSD-2-Clause
 URL:            https://bitbucket.org/mpi4py/mpi4py
 Source:         https://files.pythonhosted.org/packages/source/m/mpi4py/mpi4py-%{version}.tar.gz
-BuildRequires:  %{mpiver}
-BuildRequires:  %{mpiver}-config
-BuildRequires:  %{mpiver}-devel
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  python-rpm-macros
-Requires:       %{mpiver}
-Requires:       %{mpiver}-config
+%openmpi_requires
+
 %python_subpackages
 
 %description
@@ -85,7 +79,7 @@ Development libraries and headers needed to build packages using %{name}.
 
 %package     -n %{name}-common-devel
 Summary:        Shared development files for %{name}
-Requires:       %{mpiver}-devel
+%openmpi_devel_requires
 Provides:       %{python_module mpi4py-common-devel = %{version}}
 
 %description -n %{name}-common-devel
@@ -109,7 +103,7 @@ sed -i 's/\r$//' docs/usrman/objects.inv
 sed -i '1!b;/^#!\/usr\/bin\/python/d' demo/python-config
 
 %build
-source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
+%setup_openmpi
 
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export LANG=en_US.UTF-8
@@ -134,7 +128,7 @@ cp -r demo %{buildroot}%{_docdir}%{name}/
 
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cat >> %{buildroot}%{_rpmmacrodir}/macros.mpi4py <<EOL
-mpi4py_mpi_ver %{mpiver}
+mpi4py_mpi_ver openmpi
 EOL
 
 %check
@@ -144,7 +138,8 @@ export OMPI_MCA_rmaps_base_oversubscribe=yes
 rm -rf build _build.*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
-%{_libdir}/mpi/gcc/%{mpiver}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="test_spawn"
+%setup_openmpi
+%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="test_spawn"
 }
 
 %files %{python_files}

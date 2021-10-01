@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 12:04:19 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi macros to always build with the default openmpi version (bsc#1190810)
+
+-------------------------------------------------------------------
 Sun Sep 26 13:11:39 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.1.1
