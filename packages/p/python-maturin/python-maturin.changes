@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Oct  1 06:39:31 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.11.4
+  * Autodetect PyPy executables
+    gh#PyO3/maturin#617
+  * auditwheel: add `libz.so.1` to whitelisted libraries
+    gh#PyO3/maturin#625
+  * auditwheel: detect musl libc
+    gh#PyO3/maturin#629
+  * Fixed Python 3.10 and later versions detection on Windows
+    gh#PyO3/maturin#630
+  * Install entrypoint scripts in `maturin develop` command
+    gh#PyO3/maturin#633
+    gh#PyO3/maturin#634
+  * Add support for installing optional dependencies in
+    `maturin develop` command
+    gh#PyO3/maturin#635
+  * Fixed build error when `manylinux`/`compatibility` options is
+    specified in `pyproject.toml`
+    gh#PyO3/maturin#637
+- Changes in 0.11.3:
+  * Add path option for Python source
+    gh#PyO3/maturin#584
+  * Add auditwheel support for musllinux
+    gh#PyO3/maturin#597
+  * `[tool.maturin]` options from `pyproject.toml` will be used
+    automatically
+    gh#PyO3/maturin#605
+  * Skip unavailable Python interpreters from pyenv
+    gh#PyO3/maturin#609
+
+-------------------------------------------------------------------
+Tue Sep 28 01:18:52 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Tue Aug  3 00:40:29 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.11.2

@@ -107,4 +107,41 @@
 </comment>
     <requestid>909889</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f1d3808bbcca0f1ef3343b22f1ff4a1</srcmd5>
+    <version>0.11.4</version>
+    <time>1633120144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.4
+  * Autodetect PyPy executables
+    gh#PyO3/maturin#617
+  * auditwheel: add `libz.so.1` to whitelisted libraries
+    gh#PyO3/maturin#625
+  * auditwheel: detect musl libc
+    gh#PyO3/maturin#629
+  * Fixed Python 3.10 and later versions detection on Windows
+    gh#PyO3/maturin#630
+  * Install entrypoint scripts in `maturin develop` command
+    gh#PyO3/maturin#633
+    gh#PyO3/maturin#634
+  * Add support for installing optional dependencies in
+    `maturin develop` command
+    gh#PyO3/maturin#635
+  * Fixed build error when `manylinux`/`compatibility` options is
+    specified in `pyproject.toml`
+    gh#PyO3/maturin#637
+- Changes in 0.11.3:
+  * Add path option for Python source
+    gh#PyO3/maturin#584
+  * Add auditwheel support for musllinux
+    gh#PyO3/maturin#597
+  * `[tool.maturin]` options from `pyproject.toml` will be used
+    automatically
+    gh#PyO3/maturin#605
+  * Skip unavailable Python interpreters from pyenv
+    gh#PyO3/maturin#609
+
+- Replace rust-packaging with cargo-packaging</comment>
+    <requestid>922513</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-maturin
-Version:        0.11.2
+Version:        0.11.4
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -28,9 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/m/maturin/maturin
 Source1:        vendor.tar.xz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  rust-packaging
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
