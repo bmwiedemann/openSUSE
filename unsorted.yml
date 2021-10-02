@@ -113,6 +113,7 @@ unsorted:
   - MicroOS-release-appliance-kubic 
   - MicroOS-release-dvd 
   - MicroOS-release-kubic-dvd 
+  - MirrorCache 
   - ModemManager-devel 
   - Modules 
   - Modules-doc 
@@ -6947,7 +6948,6 @@ unsorted:
   - injeqt-devel 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
-  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -18582,7 +18582,6 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
-  - perl-Algorithm-Diff 
   - perl-Alien-Build 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
@@ -18620,12 +18619,10 @@ unsorted:
   - perl-App-cpanminus 
   - perl-App-perlbrew 
   - perl-AppConfig 
-  - perl-Archive-Any-Lite 
   - perl-Archive-Cpio 
   - perl-Archive-Extract 
   - perl-Archive-Peek 
   - perl-Archive-Tar-Wrapper 
-  - perl-Array-Diff 
   - perl-Array-Unique 
   - perl-Audio-RPLD 
   - perl-Authen-DecHpwd 
@@ -18661,9 +18658,7 @@ unsorted:
   - perl-CLI-Osprey 
   - perl-CPAN-Changes 
   - perl-CPAN-Common-Index 
-  - perl-CPAN-DistnameInfo 
   - perl-CPAN-Meta-Check 
-  - perl-CPAN-Meta-Requirements 
   - perl-CPAN-Mini 
   - perl-CPAN-Perl-Releases 
   - perl-CPAN-Uploader 
@@ -18684,7 +18679,6 @@ unsorted:
   - perl-Carton 
   - perl-Catalyst-Manual 
   - perl-Chart 
-  - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
   - perl-Class-Accessor-Grouped 
   - perl-Class-Accessor-Lite 
@@ -18721,7 +18715,6 @@ unsorted:
   - perl-Class-Unload 
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
-  - perl-Class-XSAccessor 
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
@@ -18801,10 +18794,8 @@ unsorted:
   - perl-Dancer2-Plugin-DBIC 
   - perl-Dancer2-Plugin-REST 
   - perl-Dancer2-Plugin-WebSocket 
-  - perl-Data-Binary 
   - perl-Data-Clone 
   - perl-Data-Compare 
-  - perl-Data-Dump 
   - perl-Data-Dump-Streamer 
   - perl-Data-Dumper-Concise 
   - perl-Data-Entropy 
@@ -18813,13 +18804,11 @@ unsorted:
   - perl-Data-Hierarchy 
   - perl-Data-Integer 
   - perl-Data-ObjectDriver 
-  - perl-Data-OptList 
   - perl-Data-Page 
   - perl-Data-Peek 
   - perl-Data-Perl 
   - perl-Data-Printer 
   - perl-Data-Random 
-  - perl-Data-Section 
   - perl-Data-Section-Simple 
   - perl-Data-ShowTable 
   - perl-Data-Structure-Util 
@@ -18878,7 +18867,6 @@ unsorted:
   - perl-Devel-REPL 
   - perl-Devel-StackTrace 
   - perl-Devel-StackTrace-AsHTML 
-  - perl-Devel-Symdump 
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
@@ -18917,7 +18905,6 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny: [i586] 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -18944,7 +18931,6 @@ unsorted:
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
   - perl-File-FcntlLock 
-  - perl-File-Find-Object 
   - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
   - perl-File-Finder 
@@ -18990,13 +18976,13 @@ unsorted:
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
-  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
   - perl-GDTextUtil 
   - perl-GStreamer1 
   - perl-Geo-Coordinates-UTM 
+  - perl-Geo-IP2Location 
   - perl-Getopt-ArgvFile 
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
@@ -19139,8 +19125,6 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
-  - perl-List-MoreUtils: [i586] 
-  - perl-List-MoreUtils-XS: [i586] 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -19168,7 +19152,6 @@ unsorted:
   - perl-MIME-Types 
   - perl-MLDBM 
   - perl-MLDBM-Sync 
-  - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-Message 
@@ -19213,10 +19196,7 @@ unsorted:
   - perl-Module-Build-Using-PkgConfig 
   - perl-Module-Build-WithXSpp 
   - perl-Module-Build-XSUtil 
-  - perl-Module-CPANTS-Analyse 
-  - perl-Module-CPANfile 
   - perl-Module-Depends 
-  - perl-Module-Find 
   - perl-Module-Implementation 
   - perl-Module-Info 
   - perl-Module-Install 
@@ -19361,6 +19341,7 @@ unsorted:
   - perl-Net-XMPP 
   - perl-NetPacket 
   - perl-NetxAP 
+  - perl-Number-Bytes-Human 
   - perl-Number-Compare 
   - perl-Number-Format 
   - perl-Number-WithError 
@@ -19396,7 +19377,6 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -19419,7 +19399,6 @@ unsorted:
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
   - perl-Perl-PrereqScanner 
-  - perl-Perl-PrereqScanner-NotQuiteLite 
   - perl-Perl-Tidy 
   - perl-Perl-Version 
   - perl-Perl6-Junction 
@@ -19439,7 +19418,6 @@ unsorted:
   - perl-Plack-Middleware-Session 
   - perl-Plack-Test-Agent 
   - perl-Pod-AsciiDoctor 
-  - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Elemental 
@@ -19448,7 +19426,6 @@ unsorted:
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
-  - perl-Pod-Parser 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
@@ -19477,7 +19454,6 @@ unsorted:
   - perl-Regexp-Common 
   - perl-Regexp-IPv6 
   - perl-Regexp-Shellish 
-  - perl-Regexp-Trie 
   - perl-Reply 
   - perl-Return-Value 
   - perl-Role-HasMessage 
@@ -19520,7 +19496,6 @@ unsorted:
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
   - perl-Socket-MsgHdr 
-  - perl-Software-License 
   - perl-Sort-Key 
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
@@ -19553,14 +19528,12 @@ unsorted:
   - perl-String-Util 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
-  - perl-Sub-Exporter 
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
   - perl-Sub-Exporter-Progressive 
   - perl-Sub-HandlesVia 
   - perl-Sub-Identify 
   - perl-Sub-Info 
-  - perl-Sub-Install 
   - perl-Sub-Name 
   - perl-Sub-Override 
   - perl-Sub-Quote 
@@ -19641,7 +19614,6 @@ unsorted:
   - perl-Test-Inter 
   - perl-Test-JSON 
   - perl-Test-Kit 
-  - perl-Test-Kwalitee 
   - perl-Test-LWP-UserAgent 
   - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
@@ -19671,8 +19643,6 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
-  - perl-Test-Pod 
-  - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
   - perl-Test-Requires-Git 
@@ -19709,7 +19679,6 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
-  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
   - perl-Text-ChaSen 
   - perl-Text-CharWidth 
@@ -19732,7 +19701,6 @@ unsorted:
   - perl-Text-Sprintf-Named 
   - perl-Text-Table 
   - perl-Text-TabularDisplay 
-  - perl-Text-Template 
   - perl-Text-Unidecode 
   - perl-Text-WrapI18N 
   - perl-Text-Wrapper 
@@ -19774,7 +19742,6 @@ unsorted:
   - perl-URI-Nested 
   - perl-URI-Query 
   - perl-URI-Template 
-  - perl-URI-cpan 
   - perl-URI-db 
   - perl-URI-ws 
   - perl-UUID 
@@ -22535,7 +22502,6 @@ unsorted:
   - python36-google-cloud-storage 
   - python36-google-cloud-translate 
   - python36-google-crc32c 
-  - python36-google-filesystem 
   - python36-google-pasta 
   - python36-google-resumable-media 
   - python36-googleapis-common-protos 
@@ -25343,7 +25309,6 @@ unsorted:
   - python38-google-cloud-storage 
   - python38-google-cloud-translate 
   - python38-google-crc32c 
-  - python38-google-filesystem 
   - python38-google-pasta 
   - python38-google-resumable-media 
   - python38-googleapis-common-protos 
@@ -28344,7 +28309,6 @@ unsorted:
   - python39-google-cloud-storage 
   - python39-google-cloud-translate 
   - python39-google-crc32c 
-  - python39-google-filesystem 
   - python39-google-pasta 
   - python39-google-resumable-media 
   - python39-googleapis-common-protos 
@@ -32331,7 +32295,6 @@ unsorted:
   - system-user-loki 
   - system-user-mktex 
   - system-user-msr 
-  - system-user-news 
   - system-user-ntp 
   - system-user-osc-collab 
   - system-user-prometheus 
