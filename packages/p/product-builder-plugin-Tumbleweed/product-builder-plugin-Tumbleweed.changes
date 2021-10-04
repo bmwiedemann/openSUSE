@@ -1,14 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 24 08:50:41 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.6.0
+  * KIWIDnfRepoclosurePlugin added
+  * KIWIPackagesDVDPlugin added
+
+-------------------------------------------------------------------
 Fri Sep 17 09:02:02 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.3
-  - comps meta data support
+  * comps meta data support
 
 -------------------------------------------------------------------
 Mon Sep  6 15:59:26 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.0
-  - modulemd data support
+  * modulemd data support
 
 -------------------------------------------------------------------
 Thu Apr 15 16:22:48 CEST 2021 - ro@suse.de

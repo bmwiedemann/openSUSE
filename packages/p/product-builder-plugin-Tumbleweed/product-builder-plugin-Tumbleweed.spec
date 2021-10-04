@@ -20,11 +20,12 @@ Name:           product-builder-plugin-Tumbleweed
 Summary:        openSUSE - KIWI Image System
 License:        GPL-2.0-or-later
 Group:          System/Management
-Version:        1.4.3
+Version:        1.6.0
 Release:        0
 Source:         product-builder-plugins-%version.tar.xz
 Provides:       product-builder-plugin = %version-%release
 Requires:       createrepo_c
+Requires:       dnf
 Requires:       mtools
 Requires:       product-builder
 Requires:       perl(YAML::XS)
