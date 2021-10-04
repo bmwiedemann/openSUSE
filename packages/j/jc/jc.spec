@@ -18,7 +18,7 @@
 
 
 Name:           jc
-Version:        1.16.1
+Version:        1.17.0
 Release:        0
 Summary:        JSON CLI output utility
 License:        MIT

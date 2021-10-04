@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 27 05:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.0
+  * Add wrapping of warning and error messages
+  * Add vmstat parser tested on linux
+  * Add support for streaming parsers
+  * Add ls -l command streaming parser
+  * Add ping and ping6 command streaming parser
+  * Add vmstat command streaming parser
+  * Add -u option to allow unbuffered output
+
+-------------------------------------------------------------------
 Thu Aug 19 19:08:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.16.1
