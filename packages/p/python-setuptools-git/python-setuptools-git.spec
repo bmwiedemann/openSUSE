@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-git
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ export LANG=en_US.UTF-8
 # configure git for the test
 git config --global user.email "test@test.test"
 git config --global user.name "test"
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
