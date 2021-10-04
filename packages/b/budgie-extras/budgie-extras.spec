@@ -17,7 +17,7 @@
 
 
 Name:           budgie-extras
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Additional Budgie Desktop enhancements for user experience
 License:        GPL-3.0-or-later
@@ -28,7 +28,6 @@ Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.a
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE Change all shebang lines to /usr/bin/python3
 Patch0:         python3-shebangs.patch
-Patch2:         xdg-config.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
@@ -48,6 +47,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(plank)
+BuildRequires:  pkgconfig(appstream)
 # All applets
 Recommends:     budgie-app-launcher-applet
 Recommends:     budgie-brightness-controller-applet
@@ -86,6 +86,19 @@ Requires:       python3-gobject-Gdk
 
 %description -n budgie-app-launcher-applet
 App Launcher is a Budgie Desktop applet for productivity. This applet lists your favourite apps.
+
+%package -n budgie-applications-menu-applet
+Summary:        Stylish Applications Menu for Budgie-Desktop
+Group:          System/GUI/Other
+Requires:       budgie-extras-lang
+Requires:       gnome-menus
+
+%description -n budgie-applications-menu-applet
+The application-menu is a stylish panel applet that displays applications
+in different views - grid and list. Weblinks typed into the search bar
+can be opened in your default browser. Applications that have additional
+desktop options show via a right-click menu. Applications with associated
+actions show those actions are additional searchable entries.
 
 %package -n budgie-brightness-controller-applet
 Summary:        Brightness controller applet
@@ -414,40 +427,14 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %meson \
   -Dxdg-appdir=%{_distconfdir}/xdg/autostart \
   -Dwith-zeitgeist=false \
-  -Dbuild-all=false \
-  -Dbuild-wpreviews=true \
-  -Dbuild-wswitcher=true \
-  -Dbuild-hotcorners=true \
-  -Dbuild-quicknote=true \
-  -Dbuild-wmover=true \
-  -Dbuild-wsoverview=true \
-  -Dbuild-showtime=true \
-  -Dbuild-countdown=true \
-  -Dbuild-keyboard-autoswitch=true \
-  -Dbuild-rotation-lock=true \
-  -Dbuild-clockworks=true \
-  -Dbuild-dropby=true \
-  -Dbuild-kangaroo=true \
-  -Dbuild-weathershow=true \
-  -Dbuild-trash=true \
-  -Dbuild-app-launcher=true \
-  -Dbuild-recentlyused=true \
-  -Dbuild-takeabreak=true \
-  -Dbuild-workspacestopwatch=true \
-  -Dbuild-extrasdaemon=true \
-  -Dbuild-quickchar=true \
-  -Dbuild-fuzzyclock=true \
-  -Dbuild-brightness-controller=true \
-  -Dbuild-visualspace=true \
-  -Dbuild-wallstreet=true \
-  -Dbuild-window-shuffler=true \
-  -Dbuild-network-manager=true \
+  -Dbuild-all=true \
   %{nil}
 
 %meson_build
 
 %install
 %meson_install
+find %{buildroot} -name '*.py' -type f -print -exec chmod 755 {} \;
 %find_lang %{name}
 %fdupes -s %{buildroot}
 
@@ -467,6 +454,10 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %{_libdir}/budgie-desktop/plugins/budgie-app-launcher
 %{_datadir}/pixmaps/budgie-app-launcher-applet-symbolic.svg
 %{_datadir}/pixmaps/budgie-app-launcher-edit-symbolic.svg
+
+%files -n budgie-applications-menu-applet
+%{_libdir}/budgie-desktop/plugins/applications-menu
+%{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-appmenu.gschema.xml
 
 %files -n budgie-brightness-controller-applet
 %{_libdir}/budgie-desktop/plugins/budgie-brightness-controller
@@ -549,7 +540,6 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.takeabreak.gschema.xml
 
 %files -n budgie-trash-applet
-%{_datadir}/pixmaps/budgie-trash-*.svg
 %{_libdir}/budgie-desktop/plugins/budgie-trash
 
 %files -n budgie-visualspace-applet
@@ -576,9 +566,11 @@ Budgie Wallpaper Workspace Switcher is an application (applet) to show a differe
 
 %files -n budgie-window-shuffler
 %{_libdir}/budgie-window-shuffler
-%{_datadir}/pixmaps/shuffler-*.svg
+%{_libdir}/budgie-desktop/plugins/budgie-window-shuffler
+%{_datadir}/pixmaps/shuffler*.svg
 %{_datadir}/applications/shuffler-control.desktop
 %{_datadir}/glib-2.0/schemas/org.ubuntubudgie.windowshuffler.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.ubuntubudgie.plugins.budgie-shufflerapplet.gschema.xml
 %{_distconfdir}/xdg/autostart/shufflerdaemon-autostart.desktop
 %{_distconfdir}/xdg/autostart/shufflergui-autostart.desktop
 %{_distconfdir}/xdg/autostart/layoutspopup-autostart.desktop
