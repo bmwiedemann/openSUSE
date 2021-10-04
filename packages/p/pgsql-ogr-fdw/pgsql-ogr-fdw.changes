@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 26 16:17:07 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Fix build by Add BuildRequirements for llvm and clang
+  due to postgresql packaging changes.
+
+-------------------------------------------------------------------
 Wed Jun 30 14:36:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build postgresql95 and postgresql96 flavors on Tumbleweed.

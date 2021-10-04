@@ -43,6 +43,8 @@ BuildRequires:  %{pg_flavor}-server
 BuildRequires:  %{pg_flavor}-server-devel
 %if %{with llvm}
 BuildRequires:  %{pg_flavor}-llvmjit
+BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
 %endif
 %endif
 %if "%{pg_flavor}" == "" || "%{pg_flavor}" == "postgresql"
