@@ -17,4 +17,12 @@
   * and skipped 2.16.1: https://ensmallen.org/docs.html#ensmallen-2161-severely-dented-can-of-polyurethane</comment>
     <requestid>903275</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c0b87bcbdab8d6d6ab7a871955aa63f5</srcmd5>
+    <version>2.17.0</version>
+    <time>1633365611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922722</requestid>
+  </revision>
 </revisionlist>

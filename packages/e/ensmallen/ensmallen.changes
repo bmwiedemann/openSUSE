@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 26 21:21:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17.0
+  * CheckArbitraryFunctionTypeAPI extended for MOO support
+  * Refactor NSGA2
+  * Add MOEA-D/DE Optimizer
+  * Add Das-Dennis weight initialization method
+  * Add Dirichlet Weight Initialization
+
+-------------------------------------------------------------------
+Sat Mar 27 12:40:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
 Fri Mar 26 08:43:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.16.2

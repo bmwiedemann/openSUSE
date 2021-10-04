@@ -18,9 +18,9 @@
 
 
 Name:           ensmallen
-Version:        2.16.2
+Version:        2.17.0
 Release:        0
-Summary:        Efficient math optimization C++ library
+Summary:        Math optimization C++ library
 License:        BSD-3-Clause AND MPL-2.0 AND BSL-1.0
 Group:          Development/Languages/C and C++
 URL:            https://ensmallen.org
@@ -33,27 +33,25 @@ BuildRequires:  make
 Recommends:     armadillo-devel >= 8.400.0
 
 %description
-ensmallen provides a simple set of abstractions for writing an objective
-function to optimize. It also provides a large set of standard and
-cutting-edge optimizers that can be used for virtually any mathematical
-optimization task. These include full-batch gradient descent techniques,
-small-batch techniques, gradient-free optimizers,
-and constrained optimization.
+ensmallen provides a set of abstractions for writing an objective
+function to optimize. It also provides a set of standard and
+optimizers that can be used for mathematical optimization tasks.
+These include full-batch gradient descent techniques, small-batch
+techniques, gradient-free optimizers, and constrained optimization.
 
 %package devel
-Summary:        Efficient math optimization C++ library
+Summary:        Math optimization C++ library
 Group:          Development/Languages/C and C++
 
 %description devel
-ensmallen provides a simple set of abstractions for writing an objective
-function to optimize. It also provides a large set of standard and
-cutting-edge optimizers that can be used for virtually any mathematical
-optimization task. These include full-batch gradient descent techniques,
-small-batch techniques, gradient-free optimizers,
-and constrained optimization.
+ensmallen provides a set of abstractions for writing an objective
+function to optimize. It also provides a set of standard and
+optimizers that can be used for mathematical optimization tasks.
+These include full-batch gradient descent techniques, small-batch
+techniques, gradient-free optimizers, and constrained optimization.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DENSMALLEN_CMAKE_DIR=%{_libdir}/cmake/ensmallen/
@@ -62,12 +60,7 @@ and constrained optimization.
 
 %install
 %cmake_install
-%fdupes %{buildroot}
-
-%check
-pushd build
-./ensmallen_tests
-popd
+%fdupes %{buildroot}/%{_prefix}
 
 %files devel
 %license COPYRIGHT.txt
