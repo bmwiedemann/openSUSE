@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct  3 16:16:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.2
+  * const_cast, dynamic_cast, and reinterpret_cast now perform
+    additional checks.
+- Add unbreak-gnulib.diff
+
+-------------------------------------------------------------------
+Fri Oct  1 22:22:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1
+  * Fixed multiple nested declarations crash.
+
+-------------------------------------------------------------------
+Tue Sep 28 09:00:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0
+  * Correctly forbid functions returning struct in K&R C.
+  * Support digraphs before C95 and trigraphs in K&R C.
+  * Optional () for destructor.
+  * C++20's nested inline namespaces are now supported
+  * In-class default, delete, and noexcept constructors are now
+    accepted.
+  * A raw string literal like R"abc(X)ab)abc" was previously not
+    parsed correctly.
+  * An array of reference (or rvalue reference) is now correctly
+    flagged as an error.
+
+-------------------------------------------------------------------
 Sat Aug 28 13:35:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.4

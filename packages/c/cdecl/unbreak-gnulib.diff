@@ -1,0 +1,32 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-10-03 18:24:41.647102516 +0200
+
+Resolve a build failure due to unexpanded macros.
+(string.in.h is missing the fallback definition for _GL_*
+that are already present in stdlib.in.h.)
+---
+ lib/string.in.h |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+Index: cdecl-11.2/lib/string.in.h
+===================================================================
+--- cdecl-11.2.orig/lib/string.in.h
++++ cdecl-11.2/lib/string.in.h
+@@ -420,6 +420,17 @@ _GL_WARN_ON_USE (strchrnul, "strchrnul i
+ # endif
+ #endif
+ 
++#ifndef _GL_ATTRIBUTE_MALLOC
++# if __GNUC__ >= 3 || defined __clang__
++#  define _GL_ATTRIBUTE_MALLOC __attribute__ ((__malloc__))
++# else
++#  define _GL_ATTRIBUTE_MALLOC
++# endif
++#endif
++#ifndef _GL_ATTRIBUTE_DEALLOC_FREE
++# define _GL_ATTRIBUTE_DEALLOC_FREE _GL_ATTRIBUTE_DEALLOC (free, 1)
++#endif
++
+ /* Duplicate S, returning an identical malloc'd string.  */
+ #if @GNULIB_STRDUP@
+ # if @REPLACE_STRDUP@
