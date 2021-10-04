@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 29 06:21:09 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.1.5
+  * Disable the background timer if no rshim devices
+  * Setting default path for rshim config file
+  * Refine when some workarounds should be applied
+  * Fix hypervisor crash when several cards boot or push streams
+  * Set MTU to standard max size
+
+-------------------------------------------------------------------
 Thu Mar 11 16:05:12 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - update to 2.0.5.10
