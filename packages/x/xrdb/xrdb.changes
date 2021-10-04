@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 29 11:37:53 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove fallback to /lib/cpp, it's the same package as /usr/bin/cpp
+  anyway (boo#1191060).
+
+-------------------------------------------------------------------
 Sat Aug 28 13:32:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.1

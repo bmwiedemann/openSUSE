@@ -44,7 +44,7 @@ root window of any or all screens, or everything combined.
 %build
 # Run cpp with "-x assembler-with-cpp" in order to get rid of
 # warnings when parsing valid comments (bsc#1120004)
-%configure --with-cpp="%{_bindir}/cpp -x assembler-with-cpp, /lib/cpp"
+%configure --with-cpp="%{_bindir}/cpp -x assembler-with-cpp"
 %make_build
 
 %install
