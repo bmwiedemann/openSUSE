@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -87,27 +87,25 @@ Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 This package provides private headers of libQt6VirtualKeyboard that do not have
 any ABI or API guarantees.
 
+### Private only library ###
+
 %package -n libQt6HunspellInputMethod6
-Summary:        Qt6 HunspellInputMethod library
+Summary:        Qt 6 HunspellInputMethod private library
 
 %description -n libQt6HunspellInputMethod6
 Internal library used by Qt for providing Hunspell support.
-
-%package -n qt6-hunspellinputmethod-devel
-Summary:        Qt 6 HunspellInputMethod library - Development files
-Requires:       libQt6HunspellInputMethod6 = %{version}
-
-%description -n qt6-hunspellinputmethod-devel
-Development files for the Qt 6 HunspellInputMethod library.
+This library does not have any ABI or API guarantees.
 
 %package -n qt6-hunspellinputmethod-private-devel
-Summary:        Non-ABI stable API for the Qt 6 HunspellInputMethod library
-Requires:       qt6-virtualkeyboard-private-devel = %{version}
-Requires:       cmake(Qt6HunspellInputMethod) = %{real_version}
+Summary:        Development files for the Qt 6 HunspellInputMethod library
+Requires:       libQt6HunspellInputMethod6 = %{version}
+# Renamed in 6.2.0
+Provides:       qt6-hunspellinputmethod-devel = 6.2.0
+Obsoletes:      qt6-hunspellinputmethod-devel < 6.2.0
 
 %description -n qt6-hunspellinputmethod-private-devel
-This package provides private headers of libQt6HunspellInputMethod that do not
-have any ABI or API guarantees.
+Development files for the Qt 6 HunspellInputMethod library.
+This library does not have any ABI or API guarantees.
 
 %{qt6_examples_package}
 
@@ -136,10 +134,10 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenwnn
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledPinyin
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 
-%post -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
-%postun -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
 %post -n libQt6HunspellInputMethod6 -p /sbin/ldconfig
+%post -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
 %postun -n libQt6HunspellInputMethod6 -p /sbin/ldconfig
+%postun -n libQt6VirtualKeyboard6 -p /sbin/ldconfig
 
 %files
 %dir %{_qt6_pluginsdir}/platforminputcontexts
@@ -155,12 +153,15 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_libdir}/libQt6VirtualKeyboard.so.*
 
 %files -n qt6-virtualkeyboard-devel
+%{_qt6_cmakedir}/Qt6/FindCerence*.cmake
+%{_qt6_cmakedir}/Qt6/FindMyScript.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtVirtualKeyboardTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6VirtualKeyboard
 %{_qt6_descriptionsdir}/VirtualKeyboard.json
 %{_qt6_includedir}/QtVirtualKeyboard/
 %{_qt6_libdir}/libQt6VirtualKeyboard.prl
 %{_qt6_libdir}/libQt6VirtualKeyboard.so
+%{_qt6_metatypesdir}/qt6virtualkeyboard_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard.pri
 %exclude %{_qt6_includedir}/QtVirtualKeyboard/%{real_version}/
 
@@ -168,20 +169,19 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_includedir}/QtVirtualKeyboard/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_virtualkeyboard_private.pri
 
+### Private only library ###
+
 %files -n libQt6HunspellInputMethod6
 %{_qt6_libdir}/libQt6HunspellInputMethod.so.*
 
-%files -n qt6-hunspellinputmethod-devel
+%files -n qt6-hunspellinputmethod-private-devel
 %{_qt6_cmakedir}/Qt6/FindHunspell.cmake
-%{_qt6_cmakedir}/Qt6HunspellInputMethod
-%{_qt6_descriptionsdir}/HunspellInputMethod.json
+%{_qt6_cmakedir}/Qt6HunspellInputMethodPrivate/
+%{_qt6_descriptionsdir}/HunspellInputMethodPrivate.json
 %{_qt6_includedir}/QtHunspellInputMethod/
 %{_qt6_libdir}/libQt6HunspellInputMethod.prl
 %{_qt6_libdir}/libQt6HunspellInputMethod.so
-%exclude %{_qt6_includedir}/QtHunspellInputMethod/%{real_version}/
-
-%files -n qt6-hunspellinputmethod-private-devel
-%{_qt6_includedir}/QtHunspellInputMethod/%{real_version}/
+%{_qt6_metatypesdir}/qt6hunspellinputmethodprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_hunspellinputmethod_private.pri
 
 %endif
