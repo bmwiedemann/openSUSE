@@ -37,7 +37,7 @@ if [ ! -d $r/var/cache/gio-2.0 ]; then
   mkdir -m 755 -p $r/var/cache/gio-2.0
 fi
 
-for desktop in gnome xfce lxde; do
+for desktop in gnome xfce lxde pantheon; do
     awk -vdesktop=${desktop} '
 # print a warning to stderr
 function warn(msg,      cmd) {
@@ -120,6 +120,8 @@ BEGIN {
     } else if (desktop == "xfce") {
         categories_list = "XFCE,GTK"
     } else if (desktop == "lxde") {
+        categories_list = "GTK"
+    } else if (desktop == "pantheon") {
         categories_list = "GTK"
     }
     split(categories_list, categories, /,/)
