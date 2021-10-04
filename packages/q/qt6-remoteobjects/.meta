@@ -1,0 +1,9 @@
+<package name="qt6-remoteobjects" project="openSUSE:Factory">
+  <title>Qt6 RemoteObjects Library</title>
+  <description>Qt Remote Objects (QtRO) is an inter-process communication (IPC)
+module to enable information exchange between processes or computers.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-remoteobjects"/>
+  <url>https://www.qt.io</url>
+</package>

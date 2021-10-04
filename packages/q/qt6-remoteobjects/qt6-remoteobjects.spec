@@ -1,0 +1,172 @@
+#
+# spec file for package qt6-remoteobjects
+#
+# Copyright (c) 2021 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define real_version 6.2.0
+%define short_version 6.2
+%define tar_name qtremoteobjects-everywhere-src
+%define tar_suffix %{nil}
+#
+Name:           qt6-remoteobjects
+Version:        6.2.0
+Release:        0
+Summary:        Qt6 RemoteObjects Library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+URL:            https://www.qt.io
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source99:       qt6-remoteobjects-rpmlintrc
+BuildRequires:  qt6-core-private-devel
+BuildRequires:  qt6-qml-private-devel
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickTest)
+
+%description
+Qt Remote Objects (QtRO) is an inter-process communication (IPC)
+module to enable information exchange between processes or computers.
+
+%package imports
+Summary:         Qt 6 RemoteObjects QML files
+
+%description imports
+QML files and plugins for the Qt 6 RemoteObjects module
+
+%package -n libQt6RemoteObjects6
+Summary:        Qt 6 RemoteObjects library
+
+%description -n libQt6RemoteObjects6
+The Qt 6 RemoteObjects library.
+
+%package devel
+Summary:        Qt 6 RemoteObjects library - Development files
+Requires:       libQt6RemoteObjects6 = %{version}
+Requires:       qt6-remoteobjects-tools = %{version}
+
+%description devel
+Development files for the Qt 6 RemoteObjects library.
+
+%package private-devel
+Summary:        Non-ABI stable API for the Qt 6 RemoteObjects library
+Requires:       cmake(Qt6RemoteObjects) = %{real_version}
+
+%description private-devel
+This package provides private headers of libQt6RemoteObjects that do not have
+any ABI or API guarantees.
+
+%package -n libQt6RemoteObjectsQml6
+Summary:        Qt 6 RemoteObjectsQml library
+
+%description -n libQt6RemoteObjectsQml6
+The Qt 6 RemoteObjectsQml library.
+
+%package -n qt6-remoteobjectsqml-devel
+Summary:        Qt 6 RemoteObjectsQml library - Development files
+Requires:       libQt6RemoteObjectsQml6 = %{version}
+
+%description -n qt6-remoteobjectsqml-devel
+Development files for the Qt 6 RemoteObjectsQml library.
+
+%package -n qt6-remoteobjectsqml-private-devel
+Summary:        Non-ABI stable API for the Qt 6 RemoteObjectsQml library
+Requires:       cmake(Qt6RemoteObjectsQml) = %{real_version}
+
+%description -n qt6-remoteobjectsqml-private-devel
+This package provides private headers of libQt6RemoteObjectsQml that do not have
+any ABI or API guarantees.
+
+%package tools
+Summary:        Qt 6 RemoteObjects Tools
+
+%description tools
+This package contains REPC, a compiler for Qt RemoteObjects API definition files.
+
+%{qt6_examples_package}
+
+%prep
+%autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
+
+%build
+%cmake_qt6
+
+%{qt6_build}
+
+%install
+%{qt6_install}
+
+# repparser has no private headers
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_repparser_private.pri
+
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+
+# Unneeded?
+rm -r %{buildroot}%{_qt6_mkspecsdir}/features
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
+
+%post -n libQt6RemoteObjects6 -p /sbin/ldconfig
+%post -n libQt6RemoteObjectsQml6 -p /sbin/ldconfig
+%postun -n libQt6RemoteObjects6 -p /sbin/ldconfig
+%postun -n libQt6RemoteObjectsQml6 -p /sbin/ldconfig
+
+%files imports
+%{_qt6_qmldir}/QtRemoteObjects
+
+%files -n libQt6RemoteObjects6
+%license LICENSE.*
+%{_qt6_libdir}/libQt6RemoteObjects.so.*
+
+%files devel
+%{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtRemoteObjectsTestsConfig.cmake
+%{_qt6_cmakedir}/Qt6RemoteObjects/
+%{_qt6_cmakedir}/Qt6RemoteObjectsTools/
+%{_qt6_descriptionsdir}/RemoteObjects.json
+%{_qt6_descriptionsdir}/RepParser.json
+%{_qt6_includedir}/QtRemoteObjects/
+%{_qt6_includedir}/QtRepParser/
+%{_qt6_libdir}/libQt6RemoteObjects.prl
+%{_qt6_libdir}/libQt6RemoteObjects.so
+%{_qt6_metatypesdir}/qt6remoteobjects_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_repparser.pri
+%exclude %{_qt6_includedir}/QtRemoteObjects/%{real_version}
+
+%files private-devel
+%{_qt6_includedir}/QtRemoteObjects/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects_private.pri
+
+%files -n libQt6RemoteObjectsQml6
+%{_qt6_libdir}/libQt6RemoteObjectsQml.so.*
+
+%files -n qt6-remoteobjectsqml-devel
+%{_qt6_cmakedir}/Qt6RemoteObjectsQml/
+%{_qt6_descriptionsdir}/RemoteObjectsQml.json
+%{_qt6_includedir}/QtRemoteObjectsQml/
+%{_qt6_libdir}/libQt6RemoteObjectsQml.prl
+%{_qt6_libdir}/libQt6RemoteObjectsQml.so
+%{_qt6_metatypesdir}/qt6remoteobjectsqml_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_remoteobjectsqml.pri
+%exclude %{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}
+
+%files -n qt6-remoteobjectsqml-private-devel
+%{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_remoteobjectsqml_private.pri
+
+%files tools
+%{_qt6_libexecdir}/repc
+
+%changelog
