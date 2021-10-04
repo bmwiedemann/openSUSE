@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 29 13:02:30 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Move /lib/cpp to /usr/lib/cpp for the usr merge.  [bsc#1191060]
+
+-------------------------------------------------------------------
 Fri Aug 27 17:41:23 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Add libgccjit%{libgccjit_sover}-devel package

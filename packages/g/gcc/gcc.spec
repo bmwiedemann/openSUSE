@@ -446,9 +446,16 @@ done
 for info in cpp gcc gfortran ; do
   ln -sf $info-%{gcc_suffix}.info.gz $RPM_BUILD_ROOT%{_infodir}/$info.info.gz
 done
-# Provide the traditional /lib/cpp that only handles C
+# Provide the traditional /lib/cpp (as /usr/lib/cpp on usrmerged systems)
+# that only handles C
+%if 0%{?suse_version} < 1550
 cp $RPM_SOURCE_DIR/cpp $RPM_BUILD_ROOT/lib/
 chmod 755 $RPM_BUILD_ROOT/lib/cpp
+%else
+mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib
+cp $RPM_SOURCE_DIR/cpp $RPM_BUILD_ROOT%{_prefix}/lib/
+chmod 755 $RPM_BUILD_ROOT%{_prefix}/lib/cpp
+%endif
 # Provide extra symlinks
 ln -sf g++-%{gcc_suffix} $RPM_BUILD_ROOT%{_prefix}/bin/c++
 ln -sf gcc-%{gcc_suffix} $RPM_BUILD_ROOT%{_prefix}/bin/cc
@@ -500,7 +507,11 @@ fi
 
 %files -n cpp
 %defattr(-,root,root)
+%if 0%{?suse_version} < 1550
 /lib/cpp
+%else
+%{_prefix}/lib/cpp
+%endif
 %{_prefix}/bin/cpp
 %doc %{_mandir}/man1/cpp.1.gz
 

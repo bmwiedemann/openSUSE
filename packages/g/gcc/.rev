@@ -577,4 +577,12 @@ from GCC 6).
     <comment>- Add libgccjit%{libgccjit_sover}-devel package (forwarded request 914661 from Andreas_Schwab)</comment>
     <requestid>914962</requestid>
   </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>3dc2c78ece0f1e02d5a3d2615922f145</srcmd5>
+    <version>11</version>
+    <time>1633365554</time>
+    <user>dimstar_suse</user>
+    <comment>- Move /lib/cpp to /usr/lib/cpp for the usr merge.  [bsc#1191060]</comment>
+    <requestid>922193</requestid>
+  </revision>
 </revisionlist>
