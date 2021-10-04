@@ -1,0 +1,8 @@
+<package name="qt6-serialbus" project="openSUSE:Factory">
+  <title>Qt 6 SerialBus library</title>
+  <description>Qt 6 SerialBus library.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-serialbus"/>
+  <url>https://www.qt.io</url>
+</package>
