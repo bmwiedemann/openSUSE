@@ -1,7 +1,7 @@
 #
 # spec file for package fd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@ Name:           fd
 Version:        8.2.1
 Release:        0
 Summary:        An alternative to the "find" utility
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Productivity/File utilities
 URL:            https://github.com/sharkdp/fd
 Source:         https://github.com/sharkdp/fd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-BuildRequires:  rust-packaging
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 
 %description
 fd is an alternative to GNU find. It features:
@@ -68,8 +69,8 @@ The official fish completion script for fd, generated during the build.
 
 %prep
 %autosetup -a1
-%define cargo_registry $(pwd)/vendor
-%{cargo_prep}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}

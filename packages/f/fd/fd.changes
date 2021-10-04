@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 01:46:53 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Sat Dec 26 20:43:12 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Replace manual vendoring, build and install with rust-packaging macros
