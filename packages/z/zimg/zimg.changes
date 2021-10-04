@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 22 17:19:43 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to 3.0.3:
+  * depth: fix out-of-bounds read in SSE2/AVX2 error diffusion
+    (introduced in 2.5)
+  * colorspace: revert SMPTE 240M behavior change (introduced in
+    3.0.2)
+  * Changes in version 3.0.2:
+  * api: default to ZIMG_CPU_AUTO when graph params are null
+  * colorspace: fix incorrect SMPTE 240M transfer function
+  * colorspace: fix underflow in AVX-512 ST.2084 transfer functions
+  * graph: fix conversion from fullrange grey to RGB
+  * arm: fix data alignment
+  * x86: optimizations for AMD Zen3 processors
+- Add zimg-s390x-unit-tests.patch: fix unit tests on big endian
+  systems. 
+
+-------------------------------------------------------------------
 Thu Sep 10 17:43:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.0.1:

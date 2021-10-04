@@ -18,7 +18,7 @@
 
 %define         sover 2
 Name:           zimg
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        Scaling, colorspace conversion, and dithering library
 License:        WTFPL
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/sekrit-twc/zimg
 Source0:        zimg-%{version}.tar.xz
 Source99:       baselibs.conf
+Patch0:         zimg-s390x-unit-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -56,6 +57,7 @@ developing applications that use libzimg%{sover}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
