@@ -1189,4 +1189,20 @@ build with uclibc</comment>
   * 0001-test-disable-until-it-is-fixed.patch</comment>
     <requestid>895887</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>24160abb60336829ecb143bcec3707a0</srcmd5>
+    <version>2.2+20210915</version>
+    <time>1633365645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+20210915:
+  * LLVM 12 support
+  * Test failure for WSL 1
+- delete (they are upstream)
+  * 0001-llvm12-VectorType-getNumElements-has-been-deprecated.patch
+  * 0002-llvm12-Add-LLVM-12-to-lit.cfg.patch
+  * 0005-llvm12-Implement-llvm.-s-u-max-min-intrinsics.patch
+  * 0006-llvm11-Handle-llvm.roundeven-instrinsic.patch
+  * 0007-llvm12-Implement-llvm.abs-intrinsic.patch</comment>
+    <requestid>922992</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 04 10:57:30 UTC 2021 - jslaby@suse.cz
+
+- Update to version 2.2+20210915:
+  * LLVM 12 support
+  * Test failure for WSL 1
+- delete (they are upstream)
+  * 0001-llvm12-VectorType-getNumElements-has-been-deprecated.patch
+  * 0002-llvm12-Add-LLVM-12-to-lit.cfg.patch
+  * 0005-llvm12-Implement-llvm.-s-u-max-min-intrinsics.patch
+  * 0006-llvm11-Handle-llvm.roundeven-instrinsic.patch
+  * 0007-llvm12-Implement-llvm.abs-intrinsic.patch
+
+-------------------------------------------------------------------
 Fri May 28 05:52:48 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 2.2+20210510:
