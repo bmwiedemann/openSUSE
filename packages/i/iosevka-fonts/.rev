@@ -114,4 +114,15 @@
 </comment>
     <requestid>920188</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8748710b8ffdafdab37e8fe1725644f3</srcmd5>
+    <version>10.3.1</version>
+    <time>1633365617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.1
+  * Changes of version 10.3.1
+    = Add taller variants of Number Sign (#1222).
+</comment>
+    <requestid>922805</requestid>
+  </revision>
 </revisionlist>
