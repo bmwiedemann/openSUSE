@@ -206,4 +206,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="29" vrev="27">
+    <srcmd5>2d40bdc83ca6cf845ee0e7e7f41ccbae</srcmd5>
+    <version>1.5</version>
+    <time>1633365537</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1191103: Move executable to /usr/sbin.</comment>
+    <requestid>922025</requestid>
+  </revision>
 </revisionlist>

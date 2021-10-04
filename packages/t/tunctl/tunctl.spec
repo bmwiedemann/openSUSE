@@ -1,7 +1,7 @@
 #
 # spec file for package tunctl
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           tunctl
 Version:        1.5
 Release:        0
 Summary:        Create and remove virtual network interfaces
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Management
-Url:            http://tunctl.sourceforge.net/
+URL:            http://tunctl.sourceforge.net/
 Source0:        http://sourceforge.net/projects/tunctl/files/tunctl/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-%{version}-install-manpage-noexec.patch
 BuildRequires:  docbook-utils-minimal
@@ -45,7 +45,7 @@ tunctl originates from the User Mode Linux project.
 make CFLAGS="%{optflags}" %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} BIN_DIR=/sbin install
+make DESTDIR=%{buildroot} install
 install -d -m 0755 %{buildroot}/%{_docdir}/%{name}/
 install -m 0644 ChangeLog %{buildroot}/%{_docdir}/%{name}/
 
@@ -53,6 +53,6 @@ install -m 0644 ChangeLog %{buildroot}/%{_docdir}/%{name}/
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}
 %doc %{_mandir}/man8/%{name}.8*
-%attr(0755,root,root) /sbin/tunctl
+%attr(0755,root,root) /usr/sbin/tunctl
 
 %changelog
