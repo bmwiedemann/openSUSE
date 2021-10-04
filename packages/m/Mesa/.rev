@@ -4553,4 +4553,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment> - covers jira#SLE/SLE-18743</comment>
     <requestid>921806</requestid>
   </revision>
+  <revision rev="416" vrev="288">
+    <srcmd5>7904971d80682c29e5add69df23a691a</srcmd5>
+    <version>unknown</version>
+    <time>1633365543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.3
+  * third bugfix release</comment>
+    <requestid>922328</requestid>
+  </revision>
 </revisionlist>
