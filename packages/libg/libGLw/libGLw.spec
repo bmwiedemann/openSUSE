@@ -68,6 +68,7 @@ Xt OpenGL drawing area widget library shipped by the Mesa Project.
 
 %package devel
 Requires:       GLw%{libversion} = %version
+Requires:       GLw%{libversion} = %version-%release
 Requires:       pkgconfig(gl)
 Summary:        Includes and more to develop MesaGLw applications
 Group:          Development/Libraries/C and C++
@@ -126,15 +127,18 @@ rm -f $RPM_BUILD_ROOT/%{_libdir}/libGLw.la $RPM_BUILD_ROOT/%{_libdir}/libGLw.a $
 %files -n %lname
 %defattr(-,root,root)
 %doc README
-%{_libdir}/libGLwXT.so.* 
+%{_libdir}/libGLwXT.so.1.* 
 
 %files devel
 %defattr(-,root,root)
 /usr/include/GL
 %{_libdir}/pkgconfig/glw.pc
 
-%post devel
-ln -sf $(readlink %{_libdir}/libGLw.so.%{libversion}) %{_libdir}/libGLw.so
+%triggerin -n libGLw-devel -- %lname
+ln -snf libGLw.so.1 %{_libdir}/libGLw.so
+
+%triggerin -n libGLw-devel -- %lname_m
+ln -snf libGLw.so.1 %{_libdir}/libGLw.so
 
 %preun devel
  [ $1 -eq 0 ] && rm -f %{_libdir}/libGLw.so || true
@@ -148,11 +152,8 @@ ln -sf $(readlink %{_libdir}/libGLw.so.%{libversion}) %{_libdir}/libGLw.so
 %files -n %lname_m
 %defattr(-,root,root)
 %doc README
-%{_libdir}/libGLwM.so.1*
+%{_libdir}/libGLwM.so.1.*
 
 %endif
-
-%clean
-rm -rf build-GLwM build-GLw
 
 %changelog

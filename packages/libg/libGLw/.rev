@@ -141,4 +141,12 @@ X11:XOrg/libGLw instead. Thanks.</comment>
   SLE12-SP5 (jira#SLE-15018)</comment>
     <requestid>909242</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>1e8591a3e655b8238374adb154219ba2</srcmd5>
+    <version>8.0.0</version>
+    <time>1633365633</time>
+    <user>dimstar_suse</user>
+    <comment>- fix libGLw.so symlink of devel package (bsc#1191122)</comment>
+    <requestid>922981</requestid>
+  </revision>
 </revisionlist>

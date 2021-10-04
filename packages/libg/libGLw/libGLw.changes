@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 09:47:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fix libGLw.so symlink of devel package (bsc#1191122)
+
+-------------------------------------------------------------------
 Thu Jul 29 18:20:29 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - includes everything needed for ECO to enable Motif support in
