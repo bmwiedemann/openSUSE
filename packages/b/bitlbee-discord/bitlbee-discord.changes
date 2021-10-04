@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 04 14:08:12 UTC 2021 - mia@0x0.st
+
+- Update to version 0.4.3+7.g607f988:
+  * Fix empty gateway->path with glib > 2.68
+  * Additional debuginfo on websocket upgrade
+
+-------------------------------------------------------------------
+Thu Sep 09 17:52:09 UTC 2021 - mia@0x0.st
+
+- Update to version 0.4.3+5.g068ed17:
+  * Basic implementation of discord's replies
+  * Update README.md
+  * Update and rename README to README.md
+  * Add verbosity toggle
+
+-------------------------------------------------------------------
 Fri Apr 10 17:53:46 UTC 2020 - mia@0x0.st
 
 - Update to version 0.4.3+0.g9466079:

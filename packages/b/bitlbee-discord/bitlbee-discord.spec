@@ -1,7 +1,7 @@
 #
 # spec file for package bitlbee-discord
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bitlbee-discord
-Version:        0.4.3+0.g9466079
+Version:        0.4.3+7.g607f988
 Release:        0
 Summary:        Bitlbee plugin for Discord
 License:        GPL-2.0-only
@@ -46,7 +46,7 @@ rm %{buildroot}%{_libdir}/bitlbee/discord.la
 
 %files
 %license LICENSE
-%doc README
+%doc README.md
 %dir %{_libdir}/bitlbee
 %{_libdir}/bitlbee/discord.so
 %{_datadir}/bitlbee/discord-help.txt

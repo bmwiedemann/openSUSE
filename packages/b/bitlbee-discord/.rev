@@ -85,4 +85,20 @@
   * Correct command in README</comment>
     <requestid>792976</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be05eadb3aa1986f281767e2b76c0ded</srcmd5>
+    <version>0.4.3+7.g607f988</version>
+    <time>1633365648</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.3+7.g607f988:
+  * Fix empty gateway-&gt;path with glib &gt; 2.68
+  * Additional debuginfo on websocket upgrade
+- Update to version 0.4.3+5.g068ed17:
+  * Basic implementation of discord's replies
+  * Update README.md
+  * Update and rename README to README.md
+  * Add verbosity toggle
+</comment>
+    <requestid>923045</requestid>
+  </revision>
 </revisionlist>
