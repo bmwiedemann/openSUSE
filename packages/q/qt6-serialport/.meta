@@ -1,0 +1,8 @@
+<package name="qt6-serialport" project="openSUSE:Factory">
+  <title>Qt 6 SerialPort library</title>
+  <description>Qt 6 SerialPort library
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-serialport"/>
+  <url>https://www.qt.io</url>
+</package>
