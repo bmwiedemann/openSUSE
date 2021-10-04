@@ -26,7 +26,7 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  2.99
+%define SIVER  3.00
 %define START  0.65
 Version:        %{SIVER}
 Release:        0

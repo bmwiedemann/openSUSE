@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 21 07:17:20 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 3.00:
+  * Better device detection of bootlogd
+
+-------------------------------------------------------------------
 Wed Mar 31 08:13:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - (re)add also support for SLE-15-SP3 
