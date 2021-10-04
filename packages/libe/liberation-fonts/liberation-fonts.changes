@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 30 18:13:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.5
+  * More fixes to Superscript and subscript Numbers missing issues.
+  * Fixed inconsistent weight, missing glyphs and GSUB issues.
+
+-------------------------------------------------------------------
 Tue May  4 05:25:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.4

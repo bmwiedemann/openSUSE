@@ -17,13 +17,13 @@
 
 
 Name:           liberation-fonts
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        Liberation Fonts
 License:        SUSE-Liberation
 Group:          System/X11/Fonts
 URL:            https://github.com/liberationfonts/liberation-fonts
-Source:         https://github.com/liberationfonts/liberation-fonts/files/6418984/liberation-fonts-ttf-2.1.4.tar.gz
+Source:         https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
 Source9:        %{name}-rpmlintrc
 BuildRequires:  fontpackages-devel
 Provides:       locale(bg;el;ru;bg)
@@ -32,7 +32,7 @@ BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-Free fonts which are metric compatible to "Arial", "Times New Roman"
+Free fonts which are metric-compatible to "Arial", "Times New Roman"
 and "Courier New".
 
 %prep
