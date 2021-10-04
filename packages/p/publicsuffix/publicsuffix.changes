@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 30 08:01:38 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210928:
+  * Remove Clic2000 entries (#1434)
+  * ondigitalocean.app: update comment for DigitalOcean App Platform (#1431)
+  * add prequalifyme.today to private section (#1311)
+  * util: gTLD data autopull updates for 2021-09-28T15:12:52 UTC (#1438)
+  * Add *.usercontent.goog (#1417)
+  * Add digitaloceanspaces.com & regional subdomains (#1421)
+  * Update public_suffix_list.dat (#1426)
+
+-------------------------------------------------------------------
+Tue Sep 21 10:52:49 UTC 2021 - mpluskal@suse.com
+
+- Update to version 20210909:
+  * Adding new .ar SLDs and official nic.ar URL correction (#1414)
+
+-------------------------------------------------------------------
 Thu Sep  9 08:18:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210908:

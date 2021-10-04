@@ -986,4 +986,22 @@ Now with build cycle removed.</comment>
   * these domains are being deprecated, we wish to clean up after ourselves (#1399)</comment>
     <requestid>917681</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f36950e5a6f65cbe510cf65564c28a2b</srcmd5>
+    <version>20210928</version>
+    <time>1633365541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210928:
+  * Remove Clic2000 entries (#1434)
+  * ondigitalocean.app: update comment for DigitalOcean App Platform (#1431)
+  * add prequalifyme.today to private section (#1311)
+  * util: gTLD data autopull updates for 2021-09-28T15:12:52 UTC (#1438)
+  * Add *.usercontent.goog (#1417)
+  * Add digitaloceanspaces.com &amp; regional subdomains (#1421)
+  * Update public_suffix_list.dat (#1426)
+
+- Update to version 20210909:
+  * Adding new .ar SLDs and official nic.ar URL correction (#1414)</comment>
+    <requestid>922301</requestid>
+  </revision>
 </revisionlist>
