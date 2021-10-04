@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 24 19:34:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 185:
+ - Fix the autopkgtest in order to fix testing migration: the androguard
+   Python module is not in the python3-androguard Debian package
+ - Ignore a warning in the tests from the h5py package that doesn't concern
+   diffoscope.
+ - Bump Standards-Version to 4.6.0.
+
+-------------------------------------------------------------------
+Sat Sep 18 20:15:56 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 184:
+ - Fix the semantic comparison of R's .rdb files after a refactoring of
+   temporary directory handling in a previous version.
+ - Support a newer format version of R's .rds files.
+ - Update tests for OCaml 4.12. (Closes: reproducible-builds/diffoscope#274)
+ - Move diffoscope.versions to diffoscope.tests.utils.versions.
+ - Use assert_diff in tests/comparators/test_rdata.py.
+ - Reformat various modules with Black.
+ - Stop using the deprecated distutils module by adding a version
+   comparison class based on the RPM version rules.
+ - Update invocations of llvm-objdump for the latest version of LLVM.
+ - Adjust a test with one-byte text file for file(1) version 5.40.
+ - Improve the parsing of the version of OpenSSH.
+ - Add a --diff-context option to control the unified diff context size.
+   (reproducible-builds/diffoscope!88)
+
+-------------------------------------------------------------------
 Sat Sep  4 17:53:01 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 183:
