@@ -131,4 +131,17 @@ use private glib API but implement a share memory mkstemp</comment>
     <comment>- Fix package split done for shared library packaging guideline (bsc#1184479).</comment>
     <requestid>883985</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>49396100853fe3d44b941df9aa1cca56</srcmd5>
+    <version>2.21</version>
+    <time>1633365543</time>
+    <user>dimstar_suse</user>
+    <comment>- Move to /usr for UsrMerge (boo#1191057) 
+
+- Update to version 2.21
+  * Merge pull request #4 from samueldr/fix/makefile
+    Fixup Makefile for better build system support
+  * Silent new gcc compiler</comment>
+    <requestid>922331</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.20
+Version:        2.21
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -91,6 +91,9 @@ make %{?_smp_mflags} CC="%__cc" \
 %make_install \
     MANPATH=%{_mandir} \
     INSTBINFLAGS="-m 0744" \
+%if 0%{?usrmerged}
+    SBINDIR=%{_sbindir} \
+%endif
     LIBDIR=%{_libdir} \
     INCDIR=%{_includedir} \
     SYSDUNITS=%{_unitdir} \
@@ -114,12 +117,21 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %defattr(-,root,root)
 %license COPYING
 %doc README
+%if !0%{?usrmerged}
 /sbin/blogctl
 /sbin/blogd
 /sbin/blogger
 /sbin/isserial
 /sbin/setconsole
 /sbin/showconsole
+%else
+%{_sbindir}/blogctl
+%{_sbindir}/blogd
+%{_sbindir}/blogger
+%{_sbindir}/isserial
+%{_sbindir}/setconsole
+%{_sbindir}/showconsole
+%endif
 %doc %{_mandir}/man8/blogctl.8.gz
 %doc %{_mandir}/man8/blogd.8.gz
 %doc %{_mandir}/man8/blogger.8.gz
