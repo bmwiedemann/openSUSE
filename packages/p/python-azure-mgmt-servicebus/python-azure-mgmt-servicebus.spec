@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-servicebus
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Management Client Library
 License:        MIT
