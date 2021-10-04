@@ -594,4 +594,14 @@
     <comment></comment>
     <requestid>901753</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>a9815c75fedffa4e0827d5201e2716e1</srcmd5>
+    <version>5.1.2</version>
+    <time>1633365646</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix build with newer gwenhywfar versions:
+  * 0001-Remove-unused-variable-definition.patch
+  * 0002-Fix-build-with-newer-Gwenhywfar-versions.patch</comment>
+    <requestid>923010</requestid>
+  </revision>
 </revisionlist>

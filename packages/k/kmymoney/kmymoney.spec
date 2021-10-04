@@ -31,6 +31,9 @@ License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.kmymoney.org/
 Source0:        https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Remove-unused-variable-definition.patch
+Patch1:         0002-Fix-build-with-newer-Gwenhywfar-versions.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -107,7 +110,7 @@ Development files and headers need to build software using KMyMoney.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if %{with qtwebengine}

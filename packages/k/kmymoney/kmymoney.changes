@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  4 11:45:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to fix build with newer gwenhywfar versions:
+  * 0001-Remove-unused-variable-definition.patch
+  * 0002-Fix-build-with-newer-Gwenhywfar-versions.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 06:58:28 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.1.2

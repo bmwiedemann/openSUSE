@@ -1,0 +1,36 @@
+From 125db90e64d77657918335df85f4c45b0d04325d Mon Sep 17 00:00:00 2001
+From: Thomas Baumgart <thb@net-bembel.de>
+Date: Sun, 3 Oct 2021 09:40:26 +0200
+Subject: [PATCH] Remove unused variable definition
+
+(cherry picked from commit 4fb686b8722ec0592910c3227ab60caa6bacdd14)
+---
+ kmymoney/kmymoneyutils.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/kmymoney/kmymoneyutils.h b/kmymoney/kmymoneyutils.h
+index 3469ab039..7beff71f9 100644
+--- a/kmymoney/kmymoneyutils.h
++++ b/kmymoney/kmymoneyutils.h
+@@ -25,14 +25,16 @@
+ // ----------------------------------------------------------------------------
+ // Project Includes
+ 
++#ifndef KMYMONEY_DEPRECATED
++#define KMYMONEY_DEPRECATED Q_DECL_DEPRECATED
++#endif
++
+ class QIcon;
+ 
+ /**
+   * @author Thomas Baumgart
+   */
+ 
+-static QString m_lastNumberUsed;
+-
+ class QPixmap;
+ class QWizard;
+ class QWidget;
+-- 
+2.33.0
+
