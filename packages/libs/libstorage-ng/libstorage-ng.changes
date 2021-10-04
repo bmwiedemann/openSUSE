@@ -1,4 +1,33 @@
 --------------------------------------------------------------------
+Mon Oct 4 10:37:30 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#833
+- avoid sporadic out-of-memory during build (on Fedora)
+- 4.4.41
+
+--------------------------------------------------------------------
+Mon Oct 4 09:17:01 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#832
+- added BlkDevice::can_be_removed()
+- 4.4.40
+
+--------------------------------------------------------------------
+Fri Oct 1 08:40:38 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#831
+- added non-const Encryption::get_blk_device()
+- 4.4.39
+
+--------------------------------------------------------------------
+Thu Sep 30 11:56:13 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#830
+- added get_encryption_type_name()
+- coding style
+- 4.4.38
+
+--------------------------------------------------------------------
 Tue Sep 21 06:34:38 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Greek) (bsc#1149754)
