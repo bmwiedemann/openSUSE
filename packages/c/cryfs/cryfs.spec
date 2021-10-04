@@ -1,7 +1,7 @@
 #
 # spec file for package cryfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,38 +20,28 @@
 %ifarch ppc64
 %define _lto_cflags %{nil}
 %endif
-
 Name:           cryfs
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
-Summary:        CryFS encryption
+Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
-Source:         %{name}-%{version}.tar.xz
-URL:            https://github.com/cryfs/cryfs
-
-#=================================
-BuildRequires:  cmake
+URL:            https://www.cryfs.org/
+Source:         https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  python
-
-%if 0%{?suse_version} < 1500
-BuildRequires:  boost-devel => 1.56.0
-%else
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%endif
-
+BuildRequires:  libboost_atomic-devel >= 1.65.1
+BuildRequires:  libboost_chrono-devel >= 1.65.1
+BuildRequires:  libboost_filesystem-devel >= 1.65.1
+BuildRequires:  libboost_program_options-devel >= 1.65.1
+BuildRequires:  libboost_system-devel >= 1.65.1
+BuildRequires:  libboost_thread-devel >= 1.65.1
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  python
+BuildRequires:  cmake(range-v3)
+BuildRequires:  cmake(spdlog)
+BuildRequires:  pkgconfig(fuse) >= 2.8.6
 BuildRequires:  pkgconfig(libcurl)
-# BuildRequires:  pkgconfig(libopenssl)
-BuildRequires:  libcryptopp-devel
-BuildRequires:  libopenssl-devel
-
-#=================================
+BuildRequires:  pkgconfig(libssl)
 
 %description
 CryFS provides a FUSE-based mount that encrypts file contents, file
@@ -62,12 +52,14 @@ base directory, which can then be synchronized to remote storage
 (using an external tool).
 
 %prep
-%setup -c -q
+%setup -q -c
 
 %build
 mkdir build
 cd build
+# FIXME: you should use the %%cmake macros
 cmake .. \
+	-DDEPENDENCY_CONFIG=../cmake-utils/DependenciesFromLocalSystem.cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DCMAKE_CXX_FLAGS="%{optflags} -fPIC" \
 	-DCMAKE_C_FLAGS="%{optflags} -fPIC" \
@@ -79,17 +71,15 @@ cmake .. \
 %endif
 	-DCMAKE_BUILD_TYPE=Release
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
 %files
-%defattr(0755,root,root)
-%{_bindir}/cryfs*
-%defattr(0644,root,root)
-%{_mandir}/man?/cryfs*
-%doc README.md ChangeLog.txt
 %license LICENSE.txt
+%doc README.md ChangeLog.txt
+%{_bindir}/cryfs*
+%{_mandir}/man?/cryfs*
 
 %changelog

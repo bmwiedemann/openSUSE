@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sun Oct  3 14:09:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove cryptopp build dependency, library is bundled
+
+-------------------------------------------------------------------
+Mon Sep 27 04:29:49 UTC 2021 - munix9@googlemail.com
+
+- Update to upstream version 0.11.0
+  * Backwards Compatibility:
+    - Filesystems created with CryFS 0.10.x can be mounted without
+      requiring a migration.
+    - Filesystems created with CryFS 0.11.x can be mounted by CryFS
+      0.10.x if you configure it to use a cipher supported by CryFS
+      0.10.x, e.g. AES-256-GCM. The new default, XChaCha20-Poly1305,
+      is not supported by CryFS 0.10.x.
+
+  * Security:
+    - Added the XChaCha20-Poly1305 encryption cipher. For new
+      filesystems, this will be the default, but you're still able
+      to create a filesystem with the previous default of AES-256-GCM
+      by saying "no" to the "use default settings?" question when
+      creating the file system. Also, old filesystems will not be
+      automatically converted and will keep using AES-256-GCM.
+      XChaCha20-Poly1305 is significantly slower than AES-256-GCM
+      on modern CPUs, but it is more secure for large filesystems
+      (>64GB).
+      For AES-256-GCM, it is recommended to encrypt at most 2^32
+      blocks, which at the CryFS default block size of 16KB would
+      be 64GB. The more the filesystem grows above that, the more
+      likely it gets that a nonce gets reused and the two
+      corresponding blocks become decryptable by an adversary.
+      Other blocks would not be affected, but an adversary being
+      able to access those two blocks (i.e. 64KB of the stored data)
+      is bad enough. See Section 8.3 in 
+      https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
+      XChaCha20-Poly1305 does not suffer from this constraint and
+      stays secure even if the filesystem gets very large.
+
+  * New platforms:
+    - CryFS now works on devices with Apple M1 silicon
+
+  * Build changes:
+    - Switch to Conan package manager
+    - Allow an easy way to modify how the dependencies are found.
+      This is mostly helpful for package maintainers. See "Using
+      local dependencies" in the README.
+    - Build with macFUSE instead of osxfuse on OSX
+    - Now requires CMake 3.10 or later, and GCC 7 or later,
+      or Clang 7 or later
+    - Fix a build issue on Gentoo systems
+    - Fix a build issue when building with boost 1.77
+
+  * Improvements:
+    - Display the file system configuration when mounting a file system
+    - Now shows a better error message when failing to load the config
+      file that distinguishes between "wrong password" and "config file
+      not found".
+
+  * New features:
+    - Add support for atime mount options (noatime, strictatime,
+      relatime, atime, nodiratime).
+    - The new default is now noatime (in 0.10.x is was relatime).
+      Noatime reduces the amount of writes necessary and with that
+      reduces the probability of synchronization conflicts, and the
+      probability of corrupted file systems if a power outage
+      happens while writing.
+    - Add an --immediate flag to cryfs-unmount that tries to unmount
+      immediately and doesn't wait for processes to release their
+      locks on the file system.
+    - Add a --create-missing-basedir and --create-missing-mountpoint
+      flag to create the base directory and mount directory respectively, 
+      if they don't exist, skipping the confirmation prompt.
+
+  * Other:
+    - Updated to spdlog 1.8.5
+    - Updated to ranges-v3 0.11.0
+    - Updated to boost 1.75
+    - Updated to crypto++ 8.5
+
+  * Clean up spec file
+
+-------------------------------------------------------------------
 Tue May 12 09:23:16 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable '-msse4.1' only on x86 and x86_64

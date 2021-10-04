@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>802899</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6df7222cce995edf11f04ad9b347bbe</srcmd5>
+    <version>0.11.0</version>
+    <time>1633365618</time>
+    <user>dimstar_suse</user>
+    <comment>cryfs 0.11.0
+</comment>
+    <requestid>922861</requestid>
+  </revision>
 </revisionlist>
