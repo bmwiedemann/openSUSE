@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -49,6 +49,7 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(assimp) >= 5
@@ -383,7 +384,7 @@ touch meta_package
 %define _lto_cflags %{nil}
 
 %cmake_qt6 \
-  -DQT_FEATURE_qt3d_system_assimp=ON
+  -DFEATURE_qt3d_system_assimp:BOOL=ON
 
 %{qt6_build}
 
@@ -392,8 +393,9 @@ touch meta_package
 
 %if !%{qt6_docs_flavor}
 
-# Unneeded files related to plugins
-rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 %post -n libQt63DAnimation6 -p /sbin/ldconfig
 %postun -n libQt63DAnimation6 -p /sbin/ldconfig
@@ -435,6 +437,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DAnimation/
 %{_qt6_libdir}/libQt63DAnimation.prl
 %{_qt6_libdir}/libQt63DAnimation.so
+%{_qt6_metatypesdir}/qt63danimation_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3danimation.pri
 %exclude %{_qt6_includedir}/Qt3DAnimation/%{real_version}
 
@@ -455,6 +458,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DCore/
 %{_qt6_libdir}/libQt63DCore.prl
 %{_qt6_libdir}/libQt63DCore.so
+%{_qt6_metatypesdir}/qt63dcore_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dcore.pri
 %exclude %{_qt6_includedir}/Qt3DCore/%{real_version}
 
@@ -471,6 +475,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DExtras/
 %{_qt6_libdir}/libQt63DExtras.prl
 %{_qt6_libdir}/libQt63DExtras.so
+%{_qt6_metatypesdir}/qt63dextras_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dextras.pri
 %exclude %{_qt6_includedir}/Qt3DExtras/%{real_version}
 
@@ -487,6 +492,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DInput/
 %{_qt6_libdir}/libQt63DInput.prl
 %{_qt6_libdir}/libQt63DInput.so
+%{_qt6_metatypesdir}/qt63dinput_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dinput.pri
 %exclude %{_qt6_includedir}/Qt3DInput/%{real_version}
 
@@ -503,6 +509,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DLogic/
 %{_qt6_libdir}/libQt63DLogic.prl
 %{_qt6_libdir}/libQt63DLogic.so
+%{_qt6_metatypesdir}/qt63dlogic_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dlogic.pri
 %exclude %{_qt6_includedir}/Qt3DLogic/%{real_version}
 
@@ -536,6 +543,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DQuickAnimation/
 %{_qt6_libdir}/libQt63DQuickAnimation.prl
 %{_qt6_libdir}/libQt63DQuickAnimation.so
+%{_qt6_metatypesdir}/qt63dquickanimation_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickanimation.pri
 %exclude %{_qt6_includedir}/Qt3DQuickAnimation/%{real_version}
 
@@ -552,6 +560,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DQuickExtras/
 %{_qt6_libdir}/libQt63DQuickExtras.prl
 %{_qt6_libdir}/libQt63DQuickExtras.so
+%{_qt6_metatypesdir}/qt63dquickextras_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickextras.pri
 %exclude %{_qt6_includedir}/Qt3DQuickExtras/%{real_version}
 
@@ -568,6 +577,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DQuickInput/
 %{_qt6_libdir}/libQt63DQuickInput.prl
 %{_qt6_libdir}/libQt63DQuickInput.so
+%{_qt6_metatypesdir}/qt63dquickinput_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickinput.pri
 %exclude %{_qt6_includedir}/Qt3DQuickInput/%{real_version}
 
@@ -584,6 +594,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DQuickRender/
 %{_qt6_libdir}/libQt63DQuickRender.prl
 %{_qt6_libdir}/libQt63DQuickRender.so
+%{_qt6_metatypesdir}/qt63dquickrender_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickrender.pri
 %exclude %{_qt6_includedir}/Qt3DQuickRender/%{real_version}
 
@@ -602,6 +613,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DQuickScene2D/
 %{_qt6_libdir}/libQt63DQuickScene2D.prl
 %{_qt6_libdir}/libQt63DQuickScene2D.so
+%{_qt6_metatypesdir}/qt63dquickscene2d_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene2d.pri
 %exclude %{_qt6_includedir}/Qt3DQuickScene2D/%{real_version}
 
@@ -622,6 +634,7 @@ rm -fr %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/Qt3DRender/
 %{_qt6_libdir}/libQt63DRender.prl
 %{_qt6_libdir}/libQt63DRender.so
+%{_qt6_metatypesdir}/qt63drender_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_3drender.pri
 %exclude %{_qt6_includedir}/Qt3DRender/%{real_version}
 
