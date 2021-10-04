@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 17 08:49:47 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 0.11.0
+  + Other minor build fixes; (bso#14526);
+  + Add custom tag to events
+  + Add event trace api
+
+-------------------------------------------------------------------
 Sat Mar  7 00:20:55 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Update to version 0.10.2

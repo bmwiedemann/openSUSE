@@ -1,7 +1,7 @@
 #
 # spec file for package tevent-man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?py3_soflags:  %global py3_soflags cpython-%{python3_version_nodots}m}
 
-%define talloc_version 2.2.0
+%define talloc_version 2.3.3
 %define build_man 0
 
 %if %{build_man}
@@ -35,9 +35,11 @@ BuildRequires:  pkg-config
 %else
 BuildRequires:  pkgconfig
 %endif
+BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-talloc >= %{talloc_version}
 BuildRequires:  python3-talloc-devel >= %{talloc_version}
+BuildRequires:  pkgconfig(cmocka) >= 1.1.3
 %endif # build_man
 %if 0%{?suse_version} == 0 || 0%{?suse_version} > 1140
 %define	build_make_smp_mflags %{?_smp_mflags}
@@ -45,7 +47,7 @@ BuildRequires:  python3-talloc-devel >= %{talloc_version}
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
 URL:            https://tevent.samba.org/
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later
@@ -82,7 +84,6 @@ signals, and the classic file descriptor events.
 
 This package contains the tevent0 library.
 
-
 %package -n libtevent-devel
 Summary:        Libraries and Header Files to Develop Programs with tevent0 Support
 # Man pages are built in a 2nd spec file in order to break a build cycle with doxygen->cmake->krb5->libtevent
@@ -109,7 +110,6 @@ Tevent also provide helpers to deal with asynchronous code providing the
 tevent_req (tevent request) functions.
 
 This package contains libraries and header files need for development.
-
 
 %package -n python3-tevent
 Summary:        Python3 bindings for the Tevent library
@@ -203,6 +203,7 @@ rm $RPM_BUILD_ROOT/%{_mandir}/man3/todo.3
 %endif
 
 %else
+
 %files
 %defattr(-,root,root)
 %{_mandir}/man3/tevent*.*
