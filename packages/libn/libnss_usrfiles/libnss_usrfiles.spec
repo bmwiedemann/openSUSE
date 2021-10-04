@@ -1,7 +1,7 @@
 #
 # spec file for package libnss_usrfiles
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,12 +44,12 @@ group, rpc, services, protocols and more.
 %setup -q
 
 %build
-%configure --libdir=/%{_lib}
+%configure
 make %{?_smp_mflags}
 
 %install
 %make_install
-rm -v %{buildroot}/%{_lib}/%{name}.{a,la,so}
+rm -v %{buildroot}%{_libdir}/%{name}.{a,la,so}
 
 %post -n libnss_usrfiles2 -p /sbin/ldconfig
 
@@ -58,6 +58,6 @@ rm -v %{buildroot}/%{_lib}/%{name}.{a,la,so}
 %files -n libnss_usrfiles2
 %license COPYING
 %doc README.md
-/%{_lib}/libnss_usrfiles.so.2*
+%{_libdir}/libnss_usrfiles.so.2*
 
 %changelog

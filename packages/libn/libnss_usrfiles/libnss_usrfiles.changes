@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 29 08:29:56 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install into _libdir [bsc#1191070]
+
+-------------------------------------------------------------------
 Wed Aug 21 13:28:54 CEST 2019 - kukuk@suse.de
 
 - Remove post %install section to make it generic useable

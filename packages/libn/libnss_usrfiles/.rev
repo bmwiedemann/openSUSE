@@ -44,4 +44,12 @@
     <comment>- Remove post %install section to make it generic useable</comment>
     <requestid>725012</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4b0c8268e29c425faf12626e22e22067</srcmd5>
+    <version>2.27</version>
+    <time>1633365553</time>
+    <user>dimstar_suse</user>
+    <comment>- Install into _libdir [bsc#1191070]</comment>
+    <requestid>922128</requestid>
+  </revision>
 </revisionlist>
