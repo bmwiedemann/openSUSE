@@ -1,0 +1,96 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Disable GPU when using nouveau or running on wayland
+References: boo#1005323, boo#1060990
+
+Qt WebEngine uses multi-threaded OpenGL, which nouveau does not support.
+It also crashes when running on wayland, the cause is not yet known.
+Work around these issues by not doing GPU-accelerated rendering in such
+cases.
+
+diff --git a/src/core/web_engine_context.cpp b/src/core/web_engine_context.cpp
+index c9f82c31..0f92e3de 100644
+--- a/src/core/web_engine_context.cpp
++++ b/src/core/web_engine_context.cpp
+@@ -133,6 +133,7 @@
+ #include <QOffscreenSurface>
+ #if QT_CONFIG(opengl)
+ # include <QOpenGLContext>
++# include <QOpenGLFunctions>
+ # include <qopenglcontext_platform.h>
+ #endif
+ #include <QQuickWindow>
+@@ -206,11 +207,33 @@ bool usingSoftwareDynamicGL()
+ static const char *getGLType(bool enableGLSoftwareRendering)
+ {
+     const char *glType = nullptr;
++
++    bool disableGpu = qEnvironmentVariableIsSet("QT_WEBENGINE_DISABLE_GPU");
++
++    if (!qEnvironmentVariableIsSet("QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND") && qApp->platformName().startsWith("wayland", Qt::CaseInsensitive))
++    {
++        qWarning() << "Running on wayland. Qt WebEngine will disable usage of the GPU.\n"
++                      "Note: you can set the QT_WEBENGINE_DISABLE_WAYLAND_WORKAROUND\n"
++                      "environment variable before running this application, but this is \n"
++                      "not recommended since this usually causes applications to crash.";
++        disableGpu = true;
++    }
++
++    if (!qEnvironmentVariableIsSet("QT_WEBENGINE_DISABLE_NOUVEAU_WORKAROUND") && openGLVendor() == QStringLiteral("nouveau"))
++    {
++        qWarning() << "Nouveau openGL driver detected. Qt WebEngine will disable usage of the GPU.\n"
++                      "Note: you can set the QT_WEBENGINE_DISABLE_NOUVEAU_WORKAROUND\n"
++                      "environment variable before running this application, but this is \n"
++                      "not recommended since this usually causes applications to crash as\n"
++                      "Nouveau openGL drivers don't support multithreaded rendering";
++        disableGpu = true;
++    }
++
+     const bool tryGL = (usingDefaultSGBackend() && !usingSoftwareDynamicGL()
+                         && QGuiApplicationPrivate::platformIntegration()->hasCapability(
+                                 QPlatformIntegration::OpenGL))
+             || enableGLSoftwareRendering;
+-    if (tryGL) {
++    if (tryGL && !disableGpu) {
+         if (!qt_gl_global_share_context() || !qt_gl_global_share_context()->isValid()) {
+             qWarning("WebEngineContext used before QtWebEngineCore::initialize() or OpenGL context "
+                      "creation failed.");
+@@ -914,6 +937,39 @@ base::CommandLine* WebEngineContext::commandLine() {
+     }
+ }
+ 
++#ifndef QT_NO_OPENGL
++QString openGLVendor()
++{
++    QString vendor;
++
++    QOpenGLContext *oldContext = QOpenGLContext::currentContext();
++    QSurface *oldSurface = 0;
++    if (oldContext)
++        oldSurface = oldContext->surface();
++
++    QScopedPointer<QOffscreenSurface> surface( new QOffscreenSurface );
++    surface->create();
++    QOpenGLContext context;
++    if (!context.create()) {
++        qDebug() << "Error creating openGL context";
++    }
++    else if (!context.makeCurrent(surface.data())) {
++        qDebug() << "Error making openGL context current context";
++    } else {
++        const GLubyte *p;
++        QOpenGLFunctions *f = context.functions();
++        if ((p = f->glGetString(GL_VENDOR)))
++            vendor = QString::fromLatin1(reinterpret_cast<const char *>(p));
++    }
++
++    context.doneCurrent();
++    if (oldContext && oldSurface)
++        oldContext->makeCurrent(oldSurface);
++
++    return vendor;
++}
++#endif
++
+ } // namespace
+ 
+ QT_BEGIN_NAMESPACE

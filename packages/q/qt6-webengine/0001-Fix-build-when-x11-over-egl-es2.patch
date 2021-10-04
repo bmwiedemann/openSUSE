@@ -1,0 +1,48 @@
+From 130089f928db6d8ae6a49b27abc774c7e669cee0 Mon Sep 17 00:00:00 2001
+From: Michal Klocek <michal.klocek@qt.io>
+Date: Mon, 13 Sep 2021 09:23:54 +0200
+Subject: [PATCH] Fix build when x11 over egl/es2
+
+Qt's xcb can be compiled without the glx support,
+do not use Chromium flag to check that.
+
+Task-number: QTBUG-96398
+Pick-to: 6.2
+Change-Id: Ie7f1fe74699cd83aee1f9e5aff59760d4d7a70bf
+---
+ src/core/ozone/gl_context_qt.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/ozone/gl_context_qt.cpp b/src/core/ozone/gl_context_qt.cpp
+index 55497751..1dd7d8f6 100644
+--- a/src/core/ozone/gl_context_qt.cpp
++++ b/src/core/ozone/gl_context_qt.cpp
+@@ -42,6 +42,7 @@
+ #include <QGuiApplication>
+ #include <QOpenGLContext>
+ #include <QThread>
++#include <QtGui/private/qtgui-config_p.h>
+ #include <qpa/qplatformnativeinterface.h>
+ #include "ui/gl/gl_context_egl.h"
+ #include "ui/gl/gl_implementation.h"
+@@ -154,7 +155,7 @@ void* GLContextHelper::getNativeDisplay()
+ QFunctionPointer GLContextHelper::getGlXGetProcAddress()
+ {
+      QFunctionPointer get_proc_address = nullptr;
+-#if QT_CONFIG(opengl)
++#if QT_CONFIG(xcb_glx)
+     if (QOpenGLContext *context = qt_gl_global_share_context()) {
+         get_proc_address = context->getProcAddress("glXGetProcAddress");
+     }
+@@ -175,7 +176,7 @@ QFunctionPointer GLContextHelper::getEglGetProcAddress()
+ 
+ void *GLContextHelper::getGlxPlatformInterface()
+ {
+-#if QT_CONFIG(opengl) && defined(USE_GLX)
++#if QT_CONFIG(xcb_glx)
+     if (QOpenGLContext *context = qt_gl_global_share_context())
+         return context->nativeInterface<QNativeInterface::QGLXContext>();
+ #endif
+-- 
+2.33.0
+

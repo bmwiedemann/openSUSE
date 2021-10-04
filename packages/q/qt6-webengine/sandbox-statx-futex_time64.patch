@@ -1,0 +1,39 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Sandbox: Handle statx and futex_time64
+
+glibc uses statx in some more places now (e.g stat64 -> __fstatat64_time64),
+but it's caught by the sandbox, which doesn't handle it and breaks.
+Return -ENOSYS instead to trigger the fallback in glibc.
+
+futex_time64 is also used internally in glibc, so handle that as well.
+The signature is identical where it matters.
+
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+index 5e997009667..1cfe1f382cf 100644
+--- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -196,6 +196,11 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+   if (sysno == __NR_futex)
+     return RestrictFutex();
+ 
++#if defined(__NR_futex_time64)
++  if (sysno == __NR_futex_time64)
++    return RestrictFutex();
++#endif
++
+   if (sysno == __NR_set_robust_list)
+     return Error(EPERM);
+ 
+@@ -281,6 +286,12 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+   }
+ #endif
+ 
++#if defined(__NR_statx)
++  if (sysno == __NR_statx) {
++    return Error(ENOSYS);
++  }
++#endif
++
+   if (SyscallSets::IsFileSystem(sysno) ||
+       SyscallSets::IsCurrentDirectory(sysno)) {
+     return Error(fs_denied_errno);

@@ -1,0 +1,62 @@
+From eaae274cb1975be558d8a535ba2310bc67c073a6 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann suse de>
+Date: Wed, 24 Mar 2021 16:00:08 +0100
+Subject: [PATCH] https://bugzilla.opensuse.org/show_bug.cgi?id=1163766
+
+seccomp filters disallow a new kernel syscall to get time
+used on i586
+---
+ src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc |    6 ++++++
+ src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h |    8 ++++++++
+ src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc         |    3 +++
+ 3 files changed, 17 insertions(+)
+
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
+@@ -1710,5 +1710,13 @@
+ #define __NR_clone3 435
+ #endif
+ 
++#if !defined(__NR_clock_gettime64)
++#define __NR_clock_gettime64 403
++#endif
++
++#if !defined(__NR_clock_nanosleep_time64)
++#define __NR_clock_nanosleep_time64 407
++#endif
++
+ #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_X86_32_LINUX_SYSCALLS_H_
+ 
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
+@@ -32,6 +32,9 @@ ResultExpr ImeProcessPolicy::EvaluateSys
+ #if defined(__NR_clock_gettime)
+     case __NR_clock_gettime:
+ #endif
++#if defined(__NR_clock_gettime64)
++    case __NR_clock_gettime64:
++#endif
+       return Allow();
+ // https://crbug.com/991435
+ #if defined(__NR_getrusage)
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -161,6 +161,12 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+     return RestrictClockID();
+   }
+ 
++#if defined(__NR_clock_gettime64)
++  if (sysno == __NR_clock_gettime64 || sysno == __NR_clock_nanosleep_time64) {
++    return RestrictClockID();
++  }
++#endif
++
+   if (sysno == __NR_clone) {
+     return RestrictCloneToThreadsAndEPERMFork();
+   }
