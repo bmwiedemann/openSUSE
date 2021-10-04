@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 30 10:37:56 CEST 2021 - tiwai@suse.de
+
+- Correct download source URL
+
+-------------------------------------------------------------------
+Thu Sep 23 01:38:13 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version v190700_20210406
+- removed patch `0001-Merge-branch-ticket_275_pass_void-into-master.patch`
+  as it is included in this release.
+
+-------------------------------------------------------------------
 Wed Aug 12 14:39:46 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - The portaudio C library uses pthread_cleanup* macros, a sane but

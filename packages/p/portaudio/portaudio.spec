@@ -1,7 +1,7 @@
 #
 # spec file for package portaudio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,14 @@
 %define soname_p 0
 
 Name:           portaudio
-Version:        190600_20161030
+Version:        190700_20210406
 Release:        0
 Summary:        Portable Real-Time Audio Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://www.portaudio.com/
-Source:         http://www.portaudio.com/archives/pa_stable_v%{version}.tgz
+Source:         http://files.portaudio.com/archives/pa_stable_v%{version}.tgz
 Source1:        baselibs.conf
-Patch1:         0001-Merge-branch-ticket_275_pass_void-into-master.patch
 %define lname_c	libportaudio%{soname_c}
 %define lname_p	libportaudiocpp%{soname_p}
 BuildRequires:  alsa-devel
@@ -81,7 +80,6 @@ portaudio library.
 
 %prep
 %setup -q -n portaudio
-%patch1 -p1
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')  
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" qa/loopback/src/paqa.c src/common/pa_front.c
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')  
@@ -111,6 +109,8 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %postun -n %lname_p -p /sbin/ldconfig
 
 %files -n %lname_c
+%license LICENSE.txt
+%doc README.md
 %defattr(-,root,root)
 %{_libdir}/libportaudio.so.%{soname_c}*
 %files -n %lname_p
@@ -119,8 +119,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 
 %files devel
 %defattr(-,root,root)
-%doc README.txt LICENSE.txt
-%doc doc/html
+%doc doc/html/*
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/lib*.so
