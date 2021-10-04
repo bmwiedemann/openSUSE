@@ -8,6 +8,19 @@ Description=iodined lets you tunnel IPv4 data through a DNS server
 After=network.target syslog.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=simple
 EnvironmentFile=-/etc/sysconfig/iodined
 Environment=TERM=linux

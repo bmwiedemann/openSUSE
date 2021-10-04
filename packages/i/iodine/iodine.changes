@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:45:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * iodine.service
+  * iodined.service
+
+-------------------------------------------------------------------
 Sun Jun 13 13:35:10 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator
