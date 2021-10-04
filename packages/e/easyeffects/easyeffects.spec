@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.1.2+0~git.89063a4b
+Version:        6.1.3+0~git.a593cbd3
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -35,8 +35,8 @@ BuildRequires:  appstream-glib
 BuildRequires:  binutils-gold
 %endif
 BuildRequires:  cmake
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -56,13 +56,9 @@ BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 Requires:       dconf
-Requires:       gstreamer-plugins-bad >= 1.12.5
-Requires:       gstreamer-plugins-good >= 1.12.5
-Requires:       ladspa-swh-plugins
 Recommends:     lv2-calf >= 0.90.1
 Recommends:     lv2-lsp-plugins
 Recommends:     lv2-zam-plugins
-Recommends:     rubberband-ladspa
 
 %description
 PulseEffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
@@ -86,8 +82,8 @@ sed -i '/^meson.add_install_script/d' meson.build
 export LD=ld.gold
 alias ld=gold
 %endif
-export CC=gcc-10
-export CXX=g++-10
+export CC=gcc
+export CXX=g++
 export LDFLAGS="${LDFLAGS} -fPIC -Wl,--gc-sections -Wl,-O1"
 %if %{with gold}
 LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
