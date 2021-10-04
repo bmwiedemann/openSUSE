@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 14:28:08 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Also disable luajit on ppc64le and s390x. Package is
+  unavailable.
+
+-------------------------------------------------------------------
 Wed Apr 14 11:44:17 UTC 2021 - pgajdos@suse.com
 
 - added patches
