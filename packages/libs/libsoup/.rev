@@ -1014,4 +1014,13 @@
     soup_message_get_tls_ciphersuite_name() API. (forwarded request 921526 from iznogood)</comment>
     <requestid>921671</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>918a3295a70d9b26314e57d364042cba</srcmd5>
+    <version>3.0.1</version>
+    <time>1633365546</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore test failure on 32-bit arm, as it is done for 32-bit x86
+  https://gitlab.gnome.org/GNOME/libsoup/-/issues/236 (forwarded request 922302 from Guillaume_G)</comment>
+    <requestid>922351</requestid>
+  </revision>
 </revisionlist>

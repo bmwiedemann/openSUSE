@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 08:04:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ignore test failure on 32-bit arm, as it is done for 32-bit x86
+  https://gitlab.gnome.org/GNOME/libsoup/-/issues/236
+
+-------------------------------------------------------------------
 Sun Sep 26 18:27:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.1:

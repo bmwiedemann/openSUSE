@@ -136,8 +136,9 @@ Features:
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
+# Ignore test failure on 32-bit - https://gitlab.gnome.org/GNOME/libsoup/-/issues/236
 %meson_test \
-%ifarch %ix86
+%ifarch %ix86 %{arm}
  || :
 %endif
 %nil
