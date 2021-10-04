@@ -1,7 +1,7 @@
 #
 # spec file for package tdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  libxslt
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 URL:            https://tdb.samba.org/
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Samba Trivial Database
 License:        LGPL-3.0-or-later
@@ -36,8 +36,8 @@ Source:         https://download.samba.org/pub/tdb/tdb-%{version}.tar.gz
 Source1:        https://download.samba.org/pub/tdb/tdb-%{version}.tar.asc
 Source2:        tdb.keyring
 Source4:        baselibs.conf
-Patch0:         ignore-tdb1-run-transaction-expand.diff
-Patch1:         build_pie.patch
+Patch0:         build_pie.patch
+Patch1:         0001-tdb-Fix-invalid-syntax-in-tdb.h.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -56,7 +56,6 @@ internally to keep writers from trampling on each other.
 
 This package contains the tdb1 library.
 
-
 %package -n libtdb-devel
 Summary:        Libraries and Header Files to Develop Programs with tdb1 Support
 Group:          Development/Libraries/C and C++
@@ -70,7 +69,6 @@ internally to keep writers from trampling on each other.
 
 This package contains libraries and header files need for development.
 
-
 %package -n tdb-tools
 Summary:        Tools to manipulate tdb files
 Group:          Development/Libraries/C and C++
@@ -81,7 +79,6 @@ except that it allows multiple simultaneous writers and uses locking
 internally to keep writers from trampling on each other.
 
 This package contains tools to manage Tdb files.
-
 
 %package -n python3-tdb
 Summary:        Python3 bindings for the Tdb library
@@ -94,10 +91,7 @@ This package contains the Python3 bindings for the Tdb library.
 
 %prep
 %setup -n tdb-%{version} -q
-%ifarch ppc ppc64 ppc64le
-%patch0 -p1
-%endif
-%patch1 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -D_LARGEFILE64_SOURCE -DIDMAP_RID_SUPPORT_TRUSTED_DOMAINS"

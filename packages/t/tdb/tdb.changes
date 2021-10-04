@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 17 08:46:03 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 1.4.4
+  + Fix a memory leak on error
+  + python: remove all 'from __future__ import print_function'
+  + Fix CID 1471761 String not null terminated
+  + Use hex_byte() in parse_hex()
+  + Use hex_byte() in read_data()
+  + fix studio compiler build
+  + Fix some signed/unsigned comparisons
+  + also use __has_attribute macro to check for attribute support
+  + Fix clang 9 missing-field-initializer warnings
+  + pytdb tests: add test for storev()
+  + pytdb: add python binding for storev()
+  + tdbtorture: Use ARRAY_DEL_ELEMENT()
+  + py3: Remove #define PyInt_FromLong PyLong_FromLong
+  + py3: Remove #define PyInt_AsLong PyLong_AsLong
+  + py3: Remove #define PyInt_Check PyLong_Check
+  + tdb: Align integer types
+- Drop obsolete patch ignore-tdb1-run-transaction-expand.diff
+- Fix header file using undefined function visibility macro;
+  Add patch 0001-tdb-Fix-invalid-syntax-in-tdb.h.patch; (bso#14762);
+
+-------------------------------------------------------------------
 Fri Mar  6 17:02:55 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Update to version 1.4.3
