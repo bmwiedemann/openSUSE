@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Oct  2 06:49:11 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211001
+  * Added icons
+
+    * ares #2826
+    * Artikulate (Flathub) #2007
+    * Badlion Client #2804
+    * Bitwig Template (mimetypes icon)
+    * BOINC Manager (Flathub) #2007
+    * Borderlands #2811
+    * Brave (AUR)
+    * Brave (Flatpak) #2824
+    * Caprine (Flathub) #2007
+    * Chatty #2747
+    * Commit #2818
+    * Cowsay #2007
+    * CudaText (Flathub) #2007
+    * D-Spy #2007
+    * Denemo (Flathub) #2007
+    * Electronics (categories icon) #2814
+    * Emblem #2007
+    * Game Maker Studio 2 #2812
+    * GNOME Calls #2747
+    * GNOME Text Editor #2815
+    * GNU GTick #2806
+    * Google Chat (PWA)
+    * Google Translate #2798
+    * gpx-viewer (Flathub) #2007
+    * Guilded (Flathub) #2007
+    * Haguichi (rDNS panel symlinks) #2823
+    * Hyperbola (distributor logo)
+    * IceDove UXP
+    * IceWeasel UXP
+    * JamesDSP (apps and tray icons) #2810
+    * JPEXS Free Flash Decompiler (Flathub) #2007
+    * KeePassXC (Flatpak tray icons)
+    * King’s Cross #2747
+    * Linquist TS (mimetypes icons)
+    * Lorem #2007
+    * MEGA (megaalert tray icon)
+    * Megapixels #2747
+    * Metronome (Flathub) #2007
+    * Multi Lingual TERMinal emulator
+    * NetEase Cloud Music GTK #2007
+    * Portfolio #2747
+    * Powersupply #2747
+    * PWAs for Brave #2819
+    * Revolt Chat
+    * RubyMine (Flathub) #2007
+    * Sharik
+    * sidebar-collapse, sidebar-expand (actions icons)
+    * Syncthing (folder icon) #2778
+    * Tenacity #2813
+    * Textadept #2808
+    * ThinkOrSwim (Flathub) #2007
+    * Thonny (Flathub) #2007
+    * Typography #2007
+    * Vector Slicer #2007
+    * Ventoy #2809
+    * view-pages-* (actions icons)
+    * Wired network status icons for Plasma
+    * Xilinx Vivado (part of Xilinx Vivado Design Suite) (Flathub) #2007
+    * Youtube Music Desktop (Flatpak)
+    * ZeroTier GUI
+
+  * Updated icons
+
+    * Bitwig (apps and mimetypes icons)
+    * Desktop Locale (Settings)
+    * Desktop Notification Bell (Settings)
+    * GNOME Connections #2796
+    * Google Chat
+    * KTorrent
+    * Security High/Low/Medium
+    * System Monitor
+    * TigerVNC
+
+  * Changes and fixes
+
+    * Added a few missing GNOME symbolic icons
+    * Added darkcyan folder color that suitable
+      to Pop!_OS GTK theme #2820
+    * Added missing KDE ColorScheme class on
+      indicator-notification-close-deselect icon
+-------------------------------------------------------------------
 Fri Sep  3 23:11:30 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 20210901.
