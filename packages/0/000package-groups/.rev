@@ -1193,4 +1193,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1633006670</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="165" vrev="163">
+    <srcmd5>3516b3ff4294db18cafaa8399cce1cef</srcmd5>
+    <version>unknown</version>
+    <time>1633355928</time>
+    <user>dimstar_suse</user>
+    <comment>Lock texlive-latex from the DVD</comment>
+  </revision>
 </revisionlist>
