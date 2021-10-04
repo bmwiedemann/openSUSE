@@ -1,7 +1,7 @@
 #
 # spec file for package form
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,6 @@
 # Documentation building fails due to LaTeX errors; disable for now
 %define with_doc 0
 
-%define omp_ver openmpi2
-
 %define reldate 20190212
 Name:           form
 Version:        4.2.1
@@ -28,10 +26,9 @@ Release:        0
 Summary:        A Symbolic Manipulation System
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://github.com/vermaseren/form/
+URL:            https://github.com/vermaseren/form/
 Source0:        https://github.com/vermaseren/form/archive/v%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{omp_ver}-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -40,6 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 %if %{with_doc}
@@ -70,6 +68,7 @@ BuildRequires:  tex(xcolor.sty)
 %endif
 Recommends:     %{name}-doc = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%openmpi_requires
 
 %description
 FORM is a Symbolic Manipulation System. It reads symbolic expressions from files
@@ -99,9 +98,7 @@ sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" sources/form3.h
 sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" configure.ac
 
 %build
-if [ -f %{_libdir}/mpi/gcc/%{omp_ver}/bin/mpivars.sh ]; then
-  source %{_libdir}/mpi/gcc/%{omp_ver}/bin/mpivars.sh
-fi
+%setup_openmpi
 
 sed -i "s|-march=native||g" configure.ac
 autoreconf -fvi
