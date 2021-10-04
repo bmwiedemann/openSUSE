@@ -1,0 +1,54 @@
+From afa2842218c05393ddc77165d402190831dec283 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sun, 6 Jun 2021 10:44:09 +0200
+Subject: [PATCH] Require GCC 10
+
+qtbase fails to build with compilers that only partially support c++17.
+Some public headers also #include files that require newer compilers.
+
+Change-Id: I0c4ad87af4dd60d12fa09366eb9910edafcc9c4c
+---
+ mkspecs/common/g++-base.conf | 6 +++---
+ mkspecs/common/gcc-base.conf | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/mkspecs/common/g++-base.conf b/mkspecs/common/g++-base.conf
+index c337696304..0be89b78a8 100644
+--- a/mkspecs/common/g++-base.conf
++++ b/mkspecs/common/g++-base.conf
+@@ -8,14 +8,14 @@
+ # you can use the manual test in tests/manual/mkspecs.
+ #
+ 
+-QMAKE_COMPILER          = gcc
++QMAKE_COMPILER          = gcc-10
+ 
+-QMAKE_CC                = $${CROSS_COMPILE}gcc
++QMAKE_CC                = $${CROSS_COMPILE}gcc-10
+ 
+ QMAKE_LINK_C            = $$QMAKE_CC
+ QMAKE_LINK_C_SHLIB      = $$QMAKE_CC
+ 
+-QMAKE_CXX               = $${CROSS_COMPILE}g++
++QMAKE_CXX               = $${CROSS_COMPILE}g++-10
+ 
+ QMAKE_LINK              = $$QMAKE_CXX
+ QMAKE_LINK_SHLIB        = $$QMAKE_CXX
+diff --git a/mkspecs/common/gcc-base.conf b/mkspecs/common/gcc-base.conf
+index 9942089ed5..8b282d4b5b 100644
+--- a/mkspecs/common/gcc-base.conf
++++ b/mkspecs/common/gcc-base.conf
+@@ -123,8 +123,8 @@ QMAKE_CFLAGS_MIPS_DSPR2 += -mdspr2
+ QMAKE_CFLAGS_ARCH_HASWELL           = -march=core-avx2
+ 
+ # Wrapper tools that understand .o/.a files with GIMPLE instead of machine code
+-QMAKE_AR_LTCG           = gcc-ar cqs
+-QMAKE_NM_LTCG           = gcc-nm -P
++QMAKE_AR_LTCG           = gcc-ar-10 cqs
++QMAKE_NM_LTCG           = gcc-nm-10 -P
+ QMAKE_RANLIB_LTCG       = true          # No need to run since gcc-ar has "s"
+ 
+ QMAKE_LINK_OBJECT_SCRIPT = object_script
+-- 
+2.31.1
+

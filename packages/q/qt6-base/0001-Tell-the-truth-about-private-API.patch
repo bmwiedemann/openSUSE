@@ -1,4 +1,4 @@
-From 32456cdbc7f375e5048cb75ee2a992db1e436a61 Mon Sep 17 00:00:00 2001
+From e3bf7041e63a8757886436bdbd06ffbc9d6b72ce Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Sun, 20 Sep 2020 09:57:22 +0200
 Subject: [PATCH] Tell the truth about private API
@@ -10,31 +10,28 @@ added during the Qt 5.6 cycle.
 
 Change-Id: Iada0be6e7d4eaa3a6683b82183643c88dbfa6580
 ---
- cmake/QtFlagHandlingHelpers.cmake | 4 ++--
+ cmake/QtFlagHandlingHelpers.cmake | 2 +-
  mkspecs/features/qt_module.prf    | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/cmake/QtFlagHandlingHelpers.cmake b/cmake/QtFlagHandlingHelpers.cmake
-index a71c083717..27bd349924 100644
+index dc81a79333..d2a5634f25 100644
 --- a/cmake/QtFlagHandlingHelpers.cmake
 +++ b/cmake/QtFlagHandlingHelpers.cmake
-@@ -3,9 +3,9 @@ function(qt_internal_add_linker_version_script target)
+@@ -2,7 +2,7 @@ function(qt_internal_add_linker_version_script target)
+     qt_parse_all_arguments(arg "qt_internal_add_linker" "" "" "PRIVATE_HEADERS" ${ARGN})
  
      if (TEST_ld_version_script)
-         if (arg_INTERNAL)
--            set(contents "Qt_${PROJECT_VERSION_MAJOR}_PRIVATE_API { *; };")
-+            set(contents "Qt_${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}_PRIVATE_API { *; };")
-         else()
--            set(contents "Qt_${PROJECT_VERSION_MAJOR}_PRIVATE_API {\n    qt_private_api_tag*;\n")
-+            set(contents "Qt_${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}_PRIVATE_API {\n    qt_private_api_tag*;\n")
-             foreach(ph ${arg_PRIVATE_HEADERS})
-                 string(APPEND contents "    @FILE:${ph}@\n")
-             endforeach()
+-        set(contents "Qt_${PROJECT_VERSION_MAJOR}_PRIVATE_API {\n    qt_private_api_tag*;\n")
++        set(contents "Qt_${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}_PRIVATE_API {\n    qt_private_api_tag*;\n")
+         foreach(ph ${arg_PRIVATE_HEADERS})
+             string(APPEND contents "    @FILE:${ph}@\n")
+         endforeach()
 diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
-index 828a9621b9..805d8b301a 100644
+index 62d225b14d..de0dba34a8 100644
 --- a/mkspecs/features/qt_module.prf
 +++ b/mkspecs/features/qt_module.prf
-@@ -220,9 +220,9 @@ android: CONFIG += qt_android_deps no_linker_version_script
+@@ -218,9 +218,9 @@ android: CONFIG += qt_android_deps no_linker_version_script
      QMAKE_LFLAGS += $${QMAKE_LFLAGS_VERSION_SCRIPT}$$verscript
  
      internal_module {
@@ -47,5 +44,5 @@ index 828a9621b9..805d8b301a 100644
  
          private_api_headers = $$SYNCQT.PRIVATE_HEADER_FILES $$SYNCQT.QPA_HEADER_FILES
 -- 
-2.28.0
+2.32.0
 

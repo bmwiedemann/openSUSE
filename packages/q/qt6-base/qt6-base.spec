@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,9 +30,10 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
+# Legal: qtpaths is BSD-3-Clause
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -40,10 +41,18 @@ Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
+%if 0%{?suse_version} == 1500
+Patch101:       0001-Require-GCC-10.patch
+%endif
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
+# The default GCC version in Leap 15 is too old
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libicu-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libproxy-devel
@@ -82,6 +91,7 @@ BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(opengl)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
@@ -169,6 +179,9 @@ Requires:       cmake
 Requires:       gcc-c++
 Requires:       pkgconfig
 Requires:       qt6-macros
+# qtpaths moved from qt6-tools to qt6-base with Qt 6.2
+Provides:       qt6-tools-qtpaths = 6.2.0
+Obsoletes:      qt6-tools-qtpaths < 6.2.0
 
 %description common-devel
 Qt 6 Core development utilities.
@@ -215,6 +228,10 @@ The Qt 6 Core library. It adds these features to C++:
 Summary:        Development files for the Qt 6 Core library
 Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
+%if 0%{?suse_version} == 1500
+# Some public classes require C++ 17 features
+Requires:       gcc10-c++
+%endif
 
 %description -n qt6-core-devel
 Development files for the Qt 6 Core library.
@@ -304,6 +321,8 @@ ABI or API guarantees.
 Summary:        Qt 6 Network library
 Requires:       libQt6Core6 = %{version}
 Requires:       libQt6DBus6 = %{version}
+# The backends became plugins in Qt 6.2
+Requires:       qt6-network-tls = %{version}
 
 %description -n libQt6Network6
 Qt Network provides a set of APIs for programming applications that
@@ -602,11 +621,20 @@ any ABI or API guarantees.
 
 ### Plugins ###
 
-%package -n qt6-network-informationbackends
-Summary:        Network backend for QNetworkInformation
+%package -n qt6-networkinformation-nm
+Summary:        Network information  for QNetworkInformation
+# Renamed in Qt 6.2
+Provides:       qt6-network-informationbackends = 6.2.0
+Obsoletes:      qt6-network-informationbackends < 6.2.0
 
-%description -n qt6-network-informationbackends
+%description -n qt6-networkinformation-nm
 Plugin used to get network information such as the reachability, media type...
+
+%package -n qt6-network-tls
+Summary:        Backends used to handle secure connections
+
+%description -n qt6-network-tls
+TLS (and non-TLS) plugins used by the QSsl classes.
 
 %package -n qt6-platformtheme-gtk3
 Summary:        Qt 6 GTK3 plugin
@@ -689,20 +717,40 @@ EOF
 
 # NOTE: ltcg causes linker errors on ppc64
 %cmake_qt6 \
+    -DINSTALL_ARCHDATADIR:STRING=%{_qt6_archdatadir} \
+    -DINSTALL_BINDIR:STRING=%{_qt6_bindir} \
+    -DINSTALL_DATADIR:STRING=%{_qt6_datadir} \
+    -DINSTALL_DESCRIPTIONSDIR:STRING=%{_qt6_descriptionsdir} \
+    -DINSTALL_DOCDIR:STRING=%{_qt6_docdir} \
+    -DINSTALL_EXAMPLESDIR:STRING=%{_qt6_examplesdir} \
+    -DINSTALL_INCLUDEDIR:STRING=%{_qt6_includedir} \
+    -DINSTALL_LIBDIR:STRING=%{_qt6_libdir} \
+    -DINSTALL_LIBEXECDIR:STRING=%{_qt6_libexecdir} \
+    -DINSTALL_MKSPECSDIR:STRING=%{_qt6_mkspecsdir} \
+    -DINSTALL_PLUGINSDIR:STRING=%{_qt6_pluginsdir} \
+    -DINSTALL_QMLDIR:STRING=%{_qt6_qmldir} \
+    -DINSTALL_SYSCONFDIR:STRING=%{_qt6_sysconfdir} \
+    -DINSTALL_TESTSDIR:STRING=%{_qt6_testsdir} \
+    -DINSTALL_TRANSLATIONSDIR:STRING=%{_qt6_translationsdir} \
+    -DBUILD_WITH_PCH:BOOL=FALSE \
+    -DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo \
+    -DQT_BUILD_EXAMPLES:BOOL=TRUE \
+    -DQT_BUILD_TESTS:BOOL=FALSE \
+    -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=OFF \
+    -DQT_DISABLE_RPATH:BOOL=OFF \
 %ifnarch ppc64
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=ON \
 %endif
-    -DQT_CREATE_VERSIONED_HARD_LINK=OFF \
-    -DQT_FEATURE_journald=ON \
-    -DQT_FEATURE_libproxy=ON \
-    -DQT_FEATURE_openssl_linked=ON \
-    -DQT_FEATURE_reduce_relocations=OFF \
-    -DQT_FEATURE_relocatable=OFF \
-    -DQT_FEATURE_system_sqlite=ON \
-    -DQT_FEATURE_enable_new_dtags=ON \
+    -DFEATURE_enable_new_dtags:BOOL=ON \
+    -DFEATURE_journald:BOOL=ON \
+    -DFEATURE_libproxy:BOOL=ON \
+    -DFEATURE_reduce_relocations:BOOL=OFF \
+    -DFEATURE_relocatable:BOOL=OFF \
+    -DFEATURE_system_sqlite:BOOL=ON \
+    -DINPUT_openssl:STRING=linked \
 %if 0%{?with_gles}
-    -DQT_FEATURE_opengles2=ON \
-    -DQT_FEATURE_opengles3=ON
+    -DINPUT_opengl:STRING=es2 \
+    -DFEATURE_opengles3:BOOL=ON
 %endif
 
 %{qt6_build}
@@ -729,17 +777,12 @@ rm %{buildroot}%{_bindir}/qt-cmake-private-install.cmake6
 # E: env-script-interpreter
 sed -i 's#env perl#perl#' %{buildroot}%{_qt6_libexecdir}/syncqt.pl
 
-# Static library created by an example
-rm %{buildroot}%{_prefix}/lib/libpnp_basictools.a
-
 # CMake modules for plugins are not useful
-rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Dependencies,Targets*}.cmake
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 # There are no private headers
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_concurrent_private.pri
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_support_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets_private.pri
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_xcb_qpa_lib_private.pri
 
 # These files are only useful for the Qt continuous integration
 rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
@@ -794,6 +837,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_bindir}/qdbuscpp2xml6
 %{_bindir}/qdbusxml2cpp6
 %{_bindir}/qmake6
+%{_bindir}/qtpaths6
 %{_bindir}/qt-cmake6
 %{_bindir}/qt-cmake-private6
 %{_bindir}/qt-cmake-standalone-test6
@@ -803,6 +847,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_bindir}/qdbuscpp2xml
 %{_qt6_bindir}/qdbusxml2cpp
 %{_qt6_bindir}/qmake
+%{_qt6_bindir}/qtpaths
 %{_qt6_bindir}/qt-cmake
 %{_qt6_bindir}/qt-cmake-private
 %{_qt6_bindir}/qt-cmake-private-install.cmake
@@ -810,6 +855,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_bindir}/qt-configure-module
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
+%{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersion.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsExtra.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake
@@ -835,6 +881,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtConcurrent/
 %{_qt6_libdir}/libQt6Concurrent.prl
 %{_qt6_libdir}/libQt6Concurrent.so
+%{_qt6_metatypesdir}/qt6concurrent_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_concurrent.pri
 
 %files -n libQt6Core6
@@ -879,6 +926,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtDBus/
 %{_qt6_libdir}/libQt6DBus.prl
 %{_qt6_libdir}/libQt6DBus.so
+%{_qt6_metatypesdir}/qt6dbus_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_dbus.pri
 %exclude %{_qt6_includedir}/QtDBus/%{real_version}
 
@@ -902,50 +950,47 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_pluginsdir}/xcbglintegrations/
 
 %files -n qt6-gui-devel
-%{_qt6_cmakedir}/Qt6EglFSDeviceIntegration/
-%{_qt6_cmakedir}/Qt6EglFsKmsGbmSupport/
-%{_qt6_cmakedir}/Qt6EglFsKmsSupport/
 %{_qt6_cmakedir}/Qt6Gui/
 %{_qt6_cmakedir}/Qt6GuiTools/
-%{_qt6_cmakedir}/Qt6XcbQpa/
-%{_qt6_descriptionsdir}/EglFSDeviceIntegration.json
-%{_qt6_descriptionsdir}/EglFsKmsGbmSupport.json
-%{_qt6_descriptionsdir}/EglFsKmsSupport.json
 %{_qt6_descriptionsdir}/Gui.json
-%{_qt6_descriptionsdir}/XcbQpa.json
+%{_qt6_includedir}/QtGui/
+%{_qt6_libdir}/libQt6Gui.prl
+%{_qt6_libdir}/libQt6Gui.so
+%{_qt6_metatypesdir}/qt6gui_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_gui.pri
+%exclude %{_qt6_includedir}/QtGui/%{real_version}
+
+%files -n qt6-gui-private-devel
+%dir %{_qt6_includedir}/QtGui
+%{_qt6_cmakedir}/Qt6EglFSDeviceIntegrationPrivate/
+%{_qt6_cmakedir}/Qt6EglFsKmsGbmSupportPrivate/
+%{_qt6_cmakedir}/Qt6EglFsKmsSupportPrivate/
+%{_qt6_cmakedir}/Qt6XcbQpaPrivate/
+%{_qt6_descriptionsdir}/EglFSDeviceIntegrationPrivate.json
+%{_qt6_descriptionsdir}/EglFsKmsGbmSupportPrivate.json
+%{_qt6_descriptionsdir}/EglFsKmsSupportPrivate.json
+%{_qt6_descriptionsdir}/XcbQpaPrivate.json
 %{_qt6_includedir}/QtEglFSDeviceIntegration/
 %{_qt6_includedir}/QtEglFsKmsGbmSupport/
 %{_qt6_includedir}/QtEglFsKmsSupport/
-%{_qt6_includedir}/QtGui/
+%{_qt6_includedir}/QtGui/%{real_version}/
 %{_qt6_libdir}/libQt6EglFSDeviceIntegration.prl
 %{_qt6_libdir}/libQt6EglFSDeviceIntegration.so
 %{_qt6_libdir}/libQt6EglFsKmsGbmSupport.prl
 %{_qt6_libdir}/libQt6EglFsKmsGbmSupport.so
 %{_qt6_libdir}/libQt6EglFsKmsSupport.prl
 %{_qt6_libdir}/libQt6EglFsKmsSupport.so
-%{_qt6_libdir}/libQt6Gui.prl
-%{_qt6_libdir}/libQt6Gui.so
 %{_qt6_libdir}/libQt6XcbQpa.prl
 %{_qt6_libdir}/libQt6XcbQpa.so
-%{_qt6_metatypesdir}/qt6gui_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_gui.pri
-%exclude %{_qt6_includedir}/QtEglFSDeviceIntegration/%{real_version}
-%exclude %{_qt6_includedir}/QtEglFsKmsGbmSupport/%{real_version}
-%exclude %{_qt6_includedir}/QtEglFsKmsSupport/%{real_version}
-%exclude %{_qt6_includedir}/QtGui/%{real_version}
-
-%files -n qt6-gui-private-devel
-%dir %{_qt6_includedir}/QtEglFSDeviceIntegration
-%dir %{_qt6_includedir}/QtEglFsKmsGbmSupport
-%dir %{_qt6_includedir}/QtEglFsKmsSupport
-%dir %{_qt6_includedir}/QtGui
-%{_qt6_includedir}/QtEglFSDeviceIntegration/%{real_version}/
-%{_qt6_includedir}/QtEglFsKmsGbmSupport/%{real_version}/
-%{_qt6_includedir}/QtEglFsKmsSupport/%{real_version}/
-%{_qt6_includedir}/QtGui/%{real_version}/
+%{_qt6_metatypesdir}/qt6eglfsdeviceintegrationprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6eglfskmsgbmsupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6eglfskmssupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6xcbqpaprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_gbm_support_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_eglfs_kms_support_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_eglfsdeviceintegration_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_gui_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_xcb_qpa_lib_private.pri
 
 %files -n libQt6Network6
 %{_qt6_libdir}/libQt6Network.so.*
@@ -956,6 +1001,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtNetwork/
 %{_qt6_libdir}/libQt6Network.prl
 %{_qt6_libdir}/libQt6Network.so
+%{_qt6_metatypesdir}/qt6network_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_network.pri
 %exclude %{_qt6_includedir}/QtNetwork/%{real_version}
 
@@ -973,6 +1019,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtOpenGL/
 %{_qt6_libdir}/libQt6OpenGL.prl
 %{_qt6_libdir}/libQt6OpenGL.so
+%{_qt6_metatypesdir}/qt6opengl_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opengl.pri
 %exclude %{_qt6_includedir}/QtOpenGL/%{real_version}
 
@@ -990,6 +1037,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtOpenGLWidgets/
 %{_qt6_libdir}/libQt6OpenGLWidgets.prl
 %{_qt6_libdir}/libQt6OpenGLWidgets.so
+%{_qt6_metatypesdir}/qt6openglwidgets_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_openglwidgets.pri
 
 %files -n libQt6PrintSupport6
@@ -1002,6 +1050,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtPrintSupport/
 %{_qt6_libdir}/libQt6PrintSupport.prl
 %{_qt6_libdir}/libQt6PrintSupport.so
+%{_qt6_metatypesdir}/qt6printsupport_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_printsupport.pri
 %exclude %{_qt6_includedir}/QtPrintSupport/%{real_version}
 
@@ -1021,6 +1070,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6Sql.prl
 %{_qt6_libdir}/libQt6Sql.so
 %{_qt6_mkspecsdir}/modules/qt_lib_sql.pri
+%{_qt6_metatypesdir}/qt6sql_*_metatypes.json
 %exclude %{_qt6_includedir}/QtSql/%{real_version}
 
 %files -n qt6-sql-private-devel
@@ -1037,6 +1087,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtTest/
 %{_qt6_libdir}/libQt6Test.prl
 %{_qt6_libdir}/libQt6Test.so
+%{_qt6_metatypesdir}/qt6test_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_testlib.pri
 %exclude %{_qt6_includedir}/QtTest/%{real_version}
 
@@ -1073,6 +1124,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_includedir}/QtXml/
 %{_qt6_libdir}/libQt6Xml.prl
 %{_qt6_libdir}/libQt6Xml.so
+%{_qt6_metatypesdir}/qt6xml_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_xml.pri
 %exclude %{_qt6_includedir}/QtXml/%{real_version}
 
@@ -1089,11 +1141,12 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 ### Static libraries ###
 
 %files -n qt6-kmssupport-devel-static
-%{_qt6_cmakedir}/Qt6KmsSupport/
-%{_qt6_descriptionsdir}/KmsSupport.json
+%{_qt6_cmakedir}/Qt6KmsSupportPrivate/
+%{_qt6_descriptionsdir}/KmsSupportPrivate.json
 %{_qt6_includedir}/QtKmsSupport/
 %{_qt6_libdir}/libQt6KmsSupport.a
 %{_qt6_libdir}/libQt6KmsSupport.prl
+%{_qt6_metatypesdir}/qt6kmssupportprivate_*_metatypes.json
 %exclude %{_qt6_includedir}/QtKmsSupport/%{real_version}
 
 %files -n qt6-kmssupport-private-devel
@@ -1102,12 +1155,12 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_mkspecsdir}/modules/qt_lib_kms_support_private.pri
 
 %files -n qt6-platformsupport-devel-static
-%{_qt6_cmakedir}/Qt6DeviceDiscoverySupport/
-%{_qt6_cmakedir}/Qt6FbSupport/
-%{_qt6_cmakedir}/Qt6InputSupport/
-%{_qt6_descriptionsdir}/DeviceDiscoverySupport.json
-%{_qt6_descriptionsdir}/FbSupport.json
-%{_qt6_descriptionsdir}/InputSupport.json
+%{_qt6_cmakedir}/Qt6DeviceDiscoverySupportPrivate/
+%{_qt6_cmakedir}/Qt6FbSupportPrivate/
+%{_qt6_cmakedir}/Qt6InputSupportPrivate/
+%{_qt6_descriptionsdir}/DeviceDiscoverySupportPrivate.json
+%{_qt6_descriptionsdir}/FbSupportPrivate.json
+%{_qt6_descriptionsdir}/InputSupportPrivate.json
 %{_qt6_includedir}/QtDeviceDiscoverySupport/
 %{_qt6_includedir}/QtFbSupport/
 %{_qt6_includedir}/QtInputSupport/
@@ -1117,6 +1170,9 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_libdir}/libQt6FbSupport.prl
 %{_qt6_libdir}/libQt6InputSupport.a
 %{_qt6_libdir}/libQt6InputSupport.prl
+%{_qt6_metatypesdir}/qt6devicediscoverysupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6fbsupportprivate_*_metatypes.json
+%{_qt6_metatypesdir}/qt6inputsupportprivate_*_metatypes.json
 %exclude %{_qt6_includedir}/QtDeviceDiscoverySupport/%{real_version}
 %exclude %{_qt6_includedir}/QtFbSupport/%{real_version}
 %exclude %{_qt6_includedir}/QtInputSupport/%{real_version}
@@ -1134,8 +1190,12 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 
 ### Plugins ###
 
-%files -n qt6-network-informationbackends
-%{_qt6_pluginsdir}/networkinformationbackends/
+%files -n qt6-networkinformation-nm
+%dir %{_qt6_pluginsdir}/networkinformation/
+%{_qt6_pluginsdir}/networkinformation/libqnetworkmanager.so
+
+%files -n qt6-network-tls
+%{_qt6_pluginsdir}/tls/
 
 %files -n qt6-platformtheme-gtk3
 %{_qt6_pluginsdir}/platformthemes/libqgtk3.so

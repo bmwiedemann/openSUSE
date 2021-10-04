@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 30 12:25:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0:
+  * https://www.qt.io/blog/qt-6.2-lts-released
+
+-------------------------------------------------------------------
+Sat Sep 25 07:18:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc2
+
+-------------------------------------------------------------------
+Thu Sep 16 14:07:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+- Add patch for Leap 15:
+  * 0001-Require-GCC-10.patch
+
+-------------------------------------------------------------------
+Thu Sep  9 14:04:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-beta4
+
+-------------------------------------------------------------------
 Wed Sep  1 13:03:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.1.3:
