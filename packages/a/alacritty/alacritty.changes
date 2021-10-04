@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 05:51:17 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Mon Aug  9 06:50:04 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to version 0.9.0.
