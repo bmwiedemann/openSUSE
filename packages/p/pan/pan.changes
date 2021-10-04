@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 28 18:54:03 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.147:
+  + Fix for GMime3 bug in: message_add_signed_part().
+  + Try an autodetection strategy.
+  + Fix compiler warning.
+  + Work around corrupt/inconsistent file names.
+  + Replace totally unnecessary UTF-8 colons by real ones.
+  + Remove empty line from file posting.xml.
+  + Fix for GMime3 build (Posting error); Issues
+    glgo#GNOME/pan#103 and glgo#GNOME/pan#114.
+  + build: Target a specific GLib API version.
+  + fix (configure.ac): update GETTEXT version.
+  + Adjust packages to install in CI.
+  + Move more header inclusions outside extern "C".
+  + Take <glib.h> out of extern "C".
+  + Updated translations.
+- Drop patches either included upstream or otherwise fixed:
+  + pan-fix-sending-with-gmime30.patch
+  + pan-glib-2.68.patch
+  + pan-signed-pointer-zero-comparison.patch
+- Update minimum required version of gettext to 0.21 in keeping
+  with upstream.
+
+-------------------------------------------------------------------
 Tue Jun  8 21:49:11 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add pan-signed-pointer-zero-comparison.patch -- Fix comparison

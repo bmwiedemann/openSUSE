@@ -17,29 +17,23 @@
 
 
 Name:           pan
-Version:        0.146
+Version:        0.147
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
 Source0:        http://pan.rebelbase.com/download/releases/%{version}/source/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM pan-fix-sending-with-gmime30.patch boo#1166404 badshah400@gmail.com -- Fix message sending when using gmime 3.0
-Patch0:         pan-fix-sending-with-gmime30.patch
-# PATCH-FIX-UPSTREAM pan-glib-2.68.patch glgo#GNOME/pan#128 badshah400@gmail.com -- Fix compilation with glib 2.68+; patch taken from upstream merge request with additional fixes for current version
-Patch1:         pan-glib-2.68.patch
-# PATCH-FIX-UPSTREAM pan-signed-pointer-zero-comparison.patch badshah400@gmail.com -- Fix comparison of pointer with int 0
-Patch2:         pan-signed-pointer-zero-comparison.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gettext >= 0.19.7
+BuildRequires:  gettext >= 0.21
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant) >= 1.6.0
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gmime-3.0)
-BuildRequires:  pkgconfig(gnutls) >= 2.12.10
+BuildRequires:  pkgconfig(gnutls) >= 3.0.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 2.0.16
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
