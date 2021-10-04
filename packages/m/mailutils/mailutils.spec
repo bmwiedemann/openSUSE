@@ -22,7 +22,7 @@
 %bcond_with     set_user_identity
 %bcond_with     guile_22
 Name:           mailutils
-Version:        3.8
+Version:        3.13
 Release:        0
 Summary:        GNU Mailutils
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,14 +31,11 @@ URL:            https://mailutils.org/
 Source:         ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz
 Source1:        %{name}-3.5-guile-2.0.tar.xz
 Source2:        %{name}-rpmlintrc
+Source3:        ftp://ftp.gnu.org/gnu/mailutils/%{name}-%{version}.tar.xz.sig
+Source4:        %{name}.keyring
 Patch0:         lisp-load-silent.patch
 Patch2:         silent-rpmlint-with_initgroups.patch
 Patch3:         mailutils-3.5-guile-2.0.patch
-# PATCH-FIX-UPSTREAM python38-compat.patch http://savannah.gnu.org/bugs/index.php?57318 mcepl@suse.com
-# Remove incompatibility with Python 3.8+
-Patch4:         python38-compat.patch
-# PATCH-FIX-SUSE add extern in header file declaration of variable mu_tcp_wrapper_daemon (boo#1164444)
-Patch5:         silent-common-mu_tcp_wrapper_daemon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -113,7 +110,7 @@ To use Mailutils MH with Emacs, add the following line to
 site-start.el or .gnu-emacs file: (load "mailutils-mh")
 
 %package delivery
-Summary:        Mailutils's delivery agent
+Summary:        Mailutils's delivery agents
 Group:          Productivity/Networking/Email/Servers
 
 %description delivery
@@ -178,8 +175,6 @@ implementations: UNIX mailbox, Maildir, MH, POP3, IMAP4, even SMTP.
 %setup -q
 %patch0
 %patch2
-%patch4 -p1
-%patch5
 set -- %(rpm -q --queryformat '%%{VERSION}' guile-devel | sed -r 's@\.@ @g')
 (cat > guile.list)<<-EOF
 	%dir %{_datadir}/guile/site/$1.$2/
@@ -386,6 +381,7 @@ fi
 %ghost %config %{_sysconfdir}/alternatives/mail
 %ghost %config %{_sysconfdir}/alternatives/Mail.1%{?ext_man}
 %ghost %config %{_sysconfdir}/alternatives/mail.1%{?ext_man}
+%{_bindir}/decodemail
 %if %{with set_user_identity}
 %attr(02755,root,root) %verify(not mode) %{_bindir}/dotlock
 %endif
@@ -422,12 +418,14 @@ fi
 %dir %{_datadir}/mailutils/mh/
 %{_datadir}/mailutils/mh/*
 
-%if %{with set_user_identity}
 %files delivery
 %{_sbindir}/lmtpd
+%if %{with set_user_identity}
 %attr(04755,root,root) %verify(not mode) %{_sbindir}/mda
-%{_bindir}/putmail
+%{_mandir}/man8/mda.8%{?ext_man}
 %endif
+%{_bindir}/putmail
+%{_mandir}/man8/lmtpd.8%{?ext_man}
 
 %files notify
 %{_sbindir}/comsatd

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Oct  1 07:21:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mailutils 3.13
+  * Fix boo#1190694: mail processing escape sequences in bodies
+    non-interactively
+  * Improved mailbox locking
+  * Changes in the 'locking' configuration statement.
+  * mail utility
+    + Fix semantics of mail sending and saving commands
+    + Fix the -F option
+    + Improve POSIX mailx compatible mode
+    + Compose escapes are recognized only in interactive mode
+  * Bugfixes
+    + QP decoder:  Accept soft line breaks (RFC 2045, 6.7, page 19).
+    + Fix stream reference policy in filter streams.
+    + Various bugfixes in IMAP client.
+    + Fix handling of single-path MIME messages.
+  * Fix expunging of mailboxes in mbox and dotmail format in a read-only directory
+  * inc: when updating the "unseen" sequence, translate message numbers to uids
+  * Fix default port selection in SMTP mailer
+  * Fix building the mda utilities with mailbox quotas off
+  * Fix bugs in the testsuite
+  * Support for the traditional mbox format rewritten from scratch
+  * Fix incorrect message flags in maildir
+  * Fix persistency of UIDs for all mailbox formats
+  * Fix message ordering in maildir.
+  * Fix parsing of IMAP ranges
+  * mail
+    + Changed syntax for addressing MIME message part
+    + write command
+  * New utility: decodemail
+  * readmsg
+    + MIME messages are decoded on output
+    + Improve searches
+  * imap4d: implement TLS in inetd mode
+  * imap client code
+    + Fix handling of [TRYCREATE] and similar imap responses
+  * sieve: quoted strings may span several lines
+  * Dropped support for Python 2.x
+  * Rewrite the AM_GNU_MAILUTILS macro to avoid using mailutils-config
+  * mda: restore the message-id-header configuration statement
+  * Changes to the libmailutils library
+    + New functions for MIME parsing and mime object creation:
+  * Bugfixes
+    + Fix intermixed I/O in buffered streams
+    + Fix handling of INTR in the "mail" utility shell
+    + Fix compilation without libunistring
+    + Fix operation of associative arrays in case-insensitive mode
+    + Fix memory leaks
+    + Fix compilation with gcc 10
+    + smtp mailer: fix multiple open/close on the same mailer
+    + Fix list sort function
+  * dotmail: fix mailbox opening in append-only mode
+  * Fix mda testsuite
+  * Remove deprecated ioctls
+  * mail: fix composing MIME messages
+  * Fix build on FreeBSD
+  * Fix detection of Kerberos libraries
+  * Fix build with Python 3.8 (bug #57318)
+- Remove patche now upstream
+  * python38-compat.patch
+  * silent-common-mu_tcp_wrapper_daemon.patch
+- Port patch mailutils-3.5-guile-2.0.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 11:51:06 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - mailutils, or any C code that uses pthread_cleanup_* routines
