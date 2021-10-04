@@ -18,7 +18,7 @@
 
 %define cpan_name Convert-ASN1
 Name:           perl-Convert-ASN1
-Version:        0.31
+Version:        0.33
 Release:        0
 Summary:        ASN.1 Encode/Decode library
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -38,7 +38,7 @@ Convert::ASN1 encodes and decodes ASN.1 data structures using BER/DER
 rules.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p0
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 29 21:21:45 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Fix perl-Convert-ASN1-0.31-test.patch and add -p0
+
+-------------------------------------------------------------------
+Thu Sep 23 03:07:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Convert-ASN1/ChangeLog
+
+  0.33 -- Wed Sep 22 19:49:53 ADT 2021
+    * Official CPAN release of 0.33
+  0.32 -- Tue Sep 21 18:45:20 ADT 2021
+    * examples/x509decode: parameters are optional for AlgorithmIdentifier when using [ec]dsa algorithms
+    * t/19issue14.t: issue with warnings
+    * Fixes #44 Redundant argument in printf warning
+    * examples/x509decode: fix prototype error
+    * examples/ldap: fix asn1_dump not working
+
+-------------------------------------------------------------------
 Tue Jun 29 10:34:45 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix autoupdate: Update spec file
