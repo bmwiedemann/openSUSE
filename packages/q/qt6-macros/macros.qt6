@@ -175,8 +175,8 @@
 
 #--------------------------------------------------------------
 %cmake_qt6 \
-  cmake -DCMAKE_BUILD_TYPE=%{__qt6_build_type} \\\
-        -DCMAKE_INSTALL_PREFIX=%{_qt6_prefix} \\\
+  cmake -DCMAKE_BUILD_TYPE:STRING=%{__qt6_build_type} \\\
+        -DCMAKE_INSTALL_PREFIX:STRING=%{_qt6_prefix} \\\
         -S %__qt6_sourcedir \\\
         -B %__qt6_builddir \\\
 %if "%__qt6_build_tool" == "%__ninja" \
@@ -184,30 +184,16 @@
 %else \
         -G"Unix Makefiles" \\\
 %endif \
-        -DINSTALL_ARCHDATADIR=%{_qt6_archdatadir} \\\
-        -DINSTALL_BINDIR=%{_qt6_bindir} \\\
-        -DINSTALL_DATADIR=%{_qt6_datadir} \\\
-        -DINSTALL_DESCRIPTIONSDIR=%{_qt6_descriptionsdir} \\\
-        -DINSTALL_DOCDIR=%{_qt6_docdir} \\\
-        -DINSTALL_EXAMPLESDIR=%{_qt6_examplesdir} \\\
-        -DINSTALL_INCLUDEDIR=%{_qt6_includedir} \\\
-        -DINSTALL_LIBDIR=%{_qt6_libdir} \\\
-        -DINSTALL_LIBEXECDIR=%{_qt6_libexecdir} \\\
-        -DINSTALL_MKSPECSDIR=%{_qt6_mkspecsdir} \\\
-        -DINSTALL_PLUGINSDIR=%{_qt6_pluginsdir} \\\
-        -DINSTALL_QMLDIR=%{_qt6_qmldir} \\\
-        -DINSTALL_SYSCONFDIR=%{_qt6_sysconfdir} \\\
-        -DINSTALL_TESTSDIR=%{_qt6_testsdir} \\\
-        -DINSTALL_TRANSLATIONSDIR=%{_qt6_translationsdir} \\\
-        -DBUILD_WITH_PCH=FALSE \\\
-        -DQT_BUILD_EXAMPLES=TRUE \\\
-        -DQT_BUILD_TESTS=FALSE \\\
-        -DQT_DISABLE_RPATH=TRUE \\\
-        -DCMAKE_C_FLAGS="%{optflags}" \\\
-        -DCMAKE_CXX_FLAGS="%{optflags}" \\\
-        -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined" \\\
-        -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,--no-undefined"
+%if 0%{?suse_version} == 1500 \
+        -DCMAKE_C_COMPILER:STRING=gcc-10 \\\
+        -DCMAKE_CXX_COMPILER:STRING=g++-10 \\\
+%endif \
+        -DQT_DISABLE_RPATH:BOOL=ON \\\
+        -DCMAKE_C_FLAGS:STRING="%{optflags}" \\\
+        -DCMAKE_CXX_FLAGS:STRING="%{optflags}" \\\
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_MODULE_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined" \\\
+        -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--as-needed -Wl,--no-undefined"
 
 #--------------------------------------------------------------
 
@@ -219,7 +205,7 @@
 %if %{qt6_docs_flavor} \
     %{qt6_build_docs} \
 %else \
-    cmake --build \\%{__qt6_build_options} -v \
+    cmake --build %{__qt6_build_options} -v \
 %endif
 
 #--------------------------------------------------------------
@@ -230,7 +216,7 @@
 %qt6_build_docs \
   export QT_QPA_PLUGIN_PATH="%{_qt6_pluginsdir}/platforms" \
   export QT_PLUGIN_PATH="%{_qt6_pluginsdir}" \
-  cmake --build \\%{__qt6_build_options} -t docs \
+  cmake --build %{__qt6_build_options} -t docs \
 %{nil}
 
 #--------------------------------------------------------------
@@ -240,7 +226,7 @@
 %if %{qt6_docs_flavor} \
     %{qt6_install_docs} \
 %else \
-    DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -v \\\
+    DESTDIR=%{buildroot} cmake --build %{__qt6_build_options} -v \\\
 %if "%__qt6_build_tool" == "%__make" \
   -t install/fast \
 %else \
@@ -251,7 +237,7 @@
 #--------------------------------------------------------------
 
 %qt6_install_docs \
-  DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -t install_docs \
+  DESTDIR=%{buildroot} cmake --build %{__qt6_build_options} -t install_docs \
   # in Qt 6.0.0, %%{_qt6_docdir}/*.qch are folders which contain \
   # files with the same name. \
   # Starting with 6.0.1, the file is installed in %%{_qt6_docdir} directly. \
@@ -284,18 +270,18 @@
 
 %qt6_doc_packages \
 %package     -n %{__qt6_doc_package_name}-html \
-Summary:     Documentation for %{name} in HTML format \
+Summary:     Documentation for qt6-%{__qt6_module_name} in HTML format \
 License:     GFDL-1.3-or-later \
 \
 %description -n %{__qt6_doc_package_name}-html \
-This package contains documentation for %{name} in HTML format. \
+This package contains documentation for qt6-%{__qt6_module_name} in HTML format. \
 \
 %package     -n %{__qt6_doc_package_name}-qch \
-Summary:     Documentation for %{name} in QCH format \
+Summary:     Documentation for qt6-%{__qt6_module_name} in QCH format \
 License:     GFDL-1.3-or-later \
 \
 %description -n %{__qt6_doc_package_name}-qch \
-This package contains documentation for %{name} in QCH format. \
+This package contains documentation for qt6-%{__qt6_module_name} in QCH format. \
 \
 %pre -n %{__qt6_doc_package_name}-qch -f qch.pre \
 \

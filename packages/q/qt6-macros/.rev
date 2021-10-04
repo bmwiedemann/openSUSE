@@ -24,4 +24,12 @@
   The modules now have 'docs' and 'install_docs' build targets. (forwarded request 891891 from cgiboudeaux)</comment>
     <requestid>891892</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e215bc066ccdf7ef48b515fab2e4ba36</srcmd5>
+    <version>20210610</version>
+    <time>1633365595</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.0</comment>
+    <requestid>922686</requestid>
+  </revision>
 </revisionlist>

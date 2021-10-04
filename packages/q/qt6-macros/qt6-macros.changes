@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 16 14:07:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+
+-------------------------------------------------------------------
+Thu Jun 10 06:49:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Simplify the %cmake_qt6 macro.
+  QtBuildInternalsExtra.cmake, installed by qt6-base-common-devel
+  sets a couple variables and installation directories. We only
+  need to define those when building qt6-base. With this change,
+  CMake will stop reporting unused variables are defined when
+  building 3rd party packages (except QT_DISABLE_RPATH).
+- Remove extra escaping in macros.qt6.
+
+-------------------------------------------------------------------
+Sun Jun  6 13:22:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Work around QTBUG-93100 and use GCC 10 for Leap 15.2 and 15.3.
+
+-------------------------------------------------------------------
 Mon Mar  1 10:14:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the module name from the docs build targets.
