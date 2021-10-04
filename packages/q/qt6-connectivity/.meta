@@ -1,0 +1,8 @@
+<package name="qt6-connectivity" project="openSUSE:Factory">
+  <title>Qt 6 connectivity tools and libraries</title>
+  <description>Qt 6 connectivity tools and libraries.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-connectivity"/>
+  <url>https://www.qt.io</url>
+</package>
