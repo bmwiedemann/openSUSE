@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Oct  3 09:38:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 94.0.4606.54 (boo#1190765):
+  * CVE-2021-37956: Use after free in Offline use
+  * CVE-2021-37957: Use after free in WebGPU
+  * CVE-2021-37958: Inappropriate implementation in Navigation
+  * CVE-2021-37959: Use after free in Task Manager
+  * CVE-2021-37960: Inappropriate implementation in Blink graphics
+  * CVE-2021-37961: Use after free in Tab Strip
+  * CVE-2021-37962: Use after free in Performance Manager
+  * CVE-2021-37963: Side-channel information leakage in DevTools
+  * CVE-2021-37964: Inappropriate implementation in ChromeOS Networking
+  * CVE-2021-37965: Inappropriate implementation in Background Fetch API
+  * CVE-2021-37966: Inappropriate implementation in Compositing
+  * CVE-2021-37967: Inappropriate implementation in Background Fetch API
+  * CVE-2021-37968: Inappropriate implementation in Background Fetch API
+  * CVE-2021-37969: Inappropriate implementation in Google Updater
+  * CVE-2021-37970: Use after free in File System API
+  * CVE-2021-37971: Incorrect security UI in Web Browser UI
+  * CVE-2021-37972: Out of bounds read in libjpeg-turbo
+- Chromium 94.0.4606.61 (boo#1191166):
+  * CVE-2021-37973: Use after free in Portals
+- Chromium 94.0.4606.71 (boo#1191204):
+  * CVE-2021-37974 : Use after free in Safe Browsing
+  * CVE-2021-37975 : Use after free in V8
+  * CVE-2021-37976 : Information leak in core
+- Added patches:
+  * chromium-94-CustomSpaces-include.patch
+  * chromium-94-sql-no-assert.patch
+  * chromium-older-harfbuzz.patch
+  * chromium-94-ffmpeg-roll.patch
+  * chromium-94-compiler.patch
+- Removed patches:
+  * chromium-freetype-2.11.patch
+  * chromium-93-ContextSet-permissive.patch
+  * chromium-93-ClassProperty-include.patch
+  * chromium-93-BluetoothLowEnergyScanFilter-include.patch
+  * chromium-93-HashPasswordManager-include.patch
+  * chromium-93-pdfium-include.patch
+  * chromium-93-DevToolsEmbedderMessageDispatcher-include.patch
+  * chromium-93-FormForest-constexpr.patch
+  * chromium-93-ScopedTestDialogAutoConfirm-include.patch
+  * chromium-93-InkDropHost-crash.patch
+  * chromium-91-compiler.patch
+  * chromium-glibc-2.33.patch
+  * chromium-shim_headers.patch
+
+-------------------------------------------------------------------
+Sat Sep 18 12:47:15 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add patch to fix Leap 15.2 build:
+  * chromium-ffmpeg-lp152.patch
+- Change system-libdrm.patch: add to unbundle instead of changing
+  header path
+
+-------------------------------------------------------------------
 Wed Sep 15 21:00:27 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 93.0.4577.63 (boo#1190096):
@@ -3102,7 +3158,7 @@ Mon Jul 24 09:01:07 UTC 2017 - tchvatal@suse.com
 - Recommend emoji fonts to make sure major web chats do not show
   questionmarks
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Jun 28 19:27:55 UTC 2017 - tchvatal@suse.com
 
 - Update to 59.0.3071.115:
@@ -6502,14 +6558,14 @@ Wed Mar 10 20:10:14 UTC 2010 - bgmerrell@novell.com
   (instead of looking in the default directory, which is the same
   directory as the 'chrome' binary).
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Sun Mar  7 00:00:00 UTC 2010 - tititatcoke@gmail.com  
  
 - Update to 5.0.347  
   + moved back to static binary again.  
   + No longer depends on system v8  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Mon Feb 21 00:00:00 UTC 2010 - tititatcoke@gmail.com  
  
 - Update to 5.0.341  
@@ -6527,28 +6583,28 @@ Sun Nov 29 14:18:27 UTC 2009 - prusnak@suse.cz
 
 - added --enable-sync to wrapper to enable bookmark sync
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Sun Nov 29 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - Update to 4.0.260  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Fri Nov 27 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - Update to 4.0.259  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Thu Nov 26 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - Update to 4.0.258  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Tue Nov 24 00:00:00 UTC 2009 - tittatcoke@gmai.com  
  
 - In order to complete prevent the wrong v8 version to be used,  
   the Chromium build has been changed to having an built-in v8  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Tue Nov 24 00:00:00 UTC 2009 - dbuck@example.com  
  
 - Re-base patches.  
@@ -6558,7 +6614,7 @@ Sun Nov 29 14:18:27 UTC 2009 - prusnak@suse.cz
 - Minor SPEC changes.  
 - I changed the v8 requirement to be exact, instead of greater than a specific version.  
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 Fri Nov 13 20:34:05 UTC 2009 - tittiatcoke@gmail.com
 
 - update to 247.0 svn 31928
@@ -6641,56 +6697,56 @@ Sun Oct 25 08:37:29 UTC 2009 - tittiatcoke@gmail.com
   + Fix the proxy host and port string to start with http:// if it does not already
   + Enable HTML5 databases for all extension renderer processes
 
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Sat Oct 24 00:00:00 UTC 2009 - prusnak@opensuse.org  
  
 - don't create desktop files in wrapper  
 - fix LD_LIBRARY_PATH (chromium-fix-wrapper.patch)  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Tue Oct 20 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - update to newer svn snapshot  
   + Obsoletes fwrite patch (included upstream)  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Fri Oct 16 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - update to newer svn snapshot  
   + Requires newer version of v8  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Thu Oct 15 00:00:00 UTC 2009 - prusnak@suse.cz  
  
 - do not force SSE on x86 (drop-sse.patch)  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Tue Oct 13 00:00:00 UTC 2009 - tittiatcoke@gmail.com  
  
 - Update to newer svn snapshot  
 - Fixed spec file in order to build  
 - Included patch to build with system zlib  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Mon Oct 12 00:00:00 UTC 2009 - prusnak@suse.cz  
  
 - package renamed to chromium  
 - cleaned up spec file  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Tue Oct  6 00:00:00 UTC 2009 - dbuck@example.com  
  
 - v8 is now built as a separate package, and is required  
 - included many patches to use system libraries:  
     v8, icu, libxml2, libxslt, libjpeg, libpng, libevent, bzip2, zlib, nspr, nss  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Sun Oct  1 00:00:00 UTC 2009 - dbuck@example.com  
  
 - included a newer DEP than is in svn, native_client@823  
 - things should compile cleanly now  
  
--------------------------------------------------------------------  
+-------------------------------------------------------------------
 * Sun Aug 31 00:00:00 UTC 2009 - dbuck@example.com  
  
 - initial build  

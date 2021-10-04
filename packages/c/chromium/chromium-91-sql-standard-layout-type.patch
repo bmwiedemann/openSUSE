@@ -217,7 +217,7 @@ index 0e388ddc3b..99314e30ff 100644
 +#include <array>
  #include <cstdint>
  #include <memory>
- 
+ #include <ostream>
 @@ -70,7 +71,7 @@ class DatabasePageReader {
      DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
      DCHECK_NE(page_id_, kInvalidPageId)

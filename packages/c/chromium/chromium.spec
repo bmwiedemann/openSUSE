@@ -33,11 +33,8 @@
 %bcond_with system_harfbuzz
 %bcond_with pipewire
 %endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 %bcond_without system_ffmpeg
-%else
-%bcond_with system_ffmpeg
-%endif
+%bcond_with system_freetype
 %ifarch %{arm} aarch64
 %bcond_with swiftshader
 %else
@@ -46,7 +43,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        93.0.4577.82
+Version:        94.0.4606.71
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -57,7 +54,7 @@ Source2:        https://github.com/google/highway/archive/refs/tags/0.12.2.tar.g
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
-# https://github.com/chromium/chromium/tree/%{version}/chrome/installer/linux/common/installer.include
+# https://github.com/chromium/chromium/tree/%%{version}/chrome/installer/linux/common/installer.include
 Source105:      INSTALL.sh
 #
 Patch0:         chromium-libusb_interrupt_event_handler.patch
@@ -80,34 +77,27 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-91-compiler.patch
+Patch15:        chromium-94-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch19:        chromium-86-nearby-include.patch
 Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
-Patch23:        chromium-glibc-2.33.patch
 Patch25:        chromium-90-fseal.patch
 Patch29:        chromium-93-EnumTable-crash.patch
-Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch36:        chromium-90-ruy-include.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch44:        chromium-91-libyuv-aarch64.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
-Patch49:        chromium-freetype-2.11.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch51:        chromium-glibc-2.34.patch
-Patch53:        chromium-93-ContextSet-permissive.patch
-Patch54:        chromium-93-ClassProperty-include.patch
-Patch55:        chromium-93-BluetoothLowEnergyScanFilter-include.patch
-Patch56:        chromium-93-HashPasswordManager-include.patch
-Patch57:        chromium-93-pdfium-include.patch
-Patch58:        chromium-93-DevToolsEmbedderMessageDispatcher-include.patch
-Patch59:        chromium-93-FormForest-constexpr.patch
-Patch60:        chromium-93-ScopedTestDialogAutoConfirm-include.patch
-Patch61:        chromium-93-InkDropHost-crash.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
+Patch63:        chromium-ffmpeg-lp152.patch
+Patch64:        chromium-94-CustomSpaces-include.patch
+Patch65:        chromium-94-sql-no-assert.patch
+Patch67:        chromium-older-harfbuzz.patch
+Patch68:        chromium-94-ffmpeg-roll.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -158,7 +148,6 @@ BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
-BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -260,6 +249,9 @@ BuildRequires:  pkgconfig(icu-i18n) >= 67.0
 %endif
 %if %{with system_vpx}
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
+%endif
+%if %{with system_freetype}
+BuildRequires:  pkgconfig(freetype2)
 %endif
 %if %{with clang}
 BuildRequires:  clang
@@ -375,6 +367,8 @@ keeplibs=(
     third_party/cros_system_api
     third_party/dav1d
     third_party/dawn
+    third_party/dawn/third_party
+    third_party/dawn/third_party/tint/src/ast
     third_party/depot_tools
     third_party/depot_tools/third_party/six
     third_party/devscripts
@@ -393,6 +387,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
+    third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
     third_party/dom_distiller_js
     third_party/eigen3
     third_party/emoji-segmenter
@@ -537,8 +532,12 @@ keeplibs=(
 )
 %if !%{with system_harfbuzz}
 keeplibs+=(
-    third_party/freetype
     third_party/harfbuzz-ng
+)
+%endif
+%if !%{with system_freetype}
+keeplibs+=(
+    third_party/freetype
 )
 %endif
 %if !%{with system_icu}
@@ -649,6 +648,10 @@ gn_system_libraries=(
 %if %{with system_harfbuzz}
 gn_system_libraries+=(
     harfbuzz-ng
+)
+%endif
+%if %{with system_freetype}
+gn_system_libraries+=(
     freetype
 )
 %endif
@@ -697,7 +700,7 @@ myconf_gn+=" fatal_linker_warnings=false"
 myconf_gn+=" use_allocator=\"partition\""
 myconf_gn+=" use_allocator_shim=true"
 myconf_gn+=" use_partition_alloc=true"
-myconf_gn+=" fieldtrial_testing_like_official_build=true"
+myconf_gn+=" disable_fieldtrial_testing_config=true"
 myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_vaapi=true"
@@ -712,6 +715,8 @@ myconf_gn+=" v8_use_external_startup_data=true"
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
+%endif
+%if %{with system_freetype}
 myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" enable_hangout_services_extension=true"

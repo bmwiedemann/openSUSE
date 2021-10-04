@@ -28,8 +28,8 @@ buildfile="${OUTPUTDIR}/${PROGNAME}"
 install -m 755 "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/${PROGNAME}"
 
 # crashpad
-buildfile="${OUTPUTDIR}/crashpad_handler"
-install -m 755 "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/crashpad_handler"
+buildfile="${OUTPUTDIR}/chrome_crashpad_handler"
+install -m 755 "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/chrome_crashpad_handler"
 
 # resources
 install -m 644 "${OUTPUTDIR}/resources.pak" "${STAGEDIR}/${INSTALLDIR}/"
@@ -109,9 +109,9 @@ fi
 sed \
     -e "s#@@PROGNAME@@#${PROGNAME}#g" \
     -e "s#@@CHANNEL@@#${CHANNEL}#g" \
-    "chrome/installer/linux/common/wrapper" > "${STAGEDIR}/${INSTALLDIR}/${PACKAGE}"
-chmod 755 "${STAGEDIR}/${INSTALLDIR}/${PACKAGE}"
-ln -s "${INSTALLDIR}/${PACKAGE}" "${STAGEDIR}/usr/bin/${PACKAGE}" 
+    "chrome/installer/linux/common/wrapper" > "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
+chmod 755 "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
+ln -s "${INSTALLDIR}/chrome-wrapper" "${STAGEDIR}/usr/bin/${PACKAGE}" 
 
 # app icons
 for size in 16 32;
