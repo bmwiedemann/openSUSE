@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnucash
-Version:        4.6
+Version:        4.8
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -42,6 +42,9 @@ Patch0:         gnucash-cpan-warning.patch
 # PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
+
+# PATCH-FIX-UPSTREAM 285017793d2c0c9f5a8d52b3db42944480e3f557.patch -- Use plain cat instead of cmake -E cat to join the migratable-prefs.
+Patch3:         https://github.com/Gnucash/gnucash/commit/285017793d2c0c9f5a8d52b3db42944480e3f557.patch
 
 BuildRequires:  boost-devel >= 1.60.0
 BuildRequires:  cmake >= 3.5
