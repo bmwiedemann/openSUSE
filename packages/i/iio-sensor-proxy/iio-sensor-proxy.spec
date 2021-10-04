@@ -17,21 +17,19 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.1
+Version:        3.3
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://gitlab.freedesktop.org/hadess/iio-sensor-proxy
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-
-Source99:       iio-sensor-proxy-rpmlintrc
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gudev-1.0) >= 234
+BuildRequires:  pkgconfig(gudev-1.0) >= 237
 BuildRequires:  pkgconfig(systemd) >= 219
 BuildRequires:  pkgconfig(udev) >= 219
 Requires:       user(srvGeoClue)
@@ -61,13 +59,21 @@ This package contains the documentation for %{name}.
 %install
 %meson_install
 
+%pre
+%service_add_pre %{name}.service
+
+%preun
+%service_del_preun %{name}.service
+
 %post
 %udev_hwdb_update
 %udev_rules_update
+%service_add_post %{name}.service
 
 %postun
 %udev_hwdb_update
 %udev_rules_update
+%service_del_postun %{name}.service
 
 %files
 %{_bindir}/monitor-sensor

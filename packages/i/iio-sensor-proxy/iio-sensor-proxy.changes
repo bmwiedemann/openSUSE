@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 30 00:25:09 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3:
+  * Fix a bug left-over in one of the 3.2 bug fixes where some
+    accelerometers would fail to initialise.
+- Changes from version 3.2:
+  * Fix problems parsing numbers with decimal separator.
+- Require gudev >= 237 for building (for consistency with
+  upstream).
+- Drop the rpmlintrc file and add back appropriate service macros
+  in pre/post scriptlets.
+
+-------------------------------------------------------------------
 Wed Jun 16 12:27:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1:
