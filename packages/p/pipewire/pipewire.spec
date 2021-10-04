@@ -44,7 +44,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.37
+Version:        0.3.38
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -104,6 +104,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
