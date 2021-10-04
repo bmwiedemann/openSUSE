@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 12:15:25 UTC 2021 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.119.g6c4187af:
+  * fix(suse-initrd): handle cases with zero modprobe.d files (bsc#1189895)
+
+-------------------------------------------------------------------
 Mon Aug 16 07:51:08 UTC 2021 - lnussel@suse.de
 
 - Update to version 055+suse.117.ge5fc2048:
