@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.8
+%define patchversion 5.14.6
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -108,8 +108,10 @@ done )
 
 %if 0%{?usrmerged}
 %define modules_dir /usr/lib/modules/%kernelrelease-%build_flavor
+%define systemmap   %{modules_dir}/System.map
 %else
 %define modules_dir /lib/modules/%kernelrelease-%build_flavor
+%define systemmap   /boot/System.map-%kernelrelease-%build_flavor
 %endif
 
 
@@ -117,9 +119,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.8
+Version:        5.14.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g06dbf6b
+Release:        <RELEASE>.g6131a3c
 %else
 Release:        0
 %endif
@@ -173,8 +175,6 @@ Recommends: kernel-firmware
 %endif
 # The following is copied to the -base subpackage as well
 # BEGIN COMMON DEPS
-Requires(pre):  suse-kernel-rpm-scriptlets
-Requires(postun): suse-kernel-rpm-scriptlets
 Requires(pre):  coreutils awk
 # For /usr/lib/module-init-tools/weak-modules2
 Requires(post): suse-module-tools
@@ -241,13 +241,17 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-06dbf6bb31e9333fa8908900183e13ca4d39c0fa
-Provides:       kernel-srchash-06dbf6bb31e9333fa8908900183e13ca4d39c0fa
+Provides:       kernel-%build_flavor-base-srchash-6131a3ceeeccdae03e3c04acf6ecc32b9ff51c22
+Provides:       kernel-srchash-6131a3ceeeccdae03e3c04acf6ecc32b9ff51c22
 # END COMMON DEPS
-Provides:       %name-srchash-06dbf6bb31e9333fa8908900183e13ca4d39c0fa
+Provides:       %name-srchash-6131a3ceeeccdae03e3c04acf6ecc32b9ff51c22
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
+Source10:       preun.sh
+Source11:       postun.sh
+Source12:       pre.sh
+Source13:       post.sh
 Source14:       series.conf
 Source16:       guards
 Source17:       apply-patches
@@ -329,6 +333,10 @@ BuildArch:      i686
 # These files are found in the kernel-source package:
 NoSource:       0
 NoSource:       3
+NoSource:       10
+NoSource:       11
+NoSource:       12
+NoSource:       13
 NoSource:       14
 NoSource:       16
 NoSource:       17
@@ -783,12 +791,50 @@ fi
 # Package the compiled-in certificates as DER files in /etc/uefi/certs
 # and have mokutil enroll them when the kernel is installed
 echo Signing certificates "%certs"
-if test %CONFIG_MODULE_SIG = "y" -a -d %_sourcedir/.kernel_signing_certs ; then
+certs=(%certs)
+if test %CONFIG_MODULE_SIG = "y"; then
     for f in %_sourcedir/.kernel_signing_certs/*.crt; do
             mkdir -p %buildroot/etc/uefi/certs
             cp -v $f %buildroot/etc/uefi/certs
     done
 fi
+
+    for script in preun postun pre post; do
+        if test %build_flavor = "zfcpdump"; then
+            : >%my_builddir/$script.sh
+            continue
+        fi
+        sed -e "s:@KERNELRELEASE@:%kernelrelease:g" \
+            -e "s:@IMAGE@:%image:g" \
+            -e "s:@FLAVOR""@:%build_flavor:g" \
+            -e "s:@PACKAGE@:%name:g" \
+            -e "s:@RPM_VERSION_RELEASE@:%version-%release:g" \
+            -e "s:@RPM_TARGET_CPU@:%_target_cpu:g" \
+	    -e "s:@CPU_ARCH_FLAVOR@:%cpu_arch_flavor:g" \
+            -e "s:@SRCVARIANT@:%variant:g" \
+            -e "s:@MODULESDIR@:%modules_dir:g" \
+            -e "s:@SYSTEMMAP@:%systemmap:g" \
+%if 0%{?usrmerged}
+            -e "s:^@USRMERGE@::" \
+%else
+            -e "/^@USRMERGE@/d" \
+%endif
+            %_sourcedir/$script.sh > %my_builddir/$script.sh
+        if test "${#certs[@]}" -gt 0; then
+            case "$script" in
+            preun | postun | post)
+                # Copy the respective scriptlet from kernel-cert-subpackage
+                sed "1,/^%%$script / d; /^%%[^%%]/,\$ d; s:@CERTS@:${certs[*]}:g" \
+                    %_sourcedir/kernel-cert-subpackage \
+                    >>"%my_builddir/$script.sh"
+            esac
+        fi
+	# Do an exit 0 at the end of each scriptlet. If the last real command
+	# in the scriptlet (e.g. update-bootloader call, see bnc#809617)
+	# returns an error, we do not want to amplify the damage by leaving
+	# the system in an inconsistent state.
+	echo "exit 0" >>"%my_builddir/$script.sh"
+    done
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -1158,41 +1204,14 @@ fi
 # /usr/src/linux-obj intentionally, to not accidentally break timestamps there
 %fdupes %buildroot%modules_dir
 
-%pre
-%if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%post
-%if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%preun
-%if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%postun
-%if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
-%posttrans
-%if "%build_flavor" != "zfcpdump"
-/usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-%endif
+%preun -f preun.sh
+
+%postun -f postun.sh
+
+%pre -f pre.sh
+
+%post -f post.sh
+
 %files -f kernel-main.files
 %defattr(-, root, root)
 
@@ -1231,35 +1250,34 @@ This package contains additional modules not supported by SUSE.
 
 %source_timestamp
 
-%pre extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-extra-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans extra
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-extra" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun extra
+nvr=%name-extra-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun extra
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-extra-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %if %split_extra
 
@@ -1301,35 +1319,34 @@ This package contains optional modules only for openSUSE Leap.
 
 %source_timestamp
 
-%pre optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-optional-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans optional
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "%name-optional" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun optional
+nvr=%name-optional-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun optional
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-optional-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files optional -f kernel-optional.files
 %defattr(-, root, root)
@@ -1468,35 +1485,34 @@ Clustering support for MD devices. This enables locking and
 synchronization across multiple systems on the cluster, so all
 nodes in the cluster can access the MD devices simultaneously.
 
-%pre -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=cluster-md-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n cluster-md-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "cluster-md-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n cluster-md-kmp-%build_flavor
+nvr=cluster-md-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n cluster-md-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=cluster-md-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
 %defattr(-, root, root)
@@ -1515,35 +1531,34 @@ Requires(post): suse-module-tools >= 12.4
 DLM stands for Distributed Lock Manager, a means to synchronize access to
 shared resources over the cluster.
 
-%pre -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=dlm-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n dlm-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "dlm-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n dlm-kmp-%build_flavor
+nvr=dlm-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n dlm-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=dlm-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n dlm-kmp-%build_flavor -f dlm-kmp.files
 %defattr(-, root, root)
@@ -1562,35 +1577,34 @@ Requires:       dlm-kmp-%build_flavor = %version-%release
 %description -n gfs2-kmp-%build_flavor
 GFS2 is Global Filesystem, a shared device filesystem.
 
-%pre -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=gfs2-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n gfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "gfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n gfs2-kmp-%build_flavor
+nvr=gfs2-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n gfs2-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=gfs2-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
 %defattr(-, root, root)
@@ -1624,35 +1638,34 @@ reproduced, verified and corrected.
 Selftest drivers are intended to be supported only in testing and QA
 environments, they are not intended to be run on production systems.
 
-%pre -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=kselftests-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n kselftests-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "kselftests-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n kselftests-kmp-%build_flavor
+nvr=kselftests-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n kselftests-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=kselftests-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
 %defattr(-, root, root)
@@ -1672,35 +1685,34 @@ Requires:       dlm-kmp-%build_flavor = %version-%release
 OCFS2 is the Oracle Cluster Filesystem, a filesystem for shared devices
 accessible simultaneously from multiple nodes of a cluster.
 
-%pre -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=ocfs2-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n ocfs2-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "ocfs2-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n ocfs2-kmp-%build_flavor
+nvr=ocfs2-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n ocfs2-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=ocfs2-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
 %defattr(-, root, root)
@@ -1719,35 +1731,34 @@ Requires(post): suse-module-tools >= 12.4
 The reiserfs file system is no longer supported in SLE15.  This package
 provides the reiserfs module for the installation system.
 
-%pre -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-pre --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
 %post -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-post --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%preun -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-preun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
-
-%postun -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-postun --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %posttrans -n reiserfs-kmp-%build_flavor
-/usr/lib/module-init-tools/kernel-scriptlets/inkmp-posttrans --name "reiserfs-kmp-%build_flavor" \
-  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
-  --image "%image" --flavor "%build_flavor" --variant "%variant" \
-  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+%{?regenerate_initrd_posttrans}
+
+%preun -n reiserfs-kmp-%build_flavor
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun -n reiserfs-kmp-%build_flavor
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=reiserfs-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
 %defattr(-, root, root)

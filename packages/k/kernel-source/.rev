@@ -5630,4 +5630,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.14.8 &amp; 5.14.7</comment>
     <requestid>921675</requestid>
   </revision>
+  <revision rev="609" vrev="2">
+    <srcmd5>829344efb5d7f8b4ab73808c169b4f6d</srcmd5>
+    <version>5.14.6</version>
+    <time>1633333083</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191260</comment>
+  </revision>
 </revisionlist>
