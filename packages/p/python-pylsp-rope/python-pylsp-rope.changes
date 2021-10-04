@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Mon Oct  4 09:22:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Back to the tarballed release, 0.1.3.:
+  -  Fix #4. arguments must be list, not object
+
+-------------------------------------------------------------------
+Mon Oct 04 06:47:50 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.1.2+git.1633327768.9245130:
+  * Add python_requires clause to setup.cfg
+  * Black
+  * Read from pkg_resources instead of the filesystem
+  * Fix #2. Use functools.lru_cache() instead of functools.cache()
+- Remove functools-cache.patch as it has been upstreamed.
+
+-------------------------------------------------------------------
+Sun Oct 03 20:23:50 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.1.2+git.1633266737.1e4a677:
+  * Bump version
+  * Fix CodeAction command response
+  * Bump version
+  * Always re-validate project on get_project()
+  * Update README.md
+  * Change package name to pylsp-rope
+  * Add rope itself to list of dependencies :)
+  * Update README.md
+- Add functools-cache.patch making the package compatible with
+  Python < 3.9 (gh#python-rope/pylsp-rope#2)
+
+-------------------------------------------------------------------
+Sun Oct 03 06:46:13 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.0.0+git.1633239046.8355444:
+  * Point to python-rope organisation repository
+  * Rename command prefix to pylsp_rope
+  * Implement pylsp_commands()
+  * Use keyword parameters when calling executeCommand()
+  * Implement rope_changeset_to_workspace_changeset() using lsp_diff()
+  * Implement lsp_diff()
+  * Add CONTRIBUTING.md
+  * Update README.md
+  * Add Features section in README.md
+  * Update README.md
+
