@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -59,23 +59,21 @@ Summary:        Qt 6 Lottie QML files and plugins
 %description imports
 QML files and plugins from the Qt 6 Lottie module.
 
+### Private only library ###
+
 %package -n libQt6Bodymovin6
 Summary:        Qt 6 Bodymovin library
 
 %description -n libQt6Bodymovin6
 The Qt 6 Bodymovin library.
-
-%package -n qt6-bodymovin-devel
-Summary:        Qt 6 Bodymovin library - Development files
-Requires:       libQt6Bodymovin6 = %{version}
-%requires_eq  qt6-gui-private-devel
-
-%description -n qt6-bodymovin-devel
-Development files for the Qt 6 Bodymovin library.
+This library does not have any ABI or API guarantees.
 
 %package -n qt6-bodymovin-private-devel
-Summary:        Non-ABI stable API for the Qt 6 Bodymovin Library
-Requires:       cmake(Qt6Bodymovin) = %{real_version}
+Summary:        Development files for the Qt 6 Bodymovin library
+Requires:       cmake(Qt6BodymovinPrivate) = %{real_version}
+# Renamed in 6.2.0
+Provides:       qt6-bodymovin-devel = 6.2.0
+Obsoletes:      qt6-bodymovin-devel < 6.2.0
 
 %description -n qt6-bodymovin-private-devel
 This package provides private headers of libQt6Bodymovin that do not have any
@@ -111,17 +109,16 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %license LICENSE.GPL3
 %{_qt6_libdir}/libQt6Bodymovin.so.*
 
-%files -n qt6-bodymovin-devel
+### Private only library ###
+
+%files -n qt6-bodymovin-private-devel
+%{_qt6_cmakedir}/Qt6BodymovinPrivate/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtLottieTestsConfig.cmake
-%{_qt6_cmakedir}/Qt6Bodymovin/
-%{_qt6_descriptionsdir}/Bodymovin.json
+%{_qt6_descriptionsdir}/BodymovinPrivate.json
 %{_qt6_includedir}/QtBodymovin/
 %{_qt6_libdir}/libQt6Bodymovin.prl
 %{_qt6_libdir}/libQt6Bodymovin.so
-%exclude %{_qt6_includedir}/QtBodymovin/%{real_version}
-
-%files -n qt6-bodymovin-private-devel
-%{_qt6_includedir}/QtBodymovin/%{real_version}/
+%{_qt6_metatypesdir}/qt6bodymovinprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_bodymovin_private.pri
 
 %endif
