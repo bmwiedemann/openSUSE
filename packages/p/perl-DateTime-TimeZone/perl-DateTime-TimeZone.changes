@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 29 20:25:58 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add precious.toml to skip_doc
+
+-------------------------------------------------------------------
+Sat Sep 25 03:07:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.48
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.48    2021-09-24
+
+  - This release is based on version 2021b of the Olson database. This release
+    includes contemporary changes for Jordan and Samoa.
+
+-------------------------------------------------------------------
 Mon Jan 25 03:08:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.47

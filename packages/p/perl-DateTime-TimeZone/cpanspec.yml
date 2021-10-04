@@ -19,4 +19,4 @@
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
 skip_doc: |-
- #dist.ini# azure-pipelines.yml
+  #dist.ini# azure-pipelines.yml precious.toml
