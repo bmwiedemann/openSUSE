@@ -1,0 +1,27 @@
+From b3cddf23087754e46fb221e7d67f689e7a0bc86a Mon Sep 17 00:00:00 2001
+From: lethal-guitar <lethal_guitar128@web.de>
+Date: Thu, 30 Sep 2021 14:04:37 +0200
+Subject: [PATCH] Fix openSUSE Tumbleweed build
+
+According to the CMake docs [1], CMAKE_THREAD_LIBS_INIT may be empty
+even if threads are available. Therefore, we should use Threads_FOUND
+instead. This fixes the build on openSUSE Tumbleweed.
+
+  [1] https://cmake.org/cmake/help/latest/module/FindThreads.html
+---
+ cmake/Modules/FindSDL2.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Modules/FindSDL2.cmake b/cmake/Modules/FindSDL2.cmake
+index 5f84690c..2c86179f 100644
+--- a/cmake/Modules/FindSDL2.cmake
++++ b/cmake/Modules/FindSDL2.cmake
+@@ -227,7 +227,7 @@ endif()
+ # But for non-OSX systems, I will use the CMake Threads package.
+ if(NOT APPLE AND NOT MSVC)
+   find_package(Threads QUIET)
+-  if(NOT CMAKE_THREAD_LIBS_INIT)
++  if(NOT Threads_FOUND)
+     set(SDL2_THREADS_NOT_FOUND "Could NOT find Threads (Threads is required by SDL2).")
+     if(SDL2_FIND_REQUIRED)
+       message(FATAL_ERROR ${SDL2_THREADS_NOT_FOUND})

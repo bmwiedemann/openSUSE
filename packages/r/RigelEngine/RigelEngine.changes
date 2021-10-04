@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 26 09:30:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add patches:
+  * 749.patch  (Fix threads not found on Tumbleweed)
+  * fix-find-boost-program_options.patch
+
+-------------------------------------------------------------------
 Mon Aug 23 19:39:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.1
