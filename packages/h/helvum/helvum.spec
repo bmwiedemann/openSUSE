@@ -15,12 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+%define app_id org.freedesktop.ryuukyu.Helvum
 Name:           helvum
-Version:        0.3.0~git0.2ee7bca
+Version:        0.3.1~git0.958fa15
 Release:        0
 Summary:        A GTK patchbay for pipewire
-License:        GPL-3.0-only AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Unlicense OR MIT ) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
+License:        (Apache-2.0 OR BSL-1.0) AND GPL-3.0-only AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
 URL:            https://gitlab.freedesktop.org/ryuukyu/helvum
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
@@ -44,10 +46,14 @@ RUSTFLAGS=%{rustflags} cargo build --release
 
 %install
 RUSTFLAGS=%{rustflags} cargo install --no-track --root=%{buildroot}%{_prefix} --path .
-#install -D -d -m 0755 %{buildroot}%{_bindir}
-#install -m 0755 %{_builddir}/%{name}-%{version}/target/release/helvum %{buildroot}%{_bindir}/helvum
+sed 's/@icon@/%{app_id}/g' data/%{app_id}.desktop.in > data/%{app_id}.desktop
+install -D -m0644 -t %{buildroot}%{_datadir}/applications/ data/%{app_id}.desktop
+install -D -m0644 -t %{buildroot}%{_datadir}/hicolor/scalable/apps data/icons/%{app_id}.svg
+install -D -m0644 -t %{buildroot}%{_datadir}/hicolor/symbolic/apps data/icons/%{app_id}-symbolic.svg
 
 %files
 %{_bindir}/helvum
+%{_datadir}/applications/%{app_id}.desktop
+%{_datadir}/hicolor/
 
 %changelog
