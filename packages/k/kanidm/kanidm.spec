@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        1.1.0~alpha5~git0.4be329e
+Version:        1.1.0~alpha6~git0.c9f4b1d
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(openssl)
 %endif
 
 Requires:       %{name}-clients
-# Requires:       %{name}-server
 Requires:       %{name}-unixd-clients
 
 #### START BUNDLE METADATA
@@ -122,7 +121,11 @@ install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -D -d -m 0755 %{buildroot}%{_sbindir}
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -D -d -m 0755 %{buildroot}%{_libdir}
+%if 0%{?suse_version} > 1549
+install -D -d -m 0755 %{buildroot}/%{_pam_moduledir}
+%else
 install -D -d -m 0755 %{buildroot}/%_lib/security
+%endif
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/docs/
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/
@@ -140,7 +143,11 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd %{bu
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_status %{buildroot}%{_bindir}/kanidm_unixd_status
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
+%if 0%{?suse_version} > 1549
+install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%{_pam_moduledir}/pam_kanidm.so
+%else
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%_lib/security/pam_kanidm.so
+%endif
 
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
@@ -183,14 +190,13 @@ install -m 0644 %{_builddir}/%{name}-%{version}/kanidm_book/src/why_tls.md %{bui
 
 ## TODO: Add /usr/share/kanidm/ui/pkg
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/bundle.js %{buildroot}%{_datadir}/kanidm/ui/pkg/bundle.js
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/style.css %{buildroot}%{_datadir}/kanidm/ui/pkg/style.css
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/kanidmd_web_ui.js %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui.js
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/kanidmd_web_ui_bg.wasm %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui_bg.wasm
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/package.json %{buildroot}%{_datadir}/kanidm/ui/pkg/package.json
-
 install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/bootstrap.min.css %{buildroot}%{_datadir}/kanidm/ui/pkg/external/bootstrap.min.css
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/bootstrap.min.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/bootstrap.min.js
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/jquery-3.3.1.slim.min.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/jquery-3.3.1.slim.min.js
-install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/popper.min.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/popper.min.js
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/bootstrap.bundle.min.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/bootstrap.bundle.min.js
+install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/confetti.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/confetti.js
 
 ## End install
 
@@ -288,7 +294,11 @@ install -m 0644 %{_builddir}/%{name}-%{version}/kanidmd_web_ui/pkg/external/popp
 
 %files unixd-clients
 %{_libdir}/libnss_kanidm.so.2
+%if 0%{?suse_version} > 1549
+%{_pam_moduledir}/pam_kanidm.so
+%else
 /%_lib/security/pam_kanidm.so
+%endif
 %{_sbindir}/kanidm_cache_clear
 %{_sbindir}/kanidm_cache_invalidate
 %{_sbindir}/kanidm_ssh_authorizedkeys

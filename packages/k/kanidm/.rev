@@ -39,4 +39,23 @@
     <comment></comment>
     <requestid>904461</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff1493b3acba6594af6b70659a3a30d7</srcmd5>
+    <version>1.1.0~alpha6~git0.c9f4b1d</version>
+    <time>1633365613</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1191031 - use _pam_moduledir in spec macros
+- Update to version 1.1.0~alpha6~git0.c9f4b1d:
+  * (cargo-release) version 1.1.0-alpha.6
+  * Added an interactive cli dialog to kanidm login (#584)
+  * Add support for storing security token key in domain config (#581)
+  * Remove auditscope for tracing (#580)
+  * Entry Arc Tracking to reduce memory footprint (#579)
+  * Rewrite how we store the internals of valuesets in entries (#578)
+  * Improving logging and docs around unixd/PAM/NSS (#577)
+  * Swap to tide-openssl (#575)
+  * Start to remove audit scope :) (#574)
+  * Fix io capture in tests (#573)</comment>
+    <requestid>922781</requestid>
+  </revision>
 </revisionlist>
