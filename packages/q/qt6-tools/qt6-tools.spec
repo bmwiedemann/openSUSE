@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,13 +27,12 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
 # Legal:
 # most src/ subfolders are GPL-3.0-only WITH Qt-GPL-exception-1.0, except:
-# qtpaths is BSD-3-Clause
 # qdoc is GPL-3.0-only WITH Qt-GPL-exception-1.0 + (LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)) == GPL-3.0-only
 # src/shared contains BSD-3-Clause and LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) files. The
 # 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
@@ -55,6 +54,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-dbus-private-devel
 BuildRequires:  qt6-gui-private-devel
+BuildRequires:  qt6-qml-private-devel
 BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  update-desktop-files
@@ -65,7 +65,7 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6PrintSupport)
-BuildRequires:  cmake(Qt6QmlDevTools)
+BuildRequires:  cmake(Qt6QmlDevToolsPrivate)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6Sql)
@@ -78,7 +78,6 @@ Recommends:     qt6-tools-assistant
 Recommends:     qt6-tools-designer
 Recommends:     qt6-tools-linguist
 Recommends:     qt6-tools-qdbus
-Recommends:     qt6-tools-qtpaths
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -115,17 +114,9 @@ License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 %description -n libQt6Designer6
 This package contains the Qt 6 Designer Library.
 
-%package -n libQt6DesignerComponents6
-Summary:        Qt 6 DesignerComponents library
-License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
-
-%description -n libQt6DesignerComponents6
-This package contains the Qt 6 Designer Library.
-
 %package -n qt6-designer-devel
 Summary:        Qt 6 Designer libraries - Development files
 Requires:       libQt6Designer6 = %{version}
-Requires:       libQt6DesignerComponents6 = %{version}
 
 %description -n qt6-designer-devel
 Development files for the Qt6 Designer libraries.
@@ -133,7 +124,6 @@ Development files for the Qt6 Designer libraries.
 %package -n qt6-designer-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Designer libraries
 Requires:       cmake(Qt6Designer) = %{real_version}
-Requires:       cmake(Qt6DesignerComponents) = %{real_version}
 %requires_eq    qt6-core-private-devel
 %requires_eq    qt6-gui-private-devel
 %requires_eq    qt6-widgets-private-devel
@@ -241,12 +231,23 @@ License:        GPL-3.0-only
 %description qdoc
 Qt 6 Tool used by Qt to generate documentation.
 
-%package qtpaths
-Summary:        Command line client to QStandardPaths
-License:        BSD-3-Clause
+### Private only library ###
 
-%description qtpaths
-Command line client to QStandardPaths.
+%package -n libQt6DesignerComponents6
+Summary:        Qt 6 DesignerComponents library
+License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
+
+%description -n libQt6DesignerComponents6
+The Qt 6 DesignerComponents library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-designercomponents-private-devel
+Summary:        Development files for the Qt 6 DesignerComponents library
+Requires:       libQt6DesignerComponents6 = %{version}
+
+%description -n qt6-designercomponents-private-devel
+Development files for the Qt 6 DesignerComponents library.
+This library does not have any ABI or API guarantees.
 
 %{qt6_examples_package}
 
@@ -267,7 +268,7 @@ Command line client to QStandardPaths.
 
 %{qt6_link_executables}
 
-# Unused file. There is no private headers for this library
+# Unused file. There are no private headers for this library
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
 
 # Desktop files for applications
@@ -286,26 +287,25 @@ install -D -m644 src/assistant/assistant/images/assistant.png %{buildroot}%{_dat
 install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/assistant6.png
 
 %post -n libQt6Designer6 -p /sbin/ldconfig
-%postun -n libQt6Designer6 -p /sbin/ldconfig
 %post -n libQt6DesignerComponents6 -p /sbin/ldconfig
-%postun -n libQt6DesignerComponents6 -p /sbin/ldconfig
 %post -n libQt6Help6 -p /sbin/ldconfig
-%postun -n libQt6Help6 -p /sbin/ldconfig
 %post -n libQt6UiTools6 -p /sbin/ldconfig
+%postun -n libQt6Designer6 -p /sbin/ldconfig
+%postun -n libQt6DesignerComponents6 -p /sbin/ldconfig
+%postun -n libQt6Help6 -p /sbin/ldconfig
 %postun -n libQt6UiTools6 -p /sbin/ldconfig
 
 %files
 %license LICENSE.*
 %{_bindir}/pixeltool6
 %{_bindir}/qdistancefieldgenerator6
-%{_bindir}/qtattributionsscanner6
 %{_bindir}/qtdiag6
 %{_bindir}/qtplugininfo6
 %{_qt6_bindir}/pixeltool
 %{_qt6_bindir}/qdistancefieldgenerator
-%{_qt6_bindir}/qtattributionsscanner
 %{_qt6_bindir}/qtdiag
 %{_qt6_bindir}/qtplugininfo
+%{_qt6_libexecdir}/qtattributionsscanner
 
 %files devel
 %{_qt6_cmakedir}/Qt6/FindWrapLibClang.cmake
@@ -323,33 +323,24 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %files -n libQt6Designer6
 %{_qt6_libdir}/libQt6Designer.so.*
 
-%files -n libQt6DesignerComponents6
-%{_qt6_libdir}/libQt6DesignerComponents.so.*
-
 %files -n qt6-designer-devel
 %{_qt6_cmakedir}/Qt6Designer/
-%{_qt6_cmakedir}/Qt6DesignerComponents/
 %{_qt6_cmakedir}/Qt6UiPlugin/
 %{_qt6_descriptionsdir}/Designer.json
-%{_qt6_descriptionsdir}/DesignerComponents.json
 %{_qt6_descriptionsdir}/UiPlugin.json
 %{_qt6_includedir}/QtDesigner/
-%{_qt6_includedir}/QtDesignerComponents/
 %{_qt6_includedir}/QtUiPlugin/
 %{_qt6_libdir}/libQt6Designer.prl
 %{_qt6_libdir}/libQt6Designer.so
-%{_qt6_libdir}/libQt6DesignerComponents.prl
-%{_qt6_libdir}/libQt6DesignerComponents.so
+%{_qt6_metatypesdir}/qt6designer_*_metatypes.json
+%{_qt6_metatypesdir}/qt6uitools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_designer.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_uiplugin.pri
 %exclude %{_qt6_includedir}/QtDesigner/%{real_version}
-%exclude %{_qt6_includedir}/QtDesignerComponents/%{real_version}
 
 %files -n qt6-designer-private-devel
 %{_qt6_includedir}/QtDesigner/%{real_version}/
-%{_qt6_includedir}/QtDesignerComponents/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_designer_private.pri
-%{_qt6_mkspecsdir}/modules/qt_lib_designercomponents_private.pri
 
 %files -n libQt6Help6
 %{_qt6_libdir}/libQt6Help.so.*
@@ -360,6 +351,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtHelp/
 %{_qt6_libdir}/libQt6Help.prl
 %{_qt6_libdir}/libQt6Help.so
+%{_qt6_metatypesdir}/qt6help_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_help.pri
 %exclude %{_qt6_includedir}/QtHelp/%{real_version}
 
@@ -439,9 +431,18 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_bindir}/qdoc6
 %{_qt6_bindir}/qdoc
 
-%files qtpaths
-%{_bindir}/qtpaths6
-%{_qt6_bindir}/qtpaths
+### Private only library ###
+%files -n libQt6DesignerComponents6
+%{_qt6_libdir}/libQt6DesignerComponents.so.*
+
+%files -n qt6-designercomponents-private-devel
+%{_qt6_cmakedir}/Qt6DesignerComponentsPrivate/
+%{_qt6_descriptionsdir}/DesignerComponentsPrivate.json
+%{_qt6_includedir}/QtDesignerComponents/
+%{_qt6_libdir}/libQt6DesignerComponents.prl
+%{_qt6_libdir}/libQt6DesignerComponents.so
+%{_qt6_metatypesdir}/qt6designercomponentsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_designercomponents_private.pri
 
 %endif
 
