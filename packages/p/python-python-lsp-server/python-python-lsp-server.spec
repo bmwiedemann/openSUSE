@@ -38,7 +38,7 @@ BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle >= 2.7.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
 BuildRequires:  %{python_module pyflakes >= 2.3.0}
-BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 2.10}
+BuildRequires:  %{python_module pylint >= 2.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
@@ -60,10 +60,9 @@ Suggests:       python-mccabe >= 0.6.0
 Suggests:       python-pycodestyle >= 2.7.0
 Suggests:       python-pydocstyle >= 2.0.0
 Suggests:       python-pyflakes >= 2.3.0
-Suggests:       (python-pylint >= 2.5.0 with python-pylint < 2.10)
+Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
-Conflicts:      python-pylint >= 2.10
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -88,6 +87,9 @@ will be enabled:
 
 %prep
 %setup -q -n python-lsp-server-%{version}
+# the only relevant changes from https://github.com/python-lsp/python-lsp-server/pull/94
+sed -i 's/pylint>=2.5.0,<2.10.0/pylint>=2.5.0/' setup.cfg
+sed -i "s/open(document.path, 'w')/open(document.path, 'w', encoding='utf-8')/" test/plugins/test_pylint_lint.py
 
 %build
 %python_build
