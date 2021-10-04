@@ -1,7 +1,7 @@
 #
 # spec file for package openlibm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/JuliaLang/openlibm/
 Source0:        https://github.com/JuliaLang/openlibm/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-ExcludeArch:    ppc
+ExcludeArch:    ppc riscv64
 
 %description
 OpenLibm is an implementation of a standalone C mathematical library
