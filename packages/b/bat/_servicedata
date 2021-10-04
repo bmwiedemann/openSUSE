@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">git://github.com/sharkdp/bat</param>
+              <param name="changesrevision">f3d53b79a2d7a51f470ac8a06b6bdd9a4f225e8f</param></service><service name="tar_scm">
+                <param name="url">https://github.com/sharkdp/bat</param>
               <param name="changesrevision">f3d53b79a2d7a51f470ac8a06b6bdd9a4f225e8f</param></service></servicedata>

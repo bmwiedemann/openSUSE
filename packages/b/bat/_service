@@ -3,7 +3,7 @@
   </service>
   <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
-    <param name="url">git://github.com/sharkdp/bat</param>
+    <param name="url">https://github.com/sharkdp/bat</param>
     <param name="revision">f3d53b79a2d7a51f470ac8a06b6bdd9a4f225e8f</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>

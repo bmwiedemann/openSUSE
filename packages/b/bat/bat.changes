@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 03:53:34 UTC 2021 - william.brown@suse.com
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Wed Aug 18 09:03:43 UTC 2021 - mvetter@suse.com
 
 - Update to f3d53b to fix build on Tumbleweed because of Rust 1.54

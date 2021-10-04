@@ -25,8 +25,9 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/sharkdp/bat
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.45
-BuildRequires:  rust-packaging
 ExclusiveArch:  %{rust_arches}
 
 %description
@@ -35,11 +36,10 @@ programming and markup languages. It has git integration and automatic paging.
 
 %prep
 %setup -qa1
-%define cargo_registry $(pwd)/vendor
-%{cargo_prep}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-export CARGO_NET_OFFLINE=true
 %{cargo_build}
 
 %install
