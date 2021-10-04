@@ -31,7 +31,7 @@
 %endif
 
 Name:           OpenIPMI
-Version:        2.0.29
+Version:        2.0.31
 Release:        0
 Summary:        Service processor access via IPMI
 License:        LGPL-2.1-or-later
@@ -56,6 +56,8 @@ Patch5:         OpenIMPI-add-libncurses.patch
 Patch6:         OpenIPMI-no-return-in-nonvoid-function.patch
 Patch7:         fix_dia_version_detection.patch
 Patch8:         use_python3_shebang
+Patch9:         lanserv-Add-the-judgment-on-the-validity-of-length-in-emu_cmd.c-and-session-in-lanserv_ipmi.c.patch
+Patch10:        unix_thread-Remove-the-fd-handler-sets-before-it-s-set-up.patch
 
 BuildRequires:  autoconf-archive
 BuildRequires:  gd-devel

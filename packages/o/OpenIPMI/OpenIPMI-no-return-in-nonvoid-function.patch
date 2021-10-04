@@ -1,7 +1,7 @@
-Index: OpenIPMI-2.0.28/swig/OpenIPMI.i
+Index: OpenIPMI-2.0.31/swig/OpenIPMI.i
 ===================================================================
---- OpenIPMI-2.0.28.orig/swig/OpenIPMI.i
-+++ OpenIPMI-2.0.28/swig/OpenIPMI.i
+--- OpenIPMI-2.0.31.orig/swig/OpenIPMI.i
++++ OpenIPMI-2.0.31/swig/OpenIPMI.i
 @@ -3123,6 +3123,7 @@ init_glib(void)
      init_lang();
  #endif

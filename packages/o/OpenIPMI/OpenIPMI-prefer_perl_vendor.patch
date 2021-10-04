@@ -1,8 +1,8 @@
-Index: OpenIPMI-2.0.28/configure.ac
+Index: OpenIPMI-2.0.31/configure.ac
 ===================================================================
---- OpenIPMI-2.0.28.orig/configure.ac
-+++ OpenIPMI-2.0.28/configure.ac
-@@ -450,10 +450,10 @@ if test "x$perlcflags" = "x" -o "x$perli
+--- OpenIPMI-2.0.31.orig/configure.ac
++++ OpenIPMI-2.0.31/configure.ac
+@@ -455,10 +455,10 @@ if test "x$perlcflags" = "x" -o "x$perli
        if test "x$perlinstalldir" = "x"; then
  	 perlinstalldir=`(eval \`perl -V:installvendorarch\`; echo $installvendorarch)`
  	 if test "x$perlinstalldir" = "x" -o ! -d "$perlinstalldir"; then

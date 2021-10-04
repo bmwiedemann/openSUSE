@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 28 08:30:14 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Add latest mainline fixes:
+A    lanserv-Add-the-judgment-on-the-validity-of-length-in-emu_cmd.c-and-session-in-lanserv_ipmi.c.patch
+A    unix_thread-Remove-the-fd-handler-sets-before-it-s-set-up.patch 
+
+-------------------------------------------------------------------
+Fri Jul  9 08:15:37 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 2.0.31
+  Adopted patches to latest sources:
+M    OpenIMPI-add-libncurses.patch
+M    OpenIPMI-no-return-in-nonvoid-function.patch
+M    OpenIPMI-prefer_perl_vendor.patch
+M    fix_dia_version_detection.patch
+M    openipmi-tinfo.patch
+
+
+-------------------------------------------------------------------
 Mon Jun 28 20:42:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- Use Python3 instead of Python2.
+- Use Python3 instead of Python2 (bsc#1190999).
 
 -------------------------------------------------------------------
 Mon Mar  8 14:16:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>

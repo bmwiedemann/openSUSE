@@ -1,8 +1,8 @@
-Index: OpenIPMI-2.0.28/configure.ac
+Index: OpenIPMI-2.0.31/configure.ac
 ===================================================================
---- OpenIPMI-2.0.28.orig/configure.ac
-+++ OpenIPMI-2.0.28/configure.ac
-@@ -715,11 +715,14 @@ AC_HAVE_FUNCS(syslog)
+--- OpenIPMI-2.0.31.orig/configure.ac
++++ OpenIPMI-2.0.31/configure.ac
+@@ -720,11 +720,14 @@ AC_HAVE_FUNCS(syslog)
  DIA=
  AC_PATH_PROG(diaprog, dia)
  if test "x$diaprog" != "x"; then

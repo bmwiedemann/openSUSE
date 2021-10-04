@@ -1,8 +1,8 @@
-Index: OpenIPMI-2.0.28/configure.ac
+Index: OpenIPMI-2.0.31/configure.ac
 ===================================================================
---- OpenIPMI-2.0.28.orig/configure.ac
-+++ OpenIPMI-2.0.28/configure.ac
-@@ -763,10 +763,12 @@ AX_CONFIG_FEATURE(
+--- OpenIPMI-2.0.31.orig/configure.ac
++++ OpenIPMI-2.0.31/configure.ac
+@@ -768,10 +768,12 @@ AX_CONFIG_FEATURE(
     [epoll_pwait], [This platform supports epoll(7) with epoll_pwait(2)],
     [HAVE_EPOLL_PWAIT], [This platform supports epoll(7) with epoll_pwait(2).])
  
