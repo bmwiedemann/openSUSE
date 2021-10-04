@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.35.gec72db9ee0
+%define suse_version +suse.39.g7a5801342f
 %define _testsuitedir /usr/lib/systemd/tests
 
 %bcond_with     gnuefi
@@ -152,10 +152,12 @@ Conflicts:      kiwi
 Conflicts:      sysvinit
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
-Obsoletes:      systemd-analyze < 201
+Provides:       systemd-logger = %{version}-%{release}
+Obsoletes:      systemd-logger < %{version}-%{release}
 Provides:       systemd-analyze = %{version}-%{release}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
+Obsoletes:      systemd-analyze < 201
 Source0:        systemd-v%{version}%{suse_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        systemd-user
@@ -234,7 +236,7 @@ Summary:        System V init tools
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 Provides:       sbin_init
-Conflicts:      otherproviders(sbin_init)
+Conflicts:      sbin_init
 Provides:       systemd-sysvinit = %{version}-%{release}
 Provides:       sysvinit:/sbin/init
 
@@ -396,21 +398,9 @@ More information can be found online:
 
 http://0pointer.net/blog/walkthrough-for-portable-services.html
 https://systemd.io/PORTABLE_SERVICES
-
 %endif
 
 %if ! 0%{?bootstrap}
-%package logger
-Summary:        Journal only logging
-License:        LGPL-2.1-or-later
-Provides:       syslog
-Provides:       sysvinit(syslog)
-Requires(post): /usr/bin/systemctl
-Conflicts:      otherproviders(syslog)
-
-%description logger
-This package marks the installation to not use syslog but only the journal.
-
 %package -n nss-systemd
 Summary:        Plugin for local virtual host name resolution
 License:        LGPL-2.1-or-later
@@ -509,13 +499,13 @@ Requires:       libqrencode4  pkgconfig(libqrencode)
 %endif
 Requires:       %{name} = %{version}-%{release}
 Requires:       attr
+Requires:       binutils
 Requires:       busybox-static
 Requires:       cryptsetup
-Requires:       dhcp-client
 Requires:       dosfstools
 Requires:       libcap-progs
 Requires:       lz4
-Requires:       net-tools-deprecated
+Requires:       netcat
 Requires:       qemu-kvm
 Requires:       quota
 Requires:       socat
@@ -619,14 +609,15 @@ Have fun with these services at your own risk.
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
-        -Dpamconfdir=%{_distconfdir}/pam.d \
-        -Dpamlibdir=%{_pamdir} \
+        -Dpamconfdir=%{_pam_vendordir} \
+        -Dpamlibdir=%{_pam_moduledir} \
         -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
         -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
         -Drc-local=/etc/init.d/boot.local \
+        -Dcreate-log-dirs=false \
         -Dbump-proc-sys-fs-nr-open=false \
         -Ddebug-shell=/bin/bash \
         -Dseccomp=auto \
@@ -750,7 +741,7 @@ rm -rf %{buildroot}/etc/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}/etc/systemd/system/default.target
 
 # Replace upstream systemd-user with the openSUSE one.
-install -m0644 %{S:2} %{buildroot}%{_distconfdir}/pam.d
+install -m0644 %{S:2} %{buildroot}%{_pam_vendordir}
 
 # don't enable wall ask password service, it spams every console (bnc#747783)
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -779,10 +770,6 @@ rm -f %{buildroot}%{_sysusersdir}/basic.conf
 # Remove README file in init.d as (SUSE) rpm requires executable files
 # in this directory... oh well.
 rm -f %{buildroot}/etc/init.d/README
-
-# Create the /var/log/journal directory to change the volatile journal
-# to a persistent one
-mkdir -p %{buildroot}%{_localstatedir}/log/journal/
 
 # This dir must be owned (and thus created) by systemd otherwise the
 # build system will complain. This is odd since we simply own a ghost
@@ -896,6 +883,7 @@ rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if %{with testsuite}
 cp -a test %{buildroot}%{_testsuitedir}/
+find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %endif
 
 %if ! 0%{?bootstrap}
@@ -903,7 +891,7 @@ cp -a test %{buildroot}%{_testsuitedir}/
 %endif
 
 # Build of installation images uses a hard coded list of packages with
-# a %pre that needs to be run during the build. systemd is one of them
+# a %%pre that needs to be run during the build. systemd is one of them
 # so keep the section even if it's empty.
 %pre
 :
@@ -932,7 +920,7 @@ pam-config --add --systemd || :
 %endif
 
 # systemd-sysusers is not available in %pre so this needs to be done
-# in %post. However this shouldn't be an issue since all files the
+# in %%post. However this shouldn't be an issue since all files the
 # main package ships are owned by root.
 %sysusers_create systemd.conf
 
@@ -956,6 +944,11 @@ systemctl daemon-reexec || :
 # tearing down the user session.
 #
 # systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service" || :
+
+if [ "$1" -eq 1 ]; then
+	# Persistent journal is the default
+	mkdir -p %{_localstatedir}/log/journal
+fi
 
 %journal_catalog_update
 %tmpfiles_create
@@ -1100,13 +1093,6 @@ fi
 %endif
 
 %if ! 0%{?bootstrap}
-%post logger
-%tmpfiles_create -- --prefix=%{_localstatedir}/log/journal/
-if [ "$1" -eq 1 ]; then
-        # tell journal to start logging on disk if directory didn't exist before
-        systemctl --no-block restart systemd-journal-flush.service >/dev/null || :
-fi
-
 %post   -n nss-myhostname -p /sbin/ldconfig
 %postun -n nss-myhostname -p /sbin/ldconfig
 
@@ -1223,8 +1209,6 @@ fi
 %service_del_postun systemd-userdbd.service systemd-userdbd.socket
 %service_del_postun systemd-homed.service
 %endif
-
-%clean
 
 %files
 %defattr(-,root,root)
@@ -1377,7 +1361,7 @@ fi
 %dir %{_prefix}/lib/systemd/system-shutdown/
 %dir %{_prefix}/lib/systemd/system-sleep/
 
-%{_pamdir}/pam_systemd.so
+%{_pam_moduledir}/pam_systemd.so
 
 %if %{with gnuefi}
 %dir %{_prefix}/lib/systemd/boot
@@ -1419,7 +1403,7 @@ fi
 %dir %{_distconfdir}/X11/xinit/xinitrc.d
 %{_distconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
 
-%{_distconfdir}/pam.d/systemd-user
+%{_pam_vendordir}/systemd-user
 
 %config(noreplace) %{_sysconfdir}/systemd/journald.conf
 %config(noreplace) %{_sysconfdir}/systemd/logind.conf
@@ -1556,7 +1540,6 @@ fi
 %defattr(-,root,root,-)
 %dir %{_docdir}/systemd
 %{_docdir}/systemd/html
-
 # /bootstrap
 %endif
 
@@ -1732,12 +1715,6 @@ fi
 %if ! 0%{?bootstrap}
 %files lang -f systemd.lang
 
-%files logger
-%defattr(-,root,root)
-# package without explicit setgid bit / attrs (see bsc#1172550)
-%dir %{_localstatedir}/log/journal/
-%doc %{_localstatedir}/log/README
-
 %files -n nss-myhostname
 %defattr(-, root, root)
 %{_libdir}/*nss_myhostname*
@@ -1806,6 +1783,7 @@ fi
 %{_unitdir}/systemd-networkd.service
 %{_unitdir}/systemd-networkd.socket
 %{_unitdir}/systemd-networkd-wait-online.service
+# Some files created at runtime
 %endif
 %if %{with resolved}
 %{_bindir}/resolvectl
@@ -1867,7 +1845,7 @@ fi
 %{_prefix}/lib/systemd/systemd-homework
 %{_unitdir}/systemd-homed.service
 %{_unitdir}/systemd-homed-activate.service
-%{_pamdir}/pam_systemd_home.so
+%{_pam_moduledir}/pam_systemd_home.so
 %{_datadir}/dbus-1/system-services/org.freedesktop.home1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.home1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.home1.policy

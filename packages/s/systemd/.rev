@@ -5534,4 +5534,41 @@ handle manual pages that consist only of a .so directive such as
 - Drop dependency on m4 (replaced by Jinja2)</comment>
     <requestid>917666</requestid>
   </revision>
+  <revision rev="337" vrev="3">
+    <srcmd5>95732584dfe128781ae3d36f1cffe9f6</srcmd5>
+    <version>249.4</version>
+    <time>1633365557</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around rpmlint complaining about /var/log/journal shipped with setgid bit
+  This setgid bit has been already reviewed in the past and wasn't a
+  concern. However we want the mode/ownership adjusted by tmpfiles and
+  avoid the duplication of these info in rpm.
+- Don't ghost own any directories created dynamically by tmpfiles
+  Again rpmlint complains but it doesn't seem to make sense to try to
+  track all paths (including theirs perms, ownerships...) created
+  dynamically. And 'rpm -V' is likely to report issues later with
+  these paths anyway.
+  This effectively partially reverts the two previous commits.
+
+- Make sure the build process won't create /var/log/journal
+- /var/log/journal/remote is owned by systemd-journal-remote
+
+- systemd.spec: fix a bunch of rpmlint errors/warnings
+
+- Drop systemd-logger
+  This sub package was introduced in order to configure persistent
+  journal and also to make sure that another syslog provider (such as
+  rsyslog) couldn't be installed at the same time: each syslog
+  provider conflicts with each others.
+  However this mechanism didn't work since uninstalling systemd-logger
+  wasn't magically turning off persistent logging because
+  /var/log/journal is likely to be populated hence not removed.
+  Moreover using a subpackage to configure the mode of journald was
+  overkill and the usual ways (main conf file or drop-ins) should be
+  preferred.
+
+- Import commit 7a5801342fe2f53e5c2a8578d6db132c0eca2d97
+  8d65ec4a66 test: wc is needed by test/units/testsuite-50.sh</comment>
+    <requestid>922217</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Sep 29 10:04:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Work around rpmlint complaining about /var/log/journal shipped with setgid bit
+
+  This setgid bit has been already reviewed in the past and wasn't a
+  concern. However we want the mode/ownership adjusted by tmpfiles and
+  avoid the duplication of these info in rpm.
+
+- Don't ghost own any directories created dynamically by tmpfiles
+
+  Again rpmlint complains but it doesn't seem to make sense to try to
+  track all paths (including theirs perms, ownerships...) created
+  dynamically. And 'rpm -V' is likely to report issues later with
+  these paths anyway.
+
+  This effectively partially reverts the two previous commits.
+
+-------------------------------------------------------------------
+Fri Sep 24 12:56:31 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Make sure the build process won't create /var/log/journal
+
+- /var/log/journal/remote is owned by systemd-journal-remote
+
+-------------------------------------------------------------------
+Fri Sep 24 09:28:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: fix a bunch of rpmlint errors/warnings
+
+-------------------------------------------------------------------
+Fri Sep 24 07:27:58 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop systemd-logger
+
+  This sub package was introduced in order to configure persistent
+  journal and also to make sure that another syslog provider (such as
+  rsyslog) couldn't be installed at the same time: each syslog
+  provider conflicts with each others.
+
+  However this mechanism didn't work since uninstalling systemd-logger
+  wasn't magically turning off persistent logging because
+  /var/log/journal is likely to be populated hence not removed.
+
+  Moreover using a subpackage to configure the mode of journald was
+  overkill and the usual ways (main conf file or drop-ins) should be
+  preferred.
+
+-------------------------------------------------------------------
+Wed Sep 22 13:41:34 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 7a5801342fe2f53e5c2a8578d6db132c0eca2d97
+
+  8d65ec4a66 test: wc is needed by test/units/testsuite-50.sh
+  1527bcc5dd test: make the installation of the debug tools optional in the image
+  f4e6bf0b37 journalctl: never fail at flushing when the flushed flag is set (bsc#1188588)
+
+-------------------------------------------------------------------
+Wed Sep 22 13:25:26 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Update the dependencies of the testsuite package
+
+  The debug tools are optional thus no more required.
+
+  OTOH strip(1) is needed when building the test image and nc(1) is
+  needed by some tests.
+
+-------------------------------------------------------------------
+Fri Sep 10 13:30:14 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop git internal files from the testsuite sub-package
+
+-------------------------------------------------------------------
+Fri Sep 10 09:51:06 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Adjust pam macros
+
+-------------------------------------------------------------------
 Wed Sep  8 17:01:58 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Don't reexecute user manager instances on package update yet
@@ -68,6 +145,10 @@ Mon Aug  2 12:54:44 UTC 2021 - Franck Bui <fbui@suse.com>
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v249/NEWS for
   details. 
+
+  This includes the following bug fixes:
+
+    - upstream commit 6fb61918ccdd0610b425d5b0e5417751f8f8f783 (bsc#1182870)
 
   - Rebased 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
             0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
@@ -309,6 +390,11 @@ Mon Apr 26 16:25:38 UTC 2021 - Franck Bui <fbui@suse.com>
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v248/NEWS for
   details. 
+
+  This includes the following bug fixes:
+
+    - upstream commit 4327574fc1093513badc2177f71cede2fc88c13c (bsc#1166028)
+    - upstream commit 3573e032f26724949e86626eace058d006b8bf70 (bsc#1186411)
 
   - A couple runtime dependencies on libraries are now tracked
     manually (with Recommends:) due to the fact that some symbols of
@@ -974,7 +1060,7 @@ Mon Apr 27 14:50:36 UTC 2020 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Mon Apr 27 14:33:35 UTC 2020 - Franck Bui <fbui@suse.com>
 
-- Drop most of the tmpfiles that deal with generic paths (bsc#1078466)
+- Drop most of the tmpfiles that deal with generic paths (bsc#1078466 bsc#1181831)
 
   They are problematic because some of them conflict with SUSE
   defaults. Therefore it seems better to let the revelant packages
