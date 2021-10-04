@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 04:37:57 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Fri Jul  9 06:11:11 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fixed squared artefacts on image when converting to AVIF

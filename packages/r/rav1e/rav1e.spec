@@ -17,7 +17,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           rav1e
 Version:        0.4.1
 Release:        0
@@ -35,10 +34,9 @@ Source99:       baselibs.conf
 # Fix squared artefacts on image when converting to AVIF
 Patch0:         https://github.com/xiph/rav1e/commit/f553646d70fba8e265d436103a73520eb7adec8c.patch
 #
-BuildRequires:  cargo
 BuildRequires:  cargo-c
+BuildRequires:  cargo-packaging
 BuildRequires:  nasm
-BuildRequires:  rust-packaging
 
 %description
 rav1e is an AV1 video encoder.
@@ -91,10 +89,6 @@ registry = 'https://github.com/rust-lang/crates.io-index'
 replace-with = 'vendored-sources'
 [source.vendored-sources]
 directory = './vendor'
-[build]
-rustc = "%{__rustc}"
-rustdoc = "%{__rustdoc}"
-rustflags = %{__global_rustflags_toml}
 [term]
 verbose = true
 EOF
@@ -104,13 +98,11 @@ rm -f Cargo.lock
 sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
-export RUSTFLAGS=%{rustflags}
-cargo build --offline --release
+%{cargo_build}
 CFLAGS="%{optflags}" cargo cbuild
 
 %install
-export RUSTFLAGS=%{rustflags}
-cargo install --offline --root=%{buildroot}%{_prefix} --path .
+%{cargo_install}
 rm -rf %{buildroot}%{_datadir}/cargo
 
 cargo cinstall \

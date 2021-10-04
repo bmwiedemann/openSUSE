@@ -90,4 +90,12 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>905264</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f8da489a73aaeb3c00d5ec69de2b4041</srcmd5>
+    <version>0.4.1</version>
+    <time>1633365533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921943</requestid>
+  </revision>
 </revisionlist>
