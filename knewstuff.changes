@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:32:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Include-a-user-agent-on-KNS-requests.patch
+
+-------------------------------------------------------------------
+Tue Sep 28 05:31:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-crash.patch. This patch fixes a crash in DownloadWidget.
+  (kde#443025)
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

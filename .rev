@@ -742,4 +742,16 @@
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919205</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>ba86652bf53ab06c51729bb36be0654c</srcmd5>
+    <version>5.86.0</version>
+    <time>1633365538</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Include-a-user-agent-on-KNS-requests.patch
+
+- Add fix-crash.patch. This patch fixes a crash in DownloadWidget.
+  (kde#443025)</comment>
+    <requestid>922640</requestid>
+  </revision>
 </revisionlist>
