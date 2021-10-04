@@ -16,9 +16,12 @@
 #
 
 
+%define skip_python36 1
+%define skip_python2 1
 %bcond_without test
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           qtile
-Version:        0.17.0
+Version:        0.18.1
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -27,51 +30,60 @@ Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
 Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{python_module cairocffi >= 0.9.0}
+BuildRequires:  %{python_module cffi >= 1.1.0}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module xcffib >= 0.10.1}
 BuildRequires:  fdupes
+BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  libpango-1_0-0
 BuildRequires:  libpulse-devel
+BuildRequires:  libpulse0
+BuildRequires:  librsvg
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-cairocffi >= 1.0.2
-BuildRequires:  python3-cffi >= 1.11.5
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-setuptools_scm
-BuildRequires:  python3-six >= 1.11.0
-BuildRequires:  python3-xcffib >= 0.8.1
 BuildRequires:  update-desktop-files
 Requires:       python3-cairocffi >= 0.9.0
 Requires:       python3-cairocffi-pixbuf >= 0.9.0
-Requires:       python3-cffi >= 1.11.5
+Requires:       python3-cffi >= 1.1.0
 Requires:       python3-six >= 1.11.0
-Requires:       python3-xcffib >= 0.8.1
+Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     %{python_module iwlib}
+Recommends:     %{python_module keyring}
+Recommends:     %{python_module psutil}
+Recommends:     %{python_module python-dateutil}
+Recommends:     %{python_module python-mpd2}
+Recommends:     %{python_module pyxdg}
 Recommends:     libxcb-cursor0
 Recommends:     pulseaudio
-Recommends:     python3-iwlib
-Recommends:     python3-keyring
-Recommends:     python3-psutil
-Recommends:     python3-python-dateutil
-Recommends:     python3-python-mpd2
-Recommends:     python3-pyxdg
 Recommends:     sensors
-Suggests:       python3-jupyter_console
-Suggests:       python3-jupyter_ipykernel
-Suggests:       python3-tk
+Suggests:       %{python_module jupyter_console}
+Suggests:       %{python_module jupyter_ipykernel}
+Suggests:       %{python_module tk}
+
 %if %{with test}
+BuildRequires:  %{python_module bowler}
+BuildRequires:  %{python_module cairocffi-pixbuf}
+BuildRequires:  %{python_module curses}
+BuildRequires:  %{python_module dbus_next}
+BuildRequires:  %{python_module gobject-Gdk}
+BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module xdg}
 BuildRequires:  ImageMagick
-BuildRequires:  python3-cairocffi-pixbuf >= 0.9.0
-BuildRequires:  python3-curses
-BuildRequires:  python3-dbus-python
-BuildRequires:  python3-iwlib
-BuildRequires:  python3-jupyter_console
-BuildRequires:  python3-jupyter_ipykernel
-BuildRequires:  python3-keyring
-BuildRequires:  python3-psutil
-BuildRequires:  python3-pytest
-BuildRequires:  python3-python-dateutil
-BuildRequires:  python3-python-mpd2
-BuildRequires:  python3-pyxdg
-BuildRequires:  python3-tk
+BuildRequires:  dbus-1
+BuildRequires:  gdk-pixbuf-loader-rsvg
+BuildRequires:  graphviz
+BuildRequires:  libgtk-3-0
+BuildRequires:  libnotify
+BuildRequires:  libnotify-tools
+BuildRequires:  librsvg
+BuildRequires:  procps
 BuildRequires:  xcalc
 BuildRequires:  xclock
 BuildRequires:  xeyes
@@ -79,7 +91,7 @@ BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xrandr
 BuildRequires:  xterm
 BuildRequires:  xvfb-run
-BuildRequires:  typelib(Notify)
+
 %endif
 
 %description
@@ -102,12 +114,7 @@ sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
 
 %install
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
-echo "building pango"
-python3 ./libqtile/pango_ffi_build.py
-echo "building xcursors"
-python3 ./libqtile/backend/x11/xcursors_ffi_build.py
-echo "building pulseaudio volume control"
-python3 ./libqtile/widget/pulseaudio_ffi.py
+./scripts/ffibuild
 %python3_install
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
@@ -123,8 +130,14 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
-# test_images_good and other svg tests fail https://github.com/qtile/qtile/issues/1352
-PYTHONPATH=%{buildroot}%{python3_sitearch} xvfb-run python3 -m pytest -rs -k "not (svg or test_images_good or test_qtile_cmd)"
+mkdir -vp %{_builddir}/%{name}-%{version}/bin
+ln -svf %{buildroot}%{_bindir}/qtile %{_builddir}/%{name}-%{version}/bin/qtile
+export LC_TYPE=en_US.UTF-8
+export PYTHONPATH=%{buildroot}%{python3_sitearch}:${PYTHONPATH}
+export PATH="${PWD}/bin:${PATH}"
+export PYTHONDONTWRITEBYTECODE=1
+
+%pytest -vv
 %endif
 
 %post

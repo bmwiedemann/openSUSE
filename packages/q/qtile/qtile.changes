@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:37:51 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 0.18.1:
+  * features
+      - All layouts will accept a list of colors for border_* options with which
+        they will draw multiple borders on the appropriate windows.
+
+-------------------------------------------------------------------
+Mon Sep 06 12:09:51 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+
+- Update to version 0.18.0:
+  * Config breakage
+        - The `qtile` entry point doesn't run `qtile start` by default anymore
+        - New optional dependency for dbus related features: dbus-next.
+          Replaces previous reliance on dbus/Glib and allows qtile to use async
+          dbus calls within asyncio's eventloop.
+        - widget.BatteryIcon no longer has a fallback text mode; use
+          widget.Battery instead
+        - MonadX layout key new_at_current is deprecated, use new_client_position.
+        - `libqtile.window` has been moved to `libqtile.backend.x11.window`; a migration has been added for this.
+  * deprecation warning
+        - 'main' config functions, deprecated in 0.16.1, will no longer be executed.
+  * Notice for packagers - new dependencies
+        - Tests now require the 'dbus-next' python module plus 'dbus-launch' and 'notify-send' applications
+  * features
+      - added transparency in x11 and wayland backends
+      - added measure_mem and measure_swap attributes to memory widget to allow user to choose measurement units.
+      - memory widget can now be displayed with decimal values
+      - new "qtile migrate" command, which will attempt to upgrade previous
+        configs to the current version in the case of qtile API breaks.
+      - A new `reconfigure_screens` config setting. When `True` (default) it
+        hooks `Qtile.reconfigure_screens` to the `screen_change` hook,
+        reconfiguring qtile's screens in response to randr events. This
+        removes the need to restart qtile when adding/removing external
+        monitors.
+      - improved key chord / sequence functionality. Leaving a chord with `mode`
+        set brings you to a named mode you activated before, see #2264.
+        A new command, `lazy.ungrab_all_chords`, was introduced to return to the root bindings.
+        The `enter_chord` hook is now always called with a string argument.
+        The third argument to `KeyChord` was renamed from `submaping` to `submapping` (typo fix).
+      - added new argument for CheckUpdates widget: `custom_command_modify` which allows user to modify the
+        the line count of the output of `custom_command` with a lambda function (i.e. `lambda x: x-3`).
+        Argument defaults to `lambda x: x` and is overridden by `distro` argument's internal lambda.
+      - added new argument for the WindowName, WindowTabs and Tasklist widgets: `parse_text` which allows users to
+        define a function that takes a window name as an input, modify it in some way (e.g. str.replace(), str.upper() or regex)
+        and show that modification on screen.
+      - A Wayland backend has been added which can be used by calling `qtile start -b wayland` directly in your TTY.
+        It requires the latest releases of wlroots, python-xkbcommon, pywayland and pywlroots. It is expected to be
+        unstable so please let us know if you find any bugs!
+      - The 'focus` argument to `Click` and `Drag` objects in your config are no longer necessary (and are ignored).
+
+-------------------------------------------------------------------
 Thu May 27 08:45:51 UTC 2021 - Petr Cervinka <petr@cervinka.net>
 
 - Update to version 0.17.0:
