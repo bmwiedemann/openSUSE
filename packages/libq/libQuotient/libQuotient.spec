@@ -20,7 +20,7 @@
 %define sonum 0.6
 %bcond_with e2ee
 Name:           libQuotient
-Version:        0.6.9
+Version:        0.6.10
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

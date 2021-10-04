@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  3 08:21:09 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to versiosn 0.6.10:
+  * Yet another maintenance release of the stable branch, fixing an 
+    issue (#510) with invites not showing up in some cases 
+    (especially on less active/smaller accounts). 
+
+-------------------------------------------------------------------
 Sun Sep 12 10:55:22 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
 
 - Update to version 0.6.9:
