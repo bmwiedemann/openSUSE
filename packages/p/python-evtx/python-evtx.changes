@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  4 08:29:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.4
+  * relax dependencies for most users #72
+  * show records by date filter
+  * handling of invalid dates #43
+  * handling of malformed evtx files
+  * pin dependencies due to py2 deprecation #67
+  * testing on pytest 4
+- Drop pytest4.patch merged upstream
+- Fix rpmlint alternative link errors
+- Fix missing python2-xml requirement
+
+-------------------------------------------------------------------
 Tue May 26 06:34:09 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

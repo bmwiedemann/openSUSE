@@ -1,7 +1,7 @@
 #
 # spec file for package python-evtx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,31 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commands dump dump_chunk_slack eid_record_numbers extract_record filter_records info record_structure structure templates
+%bcond_without python2
 Name:           python-evtx
-Version:        0.6.1
+Version:        0.7.4
 Release:        0
 Summary:        Windows Event Log files parser
 License:        Apache-2.0
 URL:            https://github.com/williballenthin/python-evtx
 Source:         https://github.com/williballenthin/python-evtx/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest4.patch gh#williballenthin/python-evtx#66 mcepl@suse.com
-# make the test suite pass under pytest 4
-Patch0:         pytest4.patch
 BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+%if %{with python2}
+BuildRequires:  python2-xml
+%endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hexdump
 Requires:       python-lxml
+%ifpython2
+Requires:       python-xml
+%endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,27 +75,22 @@ done
 %pytest
 
 %post
-for c in %{commands}; do
-  %python_install_alternative evtx_$c.py
-done
+%{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
+  print(rpm.expand("%python_install_alternative evtx_" .. c .. ".py"))
+end}
 
 %postun
-for c in %{commands}; do
-  %python_uninstall_alternative evtx_$c.py
-done
+%{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
+  print(rpm.expand("%python_uninstall_alternative evtx_" .. c .. ".py"))
+end}
 
 %files %{python_files}
 %license LICENSE.TXT
 %doc README.md
-%{python_sitelib}/*
-%python_alternative %{_bindir}/evtx_dump.py
-%python_alternative %{_bindir}/evtx_dump_chunk_slack.py
-%python_alternative %{_bindir}/evtx_eid_record_numbers.py
-%python_alternative %{_bindir}/evtx_extract_record.py
-%python_alternative %{_bindir}/evtx_filter_records.py
-%python_alternative %{_bindir}/evtx_info.py
-%python_alternative %{_bindir}/evtx_record_structure.py
-%python_alternative %{_bindir}/evtx_structure.py
-%python_alternative %{_bindir}/evtx_templates.py
+%{python_sitelib}/Evtx
+%{python_sitelib}/python_evtx-%{version}*-info
+%{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
+  print(rpm.expand("%python_alternative %{_bindir}/evtx_" .. c .. ".py"))
+end}
 
 %changelog
