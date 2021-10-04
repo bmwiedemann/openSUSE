@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
 %define tar_suffix %{nil}
@@ -28,12 +28,13 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source99:       qt6-charts-rpmlintrc
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -82,6 +83,27 @@ Requires:       cmake(Qt6Charts) = %{real_version}
 This package provides private headers of libQt6Charts that do not have any
 ABI or API guarantees.
 
+%package -n libQt6ChartsQml6
+Summary:        Qt 6 ChartsQml library
+
+%description -n libQt6ChartsQml6
+The Qt 6 ChartsQml library.
+
+%package -n qt6-chartsqml-devel
+Summary:        Qt 6 ChartsQml library - Development files
+Requires:       libQt6ChartsQml6 = %{version}
+
+%description -n qt6-chartsqml-devel
+Development files for the Qt 6 ChartsQml library.
+
+%package -n qt6-chartsqml-private-devel
+Summary:        Non-ABI stable API for the Qt 6 ChartsQml Library
+Requires:       cmake(Qt6ChartsQml) = %{real_version}
+
+%description -n qt6-chartsqml-private-devel
+This package provides private headers of libQt6ChartsQml that do not have any
+ABI or API guarantees.
+
 %{qt6_examples_package}
 
 %endif
@@ -103,7 +125,9 @@ ABI or API guarantees.
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %post -n libQt6Charts6 -p /sbin/ldconfig
+%post -n libQt6ChartsQml6 -p /sbin/ldconfig
 %postun -n libQt6Charts6 -p /sbin/ldconfig
+%postun -n libQt6ChartsQml6 -p /sbin/ldconfig
 
 %files imports
 %{_qt6_qmldir}/QtCharts/
@@ -119,12 +143,30 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtCharts/
 %{_qt6_libdir}/libQt6Charts.prl
 %{_qt6_libdir}/libQt6Charts.so
+%{_qt6_metatypesdir}/qt6charts_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_charts.pri
 %exclude %{_qt6_includedir}/QtCharts/%{real_version}
 
 %files private-devel
 %{_qt6_includedir}/QtCharts/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_charts_private.pri
+
+%files -n libQt6ChartsQml6
+%{_qt6_libdir}/libQt6ChartsQml.so.*
+
+%files -n qt6-chartsqml-devel
+%{_qt6_cmakedir}/Qt6ChartsQml/
+%{_qt6_descriptionsdir}/ChartsQml.json
+%{_qt6_includedir}/QtChartsQml/
+%{_qt6_libdir}/libQt6ChartsQml.prl
+%{_qt6_libdir}/libQt6ChartsQml.so
+%{_qt6_metatypesdir}/qt6chartsqml_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_chartsqml.pri
+%exclude %{_qt6_includedir}/QtChartsQml/%{real_version}
+
+%files -n qt6-chartsqml-private-devel
+%{_qt6_includedir}/QtChartsQml/%{real_version}
+%{_qt6_mkspecsdir}/modules/qt_lib_chartsqml_private.pri
 
 %endif
 
