@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct  3 18:49:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.3.0 "Hustle and Shuffle"
+  * Budgie Window Shuffler applet to apply layouts visually
+  * Fix for Window Shuffler layouts executable installation path
+    to work on stateless distros
+  * Window Shuffler Control has been completely revamped and
+    redesigned
+  * Shuffler now includes Window Rules
+  * Shuffler Window rules now allow you to open application windows
+    on specific workspaces
+  * Calculator now shows a visual hint how to copy the result to
+    the clipboard
+  * transition from Grid to List modes is now a fade rather than a
+    slide animation
+  * Fix where after connecting to a VPN spinner cursor was still
+    showing
+  * We now display a hint when you open the popover
+    - scrolling over the panel icon changes the workspace.
+- Remove xdg-config.patch: fixed
+
+-------------------------------------------------------------------
 Sun Apr  4 10:38:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.2.0 "Magic Windows"
