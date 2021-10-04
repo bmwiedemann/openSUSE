@@ -4586,7 +4586,6 @@
     <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="terminfo-screen" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="texlive-latex-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="texlive-lm-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="tgt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
