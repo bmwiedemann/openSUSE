@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        4.4.7
+Version:        4.4.8
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -61,6 +61,8 @@ Requires:       yast2-ycp-ui-bindings >= 4.3.4
 # communicate with udisks
 Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 Requires(post): %fillup_prereq
+
+Recommends:     (libyui-qt-graph if libyui-qt)
 
 Obsoletes:      yast2-storage
 
