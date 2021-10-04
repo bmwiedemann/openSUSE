@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerinstance
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        Microsoft Azure Container Instance Client Library
 License:        MIT
