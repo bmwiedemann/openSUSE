@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define short_name qtnetworkauth
 %define tar_name qtnetworkauth-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-networkauth%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Set of APIs to obtain limited access to online accounts and HTTP services
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -103,6 +103,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtNetworkAuth/
 %{_qt6_libdir}/libQt6NetworkAuth.prl
 %{_qt6_libdir}/libQt6NetworkAuth.so
+%{_qt6_metatypesdir}/qt6networkauth_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_networkauth.pri
 %exclude %{_qt6_includedir}/QtNetworkAuth/%{real_version}
 
