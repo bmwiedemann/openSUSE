@@ -51,7 +51,7 @@
 %define vicecachedir	  /var/cache/openafs
 %define afslocaldir       /var/lib/openafs
 
-%ifarch ppc64le ppc64 arm
+%ifarch ppc64le ppc64 %{arm}
 %define build_kernel_modules 0
 %endif
 
@@ -335,7 +335,7 @@ perl -pi -e 's,^(XCFLAGS.*),\1 -fPIC,' src/config/Makefile.ppc_linux24.in
 sysbase=ppc64
 export LDFLAGS="$LDFLAGS -m64"
 %endif
-%ifarch arm
+%ifarch %{arm}
 sysbase=arm
 %endif
 %ifarch aarch64
