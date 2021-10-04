@@ -621,4 +621,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     <comment>- covers jira#SLE/SLE-19446</comment>
     <requestid>921803</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>3dab2464879e3c5bca681e2d62d05b48</srcmd5>
+    <version>2.13.0</version>
+    <time>1633365586</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in previous changelog</comment>
+    <requestid>923065</requestid>
+  </revision>
 </revisionlist>
