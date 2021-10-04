@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  1 20:54:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove world-readable permissions from /etc/wireguard boo#1191224
+
+-------------------------------------------------------------------
+Sun Sep 26 09:34:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210914
+  * no relevant changes for Linux systems
+
+-------------------------------------------------------------------
 Sun Apr 25 08:46:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20210424

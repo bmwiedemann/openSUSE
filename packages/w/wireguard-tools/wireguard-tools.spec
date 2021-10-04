@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20210424
+Version:        1.0.20210914
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
@@ -60,8 +60,6 @@ cd src
     WITH_BASHCOMPLETION=yes \
     WITH_WGQUICK=yes \
     WITH_SYSTEMDUNITS=yes
-
-install -d %{buildroot}/%{_sysconfdir}/wireguard/
 
 %pre
 %service_add_pre wg-quick.target wg-quick@.service
