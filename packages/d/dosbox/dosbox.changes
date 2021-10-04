@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  3 17:48:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to dosbox-staging 0.77.1.
+  * Removed old patches dosbox-0.71-manpage.diff dosbox-0.74-3-mt32-patch.diff.
+  * Removed old files dosbox.desktop dosbox.png CONFIG-midi-mt32-gm.
+  * Added patch dosbox-staging-0.77.1-config.patch.
+  * Added patch dosbox-staging-0.77.1-name.patch.
+  * Addad translations subpackage.
+  * Disabled "gtest soft_limiter" test for 32-bit architectures and Leap.
+  * Added support: Opus, FLAC, MT32, GM, GUS, Raw mouse input and more.
+  * https://github.com/dosbox-staging/dosbox-staging#readme
+
+-------------------------------------------------------------------
 Fri Apr  9 12:51:28 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Used pkgconfig everywhere and removed BuildRequires: Mesa-devel.

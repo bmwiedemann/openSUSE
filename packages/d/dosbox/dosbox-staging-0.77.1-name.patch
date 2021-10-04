@@ -1,0 +1,57 @@
+diff -Pdpru dosbox-staging-0.77.1.orig/contrib/icons/meson.build dosbox-staging-0.77.1/contrib/icons/meson.build
+--- dosbox-staging-0.77.1.orig/contrib/icons/meson.build	2021-08-28 21:35:58.000000000 +0300
++++ dosbox-staging-0.77.1/contrib/icons/meson.build	2021-10-03 18:27:15.914070806 +0300
+@@ -3,11 +3,11 @@ icons_hicolor = data_dir / 'icons' / 'hi
+ # small pre-rendered raster icons
+ #
+ foreach size : ['16x16', '22x22', '24x24', '32x32']
+-  install_data('small-png' / size / 'dosbox-staging.png',
++  install_data('small-png' / size / 'dosbox-staging.png', rename : 'dosbox.png',
+                install_dir : icons_hicolor / size / 'apps')
+ endforeach
+ 
+ # scalable vector icon
+ #
+-install_data('dosbox-staging.svg',
++install_data('dosbox-staging.svg', rename : 'dosbox.svg',
+              install_dir : icons_hicolor / 'scalable' / 'apps')
+diff -Pdpru dosbox-staging-0.77.1.orig/contrib/linux/dosbox-staging.desktop dosbox-staging-0.77.1/contrib/linux/dosbox-staging.desktop
+--- dosbox-staging-0.77.1.orig/contrib/linux/dosbox-staging.desktop	2021-08-28 21:35:58.000000000 +0300
++++ dosbox-staging-0.77.1/contrib/linux/dosbox-staging.desktop	2021-10-03 18:22:18.482052904 +0300
+@@ -56,9 +56,9 @@ GenericName[zh_CN]=DOS 模拟器
+ GenericName[zh_TW]=DOS 模擬器
+ Comment=DOS/x86 emulator focusing on ease of use
+ Exec=dosbox
+-Icon=dosbox-staging
++Icon=dosbox
+ Type=Application
+ Terminal=false
+ Keywords=dos;gaming;game;games;emulator;
+ Categories=Game;Emulator;
+-StartupWMClass=dosbox-staging
++StartupWMClass=dosbox
+diff -Pdpru dosbox-staging-0.77.1.orig/contrib/linux/meson.build dosbox-staging-0.77.1/contrib/linux/meson.build
+--- dosbox-staging-0.77.1.orig/contrib/linux/meson.build	2021-08-28 21:35:58.000000000 +0300
++++ dosbox-staging-0.77.1/contrib/linux/meson.build	2021-10-03 18:29:12.207641515 +0300
+@@ -1,5 +1,5 @@
+-install_data('dosbox-staging.desktop',
++install_data('dosbox-staging.desktop', rename : 'dosbox.desktop',
+              install_dir : data_dir / 'applications')
+ 
+-install_data('dosbox-staging.metainfo.xml',
++install_data('dosbox-staging.metainfo.xml', rename : 'dosbox.metainfo.xml',
+              install_dir : data_dir / 'metainfo')
+diff -Pdpru dosbox-staging-0.77.1.orig/meson.build dosbox-staging-0.77.1/meson.build
+--- dosbox-staging-0.77.1.orig/meson.build	2021-08-28 21:35:58.000000000 +0300
++++ dosbox-staging-0.77.1/meson.build	2021-10-03 18:42:23.094315697 +0300
+@@ -353,8 +353,8 @@ executable('dosbox', ['src/main.cpp', 's
+ # additional files for installation
+ #
+ data_dir     = get_option('datadir')
+-licenses_dir = data_dir / 'licenses' / 'dosbox-staging'
+-doc_dir      = data_dir / 'doc' / 'dosbox-staging'
++licenses_dir = data_dir / 'licenses' / 'dosbox'
++doc_dir      = data_dir / 'doc' / 'packages' / 'dosbox'
+ 
+ install_man('docs/dosbox.1')
+ install_data('COPYING', install_dir : licenses_dir)

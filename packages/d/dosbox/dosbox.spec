@@ -17,74 +17,83 @@
 
 
 Name:           dosbox
-Version:        0.74.3
+Version:        0.77.1
 Release:        0
-Summary:        DOS Emulator Well-Suited for Playing Games
-License:        GPL-2.0-or-later AND GPL-3.0-only
-Group:          System/Emulators/PC
-URL:            https://www.dosbox.com
-Source:         https://downloads.sf.net/dosbox/dosbox-0.74-3.tar.gz
-Source1:        dosbox.desktop
-Source2:        dosbox.png
-Source3:        CONFIG-midi-mt32-gm
-Patch0:         dosbox-0.71-manpage.diff
-# Patch from https://github.com/munt/munt/releases the latest release libmt32emu.
-Patch1:         dosbox-0.74-3-mt32-patch.diff
-BuildRequires:  SDL_sound-devel
-BuildRequires:  automake
-BuildRequires:  desktop-file-utils
+Summary:        A modernized DOSBox to run old DOS games
+License:        GPL-2.0-or-later
+URL:            https://%{name}-staging.github.io
+Source0:        https://github.com/%{name}-staging/%{name}-staging/archive/v%{version}.tar.gz#/%{name}-staging-%{version}.tar.gz
+Patch0:         %{name}-staging-0.77.1-config.patch
+Patch1:         %{name}-staging-0.77.1-name.patch
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson >= 0.54.2
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SDL_net)
+BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(zlib)
+Requires:       %{name}-translations = %{version}
+Recommends:     fluid-soundfont-gm
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  pkgconfig(fluidsynth) >= 2.0
 BuildRequires:  pkgconfig(mt32emu)
 %endif
 
 %description
-dosbox is a DOS emulator that, thanks to its good graphics and sound
-emulation, is exceptionally well-suited for playing games. dosbox
-features a built-in DOS operating system and transparent access to the
-Linux file system and is therefore very easy to use.
+%{name}-staging is DOS/x86 emulator focusing on ease of use.
+Based on DOSBox, it is a fork which use modern library (e.g.: sdl2) and
+practice in an attempt to revitalize the development process.
+DOSBox Staging is an attempt to revitalize DOSBox's development process.
+It's not a rewrite, but a continuation and improvement on the existing
+DOSBox codebase while leveraging modern development tools and practices.
+Added support: Opus, FLAC, MT32, GM, GUS, Raw mouse input and more.
+https://github.com/dosbox-staging/dosbox-staging#readme
+
+%package translations
+Summary:        Translations for %{name}-staging
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description translations
+This package contains translations for %{name}-staging.
 
 %prep
-%setup -q -n dosbox-0.74-3
-%patch0 -p1
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-%patch1 -p1
+%autosetup -p1 -n %{name}-staging-%{version}
+%if "%{?_lib}" == "lib" || (0%{?suse_version} < 1550 && 0%{?sle_version} < 150400)
+sed -i 's/.*soft_limit.*//' tests/meson.build
 %endif
 
 %build
-autoreconf -f -i
-export CFLAGS="%{optflags}"
-export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%configure
-%make_build
-
-%check
-%make_build check
+%meson \
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
+-Duse_fluidsynth=false -Duse_mt32emu=false
+%endif
+%meson_build
 
 %install
-%make_install
-install -dpm0755 %{buildroot}%{_datadir}/pixmaps
-install -pm0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/dosbox.png
-desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-install -pm0644 %{SOURCE3} .
-%endif
+%meson_install
+mkdir -p %{buildroot}%{_datadir}/%{name}/translations
+install -pm0644 contrib/translations/??/*.lng %{buildroot}%{_datadir}/%{name}/translations
+
+%check
+%meson_test
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README THANKS
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-%doc CONFIG-midi-mt32-gm
-%endif
-%{_bindir}/dosbox
-%{_mandir}/man?/*
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+%doc AUTHORS README README.md docs/README.video THANKS
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.{png,svg}
+%{_datadir}/metainfo/%{name}.metainfo.xml
+
+%files translations
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations/*.lng
 
 %changelog
