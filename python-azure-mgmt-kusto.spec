@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-kusto
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Microsoft Azure Kusto Management Client Library
 License:        MIT
