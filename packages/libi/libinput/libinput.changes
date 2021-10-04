@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 28 08:28:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19.1
+  * New: Detects (and works around) buggy devices that claim to
+    have a high-resolution scroll wheel but which do not actually
+    send events.
+  * New assumption that any non-bluetooth touchpad is internal.
+  * Jumping cursor warning has been reduced once again.
+
+-------------------------------------------------------------------
 Tue Sep 14 11:57:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.19

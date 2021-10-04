@@ -898,4 +898,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.19</comment>
     <requestid>918903</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>203d2ac0cfbbce05135cef58d8888d09</srcmd5>
+    <version>1.19.1</version>
+    <time>1633365536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.19.1</comment>
+    <requestid>921955</requestid>
+  </revision>
 </revisionlist>
