@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-or-later
@@ -37,6 +37,7 @@ Source99:       qt6-shadertools-rpmlintrc
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
+Requires:       spirv-tools
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -57,7 +58,7 @@ The Qt 6 ShaderTools library.
 Summary:        Qt 6 ShaderTools library - Development files
 Requires:       libQt6ShaderTools6 = %{version}
 # qsb is required
-Requires:       qt6-shadertools
+Requires:       qt6-shadertools = %{version}
 
 %description devel
 Development files for the Qt 6 ShaderTools library
@@ -107,6 +108,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtShaderTools/
 %{_qt6_libdir}/libQt6ShaderTools.prl
 %{_qt6_libdir}/libQt6ShaderTools.so
+%{_qt6_metatypesdir}/qt6shadertools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_shadertools.pri
 %exclude %{_qt6_includedir}/QtShaderTools/%{real_version}/
 
