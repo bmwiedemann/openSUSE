@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 29 15:44:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Clean requirements
+- Reactivate python2 for Leap targets
+  * keep backports/__init__.py for python2
+    gh#jaraco/backports.entry_points_selectable#5
+
+-------------------------------------------------------------------
 Wed Aug  4 13:35:05 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Initial package for backports.entry_points_selectable 1.1.0.

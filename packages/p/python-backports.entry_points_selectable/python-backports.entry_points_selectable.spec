@@ -17,8 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# See pep#0420 ... implicit namespace packages are available only in Python 3.3
-%define skip_python2 1
+%bcond_without python2
 Name:           python-backports.entry_points_selectable
 Version:        1.1.0
 Release:        0
@@ -26,21 +25,19 @@ Summary:        Compatibility shim providing selectable entry points for older i
 License:        MIT
 URL:            https://github.com/jaraco/backports.entry_points_selectable
 Source:         https://files.pythonhosted.org/packages/source/b/backports.entry_points_selectable/backports.entry_points_selectable-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.7}
 BuildRequires:  %{python_module pytest >= 4.6}
-BuildRequires:  %{python_module pytest-flake8}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-black >= 0.3.7}
-BuildRequires:  %{python_module pytest-mypy}
-# BuildRequires:  %%{python_module pytest-checkdocs >= 2.4}
-# BuildRequires:  %%{python_module pytest-enabler >= 1.0.1}
-# # For docs
-# BuildRequires:  %%{python_module Sphinx}
-# BuildRequires:  %%{python_module jaraco.packaging >= 8.2}
-# BuildRequires:  %%{python_module rst.linker >= 1.9}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
+%if %{with python2}
+BuildRequires:  python-backports
+%endif
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+%ifpython2
+Requires:       python-backports
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,23 +53,30 @@ Compatibility shim providing selectable entry points for older implementations
 %install
 %python_install
 
-# PEP-420 allows implicit packages without an additional __init__.py
-%{python_expand # remove explicit __init__.py files
-rm -v %{buildroot}%{$python_sitelib}/backports/__init__.py \
-      %{buildroot}%{$python_sitelib}/backports/__pycache__/__init__.*
-%fdupes %{buildroot}%{$python_sitelib}
+# PEP-420 allows implicit packages without an additional __init__.py for python >= 3.3,
+# gh#jaraco/backports.entry_points_selectable#5
+%{python_expand # remove explicit __init__.py files (unless we need it for the python2 tests)
+if [ "${python_flavor}" != "python2" ]; then
+  rm -v %{buildroot}%{$python_sitelib}/backports/__init__.py* \
+        %{buildroot}%{$python_sitelib}/backports/__pycache__/__init__.*
+  %fdupes %{buildroot}%{$python_sitelib}
+fi
 }
 
 %check
-%pytest
+%pytest --pyargs backports
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
 %dir %{python_sitelib}/backports
-%{python_sitelib}/backports.entry_points_selectable*
-%{python_sitelib}/backports/entry_points_selectable.py
-%dir %{python_sitelib}/backports/__pycache__
+%ifpython2
+# provided by python2-backports
+%exclude %{python_sitelib}/backports/__init__.py*
+%endif
+%{python_sitelib}/backports/entry_points_selectable.py*
+%pycache_only %dir %{python_sitelib}/backports/__pycache__
 %pycache_only %{python_sitelib}/backports/__pycache__/*
+%{python_sitelib}/backports.entry_points_selectable-%{version}*-info
 
 %changelog
