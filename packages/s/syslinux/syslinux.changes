@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  9 10:45:24 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Link all binaries as Position Independent Executables (bsc#1184124).
+  + syslinux-4.04-pie.diff
+
+-------------------------------------------------------------------
 Wed Feb  3 09:45:57 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add syslinux-4.04-reproducible-isohybrid.patch to allow for

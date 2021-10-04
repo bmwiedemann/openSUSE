@@ -1,7 +1,7 @@
 #
 # spec file for package syslinux
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ BuildRequires:  python3
 BuildRequires:  xz
 # lots of assembler here that would need to be changed :(
 #!BuildIgnore:	gcc-PIE
-Url:            http://www.syslinux.org/wiki/index.php/The_Syslinux_Project
+URL:            http://www.syslinux.org/wiki/index.php/The_Syslinux_Project
 Suggests:       mtools
 Summary:        Boot Loader for Linux
 License:        GPL-2.0-or-later
@@ -64,6 +64,7 @@ Patch22:        remove-note-gnu-section.patch
 Patch23:        %{name}-%{version}-lzo.diff
 Patch24:        %{name}-%{version}-gcc10.diff
 Patch25:        syslinux-4.04-reproducible-isohybrid.patch
+Patch26:        %{name}-%{version}-pie.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -105,6 +106,7 @@ Authors:
 %patch23 -p0
 %patch24 -p0
 %patch25 -p1
+%patch26 -p1
 
 %build
 cp %{SOURCE2} .

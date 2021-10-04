@@ -1,0 +1,68 @@
+Index: syslinux-4.04/utils/Makefile
+===================================================================
+--- syslinux-4.04.orig/utils/Makefile
++++ syslinux-4.04/utils/Makefile
+@@ -17,8 +17,8 @@
+ topdir = ..
+ include $(topdir)/MCONFIG
+ 
+-CFLAGS   = $(GCCWARN) -Os -fomit-frame-pointer -D_FILE_OFFSET_BITS=64
+-LDFLAGS  = -O2 -g
++CFLAGS   = $(GCCWARN) -Os -fomit-frame-pointer -D_FILE_OFFSET_BITS=64 -fPIC $(OPTFLAGS)
++LDFLAGS  += -O2 -g -pie
+ 
+ TARGETS	 = mkdiskimage isohybrid gethostip memdiskfind
+ TARGETS += isohybrid.pl  # about to be obsoleted
+Index: syslinux-4.04/extlinux/Makefile
+===================================================================
+--- syslinux-4.04.orig/extlinux/Makefile
++++ syslinux-4.04/extlinux/Makefile
+@@ -20,8 +20,8 @@ include $(topdir)/MCONFIG
+ OPTFLAGS = -g -Os
+ INCLUDES = -I. -I.. -I../libinstaller
+ CFLAGS	 = $(GCCWARN) -Wno-sign-compare -D_FILE_OFFSET_BITS=64 \
+-	   $(OPTFLAGS) $(INCLUDES)
+-LDFLAGS	 = # -s
++	   -fPIC $(OPTFLAGS) $(INCLUDES)
++LDFLAGS += -pie # -s
+ 
+ SRCS     = main.c \
+ 	   ../libinstaller/syslxmod.c \
+Index: syslinux-4.04/mtools/Makefile
+===================================================================
+--- syslinux-4.04.orig/mtools/Makefile
++++ syslinux-4.04/mtools/Makefile
+@@ -3,8 +3,8 @@ include $(topdir)/MCONFIG
+ 
+ OPTFLAGS = -g -Os
+ INCLUDES = -I. -I.. -I../libfat -I../libinstaller
+-CFLAGS	 = $(GCCWARN) -D_FILE_OFFSET_BITS=64 $(OPTFLAGS) $(INCLUDES)
+-LDFLAGS	 = -s
++CFLAGS	 = $(GCCWARN) -D_FILE_OFFSET_BITS=64 -fPIC $(OPTFLAGS) $(INCLUDES)
++LDFLAGS	+= -s -pie
+ 
+ SRCS     = syslinux.c \
+ 	   ../libinstaller/fat.c \
+Index: syslinux-4.04/core/Makefile
+===================================================================
+--- syslinux-4.04.orig/core/Makefile
++++ syslinux-4.04/core/Makefile
+@@ -138,3 +138,4 @@ spotless: clean
+ 
+ # Include dependencies file
+ -include .*.d */.*.d */*/.*.d
++
+Index: syslinux-4.04/linux/Makefile
+===================================================================
+--- syslinux-4.04.orig/linux/Makefile
++++ syslinux-4.04/linux/Makefile
+@@ -20,7 +20,8 @@ include $(topdir)/MCONFIG
+ OPTFLAGS = -g -O0 -Dalloca=malloc
+ INCLUDES = -I. -I.. -I../libinstaller
+ CFLAGS	 = $(GCCWARN) -D_FILE_OFFSET_BITS=64 $(OPTFLAGS) $(INCLUDES)
+-LDFLAGS	 = 
++CFLAGS  += -fPIC
++LDFLAGS	 = -pie
+ 
+ SRCS     = syslinux.c \
+ 	   ../libinstaller/syslxopt.c \

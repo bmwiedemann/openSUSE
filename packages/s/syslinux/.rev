@@ -518,4 +518,12 @@
 helps ipxe iso reproducibility. (forwarded request 868912 from bmwiedemann)</comment>
     <requestid>879107</requestid>
   </revision>
+  <revision rev="69" vrev="48">
+    <srcmd5>e783fb092298de1c0a4d005229872b58</srcmd5>
+    <version>4.04</version>
+    <time>1633365549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922417</requestid>
+  </revision>
 </revisionlist>
