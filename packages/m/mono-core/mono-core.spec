@@ -1,9 +1,7 @@
-
-
 #
 # spec file for package mono-core
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +37,7 @@
 %define roslyn no
 %endif
 
-%define version_suffix 107
+%define version_suffix 122
 
 Name:           mono-core
 Version:        6.12.0
