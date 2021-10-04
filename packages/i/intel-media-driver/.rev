@@ -178,4 +178,12 @@ versions of libva(2)</comment>
   * Fix regression:libva conformance failures since github issue#1229</comment>
     <requestid>922198</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cb658c78e8846f26a651983ff4865d20</srcmd5>
+    <version>21.3.4</version>
+    <time>1633365582</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in a previous changelog</comment>
+    <requestid>923060</requestid>
+  </revision>
 </revisionlist>
