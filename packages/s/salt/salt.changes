@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 30 10:49:56 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not break master_tops for minion with version lower to 3003
+
+- Added:
+  * do-not-break-master_tops-for-minion-with-version-low.patch
+
+-------------------------------------------------------------------
 Fri Sep 24 15:07:50 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Support querying for JSON data in external sql pillar
