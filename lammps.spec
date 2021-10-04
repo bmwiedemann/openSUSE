@@ -1,7 +1,7 @@
 #
 # spec file for package lammps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017-2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,21 +17,6 @@
 #
 
 
-# Build with OpenMPI
-%if 0%{?sle_version} == 0
-%define mpiver  openmpi2
-%else
-%if 0%{?sle_version} <= 120300
-%define mpiver  openmpi
-%else
-  %if 0%{?sle_version} <= 150000
-  %define mpiver  openmpi2
-  %else
-  %define mpiver  openmpi3
-  %endif
-%endif
-%endif
-
 Name:           lammps
 Version:        20201029
 Release:        0
@@ -42,8 +27,6 @@ Group:          Productivity/Scientific/Chemistry
 URL:            https://lammps.sandia.gov
 Source0:        https://github.com/lammps/lammps/archive/%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
 Source1:        https://github.com/google/googletest/archive/release-1.10.0.tar.gz
-BuildRequires:  %{mpiver}
-BuildRequires:  %{mpiver}-devel
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-devel
@@ -51,9 +34,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  gsl-devel
 BuildRequires:  kim-api-devel >= 2.1
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  readline-devel
 # for testing
-BuildRequires:  kim-api-examples 
+BuildRequires:  kim-api-examples
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ocl-icd-devel
@@ -69,16 +53,16 @@ Requires:       %{name}-data
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
+LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
-LAMMPS has potentials for soft materials (biomolecules, polymers) and 
-solid-state materials (metals, semiconductors) and coarse-grained or 
-mesoscopic systems. It can be used to model atoms or, more generically, as a 
+LAMMPS has potentials for soft materials (biomolecules, polymers) and
+solid-state materials (metals, semiconductors) and coarse-grained or
+mesoscopic systems. It can be used to model atoms or, more generically, as a
 parallel particle simulator at the atomic, meso, or continuum scale.
 
-LAMMPS runs on single processors or in parallel using message-passing 
-techniques and a spatial-decomposition of the simulation domain. The code is 
+LAMMPS runs on single processors or in parallel using message-passing
+techniques and a spatial-decomposition of the simulation domain. The code is
 designed to be easy to modify or extend with new functionality.
 
 %package -n liblammps0
@@ -86,16 +70,16 @@ Summary:        LAMMPS library
 Group:          System/Libraries
 
 %description -n liblammps0
-LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
+LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
-LAMMPS has potentials for soft materials (biomolecules, polymers) and 
-solid-state materials (metals, semiconductors) and coarse-grained or 
-mesoscopic systems. It can be used to model atoms or, more generically, as a 
+LAMMPS has potentials for soft materials (biomolecules, polymers) and
+solid-state materials (metals, semiconductors) and coarse-grained or
+mesoscopic systems. It can be used to model atoms or, more generically, as a
 parallel particle simulator at the atomic, meso, or continuum scale.
 
-LAMMPS runs on single processors or in parallel using message-passing 
-techniques and a spatial-decomposition of the simulation domain. The code is 
+LAMMPS runs on single processors or in parallel using message-passing
+techniques and a spatial-decomposition of the simulation domain. The code is
 designed to be easy to modify or extend with new functionality.
 
 This package contains the library of LAMMPS package.
@@ -107,16 +91,16 @@ Requires:       %{name} = %{version}
 Requires:       liblammps0 = %{version}
 
 %description devel
-LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
+LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
-LAMMPS has potentials for soft materials (biomolecules, polymers) and 
-solid-state materials (metals, semiconductors) and coarse-grained or 
-mesoscopic systems. It can be used to model atoms or, more generically, as a 
+LAMMPS has potentials for soft materials (biomolecules, polymers) and
+solid-state materials (metals, semiconductors) and coarse-grained or
+mesoscopic systems. It can be used to model atoms or, more generically, as a
 parallel particle simulator at the atomic, meso, or continuum scale.
 
-LAMMPS runs on single processors or in parallel using message-passing 
-techniques and a spatial-decomposition of the simulation domain. The code is 
+LAMMPS runs on single processors or in parallel using message-passing
+techniques and a spatial-decomposition of the simulation domain. The code is
 designed to be easy to modify or extend with new functionality.
 
 This package contains development headers and libraries for LAMMPS.
@@ -127,16 +111,16 @@ Group:          Development/Languages/Python
 Requires:       liblammps0 = %{version}
 
 %description -n python-%{name}
-LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
+LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
-LAMMPS has potentials for soft materials (biomolecules, polymers) and 
-solid-state materials (metals, semiconductors) and coarse-grained or 
-mesoscopic systems. It can be used to model atoms or, more generically, as a 
+LAMMPS has potentials for soft materials (biomolecules, polymers) and
+solid-state materials (metals, semiconductors) and coarse-grained or
+mesoscopic systems. It can be used to model atoms or, more generically, as a
 parallel particle simulator at the atomic, meso, or continuum scale.
 
-LAMMPS runs on single processors or in parallel using message-passing 
-techniques and a spatial-decomposition of the simulation domain. The code is 
+LAMMPS runs on single processors or in parallel using message-passing
+techniques and a spatial-decomposition of the simulation domain. The code is
 designed to be easy to modify or extend with new functionality.
 
 This subpackage contains LAMMPS's Python module.
@@ -147,26 +131,25 @@ Group:          Productivity/Scientific/Chemistry
 BuildArch:      noarch
 
 %description data
-LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale 
+LAMMPS is a classical molecular dynamics code, and an acronym for Large-scale
 Atomic/Molecular Massively Parallel Simulator.
 
-LAMMPS has potentials for soft materials (biomolecules, polymers) and 
-solid-state materials (metals, semiconductors) and coarse-grained or 
-mesoscopic systems. It can be used to model atoms or, more generically, as a 
+LAMMPS has potentials for soft materials (biomolecules, polymers) and
+solid-state materials (metals, semiconductors) and coarse-grained or
+mesoscopic systems. It can be used to model atoms or, more generically, as a
 parallel particle simulator at the atomic, meso, or continuum scale.
 
-LAMMPS runs on single processors or in parallel using message-passing 
-techniques and a spatial-decomposition of the simulation domain. The code is 
+LAMMPS runs on single processors or in parallel using message-passing
+techniques and a spatial-decomposition of the simulation domain. The code is
 designed to be easy to modify or extend with new functionality.
 
 This subpackage contains LAMMPS's potential files
-
 
 %prep
 %setup -a 1 -q -n %{name}-%{uversion}
 
 %build
-source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
+%setup_openmpi
 
 %{cmake} \
   -C ../cmake/presets/all_on.cmake \
@@ -197,7 +180,7 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 rm -rf %{buildroot}%{_datadir}/{applications,icons}/
 
 %check
-export LD_LIBRARY_PATH='%{buildroot}%{_libdir}:%{_libdir}/mpi/gcc/%{mpiver}/%{_lib}'
+%setup_openmpi
 
 # https://github.com/lammps/lammps/issues/2383, inject -msse2 on %ix86 to make test pass
 %ifarch %ix86

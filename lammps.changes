@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  1 06:08:29 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi macros to always build with the default openmpi version.
+
+-------------------------------------------------------------------
 Wed Nov  4 16:11:48 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - dropped 9cdde97863825e4fdce449920d39b25414b2b0b3.patch merged upsteam
