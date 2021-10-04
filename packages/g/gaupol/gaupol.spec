@@ -20,7 +20,7 @@
 %bcond_without test
 %define skip_python2 1
 Name:           gaupol
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        GTK Subtitle editor
 License:        GPL-3.0-or-later

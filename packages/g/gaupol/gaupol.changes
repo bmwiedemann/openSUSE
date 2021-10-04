@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 30 20:30:11 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.10:
+  * Fix subtitle display when seeking to selection start
+    (gh#otsaloma/gaupol#181).
+  * Fix search dialog result sometimes not being selected.
+  * Fix rare RecursionError with spell-check.
+
+-------------------------------------------------------------------
 Thu Mar 25 16:11:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existense of python38 macros in Leap.
