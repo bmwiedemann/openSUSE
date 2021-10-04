@@ -1,7 +1,7 @@
 #
 # spec file for package opie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,7 +117,7 @@ mv %{name_pam}/README ./README.PAM
 # install pam_opie
 cd %{name_pam}
 make FAKEROOT="%{buildroot}" \
-     SECUREDIR=/%{_lib}/security install
+     SECUREDIR=%_pam_moduledir install
 
 %verifyscript
 %verify_permissions /usr/bin/opiepasswd
@@ -138,7 +138,7 @@ make FAKEROOT="%{buildroot}" \
 %verify(not mode) %attr(0755,root,root) /usr/bin/opiesu
 /usr/bin/otp-md4
 /usr/bin/otp-md5
-/%{_lib}/security/pam_opie.so
+%_pam_moduledir/pam_opie.so
 /%{_includedir}/opie.h
 /%{_libdir}/libopie.a
 %doc BUG-REPORT COPYRIGHT.NRL License.TIN README README.PAM

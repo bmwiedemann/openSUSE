@@ -229,4 +229,12 @@
   permissions profiles clean. (forwarded request 844521 from mgerstner)</comment>
     <requestid>844524</requestid>
   </revision>
+  <revision rev="33" vrev="732">
+    <srcmd5>8112df811fc610658e5ad1bf455f15c5</srcmd5>
+    <version>2.4</version>
+    <time>1633365538</time>
+    <user>dimstar_suse</user>
+    <comment>- use %_pam_moduledir (bsc#1191045) (forwarded request 922027 from msmeissn)</comment>
+    <requestid>922028</requestid>
+  </revision>
 </revisionlist>

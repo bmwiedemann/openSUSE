@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 14:59:04 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- use %_pam_moduledir (bsc#1191045)
+
+-------------------------------------------------------------------
 Wed Oct 28 09:37:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - remove opiekeys and opiesu from permissions profiles. Package them normally,
