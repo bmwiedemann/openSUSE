@@ -114,17 +114,17 @@ the libopeniscsiusr library.
 
 %build
 [ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED -DLOCK_DIR=\\\"%{_sysconfdir}/iscsi\\\"" LIB_DIR=%{_libdir} user
+make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED -DLOCK_DIR=\\\"%{_sysconfdir}/iscsi\\\"" LIB_DIR=%{_libdir} sbindir=%{_sbindir} user
 cd iscsiuio
 touch AUTHORS NEWS
 autoreconf --install
-%configure --sbindir=/sbin
+%configure --sbindir=%{_sbindir}
 make %{?_smp_mflags} CFLAGS="%{optflags}" LIB_DIR=%{_libdir}
 
 %install
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} install_user
+make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} sbindir=%{_sbindir} install_user
 # install service files
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} install_systemd
+make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} sbindir=%{_sbindir} install_systemd
 # create rc symlinks
 [ -d %{buildroot}%{_sbindir} ] || mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsi
@@ -132,7 +132,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsid
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsiuio
 (cd %{buildroot}/etc; ln -sf iscsi/iscsid.conf iscsid.conf)
 echo > %{buildroot}%{_sysconfdir}/iscsi/initiatorname.iscsi
-install -m 0755 usr/iscsistart %{buildroot}/sbin
+install -m 0755 usr/iscsistart %{buildroot}/%{_sbindir}
 %make_install -C iscsiuio
 # rename iscsiuio logrotate file to proper name
 mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuio
@@ -155,8 +155,8 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %preun
 %service_del_preun iscsi.service iscsid.service iscsid.socket
 
-%post   -n libopeniscsiusr0_2_0 -p /sbin/ldconfig
-%postun -n libopeniscsiusr0_2_0 -p /sbin/ldconfig
+%post   -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
+%postun -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
 
 %post -n iscsiuio
 %service_add_post iscsiuio.service iscsiuio.socket
@@ -184,14 +184,14 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %{_systemdgeneratordir}/ibft-rule-generator
 %{_sbindir}/rciscsi
 %{_sbindir}/rciscsid
-/sbin/iscsid
-/sbin/iscsiadm
-/sbin/iscsi-iname
-/sbin/iscsistart
-/sbin/iscsi-gen-initiatorname
-/sbin/iscsi_offload
-/sbin/iscsi_discovery
-/sbin/iscsi_fw_login
+%{_sbindir}/iscsid
+%{_sbindir}/iscsiadm
+%{_sbindir}/iscsi-iname
+%{_sbindir}/iscsistart
+%{_sbindir}/iscsi-gen-initiatorname
+%{_sbindir}/iscsi_offload
+%{_sbindir}/iscsi_discovery
+%{_sbindir}/iscsi_fw_login
 %doc README
 %license COPYING
 %{_mandir}/man8/iscsiadm.8%{ext_man}
@@ -206,8 +206,8 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %{_libdir}/libopeniscsiusr.so.*
 
 %files -n iscsiuio
-/sbin/iscsiuio
-/sbin/brcm_iscsiuio
+%{_sbindir}/iscsiuio
+%{_sbindir}/brcm_iscsiuio
 %{_mandir}/man8/iscsiuio.8%{ext_man}
 %config %{_sysconfdir}/logrotate.d/iscsiuio
 %{_unitdir}/iscsiuio.service

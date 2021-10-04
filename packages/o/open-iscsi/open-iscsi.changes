@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 30 20:59:42 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Update to latest from upstream, fixing:
+  * Moving the executables from /sbin to /usr/sbin (bsc#1191054)
+  * Remove default dependencies from iscsi-init.service
+   (bsc#1187190)
+
+-------------------------------------------------------------------
 Wed Sep  8 22:11:35 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream 2.1.5 as 2.1.5-suse, which contains
