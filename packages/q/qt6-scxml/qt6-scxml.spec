@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -174,6 +174,7 @@ ABI or API guarantees.
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 %post -n libQt6Scxml6 -p /sbin/ldconfig
 %post -n libQt6ScxmlQml6 -p /sbin/ldconfig
@@ -242,6 +243,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_includedir}/QtStateMachine/
 %{_qt6_libdir}/libQt6StateMachine.prl
 %{_qt6_libdir}/libQt6StateMachine.so
+%{_qt6_metatypesdir}/qt6statemachine_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachine.pri
 %exclude %{_qt6_includedir}/QtStateMachine/%{real_version}
 
