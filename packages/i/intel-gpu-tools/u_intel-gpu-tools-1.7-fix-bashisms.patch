@@ -1,0 +1,10 @@
+Index: tools/intel_gpu_abrt
+===================================================================
+--- tools/intel_gpu_abrt.orig
++++ tools/intel_gpu_abrt
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ 
+ if [ $(id -ru) -ne 0 ]; then
+     echo "$0 must be run as root"

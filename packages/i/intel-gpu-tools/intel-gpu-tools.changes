@@ -1,0 +1,764 @@
+-------------------------------------------------------------------
+Sat May 15 22:10:00 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 1.26:
+  * Autotools support has been entirely dropped in favor of only meson. (Arkadiusz Hiler)
+  * Tests can now signal that the whole test round should be aborted. (Arkadiusz Hiler)
+  * Various robustness improvements for Chamelium use. (Arkadiusz Hiler,
+    Kunal Joshi, Imre Deak, et al)
+  * Device filtering improvements for multi-device use. (Arkadiusz Hiler)
+  * Device filtering for various Intel tools like intel_gpu_top. (Ayaz A Siddiqui)
+  * Overhauled kernel parameter handling. (Jani Nikula)
+  * Introduced an i915 batchbuffer facility. (Zbigniew Kempczyński)
+  * Improvements for testing nouveau. (Lyude Paul)
+  * More readable and useful output for lsgpu and other tools that list
+    devices. (Tvrtko Ursulin)
+  * intel_gpu_top can now show per-client busyness stats. (Tvrtko Ursulin)
+  * igt_runner can now limit the disk space used by a single test. (Petri Latvala)
+- Switch to meson build system, Remove u_respect_cflags.diff (no longer needed)
+
+-------------------------------------------------------------------
+Sat Sep  5 06:23:03 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 1.25:
+  * Meson build options have been renamed. Please check the news options in
+    meson_options.txt and make sure you don't get any warnings when configuring
+    the project. (Simon Ser)
+  * Compile-testing CI for MIPS. (Guillaume Tucker)
+  * Various igt_runner reliability improvements (Petri Latvala & Arkadiusz Hiler)
+  * Switched GEM tests to engine discovery. (Tvrtko Ursulin et al)
+  * Subtests can now be documented and their descriptions are available in
+    generated HTML docs and on the command line via *-describe. Documenting new
+    tests is mandatory. (Arkadiusz Hiler)
+  * Unified library for EDID creation (Simon Ser)
+  * Chamelium port auto-discovery (Simon Ser)
+  * Tigerlake support (Lucas De Marchi)
+  * Cometlake support (Anusha Srivatsa)
+  * Add kernel selftest wrapper for dmabuf (Chris Wilson)
+  * Bumped required meson version to 0.47.2 (Arkadiusz Hiler)
+  * Rewritten README to be more friendly (Arkadiusz Hiler)
+  * Introduced dynamic subsubtests for getting partial result for
+    runtime*dependant features (Petri Latvala)
+  * IGT can now run on the selected GPU via --device and lsgpu tool (Zbigniew
+    Kempczyński)
+  * Reduced runtime of many many tests (Chris Wilson et al)
+
+-------------------------------------------------------------------
+Sat Feb 29 17:03:32 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.24:
+  * Bumped required meson version to 0.47. (Arkadiusz Hiler)
+  * All the meson build options that used auto, true and false are now first
+    class 'feature' options taking auto, enabled and disabled. (Arkadiusz Hiler)
+  * Piglit as the primary test executor replaced by mostly drop-in
+    compatible igt_runner. (Petri Latvala)
+  * Stack traces now contain source file names and line numbers, using
+    libdw. (Maarten Lankhorst)
+  * Pixman dependency is now mandatory. (Maxime Ripard)
+  * The project has moved to gitlab, and uses gitlab's CI to build test
+    and sanity test each commit on various distributions and
+    architectures. (Arkadiusz Hiler et al)
+  * Shader debugger removed due to lack of use and accumulation of
+    bitrot. (Arkadiusz Hiler)
+  * Added support for testing DP/HDMI audio with the Chamelium device,
+    dropping the audio tests that required exotic custom hardware to
+    execute. (Simon Ser)
+  * Autotools support dropped for various parts of IGT (assembler,
+    documentation, etc). (Daniel Vetter)
+  * intel-gpu-top can now output data to stdout or a log file for
+    noninteractive use. (Tvrtko Ursulin)
+- Remove n_disable-build-of-pm_rpm.patch is no longer needed 
+
+-------------------------------------------------------------------
+Mon Nov 19 14:12:11 UTC 2018 - sndirsch@suse.com
+
+- n_disable-build-of-gem_userptr_blits.patch
+  * disabled build of gem_userptr_blits test in order to fix build
+    on SUSE <= sle15/Leap15
+
+-------------------------------------------------------------------
+Fri Aug 17 12:09:00 UTC 2018 - sndirsch@suse.com
+
+- Release 1.23 (2018-08-08)
+  * General changes:
+    - Bumped used C standard to gnu11. (Lucas De Marchi)
+    - Bumped required meson version to 0.44. (Petri Latvala)
+    - Introduced meson options for explicit control over optional dependencies.
+     (Petri Latvala)
+    - Added a meson option to set runpath for the installed executables.
+     (Petri Latvala)
+    - GLib is now a mandatory dependency. (Petri Latvala)
+    - Added testlists for the vc4 driver. (Maxime Ripard)
+    - The project has now finalized its name change and is now IGT GPU Tools,
+      docs and install paths are now "igt-gpu-tools". (Arkadiusz Hiler)
+    - Added a blacklist for the Intel CI. (Petri Latvala)
+  * Library changes:
+    - i915_pciids.h updated to include KBL, ICL, WHL and AML.
+     (José Roberto de Souza, Paulo Zanoni)
+    - Overhaul of gpu_cmds, gpgpu_fill, media_fill and rendercopy.
+      (Katarzyna Dec, Lukasz Kalamarz)
+    - Added igt_matrix and igt_color_encoding helper libraries. (Ville Syrjälä)
+    - IGT now shows the kernel stack trace when reporting a GPU hang. (Chris Wilson)
+    - Added Icelake platform support. (Arkadiusz Hiler, Paulo Zanoni)
+  * Tools changes:
+    - intel-gpu-top was rewritten to be safe to use. (Tvrtko Ursulin)
+  * Documentation changes:
+    - Documented commit rights in CONTRIBUTING. (Daniel Vetter)
+  * Test changes:
+    - kms_prs_sink_crc was renamed to kms_psr. (Dhinakaran Pandiyan)
+    - kms_frontbuffer_tracking no longer tests sink crc. (Dhinakaran Pandiyan)
+    - drm_vma_limiter is no more. (Chris Wilson)
+  * And many other bug fixes, improvements, cleanups and new tests.
+
+-------------------------------------------------------------------
+Wed Apr  4 14:58:08 UTC 2018 - chris@computersalat.de
+
+- Release 1.22 (2018-03-09)
+  * General changes:
+    - Libudev has been made a mandatory dependency. (Antonio Argenziano)
+    - Documentation changed to refer to the new igt-dev mailing
+      list. (Rhys Kidd)
+  * Library changes:
+    - Refactored timer usage for smaller code size. (Chris Wilson)
+    - Various fixes to support planar framebuffers. (Maarten Lankhorst)
+    - Added support for fetching the most recent CRC without waiting for a
+      vblank, along with flushing the queue of already collected
+      CRCs. (Maarten Lankhorst)
+    - Added a helper to mark BOs purgeable on vc4. (Boris Brezillon)
+    - Moved handling of a "cork" BO into lib from various tests.
+      (Daniele Ceraolo Spurio)
+    - Added support for looping over physical i915 engines, as opposed to
+      uABI engines that can alias. (Chris Wilson)
+    - Added an accelerated method for reading from WC buffers.
+      (Chris Wilson)
+  * Tools changes:
+    - Improved intel_vbt_decode output, updated the data from current
+      kernel. (Jani Nikula)
+    - intel_reg can now read/write registers using a given engine.
+      (Mika Kuoppala)
+    - Aubdump can now simulate enhanced execlist submission, for
+      gen11+. (Scott D Phillips)
+  * And many other bug fixes, improvements, cleanups and new tests.
+- Release 1.21 (2018-01-16)
+  * Library changes:
+    - Added helpers for using DRM syncobj. (Jason Ekstrand)
+    - Refactored several i915 helpers into library functions.
+      (Michał Winiarski)
+    - Improved the GPU quiescing code to more thoroughly flush old data
+      and pending work. (Chris Wilson)
+    - Reworked DRM property handling to be more suitable for
+      atomic commits. (Maarten Lankhorst)
+    - Removed support for legacy CRC API. The generic API has been
+      available since kernel 4.10. (Maarten Lankhorst)
+    - Opening a DRM device now automatically loads its module. (Chris Wilson)
+    - Imported the drm-uapi headers as copies instead of using what's
+      installed in the system. (Eric Anholt)
+    - Moved the perf code to its own library from
+      intel-gpu-overlay. (Tvrtko Ursulin)
+    - Removed Android support due to lack of use and
+      maintenance. (Arkadiusz Hiler)
+    - Upgraded meson to official production status, automake is still kept
+      around for now.
+  * Tools changes:
+    - Improved the output of intel_vbt_decode. (Jani Nikula)
+    - intel_error_decode now prints user buffers if they contain debug
+      logs. (Chris Wilson)
+    - Improved the output of intel_watermark. (Ville Syrjälä,
+      Dhinakaran Pandiyan)
+    - Aubdump can now simulate execlist submission, converting from ring
+      buffer submission method. (Scott D Phillips)
+    - intel-gpu-overlay can now show data from perf PMU. (Tvrtko Ursulin,
+      Chris Wilson)
+    - intel-gpu-overlay now parses tracepoint locations from
+      sysfs. (Lionel Landwerlin)
+  * Documentation changes:
+    - Documentation can now be built with Meson. (Daniel Vetter)
+  * And many other bug fixes, improvements, cleanups and new tests.
+- adjusted u_respect_cflags.diff
+- fix deps for libdrm
+- fix build
+  * add ./autogen.sh
+  * add --enable-gtk-doc
+
+-------------------------------------------------------------------
+Fri Oct  6 12:58:14 UTC 2017 - sndirsch@suse.com
+
+- Release 1.20 (2017-10-04) 
+  * Library changes:
+    - Added helpers for launching external processes and capturing their
+      outputs. (Abdiel Janulgue)
+    - Increased max pipe count to 6 to support AMD GPUs. (Leo (Sunpeng) Li)
+    - Various improvements for Chamelium support. (Paul Kocialkowski)
+    - Added Coffeelake platform support. (Rodrigo Vivi, Anusha Srivatsa)
+    - Added Cannonlake platform support. (Rodrigo Vivi)
+    - Added support for audio testing. (Paul Kocialkowski)
+    - Added preliminary meson build system support. (Daniel Vetter, et al)
+      -- Autotools remains the supported build system for now.
+  * Tools changes:
+    - Refactored video bios data to use definitions copied from the
+      kernel. (Jani Nikula)
+  * Documentation changes:
+    - Added user and developer documentation about Chamelium support to
+      aid deploying the platform. (Paul Kocialkowski)
+    - Added documentation about the required hardware setup for audio
+      testing. (Paul Kocialkowski)
+  * Tests changes:
+    - Converted remaining shell-script tests to C code (Abdiel Janulgue)
+    - Multiple new tests.
+  * And many other bug fixes and improvements.
+- adjusted u_respect_cflags.diff
+
+-------------------------------------------------------------------
+Wed Aug 16 17:48:18 UTC 2017 - chris@computersalat.de
+
+- add Source signature file
+
+-------------------------------------------------------------------
+Sun Jun 18 08:44:02 UTC 2017 - sndirsch@suse.com
+
+- Release 1.19 (2017-06-09)
+  * Library changes:
+    - Changed debugfs handlers to open files for the DRM device in use,
+      for setups with more than one DRM device. (Tomeu Vizoso)
+    - Added support for 4K and audio HDMI EDID injection. (Abdiel
+      Janulgue, Marius Vlad)
+    - Added support for AMDGPU devices. (Chris Wilson)
+  * Tools changes:
+    - intel_error_decode now automatically opens a pager. (Chris Wilson)
+    - intel_error_decode now dumps the GuC firmware logs if available.
+      (Chris Wilson)
+  * Benchmark changes:
+    - gem_wsim: New benchmark that simulates command submission
+      workloads. (Tvrtko Ursulin)
+  * Scripts changes:
+    - trace.pl: New tool to parse i915 tracepoints for performance
+      analysis. (Tvrtko Ursulin)
+    - media-bench.pl: New tool to programmatically analyze simulated media
+      workloads using gem_wsim to find the optimal load balancing
+      strategy. (Tvrtko Ursulin)
+   * Test changes:
+     - Imported amdgpu tests from libdrm. (Chris Wilson)
+     - Multiple other new tests.
+   * And many other bug fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Apr 12 10:40:30 UTC 2017 - sndirsch@suse.com
+
+- SLE merge
+  * update to latest version, Stack release 2016Q1
+    (fate #315643-315645, 319159-319161, 319618)
+
+-------------------------------------------------------------------
+Tue Mar 14 17:53:57 UTC 2017 - sndirsch@suse.com
+
+- Release 1.18 (2017-03-13)
+  * Library changes:
+    - Various changes to library functions so that they don't assume Intel
+      hardware. (Lyude)
+    - Added helper functions for managing synchronization primitives.
+      (Robert Foss)
+    - Added support for the new generic CRC capture kernel ABI. (Tomeu
+      Vizoso)
+    - Added Geminilake platform support. (Ander Conselvan de Oliveira)
+    - Added helpers for sysfs hotplug events. (Lyude)
+    - Added support for hotplug testing with the Chamelium device (Lyude)
+  * Tools changes:
+    - intel_dp_compliance: New tool for running automated DisplayPort
+      compliance tests. (Manasi Navare)
+    - Renamed intel_bios_reader to intel_vbt_decode. (Jani Nikula)
+    - intel_gvtg_test: New tool for setting up GVT-g guests based on
+      KVMGT. (Terrence Xu)
+  * Test changes:
+    - Multiple new tests.
+  * And many other bug fixes and improvements.
+- refreshed patches: n_disable-build-of-pm_rpm.patch, u_respect_cflags.diff
+
+-------------------------------------------------------------------
+Sun Feb  5 12:30:23 UTC 2017 - jengelh@inai.de
+
+- Add u_respect_cflags.diff
+- supersedes N_intel-gpu-tools_Fix_libkmod.h_include_path_1320.patch,
+  N_intel-gpu-tools_Fix_libkmod.h_include_path_1315.patch,
+  N_intel-gpu-tools_Fix_libkmod.h_include_path.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 22:22:37 UTC 2017 - chris@computersalat.de
+
+- Release 1.17 (2016-12-02)
+  * Library changes:
+    - Added an iterator that generate primes for creating input data that
+      should not fall into any patterns that may be optimised by the
+      drivers. (Chris Wilson)
+    - Crashes in fixture blocks now print a stacktrace. (Marius Vlad)
+    - Added support for various system suspend/resume options. (Imre Deak)
+    - Added linked list helpers from the Wayland project. (Lyude)
+    - Added a generic dummy workload helper for submitting GPU workloads
+      that consume exactly a specified amount of time. (Abdiel Janulgue)
+    - Added C functions for driver loading/unloading, pkill and lsof, for
+      converting shell script tests to C code. (Marius Vlad)
+  * Tools changes:
+    - intel_reg: Add Kabylake support. (Jani Nikula)
+    - intel_bios_reader: Also dump PSR info. (Ville Syrjälä)
+    - intel_guc_logger: New tool for capturing logs from the GuC
+      firmware. (Akash Goel)
+    - intel_aubdump: Added commandline option to stream the dump to
+      another process. (Lionel Landwerlin)
+    - intel_aubdump: Annotate the dump with the application name and the
+      used PCI ID. (Jason Ekstrand)
+  * Benchmark changes:
+    - gem_latency: Added support for measuring fence wakeup latencies. (Chris Wilson)
+    - prime_lookup: New microbenchmark for stressing prime_fd_to_handle
+      and prime_handle_to_fd. (Chris Wilson)
+  * Test changes:
+    - Multiple new tests.
+    - Added an explicit list of tests used for Intel CI. (Petri Latvala)
+    - Converted multiple shell script tests to C. (Marius Vlad)
+  * And many other bug fixes and improvements.
+- add new deps
+  * pkgconfig(libkmod)
+  * pkgconfig(libprocps)
+- rebase patches
+- fix libkmod.h include path
+  * add N_intel-gpu-tools_Fix_libkmod.h_include_path_1315.patch
+  * add N_intel-gpu-tools_Fix_libkmod.h_include_path_1320.patch
+  * add N_intel-gpu-tools_Fix_libkmod.h_include_path.patch
+
+-------------------------------------------------------------------
+Thu Sep 22 13:18:54 UTC 2016 - sndirsch@suse.com
+
+- Update to version 1.16
+A new intel-gpu-tools quarterly release is available with the following
+changes:
+- Build automatically tests required when issueing a make check, Tests/subtests
+that receive a crash signal should print a backtrace when i-g-t is built with
+libunwind support (Marius Vlad)
+- lib/igt_kms: Force connector probing on first use (Chris Wilson)
+- vc4: Add a test for BO lookup failure error path (Eric Anholt)
+- tests/gem_mocs_settings: Remove direct register tests,
+and added RC6 tests (Peter Antoine)
+- Check for libdrm_intel and build if present, Add stubs for intel_bufmgr
+(Robert Foss)
+- igt/gem_mmap_gtt: Add a test to detect non-WC access (Chris Wilson)
+- Various documentation improvements (Daniel Vetter)
+- Added new tests: tests/kms_rmfb and tests/kms_atomic_transition, a test for
+fastboot, tests/kms_panel_fitting, and a test that only tries to set the
+current property values back, tests/kms_properties. Various improvements to
+tests/kms_cursor_legacy (Maarten Lankhorst)
+- lib/igt_kms: Use pipes for committing, not outputs and assign pipe properties
+in pipe init and many other improvements (Maarten Lankhorst)
+- tests/gem_workarounds: read test added as a basic test, fix assertion of num
+of regs (Mika Kuoppala)
+- Various improvements to tools/intel_bios_reader and tools/intel_reg (Ville
+Syrjï¿½lï¿½)
+- lib: Add x86 cpuid based feature detection (Chris Wilson)
+- demos/intel_sprite_on: Instead of looping until the first disconnected port
+is found, now go through all possible connectors, drawing the sprite on any
+connected display. (Jim Bride)
+- Multiple improvements to lib/igt_kms (Robert Foss)
+- lib/igt_aux: Framework for measuring latency in raising signals (Chris
+Wilson)
+- Various modifications to intel_chipset: Replace lookup of GT size with
+computation, remove unused PCI_CHIP ids, converting platforms names using
+device info (Chris Wilson)
+- tests/kms_chv_cursor_fail: Run the tests with fewer steps
+(Maarten Lankhorst)
+- lib/intel_chipset: Add more Kabylake PCI IDs and removed PCI IDs that are no
+longer listed as Kabylake (Rodrigo Vivi)
+- Basic framework for GVT-g testing has landed (Chris Wilson)
+- Various improvements to tests/kms_flip (Ville Syrjï¿½lï¿½)
+- igt/kms_cursor_legacy: Add a rudimentary test to detect stalled cursors,
+detect pageflip errors and check that cursor updates do not stall flips
+(Chris Wilson)
+- vGEM support: lib and added tests/vgem_basic, tests/vgem_slow and
+tests/vgem_reload_basic (Chris Wilson)
+- Various fixes to tests/kms_frontbuffer_tracking: prefer BLT drawing, recreate
+FBS at every subtest and properly handle mixing GTT and WC mmaps (Paulo Zanoni)
+- Replace drv_missed_irq_hang script with a C-equivalent: tests/drv_missed_irq
+(Chris Wilson)
+- Added a test case for polling dma-buf fences: tests/prime_busy (Chris Wilson)
+- lib/igt_gt: Omit illegal instruction on gen8+ and time
+constrains on hang detection (igt/gem_reset_stats) (Mika Kuoppala)
+- Added tests/kms_invalid_dotclock, a test that makes sure every modeset gets
+rejected by the kernel if the requested dotclock is beyond the hardware
+capabilities (Ville Syrjï¿½lï¿½)
+- tests/gem_stolen: Verify contents of stolen-backed objects across
+hibernation, fix for no_mmap subtest and check for available stolen memory size
+(Ankitprasad Sharma)
+- tests/core_prop_blob: Add invalid tests to set fb props (Daniel Vetter)
+- Many more fixes and improvements.
+
+-------------------------------------------------------------------
+Wed Jun  1 14:28:00 UTC 2016 - sndirsch@suse.com
+
+Update to version 1.15
+- New KMS test: tests/kms_cursor_legacy (Stress legacy cursor ioctl)
+(Chris Wilson)
+- Several GEM tests have been removed from BAT: tests/gem_exec_whisper,
+tests/gem_sync (dropped individual engines), test/gem_cs_prefetch (replaced
+by test/gem_exec_gttfill), tests/gem_ctx_param_basic (got relabeled
+to tests/gem_ctx_param) (Chris Wilson)
+- build: Skip configure step if is NOCONFIGURE set (Tomeu Vizoso)
+- tools/intel_bios_reader: Added options for dumping individual panels, specific
+section, hex format and other various fixes (Jani Nikula)
+- build: Add optional --enable-werror
+(hard-fail in case of compiler warnings) (Marius Vlad)
+- New KMS test: tests/prime_mmap_kms (show case dma-buf new API
+and processes restrictions) (Tiago Vignatti)
+- Several tests have gained to ability to be run on different platforms
+than Intel: tests/testdisplay (Tomeu Vizoso), tests/kms_panel_fitting
+(Robert Foss), tests/kms_flip_event_leak, tests/kms_flip (Tomeu Vizoso).
+- compute exitcode first: In the case of running multiple subtests which all
+happen to be skipped, igt_exitcode is 0, but the final exit code will be 77.
+(Chris Wilson)
+- Shorten tests/kms_flip test (Tvrtko Ursulin)
+- Half the timeout for suspend to RAM and a third for suspend to disk
+(Marius Vlad)
+- lib: Pass format instead of bpp to create_bo_for_fb (Ville Syrjälä)
+- Removed from tests/test-list.txt, tests/gem_concurrent_all and added
+tests/test-list-full.txt that contains all the tests. This will speed
+up considerably piglit when starting tests. (Gabriel Feceoru)
+- piglit changed its behaviour to prevent overwriting the results. A fairly new
+version of piglit is required to run i-g-t tests. (Gabriel Feceoru)
+- lib: Replace drmIoctl() with a layer of indirection (Chris Wilson)
+- Adding missing Broxton PCI IDs (Rodrigo Vivi)
+- Added COMMIT_ATOMIC (lib/igt_kms, w/ tests/kms_rotation_crc).
+Requires nuclear_pageflip parameter turned on in the i915 driver.
+(Mayuresh Gharpure, Pratik Vishwakarma)
+- man/: rewrite manual pages in reStructuredText (Jani Nikula)
+- tests/drv_module_reload_basic: perform fault injection (Chris Wilson)
+with various improvements (Imre Deak)
+- Removed tests/gem_multi_bsd_sync_loop which was superseded by
+tests/gem_ring_sync_loop and tests/gem_dummy_reloc_loop by
+tests/gem_exec_reloc (Chris Wilson)
+- New GEM tests: tests/gem_exec_whisper, tests/gem_exec_store,
+test/gem_exec_gttfill, tests/gem_exec_suspend, tests/gem_exec_flush
+(Chris Wilson)
+- New benchmarks: benchmarks/gem_syslatency, benchmarks/gem_exec_fault
+(Chris Wilson)
+- tests/gem_exec_nop included in BAT (Chris Wilson)
+- tests/pm_rpm: Fix crash on machines that lack LLC (David Weinehall)
+- lib/igt_fb: Fix domain tracking for GTT cairo surfaces (Chris Wilson)
+- Add igt_subtest_group to allow igt_fixture for only a subset of subtests
+without skipping/failing all subsequent subtests. (Daniel Vetter)
+- Many more fixes and improvements.
+Added python3-docutils to BuildRequires, since manual pages are now built
+via rst2man.
+
+-------------------------------------------------------------------
+Fri Mar  4 11:29:17 UTC 2016 - sndirsch@suse.com
+
+- Update to version 1.14
+  * New test: gem_create validate parameters for GEM_CREATE ioctl
+    (Ankitprasad Sharma)
+  * New test: gem_softpin exercise the userptr ioctl to create shared
+    buffers between CPU and GPU (Vinay Belgaumkar)
+  * New tests: prime_mmap_coherency/kms_mmap_write_crc cache coherency
+    tests (Tiago Vignatti)
+  * New test: prime_mmap mmap() on dma-buf fds (Rob Bradford)
+  * New test: gem_exec_reloc sanity check of execbuf-ioctl relocations (Chris
+    Wilson)
+  * New test: gem_exec_basic sanity check of execbuf-ioctl rings (Chris Wilson)
+  * improved igt_hang_ring() infrastructure for generic hang injection support
+    in the core library (Chris Wilson)
+  * new igt_pm library to collect power management testing helpers (David
+    Weinehall)
+  * lig/igt_vc4: VC4 support library (Eric Anholt)
+  * kms_frontbuffer_tracking: included in BAT (Paulo Zanoni)
+  * kms_psr_sink_crc: Add BAT test for PSR active (Rodrigo Vivi)
+  * gem_wait: test superseded by gem_latency in benchmarks (Chris Wilson)
+  * igt_core: Fix logging to display extended line (Derek Morton)
+  * igt_core: Expand --run-subtest functionality (Derek Morton)
+  * kms_force_connector_basic: various fixes and included in BAT set (Daniel
+    Vetter)
+  * Many other improvements and bug fixes.
+
+-------------------------------------------------------------------
+Sat Jan  2 17:50:38 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.13:
+  + New tests:
+    - kms_atomic tests atomic mode setting.
+    - core_prop_blob tests blob properties.
+    - gem_request_retire targets request retirement code paths.
+    - core_setmaster_vs_auth checks that drop/setMaster correctly
+      transfer master state.
+  + Wildcard characters are now accepted when using the
+    --run-subtest command line option to specify multiple subtests
+    to run.
+  + Add support for Broxton in intel_audio_dump.
+  + Added Kabylake support.
+  + Many other bug fixes and improvements.
+- Add pkgconfig(libudev) and pkgconfig(xrandr) BuildRequires,
+  configure looks for them so lets build with those supported too.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:50:03 UTC 2015 - sndirsch@suse.com
+
+- intel-gpu-tools 1.12
+  - Various new tests and tools
+  - New statistical analysis functions. (Damien Lespiau)
+  - New benchmark tests. (Chris Wilson)
+  - Old register tools that were superseded by intel_reg have been removed.
+  - Various tests have been marked "basic", to indicate they are suitable for
+    use in basic acceptance testing. (Jesse Barnes)
+  - Per-ring gem_storedw_loop tests combined into a single test with subtests.
+    (Jesse Barnes)
+  - New "aubdump" tool, used to launch an application and capture rendering to
+    an AUB file. (Kristian Høgsberg Kristensen)
+  - Cherryview support added to intel_display_poller. (Ville Syrjälä)
+  - Skylake and Broadwell support added to gem_gpgpu_fill tests.
+    (Dominik Zeromski)
+  - Support for running core drm tests on any platform. (Micah Fedke)
+  - Many other bug fixes
+- supersedes patch 'u_build-fixes.patch"
+
+-------------------------------------------------------------------
+Fri Jun 12 12:40:58 UTC 2015 - sndirsch@suse.com
+
+- use correct filelist macros 
+
+-------------------------------------------------------------------
+Fri Jun 12 08:44:12 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.11
+  * Various new tests and tools
+  * Single combined test list (supported by piglit since commit 8a122bb)
+  * Optional dependency on libunwind to provide automatic stack traces on test
+    failures. (Thomas Wood)
+  * Add optional default debug and optimisation flags for tests to enable better
+    stack traces and debugging. (Thomas Wood)
+  * Test programs are now installed into libexec. This is useful when building a
+    complete software stack for a DUT from scratch. (Building and installing
+    tests can still be disabled by the --disable-tests configure flag.)
+    (Joonas Lahtinen)
+  * New tool to decode watermark registers (Ville Syrjälä)
+  * Timeout mechanism now reports test as failed
+  * Introduce intel_reg as the one Intel graphics register multitool to replace
+    intel_reg_read, intel_reg_write, intel_iosf_sb_read, intel_iosf_sb_write,
+    intel_vga_read, intel_vga_write, intel_reg_dumper, intel_reg_snapshot,
+    and quick_dump.py. (Jani Nikula)
+  * Add functions to manipulate i915.ko parameters and ensure features are enabled
+    for testing. (Paulo Zanoni)
+- supersedes u_Fix-pointer-cast-in-order-to-fix-build-on-32bit-arch.patch
+- added new buildrequires to gtk-doc and libunwind
+- added /usr/lib/intel-gpu-tools/* and /usr/share/intel-gpu-tools/* to filelist
+
+-------------------------------------------------------------------
+Tue Mar 17 09:58:24 UTC 2015 - sndirsch@suse.com
+
+- u_Fix-pointer-cast-in-order-to-fix-build-on-32bit-arch.patch
+  * fixes build on 32bit 
+
+-------------------------------------------------------------------
+Mon Mar 16 11:53:56 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.10
+  * New frequency manipulation tool (intel_gpu_frequency)
+  * Adjustments for the Solaris port (Alan Coopersmith).
+  * Remove tests/NAMING-CONVENTION since it's all in the docbook now,
+    to avoid divergent conventions.
+  * New CRITICAL log level for really serious stuff (Thomas Wood).
+  * Interactive test mode can now be enabled by the shared cmdline
+    option --interactive-debug=$var (Rodrigo Vivi).
+  * Improved logging to kmsg to better line up test runs with kernel
+    messages (Chris Wilson).
+  * Record all log levels (including disabled levels) in a ringbuffer
+    and dump that on test failures for quicker diagnostics of automated
+    test run results (Thomas Wood).
+  * A lot of small polish all over the test library.
+  * Piles of new testcases and improvements to existing ones as usual.
+
+-------------------------------------------------------------------
+Tue Jan 20 11:05:15 UTC 2015 - sndirsch@suse.com
+
+- reenabled post build checks
+- u_build-fixes.patch
+  * fix post build checks 
+
+-------------------------------------------------------------------
+Sun Jan 18 22:10:00 UTC 2015 - sfalken@opensuse.org
+
+- Update to version 1.9:
+  + Patches refactored for new sources
+  + post-build-checks disabled, due to check failure:
+    I: Program returns random data in a function
+    E: intel-gpu-tools no-return-in-nonvoid-function
+       intel_renderstate_gen8.c:441
+  + Dropped:
+    - n_missing_check-ndebug.h.patch
+    - intel-gpu-tools-1.7.tar.bz2
+  + Added:
+    - intel-gpu-tools-1.9.tar.bz2
+  + Changes from version 1.7
+    - More Android porting
+    - Fixes to documentation warnings
+    - Updates to UPDATE, MAINTAINERS, and README
+    - lib:
+      - Fix out of tree build of version.h
+      - added function to lock memory into RAM
+      - add option log domain filtering
+      - introduce log domains
+      - igt_debugfs: Don't setup crc in _new
+      - igt_debugfs: Throw away the two first CRCs
+      - igt.cocci: Deal with min/max/swap
+      - add swap() macro
+      - always reset connectors after the state is forced
+      - remove igt_edid.h
+    - tests:
+      - gem_tiled_swapping: use igt_info logging wrapper
+      - replaced 3D test images
+      - kms_cursor_crc: Restore the valid pipe/connector combo check
+      - kms_mmio_vs_cs_flip: Count valid tests for all crtcs
+      - kms_flip:
+        * Target the back buffer with the dummy load
+        * Calibrate the dummy load delay in kms_flip
+        * Use fixed size (2kx2k) buffers for dummy load
+        * Refactor blit code
+      - Run lib/igt.cocci
+      - pm_rps: vlv:
+        * roundmiddle point to freq supported by HW
+        * load gpu for idle min/max tests\
+        * wait for freq to settleo
+      - add gem_gpgpu_fill to .gitignore
+      - use base edid
+    - tools:
+      - add missing copyright headers
+      - terminate getopt_long long option arrays properly
+    - drv_hangman: Remove unused function
+    - kms_cursor_crc: Remove value to 'return' in a void function
+    - igt/drm_read: Require that pipe 0 is active
+    - igt/drm_read: Abuse read(drm)
+    - intel_error_decode: Decode the ERROR register on Sandybridge
+      and Ivybridge
+    - gem_bad_reloc: Don't flip-flop between SKIP and PASS
+
+-------------------------------------------------------------------
+Mon Nov 17 10:26:21 UTC 2014 - sndirsch@suse.com
+
+- rename intel-gpu-tools-1.7-fix-bashisms.patch to 
+  u_intel-gpu-tools-1.7-fix-bashisms.patch according to our patch
+  guidelines
+
+-------------------------------------------------------------------
+Mon Nov 17 04:00:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in intel_gpu_abrt script that uses bash-specific
+  constructions
+- add patches:
+  * intel-gpu-tools-1.7-fix-bashisms.patch
+
+-------------------------------------------------------------------
+Tue Jun 10 15:38:37 UTC 2014 - sndirsch@suse.com
+
+- update to release 1.7; Here goes a new i-g-t quarterly release
+  with the following changes:
+  * Piles of API documentation for the core i-g-t testing libraries.
+  * Improved igt loggin, now also with igt_vlog (for va_args printf-style
+    logging).
+  * Polish for the igt_debugfs library.
+  * Split out igt_fb library from igt_kms, cleanup of the igt_kms functions.
+  * Android porting patches (Tim Gore, Tvrtko Ursulin).
+  * Piles more tests as usual.
+  * Support for building libcairo based tests on Android. Set ANDROID_HAS_CAIRO=1
+    in the build enviroment when you have this (Tim Gore).
+  * Timeout support in igt_aux, see igt_set_timeout (Thomas).
+  * Documentation for the testrunner interface like exit codes, subtest
+    enumeration and log output. Should help other people to run the tests in their own framework.
+  * Make swig an optional dependency (Damien).
+  * Helpers for runtime pm tests in igt_aux.
+- rename n_disable-build-of-pm_pc8.patch to n_disable-build-of-pm_rpm.patch,
+  since test has been renamed
+
+-------------------------------------------------------------------
+Tue May  6 14:56:09 UTC 2014 - sndirsch@suse.com
+
+- update to release 1.6
+  * Changes to support Broadwell in the test suite. (Ben, Damien, et al.)
+  * Updated (now working again!) Android support from Oscar Mateo.
+  * Test coverage through i-g-t is now officially an integral part of any drm/i915
+    feature work and also for bugfixes. For more details see:
+      http://blog.ffwll.ch/2013/11/testing-requirements-for-drmi915.html
+  * Fix the gen4asm build depency handling, now that the assembler is included in
+    i-g-t (Ben).
+  * Improve the cairo object lifetime management of the kmstest helpers (Chris).
+  * Allow register access to succeed if i915 is loaded but debugfs isn't found
+    (i.e. nomodeset is used)
+  * New kernel modesetting helper library for simpler testcases (Damien).
+  * New structure logging support for tests. Message at the WARN level be
+    reflected in the piglit result, also included igt_warn_on macros to simplify
+    test asserts which should just result in warnings, but not in a test abort.
+  * Broadwell support for intel_audio_dump (Mengdong Lin).
+  * API documentation support (Thomas)
+- n_missing_check-ndebug.h.patch
+  * added missing include file in order to fix build
+- refreshed n_disable-build-of-pm_pc8.patch
+
+-------------------------------------------------------------------
+Mon Apr 28 00:52:20 UTC 2014 - sndirsch@suse.com
+
+- added missing pkgconfig(dri2proto)
+
+-------------------------------------------------------------------
+Thu Feb  6 11:22:24 UTC 2014 - sndirsch@suse.com
+
+- added missing LICENSE file
+
+-------------------------------------------------------------------
+Mon Dec  9 12:44:34 UTC 2013 - sndirsch@suse.com
+
+- update to release 1.5
+- n_disable-build-of-pm_pc8.patch
+  * disables build for pm_pc8 test app for now
+- removed obsolete patches
+  * intel-gpu-tools-no-test.diff
+  * u_intel-gpu-tools-no_m4_dir.patch
+
+-------------------------------------------------------------------
+Fri May  3 06:20:46 UTC 2013 - sndirsch@suse.com
+
+- renamed latest patch according to our policy 
+
+-------------------------------------------------------------------
+Fri Apr 26 11:44:59 UTC 2013 - mmeister@suse.com
+
+- Removed AC_CONFIG_MACRO_DIR([m4]) from configure.ac to fix
+  build with new automake
+
+-------------------------------------------------------------------
+Mon Aug 27 22:37:25 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.3:
+  New intel-gpu-tools release with too much stuff changed. Biggest part is
+  improvements to the testsuit, but also some other neat things:
+  + dpf tool for handling l3 remapping on gen7
+  + robustify against wc gtt mappings
+  + improvements to the reg_dumper and register read/write tools
+  + haswell support
+- Packaging changes:
+  + Added cairo to BuildRequires (we need this now)
+  + changed intel-gpu-tools-no-test.diff to speed up compilation
+
+-------------------------------------------------------------------
+Mon Jul  9 12:34:31 UTC 2012 - dmueller@suse.com
+
+- change it to exclusivearch, as it also does not exist on ARM
+
+-------------------------------------------------------------------
+Fri Jul  6 23:03:22 UTC 2012 - dvaleev@suse.com
+
+- exclude ppc, ppc64. There is no intel graphic
+
+-------------------------------------------------------------------
+Thu Apr 19 15:24:19 CEST 2012 - tiwai@suse.de
+
+- updated to version 1.2:
+  support for recent Intel graphic chips, many fixes
+  See ChangeLog for details
+- Don't build test directory (to simplify the packaging)
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split intel-gpu-tools from xorg-x11-driver-video.
+  Initial version: 1.0.2-20101210-292ae45.
+

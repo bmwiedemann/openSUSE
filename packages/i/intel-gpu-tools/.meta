@@ -1,0 +1,8 @@
+<package name="intel-gpu-tools" project="openSUSE:Factory">
+  <title>Collection of tools for development and testing of the Intel DRM driver</title>
+  <description>This is a collection of tools for development and testing of the Intel DRM driver.
+
+</description>
+  <devel project="X11:XOrg" package="intel-gpu-tools"/>
+  <url>https://xorg.freedesktop.org/</url>
+</package>
