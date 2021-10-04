@@ -6,14 +6,15 @@
       <arch>x86_64</arch>
       <arch>aarch64</arch>
       <arch>riscv64</arch>
+      <package>arpack-ng:serial</package>
     </conditions>
     <hardware>
       <disk>
         <size unit="G">3</size>
       </disk>
-      <physicalmemory>
-        <size unit="G">14</size>
-      </physicalmemory>
+      <memory>
+        <size unit="G">9</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>

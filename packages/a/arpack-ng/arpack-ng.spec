@@ -115,6 +115,8 @@ URL:            https://github.com/opencollab/arpack-ng
 Source0:        https://github.com/opencollab/arpack-ng/archive/%{version}.tar.gz#/arpack-ng-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE arpack-ng-python-module-installdir.patch badshah400@gmail.com -- Install python module to standard python sitearch instead of libdir
 Patch0:         arpack-ng-python-module-installdir.patch
+# PATCH-FIX-UPSTREAM -- Fix mixup of relative and absolute libdir in pkgconfig files
+Patch1:         Use-CMAKE_INSTALL_FULL_-dir.patch
 %if %{with mpi}
 BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
@@ -221,6 +223,15 @@ export LD_LIBRARY_PATH=%{my_prefix}/%{_lib}
   -DCMAKE_CXX_COMPILER_VERSION=$(gcc -dumpfullversion) \
   -DMPI:BOOL=%{?with_mpi:ON}%{!?with_mpi:OFF} \
   -DPYTHON3:BOOL=%{?with_pyarpack:ON}%{!?with_pyarpack:OFF}
+
+%if %{with pyarpack}
+# Build pyarpack in a multiple steps, as arpackmm and
+# pyarpack need a considerable amount of memory
+%cmake_build arpack
+%cmake_build arpackmm
+%cmake_build pyarpack
+%endif
+# Make sure all (remaining) targets are build
 %cmake_build
 
 %install

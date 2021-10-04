@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 30 13:11:51 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reduce memory requirements/constraints:
+  * Only apply to serial multibuild flavor, where pyarpack is built
+  * Build arpackmm and pyarpack sequentially
+  * Use memory instead of physicalmemory
+- Fix pkgconfig files, add Use-CMAKE_INSTALL_FULL_-dir.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 07:21:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase RAM size required in _constraints to avoid OOM seen in
