@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,12 +27,13 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source99:       qt6-quicktimeline-rpmlintrc
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-qml-private-devel
@@ -59,6 +60,27 @@ Summary:        Qt 6 QuickTimeline QML files and plugins
 %description imports
 QML files and plugins from the Qt 6 QuickTimeline module
 
+%package -n libQt6QuickTimeline6
+Summary:        Qt 6 QuickTimeline library
+
+%description -n libQt6QuickTimeline6
+The Qt 6 QuickTimeline library.
+
+%package devel
+Summary:        Qt 6 QuickTimeline library - Development files
+Requires:       libQt6QuickTimeline6 = %{version}
+
+%description devel
+Development files for the Qt 6 QuickTimeline library.
+
+%package private-devel
+Summary:        Non-ABI stable API for the Qt 6 QuickTimeline Library
+Requires:       cmake(Qt6QuickTimeline) = %{real_version}
+
+%description private-devel
+This package provides private headers of libQt6QuickTimeline that do not have
+any ABI or API guarantees.
+
 %endif
 
 %prep
@@ -77,10 +99,31 @@ QML files and plugins from the Qt 6 QuickTimeline module
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
+%post -n libQt6QuickTimeline6 -p /sbin/ldconfig
+%postun -n libQt6QuickTimeline6 -p /sbin/ldconfig
+
 %files imports
 %license LICENSE.*
 %dir %{_qt6_qmldir}/QtQuick
 %{_qt6_qmldir}/QtQuick/Timeline/
+
+%files -n libQt6QuickTimeline6
+%{_qt6_libdir}/libQt6QuickTimeline.so.*
+
+%files devel
+%{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtQuickTimelineTestsConfig.cmake
+%{_qt6_cmakedir}/Qt6QuickTimeline/
+%{_qt6_descriptionsdir}/QuickTimeline.json
+%{_qt6_includedir}/QtQuickTimeline/
+%{_qt6_libdir}/libQt6QuickTimeline.prl
+%{_qt6_libdir}/libQt6QuickTimeline.so
+%{_qt6_metatypesdir}/qt6quicktimeline_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quicktimeline.pri
+%exclude %{_qt6_includedir}/QtQuickTimeline/%{real_version}
+
+%files private-devel
+%{_qt6_includedir}/QtQuickTimeline/%{real_version}
+%{_qt6_mkspecsdir}/modules/qt_lib_quicktimeline_private.pri
 
 %endif
 
