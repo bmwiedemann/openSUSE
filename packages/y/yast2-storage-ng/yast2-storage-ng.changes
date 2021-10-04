@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 30 11:21:19 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Recommend to install libyui-qt-graph package (bsc#1191109) in
+  order to offer the View/Device Graphs menu option.
+- 4.4.8
+
+-------------------------------------------------------------------
 Thu Aug  5 12:19:04 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Improve detection of devices that contain an installation
