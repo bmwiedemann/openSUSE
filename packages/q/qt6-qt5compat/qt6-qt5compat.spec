@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
+%define real_version 6.2.0
+%define short_version 6.2
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -37,7 +37,12 @@ Source99:       qt6-qt5compat-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
+BuildRequires:  qt6-gui-private-devel
+BuildRequires:  qt6-qml-private-devel
+BuildRequires:  qt6-quick-private-devel
 BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(icu-i18n)
 %if "%{qt6_flavor}" == "docs"
@@ -50,6 +55,13 @@ The Qt 6 Compat library provides unsupported Qt 5 APIs which can be useful
 while porting Qt 5 code.
 
 %if !%{qt6_docs_flavor}
+
+%package imports
+Summary:        Qt 6 Core 5 Compat QML files and plugins
+
+%description imports
+QML files and plugins from the Qt 6 Core5Compat module.
+This package shall be used while porting away from qtgraphicaleffects.
 
 %package -n libQt6Core5Compat6
 Summary:        Qt 6 Core 5 Compat library
@@ -90,8 +102,14 @@ ABI or API guarantees.
 
 %fdupes %{buildroot}
 
+# CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
+
 %post -n libQt6Core5Compat6 -p /sbin/ldconfig
 %postun -n libQt6Core5Compat6 -p /sbin/ldconfig
+
+%files imports
+%{_qt6_qmldir}/Qt5Compat/
 
 %files -n libQt6Core5Compat6
 %license LICENSE.*
@@ -105,6 +123,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtCore5Compat/
 %{_qt6_libdir}/libQt6Core5Compat.prl
 %{_qt6_libdir}/libQt6Core5Compat.so
+%{_qt6_metatypesdir}/qt6core5compat_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_core5compat.pri
 %exclude %{_qt6_includedir}/QtCore5Compat/%{real_version}
 
