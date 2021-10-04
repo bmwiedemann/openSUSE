@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 29 16:13:17 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Release the sources and close the libzypp cache to allow
+  cleanly unmounting /mnt/var/cache/zypp directory (bsc#1189793)
+- 4.4.19
+
+-------------------------------------------------------------------
 Thu Sep  9 15:54:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Display release notes during upgrade (bsc#1186044)
