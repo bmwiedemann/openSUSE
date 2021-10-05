@@ -109,4 +109,12 @@
     <comment>- covers jira#SLE/SLE-19446</comment>
     <requestid>921799</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>1995d157ad653ffc2da9487191f5052c</srcmd5>
+    <version>21.2.2</version>
+    <time>1633466029</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in previous changelog</comment>
+    <requestid>923057</requestid>
+  </revision>
 </revisionlist>
