@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.9.0
+Version:        1.9.2
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -42,17 +42,26 @@ BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %description
 A Wayland terminal emulator.
 
+%package extra-terminfo
+
+Summary:        Extra terminfo files for the foot terminal emulator
+
+%description extra-terminfo
+This package contains extra terminfo files for the foot terminal emulator
+that provide more features than the files in the terminfo-base package.
+Set term=foot-extra or term=foot-direct-extra in foot.ini to
+take advantage of the files in this package.
+
 %prep
 %autosetup -n %{name}
 
 %build
-%meson -Db_lto=true -Ddefault-terminfo=foot-suse '-Dcustom-terminfo-install-location=%{_datadir}/terminfo'
+%meson -Db_lto=true -Ddefault-terminfo=foot-extra
 %meson_build
 
 %install
 %meson_install
-mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-suse
-mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-suse
+mv %{buildroot}/%{_datadir}/terminfo/f/foot-extra-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-extra
 
 %files
 %license LICENSE
@@ -64,8 +73,6 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_datadir}/bash-completion/
 %{_datadir}/doc/%{name}/
 %{_datadir}/fish/
-%{_datadir}/terminfo/f/foot-suse
-%{_datadir}/terminfo/f/foot-direct-suse
 %{_datadir}/zsh/
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/
@@ -73,5 +80,9 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_mandir}/man1/footclient.1.gz
 %{_mandir}/man5/foot.ini.5.gz
 %{_mandir}/man7/foot-ctlseqs.7.gz
+
+%files extra-terminfo
+%{_datadir}/terminfo/f/foot-extra
+%{_datadir}/terminfo/f/foot-direct-extra
 
 %changelog
