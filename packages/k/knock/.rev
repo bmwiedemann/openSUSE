@@ -127,4 +127,12 @@
   (Bug#1138376: Knockd unable to start after upgrade to LEAP 15.1)</comment>
     <requestid>897367</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>268001654efc1aefb496c4f067fd2e0a</srcmd5>
+    <version>0.8</version>
+    <time>1633466032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923171</requestid>
+  </revision>
 </revisionlist>

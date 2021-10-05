@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 13:19:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * knockd.service
+
+-------------------------------------------------------------------
 Wed May 19 08:49:35 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to version 0.8
