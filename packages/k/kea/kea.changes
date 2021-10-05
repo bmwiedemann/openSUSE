@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  4 23:33:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+  * In Kea 2.0, the HA component has undergone a substantial
+    architectural change. When HA+MT is enabled, the DHCPv4 and
+    DHCPv6 daemons are now able to open HTTP sockets on their own
+    and connect directly to each other, bypassing the Control Agent
+    (CA). This eliminates the bottlenecks of sequential UNIX socket
+    connection and the need to translate between HTTP and UNIX
+    socket connections.
+  * A new parameter on-fail gives the operator more control over
+    what to do on database connection loss.
+  * The length of the "parking lot queue" is now configurable; a
+    default value of 256 is used.
+  * A new statistic, `packet-queue-size`, has been added that
+    reports packet-queue utilization.
+
+-------------------------------------------------------------------
 Thu Jun  3 23:21:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.8

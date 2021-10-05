@@ -16,34 +16,35 @@
 #
 
 
-%define asiodns_sover 12
-%define asiolink_sover 26
-%define cc_sover 23
-%define cfgclient_sover 24
+%define asiodns_sover 13
+%define asiolink_sover 27
+%define cc_sover 25
+%define cfgclient_sover 25
 %define cryptolink_sover 16
+%define d2srv_sover 3
 %define database_sover 23
-%define dhcppp_sover 34
-%define dhcp_ddns_sover 16
-%define dhcpsrv_sover 46
-%define dnspp_sover 17
-%define eval_sover 26
-%define exceptions_sover 0
-%define hooks_sover 34
-%define http_sover 26
-%define log_sover 20
-%define mysql_sover 23
-%define pgsql_sover 19
-%define process_sover 28
+%define dhcppp_sover 36
+%define dhcp_ddns_sover 17
+%define dhcpsrv_sover 50
+%define dnspp_sover 19
+%define eval_sover 27
+%define exceptions_sover 13
+%define hooks_sover 38
+%define http_sover 29
+%define log_sover 22
+%define mysql_sover 26
+%define pgsql_sover 20
+%define process_sover 29
 %define stats_sover 18
 %define util_io_sover 0
-%define util_sover 33
+%define util_sover 36
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        1.9.8
+Version:        2.0.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -56,6 +57,7 @@ Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 Source3:        kea.keyring
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
+BuildRequires:  bison >= 3.3
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
@@ -146,6 +148,13 @@ Group:          System/Libraries
 %description -n libkea-cryptolink%cryptolink_sover
 The Kea cryptolink library is an abstraction layer for crypto
 library backends (such as Botan, OpenSSL).
+
+%package -n libkea-d2srv%d2srv_sover
+Summary:        Kea DHCP-DDNS service library
+Group:          System/Libraries
+
+%description -n libkea-d2srv%d2srv_sover
+This library provides DHCP-DDNS specific event loop and business logic.
 
 %package -n libkea-database%database_sover
 Summary:        Kea database abstraction library
@@ -300,6 +309,7 @@ Requires:       libkea-asiolink%asiolink_sover = %version
 Requires:       libkea-cc%cc_sover = %version
 Requires:       libkea-cfgclient%cfgclient_sover = %version
 Requires:       libkea-cryptolink%cryptolink_sover = %version
+Requires:       libkea-d2srv%d2srv_sover = %version
 Requires:       libkea-database%database_sover = %version
 Requires:       libkea-dhcp++%dhcppp_sover = %version
 Requires:       libkea-dhcp_ddns%dhcp_ddns_sover = %version
@@ -402,6 +412,8 @@ systemd-tmpfiles --create kea.conf || :
 %postun -n libkea-cfgclient%cfgclient_sover -p /sbin/ldconfig
 %post   -n libkea-cryptolink%cryptolink_sover -p /sbin/ldconfig
 %postun -n libkea-cryptolink%cryptolink_sover -p /sbin/ldconfig
+%post   -n libkea-d2srv%d2srv_sover -p /sbin/ldconfig
+%postun -n libkea-d2srv%d2srv_sover -p /sbin/ldconfig
 %post   -n libkea-database%database_sover -p /sbin/ldconfig
 %postun -n libkea-database%database_sover -p /sbin/ldconfig
 %post   -n libkea-dhcp++%dhcppp_sover -p /sbin/ldconfig
@@ -467,6 +479,9 @@ systemd-tmpfiles --create kea.conf || :
 
 %files -n libkea-cryptolink%cryptolink_sover
 %_libdir/libkea-cryptolink.so.%cryptolink_sover.*
+
+%files -n libkea-d2srv%d2srv_sover
+%_libdir/libkea-d2srv.so.%d2srv_sover.*
 
 %files -n libkea-database%database_sover
 %_libdir/libkea-database.so.%database_sover.*
