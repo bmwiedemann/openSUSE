@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 05 14:04:20 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1633442652.bbce4ad33:
+  * Dependency cron 2021-10-05
+  * Upgrade CI scripts for using Leap 15.3 based container images
+  * Dependency cron 2021-10-05
+  * OpenQA::Log: Speedup, simplify and fix format with Time::Moment
+  * t: Bump timeout of 25-cache-service.t
+  * t: Bump timeout of 40-script_openqa-clone-custom-git-refspec.t
+  * OpenQA::Log: Simplify
+  * OpenQA::Log: Use signatures
+  * Generalize containerized setup to refer to 'container'
+  * Generalize Makefile and scripts to refer to 'container'
+  * CI: Generalize scripts to refer to 'container' instead of docker
+  * Use simpler 'podman' as drop-in replacement for our checks
+  * Extend clone-job unit tests for handling/ignoring missing assets
+  * Add ignore-missing-assets to unit tests
+  * Add ignore-missing-assets to clone-job
+  * Upgrade CI container image versions to Leap 15.3
+  * Upgrade containers for containerized setup to Leap 15.3
+  * Log return code of hook command
+
+-------------------------------------------------------------------
 Fri Oct 01 00:03:17 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1632930736.2895850f3:
