@@ -32,6 +32,7 @@ Source:         https://github.com/tklauser/llmnrd/archive/v%{version}.tar.gz#/%
 Source1:        llmnrd.service
 Source2:        llmnrd.sysconfig
 Source3:        usr.sbin.llmnrd
+Patch0:	harden_llmnrd.service.patch
 BuildRequires:  apparmor-profiles
 BuildRequires:  gcc
 BuildRequires:  git-core
@@ -46,6 +47,7 @@ networks where no DNS server is available. It supports both IPv4 and IPv6.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export GIT_VERSION=""

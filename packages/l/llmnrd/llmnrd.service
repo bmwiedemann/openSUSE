@@ -3,6 +3,18 @@ Description=Link-Local Multicast Resolution (LLMNR) Daemon
 After=network.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=simple
 EnvironmentFile=/etc/sysconfig/llmnrd
 ExecStart=/usr/sbin/llmnrd $LLMNRD_OPTIONS

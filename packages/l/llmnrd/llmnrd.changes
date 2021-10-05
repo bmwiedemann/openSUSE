@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 14:15:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_llmnrd.service.patch
+  Modified:
+  * llmnrd.service
+
+-------------------------------------------------------------------
 Mon Sep 14 18:51:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7
