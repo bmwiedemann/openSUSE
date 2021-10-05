@@ -133,4 +133,26 @@
     <comment>- covers jira#SLE/SLE-19446</comment>
     <requestid>921802</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>24df53f34cf06a01dc7659217e2f5677</srcmd5>
+    <version>21.3.4</version>
+    <time>1633466018</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in previous changelog 
+
+- Update to 21.3.4
+  * Fixed VPL run-time loading by MediaSDK dispatcher
+    VPL doesn't provide libmfx-gen.so.1
+    In VPL Gen run-time we have libmfx-gen.so.1.2 as SONAME and 
+    use libmfx-gen.so.1.2.x as a full name.
+  * [VPP] Fix increasing num of input channels doesn't work
+  * maximum and minmum qp setting for HEVC encoder.
+  * Removed multiple calls vaGetConfigAttributes (github
+    issue#2417)
+  * [Jpeg]modify color range on Linux
+  * [Jpegd] Enable HW to decode JPEG RGB444 on Linux
+
+- covers jira#SLE/SLE-19361</comment>
+    <requestid>923062</requestid>
+  </revision>
 </revisionlist>

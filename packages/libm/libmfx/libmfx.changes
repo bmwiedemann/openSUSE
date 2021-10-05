@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct  4 15:07:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed JIRA number in previous changelog 
+
+-------------------------------------------------------------------
+Wed Sep 29 08:45:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 21.3.4
+  * Fixed VPL run-time loading by MediaSDK dispatcher
+    VPL doesn't provide libmfx-gen.so.1
+    In VPL Gen run-time we have libmfx-gen.so.1.2 as SONAME and 
+    use libmfx-gen.so.1.2.x as a full name.
+  * [VPP] Fix increasing num of input channels doesn't work
+  * maximum and minmum qp setting for HEVC encoder.
+  * Removed multiple calls vaGetConfigAttributes (github
+    issue#2417)
+  * [Jpeg]modify color range on Linux
+  * [Jpegd] Enable HW to decode JPEG RGB444 on Linux
+
+-------------------------------------------------------------------
 Mon Sep 27 13:18:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- covers jira#SLE/SLE-19446 
+- covers jira#SLE/SLE-19361
 
 -------------------------------------------------------------------
 Wed Sep 22 10:42:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
