@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  1 10:04:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix replacement of "env python" to python3 in dblatex' main
+  script: upstream moved this already to python3.
+
+-------------------------------------------------------------------
+Mon Sep 27 19:34:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.3.12 (python3 version):
+  - Fix SF bug #118: fix 'nb' and 'nn' locales.
+  - Fix SF bug #119: use locale quotes in glossary.
+  - Fix SF bug #120: use locale quotes in bibliography.
+  - Fix SF bug #123: add 'se' locale.
+  - Fix SF bug #124: set default qandaset title markup in english.
+- Added also:
+  - dblatex-0.3.11-replace-inkscape-by-rsvg.patch (filed as
+    https://sourceforge.net/p/dblatex/feature-requests/21)
+  - dblatex-0.3.11-which-shutil.patch (filed as
+    https://sourceforge.net/p/dblatex/patches/22)
+
+-------------------------------------------------------------------
 Sun Aug 16 13:12:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.3.11:

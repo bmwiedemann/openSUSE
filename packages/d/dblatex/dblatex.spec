@@ -1,7 +1,7 @@
 #
 # spec file for package dblatex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,33 @@
 
 
 Name:           dblatex
-Version:        0.3.11
+Version:        0.3.12
 Release:        0
 Summary:        DocBook to LaTeX Publishing
 License:        GPL-2.0-only
 Group:          Productivity/Publishing/DocBook
 URL:            http://dblatex.sourceforge.net
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}3-%{version}.tar.bz2
 #PATCH-FIX-OPENSUSE dblatex-0.3.4-disable-debian.patch toganm@opensuse.org -disables debian specific installation parts
+# Filed as https://sourceforge.net/p/dblatex/feature-requests/20
 Patch0:         dblatex-0.3.4-disable-debian.patch
+# PATCH-FEATURE-UPSTREAM dblatex-0.3.11-replace-inkscape-by-rsvg.patch mcepl@suse.com
+# From https://src.fedoraproject.org/rpms/dblatex/raw/rawhide/f/dblatex-0.3.11-replace-inkscape-by-rsvg.patch
+# Filed as https://sourceforge.net/p/dblatex/feature-requests/21
+# Don’t depend on the giant inkscape, but use rather smaller rsvg-convert instead
+Patch1:         dblatex-0.3.11-replace-inkscape-by-rsvg.patch
+# PATCH-FEATURE-UPSTREAM dblatex-0.3.11-which-shutil.patch mcepl@suse.com
+# From https://src.fedoraproject.org/rpms/dblatex/raw/rawhide/f/dblatex-0.3.11-which-shutil.patch
+# Filed as https://sourceforge.net/p/dblatex/patches/11
+# No need to use complicated internal functions, when shutil.which exists
+Patch2:         dblatex-0.3.11-which-shutil.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  grep
 BuildRequires:  libxslt-tools
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-base
-BuildRequires:  pyxml
+BuildRequires:  python3-base
+BuildRequires:  rsvg-convert
 BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
@@ -78,7 +89,6 @@ BuildRequires:  tex(textcomp.sty)
 BuildRequires:  tex(titlesec.sty)
 BuildRequires:  tex(wasysym.sty)
 Requires:       docbook_4
-Requires:       pyxml
 Requires:       texlive-epstopdf
 Requires:       texlive-latex
 # grep for \usepackage in dblatex but require only one
@@ -124,8 +134,8 @@ Recommends:     tex(mathrsfs.sty)
 # db2latex contrib style
 Recommends:     tex(anysize.sty)
 Recommends:     tex(fancybox.sty)
-Recommends:     tex(rotating.sty)
 Recommends:     tex(palatino.sty)
+Recommends:     tex(rotating.sty)
 # some extra unicode symbols (runtime detection)
 Recommends:     tex(stmaryrd.sty)
 Recommends:     tex(wasysym.sty)
@@ -149,8 +159,8 @@ PostScript or PDF by translating them into pure LaTeX as a first process.
 MathML 2.0 markups are supported, too. It started as a clone of DB2LaTeX.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1 -n %{name}3-%{version}
+
 # correct doc paths in setup
 sed -i 's@share/doc/dblatex@%{_docdir}/dblatex@g' setup.py
 
@@ -160,14 +170,14 @@ sed -i '/#!\/usr\//d' lib/dbtexmf/dblatex/xetex/fsencoder.py \
   lib/dbtexmf/dblatex/xetex/fsconfig.py
 
 %build
-%python2_build
+%python3_build
 
 %install
-%python2_install
-sed -i "s|env python|python2|g" %{buildroot}%{_bindir}/dblatex
+%python3_install
+sed -i "s|env python|python|g" %{buildroot}%{_bindir}/dblatex
 %fdupes %{buildroot}%{_docdir}
 %fdupes %{buildroot}%{_datadir}
-%fdupes %{buildroot}%{python2_sitelib}
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files doc
 %{_docdir}/dblatex
@@ -175,7 +185,7 @@ sed -i "s|env python|python2|g" %{buildroot}%{_bindir}/dblatex
 %files
 %{_bindir}/dblatex
 %{_datadir}/dblatex
-%{python2_sitelib}/*
+%{python3_sitelib}/*
 %{_mandir}/man1/dblatex.1%{?ext_man}
 
 %changelog

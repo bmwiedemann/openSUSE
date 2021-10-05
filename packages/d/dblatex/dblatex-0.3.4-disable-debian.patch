@@ -4,7 +4,7 @@
 
 --- a/setup.py
 +++ b/setup.py
-@@ -23,7 +23,8 @@ from distutils.command.sdist import sdis
+@@ -25,7 +25,8 @@ from distutils.command.sdist import sdis
  from distutils import log
  from subprocess import Popen, PIPE
  sys.path.append("lib")
@@ -14,7 +14,7 @@
  
  #
  # Build the command line script
-@@ -365,10 +366,11 @@ class Install(install):
+@@ -373,10 +374,11 @@ class Install(install):
              raise OSError("not found: %s" % ", ".join(mis_stys))
  
      def run(self):
