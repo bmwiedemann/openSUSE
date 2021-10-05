@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 17:11:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Fix source URI.
+
+-------------------------------------------------------------------
 Thu Jan  9 13:23:06 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python bindings (python2-only):

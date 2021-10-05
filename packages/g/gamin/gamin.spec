@@ -1,7 +1,7 @@
 #
 # spec file for package gamin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Library providing the FAM File Alteration Monitor API
 License:        LGPL-2.1-only
 Group:          System/Daemons
 URL:            http://www.gnome.org/~veillard/%{name}/
-Source:         http://www.gnome.org/~veillard/%{name}/sources/%{name}-%{version}.tar.gz
+Source0:        https://download.gnome.org/sources/gamin/0.1/gamin-%{version}.tar.bz2
 Source2:        %name-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         gamin-return.patch

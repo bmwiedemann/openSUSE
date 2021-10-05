@@ -1,7 +1,7 @@
 #
 # spec file for package gamin-devel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Libraries and includes to build against gamin
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.gnome.org/~veillard/gamin/
-Source:         http://www.gnome.org/~veillard/gamin/sources/gamin-%{version}.tar.gz
+Source0:        https://download.gnome.org/sources/gamin/0.1/gamin-%{version}.tar.bz2
 Source2:        gamin-rpmlintrc
 Patch0:         gamin-return.patch
 Patch1:         gamin-fam_abi_compatibility_FamErrlist.patch
