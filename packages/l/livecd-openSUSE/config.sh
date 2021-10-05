@@ -28,6 +28,7 @@ rpm -q binutils && rpm -e --nodeps binutils
 rpm -q wodim && rpm -e --nodeps wodim
 # Actually a hack: xrdb requires this, but on livecds it's not used
 rpm -qa | grep "^cpp" | xargs -r rpm -e --nodeps
+rpm -qa | grep "^libisl" | xargs -r rpm -e
 
 # GTK 3 hard-requires this for some reason. The only GTK3 application is Firefox,
 # which has its own icons and we have breeze for the rest.
@@ -64,6 +65,9 @@ if [ "$desktop" = "x11" ]; then
 	# Only used for X11 acceleration on vmwgfx, saves ~47MiB
 	rpm -e --nodeps Mesa-gallium
 
+	# Surely that specific font isn't necessary
+	rpm -e --nodeps google-poppins-fonts
+
 	# Generated on boot if missing
 	rm /etc/udev/hwdb.bin
 fi
@@ -93,7 +97,7 @@ zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 rm -rf /usr/share/doc/packages/*
 
 # Save more than 200 MiB by removing this, not very useful for lives
-rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x}
+rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x,cxgb4}
 
 # Not needed, boo#1166406
 rm -f /boot/vmlinux*.[gx]z

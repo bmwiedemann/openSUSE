@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  5 11:05:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop acpica
+- config.sh: Drop libisl*, only needed by cpp which got dropped already
+- config.sh: Drop google-poppins-fonts, cxgb4 firmware
+
+-------------------------------------------------------------------
 Thu Sep 30 07:34:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-xfce: Ignore mugshot, incompatible with GNOME 41

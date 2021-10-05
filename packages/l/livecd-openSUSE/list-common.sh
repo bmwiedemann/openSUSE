@@ -69,6 +69,7 @@ buildignore 'python*-pip'
 
 buildignore multipath-tools-rbd
 
+buildignore acpica
 buildignore xorg-x11-Xvnc
 buildignore cabextract
 buildignore sssd

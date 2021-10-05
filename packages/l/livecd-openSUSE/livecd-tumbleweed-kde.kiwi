@@ -178,6 +178,8 @@
     <ignore name="python*-pip"/>
     <package name="aaa_base" replaces="multipath-tools-rbd"/>
     <ignore name="multipath-tools-rbd"/>
+    <package name="aaa_base" replaces="acpica"/>
+    <ignore name="acpica"/>
     <package name="aaa_base" replaces="xorg-x11-Xvnc"/>
     <ignore name="xorg-x11-Xvnc"/>
     <package name="aaa_base" replaces="cabextract"/>
