@@ -28,9 +28,8 @@ Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        greetd.pam
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  pam-devel
-BuildRequires:  rust
-BuildRequires:  rust-packaging
 BuildRequires:  systemd-rpm-macros
 Requires(post): diffutils
 Requires(pre):  %{_bindir}/getent
@@ -45,11 +44,11 @@ but instead offloads that to greeters, which are arbitrary applications that imp
 
 %prep
 %setup -qa1
-%cargo_prep
+mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%cargo_build
+%{cargo_build}
 
 %install
 

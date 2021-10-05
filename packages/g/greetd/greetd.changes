@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 05:35:48 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Mon May 17 14:47:55 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - provide real shell in example conf
