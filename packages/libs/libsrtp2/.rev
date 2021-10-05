@@ -56,4 +56,12 @@
     <comment>- Update to release 2.4.1</comment>
     <requestid>917828</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66d17e1491d970588bbc58c5e473165d</srcmd5>
+    <version>2.4.2</version>
+    <time>1633466008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>922064</requestid>
+  </revision>
 </revisionlist>
