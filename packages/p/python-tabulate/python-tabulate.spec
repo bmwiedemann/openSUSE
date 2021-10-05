@@ -25,7 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/astanin/python-tabulate
 Source:         https://files.pythonhosted.org/packages/source/t/tabulate/tabulate-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}

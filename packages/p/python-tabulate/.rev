@@ -106,4 +106,12 @@
   * Various bug fixes and improvements.</comment>
     <requestid>906725</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cdc2cc74df2e459ea7ba9709ef8f5cb1</srcmd5>
+    <version>0.8.9</version>
+    <time>1633466009</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on nose.</comment>
+    <requestid>922084</requestid>
+  </revision>
 </revisionlist>
