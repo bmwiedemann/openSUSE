@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  5 19:12:28 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.10.0
+  * josepy is now compliant with PEP-561: type checkers will fetch
+    types from the inline types annotations when josepy is
+    installed as a dependency in a Python project.
+  * Added a field function to assist in adding type annotations for
+    Fields in classes. If the field function is used to define a 
+    Field in a JSONObjectWithFields based class without a type
+    annotation, an error will be raised.
+  * josepy's tests can no longer be imported under the name josepy,
+    however, they are still included in the package and you can run
+    them by installing josepy with "tests" extras and running
+    python -m pytest.
+
+- Changes from 1.9.0
+  * Removed pytest-cache testing dependency.
+  * Fixed a bug that sometimes caused incorrect padding to be used
+    when serializing Elliptic Curve keys as JSON Web Keys.
+
+-------------------------------------------------------------------
 Sun May  9 14:43:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:

@@ -95,4 +95,12 @@
   * Fix JWS/JWK generation with EC keys when keys or signatures have leading zeros.</comment>
     <requestid>891882</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3a5bfa5ff64703b2ed6c9f41d111caae</srcmd5>
+    <version>1.10.0</version>
+    <time>1633466047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923341</requestid>
+  </revision>
 </revisionlist>

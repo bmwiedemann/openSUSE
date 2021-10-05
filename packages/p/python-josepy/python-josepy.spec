@@ -20,7 +20,7 @@
 %define libname josepy
 %global skip_python2 1
 Name:           python-%{libname}
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
@@ -65,7 +65,7 @@ rm pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
 %check
-%pytest src/
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
