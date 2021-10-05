@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 04 21:21:06 UTC 2021 - wbrown@suse.de
+
+- Update to version 20211005:
+  * add CVE information to RUSTSEC-2021-0080 (#1068)
+  * Add CVE information (#1067)
+  * Assigned RUSTSEC-2021-0119 to nix (#1066)
+  * nix::unistd::getgrouplist buffer overflow (#1060)
+  * Assigned RUSTSEC-2021-0118 to arrow (#1064)
+  * Yet another arrow advisory (#1059)
+  * Assigned RUSTSEC-2021-0117 to arrow (#1063)
+  * arrow DecimalArray advisory (#1058)
+  * Assigned RUSTSEC-2021-0116 to arrow (#1062)
+  * arrow BinaryArray advisory (#1057)
+
+-------------------------------------------------------------------
 Mon Aug 02 02:47:18 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210802:
