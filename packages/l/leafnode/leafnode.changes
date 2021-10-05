@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  4 07:23:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_leafnode@.service.patch
+
+-------------------------------------------------------------------
 Fri Jul  9 16:43:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - It is not necessary to manually set rights and ownership on

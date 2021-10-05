@@ -1,0 +1,24 @@
+Index: leafnode-2.0.0+git.1527241185.66da754/systemd/leafnode@.service.in
+===================================================================
+--- leafnode-2.0.0+git.1527241185.66da754.orig/systemd/leafnode@.service.in
++++ leafnode-2.0.0+git.1527241185.66da754/systemd/leafnode@.service.in
+@@ -3,6 +3,19 @@ Description=NNTP server for small sites
+ Documentation=man:leafnode(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@sbindir@/leafnode
+ StandardInput=socket
+ User=news

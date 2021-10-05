@@ -37,6 +37,7 @@ Source1:        README-SUSE.rst
 # PATCH-FEATURE-UPSTREAM name-of-file.patch bsc#1115443 mcepl@suse.com
 # Replace /etc/cron.daily/leafnode with systemd timer
 Patch0:         systemd-timers.patch
+Patch1:	harden_leafnode@.service.patch
 BuildRequires:  autoconf >= 2.68
 BuildRequires:  automake
 BuildRequires:  gettext
