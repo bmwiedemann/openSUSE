@@ -1,7 +1,7 @@
 #
 # spec file for package python-statsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jsocol/pystatsd
 Source:         https://files.pythonhosted.org/packages/source/s/statsd/statsd-%{version}.tar.gz
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,6 +40,7 @@ for the statsd daemon.
 
 %prep
 %setup -q -n statsd-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -48,7 +50,7 @@ for the statsd daemon.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest statsd/tests.py
 
 %files %{python_files}
 %license LICENSE
