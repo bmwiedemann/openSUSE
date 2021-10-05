@@ -1,7 +1,7 @@
 #
 # spec file for package pithos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,22 +19,23 @@
 
 %global appid io.github.Pithos
 Name:           pithos
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Native Pandora Radio client for Linux
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
-Url:            https://pithos.github.io/
+URL:            https://pithos.github.io
 Source0:        https://github.com/pithos/pithos/releases/download/%{version}/pithos-%{version}.tar.xz
-
-BuildRequires:  gdk-pixbuf-devel
-BuildRequires:  glib2-devel
-BuildRequires:  meson >= 0.50.0
 # Needed for automatic typelib() Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-devel >= 3.4
+BuildRequires:  meson >= 0.50.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(python3) >= 3.4
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-good
 Requires:       python3-cairo

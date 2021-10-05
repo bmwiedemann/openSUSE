@@ -204,4 +204,20 @@
   needed. (forwarded request 741938 from iznogood)</comment>
     <requestid>742024</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b179b222b2eab324a49a921af69e1c72</srcmd5>
+    <version>1.5.1</version>
+    <time>1633466036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * Add Quit to the app menu
+  * Remove the limit of 95 stations
+  * Handle Enter keypress in stations search
+  * Fix app menu keybindings failing to work
+  * Fix syntax error on Python 3.8
+  * Fix an exception on newer versions of pygobject
+  * Fix album art downloads in Flatpak
+  * MPRIS: Fix media keys failing to bind on KDE (forwarded request 922770 from iDesmI)</comment>
+    <requestid>923213</requestid>
+  </revision>
 </revisionlist>

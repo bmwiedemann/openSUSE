@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  2 08:32:43 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 1.5.1:
+  * Add Quit to the app menu
+  * Remove the limit of 95 stations
+  * Handle Enter keypress in stations search
+  * Fix app menu keybindings failing to work
+  * Fix syntax error on Python 3.8
+  * Fix an exception on newer versions of pygobject
+  * Fix album art downloads in Flatpak
+  * MPRIS: Fix media keys failing to bind on KDE
+
+-------------------------------------------------------------------
 Tue Oct 22 21:10:54 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.0:
