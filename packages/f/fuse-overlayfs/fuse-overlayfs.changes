@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:30:08 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 1.7.1
+  * set FUSE_CAP_POSIX_ACL only when it is supported by FUSE.
+  * treat statx failure with EINVAL as ENOSYS, so that the fallback
+    is attempted.
+
+- Update to version 1.7.0
+  * fix read xattrs for device files
+  * don't create whiteout files in opaque dirs.
+  * fix reading files when running with euid != 0.
+  * enable POSIX ACLs.
+
+- Update to version 1.6.0
+  * fix an invalid access when filtering internal xattrs that could
+    deal to a segfault.
+
+- Update to version 1.5.0
+  * honor FUSE_OVERLAYFS_DISABLE_OVL_WHITEOUT also for renames
+  * use strncpy instead of strcpy
+  * fix renameat2(RENAME_NOREPLACE) on older kernels that lack
+    device whiteouts for unprivileged users.
+  * fix creating a symlink on top of a removed file.
+  * fix copyup of xattrs longer than 256 bytes.
+
+-------------------------------------------------------------------
 Mon Feb 22 09:02:36 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 1.4.0
