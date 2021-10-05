@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 20 14:02:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_gnuhealth.service.patch
+  Modified:
+  * gnuhealth-webdav@.service
+  * gnuhealth.service
+
+-------------------------------------------------------------------
 Fri Apr 16 17:16:20 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update to gnuhealth-control

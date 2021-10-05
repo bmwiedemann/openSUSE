@@ -1,0 +1,24 @@
+Index: gnuhealth-3.8.0/scripts/startup/gnuhealth.service
+===================================================================
+--- gnuhealth-3.8.0.orig/scripts/startup/gnuhealth.service
++++ gnuhealth-3.8.0/scripts/startup/gnuhealth.service
+@@ -3,6 +3,19 @@ Description=GNU Health Server
+ After=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ User=gnuhealth
+ WorkingDirectory=/home/gnuhealth

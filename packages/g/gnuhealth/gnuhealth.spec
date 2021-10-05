@@ -40,6 +40,7 @@ Source7:        gnuhealth-rpmlintrc
 Source8:        https://ftp.gnu.org/gnu/health/%{name}-%{version}.tar.gz.sig
 Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         shebang.diff
+Patch1:	harden_gnuhealth.service.patch
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
@@ -112,6 +113,7 @@ This package provides the interface to Orthanc
 %patch0 -p1
 cp %{S:1} .
 cp %{S:2} .
+%patch1 -p1
 
 %build
 for i in h*; do
