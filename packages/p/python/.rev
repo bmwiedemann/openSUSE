@@ -1504,4 +1504,15 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment>Synchronization of the package with SLE version.</comment>
     <requestid>921455</requestid>
   </revision>
+  <revision rev="159" vrev="10">
+    <srcmd5>b2eb99c52e924d086257678ebd51384f</srcmd5>
+    <version>2.7.18</version>
+    <time>1633466030</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2019-20907_tarfile-inf-loop.patch fixing bsc#1174091
+  (CVE-2019-20907, bpo#39017) avoiding possible infinite loop
+  in specifically crafted tarball.
+  Add recursion.tar as a testing tarball for the patch.</comment>
+    <requestid>923134</requestid>
+  </revision>
 </revisionlist>

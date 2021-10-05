@@ -47,6 +47,13 @@ Mon Aug  9 15:16:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
   100 (bpo#44022, boo#1189241).
 
 -------------------------------------------------------------------
+Fri Jul 16 14:25:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Modify Lib/ensurepip/__init__.py to contain the same version
+  numbers as are in reality the ones in the bundled wheels
+  (bsc#1187668).
+
+-------------------------------------------------------------------
 Fri Feb 26 18:21:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2021-23336-only-amp-as-query-sep.patch which forbids
