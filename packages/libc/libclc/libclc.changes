@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  2 20:13:04 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.2.0+llvm13.0.0.
+- Make it easier to build release candidates.
+
+-------------------------------------------------------------------
+Wed Sep 29 12:44:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed broken %{_llvm_sonum} in libcl(llvm%{_llvm_sonum}) Provides
+  by buildrequiring appropriate llvm/clang -devel packages
+
+-------------------------------------------------------------------
+Wed Sep 29 12:00:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- needed for jira#SLE/SLE-18743 (Mesa update for sle15-sp4/Leap 15.4)
+
+-------------------------------------------------------------------
 Wed Apr 14 23:57:28 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.2.0+llvm12.0.0.

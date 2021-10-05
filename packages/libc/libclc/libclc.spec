@@ -16,20 +16,32 @@
 #
 
 
-%define _libclc_llvm_ver 12.0.0
+%define _libclc_llvm_ver 13.0.0
+%define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
+%define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
 Name:           libclc
-Version:        0.2.0+llvm%{_libclc_llvm_ver}
+Version:        0.2.0+llvm%{_libclc_llvm_ver}%{?_rc:~rc%_rc}
 Release:        0
 Summary:        OpenCL C programming language library
 License:        Apache-2.0 WITH LLVM-exception AND (BSD-3-Clause OR MIT)
 Group:          Development/Libraries/C and C++
 URL:            https://libclc.llvm.org/
-Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_libclc_llvm_ver}/%{name}-%{_libclc_llvm_ver}.src.tar.xz
+Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  clang-devel >= 4.0
 BuildRequires:  cmake
-BuildRequires:  llvm >= 4.0
+%if 0%{?suse_version} >= 1550
+BuildRequires:  clang-devel
+BuildRequires:  llvm-devel
+%else
+%if 0%{?sle_version} >= 150300
+BuildRequires:  clang11-devel
+BuildRequires:  llvm11-devel
+%else
+BuildRequires:  clang9-devel
+BuildRequires:  llvm9-devel
+%endif
+%endif
 BuildRequires:  python3-base
 Provides:       libclc(llvm%{_llvm_sonum})
 BuildArch:      noarch
@@ -38,7 +50,7 @@ BuildArch:      noarch
 Library requirements of the OpenCL C programming language.
 
 %prep
-%setup -q -n libclc-%{_libclc_llvm_ver}.src
+%setup -q -n libclc-%{_version}.src
 
 %build
 # The libraries are bitcode files, so LTO is neither supported nor does it help.

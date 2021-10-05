@@ -131,4 +131,12 @@
     <comment></comment>
     <requestid>886350</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>38b5a49d404938f9f6a1ca3cd5286d80</srcmd5>
+    <version>0.2.0+llvm13.0.0</version>
+    <time>1633466016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922957</requestid>
+  </revision>
 </revisionlist>
