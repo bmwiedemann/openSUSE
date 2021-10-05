@@ -32,6 +32,10 @@ BuildRequires:  openCryptoki-devel
 BuildRequires:  openssl-devel
 BuildRequires:  trousers-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# I reported this to the tpm-tools/trousers mailing list on 2018-12-03 but the
+# patches never made it into the upstream repo for some reason
+Patch0:         0001-tpm_version-avoid-outputting-NULL-bytes-from-tpmVend.patch
+Patch1:         0001-tpm_version-avoid-outputting-undefined-data-on-stder.patch
 
 %description
 Trusted Computing is a set of specifications published by the Trusted
@@ -89,7 +93,7 @@ This package contains the libraries and headers necessary for developing
 tpm-tools applications.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 sh bootstrap.sh

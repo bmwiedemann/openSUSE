@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 12:10:20 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix undefined and binary data being output in the tpm_version command
+  (bsc#1114793)
+  - add 0001-tpm_version-avoid-outputting-NULL-bytes-from-tpmVend.patch
+  - add 0001-tpm_version-avoid-outputting-undefined-data-on-stder.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 11:29:22 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - upgrade to minor version 1.3.9.2:

@@ -1,0 +1,35 @@
+From f0f30ff3e3b08751ebb8524303d80b6e94882134 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Fri, 30 Nov 2018 13:17:01 +0100
+Subject: [PATCH] tpm_version: avoid outputting undefined data on stderr
+
+If there was no data written to the temporary file then memsize == 1, no
+data will be read from the file into the buffer and the buffer will not
+be null terminated. This can cause random data to be output later on to
+the original stderr like:
+
+'#precedence ::ffff:0:0/'
+
+or
+
+'xl?8?'
+
+Fix this by making sure the buffer is always zero terminated.
+---
+ src/tpm_mgmt/tpm_version.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: tpm-tools-1.3.9.1/src/tpm_mgmt/tpm_version.c
+===================================================================
+--- tpm-tools-1.3.9.1.orig/src/tpm_mgmt/tpm_version.c
++++ tpm-tools-1.3.9.1/src/tpm_mgmt/tpm_version.c
+@@ -99,6 +99,9 @@ char* end_capture_stderr(int olderr)
+     perror("read()");
+   }
+ 
++  // make sure the buffer is null terminated.
++  buf[st.st_size] = '\0';
++
+   // Restore stderr.
+  errout:
+   if (0 > dup2(olderr, STDERR_FILENO)) {

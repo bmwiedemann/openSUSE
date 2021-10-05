@@ -254,4 +254,15 @@
   compatible.</comment>
     <requestid>876508</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ee43e54f95978278843dee111053361c</srcmd5>
+    <version>1.3.9.2</version>
+    <time>1633466039</time>
+    <user>dimstar_suse</user>
+    <comment>- fix undefined and binary data being output in the tpm_version command
+  (bsc#1114793)
+  - add 0001-tpm_version-avoid-outputting-NULL-bytes-from-tpmVend.patch
+  - add 0001-tpm_version-avoid-outputting-undefined-data-on-stder.patch</comment>
+    <requestid>923211</requestid>
+  </revision>
 </revisionlist>
