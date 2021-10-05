@@ -1,5 +1,5 @@
 #
-# spec file for package tensorflow2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -222,6 +222,7 @@ Patch22:        tensorflow-2.6.0-tf-keras-hdf5-3.patch
 # PATCH-FIX-OPENSUSE tensorflow-2.6.0-compile-with-protobuf-3.16.patch https://github.com/protocolbuffers/protobuf/pull/8354
 Patch23:        tensorflow-2.6.0-compile-with-protobuf-3.16.patch
 
+# See https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py
 Requires:       python3
 Requires:       python3-Keras-Preprocessing
 Requires:       python3-abseil
@@ -229,8 +230,13 @@ Requires:       python3-astor
 Requires:       python3-astunparse
 Requires:       python3-flatbuffers
 Requires:       python3-gast
+Requires:       python3-h5py
+Requires:       python3-keras = %{version}
 Requires:       python3-opt-einsum
 Requires:       python3-protobuf
+Requires:       python3-six
+Requires:       python3-tensorboard = %{version}
+Requires:       python3-tensorflow-estimator = %{version}
 Requires:       python3-termcolor
 Requires:       python3-wrapt
 %if %{with hpc}
@@ -325,6 +331,8 @@ BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-flatbuffers
 BuildRequires:  python3-gast
+BuildRequires:  python3-h5py
+BuildRequires:  python3-keras = %{version}
 BuildRequires:  python3-mock
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-opt-einsum
@@ -332,6 +340,8 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-protobuf
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
+BuildRequires:  python3-tensorboard = %{version}
+BuildRequires:  python3-tensorflow-estimator = %{version}
 BuildRequires:  python3-termcolor
 BuildRequires:  python3-wheel
 BuildRequires:  python3-wrapt

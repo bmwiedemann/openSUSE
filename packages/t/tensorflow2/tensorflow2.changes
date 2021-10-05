@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 15:57:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add missing python requirements -- boo#1190856 
+
+-------------------------------------------------------------------
 Wed Sep  1 10:30:38 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Limit BuildRequires for bazel-skylib-source to versions >= 1.0.3.
