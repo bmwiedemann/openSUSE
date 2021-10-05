@@ -7,4 +7,15 @@
     <comment>Interesting plugin for python-lsp.</comment>
     <requestid>922964</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2fe714405c7defdf6713c314af8c778a</srcmd5>
+    <version>0.1.4</version>
+    <time>1633466040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.4:
+  - Add method to method object refactoring
+  - Supress all exceptions when determining codeActions
+</comment>
+    <requestid>923245</requestid>
+  </revision>
 </revisionlist>
