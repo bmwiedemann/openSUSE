@@ -43,4 +43,14 @@
     <comment>- covers jira#SLE/SLE-18653</comment>
     <requestid>921771</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>11066b60acf8a2323080bbfc9249bbde</srcmd5>
+    <version>21.1.2</version>
+    <time>1633466006</time>
+    <user>dimstar_suse</user>
+    <comment>- U_glamor-Fix-handling-of-1-bit-pixmaps.patch
+  * glamor: Fix handling of 1-bit pixmaps; fixes e.g. issues with
+    gimp on Wayland (which needs Xwayland) (boo#1189310)</comment>
+    <requestid>922042</requestid>
+  </revision>
 </revisionlist>

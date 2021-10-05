@@ -1,0 +1,192 @@
+From e59e24c8779de65db87b8c07bc3f2abb479be082 Mon Sep 17 00:00:00 2001
+From: Povilas Kanapickas <povilas@radix.lt>
+Date: Mon, 6 Sep 2021 22:41:32 +0300
+Subject: [PATCH] glamor: Fix handling of 1-bit pixmaps
+
+Since 8702c938b33b9ec180d64754eb922515c7c4a98b the pixmap formats are
+handled in a single place. In the process of conversion the difference
+between pixmap formats that can be uploaded and those that can be
+rendered on GL side has been lost. This affects only 1-bit pixmaps: as
+they aren't supported on GL, but can be converted to a R8 or A8 format
+for rendering (see glamor_get_tex_format_type_from_pictformat()).
+
+To work around this we add a separate flag that specifies whether the
+format actually supports rendering in GL, convert all checks to use this
+flag and then add 1-bit pixmap formats that don't support rendering in
+GL.
+
+Fixes: 8702c938b33b9ec180d64754eb922515c7c4a98b
+Closes: https://gitlab.freedesktop.org/xorg/xserver/-/issues/1210
+Acked-by: Olivier Fourdan <ofourdan@redhat.com>
+Tested-by: Olivier Fourdan <ofourdan@redhat.com>
+Reviewed-by: Adam Jackson <ajax@redhat.com>
+Signed-off-by: Povilas Kanapickas <povilas@radix.lt>
+---
+ glamor/glamor.c        | 35 +++++++++++++++++++++--------------
+ glamor/glamor_priv.h   | 10 ++++++++++
+ glamor/glamor_render.c |  9 +++++++--
+ 3 files changed, 38 insertions(+), 16 deletions(-)
+
+Index: xwayland-21.1.2/glamor/glamor.c
+===================================================================
+--- xwayland-21.1.2.orig/glamor/glamor.c
++++ xwayland-21.1.2/glamor/glamor.c
+@@ -216,7 +216,7 @@ glamor_create_pixmap(ScreenPtr screen, i
+              w <= glamor_priv->glyph_max_dim &&
+              h <= glamor_priv->glyph_max_dim)
+          || (w == 0 && h == 0)
+-         || !glamor_priv->formats[depth].format))
++         || !glamor_priv->formats[depth].rendering_supported))
+         return fbCreatePixmap(screen, w, h, depth, usage);
+     else
+         pixmap = fbCreatePixmap(screen, 0, 0, depth, usage);
+@@ -461,7 +461,8 @@ glamor_format_for_pixmap(PixmapPtr pixma
+ 
+ static void
+ glamor_add_format(ScreenPtr screen, int depth, CARD32 render_format,
+-                  GLenum internalformat, GLenum format, GLenum type)
++                  GLenum internalformat, GLenum format, GLenum type,
++                  Bool rendering_supported)
+ {
+     glamor_screen_private *glamor_priv = glamor_get_screen_private(screen);
+     struct glamor_format *f = &glamor_priv->formats[depth];
+@@ -476,7 +477,7 @@ glamor_add_format(ScreenPtr screen, int
+      * Note that we can't just create a pixmap because we're in
+      * screeninit.
+      */
+-    if (glamor_priv->is_gles) {
++    if (rendering_supported && glamor_priv->is_gles) {
+         unsigned fbo, tex;
+         int read_format, read_type;
+         GLenum status;
+@@ -521,6 +522,7 @@ glamor_add_format(ScreenPtr screen, int
+     f->internalformat = internalformat;
+     f->format = format;
+     f->type = type;
++    f->rendering_supported = rendering_supported;
+ }
+ 
+ /* Set up the GL format/types that glamor will use for the various depths
+@@ -551,11 +553,15 @@ glamor_setup_formats(ScreenPtr screen)
+      * only falling back to a8 if we can't do them.
+      */
+     if (glamor_priv->is_gles || epoxy_has_gl_extension("GL_ARB_texture_rg")) {
++        glamor_add_format(screen, 1, PICT_a1,
++                          GL_R8, GL_RED, GL_UNSIGNED_BYTE, FALSE);
+         glamor_add_format(screen, 8, PICT_a8,
+-                          GL_R8, GL_RED, GL_UNSIGNED_BYTE);
++                          GL_R8, GL_RED, GL_UNSIGNED_BYTE, TRUE);
+     } else {
++        glamor_add_format(screen, 1, PICT_a1,
++                          GL_ALPHA, GL_ALPHA, GL_UNSIGNED_BYTE, FALSE);
+         glamor_add_format(screen, 8, PICT_a8,
+-                          GL_ALPHA, GL_ALPHA, GL_UNSIGNED_BYTE);
++                          GL_ALPHA, GL_ALPHA, GL_UNSIGNED_BYTE, TRUE);
+     }
+ 
+     if (glamor_priv->is_gles) {
+@@ -569,40 +575,41 @@ glamor_setup_formats(ScreenPtr screen)
+          * disable render accel for now.
+          */
+         glamor_add_format(screen, 15, PICT_x1r5g5b5,
+-                          GL_RGB5_A1, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1);
++                          GL_RGB5_A1, GL_RGBA, GL_UNSIGNED_SHORT_5_5_5_1, TRUE);
+     } else {
+         glamor_add_format(screen, 15, PICT_x1r5g5b5,
+-                          GL_RGBA, GL_BGRA, GL_UNSIGNED_SHORT_1_5_5_5_REV);
++                          GL_RGBA, GL_BGRA, GL_UNSIGNED_SHORT_1_5_5_5_REV, TRUE);
+     }
+ 
+     glamor_add_format(screen, 16, PICT_r5g6b5,
+-                      GL_RGB, GL_RGB, GL_UNSIGNED_SHORT_5_6_5);
++                      GL_RGB, GL_RGB, GL_UNSIGNED_SHORT_5_6_5, TRUE);
+ 
+     if (glamor_priv->is_gles) {
+         assert(X_BYTE_ORDER == X_LITTLE_ENDIAN);
+         glamor_add_format(screen, 24, PICT_x8b8g8r8,
+-                          GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE);
++                          GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, TRUE);
+         glamor_add_format(screen, 32, PICT_a8b8g8r8,
+-                          GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE);
++                          GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE, TRUE);
+     } else {
+         glamor_add_format(screen, 24, PICT_x8r8g8b8,
+-                          GL_RGBA, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV);
++                          GL_RGBA, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, TRUE);
+         glamor_add_format(screen, 32, PICT_a8r8g8b8,
+-                          GL_RGBA, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV);
++                          GL_RGBA, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, TRUE);
+     }
+ 
+     if (glamor_priv->is_gles) {
+         glamor_add_format(screen, 30, PICT_x2b10g10r10,
+-                          GL_RGB10_A2, GL_RGBA, GL_UNSIGNED_INT_2_10_10_10_REV);
++                          GL_RGB10_A2, GL_RGBA, GL_UNSIGNED_INT_2_10_10_10_REV, TRUE);
+     } else {
+         glamor_add_format(screen, 30, PICT_x2r10g10b10,
+-                          GL_RGB10_A2, GL_BGRA, GL_UNSIGNED_INT_2_10_10_10_REV);
++                          GL_RGB10_A2, GL_BGRA, GL_UNSIGNED_INT_2_10_10_10_REV, TRUE);
+     }
+ 
+     glamor_priv->cbcr_format.depth = 16;
+     glamor_priv->cbcr_format.internalformat = GL_RG8;
+     glamor_priv->cbcr_format.format = GL_RG;
+     glamor_priv->cbcr_format.type = GL_UNSIGNED_BYTE;
++    glamor_priv->cbcr_format.rendering_supported = TRUE;
+ }
+ 
+ /** Set up glamor for an already-configured GL context. */
+Index: xwayland-21.1.2/glamor/glamor_priv.h
+===================================================================
+--- xwayland-21.1.2.orig/glamor/glamor_priv.h
++++ xwayland-21.1.2/glamor/glamor_priv.h
+@@ -170,6 +170,11 @@ struct glamor_format {
+      * transferred using format/type.
+      */
+     CARD32 render_format;
++    /**
++     * Whether rendering is supported in GL at all (i.e. without pixel data conversion
++     * just before upload)
++     */
++    Bool rendering_supported;
+ };
+ 
+ struct glamor_saved_procs {
+@@ -215,6 +220,11 @@ typedef struct glamor_screen_private {
+     Bool can_copyplane;
+     int max_fbo_size;
+ 
++    /**
++     * Stores information about supported formats. Note, that this list contains all
++     * supported pixel formats, including these that are not supported on GL side
++     * directly, but are converted to another format instead.
++     */
+     struct glamor_format formats[33];
+     struct glamor_format cbcr_format;
+ 
+Index: xwayland-21.1.2/glamor/glamor_render.c
+===================================================================
+--- xwayland-21.1.2.orig/glamor/glamor_render.c
++++ xwayland-21.1.2/glamor/glamor_render.c
+@@ -773,14 +773,19 @@ glamor_render_format_is_supported(Pictur
+ {
+     PictFormatShort storage_format;
+     glamor_screen_private *glamor_priv;
++    struct glamor_format *f;
+ 
+     /* Source-only pictures should always work */
+     if (!picture->pDrawable)
+         return TRUE;
+ 
+     glamor_priv = glamor_get_screen_private(picture->pDrawable->pScreen);
+-    storage_format =
+-        glamor_priv->formats[picture->pDrawable->depth].render_format;
++    f = &glamor_priv->formats[picture->pDrawable->depth];
++
++    if (!f->rendering_supported)
++        return FALSE;
++
++    storage_format = f->render_format;
+ 
+     switch (picture->format) {
+     case PICT_a2r10g10b10:

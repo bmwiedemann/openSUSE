@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 28 16:22:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_glamor-Fix-handling-of-1-bit-pixmaps.patch
+  * glamor: Fix handling of 1-bit pixmaps; fixes e.g. issues with
+    gimp on Wayland (which needs Xwayland) (boo#1189310)
+
+-------------------------------------------------------------------
 Mon Sep 27 11:56:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - covers jira#SLE/SLE-18653
