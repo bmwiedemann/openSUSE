@@ -1448,11 +1448,13 @@ unsorted:
   - btar 
   - btcflash 
   - btfs 
+  - btop 
   - btrfs-extent-same 
   - btrfsprogs-static 
   - bucklespring 
   - buckygen 
   - budgie-app-launcher-applet 
+  - budgie-applications-menu-applet 
   - budgie-brightness-controller-applet 
   - budgie-calendar-applet 
   - budgie-calendar-applet-lang 
@@ -2963,6 +2965,7 @@ unsorted:
   - domination-data 
   - doomsday 
   - dosbox 
+  - dosbox-translations 
   - dosemu 
   - dotconf-devel 
   - double-conversion-devel 
@@ -6976,6 +6979,8 @@ unsorted:
   - int10h-oldschoolpc-fonts-stretched 
   - intel-SINIT 
   - intel-cmt-cat 
+  - intel-gpu-tools 
+  - intel-gpu-tools-devel 
   - intel-hybrid-driver 
   - intel-media-driver: [x86_64] 
   - intel-vaapi-driver-32bit: [x86_64] 
@@ -8927,8 +8932,10 @@ unsorted:
   - libQt63DQuickRender6 
   - libQt63DQuickScene2D6 
   - libQt63DRender6 
+  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
+  - libQt6ChartsQml6 
   - libQt6Coap6 
   - libQt6Concurrent6 
   - libQt6Core5Compat6 
@@ -8947,16 +8954,27 @@ unsorted:
   - libQt6LabsSharedImage6 
   - libQt6LabsWavefrontMesh6 
   - libQt6Mqtt6 
+  - libQt6Multimedia6 
+  - libQt6MultimediaQuick6 
+  - libQt6MultimediaWidgets6 
   - libQt6Network6 
   - libQt6NetworkAuth6 
+  - libQt6Nfc6 
   - libQt6OpcUa6 
   - libQt6OpenGL6 
   - libQt6OpenGLWidgets6 
+  - libQt6Pdf6 
+  - libQt6PdfQuick6 
+  - libQt6PdfWidgets6 
+  - libQt6Positioning6 
+  - libQt6PositioningQuick6 
   - libQt6PrintSupport6 
   - libQt6Qml6 
+  - libQt6QmlCore6 
   - libQt6QmlLocalStorage6 
   - libQt6QmlModels6 
   - libQt6QmlWorkerScript6 
+  - libQt6QmlXmlListModel6 
   - libQt6Quick3D6 
   - libQt6Quick3DAssetImport6 
   - libQt6Quick3DRuntimeRender6 
@@ -8964,14 +8982,24 @@ unsorted:
   - libQt6Quick6 
   - libQt6QuickControls2-6 
   - libQt6QuickControls2Impl6 
+  - libQt6QuickDialogs2-6 
+  - libQt6QuickDialogs2QuickImpl6 
+  - libQt6QuickDialogs2Utils6 
   - libQt6QuickLayouts6 
   - libQt6QuickParticles6 
   - libQt6QuickShapes6 
   - libQt6QuickTemplates2-6 
   - libQt6QuickTest6 
+  - libQt6QuickTimeline6 
   - libQt6QuickWidgets6 
+  - libQt6RemoteObjects6 
+  - libQt6RemoteObjectsQml6 
   - libQt6Scxml6 
   - libQt6ScxmlQml6 
+  - libQt6Sensors6 
+  - libQt6SensorsQuick6 
+  - libQt6SerialBus6 
+  - libQt6SerialPort6 
   - libQt6ShaderTools6 
   - libQt6Sql6 
   - libQt6StateMachine6 
@@ -8983,7 +9011,15 @@ unsorted:
   - libQt6VirtualKeyboard6 
   - libQt6WaylandClient6 
   - libQt6WaylandCompositor6 
+  - libQt6WaylandEglClientHwIntegration6 
+  - libQt6WaylandEglCompositorHwIntegration6 
+  - libQt6WebChannel6 
+  - libQt6WebEngineCore6 
+  - libQt6WebEngineQuick6 
+  - libQt6WebEngineWidgets6 
+  - libQt6WebSockets6 
   - libQt6Widgets6 
+  - libQt6WlShellIntegration6 
   - libQt6Xml6 
   - libQtAV1 
   - libQtAV1-32bit: [x86_64] 
@@ -15260,6 +15296,7 @@ unsorted:
   - mailgraph-apache 
   - mailimporter-devel 
   - mailprocessing 
+  - mailutils-delivery 
   - mailutils-devel 
   - mailutils-imap4d 
   - mailutils-mh 
@@ -17297,12 +17334,8 @@ unsorted:
   - ocaml-cairo-devel 
   - ocaml-calendar 
   - ocaml-calendar-devel 
-  - ocaml-camlbz2 
-  - ocaml-camlbz2-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
-  - ocaml-camlzip 
-  - ocaml-camlzip-devel 
   - ocaml-camomile 
   - ocaml-camomile-data 
   - ocaml-camomile-devel 
@@ -17374,8 +17407,6 @@ unsorted:
   - ocaml-menhir-devel 
   - ocaml-migrate-parsetree 
   - ocaml-migrate-parsetree-devel 
-  - ocaml-num 
-  - ocaml-num-devel 
   - ocaml-ocaml-compiler-libs 
   - ocaml-ocaml-compiler-libs-devel 
   - ocaml-ocamlbuild 
@@ -21798,6 +21829,7 @@ unsorted:
   - python36-azure-mgmt-eventgrid 
   - python36-azure-mgmt-eventhub 
   - python36-azure-mgmt-extendedlocation 
+  - python36-azure-mgmt-fluidrelay 
   - python36-azure-mgmt-frontdoor 
   - python36-azure-mgmt-guestconfig 
   - python36-azure-mgmt-hanaonazure 
@@ -21841,6 +21873,7 @@ unsorted:
   - python36-azure-mgmt-privatedns 
   - python36-azure-mgmt-purview 
   - python36-azure-mgmt-quantum 
+  - python36-azure-mgmt-quota 
   - python36-azure-mgmt-rdbms 
   - python36-azure-mgmt-recoveryservices 
   - python36-azure-mgmt-recoveryservicesbackup 
@@ -23257,6 +23290,7 @@ unsorted:
   - python36-pylons-sphinx-themes 
   - python36-pylru 
   - python36-pyls-spyder 
+  - python36-pylsp-rope 
   - python36-pylsqpack 
   - python36-pylzma 
   - python36-pymacaroons 
@@ -24591,6 +24625,7 @@ unsorted:
   - python38-azure-mgmt-eventgrid 
   - python38-azure-mgmt-eventhub 
   - python38-azure-mgmt-extendedlocation 
+  - python38-azure-mgmt-fluidrelay 
   - python38-azure-mgmt-frontdoor 
   - python38-azure-mgmt-guestconfig 
   - python38-azure-mgmt-hanaonazure 
@@ -24634,6 +24669,7 @@ unsorted:
   - python38-azure-mgmt-privatedns 
   - python38-azure-mgmt-purview 
   - python38-azure-mgmt-quantum 
+  - python38-azure-mgmt-quota 
   - python38-azure-mgmt-rdbms 
   - python38-azure-mgmt-recoveryservices 
   - python38-azure-mgmt-recoveryservicesbackup 
@@ -26129,6 +26165,7 @@ unsorted:
   - python38-pylons-sphinx-themes 
   - python38-pylru 
   - python38-pyls-spyder 
+  - python38-pylsp-rope 
   - python38-pylsqpack 
   - python38-pylzma 
   - python38-pymacaroons 
@@ -27545,6 +27582,7 @@ unsorted:
   - python39-azure-mgmt-eventgrid 
   - python39-azure-mgmt-eventhub 
   - python39-azure-mgmt-extendedlocation 
+  - python39-azure-mgmt-fluidrelay 
   - python39-azure-mgmt-frontdoor 
   - python39-azure-mgmt-guestconfig 
   - python39-azure-mgmt-hanaonazure 
@@ -27588,6 +27626,7 @@ unsorted:
   - python39-azure-mgmt-privatedns 
   - python39-azure-mgmt-purview 
   - python39-azure-mgmt-quantum 
+  - python39-azure-mgmt-quota 
   - python39-azure-mgmt-rdbms 
   - python39-azure-mgmt-recoveryservices 
   - python39-azure-mgmt-recoveryservicesbackup 
@@ -29199,6 +29238,7 @@ unsorted:
   - python39-pylons-sphinx-themes 
   - python39-pylru 
   - python39-pyls-spyder 
+  - python39-pylsp-rope 
   - python39-pylsqpack 
   - python39-pylzma 
   - python39-pymacaroons 
@@ -30330,7 +30370,6 @@ unsorted:
   - qt6-base-docs-qch 
   - qt6-base-examples 
   - qt6-base-private-devel 
-  - qt6-bodymovin-devel 
   - qt6-bodymovin-private-devel 
   - qt6-charts-devel 
   - qt6-charts-docs-html 
@@ -30338,12 +30377,20 @@ unsorted:
   - qt6-charts-examples 
   - qt6-charts-imports 
   - qt6-charts-private-devel 
+  - qt6-chartsqml-devel 
+  - qt6-chartsqml-private-devel 
   - qt6-coap-devel 
   - qt6-coap-docs-html 
   - qt6-coap-docs-qch 
   - qt6-coap-examples 
   - qt6-coap-private-devel 
   - qt6-concurrent-devel 
+  - qt6-connectivity 
+  - qt6-connectivity-devel 
+  - qt6-connectivity-docs-html 
+  - qt6-connectivity-docs-qch 
+  - qt6-connectivity-examples 
+  - qt6-connectivity-private-devel 
   - qt6-core-devel 
   - qt6-core-private-devel 
   - qt6-datavis3d-docs-html 
@@ -30363,12 +30410,12 @@ unsorted:
   - qt6-declarative-tools 
   - qt6-designer-devel 
   - qt6-designer-private-devel 
+  - qt6-designercomponents-private-devel 
   - qt6-docs-common 
   - qt6-gui-devel 
   - qt6-gui-private-devel 
   - qt6-help-devel 
   - qt6-help-private-devel 
-  - qt6-hunspellinputmethod-devel 
   - qt6-hunspellinputmethod-private-devel 
   - qt6-imageformats 
   - qt6-imageformats-devel 
@@ -30389,6 +30436,11 @@ unsorted:
   - qt6-labswavefrontmesh-devel 
   - qt6-labswavefrontmesh-private-devel 
   - qt6-linguist-devel 
+  - qt6-location 
+  - qt6-location-docs-html 
+  - qt6-location-docs-qch 
+  - qt6-location-examples 
+  - qt6-location-imports 
   - qt6-lottie-docs-html 
   - qt6-lottie-docs-qch 
   - qt6-lottie-imports 
@@ -30398,14 +30450,24 @@ unsorted:
   - qt6-mqtt-docs-qch 
   - qt6-mqtt-examples 
   - qt6-mqtt-private-devel 
+  - qt6-multimedia-devel 
+  - qt6-multimedia-docs-html 
+  - qt6-multimedia-docs-qch 
+  - qt6-multimedia-examples 
+  - qt6-multimedia-imports 
+  - qt6-multimedia-private-devel 
+  - qt6-multimediaquick-private-devel 
+  - qt6-multimediawidgets-devel 
+  - qt6-multimediawidgets-private-devel 
   - qt6-network-devel 
-  - qt6-network-informationbackends 
   - qt6-network-private-devel 
+  - qt6-network-tls 
   - qt6-networkauth-devel 
   - qt6-networkauth-docs-html 
   - qt6-networkauth-docs-qch 
   - qt6-networkauth-examples 
   - qt6-networkauth-private-devel 
+  - qt6-networkinformation-nm 
   - qt6-opcua 
   - qt6-opcua-devel 
   - qt6-opcua-docs-html 
@@ -30417,32 +30479,44 @@ unsorted:
   - qt6-opengl-private-devel 
   - qt6-openglwidgets-devel 
   - qt6-packetprotocol-devel-static 
-  - qt6-packetprotocol-private-devel 
+  - qt6-pdf-devel 
+  - qt6-pdf-imports 
+  - qt6-pdf-private-devel 
+  - qt6-pdfquick-devel 
+  - qt6-pdfquick-private-devel 
+  - qt6-pdfwidgets-devel 
+  - qt6-pdfwidgets-private-devel 
   - qt6-platformsupport-devel-static 
   - qt6-platformsupport-private-devel 
   - qt6-platformtheme-gtk3 
   - qt6-platformtheme-xdgdesktopportal 
+  - qt6-positioning-devel 
+  - qt6-positioning-private-devel 
+  - qt6-positioningquick-devel 
+  - qt6-positioningquick-private-devel 
   - qt6-printsupport-cups 
   - qt6-printsupport-devel 
   - qt6-printsupport-private-devel 
   - qt6-qml-devel 
   - qt6-qml-private-devel 
   - qt6-qmlcompiler-devel-static 
-  - qt6-qmlcompiler-private-devel 
+  - qt6-qmlcore-devel 
+  - qt6-qmlcore-private-devel 
   - qt6-qmldebug-devel-static 
-  - qt6-qmldebug-private-devel 
   - qt6-qmldevtools-devel-static 
   - qt6-qmldom-devel-static 
-  - qt6-qmldom-private-devel 
   - qt6-qmllocalstorage-devel 
   - qt6-qmllocalstorage-private-devel 
   - qt6-qmlmodels-devel 
   - qt6-qmlmodels-private-devel 
   - qt6-qmlworkerscript-devel 
   - qt6-qmlworkerscript-private-devel 
+  - qt6-qmlxmllistmodel-devel 
+  - qt6-qmlxmllistmodel-private-devel 
   - qt6-qt5compat-devel 
   - qt6-qt5compat-docs-html 
   - qt6-qt5compat-docs-qch 
+  - qt6-qt5compat-imports 
   - qt6-qt5compat-private-devel 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
@@ -30467,21 +30541,34 @@ unsorted:
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
   - qt6-quickcontrols2impl-private-devel 
+  - qt6-quickdialogs2-devel 
+  - qt6-quickdialogs2-private-devel 
+  - qt6-quickdialogs2quickimpl-devel 
+  - qt6-quickdialogs2quickimpl-private-devel 
+  - qt6-quickdialogs2utils-devel 
+  - qt6-quickdialogs2utils-private-devel 
   - qt6-quicklayouts-devel 
   - qt6-quicklayouts-private-devel 
-  - qt6-quickparticles-devel 
   - qt6-quickparticles-private-devel 
-  - qt6-quickshapes-devel 
   - qt6-quickshapes-private-devel 
   - qt6-quicktemplates2-devel 
   - qt6-quicktemplates2-private-devel 
   - qt6-quicktest-devel 
   - qt6-quicktest-private-devel 
+  - qt6-quicktimeline-devel 
   - qt6-quicktimeline-docs-html 
   - qt6-quicktimeline-docs-qch 
   - qt6-quicktimeline-imports 
+  - qt6-quicktimeline-private-devel 
   - qt6-quickwidgets-devel 
   - qt6-quickwidgets-private-devel 
+  - qt6-remoteobjects-devel 
+  - qt6-remoteobjects-examples 
+  - qt6-remoteobjects-imports 
+  - qt6-remoteobjects-private-devel 
+  - qt6-remoteobjects-tools 
+  - qt6-remoteobjectsqml-devel 
+  - qt6-remoteobjectsqml-private-devel 
   - qt6-scxml 
   - qt6-scxml-devel 
   - qt6-scxml-docs-html 
@@ -30491,6 +30578,26 @@ unsorted:
   - qt6-scxml-private-devel 
   - qt6-scxmlqml-devel 
   - qt6-scxmlqml-private-devel 
+  - qt6-sensors 
+  - qt6-sensors-devel 
+  - qt6-sensors-docs-html 
+  - qt6-sensors-docs-qch 
+  - qt6-sensors-examples 
+  - qt6-sensors-imports 
+  - qt6-sensors-private-devel 
+  - qt6-sensorsquick-devel 
+  - qt6-sensorsquick-private-devel 
+  - qt6-serialbus 
+  - qt6-serialbus-devel 
+  - qt6-serialbus-docs-html 
+  - qt6-serialbus-docs-qch 
+  - qt6-serialbus-examples 
+  - qt6-serialbus-private-devel 
+  - qt6-serialport-devel 
+  - qt6-serialport-docs-html 
+  - qt6-serialport-docs-qch 
+  - qt6-serialport-examples 
+  - qt6-serialport-private-devel 
   - qt6-shadertools 
   - qt6-shadertools-devel 
   - qt6-shadertools-docs-html 
@@ -30525,7 +30632,6 @@ unsorted:
   - qt6-tools-private-devel 
   - qt6-tools-qdbus 
   - qt6-tools-qdoc 
-  - qt6-tools-qtpaths 
   - qt6-translations 
   - qt6-uitools-devel 
   - qt6-uitools-private-devel 
@@ -30547,8 +30653,33 @@ unsorted:
   - qt6-waylandclient-private-devel 
   - qt6-waylandcompositor-devel 
   - qt6-waylandcompositor-private-devel 
+  - qt6-waylandeglclienthwintegration-private-devel 
+  - qt6-waylandeglcompositorhwintegration-private-devel 
+  - qt6-webchannel-devel 
+  - qt6-webchannel-docs-html 
+  - qt6-webchannel-docs-qch 
+  - qt6-webchannel-examples 
+  - qt6-webchannel-imports 
+  - qt6-webchannel-private-devel 
+  - qt6-webengine 
+  - qt6-webengine-docs-html 
+  - qt6-webengine-docs-qch 
+  - qt6-webengine-imports 
+  - qt6-webenginecore-devel 
+  - qt6-webenginecore-private-devel 
+  - qt6-webenginequick-devel 
+  - qt6-webenginequick-private-devel 
+  - qt6-webenginewidgets-devel 
+  - qt6-webenginewidgets-private-devel 
+  - qt6-websockets-devel 
+  - qt6-websockets-docs-html 
+  - qt6-websockets-docs-qch 
+  - qt6-websockets-examples 
+  - qt6-websockets-imports 
+  - qt6-websockets-private-devel 
   - qt6-widgets-devel 
   - qt6-widgets-private-devel 
+  - qt6-wlshellintegration-private-devel 
   - qt6-xml-devel 
   - qt6-xml-private-devel 
   - qtcurve-gtk2 

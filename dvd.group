@@ -4557,7 +4557,7 @@
     <package name="systemd-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="systemd-logger" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <!-- systemd-logger not found on i586,x86_64-->
     <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-presets-branding-transactional-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
