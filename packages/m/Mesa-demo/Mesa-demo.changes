@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 20:38:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Introduce new subpackage -es for GLES based demos
+- Symlink es2_info, es2gears_x11, es2tri to %_bindir
+
+-------------------------------------------------------------------
 Fri Mar  2 14:14:29 UTC 2018 - sndirsch@suse.com
 
 - Update to version 8.4.0

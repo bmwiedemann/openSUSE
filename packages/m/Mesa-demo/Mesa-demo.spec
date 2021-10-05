@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-demo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Mesa demo programs for the OpenGL stack
 License:        MIT
 Group:          Development/Tools/Other
-Url:            http://www.mesa3d.org
+URL:            https://www.mesa3d.org
 Source0:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2
 Source1:        https://mesa.freedesktop.org/archive/demos/mesa-demos-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
@@ -68,6 +68,16 @@ Group:          Development/Tools/Other
 %description x
 This package contains some common GLX-based demos.
 
+%package es
+Summary:        GLES-based demos
+Group:          Development/Tools/Other
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengles2/es2_info
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
+Provides:       Mesa-demo:%{_libdir}/mesa-demos/egl/opengles2/es2tri
+
+%description es
+This package contains some common GLES-based demos.
+
 %prep
 %setup -q -n mesa-demos-%{version} -b0
 
@@ -89,6 +99,9 @@ mkdir -p %{buildroot}/%{_bindir}
 ln -s %{_libdir}/mesa-demos/xdemos/glxgears %{buildroot}/%{_bindir}/glxgears
 ln -s %{_libdir}/mesa-demos/xdemos/glxinfo %{buildroot}/%{_bindir}/glxinfo
 ln -s %{_libdir}/mesa-demos/xdemos/pbinfo %{buildroot}/%{_bindir}/pbinfo
+ln -s %{_libdir}/mesa-demos/egl/opengles2/es2_info %{buildroot}/%{_bindir}/es2_info
+ln -s %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11 %{buildroot}/%{_bindir}/es2gears_x11
+ln -s %{_libdir}/mesa-demos/egl/opengles2/es2tri %{buildroot}/%{_bindir}/es2tri
 
 %files
 %defattr(-,root,root)
@@ -96,10 +109,12 @@ ln -s %{_libdir}/mesa-demos/xdemos/pbinfo %{buildroot}/%{_bindir}/pbinfo
 %exclude %{_libdir}/mesa-demos/xdemos/glxgears
 %exclude %{_libdir}/mesa-demos/xdemos/glxinfo
 %exclude %{_libdir}/mesa-demos/xdemos/pbinfo
+%exclude %{_libdir}/mesa-demos/egl/opengles2/es2_info
+%exclude %{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
+%exclude %{_libdir}/mesa-demos/egl/opengles2/es2tri
 
 %files x
 %defattr(-,root,root)
-%dir %{_libdir}/mesa-demos/
 %dir %{_libdir}/mesa-demos/xdemos/
 %{_libdir}/mesa-demos/xdemos/glxgears
 %{_libdir}/mesa-demos/xdemos/glxinfo
@@ -107,5 +122,15 @@ ln -s %{_libdir}/mesa-demos/xdemos/pbinfo %{buildroot}/%{_bindir}/pbinfo
 %{_bindir}/glxgears
 %{_bindir}/glxinfo
 %{_bindir}/pbinfo
+
+%files es
+%defattr(-,root,root)
+%dir %{_libdir}/mesa-demos/egl/opengles2/
+%{_libdir}/mesa-demos/egl/opengles2/es2_info
+%{_libdir}/mesa-demos/egl/opengles2/es2gears_x11
+%{_libdir}/mesa-demos/egl/opengles2/es2tri
+%{_bindir}/es2_info
+%{_bindir}/es2gears_x11
+%{_bindir}/es2tri
 
 %changelog
