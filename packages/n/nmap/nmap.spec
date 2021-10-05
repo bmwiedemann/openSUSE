@@ -20,8 +20,9 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 %{!?python_sitearch: %global python_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %define with_system_lua 0%{?suse_version} >= 1330
-# don't build python2 subpackages (zenmap, ndiff) because of the python2 deprecation in Tumbleweed
-%if 0%{?suse_version} > 1500
+# don't build python2 subpackages (zenmap, ndiff) because of the python2 deprecation
+# in Tumbleweed and in SLE15-SP4
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %define with_python2 0
 %else
 %define with_python2 1

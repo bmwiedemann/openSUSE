@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 17:06:13 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Do not build with python2 support for SLE15-SP4, bsc#1190997
+
+-------------------------------------------------------------------
 Thu Sep 16 14:59:23 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Tumbleweed is not affected by the following SLE issues:
