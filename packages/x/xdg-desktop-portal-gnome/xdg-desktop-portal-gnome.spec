@@ -36,6 +36,9 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xdg-desktop-portal)
+Requires:       xdg-desktop-portal
+# Use rich deps to pull in this package when gnome-shell and flatpak (or snapd) are both installed
+Supplements:    (gnome-shell and (flatpak or snapd))
 
 %description
 A backend implementation for xdg-desktop-portal for the GNOME
