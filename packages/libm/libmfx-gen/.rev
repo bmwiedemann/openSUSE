@@ -58,4 +58,12 @@
   * Remove assert in ConvertRateControlMFX2VAAPI (#717)</comment>
     <requestid>922202</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d606828082232cf0c0a676852a3828ec</srcmd5>
+    <version>21.3.4</version>
+    <time>1633466029</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in the initial changelog</comment>
+    <requestid>923063</requestid>
+  </revision>
 </revisionlist>

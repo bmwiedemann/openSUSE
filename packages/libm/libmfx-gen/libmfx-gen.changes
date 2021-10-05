@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 15:13:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed JIRA number in the initial changelog 
+
+-------------------------------------------------------------------
 Wed Sep 29 09:07:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.3.4
@@ -46,7 +51,7 @@ Wed Sep 29 09:07:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Thu Sep 23 13:03:55 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- created package libmfx-gen (jira#SLE/SLE-19446)
+- created package libmfx-gen (jira#SLE/SLE-19361)
   Intel oneVPL GPU Runtime is a Runtime implementation of oneVPL
   API for Intel Gen GPUs: Runtime provides access to
   hardware-accelerated video decode, encode and filtering.
