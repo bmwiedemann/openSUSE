@@ -1,0 +1,5 @@
+<package name="virt-vmdp-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="virt-vmdp-container"/>
+</package>
