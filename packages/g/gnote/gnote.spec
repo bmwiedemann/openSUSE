@@ -27,7 +27,8 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
 Source0:        https://download.gnome.org/sources/gnote/41/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
-
+# PATCH-FIX-UPSTREAM 2a6b5aa.patch boo#1191141 dimstar@opensuse.org -- Fix search box focus when very first search in window is in note.
+Patch0:         https://gitlab.gnome.org/GNOME/gnote/-/commit/2a6b5aa.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

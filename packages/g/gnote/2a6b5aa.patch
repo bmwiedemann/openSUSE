@@ -1,0 +1,26 @@
+From 2a6b5aa4a5ebc1390854e252a6129203f2fad47c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Aurimas=20=C4=8Cernius?= <aurisc4@gmail.com>
+Date: Sun, 3 Oct 2021 21:05:37 +0300
+Subject: [PATCH] Fix search box focus when very first search in window is in
+ note.
+
+Fixes https://gitlab.gnome.org/GNOME/gnote/-/issues/108
+---
+ src/recentchanges.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/recentchanges.cpp b/src/recentchanges.cpp
+index e2a0847b..34ef6d4f 100644
+--- a/src/recentchanges.cpp
++++ b/src/recentchanges.cpp
+@@ -258,7 +258,6 @@ namespace gnote {
+     m_search_box->set_hexpand(false);
+     m_search_box->attach(*m_search_entry, 0, 0, 1, 1);
+     m_search_box->set_halign(Gtk::ALIGN_CENTER);
+-    m_search_box->show();
+ 
+     auto content = dynamic_cast<Gtk::Grid*>(m_embed_box.get_parent());
+     if(content) {
+-- 
+GitLab
+
