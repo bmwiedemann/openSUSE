@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>844981</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ec241210e20eac1b5330e6ea65519c0c</srcmd5>
+    <version>1.1.1</version>
+    <time>1633466038</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude s390x due to build error:
+     `[   63s] /home/abuild/rpmbuild/BUILD/libnvidia-container-1.1.1/mk/common.mk:53: 
+     *** Unsupported architecture.  Stop.`
+</comment>
+    <requestid>923210</requestid>
+  </revision>
 </revisionlist>

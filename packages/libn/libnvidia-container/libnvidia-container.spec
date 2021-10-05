@@ -54,6 +54,7 @@ BuildRequires:  lsb-release
 BuildRequires:  m4
 BuildRequires:  rpcgen
 ExcludeArch:    i586
+ExcludeArch:    s390x
 
 %description
 The nvidia-container library provides an interface to configure GNU/Linux

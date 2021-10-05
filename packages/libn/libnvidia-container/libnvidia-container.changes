@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:30:26 UTC 2021 - Maria Bornski <maria@bornski.com>
+
+- Exclude s390x due to build error:
+     `[   63s] /home/abuild/rpmbuild/BUILD/libnvidia-container-1.1.1/mk/common.mk:53: 
+     *** Unsupported architecture.  Stop.`
+
+-------------------------------------------------------------------
 Fri Oct 30 03:08:48 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
