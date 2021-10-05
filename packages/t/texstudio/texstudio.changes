@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 28 07:36:11 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 4.0.0
+  * adapt to Qt6/poppler-qt6
+  * OSX/win build provided with Qt6
+  * remodel structure handling in order to avoid (rare) crashes
+  * more and updated completion word lists thanks to mbertucci47
+  * handle text (e.g. \text{text}) in mathenv as text with spell checking
+  * performance improvement for large files with large number of labels and/or large number of includes
+  * fix that search options are persistant
+  * automatic structure scrolling can be turned off (#1742)
+  * some bug fixes
+
+-------------------------------------------------------------------
 Mon May 17 01:53:33 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Disable crash handler on s390x to fix build error

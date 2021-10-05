@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        3.1.2
+Version:        4.0.0
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5UiTools)
