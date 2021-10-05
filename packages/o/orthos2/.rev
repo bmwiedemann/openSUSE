@@ -7,4 +7,31 @@
     <comment>Initial submit to Factory</comment>
     <requestid>916744</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39d1e6637712fea31d5d42f0d7ac31de</srcmd5>
+    <version>1.0.90+git.0a104f7</version>
+    <time>1633466027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.90+git.0a104f7:
+  * Remove client from spec file
+  * Avoid error site if removal of VM on hypervisor was not successful, just log it
+  * Correct jira email queue address for report problem button
+  * Building docs needs python-Sphinx
+  * Remove python-django from build requires, but Require django 3.2 for installation
+
+- Update to version 1.0.73+git.d0402ef:
+  * Fix build
+  * Add orthos2_debug (manage.py runserver) as systemd service
+
+- Update to version 1.0.69+git.73b8b67:
+  * Adoption to new cobbler (next-server-v4 and dns-name options)
+  * Some ansible fixups
+  * also rename type -&gt; stype in the api form
+  * Check for BMC existence before accessing
+  * console= kernel parameter fixes passed to cobbler
+  * Open documentation, bugzilla and download cli links in new browser tab
+  * Improved Cobbler sync
+  * Refactoring: Use object.get instead of object.filter for nicer error handling</comment>
+    <requestid>923098</requestid>
+  </revision>
 </revisionlist>
