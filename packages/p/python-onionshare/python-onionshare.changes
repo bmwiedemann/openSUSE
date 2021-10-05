@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  5 10:26:20 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- source file fixed (download)
+
+-------------------------------------------------------------------
+Tue Oct  5 08:12:25 UTC 2021 - Gabriele Sonnu <gabriele.sonnu@suse.com>
+
+- Update to 2.4:
+  * Major feature: Private keys (v3 onion client authentication) replaces passwords and HTTP basic auth
+  * Updated Tor to 0.4.6.7 on all platforms
+  * Various bug fixes
+- CVE-2021-41867: Fixed remote information disclosure when using --chat feature (boo#1191311)
+- CVE-2021-41868: Fixed remote unauthenticated file upload when using the --receive functionality (boo#1191312)
+- Remove fix-compare-offset-naive-and-offset-aware-datetimes.patch because accepted upstream
+
+-------------------------------------------------------------------
 Sun Aug 22 07:38:13 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Fix fix-compare-offset-naive-and-offset-aware-datetimes.patch to

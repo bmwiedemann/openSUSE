@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-onionshare
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018-2021 Dr. Axel Braun
@@ -19,7 +19,7 @@
 
 %define modname onionshare
 Name:           python-%{modname}
-Version:        2.3.3
+Version:        2.4
 Release:        0
 Summary:        Self-hosting Tor Onion Service based file sharing
 License:        GPL-3.0-or-later
@@ -29,14 +29,13 @@ Source0:        https://github.com/micahflee/onionshare/archive/v%{version}.tar.
 Source1:        %{modname}.desktop
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
-# PATCH-FIX-OPENSUSE gh#onionshare/onionshare#1398
-# https://github.com/pallets/werkzeug/commit/265bad79ee60b94f509464dcaa827cfec5833bcc
-Patch1:         fix-compare-offset-naive-and-offset-aware-datetimes.patch
+
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Flask
 BuildRequires:  python3-Flask-HTTPAuth
 BuildRequires:  python3-Flask-SocketIO
+BuildRequires:  python3-PyNaCl
 BuildRequires:  python3-PySocks
 BuildRequires:  python3-Unidecode
 BuildRequires:  python3-colorama
