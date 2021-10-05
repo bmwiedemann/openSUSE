@@ -3797,4 +3797,16 @@ I cannot test locally unfortunately.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921250</requestid>
   </revision>
+  <revision rev="263" vrev="1">
+    <srcmd5>bceea3e18b99237bf6d14a3bb04662b3</srcmd5>
+    <version>91.1.2</version>
+    <time>1633466009</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.1.2
+  * Thunderbird will now warn if an S/MIME encrypted message includes
+    BCC recipients
+  * several bugfixes listed on
+    https://www.thunderbird.net/en-US/thunderbird/91.1.2/releasenotes/</comment>
+    <requestid>922125</requestid>
+  </revision>
 </revisionlist>

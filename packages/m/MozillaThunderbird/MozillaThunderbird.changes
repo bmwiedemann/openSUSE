@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 26 16:01:35 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.1.2
+  * Thunderbird will now warn if an S/MIME encrypted message includes
+    BCC recipients
+  * several bugfixes listed on
+    https://www.thunderbird.net/en-US/thunderbird/91.1.2/releasenotes/
+
+-------------------------------------------------------------------
 Wed Sep 15 15:37:55 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.1.1
