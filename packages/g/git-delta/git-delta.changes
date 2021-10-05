@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 01:29:39 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Wed Aug  4 09:02:40 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Add git as BuildRequires, which is needed for testing

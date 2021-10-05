@@ -24,9 +24,10 @@ License:        MIT
 URL:            https://github.com/dandavison/delta
 Source0:        https://github.com/dandavison/delta/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git
-BuildRequires:  rust-packaging
 Conflicts:      sccs
 
 %description
@@ -34,17 +35,17 @@ Delta provides language syntax-highlighting, within-line insertion/deletion dete
 
 %prep
 %setup -qa 1 -n delta-%{version}
-%define cargo_registry $(pwd)/vendor
-%{cargo_prep}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-%cargo_build
+%{cargo_build}
 
 %check
-%cargo_test
+%{cargo_test}
 
 %install
-%cargo_install
+%{cargo_install}
 
 # install bash completion
 install -D -m 0644 %{_builddir}/delta-%{version}%{_sysconfdir}/completion/completion.bash %{buildroot}%{_datadir}/bash-completion/completions/delta
