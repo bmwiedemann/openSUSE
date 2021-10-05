@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://uscilab.github.io/cereal/
 Source0:        https://github.com/USCiLab/cereal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/USCiLab/cereal/pull/714
+Patch0:         d7b68df.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} > 1325
@@ -56,7 +58,7 @@ easily bundled with other code or used standalone.
 This package contains development headers and libraries for the cereal library
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DSKIP_PORTABILITY_TEST=ON -DWITH_WERROR=OFF
