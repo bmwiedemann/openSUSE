@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct  5 12:37:39 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 1.23.2:
+  Fix crio regression:
+  * Roll back default crio cgroup to systemd #12533
+  * Fix template typo #12532
+
+- update to 1.23.1:
+  Minor Improvements:
+  * Add crun version to minikube version --components #12381
+
+  Bug Fixes:
+  * ingress addon: fix regression from v1.23.0 #12443
+  * ingress addon: fix role resource's referenced configmap #12446
+  * ingress-dns addon: fix regression from v1.23.0 #12476
+  * gcp-auth addon: delete image pull secrets on addon disable #12473
+  * gcp-auth addon: create pull secret even if creds JSON is nil #12461
+  * gcp-auth addon: fix refreshing pull secret #12497
+  * metallb addon: ask user for config values even if already set #12437
+  * ambassador addon: warn on enable that addon no longer works #12474
+  * dashboard addon: fix sha for metrics-scraper #12496
+  * windows installer: remove quotes from incorrect fields #12430
+  * strip namespace from images from aliyun registry #11785
+
+  Version Upgrades:
+
+  * Bump cri-o from v1.20.0 to 1.22.0 #12425
+  * Bump dashboard from v2.1.0 to v2.3.1 and metrics-scraper
+    from v1.0.4 to v1.0.7 #12475
+
+-------------------------------------------------------------------
 Wed Sep  8 12:26:56 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
 - update to 1.23.0:
