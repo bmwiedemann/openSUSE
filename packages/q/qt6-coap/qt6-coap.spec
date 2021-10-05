@@ -16,9 +16,9 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
-%define tar_name qtcoap
+%define real_version 6.2.0
+%define short_version 6.2
+%define tar_name qtcoap-everywhere-src
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
-Summary:        Qt 6 CoAP client module 
+Summary:        Qt 6 CoAP client module
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -106,6 +106,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtCoap
 %{_qt6_libdir}/libQt6Coap.prl
 %{_qt6_libdir}/libQt6Coap.so
+%{_qt6_metatypesdir}/qt6coap_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_coap.pri
 %exclude %{_qt6_includedir}/QtCoap/%{real_version}
 

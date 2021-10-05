@@ -1,11 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">disable</param>
-   <param name="version">6.1.3</param>
+   <param name="version">6.2.0</param>
    <param name="url">git://code.qt.io/qt/qtcoap.git</param>
-   <param name="revision">v6.1.3</param>
+   <param name="revision">v6.2.0</param>
    <param name="scm">git</param>
-   <param name="filename">qtcoap</param>
+   <param name="filename">qtcoap-everywhere-src</param>
   </service>
   <service name="recompress" mode="disabled">
    <param name="file">*.tar</param>
