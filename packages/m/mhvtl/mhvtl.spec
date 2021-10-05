@@ -109,6 +109,12 @@ install -d -m 755 %{buildroot}/var/lib/%{name}
 
 %post
 %{service_add_post mhvtl-load-modules.service mhvtl.target vtllibrary@.service vtltape@.service}
+if [ "$1" = 1 ]; then
+	%{_bindir}/make_vtl_media --force \
+		--config-dir=%{_sysconfdir}/mhvtl \
+		--home-dir=%{mhvtl_home_dir} \
+		--mktape-path=%{_bindir}
+fi
 
 %preun
 %{service_del_preun mhvtl-load-modules.service mhvtl.target vtllibrary@.service vtltape@.service}
@@ -148,7 +154,7 @@ install -d -m 755 %{buildroot}/var/lib/%{name}
 %{_unitdir}/vtltape@.service
 %{_unitdir}/vtllibrary@.service
 %dir %{mhvtl_home_dir}
-%{mhvtl_home_dir}/*
+%ghost %{mhvtl_home_dir}/*
 %defattr(644,root,root)
 %{_mandir}/man1/vtlcmd.1%{ext_man}
 %{_mandir}/man1/vtllibrary.1%{ext_man}

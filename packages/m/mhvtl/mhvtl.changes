@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  4 21:07:48 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Fix failing OBS build, since it doesn't like empty DB files
+  being installed as part of the package. The DB-creation
+  script was copied from the Makefile (under "make install") to
+  a SPEC-file "%post" script.
+
+-------------------------------------------------------------------
 Fri Sep 17 18:05:56 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Updated to upstream version 1.63_release+759.35ddb48e5262,
