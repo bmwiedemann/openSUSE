@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  4 13:33:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 12.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jul  1 13:52:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
