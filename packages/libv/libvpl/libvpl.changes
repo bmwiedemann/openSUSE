@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  4 15:20:51 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed JIRA number in previous changelog
+
+-------------------------------------------------------------------
 Thu Sep 23 11:19:11 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- created package libvpl (jira#SLE/SLE-19446)
+- created package libvpl (jira#SLE/SLE-19361)
   * oneAPI Video Processing Library (oneVPL) dispatcher, tools, and
     examples: The oneAPI Video Processing Library (oneVPL) provides
     a single video processing API for encode, decode, and video

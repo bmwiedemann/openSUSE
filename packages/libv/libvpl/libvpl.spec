@@ -78,7 +78,6 @@ pushd build
 popd
 rm %{buildroot}%{_datadir}/doc/oneVPL/{license.txt,third-party-programs.txt}
 
-
 %post -n %lname -p /sbin/ldconfig
 
 %postun -n %lname -p /sbin/ldconfig

@@ -11,4 +11,12 @@
     processing that works across a wide range of accelerators.</comment>
     <requestid>921157</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e95a9e81da4978d2b799f63766ba3122</srcmd5>
+    <version>2021.6.0</version>
+    <time>1633466025</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed JIRA number in previous changelog</comment>
+    <requestid>923066</requestid>
+  </revision>
 </revisionlist>
