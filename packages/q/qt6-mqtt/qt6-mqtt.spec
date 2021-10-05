@@ -16,9 +16,9 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
-%define tar_name qtmqtt
+%define real_version 6.2.0
+%define short_version 6.2
+%define tar_name qtmqtt-everywhere-src
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-mqtt%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -41,8 +41,7 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
-# Not available yet
-# BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
@@ -109,6 +108,7 @@ ABI or API guarantees.
 %{_qt6_includedir}/QtMqtt
 %{_qt6_libdir}/libQt6Mqtt.prl
 %{_qt6_libdir}/libQt6Mqtt.so
+%{_qt6_metatypesdir}/qt6mqtt_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_mqtt.pri
 %exclude %{_qt6_includedir}/QtMqtt/%{real_version}
 
