@@ -1,4 +1,4 @@
-# using fdupes means looking for troubles
+# using fdupes on include directories means looking for troubles
 addFilter("files-duplicate .*")
 
 # library and development package names don't match

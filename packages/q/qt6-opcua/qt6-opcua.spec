@@ -16,9 +16,9 @@
 #
 
 
-%define real_version 6.1.3
-%define short_version 6.1
-%define tar_name qtopcua
+%define real_version 6.2.0
+%define short_version 6.2
+%define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -105,7 +105,7 @@ QML files and plugins from the Qt 6 OpcUa module.
 %if !%{qt6_docs_flavor}
 
 # CMake files are not needed for plugins
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %post -n libQt6OpcUa6 -p /sbin/ldconfig
 %postun -n libQt6OpcUa6 -p /sbin/ldconfig
@@ -126,6 +126,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml
 %{_qt6_includedir}/QtOpcUa
 %{_qt6_libdir}/libQt6OpcUa.prl
 %{_qt6_libdir}/libQt6OpcUa.so
+%{_qt6_metatypesdir}/qt6opcua_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_opcua.pri
 %exclude %{_qt6_includedir}/QtOpcUa/%{real_version}
 
