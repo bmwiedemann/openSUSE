@@ -1,3 +1,25 @@
+Wed Sep 29 06:22:01 UTC 2021 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- update to exim 4.95
+  * includes taintwarn (taintwarn.patch)
+  * fast-ramp queue run
+  * native SRS
+  * TLS resumption
+  * LMDB lookups with single key
+  * smtp transport option "message_linelength_limit"
+  * optionally ignore lookup caches
+  * quota checking for appendfile transport during message reception
+  * sqlite lookups allow a "file=<path>" option
+  * lsearch lookups allow a "ret=full" option
+  * command line option for the notifier socket
+  * faster TLS startup
+  * new main config option "proxy_protocol_timeout"
+  * expand "smtp_accept_max_per_connection"
+  * log selector "queue_size_exclusive"
+  * main config option "smtp_backlog_monitor"
+  * main config option "hosts_require_helo"
+  * main config option "allow_insecure_tainted_data"
+
 -------------------------------------------------------------------
 Tue Sep 14 07:31:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
