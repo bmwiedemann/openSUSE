@@ -1,0 +1,12 @@
+Index: mtpaint-3.50/configure
+===================================================================
+--- mtpaint-3.50.orig/configure
++++ mtpaint-3.50/configure
+@@ -523,7 +523,6 @@ else # $OPTS = CFLAGS
+ 	MARCH=
+ 	# And leave CFLAGS alone
+ fi
+-[ "$OPTS" != DEBUG ] && LDFLAGS="-s $LDFLAGS" # Strip debug info
+ # Set Windows-specific flags
+ if [ "$OS" != "${OS#MinGW/}" ]
+ then

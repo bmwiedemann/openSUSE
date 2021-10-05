@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Wed May  5 15:43:22 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 3.50
+  * Dutch translation updated by Pjotr
+  * French translation updated by Victor Copovi
+  * German translation updated by Simon Brixel
+  * Russian translation updated
+  * GTK+3 support - "./configure gtk3"
+  * Scripting added - "Image->Script" to enter or run a script : See handbook chapter 10 for details
+  * Commandline mode added - use "mtpaint --cmd" to run a script without GUI
+  * Keyboard shortcuts can now be reconfigured - "Help->Keyboard shortcuts"
+  * New keyboard shortcut Ctrl+H added for Channels->Hide image
+  * Keyboard shortcuts now can be assigned for choosing previous/next pattern, and larger/smaller brush size
+  * Optional gamma correction for painting and masking (Preferences->General->Use gamma correction when painting)
+  * Rendering now uses multiple threads to utilize all available CPU cores
+  * Text tools now allow selection of DPI value, letter-spacing, and alignment for multiline text
+  * Distance function for shapeburst gradients is now selectable : "Distance type"
+  * Composite images now can have alpha transparency, when background is non-opaque
+  * Background layer now can use transparency like any other layer
+  * Background layer position now can be changed via Ctrl+arrows or layers window spinbuttons, like any other layer
+  * Patterns for colours A and B can now be chosen separately (Preferences->General->Separate patterns for A&B)
+  * Builtin Bayer patterns now can be redefined : See handbook section A.6.1 for details
+  * Threshold effect with interactive preview added (see handbook section 6.6.7)
+  * Normalize effect added
+  * Map effect added: map image's value/red/green/blue to gradient/palette/clipboard
+  * Solid Noise effect with interactive preview added (Perlin noise generation)
+  * Colour transform and source selection added to blend mode options
+  * Threshold blend mode added
+  * "Saturate more" blend mode redefined to not ignore source (previous behaviour available with "Image" source selected)
+  * Horizontal and vertical ramps now respect drawing modes, opacity and masking
+  * Lasso tool can be configured to shrink selection based on the selection channel - right click the tool icon
+  * Clone tool is now continuous
+  * Clone tool can be configured to work in unaligned mode - right click the tool icon
+  * Ctrl+Left click now positions clone source when using clone tool
+  * Ctrl+Right click now deletes last point when making polygonal selection (from a closed polygon, deletes the point nearest to cursor)
+  * Shift and Shift+Ctrl now constrain selection box width/height when resizing it by clicking and dragging
+  * Arrow keys can now be used for scrolling (Preferences->Interface->Arrow keys scroll canvas)
+  * Zooming now can use mouse cursor position as its fixed point (Preferences->Interface->Zoom on cursor position)
+  * Scroll wheel zoom now works for view window too
+  * Zoom is now up to 8000%
+  * "Hide image" and "View alpha as an overlay" can now be toggled separately for each layer (Preferences->General->Enable overlays by layer)
+  * Colours A and B now highlighted in palette window
+  * File actions can now enable and use an extended set of variable substitutions (see handbook section A.7)
+  * New image format PMM (Portable MultiMap) added for interoperable storage and exchange of images : See handbook section A.2.4 for details
+  * WebP file format save/load added
+  * LBM file format (ILBM/PBM) save/load added
+  * XPM files with 65-92 colours are now saved with smaller size
+  * XPM files with up to 16M colours can now be saved and loaded as RGB images
+  * ICC colour profiles embedded in BMP images now can be applied on load
+  * OS/2 BMP files now load properly
+  * Raw RGB palette files (6-bit PAL and 8-bit ACT) can now be loaded/saved via the Palette menu
+  * TIFF compression made configurable
+  * Dimensions can now be specified when loading SVG files
+  * SVG files now can be loaded through 'rsvg-convert', in absence of GTK+2 librsvg plugin
+  * Animation frames now can be saved in any suitable supported file format
+  * Animation cycles can now specify sequence steps as containing several layers, or none : See handbook section 9.3.3 for details
+  * Passing a list of files on command line is now possible using --flist option
+  * Filenames passed on command line can now be sorted alphabetically with --sort option
+  * Image loading and new image creation are now undoable by default
+  * Committing paste when changing tool is now enabled by default
+  * Saving an image now commits paste if auto commit mode is enabled
+  * "Scale canvas" and "Resize canvas" now remember their aspect ratio toggle setting
+  * The Free Rotate window now remembers the previous rotation angle in that mtPaint session
+  * Dock area state is now remembered across sessions (unless opened automatically, for multiple files on command line)
+  * Unmaximized window position and size are now remembered across sessions
+  * Alpha values for colours A & B are now displayed on settings toolbar when editing image with alpha in coupled alpha mode
+  * Drawing and fill operations on RGB images with colour protection mask now are up to 20 times faster
+  * Undo system now uses a bit less memory
+  * Initial undo memory size is now 1/4 of available memory
+  * Support for compiling with giflib 5, libpng 1.6, libjpeg 9, OpenJPEG 2.3 added
+  * Compilation now works using gcc-5.5 or clang and GTK+1
+  * Compilation now works using gcc-10 or clang-11
+  * BUGFIX - Compilation without JPEG and TIFF support now works again
+  * BUGFIX - FreeType text tool now skips directory loops when scanning font directories
+  * BUGFIX - Geometry info on the status bar now correctly updates after arrow keys or Escape key
+  * BUGFIX - Gradient button no longer fails to show current gradient mode after showing settings toolbar
+  * BUGFIX - Preview of Transform Colour no longer ignores area within paste marquee
+  * BUGFIX - Ctrl+left/right/double click now set both colour and alpha from canvas in coupled alpha mode, as they should
+  * BUGFIX - New image creation from system clipboard now respects "Undoable" toggle
+  * BUGFIX - "Fix aspect ratio" now doesn't sometimes adjust both dimensions
+  * BUGFIX - Problem with layers list in inactive dock tab sometimes not updating is now eliminated
+  * BUGFIX - All keyboard shortcuts now work in Image View mode, as they should
+  * BUGFIX - Transparent colour in composite images now works again
+  * BUGFIX - Flood fill with shapeburst gradient now works again
+  * BUGFIX - Flood fill with pattern now works when starting on colour A
+  * BUGFIX - Saving LSS16 images no longer produces broken files in certain rare cases
+  * BUGFIX - Trying to load a broken LSS16 file (truncated to header or less) no longer causes crash
+  * BUGFIX - Loading certain broken BMP files no longer causes crash
+  * BUGFIX - JPEG and PNG files damaged beyond all hope now properly fail to load (instead of just a library error and 0x0 image)
+  * BUGFIX - PAM files with type BLACKANDWHITE are no longer loaded as grayscale (except if written as grayscale - ImageMagick does that)
+  * BUGFIX - Loading PAM files with unknown TUPLTYPE doesn't cause crash
+  * BUGFIX - SVG files starting with "<!DOCTYPE" no longer fail to load
+  * BUGFIX - XPM loader now ignores newlines or lack thereof outside quoted strings, as it should
+  * BUGFIX - No more misplaced colours when saving some XPM files with 257-4096 colours
+  * BUGFIX - Two-colour images with darker colour 0 now do not come out inverted when saved as black and white
+  * BUGFIX - Animation cycling now doesn't skip over the last frame of a GIF loaded into layers
+  * BUGFIX - Background layer is now made large enough to accommodate all frames when loading animation into layers
+  * BUGFIX - Animation cycles are now properly updated when layers are reordered, duplicated or deleted
+  * BUGFIX - Command line switches beyond the first one are now parsed properly
+  * BUGFIX - Filenames with '$' or '%' in them now work properly in file actions
+  * BUGFIX - Listing a directory containing files with broken date/time in builtin file selector on Windows doesn't cause crash
+  * BUGFIX - Rare problem of undo system ignoring a changed pixel is now eliminated
+  * BUGFIX - Polygonal selections no longer skip some contour pixels in certain situations
+  * BUGFIX - Canvas window now doesn't lose mouse button press event if dock window has focus
+  * BUGFIX - Tool perimeter now doesn't sometimes disappear when you draw after visiting another window (such as Layers)
+  * BUGFIX - Problem with command line window wrongly reacting to mouse in some cases is now eliminated
+  * BUGFIX - XPM icons now do not in some cases fail to display in compositing WMs
+  * BUGFIX - Escape and Enter keys now work properly in all dialogs in GTK+1
+  * BUGFIX - Dropping colours to palette in builtin colour selector now works properly in GTK+1
+- added patches
+  - mtpaint-3.50-fix-gcc-version-parsing.patch
+- refreshed patches
+  * mtpaint-3.40-xdg-open.patch -> mtpaint-3.50-xdg-open.patch
+  * mtpaint-3.40-strip.patch -> mtpaint-3.50-strip.patch
+- dropped patches
+  * mtpaint-3.40-buff.diff - no longer applicable
+  * mtpaint-3.40-giflib5.diff - applied upstream
+
+-------------------------------------------------------------------
+Mon Aug  5 09:49:10 UTC 2019 - mvetter@suse.com
+
+- bsc#1144253 - Drop jasper dependency from mtpaint:
+  Drop support for opensuse < 1220. mtpaint can choose between
+  openjpeg and jasper. Dropping jasper but we will still have
+  JPEG2000 support through openjpeg.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Aug 19 03:22:02 UTC 2014 - jengelh@inai.de
+
+- Augment mtpaint-3.40-giflib5.diff to support giflib7 API
+
+-------------------------------------------------------------------
+Tue Mar 12 22:03:46 UTC 2013 - seife+obs@b1-systems.com
+
+- fix build with giflib-5.x (mtpaint-3.40-giflib5.diff)
+
+-------------------------------------------------------------------
+Mon Nov 19 20:21:50 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 3.40.
+  * Usage of multiple CPU cores to speed up slower processing
+    tasks.
+  * Two new tools - for image segmentation, and for approximating
+    gradients using palette colours.
+  * Dynamic preview in colour selectors.
+  * sRGB (linear RGB) colour scales and gradients.
+  * Palette sorting by brightness.
+  * Dock area to hold settings toolbar and layers window.
+  * Colour chooser popup.
+  * Autoscrolling in canvas, view and palette windows.
+  * Auto-resizing toolbars.
+  * Support for PBM/PGM/PPM/PAM, PCX and SVG image formats.
+  * Support for ICC colour profiles in images.
+  * Loading of animated GIFs and multipage TIFFs into layers.
+  * Palette extraction from image files.
+  * Format conversions in file actions.
+  * "Snap to grid" mode.
+  * New keyboard shortcuts.
+  * And various speedups, interface improvements and bugfixes.
+- Drop mtpaint-3.31-libpng14.patch,
+  mtpaint-fix-no-add-needed.patch, mtpaint-3.31-openjpeg.patch,
+  mtpaint-3.31-ld_fix.patch (fixed upstream or no need).
+- Refresh mtpaint-buff.diff.
+- Rework mtpaint-xdg-open.patch: fix hardcoded apps and options.
+- Add mtpaint-3.40-strip.patch: don't strip binary (rh#787462).
+- Correct build dependencies:
+  * Remove: dos2unix, gettext.
+  * Add: pkgconfig(libopenjpeg) (for openSUSE >= 12.2) or
+    libjasper-devel, unzip, pkgconfig(lcms2).
+  * Use pkgconfig(*).
+- Requires ImageMagick; recommends exif.
+- Don't call %suse_update_desktop_file macro.
+- Split off language subpackage.
+- Correct configure options:
+  * Remove: debug.
+  * Add: gif, gtkfilesel, imagick, jp2 or jasper, lcms2, thread.
+- Use parallel build.
+- Remove check for unsupported openSUSE versions.
+- Mark man as doc.
+- Clean up and formatting spec.
+
+-------------------------------------------------------------------
+Mon Feb 27 08:41:15 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  For the docs look at the COPYING (1.2 _not_ 1.3). For the main package
+  there is no indication that GPLv3 only is intended
+
+-------------------------------------------------------------------
+Thu Jan 12 11:30:48 UTC 2012 - coolo@suse.com
+
+- change license to be in spdx.org format
+
+-------------------------------------------------------------------
+Sun Sep 18 06:58:50 UTC 2011 - andrea@opensuse.org
+
+- added mtpaint-3.31-ld_fix.patch to fix failure caused by new ld
+
+-------------------------------------------------------------------
+Sun Sep  4 15:23:26 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with no-add-needed. 
+
+-------------------------------------------------------------------
+Mon Mar 14 21:11:41 UTC 2011 - gber@opensuse.org
+
+- removed obsolete existing %post/%postun
+
+-------------------------------------------------------------------
+Mon Mar 14 18:51:42 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Sun Apr  4 19:19:34 UTC 2010 - andrea@opensuse.org
+
+- added mtpaint-3.31-libpng14.patch on suse 11.3 to make it build
+  with libpng14
+
+-------------------------------------------------------------------
+Sun Mar 21 11:58:37 CET 2010 - ro@suse.de
+
+- use noarch only for >= 11.2 
+
+-------------------------------------------------------------------
+Sat Feb 27 15:45:15 UTC 2010 - andrea@opensuse.org
+
+- new package (porting from packman)
+
