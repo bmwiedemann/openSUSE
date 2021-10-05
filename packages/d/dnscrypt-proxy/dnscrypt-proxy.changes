@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 1 12:00:00 UTC 2021 - cunix@mail.de - 2.1.1
+
+- Update to version 2.1.1
+  * Serve cached DoH responses when experiencing connectivity issues.
+  * Time attributes in allow/block lists were ignored.
+  * TTL served to clients is now rounded and starts decreasing
+    before the first query is received.
+  * Time-based rules are properly handled again in generate-domains-blocklist.
+  * DoH/ODoH: entries with an IP address and using a non-standard port
+    should not require help from a bootstrap resolver any more.
+
+-------------------------------------------------------------------
 Sun Aug 15 12:00:00 UTC 2021 - cunix@mail.de - 2.1.0
 
 - Update to version 2.1.0

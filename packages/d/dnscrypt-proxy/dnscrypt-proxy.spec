@@ -25,7 +25,7 @@
 %define vlic_dir  vendored
 
 Name:           dnscrypt-proxy
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
