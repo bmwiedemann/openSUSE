@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 29 13:03:15 UTC 2021 - pgajdos@suse.com
+
+- previous version updates fixes following bugs:
+  CVE-2014-9092, CVE-2018-14498, CVE-2019-2201, CVE-2020-17541
+  (bsc#1128712, bsc#1186764, bsc#807183, bsc#906761)
+
+-------------------------------------------------------------------
 Fri Aug 20 11:43:06 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.1.1
