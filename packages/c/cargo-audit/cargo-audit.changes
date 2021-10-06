@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 06 01:20:31 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.15.2~git0.fe0b327:
+  * cargo-audit v0.15.2 (#435)
+  * rustsec v0.24.3 (#433)
+  * Don't label OSV feature as unstable, since OSV 1.0 has shipped
+  * cargo-audit+rustsec: add `vendored-libgit2` feature (#432)
+  * cargo-audit v0.15.1 (#430)
+  * Bump comrak from 0.12.0 to 0.12.1 (#428)
+  * Bump git2 from 0.13.21 to 0.13.22 (#427)
+  * Bump comrak from 0.11.0 to 0.12.0 (#426)
+  * silence Clippy - I want to be explicit here
+
+-------------------------------------------------------------------
 Mon Jul 05 05:01:17 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.15.0~git0.16c8aa4:
