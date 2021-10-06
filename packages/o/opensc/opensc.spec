@@ -18,7 +18,7 @@
 
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
