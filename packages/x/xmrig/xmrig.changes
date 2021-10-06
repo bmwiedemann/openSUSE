@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  6 08:49:50 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.2:
+  * v6.15.2
+  * Update CHANGELOG.md
+  * Added "--versions" alias.
+  * Removed uv_os_gethostname call for all OS.
+  * Fix: AstroBWT auto-config ignored max-threads-hint
+  * v6.15.2-dev
+
+-------------------------------------------------------------------
 Fri Sep 24 06:55:36 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.15.1:

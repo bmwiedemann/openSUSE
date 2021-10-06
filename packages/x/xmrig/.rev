@@ -304,4 +304,18 @@
   * v6.15.1-dev</comment>
     <requestid>921224</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>98a172a4250f51ad5cc1d3d5f0e07d2d</srcmd5>
+    <version>6.15.2</version>
+    <time>1633542594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.2:
+  * v6.15.2
+  * Update CHANGELOG.md
+  * Added &quot;--versions&quot; alias.
+  * Removed uv_os_gethostname call for all OS.
+  * Fix: AstroBWT auto-config ignored max-threads-hint
+  * v6.15.2-dev</comment>
+    <requestid>923451</requestid>
+  </revision>
 </revisionlist>
