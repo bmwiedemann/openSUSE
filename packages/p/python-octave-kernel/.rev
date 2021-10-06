@@ -44,4 +44,12 @@
 - Remove fix_octave5.patch</comment>
     <requestid>812825</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3c2f86ad85c67c2467d8cbe66891d240</srcmd5>
+    <version>0.32.0</version>
+    <time>1633542587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923349</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-octave-kernel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-octave-kernel
 Version:        0.32.0
@@ -33,10 +33,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module jupyter_kernel_test}
-BuildRequires:  octave-cli
-# /SECTION
 Requires:       jupyter-octave-kernel = %{version}
 Requires:       python-ipykernel
 Requires:       python-jupyter-client >= 4.3.0
@@ -45,7 +41,6 @@ Provides:       python-jupyter_octave_kernel = %{version}
 Obsoletes:      python-jupyter_octave_kernel < %{version}
 Conflicts:      jupyter-octave_kernel < 0.29.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -79,11 +74,6 @@ sed -i "s|\"python\"|\"python3\"|" %{buildroot}%{_jupyter_kernel_dir}/octave/ker
 
 %fdupes %{buildroot}%{_jupyter_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python test_octave_kernel.py}
 
 %files %{python_files}
 %license LICENSE.txt

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 20:20:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable tests: jupyter_kernel_test is broken and did not see any
+  maintenance recently.
+  * gh#Calysto/octave_kernel#198
+  * gh#jupyter/jupyter_kernel_test#55
+
+-------------------------------------------------------------------
 Tue Jun  9 08:38:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.32.0:
