@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oname   pybtex
 Name:           python-pybtex
-Version:        0.22.2
+Version:        0.24.0
 Release:        0
 Summary:        BibTeX-compatible Bibliography Processor in Python
 License:        MIT
@@ -30,8 +30,8 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pybtex/pybtex-%
 BuildRequires:  %{python_module PyYAML >= 3.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module latexcodec}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -40,7 +40,7 @@ Requires:       python-latexcodec
 Requires:       python-pyparsing
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -74,6 +74,9 @@ done
 %python_clone -a %{buildroot}%{_bindir}/%{oname}-format
 %python_clone -a %{buildroot}%{_bindir}/%{oname}-convert
 %python_clone -a %{buildroot}%{_bindir}/%{oname}
+
+%check
+%pytest
 
 %post
 %python_install_alternative %{oname}-format.1

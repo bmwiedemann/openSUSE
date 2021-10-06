@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 30 02:49:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.24.0:
+  * Added support for sup and sub tags to LaTeX and Markdown backends.
+  * Added support for @online entries and the urldate field.
+  * Fixed bugs in the example plugin.
+  * Fixed bad get_default_encoding() call.
+  * Reimplemented pybtex.utils.OrderedCaseInsensitiveDict using
+    collections.OrderedDict (so it has a __delitem__).
+  * unsrt.py now supports type when formatting phdthesis.
+  * Added from_string to pybtex.database.BibliographyData.
+  * Added from_string and to_string to pybtex.database.Entry.
+  * Preserve order in pybtex.utils.OrderedCaseInsensitiveDict.__repr__.
+  * Fixed entries with duplicate keys being removed during sorting.
+  * Fixed handling of duplicate person fields
+  * Use xml.etree.ElementTree instead of the deprecated cElementTree.
+  * Import base classes from collections.abc instead of collections.
+  * Use __iter__ instead of deprecated Element.getchildren().
+- Switch to using pytest to run tests, and run the testsuite.
+
+-------------------------------------------------------------------
 Fri Oct  2 08:44:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Do not ship tests
