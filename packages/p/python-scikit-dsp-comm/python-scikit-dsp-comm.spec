@@ -42,7 +42,6 @@ Recommends:     python-pyrtlsdr
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tox}
