@@ -39,4 +39,12 @@
     <comment>hi please accept v 3.0.1 into Factory</comment>
     <requestid>878605</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d5ecee84e07382c10ddeef6383aade55</srcmd5>
+    <version>3.0.2</version>
+    <time>1633542590</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase the dependencies of the generated spotify-client rpm from the debian package</comment>
+    <requestid>923352</requestid>
+  </revision>
 </revisionlist>
