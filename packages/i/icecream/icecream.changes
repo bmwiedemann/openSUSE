@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:31:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * icecc-scheduler.service.in
+  * iceccd.service.in
+
+-------------------------------------------------------------------
 Sun Jan 10 23:57:01 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use the correct paths in systemd unit files for wrappers
