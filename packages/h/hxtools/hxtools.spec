@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20210803
+Version:        20210928
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -278,7 +278,6 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %_mandir/man1/ofl.1*
 
 %files -n sysinfo
-%defattr(-,root,root)
 %_bindir/pmap_dirty
 %_bindir/sysinfo
 %_mandir/man1/sysinfo.1*

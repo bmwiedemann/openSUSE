@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 28 19:25:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210928
+  * vfontas: add recognition for BDF glyphs as produced by
+    fontforge from PCF
+  * kbd: map beta to eszett on cp437x
+  * vfontas: recognize "idem" lines in kbd unimaps
+  * vfontas: add -setbold, -setprop, -lgeu, -lgeuf commands
+
+-------------------------------------------------------------------
 Tue Aug  3 19:51:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210803
