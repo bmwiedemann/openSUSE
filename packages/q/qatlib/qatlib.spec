@@ -17,10 +17,10 @@
 
 
 Name:           qatlib
-Version:        21.05.0
+Version:        21.08.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
-License:        BSD-3-clause
+License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://github.com/intel/qatlib
 Source:         %{name}-%{version}.tar.xz
@@ -70,7 +70,7 @@ rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 %doc README.md
 %{_mandir}/man8/qat*
 %{_unitdir}/qat*
-%{_libdir}/lib*.so.0.*
+%{_libdir}/lib*.so.[02].*
 %{_sbindir}/qat*
 
 %files devel
