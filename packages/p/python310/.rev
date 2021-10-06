@@ -31,4 +31,33 @@
     <comment></comment>
     <requestid>915061</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0967f3a60f1e0bd1f612443bcb76623a</srcmd5>
+    <version>3.10.0</version>
+    <time>1633542590</time>
+    <user>dimstar_suse</user>
+    <comment>- Final release of 3.10.0:
+  Complete list on https://www.python.org/downloads/release/python-3100/,
+  but highlights are:
+  - PEP 623 – Deprecate and prepare for the removal of the wstr
+    member in PyUnicodeObject.
+  - PEP 604 – Allow writing union types as X | Y
+  - PEP 612 – Parameter Specification Variables
+  - PEP 626 – Precise line numbers for debugging and other
+    tools.
+  - PEP 618 – Add Optional Length-Checking To zip.
+  - PEP 632 – Deprecate distutils module.
+  - PEP 613 – Explicit Type Aliases
+  - PEP 634 – Structural Pattern Matching: Specification
+  - PEP 635 – Structural Pattern Matching: Motivation and
+    Rationale
+  - PEP 636 – Structural Pattern Matching: Tutorial
+  - PEP 644 – Require OpenSSL 1.1.1 or newer
+  - PEP 624 – Remove Py_UNICODE encoder APIs
+  - PEP 597 – Add optional EncodingWarning
+  - bpo-12782: Parenthesized context managers are now officially
+    allowed.
+</comment>
+    <requestid>923364</requestid>
+  </revision>
 </revisionlist>
