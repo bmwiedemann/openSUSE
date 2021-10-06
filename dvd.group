@@ -4833,6 +4833,8 @@
     <package name="xdelta3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="xdg-dbus-proxy" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="xdg-desktop-portal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xdg-desktop-portal-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xdg-desktop-portal-gnome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
