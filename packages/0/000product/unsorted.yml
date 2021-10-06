@@ -80,6 +80,7 @@ unsorted:
   - Mesa-32bit: [x86_64] 
   - Mesa-KHR-devel 
   - Mesa-demo 
+  - Mesa-demo-es 
   - Mesa-devel 
   - Mesa-dri-32bit: [x86_64] 
   - Mesa-dri-devel: [i586] # devel package of dvd:libgbm1 
@@ -3736,6 +3737,7 @@ unsorted:
   - fonttosfnt 
   - fontweak 
   - foot 
+  - foot-extra-terminfo 
   - forge-parent 
   - forkbomb 
   - forked-daapd 
@@ -11452,27 +11454,28 @@ unsorted:
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
   - libkdumpfile8 
-  - libkea-asiodns12 
-  - libkea-asiolink26 
-  - libkea-cc23 
-  - libkea-cfgclient24 
+  - libkea-asiodns13 
+  - libkea-asiolink27 
+  - libkea-cc25 
+  - libkea-cfgclient25 
   - libkea-cryptolink16 
+  - libkea-d2srv3 
   - libkea-database23 
-  - libkea-dhcp++34 
-  - libkea-dhcp_ddns16 
-  - libkea-dhcpsrv46 
-  - libkea-dns++17 
-  - libkea-eval26 
-  - libkea-exceptions0 
-  - libkea-hooks34 
-  - libkea-http26 
-  - libkea-log20 
-  - libkea-mysql23 
-  - libkea-pgsql19 
-  - libkea-process28 
+  - libkea-dhcp++36 
+  - libkea-dhcp_ddns17 
+  - libkea-dhcpsrv50 
+  - libkea-dns++19 
+  - libkea-eval27 
+  - libkea-exceptions13 
+  - libkea-hooks38 
+  - libkea-http29 
+  - libkea-log22 
+  - libkea-mysql26 
+  - libkea-pgsql20 
+  - libkea-process29 
   - libkea-stats18 
   - libkea-util-io0 
-  - libkea-util33 
+  - libkea-util36 
   - libkea1_4 
   - libkeccak-devel 
   - libkeccak1 
@@ -16302,6 +16305,9 @@ unsorted:
   - mtdev-devel: [i586] # devel package of dvd:libmtdev1 
   - mtools-doc 
   - mtp-tools 
+  - mtpaint 
+  - mtpaint-handbook 
+  - mtpaint-lang 
   - mtr-gtk 
   - mtree 
   - mtx 
@@ -18036,7 +18042,6 @@ unsorted:
   - orthanc-webviewer 
   - orthanc-wsi 
   - orthos2 
-  - orthos2-client 
   - orthos2-docs 
   - ortp 
   - ortp-devel 
@@ -23913,6 +23918,7 @@ unsorted:
   - python36-tmx 
   - python36-tokenize-rt 
   - python36-toml 
+  - python36-tomli 
   - python36-tomlkit 
   - python36-tools 
   - python36-toolz 
@@ -26823,6 +26829,7 @@ unsorted:
   - python38-tldextract 
   - python38-tmx 
   - python38-tokenize-rt 
+  - python38-tomli 
   - python38-tomlkit 
   - python38-tools 
   - python38-toolz 
@@ -29938,6 +29945,7 @@ unsorted:
   - python39-tmx 
   - python39-tokenize-rt 
   - python39-toml 
+  - python39-tomli 
   - python39-tomlkit 
   - python39-tools 
   - python39-toolz 
@@ -42034,8 +42042,6 @@ unsorted:
   - xcwd 
   - xdbedizzy 
   - xdg-desktop-portal-devel 
-  - xdg-desktop-portal-gnome 
-  - xdg-desktop-portal-gnome-lang 
   - xdg-desktop-portal-wlr 
   - xdiskusage 
   - xditview 
