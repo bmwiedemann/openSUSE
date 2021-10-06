@@ -30,6 +30,8 @@ License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
 URL:            https://github.com/javierllorente/qactus
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM qactus-fix-leap-build.patch
+Patch0:         qactus-fix-leap-build.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
