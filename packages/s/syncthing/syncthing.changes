@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  6 14:58:24 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.3
+  * Bugfixes:
+    #7853: gui: Superfluous quotes
+    #7935: Panic after POST /rest/system/reset
+
+  * Enhancements:
+    #7940: "Currently Shared With Devices" list in the folder Sharing tab should be sorted alphabetically
+
+-------------------------------------------------------------------
 Sun Sep 26 08:51:40 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Use /var/lib/syncthing-relaysrv in strelaysrv.service (boo#1190877).

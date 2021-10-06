@@ -939,4 +939,18 @@
     <comment></comment>
     <requestid>921485</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>54fa9105dc1241d6c1d251cf206a4ca8</srcmd5>
+    <version>1.18.3</version>
+    <time>1633542603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.3
+  * Bugfixes:
+    #7853: gui: Superfluous quotes
+    #7935: Panic after POST /rest/system/reset
+  * Enhancements:
+    #7940: &quot;Currently Shared With Devices&quot; list in the folder Sharing tab should be sorted alphabetically
+</comment>
+    <requestid>923545</requestid>
+  </revision>
 </revisionlist>
