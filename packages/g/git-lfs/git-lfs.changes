@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 29 11:02:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.0.1
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.0.0
+  https://github.com/git-lfs/git-lfs/releases/tag/v3.0.1
+- drop Makefile_path.patch: no longer needed
+
+-------------------------------------------------------------------
 Sat May  8 20:04:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.3:

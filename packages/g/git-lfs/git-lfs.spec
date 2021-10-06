@@ -24,7 +24,7 @@
 %bcond_with    build_docs
 %endif
 Name:           git-lfs
-Version:        2.13.3
+Version:        3.0.1
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
@@ -32,7 +32,6 @@ Group:          Development/Tools/Version Control
 URL:            https://git-lfs.github.com/
 Source0:        https://github.com/git-lfs/git-lfs/releases/download/v%{version}/git-lfs-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        README.packaging
-Patch0:         Makefile_path.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
 BuildRequires:  git-core >= 1.8.2
