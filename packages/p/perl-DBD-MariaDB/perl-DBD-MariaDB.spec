@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-MariaDB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{ve
 Source1:        test-setup.sh
 Source2:        test-clean.sh
 Source3:        cpanspec.yml
+Patch0:         perl-DBD-MariaDB-fix_c_32x_test.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -79,6 +80,7 @@ are missing, mainly because no-one ever requested them.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 
 %build
 # fails to detect the paths since perl 5.32

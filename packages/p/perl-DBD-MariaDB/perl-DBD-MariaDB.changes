@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  6 09:18:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix regression test failures:
+  * Add patch from the previous commit.
+  * Add perl-DBD-MariaDB-fix_c_32x_test.patch
+
+-------------------------------------------------------------------
+Tue Oct  5 07:36:54 UTC 2021 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- From mariadb-connector-c client library number is diffrent
+  which brokes tests. Add patch to fix tests.
+
+-------------------------------------------------------------------
 Mon Nov  9 15:25:54 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix build

@@ -12,6 +12,8 @@ description: |-
 sources:
  - test-setup.sh
  - test-clean.sh
+patches:
+  perl-DBD-MariaDB-fix_c_32x_test.patch: -p1
 preamble: |-
  BuildRequires:  libmariadb-devel
  BuildRequires:  mariadb
