@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:12:21 UTC 2021 - Oliver Neukum <oneukum@suse.com>
+
+- Need in SLE
+  * Support for working with adapters without ROMs is needed
+    (jsc#SLE-19359)
+
+-------------------------------------------------------------------
 Wed Jun  2 23:58:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.9.1
