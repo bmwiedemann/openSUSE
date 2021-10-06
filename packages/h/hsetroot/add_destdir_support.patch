@@ -1,0 +1,14 @@
+diff --color -ruN hsetroot-1.0.5.ori/Makefile hsetroot-1.0.5/Makefile
+--- hsetroot-1.0.5.ori/Makefile	2019-11-15 12:09:41.000000000 +0100
++++ hsetroot-1.0.5/Makefile	2021-10-05 12:16:40.331730695 +0200
+@@ -30,8 +30,8 @@
+ hsr-outputs: hsr-outputs.o
+ 
+ install: hsetroot hsr-outputs
+-	install -st $(PREFIX)/bin/ hsetroot
+-	install -st $(PREFIX)/bin/ hsr-outputs
++	install -Dt $(DESTDIR) hsetroot
++	install -Dt $(DESTDIR) hsr-outputs
+ 
+ clean:
+ 	rm -f *.o hsetroot hsr-outputs
