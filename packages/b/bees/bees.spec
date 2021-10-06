@@ -17,7 +17,7 @@
 
 
 Name:           bees
-Version:        0.6.5
+Version:        0.7
 Release:        0
 Summary:        Best-Effort Extent-Same, a btrfs deduplication agent
 License:        GPL-3.0-only
@@ -71,7 +71,6 @@ make %{?_smp_mflags}
 %doc README.md
 %{_bindir}/bees
 %{_sbindir}/beesd
-%{_libdir}/libcrucible.so
 %{_unitdir}/beesd@.service
 %dir %{_sysconfdir}/bees
 %{_sysconfdir}/bees/beesd.conf.sample

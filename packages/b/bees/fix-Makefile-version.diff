@@ -1,25 +1,15 @@
 Hardcode version to avoid using git. Also don't do 'git clean'.
 
-Index: bees-0.6.3/Makefile
+Index: bees-0.7/Makefile
 ===================================================================
---- bees-0.6.3.orig/Makefile
-+++ bees-0.6.3/Makefile
-@@ -9,7 +9,7 @@ SYSTEMD_SYSTEM_UNIT_DIR ?= $(shell pkg-c
+--- bees-0.7.orig/Makefile
++++ bees-0.7/Makefile
+@@ -7,7 +7,7 @@ LIBEXEC_PREFIX ?= $(LIB_PREFIX)/bees
  
- MARKDOWN := $(firstword $(shell type -P markdown markdown2 markdown_py 2>/dev/null || echo markdown))
+ SYSTEMD_SYSTEM_UNIT_DIR ?= $(shell pkg-config systemd --variable=systemdsystemunitdir)
  
 -BEES_VERSION ?= $(shell git describe --always --dirty || echo UNKNOWN)
-+BEES_VERSION = 0.6.5
++BEES_VERSION = 0.7
  
  # allow local configuration to override above variables
  -include localconf
-@@ -28,9 +28,6 @@ all: lib src scripts
- docs: README.html
- reallyall: all docs test
- 
--clean: ## Cleanup
--	git clean -dfx -e localconf
--
- .PHONY: lib src test
- 
- lib: ## Build libs

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  6 00:00:00 CEST 2021 - dsterba@suse.cz
+
+- Update to 0.7
+  - Highlights:
+    * Remove 8-CPU thread limit
+    * Add kernel bugs reference table to docs
+    * Workarounds for btrfs send and balance issues
+    * Reduce the number of temporary inodes created
+    * Use posix_fadvise to optimize page cache usage
+    * Use private namespace for mounts under systemd
+    * Assorted bug fixes and small performance improvements
+    * SIGTERM handler to save crawl state, hash table, and exit
+    * Higher ref limits per extent on kernels with LOGICAL_INO_V2
+  - Build dependency changes:
+    * Convert docs to Github Flavored Markdown
+    * Updates for new compilers including clang
+    * Remove dependencies on libbtrfs-dev and uuid-dev
+    * Remove unversioned `libcrucible.so` shared library
+
+-------------------------------------------------------------------
 Thu May 13 00:00:00 CEST 2021 - dsterba@suse.cz
 
 - Update to 0.6.5
