@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Sep 30 13:14:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0
+
+-------------------------------------------------------------------
+Tue Jul 27 16:40:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init python3-pyside6
+- Add patches:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+  * 0001-Always-link-to-python-libraries.patch

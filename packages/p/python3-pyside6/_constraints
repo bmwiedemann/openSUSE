@@ -1,0 +1,12 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <package>python3-pyside6</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">6</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>
