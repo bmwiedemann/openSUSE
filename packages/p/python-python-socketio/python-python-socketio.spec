@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-socketio
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        SocketIO server
 License:        MIT
@@ -30,6 +30,8 @@ BuildRequires:  %{python_module python-engineio >= 4.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+#Tests:
+BuildRequires:  %{python_module msgpack}
 Requires:       python-bidict >= 0.21.0
 Requires:       python-python-engineio >= 4.1.0
 Suggests:       python-aiohttp >= 3.4
@@ -57,7 +59,7 @@ Python implementation of the Socket.IO realtime server.
 %pytest -rs -k 'not test_logger'
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/socketio
 %{python_sitelib}/python_socketio-%{version}*-info
