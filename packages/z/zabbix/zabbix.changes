@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:13:41 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.34
+- New Features and Improvements
+  + ZBXNEXT-6852 Updated localization for Zabbix Support URL
+- Bug Fixes
+  + ZBX-19814 Added ignoring final result in case if fping quits on a signal
+  + ZBX-19931 Fixed crash on big-endian systems when processing history
+  + ZBX-19580 Fixed date format mismatch in UI elements that are loaded via JavaScript
+  + ZBX-19236 Fixed task manager constantly busy with close_problem task
+    if trigger no longer exists but event still exist
+  + ZBX-19857 Dropped support for the non-working option "with_gui_access"
+    in the usergroup.get() method
+
+-------------------------------------------------------------------
 Fri Aug 13 19:53:27 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.32

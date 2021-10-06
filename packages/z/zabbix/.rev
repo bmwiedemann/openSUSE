@@ -126,4 +126,23 @@
     <comment></comment>
     <requestid>912030</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33de57fb68c23cc64195e29e85ea58b0</srcmd5>
+    <version>4.0.34</version>
+    <time>1633542588</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to latest release 4.0.34
+- New Features and Improvements
+  + ZBXNEXT-6852 Updated localization for Zabbix Support URL
+- Bug Fixes
+  + ZBX-19814 Added ignoring final result in case if fping quits on a signal
+  + ZBX-19931 Fixed crash on big-endian systems when processing history
+  + ZBX-19580 Fixed date format mismatch in UI elements that are loaded via JavaScript
+  + ZBX-19236 Fixed task manager constantly busy with close_problem task
+    if trigger no longer exists but event still exist
+  + ZBX-19857 Dropped support for the non-working option &quot;with_gui_access&quot;
+    in the usergroup.get() method
+</comment>
+    <requestid>923347</requestid>
+  </revision>
 </revisionlist>
