@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  6 07:17:32 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Enhance changelog as demanded in an internal submitrequest
+
+-------------------------------------------------------------------
 Tue Sep 28 08:30:14 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Add latest mainline fixes:
@@ -16,6 +21,47 @@ M    OpenIPMI-prefer_perl_vendor.patch
 M    fix_dia_version_detection.patch
 M    openipmi-tinfo.patch
 
+  * sample: Prefer glib for solterm instead of posix
+  * sample: Remove -rdynamic from openipmicmd
+  * smample: Compile ipmicmd with glib if it is available
+  * glib: Allow NULL timeout to perform_one_op()
+  * lanserv: Fix an issue with rmcp sending
+  * Rework mcserv.h so that marvell-mod can get what it needs
+  * lanserv: Move sol_init_mc() into sol code
+  * lanserv: Remove all calls from the library to user code
+  * Move ipmi_log() to ipmi_log.h
+  * ui: export ipmi_ui_cb_handlers
+  * ui: Add link libraries to UI library
+  * Add -no-undefined to all shared library links
+  * Rework ipmi_cmdlang_report_event()
+  * Rework ipmi_cmdlang_global_err()
+  * Get rid of posix_vlog()
+  * lanserv: Use recv, not read, for a network socket
+  * A lot windows (DLL, winsock, etc.) enhancements
+
+
+- Update to version 2.0.30:
+  * Switch to python3 by default
+  * lanserv: Fix some various bugs
+  * sol: Fix some various bugs
+  * sdrcomp: Fix some memory leaks
+  * sol: Fix some packet handling errors
+  * solterm: Clean things up at shutdown
+  * Fix a leak in the selector code
+  * sol: Rewrite the library code
+  * sol: Return errors from close if the send fails
+  * Reconfigure the transmitter on a reconnect
+  * Refuse writes greater than 255 bytes
+  * lan: Fix timer cleanup
+  * Fix init/shutdown issues with mcs and domains
+  * Fix shutdown on error issues
+  * Fix a memory leak at initialization
+  * selector: Make the timer stop with done work right when handler running
+  * Add parameters to let the lan timeouts be specified
+  * initscript: Don't delete ipmi devices if udev created them
+  * selector: Rework to allow an arbitrary number of fds with epoll
+  * Don't disable fd handlers before setting one up
+  * Don't crash if passed in fd is >= FD_SETSIZE
 
 -------------------------------------------------------------------
 Mon Jun 28 20:42:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -32,7 +78,18 @@ Mon Mar  8 14:16:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 Mon Aug 17 21:38:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.0.29:
-  * changelog not available 
+  * Add an external definition for ipmi_malloc_shutdown()
+  * Pass 0 to snprintf size when calculating real size
+  * selector: Fix a signed/unsigned comparison
+  * selector: Fix handling if pselect() returns 0
+  * selector: Return the right value for timer already in use
+  * selector: Cause the read handler to be called on an exception
+  * selector: Fix multi-threading issues
+  * selector: Add an selector call to install a sigmask
+  * For for brokenness with fork() and epoll()
+  * Fix a deadlock when freeing a running timer
+  * lanserv: Allow individual group extensions to be registered
+  * Include readline history headers where needed
 
 -------------------------------------------------------------------
 Mon Jan 20 13:29:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
