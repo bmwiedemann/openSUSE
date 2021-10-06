@@ -44,7 +44,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(libgssglue)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(systemd)
