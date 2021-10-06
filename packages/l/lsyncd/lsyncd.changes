@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 06:17:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * lsyncd.service
+
+-------------------------------------------------------------------
 Sun Mar  7 07:41:20 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use %%cmake macros
