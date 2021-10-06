@@ -28,10 +28,7 @@ Source:         https://github.com/nhorman/rng-tools/archive/v%{version}.tar.gz
 Source2:        %{name}.service
 Source3:        90-hwrng.rules
 BuildRequires:  automake
-BuildRequires:  libcurl-devel
-BuildRequires:  libjansson-devel
 BuildRequires:  libp11-devel
-BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -84,7 +81,9 @@ ensure that it is properly random.
 
 %build
 ./autogen.sh
-%configure --without-rtlsdr
+# NIST Beacon fetches a randomness token over internet in clear text
+# Try without this functionality
+%configure --without-rtlsdr --without-nistbeacon
 %make_build
 
 %install
