@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  6 06:34:58 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Rename rpmlintrc, cleanup dotfiles & cleanup spec file
+
+-------------------------------------------------------------------
 Sat Jan 11 08:28:10 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to sort file list (boo#1041090)

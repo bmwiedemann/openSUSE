@@ -7,4 +7,12 @@
     <comment>initialize package</comment>
     <requestid>798245</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2538ab60ae022a95f2b4938aaba9ceb</srcmd5>
+    <version>2.2.1</version>
+    <time>1633542592</time>
+    <user>dimstar_suse</user>
+    <comment>Rename rpmlintrc, cleanup dotfiles &amp; cleanup spec file</comment>
+    <requestid>923413</requestid>
+  </revision>
 </revisionlist>
