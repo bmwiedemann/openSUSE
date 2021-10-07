@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+%define cpplibdir /lib
+%else
+%define cpplibdir %{_prefix}/lib
+%endif
+
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 Name:           mingw64-cross-gcc-bootstrap
 Version:        9.2.0
@@ -106,9 +112,9 @@ rm -f %{buildroot}%{_libdir}/libiberty*
 rm -f %{buildroot}%{_mandir}/man7/*
 rm -f %{buildroot}%{_bindir}/vxaddr2line
 
-mkdir -p %{buildroot}/lib
-ln -sf ..%{_bindir}/%{_mingw64_target}-cpp \
-  %{buildroot}/lib/%{_mingw64_target}-cpp
+mkdir -p %{buildroot}%{cpplibdir}
+ln -sf %{_bindir}/%{_mingw64_target}-cpp \
+  %{buildroot}%{cpplibdir}/%{_mingw64_target}-cpp
 
 %files
 %{_bindir}/%{_mingw64_target}-gcc*
@@ -135,7 +141,7 @@ ln -sf ..%{_bindir}/%{_mingw64_target}-cpp \
 %{_libexecdir}/gcc/%{_mingw64_target}/%{version}/liblto_plugin.la
 
 %files -n mingw64-cross-cpp-bootstrap
-/lib/%{_mingw64_target}-cpp
+%{cpplibdir}/%{_mingw64_target}-cpp
 %{_bindir}/%{_mingw64_target}-cpp
 %{_mandir}/man1/%{_mingw64_target}-cpp.1*
 %dir %{_libdir}/gcc/%{_mingw64_target}

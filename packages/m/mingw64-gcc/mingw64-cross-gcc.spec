@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+%define cpplibdir /lib
+%else
+%define cpplibdir %{_prefix}/lib
+%endif
+
 %define __os_install_post %{_prefix}/lib/rpm/brp-compress %{nil}
 %define include_ada 0
 Name:           mingw64-cross-gcc
@@ -168,9 +174,9 @@ rm -f %{buildroot}%{_libdir}/libiberty*
 rm -f %{buildroot}%{_mandir}/man7/*
 rm -f %{buildroot}%{_bindir}/vxaddr2line
 
-mkdir -p %{buildroot}/lib
-ln -sf ..%{_bindir}/%{_mingw64_target}-cpp \
-  %{buildroot}/lib/%{_mingw64_target}-cpp
+mkdir -p %{buildroot}%{cpplibdir}
+ln -sf %{_bindir}/%{_mingw64_target}-cpp \
+  %{buildroot}%{cpplibdir}/%{_mingw64_target}-cpp
 
 # The dlls that we will use are from the native build of gcc
 find %{buildroot} -name \*.dll -exec rm {} +
@@ -244,7 +250,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_libdir}/gcc/%{_mingw64_target}/%{version}/liblto_plugin.la
 
 %files -n mingw64-cross-cpp
-/lib/%{_mingw64_target}-cpp
+%{cpplibdir}/%{_mingw64_target}-cpp
 %{_bindir}/%{_mingw64_target}-cpp
 %{_mandir}/man1/%{_mingw64_target}-cpp.1*
 %dir %{_libdir}/gcc/%{_mingw64_target}
