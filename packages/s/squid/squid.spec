@@ -24,14 +24,14 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        4.16
+Version:        5.2
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-Source0:        http://www.squid-cache.org/Versions/v4/squid-%{version}.tar.xz
-Source1:        http://www.squid-cache.org/Versions/v4/squid-%{version}.tar.xz.asc
+Source0:        http://www.squid-cache.org/Versions/v5/squid-%{version}.tar.xz
+Source1:        http://www.squid-cache.org/Versions/v5/squid-%{version}.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -47,15 +47,12 @@ Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
 BuildRequires:  cppunit-devel
-BuildRequires:  db-devel
-BuildRequires:  ed
 BuildRequires:  expat
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
-BuildRequires:  opensp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -63,18 +60,22 @@ BuildRequires:  samba-winbind
 BuildRequires:  sharutils
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gssrpc)
-BuildRequires:  pkgconfig(kdb)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
+BuildRequires:  pkgconfig(tdb)
 Requires(pre):  permissions
 Recommends:     logrotate
 Provides:       http_proxy
+%if 0%{suse_version} <= 1500
 # due to package rename
 # Wed Aug 15 17:40:30 UTC 2012
+# remove this after SLE15
 Provides:       %{name}3 = %{version}
 Obsoletes:      %{name}3 < %{version}
+%endif
+
 %{?systemd_ordering}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  sysuser-shadow
@@ -153,7 +154,11 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
 	--disable-arch-native \
 	--enable-security-cert-generators \
 	--enable-security-cert-validators
-make -O SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
+#make -O SAMBAPREFIX=%{_prefix} %{?_smp_mflags}
+mkdir src/icmp/tests
+mkdir tools/squidclient/tests
+mkdir tools/sysvinit/tests tools/tests
+make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
 %endif

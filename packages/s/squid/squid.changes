@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  4 13:19:48 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- transition to squid 5.x. This is a major release and for changes
+  and how to transition from 4.x, see the release notes,
+  http://www.squid-cache.org/Versions/v5/RELEASENOTES.html
+- update to 5.2
+  * fixes issues with WCCP protocol that may lead to information
+    disclosure (bsc#1189403, CVE-2021-28116)
+
+- drop unused BR: db-devel, ed, opensp-devel, pkgconfig(kdb)
+- new BR: pkgconfig(tdb)
+ 
+-------------------------------------------------------------------
 Sun Aug  1 09:20:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.16:

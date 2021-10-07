@@ -956,4 +956,19 @@ from the squid 3.x changelog</comment>
     <comment></comment>
     <requestid>909881</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1629756c1d0b86753f568db65d115f70</srcmd5>
+    <version>5.2</version>
+    <time>1633644348</time>
+    <user>dimstar_suse</user>
+    <comment>- transition to squid 5.x. This is a major release and for changes
+  and how to transition from 4.x, see the release notes,
+  http://www.squid-cache.org/Versions/v5/RELEASENOTES.html
+- update to 5.2
+  * fixes issues with WCCP protocol that may lead to information
+    disclosure (bsc#1189403, CVE-2021-28116)
+- drop unused BR: db-devel, ed, opensp-devel, pkgconfig(kdb)
+- new BR: pkgconfig(tdb)</comment>
+    <requestid>923558</requestid>
+  </revision>
 </revisionlist>
