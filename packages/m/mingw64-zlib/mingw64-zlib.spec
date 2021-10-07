@@ -37,18 +37,15 @@ BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-cross-pkg-config
 BuildRequires:  mingw64-filesystem
 BuildRequires:  xz
-#!BuildIgnore:  post-build-checks
 BuildArch:      noarch
 %{_mingw64_package_header_debug}
 
 %description
-zlib is designed to be a free, general-purpose, legally unencumbered -- that
-is, not covered by any patents -- lossless data-compression library for use on
-virtually any computer hardware and operating system.
+zlib is a general-purpose lossless data-compression library,
+implementing an API for the DEFLATE algorithm, the latter of
+which is being used by, for example, gzip and the ZIP archive
+format.
 
-
-
-# deprecated, for compatibility only
 %package -n mingw64-zlib1
 Summary:        Zlib compression library
 Group:          System/Libraries
@@ -56,9 +53,10 @@ Obsoletes:      %{name} < %{version}-%{release}
 Provides:       %{name} = %{version}-%{release}
 
 %description -n mingw64-zlib1
-zlib is designed to be a free, general-purpose, legally unencumbered -- that
-is, not covered by any patents -- lossless data-compression library for use on
-virtually any computer hardware and operating system.
+zlib is a general-purpose lossless data-compression library,
+implementing an API for the DEFLATE algorithm, the latter of
+which is being used by, for example, gzip and the ZIP archive
+format.
 
 %package -n mingw64-libz
 Summary:        Zlib compression library
@@ -67,21 +65,24 @@ Obsoletes:      %{name} < %{version}-%{release}
 Provides:       %{name} = %{version}-%{release}
 
 %description -n mingw64-libz
-zlib is designed to be a free, general-purpose, legally unencumbered -- that
-is, not covered by any patents -- lossless data-compression library for use on
-virtually any computer hardware and operating system.
+zlib is a general-purpose lossless data-compression library,
+implementing an API for the DEFLATE algorithm, the latter of
+which is being used by, for example, gzip and the ZIP archive
+format.
+
+Compatibility package.
 
 %package devel
 Summary:        Zlib compression library (development files)
 Group:          Development/Libraries/C and C++
 
 %description devel
-zlib is designed to be a free, general-purpose, legally unencumbered -- that
-is, not covered by any patents -- lossless data-compression library for use on
-virtually any computer hardware and operating system.
+zlib is a general-purpose lossless data-compression library,
+implementing an API for the DEFLATE algorithm, the latter of
+which is being used by, for example, gzip and the ZIP archive
+format.
 
-This package contains all necessary include files and libraries needed to
-develop applications that require the provided includes and libraries.
+This subpackage holds the development headers for the library.
 
 %package -n mingw64-libminizip1
 Summary:        Zip archive library
@@ -90,24 +91,20 @@ Obsoletes:      mingw64-minizip
 Provides:       mingw64-minizip
 
 %description -n  mingw64-libminizip1
-Minizip manipulates files from a .zip archive.
+Minizip is a library for manipulation with files from .zip archives.
 
 %package -n mingw64-minizip-devel
 Summary:        Development files for the minizip library
 Group:          Development/Libraries/C and C++
 
 %description -n mingw64-minizip-devel
-This package contains the libraries and header files needed for developing
-applications which use minizip.
+This package contains the libraries and header files needed for
+developing applications which use minizip.
 
 %_mingw64_debug_package
 
 %prep
-%setup -q -n zlib-%{version}
-
-%patch0 -p1 -b .nostrip
-%patch1 -p1 -b .tml
-%patch2 -p1
+%autosetup -p1 -n zlib-%{version}
 
 %build
 %{_mingw64_cmake} . -DINSTALL_PKGCONFIG_DIR=%{_mingw64_libdir}/pkgconfig
@@ -116,15 +113,15 @@ applications which use minizip.
 cd contrib/minizip
 autoreconf -fi
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw64_cache}
-MINGW64_CFLAGS="%{_mingw64_cflags} -I/$RPM_BUILD_DIR/%{name}-%{version}-%{release}" \
-MINGW64_LDFLAGS="%{_mingw64_ldflags} -L/$RPM_BUILD_DIR/%{name}-%{version}-%{release}" \
+MINGW64_CFLAGS="%{_mingw64_cflags} -I%{_builddir}/%{name}-%{version}-%{release}" \
+MINGW64_LDFLAGS="%{_mingw64_ldflags} -L%{_builddir}/%{name}-%{version}-%{release}" \
 %{_mingw64_configure}
 
 %{_mingw64_make} CFLAGS=-shared LDFLAGS=-no-undefined
 
 %install
 %make_install
-make -C contrib/minizip DESTDIR=%{buildroot} install
+%make_install -C contrib/minizip
 # for compatibility with older packages
 ln -sf libz.dll %{buildroot}%{_mingw64_bindir}/zlib1.dll
 
@@ -147,7 +144,7 @@ ln -sf libz.dll %{buildroot}%{_mingw64_bindir}/zlib1.dll
 %{_mingw64_bindir}/libminizip-1.dll
 
 %files -n mingw64-minizip-devel
-%{_mingw64_includedir}/minizip/*.h
+%{_mingw64_includedir}/minizip/
 %{_mingw64_libdir}/libminizip.dll.a
 %{_mingw64_libdir}/pkgconfig/minizip.pc
 

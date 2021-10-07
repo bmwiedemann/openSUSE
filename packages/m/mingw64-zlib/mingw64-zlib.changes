@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 30 15:18:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile for Factory resubmission:
+  * trim rpmlintrc/post-build-checks ignores to minimum
+  * apply descriptions from main zlib.spec
+  * replace old specfile constructs like %defattr
+
+-------------------------------------------------------------------
 Tue Sep 14 05:50:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Add rpmlintrc file to silence some rpmlint errors that make
