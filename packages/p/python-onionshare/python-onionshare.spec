@@ -58,6 +58,7 @@ Requires:       python3-Flask-SocketIO
 Requires:       python3-Unidecode
 Requires:       python3-colorama
 Requires:       python3-psutil
+Requires:       python3-PyNaCl
 Requires:       python3-pycrypto
 Requires:       python3-pyside2
 Requires:       python3-qrcode
