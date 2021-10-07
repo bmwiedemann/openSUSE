@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 30 15:18:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile for Factory resubmission:
+  * trim rpmlintrc/post-build-checks ignores to minimum
+  * apply descriptions from main zlib.spec
+  * replace old specfile constructs like %defattr
+
+-------------------------------------------------------------------
 Sun May  5 15:02:38 UTC 2019 - ralf.habacker@freenet.de
 
 - migrate to cmake to support static library
