@@ -17,7 +17,8 @@
 
 
 %define ack_version		1.0.9
-%define align_version		36.42
+%define align_version_orig	37-43
+%define align_version		37.43
 %define a_version		2.18
 %define bufexplorer_version	7.4.21
 %define calendar_version	2.5
@@ -26,7 +27,7 @@
 %define diffchanges_version	0.6.346dae2
 %define editorconfig_version	0.3.3
 %define file_line_version	1.0+20161020
-%define fugitive_version	3.3
+%define fugitive_version	3.4
 %define gitdiff_version		2
 %define gnupg_version		2.7.1
 %define latex_version		1.10.0+20210323
@@ -42,14 +43,14 @@
 %define rails_version		4.4
 %define salt_version		0.0.1
 %define searchcomplete_version	1.1
-%define showmarks_version	2.2
+%define showmarks_version	2.3
 %define snipmate_version	0.83
 %define supertab_version	1.0
 %define taglist_version		4.6
-%define tlib_version		0.42
+%define tlib_version		1.27
 %define tregisters_version	0.2
 %define tselectbuffer_version	0.7
-%define tselectfiles_version	0.10
+%define tselectfiles_version	0.11
 %define utl_version		2.0
 %define vimwiki_version		2.1
 %define zoomwin_version		24
@@ -61,35 +62,35 @@ Summary:        Plug-ins pack for Vim
 License:        MIT
 Group:          Productivity/Text/Editors
 URL:            http://www.vim.org/
-Source0:        vimplugin-align-%{align_version}.tar.bz2
-Source1:        vimplugin-a-%{a_version}.tar.bz2
+Source0:        https://github.com/vim-scripts/Align/archive/refs/tags/%{align_version_orig}.tar.gz#/vimplugin-align-%{align_version}.tar.gz
+Source1:        https://github.com/vim-scripts/a.vim/archive/refs/tags/%{a_version}.tar.gz#/vimplugin-a-%{a_version}.tar.gz
 Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/v%{bufexplorer_version}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
 Source3:        https://github.com/vim-scripts/calendar.vim--Matsumoto/archive/refs/tags/%{calendar_version}.tar.gz#/calendar.vim--Matsumoto-%{calendar_version}.tar.gz
-Source4:        vimplugin-colorsel-%{colorsel_version}.tar.bz2
+Source4:        https://github.com/vim-scripts/colorsel.vim/archive/refs/tags/%{colorsel_version}.tar.gz#/vimplugin-colorsel-%{colorsel_version}.tar.gz
 Source5:        vimplugin-colorschemes-%{colorschemes_version}.tar.bz2
 Source6:        vimplugin-diffchanges-%{diffchanges_version}.tar.bz2
-Source7:        vimplugin-locateopen-%{locateopen_version}.tar.bz2
-Source9:        vimplugin-matrix-%{matrix_version}.tar.bz2
-Source10:       vimplugin-minibufexpl-%{minibufexpl_version}.tar.bz2
+Source7:        https://github.com/vim-scripts/LocateOpen/archive/refs/tags/%{locateopen_version}.tar.gz#/vimplugin-locateopen-%{locateopen_version}.tar.gz
+Source9:        https://github.com/vim-scripts/matrix.vim--Yang/archive/refs/tags/%{matrix_version}.tar.gz#/vimplugin-matrix-%{matrix_version}.tar.gz
+Source10:       https://github.com/vim-scripts/minibufexpl.vim/archive/refs/tags/%{minibufexpl_version}.tar.gz#/vimplugin-minibufexpl-%{minibufexpl_version}.tar.gz
 Source11:       vimplugin-multiplesearch-%{multiplesearch_version}.tar.bz2
 Source12:       vimplugin-NERDcommenter-%{NERDcommenter_version}.tar.bz2
 Source13:       vimplugin-NERDtree-%{NERDtree_version}.tar.bz2
 Source14:       vimplugin-project-%{project_version}.tar.bz2
 Source15:       vimplugin-searchcomplete-%{searchcomplete_version}.tar.bz2
-Source16:       vimplugin-showmarks-%{showmarks_version}.tar.bz2
+Source16:       https://github.com/vim-scripts/ShowMarks7/archive/refs/tags/%{showmarks_version}.tar.gz#/vimplugin-showmarks-%{showmarks_version}.tar.gz
 Source17:       vimplugin-supertab-%{supertab_version}.tar.bz2
 Source18:       vimplugin-taglist-%{taglist_version}.tar.bz2
-Source19:       vimplugin-tlib-%{tlib_version}.tar.bz2
-Source20:       vimplugin-tregisters-%{tregisters_version}.tar.bz2
-Source21:       vimplugin-tselectbuffer-%{tselectbuffer_version}.tar.bz2
-Source22:       vimplugin-tselectfiles-%{tselectfiles_version}.tar.bz2
+Source19:       https://github.com/tomtom/tlib_vim/archive/refs/tags/%{tlib_version}.tar.gz#/vimplugin-tlib-%{tlib_version}.tar.gz
+Source20:       https://github.com/vim-scripts/tregisters/archive/refs/tags/%{tregisters_version}.tar.gz#/vimplugin-tregisters-%{tregisters_version}.tar.gz
+Source21:       https://github.com/vim-scripts/tselectbuffer/archive/refs/tags/%{tselectbuffer_version}.tar.gz#/vimplugin-tselectbuffer-%{tselectbuffer_version}.tar.gz
+Source22:       https://github.com/vim-scripts/tselectfiles/archive/refs/tags/%{tselectfiles_version}.tar.gz#/vimplugin-tselectfiles-%{tselectfiles_version}.tar.gz
 Source23:       vimplugin-utl-%{utl_version}.tar.bz2
 Source24:       vimplugin-zoomwin-%{zoomwin_version}.tar.bz2
 Source26:       vimplugin-quilt-%{quilt_version}.tar.bz2
 Source27:       vimplugin-vimwiki-%{vimwiki_version}.tar.bz2
 Source28:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg_version}/vim-gnupg-v%{gnupg_version}.tar.gz#/vimplugin-gnupg-%{gnupg_version}.tar.gz
 Source29:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg_version}/vim-gnupg-v%{gnupg_version}.tar.gz.asc#/vimplugin-gnupg-%{gnupg_version}.tar.gz.asc
-Source30:       vimplugin-gitdiff-%{gitdiff_version}.tar.bz2
+Source30:       https://github.com/vim-scripts/gitdiff.vim/archive/refs/tags/%{gitdiff_version}.tar.gz#/vimplugin-gitdiff-%{gitdiff_version}.tar.gz
 Source31:       vimplugin-snipmate-%{snipmate_version}.tar.bz2
 Source32:       vimplugin-rails-%{rails_version}.tar.bz2
 Source33:       https://github.com/mileszs/ack.vim/archive/%{ack_version}.tar.gz#/vimplugin-ack-%{ack_version}.tar.gz
@@ -104,7 +105,6 @@ Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/con
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
-Patch4:         vim-fugitive-Remove-unnecessary-complete-on-command-with-no-argum.patch
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -633,54 +633,42 @@ Usage:
 %prep
 %setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101
 # ------- patch locateopen ------
-pushd vimplugin-locateopen-%locateopen_version
+pushd LocateOpen-%locateopen_version
 %patch1
 popd
-pushd vimplugin-showmarks-%showmarks_version
+pushd ShowMarks7-%showmarks_version
 %patch2 -p1
 popd
 pushd file-line-%file_line_version
 %patch3 -p1
 popd
-pushd vim-fugitive-%fugitive_version
-%patch4 -p1
-popd
 
 %build
 
 %install
-mkdir -p %buildroot/%vimplugin_dir
-for i in vimplugin-* calendar.vim--Matsumoto-* bufexplorer-* file-line-*; do
+pushd editorconfig-vim-%{editorconfig_version}
+rm -rf plugin/editorconfig-core-py/ tests/
+rm mkzip.sh
+popd
+
+pushd tlib_vim-%{tlib_version}
+rm -r addon-info.json doc/tags etc samples scripts test
+popd
+
+install -d %buildroot/%vimplugin_dir
+for i in vimplugin-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
+	colorsel.vim-* bufexplorer-* editorconfig-vim-* file-line-* \
+	gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* minibufexpl.vim-* \
+	ShowMarks7-* \
+	tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* vim-fugitive-* \
+	vim-gnupg-*; do
     pushd $i
     cp -av * %buildroot/%vimplugin_dir/
     popd
 done
+
 mkdir -p %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
 mv %{buildroot}/%vimplugin_dir/nerdtree_plugin %{buildroot}%{_defaultdocdir}/vimplugin-NERDtree/
-
-# vim-plugin-ack
-pushd ack.vim-%{ack_version}
-cp -a autoload doc plugin %{buildroot}/%{vimplugin_dir}
-# vim-plugin-latext creates ftplugin
-cp -a ftplugin/qf.vim %{buildroot}%{vimplugin_dir}/ftplugin/
-popd
-
-# vim-plugin-editorconfig
-pushd editorconfig-vim-%{editorconfig_version}
-rm -rf plugin/editorconfig-core-py/ tests/
-rm mkzip.sh README.md LICENSE CONTRIBUTORS
-cp -a * %buildroot/%vimplugin_dir/
-popd
-
-# vim-plugin-fugitive
-pushd vim-fugitive-%{fugitive_version}
-cp -a autoload ftdetect plugin doc syntax %{buildroot}/%{vimplugin_dir}
-popd
-
-# vim-plugin-gnupg
-pushd vim-gnupg-%{gnupg_version}
-cp -av autoload plugin doc %{buildroot}/%{vimplugin_dir}
-popd
 
 # vim-plugin-latex
 pushd vim-latex-%{latex_version}
@@ -689,31 +677,20 @@ install -d %{buildroot}%{_datadir}/appdata
 install -m 644 vim-latex.metainfo.xml %{buildroot}%{_datadir}/appdata/
 popd
 
-cp %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
+install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
 # delete unneeded files
-rm -rf %{buildroot}/%vimplugin_dir/LICENSE
+rm -rf %{buildroot}/%vimplugin_dir/CHANGES*
+rm -rf %{buildroot}/%vimplugin_dir/CONTRIBUTORS*
+rm -rf %{buildroot}/%vimplugin_dir/LICENSE*
 rm -rf %{buildroot}/%vimplugin_dir/README*
 rm -rf %{buildroot}/%vimplugin_dir/doc/Makefile*
 rm -rf %{buildroot}/%vimplugin_dir/doc/README*
 rm -rf %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
 
-%clean
-rm -rf %{buildroot}
-
 # For every plugin providing documentation, we have to call the post and postun
 # scriptlets Unfortunatelly, there is no easy way how to achieve that except
 # listing them manually :(
-
-# documentation: vim-plugin-a
-
-%post -n vim-plugin-a
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-a
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
 
 # documentation: vim-plugin-ack
 
@@ -875,22 +852,22 @@ if [ $1 == 0 ]; then
   vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
 fi
 
-# documentation: vim-plugin-showmarks
-
-%post -n vim-plugin-showmarks
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-showmarks
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
 # documentation: vim-plugin-snipmate
 
 %post -n vim-plugin-snipmate
 vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
 
 %postun -n vim-plugin-snipmate
+if [ $1 == 0 ]; then
+  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
+fi
+
+# documentation: vim-plugin-supertab
+
+%post -n vim-plugin-supertab
+vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
+
+%postun -n vim-plugin-supertab
 if [ $1 == 0 ]; then
   vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
 fi
@@ -911,6 +888,16 @@ fi
 vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
 
 %postun -n vim-plugin-tlib
+if [ $1 == 0 ]; then
+  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
+fi
+
+# documentation: vim-plugin-tselectbuffer
+
+%post -n vim-plugin-tselectbuffer
+vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
+
+%postun -n vim-plugin-tselectbuffer
 if [ $1 == 0 ]; then
   vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
 fi
@@ -964,13 +951,13 @@ if [ $1 == 0 ]; then
 fi
 
 %files -n vim-plugin-a
-%defattr(-,root,root,0755)
-%vimplugin_dir/doc/alternate.txt
+%doc a.vim-%{a_version}/README
 %vimplugin_dir/plugin/a.vim
 
 %files -n vim-plugin-ack
 %defattr(-,root,root,0755)
 %doc ack.vim-%{ack_version}/README.md
+%license ack.vim-%{ack_version}/LICENSE
 %vimplugin_dir/plugin/ack.vim
 %vimplugin_dir/autoload/ack.vim
 %vimplugin_dir/doc/ack.txt
@@ -1014,6 +1001,7 @@ fi
 
 %files -n vim-plugin-editorconfig
 %defattr(-,root,root,0755)
+%license editorconfig-vim-%{editorconfig_version}/LICENSE
 %vimplugin_dir/plugin/editorconfig.vim
 %vimplugin_dir/autoload/editorconfig.vim
 %vimplugin_dir/doc/editorconfig.txt
@@ -1028,6 +1016,8 @@ fi
 %vimplugin_dir/doc/fugitive.txt
 %vimplugin_dir/autoload/fugitive.vim
 %vimplugin_dir/ftdetect/fugitive.vim
+%dir %vimplugin_dir/ftplugin
+%vimplugin_dir/ftplugin/fugitiveblame.vim
 %vimplugin_dir/syntax/fugitive.vim
 %vimplugin_dir/syntax/fugitiveblame.vim
 
@@ -1128,8 +1118,7 @@ fi
 %vimplugin_dir/plugin/SearchComplete.vim
 
 %files -n vim-plugin-showmarks
-%defattr(-,root,root,0755)
-%vimplugin_dir/doc/showmarks.txt
+%doc ShowMarks7-%{showmarks_version}/README
 %vimplugin_dir/plugin/showmarks.vim
 
 %files -n vim-plugin-snipmate
@@ -1154,10 +1143,16 @@ fi
 
 %files -n vim-plugin-tlib
 %defattr(-,root,root,0755)
+%license tlib_vim-%{tlib_version}/LICENSE.TXT
 %vimplugin_dir/doc/tlib.txt
 %vimplugin_dir/autoload/tlib
+%vimplugin_dir/autoload/tinykeymap
 %vimplugin_dir/plugin/02tlib.vim
 %vimplugin_dir/autoload/tlib.vim
+%dir %vimplugin_dir/macros/
+%vimplugin_dir/macros/tlib.vim
+%dir %vimplugin_dir/spec/
+%vimplugin_dir/spec/tlib/
 
 %files -n vim-plugin-tregisters
 %defattr(-,root,root,0755)

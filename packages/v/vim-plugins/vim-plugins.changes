@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 30 06:04:37 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update
+  * align_version          37.43
+  * fugitive_version       3.4
+  * tlib_version           1.27
+  * tselectfiles_version   0.11
+- cleanup the spec and use URLs in Sources
+- remove vim-fugitive-Remove-unnecessary-complete-on-command-with-no-argum.patch
+  (it's upstream)
+
+-------------------------------------------------------------------
 Tue Aug  3 11:22:05 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update vim-fugitive to 3.3
