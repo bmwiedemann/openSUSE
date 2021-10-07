@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  7 18:23:52 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.0.95.1
+  - (7e09091, 3219b08) Fixed a few other (less severe though) HTML
+    injection discovered since #789 - thanks to nephele for
+    spotting those.
+  - (410a832) Adjust the #789 fix so that it doesn't over-escape
+    HTML when showing and processing clicks on reactions.
+  - (#782, #793) Fix bugs in saving the timeline position when
+    rooms are switched, and also accurately restoring the timeline
+    position afterwards, as well as upon clicking on the "Scroll to
+    read marker" button.
+  - (775245d) When the event with the read marker is not loaded
+    yet, clicking on the "Scroll to read marker" button will load
+    more history. Subsequent clicks will either load even more
+    history or, once the read marker is found, scroll to it.
+  - (#800) Fix user display names actually getting their colours in
+    the timeline, instead of being all shown in deep red.
+  - (#803) Rich text pasting from programs such as LibreOffice
+    actually works now.
+  - (#805) Fix a crash upon login with a correct password after
+    entering it incorrectly in the previous attempt.
+  - Prebuilt binaries at GitHub Releases use libQuotient 0.6.11
+    with its own set of fixes.
+
+-------------------------------------------------------------------
 Fri Sep 24 07:08:52 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.0.95

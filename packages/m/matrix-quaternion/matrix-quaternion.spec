@@ -17,7 +17,7 @@
 
 
 Name:           matrix-quaternion
-Version:        0.0.95
+Version:        0.0.95.1
 Release:        0
 Summary:        QT Matrix client
 License:        GPL-3.0-only
