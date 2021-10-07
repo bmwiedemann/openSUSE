@@ -17,13 +17,14 @@
 
 
 Name:           gnome-text-editor
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        GNOME Text Editor
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-text-editor
 Source:         https://download.gnome.org/sources/%{name}/41/%{name}-%{version}.tar.xz
 
+BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(enchant-2) >= 2.2.0
