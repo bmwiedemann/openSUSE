@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 17:04:52 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove patch rt-100926.patch merged upstream
+
+-------------------------------------------------------------------
+Sun Sep 26 03:07:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.22
+   see /usr/share/doc/packages/perl-HTML-FillInForm/Changes
+
+  Revision history for HTML-FillInForm
+
+-------------------------------------------------------------------
 Thu Aug 27 13:19:06 UTC 2015 - hsk@imb-jena.de
 
 - add CGI to Requires:, BuildRequires:, as that module is not in

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-FillInForm
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTML-FillInForm
-Version:        2.21
-Release:        0
-#Upstream: CHECK(GPL-1.0+ or Artistic-1.0)
 %define cpan_name HTML-FillInForm
+Name:           perl-HTML-FillInForm
+Version:        2.22
+Release:        0
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 Summary:        Populates HTML Forms with data
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTML-FillInForm/
-Source0:        http://www.cpan.org/authors/id/M/MA/MARKSTOS/%{cpan_name}-%{version}.tar.gz
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         rt-100926.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CGI)
-BuildRequires:  perl(HTML::Parser) >= 3.26
-BuildRequires:  perl(HTML::TokeParser) >= 3.26
-Requires:       perl(CGI)
-Requires:       perl(HTML::Parser) >= 3.26
-Requires:       perl(HTML::TokeParser) >= 3.26
+BuildRequires:  perl(HTML::TokeParser)
+BuildRequires:  perl(Test::More) >= 0.96
 %{perl_requires}
 
 %description
@@ -54,14 +48,14 @@ easy for the user to see and correct the error.
 in an HTML form.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -69,7 +63,7 @@ in an HTML form.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README
+%doc Changes CONTRIBUTORS README README.md
+%license LICENSE
 
 %changelog
