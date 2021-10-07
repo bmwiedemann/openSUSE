@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  7 08:37:12 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.11:
+  * Just after 0.6.10 was out another nasty bug has been discovered,
+    preventing from proper usage of URLs with an unescaped double-hash (##),
+    which may come when a matrix.to URL is generated for a bridged IRC channel
+    (and it even got a very nice number #512). Aside from this fix, 
+    quotest will not return with success code 0 any more if it failed to 
+    even start testing for some reason (#496).
+
+-------------------------------------------------------------------
 Sun Oct  3 08:21:09 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
 
 - Update to versiosn 0.6.10:
