@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 10:00:58 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- UsrMerge: move cpp to %_prefix (boo#1191078)
+
+-------------------------------------------------------------------
 Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add some -Wno-error because gcc appears to fall over MSVCRT
