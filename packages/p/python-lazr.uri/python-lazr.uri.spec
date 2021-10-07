@@ -17,7 +17,7 @@
 
 
 Name:           python-lazr.uri
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Code for parsing and dealing with URI
 License:        LGPL-3.0-or-later
