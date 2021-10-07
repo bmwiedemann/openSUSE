@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct  6 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.02
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.02 2021-10-06T09:58:55+0900
+   - Fix defaults for arrays with collectionFormat #263
+     Contributor: Ilya Rassadin
+   - Improved documentation for JSON::Validator and JSON::Validator::Schema #230
+
+  5.01 2021-10-04T07:13:32+0900
+   - Fix registering the correct $ref when bundling
+   - Changed get() to resolve $ref #262
+   - Deprecated $schema->contains()
+   - Deprecated $schema->schema()
+
+  5.00 2021-10-02T10:15:16+0900
+   - Validation is much faster
+   - Fix "$defs" in draft7 is "definitions"
+   - Add benchmark.t to track validation speed
+     * Runtime v4.21: 2.62s (n=200)
+     * Runtime v5.00: 1.52s (n=200)
+   - Add JSON::Validator::Store::resolve()
+   - Add JSON::Validator::URI
+   - Fix incorrect validation error paths when validating references to same object #244
+   - Changed JSON::Validator::Util::is_type()
+     * Add JSON::Validator::Util::is_bool()
+     * Add JSON::Validator::Util::is_num()
+   - Changed bundled definitions/$defs names
+   - Changed invalid schema id/$id will not croak
+   - Changed internal _validation_xxx() methods to take $state
+   - Removed support for bundle({replace => 1}) #194
+   - Removed JSON::Validator::OpenAPIv2::allow_invalid_ref()
+   - Removed JSON::Validator::Ref
+   - Removed JSON::Validator::Util::json_pointer()
+   - Removed JSON::Validator::Util::schema_extract()
+
+-------------------------------------------------------------------
 Sun Sep 26 03:07:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.25
