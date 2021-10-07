@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  1 09:27:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add nls_utf8 module (boo#1190797)
+
+-------------------------------------------------------------------
 Wed Jun  2 08:49:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add nfsd for nfs server support (boo#1186363)
