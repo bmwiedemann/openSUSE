@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 12:49:49 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Fri Sep 13 08:18:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.1:
