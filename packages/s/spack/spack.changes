@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  1 05:55:10 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set group spack. 
+
+-------------------------------------------------------------------
+Wed Sep 29 20:32:58 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- update to version 0.16.3 (JSC#SLE-22137):
+  * clang/llvm: fix version detection
+  * Fix use of quotes in Python build system
+  * Ensure all roots of an installed environment are marked explicit in db
+  * Fix fetching for Python 3.8 and 3.9
+  * locks: only open lockfiles once instead of for every lock held
+
+-------------------------------------------------------------------
 Fri Aug  6 14:28:20 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - added tar and make as requirement 
@@ -21,7 +36,7 @@ Tue Jul  6 21:45:21 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Wed Jun  2 14:04:26 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
-- fix typo to export prefix in patch:
+- fix typo to export prefix in patch (bsc#1191395):
   Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 
 -------------------------------------------------------------------

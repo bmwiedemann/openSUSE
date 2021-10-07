@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -63,6 +63,7 @@ BuildRequires:  polkit
 BuildRequires:  python-base
 BuildRequires:  python3-urllib3
 BuildRequires:  sudo
+BuildRequires:  sysuser-tools
 Requires:       %{name}-recipes = %{version}
 Requires:       bzip2
 Requires:       curl
@@ -352,6 +353,11 @@ ln -sf %{_localstatedir}/cache/spack %{buildroot}%{_localstatedir}/lib/spack/cac
 # Remove problematic binaries which are removed upstream with
 # 0889be20e0d9dcdf4346cdeaa0647285187375f3
 rm -r %{buildroot}%{_localstatedir}/lib/spack/repos/builtin/packages/patchelf/test/
+
+echo "g %{name} -" > system-user-%{name}.conf
+%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
+install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+
 %fdupes %{buildroot}%{spack_dir}
 %fdupes %{buildroot}%{_datarootdir}/spack
 %fdupes %{buildroot}%{_localstatedir}/lib/spack
@@ -364,8 +370,7 @@ cp -r texinfo/Spack.info.gz %{buildroot}%{_infodir}
 [ -d texinfo/Spack-figures ] && cp -r texinfo/Spack-figures %{buildroot}%{_infodir}
 %endif
 
-%pre
-getent group %spack_group >/dev/null || groupadd -r %spack_group
+%pre -f %{name}.pre
 
 %post
 # Replace /etc/spack/compilers.yaml
@@ -419,6 +424,7 @@ sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 %dir %{_sysconfdir}/skel/.spack
 %config %{_sysconfdir}/skel/.spack/config.yaml
 # repos directory is installed in -recipes
+%{_sysusersdir}/system-user-%{name}.conf
 %exclude %{_localstatedir}/lib/spack/repos
 
 %files recipes

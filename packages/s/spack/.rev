@@ -116,4 +116,21 @@
     <comment></comment>
     <requestid>911265</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84f54df2ee1959982525eec4e0a272f2</srcmd5>
+    <version>0.16.3</version>
+    <time>1633644357</time>
+    <user>dimstar_suse</user>
+    <comment>- Utilize sysuser infrastructure to set group spack. 
+
+- update to version 0.16.3 (JSC#SLE-22137):
+  * clang/llvm: fix version detection
+  * Fix use of quotes in Python build system
+  * Ensure all roots of an installed environment are marked explicit in db
+  * Fix fetching for Python 3.8 and 3.9
+  * locks: only open lockfiles once instead of for every lock held
+
+- fix typo to export prefix in patch (bsc#1191395):</comment>
+    <requestid>923607</requestid>
+  </revision>
 </revisionlist>
