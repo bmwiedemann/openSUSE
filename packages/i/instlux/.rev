@@ -501,4 +501,22 @@
 </comment>
     <requestid>898561</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>ffce4d09c244171946431ae2dc360417</srcmd5>
+    <version>15.3.6</version>
+    <time>1633644358</time>
+    <user>dimstar_suse</user>
+    <comment>- upgraded to 15.3.6.
+  * 15.3.2 to 15.3.3
+    - fix for Windows 11; WSL2 is used by default
+  * 15.3.3 to 15.3.4
+    - fix for Windows 11; requires kernel package
+  * 15.3.4 to 15.3.5
+    - Added &quot;Unicode false&quot; to disable Unicode mode
+      (fix for NSIS &gt;= 3.07)
+  * 15.3.5 to 15.3.6
+    - Move &quot;Unicode false&quot; to top
+</comment>
+    <requestid>923645</requestid>
+  </revision>
 </revisionlist>

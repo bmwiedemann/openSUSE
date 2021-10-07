@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  7 05:38:29 UTC 2021 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- upgraded to 15.3.6.
+  * 15.3.2 to 15.3.3
+    - fix for Windows 11; WSL2 is used by default
+  * 15.3.3 to 15.3.4
+    - fix for Windows 11; requires kernel package
+  * 15.3.4 to 15.3.5
+    - Added "Unicode false" to disable Unicode mode
+      (fix for NSIS >= 3.07)
+  * 15.3.5 to 15.3.6
+    - Move "Unicode false" to top
+
+-------------------------------------------------------------------
 Tue Jun  8 22:31:02 UTC 2021 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - upgraded to 15.3.2.
