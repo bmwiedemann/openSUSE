@@ -169,4 +169,11 @@
   * fix use_undecided=&quot;true&quot; special case</comment>
     <requestid>921347</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4ec2ba65a8a781c93c2b97450fbd26d3</srcmd5>
+    <version>1.4.8</version>
+    <time>1633606970</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/openSUSE/obs-service-product_converter/issues/13</comment>
+  </revision>
 </revisionlist>
