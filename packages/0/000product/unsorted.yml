@@ -6673,6 +6673,7 @@ unsorted:
   - hpx 
   - hpx-devel 
   - hscolour: [x86_64] 
+  - hsetroot 
   - hspec-discover: [x86_64] 
   - hsqldb 
   - hsqldb-demo 
@@ -21285,6 +21286,8 @@ unsorted:
   - python3-pyside2 
   - python3-pyside2-devel 
   - python3-pyside2-examples 
+  - python3-pyside6 
+  - python3-pyside6-devel 
   - python3-pysol-cards 
   - python3-pytest-cookies 
   - python3-renderspec 
@@ -21295,6 +21298,8 @@ unsorted:
   - python3-saharaclient 
   - python3-scikit-umfpack: [i586] 
   - python3-senlinclient 
+  - python3-shiboken6 
+  - python3-shiboken6-devel 
   - python3-smbus 
   - python3-spglib 
   - python3-sphinxbase 
