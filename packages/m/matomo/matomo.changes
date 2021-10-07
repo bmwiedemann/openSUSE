@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Thu Oct  7 08:43:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.5.0
+  * matomo-org/matomo
+    - #17870 Improve I/O performance by not writing placeholder files when they already exist
+    - #17732 Users can get logged out when many notifications are pending
+    - #17853 Clicking through the following pages in the transition overlay for page titles does not work
+    - #17872 If the period is not enabled in config “The period is not supported” message is shown in cron archiving
+    - #17926 Console error “There was an error setting cookie `mtm_cookie_consent`.
+      Please check domain and path.” when calling ‘rememberCookieConsentGiven’
+    - #17965 In Acquisition > Overview report, the Row selector is missing
+    - #17966 Warning DataCollection.php(381): Notice – Undefined index: 2021-04-26,2021-05-02
+    - #17091 Failing SMTP connection might result in information disclosure in password recovery
+    - #17773 Matomo should be setting content security policy to prevent some XSS
+    - #18030 Remove fallback to mt_rand and always use random_int for secure randomness
+    - #2672 New INI config setting for Custom image to replace default 1×1 GIF image
+    - #16576 New console command config:delete to delete a key
+    - #16859 Add JS tracker methods setPagePerformanceTiming and getCustomPagePerformanceTiming to set
+      specific values for performance metrics
+    - #17738 Don’t log an error when not supported browser is used
+    - #14719 Run OPTIMIZE TABLE on each table in a separate SQL query to work better with replication
+    - #15322 Removed misleading help text from segment dimensions tooltip
+    - #15892 ‘Acquistion/Overview/Evolution over the period’ graph fails when adding more channels
+    - #16529 Old data in log tables without idvisit column are not purged (affects plugins)
+    - #15036 Hide “AND segmented reports are pre-processed (faster, requires cron)” from
+      the UI when enable_create_realtime_segments = 0
+    - #15135 Link to a helpful FAQ in the error message “Oops, there was a problem during the request.”
+    - #15335 When configuring an e-mail report, the selected segment is not saved
+    - #16604 Update RegEx extractions help text to show slashes don’t need escaping
+    - #17577 Split private directories system check into “Required” and “Recommended”
+    - #16834 Use row_format=dynamic by default when creating a table
+    - #18012 Add warning about dropping support for IE11 in Matomo user interface
+    - #18039 Remove not used DB adapters
+    - #16459 Heartbeat timer ping request is not always sent
+      (focusing away from the tab should trigger the ping request)
+    - #17640 Page Overlay ignores token_auth in URL when opened from a Widget
+    - #17752 Automatically delete plugin specific/report specific invalidations that do not need to run
+    - #17787 Javascript console error when clicking Install routine: Download System Check button
+    - #17816 Limiting ecommerce product reports to 10,000 to avoid memory issues with new INI config setting to customise
+    - #17871 Added info message that INI setting archiving_query_max_execution_time may not work for MySQLI
+    - #17883 Possible warning notices during log archive
+    - #17925 The selected [Allow multiple conversions per visit] option is not displayed when editing a goal
+    - #18046 For login allow list add support for IPv6
+    - #17817 When aggregating reports, inflate one expanded datatable at a time
+    - #17818 get rid of stashed datatables before going into safe mode to free up memory
+    - #17846 Remove checking for /proc existence
+    - #17849 Scheduled tasks: Always read timetable from the database and not from memory
+    - #17855 Use Monolog:SyslogHandler syslog default facility
+    - #17867 Do not log a failed login if a valid app token_auth is sent
+    - #17869 Fix a couple a possible warnings in PHP 8.1
+    - #17877 Only set requests in tracking request set when correct value is given
+    - #17891 Ignore overwrite subtable warning for summary rows for old data to avoid re-archiving for a single row
+    - #17905 Update cache component
+    - #17910 Expose methods to disable content security policy or loosen it for embedded iframes
+    - #17937 Load sparkline images only once they are near view port
+    - #17943 When processing a dependent archive for a range, then only process the requested plugin, not all plugins
+    - #17949 try and reconnect database after running each scheduled task (at most once per two hours) during core:archive
+    - #17992 Update doctrine cache to the right version
+    - #18023 Allow social & search definitions to be sourced locally
+    - #18024 Check config file was written correctly
+    - #18033 Allow scheduled report emails to be differentiated from other emails
+    - #18042 removed files related to unsupported databases
+    - #18074 Update container factory to allow for sorting plugins
+  * matomo-org/tag-manager
+    - #217 Enable Debugging mode without URL parameter
+    - #208 Added option to configure cookie domain in configuration
+    - #328 Observe DOM element changes even when a user doesn’t scroll on the page
+    - #339 Visibility trigger add feature to observe DOM changes etc.
+    - #49 Make Matomo tag parameters descriptions translatable
+    - #225 Explain what the Tag Manager “Enable DNT” setting in the Matomo Configuration variable does
+    - #268 New “Click Button” variable and “All Elements Click” and “All Links Click” will trigger on middle and right click also
+    - #349 The `WindowUnload` event should be triggered only once for Microsoft Internet Explorer in Edge mode
+    - #362 Element visibility trigger may trigger too often
+    - #344 Visibility trigger add feature to observe DOM changes
+  * matomo-org/device-detector
+    - #6477 Adds detection for Secure Browser
+    - #6546 Adds detection for tvOS and removes Apple TV
+    - #6812 Added detection for existing brands: AT&T, Tecno Mobile, Vivo, Blu, Philips, Phonemax,
+      Motorola, Ulefone, ZTE, DEXP, JVC, UMIDIGI, F150, Neffos, Nomi, Nomu, NOA, Inoi, Doogee,
+      Senseit, Pixus, Mintt, Mobicel
+    - #6813 Added detection for existing brands: ZTE, HTC, Lenovo, Doogee, Prestigio, GOCLEVER,
+      iLife, Explay, Blu, Vivo, Overmax, Vertex, Blackview
+    - #6815 Added detection for bots: LinkPreview, JungleKeyThumbnail
+    - #6817 Adds detection for various bots
+    - #6818 Added detection for mobile app: NTV Mobil
+    - #6819 Detect devices for existing brands: Infinix, Oukitel, Inoi, Wileyfox, Teclast, Iris,
+      Umax, Sencor, Meizu, Huawei, Blu, MyPhone, Hisense, ZTE, Vivo
+    - #6822 Detect devices for existing brands: Doro, Xiaomi, Turbo-X, Majestic, Energizer,
+      Ulefone, Prestigio, Nomi, NGM, Lenovo, Blu, HTC, ZTE, Motorola, Digma
+    - #6824 Detect devices for existing brands: Santin, Ulefone, DEXP, TrekStor, Teclast, Asus,
+      Neffos, Nobby, Xiaomi, ZTE, OPPO, Wiko, Lenovo, LT Mobile, MLS, Vertex, MyPhone, Lava,
+      HTC, Palm, Jinga, Archos, Bravis, Nomi, Elephone
+    - #6825 Detect bot Turnitin
+    - #6827 Detect devices for existing brands: A1, Huawei, Crosscall, Samsung, Tecno Mobile,
+      Teclast, Realme, Reeder, Leagoo, OPPO, Sony, Asus, Sharp, Fujitsu, Xiaomi, Motorola
+    - #6828 Detect app TikTok for Android
+    - #6829 Adds bot detection Google StoreBot
+    - #6830 Detect new brands Adronix, ProVision and Detect devices for existing brands:
+      AllDocube, Asus, Fujitsu, Huawei, Xiaomi, Lenovo, Motorola, Openbox, Karbonn,
+      Lava, Vivo, Meizu, Hoozo, Realme, Krüger&Matz
+    - #6834 Adds bot detection Dotcom Monitor
+    - #6835 Detect apps: AliExpress, QuickCast, Blue Proxy, COAF SMART Citizen
+    - #6837 Detect devices for existing brands: Alcatel, MTC, HTC, Nokia, Vivo, Samsung,
+      OnePlus, Nomi, ONN, Tecno Mobile, Realme, Blackview, LG, Lenovo, Motorola, Digma,
+      Fairphone, Homtom
+    - #6839 Detect new brand Sirin labs and Detect devices for existing brands:
+      Google, Vivo, POCO, OPPO, Sony, Sharp, Oukitel, Lenco, iVA, Doogee, MyPhone,
+      M-Horse, Dialog, Digma, Energizer, Santin, MDC Store, 4Good, Matrix, Allwinner,
+      Prestigio
+    - #6840 Detect new brands: Anker, Perfeo, CGV and Detect devices for existing brands:
+      Hoffmann, Huawei, Lenovo, Prestigio, Coolpad, Digiland, Reeder, Xiaomi, Realme,
+      Oukitel, Oale, Tecno Mobile, Medion, Teclast, Kyocera, Gionee, MTC, Alcatel,
+      DEXP, Irbis
+    - #6842 Adds browser detection for Stampy Browser
+    - #6843 Add Amazonbot and simplify some bot regexes
+    - #6845 Detect bots: ThinkChaos, DataForSeoBot
+    - #6846 Detect new brands: Telia, Canal Digital and Detect device OPPO A16
+    - #6847 Detect new brand ZIFRO and Detect devices for existing brands:
+      Blu, Prestigio, Bluboo, Leagoo, Motorola, Sigma, Google, Tecno Mobile, Archos,
+      Xiaomi, Ginzzu, Qumo, UMIDIGI, DEXP, EE, CUBOT, Amoi, Xgody, Sony, IconBIT,
+      MegaFon, OPPO
+    - #6850 OS family added to operating system parse result
+    - #6851 Detect brand Google model: Chromecast (2020)
+    - #6852 Detect new brands: SmartBook, Covia, Qubo, Bundy, Sprint, Kiowa and 
+      Detect devices for existing brands: F2 Mobile, QMobile, KINGZONE, Mobicel,
+      Vodafone, HTC, Bmobile, Gome, Cherry Mobile, Oukitel, Alcatel, Sunny,
+      Primux, Sky, Vestel, iView, Realme, Ainol, IconBIT
+    - #6854 Detect brand Huawei model: Nexus 6P
+    - #6856 Detect new brands: Smart, Stylo, Galaxy Innovations, Benzo, Exmart and
+      Detect devices for existing brands: GOCLEVER, Hurricane, Gresso, Mobicel,
+      Riviera, Haier, Alcatel, Kanji, Karbonn, NextBook, Leader Phone, Leotec,
+      TrekStor, Highscreen, Starmobile, Blu, Lava, Gome, Hyundai, Carrefour,
+      F2 Mobile, Xiaomi, Sony, Sico, Amazon, Asus
+    - #6857 Rename brand 2F Mobile to F2 Mobile
+    - #6859 Detect app TikTok for iOS
+    - #6861 Detect OS HarmonyOS
+    - #6863 Detect browser GoBrowser for Symbian
+    - #6865 Improved browser engine detection for Tenta browser
+    - #6866 Detect new brands: Vexia, AIRON, Mymaga, HiMax, Packard Bell, Qnet Mobile and
+      Detect devices for existing brands: Hyundai, Odys, Inco, Amazon, NEC, Sony, iMars,
+      Qubo, Mito, DNS, Lark, Timovi, Masstel, Telefunken, Luna, MyPhone, Leader Phone,
+      Elephone
+    - #6868 Detect New Model: Mi Mix 4
+    - #6870 Detect devices for existing brands: Xiaomi, Samsung, Realme, Tecno Mobile,
+      Mobicel, Vivo, Lenovo, ZTE, OPPO, Oukitel, CUBOT, UMIDIGI, OnePlus, Ulefone,
+      Doogee, TCL, Vivo, Vertex, Infinix, Krüger&Matz, Wiko, DEXP, BQ
+    - #6872 Detect new brand Nubia
+    - #6873 Detect new brands: Bluebird, Mara and Detect devices for existing brands:
+      Krüger&Matz, iHunt, Sony, Teclast, Tanix, Logicom, Nubia, Xiaomi, QMobile, DIXON,
+      Zuum, Vodacom, Mobicel, Oukitel, Motorola, Stylo, Tecno Mobile, Chuwi, OnePlus,
+      Vivo, iTel, Doogee, Cat, Homtom, CUBOT, MLS, Blu, Casper, Unonu
+    - #6874 Detect new brands: BMAX, Geotex and Detect devices for existing brands:
+      Telefunken, Asus, Huawei, Lenovo, Tecno Mobile, Nomi, Coolpad, Blu, Navitel,
+      Winnovo, Digiland, DEXP, Sony, Inoi, OPPO, Samsung, Xiaomi, LG, Vivo, UMIDIGI,
+      Mobicel, Teclast, Zuum
+  * matomo-org/referrer-spam-list
+    - #1284 Add rczhan.com
+    - #1285 Add hsoutdoor.com
+    - #1286 Add czcedu.com
+    - #1287 Add amatocanizalez.net
+    - #1288 Add gcmx.net
+
+-------------------------------------------------------------------
 Mon Aug  2 06:50:01 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.4.1
