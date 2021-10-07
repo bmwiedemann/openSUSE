@@ -1,7 +1,7 @@
 #
 # spec file for package vocal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        A podcast client for the desktop
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Other
-URL:            https://launchpad.net/vocal
+URL:            https://vocalproject.net/
 Source:         https://github.com/needle-and-thread/vocal/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM vocal-fix-build.patch -- https://github.com/needle-and-thread/vocal/issues/483
+Patch:          vocal-fix-build.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -63,7 +65,7 @@ skip intervals, and more.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
