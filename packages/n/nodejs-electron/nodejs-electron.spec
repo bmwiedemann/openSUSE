@@ -40,11 +40,16 @@
 %else
 %bcond_without swiftshader
 %endif
+%if 0%{?suse_version} >= 1550 || 0%{?fedora_version} > 34
+%bcond_without systemicu
+%else
+%bcond_with systemicu
+%endif
 # vaapi still requires bundled libvpx
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.5.0
+Version:        13.5.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -160,7 +165,11 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(icu-i18n) >= 67.0
+%if %{with systemicu}
+BuildRequires:  pkgconfig(icu-i18n) >= 68.0
+%else
+Provides:       bundled(icu) = 68.0
+%endif
 BuildRequires:  pkgconfig(imlib2)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kadm-client)
@@ -349,7 +358,6 @@ gn_system_libraries=(
     fontconfig
     freetype
     harfbuzz-ng
-    icu
     libdrm
     libevent
     libjpeg
@@ -363,6 +371,10 @@ gn_system_libraries=(
     snappy
     zlib
 )
+
+%if %{with systemicu}
+gn_system_libraries+=( icu )
+%endif
 
 %if 0%{?suse_version}
 gn_system_libraries+=( ffmpeg )
@@ -479,6 +491,10 @@ install -m 0644 vk_swiftshader_icd.json %{buildroot}%{_libdir}/electron/vk_swift
 install -m 0755 electron %{buildroot}%{_libdir}/electron/electron
 popd
 
+%if %{without systemicu}
+rsync -av third_party/icu/common/icudtl.dat %{buildroot}%{_libdir}/electron/
+%endif
+
 echo -n "%{version}" > %{buildroot}%{_libdir}/electron/version
 
 # Install folders required for webapps
@@ -499,16 +515,25 @@ mkdir -p "%{buildroot}%{_datadir}/webapps"
 
 %{_libdir}/electron/*.bin
 %{_libdir}/electron/*.pak
-%{_libdir}/electron/*.so
+
+%{_libdir}/electron/libEGL.so
+%{_libdir}/electron/libGLESv2.so
+%{_libdir}/electron/libVkICD_mock_icd.so
+
+%if %{without systemicu}
+%{_libdir}/electron/icudtl.dat
+%endif
 
 %{_libdir}/electron/locales/
 %{_libdir}/electron/resources/
 
 %if %{with swiftshader}
 %{_libdir}/electron/libvk_swiftshader.so
-%dir %{_libdir}/electron/swiftshader/
-%{_libdir}/electron/swiftshader/*.so
 %{_libdir}/electron/vk_swiftshader_icd.json
+
+%dir %{_libdir}/electron/swiftshader/
+%{_libdir}/electron/swiftshader/libEGL.so
+%{_libdir}/electron/swiftshader/libGLESv2.so
 %endif
 
 %{_libdir}/electron/version

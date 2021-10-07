@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 15:36:48 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.5.1
+  https://github.com/electron/electron/releases/tag/v13.5.1
+- Bundle icu for systems which don't provide icu >= 68
+- Avoid listing files twice (swiftshader)
+
+-------------------------------------------------------------------
 Tue Sep 28 18:02:29 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 13.5.0

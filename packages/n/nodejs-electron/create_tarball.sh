@@ -223,6 +223,7 @@ keeplibs=(
     third_party/highway
     third_party/hunspell
     third_party/iccjpeg
+    third_party/icu
     third_party/inspector_protocol
     third_party/jinja2
     third_party/jsoncpp
