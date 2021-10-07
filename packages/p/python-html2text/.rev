@@ -195,4 +195,13 @@
     <comment></comment>
     <requestid>828011</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>17897f58d76e04a08c832419dfa21735</srcmd5>
+    <version>2020.1.16</version>
+    <time>1633644388</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Provides/Obsoletes
+</comment>
+    <requestid>924042</requestid>
+  </revision>
 </revisionlist>

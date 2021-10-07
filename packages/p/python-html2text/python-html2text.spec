@@ -1,7 +1,7 @@
 #
-# spec file for package python-html2text
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
-Conflicts:      html2text
+Requires(preun):update-alternatives
+Provides:       html2text = %{version}-%{release}
+Obsoletes:      html2text < %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
