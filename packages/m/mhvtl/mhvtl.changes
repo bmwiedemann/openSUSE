@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  7 16:20:07 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Remoed the "BuildRequires: lzo-devel" line from the SPEC file,
+  since this dependence was removed with upstream commit
+  c327afb77cff ("Remove dependency on external lzo packages").
+
+-------------------------------------------------------------------
 Mon Oct  4 21:07:48 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Fix failing OBS build, since it doesn't like empty DB files

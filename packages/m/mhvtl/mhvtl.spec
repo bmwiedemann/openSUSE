@@ -35,7 +35,6 @@ Requires:       sg3_utils
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools
 %endif
-BuildRequires:  lzo-devel
 BuildRequires:  modutils
 BuildRequires:  openssl-devel
 BuildRequires:  systemd-rpm-macros
