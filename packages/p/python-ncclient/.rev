@@ -175,4 +175,12 @@
     <comment></comment>
     <requestid>897968</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>239cf618c3016baa1288ac1e20de2ab5</srcmd5>
+    <version>0.6.12</version>
+    <time>1633644355</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on nose.</comment>
+    <requestid>923605</requestid>
+  </revision>
 </revisionlist>

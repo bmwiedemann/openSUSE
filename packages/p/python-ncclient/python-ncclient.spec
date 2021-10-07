@@ -41,7 +41,6 @@ Requires:       python-six
 BuildArch:      noarch
 BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selectors2}

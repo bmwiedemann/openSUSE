@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 01:52:08 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on nose. 
+
+-------------------------------------------------------------------
 Sat Jun  5 12:58:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.12
