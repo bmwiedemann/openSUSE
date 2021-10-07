@@ -1,7 +1,7 @@
 #
 # spec file for package bookworm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@ Group:          Productivity/Office/Other
 URL:            https://babluboy.github.io/bookworm
 Source:         https://github.com/babluboy/bookworm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ImageMagick
-BuildRequires:  meson
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
@@ -42,9 +42,9 @@ BuildRequires:  html2text
 BuildRequires:  poppler-tools
 Requires:       html2text
 Requires:       poppler-tools
+Recommends:     %{name}-lang
 Recommends:     unrar
 Recommends:     unzip
-Recommends:     %{name}-lang
 
 %description
 An eBook reader for Elementary OS.
@@ -57,6 +57,9 @@ It uses poppler for decoding and read formats like EPUB, PDF, mobi, cbr, etc.
 %setup -q
 
 chmod -x AUTHORS
+
+# Fix shebangs for Python files
+find . -name \*.py -exec sed -E -i "1{s/env\s*python2?\s*$/python3/}" '{}' \;
 
 %build
 %meson
