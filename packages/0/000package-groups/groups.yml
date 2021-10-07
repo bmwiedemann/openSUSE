@@ -182,7 +182,6 @@ dvd:
 
   - patterns-media-rest_dvd: [suggested]
   # all loggers
-  - systemd-logger
   - rsyslog
   - syslog-service
   - dia: [locked]
