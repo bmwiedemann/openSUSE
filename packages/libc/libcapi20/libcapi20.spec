@@ -1,7 +1,7 @@
 #
 # spec file for package libcapi20
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (C) 2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,11 +25,12 @@
 Name:           libcapi20
 Version:        3.27
 Release:        0
-Source:         libcapi20-3.27.tar.xz
-URL:            https://github.com/leggewie-DM/libcapi20
 Summary:        Library for the Common ISDN Application Programming Interface
 License:        LGPL-2.1-or-later
 Group:          Hardware/ISDN
+Source:         libcapi20-3.27.tar.xz
+Source9:        baselibs.conf
+URL:            https://github.com/leggewie-DM/libcapi20
 
 %description
 libcapi handles requests from CAPI-driven applications such as fax
@@ -59,7 +60,7 @@ This package provides files needed for development of CAPI-aware
 software.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -67,7 +68,7 @@ software.
 # So we disable it here, if you want to retest, just delete this comment and the line below.
 export SUSE_ASNEEDED=0
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

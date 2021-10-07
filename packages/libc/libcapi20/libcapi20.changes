@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 30 10:25:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add baselibs.conf (previously provided through i4l-base,
+  which was deleted in Factory). [boo#1191039]
+
+-------------------------------------------------------------------
 Sun Mar  8 18:32:26 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - provide/obsolete capi4linux in the correct version
