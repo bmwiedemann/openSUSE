@@ -17,15 +17,16 @@
 
 
 Name:           gerbera
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Other
 URL:            https://gerbera.io
 Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source3:        gerbera.tmpfile.in
-Source4:        gerbera.sysusers.in
+Source1:        config.xml
+Source2:        gerbera.sysusers.in
+Patch0:         harden_gerbera.service.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -67,22 +68,18 @@ media through a network and consume it on a variety of UPnP
 compatible devices.
 
 %prep
-%autosetup
+%autosetup -p1
 
 # server test hardcodes alpha strings
 sed -i -e '/test_server/d' test/CMakeLists.txt
-
-for _file in %{SOURCE3} %{SOURCE4}; do
-  sed -e 's/@USER@/gerbera/' \
-      -e 's/@GROUP@/gerbera/' \
-      < $_file > ${_file##*/}
-done
+sed -i -e 's/@USER@/gerbera/' %{SOURCE2}
+sed -i -e 's/@GROUP@/gerbera/' %{SOURCE2}
 
 %build
-export CFLAGS="${CFLAGS} -fPIE"
-export CXXFLAGS="${CXXFLAGS} -fPIE"
-export LDFLAGS="${LDFLAGS} -pie"
 %cmake \
+  -DWITH_JS=1 \
+  -DWITH_TAGLIB=1 \
+  -DWITH_MAGIC=1 \
   -DWITH_AVCODEC=1 \
   -DWITH_EXIF=0 \
   -DWITH_EXIV2=1 \
@@ -91,6 +88,8 @@ export LDFLAGS="${LDFLAGS} -pie"
   -DCMAKE_C_COMPILER=gcc-10 \
 %endif
   -DWITH_FFMPEGTHUMBNAILER=1 \
+  -DWITH_INOTIFY=1 \
+  -DWITH_SYSTEMD=1 \
   -DWITH_TESTS=1 \
   -Wno-dev
 %cmake_build
@@ -98,13 +97,25 @@ export LDFLAGS="${LDFLAGS} -pie"
 %install
 %cmake_install
 
+mkdir -p %{buildroot}%{_sysconfdir}/gerbera
+touch %{buildroot}%{_sysconfdir}/gerbera/{gerbera.db,gerbera.html}
+mkdir -p %{buildroot}%{_localstatedir}/log/gerbera
+touch %{buildroot}%{_localstatedir}/log/%{name}
+mkdir -p  %{buildroot}%{_sysconfdir}/logrotate.d
+cat > %{buildroot}%{_sysconfdir}/logrotate.d/%{name} << 'EOF'
+/var/log/gerbera/gerbera {
+create 644 gerbera gerbera
+      monthly
+      compress
+      missingok
+}
+EOF
+
 install -d %{buildroot}%{_sbindir}
 ln -s service  %{buildroot}%{_sbindir}/rc%{name}
-install -Dm 0644 %{name}.tmpfile.in %{buildroot}%{_tmpfilesdir}/%{name}.conf
-install -Dm 0644 %{name}.sysusers.in %{buildroot}%{_sysusersdir}/%{name}.conf
 
-install -d %{buildroot}%{_localstatedir}/lib/%{name}
-touch %{buildroot}%{_localstatedir}/lib/%{name}/{config.xml,%{name}.db,%{name}.html}
+install -p -D -m0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/gerbera/config.xml
+install -p -D -m0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/gerbera.conf
 
 %check
 %ctest
@@ -118,7 +129,6 @@ useradd -r -g gerbera -d %{_sysconfdir}/gerbera -s /sbin/nologin \
 
 %post
 %service_add_post %{name}.service
-%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %sysusers_create %{_sysusersdir}/%{name}.conf
 
 %preun
@@ -130,16 +140,24 @@ useradd -r -g gerbera -d %{_sysconfdir}/gerbera -s /sbin/nologin \
 %files
 %license LICENSE.md
 %doc AUTHORS CONTRIBUTING.md ChangeLog.md
+%attr(-,gerbera,gerbera)%dir %{_sysconfdir}/%{name}/
+%attr(-,gerbera,gerbera)%config(noreplace) %{_sysconfdir}/%{name}/*
+%attr(-,gerbera,gerbera) %{_localstatedir}/log/%{name}
+%dir %{_sysconfdir}/logrotate.d
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_bindir}/%{name}
-%{_datadir}/%{name}/
-%{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-%{_tmpfilesdir}/%{name}.conf
-%{_sysusersdir}/%{name}.conf
+%{_unitdir}/gerbera.service
+%{_sysusersdir}/gerbera.conf
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%ghost %attr(-,gerbera,gerbera) %dir %{_localstatedir}/lib/%{name}
-%ghost %attr(0660,gerbera,gerbera) %{_localstatedir}/lib/%{name}/config.xml
-%ghost %attr(0750,gerbera,gerbera) %{_localstatedir}/lib/%{name}/%{name}.db
-%ghost %attr(0660,gerbera,gerbera) %{_localstatedir}/lib/%{name}/%{name}.html
+%{_datadir}/gerbera/mysql-upgrade.xml
+%{_datadir}/gerbera/mysql.sql
+%{_datadir}/gerbera/sqlite3-upgrade.xml
+%{_datadir}/gerbera/sqlite3.sql
+%dir %{_datadir}/gerbera
+%dir %{_datadir}/gerbera/js
+%dir %{_datadir}/gerbera/web
+%{_datadir}/gerbera/js/*
+%{_datadir}/gerbera/web/*
 
 %changelog

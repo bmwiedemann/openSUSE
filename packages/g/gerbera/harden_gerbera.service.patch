@@ -1,0 +1,25 @@
+Index: gerbera-1.9.1/scripts/systemd/gerbera.service.cmake
+===================================================================
+--- gerbera-1.9.1.orig/scripts/systemd/gerbera.service.cmake
++++ gerbera-1.9.1/scripts/systemd/gerbera.service.cmake
+@@ -3,6 +3,20 @@ Description=${SYSTEMD_DESCRIPTION}
+ After=${SYSTEMD_AFTER_TARGET}
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++ReadWritePaths=/usr/share/gerbera/ /etc/gerbera/
++# end of automatic additions 
+ Type=simple
+ User=gerbera
+ Group=gerbera

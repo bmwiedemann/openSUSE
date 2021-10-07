@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct  7 12:51:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.2:
+* Titles of search results can be configured
+* Containers in virtual layout can be defined as search result, so,
+  e.g. albums, located in several places are only found once
+* Metadata, like artist, appearing multiple times are now stored
+  in that way and can be sent to UPnP clients as separate entries
+  as well or addressed in layout scripts. If you have a custom js
+  import script which updates metadata you have to modify it using
+  the new properties (see doc on scripting)
+* DLNA profile can be configured using video and audio codec,
+  allow devices to pick supported streams
+* DLNA profile can be set for transcoding
+
+-------------------------------------------------------------------
+Tue Sep 21 12:33:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix spec file
+- Add config.xml
+- Remove unneeded tmpfile
+
+-------------------------------------------------------------------
+Tue Sep 21 09:51:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_gerbera.service.patch
+
+-------------------------------------------------------------------
 Thu Sep  2 07:25:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.1:
