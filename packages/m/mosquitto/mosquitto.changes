@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 14:18:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * mosquitto.service
+
+-------------------------------------------------------------------
 Wed Jun  9 19:10:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.11
