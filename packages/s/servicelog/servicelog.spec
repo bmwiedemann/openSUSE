@@ -1,7 +1,7 @@
 #
 # spec file for package servicelog
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           servicelog
-Version:        1.1.15
+Version:        1.1.16
 Release:        0
 Summary:        Servicelog Tools
 License:        GPL-2.0-only
 Group:          System/Management
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  librtas-devel
 BuildRequires:  libservicelog-devel
 BuildRequires:  sqlite3-devel
-Url:            http://linux-diag.sourceforge.net/servicelog 
-Source0:        %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/power-ras/servicelog/
+Source0:        https://github.com/power-ras/servicelog/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 ExclusiveArch:  ppc ppc64 ppc64le
 
 %description
@@ -47,6 +48,7 @@ Authors:
 %setup -q
 
 %build
+autoreconf -fvi
 %configure
 %{__make} %{?_smp_mflags}
 
@@ -56,9 +58,13 @@ Authors:
 %clean
 %{__rm} -rf $RPM_BUILD_ROOT
 
+%if %{undefined license}
+%define license %doc
+%endif
+
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
+%doc README
 %{_bindir}/servicelog
 %{_bindir}/servicelog_notify
 %{_bindir}/log_repair_action

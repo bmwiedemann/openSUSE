@@ -215,4 +215,12 @@ fixups to the other man pages (#70853) and to servicelog_notify.</comment>
     <comment></comment>
     <requestid>734307</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>80fcd6faac0c13158f59a36a7ca87b2d</srcmd5>
+    <version>1.1.16</version>
+    <time>1633644369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923673</requestid>
+  </revision>
 </revisionlist>
