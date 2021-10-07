@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  6 17:41:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0.1
+  * OpenSSL 1.1 support fixes
+- Delete gcc11.patch (obsoleted)
+
+-------------------------------------------------------------------
 Thu Jun  3 23:12:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add gcc11.patch

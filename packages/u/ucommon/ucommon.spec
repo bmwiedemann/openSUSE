@@ -21,7 +21,7 @@
 
 
 Name:           ucommon
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 %define lname	libucommon8
 Summary:        Runtime library for portable C++ threading and sockets
@@ -30,15 +30,16 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gnu.org/software/commoncpp
 
 #Git-Clone:	https://git.savannah.gnu.org/cgit/commoncpp.git
-Source:         http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz
-Source2:        http://ftp.gnu.org/gnu/commoncpp/%name-%version.tar.gz.sig
+Source:         https://git.savannah.gnu.org/cgit/commoncpp.git/snapshot/commoncpp-%version.tar.gz
 Source3:        %name.keyring
-Patch1:         gcc11.patch
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gd
+BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(openssl) < 1.1
+BuildRequires:  pkgconfig(openssl) >= 1.1
+BuildRequires:  pkgconfig(zlib)
 # Added for 13.1
 Obsoletes:      %name-bin < %version-%release
 Provides:       %name-bin = %version-%release
@@ -87,9 +88,10 @@ Generated class documentation for GNU uCommon library from header files,
 html browsable.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n commoncpp-%version
 
 %build
+if test ! -e configure; then ./autogen.sh; fi
 %configure --disable-static
 %make_build
 
