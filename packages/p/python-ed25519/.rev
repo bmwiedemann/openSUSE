@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>809397</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c4200746faab2e2998256e85068ae176</srcmd5>
+    <version>1.5</version>
+    <time>1633644388</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from python setup.py test construct to pyunittest macro.</comment>
+    <requestid>924035</requestid>
+  </revision>
 </revisionlist>

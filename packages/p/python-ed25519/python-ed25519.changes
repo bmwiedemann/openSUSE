@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 15:11:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch from python setup.py test construct to pyunittest macro.
+
+-------------------------------------------------------------------
 Tue May 26 06:34:05 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
