@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

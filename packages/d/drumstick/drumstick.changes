@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  6 17:21:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.4.0
+  * RIFF RMID file support. New utility dumprmi, and guiplayer updated.
+  * Fixed missing library version functions in File and RT libs
+  *  Enabled by default the internal reverb on macOS DLS Synth
+  *  Avoid hardcoded font family name in vpiano
+
+-------------------------------------------------------------------
 Wed Aug 18 18:35:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.3.1

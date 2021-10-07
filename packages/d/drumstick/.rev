@@ -130,4 +130,16 @@
   * Fixed SMF system exclusive event write method</comment>
     <requestid>912947</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>35568f6b2f6696d7723616de7175b67e</srcmd5>
+    <version>2.4.0</version>
+    <time>1633644349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * RIFF RMID file support. New utility dumprmi, and guiplayer updated.
+  * Fixed missing library version functions in File and RT libs
+  *  Enabled by default the internal reverb on macOS DLS Synth
+  *  Avoid hardcoded font family name in vpiano</comment>
+    <requestid>923561</requestid>
+  </revision>
 </revisionlist>
