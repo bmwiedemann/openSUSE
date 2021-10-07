@@ -1,7 +1,7 @@
 #
 # spec file for package subtitlecomposer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,53 +17,49 @@
 
 
 Name:           subtitlecomposer
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A text-based subtitle editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            https://invent.kde.org/kde/subtitlecomposer
-Source0:        https://github.com/maxrd2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-# No longer part of mpv >= 0.33
-Source1:        https://raw.githubusercontent.com/mpv-player/mpv/v0.32.0/libmpv/qthelper.hpp
-# PATCH-FIX-UPSTREAM use a local qthelper.hpp copy
-Patch0:         0001-Use-a-local-qthelper.cpp-copy.patch
+URL:            https://invent.kde.org/multimedia/subtitlecomposer
+Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
+Source2:        subtitlecomposer.keyring
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kauth-devel
-BuildRequires:  kcodecs-devel
-BuildRequires:  kconfig-devel
-BuildRequires:  kconfigwidgets-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kio-devel
-BuildRequires:  kross-devel
-BuildRequires:  ktextwidgets-devel
-BuildRequires:  kwidgetsaddons-devel
-BuildRequires:  kxmlgui-devel
+BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  sonnet-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.6
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  cmake(KF5Auth)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5TextWidgets)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavformat) >= 57.83.100
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libxine)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mpv)
-BuildRequires:  pkgconfig(phonon4qt5)
-Recommends:     %{name}-lang = %{version}
-%if 0%{?suse_version} < 1500
-Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
+BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(openal)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(pocketsphinx) >= 5
 %endif
+Recommends:     %{name}-lang = %{version}
+# GLES not yet supported, see https://invent.kde.org/multimedia/subtitlecomposer/-/issues/58
+ExcludeArch:    %arm aarch64
 
 %description
 A text-based subtitles editor that supports basic operations. It supports
@@ -73,13 +69,7 @@ has speech Recognition using PocketSphinx.
 %lang_package
 
 %prep
-%setup -q -n SubtitleComposer-%{version}
-%patch0 -p1
-
-cp %{SOURCE1} src/videoplayerplugins/mpv/
-
-# Fix permissions
-chmod 644 ChangeLog
+%autosetup -p1
 
 # We build kross-interpreters without python support anyway, so we can
 # remove the python examples to remove an useless dependency on python2
@@ -95,7 +85,7 @@ sed -i 's,#!/usr/bin/env ruby,#!%{_bindir}/ruby,' \
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -109,34 +99,26 @@ rm -rf %{buildroot}%{_kf5_appsdir}/%{name}/scripts/api/
 # Point to the correct path of the header files directory (doc)
 perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf5_appsdir}/%{name}/scripts/README
 
-%suse_update_desktop_file -r %{name} Qt KDE AudioVideo AudioVideoEditing
-
 %find_lang %{name}
 
 %{kf5_post_install}
 
-%if 0%{?suse_version} < 1500
-%post
-%mime_database_post
-
-%postun
-%mime_database_postun
-%endif
-
 %files
 %doc ChangeLog README.md files_for_doc/api
 %license LICENSE
-%{_kf5_applicationsdir}/%{name}.desktop
-%{_kf5_appsdir}/%{name}/
-%{_kf5_bindir}/%{name}
 %config(noreplace) %{_kf5_configdir}/%{name}rc
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_appstreamdir}/%{name}.desktop.appdata.xml
+%{_kf5_applicationsdir}/org.kde.%{name}.desktop
+%{_kf5_appsdir}/%{name}/
+%{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
+%{_kf5_bindir}/%{name}
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/%{name}/
+%{_kf5_sharedir}/mime/packages/%{name}.xml
+%if 0%{?suse_version} > 1500
 %{_kf5_libdir}/%{name}/
-%{_datadir}/mime/packages/%{name}.xml
+%endif
 
 %files lang -f %{name}.lang
 

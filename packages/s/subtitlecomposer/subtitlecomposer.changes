@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct  5 20:05:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.1
+  * Fixed theme/icons/look outside KDE environment
+  * Fixed various bugs and rare crashes
+  * Fixed Undo stack and improved text editing undo
+  * Improved/replaced Video player(s) (performance, Wayland
+    support, OpenGL/FFmpeg)
+  * Improved Waveform performance
+  * Improved LinesWidget/Model performance
+  * Improved Wayland support
+  * Improved open/save file dialogs to use native dialogs
+  * Improved text charsets/encodings/end-of-line selection,
+    detection and handling
+  * Improved VobSub support
+  * Improved inline editor to support text styles
+  * Improved subtitle style rendering
+  * Improved character/sec support and added coloring
+  * Improvide command line - ability to open all subtitle/media
+    files
+  * Added Pause/Duration columns to list view
+  * Removed invalid subpicture/x-pgs mime
+  * Updated/added many translations - thanks to KDE community
+- Drop 0001-Use-a-local-qthelper.cpp-copy.patch and qthelper.hpp
+  (no longer necessary)
+- Add .sig file and subtitlecomposer.keyring as sources
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Aug 27 16:37:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sat Mar 14 11:37:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Move URL to the new upstream location at invent.kde.org
