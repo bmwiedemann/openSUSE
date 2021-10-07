@@ -124,4 +124,15 @@
     <comment></comment>
     <requestid>903197</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c809566a48190cc6bbe66119bfbf1f22</srcmd5>
+    <version>1.4.3</version>
+    <time>1633644379</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.3
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 923718 from glaubitz)</comment>
+    <requestid>923757</requestid>
+  </revision>
 </revisionlist>
