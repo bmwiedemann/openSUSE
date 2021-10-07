@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 07 08:43:41 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211007.f5e62341:
+  * Remove kubernetes setup
+  * Remove devel package and make check target
+
+-------------------------------------------------------------------
 Fri Oct 01 13:56:58 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211001.62170202:

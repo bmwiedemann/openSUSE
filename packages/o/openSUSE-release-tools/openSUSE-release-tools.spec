@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20211001.62170202
+Version:        20211007.f5e62341
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -81,19 +81,6 @@ Tools to aid in staging and release work for openSUSE/SUSE
 
 The toolset consists of a variety of stand-alone scripts, review bots, osc
 plugins, and automation aids.
-
-%package devel
-Summary:        Development requirements for openSUSE-release-tools
-Group:          Development/Tools/Other
-BuildArch:      noarch
-Requires:       libxml2-tools
-Requires:       python3-httpretty
-Requires:       python3-mock
-Requires:       python3-nose
-
-%description devel
-Development requirements for openSUSE-release-tools to be used in conjunction
-with a git clone of the development repository available from %{url}.
 
 %package abichecker
 Summary:        ABI review bot
@@ -420,11 +407,6 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/findfileconflicts
 %exclude %{_datadir}/%{source_dir}/write_repo_susetags_file.pl
 %dir %{_sysconfdir}/openSUSE-release-tools
-
-%files devel
-%defattr(-,root,root,-)
-# Non-empty for older products.
-%doc README.md
 
 %files abichecker
 %defattr(-,root,root,-)
