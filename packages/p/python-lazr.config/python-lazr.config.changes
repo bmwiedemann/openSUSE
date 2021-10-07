@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  6 21:29:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.2.3:
+  - Fix tests with zope.interface >= 5.0.0.
+  - Fix deprecation warning on Python >= 3.2. (lp#1870199)
+
+-------------------------------------------------------------------
 Thu Jul  2 12:57:31 UTC 2020 - pgajdos@suse.com
 
 - switch from nose to pytest

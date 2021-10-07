@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.config
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lazr.config
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Create configuration schemas, and process and validate configurations
 License:        LGPL-3.0-only
@@ -55,15 +55,12 @@ Create configuration schemas, and process and validate configurations.
 # use pytest, reported to lazr-users@lists.launchpad.net on 2020-06-03
 cat << EOF > pytest.ini
 [pytest]
-addopts = --doctest-glob='*.rst'
 doctest_optionflags = ELLIPSIS NORMALIZE_WHITESPACE
-testpaths = src/lazr
 EOF
-export PYTHONPATH=src
 # test_not_stackable fails otherwise (with nose it did not run at all)
 # needs to be investigated more
-sed -i 's:verifyObject, IStackableConfig, config.extends::' src/lazr/config/tests/test_config.py
-%pytest 
+export PYTEST_ADDOPTS="--doctest-glob='*.rst' --import-mode=importlib"
+%pytest
 
 %files %{python_files}
 %doc README.rst

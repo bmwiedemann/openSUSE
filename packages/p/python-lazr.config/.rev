@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>818561</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba4266f95ade2118d36481806e9c9b1c</srcmd5>
+    <version>2.2.3</version>
+    <time>1633644370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  - Fix tests with zope.interface &gt;= 5.0.0.
+  - Fix deprecation warning on Python &gt;= 3.2. (lp#1870199)
+</comment>
+    <requestid>923671</requestid>
+  </revision>
 </revisionlist>
