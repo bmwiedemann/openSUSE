@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct  3 14:02:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.6
+  * Bugfix: Remove DST x3 Root CA which lead to trust issues for
+    servers using a Letsencrypt certificate (Miguel Jacq)
+  * Bugfix: Newer openssl.cnf break detection of openssl binary
+  * Documenation update to reflect renaming standard ciphers to
+    cipher categories
+  * Ignore usage of ~/.digrc where possible
+  * Fixing host information in JSON output when using STARTTLS
+    XMPP
+  * TLS 1.3 improvements wrt server certificates
+  * Bugfix: Order of -U --ids-friendly doesn't matter anymore
+  * Disable ANSI codes when TERM=screen
+  * Improved SSL/TLS port detection in nmap greppable files
+    using as input to testssl.sh
+  * Bugfix when nmap files had .txt extension
+  * Display certficate time in UTC
+  * Use _uname -n`` instead of hostname --> POSIX
+  * Few output fixes
+
+-------------------------------------------------------------------
 Mon May 10 20:33:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.5
