@@ -30,6 +30,7 @@ Source1:        %{_name}.appdata.xml
 Patch0:         linphoneqt-fix-no-git.patch
 # PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
 Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -44,10 +45,10 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(linphone) >= 4.5.0
 BuildRequires:  pkgconfig(mediastreamer) >= 4.5.0
-BuildRequires:  Mesa-libGLESv2-devel
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -59,6 +60,7 @@ with high speed connections as well as 28k modems.
 
 %package -n %{_name}
 Summary:        Web Phone
+Group:          Productivity/Telephony/SIP/Clients
 Recommends:     %{_name}-cli
 Obsoletes:      %{_name}-lang < %{version}
 

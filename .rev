@@ -7,4 +7,12 @@
     <comment>Packages has been fixed and build without errors, can go back to Factory</comment>
     <requestid>920223</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c196d21d438dd7c9cb45bcb8cadece32</srcmd5>
+    <version>4.2.5</version>
+    <time>1633644383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923808</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 13:19:44 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- add BuildRequires:  pkgconfig(Qt5TextToSpeech)
+
+-------------------------------------------------------------------
 Fri Jul 30 05:47:12 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
 
 - add BuildRequires:  Mesa-libGLESv2-devel
