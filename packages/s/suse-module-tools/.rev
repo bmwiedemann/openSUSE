@@ -479,4 +479,16 @@ source service setup which messed up my spec file.
 </comment>
     <requestid>919089</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8ffc9577a1d6dfde1bd6b8d2883dedde</srcmd5>
+    <version>16.0.11</version>
+    <time>1633644344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.11:
+  * inkmp-script(postun): don't pass  existing files to weak-modules2
+    (boo#1191200)
+  * kernel-scriptlets: skip cert scriptlet on non-UEFI systems
+    (boo#1191260)</comment>
+    <requestid>923052</requestid>
+  </revision>
 </revisionlist>

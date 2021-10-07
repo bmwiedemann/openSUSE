@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  4 14:25:41 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.11:
+  * inkmp-script(postun): don't pass  existing files to weak-modules2
+    (boo#1191200)
+  * kernel-scriptlets: skip cert scriptlet on non-UEFI systems
+    (boo#1191260)
+
+-------------------------------------------------------------------
 Tue Sep 14 20:53:46 UTC 2021 - obs-service-tar-scm@invalid
 
 - Update to version 16.0.10+7:
