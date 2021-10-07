@@ -23,6 +23,7 @@ Summary:        Early boot daemon to monitor memory pressure and react to low me
 License:        GPL-3.0-only
 URL:            https://gitlab.freedesktop.org/hadess/low-memory-monitor
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Patch0:	harden_low-memory-monitor.service.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.45.0
 BuildRequires:  pkgconfig

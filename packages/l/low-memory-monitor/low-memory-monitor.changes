@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 06:12:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_low-memory-monitor.service.patch
+
+-------------------------------------------------------------------
 Mon Sep 27 13:55:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use pkgconfig(systemd) for BuildRequires instead of systemd.
