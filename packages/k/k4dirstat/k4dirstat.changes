@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  6 17:30:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.3.0
+  * Show free space in the status bar
+  * Refresh tree after deleting a file
+  * Fix a crash when clicking on the name column
+  * Quote %-escapes strings in the .desktop Exec key
+  * Fix all compilation warnings with Qt 5.15 and KDE 5.85
+
+-------------------------------------------------------------------
 Thu Apr 22 08:08:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.2.2:
