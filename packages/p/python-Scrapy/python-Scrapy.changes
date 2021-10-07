@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  7 14:35:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.1, Security bug fix
+  * boo#1191446, CVE-2021-41125
+  * If you use HttpAuthMiddleware (i.e. the http_user and
+    http_pass spider attributes) for HTTP authentication,
+    any request exposes your credentials to the request
+    target.
+  * To prevent unintended exposure of authentication
+    credentials to unintended domains, you must now
+    additionally set a new, additional spider attribute,
+    http_auth_domain, and point it to the specific domain to
+    which the authentication credentials must be sent.
+  * If the http_auth_domain spider attribute is not set, the
+    domain of the first request will be considered the HTTP
+    authentication target, and authentication credentials
+    will only be sent in requests targeting that domain.
+  * If you need to send the same HTTP authentication
+    credentials to multiple domains, you can use
+    w3lib.http.basic_auth_header instead to set the value of
+    the Authorization header of your requests.
+  * If you really want your spider to send the same HTTP
+    authentication credentials to any domain, set the
+    http_auth_domain spider attribute to None.
+  * Finally, if you are a user of scrapy-splash, know that
+    this version of Scrapy breaks compatibility with
+    scrapy-splash 0.7.2 and earlier. You will need to upgrade
+    scrapy-splash to a greater version for it to continue to
+    work.
+
+-------------------------------------------------------------------
 Wed Sep  1 04:25:44 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Remove h2 < 4.0 dependency version restriction. (boo#1190035)

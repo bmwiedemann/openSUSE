@@ -21,7 +21,7 @@
 # python-uvloop does not support python3.6
 %define skip_python36 1
 Name:           python-Scrapy
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
