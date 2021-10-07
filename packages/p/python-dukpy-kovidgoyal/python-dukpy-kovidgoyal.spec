@@ -1,7 +1,7 @@
 #
 # spec file for package python-dukpy-kovidgoyal
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        JavaScript in Python
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/kovidgoyal/dukpy
+URL:            https://github.com/kovidgoyal/dukpy
 Source:         https://github.com/kovidgoyal/dukpy/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +50,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %doc README.rst
