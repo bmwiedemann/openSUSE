@@ -1,7 +1,7 @@
 #
 # spec file for package hiredis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global libname lib%{name}1_0_1
+%global libname lib%{name}1_0_0
 Name:           hiredis
-Version:        1.0.1
+Version:        1.0.0
 Release:        0
 Summary:        Minimalistic C client for Redis
 License:        BSD-3-Clause
@@ -27,8 +27,7 @@ URL:            https://github.com/redis/hiredis
 Source0:        https://github.com/redis/hiredis/archive/v%{version}.tar.gz
 Patch0:         relocatable_executable.patch
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libssl)
+BuildRequires:  libopenssl-devel
 
 %description
 Hiredis is a minimalistic C client library for the
