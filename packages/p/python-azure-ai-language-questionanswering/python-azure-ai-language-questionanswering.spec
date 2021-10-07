@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-language-questionanswering
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure Question Answering Client Library for Python
 License:        MIT
@@ -38,9 +38,7 @@ BuildRequires:  unzip
 Requires:       python-azure-ai-language-nspkg >= 1.0.0
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.16.0
-Requires:       python-chardet < 5.0.0
-Requires:       python-chardet >= 3.0.2
+Requires:       python-azure-core >= 1.19.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
