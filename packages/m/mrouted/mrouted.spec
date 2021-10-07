@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Routing
 URL:            https://github.com/troglobit/mrouted
 #Git-Clone:     https://github.com/troglobit/mrouted.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_mrouted.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -41,6 +42,7 @@ virtual point-to-point, IP-IP tunnel, links between a pair of mrouted routers.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
