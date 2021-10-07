@@ -1,0 +1,5 @@
+<package name="orthos-client" project="openSUSE:Factory">
+  <title>orthos-client</title>
+  <description>The client for our new Orthos2.</description>
+  <devel project="systemsmanagement" package="orthos-client"/>
+</package>
