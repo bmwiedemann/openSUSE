@@ -16,16 +16,16 @@
 #
 
 
-%define libname libcmark0_30_0
+%define libname libcmark0_30_2
 Name:           cmark
-Version:        0.30.0
+Version:        0.30.2
 Release:        0
 Summary:        CommonMark parsing and rendering library and program in C
 License:        BSD-2-Clause AND MIT AND CC-BY-SA-4.0
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jgm/cmark
 Source:         https://github.com/jgm/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.0.2
+BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 

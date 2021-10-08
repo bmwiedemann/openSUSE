@@ -183,4 +183,12 @@
     produce invalid XML. (forwarded request 901085 from mimi_vx)</comment>
     <requestid>901086</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a0ca9f8e71a7f6a4df09b24200d2f926</srcmd5>
+    <version>0.30.2</version>
+    <time>1633723504</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>924170</requestid>
+  </revision>
 </revisionlist>
