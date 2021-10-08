@@ -88,4 +88,12 @@
     :cleardata memory-cache,disk-cache.</comment>
     <requestid>760601</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7f8d70963445e11de9e5e5feb4805f61</srcmd5>
+    <version>3.6.0</version>
+    <time>1633723504</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>924158</requestid>
+  </revision>
 </revisionlist>

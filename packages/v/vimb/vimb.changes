@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:34:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to pkgconfig style BuildRequires, ensure we pull in what
+  the package really needs (fixes build in current Factory).
+
+-------------------------------------------------------------------
 Fri Jan  3 09:20:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.0:

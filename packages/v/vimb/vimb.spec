@@ -24,8 +24,9 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://fanglingsu.github.io/vimb/
 Source:         https://github.com/fanglingsu/vimb/archive/%{version}.tar.gz
-BuildRequires:  gtk3-devel
-BuildRequires:  webkit2gtk3-devel >= 2.20
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.20
 
 %description
 vimb is a WebKit-based web browser that behaves like the vimperator
