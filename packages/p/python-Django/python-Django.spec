@@ -23,7 +23,7 @@
 %bcond_with memcached
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        3.2.7
+Version:        3.2.8
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -32,10 +32,6 @@ Source:         https://www.djangoproject.com/m/releases/3.2/Django-%{version}.t
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt#/Django-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM failing_test_subparser_invalid_option.patch https://code.djangoproject.com/ticket/33082 mcepl@suse.com
-# fixes test_subparser_invalid_option regression with Python 3.9.7
-# Patch from https://github.com/django/django/commit/b61f44c339830ea53663415f00cbd17e2fd5aa43
-Patch0:         failing_test_subparser_invalid_option.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
