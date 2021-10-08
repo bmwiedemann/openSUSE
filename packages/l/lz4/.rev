@@ -139,4 +139,12 @@
     <comment>- Update to release 1.9.3</comment>
     <requestid>848795</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d6655d74dedd194326442dc083e2758f</srcmd5>
+    <version>1.9.3</version>
+    <time>1633723475</time>
+    <user>RBrownSUSE</user>
+    <comment>- version 1.9.3 fixes also CVE-2021-3520 [bsc#1185438]</comment>
+    <requestid>922939</requestid>
+  </revision>
 </revisionlist>
