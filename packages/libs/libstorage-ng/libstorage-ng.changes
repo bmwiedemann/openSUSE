@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Oct 7 10:08:08 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#835
+- generate pools with dasds
+- extended testsuite
+- 4.4.43
+
+--------------------------------------------------------------------
+Tue Oct 5 06:45:52 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#834
+- added get_dasd_type_name() and get_dasd_format_name()
+- 4.4.42
+
+--------------------------------------------------------------------
 Mon Oct 4 10:37:30 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#833
