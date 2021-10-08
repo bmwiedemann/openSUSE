@@ -17,7 +17,7 @@
 
 
 Name:           libcap
-Version:        2.51
+Version:        2.59
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -95,7 +95,7 @@ libcap.
 %global _lto_cflags %{nil}
 %global buildvariables RAISE_SETFCAP=no prefix=%{_prefix} lib=%{_lib} SHARED=yes LIBDIR=%{_libdir} SBINDIR=%{_sbindir} PKGCONFIGDIR=%{_libdir}/pkgconfig/ INCDIR=%{_includedir} MANDIR=%{_mandir} SHARED=yes COPTS="%{optflags}"
 
-make %{buildvariables}
+%make_build %{buildvariables}
 
 %install
 make install %{buildvariables} DESTDIR=%{buildroot}
@@ -106,11 +106,10 @@ rm %{buildroot}%{_libdir}/libcap.a
 %fdupes -s %{buildroot}
 
 %check
-make %{buildvariables} test
+%make_build %{buildvariables} test
 
 %post -n libcap2 -p /sbin/ldconfig
 %postun -n libcap2 -p /sbin/ldconfig
-
 %post -n libpsx2 -p /sbin/ldconfig
 %postun -n libpsx2 -p /sbin/ldconfig
 

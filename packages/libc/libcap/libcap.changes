@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:05:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 2.59:
+  * Fixed a potential libcap memory leak by adding a destructor
+  * Major improvement is that there is a path for Linux-PAM compliant
+    applications to support setting Ambient vector Capabilities via pam_cap.so now
+  * Added libcap cap_proc_root() API function
+  * Added color support to captree
+  * Fixed contrib/sucap/su to correctly handle the Inheritable flag
+  * capsh enhancements
+  * getcap -r / now generates readable output
+  * The shared library objects: pam_cap.so, libcap.so and libpsx.so, are all now
+    runnable as standalone binaries
+  * The module pam_cap.so now contains support for a default=<IAB> module argument
+  * Enhanced capsh --suggest to also compare against the capability value names
+    and not just their descriptions
+  * Added capsh --current support
+  * Added a contrib/sucap/su.c pure-capabilities PAM implementation of su
+  * Fix for a corner case infinite loop handling long strings
+  * Added libcap cap_iab_compare() and cap_iab_get_pid() APIs
+  * Added a Go utility, captree, to display the process (and thread) graph along with
+    the POSIX.1e and IAB capabilities of each PID{TID} tree.
+
+-------------------------------------------------------------------
 Sat Jul 17 06:33:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.51:
