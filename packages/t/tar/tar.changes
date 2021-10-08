@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  8 09:45:09 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- The following issues have already been fixed in this package but
+  weren't previously mentioned in the changes file:
+  * bsc#1181131
+  * bsc#1120610
+
+-------------------------------------------------------------------
 Wed Jun  9 12:09:49 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link /var/lib/tests/tar/bin/genfile as Position-Independent Executable
