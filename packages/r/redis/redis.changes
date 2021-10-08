@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Oct  4 20:23:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- redis 6.2.6 with security fixes for
+  * Security fixes:
+    - CVE-2021-41099: Integer to heap buffer overflow handling certain string
+      commands and network payloads, when proto-max-bulk-len is manually configured
+      to a non-default, very large value (boo#1191299)
+    - CVE-2021-32762: Integer to heap buffer overflow issue in redis-cli and
+      redis-sentinel parsing large multi-bulk replies on some older and less common
+      platforms (boo#1191300)
+    - CVE-2021-32687: Integer to heap buffer overflow with intsets, when
+      set-max-intset-entries is manually configured to a non-default, very large
+      value (boo#1191302)
+    - CVE-2021-32675: Denial Of Service when processing RESP request payloads with
+      a large number of elements on many connections (boo#1191303)
+    - CVE-2021-32672: Random heap reading issue with Lua Debugger (boo#1191304)
+    - CVE-2021-32628: Integer to heap buffer overflow handling ziplist-encoded
+      data types, when configuring a large, non-default value for
+      hash-max-ziplist-entries, hash-max-ziplist-value, zset-max-ziplist-entries
+      or zset-max-ziplist-value (boo#1191305)
+    - CVE-2021-32627: Integer to heap buffer overflow issue with streams, when
+      configuring a non-default, large value for proto-max-bulk-len and
+      client-query-buffer-limit (boo#1191305)
+    - CVE-2021-32626: Specially crafted Lua scripts may result with Heap buffer
+      overflow (boo#1191306)
+  * Bug fixes that involve behavior changes:
+    - GEO* STORE with empty source key deletes the destination key and return 0
+      Previously it would have returned an empty array like the non-STORE variant.
+    - PUBSUB NUMPAT replies with number of patterns rather than number of subscriptions
+      This actually changed in 6.2.0 but was overlooked and omitted from the release notes.
+  * Bug fixes that are only applicable to previous releases of Redis 6.2:
+    - Fix CLIENT PAUSE, used an old timeout from previous PAUSE
+    - Fix CLIENT PAUSE in a replica would mess the replication offset
+    - Add some missing error statistics in INFO errorstats
+  * Other bug fixes:
+    - Fix incorrect reply of COMMAND command key positions for MIGRATE command
+    - Fix appendfsync to always guarantee fsync before reply, on MacOS and FreeBSD (kqueue)
+    - Fix the wrong misdetection of sync_file_range system call, affecting performance
+  * CLI tools:
+    - When redis-cli received ASK response, it didn't handle it
+  * Improvements:
+    - Add latency monitor sample when key is deleted via lazy expire
+    - Sanitize corrupt payload improvements
+    - Delete empty keys when loading RDB file or handling a RESTORE command
+
+-------------------------------------------------------------------
 Thu Jul 22 13:44:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.2.5:
