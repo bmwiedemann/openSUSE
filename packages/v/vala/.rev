@@ -1081,4 +1081,21 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920982 from dimstar)</comment>
     <requestid>921658</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>e148ab62f0675e0f03a15099dd686cb5</srcmd5>
+    <version>0.54.2</version>
+    <time>1633723492</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.54.2:
+  + Various improvements and bug fixes:
+    - vala:
+      . Multi-dimensional params-array not allowed
+      . Accept NullType as generic type argument
+      . Set source references of created DataType instances in OCE
+  + Bindings:
+    - gio-2.0: Update to 2.71.0~a0d2efdc
+    - glib-2.0: Update 2.70 symbols
+    - gtk4: Update to 4.5.0~da5efea6 (forwarded request 922970 from iznogood)</comment>
+    <requestid>923221</requestid>
+  </revision>
 </revisionlist>
