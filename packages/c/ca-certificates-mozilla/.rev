@@ -666,4 +666,12 @@
 - fix mozila typo in installed files</comment>
     <requestid>904151</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6c1f430b207a3f6074125d9a41ca1910</srcmd5>
+    <version>2.52</version>
+    <time>1633723477</time>
+    <user>RBrownSUSE</user>
+    <comment>- new package for minimal base containers (jsc#SLE-22162) (forwarded request 923227 from lnussel)</comment>
+    <requestid>923405</requestid>
+  </revision>
 </revisionlist>

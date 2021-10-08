@@ -37,7 +37,7 @@
 Name:           ca-certificates-mozilla
 # Version number is NSS_BUILTINS_LIBRARY_VERSION in this file:
 # http://hg.mozilla.org/projects/nss/file/default/lib/ckfw/builtins/nssckbi.h
-Version:        2.50
+Version:        2.52
 Release:        0
 Summary:        CA certificates for OpenSSL
 License:        MPL-2.0
@@ -95,6 +95,8 @@ fi
 export LANG=en_US.UTF-8
 cd certs
 python3 %{SOURCE10}
+# temporary remove expired CA
+rm DST_Root_CA_X3:2.16.68.175.176.128.214.163.39.186.137.48.57.134.46.248.64.107.tmp-p11-kit
 cd ..
 (
   cat <<-EOF

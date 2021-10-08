@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  2 07:33:52 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.50 state of the Mozilla NSS Certificate store (bsc#1188006)
+- Added CAs:
+  + HARICA Client ECC Root CA 2021
+  + HARICA Client RSA Root CA 2021
+  + HARICA TLS ECC Root CA 2021
+  + HARICA TLS RSA Root CA 2021
+  + TunTrust Root CA
+
+-------------------------------------------------------------------
+Fri Sep 24 13:56:30 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- remove the DST_Root_CA_X3.pem trust, as it expires september 30th 2021.
+  (bsc#1190858)
+
+-------------------------------------------------------------------
 Mon Jul  5 12:16:33 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.50 state of the Mozilla NSS Certificate store (bsc#1188006)
