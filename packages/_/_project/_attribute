@@ -36,7 +36,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210826'
-  boo#1183454: '20211005'
+  boo#1183454: '20211006'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -82,8 +82,8 @@
   boo#1189784: '20210824'
   boo#1189810: '20210906'
   boo#1189853: '20210902'
-  boo#1189868: '20211005'
-  boo#1189869: '20211005'
+  boo#1189868: '20211006'
+  boo#1189869: '20211006'
   boo#1189909: '20210916'
   boo#1189913: '20210903'
   boo#1189915: '20210918'
@@ -115,7 +115,7 @@
   kde#433053: '20210222'
   kde#433155: '20210318'
   poo#100470: '20211005'
-  poo#100479: '20211005'
+  poo#100479: '20211006'
   poo#57731: '20210601'
   poo#63454: '20210527'
   poo#63457: '20210520'
@@ -227,7 +227,7 @@
   poo#99102: '20210921'
   poo#99312: '20211005'
   poo#99435: '20210928'
-  poo#99582: '20211005'
+  poo#99582: '20211006'
   poo#99585: '20210929'
   poo#99651: '20211005'
 </value>
@@ -273,7 +273,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20211006</value>
+    <value>20211007</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
