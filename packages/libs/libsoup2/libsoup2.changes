@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  2 01:25:51 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add libsoup2-extend-test-cert.patch to fix tests after 2027 (boo#1102840)
+
+-------------------------------------------------------------------
 Wed Sep 29 10:14:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add Provides: libsoup2 to the library, so that the lang package

@@ -28,6 +28,7 @@ Source0:        https://download.gnome.org/sources/libsoup/2.74/%{_name}-%{versi
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE disable tls_interaction-test https://gitlab.gnome.org/GNOME/libsoup/issues/120
 Patch1:         libsoup-skip-tls_interaction-test.patch
+Patch2:         libsoup2-extend-test-cert.patch
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
