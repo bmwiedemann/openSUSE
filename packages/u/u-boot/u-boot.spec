@@ -162,9 +162,9 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched"
 %define is_riscv64 1
-%if "%target" == "sifiveunleashed"
+%if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched"
 %define binext .itb
 %endif
 %endif
@@ -172,7 +172,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2021.07
+%define archive_version 2021.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -208,7 +208,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with uboot_atf
 %endif
-Version:        2021.07
+Version:        2021.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -232,8 +232,8 @@ Patch0009:      0009-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
 Patch0010:      0010-sunxi-Enable-SPI-support-on-Orange-.patch
 Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
-Patch0013:      0013-configs-rpi-Enable-SMBIOS-sysinfo-d.patch
-Patch0014:      0014-btrfs-Use-default-subvolume-as-file.patch
+Patch0013:      0013-riscv-enable-CMD_BTRFS.patch
+Patch0014:      0014-Disable-timer-check-in-file-loading.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -310,7 +310,7 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed"
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
 BuildRequires:  opensbi >= 0.9
 %endif
 %if %x_loader == 1
@@ -394,7 +394,7 @@ export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
 %endif
 export SCP=/dev/null
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed"
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
 export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 %endif
 
@@ -427,6 +427,29 @@ export DEVICE_TREE=zynqmp-zcu102-rev1.0
 export DEVICE_TREE=zynq-zturn-v5
 %endif
 
+%ifarch riscv64
+# Hack to allow enabling btrfs on riscv64.  CONFIG_CMD_BTRFS implies
+# CONFIG_ZSTD, which needs __clzsi2 from libgcc.  The system libgcc has
+# been built with -mabi=lp64d (double-float ABI), but U-Boot is built with
+# -mabi=lp64 (soft-float ABI).  The linker does not allow mixing objects
+# with differing float ABIs.  Since __clzsi2 does not use any floating
+# point, there is actually no compatibilty problem, so pretend that is was
+# built with the soft-float ABI.  Create a private libgcc.a that contains
+# the rebranded object files.
+libgcc=$(gcc -print-libgcc-file-name)
+mkdir arch/riscv/libgcc
+pushd arch/riscv/libgcc
+ar x $libgcc _clz.o _clzsi2.o
+# Change the header flags from 0x05 (RVC, double-float ABI) to 0x01 (RVC,
+# soft-float ABI)
+printf '\1' | dd of=_clz.o bs=1 seek=48 conv=notrunc status=none
+printf '\1' | dd of=_clzsi2.o bs=1 seek=48 conv=notrunc status=none
+ar cr libgcc.a _clz.o _clzsi2.o
+rm -f _clz.o _clzsi2.o
+popd
+extra_makeflags=PLATFORM_LIBGCC="$PWD/arch/riscv/libgcc/libgcc.a"
+%endif
+
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
 echo "Attempting to enable fdt apply command (.dtbo) support."
 echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
@@ -434,7 +457,7 @@ echo "CONFIG_OF_LIBFDT_OVERLAY=y" >> .config
 echo "Tweaking text base for TF-A."
 echo "CONFIG_SYS_TEXT_BASE=0x11000000" >> .config
 %endif
-make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" all
+make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $extra_makeflags all
 
 %if "%{name}" == "u-boot-snow" || "%{name}" == "u-boot-spring"
 # Chromebook ARM (snow) and HP Chromebook 11 (spring) need a uImage format
@@ -548,7 +571,7 @@ echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.tx
 %if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
 echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed"
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 
