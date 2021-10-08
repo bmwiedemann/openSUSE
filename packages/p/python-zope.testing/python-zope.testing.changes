@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  5 09:48:25 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.9
+  4.9 (2021-01-08)
+  ----------------
+  - Make ``setupstack.txt`` test work again if the current directory is empty.
+  4.8 (2021-01-04)
+  ----------------
+  - Add support for Python 3.8 and 3.9.
+  - Drop support for Python 3.3 and 3.4.
+  - Extend IGNORE_EXCEPTION_MODULE_IN_PYTHON2 to cover also exceptions without
+    arguments (thus without a colon on the last line of the traceback output).
+
+-------------------------------------------------------------------
+Tue Oct  5 09:42:28 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Mon Oct 14 14:51:47 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
