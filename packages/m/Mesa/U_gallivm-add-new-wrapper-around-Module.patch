@@ -1,0 +1,60 @@
+From c1b4c64a28d9fc093229eab91a3a7fc4cb4fe29a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kai=20Wasserb=C3=A4ch?= <kai@dev.carbon-project.org>
+Date: Thu, 22 Jul 2021 07:34:09 +0200
+Subject: [PATCH 1/2] gallivm: add new wrapper around
+ Module::setOverrideStackAlignment()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We need it in the next commit to replace setting the stack alignment on
+i386 with LLVM >= 13 through the TargetOption::StackAlignmentOverride,
+which was removed in the upstream commit
+<https://github.com/llvm/llvm-project/commit/3787ee457173c3612aac4c9b1a2b6d6ab0202616>.
+
+Unfortunately Module::setOverrideStackAlignment() is not available
+through the C API and we need to wrap it ourselves.
+
+Signed-off-by: Kai Wasserbäch <kai@dev.carbon-project.org>
+Reference: mesa/mesa#4906
+Reviewed-by: Roland Scheidegger <sroland@vmware.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/11940>
+---
+ src/gallium/auxiliary/gallivm/lp_bld_misc.cpp | 9 +++++++++
+ src/gallium/auxiliary/gallivm/lp_bld_misc.h   | 3 +++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp b/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+index 44d07fe69c6..5f52ed08fae 100644
+--- a/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
++++ b/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+@@ -615,3 +615,12 @@ lp_is_function(LLVMValueRef v)
+ {
+ 	return LLVMGetValueKind(v) == LLVMFunctionValueKind;
+ }
++
++extern "C" void
++lp_set_module_stack_alignment_override(LLVMModuleRef MRef, unsigned align)
++{
++#if LLVM_VERSION_MAJOR >= 13
++   llvm::Module *M = llvm::unwrap(MRef);
++   M->setOverrideStackAlignment(align);
++#endif
++}
+diff --git a/src/gallium/auxiliary/gallivm/lp_bld_misc.h b/src/gallium/auxiliary/gallivm/lp_bld_misc.h
+index f2a15f19e47..fa0ce90162e 100644
+--- a/src/gallium/auxiliary/gallivm/lp_bld_misc.h
++++ b/src/gallium/auxiliary/gallivm/lp_bld_misc.h
+@@ -91,6 +91,9 @@ lp_is_function(LLVMValueRef v);
+ 
+ void
+ lp_free_objcache(void *objcache);
++
++void
++lp_set_module_stack_alignment_override(LLVMModuleRef M, unsigned align);
+ #ifdef __cplusplus
+ }
+ #endif
+-- 
+2.33.0
+

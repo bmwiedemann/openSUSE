@@ -133,6 +133,8 @@ Patch2:         n_add-Mesa-headers-again.patch
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
+Patch101:       U_gallivm-add-new-wrapper-around-Module.patch
+Patch102:       U_gallivm-fix-FTBFS-on-i386-with-LLVM-13.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -766,6 +768,8 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %endif
 %patch58 -p1
 %patch100 -p1
+%patch101 -p1
+%patch102 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

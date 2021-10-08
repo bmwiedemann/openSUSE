@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  4 20:05:50 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix build with LLVM 13:
+  * U_gallivm-add-new-wrapper-around-Module.patch
+  * U_gallivm-fix-FTBFS-on-i386-with-LLVM-13.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 09:05:54 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.2.3

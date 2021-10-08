@@ -1,0 +1,52 @@
+From 3a2d317b996f57647da23de7876142be4b9b71f3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kai=20Wasserb=C3=A4ch?= <kai@dev.carbon-project.org>
+Date: Thu, 22 Jul 2021 07:42:12 +0200
+Subject: [PATCH 2/2] gallivm: fix FTBFS on i386 with LLVM >= 13,
+ StackAlignmentOverride is gone
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Use the newly added wrapper lp_set_module_stack_alignment_override() to
+achieve the same end result.
+
+Signed-off-by: Kai Wasserbäch <kai@dev.carbon-project.org>
+Closes: mesa/mesa#4906
+Reviewed-by: Roland Scheidegger <sroland@vmware.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/11940>
+---
+ src/gallium/auxiliary/gallivm/lp_bld_init.c   | 4 ++++
+ src/gallium/auxiliary/gallivm/lp_bld_misc.cpp | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/gallium/auxiliary/gallivm/lp_bld_init.c b/src/gallium/auxiliary/gallivm/lp_bld_init.c
+index 8e5fe6f24dc..d2d049ace5e 100644
+--- a/src/gallium/auxiliary/gallivm/lp_bld_init.c
++++ b/src/gallium/auxiliary/gallivm/lp_bld_init.c
+@@ -347,6 +347,10 @@ init_gallivm_state(struct gallivm_state *gallivm, const char *name,
+    if (!gallivm->module)
+       goto fail;
+ 
++#if defined(PIPE_ARCH_X86)
++   lp_set_module_stack_alignment_override(gallivm->module, 4);
++#endif
++
+    gallivm->builder = LLVMCreateBuilderInContext(gallivm->context);
+    if (!gallivm->builder)
+       goto fail;
+diff --git a/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp b/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+index 5f52ed08fae..be288ab02e2 100644
+--- a/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
++++ b/src/gallium/auxiliary/gallivm/lp_bld_misc.cpp
+@@ -350,7 +350,7 @@ lp_build_create_jit_compiler_for_module(LLVMExecutionEngineRef *OutJIT,
+     * friends for configuring code generation options, like stack alignment.
+     */
+    TargetOptions options;
+-#if defined(PIPE_ARCH_X86)
++#if defined(PIPE_ARCH_X86) && LLVM_VERSION_MAJOR < 13
+    options.StackAlignmentOverride = 4;
+ #endif
+ 
+-- 
+2.33.0
+
