@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Sep 30 15:57:14 UTC 2021 - Noel Power <nopower@suse.com>
+
+-  Adjust spec to use pam macros; (bsc#1191046).
+
+-------------------------------------------------------------------
+Wed Sep 29 08:58:28 UTC 2021 - Noel Power <nopower@suse.com>
+
+- Adjust spec for size
+  * allow some Recommends instead Requires to be configured
+    for cifs-utils, samba-libs-python3 & samba-gpupdate;
+    (bsc#1182847).
+  * remove fam, undocumented and unneeded.
+
+-------------------------------------------------------------------
+Thu Sep 23 11:41:44 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Add missing build dependency on bison when building with the
+  embedded Heimdal Kerberos
+
+-------------------------------------------------------------------
+Mon Sep 20 14:25:41 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.15.0
+  * Removed SMB development dialects SMB2_22, SMB2_24 and SMB3_10
+  * VFS layer modernized.
+  * Add the ability to set allow/deny lists for zone transfer clients
+    in Bind DLZ plugin
+  * Server multi-channel support no longer experimental
+  * Improved command line user experience, unifying the options in
+    different commands
+  * Winbindd no longer scans trusted domains on startup and will use
+    enterprise principals by default.
+  * The net utility is now able to support the offline domain join feature
+  * New options for 'samba-tool dns zoneoptions' for aging control
+    and to mark old records as static or dynamic
+  * DNS tombstones are now deleted as appropriate and use a consistent
+    timestamp format
+  * The 'samba-tool dns update' command validates and rejects now malformed
+    IPv4 and IPv6 addresses
+  * The 'samba-tool domain backup' command correctly takes out locks
+    against concurrent modification during backup when using the LMDB
+    backend
+  * TruACL support has been removed
+  * NIS support has been removed
+
+-------------------------------------------------------------------
+Thu Sep 16 07:55:35 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.14.7
+  * smbd panic on force-close share during offload write; (bso#14769);
+  * smbd should support copy_file_range() for FSCTL_SRV_COPYCHUNK;
+    (bso#12033);
+  * Fix returned attributes on fake quota file handle and avoid hitting
+    the VFS; (bso#14731);
+  * vfs_shadow_copy2 fix inodes not correctly updating inode numbers;
+    (bso#14756);
+  * Fix build on Solaris; (bso#14774);
+  * Make dos attributes available for unreadable files; (bso#14654);
+  * Work around special SMB2 READ response behavior of NetApp Ontap
+    7.3.7; (bso#14607);
+  * Start the SMB encryption as soon as possible; (bso#14793);
+
+-------------------------------------------------------------------
 Tue Aug 17 16:30:25 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - Add Certificate Auto Enrollment Policy; (jsc#SLE-18457).
