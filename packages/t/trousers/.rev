@@ -435,4 +435,12 @@ Should be handled together with sr#769061</comment>
 - adjusted %setup macro invocation which seemed to be wrong</comment>
     <requestid>846199</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>2acb6fab112bf78af972e35050c23299</srcmd5>
+    <version>0.3.15</version>
+    <time>1633723487</time>
+    <user>RBrownSUSE</user>
+    <comment>- move libraries to /usr/lib (bsc#1191102)</comment>
+    <requestid>923191</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package trousers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ CFLAGS="%{optflags} -Wall -fno-strict-aliasing -fgnu89-inline -ffat-lto-objects"
    DOC=%{_defaultdocdir}
 export CC CFLAGS
 autoreconf -i -f
-%configure --libdir=/%{_lib} --disable-static --with-pic --with-gui=none
+%configure --libdir=/%{_libdir} --disable-static --with-pic --with-gui=none
 make %{?_smp_mflags}
 
 %install
@@ -103,9 +103,7 @@ mkdir -p %{trousers_data}
 cp -a dist/system.data* %{trousers_data}
 
 mkdir -p %{buildroot}%{_libdir}
-ln -s -v /%{_lib}/$(readlink %{buildroot}/%{_lib}/libtspi.so) %{buildroot}%{_libdir}/libtspi.so
-rm -v %{buildroot}/%{_lib}/libtspi.{so,la}
-mv -v %{buildroot}/%{_lib}/*.a %{buildroot}%{_libdir}
+rm -v %{buildroot}/%{_libdir}/libtspi.la
 
 # we want to run tcsd as tss user right away. therefore we need to install a
 # suitable udev rule file. this conflicts somewhat with tpm2-0-tss, but both
@@ -163,6 +161,6 @@ fi
 
 %files -n libtspi1
 %defattr(-,root,root)
-/%{_lib}/*.so.*
+/%{_libdir}/*.so.*
 
 %changelog
