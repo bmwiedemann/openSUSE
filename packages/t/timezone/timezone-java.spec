@@ -21,11 +21,11 @@ BuildRequires:  java
 BuildRequires:  javazic
 BuildRequires:  tzdb
 Summary:        Time Zone Descriptions
-# COMMON-BEGIN
-# COMMON-BEGIN
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-Version:        2021a
+# COMMON-BEGIN
+# COMMON-BEGIN
+Version:        2021c
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -36,6 +36,7 @@ Source5:        %{name}.changes
 Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
+Patch5:         fat.patch
 # COMMON-END
 # COMMON-END
 URL:            https://www.iana.org/time-zones
@@ -56,6 +57,7 @@ package is intended for Java Virtual Machine based on OpenJDK.
 %patch0 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 # COMMON-PREP-END
 # COMMON-PREP-END

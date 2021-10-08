@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct  2 16:46:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2021c:
+  * Revert almost all of 2021b's changes to the 'backward' file
+  * Fix a bug in 'zic -b fat' that caused old timestamps to be
+    mishandled in 32-bit-only readers
+
+-------------------------------------------------------------------
+Mon Sep 27 11:44:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- timezone update 2021b:
+  * Jordan now starts DST on February's last Thursday.
+  * Samoa no longer observes DST.
+  * Move some backward-compatibility links to 'backward'.
+  * Rename Pacific/Enderbury to Pacific/Kanton.
+  * Correct many pre-1993 transitions in Malawi, Portugal, etc.
+  * zic now creates each output file or link atomically.
+  * zic -L no longer omits the POSIX TZ string in its output.
+  * zic fixes for truncation and leap second table expiration.
+  * zic now follows POSIX for TZ strings using all-year DST.
+  * Fix some localtime crashes and bugs in obscure cases.
+  * zdump -v now outputs more-useful boundary cases.
+  * tzfile.5 better matches a draft successor to RFC 8536.
+
+-------------------------------------------------------------------
 Thu Jul  8 14:37:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Install tzdata.zi (bsc#1188127)
