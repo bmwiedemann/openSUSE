@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  8 08:29:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.3
+  * Both an --explicit-csu/-S command-line and explicit-ecsu set
+    option have been added.
+
+-------------------------------------------------------------------
 Sun Oct  3 16:16:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.2
