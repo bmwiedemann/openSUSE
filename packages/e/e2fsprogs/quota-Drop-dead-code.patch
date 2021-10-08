@@ -1,0 +1,57 @@
+From 32d9f7b1e48f203315890b4d7374f4afd68ce7bb Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Mon, 23 Aug 2021 17:09:41 +0200
+Subject: [PATCH 8/8] quota: Drop dead code
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1119; h=from:subject;
+ bh=61dKtjVKi3diCfHpa1/d4uDj1elmJCEY1fKv83UzzKA=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GnVlsRAgEc7AzGwJddaA7LDt33ZX+Yj9rady7y
+ 42St04GJATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBpwAKCRCcnaoHP2RA2aBMCA
+ COK2Z3O7gobEnW9GHL1bd1MlJOqsYxPxnOp3rFCkB4Kb6V770XUoCCnyeD7NwNxooWZSNOB7JCuyGQ
+ Yl945dec75Yv8zw49bulfVe496hHFX4O4UzAgZKG0vZYAjHpwaEk9Txf3MLpSHxSFlvbH8LE4sT7yD
+ M4wEEznUZokwwRoj+ds12+Rm+P1Sj/AhghUTaPFpuA5RjplBAg728b9f6Ia2JMsNzxoBRksVdOONjU
+ 2gtjwbR7Ne2GlN722u71YHItAL0sBAVPIHZQznZEKAZFwEnOHSRWlvwLItLdMfpoMcYXjDJIWz+mXx
+ QbpFU9jSQfiJBn+wba2yVZKohLP403
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+Drop unused function from quota support code.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ lib/support/mkquota.c | 20 --------------------
+ 1 file changed, 20 deletions(-)
+
+diff --git a/lib/support/mkquota.c b/lib/support/mkquota.c
+index 0fefca90c843..a4401b7f77af 100644
+--- a/lib/support/mkquota.c
++++ b/lib/support/mkquota.c
+@@ -564,26 +564,6 @@ static int scan_dquots_callback(struct dquot *dquot, void *cb_data)
+ 	return 0;
+ }
+ 
+-/*
+- * Write all memory dquots into quota file
+- */
+-#if 0 /* currently unused, but may be useful in the future? */
+-static errcode_t quota_write_all_dquots(struct quota_handle *qh,
+-                                        quota_ctx_t qctx)
+-{
+-	errcode_t err;
+-
+-	err = ext2fs_read_bitmaps(qctx->fs);
+-	if (err)
+-		return err;
+-	write_dquots(qctx->quota_dict[qh->qh_type], qh);
+-	ext2fs_mark_bb_dirty(qctx->fs);
+-	qctx->fs->flags &= ~EXT2_FLAG_SUPER_ONLY;
+-	ext2fs_write_bitmaps(qctx->fs);
+-	return 0;
+-}
+-#endif
+-
+ /*
+  * Read quotas from disk and updates the in-memory information determined by
+  * 'flags' from the on-disk data.
+-- 
+2.26.2
+

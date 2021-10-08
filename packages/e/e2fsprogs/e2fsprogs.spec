@@ -94,6 +94,13 @@ Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
 Patch10:        libss-add-newer-libreadline.so.8-to-dlopen-path.patch
+Patch11:        quota-Add-support-to-version-0-quota-format.patch
+Patch12:        quota-Fold-quota_read_all_dquots-into-quota_update_l.patch
+Patch13:        quota-Rename-quota_update_limits-to-quota_read_all_d.patch
+Patch14:        tune2fs-Fix-conversion-of-quota-files.patch
+Patch15:        e2fsck-Do-not-trash-user-limits-when-processing-orph.patch
+Patch16:        debugfs-Fix-headers-for-quota-commands.patch
+Patch17:        quota-Drop-dead-code.patch
 # Do not suppress make commands
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -263,6 +270,13 @@ cp %{SOURCE2} .
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,0 +1,43 @@
+From 1f3a91cf868ededb19b3b37caa3352f67e66a10a Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Mon, 23 Aug 2021 17:04:52 +0200
+Subject: [PATCH 5/8] e2fsck: Do not trash user limits when processing orphan
+ list
+X-Developer-Signature: v=1; a=openpgp-sha256; l=770; h=from:subject;
+ bh=qzGpt7+UOJv3hwzSLcLGr0hCRSh47K/myPGChyylU8U=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GlX5hq3rRf6HziKT8bgW4lwXuVz7w+FuGOUcPK
+ Xw3NgfGJATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBpQAKCRCcnaoHP2RA2R2qCA
+ DhX7BXpS8G05CmyapN9NiAu63JaSVW4o084uvfnud8EdFUMXbOkwGndcOty1Uk09HXfvVkeaZVTmkv
+ pVfz8s4Vi/vjqCPOkxo7HiElNKlm/s/yCGP05ByfwhCqCXKKoaODsbMZJHz4bpUbfxo+qcBD1C0XuE
+ tYgIzL35Jo0rJA65NyBao65L1jTDw4EZGykaYszfZjPayimYg3z2wl0Kv6qT+niYmOw+6w43O6b+6L
+ vgIv8E0XTR0Pc0/JGhfydCSqYM+zoJXpcuURhap0hIo+j3x8FvRGu5ws5tM5Nw0dLmm/MqiDxfBSdA
+ VYBJ83ewrnLu//5q0Kljfxo6T3qN4W
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+When e2fsck was loading quotas to process orphan list, it was loading
+only quota usage. However subsequent quota writeout has effectively
+overwritten quota limits, loosing them forever. Make sure quota limits
+are preserved over orphan replay.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ e2fsck/super.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/e2fsck/super.c b/e2fsck/super.c
+index 75b7b8ffa9b6..4ffafb211e50 100644
+--- a/e2fsck/super.c
++++ b/e2fsck/super.c
+@@ -282,7 +282,7 @@ static errcode_t e2fsck_read_all_quotas(e2fsck_t ctx)
+ 			continue;
+ 
+ 		retval = quota_read_all_dquots(ctx->qctx, qf_ino, qtype,
+-					       QREAD_USAGE);
++					       QREAD_USAGE | QREAD_LIMITS);
+ 		if (retval)
+ 			break;
+ 	}
+-- 
+2.26.2
+

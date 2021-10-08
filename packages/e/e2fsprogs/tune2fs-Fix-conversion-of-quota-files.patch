@@ -1,0 +1,47 @@
+From 5d446b4969ee6cb4025f576158be562c87d57142 Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Fri, 20 Aug 2021 21:35:34 +0200
+Subject: [PATCH 4/8] tune2fs: Fix conversion of quota files
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1210; h=from:subject;
+ bh=Lx1UJPZNLgsKBmmbN+0GUP40hOyhJD5D9kEVqqVigg4=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GkUaN9eZsgn0XvL7BSjbTu57jpbJHkTGpEei61
+ KG+q9pGJATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBpAAKCRCcnaoHP2RA2Z7NB/
+ 4osbGPQGrmAwHVUJEqkXAxOBazQE/W3qiykm9uUmzeBGC++5nQzo1J05nb479mQY84Lu8j1Mhbloh8
+ vtdLdJ0HVHxHQrY058HIXBQfAYlLV0pN6/qRNCVelyjdqQVTjri8oD+TVCjsu4aaTu9ZLZCYM41w5s
+ gweKqj260PJ93IL025nGha6ZL2BsenQy/tKRG7/I9O/c6YUAFKSvXDJ0M/L4XtgMTKxzROSiKDmy8h
+ gEw2Gc9oCZLISL2ulhLJ6ppxQ7jcbvoTuZmdFxhbQIfs8gQnmxlGcQLWs5fDMIKfux5qBwQGnYIC1u
+ jZOGndUvcOaDO3Zexb1ik8pxnpIi+F
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+When tune2fs is enabling quota feature, it looks for old-style quota
+files and tries to transfer limits stored in these files into newly
+created hidded quota files. However the code doing the transfer setups
+the quota scan wrongly and instead of transferring limits we transfer
+usage. So not only quota limits are lost (at least they can still be
+recovered from the old quota files) but also usage information may be
+wrong if the accounting in e2fsprogs does not exactly match the
+accounting in quota-tools (which is actually the case). Fix the setup of
+the quota scan.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ misc/tune2fs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/misc/tune2fs.c b/misc/tune2fs.c
+index bb08f8026918..0f6ef3d6df6b 100644
+--- a/misc/tune2fs.c
++++ b/misc/tune2fs.c
+@@ -1673,7 +1673,7 @@ static int handle_quota_options(ext2_filsys fs)
+ 			if ((qf_ino = quota_file_exists(fs, qtype)) > 0) {
+ 				retval = quota_read_all_dquots(qctx, qf_ino,
+ 							       qtype,
+-							       QREAD_USAGE);
++							       QREAD_LIMITS);
+ 				if (retval) {
+ 					com_err(program_name, retval,
+ 						_("while updating quota limits (%d)"),
+-- 
+2.26.2
+

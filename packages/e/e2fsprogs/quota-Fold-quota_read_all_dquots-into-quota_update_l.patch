@@ -1,0 +1,77 @@
+From cbc02e7ef11d5129d090ff49aa1aa57c6ac67fd5 Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Mon, 23 Aug 2021 16:20:52 +0200
+Subject: [PATCH 2/8] quota: Fold quota_read_all_dquots() into
+ quota_update_limits()
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1845; h=from:subject;
+ bh=P7jQb3ZXNuPWs0M0khNUm88nO2ChkOKzT3PGfFt2YNE=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GihdgOLrTUGvgyKLo/9lHgsSXNpuX+TjVHdW+m
+ 661Y0fGJATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBogAKCRCcnaoHP2RA2aEPB/
+ 9zdPkcMlJKxGzpEO0BmaBNu0c3VbFZR72otTj64Pm1AWxyU9PL288d+VnPov7WSeduPBKtXxmevxAw
+ tR0TYFt4ui8Gr7HLMoTvP7EJ3YX/KZ2mnXnz9JJ5DB2fG07VBbKmcfPKzsxYTUd0Xe5RJU0PYPI62W
+ j8W17jQelcHCNhAJk6oJFP7hPE+dsGUzGthbeQhWrb5zmboB/Ui55mfM1mLaloebpJkg1eqEZzX1jE
+ 6T9iEfBSgv5WowKIfJInnXkI+l4UED+Ri1pjuFgBtpWjJEP8ixpFhlo0ULZxfK/OX9sFWQU+Z+opoM
+ Qi0W7Fbb7hR7YZP84xnIbF1FUgHa+l
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+There's just one caller of quota_read_all_dquots(), fold it into its
+caller quota_update_limits(). No functional changes.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ lib/support/mkquota.c | 24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
+
+diff --git a/lib/support/mkquota.c b/lib/support/mkquota.c
+index fbc3833aee98..8e5c61a601cc 100644
+--- a/lib/support/mkquota.c
++++ b/lib/support/mkquota.c
+@@ -564,23 +564,6 @@ static int scan_dquots_callback(struct dquot *dquot, void *cb_data)
+ 	return 0;
+ }
+ 
+-/*
+- * Read all dquots from quota file into memory
+- */
+-static errcode_t quota_read_all_dquots(struct quota_handle *qh,
+-                                       quota_ctx_t qctx,
+-				       int update_limits EXT2FS_ATTR((unused)))
+-{
+-	struct scan_dquots_data scan_data;
+-
+-	scan_data.quota_dict = qctx->quota_dict[qh->qh_type];
+-	scan_data.check_consistency = 0;
+-	scan_data.update_limits = 0;
+-	scan_data.update_usage = 1;
+-
+-	return qh->qh_ops->scan_dquots(qh, scan_dquots_callback, &scan_data);
+-}
+-
+ /*
+  * Write all memory dquots into quota file
+  */
+@@ -607,6 +590,7 @@ static errcode_t quota_write_all_dquots(struct quota_handle *qh,
+ errcode_t quota_update_limits(quota_ctx_t qctx, ext2_ino_t qf_ino,
+ 			      enum quota_type qtype)
+ {
++	struct scan_dquots_data scan_data;
+ 	struct quota_handle *qh;
+ 	errcode_t err;
+ 
+@@ -625,7 +609,11 @@ errcode_t quota_update_limits(quota_ctx_t qctx, ext2_ino_t qf_ino,
+ 		goto out;
+ 	}
+ 
+-	quota_read_all_dquots(qh, qctx, 1);
++	scan_data.quota_dict = qctx->quota_dict[qh->qh_type];
++	scan_data.check_consistency = 0;
++	scan_data.update_limits = 0;
++	scan_data.update_usage = 1;
++	qh->qh_ops->scan_dquots(qh, scan_dquots_callback, &scan_data);
+ 
+ 	err = quota_file_close(qctx, qh);
+ 	if (err) {
+-- 
+2.26.2
+

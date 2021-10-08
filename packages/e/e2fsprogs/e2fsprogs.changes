@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 30 14:13:06 UTC 2021 - Jan Kara <jack@suse.cz>
+
+- quota-Add-support-to-version-0-quota-format.patch: quota: Add support to
+    version 0 quota format (jsc#SLE-17360)
+  quota-Fold-quota_read_all_dquots-into-quota_update_l.patch: quota: Fold
+    quota_read_all_dquots() into quota_update_limits() (jsc#SLE-17360)
+  quota-Rename-quota_update_limits-to-quota_read_all_d.patch: quota: Rename
+    quota_update_limits() to quota_read_all_dquots() (jsc#SLE-17360)
+  tune2fs-Fix-conversion-of-quota-files.patch: tune2fs: Fix conversion of quota
+    files (jsc#SLE-17360)
+  e2fsck-Do-not-trash-user-limits-when-processing-orph.patch: e2fsck: Do not
+    trash user limits when processing orphan list (jsc#SLE-17360)
+  debugfs-Fix-headers-for-quota-commands.patch: debugfs: Fix headers for quota
+    commands (jsc#SLE-17360)
+  quota-Drop-dead-code.patch: quota: Drop dead code (jsc#SLE-17360)
+- add these not yet released fixes to e2fsprogs package so that SLE15-SP4 ships
+  with them
+
+-------------------------------------------------------------------
 Wed Sep 15 09:16:54 UTC 2021 - Jan Kara <jack@suse.cz>
 
 - Update to 1.46.4:

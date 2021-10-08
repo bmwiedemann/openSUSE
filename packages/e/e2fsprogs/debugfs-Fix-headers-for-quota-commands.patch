@@ -1,0 +1,81 @@
+From bdcd8e7bbc374e28fa699031ad2dd83ed4bc70b4 Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Mon, 23 Aug 2021 16:44:25 +0200
+Subject: [PATCH 7/8] debugfs: Fix headers for quota commands
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4088; h=from:subject;
+ bh=DMtVDsyxwY63aIschGhsYoFtaRzgKdcoj+H6ag3wBwA=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GmjMKrGf+RnVrgOxdjhO+t478ULkN2q+GNTt0j
+ Guy1xK+JATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBpgAKCRCcnaoHP2RA2QAlB/
+ 9TcSu83oYIMfsnjdrDQJRJLdaWiCSP5A5IET00b2JGlqWkSjTLUhcJUHPWq5ZB9q2hLp8z4V4DoTBT
+ dsDPDPqSS6PmG5jdbjU29Gz/iOmUSnNl1IDCHhO/HJwg5DA+fbwpIC1tbNfw6XpvvqpTi6yYJ6B1LP
+ byj3D2PLrvqQDtoxc+V90n59U/irl9HqVh6BJOBlhyYvOdbAkvunt6LIsQZvuVmjcpL+TYhcI+S6Ey
+ fkyC3hebYfeKTg/ZQunW3bJkhso+XRQqUPGDTU393G3SFn5lywV2pMhhupdW7Rek0BjymcqDEqyhDS
+ VRa3oN+/KSiVWg1qy2JAM+ErlZu5fU
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+list_quota and get_quota commands have 'blocks' header while what they
+actually show is a used space in bytes. Fix the header to state 'space'
+instead.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ debugfs/quota.c         |  4 ++--
+ tests/f_orphquot/expect |  4 ++--
+ tests/f_quota/expect.0  | 12 ++++++------
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+Index: e2fsprogs-1.46.4/debugfs/quota.c
+===================================================================
+--- e2fsprogs-1.46.4.orig/debugfs/quota.c
++++ e2fsprogs-1.46.4/debugfs/quota.c
+@@ -123,7 +123,7 @@ void do_list_quota(int argc, char *argv[
+ 
+ 	printf("%7s %2s   %8s %8s %8s    %8s %8s %8s\n",
+ 	       quota_type[type], "id",
+-	       "blocks", "quota", "limit", "inodes", "quota", "limit");
++	       "space", "quota", "limit", "inodes", "quota", "limit");
+ 	qh = current_qctx->quota_file[type];
+ 	retval = qh->qh_ops->scan_dquots(qh, list_quota_callback, NULL);
+ 	if (retval) {
+@@ -158,7 +158,7 @@ void do_get_quota(int argc, char *argv[]
+ 
+ 	printf("%7s %2s   %8s %8s %8s    %8s %8s %8s\n",
+ 	       quota_type[type], "id",
+-	       "blocks", "quota", "limit", "inodes", "quota", "limit");
++	       "space", "quota", "limit", "inodes", "quota", "limit");
+ 
+ 	qh = current_qctx->quota_file[type];
+ 
+Index: e2fsprogs-1.46.4/tests/f_quota/expect.0
+===================================================================
+--- e2fsprogs-1.46.4.orig/tests/f_quota/expect.0
++++ e2fsprogs-1.46.4/tests/f_quota/expect.0
+@@ -1,21 +1,21 @@
+ debugfs: list_quota user
+-   user id     blocks    quota    limit      inodes    quota    limit
++   user id      space    quota    limit      inodes    quota    limit
+          0      13312        0        0           2        0        0
+         34       1024        0        0           1        0        0
+        100       2048       32       50           2       20       30
+ debugfs: list_quota group
+-  group id     blocks    quota    limit      inodes    quota    limit
++  group id      space    quota    limit      inodes    quota    limit
+          0      16384        0        0           5        0        0
+ debugfs: get_quota user 0
+-   user id     blocks    quota    limit      inodes    quota    limit
++   user id      space    quota    limit      inodes    quota    limit
+          0      13312        0        0           2        0        0
+ debugfs: get_quota user 100
+-   user id     blocks    quota    limit      inodes    quota    limit
++   user id      space    quota    limit      inodes    quota    limit
+        100       2048       32       50           2       20       30
+ debugfs: get_quota user 34
+-   user id     blocks    quota    limit      inodes    quota    limit
++   user id      space    quota    limit      inodes    quota    limit
+         34       1024        0        0           1        0        0
+ debugfs: get_quota group 0
+-  group id     blocks    quota    limit      inodes    quota    limit
++  group id      space    quota    limit      inodes    quota    limit
+          0      16384        0        0           5        0        0
+ debugfs: 

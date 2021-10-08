@@ -1,0 +1,112 @@
+From f2a7403c6e232aa8dba92d56178d81ba8285fa65 Mon Sep 17 00:00:00 2001
+From: Jan Kara <jack@suse.cz>
+Date: Mon, 23 Aug 2021 16:32:13 +0200
+Subject: [PATCH 3/8] quota: Rename quota_update_limits() to
+ quota_read_all_dquots()
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3796; h=from:subject;
+ bh=EWzfurjfbAs2HTtmIoM8glu+EY0nvkRwYkafyLH0vAw=;
+ b=owEBbQGS/pANAwAIAZydqgc/ZEDZAcsmYgBhI8GjQ7OLyPGH5e21pa5vzRbAJrBUX2fqN9Cishyr
+ zRhheaOJATMEAAEIAB0WIQSrWdEr1p4yirVVKBycnaoHP2RA2QUCYSPBowAKCRCcnaoHP2RA2fqAB/
+ 99OFSOi1posHQs9IivQagLwUAxytNoe9VWRoUqypcx5DFtbSItNlcyRCRxmouxUdpTyWR3BoYfDz97
+ /R2KsPNu9XU6oA2NiC7WcmNdSJ0ay+sRuXy2EF5FxCvXjB4xN7pUu7QEEjcQXOYOwIsdEDQru+eajq
+ NK05uq6j0Zb/zelJ9VkTA0iKkiCkKGNYZlCUkn3x+E8wTb4RCbywnAynC6RXFlmt+EnaxxHoGCsJGv
+ TLIe+yhPDECdjW39RZWYV87fRRGDRiVnuDFR0uj0QRFY1unELcy+Z72lySrH9X3SZl9VB72WKvofFb
+ Ar8ofkj4dd4g8RTr9WRC+h9b1kwnNk
+X-Developer-Key: i=jack@suse.cz; a=openpgp;
+ fpr=93C6099A142276A28BBE35D815BC833443038D8C
+
+quota_update_limits() is a misnomer because what it actually does is
+that it updates 'usage' counters and leaves 'limit' counters intact.
+Rename quota_update_limits() to quota_read_all_dquots() and while
+changing prototype also add a flags argument so that callers can control
+which quota information is actually updated from the disk.
+
+Signed-off-by: Jan Kara <jack@suse.cz>
+---
+ e2fsck/super.c        |  3 ++-
+ lib/support/mkquota.c | 11 ++++++-----
+ lib/support/quotaio.h |  7 +++++--
+ misc/tune2fs.c        |  5 +++--
+ 4 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/e2fsck/super.c b/e2fsck/super.c
+index e1c3f93572f4..75b7b8ffa9b6 100644
+--- a/e2fsck/super.c
++++ b/e2fsck/super.c
+@@ -281,7 +281,8 @@ static errcode_t e2fsck_read_all_quotas(e2fsck_t ctx)
+ 		if (qf_ino == 0)
+ 			continue;
+ 
+-		retval = quota_update_limits(ctx->qctx, qf_ino, qtype);
++		retval = quota_read_all_dquots(ctx->qctx, qf_ino, qtype,
++					       QREAD_USAGE);
+ 		if (retval)
+ 			break;
+ 	}
+diff --git a/lib/support/mkquota.c b/lib/support/mkquota.c
+index 8e5c61a601cc..0fefca90c843 100644
+--- a/lib/support/mkquota.c
++++ b/lib/support/mkquota.c
+@@ -585,10 +585,11 @@ static errcode_t quota_write_all_dquots(struct quota_handle *qh,
+ #endif
+ 
+ /*
+- * Updates the in-memory quota limits from the given quota inode.
++ * Read quotas from disk and updates the in-memory information determined by
++ * 'flags' from the on-disk data.
+  */
+-errcode_t quota_update_limits(quota_ctx_t qctx, ext2_ino_t qf_ino,
+-			      enum quota_type qtype)
++errcode_t quota_read_all_dquots(quota_ctx_t qctx, ext2_ino_t qf_ino,
++				enum quota_type qtype, unsigned int flags)
+ {
+ 	struct scan_dquots_data scan_data;
+ 	struct quota_handle *qh;
+@@ -611,8 +612,8 @@ errcode_t quota_update_limits(quota_ctx_t qctx, ext2_ino_t qf_ino,
+ 
+ 	scan_data.quota_dict = qctx->quota_dict[qh->qh_type];
+ 	scan_data.check_consistency = 0;
+-	scan_data.update_limits = 0;
+-	scan_data.update_usage = 1;
++	scan_data.update_limits = !!(flags & QREAD_LIMITS);
++	scan_data.update_usage = !!(flags & QREAD_USAGE);
+ 	qh->qh_ops->scan_dquots(qh, scan_dquots_callback, &scan_data);
+ 
+ 	err = quota_file_close(qctx, qh);
+diff --git a/lib/support/quotaio.h b/lib/support/quotaio.h
+index 6068970009f5..84fac35dda20 100644
+--- a/lib/support/quotaio.h
++++ b/lib/support/quotaio.h
+@@ -224,8 +224,11 @@ void quota_data_add(quota_ctx_t qctx, struct ext2_inode_large *inode,
+ void quota_data_sub(quota_ctx_t qctx, struct ext2_inode_large *inode,
+ 		    ext2_ino_t ino, qsize_t space);
+ errcode_t quota_write_inode(quota_ctx_t qctx, enum quota_type qtype);
+-errcode_t quota_update_limits(quota_ctx_t qctx, ext2_ino_t qf_ino,
+-			      enum quota_type type);
++/* Flags for quota_read_all_dquots() */
++#define QREAD_USAGE  0x01
++#define QREAD_LIMITS 0x02
++errcode_t quota_read_all_dquots(quota_ctx_t qctx, ext2_ino_t qf_ino,
++				enum quota_type type, unsigned int flags);
+ errcode_t quota_compute_usage(quota_ctx_t qctx);
+ void quota_release_context(quota_ctx_t *qctx);
+ errcode_t quota_remove_inode(ext2_filsys fs, enum quota_type qtype);
+diff --git a/misc/tune2fs.c b/misc/tune2fs.c
+index f739f16cd62b..bb08f8026918 100644
+--- a/misc/tune2fs.c
++++ b/misc/tune2fs.c
+@@ -1671,8 +1671,9 @@ static int handle_quota_options(ext2_filsys fs)
+ 		if (quota_enable[qtype] == QOPT_ENABLE &&
+ 		    *quota_sb_inump(fs->super, qtype) == 0) {
+ 			if ((qf_ino = quota_file_exists(fs, qtype)) > 0) {
+-				retval = quota_update_limits(qctx, qf_ino,
+-							     qtype);
++				retval = quota_read_all_dquots(qctx, qf_ino,
++							       qtype,
++							       QREAD_USAGE);
+ 				if (retval) {
+ 					com_err(program_name, retval,
+ 						_("while updating quota limits (%d)"),
+-- 
+2.26.2
+
