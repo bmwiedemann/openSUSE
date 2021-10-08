@@ -557,4 +557,12 @@
   implementations (forwarded request 867509 from kukuk)</comment>
     <requestid>867650</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>bc4d607e390ca34367a7f5f42854bf54</srcmd5>
+    <version>6.7</version>
+    <time>1633723471</time>
+    <user>RBrownSUSE</user>
+    <comment>- Move to /usr for UsrMerge (boo#1191099)</comment>
+    <requestid>922357</requestid>
+  </revision>
 </revisionlist>

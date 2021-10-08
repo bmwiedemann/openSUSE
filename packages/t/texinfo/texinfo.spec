@@ -124,9 +124,15 @@ then
     ln -sf texi2pdf.1.gz %{buildroot}%{_mandir}/man1/pdftexi2dvi.1.gz
 fi
 
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/sbin
 mv %{buildroot}%{_bindir}/install-info %{buildroot}/sbin/
 ln -sf ../../sbin/install-info %{buildroot}%{_bindir}/install-info
+%else
+mkdir -p %{buildroot}%{_sbindir}
+mv %{buildroot}%{_bindir}/install-info %{buildroot}%{_sbindir}/
+ln -sf ../sbin/install-info %{buildroot}%{_bindir}/install-info
+%endif
 
 %find_lang %{name} %{name}.lang
 %find_lang %{name}_document %{name}_document.lang
@@ -214,7 +220,11 @@ end
 %files -n info
 %defattr(-,root,root,0755)
 %ghost %verify(not md5 size mtime) %{_infodir}/dir
+%if !0%{?usrmerged}
 /sbin/install-info
+%else
+%{_sbindir}/install-info
+%endif
 %{_bindir}/install-info
 %{_bindir}/info
 %{_mandir}/man1/info.1%{?ext_man}

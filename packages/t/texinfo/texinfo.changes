@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 11:25:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Move to /usr for UsrMerge (boo#1191099) 
+
+-------------------------------------------------------------------
 Thu Jan 28 14:01:49 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use file requires for gzip to be able to use alternate
