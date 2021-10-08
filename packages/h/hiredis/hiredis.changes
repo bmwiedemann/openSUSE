@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 22:40:00 UTC 2021 - Paul Fee <paul.fee@jci.com>
+- hiredis 1.0.2
+  * Hiredis v1.0.2 is a security release with a fix for CVE-2021-32765.
+    v1.0.1 erroneously bumped the SONAME so should be skipped.
+
+-------------------------------------------------------------------
+Wed Oct  6 20:11:38 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- hiredis 1.0.1:
+  * CVE-2021-32765: integer overflow if provided maliciously
+    crafted or corrupted RESP mult-bulk protocol data boo#1191331
+
+-------------------------------------------------------------------
 Tue Oct  6 12:00:00 UTC 2020 - Paul Fee <paul.fee@jci.com>
 
 - Enable TLS

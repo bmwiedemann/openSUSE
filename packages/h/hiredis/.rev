@@ -88,4 +88,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:hiredis revision:8, using expand</comment>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1b0d8845117b38a09184aeaa9297f1e3</srcmd5>
+    <version>1.0.2</version>
+    <time>1633723506</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>924175</requestid>
+  </revision>
 </revisionlist>
