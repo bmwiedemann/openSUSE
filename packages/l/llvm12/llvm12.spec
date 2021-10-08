@@ -25,11 +25,7 @@
 %define _uaver  1201
 %define _socxx  1
 
-%ifarch x86_64 aarch64 %arm
-%bcond_without libcxx
-%else
 %bcond_with libcxx
-%endif
 
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
@@ -62,7 +58,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without clang_scripts
+%bcond_with clang_scripts
 %bcond_without polly
 %bcond_without lld
 
@@ -285,7 +281,7 @@ Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
-Requires:       clang-tools = %{version}
+Requires:       clang-tools
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel

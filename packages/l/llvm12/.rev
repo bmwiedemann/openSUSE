@@ -49,4 +49,14 @@
   (https://bugs.llvm.org/show_bug.cgi?id=51115)</comment>
     <requestid>920056</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d212fe4240b54cc911fe46c3dbde86b5</srcmd5>
+    <version>12.0.1</version>
+    <time>1633723482</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm13 now.
+- Remove version requirement from clang-tools dependency.</comment>
+    <requestid>923004</requestid>
+  </revision>
 </revisionlist>

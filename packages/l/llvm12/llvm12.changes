@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  2 20:13:04 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm13 now.
+- Remove version requirement from clang-tools dependency.
+
+-------------------------------------------------------------------
 Sat Sep 18 13:54:44 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Set CMAKE_LINKER to workaround CMake wanting to use lld just
