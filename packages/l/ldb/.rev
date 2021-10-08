@@ -532,4 +532,38 @@ x86-64 when building with python 3.5.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>883652</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6acf5bc0cab65236740d6975e96f3d05</srcmd5>
+    <version>2.4.0</version>
+    <time>1633723496</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.4.0
+  + Improve calculate_popt_array_length()
+  + Use C99 initializers for builtin_popt_options[]
+  + pyldb: Fix Message.items() for a message containing elements
+  + pyldb: Add test for Message.items()
+  + tests: Use ldbsearch '--scope instead of '-s'
+  + pyldb: fix a typo
+  + Change page size of guidindexpackv1.ldb
+  + Use a 1MiB lmdb so the test also passes on aarch64 CentOS stream
+  + attrib_handler casefold: simplify space dropping
+  + fix ldb_comparison_fold off-by-one overrun
+  + CVE-2020-27840: pytests: move Dn.validate test to ldb
+  + CVE-2020-27840 ldb_dn: avoid head corruption in ldb_dn_explode
+  + CVE-2021-20277 ldb/attrib_handlers casefold: stay in bounds
+  + CVE-2021-20277 ldb tests: ldb_match tests with extra spaces
+  + improve comments for ldb_module_connect_backend()
+  + test/ldb_tdb: correct introductory comments
+  + ldb.h: remove undefined async_ctx function signatures
+  + correct comments in attrib_handers val_to_int64
+  + dn tests use cmocka print functions
+  + ldb_match: remove redundant check
+  + add tests for ldb_wildcard_compare
+  + ldb_match: trailing chunk must match end of string
+  + pyldb: catch potential overflow error in py_timestring
+  + ldb: remove some 'if PY3's in tests
+  + Add missing break in switch statement
+</comment>
+    <requestid>923248</requestid>
+  </revision>
 </revisionlist>
