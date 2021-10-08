@@ -32,11 +32,6 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  makeinfo
-BuildRequires:  update-alternatives
-Requires(post): %{install_info_prereq}
-Requires(post): update-alternatives
-Requires(preun): %{install_info_prereq}
-Requires(preun): update-alternatives
 Provides:       awk
 
 %description
@@ -52,47 +47,25 @@ almost completely POSIX 1003.2 compliant.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
 
 %if !0%{?usrmerged}
-install -d %{buildroot}/bin
-ln -sf %{_bindir}/gawk %{buildroot}/bin
-ln -s %{_sysconfdir}/alternatives/awk %{buildroot}/bin/awk
+install -d -m 755 %{buildroot}/bin
+ln -s %{_bindir}/gawk %{buildroot}/bin/gawk
+ln -s %{_bindir}/gawk %{buildroot}/bin/awk
 %endif
-rm -f %{buildroot}%{_bindir}/*-%{version} %{buildroot}%{_bindir}/awk
 
-# create symlinks for update-alternatives
-%if !0%{?usrmerged}
-ln -s %{_sysconfdir}/alternatives/usr-bin-awk %{buildroot}%{_bindir}/awk
-%else
-ln -s %{_sysconfdir}/alternatives/awk %{buildroot}%{_bindir}/awk
-%endif
-ln -s %{_sysconfdir}/alternatives/awk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ext_man}
+# remove versioned gawk and create symlink for awk.1
+rm -fv %{buildroot}%{_bindir}/*-%{version}
+ln -sfv %{_mandir}/man1/gawk.1%{?ext_man} %{buildroot}%{_mandir}/man1/awk.1%{?ext_man}
 
 %find_lang %{name}
-
-%post
-%if !0%{?usrmerged}
-%{_sbindir}/update-alternatives \
-  --install /bin/awk awk %{_bindir}/gawk 20 \
-  --slave %{_bindir}/awk usr-bin-awk %{_bindir}/gawk \
-  --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/gawk.1%{?ext_man}
-%else
-%{_sbindir}/update-alternatives \
-  --install %{_bindir}/awk awk %{_bindir}/gawk 20 \
-  --slave %{_mandir}/man1/awk.1.gz awk.1%{?ext_man} %{_mandir}/man1/gawk.1%{?ext_man}
-%endif
-
-%postun
-if [ ! -f %{_bindir}/gawk ]; then
-    %{_sbindir}/update-alternatives --remove awk %{_bindir}/gawk
-fi
 
 %files -f %{name}.lang
 %config %{_sysconfdir}/profile.d/gawk.csh
@@ -101,13 +74,10 @@ fi
 #UsrMerge
 /bin/awk
 /bin/gawk
-%ghost %{_sysconfdir}/alternatives/usr-bin-awk
 #EndUsrMerge
 %endif
 %{_bindir}/awk
 %{_mandir}/man1/awk.1%{?ext_man}
-%ghost %{_sysconfdir}/alternatives/awk
-%ghost %{_sysconfdir}/alternatives/awk.1%{?ext_man}
 %license COPYING*
 %doc AUTHORS NEWS POSIX.STD README ChangeLog*
 %{_bindir}/gawk
