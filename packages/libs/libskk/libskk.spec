@@ -1,7 +1,7 @@
 #
 # spec file for package libskk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,7 +27,7 @@ Release:        0
 Summary:        A statistical language model based Japanese input method engine
 License:        GPL-3.0-or-later
 Group:          System/I18n/Japanese
-Url:            http://github.com/ueno/libskk
+URL:            https://github.com/ueno/libskk
 Source0:        %{name}-%{real_version}.tar.xz
 Source1:        %{name}-%{real_version}.tar.xz.sig
 Source99:       baselibs.conf
@@ -37,15 +37,14 @@ BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
-BuildRequires:  pkg-config
-BuildRequires:  python-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  vala-devel >= 0.14
 BuildRequires:  xz
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 SKK is a statistical language model based Japanese input method engine.
@@ -94,34 +93,31 @@ This package provides C/Vala headers for the libskk library.
 autoreconf -f
 %configure --disable-static \
            --enable-introspection=yes
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install %{?_smp_mflags}
-find %{buildroot}/%{_libdir} -name "*.la" -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name}
 
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
-
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover} -f %{name}.lang
-%defattr(-,root,root)
-%doc COPYING README NEWS
-%{_mandir}/man1/skk.1.gz
+%license COPYING
+%doc README NEWS
+%{_mandir}/man1/skk.1%{?ext_man}
 %{_bindir}/skk
 %{_libdir}/%{name}.so.*
 %{_datadir}/%{name}
 
 %files -n typelib-1_0-Skk-1_0
-%defattr(-,root,root,-)
 %{_libdir}/girepository-1.0/Skk-1.0.typelib
 
 %files -n libskk-devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libskk.pc

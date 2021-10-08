@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 17:27:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't depend on Python 2.
+
+-------------------------------------------------------------------
 Thu Mar  8 19:15:45 UTC 2018 - jengelh@inai.de
 
 - Rename %soname to %sover to better reflect its use
