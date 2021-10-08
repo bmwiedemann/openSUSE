@@ -38,7 +38,11 @@
 # we need at least swig 1.3.40 for the bindings ($typemap support)
 %if 0%{?suse_version} != 1110
 %bcond_without python3
+%if 0%{?suse_version} < 1550
 %bcond_without python
+%else
+%bcond_with python
+%endif
 %bcond_without ruby
 %bcond_without perl
 %else
@@ -52,7 +56,7 @@
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.19
+Version:        0.7.20
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
@@ -130,6 +134,7 @@ so-called satisfiability algorithm for resolving package
 dependencies.
 
 %endif
+
 %package devel
 Summary:        Development files for libsolv, a package solver
 Group:          Development/Libraries/C and C++
