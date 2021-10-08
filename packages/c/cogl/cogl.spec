@@ -1,7 +1,7 @@
 #
 # spec file for package cogl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,18 @@ Group:          Development/Libraries/GNOME
 URL:            http://clutter-project.org/
 Source0:        https://download.gnome.org/sources/cogl/1.22/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 2bd3cbed45d633fb15625d58e6b7cb8721b0ba98.patch -- cogl-gles2: Fix undefined references.
+Patch0:         https://gitlab.gnome.org/GNOME/cogl/-/commit/2bd3cbed45d633fb15625d58e6b7cb8721b0ba98.patch
+# PATCH-FIX-UPSTREAM 0001-egl-Use-eglGetPlatformDisplay-not-eglGetDisplay.patch -- egl: Use eglGetPlatformDisplay not eglGetDisplay
+Patch1:         https://src.fedoraproject.org/rpms/cogl/raw/rawhide/f/0001-egl-Use-eglGetPlatformDisplay-not-eglGetDisplay.patch
+# PATCH-FEATURE-UPSTREAM 0002-add-GL_ARB_shader_texture_lod-support.patch  -- Add GL_ARB_shader_texture_lod support
+Patch2:         https://src.fedoraproject.org/rpms/cogl/raw/rawhide/f/0002-add-GL_ARB_shader_texture_lod-support.patch
+# PATCH-FEATURE-UPSTREAM 0003-texture-support-copy_sub_image.patch -- texture: Support copy_sub_image
+Patch3:         https://src.fedoraproject.org/rpms/cogl/raw/rawhide/f/0003-texture-support-copy_sub_image.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc >= 1.13
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(egl)
@@ -185,6 +194,7 @@ applications that want to make use of cogl.
 %autosetup -p1
 
 %build
+autoreconf -vif
 %configure \
 	--disable-static \
 	--enable-gtk-doc \
