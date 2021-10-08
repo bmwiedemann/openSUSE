@@ -1956,4 +1956,17 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
   *) mod_unique_id: Reduce the time window where duplicates may be generated</comment>
     <requestid>919684</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>8c59c15f0eebe02a9841c94d7b75fe1e</srcmd5>
+    <version>2.4.51</version>
+    <time>1633723499</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 2.4.51
+  *) SECURITY: CVE-2021-42013: Path Traversal and Remote Code
+     Execution in Apache HTTP Server 2.4.49 and 2.4.50 (incomplete
+     fix of CVE-2021-41773) (cve.mitre.org)
+  *) core: Add ap_unescape_url_ex() for better decoding control, and deprecate
+     unused AP_NORMALIZE_DROP_PARAMETERS flag. (forwarded request 924064 from stroeder)</comment>
+    <requestid>924154</requestid>
+  </revision>
 </revisionlist>

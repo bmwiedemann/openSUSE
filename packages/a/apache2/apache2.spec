@@ -115,7 +115,7 @@
 %endif
 
 Name:           apache2%{psuffix}
-Version:        2.4.49
+Version:        2.4.51
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0

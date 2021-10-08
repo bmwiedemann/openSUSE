@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Oct  7 17:30:44 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- version update to 2.4.51
+  *) SECURITY: CVE-2021-42013: Path Traversal and Remote Code
+     Execution in Apache HTTP Server 2.4.49 and 2.4.50 (incomplete
+     fix of CVE-2021-41773) (cve.mitre.org)
+  *) core: Add ap_unescape_url_ex() for better decoding control, and deprecate
+     unused AP_NORMALIZE_DROP_PARAMETERS flag.
+
+
+-------------------------------------------------------------------
+Mon Oct  4 15:23:51 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- version update to 2.4.50
+  *) core: AP_NORMALIZE_DECODE_UNRESERVED should normalize the second dot in
+     the uri-path when it's preceded by a dot.  [Yann Ylavic]
+  *) mod_md: when MDMessageCmd for a 'challenge-setup:<type>:<dnsname>'
+     fails (!= 0 exit), the renewal process is aborted and an error is
+     reported for the MDomain. This provides scripts that distribute
+     information in a cluster to abort early with bothering an ACME
+     server to validate a dns name that will not work. The common
+     retry logic will make another attempt in the future, as with
+     other failures.
+     Fixed a bug when adding private key specs to an already working
+     MDomain, see <https://github.com/icing/mod_md/issues/260>.
+     [Stefan Eissing]
+  *) mod_proxy: Handle UDS URIs with empty hostname ("unix:///...") as if they
+     had no hostname ("unix:/...").  [Yann Ylavic]
+  *) mod_md: fixed a bug in handling multiple parallel OCSP requests. These could
+     run into an assertion which terminated (and restarted) the child process where
+     the task was running. Eventually, all OCSP responses were collected, but not
+     in the way that things are supposed to work.
+     See also <https://bz.apache.org/bugzilla/show_bug.cgi?id=65567>.
+     The bug was possibly triggered when more than one OCSP status needed updating
+     at the same time. For example for several renewed certificates after a server
+     reload.
+  *) mod_rewrite: Fix UDS ("unix:") scheme for [P] rules.  PR 57691 + 65590.
+     [Janne Peltonen <janne.peltonen sange.fi>]
+  *) event mpm: Correctly count active child processes in parent process if
+     child process dies due to MaxConnectionsPerChild.
+     PR 65592 [Ruediger Pluem]
+  *) mod_http2: when a server is restarted gracefully, any idle h2 worker
+     threads are shut down immediately.
+     Also, change OpenSSL API use for deprecations in OpenSSL 3.0.
+     Adds all other, never proposed code changes to make a clean
+     sync of http2 sources. [Stefan Eissing]
+  *) mod_dav: Correctly handle errors returned by dav providers on REPORT
+     requests. [Ruediger Pluem]
+  *) core: do not install core input/output filters on secondary
+     connections. [Stefan Eissing]
+  *) core: Add ap_pre_connection() as a wrapper to ap_run_pre_connection()
+     and use it to prevent that failures in running the pre_connection
+     hook cause crashes afterwards. [Ruediger Pluem]
+  *) mod_speling: Add CheckBasenameMatch PR 44221.  [Christophe Jaillet]
+
+-------------------------------------------------------------------
 Fri Sep 17 08:37:29 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.4.49
