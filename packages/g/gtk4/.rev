@@ -372,4 +372,12 @@
     <comment></comment>
     <requestid>921877</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>4ca9c4a77db67027289340eae7671907</srcmd5>
+    <version>4.4.0</version>
+    <time>1633723492</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix a syntax error in the gtk4_immodule_postun RPM macro (forwarded request 922847 from ftake)</comment>
+    <requestid>923220</requestid>
+  </revision>
 </revisionlist>

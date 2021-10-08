@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  3 08:58:01 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix a syntax error in the gtk4_immodule_postun RPM macro
+
+-------------------------------------------------------------------
 Thu Sep 23 09:58:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit pkgconfig(gstreamer-gl-1.0) BuildRequires: not new,

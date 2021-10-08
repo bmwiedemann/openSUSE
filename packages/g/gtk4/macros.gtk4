@@ -31,5 +31,5 @@ if [ $1 -eq 0 ]; then                                    \
     %{_bindir}/gio-querymodules-64 %{_libdir}/gtk-4.0/4.0.0/immodules \
   else                                                   \
     %{_bindir}/gio-querymodules %{_libdir}/gtk-4.0/4.0.0/immodules \
-  fi                                                     \    
+  fi                                                     \
 fi
