@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 07 14:56:56 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1633618600.9b31e877:
+  * testapi: Remove redundant "use 5.018" replaced by Mojo::Base -strict
+  * Use proper perl "signatures" in t
+  * t: Output backend state message on error for debugging
+  * tools: Use git for faster tidy file cleanup if possible
+  * Select sensible default of 5 minutes for SSH command timeout
+  * ssh_screen::type_string(): Print error code if write() fails
+  * Add unit tests for baseclass::wait_serial
+  * Avoid tidy script failures when a filename has spaces
+  * Allow running tidy on single files
+  * Rename subroutine to clear serial line buffer
+  * Set offset in serial output buffer
+  * Use consistent abbreviated SPDX license identifiers
+  * Speedup, simplify and fix log format with Time::Moment
+  * Use consistent "Copyright" header without problematic characters
+  * t: Add Test::Warnings to 08-autotest
+  * t: Fix "Useless use of a constant"
+  * Fully tidy consoles/VNC.pm
+  * Use proper perl "signatures" in tools
+  * Use proper perl "signatures" in t/data
+  * workflows/commit_message_checker.yml: Fix file based prefix
+  * Replace all possible occurences of docker with generic version
+  * Use simpler 'podman' as drop-in replacement for our checks
+
+-------------------------------------------------------------------
 Tue Sep 28 16:03:44 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1632799442.f77d4e14:
