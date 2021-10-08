@@ -787,4 +787,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - t-u: Use tukit for SUSEConnect call [bsc#1190574] to correctly register repositories</comment>
     <requestid>919764</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>155dc580b9cec0d4279f3bed4105f759</srcmd5>
+    <version>3.5.6</version>
+    <time>1633723486</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923185</requestid>
+  </revision>
 </revisionlist>
