@@ -31,10 +31,10 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
 Requires:       %{app_name}-certmonger == %{version}
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
-Requires:       %{app_name}-selinux == %{version}
-%endif
 Requires:       python3-%{app_name} == %{version}
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
+Requires:       (%{app_name}-selinux == %{version} if selinux-policy)
+%endif
 
 %description
 %{app_name} is an application for enrolling certificates through CEP and CES.
@@ -60,13 +60,14 @@ This package provides the Python part for CEP and CES interaction.
 %package certmonger
 Summary:        certmonger integration for %{app_name}
 
+Requires:       %{name} == %{version}
 Requires:       certmonger
 
 %description certmonger
 %{app_name} is an application for enrolling certificates through CEP and CES.
 This package provides the certmonger integration.
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 %package selinux
 Summary:        SELinux support for %{app_name}
 
@@ -85,7 +86,7 @@ SELinux support for %{app_name}
 %build
 %py3_build
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 # Build the SELinux module(s).
 for SELINUXVARIANT in %{selinux_variants}; do
   make -C selinux clean all
@@ -98,7 +99,7 @@ done
 
 install -d -m 0700 %{buildroot}%{logdir}
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 # Install the SELinux module(s).
 rm -fv selinux-files.txt
 
@@ -129,7 +130,7 @@ install -p -m 755 bin/%{app_name}-submit \
 
 sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/g' %{buildroot}%{_libexecdir}/certmonger/%{app_name}-submit
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 %post selinux
 for SELINUXVARIANT in %{selinux_variants}; do
   %{_sbindir}/semodule -n -s ${SELINUXVARIANT} \
@@ -155,14 +156,14 @@ fi
 
 %post certmonger
 # Install the CA into certmonger.
-if [[ "$1" == "1" ]]; then
+if [ $1 -eq 1 ]; then
   getcert add-ca -c %{app_name} \
     -e %{_libexecdir}/certmonger/%{app_name}-submit >/dev/null || :
 fi
 
 %preun certmonger
 # Remove the CA from certmonger, unless it's an upgrade.
-if [[ "$1" == "0" ]]; then
+if [ $1 -eq 0 ]; then
   getcert remove-ca -c %{app_name} >/dev/null || :
 fi
 
@@ -172,7 +173,6 @@ pushd tests
 popd
 
 %files
-%doc LICENSE
 %doc README.rst
 %dir %{_sysconfdir}/%{app_name}/
 %config(noreplace) %{_sysconfdir}/%{app_name}/%{app_name}.conf
@@ -180,14 +180,15 @@ popd
 %dir %{logdir}
 
 %files -n python3-%{app_name}
+%license LICENSE
 %{python3_sitelib}/%{app_name}
-%{python3_sitelib}/%{app_name}-%{version}-py?.?.egg-info
+%{python3_sitelib}/%{app_name}-%{version}-py*.egg-info
 
 %files certmonger
 %dir %{_libexecdir}/certmonger
 %{_libexecdir}/certmonger/%{app_name}-submit
 
-%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} > 1500
 %files selinux -f selinux-files.txt
 %defattr(0644,root,root,0755)
 %endif

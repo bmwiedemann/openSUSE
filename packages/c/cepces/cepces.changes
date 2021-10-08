@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  6 09:03:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Only install the selinux policy if necessary
+- Add missing dependency on the main package to the certmonger
+  subpackage
+- Use %license and move it to the common subpackage
+- Avoid bashisms
+- Fix file list for the python subpackage for 3.10+
+
+-------------------------------------------------------------------
+Tue Oct  5 14:28:05 UTC 2021 - David Mulder <david.mulder@suse.com>
+
+- Also disable selinux in 15.4, since it is still not supported.
+
+-------------------------------------------------------------------
 Thu Aug 19 14:39:17 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - Disable selinux where not supported; (jsc#SLE-18456).
