@@ -2419,4 +2419,21 @@
 </comment>
     <requestid>916736</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>f3bdbf7343ee3e1a2f835e3158b6e5fa</srcmd5>
+    <version>3.70</version>
+    <time>1633723494</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to NSS 3.70
+  * bmo#1726022 - Update test case to verify fix.
+  * bmo#1714579 - Explicitly disable downgrade check in TlsConnectStreamTls13.EchOuterWith12Max
+  * bmo#1714579 - Explicitly disable downgrade check in TlsConnectTest.DisableFalseStartOnFallback
+  * bmo#1681975 - Avoid using a lookup table in nssb64d.
+  * bmo#1724629 - Use HW accelerated SHA2 on AArch64 Big Endian.
+  * bmo#1714579 - Change default value of enableHelloDowngradeCheck to true.
+  * bmo#1726022 - Cache additional PBE entries.
+  * bmo#1709750 - Read HPKE vectors from official JSON.
+- required for Firefox 93</comment>
+    <requestid>923247</requestid>
+  </revision>
 </revisionlist>
