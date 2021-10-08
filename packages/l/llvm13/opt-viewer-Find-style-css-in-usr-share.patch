@@ -1,0 +1,14 @@
+Index: llvm-7.0.0.src/tools/opt-viewer/opt-viewer.py
+===================================================================
+--- llvm-7.0.0.src.orig/tools/opt-viewer/opt-viewer.py
++++ llvm-7.0.0.src/tools/opt-viewer/opt-viewer.py
+@@ -252,8 +252,7 @@ def generate_report(all_remarks,
+         sorted_remarks = sorted(optrecord.itervalues(all_remarks), key=lambda r: (r.File, r.Line, r.Column, r.PassWithDiffPrefix, r.yaml_tag, r.Function))
+     IndexRenderer(output_dir, should_display_hotness, max_hottest_remarks_on_index).render(sorted_remarks)
+ 
+-    shutil.copy(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+-            "style.css"), output_dir)
++    shutil.copy("/usr/share/opt-viewer/style.css", output_dir)
+ 
+     _render_file_bound = functools.partial(_render_file, source_dir, output_dir, context, no_highlight)
+     if should_print_progress:
