@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 06:02:09 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Enhance license fields: all the libraries actually have a different
+  license to the tools. While the tools are GPL-3.0-or-later, the
+  libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later) 
+  SLE bug (for tracking the above) bsc#1191310
+
+-------------------------------------------------------------------
 Thu Aug  5 18:12:21 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch

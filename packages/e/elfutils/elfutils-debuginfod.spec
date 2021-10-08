@@ -68,6 +68,7 @@ such servers to download those files on demand.
 Summary:        Library for build-id HTTP ELF/DWARF server
 Group:          System/Libraries
 Conflicts:      libdebuginfod1-dummy = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdebuginfod1
 The libdebuginfod1 package contains shared libraries
@@ -79,6 +80,7 @@ command-line frontend.
 Summary:        Libraries and headers to build debuginfod client applications
 Group:          Development/Libraries/C and C++
 Conflicts:      libdebuginfod-dummy-devel = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdebuginfod-devel
 The libdebuginfod-devel package contains the libraries

@@ -49,6 +49,7 @@ symbols, thread state and stacktraces for processes and core files.
 %package -n libasm1
 Summary:        A collection of utilities and DSOs to handle compiled objects
 Group:          System/Libraries
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libasm1
 libasm contains the "asm" and "disasm" functions to assemble and
@@ -60,6 +61,7 @@ Summary:        A collection of utilities and DSOs to handle compiled objects
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libasm1 = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libasm-devel
 This package contains the headers and libraries needed to build
@@ -68,6 +70,7 @@ applications that require libasm.
 %package -n libelf1
 Summary:        Library to read and write ELF files
 Group:          System/Libraries
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libelf1
 This package provides a high-level library to read and write ELF files.
@@ -79,6 +82,7 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libelf1 = %{version}
 Conflicts:      libelf0-devel
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libelf-devel
 This package contains the headers and libraries needed to build
@@ -87,6 +91,7 @@ applications that require libelf.
 %package -n libdw1
 Summary:        Library to access DWARF debugging information
 Group:          System/Libraries
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdw1
 This package provides a high-level library to access the DWARF debugging
@@ -98,6 +103,7 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libdw1 = %{version}
 Requires:       libelf-devel = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdw-devel
 This package contains the headers and libraries needed to build
@@ -107,6 +113,7 @@ applications that require libdw.
 Summary:        Library for build-id HTTP ELF/DWARF server
 Group:          System/Libraries
 Provides:       libdebuginfod1 = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdebuginfod1-dummy
 The libdebuginfod1 package contains shared libraries
@@ -119,6 +126,7 @@ The package is dummy.
 Summary:        Libraries and headers to build debuginfod client applications
 Group:          Development/Libraries/C and C++
 Provides:       libdebuginfod-devel = %{version}
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libdebuginfod-dummy-devel
 The libdebuginfod-devel package contains the libraries
