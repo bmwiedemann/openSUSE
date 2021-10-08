@@ -1676,4 +1676,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
 - Clean spec file</comment>
     <requestid>908369</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>63caf450477dfed7104eed61a3ea117e</srcmd5>
+    <version>5.1.MACRO</version>
+    <time>1633723473</time>
+    <user>RBrownSUSE</user>
+    <comment>- Install bash_builtins manpage under the correct name (forwarded request 922382 from Andreas_Schwab)</comment>
+    <requestid>922406</requestid>
+  </revision>
 </revisionlist>

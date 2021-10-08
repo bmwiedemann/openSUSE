@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 13:42:48 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Install bash_builtins manpage under the correct name
+
+-------------------------------------------------------------------
 Mon Jul 26 08:03:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Use a get_version_number.sh script 

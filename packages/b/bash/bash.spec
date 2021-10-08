@@ -461,7 +461,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   install -m 644 doc/FAQ        %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/INTRO      %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/*.html     %{buildroot}%{_docdir}/%{name}
-  install -m 644 doc/builtins.1 %{buildroot}%{_mandir}/man1/bashbuiltins.1
+  install -m 644 doc/builtins.1 %{buildroot}%{_mandir}/man1/bash_builtins.1
   install -m 644 doc/rbash.1    %{buildroot}%{_mandir}/man1/rbash.1
   gzip -9f %{buildroot}%{_infodir}/*.inf*[^z] || true
   mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d
@@ -521,7 +521,7 @@ fi
 %dir %{_datadir}/bash/helpfiles
 %{_datadir}/bash/helpfiles/*
 %{_mandir}/man1/bash.1%{?ext_man}
-%{_mandir}/man1/bashbuiltins.1%{?ext_man}
+%{_mandir}/man1/bash_builtins.1%{?ext_man}
 %{_mandir}/man1/bashbug.1%{?ext_man}
 %{_mandir}/man1/rbash.1%{?ext_man}
 
