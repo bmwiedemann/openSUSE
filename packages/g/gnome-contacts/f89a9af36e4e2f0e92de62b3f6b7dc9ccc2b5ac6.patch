@@ -1,0 +1,66 @@
+From f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6 Mon Sep 17 00:00:00 2001
+From: Adrien Plazas <kekun.plazas@laposte.net>
+Date: Thu, 9 Sep 2021 13:07:39 +0200
+Subject: [PATCH] setup-window: Refine the margins
+
+This makes it look a bit more like other GNOME applications.
+---
+ data/ui/contacts-setup-window.ui | 15 ++++-----------
+ src/contacts-setup-window.vala   |  2 +-
+ 2 files changed, 5 insertions(+), 12 deletions(-)
+
+diff --git a/data/ui/contacts-setup-window.ui b/data/ui/contacts-setup-window.ui
+index eadcb7ae..ac0f1065 100644
+--- a/data/ui/contacts-setup-window.ui
++++ b/data/ui/contacts-setup-window.ui
+@@ -66,17 +66,16 @@
+             <child>
+               <object class="HdyClamp">
+                 <property name="visible">True</property>
+-                <property name="margin_top">32</property>
+-                <property name="margin_bottom">32</property>
++                <property name="margin_top">24</property>
++                <property name="margin_bottom">24</property>
+                 <property name="margin_start">12</property>
+                 <property name="margin_end">12</property>
+                 <child>
+-                  <object class="GtkGrid">
++                  <object class="GtkBox" id="content">
+                     <property name="visible">True</property>
+                     <property name="valign">center</property>
+                     <property name="halign">center</property>
+-                    <property name="border_width">12</property>
+-                    <property name="row_spacing">24</property>
++                    <property name="spacing">24</property>
+                     <property name="orientation">vertical</property>
+                     <child>
+                       <object class="GtkLabel">
+@@ -98,12 +97,6 @@
+                         <property name="label" translatable="yes">Please select your main address book: this is where new contacts will be added. If you keep your contacts in an online account, you can add them using the online accounts settings.</property>
+                       </object>
+                     </child>
+-                    <child>
+-                      <object class="HdyClamp" id="content">
+-                        <property name="visible">True</property>
+-                        <property name="maximum_size">400</property>
+-                      </object>
+-                    </child>
+                   </object>
+                 </child>
+               </object>
+diff --git a/src/contacts-setup-window.vala b/src/contacts-setup-window.vala
+index 0461fc64..9305b8a9 100644
+--- a/src/contacts-setup-window.vala
++++ b/src/contacts-setup-window.vala
+@@ -20,7 +20,7 @@ using Folks;
+ [GtkTemplate (ui = "/org/gnome/Contacts/ui/contacts-setup-window.ui")]
+ public class Contacts.SetupWindow : Hdy.ApplicationWindow {
+   [GtkChild]
+-  private unowned Hdy.Clamp content;
++  private unowned Gtk.Box content;
+ 
+   [GtkChild]
+   private unowned Gtk.Button setup_done_button;
+-- 
+GitLab
+

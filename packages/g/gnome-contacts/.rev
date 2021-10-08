@@ -505,4 +505,12 @@
     <comment>New stable release (forwarded request 922141 from iznogood)</comment>
     <requestid>922147</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>5207696e006af21f887f6b2682ce919f</srcmd5>
+    <version>41.0</version>
+    <time>1633723491</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 922812 from iznogood)</comment>
+    <requestid>923219</requestid>
+  </revision>
 </revisionlist>

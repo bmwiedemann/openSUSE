@@ -1,0 +1,25 @@
+From 281decd15546987ca1c467e090ea4abf7a4a0a3b Mon Sep 17 00:00:00 2001
+From: Adrien Plazas <kekun.plazas@laposte.net>
+Date: Thu, 9 Sep 2021 13:15:39 +0200
+Subject: [PATCH] setup-window: Set a minimum width
+
+No need to go below phone sizes.
+---
+ data/ui/contacts-setup-window.ui | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/ui/contacts-setup-window.ui b/data/ui/contacts-setup-window.ui
+index ac0f1065..845c7a0f 100644
+--- a/data/ui/contacts-setup-window.ui
++++ b/data/ui/contacts-setup-window.ui
+@@ -8,6 +8,7 @@
+       <object class="GtkBox">
+         <property name="visible">True</property>
+         <property name="orientation">vertical</property>
++        <property name="width_request">360</property>
+         <child>
+           <object class="HdyHeaderBar">
+             <property name="visible">True</property>
+-- 
+GitLab
+

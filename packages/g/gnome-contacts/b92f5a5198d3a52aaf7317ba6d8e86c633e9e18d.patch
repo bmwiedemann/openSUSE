@@ -1,0 +1,27 @@
+From b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d Mon Sep 17 00:00:00 2001
+From: Krifa75 <yahiaoui.fakhri@gmail.com>
+Date: Wed, 22 Sep 2021 23:26:12 +0200
+Subject: [PATCH] fake-persona-store: Set primary_persona only in class init
+
+Trigger a warning and primary_persona was also set in the class init so it's not useful
+---
+ src/contacts-fake-persona-store.vala | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/contacts-fake-persona-store.vala b/src/contacts-fake-persona-store.vala
+index c7e390ba..c6b8ae21 100644
+--- a/src/contacts-fake-persona-store.vala
++++ b/src/contacts-fake-persona-store.vala
+@@ -521,9 +521,6 @@ public class Contacts.FakeIndividual : Individual {
+     var fake_personas = new Gee.HashSet<FakePersona> ();
+     foreach (var p in individual.personas) {
+       var fake_p = new FakePersona.from_real (p);
+-      // Keep track of the main persona
+-      if (Contacts.Utils.persona_is_main (p) || individual.personas.size == 1)
+-        primary_persona = fake_p;
+       fake_personas.add (fake_p);
+     }
+     this (fake_personas);
+-- 
+GitLab
+

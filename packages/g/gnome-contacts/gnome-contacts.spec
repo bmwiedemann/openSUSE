@@ -24,6 +24,14 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
 Source0:        https://download.gnome.org/sources/gnome-contacts/41/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d.patch glgo#GNOME/gnome-contacts!168
+Patch0:         b92f5a5198d3a52aaf7317ba6d8e86c633e9e18d.patch
+# PATCH-FIX-UPSTREAM 6883d4fa2a1b3803896a5f5737df765d8f6f6f62.patch glgo#GNOME/gnome-contacts!168
+Patch1:         6883d4fa2a1b3803896a5f5737df765d8f6f6f62.patch
+# PATCH-FIX-UPSTREAM f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6.patch glgo#GNOME/gnome-contacts!164
+Patch2:         f89a9af36e4e2f0e92de62b3f6b7dc9ccc2b5ac6.patch
+# PATCH-FIX-UPSTREAM 281decd15546987ca1c467e090ea4abf7a4a0a3b.patch glgo#GNOME/gnome-contacts!164
+Patch3:         281decd15546987ca1c467e090ea4abf7a4a0a3b.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
@@ -91,16 +99,18 @@ search results from contacts.
 
 %build
 %meson \
-	-Dwith-cheese=yes \
-	-Dwith-manpage=true \
-	-Dmaps=true \
+	-Dcheese=enabled \
 	-Dtelepathy=false \
+	-Dmanpage=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+
+%check
+%meson_test
 
 %files
 %license COPYING

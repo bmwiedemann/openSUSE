@@ -1,0 +1,27 @@
+From 6883d4fa2a1b3803896a5f5737df765d8f6f6f62 Mon Sep 17 00:00:00 2001
+From: Krifa75 <yahiaoui.fakhri@gmail.com>
+Date: Wed, 22 Sep 2021 23:31:35 +0200
+Subject: [PATCH] contacts-store: Check if new individual is not empty
+
+When deleting a contact the changes may contains empty value which triggers a warning when deleting one
+---
+ src/contacts-store.vala | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/contacts-store.vala b/src/contacts-store.vala
+index a9c6a57b..91e99e5a 100644
+--- a/src/contacts-store.vala
++++ b/src/contacts-store.vala
+@@ -144,7 +144,8 @@ public class Contacts.Store : GLib.Object {
+       if (i != null)
+         to_remove.add (i);
+       foreach (var new_i in changes[i]) {
+-        to_add.add (new_i);
++        if (new_i != null)
++          to_add.add (new_i);
+       }
+     }
+ 
+-- 
+GitLab
+
