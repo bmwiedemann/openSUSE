@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct  8 05:31:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.29.0
+  * New Features
+    - Allow drag and drop of books onto formats in the Tag browser
+      to convert them to that format
+    - Allow creating sorts based on multiple columns (Add the Sort
+      action to the toolbar via Preferences->Toolbars & menus)
+    - Edit book: When changing a paragraph to a heading if the
+      cursor is adjacent to a paragraph tag but not inside any tags
+      other than body, use the adjacent tag
+  * Bug Fixes
+    - Auto adding: Run relevant plugins before reading metadata
+      from the book. Matches behavior of manual adding
+    - Content server: Fix category collapse by partition not
+      working
+    - Prevent Tab from causing focus to leave the Tag browser
+    - Edit book: See what changed: Fix non-BMP unicode characters
+      causing highlighting of changed words to be slightly
+      misplaced
+    - PDF Output: Fix a regression that broke conversion of comics
+      that contain 1-bit images
+    - Edit book: Fix pressing Ctrl+Tab inserting a tab at the start
+      of a line instead of switching tabs
+    - Fix a regression in the previous release that caused
+      identifiers set by some plugins to not be saved in the
+      database
+    - Template language: Fix nesting composite columns sometimes
+      failing
+
+-------------------------------------------------------------------
 Fri Sep 24 07:23:12 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.28.0
