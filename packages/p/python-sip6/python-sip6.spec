@@ -19,15 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sip6
-Version:        6.1.1
+Version:        6.2.0
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
@@ -48,8 +47,7 @@ to generate wxPython, the Python bindings for wxWidgets.
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
 Requires:       c++_compiler
-Requires:       python-base >= 3.6
-Requires:       python-devel
+Requires:       python-devel >= 3.6
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct  3 12:33:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.0
+  * The interpreter tag in the name of a wheel now specifies
+    a minimum Python version (rather than each supported
+    Python version) when the limited API is used.
+  * The /PyQtNoQMetaObject/ annotation can now be applied to
+    namespaces.
+  * sip-build, sip-install and sip-wheel now support the
+    --disabled-feature command line option.
+  * Added support for Python v3.10.
+  * Added the setuptools builder which is the default for
+    Python v3.10 and later.
+  * The ABI version, wherever specified, is now a minimum
+    version with a default minor version of 0.
+
+-------------------------------------------------------------------
 Mon Sep 13 16:00:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Obsolete erroneously created non-devel metapackage -- boo#1190441
