@@ -7040,6 +7040,7 @@ unsorted:
   - iosevka-ss18-fonts 
   - iotop 
   - iouyap 
+  - ip2unix 
   - ipa-gothic-bold-fonts 
   - ipa-gothic-bolditalic-fonts 
   - ipa-gothic-italic-fonts 
@@ -9805,7 +9806,9 @@ unsorted:
   - libcap-progs 
   - libcapi20 
   - libcapi20-3 
+  - libcapi20-3-32bit: [x86_64] 
   - libcapi20-devel 
+  - libcapi20-devel-32bit: [x86_64] 
   - libcapnp-0_9 
   - libcapnp-devel 
   - libcapstone-devel 
@@ -17742,7 +17745,6 @@ unsorted:
   - openSUSE-release-tools-abichecker: [x86_64] 
   - openSUSE-release-tools-announcer: [x86_64] 
   - openSUSE-release-tools-check-source: [x86_64] 
-  - openSUSE-release-tools-devel: [x86_64] 
   - openSUSE-release-tools-maintenance: [x86_64] 
   - openSUSE-release-tools-metrics: [x86_64] 
   - openSUSE-release-tools-metrics-access: [x86_64] 
@@ -18042,6 +18044,7 @@ unsorted:
   - orthanc-source 
   - orthanc-webviewer 
   - orthanc-wsi 
+  - orthos-client 
   - orthos2 
   - orthos2-docs 
   - ortp 
@@ -22748,7 +22751,6 @@ unsorted:
   - python36-jupyter_console 
   - python36-jupyter_contrib_core 
   - python36-jupyter_highlight_selected_word 
-  - python36-jupyter_kernel_test 
   - python36-jupyter_latex_envs 
   - python36-jupyter_nbextensions_configurator 
   - python36-jupyterlab 
@@ -25578,7 +25580,6 @@ unsorted:
   - python38-jupyter_console 
   - python38-jupyter_contrib_core 
   - python38-jupyter_highlight_selected_word 
-  - python38-jupyter_kernel_test 
   - python38-jupyter_latex_envs 
   - python38-jupyter_nbextensions_configurator 
   - python38-jupyterlab 
@@ -28599,7 +28600,6 @@ unsorted:
   - python39-jupyter_console 
   - python39-jupyter_contrib_core 
   - python39-jupyter_highlight_selected_word 
-  - python39-jupyter_kernel_test 
   - python39-jupyter_latex_envs 
   - python39-jupyter_nbextensions_configurator 
   - python39-jupyterlab 
