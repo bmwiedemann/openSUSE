@@ -3262,4 +3262,19 @@ oddjob-gpupdate isn't blocked)</comment>
 - Bump to tip (various security fixes).</comment>
     <requestid>921230</requestid>
   </revision>
+  <revision rev="361" vrev="1">
+    <srcmd5>0cf0b72d1a134ae8ac22b8bf90e263e9</srcmd5>
+    <version>2.1+git20211006.550248e</version>
+    <time>1633723478</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to opensuse tip:
+  * dbus-services: add oddjob-mkhomedir which got lost during migration (bsc#1169494)
+
+- Update to tip:
+  * fix lto-no-text-in-archive for rx port.
+
+- Updade to opensuse tip:
+  * skip %ghost files in SUIDPermissionsCheck.</comment>
+    <requestid>923496</requestid>
+  </revision>
 </revisionlist>

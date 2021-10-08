@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  6 13:06:19 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to opensuse tip:
+  * dbus-services: add oddjob-mkhomedir which got lost during migration (bsc#1169494)
+
+-------------------------------------------------------------------
+Fri Oct  1 14:21:05 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to tip:
+  * fix lto-no-text-in-archive for rx port.
+
+-------------------------------------------------------------------
+Thu Sep 30 11:39:21 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Updade to opensuse tip:
+  * skip %ghost files in SUIDPermissionsCheck.
+
+-------------------------------------------------------------------
 Fri Sep 24 07:17:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to 2.1+git20210924.ad0cf53
