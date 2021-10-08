@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 08 00:03:19 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1633624491.52d9e3c63:
+  * Add CLONED_FROM to cloned job settings
+  * Reduce timeout in `t/05-scheduler.full.t` again
+  * Improve quoting style in `t/05-scheduler.full`
+  * Avoid full `OpenQA::Jobs::Constants::` prefix in `t/05-scheduler-full.t`
+  * Fix race-condition in `t/05-scheduler-full.t` which can lead to failures
+  * Continue further checks if job is not done/incomplete in scheduler test
+  * Run hook script timeout in verbose mode
+  * Allow hxselect in apparmor profile
+  * Dependency cron 2021-10-06
+  * Allow more shells in apparmor profile
+  * CI: Use current updated Selenium::Remote::Driver version to fix CI
+  * Use consistent "Copyright" header without problematic characters
+  * Extract code from `clone_job_download_assets` into separate function
+  * Add missing separator in log message of `openqa-clone-job` script
+  * Consider all parent jobs in `openqa-clone-job` to skip certain assets
+  * Prevent useless downloads of `uefi-vars` assets
+  * Extend tests for asset download in `openqa-clone-job` script
+
+-------------------------------------------------------------------
 Tue Oct 05 14:04:20 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1633442652.bbce4ad33:
