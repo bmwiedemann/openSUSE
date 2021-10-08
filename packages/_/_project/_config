@@ -434,6 +434,9 @@ Prefer: go -go1.13
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
 Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common
 
+# have choice for html2text
+Prefer: -python36-html2text -python38-html2text -python39-html2text
+
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python36-tornado -python36-tornado5 
 Prefer: python38-tornado -python38-tornado5
