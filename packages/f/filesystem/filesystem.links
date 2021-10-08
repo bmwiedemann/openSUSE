@@ -2,4 +2,4 @@
 # Required for FHS 2.1
 spool/mail		/var/mail
 # systemd
-../run                  /var/run
+../run                  /var/run  %ghost

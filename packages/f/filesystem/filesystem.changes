@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:26:40 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- don't perform UsrMerge if ZYPP_SINGLE_RPMTRANS is set. Rely on
+  file trigger compat mode in that case and do it posttrans
+  (boo#1189788).
+- generic %ghost handling instead of hardcoding
+
+-------------------------------------------------------------------
 Mon Aug  2 07:55:40 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Leave subdirectories of /srv mode 755 as the apache openqa test relies on it

@@ -122,7 +122,21 @@ for i in pairs(dirs) do
   end
 end
 if needmigrate then
+  if posix.getenv("ZYPP_SINGLE_RPMTRANS") == "1" then
+    print("Warning: UsrMerge executed in single transcation mode")
+    if not posix.stat("/usr/lib/rpm/lua/usrmerge.lua") then
+      error("ERROR: compat-usrmerge file triggers not installed.\n!!! This will go horribly wrong. You need a rescue system now !!!")
+    end
+    rpm.define("_filesystem_need_posttrans_convertfs 1")
+  else
     assert(os.execute("/usr/libexec/convertfs"))
+  end
+end
+EOF
+
+cat > posttrans.lua <<'EOF'
+if rpm.expand("%%%%{?_filesystem_need_posttrans_convertfs}") == "1" then
+  assert(os.execute("/usr/libexec/convertfs"))
 end
 EOF
 
@@ -176,9 +190,9 @@ while read MOD OWN GRP NAME ; do
     create_dir $MOD $OWN $GRP $NAME
 done < directory.list
 # ghost files next
-cat ghost.list | while read MOD OWN GRP NAME ; do
+while read MOD OWN GRP NAME ; do
     create_dir $MOD $OWN $GRP $NAME "%%ghost "
-done
+done < ghost.list
 # arch specific leftovers
 for march in \
 %ifarch %ix86
@@ -216,7 +230,7 @@ done
 create_dir 0755 root root /emul/ia32-linux
 %endif
 # now do the links
-while read SRC DEST ; do
+while read SRC DEST ATTR ; do
 case $SRC in
  "") continue ;;
  \#*) echo "comment: $SRC $DEST" ;;
@@ -229,8 +243,7 @@ case $SRC in
     esac
     ln -sf $SRC $RPM_BUILD_ROOT$DEST
     case $DEST in
-	/var/run|/var/lock) echo "%ghost $DEST" >> filesystem.list ;;
-	*) echo "$DEST" >> filesystem.list ;;
+	*) echo "$ATTR${ATTR:+ }$DEST" >> filesystem.list ;;
     esac
     # for tmpfiles.d
     case  $DEST in
@@ -305,6 +318,7 @@ install -m 0644  fs-var-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var-tmp.c
 
 %pretrans -p <lua> -f pretrans.lua
 %pre -p <lua> -f pre.lua
+%posttrans -p <lua> -f posttrans.lua
 
 %files -f filesystem.list
 /usr/lib/tmpfiles.d/fs-tmp.conf
