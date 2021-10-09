@@ -1632,6 +1632,7 @@ unsorted:
   - cJSON-devel 
   - c_count 
   - ca-certificates-cacert 
+  - ca-certificates-mozilla-prebuilt 
   - ca-certificates-steamtricks 
   - cabal-install: [x86_64] 
   - cabal-plan: [x86_64] 
@@ -1971,6 +1972,7 @@ unsorted:
   - clamz 
   - clang 
   - clang-devel 
+  - clang-doc: [i586] 
   - clang10 
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
@@ -1981,6 +1983,8 @@ unsorted:
   - clang11-doc 
   - clang12-devel 
   - clang12-devel-32bit: [x86_64] 
+  - clang13-devel: [i586] # devel package of dvd:libLTO13 
+  - clang13-devel-32bit: [x86_64] 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -3915,6 +3919,7 @@ unsorted:
   - gama 
   - gamemoded 
   - gamin-devel 
+  - gamin-server 
   - gammaray 
   - gammaray-devel 
   - gammu 
@@ -8677,6 +8682,7 @@ unsorted:
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM12-32bit: [x86_64] 
+  - libLLVM13-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM9 
@@ -8686,6 +8692,7 @@ unsorted:
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
   - libLTO12-32bit: [x86_64] 
+  - libLTO13-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO9 
@@ -9922,6 +9929,7 @@ unsorted:
   - libclang11 
   - libclang11-32bit: [x86_64] 
   - libclang12-32bit: [x86_64] 
+  - libclang13-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang9 
@@ -9949,7 +9957,7 @@ unsorted:
   - libclzma-suse0 
   - libcm1 
   - libcmap4-32bit: [x86_64] 
-  - libcmark0_30_0 
+  - libcmark0_30_2 
   - libcmh0 
   - libcmis-c-0_5-5 
   - libcmis-c-devel 
@@ -10423,6 +10431,8 @@ unsorted:
   - libfallocate-devel 
   - libfallocate-devel-static 
   - libfallocate0 
+  - libfam0-gamin 
+  - libfam0-gamin-32bit: [x86_64] 
   - libfann-devel 
   - libfann2 
   - libfarstream-0_2-5-32bit: [x86_64] 
@@ -12263,6 +12273,7 @@ unsorted:
   - libomp10-devel 
   - libomp11-devel 
   - libomp12-devel 
+  - libomp13-devel: [i586] # devel package of dvd:libLTO13 
   - libomp7-devel 
   - libomp9-devel 
   - libonnx 
@@ -14834,6 +14845,7 @@ unsorted:
   - lld10 
   - lld11 
   - lld12 
+  - lld13: [i586] 
   - lld7 
   - lld9 
   - lldb: [x86_64] 
@@ -14854,6 +14866,7 @@ unsorted:
   - llvm 
   - llvm-LTO-devel 
   - llvm-devel 
+  - llvm-doc: [i586] 
   - llvm-gold 
   - llvm-opt-viewer 
   - llvm-polly 
@@ -14892,6 +14905,17 @@ unsorted:
   - llvm12-polly 
   - llvm12-polly-devel 
   - llvm12-vim-plugins 
+  - llvm13: [i586] 
+  - llvm13-LTO-devel: [i586] # devel package of dvd:libLTO13 
+  - llvm13-LTO-devel-32bit: [x86_64] 
+  - llvm13-devel: [i586] # devel package of dvd:libLTO13 
+  - llvm13-devel-32bit: [x86_64] 
+  - llvm13-doc: [i586] 
+  - llvm13-gold: [i586] 
+  - llvm13-opt-viewer: [i586] 
+  - llvm13-polly: [i586] 
+  - llvm13-polly-devel: [i586] # devel package of dvd:libLTO13 
+  - llvm13-vim-plugins: [i586] 
   - llvm7 
   - llvm7-LTO-devel 
   - llvm7-LTO-devel-32bit: [x86_64] 
@@ -20979,7 +21003,6 @@ unsorted:
   - python-sip6-doc 
   - python-six-doc 
   - python-solo-python 
-  - python-solv 
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
   - python-sushy-doc 
@@ -21054,7 +21077,7 @@ unsorted:
   - python3-castellan 
   - python3-ccm 
   - python3-cinderclient 
-  - python3-clang 
+  - python3-clang: [i586] 
   - python3-cliff 
   - python3-clinkgrammar 
   - python3-clustershell 
@@ -24275,6 +24298,7 @@ unsorted:
   - python38-PyGithub 
   - python38-PyICU 
   - python38-PyInstaller 
+  - python38-PyJWT: [i586] 
   - python38-PyKMIP 
   - python38-PyLaTeX 
   - python38-PyMeeus 
@@ -24779,6 +24803,7 @@ unsorted:
   - python38-bleach 
   - python38-blessed 
   - python38-blessings 
+  - python38-blinker: [i586] 
   - python38-blist 
   - python38-blockdiag 
   - python38-blosc 
@@ -24812,6 +24837,7 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
+  - python38-cachetools: [i586] 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -25315,11 +25341,14 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
+  - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
   - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
+  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-gcsfs-fuse: [i586] 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -25351,7 +25380,9 @@ unsorted:
   - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
+  - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
+  - python38-google-auth-oauthlib: [i586] 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
@@ -25858,6 +25889,7 @@ unsorted:
   - python38-oauth2client 
   - python38-oauth2client-flask 
   - python38-oauth2client-gce 
+  - python38-oauthlib: [i586] 
   - python38-objgraph 
   - python38-oci-sdk 
   - python38-oct2py 
@@ -26531,6 +26563,7 @@ unsorted:
   - python38-requests-hawk 
   - python38-requests-html 
   - python38-requests-mock 
+  - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -30547,10 +30580,6 @@ unsorted:
   - qt6-quick3dutils-devel 
   - qt6-quick3dutils-private-devel 
   - qt6-quickcontrols2-devel 
-  - qt6-quickcontrols2-docs-html 
-  - qt6-quickcontrols2-docs-qch 
-  - qt6-quickcontrols2-examples 
-  - qt6-quickcontrols2-imports 
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
   - qt6-quickcontrols2impl-private-devel 

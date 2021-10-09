@@ -119,7 +119,6 @@
       <repopackage name="chrome-gnome-shell" arch="x86_64"/>
       <repopackage name="chrony" arch="x86_64"/>
       <repopackage name="chrony-pool-openSUSE" arch="x86_64"/>
-      <repopackage name="cifs-utils" arch="x86_64"/>
       <repopackage name="cloud-init" arch="x86_64"/>
       <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cni" arch="x86_64"/>
@@ -201,7 +200,6 @@
       <repopackage name="fuse" arch="x86_64"/>
       <repopackage name="fuse-overlayfs" arch="x86_64"/>
       <repopackage name="fwupd" arch="x86_64"/>
-      <repopackage name="gamin-server" arch="x86_64"/>
       <repopackage name="gawk"/>
       <repopackage name="gcab" arch="x86_64"/>
       <repopackage name="gcr-data" arch="x86_64"/>
@@ -571,7 +569,6 @@
       <repopackage name="libexiv2-27" arch="x86_64"/>
       <repopackage name="libexpat1"/>
       <repopackage name="libext2fs2" arch="x86_64"/>
-      <repopackage name="libfam0-gamin" arch="x86_64"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libffi8"/>
       <repopackage name="libfftw3-3" arch="x86_64"/>
@@ -851,7 +848,7 @@
       <repopackage name="libndr-krb5pac0" arch="x86_64"/>
       <repopackage name="libndr-nbt0" arch="x86_64"/>
       <repopackage name="libndr-standard0" arch="x86_64"/>
-      <repopackage name="libndr1" arch="x86_64"/>
+      <repopackage name="libndr2" arch="x86_64"/>
       <repopackage name="libneon27" arch="x86_64"/>
       <repopackage name="libnetapi0" arch="x86_64"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
@@ -1361,10 +1358,8 @@
       <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cupshelpers" arch="x86_64"/>
-      <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-talloc" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
       <repopackage name="python38-alembic" arch="x86_64"/>
       <repopackage name="python38-apipkg" arch="x86_64"/>
@@ -1453,7 +1448,6 @@
       <repopackage name="samba" arch="x86_64"/>
       <repopackage name="samba-client" arch="x86_64"/>
       <repopackage name="samba-libs" arch="x86_64"/>
-      <repopackage name="samba-libs-python3" arch="x86_64"/>
       <repopackage name="sddm" arch="x86_64"/>
       <repopackage name="sddm-branding-openSUSE" arch="x86_64"/>
       <repopackage name="sddm-theme-openSUSE" arch="x86_64"/>

@@ -289,9 +289,11 @@
       <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang-tools"/>
+      <repopackage name="clang-tools" arch="i586,i686"/>
       <repopackage name="clang12"/>
       <repopackage name="clang12-doc"/>
+      <repopackage name="clang13" arch="i586,i686"/>
+      <repopackage name="clang13-doc" arch="i586,i686"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -541,7 +543,6 @@
       <repopackage name="fuse3"/>
       <repopackage name="fwupd"/>
       <repopackage name="fwupd-lang"/>
-      <repopackage name="gamin-server"/>
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
       <repopackage name="gcab-lang"/>
@@ -1501,6 +1502,7 @@
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
       <repopackage name="libclang12"/>
+      <repopackage name="libclang13" arch="i586,i686"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -1626,7 +1628,6 @@
       <repopackage name="libexttextcat-2_0-0"/>
       <repopackage name="libf2fs8"/>
       <repopackage name="libfakekey0"/>
-      <repopackage name="libfam0-gamin"/>
       <repopackage name="libfarstream-0_2-5"/>
       <repopackage name="libfastjson4"/>
       <repopackage name="libfaxutil7_0_3"/>
@@ -2145,6 +2146,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia97"/>
       <repopackage name="libLLVM12"/>
+      <repopackage name="libLLVM13" arch="i586,i686"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2157,6 +2159,7 @@
       <repopackage name="liblrdf2"/>
       <repopackage name="libltdl7"/>
       <repopackage name="libLTO12"/>
+      <repopackage name="libLTO13" arch="i586,i686"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblua5_4-5"/>
       <repopackage name="libluajit-5_1-2"/>
@@ -2233,7 +2236,7 @@
       <repopackage name="libndr-krb5pac0"/>
       <repopackage name="libndr-nbt0"/>
       <repopackage name="libndr-standard0"/>
-      <repopackage name="libndr1"/>
+      <repopackage name="libndr2"/>
       <repopackage name="libneon27"/>
       <repopackage name="libnetapi0"/>
       <repopackage name="libnetcontrol0"/>
@@ -3699,13 +3702,11 @@
       <repopackage name="python38-bcrypt"/>
       <repopackage name="python38-Beaker"/>
       <repopackage name="python38-beautifulsoup4"/>
-      <repopackage name="python38-blinker"/>
       <repopackage name="python38-boto3"/>
       <repopackage name="python38-botocore"/>
       <repopackage name="python38-Bottleneck"/>
       <repopackage name="python38-brotlipy"/>
       <repopackage name="python38-cached-property"/>
-      <repopackage name="python38-cachetools"/>
       <repopackage name="python38-certifi"/>
       <repopackage name="python38-cffi"/>
       <repopackage name="python38-chardet"/>
@@ -3737,10 +3738,7 @@
       <repopackage name="python38-flufl.i18n"/>
       <repopackage name="python38-flufl.lock"/>
       <repopackage name="python38-fsspec"/>
-      <repopackage name="python38-fusepy"/>
       <repopackage name="python38-future"/>
-      <repopackage name="python38-gcsfs"/>
-      <repopackage name="python38-gcsfs-fuse"/>
       <repopackage name="python38-Genshi"/>
       <repopackage name="python38-gevent"/>
       <repopackage name="python38-gmpy"/>
@@ -3748,8 +3746,6 @@
       <repopackage name="python38-gobject"/>
       <repopackage name="python38-gobject-cairo"/>
       <repopackage name="python38-gobject-Gdk"/>
-      <repopackage name="python38-google-auth"/>
-      <repopackage name="python38-google-auth-oauthlib"/>
       <repopackage name="python38-greenlet"/>
       <repopackage name="python38-gst"/>
       <repopackage name="python38-gunicorn"/>
@@ -3795,7 +3791,6 @@
       <repopackage name="python38-notify2"/>
       <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
-      <repopackage name="python38-oauthlib"/>
       <repopackage name="python38-olefile"/>
       <repopackage name="python38-openpyxl"/>
       <repopackage name="python38-ordered-set"/>
@@ -3828,7 +3823,6 @@
       <repopackage name="python38-pygraphviz"/>
       <repopackage name="python38-PyHamcrest"/>
       <repopackage name="python38-pyinotify"/>
-      <repopackage name="python38-PyJWT"/>
       <repopackage name="python38-pykerberos"/>
       <repopackage name="python38-pylibmc"/>
       <repopackage name="python38-pymongo"/>
@@ -3856,7 +3850,6 @@
       <repopackage name="python38-reportlab"/>
       <repopackage name="python38-requests"/>
       <repopackage name="python38-requests-kerberos"/>
-      <repopackage name="python38-requests-oauthlib"/>
       <repopackage name="python38-requests-toolbelt"/>
       <repopackage name="python38-roman"/>
       <repopackage name="python38-rpm"/>
