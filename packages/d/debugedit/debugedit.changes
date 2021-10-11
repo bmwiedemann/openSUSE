@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Jun 30 13:06:47 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- initial version 5.0
+- Added patches from rpm:
+  * finddebuginfo.patch
+  * finddebuginfo-absolute-links.patch
+  * debugsubpkg.patch
+  * debuglink.patch
+  * debuginfo-mono.patch
+- Add patch to fix bad shift: remove-bad-shift.patch
