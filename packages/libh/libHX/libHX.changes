@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  3 00:28:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.1
+  * lib: add ``HX_slurp_fd``, ``HX_slurp_file``
+  * proc: add ``HXproc_switch_user``
+  * proc: add ``HXproc_top_fd``
+  * socket: add ``HX_socket_from_env``
+  * opt: add ``HXOPT_KEEP_ARGV`` flag
+
+-------------------------------------------------------------------
 Tue Aug  3 22:23:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.26

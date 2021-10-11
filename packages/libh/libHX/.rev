@@ -485,4 +485,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 3.26</comment>
     <requestid>910046</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>61af341ea6940ed38080fcc25292e8f4</srcmd5>
+    <version>4.0.1</version>
+    <time>1633959041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.1</comment>
+    <requestid>923056</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        3.26
+Version:        4.0.1
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
@@ -70,7 +70,7 @@ mkdir obj
 pushd obj/
 %define _configure ../configure
 %configure --includedir="%_includedir/%name" --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -82,7 +82,7 @@ rm -f "$b/%_docdir/%name"/Makefile*
 find "$b/%_libdir" -type f -name "*.la" -delete
 
 %check
-make -C obj check %{?_smp_mflags}
+%make_build -C obj check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
