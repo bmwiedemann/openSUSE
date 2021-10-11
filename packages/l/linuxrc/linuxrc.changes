@@ -1,4 +1,31 @@
 --------------------------------------------------------------------
+Mon Sep 13 07:16:12 UTC 2021 - mvidner@suse.cz
+
+- merge gh#openSUSE/linuxrc#275
+- s390x: ask for the VLAN id by default (jsc#SLE-18631)
+- 8.05
+
+--------------------------------------------------------------------
+Mon Aug 30 09:14:45 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#273
+- Add support for gz and zst compressed modules
+
+--------------------------------------------------------------------
+Mon Aug 30 07:31:11 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#235
+- let curl figure out proper authentication method (jsc#PM-2272)
+- let curl figure out proper authentication method (jsc#SLE-17026)
+
+--------------------------------------------------------------------
+Tue Aug 17 07:56:11 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#272
+- fix handling of query parameters (bsc#1169492, bsc#1188186)
+- 8.0.4
+
+--------------------------------------------------------------------
 Tue Jun 29 07:31:16 UTC 2021 - lslezak@suse.cz
 
 - merge gh#openSUSE/linuxrc#271
