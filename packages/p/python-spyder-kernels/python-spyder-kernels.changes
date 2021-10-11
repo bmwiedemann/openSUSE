@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 10 18:58:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.1.3
+  * Fix errors when setting or getting the Matplotlib backend
+  * Prevent other libraries to change the breakpoint builtin
+
+-------------------------------------------------------------------
 Thu Sep  2 13:54:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.1.1
