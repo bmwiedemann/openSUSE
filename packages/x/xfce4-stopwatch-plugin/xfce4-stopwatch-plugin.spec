@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-stopwatch-plugin
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define plugin stopwatch
 
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A panel plugin to keep track of elapsed time
 License:        BSD-2-Clause
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-stopwatch-plugin
-Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.4/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/panel-plugins/%{name}/0.5/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig(gtk+-3.0)

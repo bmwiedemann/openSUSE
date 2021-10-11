@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>811624</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b33f7c70ce9dd051bd4f5bdfc72a6e31</srcmd5>
+    <version>0.5.0</version>
+    <time>1633959112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0
+  * Fix debug output when failing to get config file name
+  * Rename configiure.ac.in -&gt; confiugre.ac
+  * Update README.md
+  * Add basic GitLab pipeline
+  * Fix make distcheck and typos
+  * Fix build with panel 4.15+
+  * Translation Updates
+</comment>
+    <requestid>924553</requestid>
+  </revision>
 </revisionlist>
