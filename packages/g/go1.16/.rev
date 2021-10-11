@@ -192,4 +192,20 @@
   * Fixes &quot;go tool dist list&quot; error &quot;all.bash does not exist&quot;</comment>
     <requestid>919904</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0928ce9ba32481c41885224df9cf7037</srcmd5>
+    <version>1.16.9</version>
+    <time>1633963719</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.9 (released 2021-10-07) includes a security fix to the
+  linker and misc/wasm directory, as well as bug fixes to the
+  runtime and to the text/template package.
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2021-38297
+  * boo#1191468 go#48797 CVE-2021-38297
+  * go#48799 security: fix CVE-2021-38297 misc/wasm, cmd/link: do not let command line args overwrite global data
+  * go#48443 text/template: should t.init() be executed before t.muTmpl.Lock() in AddParseTree() method?
+  * go#47858 time: timer reset sometimes ignored, causing delayed ticks (forwarded request 924123 from jfkw)</comment>
+    <requestid>924125</requestid>
+  </revision>
 </revisionlist>
