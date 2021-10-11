@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rubocop-ast
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 %define mod_name rubocop-ast
 %define mod_full_name %{mod_name}-%{version}
@@ -35,7 +35,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/rubocop-hq/rubocop-ast
+URL:            https://github.com/rubocop/rubocop-ast
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        RuboCop tools to deal with Ruby code AST
