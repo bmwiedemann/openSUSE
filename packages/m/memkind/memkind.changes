@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 30 16:05:38 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- update to version 1.12.0 (JSC#SLE-22050)
+  * Optimized hog memory
+  * Removed memkind_malloc_wrapper
+  * Extended error handling in pmem_allocator
+  From version 1.11.0:
+  * Provided a function to verify if path supports DAX - memkind_check_dax_path()
+  * Provided a NUMA node interleave variant for MEMKIND_DAX_KMEM (MEMKIND_DAX_KMEM_INTERLEAVE)
+  * Provided a function to enable/disable background threads - memkind_set_bg_threads()
+  * Provided a function to print statistics - memkind_stats_print()
+  * Extended configure mechanism by enable-memkind-initial-exec-tls option
+  * Extended memkind to support HMAT (libhwloc required)
+  * Provided memory property abstraction (MEMKIND_HIGHEST_CAPACITY*, MEMKIND_LOWEST_LATENCY_LOCAL*, MEMKIND_HIGHEST_BANDWIDTH_LOCAL*)
+  * Extended support for MEMKIND_HBW* to platforms with full HMAT support (kernel+hardware)
+
+-------------------------------------------------------------------
 Mon Jan 25 09:46:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64

@@ -1,7 +1,7 @@
 #
 # spec file for package memkind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           memkind
 Summary:        User Extensible Heap Manager
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.10.1
+Version:        1.12.0
 Release:        0
 URL:            http://memkind.github.io/memkind
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -100,10 +100,12 @@ test -f configure || ./autogen.sh
 %install
 cd %{_builddir}/%{buildsubdir}
 %{__make} DESTDIR=%{buildroot} install
+# remove unwanted libs
 rm -f %{buildroot}/libautohbw.*
 rm -f %{buildroot}/%{_libdir}/lib%{namespace}.la
-rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw}.*
+rm -f %{buildroot}/%{_libdir}/lib{numakind,autohbw,memtier}.*
 rm -f %{buildroot}/%{_mandir}/man7/autohbw.*
+rm -f %{buildroot}/%{_mandir}/man7/memtier.*
 
 %post -n libmemkind0 -p /sbin/ldconfig
 
