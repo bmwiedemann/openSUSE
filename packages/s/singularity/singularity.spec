@@ -41,6 +41,7 @@ BuildRequires:  go1.13
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
+BuildRequires:  sysuser-tools
 %ifarch aarch64
 BuildRequires:  binutils-gold
 %endif
@@ -109,13 +110,16 @@ for j in LICENSE.md LICENSE; do
 	fi
     done
 done
+
+echo "g %name -" > system-user-%{name}.conf
+%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
+install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+
 %fdupes -s .tmp
 mv .tmp/* .
 rmdir .tmp
 
-%pre
-getent group singularity >/dev/null || groupadd -r singularity
-exit 0
+%pre -f %{name}.pre
 
 %post
 %set_permissions %{_libexecdir}/singularity/bin/starter-suid
@@ -159,5 +163,6 @@ exit 0
 %dir %{_localstatedir}/lib/singularity/mnt
 %dir %{_localstatedir}/lib/singularity/mnt/session
 %{_mandir}/man1/*
+%{_sysusersdir}/system-user-%{name}.conf
 
 %changelog

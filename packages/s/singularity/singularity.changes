@@ -7,6 +7,11 @@ Fri Oct  1 13:09:02 UTC 2021 - Christian Goll <cgoll@suse.com>
      SLE-15SP3.def
 
 -------------------------------------------------------------------
+Thu Sep 30 09:08:22 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set group singularity.
+
+-------------------------------------------------------------------
 Mon Sep 13 08:47:48 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Updated to version 3.8.3 which fixes regression introduced in 3.8.1 that
