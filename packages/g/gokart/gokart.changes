@@ -1,16 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 08 14:05:36 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.3.0:
+  * Enhancements
+    * Output findings to file CLI flag
+    * Verbose output source parent function fix
+    * Add exit code on findings flag
+    * Update remote scanning functionality to include private repos
+    * Add basic dockerfile and README
+    * CWE mappings for findings
+    * Output total findings information
+    * Output findings as json
+    * Highlight relevant finding lines
+  * Bug Fixes
+    * Channel incorrectly identified as source of untrusted input
+    * Verbose trace has incorrect parent signatures
+    * panic: err: go command required
+    * panic: index out of range
+
+-------------------------------------------------------------------
 Thu Sep 02 14:03:52 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.2.0:
-  * Add new flags usage to Getting Started (#31)
-  * Adding -r flag to automatically clone and test remote go modules, along with functionality to test the Scan cmd (#20)
-  * Making a minor change to error messages when packages aren't found in the directory (#28)
-  * Feature enhancement implementation for Issue #3 (Findings Output to File Flag) (#24)
-  * changed panic to log.Fatal (#22)
-  * removed non-user-controllable input sources (#23)
-  * typo fixes (#14)
-  * Improved config mgmt and fixed out of bounds panic (#5)
-  * add link to Praetorian blog post in README
+  * Added support for writing findings output to a file to ease CI/CD integration via the -o flag.
+  * Added remote fetch + scan functionality via the -r flag.
+  * Updated README to cover new functionality.
 
 -------------------------------------------------------------------
 Thu Aug 19 13:17:50 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
