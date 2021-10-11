@@ -37,23 +37,15 @@ Source1:        %{name}-%{version}.tar.xz.sig
 Patch0:         U_glamor-Fix-handling-of-1-bit-pixmaps.patch
 BuildRequires:  meson
 BuildRequires:  ninja
-#BuildRequires:  bison
-#BuildRequires:  flex
-#BuildRequires:  libtool
 BuildRequires:  pkgconfig
-#BuildRequires:  systemd-rpm-macros
 BuildRequires:  rendercheck
 BuildRequires:  pkgconfig(bigreqsproto)
 BuildRequires:  pkgconfig(compositeproto)
 BuildRequires:  pkgconfig(damageproto)
-BuildRequires:  pkgconfig(libtirpc)
-#BuildRequires:  pkgconfig(dbus-1)
-#BuildRequires:  pkgconfig(dmx)
 BuildRequires:  pkgconfig(dri)
-#BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(dri3proto)
-#BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(libtirpc)
 
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -61,22 +53,16 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-eglstream-protocols)
 %endif
 BuildRequires:  pkgconfig(fixesproto)
-#BuildRequires:  pkgconfig(fontconfig)
-#BuildRequires:  pkgconfig(fontenc)
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(fontutil)
-#BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
-#BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(inputproto)
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(libdrm)
-#BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(openssl)
-#BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(presentproto)
 BuildRequires:  pkgconfig(randrproto)
@@ -84,49 +70,24 @@ BuildRequires:  pkgconfig(recordproto)
 BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
-#BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(videoproto)
-#BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-damage)
 BuildRequires:  pkgconfig(xcb-sync)
 BuildRequires:  pkgconfig(xcb-xinput)
-#BuildRequires:  pkgconfig(xaw7)
-#BuildRequires:  pkgconfig(xcb-aux)
-#BuildRequires:  pkgconfig(xcb-icccm)
-#BuildRequires:  pkgconfig(xcb-image)
-#BuildRequires:  pkgconfig(xcb-keysyms)
-#BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcmiscproto)
 BuildRequires:  pkgconfig(xdmcp)
-#BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xextproto)
 BuildRequires:  pkgconfig(xf86bigfontproto)
-#BuildRequires:  pkgconfig(xf86dgaproto)
-#BuildRequires:  pkgconfig(xf86driproto)
 BuildRequires:  pkgconfig(xf86vidmodeproto)
-#BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xfont2)
-#BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xineramaproto)
 BuildRequires:  pkgconfig(xkbcomp)
 BuildRequires:  pkgconfig(xkbfile)
-#BuildRequires:  pkgconfig(xmu)
-#BuildRequires:  pkgconfig(xorg-macros)
-#BuildRequires:  pkgconfig(xp)
-#BuildRequires:  pkgconfig(xpm)
-#BuildRequires:  pkgconfig(xprintutil)
 BuildRequires:  pkgconfig(xproto)
-#BuildRequires:  pkgconfig(xrender)
-#BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xshmfence)
-#BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
-#BuildRequires:  pkgconfig(xtst)
-#BuildRequires:  pkgconfig(xv)
-
-#BuildRequires:  pkgconfig(libudev)
 
 %ifnarch s390 s390x
 Requires(pre):  %fillup_prereq
@@ -137,8 +98,6 @@ Requires:       xkbcomp
 %ifnarch s390 s390x
 Requires:       libpixman-1-0
 %endif
-#Requires:       Mesa
-#Requires:       xkeyboard-config
 Obsoletes:      xorg-x11-server-wayland < %{version}
 Provides:       xorg-x11-server-wayland = %{version}
 
@@ -161,28 +120,10 @@ Group:          System/Libraries
 Requires:       %{name}
 Requires:       c_compiler
 Requires:       meson
-#Requires:       pkgconfig(fontconfig)
-#Requires:       pkgconfig(fontenc)
-#Requires:       pkgconfig(freetype2)
-#Requires:       pkgconfig(ice)
 Requires:       pkgconfig(libdrm)
-#Requires:       pkgconfig(libevdev)
-#Requires:       pkgconfig(libudev)
-#Requires:       pkgconfig(mtdev)
-#Requires:       pkgconfig(sm)
-#Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xau)
 Requires:       pkgconfig(xdmcp)
-#Requires:       pkgconfig(xext)
-#Requires:       pkgconfig(xfixes)
 Requires:       pkgconfig(xkbfile)
-#Requires:       pkgconfig(xmu)
-#Requires:       pkgconfig(xorg-macros)
-#Requires:       pkgconfig(xp)
-#Requires:       pkgconfig(xpm)
-#Requires:       pkgconfig(xprintutil)
-#Requires:       pkgconfig(xrender)
-#Requires:       pkgconfig(xt)
 Requires:       pkgconfig(xtrans)
 Requires:       pkgconfig(xv)
 
@@ -195,15 +136,6 @@ This package contains the Xwayland Server development files.
 
 %build
 %define _lto_cflags %{nil}
-
-#option('builder_addr', type: 'string', description: 'Builder address', value: 'xorg@lists.freedesktop.org')
-#option('builder_string', type: 'string', description: 'Additional builder string')
-
-#option('xkb_default_rules', type: 'string', value: 'evdev')
-#option('xkb_default_model', type: 'string', value: 'pc105')
-#option('xkb_default_layout', type: 'string', value: 'us')
-#option('xkb_default_variant', type: 'string')
-#option('xkb_default_options', type: 'string')
 
 %{meson} \
    -Dglamor=true \

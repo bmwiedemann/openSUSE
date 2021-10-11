@@ -53,4 +53,12 @@
     gimp on Wayland (which needs Xwayland) (boo#1189310)</comment>
     <requestid>922042</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>b4fc57a1ac006af586d06a52271fcb5f</srcmd5>
+    <version>21.1.2</version>
+    <time>1633963715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923789</requestid>
+  </revision>
 </revisionlist>
