@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  7 14:53:51 MDT 2021 - carnold@suse.com
+
+- bsc#1191356 - virt-manager should not depend on gtk4
+  Modified files:
+    virt-manager.spec
+    virtman-dont-specify-gtksource-version.patch
+    virtman-dont-specify-vte-version.patch
+
+-------------------------------------------------------------------
+Mon Oct  4 15:58:01 MDT 2021 - carnold@suse.com
+
+- jsc#SLE-20856 Dev: KVM: Enable vfio-ccw and vfio-ap in virt-* tools
+  965480e8-virt-install-add-mediated-device.patch
+
+-------------------------------------------------------------------
 Wed Sep  8 14:10:59 MDT 2021 - carnold@suse.com
 
 - bsc#1190215 - [virt-install] No Support for SUSE Product SLE-HPC

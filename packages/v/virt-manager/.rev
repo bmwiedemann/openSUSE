@@ -1774,4 +1774,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>919281</requestid>
   </revision>
+  <revision rev="225" vrev="11">
+    <srcmd5>f9392351fb26be831758e31c83f9e183</srcmd5>
+    <version>3.2.0</version>
+    <time>1633963719</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1191356 - virt-manager should not depend on gtk4</comment>
+    <requestid>924117</requestid>
+  </revision>
 </revisionlist>

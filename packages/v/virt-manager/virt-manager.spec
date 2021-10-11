@@ -39,6 +39,7 @@ Patch4:         cf93e2db-console-fix-error-with-old-pygobject.patch
 Patch5:         143c6bef-virtinst-fix-error-message-format-string.patch
 Patch6:         fe8722e7-createnet-Remove-some-unnecessary-max_length-annotations.patch
 Patch7:         d9b5090e-Fix-forgetting-password-from-keyring.patch
+Patch8:         965480e8-virt-install-add-mediated-device.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -93,31 +94,23 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define verrel %{version}-%{release}
 Requires:       dbus-1-x11
 Requires:       dconf
-Requires:       gtk3 >= 3.22
-Requires:       python3-gobject-Gdk
+Requires:       gtk3
+Requires:       python3-gobject
 # For console widget
 Requires:       python3-cairo
 Requires:       python3-gobject-cairo
 Recommends:     python3-SpiceClientGtk
-Requires:       gtksourceview >= 3
 Requires:       virt-install
 Requires:       virt-manager-common = %{verrel}
+Requires:       typelib(GtkSource)
 
 %if %{with_guestfs}
 Requires:       python3-libguestfs
 %endif
 
-BuildRequires:  glib2-devel
-BuildRequires:  gtk3-tools
-BuildRequires:  intltool
-BuildRequires:  perl
+BuildRequires:  gettext
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
-BuildRequires:  python3-gobject
-BuildRequires:  python3-libvirt-python >= 0.7.0
-BuildRequires:  python3-libxml2-python
-BuildRequires:  python3-requests
-BuildRequires:  typelib(Libosinfo)
 
 %description
 Virtual Machine Manager provides a graphical tool for administering virtual
@@ -178,6 +171,7 @@ machine).
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 # SUSE Only
 %patch70 -p1
 %patch71 -p1
