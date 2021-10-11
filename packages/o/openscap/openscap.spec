@@ -266,11 +266,7 @@ ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/ope
 
 %files docker
 %defattr(-, root, root)
-%if 0%{?suse_version} >= 1500
 %{python3_sitelib}/oscap_docker_python
-%else
-%{python_sitelib}/oscap_docker_python
-%endif
 %{_bindir}/oscap-docker
 
 %if 0%{?with_bindings}

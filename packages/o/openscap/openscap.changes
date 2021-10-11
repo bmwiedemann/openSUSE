@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 15:33:23 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- ship python3 docker module always
+
+-------------------------------------------------------------------
 Thu Aug 19 04:51:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Since upstream has moved to Python 3, switch the BuildRequires from

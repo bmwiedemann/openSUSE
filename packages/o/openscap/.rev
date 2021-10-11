@@ -1118,4 +1118,12 @@
   python-devel to python3-devel. (forwarded request 912966 from StevenK)</comment>
     <requestid>913461</requestid>
   </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>16b06ab31d42a919f7a8cffc3e352a6f</srcmd5>
+    <version>1.3.5</version>
+    <time>1633959061</time>
+    <user>dimstar_suse</user>
+    <comment>- ship python3 docker module always</comment>
+    <requestid>924193</requestid>
+  </revision>
 </revisionlist>
