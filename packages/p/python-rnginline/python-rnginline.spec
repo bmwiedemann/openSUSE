@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnginline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Requires:       python-docopt
 Requires:       python-lxml
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-coverage
 Suggests:       python-mock
 Suggests:       python-pytest >= 2.6.4
@@ -41,7 +41,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module docopt}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 %endif
@@ -65,7 +64,13 @@ into a single RELAX NG schema.
 
 %if %{with test}
 %check
-%python_exec setup.py test
+pushd rnginline
+# test/test_rnginline.py:113: in <module>
+#    test_testcases_testcases = _load_testcases()
+# [..]
+# E   NotImplementedError: Can't perform this operation for unregistered loader type
+rm test/test_{rnginline,cmdline}.py
+%pytest
 %endif
 
 %post

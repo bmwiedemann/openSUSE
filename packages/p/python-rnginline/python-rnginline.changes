@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  8 08:17:07 UTC 2021 - pgajdos@suse.com
+
+- actually test the package, use %pytest macro
+
+-------------------------------------------------------------------
 Tue May 19 09:27:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
