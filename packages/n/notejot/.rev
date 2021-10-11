@@ -136,4 +136,12 @@
     <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
     <requestid>917850</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a99698b354116e0fd3a203b685634170</srcmd5>
+    <version>3.1.6</version>
+    <time>1633959082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 924272 from awissu)</comment>
+    <requestid>924273</requestid>
+  </revision>
 </revisionlist>
