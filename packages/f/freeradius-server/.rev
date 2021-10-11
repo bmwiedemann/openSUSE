@@ -844,4 +844,41 @@ Feature Improvements
     <comment></comment>
     <requestid>903262</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>b6903e5f6e4ec0fc2984385267c520f0</srcmd5>
+    <version>3.0.25</version>
+    <time>1633959064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.25:
+  * `correct_escapes` has been added back into the default configuration.
+  * A segfault when trying to proxy to zombie home servers has been fixed.
+  * A number of other small bugs and compiler warnings were fixed.
+  * Added support for building with PostgreSQL 14. 
+
+- Update to version 3.0.24 (jsc#SLE-21237)
+  Feature Improvements
+  * Add sanitizer options to configure script.
+  * Log information needed by Wireshark to decode TLS sessions.
+  * Allow more liberal SQL commands in rlm_sql_map.
+  * Update dictionary.apc, dictionary.h3c.
+  * Add new Acct-Status-Type Subsystem-On and Subsystem-Off See
+    dictionary.iana and
+    https://freeradius.org/rfc/acct_status_type_subsystem.html.
+  * Add reject_unknown_intermediate_ca. See mods-available/eap.
+  * Add dynamic loading of certificates via TLS-Session-Cert-File
+    See raddb/certs/realms/README.md.
+  * Add Server Name Indication (SNI) for outbound RadSec connections
+    See raddb/sites-available/tls, and the home server tls
+    configuration.
+  * Support SNI for inbound RadSec connections. Certificates will be
+    loaded from &quot;realm_dir&quot; in the &quot;tls&quot; section. SNI will be cached
+    in the TLS-Server-Name-Indication attribute.
+  * Preliminary support for haproxy &quot;PROXY&quot; protocol See sites-available/tls,
+    &quot;proxy_protocol&quot; and doc/antora/modules/howto/pages/protocols/proxy/.
+  * Generate parse errors in more circumstances when we know that
+    the configuration is wrong.
+  * Add &quot;weeklycounter&quot; to sample sqlcounter configuration.
+  * Add certificate attributes to the request list, even if</comment>
+    <requestid>924184</requestid>
+  </revision>
 </revisionlist>

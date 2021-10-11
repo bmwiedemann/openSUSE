@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Oct  7 21:34:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.0.25:
+  * `correct_escapes` has been added back into the default configuration.
+  * A segfault when trying to proxy to zombie home servers has been fixed.
+  * A number of other small bugs and compiler warnings were fixed.
+  * Added support for building with PostgreSQL 14. 
+
+-------------------------------------------------------------------
+Thu Oct  7 15:02:11 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 3.0.24 (jsc#SLE-21237)
+  Feature Improvements
+  * Add sanitizer options to configure script.
+  * Log information needed by Wireshark to decode TLS sessions.
+  * Allow more liberal SQL commands in rlm_sql_map.
+  * Update dictionary.apc, dictionary.h3c.
+  * Add new Acct-Status-Type Subsystem-On and Subsystem-Off See
+    dictionary.iana and
+    https://freeradius.org/rfc/acct_status_type_subsystem.html.
+  * Add reject_unknown_intermediate_ca. See mods-available/eap.
+  * Add dynamic loading of certificates via TLS-Session-Cert-File
+    See raddb/certs/realms/README.md.
+  * Add Server Name Indication (SNI) for outbound RadSec connections
+    See raddb/sites-available/tls, and the home server tls
+    configuration.
+  * Support SNI for inbound RadSec connections. Certificates will be
+    loaded from "realm_dir" in the "tls" section. SNI will be cached
+    in the TLS-Server-Name-Indication attribute.
+  * Preliminary support for haproxy "PROXY" protocol See sites-available/tls,
+    "proxy_protocol" and doc/antora/modules/howto/pages/protocols/proxy/.
+  * Generate parse errors in more circumstances when we know that
+    the configuration is wrong.
+  * Add "weeklycounter" to sample sqlcounter configuration.
+  * Add certificate attributes to the request list, even if
+    the certificates have expired.
+  * The Simultaneous-Use code is now IPv6 aware, and can deal
+    with NAS-IPv6-Address.
+  * Add dictionary.cambium.
+
+  Bug Fixes
+  * Fix crash in trustrouter module (#4115)
+  * Fix crash in state handling.
+  * Don't alter global options in redhat logrotate scripts.
+  * EAP-FAST will print errors and continue, rather than exiting
+    when OpenSSL fails various internal sanity checks.
+  * Allow admin to manually change core limits, even when core
+    limits are disabled.
+  * Fix chunked rlm_rest HTTP body. Closes #4131
+  * Many fixes around the SQL ippool queries.conf and schema
+  * Fix MySQL stored procedures. PR #4170
+  * Rework connection pool management for corner cases Fixes #4161, #4162, #4163.
+  * Final fix for double free in #3188.
+  * Fix sqlcounter wrong memory free. PR #4192
+  * Accept slow writes from proxies over TCP, which allows the server
+    to make more progress when it receives partial packets.
+  * Add 'weeklycounter' for rlm_sqlcounter.
+  * Outbound proxying over TCP / TLS is better able to deal with
+    partial TCP reads, and has fewer issues with slow networks.
+  * Fix wrong data-type of Acct-Delay-Time in rlm_unix.
+  * Fix EAP-FAST PAC lifetime calculation.
+  * Print correct encoded packet length when debugging.
+
+- remove python2 build
+- drop references to SLE11
+- freeradius-server-radiusd-logrotate.patch: upstreamed
+
+-------------------------------------------------------------------
 Sun Jun 27 15:43:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add ldap-schemas subpackage for OpenLDAP radius schemas

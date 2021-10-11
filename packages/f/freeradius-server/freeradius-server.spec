@@ -18,35 +18,15 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.0.23
+Version:        3.0.25
 Release:        0
 
-%if 0%{?suse_version} >= 1500
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
-
-%if 0%{?suse_version} > 1140
-%bcond_without systemd
-%bcond_without libjson
-%define runpath /run
-%else
-%bcond_with    systemd
-%bcond_with    libjson
-%define runpath /var/run
-%endif
-
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
-%if 0%{?suse_version} > 1330 || ( 0%{?suse_version} > 1140 && 0%{?is_opensuse} )
-%bcond_without freetds
-%else
-%bcond_with    freetds
-%endif
-
 %if 0%{?suse_version} > 1330 || 0%{?is_opensuse}
+%bcond_without freetds
 %bcond_without memcached
 %else
+%bcond_with    freetds
 %bcond_with    memcached
 %endif
 
@@ -62,7 +42,6 @@ Source1:        radiusd.service
 Source2:        freeradius-tmpfiles.conf
 Patch0:         freeradius-server-fix-perl-shbang.patch
 Patch1:         freeradius-server-tmpfiles.patch
-Patch2:         freeradius-server-radiusd-logrotate.patch
 Patch3:         freeradius-server-rcradiusd.patch
 Patch5:         freeradius-server-rlm_sql_unixodbc-configure.patch
 Patch6:         freeradius-server-radclient-init-error-buffer.patch
@@ -71,9 +50,6 @@ Patch8:         freeradius-server-enable-python3.patch
 BuildRequires:  apache2-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  db-devel
-%if 0%{?suse_version} > 0 && 0%{?suse_version} <= 1110
-BuildRequires:  libdb-5_1-devel
-%endif
 %if %{with freetds}
 BuildRequires:  freetds-devel
 %endif
@@ -85,9 +61,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  libcom_err-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidn-devel
-%if %{with json}
 BuildRequires:  libjson-devel
-%endif
 %if %{with memcached}
 BuildRequires:  libmemcached-devel
 %endif
@@ -102,20 +76,10 @@ BuildRequires:  openssl-devel > 1.0
 BuildRequires:  pam-devel
 BuildRequires:  perl
 BuildRequires:  postgresql-devel
-%if 0%{with python2}
-BuildRequires:  python-devel
-%endif
 BuildRequires:  python3-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  unixODBC-devel
-%if 0%{?suse_version} > 1110
 BuildRequires:  pkgconfig(apr-1)
-%else
-BuildRequires:  libapr1-devel
-%endif
-%if !%{with systemd}
-Requires:       %insserv_prereq
-%endif
 Requires:       %{name}-libs = %{version}
 Requires:       coreutils
 Requires:       pwdutils
@@ -126,11 +90,11 @@ Provides:       freeradius = %{version}
 Provides:       radiusd
 Obsoletes:      freeradius < %{version}
 %{?libperl_requires}
-Conflicts:      radiusd-livingston radiusd-cistron icradius
-%if %{with systemd}
+Conflicts:      icradius
+Conflicts:      radiusd-cistron
+Conflicts:      radiusd-livingston
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
-%endif
 
 #bsc#1055679 - freeradius-server does not provide winbind/AD auth
 BuildRequires:  libwbclient-devel
@@ -211,14 +175,6 @@ Requires:       perl
 %description perl
 FreeRADIUS plugin providing Perl support.
 
-%package python
-Summary:        Python support for freeradius
-Group:          System/Daemons
-Requires:       %{name} = %{version}
-
-%description python
-FreeRADIUS plugin providing Python support.
-
 %package python3
 Summary:        Python3 support for freeradius
 Group:          System/Daemons
@@ -283,18 +239,13 @@ export LDFLAGS="-pie"
   --without-rlm_rediswho \
   --without-rlm_sql_oracle \
   --without-rlm_securid \
-%if ! %{with python2}
   --without-rlm_python \
-%endif
   --with-rlm-python3-include-dir=%{_includedir}/python%{python3_version}%{py3_abiflags} \
 %if ! %{with memcached}
   --without-rlm_cache_memcached \
 %endif
 %if ! %{with freetds}
   --without-rlm_sql_freetds \
-%endif
-%if ! %{with json}
-  --without-rlm_rest \
 %endif
   --disable-silent-rules \
   --disable-openssl-version-check
@@ -319,19 +270,13 @@ install -d     %{buildroot}%{_sysconfdir}/pam.d
 install -d     %{buildroot}%{_sysconfdir}/logrotate.d
 install -m 644 suse/radiusd-pam %{buildroot}%{_sysconfdir}/pam.d/radiusd
 install -m 644 suse/radiusd-logrotate %{buildroot}%{_sysconfdir}/logrotate.d/radiusd
-%if %{with systemd}
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{unitname}.conf
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{unitname}.service
 # name the rc script according to the systemd unit
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcradiusd
-%else
-install -d -m 755 %{buildroot}%{_sysconfdir}/init.d
-install    -m 744 suse/rcradiusd %{buildroot}%{_sysconfdir}/init.d/freeradius
-ln -sf %{_sysconfdir}/init.d/freeradius %{buildroot}%{_sbindir}/rcfreeradius
-%endif
 cp -al %{buildroot}%{_sbindir}/radiusd %{buildroot}%{_sbindir}/radrelay
-install -D -d -m 0710 %{buildroot}%{runpath}/radiusd
+install -D -d -m 0710 %{buildroot}%{_rundir}/radiusd
 mv -v doc/README doc/README.doc
 # remove unneeded stuff
 rm %{buildroot}%{_sysconfdir}/raddb/certs/*.crl
@@ -356,12 +301,7 @@ rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/dhcp/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/oracle
 rm -r %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/oracle
-%if ! %{with json}
-rm %{buildroot}%{_sysconfdir}/raddb/mods-available/rest
-%endif
-%if ! %{with python2}
 rm %{buildroot}%{_sysconfdir}/raddb/mods-available/python
-%endif
 rm %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/ippool/mongo/queries.conf
 rm %{buildroot}%{_sysconfdir}/raddb/mods-config/sql/main/mongo/queries.conf
 rm %{buildroot}%{_sysconfdir}/raddb/sites-available/coa-relay
@@ -377,39 +317,19 @@ getent passwd radiusd >/dev/null || %{_sbindir}/useradd -r -g radiusd \
 %{_bindir}/getent group winbind >/dev/null \
   || %{_sbindir}/groupadd -r winbind
 # add radiusd to winbind group
-%if 0%{?suse_version} > 0 && 0%{?suse_version} < 1140
-%{_sbindir}/groupmod -A radiusd winbind
-%else
 %{_bindir}/gpasswd -a radiusd winbind
-%endif
 
-%if %{with systemd}
 %service_add_pre %{unitname}.service
-%endif
 
 %post
-%if %{with systemd}
 %service_add_post %{unitname}.service
 systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
-%else
-%fillup_and_insserv freeradius
-%endif
 
 %preun
-%if %{with systemd}
 %service_del_preun %{unitname}.service
-%else
-%insserv_cleanup
-%restart_on_update freeradius
-%endif
 
 %postun
-%if %{with systemd}
 %service_del_postun %{unitname}.service
-%else
-%insserv_cleanup
-%restart_on_update freeradius
-%endif
 
 %files doc
 %defattr(-,root,root)
@@ -424,12 +344,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 # SUSE
 %config %{_sysconfdir}/pam.d/radiusd
 %config %{_sysconfdir}/logrotate.d/radiusd
-%if %{with systemd}
 %{_sbindir}/rcradiusd
-%else
-%config %{_sysconfdir}/init.d/freeradius
-%{_sbindir}/rcfreeradius
-%endif
 %dir %attr(755,radiusd,radiusd) %{_localstatedir}/lib/radiusd
 # configs
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb
@@ -451,10 +366,8 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %{_sysconfdir}/raddb/panic.gdb
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/certs/*.cnf
 %attr(750,root,radiusd) %{_sysconfdir}/raddb/certs/bootstrap
-%if %{with systemd}
 %{_tmpfilesdir}/%{unitname}.conf
 %{_unitdir}/%{unitname}.service
-%endif
 
 # mods-config
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config
@@ -467,8 +380,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/moonshot-targeted-ids/*
 %dir %attr(750,root,radiusd) /etc/raddb/mods-config/sql/moonshot-targeted-ids
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/preprocess/*
-#%%dir %%attr(750,root,radiusd) %%{_sysconfdir}/raddb/mods-config/python
-#%%attr(640,root,radiusd) %%config(noreplace) %%{_sysconfdir}/raddb/mods-config/python/radiusd.py
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/ippool-dhcp/mysql/schema.sql
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/ippool/postgresql
@@ -568,18 +479,13 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/pap
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/passwd
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/preprocess
-%if %{with python2}
-%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/python
-%endif
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/python3
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/radutmp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/realm
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/redis
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/rediswho
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/replicate
-%if %{with json}
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/rest
-%endif
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/smbpasswd
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/smsotp
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-available/soh
@@ -651,7 +557,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 
 %config(noreplace) %{_sysconfdir}/raddb/users
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/templates.conf
-%attr(710,radiusd,radiusd) %dir %ghost %{runpath}/radiusd
+%attr(710,radiusd,radiusd) %dir %ghost %{_rundir}/radiusd
 # binaries
 %defattr(-,root,root)
 %{_sbindir}/checkrad
@@ -712,9 +618,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %{_libdir}/freeradius/rlm_radutmp.so
 %{_libdir}/freeradius/rlm_realm.so
 %{_libdir}/freeradius/rlm_replicate.so
-%if %{with json}
 %{_libdir}/freeradius/rlm_rest.so
-%endif
 %{_libdir}/freeradius/rlm_soh.so
 %{_libdir}/freeradius/rlm_sometimes.so
 %{_libdir}/freeradius/rlm_sql.so
@@ -769,15 +673,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 
 %{_libdir}/freeradius/rlm_perl.so
 
-%if %{with python2}
-%files python
-%defattr(-,root,root)
-%dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/python
-%attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/python/radiusd.py
-%{_sysconfdir}/raddb/mods-config/python/example.py*
-%{_libdir}/freeradius/rlm_python.so
-%endif
-
 %files python3
 %defattr(-,root,root)
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/python3
@@ -789,6 +684,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %defattr(-,root,root)
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/counter/mysql
 %attr(640,root,radiusd) %config(noreplace)%{_sysconfdir}/raddb/mods-config/sql/counter/mysql/dailycounter.conf
+%attr(640,root,radiusd) %config(noreplace)%{_sysconfdir}/raddb/mods-config/sql/counter/mysql/weeklycounter.conf
 %attr(640,root,radiusd) %config(noreplace)%{_sysconfdir}/raddb/mods-config/sql/counter/mysql/expire_on_login.conf
 %attr(640,root,radiusd) %config(noreplace)%{_sysconfdir}/raddb/mods-config/sql/counter/mysql/monthlycounter.conf
 %attr(640,root,radiusd) %config(noreplace)%{_sysconfdir}/raddb/mods-config/sql/counter/mysql/noresetcounter.conf
@@ -835,6 +731,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 %defattr(-,root,root)
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql/dailycounter.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql/weeklycounter.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql/expire_on_login.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql/monthlycounter.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/postgresql/noresetcounter.conf
@@ -877,6 +774,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/%{unitname}.conf
 
 %dir %attr(750,root,radiusd) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/dailycounter.conf
+%attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/weeklycounter.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/expire_on_login.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/monthlycounter.conf
 %attr(640,root,radiusd) %config(noreplace) %{_sysconfdir}/raddb/mods-config/sql/counter/sqlite/noresetcounter.conf
