@@ -17,23 +17,6 @@
 #
 
 
-# Build with OpenMPI
-%if 0%{?sle_version} == 0
-%define mpiver  openmpi2
-Obsoletes:      gromacs-openmpi < %{version}
-%else
-%if 0%{?sle_version} <= 120300
-%define mpiver  openmpi
-%else
-Obsoletes:      gromacs-openmpi < %{version}
-  %if 0%{?sle_version} <= 150000
-  %define mpiver  openmpi2
-  %else
-  %define mpiver  openmpi3
-  %endif
-%endif
-%endif
-
 Name:           gromacs
 Version:        2021.2
 Release:        0
@@ -47,14 +30,13 @@ Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
 
-BuildRequires:  %{mpiver}
-BuildRequires:  %{mpiver}-devel
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  lapack-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
+BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fftw3)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -126,26 +108,27 @@ and solid state physics.
 
 This package contains documentation for gromacs.
 
-%package %{mpiver}
+%package openmpi
 Summary:        Molecular dynamics package
 Group:          Productivity/Scientific/Chemistry
 Requires:       %{name} = %{version}
+%openmpi_requires
 
-%description %{mpiver}
+%description openmpi
 GROMACS is a versatile and extremely well optimized package to perform
 molecular dynamics computer simulations and subsequent trajectory analysis.
 It is developed for biomolecules like proteins, but the extremely high
 performance means it is used also in several other field like polymer chemistry
 and solid state physics.
 
-This package contains the %{mpiver} version of GROMACS.
+This package contains the openmpi version of GROMACS.
 
 %prep
 %setup -q -n %{name}-%{uversion}
 tar -xzf %{S:2}
 
 %build
-source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
+%setup_openmpi
 
 # save some memory
 %ifarch ppc64le
@@ -186,8 +169,8 @@ cd nompi
 %cmake_build
 
 cd ../..
-mkdir %{mpiver}
-cd %{mpiver}
+mkdir openmpi
+cd openmpi
 %{cmake} \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_VERBOSE_MAKEFILE=TRUE \
@@ -211,7 +194,7 @@ cd %{mpiver}
 %install
 cd nompi
 %cmake_install
-cd ../%{mpiver}
+cd ../openmpi
 %cmake_install
 cd ..
 
@@ -232,7 +215,7 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 # gmock based tests don't work on i586
 %ifnarch s390x i586
 %make_build -C nompi/build check
-%make_build -C %{mpiver}/build check
+%make_build -C openmpi/build check
 %endif
 
 %post   -n libgromacs%sover -p /sbin/ldconfig
@@ -258,7 +241,7 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 %doc %{_datadir}/gromacs/README*
 %doc %{_datadir}/gromacs/COPYING
 
-%files %{mpiver}
+%files openmpi
 %{_bindir}/*_mpi
 
 %files devel

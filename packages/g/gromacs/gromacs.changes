@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 21:06:36 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Use openmpi macros to always build with the default openmpi version. 
+
+-------------------------------------------------------------------
 Mon Jul 12 01:14:03 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Enabled legacy api needed for votca-csg

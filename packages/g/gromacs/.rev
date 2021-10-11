@@ -432,4 +432,13 @@
     <comment></comment>
     <requestid>905960</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>2bd63297d69f62f52fb3c406668bdda2</srcmd5>
+    <version>2021.2</version>
+    <time>1633959060</time>
+    <user>dimstar_suse</user>
+    <comment>- Use openmpi macros to always build with the default openmpi version. 
+</comment>
+    <requestid>922661</requestid>
+  </revision>
 </revisionlist>
