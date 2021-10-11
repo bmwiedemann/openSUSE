@@ -28,7 +28,10 @@ Summary:        ALSA topology configurations
 License:        BSD-3-Clause
 URL:            https://www.alsa-project.org/
 Source:         https://www.alsa-project.org/files/pub/lib/alsa-topology-conf-%{version}.tar.bz2
+Source1:        skl_hda_dsp_generic-tplg.bin
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
 BuildRequires:  alsa-utils
+%endif
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Skylake and Kayblake-LP
@@ -47,8 +50,14 @@ This package contains the configuration files for ALSA topology support.
 mkdir -p %{buildroot}%{_datadir}/alsa
 cp -a topology %{buildroot}%{_datadir}/alsa/
 mkdir -p %{buildroot}%{_firmwaredir}
-alsatplg -c topology/hda-dsp/skl_hda_dsp_generic-tplg.conf \
-    -o %{buildroot}%{_firmwaredir}/skl_hda_dsp_generic-tplg.bin
+install -c -m 0644 %{S:1} %{buildroot}%{_firmwaredir}/skl_hda_dsp_generic-tplg.bin
+
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
+%check
+alsatplg -c topology/hda-dsp/skl_hda_dsp_generic-tplg.conf -o /tmp/skl_hda_dsp_generic-tplg.bin.$$
+cmp -b %{S:1} /tmp/skl_hda_dsp_generic-tplg.bin.$$
+rm -f /tmp/skl_hda_dsp_generic-tplg.bin.$$
+%endif
 
 %files
 %defattr(-, root, root)
