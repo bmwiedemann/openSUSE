@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Tue Oct  5 13:09:15 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to b5257da58c (2021-09-30):
+  * firmware: arm_loader: Allow non-optional reads of current clock
+    See: #1619
+  * firmware: dispmanx: Demote null eptr from vcos_verify to no warning
+    See: raspberrypi/linux#4592
+  * firmware: filesystem: sdcard: Probe FAT type in GPT ESD partitions
+  * firmware: tvservice: Add check to warn when running with kms
+  * firmware: filesystem: sdcard: Fix Hybrid GPT partitions
+    See: #1465
+  * firmware: video_decode: Ensure all buffers are flushed before
+    port disable completes
+  * firmware: arm_loader: Allow hvs interrupt during SET_NOTIFY_DISPLAY_DONE
+  * firmware: arm_display: Allow null buffer in successful call
+    See: raspberrypi/linux#4540
+
+-------------------------------------------------------------------
+Tue Sep 14 12:15:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to b80f36b3fb (2021-09-13):
+  * firmware: hdmi_2711: Use HDMI block REPEAT_PIXEL instead of PV
+    See: https://forum.libreelec.tv/thread/24415-le-10-beta-for-i4-force-hdmi-resolution
+  * firmware: DSI display autodetection for kms
+  * firmware: arm_dt: Load overlays for detected cameras
+  * firmware: Make more use of the user-warnings DT property
+  * firmware: arm_loader: Consider required flags from GET_CLOCK_RATE
+    See: #1598
+  * firmware: arm_loader: Make most arm clock requests required
+    See: #1598
+  * firmware: firmware: Disable VLL loading from file system
+    See: #1605
+  * firmware: video_decode: Use the ISP instead of vc_image_convert
+  * firmware: video_decode: Correct support for YVU formats using ISP
+  * firmware: arm_dt: Limit CMA to 256MB if total_mem < 2GB or gpu_mem > 256MB
+    See: #1603
+  * firmware: hdmi_cec: Remove TX/RX SW_INIT on power_on
+    See: Hexxeh/rpi-firmware#267
+    See: https://www.raspberrypi.org/forums/viewtopic.php?p=1895082#p1895082
+  * firmware: cec: Avoid sending messages with kms
+    See: raspberrypi/linux#4460
+  * firmware: Revert: video_decode: Use the ISP instead of vc_image_convert
+  * firmware: isp: Set the YUV420/YVU420 format stride to 64 byte
+  * arm_loader: Add message to release firmware framebuffer
+  * firmware: video_decode: Use the ISP instead of vc_image_convert
+  * firmware: hdmi-2711: Wait for HDMI hardware scheduler to activate in HDMI mode
+  * firmware: bcm_host: Recognise all Pi 4 variants, add BCM2711
+    See: raspberrypi/userland#695
+  * firmware: PoE+ HAT support
+    See: raspberrypi/linux#4367
+  * firmware: arm_loader: Use Pi4 bootloader MAC_ADDRESS if set
+  * firmware: platform: Apply ARM thermal throttling rules on BCM2711
+  * firmware: dt-blob.dts: Correct HDMI HPD and EMMC_ENABLE for CM4
+    See: https://www.raspberrypi.org/forums/viewtopic.php?f=29&p=1858516
+  * firmware: vcfw/hdmi: CUSTOM modes used for FKMS didn't set RGB quant range correctly
+    See: #1580
+  * firmware: platform: Remove build-time constant for MICROVOLTS_PER_PIP
+  * firmware: Pi400: Reduce MII clock freq when probing ethernet PHY
+  * firmware: isp: Ensure the VRF is locked when setting up video colour denoise
+    See: raspberrypi/libcamera-apps#19
+  * firmware: isp: Remove custom EV mappings from camera tunings
+  * firmware: Add support for board-type=0xXX conditional filters in bootloader, bootcode and firmware
+  * firmware: Two UART1 patches
+    See: #1566
+  * firmware: arm_loader: kernel_old=1 should force kernel_address=0
+    See: #1561
+  * firmware: scalerlib: Fix offset applied to x coordinate of YUV10COL image
+    See: https://forum.kodi.tv/showthread.php?tid=361164&pid=3024654#pid3024654
+  * firmware: vcfw/power: Add a new latch for power_pad_control
+    See: #1552
+  * firmware: board-info: Fix memsize on 3B+
+  * firmware: Move core to PLLA and support accurate clk108
+    See: xbmc/xbmc#19263
+  * firmware: board_info: Separate memory size from OTP field encoding
+  * firmware: power: Swap DA9090 ADC assignments to match XR77004
+  * firmware: vl805: Remove redundant log statement and fix warning
+  * firmware: power: Fix DA9090 ADC1 register definition
+  * firmware: arm_loader: Only report clocks arm has set, not siblings
+  * firmware: arm_loader: Don't report clocks set as turbo side effect of arm clock
+  * firmware: arm_loader: 2711: gpu clocks are not dependant
+  * firmware: platform: Need to clear cached versions of get_max_clock_internal vars
+  * firmware: video_decode: For VC1/WMV with no signalled header bytes, use start of 1st buffer
+See: raspberrypi/linux#4113
+
+-------------------------------------------------------------------
 Fri Apr  9 12:47:11 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - Use smbios overlay to get minimal SMBIOS information through dmidecode (bsc#1183079)
