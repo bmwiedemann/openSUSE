@@ -125,4 +125,16 @@
 </comment>
     <requestid>922805</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1a559cfabeddc2408cfbee0eab06ea76</srcmd5>
+    <version>10.3.2</version>
+    <time>1633959113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.2
+  * Changes of version 10.3.2
+    = Add support for OpenType frac feature (#1230).
+    = Fix placement of U+031C and U+0357.
+</comment>
+    <requestid>924554</requestid>
+  </revision>
 </revisionlist>
