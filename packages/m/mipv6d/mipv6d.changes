@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 12:31:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * mipv6d.service
+
+-------------------------------------------------------------------
 Tue Dec 12 09:43:31 UTC 2017 - meissner@suse.com
 
 - mipv6d-openssl11.patch: mipv6d ported to openssl 1.1.
