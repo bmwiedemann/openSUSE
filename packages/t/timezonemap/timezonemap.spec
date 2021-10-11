@@ -29,7 +29,7 @@ BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  json-glib-devel
-BuildRequires:  libsoup-devel
+BuildRequires:  pkgconfig(libsoup-2.4)
 
 %description
 Timezone map widget for GTK+3
