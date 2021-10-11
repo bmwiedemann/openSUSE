@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 12:16:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * minidlna.service
+
+-------------------------------------------------------------------
 Wed Dec  2 13:43:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers macros to create minidlna user
