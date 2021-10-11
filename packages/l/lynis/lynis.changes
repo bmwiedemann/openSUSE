@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 11 06:45:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.6:
+  * Added
+    - OS detection: Artix Linux, macOS Monterey, NethServer, openSUSE MicroOS
+    - Check for outdated translation files
+  * Changed
+    - DBS-1826 - Check if PostgreSQL is being used
+    - DBS-1828 - Test multiple PostgreSQL configuration file(s)
+    - KRNL-5830 - Sort kernels by version instead of modification date
+    - PKGS-7410 - Don't show exception for systems using LXC
+    - GetHostID function: fallback options added for Linux systems
+    - Fix: show correct text when egrep is missing
+    - Fix: variable name for PostgreSQL
+
+-------------------------------------------------------------------
 Thu Sep 16 08:59:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Changed tests_binary_rpath to subtract points for files found with RPATH set,
