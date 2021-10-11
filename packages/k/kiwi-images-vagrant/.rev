@@ -73,4 +73,12 @@
     <comment>Fix modification of the sshd config when /usr/etc/ is used</comment>
     <requestid>913996</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>52602d653cad22c776ff1523670741c1</srcmd5>
+    <version>1.0</version>
+    <time>1633963723</time>
+    <user>dimstar_suse</user>
+    <comment>Don't use rsync for synchronized folders for virtualbox</comment>
+    <requestid>924213</requestid>
+  </revision>
 </revisionlist>
