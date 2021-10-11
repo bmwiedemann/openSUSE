@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  7 15:09:55 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Exclude s390x for now. There is a not-yet-upstreamed port
+  available, but we would need to rebase it for our release.
+
+-------------------------------------------------------------------
 Mon Jul 12 17:15:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC. We don't need update-alternatives after all.

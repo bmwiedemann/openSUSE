@@ -7,4 +7,12 @@
     <comment>LuaJIT seems to be more maintained than MoonJIT at the moment.</comment>
     <requestid>906669</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f7835e01ce9b7b2536f856c660bd1f0d</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1633963717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924043</requestid>
+  </revision>
 </revisionlist>

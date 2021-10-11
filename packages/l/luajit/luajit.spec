@@ -35,8 +35,9 @@ Patch3:         https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/pat
 Patch4:         https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
 BuildRequires:  pkgconfig
 Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
-Obsoletes:      moonjit <= 2.2.0
 Obsoletes:      lua51-luajit <= 2.2.0
+Obsoletes:      moonjit <= 2.2.0
+ExcludeArch:    s390x
 
 %description
 A Just-In-Time Compiler for Lua language
@@ -89,7 +90,6 @@ rm %{buildroot}/%{_libdir}/*.a
 
 # Create runnable binary
 ln -sf %{_bindir}/luajit-%{lib_version}%{realver} %{buildroot}%{_bindir}/luajit
-
 
 %post -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
 %postun -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
