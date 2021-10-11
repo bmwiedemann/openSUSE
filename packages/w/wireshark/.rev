@@ -1541,4 +1541,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>914354</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>40f893ff550748f2ff903aa72f26d258</srcmd5>
+    <version>3.4.9</version>
+    <time>1633963725</time>
+    <user>dimstar_suse</user>
+    <comment>update wireshark to version 3.4.9</comment>
+    <requestid>924240</requestid>
+  </revision>
 </revisionlist>

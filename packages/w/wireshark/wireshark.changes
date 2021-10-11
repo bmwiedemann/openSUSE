@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:14:32 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.4.9:
+  * TShark PDML output embeds "proto" elements within other "proto" elements.
+  * Filter expressions comparing against single-octet hex strings where the hex digit string equals a protocol name don’t work.
+  * AMQP 0.9: dissector fails to handle Content-Body frame split across TCP packets.
+  * IEEE 802.15.4: Missing check on "PAN ID Present" bit of the Multipurpose Frame Control field.
+  * Wireshark ignored some character in filename when exporting SMB objects.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.4.9.html
+
+
+-------------------------------------------------------------------
 Thu Aug 26 07:31:47 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.4.8:
