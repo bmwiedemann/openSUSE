@@ -72,6 +72,7 @@ buildignore libvulkan_radeon
 buildignore man
 buildignore groff
 buildignore libqt5-qttranslations
+buildignore plymouth
 
 # tumbler -> libgepup uses libwebkit2gtk-4_0-37, while epiphany uses libwebkit2gtk-4_1-0.
 # We can't have both, too big.

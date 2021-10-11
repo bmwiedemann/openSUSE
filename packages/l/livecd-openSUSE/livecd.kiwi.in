@@ -13,7 +13,7 @@
     <profile name="EFI" description="EFI" import="true" arch="x86_64,aarch64"/>
   </profiles>
   <preferences profiles="EFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="@VOLID@" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="uefi" volid="@VOLID@" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>@BOOTSPLASH@</bootsplash-theme>
@@ -23,7 +23,7 @@
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <preferences profiles="noEFI">
-    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="@VOLID@" mediacheck="true"/>
+    <type primary="true" bootprofile="default" kernelcmdline="splash=silent quiet systemd.show_status=yes" flags="overlay" hybrid="true" hybridpersistent="true" hybridpersistent_filesystem="ext4" image="iso" firmware="bios" volid="@VOLID@" mediacheck="true"/>
     <version>2.8.0</version>
     <bootloader-theme>openSUSE</bootloader-theme>
     <bootsplash-theme>@BOOTSPLASH@</bootsplash-theme>

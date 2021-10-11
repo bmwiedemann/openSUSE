@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:20:17 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Drop plymouth
+- Set systemd.show_status=yes to have some boot progress output
+
+-------------------------------------------------------------------
 Tue Oct  5 11:05:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Drop acpica
