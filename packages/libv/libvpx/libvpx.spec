@@ -16,19 +16,17 @@
 #
 
 
-%define         sover 6
+%define         sover 7
 Name:           libvpx
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://www.webmproject.org/
-Source0:        %name-%version.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
-Patch1:         libvpx-define-config_pic.patch
 Patch2:         libvpx-configure-add-s390.patch
-Patch4:         libvpx-armv7-use-hard-float.patch
 # Needed to be able to create pkgconfig() provides.
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
@@ -91,10 +89,7 @@ and audio streams compressed with the Vorbis audio codec.
 The WebM file structure is based on the Matroska container.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -116,12 +111,14 @@ export CXXFLAGS="%optflags -O3"
     --libdir=%{_libdir} \
     --enable-unit-tests \
     --enable-shared \
+    --enable-pic \
     --disable-static \
     --enable-vp8 \
     --enable-vp9 \
     --enable-vp9-highbitdepth \
     --enable-postproc \
     --enable-multithread \
+    --enable-pic \
 %ifarch ppc64le
     --disable-vsx \
 %endif

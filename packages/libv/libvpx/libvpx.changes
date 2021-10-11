@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  8 10:54:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 1.11.0:
+  - Enhancement:
+    Numerous improvements for Neon optimizations.
+    Code clean-up and refactoring.
+    Calculation of rd multiplier is changed with BDRATE gains.
+  - Bug fixes:
+    Fix to overflow on duration.
+    Fix to several instances of -Wunused-but-set-variable.
+    Fix to avoid chroma resampling for 420mpeg2 input.
+    Fix to overflow in calc_iframe_target_size.
+    Fix to disallow skipping transform and quantization.
+    Fix some -Wsign-compare warnings in simple_encode.
+    Fix input file path in simple_encode_test.
+    Fix valid range for under/over_shoot pct.
+- Remove libvpx-armv7-use-hard-float.patch: fixed
+
+-------------------------------------------------------------------
+Sat Oct  2 16:35:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable PIC:
+  * Remove libvpx-define-config_pic.patch
+
+-------------------------------------------------------------------
 Wed Apr 14 06:00:00 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - using service/obspcio again because upstream tar ball is changing,

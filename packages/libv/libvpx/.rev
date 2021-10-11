@@ -456,4 +456,29 @@
     2 pass related flags removed from SVC example encoder.</comment>
     <requestid>885219</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2dd860257f6135f2fd44c8a50c6b2e1b</srcmd5>
+    <version>1.11.0</version>
+    <time>1633959030</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.0:
+  - Enhancement:
+    Numerous improvements for Neon optimizations.
+    Code clean-up and refactoring.
+    Calculation of rd multiplier is changed with BDRATE gains.
+  - Bug fixes:
+    Fix to overflow on duration.
+    Fix to several instances of -Wunused-but-set-variable.
+    Fix to avoid chroma resampling for 420mpeg2 input.
+    Fix to overflow in calc_iframe_target_size.
+    Fix to disallow skipping transform and quantization.
+    Fix some -Wsign-compare warnings in simple_encode.
+    Fix input file path in simple_encode_test.
+    Fix valid range for under/over_shoot pct.
+- Remove libvpx-armv7-use-hard-float.patch: fixed
+
+- Enable PIC:
+  * Remove libvpx-define-config_pic.patch</comment>
+    <requestid>924206</requestid>
+  </revision>
 </revisionlist>
