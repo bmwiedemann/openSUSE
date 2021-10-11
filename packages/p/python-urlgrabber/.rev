@@ -219,4 +219,13 @@
 </comment>
     <requestid>807479</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>2f0a860b1d813af7a318b365ddb88d7b</srcmd5>
+    <version>4.1.0</version>
+    <time>1633959077</time>
+    <user>dimstar_suse</user>
+    <comment>- Make independent of the actual value of %%{_libexecdir} macro.
+</comment>
+    <requestid>924236</requestid>
+  </revision>
 </revisionlist>

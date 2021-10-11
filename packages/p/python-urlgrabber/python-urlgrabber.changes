@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  8 12:49:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make independent of the actual value of %%{_libexecdir} macro.
+
+-------------------------------------------------------------------
 Wed May 20 07:47:54 UTC 2020 - pgajdos@suse.com
 
 - urlgrabber-ext-down as an alternative

@@ -1,7 +1,7 @@
 #
 # spec file for package python-urlgrabber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname urlgrabber
-# package expects urlgrabber-ext-down in /usr/libexec
-%define _libexecdir /usr/libexec
 Name:           python-urlgrabber
 Version:        4.1.0
 Release:        0
@@ -36,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pycurl
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,6 +47,10 @@ throttling, authentication, proxies and more.
 %setup -q -n urlgrabber-%{version}
 # Remove with next release
 sed -i "13d" urlgrabber/__init__.py # Remove wrong license header, fixes bnc#781323
+
+# Fix location of %%{_libexecdir}
+sed -i 's!/usr/libexec!%{_libexecdir}!' urlgrabber/grabber.py
+sed -i "s!libexec!$(echo %{_libexecdir}|cut -d/ -f 3)!" setup.py
 
 %build
 %python_build
