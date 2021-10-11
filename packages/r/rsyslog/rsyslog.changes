@@ -50,6 +50,8 @@ Tue Jun 15 17:42:39 UTC 2021 - Michael Ströder <michael@stroeder.com>
 Tue Apr 20 17:56:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2104.0:
+  * rainerscript: call getgrnam_r repeatedly to get all group members
+    (bsc#1178490)
   * new contributed module imhiredis
   * new built-in function get_property() to access property vars
   * mmdblookup: add support for mmdb DB reload on HUP
@@ -154,6 +156,7 @@ Sat Jul 11 05:22:59 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 Wed Apr 15 18:37:19 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Fix the URL for bug reporting, should not point to novell.com
+  (bsc#1173433)
 
 -------------------------------------------------------------------
 Thu Feb  6 18:13:33 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
