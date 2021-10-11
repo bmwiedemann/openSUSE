@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  9 09:04:24 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.9.1
+
+  * Removed a forgotten debug statement in JSON precompilation
+
+-------------------------------------------------------------------
 Wed Aug 25 05:06:34 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.7.7
