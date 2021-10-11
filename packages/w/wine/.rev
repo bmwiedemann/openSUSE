@@ -4150,4 +4150,18 @@
 - update staging to 6.18 release</comment>
     <requestid>921429</requestid>
   </revision>
+  <revision rev="354" vrev="1">
+    <srcmd5>c323a666ef54b3b9261853ab6d44fc01</srcmd5>
+    <version>6.19</version>
+    <time>1633959091</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.19 development release
+  - IPHlpApi, NsiProxy, WineDbg and a few other modules converted to PE.
+  - More HID joystick work.
+  - Kernel parts of GDI moved to Win32u.
+  - More work towards Dwarf 3/4 debug support.
+  - Various bug fixes.
+- update staging to 6.19 release</comment>
+    <requestid>924349</requestid>
+  </revision>
 </revisionlist>

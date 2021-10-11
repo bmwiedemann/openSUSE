@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  9 07:57:53 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.19 development release
+  - IPHlpApi, NsiProxy, WineDbg and a few other modules converted to PE.
+  - More HID joystick work.
+  - Kernel parts of GDI moved to Win32u.
+  - More work towards Dwarf 3/4 debug support.
+  - Various bug fixes.
+- update staging to 6.19 release
+
+-------------------------------------------------------------------
 Sat Sep 25 10:02:13 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.18 development release
