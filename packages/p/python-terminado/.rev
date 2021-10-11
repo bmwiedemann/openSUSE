@@ -87,4 +87,22 @@
     <comment></comment>
     <requestid>893053</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7192a690687da76ee0537d1d79154237</srcmd5>
+    <version>0.12.1</version>
+    <time>1633959115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.12.1
+  * correctly set the TERM variable
+  * Replace deprecated unittest aliases
+  * Clean up tests
+  * Log terminal output
+  * Switch select() to poll() in pty_read()
+  * Fix blocking of pty_read when there isn't pty data ready to
+    read
+  * Support creating terminal given name in kwargs.
+  * avoid persistent handle on IOLoop instance
+  * async/await syntax (forwarded request 924565 from bnavigator)</comment>
+    <requestid>924566</requestid>
+  </revision>
 </revisionlist>

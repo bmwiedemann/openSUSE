@@ -21,7 +21,7 @@
 # Disable tests until random testing race condition fixed, see: https://github.com/jupyter/terminado/issues/21
 %bcond_with     tests
 Name:           python-terminado
-Version:        0.9.5
+Version:        0.12.1
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 10 19:56:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 0.12.1
+  * correctly set the TERM variable
+  * Replace deprecated unittest aliases
+  * Clean up tests
+  * Log terminal output
+  * Switch select() to poll() in pty_read()
+  * Fix blocking of pty_read when there isn't pty data ready to
+    read
+  * Support creating terminal given name in kwargs.
+  * avoid persistent handle on IOLoop instance
+  * async/await syntax
+
+-------------------------------------------------------------------
 Fri May 14 01:22:52 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.9.5:
