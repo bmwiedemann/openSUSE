@@ -821,4 +821,12 @@
   via the macro %_pam_moduledir</comment>
     <requestid>922117</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>100fa831862ca9dcc7694aabe6b95141</srcmd5>
+    <version>21.08.2</version>
+    <time>1633959118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924633</requestid>
+  </revision>
 </revisionlist>

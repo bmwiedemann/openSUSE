@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Oct  6 07:12:52 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- update to 21.08.2 
+- major change:
+  * removed of support of the TaskAffinity=yes option in cgroup.conf. Please
+    consider using "TaskPlugins=cgroup,affinity" in slurm.conf as an option.
+- minor changes and bugfixes:
+  * slurmctld - fix how the max number of cores on a node in a partition are
+    calculated when the partition contains multi*socket nodes. This in turn
+    corrects certain jobs node count estimations displayed client*side.
+  * job_submit/cray_aries - fix "craynetwork" GRES specification after changes
+    introduced in 21.08.0rc1 that made TRES always have a type prefix.
+  * Ignore nonsensical check in the slurmd for [Pro|Epi]logSlurmctld.
+  * Fix writing to stderr/syslog when systemd runs slurmctld in the foreground.
+  * Fix issue with updating job started with node range.
+  * Fix issue with nodes not clearing state in the database when the slurmctld
+    is started with clean*start.
+  * Fix hetjob components > 1 timing out due to InactiveLimit.
+  * Fix sprio printing -nan for normalized association priority if
+    PriorityWeightAssoc was not defined.
+  * Disallow FirstJobId=0.
+  * Preserve job start info in the database for a requeued job that hadn't
+    registered the first time in the database yet.
+  * Only send one message on prolog failure from the slurmd.
+  * Remove support for TaskAffinity=yes in cgroup.conf.
+  * accounting_storage/mysql - fix issue where querying jobs via sacct
+    *-whole-hetjob=yes or slurmrestd (which automatically includes this flag)
+    could in some cases return more records than expected.
+  * Fix issue for preemption of job array task that makes afterok dependency
+    fail. Additionally, send emails when requeueing happens due to preemption.
+  * Fix sending requeue mail type.
+  * Properly resize a job's GRES bitmaps and counts when resizing the job.
+  * Fix node being able to transition to CLOUD state from non-cloud state.
+  * Fix regression introduced in 21.08.0rc1 which broke a step's ability to
+    inherit GRES from the job when the step didn't request GRES but the job did.
+  * Fix errors in logic when picking nodes based on bracketed anded constraints.
+    This also enforces the requirement to have a count when using such
+    constraints.
+  * Handle job resize better in the database.
+  * Exclude currently running, resized jobs from the runaway jobs list.
+  * Make it possible to shrink a job more than once.
+
+
+-------------------------------------------------------------------
 Tue Sep 28 15:53:38 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - moved pam module from /lib64 to /usr/lib64 which fixes boo#1191095 
