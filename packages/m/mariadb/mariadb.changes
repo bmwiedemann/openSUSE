@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 15:02:44 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix socket address in mariadb@.socket file
+
+-------------------------------------------------------------------
 Mon Sep 20 09:01:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Replace %{_rpmconfigdir}/macros.d with %{_rpmmacrodir},

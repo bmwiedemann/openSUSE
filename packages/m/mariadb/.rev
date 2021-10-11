@@ -1728,4 +1728,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>920636</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>ebf92bbabb921a3fb15b9f88c0e96008</srcmd5>
+    <version>10.6.4</version>
+    <time>1633963715</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix socket address in mariadb@.socket file</comment>
+    <requestid>923825</requestid>
+  </revision>
 </revisionlist>

@@ -665,6 +665,10 @@ install -D -m 644 %{_sourcedir}/mariadb.target '%{buildroot}'%{_unitdir}/mariadb
 ln -sf %{_unitdir}/mariadb.service %{buildroot}%{_unitdir}/mysql.service
 ln -sf %{_unitdir}/mariadb@.service %{buildroot}%{_unitdir}/mysql@.service
 
+# Replace the default socket for multi instance mariadb with the one used by
+# mysql-systemd-helper
+sed -e 's:mysql.sock-%I:mysql.%I.sock:' -i %{buildroot}%{_unitdir}/mariadb@.socket
+
 # Tmpfiles file to exclude mysql tempfiles that are auto-cleaned up
 # bnc#852451
 mkdir -p %{buildroot}%{_tmpfilesdir}
