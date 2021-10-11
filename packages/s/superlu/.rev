@@ -258,4 +258,13 @@ Readded changes dropped by accident:
   proper ABI versioning.</comment>
     <requestid>868870</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e9ed41d0dd5a6d03eb2336e25130128c</srcmd5>
+    <version>5.3.0</version>
+    <time>1633959037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.3.0 (JSC#SLE-22138)
+</comment>
+    <requestid>922790</requestid>
+  </revision>
 </revisionlist>

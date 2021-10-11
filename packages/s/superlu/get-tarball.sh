@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VERSION=5.2.2
+VERSION=5.3.0
 FILES="mc64ad.c sgsisx.c sldperm.c dgsisx.c dldperm.c cgsisx.c cldperm.c zgsisx.c zldperm.c"
 URL="https://github.com/xiaoyeli/superlu/archive/v$VERSION/superlu-$VERSION.tar.gz"
 TAR="superlu-$VERSION.tar.gz"

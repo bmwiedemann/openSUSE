@@ -20,7 +20,7 @@
 
 # Base package name
 %define pname superlu
-%define ver 5.2.2
+%define ver 5.3.0
 %define _ver %(echo %{ver} | tr . _)
 
 %if "%flavor" == ""
@@ -90,7 +90,7 @@ Group:          Productivity/Scientific/Math
 Version:        %{ver}
 Release:        0
 URL:            https://portal.nersc.gov/project/sparse/superlu/
-Source0:        superlu-5.2.2.tar.gz
+Source0:        %{pname}-%{version}.tar.gz
 # Tarball above is generated with the script below
 Source1:        get-tarball.sh
 Source2:        README.SUSE
