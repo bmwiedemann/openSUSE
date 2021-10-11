@@ -89,4 +89,16 @@
 - Update Requires from setup.py (forwarded request 907685 from glaubitz)</comment>
     <requestid>907733</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23f6a748389219c4ceca87f1eba14aa0</srcmd5>
+    <version>5.6.1</version>
+    <time>1633959062</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 923713 from glaubitz)</comment>
+    <requestid>923739</requestid>
+  </revision>
 </revisionlist>
