@@ -20,8 +20,12 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+# systemd-rpm-macros(or kmod) is wrong in 15.2
+%define _modprobedir /lib/modprobe.d
+%endif
 Name:           firewalld
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -183,8 +187,8 @@ install -dp %{buildroot}%{_prefix}/lib/firewalld/zones
 install -p -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/zones/docker.xml
 
 # No more /etc
-mkdir -p %{buildroot}%{_prefix}/lib/modprobe.d
-mv %{buildroot}%{_sysconfdir}/modprobe.d/* %{buildroot}%{_prefix}/lib/modprobe.d
+mkdir -p %{buildroot}%{_modprobedir}
+mv %{buildroot}%{_sysconfdir}/modprobe.d/* %{buildroot}%{_modprobedir}
 %if %{defined _distconfdir}
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart
@@ -262,7 +266,10 @@ fi
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
-%{_prefix}/lib/modprobe.d/firewalld-sysctls.conf
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+%dir %{_modprobedir}
+%endif
+%{_modprobedir}/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
 %config(noreplace) %{_sysconfdir}/logrotate.d/firewalld

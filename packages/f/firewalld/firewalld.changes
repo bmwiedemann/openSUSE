@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 25 20:24:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.0.1:
+  * keep linux capability CAP_SYS_MODULE
+  * UPnP Client: actually allow SSDP traffic
+  * Fix RPM macros to test if firewall-cmd is executable
+
+-------------------------------------------------------------------
 Sat Aug  7 14:27:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.0.0:
