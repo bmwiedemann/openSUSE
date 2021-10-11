@@ -380,26 +380,26 @@ diff --git a/fig2dev/drivers.h b/fig2dev/drivers.h
  extern struct driver dev_pstricks;
  extern struct driver dev_textyl;
  extern struct driver dev_tk;
-@@ -81,6 +83,7 @@ struct {
- 	{"pdf",		&dev_pdf},
- 	{"pdftex",	&dev_pdftex},
- 	{"pdftex_t",	&dev_pdftex_t},
-+	{"pdftex_p",	&dev_pdftex_p},
- 	{"pic",		&dev_pic},
- 	{"pict2e",	&dev_pict2e},
- 	{"pictex",	&dev_pictex},
-@@ -89,6 +92,7 @@ struct {
- 	{"ps",		&dev_ps},
- 	{"pstex",	&dev_pstex},
- 	{"pstex_t",	&dev_pstex_t},
-+	{"pstex_p",	&dev_pstex_p},
- 	{"pstricks",	&dev_pstricks},
- 	{"ptk",		&dev_ptk},
- 	{"shape",	&dev_shape},
+@@ -84,6 +86,7 @@ struct {
+ 	{"pdf",		NULL,	&dev_pdf},
+ 	{"pdftex",	NULL,	&dev_pdftex},
+ 	{"pdftex_t",	NULL,	&dev_pdftex_t},
++	{"pdftex_p",	NULL,	&dev_pdftex_p},
+ 	{"pic",		NULL,	&dev_pic},
+ 	{"pict2e",	NULL,	&dev_pict2e},
+ 	{"pictex",	NULL,	&dev_pictex},
+@@ -92,6 +95,7 @@ struct {
+ 	{"ps",		NULL,	&dev_ps},
+ 	{"pstex",	NULL,	&dev_pstex},
+ 	{"pstex_t",	NULL,	&dev_pstex_t},
++	{"pstex_p",	NULL,	&dev_pstex_p},
+ 	{"pstricks",	NULL,	&dev_pstricks},
+ 	{"ptk",		NULL,	&dev_ptk},
+ 	{"shape",	NULL,	&dev_shape},
 diff --git a/fig2dev/fig2dev.c b/fig2dev/fig2dev.c
 --- a/fig2dev/fig2dev.c
 +++ b/fig2dev/fig2dev.c
-@@ -826,6 +826,23 @@ help_msg(void)
+@@ -844,6 +844,23 @@ help_msg(void)
  			);
  		}
  
@@ -423,7 +423,7 @@ diff --git a/fig2dev/fig2dev.c b/fig2dev/fig2dev.c
  		if (dev == NULL || !strcmp(lang, "shape")) {
  			puts(
  "SHAPE (ShapePar driver) Options:\n"
-@@ -973,6 +990,12 @@ static int compound_dump(F_compound *com
+@@ -991,6 +1008,12 @@ static int compound_dump(F_compound *com
  static int
  rec_comp(struct obj_rec *r1, struct obj_rec *r2)
  {
@@ -1337,7 +1337,7 @@ diff --git a/fig2mpdf/fig2mpdf b/fig2mpdf/fig2mpdf
 diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
 --- a/man/fig2dev.1.in
 +++ b/man/fig2dev.1.in
-@@ -64,8 +64,8 @@ Set the output graphics language.
+@@ -75,8 +75,8 @@ Set the output graphics language.
  Valid languages are
  \fBbox, cgm, dxf, epic, eepic, eepicemu, emf, eps, gbx (Gerber beta
  driver), gif, ibmgl, jpeg, latex, map (HTML image map), mf (MetaFont),
@@ -1348,7 +1348,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  shape (LaTeX shaped paragraphs), sld (AutoCad slide format), svg,
  textyl, tiff, tikz, tk (tcl/tk), tpic, xbm and xpm\fR.
  
-@@ -1165,6 +1165,61 @@ text flagged as "TeX Text".
+@@ -1178,6 +1178,61 @@ text flagged as "TeX Text".
  The pstex and pdftex drivers accept the same options that the EPS driver
  accepts.
  
@@ -1410,7 +1410,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  .TP
  .B \-n name
  Set the Title part of the PostScript output to
-@@ -1588,6 +1643,12 @@ The string \fIfont\fR can be one of
+@@ -1601,6 +1656,12 @@ The string \fIfont\fR can be one of
  
  
  .SH BUGS and RESTRICTIONS
@@ -1423,7 +1423,7 @@ diff --git a/man/fig2dev.1.in b/man/fig2dev.1.in
  Please send bug reports, fixes, new features etc. to:
  .br
  \&@PACKAGE_BUGREPORT@
-@@ -1677,3 +1738,7 @@ Michael Schrick (m_schrick@hotmail.com)
+@@ -1690,3 +1751,7 @@ Michael Schrick (m_schrick@hotmail.com)
  The GBX (Gerber) driver was written by
  .br
  Edward Grace (ej.grace@imperial.ac.uk).

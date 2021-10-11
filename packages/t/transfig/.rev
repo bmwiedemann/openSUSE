@@ -526,4 +526,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921792</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3795928e22d4d6d3ad5c25f30464dc28</srcmd5>
+    <version>3.2.8b</version>
+    <time>1633959024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to fig2dev version 3.2.8 Patchlevel 8b (Aug 2021)
+  o Detect the output language from the output file name.
+  o On the command line, a minus (-) as input or output file name refers
+    to standard input or standard output.
+  o Correct buffer overflows and segfaults, mainly due to maliciously
+    crafted input files, tickets #113-117, #122, #123, #125-#135.
+  o With -Lepic -P, generate a complete tex file.
+  o Correctly produce a gif if a transparent color is given, ticket #121.
+  o Return with error if no space is left on the device. Ticket #101.
+- Remove patch 6827c09d.patch now upstream
+- Add patch 1b09a8.patch from upstream (for ticket #137)
+- Port patch fig2dev-3.2.6-fig2mpdf.patch back</comment>
+    <requestid>923484</requestid>
+  </revision>
 </revisionlist>

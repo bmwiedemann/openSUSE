@@ -57,7 +57,7 @@ Requires:       netpbm
 %if 0%{?suse_version} > 1315
 Requires:       texlive-epstopdf
 %endif
-Version:        3.2.8a
+Version:        3.2.8b
 Release:        0
 Summary:        Graphic Converter
 #Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%{version}.tar.xz/download#/fig2dev-%{version}.tar.xz
@@ -65,7 +65,7 @@ License:        MIT
 Group:          Productivity/Graphics/Convertors
 Source:         fig2dev-%{version}.tar.xz
 Patch0:         transfig-3.2.8.dif
-Patch1:         6827c09d.patch
+Patch1:         1b09a8.patch
 Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
