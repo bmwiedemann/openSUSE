@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Fri Oct 8 15:15:57 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#16
+- fix auto-detecting a suitable signature location for rh media
+- 6.1
+
+--------------------------------------------------------------------
+Fri Oct 1 13:37:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#15
+- add --version option to tagmedia
+- use volume id if app id is missing for nice output
+- add support for rh style meta data and digest calculation
+- extend fragment calculation to suse style
+- show signee if signature is ok
+- add --create-signature option
+- fix large file support
+- updated unit tests
+- enhance documentation
+- add new and shiny README.adoc
+- 6.0
+
+--------------------------------------------------------------------
 Wed Apr 15 09:04:13 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#14
