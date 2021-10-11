@@ -1,7 +1,7 @@
-From 9f27140b54e30eed9d3428b24c3ca9c340c48394 Mon Sep 17 00:00:00 2001
+From 41a72d2a2d835de1e806a5b316067ea933f665e2 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/6] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -69,7 +69,7 @@ index dd581dc7dadb..5b14979cd4a3 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index 3d8cca288010..62d3859cff8c 100644
+index 2a2fbbd52e19..0999ac3186b7 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
 @@ -855,8 +855,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
@@ -85,5 +85,5 @@ index 3d8cca288010..62d3859cff8c 100644
  	}
  
 -- 
-2.30.2
+2.33.0
 

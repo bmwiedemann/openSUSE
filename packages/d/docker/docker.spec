@@ -42,24 +42,24 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 8728dd246c3a
-%define git_commit_epoch 1618005978
+%define git_version 79ea9d308018
+%define git_commit_epoch 1632421578
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
 # networking. All other key runtime dependencies (containerd, runc) are stable
 # enough that this isn't necessary.
-%define libnetwork_version b3507428be5b458cb0e2b4086b13531fb0706e46
+%define libnetwork_version 64b7a4574d1426139437d20e81c0b6d391130ec8
 
 %define dist_builddir  %{_builddir}/dist-suse
 %define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.6_ce
+Version:        20.10.9_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.6-ce
+%define nice_version 20.10.9-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -110,9 +110,7 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
 BuildRequires:  fish
 BuildRequires:  go-go-md2man
-# We cannot use Go 1.14 because it breaks io.Copy (among other things) by
-# returning -EINTR from I/O syscalls much more often.
-BuildRequires:  go1.13
+BuildRequires:  go1.16
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       apparmor-parser
 Requires:       ca-certificates-mozilla
@@ -122,8 +120,8 @@ Obsoletes:      docker-libnetwork%{name_suffix} < 0.7.0.2
 Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
-Requires:       runc >= 1.0.0~rc93
-Requires:       containerd >= 1.4.3
+Requires:       runc >= 1.0.2
+Requires:       containerd >= 1.4.11
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -312,6 +310,8 @@ export DOCKER_GITCOMMIT="%{git_version}"
 export GITCOMMIT="%{git_version}"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-%{git_commit_epoch}}"
 export BUILDTIME="$(date -u -d "@$SOURCE_DATE_EPOCH" --rfc-3339 ns 2>/dev/null | sed -e 's/ /T/')"
+# NOTE: This will have to be removed with the next major Docker bump.
+export GO111MODULE=off
 EOF
 ) > docker_build_env
 . ./docker_build_env

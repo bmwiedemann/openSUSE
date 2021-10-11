@@ -1,4 +1,4 @@
-From ec9265210aaf10fe5f810d0ac7f566cf1929283a Mon Sep 17 00:00:00 2001
+From 9cc9665d00293bdff2420a4db49278bc7bb9ed72 Mon Sep 17 00:00:00 2001
 From: Tianon Gravi <admwiggin@gmail.com>
 Date: Thu, 9 Sep 2021 11:31:30 -0700
 Subject: [PATCH 6/6] bsc1190670: seccomp: add support for "clone3" syscall in

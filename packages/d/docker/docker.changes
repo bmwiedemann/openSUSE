@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  6 02:51:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.9-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1191355
+  CVE-2021-41092 CVE-2021-41089 CVE-2021-41091 CVE-2021-41103
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+  * 0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch
+- Switch to Go 1.16.x compiler, in line with upstream.
+
+-------------------------------------------------------------------
 Mon Sep 20 23:59:05 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Add patch to return ENOSYS for clone3 to avoid breaking glibc again.
