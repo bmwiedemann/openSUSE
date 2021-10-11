@@ -52,6 +52,7 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
@@ -159,7 +160,8 @@ files to run a compliance test on Ubuntu.
 
 
 %prep
-%autosetup -n content-%version
+%setup -n content-%version
+%patch0 -p0
 
 %build
 cd build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 09:00:15 UTC 2021 - Alexander Bergmann <abergmann@suse.com>
+
+- Fix SLE-12 build issue caused by '\xb0' character (bsc#1191431).
+  - Add scap-security-guide-UnicodeEncodeError-character-fix.patch
+
+-------------------------------------------------------------------
 Fri Sep 24 15:16:30 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.58 release (jsc#ECO-3319)
