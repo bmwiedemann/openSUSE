@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 10 07:42:29 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.0.0
+
+  * Require applications to have reloading enabled in the managed environments.
+  * Require Ruby 2.5.
+  * Require Rails 5.2.
+
+-------------------------------------------------------------------
 Sat Sep 12 12:10:35 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.1.1

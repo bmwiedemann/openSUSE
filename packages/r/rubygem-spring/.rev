@@ -150,4 +150,12 @@
     <comment></comment>
     <requestid>833966</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c69b7f4e859fa4ebe656cbe94d6df211</srcmd5>
+    <version>3.0.0</version>
+    <time>1633959101</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 924517 from mschnitzer)</comment>
+    <requestid>924525</requestid>
+  </revision>
 </revisionlist>
