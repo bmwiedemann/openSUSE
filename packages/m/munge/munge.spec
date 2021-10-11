@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,9 @@
 
 %if 0%{?suse_version} >= 1210
 %define have_systemd 1
+ %if 0%{?sle_version} >= 150000 || 0%{?is_opensuse}
+  %define have_sysuser 1
+ %endif
 %endif
 %define lversion 2
 
@@ -32,6 +35,7 @@
 %else
  %define munge_u daemon
 %endif
+%define munge_descr "MUNGE authentication service"
 
 Name:           munge
 Version:        0.5.14
@@ -64,6 +68,7 @@ Requires(post): coreutils
 %if 0%{?have_systemd}
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
+%{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_requires}
 %endif
 Requires(post):     coreutils
@@ -78,7 +83,8 @@ that can be obtained by an untrusted client and forwarded by untrusted
 intermediaries within a security realm.  Clients within this realm can
 create and validate credentials without the use of root privileges,
 reserved ports, or platform-specific methods.
-  
+#'
+
 %package -n lib%{name}%{lversion}
 Summary:        Libraries for applications using MUNGE
 Group:          System/Libraries
@@ -99,6 +105,7 @@ A header file and libraries for building applications using the %{name}
 authenication service.
 
 %{!?_rundir:%define _rundir %_localstatedir/run}
+%{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
 %define munge_run %_rundir/munge
 
 %prep
@@ -142,11 +149,19 @@ install -m 0755 -d %{buildroot}%{_fillupdir}
   sed -i 's/User=munge/User=%munge_u/g' %{buildroot}%{_unitdir}/munge.service
   sed -i 's/Group=munge/Group=%munge_g/g' %{buildroot}%{_unitdir}/munge.service
   rm -f %{buildroot}%{_initddir}/munge
-  rmdir %{buildroot}/%{_rundir}/munge
+  rmdir %{buildroot}/%{munge_run}
   rmdir %{buildroot}/%{_rundir}
+  mkdir -p %{buildroot}%{_tmpfilesdir}
+  cp src/etc/munge.tmpfiles.conf %{buildroot}%{_tmpfilesdir}/munge.conf
+  sed -i 's/munge \+munge/%munge_u %munge_g/g' %{buildroot}%{_tmpfilesdir}/munge.conf
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
   mv %{buildroot}%{_sysconfdir}/sysconfig/munge \
      %{buildroot}%{_fillupdir}/sysconfig.munge
+  %if 0%{?have_sysuser}
+  echo "u %munge_u - \"%munge_descr\" %{munge_run}\n" > system-user-%{name}.conf
+  %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
+  install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+  %endif
 %endif
 
 %check
@@ -157,14 +172,17 @@ make check
 
 %postun -n lib%{name}%{lversion} -p /sbin/ldconfig
 
-%pre
+%pre %{?have_sysuser:-f %{name}.pre}
 %if 0%{?have_systemd}
 %service_add_pre munge.service
 %endif
-%define munge_descr "MUNGE authentication service"
+%if 0%{!?have_sysuser:1}
 getent group %munge_g >/dev/null || groupadd -r %munge_g
-getent passwd %munge_u >/dev/null || useradd -r -g %munge_g -d %munge_run -s /bin/false -c %munge_descr %munge_u
+[ "%munge_u" = "daemon" ] || \
+{ getent passwd %munge_u >/dev/null \
+    || useradd -r -g %munge_g -d %munge_run -s /bin/false -c %munge_descr %munge_u; }
 exit 0
+%endif
 
 %preun
 %if 0%{?have_systemd}
@@ -258,11 +276,13 @@ fi
 %if 0%{?have_systemd}
 %dir %attr(0755,%munge_u,%munge_g) %ghost %{munge_run}
 %{_unitdir}/munge.service
+%{_tmpfilesdir}/munge.conf
 %else
 %dir %attr(0755,%munge_u,%munge_g) %{munge_run}
 %{_initddir}/munge
 %endif
 %dir %attr(0755,munge,munge) %ghost %{munge_run}/munged.pid
+%{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %files devel
 %{_includedir}/*

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 17:25:55 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Restore tmpfiles.d handling which was deleted for no good
+  reason.
+- Make sure the product specific run-directory is used which
+  is taken from the RPM macro %_rundir (bsc#1191336).
+
+-------------------------------------------------------------------
+Fri Oct  1 06:24:14 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set user/group munge.
+
+-------------------------------------------------------------------
 Fri Jun 19 05:00:01 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Use 'mungekey' to generate munge key,
