@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 27 14:23:28 UTC 2021 - pgajdos@suse.com
+
+- previous version updates fixes also:
+  CVE-2020-7068,CVE-2020-7069,CVE-2020-7070,CVE-2020-7071,
+  CVE-2021-21702,CVE-2021-21704,CVE-2021-21705
+  bsc#1175223,bsc#1177351,bsc#1177352,bsc#1180706,
+  bsc#1182049,bsc#1188035,bsc#1188037
+
+-------------------------------------------------------------------
 Thu Sep 23 19:09:45 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.24: This is a security release (CVE-2021-21706)

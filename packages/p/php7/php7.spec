@@ -1,5 +1,5 @@
 #
-# spec file for package php7
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #

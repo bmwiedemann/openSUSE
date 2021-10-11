@@ -1146,4 +1146,12 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   See https://www.php.net/ChangeLog-7.php#7.4.24</comment>
     <requestid>921178</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>c550513796f1db6a1eb70cd2ffcdb9e1</srcmd5>
+    <version>7.4.24</version>
+    <time>1633959042</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923058</requestid>
+  </revision>
 </revisionlist>
