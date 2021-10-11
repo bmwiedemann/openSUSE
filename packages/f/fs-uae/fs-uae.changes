@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  8 15:11:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add upstream patch to fix FTBFS with gcc11
+  + 0001-Work-around-an-incompatibility-with-C-17.patch
+- Remove workaround to build fs-uae with gcc10 on Tumbleweed
+
+-------------------------------------------------------------------
 Sat Jun  5 19:36:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Use gcc10 for Tumbleweed to workaround build issues

@@ -24,12 +24,9 @@ License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
 Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.gz
+Patch0:         0001-Work-around-an-incompatibility-with-C-17.patch
 BuildRequires:  fdupes
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc10-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -71,12 +68,9 @@ using the cursor keys and right Ctrl/Alt keys).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%if 0%{?suse_version} >= 1550
-export CC="gcc-10"
-export CXX="g++-10"
-%endif
 %if 0%{?sle_version} == 150000
 export CFLAGS="%optflags -fPIC"
 export CXXFLAGS="%optflags -fPIC"
