@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  7 19:32:06 UTC 2021 - Teoh Han Hui <teohhanhui@gmail.com>
+
+- Add xdg-desktop-portal-gnome to gnome pattern
+
+-------------------------------------------------------------------
+Wed Sep 29 19:50:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-power-manager Requires: Package is dormant upstream
+  and on it's way to be replaced by new features inside of
+  gnome-control-center.
+
+-------------------------------------------------------------------
 Mon Sep  6 08:55:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add ethtool to hardware pattern [jsc#PM-2983]

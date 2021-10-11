@@ -422,7 +422,6 @@ Requires:       desktop-file-utils
 Requires:       gnome-keyring-pam
 # implied by gnome-keyring-pam
 #Requires:     gnome-keyring
-Requires:       gnome-power-manager
 Requires:       gnome-disk-utility
 # implied by gdm
 #Requires: gnome-shell
@@ -496,6 +495,8 @@ Requires:       samba
 # #509829
 Requires:       xdg-user-dirs-gtk
 Requires:       yelp
+# https://build.opensuse.org/request/show/921373
+Requires:       xdg-desktop-portal-gnome
 #
 # Low-level parts that we need
 #
