@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct  9 09:16:35 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.5.0
+
+  * Features
+    * Automatic SSL certificate provisioning for localhost, via localhost gem ([#2610], [#2257])
+    * add support for the PROXY protocol (v1 only) ([#2654], [#2651])
+    * Add a semantic CLI option for no config file ([#2689])
+
+  * Bugfixes
+    * More elaborate exception handling - lets some dead pumas die. ([#2700], [#2699])
+    * allow multiple after_worker_fork hooks ([#2690])
+    * Preserve BUNDLE_APP_CONFIG on worker fork ([#2688], [#2687])
+
+  * Performance
+    * Fix performance of server-side SSL connection close. ([#2675])
+
+-------------------------------------------------------------------
 Wed Aug 25 05:21:15 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 5.4.0

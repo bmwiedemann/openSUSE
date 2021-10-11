@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-puma
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 %define mod_name puma
 %define mod_full_name %{mod_name}-%{version}
@@ -40,15 +40,15 @@ URL:            https://puma.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-puma-rpmlintrc
 Source2:        gem2rpm.yml
-Summary:        Puma is a simple, fast, threaded, and highly concurrent HTTP 1.1
+Summary:        Puma is a simple, fast, threaded, and highly parallel HTTP 1.1
 License:        BSD-3-Clause
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
-Puma is a simple, fast, threaded, and highly concurrent HTTP 1.1 server for
+Puma is a simple, fast, threaded, and highly parallel HTTP 1.1 server for
 Ruby/Rack applications. Puma is intended for use in both development and
-production environments. It's great for highly concurrent Ruby implementations
+production environments. It's great for highly parallel Ruby implementations
 such as Rubinius and JRuby as well as as providing process worker support to
 support CRuby well.
 
