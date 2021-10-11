@@ -28,6 +28,7 @@ URL:            https://motion-project.github.io/
 Source0:        https://github.com/Motion-Project/motion/archive/release-%{version}.tar.gz
 Source1:        motion-service
 Source2:        motion-sysconfig
+Patch0:	harden_motion.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libjpeg-devel
@@ -56,6 +57,7 @@ without MySQL and PostgreSQL support.
 
 %prep
 %setup -q -n motion-release-%version
+%patch0 -p1
 
 %build
 autoreconf -i -f

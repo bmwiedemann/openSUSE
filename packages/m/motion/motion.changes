@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 15:21:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_motion.service.patch
+
+-------------------------------------------------------------------
 Tue Dec 22 10:16:33 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:

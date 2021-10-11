@@ -134,4 +134,12 @@
    * Eliminate compiler warnings on MHD return codes (forwarded request 858119 from dirkmueller)</comment>
     <requestid>858122</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>104274a766337487f44ac6638080cddf</srcmd5>
+    <version>4.3.2</version>
+    <time>1633959104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924527</requestid>
+  </revision>
 </revisionlist>
