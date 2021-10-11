@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        61.0.0
+Version:        62.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -68,17 +68,23 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(rake)
 
-%package gui
-Summary:        Graphical user interface for mkvtoolnix utils
-Requires:       %{name} = %{version}
-
 %description
 Tools to create and manipulate Matroska files (extensions .mkv and .mka), a new
 container format for audio and video files. Includes command line tools
 mkvextract, mkvinfo, mkvmerge and mkvpropedit.
 
+%package gui
+Summary:        Graphical user interface for mkvtoolnix utils
+Requires:       %{name} = %{version}
+
 %description gui
 This package contains the graphical user interface for the mkvtoolnix utils.
+
+%package tools
+Summary:        Additional command line tools for mkv files
+
+%description tools
+This package contains extra command line tools for mkv diagnostic.
 
 %prep
 %autosetup -p1
@@ -100,6 +106,13 @@ rake --verbose DESTDIR=%{buildroot} install
 %find_lang mkvmerge --with-man
 %find_lang mkvinfo --with-man
 %find_lang mkvtoolnix-gui --with-man
+
+# tools are built but not installed automatically
+install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
+  src/tools/checksum src/tools/diracparser src/tools/ebml_validator \
+  src/tools/hevcc_dump src/tools/pgs_dump src/tools/vc1parser \
+  src/tools/xvc_dump -t %{buildroot}%{_bindir}
+
 %fdupes %{buildroot}/%{_prefix}
 
 %files -f %{name}.lang -f mkvpropedit.lang -f mkvextract.lang -f mkvmerge.lang -f mkvinfo.lang
@@ -130,5 +143,17 @@ rake --verbose DESTDIR=%{buildroot} install
 %{_datadir}/applications/org.bunkus.mkvtoolnix-gui.desktop
 %{_datadir}/icons/hicolor/*/apps/mkv*.png
 %{_mandir}/man1/mkvtoolnix-gui.1%{ext_man}
+
+%files tools
+%{_bindir}/ac3parser
+%{_bindir}/base64tool
+%{_bindir}/bluray_dump
+%{_bindir}/checksum
+%{_bindir}/diracparser
+%{_bindir}/ebml_validator
+%{_bindir}/hevcc_dump
+%{_bindir}/pgs_dump
+%{_bindir}/vc1parser
+%{_bindir}/xvc_dump
 
 %changelog

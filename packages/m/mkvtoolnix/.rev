@@ -1170,4 +1170,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>915116</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>bcdf5b245e9b09b755839ebc79c64ca9</srcmd5>
+    <version>62.0.0</version>
+    <time>1633959109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924545</requestid>
+  </revision>
 </revisionlist>
