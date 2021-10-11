@@ -33,6 +33,8 @@ Source90:       %{name}-rpmlintrc
 Patch0:         %{name}-Makefile_patch.diff
 # PATCH-FIX-OPENSUSE lazarus.desktop.patch -- Fix desktop file
 Patch1:         lazarus.desktop.patch
+# PATCH-FIX-UPSTREAM lazarus-PascalScript_PPC.patch
+Patch2:         lazarus-PascalScript_PPC.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fpc >= 3.0.0
@@ -42,8 +44,8 @@ Requires:       fpc-src
 Requires:       gdb
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Requires(postun):desktop-file-utils
+Requires(postun):shared-mime-info
 %if 0%{?suse_version} > 1210
 BuildRequires:  desktop-file-utils
 %else
@@ -100,6 +102,7 @@ Development files for Free Pascal interface to Qt5.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # remove unneeded files
 rm -rf debian

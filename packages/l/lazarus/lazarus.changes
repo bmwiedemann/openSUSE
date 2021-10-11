@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 10 06:22:11 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add lazarus-PascalScript_PPC.patch (fixes PPC build)
+- Add _constraints file
+
+-------------------------------------------------------------------
 Wed Feb 24 11:57:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.12.

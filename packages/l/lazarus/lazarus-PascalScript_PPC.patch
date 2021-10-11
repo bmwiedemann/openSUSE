@@ -1,0 +1,26 @@
+From 832180699b3591d64d2121cf60f6d64b83edf904 Mon Sep 17 00:00:00 2001
+From: Martin <laz.git@mfriebe.de>
+Date: Sat, 9 Oct 2021 20:02:38 +0200
+Subject: [PATCH] PascalScript: Compile on PPC, using "not supported"
+ InnerfuseCall. Issue #39404
+
+---
+ components/PascalScript/Source/uPSRuntime.pas | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/components/PascalScript/Source/uPSRuntime.pas b/components/PascalScript/Source/uPSRuntime.pas
+index 95099a71e0..8a925e2e1a 100644
+--- a/components/PascalScript/Source/uPSRuntime.pas
++++ b/components/PascalScript/Source/uPSRuntime.pas
+@@ -9834,7 +9834,7 @@ end;
+ {$IFDEF Delphi6UP}
+   {$if defined(cpu86)}
+     {$include x86.inc}
+-  {$elseif defined(cpupowerpc)}
++  {$elseif defined(cpupowerpc) and defined(cpu32) and defined(darwin)}
+     {$include powerpc.inc}
+   {$elseif defined(cpuarm)}
+     {$include arm.inc}
+-- 
+GitLab
+
