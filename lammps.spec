@@ -45,7 +45,7 @@ BuildRequires:  opencl-headers
 BuildRequires:  python-devel
 BuildRequires:  voro++-devel
 BuildRequires:  zlib-devel
-%ifnarch ppc64 %ix86
+%ifnarch ppc64 %ix86 %{arm}
 %global         with_kokkos 1
 BuildRequires:  kokkos-devel >= 3.2
 %endif

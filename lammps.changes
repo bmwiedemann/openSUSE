@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  8 15:43:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable kokkos on %{arm}
+
+-------------------------------------------------------------------
 Fri Oct  1 06:08:29 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use openmpi macros to always build with the default openmpi version.
