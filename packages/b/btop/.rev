@@ -7,4 +7,12 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/JXO2N7O3NHNXIIENZURMDZDOLIQWSCYC/</comment>
     <requestid>922575</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7911f96db120b223911b1fbf9434ba54</srcmd5>
+    <version>1.0.14</version>
+    <time>1633959075</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to version 1.0.14</comment>
+    <requestid>924228</requestid>
+  </revision>
 </revisionlist>

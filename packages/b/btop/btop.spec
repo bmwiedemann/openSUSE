@@ -17,15 +17,20 @@
 
 
 Name:           btop
-Version:        1.0.11
+Version:        1.0.14
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
 URL:            https://github.com/aristocratos/btop/archive
 Source:         %{url}/v%{version}.tar.gz#/v%{version}.tar.gz
 BuildRequires:  coreutils
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+%if 0%{?suse_version} < 1550
+%define cxxopt CXX=g++-10
+BuildRequires:  gcc10-c++
+%else
+%define cxxopt %{nil}
+BuildRequires:  gcc-c++ >= 11
+%endif
 BuildRequires:  sed
 
 %description
@@ -35,16 +40,16 @@ Resource monitor that shows usage and stats for processor, memory, disks, networ
 %setup -q
 
 %build
-%make_build
+%make_build %{cxxopt}
 
 %install
 %make_install PREFIX=/usr
 
 %files
 /usr/bin/btop
-/usr/share/btop
+%dir /usr/share/btop
+%dir /usr/share/btop/themes
 /usr/share/btop/README.md
-/usr/share/btop/themes
 /usr/share/btop/themes/*.theme
 %license LICENSE
 %doc CHANGELOG.md
