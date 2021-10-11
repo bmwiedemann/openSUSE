@@ -79,8 +79,8 @@ find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rfv \{\} +
 # Fix env-script-interpreter rpmlint error
 files=$(grep -rl '#!/usr/bin/env python' %{buildroot}%{src_install_dir}) && echo $files | xargs sed -i 's|#!/usr/bin/env python|#!%{_bindir}/python|'
 # Fix name and interpreter
-mv %{buildroot}%{_bindir}/nanopb_generator.py %{buildroot}%{_bindir}/nanopb_generator
-sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator
+ln -s %{_bindir}/nanopb_generator.py %{buildroot}%{_bindir}/nanopb_generator
+sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator.py
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -93,6 +93,7 @@ sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator
 %{_libdir}/libprotobuf-nanopb.so.%{sover}
 
 %files devel
+%{_bindir}/nanopb_generator.py
 %{_bindir}/nanopb_generator
 %{_bindir}/protoc-gen-nanopb
 %{python3_sitelib}/proto

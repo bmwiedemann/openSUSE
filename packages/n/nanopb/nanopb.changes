@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 03:10:34 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
+
+- Install nanopb also under /usr/bin/nanopb_generator.py - this fixes an
+  error when using with protoc
+
+-------------------------------------------------------------------
 Wed Apr 14 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.4.5:
