@@ -93,8 +93,8 @@ Thu Apr 23 09:17:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
     encoding to prevent them from overflowing into to content
     section of the encoded file. This prevents malicious or
     accidental modification of data during the decoding process.
-  - Fixes a ReDoS vulnerability in :mod:`http.cookiejar`. Patch
-    by Ben Caller.
+  - Fixes a ReDoS vulnerability in `http.cookiejar`. Patch by Ben
+    Caller.
   - Fixed line numbers and column offsets for AST nodes for calls
     without arguments in decorators.
   - bsc#1155094 (CVE-2019-18348) Disallow control characters in
@@ -108,9 +108,16 @@ Thu Apr 23 09:17:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
     PC/dl_nt.c.
   - Prevent failure of test_relative_path in test_py_compile on
     macOS Catalina.
-  - Fixed possible leak in :c:func:`PyArg_Parse` and similar
+  - Fixed possible leak in `PyArg_Parse` and similar
     functions for format units "es#" and "et#" when the macro
-    :c:macro:`PY_SSIZE_T_CLEAN` is not defined.
+    `PY_SSIZE_T_CLEAN` is not defined.
+- Remove upstreamed patches:
+  - CVE-2019-18348-CRLF_injection_via_host_part.patch
+  - python-2.7.14-CVE-2017-1000158.patch
+  - CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
+  - CVE-2018-1061-DOS-via-regexp-difflib.patch
+  - CVE-2019-10160-netloc-port-regression.patch
+  - CVE-2019-16056-email-parse-addr.patch
 
 -------------------------------------------------------------------
 Sat Feb  8 23:29:28 CET 2020 - Matej Cepl <mcepl@suse.com>
