@@ -17,7 +17,7 @@
 
 
 Name:           reco
-Version:        2.4.6
+Version:        3.0.1
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
@@ -27,13 +27,15 @@ Source:         https://github.com/ryonakano/reco/archive/refs/tags/%{version}.t
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
-BuildRequires:  meson >= 0.40.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libpulse)
 Recommends:     %{name}-lang
 
 %description

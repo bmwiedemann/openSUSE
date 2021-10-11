@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  8 14:39:47 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.0.1:
+  * Use the user cache folder instead of the system temporary
+    folder to save temporary recording files
+  * Fix wrong OARS data
+- Translation updates:
+  * Update Italian translation (thanks to @albanobattistella)
+  * Update Japanese translation
+  * Publish the app to the new AppCenter on elementary OS 6 with
+    the Flatpak manifest
+  * A completely rewrited and improved method to detect recording
+    sources
+  * Redesign: Separate Delay and Duration settings from Recording
+    section as Timer section and put it under Recording section
+  * Make sure to show a dialog for any errors in recording
+  * Code refactoring
+  * Add Brazilian Portuguese translation (thanks to
+    @mathessaricci)
+  * Update Portuguese translation (thanks to @hugok79)
+  * Update Spanish translation (thanks to @Eldhrimer)
+
+-------------------------------------------------------------------
 Thu Sep  9 22:57:08 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.4.6:
