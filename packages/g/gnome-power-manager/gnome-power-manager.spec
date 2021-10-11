@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-power-manager
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           gnome-power-manager
-Version:        3.32.0
+Version:        3.32.0+58
 Release:        0
 Summary:        Power Management for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-URL:            https://projects.gnome.org/gnome-power-manager/
-Source0:        https://download.gnome.org/sources/gnome-power-manager/3.32/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gnome-power-manager
+# Source url disabled, we are using git checkout via services
+# Source0:        https://download.gnome.org/sources/gnome-power-manager/3.32/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  libupower-glib-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gdk-3.0) >= 2.91.7
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.3.8
@@ -47,7 +48,6 @@ user-configurable actions.
 
 %prep
 %autosetup
-translation-update-upstream
 
 %build
 %meson \

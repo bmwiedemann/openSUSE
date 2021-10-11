@@ -901,4 +901,12 @@ This was wanted by the SLE Guys apparently.</comment>
     <comment>Scripted push of project GNOME:Next (forwarded request 695570 from dimstar)</comment>
     <requestid>695741</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>f171e27e3db9b11fb7e5f96af736fc23</srcmd5>
+    <version>3.32.0+58</version>
+    <time>1633959034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922652</requestid>
+  </revision>
 </revisionlist>
