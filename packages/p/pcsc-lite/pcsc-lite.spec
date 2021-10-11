@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
