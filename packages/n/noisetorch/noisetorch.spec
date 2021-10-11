@@ -17,7 +17,7 @@
 
 
 Name:           noisetorch
-Version:        0.11.2
+Version:        0.11.4
 Release:        0
 Summary:        Real-time microphone noise suppression on Linux
 License:        GPL-3.0-or-later
@@ -26,9 +26,6 @@ URL:            https://github.com/lawl/NoiseTorch
 Source0:        NoiseTorch-%{version}.tar.gz
 # osc service disabledrun
 Source1:        vendor.tar.gz
-
-Patch0:         noisetorch-fix-ladspa-linking.patch
-
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core

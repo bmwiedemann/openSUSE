@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 08 20:46:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.11.4:
+  * Pulseaudio: Don't crash on receiving longer-than-expected string message
+  * Fix desktop icon
+  * Add PipeWire support to README
+  * UI: Add confirm screen for unload/reload when device in use
+  * Handle non-semver versions in audio client gracefully-ish
+  * pulseaudio: update module with fixed cookie lookup
+  * CLI: Cleanup temp files on exit
+  * c:ladspa: Fix linking with libm
+  * Revert "Temporarily force clang if available"
+- drop noisetorch-fix-ladspa-linking.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Aug  3 13:22:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Don't link statically
