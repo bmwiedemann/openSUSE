@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Fri Oct 1 11:55:16 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#105
+- Use license file from gnu.org
+- Fix spelling
+- Add missing final newline
+- Trim excess whitespace
+- Simple maintenance improvements
+- 21.77
+
+--------------------------------------------------------------------
 Fri Jul 23 13:26:49 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#104
