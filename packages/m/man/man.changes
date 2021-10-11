@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  6 11:41:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_man-db.service.patch
+  Modified:
+  * man-db-create.service
+
+-------------------------------------------------------------------
 Fri Aug  6 13:38:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add manpath.sh and manpath.csh below /usr/etc/profile.d

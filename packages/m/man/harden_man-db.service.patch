@@ -1,0 +1,24 @@
+Index: man-db-2.9.4/init/systemd/man-db.service.in
+===================================================================
+--- man-db-2.9.4.orig/init/systemd/man-db.service.in
++++ man-db-2.9.4/init/systemd/man-db.service.in
+@@ -4,6 +4,19 @@ Documentation=man:mandb(8)
+ ConditionACPower=true
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ # Recover from deletion, per FHS.
+ ExecStart=+/usr/bin/install -d -o @cache_top_owner@ -g @cache_top_owner@ -m 0755 /var/cache/man

@@ -57,6 +57,7 @@ Patch8:         man-db-2.9.4.patch
 # PATCH-FEATURE-OPENSUSE -- Add documentation about man0 section (header files)
 Patch9:         man-db-2.6.3-man0.dif
 Patch10:        man-db-2.9.4-alternitive.dif
+Patch11:	harden_man-db.service.patch
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
@@ -110,6 +111,7 @@ printer (using groff).
 %patch9 -b .s10
 %patch10 -b .libalernative
 rm -f configure
+%patch11 -p1
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
