@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 30 03:06:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.42
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.42      2021-09-29 09:54:26 -0600
+    - Improved documentation relating to the Alien::Base alt methods and
+      the PkgConfig plugins use of pkg_name property (gh#234, gh#284)
+
+-------------------------------------------------------------------
 Wed Jun 23 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.41
