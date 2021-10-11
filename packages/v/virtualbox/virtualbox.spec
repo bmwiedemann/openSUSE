@@ -55,7 +55,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 # For 64-bit builds, no memory limit is reached when more jobs are run, but the builds crash with strange errors.
 # For the above reasons, limit the number of jobs to 2.
 %define _smp_mflags -j2
-%define _vbox_instdir  %{_prefix}/lib/virtualbox
+%define _vbox_instdir %{_prefix}/lib/virtualbox
 %define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
@@ -63,8 +63,8 @@ Name:           virtualbox%{?dash}%{?name_suffix}
 Version:        6.1.26
 Release:        0
 Summary:        %{package_summary}
-License:        GPL-2.0-or-later
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+License:        GPL-2.0-or-later
 Group:          %{package_group}
 URL:            https://www.virtualbox.org/
 #
@@ -288,8 +288,6 @@ Requires(pre):  net-tools-deprecated
 %if %{kmp_package}
 BuildRequires:  libxml2-devel
 Requires:       openSUSE-signkey-cert
-Obsoletes:      virtualbox-guest-kmp
-Obsoletes:      virtualbox-host-kmp
 %kernel_module_package -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
 # end of kmp_package
 %endif
@@ -304,12 +302,6 @@ hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
 
-
-
-
-
-
-
 ##########################################
 
 %package qt
@@ -320,19 +312,13 @@ Requires(pre):  permissions
 Provides:       %{name}-gui = %{version}
 #this is needed during update to trigger installing qt subpackage
 #http://en.opensuse.org/openSUSE:Upgrade_dependencies_explanation#Splitting_and_Merging
-Provides:       %{name}-ose:%{_prefix}/lib/virtualbox/VirtualBox.so
+Provides:       %{name}-ose:%{_vbox_instdir}/VirtualBox.so
 #rename from "ose" version:
 Provides:       %{name}-ose-qt = %{version}
 Obsoletes:      %{name}-ose-qt < %{version}
 
 %description qt
 This package contains the code for the GUI used to control VMs.
-
-
-
-
-
-
 
 
 #########################################
@@ -342,16 +328,10 @@ Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
 Requires:       %{name} = %{version}
 Provides:       %{name}-gui = %{version}
-Obsoletes:      %{name}-vboxwebsrv
+Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
-
 
 
 #########################################
@@ -367,12 +347,6 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
-
-
-
-
-
-
 
 
 ###########################################
@@ -395,12 +369,6 @@ Requires(pre):  net-tools-deprecated
 VirtualBox guest addition tools.
 
 
-
-
-
-
-
-
 ###########################################
 
 %package -n python3-%{name}
@@ -421,12 +389,6 @@ Obsoletes:      python3-%{name}-ose < %{version}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
-
-
-
-
-
-
 ###########################################
 
 %package devel
@@ -440,12 +402,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
-
 
 
 ###########################################
@@ -463,7 +419,7 @@ BuildArch:      noarch
 %description host-source
 Source files for %{name} host kernel modules
 These can be built for custom kernels using
-sudo /sbin/vboxconfig
+sudo /usr/sbin/vboxconfig
 
 %package guest-source
 Summary:        Source files for %{name} guest kernel modules
@@ -477,12 +433,7 @@ BuildArch:      noarch
 %description guest-source
 Source files for %{name} guest kernel modules
 These can be built for custom kernels using
-sudo /sbin/vboxguestconfig
-
-
-
-
-
+sudo /usr/sbin/vboxguestconfig
 
 
 
@@ -497,11 +448,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
 
 
 
@@ -607,7 +553,7 @@ cp %{SOURCE20} README.autostart
 #instead of kmk_sed use /usr/bin/sed because of bug http://svn.netlabs.org/kbuild/ticket/112,
 #but we have to create wrapper which will handle --append and --output options which are not provided by /usr/bin/sed
 cat >> kmk_sed <<EOF
-#!/bin/bash
+#!/usr/bin/bash
 while [ "\$#" != "0" ]; do
 	pass=\${pass}" \$1"
 	[ "\$1" == "-e" ] && shift && pass=\${pass}" '\$1'"
@@ -642,7 +588,7 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
     --disable-java \
     --disable-docs \
     --enable-webservice \
-    --with-makeself=/bin/true
+    --with-makeself=/usr/bin/true
 
 # configure actually warns we should source env.sh (which seems like it could influence the build...)
 source ./env.sh
@@ -670,8 +616,8 @@ kmk -C src/VBox/ExtPacks/VNC packing
 #################################
 echo "create directory structure"
 #################################
-install -d -m 755 %{buildroot}/sbin
-install -d -m 755 %{buildroot}/lib
+install -d -m 755 %{buildroot}/usr/sbin
+install -d -m 755 %{buildroot}/usr/lib
 install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_datadir}/virtualbox/nls
@@ -696,7 +642,7 @@ echo "entering guest-tools install section"
 ###########################################
 install -m 755 out/linux.*/release/bin/additions/VBoxControl %{buildroot}%{_bindir}/VBoxControl
 install -m 755 out/linux.*/release/bin/additions/VBoxService %{buildroot}%{_sbindir}/VBoxService
-install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}/sbin/mount.vboxsf
+install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}/usr/sbin/mount.vboxsf
 install -m 744 src/VBox/Additions/linux/installer/vboxadd-service.sh %{buildroot}%{_vbox_instdir}/vboxadd-service
 # udev rule for guest (virtualbox-guest-tools)
 install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/60-vboxguest.rules
@@ -800,9 +746,9 @@ install -m 644 %{SOURCE8}			%{buildroot}%{_bindir}/update-extpack.sh
 install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.service
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
 install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
-install -m 0755 %{SOURCE16}			%{buildroot}/sbin/vboxconfig
-install -m 0755 %{SOURCE17}			%{buildroot}/sbin/vboxguestconfig
-install -m 0755 %{SOURCE18}			%{buildroot}/sbin/vbox-fix-usb-rules.sh
+install -m 0755 %{SOURCE16}			%{buildroot}/usr/sbin/vboxconfig
+install -m 0755 %{SOURCE17}			%{buildroot}/usr/sbin/vboxguestconfig
+install -m 0755 %{SOURCE18}			%{buildroot}/usr/sbin/vbox-fix-usb-rules.sh
 install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
 install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
 install -m 0755 %{SOURCE22}			%{buildroot}%{_vbox_instdir}/vboxweb-service.sh
@@ -816,7 +762,7 @@ ln -sf %{_unitdir}/vboxautostart-service.service        %{buildroot}%{_unitdir}/
 
 # config file for vboxdrv and vboxweb
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
-install -d -m 775 %{buildroot}%{_sysconfdir}/vbox/autostart.d
+# install -d -m 775 %{buildroot}%{_sysconfdir}/vbox/autostart.d
 echo -e "#settings for vboxwebsrn\nVBOXWEB_USER=root" > %{buildroot}%{_sysconfdir}/vbox/vbox.cfg
 # config file for vboxautostart
 cat > %{buildroot}%{_sysconfdir}/vbox/autostart.cfg << EOF
@@ -1072,7 +1018,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_unitdir}/multi-user.target.wants/vboxautostart-service.service
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
-/sbin/vboxconfig
+/usr/sbin/vboxconfig
+#rules fixing script is in /usr/sbin
+%attr(0755,root,root) /usr/sbin/vbox-fix-usb-rules.sh
 %{_vbox_instdir}/VBoxCreateUSBNode.sh
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetNAT
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetDHCP
@@ -1096,8 +1044,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 #wrapper script is in bindir
 %attr(0755,root,root) %{_bindir}/VirtualBox
 %attr(0755,root,root) %{_bindir}/update-extpack.sh
-#rules fixing script is in /sbin
-%attr(0755,root,root) /sbin/vbox-fix-usb-rules.sh
 #ldd shows libQt* dependency
 %{_vbox_instdir}/VBoxTestOGL
 #qm's translations
@@ -1126,8 +1072,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %files guest-tools
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
-/sbin/vboxguestconfig
-/sbin/mount.vboxsf
+/usr/sbin/vboxguestconfig
+/usr/sbin/mount.vboxsf
 %{_udevrulesdir}/60-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
 %{_unitdir}/vboxadd-service.service

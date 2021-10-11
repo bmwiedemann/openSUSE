@@ -27,10 +27,10 @@
 # Description: VirtualBox Linux kernel module
 ### END INIT INFO
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:$PATH
+PATH=/usr/sbin:/usr/bin:$PATH
 DEVICE=/dev/vboxdrv
 LOG="/var/log/vbox-install.log"
-MODPROBE=/sbin/modprobe
+MODPROBE=/usr/sbin/modprobe
 SCRIPTNAME=vboxdrv.sh
 INSTALL_DIR=/usr/lib/virtualbox
 
@@ -210,7 +210,7 @@ start_drv()
             failure "Cannot remove $DEVICE"
         fi
         if ! $MODPROBE vboxdrv > /dev/null 2>&1; then
-            /sbin/vboxconfig
+            /usr/sbin/vboxconfig
             if ! $MODPROBE vboxdrv > /dev/null 2>&1; then
                 failure "modprobe vboxdrv failed. Please use 'dmesg' to find out why"
             fi
@@ -302,7 +302,7 @@ cleanup_vb()
 setup_vb()
 {
 #   Try to build the host kernel modules in case prepackaging has failed
-    /sbin/vboxconfig
+    /usr/sbin/vboxconfig
 }
 
 dmnstatus()

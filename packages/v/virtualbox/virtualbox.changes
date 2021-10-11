@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct  5 15:46:41 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix ldconfig invocation in scriptlets
+
+-------------------------------------------------------------------
+Sat Oct  2 22:59:48 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove vbox-fix-usb-rules.sh from qt package to avoid file conflict
+
+-------------------------------------------------------------------
+Sat Oct  2 16:55:07 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build failures in Leap 15.1 and Leap 15.2 due to kmk_sed issues. 
+
+-------------------------------------------------------------------
+Wed Sep 29 19:24:28 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Finish UsrMerge for VirtualBox components (boo#1191104).
+
+-------------------------------------------------------------------
 Wed Sep  8 04:54:25 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add file "fixes-for-5.15.patch" to fix builds on kernel 5.15.
