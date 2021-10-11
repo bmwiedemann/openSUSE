@@ -97,11 +97,10 @@ BuildRequires:  pkgconfig(xtst)
 
 Requires:       rtkit
 Requires:       udev >= 146
+Requires(pre):  user(pulse)
 ## needs the same liborc version which was used to build against
 %requires_eq    liborc-0_4-0
 Requires(post): %fillup_prereq
-Requires(pre):  group(audio)
-%sysusers_requires
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
 Conflicts:      kernel < 2.6.31
@@ -314,6 +313,16 @@ Supplements:    (pulseaudio and zsh)
 %description zsh-completion
 Optional dependency offering zsh completion for various PulseAudio utilities
 
+%package -n system-user-pulse
+Summary:        System user for PulseAudio
+Group:          System/Base
+Requires(pre):  group(audio)
+BuildArch:      noarch
+%sysusers_requires
+
+%description -n system-user-pulse
+System user for PulseAudio
+
 %lang_package
 
 %prep
@@ -392,7 +401,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-dis
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
 %find_lang %{name}
 
-%pre -f pulseaudio.pre
+%pre -n system-user-pulse -f pulseaudio.pre
 
 %post
 /sbin/ldconfig
@@ -552,7 +561,6 @@ exit 0
 %{_userunitdir}/%{name}.service
 %{_userunitdir}/%{name}.socket
 %{_prefix}/lib/tmpfiles.d/pulseaudio.conf
-%{_sysusersdir}/system-user-pulse.conf
 %ghost %dir %{_localstatedir}/lib/pulseaudio
 
 # created by setup-pulseaudio script
@@ -698,5 +706,8 @@ exit 0
 %dir %{_datarootdir}/zsh
 %dir %{_datarootdir}/zsh/site-functions/
 %{_datarootdir}/zsh/site-functions/_pulseaudio
+
+%files -n system-user-pulse
+%{_sysusersdir}/system-user-pulse.conf
 
 %changelog

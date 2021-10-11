@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  8 10:56:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Make system-user-pulse noarch
+
+-------------------------------------------------------------------
+Mon Oct  4 18:14:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Split sysusers.d file to separate package as needed by brltty
+  (bsc#1191465)
+
+-------------------------------------------------------------------
 Thu Sep 16 02:05:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
