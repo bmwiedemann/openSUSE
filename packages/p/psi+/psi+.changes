@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  4 09:25:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+-  update to 1.5.1555+0
+ * Save shared files in XDG_DATA_HOME instead of XDG_CACHE_HOME (#627)
+ * Fixed #621: don't notify contactlist model about any changes during
+   layout update
+ * relinked qite and iris afer recent crash fixes
+ * added the mucNick() fn to plugins api (#625)
+
+-------------------------------------------------------------------
 Tue Jun 15 07:02:25 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.5.1548+0
