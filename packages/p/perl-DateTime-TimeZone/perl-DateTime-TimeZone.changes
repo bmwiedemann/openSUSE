@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  3 03:07:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.49
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.49    2021-10-02
+
+  - This release is based on version 2021c of the Olson database. This release
+    fixes the zone links for Atlantic/Jan_Mayen and America/Virgin.
+
+-------------------------------------------------------------------
 Wed Sep 29 20:25:58 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Add precious.toml to skip_doc
