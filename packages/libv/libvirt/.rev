@@ -3921,4 +3921,33 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>919014</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>4b6c281706b736fadabe1a57f7a89166</srcmd5>
+    <version>7.8.0</version>
+    <time>1633959050</time>
+    <user>dimstar_suse</user>
+    <comment>- lxc: controller: Fix container launch on cgroup v1
+  1b9ce05c-lxc-fix-cgroupV1.patch
+  boo#1183247
+
+- tools: Fix virt-host-validate SEV detection
+  3f9c1a4b-fix-host-validate-sev.patch
+  boo#1188715
+
+- Update to libvirt 7.8.0
+  - jsc#SLE-18260
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    b75a16ae-libxl-improve-die-id.patch,
+    65fab900-libxl-fix-driver-reload.patch,
+    51eb680b-libxl-dont-autostart-on-reload.patch
+
+- spec: Fix hangs during package update
+  bsc#1177902, bsc#1190693
+- spec: Don't add --timeout arg to /etc/sysconfig/libvirtd when
+  running in traditional mode without socket activation
+  bsc#1190695</comment>
+    <requestid>924290</requestid>
+  </revision>
 </revisionlist>

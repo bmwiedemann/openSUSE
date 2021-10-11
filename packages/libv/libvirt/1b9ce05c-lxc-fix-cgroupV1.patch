@@ -1,0 +1,57 @@
+commit 1b9ce05ce241a581d4e80228c92ceb0266f21f94
+Author: Cole Robinson <crobinso@redhat.com>
+Date:   Tue Oct 5 09:42:12 2021 -0400
+
+    lxc: controller: Fix container launch on cgroup v1
+    
+    With cgroup v1 I'm seeing LXC container startup failures:
+    
+    $ sudo virt-install --connect lxc:/// --name test-container --memory 128
+    --boot init=/bin/sh
+    
+    Starting install...
+    ERROR    error from service:
+    GDBus.Error:org.freedesktop.machine1.NoMachineForPID: PID 2145047 does
+    not belong to any known machine
+    
+    libvirt 7.0.0 works but 7.1.0+ does not. The root error seems to predate
+    that, showing up in syslog, but commit 9c1693eff made it fatal:
+    
+    commit 9c1693eff427661616ce1bd2795688f87288a412
+    Author: Pavel Hrdina <phrdina@redhat.com>
+    Date:   Fri Feb 5 16:17:35 2021 +0100
+    
+         vircgroup: use DBus call to systemd for some APIs
+    
+    The error comes from virSystemdGetMachineByPID. The PID that shows up in
+    the above error message does not match the leader PID as reported by
+    machinectl.
+    
+    This change fixes the error. Things seem to continue to work with
+    cgroupsv2 after this change.
+    
+    https://gitlab.com/libvirt/libvirt/-/issues/182
+    
+    Tested-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+    Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+Index: libvirt-7.8.0/src/lxc/lxc_controller.c
+===================================================================
+--- libvirt-7.8.0.orig/src/lxc/lxc_controller.c
++++ libvirt-7.8.0/src/lxc/lxc_controller.c
+@@ -865,12 +865,12 @@ static int virLXCControllerSetupCgroupLi
+     nodeset = virDomainNumatuneGetNodeset(ctrl->def->numa, auto_nodeset, -1);
+ 
+     if (!(ctrl->cgroup = virLXCCgroupCreate(ctrl->def,
+-                                            ctrl->initpid,
++                                            getpid(),
+                                             ctrl->nnicindexes,
+                                             ctrl->nicindexes)))
+         goto cleanup;
+ 
+-    if (virCgroupAddMachineProcess(ctrl->cgroup, getpid()) < 0)
++    if (virCgroupAddMachineProcess(ctrl->cgroup, ctrl->initpid) < 0)
+         goto cleanup;
+ 
+     /* Add all qemu-nbd tasks to the cgroup */

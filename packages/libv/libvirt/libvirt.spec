@@ -136,7 +136,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.7.0
+Version:        7.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -285,9 +285,8 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         b75a16ae-libxl-improve-die-id.patch
-Patch1:         65fab900-libxl-fix-driver-reload.patch
-Patch2:         51eb680b-libxl-dont-autostart-on-reload.patch
+Patch0:         3f9c1a4b-fix-host-validate-sev.patch
+Patch1:         1b9ce05c-lxc-fix-cgroupV1.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1129,17 +1128,17 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %pre daemon
-%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %post daemon
 /sbin/ldconfig
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
-%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %preun daemon
-%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 if [ $1 = 0 ]; then
     rm -f /var/lib/%{name}/libvirt-guests
 fi
@@ -1147,7 +1146,7 @@ fi
 %postun daemon
 /sbin/ldconfig
 # Handle restart/reload in posttrans
-%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
 
 %posttrans daemon
 # virtlockd and virtlogd must not be restarted, particularly virtlockd since the
@@ -1161,17 +1160,11 @@ if test -f %{_sysconfdir}/sysconfig/libvirtd; then
     if grep -q -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
         listen_mode=yes
     fi
-    if test "$listen_mode" = yes; then
-        # Keep honouring --listen and *not* use systemd socket activation.
-        # Switching things might confuse management tools that expect the old
-        # style libvirtd
-        %{_bindir}/systemctl mask \
-                   libvirtd.socket \
-                   libvirtd-ro.socket \
-                   libvirtd-admin.socket >/dev/null 2>&1 || :
-    else
-        # A benefit of socket activation is libvirtd doesn't need to be running
-        # when unused. Set a timeout value if it doesn't already exist
+    # A benefit of socket activation is libvirtd doesn't need to be running
+    # when unused. If sockets are enabled, set a timeout value if it doesn't
+    # already exist
+    if test "$listen_mode" = no && \
+            %{_bindir}/systemctl -q is-enabled libvirtd.socket; then
         awk -i inplace "
         /^LIBVIRTD_ARGS=/ {
             gsub(\"^LIBVIRTD_ARGS=\", \"\")
@@ -1214,6 +1207,15 @@ test -f %{_sysconfdir}/sysconfig/services -a \
 if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
   "$DISABLE_RESTART_ON_UPDATE" != 1; then
     if test "$listen_mode" = yes; then
+        # Keep honouring --listen and *not* use systemd socket activation.
+        # Switching things might confuse management tools that expect the old
+        # style libvirtd
+        %{_bindir}/systemctl mask \
+                   libvirtd.socket \
+                   libvirtd-ro.socket \
+                   libvirtd-admin.socket \
+                   libvirtd-tls.socket \
+                   libvirtd-tcp.socket >/dev/null 2>&1 || :
         %{_bindir}/systemctl try-restart libvirtd.service >/dev/null 2>&1 || :
     else
         # Old libvirtd owns the sockets and will delete them on

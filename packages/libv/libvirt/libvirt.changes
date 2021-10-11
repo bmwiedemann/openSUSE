@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  8 20:47:47 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- lxc: controller: Fix container launch on cgroup v1
+  1b9ce05c-lxc-fix-cgroupV1.patch
+  boo#1183247
+
+-------------------------------------------------------------------
+Thu Oct  7 04:14:22 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- tools: Fix virt-host-validate SEV detection
+  3f9c1a4b-fix-host-validate-sev.patch
+  boo#1188715
+
+-------------------------------------------------------------------
+Fri Oct  1 15:22:44 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.8.0
+  - jsc#SLE-18260
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    b75a16ae-libxl-improve-die-id.patch,
+    65fab900-libxl-fix-driver-reload.patch,
+    51eb680b-libxl-dont-autostart-on-reload.patch
+
+-------------------------------------------------------------------
+Thu Sep 23 21:28:27 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix hangs during package update
+  bsc#1177902, bsc#1190693
+- spec: Don't add --timeout arg to /etc/sysconfig/libvirtd when
+  running in traditional mode without socket activation
+  bsc#1190695
+
+-------------------------------------------------------------------
 Tue Sep 14 20:16:34 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Improve reporting of die_id in capabilities
