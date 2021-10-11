@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           gops
-Version:        0.3.18
+Version:        0.3.20
 Release:        0
 Summary:        A tool to list and diagnose Go processes currently running on your system
 License:        BSD-3-Clause-Clear

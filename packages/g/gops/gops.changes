@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  8 12:11:46 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 0.3.20
+  * README.md: update installation instructions (#148)
+  * Update Go to 1.17, update dependencies (#150)
+
+-------------------------------------------------------------------
 Thu Jun 10 14:17:22 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
 
 - Update to 0.3.18
