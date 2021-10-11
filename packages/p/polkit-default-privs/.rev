@@ -1889,4 +1889,20 @@ for 12.3</comment>
   * whitelist deepin-api service actions (bsc#1070943)</comment>
     <requestid>912905</requestid>
   </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>415094d56eec1516675d5e12a8741e63</srcmd5>
+    <version>1550+20211008.9751669</version>
+    <time>1633963721</time>
+    <user>dimstar_suse</user>
+    <comment>- drop backward compatibility symlink in /etc/polkit-default-privs.standard.
+  rpmlint 2.0 is now in Factory and the check there directly uses the profile
+  in /usr/etc/polkit-default-privs/profiles/standard.
+- drop polkit-whitelisting sub-package. This is now handled in rpmlint 2.0
+  internally.
+
+- Update to version 1550+20211008.9751669:
+  * whitelist power-profiles-daemon actions (bsc#1189900)
+  * cleanup: remove polkit-rules-whitelist.json</comment>
+    <requestid>924174</requestid>
+  </revision>
 </revisionlist>

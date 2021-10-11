@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20210818.b0c41fd
+Version:        1550+20211008.9751669
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -66,11 +66,6 @@ valid rule file installations by other packages.
 make install DESTDIR=$RPM_BUILD_ROOT fillupdir="%{_fillupdir}"
 mkdir -p $RPM_BUILD_ROOT/etc/polkit-1/rules.d/
 > $RPM_BUILD_ROOT/etc/polkit-1/rules.d/90-default-privs.rules
-# TODO: this is a backward compatibility entry for the rpmlint-mini check for
-# polkit priv whitelistings. When rpmlint2 is fully in production we shouldn't
-# need this any more (apart from adjusting the rpmlint checker in rpmlint2
-# on the opensuse upstream branch).
-ln -s /usr/etc/polkit-default-privs/profiles/standard $RPM_BUILD_ROOT/etc/polkit-default-privs.standard
 
 %post
 %{fillup_only -ns security polkit_default_privs}
@@ -87,14 +82,9 @@ ln -s /usr/etc/polkit-default-privs/profiles/standard $RPM_BUILD_ROOT/etc/polkit
 %{profiledir}/standard
 %{profiledir}/restrictive
 %{basedir}/local.template
-%{_sysconfdir}/polkit-default-privs.standard
 /sbin/chkstat-polkit
 /sbin/set_polkit_default_privs
 %_mandir/man*/*
 %{_fillupdir}/sysconfig.security-polkit_default_privs
-
-%files -n polkit-whitelisting
-%defattr(-,root,root)
-/etc/polkit-rules-whitelist.json
 
 %changelog
