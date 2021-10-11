@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  8 00:41:43 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.2 (released 2021-10-07) includes a security fix to the
+  linker and misc/wasm directory, as well as bug fixes to the
+  compiler, the runtime, the go command, and to the time and
+  text/template packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2021-38297
+  * boo#1191468 go#48797 CVE-2021-38297
+  * go#48800 security: fix CVE-2021-38297 misc/wasm, cmd/link: do not let command line args overwrite global data
+  * go#48561 cmd/compile: unsafe.Add bug when adding uint8 value to a pointer
+  * go#48444 text/template: should t.init() be executed before t.muTmpl.Lock() in AddParseTree() method?
+  * go#48177 time: output does not respect comma as millisecond separator
+  * go#47859 time: timer reset sometimes ignored, causing delayed ticks
+  * go#47756 cmd/go: mod tidy -go=1.17 should move indirect dependencies to the second require part
+
+-------------------------------------------------------------------
 Fri Sep 10 02:44:03 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.1 (released 2021-09-09) includes a security fix to the
