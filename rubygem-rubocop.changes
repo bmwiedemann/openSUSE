@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sat Oct  9 09:18:38 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.22.1
+
+  ## 1.22.1 (2021-10-04)
+
+  ### Bug fixes
+
+  * [#10143](https://github.com/rubocop/rubocop/issues/10143): Fix an error for `Lint/RequireRelativeSelfPath` when using a variable as an argument of `require_relative`. ([@koic][])
+  * [#10140](https://github.com/rubocop/rubocop/issues/10140): Fix false positive for `Layout/DotPosition` when a heredoc receives a method on the same line as the start sigil in `trailing` style. ([@dvandersluis][])
+  * [#10148](https://github.com/rubocop/rubocop/issues/10148): Fix `Style/QuotedSymbols` handling escaped characters incorrectly. ([@dvandersluis][])
+  * [#10145](https://github.com/rubocop/rubocop/issues/10145): Update `Style/SelectByRegexp` to ignore cases where the receiver appears to be a hash. ([@dvandersluis][])
+
+  ## 1.22.0 (2021-09-29)
+
+  ### New features
+
+  * [#8431](https://github.com/rubocop/rubocop/issues/8431): Add `Safety` section to documentation for all cops that are `Safe: false` or `SafeAutoCorrect: false`. ([@dvandersluis][])
+  * [#10132](https://github.com/rubocop/rubocop/issues/10132): Reorganize output of `rubocop --help` for better clarity. ([@dvandersluis][])
+  * [#10111](https://github.com/rubocop/rubocop/pull/10111): Add new `Style/NumberedParametersLimit` cop. ([@dvandersluis][])
+  * [#10025](https://github.com/rubocop/rubocop/pull/10025): Changed cop `SpaceInsideParens` to include a `compact` style. ([@itay-grudev][])
+  * [#10084](https://github.com/rubocop/rubocop/issues/10084): Add new `Lint/RequireRelativeSelfPath` cop. ([@koic][])
+  * [#8327](https://github.com/rubocop/rubocop/issues/8327): Add new cop `Style/SelectByRegexp`. ([@dvandersluis][])
+  * [#10100](https://github.com/rubocop/rubocop/pull/10100): Add new `Style/NumberedParameters` cop. ([@Hugo-Hache][])
+  * [#10103](https://github.com/rubocop/rubocop/issues/10103): Add `AllowHttpProtocol` option to `Bundler/InsecureProtocolSource`. ([@koic][])
+  * [#10102](https://github.com/rubocop/rubocop/pull/10102): Add new `Security/IoMethods` cop. ([@koic][])
+
+  ### Bug fixes
+
+  * [#10110](https://github.com/rubocop/rubocop/issues/10110): Update `Layout/DotPosition` to be able to handle heredocs. ([@dvandersluis][])
+  * [#10134](https://github.com/rubocop/rubocop/issues/10134): Update `Style/MutableConstant` to not consider multiline uninterpolated strings as unfrozen in ruby 3.0. ([@dvandersluis][])
+  * [#10124](https://github.com/rubocop/rubocop/pull/10124): Fix `Layout/RedundantLineBreak` adding extra space within method chains. ([@dvandersluis][])
+  * [#10118](https://github.com/rubocop/rubocop/issues/10118): Fix crash with `Style/RedundantSort` when the block doesn't only contain a single `send` node. ([@dvandersluis][])
+  * [#10135](https://github.com/rubocop/rubocop/issues/10135): Fix `Style/WordArray` to exclude files in `--auto-gen-config` when `percent` style is given but brackets are required. ([@dvandersluis][])
+  * [#10090](https://github.com/rubocop/rubocop/issues/10090): Fix a false negative for `Style/ArgumentsForwarding` when using only kwrest arg. ([@koic][])
+  * [#10099](https://github.com/rubocop/rubocop/pull/10099): Update`Style/RedundantFreeze` to stop considering `ENV` values as immutable. ([@byroot][])
+  * [#10078](https://github.com/rubocop/rubocop/pull/10078): Fix `Layout/LineLength` reported length when ignoring directive comments. ([@dvandersluis][])
+  * [#9934](https://github.com/rubocop/rubocop/issues/9934): Fix configuration loading to not raise an error for an obsolete ruby version that is subsequently overridden. ([@dvandersluis][])
+  * [#10136](https://github.com/rubocop/rubocop/issues/10136): Update `Lint/AssignmentInCondition` to not consider assignments within blocks in conditions. ([@dvandersluis][])
+  * [#9588](https://github.com/rubocop/rubocop/issues/9588): Fix causing a variable to be shadowed from outside the rescue block in the logic of Naming/RescuedExceptionsVariableName. ([@lilisako][])
+  * [#10096](https://github.com/rubocop/rubocop/issues/10096): Fix `Lint/AmbiguousOperatorPrecedence` with `and`/`or` operators. ([@dvandersluis][])
+  * [#10106](https://github.com/rubocop/rubocop/issues/10106): Fix `Style/RedundantSelf` for pattern matching. ([@dvandersluis][])
+  * [#10066](https://github.com/rubocop/rubocop/issues/10066): Fix how `MinDigits` is calculated for `Style/NumericLiterals` when generating a configuration file. ([@dvandersluis][])
+
+  ### Changes
+
+  * [#10088](https://github.com/rubocop/rubocop/pull/10088): Update `Lint/BooleanSymbol` to be `SafeAutoCorrect: false` rather than `Safe: false`. ([@dvandersluis][])
+  * [#10122](https://github.com/rubocop/rubocop/pull/10122): Update `Style/RedundantSort` to be unsafe, and revert the special case for `size` from [#10061](https://github.com/rubocop/rubocop/pull/10061). ([@dvandersluis][])
+  * [#10130](https://github.com/rubocop/rubocop/issues/10130): Update `Lint/ElseLayout` to be able to handle an `else` with only a single line. ([@dvandersluis][])
+
+  ## 1.21.0 (2021-09-13)
+
+  ### New features
+
+  * [#7849](https://github.com/rubocop/rubocop/issues/7849): Add new `Lint/AmbiguousOperatorPrecedence` cop. ([@dvandersluis][])
+  * [#9061](https://github.com/rubocop/rubocop/issues/9061): Add new `Lint/IncompatibleIoSelectWithFiberScheduler` cop. ([@koic][])
+
+  ### Bug fixes
+
+  * [#10067](https://github.com/rubocop/rubocop/pull/10067): Fix an error for `Lint/NumberConversion` when using nested number conversion methods. ([@koic][])
+  * [#10054](https://github.com/rubocop/rubocop/pull/10054): Fix a false positive for `Layout/SpaceAroundOperators` when match operators between `<<` and `+=`. ([@koic][])
+  * [#10061](https://github.com/rubocop/rubocop/issues/10061): Fix a false positive for `Style/RedundantSort` when using `size` method in the block. ([@koic][])
+  * [#10063](https://github.com/rubocop/rubocop/pull/10063): Fix a false positive for `Layout/SingleLineBlockChain` when method call chained on a new line after a single line block with trailing dot. ([@koic][])
+  * [#10064](https://github.com/rubocop/rubocop/pull/10064): Fix `Style/ExplicitBlockArgument` corrector assuming any existing block argument was named `block`. ([@byroot][])
+  * [#10070](https://github.com/rubocop/rubocop/issues/10070): Fix a false positive for `Style/MutableConstant` when using non-interpolated heredoc in Ruby 3.0. ([@koic][])
+
+  ### Changes
+
+  * [#9674](https://github.com/rubocop/rubocop/issues/9674): Disable `Style/AsciiComments` by default. ([@dvandersluis][])
+  * [#10051](https://github.com/rubocop/rubocop/pull/10051): Improve the messaging for `Style/Documentation` to be more clear about what class/module needs documentation. ([@dvandersluis][])
+  * [#10074](https://github.com/rubocop/rubocop/pull/10074): Update `Naming/InclusiveLanguage` to be disabled by default. ([@dvandersluis][])
+  * [#10068](https://github.com/rubocop/rubocop/pull/10068): Mark `Style/AndOr` as unsafe auto-correction. ([@koic][])
+
+  ## 1.20.0 (2021-08-26)
+
+  ### New features
+
+  * [#10040](https://github.com/rubocop/rubocop/pull/10040): Make `Lint/Debugger` aware of debug.rb. ([@koic][])
+  * [#9580](https://github.com/rubocop/rubocop/issues/9580): Add a new cop that enforces which bundler gem file to use. ([@gregfletch][])
+
+  ### Bug fixes
+
+  * [#10033](https://github.com/rubocop/rubocop/issues/10033): Fix an incorrect auto-correct for `Style/BlockDelimiters` when there is a comment after the closing brace and using method chanin. ([@koic][])
+  * [#6630](https://github.com/rubocop/rubocop/issues/6630): Updated `Style/CommentAnnotation` to be able to handle multiword keyword phrases. ([@dvandersluis][])
+  * [#7836](https://github.com/rubocop/rubocop/issues/7836): Update `Style/BlockDelimeters` to add `begin`...`end` when converting a block containing `rescue` or `ensure` to braces. ([@dvandersluis][])
+  * [#10031](https://github.com/rubocop/rubocop/issues/10031): Fix a false positive for `Style/HashExcept` when comparing with hash value. ([@koic][])
+
+  ### Changes
+
+  * [#10034](https://github.com/rubocop/rubocop/pull/10034): Add `RubyJard` debugger calls to Lint/Debugger/DebuggerMethods. ([@DanielVartanov][])
+  * [#10006](https://github.com/rubocop/rubocop/pull/10006): Interpolated string literals are no longer frozen since Ruby 3.0. ([@splattael][])
+  * [#9328](https://github.com/rubocop/rubocop/issues/9328): Recognize shareable_constant_value magic comment. ([@thearjunmdas][], [@caalberts][])
+  * [#10036](https://github.com/rubocop/rubocop/issues/10036): Mark `Style/StructInheritance` as unsafe auto-correction. ([@koic][])
+
+-------------------------------------------------------------------
 Wed Aug 25 06:07:29 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.19.1
