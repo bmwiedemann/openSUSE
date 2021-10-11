@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d0047ac0cb57461372fdcad6d9bc6aa</srcmd5>
+    <version>3.0.0rc47</version>
+    <time>1633959066</time>
+    <user>dimstar_suse</user>
+    <comment>Please add mtail, a log file metrics extractor.
+It's a very useful tool in a fairly mature state.</comment>
+    <requestid>924188</requestid>
+  </revision>
+</revisionlist>

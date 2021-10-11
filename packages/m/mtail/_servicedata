@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/google/mtail.git</param>
+              <param name="changesrevision">e6d88064340b0f01252f26d86cf04c57bc010c71</param></service></servicedata>

@@ -1,0 +1,6 @@
+<package name="mtail" project="openSUSE:Factory">
+  <title>extract internal monitoring data from application logs for collection in a timeseries database</title>
+  <description>mtail is a tool for extracting metrics from application logs to be exported into a timeseries database or timeseries calculator for alerting and dashboarding.</description>
+  <devel project="server:monitoring" package="mtail"/>
+  <url>https://github.com/google/mtail</url>
+</package>

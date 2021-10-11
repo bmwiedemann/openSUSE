@@ -1,0 +1,8 @@
+## Fillup template for mtail
+##
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: galene
+# Configure command-line arguments for mtail
+ARGS="-port 3903 -progs /etc/mtail -syslog_use_current_year -logtostderr -logs /var/log/messages"
