@@ -17,20 +17,15 @@
 #
 
 
-%define sover 2
+%define sover 3
 Name:           libuev
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Event loop library
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/troglobit/libuev/
 Source:         https://github.com/troglobit/libuev/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-25-glibc-2.33-requires-_FILE_OFFSET_BITS-64-with.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
@@ -66,7 +61,6 @@ Development and header files for libuEv.
 %autosetup -p1
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static
 %make_build
@@ -76,16 +70,19 @@ autoreconf -fiv
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -r %{buildroot}%{_datadir}/doc
 
+%check
+%make_build check
+
 %post   -n libuev%{sover} -p /sbin/ldconfig
 %postun -n libuev%{sover} -p /sbin/ldconfig
 
 %files -n libuev%{sover}
-%doc API.md AUTHORS ChangeLog.md README.md
+%doc AUTHORS ChangeLog.md README.md
 %license LICENSE
 %{_libdir}/libuev.so.%{sover}*
 
 %files devel
-%license LICENSE
+%license LICENSE doc/API.md
 %{_includedir}/uev
 %{_libdir}/libuev.so
 %{_libdir}/pkgconfig/libuev.pc

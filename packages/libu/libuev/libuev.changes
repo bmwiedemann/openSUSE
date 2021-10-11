@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  9 12:49:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libuev 2.4.0:
+  * major ABI bump:
+    Add struct signalfd_siginfo to uev_t, valid for signal watchers
+    Now more metadata is available to signal callbacks
+  * built for 64 bit time_t, requiring users to use the following:
+    CPPFLAGS += -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64
+  * documentation updates
+- run tests during build
+- drop 0001-Fix-25-glibc-2.33-requires-_FILE_OFFSET_BITS-64-with.patch
+
+-------------------------------------------------------------------
 Sun Sep 19 08:44:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add glibc >= 2.33 build fix:
