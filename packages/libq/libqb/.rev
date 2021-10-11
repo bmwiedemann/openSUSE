@@ -272,4 +272,18 @@
 - doxygen2man: Add option to read copyright line from the header file (#415) (gh#ClusterLabs/libqb#414) (forwarded request 853520 from yan_gao)</comment>
     <requestid>853522</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>56fd2eed37f3696a73fc604f3e8f0b3e</srcmd5>
+    <version>2.0.3+20210303.404adbc</version>
+    <time>1633963721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3+20210303.404adbc (v2.0.3):
+- syslog: Add a message-id parameter for messages (gh#ClusterLabs/libqb#433)
+- timers: Add some locking (gh#ClusterLabs/libqb#436)
+- ipcc: Have a few goes at tidying up after a dead server (gh#ClusterLabs/libqb#434)
+- strlcpy: Check for maxlen underflow (gh#ClusterLabs/libqb#432)
+- doxygen2man: fix printing of lines starting with '.' (gh#ClusterLabs/libqb#431)
+- doxygen2man: ignore all-whitespace brief descriptions (gh#ClusterLabs/libqb#430) (forwarded request 924179 from yan_gao)</comment>
+    <requestid>924180</requestid>
+  </revision>
 </revisionlist>

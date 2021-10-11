@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 07 11:39:16 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.3+20210303.404adbc (v2.0.3):
+- syslog: Add a message-id parameter for messages (gh#ClusterLabs/libqb#433)
+- timers: Add some locking (gh#ClusterLabs/libqb#436)
+- ipcc: Have a few goes at tidying up after a dead server (gh#ClusterLabs/libqb#434)
+- strlcpy: Check for maxlen underflow (gh#ClusterLabs/libqb#432)
+- doxygen2man: fix printing of lines starting with '.' (gh#ClusterLabs/libqb#431)
+- doxygen2man: ignore all-whitespace brief descriptions (gh#ClusterLabs/libqb#430)
+
+-------------------------------------------------------------------
 Fri Dec 04 09:35:51 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.2+20201203.def947e (v2.0.2):
