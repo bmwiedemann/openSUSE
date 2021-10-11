@@ -1,0 +1,13 @@
+diff -ruN desktopfolder-1.1.3.orig/src/Application.vala desktopfolder-1.1.3/src/Application.vala
+--- desktopfolder-1.1.3.orig/src/Application.vala	2020-09-02 15:32:39.000000000 +0300
++++ desktopfolder-1.1.3/src/Application.vala	2021-10-09 00:16:17.524670926 +0300
+@@ -128,8 +128,7 @@
+             if (f_check_elementary.query_exists ()) {
+                 // it seems we can't control an error reading settings!!
+                 // loki -> GLib.Settings elementary_files_settings = new GLib.Settings ("org.pantheon.files.preferences");
+-                GLib.Settings elementary_files_settings = new GLib.Settings ("io.elementary.files.preferences");
+-                single_click = elementary_files_settings.get_boolean ("single-click");
++                single_click = false;
+             }
+         } catch (Error error) {
+             // we don't have any files settings, using default config

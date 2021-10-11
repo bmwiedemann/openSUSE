@@ -1,7 +1,7 @@
 #
 # spec file for package desktopfolder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,10 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/spheras/desktopfolder/
 Source:         https://github.com/spheras/desktopfolder/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/328
+Patch0:         000-drop-gsettings-schema.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/spheras/desktopfolder/pull/328
+Patch1:         001-dark-mode-support.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -37,6 +41,7 @@ BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(granite) >= 6.0.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -55,6 +60,7 @@ A program with which the desktop can be organized with panels that hold things.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %meson
