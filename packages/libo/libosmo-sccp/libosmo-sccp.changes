@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  5 06:18:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-stp.service.patch
+
+-------------------------------------------------------------------
 Sun Mar 14 20:59:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0

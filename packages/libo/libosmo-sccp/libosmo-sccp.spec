@@ -28,6 +28,7 @@ URL:            https://projects.osmocom.org/projects/libosmo-sccp
 #Git-Clone:	https://git.osmocom.org/libosmo-sccp
 Source:         https://github.com/osmocom/libosmo-sccp/archive/%version.tar.gz
 Patch1:         0001-build-fixes.patch
+Patch2:	harden_osmo-stp.service.patch
 BuildRequires:  automake >= 1.6
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
