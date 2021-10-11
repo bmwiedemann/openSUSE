@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 08:41:44 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set user/group conman.
+
+-------------------------------------------------------------------
 Wed Jun 12 14:18:23 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

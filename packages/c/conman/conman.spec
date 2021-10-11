@@ -1,7 +1,7 @@
 #
 # spec file for package conman
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,6 +34,7 @@
   %define conmandir conman/
   %define conman_g %name
   %define conman_u %name
+  %define have_sysuser 1
  %else
   %define conman_g root
   %define conman_u root
@@ -50,7 +51,7 @@ Release:        0
 Summary:        The Console Manager
 License:        GPL-3.0-or-later
 Group:          System/Console
-Url:            http://dun.github.io/conman/
+URL:            http://dun.github.io/conman/
 
 Requires:       expect
 Requires:       logrotate
@@ -62,8 +63,9 @@ BuildRequires:  freeipmi-devel
 Source0:        https://github.com/dun/conman/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}.service.in
 %if 0%{?have_systemd}
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(systemd)
+%{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_requires}
 Requires(pre):  shadow
 Requires(post): %fillup_prereq sed
@@ -157,23 +159,17 @@ GLOBAL log="console.%N"
 GLOBAL logopts="sanitize,timestamp"
 EOF
 fi
+%if 0%{?have_sysuser}
+%define user_home %_localstatedir%_rundir/%{?conmandir}
+%define user_descr Connection Manager service
+echo -n "u %conman_u - \"%user_descr\" %user_home\nm %conman_u dialout\n" > system-user-%{name}.conf
+%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
+install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+%endif
 
 %if 0%{?have_systemd}
-%pre
+%pre %{?have_sysuser:-f %{name}.pre}
 %service_add_pre conman.service
-%if 0%{?conmandir:1}
-%define conman_home "%_localstatedir%_rundir/%{?conmandir}"
-%define conman_descr "Connection Manager service"
-shopt -s nullglob
-addgrp=0; addusr=0
-getent group %conman_g >/dev/null || addgrp=1
-[ $addgrp -eq 1 ] && groupadd -r %conman_g
-getent passwd %conman_u >/dev/null || addusr=1
-[ $addusr -eq 1 ] && useradd -r -g %conman_g -d %conman_home \
-    -s /bin/false -c %conman_descr %conman_u
-usermod -a -G dialout %conman_u
-%endif
-exit 0
 %endif
 
 %preun
@@ -254,5 +250,6 @@ touch %_localstatedir/lib/conman/%migrated || :
 %{_sysconfdir}/init.d/*
 %endif
 %{_mandir}/*/*
+%{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %changelog
