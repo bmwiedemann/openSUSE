@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>852843</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58bc318a2bcd8d91830f95da6c39e0bb</srcmd5>
+    <version>0.12.0</version>
+    <time>1633959106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0
+  * Fixed a regression that caused setuptools to complain about
+    unknown setup option (cmake_process_manifest_hook).
+  * If it applies, ensure generator toolset is used to configure
+    the project.
+  * Read CYTHON_FLAGS where needed, instead of once, allowing the
+    user to define multiple modules with different flags.
+  * Avoid an IndexError if prefix was empty.</comment>
+    <requestid>924535</requestid>
+  </revision>
 </revisionlist>

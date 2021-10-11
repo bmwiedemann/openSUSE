@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 10 10:24:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.12.0
+  * Fixed a regression that caused setuptools to complain about
+    unknown setup option (cmake_process_manifest_hook).
+  * If it applies, ensure generator toolset is used to configure
+    the project.
+  * Read CYTHON_FLAGS where needed, instead of once, allowing the
+    user to define multiple modules with different flags.
+  * Avoid an IndexError if prefix was empty.
+
+-------------------------------------------------------------------
 Thu Dec  3 00:02:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support multiple python3 flavors
