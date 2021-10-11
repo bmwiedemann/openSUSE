@@ -1368,4 +1368,14 @@ which haven't landed upstream yet
   0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch (forwarded request 915689 from colyli)</comment>
     <requestid>916947</requestid>
   </revision>
+  <revision rev="130" vrev="15">
+    <srcmd5>5eb0e85208e84cd9e202e869405be4d9</srcmd5>
+    <version>4.1</version>
+    <time>1633959019</time>
+    <user>dimstar_suse</user>
+    <comment>- Install mdadm in _sbindir rather than /sbin.  This is more
+  appropriate now that we have a merged-/usr.
+  (bsc#1191076)</comment>
+    <requestid>923384</requestid>
+  </revision>
 </revisionlist>

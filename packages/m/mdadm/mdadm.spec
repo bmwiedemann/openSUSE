@@ -31,7 +31,9 @@ BuildRequires:  sgmltool
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
-PreReq:         %fillup_prereq /sbin/mkinitrd coreutils
+PreReq:         %fillup_prereq
+PreReq:         /sbin/mkinitrd
+PreReq:         coreutils
 Recommends:     smtp_daemon
 URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
 Summary:        Utility for configuring "MD" software RAID devices
@@ -287,13 +289,13 @@ mdadm is a program that can be used to control Linux md devices.
 %patch1003 -p1
 
 %build
-make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes
+make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes BINDIR=%{_sbindir}
 cd Software-RAID.HOWTO
 sgml2html Software-RAID.HOWTO.sgml
 sgml2txt Software-RAID.HOWTO.sgml
 
 %install
-%make_install install-systemd install-udev SYSTEMD_DIR=%{_unitdir} UDEVDIR=%{_udevdir} SUSE=yes
+%make_install install-systemd install-udev SYSTEMD_DIR=%{_unitdir} UDEVDIR=%{_udevdir} SUSE=yes BINDIR=%{_sbindir}
 rm -rf %{buildroot}/lib/udev
 install -d %{buildroot}%{_fillupdir}
 install -d %{buildroot}/usr/share/mdadm
@@ -329,8 +331,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %doc ChangeLog README.initramfs TODO mdadm.conf-example mkinitramfs
 %doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
 %doc %{_mandir}/man?/*
-/sbin/*
-%{_sbindir}/rcmdmonitor
+%{_sbindir}/*
 %dir /usr/share/mdadm
 /usr/share/mdadm/*
 %{_fillupdir}/sysconfig.mdadm

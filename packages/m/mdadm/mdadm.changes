@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  6 04:15:49 UTC 2021 - Neil Brown <nfbrown@suse.com>
+
+- Install mdadm in _sbindir rather than /sbin.  This is more
+  appropriate now that we have a merged-/usr.
+  (bsc#1191076)
+
+-------------------------------------------------------------------
 Thu Sep  2 05:17:18 UTC 2021 - Coly Li <colyli@suse.com>
 
 - Remove Spare drives line from details for external metadata
