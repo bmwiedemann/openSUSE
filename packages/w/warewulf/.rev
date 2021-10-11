@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>791717</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>84ae6a4ff835f1d4dfa8854362e3010d</srcmd5>
+    <version>3.8.1</version>
+    <time>1633959118</time>
+    <user>dimstar_suse</user>
+    <comment>- More fixes. (forwarded request 924399 from eeich)</comment>
+    <requestid>924400</requestid>
+  </revision>
 </revisionlist>

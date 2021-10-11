@@ -1,0 +1,33 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Oct 4 19:42:44 2021 +0200
+Subject: cluster: If hostname doesn't contain the domain, try to derive this from FQDN
+Patch-mainline: Not yet
+Git-commit: 69bcaec9ab2cee4d512c3a32760f7245fe167b65
+References: 
+
+SUSE doesn't include the domainname in the hostname. One may still
+set the domain name using DNS or /etc/hosts.
+Call 'hostname -f' to get the FQDN and try to separate the domain
+part from it.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ cluster/libexec/wwinit/30-domain.init | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+diff --git a/cluster/libexec/wwinit/30-domain.init b/cluster/libexec/wwinit/30-domain.init
+index ac221a5..08846c0 100644
+--- a/cluster/libexec/wwinit/30-domain.init
++++ b/cluster/libexec/wwinit/30-domain.init
+@@ -34,7 +34,11 @@ HOSTNAME=`hostname`
+ DOMAIN=`echo $HOSTNAME | sed -e 's/^[^\.]*\.//'`
+ 
+ if [ -z "$DOMAIN" -o "$HOSTNAME" == "$DOMAIN" ]; then
+-    DOMAIN="cluster"
++    HOSTNAME=`hostname -f`
++    DOMAIN=`echo $HOSTNAME | sed -e 's/^[^\.]*\.//'`
++    if [ -z "$DOMAIN" -o "$HOSTNAME" == "$DOMAIN" ]; then
++	DOMAIN="cluster"
++    fi
+ fi
+ 
+ wwprint "Setting default node domain to: \"$DOMAIN\""

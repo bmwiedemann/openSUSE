@@ -1,0 +1,32 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Oct 4 19:48:08 2021 +0200
+Subject: cluster: Don't attempt ntp configuration when chrony is found
+Patch-mainline: Not yet
+Git-commit: 9d9f44ba334a70a4daa24540596b0a1e5d354530
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ cluster/libexec/wwinit/50-ntpd.init | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+diff --git a/cluster/libexec/wwinit/50-ntpd.init b/cluster/libexec/wwinit/50-ntpd.init
+old mode 100644
+new mode 100755
+index ae6582d..5e09771
+--- a/cluster/libexec/wwinit/50-ntpd.init
++++ b/cluster/libexec/wwinit/50-ntpd.init
+@@ -20,9 +20,13 @@ fi
+ 
+ wwreqroot
+ 
++if [ -f "/etc/chrony.conf" ]; then
++    wwprint "Using chrony; skipping ntp configuration\n"
++    exit 0
++fi
+ if [ ! -f "/etc/ntp.conf" ]; then
+     wwprint "Is NTP installed? /etc/ntp.conf is not present!\n" error
+-    return 1
++    exit 1
+ fi
+ 
+ 

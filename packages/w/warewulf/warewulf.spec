@@ -1,7 +1,7 @@
 #
 # spec file for package warewulf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ Source0:        https://github.com/warewulf/warewulf3/archive/%{version}.tar.gz#
 Source1:        busybox.SuSE.config
 Source100:      install-recipe.md
 Source101:      install-recipe-vm.md
-Source300:      vnfs-wwmkchroot-opensuse-15.0.tmpl
 Source301:      vnfs-wwmkchroot-opensuse-42.3.tmpl
 Source302:      vnfs-wwmkchroot-opensuse-tumbleweed.tmpl
 Patch0:         wwinit-Check-if-service-is-enabled-before-enabling-it.patch
@@ -73,6 +72,14 @@ Patch27:        provision-If-available-us-haveged-in-warewulf-initrd.patch
 Patch28:        cluster-remove-firstboot-stuff.patch
 Patch29:        LSB-Use-sharedstatedir-instead-of-localstatedir-for-WW_STATEDIR.patch
 Patch30:        common-Check-for-package-mariadb-as-well.patch
+Patch31:        vnfs-SUSE-Templates-Leap-15.1-Leap-15.3-added-SLE-15.patch
+Patch32:        common-Check-for-non-empty-string-before-chomp.patch
+Patch33:        common-Create-database-user-separately-to-allow-empty-password.patch
+Patch34:        common-Fix-help-text.patch
+Patch35:        cluster-Don-t-attempt-ntp-configuration-when-chrony-is-found.patch
+Patch36:        cluster-If-hostname-doesn-t-contain-the-domain-try-to-derive-this-from-FQDN.patch
+Patch37:        provision-Unify-handling-of-initramfs-location.patch
+Patch38:        initramfs-Them-kewl-kids-no-longer-like-bin-or-sbin-cater-for-them.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
@@ -90,12 +97,15 @@ BuildRequires:  parted
 BuildRequires:  warewulf-common
 BuildRequires:  xz-devel
 BuildRequires:  perl(Apache)
-BuildRequires:  perl(Apache)
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
+BuildRequires:  sysuser-tools
+# NOTYET
+#BuildRequires: xfsprogs
+#BuildRequires: curl
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -372,6 +382,8 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch8 -p1
 %patch13 -p1
 %patch14 -p1
+%patch37 -p1
+%patch38 -p1
 # IPXE sources not needed
 #%patch17 -p1
 %patch23 -p1
@@ -385,6 +397,7 @@ cp %{SOURCE1} ./provision/initramfs/busybox.config
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
+%patch31 -p1
 # cluster
 %patch2 -p1
 %patch3 -p1
@@ -392,10 +405,15 @@ cp %{SOURCE1} ./provision/initramfs/busybox.config
 %patch11 -p1
 %patch22 -p1
 %patch28 -p1
+%patch35 -p1
+%patch36 -p1
 # ipmi
 %patch25 -p1
 # common
 %patch18 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
 
 %build
 %if "%{?flavor}" == "common"
@@ -431,11 +449,13 @@ cd ..
 
 cd provision
 autoreconf -f -i
+busybox_links=%_datadir/busybox/busybox-static.links
+test -e $busybox_links || busybox_links=%_datadir/busybox/busybox.links
 %if 0%{?full_build}
 %configure \
     --enable-cross-compile \
     --with-local-busybox=%_bindir/busybox-static \
-    --with-busybox-links-file=%_datadir/busybox/busybox.links \
+    --with-busybox-links-file=$busybox_links \
     --with-local-e2fsprogs=%_prefix/sbin/mkfs.ext4 \
     --with-local-ipxe_undionly=%_datadir/ipxe/undionly.kpxe \
     --with-local-ipxe_snp_i386=%_datadir/ipxe/snp-i386.efi \
@@ -444,15 +464,16 @@ autoreconf -f -i
     --with-local-libarchive=%_bindir/bsdtar \
     --with-local-parted=%_prefix/sbin/parted \
     --with-local-partprobe=%_prefix/sbin/partprobe \
-    --with-apache2moddir=%_prefix/apache2/conf.d/
+    --with-apache2moddir=%_libdir/apache2
 %else
 %configure \
     --with-local-busybox=%_bindir/busybox-static \
-    --with-busybox-links-file=%_datadir/busybox/busybox.links \
+    --with-busybox-links-file=$busybox_links \
     --with-local-e2fsprogs=%_prefix/sbin/mkfs.ext4 \
     --with-local-libarchive=%_bindir/bsdtar \
     --with-local-parted=%_prefix/sbin/parted \
     --with-local-partprobe=%_prefix/sbin/partprobe
+#NOTYET   --with-local-xfsprogs=/sbin/mkfs.xfs, --with-local-curl=%{bindir}/curl
 cd initramfs
 %endif
 make
@@ -468,6 +489,9 @@ cd common
 mkdir -p %{buildroot}/%{_docdir}
 
 cd ..
+echo "g %{name} -" > system-user-%{name}.conf
+%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
+install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 
 %else
 
@@ -479,7 +503,6 @@ cd ..
 done
 
 # vnfs
-install %{SOURCE300} %{buildroot}/%{_libexecdir}/warewulf/wwmkchroot/opensuse-15.0.tmpl
 install %{SOURCE301} %{buildroot}/%{_libexecdir}/warewulf/wwmkchroot/opensuse-42.3.tmpl
 install %{SOURCE302} %{buildroot}/%{_libexecdir}/warewulf/wwmkchroot/opensuse-tumbleweed.tmpl
 
@@ -511,17 +534,16 @@ find %{buildroot}/%{perl_vendorlib}/Warewulf -type f -exec chmod a-x '{}' '+'
 %endif
 %fdupes -s %{buildroot}
 
-%pre common
-getent group warewulf >/dev/null || groupadd -r warewulf
-
 %post common
 if [ $1 -eq 2 ] ; then
     %{_bindir}/wwsh object canonicalize -t node >/dev/null 2>&1 || :
     %{_bindir}/wwsh object canonicalize -t file >/dev/null 2>&1 || :
 fi
 
-systemctl start mariadb >/dev/null 2>&1 || :
-systemctl enable mariadb >/dev/null 2>&1 || :
+%pre -n perl-warewulf-common -f %{name}.pre
+
+%pre common
+systemctl enable --now mariadb >/dev/null 2>&1 || :
 
 %if "%{?flavor}" == "common"
 %files common
@@ -551,6 +573,7 @@ systemctl enable mariadb >/dev/null 2>&1 || :
 %attr(0640, root, warewulf) %config(noreplace) %{_sysconfdir}/warewulf/database-root.conf
 %attr(0644, root, warewulf) %config(noreplace) %{_sysconfdir}/warewulf/defaults/node.conf
 %{perl_vendorlib}/*
+%{_sysusersdir}/system-user-%{name}.conf
 
 %files doc
 %defattr(-, root, root)
@@ -647,7 +670,7 @@ systemctl enable mariadb >/dev/null 2>&1 || :
 %{_libexecdir}/warewulf/wwmkchroot/include-rhel
 %{_libexecdir}/warewulf/wwmkchroot/include-suse
 %{_libexecdir}/warewulf/wwmkchroot/include-ubuntu
-%{_libexecdir}/warewulf/wwmkchroot/opensuse-15.0.tmpl
+%{_libexecdir}/warewulf/wwmkchroot/opensuse-15.3.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/opensuse-42.3.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/opensuse-tumbleweed.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/rhel-generic.tmpl
@@ -656,6 +679,7 @@ systemctl enable mariadb >/dev/null 2>&1 || :
 %{_libexecdir}/warewulf/wwmkchroot/sl-7.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/sles-11.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/sles-12.tmpl
+%{_libexecdir}/warewulf/wwmkchroot/sle-15.tmpl
 %{_libexecdir}/warewulf/wwmkchroot/ubuntu-16.04.tmpl
 %{_mandir}/man1/wwbootstrap.1.gz
 %{_mandir}/man1/wwvnfs.1.gz

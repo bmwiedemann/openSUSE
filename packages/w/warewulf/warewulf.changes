@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct  4 18:08:59 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix minor issues:
+  * vnfs-SUSE-Templates-Leap-15.1-Leap-15.3-added-SLE-15.patch
+    Add templates for Leap 15.3 and SLE 15 (all SPs).
+  * common-Check-for-non-empty-string-before-chomp.patch
+    Avoid Perl error message by checking for non-empty string
+    before chomp().
+  * common-Create-database-user-separately-to-allow-empty-password.patch
+    Allow empty password for read only user database access.
+  * common-Fix-help-text.patch
+  * cluster-Don-t-attempt-ntp-configuration-when-chrony-is-found.patch
+    Do not attempt to configure ntp when chrony is found.
+  * cluster-If-hostname-doesn-t-contain-the-domain-try-to-derive-this-from-FQDN.patch
+    Attempt to derive hostname from FQDN.
+  * Set apache2moddir correctly
+  * Set warewulf group in perl-warewulf-common, not warewulf-common:
+    perl-warewulf-common is installed earlier.
+  * Unify handling of initramfs location
+    provision-Unify-handling-of-initramfs-location.patch
+  * Cater for /bin and /sbin only being links to /usr/bin and /usr/sbin
+    initramfs-Them-kewl-kids-no-longer-like-bin-or-sbin-cater-for-them.patch
+- Removed:
+  * vnfs-wwmkchroot-opensuse-15.0.tmpl
+
+-------------------------------------------------------------------
+Fri Oct  1 07:00:20 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set group warewulf.
+
+-------------------------------------------------------------------
 Mon Apr  6 09:53:41 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed reuse of int variable in bash script (bsc#1168628) 

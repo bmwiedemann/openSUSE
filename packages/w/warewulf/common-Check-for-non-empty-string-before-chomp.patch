@@ -1,0 +1,26 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Oct 4 19:56:06 2021 +0200
+Subject: common: Check for non-empty string before chomp()
+Patch-mainline: Not yet
+Git-commit: 095b0b5452183654517c30e231912af82baf0c9d
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ common/lib/Warewulf/System/Suse.pm | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+diff --git a/common/lib/Warewulf/System/Suse.pm b/common/lib/Warewulf/System/Suse.pm
+index 155547c..78e4075 100644
+--- a/common/lib/Warewulf/System/Suse.pm
++++ b/common/lib/Warewulf/System/Suse.pm
+@@ -80,7 +80,9 @@ service($$$)
+         while(<SERVICE>) {
+             $self->{"OUTPUT"} .= $_;
+         }
+-        chomp($self->{"OUTPUT"});
++	if (defined($self->{"OUTPUT"})) {
++	    chomp($self->{"OUTPUT"});
++	}
+         if (close SERVICE) {
+             &dprint("Service command ran successfully\n");
+             return(1);
