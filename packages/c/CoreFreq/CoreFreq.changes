@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:37:04 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.87.4
+- fixed service hardening preventing daemon to start (boo#1191509) 
+- added modprobe_corefreqd.service.patch to load/unload kernel
+  module on service start/stop. Do not load module on boot anymore
+- fixed leap15_3.patch including unnessary junk  
+
+-------------------------------------------------------------------
 Tue Sep  7 10:17:46 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.87.1

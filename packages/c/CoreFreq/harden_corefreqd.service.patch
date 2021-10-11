@@ -2,7 +2,7 @@ Index: CoreFreq-1.86.7/corefreqd.service
 ===================================================================
 --- CoreFreq-1.86.7.orig/corefreqd.service
 +++ CoreFreq-1.86.7/corefreqd.service
-@@ -6,6 +6,14 @@
+@@ -6,6 +6,12 @@
  Description=CoreFreq Daemon
  
  [Service]
@@ -11,8 +11,6 @@ Index: CoreFreq-1.86.7/corefreqd.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
-+ProtectKernelModules=true
 +ProtectKernelLogs=true
  Type=simple
  ExecStart=corefreqd -q

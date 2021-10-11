@@ -106,4 +106,17 @@ Fixes compilation on kernel 5.12
 </comment>
     <requestid>918502</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5baec63880c005d2e579b31ba3429437</srcmd5>
+    <version>1.87.4</version>
+    <time>1633959110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.87.4
+- fixed service hardening preventing daemon to start (boo#1191509) 
+- added modprobe_corefreqd.service.patch to load/unload kernel
+  module on service start/stop. Do not load module on boot anymore
+- fixed leap15_3.patch including unnessary junk  
+</comment>
+    <requestid>924548</requestid>
+  </revision>
 </revisionlist>

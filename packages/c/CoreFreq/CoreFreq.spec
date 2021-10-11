@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        1.87.1
+Version:        1.87.4
 Release:        0
 Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 Patch0:         leap15_2.patch
 Patch1:         leap15_3.patch
 Patch2:         harden_corefreqd.service.patch
+Patch3:         modprobe_corefreqd.service.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -48,6 +49,7 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 %patch1 -p1
 %endif
 %patch2 -p1
+%patch3 -p0
 
 %build
 %make_build
@@ -56,10 +58,6 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 PREFIX=%{buildroot}%{_prefix} make install
-
-# load module on boot. Necessary for corefreqd to be able to run
-mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
-echo corefreqk > %{buildroot}%{_prefix}/lib/modules-load.d/corefreq.conf
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rccorefreqd
@@ -71,8 +69,6 @@ ln -s service %{buildroot}%{_sbindir}/rccorefreqd
 %{_bindir}/corefreqd
 %{_unitdir}/corefreqd.service
 %{_sbindir}/rccorefreqd
-%dir %{_prefix}/lib/modules-load.d
-%{_prefix}/lib/modules-load.d/corefreq.conf
 
 %pre
 %service_add_pre corefreqd.service
