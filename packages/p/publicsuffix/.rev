@@ -1004,4 +1004,14 @@ Now with build cycle removed.</comment>
   * Adding new .ar SLDs and official nic.ar URL correction (#1414)</comment>
     <requestid>922301</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>71b87987f2c27ea340afb0a888c51483</srcmd5>
+    <version>20211006</version>
+    <time>1633959023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211006:
+  * Update Pull Request Template to add clarity
+  * util: gTLD data autopull updates for 2021-10-01T15:13:10 UTC (#1445)</comment>
+    <requestid>923476</requestid>
+  </revision>
 </revisionlist>
