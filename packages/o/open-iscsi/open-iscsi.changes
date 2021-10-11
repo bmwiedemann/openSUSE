@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  5 19:23:33 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Fix possible systemd cycle by adding an "obsoletes" for
+  the old libopeniscsiusr for older versions.
+
+-------------------------------------------------------------------
 Thu Sep 30 20:59:42 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Update to latest from upstream, fixing:

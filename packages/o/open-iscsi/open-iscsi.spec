@@ -68,7 +68,7 @@ Version:        2.%{iscsi_minor_release}.%{iscsi_patch_release}
 Release:        0
 Summary:        The iSCSI User-level Library
 Group:          System/Libraries
-Obsoletes:      libopeniscsiusr0_1_0
+Obsoletes:      libopeniscsiusr0_1_0 < %{version}
 
 %description -n libopeniscsiusr0_2_0
 The iSCSI user-space API from the open-iscsi project.
