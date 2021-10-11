@@ -1,7 +1,7 @@
 #
-# spec file for package bash-completion
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,6 +68,8 @@ Patch10:        backticks-bsc963140.patch
 Patch11:        bash-completion-2.7-unRAR-remove.patch
 # PATCH-FIX-SUSE boo#1167952
 Patch12:        bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
+# PATCH-FIX-SUSE boo#1190929
+Patch13:        boo1190929-9af4afd0.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
