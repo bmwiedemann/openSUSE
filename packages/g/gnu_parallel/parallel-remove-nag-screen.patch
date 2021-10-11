@@ -12,11 +12,11 @@ https://en.opensuse.org/openSUSE:Packaging_guidelines#Donation_requests
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20210122/src/parallel
+Index: parallel-20210922/src/parallel
 ===================================================================
---- parallel-20210122.orig/src/parallel
-+++ parallel-20210122/src/parallel
-@@ -1957,6 +1957,7 @@ sub parse_options(@) {
+--- parallel-20210922.orig/src/parallel
++++ parallel-20210922/src/parallel
+@@ -2052,6 +2052,7 @@ sub parse_options(@) {
      if(defined $opt::eta) { $opt::progress = $opt::eta; }
      if(defined $opt::bar) { $opt::progress = $opt::bar; }
  
@@ -24,19 +24,19 @@ Index: parallel-20210122/src/parallel
      # Funding a free software project is hard. GNU Parallel is no
      # exception. On top of that it seems the less visible a project
      # is, the harder it is to get funding. And the nature of GNU
-@@ -2032,6 +2033,7 @@ sub parse_options(@) {
-     # it. If you *do* remove the line, please email
-     # hallofshame@tange.dk if you want to avoid being put in a hall of
-     # shame.
-+}
+@@ -2127,6 +2128,7 @@ sub parse_options(@) {
+     # line.  This is because _YOU_ actively make it harder to justify
+     # spending time developing GNU Parallel.
  
++}
      parse_halt();
  
-Index: parallel-20210122/src/sem
+     if($ENV{'PARALLEL_ENV'}) {
+Index: parallel-20210922/src/sem
 ===================================================================
---- parallel-20210122.orig/src/sem
-+++ parallel-20210122/src/sem
-@@ -1957,6 +1957,7 @@ sub parse_options(@) {
+--- parallel-20210922.orig/src/sem
++++ parallel-20210922/src/sem
+@@ -2052,6 +2052,7 @@ sub parse_options(@) {
      if(defined $opt::eta) { $opt::progress = $opt::eta; }
      if(defined $opt::bar) { $opt::progress = $opt::bar; }
  
@@ -44,11 +44,11 @@ Index: parallel-20210122/src/sem
      # Funding a free software project is hard. GNU Parallel is no
      # exception. On top of that it seems the less visible a project
      # is, the harder it is to get funding. And the nature of GNU
-@@ -2032,6 +2033,7 @@ sub parse_options(@) {
-     # it. If you *do* remove the line, please email
-     # hallofshame@tange.dk if you want to avoid being put in a hall of
-     # shame.
-+}
+@@ -2127,6 +2128,7 @@ sub parse_options(@) {
+     # line.  This is because _YOU_ actively make it harder to justify
+     # spending time developing GNU Parallel.
  
++}
      parse_halt();
  
+     if($ENV{'PARALLEL_ENV'}) {
