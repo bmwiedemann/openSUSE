@@ -32,8 +32,13 @@ URL:            http://www.lirc.org/
 Source0:        https://downloads.sourceforge.net/project/lirc/LIRC/%{version}/lirc-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         reproducible.patch
+Patch1:	harden_irexec.service.patch
+Patch2:	harden_lircd-uinput.service.patch
+Patch3:	harden_lircd.service.patch
+Patch4:	harden_lircmd.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gobject-introspection
 BuildRequires:  kmod-compat
 BuildRequires:  libxslt-tools
 # for hw_atilibusb driver
@@ -195,6 +200,10 @@ Some seldom used X11-based tools for debugging lirc configurations.
 # Don't provide or require anything from _docdir, per policy.
 %global __provides_exclude_from ^%{_docdir}/.*$
 %global __requires_exclude_from ^%{_docdir}/.*$
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 sed -i -e 's|/usr/local/etc/|%{_sysconfdir}/|' contrib/irman2lirc
 sed -i -e 's/#effective-user/effective-user /' lirc_options.conf
@@ -251,6 +260,7 @@ rm -rf %{buildroot}/%{_datadir}/lirc/lirc-%{version}.tar.gz %{buildroot}/%{_data
 %postun -n liblirc_driver0 -p /sbin/ldconfig
 %postun -n liblirc0 -p /sbin/ldconfig
 %postun -n libirrecord0 -p /sbin/ldconfig
+
 %pre core
 getent group lirc >/dev/null || groupadd -r lirc
 getent passwd lirc >/dev/null || \

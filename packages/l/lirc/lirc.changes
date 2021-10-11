@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct  5 12:06:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert "Require typelib packages": better to have rpm auto-detect
+  them.
+- Add gobject-introspection BuildRequires to have the typelib dep
+  scanner on board.
+
+-------------------------------------------------------------------
+Tue Oct  5 11:43:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_irexec.service.patch
+  * harden_lircd-uinput.service.patch
+  * harden_lircd.service.patch
+  * harden_lircmd.service.patch
+
+-------------------------------------------------------------------
+Sun Aug  8 01:55:41 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Require typelib packages, otherwise lirc-setup fails to start.
+
+-------------------------------------------------------------------
 Sat Feb 20 11:09:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch away from the libusb-compat (0.1) to the maintained libusb 1.0
