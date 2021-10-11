@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 5 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.4
+
+  Added:
+  * AStar Error messages
+
+  Changed:
+  * Compare signal connections by ObjectID to avoid spurious
+    reordering in .tscn files.
+  * Remove deprecation warning for BaseButton.enabled_focus_mode
+  * LinkButton's text is now automatically translated.
+
+  Fixed:
+  * LocalVector crash on insert
+  * Quote and escape ConfigFile keys when necessary.
+  * invalid "Too many warnings!" error in remote script debugger
+  * setting NodePath properties on multiple nodes at once
+  * preview grid and preserve source texture margins
+    in SpriteFrames editor
+  * LSP: Fix completion crashing on scene-less scripts
+  * CSG: Don't update CSGShape when not inside tree
+  * drawing current tab when it's disabled
+  * GLES3: Fix multimesh being colored by other nodes
+  * GLES3: Properly clear cubemap filter state
+    when texture array environment disabled
+  * GLES3: Fix Light2D UBO initialization
+  * Prevent shaders from generating code before the constructor finishes
+  * Fix VisualScriptPropertySet value hint
+  * LineEdit undo crash
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3.4/Godot_v3.3.4-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Fri Aug 20 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.3.3
