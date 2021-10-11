@@ -35,7 +35,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        8.4p1
+Version:        8.8p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -105,7 +105,6 @@ Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
 Patch41:        openssh-fips-ensure-approved-moduli.patch
 Patch42:        openssh-link-with-sk.patch
 Patch43:        openssh-reenable-dh-group14-sha1-default.patch
-Patch44:        openssh-fix-ssh-copy-id.patch
 Patch45:        openssh-8.4p1-ssh_config_d.patch
 Patch46:        openssh-whitelist-syscalls.patch
 Patch47:        openssh-8.4p1-vendordir.patch

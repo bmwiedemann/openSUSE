@@ -3,11 +3,11 @@
 Send signals to systemd to prevent various race conditions
 bsc#1048367
 
-Index: openssh-7.8p1/configure.ac
+Index: openssh-8.8p1/configure.ac
 ===================================================================
---- openssh-7.8p1.orig/configure.ac
-+++ openssh-7.8p1/configure.ac
-@@ -4378,6 +4378,30 @@ AC_ARG_WITH([kerberos5],
+--- openssh-8.8p1.orig/configure.ac
++++ openssh-8.8p1/configure.ac
+@@ -4751,6 +4751,30 @@ AC_ARG_WITH([kerberos5],
  AC_SUBST([GSSLIBS])
  AC_SUBST([K5LIBS])
  
@@ -38,7 +38,7 @@ Index: openssh-7.8p1/configure.ac
  # Looking for programs, paths and files
  
  PRIVSEP_PATH=/var/empty
-@@ -5183,6 +5207,7 @@ echo "                   libldns support
+@@ -5564,6 +5588,7 @@ echo "                   libldns support
  echo "  Solaris process contract support: $SPC_MSG"
  echo "           Solaris project support: $SP_MSG"
  echo "         Solaris privilege support: $SPP_MSG"
@@ -46,11 +46,11 @@ Index: openssh-7.8p1/configure.ac
  echo "       IP address in \$DISPLAY hack: $DISPLAY_HACK_MSG"
  echo "           Translate v4 in v6 hack: $IPV4_IN6_HACK_MSG"
  echo "                  BSD Auth support: $BSD_AUTH_MSG"
-Index: openssh-7.8p1/sshd.c
+Index: openssh-8.8p1/sshd.c
 ===================================================================
---- openssh-7.8p1.orig/sshd.c
-+++ openssh-7.8p1/sshd.c
-@@ -87,6 +87,10 @@
+--- openssh-8.8p1.orig/sshd.c
++++ openssh-8.8p1/sshd.c
+@@ -85,6 +85,10 @@
  #include <prot.h>
  #endif
  
@@ -72,7 +72,7 @@ Index: openssh-7.8p1/sshd.c
  	logit("Received SIGHUP; restarting.");
  	if (options.pid_file != NULL)
  		unlink(options.pid_file);
-@@ -1995,6 +2003,11 @@ main(int ac, char **av)
+@@ -2076,6 +2084,11 @@ main(int ac, char **av)
  			}
  		}
  

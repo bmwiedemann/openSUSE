@@ -4,15 +4,11 @@
 # formats in ?tmp? files)
 # --used to be called '-pts'
 
-diff --git a/openssh-7.7p1/loginrec.c b/openssh-7.7p1/loginrec.c
---- openssh-7.7p1/loginrec.c
-+++ openssh-7.7p1/loginrec.c
-@@ -541,17 +541,17 @@ getlast_entry(struct logininfo *li)
- /*
-  * 'line' string utility functions
-  *
-  * These functions process the 'line' string into one of three forms:
-  *
+Index: openssh-8.8p1/loginrec.c
+===================================================================
+--- openssh-8.8p1.orig/loginrec.c
++++ openssh-8.8p1/loginrec.c
+@@ -549,7 +549,7 @@ getlast_entry(struct logininfo *li)
   * 1. The full filename (including '/dev')
   * 2. The stripped name (excluding '/dev')
   * 3. The abbreviated name (e.g. /dev/ttyp00 -> yp00
@@ -21,17 +17,7 @@ diff --git a/openssh-7.7p1/loginrec.c b/openssh-7.7p1/loginrec.c
   *
   * Form 3 is used on some systems to identify a .tmp.? entry when
   * attempting to remove it. Typically both addition and removal is
-  * performed by one application - say, sshd - so as long as the choice
-  * uniquely identifies a terminal it's ok.
-  */
- 
- 
-@@ -602,16 +602,20 @@ line_abbrevname(char *dst, const char *s
- 	/* Always skip prefix if present */
- 	if (strncmp(src, "/dev/", 5) == 0)
- 		src += 5;
- 
- #ifdef WITH_ABBREV_NO_TTY
+@@ -610,6 +610,10 @@ line_abbrevname(char *dst, const char *s
  	if (strncmp(src, "tty", 3) == 0)
  		src += 3;
  #endif
@@ -42,8 +28,3 @@ diff --git a/openssh-7.7p1/loginrec.c b/openssh-7.7p1/loginrec.c
  
  	len = strlen(src);
  
- 	if (len > 0) {
- 		if (((int)len - dstsize) > 0)
- 			src +=  ((int)len - dstsize);
- 
- 		/* note: _don't_ change this to strlcpy */

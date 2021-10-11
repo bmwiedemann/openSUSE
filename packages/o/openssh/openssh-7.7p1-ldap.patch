@@ -10,11 +10,10 @@
 # internal versions. ssh-keyconverter consequently fails to link as it lacks
 # the proper flags, and libopenbsd-compat doesn't contain the b64_* functions)
 
-diff --git a/HOWTO.ldap-keys b/HOWTO.ldap-keys
-new file mode 100644
-index 0000000..831d399
+Index: openssh-8.8p1/HOWTO.ldap-keys
+===================================================================
 --- /dev/null
-+++ b/HOWTO.ldap-keys
++++ openssh-8.8p1/HOWTO.ldap-keys
 @@ -0,0 +1,108 @@
 +
 +HOW TO START
@@ -124,11 +123,11 @@ index 0000000..831d399
 +  - frederic peters.
 +  - Finlay dobbie.
 +  - Stefan Fisher.
-diff --git a/Makefile.in b/Makefile.in
-index 6010d1c..f54348b 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -25,6 +25,8 @@ SFTP_SERVER=$(libexecdir)/sftp-server
+Index: openssh-8.8p1/Makefile.in
+===================================================================
+--- openssh-8.8p1.orig/Makefile.in
++++ openssh-8.8p1/Makefile.in
+@@ -26,6 +26,8 @@ SFTP_SERVER=$(libexecdir)/sftp-server
  SSH_KEYSIGN=$(libexecdir)/ssh-keysign
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
  SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
@@ -137,7 +136,7 @@ index 6010d1c..f54348b 100644
  CAVSTEST_CTR=$(libexecdir)/cavstest-ctr
  CAVSTEST_KDF=$(libexecdir)/cavstest-kdf
  PRIVSEP_PATH=@PRIVSEP_PATH@
-@@ -74,6 +76,9 @@ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keys
+@@ -73,6 +75,9 @@ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) ssh-a
  
  TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)
  
@@ -147,9 +146,9 @@ index 6010d1c..f54348b 100644
  XMSS_OBJS=\
  	ssh-xmss.o \
  	sshkey-xmss.o \
-@@ -158,8 +163,8 @@ SFTPSERVER_OBJS=sftp-common.o sftp-server.o sftp-server-main.o
+@@ -160,8 +165,8 @@ SFTPSERVER_OBJS=sftp-common.o sftp-serve
  
- SFTP_OBJS=	sftp.o sftp-client.o sftp-common.o sftp-glob.o progressmeter.o
+ SFTP_OBJS=	sftp.o progressmeter.o $(SFTP_CLIENT_OBJS)
  
 -MANPAGES	= moduli.5.out scp.1.out ssh-add.1.out ssh-agent.1.out ssh-keygen.1.out ssh-keyscan.1.out ssh.1.out sshd.8.out sftp-server.8.out sftp.1.out ssh-keysign.8.out ssh-pkcs11-helper.8.out ssh-sk-helper.8.out sshd_config.5.out ssh_config.5.out
 -MANPAGES_IN	= moduli.5 scp.1 ssh-add.1 ssh-agent.1 ssh-keygen.1 ssh-keyscan.1 ssh.1 sshd.8 sftp-server.8 sftp.1 ssh-keysign.8 ssh-pkcs11-helper.8 ssh-sk-helper.8 sshd_config.5 ssh_config.5
@@ -158,7 +157,7 @@ index 6010d1c..f54348b 100644
  MANTYPE		= @MANTYPE@
  
  CONFIGFILES=sshd_config.out ssh_config.out moduli.out
-@@ -242,6 +247,9 @@ ssh-sk-helper$(EXEEXT): $(LIBCOMPAT) libssh.a $(SKHELPER_OBJS)
+@@ -244,6 +249,9 @@ ssh-sk-helper$(EXEEXT): $(LIBCOMPAT) lib
  ssh-keyscan$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHKEYSCAN_OBJS)
  	$(LD) -o $@ $(SSHKEYSCAN_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
@@ -166,9 +165,9 @@ index 6010d1c..f54348b 100644
 +	$(LD) -o $@ ldapconf.o ldapbody.o ldapmisc.o ldap-helper.o $(LDFLAGS) -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
 +
  sftp-server$(EXEEXT): $(LIBCOMPAT) libssh.a $(SFTPSERVER_OBJS)
- 	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS)
+ 	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
-@@ -406,6 +414,10 @@ install-files:
+@@ -416,6 +424,10 @@ install-files:
  	$(INSTALL) -m 0755 $(STRIP_OPT) sshd$(EXEEXT) $(DESTDIR)$(sbindir)/sshd$(EXEEXT)
  	$(INSTALL) -m 4711 $(STRIP_OPT) ssh-keysign$(EXEEXT) $(DESTDIR)$(SSH_KEYSIGN)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-pkcs11-helper$(EXEEXT) $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
@@ -179,7 +178,7 @@ index 6010d1c..f54348b 100644
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-sk-helper$(EXEEXT) $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp$(EXEEXT) $(DESTDIR)$(bindir)/sftp$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) sftp-server$(EXEEXT) $(DESTDIR)$(SFTP_SERVER)$(EXEEXT)
-@@ -425,6 +437,10 @@ install-files:
+@@ -435,6 +447,10 @@ install-files:
  	$(INSTALL) -m 644 sftp-server.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/sftp-server.8
  	$(INSTALL) -m 644 ssh-keysign.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
  	$(INSTALL) -m 644 ssh-pkcs11-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
@@ -190,7 +189,7 @@ index 6010d1c..f54348b 100644
  	$(INSTALL) -m 644 ssh-sk-helper.8.out $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-sk-helper.8
  
  install-sysconf:
-@@ -449,6 +465,13 @@ install-sysconf:
+@@ -459,6 +475,13 @@ install-sysconf:
  	else \
  		echo "$(DESTDIR)$(sysconfdir)/moduli already exists, install will not overwrite"; \
  	fi
@@ -204,7 +203,7 @@ index 6010d1c..f54348b 100644
  
  host-key: ssh-keygen$(EXEEXT)
  	@if [ -z "$(DESTDIR)" ] ; then \
-@@ -487,6 +510,8 @@ uninstall:
+@@ -497,6 +520,8 @@ uninstall:
  	-rm -f $(DESTDIR)$(SSH_KEYSIGN)$(EXEEXT)
  	-rm -f $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
  	-rm -f $(DESTDIR)$(SSH_SK_HELPER)$(EXEEXT)
@@ -213,7 +212,7 @@ index 6010d1c..f54348b 100644
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
-@@ -499,6 +524,7 @@ uninstall:
+@@ -509,6 +534,7 @@ uninstall:
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
  	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-sk-helper.8
@@ -221,11 +220,11 @@ index 6010d1c..f54348b 100644
  
  regress-prep:
  	$(MKDIR_P) `pwd`/regress/unittests/test_helper
-diff --git a/configure.ac b/configure.ac
-index 4ddf539..1fd0b17 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1688,6 +1688,106 @@ AC_ARG_WITH([audit],
+Index: openssh-8.8p1/configure.ac
+===================================================================
+--- openssh-8.8p1.orig/configure.ac
++++ openssh-8.8p1/configure.ac
+@@ -1758,6 +1758,106 @@ AC_ARG_WITH([audit],
  	esac ]
  )
  
@@ -332,11 +331,10 @@ index 4ddf539..1fd0b17 100644
  AC_ARG_WITH([pie],
      [  --with-pie              Build Position Independent Executables if possible], [
  	if test "x$withval" = "xno"; then
-diff --git a/ldap-helper.c b/ldap-helper.c
-new file mode 100644
-index 0000000..0efff1f
+Index: openssh-8.8p1/ldap-helper.c
+===================================================================
 --- /dev/null
-+++ b/ldap-helper.c
++++ openssh-8.8p1/ldap-helper.c
 @@ -0,0 +1,155 @@
 +/* $OpenBSD: ssh-pka-ldap.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -493,11 +491,10 @@ index 0000000..0efff1f
 +void   *buffer_get_string(struct sshbuf *b, u_int *l) { return NULL; }
 +void    buffer_put_string(struct sshbuf *b, const void *f, u_int l) {}
 +
-diff --git a/ldap-helper.h b/ldap-helper.h
-new file mode 100644
-index 0000000..14cb29a
+Index: openssh-8.8p1/ldap-helper.h
+===================================================================
 --- /dev/null
-+++ b/ldap-helper.h
++++ openssh-8.8p1/ldap-helper.h
 @@ -0,0 +1,32 @@
 +/* $OpenBSD: ldap-helper.h,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -531,11 +528,10 @@ index 0000000..14cb29a
 +extern int config_warning_config_file;
 +
 +#endif /* LDAP_HELPER_H */
-diff --git a/ldap.conf b/ldap.conf
-new file mode 100644
-index 0000000..42e38d3
+Index: openssh-8.8p1/ldap.conf
+===================================================================
 --- /dev/null
-+++ b/ldap.conf
++++ openssh-8.8p1/ldap.conf
 @@ -0,0 +1,88 @@
 +# $Id: openssh-5.5p1-ldap.patch,v 1.3 2010/07/07 13:48:36 jfch2222 Exp $
 +#
@@ -625,12 +621,11 @@ index 0000000..42e38d3
 +#tls_cert
 +#tls_key
 +
-diff --git a/ldapbody.c b/ldapbody.c
-new file mode 100644
-index 0000000..032cc89
+Index: openssh-8.8p1/ldapbody.c
+===================================================================
 --- /dev/null
-+++ b/ldapbody.c
-@@ -0,0 +1,494 @@
++++ openssh-8.8p1/ldapbody.c
+@@ -0,0 +1,503 @@
 +/* $OpenBSD: ldapbody.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
 + * Copyright (c) 2009 Jan F. Chadima.  All rights reserved.
@@ -663,7 +658,16 @@ index 0000000..032cc89
 +#include "ldapmisc.h"
 +#include "ldapbody.h"
 +#include <stdio.h>
++#include <stdlib.h>
 +#include <unistd.h>
++
++#ifndef FALSE
++# define FALSE 0
++#endif
++
++#ifndef TRUE
++# define TRUE 1
++#endif
 +
 +#define LDAPSEARCH_FORMAT "(&(objectclass=posixAccount)(objectclass=ldapPublicKey)(uid=%s)%s)"
 +#define PUBKEYATTR "sshPublicKey"
@@ -1125,11 +1129,10 @@ index 0000000..032cc89
 +	return;
 +}
 +
-diff --git a/ldapbody.h b/ldapbody.h
-new file mode 100644
-index 0000000..665dca2
+Index: openssh-8.8p1/ldapbody.h
+===================================================================
 --- /dev/null
-+++ b/ldapbody.h
++++ openssh-8.8p1/ldapbody.h
 @@ -0,0 +1,37 @@
 +/* $OpenBSD: ldapbody.h,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -1168,11 +1171,10 @@ index 0000000..665dca2
 +
 +#endif /* LDAPBODY_H */
 +
-diff --git a/ldapconf.c b/ldapconf.c
-new file mode 100644
-index 0000000..2e22438
+Index: openssh-8.8p1/ldapconf.c
+===================================================================
 --- /dev/null
-+++ b/ldapconf.c
++++ openssh-8.8p1/ldapconf.c
 @@ -0,0 +1,711 @@
 +/* $OpenBSD: ldapconf.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -1885,11 +1887,10 @@ index 0000000..2e22438
 +	dump_cfg_string(lSSH_Filter, options.ssh_filter);
 +}
 +
-diff --git a/ldapconf.h b/ldapconf.h
-new file mode 100644
-index 0000000..c2aa704
+Index: openssh-8.8p1/ldapconf.h
+===================================================================
 --- /dev/null
-+++ b/ldapconf.h
++++ openssh-8.8p1/ldapconf.h
 @@ -0,0 +1,71 @@
 +/* $OpenBSD: ldapconf.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -1962,11 +1963,10 @@ index 0000000..c2aa704
 +void dump_config(void);
 +
 +#endif /* LDAPCONF_H */
-diff --git a/ldapincludes.h b/ldapincludes.h
-new file mode 100644
-index 0000000..8539bdc
+Index: openssh-8.8p1/ldapincludes.h
+===================================================================
 --- /dev/null
-+++ b/ldapincludes.h
++++ openssh-8.8p1/ldapincludes.h
 @@ -0,0 +1,41 @@
 +/* $OpenBSD: ldapconf.c,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -2009,11 +2009,10 @@ index 0000000..8539bdc
 +#endif
 +
 +#endif /* LDAPINCLUDES_H */
-diff --git a/ldapmisc.c b/ldapmisc.c
-new file mode 100644
-index 0000000..de23c0c
+Index: openssh-8.8p1/ldapmisc.c
+===================================================================
 --- /dev/null
-+++ b/ldapmisc.c
++++ openssh-8.8p1/ldapmisc.c
 @@ -0,0 +1,79 @@
 +
 +#include "ldapincludes.h"
@@ -2094,11 +2093,10 @@ index 0000000..de23c0c
 +}
 +#endif
 +
-diff --git a/ldapmisc.h b/ldapmisc.h
-new file mode 100644
-index 0000000..4c271df
+Index: openssh-8.8p1/ldapmisc.h
+===================================================================
 --- /dev/null
-+++ b/ldapmisc.h
++++ openssh-8.8p1/ldapmisc.h
 @@ -0,0 +1,35 @@
 +/* $OpenBSD: ldapbody.h,v 1.1 2009/12/03 03:34:42 jfch Exp $ */
 +/*
@@ -2135,10 +2133,10 @@ index 0000000..4c271df
 +
 +#endif /* LDAPMISC_H */
 +
-diff --git a/openbsd-compat/base64.c b/openbsd-compat/base64.c
-index 9e74667..14824be 100644
---- a/openbsd-compat/base64.c
-+++ b/openbsd-compat/base64.c
+Index: openssh-8.8p1/openbsd-compat/base64.c
+===================================================================
+--- openssh-8.8p1.orig/openbsd-compat/base64.c
++++ openssh-8.8p1/openbsd-compat/base64.c
 @@ -46,7 +46,7 @@
  
  #include "includes.h"
@@ -2157,7 +2155,7 @@ index 9e74667..14824be 100644
  int
  b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize)
  {
-@@ -185,7 +185,7 @@ b64_ntop(u_char const *src, size_t srclength, char *target, size_t targsize)
+@@ -185,7 +185,7 @@ b64_ntop(u_char const *src, size_t srcle
  }
  #endif /* !defined(HAVE_B64_NTOP) && !defined(HAVE___B64_NTOP) */
  
@@ -2166,10 +2164,10 @@ index 9e74667..14824be 100644
  
  /* skips all whitespace anywhere.
     converts characters, four at a time, starting at (or after)
-diff --git a/openbsd-compat/base64.h b/openbsd-compat/base64.h
-index bd77293..e27df9a 100644
---- a/openbsd-compat/base64.h
-+++ b/openbsd-compat/base64.h
+Index: openssh-8.8p1/openbsd-compat/base64.h
+===================================================================
+--- openssh-8.8p1.orig/openbsd-compat/base64.h
++++ openssh-8.8p1/openbsd-compat/base64.h
 @@ -45,16 +45,16 @@
  
  #include "includes.h"
@@ -2191,11 +2189,10 @@ index bd77293..e27df9a 100644
  int b64_pton(char const *src, u_char *target, size_t targsize);
  # endif /* !HAVE_B64_PTON */
  # define __b64_pton(a,b,c) b64_pton(a,b,c)
-diff --git a/openssh-lpk-openldap.schema b/openssh-lpk-openldap.schema
-new file mode 100644
-index 0000000..c84f90f
+Index: openssh-8.8p1/openssh-lpk-openldap.schema
+===================================================================
 --- /dev/null
-+++ b/openssh-lpk-openldap.schema
++++ openssh-8.8p1/openssh-lpk-openldap.schema
 @@ -0,0 +1,21 @@
 +#
 +# LDAP Public Key Patch schema for use with openssh-ldappubkey
@@ -2218,11 +2215,10 @@ index 0000000..c84f90f
 +	DESC 'MANDATORY: OpenSSH LPK objectclass'
 +	MUST ( sshPublicKey $ uid ) 
 +	)
-diff --git a/openssh-lpk-sun.schema b/openssh-lpk-sun.schema
-new file mode 100644
-index 0000000..3136673
+Index: openssh-8.8p1/openssh-lpk-sun.schema
+===================================================================
 --- /dev/null
-+++ b/openssh-lpk-sun.schema
++++ openssh-8.8p1/openssh-lpk-sun.schema
 @@ -0,0 +1,23 @@
 +#
 +# LDAP Public Key Patch schema for use with openssh-ldappubkey
@@ -2247,11 +2243,10 @@ index 0000000..3136673
 +	DESC 'MANDATORY: OpenSSH LPK objectclass'
 +	MUST ( sshPublicKey $ uid ) 
 +	)
-diff --git a/ssh-ldap-helper.8 b/ssh-ldap-helper.8
-new file mode 100644
-index 0000000..f8440e4
+Index: openssh-8.8p1/ssh-ldap-helper.8
+===================================================================
 --- /dev/null
-+++ b/ssh-ldap-helper.8
++++ openssh-8.8p1/ssh-ldap-helper.8
 @@ -0,0 +1,79 @@
 +.\" $OpenBSD: ssh-ldap-helper.8,v 1.1 2010/02/10 23:20:38 markus Exp $
 +.\"
@@ -2332,21 +2327,19 @@ index 0000000..f8440e4
 +OpenSSH 5.5 + PKA-LDAP .
 +.Sh AUTHORS
 +.An Jan F. Chadima Aq jchadima@redhat.com
-diff --git a/ssh-ldap-wrapper b/ssh-ldap-wrapper
-new file mode 100644
-index 0000000..9fdfc37
+Index: openssh-8.8p1/ssh-ldap-wrapper
+===================================================================
 --- /dev/null
-+++ b/ssh-ldap-wrapper
++++ openssh-8.8p1/ssh-ldap-wrapper
 @@ -0,0 +1,4 @@
 +#!/bin/sh
 +
 +exec @LIBEXECDIR@/ssh-ldap-helper -s "$1"
 +
-diff --git a/ssh-ldap.conf.5 b/ssh-ldap.conf.5
-new file mode 100644
-index 0000000..15eb03d
+Index: openssh-8.8p1/ssh-ldap.conf.5
+===================================================================
 --- /dev/null
-+++ b/ssh-ldap.conf.5
++++ openssh-8.8p1/ssh-ldap.conf.5
 @@ -0,0 +1,376 @@
 +.\" $OpenBSD: ssh-ldap.conf.5,v 1.1 2010/02/10 23:20:38 markus Exp $
 +.\"

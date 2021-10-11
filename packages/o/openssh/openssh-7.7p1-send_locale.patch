@@ -3,15 +3,11 @@
 send locales in default configuration
 bnc#65747
 
-diff --git a/openssh-7.7p1/ssh_config b/openssh-7.7p1/ssh_config
---- openssh-7.7p1/ssh_config
-+++ openssh-7.7p1/ssh_config
-@@ -26,16 +26,21 @@ Host *
- # security reasons: Someone stealing the authentification data on the
- # remote side (the "spoofed" X-server by the remote sshd) can read your
- # keystrokes as you type, just like any other X11 client could do.
- # Set this to "no" here for global effect or in your own ~/.ssh/config
- # file if you want to have the remote X11 authentification data to 
+Index: openssh-8.8p1/ssh_config
+===================================================================
+--- openssh-8.8p1.orig/ssh_config
++++ openssh-8.8p1/ssh_config
+@@ -31,6 +31,11 @@ Host *
  # expire after twenty minutes after remote login.
      ForwardX11Trusted yes
  
@@ -23,20 +19,11 @@ diff --git a/openssh-7.7p1/ssh_config b/openssh-7.7p1/ssh_config
  #   PasswordAuthentication yes
  #   HostbasedAuthentication no
  #   GSSAPIAuthentication no
- #   GSSAPIDelegateCredentials no
- #   BatchMode no
- #   CheckHostIP yes
- #   AddressFamily any
- #   ConnectTimeout 0
-diff --git a/openssh-7.7p1/sshd_config b/openssh-7.7p1/sshd_config
---- openssh-7.7p1/sshd_config
-+++ openssh-7.7p1/sshd_config
-@@ -104,14 +104,19 @@ X11Forwarding yes
- #VersionAddendum none
- 
- # no default banner path
- #Banner none
- 
+Index: openssh-8.8p1/sshd_config
+===================================================================
+--- openssh-8.8p1.orig/sshd_config
++++ openssh-8.8p1/sshd_config
+@@ -108,6 +108,11 @@ X11Forwarding yes
  # override default of no subsystems
  Subsystem	sftp	/usr/libexec/sftp-server
  
@@ -48,6 +35,3 @@ diff --git a/openssh-7.7p1/sshd_config b/openssh-7.7p1/sshd_config
  # Example of overriding settings on a per-user basis
  #Match User anoncvs
  #	X11Forwarding no
- #	AllowTcpForwarding no
- #	PermitTTY no
- #	ForceCommand cvs server

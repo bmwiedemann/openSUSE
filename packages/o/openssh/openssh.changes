@@ -1,4 +1,372 @@
 -------------------------------------------------------------------
+Tue Sep 28 17:50:57 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Version update to 8.8p1:
+  = Security
+  * sshd(8) from OpenSSH 6.2 through 8.7 failed to correctly initialise
+    supplemental groups when executing an AuthorizedKeysCommand or
+    AuthorizedPrincipalsCommand, where a AuthorizedKeysCommandUser or
+    AuthorizedPrincipalsCommandUser directive has been set to run the
+    command as a different user. Instead these commands would inherit
+    the groups that sshd(8) was started with.
+
+    Depending on system configuration, inherited groups may allow
+    AuthorizedKeysCommand/AuthorizedPrincipalsCommand helper programs to
+    gain unintended privilege.
+
+    Neither AuthorizedKeysCommand nor AuthorizedPrincipalsCommand are
+    enabled by default in sshd_config(5).
+
+  = Potentially-incompatible changes
+  * This release disables RSA signatures using the SHA-1 hash algorithm
+    by default. This change has been made as the SHA-1 hash algorithm is
+    cryptographically broken, and it is possible to create chosen-prefix
+    hash collisions for <USD$50K.
+
+    For most users, this change should be invisible and there is
+    no need to replace ssh-rsa keys. OpenSSH has supported RFC8332
+    RSA/SHA-256/512 signatures since release 7.2 and existing ssh-rsa keys
+    will automatically use the stronger algorithm where possible.
+
+    Incompatibility is more likely when connecting to older SSH
+    implementations that have not been upgraded or have not closely tracked
+    improvements in the SSH protocol. For these cases, it may be necessary
+    to selectively re-enable RSA/SHA1 to allow connection and/or user
+    authentication via the HostkeyAlgorithms and PubkeyAcceptedAlgorithms
+    options.
+
+  = New features
+  * ssh(1): allow the ssh_config(5) CanonicalizePermittedCNAMEs
+    directive to accept a "none" argument to specify the default
+    behaviour.
+
+  = Bugfixes
+  * scp(1): when using the SFTP protocol, continue transferring files
+    after a transfer error occurs, better matching original scp/rcp
+    behaviour.
+  * ssh(1): fixed a number of memory leaks in multiplexing,
+  * ssh-keygen(1): avoid crash when using the -Y find-principals
+    command.
+  * A number of documentation and manual improvements, including
+    bz#3340, PR139, PR215, PR241, PR257
+
+- Additional changes from 8.7p1 release:
+  = Potentially-incompatible changes
+  * scp(1): this release changes the behaviour of remote to remote
+    copies (e.g. "scp host-a:/path host-b:") to transfer through the
+    local host by default. This was previously available via the -3
+    flag. This mode avoids the need to expose credentials on the
+    origin hop, avoids triplicate interpretation of filenames by the
+    shell (by the local system, the copy origin and the destination)
+    and, in conjunction with the SFTP support for scp(1) mentioned
+    below, allows use of all authentication methods to the remote
+    hosts (previously, only non-interactive methods could be used).
+    A -R flag has been added to select the old behaviour.
+  * ssh(1)/sshd(8): both the client and server are now using a
+    stricter configuration file parser. The new parser uses more
+    shell-like rules for quotes, space and escape characters. It is
+    also more strict in rejecting configurations that include options
+    lacking arguments. Previously some options (e.g. DenyUsers) could
+    appear on a line with no subsequent arguments. This release will
+    reject such configurations. The new parser will also reject
+    configurations with unterminated quotes and multiple '='
+    characters after the option name.
+  * ssh(1): when using SSHFP DNS records for host key verification,
+    ssh(1) will verify all matching records instead of just those
+    with the specific signature type requested. This may cause host
+    key verification problems if stale SSHFP records of a different
+    or legacy signature type exist alongside other records for a
+    particular host. bz#3322
+  * ssh-keygen(1): when generating a FIDO key and specifying an
+    explicit attestation challenge (using -Ochallenge), the challenge
+    will now be hashed by the builtin security key middleware. This
+    removes the (undocumented) requirement that challenges be exactly
+    32 bytes in length and matches the expectations of libfido2.
+  * sshd(8): environment="..." directives in authorized_keys files are
+    now first-match-wins and limited to 1024 discrete environment
+    variable names.
+
+  = New features
+  * scp(1): experimental support for transfers using the SFTP protocol
+    as a replacement for the venerable SCP/RCP protocol that it has
+    traditionally used. SFTP offers more predictable filename handling
+    and does not require expansion of glob(3) patterns via the shell
+    on the remote side.
+  * sftp-server(8): add a protocol extension to support expansion of
+    ~/ and ~user/ prefixed paths. This was added to support these
+    paths when used by scp(1) while in SFTP mode.
+  * ssh(1): add a ForkAfterAuthentication ssh_config(5) counterpart to
+    the ssh(1) -f flag. GHPR231
+  * ssh(1): add a StdinNull directive to ssh_config(5) that allows the
+    config file to do the same thing as -n does on the ssh(1) command-
+    line. GHPR231
+  * ssh(1): add a SessionType directive to ssh_config, allowing the
+    configuration file to offer equivalent control to the -N (no
+    session) and -s (subsystem) command-line flags. GHPR231
+  * ssh-keygen(1): allowed signers files used by ssh-keygen(1)
+    signatures now support listing key validity intervals alongside
+    they key, and ssh-keygen(1) can optionally check during signature
+    verification whether a specified time falls inside this interval.
+    This feature is intended for use by git to support signing and
+    verifying objects using ssh keys.
+  * ssh-keygen(8): support printing of the full public key in a sshsig
+    signature via a -Oprint-pubkey flag.
+
+  = Bugfixes
+  * ssh(1)/sshd(8): start time-based re-keying exactly on schedule in
+    the client and server mainloops. Previously the re-key timeout
+    could expire but re-keying would not start until a packet was sent
+    or received, causing a spin in select() if the connection was
+    quiescent.
+  * ssh-keygen(1): avoid Y2038 problem in printing certificate
+    validity lifetimes. Dates past 2^31-1 seconds since epoch were
+    displayed incorrectly on some platforms. bz#3329
+  * scp(1): allow spaces to appear in usernames for local to remote
+    and scp -3 remote to remote copies. bz#1164
+  * ssh(1)/sshd(8): remove references to ChallengeResponseAuthentication
+    in favour of KbdInteractiveAuthentication. The former is what was in
+    SSHv1, the latter is what is in SSHv2 (RFC4256) and they were
+    treated as somewhat but not entirely equivalent. We retain the old
+    name as a deprecated alias so configuration files continue to work
+    as well as a reference in the man page for people looking for it.
+    bz#3303
+  * ssh(1)/ssh-add(1)/ssh-keygen(1): fix decoding of X.509 subject name
+    when extracting a key from a PKCS#11 certificate. bz#3327
+  * ssh(1): restore blocking status on stdio fds before close. ssh(1)
+    needs file descriptors in non-blocking mode to operate but it was
+    not restoring the original state on exit. This could cause
+    problems with fds shared with other programs via the shell,
+    bz#3280 and GHPR246
+  * ssh(1)/sshd(8): switch both client and server mainloops from
+    select(3) to pselect(3). Avoids race conditions where a signal
+    may arrive immediately before select(3) and not be processed until
+    an event fires. bz#2158
+  * ssh(1): sessions started with ControlPersist were incorrectly
+    executing a shell when the -N (no shell) option was specified.
+    bz#3290
+  * ssh(1): check if IPQoS or TunnelDevice are already set before
+    overriding. Prevents values in config files from overriding values
+    supplied on the command line. bz#3319
+  * ssh(1): fix debug message when finding a private key to match a
+    certificate being attempted for user authentication. Previously it
+    would print the certificate's path, whereas it was supposed to be
+    showing the private key's path. GHPR247
+  * sshd(8): match host certificates against host public keys, not
+    private keys. Allows use of certificates with private keys held in
+    a ssh-agent.  bz#3524
+  * ssh(1): add a workaround for a bug in OpenSSH 7.4 sshd(8), which
+    allows RSA/SHA2 signatures for public key authentication but fails
+    to advertise this correctly via SSH2_MSG_EXT_INFO. This causes
+    clients of these server to incorrectly match
+    PubkeyAcceptedAlgorithmse and potentially refuse to offer valid
+    keys. bz#3213
+  * sftp(1)/scp(1): degrade gracefully if a sftp-server offers the
+    limits@openssh.com extension but fails when the client tries to
+    invoke it. bz#3318
+  * ssh(1): allow ssh_config SetEnv to override $TERM, which is
+    otherwise handled specially by the protocol. Useful in ~/.ssh/config
+    to set TERM to something generic (e.g. "xterm" instead of
+    "xterm-256color") for destinations that lack terminfo entries.
+  * sftp-server(8): the limits@openssh.com extension was incorrectly
+    marked as an operation that writes to the filesystem, which made it
+    unavailable in sftp-server read-only mode. bz#3318
+  * ssh(1): fix SEGV in UpdateHostkeys debug() message, triggered when
+    the update removed more host keys than remain present.
+  * Many manual page fixes.
+
+- Additional changes from 8.6p1 release:
+  = Security
+  * sshd(8): OpenSSH 8.5 introduced the LogVerbose keyword. When this
+    option was enabled with a set of patterns that activated logging
+    in code that runs in the low-privilege sandboxed sshd process, the
+    log messages were constructed in such a way that printf(3) format
+    strings could effectively be specified the low-privilege code.
+
+  = New features
+  * sftp-server(8): add a new limits@openssh.com protocol extension
+    that allows a client to discover various server limits, including
+    maximum packet size and maximum read/write length.
+  * sftp(1): use the new limits@openssh.com extension (when available)
+    to select better transfer lengths in the client.
+  * sshd(8): Add ModuliFile keyword to sshd_config to specify the
+    location of the "moduli" file containing the groups for DH-GEX.
+  * unit tests: Add a TEST_SSH_ELAPSED_TIMES environment variable to
+    enable printing of the elapsed time in seconds of each test.
+
+  = Bugfixes
+  * ssh_config(5), sshd_config(5): sync CASignatureAlgorithms lists in
+    manual pages with the current default. GHPR174
+  * ssh(1): ensure that pkcs11_del_provider() is called before exit.
+    GHPR234
+  * ssh(1), sshd(8): fix problems in string->argv conversion. Multiple
+    backslashes were not being dequoted correctly and quoted space in
+    the middle of a string was being incorrectly split. GHPR223
+  * ssh(1): return non-zero exit status when killed by signal; bz#3281
+  * sftp-server(8): increase maximum SSH2_FXP_READ to match the maximum
+    packet size. Also handle zero-length reads that are not explicitly
+    banned by the spec.
+
+- Additional changes from 8.5p1 release:
+  = Security
+  * ssh-agent(1): fixed a double-free memory corruption that was
+    introduced in OpenSSH 8.2 . We treat all such memory faults as
+    potentially exploitable. This bug could be reached by an attacker
+    with access to the agent socket.
+
+  = Potentially-incompatible changes
+  * ssh(1), sshd(8): this release changes the first-preference signature
+    algorithm from ECDSA to ED25519.
+  * ssh(1), sshd(8): set the TOS/DSCP specified in the configuration
+    for interactive use prior to TCP connect. The connection phase of
+    the SSH session is time-sensitive and often explicitly interactive.
+    The ultimate interactive/bulk TOS/DSCP will be set after
+    authentication completes.
+  * ssh(1), sshd(8): remove the pre-standardization cipher
+    rijndael-cbc@lysator.liu.se. It is an alias for aes256-cbc before
+    it was standardized in RFC4253 (2006), has been deprecated and
+    disabled by default since OpenSSH 7.2 (2016) and was only briefly
+    documented in ssh.1 in 2001.
+  * ssh(1), sshd(8): update/replace the experimental post-quantum
+    hybrid key exchange method based on Streamlined NTRU Prime coupled
+    with X25519. The previous sntrup4591761x25519-sha512@tinyssh.org
+    method is replaced with sntrup761x25519-sha512@openssh.com.
+  * ssh(1): disable CheckHostIP by default. It provides insignificant
+    benefits while making key rotation significantly more difficult,
+    especially for hosts behind IP-based load-balancers.
+
+  = New features
+  * ssh(1): this release enables UpdateHostkeys by default subject to
+    some conservative preconditions:
+    - The key was matched in the UserKnownHostsFile (and not in the
+      GlobalKnownHostsFile).
+    - The same key does not exist under another name.
+    - A certificate host key is not in use.
+    - known_hosts contains no matching wildcard hostname pattern.
+    - VerifyHostKeyDNS is not enabled.
+    - The default UserKnownHostsFile is in use.
+  * ssh(1), sshd(8): add a new LogVerbose configuration directive for
+    that allows forcing maximum debug logging by file/function/line
+    pattern-lists.
+  * ssh(1): when prompting the user to accept a new hostkey, display
+    any other host names/addresses already associated with the key.
+  * ssh(1): allow UserKnownHostsFile=none to indicate that no
+    known_hosts file should be used to identify host keys.
+  * ssh(1): add a ssh_config KnownHostsCommand option that allows the
+    client to obtain known_hosts data from a command in addition to
+    the usual files.
+  * ssh(1): add a ssh_config PermitRemoteOpen option that allows the
+    client to restrict the destination when RemoteForward is used
+    with SOCKS.
+  * ssh(1): for FIDO keys, if a signature operation fails with a
+    "incorrect PIN" reason and no PIN was initially requested from the
+    user, then request a PIN and retry the operation. This supports
+    some biometric devices that fall back to requiring PIN when reading
+    of the biometric failed, and devices that require PINs for all
+    hosted credentials.
+  * sshd(8): implement client address-based rate-limiting via new
+    sshd_config(5) PerSourceMaxStartups and PerSourceNetBlockSize
+    directives that provide more fine-grained control on a per-origin
+    address basis than the global MaxStartups limit.
+
+  = Bugfixes
+   * ssh(1): Prefix keyboard interactive prompts with "(user@host)" to
+   make it easier to determine which connection they are associated
+   with in cases like scp -3, ProxyJump, etc. bz#3224
+  * sshd(8): fix sshd_config SetEnv directives located inside Match
+    blocks. GHPR201
+  * ssh(1): when requesting a FIDO token touch on stderr, inform the
+    user once the touch has been recorded.
+  * ssh(1): prevent integer overflow when ridiculously large
+    ConnectTimeout values are specified, capping the effective value
+    (for most platforms) at 24 days. bz#3229
+  * ssh(1): consider the ECDSA key subtype when ordering host key
+    algorithms in the client.
+  * ssh(1), sshd(8): rename the PubkeyAcceptedKeyTypes keyword to
+    PubkeyAcceptedAlgorithms. The previous name incorrectly suggested
+    that it control allowed key algorithms, when this option actually
+    specifies the signature algorithms that are accepted. The previous
+    name remains available as an alias. bz#3253
+  * ssh(1), sshd(8): similarly, rename HostbasedKeyTypes (ssh) and
+    HostbasedAcceptedKeyTypes (sshd) to HostbasedAcceptedAlgorithms.
+  * sftp-server(8): add missing lsetstat@openssh.com documentation
+    and advertisement in the server's SSH2_FXP_VERSION hello packet.
+  * ssh(1), sshd(8): more strictly enforce KEX state-machine by
+    banning packet types once they are received. Fixes memleak caused
+    by duplicate SSH2_MSG_KEX_DH_GEX_REQUEST (oss-fuzz #30078).
+  * sftp(1): allow the full range of UIDs/GIDs for chown/chgrp on 32bit
+    platforms instead of being limited by LONG_MAX. bz#3206
+  * Minor man page fixes (capitalization, commas, etc.) bz#3223
+  * sftp(1): when doing an sftp recursive upload or download of a
+    read-only directory, ensure that the directory is created with
+    write and execute permissions in the interim so that the transfer
+    can actually complete, then set the directory permission as the
+    final step. bz#3222
+  * ssh-keygen(1): document the -Z, check the validity of its argument
+    earlier and provide a better error message if it's not correct.
+    bz#2879
+  * ssh(1): ignore comments at the end of config lines in ssh_config,
+    similar to what we already do for sshd_config. bz#2320
+  * sshd_config(5): mention that DisableForwarding is valid in a
+    sshd_config Match block. bz3239
+  * sftp(1): fix incorrect sorting of "ls -ltr" under some
+    circumstances. bz3248.
+  * ssh(1), sshd(8): fix potential integer truncation of (unlikely)
+    timeout values. bz#3250
+  * ssh(1): make hostbased authentication send the signature algorithm
+    in its SSH2_MSG_USERAUTH_REQUEST packets instead of the key type.
+    This make HostbasedAcceptedAlgorithms do what it is supposed to -
+    filter on signature algorithm and not key type.
+
+- Rebased patches:
+  * openssh-7.7p1-IPv6_X_forwarding.patch
+  * openssh-7.7p1-X11_trusted_forwarding.patch
+  * openssh-7.7p1-X_forward_with_disabled_ipv6.patch
+  * openssh-7.7p1-cavstest-ctr.patch
+  * openssh-7.7p1-cavstest-kdf.patch
+  * openssh-7.7p1-disable_openssl_abi_check.patch
+  * openssh-7.7p1-eal3.patch
+  * openssh-7.7p1-enable_PAM_by_default.patch
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-host_ident.patch
+  * openssh-7.7p1-hostname_changes_when_forwarding_X.patch
+  * openssh-7.7p1-ldap.patch
+  * openssh-7.7p1-no_fork-no_pid_file.patch
+  * openssh-7.7p1-pam_check_locks.patch
+  * openssh-7.7p1-pts_names_formatting.patch
+  * openssh-7.7p1-remove_xauth_cookies_on_exit.patch
+  * openssh-7.7p1-seccomp_ipc_flock.patch
+  * openssh-7.7p1-seccomp_stat.patch
+  * openssh-7.7p1-send_locale.patch
+  * openssh-7.7p1-sftp_force_permissions.patch
+  * openssh-7.7p1-sftp_print_diagnostic_messages.patch
+  * openssh-7.7p1-systemd-notify.patch
+  * openssh-7.9p1-keygen-preserve-perms.patch
+  * openssh-7.9p1-revert-new-qos-defaults.patch
+  * openssh-8.0p1-gssapi-keyex.patch
+  * openssh-8.1p1-audit.patch
+  * openssh-8.1p1-seccomp-clock_gettime64.patch
+  * openssh-8.1p1-seccomp-clock_nanosleep.patch
+  * openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
+  * openssh-8.1p1-use-openssl-kdf.patch
+  * openssh-8.4p1-vendordir.patch
+  * openssh-fips-ensure-approved-moduli.patch
+  * openssh-link-with-sk.patch
+  * openssh-reenable-dh-group14-sha1-default.patch
+  * openssh-whitelist-syscalls.patch
+
+- Removed openssh-fix-ssh-copy-id.patch (fixed upstream).
+- openssh.keyring: rotated to new key from https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc
+
+-------------------------------------------------------------------
+Thu Aug 19 10:07:10 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- sshd-gen-keys-start:
+  - only source sysconfig file if it exists.
+  - create /etc/ssh if it does not exists.
+  Required for image based installation/updates.
+
+-------------------------------------------------------------------
 Mon Jul 19 14:51:08 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - The linux kernel has close_range(2) syscall which current glibc

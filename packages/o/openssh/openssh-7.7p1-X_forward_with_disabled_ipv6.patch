@@ -3,13 +3,13 @@
 Do not throw away already open sockets for X11 forwarding if another socket
 family is not available for bind()
 
-diff --git a/channels.c b/channels.c
-index f51b7e3..95af47e 100644
---- a/channels.c
-+++ b/channels.c
-@@ -4637,6 +4637,13 @@ x11_create_display_inet(struct ssh *ssh, int x11_display_offset,
- 				debug2("%s: bind port %d: %.100s", __func__,
- 				    port, strerror(errno));
+Index: openssh-8.8p1/channels.c
+===================================================================
+--- openssh-8.8p1.orig/channels.c
++++ openssh-8.8p1/channels.c
+@@ -4607,6 +4607,13 @@ x11_create_display_inet(struct ssh *ssh,
+ 				debug2_f("bind port %d: %.100s", port,
+ 				    strerror(errno));
  				close(sock);
 +				/* do not remove successfully opened sockets if
 +				 * the request failed because the protocol

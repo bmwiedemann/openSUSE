@@ -14,10 +14,10 @@
 # file is not found (or the hash matches), proceed in non-FIPS mode and abort
 # otherwise.
 
-Index: openssh-8.4p1/fips-check.c
+Index: openssh-8.8p1/fips-check.c
 ===================================================================
 --- /dev/null
-+++ openssh-8.4p1/fips-check.c
++++ openssh-8.8p1/fips-check.c
 @@ -0,0 +1,34 @@
 +#include "includes.h"
 +#include <fcntl.h>
@@ -53,10 +53,10 @@ Index: openssh-8.4p1/fips-check.c
 +    fips_ssh_init();
 +	return 0;
 +}
-Index: openssh-8.4p1/fips.c
+Index: openssh-8.8p1/fips.c
 ===================================================================
---- openssh-8.4p1.orig/fips.c
-+++ openssh-8.4p1/fips.c
+--- openssh-8.8p1.orig/fips.c
++++ openssh-8.8p1/fips.c
 @@ -35,30 +35,293 @@
  #include "log.h"
  #include "xmalloc.h"
@@ -362,10 +362,10 @@ Index: openssh-8.4p1/fips.c
  int
  fips_mode(void)
  {
-Index: openssh-8.4p1/fips.h
+Index: openssh-8.8p1/fips.h
 ===================================================================
---- openssh-8.4p1.orig/fips.h
-+++ openssh-8.4p1/fips.h
+--- openssh-8.8p1.orig/fips.h
++++ openssh-8.8p1/fips.h
 @@ -1,5 +1,5 @@
  /*
 - * Copyright (c) 2012 Petr Cerny.  All rights reserved.
@@ -407,20 +407,20 @@ Index: openssh-8.4p1/fips.h
  
  #endif
 -
-Index: openssh-8.4p1/sftp-server.c
+Index: openssh-8.8p1/sftp-server.c
 ===================================================================
---- openssh-8.4p1.orig/sftp-server.c
-+++ openssh-8.4p1/sftp-server.c
-@@ -53,6 +53,8 @@
- 
- char *sftp_realpath(const char *, char *); /* sftp-realpath.c */
+--- openssh-8.8p1.orig/sftp-server.c
++++ openssh-8.8p1/sftp-server.c
+@@ -57,6 +57,8 @@ char *sftp_realpath(const char *, char *
+ /* Maximum data read that we are willing to accept */
+ #define SFTP_MAX_READ_LENGTH (SFTP_MAX_MSG_LENGTH - 1024)
  
 +#include "fips.h"
 +
  /* Our verbosity */
  static LogLevel log_level = SYSLOG_LEVEL_ERROR;
  
-@@ -1577,6 +1579,9 @@ sftp_server_main(int argc, char **argv,
+@@ -1717,6 +1719,9 @@ sftp_server_main(int argc, char **argv,
  	extern char *optarg;
  	extern char *__progname;
  
@@ -430,10 +430,10 @@ Index: openssh-8.4p1/sftp-server.c
  	__progname = ssh_get_progname(argv[0]);
  	log_init(__progname, log_level, log_facility, log_stderr);
  
-Index: openssh-8.4p1/ssh.c
+Index: openssh-8.8p1/ssh.c
 ===================================================================
---- openssh-8.4p1.orig/ssh.c
-+++ openssh-8.4p1/ssh.c
+--- openssh-8.8p1.orig/ssh.c
++++ openssh-8.8p1/ssh.c
 @@ -113,6 +113,8 @@
  #include "ssh-pkcs11.h"
  #endif
@@ -443,9 +443,9 @@ Index: openssh-8.4p1/ssh.c
  extern char *__progname;
  
  /* Saves a copy of argv for setproctitle emulation */
-@@ -658,6 +660,10 @@ main(int ac, char **av)
- 	size_t n, len;
+@@ -632,6 +634,10 @@ main(int ac, char **av)
  	u_int j;
+ 	struct ssh_conn_info *cinfo = NULL;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a
 +	 * OpenBSD-only thing (as of OpenSSH 7.6p1) */
@@ -454,11 +454,11 @@ Index: openssh-8.4p1/ssh.c
  	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
  	sanitise_stdfd();
  
-Index: openssh-8.4p1/sshd.c
+Index: openssh-8.8p1/sshd.c
 ===================================================================
---- openssh-8.4p1.orig/sshd.c
-+++ openssh-8.4p1/sshd.c
-@@ -1545,6 +1545,10 @@ main(int ac, char **av)
+--- openssh-8.8p1.orig/sshd.c
++++ openssh-8.8p1/sshd.c
+@@ -1547,6 +1547,10 @@ main(int ac, char **av)
  	Authctxt *authctxt;
  	struct connection_info *connection_info = NULL;
  

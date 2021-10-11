@@ -1525,4 +1525,41 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>907490</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>d83caed46c61965fe79537b4cfc1b7ce</srcmd5>
+    <version>8.8p1</version>
+    <time>1633963716</time>
+    <user>dimstar_suse</user>
+    <comment>- Version upgrade to 8.8p1
+  * No changes for askpass, see main package changelog for
+    details
+
+- Version update to 8.8p1:
+  = Security
+  * sshd(8) from OpenSSH 6.2 through 8.7 failed to correctly initialise
+    supplemental groups when executing an AuthorizedKeysCommand or
+    AuthorizedPrincipalsCommand, where a AuthorizedKeysCommandUser or
+    AuthorizedPrincipalsCommandUser directive has been set to run the
+    command as a different user. Instead these commands would inherit
+    the groups that sshd(8) was started with.
+    Depending on system configuration, inherited groups may allow
+    AuthorizedKeysCommand/AuthorizedPrincipalsCommand helper programs to
+    gain unintended privilege.
+    Neither AuthorizedKeysCommand nor AuthorizedPrincipalsCommand are
+    enabled by default in sshd_config(5).
+  = Potentially-incompatible changes
+  * This release disables RSA signatures using the SHA-1 hash algorithm
+    by default. This change has been made as the SHA-1 hash algorithm is
+    cryptographically broken, and it is possible to create chosen-prefix
+    hash collisions for &lt;USD$50K.
+    For most users, this change should be invisible and there is
+    no need to replace ssh-rsa keys. OpenSSH has supported RFC8332
+    RSA/SHA-256/512 signatures since release 7.2 and existing ssh-rsa keys
+    will automatically use the stronger algorithm where possible.
+    Incompatibility is more likely when connecting to older SSH
+    implementations that have not been upgraded or have not closely tracked
+    improvements in the SSH protocol. For these cases, it may be necessary
+    to selectively re-enable RSA/SHA1 to allow connection and/or user</comment>
+    <requestid>923951</requestid>
+  </revision>
 </revisionlist>

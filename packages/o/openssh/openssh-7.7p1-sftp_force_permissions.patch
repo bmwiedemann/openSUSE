@@ -1,7 +1,7 @@
-Index: openssh-8.4p1/sftp-server.8
+Index: openssh-8.8p1/sftp-server.8
 ===================================================================
---- openssh-8.4p1.orig/sftp-server.8
-+++ openssh-8.4p1/sftp-server.8
+--- openssh-8.8p1.orig/sftp-server.8
++++ openssh-8.8p1/sftp-server.8
 @@ -38,6 +38,7 @@
  .Op Fl P Ar denied_requests
  .Op Fl p Ar allowed_requests
@@ -21,11 +21,11 @@ Index: openssh-8.4p1/sftp-server.8
  .El
  .Pp
  On some systems,
-Index: openssh-8.4p1/sftp-server.c
+Index: openssh-8.8p1/sftp-server.c
 ===================================================================
---- openssh-8.4p1.orig/sftp-server.c
-+++ openssh-8.4p1/sftp-server.c
-@@ -69,6 +69,10 @@ struct sshbuf *oqueue;
+--- openssh-8.8p1.orig/sftp-server.c
++++ openssh-8.8p1/sftp-server.c
+@@ -73,6 +73,10 @@ struct sshbuf *oqueue;
  /* Version of client */
  static u_int version;
  
@@ -36,7 +36,7 @@ Index: openssh-8.4p1/sftp-server.c
  /* SSH2_FXP_INIT received */
  static int init_done;
  
-@@ -687,6 +691,7 @@ process_open(u_int32_t id)
+@@ -724,6 +728,7 @@ process_open(u_int32_t id)
  	Attrib a;
  	char *name;
  	int r, handle, fd, flags, mode, status = SSH2_FX_FAILURE;
@@ -44,7 +44,7 @@ Index: openssh-8.4p1/sftp-server.c
  
  	if ((r = sshbuf_get_cstring(iqueue, &name, NULL)) != 0 ||
  	    (r = sshbuf_get_u32(iqueue, &pflags)) != 0 || /* portable flags */
-@@ -696,6 +701,10 @@ process_open(u_int32_t id)
+@@ -733,6 +738,10 @@ process_open(u_int32_t id)
  	debug3("request %u: open flags %d", id, pflags);
  	flags = flags_from_portable(pflags);
  	mode = (a.flags & SSH2_FILEXFER_ATTR_PERMISSIONS) ? a.perm : 0666;
@@ -55,7 +55,7 @@ Index: openssh-8.4p1/sftp-server.c
  	logit("open \"%s\" flags %s mode 0%o",
  	    name, string_from_portable(pflags), mode);
  	if (readonly &&
-@@ -717,6 +726,8 @@ process_open(u_int32_t id)
+@@ -754,6 +763,8 @@ process_open(u_int32_t id)
  			}
  		}
  	}
@@ -64,7 +64,7 @@ Index: openssh-8.4p1/sftp-server.c
  	if (status != SSH2_FX_OK)
  		send_status(id, status);
  	free(name);
-@@ -1131,6 +1142,7 @@ process_mkdir(u_int32_t id)
+@@ -1183,6 +1194,7 @@ process_mkdir(u_int32_t id)
  	Attrib a;
  	char *name;
  	int r, mode, status = SSH2_FX_FAILURE;
@@ -72,7 +72,7 @@ Index: openssh-8.4p1/sftp-server.c
  
  	if ((r = sshbuf_get_cstring(iqueue, &name, NULL)) != 0 ||
  	    (r = decode_attrib(iqueue, &a)) != 0)
-@@ -1138,9 +1150,16 @@ process_mkdir(u_int32_t id)
+@@ -1190,9 +1202,16 @@ process_mkdir(u_int32_t id)
  
  	mode = (a.flags & SSH2_FILEXFER_ATTR_PERMISSIONS) ?
  	    a.perm & 07777 : 0777;
@@ -89,7 +89,7 @@ Index: openssh-8.4p1/sftp-server.c
  	status = (r == -1) ? errno_to_portable(errno) : SSH2_FX_OK;
  	send_status(id, status);
  	free(name);
-@@ -1560,7 +1579,7 @@ sftp_server_usage(void)
+@@ -1700,7 +1719,7 @@ sftp_server_usage(void)
  	fprintf(stderr,
  	    "usage: %s [-ehR] [-d start_directory] [-f log_facility] "
  	    "[-l log_level]\n\t[-P denied_requests] "
@@ -98,7 +98,7 @@ Index: openssh-8.4p1/sftp-server.c
  	    "       %s -Q protocol_feature\n",
  	    __progname, __progname);
  	exit(1);
-@@ -1588,7 +1607,7 @@ sftp_server_main(int argc, char **argv,
+@@ -1728,7 +1747,7 @@ sftp_server_main(int argc, char **argv,
  	pw = pwcopy(user_pw);
  
  	while (!skipargs && (ch = getopt(argc, argv,
@@ -107,7 +107,7 @@ Index: openssh-8.4p1/sftp-server.c
  		switch (ch) {
  		case 'Q':
  			if (strcasecmp(optarg, "requests") != 0) {
-@@ -1650,6 +1669,15 @@ sftp_server_main(int argc, char **argv,
+@@ -1790,6 +1809,15 @@ sftp_server_main(int argc, char **argv,
  				fatal("Invalid umask \"%s\"", optarg);
  			(void)umask((mode_t)mask);
  			break;

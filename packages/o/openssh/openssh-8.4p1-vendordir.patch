@@ -1,52 +1,31 @@
 Gemeinsame Unterverzeichnisse: openssh-8.4p1/contrib und openssh-8.4p1-vendor/contrib.
-diff -u openssh-8.4p1/dh.c openssh-8.4p1-vendor/dh.c
---- openssh-8.4p1/dh.c	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/dh.c	2021-01-29 11:49:40.968418136 +0100
-@@ -151,10 +151,18 @@
- 	size_t linesize = 0;
- 	int best, bestcount, which, linenum;
- 	struct dhgroup dhg;
-+	char *dh_moduli_path;
-+	struct stat st;
+Index: openssh-8.8p1/dh.c
+===================================================================
+--- openssh-8.8p1.orig/dh.c
++++ openssh-8.8p1/dh.c
+@@ -54,7 +54,17 @@ void dh_set_moduli_file(const char *file
  
--	if ((f = fopen(_PATH_DH_MODULI, "r")) == NULL) {
+ static const char * get_moduli_filename(void)
+ {
+-	return moduli_filename ? moduli_filename : _PATH_DH_MODULI;
++	struct stat st;
++
++	if (moduli_filename)
++		return moduli_filename;
++
 +	if (stat(_PATH_VENDOR_DH_MODULI, &st) == 0 &&
 +	    stat(_PATH_DH_MODULI, &st) == -1) {
-+	        dh_moduli_path = _PATH_VENDOR_DH_MODULI;
-+	} else {
-+	        dh_moduli_path = _PATH_DH_MODULI;
++	        return _PATH_VENDOR_DH_MODULI;
 +	}
-+	if ((f = fopen(dh_moduli_path, "r")) == NULL) {
- 		logit("WARNING: could not open %s (%s), using fixed modulus",
--		    _PATH_DH_MODULI, strerror(errno));
-+		      dh_moduli_path, strerror(errno));
- 		return (dh_new_group_fallback(max));
- 	}
++
++	return _PATH_DH_MODULI;
+ }
  
-@@ -185,7 +193,7 @@
- 
- 	if (bestcount == 0) {
- 		fclose(f);
--		logit("WARNING: no suitable primes in %s", _PATH_DH_MODULI);
-+		logit("WARNING: no suitable primes in %s", dh_moduli_path);
- 		return (dh_new_group_fallback(max));
- 	}
- 	which = arc4random_uniform(bestcount);
-@@ -210,7 +218,7 @@
- 	fclose(f);
- 	if (bestcount != which + 1) {
- 		logit("WARNING: selected prime disappeared in %s, giving up",
--		    _PATH_DH_MODULI);
-+		      dh_moduli_path);
- 		return (dh_new_group_fallback(max));
- 	}
- 
-Gemeinsame Unterverzeichnisse: openssh-8.4p1/.github und openssh-8.4p1-vendor/.github.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1/m4 und openssh-8.4p1-vendor/m4.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1/openbsd-compat und openssh-8.4p1-vendor/openbsd-compat.
-diff -u openssh-8.4p1/pathnames.h openssh-8.4p1-vendor/pathnames.h
---- openssh-8.4p1/pathnames.h	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/pathnames.h	2021-01-29 11:35:41.655599046 +0100
+ static int
+Index: openssh-8.8p1/pathnames.h
+===================================================================
+--- openssh-8.8p1.orig/pathnames.h
++++ openssh-8.8p1/pathnames.h
 @@ -18,6 +18,8 @@
  #define SSHDIR				ETCDIR "/ssh"
  #endif
@@ -74,11 +53,11 @@ diff -u openssh-8.4p1/pathnames.h openssh-8.4p1-vendor/pathnames.h
  
  #ifndef _PATH_SSH_PROGRAM
  #define _PATH_SSH_PROGRAM		"/usr/bin/ssh"
-Gemeinsame Unterverzeichnisse: openssh-8.4p1/regress und openssh-8.4p1-vendor/regress.
-diff -u openssh-8.4p1/ssh.c openssh-8.4p1-vendor/ssh.c
---- openssh-8.4p1/ssh.c	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/ssh.c	2021-01-27 18:22:52.322271681 +0100
-@@ -593,6 +593,7 @@
+Index: openssh-8.8p1/ssh.c
+===================================================================
+--- openssh-8.8p1.orig/ssh.c
++++ openssh-8.8p1/ssh.c
+@@ -549,6 +549,7 @@ static void
  process_config_files(const char *host_name, struct passwd *pw, int final_pass,
      int *want_final_pass)
  {
@@ -86,7 +65,7 @@ diff -u openssh-8.4p1/ssh.c openssh-8.4p1-vendor/ssh.c
  	char buf[PATH_MAX];
  	int r;
  
-@@ -611,10 +612,23 @@
+@@ -567,10 +568,23 @@ process_config_files(const char *host_na
  			    &options, SSHCONF_CHECKPERM | SSHCONF_USERCONF |
  			    (final_pass ? SSHCONF_FINAL : 0), want_final_pass);
  
@@ -114,11 +93,11 @@ diff -u openssh-8.4p1/ssh.c openssh-8.4p1-vendor/ssh.c
  	}
  }
  
-Nur in openssh-8.4p1-vendor: #ssh_config.5#.
-diff -u openssh-8.4p1/ssh_config.5 openssh-8.4p1-vendor/ssh_config.5
---- openssh-8.4p1/ssh_config.5	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/ssh_config.5	2021-02-24 12:02:53.935729753 +0100
-@@ -54,6 +54,9 @@
+Index: openssh-8.8p1/ssh_config.5
+===================================================================
+--- openssh-8.8p1.orig/ssh_config.5
++++ openssh-8.8p1/ssh_config.5
+@@ -54,6 +54,9 @@ user's configuration file
  .It
  system-wide configuration file
  .Pq Pa /etc/ssh/ssh_config
@@ -128,7 +107,7 @@ diff -u openssh-8.4p1/ssh_config.5 openssh-8.4p1-vendor/ssh_config.5
  .El
  .Pp
  For each parameter, the first obtained value
-@@ -1942,6 +1945,11 @@
+@@ -2212,6 +2215,11 @@ This file provides defaults for those
  values that are not specified in the user's configuration file, and
  for those users who do not have a configuration file.
  This file must be world-readable.
@@ -140,11 +119,11 @@ diff -u openssh-8.4p1/ssh_config.5 openssh-8.4p1-vendor/ssh_config.5
  .El
  .Sh SEE ALSO
  .Xr ssh 1
-Nur in openssh-8.4p1-vendor: ssh_config.5~.
-diff -u openssh-8.4p1/sshd.c openssh-8.4p1-vendor/sshd.c
---- openssh-8.4p1/sshd.c	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/sshd.c	2021-01-27 18:25:38.370273280 +0100
-@@ -136,7 +136,7 @@
+Index: openssh-8.8p1/sshd.c
+===================================================================
+--- openssh-8.8p1.orig/sshd.c
++++ openssh-8.8p1/sshd.c
+@@ -145,7 +145,7 @@ extern char *__progname;
  ServerOptions options;
  
  /* Name of the server configuration file. */
@@ -153,7 +132,7 @@ diff -u openssh-8.4p1/sshd.c openssh-8.4p1-vendor/sshd.c
  
  /*
   * Debug mode flag.  This can be set on the command line.  If debug
-@@ -1526,6 +1526,7 @@
+@@ -1594,6 +1594,7 @@ prepare_proctitle(int ac, char **av)
  int
  main(int ac, char **av)
  {
@@ -161,7 +140,7 @@ diff -u openssh-8.4p1/sshd.c openssh-8.4p1-vendor/sshd.c
  	struct ssh *ssh = NULL;
  	extern char *optarg;
  	extern int optind;
-@@ -1737,7 +1738,21 @@
+@@ -1809,7 +1810,21 @@ main(int ac, char **av)
  			 */
  			(void)atomicio(vwrite, startup_pipe, "\0", 1);
  		}
@@ -183,9 +162,10 @@ diff -u openssh-8.4p1/sshd.c openssh-8.4p1-vendor/sshd.c
  		load_server_config(config_file_name, cfg);
  
  	parse_server_config(&options, rexeced_flag ? "rexec" : config_file_name,
-diff -u openssh-8.4p1/sshd_config.5 openssh-8.4p1-vendor/sshd_config.5
---- openssh-8.4p1/sshd_config.5	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/sshd_config.5	2021-02-24 14:14:27.912038335 +0100
+Index: openssh-8.8p1/sshd_config.5
+===================================================================
+--- openssh-8.8p1.orig/sshd_config.5
++++ openssh-8.8p1/sshd_config.5
 @@ -44,7 +44,9 @@
  .Xr sshd 8
  reads configuration data from
@@ -197,11 +177,11 @@ diff -u openssh-8.4p1/sshd_config.5 openssh-8.4p1-vendor/sshd_config.5
  .Fl f
  on the command line).
  The file contains keyword-argument pairs, one per line.
-Nur in openssh-8.4p1-vendor: sshd_config.5~.
-diff -u openssh-8.4p1/ssh-keysign.c openssh-8.4p1-vendor/ssh-keysign.c
---- openssh-8.4p1/ssh-keysign.c	2020-09-27 09:25:01.000000000 +0200
-+++ openssh-8.4p1-vendor/ssh-keysign.c	2021-02-24 11:34:17.684570215 +0100
-@@ -172,6 +172,7 @@
+Index: openssh-8.8p1/ssh-keysign.c
+===================================================================
+--- openssh-8.8p1.orig/ssh-keysign.c
++++ openssh-8.8p1/ssh-keysign.c
+@@ -172,6 +172,7 @@ main(int argc, char **argv)
  	u_char *signature, *data, rver;
  	char *host, *fp;
  	size_t slen, dlen;
@@ -209,19 +189,20 @@ diff -u openssh-8.4p1/ssh-keysign.c openssh-8.4p1-vendor/ssh-keysign.c
  
  	if (pledge("stdio rpath getpw dns id", NULL) != 0)
  		fatal("%s: pledge: %s", __progname, strerror(errno));
-@@ -205,8 +206,12 @@
+@@ -205,8 +206,14 @@ main(int argc, char **argv)
  
  	/* verify that ssh-keysign is enabled by the admin */
  	initialize_options(&options);
 -	(void)read_config_file(_PATH_HOST_CONFIG_FILE, pw, "", "",
 -	    &options, 0, NULL);
++
 +	if (stat(_PATH_HOST_CONFIG_FILE, &st) == 0)
 +	        (void)read_config_file(_PATH_HOST_CONFIG_FILE, pw, "", "",
 +		    &options, 0, NULL);
 +	else
-+	        (void)read_config_file(_PATH_HOST_VENDOR_CONFIG_FILE, pw,
-+		    "", "", &options, 0, NULL);
- 	fill_default_options(&options);
++	        (void)read_config_file(_PATH_HOST_VENDOR_CONFIG_FILE, pw, "", "",
++		    &options, 0, NULL);
++
+ 	(void)fill_default_options(&options);
  	if (options.enable_ssh_keysign != 1)
  		fatal("ssh-keysign not enabled in %s",
-Nur in openssh-8.4p1-vendor: ssh-keysign.c~.

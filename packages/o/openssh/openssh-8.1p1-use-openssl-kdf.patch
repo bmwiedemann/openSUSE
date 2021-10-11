@@ -1,8 +1,8 @@
-diff --git a/kex.c b/kex.c
-index 96e44a5..7cd37d6 100644
---- a/kex.c
-+++ b/kex.c
-@@ -38,6 +38,7 @@
+Index: openssh-8.8p1/kex.c
+===================================================================
+--- openssh-8.8p1.orig/kex.c
++++ openssh-8.8p1/kex.c
+@@ -40,6 +40,7 @@
  #ifdef WITH_OPENSSL
  #include <openssl/crypto.h>
  #include <openssl/dh.h>
@@ -10,7 +10,7 @@ index 96e44a5..7cd37d6 100644
  #endif
  
  #include "ssh.h"
-@@ -1109,8 +1110,92 @@ kex_choose_conf(struct ssh *ssh)
+@@ -1115,8 +1116,93 @@ kex_choose_conf(struct ssh *ssh)
  	return r;
  }
  
@@ -69,7 +69,8 @@ index 96e44a5..7cd37d6 100644
 +	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_SSHKDF_XCGHASH,
 +			     hash, (size_t) hashlen) != 1
 +	    || EVP_KDF_ctrl (hashctx, EVP_KDF_CTRL_SET_SSHKDF_SESSION_ID,
-+			     kex->session_id, (size_t) kex->session_id_len) != 1)
++			     sshbuf_ptr(kex->session_id),
++			     (size_t) sshbuf_len(kex->session_id)) != 1)
 +	    goto out;
 +
 +	digest = calloc (1, need);
@@ -104,7 +105,7 @@ index 96e44a5..7cd37d6 100644
      const struct sshbuf *shared_secret, u_char **keyp)
  {
  	struct kex *kex = ssh->kex;
-@@ -1174,6 +1259,50 @@ derive_key(struct ssh *ssh, int id, u_int need, u_char *hash, u_int hashlen,
+@@ -1179,6 +1265,50 @@ derive_key(struct ssh *ssh, int id, u_in
  	return r;
  }
  

@@ -4,11 +4,11 @@ Date:   Mon Oct 26 22:26:46 2020 +0100
 
     Ensure DHGs are approved in FIPS mode using OpenSSL's DH_check_params()
 
-diff --git a/dh.c b/dh.c
-index 7cb135d..3fe7f75 100644
---- a/dh.c
-+++ b/dh.c
-@@ -143,6 +143,28 @@ parse_prime(int linenum, char *line, struct dhgroup *dhg)
+Index: openssh-8.8p1/dh.c
+===================================================================
+--- openssh-8.8p1.orig/dh.c
++++ openssh-8.8p1/dh.c
+@@ -155,6 +155,28 @@ parse_prime(int linenum, char *line, str
  	return 0;
  }
  
@@ -37,7 +37,7 @@ index 7cb135d..3fe7f75 100644
  DH *
  choose_dh(int min, int wantbits, int max)
  {
-@@ -161,12 +183,20 @@ choose_dh(int min, int wantbits, int max)
+@@ -173,12 +195,20 @@ choose_dh(int min, int wantbits, int max
  	linenum = 0;
  	best = bestcount = 0;
  	while (getline(&line, &linesize, f) != -1) {
@@ -58,7 +58,7 @@ index 7cb135d..3fe7f75 100644
  		if (dhg.size > max || dhg.size < min)
  			continue;
  
-@@ -193,10 +223,16 @@ choose_dh(int min, int wantbits, int max)
+@@ -206,10 +236,16 @@ choose_dh(int min, int wantbits, int max
  	linenum = 0;
  	bestcount = 0;
  	while (getline(&line, &linesize, f) != -1) {

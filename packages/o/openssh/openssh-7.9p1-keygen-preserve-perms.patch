@@ -8,11 +8,11 @@ Date:   Fri Sep 27 01:57:16 2019 +0200
     just going with what mkstemp() gives us. This is useful in corner
     cases where known_hosts is shared between users.
 
-diff --git a/ssh-keygen.c b/ssh-keygen.c
-index 03a7fe5..ca8a309 100644
---- a/ssh-keygen.c
-+++ b/ssh-keygen.c
-@@ -1338,6 +1338,11 @@ do_known_hosts(struct passwd *pw, const char *name)
+Index: openssh-8.8p1/ssh-keygen.c
+===================================================================
+--- openssh-8.8p1.orig/ssh-keygen.c
++++ openssh-8.8p1/ssh-keygen.c
+@@ -1384,6 +1384,11 @@ do_known_hosts(struct passwd *pw, const
  		if (inplace)
  			unlink(tmp);
  	} else if (inplace) {
@@ -24,7 +24,7 @@ index 03a7fe5..ca8a309 100644
  		/* Backup existing file */
  		if (unlink(old) == -1 && errno != ENOENT)
  			fatal("unlink %.100s: %s", old, strerror(errno));
-@@ -1352,6 +1357,12 @@ do_known_hosts(struct passwd *pw, const char *name)
+@@ -1398,6 +1403,12 @@ do_known_hosts(struct passwd *pw, const
  			unlink(old);
  			exit(1);
  		}

@@ -2,11 +2,11 @@
 # Parent  bad0c8b3b8d72abb6960ed85b57ee42352371738
 Do not write a PID file when not daemonizing (e.g. when running from systemd)
 
-diff --git a/sshd.c b/sshd.c
-index f3ccc3a..eadc1b3 100644
---- a/sshd.c
-+++ b/sshd.c
-@@ -2076,7 +2076,7 @@ main(int ac, char **av)
+Index: openssh-8.8p1/sshd.c
+===================================================================
+--- openssh-8.8p1.orig/sshd.c
++++ openssh-8.8p1/sshd.c
+@@ -2129,7 +2129,7 @@ main(int ac, char **av)
  		 * Write out the pid file after the sigterm handler
  		 * is setup and the listen sockets are bound
  		 */

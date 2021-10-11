@@ -4,11 +4,11 @@ disable run-time check for OpenSSL ABI by version number as that is not a
 reliable indicator of ABI changes and doesn't make much sense in a
 distribution package
 
-diff --git a/configure.ac b/configure.ac
-index 42ffd95..20a1884 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -4878,6 +4878,19 @@ AC_ARG_WITH([bsd-auth],
+Index: openssh-8.8p1/configure.ac
+===================================================================
+--- openssh-8.8p1.orig/configure.ac
++++ openssh-8.8p1/configure.ac
+@@ -5236,6 +5236,19 @@ AC_ARG_WITH([bsd-auth],
  	]
  )
  
@@ -28,11 +28,11 @@ index 42ffd95..20a1884 100644
  # Where to place sshd.pid
  piddir=/var/run
  # make sure the directory exists
-diff --git a/entropy.c b/entropy.c
-index f8b9f42..4957b23 100644
---- a/entropy.c
-+++ b/entropy.c
-@@ -223,11 +223,13 @@ seed_rng(void)
+Index: openssh-8.8p1/entropy.c
+===================================================================
+--- openssh-8.8p1.orig/entropy.c
++++ openssh-8.8p1/entropy.c
+@@ -100,11 +100,13 @@ seed_rng(void)
  	/* Initialise libcrypto */
  	ssh_libcrypto_init();
  

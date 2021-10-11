@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 28 19:05:15 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Version upgrade to 8.8p1
+  * No changes for askpass, see main package changelog for
+    details
+
+-------------------------------------------------------------------
 Thu Sep 17 20:41:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Upgrade some old specfile constructs/macros.
