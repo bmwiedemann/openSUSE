@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 11:59:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_mcstrans.service.patch
+
+-------------------------------------------------------------------
 Tue Mar  9 09:15:26 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.2

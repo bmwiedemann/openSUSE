@@ -26,6 +26,7 @@ URL:            https://github.com/SELinuxProject/selinux/wiki
 Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-writepid.patch
 Patch1:         add_includes.patch
+Patch2:	harden_mcstrans.service.patch
 BuildRequires:  aaa_base
 BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel >= 1.30.3
@@ -54,6 +55,7 @@ from internal representations to user defined representation.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags}"
