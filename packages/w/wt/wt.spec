@@ -18,17 +18,15 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_5_0
+%define so_version 4_5_1
 Name:           wt
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Web Toolkit
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.webtoolkit.eu/wt/
 Source0:        https://github.com/emweb/wt/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-WT-8467-add-limits-header-for-gcc-11.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel

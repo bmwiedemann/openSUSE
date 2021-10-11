@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 11 06:36:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Upate to 4.5.1. Check the installed ReleaseNotes.html file
+  for the full list of changes.
+  * fixed Boost 1.77.0 compilation
+  * WWidget::setScrollVisibilityEnabled() now refers to the correct
+    scrollvisibility example.
+  * Fixed possible JavaScript issues by appending a semicolon to
+    all JavaScript statements when using doJavaScript.
+  * fixed compilation of WTextRenderer.C on some systems due to a
+    missing #include <limits>.
+  * Various fixes to make Wt build properly with C++20
+- Drop patch:
+  * 0001-WT-8467-add-limits-header-for-gcc-11.patch
+
+-------------------------------------------------------------------
 Tue Jun 15 15:31:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.5.0. Notable changes:

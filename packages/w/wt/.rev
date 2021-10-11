@@ -338,4 +338,23 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>900199</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e78c0656b617bb17df4417d5fe157213</srcmd5>
+    <version>4.5.1</version>
+    <time>1633959115</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to 4.5.1. Check the installed ReleaseNotes.html file
+  for the full list of changes.
+  * fixed Boost 1.77.0 compilation
+  * WWidget::setScrollVisibilityEnabled() now refers to the correct
+    scrollvisibility example.
+  * Fixed possible JavaScript issues by appending a semicolon to
+    all JavaScript statements when using doJavaScript.
+  * fixed compilation of WTextRenderer.C on some systems due to a
+    missing #include &lt;limits&gt;.
+  * Various fixes to make Wt build properly with C++20
+- Drop patch:
+  * 0001-WT-8467-add-limits-header-for-gcc-11.patch (forwarded request 924611 from cgiboudeaux)</comment>
+    <requestid>924614</requestid>
+  </revision>
 </revisionlist>
