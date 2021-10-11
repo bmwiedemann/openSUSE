@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 10:11:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2425833c7ff5 (2021-09-17)
+  * Switch to 5.14 branch
+  * Drop upstream-overlay-rpi-poe.patch
+
+-------------------------------------------------------------------
 Fri Apr  9 10:30:10 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - Add overlay for smbios information (bsc#1183079)

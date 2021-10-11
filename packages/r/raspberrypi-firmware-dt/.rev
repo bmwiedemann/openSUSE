@@ -297,4 +297,12 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>884072</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>12bdeed742fcb83c5a40925dae20de21</srcmd5>
+    <version>2021.09.17</version>
+    <time>1633959022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923453</requestid>
+  </revision>
 </revisionlist>

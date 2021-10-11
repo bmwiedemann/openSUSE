@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2021.03.15
+Version:        2021.09.17
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -30,7 +30,6 @@ Source3:        disable-v3d-overlay.dts
 Source4:        enable-bt-overlay.dts
 Source5:        smbios-overlay.dts
 Source100:      get-from-git.sh
-Patch0:         upstream-overlay-rpi-poe.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -43,8 +42,7 @@ This package provides additional device tree base files as well as overlays
 for the Raspberry Pi boot process.
 
 %prep
-%setup
-%patch0 -p1
+%setup -q
 
 %build
 SRCDIR=`pwd`
