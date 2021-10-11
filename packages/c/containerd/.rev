@@ -361,4 +361,13 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>908505</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a163d3680c541dbf7b7d0c724adb5ac4</srcmd5>
+    <version>1.4.11</version>
+    <time>1633959017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to containerd v1.4.11, to fix CVE-2021-41103. bsc#1191355
+- Switch to Go 1.16.x compiler, in line with upstream.</comment>
+    <requestid>923377</requestid>
+  </revision>
 </revisionlist>

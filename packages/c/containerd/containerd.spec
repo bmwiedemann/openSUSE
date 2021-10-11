@@ -23,11 +23,11 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 7eba5930496d9bbe375fdf71603e610ad737d2b2
-%define git_short   7eba5930496d
+%define git_version 5b46e404f6b9f661a205e28d59c982d3634148f8
+%define git_short   5b46e404f6b9
 
 Name:           containerd
-Version:        1.4.8
+Version:        1.4.11
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -42,8 +42,8 @@ BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
-# for 'golang(API) >= 1.15' here, so just require 1.15 exactly. bsc#1172608
-BuildRequires:  go1.15
+# for 'golang(API) >= 1.16' here, so just require 1.16 exactly. bsc#1172608
+BuildRequires:  go1.16
 # We provide a git revision so that Docker can require it properly.
 Provides:       %{name}-git = %{git_version}
 # Currently runc is the only supported runtime for containerd. We pin the same
@@ -91,6 +91,7 @@ separately from Docker.
 # will get confused by symlinks.
 export GOPATH=$HOME/go
 export PROJECT=$HOME/go/src/github.com/containerd/containerd
+export GO111MODULE=off
 mkdir -p $PROJECT
 rm -rf $PROJECT/*
 cp -ar * $PROJECT

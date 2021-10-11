@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 02:54:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.4.11, to fix CVE-2021-41103. bsc#1191355
+- Switch to Go 1.16.x compiler, in line with upstream.
+
+-------------------------------------------------------------------
 Tue Jul 20 09:30:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.4.8, to fix CVE-2021-32760. bsc#1188282
