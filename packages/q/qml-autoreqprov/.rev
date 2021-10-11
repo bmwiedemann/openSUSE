@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>867986</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>874525e93816af3e8df4d86e6456c300</srcmd5>
+    <version>1.1</version>
+    <time>1633959013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update qml.req for Qt 6.2. qmlimportscanner is now installed in
+  %_qt6_libexecdir and has no symlink in /usr/bin. qmake will be
+  queried to find the install dir. (forwarded request 923265 from cgiboudeaux)</comment>
+    <requestid>923271</requestid>
+  </revision>
 </revisionlist>

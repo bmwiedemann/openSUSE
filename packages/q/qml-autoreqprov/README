@@ -81,7 +81,7 @@ will not be read. Making this possible needs more research and effort.
 Generating Provides from qmldir files
 -------------------------------------
 
-Every module installed into the QML import path contains aqmldir` file with
+Every module installed into the QML import path contains a `qmldir` file with
 metainformation. They usually contain a `module` line which specifies the
 identifier (those which don't are ignored) and a list of exports and plugins.
 Just the module identifier is not enough to generate the capability, major and

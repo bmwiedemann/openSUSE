@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  5 10:48:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update qml.req for Qt 6.2. qmlimportscanner is now installed in
+  %_qt6_libexecdir and has no symlink in /usr/bin. qmake will be
+  queried to find the install dir.
+
+-------------------------------------------------------------------
 Wed Jan 27 08:54:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Convert the opt-in for qml.req to an opt-out
