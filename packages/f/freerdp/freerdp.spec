@@ -48,8 +48,6 @@ Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/Fr
 Source1:        freerdp-rpmlintrc
 # PATCH-FIX-UPSTREAM freerdp-channels-off-link-fix.diff -- based on https://github.com/FreeRDP/FreeRDP/pull/7235
 Patch0:         freerdp-builtin-channels-off-link-fix.diff
-# PATCH-FIX-SUSE freerdp-fix-plugin-path.patch -- preliminary fix addin loading
-Patch1:         freerdp-fix-plugin-path.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -203,6 +201,7 @@ export CFLAGS="%{optflags} -fPIE -pie"
 
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DWITH_ALSA=ON \

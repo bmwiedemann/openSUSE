@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 17:15:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Finally nailed it: CMAKE_INSTALL_LIBDIR is absolute on Leaps and
+  relative on TW, but freerdp requires the relative variant.
+  Fixes boo#1190919
+
+-------------------------------------------------------------------
+Wed Oct  6 10:43:11 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove freerdp-fix-plugin-path.patch again, the problem was 
+  introduced/fixed by cmake changes
+
+-------------------------------------------------------------------
 Sat Sep 18 10:21:29 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Create an explicit freerdp dependency for libwinpr
