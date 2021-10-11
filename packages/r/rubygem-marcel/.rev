@@ -43,4 +43,12 @@
   * Identifies .otf, .woff, and .woff2 files aș font/otf, font/woff, and font/woff2, respectively. (#37)</comment>
     <requestid>903601</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aca87b145d232ba1d830ef5c9db15d54</srcmd5>
+    <version>1.0.2</version>
+    <time>1633959093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924367</requestid>
+  </revision>
 </revisionlist>

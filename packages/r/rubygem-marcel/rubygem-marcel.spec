@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-marcel
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 %define mod_name marcel
 %define mod_full_name %{mod_name}-%{version}
@@ -54,7 +54,7 @@ Simple mime type detection using magic numbers, filenames, and extensions.
 
 %install
 %gem_install \
-  --doc-files="MIT-LICENSE" \
+  --doc-files="MIT-LICENSE README.md" \
   -f
 
 %gem_packages
