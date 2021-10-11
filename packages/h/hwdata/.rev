@@ -454,4 +454,13 @@
   + Updated pci, usb and vendor ids.</comment>
     <requestid>915688</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>29a40ec2eba3bfef005a982dfa219058</srcmd5>
+    <version>0.352</version>
+    <time>1633959021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.352 (bsc#1191375:
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>923448</requestid>
+  </revision>
 </revisionlist>
