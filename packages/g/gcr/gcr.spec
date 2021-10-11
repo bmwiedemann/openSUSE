@@ -17,14 +17,14 @@
 
 
 Name:           gcr
-Version:        3.40.0
+Version:        3.41.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/3.41/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
@@ -36,6 +36,7 @@ BuildRequires:  gobject-introspection-devel >= 1.34
 BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.4.5
 BuildRequires:  meson
+BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.18.0.22
@@ -48,8 +49,11 @@ BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
+BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(p11-kit-1) >= 0.19.0
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(systemd)
 
 %description
 GCR is a library for displaying certificates, and crypto UI, accessing
@@ -84,10 +88,19 @@ This package provides the prompt dialog needed by libgcr.
 %package ssh-askpass
 Summary:        SSH password callback helper for gcr
 Group:          System/Libraries
-Supplements:    packageand(gpg2:gnome-shell)
+Supplements:    (gpg2 and gnome-shell)
 
 %description ssh-askpass
 gcr-ssh-askpass allows an ssh command to callback for a password.
+
+%package ssh-agent
+Summary:        SSH agent binary for gcr
+Group:          System/Libraries
+Supplements:    (gpg2 and gnome-shell)
+
+%description ssh-agent
+gcr-ssh-agent as a standalone binary, so that it can easily be
+managed through systemd.
 
 %package -n libgcr-3-1
 Summary:        Library for Crypto UI related tasks
@@ -95,6 +108,7 @@ Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       %{name}-prompter >= %{version}
 Recommends:     %{name}-ask-pass
+Recommends:     %{name}-ssh-agent
 Recommends:     %{name}-viewer = %{version}
 # To make lang package installable
 Provides:       %{name} = %{version}
@@ -192,6 +206,15 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %post -n libgck-1-0 -p /sbin/ldconfig
 %postun -n libgck-1-0 -p /sbin/ldconfig
 
+%post -n %{name}-ssh-agent
+%systemd_user_post gcr-ssh-agent.service
+
+%preun -n %{name}-ssh-agent
+%systemd_user_preun gcr-ssh-agent.service
+
+%postun -n %{name}-ssh-agent
+%systemd_user_postun_with_restart gcr-ssh-agent.service
+
 %files viewer
 %license COPYING
 %doc NEWS
@@ -217,6 +240,11 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %files ssh-askpass
 %{_libexecdir}/gcr-ssh-askpass
+
+%files ssh-agent
+%{_libexecdir}/gcr-ssh-agent
+%{_userunitdir}/gcr-ssh-agent.service
+%{_userunitdir}/gcr-ssh-agent.socket
 
 %files -n libgcr-3-1
 %license COPYING

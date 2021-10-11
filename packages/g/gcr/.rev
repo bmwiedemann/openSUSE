@@ -340,4 +340,12 @@
     <comment>Update to 3.40 (forwarded request 886272 from dimstar)</comment>
     <requestid>887489</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>368a8927a70cf5ac6c39886ac7adcbcc</srcmd5>
+    <version>3.41.0</version>
+    <time>1633959014</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 923207 from dimstar)</comment>
+    <requestid>923272</requestid>
+  </revision>
 </revisionlist>

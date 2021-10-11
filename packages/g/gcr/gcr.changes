@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  5 08:18:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.41.0:
+  +  Port ssh-agent from gnome-keyring.
+  + build: Fix parallel build failure due to missing marshal
+    dependency.
+  + Fix warnings by dropping `volatile` for g_once_init_inter
+    locations.
+  + tests: More robust against GTask unref race condition.
+  + Updated translations.
+- Add pkgconfig(libsecret-1), pkgconfig(libsystemd),
+  pkgconfig(systemd) and openssh-clients BuildRequires: Build new
+  standalone ssh-agent, and split it out in own sub-package.
+
+-------------------------------------------------------------------
 Sat Apr 17 12:46:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.40.0:
