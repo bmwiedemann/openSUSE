@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.1.5.2
+Version:        7.2.2.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -87,11 +87,14 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-4306.tar.bz2
+Source2008:     %{external_url}/pdfium-4500.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m88-59bafeeaa7de9eb753e3778c414e01dcf013dcd8.tar.xz
+Source2010:     %{external_url}/skia-m90-45c57e116ee0ce214bdf78405a4762722e4507d9.tar.xz
+# Fix the build with freetype-2.11
+Source2011:     skia-freetype2.11.patch
+Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -99,18 +102,11 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
-# PATCH-FIX-UPSTREAM https://github.com/LibreOffice/core/commit/f14b83b38d35a585976ef5d422754d8e0d0266a6 ucp: fix call to getComponentContext
-Patch4:         use-comphelper.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
-# bsc#1182969 Multi column textbox in editengine
-Patch9:         bsc1182969.patch
-# tdf#142839 Fix a regression caused by "Multi column textbox in editengine"
-Patch10:        tdf142839.patch
-# Avoid crash getting default item for OWN_ATTR_TEXTCOLUMNS
-Patch11:        multicolumn-crash-fix.patch
-# bsc#1187173, bsc#1186871 fix component handling for ucpdav1 when --with-webdav=serf
-Patch12:        bsc1187173.patch
+Patch7:         pld-skia-patches.patch
+# bsc#1189813 LO-L3: Shadow effect for tables in PPTX partly incorrect
+Patch8:         bsc1189813.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -161,7 +157,6 @@ BuildRequires:  pentaho-reporting-flow-engine
 BuildRequires:  pkgconfig
 BuildRequires:  python3-lxml
 BuildRequires:  python3-xml
-BuildRequires:  qrcodegen-devel
 BuildRequires:  sac
 BuildRequires:  ucpp
 BuildRequires:  unixODBC-devel
@@ -177,6 +172,7 @@ BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(epoxy) >= 1.2
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(glu)
@@ -193,20 +189,20 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libabw-0.1)
 BuildRequires:  pkgconfig(libcdr-0.1) >= 0.1
 BuildRequires:  pkgconfig(libclucene-core)
-BuildRequires:  pkgconfig(libcmis-0.5) >= 0.5.2
 BuildRequires:  pkgconfig(libe-book-0.1) >= 0.1.1
 BuildRequires:  pkgconfig(libeot) >= 0.01
 BuildRequires:  pkgconfig(libepubgen-0.1)
-BuildRequires:  pkgconfig(libetonyek-0.1) >= 0.1.8
+BuildRequires:  pkgconfig(libetonyek-0.1) >= 0.1.10
 BuildRequires:  pkgconfig(libexttextcat) >= 3.1.1
 BuildRequires:  pkgconfig(libfreehand-0.1)
 BuildRequires:  pkgconfig(liblangtag)
 BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
-BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.16
+BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.19
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
 BuildRequires:  pkgconfig(liborcus-0.16)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libqxp-0.0)
 BuildRequires:  pkgconfig(librevenge-0.0) >= 0.0.1
@@ -223,8 +219,6 @@ BuildRequires:  pkgconfig(mdds-1.5) >= 1.5.0
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
-BuildRequires:  pkgconfig(poppler)
-BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
@@ -232,6 +226,7 @@ BuildRequires:  pkgconfig(serf-1) >= 1.1.0
 BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.28
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(zxing)
 Requires:       liberation-fonts
 Requires:       libreoffice-branding >= 6.0
 Requires:       libreoffice-icon-themes = %{version}
@@ -262,9 +257,21 @@ Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_71_0.tar.xz
+Source2020:     %{external_url}/boost_1_75_0.tar.xz
+Source2023:     %{external_url}/poppler-21.01.0.tar.xz
+Source2024:     %{external_url}/poppler-data-0.4.10.tar.gz
+%else
+BuildRequires:  libboost_date_time-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_locale-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  pkgconfig(poppler) >= 21.01.0
+BuildRequires:  pkgconfig(poppler-cpp)
+%endif
+%if 0%{?suse_version} < 1500
 # Too old icu on the system
 Source2021:     %{external_url}/icu4c-68_1-src.tgz
 Source2022:     %{external_url}/icu4c-68_1-data.zip
@@ -284,11 +291,6 @@ Requires(postun):update-desktop-files
 %else
 BuildRequires:  gcc >= 7
 BuildRequires:  gcc-c++ >= 7
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_locale-devel
-BuildRequires:  libboost_system-devel
 # genbrk binary is required
 BuildRequires:  icu
 BuildRequires:  java-devel >= 9
@@ -362,6 +364,7 @@ Provides:       libreoffice-branding-openSUSE = 4.0.1
 Obsoletes:      libreoffice-branding-openSUSE < 4.0.1
 Provides:       libreoffice-branding-SLE = 4.0.1
 Obsoletes:      libreoffice-branding-SLE < 4.0.1
+Supplements:    (libreoffice and branding-openSUSE)
 BuildArch:      noarch
 
 %description branding-upstream
@@ -570,11 +573,11 @@ This package contains some GNOME extensions and GTK2 interface for LibreOffice.
 Summary:        Gtk3 interface for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name}-gnome = %{version}
-Supplements:    packageand(libreoffice:gnome-session)
-Supplements:    packageand(libreoffice:mate-session-manager)
-Supplements:    packageand(libreoffice:xfce4-session)
+Supplements:    (libreoffice and gnome-session)
+Supplements:    (libreoffice and mate-session-manager)
+Supplements:    (libreoffice and xfce4-session)
 %if !%{with kdeintegration}
-Supplements:    packageand(libreoffice:plasma5-workspace)
+Supplements:    (libreoffice and plasma5-workspace)
 %endif
 
 %description gtk3
@@ -981,17 +984,16 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
-%patch4 -p1
 %patch6 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
+%patch7 -p1
+%patch8 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
 %patch990 -p1
 %patch991 -p1
+
+cp %{SOURCE2011} external/skia
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1079,6 +1081,8 @@ export NOCONFIGURE=yes
         --with-system-jars \
         --with-system-ucpp \
         --with-system-dicts \
+        --with-system-libpng \
+        --without-system-libcmis \
         --with-vendor=SUSE \
         --with-tls=nss \
         --disable-openssl \
@@ -1128,8 +1132,11 @@ export NOCONFIGURE=yes
 %else
         --disable-firebird-sdbc \
 %endif
-%if 0%{?suse_version} < 1500
+%if 0%{?suse_version} < 1550
         --without-system-boost \
+        --without-system-poppler \
+%endif
+%if 0%{?suse_version} < 1500
         --without-system-icu \
 %endif
         --enable-evolution2 \
@@ -1194,8 +1201,6 @@ for desktop in * ; do
     relative_target=`readlink $desktop | sed "s|%{_libdir}|../../%{_lib}|"`
     # create the link
     ln -sf $relative_target $desktop
-    # enable startup notification (bnc#796875)
-    grep -q "NoDisplay=true" $desktop || sed -i "s/\(\[Desktop Entry\]\)/\1\nStartupNotify=true/" $desktop
     # suse_update
     app=`echo $desktop | sed "s/.desktop//"`
     %suse_update_desktop_file $app
@@ -1385,6 +1390,12 @@ export SRCDIR="./"
 grep -v "%{_libdir}/libreoffice/program/libmysqlclo.so" file-lists/common_list.txt > tmplist
 mv tmplist file-lists/common_list.txt
 echo "%{_libdir}/libreoffice/program/libmysqlclo.so" >> file-lists/base_list.txt
+
+# Remove empty files
+rm %{buildroot}%{_libdir}/libreoffice/share/extensions/*/help/*.done
+rm %{buildroot}%{_libdir}/libreoffice/share/extensions/*/help/*/*.ht_
+rm %{buildroot}%{_libdir}/libreoffice/share/extensions/wiki-publisher/help/sa-IN/help.key_
+rm %{buildroot}%{_libdir}/libreoffice/share/extensions/nlpsolver/locale/NLPSolverCommon_en_US.default
 
 # We have ton of duped files so run over it
 %fdupes %{buildroot}%{_prefix}
