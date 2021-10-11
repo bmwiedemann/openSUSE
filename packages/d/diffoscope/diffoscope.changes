@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:33:10 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 186:
+ - Don't call close_archive when garbage-collecting Archive instances unless
+   open_archive returned successfully. This prevents, amongst others, an
+   AttributeError traceback due to PGPContainer's cleanup routines assuming
+   that its temporary directory had been created.
+   (Closes: reproducible-builds/diffoscope#276)
+ - Ensure that the string "RPM archives" exists in the package description,
+   regardless of whether python3-rpm is installed or not at build time.
+ - Fix the LVM Macho comparator for non-x86-64 architectures.
+
+-------------------------------------------------------------------
 Fri Sep 24 19:34:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 185:
