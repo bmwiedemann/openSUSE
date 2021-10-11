@@ -18,7 +18,7 @@
 
 
 Name:           s3backer
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        FUSE-based single file backing store via Amazon S3
 License:        GPL-2.0-or-later

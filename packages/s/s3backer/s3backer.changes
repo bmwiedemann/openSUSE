@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  2 17:15:20 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.6.3
+  + Fixed bug with `--listBlocks' threads doing redundant overlapping queries
+  + Refactor to support multiple different compression algorithms
+  + Fixed mutex handling bug in block cache (issue #152)
+  + Release mutexs prior to destruction (issue #151)
+  + Fixed use-after-free bug in XML parser (pr #154)
+
+-------------------------------------------------------------------
 Mon Jun 14 15:19:02 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.6.2
