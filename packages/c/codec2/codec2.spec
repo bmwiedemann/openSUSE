@@ -1,7 +1,7 @@
 #
 # spec file for package codec2
 #
-# Copyright (c) 2020-2021 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://github.com/drowe67/codec2/archive/v%{version}.tar.gz#/%{
 Source1:        %{name}-rpmlintrc
 Source2:        baselibs.conf
 Patch0:         codec2-no_return_random.patch
+Patch1:         moved-freedv_callback_rx_sym-into-internal-header.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -76,28 +77,11 @@ Example code for Codec 2, including test voices and matlab/octave files.
 %build
 %cmake \
   -DINSTALL_EXAMPLES=TRUE \
-  -DUNITTEST=TRUE \
-  -Wno-dev
+  -DUNITTEST=TRUE
 %cmake_build
 
 %install
 %cmake_install
-
-# Create and install pkgconfig file
-mkdir -p %{buildroot}%{_libdir}/pkgconfig
-cat > %{buildroot}%{_libdir}/pkgconfig/codec2.pc << EOF
-prefix=%{_prefix}
-exec_prefix=\${prefix}
-includedir=\${prefix}/include/%{name}
-libdir=\${exec_prefix}/%{_lib}
-
-Name:           codec2
-Version:        %{version}
-License:        GPL-2.0 and LGPL-2.1
-Description: Low bit rate speech codec for two-way radio
-Cflags: -I\${includedir}
-Libs: -L\${libdir} -l%{name}
-EOF
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
