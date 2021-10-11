@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Oct 04 13:15:48 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.7+git0.b5e51a5e2:
+  * [RELEASE] Released version 2.4.7
+  * BUG/MEDIUM: http-ana: Clear request analyzers when applying redirect rule
+
+-------------------------------------------------------------------
+Mon Oct 04 09:56:29 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.6+git0.d83fd76a1:
+  * [RELEASE] Released version 2.4.6
+  * BUG/MEDIUM: filters: Fix a typo when a filter is attached blocking the release
+
+-------------------------------------------------------------------
+Fri Oct 01 16:45:18 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.5+git0.e74a1b34b:
+  * [RELEASE] Released version 2.4.5
+  * MINOR: tasks: catch TICK_ETERNITY with BUG_ON() in __task_queue()
+  * BUG/MINOR: tcp-rules: Stop content rules eval on read error and end-of-input
+  * BUG/MINOR: tcpcheck: Don't use arg list for default proxies during parsing
+  * MINOR: arg: Be able to forbid unresolved args when building an argument list
+  * BUG/MAJOR: lua: use task_wakeup() to properly run a task once
+  * BUG/MEDIUM: lua: fix wakeup condition from sleep()
+  * MINOR: Makefile: add MEMORY_POOLS to the list of DEBUG_xxx options
+  * DOC: peers: fix doc "enable" statement on "peers" sections
+  * BUG/MINOR: mux-h1/mux-fcgi: Sanitize TE header to only send "trailers"
+  * MINOR: stream-int: Notify mux when the buffer is not stuck when calling rcv_buf
+  * BUG/MEDIUM: stream-int: Defrag HTX message in si_cs_recv() if necessary
+  * MINOR: htx: Add a function to know if the free space wraps
+  * MINOR: htx: Add an HTX flag to know when a message is fragmented
+  * MINOR: stream-int: Set CO_RFL transient/persistent flags apart in si_cs_rcv()
+  * BUG/MEDIUM: stream: Stop waiting for more data if SI is blocked on RXBLK_ROOM
+  * BUG/MEDIUM: stream-int: Notify stream that the mux wants more room to xfer data
+  * BUG/MEDIUM: mux-h1: Adjust conditions to ask more space in the channel buffer
+  * BUG/MINOR: stats: use refcount to protect dynamic server on dump
+  * MINOR: server: return the next srv instance on free_server
+  * BUG/MINOR: server: do not use refcount in free_server in stopping mode
+  * MINOR: global: define MODE_STOPPING
+  * MINOR: server: implement a refcount for dynamic servers
+  * BUG/MINOR: http-ana: increment internal_errors counter on response error
+  * BUG/MINOR: h1-htx: Fix a typo when request parser is reset
+  * BUG/MEDIUM: leastconn: fix rare possibility of divide by zero
+  * BUG/MINOR: server: allow 'enable health' only if check configured
+  * BUILD: threads: fix -Wundef for _POSIX_PRIORITY_SCHEDULING on libmusl
+  * BUILD: halog: fix a -Wundef warning on non-glibc systems
+  * BUILD: compiler: fixed a missing test on  defined(__GNUC__)
+  * BUILD: fix dragonfly build again on __read_mostly
+  * BUG/MINOR: vars: do not talk about global section in CLI errors for set-var
+  * BUG/MINOR: vars: truncate the variable name in error reports about scope.
+  * BUG/MINOR: vars: properly set the argument parsing context in the expression
+  * MINOR: sample: add missing ARGC_ entries
+  * BUG/MINOR: vars: improve accuracy of the rules used to check expression validity
+  * BUILD: tools: properly guard __GLIBC__ with defined()
+  * BUILD: ssl: fix two remaining occurrences of #if USE_OPENSSL
+  * BUILD: ssl: next round of build warnings on LIBRESSL_VERSION_NUMBER
+  * BUILD/MINOR: regex: avoid a build warning on USE_PCRE2 with -Wundef
+  * IMPORT: slz: silence a build warning with -Wundef
+  * BUILD/MINOR: ssl: avoid a build warning on LIBRESSL_VERSION with -Wundef
+  * BUILD/MINOR: defaults: eliminate warning on MAXHOSTNAMELEN with -Wundef
+  * BUILD: activity: use #ifdef not #if on USE_MEMORY_PROFILING
+  * MINOR: proc: setting the process to produce a core dump on FreeBSD.
+  * MINOR: tools: add FreeBSD support to get_exec_path()
+  * BUILD: tools: get the absolute path of the current binary on NetBSD.
+  * BUG/MINOR: flt-trace: fix an infinite loop when random-parsing is set
+  * BUG/MINOR: cli/payload: do not search for args inside payload
+  * BUILD: ist: prevent gcc11 maybe-uninitialized warning on istalloc
+  * BUG/MINOR: connection: prevent null deref on mux cleanup task allocation
+  * DOC: management: certificate files must be sanitized before injection
+  * BUG/MINOR: tcpcheck: Improve LDAP response parsing to fix LDAP check
+  * BUG/MAJOR: mux-h1: Don't eval input data if an error was reported
+  * MINOR: pools: use mallinfo2() when available instead of mallinfo()
+  * MINOR: pools: automatically disable malloc_trim() with external allocators
+  * CLEANUP: pools: factor all malloc_trim() calls into trim_all_pools()
+  * BUG/MINOR: compat: make sure __WORDSIZE is always defined
+  * BUG/MEDIUM: stream-int: Don't block SI on a channel policy if EOI is reached
+  * CLEANUP: mux-h1: Remove condition rejecting upgrade requests with payload
+  * MINOR: htx: Skip headers with no value when adding a header list to a message
+  * BUG/MEDIUM: mux-h1: Remove "Upgrade:" header for requests with payload
+  * BUG/MINOR: systemd: ExecStartPre must use -Ws
+  * BUG/MINOR: filters: Set right FLT_END analyser depending on channel
+  * BUG/MINOR: filters: Always set FLT_END analyser when CF_FLT_ANALYZE flag is set
+  * BUG/MEDIUM: http-ana: Reset channels analysers when returning an error
+  * BUG/MINOR: stream: Don't release a stream if FLT_END is still registered
+  * BUG/MINOR: lua: Don't yield in channel.append() and channel.set()
+  * BUG/MINOR: lua: Yield in channel functions only if lua context can yield
+  * MINOR: lua: Add a flag on lua context to know the yield capability at run time
+
+-------------------------------------------------------------------
 Tue Sep 07 15:43:22 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.4+git0.acb1d0bea: CVE-2021-40346 (boo#1189877)

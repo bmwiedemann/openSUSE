@@ -1106,4 +1106,12 @@
     <comment>- Update to version 2.4.4+git0.acb1d0bea: CVE-2021-40346 (boo#1189877)</comment>
     <requestid>917318</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>c221e4726829dabd7025334d0aa3a4c1</srcmd5>
+    <version>2.4.7+git0.b5e51a5e2</version>
+    <time>1633959040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.7+git0.b5e51a5e2:</comment>
+    <requestid>923022</requestid>
+  </revision>
 </revisionlist>
