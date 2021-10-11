@@ -2333,4 +2333,12 @@ git 2.12.3
     <comment></comment>
     <requestid>913667</requestid>
   </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>db5488a8decdb6684dd2d6ec43e32e46</srcmd5>
+    <version>2.33.0</version>
+    <time>1633959025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923514</requestid>
+  </revision>
 </revisionlist>
