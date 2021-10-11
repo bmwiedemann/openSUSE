@@ -21,7 +21,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.1.1
+Version:        6.2.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -32,13 +32,11 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{v
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-# PATCH-FIX-UPSTREAM PyQt6-6.1.1-OpenGL_ES2.patch -- fix opengles2 typedefs: https://www.riverbankcomputing.com/pipermail/pyqt/2021-July/044117.html
-Patch3:         PyQt6-6.1.1-OpenGL_ES2.patch
 BuildRequires:  %{python_module PyQt6-sip}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyqt-builder >= 1.8}
-BuildRequires:  %{python_module sip-devel >= 6}
+BuildRequires:  %{python_module pyqt-builder >= 1.11}
+BuildRequires:  %{python_module sip-devel >= 6.2}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -47,14 +45,26 @@ BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-base-devel
 BuildRequires:  qt6-macros
+BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Designer)
 BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6MultimediaWidgets)
+BuildRequires:  cmake(Qt6Nfc)
+BuildRequires:  cmake(Qt6Positioning)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Quick3D)
-BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
 BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6RemoteObjects)
+BuildRequires:  cmake(Qt6Sensors)
+BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6WebChannel)
+BuildRequires:  cmake(Qt6WebSockets)
+# SECTION not packaged for 6.2 yet https://github.com/assimp/assimp/issues/3948
+# BuildRequires:  cmake(Qt6Quick3D)
+# BuildRequires:  cmake(Qt6Quick3DRuntimeRender)
+# /SECTION
 Requires:       python-PyQt6-sip
 %requires_ge    python-dbus-python
 Provides:       python-qt6 = %{version}-%{release}
@@ -69,16 +79,29 @@ Group:          Development/Libraries/Python
 Requires:       python-%{mname} = %{version}
 Requires:       python-dbus-python-devel >= 0.8
 Requires:       python-devel
-Requires:       python-sip-devel >= 6
+Requires:       python-sip-devel >= 6.2
 Requires:       qt6-base-devel
 Requires:       qt6-macros
+Requires:       cmake(Qt6Bluetooth)
 Requires:       cmake(Qt6Designer)
 Requires:       cmake(Qt6Help)
+Requires:       cmake(Qt6Multimedia)
+Requires:       cmake(Qt6MultimediaWidgets)
+Requires:       cmake(Qt6Nfc)
+Requires:       cmake(Qt6Positioning)
 Requires:       cmake(Qt6Qml)
 Requires:       cmake(Qt6Quick)
-Requires:       cmake(Qt6Quick3D)
 Requires:       cmake(Qt6QuickWidgets)
+Requires:       cmake(Qt6RemoteObjects)
+Requires:       cmake(Qt6Sensors)
+Requires:       cmake(Qt6SerialPort)
 Requires:       cmake(Qt6Svg)
+Requires:       cmake(Qt6WebChannel)
+Requires:       cmake(Qt6WebSockets)
+# SECTION not packaged for 6.2 yet
+# Requires:       cmake(Qt6Quick3D)
+# Requires:       cmake(Qt6Quick3DRuntimeRender)
+# / SECTION
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-qscintilla-qt6

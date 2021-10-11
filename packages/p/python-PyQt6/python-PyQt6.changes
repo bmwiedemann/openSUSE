@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  3 12:46:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.0
+  * Added support for Qt v6.2 including the QtBluetooth,
+    QtMultimedia, QtMultimediaWidgets, QtNfc, QtPositioning,
+     QtRemoteObjects, QtSensors, QtSerialPort, QtWebChannel and
+     QtWebSockets modules.
+  * Added support for QAxContainer on Windows.
+  * Ported the QtMultimedia examples from PyQt5.
+  * Bug fixes. 
+- Drop PyQt6-6.1.1-OpenGL_ES2.patch merged upstream
+
+-------------------------------------------------------------------
 Thu Aug 19 07:33:23 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop writing mtime-based pyc files during tests (boo#1047218)
