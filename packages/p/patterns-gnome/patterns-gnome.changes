@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 29 17:10:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-power-manager Recommends: Package is dormant upstream
+  and on its way to be replaced by new features inside of
+  gnome-control-center.
+
+-------------------------------------------------------------------
 Wed Jul 28 07:31:40 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Replace %{is_opensuse} tags with %{?is_opensuse} to remove

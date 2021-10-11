@@ -229,4 +229,12 @@
     <comment></comment>
     <requestid>908806</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>038407ce72f600ed98001942316146fe</srcmd5>
+    <version>20201210</version>
+    <time>1633959044</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changelog error as noted by Jan</comment>
+    <requestid>923208</requestid>
+  </revision>
 </revisionlist>

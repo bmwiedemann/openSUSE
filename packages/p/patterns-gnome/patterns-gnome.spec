@@ -284,7 +284,6 @@ Recommends:     desktop-file-utils
 Recommends:     gnome-keyring-pam
 # implied by gnome-keyring-pam
 #Recommends:     gnome-keyring
-Recommends:     gnome-power-manager
 # implied by gdm
 #Requires: gnome-shell
 #Requires: gnome-settings-daemon
