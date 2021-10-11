@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Oct  7 04:59:11 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update rustup to be primary replacement to rls and other developer tools
+
+-------------------------------------------------------------------
+Thu Sep 30 00:30:35 UTC 2021 - william.brown@suse.com
+
+- Update to version 1.24.3~git0.ce5817a9:
+  * rustup-init.sh: Update for 1.24.3
+  * Cargo.{toml,lock}: Update for 1.24.3
+  * CHANGELOG: Update for 1.24.3
+  * tests: Test case for TargetTriple::can_run()
+  * install: improve heuristic for deprecation warning
+  * unpack_ram: More graceful handling of low unpack ram
+  * diskio: Correctly account the release of the final chunk
+  * diskio: Add buffer_used() to Executor and verify it in the test
+  * Support self-update modes
+
+-------------------------------------------------------------------
+Thu Sep 30 00:23:11 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Initial commit
