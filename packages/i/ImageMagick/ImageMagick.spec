@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.0
-%define mfr_revision   8
+%define mfr_revision   9
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -48,6 +48,14 @@ Patch0:         ImageMagick-configuration-SUSE.patch
 Patch2:         ImageMagick-library-installable-in-parallel.patch
 #%%ifarch s390x s390 ppc64 ppc
 Patch3:         ImageMagick-s390-disable-tests.patch
+#%%endif
+#%%ifarch i586
+#%%if %{?suse_version} < 1550
+# do not report test issues related to 32-bit architectures upstream,
+# they do not want to dedicate any time to fix them:
+# https://github.com/ImageMagick/ImageMagick/issues/1215
+Patch4:         ImageMagick-filter.t-disable-Contrast.patch
+#%%endif
 #%%endif
 BuildRequires:  chrpath
 BuildRequires:  fdupes
@@ -334,6 +342,11 @@ preserved.
 %patch2 -p1
 %ifarch s390x s390 ppc ppc64
 %patch3 -p1
+%endif
+%ifarch i586
+%if %{?suse_version} < 1550
+%patch4 -p1
+%endif
 %endif
 
 %build
