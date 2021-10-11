@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct  5 10:58:00 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- ld-show-auxv-colon.patch: elf: Fix missing colon in LD_SHOW_AUXV output
+  (BZ #282539
+- x86-string-control-test.patch: x86-64: Use testl to check
+  __x86_string_control
+- pthread-kill-fail-after-exit.patch: nptl: pthread_kill, pthread_cancel
+  should not fail after exit (BZ #19193)
+- pthread-kill-race-thread-exit.patch: nptl: Fix race between pthread_kill
+  and thread exit (BZ #12889)
+- getcwd-attribute-access.patch: posix: Fix attribute access mode on
+  getcwd (BZ #27476)
+- pthread-kill-return-esrch.patch: nptl: pthread_kill needs to return
+  ESRCH for old programs (BZ #19193)
+- pthread-mutexattr-getrobust-np-type.patch: nptl: Fix type of
+  pthread_mutexattr_getrobust_np, pthread_mutexattr_setrobust_np (BZ
+  #28036)
+- setxid-deadlock-blocked-signals.patch: nptl: Avoid setxid deadlock with
+  blocked signals in thread exit (BZ #28361)
+- pthread-kill-send-specific-thread.patch: nptl: pthread_kill must send
+  signals to a specific thread (BZ #28407)
+- sysconf-nprocessors-affinity.patch: linux: Revert the use of
+  sched_getaffinity on get_nproc (BZ #28310)
+- iconv-charmap-close-output.patch: renamed from
+  icon-charmap-close-output.patch
+
+-------------------------------------------------------------------
 Wed Aug 11 12:56:09 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Don't create separate debuginfo packages for cross packages

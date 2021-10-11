@@ -2521,4 +2521,34 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   #28213) (forwarded request 911560 from Andreas_Schwab)</comment>
     <requestid>911561</requestid>
   </revision>
+  <revision rev="254" vrev="2">
+    <srcmd5>41846c12995cdb47adf10afb814efdd5</srcmd5>
+    <version>2.34</version>
+    <time>1633959031</time>
+    <user>dimstar_suse</user>
+    <comment>- ld-show-auxv-colon.patch: elf: Fix missing colon in LD_SHOW_AUXV output
+  (BZ #282539
+- x86-string-control-test.patch: x86-64: Use testl to check
+  __x86_string_control
+- pthread-kill-fail-after-exit.patch: nptl: pthread_kill, pthread_cancel
+  should not fail after exit (BZ #19193)
+- pthread-kill-race-thread-exit.patch: nptl: Fix race between pthread_kill
+  and thread exit (BZ #12889)
+- getcwd-attribute-access.patch: posix: Fix attribute access mode on
+  getcwd (BZ #27476)
+- pthread-kill-return-esrch.patch: nptl: pthread_kill needs to return
+  ESRCH for old programs (BZ #19193)
+- pthread-mutexattr-getrobust-np-type.patch: nptl: Fix type of
+  pthread_mutexattr_getrobust_np, pthread_mutexattr_setrobust_np (BZ
+  #28036)
+- setxid-deadlock-blocked-signals.patch: nptl: Avoid setxid deadlock with
+  blocked signals in thread exit (BZ #28361)
+- pthread-kill-send-specific-thread.patch: nptl: pthread_kill must send
+  signals to a specific thread (BZ #28407)
+- sysconf-nprocessors-affinity.patch: linux: Revert the use of
+  sched_getaffinity on get_nproc (BZ #28310)
+- iconv-charmap-close-output.patch: renamed from
+  icon-charmap-close-output.patch (forwarded request 923222 from Andreas_Schwab)</comment>
+    <requestid>923223</requestid>
+  </revision>
 </revisionlist>

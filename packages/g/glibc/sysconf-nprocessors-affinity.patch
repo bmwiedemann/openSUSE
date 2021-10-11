@@ -1,0 +1,390 @@
+From 822662cf2a4b170ade4c5342f035d68815a03276 Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Mon, 6 Sep 2021 14:19:51 -0300
+Subject: [PATCH] linux: Revert the use of sched_getaffinity on get_nproc (BZ
+ #28310)
+
+The use of sched_getaffinity on get_nproc and
+sysconf (_SC_NPROCESSORS_ONLN) done in 903bc7dcc2acafc40 (BZ #27645)
+breaks the top command in common hypervisor configurations and also
+other monitoring tools.
+
+The main issue using sched_getaffinity changed the symbols semantic
+from system-wide scope of online CPUs to per-process one (which can
+be changed with kernel cpusets or book parameters in VM).
+
+This patch reverts mostly of the 903bc7dcc2acafc40, with the
+exceptions:
+
+  * No more cached values and atomic updates, since they are inherent
+    racy.
+
+  * No /proc/cpuinfo fallback, since /proc/stat is already used and
+    it would require to revert more arch-specific code.
+
+  * The alloca is replace with a static buffer of 1024 bytes.
+
+So the implementation first consult the sysfs, and fallbacks to procfs.
+
+Checked on x86_64-linux-gnu.
+
+Reviewed-by: Florian Weimer <fweimer@redhat.com>
+(cherry picked from commit 342298278eabc75baabcaced110a11a02c3d3580)
+
+Index: glibc-2.34/include/sys/sysinfo.h
+===================================================================
+--- glibc-2.34.orig/include/sys/sysinfo.h
++++ glibc-2.34/include/sys/sysinfo.h
+@@ -9,10 +9,15 @@
+ extern int __get_nprocs_conf (void);
+ libc_hidden_proto (__get_nprocs_conf)
+ 
+-/* Return number of available processors.  */
++/* Return number of available processors (not all of them will be
++   available to the caller process).  */
+ extern int __get_nprocs (void);
+ libc_hidden_proto (__get_nprocs)
+ 
++/* Return the number of available processors which the process can
++   be scheduled.  */
++extern int __get_nprocs_sched (void) attribute_hidden;
++
+ /* Return number of physical pages of memory in the system.  */
+ extern long int __get_phys_pages (void);
+ libc_hidden_proto (__get_phys_pages)
+Index: glibc-2.34/malloc/arena.c
+===================================================================
+--- glibc-2.34.orig/malloc/arena.c
++++ glibc-2.34/malloc/arena.c
+@@ -879,7 +879,7 @@ arena_get2 (size_t size, mstate avoid_ar
+             narenas_limit = mp_.arena_max;
+           else if (narenas > mp_.arena_test)
+             {
+-              int n = __get_nprocs ();
++              int n = __get_nprocs_sched ();
+ 
+               if (n >= 1)
+                 narenas_limit = NARENAS_FROM_NCORES (n);
+Index: glibc-2.34/misc/getsysstats.c
+===================================================================
+--- glibc-2.34.orig/misc/getsysstats.c
++++ glibc-2.34/misc/getsysstats.c
+@@ -45,6 +45,12 @@ weak_alias (__get_nprocs, get_nprocs)
+ link_warning (get_nprocs, "warning: get_nprocs will always return 1")
+ 
+ 
++int
++__get_nprocs_sched (void)
++{
++  return 1;
++}
++
+ long int
+ __get_phys_pages (void)
+ {
+Index: glibc-2.34/posix/Makefile
+===================================================================
+--- glibc-2.34.orig/posix/Makefile
++++ glibc-2.34/posix/Makefile
+@@ -107,7 +107,8 @@ tests		:= test-errno tstgetopt testfnm r
+ 		   tst-sysconf-empty-chroot tst-glob_symlinks tst-fexecve \
+ 		   tst-glob-tilde test-ssize-max tst-spawn4 bug-regex37 \
+ 		   bug-regex38 tst-regcomp-truncated tst-spawn-chdir \
+-		   tst-wordexp-nocmd tst-execveat tst-spawn5
++		   tst-wordexp-nocmd tst-execveat tst-spawn5 \
++		   tst-sched_getaffinity
+ 
+ # Test for the glob symbol version that was replaced in glibc 2.27.
+ ifeq ($(have-GLIBC_2.26)$(build-shared),yesyes)
+Index: glibc-2.34/posix/tst-sched_getaffinity.c
+===================================================================
+--- /dev/null
++++ glibc-2.34/posix/tst-sched_getaffinity.c
+@@ -0,0 +1,48 @@
++/* Tests for sched_getaffinity with large buffers.
++   Copyright (C) 2021 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <array_length.h>
++#include <sched.h>
++#include <support/check.h>
++
++/* NB: this test may fail on system with more than 32k cpus.  */
++
++static int
++do_test (void)
++{
++  /* The values are larger than the default cpu_set_t.  */
++  const int bufsize[] = { 1<<11, 1<<12, 1<<13, 1<<14, 1<<15, 1<<16, 1<<17 };
++  int cpucount[array_length (bufsize)];
++
++  for (int i = 0; i < array_length (bufsize); i++)
++    {
++      cpu_set_t *cpuset = CPU_ALLOC (bufsize[i]);
++      TEST_VERIFY (cpuset != NULL);
++      size_t size = CPU_ALLOC_SIZE (bufsize[i]);
++      TEST_COMPARE (sched_getaffinity (0, size, cpuset), 0);
++      cpucount[i] = CPU_COUNT_S (size, cpuset);
++      CPU_FREE (cpuset);
++    }
++
++  for (int i = 0; i < array_length (cpucount) - 1; i++)
++    TEST_COMPARE (cpucount[i], cpucount[i + 1]);
++
++  return 0;
++}
++
++#include <support/test-driver.c>
+Index: glibc-2.34/sysdeps/mach/getsysstats.c
+===================================================================
+--- glibc-2.34.orig/sysdeps/mach/getsysstats.c
++++ glibc-2.34/sysdeps/mach/getsysstats.c
+@@ -62,6 +62,12 @@ __get_nprocs (void)
+ libc_hidden_def (__get_nprocs)
+ weak_alias (__get_nprocs, get_nprocs)
+ 
++int
++__get_nprocs_sched (void)
++{
++  return __get_nprocs ();
++}
++
+ /* Return the number of physical pages on the system. */
+ long int
+ __get_phys_pages (void)
+Index: glibc-2.34/sysdeps/unix/sysv/linux/getsysstats.c
+===================================================================
+--- glibc-2.34.orig/sysdeps/unix/sysv/linux/getsysstats.c
++++ glibc-2.34/sysdeps/unix/sysv/linux/getsysstats.c
+@@ -18,6 +18,8 @@
+    <https://www.gnu.org/licenses/>.  */
+ 
+ #include <array_length.h>
++#include <assert.h>
++#include <ctype.h>
+ #include <dirent.h>
+ #include <errno.h>
+ #include <ldsodefs.h>
+@@ -29,61 +31,162 @@
+ #include <sys/sysinfo.h>
+ #include <sysdep.h>
+ 
+-/* Compute the population count of the entire array.  */
+-static int
+-__get_nprocs_count (const unsigned long int *array, size_t length)
++int
++__get_nprocs_sched (void)
+ {
+-  int count = 0;
+-  for (size_t i = 0; i < length; ++i)
+-    if (__builtin_add_overflow (count,  __builtin_popcountl (array[i]),
+-				&count))
+-      return INT_MAX;
+-  return count;
+-}
++  enum
++    {
++      max_num_cpus = 32768,
++      cpu_bits_size = CPU_ALLOC_SIZE (32768)
++    };
+ 
+-/* __get_nprocs with a large buffer.  */
+-static int
+-__get_nprocs_large (void)
+-{
+-  /* This code cannot use scratch_buffer because it is used during
+-     malloc initialization.  */
+-  size_t pagesize = GLRO (dl_pagesize);
+-  unsigned long int *page = __mmap (0, pagesize, PROT_READ | PROT_WRITE,
+-				    MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+-  if (page == MAP_FAILED)
+-    return 2;
+-  int r = INTERNAL_SYSCALL_CALL (sched_getaffinity, 0, pagesize, page);
+-  int count;
++  /* This cannot use malloc because it is used on malloc initialization.  */
++  __cpu_mask cpu_bits[cpu_bits_size / sizeof (__cpu_mask)];
++  int r = INTERNAL_SYSCALL_CALL (sched_getaffinity, 0, cpu_bits_size,
++				 cpu_bits);
+   if (r > 0)
+-    count = __get_nprocs_count (page, pagesize / sizeof (unsigned long int));
++    return CPU_COUNT_S (cpu_bits_size, (cpu_set_t*) cpu_bits);
+   else if (r == -EINVAL)
+-    /* One page is still not enough to store the bits.  A more-or-less
+-       arbitrary value.  This assumes t hat such large systems never
+-       happen in practice.  */
+-    count = GLRO (dl_pagesize) * CHAR_BIT;
+-  else
+-    count = 2;
+-  __munmap (page, GLRO (dl_pagesize));
+-  return count;
++    /* The input buffer is still not enough to store the number of cpus.  This
++       is an arbitrary values assuming such systems should be rare and there
++       is no offline cpus.  */
++    return max_num_cpus;
++  /* Some other error.  2 is conservative (not a uniprocessor system, so
++     atomics are needed). */
++  return 2;
+ }
+ 
++static char *
++next_line (int fd, char *const buffer, char **cp, char **re,
++           char *const buffer_end)
++{
++  char *res = *cp;
++  char *nl = memchr (*cp, '\n', *re - *cp);
++  if (nl == NULL)
++    {
++      if (*cp != buffer)
++        {
++          if (*re == buffer_end)
++            {
++              memmove (buffer, *cp, *re - *cp);
++              *re = buffer + (*re - *cp);
++              *cp = buffer;
++
++              ssize_t n = __read_nocancel (fd, *re, buffer_end - *re);
++              if (n < 0)
++                return NULL;
++
++              *re += n;
++
++              nl = memchr (*cp, '\n', *re - *cp);
++              while (nl == NULL && *re == buffer_end)
++                {
++                  /* Truncate too long lines.  */
++                  *re = buffer + 3 * (buffer_end - buffer) / 4;
++                  n = __read_nocancel (fd, *re, buffer_end - *re);
++                  if (n < 0)
++                    return NULL;
++
++                  nl = memchr (*re, '\n', n);
++                  **re = '\n';
++                  *re += n;
++                }
++            }
++          else
++            nl = memchr (*cp, '\n', *re - *cp);
++
++          res = *cp;
++        }
++
++      if (nl == NULL)
++        nl = *re - 1;
++    }
++
++  *cp = nl + 1;
++  assert (*cp <= *re);
++
++  return res == *re ? NULL : res;
++}
++
++
+ int
+ __get_nprocs (void)
+ {
+-  /* Fast path for most systems.  The kernel expects a buffer size
+-     that is a multiple of 8.  */
+-  unsigned long int small_buffer[1024 / CHAR_BIT / sizeof (unsigned long int)];
+-  int r = INTERNAL_SYSCALL_CALL (sched_getaffinity, 0,
+-				 sizeof (small_buffer), small_buffer);
+-  if (r > 0)
+-    return __get_nprocs_count (small_buffer, r / sizeof (unsigned long int));
+-  else if (r == -EINVAL)
+-    /* The kernel requests a larger buffer to store the data.  */
+-    return __get_nprocs_large ();
+-  else
+-    /* Some other error.  2 is conservative (not a uniprocessor
+-       system, so atomics are needed). */
+-    return 2;
++  enum { buffer_size = 1024 };
++  char buffer[buffer_size];
++  char *buffer_end = buffer + buffer_size;
++  char *cp = buffer_end;
++  char *re = buffer_end;
++
++  const int flags = O_RDONLY | O_CLOEXEC;
++  /* This file contains comma-separated ranges.  */
++  int fd = __open_nocancel ("/sys/devices/system/cpu/online", flags);
++  char *l;
++  int result = 0;
++  if (fd != -1)
++    {
++      l = next_line (fd, buffer, &cp, &re, buffer_end);
++      if (l != NULL)
++	do
++	  {
++	    char *endp;
++	    unsigned long int n = strtoul (l, &endp, 10);
++	    if (l == endp)
++	      {
++		result = 0;
++		break;
++	      }
++
++	    unsigned long int m = n;
++	    if (*endp == '-')
++	      {
++		l = endp + 1;
++		m = strtoul (l, &endp, 10);
++		if (l == endp)
++		  {
++		    result = 0;
++		    break;
++		  }
++	      }
++
++	    result += m - n + 1;
++
++	    l = endp;
++	    if (l < re && *l == ',')
++	      ++l;
++	  }
++	while (l < re && *l != '\n');
++
++      __close_nocancel_nostatus (fd);
++
++      if (result > 0)
++	return result;
++    }
++
++  cp = buffer_end;
++  re = buffer_end;
++
++  /* Default to an SMP system in case we cannot obtain an accurate
++     number.  */
++  result = 2;
++
++  fd = __open_nocancel ("/proc/stat", flags);
++  if (fd != -1)
++    {
++      result = 0;
++
++      while ((l = next_line (fd, buffer, &cp, &re, buffer_end)) != NULL)
++	/* The current format of /proc/stat has all the cpu* entries
++	   at the front.  We assume here that stays this way.  */
++	if (strncmp (l, "cpu", 3) != 0)
++	  break;
++	else if (isdigit (l[3]))
++	  ++result;
++
++      __close_nocancel_nostatus (fd);
++    }
++
++  return result;
+ }
+ libc_hidden_def (__get_nprocs)
+ weak_alias (__get_nprocs, get_nprocs)

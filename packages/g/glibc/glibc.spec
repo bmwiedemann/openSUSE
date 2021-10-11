@@ -290,11 +290,31 @@ Patch1002:      gaiconf-init-double-free.patch
 # PATCH-FIX-UPSTREAM copy_and_spawn_sgid: Avoid double calls to close()
 Patch1003:      copy-and-spawn-sgid-double-close.patch
 # PATCH-FIX-UPSTREAM iconv_charmap: Close output file when done
-Patch1004:      icon-charmap-close-output.patch
+Patch1004:      iconv-charmap-close-output.patch
 # PATCH-FIX-UPSTREAM Linux: Fix fcntl, ioctl, prctl redirects for _TIME_BITS=64 (BZ #28182)
 Patch1005:      fcntl-time-bits-64-redirect.patch
 # PATCH-FIX-UPSTREAM librt: fix NULL pointer dereference (BZ #28213)
 Patch1006:      librt-null-pointer.patch
+# PATCH-FIX-UPSTREAM elf: Fix missing colon in LD_SHOW_AUXV output (BZ #282539
+Patch1007:      ld-show-auxv-colon.patch
+# PATCH-FIX-UPSTREAM x86-64: Use testl to check __x86_string_control
+Patch1008:      x86-string-control-test.patch
+# PATCH-FIX-UPSTREAM nptl: pthread_kill, pthread_cancel should not fail after exit (BZ #19193)
+Patch1009:      pthread-kill-fail-after-exit.patch
+# PATCH-FIX-UPSTREAM nptl: Fix race between pthread_kill and thread exit (BZ #12889)
+Patch1010:      pthread-kill-race-thread-exit.patch
+# PATCH-FIX-UPSTREAM posix: Fix attribute access mode on getcwd (BZ #27476)
+Patch1011:      getcwd-attribute-access.patch
+# PATCH-FIX-UPSTREAM nptl: pthread_kill needs to return ESRCH for old programs (BZ #19193)
+Patch1012:      pthread-kill-return-esrch.patch
+# PATCH-FIX-UPSTREAM nptl: Fix type of pthread_mutexattr_getrobust_np, pthread_mutexattr_setrobust_np (BZ #28036)
+Patch1013:      pthread-mutexattr-getrobust-np-type.patch
+# PATCH-FIX-UPSTREAM nptl: Avoid setxid deadlock with blocked signals in thread exit (BZ #28361)
+Patch1014:      setxid-deadlock-blocked-signals.patch
+# PATCH-FIX-UPSTREAM nptl: pthread_kill must send signals to a specific thread (BZ #28407)
+Patch1015:      pthread-kill-send-specific-thread.patch
+# PATCH-FIX-UPSTREAM linux: Revert the use of sched_getaffinity on get_nproc (BZ #28310)
+Patch1016:      sysconf-nprocessors-affinity.patch
 
 ###
 # Patches awaiting upstream approval
@@ -525,6 +545,16 @@ library in a cross compilation setting.
 %patch1004 -p1
 %patch1005 -p1
 %patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
+%patch1010 -p1
+%patch1011 -p1
+%patch1012 -p1
+%patch1013 -p1
+%patch1014 -p1
+%patch1015 -p1
+%patch1016 -p1
 
 %patch3000
 
