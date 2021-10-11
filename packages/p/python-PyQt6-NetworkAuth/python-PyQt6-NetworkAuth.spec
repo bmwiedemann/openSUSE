@@ -22,16 +22,16 @@
 %define skip_python2 1
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.1.1
+Version:        6.2.0
 Release:        0
 Summary:        Python bindings for the Qt Network Authorization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtnetworkauth
 Source:         https://files.pythonhosted.org/packages/source/P/%{mname}/PyQt6_%{qtlib}-%{version}.tar.gz
-BuildRequires:  %{python_module PyQt6-devel}
+BuildRequires:  %{python_module PyQt6-devel >= %{version}}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyqt-builder >= 1.8}
+BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module sip-devel >= 6}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
