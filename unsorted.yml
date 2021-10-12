@@ -8689,6 +8689,7 @@ unsorted:
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
+  - libLLVM12 
   - libLLVM12-32bit: [x86_64] 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM7 
@@ -14868,9 +14869,9 @@ unsorted:
   - lldb11: [x86_64] 
   - lldb11-devel: [x86_64] 
   - lldb12: [x86_64] 
-  - lldb12-devel: [x86_64] # devel package of dvd:libLLVM12 
+  - lldb12-devel: [x86_64] 
   - lldb13: [x86_64] 
-  - lldb13-devel: [x86_64] # devel package of dvd:clang13-doc 
+  - lldb13-devel: [x86_64] # devel package of dvd:libLLVM13 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
