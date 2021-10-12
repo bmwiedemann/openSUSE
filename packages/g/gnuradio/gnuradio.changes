@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct  5 23:10:14 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.8.4.0
+  * Changed
+    GRC
+    + Fix drag and drop issue with Quartz
+    + Fix desync when dragging block
+    + Update disabled blocks if they depend on others
+    + Allow short and byte as valid types in an enum
+    + Fix evaluation of interdependent variables
+    modtool
+    + Set VERSION_PATH to 0 in new modules, instead of using GIT rev
+    + For Python3, return correct exeption ModuleNotFoundError
+      instead of ImportError
+    gr-blocks
+    + trix Interleaver block
+    gr-channels
+    + Fix "hide" expressions in yml files
+    gr-digital
+    + Remove unused msg output port from Chunks To Symbols block yml
+    gr-fft
+    + Add "shift" parameter to Log Power FFT    
+    gr-qtgui
+    + Fix: tags on the last sample were not shown
+    gr-video-sdl
+    + Fix: U and V channels were reversed on sink blocks
+
+-------------------------------------------------------------------
 Tue Aug 31 12:57:53 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - added a patch 0003-enables-use-of-qwt-6_2.patch to build with
