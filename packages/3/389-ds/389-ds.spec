@@ -182,6 +182,7 @@ Requires:       %{use_python}-pyasn1
 Requires:       %{use_python}-pyasn1-modules
 Requires:       %{use_python}-python-dateutil
 Requires:       %{use_python}-six
+Requires:       iproute2
 Requires:       krb5-client
 Requires:       mozilla-nss-tools
 # Tools like dscreate would call out to /usr/bin/openssl

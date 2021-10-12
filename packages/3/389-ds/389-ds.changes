@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 12 03:41:41 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add missing dependency on iproute2 for lib389
+
+-------------------------------------------------------------------
 Tue Sep 21 00:36:23 UTC 2021 - william.brown@suse.com
 
 - Update to version 2.0.10~git0.21dd2802c:
