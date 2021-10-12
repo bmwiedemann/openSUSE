@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 20 07:11:38 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.64.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/brick-0.64.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Aug 25 10:24:53 UTC 2021 - psimons@suse.com
 
 - Update brick to version 0.64.
