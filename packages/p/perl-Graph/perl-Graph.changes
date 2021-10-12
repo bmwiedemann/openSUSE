@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 11 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9725
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9725 2021-10-10
+  - fix refvertexed which was stringifying not using ref address - thanks @merkys for report
+
+-------------------------------------------------------------------
 Tue Sep 14 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9724
