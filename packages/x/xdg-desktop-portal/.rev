@@ -207,4 +207,13 @@
   + Updated translations. (forwarded request 920369 from iznogood)</comment>
     <requestid>920562</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e562ab9617db6cb184f9bba448ddb1c4</srcmd5>
+    <version>1.10.1</version>
+    <time>1634068133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.1:
+  + Revert a breaking change to the screencast and inhibit portal. (forwarded request 924250 from iznogood)</comment>
+    <requestid>924742</requestid>
+  </revision>
 </revisionlist>
