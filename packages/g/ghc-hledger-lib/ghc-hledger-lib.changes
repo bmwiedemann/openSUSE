@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:57:05 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:51:26 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.23.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.23/src/CHANGES.md
+
+-------------------------------------------------------------------
 Tue Sep  7 08:28:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase RAM required in _constraints to match the current

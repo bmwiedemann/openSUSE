@@ -106,4 +106,12 @@
 - relax dependency on base-compat-batteries</comment>
     <requestid>917923</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e5e562f4b59b40c72dd2346984b0dd4</srcmd5>
+    <version>1.23</version>
+    <time>1634068155</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>924071</requestid>
+  </revision>
 </revisionlist>
