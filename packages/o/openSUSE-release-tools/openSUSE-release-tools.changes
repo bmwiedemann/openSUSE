@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 12 09:29:06 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211012.2f5f796d:
+  * try to skip channel files as submitted with kernels and livepatches, as they cannot be legal reviewed
+
+-------------------------------------------------------------------
 Thu Oct 07 08:43:41 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211007.f5e62341:
