@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 17 07:16:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- require File::RandomAccess otherwise exiftool(1) won't start 
+
+-------------------------------------------------------------------
 Mon Aug 23 14:48:59 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 12.30

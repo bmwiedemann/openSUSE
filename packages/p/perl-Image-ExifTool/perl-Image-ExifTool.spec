@@ -35,6 +35,9 @@ Recommends:     perl(IO::Compress::RawDeflate)
 Recommends:     perl(IO::Uncompress::RawInflate)
 Recommends:     perl(POSIX::strptime)
 %{perl_requires}
+# MANUAL BEGIN
+Requires:       perl(File::RandomAccess) >= 1.11
+# MANUAL END
 
 %description
 Reads and writes meta information in a wide variety of files, including the

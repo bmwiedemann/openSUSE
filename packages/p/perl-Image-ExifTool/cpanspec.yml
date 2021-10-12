@@ -11,8 +11,8 @@ description_paragraphs: 1
 #  foo.patch: -p1
 #  bar.patch:
 #  baz.patch: PATCH-FIX-OPENSUSE
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+  Requires:       perl(File::RandomAccess) >= 1.11
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
