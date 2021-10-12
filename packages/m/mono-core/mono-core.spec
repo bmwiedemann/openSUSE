@@ -62,6 +62,8 @@ Patch15:        xbuild-revert-to-mcs.patch
 Patch20:        xbuild-use-roslyn-vbc.patch
 # PATCH-FIX-UPSTREAM fix-s390x-ucontext.patch bsc#1171934 mgorse@suse.com -- fix s390x build on glibc 2.26.
 Patch22:        fix-s390x-ucontext.patch
+# PATCH-FIX-OPENSUSE enable-X509_V_FLAG_TRUSTED_FIRST-flag.patch bsc#1191220 mliska@suse.com -- fix the new Let's encrypt issue
+Patch23:        enable-X509_V_FLAG_TRUSTED_FIRST-flag.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -211,6 +213,7 @@ technologies that have been submitted to the ECMA for standardization.
 %patch20 -p1
 %endif
 %patch22 -p1
+%patch23 -p1
 
 %build
 %define _lto_cflags %{nil}

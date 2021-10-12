@@ -1,0 +1,26 @@
+From 1a739c8dc34ec239ca0ded6a79bb7370f81944da Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Fri, 1 Oct 2021 14:39:37 +0200
+Subject: [PATCH] Enable X509_V_FLAG_TRUSTED_FIRST flag.
+
+Fixes: Fix Let's Encrypt DST Root CA X3 certificate expiration.
+---
+ external/boringssl/crypto/x509/x509_vpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/boringssl/crypto/x509/x509_vpm.c b/external/boringssl/crypto/x509/x509_vpm.c
+index 02a589888..4bbb1ceed 100644
+--- a/external/boringssl/crypto/x509/x509_vpm.c
++++ b/external/boringssl/crypto/x509/x509_vpm.c
+@@ -515,7 +515,7 @@ static const X509_VERIFY_PARAM default_table[] = {
+      (char *)"default",         /* X509 default parameters */
+      0,                         /* Check time */
+      0,                         /* internal flags */
+-     0,                         /* flags */
++     X509_V_FLAG_TRUSTED_FIRST, /* flags */
+      0,                         /* purpose */
+      0,                         /* trust */
+      100,                       /* depth */
+-- 
+2.33.0
+
