@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 30 03:11:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302188
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302188  2021-09-29 08:31:27-07:00 America/Los_Angeles
+
+      - Fix for non-gcc compilers on 5.10.0
+
+-------------------------------------------------------------------
 Sat Sep 18 03:06:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302187
