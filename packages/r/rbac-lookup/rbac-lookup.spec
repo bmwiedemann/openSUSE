@@ -18,7 +18,7 @@
 
 
 Name:           rbac-lookup
-Version:        0.6.4
+Version:        0.7.1
 Release:        0
 Summary:        Tool to find roles and cluster roles in a Kubernetes cluster
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/FairwindsOps/rbac-lookup
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.17
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 %{go_nostrip}
