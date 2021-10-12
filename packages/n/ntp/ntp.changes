@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 12 06:09:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * conf.ntp-wait.service
+  * conf.ntpd.service
+
+-------------------------------------------------------------------
 Tue Jun 15 14:47:45 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1186431: Fix a typo in %post .
