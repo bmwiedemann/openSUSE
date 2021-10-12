@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define revision 6917c5d
 
 Name:           percona-toolkit
 Version:        3.3.1
@@ -24,7 +25,10 @@ License:        GPL-2.0-only
 Group:          Productivity/Databases/Tools
 URL:            https://www.percona.com/software/percona-toolkit/
 Source:         https://www.percona.com/downloads/%{name}/%{version}/source/tarball/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.xz
 Source2:        %{name}.conf
+Source9:        series
+Patch1:         go-build.patch
 Requires:       perl(DBD::mysql) >= 1.0
 Requires:       perl(DBI) >= 1.13
 Requires:       perl(IO::Socket::SSL)
@@ -32,8 +36,10 @@ Requires:       perl(Term::ReadKey) >= 2.10
 Requires:       perl(Time::HiRes)
 Provides:       maatkit = 7410.%{version}
 Obsoletes:      maatkit < 7410
-BuildArch:      noarch
+BuildRequires:  golang-packaging
+BuildRequires:  golang(API)
 %{perl_requires}
+%{go_nostrip}
 
 %description
 Percona Toolkit is a collection of advanced command-line tools used by
@@ -52,13 +58,21 @@ visit http://www.percona.com/software/.
 This collection was formerly known as Maatkit.
 
 %prep
-%autosetup
+%autosetup -p1 -a 1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor < /dev/null
 sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|' bin/*
 sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|' bin/*
 %make_build
+pushd src/go
+make linux \
+  TOP_DIR=../../ \
+  BIN_DIR=../../bingo/ \
+  VERSION=%{version} \
+  BUILD=$(date -u '+%FT%T%z' -d @${SOURCE_DATE_EPOCH}) \
+  COMMIT=%{revision} 
+popd
 
 %install
 %perl_make_install
@@ -70,6 +84,7 @@ rm -rf %{buildroot}%{_localstatedir}/adm/perl-modules/%{name}
 # a blank configuration file
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
+cp -a bingo/* %{buildroot}%{_bindir}/
 
 %files
 %license COPYING

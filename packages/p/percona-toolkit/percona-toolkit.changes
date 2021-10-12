@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  5 02:35:34 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable golang based tools
+  1. package is no longer noarch
+  2. added go-build.patch
+  3. add BR for golang tools
+
+-------------------------------------------------------------------
 Fri Apr 30 06:39:28 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - Percona Toolkit v3.3.1:
