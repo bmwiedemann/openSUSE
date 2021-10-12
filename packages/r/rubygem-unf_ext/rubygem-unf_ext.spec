@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-unf_ext
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-unf_ext
-Version:        0.0.7.7
+Version:        0.0.8
 Release:        0
 %define mod_name unf_ext
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ Release:        0
 BuildRequires:  gcc-c++
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubydevel}
+BuildRequires:  %{rubydevel >= 2.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/knu/ruby-unf_ext
