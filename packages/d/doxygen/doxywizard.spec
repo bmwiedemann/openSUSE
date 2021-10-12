@@ -17,7 +17,7 @@
 
 
 Name:           doxywizard
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Graphical User Interface for Doxygen
 # qtools are used for building and they are GPL-3.0 licensed
@@ -26,8 +26,6 @@ Group:          Development/Tools/Doc Generators
 URL:            https://www.doxygen.nl/
 Source:         https://www.doxygen.nl/files/doxygen-%{version}.src.tar.gz
 Source1:        doxywizard.desktop
-# PATCH-FIX-UPSTREAM: add missing returns to non-void functions
-Patch3:         vhdlparser-no-return.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -58,7 +56,6 @@ configuration files.
 
 %prep
 %setup -q -n doxygen-%{version}
-%patch3 -p1
 
 %build
 %cmake \

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct  2 15:24:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9.2
+  * Add support for C++20 concept
+  * Introduce new sidebar layout via FULL_SIDEBAR option
+  * Add -q commandline-parameter for quiet operation
+  * Add config option SHOW_HEADERFILE [view]
+  * Add config option WARN_IF_INCOMPLETE_DOC [view]
+  * Add config options GENERATE_SQLITE3, SQLITE3_OUTPUT and
+    SQLITE3_RECREATE_DB to better control the sqlite3 output
+  * Add config option MATHJAX_VERSION to support both MathJax 2.x
+    and 3.x
+  * Allow more fine tuning of semanitic syntax highlighting via CSS
+    classes
+  * Use language name to get code coloring
+  * Extra settings for MathJax V3
+  * Support vertical alignment in multirow table
+  * Add option for an anchor to the image command
+  * Deprecate options LATEX_SOURCE_CODE, RTF_SOURCE_CODE and
+    DOCBOOK_PROGRAMLISTING; code listing is now controlled globally
+    via the SOURCE_BROWSER option
+  * Make OUTPUT_TEXT_DIRECTION option obsolete
+  * Replace the C++ doxmlparser libary by a python based module
+  * many bug fixes and improvements
+- drop vhdlparser-no-return.patch, included upstream
+
+-------------------------------------------------------------------
 Wed Apr 21 09:31:57 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - doxywizard: remove explicit -fPIC from build flags, because this breaks our

@@ -1010,4 +1010,12 @@
   /usr/bin/doxywizard. (forwarded request 887254 from mgerstner)</comment>
     <requestid>887257</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>cafc4a89653c91eb9ca5f08f5e228dd3</srcmd5>
+    <version>1.9.2</version>
+    <time>1634068089</time>
+    <user>dimstar_suse</user>
+    <comment>doxygen 1.9.2 (forwarded request 922839 from AndreasStieger)</comment>
+    <requestid>922934</requestid>
+  </revision>
 </revisionlist>
