@@ -593,7 +593,6 @@
     <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="ghostscript-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gimp-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gimp-plugins-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-ufraw" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
