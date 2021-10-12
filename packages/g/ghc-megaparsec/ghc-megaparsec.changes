@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 27 13:53:18 UTC 2021 - psimons@suse.com
+
+- Update megaparsec to version 9.2.0.
+  ## Megaparsec 9.2.0
+
+  * Added parsers for binary representations (little/big endian) of numbers in
+    `Text.Megaparsec.Byte.Binary`.
+
+-------------------------------------------------------------------
 Sun Aug  8 22:06:07 UTC 2021 - psimons@suse.com
 
 - Update megaparsec to version 9.1.0 revision 1.
