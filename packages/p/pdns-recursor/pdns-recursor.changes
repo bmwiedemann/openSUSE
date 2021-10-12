@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 11 12:53:39 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.5.6:
+  * Bug Fixes
+    - fixes to the way RPZ updates are handled
+    - fix to a case where traffic to a forwarder could be throttled while it should not.
+    - fixed few minor DNSSEC validation issues
+    - fix for case where the combining of equivalent queries wasn't 
+      effective were resolved
+
+-------------------------------------------------------------------
 Fri Jul 30 10:36:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.5.5:
