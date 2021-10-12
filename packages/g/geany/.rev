@@ -456,4 +456,12 @@
   * Fix crash on first startup (forwarded request 856700 from polslinux)</comment>
     <requestid>857831</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a8de9c61024390f1183932503d63ded8</srcmd5>
+    <version>1.38</version>
+    <time>1634068137</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.38 (forwarded request 924551 from stroeder)</comment>
+    <requestid>924749</requestid>
+  </revision>
 </revisionlist>
