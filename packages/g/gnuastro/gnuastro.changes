@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 11 19:58:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.16 (library 14.0.0):
+  * documentation updates
+  * Arithmetic: New operands
+    + box-around-ellipse: width and height of the box covering an ellipse
+    + au-to-pc: Convert Astronomical Units (AUs) to Parsecs (PCs)
+    + pc-to-au: Convert Parsecs (PCs) to Astronomical Units (AUs)
+    + ly-to-pc: Convert Light-years (LYs) to Parsecs (PCs)
+    + pc-to-ly: Convert Parsecs (PCs) to Light-years (LYs)
+    + ly-to-au: Convert Light-years (LYs) to Astronomical Units (AUs)
+    + au-to-ly: Convert Astronomical Units (AUs) to Light-years (LYs)
+  * CosmicCalculator: warn if the requested redshift is < 0.007
+  * MakeCatalog:
+    + --areaerror: spatial resolution of image specified by user, 
+      used in estimating the surface brightness error
+    + --sberror: error in measuring the surface brightness
+      (mag/arcsec^2)
+  * MakeProfiles: New type of profile showing the azimuthal angle
+    (in degrees, along the elliptical circumference of fixed radius)
+     of each pixel.
+  * Match: add support for printing rows that could notbe matched
+  * Statistics: add --quantofmean: the quantile of the mean of the
+    input dataset
+  * --stdintimeout: default value changed from 0.1 seconds to 1.5s
+  * MakeProfiles: The default output suffix  is now '_profiles.fits'
+  * many bug fixes
+- drop gnuastro-cfitsio-version-format-change.patch
+
+-------------------------------------------------------------------
 Wed Aug 18 02:39:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add gnuastro-cfitsio-version-format-change.patch -- accounts for
