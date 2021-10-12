@@ -2,9 +2,9 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">git://linuxtv.org/libcamera</param>
-		<param name="revision">master</param>
-		<param name="parent-tag">87ba17ba41f2c540efe9ecd46379477282852642</param>
-		<param name="versionformat">0~@TAG_OFFSET@.%h</param>
+		<param name="revision">d79b41200199e03834578f5120bb8375bad37aec</param>
+		<param name="parent-tag">v0.0.0</param>
+		<param name="versionformat">0.0.0+g@TAG_OFFSET@.%h</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

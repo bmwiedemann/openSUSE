@@ -1,40 +1,48 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2018-12-06 12:28:42.992186963 +0100
 
-I get it is still in development. But unversioned libraries suck nevertheless.
----
- src/libcamera/base/meson.build |    3 ++-
- src/libcamera/meson.build      |    3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+Every new symbol set shipped needs a new SONAME.
 
-Index: libcamera-0~2809.e0704e97/src/libcamera/base/meson.build
+Normally, a distro would just ship tarballed releases, and so SONAMEs are just
+what upstream puts out.
+
+When shipping snapshots however that have a noncongruent symbol set to any
+other release, a custom SONAME will be needed to not claim false compatibility
+with any other release.
+---
+ src/libcamera/base/meson.build |    4 ++--
+ src/libcamera/meson.build      |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: libcamera-0.0.0+g3076.d79b4120/src/libcamera/base/meson.build
 ===================================================================
---- libcamera-0~2809.e0704e97.orig/src/libcamera/base/meson.build
-+++ libcamera-0~2809.e0704e97/src/libcamera/base/meson.build
-@@ -25,9 +25,10 @@ libcamera_base_deps = [
+--- libcamera-0.0.0+g3076.d79b4120.orig/src/libcamera/base/meson.build
++++ libcamera-0.0.0+g3076.d79b4120/src/libcamera/base/meson.build
+@@ -27,9 +27,9 @@ libcamera_base_deps = [
  # the use of headers which must not be exposed to the libcamera public api.
  libcamera_base_args = [ '-DLIBCAMERA_BASE_PRIVATE' ]
  
 -libcamera_base_lib = shared_library('libcamera-base',
 +libcamera_base_lib = shared_library('libcamera-base-suse',
                                      [libcamera_base_sources, libcamera_base_headers],
+-                                    version : libcamera_version,
++                                    soversion : '7',
                                      name_prefix : '',
-+                                    soversion : '6',
                                      install : true,
                                      cpp_args : libcamera_base_args,
-                                     include_directories : libcamera_includes,
-Index: libcamera-0~2809.e0704e97/src/libcamera/meson.build
+Index: libcamera-0.0.0+g3076.d79b4120/src/libcamera/meson.build
 ===================================================================
---- libcamera-0~2809.e0704e97.orig/src/libcamera/meson.build
-+++ libcamera-0~2809.e0704e97/src/libcamera/meson.build
-@@ -124,8 +124,9 @@ libcamera_deps = [
+--- libcamera-0.0.0+g3076.d79b4120.orig/src/libcamera/meson.build
++++ libcamera-0.0.0+g3076.d79b4120/src/libcamera/meson.build
+@@ -126,9 +126,9 @@ libcamera_deps = [
  # runtime if the library is running from an installed location by checking
  # for the presence or abscence of the dynamic tag.
  
 -libcamera = shared_library('libcamera',
 +libcamera = shared_library('libcamera-suse',
                             libcamera_sources,
-+                           soversion : '6',
+-                           version : libcamera_version,
++                           soversion : '7',
                             name_prefix : '',
                             install : true,
                             include_directories : includes,

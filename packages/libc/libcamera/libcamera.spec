@@ -17,8 +17,8 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse6
-Version:        0~3015.a2571042
+%define lname   libcamera-suse7
+Version:        0.0.0+g3076.d79b4120
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

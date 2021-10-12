@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  1 20:07:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.0.0+g3076 (d79b412)
+  * Still in development, not much of a changelog to be had.
+
+-------------------------------------------------------------------
 Thu Sep  9 02:42:44 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to snapshot 0~3015 (a2571042)
@@ -14,7 +20,7 @@ Fri Aug 27 18:03:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Fri Jul 23 17:38:10 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- pipewire has baselibs, so we should have them here as well 
+- pipewire has baselibs, so we should have them here as well
 
 -------------------------------------------------------------------
 Fri Jul 23 16:39:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>

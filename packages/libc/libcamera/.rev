@@ -73,4 +73,12 @@
 - Disable pipeline 'raspberrypi' because it creates segfaults at runtime.</comment>
     <requestid>917699</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a2ee6c9d20c83799e1080acd0f28cca</srcmd5>
+    <version>0.0.0+g3076.d79b4120</version>
+    <time>1634068093</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>924291</requestid>
+  </revision>
 </revisionlist>
