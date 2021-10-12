@@ -17,12 +17,13 @@
 
 
 Name:           hledger-ui
-Version:        1.22.2
+Version:        1.23
 Release:        0
 Summary:        Curses-style terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-async-devel
@@ -66,6 +67,7 @@ Read more at: <https://hledger.org>.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 cabal-tweak-dep-ver 'base-compat-batteries' '<0.12' '<0.13'
 
 %build

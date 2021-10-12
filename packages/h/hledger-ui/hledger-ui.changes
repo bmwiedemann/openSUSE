@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:57:11 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:52:12 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.23.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.23/src/CHANGES.md
+
+-------------------------------------------------------------------
 Tue Sep  7 18:42:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax constranits on base-compat 
