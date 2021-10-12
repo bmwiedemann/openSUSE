@@ -25,6 +25,7 @@ Group:          System/Libraries
 URL:            https://wiki.gnome.org/Design/Apps/Software
 Source0:        openSUSE-appstream-%{version}.tar.xz
 Source99:       libzypp-plugin-appdata-rpmlintrc
+Patch0:	harden_appstream-sync-cache.service.patch
 # appstreamcli is provided by the AppStream package. Let's pull it in when available, but ignore its absence
 Recommends:     AppStream
 # appstream-glib >= 0.3.6 is the first to correctly to appstream-util uninstall in /var/cache
@@ -59,6 +60,7 @@ This package contains extra appstream metadata to be used by appstream-builder
 
 %prep
 %setup -q -n openSUSE-appstream-%{version}
+%patch0 -p1
 
 %build
 

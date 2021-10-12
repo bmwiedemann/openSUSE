@@ -1,0 +1,24 @@
+Index: openSUSE-appstream-1.0.1+git.20180426/appstream-sync-cache.service
+===================================================================
+--- openSUSE-appstream-1.0.1+git.20180426.orig/appstream-sync-cache.service
++++ openSUSE-appstream-1.0.1+git.20180426/appstream-sync-cache.service
+@@ -4,6 +4,19 @@ After=local-fs.target
+ ConditionDirectoryNotEmpty=!/var/cache/app-info/xmls
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ ExecStart=/usr/bin/zypper appstream-cache
+ 

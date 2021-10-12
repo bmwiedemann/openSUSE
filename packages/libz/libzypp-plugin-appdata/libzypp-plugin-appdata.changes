@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  5 09:12:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_appstream-sync-cache.service.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 12:46:34 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Install ASHelper to %{_prefix}/lib: the scripts hardcode this
