@@ -659,4 +659,15 @@
   - Drop pam-config-remove-bad-access-call.patch</comment>
     <requestid>917310</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>34ddf073deb82ed3bbc5b7b7feeffab0</srcmd5>
+    <version>1.5</version>
+    <time>1634068114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.5
+  - Don't print an error message if one of the systemd PAM modules
+    does not exist if creating the *-pc files [bsc#1191528]
+  - Drop pam_systemd_home again [bsc#1191528]</comment>
+    <requestid>924639</requestid>
+  </revision>
 </revisionlist>

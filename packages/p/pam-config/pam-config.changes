@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 11 09:12:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.5
+  - Don't print an error message if one of the systemd PAM modules
+    does not exist if creating the *-pc files [bsc#1191528]
+  - Drop pam_systemd_home again [bsc#1191528]
+
+-------------------------------------------------------------------
 Tue Sep  7 14:15:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4
