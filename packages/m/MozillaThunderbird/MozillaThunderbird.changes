@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct  4 19:55:48 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.2.0
+  * Saving a single message as .eml now uses a unique filename
+  * New mail notifications did not properly take subfolders into account
+  * Decrypting binary attachments when using an external GnuPG
+    configuration failed
+  * Account name fields in the account manager were not big enough
+    for long names
+  * LDAP searches using an extensibleMatch filter returned no results
+  * Read-only CalDAV calendars and CardDAV address books were not detected
+  * Multipart messages containing a calendar invite did not display
+    any of the human-readable alternatives
+  * Some calendar days were displayed incorrectly or duplicated
+    (eg. two "29th" days of a particular month)
+  * Phantom event was shown at the end of each day in Calendar week view
+  MFSA 2021-46 (bsc#1191332)
+  * CVE-2021-38496 (bmo#1725335)
+    Use-after-free in MessageTask
+  * CVE-2021-38497 (bmo#1726621)
+    Validation message could have been overlaid on another origin
+  * CVE-2021-38498 (bmo#1729642)
+    Use-after-free of nsLanguageAtomService object
+  * CVE-2021-32810 (bmo#1729813,
+    https://github.com/crossbeam-
+    rs/crossbeam/security/advisories/GHSA-pqqp-xmhj-wgcw)
+    Data race in crossbeam-deque
+  * CVE-2021-38500 (bmo#1725854, bmo#1728321)
+    Memory safety bugs fixed in Firefox 93, Firefox ESR 78.15,
+    and Firefox ESR 91.2
+  * CVE-2021-38501 (bmo#1685354, bmo#1715755, bmo#1723176)
+    Memory safety bugs fixed in Firefox 93 and Firefox ESR 91.2
+
+-------------------------------------------------------------------
 Sun Sep 26 16:01:35 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.1.2
