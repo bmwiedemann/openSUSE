@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  6 19:41:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.1:
+  + Fix ordering of tspan inside text elements for right-to-left
+    languages.
+  + Fix text-anchor positioning for right-to-left languages.
+  + Fix regression in computing sizes when an SVG has only one of
+    width/height and a viewBox.
+  + Spec compliance - the writing-mode property applies only to
+    text elements, no to individual tspan elements.
+  + Fix build on big-endian platforms.
+  + Clarify documentation for the rsvg_handle_write() /
+    rsvg_handle_close() deprecated APIs.
+
+-------------------------------------------------------------------
 Sun Sep 26 15:58:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable testsuite run on ix86 and arm.
