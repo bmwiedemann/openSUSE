@@ -17,7 +17,7 @@
 
 
 Name:           flatpak-builder
-Version:        1.0.14
+Version:        1.2.0
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
 BuildRequires:  libcap-devel
-BuildRequires:  libdwarf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  xsltproc
@@ -37,6 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(ostree-1) >= 2018.7
@@ -60,7 +60,6 @@ See https://wiki.gnome.org/Projects/SandboxedApps for more information.
 %build
 %configure \
 	--enable-docbook-docs \
-	--with-dwarf-header=%{_includedir}/libdwarf \
 	%{nil}
 %make_build
 
@@ -72,6 +71,7 @@ See https://wiki.gnome.org/Projects/SandboxedApps for more information.
 %doc NEWS README.md
 %doc %{_datadir}/doc/%{name}/
 %{_bindir}/flatpak-builder
+%{_libexecdir}/flatpak-builder-debugedit
 %{_mandir}/man1/flatpak-builder.1%{ext_man}
 %{_mandir}/man5/flatpak-manifest.5%{ext_man}
 

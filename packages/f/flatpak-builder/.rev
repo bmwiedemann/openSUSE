@@ -207,4 +207,31 @@
     rather than using the branch of the parent app (forwarded request 904280 from andythe_great)</comment>
     <requestid>906034</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6755f8adedbf12f7edc263007b31c6ec</srcmd5>
+    <version>1.2.0</version>
+    <time>1634068169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  + Add missing newlines in some output
+  + Fix missing error check in the new inline data support
+  + Updated documentation.
+- Changes from version 1.1.2:
+  + New secret-opts feature lets you pass e.g. CI secrets into the
+    build.
+  + Support content-encoding when downloading.
+  + New inline data source allowing easy creation of files from
+    embedded content from the manifest.
+- Changes from version 1.1.1:
+  + We now use the external debugedit project instead of using an
+    internal copy.
+  + The system version can be used, or if not an internal version
+    is used built using git submodules.
+  + Note, this needs libdw 0.172, which may not be available on
+    older distributions.
+- Replace old and no longer used libdwarf-devel with the correct
+  pkgconfig(libdw) BuildRequires (and stop passing header to
+  configure). (forwarded request 924252 from iznogood)</comment>
+    <requestid>924743</requestid>
+  </revision>
 </revisionlist>
