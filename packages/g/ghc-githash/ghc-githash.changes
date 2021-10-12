@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 20 07:11:36 UTC 2021 - psimons@suse.com
+
+- Update githash to version 0.1.6.2.
+  ## 0.1.6.2
+
+  * Fixed bugs; now this library's Template Haskell functions are much more
+    likely on recompilation to detect Git update that doesn't affect workspace:
+    e.g. `git switch -c <new_branch>` (equivalently
+    `git checkout -b <new_branch>`) and `git commit --amend --only`.
+    Implemented in [#23](https://github.com/snoyberg/githash/pull/23).
+
+-------------------------------------------------------------------
 Thu Jun 24 12:01:10 UTC 2021 - psimons@suse.com
 
 - Update githash to version 0.1.6.1.

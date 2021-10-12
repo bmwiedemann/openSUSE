@@ -19,7 +19,7 @@
 %global pkg_name githash
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.6.1
+Version:        0.1.6.2
 Release:        0
 Summary:        Compile git revision info into Haskell projects
 License:        BSD-3-Clause
