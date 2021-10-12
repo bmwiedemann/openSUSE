@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 11 07:23:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_ndppd.service.patch
+
+-------------------------------------------------------------------
 Tue Dec 18 12:54:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Expand summary.

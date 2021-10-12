@@ -27,6 +27,7 @@ URL:            https://github.com/DanielAdolfsson/ndppd
 #Source:         https://github.com/DanielAdolfsson/%%{name}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.xz
 Source1:        ndppd-tmpfiles.conf
+Patch0:	harden_ndppd.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -44,6 +45,7 @@ The daemon is partially compliant with (experimental) RFC4389.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CXXFLAGS='%{optflags}'
