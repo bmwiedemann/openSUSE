@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  9 09:10:18 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.15.4
+
+  Fixed:
+  * Fix build for uClibc. #913
+  * Correct module lookup when including `ffi-module` gem. #912
+
+  Changed:
+  * Use ruby code of the ffi gem in JRuby-9.2.20+. #915
+
+-------------------------------------------------------------------
 Thu Jun 24 17:21:42 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.15.3
