@@ -18,15 +18,13 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.13
+Version:        0.3.14
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 108.patch dimstar@opensuse.org -- grl-lua-factory: Remove a bad pop, exposed by Lua 5.4.3, causing a crash.
-Patch0:         https://gitlab.gnome.org/GNOME/grilo-plugins/-/merge_requests/108.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  gperf

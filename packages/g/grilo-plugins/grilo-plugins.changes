@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  6 13:35:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.14:
+  + Fix lua-factory crash on >= 5.4.3.
+  + Clarify LGPLv2.1 or later license. 
+  + tracker3: Make resolve async. 
+  + euronews: Use YouTube feeds.
+  + Updated translations.
+- Drop 108.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Apr 20 06:15:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 108.patch: lua-factory: Remove a bad pop. This was exposed
