@@ -779,4 +779,12 @@ reviewed ok
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>920668</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>a991b11815233a8711bb0f0ea2064bce</srcmd5>
+    <version>6.4.22</version>
+    <time>1634068189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924829</requestid>
+  </revision>
 </revisionlist>

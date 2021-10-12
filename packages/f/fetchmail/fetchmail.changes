@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Oct  6 15:00:19 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 6.4.22: [bsc#1190069, CVE-2021-39272]
+  * OPENSSL AND LICENSING NOTE:
+    - fetchmail 6.4.22 is compatible with OpenSSL 1.1.1 and 3.0.0.
+      OpenSSL's licensing changed between these releases from dual
+      OpenSSL/SSLeay license to Apache License v2.0, which is
+      considered incompatible with GPL v2 by the FSF. For
+      implications and details, see the file COPYING.
+  * SECURITY FIXES:
+    - CVE-2021-39272: fetchmail-SA-2021-02: On IMAP connections,
+      without --ssl and with nonempty --sslproto, meaning that
+      fetchmail is to enforce TLS, and when the server or an attacker
+      sends a PREAUTH greeting, fetchmail used to continue an
+      unencrypted connection. Now, log the error and abort the
+      connection. --Recommendation for servers that support
+      SSL/TLS-wrapped or "implicit" mode on a dedicated port
+      (default 993): use --ssl, or the ssl user option in an rcfile.
+    - On IMAP and POP3 connections, --auth ssh no longer prevents
+      STARTTLS negotiation.
+    - On IMAP connections, fetchmail does not permit overriding
+      a server-side LOGINDISABLED with --auth password any more.
+    - On POP3 connections, the possibility for RPA authentication
+      (by probing with an AUTH command without arguments) no longer
+      prevents STARTTLS negotiation.
+    - For POP3 connections, only attempt RPA if the authentication
+      type is "any".
+  * BUG FIXES:
+    - On IMAP connections, when AUTHENTICATE EXTERNAL fails and we
+      have received the tagged (= final) response, do not send "*".
+    - On IMAP connections, AUTHENTICATE EXTERNAL without username
+      will properly send a "=" for protocol compliance.
+    - On IMAP connections, AUTHENTICATE EXTERNAL will now check if
+      the server advertised SASL-IR (RFC-4959) support and otherwise
+      refuse (fetchmail <= 6.4 has not supported and does not support
+      the separate challenge/response with command continuation)
+    - On IMAP connections, when --auth external is requested but not
+      advertised by the server, log a proper error message.
+    - Fetchmail no longer crashes when attempting a connection with
+      --plugin "" or --plugout "".
+    - Fetchmail no longer leaks memory when processing the arguments
+      of --plugin or --plugout on connections.
+    - On POP3 connections, the CAPAbilities parser is now caseblind.
+    - Fix segfault on configurations with "defaults ... no envelope".
+      This is a regression in fetchmail 6.4.3 and happened when
+      plugging memory leaks, which did not account for that the
+      envelope parameter is special when set as "no envelope". The
+      segfault happens in a constant strlen(-1), triggered by trusted
+      local input => no vulnerability.
+    - Fix program abort (SIGABRT) with "internal error" when invalid
+      sslproto is given with OpenSSL 1.1.0 API compatible SSL
+      implementations.
+  * CHANGES:
+    - IMAP: When fetchmail is in not-authenticated state and the server
+      volunteers CAPABILITY information, use it and do not re-probe.
+      (After STARTTLS, fetchmail must and will re-probe explicitly.)
+    - For typical POP3/IMAP ports 110, 143, 993, 995, if port and --ssl
+      option do not match, emit a warning and continue.
+    - fetchmail.man and README.SSL were updated in line with
+      RFC-8314/8996/8997 recommendations to prefer Implicit TLS
+      (--ssl/ssl) and TLS v1.2 or newer, placing --sslproto tls1.2+
+      more prominently. The defaults shall not change between 6.4.X
+      releases for compatibility.
+  * Rebase patches:
+    fetchmail-add-imap-oauthbearer-support.patch
+    fetchmail-add-query_to64_outsize-utility-function.patch
+    fetchmail-support-oauthbearer-xoauth2-with-pop3.patch
+
+-------------------------------------------------------------------
 Tue Sep 14 08:55:42 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

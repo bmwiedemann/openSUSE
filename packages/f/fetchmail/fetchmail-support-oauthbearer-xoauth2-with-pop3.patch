@@ -16,11 +16,11 @@ Git-commit: 7b5c56f0fa3acb4c5589a4747c1921a311d8a464
  create mode 100644 oauth2.c
  create mode 100644 oauth2.h
 
-diff --git a/Makefile.am b/Makefile.am
-index 1e800085..d747f895 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -54,7 +54,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h \
+Index: fetchmail-6.4.22/Makefile.am
+===================================================================
+--- fetchmail-6.4.22.orig/Makefile.am
++++ fetchmail-6.4.22/Makefile.am
+@@ -68,7 +68,7 @@ fetchmail_SOURCES=	fetchmail.h getopt.h
  		fetchmail.c env.c idle.c options.c daemon.c \
  		driver.c transact.c sink.c smtp.c \
  		idlist.c uid.c mxget.c md5ify.c cram.c gssapi.c \
@@ -29,11 +29,11 @@ index 1e800085..d747f895 100644
  		unmime.c conf.c checkalias.c uid_db.h uid_db.c\
  		lock.h lock.c \
  		rcfile_l.l rcfile_y.y \
-diff --git a/fetchmail.man b/fetchmail.man
-index d128ece1..aece716e 100644
---- a/fetchmail.man
-+++ b/fetchmail.man
-@@ -928,7 +928,7 @@ This option permits you to specify an authentication type (see USER
+Index: fetchmail-6.4.22/fetchmail.man
+===================================================================
+--- fetchmail-6.4.22.orig/fetchmail.man
++++ fetchmail-6.4.22/fetchmail.man
+@@ -1007,7 +1007,7 @@ AUTHENTICATION below for details).  The
  \&\fBpassword\fP, \fBkerberos_v5\fP, \fBkerberos\fP (or, for
  excruciating exactness, \fBkerberos_v4\fP), \fBgssapi\fP,
  \fBcram\-md5\fP, \fBotp\fP, \fBntlm\fP, \fBmsn\fP (only for POP3),
@@ -42,7 +42,7 @@ index d128ece1..aece716e 100644
  When \fBany\fP (the default) is specified, fetchmail tries
  first methods that don't require a password (EXTERNAL, GSSAPI, KERBEROS\ IV,
  KERBEROS\ 5); then it looks for methods that mask your password
-@@ -2222,8 +2222,7 @@ Legal protocol identifiers for use with the 'protocol' keyword are:
+@@ -2351,8 +2351,7 @@ Legal protocol identifiers for use with
  Legal authentication types are 'any', 'password', 'kerberos',
  \&'kerberos_v4', 'kerberos_v5' and 'gssapi', 'cram\-md5', 'otp', 'msn'
  (only for POP3), 'ntlm', 'ssh', 'external' (only IMAP),
@@ -52,11 +52,11 @@ index d128ece1..aece716e 100644
  The 'password' type specifies
  authentication by normal transmission of a password (the password may be
  plain text or subject to protocol-specific encryption as in CRAM-MD5);
-diff --git a/imap.c b/imap.c
-index 0ab10d31..e38706f5 100644
---- a/imap.c
-+++ b/imap.c
-@@ -14,6 +14,7 @@
+Index: fetchmail-6.4.22/imap.c
+===================================================================
+--- fetchmail-6.4.22.orig/imap.c
++++ fetchmail-6.4.22/imap.c
+@@ -17,6 +17,7 @@
  #include  <limits.h>
  #include  <errno.h>
  #endif
@@ -64,7 +64,7 @@ index 0ab10d31..e38706f5 100644
  #include  "socket.h"
  
  #include  "i18n.h"
-@@ -329,63 +330,23 @@ static int do_imap_ntlm(int sock, struct query *ctl)
+@@ -419,63 +420,23 @@ static int do_imap_ntlm(int sock, struct
  
  static int do_imap_oauthbearer(int sock, struct query *ctl,flag xoauth2)
  {
@@ -134,11 +134,10 @@ index 0ab10d31..e38706f5 100644
  
      return ok;
  }
-diff --git a/oauth2.c b/oauth2.c
-new file mode 100644
-index 00000000..a8a324b8
+Index: fetchmail-6.4.22/oauth2.c
+===================================================================
 --- /dev/null
-+++ b/oauth2.c
++++ fetchmail-6.4.22/oauth2.c
 @@ -0,0 +1,61 @@
 +/*
 + * oauth2.c -- oauthbearer and xoauth2 support
@@ -201,11 +200,10 @@ index 00000000..a8a324b8
 +
 +    return oauth2b64;
 +}
-diff --git a/oauth2.h b/oauth2.h
-new file mode 100644
-index 00000000..67ebfd6e
+Index: fetchmail-6.4.22/oauth2.h
+===================================================================
 --- /dev/null
-+++ b/oauth2.h
++++ fetchmail-6.4.22/oauth2.h
 @@ -0,0 +1,6 @@
 +#ifndef OAUTH2_H
 +#define OAUTH2_H
@@ -213,11 +211,11 @@ index 00000000..67ebfd6e
 +char *get_oauth2_string(struct query *ctl,flag xoauth2);
 +
 +#endif /*OAUTH2_H*/
-diff --git a/pop3.c b/pop3.c
-index 076d890e..06fc0a0d 100644
---- a/pop3.c
-+++ b/pop3.c
-@@ -15,6 +15,7 @@
+Index: fetchmail-6.4.22/pop3.c
+===================================================================
+--- fetchmail-6.4.22.orig/pop3.c
++++ fetchmail-6.4.22/pop3.c
+@@ -20,6 +20,7 @@
  #include  <errno.h>
  
  #include  "fetchmail.h"
@@ -225,18 +223,18 @@ index 076d890e..06fc0a0d 100644
  #include  "socket.h"
  #include  "i18n.h"
  #include  "uid_db.h"
-@@ -55,6 +56,10 @@ flag has_ntlm = FALSE;
- #ifdef SSL_ENABLE
+@@ -52,6 +53,10 @@ static flag has_cram = FALSE;
+ static flag has_otp = FALSE;
+ static flag has_ntlm = FALSE;
  static flag has_stls = FALSE;
- #endif /* SSL_ENABLE */
 +static flag has_oauthbearer = FALSE;
 +static flag has_xoauth2 = FALSE;
 +
 +static const char *next_sasl_resp = NULL;
  
- /* mailbox variables initialized in pop3_getrange() */
- static int last;
-@@ -110,12 +115,65 @@ static int pop3_ok (int sock, char *argbuf)
+ static void clear_sessiondata(void) {
+     /* must match defaults above */
+@@ -135,12 +140,65 @@ static int pop3_ok (int sock, char *argb
      char buf [POPBUFSIZE+1];
      char *bufp;
  
@@ -244,67 +242,69 @@ index 076d890e..06fc0a0d 100644
 +    while ((ok = gen_recv(sock, buf, sizeof(buf))) == 0)
      {	bufp = buf;
 -	if (*bufp == '+' || *bufp == '-')
+-	    bufp++;
+-	else
 +	if (*bufp == '+')
 +	{
- 	    bufp++;
-+	    if (*bufp == ' ' && next_sasl_resp != NULL)
-+	    {
-+		/* Currently only used for OAUTHBEARER/XOAUTH2, and only
-+		 * rarely even then.
-+		 *
-+		 * This is the only case where the top while() actually
-+		 * loops.
-+		 *
-+		 * For OAUTHBEARER, data aftetr '+ ' is probably
-+		 * base64-encoded JSON with some HTTP-related error details.
-+		 */
-+		if (*next_sasl_resp != '\0')
-+		    SockWrite(sock, next_sasl_resp, strlen(next_sasl_resp));
-+		SockWrite(sock, "\r\n", 2);
-+		if (outlevel >= O_MONITOR)
-+		{
-+		    const char *found;
-+		    if (shroud[0] && (found = strstr(next_sasl_resp, shroud)))
-+		    {
-+			/* enshroud() without copies, and avoid
-+			 * confusing with a genuine "*" (cancel).
-+			 */
-+			report(stdout, "POP3> %.*s[SHROUDED]%s\n",
-+			       (int)(found-next_sasl_resp), next_sasl_resp,
-+			       found+strlen(shroud));
-+		    }
-+		    else
-+		    {
-+			report(stdout, "POP3> %s\n", next_sasl_resp);
-+		    }
-+		}
++	   bufp++;
++       if (*bufp == ' ' && next_sasl_resp != NULL)
++       {
++       /* Currently only used for OAUTHBEARER/XOAUTH2, and only
++        * rarely even then.
++        *
++        * This is the only case where the top while() actually
++        * loops.
++        *
++        * For OAUTHBEARER, data aftetr '+ ' is probably
++        * base64-encoded JSON with some HTTP-related error details.
++        */
++       if (*next_sasl_resp != '\0')
++           SockWrite(sock, next_sasl_resp, strlen(next_sasl_resp));
++       SockWrite(sock, "\r\n", 2);
++       if (outlevel >= O_MONITOR)
++       {
++           const char *found;
++           if (shroud[0] && (found = strstr(next_sasl_resp, shroud)))
++           {
++           /* enshroud() without copies, and avoid
++            * confusing with a genuine "*" (cancel).
++            */
++           report(stdout, "POP3> %.*s[SHROUDED]%s\n",
++                  (int)(found-next_sasl_resp), next_sasl_resp,
++                  found+strlen(shroud));
++           }
++           else
++           {
++           report(stdout, "POP3> %s\n", next_sasl_resp);
++           }
++       }
 +
-+		if (*next_sasl_resp == '\0' || *next_sasl_resp == '*')
-+		{
-+		    /* No more responses expected, cancel AUTH command if
-+		     * more responses requested.
-+		     */
-+		    next_sasl_resp = "*";
-+		}
-+		else
-+		{
-+		    next_sasl_resp = "";
-+		}
-+		continue;
-+	    }
-+	}
-+	else if (*bufp == '-')
-+	{
-+	    bufp++;
-+	}
- 	else
-+	{
++       if (*next_sasl_resp == '\0' || *next_sasl_resp == '*')
++       {
++           /* No more responses expected, cancel AUTH command if
++            * more responses requested.
++            */
++           next_sasl_resp = "*";
++       }
++       else
++       {
++           next_sasl_resp = "";
++       }
++       continue;
++       }
++   }
++   else if (*bufp == '-')
++   {
++       bufp++;
++   }
++   else
++   {
  	    return(PS_PROTOCOL);
-+	}
++   }
  
  	while (isalpha((unsigned char)*bufp))
  	    bufp++;
-@@ -184,6 +242,8 @@ static int pop3_ok (int sock, char *argbuf)
+@@ -209,6 +267,8 @@ static int pop3_ok (int sock, char *argb
  #endif
  	if (argbuf != NULL)
  	    strcpy(argbuf,bufp);
@@ -313,22 +313,33 @@ index 076d890e..06fc0a0d 100644
      }
  
      return(ok);
-@@ -212,11 +272,13 @@ static int capa_probe(int sock)
+@@ -237,11 +297,13 @@ static int capa_probe(int sock)
  #ifdef NTLM_ENABLE
      has_ntlm = FALSE;
  #endif /* NTLM_ENABLE */
-+    has_oauthbearer = FALSE;
-+    has_xoauth2 = FALSE;
++	has_oauthbearer = FALSE;
++	has_xoauth2 = FALSE;
  
      ok = gen_transact(sock, "CAPA");
      if (ok == PS_SUCCESS)
      {
 -	char buffer[64];
 +	char buffer[128];
+ 	char *cp;
  
  	/* determine what authentication methods we have available */
- 	while ((ok = gen_recv(sock, buffer, sizeof(buffer))) == 0)
-@@ -246,6 +308,12 @@ static int capa_probe(int sock)
+@@ -256,6 +318,10 @@ static int capa_probe(int sock)
+ 	    if (strstr(buffer, "STLS"))
+ 		has_stls = TRUE;
+ #endif /* SSL_ENABLE */
++static flag has_oauthbearer = FALSE;
++static flag has_xoauth2 = FALSE;
++
++static const char *next_sasl_resp = NULL;
+ 
+ #if defined(GSSAPI)
+ 	    if (strstr(buffer, "GSSAPI"))
+@@ -279,6 +345,12 @@ static int capa_probe(int sock)
  
  	    if (strstr(buffer, "CRAM-MD5"))
  		has_cram = TRUE;
@@ -341,7 +352,7 @@ index 076d890e..06fc0a0d 100644
  	}
      }
      done_capa = TRUE;
-@@ -312,6 +380,40 @@ static int do_apop(int sock, struct query *ctl, char *greeting)
+@@ -295,6 +367,40 @@ static void set_peek_capable(struct quer
      peek_capable = !ctl->fetchall && (!ctl->keep || ctl->server.uidl);
  }
  
@@ -382,7 +393,7 @@ index 076d890e..06fc0a0d 100644
  static int pop3_getauth(int sock, struct query *ctl, char *greeting)
  /* apply for connection authorization */
  {
-@@ -436,6 +538,7 @@ static int pop3_getauth(int sock, struct query *ctl, char *greeting)
+@@ -374,6 +480,7 @@ static int pop3_getauth(int sock, struct
  		(ctl->server.authenticate == A_KERBEROS_V5) ||
  		(ctl->server.authenticate == A_OTP) ||
  		(ctl->server.authenticate == A_CRAM_MD5) ||
@@ -390,7 +401,7 @@ index 076d890e..06fc0a0d 100644
  		maybe_starttls(ctl))
  	{
  	    if ((ok = capa_probe(sock)) != PS_SUCCESS)
-@@ -540,6 +643,19 @@ static int pop3_getauth(int sock, struct query *ctl, char *greeting)
+@@ -523,6 +630,19 @@ static int pop3_getauth(int sock, struct
  	/*
  	 * OK, we have an authentication type now.
  	 */
@@ -410,6 +421,3 @@ index 076d890e..06fc0a0d 100644
  #if defined(KERBEROS_V4)
  	/* 
  	 * Servers doing KPOP have to go through a dummy login sequence
--- 
-2.31.1
-
