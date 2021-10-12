@@ -1,7 +1,7 @@
 #
 # spec file for package renderdoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           renderdoc
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        A frame-capture based graphics debugger
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://renderdoc.org/
 Source0:        https://github.com/baldurk/renderdoc/archive/v%{version}/renderdoc-%{version}.tar.gz
 Source1:        https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip
 Patch0:         0002-Add-debugger-as-desktop-menu-category.patch
-BuildRequires:  memory-constraints
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -40,6 +39,7 @@ BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libxcb-devel
+BuildRequires:  memory-constraints
 BuildRequires:  pcre-devel
 BuildRequires:  python3-devel
 BuildRequires:  vulkan-devel
@@ -97,7 +97,7 @@ mkdir %{_builddir}/%{name}-%{version}/build && cd %{_builddir}/%{name}-%{version
 %{_datadir}/vulkan/implicit_layer.d/%{name}_capture.json
 %{_datadir}/menu/renderdoc
 %doc %{_datadir}/doc/%{name}/
-%exclude %{_datadir}/doc/renderdoc/LICENSE.md 
+%exclude %{_datadir}/doc/renderdoc/LICENSE.md
 %dir %{_datadir}/menu/
 %dir %{_datadir}/thumbnailers/
 %dir %{_datadir}/vulkan/implicit_layer.d/

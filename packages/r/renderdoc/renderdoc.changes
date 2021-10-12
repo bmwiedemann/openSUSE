@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 11 18:14:53 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.16
+  * The bindless feedback for D3D12 which was added in v1.15 now supports
+    DXIL SM6.x shaders, via DXIL patching. 
+  * The API backends have been hardened to handle the majority of cases
+    where an API fatal error happens during replay while analysing a
+    capture - device lost/TDR, out of GPU memory, or when using
+    remote-replay if the remote server crashes or disconnects.
+- osc build apparently auto-cleans your spec-file now (without even asking)
+
+-------------------------------------------------------------------
 Wed Sep  8 13:23:52 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Use pcre-devel instead of pcre-devel-static 
