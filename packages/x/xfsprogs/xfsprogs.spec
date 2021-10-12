@@ -122,6 +122,7 @@ export DEBUG=-DNDEBUG
 export LIBUUID=%{_libdir}/libuuid.a
 
 %configure \
+    --exec-prefix="" \
     --enable-editline=yes \
 %if %{with systemd}
     --with-systemd-unit-dir=%{_unitdir} \
@@ -142,7 +143,6 @@ make install-dev
 # remove the static libs and libtool archive
 rm -rf %{buildroot}/%{_lib}/*.{la,a}
 rm -rf %{buildroot}/%{_libdir}/*.{la,a}
-mv %{buildroot}/%{_lib}/* %{buildroot}%{_libdir}
 %find_lang %{name}
 install -m 0755 -d %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 install -m 0755 module-setup.sh %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
@@ -175,9 +175,6 @@ install -m 0644 %{SOURCE4} %{buildroot}/%{_dracutmodulesdir}/95suse-xfs/
 
 %files -f %{name}.lang
 %defattr(-,root,root,755)
-#UsrMerge
-/sbin/*
-#EndUsrMerge
 %{_sbindir}/*
 %exclude %{_sbindir}/xfs_scrub_all
 %{_mandir}/man[258]/*

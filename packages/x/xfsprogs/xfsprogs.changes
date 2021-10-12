@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 30 16:43:35 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
+
+- move fsck.xfs, mkfs.xfs and xfs_repair from /sbin to /usr/sbin
+  (bsc#1191105)
+
+  The default rpmbuild %configure macro passes --sbindir=/usr/sbin to
+  every configure script, but the xfsprogs configure script ignores it
+  when --exec-prefix is also set. Unset --exec-prefix since it is not
+  really required (all other paths are explicitly passed via the rpm
+  configure macro), so that the --sbindir is respected.
+
+-------------------------------------------------------------------
 Sun Aug 22 17:11:35 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to v5.13.0:
