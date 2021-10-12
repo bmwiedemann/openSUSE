@@ -2199,4 +2199,14 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920948 from dimstar)</comment>
     <requestid>921628</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>660805ea2efb93912a229197fad0c2cf</srcmd5>
+    <version>41.0</version>
+    <time>1634068134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update sle-classic to version 41
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic@suse.com.tar.gz (forwarded request 924308 from xiaoguang_wang)</comment>
+    <requestid>924744</requestid>
+  </revision>
 </revisionlist>

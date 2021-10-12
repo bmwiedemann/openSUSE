@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  8 06:51:46 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update sle-classic to version 41
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic@suse.com.tar.gz
+
+-------------------------------------------------------------------
 Tue Sep 21 19:40:12 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 41.0:
