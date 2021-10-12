@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  7 08:03:40 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- config.postfix not updatet after lmdb switch
+  (bsc#1190945)
+  Adapt config.postfix
+
+-------------------------------------------------------------------
 Thu Aug 26 13:59:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - postfix master.cf: to include "submissions" service

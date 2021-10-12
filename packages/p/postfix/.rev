@@ -2032,4 +2032,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>915779</requestid>
   </revision>
+  <revision rev="210" vrev="5">
+    <srcmd5>cae31954d99c5f917231f7ea22e34bc2</srcmd5>
+    <version>3.6.2</version>
+    <time>1634068104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924493</requestid>
+  </revision>
 </revisionlist>
