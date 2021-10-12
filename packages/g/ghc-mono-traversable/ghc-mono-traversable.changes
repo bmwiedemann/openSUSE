@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 27 13:51:39 UTC 2021 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.15.3.
+  ## 1.0.15.3
+
+  * Compile with GHC 9.2 (`Option` removed from `base-4.16`)
+    [#199](https://github.com/snoyberg/mono-traversable/issues/199)
+
+-------------------------------------------------------------------
+Wed Sep 22 08:50:31 UTC 2021 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.15.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Sep 20 07:10:54 UTC 2021 - psimons@suse.com
+
+- Update mono-traversable to version 1.0.15.2.
+  ## 1.0.15.2
+
+  * Support transformers 0.6.0.0 [#196](https://github.com/snoyberg/mono-traversable/issues/196)
+  * Compile with GHC 9 [#193](https://github.com/snoyberg/mono-traversable/pull/193)
+
+-------------------------------------------------------------------
 Wed Aug  4 10:32:03 UTC 2021 - psimons@suse.com
 
 - Update mono-traversable to version 1.0.15.1 revision 1.
