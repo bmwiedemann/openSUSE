@@ -44,6 +44,8 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 Patch2:         0002-Fix-the-openSUSE-executable-names.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Backport-LLVM-13-fix-from-shiboken6.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -132,6 +134,7 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
 %endif

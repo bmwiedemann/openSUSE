@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:52:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Backport change from pyside6:
+  * 0001-Backport-LLVM-13-fix-from-shiboken6.patch
+
+-------------------------------------------------------------------
 Sun Jun 27 17:11:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the QtWebKit build dependency.
