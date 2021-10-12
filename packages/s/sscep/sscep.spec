@@ -18,7 +18,7 @@
 
 
 Name:           sscep
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        A command line client for the SCEP protocol
 License:        BSD-3-Clause-Attribution AND OpenSSL
@@ -27,7 +27,7 @@ URL:            https://github.com/certnanny/sscep
 Source:         https://github.com/certnanny/sscep/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-devel >= 1.1.0
 
 %description
 Simple SCEP (Simple Certificate Enrollment Protocol) client with
@@ -37,7 +37,7 @@ modifications for engine support & more.
 %setup -q
 
 %build
-%cmake
+%cmake -DENABLE_ENGINES=ON
 
 %install
 %cmake_install

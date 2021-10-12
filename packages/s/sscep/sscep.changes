@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 29 22:06:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0
+  * Added auto-selection of default protection algorithms (-E, -S
+    and -F) based on getcaps, unless specified explicitly.
+  * Added parameter -W sec to wait for network connectivity
+    (default 0).
+  * Engines are now disabled by default and need to be enabled by
+    ./configure --enable-engines or cmake . -DENABLE_ENGINES=ON
+  * Compatible with OpenSSL 3.0.0
+  * Removed support for OpenSSL < 1.1.0
+
+-------------------------------------------------------------------
 Thu Aug 19 18:58:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.1
