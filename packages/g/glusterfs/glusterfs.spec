@@ -17,16 +17,16 @@
 
 
 Name:           glusterfs
-Version:        9.1
+Version:        9.3
 Release:        0
 Summary:        Aggregating distributed file system
 License:        GPL-2.0-only OR LGPL-3.0-or-later
 Group:          System/Filesystems
-URL:            http://www.gluster.org/
+URL:            https://www.gluster.org/
 
 #Git-Clone:	https://github.com/gluster/glusterfs
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
-Source:         https://download.gluster.org/pub/gluster/glusterfs/9/9.1/glusterfs-9.1.tar.gz
+Source:         https://download.gluster.org/pub/gluster/glusterfs/9/%version/glusterfs-%version.tar.gz
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -155,6 +155,8 @@ links.
 %configure \
 %if !(0%{?suse_version} >= 1550)
 	--disable-linux-io_uring \
+%else
+	--with-mountutildir="%_sbindir" \
 %endif
 	--disable-static --with-ipv6-default
 %make_build
@@ -211,7 +213,6 @@ rm -fv "%buildroot/%_sbindir/conf.py"
 %config %_sysconfdir/%name/thin*
 %_bindir/fusermount-glusterfs
 %_bindir/glusterfind
-/sbin/mount.%name
 %_libexecdir/ganesha/
 %_libexecdir/%name/
 %_libdir/%name/
@@ -219,6 +220,11 @@ rm -fv "%buildroot/%_sbindir/conf.py"
 %_sbindir/gcron.py
 %_sbindir/gf_attach
 %_sbindir/gfind_missing_files
+%if 0%{?suse_version} >= 1550
+%_sbindir/mount.%name
+%else
+/sbin/mount.%name
+%endif
 %_sbindir/snap_scheduler.py
 %_datadir/glusterfs/
 %_mandir/man*/*
