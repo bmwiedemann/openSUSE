@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-Unique
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name Unique
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.7.8
+Version:        0.4.7.9
 Release:        0
 Summary:        It provides the functionality like unix "uniq" utility
 License:        BSD-3-Clause
