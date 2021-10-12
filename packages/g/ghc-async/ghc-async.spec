@@ -19,7 +19,7 @@
 %global pkg_name async
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Run IO operations asynchronously and wait for their results
 License:        BSD-3-Clause

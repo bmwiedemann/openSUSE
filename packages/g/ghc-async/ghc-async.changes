@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:57:09 UTC 2021 - psimons@suse.com
+
+- Update async to version 2.2.4.
+  ## Changes in 2.2.4:
+
+   - Support for GHC 9.2
+
+-------------------------------------------------------------------
 Fri Feb 19 23:02:58 UTC 2021 - psimons@suse.com
 
 - Update async to version 2.2.3.
