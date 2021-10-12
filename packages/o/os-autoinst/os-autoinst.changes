@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 12 16:14:09 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634046033.a9024b37:
+  * validate_script_output: Fix static timeout when typing command
+  * testapi: Fix POD parsing for "distri->script_run" with escaping
+  * Reformat code to current perltidy style
+  * tools/tidy: Disable aligning assignments
+  * Revert "qemu: fall back to HDDSIZEGB value, even for backing file"
+  * Use proper perl "signatures" in OpenQA::Isotovideo
+  * Document `imgsearch` script
+  * Add test for imgsearch script
+  * Add standalone script for using fuzzy image comparison
+  * Use proper perl "signatures" in OpenQA
+  * Use proper perl "signatures" in OpenQA::Qemu
+  * OpenQA: Simplify variable use to avoid typo
+  * CI: Allow exception for "git subrepo pull" messages
+  * git subrepo pull (merge) external/os-autoinst-common
+  * qemu: fall back to HDDSIZEGB value, even for backing file
+
+-------------------------------------------------------------------
 Thu Oct 07 14:56:56 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1633618600.9b31e877:
