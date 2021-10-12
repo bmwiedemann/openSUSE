@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  7 05:32:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.68.2:
+  + Glib: Replace all g_quark_from_static_string() by
+    g_quark_from_string()
+  + Gio:
+    - FileEnumerator: Remove refreturn to avoid memory leak
+    - ListModel::get_object(): Make it work for interface classes
+    - AppInfo::get_all(): Avoid a crash on Windows
+  + Build: MSVC build: Remove extraneous GLIBMM_API in
+    Glib::ustring
+
+-------------------------------------------------------------------
 Tue Sep 28 19:16:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add m4 BuildRequires: the generated gmmproc actually stores the

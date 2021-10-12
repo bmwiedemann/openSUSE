@@ -782,4 +782,12 @@
     <comment>New stable release (forwarded request 922060 from iznogood)</comment>
     <requestid>922107</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>4de365fb5b9199d53188a067ab0f6087</srcmd5>
+    <version>2.68.2</version>
+    <time>1634068078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923683</requestid>
+  </revision>
 </revisionlist>
