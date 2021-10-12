@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          92
-%define mainver        %major.0.1
-%define orig_version   92.0.1
+%define major          93
+%define mainver        %major.0
+%define orig_version   93.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -118,7 +118,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.32
-BuildRequires:  mozilla-nss-devel >= 3.69.1
+BuildRequires:  mozilla-nss-devel >= 3.70
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -224,8 +224,9 @@ Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
-Patch29:        mozilla-bmo1708709.patch
-Patch30:        mozilla-silence-no-return-type.patch
+Patch29:        mozilla-silence-no-return-type.patch
+Patch30:        mozilla-bmo1725828.patch
+Patch31:        mozilla-bmo531915.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -355,6 +356,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

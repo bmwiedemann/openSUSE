@@ -1,6 +1,6 @@
 # HG changeset patch
 # Parent e0751ad74e835e80041a61ea00c2a63bf6fbe2de
-# Parent  fe8ed2b997914bef9446d854a4c189fb69394bac
+# Parent  30e1a232528000620a3874de06ea515e5ef8e77f
 
 diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
 --- a/browser/branding/branding-common.mozbuild
@@ -24,13 +24,13 @@ diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/brandi
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -252,20 +252,23 @@
+@@ -236,20 +236,23 @@
+ @RESPATH@/browser/chrome/browser@JAREXT@
+ @RESPATH@/browser/chrome/browser.manifest
  @RESPATH@/chrome/pdfjs.manifest
  @RESPATH@/chrome/pdfjs/*
  @RESPATH@/chrome/toolkit@JAREXT@
  @RESPATH@/chrome/toolkit.manifest
- @RESPATH@/chrome/recording.manifest
- @RESPATH@/chrome/recording/*
  #ifdef MOZ_GTK
  @RESPATH@/browser/chrome/icons/default/default16.png
 +@RESPATH@/browser/chrome/icons/default/default22.png

@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  c8bc6be5267f16016d506973a2d6a7c58a1cd441
+# Parent  0dd1b6436342922d434e7c818875b2a02a73b5ed
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,22 +31,12 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4635,25 +4636,37 @@ nsresult Preferences::InitInitialObjects
-   // application pref files for backwards compatibility.
-   static const char* specialFiles[] = {
- #if defined(XP_MACOSX)
-     "macprefs.js"
- #elif defined(XP_WIN)
-     "winpref.js"
- #elif defined(XP_UNIX)
+@@ -4634,16 +4635,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
-+    , "" // placeholder for KDE  (empty is otherwise harmless)
  #  if defined(_AIX)
      ,
      "aix.js"
  #  endif
- #elif defined(XP_BEOS)
-     "beos.js"
  #endif
    };
  
@@ -69,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4718,17 +4731,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4708,17 +4720,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -91,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -117,16 +117,20 @@ EXPORTS.mozilla += [
+@@ -118,16 +118,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -356,7 +346,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -93,17 +93,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
+@@ -91,17 +91,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
          "../components/printingui",
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
@@ -1214,7 +1204,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  #include "nsISupports.h"
  #include "nsString.h"
  #include "nsReadableUtils.h"
-@@ -1024,17 +1024,17 @@ nsresult nsOSHelperAppService::GetHandle
+@@ -1025,17 +1025,17 @@ nsresult nsOSHelperAppService::GetHandle
  
  nsresult nsOSHelperAppService::OSProtocolHandlerExists(
      const char* aProtocolScheme, bool* aHandlerExists) {
@@ -1233,7 +1223,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
      nsCOMPtr<nsIHandlerService> handlerSvc =
          do_GetService(NS_HANDLERSERVICE_CONTRACTID, &rv);
      if (NS_SUCCEEDED(rv) && handlerSvc) {
-@@ -1044,17 +1044,17 @@ nsresult nsOSHelperAppService::OSProtoco
+@@ -1045,17 +1045,17 @@ nsresult nsOSHelperAppService::OSProtoco
    }
  
    return rv;
@@ -1252,7 +1242,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
  NS_IMETHODIMP nsOSHelperAppService::IsCurrentAppOSDefaultForProtocol(
      const nsACString& aScheme, bool* _retval) {
-@@ -1147,17 +1147,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1148,17 +1148,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
    nsresult rv =
        LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                 minorType, mime_types_description, true);
@@ -1271,7 +1261,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
  
      rv = LookUpTypeAndDescription(NS_ConvertUTF8toUTF16(aFileExt), majorType,
                                    minorType, mime_types_description, false);
-@@ -1258,17 +1258,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
+@@ -1261,17 +1261,17 @@ already_AddRefed<nsMIMEInfoBase> nsOSHel
  
    // Now look up our extensions
    nsAutoString extensions, mime_types_description;
@@ -1293,7 +1283,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -136,16 +136,17 @@ FINAL_LIBRARY = "xul"
+@@ -137,16 +137,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1855,7 +1845,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2021,62 +2022,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2023,62 +2024,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {

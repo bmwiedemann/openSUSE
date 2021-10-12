@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Oct  1 18:33:33 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 93.0
+  * supports the new AVIF image format
+  * PDF viewer now supports filling more forms (XFA-based forms)
+  * now blocks downloads that rely on insecure connections,
+    protecting against potentially malicious or unsafe downloads
+  * Improved web compatibility for privacy protections with SmartBlock 3.0
+  * Introducing a new referrer tracking protection in Strict Tracking
+    Protection and Private Browsing
+  * TLS ciphersuites that use 3DES have been disabled. Such
+    ciphersuites can only be enabled when deprecated versions of
+    TLS are also enabled
+  * The download panel now follows the Firefox visual styles
+  MFSA 2021-43 (bsc#1191332)
+  * CVE-2021-38496 (bmo#1725335)
+    Use-after-free in MessageTask
+  * CVE-2021-38497 (bmo#1726621)
+    Validation message could have been overlaid on another origin
+  * CVE-2021-38498 (bmo#1729642)
+    Use-after-free of nsLanguageAtomService object
+  * CVE-2021-32810 (bmo#1729813)
+    https://github.com/crossbeam-rs/crossbeam/security/advisories/GHSA-pqqp-xmhj-wgcw)
+    Data race in crossbeam-deque
+  * CVE-2021-38500 (bmo#1725854, bmo#1728321)
+    Memory safety bugs fixed in Firefox 93, Firefox ESR 78.15,
+    and Firefox ESR 91.2
+  * CVE-2021-38501 (bmo#1685354, bmo#1715755, bmo#1723176)
+    Memory safety bugs fixed in Firefox 93 and Firefox ESR 91.2
+  * CVE-2021-38499 (bmo#1667102, bmo#1723170, bmo#1725356, bmo#1727364)
+    Memory safety bugs fixed in Firefox 93
+- removed obsolete mozilla-bmo1708709.patch
+- require NSS >= 3.70
+- allow to override wayland detection by defining MOZ_ENABLE_WAYLAND
+  explicitely as 0 or 1
+- fix aarch64 build by updating constraints
+- add mozilla-bmo1725828.patch to fix widevine (bsc#1190842)
+- add mozilla-bmo531915.patch to fix build for i586
+
+-------------------------------------------------------------------
 Sat Sep 25 10:10:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 92.0.1
