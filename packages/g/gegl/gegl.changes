@@ -1,8 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct  3 17:37:22 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable docs until the upstream bug is solved
+  https://gitlab.gnome.org/GNOME/gegl/-/issues/294#note_1281553
+
+-------------------------------------------------------------------
 Thu Sep 30 14:28:08 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Also disable luajit on ppc64le and s390x. Package is
   unavailable.
+
+-------------------------------------------------------------------
+Sat Sep 18 22:50:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.32: 
+  - Docs/testing:
+    - Fixes and improvements to the test system ands it integration
+      for comparing/keeping track of hashes of operation output by
+      John Marshall including and overhaul of reference
+      compositions and hashes, improving development as well as
+      documentation.
+  - Operations:
+     - distance-transform: 
+     - openexr: fix build with newer OpenEXR 3
+     - negative-darkroom: contrast boost and illuminant adjustment
+       parameter, reworked emulsion dye model, UI improvements,
+       more black and white paper presets.
+     - fill-path: 32bit float RGB and CMYK color processing, using
+       ctx as renderer.
+  - Core:
+    - Fixing of leaks and dead code removal in json op handling,
+      branch hints in buffer tile handling.
+- drop patch gegl-openexr3.patch:
+  Fix upstream
 
 -------------------------------------------------------------------
 Wed Apr 14 11:44:17 UTC 2021 - pgajdos@suse.com

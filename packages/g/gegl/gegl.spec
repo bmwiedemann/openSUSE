@@ -22,8 +22,10 @@
 %bcond_without luajit
 %endif
 
+%bcond_with gegl_docs
+
 Name:           gegl
-Version:        0.4.30
+Version:        0.4.32
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,8 +33,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# https://gitlab.gnome.org/GNOME/gegl/-/issues/284
-Patch0:         gegl-openexr3.patch
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
@@ -168,7 +168,11 @@ export LD_PRELOAD="/usr/lib64/libgomp.so.1"
 	%endif
 	-Dworkshop=true \
 	-Djasper=disabled \
+%if %{with gegl_docs}
 	-Ddocs=true \
+%else
+	-Ddocs=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -220,8 +224,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/vala/vapi/gegl-0.4.vapi
 
 %files doc
-%doc AUTHORS docs/ChangeLog docs/NEWS.txt
+%doc AUTHORS docs/ChangeLog NEWS
+%if %{with gegl_docs}
 %doc %{_datadir}/gtk-doc/html/gegl/
+%endif
 
 %files -n %{name}-0_4-lang -f %{name}-0.4.lang
 
