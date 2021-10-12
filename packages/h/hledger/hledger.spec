@@ -19,12 +19,13 @@
 %global pkg_name hledger
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.22.2
+Version:        1.23
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
@@ -46,8 +47,8 @@ BuildRequires:  ghc-hledger-lib-devel
 BuildRequires:  ghc-lucid-devel
 BuildRequires:  ghc-math-functions-devel
 BuildRequires:  ghc-megaparsec-devel
+BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-old-time-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-regex-tdfa-devel
 BuildRequires:  ghc-rpm-macros
@@ -97,7 +98,8 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver base-compat-batteries '<0.12' '<0.13'
+cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver 'base-compat-batteries' '<0.12' '<0.13'
 
 %build
 %ghc_lib_build
