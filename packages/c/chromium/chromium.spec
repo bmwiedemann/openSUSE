@@ -43,7 +43,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        94.0.4606.71
+Version:        94.0.4606.81
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -98,6 +98,8 @@ Patch64:        chromium-94-CustomSpaces-include.patch
 Patch65:        chromium-94-sql-no-assert.patch
 Patch67:        chromium-older-harfbuzz.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
+Patch69:        chromium-93-InkDropHost-crash.patch
+Patch70:        pipewire-do-not-typecheck-the-portal-session_handle.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -680,6 +682,7 @@ myconf_gn+=" host_cpu=\"riscv64\""
 %endif
 myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
+myconf_gn+=" dcheck_always_on=false"
 myconf_gn+=" enable_nacl=false"
 %if %{with swiftshader}
 myconf_gn+=" use_swiftshader_with_subzero=true"

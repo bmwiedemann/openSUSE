@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct  9 19:13:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Disable DCHECK(): that's for debug only
+
+-------------------------------------------------------------------
+Sat Oct  9 12:53:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add pipewire-do-not-typecheck-the-portal-session_handle.patch:
+  fix WebRTC with xdg-desktop-portal 1.10
+
+-------------------------------------------------------------------
+Fri Oct  8 19:33:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 94.0.4606.81 (boo#1191463):
+  * CVE-2021-37977: Use after free in Garbage Collection
+  * CVE-2021-37978: Heap buffer overflow in Blink
+  * CVE-2021-37979: Heap buffer overflow in WebRTC
+  * CVE-2021-37980: Inappropriate implementation in Sandbox
+- Re-add after accidental deletion:
+  * chromium-93-InkDropHost-crash.patch
+
+-------------------------------------------------------------------
 Sun Oct  3 09:38:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 94.0.4606.54 (boo#1190765):
