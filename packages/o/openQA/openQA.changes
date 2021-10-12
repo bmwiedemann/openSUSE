@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 12 14:41:53 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634049705.509fad0ac:
+  * CI: Add retry for chrome workaround
+  * CI: Move test run instructions to separate file
+  * t: Fix path in t/01-style.t
+  * Downgrade chromedriver from problematic version
+  * git subrepo pull (merge) external/os-autoinst-common
+  * CI: Allow exception for "git subrepo pull" messages
+  * Use consistent abbreviated SPDX license identifiers
+  * ci: Always checkout sha in build_autoinst.sh
+  * workflows/commit_message_checker.yml: Fix file based prefix
+  * Pass all parameters to productdir()
+
+-------------------------------------------------------------------
 Fri Oct 08 00:03:19 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1633624491.52d9e3c63:
