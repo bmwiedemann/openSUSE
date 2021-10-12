@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 14:56:52 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changed Requires python to python-base (bsc#1191199)
+
+-------------------------------------------------------------------
 Mon Aug 16 21:18:29 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Updated kernel version constants for all SUSE libraries (bsc#1189483)

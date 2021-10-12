@@ -33,7 +33,7 @@ URL:            https://github.com/g23guy/sca-patterns-base
 Source:         %{name}-%{version}.tar.gz
 Requires:       bash
 Requires:       perl
-Requires:       python
+Requires:       python-base
 BuildArch:      noarch
 
 %description
