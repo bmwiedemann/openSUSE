@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  3 16:28:39 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- New entries in constraints file because of missing build nodes with 
+  18GB of memory for s390x and PPC:
+  - 2GB for memoryperjob at x86, riscv64 and s390x
+  - aarch64 3GB for memoryperjob because of "Out of memory" with 2GB
+  - PPC64 and PPC64le with 1GB for memoryperjob because of missing 
+    node capacity
+
+-------------------------------------------------------------------
 Sat Dec 19 15:05:39 UTC 2020 - Christoph Junghans <junghans@votca.org>
 
 - dropped 3308.patch - merged upstream 
