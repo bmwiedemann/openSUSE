@@ -66,4 +66,16 @@
     <comment>- fixed JIRA number in the initial changelog</comment>
     <requestid>923063</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>46dd5b05e56068080b0b444d561b8bd2</srcmd5>
+    <version>21.3.4</version>
+    <time>1634068180</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Removed-proprietary-mentions-from-file-headers-1023.patch
+  * upstream patch, which replaces proprietary Intel license with
+    OpenSource MIT license (github issue#183)
+- this addresses the legal issues we had with checkin for sle15-sp4/
+  Leap 15.4</comment>
+    <requestid>924811</requestid>
+  </revision>
 </revisionlist>

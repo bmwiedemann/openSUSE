@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 12 08:15:05 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Removed-proprietary-mentions-from-file-headers-1023.patch
+  * upstream patch, which replaces proprietary Intel license with
+    OpenSource MIT license (github issue#183)
+- this addresses the legal issues we had with checkin for sle15-sp4/
+  Leap 15.4
+
+-------------------------------------------------------------------
 Mon Oct  4 15:13:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in the initial changelog 
