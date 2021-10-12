@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-generic-data
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name generic-data
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.2.0
+Version:        0.9.2.1
 Release:        0
 Summary:        Deriving instances with GHC.Generics and related utilities
 License:        MIT
@@ -28,15 +28,12 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ap-normalize-devel
 BuildRequires:  ghc-base-orphans-devel
-BuildRequires:  ghc-cabal-doctest-devel
 BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-ghc-boot-th-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-show-combinators-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-generic-lens-devel
 BuildRequires:  ghc-inspection-testing-devel
 BuildRequires:  ghc-one-liner-devel
