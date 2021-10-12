@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 23 05:14:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * janus.service
+
+-------------------------------------------------------------------
 Mon Sep  6 12:53:58 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - added janus-gateway-rpmlintrc
