@@ -1981,8 +1981,10 @@ unsorted:
   - clang11-devel 
   - clang11-devel-32bit: [x86_64] 
   - clang11-doc 
+  - clang12 
   - clang12-devel 
   - clang12-devel-32bit: [x86_64] 
+  - clang12-doc 
   - clang13-devel 
   - clang13-devel-32bit: [x86_64] 
   - clang7 
@@ -8697,6 +8699,7 @@ unsorted:
   - libLTO10-32bit: [x86_64] 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
+  - libLTO12 
   - libLTO12-32bit: [x86_64] 
   - libLTO13-32bit: [x86_64] 
   - libLTO7 
@@ -9934,6 +9937,7 @@ unsorted:
   - libclang10-32bit: [x86_64] 
   - libclang11 
   - libclang11-32bit: [x86_64] 
+  - libclang12 
   - libclang12-32bit: [x86_64] 
   - libclang13-32bit: [x86_64] 
   - libclang7 
@@ -14866,7 +14870,7 @@ unsorted:
   - lldb12: [x86_64] 
   - lldb12-devel: [x86_64] # devel package of dvd:libLLVM12 
   - lldb13: [x86_64] 
-  - lldb13-devel: [x86_64] # devel package of dvd:libLTO13 
+  - lldb13-devel: [x86_64] # devel package of dvd:clang13-doc 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb9: [x86_64] 
