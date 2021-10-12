@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 11 16:54:27 MDT 2021 - carnold@suse.com
+
+- Fix broken build in Factory (bsc#1166289)
+  0006-src-avoid-warnings-from-use-of-G_GNUC_FALLTHROUGH.patch
+
+-------------------------------------------------------------------
 Tue Jul 20 13:22:18 MDT 2021 - carnold@suse.com
 
 - bsc#1185531 - virt-viewer 10.0 second display handling

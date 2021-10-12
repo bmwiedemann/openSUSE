@@ -550,4 +550,12 @@
     <comment>Fix for bsc#1185531 - virt-viewer 10.0 second display handling</comment>
     <requestid>907356</requestid>
   </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>8b01b1ef8c98db5f93843d847076e95e</srcmd5>
+    <version>10.0</version>
+    <time>1634068174</time>
+    <user>dimstar_suse</user>
+    <comment>Fix broken virt-viewer build in Factory</comment>
+    <requestid>924776</requestid>
+  </revision>
 </revisionlist>

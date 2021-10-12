@@ -1,0 +1,63 @@
+Subject: src: avoid warnings from use of G_GNUC_FALLTHROUGH
+From: Daniel P. Berrangé berrange@redhat.com Tue Jul 27 16:25:12 2021 +0100
+Date: Tue Jul 27 16:50:04 2021 +0100:
+Git: 2e6adf9b85cee3b85a9f7da8d976f3dd022afaa3
+
+Since glib >= 2.69 we get warnings:
+
+../src/ovirt-foreign-menu.c: In function 'ovirt_foreign_menu_next_async_step':
+../src/ovirt-foreign-menu.c:319:13: error: Not available before 2.60 [-Werror]
+  319 |         G_GNUC_FALLTHROUGH;
+      |             ^~~~~~~~~~~~~~~
+../src/ovirt-foreign-menu.c:345:13: error: Not available before 2.60 [-Werror]
+  345 |         G_GNUC_FALLTHROUGH;
+      |             ^~~~~~~~~~~~~~~
+../src/ovirt-foreign-menu.c:351:13: error: Not available before 2.60 [-Werror]
+  351 |         G_GNUC_FALLTHROUGH;
+      |             ^~~~~~~~~~~~~~~
+../src/ovirt-foreign-menu.c:357:13: error: Not available before 2.60 [-Werror]
+  357 |         G_GNUC_FALLTHROUGH;
+      |             ^~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+
+GLib is right to warn about this, since it does not know that we
+provided our own back-compat definition of the macro. For now we have to
+temporarily purge glib's macro entirely in order to get rid of the
+warning that is bogus for our usage.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+diff --git a/src/ovirt-foreign-menu.c b/src/ovirt-foreign-menu.c
+index c19e913..91b6824 100644
+--- a/src/ovirt-foreign-menu.c
++++ b/src/ovirt-foreign-menu.c
+@@ -31,12 +31,23 @@
+ #include "virt-viewer-util.h"
+ #include "glib-compat.h"
+ 
+-#if !GLIB_CHECK_VERSION(2, 60, 0)
+-# if __GNUC_PREREQ (7, 0)
+-#  define G_GNUC_FALLTHROUGH __attribute__((fallthrough))
+-# else
+-#  define G_GNUC_FALLTHROUGH do {} while(0)
+-# endif
++/* GLib 2.69 annotated macros with version tags, and
++ * since we set GLIB_VERSION_MAX_ALLOWED  to 2.48
++ * it complains if we use G_GNUC_FALLTHROUGH at
++ * all. We temporarily purge the GLib definition
++ * of G_GNUC_FALLTHROUGH and define it ourselves.
++ * When we set min glib >= 2.60, we can delete
++ * all this
++ */
++#ifndef __GNUC_PREREQ
++# define __GNUC_PREREQ(maj, min) \
++    ((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
++#endif
++#undef G_GNUC_FALLTHROUGH
++#if __GNUC_PREREQ (7, 0)
++# define G_GNUC_FALLTHROUGH __attribute__((fallthrough))
++#else
++# define G_GNUC_FALLTHROUGH do {} while(0)
+ #endif
+ 
+ typedef enum {
