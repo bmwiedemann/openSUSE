@@ -19,13 +19,12 @@
 %global pkg_name random
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Pseudo-random number generation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
@@ -36,15 +35,13 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-mwc-random-devel
-BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-smallcheck-devel
+BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-expected-failure-devel
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-inspection-testing-devel
 BuildRequires:  ghc-tasty-smallcheck-devel
-BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-transformers-devel
 %endif
 
 %description
@@ -80,7 +77,7 @@ As an example, here is how you can simulate rolls of a six-sided die using
 pureGen = mkStdGen 42 >>> runStateGen_ pureGen (replicateM 10 . rollM) ::
 [Word] [1,1,3,2,4,5,3,4,6,2]
 
-The monadic adapter 'System.Random.Stateful.runGenState_' is used here to lift
+The monadic adapter 'System.Random.Stateful.runStateGen_' is used here to lift
 the pure pseudo-random number generator 'pureGen' into the
 'System.Random.Stateful.StatefulGen' context.
 
@@ -106,7 +103,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
