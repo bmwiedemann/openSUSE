@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 29 07:15:05 UTC 2021 - psimons@suse.com
+
+- Update warp-tls to version 3.3.2.
+  ## 3.3.2
+
+  * Providing the Internal module.
+    [#841](https://github.com/yesodweb/wai/issues/841)
+
+-------------------------------------------------------------------
 Thu May 27 17:16:28 UTC 2021 - psimons@suse.com
 
 - Update warp-tls to version 3.3.1.
