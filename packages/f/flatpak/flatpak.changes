@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct  9 12:12:12 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.1:
+  + The security fix in the 1.12.0 release failed when used with
+    some older versions of libseccomp (that don't know about the
+    new syscalls).
+
+-------------------------------------------------------------------
+Fri Oct  8 14:39:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.0:
+  + This is the first stable release in the 1.12.x series. The
+    major changes in this series is the support for better control
+    of sub-sandboxes, as used by the steam flatpak.
+  + In addition, this release fixes a security vulnerability in the
+    portal support. Some recently added syscalls were not blocked
+    by the seccomp rules which allowed the application to create
+    sub-sandboxes which can confuse the sandboxing verification
+    mechanisms of the portal. This has been fixed by extending the
+    seccomp rules (boo#1191507, CVE-2021-41133)
+  + Some test fixes
+  + Support for specifying the flatpak binary to use during exports
+  + Install translations for all languages in the locale, not just
+    the ones in LC_MESSAGES.
+  + Fix progress reporting in flatpak fsck
+  + Handle cases where /var/tmp is a symlink
+  + Expose /etc/gai.conf to the sandbox
+  + Fix the parental control checks for root
+  + Handle missing /etc/ld.so.cache (musl)
+  + Updated translations
+
+-------------------------------------------------------------------
 Wed Aug 25 20:54:23 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.11.3.

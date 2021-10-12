@@ -674,4 +674,12 @@
     <comment></comment>
     <requestid>914556</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>00a944403d1fda2bf2d0bc0afad49ee1</srcmd5>
+    <version>1.12.1</version>
+    <time>1634068135</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 924613 from alarrosa)</comment>
+    <requestid>924746</requestid>
+  </revision>
 </revisionlist>
