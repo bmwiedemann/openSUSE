@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  6 13:42:23 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed running the GitHub Actions locally ("rake actions:run"),
+  allow settting additional Docker options in the YAML config
+  or via DOCKER_OPTIONS environment variable (bsc#1191400)
+- 0.2.42
+
+-------------------------------------------------------------------
 Thu Jun 24 11:44:52 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Move the "sle_latest" build target to SLE15-SP4 (bsc#1187677)

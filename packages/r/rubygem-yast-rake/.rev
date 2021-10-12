@@ -308,4 +308,12 @@
 - Fix URL in .spec file</comment>
     <requestid>906424</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>44819f96ac4fa1ece7f8f229538f6085</srcmd5>
+    <version>0.2.42</version>
+    <time>1634068074</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.2.42</comment>
+    <requestid>923663</requestid>
+  </revision>
 </revisionlist>
