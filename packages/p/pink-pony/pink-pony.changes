@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 11 13:57:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * 0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
+
+-------------------------------------------------------------------
 Thu Mar 12 11:50:00 UTC 2015 - lnussel@suse.de
 
 - go back to using libglfw2

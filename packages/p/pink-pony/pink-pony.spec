@@ -27,7 +27,10 @@ Source0:        http://pink-pony.googlecode.com/files/pink-pony-%{version}.tar.g
 Patch0:         datadir.patch
 Patch1:         script.patch
 Patch2:         pink-pony-1.4.1.diff
-
+# PATCH-FIX-UPSTREAM -- libraries changed in openexr 3.1
+%if 0%{?suse_version} > 1500
+Patch3:         0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
+%endif
 BuildRequires:  DevIL-devel
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_mixer-devel
@@ -63,10 +66,7 @@ The last pony standing wins the game.
  This package contains architecture-independent game data
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 export CCFLAGS="%optflags"
