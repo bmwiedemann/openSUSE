@@ -336,4 +336,19 @@
   pkgconfig(mutter-clutter-8) BuildRequires (forwarded request 914970 from dimstar)</comment>
     <requestid>915442</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>50effe4bf3166a0750cc95c45ea6d981</srcmd5>
+    <version>3.42.0</version>
+    <time>1634068170</time>
+    <user>dimstar_suse</user>
+    <comment>- Split zsh-completion support out into it's own package.
+- Enable lto, gpaste now builds with it enabled.
+- Update to version 3.42.0:
+  + Port to gnome-shell 41
+  + Updated translations.
+- Remove gpaste-gnome-41.patch: It is fixed in upstream.
+- Replace syntax packageand to boolean dependencies. 
+</comment>
+    <requestid>924904</requestid>
+  </revision>
 </revisionlist>

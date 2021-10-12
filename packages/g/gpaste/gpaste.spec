@@ -19,15 +19,13 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.40.2
+Version:        3.42.0
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
 Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 Source0:        http://www.imagination-land.org/files/%{name}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE gpaste-gnome-41.patch dimstar@opensuse.org -- Fix build against GNOME 41
-Patch0:         gpaste-gnome-41.patch
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
@@ -102,7 +100,7 @@ Summary:        GPaste status menu extension for GNOME Shell
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 BuildArch:      noarch
 
 %description -n gnome-shell-extension-gpaste
@@ -111,16 +109,21 @@ GPaste is a clipboard management daemon with DBus interface.
 This GNOME Shell extension adds a clipboard item in the status
 menu, and provides the ability to copy/paste text.
 
+%package zsh-completion
+Summary:        Zsh tab-completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+GPaste is a clipboard management daemon with DBus interface.
+This package provides zsh tab-completion for %{name}.
+
 %lang_package
 
 %prep
-%setup -q
-%if %{pkg_vcmp mutter-devel > 41}
-%patch0 -p1
-%endif
+%autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
 %meson
 %meson_build
 
@@ -142,13 +145,9 @@ desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=A
 %{_datadir}/dbus-1/services/org.gnome.GPaste.service
 %{_datadir}/glib-2.0/schemas/org.gnome.GPaste.gschema.xml
 %{_datadir}/metainfo/org.gnome.GPaste.Ui.appdata.xml
-%{_datadir}/zsh/site-functions/_gpaste-client
 %{_mandir}/man1/gpaste-client.1%{?ext_man}
 %{_userunitdir}/org.gnome.GPaste.Ui.service
 %{_userunitdir}/org.gnome.GPaste.service
-# Bah, we need to own this...
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
 
 %files -n libgpaste13
 %{_libdir}/libgpaste.so.*
@@ -172,6 +171,11 @@ desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=A
 %{_datadir}/gnome-shell/extensions/GPaste@gnome-shell-extensions.gnome.org/
 %{_datadir}/gnome-shell/search-providers/org.gnome.GPaste.search-provider.ini
 %{_datadir}/gnome-control-center/keybindings/42-gpaste.xml
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_gpaste-client
 
 %files lang -f GPaste.lang
 
