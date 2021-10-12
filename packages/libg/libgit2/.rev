@@ -442,4 +442,18 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment></comment>
     <requestid>907108</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>79bcaac65d003be6091f96c193551d4e</srcmd5>
+    <version>1.2.0</version>
+    <time>1634068088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add support for commit graphs
+  * Add support for multi-pack indexes
+  * And core.longpaths support
+  * Add support for additional SSH hostkey types
+  * Add NO_PROXY environment variable support
+  * Developer visible changes and bug fixes</comment>
+    <requestid>916120</requestid>
+  </revision>
 </revisionlist>
