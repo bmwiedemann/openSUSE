@@ -17,14 +17,13 @@
 
 
 Name:           fs-uae
-Version:        3.0.5
+Version:        3.1.35
 Release:        0
 Summary:        Amiga emulator with on-screen GUI and online play support
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
 Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-Work-around-an-incompatibility-with-C-17.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -68,7 +67,6 @@ using the cursor keys and right Ctrl/Alt keys).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %if 0%{?sle_version} == 150000
