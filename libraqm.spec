@@ -18,18 +18,20 @@
 
 %define sover 0
 Name:           libraqm
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Complex Textlayout Library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/HOST-Oman/libraqm
-Source:         https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.gz
-Patch1:         libraqm-fix-cursor_position-GB8a.patch
+Source:         https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Pass_version_to_meson_library.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc
 BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig(harfbuzz) >= 1.7.2
 
 %description
@@ -39,6 +41,8 @@ text layout and provides a convenient API.
 %package -n %{name}%{sover}
 Summary:        Complex Textlayout Library
 Group:          System/Libraries
+# The license and the generic %%doc files were moved to the library subpackage
+Conflicts:      libraqm-doc < 0.7.2
 
 %description -n %{name}%{sover}
 Library that encapsulates the logic for complex
@@ -63,26 +67,27 @@ text layout and provides a convenient API.
 
 %prep
 %autosetup -n raqm-%{version} -p1
-%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1500
-sed s:python:%{__python3}:g -i tests/Makefile.in #Fixed in next release on upstream
-%endif
 
 %build
-%configure --enable-gtk-doc
-%make_build
-
-%check
-export LC_ALL=C.utf8
-%make_build check
+%meson -Ddocs=true
+%meson_build
 
 %install
-%make_install
-rm -fv %{buildroot}/%{_libdir}/*.a %{buildroot}/%{_libdir}/*.la
+%meson_install
+
+%check
+# python 3.6 is too old for running tests
+%if 0%{suse_version} > 1500
+export LC_ALL=C.utf8
+%meson_test
+%endif
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
+%license COPYING
+%doc AUTHORS NEWS README
 %{_libdir}/libraqm.so.*
 
 %files devel
@@ -92,8 +97,6 @@ rm -fv %{buildroot}/%{_libdir}/*.a %{buildroot}/%{_libdir}/*.la
 %{_libdir}/pkgconfig/raqm.pc
 
 %files doc
-%license COPYING
-%doc AUTHORS NEWS README
 %{_datadir}/gtk-doc/html/raqm
 
 %changelog
