@@ -20,7 +20,7 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.1.2
+Version:        1.2.2
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Source:         node_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
-Patch0:         capture-permission-denied-error-energy_uj.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14

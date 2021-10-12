@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct  1 11:18:31 UTC 2021 - Dominik Gedon <dominik.gedon@suse.com>
+
+- Update to 1.2.2
+  * Bug fixes
+     Fix processes collector long int parsing #2112
+
+- Update to 1.2.1
+  * Removed
+     Remove obsolete capture permission denied error patch
+     capture-permission-denied-error-energy_uj.patch: Already included upstream
+  * Bug fixes
+     Fix zoneinfo parsing prometheus/procfs#386
+     Fix nvme collector log noise #2091
+     Fix rapl collector log noise #2092
+
+- Update to 1.2.0
+  * Changes
+     Rename filesystem collector flags to match other collectors #2012
+     Make node_exporter print usage to STDOUT #203
+  * Features
+     Add conntrack statistics metrics #1155
+     Add ethtool stats collector #1832
+     Add flag to ignore network speed if it is unknown #1989
+     Add tapestats collector for Linux #2044
+     Add nvme collector #2062
+  * Enhancements
+     Add ErrorLog plumbing to promhttp #1887
+     Add more Infiniband counters #2019
+     netclass: retrieve interface names and filter before parsing #2033
+     Add time zone offset metric #2060
+  * Bug fixes
+     Handle errors from disabled PSI subsystem #1983
+     Fix panic when using backwards compatible flags #2000
+     Fix wrong value for OpenBSD memory buffer cache #2015
+     Only initiate collectors once #2048
+     Handle small backwards jumps in CPU idle #2067
+
+-------------------------------------------------------------------
 Thu Sep 23 09:43:19 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
 
 - Apply patch to capture permission denied error for "energy_uj" file (bsc#1190535)
