@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 04 08:21:06 UTC 2021 - lnussel@suse.de
+
+- Update to version 2+git20211004.3efbea9:
+  * Ensure --root option propagates prefix properly to other scripts
+
+-------------------------------------------------------------------
 Fri Jul 23 12:26:17 UTC 2021 - lnussel@suse.de
 
 - Update to version 2+git20210723.27a0476:

@@ -442,4 +442,12 @@
   * Remove find from update-ca-certificates</comment>
     <requestid>907988</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>086e75f69c4b997e81e14687921cf585</srcmd5>
+    <version>2+git20211004.3efbea9</version>
+    <time>1634068113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>924635</requestid>
+  </revision>
 </revisionlist>
