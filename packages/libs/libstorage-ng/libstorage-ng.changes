@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Oct 11 09:52:49 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#836
+- added non-const versions of several existing functions
+- added detect_remove_info()
+- 4.4.44
+
+--------------------------------------------------------------------
 Thu Oct 7 10:08:08 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#835
