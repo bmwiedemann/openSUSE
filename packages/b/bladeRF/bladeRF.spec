@@ -19,12 +19,12 @@
 
 %define sover 2
 %define libname lib%{name}%{sover}
-%define libversion 2.2.1
-%define release_name 2021.09
+%define libversion 2.4.1
+%define release_name 2021.10
 %define bladerf_group bladerf
 %define use_syslog 0
 Name:           bladeRF
-Version:        2021.09
+Version:        2021.10
 Release:        0
 Summary:        SDR radio receiver
 License:        AGPL-3.0-or-later AND GPL-2.0-only
