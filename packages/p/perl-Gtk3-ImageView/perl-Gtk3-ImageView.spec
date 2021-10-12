@@ -18,7 +18,7 @@
 
 %define cpan_name Gtk3-ImageView
 Name:           perl-Gtk3-ImageView
-Version:        9
+Version:        10
 Release:        0
 Summary:        Image viewer widget for Gtk3
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,18 +28,24 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Cairo)
 BuildRequires:  perl(Carp::Always)
-BuildRequires:  perl(Glib) >= 1.21
+BuildRequires:  perl(Glib) >= 1.210
+BuildRequires:  perl(Glib::Object::Subclass)
 BuildRequires:  perl(Gtk3)
 BuildRequires:  perl(Image::Magick)
 BuildRequires:  perl(Readonly)
 BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::MockObject)
+BuildRequires:  perl(Test::Perl::Critic)
 BuildRequires:  perl(Try::Tiny)
-Requires:       perl(Glib) >= 1.21
+BuildRequires:  perl(feature)
+Requires:       perl(Cairo)
+Requires:       perl(Glib) >= 1.210
+Requires:       perl(Glib::Object::Subclass)
 Requires:       perl(Gtk3)
 Requires:       perl(Readonly)
+Requires:       perl(feature)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libgtkimageview-devel
@@ -72,6 +78,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc README.md
+%doc Changes README README.md
+%license LICENSE
 
 %changelog
