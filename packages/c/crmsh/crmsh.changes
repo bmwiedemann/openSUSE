@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 12 09:18:09 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211012.4e74e9d1:
+  * Dev: testcases: Change origin testcases for previous change
+  * Dev: CI: change docker image as leap 15.2, and enlarge the timeout value for each CI case
+  * Fix: ui_resource: Parse lifetime option correctly (bsc#1191508)
+
+-------------------------------------------------------------------
+Thu Sep 16 05:11:54 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210916.1b3e21cc:
+  * Dev: unittest: Change unit test for previous changes
+  * Fix: bootstrap: Add /etc/crm/crm.conf and /etc/crm/profiles.yml into /etc/csync2/csync2.cfg (bsc#1190466)
+
+-------------------------------------------------------------------
 Mon Sep 13 04:20:39 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210913.d7356663:
