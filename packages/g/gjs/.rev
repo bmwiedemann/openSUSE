@@ -1656,4 +1656,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>Scripted push from GNOME:Next (forwarded request 920925 from dimstar)</comment>
     <requestid>921607</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>ce79450bbaf8cab9bc59f5e0561d92cf</srcmd5>
+    <version>1.70.0</version>
+    <time>1634068066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923578</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  4 17:12:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream crash fixer patches from stable branch:
+  + b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch: arg: Replace
+    gsize with size_t
+  + 62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch: Handle optional
+    out parameters in callbacks
+- Stop disabling lto: Following this, stop passing dtrace=true and
+  systemtap=true to meson, aswell as dropping systemtap-sdt-devel
+  BuildRequires, follow upstream default.
+- Add optional pkgconfig(gtk4) BuildRequires: meson checks for it.
+
+-------------------------------------------------------------------
 Mon Sep 20 09:59:15 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.70.0:

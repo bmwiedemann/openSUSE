@@ -24,13 +24,16 @@ License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
 Source0:        https://download.gnome.org/sources/gjs/1.70/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch -- arg: Replace gsize with size_t
+Patch0:         b9e122044a7ccc1e2a3374c680b6ea82066bfa59.patch
+# PATCH-FIX-UPSTREAM 62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch -- Handle optional out parameters in callbacks
+Patch1:         62025d4a2738a36ea5f1a7cebef08b22b5eef613.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  git
 BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  systemtap-sdt-devel
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  xorg-x11-Xvfb
 %else
@@ -46,6 +49,7 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.53.4
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(mozjs-78)
 # Hack - fix sysprof static devel requires instead
@@ -98,12 +102,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %autosetup -p1
 
 %build
-# FIXME # Doesn't play well with systemtap -- lets test this during 3.37 unstable round, do we still needed?
-%global _lto_cflags %{nil}
-
 %meson \
-	-Ddtrace=true \
-	-Dsystemtap=true \
 	-Dinstalled_tests=false \
 	%{nil}
 %meson_build
@@ -111,7 +110,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %install
 %meson_install
 
-# FIXME # Try again on next versionbump
+# FIXME # Try again on next versionbump -- version 1.70.0: does anyone know what this fixme is about?
 %check
 export DISPLAY=:98
 Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
@@ -141,6 +140,5 @@ sleep 10
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/%{name}-1.0/
-%{_datadir}/systemtap/tapset/*.stp
 
 %changelog

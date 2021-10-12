@@ -1,0 +1,27 @@
+From b9e122044a7ccc1e2a3374c680b6ea82066bfa59 Mon Sep 17 00:00:00 2001
+From: Evan Miller <emmiller@gmail.com>
+Date: Sun, 12 Sep 2021 15:22:22 -0400
+Subject: [PATCH] arg: Replace gsize with size_t
+
+This is causing problems on 32-bit ppc architecture; see
+https://gitlab.gnome.org/GNOME/glib/-/issues/2493
+---
+ gi/arg.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gi/arg.cpp b/gi/arg.cpp
+index cff40e10..0b8af141 100644
+--- a/gi/arg.cpp
++++ b/gi/arg.cpp
+@@ -1706,7 +1706,7 @@ bool gjs_value_to_g_argument(JSContext* context, JS::HandleValue value,
+ 
+     case GI_TYPE_TAG_ARRAY: {
+         GjsAutoPointer<void> data;
+-        gsize length;
++        size_t length;
+         GIArrayType array_type = g_type_info_get_array_type(type_info);
+ 
+         /* First, let's handle the case where we're passed an instance
+-- 
+GitLab
+
