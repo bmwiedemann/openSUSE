@@ -147,4 +147,17 @@
   llvm and clang optional (postgresql-llvm-optional.patch).</comment>
     <requestid>917542</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>818c7e799d6fd7376c1b078a6a7a29e5</srcmd5>
+    <version>13.4</version>
+    <time>1634068080</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building the mini and lib packages as they are now coming
+  from postgresql14.
+- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.</comment>
+    <requestid>923701</requestid>
+  </revision>
 </revisionlist>
