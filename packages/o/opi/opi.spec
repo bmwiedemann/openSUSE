@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/
 BuildArch:      noarch
 BuildRequires:  help2man
 BuildRequires:  python3
+BuildRequires:  python3-curses
 BuildRequires:  python3-lxml
 BuildRequires:  python3-requests
 BuildRequires:  python3-setuptools
@@ -35,6 +36,7 @@ Requires:       sudo
 Requires:       zypper
 # rpm --import used curl but doesn't require it explicitly
 Requires:       curl
+Requires:       python3-curses
 Requires:       python3-lxml
 Requires:       python3-requests
 Requires:       python3-termcolor

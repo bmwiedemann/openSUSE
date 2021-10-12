@@ -230,4 +230,19 @@
 </comment>
     <requestid>917142</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>133f75e390d371053ee481030d19022a</srcmd5>
+    <version>2.4.0</version>
+    <time>1634068172</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.1
+  * Changed
+    - Don't expect output to be a tty
+- Version 2.4.0
+  * Added
+    - Scrolling of results
+	- Plugin for atom editor
+</comment>
+    <requestid>924765</requestid>
+  </revision>
 </revisionlist>
