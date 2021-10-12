@@ -23,6 +23,8 @@ Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- add missing 'map' include
+Patch0:         316eaea20975436.patch
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -83,7 +85,8 @@ Additional debugging data for Widelands. This package is not needed for normal
 operation.
 
 %prep
-%setup -q
+%autosetup -p1
+
 sed -i '/wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")/d' CMakeLists.txt
 sed -i 's/\(install(TARGETS ${NAME} DESTINATION \)"."\( COMPONENT ExecutableFiles)\)/\1bin\2/' cmake/WlFunctions.cmake
 sed -i 's#../share#share#g' xdg/CMakeLists.txt
