@@ -55,6 +55,7 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 11
 %endif
 
+%{!?_rpmmacrodir:%define _rpmmacrodir %{_sysconfdir}/rpm}
 # Keep in sync with macros.hpc-gnu
 # ab >= 40 - version: a.b to accompodate for old gcc version scheme of gcc < 5
 %global hpc_gnu_bin_version %{?c_f_ver:-%(v=%c_f_ver; [ $v -lt 40 ] && echo $v ||
@@ -150,8 +151,8 @@ gnu toolchain.
 EOF
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{S:0} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}/%{_rpmmacrodir}
+cp %{S:0} %{buildroot}/%{_rpmmacrodir}
 cp %{S:1} .
 %define lmod_base %{lua_lmod_modulesdir}/%pname
 mkdir -p %{buildroot}%{hpc_cf_install_path}
@@ -266,6 +267,6 @@ test -e %{hpc_cf_install_path}/bin/fortran || ln -sf ${localbindir}gfortran%{hpc
 
 %files macros-devel
 %defattr(-,root,root,-)
-%config %{_sysconfdir}/rpm/macros.hpc-gnu
+%config %{_rpmmacrodir}/macros.hpc-gnu
 
 %changelog

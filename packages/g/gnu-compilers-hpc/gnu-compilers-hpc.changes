@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  6 18:50:31 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Use %_rpmmacrodir instead of %{_sysconfdir}/rpm (boo#1191381).
+
+-------------------------------------------------------------------
 Thu Jul 15 10:22:42 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Improve setting of standard binaries (c, c++) for non-base
