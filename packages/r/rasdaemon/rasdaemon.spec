@@ -29,6 +29,7 @@ BuildRequires:  automake
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  sqlite3-devel
+Requires(pre):  %fillup_prereq
 Requires:       perl-DBD-SQLite
 %{?systemd_ordering}
 %ifnarch s390x
@@ -50,33 +51,26 @@ an utility for reporting current error counts from the EDAC sysfs files.
 
 %build
 autoreconf -fvi
-%configure \
-  --enable-mce \
-  --enable-aer \
-  --enable-sqlite3 \
-  --enable-extlog \
-  --enable-abrt-report \
-  --enable-arm \
-  --enable-non-standard \
-  --enable-hisi-ns-decode \
-  --enable-devlink \
-  --enable-diskerror
-make %{?_smp_mflags} V=1
+%configure --enable-all --with-sysconfdefdir=%{_fillupdir}
+CFLAGS="%{optflags}" make %{?_smp_mflags} V=1
 
 %install
 %make_install
+make install DESTDIR=%{buildroot}
 install -D -p -m 0644 misc/rasdaemon.service %{buildroot}%{_unitdir}/rasdaemon.service
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcrasdaemon
 install -D -p -m 0644 misc/ras-mc-ctl.service %{buildroot}%{_unitdir}/ras-mc-ctl.service
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcrasdaemon
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcras-mc-ctl
-install -D -p -m 0644 labels/dell %{buildroot}%{_sysconfdir}/ras/dimm_labels.d/dell
-rm %{buildroot}%{_includedir}/*.h
+rm INSTALL %{buildroot}/usr/include/*.h
 mkdir -p %{buildroot}%{_localstatedir}/lib/rasdaemon
+mkdir -p %{buildroot}%{_fillupdir}
+mv %{buildroot}%{_fillupdir}/rasdaemon %{buildroot}/%{_fillupdir}/sysconfig.rasdaemon
 
 %pre
 %service_add_pre rasdaemon.service ras-mc-ctl.service
 
 %post
+%fillup_only
 %service_add_post rasdaemon.service ras-mc-ctl.service
 
 %preun
@@ -97,6 +91,6 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/rasdaemon
 %dir %{_sysconfdir}/ras
 %dir %{_localstatedir}/lib/rasdaemon
 %ghost %{_localstatedir}/lib/rasdaemon/ras-mc_event.db
-%config %{_sysconfdir}/ras/dimm_labels.d
+%attr (644,root,root) %{_fillupdir}/sysconfig.rasdaemon
 
 %changelog

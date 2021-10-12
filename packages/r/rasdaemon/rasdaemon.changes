@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:36:44 UTC 2021 - trenn@suse.de
+
+- Add new /etc/sysconfig/rasdaemon config via fillup (bsc#1190668)
+
+-------------------------------------------------------------------
 Tue Aug 31 13:32:04 UTC 2021 - trenn@suse.de
 
 - Update to version 0.6.7.18.git+7ccf12f:
