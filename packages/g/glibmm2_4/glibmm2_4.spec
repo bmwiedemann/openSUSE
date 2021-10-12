@@ -20,7 +20,7 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.66.1
+Version:        2.66.2
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
