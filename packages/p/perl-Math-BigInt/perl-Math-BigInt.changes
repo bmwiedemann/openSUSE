@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct  4 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999827
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999827 2021-10-03
+   * Improve error message for missing library argument.
+   * Skip tests that don't work on older Perls. Also skip tests that compare
+     floating point numbers.
+  1.999826 2021-10-01
+   * Improve documentation related to floating point literals.
+   * Skip tests that fail due to Perl's broken handling of floating point literals
+     before v5.32.0.
+  1.999825 2021-09-28
+   * Make Math::BigInt accept integers regardless of whether they are written as
+     decimal, binary, octal, or hexadecimal integers or decimal, binary, octal, or
+     hexadecimal floating point number.
+   * When numeric constants are overloaded (with the ":constant" option) in
+     Math::BigInt, every numeric constant that represent an integer is converted
+     to an object regardless of how it is written. All finite non-integers are
+     converted to a NaN.
+   * When numeric constants are overloaded (with the ":constant" option) in
+     Math::BigFloat, every numeric constant is converted to an object regardless
+     of how it is written.
+   * Add method from_dec() (cf. from_bin(), from_oct(), and from_hex()). It is
+     like new() except that it does not accept anything but a string representing a
+     finite decimal number.
+
+-------------------------------------------------------------------
 Wed Sep 22 03:06:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999824

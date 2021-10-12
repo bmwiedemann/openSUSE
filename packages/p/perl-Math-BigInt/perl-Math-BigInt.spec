@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt
 Name:           perl-Math-BigInt
-Version:        1.999824
+Version:        1.999827
 Release:        0
 Summary:        Arbitrary size integer/float math package
 License:        Artistic-1.0 OR GPL-1.0-or-later
