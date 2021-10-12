@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  5 14:03:55 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Bump version and default to 14.
+
+-------------------------------------------------------------------
 Tue May 18 13:43:45 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Re-enable build of the llvmjit subpackage on SLE, but it will

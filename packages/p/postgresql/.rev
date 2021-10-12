@@ -483,4 +483,12 @@
 - Bump default version to 13 in OBS.</comment>
     <requestid>894073</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6bfce92e978d55280c22e56520e6c7eb</srcmd5>
+    <version>14</version>
+    <time>1634068081</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version and default to 14.</comment>
+    <requestid>923703</requestid>
+  </revision>
 </revisionlist>

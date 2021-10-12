@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define pgmajor 13
+%define pgmajor 14
 %define defaultpackage postgresql%pgmajor
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
