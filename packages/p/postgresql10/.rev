@@ -597,4 +597,15 @@
   * https://www.postgresql.org/docs/10/release-10-18.html</comment>
     <requestid>917538</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>80f0de9f95c9418b8f17c1504fb059a2</srcmd5>
+    <version>10.18</version>
+    <time>1634068084</time>
+    <user>dimstar_suse</user>
+    <comment>- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.</comment>
+    <requestid>923706</requestid>
+  </revision>
 </revisionlist>
