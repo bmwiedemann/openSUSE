@@ -1,7 +1,7 @@
 #
-# spec file for package python-sphinxcontrib
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,39 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %global short_name autoprogram
+# https://github.com/sphinx-contrib/autoprogram/commit/457822502b71a449d97dfece63e77dbee910b581
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinxcontrib-%{short_name}
-Version:        0.1.5
+Version:        0.1.7
 Release:        0
 Summary:        Sphinx extension to document CLI programs
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-contrib/%{short_name}
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         0001-License-file-ci-skip.patch
 BuildRequires:  %{python_module Sphinx >= 1.2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module sphinxcontrib-websupport >= 1.0.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.2
 Requires:       python-six
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module sphinxcontrib-autoprogram}
+BuildRequires:  %{python_module sphinxcontrib-websupport >= 1.0.1}
+%endif
 %python_subpackages
 
 %description
@@ -55,6 +68,7 @@ python-sphinxcontrib-autoprogram.
 %autosetup -n %{short_name}-%{version} -p1
 
 %build
+%if !%{with test}
 %python_build
 
 # need to set PYTHONPATH, otherwise the build won't find the extension in the
@@ -66,21 +80,31 @@ sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html
 
 # remove inventory file, not needed for the documentation
 rm doc/_build/html/objects.inv
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_exec setup.py test
+%if %{with test}
+export PYTHONPATH='doc'
+%pyunittest sphinxcontrib/autoprogram.py
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
+%if !%{with test}
 %files %{python_files doc}
 %license LICENSE
 %doc doc/_build/html/*
+%endif
 
 %changelog

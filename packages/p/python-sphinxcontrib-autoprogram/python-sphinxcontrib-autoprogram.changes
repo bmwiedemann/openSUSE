@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:40:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.1.7
+  Version 0.1.7
+  -------------
+  - Publish to PyPI via Github Actions.
+  Version 0.1.6
+  -------------
+  - Dropped support for Python 2 and Pypy
+  - Declare this extension safe for parallel reading
+  - Migrate to Github Actions for CI [:issue:`28`, :pull:`32` by Langston Barrett]
+  - Test against recent versions of Sphinx [:issue:`33`, :pull:`32` by Langston Barrett]
+  - Format source code with Black [:issue:`30`, :pull:`32` by Langston Barrett]
+  - Add documentation to the ``sdist`` [:issue:`26`, :pull:`32` by Langston Barrett]
+  - Fixed unwanted ``<blockquote>`` tags in multi-line command descriptions that
+    are indented to match surrounding code. [:pull:`21` by dgw]
+- deleted patches
+  - 0001-License-file-ci-skip.patch (upstreamed)
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Tue Dec 18 10:25:10 UTC 2018 - Dan Čermák <dcermak@suse.com>
 
 - Run tests in %check
