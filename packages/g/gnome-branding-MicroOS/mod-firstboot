@@ -31,11 +31,11 @@ if [ "$?" != 0 ] ; then
 fi
 
 echo "80"
-echo "# Installing gEdit"
-/usr/bin/flatpak install --user --noninteractive flathub org.gnome.gedit
+echo "# Installing Text Editor"
+/usr/bin/flatpak install --user --noninteractive flathub org.gnome.TextEditor
 if [ "$?" != 0 ] ; then
         zenity --error \
-          --text="Installing gEdit Failed"
+          --text="Installing Text Editor Failed"
         exit 1
 fi
 
