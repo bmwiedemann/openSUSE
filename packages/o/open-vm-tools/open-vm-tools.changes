@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  4 22:19:03 UTC 2021 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.3.5 (build 18557794) (boo#1190987)
+  + New/Updated features:
+    - Added a configurable logging capability to the network script.
+      The network script has been updated to:
+        use vmware-toolbox-cmd to query any network logging configuration from
+        the tools.conf file.  Use vmtoolsd --cmd "log ..." to log a message to
+        the vmx logfile when the logging handler is configured to "vmx" or when
+        the logfile is full or is not writeable.
+    - The hgfsmounter (mount.vmhgfs) command has been removed from
+      open-vm-tools.
+      The hgfsmounter (mount.vmhgfs) command is no longer used in
+      Linux open-vm-tools. It has been replaced by hgfs-fuse. Therefore,
+      removing all references to the hgfsmounter in Linux builds.
+  + Resolved issues:
+    - Customization: Retry the Linux reboot if telinit is a soft link to
+      systemctl.
+    - Open-vm-tools commands would hang if configured with "--enable-valgrind".
+  + Spec file updates for:
+    - rpmlint errors
+    - arg_xmlsec1 --enable-xmlsec1 for better xmlsec1/libxml2 handling.
+
+-------------------------------------------------------------------
 Thu Jun 24 14:15:09 UTC 2021 - Kirk Allan <kallan@suse.com>
 
 - Update to 11.3.0 (build 18090558) (boo#1187567)

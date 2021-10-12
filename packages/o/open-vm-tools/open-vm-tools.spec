@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  18090558
-Version:        11.3.0
+%define bldnum  18557794
+Version:        11.3.5
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -93,23 +93,27 @@ BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 %if %{with vgauth}
-# vgauth requires xml2, xerces-c, and xml-security-c/xmlsec1
-BuildRequires:  libxml2-devel
-BuildRequires:  pkgconfig(xerces-c)
+# vgauth requires xmlsec1 + libxml2 - or - xerces-c + xml-security-c
+# The preferred combination is xmlsec1 and libxml2
 
 # Use xmlsec1 instead of xml-security-c where available.
 # If using xmlsec1, also need to use libxmlsec1-openssl1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
+BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig(xmlsec1)
 Requires:       libxmlsec1-openssl1 >= 1.2.28
+%define         arg_xmlsec1 --enable-xmlsec1
 %else
 # Leap 42.1 and 42.2 supports xmlsec1 and libxmlsec1-openssl1 but 12 SP1 and
 # SP2 do not.
 %if 0%{?is_opensuse} && 0%{?sle_version} >= 0120100
+BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig(xmlsec1)
 Requires:       libxmlsec1-openssl1
+%define         arg_xmlsec1 --enable-xmlsec1
 %else
 BuildRequires:  xml-security-c-devel
+BuildRequires:  pkgconfig(xerces-c)
 %define         arg_xmlsecurity --enable-xmlsecurity
 %endif
 %endif
@@ -254,6 +258,7 @@ chmod 755 configure
     %{?arg_x} \
     --disable-dependency-tracking \
     --with-gtk3 \
+    %{?arg_xmlsec1} \
     %{?arg_xmlsecurity} \
     %{?arg_xerces} \
     --with-udev-rules-dir=%{_udevrulesdir} \
@@ -264,6 +269,8 @@ make
 
 %install
 %make_install
+
+mkdir -p  %{buildroot}%{_sbindir}
 
 # Remove exec bit from config files
 chmod a-x %{buildroot}%{_sysconfdir}/pam.d/*
@@ -316,18 +323,16 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/vmware-user.desktop
 install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.conf
 %endif
 
-# fix a link pointing to the buildroot for mount.vmhgfs
-rm %{buildroot}/sbin/mount.vmhgfs
-%if !0%{?usrmerged}
-ln -s ..%{_sbindir}/mount.vmhgfs %{buildroot}/sbin/mount.vmhgfs
-%endif
-
 %pre
 %service_add_pre vmtoolsd.service
+%service_add_pre vgauthd.service
+%service_add_pre vmblock-fuse.service
 
 %post
 /sbin/ldconfig
 %service_add_post vmtoolsd.service
+%service_add_post vgauthd.service
+%service_add_post vmblock-fuse.service
 
 %if %{with_X}
 
@@ -390,9 +395,6 @@ systemctl try-restart vmtoolsd.service || :
 
 %postun -n libvmtools0 -p /sbin/ldconfig
 
-%clean
-rm -rf %{buildroot}
-
 %files
 %defattr(-, root, root)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
@@ -427,10 +429,6 @@ rm -rf %{buildroot}
 %{_bindir}/vmware-xferlogs
 %{_bindir}/vm-support
 %{_bindir}/vmware-alias-import
-%{_sbindir}/mount.vmhgfs
-%if !0%{?usrmerged}
-/sbin/mount.vmhgfs
-%endif
 %config(noreplace) %{_sysconfdir}/pam.d/vmtoolsd
 %dir %{_sysconfdir}/vmware-tools
 %dir %{_sysconfdir}/vmware-tools/scripts
