@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  6 20:15:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 380d2db1d9047ecffcef7d78f00184963b403efc.patch: inputMethod:
+  Clear preeditStr before reset. Previously, these were performed
+  in a different order before GNOME 41. During some other changes
+  they were swapped.
+  However, this causes both GTK 3 and GTK 4 applications to scroll
+  to incorrect positions from the preedit change.
+
+-------------------------------------------------------------------
 Wed Sep 22 19:25:03 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 41.0:

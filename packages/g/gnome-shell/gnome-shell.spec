@@ -44,6 +44,8 @@ Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.pa
 Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 # PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
 Patch7:         gnome-shell-executable-path-not-absolute.patch
+# PATCH-FIX-UPSTREAM 380d2db1d9047ecffcef7d78f00184963b403efc.patch -- inputMethod: Clear preeditStr before reset
+Patch8:         https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/380d2db1d9047ecffcef7d78f00184963b403efc.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -181,6 +183,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch6 -p1
 %endif
 %patch7 -p1
+%patch8 -p1
 
 %if 0%{?sle_version}
 %patch1001 -p1

@@ -1,0 +1,50 @@
+From 380d2db1d9047ecffcef7d78f00184963b403efc Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Wed, 29 Sep 2021 12:46:45 -0700
+Subject: [PATCH] inputMethod: Clear preeditStr before reset
+
+Previously, these were performed in a different order before GNOME 41.
+During some other changes they were swapped.
+
+However, this causes both GTK 3 and GTK 4 applications to scroll to
+incorrect positions from the preedit change.
+
+Fixes #4647
+Fixes GNOME/gtk#4289
+Fixes GNOME/gnome-builder#1536
+Fixes GNOME/gnome-builder#1531
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1993>
+---
+ js/misc/inputMethod.js | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/js/misc/inputMethod.js b/js/misc/inputMethod.js
+index 25b02e35b8..1f9eaee7a8 100644
+--- a/js/misc/inputMethod.js
++++ b/js/misc/inputMethod.js
+@@ -179,16 +179,16 @@ class InputMethod extends Clutter.InputMethod {
+     }
+ 
+     vfunc_reset() {
++        if (this._context) {
++            this._context.reset();
++            this._emitRequestSurrounding();
++        }
++
+         if (this._preeditStr !== null) {
+             // Unset any preedit text
+             this.set_preedit_text(null, 0, Clutter.PreeditResetMode.CLEAR);
+             this._preeditStr = null;
+         }
+-
+-        if (this._context) {
+-            this._context.reset();
+-            this._emitRequestSurrounding();
+-        }
+     }
+ 
+     vfunc_set_cursor_location(rect) {
+-- 
+GitLab
+
