@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooX-Attribute-ENV
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,28 @@
 #
 
 
-Name:           perl-MooX-Attribute-ENV
-Version:        0.02
-Release:        0
 %define cpan_name MooX-Attribute-ENV
+Name:           perl-MooX-Attribute-ENV
+Version:        0.04
+Release:        0
 Summary:        Allow Moo attributes to get their values from %ENV
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Moo)
-BuildRequires:  perl(Test::Exception) >= 0.420000
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Moo)
 %{perl_requires}
 
 %description
 This is a Moo extension. It allows other attributes for Moo/has. If any of
-these are given, then instead of the normal value-setting "chain" for
-attributes of given, default; the chain will be given, environment,
-default.
+these are given, then Moo/BUILDARGS is wrapped so that values for object
+attributes can, if not supplied in the normal construction process, come
+from the environment.
 
 The environment will be searched for either the given case, or upper case,
 version of the names discussed below.
@@ -48,11 +46,11 @@ When a prefix is mentioned, it will be prepended to the mentioned name,
 with a '_' in between.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -63,7 +61,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog
