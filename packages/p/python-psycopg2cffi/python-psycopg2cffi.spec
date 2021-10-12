@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg2cffi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-psycopg2cffi
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Implementation of the psycopg2 module using cffi
 License:        LGPL-3.0-or-later
 URL:            https://github.com/chtd/psycopg2cffi
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2cffi/psycopg2cffi-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  postgresql-server-devel
@@ -39,7 +40,7 @@ BuildRequires:  %{python_module six}
 %python_subpackages
 
 %description
-Implementation of the psycopg2 module using cffi.
+This is a implementation of the psycopg2 module using cffi.
 
 %prep
 %setup -q -n psycopg2cffi-%{version}

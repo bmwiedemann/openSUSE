@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 12 10:18:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.9.0
+  * New features:
+    - Add execute_batch and execute_values to psycopg2cffi.extras in #98
+    - psycopg2cffi.extras: add fetch argument to execute_values() in #119
+  * Bug fixes:
+    - Fix for async keyword argument when creating a connection in #104
+    - Allow adapters to be passed as arguments of cursor's execute() in #107
+    - Fix installation with old cffi by dand-oss in #116
+  * Test changes:
+    - Dropped support for python 2.6, 3.3, 3.4 in #109
+    - Added support for python 3.8 in #108
+
+-------------------------------------------------------------------
 Tue Jun  9 10:44:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix dependencies
