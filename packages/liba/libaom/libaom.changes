@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 08 11:01:26 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 3.1.3:
+  * Update CHANGELOG for v3.1.3-rc2
+  * Detect chroma subsampling more directly
+  * Detect chroma subsampling more directly
+  * image2yuvconfig() should calculate uv_crop_width
+  * aom/aom_encoder.h: remove configure option reference
+  * aom_encoder.h: fix rc_overshoot_pct range
+  * Update AUTHORS,CHANGELOG,CMakeLists.txt for v3.1.3
+  * aom_install: don't exclude msvc from install
+  * aom_install: use relpath for install
+  * aom_install: Install lib dlls to bindir
+
+-------------------------------------------------------------------
 Wed Aug 25 09:13:44 UTC 2021 - pgajdos@suse.com
 
 - security update
