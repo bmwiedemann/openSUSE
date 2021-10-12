@@ -60,20 +60,13 @@ Requires:       libpangomm%{so_ver} = %{version}
 %description devel
 pangomm provides a C++ interface to the pango library.
 
-%package doc
-Summary:        C++ interface for pango -- Developer Documentation
-Group:          Documentation/HTML
-
-%description doc
-pangomm provides a C++ interface to the pango library.
-
 %prep
 %autosetup -p1 -n %{_name}-%{version}
 chmod -x NEWS
 
 %build
 %meson \
-	-Dbuild-documentation=true \
+	-Dbuild-documentation=false \
 	%{nil}
 %meson_build
 
@@ -94,9 +87,5 @@ chmod -x NEWS
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/pangomm-1.4
-
-%files doc
-%{_datadir}/devhelp/books/pangomm-1.4/
-%{_datadir}/doc/pangomm-1.4/
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 11:29:35 UTC 2021 - pgajdos@suse.com
+
+- turn off doc build, it does not work with new doxygen
+
+-------------------------------------------------------------------
 Tue Sep 28 15:33:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add pangomm1_4-docs-without-timestamp.patch: do not add
