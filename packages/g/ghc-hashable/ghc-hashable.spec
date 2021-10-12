@@ -19,7 +19,7 @@
 %global pkg_name hashable
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.3.0
+Version:        1.3.4.1
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
