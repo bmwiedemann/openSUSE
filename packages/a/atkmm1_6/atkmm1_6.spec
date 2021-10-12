@@ -1,7 +1,7 @@
 #
 # spec file for package atkmm1_6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,23 +61,12 @@ Requires:       libatkmm-1_6-1 = %{version}
 atkmm is the C++ binding for the ATK library.
 This module is part of the GNOME C++ bindings effort.
 
-%package doc
-Summary:        C++ Binding for the ATK library
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Documentation/HTML
-Requires:       glibmm2-doc
-BuildArch:      noarch
-
-%description doc
-atkmm is the C++ binding for the ATK library.
-This module is part of the GNOME C++ bindings effort.
-
 %prep
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson \
-	-Dbuild-documentation=true \
+	-Dbuild-documentation=false \
 	%{nil}
 %meson_build
 
@@ -101,9 +90,5 @@ This module is part of the GNOME C++ bindings effort.
 %{_libdir}/atkmm-1.6/include/
 %dir %{_libdir}/atkmm-1.6/proc
 %{_libdir}/atkmm-1.6/proc/m4/
-
-%files doc
-%{_datadir}/devhelp/books/atkmm-1.6/
-%{_datadir}/doc/atkmm-1.6/
 
 %changelog
