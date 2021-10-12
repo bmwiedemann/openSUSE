@@ -290,8 +290,6 @@
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang12"/>
-      <repopackage name="clang12-doc"/>
       <repopackage name="clang13"/>
       <repopackage name="clang13-doc"/>
       <repopackage name="clazy"/>
@@ -1500,7 +1498,6 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang12"/>
       <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
@@ -2156,7 +2153,6 @@
       <repopackage name="liblqr-1-0"/>
       <repopackage name="liblrdf2"/>
       <repopackage name="libltdl7"/>
-      <repopackage name="libLTO12"/>
       <repopackage name="libLTO13"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblua5_4-5"/>
