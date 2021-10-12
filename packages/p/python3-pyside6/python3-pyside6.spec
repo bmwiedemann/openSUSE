@@ -40,6 +40,10 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-shiboken6-Adapt-to-LLVM-12.01.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -185,13 +189,12 @@ export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
 %if "%{pyside_flavor}" == "pyside6"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
-# Excluded tests (last update: 2021-09-29)
+# Excluded tests (last update: 2021-10-12)
 # registry_existence_test can only be run if pyside and shiboken are built together
-# QtWidgets_bug_430 times out
 # QtWidgets_bug_635 fails
 # QtWebEngineWidgets_pyside-474-qtwebengineview & QtWebEngineCore_web_engine_custom_scheme
 # pass locally but not on the build service
-%define ctest_exclude_regex '(registry_existence_test|QtWidgets_bug_430|QtWidgets_bug_635|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore_web_engine_custom_scheme)'
+%define ctest_exclude_regex '(registry_existence_test|QtWidgets_bug_635|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore_web_engine_custom_scheme)'
 %endif
 
 pushd sources/%{pyside_flavor}

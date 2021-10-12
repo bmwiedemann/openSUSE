@@ -7,4 +7,15 @@
     <comment>Add pyside 6.2.0</comment>
     <requestid>923510</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44d07015e2a5901fea739df4345cc1b3</srcmd5>
+    <version>6.2.0</version>
+    <time>1634068190</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches to fix a test failure...
+  * 0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+- ...and failures with llvm &gt; 12
+  * 0001-shiboken6-Adapt-to-LLVM-12.01.patch (forwarded request 924859 from cgiboudeaux)</comment>
+    <requestid>924863</requestid>
+  </revision>
 </revisionlist>

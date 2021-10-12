@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 12 09:51:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patches to fix a test failure...
+  * 0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+- ...and failures with llvm > 12
+  * 0001-shiboken6-Adapt-to-LLVM-12.01.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 13:14:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.0

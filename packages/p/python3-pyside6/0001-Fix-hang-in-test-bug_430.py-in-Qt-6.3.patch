@@ -1,0 +1,43 @@
+From 300e33b8fb175f79195b20fb170db4232afb5740 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Fri, 1 Oct 2021 14:53:32 +0200
+Subject: [PATCH] Fix hang in test bug_430.py in Qt 6.3
+
+Terminating the application via closing the last window
+only works when the window was actually shown.
+Add a call to show() and reformat code.
+
+Task-number: QTBUG-97033
+Change-Id: I1e0a82d1baf1676de5a38c1a8fd2408e104b464a
+Reviewed-by: Christian Tismer <tismer@stackless.com>
+(cherry picked from commit 01b31e518ce4fa82c58db6ae89f481be152eb4dc)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ sources/pyside6/tests/QtWidgets/bug_430.py | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/sources/pyside6/tests/QtWidgets/bug_430.py b/sources/pyside6/tests/QtWidgets/bug_430.py
+index b6cf492..6ce463b 100644
+--- a/sources/pyside6/tests/QtWidgets/bug_430.py
++++ b/sources/pyside6/tests/QtWidgets/bug_430.py
+@@ -44,9 +44,11 @@ class ListModel(QAbstractListModel):
+         return 0
+ 
+ 
+-app = QApplication([])
+-model = ListModel()
+-v = QListView()
+-v.setModel(model)
+-QTimer.singleShot(0, v.close)
+-app.exec()
++if __name__ == '__main__':
++    app = QApplication([])
++    model = ListModel()
++    v = QListView()
++    v.setModel(model)
++    v.show()
++    QTimer.singleShot(0, v.close)
++    app.exec()
+-- 
+2.33.0
+

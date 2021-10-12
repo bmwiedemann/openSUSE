@@ -1,0 +1,34 @@
+From a4a5fa4568473dd63bf04c9bfd115d3cbe3c504e Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 12 Oct 2021 09:33:53 +0200
+Subject: [PATCH] shiboken6: Adapt to LLVM 12.01
+
+The identifier for anonymous enums has been changed, causing
+shiboken to no longer recognize them.
+
+Pick-to: 6.2 5.15
+Task-number: PYSIDE-1686
+Change-Id: I4d463132b8bd3fffa0b57f03be6c58ecbae94a49
+---
+ sources/shiboken6/ApiExtractor/clangparser/clangbuilder.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/sources/shiboken6/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6/ApiExtractor/clangparser/clangbuilder.cpp
+index 0b6c87f..f34bd8c 100644
+--- a/sources/shiboken6/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -952,8 +952,10 @@ static QString enumType(const CXCursor &cursor)
+         // PYSIDE-1228: For "typedef enum { v1, v2 } Foo;", type will return
+         // "Foo" as expected. Care must be taken to exclude real anonymous enums.
+         name = getTypeName(clang_getCursorType(cursor));
+-        if (name.contains(QLatin1String("(anonymous")))
++        if (name.contains(u"(unnamed") // Clang 12.0.1
++            || name.contains(u"(anonymous")) { // earlier
+             name.clear();
++        }
+     }
+     return name;
+ }
+-- 
+2.33.0
+
