@@ -346,4 +346,12 @@
 - Remove deprecated geany-plugins-Make-libgit2-compatible.patch (forwarded request 844348 from polslinux)</comment>
     <requestid>844557</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d083dd7f2752fa8fb0ddfdf3134cf6a8</srcmd5>
+    <version>1.38</version>
+    <time>1634068168</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.38 (see also SR#924551 for geany update) (forwarded request 924552 from stroeder)</comment>
+    <requestid>924750</requestid>
+  </revision>
 </revisionlist>

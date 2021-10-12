@@ -1,7 +1,7 @@
 #
 # spec file for package geany-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # On next update, try enabling each of the disabled libs (in the %%else section) and check if they build with gtk3 or not. When all of them compile against gtk3, remove the macro and conditional.
 %define gtk3_ready 1
 Name:           geany-plugins
-Version:        1.37
+Version:        1.38
 Release:        0
 # FIXME: gendoc requires ctpl (http://ctpl.tuxfamily.org/)
 Summary:        A collection of different plugins for Geany
