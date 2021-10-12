@@ -51,4 +51,12 @@ See related SR https://build.opensuse.org/request/show/615279</comment>
 </comment>
     <requestid>865237</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d18159f22eeef0f2876caf440c27429</srcmd5>
+    <version>1.21.0</version>
+    <time>1634068097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924369</requestid>
+  </revision>
 </revisionlist>
