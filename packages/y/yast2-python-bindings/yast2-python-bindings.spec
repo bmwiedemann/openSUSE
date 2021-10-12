@@ -17,13 +17,13 @@
 
 
 %bcond_without python3
-%if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} <= 150300
 %bcond_without python2
 %else
 %bcond_with python2
 %endif
 Name:           yast2-python-bindings
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Python bindings for the YaST platform
 License:        GPL-2.0-only
@@ -36,13 +36,17 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  libyui-devel
 BuildRequires:  make
+%if %{with python2}
 BuildRequires:  python
+%endif
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-ycp-ui-bindings
 BuildRequires:  yast2-ycp-ui-bindings-devel
+%if %{with python2}
 Requires:       python
+%endif
 Requires:       yast2-core
 Requires:       yast2-ycp-ui-bindings
 Conflicts:      yast2-python3-bindings
@@ -61,6 +65,7 @@ and also Python scripts can use YaST agents, APIs and modules.
 %package -n yast2-python3-bindings
 Summary:        Python3 bindings for the YaST platform
 Group:          System/YaST
+BuildRequires:  python3
 Requires:       python3
 Requires:       yast2-core
 Requires:       yast2-ycp-ui-bindings

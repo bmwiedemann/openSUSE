@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 07 19:40:21 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Fix yast2-python-bindings requires Python (bsc#1190890).
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Aug 17 18:53:41 UTC 2021 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Fix backtrace formatting for Python exceptions (bsc#1181595).
