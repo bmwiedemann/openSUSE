@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 27 14:15:20 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.
+
+-------------------------------------------------------------------
 Tue Aug 31 11:14:53 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1185952: fix build with llvm12 on s390x.

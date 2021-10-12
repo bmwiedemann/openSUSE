@@ -204,4 +204,15 @@ Upgrade to version 12.6:
   llvm and clang optional (postgresql-llvm-optional.patch).</comment>
     <requestid>917541</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>207fc82d581701e19a30ca1e798c2a8d</srcmd5>
+    <version>12.8</version>
+    <time>1634068082</time>
+    <user>dimstar_suse</user>
+    <comment>- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.</comment>
+    <requestid>923704</requestid>
+  </revision>
 </revisionlist>

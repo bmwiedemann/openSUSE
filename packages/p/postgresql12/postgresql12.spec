@@ -142,7 +142,6 @@ Source17:       postgresql-rpmlintrc
 Patch1:         postgresql-conf.patch
 # PL/Perl needs to be linked with rpath (bsc#578053)
 Patch4:         postgresql-plperl-keep-rpath.patch
-Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
 %if %{with llvm}
@@ -452,7 +451,6 @@ included in the postgresql-server package.
 touch -r configure tmp
 %patch1
 %patch4
-%patch6
 %patch8 -p1
 %patch9
 %if %{with llvm}
@@ -554,7 +552,7 @@ install -sm 0755 src/test/regress/{pg_regress,regress.so} %buildroot%pgtestdir/r
 for i in  src/test/regress/{data,expected,input,output,sql}; do
 	cp -r $i %buildroot%pgtestdir/regress/
 done
-install -m 0644 src/test/regress/{serial,parallel}_schedule %buildroot%pgtestdir/regress
+install -m 0644 src/test/regress/*_schedule %buildroot%pgtestdir/regress
 # }}}
 %endif
 
@@ -605,6 +603,9 @@ genlists ()
         PGBIN=%pgbindir/$f
         MAN=%pgmandir/man1/$f.1*
 
+	# Package only binaries that exist in this version
+        test -e %buildroot$PGBIN || continue
+
         touch %buildroot$ALTBIN
         ln -s $ALTBIN %buildroot$BIN
 
@@ -633,22 +634,13 @@ genlists main \
 	pg_basebackup \
 	pg_isready \
 	pg_recvlogical \
-%if %pgsuffix >= 90
 	createlang \
 	droplang \
 	pg_receivexlog \
-%else
 	pg_receivewal \
-%if %pgsuffix == 11
 	pg_verify_checksums \
-%endif
-%if %pgsuffix >= 12
 	pg_checksums \
-%endif
-%if %pgsuffix >= 13
 	pg_verifybackup
-%endif
-%endif
 
 %find_lang plpgsql-$VLANG main.files
 %find_lang pgscripts-$VLANG main.files
@@ -657,21 +649,17 @@ genlists server \
 	initdb \
 	pg_ctl \
 	pg_controldata \
-%if %pgsuffix < 90
 	pg_resetwal \
 	pg_waldump \
-%else
 	pg_resetxlog \
-%endif
 	postgres \
 	postmaster
 
 genlists contrib \
-%if %pgsuffix > 90
 	pg_xlogdump \
-%endif
 	oid2name \
 	pg_archivecleanup \
+	pg_amcheck \
 	pg_standby \
 	pg_test_fsync \
 	pg_upgrade \
