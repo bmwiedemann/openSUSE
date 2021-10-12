@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pylsp-rope
-Version:        0.1.4
+Version:        0.1.6
 Release:        0
 Summary:        Extended refactoring capabilities for Python LSP Server using Rope
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-typing_extensions if python3-base <= 3.6)
 # SECTION test requirements
 BuildRequires:  %{python_module python-lsp-server}
 BuildRequires:  %{python_module pytest}

@@ -18,4 +18,18 @@
 </comment>
     <requestid>923245</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45ea85bd0d34a85b66544f689788298b</srcmd5>
+    <version>0.1.6</version>
+    <time>1634068294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.6:
+  - Fixed issue with missing typing-extensions dependency
+  - Add use functions refactoring
+  - Internal rewrites
+  - Add type annotation for many things
+  - Improve error handling during executeCommand()
+</comment>
+    <requestid>924932</requestid>
+  </revision>
 </revisionlist>
