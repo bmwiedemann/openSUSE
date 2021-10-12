@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8c046b03382653d54690a2bbd18682e</srcmd5>
+    <version>14.0</version>
+    <time>1634068087</time>
+    <user>dimstar_suse</user>
+    <comment>New package: postgresql14
+Needs adjustments in prjconf to become the new default.
+Related submits for postgresql13 and postgresql are also on the way.
+Also for older PostgreSQL versions to keep the packaging consistent.</comment>
+    <requestid>923738</requestid>
+  </revision>
+</revisionlist>
