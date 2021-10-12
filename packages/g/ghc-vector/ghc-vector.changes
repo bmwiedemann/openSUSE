@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 22 08:52:39 UTC 2021 - psimons@suse.com
+
+- Update vector to version 0.12.3.1.
+  # Changes in version 0.12.3.1
+
+  * Bugfix for ghcjs and `Double` memset for `Storable` vector:
+    [#410](https://github.com/haskell/vector/issues/410)
+  * Avoid haddock bug: [#383](https://github.com/haskell/vector/issues/383)
+  * Improve haddock and doctests
+  * Disable problematic tests with -boundschecks [#407](https://github.com/haskell/vector/pull/407)
+
+-------------------------------------------------------------------
 Tue Sep  7 08:15:38 UTC 2021 - psimons@suse.com
 
 - Update vector to version 0.12.3.0 revision 2.
