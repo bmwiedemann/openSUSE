@@ -368,4 +368,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
 - Remove valgrind from BuildRequires since it's not a hard requirement anymore. (bsc#1184248)</comment>
     <requestid>882467</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2bef40f730b51891d8af64231bdb61d2</srcmd5>
+    <version>1.6.2</version>
+    <time>1634068070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923650</requestid>
+  </revision>
 </revisionlist>

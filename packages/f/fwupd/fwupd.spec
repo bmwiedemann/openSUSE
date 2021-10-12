@@ -14,13 +14,20 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# needssslcertforbuild
 
 
 %ifarch %{ix86} x86_64 aarch64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
+%endif
+
+%ifarch %{ix86} x86_64
+%bcond_without msr_support
+%bcond_without dell_support
+%else
+%bcond_with msr_support
+%bcond_with dell_support
 %endif
 
 %if 0%{?suse_version} > 1500
@@ -30,7 +37,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.5.8
+Version:        1.6.2
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -96,7 +103,6 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.13
 %if %{with efi_fw_update}
 BuildRequires:  gnu-efi
-BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig(efiboot)
 BuildRequires:  pkgconfig(efivar) >= 33
 %endif
@@ -107,7 +113,7 @@ BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
 Obsoletes:      dbxtool <= 8
 Obsoletes:      fwupdate <= 12
 Provides:       dbxtool
-%ifarch x86_64
+%ifarch x86_64 aarch64
 Requires:       shim >= 11
 %endif
 %endif
@@ -128,12 +134,12 @@ Requires:       %{name} >= %{version}
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
-%package -n libfwupdplugin1
+%package -n libfwupdplugin2
 Summary:        Allow session software to update device firmware
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
-%description -n libfwupdplugin1
+%description -n libfwupdplugin2
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
@@ -186,48 +192,45 @@ for file in $(grep -l %{_bindir}/env . -r); do
 done
 
 %build
-# Since Tumbleweed is still using openSUSE signkey, the SBAT distro id
-# should be opensuse.
-%if 0%{?sle_version}
-distro_id="sle"
-distro_name="SUSE Linux Enterprise"
-%else
-distro_id="opensuse"
-distro_name="The openSUSE project"
-%endif
-
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
-%if %{without efi_fw_update}
-  -Dplugin_nvme=false \
-  -Dplugin_redfish=false \
+%if %{with efi_fw_update}
+  -Dplugin_uefi_capsule=true \
+  -Dplugin_uefi_pk=true \
+  -Defi_binary=false \
+%else
   -Dplugin_uefi_capsule=false \
   -Dplugin_uefi_pk=false \
+%endif
+%if %{with msr_support}
+  -Dplugin_msr=true \
 %else
-  -Defi_sbat_distro_id="${distro_id}" \
-  -Defi_sbat_distro_summary="${distro_name}" \
-  -Defi_sbat_distro_pkgname="%{name}" \
-  -Defi_sbat_distro_version="%{version}" \
-  -Defi_sbat_distro_url="https://build.opensuse.org" \
+  -Dplugin_msr=false \
+%endif
+%if %{with dell_support}
+  -Dplugin_dell=true \
+  -Dplugin_synaptics_mst=true \
+%else
+  -Dplugin_dell=false \
+  -Dplugin_synaptics_mst=false \
 %endif
 %ifnarch %{ix86} x86_64
   -Dplugin_amt=false \
-  -Dplugin_dell=false \
-  -Dplugin_synaptics_mst=false \
   -Dplugin_synaptics_rmi=false \
-  -Dplugin_msr=false \
 %endif
-  -Dgtkdoc=true \
+  -Dplugin_nvme=false \
+  -Dplugin_redfish=false \
+  -Ddocs=gtkdoc \
   -Dsupported_build=true \
-  -Dtests=false
+  -Dtests=false \
 %meson_build
 
 %install
 export BRP_PESIGN_FILES='%{_libexecdir}/fwupd/efi/fwupd*.efi'
 %meson_install
 # README.md is packaged as doc
-rm %{buildroot}%{_localstatedir}/lib/fwupd/builder/README.md
+rm %{buildroot}/usr/share/doc/fwupd/builder/README.md
 # Add SUSE specific rcfoo service symlink
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -241,12 +244,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
 # do not package tests
 rm -fr %{buildroot}%{_datadir}/installed-tests
 
-%if %{with efi_fw_update}
-# link fwupd*.efi.signed to fwupd*.efi (bsc#1129466)
-FWUPD_EFI=`basename %{buildroot}/%{_libexecdir}/fwupd/efi/fwupd*.efi`
-ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/$FWUPD_EFI.signed
-%endif
-
 %if %{without fish_support}
 rm -fr %{buildroot}%{_datadir}/fish
 %endif
@@ -254,8 +251,8 @@ rm -fr %{buildroot}%{_datadir}/fish
 %post   -n libfwupd2 -p /sbin/ldconfig
 %postun -n libfwupd2 -p /sbin/ldconfig
 
-%post   -n libfwupdplugin1 -p /sbin/ldconfig
-%postun -n libfwupdplugin1 -p /sbin/ldconfig
+%post   -n libfwupdplugin2 -p /sbin/ldconfig
+%postun -n libfwupdplugin2 -p /sbin/ldconfig
 
 %preun
 %service_del_preun %{name}.service fwupd-offline-update.service fwupd-refresh.service
@@ -269,18 +266,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 
 %postun
 %service_del_postun %{name}.service fwupd-offline-update.service fwupd-refresh.service
-%if %{with efi_fw_update}
-if [ -e /etc/os-release ]; then
-  . /etc/os-release
-  efi_distributor="$(echo "${NAME} ${VERSION}" | tr 'A-Z' 'a-z' | cut -d' ' -f1)"
-fi
-if [ "$1" = 0 ] && [ -d "/boot/efi/EFI/$efi_distributor" ]; then
-  # Remove all capsule files
-  rm -rf /boot/efi/EFI/"$efi_distributor"/fw
-  # Remove the UEFI firmware update program
-  rm -f /boot/efi/EFI/"$efi_distributor"/fwupd*.efi
-fi
-%endif
 
 %files
 
@@ -293,15 +278,13 @@ fi
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
-%if %{with efi_fw_update}
-%{_bindir}/dbxtool
-%endif
 %{_bindir}/fwupdagent
-%if %{with efi_fw_update}
-%{_bindir}/fwupdate
-%endif
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
+%if %{with efi_fw_update}
+%{_bindir}/fwupdate
+%{_bindir}/dbxtool
+%endif
 %{_sbindir}/rc%{name}
 %{_sbindir}/rcfwupd-offline-update
 %{_sbindir}/rcfwupd-refresh
@@ -314,7 +297,7 @@ fi
 %dir %{_datadir}/%{name}/remotes.d
 %dir %{_datadir}/%{name}/remotes.d/vendor
 %dir %{_datadir}/%{name}/remotes.d/vendor/firmware
-%ifarch %{ix86} x86_64
+%if %{with dell_support}
 %dir %{_datadir}/%{name}/remotes.d/dell-esrt
 %{_datadir}/%{name}/remotes.d/dell-esrt/metadata.xml
 %endif
@@ -322,21 +305,22 @@ fi
 %{_datadir}/%{name}/firmware_packager.py
 %{_datadir}/%{name}/install_dell_bios_exe.py
 %{_datadir}/%{name}/simple_client.py
+%if %{with efi_fw_update}
+%{_datadir}/%{name}/uefi-capsule-ux.tar.xz
+%endif
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
-%if %{with efi_fw_update}
-%{_mandir}/man1/dbxtool.1%{?ext_man}
-%endif
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
-%if %{with efi_fw_update}
-%{_mandir}/man1/fwupdate.1%{?ext_man}
-%endif
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
+%if %{with efi_fw_update}
+%{_mandir}/man1/dbxtool.1%{?ext_man}
+%{_mandir}/man1/fwupdate.1%{?ext_man}
+%endif
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
-%ifarch %{ix86} x86_64
+%if %{with msr_support}
 %{_modulesloaddir}/fwupd-msr.conf
 %endif
 %config %{_sysconfdir}/%{name}/
@@ -349,11 +333,14 @@ fi
 %{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Foundation-Firmware
 %{_sysconfdir}/pki/fwupd/LVFS-CA.pem
+%if %{with efi_fw_update}
+%dir %{_sysconfdir}/grub.d
+%{_sysconfdir}/grub.d/35_fwupd
+%endif
 %{_udevrulesdir}/90-fwupd-devices.rules
 %{_libdir}/fwupd-plugins-3/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
-%dir %{_localstatedir}/lib/%{name}/
 %{_datadir}/bash-completion/completions/fwupdmgr
 %{_datadir}/bash-completion/completions/fwupdtool
 %{_datadir}/bash-completion/completions/fwupdagent
@@ -363,9 +350,6 @@ fi
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
-%if %{with efi_fw_update}
-%{_datadir}/fwupd/uefi-capsule-ux.tar.xz
-%endif
 
 %files -n dfu-tool
 %{_bindir}/dfu-tool
@@ -378,7 +362,7 @@ fi
 %files -n libfwupd2
 %{_libdir}/libfwupd.so.*
 
-%files -n libfwupdplugin1
+%files -n libfwupdplugin2
 %{_libdir}/libfwupdplugin.so.*
 
 %files -n typelib-1_0-Fwupd-2_0
@@ -395,8 +379,6 @@ fi
 %{_datadir}/gir-1.0/FwupdPlugin-1.0.gir
 %{_datadir}/vala/vapi/fwupd.deps
 %{_datadir}/vala/vapi/fwupd.vapi
-%{_datadir}/vala/vapi/fwupdplugin.deps
-%{_datadir}/vala/vapi/fwupdplugin.vapi
 %{_includedir}/fwupd-1/
 %{_libdir}/pkgconfig/fwupd.pc
 %{_libdir}/pkgconfig/fwupdplugin.pc

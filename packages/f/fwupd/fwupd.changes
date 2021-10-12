@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct  7 04:56:37 UTC 2021 - Joey Lee <jlee@suse.com>
+
+- Update to version 1.6.2
+    - The fwupd efi program be separated to fwupd-efi package.
+    - Removed pesign-obs-integration, moved needssslcertforbuild
+      , SBAT and EFI signing stuff to fwupd-efi. 
+    - Moved libfwupdplugin1 to libfwupdplugin2
+- Change log from upstream:
+  https://github.com/fwupd/fwupd/blob/main/data/org.freedesktop.fwupd.metainfo.xml
+    - This release adds the following features:
+	* Add a plugin to check Lenovo firmware settings
+	* Add initial support for the powerd daemon
+	* Add support for CapsuleOnDisk
+	* Add support for installing UEFI updates from GRUB
+	* Add support for soft-requirements that can be ignored with --force
+	* Allow devices to only accept version upgrades
+	* Allow discovery of Redfish BMCs specified by VID-PID or MAC
+	* Allow the daemon to request interactive action from the end user
+	* Automatically connect the BMC network interface at startup
+	* Show the build timestamp if set on the device
+	* Show the user how to switch out of Wacom tablet Android-mode
+    - This release fixes the following bugs:
+	* Add the alternate vendor name into the 8BitDo allowlist
+	* Allow multiple devices to set WAIT_FOR_REPLUG
+	* Allow the client to watch for more property changes
+	* Always ensure the SuperIO version string is NUL terminated
+	* Automatically clear the update error as required
+	* Disable all UX capsules for Lenovo hardware
+	* Do not assume the metainfo file is NUL-terminated
+	* Do not save invalid files on LVFS server error
+	* Fix a VLI regression in enumerating the PD device
+	* Fix a VLI regression when installing VL820Q7 firmware
+	* Fix enumeration of the Synaptics Prometheus config child
+	* Fix parsing Redfish USB/PCI network VID/PIDs
+	* Fix the fwupdmgr progressbar spinner to actually work
+	* Fix version number for legacy Wacom Bluetooth modules
+	* Ignore virtual M.2 ATA devices
+	* Preserve NEEDS_REBOOT on successful update
+	* Prevent a corrupt PHAT table from allocating lots of memory
+	* Read the Redfish SMBIOS table when required
+	* Remove the vendor string from the device name where required
+	* Save the update state to the database correctly all of the time
+	* Switch from sysctl to ioctl for ESRT on FreeBSD
+	* Try reading from /sys/class/dmi if SMBIOS direct access fails
+	* Watch for children added or removed after setup has been completed
+	* Work around a XCC-ism on Lenovo hardware
+    - This release adds support for the following hardware:
+	* ModemManager devices supporting Firehose or MBIM QDU
+	* More models of RTS54HUB
+	* More Poly DFU devices
+	* Parade LSPCON
+	* PixArt receiver and wireless hardware
+	* Realtek MST with RTD2142
+	* SuperIO IT5570
+	* USB4 Dell dock
+
+-------------------------------------------------------------------
 Thu Apr  1 01:54:42 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Remove valgrind from BuildRequires since it's not a hard
