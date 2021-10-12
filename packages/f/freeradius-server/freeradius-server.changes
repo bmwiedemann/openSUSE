@@ -38,6 +38,7 @@ Thu Oct  7 15:02:11 UTC 2021 - Adam Majer <adam.majer@suse.de>
   * The Simultaneous-Use code is now IPv6 aware, and can deal
     with NAS-IPv6-Address.
   * Add dictionary.cambium.
+  * No longer logs passwords in logfiles (bsc#1184016)
 
   Bug Fixes
   * Fix crash in trustrouter module (#4115)
