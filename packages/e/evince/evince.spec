@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        40.4
+Version:        41.2
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/41/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
@@ -38,16 +38,14 @@ Patch6:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patc
 Patch7:         0005-reversed-synctex-Fix-compilation.patch
 Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
-BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  ghostscript-x11
 BuildRequires:  gtk-doc >= 1.3
-BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:  pkgconfig(appstream-glib)
@@ -69,8 +67,9 @@ BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
-BuildRequires:  pkgconfig(poppler-glib) >= 0.76.0
+BuildRequires:  pkgconfig(poppler-glib) >= 0.86.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(synctex) >= 1.18
 BuildRequires:  pkgconfig(x11)
@@ -224,7 +223,6 @@ A plugin for Evince to read XPS documents.
 %patch7 -p1
 %patch8 -p1
 %endif
-translation-update-upstream po %{name}
 
 %build
 %meson \

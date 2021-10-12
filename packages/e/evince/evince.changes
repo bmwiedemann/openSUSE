@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Sun Oct 10 10:44:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + data: Remove alphanumeric version from AppStream.
+  + Include subproject (libhandy) as part of the tarball.
+
+-------------------------------------------------------------------
+Sat Oct  9 19:12:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + build: Revert project name capitalization.
+- Changes from version 41.0:
+  + backends:
+    - Add format attribute to stop warning on string literal
+    - Make function static as only used in this file
+    - Simplify metadata tags getters
+    - Use SaveToBufferData only with "struct" before
+  + browser-plugin: Remove browser-plugin support
+  + build:
+    - Add option to control internal vs external synctex
+    - Allow building without libhandy-1 available
+    - Bump version requirement for Poppler
+    - Fix conversion to match new version scheme
+    - Modernize and simplify meson files
+    - Remove Changelog target
+    - Update build libtiff-4 dependency
+    - Use devel icon for unstable version installed
+    - Remove c++ dependency, and use only C
+    - Fix compilation error when DBus is disabled
+  + data:
+    - Update URL to submit issues
+    - Fix AppData urls for issues
+    - Add new-window desktop action
+    - Fix donation link
+  + help:
+    - Fix 404 link to on-wiki bug reporting guidelines
+    - Update Evince icon as svg
+    - Correct Window action
+  + libview:
+    - Open new annotation window only for text annotation
+    - Fix dual page option ignored for single page documents
+  + shell:
+    - Add mnemonics to annotations contextual menus
+    - Added mnemonic for highlight option in context menu
+    - Adding padding to improve readability
+    - Always show the annotation window on new annotations
+    - Enable annotation actions only in document that supports them
+    - Enable odd pages left when dual page is on
+    - Expand sidebar annotations by default
+    - Fix libhandy includes
+    - Implemented headerbar for Annotation Properties dialog
+    - Reload annotation sidebar on annotation properties changes
+    - Reload the annotation sidebar when the type changes
+    - Show annotation contents in sidebar when available
+    - Show content in tooltip popup in annotations sidebar
+    - Fix g_critical about removing non-existant timer
+    - Show filename in recent view when title has only spaces
+    - Show None when missing creation/modification date
+    - Add comment about logic of 'first_iteration'
+    - Use a constant for GString init size
+    - Support duration in decimal value
+    - Be able to collapse/expand all entries
+  + Updated translations.
+- Replace c++_compiler with c_compiler BuildRequires.
+- Replace libtiff-devel with pkgconfig(libtiff-4) BuildRequires.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:27:56 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Fri Aug  6 13:11:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha:
+  + Backends:
+    - Add format attribute to stop warning on string literal.
+    - Make function static as only used in this file.
+    - Simplify metadata tags getters.
+    - Use SaveToBufferData only with "struct" before.
+  + browser-plugin: Remove browser-plugin support.
+  + Help:
+    - Update Evince icon as svg.
+    - Correct Window action.
+  + libview: dual page option is ignored for single page documents.
+  + Shell:
+    - Add mnemonics to annotations contextual menus.
+    - Added mnemonic for highlight option in context menu.
+    - Adding padding to improve readability.
+    - Always show the annotation window on new annotations.
+    - Enable odd pages left when dual page is on.
+    - Expand sidebar annotations by default.
+    - Implemented headerbar for Annotation Properties dialog.
+    - Reload annotation sidebar on annotation properties changes.
+    - Reload the annotation sidebar when the type changes.
+    - Show annotation contents in sidebar when available.
+    - Show content in tooltip popup in annotations sidebar.
+    - Show filename in recent view when title has only spaces.
+    - Support duration in decimal value.
+    - Be able to collapse/expand all entries.
+    - Fix g_critical about removing non-existant timer.
+    - Fix compilation error when DBus is disabled.
+    - Add new-window desktop action.
+    - Show None when missing creation/modification date.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul 15 17:43:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:
