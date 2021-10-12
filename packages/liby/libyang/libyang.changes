@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  9 01:47:12 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Upgrade to Release 2.0.97
+  * All language bingdings dropped: libyang-cpp and python-yang
+  * Standard extensions are now built-in: libyang-extentions removed
+
+- Extension path changed from upstream default to allow co-existence
+  with possible future version
+
+-------------------------------------------------------------------
 Sat Jun  5 13:10:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.240
