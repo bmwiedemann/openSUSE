@@ -41,4 +41,13 @@
     <comment>- Map -o with its argument to -sOutputFile= (boo#1190614)</comment>
     <requestid>920263</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>85f471539da4255e2b84e6d9c7277559</srcmd5>
+    <version>0.1</version>
+    <time>1634068192</time>
+    <user>dimstar_suse</user>
+    <comment>- Use TERM instead of KILL to let bwrap do its work
+- Enable bwrap to execute its option --die-with-parent</comment>
+    <requestid>924872</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:26:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use TERM instead of KILL to let bwrap do its work
+- Enable bwrap to execute its option --die-with-parent
+
+-------------------------------------------------------------------
 Mon Sep 20 07:40:46 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Map -o with its argument to -sOutputFile= (boo#1190614) 

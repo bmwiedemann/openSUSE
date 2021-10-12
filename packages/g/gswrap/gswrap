@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # Copyright (c) 2019 SuSE GmbH Nuernberg, Germany.
-# Copyright (c) 2019 Werner Fink
+# Copyright (c) 2021 SuSE SUSE Software Solutions Germany GmbH.
+# Copyright (c) 2019,2021 Werner Fink
 #
 # Wrapper script for ghostscript based on bwrap, the container setup
 # utility, which does use e.g. unshare(2) system call to create a
@@ -30,6 +31,14 @@ user=nobody
 home=/home/$user
 uid=$(id -u $user)
 gid=$(id -g $user)
+lock=$(mktemp "${TMPDIR:-/tmp}/.gswrap-XXXXXXXXXX") || exit 1
+
+unlock ()
+{
+    test -e $lock || return
+    fuser -TERM $lock
+    rm -f $lock
+}
 
 finish ()
 {
@@ -37,16 +46,21 @@ finish ()
     # to be able to hide the original cwd or directory from ghostscript process
     local dir="$1"
     local tmp="$2"
-    test -d "$dir" || return
-    test -d "$tmp" || return
-    for ps in "$tmp/"*
-    do
-	test -e "$ps" || continue
-	test -p "$ps" && continue
-	mv -f "$ps" "$dir"
-    done
-    rm -rf "$tmp"
+    if test -d "$tmp"
+    then
+	for ps in "$tmp/"*
+	do
+	    test -e "$ps"  || continue
+	    test -p "$ps"  && continue
+	    test -d "$dir" || continue
+	    mv -f "$ps" "$dir"
+	done
+	rm -rf "$tmp"
+    fi
+    unlock
 }
+
+trap 'unlock' EXIT SIGINT SIGHUP
 
 typeset -i safer=0
 typeset    pipecmd=""
@@ -255,16 +269,17 @@ unset o argc arg
 set -- "${argv[@]}"
 set -euo pipefail
 (exec -c -a gs /usr/bin/bwrap \
-      --as-pid-1 \
+      --dev /dev \
+      --proc /proc \
+      --tmpfs /run \
+      --tmpfs /tmp \
       --ro-bind /bin/false /bin/false \
       --ro-bind $ghostscript /usr/bin/gs \
       --ro-bind /usr/share/ghostscript /usr/share/ghostscript \
       --ro-bind /usr/share/fonts /usr/share/fonts \
       --ro-bind /etc/fonts /etc/fonts \
-      --dev /dev \
-      --proc /proc \
-      --tmpfs /run \
-      --tmpfs /tmp \
+      --ro-bind $lock /tmp/.lock \
+      --lock-file /tmp/.lock \
       --dir /run/user/$uid \
       --dir /var \
       --symlink ../run var/run \
@@ -276,7 +291,6 @@ set -euo pipefail
       --sync-fd 0 \
       --sync-fd 1 \
       --sync-fd 2 \
-      --die-with-parent \
       --setenv XDG_RUNTIME_DIR "/run/user/$uid" \
       --setenv USER $user \
       --setenv LOGNAME $user \
@@ -284,4 +298,6 @@ set -euo pipefail
       --setenv HOME $home \
       --setenv PATH /bin:/usr/bin \
       --setenv MAIL /dev/null \
+      --die-with-parent \
       /usr/bin/gs ${1+"$@"})
+rm -f $lock
