@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  6 13:26:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.14:
+  + CVE-2021-39365: Fix TLS cert validation not being done for any
+    network call.
+  + Fix double-free when using GrlNet in Python.
+  + Load config from GRL_CONFIG_PATH if set.
+  + Clarify LGPLv2.1 or later license.
+  + Handle numeric limits for GrlOperationOptions.
+  + Updated translations.
+- Drop grilo-CVE-2021-39365.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Aug 27 02:32:18 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add grilo-CVE-2021-39365.patch: Fix missing TLS certificate

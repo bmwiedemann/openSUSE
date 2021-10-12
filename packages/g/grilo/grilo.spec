@@ -17,15 +17,13 @@
 
 
 Name:           grilo
-Version:        0.3.13
+Version:        0.3.14
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM grilo-CVE-2021-39365.patch glgo#GNOME#grilo#146 bsc#1189839 CVE-2021-39365 xwang@suse.com -- Fix missing TLS certificate verification
-Patch0:         grilo-CVE-2021-39365.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
