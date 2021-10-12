@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 11 05:52:02 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20211011.42e2caa:
+  * Finalize LGTM fix.
+
+-------------------------------------------------------------------
+Mon Oct 11 05:13:11 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20211009.8ce7a88:
+  * Fix LGTM error.
+  * Update openSUSE devel libraries.
+  * Finish porting to LLVM 13.
+  * Port to LLVM 13.
+
+-------------------------------------------------------------------
 Fri Sep 17 13:04:50 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210917.064adbb:

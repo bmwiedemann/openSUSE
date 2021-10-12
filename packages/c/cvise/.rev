@@ -608,4 +608,19 @@
   * Fix typo in README.md.</comment>
     <requestid>919745</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1483d01a14d068cedfeb9b559f1faa48</srcmd5>
+    <version>2.3.0+git.20211011.42e2caa</version>
+    <time>1634068163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20211011.42e2caa:
+  * Finalize LGTM fix.
+
+- Update to version 2.3.0+git.20211009.8ce7a88:
+  * Fix LGTM error.
+  * Update openSUSE devel libraries.
+  * Finish porting to LLVM 13.
+  * Port to LLVM 13.</comment>
+    <requestid>924866</requestid>
+  </revision>
 </revisionlist>
