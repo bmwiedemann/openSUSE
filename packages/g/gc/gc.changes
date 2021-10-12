@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 28 22:27:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.6
+  * Allocate start_info struct on the stack in GC_pthread_create.
+  * Allow GC_PAUSE_TIME_TARGET environment variable values
+    smaller than 5 ms.
+  * Disable mprotect-based incremental GC if /proc roots are used.
+  * Enable sbrk-to-mmap fallback on major supported Unix-like
+    platforms.
+  * Ensure process is running on one CPU core if AO ops are
+    emulated with locks.
+  * Fix data race regarding *rlh value in generic_malloc_many.
+  * Fix handling of areas smaller than page size in
+    GC_scratch_recycle.
+  * Limit number of unmapped regions.
+
+-------------------------------------------------------------------
 Fri Mar 15 09:35:41 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 8.0.4

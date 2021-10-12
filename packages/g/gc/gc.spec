@@ -1,7 +1,7 @@
 #
 # spec file for package gc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           gc
-Version:        8.0.4
+Version:        8.0.6
 Release:        0
 Summary:        A garbage collector for C and C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://www.hboehm.info/gc/
 
-#Git-Clone:	git://github.com/ivmai/bdwgc
+#Git-Clone:	https://github.com/ivmai/bdwgc
 Source:         https://github.com/ivmai/bdwgc/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  gcc-c++
@@ -73,7 +73,7 @@ automatically recycles memory when it determines that it can no longer
 be otherwise accessed.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -95,7 +95,9 @@ make %{?_smp_mflags}
 %install
 %make_install
 rm -Rf "%buildroot/%_datadir/gc" "%buildroot/%_libdir"/*.la
-rm -f "%buildroot/%_docdir/%name"/README.{Mac,OS2,win32}
+for i in README.Mac README.OS2 README.win32; do
+	rm -f "%buildroot/%_docdir/%name/$i"
+done
 
 %check
 %if !0%{?qemu_user_space_build}
@@ -106,12 +108,10 @@ make check
 %postun -n libgc1 -p /sbin/ldconfig
 
 %files -n libgc1
-%defattr(-, root, root)
 %_libdir/libcord.so.1*
 %_libdir/libgc*.so.1*
 
 %files devel
-%defattr(-, root, root)
 %_docdir/%name/
 %_libdir/libcord.so
 %_libdir/libgc*.so
