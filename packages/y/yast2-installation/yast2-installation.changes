@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  8 10:04:16 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix file copying when using relurl:// and file:// naming schemes
+  (bsc#1191160).
+- 4.4.20
+
+-------------------------------------------------------------------
 Wed Sep 29 16:13:17 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Release the sources and close the libzypp cache to allow
