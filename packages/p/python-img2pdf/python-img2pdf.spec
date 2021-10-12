@@ -1,7 +1,7 @@
 #
 # spec file for package python-img2pdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# no numpy and scipy
+%define skip_python36 1
 Name:           python-img2pdf
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later
@@ -34,14 +36,16 @@ Requires:       python-pdfrw
 Requires:       python-pikepdf
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-pdfrw
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pdfrw}
 BuildRequires:  %{python_module pikepdf}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
 
@@ -68,7 +72,9 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# other tests looks more like a integration tests, needs
+# mupdf, imagemagick, pdftocairo, pdfimages, tiff-tools
+%pytest -k 'test_general or test_layout'
 
 %post
 %python_install_alternative img2pdf-gui
