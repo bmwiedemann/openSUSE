@@ -8,7 +8,7 @@ Subject: configure: Allow user defined C compiler flags.
 
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1816,6 +1816,9 @@ AS_IF([test x"$DEFAULT_STRING" = "xunsaf
+@@ -1936,6 +1936,9 @@ AS_IF([test x"$DEFAULT_STRING" = "xunsaf
    [default_safe_string=false],
    [default_safe_string=true])
  

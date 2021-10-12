@@ -18,31 +18,31 @@
 #
 
 
-%define ocaml_base_version 4.12
+%define ocaml_base_version 4.13
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 # handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
 %global __suseocaml_requires_opts \
 	-c \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
+	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	%nil
 %global __ocaml_requires_opts \
 	-c \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
+	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	%nil
 %global __suseocaml_provides_opts \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
+	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	%nil
 %global __ocaml_provides_opts \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
+	-f "%_bindir/env OCAMLLIB=%buildroot%{ocaml_standard_library} %buildroot%_bindir/ocamlrun %buildroot%_bindir/ocamlobjinfo.byte" \
+	%nil
 
 %global  _buildshell /bin/bash
 %bcond_with ocaml_make_testsuite
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.12.1
+Version:        4.13.1
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
@@ -53,28 +53,27 @@ License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            http://www.ocaml.org
-Source0:        ocaml-%{version}.tar.xz
-Source2:        %{name}-rpmlintrc
+Source0:        %name-%version.tar.xz
+Source2:        %name-rpmlintrc
 Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
-Patch1:         ocaml-SIGSTKSZ.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
-Requires:       ocaml(runtime) = %{version}-%{release}
+Requires:       ocaml(runtime) = %version-%release
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %{ocaml_base_version}
 Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
 Requires:       %(type -P gcc | xargs readlink -f | xargs rpm -qf --qf '%%{NAME}\n')
 Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
-Obsoletes:      ocaml-seq < %{version}-%{release}
-Obsoletes:      ocaml-seq-debuginfo < %{version}-%{release}
-Obsoletes:      ocaml-seq-devel < %{version}-%{release}
-Provides:       ocaml-seq = %{version}-%{release}
-Provides:       ocaml-seq-debuginfo = %{version}-%{release}
-Provides:       ocaml-seq-devel = %{version}-%{release}
+Obsoletes:      ocaml-seq < %version-%release
+Obsoletes:      ocaml-seq-debuginfo < %version-%release
+Obsoletes:      ocaml-seq-devel < %version-%release
+Provides:       ocaml-seq = %version-%release
+Provides:       ocaml-seq-debuginfo = %version-%release
+Provides:       ocaml-seq-devel = %version-%release
 
 %description
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -88,7 +87,7 @@ system, Lex&Yacc tools, a replay debugger, and a comprehensive library.
 Summary:        OCaml runtime environment
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Provides:       ocaml(runtime) = %{version}-%{release}
+Provides:       ocaml(runtime) = %version-%release
 
 %description runtime
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -112,7 +111,7 @@ This package contains source code for OCaml libraries.
 Summary:        Documentation generator for OCaml
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Requires:       ocaml = %{version}
+Requires:       ocaml = %version
 
 %description ocamldoc
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -124,7 +123,7 @@ This package contains a documentation generator for OCaml.
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Requires:       ocaml = %{version}-%{release}
+Requires:       ocaml = %version-%release
 
 %description compiler-libs
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -138,7 +137,7 @@ be helpful in the development of certain applications.
 Summary:        Libraries used internal to the OCaml Compiler
 License:        QPL-1.0
 Group:          Development/Languages/OCaml
-Requires:       ocaml-compiler-libs = %{version}-%{release}
+Requires:       ocaml-compiler-libs = %version-%release
 
 %description compiler-libs-devel
 OCaml is a high-level, strongly-typed, functional and object-oriented
@@ -150,10 +149,9 @@ applications that use Ocaml.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
-echo %{version} > VERSION
+echo %version > VERSION
 export CC='gcc'
 export AS='as'
 test -x "$(type -P gcc | xargs readlink -f)" && export CC="$_"
@@ -202,11 +200,11 @@ popd
 
 %install
 %make_install
-%fdupes %{buildroot}
+%fdupes %buildroot
 export EXCLUDE_FROM_STRIP="ocamldebug ocamlbrowser"
 
 # preserve .cmxs and .so
-find %{buildroot} \( \
+find %buildroot \( \
 	-name '*.a' -o \
 	-name '*.cma' -o \
 	-name '*.cmi' -o \
@@ -231,7 +229,7 @@ mkdir META
 pushd "$_"
 tee bigarray <<_META_
 requires = "unix"
-version = "%{version}"
+version = "%version"
 description = "Large statically allocated arrays"
 directory = "^"
 browse_interfaces = " Unit name: Bigarray "
@@ -244,7 +242,7 @@ _META_
 #
 tee bytes <<_META_
 name="bytes"
-version = "%{version}"
+version = "%version"
 description="dummy backward-compatibility package for mutable strings"
 requires=""
 _META_
@@ -252,13 +250,13 @@ _META_
 tee compiler-libs <<_META_
 # The compiler itself
 requires = ""
-version = "%{version}"
+version = "%version"
 description = "compiler-libs support library"
 directory= "+compiler-libs"
 
 package "common" (
   requires = "compiler-libs"
-  version = "%{version}"
+  version = "%version"
   description = "Common compiler routines"
   archive(byte) = "ocamlcommon.cma"
   archive(native) = "ocamlcommon.cmxa"
@@ -266,7 +264,7 @@ package "common" (
 
 package "bytecomp" (
   requires = "compiler-libs.common"
-  version = "%{version}"
+  version = "%version"
   description = "Bytecode compiler"
   archive(byte) = "ocamlbytecomp.cma"
   archive(native) = "ocamlbytecomp.cmxa"
@@ -274,7 +272,7 @@ package "bytecomp" (
 
 package "optcomp" (
   requires = "compiler-libs.common"
-  version = "%{version}"
+  version = "%version"
   description = "Native-code compiler"
   archive(byte) = "ocamloptcomp.cma"
   archive(native) = "ocamloptcomp.cmxa"
@@ -283,7 +281,7 @@ package "optcomp" (
 
 package "toplevel" (
   requires = "compiler-libs.bytecomp"
-  version = "%{version}"
+  version = "%version"
   description = "Toplevel interactions"
   archive(byte) = "ocamltoplevel.cma"
   archive(native) = "ocamltoplevel.cmxa"
@@ -292,7 +290,7 @@ _META_
 #
 tee dynlink <<_META_
 requires = ""
-version = "%{version}"
+version = "%version"
 description = "Dynamic loading and linking of object files"
 directory = "^"
 browse_interfaces = " Unit name: Dynlink Unit name: Dynlinkaux "
@@ -302,7 +300,7 @@ _META_
 #
 tee ocamldoc <<_META_
 requires = "compiler-libs"
-version = "%{version}"
+version = "%version"
 description = "ocamldoc plugin interface"
 directory= "^ocamldoc"
 _META_
@@ -310,7 +308,7 @@ _META_
 tee raw_spacetime <<_META_
 requires = ""
 description = "Support library for the spacetime profiler"
-version = "%{version}"
+version = "%version"
 directory = "^"
 browse_interfaces = ""
 archive(byte) = "raw_spacetime_lib.cma"
@@ -322,14 +320,14 @@ _META_
 #
 # conflicts with ocaml-result.rpm
 tee result <<_META_
-version = "%{version}"
+version = "%version"
 description = ""
 requires = ""
 _META_
 %endif
 #
 tee seq <<_META_
-version = "%{version}"
+version = "%version"
 description = ""
 requires = ""
 _META_
@@ -337,7 +335,7 @@ _META_
 tee stdlib <<_META_
 requires = ""
 description = "Standard library"
-version = "%{version}"
+version = "%version"
 directory = "^"
 browse_interfaces = " Unit name: Arg Unit name: Array Unit name: ArrayLabels Unit name: Buffer Unit name: Bytes Unit name: BytesLabels Unit name: Callback Unit name: CamlinternalFormat Unit name: CamlinternalFormatBasics Unit name: CamlinternalLazy Unit name: CamlinternalMod Unit name: CamlinternalOO Unit name: Char Unit name: Complex Unit name: Digest Unit name: Filename Unit name: Format Unit name: Gc Unit name: Genlex Unit name: Hashtbl Unit name: Int32 Unit name: Int64 Unit name: Lazy Unit name: Lexing Unit name: List Unit name: ListLabels Unit name: Map Unit name: Marshal Unit name: MoreLabels Unit name: Nativeint Unit name: Obj Unit name: Oo Unit name: Parsing Unit name: Pervasives Unit name: Printexc Unit name: Printf Unit name: Queue Unit name: Random Unit name: Scanf Unit name: Set Unit name: Sort Unit name: Stack Unit name: StdLabels Unit name: Stream Unit name: String Unit name: StringLabels Unit name: Sys Unit name: Weak "
 _META_
@@ -345,7 +343,7 @@ _META_
 tee str <<_META_
 requires = ""
 description = "Regular expressions and string processing"
-version = "%{version}"
+version = "%version"
 directory = "^"
 browse_interfaces = " Unit name: Str "
 archive(byte) = "str.cma"
@@ -355,7 +353,7 @@ plugin(native) = "str.cmxs"
 _META_
 #
 tee threads <<_META_
-version = "%{version}"
+version = "%version"
 description = "Multi-threading"
 requires(mt,mt_vm) = "threads.vm"
 requires(mt,mt_posix) = "threads.posix"
@@ -370,7 +368,7 @@ package "vm" (
   directory = "+vmthreads"
   exists_if = "threads.cma"
   archive(byte,mt,mt_vm) = "threads.cma"
-  version = "%{version}"
+  version = "%version"
 )
 
 package "posix" (
@@ -380,24 +378,24 @@ package "posix" (
   exists_if = "threads.cma"
   archive(byte,mt,mt_posix) = "threads.cma"
   archive(native,mt,mt_posix) = "threads.cmxa"
-  version = "%{version}"
+  version = "%version"
 )
 package "none" (
   error = "threading is not supported on this platform"
-  version = "%{version}"
+  version = "%version"
 )
 _META_
 #
 tee uchar <<_META_
 description = "Unicode characters."
-version = "%{version}"
+version = "%version"
 directory = "^"
 _META_
 #
 tee unix <<_META_
 requires = ""
 description = "Unix system calls"
-version = "%{version}"
+version = "%version"
 directory = "^"
 browse_interfaces = " Unit name: Unix Unit name: UnixLabels "
 archive(byte) = "unix.cma"
@@ -431,8 +429,8 @@ do
 	esac
 	d=%{ocaml_standard_library}/${ocamlfind}
 	f=${d}/META
-	mkdir -vp %{buildroot}${d}
-	mv "${META}" %{buildroot}${f}
+	mkdir -vp %buildroot${d}
+	mv "${META}" %buildroot${f}
 	tee -a "${files}" <<_EOF_
 %%dir ${d}
 ${f}
@@ -445,8 +443,8 @@ done
 %if %{with suse_ocaml_use_rpm_license_macro}
 %license LICENSE
 %endif
-%{_bindir}/*
-%{_mandir}/*/*
+%_bindir/*
+%_mandir/*/*
 %{ocaml_standard_library}/*.a
 %{ocaml_standard_library}/*.cmxs
 %{ocaml_standard_library}/*.cmxa
@@ -469,13 +467,13 @@ done
 %{ocaml_standard_library}/ld.conf
 %{ocaml_standard_library}/camlheaderd
 %{ocaml_standard_library}/camlheaderi
-%exclude %{_bindir}/ocamlrun
-%exclude %{_bindir}/ocamldoc*
+%exclude %_bindir/ocamlrun
+%exclude %_bindir/ocamldoc*
 %exclude %{ocaml_standard_library}/ocamldoc
 
 %files runtime
 %defattr(-,root,root,-)
-%{_bindir}/ocamlrun
+%_bindir/ocamlrun
 %dir %{ocaml_standard_library}
 %{ocaml_standard_library}/*.cmo
 %{ocaml_standard_library}/*.cmi
@@ -501,7 +499,7 @@ done
 
 %files ocamldoc -f files.ocamldoc.META
 %defattr(-,root,root,-)
-%{_bindir}/ocamldoc*
+%_bindir/ocamldoc*
 %{ocaml_standard_library}/ocamldoc
 %doc ocamldoc/Changes.txt
 

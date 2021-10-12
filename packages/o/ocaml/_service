@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml</param>
-    <param name="revision">46c947827ec2f6d6da7fe5e195ae5dda1d2ad0c5</param>
+    <param name="revision">ab626576eee205615a9d7c5a66c2cb2478f1169c</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/ocaml.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">[v]?([^+a-z]+)(.*)</param>
+    <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
