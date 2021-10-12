@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 30 08:44:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_laptop-mode.service.patch
+  * harden_lmt-poll.service.patch
+
+-------------------------------------------------------------------
 Mon May 17 15:11:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.74

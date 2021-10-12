@@ -31,6 +31,8 @@ Source1:        README.SUSE
 Patch0:         laptop-mode-1.53_conf.diff
 Patch1:         laptop-mode-1.49-new-dirty-ratio-defaults.diff
 Patch2:         laptop-mode-1.53-moblin-enable-intel-hda-powersave.patch
+Patch3:	harden_laptop-mode.service.patch
+Patch4:	harden_lmt-poll.service.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
