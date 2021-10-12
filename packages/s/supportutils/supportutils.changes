@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  4 17:38:56 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Installing to /usr/sbin instead of /sbin (bsc#1191096)
+- Added shared memory as a log directory for emergency use (bsc#1190943)
+
+-------------------------------------------------------------------
+Wed Sep  8 18:18:08 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixed cron package for RPM validation (bsc#1190315)
+- Updated spec file with correct URL
+
+-------------------------------------------------------------------
+Mon Aug 16 14:40:50 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 3.1.18
+  + Added email.txt based on OPTION_EMAIL #108 (bsc#1189028)
+  + Include 'multipath -t' output in mpio.txt #105
+  + Improved lsblk readability with --ascsi #106
+  + Removed duplicate commands in network.txt
+  + Remove duplicate firewalld status output #109
+
+-------------------------------------------------------------------
 Tue Jul  6 17:58:52 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to version 3.1.17
