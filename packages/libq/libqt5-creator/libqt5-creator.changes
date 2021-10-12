@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 11 14:39:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Unset SUSE_IGNORED_RPATHS to avoid a build failure caused by one
+  of the binutils patches (boo#1191473)
+
+-------------------------------------------------------------------
+Fri Oct  1 20:08:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.0.2
+  * Fixed that Qt 5 context help was shown even if Qt 6
+    documentation is available
+  * Fixed canceling of builds
+  * Changed the `File System` special node to be shown only on
+    parsing failure
+  * Fixed loading of projects without targets
+  * Fixed that no targets where shown in added build step
+  * Fixed that `ninja` could not be found after changing Qt
+    installation location
+  * Fixed debugging of terminal applications with GDB < 10
+
+-------------------------------------------------------------------
 Wed Sep 15 11:36:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.0.1
