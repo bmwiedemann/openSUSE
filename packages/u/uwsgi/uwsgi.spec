@@ -1,7 +1,7 @@
 #
 # spec file for package uwsgi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,13 +89,8 @@ BuildRequires:  php7-embed
 %endif
 BuildRequires:  pkg-config
 BuildRequires:  postgresql-devel
-BuildRequires:  python-devel
-%if 0%{?suse_version} > 1510
-BuildRequires:  python3-greenlet-devel
-%else
-BuildRequires:  python-greenlet-devel
-%endif
 BuildRequires:  python3-devel
+BuildRequires:  python3-greenlet-devel
 %if 0%{?suse_version} <= 1310
 BuildRequires:  ruby19-devel
 %endif
@@ -180,7 +175,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains an Apache 2.0 module for uWSGI.
 
-
 %package emperor_pg
 Summary:        PostgreSQL Emperor Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -191,7 +185,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains an emperor plugin allowing for configuration of
 applications (vassals) in a PostgreSQL database.
-
 
 %package emperor_zeromq
 Summary:        ZeroMQ Emperor Plugin for uWSGI
@@ -204,12 +197,11 @@ uWSGI is a self-healing application container server coded in pure C.
 This package contains an emperor plugin allowing for configuration of
 applications (vassals) via ZeroMQ.
 
-
 %package gevent
 Summary:        Gevent Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
-Requires:       %{name}-python = %{version}
+Requires:       %{name}-python3 = %{version}
 
 %description gevent
 uWSGI is a self-healing application container server coded in pure C.
@@ -235,14 +227,13 @@ filesystem
 Summary:        Greenlet Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
-Requires:       %{name}-python = %{version}
+Requires:       %{name}-python3 = %{version}
 
 %description greenlet
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for the Python Greenlet non-blocking network
 framework.
-
 
 %package jvm
 Summary:        JVM Plugin for uWSGI
@@ -256,7 +247,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for embedding a Java virtual machine in uWSGI.
 
-
 %package ldap
 Summary:        LDAP Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -266,7 +256,6 @@ Requires:       %{name} = %{version}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for configuring uWSGI via LDAP.
-
 
 %package libffi
 Summary:        Plugin libffi for uWSGI
@@ -278,7 +267,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for libffi.
 
-
 %package logzmq
 Summary:        ZMQ Logger for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -288,7 +276,6 @@ Requires:       %{name} = %{version}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for ZMQ logging.
-
 
 %package lua
 Summary:        Lua Plugin for uWSGI
@@ -300,7 +287,6 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Lua applications via the wsapi interface.
 
-
 %package pam
 Summary:        PAM Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -310,7 +296,6 @@ Requires:       %{name} = %{version}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for PAM authentication.
-
 
 %package psgi
 Summary:        PSGI Plugin for uWSGI
@@ -324,7 +309,6 @@ uWSGI is a self-healing application container server coded in pure C.
 This package contains the PSGI plugin for running Perl applications that
 support the PSGI protocol.
 
-
 %package pypy
 Summary:        PyPy Plugin for uWSGI
 Group:          Productivity/Networking/Web/Servers
@@ -334,19 +318,6 @@ Requires:       %{name} = %{version}
 uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Python applications using PyPy.
-
-
-%package python
-Summary:        Python Plugin for uWSGI
-Group:          Productivity/Networking/Web/Servers
-Requires:       %{name} = %{version}
-Requires:       python-base >= 2.7
-
-%description python
-uWSGI is a self-healing application container server coded in pure C.
-
-This package contains support for Python applications via the WSGI protocol.
-
 
 %package python3
 Summary:        Python 3 Plugin for uWSGI
@@ -475,13 +446,8 @@ excluded_plugins="$excluded_plugins libtcc"
 # matheval is deprecated
 excluded_plugins="$excluded_plugins matheval"
 
-# bsc#1156199 - python-txtorcon: GeoIP support is discontinued 
+# bsc#1156199 - python-txtorcon: GeoIP support is discontinued
 excluded_plugins="$excluded_plugins geoip"
-
-# greenlet is python3 now
-%if 0%{?suse_version} > 1510
-excluded_plugins="$excluded_plugins greenlet"
-%endif
 
 # V8 is not yet available on all platforms and is broken in the v8 versions in
 # 13.1+
@@ -493,6 +459,9 @@ excluded_plugins="$excluded_plugins v8"
 %endif
 %endif
 
+# python3 module is built separately
+excluded_plugins="$excluded_plugins python"
+
 # Ruby 1.9 is no longer available after 13.1
 %if 0%{?suse_version} > 1310
 excluded_plugins="$excluded_plugins fiber mongrel2 rack rbthreads ruby19"
@@ -503,7 +472,7 @@ excluded_plugins="$excluded_plugins fiber mongrel2 rack rbthreads ruby19"
 excluded_plugins="$excluded_plugins glusterfs"
 %endif
 
-plugins=$(python -c "import sys, os; print ', '.join([p for p in sorted(os.listdir('plugins')) if p not in sys.argv[1:]])" $excluded_plugins)
+plugins=$(python3 -c "import sys, os; print(', '.join([p for p in sorted(os.listdir('plugins')) if p not in sys.argv[1:]]))" $excluded_plugins)
 sed -e "s#@@LIBDIR@@#%{_libdir}#" -e "s#@@PLUGINS@@#$plugins#" %{SOURCE1} > buildconf/opensuse.ini
 
 # README.openSUSE
@@ -518,7 +487,7 @@ export UWSGICONFIG_LUAPC="lua"
 export UWSGICONFIG_RUBYPATH="ruby1.9"
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I%{_includedir}/glusterfs -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
 %{?jobs:export CPUCOUNT=%jobs}
-python uwsgiconfig.py --build opensuse
+python3 uwsgiconfig.py --build opensuse
 
 # Build python3 plugin
 python3 uwsgiconfig.py --plugin plugins/python opensuse python3
@@ -534,10 +503,6 @@ python3 uwsgiconfig.py --plugin plugins/python opensuse python3
 python3 uwsgiconfig.py --plugin plugins/php opensuse php7
 %endif
 
-%if 0%{?suse_version} > 1510
-python3 uwsgiconfig.py --plugin plugins/greenlet opensuse greenlet
-%endif
-
 %install
 install -D -m 0755 uwsgi %{buildroot}%{_sbindir}/uwsgi
 install -d -m 0755 %{buildroot}%{_libdir}/uwsgi
@@ -549,10 +514,7 @@ install -m 0644 %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{buildroot}%{_sysco
 install -m 0644 vassals/broodlord.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/broodlord.ini.example
 install -m 0644 vassals/cc.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/cc.ini.example
 install -m 0644 vassals/multi.xml %{buildroot}%{_sysconfdir}/uwsgi/vassals/multi.xml.example
-install -D -m 0644 uwsgidecorators.py %{buildroot}%{python2_sitelib}/uwsgidecorators.py
-%py_compile %{buildroot}%{python2_sitelib}
 install -D -m 0644 uwsgidecorators.py %{buildroot}%{python3_sitelib}/uwsgidecorators.py
-%py_compile %{buildroot}%{python3_sitelib}
 install -D plugins/jvm/uwsgi.jar %{buildroot}%{_javadir}/uwsgi.jar
 install -d -m 0755 %{buildroot}/%{apache_libexecdir}
 install -m 0755 apache2/.libs/*.so %{buildroot}/%{apache_libexecdir}
@@ -734,11 +696,6 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %files pypy
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/pypy_plugin.so
-
-%files python
-%defattr(-,root,root,-)
-%{_libdir}/uwsgi/python_plugin.so
-%{python2_sitelib}/uwsgidecorators.py*
 
 %files python3
 %defattr(-,root,root,-)

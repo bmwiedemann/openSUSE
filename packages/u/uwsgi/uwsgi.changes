@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  7 07:25:48 UTC 2021 - pgajdos@suse.com
+
+- greenlet and gevent plugins require uwsgi-python3 instead of
+  uwsgi-python
+
+-------------------------------------------------------------------
+Thu Sep 30 08:52:52 UTC 2021 - pgajdos@suse.com
+
+- do not require python2, drop python plugin [bsc#1191174]
+
+-------------------------------------------------------------------
 Fri Dec 11 22:29:58 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Fix logic handling v8 plugin
