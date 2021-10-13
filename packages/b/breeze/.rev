@@ -1071,4 +1071,12 @@
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915354</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>482ddb0a1b44f969e4c621d9b3f61abe</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141032</time>
+    <user>dimstar_suse</user>
+    <comment>breeze and libkscreen2 got respun (forwarded request 924755 from Vogtinator)</comment>
+    <requestid>924756</requestid>
+  </revision>
 </revisionlist>

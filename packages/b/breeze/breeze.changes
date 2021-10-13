@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct 11 17:48:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * kstyle: Limit what kinds of QPushButtons can use autoDefault
+  * Revert accidental revert of f763f27ebf3bbb21235ab3df0f7b9ef035cc71b5
+  * kstyle: Clean up tab painting and tweak tab highlight
+  * Don't reserve room for spinbox buttons if buttons disabled (kde#440718)
+  * kstyle: use checked color consistent with button down color for checkboxes and radiobuttons
+  * kstyle: visible neutral highlight on not hovered checkboxes and radio buttons
+  * KTitleWidget: Make background transparent again (kde#442860)
+  * Revert "kstyle: make spinboxes look like qqc2-breeze-style"
+  * Revert "kstyle: centre spinbox text"
+  * Revert "Don't reserve room for spinbox buttons if buttons disabled"
+  * Revert "Center all QAbstractSpinBox, not just integer QSpinBox"
+  * Revert "kstyle: make spinbox buttons consistently widthed"
+  * Revert "kstyle: fix misalignment of spinbox item sizes"
+  * Darken hard-to-read positive, negative, and neutral selection colors (kde#406239)
+  * Fix incorrect link selection color in Breeze Light color scheme (kde#419960)
+  * Fix incorrect active selection color in Breeze Light color scheme (kde#442478)
+  * Restore auto default button behavior (kde#438994)
+  * kstyle: use antialiasing on combobox items
+- Add new key + signature to plasma.keyring
+- Drop patches, now upstream:
+  * 0001-Restore-auto-default-button-behavior.patch
+
+-------------------------------------------------------------------
+Sun Sep 26 12:12:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to automatically set a default button again (kde#438994):
+  * 0001-Restore-auto-default-button-behavior.patch
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
