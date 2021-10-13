@@ -1304,4 +1304,12 @@
     <comment></comment>
     <requestid>923662</requestid>
   </revision>
+  <revision rev="162" vrev="162">
+    <srcmd5>a7b1f51b774637f55dfc7d34dc0ad0de</srcmd5>
+    <version>unknown</version>
+    <time>1634141194</time>
+    <user>dimstar_suse</user>
+    <comment>- list-kde: Ignore breeze5-wallpapers (forwarded request 925139 from favogt)</comment>
+    <requestid>925140</requestid>
+  </revision>
 </revisionlist>

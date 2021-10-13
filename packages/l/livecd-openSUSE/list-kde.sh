@@ -65,6 +65,9 @@ buildignore vlc-qt
 buildignore vlc-lang
 buildignore kipi-plugins
 
+# Upstream branding, not used by default and HUGE
+buildignore breeze5-wallpapers
+
 install partitionmanager
 
 install cifs-utils
