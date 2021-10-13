@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Add keywords to SDDM KCM
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Re-word synchronization text for greater usability (kde#439217)
+  * Port OverlaySheet headers to use new title: property
+  * Sync the current kscreen configuration
+  * Print an error when the copy didn't work
+  * Close sheets after successfully interacting with them (kde#433919,kde#436137)
+  * Mark simple data files as non-copyrightable
+  * Convert LicenseRef-KDE-Accepted-GPL license headers to SPDX
+  * Convert license headers to SPDX
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
