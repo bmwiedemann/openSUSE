@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Replace handleInitError with KParts::BrowserRun::init
+  * Add a comment explaining the interaction with WebEnginePart
+  * Fix signature and avoid calling url() repeatedly
+  * Make Konqueror compatible with KIO 5.86.0 (kde#442636)
+  * Don't open HTTP URLs in another browser than Konqueror, from Konqueror
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
