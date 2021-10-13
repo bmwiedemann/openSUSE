@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 11 17:48:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Fix autorotate when "only in tablet mode" is selected (kde#428626)
+  * fix all the new settings (kde#442520)
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * wayland: Fix output hotplugging
+  * wayland: Fix output transforms
+  * add rgb range setting
+  * Add support for plasma wayland protocol kde_output_device_v2
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Natural sort the outputs modes in kscreen-doctor
+  * Use qEnvironmentVariable() with a default instead of qgetenv()
+  * dpms: Remove boilerplatey code
+  * dpms: Do not hardcode the wayland socket
+  * Update IRC network name in CONTRIBUTING.md
+  * Use version-less qt DBus macros
+  * We depend against 5.82
+  * Use the same wayland connection to fetch screen information
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

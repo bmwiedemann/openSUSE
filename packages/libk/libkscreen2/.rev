@@ -1014,4 +1014,12 @@
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919227</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>5cdd7ae979f725bc6beaa645f8b9510b</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141032</time>
+    <user>dimstar_suse</user>
+    <comment>breeze and libkscreen2 got respun (forwarded request 924755 from Vogtinator)</comment>
+    <requestid>924757</requestid>
+  </revision>
 </revisionlist>
