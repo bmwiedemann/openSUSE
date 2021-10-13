@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Too many changes since 21.08.1, only listing bugfixes:
+  * Remove broken "duplicate bin clip with timeremap" stuff that caused crash
+    dropping playlists in timeline (kde#441777)
+  * Crop effect: use project resolution by default(solves proxy issue). (kde#408235)
+  * Fix crash on pasting grouped subtitle (kde#439524)
+  * Fix noise when setting producer (e.g. when opening a project) (kde#433847)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
