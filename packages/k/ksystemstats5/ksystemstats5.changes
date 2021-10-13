@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Oct  8 12:35:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Fix ksystemstatstest failure
+  * Add description for the Sensors package
+  * Move find_package line
+  * Fix missing "Hardware Sensors" on Linux (kde#442528)
+  * Read extra amd gpu sensors
+  * Correct discoverSensors chip detection (kde#442042)
+  * Initialize some more pointer members to nullptr
+- Drop patches, now upstream:
+  * 0001-Initialize-some-more-pointer-members-to-nullptr.patch
+  * 0001-Fix-ksystemstatstest-failure.patch
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * [plugins/gpu] Initialise properties (kde#442023)
+  * Discover more hardware gpu sensors (kde#438318)
+  * Use sensors to read amd gpu  temperature
+  * Use SensorFeatureSensor in CPU plugin
+  * Use SensorsFeatureSensor from libksysguard
+  * Make libsensors required on Linux
+  * Do not dereference iterator that has been invalidated
+  * Only add a new VolumeObject if there's no other one with the same mounting point (kde#440477)
+  * Add maximum for total GPU usage (kde#441148)
+  * viewer: expand README with usage examples
+  * viewer: drop the "rolling" display, expand diagnostics
+  * daemon: log successfully loaded plugins, too
+  * freebsd-cpu: fix CPU load data retrieval
+  * freebsd-cpu: fix sysctl name of temperature sensor
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Fix handling of IPV6 addresses (kde#436296)
+  * gpu: Only scan pci devices
+  * Add load averages sensors
+  * Don't crash if there's no input subfeature (kde#439615)
+  * Only add "All GPUs" sensors when there is at least one GPU with statistics (kde#436770)
+  * Use 500ms update rate for network traffic sensors in NetworkManager backend
+  * Filter duplicate provider names
+  * Simplify plugin loading
+  * Use version-less qt DBus macros
+  * Init lib sensors centrally in the daemon (kde#437523)
+  * Update .gitignore
+- Add patch to fix autotest failure:
+  * 0001-Fix-ksystemstatstest-failure.patch
+- Add patch to fix crash on startup:
+  * 0001-Initialize-some-more-pointer-members-to-nullptr.patch
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
