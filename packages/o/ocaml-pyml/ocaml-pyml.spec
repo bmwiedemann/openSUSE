@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pyml
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,29 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ocaml-pyml
-Version:        20210226
+Version:        20210924
 Release:        0
 %{?ocaml_preserve_bytecode}
-Summary:        Stdcompat: compatibility module for OCaml standard library 
+Summary:        Stdcompat: compatibility module for OCaml standard library
 License:        BSD-2-Clause
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/pyml
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-#uildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(bigarray)
-BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  ocamlfind(unix)
 # make check
-BuildRequires:  python(abi) > 3.0
 %if 0%{?suse_version} > 1315
 BuildRequires:  python3-numpy
 %else
 BuildRequires:  python-numpy
 %endif
+BuildRequires:  which
 
 %description
 Stdcompat is a compatibility layer allowing programs to use some recent additions to the OCaml standard library while preserving the ability to be compiled on former versions of OCaml.
@@ -46,7 +46,7 @@ Stdcompat is a compatibility layer allowing programs to use some recent addition
 Summary:        Development files for %{name}
 Group:          Development/Languages/OCaml
 Requires:       %{name} = %{version}
-
+Requires:       which
 
 %description    devel
 The %{name}-devel package contains libraries and signature files for
@@ -56,33 +56,16 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-sed -i~ '
-s@^\(HAVE_OCAMLFIND := $(shell \).*@\1 set -x ; \\@
-s@2>&1@@g
-' Makefile
-diff -u "$_"~ "$_" && exit 1
-%make_build
-%if 0
 dune_release_pkgs='pyml'
 %ocaml_dune_setup
 %ocaml_dune_build
-%endif
 
 %install
-mkdir -vp '%{buildroot}%{ocaml_standard_library}'
-export OCAMLFIND_DESTDIR='%{buildroot}%{ocaml_standard_library}'
-export OCAMLFIND_LDCONF='ignore'
-%make_install STDCOMPAT="$(ocamlfind query stdcompat)"
-%ocaml_create_file_list
-%if 0
 %ocaml_dune_install
 %ocaml_create_file_list
-%endif
 
 %check
-%if 0
 %ocaml_dune_test
-%endif
 
 %files -f %{name}.files
 
