@@ -947,4 +947,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915367</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>2d56cf397ded988185d9285a6f8e6bbe</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141005</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924701</requestid>
+  </revision>
 </revisionlist>

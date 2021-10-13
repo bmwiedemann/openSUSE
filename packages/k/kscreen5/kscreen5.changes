@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * fix all the new settings
+  * kcm: Use more conventional parent/background for OverlaySheet (kde#442563)
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Remove obsolete COPYING files
+  * Improve formatting of license headers
+  * Clarify sponsoring note
+  * Convert license headers to SPDX
+  * Add keywords to display KCM to improve search
+  * Do not bind "keep" to enter key
+  * support rgb range setting
+  * Allow to refresh view when modes change
+  * feat(kcm): add revert timer
+  * Import QtQuick 2.15 to enable Connection's items function onFoo Syntax
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * [kcm] Correct punctuation of "only when in tablet mode" string
+  * [kcm] Sort output's refresh rates descending (kde#439515)
+  * plasmoid: Use K_PLUGIN_CLASS_WITH_JSON directly
+  * Update IRC network name in CONTRIBUTING.md
+  * Use version-less qt DBus macros
+  * [kcm] Show on mobile
+  * [kcm] Align right edges of all comboboxes
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
