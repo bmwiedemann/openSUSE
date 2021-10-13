@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 10 19:13:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.1.1
+  * Improve handling of different keyboard combinations.
+  * Move cursor to the beginning of buffer if on the same line.
+
+-------------------------------------------------------------------
 Mon May 10 12:31:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.1.0
