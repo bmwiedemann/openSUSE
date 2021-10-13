@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:27:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Remove the wait cursor prior to showing the message box on LaTeX errors in Jupytor notebooks.
+  * Mark the project as modified also when the entries are move or deleted and properly notify
+    the user about the changes in the window title bar and in the tab names.
+  * Re-activated the action toolbar again for worksheet entries (seems to be a regression)
+    and added short cuts for remove, move up and move down actions.
+  * Since we don't have the undo/redo functionality yet, removing an entry by an error can
+    result in a lost of a lot of work. To at least remedy this problem, pop up a
+    Yes/No-message box and ask the user to confirm.
+  * Don't shown the "move up" and "move down" actions in the context menu of a worksheet entry
+    if the entry is already at the very top or very bottom, respectively.
+  * Don't create a new worksheet via the double click in the "Select the backend" dialog if the
+    backend is not enabled.
+  * Don't crash when all worksheets were closed and a new one is created again. (kde#443177)
+  * Don't crash when calling the context menu of a rendered markdown entry.
+
+-------------------------------------------------------------------
 Wed Sep  1 12:37:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
