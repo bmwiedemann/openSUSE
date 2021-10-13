@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * kwin_bridge: Load DecorationButton without the "button" keyword (kde#442659)
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * kded: listen for changes to accent colours
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Make sure to actually commit GSettings changes
+  * Drop unused dependency on gtk+-2.0
+  * Minor color-reload-module clean-up.
+  * Fix license identifier statement
+  * Adapt to recent kdecoration private api changes
+  * Restore preview.ui
+- Drop patches, now upstream:
+  * 0001-Drop-unused-dependency-on-gtk-2.0.patch
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
