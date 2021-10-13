@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Update copyright year to 2021 (kde#442016)
+  * improve session closing behavior (kde#401898)
+  * Hide the Plugins menu if no plugins were loaded (kde#441199)
+  * Fix the maximum port number in the SSH Manager plugin (kde#441889)
+  * The default navigation method should be TabbedNavigation
+  * Don't resize window when switching virtual desktops in OpenBox (kde#441610)
+- Drop upstream patch:
+  * 0001-Don-t-resize-window-when-switching-virtual-desktops-.patch
+
+-------------------------------------------------------------------
 Sat Sep 18 13:57:16 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix some more window size related issues:

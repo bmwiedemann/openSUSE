@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        21.08.1
+Version:        21.08.2
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -41,8 +41,7 @@ Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Don-t-resize-window-when-switching-virtual-desktops-.patch
-Patch2:         0002-Always-save-the-window-state-and-geometry.patch
+Patch1:         0002-Always-save-the-window-state-and-geometry.patch
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
