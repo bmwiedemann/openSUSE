@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Fix path->URL conversion error, detected by -DQT_NO_URL_CAST_FROM_STRING
+  * Do not show "Sim Locked" when there's no SIM card
+  * Revert "phonepanel: Keep the Quick Settings buttons the same size"
+  * lockscreen: Fix text input not working because of predictive text
+  * phonepanel: Keep the Quick Settings buttons the same size
+  * Add airplane mode in quicksettings
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5

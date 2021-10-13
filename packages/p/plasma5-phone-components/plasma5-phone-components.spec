@@ -20,11 +20,11 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|MeeGo\\.QOfono).*
 
-%define kf5_version 5.74.0
+%define kf5_version 5.82.0
 
 %bcond_without lang
 Name:           plasma5-phone-components
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,15 +34,16 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz
+Source:         plasma-phone-components-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz.sig
+Source1:        plasma-phone-components-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5ModemManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
@@ -102,6 +103,7 @@ Plasma shell and components targeted for phones.
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %dir %{_kf5_qmldir}/org/kde/plasma/
+%{_kf5_qmldir}/org/kde/plasma/mm/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/
 %{_kf5_qmldir}/org/kde/plasma/private/mobilehomescreencomponents/
 %{_kf5_qmldir}/org/kde/plasma/private/mobileshell/
@@ -119,6 +121,9 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.taskpanel/
 %{_kf5_notifydir}/plasma_phone_components.notifyrc
+%dir %{_kf5_plasmadir}/quicksettings/
+%{_kf5_plasmadir}/quicksettings/org.kde.plasma.airplanemode/
+%{_kf5_plasmadir}/quicksettings/org.kde.plasma.nightcolor/
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/applets/
 %{_kf5_plugindir}/plasma/applets/plasma_applet_phonepanel.so
