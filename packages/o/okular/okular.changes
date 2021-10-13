@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:29:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * markdown: Only remove text if we're going to add something (kde#443057)
+  * Automatically enable and disable "Force Rasterization" when required (kde#434247)
+  * annotationtoolbartest: Remove unneded cast
+  * Don't allow saving over read-only files (kde#440986)
+  * Remove \n if it's the last char of the selected text (kde#342874)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:39:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
