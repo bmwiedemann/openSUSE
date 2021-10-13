@@ -1761,4 +1761,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>919708</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>d115d50fc5f37161860dd961263e5193</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141026</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924731</requestid>
+  </revision>
 </revisionlist>

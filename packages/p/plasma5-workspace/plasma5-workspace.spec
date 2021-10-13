@@ -30,19 +30,17 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         Call-UnInhibit-with-correct-signature-in-powermanagement-dataengine.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -50,6 +48,9 @@ Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
@@ -312,6 +313,9 @@ Plasma 5 session with Wayland from a display manager.
 %autosetup -p1 -n plasma-workspace-%{version}
 
 %build
+  %if 0%{?suse_version} < 1550
+    export CXX=g++-10
+  %endif
   %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
@@ -388,7 +392,7 @@ fi
   --remove default-xsession.desktop %{_datadir}/xsessions/plasma5.desktop
 
 %files libs
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libkworkspace5.so.*
 %{_kf5_libdir}/libplasma-geolocation-interface.so.*
 %{_kf5_libdir}/libtaskmanager.so.*
@@ -398,7 +402,7 @@ fi
 %{_kf5_libdir}/libkrdb.so
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.kcolorschemeeditor.desktop
 %{_kf5_applicationsdir}/org.kde.kfontview.desktop
 %{_kf5_bindir}/kcminit
@@ -410,6 +414,7 @@ fi
 %{_kf5_bindir}/ksmserver
 %{_kf5_bindir}/ksplashqml
 %{_kf5_bindir}/plasmashell
+%{_kf5_bindir}/plasma-interactiveconsole
 %{_kf5_bindir}/plasmawindowed
 %{_kf5_bindir}/systemmonitor
 %{_kf5_bindir}/plasma_waitforname
@@ -420,7 +425,6 @@ fi
 %{_kf5_bindir}/kde-systemd-start-condition
 %{_kf5_bindir}/lookandfeeltool
 %{_kf5_bindir}/kcolorschemeeditor
-%{_kf5_bindir}/krdb
 %{_kf5_bindir}/plasma-apply-colorscheme
 %{_kf5_bindir}/plasma-apply-cursortheme
 %{_kf5_bindir}/plasma-apply-desktoptheme
@@ -446,8 +450,6 @@ fi
 %dir %{_kf5_libdir}/libexec
 %{_kf5_libdir}/libexec/ksmserver-logout-greeter
 %{_kf5_libdir}/libexec/plasma-changeicons
-%{_kf5_libdir}/libkdeinit5_kcminit.so
-%{_kf5_libdir}/libkdeinit5_kcminit_startup.so
 %{_kf5_libdir}/kconf_update_bin/krunnerglobalshortcuts
 %{_kf5_libdir}/kconf_update_bin/krunnerhistory
 %{_kf5_libdir}/libexec/baloorunner
@@ -465,7 +467,6 @@ fi
 # %%{_kf5_configkcfgdir}/feedbacksettings.kcfg
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
-%{_kf5_sharedir}/kdisplay/
 %{_kf5_sharedir}/kpackage/
 %{_kf5_sharedir}/kfontinst/
 %{_kf5_sharedir}/kxmlgui5/
@@ -540,17 +541,17 @@ fi
 %{_userunitdir}/plasma-core.target
 
 %files -n xembedsniproxy
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/xembedsniproxy
 %{_kf5_configdir}/autostart/xembedsniproxy.desktop
 
 %files -n gmenudbusmenuproxy
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/gmenudbusmenuproxy
 %{_kf5_configdir}/autostart/gmenudbusmenuproxy.desktop
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_prefix}/include/kworkspace5/
 %{_kf5_prefix}/include/plasma/
 %{_kf5_prefix}/include/taskmanager/
@@ -568,18 +569,17 @@ fi
 %{_kf5_libdir}/libweather_ion.so
 %{_kf5_libdir}/libcolorcorrect.so
 %{_kf5_libdir}/libnotificationmanager.so
-%{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/dbus-1/interfaces/
 
 %files -n plasma5-session
-%license COPYING*
+%license LICENSES/*
 %{_kf5_sharedir}/xsessions/plasma5.desktop
 %{_kf5_sharedir}/xsessions/kde-plasma.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %{_kf5_sharedir}/xsessions/default.desktop
 
 %files -n plasma5-session-wayland
-%license COPYING*
+%license LICENSES/*
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasmawayland.desktop
 

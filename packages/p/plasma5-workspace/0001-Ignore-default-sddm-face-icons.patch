@@ -8,11 +8,11 @@ They are not compatible with the theme
  lookandfeel/contents/components/UserList.qml | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
-Index: plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml
+Index: plasma-workspace-5.17.80git.20210928T142611~d53fd656e/lookandfeel/contents/components/UserList.qml
 ===================================================================
---- plasma-workspace-5.15.80git.20200820T102416~bcaf3886d.orig/lookandfeel/contents/components/UserList.qml	2020-08-20 18:24:16.000000000 +0200
-+++ plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml	2020-08-20 21:38:45.160535922 +0200
-@@ -47,7 +47,13 @@
+--- plasma-workspace-5.17.80git.20210928T142611~d53fd656e.orig/lookandfeel/contents/components/UserList.qml	2021-09-28 16:26:11.000000000 +0200
++++ plasma-workspace-5.17.80git.20210928T142611~d53fd656e/lookandfeel/contents/components/UserList.qml	2021-09-28 22:02:18.756685636 +0200
+@@ -34,7 +34,13 @@
      interactive: count > 1
  
      delegate: UserDelegate {
@@ -26,4 +26,4 @@ Index: plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/content
 +        }
          iconSource: model.iconName || "user-identity"
          fontSize: view.fontSize
- 
+         vtNumber: model.vtNumber

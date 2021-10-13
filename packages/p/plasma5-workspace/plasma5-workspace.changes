@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Revert "xembed: adapt to changes in KNotifications" (kde#442758)
+  * sddm-theme: Fix using mouse movements to show the UI
+  * [systemtray] Check for menuItemFactory.object existence (kde#443377)
+  * applets/devicenotifier: Remove applet list item animations
+  * sddm-theme: Fix use of needsPassword and related button layout
+  * [klipper] Fix shortcut of OK button in the clipboard content edit dialog (kde#400623)
+  * Fix Kickoff context menu actions for System Settings results (kde#442522)
+  * klipper: Fix reading from plasma on wayland
+  * Fix build with gpsd 3.23.1
+  * Unbreak fontinst KCM (kde#442748)
+  * Address regression in VT switching code (kde#442852)
+  * libtaskmanager: Don't request dmabuf if not supported (kde#428284)
+  * Port away from Kirigami.Units.devicePixelRatio
+  * lookandfeel: don't nuke accent colour (kde#442812)
+  * kcm/colors: Improve some bindings on accent colors
+  * sddm-theme: fix default username font size
+  * PipeWire: Include defines for older PipeWire versions
+  * pipewire: Properly compare pipewire versions using QVersionNumber
+  * [Klipper] Guard against broken data fetches
+  * [Klipper] Handle incoming UTF-8 mime types (kde#424694)
+  * PipeWire: Make sure thumbnails properly use dmabuf again
+  * [shell/panel] Fix ability to type in textfield (kde#442557)
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-gpsd-3.23.1.patch
+  * 0001-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0002-libtaskmanager-Don-t-request-dmabuf-if-not-supported.patch
+  * 0002-shell-panel-Fix-ability-to-type-in-textfield.patch
+  * 0003-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0004-PipeWire-Make-sure-thumbnails-properly-use-dmabuf-ag.patch
+  * 0005-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0006-Klipper-Handle-incoming-UTF-8-mime-types.patch
+  * 0007-Klipper-Guard-against-broken-data-fetches.patch
+  * 0008-pipewire-Properly-compare-pipewire-versions-using-QV.patch
+  * 0009-PipeWire-Include-defines-for-older-PipeWire-versions.patch
+  * 0010-sddm-theme-fix-default-username-font-size.patch
+  * 0011-Revert-xembed-adapt-to-changes-in-KNotifications.patch
+- Refresh 0001-Ignore-default-sddm-face-icons.patch
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Fri Sep 24 10:09:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with gpsd:
+  * 0001-Fix-build-with-gpsd-3.23.1.patch
+- Add patch to fix window thumbnails if dmabuf is not supported (kde#428284):
+  * 0002-libtaskmanager-Don-t-request-dmabuf-if-not-supported.patch
+
+-------------------------------------------------------------------
+Wed Sep 22 07:18:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches from Plasma/5.23 branch:
+  * 0001-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0002-shell-panel-Fix-ability-to-type-in-textfield.patch
+  * 0003-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0004-PipeWire-Make-sure-thumbnails-properly-use-dmabuf-ag.patch
+  * 0005-SVN_SILENT-made-messages-.desktop-file-always-resolv.patch
+  * 0006-Klipper-Handle-incoming-UTF-8-mime-types.patch
+  * 0007-Klipper-Guard-against-broken-data-fetches.patch
+  * 0008-pipewire-Properly-compare-pipewire-versions-using-QV.patch
+  * 0009-PipeWire-Include-defines-for-older-PipeWire-versions.patch
+  * 0010-sddm-theme-fix-default-username-font-size.patch
+- Add patch to fix XEmbed context menus (kde#442758)
+  * 0011-Revert-xembed-adapt-to-changes-in-KNotifications.patch
+
+-------------------------------------------------------------------
+Fri Sep 17 11:45:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Revert-No-icons-on-the-desktop-by-default.patch
+  * 0001-Use-qdbus-qt5.patch
+- Drop patches, now upstream:
+  * Call-UnInhibit-with-correct-signature-in-powermanagement-dataengine.patch
+
+-------------------------------------------------------------------
 Thu Sep 16 21:51:26 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patch to fix a bug that would result in power management
