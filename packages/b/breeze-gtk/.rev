@@ -836,4 +836,30 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915355</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>e06399f26e732ee3f686574989c0c8bd</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix toolbutton appearance (kde#443626):
+  * 0001-Revert-gtk3-gtk4-update-button-style.patch
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * gtk3, gtk4: update button style
+  * Use Breeze Light as the default color scheme
+- Add new key + signature to plasma.keyring
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * ci: introduce .kde-ci.yml
+  * Use the python version found by cmake in build_theme.sh</comment>
+    <requestid>924813</requestid>
+  </revision>
 </revisionlist>
