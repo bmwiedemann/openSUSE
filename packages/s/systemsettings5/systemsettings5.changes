@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Revert "Use level 2 header"
+  * sidebar: make placeholder message non-visible when at 0 opacity (kde#443016)
+  * Use level 2 header
+  * Support left/right and escape for key navigation in the sidebar
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Swap the position of the hamburger menu and home buttons
+  * Don't load all subpages of a category when clicked (kde#438362)
+  * Sidebar: set background colors in the correct way
+  * Sidebar: Unify "Show Changed Settings" button toolbar implementations
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Clean up leftovers from systemsettingsrunner import
+  * Port deprecated setDelayed
+  * Use explicit + use override
+  * [sidebar] Enable/disable mousearea instead of changing accepted buttons
+  * [sidebar] Refactor subcategory button to use rectangle as its base item
+  * Don't request context help titlebar button
+  * Remove About Current Module
+  * Import services runner & strip out unneeded parts
+  * Fix highlight default for category owner children and when changing data from landing page
+  * Allow compiling without KF5DocTools
+  * Create simple getter to check if KCM is an SystemSettingsExternalApp
+  * Port ExternalAppModule away from KCModuleInfo
+  * Port loading of categories away from KServiceTypeTrader
+  * [sidebar] Port away from KDeclarative
+  * Remove old category files
+  * [sidebar] Add missing subcategory header spacing for widescreen view (kde#438377)
+  * only update the global header reacting to the active page (kde#437088)
+  * Use ellipses instead of triple period
+  * make sure we have 2 columns when loading a category (kde#435461)
+  * [sidebar] Don't show back button for subcategory header in widescreen view
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5

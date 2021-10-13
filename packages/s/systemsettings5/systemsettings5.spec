@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
+Source:         systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
+Source1:        systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -48,7 +48,9 @@ BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Package)
+BuildRequires:  cmake(KF5Runner)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
@@ -97,7 +99,6 @@ applications by KDE.
 %{_kf5_debugdir}/*.categories
 %{_kf5_libdir}/libsystemsettingsview.so.3
 %{_kf5_plugindir}/
-%{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/kglobalaccel/systemsettings.desktop
 %{_kf5_sharedir}/kpackage/genericqml/org.kde.systemsettings.sidebar
