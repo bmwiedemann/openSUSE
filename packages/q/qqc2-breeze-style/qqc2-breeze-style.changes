@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Fix padding for items without indicators in menus with
+  * Use a Loader to avoid unnecessarily loading indicator components
+  * Use RadioIndicator in MenuItem when autoExclusive
+  * Enable hover effects for Button, CheckBox, ComboBox, RadioButton, Slider, SpinBox, ToolButton
+  * Port to the new C++ units plugin in Kirigami
+  * Remove x1.5 mobile icon sizing
+  * Do not create an extra KIconLoader just for custom palettes
+  * DialogButtonBox: Set icons for standard buttons
+  * Always build kirigami plugin
+  * Build without KIconThemes on Android
+  * Use kcoreaddons macro for kirigami plugin
+  * Fix previous commit
+  * Disable slider ticks
+  * Build without QtDBus on Android
+  * Dial: use dot instead of pointy bit, use more dynamic sizing, use vertical input on desktop
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
