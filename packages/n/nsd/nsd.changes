@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 13 12:45:45 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- set RestrictAddressFamilies= in nsd.service
+
+-------------------------------------------------------------------
+Tue Oct 12 20:19:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- reworked nsd.service:
+  * directly start as User=_nsd
+  * even more hardening
+  * removed commented and unused directives
+
+-------------------------------------------------------------------
+Tue Oct 12 20:01:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * nsd.service
+
+-------------------------------------------------------------------
 Tue Oct 12 18:24:24 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - New upstream release 4.3.8
