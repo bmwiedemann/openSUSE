@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 11 10:54:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.9
+  * Show small media previews in chats list.
+  * Show media album previews and caption text in chats list.
+  * Add "Quick Reply" and "Mark as Read" to native
+    Windows notifications.
+
+-------------------------------------------------------------------
 Thu Sep 30 16:06:29 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add explicit BuildRequires for webkit2gtk-4.0

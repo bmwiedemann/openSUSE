@@ -695,4 +695,16 @@
 - Enable GCC11 again</comment>
     <requestid>922426</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c480f3ffe2029706b7e7c549ca1de32b</srcmd5>
+    <version>3.1.9</version>
+    <time>1634141174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.9
+  * Show small media previews in chats list.
+  * Show media album previews and caption text in chats list.
+  * Add &quot;Quick Reply&quot; and &quot;Mark as Read&quot; to native
+    Windows notifications. (forwarded request 924649 from tux93)</comment>
+    <requestid>924962</requestid>
+  </revision>
 </revisionlist>
