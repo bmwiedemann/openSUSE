@@ -223,4 +223,36 @@
     <comment></comment>
     <requestid>907619</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>392881899f25605611ced8714969e5d9</srcmd5>
+    <version>0.5.9</version>
+    <time>1634141176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.9:
+  * Add initial support for Epic Games Store
+  * Add support for Steam for Windows as a game source
+  * Add support for DXVK-NVAPI and DLSS
+  * Add FidelityFX Super Resolution (FSR) option for compatible Wine versions
+  * Add workaround for locale issues when Lutris is launched from Steam
+  * Add gamescope option
+  * Lutris games can now be launched from Steam
+  * 3rd party services can be enabled or disabled in the preferences
+  * The main preferences window has now tabs on the left side
+  * Runner configuration is now available from the main preferences window
+  * VKD3D is a separate option from DXVK
+  * Esync is enabled by default
+  * Dolphin is available as a game source (reads games from the emulator's
+    local database of games)
+  * Scan for installed games when using Steam source
+  * Improved automatic installers for GOG, detection of DOSBOX and ScummVM
+    games.
+  * DRM free services (Humble, GOG) can locate existing installations of games
+  * Use 7zip as the default extractor when not given an archive type
+  * Improve process monitoring, allowing for monitoring of Steam games
+  * Disable AMD switchable graphics layer by default (breaks games)
+  * Removed support for Gallium 9
+  * Removed support for X360CE
+  * Removed legacy WineD3D options</comment>
+    <requestid>925031</requestid>
+  </revision>
 </revisionlist>
