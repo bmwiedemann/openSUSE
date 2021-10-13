@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>878599</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7cc4d8851b3c53c56963930770d18e73</srcmd5>
+    <version>12.7.0</version>
+    <time>1634141179</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_orientation with
+  DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
+  (gh#jazzband/sorl-thumbnail#676).
+</comment>
+    <requestid>925047</requestid>
+  </revision>
 </revisionlist>

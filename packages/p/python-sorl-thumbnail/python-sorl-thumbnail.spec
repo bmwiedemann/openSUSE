@@ -41,11 +41,11 @@ Suggests:       vips-tools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2}
+BuildRequires:  %{python_module Wand}
 BuildRequires:  %{python_module boto}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module Wand}
 BuildRequires:  %{pythons}
 BuildRequires:  GraphicsMagick
 BuildRequires:  ImageMagick
@@ -88,7 +88,8 @@ PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings.pil
 %pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
 export DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
-%pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
+# test_orientation skipped because of gh#jazzband/sorl-thumbnail#676
+%pytest -rs -k 'not (TemplateTestCaseB or test_image_file_deserialize or test_orientation)'
 export DJANGO_SETTINGS_MODULE=tests.settings.dbm
 %pytest -rs -k 'not TemplateTestCaseB and not test_image_file_deserialize'
 export DJANGO_SETTINGS_MODULE=tests.settings.graphicsmagick

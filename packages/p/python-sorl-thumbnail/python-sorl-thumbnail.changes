@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:14:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_orientation with
+  DJANGO_SETTINGS_MODULE=tests.settings.imagemagick
+  (gh#jazzband/sorl-thumbnail#676).
+
+-------------------------------------------------------------------
 Mon Mar  1 02:12:42 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Enable Wand tests
