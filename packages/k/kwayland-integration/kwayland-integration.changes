@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * fix a dirty shadows (kde#439408)
+  * Implement setting frost
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Guard use of activation proxy (kde#440448)
+  * Fix compile with last ecm
+  * Fix build with GCC
+  * Be more explicit about types, hopefully fix CI builds
+  * Improve the behaviour when we are requesting without a window
+  * Also link against xkb and fix build
+  * Provide an implementation for the xdg_activation_v1 API
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
