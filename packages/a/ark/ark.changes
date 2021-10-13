@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:27:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * fix: Dolphin doesn't fully quit after Compress from context menu (kde#441813)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:37:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
