@@ -17,17 +17,16 @@
 
 
 %bcond_without lang
-
 Name:           pam_kwallet
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz
+Source:         kwallet-pam-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz.sig
+Source1:        kwallet-pam-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -67,13 +66,19 @@ module.
 %setup -q -n kwallet-pam-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DLIBEXEC_INSTALL_DIR=%{_kf5_libexecdir} -DCMAKE_INSTALL_PREFIX=/
+  # Before usrmerge, the PAM module goes into /lib*/security/
+  %{cmake_kf5 -d build -- \
+  %if !0%{?usrmerged}
+      -DKDE_INSTALL_LIBDIR=/%{_lib} \
+  %endif
+      -DLIBEXEC_INSTALL_DIR=%{_kf5_libexecdir}
+  }
+
   %cmake_build
 
 %install
   %kf5_makeinstall -C build
 
-%if 0%{?suse_version} >= 1330
 # Due to boo#728586 it is necessary to duplicate this in the 32bit variant.
 # So you need to edit baselibs.conf if you change this.
 %post
@@ -83,15 +88,28 @@ module.
   if [ "$1" = "0" ]; then
     %{_sbindir}/pam-config -d --kwallet5 || :
   fi
-%endif
+
+%post common
+  %systemd_user_post plasma-kwallet-pam.service
+
+%preun common
+  %systemd_user_preun plasma-kwallet-pam.service
+
+%postun common
+  %systemd_user_postun plasma-kwallet-pam.service
 
 %files
-%license COPYING*
+%license LICENSES/*
+%if 0%{?usrmerged}
+%{_pam_moduledir}/pam_kwallet5.so
+%else
 /%{_lib}/security/pam_kwallet5.so
+%endif
 
 %files common
-%license COPYING*
+%license LICENSES/*
 %config %{_kf5_configdir}/autostart/pam_kwallet_init.desktop
 %{_kf5_libexecdir}/pam_kwallet_init
+%{_userunitdir}/plasma-kwallet-pam.service
 
 %changelog
