@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           plasma5-addons
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        Additional Plasma5 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
+Source:         kdeplasma-addons-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz.sig
+Source1:        kdeplasma-addons-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf5-filesystem
@@ -111,7 +111,6 @@ the Plasma desktop.
 %{_kf5_knsrcfilesdir}/comic.knsrc
 %{_kf5_libdir}/libplasmacomicprovidercore.so.*
 %{_kf5_libdir}/libplasmapotdprovidercore.so.*
-%{_kf5_servicetypesdir}/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
@@ -119,6 +118,7 @@ the Plasma desktop.
 %{_kf5_sharedir}/kwin/
 %{_kf5_iconsdir}/hicolor/*/*/*.*
 %{_kf5_appstreamdir}/
+%{_kf5_debugdir}/plasma_comic.categories
 
 %files devel
 %license LICENSES/*

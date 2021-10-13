@@ -984,4 +984,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915385</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>c31d6757b253718511979a1fac6421ff</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141020</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924719</requestid>
+  </revision>
 </revisionlist>
