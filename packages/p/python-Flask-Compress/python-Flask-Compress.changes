@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 12:13:08 UTC 2021 - pgajdos@suse.com
+
+- %check: actually test the package
+
+-------------------------------------------------------------------
 Thu Jul 22 01:46:11 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:

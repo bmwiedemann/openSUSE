@@ -59,7 +59,7 @@ Flask-Compress can solve the problem.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v tests
 
 %files %{python_files}
 %doc README.md
