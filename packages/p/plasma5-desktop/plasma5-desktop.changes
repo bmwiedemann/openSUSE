@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * [wayland] fix activity switching shortcut (Meta+Tab) (kde#443323)
+  * kickoff: Fix dragEnabled error for KickoffItemDelegates in singleton
+  * [applets/taskmanger] Do not overlay scrollbars over contents (kde#443173)
+  * kickoff: Fix null width/height error for some app grid view delegates
+  * kickoff: re-add drag and drop for favorites (kde#440308)
+  * kickoff: center align GridView
+  * kickoff: move isSearchDelegate binding to where search view is
+  * kickoff: simplify KickoffItemDelegate MouseArea anchor margins
+  * kickoff: fix hover changing index when moving between search and normal pages (kde#443076)
+  * kickoff: fix wrong activefocus being used in KickoffItemDelegate
+  * kickoff: Fix misspelled module qualifier
+  * Make clicking one item when multiple are selected deselect everything else (kde#424152)
+  * kcm_touchpad: fix translation for scroll speed setting slider
+  * Indicate when one of the thumbnails on the quick settings kcm has focus
+  * Check for currentApplet existence (kde#443287)
+  * KCM Touchpad: hide right and middle click sections when unavailable
+  * Open context menu under the cursor again (kde#443278)
+  * Adjust position of panel config bar when Enter is pressed (kde#443280)
+  * CompactApplet: Only draw separator line for panel applets (kde#439374)
+  * [keyboardlayout applet] fix non-working context menu (kde#441239)
+  * [Emojier] Set highlightMoveDuration to zero
+  * applets/kickoff: Improve list item touch targets and general aesthetics (kde#442661)
+  * Use Kirigami.Avatar in Kickoff Header bar (kde#442776)
+  * [kcms/activities] Fix QML i18n calls (kde#442514)
+  * kickoff: implement directional navigation
+  * kickoff: keep delegate highlight visible more often
+  * kickoff: Use attached tooltip for leave buttons
+- Drop patches, now upstream:
+  * 0001-Use-Kirigami.Avatar-in-Kickoff-Header-bar.patch
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Wed Sep 22 20:30:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix fallback user icon in Kickoff (kde#442776):
+  * 0001-Use-Kirigami.Avatar-in-Kickoff-Header-bar.patch
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5

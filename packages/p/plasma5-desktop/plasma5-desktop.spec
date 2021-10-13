@@ -28,7 +28,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -38,13 +38,13 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
-Patch3:         0002-No-usr-bin-env-in-shebangs.patch
+Patch2:         0002-No-usr-bin-env-in-shebangs.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -237,9 +237,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   cp %{_datadir}/ibus/dicts/emoji-*.dict %{buildroot}%{_kf5_sharedir}/plasma/ibus-emoji-dicts/
 %endif
 
-  # Work around kde#437118
-  rm %{buildroot}%{_kf5_sharedir}/kpackage/kcms/kcm_landingpage/contents/ui/FeedbackControls.qml
-
   # no devel files needed here
   rm -rfv %{buildroot}%{_kf5_sharedir}/dbus-1/interfaces/
   %fdupes %{buildroot}/%{_prefix}
@@ -262,9 +259,8 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_libdir}/libexec/
 %{_kf5_plugindir}/kcm_activities.so
 %{_kf5_plugindir}/kcm_clock.so
-%{_kf5_plugindir}/kcm_desktoppaths.so
-%{_kf5_plugindir}/kcm_joystick.so
 %{_kf5_plugindir}/kcm_keyboard.so
+%{_kf5_plugindir}/kcm_touchpad.so
 %{_kf5_plugindir}/kcm_plasmasearch.so
 %dir %{_kf5_plugindir}/kcms/
 %{_kf5_plugindir}/kcms/kcm_access.so
@@ -279,11 +275,14 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_plugindir}/kcms/kcm_users.so
 %{_kf5_plugindir}/kcms/kcm_workspace.so
 %{_kf5_plugindir}/kcm_solid_actions.so
+%{_kf5_plugindir}/kcm_desktoppaths.so
+%{_kf5_plugindir}/kcm_joystick.so
 %{_kf5_plugindir}/kcmspellchecking.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kded/
 %{_kf5_plugindir}/kf5/kded/device_automounter.so
 %{_kf5_plugindir}/kf5/kded/keyboard.so
+%{_kf5_plugindir}/kf5/kded/kded_touchpad.so
 %{_kf5_plugindir}/kf5/krunner/
 %{_kf5_plugindir}/libkcm_device_automounter.so
 %{_kf5_plugindir}/libkcm_qtquicksettings.so
@@ -341,7 +340,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_iconsdir}/hicolor/*/devices/input-touchpad.*
 %{_kf5_sharedir}/kcmmouse/
 %{_kf5_plugindir}/kcm_mouse.so
-%{_kf5_plugindir}/kded_touchpad.so
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/dataengine/
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
