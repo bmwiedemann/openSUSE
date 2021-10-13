@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Remove duplicated workDays() function
+  * Update the Search dialog when items in the calendar change
+  * Separate the Search dialog and Event List configurations
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
