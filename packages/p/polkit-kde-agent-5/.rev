@@ -918,4 +918,12 @@
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915400</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>45c257752eeacba9689e7cc1621e0783</srcmd5>
+    <version>5.23.0</version>
+    <time>1634141027</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924734</requestid>
+  </revision>
 </revisionlist>

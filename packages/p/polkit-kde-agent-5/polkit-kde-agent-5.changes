@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Clean up CMake code
+  * Build with QT_NO_KEYWORDS
+  * Use version-less qt DBus macros
+  * Remove obsolete COPYING file
+  * Add license information to non-copyrightable files
+  * Convert license headers to SPDX
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
