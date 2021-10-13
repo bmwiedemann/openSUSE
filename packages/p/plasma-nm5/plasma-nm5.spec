@@ -19,15 +19,15 @@
 %bcond_without lang
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
@@ -77,10 +77,8 @@ Obsoletes:      plasma-nm-kf5 < %{version}
 # Merged into the core in 5.15.80
 Provides:       %{name}-wireguard = %{version}
 Obsoletes:      %{name}-wireguard < %{version}
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm = %{version}
 Obsoletes:      plasma-nm < %{version}
-%endif
 %if 0%{?mm_support}
 BuildRequires:  cmake(KF5ModemManagerQt) >= 5.54.0
 BuildRequires:  pkgconfig(ModemManager) >= 1.0.0
@@ -103,11 +101,9 @@ Requires:       %{name} = %{version}
 Requires:       NetworkManager-openvpn
 Supplements:    packageand(%{name}:NetworkManager-openvpn)
 Provides:       NetworkManager-openvpn-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-openvpn = %{version}
-Obsoletes:      plasma-nm-openvpn < %{version}
-%endif
 Obsoletes:      NetworkManager-openvpn-kde4
+Obsoletes:      plasma-nm-openvpn < %{version}
 
 %description openvpn
 OpenVPN plugin for plasma-nm components.
@@ -119,11 +115,9 @@ Requires:       %{name} = %{version}
 Requires:       NetworkManager-vpnc
 Supplements:    packageand(%{name}:NetworkManager-vpnc)
 Provides:       NetworkManager-vpnc-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-vpnc = %{version}
-Obsoletes:      plasma-nm-vpnc < %{version}
-%endif
 Obsoletes:      NetworkManager-vpnc-kde4
+Obsoletes:      plasma-nm-vpnc < %{version}
 
 %description vpnc
 vpnc plugin for plasma-nm components.
@@ -136,11 +130,9 @@ Requires:       NetworkManager-openconnect
 Requires:       openconnect
 Supplements:    packageand(%{name}:NetworkManager-openconnect)
 Provides:       NetworkManager-openconnect-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-openconnect = %{version}
-Obsoletes:      plasma-nm-openconnect < %{version}
-%endif
 Obsoletes:      NetworkManager-openconnect-kde4
+Obsoletes:      plasma-nm-openconnect < %{version}
 
 %description openconnect
 OpenConnect plugin for plasma-nm components.
@@ -154,10 +146,8 @@ Requires:       NetworkManager-openswan
 %endif
 Supplements:    packageand(%{name}:NetworkManager-openswan)
 Provides:       NetworkManager-openswan-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-openswan = %{version}
 Obsoletes:      plasma-nm-openswan < %{version}
-%endif
 
 %description openswan
 Openswan plugin for plasma-nm components.
@@ -169,10 +159,8 @@ Requires:       %{name} = %{version}
 Requires:       NetworkManager-strongswan
 Supplements:    packageand(%{name}:NetworkManager-strongswan)
 Provides:       NetworkManager-strongswan-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-strongswan = %{version}
 Obsoletes:      plasma-nm-strongswan < %{version}
-%endif
 
 %description strongswan
 strongSwan plugin for plasma-nm components.
@@ -184,10 +172,8 @@ Requires:       %{name} = %{version}
 Requires:       NetworkManager-l2tp
 Supplements:    packageand(%{name}:NetworkManager-l2tp)
 Provides:       NetworkManager-l2tp-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-l2tp = %{version}
 Obsoletes:      plasma-nm-l2tp < %{version}
-%endif
 
 %description l2tp
 Layer Two Tunneling Protocol (L2TP) plugin for plasma-nm components.
@@ -199,11 +185,9 @@ Requires:       %{name} = %{version}
 Requires:       NetworkManager-pptp
 Supplements:    packageand(%{name}:NetworkManager-pptp)
 Provides:       NetworkManager-pptp-frontend
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       plasma-nm-pptp = %{version}
-Obsoletes:      plasma-nm-pptp < %{version}
-%endif
 Obsoletes:      NetworkManager-pptp-kde4
+Obsoletes:      plasma-nm-pptp < %{version}
 
 %description pptp
 Point-To-Point Tunneling Protocol (PPTP) plugin for plasma-nm components.
@@ -247,8 +231,8 @@ Iodine (VPN through DNS tunnel) plugin for plasma-nm components.
 Summary:        FortiGate SSL VPN support for %{name}
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
-# NetworkManager-fortisslvpn doesn't exist in Factory
-#Requires:       NetworkManager-fortisslvpn
+# Not available in oS:F stagings, leading to installcheck failure
+# Requires:       NetworkManager-fortisslvpn
 Supplements:    packageand(%{name}:NetworkManager-fortisslvpn)
 Provides:       NetworkManager-fortisslvpn-frontend
 
@@ -282,15 +266,16 @@ wireless connectivity on Plasma Mobile.
   %fdupes %{buildroot}
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libplasmanm_editor.so
 %{_kf5_libdir}/libplasmanm_internal.so
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kded
 %{_kf5_plugindir}/kf5/kded/networkmanagement.so
+%dir %{_kf5_plugindir}/plasma/network/
+%dir %{_kf5_plugindir}/plasma/network/vpn/
 %{_kf5_qmldir}/
 %{_kf5_notifydir}/
-%{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/plasma/
 %dir %{_kf5_appstreamdir}
 %{_kf5_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
@@ -299,70 +284,59 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_servicesdir}/kcm_networkmanagement.desktop
 
 %files openvpn
-%license COPYING*
-%{_kf5_plugindir}/*_openvpnui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_openvpnui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/*_openvpnui.so
 
 %files vpnc
-%license COPYING*
-%{_kf5_plugindir}/*_vpncui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_vpncui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/*_vpncui.so
 
 %files openconnect
-%license COPYING*
-%{_kf5_plugindir}/*_openconnectui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_openconnectui.desktop
-%{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_juniperui.desktop
-%{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_globalprotectui.desktop
-%{_kf5_servicesdir}/plasmanetworkmanagement_openconnect_pulseui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_anyconnect.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_globalprotectui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_juniperui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_pulseui.so
 
 %files openswan
-%license COPYING*
-%{_kf5_plugindir}/*_openswanui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_openswanui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openswanui.so
 
 %files strongswan
-%license COPYING*
-%{_kf5_plugindir}/*_strongswanui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_strongswanui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_strongswanui.so
 
 %files l2tp
-%license COPYING*
-%{_kf5_plugindir}/*_l2tpui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_l2tpui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_l2tpui.so
 
 %files pptp
-%license COPYING*
-%{_kf5_plugindir}/*_pptpui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_pptpui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_pptpui.so
 
 %files ssh
-%license COPYING*
-%{_kf5_plugindir}/*_sshui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_sshui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_sshui.so
 
 %files sstp
-%license COPYING*
-%{_kf5_plugindir}/*_sstpui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_sstpui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_sstpui.so
 
 %files iodine
-%license COPYING*
-%{_kf5_plugindir}/*_iodineui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_iodineui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_iodineui.so
 
 %files fortisslvpn
-%license COPYING*
-%{_kf5_plugindir}/l*_fortisslvpnui.so
-%{_kf5_servicesdir}/plasmanetworkmanagement_fortisslvpnui.desktop
+%license LICENSES/*
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_fortisslvpnui.so
 
 %files mobile
-%license COPYING*
-%dir %{_kf5_plugindir}/kcms
+%license LICENSES/*
+%dir %{_kf5_plugindir}/kcms/
 %{_kf5_plugindir}/kcms/kcm_mobile_hotspot.so
 %{_kf5_plugindir}/kcms/kcm_mobile_wifi.so
-%dir %{_kf5_sharedir}/kpackage
-%dir %{_kf5_sharedir}/kpackage/kcms
+%dir %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_hotspot/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobile_wifi/
 %{_kf5_servicesdir}/hotspotsettings.desktop
