@@ -1,32 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
-    <memoryperjob>
-      <size unit="G">2</size>
-    </memoryperjob>
-  </hardware>
-     <overwrite>
-    <conditions>
-      <arch>aarch64</arch>
-    </conditions>   
-  <hardware>
-    <memoryperjob>
-      <size unit="G">3</size>
-    </memoryperjob>
-   </hardware>
- </overwrite>
- <overwrite>
-    <conditions>
-      <arch>ppc64</arch>
-      <arch>ppc64le</arch>
-    </conditions>   
-  <hardware>
-    <memoryperjob>
-      <size unit="G">1</size>
-    </memoryperjob>
     <memory>
-      <size unit="G">10</size>
+      <size unit="G">6</size>
     </memory>
-   </hardware>
- </overwrite>
+  </hardware>
 </constraints>

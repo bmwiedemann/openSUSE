@@ -1,7 +1,7 @@
 #
 # spec file for package kokkos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@ Name:           kokkos
 Version:        3.3.00
 Release:        0
 %define         sover 3
-Summary:        A C++ Performance Portability Programming 
+Summary:        A C++ Performance Portability Programming
 #no support for 32-bit archs https://github.com/kokkos/kokkos/issues/2312
 License:        BSD-3-Clause
 Group:          System/Libraries
@@ -33,6 +33,7 @@ Source0:        https://github.com/kokkos/kokkos/archive/%{version}.tar.gz#/%{na
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  hwloc-devel
+BuildRequires:  memory-constraints
 
 %global kokkos_desc \
 Kokkos Core implements a programming model in C++ for writing performance \
@@ -85,7 +86,14 @@ This package contains the development files of %{name}.
 %cmake_install
 
 %check
-LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_PATH}" make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
+# OpenMP tests need quite some memory, run up to two tests in parallel, each with half the cores
+%limit_build -m 1600
+export OMP_NUM_THREADS=$((%{jobs} / 2))
+# Recommended for unit tests
+export OMP_PROC_BIND=false
+export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_PATH}"
+%ctest --parallel 1 --tests-regex KokkosContainers_UnitTest_OpenMP --timeout 3600
+%ctest --parallel 2 --exclude-regex KokkosContainers_UnitTest_OpenMP
 
 %post -n libkokkos%sover -p /sbin/ldconfig
 %postun -n libkokkos%sover -p /sbin/ldconfig
