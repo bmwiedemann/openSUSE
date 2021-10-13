@@ -3,6 +3,18 @@ Description=neard service
 Documentation=man:neard(8)
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=dbus
 BusName=org.neard
 ExecStart=/usr/lib/nfc/neard -n

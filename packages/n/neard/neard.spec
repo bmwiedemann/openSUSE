@@ -29,6 +29,7 @@ Source:         https://www.kernel.org/pub/linux/network/nfc/neard-%{version}.ta
 Source1:        neard.service
 Source2:        99-neard.rules
 Patch1:         neard-0.13-fix-dbus_send_destination_config.patch
+Patch2:	harden_neard.service.patch
 BuildRequires:  automake
 BuildRequires:  check-devel
 BuildRequires:  libtool
@@ -62,6 +63,7 @@ Files needed to test applications for the NFC stack.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fiv
