@@ -912,7 +912,6 @@ unsorted:
   - atkmm-doc 
   - atkmm1_6-devel 
   - atkmm1_6-devel-32bit: [x86_64] 
-  - atkmm1_6-doc 
   - atlascpp-devel 
   - atomiks 
   - atomix 
@@ -5751,8 +5750,6 @@ unsorted:
   - gnome-nettool-lang 
   - gnome-network-displays 
   - gnome-network-displays-lang 
-  - gnome-news 
-  - gnome-news-lang 
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
@@ -6028,6 +6025,7 @@ unsorted:
   - gpaste 
   - gpaste-devel 
   - gpaste-lang 
+  - gpaste-zsh-completion 
   - gperf 
   - gperftools 
   - gperftools-devel 
@@ -6130,8 +6128,7 @@ unsorted:
   - gromacs-bash-completion 
   - gromacs-devel 
   - gromacs-doc 
-  - gromacs-openmpi: [i586] 
-  - gromacs-openmpi2: [x86_64] 
+  - gromacs-openmpi 
   - groovy 
   - groovy-ant 
   - groovy-bootstrap 
@@ -8997,10 +8994,6 @@ unsorted:
   - libQt6QmlModels6 
   - libQt6QmlWorkerScript6 
   - libQt6QmlXmlListModel6 
-  - libQt6Quick3D6 
-  - libQt6Quick3DAssetImport6 
-  - libQt6Quick3DRuntimeRender6 
-  - libQt6Quick3DUtils6 
   - libQt6Quick6 
   - libQt6QuickControls2-6 
   - libQt6QuickControls2Impl6 
@@ -9803,7 +9796,7 @@ unsorted:
   - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
-  - libcamera-suse6-32bit: [x86_64] 
+  - libcamera-suse7-32bit: [x86_64] 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -10780,7 +10773,7 @@ unsorted:
   - libgiomm-2_68-1-32bit: [x86_64] 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit: [x86_64] 
-  - libgit2-1_1-32bit: [x86_64] 
+  - libgit2-1_2-32bit: [x86_64] 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -10843,8 +10836,8 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro13 
-  - libgnuradio-3_8_3 
+  - libgnuastro14 
+  - libgnuradio-3_8_4 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -14661,12 +14654,9 @@ unsorted:
   - libyami-utils: [x86_64] 
   - libyami1 
   - libyaml-devel 
-  - libyang-cpp-devel 
-  - libyang-cpp1 
   - libyang-devel 
   - libyang-doc 
-  - libyang-extentions 
-  - libyang1 
+  - libyang2 
   - libyara-devel 
   - libyara8 
   - libyate6 
@@ -18294,7 +18284,6 @@ unsorted:
   - pangomm-devel 
   - pangomm-doc 
   - pangomm1_4-devel 
-  - pangomm1_4-doc 
   - panini 
   - pantheon-wallpapers-branding-upstream 
   - paper-icon-theme 
@@ -19027,7 +19016,6 @@ unsorted:
   - perl-File-Next 
   - perl-File-Path 
   - perl-File-Path-Tiny 
-  - perl-File-RandomAccess 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
@@ -20534,8 +20522,11 @@ unsorted:
   - postgresql12-server-devel 
   - postgresql12-test 
   - postgresql12-timescaledb 
+  - postgresql13 
+  - postgresql13-contrib 
   - postgresql13-devel 
-  - postgresql13-devel-mini 
+  - postgresql13-docs 
+  - postgresql13-llvmjit 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
   - postgresql13-pgagent 
@@ -20546,8 +20537,16 @@ unsorted:
   - postgresql13-plr 
   - postgresql13-plr-doc 
   - postgresql13-pltcl 
+  - postgresql13-server 
   - postgresql13-server-devel 
   - postgresql13-test 
+  - postgresql14-devel 
+  - postgresql14-devel-mini 
+  - postgresql14-plperl 
+  - postgresql14-plpython 
+  - postgresql14-pltcl 
+  - postgresql14-server-devel 
+  - postgresql14-test 
   - postgrey 
   - postorius-web 
   - postorius-web-uwsgi 
@@ -21387,7 +21386,6 @@ unsorted:
   - python3-websockify 
   - python3-xcb-proto-devel 
   - python3-xrootd 
-  - python3-yang 
   - python3-yaql 
   - python3-yui 
   - python3-z3 
@@ -22685,7 +22683,6 @@ unsorted:
   - python36-imageio-ffmpeg 
   - python36-imagesize 
   - python36-imbox 
-  - python36-img2pdf 
   - python36-immutables 
   - python36-impacket 
   - python36-importlib-metadata 
@@ -23855,8 +23852,6 @@ unsorted:
   - python36-sphinxcontrib-apidoc 
   - python36-sphinxcontrib-applehelp 
   - python36-sphinxcontrib-asyncio 
-  - python36-sphinxcontrib-autoprogram 
-  - python36-sphinxcontrib-autoprogram-doc 
   - python36-sphinxcontrib-blockdiag 
   - python36-sphinxcontrib-devhelp 
   - python36-sphinxcontrib-documentedlist 
@@ -24860,6 +24855,7 @@ unsorted:
   - python38-buttplug 
   - python38-bytecode 
   - python38-cPyparsing 
+  - python38-cached-property 
   - python38-cachelib 
   - python38-cachetools: [i586] 
   - python38-cachey 
@@ -26204,6 +26200,7 @@ unsorted:
   - python38-pygame 
   - python38-pygame-devel 
   - python38-pygerrit2 
+  - python38-pygit2 
   - python38-pyglet 
   - python38-pygments-ansi-color 
   - python38-pygments-pytest 
@@ -30593,19 +30590,6 @@ unsorted:
   - qt6-qt5compat-private-devel 
   - qt6-quick-devel 
   - qt6-quick-private-devel 
-  - qt6-quick3d 
-  - qt6-quick3d-devel 
-  - qt6-quick3d-docs-html 
-  - qt6-quick3d-docs-qch 
-  - qt6-quick3d-examples 
-  - qt6-quick3d-imports 
-  - qt6-quick3d-private-devel 
-  - qt6-quick3dassetimport-devel 
-  - qt6-quick3dassetimport-private-devel 
-  - qt6-quick3druntimerender-devel 
-  - qt6-quick3druntimerender-private-devel 
-  - qt6-quick3dutils-devel 
-  - qt6-quick3dutils-private-devel 
   - qt6-quickcontrols2-devel 
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
@@ -41558,7 +41542,6 @@ unsorted:
   - uwsgi-php7 
   - uwsgi-psgi 
   - uwsgi-pypy 
-  - uwsgi-python 
   - uwsgi-python3 
   - uwsgi-sqlite3 
   - uwsgi-xslt 

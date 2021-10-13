@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20211011" schemaversion="4.1">
+<image name="OBS__MicroOS___20211012" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211011</productvar>
+      <productvar name="VERSION">20211012</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211011,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211012,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211011/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211012/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -475,7 +475,7 @@
       <repopackage name="libcairo2" arch="x86_64"/>
       <repopackage name="libcairomm-1_0-1" arch="x86_64"/>
       <repopackage name="libcamel-1_2-63" arch="x86_64"/>
-      <repopackage name="libcamera-suse6" arch="x86_64"/>
+      <repopackage name="libcamera-suse7" arch="x86_64"/>
       <repopackage name="libcanberra-gtk3-0" arch="x86_64"/>
       <repopackage name="libcanberra0" arch="x86_64"/>
       <repopackage name="libcap-ng0"/>
@@ -582,7 +582,7 @@
       <repopackage name="libfuse2" arch="x86_64"/>
       <repopackage name="libfuse3-3" arch="x86_64"/>
       <repopackage name="libfwupd2" arch="x86_64"/>
-      <repopackage name="libfwupdplugin1" arch="x86_64"/>
+      <repopackage name="libfwupdplugin2" arch="x86_64"/>
       <repopackage name="libgbm1" arch="x86_64"/>
       <repopackage name="libgcab-1_0-0" arch="x86_64"/>
       <repopackage name="libgcc_s1"/>
@@ -603,7 +603,7 @@
       <repopackage name="libgio-2_0-0" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1" arch="x86_64"/>
       <repopackage name="libgirepository-1_0-1" arch="x86_64"/>
-      <repopackage name="libgit2-1_1" arch="x86_64"/>
+      <repopackage name="libgit2-1_2" arch="x86_64"/>
       <repopackage name="libgjs0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libglibmm-2_4-1" arch="x86_64"/>
