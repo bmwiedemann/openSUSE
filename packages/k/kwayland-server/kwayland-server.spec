@@ -24,20 +24,24 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz
+Source:         kwayland-server-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz.sig
+Source1:        kwayland-server-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+# It does not build with the default compiler (GCC 7) on Leap 15.x
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Wayland) >= 5.70.0
@@ -80,6 +84,9 @@ kwayland-server provides a Qt-style server library wrapper for the Wayland libra
 echo > tests/CMakeLists.txt
 
 %build
+%if 0%{?suse_version} <= 1500
+  export CC=gcc-10 CXX=g++-10
+%endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
