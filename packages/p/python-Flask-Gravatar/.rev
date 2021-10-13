@@ -17,4 +17,12 @@
   * update patch fix-requirements.patch</comment>
     <requestid>679225</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c83bebeee96c29cb8afd743087d19294</srcmd5>
+    <version>0.5.0</version>
+    <time>1634141183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925051</requestid>
+  </revision>
 </revisionlist>

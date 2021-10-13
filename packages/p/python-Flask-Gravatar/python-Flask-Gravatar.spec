@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Gravatar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Small extension for Flask to make usage of Gravatar service
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/zzzsochi/Flask-Gravatar/
+URL:            https://github.com/zzzsochi/Flask-Gravatar/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Gravatar/Flask-Gravatar-%{version}.tar.gz
 Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools}
@@ -63,7 +63,7 @@ export LC_CTYPE=en_US@UTF-8
 
 %check
 export LC_CTYPE=en_US@UTF-8
-%python_exec setup.py test
+%pyunittest discover -v tests
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst

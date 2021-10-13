@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 12:04:12 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Feb 26 11:15:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove replace-pytest-pep8-with-pytest-codestyle.patch
