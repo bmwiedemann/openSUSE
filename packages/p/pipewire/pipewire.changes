@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 09:10:51 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix compilation on ARM (boo#1191600):
+  * 0001-fix-compilation-on-ARM.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 10:03:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.38:

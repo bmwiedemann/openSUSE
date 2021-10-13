@@ -53,6 +53,7 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
+Patch0:         0001-fix-compilation-on-ARM.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen
