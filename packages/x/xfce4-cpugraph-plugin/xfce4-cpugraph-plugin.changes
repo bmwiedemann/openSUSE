@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Oct 11 08:43:40 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.2.5
+  * Avoid FreeBSD "string.h" include file issue
+  * Fix compilation with libxfce4util earlier than 4.17.0
+  * Update README
+  * Code cleanup: Convert circular buffer mask from a field to a
+    member function
+  * Lower the number of false positives in sub-optimal
+    SMT scheduling
+  * Account for irregular core IDs in CPU topology
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#25)
+  * Increase type-safety of the return types of callback functions
+  * Fix CPU topology initialization memory leak
+  * Convert CpuGraph* to Ptr<CPUGraph>
+  * Code cleanup: Add "using xfce4::Ptr" shortcuts
+  * Add xfce4::RGBA
+  * Code cleanup: Replace C pointers with xfce4::Ptr0 and
+    std::vector
+  * Code cleanup: Move set() function declarations inside struct
+    CPUGraph
+  * Replace author nicknames with real names
+  * Update and sort the list of authors
+  * Code cleanup: Remove typedef keyword from type declarations
+  * Code cleanup: Add CPUGRAPH to header file if-defs
+  * Code cleanup: Remove extern "C" from header files
+  * Code cleanup: Remove #include libintl.h
+  * Use C++ λ-functions for widget signal handlers
+  * Code cleanup: Replace gboolean with bool where possible
+  * Use xfce4::sprintf() instead of g_snprintf()
+  * Add xfce4::sprintf()
+  * Update extensions in translation files from .c to .cc
+  * Rename properties.c to properties.cc
+  * Replace mode.c with mode.cc
+  * Return a std::string pointer from Rc:read_entry()
+  * Rename main plugin implementation file from C to C++
+  * Code cleanup: Move variable declarations and replace GList
+    with std::vector
+  * Rename OS-specific file from C to C++
+  * Slightly improved CPU count detection in case some CPUs
+    are offline
+  * Convert settings read/write code from C to C++
+  * Rename shadowed variable name to avoid a compiler warning
+  * Suppress compiler warning
+  * Bump requirements to version 4.14
+  * Enable close button translations
+  * Fix compiler warnings on FreeBSD and SUN
+  * Bump properties dialog to Xfce 4.14 API
+  * Export SVG icons to PNG
+  * New icons
+  * Lower peak memory consumption in case of a long CPU load
+    history
+  * Fix OpenBSD codepath (gxo#panel-plugins/xfce4-cpugraph-plugin#28)
+  * Initially hide run-in-terminal checkbox if the command is empty
+    (gxo#panel-plugins/xfce4-cpugraph-plugin#23)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Feb 24 18:20:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.2.3
