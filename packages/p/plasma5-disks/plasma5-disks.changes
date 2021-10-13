@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * add magnificent advanced data (kde#440486)
+  * actually start the reload timer :O
+  * don't require auth_admin for inactive sessions
+  * drop usless is directory check
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Remove unneeded main.cpp
+  * Remove unneeded X-KDE-PluginKeyword
+  * search for smartctl in /usr/local/sbin as well
+  * don't notify on instabilities
+  * add pipeline for reuse compliance
+  * Use version-less qt DBus macros
+  * Remove not necessary qt prefix
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
