@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Fix kio-mtp with libmtp 1.1.19
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
