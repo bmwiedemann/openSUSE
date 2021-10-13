@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        21.08.1
+Version:        21.08.2
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -167,6 +167,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_debugdir}/kdeconnect-kde.categories
 %{_kf5_htmldir}/en/kdeconnect/
 %{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
+%{_kf5_iconsdir}/hicolor/*/status/*.svg
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeconnect*.so.*
 %{_kf5_notifydir}/
