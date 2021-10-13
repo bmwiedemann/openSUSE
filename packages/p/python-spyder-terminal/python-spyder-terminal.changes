@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 10 20:01:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.1.0
+  * Migration to Spyder's 5.1.x new API
+
+-------------------------------------------------------------------
+Fri Jul 16 16:45:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.0.0
+  * Migration to Spyder's 5 new API
+  * Update to the latest release of xtermjs
+  * Add blue border when the terminal is focused like all the other
+    plugins
+  * Anaconda powers are now available in the terminal
+  * New customizable option for the cursor
+  * Save the zoom across terminals
+
+-------------------------------------------------------------------
 Tue Feb  2 13:07:47 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Use the singlespec rewrite from %python_subpackages to provide

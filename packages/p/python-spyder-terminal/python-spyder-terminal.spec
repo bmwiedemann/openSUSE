@@ -20,7 +20,7 @@
 # But we need the python3-spyder-terminal name, provided by the python_subpackages rewrite
 %define pythons python3
 Name:           python-spyder-terminal
-Version:        0.5.0
+Version:        1.1.0
 Release:        0
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 License:        MIT
@@ -38,23 +38,21 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       python-coloredlogs
-Requires:       python-pexpect
 Requires:       python-requests
-Requires:       python-terminado >= 0.9.1
+Requires:       python-terminado >= 0.10.0
 Requires:       python-tornado
-Requires:       spyder >= 4.2.0
+Requires:       spyder >= 5.1.1
 # SECTION test requirements
 BuildRequires:  python3-coloredlogs
 BuildRequires:  python3-flaky
-BuildRequires:  python3-pexpect
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-requests
-BuildRequires:  python3-terminado >= 0.9.1
+BuildRequires:  python3-terminado >= 0.10.0
 BuildRequires:  python3-tornado
-BuildRequires:  spyder >= 4.2.0
+BuildRequires:  spyder >= 5.1.1
 BuildRequires:  xdpyinfo
 # /SECTION
 BuildArch:      noarch
@@ -83,6 +81,9 @@ tar --strip-components=1 -xzf %{SOURCE1} \
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/tests/print_size.py
 
+# fix error with qtbot >= 4
+sed -i 's/qtbot_module.addWidget(terminal)/qtbot_module.addWidget(terminal.get_widget())/' spyder_terminal/tests/test_terminal.py
+
 %build
 %python3_build
 
@@ -96,9 +97,11 @@ find %{buildroot}%{python3_sitelib}/spyder_terminal/locale -name '*.po*' -delete
 # The unittests fail with a seccomp-bpf crash if the sandbox
 # is not disabled on i586
 export QTWEBENGINE_DISABLE_SANDBOX=1
-# qtbot timeouts in OBS env
-donttest="test_terminal_paste or test_new_terminal"
-%pytest -k "not ($donttest)"
+# qtbot timeout: "Doesn't work on Linux CIs"
+donttest="test_terminal_paste"
+# no conda
+donttest+=" or test_conda_path"
+%pytest -k "not ($donttest)" --timeout 120
 
 %files %{python_files} -f spyder_terminal.lang
 %defattr(-,root,root,-)
