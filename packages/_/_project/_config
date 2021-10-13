@@ -1008,6 +1008,7 @@ Prefer: libhdf5_hl100 -libhdf5-103-openmpi1 -libhdf5-103-mvapich2 -libhdf5_cpp10
 Prefer: libvtk1-openmpi2
 Prefer: -vtk-openmpi1-qt -vtk-openmpi2-qt -vtk-openmpi3-qt
 Prefer: -openmpi3-libs -openmpi4-libs
+Prefer: -openmpi3-config -openmpi2-config -openmpi1-config
 Prefer: fftw3-devel ImageMagick-config-7-SUSE
 # prefer the small systemd for building
 Prefer: star
