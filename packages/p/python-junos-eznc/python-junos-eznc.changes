@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 13 10:15:04 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.6.3
+  * Enhancements done
+    Adding ignore warning for rollback api #1131
+    Add escaped $ Bourne-style shell prompt support #868
+  * Bugs Fixed
+    - Fix for junos versions returning a bool value for config diff
+      if there are no changes #1093
+    - Handle ncclient timeout exception at close. #787
+    - Newer junos versions return a bool for config diff and not
+      etree if there are no changes #1093
+- Changes from 2.6.2
+  * Bugs Fixed
+    - Fix for evo device as Password prompt comes directly during
+      telnet #1112
+- Changes from 2.6.1
+  * Enhancement Added
+    - Flag for json.loads() for special character like newline was
+      made false by default. #1029
+  * Bugs Fixed
+    - Transform function modified only for the rpc and set back to
+      original value. #1108
+    - Skip the values returned in re-list without numbers during
+      multi re software install #1099
+    - getiterator() replaced with iter() as was deprecated in
+      Python 3.2 and removed in Python 3.9 #1110
+- Drop python-junos-eznc-py39xml.patch because now in upstream.
+
+-------------------------------------------------------------------
 Mon Apr 26 16:58:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.6.0

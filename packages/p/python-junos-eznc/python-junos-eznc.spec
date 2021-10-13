@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.6.0
+Version:        2.6.3
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
@@ -32,8 +32,6 @@ Patch0:         python-junos-eznc-remove-nose.patch
 # replace deprecated yamlordereddictloader by yamlloader
 # https://github.com/Juniper/py-junos-eznc/pull/1078
 Patch1:         python-junos-eznc-remove-yamlordereddictloader.patch
-# https://github.com/Juniper/py-junos-eznc/pull/1110
-Patch2:         python-junos-eznc-py39xml.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module lxml >= 3.2.4}
