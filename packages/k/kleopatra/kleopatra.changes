@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Ask GnuPG for the correct path for the uiserver socket (kde#441957)
+  * Fix duplicate release versions
+  * Fix version number
+  * Use correct name for third number of RELEASE_SERVICE_VERSION
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
