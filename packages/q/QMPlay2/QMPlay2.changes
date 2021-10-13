@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:50:32 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-switch-to-yt-dlp.patch to fix several youtube-dl related issues such as buffering being unreliable
+- Optimized spec file formatting for more compactness
+
+-------------------------------------------------------------------
 Thu Jul 29 11:28:38 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Re-enabled PipeWire support on openSUSE Leap 15.3+ as well as SLE15SP3+ because the required gcc and libpipewire versions are now avilable
