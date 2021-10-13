@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Fix a clang compiler warning -Winfinite-recursion
+  * Port away from deprecated KF and Qt methods
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Remove unneeded KCM plugin keyword stuff
+  * Convert remaining copyright texts to SPDX
+  * Remove obsolete COPYING files
+  * Convert cursors/src copyright to SPDX
+  * Adjust formatting of license header
+  * Convert license headers to SPDX
+  * Update IRC network name in the cursors README
+  * Readd the old and longer logoff sound from KDE 4.0 as an option
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

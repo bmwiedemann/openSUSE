@@ -20,7 +20,7 @@
 %define kwin_deco 1
 
 Name:           oxygen5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Oxygen style, KWin decoration, cursors and sounds
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz
+Source:         oxygen-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz.sig
+Source1:        oxygen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
@@ -155,10 +155,10 @@ This package contains the libraries Oxygen's KWin decoration.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 
 %files style
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/oxygen-demo5
 %{_kf5_bindir}/oxygen-settings5
 %{_kf5_libdir}/liboxygenstyle5.so.*
@@ -177,18 +177,18 @@ This package contains the libraries Oxygen's KWin decoration.
 
 %if %kwin_deco
 %files decoration
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/org.kde.kdecoration2/
 %dir %{_kf5_servicesdir}
 %{_kf5_servicesdir}/oxygendecorationconfig.desktop
 %endif
 
 %files sounds
-%license COPYING*
+%license LICENSES/*
 %{_kf5_sharedir}/sounds/*
 
 %files cursors
-%license COPYING*
+%license LICENSES/*
 %{_kf5_sharedir}/icons/Oxygen_*/
 %{_kf5_sharedir}/icons/KDE_Classic/
 
