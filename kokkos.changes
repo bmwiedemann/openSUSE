@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 12 22:41:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove random constraint adjustments again, and use a global
+  lower limit of 6 GB of memory (minimum for the OMP tests).
+- Limit the number of parallel jobs and OMP threads in the unit
+  tests, to keep the required memory bounded.
+  This way, even architectures with many cores and comparatively
+  low memory can build successfully.
+
+-------------------------------------------------------------------
 Sun Oct  3 16:28:39 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - New entries in constraints file because of missing build nodes with 
