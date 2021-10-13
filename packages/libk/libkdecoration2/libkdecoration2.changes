@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:08 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- No code changes since 5.22.90
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Add kdecoration to plasma group for documentation purpose
+  * Build KDecoration with -DQT_NO_KEYWORDS
+  * Replace emit with Q_EMIT
+  * Introduce Decoration::damaged signal
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.
