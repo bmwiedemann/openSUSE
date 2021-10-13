@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           kinfocenter5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,16 +33,11 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-OPENSUSE plasma-session-name.patch
-Patch0:         plasma-session-name.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Handle-libpci-errors-gracefully.patch
-Patch2:         0002-Enable-the-PCI-module-everywhere.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libraw1394-devel
@@ -111,7 +106,6 @@ KDE Utility that provides information about a computer system.
 %license LICENSES/*.txt
 %{_kf5_bindir}/kinfocenter
 %dir %{_kf5_plugindir}/
-%{_kf5_plugindir}/kcm_about_distro.so
 %{_kf5_plugindir}/kcm_devinfo.so
 %{_kf5_plugindir}/kcm_info.so
 %{_kf5_plugindir}/kcm_memory.so
@@ -120,19 +114,29 @@ KDE Utility that provides information about a computer system.
 %{_kf5_plugindir}/kcm_usb.so
 %{_kf5_plugindir}/kcm_view1394.so
 %dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_about-distro.so
 %{_kf5_plugindir}/kcms/kcm_energyinfo.so
 %{_kf5_plugindir}/kcms/kcm_nic.so
 %{_kf5_plugindir}/kcms/kcm_samba.so
+%{_kf5_plugindir}/kcms/kcm_vulkan.so
+%{_kf5_plugindir}/kcms/kcm_cpu.so
+%{_kf5_plugindir}/kcms/kcm_interrupts.so
+%{_kf5_plugindir}/kcms/kcm_wayland.so
 %{_kf5_applicationsdir}/org.kde.kinfocenter.desktop
-%dir %{_kf5_htmldir}/en
 %dir %{_kf5_htmldir}
+%dir %{_kf5_htmldir}/en/
 %doc %{_kf5_htmldir}/en/kinfocenter/
 %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kinfocenter/
+%{_kf5_sharedir}/kinfocenter/categories/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_configdir}/menus/kinfocenter.menu
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_appstreamdir}/org.kde.kinfocenter.appdata.xml
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde/
+%{_kf5_qmldir}/org/kde/kinfocenter/
 
 %if %{with lang}
 %files lang -f %{name}.lang
