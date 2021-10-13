@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Jul 28 23:20:26 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify spec, remove differing python versions from initial package generation
+- Change package name to epy as it better reflects the acutal package name on GitHub 
+
+-------------------------------------------------------------------
+Wed Jul 28 22:33:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Add Suggests for supported dictionary applications
+
+-------------------------------------------------------------------
+Wed Jul 28 22:12:31 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package version
