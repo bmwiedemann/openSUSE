@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:05:40 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Update to version 1.2.0 (released 2021-09-22)
+  * Added support for EdDSA keys.
+  * Added support for SSH ed25519-sk keys.
+  * Added authenticator filtering based on user verification options.
+  * Fixed an issue with privilege restoration on MacOS.
+  * Fixed an issue where credentials created with pamu2fcfg 1.0.8 or earlier were not handled correctly if their origin and appid differed.
+  * Miscellaneous improvements to the documentation.
+  * Miscellaneous minor bug fixes found by fuzzing.
+
+- Fix for bsc#1190961 - Removed hardcoded library pathnames using %{_pam_moduledir}
+
+-------------------------------------------------------------------
 Thu May 20 13:04:05 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
 
 - Update to version 1.1.1 (released 2021-05-19)

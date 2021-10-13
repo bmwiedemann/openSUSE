@@ -17,7 +17,7 @@
 
 
 Name:           pam_u2f
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        U2F authentication integration into PAM
 License:        BSD-2-Clause
@@ -40,7 +40,7 @@ authentication infrastructure.
 %setup -q
 
 %build
-%configure --with-pam-dir=/%{_lib}/security \
+%configure --with-pam-dir=%{_pam_moduledir} \
            --disable-static
 make %{?_smp_mflags}
 
@@ -54,6 +54,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS NEWS ChangeLog README
 %{_bindir}/pamu2fcfg
 %{_mandir}/man?/*
-/%{_lib}/security/pam_u2f.so
+%{_pam_moduledir}/pam_u2f.so
 
 %changelog
