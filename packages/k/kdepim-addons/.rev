@@ -571,4 +571,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Gear 21.08.1</comment>
     <requestid>915884</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>67c4e0eba4cb9cd7d442f6e6ec8d7981</srcmd5>
+    <version>21.08.2</version>
+    <time>1634140942</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.2</comment>
+    <requestid>923884</requestid>
+  </revision>
 </revisionlist>
