@@ -19,7 +19,7 @@
 %define soname 2
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.14.0.2
+Version:        2.14.0.3
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
@@ -77,12 +77,6 @@ sed -i '/${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ}/a\
 %define _NC_FLAGS %(ncursesw6-config --cflags)
 %define _NC_LIBS %(ncursesw6-config --libs)
 
-%ifarch %{ix86} x86_64
-# avoid compilation with -march=native
-%define arch_cflags -march=corei7
-%else
-%define arch_cflags ""
-%endif
 %define makevars \\\
     BINDIR=%{_bindir} \\\
     LIBDIR=%{_libdir} \\\
@@ -94,7 +88,7 @@ sed -i '/${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ}/a\
     USE_READLINE="-DUSE_READLINE" \\\
     READLINE_LIB="-lreadline -lhistory %{_NC_LIBS} -L./custom -lcustcalc" \\\
     LD_SHARE="%{_NC_LIBS}" \\\
-    ARCH_CFLAGS=%{arch_cflags} \\\
+    ARCH_CFLAGS= \\\
     EXTRA_CFLAGS="%{optflags} -g -fno-strict-aliasing %{_NC_FLAGS}"
 
 %build

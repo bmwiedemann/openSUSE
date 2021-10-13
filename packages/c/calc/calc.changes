@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 13 10:32:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Drop explicit -march definition (bsc#1191604, bsc#1100677)
+
+-------------------------------------------------------------------
+Wed Oct 13 08:26:35 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.3:
+  * Added builtin functions to convert between degrees and
+    degrees, minutes and seconds under the config("mod")
+    See help/d2dms and help/d2dm.
+  * Added builtin functions to convert between gradians and
+    gradians, minutes and seconds under the config("mod")
+    See help/g2gms and help/g2gm.
+  * Added builtin functions to convert between hours and
+    hours, minutes and seconds under the config("mod")
+    See help/h2hms and help/h2hm.
+  * Renumbered regression tests 3408 thru 3437, to 9102 thru 9131.
+  * Updated Added hms.cal resource file to use h2hms() builtin.
+  * Updated Added dms.cal resource file to use d2dms() builtin.
+  * Fix minor typo in help/mod SYNOPSIS.
+  * Fix minor typo in help/quo SYNOPSIS.
+  * Added a few more examples to help/strcmp.
+  * Added builtin functions to convert between degrees, minutes and
+    seconds and degrees under the config("mod")
+    See help/dms2d and help/dm2d.
+  * Added builtin functions to convert between gradians, minutes and
+    seconds and gradians under the config("mod")
+    See help/g2gms and help/g2gm.
+  * Added builtin functions to convert between hours, minutes and
+    seconds and hours under the config("mod"):
+    See help/hms2h and help/hm2h.
+
+-------------------------------------------------------------------
 Thu Sep  9 07:06:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.0.2:
