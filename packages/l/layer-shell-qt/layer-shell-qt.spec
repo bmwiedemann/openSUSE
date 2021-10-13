@@ -24,15 +24,15 @@
 
 %bcond_without lang
 Name:           layer-shell-qt
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz
+Source:         layer-shell-qt-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz.sig
+Source1:        layer-shell-qt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
@@ -46,10 +46,10 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5XkbCommonSupport)
 # Workaround missing requirement in libQt5Gui-private-headers-devel
+BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 BuildRequires:  pkgconfig(wayland-client) >= 1.3.0
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server) >= 1.3.0
-BuildRequires:  pkgconfig(xkbcommon) >= 0.4.1
 
 %description
 This allows integration of Qt applications with wlr-layer-shell.
