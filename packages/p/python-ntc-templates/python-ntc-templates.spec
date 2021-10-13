@@ -19,10 +19,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ntc-templates
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
+Group:          Development/Languages/Python
 URL:            https://github.com/networktocode/ntc-templates
 Source:         https://github.com/networktocode/ntc-templates/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -38,17 +39,19 @@ Suggests:       python-yamllint
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyaml}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module textfsm >= 1.1.0}
 # /SECTION
 %python_subpackages
 
 %description
-Package to return structured data from the output of network devices.
+TextFSM is a project built by Google that takes CLI string output and passes each line through a series of regular expressions until it finds a match. The regular expressions use named capture groups to build a text table out of the significant text. The names of the capture groups are used as column headers, and the captured values are stored as rows in the table.
 
 %prep
 %setup -q -n ntc-templates-%{version}
+# rpmlintrc
+chmod -x ntc_templates/templates/cisco*
 
 %build
 %pyproject_wheel

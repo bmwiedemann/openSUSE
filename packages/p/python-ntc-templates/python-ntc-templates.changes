@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 13 10:27:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.3.2
+  * Bugfixes
+    - cisco_ios_show_ip_bgp_summary Account for dotted ASN notation
+      #987
+    - cisco_nxos_show_interface_status Account for blank type #980
+    - cisco_ios_show_interfaces Account for App Interface #968
+- Fix some rpmlint errors.
+- Mock is actually not needed.
+
+-------------------------------------------------------------------
 Tue Aug 31 06:34:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1

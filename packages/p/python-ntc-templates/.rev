@@ -31,4 +31,20 @@
     <comment></comment>
     <requestid>917114</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc17ff92fbb42a15caa452cfda20a2b8</srcmd5>
+    <version>2.3.2</version>
+    <time>1634141193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2
+  * Bugfixes
+    - cisco_ios_show_ip_bgp_summary Account for dotted ASN notation
+      #987
+    - cisco_nxos_show_interface_status Account for blank type #980
+    - cisco_ios_show_interfaces Account for App Interface #968
+- Fix some rpmlint errors.
+- Mock is actually not needed.
+</comment>
+    <requestid>925096</requestid>
+  </revision>
 </revisionlist>
