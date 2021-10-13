@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-actdiag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Test files missing gh#blockdiag/sphinxcontrib-actdiag#1
-%bcond_with     test
 Name:           python-sphinxcontrib-actdiag
 Version:        2.0.0
 Release:        0
 Summary:        Sphinx actdiag extension
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/blockdiag/sphinxcontrib-actdiag
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-actdiag/sphinxcontrib-actdiag-%{version}.tar.gz
+URL:            https://github.com/blockdiag/sphinxcontrib-actdiag
+Source:         https://github.com/blockdiag/sphinxcontrib-actdiag/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -36,11 +35,12 @@ Requires:       python-Sphinx >= 0.6
 Requires:       python-actdiag >= 0.5.3
 Requires:       python-blockdiag >= 1.5.0
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
+BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  %{python_module actdiag >= 0.5.3}
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
 BuildRequires:  %{python_module sphinx-testing}
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -56,10 +56,10 @@ A sphinx extension for embedding activity diagram using actdiag_.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# https://github.com/blockdiag/sphinxcontrib-actdiag/issues/1#issuecomment-940954720
+sed -i 's:from mock:from unittest.mock:' tests/test_errors.py
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

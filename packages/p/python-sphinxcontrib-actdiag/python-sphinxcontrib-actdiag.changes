@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 12 12:14:27 UTC 2021 - pgajdos@suse.com
+
+- %check: test the package via %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Feb 25 15:59:53 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to version 2.0.0
