@@ -22,7 +22,7 @@
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.23
+Version:        3.23.1
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -34,6 +34,8 @@ Source2:        udev.gpsd
 Source3:        sysconfig.gpsd
 Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.xz.sig
 Source99:       %{name}.keyring
+Patch0:         harden_gpsd.service.patch
+Patch1:         harden_gpsdctl@.service.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -163,10 +165,17 @@ can run on a serial terminal or terminal emulator.
 %if %{with python2}
 mkdir -p %{name}-%{version}/python2
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
+pushd %{name}-%{version}/python2/%{name}-%{version}
+%patch0
+%patch1
+popd
 %endif
 mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
-cd %{name}-%{version}
+pushd %{name}-%{version}/python3/%{name}-%{version}
+%patch0
+%patch1
+popd
 
 %build
 # LTO fails on aarch64 (version 3.22, May 2021)

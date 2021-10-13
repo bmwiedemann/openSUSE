@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep 27 10:44:40 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Set ProtectClock to false or gpsd will not start
+
+-------------------------------------------------------------------
+Wed Sep 22 17:29:34 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Don't use gpsd version in patches (will break with every update)
+  % harden_gpsd.service.patch
+  % harden_gpsdctl@.service.patch
+
+-------------------------------------------------------------------
+Wed Sep 22 07:07:20 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.23.1
+  * Improve ubx cycle detection.
+  * Add quirks for Jackson Labs nonstandard NMEA
+  * Change STATUS_NO_FIX to STATUS_UNK to avoid confusion with fix
+    mode.
+  * Change STATUS_FIX to STATUS_GPS to avoid confusion with fix
+    mode.
+  * Change STATUS_DGPS_FIX to STATUS_DGPS to avoid confusion with
+    fix mode.
+  * Split SOURCE_ACM from SOURCE_USB.  ACM has no speeds.
+  * Add speeds 1 mbps, 1.152 mbps, 1.5 mbps, and higher.  When libc
+    supports them.
+  * Improve autobaud.
+  * Add new u-blox M10 messages.
+  * Fix u-blox M6, M7 initialization issues.
+  * Various ubxtool and gpxlogger updates.
+  * Add mtk3301_speed_switcher()
+  * No API, ABI changes.
+  * Fallback to "python3" if "python" not found.
+
+-------------------------------------------------------------------
+Mon Sep 20 15:34:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_gpsd.service.patch
+  * harden_gpsdctl@.service.patch
+
+-------------------------------------------------------------------
 Sat Aug  7 03:32:40 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.23
@@ -723,4 +765,3 @@ Sun Dec 17 13:21:22 CEST 2006 - anschneider@suse.de
 Mon Jun 05 10:44:57 CEST 2006 - anschneider@suse.de
 
 - Initial package
-
