@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:27:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Too many changes since 21.08.1, only listing bugfixes:
+  * Also word-wrap welcome page headers (kde#443200)
+  * Fix timeline model test breaking during the last hour of the day (kde#442821)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:37:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
@@ -17,7 +28,7 @@ Fri Aug  6 09:34:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 - Update to 21.08.0
   * New feature release
   * For more details please see:
-  * https://kde.org/announcements/gear/21.08/
+  * https://kde.org/announcements/gear/21.08.0
 - No code change since 21.07.90
 
 -------------------------------------------------------------------
