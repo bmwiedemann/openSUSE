@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Consider the online state when attempting to reconnect
+  * DAV resource: support exception incidences
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
