@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:28:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Emit an error rather than reconnect when SSL errors are not ignored (kde#423424)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:39:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
