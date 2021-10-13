@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * flatpak: Also show the installed version (kde#443256)
+  * Improve margins around Updates page messages
+  * Do not show tooltips when fetching updates (kde#443050)
+  * snap: Don't mark as cancelled until we get the reply (kde#425680)
+  * flatpak: Also search flatpakref files where the id doesn't include .desktop
+  * flatpak: Fix installing sources
+  * flatpak: Reuse remote when opening a well-known flatpakref file
+  * flatpak: Do not crash when using a flatpakref file (kde#442709)
+  * Explicitly set the interactive flag for PackageKit transactions (kde#442383)
+  * Link against Qt::Widgets (kde#442866)
+  * Sources: Fix displaying sources (kde#442604)
+  * kns: Do not process entries from invalid backends
+  * Stop bringing kxmlgui
+  * Port away from KIO::AccessManager
+  * Fix the InstallApplicationButton with QQC2 Breeze
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5

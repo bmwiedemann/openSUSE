@@ -21,15 +21,15 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -164,8 +164,6 @@ user to install them using Discover.
 %files
 %license LICENSES/*
 %dir %{_kf5_plugindir}/discover/
-%dir %{_kf5_sharedir}/libdiscover/
-%dir %{_kf5_sharedir}/libdiscover/categories/
 %{_kf5_applicationsdir}/org.kde.discover.desktop
 %{_kf5_applicationsdir}/org.kde.discover.urlhandler.desktop
 %{_kf5_appstreamdir}/org.kde.discover.appdata.xml
@@ -175,10 +173,14 @@ user to install them using Discover.
 %{_kf5_iconsdir}/hicolor/*/apps/plasmadiscover.*
 %{_kf5_kxmlguidir}/plasmadiscover/
 %{_kf5_libdir}/plasma-discover/
-%{_kf5_libexecdir}/discover/
 %{_kf5_notifydir}/discoverabstractnotifier.notifyrc
 %{_kf5_plugindir}/discover/kns-backend.so
-%{_kf5_sharedir}/discover/
+%dir %{_kf5_sharedir}/discover
+%{_kf5_sharedir}/discover/pkcategories/
+%dir %{_kf5_sharedir}/libdiscover
+%dir %{_kf5_sharedir}/libdiscover/categories
+%dir %{_kf5_libexecdir}/discover
+%{_kf5_libexecdir}/discover/runservice
 
 %if %{with lang}
 %files lang -f %{name}.lang
