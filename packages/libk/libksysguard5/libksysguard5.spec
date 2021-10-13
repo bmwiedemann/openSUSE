@@ -19,7 +19,7 @@
 %bcond_without lang
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,9 +29,9 @@ Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -69,6 +69,8 @@ BuildRequires:  cmake(Qt5X11Extras)
 #BuildRequires:  libcap-progs
 # No pkgconfig(pcap) in Leap <= 15.3 yet
 BuildRequires:  libpcap-devel
+# TODO: This breaks on Leap s390x
+BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xres)
@@ -166,7 +168,7 @@ QML applications.
 %postun -n libKSysGuardSystemStats%{systemstatssover} -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kpackage/
 %dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_debugdir}/*.categories
@@ -184,16 +186,16 @@ QML applications.
 %{_kf5_sharedir}/ksysguard/
 
 %files -n libKSysGuardSystemStats%{systemstatssover}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKSysGuardSystemStats.so.%{systemstatssover}
 %{_kf5_libdir}/libKSysGuardSystemStats.so.%{_plasma5_bugfix}
 
 %files -n ksysguardsystemstats-data
-%license COPYING*
+%license LICENSES/*
 %{_kf5_sharedir}/dbus-1/interfaces/org.kde.ksystemstats.xml
 
 %files plugins
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/ksysguard/
 %dir %{_kf5_plugindir}/ksysguard/process
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_network.so
@@ -208,13 +210,14 @@ QML applications.
 %{_kf5_libdir}/libexec/ksysguard/ksgrd_network_helper
 
 %files imports
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_qmldir}/org/kde/ksysguard
 %dir %{_kf5_qmldir}/org/kde/ksysguard/faces
 %dir %{_kf5_qmldir}/org/kde/ksysguard/formatter
 %dir %{_kf5_qmldir}/org/kde/ksysguard/process
 %dir %{_kf5_qmldir}/org/kde/ksysguard/sensors
 %{_kf5_qmldir}/org/kde/ksysguard/faces/ExtendedLegend.qml
+%{_kf5_qmldir}/org/kde/ksysguard/faces/SensorRangeSpinBox.qml
 %{_kf5_qmldir}/org/kde/ksysguard/faces/SensorFace.qml
 %{_kf5_qmldir}/org/kde/ksysguard/faces/libFacesPlugin.so
 %{_kf5_qmldir}/org/kde/ksysguard/faces/qmldir
@@ -226,7 +229,7 @@ QML applications.
 %{_kf5_qmldir}/org/kde/ksysguard/sensors/qmldir
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_includedir}/ksysguard/
 %{_kf5_libdir}/cmake/KF5SysGuard/
 %{_kf5_libdir}/cmake/KSysGuard/
