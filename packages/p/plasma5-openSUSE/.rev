@@ -1120,4 +1120,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
     <requestid>915391</requestid>
   </revision>
+  <revision rev="134" vrev="43">
+    <srcmd5>5f09a1f76b8c01c43244aa28b92df7e0</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1634141023</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
+    <requestid>924725</requestid>
+  </revision>
 </revisionlist>
