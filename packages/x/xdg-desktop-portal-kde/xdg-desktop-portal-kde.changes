@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Update dbus-advertised screencast source types
+  * Inhibit portal: send reply to the Close() request to release inhibition
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Fix crash when in X11
+  * Remove unnecessary attribute
+  * Now we are using Qt's internal connection, we should not set an eventqueue
+  * Remove unused output initialisation
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Guard use of wayland connection
+  * Avoid second wayland connection in xdg-desktop-portal-kde
+  * Add missing properties for 2 dbus interfaces
+  * Background portal: avoid crash when allowing app to run in background (kde#438954)
+  * Fix compile with last ecm
+  * Pass the version to the project call
+  * Use version-less qt DBus macros
+  * Remove unused method
+  * Add a SNI for active screencasting sessions
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5
