@@ -240,4 +240,33 @@ A model Open Source game.</comment>
     server was fixed.</comment>
     <requestid>918667</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ffa7c1ed2a3f70962d0857f903f39964</srcmd5>
+    <version>1.15.18</version>
+    <time>1634141178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.18:
+  Campaigns:
+  * Delfador’s Memoirs S07: Clarified objectives (issue #5608)
+  * Northern Rebirth Give Eryssa’s side a consistent team color (issue #5375)
+  * The Rise of Wesnoth Remove time-runs-out lose condition for final scenario (issue #6109)
+  * Under the Burning Suns
+    + Avoid a few possibilities where the Dust Devil could speak (issue #4892)
+    + Avoid dehydration status icon persisting into the next scenario (issue #5687)
+    + Correct Traveler’s Ring description (issue #6043)
+  Editor:
+  * Avoid rare crash situation after editing scenarios (issue #5883)
+  Translations:
+  * Updated translations: British English, Bulgarian, Czech, French, Italian, Portuguese (Brazil), Russian, Spanish.
+  * gettext plural forms now have caret prefixes stripped as well (PR #6094).
+  User interface:
+  * Steam cloud file is no longer listed in the Load Game dialog.
+  * Redefine green text in dialogs and tool-tips so they are no longer ‘too dark’ with recent Pango versions (issue #4348)
+  * Gave the main menu's Language button a label again, now displaying the current language.
+  * Tweaked margins around the main menu's bottom row.
+  * Difficulty no longer displayed in the Load Game dialog when it is not relevant to a save file (issue #5321)
+  Miscellaneous and Bug Fixes:
+  * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)</comment>
+    <requestid>925039</requestid>
+  </revision>
 </revisionlist>
