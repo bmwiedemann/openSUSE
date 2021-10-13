@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 13 12:10:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make tests verbose
+
+-------------------------------------------------------------------
+Tue Oct  5 12:40:02 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Jan 21 10:36:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 5.5.1

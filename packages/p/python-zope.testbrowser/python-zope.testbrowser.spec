@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.testbrowser
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-zope.testbrowser
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-zope.testbrowser%{psuffix}
 Version:        5.5.1
 Release:        0
 Summary:        Programmable browser for functional black-box tests
@@ -42,10 +50,10 @@ Suggests:       python-mock
 Suggests:       python-zope.testing
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebTest >= 2.0.30}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytz > dev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -53,7 +61,9 @@ BuildRequires:  %{python_module soupsieve >= 1.9.0}
 BuildRequires:  %{python_module zope.cachedescriptors}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.schema}
+BuildRequires:  %{python_module zope.testbrowser}
 BuildRequires:  %{python_module zope.testing}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -68,18 +78,29 @@ site.
 %patch0 -p1
 
 %build
+%if !%{with test}
+sed -i 's:import mock:import unittest.mock as mock:' src/zope/testbrowser/tests/test_wsgi.py
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-%python_exec setup.py test
+%if %{with test}
+cd src
+%pyunittest -v zope/testbrowser/tests/test_*.py
+# TODO doctests
+%endif
 
 %files %{python_files}
+%if !%{with test}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
