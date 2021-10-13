@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:27:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Fix replicode plugin not deleting its toolview (kde#441859)
+  * Fix commit dialog width
+- Change the license tag to LGPL-2.0-only AND LGPL-2.1-or-later.
+  There are no GPL-3.0 files.
+
+-------------------------------------------------------------------
 Wed Sep  1 12:38:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
