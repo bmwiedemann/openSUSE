@@ -1,38 +1,56 @@
-From 6c3999f106a66563e32352efc3ae483745c7d09c Mon Sep 17 00:00:00 2001
+From 6166db42a61d80a3d8202162c598d1476572f5a1 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Wed, 10 Feb 2021 21:23:40 +0100
+Date: Wed, 18 Aug 2021 18:38:18 +0200
 Subject: [PATCH] Export consistent hostname as XAUTHLOCALHOSTNAME
 
 To deal with hostname changes, FamilyWild is used for Xauthority, but for Xsm
 XAUTHLOCALHOSTNAME is also set (boo#1177835, downstream patch in xtrans).
 The hostname is read once on startup and then used consistently.
 ---
- src/xwl/xwayland.cpp | 8 +++++---
- src/xwl/xwayland.h   | 1 +
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ src/helpers/wayland_wrapper/kwin_wrapper.cpp | 6 +++++-
+ src/xwl/lib/xauthority.cpp                   | 3 +--
+ src/xwl/lib/xauthority.h                     | 3 ++-
+ 3 files changed, 8 insertions(+), 4 deletions(-)
 
-Index: kwin-5.17.80git.20210329T113728~72cc1daf2/src/xwl/xwayland.cpp
-===================================================================
---- kwin-5.17.80git.20210329T113728~72cc1daf2.orig/src/xwl/xwayland.cpp	2021-03-30 07:04:25.529356779 +0200
-+++ kwin-5.17.80git.20210329T113728~72cc1daf2/src/xwl/xwayland.cpp	2021-03-30 07:07:32.663603468 +0200
-@@ -52,6 +52,7 @@
- Xwayland::Xwayland(ApplicationWaylandAbstract *app, QObject *parent)
-     : XwaylandInterface(parent)
-     , m_app(app)
-+    , m_hostname(QHostInfo::localHostName().toUtf8())
- {
-     m_resetCrashCountTimer = new QTimer(this);
-     m_resetCrashCountTimer->setSingleShot(true);
-@@ -97,7 +98,7 @@
+diff --git a/src/helpers/wayland_wrapper/kwin_wrapper.cpp b/src/helpers/wayland_wrapper/kwin_wrapper.cpp
+index 6ec91383e..722bdaed3 100644
+--- a/src/helpers/wayland_wrapper/kwin_wrapper.cpp
++++ b/src/helpers/wayland_wrapper/kwin_wrapper.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <QCoreApplication>
+ #include <QDebug>
++#include <QHostInfo>
+ #include <QProcess>
+ 
+ #include <QTemporaryFile>
+@@ -68,8 +69,11 @@ KWinWrapper::KWinWrapper(QObject *parent)
+         }
+         if (m_xwlSocket) {
+             if (!qEnvironmentVariableIsSet("KWIN_WAYLAND_NO_XAUTHORITY")) {
+-                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile)) {
++                const QByteArray hostname = QHostInfo::localHostName().toUtf8();
++                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile, hostname)) {
+                     qCWarning(KWIN_WRAPPER) << "Failed to create an Xauthority file";
++                } else {
++                    qputenv("XAUTHLOCALHOSTNAME", hostname);
+                 }
+             }
+         }
+diff --git a/src/xwl/lib/xauthority.cpp b/src/xwl/lib/xauthority.cpp
+index a7b61843f..de6b87616 100644
+--- a/src/xwl/lib/xauthority.cpp
++++ b/src/xwl/lib/xauthority.cpp
+@@ -45,7 +45,7 @@ static QByteArray generateXauthorityCookie()
      return cookie;
  }
  
--static bool generateXauthorityFile(int display, QTemporaryFile *authorityFile)
-+static bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname)
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile)
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname)
  {
      const QString runtimeDirectory = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
  
-@@ -106,7 +107,6 @@
+@@ -54,7 +54,6 @@ bool generateXauthorityFile(int display, QTemporaryFile *authorityFile)
          return false;
      }
  
@@ -40,32 +58,19 @@ Index: kwin-5.17.80git.20210329T113728~72cc1daf2/src/xwl/xwayland.cpp
      const QByteArray displayName = QByteArray::number(display);
      const QByteArray name = QByteArrayLiteral("MIT-MAGIC-COOKIE-1");
      const QByteArray cookie = generateXauthorityCookie();
-@@ -142,7 +142,7 @@
-     }
+diff --git a/src/xwl/lib/xauthority.h b/src/xwl/lib/xauthority.h
+index 7ba232be0..ecf43e9f5 100644
+--- a/src/xwl/lib/xauthority.h
++++ b/src/xwl/lib/xauthority.h
+@@ -9,6 +9,7 @@
  
-     if (!qEnvironmentVariableIsSet("KWIN_WAYLAND_NO_XAUTHORITY")) {
--        if (!generateXauthorityFile(socket->display(), &m_authorityFile)) {
-+        if (!generateXauthorityFile(socket->display(), &m_authorityFile, m_hostname)) {
-             qCWarning(KWIN_XWL) << "Failed to create an Xauthority file";
-             emit errorOccurred();
-             return;
-@@ -441,6 +441,7 @@
-     qputenv("DISPLAY", displayName);
-     if (m_authorityFile.isOpen()) {
-         qputenv("XAUTHORITY", m_authorityFile.fileName().toUtf8());
-+        qputenv("XAUTHLOCALHOSTNAME", m_hostname);
-     }
+ #pragma once
  
-     // create selection owner for WM_S0 - magic X display number expected by XWayland
-Index: kwin-5.17.80git.20210329T113728~72cc1daf2/src/xwl/xwayland.h
-===================================================================
---- kwin-5.17.80git.20210329T113728~72cc1daf2.orig/src/xwl/xwayland.h	2021-03-30 07:04:25.529356779 +0200
-+++ kwin-5.17.80git.20210329T113728~72cc1daf2/src/xwl/xwayland.h	2021-03-30 07:04:28.752150965 +0200
-@@ -113,6 +113,7 @@
-     QScopedPointer<KSelectionOwner> m_selectionOwner;
-     QTemporaryFile m_authorityFile;
-     QScopedPointer<XwaylandSocket> m_socket;
-+    QByteArray m_hostname;
-     int m_crashCount = 0;
++class QByteArray;
+ class QTemporaryFile;
  
-     Q_DISABLE_COPY(Xwayland)
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile);
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname);
+-- 
+2.32.0
+

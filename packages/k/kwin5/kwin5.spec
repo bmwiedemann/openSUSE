@@ -17,14 +17,14 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview).*
 
 %global kf5_version 5.54.0
 %global qt5_version 5.11.0
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.22.5
+Version:        5.23.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -47,6 +47,9 @@ Patch102:       0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
 Patch103:       0001-Bypass-wayland-interface-blacklisting.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Core-private-headers-devel >= 5.5.0
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.5.0
@@ -127,7 +130,7 @@ BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
 %if %{wayland}
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.62
-BuildRequires:  pkgconfig(libinput) >= 1.9
+BuildRequires:  pkgconfig(libinput) >= 1.14
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-egl)
 # Don't use pkgconfig here as that would cause unresolvables on 0.1 -> 0.2 -> 0.3 bumps
@@ -157,6 +160,7 @@ Recommends:     %{name}-lang
 # For displaying full monitor vendor names
 Recommends:     hwdata
 Provides:       qt5qmlimport(org.kde.kwin.2) = 0
+Provides:       qt5qmlimport(org.kde.kwin.3) = 0
 
 %description
 KWin is the window manager of the K desktop environment.
@@ -179,7 +183,11 @@ This package provides development files.
 %autosetup -p1 -n kwin-%{version}
 
 %build
+%if 0%{?suse_version} < 1550
+  export CXX=g++-10
+%endif
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+
   %cmake_build
 
 %install
@@ -244,11 +252,11 @@ This package provides development files.
 %{_kf5_plugindir}/kcms/kcm_virtualkeyboard.so
 %dir %{_kf5_plugindir}/kpackage/
 %dir %{_kf5_plugindir}/kpackage/packagestructure/
-%{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_aurorae.so
-%{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_decoration.so
-%{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_effect.so
-%{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_scripts.so
-%{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_windowswitcher.so
+%{_kf5_plugindir}/kpackage/packagestructure/kwin_aurorae.so
+%{_kf5_plugindir}/kpackage/packagestructure/kwin_decoration.so
+%{_kf5_plugindir}/kpackage/packagestructure/kwin_effect.so
+%{_kf5_plugindir}/kpackage/packagestructure/kwin_script.so
+%{_kf5_plugindir}/kpackage/packagestructure/kwin_windowswitcher.so
 %dir %{_kf5_plugindir}/kwin/
 %dir %{_kf5_plugindir}/kwin/effects/
 %dir %{_kf5_plugindir}/kwin/effects/configs/
@@ -261,12 +269,8 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/plugins/libKWinNightColorPlugin.so
 %{_kf5_plugindir}/kwin/effects/configs/kcm_kwin4_genericscripted.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_blur_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_coverswitch_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_cube_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_cubeslide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_desktopgrid_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_diminactive_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_flipswitch_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_glide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_invert_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_lookingglass_config.so
@@ -284,6 +288,7 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_windowgeometry_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_wobblywindows_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_zoom_config.so
+%{_kf5_plugindir}/kwin/effects/configs/kwin_overview_config.so
 %{_kf5_plugindir}/kwincompositing.so
 %dir %{_kf5_plugindir}/org.kde.kdecoration2/
 %{_kf5_plugindir}/org.kde.kdecoration2/kwin5_aurorae.so
@@ -292,7 +297,6 @@ This package provides development files.
 %dir %{_kf5_plugindir}/org.kde.kwin.scenes/
 %{_kf5_plugindir}/org.kde.kwin.scenes/KWinSceneOpenGL.so
 %{_kf5_plugindir}/org.kde.kwin.scenes/KWinSceneQPainter.so
-%{_kf5_plugindir}/org.kde.kwin.scenes/KWinSceneXRender.so
 %dir %{_kf5_plugindir}/org.kde.kwin.waylandbackends/
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandDrmBackend.so
 %{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandFbdevBackend.so
