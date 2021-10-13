@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:27:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Simplify drawBackground()
+  * Use theme colors for today's cell and the selected cell in the Month View
+  * CI: use stable-kf5-qt5 BRANCH_GROUP in stable branch
+  * Do not use "due today" color for completed to-dos in Agenda View (kde#122776)
+  * src/helper.cpp - fix crash in setResourceColor (kde#426906)
+  * Display multi-day holidays as one wide block in the Month View (kde#187116)
+  * Avoid vertical gaps around multi-day events in the month view (kde#435667)
+
+-------------------------------------------------------------------
 Wed Sep  1 12:37:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.1
