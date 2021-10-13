@@ -18,13 +18,13 @@
 
 %bcond_with git
 Name:           ristretto
-Version:        0.11.0
+Version:        0.12.0
 Release:        0lib
 Summary:        Image viewer for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://docs.xfce.org/apps/ristretto/start
-Source0:        https://archive.xfce.org/src/apps/ristretto/0.11/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/ristretto/0.12/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE ristretto-add-mime-types.patch gber@opensuse.org -- Adds support for additional image MIME types supported by openSUSE
 Patch0:         ristretto-add-mime-types.patch
 BuildRequires:  appstream-glib
@@ -76,7 +76,7 @@ NOCONFIGURE=1 ./autogen.sh
 %install
 %make_install
 
-%suse_update_desktop_file -i ristretto GTK Graphics Viewer
+%suse_update_desktop_file -i org.xfce.ristretto GTK Graphics Viewer
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -88,9 +88,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %license COPYING
 %doc AUTHORS NEWS
 %{_bindir}/ristretto
-%{_datadir}/applications/ristretto.desktop
+%{_datadir}/applications/org.xfce.ristretto.desktop
 %{_datadir}/icons/hicolor/*/apps/org.xfce.ristretto.*
-%{_datadir}/metainfo/ristretto.appdata.xml
+%{_datadir}/metainfo/org.xfce.ristretto.appdata.xml
 
 %files lang -f %{name}.lang
 

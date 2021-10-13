@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Oct 11 09:21:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.12.0
+  * Allow to choose the default scale (gxo#apps/ristretto!29)
+  * Keep the scale in memory for each loaded image
+    (gxo#apps/ristretto#7, gxo#apps/ristretto#17, gxo#apps/ristretto!28)
+  * Toggle fullscreen mode by double clicking on the image
+  * Optimize directory loading (gxo#apps/ristretto#20,
+    gxo#apps/ristretto#22, gxo#apps/ristretto#32, gxo#apps/ristretto#37,
+    gxo#apps/ristretto!31)
+  * Optimize image viewer redraw: Disable overlay scrolling
+    (gxo#apps/ristretto#64)
+  * Optimize image viewer redraw: Reuse source surface
+    (gxo#apps/ristretto#64, gxo#apps/ristretto!26)
+  * Avoid using Cairo Xlib backend to create surfaces
+    (gxo#apps/ristretto#60, gxo#apps/ristretto#61, gxo#apps/ristretto#62,
+    gxo#apps/ristretto!25)
+  * Optimize image viewer redraw: Animation (gxo#apps/ristretto#64)
+  * Optimize image viewer redraw: Background color (gxo#apps/ristretto#64)
+  * Optimize image viewer redraw: Clock (gxo#apps/ristretto#64)
+  * Optimize image viewer redraw: Selection box (gxo#apps/ristretto#64)
+  * Don't redraw the main window when it loses focus
+    (gxo#apps/ristretto#64)
+  * Remove the shadow of the toolbar buttons (gxo#apps/ristretto#51,
+    gxo#apps/ristretto#64)
+  * Hide thumbnail scrollbar when unused (gxo#apps/ristretto!24)
+  * Use the same background for the image and the thumbnails
+    (gxo#apps/ristretto#36, gxo#apps/ristretto!23)
+  * Drop preferences-desktop-default-applications icon
+  * Flatpak build (gxo#apps/ristretto!32)
+  * Refactoring: Use only one file filter for the app
+  * Refactoring: Icon bar adjustments
+  * Cleanup: `icon_bar.c`
+  * Cleanup: Pass orientation directly from file to viewer
+  * Code refactoring: Image viewer adjustments, scale and drawing
+    (gxo#apps/ristretto!27)
+  * Use integers for the image rendering rectangle
+  * Code cleanup: Build sanitation, obsolete code removal, spacing,
+    normalization (gxo#apps/ristretto!22)
+  * Transfer contents from dispose() to finalize()
+  * Add debugging macros
+  * Protect asynchronous jobs from an application exit
+  * Fix position of the active item in the icon bar when vertical
+    (gxo#apps/ristretto#34)
+  * Take into account the device scale (gxo#apps/ristretto#47,
+    gxo#apps/ristretto!30)
+  * Properly load images via drag and drop (gxo#apps/ristretto#67)
+  * Delay GdkPixbufLoader "closed" signal handler
+  * Use the same scale factor to zoom via action and scrolling
+  * Fix a lack of centering when zooming via the menu action
+  * Fix some memory leak (several commits of this kind)
+  * Fix file creation monitoring
+  * Try to display the image on `GDK_PIXBUF_ERROR_CORRUPT_IMAGE`
+    (gxo#apps/ristretto#39)
+  * Always set adjustment upper bounds greater than page sizes
+    (gxo#apps/ristretto#35)
+  * Scaling/zoom corrections (gxo#apps/ristretto#30, gxo#apps/ristretto!8)
+  * Fix animated GIF display
+  * Automate and sanitize memory management of sources
+    (gxo#apps/ristretto#65)
+  * Fix `rstto_icon_bar_rows_reordered()` (gxo#apps/ristretto#48)
+  * Chain up to parent in dispose() and finalize()
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jun 11 14:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.11.0
