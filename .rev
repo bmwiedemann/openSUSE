@@ -20593,4 +20593,11 @@
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="2943" vrev="2943">
+    <srcmd5>4186023f13f1f48beb29e87a56a2c39c</srcmd5>
+    <version>unknown</version>
+    <time>1634244412</time>
+    <user>dimstar_suse</user>
+    <comment>Local run of prod_converter</comment>
+  </revision>
 </revisionlist>
