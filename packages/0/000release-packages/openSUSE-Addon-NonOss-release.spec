@@ -20,6 +20,7 @@ Version:        20211013
 Release:        0
 License:        BSD-3-Clause
 Group:          System/Fhs
+%global debug_package %{nil}
 
 Provides:       %name-%version
 Provides:       product() = openSUSE-Addon-NonOss
