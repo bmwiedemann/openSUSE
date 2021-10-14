@@ -394,7 +394,6 @@
       <repopackage name="kpeople5" arch="x86_64"/>
       <repopackage name="kquickcharts" arch="x86_64"/>
       <repopackage name="krb5"/>
-      <repopackage name="kross" arch="x86_64"/>
       <repopackage name="kscreen5" arch="x86_64"/>
       <repopackage name="kscreenlocker" arch="x86_64"/>
       <repopackage name="kservice" arch="x86_64"/>
@@ -719,7 +718,7 @@
       <repopackage name="libjson-glib-1_0-0" arch="x86_64"/>
       <repopackage name="libkaccounts2" arch="x86_64"/>
       <repopackage name="libkdecorations2-5" arch="x86_64"/>
-      <repopackage name="libkdecorations2private8" arch="x86_64"/>
+      <repopackage name="libkdecorations2private9" arch="x86_64"/>
       <repopackage name="libkdsoap2" arch="x86_64"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libKF5Activities5" arch="x86_64"/>
@@ -950,7 +949,6 @@
       <repopackage name="libQt5PrintSupport5" arch="x86_64"/>
       <repopackage name="libQt5QuickControls2-5" arch="x86_64"/>
       <repopackage name="libQt5QuickTemplates2-5" arch="x86_64"/>
-      <repopackage name="libQt5Script5" arch="x86_64"/>
       <repopackage name="libQt5Sensors5" arch="x86_64"/>
       <repopackage name="libQt5Sql5" arch="x86_64"/>
       <repopackage name="libQt5Sql5-sqlite" arch="x86_64"/>
