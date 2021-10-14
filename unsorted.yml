@@ -3303,6 +3303,7 @@ unsorted:
   - epour 
   - epour-lang 
   - epplet-base 
+  - epy 
   - epymc: [x86_64] 
   - epymc-lang: [x86_64] 
   - equalx 
@@ -24187,6 +24188,7 @@ unsorted:
   - python36-zope.schema 
   - python36-zope.security 
   - python36-zope.testbrowser 
+  - python36-zope.testbrowser-test 
   - python36-zope.testing 
   - python36-zope.testrunner 
   - python36-zopfli 
@@ -27121,6 +27123,7 @@ unsorted:
   - python38-zope.proxy-devel 
   - python38-zope.security 
   - python38-zope.testbrowser 
+  - python38-zope.testbrowser-test 
   - python38-zope.testing 
   - python38-zope.testrunner 
   - python38-zopfli 
@@ -30257,6 +30260,7 @@ unsorted:
   - python39-zope.schema 
   - python39-zope.security 
   - python39-zope.testbrowser 
+  - python39-zope.testbrowser-test 
   - python39-zope.testing 
   - python39-zope.testrunner 
   - python39-zopfli 
