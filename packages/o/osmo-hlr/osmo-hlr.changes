@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 13:50:42 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-hlr.service.patch
+
+-------------------------------------------------------------------
 Sun Jan  5 11:38:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.2.0

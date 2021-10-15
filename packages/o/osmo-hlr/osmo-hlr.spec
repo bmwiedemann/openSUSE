@@ -25,6 +25,7 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://projects.osmocom.org/projects/osmo-hlr
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-hlr.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -79,6 +80,7 @@ applications that want to make use of libosmo-gsup-client.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version
