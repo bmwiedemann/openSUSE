@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-pyscss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,7 +83,8 @@ This app smooths over a lot of things when dealing with pyScss in Django. It
 
 %check
 # Tests crash python interpreter gh#Kronuz/pyScss#378 on python2
-%python_exec setup.py test -v
+export DJANGO_SETTINGS_MODULE=testproject.testproject.settings
+%python_exec -m django test -v 2
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 14 08:36:21 UTC 2021 - pgajdos@suse.com
+
+- %check: do not use setup.py test
+
+-------------------------------------------------------------------
 Tue Apr 28 09:53:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch django3.patch to fix building with Django 3.x
