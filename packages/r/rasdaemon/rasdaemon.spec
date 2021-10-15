@@ -51,7 +51,7 @@ an utility for reporting current error counts from the EDAC sysfs files.
 
 %build
 autoreconf -fvi
-%configure --enable-all --with-sysconfdefdir=%{_fillupdir}
+%configure --enable-all --with-sysconfdefdir=%{_sysconfdir}/sysconfig
 CFLAGS="%{optflags}" make %{?_smp_mflags} V=1
 
 %install
@@ -64,7 +64,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcras-mc-ctl
 rm INSTALL %{buildroot}/usr/include/*.h
 mkdir -p %{buildroot}%{_localstatedir}/lib/rasdaemon
 mkdir -p %{buildroot}%{_fillupdir}
-mv %{buildroot}%{_fillupdir}/rasdaemon %{buildroot}/%{_fillupdir}/sysconfig.rasdaemon
+mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sysconfig.rasdaemon
 
 %pre
 %service_add_pre rasdaemon.service ras-mc-ctl.service

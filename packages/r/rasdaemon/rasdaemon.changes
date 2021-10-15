@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 14 09:33:08 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fix systemd service file pointing to fillup file instead of
+  /etc/sysconfig/rasdaemon
+
+-------------------------------------------------------------------
 Tue Oct 12 13:36:44 UTC 2021 - trenn@suse.de
 
 - Add new /etc/sysconfig/rasdaemon config via fillup (bsc#1190668)

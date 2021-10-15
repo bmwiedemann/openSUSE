@@ -137,4 +137,13 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>924876</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>16e758bf08e9d07938cbbde83e81f3c9</srcmd5>
+    <version>0.6.7.18.git+7ccf12f</version>
+    <time>1634331825</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd service file pointing to fillup file instead of
+  /etc/sysconfig/rasdaemon</comment>
+    <requestid>925227</requestid>
+  </revision>
 </revisionlist>
