@@ -19,7 +19,7 @@
 %global pkg_name typed-process
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.6.1
+Version:        0.2.6.3
 Release:        0
 Summary:        Run external processes, with strong typing of streams
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  ghc-temporary-devel
 %endif
 
 %description
-Please see the tutorial at <https://haskell-lang.org/library/typed-process>.
+Please see the tutorial at <https://github.com/fpco/typed-process#readme>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
