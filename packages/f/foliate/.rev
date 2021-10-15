@@ -265,4 +265,12 @@
     <comment>- Fixed gjs dependency issue (boo#1187328). (forwarded request 900710 from qkzhu)</comment>
     <requestid>902741</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>14784e3f08354c68a050c423571b9345</srcmd5>
+    <version>2.6.3</version>
+    <time>1634331856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925419</requestid>
+  </revision>
 </revisionlist>

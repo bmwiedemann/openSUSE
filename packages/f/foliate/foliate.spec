@@ -16,7 +16,7 @@
 #
 
 
-%global __requires_exclude typelib\\(Handy\\) = 0.0
+%global __requires_exclude typelib(\\(Handy\\) = 0.0|\\(Tracker\\))
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
 Version:        2.6.3
