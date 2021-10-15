@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 13 20:03:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * Support Spear of Destiny mission packs and enhanced wolf3d
+    mod support
+  Game
+  * Remove mouse as game input device, better support for mouse
+    in menus #713
+  * Add support for Spear of Destiny mission packs
+  * Add enemy types being able to see all directions (wolf3d bosses)
+  * Add enemy types being able to open locked doors (wolf3d bosses)
+  * Fix holowall support for wolf3d mods
+  Editor
+  * Improve map preview by showing pickups obscured by walls
+
+-------------------------------------------------------------------
 Sat Sep 11 12:37:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.0
