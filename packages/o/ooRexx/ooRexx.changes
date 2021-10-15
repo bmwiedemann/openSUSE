@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 15 18:39:48 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
+
+- bsc#1191085: re-adding rc* service sbin links with macros.
+
+-------------------------------------------------------------------
+Sat Oct  9 16:14:31 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
+
+- bsc#1191085: removing rc* service sbin links for UsrMerge compatibility.
+
+-------------------------------------------------------------------
 Sat Jun  5 20:47:10 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Fixing build on latest tumbleweed by forcing C11 mode.

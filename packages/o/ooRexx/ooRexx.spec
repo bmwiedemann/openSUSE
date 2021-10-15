@@ -209,14 +209,12 @@ cd $RPM_BUILD_ROOT/%{_bindir}
 ln -sf %{_datadir}/ooRexx/rexxtry.rex .
 
 # Sort out systemd vs init depending on system version
-mkdir $RPM_BUILD_ROOT/sbin
 %if 0%{?suse_version} > 1230
 mkdir -p %{buildroot}%{_unitdir}
 install -D -m 444 %{buildroot}%{_datadir}/ooRexx/rxapid.service %{buildroot}%{_unitdir}/%{name}.service
 rm -f %{buildroot}%{_datadir}/ooRexx/rxapid.service
-ln -s /sbin/service $RPM_BUILD_ROOT/sbin/rc%{name}
 %else
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/init.d
+mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/init.d 
 ln -s %{_bindir}/rxapid $RPM_BUILD_ROOT/%{_sysconfdir}/init.d/rxapid
 ln -s /%{_sysconfdir}/init.d/rxapid $RPM_BUILD_ROOT/sbin/rcrxapid
 rm -f %{buildroot}%{_datadir}/ooRexx/rxapid.service
@@ -236,6 +234,13 @@ done
 # strangely, SLE11 requires a dummy file for the ghost-marked files(?)
 %if 0%{?suse_version} < 1230
 touch %{buildroot}%{_sysconfdir}/alternatives/{rexx,rexxc,rxqueue,rexx.1,rexxc.1,rxqueue.1,rxsubcom.1,oorexx-config.1}
+%endif
+
+mkdir -p %{buildroot}%{_sbindir}
+%if 0%{?suse_version} < 1550
+ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{name}
+%else
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %endif
 
 #******************************************************************************
@@ -315,11 +320,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %if 0%{?suse_version} > 1230
 %{_unitdir}/%{name}.service
-/sbin/rcooRexx
 %else
 %{_sysconfdir}/init.d/rxapid
 /sbin/rcrxapid
 %endif
+%{_sbindir}/rc%{name}
 
 #******************************************************************************
 

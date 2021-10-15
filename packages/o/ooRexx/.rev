@@ -186,4 +186,13 @@ Thus, the -fpermissive flag needs to be added.
 </comment>
     <requestid>897755</requestid>
   </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>3fb109d2251c4f4185cbed51d9f2658d</srcmd5>
+    <version>4.2.0</version>
+    <time>1634331804</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1191085: re-adding rc* service sbin links with macros.
+</comment>
+    <requestid>925540</requestid>
+  </revision>
 </revisionlist>
