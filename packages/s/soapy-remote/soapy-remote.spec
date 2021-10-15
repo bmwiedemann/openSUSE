@@ -17,7 +17,7 @@
 #
 
 
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
 
 Name:           soapy-remote
@@ -40,9 +40,25 @@ A Soapy module that supports remote devices within the Soapy API.
 %package -n %{soapy_modname}
 Summary:        Remote device support for Soapy SDR
 Group:          System/Libraries
+# soapysdr0.7-module-remote needs to be force dropped
+Conflicts:      soapysdr0.7-module-remote
+# Add 'Provides/Obsoletes' entries for future updates
+Provides:       soapy-remote-module = %{soapy_modver}
+Obsoletes:      soapy-remote-module < %{soapy_modver}
 
 %description -n %{soapy_modname}
 A Soapy module that supports remote devices within the Soapy API.
+
+%package server
+Summary:        Server for remote device support for Soapy SDR
+Group:          Productivity/Hamradio/Other
+# The server part was split, a 'Conflicts' line is also needed here.
+Conflicts:      soapysdr0.7-module-remote
+
+%description server
+A server that supports remote devices for the Soapy SDR. 
+This package is intended to run on the system the sdr device is
+connected to.
 
 %prep
 %setup -q -n SoapyRemote-%{name}-%{version}
@@ -53,17 +69,36 @@ make VERBOSE=1 %{?_smp_mflags}
 
 %install
 %cmake_install
-# FIXME: should be handled - disabled for now
-rm %{buildroot}//usr/lib/sysctl.d/SoapySDRServer.conf
-rm %{buildroot}//usr/lib/systemd/system/SoapySDRServer.service
+
+mkdir %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcSoapySDRServer
+
+%pre server
+%service_add_pre SoapySDRServer.service
+
+%post server
+%service_add_post SoapySDRServer.service
+
+%preun server
+%service_del_preun SoapySDRServer.service
+
+%postun server
+%service_del_postun SoapySDRServer.service
 
 %files -n %{soapy_modname}
 %license LICENSE_1_0.txt
 %doc Changelog.txt README.md
-%{_bindir}/SoapySDRServer
-%{_mandir}/man1/SoapySDRServer.1%{ext_man}
 %dir %{_libdir}/SoapySDR/
 %dir %{_libdir}/SoapySDR/modules%{soapy_modver}
 %{_libdir}/SoapySDR/modules%{soapy_modver}/libremoteSupport.so
+
+%files server
+%license LICENSE_1_0.txt
+%doc Changelog.txt README.md
+%{_bindir}/SoapySDRServer
+%{_sbindir}/rcSoapySDRServer
+%{_mandir}/man1/SoapySDRServer.1%{ext_man}
+%{_prefix}/lib/sysctl.d/SoapySDRServer.conf
+%{_unitdir}/SoapySDRServer.service
 
 %changelog

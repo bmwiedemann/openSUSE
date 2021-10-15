@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 13 11:30:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Also make sure soapy-remote-server replaces
+  soapysdr0.7-module-remote.
+
+-------------------------------------------------------------------
+Tue Oct 12 11:42:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix installation conflicts with soapysdr0.7-module-remote.
+- Add Provides/Obsoletes to avoid issues with future updates.
+
+-------------------------------------------------------------------
+Thu Jul 22 14:32:06 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- New package soapysdr-remote-server splitted off.
+- Systemd files installed as a part of server package.
+
+-------------------------------------------------------------------
+Tue Jul  6 12:03:12 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- SoapySDR version bumped to 0.8
+
+-------------------------------------------------------------------
 Tue Feb 23 19:11:36 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.5.2
