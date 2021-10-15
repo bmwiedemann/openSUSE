@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 14 07:03:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.0.7
+  * Version 4.0.7 (released 2021-09-08)
+   ** Bugfix release: Fix broken naming for "YubiKey 4", and a small OATH issue with
+      touch Steam credentials.
+  * Version 4.0.6 (released 2021-09-08)
+   ** Improve handling of YubiKey device reboots.
+   ** More consistently mask PIN/password input in prompts.
+   ** Support switching mode over CCID for YubiKey Edge.
+   ** Run pkill from PATH instead of fixed location.
+  * Version 4.0.5 (released 2021-07-16)
+   ** Bugfix: Fix PIV feature detection for some YubiKey NEO versions.
+   ** Bugfix: Fix argument short form for --period when adding TOTP credentials.
+   ** Bugfix: More strict validation for some arguments, resulting in better error messages.
+   ** Bugfix: Correctly handle TOTP credentials using period != 30 AND touch_required.
+   ** Bugfix: Fix prompting for access code in the otp settings command (now uses "-A -").
+
+-------------------------------------------------------------------
 Tue May 18 18:39:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.3
