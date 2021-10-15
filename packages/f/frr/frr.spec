@@ -32,7 +32,7 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        7.5.1
+Version:        8.0.1
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,7 +42,7 @@ URL:            https://www.frrouting.org
 Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
 Patch1:         0001-disable-zmq-test.patch
-Patch2:	harden_frr.service.patch
+Patch2:         harden_frr.service.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -51,7 +51,6 @@ BuildRequires:  automake
 BuildRequires:  bison >= 2.7
 BuildRequires:  flex
 BuildRequires:  libtool
-BuildRequires:  libyang-extentions
 BuildRequires:  makeinfo
 %if %{with mininet}
 BuildRequires:  mininet
@@ -69,10 +68,11 @@ BuildRequires:  pkgconfig(grpc)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libyang) >= 1.0.184
+BuildRequires:  pkgconfig(libyang) >= 2.0.0
 BuildRequires:  pkgconfig(libzmq) >= 4.0.0
 BuildRequires:  pkgconfig(rtrlib) >= 0.5.0
 BuildRequires:  pkgconfig(sqlite3)
@@ -84,7 +84,6 @@ Recommends:     logrotate
 Conflicts:      quagga
 Provides:       zebra = %{version}
 Obsoletes:      zebra < %{version}
-Requires:       libyang-extentions
 
 %description
 FRR is free software which manages TCP/IP based routing protocols.
@@ -192,7 +191,6 @@ export CFLAGS="-ffat-lto-objects"
 autoreconf -fiv
 %configure \
     --disable-silent-rules \
-    --enable-exampledir=%{_docdir}/%{name}/examples \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --localstatedir=%{frr_statedir} \
     --sbindir=%{frr_daemondir} \
@@ -351,7 +349,6 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %license COPYING COPYING-LGPLv2.1
 %doc README.md
 %doc doc/mpls
-%doc %{_docdir}/%{name}/examples
 %dir %attr(750,%{frr_user},%{frr_user}) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/[!v]*.conf*
 %config(noreplace) %attr(640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
@@ -387,6 +384,7 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{frr_daemondir}/nhrpd
 %{frr_daemondir}/ospf6d
 %{frr_daemondir}/ospfd
+%{frr_daemondir}/pathd
 %{frr_daemondir}/pbrd
 %{frr_daemondir}/pimd
 %{frr_daemondir}/ripd
@@ -401,6 +399,7 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{_libdir}/frr/modules/zebra_cumulus_mlag.so
 %{_libdir}/frr/modules/zebra_fpm.so
 %{_libdir}/frr/modules/zebra_irdp.so
+%{_libdir}/frr/modules/pathd_pcep.so
 %{_libdir}/frr/modules/bgpd_rpki.so
 %if %{with grpc}
 %{_libdir}/frr/modules/grpc.so
@@ -448,6 +447,8 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{_includedir}/%{name}/ospfapi/*.h
 %dir %{_includedir}/%{name}/eigrpd
 %{_includedir}/%{name}/eigrpd/*.h
+%dir %{_includedir}/%{name}/bfdd
+%{_includedir}/%{name}/bfdd/*.h
 %{_libdir}/lib*.so
 
 %changelog
