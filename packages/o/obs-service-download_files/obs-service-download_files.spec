@@ -1,5 +1,5 @@
 #
-# spec file for package obs-service-download_files
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,28 +16,35 @@
 #
 
 
-#
+%define service download_files
 %if 0%{?fedora} || 0%{?rhel}
 %define build_pkg_name obs-build
 %else
 %define build_pkg_name build
 %endif
-
-%define service download_files
 Name:           obs-service-%{service}
-Version:        0.7.2
+Version:        0.9.1
 Release:        0
 Summary:        An OBS source service: download files
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{build_pkg_name}
+BuildRequires:  bzip2
+BuildRequires:  tar
+BuildRequires:  (curl or curl-minimal)
+BuildRequires:  perl(File::Type)
+BuildRequires:  perl(FindBin)
+BuildRequires:  perl(HTTP::Server::Simple)
+BuildRequires:  perl(Path::Class)
+# provides: /usr/bin/prove
+BuildRequires:  perl(Test::Harness)
+BuildRequires:  perl(Test::More)
 Requires:       %{build_pkg_name} >= 2012.08.24
 Requires:       curl
 Requires:       diffutils
 # for appimage parser:
 Requires:       perl(YAML::XS)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -46,16 +53,18 @@ This is a source service for openSUSE Build Service.
 This service is parsing all spec files and downloads all Source files which are specified via a http, https or ftp url.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-perl -p -i -e "s{#!/usr/bin/env bash}{#!/bin/bash}" download_files
+perl -p -i -e "s{#!%{_bindir}/env bash}{#!/bin/bash}" download_files
 
 %install
-%makeinstall
+%make_install
+
+%check
+%make_build test
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %dir %{_prefix}/lib/obs
 %{_prefix}/lib/obs/service

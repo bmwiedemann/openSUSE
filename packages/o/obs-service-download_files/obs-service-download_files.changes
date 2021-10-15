@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 13 14:42:29 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.9.1:
+  * supporting alternative local filenames in spec and PKGBUILD
+  * Download files only on the "last" *.spec files
+  * fixes for silent download
+
+-------------------------------------------------------------------
+Tue Aug 24 13:14:05 UTC 2021 - dcermak@suse.com
+
+- Update to version 0.8.0:
+  * updated debian control and changelog
+  * added debian.dsc
+  * added 'make test' to spec file
+  * fix '--recompress'
+  * fix test suite
+  * added KankuFile
+  * added section 'clean' to Makefile
+
+-------------------------------------------------------------------
 Tue Apr 27 12:37:54 UTC 2021 - adrian@suse.de
 
 - Update to version 0.7.2:

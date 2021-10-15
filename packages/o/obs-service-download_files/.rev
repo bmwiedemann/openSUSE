@@ -244,4 +244,24 @@ error masked by || : (forwarded request 141981 from dimstar)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>890361</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3dc53452d8a69f587361aef579d69836</srcmd5>
+    <version>0.9.1</version>
+    <time>1634331832</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.1:
+  * supporting alternative local filenames in spec and PKGBUILD
+  * Download files only on the &quot;last&quot; *.spec files
+  * fixes for silent download
+
+- Update to version 0.8.0:
+  * updated debian control and changelog
+  * added debian.dsc
+  * added 'make test' to spec file
+  * fix '--recompress'
+  * fix test suite
+  * added KankuFile
+  * added section 'clean' to Makefile</comment>
+    <requestid>925241</requestid>
+  </revision>
 </revisionlist>

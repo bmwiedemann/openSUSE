@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-download-files
-Version: 0.7.2-0
+Version: 0.9.1-0
 Binary: obs-service-download-files
 Maintainer: Hib Eris <hib@hiberis.nl>
 Architecture: all
@@ -11,4 +11,4 @@ Build-Depends: debhelper (>= 7),
  libfile-type-perl, 
  libcgi-pm-perl,  
  build | obs-build, 
- wget,
+ curl,
