@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 15 18:03:55 UTC 2021 - Matthias Bach <marix@marix.org> - 1.6.1
+
+- Update to 1.6.1
+  * New is_emoji function
+  * Allow multiple aliases
+  * Fix unicode of some emoji in the langauge files
+
+-------------------------------------------------------------------
 Sat Sep 18 10:19:22 UTC 2021 - Matthias Bach <marix@marix.org> - 1.5.0
 
 - Update to 1.5.0
