@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  8 13:44:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- testsuite.sh: avoid reuse of existing directory or symlink from other users
+  to prevent potential security issues (bsc#1182861)
+
+-------------------------------------------------------------------
 Thu Aug  5 07:28:21 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Build using ruby 3.0 on Tumbleweed

@@ -17,7 +17,14 @@ function cleanup {
 
 trap cleanup EXIT
 
-mkdir -p /tmp/reverse_mount_etc
+mkdir /tmp/reverse_mount_etc 2>/dev/null
+if [ $? -ne 0 ]; then
+    OWNER=$(stat -c '%U' /tmp/reverse_mount_etc)
+    if [ "$OWNER" != "$USER" ]; then
+        echo "/tmp/reverse_mount_etc already exists and is owned by a different user. refusing to continue" 1>&2
+        exit 1
+    fi
+fi
 
 mkdir other_machine && pushd other_machine
 vagrant init "opensuse/Tumbleweed.$(uname -m)"
