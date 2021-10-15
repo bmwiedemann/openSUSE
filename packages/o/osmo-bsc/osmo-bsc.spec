@@ -28,6 +28,7 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/openbsc/wiki/Osmo-bsc
 Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-handorer.h-Fix-compilation-with-gcc-10.patch
+Patch1:	harden_osmo-bsc.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
@@ -90,6 +91,7 @@ This package contains utilities for handling OsmoBSC's measurement reports
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 echo "%{version}" >.tarball-version
