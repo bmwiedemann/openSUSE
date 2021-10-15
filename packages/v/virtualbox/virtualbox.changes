@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:03:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Use kernel_module_directory macro for kernel modules (boo#1191526)
+
+-------------------------------------------------------------------
 Tue Oct  5 15:46:41 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix ldconfig invocation in scriptlets

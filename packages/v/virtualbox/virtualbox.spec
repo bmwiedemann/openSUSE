@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virtualbox
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,6 +24,9 @@
 %define dash -
 %define package_summary Kernel modules for VirtualBox
 %define package_group System/Kernel
+%if %{undefined kernel_module_directory}
+%define kernel_module_directory /lib/modules
+%endif
 %else
 ### macros for virtualbox main package ###
 %define main_package 1
