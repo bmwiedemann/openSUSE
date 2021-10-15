@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:05:09 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_ratbagd.service.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 18:40:51 UTC 2021 - marix@marix.org - 0.16
 
 - Update to version 0.16:

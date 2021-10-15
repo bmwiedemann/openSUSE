@@ -27,6 +27,7 @@ URL:            https://github.com/libratbag/libratbag
 Source:         %{name}-%{version}.tar.xz
 Patch1:         shebang-env.diff
 Patch2:         install-daemon-into-sbindir.patch
+Patch3:         harden_ratbagd.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  json-glib-devel
@@ -101,6 +102,7 @@ mice.
 %prep
 %setup -q
 %patch -P 1 -P 2 -p1
+%patch3 -p1
 
 %build
 %meson -Ddocumentation=false -Ddbus-group=games \
