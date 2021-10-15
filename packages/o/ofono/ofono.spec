@@ -28,6 +28,7 @@ URL:            https://01.org/ofono
 Source0:        https://www.kernel.org/pub/linux/network/ofono/%{name}-%{version}.tar.xz
 Source1:        https://www.kernel.org/pub/linux/network/ofono/sha256sums.asc#/%{name}-%{version}.tar.xz.sig
 Source2:        http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x589DA6B1#/ofono.keyring
+Patch0:	harden_ofono.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bluez) >= 4.85
 BuildRequires:  pkgconfig(dbus-1)
@@ -71,6 +72,7 @@ Scripts for testing oFono and its functionality.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
