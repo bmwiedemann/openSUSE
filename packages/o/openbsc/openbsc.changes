@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:04:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-bsc-mgcp.service.patch
+  * harden_osmo-nitb.service.patch
+
+-------------------------------------------------------------------
 Sun Mar 14 21:34:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0

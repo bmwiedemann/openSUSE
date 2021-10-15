@@ -26,6 +26,8 @@ License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND 
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/openbsc/wiki/OpenBSC
 Source:         https://github.com/osmocom/openbsc/archive/%version.tar.gz
+Patch0:	harden_osmo-bsc-mgcp.service.patch
+Patch1:	harden_osmo-nitb.service.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libdbi-drivers-dbd-sqlite3
