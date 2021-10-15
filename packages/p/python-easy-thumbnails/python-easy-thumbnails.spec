@@ -1,7 +1,7 @@
 #
 # spec file for package python-easy-thumbnails
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,10 @@ dos2unix README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# this runs 119 tests, which pyunittest or pytest won't make
+export DJANGO_SETTINGS_MODULE='easy_thumbnails.tests.settings'
+export PYTHONPATH=${PWD}
+%python_exec -m django test -v 2
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
