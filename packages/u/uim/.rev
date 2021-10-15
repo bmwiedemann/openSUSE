@@ -414,4 +414,12 @@ remove Provides: locale(*:ja) to slim down</comment>
     <comment></comment>
     <requestid>854901</requestid>
   </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>af32e509b0760585bb63e03a2a112cd6</srcmd5>
+    <version>1.8.8</version>
+    <time>1634331825</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct quotation of the anonymous function &quot;(lambda)&quot;</comment>
+    <requestid>925222</requestid>
+  </revision>
 </revisionlist>

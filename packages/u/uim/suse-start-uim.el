@@ -10,6 +10,6 @@ displayed at the echo area.")
 
 ;; don't load uim-leim immediately, see 
 ;; http://bugzilla.novell.com/show_bug.cgi?id=436245
-(add-hook 'emacs-startup-hook '(lambda () (load "uim-el/uim-leim" nil t)))
+(add-hook 'emacs-startup-hook #'(lambda () (load "uim-el/uim-leim" nil t)))
 
-;; /usr/share/emacs/site-lisp/suse-start-uim-el.el ends here
+;; /usr/share/emacs/site-lisp/suse-start-uim.el ends here

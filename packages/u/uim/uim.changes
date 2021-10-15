@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 14 09:48:06 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Correct quotation of the anonymous function "(lambda)"
+
+-------------------------------------------------------------------
 Thu Dec 10 13:35:33 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the qt4 subpackage for Leap 15.3 or newer
