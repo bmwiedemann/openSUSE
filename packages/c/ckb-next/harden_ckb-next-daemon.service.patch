@@ -2,7 +2,7 @@ Index: ckb-next-0.4.4/linux/systemd/ckb-next-daemon.service.in
 ===================================================================
 --- ckb-next-0.4.4.orig/linux/systemd/ckb-next-daemon.service.in
 +++ ckb-next-0.4.4/linux/systemd/ckb-next-daemon.service.in
-@@ -5,6 +5,20 @@
+@@ -5,6 +5,19 @@
  Description=Corsair Keyboards and Mice Daemon
  
  [Service]
@@ -11,7 +11,6 @@ Index: ckb-next-0.4.4/linux/systemd/ckb-next-daemon.service.in
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +# Fixes https://github.com/ckb-next/ckb-next/issues/740
 +DeviceAllow=char-usb_device rw
 +DeviceAllow=/dev/uinput rw
