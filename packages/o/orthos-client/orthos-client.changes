@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 15 08:48:07 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.135+git.c802577:
+  * Add missing import in client
+
+-------------------------------------------------------------------
+Fri Oct 15 07:21:55 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.133+git.66567a6:
+  * Tiny fixups
+  * Show logged in user in command prompt
+  * Do not enforce username, token is enough
+  * Introduce new client parameter: -c/--config to pass an addtional orthosrc config file
+  * Move user orthosrc file to ~/.config/orthosrc
+
+-------------------------------------------------------------------
+Tue Oct 12 20:36:55 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.116+git.68f5ece:
+  * Move user orthosrc file to ~/.config/orthosrc
+  * Add manpage generated in orthos2 server package via Source1: tag
+
+-------------------------------------------------------------------
 Thu Oct 07 15:40:37 UTC 2021 - trenn@suse.de
 
 - Update to version 1.0.102+git.a6bbc34:

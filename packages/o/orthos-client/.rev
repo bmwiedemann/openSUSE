@@ -7,4 +7,24 @@
     <comment>Initial package submission</comment>
     <requestid>924045</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01ad636729edb0818c1229174a7ade72</srcmd5>
+    <version>1.0.135+git.c802577</version>
+    <time>1634331851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.135+git.c802577:
+  * Add missing import in client
+
+- Update to version 1.0.133+git.66567a6:
+  * Tiny fixups
+  * Show logged in user in command prompt
+  * Do not enforce username, token is enough
+  * Introduce new client parameter: -c/--config to pass an addtional orthosrc config file
+  * Move user orthosrc file to ~/.config/orthosrc
+
+- Update to version 1.0.116+git.68f5ece:
+  * Move user orthosrc file to ~/.config/orthosrc
+  * Add manpage generated in orthos2 server package via Source1: tag</comment>
+    <requestid>925388</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,14 @@
 
 
 Name:           orthos-client
-Version:        1.0.102+git.a6bbc34
+Version:        1.0.135+git.c802577
 Release:        0
 Summary:        Command line client for orthos2
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Boot/Servers
 URL:            https://github.com/openSUSE/orthos2
 Source:         orthos2-%{version}.tar.gz
+Source1:        orthos2.1
 Requires:       python3-base
 Requires:       python3-pytz
 BuildArch:      noarch
@@ -40,11 +41,13 @@ line interface based on readline.
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/%{_mandir}/man1
 
 install orthos2 %{buildroot}/%{_bindir}/orthos2
-
+install -m 644 %{S:1} %{buildroot}/%{_mandir}/man1/orthos.1
 
 %files
 %attr(755, root, root) %{_bindir}/orthos2
+%{_mandir}/man1/orthos.1%{?ext_man}
 
 %changelog
