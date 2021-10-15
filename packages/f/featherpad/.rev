@@ -392,4 +392,16 @@
   * Bumped the version to 1.0.0</comment>
     <requestid>915448</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b9b8676b6d919aa512c68bfcb30b01a2</srcmd5>
+    <version>1.0.1</version>
+    <time>1634331856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Fixed the detection of UTF-16 in special cases.
+  * Fixed tab detaching when the window is closed with its last tab.
+  * Don't try to restore window position under Wayland.
+  * Better inertial scrolling with touchpad and sensitive devices.</comment>
+    <requestid>925412</requestid>
+  </revision>
 </revisionlist>

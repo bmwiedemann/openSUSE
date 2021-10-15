@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 15 10:59:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.1:
+  * Fixed the detection of UTF-16 in special cases.
+  * Fixed tab detaching when the window is closed with its last tab.
+  * Don't try to restore window position under Wayland.
+  * Better inertial scrolling with touchpad and sensitive devices.
+
+-------------------------------------------------------------------
 Wed Sep  1 10:14:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
