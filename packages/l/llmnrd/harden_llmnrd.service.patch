@@ -2,7 +2,7 @@ Index: llmnrd-0.7/etc/llmnrd.service
 ===================================================================
 --- llmnrd-0.7.orig/etc/llmnrd.service
 +++ llmnrd-0.7/etc/llmnrd.service
-@@ -3,6 +3,18 @@ Description=Link-Local Multicast Name Re
+@@ -3,6 +3,17 @@ Description=Link-Local Multicast Name Re
  After=network.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: llmnrd-0.7/etc/llmnrd.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
