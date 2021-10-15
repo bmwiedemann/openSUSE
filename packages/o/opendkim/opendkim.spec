@@ -50,6 +50,10 @@ Source5:        opendkim.init
 Patch0:         opendkim-2.9.2_compiler_warnings.patch
 # PATCH-FIX-OPENSUSE set default values in installed configuration file
 Patch1:         %{name}-default_config.patch
+# PATCH-FIX-UPSTREAM LIBOPENDKIM: Confirm that the value of "d=" is properly formed.
+Patch2:         cve-2020-12272.patch
+# PATCH-FIX-UPSTREAM  Plug memory leak in Unbound callback function https://github.com/trusteddomainproject/OpenDKIM/pull/57/commits/0010ca7150b09c3c259c17bdd9431a8bfe39e299
+Patch3:         unbound-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -151,7 +155,9 @@ This package provides the shared library librepute which
 performs REPUTE queries for spammy domains.
 
 
+
 # Maybe change name (there is already an other libut...)
+
 %package -n libut%{sover_ut}
 Summary:        Library for assisting in URI construction from templates
 License:        BSD-3-Clause
@@ -208,6 +214,8 @@ This package holds the development files.
 %setup -q -n %{upname}-%{full_version}
 %patch0 -p1
 %patch1
+%patch2 -p1
+%patch3 -p0
 
 %build
 autoreconf -iv

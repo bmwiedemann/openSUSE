@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 14 11:22:08 UTC 2021 - Togan Muftuoglu <toganm@opensuse.org>
+
+- Add cve-2020-12272.patch (CVE-2020-12272)
+  * Confirm that the value of "d=" is properly formed, fixed
+    upstream in commit 14d54524e0a97d3fe9b80441907d7e356c9ded04
+- Add unbound-fix.patch
+  * Plug memory leak in Unbound callback
+    https://github.com/trusteddomainproject/OpenDKIM/pull/57
+
+-------------------------------------------------------------------
 Tue Jul  6 21:16:59 UTC 2021 - Christian Wittmer <chris@computersalat.de>
 
 - add opendkim to Group unbound to be able to read TrustAnchorFile
