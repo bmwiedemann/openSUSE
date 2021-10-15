@@ -17,7 +17,7 @@
 #
 
 
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
 
 Name:           soapy-uhd
@@ -48,6 +48,11 @@ A UHD module that supports Soapy devices within the UHD API.
 %package -n %{soapy_modname}
 Summary:        Soapy SDR plugins for UHD supported SDR devices
 Group:          System/Libraries
+# soapysdr0.7-module-uhd needs to be force dropped
+Conflicts:      soapysdr0.7-module-uhd
+# Add 'Provides/Obsoletes' entries for future updates
+Provides:       soapy-uhd-module = %{soapy_modver}
+Obsoletes:      soapy-uhd-module < %{soapy_modver}
 
 %description -n %{soapy_modname}
 Soapy UHD - Soapy SDR devices for UHD.
