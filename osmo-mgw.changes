@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 13:54:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-mgw.service.patch
+
+-------------------------------------------------------------------
 Sat Jan  4 18:01:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.7.0:

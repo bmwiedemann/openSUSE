@@ -26,6 +26,7 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmo-mgw
 Source:         %{name}-%{version}.tar.xz
 Patch0:         fix-build.patch
+Patch1:	harden_osmo-mgw.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
@@ -71,6 +72,7 @@ applications that want to make use of libosmo-mgcp.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 echo "%{version}" >.tarball-version
