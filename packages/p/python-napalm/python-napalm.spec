@@ -35,6 +35,8 @@ Requires:       python-cffi >= 1.11.3
 Requires:       python-ciscoconfparse
 Requires:       python-future
 Requires:       python-junos-eznc >= 2.2.1
+Requires:       python-lxml >= 4.3.0
+Requires:       python-ncclient
 Requires:       python-netaddr
 Requires:       python-netmiko >= 3.1.0
 Requires:       python-paramiko >= 2.6.0
@@ -43,6 +45,7 @@ Requires:       python-requests >= 2.7.0
 Requires:       python-scp
 Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
+Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -54,17 +57,20 @@ BuildRequires:  %{python_module ciscoconfparse}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module junos-eznc >= 2.2.1}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module lxml >= 4.3.0}
+BuildRequires:  %{python_module mock >= 4.0.3}
+BuildRequires:  %{python_module ncclient}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module netmiko >= 3.1.0}
 BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 5.4.3}
 BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module scp}
 BuildRequires:  %{python_module selectors2 >= 2.0.1}
 BuildRequires:  %{python_module setuptools >= 38.4.0}
 BuildRequires:  %{python_module textfsm}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %python_subpackages
 
