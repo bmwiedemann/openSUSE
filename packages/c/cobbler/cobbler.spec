@@ -118,7 +118,9 @@
 %define grub2_x64_efi_pkg grub2-efi-x64
 %define grub2_ia32_efi_pkg grub2-efi-ia32
 %define system_release_pkg system-release
+%if 0%{?fedora}
 %define py3_module_file python%{python3_pkgversion}-file-magic
+%endif
 #endif FEDORA
 %endif
 
@@ -143,7 +145,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.2.1.336+git.5639a3af
+Version:        3.3.0.50+git.c1d81950
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/

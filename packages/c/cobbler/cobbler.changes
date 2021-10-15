@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 14 13:06:42 UTC 2021 - trenn@suse.de
+
+- Update to version 3.3.0.50+git.c1d81950:
+  * Add support for Windows 11
+  * Do not warn users about missing files during removal
+  * Collections: Simplify the duplication checks
+  * mkloaders: Add checks for required components
+  * mkgrub: Rename file and class to mkloaders
+  * mkgrub: Use grub subdirectory for storing binary executables
+  * Downgrade info to debug message when loading systems
+  * Show startup time in seconds if python3-psutil is installed
+  * Use newly introduce per item serializer on parent/profile addings
+  * Remove check_for_duplicate_netinfo parameter checking, this is done in interface setter now
+  * Introduce new serialize_one_item function
+  * Exclude ourselves from duplicate checks for ip/mac/dns duplicates
+  * mkgrub: Improve bootloader building process
+  * mkgrub: Apply opinionated formatting
+  * Fix defaults and path to the ipxe files
+  * Version bump to V3.3.1
+  * Remove not existent check for disabled spacewalk registration
+  * Security: Flag gate for modify_setting in XMLRPC
+  * Safeguard XMLRPC against rce
+  * Ease up condition checking and do not add interfaces to dhcp6 without ipv6 address
+  * MAC address should already be properly formatted
+  * Write message that initrd has successfully been loaded
+  * Set default menu if netboot is enabled
+  * Use the grub formatted tftp URL in for loading kernel/initrd remotely
+
+-------------------------------------------------------------------
 Sun Sep 19 18:19:37 UTC 2021 - trenn@suse.de
 
 - Update to version 3.2.1.336+git.5639a3af:
