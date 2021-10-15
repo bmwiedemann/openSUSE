@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:30:07 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- rem2html is included, cleanup of specfile
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 9 - 2021-10-14
+
+- NEW FEATURE: Add "-+username" option to tell Remind to trust files owned by
+  "username" and allow RUN directives in them.  Idea courtesy of Ian! D. Allen
+
+- NEW FEATURE: Add "-u+username" variant to tell Remind to switch users to
+  "username" without disabling RUN directives.  Idea courtesy of Ian! D. Allen
+
+- CHANGE: rem2html: rem2html has been moved out of the www/ directory into
+  its own rem2html/ directory.  If your system has the prerequisites
+  (namely Perl, Getopt::Long and JSON::Any) then rem2html will be installed
+  by "make install".
+
+- CHANGE: Remove "cm2rem".  It was about 20 years obsolete.
+
+- CHANGE: rem2html: Use inline data: URL images for moon images by default,
+  thus producing a completely stand-alone HTML file.
+
+- CHANGE: Remove unnecessary spaces from "remind -pp" JSON output.
+
+- DOCUMENTATION FIX: Various man page fixes and tweaks.
+
+- BUG FIX: rem2html: Tweak the default CSS stylesheet; more rational
+  handling of rem2html command-line options.
+
+- BUG FIX: remind: "remind -c" would sometimes highlight *two* days as
+  "today"; this has been fixed.
+
+- BUG FIX: Add a missing #ifdef...#endif and remove a C99-ism.  This once again
+  allows Remind to be compiled with some very old C compilers.
+
+-------------------------------------------------------------------
 Tue Sep 14 06:33:59 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES TO REMIND

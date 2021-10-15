@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        3.3.8
+Version:        3.3.9
 Release:        0
-%define tar_version 03.03.08
+%define tar_version 03.03.09
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -27,8 +27,13 @@ URL:            http://www.roaringpenguin.com/products/remind
 Source0:        %{name}-%{tar_version}.tar.gz
 Source100:      %{name}-%{version}-rpmlintrc
 Patch0:         remind-nostrip.patch
+BuildRequires:  perl
+BuildRequires:  perl-Getopt-Long-Descriptive
+BuildRequires:  perl-JSON-Any
+Requires:       perl
+Requires:       perl-Getopt-Long-Descriptive
+Requires:       perl-JSON-Any
 Requires:       tcllib
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Remind is a sophisticated calendar and alarm program.
@@ -57,21 +62,17 @@ make DESTDIR=%{buildroot} install
 ##%%check
 ##make test
 
-%clean
-rm -rf %{buildroot}
-
 %files
 %defattr(-,root,root,-)
-%doc %{_mandir}/man1/cm2rem.1%{ext_man}
 %doc %{_mandir}/man1/rem.1%{ext_man}
 %doc %{_mandir}/man1/rem2ps.1%{ext_man}
 %doc %{_mandir}/man1/remind.1%{ext_man}
 %doc %{_mandir}/man1/tkremind.1%{ext_man}
 
-%attr(0755,root,root) %{_bindir}/cm2rem.tcl
-%attr(0755,root,root) %{_bindir}/rem
+%{_bindir}/rem
 %attr(0755,root,root) %{_bindir}/rem2ps
 %attr(0755,root,root) %{_bindir}/remind
 %attr(0755,root,root) %{_bindir}/tkremind
+%attr(0755,root,root) %{_bindir}/rem2html
 
 %changelog

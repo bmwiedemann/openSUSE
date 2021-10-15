@@ -226,4 +226,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>920527</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>288d4fda6cc9aac6a0658185a5d02a1b</srcmd5>
+    <version>3.3.9</version>
+    <time>1634331847</time>
+    <user>dimstar_suse</user>
+    <comment>- rem2html is included, cleanup of specfile
+- CHANGES TO REMIND
+* VERSION 3.3 Patch 9 - 2021-10-14
+- NEW FEATURE: Add &quot;-+username&quot; option to tell Remind to trust files owned by
+  &quot;username&quot; and allow RUN directives in them.  Idea courtesy of Ian! D. Allen
+- NEW FEATURE: Add &quot;-u+username&quot; variant to tell Remind to switch users to
+  &quot;username&quot; without disabling RUN directives.  Idea courtesy of Ian! D. Allen
+- CHANGE: rem2html: rem2html has been moved out of the www/ directory into
+  its own rem2html/ directory.  If your system has the prerequisites
+  (namely Perl, Getopt::Long and JSON::Any) then rem2html will be installed
+  by &quot;make install&quot;.
+- CHANGE: Remove &quot;cm2rem&quot;.  It was about 20 years obsolete.
+- CHANGE: rem2html: Use inline data: URL images for moon images by default,
+  thus producing a completely stand-alone HTML file.
+- CHANGE: Remove unnecessary spaces from &quot;remind -pp&quot; JSON output.
+- DOCUMENTATION FIX: Various man page fixes and tweaks.
+- BUG FIX: rem2html: Tweak the default CSS stylesheet; more rational
+  handling of rem2html command-line options.
+- BUG FIX: remind: &quot;remind -c&quot; would sometimes highlight *two* days as
+  &quot;today&quot;; this has been fixed.
+- BUG FIX: Add a missing #ifdef...#endif and remove a C99-ism.  This once again
+  allows Remind to be compiled with some very old C compilers.</comment>
+    <requestid>925380</requestid>
+  </revision>
 </revisionlist>
