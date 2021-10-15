@@ -23,6 +23,8 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://openbsc.osmocom.org
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-pcap-client.service.patch
+Patch1:	harden_osmo-pcap-server.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.6
 BuildRequires:  libpcap-devel
@@ -41,6 +43,8 @@ Run osmo_pcap_client locally and send traces to a different system.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 echo "%{version}" >.tarball-version
