@@ -25,6 +25,7 @@ Summary:        A simple font management application for Gtk+ Desktop Environmen
 License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io/
 Source0:        https://github.com/FontManager/%{name}/archive/refs/tags/%{version}.tar.gz
+Patch0:         font-manager-fix-gcc11-compilation.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  meson

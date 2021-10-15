@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 11:53:32 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Add font-manager-fix-gcc11-compilation.patch
+  * Add (skip) annotation to fsType_to_string
+
+-------------------------------------------------------------------
 Thu Jul 29 09:58:25 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Update to 0.8.7
