@@ -26,6 +26,7 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmohnbgw/wiki
 
 Source:         https://github.com/osmocom/osmo-iuh/archive/%version.tar.gz
+Patch0:	harden_osmo-hnbgw.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
