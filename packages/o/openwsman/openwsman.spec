@@ -155,6 +155,7 @@ Source1:        %{name}.rpmlintrc
 Source21:       %{name}.pam.rh
 Source22:       %{name}.pam
 Patch1:         openwsman-initscript.patch
+Patch2:	harden_openwsman.service.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -385,6 +386,7 @@ It can be used to send shell commands to remote Windows hosts.
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 rm -rf build

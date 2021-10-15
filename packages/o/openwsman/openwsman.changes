@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 13 12:23:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_openwsman.service.patch
+  Modified:
+  * openwsman.service
+
+-------------------------------------------------------------------
 Mon Aug 24 12:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use more appropriate %{_prefix}/lib for firewalld service
