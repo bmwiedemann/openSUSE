@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  4 19:32:38 UTC 2021 - David Mair <dmair@suse.com>
+
+- Fix crash view of task_struct_state changes for kernel 5.14
+  (bsc#1191206)
+  + crash-handle-by-kernel-task_struct-state-member-changes.patch
+
+-------------------------------------------------------------------
 Fri Sep 24 10:30:46 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix build on ppc64 - it needs full TOC as much as ppc64le.

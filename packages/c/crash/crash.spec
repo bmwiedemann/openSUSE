@@ -100,6 +100,8 @@ Patch45:        %{name}-x86_64-VC-exception-stack-support.patch
 Patch46:        %{name}-xen-pvops.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/cf0c8d10e1870d89b39f40382634db51aa8fcf2c.patch
 Patch47:        %{name}-mod-fix-module-object-file-lookup.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/d6b4f36d6b22b70fb14e692f36d20910ef5563c1.patch
+Patch48:        %{name}-handle-by-kernel-task_struct-state-member-changes.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -304,6 +306,7 @@ Authors:
 %patch45 -p1
 %patch46 -p1
 %patch47 -p1
+%patch48 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
