@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.9
+%define patchversion 5.14.11
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -101,25 +101,15 @@ done )
 %define install_vdso 0
 %endif
 
-# TW is usrmerged
-%if %{undefined usrmerged} && 0%{?suse_version} >= 1550
-%define usrmerged 1
-%endif
-
-%if 0%{?usrmerged}
-%define modules_dir /usr/lib/modules/%kernelrelease-%build_flavor
-%else
-%define modules_dir /lib/modules/%kernelrelease-%build_flavor
-%endif
-
+%define modules_dir %kernel_module_directory/%kernelrelease-%build_flavor
 
 Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.9
+Version:        5.14.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd0ace7f
+Release:        <RELEASE>.g834dddd
 %else
 Release:        0
 %endif
@@ -241,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-d0ace7f62beba111996bff8ef42046f7aca2ac62
-Provides:       kernel-srchash-d0ace7f62beba111996bff8ef42046f7aca2ac62
+Provides:       kernel-%build_flavor-base-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
+Provides:       kernel-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
 # END COMMON DEPS
-Provides:       %name-srchash-d0ace7f62beba111996bff8ef42046f7aca2ac62
+Provides:       %name-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -534,6 +524,10 @@ fi
 %else
 	--disable CONFIG_DEBUG_INFO
 %endif
+
+if [ %CONFIG_MODULE_SIG = "y" ]; then
+	test -n "%certs" || ../scripts/config --set-str CONFIG_MODULE_SIG_KEY ""
+fi
 
 case %cpu_arch in
     x86_64 | i386)

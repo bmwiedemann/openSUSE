@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.9
+%define patchversion 5.14.11
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -26,13 +26,18 @@
 
 %define src_install_dir usr/src/linux-%kernelrelease%variant
 
+# if undefined use legacy location of before SLE15
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir /etc/rpm
+%endif
+
 Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.14.9
+Version:        5.14.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gd0ace7f
+Release:        <RELEASE>.g834dddd
 %else
 Release:        0
 %endif
@@ -43,7 +48,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-d0ace7f62beba111996bff8ef42046f7aca2ac62
+Provides:       %name-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -203,6 +208,10 @@ find . -type l | while read f; do test -e "$f" || rm -v "$f"; done
 if test "%srcversion" != "%kernelrelease%variant"; then
 	mv linux-%srcversion linux-%kernelrelease%variant
 fi
+%if 0%{?usrmerged}
+# fix MODLIB so kmps install to /usr
+sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' linux-%kernelrelease%variant/Makefile
+%endif
 
 %if %do_vanilla
 %if %vanilla_only
@@ -240,8 +249,10 @@ cp %_sourcedir/README.SUSE %_sourcedir/config-options.changes.txt %buildroot/$DO
 ln -s $DOC/README.SUSE %buildroot/%src_install_dir/
 
 %if "%variant" == ""
-install -m 755 -d $RPM_BUILD_ROOT/etc/rpm
-install -m 644 %_sourcedir/macros.kernel-source $RPM_BUILD_ROOT/etc/rpm/
+install -m 755 -d $RPM_BUILD_ROOT%{_rpmmacrodir}
+install -m 644 %_sourcedir/macros.kernel-source $RPM_BUILD_ROOT%{_rpmmacrodir}
+echo "%%kernel_module_directory %{kernel_module_directory}" >> $RPM_BUILD_ROOT%{_rpmmacrodir}/macros.kernel-source
+
 install -m 755 -d $RPM_BUILD_ROOT/usr/lib/rpm
 install -m 644 %_sourcedir/kernel-{module,cert}-subpackage \
     $RPM_BUILD_ROOT/usr/lib/rpm/
@@ -293,7 +304,7 @@ relink linux-%kernelrelease%variant /usr/src/linux%variant
 %if "%variant" == ""
 %files -n kernel-macros
 %defattr(-,root,root)
-/etc/rpm/macros.kernel-source
+%{_rpmmacrodir}/macros.kernel-source
 /usr/lib/rpm/kernel-*-subpackage
 %dir /usr/lib/rpm/kernel
 /usr/lib/rpm/kernel/*
