@@ -812,4 +812,58 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>886482</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>df3b1094c453d563200771515d2d9d2e</srcmd5>
+    <version>1.0.0</version>
+    <time>1634331841</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0
+ + Bugfixes:
+ + Fix updating temporary metadata when reloading songs outside of the collection.
+ + Don't strip off &quot;Live&quot; from song title when sending scrobbles.
+ + Fix incorrect use of QFutureWatcher.
+ + Fix compile of Utilities::Hmac with Qt 6.2.
+ + Fix a memory leak when using right click context menu in internet search.
+ + Fix a gstreamer bus leak when adding streams and remote playlists.
+ + Fix &quot;Source ID x was not found when attempting to remove it&quot; error.
+ + Escape ampersands in playlist tabs.
+ + Fix analyzer with S24_32LE audio format.
+ + Enhancements:
+ + Add replaygain fallback gain setting.
+ + Add option to turn off playlist alternating row colors.
+ + Make the default tabbbar background color lighter.
+ + Remove use of deprecated WinExtras Qt module.
+ + Add CMake test for Qt sqlite support.
+ + Automatically detect Qt version if BUILD_WITH_QT5 or BUILD_WITH_QT6 is not specified.
+ + Correct playlist tabbar favorite tooltip from &quot;click&quot; to &quot;double-click&quot;.
+ + Remove scroll over icon to change track option since it does not work reliable.
+ + Improve resume playback on startup.
+ + Re-request stream URL for Tidal and QObuz when resuming playback after pausing for more than 30 seconds.
+ + Add Finnish, Ukrainian, Dutch, Japanese, Chinese, Catalan and Portuguese (Brazil).
+ + Add support for TagParser (https://github.com/Martchus/tagparser) as an alternative to TagLib.
+ + Add Subsonic option to turn off HTTP/2.
+ + Fix minor Clang-Tidy and Clazy warnings.
+ + Use higher resolution images from last.fm API.
+ + Add MD5 token authentication for Subsonic.
+ + Use 500 albums per request when receiving albums from Subsonic.
+ + Use QX11Application with Qt &gt;= 6.2 for X11 global shortcuts.
+ + Allow fading when a ALSA PCM device is selected.
+ + Store Tidal MPEG-DASH file in data uri.
+ + Use XSPF image elements as manually set artwork.
+ + Make error dialog larger.
+ + Show error dialog for failed SQL queries.
+ + Show error dialog when failing to read or write album covers.
+ + Add module music formats (mod, s3m, xm, it) to detected filetypes.
+ + Disable gapless playback for module music formats to workaround gstreamer bug.
+ + Update directory ID and song path immediately when organizing collection songs.
+ + Add right click option to star a playlist in playlist tabs.
+ + Use seconds instead of minutes for scrobble submit delay.
+ + New features:
+ + Add ALSA PCM devices.
+ + Add song fingerprinting and tracking.
+ + Add support for native global shortcuts on MATE.
+ + Add radios view with channels from Radio Paradise and SomaFM.
+</comment>
+    <requestid>925287</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        0.9.3
+Version:        1.0.0
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.11.1
 
 %if 0%{?suse_version} > 1530
+Requires:       qt6-network-tls
 Requires:       qt6-sql-sqlite
 %else
 Requires:       libQt5Sql5-sqlite
