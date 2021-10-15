@@ -362,4 +362,12 @@
     <comment>- Update to release 11.3</comment>
     <requestid>924173</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1e98ddc851ca44575801f67e8c111b82</srcmd5>
+    <version>11.4</version>
+    <time>1634331846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.4</comment>
+    <requestid>925379</requestid>
+  </revision>
 </revisionlist>

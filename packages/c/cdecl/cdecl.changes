@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:59:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4
+  * Allow declarations using unknown scoped type names
+  * const-volatile-restrict-qualified _Atomic types are now
+    correctly forbidden.
+
+-------------------------------------------------------------------
 Fri Oct  8 08:29:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.3
