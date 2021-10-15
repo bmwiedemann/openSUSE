@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 12 12:58:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * nxtvepg.service
+
+-------------------------------------------------------------------
 Thu Nov 12 11:15:47 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Properly use the systemd rpm macros with nxtvepg.service.
