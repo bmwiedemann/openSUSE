@@ -13,4 +13,12 @@ That module is required i.e. for GPUs like Radeon RX 5xxx to be passed through t
 See more on the repo: https://github.com/gnif/vendor-reset</comment>
     <requestid>924229</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>710452fccc6f8de2c63dd5c35e54662d</srcmd5>
+    <version>0.1.0+225a49a</version>
+    <time>1634331851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925392</requestid>
+  </revision>
 </revisionlist>

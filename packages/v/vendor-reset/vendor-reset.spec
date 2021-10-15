@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/gnif/vendor-reset
 Source:         %{name}-%{version}.tar.xz
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 A kernel module that is capable of resetting hardware devices into a state
