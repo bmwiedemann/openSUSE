@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 12 06:17:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_ntp-wait.service.patch
+  * harden_ntpd.service.patch
+  * harden_ntplogtemp.service.patch
+  * harden_ntpviz-daily.service.patch
+  * harden_ntpviz-weekly.service.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 15:20:20 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1

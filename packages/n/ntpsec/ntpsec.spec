@@ -28,6 +28,11 @@ Source1:        ftp://ftp.ntpsec.org/pub/releases/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.changes
 Source4:        logrotate.ntp
 Source8:        ntp.conf
+Patch0:	harden_ntp-wait.service.patch
+Patch1:	harden_ntpd.service.patch
+Patch2:	harden_ntplogtemp.service.patch
+Patch3:	harden_ntpviz-daily.service.patch
+Patch4:	harden_ntpviz-weekly.service.patch
 BuildRequires:  asciidoc
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  bison
@@ -112,6 +117,11 @@ sed -i -e 's:#!%{_bindir}/env python:#!%{_bindir}/python3:' \
 # there is no actual reason for 3.18 gpsd version
 sed -i -e 's:, condition="ver >= num(3, 18)"::' \
     pylib/wscript
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 %global _lto_cflags %{nil}
