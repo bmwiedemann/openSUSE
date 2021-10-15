@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 15 16:01:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.27.3:
+  - Preview window is `hidden` by default when there are `preview` bindings but
+    `--preview` command is not given
+  - Fixed bug where `{n}` is not properly reset on `reload`
+  - Fixed bug where spinner is not displayed on `reload`
+  - Enhancements in tcell renderer for Windows (#2616)
+  - Vim plugin
+      - `sinklist` is added as a synonym to `sink*` so that it's
+        easier to add a function to a spec dictionary
+        ```vim
+        let spec = { 'source': 'ls', 'options': ['--multi', '--preview', 'cat {}'] }
+        function spec.sinklist(matches)
+          echom string(a:matches)
+        endfunction
+  
+        call fzf#run(fzf#wrap(spec))
+        ```
+  - Vim 7 compatibility
+- Set FZF_VERSION and FZF_REVISION environment variables as well.
+
+-------------------------------------------------------------------
 Tue Jun  1 08:37:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.27.2:

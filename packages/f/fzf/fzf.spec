@@ -17,7 +17,7 @@
 
 
 Name:           fzf
-Version:        0.27.2
+Version:        0.27.3
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/junegunn/fzf
 Source0:        https://github.com/junegunn/%{name}/archive/%{version}.tar.gz
 # Run go build && go mod vendor to get vendor/ subdirectory
 Source1:        vendor.tar.xz
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 
 %description
 fzf is an interactive Unix filter for command-line that can be used with any list; files,
@@ -97,6 +97,7 @@ Plugin for vim allowing use of fzf.
 sed -i 's,#!%{_bindir}/env ,#!/bin/,' ./bin/fzf-tmux
 
 %build
+export FZF_VERSION=%{version} FZF_REVISION=tarball
 export GOCACHE=$(readlink -f vendor/)
 %ifarch ppc64
 BUILDMOD=""
