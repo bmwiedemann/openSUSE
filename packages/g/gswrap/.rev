@@ -50,4 +50,15 @@
 - Enable bwrap to execute its option --die-with-parent</comment>
     <requestid>924872</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a92d9c5f5f9e7dd6f367e51a5d3683dd</srcmd5>
+    <version>0.1</version>
+    <time>1634331853</time>
+    <user>dimstar_suse</user>
+    <comment>- Quote all variable which might include space 
+
+- Allow spaces in path, file, and user names
+  as well as check if all used programs are found.</comment>
+    <requestid>925405</requestid>
+  </revision>
 </revisionlist>

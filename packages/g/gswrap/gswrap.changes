@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 15 10:34:50 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Quote all variable which might include space 
+
+-------------------------------------------------------------------
+Fri Oct 15 09:20:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Allow spaces in path, file, and user names
+  as well as check if all used programs are found.
+
+-------------------------------------------------------------------
 Tue Oct 12 13:26:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Use TERM instead of KILL to let bwrap do its work

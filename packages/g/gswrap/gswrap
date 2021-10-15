@@ -27,17 +27,24 @@
 
 ghostscript=@@GS@@
 
+for prog in fuser realpath
+do
+   type $prog >& /dev/null && continue
+   echo "GS: No $prog found in path" 1>&2
+   exit 1
+done
+
 user=nobody
-home=/home/$user
-uid=$(id -u $user)
-gid=$(id -g $user)
+home="/home/$user"
+uid=$(id -u "$user")
+gid=$(id -g "$user")
 lock=$(mktemp "${TMPDIR:-/tmp}/.gswrap-XXXXXXXXXX") || exit 1
 
 unlock ()
 {
-    test -e $lock || return
-    fuser -TERM $lock
-    rm -f $lock
+    test -e "$lock" || return
+    fuser -TERM "$loc"
+    rm -f "$lock"
 }
 
 finish ()
@@ -65,34 +72,38 @@ trap 'unlock' EXIT SIGINT SIGHUP
 typeset -i safer=0
 typeset    pipecmd=""
 typeset -i pipepos
-typeset -a opts
+typeset -a opts=()
 typeset -i o=0
 for lib in $(ldd $ghostscript | sed -rn 's|.*=>[[:blank:]]+||;s|[[:blank:]]*(/[^[:blank:]]+)[[:blank:]]+.*|\1|p')
 do
-    opts[o++]="--ro-bind $lib $lib"
+    opts[o++]=--ro-bind
+    opts[o++]="$lib"
+    opts[o++]="$lib"
 done
 for dir in /lib/tls /lib64/tls /lib64/x86_64 /usr/lib/ghostscript /usr/lib64/ghostscript /etc/ghostscript
 do
     test -d "$dir" || continue
-    opts[o++]="--ro-bind $dir $dir"
+    opts[o++]=--ro-bind
+    opts[o++]="$dir"
+    opts[o++]="$dir"
 done
-typeset -i argc=0
+typeset -i c=0 argc=${#argv[@]}
 typeset -a argv=("$@")
-for ((argc=0; argc < ${#argv[@]}; argc++))
+for ((c=0; c < argc; c++))
 do
-    arg="${argv[argc]}"
+    arg="${argv[c]}"
     case "$arg" in
     -dSAFER)
 	let safer++
 	;;
     -o)
-	if ((argc+1 >= ${#argv[@]}))
+	if ((c+1 >= argc))
 	then
 	    echo "GS: found -o without argument" 1>&2
 	    exit 1
 	else
-	    unset argv[argc]
-	    argv[argc+1]=-sOutputFile=${argv[argc+1]}
+	    unset argv[c]
+	    argv[c+1]=-sOutputFile="${argv[c+1]}"
 	fi
 	;;
     -sOutputFile=*)
@@ -100,8 +111,8 @@ do
 	%stdout%|%stderr%|%stdout|%stderr|-|"")
 	    continue ;;
 	%pipe%*)
-	    pipecmd=${arg#-sOutputFile=%pipe%}
-	    let pipepos=argc
+	    pipecmd="${arg#-sOutputFile=%pipe%}"
+	    let pipepos=c
 	    ;;
 	esac
 	file="${arg#-sOutputFile=}"
@@ -117,19 +128,24 @@ do
 		    echo "GS: only /dev/null or /dev/zero allowed" 1>&2
 		    exit 1
 		fi
-		opts[o++]="--dir $home/out"
+		opts[o++]=--dir
+		opts[o++]="$home/out"
 	    elif test -n "$dir" -a -d "$dir"
 	    then
 		tmp=$(mktemp -d "$dir/.gswrap-XXXXXXXXXX") || exit 1
 		trap "finish '$dir' '$tmp'" ERR EXIT SIGINT SIGHUP
-		opts[o++]="--bind ${tmp+"$tmp"} $home/out"
+		opts[o++]=--bind
+		opts[o++]="${tmp+"$tmp"}"
+		opts[o++]="$home/out"
 	    else
 		tmp=$(mktemp -d "$PWD/.gswrap-XXXXXXXXXX") || exit 1
 		trap "finish '$PWD' '$tmp'" ERR EXIT SIGINT SIGHUP
-		opts[o++]="--bind ${tmp+"$tmp"} $home/out"
+		opts[o++]=--bind
+		opts[o++]="${tmp+"$tmp"}"
+		opts[o++]="$home/out"
 	    fi
 	fi
-	argv[argc]="-sOutputFile=$home/out/${file}"
+	argv[c]="-sOutputFile=$home/out/${file}"
 	continue
 	;;
     -sDEVICE=*)
@@ -143,7 +159,9 @@ do
 	continue
 	;;
     @*)
-	opts[o++]="--ro-bind ${arg#@} $home/${arg#@}"
+	opts[o++]=--ro-bind
+	opts[o++]="${arg#@}"
+	opts[o++]="$home/${arg#@}"
 	continue
 	;;
     -*)
@@ -153,14 +171,18 @@ do
     test -e "$arg" || continue
     if test "${arg##*/}" = "$arg"
     then
-	opts[o++]="--ro-bind $arg $home/$arg"
+	opts[o++]=--ro-bind
+	opts[o++]="$arg"
+	opts[o++]="$home/$arg"
     else
-	arg="$(realpath $arg)" || exit 1
-	argv[argc]="$arg"
+	arg="$(realpath "$arg")" || exit 1
+	argv[c]="$arg"
 	test "$arg" != / || continue
 	test "$arg" != /home || continue
 	test "$arg" != $home || continue
-	opts[o++]="--ro-bind $arg $arg"
+	opts[o++]=--ro-bind
+	opts[o++]="$arg"
+	opts[o++]="$arg"
     fi
 done
 # If no -dSAFER then execute the orignal ghostscript program now
@@ -170,25 +192,33 @@ then
 fi
 if test -n "$pipecmd"
 then
-    mkfifo -m 666 ${tmp}/fd
-    fd=${tmp}/fd
-    exec $pipecmd < $fd &
+    mkfifo -m 666 "${tmp}/fd"
+    fd="${tmp}/fd"
+    exec "$pipecmd" < $fd &
     argv[pipepos]="-sOutputFile=$home/fifo"
-    opts[o++]="--bind $fd $home/fifo"
+    opts[o++]=--bind
+    opts[o++]="$fd"
+    opts[o++]="$home/fifo"
 fi
 # User might have some own font configurations as well
 if test -d /var/cache/fontconfig
 then
-    opts[o++]="--ro-bind /var/cache/fontconfig /var/cache/fontconfig"
+    opts[o++]=--ro-bind
+    opts[o++]="/var/cache/fontconfig"
+    opts[o++]="/var/cache/fontconfig"
 fi
 if test -s "$HOME/.fonts.conf"
 then
-    opts[o++]="--ro-bind ${HOME+"$HOME"}/.fonts.conf $home/.fonts.conf"
+    opts[o++]=--ro-bind
+    opts[o++]="${HOME+"$HOME"}/.fonts.conf"
+    opts[o++]="$home/.fonts.conf"
 fi
 for dir in "$HOME/.fontconfig" "$HOME/.config/fontconfig" "$HOME/.cache/fontconfig"
 do
     test -d "$dir" || continue
-    opts[o++]="--ro-bind $dir ${home}${dir#$HOME}"
+    opts[o++]=--ro-bind
+    opts[o++]="$dir"
+    opts[o++]="${home}${dir#$HOME}"
 done
 # Display
 if test -n "$DISPLAY"
@@ -205,7 +235,9 @@ then
 		case "${opts[@]}" in
 		*[:blank:]${lib}[:blank:]*) continue ;;
 		esac
-		opts[o++]="--ro-bind $lib $lib"
+		opts[o++]=--ro-bind
+		opts[o++]="$lib"
+		opts[o++]="$lib"
 	    done
 	done
     done
@@ -213,39 +245,58 @@ then
     for x11 in /tmp/.X11-unix
     do
 	test -e "${x11}" || continue
-	opts[o++]="--ro-bind ${x11} ${x11}"
+	opts[o++]=--ro-bind
+	opts[o++]="${x11}"
+	opts[o++]="${x11}"
     done
-    opts[o++]="--ro-bind ${XAUTHORITY+"$XAUTHORITY"} $home/.Xauthority"
-    opts[o++]="--setenv XAUTHORITY $home/.Xauthority"
-    opts[o++]="--setenv DISPLAY ${DISPLAY+"$DISPLAY"}"
+    opts[o++]=--ro-bind
+    opts[o++]="${XAUTHORITY+"$XAUTHORITY"}"
+    opts[o++]="$home/.Xauthority"
+    opts[o++]=--setenv
+    opts[o++]=XAUTHORITY
+    opts[o++]="$home/.Xauthority"
+    opts[o++]=--setenv
+    opts[o++]=DISPLAY
+    opts[o++]="${DISPLAY+"$DISPLAY"}"
     if test -n "${DISPLAY%:*}"
     then
 	# For display over e.g. local network as with slogin -X skip --unshare-net
 	# and allow hostname resolution via running nscd (that is nscd should be up)
- 	opts[o++]="--ro-bind /var/run/nscd/socket /var/run/nscd/socket"
-	opts[o++]="--unshare-user-try --unshare-ipc --unshare-pid --unshare-uts --unshare-cgroup-try"
+ 	opts[o++]=--ro-bind
+ 	opts[o++]="/var/run/nscd/socket"
+ 	opts[o++]="/var/run/nscd/socket"
+	opts[o++]=--unshare-user-try
+	opts[o++]=--unshare-ipc
+	opts[o++]=--unshare-pid
+	opts[o++]=--unshare-uts
+	opts[o++]=--unshare-cgroup-try
     else
-	opts[o++]="--unshare-all"
+	opts[o++]=--unshare-all
     fi
     if test -n "${GHOSTVIEW}"
     then
-	opts[o++]="--die-with-parent"
-	opts[o++]="--setenv GHOSTVIEW ${GHOSTVIEW+"$GHOSTVIEW"}"
+	opts[o++]=--setenv
+	opts[o++]=GHOSTVIEW
+	opts[o++]="{GHOSTVIEW+"$GHOSTVIEW"}"
     fi
     if test -n "${GHOSTVIEW_COLORS}"
     then
-	opts[o++]="--setenv GHOSTVIEW_COLORS ${GHOSTVIEW+"$GHOSTVIEW_COLORS"}"
+	opts[o++]=--setenv
+	opts[o++]=GHOSTVIEW_COLORS
+	opts[o++]="${GHOSTVIEW+"$GHOSTVIEW_COLORS"}"
     fi
 else
-    opts[o++]="--unshare-all"
+    opts[o++]=--unshare-all
 fi
 if test -e /proc/$$/uid_map
 then
-    opts[o++]="--uid $uid"
+    opts[o++]=--uid
+    opts[o++]="$uid"
 fi
 if test -e /proc/$$/gid_map
 then
-    opts[o++]="--gid $gid"
+    opts[o++]=--gid
+    opts[o++]="$gid"
 fi
 # This is for debugging only
 # add you binary like /bin/ls or /usr/bin/strace for further usage
@@ -255,17 +306,21 @@ if false
 then
     for bin in /usr/bin/strace
     do
-	opts[o++]="--ro-bind $bin $bin"
+	opts[o++]=--ro-bind
+	opts[o++]="$bin"
+	opts[o++]="$bin"
 	for lib in $(ldd "$bin" | sed -rn 's|.*=>[[:blank:]]+||;s|[[:blank:]]*(/[^[:blank:]]+)[[:blank:]]+.*|\1|p')
 	do
 	    case "${opts[@]}" in
 	    *[:blank:]${lib}[:blank:]*) continue ;;
 	    esac
-	    opts[o++]="--ro-bind $lib $lib"
+	    opts[o++]=--ro-bind
+	    opts[o++]="$lib"
+	    opts[o++]="$lib"
 	done
     done
 fi
-unset o argc arg
+unset o c argc arg
 set -- "${argv[@]}"
 set -euo pipefail
 (exec -c -a gs /usr/bin/bwrap \
@@ -278,26 +333,26 @@ set -euo pipefail
       --ro-bind /usr/share/ghostscript /usr/share/ghostscript \
       --ro-bind /usr/share/fonts /usr/share/fonts \
       --ro-bind /etc/fonts /etc/fonts \
-      --ro-bind $lock /tmp/.lock \
+      --ro-bind "$lock" /tmp/.lock \
       --lock-file /tmp/.lock \
-      --dir /run/user/$uid \
+      --dir "/run/user/$uid" \
       --dir /var \
       --symlink ../run var/run \
       --symlink ../tmp var/tmp \
-      --dir $home \
-      --chdir $home \
-      ${opts[@]} \
+      --dir "$home" \
+      --chdir "$home" \
+      "${opts[@]}" \
       --new-session \
       --sync-fd 0 \
       --sync-fd 1 \
       --sync-fd 2 \
       --setenv XDG_RUNTIME_DIR "/run/user/$uid" \
-      --setenv USER $user \
-      --setenv LOGNAME $user \
+      --setenv USER "$user" \
+      --setenv LOGNAME "$user" \
       --setenv SHELL /bin/false \
-      --setenv HOME $home \
+      --setenv HOME "$home" \
       --setenv PATH /bin:/usr/bin \
       --setenv MAIL /dev/null \
       --die-with-parent \
       /usr/bin/gs ${1+"$@"})
-rm -f $lock
+rm -f "$lock"
