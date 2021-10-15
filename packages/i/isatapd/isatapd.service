@@ -8,7 +8,6 @@ Documentation=man:isatapd(8)
 ProtectSystem=full
 ProtectHome=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
