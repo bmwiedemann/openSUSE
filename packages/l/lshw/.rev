@@ -245,4 +245,23 @@ factory)</comment>
 - Disable parallel build to avoid random failures</comment>
     <requestid>910092</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>625c8c4f746b7965d01f497ce8cb2d10</srcmd5>
+    <version>B.02.19.2+git.20211013</version>
+    <time>1634331829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2+git.20211013:
+  * add some includes
+  * fix typo
+  * cosmetic fixes
+  * support for new ethtool capabilities
+  * code clean-up
+  * code clean-up
+  * allow pkg-config override
+  * allow pkg-config override
+  * Remove unnecessary space before closing parenthesis
+  * Translate all words of a phrase together
+  * Fix another typo</comment>
+    <requestid>925234</requestid>
+  </revision>
 </revisionlist>
