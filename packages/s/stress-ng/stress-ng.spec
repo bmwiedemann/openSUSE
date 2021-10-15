@@ -18,7 +18,7 @@
 
 
 Name:           stress-ng
-Version:        0.13.04
+Version:        0.13.05
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
@@ -71,7 +71,7 @@ install -D -p -m 0644 bash-completion/stress-ng \
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/stress-ng
 %{_mandir}/man1/stress-ng.1%{?ext_man}
 
