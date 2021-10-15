@@ -7,7 +7,6 @@ Description=Actkbd: Daemon for X-independent shortcuts
 ProtectSystem=full
 ProtectHome=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true

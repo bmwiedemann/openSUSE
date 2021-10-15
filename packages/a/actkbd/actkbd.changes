@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 12:10:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
 Tue Jul 27 14:21:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:
