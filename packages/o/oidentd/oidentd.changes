@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 14 09:10:39 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Remove unsupported hardening flags when using old version
+  with old systemd. 
+- Removed harden_oidentd@.service.patch as this package is using own 
+  service instead of upstream one, which also has same security switches.
+
+-------------------------------------------------------------------
+Wed Oct 13 06:34:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_oidentd@.service.patch
+  Modified:
+  * oidentd@.service
+
+-------------------------------------------------------------------
 Tue Jan 26 09:36:28 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 2.5.0

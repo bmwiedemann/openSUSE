@@ -164,4 +164,20 @@
     <comment></comment>
     <requestid>867053</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>7778d4fb59bccc67a8639b59050fffd7</srcmd5>
+    <version>2.5.0</version>
+    <time>1634331827</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unsupported hardening flags when using old version
+  with old systemd. 
+- Removed harden_oidentd@.service.patch as this package is using own 
+  service instead of upstream one, which also has same security switches.
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_oidentd@.service.patch
+  Modified:
+  * oidentd@.service</comment>
+    <requestid>925223</requestid>
+  </revision>
 </revisionlist>

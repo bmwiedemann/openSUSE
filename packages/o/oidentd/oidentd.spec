@@ -32,12 +32,12 @@ Summary:        Configurable IDENT Server That Supports NAT/IP Masquerading
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://oidentd.janikrabe.com/
-Source:         https://ftp.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz
+Source:         https://files.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz
 Source1:        sysconfig.oidentd
 Source2:        rc.oidentd
 Source3:        oidentd@.service
 Source4:        oidentd.socket
-Source5:        https://ftp.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz.asc
+Source5:        https://files.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz.asc
 # https://janikrabe.com/key.asc
 Source6:        %{name}.keyring
 BuildRequires:  automake
@@ -62,6 +62,17 @@ pairs.
 
 %prep
 %setup -q
+
+# Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
+%if 0%{?sle_version}
+%if 0%{?sle_version} < 150300
+  sed -r -i '/^(Protect(Hostname|KernelLogs|Clock))=/d' %{_sourcedir}/oidentd@.service
+%if 0%{?sle_version} < 150200
+  sed -r -i '/^(Protect(Home|Hostname|KernelLogs|Clock)|PrivateMounts)=/d' %{_sourcedir}/oidentd@.service
+%endif
+%endif
+%endif
+# / sle_version
 
 %build
 CFLAGS="%{optflags} -fgnu89-inline"
