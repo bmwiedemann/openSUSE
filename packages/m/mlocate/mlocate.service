@@ -3,6 +3,19 @@ Description=Update locate database
 Documentation=man:updatedb
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=read-only
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=oneshot
 ExecStart=/bin/sh -c \
           "chown -R ${RUN_UPDATEDB_AS}:root /var/lib/mlocate && \
