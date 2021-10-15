@@ -36,7 +36,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   7.18
-Version:        %{minor_version}.0
+Version:        %{minor_version}.1
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -167,6 +167,13 @@ rm -r coprocs/NVIDIA
 rm -r android drupal mac_build mac_installer win_build xcompile
 
 autoreconf -fi
+export CFLAGS="%optflags -W -pipe -fno-strict-aliasing -D_REENTRANT"
+echo %sle_version
+%if 0%{?sle_version} == 120000
+echo enablingcxx
+export CFLAGS="$CFLAGS -std=c++11"
+%endif
+export CXXFLAGS="$CFLAGS"
 %configure \
   --enable-optimize \
   --enable-shared \
@@ -187,9 +194,7 @@ sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 # Export Path and make
 make clean %{?_smp_mflags}
 make libboinc_la_LIBADD="-L%{_libdir} -lssl -ldl" \
-   CFLAGS="%{optflags} -W -pipe -fno-strict-aliasing -D_REENTRANT" \
-   CXXFLAGS="%{optflags} -W -pipe -fno-strict-aliasing -D_REENTRANT" \
-   DESTDIR=%{_prefix} %{?_smp_mflags}
+   DESTDIR=%{_prefix} %{?_smp_mflags} V=1
 
 %install
 %make_install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  8 12:03:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.18.1
+  * Exporting event log wrote just 6 lines, which was fixed.
+
+-------------------------------------------------------------------
 Fri Jul 16 09:45:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.18
