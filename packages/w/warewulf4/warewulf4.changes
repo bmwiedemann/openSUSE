@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Mon Oct  4 09:33:34 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to warewulf-v4.2.0rc1 with following new features:
+  * bash_completion can add nodes, container and other stuff
+  * kernels can now have arbitray names
+  * using syslog instead of logfile
+  * kernels get uncompresses on import
+- Utilize sysuser infrastructure to set user/group warewulf
+ 
+
+-------------------------------------------------------------------
+Tue Aug 31 14:44:51 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updating to actual HEAD on github, as this version incorporates
+  some of the patches
+- removed patches which are now in upstream:
+  * bash_completion.patch
+  * build-position-independent-code.patch
+  * install-creates-needed-dirs-and-checks-for-systemd.patch
+  * added-wicked-xml-configuration.patch
+  * added-configureable-ipmiinterface-used-by-ipmitool.patch
+  * preserve-ownership-for-overlays.patch
+- added patch:
+  * added-function-CopyUIDGID-for-file-file-ownerships.patch
+
+-------------------------------------------------------------------
+Tue Aug 10 09:13:00 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to warewulf-v4.1.0 prerelease instead of HEAD
+
+-------------------------------------------------------------------
+Wed Jul 21 15:40:15 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- inital commit of warewulf4 which is a rewrite of warewulf in 
+  go thus the new name
+  * including vector.tar.gz which are the deps
+  * warewulf.conf is the SUSE specific configuration file
+- patches with new functionality, might be included upstream  
+  * bash_completion.patch
+  * build-position-independent-code.patch
+  * install-creates-needed-dirs-and-checks-for-systemd.patch
+  * LocalStateDir-is-configureable-to-meet-FHS.patch
+  * added-wicked-xml-configuration.patch
+  * added-configureable-ipmiinterface-used-by-ipmitool.patch
+  * preserve-ownership-for-overlays.patch
