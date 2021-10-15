@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-sip-connector
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 
 Name:           osmo-sip-connector
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        MNCC to SIP bridge for osmo-nitb
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            http://openbsc.osmocom.org/
 Source:         %{name}-%{version}.tar.xz
+Patch0:         harden_osmo-sip-connector.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -41,6 +42,7 @@ Use the osmo-nitb MNCC interface and bridge it to SIP.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version
