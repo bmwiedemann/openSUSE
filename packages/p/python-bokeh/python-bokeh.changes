@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 21:33:34 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.1:
+  * Long list, see
+    https://github.com/bokeh/bokeh/blob/2.4.1/CHANGELOG
+
+-------------------------------------------------------------------
 Thu Sep 23 09:54:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Bokeh requires Python >= 3.7:  disable failing Leap builds
