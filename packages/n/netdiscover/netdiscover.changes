@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 14 10:50:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8:
+  * Changed PCAP_TOUT from 0 to 512 in src/ifaces.h, to avoid no
+    results whe scanning with CIDR /24 if netdiscover is being
+    built with libpcap >= 1.10.
+
+-------------------------------------------------------------------
 Thu Dec 17 07:09:55 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update minimal requirement for libnet
