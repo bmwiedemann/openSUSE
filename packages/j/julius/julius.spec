@@ -1,7 +1,7 @@
 #
 # spec file for package julius
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           julius
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        An open source re-implementation of Caesar III
 License:        GPL-3.0-only
@@ -66,7 +66,7 @@ Caesar 3 to run.
 
 %files
 %license LICENSE.txt
-%doc README.md 
+%doc README.md
 %{_bindir}/julius
 %{_datadir}/applications/com.github.bvschaik.julius.desktop
 %{_datadir}/icons/hicolor/*/apps/com.github.bvschaik.julius.png

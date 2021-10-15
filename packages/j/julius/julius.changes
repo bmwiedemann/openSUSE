@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct 15 18:24:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  General improvements
+  * Touch devices: added the ability to pause the game using an
+    on-screen button
+  * The game looks more crisp when using scaling on high DPI screens
+  * File dialog: when typing a name, the list automatically scrolls
+    to the first matching file
+  * File dialog: input textbox now only suggests 'My Rome' when
+    saving, not when loading a game
+  * Population graph on the populator advisor is now usable for
+    populations larger than 51200
+  * Bridges are now shown on the minimap
+  * Ships now play the proper phrase when leaving the docks
+  * Configuration: new option to disable scrolling when the mouse
+    is near the window's edge
+  * Configuration: hotkey config now gives a warning when you try
+    to assign a hotkey that's already in use
+  * Korean: fix money being drawn as "100 Funds" instead of "100 Dn"
+  Bugfixes
+  * Fixed possible corruption and linked storages when an
+    earthquake destroys a warehouse
+  * Fixed the game self-destructing the entire city when a
+    wall/aqueduct blocked the road to Rome
+  * Fixed build images in the sidebar not showing the correct image
+    when a building was selected for construction
+  * Fixed being able to construct a building that's been disabled
+    in the menu using the "clone building" hotkey
+  * Fixed interest on financial advisor showing last year instead
+    of this year
+  * Fixed incorrect house devolve text related to food types
+  * Fixed going back in help jumping to random scroll position
+  * Fixed static in sound from videos played on low sound volume
+  * Fixed alternative hotkeys for arrow firing on modifiers
+  * Fixed corrupt dialog text when language fails to load on
+    configuration screen
+  * Fixed not being able to type text when using SDL 2.0.16 with
+    the Wayland video driver for Linux
+
+-------------------------------------------------------------------
 Mon Mar 22 10:45:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.6.0
