@@ -1213,4 +1213,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1634050455</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="168" vrev="166">
+    <srcmd5>c2b84c9d594b5733ebfea9fcd9e06dc4</srcmd5>
+    <version>unknown</version>
+    <time>1634286501</time>
+    <user>dimstar_suse</user>
+    <comment>Shrink DVD</comment>
+  </revision>
 </revisionlist>

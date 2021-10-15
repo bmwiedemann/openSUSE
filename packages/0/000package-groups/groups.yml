@@ -192,6 +192,7 @@ dvd:
   - systemd-presets-branding-CAASP: [locked]
   - texlive: [locked]
   - gnuchess: [locked]
+  - breeze5-wallpapers: [locked]
   - myspell-german-old: [locked]
   - apache2-worker: [locked]
   - gnu-free-fonts: [locked]
