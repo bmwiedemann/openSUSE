@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  9 10:24:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 187:
+ - Add support for comparing .pyc files. Thanks to Sergei Trofimovich.
+   (Closes: reproducible-builds/diffoscope#278)
+
+-------------------------------------------------------------------
 Fri Oct  1 18:33:10 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 186:

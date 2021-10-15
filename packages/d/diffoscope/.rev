@@ -208,4 +208,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>924342</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>af1ab2c9e5d79c5365ca6d8bca7f6630</srcmd5>
+    <version>187</version>
+    <time>1634331878</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 187:
+ - Add support for comparing .pyc files. Thanks to Sergei Trofimovich.
+   (Closes: reproducible-builds/diffoscope#278)
+</comment>
+    <requestid>925543</requestid>
+  </revision>
 </revisionlist>
