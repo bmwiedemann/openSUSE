@@ -409,4 +409,12 @@
   * Fix Lua out of memory errors with large captures in Sysdig Inspect [#1694]</comment>
     <requestid>864096</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>3cf072428695fc1f5521da1a0e37f14c</srcmd5>
+    <version>0.27.1</version>
+    <time>1634331813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925149</requestid>
+  </revision>
 </revisionlist>

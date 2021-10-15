@@ -1,0 +1,40 @@
+From 54fde8e99a5b8637906fe93d3de2f4cc57eda1cf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Fri, 8 Oct 2021 23:54:59 +0200
+Subject: [PATCH] sysdig: fix linking with grpc-1.41
+
+---
+ CMakeLists.txt                    | 1 +
+ userspace/libsinsp/CMakeLists.txt | 4 ++++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1f34f1d..c0354b2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -552,6 +552,7 @@ if(NOT WIN32 AND NOT APPLE)
+ 			else()
+ 				message(FATAL_ERROR "Couldn't find system grpc")
+ 			endif()
++			find_library(ABSL_SYNC_LIB NAMES absl_synchronization)
+ 			find_program(GRPC_CPP_PLUGIN grpc_cpp_plugin)
+ 			if(NOT GRPC_CPP_PLUGIN)
+ 				message(FATAL_ERROR "System grpc_cpp_plugin not found")
+diff --git a/userspace/libsinsp/CMakeLists.txt b/userspace/libsinsp/CMakeLists.txt
+index d72f911..6077927 100644
+--- a/userspace/libsinsp/CMakeLists.txt
++++ b/userspace/libsinsp/CMakeLists.txt
+@@ -214,6 +214,10 @@ if(NOT WIN32)
+ 				"${JQ_LIB}"
+ 				"${B64_LIB}")
+ 
++				if(ABSL_SYNC_LIB)
++					target_link_libraries(sinsp "${ABSL_SYNC_LIB}")
++				endif()
++
+ 			if(NOT MUSL_OPTIMIZED_BUILD)
+ 			target_link_libraries(sinsp
+ 				rt
+-- 
+2.33.0
+

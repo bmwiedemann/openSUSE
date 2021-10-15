@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://www.sysdig.org/
 Source0:        https://github.com/draios/%{name}/archive/%{version}/sysdig-%{version}.tar.gz
+Patch0:         0001-sysdig-fix-linking-with-grpc-1.41.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -42,7 +43,7 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %{arm} aarch64
+ExcludeArch:    %{arm} aarch64 %{ix86}
 %kernel_module_package
 
 %description
@@ -52,7 +53,7 @@ Think of it as strace + tcpdump + lsof + awesome sauce. With a little Lua
 cherry on top.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export SYSDIG_CHISEL_DIR=%{_datadir}%{name}/chisels

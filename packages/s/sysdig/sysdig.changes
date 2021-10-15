@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 13 06:37:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Gentoo patch to fix build with grpc 1.41 (gh#draios/sysdig#1778)
+  * 0001-sysdig-fix-linking-with-grpc-1.41.patch (amended for Leap)
+- Also exclude %ix86 platforms. sysdig 0.27 never built
+  successfully.
+
+-------------------------------------------------------------------
 Mon Jan 18 14:11:51 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.27.1:
