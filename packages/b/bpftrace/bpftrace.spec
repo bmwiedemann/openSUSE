@@ -22,8 +22,16 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
+# Use the latest supported LLVM version, but Leap only has a slightly older one
+# so just use whatever version is available.
+%if 0%{?suse_version} > 1500
+%define llvm_major_version 12
+%else
+%define llvm_major_version %{nil}
+%endif
+
 Name:           bpftrace
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -33,12 +41,13 @@ Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
 BuildRequires:  bison
-BuildRequires:  clang
-BuildRequires:  clang-devel
+BuildRequires:  clang%{llvm_major_version}
+BuildRequires:  clang%{llvm_major_version}-devel
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libbpf-devel
-BuildRequires:  llvm-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  llvm%{llvm_major_version}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libbcc) >= 0.11
@@ -76,12 +85,14 @@ find tools -name '*.bt' -type f \
 # these libraries very strange names which CMake cannot find. See boo#1162312.
 LIBBFD="$(find "%{_libdir}" -type f -name 'libbfd*.so*')"
 LIBOPCODES="$(find "%{_libdir}" -type f -name 'libopcodes*.so*')"
+LLVM_VERSION="$(llvm-config --version | grep -o '^[^.]*')"
 
 # We need to build with clang.
 %define _lto_cflags %{nil}
 export CC="clang"
 export CXX="clang++"
 %cmake \
+	-DLLVM_REQUESTED_VERSION="${LLVM_VERSION}" \
 	-DLIBBFD_LIBRARIES="${LIBBFD}" \
 	-DLIBOPCODES_LIBRARIES="${LIBOPCODES}" \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \

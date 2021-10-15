@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 14 23:54:40 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Ensure we always use a fixed LLVM major version to match upstream (12 at the
+  moment). On Leap we use the latest LLVM (9 at the moment) because 12 is not
+  available.
+
+-------------------------------------------------------------------
+Mon Oct  4 04:11:02 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to bpftrace 0.13.0.
+    + support for LLVM 12
+    + warn if attaching a kprobe to a non-traceable function
+    + support for -k[k] and elapsed in iter probes
+    + improve JSON printing (nested structs)
+    + return 1 from tracepoint probes
+    + preserve original order of struct types
+    - disallow accessing common tracepoint fields
+    - forbid casting from/to struct types
+
+-------------------------------------------------------------------
 Fri Apr 16 17:42:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to bpftrace 0.12.1.
