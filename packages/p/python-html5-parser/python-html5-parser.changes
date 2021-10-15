@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 15 08:27:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.4.10
+  No changelog from upstream.
+  See instead here:
+  https://github.com/kovidgoyal/html5-parser/compare/v0.4.9...v0.4.10?diff=unified&name=v0.4.10
+
+-------------------------------------------------------------------
 Mon May 31 07:30:34 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest_arch rpm macro for post 15

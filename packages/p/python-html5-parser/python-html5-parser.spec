@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-html5-parser
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        C based HTML 5 parsing for Python
 License:        Apache-2.0
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/kovidgoyal/html5-parser
 Source:         https://github.com/kovidgoyal/html5-parser/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml >= 3.8.0}
 BuildRequires:  %{python_module setuptools}
