@@ -293,4 +293,12 @@
     <comment></comment>
     <requestid>923038</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>433807de2b0e323627aec0a6a7836c95</srcmd5>
+    <version>3.8.3</version>
+    <time>1634331867</time>
+    <user>dimstar_suse</user>
+    <comment>- fix sysuser file name (forwarded request 925523 from eeich)</comment>
+    <requestid>925524</requestid>
+  </revision>
 </revisionlist>

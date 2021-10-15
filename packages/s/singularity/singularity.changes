@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 12:16:57 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- build requires libseccomp-devel (boo#1191697)
+- fix sysuser file name
+
+-------------------------------------------------------------------
 Fri Oct  1 13:09:02 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 -  added example definitions for SLE12-SP5 and SLE15-SP3

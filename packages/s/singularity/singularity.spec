@@ -45,6 +45,7 @@ BuildRequires:  sysuser-tools
 %ifarch aarch64
 BuildRequires:  binutils-gold
 %endif
+BuildRequires:  libseccomp-devel
 Requires:       squashfs
 PreReq:         permissions
 
@@ -111,9 +112,9 @@ for j in LICENSE.md LICENSE; do
     done
 done
 
-echo "g %name -" > system-user-%{name}.conf
-%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
-install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+echo "g %name -" > system-group-%{name}.conf
+%sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
+install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-group-%{name}.conf
 
 %fdupes -s .tmp
 mv .tmp/* .
@@ -163,6 +164,6 @@ rmdir .tmp
 %dir %{_localstatedir}/lib/singularity/mnt
 %dir %{_localstatedir}/lib/singularity/mnt/session
 %{_mandir}/man1/*
-%{_sysusersdir}/system-user-%{name}.conf
+%{_sysusersdir}/system-group-%{name}.conf
 
 %changelog
