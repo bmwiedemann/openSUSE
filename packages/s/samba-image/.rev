@@ -7,4 +7,13 @@
     <comment>Ignore recommends</comment>
     <requestid>884043</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99c1dbf55b0fc0e395b3547677866a3c</srcmd5>
+    <version>unknown</version>
+    <time>1634331848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1634285613.c2d87b9:
+  * Remove -S option, got dropped from smbd [bsc#1191678]</comment>
+    <requestid>925384</requestid>
+  </revision>
 </revisionlist>

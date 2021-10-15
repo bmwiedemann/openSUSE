@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 08:14:26 UTC 2021 - kukuk@suse.com
+
+- Update to version 1634285613.c2d87b9:
+  * Remove -S option, got dropped from smbd [bsc#1191678]
+
+-------------------------------------------------------------------
 Fri Apr 09 12:20:40 UTC 2021 - kukuk@suse.com
 
 - Update to version 1617970761.4e716ec:
