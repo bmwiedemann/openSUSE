@@ -2,7 +2,7 @@ Index: ndppd-0.2.5.43/ndppd.service
 ===================================================================
 --- ndppd-0.2.5.43.orig/ndppd.service
 +++ ndppd-0.2.5.43/ndppd.service
-@@ -3,6 +3,18 @@ Description=NDP Proxy Daemon
+@@ -3,6 +3,17 @@ Description=NDP Proxy Daemon
  After=network.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: ndppd-0.2.5.43/ndppd.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
