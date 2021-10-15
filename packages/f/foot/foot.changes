@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 14 21:01:16 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix default TERM to be "foot" and not "foot-extra" as was intended.
+
+- Add dependency on terminfo package since that is the package that ships
+  ncurses upstream's terminfo for foot, not terminfo-base.
+
+-------------------------------------------------------------------
 Mon Oct  4 07:02:24 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.9.2:

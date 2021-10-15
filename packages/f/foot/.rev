@@ -95,4 +95,14 @@
     https://codeberg.org/dnkl/foot/releases/tag/1.9.2 for more details.</comment>
     <requestid>923137</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>81e346a0a93e4b829ce25c42a6d08dd6</srcmd5>
+    <version>1.9.2</version>
+    <time>1634331842</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix default TERM to be &quot;foot&quot; and not &quot;foot-extra&quot; as was intended.
+- Add dependency on terminfo package since that is the package that ships
+  ncurses upstream's terminfo for foot, not terminfo-base.</comment>
+    <requestid>925295</requestid>
+  </revision>
 </revisionlist>

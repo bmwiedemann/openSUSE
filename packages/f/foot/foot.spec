@@ -23,6 +23,7 @@ Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Requires:       terminfo
 BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -56,12 +57,13 @@ take advantage of the files in this package.
 %autosetup -n %{name}
 
 %build
-%meson -Db_lto=true -Ddefault-terminfo=foot-extra
+%meson -Db_lto=true
 %meson_build
 
 %install
 %meson_install
-mv %{buildroot}/%{_datadir}/terminfo/f/foot-extra-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-extra
+mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-extra
+mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-extra
 
 %files
 %license LICENSE
