@@ -172,4 +172,21 @@
     <comment></comment>
     <requestid>856465</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>27836c28be94cf2f8308efff481b841d</srcmd5>
+    <version>2013_01_03</version>
+    <time>1634331865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2013_01_03:
+  * Switch to a more updated codebase, since the previous one
+    has been unmaintained for years and do not support newer devices.
+    This codebase is the same as the old fxload but with some small
+    changes made by Steven J. Magnani that add support for
+    Cypress FX3 USB 3.0 devices.
+    This package is needed, for example, by most of the recent
+    astronomical cameras (e.g QHY, ZWO, etc), otherwise the OS
+    will not be able to recognize them.
+- Rebase and rename fxload-2008_10_13-prefer_DEVNAME.patch to fxload-2013_01_03-prefer_DEVNAME.patch</comment>
+    <requestid>925432</requestid>
+  </revision>
 </revisionlist>
