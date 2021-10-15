@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 07 07:01:48 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.011:
+  * Improve openSUSE theme
+  * Fix sql error when mirror has no files
+  * Introduce hasall mirror capability
+  * Change behavior filtering mirrors based on supported IP version
+  * Fix mirrorlist for the same region
+  * Schedule scan even when Geo for IP is not detected
+  * Improve detection of ipv4
+  * Fix syntax error after perl upgrade
+  * Properly redirect for symlinks in subtree
+
+-------------------------------------------------------------------
 Thu Sep 30 07:45:10 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.010:
