@@ -32,7 +32,7 @@
   /usr/lib/nagios/plugins/check_mem            px,
   /usr/lib/nagios/plugins/check_contentage     px,
   /usr/lib/nagios/plugins/** ux,
-  /bin/bash rix,
+  /{usr/,}bin/bash rix,
   /{,var/}run/nrpe/nrpe.pid rw,
   /proc/sys/crypto/fips_enabled r,
   /etc/hosts.allow r,

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  7 10:08:12 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- follow /bin/bash -> /usr/bin/bash in the apparmor profile
+
+-------------------------------------------------------------------
 Mon Feb 15 17:51:29 CET 2021 - ro@suse.de
 
 - fix apparmor profile to allow /run as well as /var/run 
