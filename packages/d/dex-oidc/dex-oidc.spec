@@ -17,10 +17,10 @@
 
 
 # Project name when using go tooling.
-%define go_version 1.15
+%define go_version 1.16
 
 Name:           dex-oidc
-Version:        2.28.1
+Version:        2.30.0
 Release:        0
 Summary:        OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
 License:        Apache-2.0
@@ -55,14 +55,12 @@ dex handles the protocols for a given backend.
 
 %build
 %define ldflags "-w -X github.com/dexidp/dex/version.Version=%{version}"
-
 %{goprep} github.com/dexidp/dex
 %{gobuild} -mod=vendor -ldflags %{ldflags} cmd/dex
 
 %install
 %{goinstall}
 %{gofilelist}
-
 # Install the web content
 for file in $(find web -type f); do
   install -D -m 0644 $file %{buildroot}/%{_datadir}/%{name}/$file
