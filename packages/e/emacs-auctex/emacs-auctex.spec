@@ -1,7 +1,7 @@
 #
 # spec file for package emacs-auctex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,15 +28,13 @@ Provides:       ge_auc
 Requires:       emacs
 Requires:       texlive-latex
 Requires:       texlive-tools
-Supplements:    packageand(texlive:emacs)
-%if %suse_version > 1220
+Supplements:    (texlive and emacs)
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
 BuildRequires:  texlive-collection-latexextra
 BuildRequires:  texlive-tex
 BuildRequires:  texlive-texinfo
-%endif
-Version:        12.2
+Version:        12.3
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
 License:        GPL-2.0-or-later

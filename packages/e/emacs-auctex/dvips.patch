@@ -1,6 +1,6 @@
 --- tex.el
 +++ tex.el	2015-11-14 12:10:30.386677534 +0200
-@@ -354,7 +354,7 @@
+@@ -426,7 +426,7 @@
  ;; TeX-print-command.
  
  (defcustom TeX-print-command

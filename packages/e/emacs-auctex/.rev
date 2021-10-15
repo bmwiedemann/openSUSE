@@ -387,4 +387,40 @@
   * Support for standard LaTeX without e-TeX extension is now very</comment>
     <requestid>826659</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e299b3f0f0a4ddcf33d4d4801a765752</srcmd5>
+    <version>12.3</version>
+    <time>1634331828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.3
+  * Support for 'PSTricks' is now PDF-oriented.  AUCTeX no longer turns
+    off PDF mode for 'PSTricks' documents even without 'pst-pdf'.  It
+    now sets up 'TeX-PDF-from-DVI' option so that PDF output is
+    generated when 'TeX-PDF-mode' is enabled (default).  Users who want
+    DVI output should disable PDF mode explicitly by file local
+    variable, or customize 'TeX-PDF-mode' to 'nil'.
+  * The function 'font-latex-update-font-lock' has been obsoleted in
+    order to fix 'bug#37945'.  That function was used by several style
+    files in order to refresh fontification after adding new symbols or
+    verbatim constructs.  It is better to call 'font-lock-flush' in the
+    former case and 'font-latex-set-syntactic-keywords' in the latter
+    case.  The function 'font-latex-update-font-lock' still exists as a
+    no-op which only shows a warning explaining how to update font-lock
+    as mentioned above.
+  * Math expression highlighting was improved.  Highlighting for
+    documents with a lot of inline math expressions '$...$' won't get
+    scrambled now ('bug#33139').
+  * AUCTeX tracks changes in LaTeX2e 2020-02-02 release.  AUCTeX
+    supports the improvements to LaTeX font selection mechanism (NFSS).
+    New macros like '\textsw' or '\textulc' are added to font insertion
+    keyboard commands.  See the section for inserting font specifiers
+    for details.  Further, the entries in the menu LaTeX, Insert Font
+    are reorganized and adjusted accordingly.
+  * Insertion of environments in LaTeX documents (i.e.  'C-c C-e') was
+    improved.  The former code had a few bugs, which sometimes resulted
+    in either spurious empty line or spurious comment prefix, or both,
+    especially when the region is active.  Those bugs are now fixed.
+  * More bugs fixed, other minor features implemented.</comment>
+    <requestid>925236</requestid>
+  </revision>
 </revisionlist>
