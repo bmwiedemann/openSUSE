@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 15 12:47:41 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.4
+  Added:
+  * Updated documentation.
+  * Sizes of horizontal/vertical width/height of article preview
+    are now kept separately. User can thus have different sizes
+    of article preview in each layout.
+  * Added new simplistic skin "nudus".
+  * Article filters now can determine "uniqueness" of article
+    according to article's "id".
+  * Some columns in article list now also display respective
+    values in tooltips.
+  * Columns "read" and "important" in article list are now
+    resizable.
+  Fixed:
+  * Avoid unwanted displays of article previewer.
+  * "Automatically expand item when selected" now behaves
+    consistently when launched with keyboard shortcut.
+  * Fixed multiple issues regarding article "focus" or
+    "selection".
+  * Fixed some problems with recognizing filenames when
+    downloading files.
+  * Fixed crash when repeatedly downloading some files.
+  * Tweaked some icons.
+  * Fixed executable bits on some deployed files.
+  * Updated skin "API".
+
+-------------------------------------------------------------------
 Fri Sep 24 06:38:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.0.3
