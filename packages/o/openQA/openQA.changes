@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 15 00:03:24 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634224259.e820fe5b6:
+  * ci: Update codecov uploader
+  * Generalize CI scripts location
+  * Test handling promise for publishing AMQP events
+  * Improve coding style in `t/23-amqp.t`
+  * tests: Use separate databases for unstable tests
+  * Fix error handling when publishing an AMQP event fails
+  * Use signatures in OpenQA::Jobs::Constants
+  * ci: Mark uncoverable bailout code paths
+  * Reformat code to current perltidy style
+  * tools/tidy: Disable aligning assignments
+  * .mergify.yml: Make rules stricter requiring patch coverage
+
+-------------------------------------------------------------------
 Tue Oct 12 14:41:53 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634049705.509fad0ac:
