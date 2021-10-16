@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:24:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.7.0
+  Full changelog at
+  https://pypa-build.readthedocs.io/en/stable/changelog.html
+  * Dropped support for Python 2 and 3.5
+- Avoid possible bootstrap build depcycles with _multibuild
+- Drop remove-unused-import.patch 
+
+-------------------------------------------------------------------
 Thu Dec 17 14:52:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add remove-unused-import.patch to work with importlib_metadata 
