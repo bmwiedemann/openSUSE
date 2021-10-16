@@ -1,0 +1,7 @@
+<services>
+  <service mode="disabled" name="set_version">
+    <param name="basename">age</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+  </service>
+</services>
