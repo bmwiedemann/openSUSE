@@ -26,6 +26,8 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
+# PATCH-FIX-UPSTREAM subtitlecomposer-ARM_GLES.patch
+Patch0:         subtitlecomposer-ARM_GLES.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -55,11 +57,11 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(openal)
 %if 0%{?suse_version} > 1500
+%ifnarch ppc64 s390x
 BuildRequires:  pkgconfig(pocketsphinx) >= 5
 %endif
+%endif
 Recommends:     %{name}-lang = %{version}
-# GLES not yet supported, see https://invent.kde.org/multimedia/subtitlecomposer/-/issues/58
-ExcludeArch:    %arm aarch64
 
 %description
 A text-based subtitles editor that supports basic operations. It supports
@@ -90,7 +92,7 @@ sed -i 's,#!/usr/bin/env ruby,#!%{_bindir}/ruby,' \
 %install
 %kf5_makeinstall -C build
 
-# Fix persissions
+# Fix permissions
 chmod 755 %{buildroot}%{_kf5_appsdir}/%{name}/scripts/*.rb
 # Fix rpmlint error (devel-file-in-non-devel-package) and install header files as doc (since they are installed just for help)
 mkdir files_for_doc
@@ -117,7 +119,9 @@ perl -pi -e "s|'api'|'%{_docdir}/subtitlecomposer/api'|" %{buildroot}%{_kf5_apps
 %{_kf5_kxmlguidir}/%{name}/
 %{_kf5_sharedir}/mime/packages/%{name}.xml
 %if 0%{?suse_version} > 1500
+%ifnarch ppc64 s390x
 %{_kf5_libdir}/%{name}/
+%endif
 %endif
 
 %files lang -f %{name}.lang
