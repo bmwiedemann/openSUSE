@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 14:08:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Bump disk constraint to 10GB. The last successful builds
+  currently occupy 9.4GB of disk space.
+
+-------------------------------------------------------------------
 Thu Sep 16 11:33:00 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.19.15:

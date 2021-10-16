@@ -354,4 +354,12 @@
   * Set idle and readheader timeouts</comment>
     <requestid>919510</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>47cf2c0d1e503a7cefa6757a8e5d3f06</srcmd5>
+    <version>1.19.15</version>
+    <time>1634417222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925152</requestid>
+  </revision>
 </revisionlist>
