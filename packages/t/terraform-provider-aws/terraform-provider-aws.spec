@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-aws
-Version:        3.24.0
+Version:        3.51.0
 Release:        0
 Summary:        Terraform provider for Amazon Web Services (AWS)
 License:        MPL-2.0
