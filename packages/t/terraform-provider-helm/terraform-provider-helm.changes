@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 29 09:44:58 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.0
+  * Add support for stand-alone debug mode (launch with -debug argument) (#748)
+  * Add helm_template data source to render chart templates locally (#483)
+  * Surface diagnostics when helm release creation fails (#727)
+- from version 2.1.2
+  * Fix dependency download on resource update (#580)
+  * Add support for the --wait-for-jobs option (#720)
+- from version 2.1.1
+  * Fix dry-run happening at plan when manifest is not enabled (#724)
+- from version 2.1.0
+  IMPROVEMENTS:
+  * Add chart diff support by storing the rendered manifest (#702)
+  * Update to Helm 3.5.3 (#709)
+  * Docs: add link to Learn tutorial (#714)
+  BUG FIXES:
+  * Remove kubeconfig file check (#708)
+- from version 2.0.3
+  BUG FIXES:
+  * Fix documentation for KUBE_TOKEN env var name (#684)
+  * Fix destroy stage error for charts with "helm.sh/resource-policy:keep" annotation (#671)
+  * Fix read function to set resource id to null when not found (#674)
+  IMPROVEMENTS:
+  * Update provider configuration docs (#673)
+- from version 2.0.2
+  BUG FIXES:
+  * Remove check for empty kubernetes block 
+- from version 2.0.1
+  BUG FIXES:
+  * Move kubernetes config check out of providerConfigure (#648)
+
+-------------------------------------------------------------------
 Mon Jan 18 14:24:55 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.0.0:
