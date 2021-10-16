@@ -164,4 +164,12 @@ Sorry I didn't realize it had a pending request until now. (forwarded request 22
   * obs-timeout.patch</comment>
     <requestid>730634</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>d6ec8aa24e2972950f324414abd893dd</srcmd5>
+    <version>4.3</version>
+    <time>1634417241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925646</requestid>
+  </revision>
 </revisionlist>

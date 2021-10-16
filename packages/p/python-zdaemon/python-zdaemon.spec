@@ -1,7 +1,7 @@
 #
-# spec file for package python-zdaemon
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ZConfig
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,7 +65,8 @@ rm -rf src/zdaemon.egg-info
 %python_clone -a %{buildroot}%{_bindir}/zdaemon
 
 %check
-%python_exec setup.py test
+pushd src
+%pyunittest discover -v
 
 %post
 %python_install_alternative zdaemon

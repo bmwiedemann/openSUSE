@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 07:52:41 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Sep 12 17:12:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Patch out flaky tests that seldomly fails in obs:
