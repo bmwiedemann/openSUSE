@@ -1,7 +1,7 @@
-Index: ristretto-0.3.5/org.xfce.ristretto.desktop.in
+Index: ristretto-0.3.5/ristretto.desktop.in
 ===================================================================
---- ristretto-0.3.5.orig/org.xfce.ristretto.desktop.in
-+++ ristretto-0.3.5/org.xfce.ristretto.desktop.in
+--- ristretto-0.3.5.orig/ristretto.desktop.in
++++ ristretto-0.3.5/ristretto.desktop.in
 @@ -10,4 +10,4 @@ Type=Application
  X-MultipleArgs=false
  Categories=GTK;Graphics;Viewer;
