@@ -19,15 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-sphinxcontrib-httpdomain
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Sphinx domain for HTTP APIs
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-contrib/httpdomain
 Source:         https://github.com/sphinx-contrib/httpdomain/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 49-remove_force_decode.patch gh#sphinx-contrib/httpdomain#49 mcepl@suse.com
-# Finally remove use of force_decode function (removed from Sphinx).
-Patch0:         49-remove_force_decode.patch
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module Sphinx >= 1.5}
 BuildRequires:  %{python_module bottle >= 0.11.0}
