@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:27:43 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * ddclient.service
+
+-------------------------------------------------------------------
 Tue May 18 14:43:16 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Systemd expects the PID file to exist as soon as the main process

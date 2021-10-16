@@ -391,4 +391,12 @@ I can't fix it as I don't know sysvinit scripts (forwarded request 204930 from p
     <comment></comment>
     <requestid>900771</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>470c3941522eb0b876145ed6cce63b55</srcmd5>
+    <version>3.9.1</version>
+    <time>1634418430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925663</requestid>
+  </revision>
 </revisionlist>
