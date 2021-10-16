@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-eliot
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        A logging system that tells the user why something happened
 License:        Apache-2.0
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module hypothesis >= 3.47.0}
 BuildRequires:  %{python_module pyrsistent >= 0.11.8}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 40}
 BuildRequires:  %{python_module six}
@@ -52,7 +53,7 @@ Requires:       python-aiocontextvars
 %endif
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

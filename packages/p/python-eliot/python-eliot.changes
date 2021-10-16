@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  1 08:32:49 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.13.0
+  * Custom JSON encoder support in tests
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Wed Jan 20 17:45:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Add runtime requirement for contextvars and the correct BR for
