@@ -299,4 +299,14 @@
   - fixed rrule handling, re-enabled test_create_america_new_york</comment>
     <requestid>850949</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c0b4da1cc0c32c8bda898dd8a19b6d71</srcmd5>
+    <version>4.0.8</version>
+    <time>1634417257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.8:
+  - Support added for Python 3.9 and 3.10 (no code changes needed).
+  - Replace bare 'except:' with 'except Exception:' (#281)</comment>
+    <requestid>925734</requestid>
+  </revision>
 </revisionlist>

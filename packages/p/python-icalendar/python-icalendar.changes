@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:14:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.8:
+  - Support added for Python 3.9 and 3.10 (no code changes needed).
+  - Replace bare 'except:' with 'except Exception:' (#281)
+
+-------------------------------------------------------------------
 Thu Nov 26 09:27:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.0.7:
