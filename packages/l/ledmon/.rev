@@ -166,4 +166,12 @@
     <comment>Update to version 0.95 (forwarded request 903462 from susnux)</comment>
     <requestid>903606</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9858eb89498e03de792dc0532b715f60</srcmd5>
+    <version>0.95</version>
+    <time>1634417236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925652</requestid>
+  </revision>
 </revisionlist>

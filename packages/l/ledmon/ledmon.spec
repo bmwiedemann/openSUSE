@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/intel/ledmon/
 Source0:        https://github.com/intel/ledmon/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_ledmon.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libsgutils-devel
@@ -42,7 +43,7 @@ ControlUtilities. They help to enable LED management for software RAID
 solutions.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}
