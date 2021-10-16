@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.73.5
+Version:        0.74.2
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
@@ -42,7 +42,6 @@ Requires:       xdg-utils
 Suggests:       bzr
 Suggests:       git-core
 Suggests:       mercurial
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -56,6 +55,7 @@ task list manager, an equation editor, a tray icon, and support for
 version control.
 
 %lang_package
+
 %prep
 %setup -q
 
@@ -86,8 +86,6 @@ rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/icons/hicolor/*/apps/zim.*
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-zim-notebook.*
-%{_datadir}/icons/hicolor/*/mimetypes/gnome-mime-application-x-zim-notebook.*
-%{_datadir}/pixmaps/zim.png
 %{_mandir}/man1/zim.1%{?ext_man}
 
 %files lang -f %{name}.lang
