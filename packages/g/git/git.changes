@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 13 18:09:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.33.1:
+  * fix "git pull" and "git rebase -r" various corner cases and bugs
+  * "git commit --fixup" now works with "--edit" again.
+  * Fix "git send-email" unwanted threading
+  * Fix output from "git fast-export" anonymization feature
+    showing an annotated tag incorrectly.
+  * Fixes for various command output
+  * fix "git difftool --dir-diff" mishandling symbolic links
+  * Redact sensitive data in the HTTP trace for HTTP/2 requests
+  * further bug fixes for various git operations
+
+-------------------------------------------------------------------
 Mon Sep 20 08:33:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
