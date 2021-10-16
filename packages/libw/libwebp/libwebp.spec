@@ -12,29 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libwebp
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://developers.google.com/speed/webp/
-
 #Git-Clone:	https://chromium.googlesource.com/webm/libwebp/
 Source:         https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-BuildRequires:  freeglut-devel
 BuildRequires:  giflib-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glut)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
 
 %description
 WebP is an image format that does lossy compression of digital
@@ -113,9 +112,9 @@ common imports - WebPImportGray/WebPImportRGB565/WebPImportRGB4444.
 Summary:        Development files for libwebp, a library for the WebP format
 Group:          Development/Libraries/C and C++
 Requires:       libwebp7 = %version
+Requires:       libwebpdecoder3 = %version
 Requires:       libwebpdemux2 = %version
 Requires:       libwebpmux3 = %version
-Requires:       libwebpdecoder3 = %version
 %if %{with extras}
 Requires:       libwebpextras0 = %version
 %endif
@@ -138,7 +137,7 @@ images more efficiently.
 
 %install
 %make_install
-rm -f "%buildroot/%_libdir"/*.la
+find "%buildroot" -type f -name "*.la" -delete -print
 
 %post   -n libwebp7 -p /sbin/ldconfig
 %postun -n libwebp7 -p /sbin/ldconfig

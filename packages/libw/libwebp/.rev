@@ -266,4 +266,12 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>869973</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>17dd7c6c3f9f888ef8e610d3353a1884</srcmd5>
+    <version>1.2.1</version>
+    <time>1634417224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:</comment>
+    <requestid>925186</requestid>
+  </revision>
 </revisionlist>

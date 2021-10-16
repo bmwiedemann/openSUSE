@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 13 17:59:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 1.2.1:
+  * minor lossless encoder improvements and x86 color conversion
+    speed up
+  * further security related hardening in libwebp & examples
+  * toolchain updates and bug fixes
+  * use more inclusive language within the source
+
+-------------------------------------------------------------------
 Sat Jan 30 11:20:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
