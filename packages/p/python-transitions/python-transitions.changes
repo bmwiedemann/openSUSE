@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  2 15:58:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.9
+  Bugfix
+  * NestedEvent now wraps the machine's scope into partials passed
+    to HierarchicalMachine._process. This prevents queued
+    transitions from losing their scope.
+  Feature
+  * (A)Graph.draw function (object returned by
+    GraphMachine.get_graph()) can be passed a file/stream object
+    as first parameter or None. The later will result in draw
+    returning a binary string. (thanks @Blindfreddy).
+  * Use id(model) instead of model for machine-bound caches in
+    LockedMachine, AsyncMachine and GraphMachine. This might
+    influence pickling.
+
+-------------------------------------------------------------------
 Wed Apr  7 16:32:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.8
