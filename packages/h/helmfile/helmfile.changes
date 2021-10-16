@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 08:16:35 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.141.0:
+  * 9a0ce53 (HEAD, tag: v0.141.0) Support Helm 3.7.0's reworked
+    OCI support (#1970)
+
+-------------------------------------------------------------------
 Fri Sep 17 06:57:31 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.140.1:
