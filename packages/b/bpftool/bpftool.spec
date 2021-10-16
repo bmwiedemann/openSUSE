@@ -1,7 +1,7 @@
 #
 # spec file for package bpftool
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,8 @@ Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            http://www.kernel.org/
+URL:            http://www.kernel.org/
+BuildRequires:  binutils-devel
 BuildRequires:  docutils
 BuildRequires:  kernel-source
 BuildRequires:  libelf-devel
@@ -39,7 +40,12 @@ sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' Makefile
 
 %build
 cd tools/bpf/bpftool
-%make_build V=1 feature-reallocarray=1 all doc
+%make_build V=1 \
+    feature-reallocarray=1 \
+    feature-libbfd-liberty=1 \
+    feature-disassembler-four-args=1 \
+    all \
+    doc
 
 %install
 cd tools/bpf/bpftool
