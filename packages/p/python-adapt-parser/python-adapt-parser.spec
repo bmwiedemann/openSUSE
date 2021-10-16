@@ -1,7 +1,7 @@
 #
 # spec file for package python-adapt-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adapt-parser
-Version:        0.3.4
+Version:        0.6.1
 Release:        0
 Summary:        A text-to-intent parsing framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MycroftAI/adapt
-Source:         https://github.com/MycroftAI/adapt/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module pyee >= 1.0.1}
+Source:         https://github.com/MycroftAI/adapt/archive/refs/tags/release/v%{version}.tar.gz
+BuildRequires:  %{python_module pyee >= 8.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module unittest-xml-reporting}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyee >= 1.0.1
+Requires:       python-pyee >= 8.1.0
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 %python_subpackages
@@ -42,8 +42,8 @@ determination framework. It is intended to parse natural language text into
 a structured intent that can then be invoked programatically.
 
 %prep
-%setup -q -n adapt-%{version}
-sed -i -s "s/==/>=/" setup.py
+%setup -q -n adapt-release-v%{version}
+sed -i -s "s/==/>=/" requirements.txt
 
 %build
 %python_build
@@ -53,7 +53,7 @@ sed -i -s "s/==/>=/" setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec run_tests.py --fail-on-error
+%python_exec setup.py test
 
 %files %{python_files}
 %license LICENSE.md

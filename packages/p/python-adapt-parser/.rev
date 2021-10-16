@@ -35,4 +35,41 @@
     <comment></comment>
     <requestid>765024</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28abcb58dbe49a95b890d8be6925b942</srcmd5>
+    <version>0.6.1</version>
+    <time>1634417232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * Support for python 2.7 is now a firm thing and not just implied. 
+
+- Update to 0.5.1
+  * Publish to pypi from master after tagging
+  * Fix name of LICENSE file in MANIFEST (#140)
+  * Hard code Pypi user to __token__
+  * Add checks and bdist_wheel
+  * Split PR workflow from push workflow
+  * Add automatic tagging
+  * Remove old publish scripts
+  * Add support for publishing to pypi
+- from version 0.5.0
+  * Guarantee sorted results from IntentDeterminationEngine.determine_intent (#137)
+  * Fixes issue 97 (#138)
+- from version 0.4.3
+  * Updated docstrings, and some small fixes (#132)
+  * Bump version to 0.4.2
+  * Fix use after remove
+  * Test that a removed regexp can be re-added
+  * Fix storing regex as string when cleaned
+- from version 0.4.1
+  * Scoring tests and fixes (#131)
+  * Issues/114 (#128)
+  * Add .envrc to git-ignore
+  * Consolidate requirements
+  * Remove unused requirement argparse
+  * Add license and readme to MANIFEST.in
+  * Use run_tests.sh in github actions
+  * Add run_tests.sh to easily do linting and tests</comment>
+    <requestid>925651</requestid>
+  </revision>
 </revisionlist>
