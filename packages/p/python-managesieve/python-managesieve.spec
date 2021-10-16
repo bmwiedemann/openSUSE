@@ -1,7 +1,7 @@
 #
 # spec file for package python-managesieve
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define oname  managesieve
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-managesieve
-Version:        0.6
+Version:        0.7.1
 Release:        0
 Summary:        Python Module Implementing the ManageSieve Protocol
 License:        GPL-3.0-or-later AND Python-2.0
@@ -28,11 +28,11 @@ Group:          Development/Libraries/Python
 URL:            https://managesieve.readthedocs.io/
 Source:         https://gitlab.com/htgoebel/managesieve/-/archive/v%{version}/managesieve-v%{version}.tar.bz2
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # provides same binary: /usr/bin/sieveshell
 Conflicts:      perl-Cyrus-SIEVE-managesieve
 BuildArch:      noarch
@@ -45,7 +45,6 @@ protocol. It also includes an user application (the interactive sieveshell).
 %prep
 %setup -q -n %{oname}-v%{version}
 touch test/__init__.py
-
 # Fix URL
 sed -i 's|http://packages.python.org/managesieve|%{url}|' setup.py
 
@@ -57,7 +56,7 @@ sed -i 's|http://packages.python.org/managesieve|%{url}|' setup.py
 %python_clone -a %{buildroot}%{_bindir}/sieveshell
 
 %check
-%python_exec setup.py test -v
+%pytest
 
 %post
 %python_install_alternative sieveshell

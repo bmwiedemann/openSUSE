@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep  2 11:56:34 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.7.1
+  0.7.1 (2021-03-11)
+  ------------------
+  :managesieve:
+     - Actually raise debug-only exceptions instead of jsut returning them.
+     - Fix invalid string-escape in docstring.
+     - Some minor clean-up.
+  :sieveshell:
+     - Some minor clean-up.
+  0.7 (2021-03-05)
+  ----------------
+  :sieveshell:
+     - For ``get`` and ``put`` expand ``~`` and ``~user`` constructions in
+       `filename` . For ``put``, if script-name is not given, the file's
+       basename is used.
+  :managesieve:
+     - Fix error when constructing debug error message.
+
+-------------------------------------------------------------------
 Mon May 25 06:50:44 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
