@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 12 10:07:48 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.9.1
+  - Fix regression with named `sql.Placeholder` (:ticket:`1291`).
+- Update to 2.9.0
+  - ``with connection`` starts a transaction on autocommit transactions too
+    (:ticket:`#941`).
+  - Timezones with fractional minutes are supported on Python 3.7 and following
+    (:ticket:`#1272`).
+  - Escape table and column names in `~cursor.copy_from()` and `~cursor.copy_to()`.
+  - Connection exceptions with sqlstate ``08XXX`` reclassified as
+    `~psycopg2.OperationalError` (a subclass of the previously used
+    `~psycopg2.DatabaseError`) (:ticket:`#1148`).
+  - Include library dirs required from libpq to work around MacOS build problems
+    (:ticket:`#1200`).
+  - Dropped support for Python 2.7, 3.4, 3.5 (:ticket:`#1198, #1000, #1197`).
+  - Dropped support for mx.DateTime.
+  - Use `datetime.timezone` objects by default in datetime objects instead of
+    `~psycopg2.tz.FixedOffsetTimezone`.
+  - The `psycopg2.tz` module is deprecated and scheduled to be dropped in the
+    next major release.
+  - Provide :pep:`599` wheels packages (manylinux2014 tag) for i686 and x86_64
+    platforms.
+  - Provide :pep:`600` wheels packages (manylinux_2_24 tag) for aarch64 and
+    ppc64le platforms.
+  - Wheel package compiled against OpenSSL 1.1.1k and PostgreSQL 13.3.
+  - Build system for Linux/MacOS binary packages moved to GitHub action.
+
+-------------------------------------------------------------------
 Wed Sep 16 21:18:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.8.6:

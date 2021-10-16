@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-psycopg2
-Version:        2.8.6
+Version:        2.9.1
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception
 URL:            http://initd.org/psycopg/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +65,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %check
 # tests require running PGSQL
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover
+#%%python_expand PYTHONPATH=%%{buildroot}%%{$python_sitearch} $python -m unittest discover
 
 %files %{python_files}
 %license LICENSE
