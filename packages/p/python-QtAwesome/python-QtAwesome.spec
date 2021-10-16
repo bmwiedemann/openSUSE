@@ -19,25 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-QtAwesome
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
 URL:            https://github.com/spyder-ide/qtawesome
 Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
 BuildRequires:  %{python_module QtPy}
+BuildRequires:  %{python_module setuptools}
+# SECTION test requirements
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+# Choose one of the many backend options for pytest-qt,
+# only PyQt5 available for all flavors and supported by QtPy
+BuildRequires:  %{python_module qt5}
+# /SECTION
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  xvfb-run
 Requires:       python-QtPy
-BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -49,7 +53,7 @@ library by Rick Blommers.
 
 %prep
 %setup -q -n QtAwesome-%{version}
-dos2unix CHANGELOG.md
+dos2unix CHANGELOG.md README.md
 
 %build
 %python_build

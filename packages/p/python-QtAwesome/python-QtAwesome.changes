@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 16 09:04:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.3
+  * Fix: Implicit integer conversion is deprecated,
+    Cast tileWidth to an integer
+  * Fix: Timer should belong to parent widget
+- Resolve have-choice for Qt backends tested by pytest-qt
+
+-------------------------------------------------------------------
 Tue Feb  9 16:02:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.2
