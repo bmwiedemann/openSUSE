@@ -1,7 +1,7 @@
 #
 # spec file for package python-base58
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,21 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-base58
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Base58 and Base58Check implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/keis/base58
 Source:         https://files.pythonhosted.org/packages/source/b/base58/base58-%{version}.tar.gz
-BuildRequires:  %{python_module PyHamcrest}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module PyHamcrest >= 2.0.2}
+BuildRequires:  %{python_module pytest >= 4.6}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
