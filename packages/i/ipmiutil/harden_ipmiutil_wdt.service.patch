@@ -2,7 +2,7 @@ Index: ipmiutil-3.1.7/scripts/ipmiutil_wdt.service
 ===================================================================
 --- ipmiutil-3.1.7.orig/scripts/ipmiutil_wdt.service
 +++ ipmiutil-3.1.7/scripts/ipmiutil_wdt.service
-@@ -3,6 +3,18 @@ Description=ipmiutil Watchdog Timer Serv
+@@ -3,6 +3,17 @@ Description=ipmiutil Watchdog Timer Serv
  After=network.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: ipmiutil-3.1.7/scripts/ipmiutil_wdt.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true

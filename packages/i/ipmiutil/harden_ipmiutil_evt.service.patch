@@ -2,7 +2,7 @@ Index: ipmiutil-3.1.7/scripts/ipmiutil_evt.service
 ===================================================================
 --- ipmiutil-3.1.7.orig/scripts/ipmiutil_evt.service
 +++ ipmiutil-3.1.7/scripts/ipmiutil_evt.service
-@@ -3,6 +3,18 @@ Description=ipmiutil Event Daemon
+@@ -3,6 +3,17 @@ Description=ipmiutil Event Daemon
  After=network.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: ipmiutil-3.1.7/scripts/ipmiutil_evt.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
