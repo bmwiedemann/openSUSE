@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:28:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * mgetty@.service
+  * vgetty@.service
+
+-------------------------------------------------------------------
 Thu Jun 24 08:16:55 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add faxq-libexec.patch: adjust buildsystem to move faxq-helper setuid binary

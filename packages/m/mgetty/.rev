@@ -319,4 +319,12 @@
   (build currently fails due to rpmlint2 fallout) (forwarded request 901732 from mgerstner)</comment>
     <requestid>905249</requestid>
   </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>3c111957f4d523b5947c30cc9e6132da</srcmd5>
+    <version>1.2.1</version>
+    <time>1634417237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925653</requestid>
+  </revision>
 </revisionlist>
