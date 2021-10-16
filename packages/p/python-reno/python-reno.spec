@@ -1,7 +1,7 @@
 #
 # spec file for package python-reno
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,18 @@
 # uses openstack packages: build and depend on default python3 provider only
 %define pythons python3
 Name:           python-reno
-Version:        3.1.0
+Version:        3.5.0
 Release:        0
 Summary:        RElease NOtes manager
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://www.openstack.org/
 Source0:        https://files.pythonhosted.org/packages/source/r/reno/reno-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module dulwich >= 0.15.0}
-BuildRequires:  %{python_module openstackdocstheme}
+BuildRequires:  %{python_module openstackdocstheme >= 2.2.1}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +49,7 @@ Requires:       python-dulwich >= 0.15.0
 Requires:       python-pbr
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

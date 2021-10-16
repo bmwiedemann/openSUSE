@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:18:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Close files opened by Scanner, Loader
+  * loader: Validate section keys
+  * loader: Improve tests and logging
+  * loader: Handle note files missing top-level keys
+  * Moving to OFTC
+  * [community goal] Update contributor documentation
+  * setup.cfg: Replace dashes with underscores
+  * Handle repositories with a default branch other than master
+  * Use py3 as the default runtime for tox
+  * Deny creating subdirectories
+  * drop lower-constraints
+  * fix: order tags to be sure to favor release tag over pre-release tags
+  * raise the minimum version of pyyaml
+  * add \`semver-next\` command
+  * add release note for \`encoding\` option
+  * [trivial] Use opendev url for source code link
+  * Add config option to set default character encoding
+  * Some cleanups
+  * Switch to newer openstackdocstheme version
+
+-------------------------------------------------------------------
 Mon Dec 14 21:23:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - This package depends on packages from openstack, which are only
