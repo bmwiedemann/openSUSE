@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 14 09:55:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.10.3:
+  * Fix gmt offset seconds
+  * Fix various typos in source code
+
+-------------------------------------------------------------------
+Sun Sep 19 09:44:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.10.2
+  * Improved imported date stability
+  * Respect --libdir for opensp. Don't override docdir.
+
+-------------------------------------------------------------------
 Mon Mar  8 22:29:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.1:

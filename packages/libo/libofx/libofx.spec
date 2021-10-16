@@ -17,7 +17,7 @@
 
 
 Name:           libofx
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        OFX Command Parser and API
 License:        GPL-2.0-or-later
@@ -70,6 +70,12 @@ This subpackage contains the header files for the C API.
 chmod -x doc/ofx_sample_files/ofx_spec160_stmtrs_example.sgml
 
 %build
+# Leap 15 has gengetopt 2.22 and needs the typo
+sed -i 's#unnamed-opts#unamed-opts#' {ofxconnect,ofxdump}/Makefile.am
+
+# lto causes build issues on leap and armv7l
+%define _lto_cflags %{nil}
+
 sh autogen.sh
 %configure --disable-static --with-opensp-libs=%{_libdir}
 %make_build docdir=%{_defaultdocdir}/%{name}
