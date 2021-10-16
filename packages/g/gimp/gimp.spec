@@ -31,7 +31,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.24
+Version:        2.10.28
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -50,7 +50,7 @@ BuildRequires:  fontconfig-devel >= 2.12.4
 BuildRequires:  gcc-c++
 BuildRequires:  gdk-pixbuf-loader-rsvg
 # For some odd reason build needs gegl executable.
-BuildRequires:  gegl
+BuildRequires:  gegl >= 0.4.32
 BuildRequires:  ghostscript-devel
 # Explicitly needed, otherwise ghostscript-mini is used during the
 # build, and it's not enough for gimp.
@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
-BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.30
+BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.32
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.32
@@ -234,7 +234,6 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-export LDFLAGS="%{optflags} -lm"
 %configure \
 	--disable-silent-rules \
 	--disable-static\
@@ -258,7 +257,6 @@ rm %{buildroot}%{_libdir}/gimp/2.0/*/*.*a
 %find_lang gimp20-python %{?no_lang_C} gimp20.lang
 %find_lang gimp20-script-fu %{?no_lang_C} gimp20.lang
 %find_lang gimp20-std-plug-ins %{?no_lang_C} gimp20.lang
-%find_lang gimp20-tips %{?no_lang_C} gimp20.lang
 echo "%%defattr(-,root,root)" >plugins.list
 echo "%%defattr(-,root,root)" >plugins-python.list
 for PLUGIN in %{buildroot}%{_libdir}/gimp/2.0/plug-ins/* ; do
