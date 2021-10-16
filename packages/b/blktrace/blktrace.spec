@@ -1,7 +1,7 @@
 #
 # spec file for package blktrace
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{!?_without_docs: %global with_docs 1}
 Name:           blktrace
-Version:        1.2.0+git.20180516
+Version:        1.3.0+git.20210628
 Release:        0
 Summary:        Block IO tracer
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            http://git.kernel.dk/?p=blktrace.git;a=summary
+URL:            http://git.kernel.dk/?p=blktrace.git;a=summary
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         blkparse-track-smallest-sequence-read-per-device.patch
 BuildRequires:  gcc
@@ -64,17 +64,13 @@ make CFLAGS="%{optflags}" all %{?with_docs: docs} -j1
 
 %install
 make DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir} install
-# move blktrace to /bin (bug #300186)
-mkdir -p %{buildroot}/bin
-mv %{buildroot}%{_bindir}/{blktrace,blkparse,btrace} \
-    %{buildroot}/bin
 
 %files
 %defattr(-,root,root)
 %doc README %{?with_docs: doc/blktrace.pdf btreplay/doc/btreplay.pdf btt/doc/btt.pdf}
-/bin/blktrace
-/bin/blkparse
-/bin/btrace
+%{_bindir}/blktrace
+%{_bindir}/blkparse
+%{_bindir}/btrace
 %{_bindir}/blkrawverify
 %{_bindir}/bno_plot.py
 %{_bindir}/btt

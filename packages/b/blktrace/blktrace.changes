@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 11 13:08:42 UTC 2021 - ddiss@suse.com
+
+- Update to version 1.3.0+git.20210628:
+  * blktrace: exit directly when nthreads_running != ncpus in run_tracers()
+  * blktrace 1.3.0
+  * blkparse: Print time when trace was started
+  * blktrace: inclusive terminology
+  * blkparse: Print PID information for TN_MESSAGE events
+  * iowatcher: Handle cgroup information
+  * iowatcher: Use blktrace_api.h
+  * blkparse: Handle cgroup information
+  * blkparse: Fix up the sector and length of split completions
+  * blkparse: Initialize and test for undefined request tracking timestamps
+
+-------------------------------------------------------------------
+Mon Oct 11 11:43:50 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- UsrMerge: relocate blktrace, blkparse and btrace (bsc#1191056)
+
+-------------------------------------------------------------------
 Tue Jun 05 17:58:47 UTC 2018 - opensuse-packaging@opensuse.org
 
 - Update to version 1.2.0+git.20180516:
