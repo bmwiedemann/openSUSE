@@ -244,4 +244,20 @@
     <comment></comment>
     <requestid>917173</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>667da9b9abbf66ef753996397c87cce2</srcmd5>
+    <version>0.36.8</version>
+    <time>1634417260</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.36.8
+  * Fixed ServiceBrowser infinite loop when zeroconf is closed before it is canceled 
+  * Improved performance of responding to queries
+  * Improved log message when receiving an invalid or corrupt packet
+  * Improved performance of sending outgoing packets
+  * Reduced memory usage for incoming and outgoing packets
+  * Improved performance of constructing outgoing packets
+  * Deferred parsing of incoming packets when it can be avoided
+  * Improved performance of parsing incoming packets</comment>
+    <requestid>925744</requestid>
+  </revision>
 </revisionlist>

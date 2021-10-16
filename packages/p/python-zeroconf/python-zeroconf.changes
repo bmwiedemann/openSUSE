@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:44:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.36.8
+  * Fixed ServiceBrowser infinite loop when zeroconf is closed before it is canceled 
+  * Improved performance of responding to queries
+  * Improved log message when receiving an invalid or corrupt packet
+  * Improved performance of sending outgoing packets
+  * Reduced memory usage for incoming and outgoing packets
+  * Improved performance of constructing outgoing packets
+  * Deferred parsing of incoming packets when it can be avoided
+  * Improved performance of parsing incoming packets
+
+-------------------------------------------------------------------
 Mon Sep  6 09:19:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.36.2:
