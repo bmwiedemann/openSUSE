@@ -1,3 +1,17 @@
+gpxsee (9.9) stable; urgency=medium
+
+  * Fixed scroll wheel zooming on devices with "fine-resolution
+    wheels".
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 16 Oct 2021 11:07:31 +0200
+
+gpxsee (9.8) stable; urgency=low
+
+  * Added support for Waypoint/POI icons.
+  * Various minor bugfixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 13 Oct 2021 21:11:16 +0200
+
 gpxsee (9.7) stable; urgency=low
 
   * Added Chinese translation.

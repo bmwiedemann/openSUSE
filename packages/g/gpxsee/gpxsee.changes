@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 16 11:05:33 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.9
+  * Fixed scroll wheel zooming on devices with "fine-resolution
+    wheels".
+
+-------------------------------------------------------------------
+Wed Oct 13 21:07:45 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.8
+  * Added support for Waypoint/POI icons.
+  * Various minor bugfixes.
+
+-------------------------------------------------------------------
 Sun Sep 26 12:09:32 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.7

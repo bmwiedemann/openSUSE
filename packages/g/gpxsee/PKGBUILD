@@ -1,5 +1,5 @@
 pkgname=gpxsee
-pkgver=9.7
+pkgver=9.9
 pkgrel=1
 pkgdesc='GPS log files visualizing and analyzing tool'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 build() {
 	cd GPXSee-${pkgver}
 	lrelease gpxsee.pro
-	qmake gpxsee.pro
+	qmake PREFIX=/usr gpxsee.pro
 	make
 }
 
