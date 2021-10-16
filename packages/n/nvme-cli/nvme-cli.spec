@@ -27,6 +27,7 @@ Source:         https://github.com/linux-nvme/nvme-cli/archive/v%{version}.tar.g
 Source2:        nvme-cli-rpmlintrc
 # downstream patches:
 Patch102:       0102-nvme-cli-Add-script-to-determine-host-NQN.patch
+Patch103:	harden_nvmf-connect@.service.patch
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
@@ -65,6 +66,7 @@ Optional dependency offering bash completion for NVM Express user space tools
 %prep
 %setup -q
 %patch102 -p1
+%patch103 -p1
 
 %build
 echo %{version} > version

@@ -1,0 +1,22 @@
+Index: nvme-cli-1.15/nvmf-autoconnect/systemd/nvmf-connect@.service
+===================================================================
+--- nvme-cli-1.15.orig/nvmf-autoconnect/systemd/nvmf-connect@.service
++++ nvme-cli-1.15/nvmf-autoconnect/systemd/nvmf-connect@.service
+@@ -9,6 +9,17 @@ PartOf=nvmf-connect.target
+ Requires=nvmf-connect.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Environment="CONNECT_ARGS=%i"
+ ExecStart=/bin/sh -c "nvme connect-all --matching --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
