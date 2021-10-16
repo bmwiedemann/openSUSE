@@ -17,13 +17,14 @@
 
 
 Name:           terraform-provider-libvirt
-Version:        0.6.3+git.1604843676.67f4f2aa
+Version:        0.6.11+git.1631460851.7074fe3c
 Release:        0
 Summary:        Terraform provider for kvm hypervisors via libvirt
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/dmacvicar/terraform-provider-libvirt/
 Source:         %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source99:       %{name}-rpmlintrc
 %if 0%{?suse_version}
 %{go_nostrip}
@@ -33,7 +34,7 @@ BuildRequires:  debhelper
 BuildRequires:  dh-golang
 BuildRequires:  golang-go
 BuildRequires:  libvirt-dev
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  xz-utils
 %else
 BuildRequires:  libvirt-devel
@@ -63,11 +64,10 @@ This is a terraform provider that lets you provision servers on a libvirt host
 via Terraform.
 
 %prep
-%setup -q
+%setup -qa1
 
 %build
-export GO111MODULE=off
-export GOPROXY=off
+export GOFLAGS="-mod=vendor"
 %if 0%{?suse_version}
 %{goprep} github.com/dmacvicar/terraform-provider-libvirt
 %{gobuild}
@@ -81,8 +81,7 @@ go build -ldflags "-X main.version=%{version}" .
 %endif
 
 %install
-export GO111MODULE=off
-export GOPROXY=off
+export GOFLAGS="-mod=vendor"
 %if 0%{?suse_version}
 %{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib

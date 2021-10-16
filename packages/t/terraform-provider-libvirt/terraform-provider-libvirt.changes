@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:36:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop redundant %setup calls
+
+-------------------------------------------------------------------
+Fri Oct 08 11:16:08 UTC 2021 - waldt@b1-systems.de
+
+- use GOFLAGS="-mod=vendor" and vendor.tar.xz to build
+- Update to version 0.6.11+git.1631460851.7074fe3c:
+  * fix InternalValidate error on cpu.mode block
+  * Allow ignoring known_hosts verification
+  * Use login name instead of display name as default
+  * Add support for SSH agent authentication
+  * go.mod: update go-libvirt to latest version
+  * Port PR#824 to go-libvirt
+  * Before pool import pool type is not set
+  * Add acceptance test for demonstrate fail case during import of pool typed dir
+  * README: fix headline level and typo
+  * go fmt
+  * Fix network update parameter order
+  * Fix error condition
+  * Fix network update parameter order
+  * Do not try to update bridge section (not supported)
+  * Add link to registry documentation
+  * README: remove TOC
+  * examples: Fix network card name
+  * Revamp README
+  * goreleaser: use go 1.16
+  * Use a Github Actions badge
+  * Release as draft
+  * Update README
+  * Add goreleaser in order to publish to registry
+  * Add releaser in order to publish to registry
+  * Workaround for bug in NetworkUpdate reversed parameters
+  * Check for chmod error
+  * Revert creating tmp file in private tmp dir
+  * Use t.TempDir()
+  * Start server so that URI is not empty
+  * Windows is slower than I thought
+  * Include Windows artifact
+  * go vet
+  * Fix image URL handling on Windows
+  * Fix Windows tests by using simple paths
+  * Make sure we build a valid OS path
+  * Fix tests on Windows
+  * Simplify test file server with httptest
+  * Remove unused import
+  * Fix URL handling on Windows
+  * Fix temporary directory on Windows
+  * Fix URL handling on Windows
+  * Improve skipping acceptance tests
+  * Setup xsltproc for different OS
+  * Setup terraform before terraform fmt
+  * Build on all platforms
+  * Install xsltproc before running testsuite
+  * Add github workflow
+  * Support for libvirt connection URIs
+  * Remove libvirt bindings
+  * Revert "No need to return terraform.ResourceProvider"
+  * Remove acceptance tests not using the resource test framework.
+  * Basic support for libvirt URIs
+  * No need to return terraform.ResourceProvider
+  * port - update mock parameters to upstream type
+  * Fix tests crashing due to client setup
+  * port - some missing libvirtc uses
+  * port - fix template test - missing nvram undefine flag
+  * port - NetworkUpdate params are now swapped
+  * port - fix network lookup uuid usage
+  * port - fix most network acceptance tests - active handling
+  * port - missed removing old if now test back
+  * port - fix domain acceptance tests - uuid handling
+  * port - missed removing old if
+  * port - reinstate error checks with new upstream error code
+  * Use new exported error from digital ocean library
+  * Fix helper
+  * port - download via buffer - review/revise
+  * port - pipe in goroutine so can close - TBC pipe required
+  * port - close our new second connection too
+  * port - record/capture io close error
+  * port - use previous libvirt connect behaviour for tests (blind URI)
+  * port - default network test requires network exists
+  * port - network tests require accept testing enabled
+  * port - use struct field directly
+  * port - restore error var & use struct field directly
+  * port - volume.go
+  * port - missed some
+  * port - tests bulk pass - compiles but fails tests
+  * port - start network tests
+  * port - pool partial
+  * port - network def partial
+  * port - volumes
+  * port - more volume copying
+  * port - partial cloudinit
+  * port - volume copier - remove var decl
+  * port - volume copier - missing close, just defer it
+  * port - volume copier
+  * port - remove subpackages disk & volume
+  * port - partial volume create
+  * port - wait for network active
+  * remove test file used to validate push rights
+  * test push rights to pr branch
+  * port to go-libvirt
+  * Rename libvirt to libvirtc
+  * Fix Intro table of contents link
+  * Including the domain ID in the error output
+  * created XSL file for adding a new channel
+  * Trivial typo fix
+  * Remove mention of CentOS from README.md
+  * Network config in examples for openSUSE should be 1, not 2
+  * Minor cleanup of migration-13 doc
+  * added more info which filesystem entry failed
+  * Support dnsmasq options
+  * Set firmware attribute to efi for aarch64
+  * Added reference to terraform-libvirt-kubespray project
+  * Remove mod=vendor from .travis.yml
+  * Remove vendor/ references from the documentation
+  * Remove vendor/ directory from git
+  * update vendor files
+  * Example - flatcar-linux - Correct NIC matching typo
+  * Replace mitchell/packer with google/uuid
+
+-------------------------------------------------------------------
 Sat Feb 13 09:04:17 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
 
 - Added if condition in spec if on a SUSE version use mkisofs, instead of genisoimage 
