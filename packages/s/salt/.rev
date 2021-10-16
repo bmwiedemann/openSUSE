@@ -1842,4 +1842,22 @@ let build start it or we will get libvirt errors.
   * do-not-break-master_tops-for-minion-with-version-low.patch</comment>
     <requestid>922525</requestid>
   </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>eadd61df0e89b1f0d1dace74ad50af2e</srcmd5>
+    <version>3003.3</version>
+    <time>1634417221</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with salt-ssh's extra-filerefs
+- Added:
+  * fix-issues-with-salt-ssh-s-extra-filerefs.patch
+
+- Fix crash when calling manage.not_alive runners
+- Added:
+  * fix-crash-when-calling-manage.not_alive-runners.patch
+
+- Do not consider skipped targets as failed for ansible.playbooks state (bsc#1190446)
+- Added:
+  * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch</comment>
+    <requestid>925143</requestid>
+  </revision>
 </revisionlist>
