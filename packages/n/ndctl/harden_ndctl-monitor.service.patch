@@ -1,0 +1,22 @@
+Index: ndctl-71.1/ndctl/ndctl-monitor.service
+===================================================================
+--- ndctl-71.1.orig/ndctl/ndctl-monitor.service
++++ ndctl-71.1/ndctl/ndctl-monitor.service
+@@ -2,6 +2,17 @@
+ Description=Ndctl Monitor Daemon
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStart=/usr/bin/ndctl monitor
+ 
