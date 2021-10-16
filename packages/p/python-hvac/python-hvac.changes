@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:12:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * Breakfix release to revert some unintended post-1.0 requirements changes.
+  * Revert `six` & `requests` Requirements Changes. GH-768
+
+-------------------------------------------------------------------
 Fri Jul 30 10:50:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.11.0
