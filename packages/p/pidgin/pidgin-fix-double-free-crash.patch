@@ -1,0 +1,48 @@
+# HG changeset patch
+# User Gary Kramlich <grim@reaperworld.com>
+# Date 1632457638 18000
+#      Thu Sep 23 23:27:18 2021 -0500
+# Branch release-2.x.y
+# Node ID 740dafa46e5ea6a00f031ec39c76d38ad1b11172
+# Parent  e91465803c0e9e21de809dfcf8f8ab0f547cc269
+Fix a double free in jabber/message.c and silence a warning
+
+JabberBuddyResource is handled internally, but it's free function, which is static, does in fact free the thread_id as well.
+
+Testing Done:
+Compiled
+
+Bugs closed: PIDGIN-17547
+
+Reviewed at https://reviews.imfreedom.org/r/932/
+
+diff --git a/libpurple/protocols/jabber/message.c b/libpurple/protocols/jabber/message.c
+--- a/libpurple/protocols/jabber/message.c
++++ b/libpurple/protocols/jabber/message.c
+@@ -798,7 +798,7 @@
+ 		case JABBER_MESSAGE_OTHER:
+ 			purple_debug_info("jabber",
+ 					"Received message of unknown type: %s\n", type);
+-			/* Fall-through is intentional */
++			/* FALL-THROUGH */
+ 		case JABBER_MESSAGE_NORMAL:
+ 		case JABBER_MESSAGE_CHAT:
+ 			handle_chat(jm);
+@@ -1179,12 +1179,13 @@
+ 	jm->id = jabber_get_next_id(jm->js);
+ 
+ 	if(jbr) {
+-		if(jbr->thread_id)
+-			jm->thread_id = jbr->thread_id;
++		if(jbr->thread_id) {
++			jm->thread_id = g_strdup(jbr->thread_id);
++		}
+ 
+-		if (jbr->chat_states == JABBER_CHAT_STATES_UNSUPPORTED)
++		if (jbr->chat_states == JABBER_CHAT_STATES_UNSUPPORTED) {
+ 			jm->chat_state = JM_STATE_NONE;
+-		else {
++		} else {
+ 			/* if(JABBER_CHAT_STATES_UNKNOWN == jbr->chat_states)
+ 			   jbr->chat_states = JABBER_CHAT_STATES_UNSUPPORTED; */
+ 		}

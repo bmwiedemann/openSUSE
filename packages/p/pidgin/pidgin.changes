@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 12 16:44:39 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Add pidgin-fix-double-free-crash.patch: fix double free crash
+
+-------------------------------------------------------------------
 Mon Sep 20 20:19:21 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

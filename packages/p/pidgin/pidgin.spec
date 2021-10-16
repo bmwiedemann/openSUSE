@@ -38,6 +38,8 @@ Patch2:         pidgin-fix-perl-build.patch
 Patch3:         pidgin-use-default-alsa.patch
 # PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- always enable intltool, needed for autoconf 2.71.
 Patch4:         pidgin-always-enable-intltool.patch
+# Fix a crash due to a freed double. Patch was taken from upstream and will be included in version 2.14.8.
+Patch5:         pidgin-fix-double-free-crash.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -220,6 +222,7 @@ scripts and plugins.
 %patch3 -p1
 %endif
 %patch4 -p1
+%patch5 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 
