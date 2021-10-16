@@ -17,12 +17,13 @@
 
 
 Name:           audacity
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://audacityteam.org/
+#               https://github.com/audacity/audacity/archive/refs/tags/Audacity-3.0.4.tar.gz
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 #Source:         https://www.fosshub.com/Audacity.html/%%{name}-minsrc-%%{version}.tar.xz
 Source1:        audacity-license-nyquist
@@ -112,9 +113,9 @@ prefix=%{_prefix}
 libdir=%{_libdir}
 includedir=%{_includedir}/lame
 
-Name: mp3lame
+Name:           mp3lame
 Description: encoder that converts audio to the MP3 file format.
-Version: 3.100
+Version:        3.100
 Libs: -L${libdir} -lmp3lame
 Cflags: -I${includedir}
 EOF

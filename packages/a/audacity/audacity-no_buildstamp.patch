@@ -1,7 +1,7 @@
 Index: b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
 ===================================================================
---- a/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2021-08-26 08:15:19.261006566 +0200
-+++ b/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2021-08-26 08:15:26.829312186 +0200
+--- a/lib-src/portaudio-v19/qa/loopback/src/paqa.c
++++ b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
 @@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
  	int justMath = 0;
      char *executableName = argv[0];
@@ -13,8 +13,8 @@ Index: b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
  		printf("running with arguments:");
 Index: b/src/AboutDialog.cpp
 ===================================================================
---- a/src/AboutDialog.cpp	2021-08-26 08:15:19.261006566 +0200
-+++ b/src/AboutDialog.cpp	2021-08-26 08:15:26.833312347 +0200
+--- a/src/AboutDialog.cpp
++++ b/src/AboutDialog.cpp
 @@ -71,7 +71,7 @@ hold information about one contributor t
  #endif
  
@@ -35,3 +35,16 @@ Index: b/src/AboutDialog.cpp
     AddBuildinfoRow(&informationStr, XO("Commit Id:"), REV_IDENT );
  
     auto buildType =
+Index: b/CMakeLists.txt
+===================================================================
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,7 +19,7 @@ endif ()
+ # still link to the alpha manual online.
+ 
+ # Set this value to 0 for alpha, 1 for beta, 2 for release builds
+-set( AUDACITY_BUILD_LEVEL 0 CACHE STRING "0 for alpha, 1 for beta, 2 for release builds" )
++set( AUDACITY_BUILD_LEVEL 2 CACHE STRING "0 for alpha, 1 for beta, 2 for release builds" )
+ 
+ # The Audacity version
+ # Increment as appropriate after release of a new version, and set back

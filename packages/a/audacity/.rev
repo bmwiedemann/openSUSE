@@ -910,4 +910,12 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>914618</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>45aeaf3bc0e3dbc3a993736422cde64b</srcmd5>
+    <version>3.0.5</version>
+    <time>1634417249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925674</requestid>
+  </revision>
 </revisionlist>
