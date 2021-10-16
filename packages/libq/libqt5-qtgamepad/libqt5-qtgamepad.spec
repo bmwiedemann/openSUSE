@@ -38,6 +38,7 @@ BuildRequires:  libQt5PlatformSupport-devel-static >= %{real_version}
 BuildRequires:  libQt5PlatformSupport-private-headers-devel >= %{real_version}
 BuildRequires:  libSDL2-devel
 BuildRequires:  libqt5-qtbase-devel >= %{real_version}
+BuildRequires:  libqt5-qtdeclarative-devel >= %{real_version}
 %if %{qt5_snapshot}
 #to create the forwarding headers
 BuildRequires:  perl
@@ -82,6 +83,16 @@ This package provides private headers of libqt5-qtgamepad that are normally
 not used by application development and that do not have any ABI or
 API guarantees. The packages that build against these have to require
 the exact Qt version.
+
+%package imports
+Summary:        QML imports for the Qt5 Gamepad module
+Requires:       %{libname} = %{version}
+%requires_ge    libQtQuick5
+Supplements:    (%{libname} and libQtQuick5)
+
+%description imports
+This package contains QML import files for the Qt5 Gamepad module.
+
 
 %package examples
 Summary:        Qt5 gamepad examples
@@ -130,6 +141,9 @@ rm -f %{buildroot}%{_libqt5_libdir}/lib*.la
 %{_libqt5_libdir}/libQt5Gamepad.so
 %{_libqt5_libdir}/pkgconfig/Qt5Gamepad.pc
 %{_libqt5_archdatadir}/mkspecs/modules/*.pri
+
+%files imports
+%{_libqt5_archdatadir}/qml/
 
 %files examples
 %defattr(-,root,root,755)

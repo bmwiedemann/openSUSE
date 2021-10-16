@@ -143,4 +143,12 @@
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902328</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>840206403ece266ffdffa7ad3bda19d6</srcmd5>
+    <version>5.15.2+kde2</version>
+    <time>1634417252</time>
+    <user>dimstar_suse</user>
+    <comment>- Add QML imports for QtGamepad</comment>
+    <requestid>925722</requestid>
+  </revision>
 </revisionlist>
