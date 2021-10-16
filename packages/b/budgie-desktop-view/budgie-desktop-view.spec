@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-desktop-view
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 Name:           budgie-desktop-view
 Version:        1.1.1
 Release:        0
@@ -25,11 +27,12 @@ URL:            https://getsol.us/solus/experiences/
 Source:         https://github.com/getsolus/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz
 Source1:        https://github.com/getsolus/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  meson
-BuildRequires:  vala
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  pkgconfig(glib-2.0)
 
 %description
 Budgie Desktop View is the official Budgie desktop icons application / implementation
