@@ -2,7 +2,7 @@ Index: laptop-mode-tools_1.74/etc/systemd/laptop-mode.service
 ===================================================================
 --- laptop-mode-tools_1.74.orig/etc/systemd/laptop-mode.service
 +++ laptop-mode-tools_1.74/etc/systemd/laptop-mode.service
-@@ -4,6 +4,17 @@ Documentation=man:laptop_mode(8) man:lap
+@@ -4,6 +4,16 @@ Documentation=man:laptop_mode(8) man:lap
  Documentation=http://github.com/rickysarraf/laptop-mode-tools
  
  [Service]
@@ -11,7 +11,6 @@ Index: laptop-mode-tools_1.74/etc/systemd/laptop-mode.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
