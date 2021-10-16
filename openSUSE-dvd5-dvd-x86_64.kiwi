@@ -4300,7 +4300,6 @@
       <repopackage name="rtkit"/>
       <repopackage name="rtl-sdr"/>
       <repopackage name="rtl-sdr-udev"/>
-      <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
       <repopackage name="rtl_433"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
@@ -4877,6 +4876,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>

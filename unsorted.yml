@@ -11324,6 +11324,9 @@ unsorted:
   - libiml0 
   - libimobiledevice-1_0-6-32bit: [x86_64] 
   - libimobiledevice-devel 
+  - libimobiledevice-glue-1_0-0 
+  - libimobiledevice-glue-1_0-0-32bit: [x86_64] 
+  - libimobiledevice-glue-devel 
   - libinchi0 
   - libinchi0-32bit: [x86_64] 
   - libindi 
@@ -13320,7 +13323,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_0_3 
+  - librssguard-4_0_4 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -31015,6 +31018,7 @@ unsorted:
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
   - rk-devel 
+  - rkdeveloptool 
   - rke 
   - rke2 
   - rkhunter 
@@ -31124,7 +31128,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -32079,17 +32083,18 @@ unsorted:
   - snowball 
   - snowball-devel 
   - soapy-osmo-devel 
+  - soapy-remote-server 
   - soapy-sdr 
   - soapy-sdr-devel 
-  - soapysdr0.7-module-remote 
-  - soapysdr0.7-module-uhd 
   - soapysdr0.8-module-airspy 
   - soapysdr0.8-module-bladerf 
   - soapysdr0.8-module-hackrf 
   - soapysdr0.8-module-lms7 
   - soapysdr0.8-module-mirisdr 
   - soapysdr0.8-module-osmosdr 
+  - soapysdr0.8-module-remote 
   - soapysdr0.8-module-rtlsdr 
+  - soapysdr0.8-module-uhd 
   - soapysdr0.8-module-xtrx 
   - sobby 
   - socat: [i586] 
@@ -32126,6 +32131,7 @@ unsorted:
   - sonnet-devel 
   - sonnet-voikko 
   - sonobuoy 
+  - sops 
   - sopwith 
   - sord 
   - sord-devel 
@@ -32456,9 +32462,7 @@ unsorted:
   - synnefo 
   - syntax-highlighting-devel 
   - sysbench 
-  - sysdig 
-  - sysdig-kmp-default 
-  - sysdig-kmp-pae: [i586] 
+  - sysdig: [x86_64] 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
@@ -41832,6 +41836,8 @@ unsorted:
   - warewulf-provision-server: [x86_64] 
   - warewulf-provision-x86_64-initramfs: [x86_64] 
   - warewulf-vnfs: [x86_64] 
+  - warewulf4: [x86_64] 
+  - warewulf4-overlay: [x86_64] 
   - warzone2100 
   - warzone2100-data 
   - watchman 
