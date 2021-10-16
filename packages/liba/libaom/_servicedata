@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://aomedia.googlesource.com/aom</param>
-              <param name="changesrevision">ae2be8030200925895fa6e98bd274ffdb595cbf6</param></service><service name="tar_scm">
                 <param name="url">https://aomedia.googlesource.com/aom.git</param>
               <param name="changesrevision">ce9a40ce01ade9d6fea1721c82645804a2f39b00</param></service></servicedata>
