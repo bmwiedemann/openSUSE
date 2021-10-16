@@ -28,6 +28,8 @@ Group:          System/GUI/Other
 URL:            https://getsol.us/solus/experiences/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         override-syntax.patch
+# Solus stupid 1000
+BuildRequires:  budgie-screensaver
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -55,20 +57,18 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
-# Solus stupid 1000
-BuildRequires:  budgie-screensaver
 Requires:       budgie-desktop-view
 Requires:       budgie-screensaver
 Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       ibus
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     NetworkManager-applet
 Recommends:     budgie-desktop-doc
 Recommends:     gnome-backgrounds
 Recommends:     gnome-software
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
