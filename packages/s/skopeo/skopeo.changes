@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct  8 14:33:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.5.0:
+  * bump deps
+  * Update VM Images + Drop prior-ubuntu references
+  * Update installation doc with latest steps
+  * Introduce a --ignore option to allow "sync" command to continue
+    syncing even after a particular image sync fails
+  * vendor-in-container: update to golang:1.16
+  * update c/common, c/image, c/storage
+  * Add timeouts when waiting on OpenShift or the registry to start
+  * Add docs and bash completions
+  * Add support for decompressing while copying to dir://
+  * Update to enabled containers/image version
+  * Fix two instances of unused err found by go-staticcheck
+  * Test both imageOptions and imageDestOptions in TestTLSVerifyFlags
+  * Split testing of --tls-verify into separate TestTLSVerifyFlags
+  * Add the --tls-verify option to (skopeo logout)
+  * Added `format` parameter to `sync` command
+  * copy: Add --digestfile
+
+-------------------------------------------------------------------
 Wed May 19 18:04:11 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.2.3:

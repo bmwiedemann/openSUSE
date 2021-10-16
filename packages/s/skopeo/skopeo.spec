@@ -24,7 +24,7 @@
 %define with_libostree 1
 %endif
 Name:           skopeo
-Version:        1.2.3
+Version:        1.5.0
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) >= 1.15
 ExcludeArch:    s390
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
@@ -88,7 +88,6 @@ make %{?_smp_mflags} docs PREFIX=%{_prefix}
 %make_install PREFIX=%{_prefix}
 # Drop unneeded files
 rm -rv %{buildroot}/etc/containers
-rm -rv %{buildroot}/policy.json
 
 %files
 %doc README.md
