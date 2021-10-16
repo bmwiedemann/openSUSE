@@ -18,7 +18,7 @@
 
 %define build_zeitgeist_plugin 0
 Name:           totem
-Version:        3.38.1
+Version:        3.38.2
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -39,7 +39,6 @@ BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pylint
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
@@ -135,8 +134,6 @@ This package contains developer documentation.
 
 %prep
 %autosetup -p1
-sed -i 's/\[.*\]//g' po/POTFILES.in
-translation-update-upstream po totem
 
 %build
 %meson \
