@@ -121,4 +121,12 @@
      key if no logger key is set. #295</comment>
     <requestid>873660</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b38bde03950c325345871bb8b765ed24</srcmd5>
+    <version>21.2.0</version>
+    <time>1634417230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925617</requestid>
+  </revision>
 </revisionlist>

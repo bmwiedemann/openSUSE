@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:36:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.2.0:
+  Highlights:
+  * Support for for beautiful (and helpful!) exceptions by integrating
+    ConsoleRenderer with rich or better-exceptions.
+  * Helpers to access thread-local and context-local context.
+  * Deeper contextvars support.
+  Backward-incompatible changes:
+  * To implement pretty exceptions (see Changes below),
+    structlog.dev.ConsoleRenderer now formats exceptions itself.
+    Make sure to remove format_exc_info from your processor chain if you
+    configure structlog manually. This change is not really breaking
+    because the old use-case will keep working as before. However if
+    you pass pretty_exceptions=True (which is the default if either
+    rich or better-exceptions is installed), a warning will be raised
+    and the exception will be renderered without prettyfication.
+  Changes:
+  * structlog is now importable if sys.stdout is None (e.g. when
+    running using pythonw). #313
+  * structlog.threadlocal.get_threadlocal() and
+    structlog.contextvars.get_contextvars() can now be used to get a copy
+    of the current thread-local/context-local context that has been bound
+    using structlog.threadlocal.bind_threadlocal() and
+    structlog.contextvars.bind_contextvars(). #331 #337
+  * structlog.threadlocal.get_merged_threadlocal(bl) and
+    structlog.contextvars.get_merged_contextvars(bl) do the same, but
+    also merge the context from a bound logger bl. Same pull requests as
+    previous change.
+  * structlog.contextvars.bind_contextvars() now returns a mapping of
+    keys to contextvars.Tokens, allowing you to reset values using the
+    new structlog.contextvars.reset_contextvars(). #339
+  * Exception rendering in structlog.dev.ConsoleLogger is now configurable
+    using the exception_formatter setting. If either the rich or the
+    better-exceptions package is present, structlog will use them for
+    pretty-printing tracebacks. rich takes precedence over
+    better-exceptions if both are present.
+    This only works if format_exc_info is absent in the processor chain.
+    #330 #349 
+  * All use of colorama on non-Windows systems has been excised. Thus,
+    colors are now enabled by default in structlog.dev.ConsoleRenderer
+    on non-Windows systems. You can keep using colorama to customize
+    colors, of course. #345
+  * The final processor can now return a bytearray (additionally to str
+    and bytes). #344
+
+-------------------------------------------------------------------
 Fri Feb 19 08:07:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.1.0:
