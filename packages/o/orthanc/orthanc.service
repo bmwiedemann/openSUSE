@@ -14,6 +14,12 @@ ProtectControlGroups=true
 MountFlags=private
 NoNewPrivileges=true
 PrivateDevices=true
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectHostname=true
+ProtectKernelLogs=true
+RestrictRealtime=true
+# end of automatic additions 
 MemoryDenyWriteExecute=true
 
 Type=simple

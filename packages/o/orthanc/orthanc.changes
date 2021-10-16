@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 13:27:12 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * orthanc.service
+
+-------------------------------------------------------------------
 Sun Sep 26 20:02:08 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Test for SharedLibrary.Basic disabled (fails with new glibc)
