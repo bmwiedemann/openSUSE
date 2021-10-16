@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-APScheduler
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT

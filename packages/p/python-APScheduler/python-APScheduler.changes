@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:01:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Allowed passing through keyword arguments to the underlying stdlib executors in the
+  thread/process pool executors (PR by Albert Xu)
+ 
+-------------------------------------------------------------------
 Mon Feb  1 17:38:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.0:
