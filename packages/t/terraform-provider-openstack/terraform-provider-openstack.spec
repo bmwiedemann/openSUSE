@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-openstack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global provider        github
 %global provider_tld    com
-%global project         terraform-providers
+%global project         terraform-provider-openstack
 %global repo            terraform-provider-openstack
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
 %global import_path     %{provider_prefix}
@@ -50,13 +50,14 @@
 %endif
 
 Name:           terraform-provider-openstack
-Version:        1.31.0
+Version:        1.43.0
 Release:        0
 Summary:        Terraform OpenStack provider
 License:        MPL-2.0
 Group:          System/Management
-URL:            https://github.com/terraform-providers/terraform-provider-openstack
-Source:         %{repo}-%{version}.tar.xz
+URL:            https://github.com/terraform-provider-openstack/terraform-provider-openstack
+Source:         %{repo}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source99:       terraform-provider-openstack-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?ubuntu_version}
@@ -72,12 +73,10 @@ BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.14
 %endif
 Requires:       mkisofs
 Requires:       terraform >= 0.12.0
-BuildRequires:  xz
 %endif
 %if 0%{?suse_version}
 %{go_provides}
@@ -88,6 +87,7 @@ This is a terraform provider that lets you provision servers on an OpenStack pla
 
 %prep
 %setup -q -n %{repo}-%{version}
+%setup -q -D -T -a 1 -n %{repo}-%{version}
 
 %build
 export GO111MODULE=off

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug  2 11:33:43 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.43.0:
+  FEATURES
+  * __New Resource__: `dns_transfer_request_v2` (#1268)
+  * __New Resource__: `dns_transfer_accept_v2` (#1268)
+  IMPROVEMENTS
+  * Added `SCTP`, `PROXYV2` protocols for `lb_pool_v2` resource (#1251)
+  * Added `project_id` argument for `dns_recordset_v2` resource (#1254)
+  * Added support for `shelved_offloaded` power state of `compute_instance_v2` resource (#1259)
+  * Added `cidr` argument input check for `networking_subnet_v2` resource (#1267)
+  * Removed Octavia microversions and added explanation about minor version usage (#1249)
+  * Fixed `endpoints` argument for `vpnaas_endpoint_group_v2` resource in that way so endpoints
+    order is not relevant anymore (#1247)
+  * Added `addresses` argument for `db_instance_v1` resource (#1260)
+  * Better formatted documentation for some resources and data sources (#1252)
+  * Updated issues links so they point to the right repo (#1272)
+  BUG FIXES
+  * Fixed `nil` panic in `compute_instance_v2` resource that could be caught while trying to
+    unassign a server group from an instance (#1248)
+- For changes from 1.32.0 through 1.42.0, see CHANGELOG.md shipped with the package
+- Enable vendoring in _service file
+- Switch tarball compression to gzip as the vendoring service currently
+  does not support the xz compression format
+- Update url field in _service file
+- Update URL field and project name in spec file
+
+-------------------------------------------------------------------
 Wed Nov 11 11:48:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add symbolic link to comply with new filesystem layout for local provider copies
