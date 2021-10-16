@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  2 12:49:17 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.99.1:
+  * fix: encoding error, warnings
+  * add TimeStamp type to DB3 tables
+  * Import ABC from collections.abc for Python 3.9 compatibility.
+  * support date/time/datetime as argument to Period
+  * make Vapor objects Falsey
+  * add more null tests
+
+-------------------------------------------------------------------
 Wed Oct  7 03:23:16 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.99.0:
