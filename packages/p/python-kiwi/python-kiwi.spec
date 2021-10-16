@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.56
+Version:        9.24.0
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -234,16 +234,10 @@ Requires:       btrfs-progs
 %endif
 %endif
 %if 0%{?suse_version}
-Requires:       gptfdisk
 Requires:       squashfs
 %else
-Requires:       gdisk
 Requires:       squashfs-tools
 %endif
-Requires:       lvm2
-Requires:       parted
-Requires:       kpartx
-Requires:       cryptsetup
 %if "%{_vendor}" == "debbuild"
 Requires:       qemu-utils
 %else
@@ -273,6 +267,16 @@ Provides:       kiwi-image:vmx
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
 Requires:       kiwi-systemdeps-iso-media = %{version}-%{release}
+%if 0%{?suse_version}
+Requires:       gptfdisk
+%else
+Requires:       gdisk
+%endif
+Requires:       lvm2
+Requires:       parted
+Requires:       kpartx
+Requires:       cryptsetup
+Requires:       mdadm
 
 %description -n kiwi-systemdeps-disk-images
 Host setup helper to pull in all packages required/useful on
@@ -324,6 +328,7 @@ Group:          %{pygroup}
 Obsoletes:      python2-kiwi
 Conflicts:      python2-kiwi
 Conflicts:      kiwi-man-pages < %{version}
+Requires:       screen
 Requires:       python%{python3_pkgversion} >= 3.6
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml

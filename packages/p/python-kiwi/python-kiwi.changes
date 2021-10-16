@@ -1,4 +1,263 @@
 -------------------------------------------------------------------
+Thu Oct 07 09:54:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.63 → 9.24.0
+
+-------------------------------------------------------------------
+Thu Oct 07 09:50:38 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add support for toplevel include directive(s)
+
+  On the toplevel of an image description you can now
+  specify include directive(s) like in the following
+  example
+
+  <image ...>
+  ...
+  <include from="filename_a.xml"/>
+  ...
+  <include from="filename_b.xml"/>
+  </image>
+
+  At the place of their occurrence the include statement
+  will be replaced with the contents of the given filename.
+  The implementation is based on a XSLT stylesheet and
+  applies very early in the process. The stylesheet reads
+  the contents of the given file as XML document().
+  Thus only valid XML documents gets accepted by this
+  include concept. This Fixes #1929 and is related to
+  Issue #1918
+
+-------------------------------------------------------------------
+Wed Oct 06 16:06:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.62 → 9.23.63
+
+-------------------------------------------------------------------
+Wed Oct 06 14:39:26 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed error reporting for stateful description
+
+  Errors due to missing or no type definitions were reported
+  provding the internal object reference of the XML parse
+  result. This is useless information for users and needs
+  to be done better. This commit fixes the error message to
+  avoid showing object references and includes information
+  about the applied profiles used for this XML state.
+
+-------------------------------------------------------------------
+Wed Oct 06 14:38:25 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed legacy PXE documentation
+
+  The documentation for building a legacy pxe image was not
+  using the profiles (Flat or Compressed) as the actual image
+  description for this example requires it. This Fixes #1923
+
+-------------------------------------------------------------------
+Wed Oct 06 14:11:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added mdadm to requires for systemdeps
+
+  When building raid based images the buildhost needs mdadm.
+  In addition rework the place to require disk based tools.
+  Most of them were added to the filesystem systemdeps but
+  belong to the disk systemdeps
+
+-------------------------------------------------------------------
+Wed Oct 06 12:44:10 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed creation of loopback config
+
+  If an extra boot partition is in use the creation of the config
+  file for the loopback boot feature was using the wrong path.
+  This commit fixes it and also introduces integration checks
+  which builds in this condition
+
+-------------------------------------------------------------------
+Tue Oct 05 19:38:53 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed GRUB_CMDLINE_LINUX_DEFAULT setup regression
+
+  The value for GRUB_CMDLINE_LINUX_DEFAULT should only be
+  changed if custom kernelcmdline values are provided. In
+  case there are none kiwi should not change this value.
+  The test to check for this condition is based on the
+  result cmdline reduced by the root setting. However the
+  default cmdline setting in kiwi appends 'rw' in addition
+  to the root device information. This means the default
+  kernelcmdline is never empty and therefore the grub
+  setting GRUB_CMDLINE_LINUX_DEFAULT="rw" is always set.
+  This commit fixes the conditional change by making sure
+  the default cmdline only consists out of the root
+  device information. This Fixes #1650
+
+-------------------------------------------------------------------
+Tue Oct 05 17:25:25 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow logfile option to log on stdout
+
+  The option setting '--logfile stdout' is now a special form
+  and logs the messages usually written to a file to stdout
+  instead. This is handy if all messages of the build are
+  requested but the --debug switch is not because it does more
+  than that, e.g calling scripts through debug'able screen
+  sessions
+
+-------------------------------------------------------------------
+Tue Oct 05 10:52:20 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow test-image-luks to be build locally too
+
+  In suse there are many programs replaced by the busybox
+  alternative and also preferred by the package manager.
+  However there are also packages like the kernel in suse
+  which wants gawk and not busybox-gawk. In kiwi to build
+  images there are two installation phases, the bootstrap
+  phase which installs mandatory packages to allow chroot
+  operations and the image phase which installs the rest
+  of the requested packages as chroot operation. In this
+  two pass step the package manager is called twice to
+  resolve dependencies and that causes the issue with the
+  preferred busybox packages which gets pulled in in the
+  first phase. To prevent this there are only two options:
+
+  1. Explicitly list the non busybox packages in the
+  bootstrap phase
+
+  2. Prevent the image phase and put all packages to
+  the bootstrap phase such there is only one package
+  manager call for dependency resolution
+
+  This commit implementes option 1. because having all
+  packages in the bootstrap phase means that the host
+  packagemanager resolves and if the host packagemanager
+  is somehow not compatible with the image target this
+  leads to other weird issues which are not obvious and
+  hard to debug.
+
+-------------------------------------------------------------------
+Thu Sep 23 16:56:32 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.61 → 9.23.62
+
+-------------------------------------------------------------------
+Thu Sep 23 16:54:31 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed script calls when running in obs
+
+  kiwi is called with --debug in obs which triggers the scripts
+  to be called through screen. However the obs caller is not
+  associated with a terminal thus it fails. This commit creates
+  an exception for debug mode when running in obs
+
+-------------------------------------------------------------------
+Thu Sep 23 15:35:35 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.60 → 9.23.61
+
+-------------------------------------------------------------------
+Thu Sep 23 15:34:08 CEST 2021 - Luis González Fernández <luisgf@users.noreply.github.com>
+
+- Fix secure boot for ubuntu based images
+
+  This patch fixes #1911 and makes secure boot images to work again in Ubuntu 20.04
+
+  Co-authored-by: Luis Ladislao Gonzalez Fernandez <luislgf@inditex.com>
+
+-------------------------------------------------------------------
+Wed Sep 22 11:48:47 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Run scripts via a screen session in debug mode
+
+  When creating a custom script it usually takes some iterations of
+  try and testing until a final stable state is reached. To support
+  developers with this task kiwi calls scripts associated with a
+  screen session. The connection to screen is only done if kiwi
+  is called with the --debug option.
+
+-------------------------------------------------------------------
+Tue Sep 21 18:49:53 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete obsolete release stage from gitlab
+
+  Now done as github action
+
+-------------------------------------------------------------------
+Tue Sep 21 18:47:59 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.59 → 9.23.60
+
+-------------------------------------------------------------------
+Tue Sep 21 18:46:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed pypi tox release target
+
+  Only needs the creation of the sdist tarball
+
+-------------------------------------------------------------------
+Tue Sep 21 18:43:46 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.58 → 9.23.59
+
+-------------------------------------------------------------------
+Tue Sep 21 18:42:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moved pages and pypi publish to github actions
+
+  Moved gh-pages doc update and pypi upload from gitlab
+  to github actions
+
+-------------------------------------------------------------------
+Tue Sep 21 13:09:40 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed RNC schema definition
+
+  From the compact form of the schema the RNG schema
+  is created. The latest changes to support the target_dir
+  attribute in the <archive> section were added wrong
+  to the compact form of the schema
+
+-------------------------------------------------------------------
+Fri Sep 17 11:58:21 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed Tumbleweed integration tests
+
+  Due to changes in the distribution the tests needs some
+  adaptions. The kernel as provided now by TW uses symlinks
+  from boot to /usr/lib/modules/... to point to the kernel
+  binary. Of course this breaks for any system that uses
+  /boot on another partition. Those image tests which were
+  testing this aspect needs fixing.
+
+-------------------------------------------------------------------
+Wed Sep 15 12:06:28 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.57 → 9.23.58
+
+-------------------------------------------------------------------
+Wed Sep 15 12:04:43 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed MANIFEST
+
+  Make sure all test data is included into the source tarball not only
+  a recursive inclusion of a portion of it. This is needed to run
+  tests at build time from the pypi provided source tarball
+
+-------------------------------------------------------------------
+Wed Sep 15 09:50:12 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.56 → 9.23.57
+
+-------------------------------------------------------------------
+Tue Sep 14 11:57:52 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed python manifest
+
+  Deleted no longer existing doc source from manifest and
+  add the full set of documentation sources
+
+-------------------------------------------------------------------
 Fri Sep 10 23:52:50 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.55 → 9.23.56
