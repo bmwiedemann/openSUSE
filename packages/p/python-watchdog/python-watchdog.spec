@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-watchdog
-Version:        2.1.3
+Version:        2.1.6
 Release:        0
 Summary:        Filesystem events monitoring
 License:        Apache-2.0
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires:       python-PyYAML >= 3.10
-Requires:       python-argh >= 0.24.1
 Requires:       python-pathtools >= 0.1.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

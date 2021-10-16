@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 10 19:18:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.1.6
+  * [bsd] Fixed returned paths in kqueue.py and restored the
+    overall results of the test suite. (#842)
+  * [bsd] Updated FreeBSD CI support .(#841)
+  * [watchmedo] Removed the argh dependency in favor of the builtin
+    argparse module. (#836)
+  * [watchmedo] Removed unexistant WindowsApiAsyncObserver
+    references and --debug-force-winapi-async arguments.
+  * [watchmedo] Improved the help output.
+
+-------------------------------------------------------------------
+Fri Sep 17 10:34:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.1.5
+  * Convert regexes of type str to list. (#831)
+  * [watchmedo] Fix usage of os.setsid() and os.killpg() Unix-only
+    functions. (#809)
+  * Fix a possible AttributeError in SkipRepeatsQueue._put().
+    (#818)
+  * Allow overriding or adding custom event handlers to event
+    dispatch map. (#814) -- reverted (#830)
+  * Fix tests on big endian platforms. (#828)
+
+-------------------------------------------------------------------
 Mon Jul 12 07:35:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to v2.1.3
