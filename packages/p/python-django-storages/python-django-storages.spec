@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-storages
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %bcond_without python2
 Name:           python-django-storages
-Version:        1.10.1
+Version:        1.12.1
 Release:        0
 Summary:        Support for many storage backends in Django
 License:        BSD-3-Clause
@@ -52,7 +53,7 @@ BuildRequires:  python2-mock
 %python_subpackages
 
 %description
-Support for many storage backends in Django
+django-storages is a project to provide a variety of storage backends in a single library.
 
 %prep
 %setup -q -n django-storages-%{version}
@@ -68,7 +69,6 @@ Support for many storage backends in Django
 export PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
 # Integration tests, which is only azure, fail systematically
-rm -r tests/integration
 rm tests/test_azure.py
 # Skip failing test in test_s3boto3.py
 %pytest -k 'not test_deprecated_default_acl'

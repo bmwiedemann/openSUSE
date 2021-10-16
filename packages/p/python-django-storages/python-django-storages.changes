@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Oct 12 13:28:10 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.12.1
+  * S3
+    - Change gzip compression to use a streaming implementation (#1061)
+    - Fix saving files with S3ManifestStaticStorage (#1068, #1069)
+- Changes from 1.12
+  - Add support for Django 3.2 (#1046, #1042, #1005)
+  - Replace Travis CI with GitHub actions (#1051)
+  * S3
+    - Convert signing keys to bytes if necessary (#1003)
+    - Avoid a ListParts API call during multipart upload (#1041)
+    - Custom domains now use passed URL params (#1054)
+    - Allow the use of AWS profiles and clarify the options for
+      passing credentials (fbe9538)
+    - Re-allow override of various access key names (#1026)
+    - Properly exclude empty folders during listdir (66f4f8e)
+    - Support saving file objects that are not seekable (#860, #1057)
+    - Return True for .exists() if a non-404 error is encountered (#938)
+  * Azure
+    - Breaking: This backend has been rewritten to use the newer
+      versions of azure-storage-blob, which now has a minimum required
+      version of 12.0. The settings AZURE_EMULATED_MODE, AZURE_ENDPOINT_SUFFIX,
+      and AZURE_CUSTOM_CONNECTION_STRING are now ignored. (#784, #805)
+    - Add support for user delegation keys (#1063)
+  * Google Cloud
+    - Breaking: The minimum required version of google-cloud-storage
+      is now 1.27.0 (#994)
+    - Breaking: Switch URL signing version from v2 to v4 (#994)
+    - Deprecated: Support for GS_CACHE_CONTROL will be removed in 1.13.
+      Please set the cache_control parameter of GS_OBJECT_PARAMETERS instead. (#970)
+    - Add GS_OBJECT_PARAMETERS and overridable GoogleCloudStorage.get_object_parameters
+      to customize blob parameters for all blobs and per-blob respectively. (#970)
+    - Catch the NotFound exception raised when deleting a non-existent blob,
+      this matches Django and other backends (#998, #999)
+    - Fix signing URLs with custom endpoints (#994)
+  * Dropbox
+    - Validate write_mode param (#1020)
+- Changes from 1.11.1
+  * S3
+    - Revert fix for ValueError: I/O operation on closed file when
+      calling collectstatic and introduce S3StaticStorage and 
+      S3ManifestStaticStorage for use as STATICFILES_STORAGE targets (#968)
+- Changes from 1.11
+  * General
+    - Test against Python 3.9 (#964)
+  * S3
+    - Fix ValueError: I/O operation on closed file when calling 
+      collectstatic (#382, #955)
+    - Calculate S3Boto3StorageFile.buffer_size (via setting 
+      AWS_S3_FILE_BUFFER_SIZE) at run-time rather than import-time. (#930)
+    - Fix writing bytearray content (#958, #965)
+  * Google Cloud
+    - Add setting GS_QUERYSTRING_AUTH to avoid signing URLs.
+      This is useful for buckets with a policy of Uniform public read (#952)
+  * Azure
+    - Add AZURE_OBJECT_PARAMETERS and overridable AzureStorage.get_object_parameters
+      to customize ContentSettings parameters for all keys and per-key respectively. (#898)
+
+-------------------------------------------------------------------
 Fri Nov 27 13:23:14 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.10.1
