@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 14:32:30 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_diod.service.patch
+
+-------------------------------------------------------------------
 Tue Nov 17 13:57:58 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

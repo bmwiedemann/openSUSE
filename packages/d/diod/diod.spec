@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/chaos/diod
 Source0:        %{name}-%{version}.tar.xz
+Patch0:	harden_diod.service.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  c_compiler
@@ -44,6 +45,7 @@ that speaks 9P2000.L protocol.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
