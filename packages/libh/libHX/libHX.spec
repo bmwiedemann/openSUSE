@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        4.0.1
+Version:        4.1
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
