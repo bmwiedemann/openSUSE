@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-azurerm
-Version:        2.43.0
+Version:        2.69.0
 Release:        0
 Summary:        Terraform provider for Azure Resource Manager (AzureRM)
 License:        MPL-2.0
