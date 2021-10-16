@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 09:09:15 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix reading of the routing configuration (bsc#1191589)
+- 4.4.27
+
+-------------------------------------------------------------------
 Mon Sep 27 09:12:23 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not crash when the interfaces table contains a not configured
