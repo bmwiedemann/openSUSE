@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Aug  2 18:02:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.0.2
+  BUG FIXES:
+  * `resource/virtual_machine`: Fix logic bug that caused the provider to set unsupported
+    fields when talking to vsphere 6.5. (1430)
+  * `resource/virtual_machine`: Fix resource diff bug where it was not possible to ignore
+    changes to `cdrom` subresource. (1433)
+  IMPROVEMENTS:
+  * `resource/virtual_machine`: Support periodic time syncing for VMs on vsphere 7.0U1
+    onwards. (1431)
+- from version 2.0.1
+  BUG FIXES:
+  * `resource/virtual_machine`: Only set vvtd/vbs if vsphere version is newer than 6.5.
+    (1423)
+- from version 2.0.0
+  BREAKING CHANGES:
+  * `provider`: Moving forward this provider will only work with Terraform version v0.12 and later.
+  * `resource/virtual_machine`: Deprecated attribute `name` has been removed from the `disk` subresource.
+  BUG FIXES:
+  * `datasource/ovf_datasource`: Fix validation error when importing OVF spec. (1398)
+  * `resource/virtual_machine`: Fix post-import VM regression. (1361)
+  * `resource/virtual_machine`: Round up when calculating disk capacity. (1397)
+  * `resource/vnic`: Fix default netstack name. (1376)
+  IMPROVEMENTS:
+  * `provider`: Provider wide API timeout setting. (1405)
+  * `provider`: Enable keepalive for REST API sessions. (1301)
+  * `provider`: Upgrade Plugin SDK to 2.6.1 (1379)
+  * `datasource/virtual_machine`: Added 'network_interfaces' output. (#1274)
+  * `resource/virtual_machine`: Allow unconfigurable vApp properties to be set. (1199)
+  * `resource/virtual_machine`: Enable VBS (vbsEnabled) and I/O MMU (vvtdEnabled). (1287)
+  * `resource/virtual_machine`: Added `replace_trigger` to support replacement of vms based
+    external changes such as cloud_init (#1360)
+- from version 1.26.0
+  BUG FIXES:
+  * Minor fixes of issues that came up during testing against vSphere 7.0
+  * Change the way we set the timeout for maintenance mode (#1392)
+  IMPROVEMENTS:
+  * `provider`: vSphere 7 compatibility validation (#1381)
+  * `resource/vm`: Allow hardware version up to 19 (#1391)
+- from version 1.25.0
+  BUG FIXES:
+  * `resource/vsphere_entity_permissions`: Sorting permission objects on username/groupname
+    before storing. (#1311)
+  * `resource/vm`: Limit netmask length for ipv4 and ipv6 netmasks. (#1321)
+  * `resource/vm`: Fix missing vApp properties. (#1322)
+  FEATURES:
+  * `data/vsphere_ovf_vm_template`: Created data source OVF VM Template. This new data source allows
+    `vsphere_virtual_machine` to be created by its exported attributes. See PR for more details.
+    (#1339)
+  IMPROVEMENTS:
+  * `resource/distributed_virtual_switch`: Allow vsphere 7. (#1363)
+  * `provider`: Bump Go to version 1.16. (#1365)
+
+-------------------------------------------------------------------
 Mon Jan 18 15:38:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.24.3:

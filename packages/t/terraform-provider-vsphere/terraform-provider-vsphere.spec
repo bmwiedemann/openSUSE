@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-vsphere
-Version:        1.24.3
+Version:        2.0.2
 Release:        0
 Summary:        Terraform vSphere provider
 License:        MPL-2.0
