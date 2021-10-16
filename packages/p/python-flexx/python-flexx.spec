@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-flexx
-Version:        0.8.0
+Version:        0.8.2
 Release:        0
 Summary:        Python toolkit for creating graphical user interfaces
 License:        BSD-2-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module dialite >= 0.5.2}
 BuildRequires:  %{python_module imageio}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pscript >= 0.7.0}
+BuildRequires:  %{python_module pscript >= 0.7.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module setuptools}
@@ -41,11 +41,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-dialite >= 0.5.2
-Requires:       python-pscript >= 0.7.0
+Requires:       python-pscript >= 0.7.3
 Requires:       python-tornado
 Requires:       python-webruntime >= 0.5.6
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-imageio
 Recommends:     python-numpy
 Recommends:     python-vispy

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  1 09:06:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.2
+  * Support for Python 3.9.
+  * More symmetry between Py and Js widgets (#698)
+  * A Flask server backend.
+  * CI uses GH Actions instead of Travis.
+- from version 0.8.1
+  * Support for Python 3.8.
+  * Support for latest Tornado (includes a workaround for py38+win).
+  * Several fixes to various widgets.
+  * Various fixes to the docs.
+  * A few new examples.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Feb 23 10:06:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (no numpy) 
