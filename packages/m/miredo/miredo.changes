@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  6 14:07:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * miredo-client.service
+  * miredo-server.service
+
+-------------------------------------------------------------------
 Tue Jun  9 12:22:35 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build host name (boo#1084909)
