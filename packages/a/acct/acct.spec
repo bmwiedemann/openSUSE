@@ -1,7 +1,7 @@
 #
 # spec file for package acct
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        User-Specific Process Accounting
 License:        GPL-2.0-or-later
 Group:          System/Base
-Url:            https://www.gnu.org/software/acct/
+URL:            https://www.gnu.org/software/acct/
 Source:         https://ftp.gnu.org/gnu/acct/%{name}-%{version}.tar.gz
 Source1:        acct.service
 Source2:        logrotate.acct
