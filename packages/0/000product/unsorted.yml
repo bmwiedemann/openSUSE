@@ -410,6 +410,7 @@ unsorted:
   - afl 
   - afterburn: [x86_64] 
   - afterburn-dracut: [x86_64] 
+  - age 
   - agenda 
   - agenda-lang 
   - aha 
@@ -12902,6 +12903,7 @@ unsorted:
   - libqt5-qtgamepad-devel 
   - libqt5-qtgamepad-devel-32bit: [x86_64] 
   - libqt5-qtgamepad-examples 
+  - libqt5-qtgamepad-imports 
   - libqt5-qtgamepad-private-headers-devel 
   - libqt5-qtimageformats-32bit: [x86_64] 
   - libqt5-qtimageformats-devel 
@@ -13942,10 +13944,6 @@ unsorted:
   - libtraceevent1-plugins 
   - libtracefs-devel 
   - libtracefs1 
-  - libtracker-common-2_0 
-  - libtracker-control-2_0-0 
-  - libtracker-miner-2_0-0 
-  - libtracker-sparql-2_0-0 
   - libtranscript-devel 
   - libtranscript1 
   - libtree-sitter0 
@@ -18379,6 +18377,7 @@ unsorted:
   - patterns-base-update_test 
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
+  - patterns-budgie-budgie 
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
@@ -23905,6 +23904,7 @@ unsorted:
   - python36-subprocrunner 
   - python36-subscene-api 
   - python36-subst 
+  - python36-suds-community 
   - python36-suds-jurko 
   - python36-suntime 
   - python36-sure 
@@ -26820,6 +26820,7 @@ unsorted:
   - python38-subprocrunner 
   - python38-subscene-api 
   - python38-subst 
+  - python38-suds-community 
   - python38-suds-jurko 
   - python38-sunpy 
   - python38-suntime 
@@ -29935,6 +29936,7 @@ unsorted:
   - python39-subprocrunner 
   - python39-subscene-api 
   - python39-subst 
+  - python39-suds-community 
   - python39-suds-jurko 
   - python39-sunpy 
   - python39-suntime 
@@ -32662,7 +32664,7 @@ unsorted:
   - terraform-provider-aws 
   - terraform-provider-azurerm 
   - terraform-provider-helm 
-  - terraform-provider-libvirt: [x86_64] 
+  - terraform-provider-libvirt 
   - terraform-provider-null 
   - terraform-provider-openstack 
   - terraform-provider-template 
@@ -40967,9 +40969,6 @@ unsorted:
   - tpm2.0-tools: [i586] 
   - trace-cmd 
   - tracker-devel 
-  - tracker2 
-  - tracker2-devel 
-  - tracker2-lang 
   - trader 
   - trader-lang 
   - traefik 
@@ -41327,9 +41326,6 @@ unsorted:
   - typelib-1_0-Tepl-6 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
-  - typelib-1_0-Tracker-2_0 
-  - typelib-1_0-TrackerControl-2_0 
-  - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-UMockdev-1_0 
   - typelib-1_0-Uhm-0_0 
