@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:06:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.15:
+  * restore py2
+  * better type checks
+
+-------------------------------------------------------------------
 Thu Jun 17 20:56:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.13:
