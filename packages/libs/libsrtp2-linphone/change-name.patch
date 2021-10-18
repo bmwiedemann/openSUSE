@@ -11,12 +11,12 @@
 diff -ruN a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2021-07-14 14:14:19.962946488 +0200
 +++ b/CMakeLists.txt	2021-07-14 14:14:34.739008845 +0200
-@@ -21,7 +21,7 @@
+@@ -24,7 +24,7 @@
  ############################################################################
- 
- cmake_minimum_required(VERSION 3.0)
--project(SRTP2 C)
-+project(SRTP2-LINPHONE C)
+
+ cmake_minimum_required(VERSION 3.13)
+-project(SRTP2 LANGUAGES C VERSION "2.2.0")
++project(SRTP2-LINPHONE LANGUAGES C VERSION "2.2.0")
  
  
  option(ENABLE_STATIC "Build static library (default is shared library)." NO)

@@ -18,7 +18,7 @@
 
 %define so_ver	1
 Name:           libsrtp2-linphone
-Version:        2.2.0~git.20210622
+Version:        2.2.0~git.20210916
 Release:        0
 Summary:        BC's fork of the Secure Real-Time Transport Protocol (SRTP) library
 License:        BSD-3-Clause
