@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-ipyleaflet
-Version:        0.13.6
+Version:        0.14.0
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
@@ -31,20 +32,18 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipyleaflet = %{version}
-Requires:       python-Shapely
-Requires:       python-branca >= 0.3.1
 Requires:       python-ipywidgets >= 7.6.0
+Requires:       python-traittypes >= 0.2.1
 Recommends:     python-geopandas
 Recommends:     python-netCDF4
 Recommends:     python-scipy
 Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module branca >= 0.3.1}
-BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module ipywidgets >= 7.6.0}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module traittypes >= 0.2.1}
 # /SECTION
 %python_subpackages
 
@@ -90,6 +89,7 @@ $python -c 'import ipyleaflet'
 jupyter-%{$python_bin_suffix} nbextension list 2>&1 | grep 'jupyter-leaflet.*enabled'
 jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep 'jupyter-leaflet.*enabled'
 }
+rm -f %{buildroot}%{_jupyter_confdir}migrated
 
 %files %{python_files}
 %license LICENSE

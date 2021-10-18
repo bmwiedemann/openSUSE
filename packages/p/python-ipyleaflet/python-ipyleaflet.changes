@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 17 19:16:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  * Remove Shapely and branca dependencies
+    (for support in JupyterLite)
+  * Add new options to marker cluster
+
+-------------------------------------------------------------------
 Fri Apr 23 18:53:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.6
