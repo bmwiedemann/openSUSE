@@ -48,4 +48,12 @@
 - remove ocaml-sha.patch, fixed upstream</comment>
     <requestid>885616</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>19759c56e95af809a08c9daccd95df81</srcmd5>
+    <version>1.15.1</version>
+    <time>1634587153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925817</requestid>
+  </revision>
 </revisionlist>
