@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 16 11:16:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.2
+  * Support for playing the latest update.
+  * Fix pitch black models in lit areas in DOTM.
+  * Fix black candles in the DOTM start map.
+  * Look for QuakeEX.kpf under userdir, too.
+
+-------------------------------------------------------------------
 Tue Sep  7 07:09:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.1
