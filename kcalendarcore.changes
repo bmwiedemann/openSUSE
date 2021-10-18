@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:33:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * Set the correct last modified time when creating an exception for a recurring event.
+  * icalformat_p.cpp - support ATTACH parameter FILENAME (kde#436161)
+  * Add Qt5Gui as dependency in pkgconfig file.
+  * autotests/testicaltimezones.cpp - fix unused variable warning
+  * Read floating date time as LocalTime
+  * Implement PERIOD support in RDATE
+
+-------------------------------------------------------------------
 Mon Sep  6 06:21:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.86.0
