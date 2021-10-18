@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 17 20:53:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.6.5
+  * No release notes
+- Update requirements: jupyterlab-widgets and widgetsnbextensions
+- Remove doc package
+  * Version 7.6.5 ipywidgets.pdf and ipywidgets.zip not available
+
+-------------------------------------------------------------------
 Mon Feb  8 22:51:24 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 7.6.3: 
