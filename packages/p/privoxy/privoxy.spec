@@ -32,7 +32,6 @@ Source5:        https://www.fabiankeil.de/gpg-keys/fk-8BA2371C.asc#/%{name}.keyr
 Patch1:         %{name}-3.0.21-config.patch
 Patch2:         %{name}-3.0.17-utf8.patch
 Patch3:         %{name}-3.0.16-networkmanager.systemd.patch
-Patch4:         privoxy-nopcreposix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
