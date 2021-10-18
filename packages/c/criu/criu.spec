@@ -28,16 +28,15 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        3.15
+Version:        3.16.1
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
 Group:          System/Console
 URL:            https://criu.org/
-Source0:        https://download.openvz.org/criu/%{name}-%{version}.tar.bz2
+Source0:        http://github.com/checkpoint-restore/criu/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         criu-py-install-fix.diff
 Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
-Patch3:         criu-protobuf-c-1.4-underscore-fix.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
@@ -102,9 +101,6 @@ to develop applications with CRIU library.
 %setup -q
 %patch1 -p1
 %patch2 -p1
-%if "%{rpm_vercmp %proto_c_ver 1.4.0}" >= "0"
-%patch3 -p1
-%endif
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
@@ -141,11 +137,13 @@ ln -s criu.8 %{buildroot}%{_mandir}/man8/crtools.8
 %license COPYING
 %doc README.md
 %{_sbindir}/criu
+%{_sbindir}/criu-ns
 %{_sbindir}/crtools
 %{_bindir}/compel
 %{_bindir}/crit
 %{_mandir}/man1/compel.1%{?ext_man}
 %{_mandir}/man1/crit.1%{?ext_man}
+%{_mandir}/man1/criu-ns.1%{?ext_man}
 %{_mandir}/man8/criu.8%{?ext_man}
 %{_mandir}/man8/crtools.8%{?ext_man}
 %{_libexecdir}/criu
