@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 16 22:36:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * GH#512: Especially for very small bit sizes, ``Crypto.Util.number.getPrime()`` was
+    occasionally generating primes larger than given the bit size.
+  * GH#552: Correct typing annotations for ``PKCS115_Cipher.decrypt()``.
+  * GH#555: ``decrypt()`` method of a PKCS#1v1.5 cipher returned a ``bytearray`` instead of ``bytes``.
+  * GH#557: External DSA domain parameters were accepted even when the modulus (``p``) was not prime.
+    This affected ``Crypto.PublicKey.DSA.generate()`` and ``Crypto.PublicKey.DSA.construct()``.
+  * Added cSHAKE128 and cSHAKE256 (of SHA-3 family).
+  * GH#558: The flag RTLD_DEEPBIND passed to ``dlopen()`` is not well supported by
+    `address sanitizers <https://github.com/google/sanitizers/issues/611>`_.
+    It is now possible to set the environment variable ``PYCRYPTDOME_DISABLE_DEEPBIND``
+    to drop that flag and allow security testing.
+
+-------------------------------------------------------------------
 Thu Apr 22 19:58:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.1:
