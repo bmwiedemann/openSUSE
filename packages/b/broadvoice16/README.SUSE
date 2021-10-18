@@ -1,0 +1,14 @@
+Broadvoice codec information was once available at:
+  https://www.broadcom.com/support/broadvoice/
+
+Currently such page is not available anymore.
+However, you can find an old copy at web.archive.org
+
+For example:
+https://web.archive.org/web/20150224023215/https://www.broadcom.com/support/broadvoice/
+
+The file COPYING was generated with the command:
+  unoconv -f txt --stdout BroadVoice16.doc | sed '1s@^.@@;/Scope/,$d' >COPYING
+
+The file README is an extract from the page:
+  https://web.archive.org/web/20150224023215/https://www.broadcom.com/support/broadvoice/
