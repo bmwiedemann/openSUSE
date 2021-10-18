@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:33:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Android: Fix writing to config if path is a content:// Uri
+  * Add Gitlab CI configuration
+  * kconfigini: Only open the file once to write
+  * Allow KConfigXT to use KSharedConfig::openStateConfig
+
+-------------------------------------------------------------------
 Wed Sep 15 08:23:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.
