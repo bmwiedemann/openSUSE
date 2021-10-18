@@ -255,4 +255,20 @@
   * Removed legacy WineD3D options</comment>
     <requestid>925031</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e4bc549ecff764e3335b6d35eab2b02e</srcmd5>
+    <version>0.5.9.1</version>
+    <time>1634587156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.9.1:
+  * Fix possible escaping error for gamescope option
+  * Remove walrus operator to restore compatibility with
+    Python 3.7 / Ubuntu 18.04
+  * Remove log file being written in the home folder
+  * Fix install button for community installer
+  * Fix markup error on gamescope option
+  * Update URL for Ryujinx build
+  * Fix Steam sync creating duplicate games</comment>
+    <requestid>925815</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 17 09:42:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.9.1:
+  * Fix possible escaping error for gamescope option
+  * Remove walrus operator to restore compatibility with
+    Python 3.7 / Ubuntu 18.04
+  * Remove log file being written in the home folder
+  * Fix install button for community installer
+  * Fix markup error on gamescope option
+  * Update URL for Ryujinx build
+  * Fix Steam sync creating duplicate games
+
+-------------------------------------------------------------------
 Wed Oct 13 08:22:28 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.9:
