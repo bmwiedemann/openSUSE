@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  9 13:16:11 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Create separate 'Warewulf3' (https://github.com/warewulf/warewulf3)
+  flavor of busybox with the
+  additional setting:
+  CONFIG_REBOOT=y
+  CONFIG_SWITCH_ROOT=y
+  CONFIG_CTTYHACK=y 
+  (bsc#1191514).
+
+-------------------------------------------------------------------
 Fri May  7 19:04:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.33.1:

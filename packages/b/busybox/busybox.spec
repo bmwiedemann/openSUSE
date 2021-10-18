@@ -26,10 +26,13 @@ URL:            https://www.busybox.net/
 Source:         https://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source1:        BusyBox.1
 Source2:        busybox.config
+# Make sure busybox-static.config stays in sync with busybox.config -
+# exception: SELinux commands - these do not build statically.
 Source3:        busybox-static.config
 Source4:        man.conf
 Source5:        https://busybox.net/downloads/%{name}-%{version}.tar.bz2.sig
 Source6:        https://busybox.net/~vda/vda_pubkey.gpg#/%{name}.keyring
+Source7:        busybox-warewulf3.config
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
 # other patches
@@ -39,6 +42,10 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
+
+%ifarch x86_64 aarch64
+%define build_ww3 1
+%endif
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -57,6 +64,14 @@ Group:          System/Base
 %description static
 BusyBox combines tiny versions of many common UNIX utilities into a
 single executable.
+
+%package warewulf3
+Summary:        Static version of Busybox - for building Warewulf3
+Group:          System/Base
+
+%description warewulf3
+This version of busybox is only for building Warewulf3
+https://github.com/warewulf/warewulf3
 
 %package testsuite
 Summary:        Testsuite of busybox
@@ -92,14 +107,28 @@ cp -a %{SOURCE3} .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
 mv busybox busybox-static
+
+%if 0%{?build_ww3}
+make -e %{?_smp_mflags} clean
+cp -a %{SOURCE7} .config
+make %{?_smp_mflags} -e oldconfig
+make -e %{?_smp_mflags}
+mv busybox busybox-warewulf3
+make -e busybox.links %{?_smp_mflags}
+mv busybox.links busybox-warewulf3.links
+%endif
+
 make -e %{?_smp_mflags} clean
 cp -a %{SOURCE2} .config
 make %{?_smp_mflags} -e oldconfig
 #make -e %{?_smp_mflags}
 make -e
 make -e doc busybox.links %{?_smp_mflags}
+
 %if 0%{?usrmerged}
-sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' busybox.links
+for i in busybox.links %{?build_ww3:busybox-warewulf3.links}; do
+    sed -i -e 's,^/\(s\?bin\)/,/usr/\1/,' $i
+done
 %endif
 
 %install
@@ -113,6 +142,10 @@ install -d %{buildroot}%{_sysconfdir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 docs/BusyBox.1 %{buildroot}%{_mandir}/man1
+%if 0%{?build_ww3}
+install -m 0644 busybox-warewulf3.links %{buildroot}%{_datadir}/busybox
+install -m 0755 busybox-warewulf3 %{buildroot}%{_bindir}
+%endif
 cp %{SOURCE2} %{buildroot}%{_datadir}/busybox/.config
 ln -s %_bindir/busybox %{buildroot}%{_datadir}/busybox/busybox
 cp -a testsuite %{buildroot}%{_datadir}/busybox/testsuite
@@ -145,5 +178,13 @@ make -e %{?_smp_mflags} test
 %files static
 %license LICENSE
 %{_bindir}/busybox-static
+
+%if 0%{?build_ww3}
+%files warewulf3
+%license LICENSE
+%{_bindir}/busybox-warewulf3
+%dir %{_datadir}/busybox
+%{_datadir}/busybox/busybox-warewulf3.links
+%endif
 
 %changelog
