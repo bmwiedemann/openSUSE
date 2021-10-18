@@ -18,13 +18,13 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
-Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.gz
+Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
 Requires:       kernel-default >= 5.1

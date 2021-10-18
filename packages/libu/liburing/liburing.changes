@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Oct 13 10:31:43 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- update to 2.1:
+  * Ignore spurious fadvise/madvise failures
+  * build: add -D_GNU_SOURCE to all CPPFLAGS/CFLAGS.
+  * man: clean up spelling
+  * man/io_uring_enter.2: add notes about direct open/accept
+  * io_uring.h: sync with 5.15 kernel
+  * Fix IORING_REGISTER_IOWQ_MAX_WORKERS name
+  * man: document new register/update API
+  * liburing: add helpers for direct open/accept
+  * liburing.h: correct max_worker name
+  * Change IORING_REGISTER_IOWQ_MAX_UNBOUND_WORKERS
+  * src/syscall.h: get rid of useless externs
+  * man/io_uring_enter.2: document IORING_ENTER_EXT_ARG
+  * Add io_uring_register_iowq_max_unbound() helper
+  * Get rid of useless 'extern' on function declarations in liburing.h
+  * Add (UN)REGISTER_IOWQ_AFF helpers
+  * man/io_uring_register.2: note when MAX_UNBOUND became available
+  * man/io_uring_register.2: add missing punctuation
+  * man/io_uring_register.2: document IORING_REGISTER_IOWQ_MAX_UNBOUND
+  * man/io_uring_enter.2: add IORING_OP_TIMEOUT clock sources
+  * man/io_uring_enter.2: improve timeout entry
+  * man/io_uring_enter.2: update SQE
+  * man/io_uring_enter.2: note that not all requests support fixed files
+  * man/io_uring_enter.2: add new 5.15 opcodes
+  * man/io_uring_enter.2: note that cqe->flags is indeed used
+  * man/io_uring_enter.2: add poll update and multishot mode
+  * man/io_uring_register.2: add IORING_(UN)REGISTER_IOWQ
+  * man: update notes on register quiesce
+  * man: fix io_uring_sqe alignment
+  * register: add tagging and buf update helpers
+  * liburing.h: make header clean for implicit sign and size conversions
+  * configure: document --cc and --cxx options
+  * io_uring: update buffer update feature testing
+  * liburing.h: dedup poll mask conversion
+  * liburing.h: add a multipoll helper
+  * Update io_uring.h
+  * examples: disable ucontext-cp for elbrus (e2k) architecture
+  * Update io_uring_setup.2
+  * man/io_uring_setup.2: document the two most recent FEAT flags
+  * man/io_uring_setup.2: make sure FEAT flags are kernel versioned
+  * correct syscall NR in mips
+  * Fix 32-bit compile warnings
+  * liburing.h: make all file/IO offset __u64
+  * src/queue: don't flush SQ ring for new wait interface
+  * man/io_uring_enter.2: further clarify what cqe->res holds
+  * Clarify information about error results
+  * Refer to the accept_flags in io_uring_enter manual
+  * Fix a bug due to the unreleased lock before function returns
+  * debian/rules: add missing slash for relativelibdir
+  * man/io_uring_enter.2: clarify io_uring_enter(2) SQPOLL return value
+  * liburing.h: add linkat prep helper
+  * io_uring.h: add linkat opcode
+  * liburing.h: add symlinkat prep helper
+  * io_uring.h: add symlinkat opcode
+  * liburing.h: add mkdirat prep helper
+  * update rsrc register/update ABI and tests
+  * queue: clean up SQ flushing
+  * io_uring_enter(2): Clarify how to read from and write to non-seekable files
+  * clarify an edge case of IORING_SETUP_SQ_AFF
+  * io_uring_enter(2): clarify OP_READ and OP_WRITE
+  * sync io_uring.h API file with Linux 5.13
+  * man: Fix typo in man io_uring_queue_exit
+  * examples/link-cp: fix a couple of strerror negations
+  * src/setup: don't treat dummy ring init as failure
+  * src/setup: add some documentation to the memlock helpers
+  * examples/ucontext-cp.c: cope with variable SIGSTKSZ
+  * setup: provide helpers to inquire about necessary mlock sizes
+  * examples/io_uring-cp: wait for pending writes before exit copy loop
+  * spec: add explicit build dependency on make
+  * spec: bump version to 2.0
+  * man/io_uring_enter.2: note that -EBUSY can also happen for getevents
+
+-------------------------------------------------------------------
 Sat Mar 13 21:33:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip building the tests that are neither installed nor run
