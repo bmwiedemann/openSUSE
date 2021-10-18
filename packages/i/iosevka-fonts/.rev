@@ -137,4 +137,15 @@
 </comment>
     <requestid>924554</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>adc144eaf27fd8da78e64fef546646de</srcmd5>
+    <version>10.3.3</version>
+    <time>1634587168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.3
+  * Changes of version 10.3.3
+    = Add support for Roman numerals (#623).
+</comment>
+    <requestid>925882</requestid>
+  </revision>
 </revisionlist>
