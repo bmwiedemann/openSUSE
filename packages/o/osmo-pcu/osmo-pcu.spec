@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmopcu/wiki/OsmoPCU
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-pcu.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -42,6 +43,7 @@ Osmocom PCU code (RLC/MAC/PCU) for OpenBTS and OsmoBTS.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version
