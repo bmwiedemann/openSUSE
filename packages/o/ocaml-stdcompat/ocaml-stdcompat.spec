@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ocaml-stdcompat
-Version:        16
+Version:        17
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library 
