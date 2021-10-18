@@ -264,4 +264,15 @@
   * Added CockroachDB support for UUIDType</comment>
     <requestid>900657</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bf20072ee0ea2c62b5667542b964dcf5</srcmd5>
+    <version>0.37.8</version>
+    <time>1634587149</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.37.8:
+  * Added 'zoneinfo' backend to TimezoneType
+  * Added identifier quoting for view functions and constructs
+  * Added literal processor for UUIDType</comment>
+    <requestid>925771</requestid>
+  </revision>
 </revisionlist>

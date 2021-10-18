@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-SQLAlchemy-Utils
-Version:        0.37.6
+Version:        0.37.8
 Release:        0
 Summary:        Various utility functions for SQLAlchemy
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module Pygments >= 1.2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.0}
 BuildRequires:  %{python_module anyjson >= 0.3.3}
 BuildRequires:  %{python_module arrow >= 0.3.4}
+BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module colour >= 0.0.4}
 BuildRequires:  %{python_module cryptography >= 0.6}
 BuildRequires:  %{python_module docutils >= 0.10}
@@ -52,6 +53,9 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy >= 1.0
+%if 0%{?python_version_nodots} < 39
+Requires:       python-backports.zoneinfo
+%endif
 Requires:       python-six
 Recommends:     python-Babel >= 1.3
 Recommends:     python-anyjson >= 0.3.3
