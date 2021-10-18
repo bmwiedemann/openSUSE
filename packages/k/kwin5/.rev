@@ -1274,4 +1274,14 @@
     <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
     <requestid>924707</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>37c8b73fe548d77b150e45b6c0ed0351</srcmd5>
+    <version>5.23.0</version>
+    <time>1634587412</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix black screen when compositing fails to initialize
+  (kde#443953):
+  * kde443953.patch (forwarded request 925991 from Vogtinator)</comment>
+    <requestid>925992</requestid>
+  </revision>
 </revisionlist>

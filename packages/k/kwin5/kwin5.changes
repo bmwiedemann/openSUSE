@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 18 10:01:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix black screen when compositing fails to initialize
+  (kde#443953):
+  * kde443953.patch
+
+-------------------------------------------------------------------
+Fri Oct 15 09:02:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make pipewire-devel BR versioned
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0

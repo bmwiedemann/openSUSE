@@ -39,6 +39,8 @@ Source:         kwin-%{version}.tar.xz
 Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         kde443953.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 # PATCH-FIX-OPENSUSE
@@ -134,7 +136,7 @@ BuildRequires:  pkgconfig(libinput) >= 1.14
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-egl)
 # Don't use pkgconfig here as that would cause unresolvables on 0.1 -> 0.2 -> 0.3 bumps
-BuildRequires:  pipewire-devel
+BuildRequires:  pipewire-devel >= 0.3.29
 # xorg-x11-server-wayland is required by plasma5-session-wayland and kwin5 can run with just X11
 Recommends:     xorg-x11-server-wayland
 %endif
