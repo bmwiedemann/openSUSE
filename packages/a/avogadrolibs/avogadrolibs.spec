@@ -30,9 +30,9 @@
 %define sonum 1
 %define libname libAvogadro%{sonum}
 %define molecules_rev b1e16c5dc6d15e72d30dd6c4fca31b2c12025efc
-%define crystals_rev  c3e2468fa42360499f0e73d215bddfe2245258aa
+%define crystals_rev  4b39c77ec1043cfb7a73e7b5dd51e24d36a95c44
 Name:           avogadrolibs
-Version:        1.95.0
+Version:        1.95.1
 Release:        0
 Summary:        Avogadro libraries for computational chemistry
 License:        BSD-3-Clause
@@ -43,7 +43,7 @@ Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev
 # PATCH-FIX-UPSTREAM not-install-gwavi.patch -- Library only used locally so no need to install this helper
 Patch0:         not-install-gwavi.patch
 BuildRequires:  cmake >= 3.3
-BuildRequires:  eigen3-devel
+BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
@@ -53,7 +53,7 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(libmsym)
+BuildRequires:  cmake(libmsym) >= 0.2.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libarchive)
