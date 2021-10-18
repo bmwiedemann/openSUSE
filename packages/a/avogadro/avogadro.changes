@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 14 09:32:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.95.1
+  * Bug Fixes
+    - Fix disabled Balls and Sticks rendering on a fresh install (#744)
+    - Fix for loading settings (#732)
+    - Add ... to all input generators to indicate opening a dialog (#743)
+    - Fix reference axes menu item (#705)
+    - Continue rendering cartoons even if residues aren't found (#736)
+    - Enable script formats like cclib to ask for bond perception on read (#738)
+  * Features
+    - Initial display-only property tables (#711)
+    - Improve selection tool for layers (#729)
+  * Maintenance
+    - Make sure to run tests in avogadrolibs (including some fix for test failures) (#739)
+  * Translations
+    - Translations update from Weblate (#721)
+- Fix build error for Tumbleweed.
+
+-------------------------------------------------------------------
 Wed Aug 18 17:22:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.95.0
@@ -364,4 +384,3 @@ Fri Dec 21 00:00:00 UTC 2007 - andrea@opensuse.org
 Sun Dec 16 00:00:00 UTC 2007 - andrea@opensuse.org
 
 - First spec making
-

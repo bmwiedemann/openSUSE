@@ -17,22 +17,23 @@
 
 
 %define src_name avogadroapp-%{version}
-%define i18n_rev 408feaa3de241aab2e32be70feb21e1a84597f67
+%define i18n_rev 3b8a86cc37e988b043d1503d2f11068389b0aca3
+
 Name:           avogadro
-Version:        1.95.0
+Version:        1.95.1
 Release:        0
 Summary:        A Molecular design tool
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Scientific/Chemistry
-Url:            https://two.avogadro.cc/
+URL:            https://two.avogadro.cc/
 Source0:        https://github.com/OpenChemistry/avogadroapp/archive/refs/tags/%{version}.tar.gz#/%{src_name}.tar.gz
 Source1:        https://github.com/OpenChemistry/avogadro-i18n/archive/%{i18n_rev}.tar.gz#/avogadro-i18n-%{i18n_rev}.tar.gz
 BuildRequires:  cmake >= 3.3
 BuildRequires:  fdupes
-BuildRequires:  cmake(AvogadroLibs) >= 1.95
-BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  cmake(AvogadroLibs) >= 1.95.1
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(eigen3)
 Recommends:     %{name}-lang
 
 %lang_package
@@ -50,7 +51,8 @@ ln -s avogadro-i18n-%{i18n_rev} ../avogadro-i18n
 
 %build
 %cmake \
-  -DAvogadro_ENABLE_RPC=ON
+  -DAvogadro_ENABLE_RPC=ON \
+  -DCMAKE_SKIP_INSTALL_RPATH=ON
 %make_build
 
 %install

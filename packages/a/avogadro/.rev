@@ -7,4 +7,12 @@
     <comment>As we have the library package already in Factory it would be nice to have the application also in Factory.</comment>
     <requestid>916837</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84e2569b6097557c403a744d33028784</srcmd5>
+    <version>1.95.1</version>
+    <time>1634587165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925862</requestid>
+  </revision>
 </revisionlist>
