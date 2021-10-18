@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Oct 17 18:51:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.0
+  * New Client.start_and_connect() method for starting a cluster
+    and returning a connected client in one call.
+  * Support CurveZMQ for transport-level encryption and
+    authentication. See security docs for more info.
+  * Define _max_workers attribute on view.executor for better
+    consistency with standard library Executors.
+  * Client.wait_for_engines() will raise an informative error if
+    the parent Cluster object notices that its engines have halted
+    while waiting, or any engine unregisters, rather than
+    continuing to wait for engines that will never come
+  * Show progress if %px is taking significant time
+  * Improved support for streaming output, e.g. with %px, including
+    support for updating output in-place with standard terminal
+    carriage-return progress bars.
+  * Fix dropped IOPub messages when using large numbers of engines,
+    causing AsyncResult.wait_for_output() to hang.
+  * Use absolute paths for Cluster.profile_dir, fixing issues with
+    Cluster.from_file() when run against a profile created with a
+    relative location, e.g. Cluster(profile_dir="./profile")
+  * Fix error waiting for connection files when controller is
+    started over ssh.
+- Release 7.0.1
+  * Fix missing setupbase.py in tarball
+- Release 7.0.0
+  * Require Python 3.6
+  * Fix compatibility issues with ipykernel 6 and jupyter-client 7
+  * Remove dependency on deprecated ipython-genutils
+  * New dependencies on psutil, entrypoints, tqdm
+  * New Cluster API for managing clusters from Python, including
+    support for signaling and restarting engines. See docs for
+    more.
+  * New ipcluster list and ipcluster clean commands derived from
+    the Cluster API.
+  * New Client.send_signal() for sending signals to single engines.
+  * New KernelNanny process for signaling and monitoring engines
+    for improved responsiveness of handing engine crashes.
+  * New prototype BroadcastScheduler with vastly improved scaling
+    in ‘do-on-all’ operations on large numbers of engines, c/o
+    Tom-Olav Bøyum’s Master’s thesis at University of Oslo.
+    Broadcast view documentation.
+  * New Client.wait_for_engines() method to wait for engines to be
+    available.
+  * Nicer progress bars for interactive waits, such as
+    AsyncResult.wait_interactive().
+  * Add AsyncResult.stream_output() context manager for streaming
+    output. Stream output by default in parallel magics.
+  * Launchers registered via entrypoints for better support of
+    third-party Launchers.
+  * New JupyterLab extension (enabled by default) based on
+    dask-labextension for managing clusters.
+  * LoadBalancedView.imap() consumes inputs as-needed, producing a
+    generator of results instead of an AsyncMapResult, allowing for
+    consumption of very large or infinite mapping inputs.
+  * Greatly improved performance of heartbeat and registration with
+    large numbers of engines, tested with 5000 engines and default
+    configuration.
+  * Single IPController.ports configuration to specify the pool of
+    ports for the controller to use, e.g. ipcontroller --ports
+    10101-10120.
+  * Allow f as keyword-argument to apply, e.g. view.apply(myfunc,
+    f=5).
+  * joblib backend will start and stop a cluster by default if the
+    default cluster is not running.
+
+-------------------------------------------------------------------
 Thu May 14 14:19:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Go back to PyPI tarball
