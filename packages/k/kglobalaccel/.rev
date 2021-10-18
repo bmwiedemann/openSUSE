@@ -803,4 +803,12 @@
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919191</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>cebcdeb7060a25c0301dab9de555c59e</srcmd5>
+    <version>5.87.0</version>
+    <time>1634587117</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.87.0 (forwarded request 924235 from cgiboudeaux)</comment>
+    <requestid>924436</requestid>
+  </revision>
 </revisionlist>
