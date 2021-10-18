@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 13 13:55:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-gbproxy.service.patch
+  * harden_osmo-gtphub.service.patch
+  * harden_osmo-sgsn.service.patch
+
+-------------------------------------------------------------------
 Sat Sep 26 19:00:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.6.2

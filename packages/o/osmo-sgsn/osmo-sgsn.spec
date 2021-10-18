@@ -28,6 +28,9 @@ License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmosgsn/wiki/OsmoSGSN
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-gbproxy.service.patch
+Patch1:	harden_osmo-gtphub.service.patch
+Patch2:	harden_osmo-sgsn.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -72,6 +75,9 @@ BSS's and present them in one Gb link to the SGSN.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 echo "%{version}" >.tarball-version

@@ -1,0 +1,22 @@
+Index: osmo-sgsn-1.6.2/contrib/systemd/osmo-gbproxy.service
+===================================================================
+--- osmo-sgsn-1.6.2.orig/contrib/systemd/osmo-gbproxy.service
++++ osmo-sgsn-1.6.2/contrib/systemd/osmo-gbproxy.service
+@@ -2,6 +2,17 @@
+ Description=Osmocom Gb proxy
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStart=/usr/bin/osmo-gbproxy -c /etc/osmocom/osmo-gbproxy.cfg
+ Restart=always
