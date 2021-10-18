@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-fmt
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Format pretty-printer combinators
@@ -27,13 +27,11 @@ URL:            https://opam.ocaml.org/packages/fmt
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         ocaml-fmt.patch
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
-BuildRequires:  ocaml(ocaml_base_version) >= 4.05
+BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
 BuildRequires:  ocamlfind(result)
-BuildRequires:  ocamlfind(seq)
-BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(unix)
 
 %description
