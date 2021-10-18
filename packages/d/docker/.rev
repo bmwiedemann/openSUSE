@@ -1120,4 +1120,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
 - Switch to Go 1.16.x compiler, in line with upstream.</comment>
     <requestid>923378</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>97cbbdce54e2310f0836be52a8de9a8c</srcmd5>
+    <version>20.10.9_ce</version>
+    <time>1634587123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925301</requestid>
+  </revision>
 </revisionlist>

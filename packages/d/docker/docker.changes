@@ -3,7 +3,8 @@ Wed Oct  6 02:51:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.9-ce. See upstream changelog in the packaged
   /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1191355
-  CVE-2021-41092 CVE-2021-41089 CVE-2021-41091 CVE-2021-41103
+  CVE-2021-41089 bsc#1191015 CVE-2021-41091 bsc#1191434
+  CVE-2021-41092 bsc#1191334 CVE-2021-41103 bsc#1191121
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
