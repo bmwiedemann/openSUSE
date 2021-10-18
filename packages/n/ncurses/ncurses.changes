@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct  4 05:45:27 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211002
+  + use return-value from vsnprintf to reallocate as needed to allow for
+    buffers larger than the screen size (report by "_RuRo_").
+  + modify tset "-q" option to refrain from modifying terminal modes, to
+    match the documentation.
+  + add section on margins to terminfo.5, adapted from X/Open Curses.
+  + make tput/tset warning messages consistently using alias names when
+    those are used, rather than the underlying program's name.
+  + improve tput usage message for aliases such as clear, by eliminating
+    tput-specific portions.
+  + add a check in toe to ensure that a "termcap file" is text rather
+    than binary.
+  + further build-fixes for OpenBSD 6.9, whose header files differ from
+
+-------------------------------------------------------------------
+Mon Sep 27 07:27:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210925
+  + add kbeg to xterm+keypad to accommodate termcap applications -TD
+  + add smglp and smgrp to vt420+lrmm, to provide useful data for the
+    "tabs" +m option -TD
+  + build-fix for gcc 3.4.3 with Solaris10, which does not allow forward
+    reference of anonymous struct typedef.
+  + modify tput to allow multiple commands per line.
+  + minor fixes for tset manpage.
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Sep 13 07:06:29 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210911

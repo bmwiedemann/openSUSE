@@ -3321,4 +3321,12 @@
     e.g., for NetBSD which generally supports 500, but 600 is needed for</comment>
     <requestid>918836</requestid>
   </revision>
+  <revision rev="196" vrev="27">
+    <srcmd5>c88464270407859b9a8aa889a0857592</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1634587093</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>924628</requestid>
+  </revision>
 </revisionlist>
