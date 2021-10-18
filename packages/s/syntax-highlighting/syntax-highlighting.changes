@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:34:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * Add basic QML API docs
+  * yara - add new 4.x keywords
+  * Tests result
+  * Fix operators and included more blocks on test
+  * Change license to MIT
+  * Included test reference
+  * Removed items that are generating errors for now
+  * initial work on terraform syntax highlight
+  * Port AbstractHighlighter::highlightLine to QStringView
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.
