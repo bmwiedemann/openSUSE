@@ -2,7 +2,7 @@
 # spec file for package ispc
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2020-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 
 Name:           ispc
-Version:        1.15.0
+Version:        1.16.1
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
-Source:         https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch:          fix-llvm12-fallout.patch
+Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#!BuildIgnore:  clang13
 BuildRequires:  bison
-BuildRequires:  clang-devel
+BuildRequires:  clang12-devel
 BuildRequires:  cmake >= 3.13
 BuildRequires:  doxygen
 BuildRequires:  flex
-BuildRequires:  llvm-devel
+BuildRequires:  libomp-devel
+BuildRequires:  llvm12-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
@@ -47,7 +48,6 @@ A compiler for a variant of the C programming language, with extensions for
 
 %prep
 %setup -q
-%patch -p1
 
 # other distributions seem to provide curses compatibility links to ncurses
 sed -i 's|${PROJECT_NAME} pthread z tinfo curses)|${PROJECT_NAME} pthread z tinfo ncurses)|' CMakeLists.txt

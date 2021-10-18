@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 12 16:30:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.16.1
+  Check:
+  https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
+- Remove fix-llvm12-fallout.patch, upstreamed
+- Explicitly use clang12 to build
+
+-------------------------------------------------------------------
 Sun May  2 12:20:27 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add fix-llvm12-fallout.patch with some LLVM API changes backported
