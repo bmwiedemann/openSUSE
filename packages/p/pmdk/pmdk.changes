@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  6 08:54:51 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to PMDK 1.11.1
+  * Bugfixes:
+  * doc: remove exprimental moniker from libpmem2(7)
+  * common: fix missing sfence in non-temporal memcpy
+  * common: fix a mismatch between prototype and body
+  * common: fix mismatched function args
+  * obj: rename vars clashing with those of a containing block
+  * pmem2: don't force smaller alignment for fsdax mappings
+  * pool: don't trample upon users of localtime()
+  * rpmem: Fix RPMEM_RAW_BUFF_SIZE and LANE_ALIGN_SIZE for powerpc64le
+
+-------------------------------------------------------------------
 Tue Sep 21 20:21:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old specfile constructs like defattr.

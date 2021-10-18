@@ -25,7 +25,7 @@
 %define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
