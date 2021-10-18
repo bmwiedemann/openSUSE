@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 06:50:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_onedrive.service.patch
+  * harden_onedrive@.service.patch
+
+-------------------------------------------------------------------
 Thu Jul 15 06:40:36 UTC 2021 - egotthold@suse.com
 
 - Update to version 2.4.13:
