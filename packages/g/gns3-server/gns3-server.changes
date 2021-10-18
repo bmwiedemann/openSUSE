@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 13 20:14:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.26
+  * Release web UI 2.2.26
+  * Sort symbols by theme. Fixes GNS3/gns3-gui#3230
+  * Fix memory percentage left warning. Fixes #1966
+  * Update affinity symbols. Fixes GNS3/gns3-gui#3232
+- Update to version 2.2.25
+  * Fix issue preventing to use custom nested symbols.
+  * Updated affinity symbols
+  * Return disk usage for partition that contains the default
+    project directory.
+  * Explicitly require setuptools, utils/get_resource.py
+    imports pkg_resources
+
+-------------------------------------------------------------------
 Mon Sep 20 13:42:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
