@@ -76,4 +76,12 @@
   * Hardcode 'v4' on the help message's gitlab URL</comment>
     <requestid>833390</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b8bf7f707e2b04b60320074f0f1fd0e4</srcmd5>
+    <version>2.32</version>
+    <time>1634587187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925975</requestid>
+  </revision>
 </revisionlist>

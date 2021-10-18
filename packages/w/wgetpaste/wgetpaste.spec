@@ -1,7 +1,7 @@
 #
 # spec file for package wgetpaste
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           wgetpaste
-Version:        2.30
+Version:        2.32
 Release:        0
 Summary:        Command-line interface to various pastebins
 License:        MIT
 Group:          Productivity/Other
-URL:            https://wgetpaste.zlin.dk/
-Source0:        https://wgetpaste.zlin.dk/%{name}-%{version}.tar.bz2
-Source1:        services.conf
+URL:            https://github.com/zlin/wgetpaste
+Source0:        https://github.com/zlin/wgetpaste/releases/download/%{version}/wgetpaste-%{version}.tar.xz
+Source1:        https://github.com/zlin/wgetpaste/releases/download/%{version}/wgetpaste-%{version}.tar.xz.sig
+Source2:        services.conf
 Requires:       bash
 Requires:       coreutils
 Requires:       wget
@@ -42,7 +43,7 @@ Command-line interface to communicate with various pastebin services.
 
 %install
 install -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.d/services.conf
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}.d/services.conf
 install -D -m 0644 _%{name} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %files

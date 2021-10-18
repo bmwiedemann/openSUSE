@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:06:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32:
+  * Implement bpaste v1 API
+  * Add sprunge paste bin
+  * Add 0x0 pastebin
+  * Use new dpaste API
+  * Add ix.io pastebin
+  * Do not interpret content when posting to dpaste
+  * Add missing dpaste escape functions
+  * wgetpaste now comes with a test script 
+
+-------------------------------------------------------------------
 Thu Sep 10 06:25:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.30:
