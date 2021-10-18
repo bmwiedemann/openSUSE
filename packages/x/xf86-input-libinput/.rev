@@ -439,4 +439,12 @@ In short, do not use this driver for tablets on production workstations yet.</co
     clients.</comment>
     <requestid>920283</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>7ca1dda8988ad770d35e4d6c5fc8a874</srcmd5>
+    <version>1.2.0</version>
+    <time>1634587123</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925423</requestid>
+  </revision>
 </revisionlist>

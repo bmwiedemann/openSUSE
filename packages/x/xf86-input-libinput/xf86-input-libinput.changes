@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  8 11:58:43 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted previous change; the issue was broken ckb-next, not
+  the usage of libinput v120 API (boo#1190646)
+
+-------------------------------------------------------------------
+Tue Oct  5 11:17:29 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- switch to libinput v120 API broke the driver, so disable it for
+  now via patching config.h in specfile after running configure 
+  (boo#1190646)
+
+-------------------------------------------------------------------
 Mon Sep 20 08:47:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0 
