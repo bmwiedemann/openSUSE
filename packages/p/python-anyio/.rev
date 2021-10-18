@@ -46,4 +46,19 @@
     <comment></comment>
     <requestid>919878</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48add22fa300b860105f358aa07ba36d</srcmd5>
+    <version>3.3.3</version>
+    <time>1634587145</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.3:
+  * Fixed UNIX socket listener not setting accepted sockets to non-blocking
+    mode on asyncio
+  * Changed unconnected UDP sockets to be always bound to a local port (on
+    &quot;any&quot; interface) to avoid errors on asyncio + Windows
+  * Fixed cancellation problem on asyncio where level-triggered cancellation
+    for **all** parent cancel scopes would not resume after exiting a 
+    shielded nested scope</comment>
+    <requestid>925754</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:03:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.3:
+  * Fixed UNIX socket listener not setting accepted sockets to non-blocking
+    mode on asyncio
+  * Changed unconnected UDP sockets to be always bound to a local port (on
+    "any" interface) to avoid errors on asyncio + Windows
+  * Fixed cancellation problem on asyncio where level-triggered cancellation
+    for **all** parent cancel scopes would not resume after exiting a 
+    shielded nested scope
+
+-------------------------------------------------------------------
 Fri Sep 17 19:23:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v3.3.1

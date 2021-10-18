@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-anyio
-Version:        3.3.1
+Version:        3.3.3
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
