@@ -18,11 +18,11 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-jupyter-server-mathjax
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        MathJax resources as a Jupyter Server Extension
-License:        BSD-3-Clause AND Apache-2.0
-URL:            https://jupyter.org
+License:        Apache-2.0 AND BSD-3-Clause
+URL:            https://github.com/jupyter-server/jupyter_server_mathjax
 # Get the bundled JS stuff with the wheel
 Source:         https://files.pythonhosted.org/packages/py3/j/jupyter_server_mathjax/jupyter_server_mathjax-%{version}-py3-none-any.whl
 BuildRequires:  %{python_module jupyter-packaging}
