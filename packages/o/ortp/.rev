@@ -240,4 +240,14 @@
 </comment>
     <requestid>906259</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bb733de098166196e4e166a91db982ee</srcmd5>
+    <version>5.0.35</version>
+    <time>1634587407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.35:
+  * no changelog
+</comment>
+    <requestid>925346</requestid>
+  </revision>
 </revisionlist>

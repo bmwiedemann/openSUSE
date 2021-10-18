@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        5.0.0
+Version:        5.0.35
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -64,31 +64,32 @@ develop programs using the oRTP library.
 %autosetup -p1
 
 %build
-%cmake -DENABLE_STATIC=OFF
-%make_build
+%cmake \
+  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+  -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
+  -DENABLE_STATIC=OFF
+%cmake_build
 
 %install
 %cmake_install
 
-mkdir -p %{buildroot}%{_docdir}/%{name}/
+mkdir -p %{buildroot}%{_docdir}
 # manually keeping the version here because upstream doesn't (usually) update the patch version
-mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0/ \
-  %{buildroot}%{_docdir}/%{name}/
+mv %{buildroot}%{_datadir}/doc/%{name}-5.0.0 %{buildroot}%{_docdir}/%{name}
 
-mv %{buildroot}%{_datadir}/doc/%{name}-./LICENSE.txt %{buildroot}%{_docdir}/%{name}/
-mv %{buildroot}%{_datadir}/doc/%{name}-./AUTHORS.md %{buildroot}%{_docdir}/%{name}/
-mv %{buildroot}%{_datadir}/doc/%{name}-./README.md %{buildroot}%{_docdir}/%{name}/
-mv %{buildroot}%{_datadir}/doc/%{name}-./CHANGELOG.md %{buildroot}%{_docdir}/%{name}/
+# for some reason, pkgconfig file contains wrong libdir
+sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
-%doc %{_docdir}/%{name}/
+%dir %{_docdir}/%{name}
 %license %{_docdir}/%{name}/LICENSE.txt
-%{_docdir}/%{name}/README.md
-%{_docdir}/%{name}/CHANGELOG.md
-%{_docdir}/%{name}/AUTHORS.md
+%doc %{_docdir}/%{name}/html
+%doc %{_docdir}/%{name}/README.md
+%doc %{_docdir}/%{name}/CHANGELOG.md
+%doc %{_docdir}/%{name}/AUTHORS.md
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
