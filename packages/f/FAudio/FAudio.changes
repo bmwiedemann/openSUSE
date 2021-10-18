@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 17 09:20:42 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.10:
+  * Minor WinRT project update for latest SDL Git revision
+  * Continued work on the experimental Wine/Win32 platform backend
+
+-------------------------------------------------------------------
 Thu Sep 16 17:48:28 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.09:

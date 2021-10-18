@@ -225,4 +225,14 @@
 - faudio-older-sdl2.patch: build against a bit older SDL2 on Leap 42.3. (forwarded request 919562 from ukbeast89)</comment>
     <requestid>919669</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9c052e97aaf16a680b4dd521e92c5441</srcmd5>
+    <version>21.10</version>
+    <time>1634587163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.10:
+  * Minor WinRT project update for latest SDL Git revision
+  * Continued work on the experimental Wine/Win32 platform backend (forwarded request 925821 from ukbeast89)</comment>
+    <requestid>925850</requestid>
+  </revision>
 </revisionlist>
