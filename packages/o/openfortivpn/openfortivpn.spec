@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/adrienverge/openfortivpn
 Source0:        https://github.com/adrienverge/openfortivpn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_openfortivpn@.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  openssl-devel
@@ -38,6 +39,7 @@ It is compatible with Fortinet VPNs.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
