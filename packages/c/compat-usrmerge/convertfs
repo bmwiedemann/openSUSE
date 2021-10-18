@@ -69,7 +69,7 @@ for dir in bin sbin lib lib64; do
     # link on older distros
     while read d; do
 	f="$ROOT/usr/$dir.usrmerge/$d"
-	if test -e "$f" -a \( -L "$f" -o ! -d "$f" \); then
+	if test -L "$f" -o \( -e "$f" -a ! -d "$f" \); then
 	    echo "Warning: /$dir/$d conflicts with directory /usr/$dir/$d and will be removed"
 	    rm -rf "$f.usrmerge~"
 	    mv "$f" "$f.usrmerge~"

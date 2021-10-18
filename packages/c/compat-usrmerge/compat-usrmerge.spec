@@ -147,6 +147,7 @@ EOF
 %endif
 
 %filetriggerin -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
+if posix.stat("/lib", "type") ~= "directory" then return end
 require("usrmerge")
 if posix.getenv("VERBOSE_FILETRIGGERS") then
     usrmerge.debug = "%{nvr}(in)"
@@ -159,6 +160,7 @@ end
 io.flush()
 
 %filetriggerpostun -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
+if posix.stat("/lib", "type") ~= "directory" then return end
 -- the module is already gone if we get called for ourselves
 if pcall(require, 'usrmerge') then
     if posix.getenv("VERBOSE_FILETRIGGERS") then
@@ -173,6 +175,7 @@ if pcall(require, 'usrmerge') then
 end
 
 %filetriggerpostun -p <lua> -- /sbin /bin /%{_lib}
+if posix.stat("/lib", "type") ~= "directory" then return end
 -- the module is already gone if we get called for ourselves
 if pcall(require, 'usrmerge') then
     if posix.getenv("VERBOSE_FILETRIGGERS") then

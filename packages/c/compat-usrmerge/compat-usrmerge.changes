@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  7 11:57:22 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Fix logic for detecting conflicts with directories (boo#1191111)
+
+-------------------------------------------------------------------
+Fri Aug 27 08:39:30 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- exit file triggers early if alread usrmerged
+
+-------------------------------------------------------------------
 Fri Aug 27 06:35:26 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - statically link xmv to avoid glibc 2.34 dependency

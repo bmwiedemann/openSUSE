@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>914526</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>db3ea9074a430717229ef191e990fb4f</srcmd5>
+    <version>84.87</version>
+    <time>1634587092</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logic for detecting conflicts with directories (boo#1191111)
+- exit file triggers early if alread usrmerged (forwarded request 923734 from lnussel)</comment>
+    <requestid>923737</requestid>
+  </revision>
 </revisionlist>
