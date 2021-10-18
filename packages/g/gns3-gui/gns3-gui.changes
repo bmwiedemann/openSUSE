@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 13 20:12:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.26
+  * Open "template configuration" dialog with double click on
+    template name in "Preferences".
+  * Only show "virtio" network adapter when legacy node is enabled.
+  * Double-click on a template opens "template configuration"
+    dialog.
+  * Fix "Custom symbols" can't be unfolded after using "Filter"
+    field.
+- Update to version 2.2.25
+  * Change method to display the recent files menu.
+  * Fix bug when using empty port names for custom adapters.
+  * Fix mouse zoom-in/out step value is two times bigger than
+    keyboard one.
+  * Fix issue with custom adapters at the node level.
+  * Explicitly require setuptools, utils/get_resource.py imports
+    pkg_resources
+
+-------------------------------------------------------------------
 Wed Aug 25 11:50:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.24
