@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           nss-pam-ldapd
 Version:        0.9.11

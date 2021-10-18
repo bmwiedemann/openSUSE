@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 18 13:13:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Define macro _pam_moduledir if not set to fix builds for Leap and SLE
+
+-------------------------------------------------------------------
 Mon Oct 11 09:32:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>924913</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a117c406f2513ed6e3284a83b4d8e306</srcmd5>
+    <version>0.9.11</version>
+    <time>1634587188</time>
+    <user>dimstar_suse</user>
+    <comment>Define macro _pam_moduledir if not set to fix builds for Leap and SLE</comment>
+    <requestid>926015</requestid>
+  </revision>
 </revisionlist>
