@@ -102,6 +102,7 @@
   boo#1191532: '20211016'
   boo#1191603: '20211016'
   boo#1191616: '20211011'
+  boo#1191745: '20211016'
   bsc#1161276: '20211015'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
@@ -115,6 +116,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#12914: '20210718'
   gh#os-autoinst/os-autoinst-distri-opensuse#13068: '20210907'
   gh#os-autoinst/os-autoinst-distri-opensuse#13286: '20210929'
+  gh#os-autoinst/os-autoinst-distri-opensuse#13418: '20211016'
   kde#432460: '20210222'
   kde#433053: '20210222'
   kde#433155: '20210318'
@@ -122,6 +124,7 @@
   poo#100479: '20211006'
   poo#100991: '20211016'
   poo#101109: '20211016'
+  poo#101121: '20211016'
   poo#57731: '20210601'
   poo#63454: '20210527'
   poo#63457: '20210520'
@@ -604,9 +607,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20211016'
-published: '20211012'
-publishing: '20211012'
+    <value>failed: ''
+published: '20211016'
+publishing: '20211016'
 testing: '20211016'
 </value>
   </attribute>
