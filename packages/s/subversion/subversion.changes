@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 14 16:46:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- always build with kwallet support, no longer make a
+  distrinction between openSUSE and SLE (boo#1191282)
+
+-------------------------------------------------------------------
 Wed Feb 10 10:05:24 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.14.1

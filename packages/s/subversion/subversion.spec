@@ -20,12 +20,6 @@
 %define svngroup svn
 %define svnuser svn
 %define sqlite_minimum_version 3.8.2
-# SLE does not ship KDE
-%if 0%{?is_opensuse} || 0%{?sle_version} > 150200
-%bcond_without kde
-%else
-%bcond_with kde
-%endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -36,6 +30,7 @@
   %define python_sitelib %{python3_sitelib}
 %endif
 %bcond_without gnome
+%bcond_without kde
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
 Name:           subversion
