@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:42:37 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.236
+  * see https://mametesters.org/changelog_page.php for notes
+- Fix below changelog entry (s/332/232/)
+
+-------------------------------------------------------------------
 Mon May 31 16:46:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Update to 0.332
+- Update to 0.232
   * slrasslt: Fix stage 3 crashes the emulator.
   * itaten: Fix incorrect default difficulty setting
   * luckywld, luckywldj: Lucky and Wild aren't talkitive + some

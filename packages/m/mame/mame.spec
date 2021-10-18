@@ -1,5 +1,5 @@
 #
-# spec file for package mame
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %define pkgsuffix -%{flavor}
 %endif
 
-%define fver    232
+%define fver    236
 
 # Build mame-mess by default
 # ASIO: https://github.com/mamedev/mame/issues/5721
@@ -91,7 +91,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
@@ -101,8 +101,8 @@ BuildRequires:  utf8proc-devel
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(glm)
-BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
