@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-packaging
-Version:        0.10.3
+Version:        0.10.6
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause

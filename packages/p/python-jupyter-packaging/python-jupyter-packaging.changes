@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:34:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.6
+  * The import of bdist_wheel is optional, must check for None
+    before using it #106 (@ellert)
+- Release 0.10.5
+  * Fix last one hardcoded unversioned python command #98
+    (@frenzymadness)
+  * Add note about using the build package #104 (@blink1073)
+- Release 0.10.4
+  * Handle missing yarn #99 (@blink1073)
+
+-------------------------------------------------------------------
 Fri Jun 25 18:53:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.3
