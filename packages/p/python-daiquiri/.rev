@@ -77,4 +77,13 @@
   * Add python 3.9 support</comment>
     <requestid>847413</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3b34504560a7c6e577abbe483034a35</srcmd5>
+    <version>3.0.1</version>
+    <time>1634587146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * handle &quot;stack_info&quot; argument correctly</comment>
+    <requestid>925756</requestid>
+  </revision>
 </revisionlist>
