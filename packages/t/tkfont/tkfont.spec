@@ -1,7 +1,7 @@
 #
 # spec file for package tkfont
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,13 @@ Name:           tkfont
 Version:        1.1
 Release:        0
 Summary:        Tool to select fonts
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
-Requires:       /usr/bin/wish
+Requires:       tk
+Requires:       xlsfonts
 Source:         %{name}-%{version}.tar.gz
-Patch:          %{name}-%{version}.dif
+Patch0:         %{name}-%{version}.dif
+Patch1:         tkfont-sort.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -39,7 +41,8 @@ Authors:
 
 %prep
 %setup
-%patch
+%patch0
+%patch1
 
 %build
 
@@ -50,7 +53,9 @@ install -m 755 FindFont GetFontDirs %buildroot/usr/lib/tkfont
 
 %files
 %defattr(-,root,root)
-%doc README COPYING *.txt
+%license COPYING
+%doc README
+%doc *.txt
 /usr/lib/tkfont
 %_bindir/*
 
