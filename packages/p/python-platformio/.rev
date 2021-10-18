@@ -40,4 +40,27 @@
   a “wrong” timestamp in device monitor output using “time” filter</comment>
     <requestid>845251</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7090aa61242810e3f03e6eed7ac1bdee</srcmd5>
+    <version>5.2.1</version>
+    <time>1634587147</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.1:
+  * Clean a build environment and installed library dependencies using a new
+    cleanall target
+  * Override a default library builder via a new builder field in a build group
+    of library.json manifest
+  * Updated Cppcheck v2.6 with new checks, increased reliability of advanced
+    addons (MISRA/CERT) and various improvements
+  * Handle the &quot;test&quot; folder as a part of CLion project
+  * Improved handling of a library root based on &quot;Conan&quot; or &quot;CMake&quot; build systems
+  * Fixed a &quot;KeyError: Invalid board option 'build.cpu'&quot; when using a
+    precompiled library with a board that does not have a CPU field in the
+    manifest
+  * Fixed a &quot;FileExist&quot; error when the platformio ci command is used in pair
+    with the --keep-build-dir option (issue #4011)
+  * Fixed an issue with draft values of C++ language standards that broke
+    static analysis via Cppcheck</comment>
+    <requestid>925764</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 16 22:05:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Clean a build environment and installed library dependencies using a new
+    cleanall target
+  * Override a default library builder via a new builder field in a build group
+    of library.json manifest
+  * Updated Cppcheck v2.6 with new checks, increased reliability of advanced
+    addons (MISRA/CERT) and various improvements
+  * Handle the "test" folder as a part of CLion project
+  * Improved handling of a library root based on "Conan" or "CMake" build systems
+  * Fixed a "KeyError: Invalid board option 'build.cpu'" when using a
+    precompiled library with a board that does not have a CPU field in the
+    manifest
+  * Fixed a "FileExist" error when the platformio ci command is used in pair
+    with the --keep-build-dir option (issue #4011)
+  * Fixed an issue with draft values of C++ language standards that broke
+    static analysis via Cppcheck
+
+-------------------------------------------------------------------
 Sun Nov  1 09:15:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0.2:

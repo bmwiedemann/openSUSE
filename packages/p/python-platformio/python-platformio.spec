@@ -1,7 +1,7 @@
 #
 # spec file for package python-platformio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-platformio
-Version:        5.0.2
+Version:        5.2.1
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
@@ -39,8 +39,8 @@ Requires:       python-pyserial >= 3
 Requires:       python-requests >= 2.4.0
 Requires:       python-semantic_version >= 2.8.1
 Requires:       python-tabulate >= 0.8.3
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
