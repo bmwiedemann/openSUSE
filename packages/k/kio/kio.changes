@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:33:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Too many changes since 5.86.0, only listing bugfixes:
+  * KUrlCompletion blocks autosuggestion from happening if the
+    input is an exact directory path. (kde#420966)
+  * KDirOperator: provide an option to enable showing open-with item actions (kde#440748)
+  * Fix permissions when copying files (kde#404777)
+  * KFileItem: refresh() shouldn't discard ACL attributes (kde#299155)
+  * KPropertiesDialog: show text label with item name for readonly items too (kde#442237)
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

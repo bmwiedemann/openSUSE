@@ -1009,4 +1009,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919198</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>852761a65910410ed6ee23f5fe1b2500</srcmd5>
+    <version>5.87.0</version>
+    <time>1634587122</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.87.0 (forwarded request 924235 from cgiboudeaux)</comment>
+    <requestid>924445</requestid>
+  </revision>
 </revisionlist>
