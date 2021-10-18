@@ -566,4 +566,14 @@ Latest changes:
     <comment>- no longer recommend bbswitch (github issue#70)</comment>
     <requestid>920110</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2e60c22dea1fd38ce1c3d0a2098bd1f4</srcmd5>
+    <version>0.8.3</version>
+    <time>1634587196</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.3
+  * Revert Blacklist ipmi_msghandler, ipmi_devintf kernel modules
+   (pull request #71), related to issue #50</comment>
+    <requestid>926010</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           suse-prime
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain
