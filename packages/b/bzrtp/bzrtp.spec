@@ -18,12 +18,12 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.0.0
+Version:        5.0.35
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
 URL:            https://linphone.org/
-Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/BelledonneCommunications/bzrtp/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch

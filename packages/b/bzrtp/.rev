@@ -190,4 +190,14 @@
 </comment>
     <requestid>906258</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>826998d516b42425c22015088b0190bd</srcmd5>
+    <version>5.0.35</version>
+    <time>1634587406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.35:
+  * no changelog
+</comment>
+    <requestid>925345</requestid>
+  </revision>
 </revisionlist>
