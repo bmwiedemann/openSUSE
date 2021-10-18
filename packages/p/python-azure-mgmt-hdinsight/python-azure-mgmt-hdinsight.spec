@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-hdinsight
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        Microsoft Azure HDInsight Management Client Library
 License:        MIT
