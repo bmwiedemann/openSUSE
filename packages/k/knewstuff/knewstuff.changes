@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:33:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Too many changes since 5.86.0, only listing bugfixes:
+  * Fix crash in DownloadWidget (kde#443025)
+- Drop upstream patches:
+  * 0001-Include-a-user-agent-on-KNS-requests.patch
+  * fix-crash.patch
+
+-------------------------------------------------------------------
 Fri Oct  1 18:32:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:
