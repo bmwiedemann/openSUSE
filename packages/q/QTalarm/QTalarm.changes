@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:45:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Added “Solve to Snooze” feature. This forces a user to solve
+    a random math problem to stop the current alarm. This is
+    intended for those who tend to hit snooze in their sleep.
+  * Fix URL
+
+-------------------------------------------------------------------
 Tue Dec  1 07:42:07 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1

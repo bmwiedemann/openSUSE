@@ -1,7 +1,7 @@
 #
 # spec file for package QTalarm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define  _name  qtalarm
 Name:           QTalarm
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        A handy alarm clock Program written in QT
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
-URL:            https://www.random-hackery.net/qtalarm
+URL:            https://random-hackery.net/page/qtalarm/
 Source:         https://github.com/CountMurphy/QTalarm/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
