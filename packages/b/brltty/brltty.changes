@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  2 17:59:08 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move sysusers.d to separate package
+- Remove old SUSE RPM constructs
+
+-------------------------------------------------------------------
+Fri Oct  1 12:46:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use sysuser-tools to process included sysusers.d file correctly
+  (bsc#1191465)
+
+-------------------------------------------------------------------
+Sat Sep 25 14:35:23 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.4:
+  + See ChangeLog for changes.
+- API version is now 0.8.3.
+- Add at-spi2 to BuildRequires. Now needed for at-spi driver.
+
+-------------------------------------------------------------------
 Tue Feb  2 00:08:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 6.3:

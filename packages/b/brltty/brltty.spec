@@ -18,12 +18,14 @@
 
 %{!?tcl_version: %global tcl_version %(echo 'puts $tcl_version' | tclsh)}
 %{!?tcl_sitearch: %global tcl_sitearch %{_libdir}/tcl/tcl%{tcl_version}}
-%define api_version 0.8.2
+%define api_version 0.8.3
 %define sover 0_8
 %define soname libbrlapi%{sover}
-
+%if 0%{?suse_version} >= 1550
+%define with_sysusersd 1
+%endif
 Name:           brltty
-Version:        6.3
+Version:        6.4
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -53,6 +55,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcl-devel
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(icu-i18n)
@@ -64,7 +67,9 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xt)
-Requires(pre): shadow
+%if 0%{?with_sysusersd}
+BuildRequires:  sysuser-tools
+%endif
 %{?systemd_ordering}
 
 %description
@@ -77,7 +82,7 @@ complete screen review functionality.
 Summary:        AT-SPI 2 driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:at-spi2-core)
+Supplements:    (brltty and at-spi2-core)
 
 %description driver-at-spi2
 BRLTTY is a background process (daemon) which provides access to the
@@ -91,7 +96,7 @@ This package contains the AT-SPI 2 screen driver.
 Summary:        BrlAPI driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:%{soname})
+Supplements:    (brltty and %{soname})
 
 %description driver-brlapi
 BRLTTY is a background process (daemon) which provides access to the
@@ -105,7 +110,7 @@ This package contains the BrlAPI braille driver.
 Summary:        Libbraille driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:libbraille)
+Supplements:    (brltty and libbraille)
 
 %description driver-libbraille
 BRLTTY is a background process (daemon) which provides access to the
@@ -119,7 +124,7 @@ This package contains the libbraille braille driver.
 Summary:        ESpeak driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:espeak-ng-compat)
+Supplements:    (brltty and espeak-ng-compat)
 
 %description driver-espeak
 BRLTTY is a background process (daemon) which provides access to the
@@ -133,7 +138,7 @@ This package contains the eSpeak speech driver.
 Summary:        Speech Dispatcher driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:libspeechd2)
+Supplements:    (brltty and libspeechd2)
 
 %description driver-speech-dispatcher
 BRLTTY is a background process (daemon) which provides access to the
@@ -147,7 +152,7 @@ This package contains the Speech Dispatcher speech driver.
 Summary:        XWindow driver for BRLTTY
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(brltty:xorg-x11-server)
+Supplements:    (brltty and xorg-x11-server)
 
 %description driver-xwindow
 BRLTTY is a background process (daemon) which provides access to the
@@ -174,7 +179,7 @@ This package contain various utilities related to BRLTTY.
 Summary:        X BrlAPI helper
 Group:          System/Daemons
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{soname}:xorg-x11-server)
+Supplements:    (%{soname} and xorg-x11-server)
 
 %description -n xbrlapi
 The xbrlapi utility is a helper to have BrlAPI work on a X system.
@@ -183,7 +188,10 @@ The xbrlapi utility is a helper to have BrlAPI work on a X system.
 Summary:        Library to use BRLTTY from applications
 Group:          System/Daemons
 Requires(post): coreutils
-Requires(post): shadow
+%if 0%{?with_sysusersd}
+#!BuildIgnore:  group(brlapi)
+Requires(pre):  group(brlapi)
+%endif
 Requires(post): util-linux
 Recommends:     %{name}
 
@@ -284,12 +292,27 @@ brltty sends to the braille terminal in the application's console is
 ignored, whereas each piece of data coming from the braille terminal is
 sent to the application, rather than to brltty.
 
+%if 0%{?with_sysusersd}
+%package -n system-user-brltty
+Summary:        System user for brltty
+Group:          System/Base
+Requires(pre):  group(pulse-access)
+BuildArch:      noarch
+%sysusers_requires
+
+%description -n system-user-brltty
+System user for the Braille display driver for Linux/Unix
+%endif
+
 %lang_package
 
 %prep
 %autosetup -p1
 
 %build
+%if 0%{?with_sysusersd}
+%sysusers_generate_pre Autostart/Systemd/sysusers system-user-brltty %{name}.conf
+%endif
 cp %{_sourcedir}/README.SUSE .
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' Documents/Manual-BRLTTY/Portuguese/BRLTTY.txt
@@ -361,10 +384,14 @@ install -Dm0644 Autostart/AppStream/org.a11y.brltty.metainfo.xml \
   mv %{buildroot}%{_libdir}/tcl/brlapi-%{api_version} %{buildroot}%{tcl_sitearch}/
 %endif
 
-%pre -n %{soname}
-getent group brlapi >/dev/null || groupadd -r brlapi >/dev/null
+%if 0%{?with_sysusersd}
+%pre -n system-user-brltty -f system-user-brltty.pre
+%endif
 
 %post -n %{soname}
+%if !0%{?with_sysusersd}
+getent group brlapi >/dev/null || groupadd -r brlapi >/dev/null
+%endif
 if [ ! -e %{_sysconfdir}/brlapi.key ]; then
  mcookie > %{_sysconfdir}/brlapi.key
  chgrp brlapi %{_sysconfdir}/brlapi.key
@@ -376,7 +403,9 @@ fi
 
 %pre
 %service_add_pre %{name}.path
+%if !0%{?with_sysusersd}
 getent passwd brltty >/dev/null || useradd -r -d %{_localstatedir}/lib/brltty -s /bin/false -c "user account for the brltty daemon" brltty
+%endif
 
 %post
 %service_add_post %{name}.path
@@ -441,14 +470,16 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 %{_libexecdir}/brltty/
 %{_mandir}/man1/brltty.1*
 %{_mandir}/man1/eutp.1.gz
-%{_prefix}/lib/sysusers.d/%{name}.conf
-%{_prefix}/lib/tmpfiles.d/%{name}.conf
+%{_tmpfilesdir}/%{name}.conf
 %{_udevrulesdir}/90-%{name}-device.rules
 %{_udevrulesdir}/90-%{name}-uinput.rules
 %{_unitdir}/%{name}.path
 %{_unitdir}/%{name}@.path
 %{_unitdir}/%{name}-device@.service
 %{_unitdir}/%{name}@.service
+%if !0%{?with_sysusersd}
+%{_sysusersdir}/%{name}.conf
+%endif
 %exclude %{_libdir}/brltty/libbrlttybba.so
 %exclude %{_libdir}/brltty/libbrlttyblb.so
 %exclude %{_libdir}/brltty/libbrlttybxw.so
@@ -513,6 +544,11 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-someth
 
 %files -n tcl-brlapi
 %{tcl_sitearch}/brlapi-%{api_version}/
+
+%if 0%{?with_sysusersd}
+%files -n system-user-brltty
+%{_sysusersdir}/%{name}.conf
+%endif
 
 %files lang -f %{name}.lang
 %doc Documents/Manual-BRLTTY/French
