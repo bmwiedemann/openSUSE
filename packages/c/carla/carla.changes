@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Oct 17 09:19:27 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.4.1:
+  * Don't expose symbols for STATIC_PLUGIN_TARGET
+  * Fix STATIC_PLUGIN_TARGET build
+  * Bump version to 2.4.1
+  * Fix MemoryOutputStream destructor after the latest changes
+  * Fix a strict compiler warning
+  * explicit casting start
+  * Install CarlaNativePlugin.h
+  * Add NATIVE_PLUGIN_OPCODE_HOST_USES_EMBED, for special hosts
+  * Update LV2 UI parameter values after embedding
+  * Add STATIC_PLUGIN_TARGET macro; Fix wrong memory reads on lv2 list
+  * Tweaks for Ildaeil, MemoryOutputStream::getDataAndRelease()
+  * Correct last commit
+  * Add carla_get_plugin_latency host function
+  * More USING_RTAUDIO setup, build jackbridge.min.a
+  * Start using USING_RTAUDIO macro
+  * Lead by example
+  * Separate system and dependency checks to new file
+  * Safer way to fetch X11 UI size
+  * Revert "Same fix for removeInternal"
+  * Set PLUGIN_HAS_CUSTOM_EMBED_UI flag for LV2 plugins as possible
+  * Fix build with some libraries in custom prefixes
+  * Makefile user variables
+  * Replace -lpthread with -pthread
+  * Send keyboard and focus events to VST3 UIs as needed
+  * Say hello to IRC :)
+  * Fix unused parameters preventing real ones showing up
+  * Fetch/set some extra info for VST3 plugin parameters
+  * Import travesty files and rename a file
+  * Fix VST3 cleanup order, component should be last
+  * Use pthread_attr_setdetachstate when RT thread fails too
+  * Start threads in detached state instead of calling detach
+  * Check for valid x11 display before using it
+  * CI: Add a few more linux build deps
+  * Update external plugins, fixing static memory leak
+  * Same fix for removeInternal
+  * Fix misuse of water Arrays
+  * Update README.md
+  * Install header CarlaPluginPtr.hpp
+  * Cleanup
+  * Fix a compiler warning
+  * Automatically close bridges if main Carla dies, macOS edition
+  * Pass keyboard events to vst2 plugins in win/macOS
+  * Do not set scale factor for vst2 native implementation under macOS
+  * Make XY-Controller lines less think, close with Esc
+  * Fix xy-controller GUI now possible to show on "make install" target
+  * Ship lv2 gtk bridges with win/mac
+  * Alternative approach to finding qt5 package for make dist
+- Rebase carla-systemlibs.patch.
+
+-------------------------------------------------------------------
 Sat Aug 21 09:24:55 UTC 2021 - ecsos@opensuse.org
 
 - Update to version 2.4.0:
