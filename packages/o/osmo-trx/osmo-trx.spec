@@ -25,6 +25,9 @@ License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmotrx/wiki/OsmoTRX
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-trx-lms.service.patch
+Patch1:	harden_osmo-trx-uhd.service.patch
+Patch2:	harden_osmo-trx-usrp1.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -128,6 +131,9 @@ generations of mobile phone networks. (post-2G/GSM)
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 echo "%{version}" >.tarball-version
