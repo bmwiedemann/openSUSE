@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  3 20:34:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * plugins/barcode: Call it a "QR code" in the UI
+  * Add Barcode plugin
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

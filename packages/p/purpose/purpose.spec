@@ -20,14 +20,14 @@
 %global __requires_exclude qmlimport\\((Ubuntu\\.OnlineAccounts|org\\.kde\\.kdeconnect).*
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.86
+%define _tar_path 5.87
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           purpose
-Version:        5.86.0
+Version:        5.87.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -127,6 +127,7 @@ This package contains development files needed to build applications which rely 
   %find_lang libpurpose_quick %{name}.lang
   %find_lang libpurpose_widgets %{name}.lang
   %find_lang purpose-fileitemaction %{name}.lang
+  %find_lang purpose_barcode %{name}.lang
   %find_lang purpose_bluetooth %{name}.lang
   %find_lang purpose_email %{name}.lang
   %find_lang purpose_imgur %{name}.lang
