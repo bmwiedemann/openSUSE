@@ -773,4 +773,12 @@ This sr depends on 222654 &amp; 222655</comment>
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919166</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a1c89d1490f4d1e84b4d69b8218d0547</srcmd5>
+    <version>5.87.0</version>
+    <time>1634587099</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.87.0 (forwarded request 924235 from cgiboudeaux)</comment>
+    <requestid>924403</requestid>
+  </revision>
 </revisionlist>
