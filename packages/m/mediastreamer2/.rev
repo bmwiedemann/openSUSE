@@ -375,4 +375,14 @@
 </comment>
     <requestid>909329</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>be203c1ce5e1604fd29a3f812c978ad9</srcmd5>
+    <version>5.0.35</version>
+    <time>1634587408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.35:
+  * no changelog
+</comment>
+    <requestid>925348</requestid>
+  </revision>
 </revisionlist>

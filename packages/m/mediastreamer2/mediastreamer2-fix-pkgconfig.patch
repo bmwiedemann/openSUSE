@@ -1,9 +1,9 @@
 diff -ru a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt	2020-06-15 19:27:04.000000000 +0200
 +++ b/CMakeLists.txt	2020-06-26 11:13:58.863403760 +0200
-@@ -114,6 +114,21 @@
- option(ENABLE_JPEG "Enable JPEG support" YES)
- cmake_dependent_option(ENABLE_QRCODE "Enable QRCode support" YES "ENABLE_VIDEO" NO)
+@@ -129,6 +129,21 @@
+ # * DISABLE_SRTP_SEARCH: skip find_package() for SRTP.
+ 
  
 +set(MS_PUBLIC_PACKAGES "ortp bctoolbox")
 +set(MS_PRIVATE_PACKAGES "${MS_PRIVATE_PACKAGES} libbzrtp")
@@ -22,7 +22,7 @@ diff -ru a/CMakeLists.txt b/CMakeLists.txt
 +
  set(CMAKE_CXX_STANDARD 14)
  set(CMAKE_CXX_EXTENSIONS NO)
- 
+
 diff -ru a/mediastreamer.pc.in b/mediastreamer.pc.in
 --- a/mediastreamer.pc.in	2020-06-15 19:27:04.000000000 +0200
 +++ b/mediastreamer.pc.in	2020-06-26 11:14:44.219319903 +0200
