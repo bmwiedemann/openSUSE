@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 22:18:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.2:
+  * removed deprecated distutils usage to avoid Deprecation Warnings under
+    Python 3.10 
+
+-------------------------------------------------------------------
 Fri May 28 10:07:22 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

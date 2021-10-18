@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pywinrm
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Python library for Windows Remote Management
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/diyan/pywinrm/
-Source:         https://github.com/diyan/pywinrm/archive/v%{version}.tar.gz#/pywinrm-%{version}.tar.gz
+URL:            https://github.com/diyan/pywinrm/
+Source:         https://github.com/diyan/pywinrm/archive/refs/tags/v%{version}.tar.gz#/pywinrm-%{version}.tar.gz
 BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
