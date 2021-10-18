@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Mon Oct 18 10:28:08 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+-Update to version 13.5.2
+   * dh_installsystemd: Revert change to deploy systemd files into
+     usr/lib/systemd.  (Closes: #993316, #993759)
+   * dh_installinit: Ditto.
+   * dh_systemd_enable: Ditto.
+   * dh_systemd_start: Ditto.
+   * SequencerUtil.pm: Remove duplicate "-a" option to some commands.
+     Thanks to Christoph Berg for reporting the issue.
+     (Closes: #971761)
+   * dh_installdeb: Revert the change to rewrite `rm_conffiles` into
+     `remove-on-upgrade` due to it causing bugs in non-trivial cases.
+     (Closes: #994919)
+   * dh_installtmpfiles: Add missing option name in POD documentation.
+   * cmake.pm: make it possible to override dh provided ctest arguments
+   * cmake.pm: Add missing import which broke cmake related builds.
+     Thanks to Boyuan Yang for reporting the issue.
+     (Closes: #993345)
+   * dh_installdeb: Install debian/conffiles in compat 12+ again
+     (undoing the compat 12 change saying dh_installdeb would ignore
+     this file).  The file can now be using for the activating the
+     `remove-on-upgrade` feature from dpkg 1.20.
+   * dh_installdeb: Automatically rewrite `rm_conffiles` into the
+     new `remove-on-upgrade` feature from dpkg when possible.
+   * cmake.pm: Pass `ARGS+=--verbose` to make when running tests
+     in the cmake+make variant except when "terse" is in
+     DEB_BUILD_OPTIONS.  Thanks to Paul Wise for the suggestion.
+     (Closes: #992623)
+   * python_support.pm: Remove obsolete dh addon.  It did nothing
+     but warn and nothing used it anymore.
+   * dh: Document debhelper provided dh addon sequences.
+   * single_binary.pm: New dh addon ("single-binary") that explicitly
+     activates the "single binary" work flow, where dh_auto_install
+     uses debian/<pkg> as default --destdir when there is only a
+     single binary package.  It will error out if used in a
+     source package building multiple binary packages.
+   * dh: Activate "single-binary" addon by default in compat levels
+     up to and including compat 14 when the source package only lists
+     one binary package in debian/control.  In compat 14, emit a warning
+     when this happens implicitly requesting users to explicitly enable
+     or disable the addon for single binary source packages to avoid
+     surprises in compat 15.
+   * dh_auto_install: In compat 15, remove special-case default for
+     --destdir for single binary source packages.  If the previous
+     default is desired, please use the "single-binary" dh addon or
+     explicitly pass --destdir to dh_auto_install.
+     (Closes: #971432)
+   * debian/control: Provide dh-sequence-single-binary.
+   * debhelper.pod: Document the dh_auto_install will change behaviour
+     in compat 15 for single binary packages and dh will warning about
+     that in compat 14.
+   * dh_assistant: New tool for assisting third-party tools.  At the
+     moment, it primarily supports introspection related features but
+     will hopefully be extended to support more use cases.
+     (Closes: #984900)
+
+-------------------------------------------------------------------
+Mon Oct 18 09:14:43 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 13.4.1
+   * autoscripts/*: Replace `which` with `command -v`.
+   * dh_installsystemd: Only merge /lib/systemd/system into /usr
+     for now.  (Closes: #992554)
+   * dh_systemd_enable: Ditto.
+   * autoscripts/postinst-init-nostart: Call invoke-rc.d when
+     a non-empty DPKG_ROOT is used.  (Closes: #992556)
+   * Replace "use v5.28" with "use v5.24" in Dh_Lib.pm.
+     The change to "use v5.28" in 13.4 broke the test to distinguish 0755
+     from "0755" in the reset_perm_and_owner function, breaking builds.
+     Thanks Adrian Bunk and Ansgar for help isolating the problem.
+   * debian/changelog: Correct bug number in the 13.4 entry.
+   * dh_dwz: run in parallel across packages.  (Closes: !47)
+   * Dh_Buildsystems.pm: Add bmake and mkcmake as third-party
+     build systems.  (Closes: !46)
+   * Dh_Buildsystems.pm: Add golang as a third-party build
+     system.  (Closes: #981106)
+   * autoscripts/*: Add support for DPKG_ROOT in systemd, tmpusers,
+     sysusers and init related snippets.  Based on an initial patch
+     from Helmut Grohne.  (Closes: #983566)
+   * autoscripts/*: Reorder conditions in some scripts to avoid
+     doing a redundant stat call when a script parameter can decide
+     to skip it.
+   * dh_gconf: Remove the command as it does nothing.
+     (Closes: #908845)
+   * doc/TODO: Remove reference to dh_gconf.
+   * root_sequence.pm: Remove dh_gconf from root sequence and declare
+     it as obsolete (causing errors from compat 14 if still referenced
+     in hook targets).
+   * man/po4a/po4a.cfg: Remove dh_gconf from translations.
+   * AddonAPI.pm: The declare_command_obsolete command now accepts an
+     "$error_compat" parameter to enable addons to choose which compat
+     level that will trigger an error (though it must be minimum 13).
+   * doc/PROGRAMMING: Update docs to reflect API change.
+   * debhelper.pod: Document that referencing dh_gconf in hook targets
+     will cause an error in compat 14.
+   * dh_fixperms: Correct permissions of files beneath usr/libexec to
+     be executable.  (Closes: #979401)
+   * dh_installtmpfiles: Only register tmpfiles ending with ".conf" as
+     tmpfiles in /usr/lib/tmpfiles.d and /etc/tmpfiles.d.  This ensures
+     that dh_installtmpfiles gracefully copes with e.g. README files
+     provided by systemd upstream.  (Closes: #986329)
+   * dh_installsystemd: Ditto (but only relevant in compat 12 or
+     earlier)
+   * cmake.pm: Pass -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF to cmake in
+     addition to -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON as the
+     former is intended to replace the latter.  Thanks to Raul Tambre
+     for reporting the issue.  (Closes: #988973)
+   * Dh_Lib.pm: Bump version requirement to v5.28 to reflect the actual
+     requirements (the code was using v5.28 features).  Thanks to
+     Sérgio Basto for reporting the issue.
+   * dh_missing: Ditto.
+   * autoscripts/postinst-init,autoscripts/postinst-systemd-start: Use
+     "restart" instead of "start" when starting the services.  This
+     ensures a smooth transition from --restart-after-upgrade to
+     --no-restart-after-upgrade in dh_installinit and dh_installsystemd.
+     Thanks to Ryan Tandy for reporting the issue.
+     (Closes: #989155)
+   * dh_installsystemd: Remove usage of autoscripts/postinst-systemd-restart
+   * dh_installinit: Remove usage of autoscripts/postinst-init-restart
+   * autoscripts/autoscripts/postinst-systemd-restart: Removed.
+   * autoscripts/postinst-init-restart: Removed
+   * dh_installsystemd: Prefer /usr/lib/systemd/ to /lib/systemd.
+     (Closes: #987989)
+   * dh_systemd_enable: Ditto.
+   * dh_systemd_start: Ditto.
+   * dh_installinit: Ditto.
+   * dh_installsystemd: Merge /lib/systemd into /usr/lib/systemd if both
+     are present in the package staging directory (prefering the latter
+     in case of conflicts).  (Closes: #987989)
+   * dh_systemd_enable: Ditto.
+   * perl_build.pm,perl_makemaker.pm: Make debhelper use the same perl
+     as it runs under (via Perl's $^X variable) when invoking the
+     upstream build system.  (Closes: !40, #966396)
+   * Always generate unique doc-base file names based on package name and
+     document ID. (Closes: #980903)
+
+-------------------------------------------------------------------
 Tue Mar 16 14:41:10 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Update to version 13.3.4

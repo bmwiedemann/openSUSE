@@ -59,4 +59,12 @@ Resubmit without Source URL</comment>
   * add debhelper-no-localized-manpages.patch</comment>
     <requestid>879491</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd9e21b6d3d6e5a5a7e4a6a8877738cb</srcmd5>
+    <version>13.5.2</version>
+    <time>1634587192</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 13.5.2</comment>
+    <requestid>925997</requestid>
+  </revision>
 </revisionlist>

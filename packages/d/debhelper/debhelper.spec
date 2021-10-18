@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        13.3.4
+Version:        13.5.2
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
@@ -28,8 +28,8 @@ Source0:        https://salsa.debian.org/debian/debhelper/-/archive/debian/%{ver
 Patch0:         debhelper-no-localized-manpages.patch
 # PATCH-FIX-UPSTREAM remove --utf8 since we only build En manpages.
 Patch1:         debhelper-pod2man-no-utf8.patch
-Requires:       dh-autoreconf > 10
-Requires:       dpkg
+Requires:       dh-autoreconf >= 17
+Requires:       dpkg >= 1.18
 Requires:       strip-nondeterminism
 Provides:       deb:%{_bindir}/dh_install
 BuildArch:      noarch
