@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/rpm-software-management/rpmlint.git</param>
+              <param name="changesrevision">6dc5311137e4d4215d45cfe5f30dd5dc0fc7725f</param></service></servicedata>

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Oct 15 14:06:25 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211015.6dc5311:
+  * Drop badness of shlib-policy-name-error for now.
+
+-------------------------------------------------------------------
+Thu Oct 14 12:25:15 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211014.e3fbbb9:
+  * Update shlib-policy-name-error.
+
+-------------------------------------------------------------------
+Thu Oct 14 09:16:47 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211014.bddee7c:
+  * Trigger shlib-policy-name-error only for lib* packages.
+
+-------------------------------------------------------------------
+Thu Oct 14 06:50:42 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211013.5ed66cd:
+  * Update wording for shlib-policy-name-error.
+  * Fix changelog-time-in-future regarding timezones.
+
+-------------------------------------------------------------------
+Tue Oct 12 06:55:15 UTC 2021 - paolo.perego@suse.com
+
+- Update to version 2.1+git20211012.c27e0fe:
+  * Adding whitelisting for pam_ssh_agent_auth. bsc#1190983
+
+-------------------------------------------------------------------
+Mon Oct 11 08:09:00 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211011.4290515:
+  * Enable shlib-policy-name-error error.
+
+-------------------------------------------------------------------
+Mon Oct 11 05:58:23 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 2.1+git20211011.a28fc6d:
+  * Support %autochangelog in %changelog.
+  * remove /run from disalloweddirs
+  * Fix missing-dependency-on check.
+  * dbus-services whitelisting: add power-profiles-daemon (bsc#1189900)
+  * security whitelistings: add whitelistings for OBS integration test package
+  * PolkitCheck: be robust against dead symlinks in actions directory
+  * SUIDPermissionsCheck: remove unused permissions-ghostfile error
+  * *-file-ghost descriptions: fix texts that are for some reason incomplete
+- Fixes boo#1190387.
+
+-------------------------------------------------------------------
+Mon Oct 11 05:54:59 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable changesgenerate.
+
+-------------------------------------------------------------------
 Wed Oct  6 13:06:19 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to opensuse tip:
