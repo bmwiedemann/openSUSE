@@ -482,4 +482,12 @@
   * controls/AbstractApplicationHeader: disable hiding on touch scrolling behaviour by default (kde#439923)</comment>
     <requestid>919165</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f389139be29c39171d2c0e841f517b3d</srcmd5>
+    <version>5.87.0</version>
+    <time>1634587123</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.87.0 (forwarded request 924235 from cgiboudeaux)</comment>
+    <requestid>924446</requestid>
+  </revision>
 </revisionlist>
