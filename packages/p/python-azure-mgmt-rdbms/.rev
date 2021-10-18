@@ -169,4 +169,16 @@
   proper upgrade from previous version 9.1.0b1 (forwarded request 917749 from glaubitz)</comment>
     <requestid>917759</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>40c05befe0a32e805da5af790a967315</srcmd5>
+    <version>10.0.0</version>
+    <time>1634587206</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 926047 from glaubitz)</comment>
+    <requestid>926056</requestid>
+  </revision>
 </revisionlist>
