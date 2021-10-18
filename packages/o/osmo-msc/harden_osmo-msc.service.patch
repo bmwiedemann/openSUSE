@@ -1,0 +1,22 @@
+Index: osmo-msc-1.6.1/contrib/systemd/osmo-msc.service
+===================================================================
+--- osmo-msc-1.6.1.orig/contrib/systemd/osmo-msc.service
++++ osmo-msc-1.6.1/contrib/systemd/osmo-msc.service
+@@ -6,6 +6,17 @@ After=osmo-hlr.service
+ After=osmo-hnbgw.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ Restart=always
+ ExecStart=/usr/bin/osmo-msc -c /etc/osmocom/osmo-msc.cfg

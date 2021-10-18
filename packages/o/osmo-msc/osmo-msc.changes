@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 13:54:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_osmo-msc.service.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 18:36:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)

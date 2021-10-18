@@ -27,6 +27,7 @@ License:        AGPL-3.0-or-later AND GPL-2.0-only
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmomsc/wiki
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_osmo-msc.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libdbi-drivers-dbd-sqlite3
@@ -66,6 +67,7 @@ be translated to MAP if needed.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "%{version}" >.tarball-version
