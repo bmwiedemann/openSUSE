@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:11:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.20210903.1:
+  * xdotool and libxdo will now reject if it is running under Wayland/XWayland.
+    If XWayland is detected, the program will fail. This is because XWayland
+    doesn't allow xdotool or libxdo to work correctly. (#342, Jordan Sissel)
+ * New command `windowstate` which can be used to modify properties of windows.
+    For example, to full-screen the current window, use:
+      xdotool getactivewindow windowstate --add FULLSCREEN
+  * New command `windowquit`  which is used to ask the windowed application to
+    terminate.
+  * New command `getwindowclassname` to print the window's class name.
+  * When sending keystrokes, `enter` and `return` now are synonyms for the
+    `Return` key symbol
+  * getmouselocation now updates the window stack with the window the cursor is
+    currently over.
+  * search command now supports searching by window role with `--role` flag
+  * search command should now no longer report BadWindow errors
+  * get_window_location now reports correct value
+  * Uppercase Latin-1/Basic Latin are now typed correctly
+  * Document the regular expressions (POSIX Extended) supported by xdotool
+  * Use the default X11 Screen instead of assuming 0
+  * Wrap header files with `extern "C"` to enable easier C++ use of libxdo.
+  * Install pkgconfig file when running `make install`
+  * Set permissions correctly when installing `xdo.h`
+  * Fix memory leak
+  * Fixed some documentation typos
+  * Fix all compiler warnings during `make`
+- drop xdotool-2.2012-reproducible.patch, remove-dead-function.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Feb 18 07:42:02 UTC 2018 - avindra@opensuse.org
 
 - update to 3.20160805.1

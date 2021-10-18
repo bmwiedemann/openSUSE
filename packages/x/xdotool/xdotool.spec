@@ -1,7 +1,7 @@
 #
 # spec file for package xdotool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xdotool
-Version:        3.20160805.1
+Version:        3.20210903.1
 Release:        0
 Summary:        Fake keyboard/mouse input
 License:        BSD-3-Clause
 Group:          System/X11/Utilities
-Url:            https://www.semicomplete.com/projects/xdotool/
+URL:            https://www.semicomplete.com/projects/xdotool/
 Source:         https://github.com/jordansissel/xdotool/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM bmwiedemann https://github.com/jordansissel/xdotool/pull/159
-Patch0:         xdotool-2.2012-reproducible.patch
-# PATCH-FIX-UPSTREAM https://github.com/jordansissel/xdotool/pull/203.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/jordansissel/xdotool/pull/203.patch#/remove-dead-function.patch
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -56,8 +52,6 @@ Library and Header files for %{name}
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 # Fix file permissions
@@ -80,7 +74,7 @@ chmod 0644 examples/*
 
 %files
 %{_bindir}/%{name}
-%doc CHANGELIST COPYRIGHT README
+%doc CHANGELIST COPYRIGHT README.md
 %doc examples
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_libdir}/libxdo.so.*
@@ -88,5 +82,6 @@ chmod 0644 examples/*
 %files devel
 %attr(0644,root,root) %{_includedir}/*.h
 %{_libdir}/libxdo.so
+%{_libdir}/pkgconfig/libxdo.pc
 
 %changelog
