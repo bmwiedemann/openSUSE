@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:09:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.67:
+  * Fixing specified bound equals destination size warning in iostuff.c.
+  * Port updated for xscreensaver-6.01.  With help from EoflaOE ViceCity.
+  * maze3d.c updated for VMS as CRTL now contains more standard functions
+
+-------------------------------------------------------------------
 Fri Nov 20 02:55:13 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - update to 5.66:

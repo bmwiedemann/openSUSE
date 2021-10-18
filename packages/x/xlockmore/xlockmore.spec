@@ -1,7 +1,7 @@
 #
 # spec file for package xlockmore
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xlockmore
-Version:        5.66
+Version:        5.67
 Release:        0
 Summary:        Screen Saver and Locker for the X Window System
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://sillycycle.com/xlockmore.html
-Source:         http://sillycycle.com/xlock/%{name}-%{version}.tar.xz
+URL:            https://sillycycle.com/xlockmore.html
+Source:         https://sillycycle.com/xlock/%{name}-%{version}.tar.xz
 Source1:        xlock.pamd
 Source2:        xlock-wrapper
 Source3:        xlock-wrapper_xorg6
@@ -53,8 +53,7 @@ BuildRequires:  libXpm-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  pam-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
 
 %description
 The xlock utility locks your X Window System session and runs a screen
@@ -66,11 +65,11 @@ saver until a password is entered.
 %define _xorg7_mandir %{_mandir}
 %define _xorg7pixmaps include
 %define _xorg7libshare share
-%define _xorg7_xkb /usr/share/X11/xkb
-%define _xorg7_termcap /usr/lib/X11/etc
-%define _xorg7_serverincl /usr/include/xorg
-%define _xorg7_fonts /usr/share/fonts
-%define _xorg7_prefix /usr
+%define _xorg7_xkb %{_datadir}/X11/xkb
+%define _xorg7_termcap %{_prefix}/lib/X11%{_sysconfdir}
+%define _xorg7_serverincl %{_includedir}/xorg
+%define _xorg7_fonts %{_datadir}/fonts
+%define _xorg7_prefix %{_prefix}
 
 %prep
 %setup -q
@@ -101,7 +100,7 @@ export CXXFLAGS="%{optflags}"
 	--disable-allow-root\
 	--x-includes=%{_xorg7_prefix}/include\
 	--x-libraries=%{_xorg7_prefix}/%{_lib}
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d -m 755 %{buildroot}%{_sysconfdir}/pam.d
@@ -113,18 +112,14 @@ install -m 755 xlock/xlock %{buildroot}%{_prefix}/%{_xorg7libs32}/xlock/xlock
 install -m 644 xlock/XLock.ad %{buildroot}%{_prefix}/%{_xorg7libshare}/X11/app-defaults/XLock
 install -m 644 xlock/xlock.man %{buildroot}%{_xorg7_mandir}/man1/xlock.1x
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/xlock
-%if "%(pkg-config --variable prefix x11 || echo /usr/X11R6)" == "/usr"
+%if "%(pkg-config --variable prefix x11 || echo %{_prefix}/X11R6)" == "%{_prefix}"
 install -m 755 %{SOURCE2} %{buildroot}%{_prefix}/%{_xorg7bin}/xlock
 %else
 install -m 755 %{SOURCE3} %{buildroot}%{_prefix}/%{_xorg7bin}/xlock
 %endif
-%fdupes %{buildroot}/usr
-
-%clean
-rm -rf %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %files
-%defattr(-, root, root)
 %doc %{_xorg7_mandir}/man1/xlock.1x.gz
 %doc README docs/3d.howto docs/Purify docs/Revisions docs/TODO docs/cell_automata
 %config %{_sysconfdir}/pam.d/xlock
