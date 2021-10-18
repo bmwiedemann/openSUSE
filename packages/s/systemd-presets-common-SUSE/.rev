@@ -160,4 +160,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>899406</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>de5764cba0b46db4511da25e378f0138</srcmd5>
+    <version>15</version>
+    <time>1634587092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924524</requestid>
+  </revision>
 </revisionlist>

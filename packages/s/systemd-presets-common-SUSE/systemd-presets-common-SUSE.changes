@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  7 22:42:44 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Haveged as a daemon is no longer required since kernel 5.6
+  do not enable by default.
+
+-------------------------------------------------------------------
 Thu Jun 10 12:02:14 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - To make update of package man work with its new upstream timer
