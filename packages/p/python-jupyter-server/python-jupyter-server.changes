@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:39:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.11.1
+  * Do not log connection error if the kernel is already shutdown
+    #584 (@martinRenou)
+  * [BUG]: allow None for min_open_files_limit trait #587
+    (@Zsailer)
+- Release 1.11.0
+  * Allow non-empty directory deletion through settings #574
+    (@fcollonval)
+  * pytest_plugin: allow user specified headers in jp_ws_fetch #580
+    (@oliver-sanders)
+  * Shutdown kernels/terminals on api/shutdown #579 (@martinRenou)
+  * pytest: package conftest #576 (@oliver-sanders)
+  * Set stacklevel on warning to point to the right place. #572
+    (@Carreau)
+  * Respect reraise setting #571 (@vidartf)
+  * Fix jupyter_client warning #581 (@martinRenou)
+  * Add Pre-Commit Config #575 (@fcollonval)
+  * Clean up link checking #569 (@blink1073)
+- Drop extra conftest.py
+
+-------------------------------------------------------------------
 Mon Aug 16 12:39:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.2

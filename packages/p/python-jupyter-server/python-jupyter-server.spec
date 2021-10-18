@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.10.2
+Version:        1.11.1
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -27,8 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-server/jupyter_server
 # need the release tarball for the static stylesheets
 Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
-# conftest.py is not in release tarball but required for tests
-Source1:        https://github.com/jupyter-server/jupyter_server/raw/v%{version}/conftest.py
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
 BuildRequires:  %{python_module anyio >= 3.1.0}
@@ -92,9 +90,21 @@ share documents that contain live code, equations, visualizations, and
 explanatory text. The Notebook has support for multiple programming
 languages, sharing, and interactive widgets.
 
+%package test
+Summary:        The backend to Jupyter web applications - test requirements
+Requires:       python-ipykernel
+Requires:       python-jupyter-server = %{version}
+Requires:       python-pytest >= 6
+Requires:       python-pytest-console-scripts
+Requires:       python-pytest-mock
+Requires:       python-pytest-tornasync
+Requires:       python-requests
+
+%description test
+Metapackage for the jupyter_server[test] requirement specifier
+
 %prep
 %setup -q -n jupyter_server-%{version}
-cp %{SOURCE1} ./
 
 %build
 %python_build
@@ -132,5 +142,8 @@ fi
 %python_alternative %{_bindir}/jupyter-server
 %{python_sitelib}/jupyter_server
 %{python_sitelib}/jupyter_server-%{version}*-info
+
+%files %{python_files test}
+%license COPYING.md
 
 %changelog
