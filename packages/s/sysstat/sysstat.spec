@@ -33,8 +33,6 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 Patch2:         sysstat-8.0.4-pagesize.diff
 # PATCH-FIX-OPENSUSE bsc#1151453
 Patch3:         sysstat-service.patch
-# PATCH-FIX-OPENSUSE Temporarily disable failing tests on s390x and ppc64
-Patch4:         sysstat-disable-test-failures.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -74,9 +72,6 @@ from a sysstat package.
 %patch0 -p1
 %patch2 -p1
 %patch3 -p1
-%ifarch s390x ppc64
-%patch4 -p1
-%endif
 cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  3 15:11:09 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- drop sysstat-disable-test-failures.patch - tests are fine on s390x
+  and ppc64, no need to ignore test failures anymore
+
+-------------------------------------------------------------------
 Fri Jun  4 07:18:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove stale symlink to cronfile on update
