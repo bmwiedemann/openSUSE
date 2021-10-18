@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:55:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Really update to 2.8.2 (was 2.8.1 before)
+  * Fallback to context-less translation on Python 3.7 #213
+    (@krassowski)
+  * Clean unneeded catch #210 (@fcollonval)
+
+-------------------------------------------------------------------
 Fri Sep 17 09:06:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.8.2

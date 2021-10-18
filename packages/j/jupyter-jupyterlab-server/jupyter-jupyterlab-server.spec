@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -73,10 +73,10 @@ Obsoletes:      jupyter-jupyterlab_server < %{version}-%{release}
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module jupyter-server-test}
 BuildRequires:  %{python_module openapi-core >= 0.13.8}
 BuildRequires:  %{python_module pytest >= 5.3.2}
 BuildRequires:  %{python_module pytest-console-scripts}
-BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  %{python_module wheel}
@@ -85,6 +85,23 @@ BuildRequires:  %{python_module wheel}
 
 %description
 This package is used to launch an application built using JupyterLab.
+
+%package test
+Summary:        jupyterlab_server[test] requirements
+Provides:       python-jupyterlab-server-test = %{version}-%{release}
+Obsoletes:      python-jupyterlab-server-test < %{version}-%{release}
+Requires:       python-ipykernel
+Requires:       python-jupyter-server-test
+Requires:       python-jupyterlab-server = %{version}
+Requires:       python-openapi-core >= 0.14.0
+Requires:       python-pytest >= 5.3.2
+Requires:       python-pytest-console-scripts
+Requires:       python-ruamel.yaml
+Requires:       python-strict-rfc3339
+Requires:       python-wheel
+
+%description test
+Metapackage for the jupyterlab_server[test] requirement specifier
 
 %prep
 %autosetup -p1 -n jupyterlab_server-%{version}
@@ -106,5 +123,8 @@ sed -i '/addopts/ d' pyproject.toml
 %doc README.md
 %{python_sitelib}/jupyterlab_server/
 %{python_sitelib}/jupyterlab_server-%{version}-py*.egg-info/
+
+%files %{python_files test}
+%license LICENSE
 
 %changelog
