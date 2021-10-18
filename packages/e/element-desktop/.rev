@@ -33,4 +33,17 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>918732</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d7f1db8bdda5fa944377c6c8b8dd8a9</srcmd5>
+    <version>1.9.2</version>
+    <time>1634587186</time>
+    <user>dimstar_suse</user>
+    <comment>Please use same ADI as https://build.opensuse.org/request/show/925983
+
+- Version 1.9.2
+  * UI fixes
+  * Upgrade to matrix-js-sdk#14.0.1
+</comment>
+    <requestid>925984</requestid>
+  </revision>
 </revisionlist>
