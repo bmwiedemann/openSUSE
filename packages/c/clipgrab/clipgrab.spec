@@ -1,7 +1,7 @@
 #
 # spec file for package clipgrab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008-2013 detlef@links2linux.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clipgrab
-Version:        3.9.2
+Version:        3.9.7
 Release:        0
 Summary:        Video downloader
 License:        GPL-3.0-or-later
@@ -51,7 +51,7 @@ for s in 16 32 128 256 512; do
 done
 
 %qmake5 %{name}.pro
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -m0644 %{SOURCE1} %{buildroot}/%{_datadir}/applications/%{name}.desktop
@@ -60,14 +60,6 @@ for s in 16 32 128 256 512; do
     install -D -m0644 "${s}.png" "%{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png"
 done
 %suse_update_desktop_file -r %{name} Video Editor
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
 
 %files
 %license COPYING
