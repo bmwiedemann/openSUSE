@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 11 17:29:55 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.4.1
+  * Changed
+    - Don't expect output to be a tty
+
+-------------------------------------------------------------------
 Mon Oct 11 17:06:52 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.4.0

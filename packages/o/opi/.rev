@@ -245,4 +245,15 @@
 </comment>
     <requestid>924765</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ac489330dd9faeff00304afe0b10664</srcmd5>
+    <version>2.4.1</version>
+    <time>1634587181</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.4.1
+  * Changed
+    - Don't expect output to be a tty
+</comment>
+    <requestid>925968</requestid>
+  </revision>
 </revisionlist>
