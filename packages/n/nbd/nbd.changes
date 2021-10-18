@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 16 09:02:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22:
+  - nbd-server: handle auth for v6-mapped IPv4 addresses 
+  - nbd-client.c: parse the next option in all cases
+  - configure.ac: silence a few autoconf 2.71 warnings
+  - spec: Relax NBD_OPT_LIST_META_CONTEXTS 
+  - client: Don't confuse Unix socket with TLS hostname
+  - server: Avoid deprecated g_memdup
+
+-------------------------------------------------------------------
 Thu Feb  4 11:16:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21:

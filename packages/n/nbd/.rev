@@ -450,4 +450,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>869213</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>941d8ac18e1e9b4be1547e88a7931434</srcmd5>
+    <version>3.22</version>
+    <time>1634587189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925976</requestid>
+  </revision>
 </revisionlist>

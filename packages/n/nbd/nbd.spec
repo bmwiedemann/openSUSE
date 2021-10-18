@@ -20,18 +20,19 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           nbd
-Version:        3.21
+Version:        3.22
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-URL:            http://nbd.sourceforge.net/
+URL:            https://nbd.sourceforge.io/
 Source0:        https://sourceforge.net/projects/nbd/files/nbd/%{version}/nbd-%{version}.tar.xz
 Source1:        %{name}-server.service
 Source3:        config.example
 Source4:        nbd-server.sysconfig
 Source5:        nbd-client.service
 Patch1:         0001_fix_setgroup.patch
+BuildRequires:  bison
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
