@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Sun Oct 17 18:19:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.2.0
+  Enhancements made
+  * Add a menu entry to show/hide hidden files in the filebrowser
+    #11206 (@loichuder)
+  * Restore Copy shareable link use of shareUrl #11188
+    (@fcollonval)
+  * Add Galata in JupyterLab #11179 (@fcollonval)
+  * Responsive Toolbar #11178 (@3coins)
+  * Make check margin between last modified timestamps on disk and
+    client configurable #11153 (@ph-ph)
+  * Reuse cell id of cut cell on cut + paste #11138 (@smacke)
+  * Add Side-by-side Rendering #11143 (@blink1073)
+  * Add show trailing whitespace option to Notebook and Text Editor
+    #11131 (@blink1073)
+  * Implement Restart and debug #11129 (@blink1073)
+  * Add preferred-dir handling #10667 (@goanpeca)
+  * Enable disabling document-wide history tracking #10949
+    (@echarles)
+  * Removed debug switch #11185 (@3coins)
+  Bugs fixed
+  * Normalize cell source \r line endings #11271 (@jasongrout)
+  * Fix Webpack crypto handling #11249 (@blink1073)
+  * Use standard hash type in webpack build #11234 (@blink1073)
+  * Remove format from fetching options if null #11229 (@loichuder)
+  * Do not continuously cd('/') when already in / #11219 (@minrk)
+  * Properly reset layout when toggling simple mode. #11203
+    (@jasongrout)
+  * Fix renaming issue in collaborative mode #11197 (@dmonad)
+  * Restore workspace and open tree path #11176 (@blink1073)
+  * Share notebook's metadata #11064 (@hbcarlos)
+  * Normalize notebook cell line endings to \n #11141 (@jasongrout)
+  * Fix auto close brackets for console #11137 (@ohrely)
+  * Add a guard to avoid kernel deadlock on multiple input request
+    #10792 (@echarles)
+  Maintenance and upkeep improvements
+  * Extension upgrade script: Avoid throwing exceptions for certain
+    package.json files #11278 (@ammgws)
+  * Run Linter #11238 (@blink1073)
+  * Fix Release Check #11218 (@fcollonval)
+  * Handle case when JupyterHub returns 424 for not running server
+    #11205 (@yuvipanda)
+  * Check i18n will pass on zeroed patch pre-release version #11214
+    (@fcollonval)
+  * Refactor window.open to make it work also in desktop app #11202
+    (@mbektas)
+  * Rename "JupyterLab Theme" to "Theme" #11198 (@jtpio)
+  * Use only context and id to check i18n #11190 (@fcollonval)
+  * Fix the "Edit on GitHub" link #11149 (@krassowski)
+  * Clean up notebook test utils #11133 (@blink1073)
+  * Change "Export Notebook As" to "Save and Export Notebook As"
+    #11132 (@blink1073)
+  * Make Test Server Configurable #11015 (@fcollonval)
+  * Use disableDocumentWideUndoRedo instead of
+    enableDocumentWideUndoRedo #11215 (@echarles)
+  * Fix kernelspec logo handling (#11175) #11183 (@jtpio)
+  Documentation improvements
+  * Fix typo in docs: page_config.json
+    [#11152]https://github.com/jupyterlab/jupyterlab/pull/11152)
+    (@achimgaedke)
+  * Add a menu entry to show/hide hidden files in the filebrowser
+    #11206 (@loichuder)
+  * Fix the "Edit on GitHub" link #11149 (@krassowski)
+  * Clarify sidebar switching settings #11270 (@joelostblom)
+- Release 3.1.17
+  Bugs fixed
+  * Use standard hash type in webpack build #11234 (@blink1073)
+- Release 3.1.16
+  Bugs fixed
+  * Do not continuously cd('/') when already in / #11219 (@minrk)
+  * Properly reset layout when toggling simple mode. #11203
+    (@jasongrout)
+  * Fix renaming issue in collaborative mode #11197 (@dmonad)
+  * Restore workspace and open tree path #11177 (@blink1073)
+  * Share notebook's metadata #11064 (@hbcarlos)
+  Maintenance and upkeep improvements
+  * Check i18n will pass on zeroed patch pre-release version #11214
+    (@fcollonval)
+  * Fix Release Check #11218 (@fcollonval)
+  * Handle case when JupyterHub returns 424 for not running server
+    #11205 (@yuvipanda)
+  * Use only context and id to check i18n #11190 (@fcollonval)
+- Release 3.1.14
+  Bugs fixed
+  * Normalize notebook cell line endings to \n #11141 (@jasongrout)
+  Maintenance and upkeep improvements
+  * Fix the "Edit on GitHub" link #11149 (@krassowski)
+  Documentation improvements
+  * Fix the "Edit on GitHub" link #11149 (@krassowski)
+- Release 3.1.13
+  Enhancements made
+  * Fetch translations via the ServerConnection.ISettings #11091
+    (@jtpio)
+  Bugs fixed
+  * Update the lock after every request #11092 (@hbcarlos)
+  * use posix explicitly for PathExt #11099 (@mbektas)
+  * Backport PR #10868 on branch 3.1.x (Fix user preferences not
+    being considered for Text Editor) #11087 (@Mithil467)
+  * Indent comments (#6957) #11063 (@josephrocca)
+  Maintenance and upkeep improvements
+  * Check changes on translatable strings #11036 (@fcollonval)
+  * Skip flaky debugger test #11083 (@fcollonval)
+  Documentation improvements
+  * Add a note on the Jupyter Releaser in the extension tutorial
+    #11085 (@jtpio)
+  Other merged PRs
+  * Remove item from changelog that slips through #11110
+    (@fcollonval)
+
+-------------------------------------------------------------------
 Sun Sep 19 10:50:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.12

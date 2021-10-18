@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab
-Version:        3.1.12
+Version:        3.2.0
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -54,18 +54,14 @@ Requires:       python-tornado >= 6.1
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
-# SECTION test requirements including jupyterlab_server[test] and jupyter_server[test]
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module openapi-core >= 0.13.8}
+# SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module jupyterlab-server-test >= 2.2}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  %{python_module virtualenv}
-BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
