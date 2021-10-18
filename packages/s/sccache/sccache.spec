@@ -36,7 +36,7 @@ Source14:       client.example
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(openssl)
 Requires:       bubblewrap
-ExcludeArch:    s390 ppc ppc64
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Sccache is a ccache-like tool. It is used as a compiler wrapper and
