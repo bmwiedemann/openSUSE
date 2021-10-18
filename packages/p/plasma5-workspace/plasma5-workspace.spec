@@ -41,6 +41,8 @@ Source:         plasma-workspace-%{version}.tar.xz
 Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-sddm-theme-fix-missing-password-field-on-Other-page.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 08:54:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to show password input on the "Other" page in SDDM (kde#443737):
+  * 0001-sddm-theme-fix-missing-password-field-on-Other-page.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0
