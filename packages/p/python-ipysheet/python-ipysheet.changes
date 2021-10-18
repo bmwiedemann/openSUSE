@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 17 19:42:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5
+  * no release notes
+
+-------------------------------------------------------------------
 Mon Apr 26 05:46:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

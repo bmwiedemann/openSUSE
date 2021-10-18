@@ -20,28 +20,28 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-ipysheet
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Spreadsheet widget for the Jupyter notebook
 License:        MIT
 URL:            https://github.com/QuantStack/ipysheet
 Source:         https://files.pythonhosted.org/packages/source/i/ipysheet/ipysheet-%{version}.tar.gz
+BuildRequires:  %{python_module jupyter_packaging >= 0.7.9}
+BuildRequires:  %{python_module jupyterlab >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       jupyter-ipysheet = %{version}
-Requires:       python-flexx
-Requires:       python-ipywidgets >= 7.0.0
-Requires:       python-notebook
-Requires:       python-numpy
-Requires:       python-pandas
+Requires:       python-ipywidgets >= 7.5.0
+Requires:       python-jupyter-server >= 1.6
+Recommends:     python-pscript
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module flexx >= 0.3.1}
-BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module ipywidgets >= 7.5.0}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module jupyter-server >= 1.6}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pscript}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -50,17 +50,6 @@ BuildRequires:  %{python_module pytest}
 A Jupyter widget providing spreadsheets for the Jupyter notebook.
 
 This package provides the python interface.
-
-%package     -n jupyter-ipysheet
-Summary:        Spreadsheet widget for the Jupyter notebook
-Requires:       jupyter-ipywidgets >= 7.0.0
-Requires:       jupyter-notebook
-Requires:       python3-ipysheet = %{version}
-
-%description -n jupyter-ipysheet
-A Jupyter widget providing spreadsheets for the Jupyter notebook.
-
-This package provides the jupyter notebook extension.
 
 %prep
 %setup -q -n ipysheet-%{version}
@@ -71,9 +60,6 @@ This package provides the jupyter notebook extension.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%jupyter_move_config
-%fdupes %{buildroot}%{_jupyter_nb_notebook_confdir}
-%fdupes %{buildroot}%{_jupyter_nbextension_dir}
 
 %check
 %pytest
@@ -84,10 +70,5 @@ This package provides the jupyter notebook extension.
 %{python_sitelib}/ipysheet/
 %{python_sitelib}/ipysheet-%{version}-py*.egg-info
 %license LICENSE
-
-%files -n jupyter-ipysheet
-%license LICENSE
-%config %{_jupyter_nb_notebook_confdir}/ipysheet.json
-%{_jupyter_nbextension_dir}/ipysheet/
 
 %changelog
