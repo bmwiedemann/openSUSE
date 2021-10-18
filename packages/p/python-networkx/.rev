@@ -301,4 +301,12 @@
   yaml-loader.patch (merged upstream)</comment>
     <requestid>909685</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>73f0a0e6086308fdcfffe85bfd37ac2c</srcmd5>
+    <version>2.6.3</version>
+    <time>1634587405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925266</requestid>
+  </revision>
 </revisionlist>

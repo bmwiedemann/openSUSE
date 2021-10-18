@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 13 22:37:10 CEST 2021 - Fabrice Bauzac <noon@mykolab.com>
+
+- update to 2.6.3:
+  * Fix modularity functions (gh#networkx/networkx#5072)
+  * CI/MAINT: drop gdal tests (gh#networkx/networkx#5068)
+  * modularity_max: provide labels to get_edge_data (gh#networkx/networkx#4965)
+  * Improvements to greedy_modularity_community (gh#networkx/networkx#4996)
+  * use weight arg instead of 'weight' key at greedy_modularity_communities()
+  * modularity_max: breaking the loop when given community size is reached (gh#networkx/networkx#4950)
+  * modularity_max: allow input of desired number of communities
+  * greedy_modularity_communities with digraphs and multi(di)graphs (gh#networkx/networkx#5007) (gh#networkx/networkx#5007)
+  * Allow greedy_modularity_communities to use floating point weights or resolution (gh#networkx/networkx#5065)
+  * change i,j,k notation to u,v,w (no indexes since gh#networkx/networkx#5007)
+
+-------------------------------------------------------------------
 Mon Aug  2 07:28:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - require pandas 
