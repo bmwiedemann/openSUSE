@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-WSME
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Web Services Made Easy
 License:        MIT
@@ -35,14 +36,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplegeneric}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb >= 1.2.3
 Requires:       python-netaddr >= 0.7.12
 Requires:       python-pytz
 Requires:       python-simplegeneric
-Requires:       python-six >= 1.9.0
 BuildArch:      noarch
 %python_subpackages
 

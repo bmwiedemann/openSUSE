@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 17 22:34:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * sphinxext: Resolve compatibility with Sphinx 4.x
+  * Remove useless \_\_future\_\_ imports
+  * Remove six
+  * Drop Python 2.7 support
+
+-------------------------------------------------------------------
 Thu Apr 22 20:05:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.1:
