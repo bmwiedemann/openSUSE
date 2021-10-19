@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest-doctestplus-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,24 +25,30 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.9.0
+Version:        0.11.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module packaging >= 17.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging >= 17.0
 Requires:       python-pytest >= 4.6
 Requires:       python-setuptools >= 30.3.0
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip >= 19.3.1}
 BuildRequires:  %{python_module pytest-doctestplus = %{version}}
+BuildRequires:  %{python_module pytest-remotedata = 0.3.2}
 %endif
 %python_subpackages
 
@@ -53,9 +59,6 @@ advanced doctest support and enables the testing of reStructuredText
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
-# https://build.opensuse.org/request/show/889802
-sed -i '/filterwarnings/,/\s+/ { /error/ a \        ignore:.*unclosed file.*:ResourceWarning
-}' setup.cfg
 
 %build
 %python_build
@@ -70,8 +73,7 @@ sed -i '/filterwarnings/,/\s+/ { /error/ a \        ignore:.*unclosed file.*:Res
 %check
 export LANG=en_US.UTF8
 export PY_IGNORE_IMPORTMISMATCH=1
-# -k: inline pytest calls with -We, https://build.opensuse.org/request/show/889802
-%pytest tests/ --doctest-plus --doctest-rst -k "not (test_doctestplus and warnings)"
+%pytest tests/ --doctest-plus --doctest-rst -k "not test_remote_data_url"
 %endif
 
 %if !%{with test}
