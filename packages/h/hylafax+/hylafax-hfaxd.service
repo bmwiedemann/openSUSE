@@ -1,6 +1,7 @@
 [Unit]
 Description=HylaFAX hfaxd (client service)
 ConditionPathExists=/var/spool/hylafax/etc/setup.cache
+Requires=hylafax-faxq.service
 PartOf=hylafax.target
 
 [Service]

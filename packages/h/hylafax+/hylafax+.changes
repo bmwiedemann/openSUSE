@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct 18 15:14:38 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.4
+  * README.SUSE renamed 
+  * hylafax.diff added for boo#1191571 (pre-correction)
+  * Dependencies on systemd-services adjusted
+  * retry training twice at the same bitrate unless FTT (26 Aug 2021)
+  * add missing reason messages for session failures (21 Aug 2021)
+  * stop attempts to send or receive signals if the call ended prematurely (16-19 Aug 2021)
+  * add Class1HasRMHookIndication (16 Aug 2021)
+  * don't attempt sending DCN if we're already on hook (15, 17 Aug 2021)
+  * end session sooner if receiver hangs up immediately after TCF or during prologue (14 Aug 2021)
+  * fix some behavior following frame reception timeouts (13 Aug 2021)
+  * improve behavior if procedural interrupt fails (12 Aug 2021)
+  * handle sender repeating RR after we transmit MCF (10 Aug 2021)
+  * add session logging of receipt of CFR/FTT signals (3 Aug 2021)
+  * cope with receipt of PPR following CTC (3 Aug 2021)
+  * attempt to cope with NSF/CSI/DIS after PPS, CTR, ERR, RR and improve coping with
+    the same after MPS/EOP/EOM (2, 12, 14, 18 Aug 2021)
+  * identify DCN after PPS as a receiver abort (2 Aug 2021)
+  * attempt to cope with receipt of CTR after sending PPS (2 Aug 2021)
+  * remove use of deprecated libtiff integer types and "register" storage class specifier (25 Jul 2021)
+  * don't employ senderFumblesECM if V.34-Fax was negotiated (25 Jul 2021)
+  * update configure to accept libtiff v4.2 and v4.3 (24 Jul 2021)
+  * fix page handling "botch" if a job's first and previous attempts were on a proxy (20 Jul 2021)
+  * fix data timeout for bitrates less than 14400 bps when non-zero scanline time (15 Jul 2021)
+  * try to cope with T.38 invite stutter at beginning of send (15 Jul 2021)
+  * decouple session logging from direct filesystem I/O (15 Jul 2021)
+  * try to help receivers who may expect initial 1-bits to start high-speed data (8, 9 Jul, 4 Aug 2021)
+  * improve tenacity of "persistent" ECM (26 Jun 2021)
+  * maintain the same SSL Fax passcode during a single session (20 May 2021)
+  * log detection of binary file transfer support in receivers (1 Apr 2021)
+  * add support for SiLabs Si2417/Si2435 (5 Feb 2021)
+
+-------------------------------------------------------------------
 Fri Oct 15 12:12:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

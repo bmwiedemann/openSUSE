@@ -65,12 +65,18 @@ Send-only environment
 Many installations run hylafax just for sending faxes. To get this up and running, the command 
 faxmodem
 needs to run after hylafax is started.
-In a systemd environment, it is easiest to add additional configuration for systemd.
+For this we have created a separate service, hylafax-faxmodem@.service
+
+You need to invoke this service with the interface, e.g.
+systemctl enable hylafax-faxmodem@ttyS0.service
+
+(Note: you may as well attach the faxmodem call to the faxq-service:
 Create a directory
-/etc/systemd/system/hylafax-hfaxd.service.d
+/etc/systemd/system/hylafax-faxq.service.d
 and copy the file sendonly.conf into this directory.
 Check that the mentioned port (ttyS0 - Parameter is the device the modem is attached 
 to) in this file matches your configuration and restart the service.
+Depending on how fast the FIFO comes up, you may see a restart of the service)
 
 For general documentation on how to set up hylafax, please see
 http://hylafax.sourceforge.net/howto/install.php

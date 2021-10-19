@@ -6,7 +6,7 @@
 [Unit]
 Description=Faxqueue cleaner process
 Documentation=man:faxqclean(8) 
-Requires=hylafax-hfaxd.service
+Requires=hylafax-faxq.service
 
 [Timer]
 OnCalendar=hourly

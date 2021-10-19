@@ -19,7 +19,7 @@
 %global faxspool    %{_localstatedir}/spool/hylafax
 %define lib_version %(echo %{version} | tr \. _)
 Name:           hylafax+
-Version:        7.0.3
+Version:        7.0.4
 Release:        0
 Summary:        A fax server
 License:        BSD-3-Clause
@@ -30,13 +30,15 @@ Source4:        hylafax-hfaxd.service
 Source5:        hylafax-faxq.service
 Source6:        hylafax-faxgetty@.service
 Source7:        hylafax.target
-Source8:        README.SUSE
+Source8:        README.openSUSE
 Source9:        sendonly.conf
 # systemd-timer
 Source10:       hylafax-usage.timer
 Source11:       hylafax-usage.service
 Source12:       hylafax-faxqclean.timer
 Source13:       hylafax-faxqclean.service
+Source14:       hylafax-faxmodem@.service
+Patch0:         hylafax.diff
 
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
@@ -100,6 +102,7 @@ used to access the server.
 
 %prep
 %setup -q -n hylafax-%{version}
+%patch0 -p2
 cp %{SOURCE8} .
 cp %{SOURCE9} .
 # pretend, that libtiff 4.4 is similar to 4.{0,1}
@@ -174,6 +177,7 @@ install -D -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/hylafax-usage.timer
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/hylafax-usage.service
 install -D -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/hylafax-faxqclean.timer
 install -D -m 0644 %{SOURCE13} %{buildroot}%{_unitdir}/hylafax-faxqclean.service
+install -D -m 0644 %{SOURCE14} %{buildroot}%{_unitdir}/hylafax-faxmodem@.service
 
 for lnk in hylafax-hfaxd hylafax-faxq; do
     ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc$lnk
@@ -191,18 +195,18 @@ rm -f %{buildroot}%{faxspool}/bin/{ps2fax.imp,ps2fax.dps}
 rm -f %{buildroot}%{faxspool}/COPYRIGHT
 
 %pre
-%service_add_pre hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
+%service_add_pre hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service hylafax-faxmodem@.service
 
 %post
 /sbin/ldconfig
-%service_add_post hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
+%service_add_post hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service hylafax-faxmodem@.service
 
 %preun
-%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
+%service_del_preun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service hylafax-faxmodem@.service
 
 %postun
 /sbin/ldconfig
-%service_del_postun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service
+%service_del_postun hylafax-faxq.service hylafax-hfaxd.service hylafax-usage.service hylafax-faxqclean.service hylafax-usage.timer hylafax-faxqclean.timer hylafax.target hylafax-faxgetty@.service hylafax-faxmodem@.service
 
 %post -n libfaxutil%{lib_version} -p /sbin/ldconfig
 %postun -n libfaxutil%{lib_version} -p /sbin/ldconfig
@@ -215,12 +219,13 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_unitdir}/hylafax-usage.timer
 %{_unitdir}/hylafax-usage.service
 %{_unitdir}/hylafax-faxqclean.timer
+%{_unitdir}/hylafax-faxmodem@.service
 %{_unitdir}/hylafax-faxqclean.service
 %{_sbindir}/rchylafax-faxq
 %{_sbindir}/rchylafax-hfaxd
 %{_sbindir}/rchylafax
 %defattr(-,root,root)
-%doc CHANGES CONTRIBUTORS COPYRIGHT README TODO VERSION README.SUSE sendonly.conf
+%doc CHANGES CONTRIBUTORS COPYRIGHT README TODO VERSION README.openSUSE sendonly.conf
 %exclude %{_libdir}/libfaxutil*
 %{_libdir}/libfax*
 %{_mandir}/man5/hylafax-config.5f%{ext_man}
