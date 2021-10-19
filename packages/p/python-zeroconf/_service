@@ -6,9 +6,8 @@
     <param name="version">0.36.8</param>
   </service>
   <service name="set_version" mode="disabled"/>
-
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

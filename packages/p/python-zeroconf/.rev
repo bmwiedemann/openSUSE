@@ -260,4 +260,12 @@
   * Improved performance of parsing incoming packets</comment>
     <requestid>925744</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>94904cefb9e20c72a5ac84e8928b3cb9</srcmd5>
+    <version>0.36.8</version>
+    <time>1634677446</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove duplicate sources.</comment>
+    <requestid>926410</requestid>
+  </revision>
 </revisionlist>
