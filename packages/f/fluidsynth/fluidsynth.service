@@ -9,7 +9,6 @@ After=sound.target
 ProtectSystem=full
 ProtectHome=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true

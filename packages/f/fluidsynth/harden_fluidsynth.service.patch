@@ -2,7 +2,7 @@ Index: fluidsynth-2.2.2/fluidsynth.service.in
 ===================================================================
 --- fluidsynth-2.2.2.orig/fluidsynth.service.in
 +++ fluidsynth-2.2.2/fluidsynth.service.in
-@@ -4,6 +4,17 @@ Documentation=man:fluidsynth(1)
+@@ -4,6 +4,16 @@ Documentation=man:fluidsynth(1)
  After=sound.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: fluidsynth-2.2.2/fluidsynth.service.in
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
