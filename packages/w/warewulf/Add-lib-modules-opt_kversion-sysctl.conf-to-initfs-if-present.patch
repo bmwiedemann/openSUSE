@@ -1,0 +1,46 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Oct 14 13:51:35 2021 +0200
+Subject: Add /lib/modules/$opt_kversion/sysctl.conf to initfs if present
+Patch-mainline: Not yet
+Git-commit: 080e7062a53926170670aecb74e4921c8878f5cb
+References: 
+
+Kernels may ship their own sysctl.conf with settings specific
+to the respective kernel version. This is shipped with the
+kernel itself in the module directory.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ provision/initramfs/capabilities/provision-vnfs/70-kernelmodules | 4 ++++
+ vnfs/bin/wwbootstrap                                             | 6 ++++++
+ 2 files changed, 10 insertions(+)
+diff --git a/provision/initramfs/capabilities/provision-vnfs/70-kernelmodules b/provision/initramfs/capabilities/provision-vnfs/70-kernelmodules
+index 7f763f7..2ec5ffb 100644
+--- a/provision/initramfs/capabilities/provision-vnfs/70-kernelmodules
++++ b/provision/initramfs/capabilities/provision-vnfs/70-kernelmodules
+@@ -29,4 +29,8 @@ if [ -x "${NEWROOT}${DEPMOD}" ]; then
+     chroot "${NEWROOT}" /sbin/depmod -a
+ fi
+ 
++if [ -e "${NEWROOT}"/lib/modules/"${KVERSION}"/sysctl.conf ]; then
++    ln -s /lib/modules/"${KVERSION}"/sysctl.conf "${NEWROOT}"/boot/sysctl.conf-"${KVERSION}"
++fi
++    
+ exit 0
+diff --git a/vnfs/bin/wwbootstrap b/vnfs/bin/wwbootstrap
+index 149f6f4..e509ee3 100644
+--- a/vnfs/bin/wwbootstrap
++++ b/vnfs/bin/wwbootstrap
+@@ -260,6 +260,12 @@ if ($config->get("drivers")) {
+     copy("$opt_chroot/lib/modules/$opt_kversion/modules.order", "$tmpdir/initramfs/lib/modules/$opt_kversion/modules.order");
+     copy("$opt_chroot/lib/modules/$opt_kversion/modules.builtin", "$tmpdir/initramfs/lib/modules/$opt_kversion/modules.builtin");
+ 
++    if (-e "$opt_chroot/lib/modules/$opt_kversion/sysctl.conf" ) {
++	copy("$opt_chroot/lib/modules/$opt_kversion/sysctl.conf", "$tmpdir/initramfs/lib/modules/$opt_kversion/sysctl.conf");
++    } elsif ( -e "$opt_chroot/boot/sysctl.conf-$opt_kversion" ) {
++        copy("$opt_chroot/boot/sysctl.conf-$opt_kversion", "$tmpdir/initramfs/lib/modules/$opt_kversion/sysctl.conf");
++    }
++
+     if ($module_count > 0) {
+         &nprint("Number of drivers included in bootstrap: $module_count\n");
+         &dprint("Running depmod\n");

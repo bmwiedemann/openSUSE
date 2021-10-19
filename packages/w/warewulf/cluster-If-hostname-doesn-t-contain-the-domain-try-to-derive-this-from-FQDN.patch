@@ -2,7 +2,7 @@ From: Egbert Eich <eich@suse.com>
 Date: Mon Oct 4 19:42:44 2021 +0200
 Subject: cluster: If hostname doesn't contain the domain, try to derive this from FQDN
 Patch-mainline: Not yet
-Git-commit: 69bcaec9ab2cee4d512c3a32760f7245fe167b65
+Git-commit: fc9adfb41ba29d83fe083248e17c3a2d03d76e16
 References: 
 
 SUSE doesn't include the domainname in the hostname. One may still
@@ -12,20 +12,22 @@ part from it.
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 ---
- cluster/libexec/wwinit/30-domain.init | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ cluster/libexec/wwinit/30-domain.init | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 diff --git a/cluster/libexec/wwinit/30-domain.init b/cluster/libexec/wwinit/30-domain.init
-index ac221a5..08846c0 100644
+index ac221a5..300739a 100644
 --- a/cluster/libexec/wwinit/30-domain.init
 +++ b/cluster/libexec/wwinit/30-domain.init
-@@ -34,7 +34,11 @@ HOSTNAME=`hostname`
+@@ -33,8 +33,12 @@ fi
+ HOSTNAME=`hostname`
  DOMAIN=`echo $HOSTNAME | sed -e 's/^[^\.]*\.//'`
  
- if [ -z "$DOMAIN" -o "$HOSTNAME" == "$DOMAIN" ]; then
+-if [ -z "$DOMAIN" -o "$HOSTNAME" == "$DOMAIN" ]; then
 -    DOMAIN="cluster"
++if [ -z "$DOMAIN" -o "$HOSTNAME" = "$DOMAIN" ]; then
 +    HOSTNAME=`hostname -f`
 +    DOMAIN=`echo $HOSTNAME | sed -e 's/^[^\.]*\.//'`
-+    if [ -z "$DOMAIN" -o "$HOSTNAME" == "$DOMAIN" ]; then
++    if [ -z "$DOMAIN" -o "$HOSTNAME" = "$DOMAIN" ]; then
 +	DOMAIN="cluster"
 +    fi
  fi

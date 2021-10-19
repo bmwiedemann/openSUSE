@@ -35,11 +35,8 @@ License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 URL:            http://warewulf.lbl.gov/
 Source0:        https://github.com/warewulf/warewulf3/archive/%{version}.tar.gz#/%{name}3-%{version}.tar.gz
-Source1:        busybox.SuSE.config
 Source100:      install-recipe.md
 Source101:      install-recipe-vm.md
-Source301:      vnfs-wwmkchroot-opensuse-42.3.tmpl
-Source302:      vnfs-wwmkchroot-opensuse-tumbleweed.tmpl
 Patch0:         wwinit-Check-if-service-is-enabled-before-enabling-it.patch
 Patch1:         Perl-Escape-left-curly-brace-properly-in-regexps-for-perl-5.26.patch
 Patch2:         wwinit-If-no-ntp-key-file-is-present-comment-it-out-in-new-config-143.patch
@@ -79,12 +76,20 @@ Patch34:        common-Fix-help-text.patch
 Patch35:        cluster-Don-t-attempt-ntp-configuration-when-chrony-is-found.patch
 Patch36:        cluster-If-hostname-doesn-t-contain-the-domain-try-to-derive-this-from-FQDN.patch
 Patch37:        provision-Unify-handling-of-initramfs-location.patch
-Patch38:        initramfs-Them-kewl-kids-no-longer-like-bin-or-sbin-cater-for-them.patch
+Patch38:        initramfs-Going-forward-bin-or-sbin-are-mere-links-to-usr-cater-for-this.patch
+Patch39:        initramfs-Add-network-handling-support-for-SUSE.patch
+Patch40:        initramfs-Handle-NTP-client-configuration-for-SUSE.patch
+Patch41:        Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.patch
+Patch42:        vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
 
 %if "%{?flavor}" != "common"
 BuildRequires:  bsdtar
+%if 0%{suse_version} > 1500
+BuildRequires:  busybox-warewulf3
+%else
 BuildRequires:  busybox
 BuildRequires:  busybox-static
+%endif
 BuildRequires:  device-mapper-devel
 BuildRequires:  e2fsprogs
 BuildRequires:  haveged
@@ -383,13 +388,14 @@ cp %{SOURCE101} ./common/README.SUSE-VM-CONFIG-RECIPE
 %patch13 -p1
 %patch14 -p1
 %patch37 -p1
-%patch38 -p1
 # IPXE sources not needed
 #%patch17 -p1
 %patch23 -p1
 %patch24 -p1
 %patch27 -p1
-cp %{SOURCE1} ./provision/initramfs/busybox.config
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
 # vnfs
 %patch5 -p1
 %patch10 -p1
@@ -398,6 +404,8 @@ cp %{SOURCE1} ./provision/initramfs/busybox.config
 %patch20 -p1
 %patch21 -p1
 %patch31 -p1
+%patch41 -p1
+%patch42 -p1
 # cluster
 %patch2 -p1
 %patch3 -p1
@@ -449,12 +457,14 @@ cd ..
 
 cd provision
 autoreconf -f -i
-busybox_links=%_datadir/busybox/busybox-static.links
+busybox_links=%_datadir/busybox/busybox-warewulf3.links
 test -e $busybox_links || busybox_links=%_datadir/busybox/busybox.links
+busybox_bin=%_bindir/busybox-warewulf3
+test -e $busybox_bin || busybox_bin=%_bindir/busybox-static
 %if 0%{?full_build}
 %configure \
     --enable-cross-compile \
-    --with-local-busybox=%_bindir/busybox-static \
+    --with-local-busybox=$busybox_bin \
     --with-busybox-links-file=$busybox_links \
     --with-local-e2fsprogs=%_prefix/sbin/mkfs.ext4 \
     --with-local-ipxe_undionly=%_datadir/ipxe/undionly.kpxe \
@@ -467,7 +477,7 @@ test -e $busybox_links || busybox_links=%_datadir/busybox/busybox.links
     --with-apache2moddir=%_libdir/apache2
 %else
 %configure \
-    --with-local-busybox=%_bindir/busybox-static \
+    --with-local-busybox=$busybox_bin \
     --with-busybox-links-file=$busybox_links \
     --with-local-e2fsprogs=%_prefix/sbin/mkfs.ext4 \
     --with-local-libarchive=%_bindir/bsdtar \
@@ -489,9 +499,9 @@ cd common
 mkdir -p %{buildroot}/%{_docdir}
 
 cd ..
-echo "g %{name} -" > system-user-%{name}.conf
-%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
-install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+echo "g %{name} -" > system-group-%{name}.conf
+%sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
+install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-group-%{name}.conf
 
 %else
 
@@ -503,8 +513,10 @@ cd ..
 done
 
 # vnfs
-install %{SOURCE301} %{buildroot}/%{_libexecdir}/warewulf/wwmkchroot/opensuse-42.3.tmpl
-install %{SOURCE302} %{buildroot}/%{_libexecdir}/warewulf/wwmkchroot/opensuse-tumbleweed.tmpl
+# Don't exclude these
+for i in /var/log/ /usr/lib/locale /usr/share/locale ; do
+    sed -i -e "/${i//\//\\\/}/s@\(.*\)@#\1@g"  %{buildroot}/%{_sysconfdir}/warewulf/vnfs.conf
+done
 
 %endif # x86_64
 
@@ -573,7 +585,7 @@ systemctl enable --now mariadb >/dev/null 2>&1 || :
 %attr(0640, root, warewulf) %config(noreplace) %{_sysconfdir}/warewulf/database-root.conf
 %attr(0644, root, warewulf) %config(noreplace) %{_sysconfdir}/warewulf/defaults/node.conf
 %{perl_vendorlib}/*
-%{_sysusersdir}/system-user-%{name}.conf
+%{_sysusersdir}/system-group-%{name}.conf
 
 %files doc
 %defattr(-, root, root)

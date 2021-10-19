@@ -20,9 +20,21 @@ Mon Oct  4 18:08:59 UTC 2021 - Egbert Eich <eich@suse.com>
   * Unify handling of initramfs location
     provision-Unify-handling-of-initramfs-location.patch
   * Cater for /bin and /sbin only being links to /usr/bin and /usr/sbin
-    initramfs-Them-kewl-kids-no-longer-like-bin-or-sbin-cater-for-them.patch
+    initramfs-Going-forward-bin-or-sbin-are-mere-links-to-usr-cater-for-this.patch
+  * Create SUSE network configuration on provisioned system
+    initramfs-Add-network-handling-support-for-SUSE.patch
+  * Set up NTP using a SUSE network configuration
+    initramfs-Handle-NTP-client-configuration-for-SUSE.patch
+  * Add kernel-specific sysctl.conf file
+    Add-lib-modules-opt_kversion-sysctl.conf-to-initfs-if-present.patch
+  * Do not pull unneeded stuff - packages to install should be explcitly
+    listed or required.
+    vnfs-Do-not-pull-in-recommended-packages-on-SUSE.patch
 - Removed:
+  * busybox.SuSE.config
+  * vnfs-wwmkchroot-opensuse-42.3.tmpl
   * vnfs-wwmkchroot-opensuse-15.0.tmpl
+  * vnfs-wwmkchroot-opensuse-tumbleweed.tmpl
 
 -------------------------------------------------------------------
 Fri Oct  1 07:00:20 UTC 2021 - Egbert Eich <eich@suse.com>

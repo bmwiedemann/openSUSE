@@ -23,4 +23,12 @@
     <comment>- More fixes. (forwarded request 924399 from eeich)</comment>
     <requestid>924400</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e938016bdfc279efafb23dfe35834f79</srcmd5>
+    <version>3.8.1</version>
+    <time>1634677422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926032</requestid>
+  </revision>
 </revisionlist>
