@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:31:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.17
+  * DFREader: allow ISO-8859-1 as fallback for logs
+  * mavfft_isb: allow all HNTCH options to be printed
+  * mavgen_python.py: try both tostring and tobytes when checking signature
+  * DFReader: use tobytes for py3 in get_msgbuf
+  * mavutil: fix docstring typo
+  * tools: mavfft_isb add file names to legend for multiple files
+  * tools: add axis plot option to mavfft_isb
+- Update to version 2.4.16
+  * Add Blimp modes
+  * mavutil: add new AUTO_RTL mode 27 to copter
+  * Tools: magfit_WMM: add option to save plot and param file
+  * mavmmaplog: Close the mmap object
+  * Update mavlink_signature_check code to be compiler agnostic
+  * mavgen_java: Don't hardcode sysid and compid when packing
+  * Fix typos discovered by codespell
+  * Test on the current versions of Python
+  * Fix a typo discovered by codespell
+  * Fix typos
+  * mavutil: correct parsing of truncated tlogs
+  * DFReader.py: fix qnan detection under Python3
+  * mavutil.py: update mode mapping for copter
+  * added bitmask attribute to MAVEnum
+  * build(deps): bump lodash in /generator/javascript_stable
+  * build(deps): bump underscore in /generator/javascript
+  * build(deps): bump underscore in /generator/javascript_stable
+  * build(deps): bump lodash in /generator/javascript
+  * Bugfix accessing wrong property
+  * mavlogdump: added mode to --meta
+  * mavextra: improved distance_two()
+  * examples: fixed for gravity
+  * Correct magfit_WMM.py to account for AHRS_TRIM
+
+-------------------------------------------------------------------
 Wed Apr 28 11:59:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.4.15
