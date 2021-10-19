@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 17 14:19:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.24.0
+  * Drop support for Python 3.5 (#777)
+  * Add support for Python 3.10 (#795)
+  * Add support for asynchronous iterables to
+    copy_records_to_table() (#713)
+  * Add support for coroutine functions as listener callbacks
+    (#802)
+  * Add support for sslcert, sslkey and sslrootcert parameters to
+    DSN (#768)
+  * Add copy_ wrappers to Pool (#661)
+  * Add issubset and issuperset methods to the Range type (#563)
+  * Break connection internal circular reference (#774)
+  * Make Server Version Extraction More Flexible (#778)
+- Release 0.23.0
+  * Avoid TypeError in Transaction.__repr__ (#703)
+  * Feed memoryview to writelines() (#715)
+  * Add sslmode=allow support and fix =prefer retry (#720)
+  * Loosen message test in test_invalid_input (#751)
+  * Support readonly and deferrable for non-serializable
+    transactions (#747)
+  * Fix asyncpg with Py_DEBUG mode (#719)
+  * Fix docs/Makefile and docs/_static/theme_overrides.css missing
+    from PyPI package (#708)
+- Reactivate python36: uvloop for testing is optional
+
+-------------------------------------------------------------------
 Fri Sep 17 07:01:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build for python 3.6: the required dependency uvloop does

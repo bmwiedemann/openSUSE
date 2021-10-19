@@ -16,28 +16,34 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asyncpg
-Version:        0.22.0
+Version:        0.24.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.28}
-BuildRequires:  %{python_module devel >= 3.5}
+BuildRequires:  %{python_module Cython >= 0.29.24}
+BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 3.7.4.3 if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libpq5 >= 9.4
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing-extensions >= 3.7.4.3
+%endif
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module uvloop >= 0.14.0}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  postgresql-contrib
 BuildRequires:  postgresql-server
+%if 0%{?suse_version} > 1500
+# uvloop >= 0.15.3 does not exist in Leap nor in python36 flavor
+BuildRequires:  %{python_module uvloop >= 0.15.3 if (%python-base without python36-base)}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -49,6 +55,10 @@ PostgreSQL and Python/asyncio with clean implementation
 
 %prep
 %setup -q -n asyncpg-%{version}
+# no uvloop in python36 but in newer flavors
+sed -i asyncpg/_testbase/__init__.py \
+  -e "/import re/ a import sys" \
+  -e "s/if os.environ.get('USE_UVLOOP')/& and sys.version_info[:2] > (3, 6)/"
 
 %build
 %python_build
@@ -63,14 +73,20 @@ PostgreSQL and Python/asyncio with clean implementation
 # Needed to avoid asyncpg.cluster.ClusterError:
 #                 could not find pg_config executable
 export PGINSTALLATION=%{_bindir}
+%if 0%{?suse_version} > 1500
+export USE_UVLOOP=1
+%endif
+# fails inside obs chroot
+donttest="test_timetz_encoding"
 
 mv asyncpg .asyncpg
-%pytest_arch -rs
+%pytest_arch -rs -k "not ($donttest)"
 mv .asyncpg asyncpg
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/asyncpg
+%{python_sitearch}/asyncpg-%{version}*-info
 
 %changelog
