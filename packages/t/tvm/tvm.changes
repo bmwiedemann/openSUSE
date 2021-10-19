@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 11:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build fails with LLVM 13, so still use LLVM 12 on Tumbleweed
+
+-------------------------------------------------------------------
 Fri Apr 30 09:08:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patches to fix build on Tumbleweed with llvm12:

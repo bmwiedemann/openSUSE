@@ -83,7 +83,12 @@ Requires:       python-attrs
 Requires:       python-decorator
 Requires:       python-numpy
 Requires:       python-psutil
+%if %{suse_version} > 1500
+# Build broken with LLVM 13 on Tumbleweed - https://github.com/apache/tvm/issues/9319
+BuildRequires:  llvm12-devel
+%else
 BuildRequires:  llvm-devel
+%endif
 %if %{with onednn}
 BuildRequires:  onednn-devel
 %endif
