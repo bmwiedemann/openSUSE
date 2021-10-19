@@ -31,6 +31,7 @@ Patch1:         check_if_psr_ops_were_initialized.patch
 Patch2:         start_teamd_from_usr_sbin.patch
 Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
 Patch4:         0001-allow-send_interface-dbus.patch
+Patch5:	harden_teamd@.service.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
