@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           pam_yubico
 Version:        2.27
@@ -44,7 +45,7 @@ such as NCSA MyProxy.
 %setup -q
 
 %build
-%configure --bindir=%{_bindir} --with-pam-dir=/%{_lib}/security --disable-static --disable-silent-rules
+%configure --bindir=%{_bindir} --with-pam-dir=%{_pam_moduledir} --disable-static --disable-silent-rules
 make %{?_smp_mflags}
 
 %install
@@ -55,7 +56,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING*
 %doc README AUTHORS NEWS doc/*
 %{_bindir}/ykpamcfg
-/%{_lib}/security/pam_yubico.so
+%{_pam_moduledir}/pam_yubico.so
 %{_mandir}/man1/ykpamcfg.1*
 %{_mandir}/man8/pam_yubico.8*
 

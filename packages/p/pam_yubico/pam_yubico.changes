@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 20:08:29 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
+
+- Use %_pam_moduledir instead of hardcoding %{_lib}/security
+- Define macro _pam_moduledir if not set to fix builds for Leap and SLE
+
+-------------------------------------------------------------------
 Mon May 17 15:36:30 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Version 2.27 (released 2021-04-09)
