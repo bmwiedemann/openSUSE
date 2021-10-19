@@ -184,6 +184,7 @@ BuildRequires:  mvn(org.gmetrics:GMetrics)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(org.mozilla:rhino)
 BuildRequires:  mvn(org.objenesis:objenesis)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.ow2.asm:asm-all)
 BuildRequires:  mvn(org.parboiled:parboiled-core)
 BuildRequires:  mvn(org.parboiled:parboiled-java)
@@ -286,6 +287,7 @@ Requires:       native-platform
 Requires:       nekohtml
 Requires:       objectweb-asm
 Requires:       objenesis
+Requires:       osgi-compendium
 Requires:       plexus-cipher
 Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations

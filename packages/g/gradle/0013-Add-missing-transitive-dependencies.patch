@@ -4,14 +4,14 @@ Date: Mon, 2 Oct 2017 17:33:05 +0300
 Subject: [PATCH 13/17] Add missing transitive dependencies
 
 ---
- gradle/dependencies.gradle | 17 +++++++++++++----
+ gradle/dependencies.gradle | 18 +++++++++++++----
  1 file changed, 13 insertions(+), 4 deletions(-)
 
 diff --git a/gradle/dependencies.gradle b/gradle/dependencies.gradle
 index 96ff6f58fee..bbf10217798 100755
 --- a/gradle/dependencies.gradle
 +++ b/gradle/dependencies.gradle
-@@ -37,7 +37,10 @@ libraries.ant = dependencies.module("org.apache.ant:ant:${versions.ant}") {
+@@ -37,7 +37,11 @@ libraries.ant = dependencies.module("org.apache.ant:ant:${versions.ant}") {
  
  libraries.asm =  'org.ow2.asm:asm-debug-all:6.0_ALPHA'
  libraries.cglib = 'cglib:cglib:3.2.5'
@@ -19,6 +19,7 @@ index 96ff6f58fee..bbf10217798 100755
 +libraries.bndlib = dependencies.module('biz.aQute.bnd:bndlib:3.4.0') {
 +    dependency 'biz.aQute.bnd:aQute.libg:3.4.0@jar'
 +    dependency 'biz.aQute.bnd:biz.aQute.bnd.annotation:3.4.0@jar'
++    dependency 'org.osgi:osgi.cmpn:7.0.0'
 +}
  libraries.commons_cli = 'commons-cli:commons-cli:1.2@jar'
  libraries.commons_io = dependencies.module(versions.commons_io)

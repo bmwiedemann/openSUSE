@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:02:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0013-Add-missing-transitive-dependencies.patch
+    + Add osgi-compendium to the dependencies, since newer qute-bnd
+      uses it
+
+-------------------------------------------------------------------
 Wed Jul 28 07:31:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Remove build requires that are not strictly needed

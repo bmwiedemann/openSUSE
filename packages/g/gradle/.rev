@@ -116,4 +116,12 @@
     <comment>fix build on sle12</comment>
     <requestid>908788</requestid>
   </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>03fe4af299d550b7e8cc0cbc715ca28c</srcmd5>
+    <version>4.4.1</version>
+    <time>1634677429</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency with newer aqute-bnd</comment>
+    <requestid>926141</requestid>
+  </revision>
 </revisionlist>
