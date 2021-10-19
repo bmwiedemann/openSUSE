@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:46:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with Java 8 and add _constraints
+
+-------------------------------------------------------------------
 Thu Feb 27 07:28:53 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of scala-stm 0.7

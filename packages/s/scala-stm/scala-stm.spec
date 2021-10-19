@@ -1,7 +1,7 @@
 #
 # spec file for package scala-stm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,16 @@ URL:            https://nbronson.github.io/scala-stm/
 Source0:        https://github.com/nbronson/scala-stm/archive/release-%{version}.tar.gz
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel
 BuildRequires:  javapackages-local
 BuildRequires:  sbt
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.scala-lang:scala-compiler)
 BuildRequires:  mvn(org.scala-lang:scala-library)
+BuildConflicts: java >= 9
+BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless >= 9
 BuildArch:      noarch
 
 %description
