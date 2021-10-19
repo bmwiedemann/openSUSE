@@ -293,6 +293,9 @@ find . -name "*.class" -exec rm {} \;
 
 %pom_disable_module aggregates/jetty-all
 
+%pom_xpath_inject "pom:configuration/pom:instructions" \
+"<Import-Package>sun.misc;resolution:=optional,com.sun.nio.file;resolution:=optional,*</Import-Package>"
+
 %pom_remove_dep "com.sun.net.httpserver:http" jetty-http-spi
 
 %pom_change_dep -r org.mortbay.jasper:apache-jsp org.apache.tomcat:tomcat-jasper

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:13:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Make importing of package sun.misc optional since not all jdk
+  versions export it
+
+-------------------------------------------------------------------
 Mon Jul 19 06:58:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 9.4.43.v20210629
