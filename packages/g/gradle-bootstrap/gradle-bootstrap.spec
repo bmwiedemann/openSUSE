@@ -1,5 +1,5 @@
 #
-# spec file for package gradle-bootstrap
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -103,6 +103,7 @@ BuildRequires:  native-platform
 BuildRequires:  nekohtml
 BuildRequires:  objectweb-asm
 BuildRequires:  objenesis
+BuildRequires:  osgi-compendium
 BuildRequires:  plexus-cipher
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
@@ -192,6 +193,7 @@ Requires:       native-platform
 Requires:       nekohtml
 Requires:       objectweb-asm
 Requires:       objenesis
+Requires:       osgi-compendium
 Requires:       plexus-cipher
 Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations

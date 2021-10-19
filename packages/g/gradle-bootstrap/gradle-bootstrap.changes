@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 05:03:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Regenerate to account for aqute-bnd upgrade to 5.1.1 and
+  related changes in other libraries
+
+-------------------------------------------------------------------
 Wed May 12 07:23:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Regenerate to account for guava upgrade to 30.1.1

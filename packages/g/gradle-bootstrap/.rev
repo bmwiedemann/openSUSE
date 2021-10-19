@@ -48,4 +48,12 @@
 </comment>
     <requestid>892405</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>def575471db60b11ee05b78058ac699b</srcmd5>
+    <version>unknown</version>
+    <time>1634677429</time>
+    <user>dimstar_suse</user>
+    <comment>Regenerate with newer aqute-bnd</comment>
+    <requestid>926142</requestid>
+  </revision>
 </revisionlist>
