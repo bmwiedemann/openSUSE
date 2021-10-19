@@ -81,6 +81,9 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # update abstractions/python and profiles for python 3.10 (submitted upstream 2021-08-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/783)
 Patch7:         profiles-python-3.10-mr783.diff
 
+# add samba-bgqd profile (submitted upstream 2021-10-15 https://gitlab.com/apparmor/apparmor/-/merge_requests/807)
+Patch8:         add-samba-bgqd.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -344,6 +347,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch4
 %patch5
 %patch7 -p1
+%patch8 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -571,6 +575,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/lsb_release
 %config(noreplace) %{_sysconfdir}/apparmor.d/nvidia_modprobe
 %config(noreplace) %{_sysconfdir}/apparmor.d/php-fpm
+%config(noreplace) %{_sysconfdir}/apparmor.d/samba-bgqd
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/*
 %dir /usr/share/apparmor/
 %if %{with precompiled_cache}

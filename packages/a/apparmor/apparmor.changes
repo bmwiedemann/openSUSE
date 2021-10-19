@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 20:22:11 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- add add-samba-bgqd.diff: add profile for samba-bgqd (boo#1191532)
+
+-------------------------------------------------------------------
 Sat Sep 18 13:16:35 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - lessopen.sh profile: allow reading files that live on NFS over UDP

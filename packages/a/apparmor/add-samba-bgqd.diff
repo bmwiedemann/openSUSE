@@ -1,0 +1,61 @@
+commit 85e53a5d040cdf3f7705da9e625b85041694aa4c
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Fri Oct 15 22:02:36 2021 +0200
+
+    Add profile for samba-bgqd
+    
+    ... and some rules in the smbd profile to execute it and send it a term
+    signal.
+    
+    samba-bgqd is (quoting its manpage) "an internal helper program
+    performing asynchronous printing-related jobs."
+    
+    samba-bgqd was added in Samba 4.15.
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1191532
+
+diff --git a/profiles/apparmor.d/samba-bgqd b/profiles/apparmor.d/samba-bgqd
+new file mode 100644
+index 00000000..c81c64f1
+--- /dev/null
++++ b/profiles/apparmor.d/samba-bgqd
+@@ -0,0 +1,18 @@
++abi <abi/3.0>,
++
++include <tunables/global>
++
++profile samba-bgqd /usr/lib*/samba/samba-bgqd {
++  include <abstractions/base>
++  include <abstractions/cups-client>
++  include <abstractions/nameservice>
++  include <abstractions/samba>
++
++  signal receive set=term peer=smbd,
++
++  @{PROC}/sys/kernel/core_pattern r,
++  @{run}/samba/samba-bgqd.pid wk,
++
++  # Site-specific additions and overrides. See local/README for details.
++  include if exists <local/samba-bgqd>
++}
+diff --git a/profiles/apparmor.d/usr.sbin.smbd b/profiles/apparmor.d/usr.sbin.smbd
+index 92305564..b8fdad15 100644
+--- a/profiles/apparmor.d/usr.sbin.smbd
++++ b/profiles/apparmor.d/usr.sbin.smbd
+@@ -24,6 +24,8 @@ profile smbd /usr/{bin,sbin}/smbd {
+   capability sys_resource,
+   capability sys_tty_config,
+ 
++  signal send set=term peer=samba-bgqd,
++
+   /etc/mtab r,
+   /etc/netgroup r,
+   /etc/printcap r,
+@@ -35,6 +37,7 @@ profile smbd /usr/{bin,sbin}/smbd {
+   /usr/lib*/samba/charset/*.so mr,
+   /usr/lib*/samba/gensec/*.so mr,
+   /usr/lib*/samba/pdb/*.so mr,
++  /usr/lib*/samba/samba-bgqd Px -> samba-bgqd,
+   /usr/lib*/samba/{lowcase,upcase,valid}.dat r,
+   /usr/lib/@{multiarch}/samba/*.so{,.[0-9]*} mr,
+   /usr/lib/@{multiarch}/samba/**/ r,

@@ -2189,4 +2189,12 @@ libapparmor:
   (added to apparmor-lessopen-nfs-workaround.diff) (boo#1190552) (forwarded request 920053 from cboltz)</comment>
     <requestid>920054</requestid>
   </revision>
+  <revision rev="158" vrev="4">
+    <srcmd5>3abc4f34334a39809351c1167d4f02e6</srcmd5>
+    <version>3.0.3</version>
+    <time>1634677410</time>
+    <user>dimstar_suse</user>
+    <comment>- add add-samba-bgqd.diff: add profile for samba-bgqd (boo#1191532)</comment>
+    <requestid>925557</requestid>
+  </revision>
 </revisionlist>
