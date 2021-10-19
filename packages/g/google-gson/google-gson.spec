@@ -1,7 +1,7 @@
 #
 # spec file for package google-gson
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           google-gson
-Version:        2.8.5
+Version:        2.8.8
 Release:        0
 Summary:        Java lib for conversion of Java objects into JSON representation
 License:        Apache-2.0
-Group:          Development/Libraries/Java
 URL:            https://github.com/google/gson
 Source0:        https://github.com/google/gson/archive/gson-parent-%{version}.tar.gz
-Patch0:         osgi-export-internal.patch
-Patch1:         no-template-plugin.patch
-# Java 11 changed the DateTime.FULL output for Locale.FRANCE
-Patch2:         fix-test.patch
+Patch0:         sun-misc.patch
+Patch1:         osgi-export-internal.patch
+Patch2:         allow-build-with-java8.patch
+# Remove dependency on unavailable templating-maven-plugin
+Patch3:         no-template-plugin.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -51,16 +50,20 @@ This package contains the API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
-rm -f \
-  gson/src/main/java-templates/com/google/gson/internal/GsonBuildConfig.java \
-  gson/src/test/java/com/google/gson/functional/GsonVersionDiagnosticsTest.java \
-  gson/src/test/java/com/google/gson/internal/GsonBuildConfigTest.java
+# remove unnecessary dependency on parent POM
+%pom_remove_parent
+
+# presence of these files breaks builds with Java 8
+find -name "module-info.java" -print -delete
 
 # Use felix maven-bundle-plugin only for OSGi metadata
 %pom_remove_plugin :bnd-maven-plugin gson
-%pom_remove_plugin org.codehaus.mojo:templating-maven-plugin gson
-%pom_xpath_inject "pom:plugin[pom:artifactId='maven-bundle-plugin']" "<configuration>
+%pom_remove_plugin :templating-maven-plugin gson
+%pom_remove_plugin :copy-rename-maven-plugin gson
+%pom_remove_plugin :proguard-maven-plugin gson
+%pom_add_plugin "org.apache.felix:maven-bundle-plugin" gson "<configuration>
     <instructions>
       <_include>bnd.bnd</_include>
     </instructions>
@@ -71,11 +74,10 @@ rm -f \
       <phase>process-classes</phase>
       <goals><goal>manifest</goal></goals>
     </execution>
-  </executions>" gson
-
+  </executions>"
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f
 
 %install
 %mvn_install
