@@ -1,7 +1,7 @@
 #
 # spec file for package patchelf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           patchelf
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        A utility for patching ELF binaries
 License:        GPL-3.0-only
@@ -32,14 +32,14 @@ libraries.  It can change the dynamic loader ("ELF interpreter") of
 executables and change the RPATH of executables and libraries.
 
 %prep
-%setup -q -n %{name}-0.12.20200827.8d3a16e
+%setup -q -n %{name}-0.13.20210805.a949ff2
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
