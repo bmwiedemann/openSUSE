@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-mpd2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-mpd2
-Version:        1.0.0
+Version:        3.0.4
 Release:        0
 Summary:        A Python MPD client library
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/Mic92/python-mpd2
-Source:         https://files.pythonhosted.org/packages/source/p/python-mpd2/python-mpd2-%{version}.tar.bz2
+Source:         https://files.pythonhosted.org/packages/source/p/python-mpd2/python-mpd2-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted
+Recommends:     python-Twisted
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,11 +54,11 @@ backward compatibles with the original python-mpd package.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHON_SITEPATH=%{buildroot}%{$python_sitelib} $python -m unittest mpd.tests
+%pyunittest -v mpd.tests
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.rst doc
 %{python_sitelib}/python_mpd2-%{version}-py*.egg-info
 %{python_sitelib}/mpd
 

@@ -18,4 +18,42 @@
 - Make sure to run tests</comment>
     <requestid>632138</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>48f0fea373d1182997e5f2a9c55d33ed</srcmd5>
+    <version>3.0.4</version>
+    <time>1634677444</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pyunittest macro instead of the homebrewn solution.
+- Just Recommends python-Twisted.
+- Update to 3.0.4
+  * expose failure responses in CommandError exceptions
+- Changes in 3.0.3:
+  * asyncio: tolerate early disconnects
+- Changes in 3.0.2:
+  * asyncio: fix disconnect happen before connect
+  * asyncio: better protection against request cancellation
+  * asyncio: idle iterator raises error when connection closed
+- Changes in 3.0.0/3.0.1:
+  * Breaking changes: albumart now returns dictionary
+    `{&quot;size&quot;: &quot;...&quot;, &quot;binary&quot;: b&quot;...&quot;}` instead of just a string
+  * add readpicture command
+  * add partition, newpartition and delpartition commands
+  * add moveoutput command
+  * removed deprecated send_ and fetch_ commands. Use the asyncio
+    or twisted API instead for asynchronous mpd commands.
+- Changes in 2.0.0:
+  * Minimum python version was increased to python3.6, python2.7 support was dropped
+  * asyncio: fix parsing delimiters
+  * add support for albumart command
+- Changes in 1.1.0:
+  * Fix list command to work with grouping. Always returns list of
+    dictionaries now. Make sure to adopt your code since this is an
+    API change.
+  * fix compatibility with python3.9
+  * fix connecting to unix socket in asyncio version
+  * close asyncio transports on disconnect
+  * create TCP socket with TCP_NODELAY for better responsiveness
+</comment>
+    <requestid>926336</requestid>
+  </revision>
 </revisionlist>
