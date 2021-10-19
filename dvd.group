@@ -4508,6 +4508,7 @@
     <package name="system-group-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="system-group-wheel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-bin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="system-user-brltty" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-ftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
@@ -4517,7 +4518,7 @@
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="system-user-news" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="system-user-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="system-user-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
