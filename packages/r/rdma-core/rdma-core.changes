@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 15 08:44:00 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v37.1 (jsc#SLE-18381, jsc#SLE-19249)
+  - Bugfixes on all providers
+- Fix cmake flags to correct paths for .pc files
+
+-------------------------------------------------------------------
 Fri Aug  6 14:27:03 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to rdma-core v36.0:
