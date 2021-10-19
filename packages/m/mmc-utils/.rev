@@ -185,4 +185,13 @@
   * mmc-utils: Fix for Firmware Version string printing</comment>
     <requestid>918828</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc3bfaf1f5411efd9593025739e07ee7</srcmd5>
+    <version>0.1+git.20210930</version>
+    <time>1634677434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20210930:
+  * mmc-utils: One further optimization of trimming routine</comment>
+    <requestid>926154</requestid>
+  </revision>
 </revisionlist>
