@@ -3950,4 +3950,21 @@ StandardGroups in rpmlint package.
   bsc#1190695</comment>
     <requestid>924290</requestid>
   </revision>
+  <revision rev="341" vrev="2">
+    <srcmd5>556bd5c4a7d4cee140c37d2d7207dc45</srcmd5>
+    <version>7.8.0</version>
+    <time>1634677414</time>
+    <user>dimstar_suse</user>
+    <comment>- supportconfig: Use systemctl command 'is-active' instead of
+  'is-enabled' when checking if libvirtd is active
+
+- Drop 'Requires: libvirt-daemon-driver-lxc' from the main libvirt
+  package
+  jsc#SLE-22296
+
+- qemu: Do not report eof when processing monitor IO
+  2703b0b5-qemu-dont-report-eof.patch
+  bsc#1190917</comment>
+    <requestid>926063</requestid>
+  </revision>
 </revisionlist>

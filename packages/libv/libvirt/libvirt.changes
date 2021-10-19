@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 18 15:44:15 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- supportconfig: Use systemctl command 'is-active' instead of
+  'is-enabled' when checking if libvirtd is active
+
+-------------------------------------------------------------------
+Fri Oct 15 21:38:21 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Drop 'Requires: libvirt-daemon-driver-lxc' from the main libvirt
+  package
+  jsc#SLE-22296
+
+-------------------------------------------------------------------
+Fri Oct 15 17:52:52 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Do not report eof when processing monitor IO
+  2703b0b5-qemu-dont-report-eof.patch
+  bsc#1190917
+
+-------------------------------------------------------------------
 Fri Oct  8 20:47:47 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - lxc: controller: Fix container launch on cgroup v1

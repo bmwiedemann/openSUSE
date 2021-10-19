@@ -148,9 +148,6 @@ Requires:       %{name}-daemon-config-nwfilter = %{version}-%{release}
 %if %{with_libxl}
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 %endif
-%if %{with_lxc}
-Requires:       %{name}-daemon-driver-lxc = %{version}-%{release}
-%endif
 %if %{with_qemu}
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 %endif
@@ -287,6 +284,7 @@ Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         3f9c1a4b-fix-host-validate-sev.patch
 Patch1:         1b9ce05c-lxc-fix-cgroupV1.patch
+Patch2:         2703b0b5-qemu-dont-report-eof.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
