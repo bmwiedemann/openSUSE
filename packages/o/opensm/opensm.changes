@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 12:09:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * opensm.service
+
+-------------------------------------------------------------------
 Tue Aug 24 07:19:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 3.3.24 (jsc#SLE-19252)
