@@ -24,13 +24,15 @@
 %global __requires_exclude qmlimport\\((BloodPressure|FedLogin|GHBio|GHBol|GHPsycho|Glucose|LocalAccountManager|MoodEnergy|NetworkSettings|Osat|ProfileSettings|Weight|PoL|GHLifestyle|GHPhysicalActivity|GHNutrition|GHSleep|GHAbout)
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.4
+Version:        %{majorver}.0.5
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-only
 Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
-Source:         https://files.pythonhosted.org/packages/source/M/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/health/mygnuhealth/%{name}-%{version}.tar.gz.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 Patch0:         shebang.diff
 Patch1:         doc_path.diff
 BuildRequires:  fdupes
@@ -61,7 +63,7 @@ This package includes the documentation for MyGNUHealth Personal Health
 Information Management System for Desktop and Mobile Devices
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q
 %autopatch -p1
 
 %build
