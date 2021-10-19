@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:08:08 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211008:
+  * android: Fix benchmark parameter edition
+  * Use highp precision modifier only on GLES
+
+-------------------------------------------------------------------
 Tue Sep 14 08:28:45 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210830:

@@ -227,4 +227,14 @@
   * Fix -Wunreachable-code-aggressive.</comment>
     <requestid>918851</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f13ec4e54b68eace4e78bc078af8bfc9</srcmd5>
+    <version>20211008</version>
+    <time>1634677435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211008:
+  * android: Fix benchmark parameter edition
+  * Use highp precision modifier only on GLES</comment>
+    <requestid>926156</requestid>
+  </revision>
 </revisionlist>
