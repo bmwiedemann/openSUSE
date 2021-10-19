@@ -16,9 +16,9 @@
 #
 
 
-%define reltag 5.3.3-RELEASE
+%define reltag 5.5-RELEASE
 Name:           libdispatch
-Version:        5.3.3
+Version:        5.5
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
@@ -26,10 +26,13 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/apple/swift-corelibs-libdispatch
 Source0:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
 Source1:        libdispatch-rpmlintrc
-# Fedora patch
-Patch0:         asprintf.patch
+# Clang13 fix for warnings treated as errors
+# https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/574.patch
+Patch0:         574.patch
+# https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/563.patch
+Patch1:         563.patch
 # set library versions
-Patch1:         soversion.patch
+Patch2:         soversion.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  cmake
@@ -45,6 +48,7 @@ multicore hardware.
 
 %package        devel
 Summary:        Development files for %{name}
+Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 
 %description    devel
@@ -53,8 +57,9 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n swift-corelibs-libdispatch-swift-%{reltag}
-%patch0 -p2
+%patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %build
 export CC=clang
 export CXX=clang++

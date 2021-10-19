@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:51:35 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 5.5
+ * No upstream provided changelog
+ * Drop asprintf.patch, merged upstream
+ * Add patches to fix build failures caused by clang13 warnings treated as errors
+   (https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/563.patch)
+   (https://patch-diff.githubusercontent.com/raw/apple/swift-corelibs-libdispatch/pull/574.patch)
+   
+-------------------------------------------------------------------
 Thu Apr 15 10:43:19 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Move Block.h to a sub-directory, so it doesn't conflict with 
