@@ -17,10 +17,6 @@
 
 
 %define sover  3_8_4
-%ifarch %{arm}
-# boo#1182440
-%define _lto_cflags %{nil}
-%endif
 %bcond_without docs
 Name:           gnuradio
 Version:        3.8.4.0

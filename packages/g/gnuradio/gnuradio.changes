@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:55:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable again LTO on %{arm} as it builds properly now
+
+-------------------------------------------------------------------
 Tue Oct  5 23:10:14 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.8.4.0
