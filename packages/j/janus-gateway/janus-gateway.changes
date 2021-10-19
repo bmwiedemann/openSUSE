@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 18 16:20:34 UTC 2021 - michael@stroeder.com
+
+- dropped obsolete 0001-include-rand-header-file.patch
+- Update to version 0.11.5:
+  * Add API to optionally force Janus to use TURN (#2774)
+  * Fixed slow path on SDP parsing (#2776)
+  * Added event handlers option to send stats for a PeerConnection
+    in a single event, rather than per-media (#2785)
+  * Fixed occasional deadlocks on malformed requests in VideoRoom (#2780)
+  * Fixed AudioBridge plain RTP thread sometimes exiting prematurely
+  * Fixed broken upsampling when using G.711 in AudioBridge
+  * Add pause/resume recording functionality to Record&Play and SIP plugins (#2724)
+  * Fixed broken support for Unix Sockets in WebSockets Admin API (#2787)
+  * Added timing info for video rotation when post-processing recordings
+  * Added linter checks to janus.js (#2272)
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Thu Sep 23 05:14:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

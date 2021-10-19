@@ -21,7 +21,7 @@
 %endif
 
 Name:           janus-gateway
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 License:        GPL-3.0-only
 Summary:        Janus WebRTC Gateway
@@ -30,7 +30,6 @@ Group:          Productivity/Networking/Other
 Source:         %{name}-%{version}.tar.xz
 Source1:        janus.service
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-include-rand-header-file.patch
 # for run autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
