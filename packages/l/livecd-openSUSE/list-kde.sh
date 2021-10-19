@@ -66,7 +66,9 @@ buildignore vlc-lang
 buildignore kipi-plugins
 
 # Upstream branding, not used by default and HUGE
-buildignore breeze5-wallpapers
+if [ "$distro" != "leap" ]; then
+	buildignore breeze5-wallpapers
+fi
 
 install partitionmanager
 
