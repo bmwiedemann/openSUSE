@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 19 15:40:53 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.18
+
+- Update to upstream release 1.0.18:
+  * Fixed: Makefile g++ -dumpmachine failure to get platform on some distros
+- Update to upstream release 1.0.17:
+  * Changed: Reverted mutexes back to custom atomic bool based locks
+  * Added: Static binaries switched to building with musl + more platforms, by @jan-guenter
+  * Fixed: Improved battery detection, by @jan-guenter
+  * Added: Displayed battery selectable in options menu
+  * Fixed: Battery error if non existent battery named is entered
+
+-------------------------------------------------------------------
+Mon Oct 18 17:33:44 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to version 1.0.16 ...
+
+-------------------------------------------------------------------
+Wed Oct 13 15:50:02 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to version 1.0.15 ...
+
+-------------------------------------------------------------------
 Thu Oct  7 13:57:15 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating to version 1.0.14 ...

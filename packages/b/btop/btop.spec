@@ -17,10 +17,11 @@
 
 
 Name:           btop
-Version:        1.0.14
+Version:        1.0.18
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
+Group:          System/Monitoring
 URL:            https://github.com/aristocratos/btop/archive
 Source:         %{url}/v%{version}.tar.gz#/v%{version}.tar.gz
 BuildRequires:  coreutils
@@ -34,7 +35,7 @@ BuildRequires:  gcc-c++ >= 11
 BuildRequires:  sed
 
 %description
-Resource monitor that shows usage and stats for processor, memory, disks, network and processes. C++ version and continuation of bashtop and bpytop.
+Resource monitor that shows usage and stats for processor, memory, disks, network and processes.C++ version and continuation of bashtop and bpytop.
 
 %prep
 %setup -q
