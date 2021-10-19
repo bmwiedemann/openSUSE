@@ -1,19 +1,17 @@
-Index: chrony-4.1/examples/chronyd.service
-===================================================================
---- chrony-4.1.orig/examples/chronyd.service
-+++ chrony-4.1/examples/chronyd.service
-@@ -17,6 +17,15 @@ ExecStart=/usr/sbin/chronyd $OPTIONS
+--- examples/chronyd.service.orig
++++ examples/chronyd.service
+@@ -18,6 +18,15 @@ ExecStartPost=@CHRONY_HELPER@ update-dae
  PrivateTmp=yes
  ProtectHome=yes
  ProtectSystem=full
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-+PrivateDevices=true
 +ProtectHostname=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +DeviceAllow=char-rtc
++DeviceAllow=char-ptp
 +# end of automatic additions 
  
  [Install]
