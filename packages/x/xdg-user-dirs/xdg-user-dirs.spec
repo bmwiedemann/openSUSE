@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            https://freedesktop.org/wiki/Software/xdg-user-dirs
 Source0:        https://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.gz
 BuildRequires:  make
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 
 %description
@@ -38,7 +37,6 @@ handles localization (i.e. translation) of the filenames.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure
