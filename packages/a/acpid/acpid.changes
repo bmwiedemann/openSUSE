@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:54:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.33:
+  - Detect newer GNOME power manager.
+  - openrc-shutdown: Set shutdown time to 'now'.
+  - Attempt to open input layer devices whose permissions have changed.
+  - Comments added.
+
+-------------------------------------------------------------------
 Mon Aug 23 12:02:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - allow DeviceAllow=char-input to make character input work again
