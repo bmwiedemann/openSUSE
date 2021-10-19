@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 11:20:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't delete /etc/machine-id (see gh#OSInside/kiwi#1650)
+- Also don't delete the dbus machine-id, it's a symlink
+
+-------------------------------------------------------------------
 Wed Apr  7 13:19:01 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Install shim everywhere except on RPi (bsc#1182211)
