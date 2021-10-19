@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  8 14:52:41 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1190926: PrivateDevices is too strict, we might need to
+  access the rtc and ptp devices.
+- Add back support to build chrony on SLE12.
+- Drop dependency on asciidoctor. It is only needed for building
+  the HTML documentation which we don't package anyway.
+
+-------------------------------------------------------------------
 Mon Aug 30 13:50:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

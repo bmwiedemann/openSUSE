@@ -16,10 +16,20 @@
 #
 
 
+%if 0%{?suse_version} < 1500
+# As of 2021 we still need to be able to build this on SLE12
+%bcond_with pools
+%bcond_with sysusers
+%bcond_with pps
+%else
+%bcond_without pools
+%bcond_without sysusers
+%bcond_without pps
+%endif
+
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-#global clknetsim_ver 79ffe44
 %global clknetsim_ver f89702d
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
@@ -59,23 +69,31 @@ Patch5:         harden_chrony-wait.service.patch
 Patch6:         harden_chronyd.service.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
+BuildRequires:  findutils
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libedit-devel
 BuildRequires:  pkgconfig
+%if %{with pps}
 BuildRequires:  pps-tools-devel
+%endif
 # The timezone package is needed for the "make check" tests. It can be
 # removed if the call to make check is ever deleted.
 BuildRequires:  sysuser-tools
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  rubygem(asciidoctor)
 Recommends:     logrotate
 Requires(post): %fillup_prereq
+%if %{with sysusers}
 %sysusers_requires
+%else
+Requires(pre):  %{_sbindir}/useradd
+%endif
+%if %{with pools}
 Requires:       %name-pool
 Recommends:     %name-pool-nonempty
+%endif
 Provides:       ntp-daemon
 %ifarch s390 s390x ppc64le
 BuildRequires:  libseccomp-devel >= 2.2.0
@@ -105,6 +123,7 @@ performance and configuring various settings. It can do so while
 running on the same computer as the chronyd instance it is controlling
 or a different computer.
 
+%if %{with pools}
 %package pool-suse
 Summary:        Chrony preconfiguration for SUSE
 Group:          Productivity/Networking/Other
@@ -149,16 +168,17 @@ This package provides an empty /etc/chrony.d/pool.conf file for
 situations when having servers preconfigured in chrony is undesirable,
 e.g. because the servers will be set via DHCP.
 
+%endif
+
 %prep
 %setup -q -a 10
-sed -e 's-@CHRONY_HELPER@-%{chrony_helper}-g' -i %{PATCH1} %{SOURCE3} %{SOURCE5}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3
 %patch4
 %patch5 -p1
-%patch6 -p1
+%patch6
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
@@ -190,8 +210,16 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
   --with-hwclockfile=%{_sysconfdir}/adjtime \
   --with-sendmail=%{_sbindir}/sendmail      \
   --enable-ntp-signd
-make %{?_smp_mflags} all docs
+make %{?_smp_mflags} all
+%if %{with sysusers}
 %sysusers_generate_pre %{SOURCE14} chrony system-user-chrony.conf
+%else
+cat > chrony.pre <<EOF
+%{_sbindir}/groupadd -r chrony >/dev/null 2>&1 || :
+%{_sbindir}/useradd -g chrony -s /bin/false -r -c "Chrony Daemon" \
+	-d "%{_localstatedir}/lib/chrony" chrony >/dev/null 2>&1 || :
+EOF
+%endif
 
 %install
 %make_install
@@ -232,12 +260,16 @@ install -Dpm 755 %{SOURCE4} %{buildroot}%{chrony_helper}
 install -d %{buildroot}%{_localstatedir}/log/chrony
 touch %{buildroot}%{_localstatedir}/lib/chrony/{drift,rtc}
 
+%if %{with pools}
 # Install the NTP pool files
 install -Dpm 644 %{SOURCE12} %{SOURCE13} %{buildroot}/etc/chrony.d
-touch %{buildroot}/etc/chrony.d/pool.conf.empty
+echo '# Add ntp pools here' > %{buildroot}/etc/chrony.d/pool.conf.empty
+%endif
 
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE14} %{buildroot}%{_sysusersdir}/
+
+find %{buildroot} -type f | xargs sed -i 's-@CHRONY_HELPER@-%{chrony_helper}-g'
 
 %if %{with testsuite}
 %ifnarch %ix86
@@ -265,7 +297,12 @@ make %{?_smp_mflags} check
 %service_del_postun chronyd.service chrony-wait.service
 
 %files
+%defattr(-,root,root)
+%if 0%{?suse_version} >= 1500
 %license COPYING
+%else
+%doc COPYING
+%endif
 %doc FAQ NEWS README
 %doc examples
 %config(noreplace) %attr(0640,root,%{name}) %{_sysconfdir}/chrony.conf
@@ -295,13 +332,15 @@ make %{?_smp_mflags} check
 %dir %attr(750,chrony,chrony) %{_localstatedir}/log/chrony
 %ghost %attr(0750, %{name}, %{name}) %{_rundir}/%{name}
 
+%if %{with pools}
 %files pool-empty
-%config (noreplace) /etc/chrony.d/pool.conf.empty
+%attr(-,root,root)%config (noreplace) /etc/chrony.d/pool.conf.empty
 
 %files pool-suse
-%config (noreplace) /etc/chrony.d/pool.conf.suse
+%attr(-,root,root)%config (noreplace) /etc/chrony.d/pool.conf.suse
 
 %files pool-openSUSE
-%config (noreplace) /etc/chrony.d/pool.conf.opensuse
+%attr(-,root,root)%config (noreplace) /etc/chrony.d/pool.conf.opensuse
+%endif
 
 %changelog
