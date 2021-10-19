@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 14:55:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Dropped harden_coturn.service.patch because systemd units are
+  created from own source anyway and are proven to work
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
