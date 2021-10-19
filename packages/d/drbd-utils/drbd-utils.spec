@@ -18,31 +18,33 @@
 
 %if !0%{?usrmerged}
 %define sbindir /sbin
+%define libdir  /lib
 %else
 %define sbindir %{_sbindir}
+%define libdir  %{_prefix}/lib
 %endif
-
 %bcond_without drbdmon
 # Man pages are included in the released tarball.
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
 Name:           drbd-utils
-Version:        9.18.0
+Version:        9.19.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
+Group:          Productivity/Clustering/HA
 URL:            http://www.drbd.org/
-Source:         http://www.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
+Source:         https://pkg.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
+Source100:      %{name}.rpmlintrc
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         init-script-fixes.diff
-Patch2:         fix-libdir-in-Makefile.patch
+Patch2:         usrmerge_move_lib_to_prefix_lib.patch
 Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
 Patch6:         pie-fix.patch
-# In Upstream 9.18.0~9.19
-Patch7:         systemd-drbd-service-needs-network-online.patch
+Patch99:        rpmlint-build-error.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -93,7 +95,7 @@ raid 1. It is a building block for setting up clusters.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
+%patch99 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -114,9 +116,8 @@ PATH=/sbin:$PATH ./configure \
     --prefix=%{_prefix} \
 %endif
 %if 0%{?is_opensuse}
-    --localstatedir=/var \
+    --localstatedir=%{_localstatedir} \
 %endif
-    --libdir=%{_prefix}/lib \
     --mandir=%{_mandir} \
     --sysconfdir=%{_sysconfdir} \
     --datarootdir=%{_datadir} \
@@ -126,12 +127,11 @@ PATH=/sbin:$PATH ./configure \
     %{?with_prebuiltman: --with-prebuiltman} \
     --with-tmpfilesdir=%{_tmpfilesdir}
 
-make OPTFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build OPTFLAGS="%{optflags}"
 
 %install
 %make_install
 
-mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
 %ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
 %endif
@@ -148,6 +148,7 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 %service_add_pre ocf.ra@.service
 
 %post
+%tmpfiles_create %{_tmpfilesdir}/drbd.conf
 %service_add_post drbd.service
 %service_add_post drbd-lvchange@.service
 %service_add_post drbd-promote@.service
@@ -194,9 +195,9 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 
 %files -n drbd-utils
 %config(noreplace) %{_sysconfdir}/drbd.conf
-%config %{_sysconfdir}/bash_completion.d/drbdadm.sh
 %config(noreplace) %{_sysconfdir}/drbd.d/global_common.conf
 %config(noreplace) %{_sysconfdir}/multipath/conf.d/drbd.conf
+%{_datadir}/bash-completion/completions/drbdadm.sh
 %{_tmpfilesdir}/drbd.conf
 %{_mandir}/man5/drbd.*
 %{_mandir}/man8/drbd*
@@ -211,6 +212,7 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %dir %{_sysconfdir}/drbd.d
 %dir %{_sysconfdir}/multipath
 %dir %{_sysconfdir}/multipath/conf.d
+%{libdir}/drbd
 %{sbindir}/drbdadm
 %{sbindir}/drbdsetup
 %{sbindir}/drbdmeta
@@ -235,12 +237,9 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %{_unitdir}/drbd@.service
 %{_unitdir}/drbd@.target
 %{_unitdir}/ocf.ra@.service
-%{_localstatedir}/lib/drbd
-%{_prefix}/lib/drbd
-/lib/drbd
 %dir %{_prefix}/lib/ocf
 %dir %{_prefix}/lib/ocf/resource.d
 %dir %{_prefix}/lib/ocf/resource.d/linbit
-%ghost %{_rundir}/drbd
+%dir %{_localstatedir}/lib/drbd
 
 %changelog

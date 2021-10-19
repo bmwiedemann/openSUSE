@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 11 09:43:25 UTC 2021 - nick wang <nwang@suse.com>
+
+- Update to 9.19.0
+ * v9,events2: show changes of peer-client
+ * v9: rr-conflict strategy auto-discard for protocol A
+ * windrbd: various fixes including setting the systemd root
+ * containers: switch to UBI8
+ * v9,wait-*: fix segfault
+- bsc#1191058, active UsrMerge to install in /usr
+  Add patch usrmerge_move_lib_to_prefix_lib.patch
+- Remove patch fix-libdir-in-Makefile.patch
+  Remove patch systemd-drbd-service-needs-network-online.patch (included)
+- Add drbd-utils.rpmlintrc for Error missing-call-to-setgroups-before-setuid
+- Add rpmlint-build-error.patch to fix rpmbuild build errors
+
+-------------------------------------------------------------------
 Fri Sep 17 08:05:56 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1190591, fail to start due to lack of /usr/var/run/drbd
