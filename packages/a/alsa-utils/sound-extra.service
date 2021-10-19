@@ -9,7 +9,6 @@ ConditionPathExists=/proc/asound
 ProtectSystem=full
 ProtectHome=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
