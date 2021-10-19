@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           pam_u2f
 Version:        1.2.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 18 20:00:36 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
+
+- Define macro _pam_moduledir if not set to fix builds for Leap and SLE
+
+-------------------------------------------------------------------
 Wed Oct 13 08:05:40 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Update to version 1.2.0 (released 2021-09-22)
