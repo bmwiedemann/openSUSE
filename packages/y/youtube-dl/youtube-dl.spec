@@ -17,86 +17,98 @@
 
 
 Name:           youtube-dl
-Version:        2021.06.06
+Version:        2021.10.10
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
-URL:            https://yt-dl.org/
-#Git-Clone:     https://github.com/ytdl-org/youtube-dl
-Source:         https://yt-dl.org/downloads/%version/%name-%version.tar.gz
-Source2:        https://yt-dl.org/downloads/%version/%name-%version.tar.gz.sig
-Source3:        %name.keyring
+URL:            https://github.com/yt-dlp/yt-dlp
+Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
 BuildRequires:  make >= 4
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
 BuildRequires:  zip
-Requires:       ffmpeg
-Requires:       python3
-Requires:       python3-xml
 BuildArch:      noarch
 
 %description
-youtube-dl is a small command-line program to retrieve videos from
+youtube-dl is a command-line program to retrieve videos from
 YouTube.com and other video sites for later watching.
 
-%package        bash-completion
-Summary:        Bash completion for %name
+youtube-dl is inactive since 2021-07-01; yt-dlp replaces it.
+
+%package -n yt-dlp
+Summary:        A tool for downloading from video sites for offline watching
+Group:          Productivity/Networking/Web/Utilities
+Obsoletes:      youtube-dl <= 2021.06.06
+Provides:       youtube-dl = %version-%release
+Requires:       ffmpeg
+Requires:       python3
+Requires:       python3-xml
+
+%description -n yt-dlp
+yt-dlp is a command-line program to retrieve videos from
+YouTube.com and other video sites for later watching.
+
+%package -n yt-dlp-bash-completion
+Summary:        Bash completion for yt-dlp
 Group:          System/Shells
 Requires:       bash-completion
-Supplements:    packageand(%name:bash)
-BuildArch:      noarch
+Supplements:    packageand(yt-dlp:bash)
+Obsoletes:      youtube-dl-bash-completion <= 2021.06.06
 
-%description    bash-completion
-Bash command line completion support for %name.
+%description -n yt-dlp-bash-completion
+Bash command line completion support for yt-dlp.
 
-%package        fish-completion
-Summary:        Fish completion for %name
+%package -n yt-dlp-fish-completion
+Summary:        Fish completion for yt-dlp
 Group:          System/Shells
 Requires:       fish
-Supplements:    packageand(%name:fish)
-BuildArch:      noarch
+Supplements:    packageand(yt-dlp:fish)
+Obsoletes:      youtube-dl-fish-completion <= 2021.06.06
 
-%description    fish-completion
-Fish command line completion support for %name.
+%description -n yt-dlp-fish-completion
+Fish command line completion support for yt-dlp.
 
-%package        zsh-completion
-Summary:        Zsh Completion for %name
+%package -n yt-dlp-zsh-completion
+Summary:        Zsh Completion for yt-dlp
 Group:          System/Shells
 Requires:       zsh
-Supplements:    packageand(%name:zsh)
-BuildArch:      noarch
+Supplements:    packageand(yt-dlp:zsh)
 
-%description zsh-completion
-ZSH command line completion support for %name.
+%description -n yt-dlp-zsh-completion
+ZSH command line completion support for yt-dlp.
 
 %prep
-%autosetup -p1 -n %name
+%autosetup -n yt-dlp
 
 %build
-rm -f youtube-dl
-PYTHON="%_bindir/python3" %make_build
+rm -f youtube-dl yt-dlp
+PYTHON="%_bindir/python3" %make_build yt-dlp
 
 %install
-install -D -m 755 youtube-dl %buildroot/%_bindir/%name
-install -D -m 644 youtube-dl.bash-completion %buildroot/%_datadir/bash-completion/completions/%name
-install -D -m 644 youtube-dl.zsh %buildroot/%_datadir/zsh/site-functions/_%name
-install -D -m 644 youtube-dl.fish %buildroot/%_datadir/fish/completions/%name.fish
-install -D -m 644 youtube-dl.1 %buildroot/%_mandir/man1/%name.1
+b="%buildroot"
+install -Dvm0755 yt-dlp "$b/%_bindir/yt-dlp"
+ln -sv yt-dlp "$b/%_bindir/youtube-dl"
+install -Dvm0644 completions/bash/yt-dlp "$b/%_datadir/bash-completion/completions/yt-dlp"
+install -Dvm0644 completions/zsh/_yt-dlp "$b/%_datadir/zsh/site-functions/_yt-dlp"
+install -Dvm0644 completions/fish/yt-dlp.fish "$b/%_datadir/fish/completions/yt-dlp.fish"
+install -Dvm0644 yt-dlp.1 "$b/%_mandir/man1/yt-dlp.1"
+echo ".SO yt-dlp.1" >"$b/%_mandir/man1/youtube-dl.1"
 
-%files
+%files -n yt-dlp
 %license LICENSE
-%doc README.txt
-%_bindir/%name
-%_mandir/man1/%name.1%{?ext_man}
+%doc README.md
+%_bindir/yt-dlp
+%_bindir/youtube-dl
+%_mandir/man1/*.1*
 
-%files bash-completion
+%files -n yt-dlp-bash-completion
 %_datadir/bash-completion/
 
-%files fish-completion
+%files -n yt-dlp-fish-completion
 %_datadir/fish/
 
-%files zsh-completion
+%files -n yt-dlp-zsh-completion
 %_datadir/zsh/
 
 %changelog

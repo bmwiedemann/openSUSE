@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 13:49:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to yt-dlp 2021.10.10 codebase
+  * Address youtube download speed being capped at 80KB/s
+
+-------------------------------------------------------------------
 Sun Jun 27 15:13:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2021.06.06
