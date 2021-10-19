@@ -162,7 +162,7 @@ fi
 %if 0%{?have_sysuser}
 %define user_home %_localstatedir%_rundir/%{?conmandir}
 %define user_descr Connection Manager service
-echo -n "u %conman_u - \"%user_descr\" %user_home\nm %conman_u dialout\n" > system-user-%{name}.conf
+echo -en "u %conman_u - \"%user_descr\" %user_home\nm %conman_u dialout\n" > system-user-%{name}.conf
 %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
 install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 16:11:42 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Typo fix to sysuser file. 
+
+-------------------------------------------------------------------
 Thu Sep 30 08:41:44 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Utilize sysuser infrastructure to set user/group conman.
