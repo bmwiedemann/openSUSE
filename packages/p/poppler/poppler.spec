@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
-%define poppler_sover 112
+%define poppler_sover 114
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.08.0
+Version:        21.10.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -48,13 +48,14 @@ BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
-BuildRequires:  pkgconfig(cairo-ft) >= 1.10.0
+BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
@@ -66,6 +67,9 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(poppler-data)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?sle_version} >= 150300
+BuildRequires:  extra-cmake-modules
+%endif
 # Don't build poppler-qt6 on Leap <= 15.3
 %if "%{flavor}" == "qt6" && (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300)
 ExclusiveArch:  do_not_build
