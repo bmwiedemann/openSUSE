@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Oct 18 15:23:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to remmina version 1.4.21
+  * Nullify host if qucikconnect isn't a valid address
+  * rdp_plugin.c: Fix dereferencing of NULL variable when profile name is empty
+  * Resolve label spacing in preferences window
+  * GNOME 40 runtime and other updates
+  * Add support for ESX web console login
+  * Added RDP general option to remap scancodes
+  * Back compatibility with WebKit < 2.32.0
+  * Make screenshot file names iso8601 compliant
+  * Typo in bug-report template
+  * Typo in merge-request template
+  * Implementing restricted-mode and password hash
+  * Unitialized var by @qarmin (Rafał Mikrut ). Closes #2594
+  * Add integer-only input field for plugin settings in Remmina Editor
+  * Adding VNCI Listen port field tooltip
+  * Fix the translation problem of "tooltip" in ssh window
+  * Rework x2go_plugin.c to comply with remmina coding style.
+  * Add validation system for Remmina Editor
+  * Small changes to README, AUTHORS and error message adjusting in remmina_file_editor.c
+  * remmina_file_editor.c: Readd by mistake removed '!'
+  * Mitigation for #1951 and extra RDP clibpoard debug messages
+  * Rollback Let's Encrypt SSL workaround
+  * Add RDP clipboard support for Microsoft HTML Clipboard Format
+  * Building FreeRDP with icu support
+  * Resource renaming to comply with the Freedesktop rules
+
+- Package all icons in the main package
+
+- The new x2go packages are not yet packaged, as x2go is not available in the
+  openSUSE distributions
+
+-------------------------------------------------------------------
 Fri Jul  9 05:32:17 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - the following plug-ins are no longer generated:

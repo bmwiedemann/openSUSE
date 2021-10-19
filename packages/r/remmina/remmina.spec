@@ -22,7 +22,7 @@
 %bcond_with	remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.20
+Version:        1.4.21
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
@@ -205,8 +205,7 @@ export CFLAGS="$CFLAGS -fPIC"
 %suse_update_desktop_file org.remmina.Remmina Network RemoteAccess GTK
 
 %fdupes %{buildroot}%{_datadir}/remmina
-%fdupes %{buildroot}%{_datadir}/icons/hicolor/*/actions
-%fdupes %{buildroot}%{_datadir}/icons/hicolor/[0-9]*
+%fdupes %{buildroot}%{_datadir}/icons
 
 %find_lang %{name}
 
@@ -264,16 +263,11 @@ export CFLAGS="$CFLAGS -fPIC"
 %doc AUTHORS CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-file-wrapper
-%{_datadir}/applications/%{name}-file.desktop
+%{_datadir}/applications/org.remmina.Remmina-file.desktop
 %{_datadir}/applications/org.remmina.Remmina.desktop
-%{_datadir}/icons/hicolor/*/actions/*
-%{_datadir}/icons/hicolor/*/apps/*
 %dir %{_datadir}/icons/hicolor/apps
-%{_datadir}/icons/hicolor/apps/org.remmina.Remmina-symbolic.svg
-%{_datadir}/icons/hicolor/apps/remmina-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-sftp-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/[1-9]*
+%{_datadir}/icons/hicolor/apps/*
+%{_datadir}/icons/hicolor/**/**/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.remmina.Remmina.appdata.xml
 %{_datadir}/mime/packages/%{name}-mime.xml
@@ -302,12 +296,9 @@ export CFLAGS="$CFLAGS -fPIC"
 
 %files plugin-exec
 %{_libdir}/remmina/plugins/remmina-plugin-exec.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-tool-symbolic.svg
 
 %files plugin-spice
 %{_libdir}/remmina/plugins/remmina-plugin-spice.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-spice-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-spice-symbolic.svg
 
 %if %{with remmina_kwallet}
 %files plugin-kwallet
@@ -316,21 +307,15 @@ export CFLAGS="$CFLAGS -fPIC"
 
 %files plugin-rdp
 %{_libdir}/remmina/plugins/remmina-plugin-rdp.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-rdp-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-rdp-symbolic.svg
 
 %files plugin-vnc
 %{_libdir}/remmina/plugins/remmina-plugin-vnc.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-vnc-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-vnc-symbolic.svg
 
 %files plugin-gvnc
 %{_libdir}/remmina/plugins/remmina-plugin-gvnc.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-gvnc-symbolic.svg
 
 %files plugin-www
 %{_libdir}/remmina/plugins/remmina-plugin-www.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-www-symbolic.svg
 
 %files plugin-secret
 %{_libdir}/remmina/plugins/remmina-plugin-secret.so
