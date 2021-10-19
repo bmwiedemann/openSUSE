@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
 Bundle-SymbolicName: org.eclipse.jdt.core.compiler.batch
-Archiver-Version: Plexus Archiver
-Built-By: genie.releng
-Bundle-ManifestVersion: 2
-Bundle-Vendor: Eclipse.org
-Main-Class: org.eclipse.jdt.internal.compiler.batch.Main
 Export-Package: org.eclipse.jdt.core,org.eclipse.jdt.core.compiler,org
  .eclipse.jdt.internal.antadapter;x-internal:=true,org.eclipse.jdt.int
  ernal.compiler;x-internal:=true,org.eclipse.jdt.internal.compiler.apt
@@ -23,8 +18,10 @@ Export-Package: org.eclipse.jdt.core,org.eclipse.jdt.core.compiler,org
  -internal:=true,org.eclipse.jdt.internal.compiler.tool;x-internal:=tr
  ue
 Bundle-Name: Eclipse Compiler for Java(TM)
-Bundle-Version: 3.13.0.v20170516-1929
+Bundle-Version: 3.24.0.v20201123-0742
 Bundle-ClassPath: .
-Created-By: Apache Maven
-Build-Jdk: 1.8.0_121
-
+Bundle-ManifestVersion: 2
+Bundle-Vendor: Eclipse.org
+Build-Jdk-Spec: 11
+Created-By: Maven Archiver 3.5.0
+Main-Class: org.eclipse.jdt.internal.compiler.batch.Main

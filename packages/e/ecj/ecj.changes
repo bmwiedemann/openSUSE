@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 18 21:28:05 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Upgrade to eclipse 4.18 ecj
+- Switch java14api to java15api to be compatible to JDK 15
+
+-------------------------------------------------------------------
+Mon Oct 18 12:05:38 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Upgrade to eclipse 4.17 ecj
+- Removed patches:
+  * ecj-encoding.patch
+  * jdk10u-jdk8compat.patch
+- Switch to JDK 11 for build a JDK 8 is not supported anymore by ecj
+- Switch java10api to java14api to be compatible to JDK 14
+
+-------------------------------------------------------------------
 Wed Sep 25 12:22:02 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to eclipse 4.12 ecj
