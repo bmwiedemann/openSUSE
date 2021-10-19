@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:03:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix compatibikity with with Psycopg 2.9
+  * pytest-plugins-pr186-fix-psycopg29.patch
+  * gh#man-group/pytest-plugins#186
+
+-------------------------------------------------------------------
 Sat May  1 10:31:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip the failing test test_init (gh#man-group/pytest-plugins#177)

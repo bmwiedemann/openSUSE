@@ -23,8 +23,10 @@ Release:        0
 Summary:        Extensible server fixures for py.test
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/manahl/pytest-plugins
+URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest-plugins-pr186-fix-psycopg29.patch -- gh#man-group/pytest-plugins#186
+Patch0:         https://github.com/man-group/pytest-plugins/pull/186.patch#/pytest-plugins-pr186-fix-psycopg29.patch
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -89,7 +91,7 @@ BuildRequires:  xorg-x11-server
 Extensible server fixures for py.test.
 
 %prep
-%setup -q -n pytest-server-fixtures-%{version}
+%autosetup -p2 -n pytest-server-fixtures-%{version}
 
 # Tests requiring a server
 rm tests/integration/test_mongo_server.py
