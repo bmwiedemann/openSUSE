@@ -220,7 +220,7 @@ pushd ../p2
   --enable-dnstap \
 %endif
   --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
-  --with-pidfile=%{piddir}%{name}/%{name}.pid \
+  --with-pidfile=%{piddir}/%{name}/%{name}.pid \
   --with-pythonmodule --with-pyunbound PYTHON=%{__python2}\
   --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
   --disable-explicit-port-randomisation
@@ -247,7 +247,7 @@ popd
   --enable-dnstap \
 %endif
   --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
-  --with-pidfile=%{piddir}%{name}/%{name}.pid \
+  --with-pidfile=%{piddir}/%{name}/%{name}.pid \
 %if %{with python3}
   --with-pythonmodule --with-pyunbound PYTHON=%{__python3}\
 %endif

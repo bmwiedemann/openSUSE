@@ -84,7 +84,7 @@ export CXXFLAGS="%{optflags}"
   --enable-relro-now \
   --enable-dnscrypt \
   --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
-  --with-pidfile=%{piddir}%{name}/%{name}.pid \
+  --with-pidfile=%{piddir}/%{name}/%{name}.pid \
   --without-pythonmodule --without-pyunbound \
   --with-libunbound-only \
   --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
