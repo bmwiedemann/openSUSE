@@ -1,36 +1,27 @@
-From c250eb3ebbb9afb650edc080708c5e4c3cccbb78 Mon Sep 17 00:00:00 2001
-From: Michael Simacek <msimacek@redhat.com>
-Date: Tue, 4 Oct 2016 18:02:26 +0200
-Subject: [PATCH 1/2] Disable removed commands
-
----
- biz.aQute.bnd/src/aQute/bnd/main/bnd.java | 45 -------------------------------
- 1 file changed, 45 deletions(-)
-
-diff --git a/biz.aQute.bnd/src/aQute/bnd/main/bnd.java b/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
-index 1cc3216..c669e4a 100644
---- a/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
-+++ b/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
-@@ -105,7 +105,6 @@ import aQute.bnd.osgi.Processor;
- import aQute.bnd.osgi.Resource;
+diff -Napur bnd-5.1.1.REL.orig/biz.aQute.bnd/src/aQute/bnd/main/bnd.java bnd-5.1.1.REL/biz.aQute.bnd/src/aQute/bnd/main/bnd.java
+--- bnd-5.1.1.REL.orig/biz.aQute.bnd/src/aQute/bnd/main/bnd.java	2020-06-16 23:03:04.000000000 +0200
++++ bnd-5.1.1.REL/biz.aQute.bnd/src/aQute/bnd/main/bnd.java	2021-02-17 12:56:39.434022335 +0100
+@@ -104,7 +104,6 @@ import aQute.bnd.osgi.Resource;
  import aQute.bnd.osgi.Verifier;
  import aQute.bnd.osgi.eclipse.EclipseClasspath;
+ import aQute.bnd.print.JarPrinter;
 -import aQute.bnd.repository.maven.provider.NexusCommand;
  import aQute.bnd.service.Actionable;
  import aQute.bnd.service.RepositoryPlugin;
  import aQute.bnd.service.action.Action;
-@@ -4064,50 +4063,6 @@ public class bnd extends Processor {
+@@ -3905,54 +3904,6 @@ public class bnd extends Processor {
  	}
  
  	/**
 -	 * Resolve command
--	 * 
+-	 *
 -	 * @throws Exception
 -	 */
 -
 -	public void _resolve(ResolveCommand.ResolveOptions options) throws Exception {
 -		ResolveCommand rc = new ResolveCommand(this);
--		String help = options._command().subCmd(options, rc);
+-		String help = options._command()
+-			.subCmd(options, rc);
 -		if (help != null)
 -			out.println(help);
 -		getInfo(rc);
@@ -39,13 +30,14 @@ index 1cc3216..c669e4a 100644
 -
 -	/**
 -	 * Remote command
--	 * 
+-	 *
 -	 * @throws Exception
 -	 */
 -
 -	public void _remote(RemoteCommand.RemoteOptions options) throws Exception {
 -		RemoteCommand rc = new RemoteCommand(this, options);
--		String help = options._command().subCmd(options, rc);
+-		String help = options._command()
+-			.subCmd(options, rc);
 -		if (help != null)
 -			out.println(help);
 -		getInfo(rc);
@@ -54,22 +46,46 @@ index 1cc3216..c669e4a 100644
 -
 -	/**
 -	 * Nexus commands
--	 * 
+-	 *
 -	 * @throws Exception
 -	 */
 -
 -	public void _nexus(NexusCommand.NexusOptions options) throws Exception {
 -		NexusCommand rc = new NexusCommand(this, options);
--		String help = options._command().subCmd(options, rc);
+-		String help = options._command()
+-			.subCmd(options, rc);
 -		if (help != null)
 -			out.println(help);
 -		getInfo(rc);
 -		rc.close();
 -	}
+-
 -	/**
  	 * Export a bndrun file
  	 */
+ 	interface ExportOptions extends ProjectWorkspaceOptions {
+@@ -4462,24 +4413,6 @@ public class bnd extends Processor {
  
--- 
-2.13.5
-
+ 	}
+ 
+-	@Description("Generate and export reports of a workspace, a project or of a jar.")
+-	public void _exportreport(ExportReportCommand.ReporterOptions options) throws Exception {
+-		ExportReportCommand mc = new ExportReportCommand(this);
+-		mc.run(options);
+-		getInfo(mc);
+-	}
+-
+-	@Description("Maintain Maven Bnd Repository GAV files")
+-	public void _mbr(MbrCommand.MrOptions options) throws Exception {
+-		MbrCommand c = new MbrCommand(this, options);
+-		CommandLine cl = new CommandLine(this);
+-		String s = cl.subCmd(options, c);
+-		if (s != null) {
+-			out.println(s);
+-		}
+-		getInfo(c);
+-	}
+-
+ 	@Description("Generate source code")
+ 	interface GenerateOptions extends ProjectWorkspaceOptions {
+ 

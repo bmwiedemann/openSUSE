@@ -1,7 +1,7 @@
 #
 # spec file for package bnd-maven-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bnd-maven-plugin
-Version:        3.5.0
+Version:        5.1.1
 Release:        0
 Summary:        BND Maven plugin
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -25,16 +25,23 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bnd.bndtools.org/
 Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
+Patch0:         0001-Disable-removed-commands.patch
+Patch1:         0002-Fix-ant-compatibility.patch
+Patch2:         0003-Port-to-OSGI-7.0.0.patch
+Patch3:         aqute-bnd-java8compat.patch
+Patch4:         0004-maven-plugin-dependencies.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.shared:maven-mapping)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.eclipse.aether:aether-api)
+BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 BuildArch:      noarch
@@ -52,18 +59,29 @@ API documentation for %{name}.
 %prep
 %setup -q -n bnd-%{version}.REL
 
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+
 rm gradlew*
 rm -f $(find | grep -E '\.(.ar|exe|tar\.(gz|bz2|xz)|zip)$' | xargs)
 
 pushd maven
-rm bnd-shared-maven-lib/src/main/java/aQute/bnd/maven/lib/resolve/DependencyResolver.java
+%pom_remove_dep -r :biz.aQute.bnd.maven
 %pom_remove_dep -r :biz.aQute.resolve
 %pom_remove_dep -r :biz.aQute.repository
+%pom_remove_dep -r :biz.aQute.bnd.embedded-repo
+
 # Unavailable reactor dependency - org.osgi.impl.bundle.repoindex.cli
 %pom_disable_module bnd-indexer-maven-plugin
 # Requires unbuilt parts of bnd
+%pom_disable_module bnd-baseline-maven-plugin
 %pom_disable_module bnd-export-maven-plugin
+%pom_disable_module bnd-reporter-maven-plugin
 %pom_disable_module bnd-resolver-maven-plugin
+%pom_disable_module bnd-run-maven-plugin
 %pom_disable_module bnd-testing-maven-plugin
 # Integration tests require Internet access
 %pom_remove_plugin -r :maven-invoker-plugin
@@ -76,7 +94,7 @@ popd
 
 %build
 pushd maven
-%{mvn_build} -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=7
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
 popd
 
 %install

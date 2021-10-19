@@ -1,7 +1,7 @@
 #
 # spec file for package aqute-bnd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           aqute-bnd
-Version:        3.5.0
+Version:        5.1.1
 Release:        0
 Summary:        BND Tool
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -30,13 +30,16 @@ Source3:        https://repo1.maven.org/maven2/biz/aQute/bnd/aQute.libg/%{versio
 Source4:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd/%{version}/biz.aQute.bnd-%{version}.pom
 Source5:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/%{version}/biz.aQute.bndlib-%{version}.pom
 Source6:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.annotation/%{version}/biz.aQute.bnd.annotation-%{version}.pom
+Source7:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.exporters/%{version}/biz.aQute.bnd.exporters-%{version}.pom
 Patch0:         0001-Disable-removed-commands.patch
 Patch1:         0002-Fix-ant-compatibility.patch
-Patch2:         0001-Port-to-OSGI-7.0.0.patch
-Patch3:         aqute-bnd-3.5.0-java8compat.patch
+Patch2:         0003-Port-to-OSGI-7.0.0.patch
+Patch3:         aqute-bnd-java8compat.patch
+Patch4:         0004-maven-plugin-dependencies.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
+BuildRequires:  jline
 BuildRequires:  osgi-annotation
 BuildRequires:  osgi-compendium
 BuildRequires:  osgi-core
@@ -63,6 +66,8 @@ The tool is capable of acting as:
 %package -n aqute-bndlib
 Summary:        BND library
 Group:          Development/Libraries/Java
+Requires:       mvn(biz.aQute.bnd:aQute.libg)
+Requires:       mvn(biz.aQute.bnd:biz.aQute.bnd.annotation)
 Requires:       mvn(org.osgi:osgi.annotation)
 Requires:       mvn(org.osgi:osgi.cmpn)
 Requires:       mvn(org.osgi:osgi.core)
@@ -87,21 +92,25 @@ rm -f $(find | grep -E '\.(.ar|exe|tar\.(gz|bz2|xz)|zip)$' | xargs)
 
 mkdir -p lib
 build-jar-repository -s lib \
-  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium ant
+  slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium ant jline
 
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
-# the commands pull in more dependencies than we want (felix-resolver, jetty)
-rm biz.aQute.bnd/src/aQute/bnd/main/{RemoteCommand,ResolveCommand}.java
+# the commands pull in more dependencies than we want (felix-resolver, jetty, jtwig, javapackager)
+rm biz.aQute.bnd/src/aQute/bnd/main/{RemoteCommand,ResolveCommand,ExportReportCommand,MbrCommand,ReporterLogger}.java
 
 sed -i 's|${Bundle-Version}|%{version}|' biz.aQute.bndlib/src/aQute/bnd/osgi/bnd.info
 
 # libg
 pushd aQute.libg
 cp -p %{SOURCE3} pom.xml
+%pom_remove_dep :::provided::
+%pom_remove_dep -r org.osgi:org.osgi.util.function
+%pom_remove_dep -r org.osgi:org.osgi.util.promise
 %pom_add_dep org.osgi:osgi.cmpn
 %pom_add_dep org.slf4j:slf4j-api
 popd
@@ -109,22 +118,33 @@ popd
 # bndlib.annotations
 pushd biz.aQute.bnd.annotation
 cp -p %{SOURCE6} pom.xml
+%pom_remove_dep -r org.osgi:org.osgi.namespace.extender
+%pom_remove_dep -r org.osgi:org.osgi.namespace.service
+%pom_remove_dep -r org.osgi:org.osgi.resource
+%pom_remove_dep -r org.osgi:org.osgi.service.serviceloader
 popd
 
 # bndlib
 pushd biz.aQute.bndlib
 cp -p %{SOURCE5} pom.xml
-%pom_add_dep org.osgi:osgi.annotation
-%pom_add_dep org.osgi:osgi.core
+%pom_remove_dep :::provided::
 %pom_add_dep org.osgi:osgi.cmpn
-%pom_add_dep org.slf4j:slf4j-api
 %pom_add_dep biz.aQute.bnd:aQute.libg:%{version}
+%pom_add_dep biz.aQute.bnd:biz.aQute.bnd.annotation:%{version}
+popd
+
+# bnd.exporters
+pushd biz.aQute.bnd.exporters
+cp -p %{SOURCE7} pom.xml
+%pom_remove_dep :::provided::
+%pom_add_dep biz.aQute.bnd:biz.aQute.bndlib:%{version}
 %pom_add_dep biz.aQute.bnd:biz.aQute.bnd.annotation:%{version}
 popd
 
 # bnd
 pushd biz.aQute.bnd
 cp -p %{SOURCE4} pom.xml
+%pom_remove_dep :::provided::
 %pom_add_dep biz.aQute.bnd:biz.aQute.bndlib:%{version}
 %pom_add_dep biz.aQute.bnd:aQute.libg:%{version}
 %pom_add_dep biz.aQute.bnd:biz.aQute.bnd.annotation:%{version}
@@ -133,13 +153,12 @@ cp -p %{SOURCE4} pom.xml
 %pom_add_dep org.osgi:osgi.core
 %pom_add_dep org.osgi:osgi.cmpn
 %pom_add_dep org.slf4j:slf4j-api
-
 %pom_add_dep org.slf4j:slf4j-simple::runtime
 popd
 
 # maven-plugins
 pushd maven
-rm bnd-shared-maven-lib/src/main/java/aQute/bnd/maven/lib/resolve/DependencyResolver.java
+#rm bnd-shared-maven-lib/src/main/java/aQute/bnd/maven/lib/resolve/DependencyResolver.java
 %pom_remove_dep -r :biz.aQute.resolve
 %pom_remove_dep -r :biz.aQute.repository
 # Unavailable reactor dependency - org.osgi.impl.bundle.repoindex.cli
@@ -151,7 +170,6 @@ rm bnd-shared-maven-lib/src/main/java/aQute/bnd/maven/lib/resolve/DependencyReso
 # Integration tests require Internet access
 %pom_remove_plugin -r :maven-invoker-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
-
 %pom_remove_plugin -r :flatten-maven-plugin
 popd
 
@@ -162,12 +180,15 @@ popd
 %install
 # jars
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 biz.aQute.bnd.exporters/target/biz.aQute.bnd.exporters-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bnd.exporters.jar
 install -pm 0644 biz.aQute.bnd.annotation/target/biz.aQute.bnd.annotation-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bnd.annotation.jar
 install -pm 0644 aQute.libg/target/aQute.libg-%{version}.jar %{buildroot}%{_javadir}/%{name}/aQute.libg.jar
 install -pm 0644 biz.aQute.bndlib/target/biz.aQute.bndlib-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bndlib.jar
 install -pm 0644 biz.aQute.bnd/target/biz.aQute.bnd-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bnd.jar
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -pm 0644 biz.aQute.bnd.exporters/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.aQute.bnd.exporters.pom
+%add_maven_depmap %{name}/biz.aQute.bnd.exporters.pom %{name}/biz.aQute.bnd.exporters.jar -f bndlib
 install -pm 0644 biz.aQute.bnd.annotation/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.aQute.bnd.annotation.pom
 %add_maven_depmap %{name}/biz.aQute.bnd.annotation.pom %{name}/biz.aQute.bnd.annotation.jar -f bndlib
 install -pm 0644 aQute.libg/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/aQute.libg.pom
@@ -178,6 +199,7 @@ install -pm 0644 biz.aQute.bnd/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.a
 %add_maven_depmap %{name}/biz.aQute.bnd.pom %{name}/biz.aQute.bnd.jar -a biz.aQute.bnd:bnd,biz.aQute:bnd
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+mv biz.aQute.bnd.exporters/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bnd.exporters
 mv biz.aQute.bnd.annotation/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bnd.annotation
 mv aQute.libg/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/aQute.libg
 mv biz.aQute.bndlib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bndlib

@@ -8,18 +8,18 @@ Subject: [PATCH 2/2] Fix ant compatibility
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/biz.aQute.bnd/src/aQute/bnd/ant/BndTask.java b/biz.aQute.bnd/src/aQute/bnd/ant/BndTask.java
-index aac8b8a..26dfe59 100644
+index dd438a5..6b714be 100644
 --- a/biz.aQute.bnd/src/aQute/bnd/ant/BndTask.java
 +++ b/biz.aQute.bnd/src/aQute/bnd/ant/BndTask.java
 @@ -220,7 +220,7 @@ public class BndTask extends BaseTask {
  				if (inherit) {
  					Properties projectProperties = new UTF8Properties();
  					@SuppressWarnings("unchecked")
--					Hashtable<Object,Object> antProps = getProject().getProperties();
+-					Hashtable<Object, Object> antProps = getProject().getProperties();
 +					Hashtable<String,Object> antProps = getProject().getProperties();
  					projectProperties.putAll(antProps);
  					projectProperties.putAll(builder.getProperties());
  					builder.setProperties(projectProperties);
 -- 
-2.13.5
+2.20.1
 
