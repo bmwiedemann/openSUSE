@@ -1420,6 +1420,10 @@ unsorted:
   - brltty-driver-espeak 
   - brltty-driver-libbraille 
   - brltty-utils 
+  - broadvoice16 
+  - broadvoice16-devel 
+  - broadvoice32 
+  - broadvoice32-devel 
   - brotli 
   - browserpass-native 
   - brp-check-suse 
@@ -1601,6 +1605,7 @@ unsorted:
   - busybox-unzip 
   - busybox-vi 
   - busybox-vlan 
+  - busybox-warewulf3: [x86_64] 
   - busybox-wget 
   - busybox-which 
   - busybox-whois 
@@ -1757,8 +1762,6 @@ unsorted:
   - cargo-audit-advisory-db 
   - cargo-c 
   - cargo-packaging 
-  - cargo1.53 
-  - cargo1.53-doc: [x86_64] 
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
   - cargo1.55 
@@ -7619,7 +7622,6 @@ unsorted:
   - jupyter-ipympl-jupyterlab 
   - jupyter-ipyparallel 
   - jupyter-ipyscales 
-  - jupyter-ipysheet 
   - jupyter-ipyvolume 
   - jupyter-ipywebrtc 
   - jupyter-jupyter-client 
@@ -20931,7 +20933,6 @@ unsorted:
   - python-happybase-doc 
   - python-heatclient-doc 
   - python-idle 
-  - python-ipywidgets-doc 
   - python-ironicclient-doc 
   - python-jaraco.stream-doc 
   - python-keystoneauth1-doc 
@@ -22000,6 +22001,7 @@ unsorted:
   - python36-backcall 
   - python36-backoff 
   - python36-backports.entry_points_selectable 
+  - python36-backports.zoneinfo 
   - python36-baron 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -22711,7 +22713,6 @@ unsorted:
   - python36-ipy 
   - python36-ipyevents 
   - python36-ipykernel5 
-  - python36-ipyleaflet 
   - python36-ipyparallel 
   - python36-ipython715 
   - python36-ipython715-iptest 
@@ -22786,11 +22787,13 @@ unsorted:
   - python36-jupyter-client 
   - python36-jupyter-core 
   - python36-jupyter-jupyterlab-server 
+  - python36-jupyter-jupyterlab-server-test 
   - python36-jupyter-nbutils 
   - python36-jupyter-packaging 
   - python36-jupyter-protocol 
   - python36-jupyter-server 
   - python36-jupyter-server-mathjax 
+  - python36-jupyter-server-test 
   - python36-jupyter-sphinx 
   - python36-jupyter-telemetry 
   - python36-jupyter_console 
@@ -22801,6 +22804,7 @@ unsorted:
   - python36-jupyterlab 
   - python36-jupyterlab-pygments 
   - python36-jupyterlab-templates 
+  - python36-jupyterlab-widgets 
   - python36-jupytext 
   - python36-jwcrypto 
   - python36-k5test 
@@ -24114,6 +24118,7 @@ unsorted:
   - python36-wheezy.template 
   - python36-whichcraft 
   - python36-whitenoise 
+  - python36-widgetsnbextension 
   - python36-wikipedia 
   - python36-wirerope 
   - python36-wiring 
@@ -24799,6 +24804,7 @@ unsorted:
   - python38-backcall 
   - python38-backoff 
   - python38-backports.entry_points_selectable 
+  - python38-backports.zoneinfo 
   - python38-baron 
   - python38-base-32bit: [x86_64] 
   - python38-base58 
@@ -25627,11 +25633,13 @@ unsorted:
   - python38-jupyter-client 
   - python38-jupyter-core 
   - python38-jupyter-jupyterlab-server 
+  - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
   - python38-jupyter-protocol 
   - python38-jupyter-server 
   - python38-jupyter-server-mathjax 
+  - python38-jupyter-server-test 
   - python38-jupyter-sphinx 
   - python38-jupyter-telemetry 
   - python38-jupyter_console 
@@ -25642,6 +25650,7 @@ unsorted:
   - python38-jupyterlab 
   - python38-jupyterlab-pygments 
   - python38-jupyterlab-templates 
+  - python38-jupyterlab-widgets 
   - python38-jupytext 
   - python38-jwcrypto 
   - python38-k5test 
@@ -27049,6 +27058,7 @@ unsorted:
   - python38-whichcraft 
   - python38-whitenoise 
   - python38-whois_similarity_distance 
+  - python38-widgetsnbextension 
   - python38-wikipedia 
   - python38-wirerope 
   - python38-wiring 
@@ -27772,6 +27782,7 @@ unsorted:
   - python39-backcall 
   - python39-backoff 
   - python39-backports.entry_points_selectable 
+  - python39-backports.zoneinfo 
   - python39-baron 
   - python39-base 
   - python39-base-32bit: [x86_64] 
@@ -28655,11 +28666,13 @@ unsorted:
   - python39-jupyter-client 
   - python39-jupyter-core 
   - python39-jupyter-jupyterlab-server 
+  - python39-jupyter-jupyterlab-server-test 
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
   - python39-jupyter-protocol 
   - python39-jupyter-server 
   - python39-jupyter-server-mathjax 
+  - python39-jupyter-server-test 
   - python39-jupyter-sphinx 
   - python39-jupyter-telemetry 
   - python39-jupyter_console 
@@ -28670,6 +28683,7 @@ unsorted:
   - python39-jupyterlab 
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-templates 
+  - python39-jupyterlab-widgets 
   - python39-jupytext 
   - python39-jwcrypto 
   - python39-k5test 
@@ -30175,6 +30189,7 @@ unsorted:
   - python39-whichcraft 
   - python39-whitenoise 
   - python39-whois_similarity_distance 
+  - python39-widgetsnbextension 
   - python39-wikipedia 
   - python39-wirerope 
   - python39-wiring 
@@ -31026,7 +31041,6 @@ unsorted:
   - rkhunter 
   - rkward 
   - rls: [x86_64] 
-  - rls1.53: [x86_64] 
   - rls1.54: [x86_64] 
   - rls1.55: [x86_64] 
   - rlwrap 
@@ -31531,11 +31545,6 @@ unsorted:
   - rust-gdb 
   - rust-packaging 
   - rust-srpm-macros 
-  - rust1.53 
-  - rust1.53-analysis: [x86_64] 
-  - rust1.53-doc: [x86_64] 
-  - rust1.53-gdb 
-  - rust1.53-src 
   - rust1.54 
   - rust1.54-analysis: [x86_64] 
   - rust1.54-doc: [x86_64] 
@@ -31716,7 +31725,7 @@ unsorted:
   - scap-workbench 
   - scap-workbench-doc 
   - scat 
-  - sccache 
+  - sccache: [x86_64] 
   - sccs 
   - scdl 
   - scdoc 

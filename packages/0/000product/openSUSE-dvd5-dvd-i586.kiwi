@@ -4557,6 +4557,7 @@
       <repopackage name="system-group-libvirt"/>
       <repopackage name="system-group-wheel"/>
       <repopackage name="system-user-bin"/>
+      <repopackage name="system-user-brltty"/>
       <repopackage name="system-user-daemon"/>
       <repopackage name="system-user-flatpak"/>
       <repopackage name="system-user-ftp"/>
