@@ -37,6 +37,8 @@ Source9:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz.sign
 Patch0:         cl-device.patch
 Patch1:         john-1.9.0-jumbo-gcc10.patch
 Patch2:         john-1.9.0-jumbo-gcc11.patch
+Patch3:         s390x-upstream.patch
+Patch4:         s390x.patch
 BuildRequires:  dos2unix
 BuildRequires:  gmp-devel
 BuildRequires:  libpcap-devel
@@ -60,6 +62,9 @@ rm -r %{jumboversion}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p0
+
 # adapt the configs
 perl -pi -e "s#Wordlist = (.*)#Wordlist = %{johndir}/password.lst#g" $RPM_BUILD_DIR/%{name}-%{version}/run/john.conf
 perl -pi -e 's#^(\#define JOHN_SYSTEMWIDE_EXEC)\s.+$#$1\t\"%{johndir}\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h

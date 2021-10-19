@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 12 15:55:35 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Upstream patch for Big Endians in s390x-upstream.patch
+- Include johnswap.h in opencl_7z_fmt_plug.c with s390x.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 11:46:18 UTC 2021 - simmphonie@opensuse.org
 
 - add john-1.9.0-jumbo-gcc11.patch to fix alignment compile errors
