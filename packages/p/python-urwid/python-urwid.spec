@@ -1,7 +1,7 @@
 #
 # spec file for package python-urwid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,8 @@ find urwid -name "*.py" | xargs sed -i '1 { /^#!/ d }'
 %check
 # this test won't work on OBS
 rm -f urwid/tests/test_vterm.py
-%python_exec setup.py -q test
+cp *build*/*/urwid/*.so urwid
+%pyunittest discover -v
 
 %files %{python_files}
 %license COPYING
