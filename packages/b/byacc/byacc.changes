@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 16 13:01:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210808:
+  * main.c: account for a memory-leak
+  * fix memory-leak when replacing $$'s in destructor code
+  * main.c, yacc.1: add "-h" option
+  * line number reporting fixes
+
+-------------------------------------------------------------------
 Tue Jul 27 06:23:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20210619:

@@ -18,7 +18,7 @@
 
 
 Name:           byacc
-Version:        20210619
+Version:        20210808
 Release:        0
 Summary:        LALR(1) parser generator
 License:        SUSE-Public-Domain
