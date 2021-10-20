@@ -22,7 +22,7 @@
 %define so_version 5.15.2
 %define tar_version qttranslations-everywhere-src-%{version}
 Name:           libqt5-qttranslations
-Version:        5.15.2+kde20
+Version:        5.15.2+kde22
 Release:        0
 Summary:        Qt 5 translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0

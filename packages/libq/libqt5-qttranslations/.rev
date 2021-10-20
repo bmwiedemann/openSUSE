@@ -335,4 +335,14 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902351</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>707841a7463ff9c8b8dadf2fee88a3ff</srcmd5>
+    <version>5.15.2+kde22</version>
+    <time>1634754233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.2+kde22:
+  * fix pt_BR meta catalog
+  * rename (outdated) qt_pt.ts =&gt; qt_pt_PT.ts</comment>
+    <requestid>926471</requestid>
+  </revision>
 </revisionlist>
