@@ -1,7 +1,7 @@
-Index: gnupg-2.1.20/g10/plaintext.c
+Index: gnupg-2.3.0/g10/plaintext.c
 ===================================================================
---- gnupg-2.1.20.orig/g10/plaintext.c	2017-04-03 17:13:56.000000000 +0200
-+++ gnupg-2.1.20/g10/plaintext.c	2017-04-04 09:53:31.541145727 +0200
+--- gnupg-2.3.0.orig/g10/plaintext.c
++++ gnupg-2.3.0/g10/plaintext.c
 @@ -24,6 +24,7 @@
  #include <string.h>
  #include <errno.h>
@@ -39,5 +39,5 @@ Index: gnupg-2.1.20/g10/plaintext.c
 +	}
 +	umask(saved_umask);
      }
- #else /* __riscos__ */
-   /* If no output filename was given, i.e. we constructed it, convert
+ 
+  leave:

@@ -17,34 +17,36 @@
 
 
 Name:           gpg2
-Version:        2.2.27
+Version:        2.3.3
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnupg.org
-Source:         ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-%{version}.tar.bz2
-Source2:        ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
+Source:         https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2
+Source2:        https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source3:        %{name}.keyring
 Source4:        scdaemon.udev
 Source99:       %{name}.changes
-Patch4:         gnupg-2.0.9-langinfo.patch
-Patch6:         gnupg-dont-fail-with-seahorse-agent.patch
-Patch8:         gnupg-set_umask_before_open_outfile.patch
-Patch9:         gnupg-detect_FIPS_mode.patch
-Patch11:        gnupg-add_legacy_FIPS_mode_option.patch
-Patch12:        gnupg-2.2.16-secmem.patch
-Patch13:        gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
-Patch14:        gnupg-add-test-cases-for-import-without-uid.patch
-Patch15:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
-Patch1124847:   gnupg-gpg-agent-ulimit.patch
+Patch1:         gnupg-gpg-agent-ulimit.patch
+Patch2:         gnupg-2.0.9-langinfo.patch
+Patch3:         gnupg-dont-fail-with-seahorse-agent.patch
+Patch4:         gnupg-set_umask_before_open_outfile.patch
+Patch5:         gnupg-detect_FIPS_mode.patch
+Patch6:         gnupg-add_legacy_FIPS_mode_option.patch
+Patch7:         gnupg-2.2.16-secmem.patch
+Patch8:         gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
+Patch9:         gnupg-add-test-cases-for-import-without-uid.patch
+Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
+BuildRequires:  ibmswtpm2
+BuildRequires:  ibmtss-devel
 BuildRequires:  libassuan-devel >= 2.5.0
-BuildRequires:  libgcrypt-devel >= 1.8.0
-BuildRequires:  libgpg-error-devel >= 1.27
-BuildRequires:  libksba-devel >= 1.3.5
+BuildRequires:  libgcrypt-devel >= 1.9.1
+BuildRequires:  libgpg-error-devel >= 1.41
+BuildRequires:  libksba-devel >= 1.3.4
 BuildRequires:  makeinfo
 BuildRequires:  npth-devel >= 1.2
 BuildRequires:  openldap2-devel
@@ -53,12 +55,12 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls) >= 3.0
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(sqlite3) >= 3.7
+BuildRequires:  pkgconfig(sqlite3) >= 3.27
 BuildRequires:  pkgconfig(zlib)
 # runtime dependency to support devel repository users - boo#955982
 Requires:       libassuan0 >= 2.5.0
-Requires:       libgcrypt20 >= 1.8.0
-Requires:       libksba >= 1.3.5
+Requires:       libgcrypt20 >= 1.9.1
+Requires:       libksba >= 1.3.4
 Requires:       pinentry
 Recommends:     dirmngr = %{version}
 Provides:       gnupg = %{version}
@@ -88,18 +90,11 @@ gpgsm, or via the gpg-connect-agent tool.
 %lang_package
 
 %prep
-%setup -q -n gnupg-%{version}
-%patch1124847 -p1
-%patch4 -p1
-%patch6 -p1
-%patch8 -p1
-%patch9 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-touch -d 2018-05-04 doc/gpg.texi # to compensate for patch11 in order to not have man pages and info files have the build date (boo#1047218)
+%autosetup -p1 -n gnupg-%{version}
+
+# In order to compensate for gnupg-add_legacy_FIPS_mode_option.patch
+# to not have man pages and info files have the build date (boo#1047218)
+touch -d 2018-05-04 doc/gpg.texi
 
 %build
 date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
@@ -112,7 +107,6 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
     --with-scdaemon-pgm=%{_bindir}/scdaemon \
     --enable-ldap \
     --enable-gpgsm=yes \
-    --enable-gpg \
     --enable-gpgtar \
     --enable-g13 \
     --enable-large-secmem \
@@ -120,8 +114,7 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
     --with-gnu-ld \
     --with-default-trust-store-file=%{_sysconfdir}/ssl/ca-bundle.pem \
     --enable-build-timestamp=$date \
-    --enable-gpg-is-gpg2 \
-    --enable-Werror
+    --enable-gpg-is-gpg2
 
 %make_build
 
@@ -145,9 +138,6 @@ mv %{buildroot}%{_libdir}/scdaemon %{buildroot}%{_bindir}
 mv %{buildroot}%{_libdir}/dirmngr_ldap %{buildroot}%{_bindir}
 # install udev rules for scdaemon
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
-# install legacy tools
-install -m 755 tools/gpg-zip %{buildroot}/%{_bindir}
-# install -m 755 tools/gpgsplit %%{buildroot}/%%{_bindir}
 
 %find_lang gnupg2
 %fdupes -s %{buildroot}
