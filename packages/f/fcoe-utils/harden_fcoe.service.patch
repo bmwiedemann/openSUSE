@@ -2,7 +2,7 @@ Index: fcoe-utils-1.0.34/etc/systemd/fcoe.service
 ===================================================================
 --- fcoe-utils-1.0.34.orig/etc/systemd/fcoe.service
 +++ fcoe-utils-1.0.34/etc/systemd/fcoe.service
-@@ -3,6 +3,16 @@ Description=Open-FCoE initiator daemon
+@@ -3,6 +3,15 @@ Description=Open-FCoE initiator daemon
  After=syslog.target network.target
  
  [Service]
@@ -11,7 +11,6 @@ Index: fcoe-utils-1.0.34/etc/systemd/fcoe.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
