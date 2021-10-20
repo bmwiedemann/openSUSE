@@ -679,4 +679,15 @@
   * Use fcntl.h for dev_t &amp; mode_t</comment>
     <requestid>918662</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>151998f12a756979fc9b3e909cecc126</srcmd5>
+    <version>1.9+git.20211011</version>
+    <time>1634754240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20211011:
+  * new setsockopts
+  * Add skeletons for a bunch of new syscalls
+  * protect other children's shm from corruption</comment>
+    <requestid>926479</requestid>
+  </revision>
 </revisionlist>
