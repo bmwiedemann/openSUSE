@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/fwupd/fwupd-efi.git</param>
+              <param name="changesrevision">fee1b8f6473cb403b8ae7a56961ba0557e3f3efa</param></service></servicedata>

@@ -1,0 +1,74 @@
+From 1beb5a54953e0cdece03098daaac04b730dc6e25 Mon Sep 17 00:00:00 2001
+From: "Lee, Chun-Yi" <jlee@suse.com>
+Date: Wed, 15 Sep 2021 13:19:52 +0800
+Subject: [PATCH] meson: using local copy ldscript when local copy crt0 be used
+ for SBAT
+
+When the system crt0 for aaarch64 is not new enough for SBAT. The
+efi/meson.build script will use local copy crt0 instead:
+
+  efi/meson.build:87: WARNING: Cannot find SBAT section in
+  /usr/lib64/crt0-efi-aarch64.S, using local copy
+
+In this case, the ld of efi/fwup.so will be failed because missing
+symbols:
+
+[   32s] ld:
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+relocation R_AARCH64_PREL32 against symbol `_erodata' which may bind
+externally can not be used when making a shared object; recompile with
+-fPIC
+[   32s]
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+in function `extra_header_fields':
+[   32s] (.text.head+0x90): dangerous relocation: unsupported relocation
+[   32s] ld:
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+relocation R_AARCH64_PREL32 against symbol `_evtext' which may bind
+externally can not be used when making a shared object; recompile with
+-fPIC
+[   32s]
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+in function `section_table':
+[   32s] (.text.head+0x100): dangerous relocation: unsupported
+relocation
+[   32s] ld:
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+relocation R_AARCH64_PREL32 against symbol `_rodata' which may bind
+externally can not be used when making a shared object; recompile with
+-fPIC
+[   32s] (.text.head+0x17c): dangerous relocation: unsupported
+relocation
+[   32s] ld:
+/home/abuild/rpmbuild/BUILD/fwupd-efi-1.1/build/efi/crt0/crt0-efi-aarch64.o:
+relocation R_AARCH64_PREL32 against symbol `_rodata' which may bind
+externally can not be used when making a shared object; recompile with
+-fPIC
+[   32s] (.text.head+0x184): dangerous relocation: unsupported
+relocation
+[   32s] ninja: build stopped: subcommand failed.
+
+Using local copy ldscript when local copy crt0 be used for SBAT, then
+this fail can be fixed.
+
+Reference: https://github.com/fwupd/fwupd-efi/issues/11
+Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
+---
+ efi/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index 68ea4aa..47f0717 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -88,6 +88,7 @@ if host_cpu == 'aarch64' or host_cpu == 'arm'
+       # The gnuefi libraries are still needed
+       efi_libdir = efi_crtdir
+       efi_crtdir = join_paths(meson.current_build_dir(), 'crt0')
++      efi_ldsdir = join_paths(meson.current_source_dir(), 'lds')
+     endif
+   endif
+ endif
+-- 
+2.26.2
+
