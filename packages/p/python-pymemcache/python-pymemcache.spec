@@ -20,14 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pymemcache
-Version:        3.4.4
+Version:        3.5.0
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Pinterest/pymemcache
 Source:         https://files.pythonhosted.org/packages/source/p/pymemcache/pymemcache-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/pinterest/pymemcache/pull/327.patch#/merged_pr_327.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  memcached
@@ -63,7 +62,6 @@ pymemcache supports the following features:
 
 %prep
 %setup -q -n pymemcache-%{version}
-%patch0 -p1
 # Disable pytest-cov
 sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 
@@ -79,7 +77,6 @@ sed -i 's/tool:pytest/tool:ignore-pytest-cov/' setup.cfg
 # TLS tests depend on setting up a memcached equivalent to
 # https://github.com/scoriacorp/docker-tls-memcached
 %pytest -rs -k 'not tls'
-
 
 %files %{python_files}
 %license LICENSE.txt

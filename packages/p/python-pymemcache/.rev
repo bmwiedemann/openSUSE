@@ -141,4 +141,16 @@
     <comment></comment>
     <requestid>900866</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4514922ac077442276af5fb3faf6e70a</srcmd5>
+    <version>3.5.0</version>
+    <time>1634754210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Sockets are now closed on ``MemcacheUnexpectedCloseError``.
+  * Added support for TCP keepalive for client sockets on Linux platforms.
+  * Added retrying mechanisms by wrapping clients.
+- drop merged_pr_327.patch (upstream)</comment>
+    <requestid>925750</requestid>
+  </revision>
 </revisionlist>
