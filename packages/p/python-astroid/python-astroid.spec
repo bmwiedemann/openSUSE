@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-astroid
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typed-ast >= 1.4 if %python-base < 3.8}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  %{python_module typing_extensions >= 3.10 if %python-base < 3.10}
 BuildRequires:  %{python_module wrapt >= 1.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +39,9 @@ Requires:       python-wrapt >= 1.11
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 38
 Requires:       python-typed-ast >= 1.4
-Requires:       python-typing_extensions
+%endif
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing_extensions >= 3.10
 %endif
 %python_subpackages
 

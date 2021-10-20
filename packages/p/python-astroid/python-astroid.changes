@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Oct  3 17:17:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.8.0
+  * Add additional deprecation warnings in preparation for astroid
+    3.0
+    * Require attributes for some node classes with ``__init__``
+      call.
+      * ``name`` (``str``) for ``Name``, ``AssignName``,
+        ``DelName``
+      * ``attrname`` (``str``) for ``Attribute``, ``AssignAttr``,
+        ``DelAttr``
+      * ``op`` (``str``) for ``AugAssign``, ``BinOp``, ``BoolOp``,
+        ``UnaryOp``
+      * ``names`` (``list[tuple[str, str | None]]``) for ``Import``
+  * Support pyz imports
+  * Add ``node_ancestors`` method to ``NodeNG`` for obtaining the
+    ancestors of nodes.
+  * It's now possible to infer the value of comparison nodes
+  * Fixed bug in inference of dataclass field calls.
+- Release 2.7.3
+  * The transforms related to a module are applied only if this
+    module has not been explicitly authorized to be imported
+    (i.e is not in AstroidManager.extension_package_whitelist).
+    Solves the following issues if numpy is authorized to be
+    imported through the `extension-pkg-allow-list` option.
+  * Fixed bug in attribute inference from inside method calls.
+  * Fixed bug in inference for superclass instance methods called
+    from the class rather than an instance.
+  * Fixed bug in inference of chained attributes where a subclass
+    had an attribute that was an instance of its superclass.
+  * Adds a brain for the ctypes module.
+  * When processing dataclass attributes, exclude the same type
+    hints from abc.collections as from typing.
+  * Apply dataclass inference to pydantic's dataclasses.
+- Release 2.7.2
+  * ``BaseContainer`` is now public, and will replace
+    ``_BaseContainer`` completely in astroid 3.0.
+  * The call cache used by inference functions produced by
+    ``inference_tip`` can now be cleared via
+    ``clear_inference_tip_cache``.
+  * ``astroid.const.BUILTINS`` and ``astroid.bases.BUILTINS`` are
+    not used internally anymore and will be removed in astroid 3.0.
+    Simply replace this by the string 'builtins' for better
+    performances and clarity.
+  * Add inference for dataclass initializer method.
+
+-------------------------------------------------------------------
 Fri Aug 20 19:16:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add typing_extensions as requirement for python36
