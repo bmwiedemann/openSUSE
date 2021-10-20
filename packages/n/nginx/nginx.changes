@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 15 14:23:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
+Mon Oct 11 09:26:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * nginx.service
+
+-------------------------------------------------------------------
 Fri Sep 10 17:44:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 1.21.3

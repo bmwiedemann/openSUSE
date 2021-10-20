@@ -812,4 +812,14 @@
     buffering of the data being processed.</comment>
     <requestid>918014</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>bd6c1df28d55a2cb0e84c9d837ab9e76</srcmd5>
+    <version>1.21.3</version>
+    <time>1634754173</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CONFIG parameter to %sysusers_generate_pre
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * nginx.service</comment>
+    <requestid>925491</requestid>
+  </revision>
 </revisionlist>

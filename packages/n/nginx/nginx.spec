@@ -133,7 +133,7 @@ sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config
 %{ngx_configure}
 
 %make_build
-%sysusers_generate_pre %{SOURCE9} nginx
+%sysusers_generate_pre %{SOURCE9} nginx nginx.conf
 
 %install
 %make_install
