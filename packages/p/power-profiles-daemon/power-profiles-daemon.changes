@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Oct  6 20:32:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.0:
+  + This release adds authorisation checks for the profile holds
+    and profile switching features of the backend daemon, through
+    polkit. It is recommended that all distributions upgrade to
+    this version as soon as possible.
+  + This release also adds support for the "quiet" kernel platform
+    profile used in some systems.
+- Drop patches fixed upstream:
+  + power-profiles-daemon-polkit-policy.patch
+  + c9b646025d9f155509a6cda1c292bfd120daeb9e.patch
+  + 20a2d7f7b80a1847f36236d40388f14ae99fa94b.patch
+- Add f83685732b9dd8211840645ce76f43718b30218b.patch: build: Make
+  pylint test optional. As power-profiles-daemon keeps getting
+  built with slightly different versions of pylint with newer
+  warnings, disable pylint test by default to avoid getting bug
+  reports about it.
+- Add hold-profile-hardening.patch: Hardening of HoldProfile D-Bus
+  method (boo#1189900). Requested by openSUSE security team.
+
+-------------------------------------------------------------------
+Tue Sep 28 13:05:16 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add power-profiles-daemon-polkit-policy.patch -- Describe and
+  set defaults for switching and holding power profiles; patch
+  taken from upstream merge request (boo#1189900,
+  glfo#hadess/power-profiles-daemon#47).
+- Add Requires: polkit, needed at runtime after changes in
+  permission handling due to above patch.
+- Disable tests as they fail due to polkit changes from above
+  patch not being integrated yet.
+
+-------------------------------------------------------------------
+Fri Sep 24 19:45:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass explicit systemdsystemunitdir=%{_unitdir} to meson, ensure
+  we have the correct systemd unitdir.
+- Drop systemd and systemd-rpm-macros BuildRequires, not needed.
+- Add check section and run meson_test macro, replace umockdev with
+  pkgconfig(umockdev-1.0) BuildRequires.
+- Add generic c_compiler BuildRequires as meson checks for it.
+- Add upstream patches:
+  + c9b646025d9f155509a6cda1c292bfd120daeb9e.patch:
+    platform-profile: Add support for 'quiet' profile.
+  + 20a2d7f7b80a1847f36236d40388f14ae99fa94b.patch: tests: Add
+    tests for quiet profile support.
+
+-------------------------------------------------------------------
+Thu Aug 26 18:16:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

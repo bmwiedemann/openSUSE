@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe2f4c0470b5b014a2a36784e84ba835</srcmd5>
+    <version>0.10.0</version>
+    <time>1634754231</time>
+    <user>dimstar_suse</user>
+    <comment>New package, GNOME 41 makes use of it if available - resub so we get a new staging with new rpmlint with the needed whitelistings</comment>
+    <requestid>926486</requestid>
+  </revision>
+</revisionlist>

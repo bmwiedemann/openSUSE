@@ -1,0 +1,75 @@
+From f83685732b9dd8211840645ce76f43718b30218b Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 6 Oct 2021 10:22:10 +0200
+Subject: [PATCH] build: Make pylint test optional
+
+As power-profiles-daemon keeps getting built with slightly different
+versions of pylint with newer warnings, disable pylint test by default
+to avoid getting bug reports about it.
+
+Closes: #52
+---
+ .gitlab-ci.yml    | 2 +-
+ meson.build       | 6 ++++--
+ meson_options.txt | 4 ++++
+ src/meson.build   | 2 +-
+ 4 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index ab28029..592a89d 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -22,7 +22,7 @@ build_stable:
+     - dnf upgrade -y --nogpgcheck fedora-release fedora-repos*
+     - dnf update -y && dnf install -y $DEPENDENCIES
+   script:
+-    - meson -Dgtk_doc=true _build
++    - meson -Dgtk_doc=true -Dpylint=true _build
+     - ninja -v -C _build
+     - ninja -v -C _build install
+     - ninja -v -C _build uninstall
+diff --git a/meson.build b/meson.build
+index 70ab243..4ae43c0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -42,8 +42,10 @@ gnome = import('gnome')
+ add_global_arguments('-D_GNU_SOURCE=1', language: 'c')
+ add_global_arguments(common_cflags, language: 'c')
+ 
+-pylint = find_program('pylint-3', 'pylint3', 'pylint', required: false)
+-pylint_flags = ['-d', 'C0116', '-d', 'C0114', '-d', 'W0707']
++if get_option('pylint')
++    pylint = find_program('pylint-3', 'pylint3', 'pylint', required: true)
++    pylint_flags = ['-d', 'C0116', '-d', 'C0114', '-d', 'W0707']
++endif
+ xmllint = find_program('xmllint', required: false)
+ 
+ subdir('src')
+diff --git a/meson_options.txt b/meson_options.txt
+index a3789f6..7e89619 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,3 +6,7 @@ option('gtk_doc',
+        type: 'boolean',
+        value: false,
+        description: 'Build docs')
++option('pylint',
++       type: 'boolean',
++       value: false,
++       description: 'Run pylint checks, for developers only')
+diff --git a/src/meson.build b/src/meson.build
+index 0c00564..f20e42a 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -72,7 +72,7 @@ script = configure_file(
+   install_dir: get_option('bindir')
+ )
+ 
+-if pylint.found()
++if get_option('pylint')
+   test('pylint-powerprofilesctl',
+        pylint,
+        args: pylint_flags + [ script ],
+-- 
+GitLab
+
