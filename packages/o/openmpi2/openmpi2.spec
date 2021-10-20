@@ -1,5 +1,5 @@
 #
-# spec file for package %{package_name}%{?testsuite:-testsuite}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
@@ -537,8 +537,8 @@ prepend-path LD_LIBRARY_PATH %{mpi_libdir}
 
 EOF
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat <<EOF >%{buildroot}%{_rpmmacrodir}/macros.openmpi
 #
 # openmpi
 #
@@ -584,9 +584,8 @@ EOF
 sed -e "s/export/setenv/" -e "s/=/ /" \
     %{buildroot}/%{mpi_bindir}/mpivars.sh > \
     %{buildroot}/%{mpi_bindir}/mpivars.csh
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{S:3} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp %{S:3} %{buildroot}%{_rpmmacrodir}
 
 # Drop the files that should go into %{pname}-config as we only package them
 # in the non HPC build
@@ -723,9 +722,9 @@ fi
 %files macros-devel
 %defattr(-,root,root,-)
 %if %{with hpc}
-%config %{_sysconfdir}/rpm/macros.hpc-openmpi
+%config %{_rpmmacrodir}/macros.hpc-openmpi
 %else
-%config %{_sysconfdir}/rpm/macros.openmpi
+%config %{_rpmmacrodir}/macros.openmpi
 %endif
 
 %if 0%{?build_static_devel}

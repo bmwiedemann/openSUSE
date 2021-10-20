@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 15:23:32 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Move rpm macros to %_rpmmacrodir (bsc#1191389)
+
+-------------------------------------------------------------------
 Wed Apr 28 11:08:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - openmpi2 is not the default openmpi anymore for releases > 15.3
