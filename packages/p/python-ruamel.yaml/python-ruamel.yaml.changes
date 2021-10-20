@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 16 22:32:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.16:
+  - also handle issue 397 when comment is newline
+  - fix issue 397, insert comment before key when a comment between key and value exists
+  - fix issue 396, inserting key/val in merged-in dictionary
+  - minor fix in attr handling
+  - fix issue with anchor on registered class not preserved and those classes using package 
+    attrs with `@attr.s()`
+  - fix error baseclass for ``DuplicateKeyErorr`` (reported by `Łukasz Rogalski
+  - fix typo in reader error message, causing `KeyError` during reader error 
+ 
+-------------------------------------------------------------------
 Sat Jul 17 13:53:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.10:
