@@ -2924,4 +2924,21 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   virtio-balloon-don-t-start-free-page-hin.patch</comment>
     <requestid>920365</requestid>
   </revision>
+  <revision rev="213" vrev="33">
+    <srcmd5>dde4f3f47e36a21eb847a97018f7e593</srcmd5>
+    <version>unknown</version>
+    <time>1634754166</time>
+    <user>dimstar_suse</user>
+    <comment>- Stable fixes from upstream
+* Patches added:
+  block-introduce-max_hw_iov-for-use-in-sc.patch
+  hmp-Unbreak-change-vnc.patch
+  qemu-nbd-Change-default-cache-mode-to-wr.patch
+  target-arm-Don-t-skip-M-profile-reset-en.patch
+  vhost-vsock-fix-migration-issue-when-seq.patch
+  virtio-mem-pci-Fix-memory-leak-when-crea.patch
+  virtio-net-fix-use-after-unmap-free-for-.patch
+</comment>
+    <requestid>924805</requestid>
+  </revision>
 </revisionlist>

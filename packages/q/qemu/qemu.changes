@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  8 13:48:40 UTC 2021 - Li Zhang <li.zhang@suse.com>
+
+- Stable fixes from upstream
+* Patches added:
+  block-introduce-max_hw_iov-for-use-in-sc.patch
+  hmp-Unbreak-change-vnc.patch
+  qemu-nbd-Change-default-cache-mode-to-wr.patch
+  target-arm-Don-t-skip-M-profile-reset-en.patch
+  vhost-vsock-fix-migration-issue-when-seq.patch
+  virtio-mem-pci-Fix-memory-leak-when-crea.patch
+  virtio-net-fix-use-after-unmap-free-for-.patch
+
+-------------------------------------------------------------------
 Thu Sep 16 03:55:52 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Fix testsuite dependencies (bsc#1190573)

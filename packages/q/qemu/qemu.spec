@@ -188,6 +188,13 @@ Patch00052:     qemu-sockets-fix-unix-socket-path-copy-a.patch
 Patch00053:     target-i386-add-missing-bits-to-CR4_RESE.patch
 Patch00054:     qemu-binfmt-conf.sh-should-use-F-as-shor.patch
 Patch00055:     modules-quick-fix-a-fundamental-error-in.patch
+Patch00056:     virtio-net-fix-use-after-unmap-free-for-.patch
+Patch00057:     target-arm-Don-t-skip-M-profile-reset-en.patch
+Patch00058:     hmp-Unbreak-change-vnc.patch
+Patch00059:     qemu-nbd-Change-default-cache-mode-to-wr.patch
+Patch00060:     virtio-mem-pci-Fix-memory-leak-when-crea.patch
+Patch00061:     vhost-vsock-fix-migration-issue-when-seq.patch
+Patch00062:     block-introduce-max_hw_iov-for-use-in-sc.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1134,6 +1141,13 @@ This package records qemu testsuite results and represents successful testing.
 %patch00053 -p1
 %patch00054 -p1
 %patch00055 -p1
+%patch00056 -p1
+%patch00057 -p1
+%patch00058 -p1
+%patch00059 -p1
+%patch00060 -p1
+%patch00061 -p1
+%patch00062 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
