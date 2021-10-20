@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 20 08:28:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.3:
+  * logind: Set userdata for ping_handler
+  * logind: Improve error handling in open_seat
+  * examples/simpletest: check for libseat_dispatch failures
+  * logind: check if session is active on startup
+  * clang-format: Fix alignment
+  * logind: Send ping to wake us up later
+  * seatd: Implement ping request to wake up later
+
+-------------------------------------------------------------------
 Thu Sep 16 07:40:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.2:

@@ -88,4 +88,19 @@
   * man: Add seatd-launch(1) to SEE ALSO of seatd(1)</comment>
     <requestid>919491</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f6df9d38d51179759af32a1d754020a5</srcmd5>
+    <version>0.6.3</version>
+    <time>1634754241</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3:
+  * logind: Set userdata for ping_handler
+  * logind: Improve error handling in open_seat
+  * examples/simpletest: check for libseat_dispatch failures
+  * logind: check if session is active on startup
+  * clang-format: Fix alignment
+  * logind: Send ping to wake us up later
+  * seatd: Implement ping request to wake up later</comment>
+    <requestid>926487</requestid>
+  </revision>
 </revisionlist>
