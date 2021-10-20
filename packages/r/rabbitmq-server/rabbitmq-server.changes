@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 20 11:17:30 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.8:
+  * Core Server Bug Fixes
+    - When the mandatory flag was used when publishing to classic
+      queues, but publisher confirms were not, channels memory
+      usage would grow indefinitely.
+    - rabbitmq-diagnostics memory_breakdown failed to read memory
+      of connection reader, writer and channel processes.
+    - In some environments, Stream replicas advertised IP
+      addresses that could not be reached by cluster peers.
+      RabbitMQ node hostnames are now advertised as well so that
+      other peers can resolve them to get an externally visible IP
+      address.
+  * Prometheus Plugin Enhancements
+    - More data is exposed via the GET /metrics/detailed endpoint.
+  * Management Plugin Bug Fixes
+    - When setting topic permissions, the list of exchanges in the
+      UI now honors the currently selected virtual host.
+  * AWS Peer Discovery Plugin Enhancements
+    - The plugin now logs more details for failed AWS API
+      requests.
+  * Web STOMP Plugin Enhancements
+    - STOMP-over-WebSockets connections now can consume from
+      streams.
+
+-------------------------------------------------------------------
 Fri Sep 24 10:53:58 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.7:
