@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:48:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Fixed extra space appended to each alias by "alias list" command
+  * New function `set_default_ap_completer_type()`
+  * Added `ArgumentParser.get_ap_completer_type()` and 
+    `ArgumentParser.set_ap_completer_type()`.
+  * Added `ap_completer_type` keyword arg to `Cmd2ArgumentParser.__init__()`
+    which saves a call to `set_ap_completer_type()`. This keyword will also
+    work with `add_parser()` when creating subcommands if the base
+    command's parser is a `Cmd2ArgumentParser`.
+  * New function `register_argparse_argument_parameter()`
+  * Using `SimpleTable` in the output for the following commands
+  * Tab completion of `CompletionItems` now includes divider row
+  * Removed `--verbose` flag from set command since descriptions always show now.
+  * All cmd2 built-in commands now populate `self.last_result`.
+  * Argparse tab completer will complete remaining flag names if there are no
+    more positionals to complete.
+  * Updated `async_alert()` to account for `self.prompt` not matching Readline's
+    current prompt.
+  * Deleted ``set_choices_provider()`` and ``set_completer()`` which were
+    deprecated in 2.1.2
+
+-------------------------------------------------------------------
 Fri Jul 16 19:57:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.2:
