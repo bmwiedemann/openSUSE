@@ -668,4 +668,12 @@
   + No changes. (forwarded request 888263 from mgorse)</comment>
     <requestid>888741</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>62904bc8c539f40d46ca849bd0fa0055</srcmd5>
+    <version>3.40.1</version>
+    <time>1634754190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926303</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.40.0
+Version:        3.40.1
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
@@ -28,7 +28,6 @@ Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52
@@ -96,7 +95,6 @@ libraries in GNOME can access the user's online accounts.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \
