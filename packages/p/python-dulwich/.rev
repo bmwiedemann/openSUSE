@@ -503,4 +503,14 @@
     <comment></comment>
     <requestid>913271</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c8672c5d5dc90b272fb75d869bcf46eb</srcmd5>
+    <version>0.20.25</version>
+    <time>1634754205</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.25:
+ * Fix ``dulwich`` script when installed via setup.py.
+ * Make default file mask consistent</comment>
+    <requestid>925730</requestid>
+  </revision>
 </revisionlist>
