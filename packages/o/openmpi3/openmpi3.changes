@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 15:24:25 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Move rpm macros to %_rpmmacrodir (bsc#1191390)
+
+-------------------------------------------------------------------
 Thu Jul 23 16:00:23 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc8/9/10 to HPC build (bsc#1174439). 

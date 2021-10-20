@@ -1,7 +1,7 @@
 #
-# spec file for package openmpi3
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -198,7 +198,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun): mpi-selector
+Requires(preun):mpi-selector
 Requires:       %{package_name}-libs = %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -245,7 +245,7 @@ Requires:       openssh
 %define mpi_bindir %hpc_bindir
 %define mpi_libdir %hpc_libdir
 %define mpi_datadir %hpc_datadir
-%define mpi_helpdir %{mpi_datadir}/openmpi 
+%define mpi_helpdir %{mpi_datadir}/openmpi
 %define mpi_includedir %hpc_includedir
 %define mpi_mandir %hpc_mandir
 
@@ -567,8 +567,8 @@ prepend-path LD_LIBRARY_PATH %{mpi_libdir}
 
 EOF
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat <<EOF >%{buildroot}%{_rpmmacrodir}/macros.openmpi
 #
 # openmpi
 #
@@ -614,9 +614,8 @@ EOF
 sed -e "s/export/setenv/" -e "s/=/ /" \
     %{buildroot}/%{mpi_bindir}/mpivars.sh > \
     %{buildroot}/%{mpi_bindir}/mpivars.csh
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{S:3} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp %{S:3} %{buildroot}%{_rpmmacrodir}
 
 # Drop the files that should go into %{pname}-config as we only package them
 # in the non HPC build
@@ -765,9 +764,9 @@ fi
 %files macros-devel
 %defattr(-,root,root,-)
 %if %{with hpc}
-%config %{_sysconfdir}/rpm/macros.hpc-openmpi
+%config %{_rpmmacrodir}/macros.hpc-openmpi
 %else
-%config %{_sysconfdir}/rpm/macros.openmpi
+%config %{_rpmmacrodir}/macros.openmpi
 %endif
 
 %if 0%{?build_static_devel}
