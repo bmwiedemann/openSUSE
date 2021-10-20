@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Oct 15 17:54:17 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 3.2.0:
+  * This release includes compression efficiency and perceptual
+    quality improvements, speedup and memory optimizations, as well
+    as some new features.
+  * New Features:
+    + Introduced speeds 7, 8, and 9 for all intra mode.
+    + Introduced speed 10 for real time mode.
+    + Introduced an API that allows external partition decisions.
+    + SVC: added support for compound prediction.
+    + SVC: added support for fixed SVC modes.
+  * Compression Efficiency Improvements:
+    + Intra-mode search improvement.
+    + Improved real time (RT) mode BDrate savings by ~5% (RT speed
+      5) and ~12% (RT speed 6). The improvement was measured on the
+      video conference set.
+    + Improved real time mode for nonrd path (speed 7, 8, 9):
+      BDrate gains of ~3-5%.
+    + Rate control and RD adjustments based on ML research in VP9.
+      Gains of ~0.5-1.0% for HD.
+  * Perceptual Quality Improvements:
+    + Added a new mode --deltaq-mode=3 to improve perceptual
+      quality based on a differential contrast model for still
+      images.
+    + Added a new mode –deltaq-mode=4 to improve perceptual quality
+      based on user rated cq_level data set for still images.
+    + Weighting of some intra mode and partition size choices to
+      better manage and retain texture.
+  * Speedup and Memory Optimizations:
+    + Further improved 2-pass good quality encoder speed:
+      . Speed 2 speedup: 18%
+      . Speed 3 speedup: 22%
+      . Speed 4 speedup: 37%
+      . Speed 5 speedup: 30%
+      . Speed 6 speedup: 20%
+    + Optimized the real time encoder (measured on the video
+      conference set):
+      . RT speed 5 speedup: 110%
+      . RT speed 6 speedup: 77%
+  * Bug Fixes
+    + Issue 3069: Fix one-pass mode keyframe placement off-by-one
+      error.
+    + Issue 3156: Fix a bug in av1_quantize_lp AVX2 optimization.
+- Drop libaom-CVE-2021-30475.patch: Fixed upstream.
+- Remove changesgenerate option from _service file, use data from
+  CHANGELOG to fill .changes instead as it it much nicer and human
+  readable than just a list of commit messages.
+
+-------------------------------------------------------------------
 Wed Oct 13 18:20:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - fix service data
