@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 12 11:03:02 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8.0
+  - [Feature] #1846: Add a prefetch keyword argument to 
+    SFTPClient.get/SFTPClient.getfo so users who need to skip SFTP
+    prefetching are able to conditionally turn it off.
+  - [Bug] #1462: (via #1882) Newer server-side key exchange
+    algorithms not intended to use SHA1 (diffie-hellman-group14-sha256,
+    diffie-hellman-group16-sha512) were incorrectly using SHA1 after all,
+    due to a bug causing them to ignore the hash_algo class attribute.
+    This has been corrected.
+  - [Support] #1722: Remove leading whitespace from OpenSSH RSA test
+    suite static key fixture, to conform better to spec.
+  - [Support] #1727: Add missing test suite fixtures directory to 
+    MANIFEST.in, reinstating the ability to run Paramiko’s tests from
+    an sdist tarball.
+  - [Support]: Update our CI to catch issues with sdist generation,
+    installation and testing.
+  - [Support]: Administrivia overhaul, including but not limited to:
+    - Migrate CI to CircleCI
+    - Primary dev branch is now main (renamed)
+    - Many README edits for clarity, modernization etc; including
+      a bunch more (and consistent) status badges & unification with
+      main project site index
+    - PyPI page much more fleshed out (long_description is now filled
+      in with the README; sidebar links expanded; etc)
+    - flake8, pytest configs split out of setup.cfg into their own files
+    - Invoke/invocations (used by maintainers/contributors) upgraded
+      to modern versions
+- Skip python2 to fix build errors for Leap.
+- Rebase paramiko-pr1655-remove-pytest-relaxed.patch.
+
+-------------------------------------------------------------------
 Mon Dec  7 07:22:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341) 
