@@ -26,10 +26,9 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.39.g7a5801342f
+%define suse_version +suse.47.g8521f8d22f
 %define _testsuitedir /usr/lib/systemd/tests
 
-%bcond_with     gnuefi
 %if 0%{?bootstrap}
 %bcond_with     coredump
 %bcond_with     importd
@@ -38,28 +37,33 @@
 %bcond_with     networkd
 %bcond_with     portabled
 %bcond_with     resolved
+%bcond_with     sd_boot
 %bcond_with     sysvcompat
 %bcond_with     experimental
 %bcond_with     testsuite
 %else
 %bcond_without  coredump
-%ifarch %{ix86} x86_64
-%bcond_without  gnuefi
-%endif
 %bcond_without  importd
 %bcond_without  journal_remote
 %bcond_without  machined
 %bcond_without  networkd
 %bcond_without  portabled
 %bcond_without  resolved
+%ifarch %{ix86} x86_64 aarch64
+%bcond_without  sd_boot
+%else
+%bcond_with     sd_boot
+%endif
 %bcond_without  sysvcompat
 %bcond_without  experimental
 %bcond_without  testsuite
 %endif
+# Kept to ease migrations toward SLE
+%bcond_with     split_usr
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.4
+Version:        249.5
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -115,7 +119,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.33
 %endif
-%if %{with gnuefi}
+%if %{with sd_boot}
 BuildRequires:  gnu-efi
 %endif
 
@@ -604,14 +608,14 @@ Have fun with these services at your own risk.
         -Dmode=release \
         -Dversion-tag=%{version}%{suse_version} \
         -Ddocdir=%{_docdir}/systemd \
+%if %{with split_usr}
         -Drootprefix=/usr \
-%if !0%{?usrmerged}
         -Dsplit-usr=true \
 %endif
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
-        -Dpamconfdir=%{_pam_vendordir} \
+        -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
         -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
         -Drpmmacrosdir=no \
@@ -650,8 +654,12 @@ Have fun with these services at your own risk.
 %if %{without coredump}
         -Dcoredump=false \
 %endif
-%if %{without gnuefi}
+%if %{without sd_boot}
+        -Defi=false \
         -Dgnu-efi=false \
+%else
+        -Defi=true \
+        -Dgnu-efi=true \
 %endif
 %if %{without importd}
         -Dimportd=false \
@@ -723,7 +731,7 @@ for s in %{S:100} %{S:101} %{S:102}; do
 	install -m0755 -D $s %{buildroot}%{_prefix}/lib/systemd/scripts/${s#*/scripts-systemd-}
 done
 
-%if !0%{?usrmerged}
+%if %{with split_usr}
 # Legacy sysvinit tools
 mkdir -p %{buildroot}/sbin
 ln -s ../usr/lib/systemd/systemd %{buildroot}/sbin/init
@@ -743,7 +751,7 @@ rm -rf %{buildroot}/etc/systemd/system/*.target.{requires,wants}
 rm -f %{buildroot}/etc/systemd/system/default.target
 
 # Replace upstream systemd-user with the openSUSE one.
-install -m0644 %{S:2} %{buildroot}%{_pam_vendordir}
+install -m0644 -D --target-directory=%{buildroot}%{_pam_vendordir} %{S:2}
 
 # don't enable wall ask password service, it spams every console (bnc#747783)
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -1215,8 +1223,10 @@ fi
 %files
 %defattr(-,root,root)
 %license LICENSE*
-%{_bindir}/busctl
+%if %{with sd_boot}
 %{_bindir}/bootctl
+%endif
+%{_bindir}/busctl
 %{_bindir}/hostnamectl
 %{_bindir}/kernel-install
 %{_bindir}/localectl
@@ -1365,7 +1375,7 @@ fi
 
 %{_pam_moduledir}/pam_systemd.so
 
-%if %{with gnuefi}
+%if %{with sd_boot}
 %dir %{_prefix}/lib/systemd/boot
 %dir %{_prefix}/lib/systemd/boot/efi
 %{_prefix}/lib/systemd/boot/efi/*.efi
@@ -1433,6 +1443,7 @@ fi
 %{_modprobedir}/systemd.conf
 
 # Some files created at runtime.
+%ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal/
 %ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
 %ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %config(noreplace) %{_sysconfdir}/locale.conf
@@ -1542,7 +1553,6 @@ fi
 %defattr(-,root,root,-)
 %dir %{_docdir}/systemd
 %{_docdir}/systemd/html
-# /bootstrap
 %endif
 
 %files devel
@@ -1557,7 +1567,7 @@ fi
 
 %files sysvinit
 %defattr(-,root,root,-)
-%if !0%{?usrmerged}
+%if %{with split_usr}
 /sbin/init
 /sbin/reboot
 /sbin/halt
@@ -1764,6 +1774,7 @@ fi
 %{_mandir}/man8/systemd-journal-remote.*
 %{_mandir}/man8/systemd-journal-upload.*
 %{_datadir}/systemd/gatewayd
+%ghost %dir %{_localstatedir}/log/journal/remote
 %endif
 
 %if %{with networkd} || %{with resolved}
@@ -1785,7 +1796,6 @@ fi
 %{_unitdir}/systemd-networkd.service
 %{_unitdir}/systemd-networkd.socket
 %{_unitdir}/systemd-networkd-wait-online.service
-# Some files created at runtime
 %endif
 %if %{with resolved}
 %{_bindir}/resolvectl

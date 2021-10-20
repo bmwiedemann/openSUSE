@@ -2,8 +2,21 @@
 #
 # Used by systemd --user instances.
 
-account  include common-account
+# This is not about authentication per se (user@.service is a system
+# service anyway) but to give the possibility to user services
+# (especially those like gnome-terminal, see [1]) to have theirs
+# credentials extended similar to the ones received by a user when he
+# logs in (and the full PAM authentication stack is run). See [2] and
+# [3] for details.
+#
+# [1] https://gitlab.gnome.org/GNOME/gdm/-/issues/393
+# [2] https://github.com/systemd/systemd/issues/11198
+# [3] https://bugzilla.suse.com/show_bug.cgi?id=1190515
+#
+auth include common-auth
+
+account  include  common-account
 
 session  required pam_selinux.so close
 session  required pam_selinux.so nottys open
-session  include common-session
+session  include  common-session

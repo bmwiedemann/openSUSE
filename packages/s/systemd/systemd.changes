@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Oct 15 12:09:44 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 8521f8d22fd44400289fcea03493ebd7f8b1487d (merge of v249.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/355e113ce193e5e2d195278c57d47f9a1b00ae46...8521f8d22fd44400289fcea03493ebd7f8b1487d
+
+-------------------------------------------------------------------
+Fri Oct 15 11:54:34 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 355e113ce193e5e2d195278c57d47f9a1b00ae46
+
+  3b4a005095 meson: add missing include directory when using xkbcommon
+  4c4e642712 meson: allow extra net naming schemes to be defined during configuration (jsc#SLE-18514)
+  78466e4464 meson: drop the list of valid net naming schemes
+  b9a2098f9d netif-naming: inline one iterator variable
+  d7fbbc5e74 Add remaining supported schemes as options for default-net-naming-scheme
+
+-------------------------------------------------------------------
+Fri Oct 15 11:38:41 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Rename %{gnu-efi} into %{sd_boot}
+
+  Build conditionals (%bcond_with and %bcond_without) are used to
+  define a specific feature of systemd. "gnu-efi" is rather an
+  implemenation detail. Also not really sure what "efi" option alone
+  is useful for since systemd-boot & co depends on "gnu-efi".
+
+- Enable sd_boot support for aarch64
+
+-------------------------------------------------------------------
+Fri Oct 15 09:27:00 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Ghost own directories /var/log/journal and /var/log/journal/remote again
+
+  rpmlint no more complain about the setgid bit, see sr#923496.
+
+-------------------------------------------------------------------
+Fri Oct  8 11:14:20 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Overwriting rootprefix= is only required when split-usr is enabled
+
+-------------------------------------------------------------------
+Fri Oct  8 09:01:59 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Rename %usrmerged into %split_usr
+
+-------------------------------------------------------------------
+Wed Oct  6 07:40:24 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Suppress PAM warning when the credentials for user@.service service
+  are established (bsc#1190515)
+
+  systemd-user PAM service needs to define a default implementation of
+  pam_setcred() otherwise the fallback (defined by /etc/pam.d/other)
+  is used, which consists of pam_warn.so + pam_deny.so, and will throw
+  a warning each time a user logs in.
+
+-------------------------------------------------------------------
+Mon Oct  4 14:40:12 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- No need to install upstream pam configuration file "systemd-user"
+
+  It's overwritten by the SUSE version anyway.
+
+-------------------------------------------------------------------
 Wed Sep 29 10:04:38 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Work around rpmlint complaining about /var/log/journal shipped with setgid bit

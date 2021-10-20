@@ -5571,4 +5571,41 @@ handle manual pages that consist only of a .so directive such as
   8d65ec4a66 test: wc is needed by test/units/testsuite-50.sh</comment>
     <requestid>922217</requestid>
   </revision>
+  <revision rev="338" vrev="1">
+    <srcmd5>a97db8f0b7a74cc979c5f0fc6076325f</srcmd5>
+    <version>249.5</version>
+    <time>1634754158</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 8521f8d22fd44400289fcea03493ebd7f8b1487d (merge of v249.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/355e113ce193e5e2d195278c57d47f9a1b00ae46...8521f8d22fd44400289fcea03493ebd7f8b1487d
+
+- Import commit 355e113ce193e5e2d195278c57d47f9a1b00ae46
+  3b4a005095 meson: add missing include directory when using xkbcommon
+  4c4e642712 meson: allow extra net naming schemes to be defined during configuration (jsc#SLE-18514)
+  78466e4464 meson: drop the list of valid net naming schemes
+  b9a2098f9d netif-naming: inline one iterator variable
+  d7fbbc5e74 Add remaining supported schemes as options for default-net-naming-scheme
+
+- Rename %{gnu-efi} into %{sd_boot}
+  Build conditionals (%bcond_with and %bcond_without) are used to
+  define a specific feature of systemd. &quot;gnu-efi&quot; is rather an
+  implemenation detail. Also not really sure what &quot;efi&quot; option alone
+  is useful for since systemd-boot &amp; co depends on &quot;gnu-efi&quot;.
+- Enable sd_boot support for aarch64
+
+- Ghost own directories /var/log/journal and /var/log/journal/remote again
+  rpmlint no more complain about the setgid bit, see sr#923496.
+
+- Overwriting rootprefix= is only required when split-usr is enabled
+
+- Rename %usrmerged into %split_usr
+
+- Suppress PAM warning when the credentials for user@.service service
+  are established (bsc#1190515)
+  systemd-user PAM service needs to define a default implementation of
+  pam_setcred() otherwise the fallback (defined by /etc/pam.d/other)
+  is used, which consists of pam_warn.so + pam_deny.so, and will throw</comment>
+    <requestid>925519</requestid>
+  </revision>
 </revisionlist>
