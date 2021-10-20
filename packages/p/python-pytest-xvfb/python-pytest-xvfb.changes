@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  6 10:32:51 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- skip python2 to make it build for Leap 15.3
+
+-------------------------------------------------------------------
 Thu Aug 20 13:21:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.0.0:
