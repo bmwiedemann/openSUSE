@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 07:58:19 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- timezone update 2021d:
+  * Fiji suspends DST for the 2021/2022 season
+  * 'zic -r' marks unspecified timestamps with "-00"
+
+-------------------------------------------------------------------
 Sat Oct  2 16:46:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - timezone update 2021c:
