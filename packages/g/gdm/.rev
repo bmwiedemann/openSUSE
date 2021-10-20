@@ -1803,4 +1803,13 @@
     <comment></comment>
     <requestid>921941</requestid>
   </revision>
+  <revision rev="237" vrev="2">
+    <srcmd5>01e89899ed59df92d4529664699a3b9e</srcmd5>
+    <version>41.0</version>
+    <time>1634754183</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gdm-daemon-Infer-session-type-from-desktop-file.patch
+  (bsc#1191809, bsc#1191248) (forwarded request 926193 from mwilck)</comment>
+    <requestid>926207</requestid>
+  </revision>
 </revisionlist>

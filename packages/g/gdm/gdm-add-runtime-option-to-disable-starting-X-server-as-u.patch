@@ -9,49 +9,55 @@ X server will be started under root. The same way as if gdm was built with
 
 This allows system to run X server under root if and only-if necessary.
 ---
-Index: gdm-40.1/daemon/gdm-local-display-factory.c
+Index: gdm-41.0/daemon/gdm-local-display-factory.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-local-display-factory.c
-+++ gdm-40.1/daemon/gdm-local-display-factory.c
-@@ -236,11 +236,13 @@ gdm_local_display_factory_create_transie
-         g_debug ("GdmLocalDisplayFactory: Creating transient display");
+--- gdm-41.0.orig/daemon/gdm-local-display-factory.c
++++ gdm-41.0/daemon/gdm-local-display-factory.c
+@@ -371,6 +371,7 @@ gdm_local_display_factory_create_transie
+         preferred_display_server = get_preferred_display_server (factory);
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
 +        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL ) {
-         display = gdm_local_display_new ();
-         if (gdm_local_display_factory_use_wayland ())
-                 g_object_set (G_OBJECT (display), "session-type", "wayland", NULL);
-         is_initial = TRUE;
--#else
-+//#else
-+        } else {
-         if (display == NULL) {
-                 guint32 num;
- 
-@@ -248,6 +250,7 @@ gdm_local_display_factory_create_transie
- 
-                 display = gdm_legacy_display_new (num);
+         if (g_strcmp0 (preferred_display_server, "wayland") == 0 ||
+             g_strcmp0 (preferred_display_server, "xorg") == 0) {
+                 g_auto(GStrv) session_types = NULL;
+@@ -392,8 +393,9 @@ gdm_local_display_factory_create_transie
+                               NULL);
+                 is_initial = TRUE;
          }
-+	}
++        }
  #endif
+-        if (g_strcmp0 (preferred_display_server, "legacy-xorg") == 0) {
++	//if (g_strcmp0 (preferred_display_server, "legacy-xorg") == 0) {
+                 if (display == NULL) {
+                         guint32 num;
  
-         g_object_set (display,
-@@ -597,12 +600,14 @@ ensure_display_for_seat (GdmLocalDisplay
+@@ -401,7 +403,7 @@ gdm_local_display_factory_create_transie
+ 
+                         display = gdm_legacy_display_new (num);
+                 }
+-        }
++	//}
+ 
+         if (display == NULL) {
+                 g_set_error_literal (error,
+@@ -776,6 +778,7 @@ ensure_display_for_seat (GdmLocalDisplay
          g_debug ("GdmLocalDisplayFactory: Adding display on seat %s", seat_id);
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
 +        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL ) {
-         if (is_seat0) {
-                 display = gdm_local_display_new ();
-                 if (session_type != NULL) {
-                         g_object_set (G_OBJECT (display), "session-type", session_type, NULL);
+         if (g_strcmp0 (preferred_display_server, "wayland") == 0 ||
+             g_strcmp0 (preferred_display_server, "xorg") == 0) {
+                 if (is_seat0) {
+@@ -786,6 +789,7 @@ ensure_display_for_seat (GdmLocalDisplay
+                                       NULL);
                  }
          }
-+	}
++        }
  #endif
  
          if (display == NULL) {
-@@ -893,6 +898,10 @@ on_vt_changed (GIOChannel    *source,
+@@ -1080,6 +1084,10 @@ on_vt_changed (GIOChannel    *source,
          g_debug ("GdmLocalDisplayFactory: VT changed from %u to %u",
                   previous_vt, factory->active_vt);
  
@@ -62,7 +68,7 @@ Index: gdm-40.1/daemon/gdm-local-display-factory.c
          store = gdm_display_factory_get_display_store (GDM_DISPLAY_FACTORY (factory));
  
          /* if the old VT was running a wayland login screen kill it
-@@ -1004,6 +1013,7 @@ gdm_local_display_factory_start_monitor
+@@ -1191,6 +1199,7 @@ gdm_local_display_factory_start_monitor
                                                                                    g_object_unref);
  
  #if defined(ENABLE_USER_DISPLAY_SERVER)
@@ -70,7 +76,7 @@ Index: gdm-40.1/daemon/gdm-local-display-factory.c
          io_channel = g_io_channel_new_file ("/sys/class/tty/tty0/active", "r", NULL);
  
          if (io_channel != NULL) {
-@@ -1014,6 +1024,7 @@ gdm_local_display_factory_start_monitor
+@@ -1201,6 +1210,7 @@ gdm_local_display_factory_start_monitor
                                          on_vt_changed,
                                          factory);
          }
@@ -78,7 +84,7 @@ Index: gdm-40.1/daemon/gdm-local-display-factory.c
  #endif
  }
  
-@@ -1036,6 +1047,7 @@ gdm_local_display_factory_stop_monitor (
+@@ -1223,6 +1233,7 @@ gdm_local_display_factory_stop_monitor (
                  factory->seat_properties_changed_id = 0;
          }
  #if defined(ENABLE_USER_DISPLAY_SERVER)
@@ -86,7 +92,7 @@ Index: gdm-40.1/daemon/gdm-local-display-factory.c
          if (factory->active_vt_watch_id) {
                  g_source_remove (factory->active_vt_watch_id);
                  factory->active_vt_watch_id = 0;
-@@ -1044,6 +1056,7 @@ gdm_local_display_factory_stop_monitor (
+@@ -1231,6 +1242,7 @@ gdm_local_display_factory_stop_monitor (
                  g_source_remove (factory->wait_to_finish_timeout_id);
                  factory->wait_to_finish_timeout_id = 0;
          }
@@ -94,35 +100,11 @@ Index: gdm-40.1/daemon/gdm-local-display-factory.c
  #endif
  }
  
-Index: gdm-40.1/daemon/gdm-session.c
+Index: gdm-41.0/daemon/gdm-session.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-session.c
-+++ gdm-40.1/daemon/gdm-session.c
-@@ -382,19 +382,22 @@ get_system_session_dirs (GdmSession *sel
-         if (!self->ignore_wayland &&
-             (type == NULL || g_str_equal (type, "wayland"))) {
- #ifdef ENABLE_USER_DISPLAY_SERVER
-+        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") == NULL ) {
-                 g_array_prepend_val (search_array, wayland_search_dir);
- 
-                 for (i = 0; system_data_dirs[i]; i++) {
-                         gchar *dir = g_build_filename (system_data_dirs[i], "wayland-sessions", NULL);
-                         g_array_insert_val (search_array, i, dir);
-                 }
--#else
-+//#else
-+        } else {
-                 for (i = 0; system_data_dirs[i]; i++) {
-                         gchar *dir = g_build_filename (system_data_dirs[i], "wayland-sessions", NULL);
-                         g_array_append_val (search_array, dir);
-                 }
- 
-                 g_array_append_val (search_array, wayland_search_dir);
-+        }
- #endif
-         }
- #endif
-@@ -3341,6 +3344,7 @@ gdm_session_get_display_mode (GdmSession
+--- gdm-41.0.orig/daemon/gdm-session.c
++++ gdm-41.0/daemon/gdm-session.c
+@@ -3360,6 +3360,7 @@ gdm_session_get_display_mode (GdmSession
          }
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
@@ -130,7 +112,7 @@ Index: gdm-40.1/daemon/gdm-session.c
          /* All other cases (wayland login screen, X login screen,
           * wayland user session, X user session) use the NEW_VT
           * display mode.  That display mode means that GDM allocates
-@@ -3363,7 +3367,8 @@ gdm_session_get_display_mode (GdmSession
+@@ -3382,7 +3383,8 @@ gdm_session_get_display_mode (GdmSession
           *   are paused when handed out.
           */
          return GDM_SESSION_DISPLAY_MODE_NEW_VT;
@@ -140,7 +122,7 @@ Index: gdm-40.1/daemon/gdm-session.c
  
  #ifdef ENABLE_WAYLAND_SUPPORT
          /* Wayland sessions are for now assumed to run in a
-@@ -3374,6 +3379,7 @@ gdm_session_get_display_mode (GdmSession
+@@ -3393,6 +3395,7 @@ gdm_session_get_display_mode (GdmSession
          }
  #endif
          return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
@@ -148,11 +130,11 @@ Index: gdm-40.1/daemon/gdm-session.c
  #endif
  }
  
-Index: gdm-40.1/daemon/gdm-session-worker.c
+Index: gdm-41.0/daemon/gdm-session-worker.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-session-worker.c
-+++ gdm-40.1/daemon/gdm-session-worker.c
-@@ -1755,8 +1755,10 @@ jump_back_to_initial_vt (GdmSessionWorke
+--- gdm-41.0.orig/daemon/gdm-session-worker.c
++++ gdm-41.0/daemon/gdm-session-worker.c
+@@ -1753,8 +1753,10 @@ jump_back_to_initial_vt (GdmSessionWorke
                  return;
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
@@ -163,12 +145,12 @@ Index: gdm-40.1/daemon/gdm-session-worker.c
  #endif
  }
  
-Index: gdm-40.1/daemon/gdm-manager.c
+Index: gdm-41.0/daemon/gdm-manager.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-manager.c
-+++ gdm-40.1/daemon/gdm-manager.c
-@@ -1349,6 +1349,8 @@ set_up_automatic_login_session (GdmManag
-                       "display-is-initial", FALSE,
+--- gdm-41.0.orig/daemon/gdm-manager.c
++++ gdm-41.0/daemon/gdm-manager.c
+@@ -1350,6 +1350,8 @@ set_up_automatic_login_session (GdmManag
+                       "supported-session-types", supported_session_types,
                        NULL);
  
 +        if (getenv ("GDM_DISABLE_USER_DISPLAY_SERVER") != NULL)
@@ -176,10 +158,10 @@ Index: gdm-40.1/daemon/gdm-manager.c
          g_debug ("GdmManager: Starting automatic login conversation");
          gdm_session_start_conversation (session, "gdm-autologin");
  }
-Index: gdm-40.1/daemon/gdm-server.c
+Index: gdm-41.0/daemon/gdm-server.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-server.c
-+++ gdm-40.1/daemon/gdm-server.c
+--- gdm-41.0.orig/daemon/gdm-server.c
++++ gdm-41.0/daemon/gdm-server.c
 @@ -752,7 +752,7 @@ gdm_server_start (GdmServer *server)
          GError **error = &local_error;
  

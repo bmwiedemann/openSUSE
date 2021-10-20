@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:21:15 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Add gdm-daemon-Infer-session-type-from-desktop-file.patch
+  (bsc#1191809, bsc#1191248)
+
+-------------------------------------------------------------------
+Tue Oct 12 01:41:13 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Rebase gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
+  (bsc#1191014).
+
+-------------------------------------------------------------------
 Tue Sep 28 06:51:26 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Rebase gdm-disable-gnome-initial-setup.patch.
