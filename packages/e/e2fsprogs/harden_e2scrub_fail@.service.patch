@@ -2,7 +2,7 @@ Index: e2fsprogs-1.46.3/scrub/e2scrub_fail@.service.in
 ===================================================================
 --- e2fsprogs-1.46.3.orig/scrub/e2scrub_fail@.service.in
 +++ e2fsprogs-1.46.3/scrub/e2scrub_fail@.service.in
-@@ -3,6 +3,18 @@ Description=Online ext4 Metadata Check F
+@@ -3,6 +3,17 @@ Description=Online ext4 Metadata Check F
  Documentation=man:e2scrub(8)
  
  [Service]
@@ -11,7 +11,6 @@ Index: e2fsprogs-1.46.3/scrub/e2scrub_fail@.service.in
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true

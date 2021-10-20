@@ -2,14 +2,13 @@ Index: e2fsprogs-1.46.4/scrub/e2scrub@.service.in
 ===================================================================
 --- e2fsprogs-1.46.4.orig/scrub/e2scrub@.service.in
 +++ e2fsprogs-1.46.4/scrub/e2scrub@.service.in
-@@ -10,6 +10,15 @@ PrivateNetwork=true
+@@ -10,6 +10,14 @@ PrivateNetwork=true
  ProtectSystem=true
  ProtectHome=read-only
  PrivateTmp=yes
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true

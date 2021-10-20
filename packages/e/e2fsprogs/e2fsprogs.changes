@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 12:11:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
 Thu Sep 30 14:13:06 UTC 2021 - Jan Kara <jack@suse.cz>
 
 - quota-Add-support-to-version-0-quota-format.patch: quota: Add support to
