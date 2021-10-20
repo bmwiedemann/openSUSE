@@ -1,5 +1,5 @@
 #
-# spec file for package python-zope.interface
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,9 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %global modname zope.interface
 %define oldpython python
-Name:           python-zope.interface
+Name:           python-zope.interface%{psuffix}
 Version:        5.4.0
 Release:        0
 Summary:        Interfaces for Python
@@ -29,8 +37,13 @@ Source:         https://files.pythonhosted.org/packages/source/z/zope.interface/
 # needed for tests that try to compile things
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module zope.event}
+BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.testing}
+%endif
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -55,20 +68,28 @@ the Design By Contract methodology support in Python.
 %setup -q -n %{modname}-%{version}
 
 %build
+%if !%{with test}
 %python_build
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %python_expand rm %{buildroot}%{$python_sitearch}/zope/interface/_zope_interface_coptimizations.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %check
-sed -i '/coverage/d' setup.py
-%python_exec setup.py test
+%if %{with test}
+cd src
+%pyunittest zope/interface/{common/,}tests/test_*.py
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
 %{python_sitearch}/*
+%endif
 
 %changelog

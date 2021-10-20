@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 09:49:15 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Fri Jul  9 22:37:08 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 5.4.0
