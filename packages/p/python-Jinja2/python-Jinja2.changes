@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 10 00:16:28 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- dropped obsolete no-warnings-as-errors.patch
+- update to 3.0.2
+  * Fix a loop scoping bug that caused assignments in nested loops to still
+    be referenced outside of it. #1427
+  * Make compile_templates deterministic for filter and import names. #1452, #1453
+  * Revert an unintended change that caused Undefined to act like
+    StrictUndefined for the in operator. #1448
+  * Imported macros have access to the current template globals in async
+    environments. #1494
+  * PackageLoader will not include a current directory (.) path segment.
+    This allows loading templates from the root of a zip import. #1467
+
+-------------------------------------------------------------------
 Fri Sep 10 08:07:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add no-warnings-as-errors.patch:
@@ -13,6 +28,11 @@ Fri Aug  6 07:34:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
 Fri Jul  9 11:03:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - clean up single-spec: Remove python2 remnants
+
+-------------------------------------------------------------------
+Sat Jun 19 12:42:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- updated upstream project URL
 
 -------------------------------------------------------------------
 Sun Jun 13 13:55:29 UTC 2021 - Michael Ströder <michael@stroeder.com>

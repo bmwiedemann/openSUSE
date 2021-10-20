@@ -24,13 +24,12 @@
 %bcond_without test
 %endif
 Name:           python-Jinja2
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-Patch0:         no-warnings-as-errors.patch
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -52,7 +51,6 @@ sandboxed environment.
 
 %prep
 %setup -q -n Jinja2-%{version}
-%autopatch -p1
 dos2unix LICENSE.rst # Fix wrong EOL encoding
 
 %build

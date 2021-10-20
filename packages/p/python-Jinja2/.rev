@@ -458,4 +458,12 @@
   * Do not treat warnings as errors until upstream fix using async loops.</comment>
     <requestid>917899</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a24dd56068435a4d0c6c10e69d6d79c5</srcmd5>
+    <version>3.0.2</version>
+    <time>1634754197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924643</requestid>
+  </revision>
 </revisionlist>
