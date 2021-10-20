@@ -356,6 +356,7 @@ mv %{buildroot}%{kbd}/keymaps/xkb/fi.map.gz %{buildroot}%{kbd}/keymaps/xkb/fi-ko
 # Fix converted cz layout - add compose rules (rh#1181581)
 gunzip %{buildroot}%{kbd}/keymaps/xkb/cz.map.gz
 patch %{buildroot}%{kbd}/keymaps/xkb/cz.map < %{SOURCE15}
+rm -f %{buildroot}%{kbd}/keymaps/xkb/cz.map.orig
 gzip -n9 %{buildroot}%{kbd}/keymaps/xkb/cz.map
 
 # Generate entries for systemd's /usr/share/systemd/kbd-model-map
