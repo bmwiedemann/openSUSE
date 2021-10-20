@@ -18,17 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dpkt
-Version:        1.9.4
+Version:        1.9.7.2
 Release:        0
 Summary:        Packet creation and parsing module for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kbandla/dpkt
 Source:         https://github.com/kbandla/dpkt/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_s390x_tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
-# Skip failing tests on s390x arch
-Patch0:         fix_s390x_tests.patch
-BuildRequires:  %{python_module mock}
+# PATCH-FIX-UPSTREAM skip-BE-tests.patch gh#kbandla/dpkt#505 mcepl@suse.com
+# Adjust tests to work on BE machines, gh#kbandla/dpkt#615
+Patch0:         skip-BE-tests.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,12 +54,11 @@ sed -i -e '/addopts=/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#kbandla/dpkt#505
-%pytest -s dpkt
+%pytest dpkt
 
 %files %{python_files}
 %license LICENSE
-%doc examples AUTHORS CHANGES README.rst
+%doc examples AUTHORS README.md docs
 %{python_sitelib}/*
 
 %changelog
