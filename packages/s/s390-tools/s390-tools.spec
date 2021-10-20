@@ -135,8 +135,6 @@ BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
 # Don't build with pie to avoid problems with zipl
 #!BuildIgnore:  gcc-PIE
-Requires(pre):  shadow
-Requires(post): %fillup_prereq permissions
 Requires:       coreutils
 Requires:       gawk
 Requires:       perl-base
@@ -144,6 +142,9 @@ Requires:       procps
 Requires:       rsync
 Requires:       tar
 Requires:       util-linux
+Requires(post): %fillup_prereq
+Requires(post): permissions
+Requires(pre):  shadow
 Recommends:     blktrace
 Provides:       s390utils:/sbin/dasdfmt
 ExclusiveArch:  s390x
@@ -171,7 +172,6 @@ LAN Emulation features in QDIO mode.
 It extends the capabilities of the net-snmp master agent (snmpd) and
 communicates with him via the AgentX protocol.
 
-
 %package zdsfs
 Summary:        QSAM access to z/OS data
 License:        GPL-2.0-or-later AND NonFree
@@ -197,7 +197,7 @@ This package contains a HMC drive file system based on FUSE and a tool
 to list files and directories.
 
 %package -n libekmfweb1
-Summary:        IBM Enterprise Key Management Foundation - Web Edition client library 
+Summary:        IBM Enterprise Key Management Foundation - Web Edition client library
 License:        MIT
 Group:          System/Libraries
 
@@ -208,7 +208,7 @@ security-rich centralized key management for IBM z/OS data set encryption
 on IBM Z servers.
 
 %package -n libekmfweb1-devel
-Summary:        IBM Enterprise Key Management Foundation - Web Edition client library 
+Summary:        IBM Enterprise Key Management Foundation - Web Edition client library
 License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       libekmfweb1
@@ -232,7 +232,7 @@ cp -vi %{SOURCE22} CAUTION
 
 export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
-make %{?_smp_mflags} \
+%make_build \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release}
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
@@ -259,7 +259,7 @@ install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
 
 export ROOT_BUILD_DIR="%{_builddir}/%{name}-%{version}/zfcpdump/kernel"
-install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
+install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
 install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules

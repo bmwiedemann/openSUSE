@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 18 17:51:04 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Updated the spec file to correspond to the changes made to the
+  location and name of the kernel image in the kernel-zfcpdump
+  package (bsc#1189841)
+- Did some spec file cleanup based on the recommendations from
+  spec-cleaner.
+
+-------------------------------------------------------------------
 Thu May  6 13:59:15 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Modified s390-tools-sles15-Implement-Y-yast_mode.patch by adding
