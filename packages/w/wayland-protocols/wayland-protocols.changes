@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:04:58 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Run test-suite during build:
+  + Add c_compiler and c++_compiler BuildRequires.
+  + Stop passing tests=false to meson.
+  + Add check section and meson_test macro.
+
+-------------------------------------------------------------------
+Wed Oct  6 11:46:58 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 1.23:
+  * This release adds the new gesture "hold" to the pointer gesture protocol.
+- Switch to building with meson
+- Based on work from home:ngh
+- Update description to fix grammar
+
+-------------------------------------------------------------------
 Wed Sep  1 17:58:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.22
