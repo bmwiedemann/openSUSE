@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:42:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  *  Only ``Path`` is exposed in the public API.
+  *  Remove news file intended only for CPython. 
+
+-------------------------------------------------------------------
 Sat Jul 17 13:36:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:
