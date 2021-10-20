@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 16 16:00:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.12.1
+  * Build universal2 wheels for Qt v6.2 and later when using
+    Python v3.10 and later.
+  * Added the '--arch' command line option to pyqt-bundle to
+    specify a particular architecture (x86_64 or arm64) to
+    bundle on macOS.
+
+-------------------------------------------------------------------
 Sun Oct  3 12:33:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.11.0

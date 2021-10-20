@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.11.0
+Version:        1.12.1
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
@@ -29,14 +29,14 @@ Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/Py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sip-devel >= 5.5
+Requires:       python-sip-devel >= 6.3
 Requires:       python-packaging
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-PyQt-builder = %{version}-%{release}
 BuildArch:      noarch
 # SECTION Test Requirements
-BuildRequires:  %{python_module sip-devel >= 5.5}
+BuildRequires:  %{python_module sip-devel >= 6.3}
 BuildRequires:  %{python_module packaging}
 # /SECTION
 %python_subpackages
