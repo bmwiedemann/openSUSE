@@ -17,13 +17,13 @@
 
 
 Name:           libsamplerate
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        A Sample Rate Converter Library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libsndfile.github.io/libsamplerate/
-Source0:        https://github.com/libsndfile/libsamplerate/releases/download/%{version}/libsamplerate-%{version}.tar.bz2
+Source0:        https://github.com/libsndfile/libsamplerate/releases/download/%{version}/libsamplerate-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE -- Make build reproducible
 Patch0:         libsamplerate-0.2.1-reproducible.patch
@@ -77,8 +77,8 @@ to develop applications that require these.
 %patch0 -p1
 
 %build
-autoreconf -fvi 
-%configure --disable-silent-rules --disable-static
+autoreconf -fvi
+%configure
 profiledir=`mktemp -d`
 
 %make_build CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"

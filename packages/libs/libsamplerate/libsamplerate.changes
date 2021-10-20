@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 16 10:14:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.2:
+  * Fix CMake overlinking for examples (#146)
+  * Switch to GCC's visibility for hiding more implementation details
+  * Check GNU ld instead of gcc for exported symbols control logic in configure.ac
+  * Disable static builds using Autotools by default.
+  * ABI version incompatibility between Autotools and CMake build on Apple platforms.
+  * Fixes and improvements for CMake build system.
+  * Fixes and improvements for Autotools build system.
+  * Switch to .xz over .bz2 for release tarballs.
+  * Minor bug fixes and updates. 
+
+-------------------------------------------------------------------
 Sun Jan 24 16:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.10.0:
+- update to 0.2.1:
   * Add src_clone() function to clone a SRC_STATE* handle
   * Cleanup Autotools build system.
   * Require C99 compiler
