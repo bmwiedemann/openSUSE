@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define skip_python2 1
 %define mname qt5
 Name:           python-%{mname}
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
@@ -116,6 +116,8 @@ Requires:       pkgconfig(Qt5WebChannel)
 Requires:       pkgconfig(Qt5WebSockets)
 Requires:       pkgconfig(Qt5X11Extras)
 Requires:       pkgconfig(Qt5XmlPatterns)
+# silence rpmlint
+Requires:       %{oldpython}(abi) = %{python_version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-qscintilla-qt5
@@ -138,6 +140,7 @@ Summary:        PyQt - devel part of python bindings for QtQuick3D
 Group:          Development/Libraries/Python
 Requires:       python-%{mname}-devel = %{version}
 Requires:       pkgconfig(Qt5Quick3D)
+Requires:       %{oldpython}(abi) = %{python_version}
 
 %description quick3d-devel
 PyQt is a set of Python bindings for the Qt framework.
@@ -150,6 +153,7 @@ Summary:        PyQt - devel part of python bindings for QtRemoteObjects
 Group:          Development/Libraries/Python
 Requires:       python-%{mname}-devel = %{version}
 Requires:       pkgconfig(Qt5RemoteObjects)
+Requires:       %{oldpython}(abi) = %{python_version}
 
 %description remoteobjects-devel
 PyQt is a set of Python bindings for the Qt framework.
@@ -190,6 +194,9 @@ This package contains the extension for QtRemoteObjects.
 
 %prep
 %autosetup -p1 -n PyQt5-%{version}
+chmod -x examples/activeqt/webbrowser/webbrowser.py
+dos2unix examples/tools/codecs/encodedfiles/iso-8859-1.txt
+dos2unix examples/tools/codecs/encodedfiles/iso-8859-15.txt
 
 %build
 # sip-build requires QtCore as target, even if we want a nonring module only
@@ -308,7 +315,7 @@ fi
 
 %files %{python_files quick3d}
 %license LICENSE
-%doc README NEWS ChangeLog
+%doc README
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/QtQuick3D*
 %sip5_only %exclude %{python_sitearch}/PyQt5/QtCore*
@@ -322,7 +329,7 @@ fi
 
 %files %{python_files remoteobjects}
 %license LICENSE
-%doc README NEWS ChangeLog
+%doc README
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/QtRemoteObjects*
 %exclude %{python_sitearch}/PyQt5/QtCore*

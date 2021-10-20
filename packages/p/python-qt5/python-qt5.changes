@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:54:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v5.15.5
+  * Added the missing QPdfWriter.setPageSize() overload.
+  * pylupdate5 now assumes that the default codec is UTF-8 and
+    specified v2.1
+    as the .ts file format.
+  * Bug fixes.
+- Silence some rpmlint errors
+
+-------------------------------------------------------------------
 Tue Jul  6 11:51:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove the noop %requires_ge libqt5-x11
