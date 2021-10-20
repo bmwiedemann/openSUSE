@@ -3177,4 +3177,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
    bsc#1106254,bsc#1106855,bsc#1106857,bsc#1106858,bsc#1106989,bsc#1106996,</comment>
     <requestid>923178</requestid>
   </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>74b25d4746156b1620ff95cdccf54429</srcmd5>
+    <version>7.1.0.10</version>
+    <time>1634754227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.10:
+  * improved algorithm for automatic calculation of pointsize for caption and
+    labels.
+  * support -auto-orient option in the identify utlity. (forwarded request 925727 from dirkmueller)</comment>
+    <requestid>925971</requestid>
+  </revision>
 </revisionlist>
