@@ -1,5 +1,5 @@
 #
-# spec file for package python-matplotlib-inline
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,18 +28,18 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-matplotlib-inline%{psuffix}
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Inline Matplotlib backend for Jupyter
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/matplotlib-inline
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib-inline/matplotlib-inline-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module matplotlib}
 %endif
 BuildRequires:  fdupes
 Requires:       python-traitlets
@@ -54,7 +54,6 @@ Matplotlib Inline Back-end for IPython and Jupyter
 
 %build
 %python_build
-
 
 %install
 %if ! %{with test}
