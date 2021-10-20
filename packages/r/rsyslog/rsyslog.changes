@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Wed Aug 18 08:20:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2108.0:
+  * 2021-08-16: openssl tls: Improved error message output on tls failures.
+    closes: https://github.com/rsyslog/rsyslog/issues/4645
+  * 2021-08-16: impstats: add percentile metrics tracking functionality
+    Brief overview:
+    TO configure tracking percentile metrics in rainerscript:
+    User would need to define:
+      - which percentile to track, such as [p50, p99, etc.]
+      - window size - note, this correlates directly with memory usage to
+      track the percentiles.
+    To track a value, user would call built-in function `percentile_observe()` in their configurations to
+    record an integer value, and percentile metrics would be emitted every
+    impstats interval.
+    Thanks to Nelson Yen for the patch.
+  * 2021-08-12: imfile: add parameter "ignoreolderthanoption"
+    instructs imfile not to ingest a file that has not been modified in the
+    specified number of seconds.
+    Thanks to github user yanjunli76 for the patch (submitted from Nelson Yen)
+  * 2021-08-10: imklog bugfix: invalid memory adressing, could cause abort
+    This is a regeression from commit 94c4a87. It introduced a free() call
+    using an object that was no longer valid (the main pointer to the
+    to-be-freed object) was already freed at time of use. This could
+    cause various issues, including a segfault.
+    Note: this bug was triggerred only during late phase of rsyslog
+    shutdown, so it did not affect regular operation.
+    Special thanks to github user wxiaoguang for analyzing the issue
+    and providing a draft fix proposal, on which this patch builds.
+    see also https://github.com/rsyslog/rsyslog/pull/4629
+    closes https://github.com/rsyslog/rsyslog/issues/4625
+  * 2021-08-09: imfile bugfix: deleteStateOnFileDelete missed some state files
+    When the log file is deleted, imfile would attempt to delete the statefile but it
+    was missing the file_id part of the statefile name. This means the statefiles were
+    only removed in the log file was less than 512 characters, because for very small
+    files the file ID hash is not created. This lead to some state files not being
+    deleted.
+    Thanks to pearseimperva for the patch.
+  * 2021-08-09: imfile bugfix: hash char invalidly added in readmode != 0
+    If imfile is ingesting log files with readMode set to 2 or 1, the resulting
+    messages all have a '#' character at the end. This patch corrects the behaviour.
+    Note: if some external script "supported" the bug of extra hash character at
+    the end of line, it may be necessary to update them.
+    closes https://github.com/rsyslog/rsyslog/issues/4491
+  * 2021-08-09: omelasticsearch bugfix: errorFile mutex was not consistently locked
+    Lock the file during SIGHUPs to avoid issues with concurrent accesses by
+    writeDataError().
+    Thanks to François Poirotte for the patch.
+  * 2021-08-09: imudp: add socket type (IPv4 vs. 6) to input name
+    Most importantly, the input name is used for stats counter names as
+    well. Previously, the same name was used for IPv4 and IPv6, so we had
+    two counters with an equal name. That left users puzzled.
+    Unfortunately, this change can potentially require changes to existing
+    analysis scripts, as the name is now slightly different.
+    closes https://github.com/rsyslog/rsyslog/issues/4364
+  * 2021-08-06: omfwd: add capability for action-specific TLS certificate settings
+    This permits to override the global definitions for TLS certificates
+    at the action() level.
+  * 2021-08-06: imfile bugfix: file handle leak if "freshStartTail" was turned on
+  * 2021-08-05: imtcp: permit to use different certificate files per input/action
+    This completes the ability to override global/default TLS settings at the imtcp
+    input() level. Support for using multiple CAs/Certs per Connection is now provided.
+  * 2021-08-04: imptcp bugfix: keep alive interval was incorrectly set
+    The interval was accidentally set to keep alive interval. This has been
+    corrected.
+    closes https://github.com/rsyslog/rsyslog/issues/4609
+  * 2021-07-08: openssl network driver bugfix: small memory leak
+    Fixes a static, non-growing memory leak which existed when parameter
+    "GnutTLSPriorityString" was used. This was primarily a cosmetic issue,
+    but caused some grief during development in regard to memory leak
+    detectors.
+    Note: yes, this is for openssl -- the parameter name is historical.
+  * 2021-07-07: psrv bugfix: abort if no listener could be started
+    Modules (like imtcp and imdiag) which use tcpsrv could abort or
+    otherwise malfunction if no listener for a specific input could
+    be started.
+    Found during implementing a new feature, no report from practice.
+    But could very well happen.
+  * 2021-07-07: mmkubernetes bugfix: apiserver error handling
+    - Added graceful handling of apiserver errors with unexpected responses,
+      i.e., anything other than 200, 404, or 429. Idea is that apiserver
+      transient error state will recover. We don't want mmkubernetes to miss
+      metadata resolution for containers that don't have cached metadata.
+      During these transient error states, mmkubernetes will provide basic
+      container file path based resolution of namespace and pod metadata for
+      new pods whose metadata is not yet cached. After this error state
+      recovers, mmkubernetes is expected to resume its metadata resolution as
+      expected.
+    - Added a unit test case for apiserver return 500 with changes to mock server
+    -  Fixed existing unit test that was failing due to missing expected results file
+    -  Added mmkubernetes unit tests to testbench
+    Thanks to Abdul Waheed for the patch (submitted from Nelson Yen).
+  * 2021-07-07: ommongodb bugfixes
+    - Fix Segmentation fault when server is down
+    - Add server connexion check while resuming
+    Thanks to Kevin Guillemot for the patch.
+  * 2021-06-28: omkafka improvements
+    - drain librdkafka queues and retry later during rsyslog restart or hup. This
+      re-injects messages into rsyslog's native queues.
+    - add statsname on per kafka instance for better visibility
+    - omkafka - count errors related ssl as "errors_ssl"
+    Thanks to Nelson Yen for the patch.
+  * 2021-06-23: some CI/QA improvements, Travis-CI disabled
+    For the time being, Travis CI is disabled because it was outdated and Travis also
+    changed their system. We will re-evaluate if we re-enable it. Since quite a while
+    the Travits tests were redundant with the rest of CI, so this does not reduce
+    coverage.
+  * 2021-06-23: omhttp bugfix: dynrestpath param in batch mode invalid
+    When batchmode was used, the templates could not be used to
+    expand dynrestpath. We are now storing the restpath param
+    within the batch data if we are in batch mode.
+    When we are in batch mode, and the restpath value changes, the
+    batch is submitted and reinitialized
+    closes: https://github.com/rsyslog/rsyslog/issues/4567
+  * 2021-06-17: add predefined template RSYSLOG_SyslogRFC5424Format
+    This is essentially the same as RSYSLOG_SyslogProtocol23Format with
+    a better name and a fix to remove the unnecessary LF at the end of
+    the message.
+    The different name also enables us to fix the LF issue without
+    any concern about backwards compatibility.
+    closes https://github.com/rsyslog/rsyslog/issues/4384
+  * 2021-06-17: impstats/bugfix: _sender_stats reports integer counter as string
+    Note that this introduces a small backwards incompatibility: in previous output
+    the field was of string type, now it is integer (as intended). We discussed this
+    on the mailing list and the overwhelming thought was that this is not a problem
+    because almost all analysis backends are able to cover that format change. This made
+    the bugfix essentially costmetic.
+    HOWEVER, if you still experience issues, please let us know. We can add an option
+    to provide the previous format, and just spared to do so because there was no
+    evidence it was needed.
+
+-------------------------------------------------------------------
 Tue Jun 15 17:42:39 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2106.0:
