@@ -18,7 +18,7 @@
 
 %define cpan_name Scalar-List-Utils
 Name:           perl-Scalar-List-Utils
-Version:        1.59
+Version:        1.60
 Release:        0
 Summary:        Common Scalar and List utility subroutines
 License:        Artistic-1.0 OR GPL-1.0-or-later

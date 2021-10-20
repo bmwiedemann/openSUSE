@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  9 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.60 -- 2021-10-08
+  	[BUGFIXES]
+  	 * Quiet some -Wsign-compare warnings by using `int` instead of `UV`
+  	   (RT136985)
+  	 * Quiet a -Wmaybe-uninitialized warning by ensuring a variable is
+  	   always initialised, because the compiler can't always determine this
+  	   is safe (RT139356)
+  	 * Avoid SIGFPE in product(-1, ...) (RT139601)
+
+-------------------------------------------------------------------
 Mon Sep 13 03:07:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.59
