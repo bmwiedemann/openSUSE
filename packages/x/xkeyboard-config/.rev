@@ -817,4 +817,31 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     <comment></comment>
     <requestid>920267</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>2d5d356530faeb661deb2559c87f7072</srcmd5>
+    <version>2.34</version>
+    <time>1634754158</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.34 
+  * xml2lst: use dynamic Perl path
+  * Resolved 101key Old Hungarian II
+  * Old turkish f layout (with pc104 support) added.
+  * Fix wrong key symbol name
+  * Added International Phonetic Alphabet (QWERTY)
+  * gitlab CI: update to latest ci-templates
+  * Hellenic keyboard perfected.
+  * lt: Place sterling symbol on AD03, layer 4 (with E and euro)
+  * Use single guillemots on L4 (not less/greater) where L3 has guillemots
+  * Added English (Dvorak, Macintosh) based on the MacOS dvorak layout
+  * Accommodate uppercase/lowercase ß, long s, §; deduplicate Ł
+  * Move left/right quotes one key to the right, place lower quotes on AB04
+  * Update symbols/it adding credits and reference for fur lang
+  * lt/us: Inherit AE09/AE10 from latin
+  * Add Russian GOST layouts
+  * Add Polish(lefty) layout
+  * Add Arabic(Ergoarabic) keyboard layout
+  * translation sync
+  * Hebrew translation added</comment>
+    <requestid>923013</requestid>
+  </revision>
 </revisionlist>
