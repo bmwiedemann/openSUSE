@@ -9,10 +9,10 @@ Subject: [PATCH] In monitor backend, do not return Connection0 entries as they
  1 file changed, 5 insertions(+)
 
 diff --git a/servers/slapd/back-monitor/conn.c b/servers/slapd/back-monitor/conn.c
-index c1995b0..2d27738 100644
+index 4d327f243..c4d3c6237 100644
 --- a/servers/slapd/back-monitor/conn.c
 +++ b/servers/slapd/back-monitor/conn.c
-@@ -454,6 +454,11 @@ monitor_subsys_conn_create(
+@@ -456,6 +456,11 @@ monitor_subsys_conn_create(
  				c != NULL;
  				c = connection_next( c, &connindex ) )
  		{
@@ -22,8 +22,5 @@ index c1995b0..2d27738 100644
 +			}
 +
  			monitor_entry_t 	*mp;
- 
- 			if ( conn_create( mi, c, &e, ms ) != SLAP_CB_CONTINUE
--- 
-2.1.4
 
+ 			/* ignore outbound for now, nothing to show */
