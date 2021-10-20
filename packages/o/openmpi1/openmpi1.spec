@@ -1,7 +1,7 @@
 #
-# spec file for package openmpi1
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -157,7 +157,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun): mpi-selector
+Requires(preun):mpi-selector
 Requires:       %{package_name}-libs = %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -204,7 +204,7 @@ Provides:       openmpi = %{version}
 %define mpi_bindir %hpc_bindir
 %define mpi_libdir %hpc_libdir
 %define mpi_datadir %hpc_datadir
-%define mpi_helpdir %{mpi_datadir}/openmpi 
+%define mpi_helpdir %{mpi_datadir}/openmpi
 %define mpi_includedir %hpc_includedir
 %define mpi_mandir %hpc_mandir
 
@@ -449,7 +449,7 @@ chmod 644 NEWS
     	   --with-threads \
            --disable-silent-rules \
            --enable-mpirun-prefix-by-default \
-           --with-package-string="Open MPI Distribution for SUSE" 
+           --with-package-string="Open MPI Distribution for SUSE"
 
 make %{?_smp_mflags}
 
@@ -550,8 +550,8 @@ prepend-path LD_LIBRARY_PATH %{mpi_libdir}
 
 EOF
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat <<EOF >%{buildroot}%{_rpmmacrodir}/macros.openmpi
 #
 # openmpi
 #
@@ -597,8 +597,8 @@ EOF
 sed -e "s/export/setenv/" -e "s/=/ /" \
     %{buildroot}/%{mpi_bindir}/mpivars.sh > \
     %{buildroot}/%{mpi_bindir}/mpivars.csh
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{S:3} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp %{S:3} %{buildroot}%{_rpmmacrodir}
 
 # Drop the files that should go into %{pname}-config as we only package them
 # in the non HPC build
@@ -771,9 +771,9 @@ fi
 %files macros-devel
 %defattr(-,root,root,-)
 %if %{with hpc}
-%config %{_sysconfdir}/rpm/macros.hpc-openmpi
+%config %{_rpmmacrodir}/macros.hpc-openmpi
 %else
-%config %{_sysconfdir}/rpm/macros.openmpi
+%config %{_rpmmacrodir}/macros.openmpi
 %endif
 
 %if 0%{?build_static_devel}
