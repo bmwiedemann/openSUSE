@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:29:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * gpm.service
+
+-------------------------------------------------------------------
 Wed Mar 10 13:17:37 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - remove unnecessary StandardOutput override in the unit definition

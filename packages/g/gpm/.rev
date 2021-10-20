@@ -390,4 +390,12 @@ Scripts git-archive-tarbz2.sh and report_success.sh are GPL-3.0+ licensed (forwa
   file. (bsc#1182147)</comment>
     <requestid>878178</requestid>
   </revision>
+  <revision rev="54" vrev="19">
+    <srcmd5>f95c3d2f3c2c191b4a86673a46e71e27</srcmd5>
+    <version>1.20.7</version>
+    <time>1634754163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925658</requestid>
+  </revision>
 </revisionlist>
