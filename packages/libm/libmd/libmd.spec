@@ -18,7 +18,7 @@
 
 %define sover    0
 Name:           libmd
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Message digest functions from BSD systems
 License:        BSD-2-Clause OR BSD-3-Clause OR ISC OR SUSE-Public-Domain
