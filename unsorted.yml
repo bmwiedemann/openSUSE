@@ -3426,6 +3426,9 @@ unsorted:
   - faba-icon-theme 
   - fabtests 
   - facedetect 
+  - facetimehd-firmware 
+  - facetimehd-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - facetimehd-kmp-pae: [i586] 
   - faenza-icon-theme 
   - faenza-icon-theme-ambiance 
   - faenza-icon-theme-dark 
@@ -12709,7 +12712,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler112-32bit: [x86_64] 
+  - libpoppler114-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -18270,6 +18273,7 @@ unsorted:
   - pam_radius-32bit: [x86_64] 
   - pam_script 
   - pam_snapper 
+  - pam_ssh_agent_auth 
   - pam_u2f 
   - pam_unix-32bit: [x86_64] 
   - pam_unix-nis 
@@ -21719,6 +21723,7 @@ unsorted:
   - python36-asv 
   - python36-async_generator 
   - python36-async_timeout 
+  - python36-asyncpg 
   - python36-asynctest 
   - python36-atlassian-python-api 
   - python36-atom 
@@ -23440,7 +23445,6 @@ unsorted:
   - python36-pytest-describe 
   - python36-pytest-django 
   - python36-pytest-djangoapp 
-  - python36-pytest-doctestplus 
   - python36-pytest-dotenv 
   - python36-pytest-echo 
   - python36-pytest-env 
@@ -24166,7 +24170,6 @@ unsorted:
   - python36-yaspin 
   - python36-yaswfp 
   - python36-yg.lockfile 
-  - python36-youtube-dl 
   - python36-yq 
   - python36-zake 
   - python36-zc.buildout 
@@ -27111,7 +27114,6 @@ unsorted:
   - python38-yaspin 
   - python38-yaswfp 
   - python38-yg.lockfile 
-  - python38-youtube-dl 
   - python38-yq 
   - python38-yt 
   - python38-zake 
@@ -30246,7 +30248,6 @@ unsorted:
   - python39-yaspin 
   - python39-yaswfp 
   - python39-yg.lockfile 
-  - python39-youtube-dl 
   - python39-yq 
   - python39-yt 
   - python39-zake 
@@ -42616,11 +42617,11 @@ unsorted:
   - you-get-bash-completion 
   - you-get-fish-completion 
   - you-get-zsh-completion 
-  - youtube-dl 
-  - youtube-dl-bash-completion 
-  - youtube-dl-fish-completion 
-  - youtube-dl-zsh-completion 
   - ypserv 
+  - yt-dlp 
+  - yt-dlp-bash-completion 
+  - yt-dlp-fish-completion 
+  - yt-dlp-zsh-completion 
   - ytree 
   - yubico-piv-tool 
   - yubikey-manager 
