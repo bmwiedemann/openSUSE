@@ -360,4 +360,13 @@
     <comment>GNOME 40 - here we come (forwarded request 880945 from dimstar)</comment>
     <requestid>881118</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>70af7d929049c30b7e7ed9b2c2c75f5a</srcmd5>
+    <version>41.0</version>
+    <time>1634754182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.0:
+  + Updated translations. (forwarded request 925819 from iznogood)</comment>
+    <requestid>926173</requestid>
+  </revision>
 </revisionlist>

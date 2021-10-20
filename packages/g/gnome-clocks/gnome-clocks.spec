@@ -18,18 +18,17 @@
 
 
 Name:           gnome-clocks
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.23.3
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 1.0
@@ -61,7 +60,6 @@ search results from GNOME Clocks.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson
