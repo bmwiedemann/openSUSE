@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-apipkg%{psuffix}
-Version:        1.5
+Version:        2.1.0
 Release:        0
 Summary:        Namespace control and lazy-import mechanism
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/apipkg/
 Source:         https://files.pythonhosted.org/packages/source/a/apipkg/apipkg-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest4.patch bsc#[0-9]+ mimi.vx@gmail.com
-# Collected upstream fixes for gh#pytest-dev/apipkg#14 and
-# gh#pytest-dev/apipkg#15
-Patch0:         pytest4.patch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
@@ -50,16 +46,18 @@ BuildArch:      noarch
 %description
 With apipkg you can control the exported namespace of a
 python package and greatly reduce the number of imports for your users.
-It is a `small pure python module`_ that works on virtually all Python
-versions, including CPython2.3 to Python3.1, Jython and PyPy.  It co-operates
-well with Python's ``help()`` system, custom importers (PEP302) and common
-command line completion tools.
+It is a small pure python module that works on CPython 2.7 and 3.4+,
+Jython and PyPy.  It co-operates well with Python's help() system,
+custom importers (PEP302) and common command line completion tools.
 
 Usage is very simple: you can require 'apipkg' as a dependency or you
-can copy paste the <100 Lines of code into your project.
+can copy paste the ~200 lines of code into your project.
 
 %prep
 %autosetup -p1 -n apipkg-%{version}
+# Fix Python 2 install error on old setuptools in Leap
+# https://github.com/pypa/setuptools/issues/1136
+sed -i '/use_scm_version/ a \    package_dir={"": "src"},' setup.py
 
 %build
 %python_build
