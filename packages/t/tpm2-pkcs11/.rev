@@ -7,4 +7,12 @@
     <comment>add to factory</comment>
     <requestid>913585</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f038de72d42fb86ec8927c2686bf933</srcmd5>
+    <version>1.7.0</version>
+    <time>1634754244</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring &amp; use source verification (forwarded request 926535 from gmbr3)</comment>
+    <requestid>926537</requestid>
+  </revision>
 </revisionlist>

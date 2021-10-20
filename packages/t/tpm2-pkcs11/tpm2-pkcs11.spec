@@ -19,22 +19,25 @@
 %define so_ver  0
 %define pythons python3
 Name:           tpm2-pkcs11
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A PKCS#11 interface for TPM2 hardware
 License:        BSD-2-Clause
 Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-pkcs11
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+Source2:        %{name}.keyring
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive >= 2017.03.21
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  tpm2.0-tools
+BuildRequires:  python-rpm-generators
 BuildRequires:  python3-base
 BuildRequires:  python3-setuptools
-BuildRequires:  fdupes
+BuildRequires:  tpm2.0-tools
 BuildRequires:  pkgconfig(libcrypto) >= 1.0.2g
 BuildRequires:  pkgconfig(p11-kit-1)
 BuildRequires:  pkgconfig(sqlite3)
@@ -43,7 +46,6 @@ BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
 BuildRequires:  pkgconfig(tss2-tctildr)
 BuildRequires:  pkgconfig(yaml-0.1)
-BuildRequires:  python-rpm-generators
 %{?python_enable_dependency_generator}
 
 %description
