@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:51:42 UTC 2021 - Max Lin <mlin@suse.com>
+
+- Replace /usr/etc to /etc for products if suse_version < 1550
+  (bsc#1190289)
+
+-------------------------------------------------------------------
 Fri May 21 13:02:56 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Remove %ghost from /var/cache/lightdm. With SELinux enabled

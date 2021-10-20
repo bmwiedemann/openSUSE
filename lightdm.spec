@@ -264,7 +264,7 @@ install -Dpm 0755 %{SOURCE5} %{buildroot}%{_libexecdir}/lightdm/gdmflexiserver
 install -Dpm 0644 %{SOURCE6} %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-suse-defaults.conf
 install -Dpm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/lightdm/users.conf
 
-%if ! %{defined _distconfdir}
+%if !%{defined _distconfdir} || 0%{?suse_version} < 1550
 sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-suse-defaults.conf
 %endif
 
