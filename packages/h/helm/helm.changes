@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 12:37:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- use 'v' prefix for the version to match upstream builds
+- package fish completions 
+
+-------------------------------------------------------------------
 Thu Sep 16 02:32:04 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 3.6.3:

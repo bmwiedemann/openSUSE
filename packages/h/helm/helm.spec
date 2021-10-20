@@ -56,12 +56,22 @@ BuildArch:      noarch
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    packageand(%{name}:fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %prep
 %setup -qa1
 
 %build
 %goprep %{goipath}
-%gobuild -mod vendor -buildmode pie -ldflags "-X %{goipath}/internal/version.version=%{version} -X %{goipath}/internal/version.gitCommit=%{git_commit} -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
+%gobuild -mod vendor -buildmode pie -ldflags "-X %{goipath}/internal/version.version=v%{version} -X %{goipath}/internal/version.gitCommit=%{git_commit} -X %{goipath}/internal/version.gitTreeState=%{git_dirty}" cmd/helm
 
 %install
 %goinstall
@@ -69,6 +79,8 @@ mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
+%{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files
 %doc README.md
@@ -84,5 +96,11 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %defattr(-,root,root)
 %dir %{_datarootdir}/zsh_completion.d/
 %{_datarootdir}/zsh_completion.d/_%{name}
+
+%files fish-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
