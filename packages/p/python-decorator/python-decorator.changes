@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 16 20:56:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Added a function `decoratorx` using the `FunctionMaker` and thus
+    preserving the signature of `__code__` objects.
+  * Sphinx was printing a few warnings when building the documentation
+  * functions decorated with `decorator.contextmanager` were one-shot,
+     as discovered by Alex Pizarro.
+  * `decorator.decorator` was not passing the kwsyntax argument.
+- drop kwsyntax.patch (usptream)
+
+-------------------------------------------------------------------
 Thu Aug  5 15:25:53 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch kwsyntax.patch

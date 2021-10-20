@@ -221,4 +221,19 @@
     <comment></comment>
     <requestid>910347</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6cbeabf3817ffde5877a59471abba10c</srcmd5>
+    <version>5.1.0</version>
+    <time>1634754210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.0:
+  * Added a function `decoratorx` using the `FunctionMaker` and thus
+    preserving the signature of `__code__` objects.
+  * Sphinx was printing a few warnings when building the documentation
+  * functions decorated with `decorator.contextmanager` were one-shot,
+     as discovered by Alex Pizarro.
+  * `decorator.decorator` was not passing the kwsyntax argument.
+- drop kwsyntax.patch (usptream)</comment>
+    <requestid>925751</requestid>
+  </revision>
 </revisionlist>

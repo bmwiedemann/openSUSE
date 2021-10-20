@@ -21,15 +21,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-decorator
-Version:        5.0.9
+Version:        5.1.0
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/micheles/decorator
 Source:         https://files.pythonhosted.org/packages/source/d/decorator/decorator-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/micheles/decorator/commit/817d070db3c9cc5900d118837c533c039982b050 Fixed decorator.decorator not passing kwsyntax
-Patch0:         kwsyntax.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
