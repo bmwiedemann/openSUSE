@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:36:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * format to black
+  * Changed imports of own modules to be relative
+
+-------------------------------------------------------------------
 Thu Apr 22 20:42:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:

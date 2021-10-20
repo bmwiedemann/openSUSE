@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamlloader
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 License:        MIT
 Summary:        Ordered YAML loader and dumper for PyYAML

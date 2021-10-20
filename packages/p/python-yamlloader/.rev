@@ -19,4 +19,14 @@
 - remove happy_utf8.patch: upstream</comment>
     <requestid>887890</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b55f14b4e5ab98dcc837076ecc00b34</srcmd5>
+    <version>1.1.0</version>
+    <time>1634754208</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * format to black
+  * Changed imports of own modules to be relative</comment>
+    <requestid>925739</requestid>
+  </revision>
 </revisionlist>
