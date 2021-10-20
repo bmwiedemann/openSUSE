@@ -67,4 +67,17 @@
   * XXH3 hashes: `xxh3_64`, `xxh3_128`, and their oneshot functions</comment>
     <requestid>828824</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00e8b0ce622d5c79b650550f3f36a8d6</srcmd5>
+    <version>2.0.2</version>
+    <time>1634754199</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use %pyunittest rpm macro
+
+- Update to 2.0.2
+  * Fix Travis CI OSX dpl python2.7 get-pip.py error
+- from version 2.0.1
+  * Only to trigger Python 3.9 wheels building</comment>
+    <requestid>925628</requestid>
+  </revision>
 </revisionlist>

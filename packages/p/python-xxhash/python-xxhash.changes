@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:21:23 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Thu Aug 26 11:46:32 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.2
+  * Fix Travis CI OSX dpl python2.7 get-pip.py error
+- from version 2.0.1
+  * Only to trigger Python 3.9 wheels building
+
+-------------------------------------------------------------------
 Mon Aug 24 05:03:36 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.0:
