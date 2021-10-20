@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.26
+Version:        4.8.27
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later

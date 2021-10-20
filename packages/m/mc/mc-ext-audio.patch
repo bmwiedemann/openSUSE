@@ -1,11 +1,14 @@
---- misc/mc.ext.in.orig	2020-07-05 14:38:53.000000000 -0300
-+++ misc/mc.ext.in	2020-07-24 08:11:38.576087946 -0300
-@@ -481,16 +481,19 @@
+Index: misc/mc.ext.in
+===================================================================
+--- misc/mc.ext.in.orig
++++ misc/mc.ext.in
+@@ -573,17 +573,20 @@ shell/i/.svg
  ### Sound files ###
  
  regex/i/\.(wav|snd|voc|au|smp|aiff|snd|m4a|ape|aac|wv)$
 -	Open=@EXTHELPERSDIR@/sound.sh open common
 +	Include=audio
+ 	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view common
  
  regex/i/\.(mod|s3m|xm|it|mtm|669|stm|ult|far)$
  	Open=@EXTHELPERSDIR@/sound.sh open mod
@@ -21,7 +24,7 @@
  	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view mp3
  
  regex/i/\.og[gax]$
-@@ -502,15 +505,22 @@
+@@ -595,15 +598,22 @@ shell/i/.opus
  	View=%view{ascii} @EXTHELPERSDIR@/sound.sh view opus
  
  regex/i/\.(spx|flac)$

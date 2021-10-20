@@ -1,6 +1,8 @@
---- misc/ext.d/sound.sh.orig	2020-07-05 14:38:53.000000000 -0300
-+++ misc/ext.d/sound.sh	2020-07-24 08:30:33.348037353 -0300
-@@ -6,18 +6,37 @@
+Index: misc/ext.d/sound.sh
+===================================================================
+--- misc/ext.d/sound.sh.orig
++++ misc/ext.d/sound.sh
+@@ -6,22 +6,40 @@
  action=$1
  filetype=$2
  
@@ -27,6 +29,10 @@
 +    fi
 +
      case "${filetype}" in
+     common)
+         mediainfo "${MC_EXT_FILENAME}"
+         ;;
+-
      mp3)
 -        mpg123 -vtn1 "${MC_EXT_FILENAME}" 2>&1 | \
 -            sed -n '/^Title/,/^Comment/p;/^MPEG/,/^Audio/p'
@@ -42,7 +48,7 @@
          ;;
      opus)
          opusinfo "${MC_EXT_FILENAME}"
-@@ -25,11 +44,11 @@
+@@ -29,11 +47,11 @@ do_view_action() {
      wma)
          mplayer -quiet -slave -frames 0 -vo null -ao null -identify "${MC_EXT_FILENAME}" 2>/dev/null | \
              tail +13 || file "${MC_EXT_FILENAME}"
