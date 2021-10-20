@@ -64,6 +64,12 @@ Requires(post): /sbin/ldconfig
 Requires(post): udev
 Requires(postun): udev
 
+%package -n libgphoto2_port12
+Summary:        Port drivers for the libgphoto2 digital camera library
+Group:          System/Libraries
+Requires(pre):  /sbin/ldconfig
+Requires(post): /sbin/ldconfig
+
 %package doc
 Summary:        Documentation for libgphoto2
 Group:          Documentation/Other
@@ -73,6 +79,7 @@ Summary:        Development headers for libgphoto2
 Group:          Development/Libraries/C and C++
 Requires:       libexif-devel
 Requires:       libgphoto2-%major = %version
+Requires:       libgphoto2_port12 = %version
 Requires:       libusb-1_0-devel
 
 %package devel-doc
@@ -107,6 +114,15 @@ http://gphoto.org/proj/libgphoto2/support.php
 or by running
 
 gphoto2 --list-cameras
+
+%description -n libgphoto2_port12
+gPhoto (GNU Photo) is a set of libraries for previewing, retrieving,
+and capturing images from a range of supported digital cameras to your
+local hard drive. It does not support digital cameras based on the USB
+storage protocol as those can be mounted by Linux directly.
+
+This package contains the port drivers (e.g. the USB drivers, the PTP/IP
+driver).
 
 %description doc
 gPhoto (GNU Photo) is a set of libraries for previewing, retrieving,
@@ -197,15 +213,18 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %files -n libgphoto2-%major
 %defattr(-,root,root)
 %_libdir/libgphoto2
-%_libdir/libgphoto2_port
 # support files for konica camlib
 %_datadir/%name
 %_libdir/libgphoto2.so.*
-%_libdir/libgphoto2_port.so.*
 %if 0%{?suse_version} > 1230
 %_udevhwdbdir/20-gphoto.hwdb
 %endif
 %_udevrulesdir/40-libgphoto2.rules
+
+%files -n libgphoto2_port12
+%defattr(-,root,root)
+%_libdir/libgphoto2_port
+%_libdir/libgphoto2_port.so.*
 %_datadir/libgphoto2_port
 
 %files -n libgphoto2-doc
@@ -230,6 +249,9 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %files devel-doc
 %defattr(-,root,root)
 %doc apidocs README.apidocs
+
+%post   -n libgphoto2_port12 -p /sbin/ldconfig
+%postun -n libgphoto2_port12 -p /sbin/ldconfig
 
 %post -n %name-%major
 /sbin/ldconfig

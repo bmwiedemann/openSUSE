@@ -1506,4 +1506,13 @@
   * New IDS:</comment>
     <requestid>875384</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>e22603d8917035cf68bf6adb1090f57a</srcmd5>
+    <version>2.5.27</version>
+    <time>1634754230</time>
+    <user>dimstar_suse</user>
+    <comment>- split out libgphoto2_port for now to meet new shared library policy
+  requirements. bsc#1191764 (forwarded request 926033 from msmeissn)</comment>
+    <requestid>926034</requestid>
+  </revision>
 </revisionlist>

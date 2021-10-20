@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 18 14:27:17 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- split out libgphoto2_port for now to meet new shared library policy
+  requirements. bsc#1191764
+
+-------------------------------------------------------------------
 Sun Feb 21 12:11:08 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 2.5.27 release 
