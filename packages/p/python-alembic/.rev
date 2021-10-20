@@ -1363,4 +1363,41 @@
       invoked. The rationale is so that environments which m</comment>
     <requestid>897867</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9426a11e4a365b0b49b67e2256526b59</srcmd5>
+    <version>1.7.4</version>
+    <time>1634754224</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.4:
+  * Fixed a regression that prevented the use of post write hooks on python
+    version lower than 3.9 
+  * Added missing attributes from context stubs.
+  * Fixed issue where registration of custom ops was prone to failure due to
+    the registration process running exec() on generated code that as of the
+    1.7 series includes pep-484 annotations, which in the case of end user code
+    would result in name resolution errors when the exec occurs
+
+- specfile:
+  * skip python 2 builds
+  * require importlib-resources
+- update to version 1.7.1:
+  * Corrected &quot;universal wheel&quot; directive in setup.cfg so that
+    building a wheel does not target Python 2. The PyPi files index
+    for 1.7.0 was corrected manually. Pull request courtesy layday.
+  * Fixed issue in generated .pyi files where default values for
+    &quot;Optional&quot; arguments were missing, thereby causing mypy to
+    consider them as required.
+  * Fixed regression in batch mode due to :ticket:`883` where the
+    &quot;auto&quot; mode of batch would fail to accommodate any additional
+    migration directives beyond encountering an &quot;add_column()&quot;
+    directive, due to a mis-application of the conditional logic that
+    was added as part of this change, leading to &quot;recreate&quot; mode not
+    being used in cases where it is required for SQLite such as for
+    unique constraints.
+- changes from version 1.7.0:
+  * Fixed regression due to :ticket:`803` where the &quot;.info&quot; and
+    &quot;.comment&quot; attributes of &quot;Table&quot; would be lost inside of the
+    :class:`.DropTableOp` class, which when &quot;reversed&quot; into a</comment>
+    <requestid>925915</requestid>
+  </revision>
 </revisionlist>
