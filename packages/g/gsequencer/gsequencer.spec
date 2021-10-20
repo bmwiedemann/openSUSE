@@ -22,15 +22,16 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.9.7
+Version:        3.12.3
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.9.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/3.12.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
+BuildRequires:  gcc-c++
 BuildRequires:  cunit-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -83,7 +84,17 @@ and piano roll and there is an editor to automate ports.
 
 %build
 autoreconf -fi
-export CPPFLAGS='-std=gnu99 -include errno.h -DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_START_FILENAME=\"file://'%{_docdir}'/gsequencer/html/index.html/\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -DAGS_WITH_LIBINSTPATCH=1'
+export LIBAGS_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBAGS_THREAD_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBAGS_SERVER_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+#export LIBAGS_VST3_RELEASE_TYPE="-DRELEASE"
+#export LIBAGS_VST3_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+#export LIBAGS_VST3_CXXFLAGS="-I/usr/include/vst3sdk"
+#export LIBAGS_VST3_LIBS="-L/usr/%{_lib}/vst3sdk"
+export LIBAGS_AUDIO_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBAGS_GUI_CPPFLAGS='-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+export LIBGSEQUENCER_CPPFLAGS='-DAGS_CSS_FILENAME=\"'%{_datadir}'/gsequencer/styles/ags.css\" -DAGS_ANIMATION_FILENAME=\"'%{_datadir}'/gsequencer/images/gsequencer-800x450.png\" -DAGS_LOGO_FILENAME=\"'%{_datadir}'/gsequencer/images/ags.png\" -DAGS_LICENSE_FILENAME=\"'%{_datadir}'/licenses/gsequencer/COPYING\" -DAGS_ONLINE_HELP_START_FILENAME=\"file://'%{_docdir}'/gsequencer/html/index.html/\" -DAGS_REDUCE_RT_EVENTS=1 -DAGS_LIBRARY_SUFFIX=\".so\" -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security'
+#NOTE:JK: no --enable-vst3 passed to configure
 %configure \
 %if %{with run_functional_tests}
     --enable-run-functional-tests \
@@ -163,6 +174,7 @@ Advanced Gtk+ Sequencer library development files.
 %{_libdir}/libags_thread.so
 %{_libdir}/libags_server.so
 %{_libdir}/libags_gui.so
+#%{_libdir}/libags_vst.so
 %{_libdir}/libags_audio.so
 %{_libdir}/libgsequencer.so
 %{_datadir}/gir-1.0/*.gir
@@ -190,6 +202,7 @@ Advanced Gtk+ Sequencer library development documentation.
 %{_libdir}/libags_thread.so.%{libagssonumber}*
 %{_libdir}/libags_server.so.%{libagssonumber}*
 %{_libdir}/libags_gui.so.%{libagssonumber}*
+#%{_libdir}/libags_vst.so.%{libagssonumber}*
 %{_libdir}/libags_audio.so.%{libagssonumber}*
 
 %files -n typelib-1_0-Libags-3_0

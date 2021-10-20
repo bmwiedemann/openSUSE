@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 20 07:02:26 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.12.3 fixed SIGSEGV while destroy AgsMachine and
+  while restore from AgsSimpleFile XML.
+- fixed functional UI tests.
+
+-------------------------------------------------------------------
+Tue Oct 19 16:32:08 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.12.2 implemented AgsCompositeEditor, replacing
+  AgsNotationEditor, AgsAutomationEditor and AgsWaveEditor.
+- some bug-fixes.
+
+-------------------------------------------------------------------
+Wed Sep  1 10:04:38 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.10.15 implemented VST3 host, which is excluded
+  from build.
+- minor improvements.
+
+-------------------------------------------------------------------
 Tue Aug  3 07:03:27 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.9.7 completed refactoring of wanted utility
