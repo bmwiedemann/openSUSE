@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 20 08:41:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add 0011-update-doctest-for-glibc2.34.patch: Update doctest to
+  version 2.4.6 to allow Arm NN to build with glibc 2.34; patch
+  taken from upstream commits 13d2e0d and 4ec6d42and rebased for
+  current version.
+
+-------------------------------------------------------------------
 Thu Sep  9 08:04:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 21.08:

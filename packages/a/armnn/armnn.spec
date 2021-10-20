@@ -86,6 +86,7 @@ Patch202:       0006-armnn-mobilenet-test-example.patch
 Patch203:       0009-command-line-options-for-video-port-selection.patch
 Patch204:       0010-armnnexamples-update-for-19.08-modifications.patch
 Patch205:       armnn-fix_find_opencv.patch
+Patch206:       0011-update-doctest-for-glibc2.34.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  gcc-c++
@@ -364,6 +365,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 # Add Boost log as downstream extra test requires it
 sed -i 's/ find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
 %endif
+%patch206 -p1
 
 %build
 %if %{with armnn_onnx}
