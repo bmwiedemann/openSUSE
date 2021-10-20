@@ -19,29 +19,28 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fakeredis
-Version:        1.5.2
+Version:        1.6.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jamesls/fakeredis
 Source:         https://files.pythonhosted.org/packages/source/f/fakeredis/fakeredis-%{version}.tar.gz
-BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
 Requires:       python-redis
 Requires:       python-six >= 1.12
 Requires:       python-sortedcontainers
-Recommends:     python-future
-Suggests:       python-aioredis < 2
+Suggests:       python-aioredis
 Suggests:       python-lupa
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aioredis < 2}
-BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module aioredis}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lupa}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
@@ -71,6 +70,7 @@ export LANG="en_US.UTF8"
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/fakeredis
+%{python_sitelib}/fakeredis-%{version}*-info
 
 %changelog

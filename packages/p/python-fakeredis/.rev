@@ -52,4 +52,12 @@
  * support aioredis</comment>
     <requestid>903056</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cfeb74d5b66c69b6be3f2dfa93cda80</srcmd5>
+    <version>1.6.1</version>
+    <time>1634754189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926299</requestid>
+  </revision>
 </revisionlist>

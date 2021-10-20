@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:22:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.1
+  * #305 Some packaging modernisation
+  * #306 Fix FakeRedisMixin.from_url for unix sockets
+  * #308 Remove use of async_generator from tests
+- Release 1.6.0
+  * #304 Support aioredis 2
+  * #302 Switch CI from Travis CI to Github Actions
+
+-------------------------------------------------------------------
 Tue Jun 29 10:49:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.5.2
