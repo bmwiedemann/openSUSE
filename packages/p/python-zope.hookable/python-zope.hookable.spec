@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.hookable
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-zope.hookable
-Version:        5.0.1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-zope.hookable%{psuffix}
+Version:        5.1.0
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
@@ -33,7 +41,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Sphinx}
 # /SECTION
 # SECTION testing requirements
+%if %{with test}
+BuildRequires:  %{python_module zope.hookable}
 BuildRequires:  %{python_module zope.testing}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -60,24 +71,35 @@ This package contains documentation files for %{name}.
 rm -rf zope.hookable.egg-info
 
 %build
+%if !%{with test}
 %python_build
 python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
+%endif
 
 %install
+%if !%{with test}
 %python_install
 %{python_expand rm -f %{buildroot}%{$python_sitearch}/zope/hookable/_zope_hookable.c
   %fdupes %{buildroot}%{$python_sitearch}
 }
+%endif
 
 %check
-%python_exec setup.py test
+%if %{with test}
+pushd src
+%pyunittest 'zope.hookable.tests.test_hookable.test_suite'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %{python_sitearch}/*
+%endif
 
+%if !%{with test}
 %files -n %{name}-doc
 %doc build/sphinx/html/
+%endif
 
 %changelog

@@ -75,4 +75,12 @@ New dependency of python-Pyramid</comment>
     <comment>- Do not pull in py2 package in doc subpkg</comment>
     <requestid>792449</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b878a58da51d32bc9380947db03a0fab</srcmd5>
+    <version>5.1.0</version>
+    <time>1634754203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925647</requestid>
+  </revision>
 </revisionlist>
