@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ddt
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT

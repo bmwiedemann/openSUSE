@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Fix the ddt.idata signature issue introduced in 1.4.3
+  * Fix zero padding issue 
+
+-------------------------------------------------------------------
 Wed Apr  7 20:25:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix python 2.x build 
