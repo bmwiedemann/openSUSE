@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Oct 16 11:42:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.2:
+  + New features:
+    - rsvg-convert now supports generating multi-page PDFs in a
+      sensible way.
+    - With one SVG document per page, each page with the SVG's
+      natural size:
+    - rsvg-convert --format=pdf -o out.pdf a.svg b.svg c.svg
+    - With all pages sized as portrait US Letter, and each SVG
+      scaled to fit so that there is a 1in margin around each page:
+      rsvg-convert --format=pdf -o out.pdf \
+      --page-width=8.5in --page-height=11in \
+      --width=6.5in --height=8.5in --keep-aspect-ratio \
+      --top=1in --left=1in a.svg b.svg c.svg
+      Please see the man page for details.
+    - Support <a> elements inside <text>. Also, support the CSS
+      :link pseudo-class for matching against links.
+    - Support the CSS :lang() pseudo-class for matching against an
+      element's xml:lang attribute.
+    - Support the mask-type property from SVG2.
+  + Bugs fixed:
+    - Don't panic when a shorthand property is set to inherit.
+    - Fix regression with the viewport size of interior <svg>
+      elements.
+    - Allow length units to be case-insensitive, per SVG2.
+  + Documentation:
+    - There is now a FEATURES.md in the repository, where you can
+      see all the elements, attributes, and properties that librsvg
+      supports. We will be adding detail to this gradually.
+    - For developers, there is now devel-docs/adding-a-property.md
+      with a tutorial on how to add support for new CSS properties.
+
+-------------------------------------------------------------------
 Wed Oct  6 19:41:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.1:
