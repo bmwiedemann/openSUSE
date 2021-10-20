@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  4 19:17:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- regenerated cz-map.patch needed for xkeyboard-config 2.34 update
+
+-------------------------------------------------------------------
 Fri Jul 23 12:03:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Only run kbdsettings.service if /etc/sysconfig/keyboard exists.
