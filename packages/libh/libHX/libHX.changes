@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 17 16:55:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2
+  * string: New functions ``HX_strtod_unit``, ``HX_strtoull_unit``,
+    ``HX_unit_size``, ``HX_unit_size_cu`` for converting between
+    sizes and human-readable sizes like 1457664 <-> "1.45M"/"1.39M".
+
+-------------------------------------------------------------------
 Wed Oct 13 12:59:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1
