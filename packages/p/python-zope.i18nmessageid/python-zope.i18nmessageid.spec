@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.i18nmessageid
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-zope.i18nmessageid
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-zope.i18nmessageid%{psuffix}
 Version:        5.0.1
 Release:        0
 Summary:        Zope Location
@@ -28,13 +36,16 @@ Source:         https://files.pythonhosted.org/packages/source/z/zope.i18nmessag
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
 BuildRequires:  %{python_module Sphinx}
 Requires:       python-six
 # /SECTION
+# SECTION testing requirements
+%if %{with test}
+BuildRequires:  %{python_module zope.i18nmessageid}
+%endif
 %python_subpackages
 
 %description
@@ -52,26 +63,35 @@ This package contains documentation files for %{name}.
 rm -rf zope.i18nmessageid.egg-info
 
 %build
+%if !%{with test}
 %python_build
 python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
+%endif
 
 %install
+%if !%{with test}
 %python_install
 # don't bother with development files
 %{python_expand rm -f %{buildroot}%{$python_sitearch}/zope/i18nmessageid/_zope_i18nmessageid_message.c
   %fdupes %{buildroot}%{$python_sitearch}
 }
+%endif
 
 %check
-sed -i '/coverage/d' setup.py
-%python_exec setup.py test
+%if %{with test}
+%pyunittest 'zope.i18nmessageid.tests.test_suite'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %{python_sitearch}/*
+%endif
 
+%if !%{with test}
 %files -n %{name}-doc
 %doc build/sphinx/html/
+%endif
 
 %changelog

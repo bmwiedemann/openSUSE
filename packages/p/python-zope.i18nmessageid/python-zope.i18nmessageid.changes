@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 13 09:10:40 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Wed Apr  8 12:16:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in python2 pkg in doc subpkg
