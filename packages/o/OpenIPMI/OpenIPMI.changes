@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 12 19:22:34 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fix file conflict with old python2 version (bsc#1190999):
+found conflict of OpenIPMI-python-2.0.25-7.3.1.x86_64 with OpenIPMI-python3-2.0.31-1.1.x86_64
+  /usr/bin/openipmigui
+  /usr/share/man/man1/openipmigui.1.gz
+  
+
+-------------------------------------------------------------------
 Wed Oct  6 07:17:32 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Enhance changelog as demanded in an internal submitrequest

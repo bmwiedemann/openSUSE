@@ -135,6 +135,7 @@ Requires:       OpenIPMI
 Requires:       python3-tk
 Requires:       tix
 Provides:       openipmigui
+Conflicts:      OpenIPMI-python
 
 %description python3
 The Python parts provide an OpenIPMI Python library and a GUI, openipmigui,
