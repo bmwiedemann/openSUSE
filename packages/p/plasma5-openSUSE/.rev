@@ -1128,4 +1128,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
     <requestid>924725</requestid>
   </revision>
+  <revision rev="135" vrev="44">
+    <srcmd5>0c9974da3c2c01f1dbe934b9adf786cf</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1634754182</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926392</requestid>
+  </revision>
 </revisionlist>
