@@ -1,7 +1,7 @@
 #
 # spec file for package libcdio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %define cdio_name libcdio19
-%define cdiopp_name libcdio++0
+%define cdiopp_name libcdio++1
 %define iso9660_name libiso9660-11
+%define iso9660pp_name libiso9660++0
 %define udf_name libudf0
 Name:           libcdio
 Version:        2.1.0
@@ -41,7 +42,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  pkgconfig(libcddb)
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 The libcdio package contains libraries for CD-ROM and CD image
@@ -78,6 +79,14 @@ Group:          System/Libraries
 %description -n %{iso9660_name}
 A library for working with ISO 9660 filesystems, which are mainly used on CDs.
 
+%package -n %{iso9660pp_name}
+Summary:        Library for working with ISO 9660 filesystems
+Group:          System/Libraries
+
+%description -n %{iso9660pp_name}
+A library for working with ISO 9660 filesystems, which are mainly used on CDs.
+This subpackage contains the C++ API library for cdio.
+
 %package -n %{udf_name}
 Summary:        Library for working with Universal Disk Format filesystems
 Group:          System/Libraries
@@ -92,9 +101,10 @@ Group:          Development/Languages/C and C++
 Requires:       %{cdio_name} = %{version}
 Requires:       %{cdiopp_name} = %{version}
 Requires:       %{iso9660_name} = %{version}
+Requires:       %{iso9660pp_name} = %{version}
 Requires:       %{udf_name} = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description devel
 The libcdio package contains libraries for CD-ROM and CD image
@@ -134,10 +144,12 @@ make %{?_smp_mflags} check
 %post -n %{cdio_name} -p /sbin/ldconfig
 %post -n %{cdiopp_name} -p /sbin/ldconfig
 %post -n %{iso9660_name} -p /sbin/ldconfig
+%post -n %{iso9660pp_name} -p /sbin/ldconfig
 %post -n %{udf_name} -p /sbin/ldconfig
 %postun -n %{cdio_name} -p /sbin/ldconfig
 %postun -n %{cdiopp_name} -p /sbin/ldconfig
 %postun -n %{iso9660_name} -p /sbin/ldconfig
+%postun -n %{iso9660pp_name} -p /sbin/ldconfig
 %postun -n %{udf_name} -p /sbin/ldconfig
 
 %post devel
@@ -151,6 +163,8 @@ make %{?_smp_mflags} check
 
 %files -n %{cdiopp_name}
 %{_libdir}/libcdio++.so.*
+
+%files -n %{iso9660pp_name}
 %{_libdir}/libiso9660++.so.*
 
 %files -n %{iso9660_name}
