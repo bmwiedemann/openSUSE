@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 16 15:58:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Bug fixes.
+  * SIP itself now uses the limited API itself.
+  * Added the Project.get_platform_tag() method to the sipbuild
+    API.
+
+-------------------------------------------------------------------
 Sun Oct  3 12:33:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.2.0
