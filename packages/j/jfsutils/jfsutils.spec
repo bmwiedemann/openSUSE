@@ -1,7 +1,7 @@
 #
 # spec file for package jfsutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define _sbindir /sbin
 Name:           jfsutils
 Version:        1.1.15
 Release:        0
@@ -37,9 +36,7 @@ BuildRequires:  e2fsprogs-devel
 Provides:       jfsprogs = %{version}
 Obsoletes:      jfsprogs < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1010
 Supplements:    filesystem(jfs)
-%endif
 
 %description
 This package contains utilities for managing IBM's Journaled File

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 11 11:59:23 UTC 2021 - David Disseldorp <ddiss@suse.com>
+
+- UsrMerge: don't override _sbindir (bsc#1191065)
+
+-------------------------------------------------------------------
 Wed Apr 29 13:46:30 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Added patch: libfs-Fixing-issue-with-variable-name-collision.patch
