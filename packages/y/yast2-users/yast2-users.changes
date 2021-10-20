@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:50:07 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- The shadow tools are used for reading the useradd default values
+  (bsc#1190864).
+- Unsupported useradd attributes (i.e., skel and groups) are
+  removed from the UI.
+- 4.4.7
+
+-------------------------------------------------------------------
 Thu Aug 12 14:35:20 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Allow to edit the name of an existing user (bsc#1188612).
