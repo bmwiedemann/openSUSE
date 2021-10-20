@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 16 22:02:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.0:
+  * Fix #209 Update freeze recurse into pyrsistent data structures and thaw to
+    recurse into lists and dicts
+  * Fix #226, stop using deprecated exception.message.
+  * Fix #211, add union operator to persistent maps.
+  * Fix #194, declare build dependencies through pyproject.toml.
+  * Officially drop Python 3.5 support.
+  * Fix #223, release wheels for all major platforms.
+  * Fix #221, KeyError obscured by TypeError if key is a tuple.
+  * Fix LICENSE file name spelling.
+  * Fix #216, add abstractmethod decorator for CheckedType and ABCMeta for
+    _CheckedTypeMeta.
+  * Fix #228, rename example classes in tests to avoid name clashes with pytest.
+
+-------------------------------------------------------------------
 Mon Feb 15 21:26:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove remnant requirements of six and numpy: These are neither

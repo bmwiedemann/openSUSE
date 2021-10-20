@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-pyrsistent
-Version:        0.17.3
+Version:        0.18.0
 Release:        0
 Summary:        Persistent, Functional, Immutable data structures
 License:        MIT
@@ -59,7 +59,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch -ra
 
 %files %{python_files}
-%license LICENCE.mit
+%license LICENSE.mit
 %doc CHANGES.txt README.rst
 %pycache_only %{python_sitearch}/__pycache__/_pyrsistent*
 %{python_sitearch}/_pyrsistent*
