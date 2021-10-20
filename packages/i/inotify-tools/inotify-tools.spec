@@ -17,7 +17,7 @@
 
 
 Name:           inotify-tools
-Version:        3.21.9.5
+Version:        3.21.9.6
 Release:        0
 Summary:        Tools for inotify
 License:        GPL-2.0-only

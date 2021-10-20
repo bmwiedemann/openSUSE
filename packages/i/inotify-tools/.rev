@@ -69,4 +69,14 @@
   * various static code analyse annotations and fixes</comment>
     <requestid>921871</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d17a52fe22bbf913d8639f39821d4d03</srcmd5>
+    <version>3.21.9.6</version>
+    <time>1634754164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.9.6:
+  * update path for includes in stats.h 
+  * Fix spellings in manpages</comment>
+    <requestid>925709</requestid>
+  </revision>
 </revisionlist>
