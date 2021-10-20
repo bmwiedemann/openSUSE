@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 13 14:14:06 UTC 2021 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Ignore libudev1 dependency for Enterprise Linux.
+
+-------------------------------------------------------------------
 Thu Sep 02 13:30:30 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1630589391.4557cfd:

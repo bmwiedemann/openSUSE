@@ -26,10 +26,12 @@ License:        Apache-2.0
 Group:          System/Packages
 URL:            https://github.com/openSUSE/yomi
 Source0:        %{fname}-%{version}.tar.xz
+%if !0%{?rhel}
 # Workaround for this OBS error:
 #     conflict for providers of libudev1 needed by python3-pyudev
 #             (provider libudev1 is in conflict with libudev-mini1)
 BuildRequires:  libudev1
+%endif
 Requires:       python3-base
 BuildArch:      noarch
 # On SLE/Leap 15-SP1 and TW requires the new salt-formula
