@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ppx_variants_conv
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generation of accessor and iteration functions for ocaml variant types
@@ -26,8 +26,7 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ppx_variants_conv
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         ocaml-ppx_variants_conv.patch
-BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-dune >= 2.0.0
 BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocamlfind(base)

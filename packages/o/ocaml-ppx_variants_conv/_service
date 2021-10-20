@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ppx_variants_conv</param>
-    <param name="revision">fc2c46d2b07214a0b43676082f91fcdeb30600a5</param>
+    <param name="revision">715247b9cf55bc759cc4e0f62d30601575e11501</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/janestreet/ppx_variants_conv.git</param>
