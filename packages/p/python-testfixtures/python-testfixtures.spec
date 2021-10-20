@@ -16,17 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-testfixtures
-Version:        6.17.1
+Version:        6.18.3
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: gh#Simplistix/testfixtures/commit/52a14d92a122665b1a101e6398eca3982de01739
-Patch0:         appease-django-320.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
@@ -41,9 +39,6 @@ Suggests:       python-Twisted
 Suggests:       python-sybil
 Suggests:       python-zope.component
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 %python_subpackages
 
 %description
@@ -78,6 +73,7 @@ export PYTHONPATH=$(pwd)
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst docs/*.txt
-%{python_sitelib}/*
+%{python_sitelib}/testfixtures
+%{python_sitelib}/testfixtures-%{version}*-info
 
 %changelog

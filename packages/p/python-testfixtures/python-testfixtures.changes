@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  7 15:01:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 6.18.3
+  * Fix bug when using :func:`compare` on two regular expressions
+    that have very long patterns.
+  * Fix bug that meant :class:`LogCapture` didn't preserve or
+    provide a clean testing environment for filters.
+  * Fix bug when showing differences between mappings found by
+    :func:`compare` when mismatching values contained the same
+    number more than once.
+  * Add support for lazy resolution of prefix and suffix when using
+    :func:`compare`.
+- Drop appease-django-320.patch merged upstream
+- Drop unresolvable Python 2 build
+
+-------------------------------------------------------------------
 Sun May  9 17:11:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.17.1

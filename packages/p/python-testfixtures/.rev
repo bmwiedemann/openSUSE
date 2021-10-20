@@ -182,4 +182,12 @@
     :class:`SequenceComparison` could result in a failed match.</comment>
     <requestid>891895</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>59870f2657cd5354a0ee85658f1724eb</srcmd5>
+    <version>6.18.3</version>
+    <time>1634754197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924047</requestid>
+  </revision>
 </revisionlist>
