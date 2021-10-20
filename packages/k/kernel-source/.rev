@@ -5661,4 +5661,11 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.14.12 &amp; rtw89 driver &amp; rpm 4.17 fix</comment>
     <requestid>925588</requestid>
   </revision>
+  <revision rev="613" vrev="2">
+    <srcmd5>31c8590038cb10e55865992658eca426</srcmd5>
+    <version>5.14.11</version>
+    <time>1634719894</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191855</comment>
+  </revision>
 </revisionlist>
