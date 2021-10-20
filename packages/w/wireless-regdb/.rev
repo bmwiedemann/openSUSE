@@ -418,4 +418,21 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: re-add source url and info for CU</comment>
     <requestid>888974</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6b6cdf3d64668794a30c2eadd9e03138</srcmd5>
+    <version>20210828</version>
+    <time>1634754167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210828:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * Update regulatory rules for Ecuador (EC)
+  * wireless-regdb: Update regulatory rules for Norway (NO) on 6 and 60 GHz
+  * wireless-regdb: Update regulatory rules for Germany (DE) on 6GHz
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: reduce bandwidth for 5730-5850 and 5850-5895 MHz in US
+  * wireless-regdb: remove PTMP-ONLY from 5850-5895 MHz for US
+  * wireless-regdb: recent FCC report and order allows 5850-5895 immediately
+  * wireless-regdb: update 5725-5850 MHz rule for GB</comment>
+    <requestid>924815</requestid>
+  </revision>
 </revisionlist>

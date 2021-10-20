@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 12 08:43:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210828:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * Update regulatory rules for Ecuador (EC)
+  * wireless-regdb: Update regulatory rules for Norway (NO) on 6 and 60 GHz
+  * wireless-regdb: Update regulatory rules for Germany (DE) on 6GHz
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: reduce bandwidth for 5730-5850 and 5850-5895 MHz in US
+  * wireless-regdb: remove PTMP-ONLY from 5850-5895 MHz for US
+  * wireless-regdb: recent FCC report and order allows 5850-5895 immediately
+  * wireless-regdb: update 5725-5850 MHz rule for GB
+
+-------------------------------------------------------------------
 Wed Apr 28 07:46:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210421:
