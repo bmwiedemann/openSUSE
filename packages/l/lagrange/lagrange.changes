@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 19 18:26:13 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.7.3
+  - Fixed a memory leak in the text renderer.
+  - Added option to place new bookmarks to the top of the bookmarks list.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Tue Oct 12 19:35:41 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.7.2
