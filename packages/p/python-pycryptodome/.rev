@@ -174,4 +174,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>878405</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>77f0d7f8e88cd3b9140873d3de04a897</srcmd5>
+    <version>3.11.0</version>
+    <time>1634754218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.0:
+  * GH#512: Especially for very small bit sizes, ``Crypto.Util.number.getPrime()`` was
+    occasionally generating primes larger than given the bit size.
+  * GH#552: Correct typing annotations for ``PKCS115_Cipher.decrypt()``.
+  * GH#555: ``decrypt()`` method of a PKCS#1v1.5 cipher returned a ``bytearray`` instead of ``bytes``.
+  * GH#557: External DSA domain parameters were accepted even when the modulus (``p``) was not prime.
+    This affected ``Crypto.PublicKey.DSA.generate()`` and ``Crypto.PublicKey.DSA.construct()``.
+  * Added cSHAKE128 and cSHAKE256 (of SHA-3 family).
+  * GH#558: The flag RTLD_DEEPBIND passed to ``dlopen()`` is not well supported by
+    `address sanitizers &lt;https://github.com/google/sanitizers/issues/611&gt;`_.
+    It is now possible to set the environment variable ``PYCRYPTDOME_DISABLE_DEEPBIND``
+    to drop that flag and allow security testing.</comment>
+    <requestid>925769</requestid>
+  </revision>
 </revisionlist>
