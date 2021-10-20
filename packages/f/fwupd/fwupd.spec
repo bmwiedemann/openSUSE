@@ -51,6 +51,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
+Patch3:	harden_fwupd-offline-update.service.patch
+Patch4:	harden_fwupd-refresh.service.patch
 
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}

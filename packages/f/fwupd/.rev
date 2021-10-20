@@ -376,4 +376,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>923650</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>fe004a49b306c0ede579a05e4cd655cb</srcmd5>
+    <version>1.6.2</version>
+    <time>1634754225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925953</requestid>
+  </revision>
 </revisionlist>

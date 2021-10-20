@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:30:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_fwupd-offline-update.service.patch
+  * harden_fwupd-refresh.service.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 04:56:37 UTC 2021 - Joey Lee <jlee@suse.com>
 
 - Update to version 1.6.2
