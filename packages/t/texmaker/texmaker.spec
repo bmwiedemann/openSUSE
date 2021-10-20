@@ -1,7 +1,7 @@
 #
 # spec file for package texmaker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           texmaker
-Version:        5.0.4
+Version:        5.1.2
 Release:        0
 Summary:        LaTeX editor
-License:        GPL-2.0-only AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.xm1math.net/texmaker/
 Source:         http://www.xm1math.net/texmaker/texmaker-%{version}.tar.bz2
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5Xml)
 Requires:       hunspell
@@ -77,7 +78,6 @@ rm %{buildroot}%{_datadir}/%{name}/{AUTHORS,COPYING,CHANGELOG.txt}
 %{_datadir}/applications/texmaker.desktop
 %{_datadir}/pixmaps/texmaker.png
 %{_datadir}/texmaker/
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.metainfo.xml
 
 %changelog
