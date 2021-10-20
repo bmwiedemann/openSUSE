@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:44:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * Added Contrast Aware Multiscale Banding Index.
+  * Added pixel format VMAF_PIX_FMT_YUV400P.
+
+-------------------------------------------------------------------
+Tue Sep 21 19:19:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.1
+  * Fix a race condition in vmaf_thread_pool_wait().
+  * Avoid chroma resampling for 420mpeg2 y4m input.
+
+-------------------------------------------------------------------
 Fri Jul  2 19:00:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.0
