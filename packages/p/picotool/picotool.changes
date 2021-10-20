@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:56:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix installation path:
+  * picotool-ce76970.patch
+
+-------------------------------------------------------------------
 Fri Jul 23 12:27:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update SDK version to 1.2.0

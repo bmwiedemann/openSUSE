@@ -31,21 +31,22 @@ Source0:        https://github.com/raspberrypi/picotool/archive/%{version}.tar.g
 Source1:        https://github.com/raspberrypi/pico-sdk/archive/%{sdk_version}.tar.gz#/pico-sdk-%{sdk_version}.tar.gz
 # PATCH-FIX-UPSTREAM - https://github.com/raspberrypi/picotool/pull/30
 Patch1:         picotool-gh30.patch
+# PATCH-FIX-UPSTREAM - https://github.com/raspberrypi/picotool/issues/4
+Patch2:         picotool-ce76970.patch
 
 %description
 Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 devices when they are in BOOTSEL mode.
 
 %prep
 %setup -q -a 1
-%patch1 -p1
+%autopatch -p1
 
 %build
 %cmake -DPICO_SDK_PATH="../pico-sdk-%{sdk_version}"
 %cmake_build
 
 %install
-# No install target yet - https://github.com/raspberrypi/picotool/issues/4
-install -D -m 0755 build/picotool %{buildroot}%{_bindir}/picotool
+%cmake_install
 
 %files
 %defattr(-,root,root)
