@@ -90,7 +90,6 @@ BuildRequires:  libexpat-devel
 # libtool is needed to build all variants: bootstrap is unconditional in the build section
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 # FIXME: on upgrade, ensure to verify if -DGTK_DISABLE_DEPRECATED=1 can remain in avahi=ui/Makefile.am (GtkStock deprecated with GTK+ 3.9.10).
 %if !%{build_glib2} && !%{build_mono} && !%{build_qt5}
 # Create split spec files only when building per partes:
@@ -409,8 +408,11 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+
+
+
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -515,7 +517,6 @@ sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE10} >avahi-autoipd/avahi-autoipd.if-up
 sed "s:@sbindir@:%{_sbindir}:g" <%{SOURCE11} >avahi-autoipd/avahi-autoipd.if-down
 sed -ie "s/libevent-[0-9\.]*/libevent/" avahi-libevent.pc.in
 cp -a %{SOURCE12} service-type-database/build-db
-translation-update-upstream
 %patch0
 %patch1 -p1
 %patch4

@@ -1081,4 +1081,12 @@
   in baselib.conf and spec. (forwarded request 909699 from yfjiang)</comment>
     <requestid>909744</requestid>
   </revision>
+  <revision rev="142" vrev="8">
+    <srcmd5>1108070018a2f8be4c4f9430188ddcb9</srcmd5>
+    <version>0.8</version>
+    <time>1634754186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926288</requestid>
+  </revision>
 </revisionlist>

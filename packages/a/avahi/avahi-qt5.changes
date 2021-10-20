@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:21:50 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Mon Aug 31 12:14:11 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add initial release of avahi-qt5 flavor

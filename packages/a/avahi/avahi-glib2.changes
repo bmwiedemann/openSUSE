@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:21:50 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Jan 13 00:38:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix split-provides for python3-avahi-gtk: avahi-python is
