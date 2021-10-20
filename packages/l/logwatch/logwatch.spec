@@ -30,6 +30,8 @@ Source2:        Logwatch_Dmeventd_Setup_Files.tar.xz
 Source3:        ChangeLog
 Patch0:         logwatch-firewall.patch
 Patch2:         logwatch-timestamp_in_var.patch
+Patch3:	harden_logwatch.service.patch
+Patch4:	harden_logwatch_dmeventd.service.patch
 Requires:       grep
 Requires:       mailx
 Requires:       perl
@@ -65,6 +67,8 @@ chmod u+w Logwatch_Setup_Files/*
 cp %{S:3} .
 # fix package doc dir in man page
 sed -i -e 's,/usr/share/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
+%patch3 -p1
+%patch4 -p1
 
 %build
 

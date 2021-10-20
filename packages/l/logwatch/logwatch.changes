@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  5 14:26:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_logwatch.service.patch
+  * harden_logwatch_dmeventd.service.patch
+
+-------------------------------------------------------------------
 Fri Jul 16 23:19:40 UTC 2021 - Andrew Daugherity <adaugherity@tamu.edu>
 
 - Update URL (logwatch.org is no more).
