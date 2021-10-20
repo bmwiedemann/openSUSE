@@ -1,7 +1,7 @@
 #
 # spec file for package python-paramiko
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-paramiko
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
@@ -33,7 +34,7 @@ BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.5}
 BuildRequires:  %{python_module gssapi}
 BuildRequires:  %{python_module invocations}
-BuildRequires:  %{python_module invoke}
+BuildRequires:  %{python_module invoke >= 1.3}
 BuildRequires:  %{python_module pyasn1 >= 0.1.7}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
