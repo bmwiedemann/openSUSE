@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Oct 18 08:29:00 UTC 2021 - heming.zhao@suse.com
+
+- Update to v4.1.0+ (bsc#1191734)
+ * include some fixes/enhancements upstream patches based on 4.1.0 tag
+   + bug-1191734_0001-libdlm-add-stdint.h-to-api-header.patch
+   + bug-1191734_0002-dlm_controld-create-var-parent-directories.patch
+   + bug-1191734_0003-stonith_helper-fix-build.patch
+   + bug-1191734_0004-plock-move-clear-waiter-to-debug-info.patch
+   + bug-1191734_0005-treewide-try-to-resolve-symbols-at-linking-time.patch
+   + bug-1191734_0006-dlm_controld-add-version-check-for-libquorum.patch
+   + bug-1191734_0007-dlm_tool-man-add-command-joinleave-USAGE.patch
+   + bug-1191734_0008-man-add-reload_config-in-dlm_tool-dlm.conf.patch
+   + bug-1191734_0009-add-new-dlm_tool-command-reload_config.patch
+   + bug-1191734_0010-dlm_tool-man-add-new-command-set_config.patch
+   + bug-1191734_0011-dlm_tool-dlm_controld-add-new-feature-set_config.patch
+   + bug-1191734_0012-fix-some-minor-bugs.patch
+   + bug-1191734_0013-dlm_controld-fix-string-copies.patch
+   + bug-1191734_0014-man-page-updates.patch
+ * patch for compatible with corosync-2.4.5+
+   + bug-1191734_0015-Revert-dlm_controld-add-version-check-for-libquorum.patch
+   + bug-1191734_0016-Revert-dlm_controld-use-new-quorum-api-to-detect-mis.patch
+ * drop 2 patches which are already included in upstream code
+   - cluster-ringid-seq.patch
+   - sysmacros.patch
+ * change name and modify patch for code changed
+   - dlm_controld-add-note-that-the-dlm-file-is-not-creat.patch
+   + 0004-man-dlm.conf-add-note-that-the-file-is-not-creat.patch
+ * change libdlm.spec to seperate upsteam patch and suse special patch
+
+-------------------------------------------------------------------
 Wed Oct 14 11:04:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Do build with SUSE's %optflags.
