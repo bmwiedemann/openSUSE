@@ -17,13 +17,13 @@
 
 
 Name:           thai-fonts
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        A Collection of Thai OpenType Fonts
-License:        LPPL-1.3c AND GPL-2.0-only WITH Font-exception-2.0
+License:        GPL-2.0-only WITH Font-exception-2.0 AND LPPL-1.3c
 Group:          System/X11/Fonts
-URL:            ftp://linux.thai.net/pub/thailinux/software/fonts-tlwg/
-Source0:        ftp://linux.thai.net/pub/thailinux/software/fonts-tlwg/fonts-tlwg-%{version}.tar.xz
+URL:            https://linux.thai.net/projects/fonts-tlwg
+Source0:        https://linux.thai.net/pub/thailinux/software/fonts-tlwg/fonts-tlwg-%{version}.tar.xz
 BuildRequires:  fontpackages-devel
 Patch0:         build.patch
 BuildRequires:  fontconfig
@@ -38,7 +38,7 @@ BuildArch:      noarch
 
 %description
 Fonts-TLWG is a collection of Thai scalable fonts. It provides
-fonts that conform to existing standards and recommendations, so that it 
+fonts that conform to existing standards and recommendations, so that it
 can be a reference implementation.
 
 The fonts included are Garuda, Kinnari, Laksaman, Loma, Norasi, Purisa,
