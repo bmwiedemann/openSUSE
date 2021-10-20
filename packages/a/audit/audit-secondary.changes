@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 15 11:13:26 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
+Wed Oct 13 19:12:06 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Create separate service for augenrules (bsc#1191614, bsc#1181400)
+  * add create-augenrules-service.patch
+  Remove ReadWritePaths=/etc/audit from auditd.service, also removes
+  augenrules call from ExecStartPost.
+  Create augenrules.service with the ReadWritePaths directive above.
+  This makes /etc/audit only accessible by augenrules.service and
+  let auditd.service (and daemon) to be sandboxed again.
+
+- Update audit-secondary.spec to accomodate the new service file.
+
+-------------------------------------------------------------------
 Mon Sep 20 02:06:44 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Fix hardened auditd.service (bsc#1181400)

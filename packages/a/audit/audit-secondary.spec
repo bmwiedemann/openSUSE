@@ -40,6 +40,7 @@ Patch7:         harden_auditd.service.patch
 Patch8:         change-default-log_format.patch
 Patch9:         fix-hardened-service.patch
 Patch10:        enable-stop-rules.patch
+Patch11:        create-augenrules-service.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
@@ -135,6 +136,7 @@ rm -rf audisp/plugins/prelude
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.
@@ -165,7 +167,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 
 make %{?_smp_mflags}
 
-%sysusers_generate_pre %{SOURCE1} audit
+%sysusers_generate_pre %{SOURCE1} audit system-group-audit.conf
 
 %install
 %make_install
@@ -215,6 +217,7 @@ done
 # rcauditd symlink
 ln -s service %{buildroot}%{_sbindir}/rcauditd
 chmod 0644 %{buildroot}%{_unitdir}/auditd.service
+chmod 0644 %{buildroot}%{_unitdir}/augenrules.service
 
 %check
 make %{?_smp_mflags} check
@@ -231,17 +234,21 @@ elif [ ! -f %{_sysconfdir}/audit/audit.rules ]; then
    cp %{_sysconfdir}/audit/rules.d/audit.rules %{_sysconfdir}/audit/audit.rules
 fi
 %service_add_post auditd.service
+%service_add_post augenrules.service
 
 %pre -n audit
 %service_add_pre auditd.service
+%service_add_pre augenrules.service
 
 %pre -n system-group-audit -f audit.pre
 
 %preun -n audit
 %service_del_preun auditd.service
+%service_del_preun augenrules.service
 
 %postun -n audit
 %service_del_postun auditd.service
+%service_del_postun augenrules.service
 
 %files -n audit
 %license COPYING
@@ -292,6 +299,7 @@ fi
 %ghost %config(noreplace) %attr(640,root,audit) %{_localstatedir}/log/audit/audit.log
 %dir %attr(700,root,root) %{_localstatedir}/spool/audit
 %{_unitdir}/auditd.service
+%{_unitdir}/augenrules.service
 %{_sbindir}/rcauditd
 %{_datadir}/audit/
 
