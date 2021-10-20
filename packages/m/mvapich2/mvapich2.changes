@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 15:20:53 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Move rpm macros to %_rpmmacrodir (bsc#1191386)
+
+-------------------------------------------------------------------
 Tue Sep 28 07:20:18 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Remove obsolete python dependency (bsc#1190996)

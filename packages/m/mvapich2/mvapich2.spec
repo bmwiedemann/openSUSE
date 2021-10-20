@@ -494,8 +494,8 @@ set ModulesVersion "%{version}"
 EOF
 %else # with hpc
 
-install -d -m 755 %{buildroot}%{_sysconfdir}/rpm
-cp %{S:3} %{buildroot}%{_sysconfdir}/rpm
+install -d -m 755 %{buildroot}%{_rpmmacrodir}
+cp %{S:3} %{buildroot}%{_rpmmacrodir}
 
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
@@ -611,7 +611,7 @@ fi
 %if %{with hpc}
 %files macros-devel
 %defattr(-,root,root)
-%config %{_sysconfdir}/rpm/macros.hpc-mvapich2
+%config %{_rpmmacrodir}/macros.hpc-mvapich2
 %endif # with hpc
 
 %endif # !testsuite
