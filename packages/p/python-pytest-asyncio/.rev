@@ -66,4 +66,12 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>904060</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32e5208db0132f74b76701360f6c40fa</srcmd5>
+    <version>0.16.0</version>
+    <time>1634754186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926285</requestid>
+  </revision>
 </revisionlist>

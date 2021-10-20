@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:20:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.0
+  * Add support for Python 3.10
+- Drop 0001-removed-support-for-python-3.5.patch not required by
+  fakeredis 1.6.0 anymore
+
+-------------------------------------------------------------------
 Mon Jul  5 08:38:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to revert a change in 0.15.1 that removed
