@@ -5,6 +5,17 @@ Wed Oct  6 02:54:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 - Switch to Go 1.16.x compiler, in line with upstream.
 
 -------------------------------------------------------------------
+Wed Oct  6 02:54:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.4.11, to fix CVE-2021-41103 bsc#1191121. bsc#1191355
+- Switch to Go 1.16.x compiler, in line with upstream.
+
+-------------------------------------------------------------------
+Fri Oct  1 06:59:50 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Install systemd service file as well (fixes bsc#1190826)
+
+-------------------------------------------------------------------
 Tue Jul 20 09:30:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.4.8, to fix CVE-2021-32760. bsc#1188282

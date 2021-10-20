@@ -370,4 +370,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
 - Switch to Go 1.16.x compiler, in line with upstream.</comment>
     <requestid>923377</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>2dd7aad2c129086029a9fc97593dae83</srcmd5>
+    <version>1.4.11</version>
+    <time>1634754229</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>926019</requestid>
+  </revision>
 </revisionlist>

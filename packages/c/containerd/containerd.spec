@@ -35,6 +35,7 @@ Group:          System/Management
 URL:            https://containerd.tools
 Source:         %{name}-%{version}_%{git_short}.tar.xz
 Source1:        %{name}-rpmlintrc
+Source2:        %{name}.service
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-go-md2man
@@ -121,6 +122,9 @@ popd
 install -d -m755 %{buildroot}/%{_sysconfdir}/%{name}
 echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysconfdir}/%{name}/config.toml
 
+# Install system service
+install -Dp -m644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
+
 # Man pages.
 # TODO: Fix man page generation.
 #for file in man/*
@@ -132,6 +136,18 @@ echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysco
 
 %fdupes %{buildroot}
 
+%pre
+%service_add_pre %{name}.service
+
+%post
+%service_add_post %{name}.service
+
+%preun
+%service_del_preun %{name}.service
+
+%postun
+%service_del_postun %{name}.service
+
 %files
 %defattr(-,root,root)
 %doc README.md
@@ -140,6 +156,7 @@ echo "# See containerd-config.toml(5) for documentation." >%{buildroot}/%{_sysco
 %config %{_sysconfdir}/%{name}/config.toml
 %{_sbindir}/containerd
 %{_sbindir}/containerd-shim*
+%{_unitdir}/%{name}.service
 # TODO: Fix man page generation.
 #%{_mandir}/man*/%{name}*
 #%exclude %{_mandir}/man1/*ctr.1*
