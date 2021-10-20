@@ -366,4 +366,13 @@
 </comment>
     <requestid>905114</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c13214dc3b49cb109f3681f4495cc0ae</srcmd5>
+    <version>2021.3</version>
+    <time>1634754209</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.3
+  * matches tzdata 2021c</comment>
+    <requestid>925749</requestid>
+  </revision>
 </revisionlist>
