@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Fri Oct 15 09:14:11 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
-
-- update to 21.2.4
-  * fourth bugfix release
-  * 300 fixes from the new r300 maintainer! Additionally, panfrost,
-    lots of crocus, some freedreno, intel, radv, core meas, gallivum,
-    anv, spirv, gallim, aco, i915g, lima, and llvmpipe fixes.
-- supersedes U_gallivm-add-new-wrapper-around-Module.patch,
-  U_gallivm-fix-FTBFS-on-i386-with-LLVM-13.patch
-
--------------------------------------------------------------------
-Thu Oct 14 10:30:57 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
-
-- u_fix-build-on-ppc64le.patch
-  * fixes build on ppc64le (boo#1191569) 
-
--------------------------------------------------------------------
 Mon Oct  4 20:05:50 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix build with LLVM 13:

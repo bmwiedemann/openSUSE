@@ -4587,4 +4587,11 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fixes build on ppc64le (boo#1191569)</comment>
     <requestid>925420</requestid>
   </revision>
+  <revision rev="419" vrev="291">
+    <srcmd5>06a0ebd97d4d437c1b58643d004aa168</srcmd5>
+    <version>unknown</version>
+    <time>1634716775</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191855</comment>
+  </revision>
 </revisionlist>
