@@ -5224,4 +5224,12 @@
 - removed obsolete mozilla-bmo1708709.patch</comment>
     <requestid>923417</requestid>
   </revision>
+  <revision rev="347" vrev="2">
+    <srcmd5>120ed38580b68b4d32ab3b0161f46cac</srcmd5>
+    <version>93.0</version>
+    <time>1634754230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926026</requestid>
+  </revision>
 </revisionlist>

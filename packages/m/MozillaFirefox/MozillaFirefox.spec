@@ -227,6 +227,7 @@ Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
 Patch30:        mozilla-bmo1725828.patch
 Patch31:        mozilla-bmo531915.patch
+Patch32:        mozilla-bmo1729124.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -357,6 +358,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch29 -p1
 %patch30 -p1
 %patch31 -p1
+%patch32 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
