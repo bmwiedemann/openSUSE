@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 11 08:25:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_atd.service.patch
+  Modified:
+  * atd.service
+
+-------------------------------------------------------------------
 Fri Jul 16 09:09:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.2.2:

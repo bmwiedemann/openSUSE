@@ -58,6 +58,7 @@ Patch27:        at-3.1.14-usePOSIXtimers.patch
 Patch28:        at-adjust_load_to_cpu_count.patch
 # PATCH-FIX-UPSTREAM bnc#945124 kstreitova@suse.com -- don't loop on corrupt files and prevent their creation
 Patch29:        at-3.1.16-handle_malformed_jobs.patch
+Patch30:        harden_atd.service.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  bison

@@ -1,0 +1,24 @@
+Index: at-3.2.2/atd.service.in
+===================================================================
+--- at-3.2.2.orig/atd.service.in
++++ at-3.2.2/atd.service.in
+@@ -4,6 +4,19 @@ Documentation=man:atd(8)
+ After=remote-fs.target nss-user-lookup.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStartPre=-find @atjobdir@ -type f -name "=*" -not -newercc /run/systemd -delete
+ ExecStart=@sbindir@/atd -f
+ IgnoreSIGPIPE=false
