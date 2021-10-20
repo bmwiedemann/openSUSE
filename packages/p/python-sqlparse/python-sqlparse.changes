@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  1 12:42:17 UTC 2021 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 0.4.2 (bsc#1190741, CVE-2021-32839):
+  * This release fixes a security vulnerability in the strip
+    comments filter.
+  * Add ELSIF as keyword (issue584).
+  * Add CONFLICT and ON_ERROR_STOP keywords.
+  * Fix parsing of backticks (issue588).
+  * Fix parsing of scientific number (issue399).
+
+-------------------------------------------------------------------
 Thu Jan 28 08:27:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Disable building a python2 flavor so we can build the package
