@@ -22,7 +22,7 @@
 %define wdbus 1
 %define sonum 0
 Name:           jack
-Version:        1.9.18
+Version:        1.9.19
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
@@ -31,8 +31,6 @@ Group:          System/Sound Daemons
 URL:            https://jackaudio.org/
 Source0:        https://github.com/jackaudio/jack2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM -- https://github.com/jackaudio/jack2/commit/af6c00ab09428e79.patch
-Patch0:         0001-Fix-compilation-of-documentation.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
