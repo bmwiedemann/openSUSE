@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:02:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.4:
+  - Add submodule shims for backward compatibility.
+  - Add documentation and tests for using ``TTLCache`` with
+    ``datetime``.
+  - Link to typeshed typing stubs.
+  - Flatten package file hierarchy.
+
+-------------------------------------------------------------------
 Fri May 28 06:44:53 UTC 2021 - pgajdos@suse.com
 
 - version update to 4.2.2

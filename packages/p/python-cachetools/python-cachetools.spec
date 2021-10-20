@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cachetools
-Version:        4.2.2
+Version:        4.2.4
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
