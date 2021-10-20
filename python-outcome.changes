@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  1 20:18:41 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
+
+- update to version 1.1.0
+  * Tweaked the implementation of Error.unwrap to avoid creating a
+    reference cycle between the exception object and the unwrap
+    method's frame. This shouldn't affect most users, but it
+    slightly reduces the amount of work that CPython's cycle
+    collector has to do, and may reduce GC pauses in some cases. (#29)
+  * Drop support for Python 2.7, 3.4, and 3.5. (#27)
+
+-------------------------------------------------------------------
 Fri Dec  4 23:19:56 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - BuildRequire more than the default python3 flavor packages
