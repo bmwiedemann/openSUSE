@@ -139,4 +139,12 @@
     <comment>Don't just java-gcj-compat + fix build with jdk9</comment>
     <requestid>530810</requestid>
   </revision>
+  <revision rev="21" vrev="287">
+    <srcmd5>6d57f2c2a033e3cb7713bfe12b37d912</srcmd5>
+    <version>5.0.18</version>
+    <time>1634754178</time>
+    <user>dimstar_suse</user>
+    <comment>misc changes</comment>
+    <requestid>926150</requestid>
+  </revision>
 </revisionlist>

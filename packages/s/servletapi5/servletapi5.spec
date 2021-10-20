@@ -30,8 +30,9 @@ Source:         %{full_name}-5-src.tar.gz
 #!BuildIgnore:  xml-commons-jaxp-1.3-apis
 BuildRequires:  ant
 BuildRequires:  java-devel
-BuildRequires:  xml-commons-apis-bootstrap
+%if !0%{?rhel}
 Requires(post): update-alternatives
+%endif
 Provides:       servlet = %{version}
 Provides:       servlet24 = %{version}
 Provides:       servlet5 = %{version}
