@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
