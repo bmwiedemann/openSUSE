@@ -129,4 +129,18 @@ update to version v2.5
   * Remove support for Python 3.4</comment>
     <requestid>897831</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4ff4d9d436a7d5097c0424d8fc0d398</srcmd5>
+    <version>3.3</version>
+    <time>1634754207</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3:
+  - Update to Unicode 14.0.0
+  - Update to in-line type annotations
+  - Throw IDNAError exception correctly for some malformed input
+  - Advertise support for Python 3.10
+  - Improve testing regime on Github
+  - Fix Russian typo in documentation</comment>
+    <requestid>925735</requestid>
+  </revision>
 </revisionlist>

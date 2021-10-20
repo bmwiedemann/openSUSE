@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:16:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3:
+  - Update to Unicode 14.0.0
+  - Update to in-line type annotations
+  - Throw IDNAError exception correctly for some malformed input
+  - Advertise support for Python 3.10
+  - Improve testing regime on Github
+  - Fix Russian typo in documentation
+
+-------------------------------------------------------------------
 Sun Jun  6 11:47:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2:
