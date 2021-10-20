@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 11 03:06:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-B-Hooks-EndOfScope/Changes
+
+  0.25      2021-10-10 19:34:55Z
+    - add test of dieing inside an on_scope_end() (PR#8)
+
+-------------------------------------------------------------------
 Sun Apr 22 05:04:26 UTC 2018 - coolo@suse.com
 
 - updated to 0.24
