@@ -294,4 +294,41 @@
     <comment></comment>
     <requestid>813502</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>84617e87646e9ae13764c51fb2209384</srcmd5>
+    <version>2.5.0</version>
+    <time>1634754207</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Update testtools/compat.py
+  * Note Python 3.5 is EOL and will be dropped after the next release
+  * Fix for Python 3.10
+  * Add python 3.10 to ci configuration
+  * testtools.compat: provide BytesIO, StringIO again
+  * Add support for Python 3.9
+  * Update and simplify workflow
+  * Fix UserWarning: Usage of dash-separated ...
+  * Fix tests with Python 3.10
+  * Remove mimeparse dependency
+  * trivial: Cleanup imports
+  * Re-introduce 'try\_imports'
+  * Remove use of 'try\_imports'
+  * tox: Don't skip sdist
+  * Remove use of 'safe\_hasattr'
+  * NEWS: Add note about unittest2 removal
+  * Fix github actions
+  * Update testtools/content.py
+  * Update tox.ini
+  * Update github actions config to use release 3.9
+  * Drop traceback2 in favor of traceback and remove unused linecache2
+  * Update tox.ini
+  * Add tox.ini file
+  * Remove tox.ini file
+  * restore testtools/tests/test\_testcase.py
+  * Remove unittest2 from setup.cfg and add tox.ini file
+  * Remove unrelated change
+  * Restore test\_spinner.py
+  * Remove unused try\_import</comment>
+    <requestid>925738</requestid>
+  </revision>
 </revisionlist>

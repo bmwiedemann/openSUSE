@@ -1,7 +1,7 @@
 #
-# spec file for package python-testtools
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-testtools%{psuffix}
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
 Source:         https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
-# unittest2 is not neccessary to run testsuite
-# removing unittest2 entirely:
-# https://github.com/testing-cabal/testtools/pull/277
-Patch0:         python-testtools-no-unittest2.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -67,8 +63,6 @@ also ports recent unittest changes all the way back to Python 2.4.
 
 %prep
 %setup -q -n testtools-%{version}
-%patch0 -p1
-sed -i '/unittest2/d' requirements.txt setup.cfg
 
 %if !%{with test}
 %build
