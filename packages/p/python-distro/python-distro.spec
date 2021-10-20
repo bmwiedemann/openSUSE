@@ -58,8 +58,7 @@ It is a renewed alternative implementation for Python's original platform.linux_
 
 %if %{with test}
 %check
-# Explicit settings of locale is necessary gh#nir0s/distro#223
-LANG=en_US.utf8 %pytest
+%pytest
 %endif
 
 %post

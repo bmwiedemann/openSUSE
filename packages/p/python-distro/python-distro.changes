@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 26 16:23:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Expliciting setting of locale is not necessary anymore
+  (gh#python-distro/distro#223).
+
+-------------------------------------------------------------------
 Tue Aug  3 12:19:39 UTC 2021 - brejoc@gmail.com
 
 - Update to version 1.6.0
