@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 16 15:19:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.0:
+  * Fix weblate check: Remove double spaces
+  * Rename ku.po to kmr.po.
+  * Add common names for South and North Korea.
+  * Updates for Indonesia
+  * ISO 3166-1 translations
+  * ISO 3166-2 translations
+  * ISO 3166-3 translations
+  * ISO 639-2 translations
+  * ISO 639-3 translations
+  * ISO 639-5 translations
+  * ISO 4217 translations
+  * ISO 15924 translations
+
+-------------------------------------------------------------------
 Sat Apr 17 16:24:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:

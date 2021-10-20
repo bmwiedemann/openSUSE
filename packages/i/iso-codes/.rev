@@ -710,4 +710,24 @@
   * Many translation updates, see included ChangeLog (forwarded request 886330 from dirkmueller)</comment>
     <requestid>886360</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>8e59f75a1be9d91b511e3dc2fdf19b29</srcmd5>
+    <version>4.7.0</version>
+    <time>1634754180</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.0:
+  * Fix weblate check: Remove double spaces
+  * Rename ku.po to kmr.po.
+  * Add common names for South and North Korea.
+  * Updates for Indonesia
+  * ISO 3166-1 translations
+  * ISO 3166-2 translations
+  * ISO 3166-3 translations
+  * ISO 639-2 translations
+  * ISO 639-3 translations
+  * ISO 639-5 translations
+  * ISO 4217 translations
+  * ISO 15924 translations (forwarded request 925723 from dirkmueller)</comment>
+    <requestid>926171</requestid>
+  </revision>
 </revisionlist>
