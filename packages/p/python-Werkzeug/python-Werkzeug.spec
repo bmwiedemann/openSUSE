@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-Werkzeug
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:20:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Handle multiple tokens in ``Connection`` header when routing
+    WebSocket requests.
+  * Set the debugger pin cookie secure flag when on https.
+  * Fix type annotation for ``MultiDict.update`` to accept iterable
+    values :pr:`2142`
+  * Prevent double encoding of redirect URL when ``merge_slash=True``
+    for ``Rule.match``.
+  * ``CombinedMultiDict.to_dict`` with ``flat=False`` considers all
+    component dicts when building value lists. :issue:`2189`
+  * ``send_file`` only sets a detected ``Content-Encoding`` if
+    ``as_attachment`` is disabled to avoid browsers saving
+    decompressed ``.tar.gz`` files.
+  * Fix type annotations for ``TypeConversionDict.get`` to not return an
+    ``Optional`` value if both ``default`` and ``type`` are not
+    ``None``.
+  * Fix type annotation for routing rule factories to accept
+    ``Iterable[RuleFactory]`` instead of ``Iterable[Rule]`` for the
+    ``rules`` parameter. :issue:`2183`
+  * Add missing type annotation for ``FileStorage.__getattr__``
+  * The debugger pin cookie is set with ``SameSite`` set to ``Strict``
+    instead of ``None`` to be compatible with modern browser security.
+  * Type annotations use ``IO[bytes]`` and ``IO[str]`` instead of
+    ``BinaryIO`` and ``TextIO`` for wider type compatibility.
+  * Ad-hoc TLS certs are generated with SAN matching CN. :issue:`2158`
+  * Fix memory usage for locals when using Python 3.6 or pre 0.4.17
+    greenlet versions. :pr:`2212`
+  * Fix type annotation in ``CallbackDict``, because it is not
+    utilizing a bound TypeVar. :issue:`2235`
+  * Fix setting CSP header options on the response. :pr:`2237`
+  * Fix an issue with with the interactive debugger where lines would
+    not expand on click for very long tracebacks. :pr:`2239`
+  * The interactive debugger handles displaying an exception that does
+    not have a traceback, such as from ``ProcessPoolExecutor``.
+
+-------------------------------------------------------------------
 Sat Jun 19 07:42:14 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - skip building for Python 2.x
