@@ -178,10 +178,6 @@ pushd %{name}-%{version}/python3/%{name}-%{version}
 popd
 
 %build
-# LTO fails on aarch64 (version 3.22, May 2021)
-%ifarch aarch64
-%define _lto_cflags %{nil}
-%endif
 
 # The SCons description does not handle CXXFLAGS correctly, pass C++ flags also in CFLAGS
 export CFLAGS="%{optflags}"
