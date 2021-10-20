@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-OpenSSL-RSA
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Crypt-OpenSSL-RSA
-Version:        0.31
-Release:        0
 %define cpan_name Crypt-OpenSSL-RSA
+Name:           perl-Crypt-OpenSSL-RSA
+Version:        0.32
+Release:        0
 Summary:        RSA encoding and decoding, using the openSSL libraries
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Crypt-OpenSSL-RSA/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         %{cpan_name}.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         Crypt-OpenSSL-RSA.patch
 BuildRequires:  openssl-devel
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -48,12 +46,11 @@ from earlier versions of this package return true on success, this (never
 documented) behavior is no longer the case.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0
+%autosetup -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -64,7 +61,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README README.md
 %license LICENSE
 
