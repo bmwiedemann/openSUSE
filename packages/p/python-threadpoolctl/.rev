@@ -30,4 +30,23 @@
 - drop python_executable.patch (upstream)</comment>
     <requestid>907015</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb25eef4e56e64987890c9bd21bf3920</srcmd5>
+    <version>3.0.0</version>
+    <time>1634754217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  - New object `threadpooctl.ThreadpoolController` which holds controllers for all the
+    supported native libraries. The states of these libraries is accessible through the
+    `info` method (equivalent to `threadpoolctl.threadpool_info()`) and their number of
+    threads can be limited with the `limit` method which can be used as a context
+    manager (equivalent to `threadpoolctl.threadpool_limits()`). 
+  - Added support for OpenBLAS built for 64bit integers in Fortran.
+  - Added the possibility to use `threadpoolctl.threadpool_limits` and
+    `threadpooctl.ThreadpoolController` as decorators through their `wrap` method.
+  - Fixed an attribute error when using old versions of OpenBLAS or BLIS that are
+    missing version query functions.
+  - Fixed an attribute error when python is run with -OO.</comment>
+    <requestid>925765</requestid>
+  </revision>
 </revisionlist>
