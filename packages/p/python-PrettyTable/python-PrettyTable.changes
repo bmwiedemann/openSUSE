@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 10:39:59 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Nov 10 03:28:39 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update URL/Source0 due to Google Code Hosting being dead since 2016 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PrettyTable
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Christian Berendt.
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,7 +54,7 @@ sed -i '1s/^#!.*//' prettytable.py
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest prettytable_test.py
 
 %files %{python_files}
 %license COPYING
