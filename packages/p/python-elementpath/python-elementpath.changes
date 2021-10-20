@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:51:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Make ElementProtocol and LxmlElementProtocol runtime checkable
+  * Type annotations for all package public APIs
+  * Add LxmlElementProtocol
+  * Add pytest env to tox.ini (test issue #39)
+  * Add inline type annotations check support
+  * Add structural Protocol based type checks
+  * Add Python 3.10 in Tox and CI tests
+  * Apply __slots__ to TDOP and regex classes
+
+-------------------------------------------------------------------
 Tue May 18 21:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:

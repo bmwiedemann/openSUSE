@@ -116,4 +116,20 @@
   * Fix wildcard selection of attributes (issue #35)</comment>
     <requestid>894162</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6321bfadab9bcc8ba73498d0f5174c60</srcmd5>
+    <version>2.3.2</version>
+    <time>1634754216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.2:
+  * Make ElementProtocol and LxmlElementProtocol runtime checkable
+  * Type annotations for all package public APIs
+  * Add LxmlElementProtocol
+  * Add pytest env to tox.ini (test issue #39)
+  * Add inline type annotations check support
+  * Add structural Protocol based type checks
+  * Add Python 3.10 in Tox and CI tests
+  * Apply __slots__ to TDOP and regex classes</comment>
+    <requestid>925762</requestid>
+  </revision>
 </revisionlist>
