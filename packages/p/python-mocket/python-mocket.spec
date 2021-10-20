@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.44
+Version:        3.10.0
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
