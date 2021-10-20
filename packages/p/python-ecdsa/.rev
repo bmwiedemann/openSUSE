@@ -124,4 +124,12 @@
   tables the first time the points are used, not when they are initialised.</comment>
     <requestid>857105</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31a740ce9143746c7f9538e7115252cd</srcmd5>
+    <version>0.17.0</version>
+    <time>1634754200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925629</requestid>
+  </revision>
 </revisionlist>
