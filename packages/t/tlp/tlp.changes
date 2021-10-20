@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 12:14:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- tlp-sleep.service does not exist anymore
+- Make %files section a bit more precise
+
+-------------------------------------------------------------------
 Thu Jun 17 11:59:16 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Recommend bbswitch for ThinkPad battery charge control instead of

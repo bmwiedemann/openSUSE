@@ -35,10 +35,10 @@ Requires:       rfkill
 Requires:       usbutils
 Requires:       util-linux >= 2.17
 Recommends:     %{name}-rdw = %{version}
+Recommends:     bbswitch
 Recommends:     ethtool
 Recommends:     lsb-release
 Recommends:     smartmontools
-Recommends:     bbswitch
 Conflicts:      laptop-mode-tools
 BuildArch:      noarch
 %{?systemd_ordering}
@@ -82,21 +82,19 @@ make install-man \
 make install-man-rdw \
   DESTDIR=%{buildroot}
 
-for rc in rc%{name} rc%{name}-sleep; do
-    ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/$rc
-done
+ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctlp
 
 %pre
-%service_add_pre %{name}.service %{name}-sleep.service
+%service_add_pre %{name}.service
 
 %post
-%service_add_post %{name}.service %{name}-sleep.service
+%service_add_post %{name}.service
 
 %postun
-%service_del_postun %{name}.service %{name}-sleep.service
+%service_del_postun %{name}.service
 
 %preun
-%service_del_preun %{name}.service %{name}-sleep.service
+%service_del_preun %{name}.service
 
 %files
 %license COPYING LICENSE
@@ -108,15 +106,16 @@ done
 %dir %{_unitdir}/system-sleep
 %{_unitdir}/system-sleep/tlp
 %{_bindir}/bluetooth
-%{_bindir}/run-on-*
+%{_bindir}/run-on-{ac,bat}
 %{_bindir}/%{name}-stat
 %{_bindir}/wifi
 %{_bindir}/wwan
-%{_sbindir}/*%{name}*
-%{_unitdir}/%{name}*.service
+%{_sbindir}/%{name}
+%{_sbindir}/rc%{name}
+%{_unitdir}/%{name}.service
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/*%{name}.metainfo.xml
+%{_datadir}/metainfo/de.linrunner.tlp.metainfo.xml
 %{_udevdir}/%{name}-usb-udev
 %{_udevrulesdir}/85-%{name}.rules
 %{_localstatedir}/lib/%{name}/
