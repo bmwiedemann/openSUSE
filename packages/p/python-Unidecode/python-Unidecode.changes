@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  9 20:38:32 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.3.1:
+  * Fix issue with wheel package falsely claiming support for
+    Python 2.
+
+-------------------------------------------------------------------
+Mon Sep  6 18:03:00 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.3.0:
+  * Drop support for Python <3.5.
+  * Improvements to Hebrew and Yiddish transliterations (thanks to
+    Alon Bar-Lev and @eyaler on GitHub)
+- move update-alternative to postun instead of preun:
+  fix rpmlint warning
+- disable python2 build: unsupported by upstream now
+
+-------------------------------------------------------------------
 Fri Feb  5 17:19:37 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.2.0:
