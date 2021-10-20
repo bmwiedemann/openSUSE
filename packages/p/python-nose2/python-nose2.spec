@@ -1,7 +1,7 @@
 #
 # spec file for package python-nose2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-coverage >= 4.4.1
 Requires:       python-six >= 1.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,7 +65,7 @@ rm -rf *.egg-info/
 
 %check
 export LC_CTYPE=C.UTF8
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative nose2

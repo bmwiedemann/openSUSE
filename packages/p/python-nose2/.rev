@@ -70,4 +70,12 @@
   * Minor changes to be compatible with newer pythons (3.8, 3.9)</comment>
     <requestid>780971</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7974901599de2390dccaa218aa057411</srcmd5>
+    <version>0.9.2</version>
+    <time>1634754196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923790</requestid>
+  </revision>
 </revisionlist>
