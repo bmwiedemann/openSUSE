@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 18 06:45:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.29.1
+  mpg123:
+  * Keep default output encoding of s16 for raw and file outputs
+    also with the new resampler. This reverts the unintentional
+    change in 1.26.0 of switching to f32 for forced output rate
+    unless the NtoM resampler is selected. In any case, you
+    should make sure to specify your desired --encoding if you
+    depend on it.
+  * Catch error in indexing (mpg123_scan() return value was
+    ignored before, bug 322).
+  mpg123-strip:
+  * Lift the resync limit, as it should be to clean up really
+    dirty streams.
+  mpg123-id3dump:
+  * Also lift resync limit for the same reasons.
+  libout123:
+  * Fix reporting of device property flags for buffer
+  libmpg123:
+  * More safeguarding against attempts to decode if decoder
+    setup failed and user ignored the returned error code (bug
+    322)
+
+-------------------------------------------------------------------
 Mon Sep  6 07:08:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.29.0
