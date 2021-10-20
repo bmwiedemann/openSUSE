@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 20 06:53:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build with poppler 2.10:
+  * gdal-poppler-2.10-a.patch
+  * gdal-poppler-2.10-b.patch
+
+-------------------------------------------------------------------
 Tue Sep  7 19:18:02 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.3.2 bugfix release 

@@ -549,4 +549,14 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>917755</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>a03976ff650665971bc0958f9006cf9d</srcmd5>
+    <version>3.3.2</version>
+    <time>1634754238</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with poppler 2.10:
+  * gdal-poppler-2.10-a.patch
+  * gdal-poppler-2.10-b.patch (forwarded request 926472 from Guillaume_G)</comment>
+    <requestid>926473</requestid>
+  </revision>
 </revisionlist>
