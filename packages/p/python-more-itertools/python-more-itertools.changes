@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:09:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.10.0:
+    * The type stub for :func:`iter_except` was improved (thanks to  MarcinKonowalczyk)
+    *  Type stubs now ship with the source release (thanks to saaketp)
+    *  The Sphinx docs were improved (thanks to MarcinKonowalczyk)
+    * New functions
+      * :func:`interleave_evenly` (thanks to mbugert)
+      * :func:`repeat_each` (thanks to FinalSh4re)
+      * :func:`chunked_even` (thanks to valtron)
+      * :func:`map_if` (thanks to sassbalint)
+      * :func:`zip_broadcast` (thanks to kalekundert)
+    * Changes to existing functions
+      * The type stub for :func:`chunked` was improved (thanks to  PhilMacKay)
+      * The type stubs for :func:`zip_equal` and `zip_offset` were improved (thanks to maffoo)
+      * Building Sphinx docs locally was improved (thanks to MarcinKonowalczyk) 
+
+-------------------------------------------------------------------
 Sun Jun  6 12:43:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.8.0:
