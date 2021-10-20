@@ -19,7 +19,7 @@ name in the first line. Also add bugzilla and fate references in their own line:
 
   rm dracut*.xz
   rm dracut*.obscpio
-  osc service localrun
+  osc service manualrun
   osc ar
   osc commit
   osc sr

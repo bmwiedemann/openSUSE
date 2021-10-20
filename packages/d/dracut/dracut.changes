@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 06 08:28:14 UTC 2021 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.129.g7d8c3ce3:
+  * fix(kernel-modules): add blk_mq_alloc_disk and blk_cleanup_disk to blockfuncs (bsc#1190326)
+  * docs: update SUSE maintainers doc
+  * fix(suse): add 60-io-scheduler.rules (bsc#1188713)
+  * revert: remove /sbin/installkernel script from dracut package
+  * spec: modernize specfile constructs
+
+-------------------------------------------------------------------
 Thu Sep 30 12:15:25 UTC 2021 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.119.g6c4187af:

@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        055+suse.119.g6c4187af
+Version:        055+suse.129.g7d8c3ce3
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -59,7 +59,6 @@ Requires:       xz
 Conflicts:      btrfsprogs < 3.18
 # suse-module-tools >= 16.0.3 is prepared for the removal of mkinitrd-suse.sh
 Conflicts:      suse-module-tools < 16.0.3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
 %description
@@ -127,17 +126,17 @@ This package contains the legacy initrd script for dracut.
 Call dracut directly instead.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure\
   --systemdsystemunitdir=%{_unitdir}\
   --bashcompletiondir=%{_datarootdir}/bash-completion/completions \
   --libdir=%{_prefix}/lib
-make all CFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build all CFLAGS="%{optflags}" %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 echo -e "#!/bin/bash\nDRACUT_VERSION=%{version}-%{release}" > %{buildroot}/%{dracutlibdir}/dracut-version.sh
 
@@ -156,7 +155,6 @@ install -m 0644 suse/s390x_persistent_device.conf %{buildroot}%{_sysconfdir}/dra
 %endif
 
 install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{_sbindir}/mkinitrd
-install -D -m 0755 suse/dracut-installkernel %{buildroot}/%{_sbindir}/installkernel
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
@@ -167,8 +165,6 @@ mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkini
 mv %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh
 ln -s %{dracutlibdir}/modules.d/45ifcfg/write-ifcfg-redhat.sh %{buildroot}/%{dracutlibdir}/modules.d/45ifcfg/write-ifcfg.sh
 %endif
-
-%pre
 
 %post
 # check whether /var/run has been converted to a symlink
@@ -197,8 +193,6 @@ fi
 %post ima
 %{?regenerate_initrd_post}
 
-%preun
-
 %postun
 %{?regenerate_initrd_post}
 
@@ -218,13 +212,11 @@ fi
 %{?regenerate_initrd_posttrans}
 
 %files fips
-%defattr(-,root,root,0755)
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/40-fips.conf
 %{dracutlibdir}/modules.d/01fips
 
 %files ima
-%defattr(-,root,root,0755)
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/40-ima.conf
 %{dracutlibdir}/modules.d/96securityfs
@@ -232,7 +224,6 @@ fi
 %{dracutlibdir}/modules.d/98integrity
 
 %files tools
-%defattr(-,root,root,0755)
 %{_bindir}/dracut-catimages
 %{_mandir}/man8/dracut-catimages.8*
 %dir /boot/dracut
@@ -240,7 +231,6 @@ fi
 %dir %{_localstatedir}/lib/dracut/overlay
 
 %files extra
-%defattr(-,root,root,0755)
 %license COPYING
 
 %{dracutlibdir}/modules.d/00mksh
@@ -256,19 +246,16 @@ fi
 %{dracutlibdir}/modules.d/95znet
 
 %files mkinitrd-deprecated
-%defattr(-,root,root,0755)
 %{_sbindir}/mkinitrd
 %{_mandir}/man8/mkinitrd.8*
 
 %files
-%defattr(-,root,root,0755)
 %license COPYING
 %doc README.md NEWS.md AUTHORS dracut.html
 %doc docs/README.cross docs/README.generic docs/README.kernel
 %doc docs/HACKING.md docs/dracut.png docs/dracut.svg
 %{_bindir}/dracut
 %{_bindir}/lsinitrd
-%{_sbindir}/installkernel
 %{_datarootdir}/bash-completion/completions/lsinitrd
 %{_datadir}/pkgconfig/dracut.pc
 

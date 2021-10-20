@@ -1967,4 +1967,18 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>922385</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>a983f7e1702647b337a79931fed071c6</srcmd5>
+    <version>055+suse.129.g7d8c3ce3</version>
+    <time>1634754171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 055+suse.129.g7d8c3ce3:
+  * fix(kernel-modules): add blk_mq_alloc_disk and blk_cleanup_disk to blockfuncs (bsc#1190326)
+  * docs: update SUSE maintainers doc
+  * fix(suse): add 60-io-scheduler.rules (bsc#1188713)
+  * revert: remove /sbin/installkernel script from dracut package
+  * spec: modernize specfile constructs
+</comment>
+    <requestid>924907</requestid>
+  </revision>
 </revisionlist>
