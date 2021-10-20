@@ -1,15 +1,8 @@
---- a/python/subunit/tests/test_test_protocol.py
-+++ b/python/subunit/tests/test_test_protocol.py
-@@ -48,7 +48,7 @@ from subunit.tests import (
- import subunit.iso8601 as iso8601
- 
- 
--tb_prelude = "Traceback (most recent call last):\n" 
-+tb_prelude = "Traceback (most recent call last):\n"
- 
- 
- def details_to_str(details):
-@@ -1055,12 +1055,14 @@ class TestExecTestCase(unittest.TestCase
+Index: subunit-1.4.0+git.1627548288.c87ffbd/python/subunit/tests/test_test_protocol.py
+===================================================================
+--- subunit-1.4.0+git.1627548288.c87ffbd.orig/python/subunit/tests/test_test_protocol.py
++++ subunit-1.4.0+git.1627548288.c87ffbd/python/subunit/tests/test_test_protocol.py
+@@ -1072,12 +1072,14 @@ class TestExecTestCase(unittest.TestCase
          self.assertEqual(test.script,
                           subunit.join_dir(__file__, 'sample-script.py'))
  

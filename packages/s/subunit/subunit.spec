@@ -22,7 +22,7 @@
 %global majver  1.4
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           subunit
-Version:        1.4.0+git.1584197985.0e9f67b
+Version:        1.4.0+git.1627548288.c87ffbd
 Release:        0
 Summary:        C library for the subunit testing protocol
 License:        Apache-2.0 OR BSD-3-Clause
@@ -33,9 +33,6 @@ Source99:       subunit-rpmlintrc
 # PATCH-FIX-UPSTREAM python38-failing-tests.patch mcepl@suse.com
 # skip tests failing with Python 3.8+
 Patch0:         python38-failing-tests.patch
-# patch-feature-upstream remove_unittest2.patch gh#testing-cabal/subunit#32 mcepl@suse.com
-# Remove dependency on unittest2
-Patch1:         remove_unittest2.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}

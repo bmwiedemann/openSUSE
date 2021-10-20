@@ -87,4 +87,31 @@
     <comment></comment>
     <requestid>895209</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1dba881b1d9a4c64d4cd14d4f001cf82</srcmd5>
+    <version>1.4.0+git.1627548288.c87ffbd</version>
+    <time>1634754214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git.1627548288.c87ffbd:
+  * Update NEWS
+  * Handle different SyntaxError output in testtools 2.5.0
+  * Sort Content-Type parameters when writing details
+  * Import six from the right place
+  * Pivot CI to github actions
+  * Revert &quot;Merge pull request #17 from mtreinish/timestamp-output&quot;
+  * fix trailing comma
+  * Fix imports from testtools.compat
+  * python: Mark rawstrings as such
+  * run everything on focal, except pypy3.5 which only runs on xenial
+  * add missing reference
+  * add current pythons
+  * drop Python 3.4 support
+  * Unittest from testtools doesn't work, use the one from stdlib.
+  * Acommodate review requests.
+  * Fix timestamp test copy paste error
+  * Add options to output filter to set timestamps
+  * Remove dependency on unittest2
+- remove remove_unittest2.patch (upstream)</comment>
+    <requestid>925759</requestid>
+  </revision>
 </revisionlist>

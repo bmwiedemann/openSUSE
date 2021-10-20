@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 16 21:33:15 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 1.4.0+git.1627548288.c87ffbd:
+  * Update NEWS
+  * Handle different SyntaxError output in testtools 2.5.0
+  * Sort Content-Type parameters when writing details
+  * Import six from the right place
+  * Pivot CI to github actions
+  * Revert "Merge pull request #17 from mtreinish/timestamp-output"
+  * fix trailing comma
+  * Fix imports from testtools.compat
+  * python: Mark rawstrings as such
+  * run everything on focal, except pypy3.5 which only runs on xenial
+  * add missing reference
+  * add current pythons
+  * drop Python 3.4 support
+  * Unittest from testtools doesn't work, use the one from stdlib.
+  * Acommodate review requests.
+  * Fix timestamp test copy paste error
+  * Add options to output filter to set timestamps
+  * Remove dependency on unittest2
+- remove remove_unittest2.patch (upstream)
+
+-------------------------------------------------------------------
 Mon May 24 06:06:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Run the subunit filters under python3.
