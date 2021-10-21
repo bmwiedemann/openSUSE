@@ -47,4 +47,12 @@
     <comment>2.10.5 + build with ant</comment>
     <requestid>888371</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dd179ac0e50f9139b3459472865cd54</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853316</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926590</requestid>
+  </revision>
 </revisionlist>

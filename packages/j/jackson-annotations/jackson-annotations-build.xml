@@ -11,7 +11,7 @@
   <property name="project.groupId" value="com.fasterxml.jackson.core"/>
   <property name="project.artifactId" value="jackson-annotations"/>
   <property name="project.name" value="Jackson-annotations"/>
-  <property name="project.version" value="2.10.5"/>
+  <property name="project.version" value="2.13.0"/>
   <property name="project.vendor" value="FasterXML"/>
   <property name="project.description" value="Core annotations used for value types, used by Jackson data binding package."/>
   <property name="bundle.version" value="${project.version}"/>
@@ -23,10 +23,8 @@
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
-  <property name="build.resourceDir" value="src/main/resources"/>
   <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
   <property name="build.testDir" value="src/test/java"/>
-  <property name="build.testResourceDir" value="src/test/resources"/>
   <property name="test.reports" value="${build.dir}/test-reports"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
@@ -70,9 +68,6 @@
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-    <copy todir="${build.outputDir}">
-      <fileset dir="${build.resourceDir}"/>
-    </copy>
   </target>
 
   <!-- ====================================================================== -->
