@@ -79,6 +79,10 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
 Patch1:         96beb97.diff
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/548
+Patch2:         febc20f.diff
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/581
+Patch3:         0011-update-doctest-for-glibc2.34.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -86,7 +90,6 @@ Patch202:       0006-armnn-mobilenet-test-example.patch
 Patch203:       0009-command-line-options-for-video-port-selection.patch
 Patch204:       0010-armnnexamples-update-for-19.08-modifications.patch
 Patch205:       armnn-fix_find_opencv.patch
-Patch206:       0011-update-doctest-for-glibc2.34.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  gcc-c++
@@ -353,6 +356,8 @@ This package contains the libarmnnOnnxParser library from armnn.
 %if %{pkg_vcmp tensorflow2-lite-devel >= 2.4}
 # This patch breaks build on TF < 2.4
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %endif
 %endif
 %if %{with armnn_extra_tests}
@@ -365,7 +370,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 # Add Boost log as downstream extra test requires it
 sed -i 's/ find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework)/find_package(Boost 1.59 REQUIRED COMPONENTS unit_test_framework filesystem system log program_options)/' ./cmake/GlobalConfig.cmake
 %endif
-%patch206 -p1
 
 %build
 %if %{with armnn_onnx}
@@ -373,13 +377,10 @@ mkdir onnx_deps
 PROTO=$(find %{_libdir} -name onnx.proto)
 protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname $(find %{_libdir} -name onnx)) --cpp_out=./onnx_deps
 %endif
-%if 0%{?suse_version} > 1500
-export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=stringop-overread -Wno-error=uninitialized -Wno-error=array-bounds -Wno-error=deprecated-copy -Wno-error=deprecated-declarations"
-%endif
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
-  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread $CXX_ADDITIONAL_FLAGS -Wno-error=implicit-fallthrough -Wno-error=unused-parameter" \
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread -Wno-error=stringop-overread -Wno-error=deprecated-declarations" \
   -DBOOST_LIBRARYDIR=%{_libdir} \
 %if %{with armnn_onnx}
   -DBUILD_ONNX_PARSER=ON \

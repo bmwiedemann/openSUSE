@@ -1,0 +1,36 @@
+From febc20fef1490a4ca9f7b0264a32b271760e370e Mon Sep 17 00:00:00 2001
+From: Diego Lopez Recas <Diego.LopezRecas@arm.com>
+Date: Thu, 16 Sep 2021 17:25:04 +0100
+Subject: [PATCH] Fix undefined reinterpret_cast in BFloat16.hpp
+
+This fixes gcc builds with version 8 or above.
+
+Signed-off-by: Diego Lopez Recas <Diego.LopezRecas@arm.com>
+Change-Id: I4b886854f4f3391f766e95c3478d3a5f9661507a
+---
+
+diff --git a/src/armnnUtils/BFloat16.hpp b/src/armnnUtils/BFloat16.hpp
+index 52344db..a293cd4 100644
+--- a/src/armnnUtils/BFloat16.hpp
++++ b/src/armnnUtils/BFloat16.hpp
+@@ -7,6 +7,7 @@
+ 
+ #include <ostream>
+ #include <cmath>
++#include <cstring>
+ #include <stdint.h>
+ 
+ namespace armnn
+@@ -85,8 +86,10 @@
+     float ToFloat32() const
+     {
+         const uint32_t u32 = static_cast<uint32_t>(m_Value << 16u);
+-        const float* f32 = reinterpret_cast<const float*>(&u32);
+-        return *f32;
++        float f32;
++        static_assert(sizeof u32 == sizeof f32, "");
++        std::memcpy(&f32, &u32, sizeof u32);
++        return f32;
+     }
+ 
+     uint16_t Val() const

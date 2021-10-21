@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 21 15:24:42 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix uninitialized var error:
+  * febc20f.diff
+- Remove most -Wno-error* flags which are not needed anymore
+
+-------------------------------------------------------------------
 Wed Oct 20 08:41:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add 0011-update-doctest-for-glibc2.34.patch: Update doctest to
