@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Oct 20 05:55:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.0
+  * 2.13.0 (30-Sep-2021)
+    + #652: Misleading exception for input source when processing
+      byte buffer with start offset
+    + #658: Escape contents of source document snippet for
+      'JsonLocation._appendSourceDesc()'
+    + #664: Add 'StreamWriteException' type to eventually replace
+      'JsonGenerationException'
+    + #671: Replace 'getCurrentLocation()'/'getTokenLocation()' with
+      'currentLocation()'/'currentTokenLocation()' in 'JsonParser'
+    + #673: Replace 'JsonGenerator.writeObject()' (and related) with
+      'writePOJO()'
+    + #674: Replace 'getCurrentValue()'/'setCurrentValue()' with
+      'currentValue()'/'assignCurrentValue()' in
+      'JsonParser'/'JsonGenerator
+    + #677: Introduce O(n^1.5) BigDecimal parser implementation
+    + #687:  ByteQuadsCanonicalizer.addName(String, int, int) has
+      incorrect handling for case of q2 == null
+    + #692: UTF32Reader ArrayIndexOutOfBoundsException
+    + #694: Improve exception/JsonLocation handling for binary
+      content: don't show content, include byte offset
+    + #700: Unable to ignore properties when deserializing.
+      TokenFilter seems broken
+    + #712: Optimize array allocation by 'JsonStringEncoder'
+    + Add 'mvnw' wrapper
+  * 2.12.5 (27-Aug-2021)
+    + #712: (partial) Optimize array allocation by
+      'JsonStringEncoder'
+    + #713: Add back accidentally removed 'JsonStringEncoder'
+      related methods in 'BufferRecyclers'
+      (like 'getJsonStringEncoder()')
+  * 2.12.4 (06-Jul-2021)
+    + #702: 'ArrayOutOfBoundException' at
+      'WriterBasedJsonGenerator.writeString(Reader, int)'
+  * 2.12.0 (29-Nov-2020)
+    + #500: Allow "optional-padding" for 'Base64Variant'
+    + #573: More customizable TokenFilter inclusion (using
+      'Tokenfilter.Inclusion')
+    + #618: Publish Gradle Module Metadata
+    + #619: Add 'StreamReadCapability' for further
+      format-based/format-agnostic handling improvements
+    + #627: Add 'JsonParser.isExpectedNumberIntToken()' convenience
+      method
+    + #630: Add 'StreamWriteCapability' for further
+      format-based/format-agnostic handling improvements
+    + #631: Add 'JsonParser.getNumberValueExact()' to allow
+      precision-retaining buffering
+    + #639: Limit initial allocated block size by 'ByteArrayBuilder'
+      to max block size
+    + #640: Add 'JacksonException' as parent class of
+      'JsonProcessingException'
+    + #653: Make 'JsonWriteContext.reset()' and
+      'JsonReadContext.reset()' methods public
+    + Deprecate 'JsonParser.getCurrentTokenId()' (use
+      '#currentTokenId()' instead)
+    + Full "LICENSE" included in jar for easier access by compliancy
+      tools
+  * 2.11.4 (12-Dec-2020)
+    + #647: Fix NPE in 'writeNumber(String)' method of
+      'UTF8JsonGenerator',
+  'WriterBasedJsonGenerator'
+  * 2.11.0 (26-Apr-2020)
+    + #504: Add a String Array write method in the Streaming API
+    + #565: Synchronize variants of 'JsonGenerator#writeNumberField'
+      with 'JsonGenerator#writeNumber'
+    + #587: Add JsonGenerator#writeNumber(char[], int, int) method
+    + #606: Do not clear aggregated contents of 'TextBuffer' when
+      'releaseBuffers()' called
+    + #609: 'FilteringGeneratorDelegate' does not handle
+      'writeString(Reader, int)'
+    + #611: Optionally allow leading decimal in float tokens
+
+
+-------------------------------------------------------------------
 Mon Apr 26 07:25:18 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite to use ant for building in order to be able to use it
@@ -29,7 +105,7 @@ Tue Jan  7 10:32:16 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
 
 - Changes for 2.10.2
   #580: FilteringGeneratorDelegate writeRawValue delegate to 'writeRaw()'
-  	instead of 'writeRawValue()'
+      instead of 'writeRawValue()'
   #582: 'FilteringGeneratorDelegate' bug when filtering arrays (in 2.10.1)
 
 -------------------------------------------------------------------
@@ -48,50 +124,50 @@ Wed Nov 20 17:42:21 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com
     #480: 'SerializableString' value can not directly render to Writer
     #481: Create 'JsonWriteFeature' to move JSON-specific 'JsonGenerator.Feature's to
     #484: Implement 'UTF8JsonGenerator.writeRawValue(SerializableString)' (and
-    	  'writeRaw(..)') more efficiently
+          'writeRaw(..)') more efficiently
     #495: Create 'StreamReadFeature' to move non-json specific 'JsonParser.Feature's to
     #496: Create 'StreamWriteFeature' to take over non-json-specific 'JsonGenerator.Feature's
     #502: Make 'DefaultPrettyPrinter.createInstance()' to fail for sub-classes
     #506: Add missing type parameter for 'TypeReference' in 'ObjectCodec'
     #508: Add new exception type 'InputCoercionException' to be used for failed coercions
-    	  like overflow for 'int'
+          like overflow for 'int'
     #517: Add 'JsonGenerator.writeStartObject(Object, int)' (needed by CBOR, maybe Avro)
     #527: Add simple module-info for JDK9+, using Moditect
     #533: UTF-8 BOM not accounted for in JsonLocation.getByteOffset()
     #539: Reduce max size of recycled byte[]/char[] blocks by 'TextBuffer',
-    	  'ByteArrayBuilder'
+          'ByteArrayBuilder'
     #547: 'CharsToNameCanonicalizer': Internal error on 'SymbolTable.rehash()' with high
-    	  number of hash collisions
+          number of hash collisions
     #548: ByteQuadsCanonicalizer: ArrayIndexOutOfBoundsException in addName
     #549: Add configurability of "quote character" for JSON factory
     #561: Misleading exception for unquoted String parsing
     #563: Async parser does not keep track of Array context properly
-    	  - Rewrite 'JsonGenerator.copyCurrentStructure()' to remove recursion)
-	  - Add 'missingNode()', 'nullNode()' in 'TreeCodec'
-	  - Add 'JsonParserDelegate.delegate()' methods
+          - Rewrite 'JsonGenerator.copyCurrentStructure()' to remove recursion)
+      - Add 'missingNode()', 'nullNode()' in 'TreeCodec'
+      - Add 'JsonParserDelegate.delegate()' methods
   * 2.9.10 (21-Sep-2019)
     #540: UTF8StreamJsonParser: fix byte to int conversion for malformed escapes
     #556: 'IndexOutOfBoundsException' in UTF8JsonGenerator.writeString(Reader, len)
-    	  when using a negative length
+          when using a negative length
   * 2.9.9 (16-May-2019)
     #516: _inputPtr off-by-one in UTF8StreamJsonParser._parseNumber2()
     #531: Non-blocking parser reports incorrect locations when fed with non-zero offset
   * 2.9.8 (15-Dec-2018)
     #488: Fail earlier on coercions from "too big" 'BigInteger' into
-    	  fixed-size types ('int', 'long', 'short')
+          fixed-size types ('int', 'long', 'short')
     #510: Fix ArrayIndexOutofBoundsException found by LGTM.com
-    	  - Improve exception message for missing Base64 padding (see databind#2183)
+          - Improve exception message for missing Base64 padding (see databind#2183)
   * 2.9.7 (19-Sep-2018)
     #476: Problem with 'BufferRecycler' via async parser (or when sharing parser
-    	  across threads)
+          across threads)
     #477: Exception while decoding Base64 value with escaped '=' character
     #488: Fail earlier on coercions from "too big" 'BigInteger' into
-    	  fixed-size types ('int', 'long', 'short')
+          fixed-size types ('int', 'long', 'short')
   * 2.9.6 (12-Jun-2018)
     #400: Add mechanism for forcing 'BufferRecycler' released (to call on shutdown)
     #460: Failing to link 'ObjectCodec' with 'JsonFactory' copy constructor
     #463: Ensure that 'skipChildren()' of non-blocking 'JsonParser' will throw
-    	  exception if not enough input
+          exception if not enough input
   * 2.9.5 (26-Mar-2018)
     No changes since 2.9.4
 

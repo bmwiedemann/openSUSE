@@ -49,4 +49,12 @@
 </comment>
     <requestid>888457</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>84ae67e55b143d383fd98fe436050ea9</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853317</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926592</requestid>
+  </revision>
 </revisionlist>

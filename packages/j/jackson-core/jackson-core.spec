@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.10.5
+Version:        2.13.0
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0
@@ -51,7 +51,6 @@ mkdir -p lib
 %pom_remove_parent
 %pom_xpath_remove pom:project/pom:build
 
-cp -p src/main/resources/META-INF/LICENSE .
 cp -p src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
 
