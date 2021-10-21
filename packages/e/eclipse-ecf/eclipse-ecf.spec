@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse-ecf
+# spec file for package eclipse-ecf-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 Version:        3.14.8
 Release:        0
 Summary:        Eclipse Communication Framework (ECF) Eclipse plug-in
-License:        EPL-2.0 AND Apache-2.0 AND BSD-3-Clause
+License:        Apache-2.0 AND EPL-2.0 AND BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/ecf/
 Source0:        https://git.eclipse.org/c/ecf/org.eclipse.ecf.git/snapshot/org.eclipse.ecf-%{git_tag}.tar.xz
@@ -80,6 +80,7 @@ compliant implementation of the OSGi Remote Services standard.
 %if %{with bootstrap}
 %package   -n eclipse-ecf-core-bootstrap
 %else
+
 %package   core
 Obsoletes:      eclipse-ecf-core-bootstrap
 %endif
@@ -91,6 +92,7 @@ Requires:       httpcomponents-core
 %if %{with bootstrap}
 %description -n eclipse-ecf-core-bootstrap
 %else
+
 %description core
 %endif
 ECF bundles required by eclipse-platform.
@@ -124,6 +126,10 @@ find . -type f -name "*.class" -exec rm {} \;
 
 %patch0 -p1
 %patch1 -p1
+
+# Extend the objectweb-asm requirements
+sed -i -e 's/org\.objectweb\.asm;version="\[5\.0\.1,8\.0\.0)"/org\.objectweb\.asm;version="\[5\.0\.1,10\.0\.0)"/g' \
+  protocols/bundles/ch.ethz.iks.r_osgi.remote/META-INF/MANIFEST.MF
 
 # Correction for content of runtime package
 %pom_xpath_remove "feature/plugin[@id='org.eclipse.ecf.presence']" releng/features/org.eclipse.ecf.core/feature.xml
@@ -287,6 +293,7 @@ popd
 %if %{with bootstrap}
 %files -n eclipse-ecf-core-bootstrap -f .mfiles
 %else
+
 %files core -f .mfiles
 %endif
 %{_javadir}/eclipse

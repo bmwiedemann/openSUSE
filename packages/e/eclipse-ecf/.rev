@@ -47,4 +47,12 @@
     <comment>3.14.8</comment>
     <requestid>818542</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f7b31d716c75d30d384964f2cbe6db48</srcmd5>
+    <version>3.14.8</version>
+    <time>1634853329</time>
+    <user>dimstar_suse</user>
+    <comment>widen asm requirements</comment>
+    <requestid>926740</requestid>
+  </revision>
 </revisionlist>
