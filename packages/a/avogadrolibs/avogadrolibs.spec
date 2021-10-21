@@ -134,6 +134,10 @@ modeling, bioinformatics, materials science, and related areas.
 %autopatch -p1
 [ -e ../crystals ] && rm -rfv ../crystals; mv ../crystals-%{crystals_rev} ../crystals
 [ -e ../molecules ] && rm -rfv ../molecules; mv ../molecules-%{molecules_rev} ../molecules
+%ifarch aarch64 %{arm}
+# Workaround for Arm/openGL ES, until overlayaxes fixed upstream - https://github.com/OpenChemistry/avogadrolibs/issues/810
+sed -i 's/add_subdirectory(overlayaxes)//' avogadro/qtplugins/CMakeLists.txt
+%endif
 
 %build
 %cmake \

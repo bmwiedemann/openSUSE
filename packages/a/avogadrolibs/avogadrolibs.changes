@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 13:08:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Workaround for Arm/openGL ES, until overlayaxes fixed upstream
+  https://github.com/OpenChemistry/avogadrolibs/issues/810
+
+-------------------------------------------------------------------
 Thu Oct 14 11:32:05 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.95.1
