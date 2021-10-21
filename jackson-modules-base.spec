@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-modules-base
-Version:        2.10.3
+Version:        2.13.0
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
@@ -51,6 +51,17 @@ Module that will add dynamic bytecode generation for standard Jackson POJO
 serializers and deserializers, eliminating majority of remaining data binding
 overhead.
 
+%package -n jackson-module-blackbird
+Summary:        Jackson module that uses LambdaMetafactory based code generation to replace reflection calls.
+
+%description -n jackson-module-blackbird
+The LambdaMetafactory introduces a standard Java API for dynamically instantiating function objects.
+The current OpenJDK implementation generates anonymous classes in a somewhat similar fashion to the
+classic Afterburner. While the metafactory cannot generate comparably specialized implementations,
+we can write needed adapters as simple Java code and use the metafactory to create distinct call
+sites for every needed access path. This should allow each accessor to have a monomorphic call
+profile and easily inline for maximum performance.
+
 %package -n jackson-module-guice
 Summary:        Jackson module to make integration with Guice a bit easier
 
@@ -74,6 +85,16 @@ Summary:        Functionality for implementing interfaces and abstract types dyn
 Mr Bean is an extension that implements support for "POJO type materialization"
 ability for databinder to construct implementation classes for Java interfaces
 and abstract classes, as part of deserialization.
+
+%package -n jackson-module-no-ctor-deser
+Summary:        Support deserialization of POJO classes without default constructor
+
+%description -n jackson-module-no-ctor-deser
+Module that allows instantiation of Java POJOs that do not have "default constructor"
+(constructor that takes no arguments) but should be deserialized from JSON Object
+as POJOs. In such cases, module tries to use sun.reflect.ReflectionFactory
+to force instantiation that by-passes all constructors (it is the mechanism used by
+JDK serialization system).
 
 %package -n jackson-module-osgi
 Summary:        Jackson module to inject OSGI services in deserialized beans
@@ -100,8 +121,13 @@ This package contains API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 
+%pom_disable_module jakarta-xmlbind
+
 # no need for Java 9 module stuff
 %pom_remove_plugin -r :moditect-maven-plugin
+
+# no need for gradle metadata
+%pom_remove_plugin -r :gradle-module-metadata-maven-plugin
 
 # move to "old" glassfish-jaxb-api artifactId
 %pom_change_dep -r jakarta.xml.bind:jakarta.xml.bind-api javax.xml.bind:jaxb-api
@@ -127,7 +153,6 @@ cp -p mrbean/src/main/resources/META-INF/{LICENSE,NOTICE} .
 
 %{mvn_file} ":{*}" jackson-modules/@1
 
-
 %build
 %{mvn_build} -s -f
 
@@ -140,6 +165,10 @@ cp -p mrbean/src/main/resources/META-INF/{LICENSE,NOTICE} .
 
 %files -n jackson-module-afterburner -f .mfiles-jackson-module-afterburner
 %doc afterburner/README.md afterburner/release-notes
+%license LICENSE NOTICE
+
+%files -n jackson-module-blackbird -f .mfiles-jackson-module-blackbird
+%doc blackbird/README.md
 %license LICENSE NOTICE
 
 %files -n jackson-module-guice -f .mfiles-jackson-module-guice
@@ -155,6 +184,10 @@ cp -p mrbean/src/main/resources/META-INF/{LICENSE,NOTICE} .
 %doc mrbean/README.md mrbean/release-notes
 %license LICENSE NOTICE
 %endif
+
+%files -n jackson-module-no-ctor-deser -f .mfiles-jackson-module-no-ctor-deser
+%doc no-ctor-deser/README.md
+%license LICENSE NOTICE
 
 %files -n jackson-module-osgi -f .mfiles-jackson-module-osgi
 %doc osgi/README.md osgi/release-notes
