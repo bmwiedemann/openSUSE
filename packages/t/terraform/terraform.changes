@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Oct 18 07:06:15 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Update to 1.0.9
+  BUG FIXES:
+  * core: Fix panic when planning new resources with nested object attributes (#29701)
+  * core: Do not refresh deposed instances when the provider is not configured during destroy (#29720)
+  * core: Prevent panic when encountering a missing change when destroying a resource (#29734)
+
+-------------------------------------------------------------------
+Mon Oct 18 06:58:46 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Update to 1.0.8
+  BUG FIXES:
+  * cli: Check `required_version` as early as possibly during `init` so that version incompatibility can be reported before errors about new syntax (#29665)
+  * core: Don't plan to remove orphaned resource instances in refresh-only plans (#29640)
+- from version 1.0.7
+  BUG FIXES:
+  * core: Remove check for computed attributes which is no longer valid with optional structural attributes (#29563)
+  * core: Prevent object types with optional attributes from being instantiated as concrete values, which can lead to failures in type comparison (#29559)
+  * core: Empty containers in the configuration were not planned correctly when used with optional structural attributes (#29580)
+- from version 1.0.6
+  ENHANCEMENTS:
+  * backend/s3: Improve SSO handling and add new endpoints in the AWS SDK (#29017)
+  BUG FIXES:
+  * cli: Suppress confirmation prompt when initializing with the `-force-copy` flag and migrating state between multiple workspaces. (#29438)
+  * cli: Update tencentcount dependency versions to fix errors when building from source (#29445)
+  * core: Fix panic while handling computed attributes within nested objects, and improve plan validation for unknown values (#29482)
+- from version 1.0.5
+  BUG FIXES:
+  * json-output: Add an output change summary message as part of the `terraform plan -json` structured logs, bringing this format into parity with the human-readable UI. (#29312)
+  * core: Handle null nested single attribute values (#29411)
+  * cli: Fix crash when planning a diff between null and empty sets in nested attributes (#29398)
+  * cli: Fix crash when planning a new resource containing a set of nested object attributes (#29398)
+  * cli: Fix crash when displaying a resource diff where a possibly identifying attribute is sensitive (#29397)
+  * cli: Fix crash when a diff with unknown nested map attributes (#29410)
+  * config: Fix handling of dynamically types arguments in `formatlist`, ensuring the correct resulting type. (#29408)
+  * config: Floating point operations like `floor` and `ceil` can no longer mutate their arguments. (#29408)
+- from version 1.0.4
+  BUG FIXES:
+  * backend/consul: Fix a bug where the state value may be too large for consul to accept (#28838)
+  * cli: Fixed a crashing bug with some edge-cases when reporting syntax errors that happen to be reported at the position of a newline. (#29048)
+- from version 1.0.3
+  ENHANCEMENTS
+  * `terraform plan`: The JSON logs (`-json` option) will now include `resource_drift`, showing changes detected outside of Terraform during the refresh step. (#29072)
+  * core: The automatic provider installer will now accept providers that are recorded in their registry as using provider protocol version 6. (#29153)
+  * backend/etcdv3: New argument `max_request_bytes` allows larger requests and for the client, to match the server request limit. (#28078)
+  BUG FIXES:
+  * `terraform plan`: Will no longer panic when trying to render null maps. (#29207)
+  * backend/pg: Prevent the creation of multiple workspaces with the same name. (#29157)
+  * backend/oss: STS auth is now supported. (#29167)
+  * config: Dynamic blocks with unknown for_each values were not being validated. Ensure block attributes are valid even when the block is unknown (#29208)
+  * config: Unknown values in string templates could lose sensitivity, causing the planned change to be inaccurate (#29208)
+
+-------------------------------------------------------------------
 Thu Jul  8 08:21:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.2
