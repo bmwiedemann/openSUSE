@@ -15,4 +15,12 @@
     <comment>2.10</comment>
     <requestid>750405</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab5c85694869f651650d420e125e8b7f</srcmd5>
+    <version>2.13</version>
+    <time>1634853320</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926597</requestid>
+  </revision>
 </revisionlist>

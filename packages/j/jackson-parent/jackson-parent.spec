@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-parent
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-parent
-Version:        2.10
+Version:        2.13
 Release:        0
 Summary:        Parent pom for all Jackson components
 License:        Apache-2.0
