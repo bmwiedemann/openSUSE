@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 20 09:47:00 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version upgrade to 2.13.0
+  * 2.13.0 (30-Sep-2021)
+    + #85: (eclipse-collections) Update eclipse-collections to
+      version 10 and implement Triple deserialization. Still
+      compatible with older EC versions
+    + (guava) Serialize 'Cache' instances as empty Objects
+      (see #90)
+  * 2.12.2 (03-Mar-2021)
+    + Add missing "provides Module" for eclipse-collections
+      module-info (JPMS)
+  * 2.12.0 (29-Nov-2020)
+    + #25: (guava) SetMultimap should be deserialized to a
+      LinkedHashMultimap by default
+    + #79: (guava)  Guava's RangeHelper causing NPE in
+      PropertyNamingStrategy
+    + Add Gradle Module Metadata
+    + Update "preferred" Guava version to 21.0
+  * 2.11.4 (12-Dec-2020)
+    + Add missing "LICENSE" file for Guava- and Eclipse-collections
+      modules
+    + Add missing SPI metadata for auto-detecti Eclipse-collections
+      module
+  * 2.11.3 (02-Oct-2020)
+    + #71 (eclipse-collections) Can not deserialize concrete class
+      instance inside nested immutable eclipse-collection
+  * 2.11.2 (02-Aug-2020)
+    + #68: Support for Guava 29
+  * 2.10.5 (21-Jul-2020)
+    + #67: Guava collection deserialization failure with
+      'Nulls.AS_EMPTY'
+
+-------------------------------------------------------------------
 Wed May 12 08:46:38 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy guava20 package, build against

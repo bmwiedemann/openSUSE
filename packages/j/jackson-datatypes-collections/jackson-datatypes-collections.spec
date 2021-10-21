@@ -18,7 +18,7 @@
 
 %bcond_with jp_minimal
 Name:           jackson-datatypes-collections
-Version:        2.10.3
+Version:        2.13.0
 Release:        0
 Summary:        Jackson datatypes: collections
 License:        Apache-2.0
@@ -85,8 +85,8 @@ cp -p hppc/src/main/resources/META-INF/LICENSE .
 %pom_disable_module eclipse-collections
 %pom_disable_module pcollections
 
-%pom_remove_plugin :moditect-maven-plugin guava
-%pom_remove_plugin :moditect-maven-plugin hppc
+%pom_remove_plugin -r :moditect-maven-plugin
+%pom_remove_plugin -r :gradle-module-metadata-maven-plugin
 
 %build
 %{mvn_build} -f -s -- \

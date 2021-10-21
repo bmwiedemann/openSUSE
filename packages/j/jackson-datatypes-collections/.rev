@@ -15,4 +15,12 @@
     <comment>Build with guava 30.1.1</comment>
     <requestid>892411</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>604c600f089e2f756bb2dbc1f01bce16</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853318</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926594</requestid>
+  </revision>
 </revisionlist>
