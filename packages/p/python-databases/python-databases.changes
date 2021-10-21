@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 17 14:40:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.3
+  * Support dialect+driver for default database drivers like
+    postgresql+asyncpg (#396)
+  * Documentation of low-level transaction (#390)
+- Release 0.5.2
+  * Reset counter for failed connections (#385)
+  * Avoid dangling task-local connections after
+    Database.disconnect() (#211)
+- Release 0.5.1
+  * Make database connect and disconnect calls idempotent (#379)
+  * Fix in_ and notin_ queries in SQLAlchemy 1.4 (#378)
+- Release 0.5.0 (August 26th, 2021)
+  * Support SQLAlchemy 1.4 (#299)
+  * Fix concurrent transactions (#328)
+- Drop sqlalchemy-14.patch fixed upstream
+
+-------------------------------------------------------------------
 Wed May 26 12:10:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add sqlalchemy-14.patch upgrading used API of SQLAlchemy to 1.4.
