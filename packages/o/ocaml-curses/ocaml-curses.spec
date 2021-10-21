@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-curses
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           ocaml-curses
-Version:        1.0.4
+Version:        1.0.9
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml bindings for ncurses
 License:        LGPL-2.1+
 Group:          Development/Languages/OCaml
-Url:            http://savannah.nongnu.org/projects/ocaml-tmk/
+Url:            https://opam.ocaml.org/packages/curses
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-dune >= 2.7
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  pkg-config
 

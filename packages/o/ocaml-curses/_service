@@ -1,10 +1,14 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/olafhering/ocaml-curses.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.0.4</param>
-    <param name="revision">dune-wip</param>
     <param name="filename">ocaml-curses</param>
+    <param name="revision">bf8a3536d375ba29b4e85c8c4c6ce573260e65d9</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/mbacarella/curses.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
