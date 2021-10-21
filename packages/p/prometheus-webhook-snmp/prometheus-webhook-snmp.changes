@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 13:57:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_prometheus-webhook-snmp.service.patch
+
+-------------------------------------------------------------------
 Thu May 14 12:23:05 UTC 2020 - Volker Theile <vtheile@suse.com>
 
 - Update to version 1.4

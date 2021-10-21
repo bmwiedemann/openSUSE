@@ -22,6 +22,7 @@ License:        GPL-3.0
 Group:          System/Management
 URL:            https://github.com/SUSE/prometheus-webhook-snmp
 Source0:        %{name}-%{version}.tar.gz
+Patch0:	harden_prometheus-webhook-snmp.service.patch
 BuildArch:      noarch
 
 BuildRequires:  python3-setuptools
@@ -44,6 +45,7 @@ translates incoming notifications into SNMP traps.
 
 %prep
 %setup -n %{name}-%{version}
+%patch0 -p1
 
 %build
 
