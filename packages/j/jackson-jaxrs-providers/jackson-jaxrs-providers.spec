@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-jaxrs-providers
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %bcond_without jp_minimal
 Name:           jackson-jaxrs-providers
-Version:        2.10.3
+Version:        2.13.0
 Release:        0
 Summary:        Jackson JAX-RS providers
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-jaxrs-providers
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= %{version}
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
@@ -118,6 +119,7 @@ cp -p xml/src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
 
 %pom_remove_plugin -r :moditect-maven-plugin
+%pom_remove_plugin -r :gradle-module-metadata-maven-plugin
 
 # Disable jar with no-meta-inf-services classifier, breaks build
 %pom_remove_plugin :maven-jar-plugin cbor
@@ -147,6 +149,7 @@ rm json/src/test/java/com/fasterxml/jackson/jaxrs/json/resteasy/RestEasyProvider
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles-jackson-jaxrs-base
 %doc README.md release-notes/*
