@@ -523,6 +523,12 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch34 -p1
 %patch35 -p1
 
+# Extend the objectweb-asm requirements
+sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \
+  eclipse.pde.ui/apitools/org.eclipse.pde.api.tools/META-INF/MANIFEST.MF
+sed -i -e 's/org\.objectweb\.asm;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \
+  eclipse.pde.ui/apitools/org.eclipse.pde.api.tools/META-INF/MANIFEST.MF
+
 # Optional (unused) multipart support (see patch 25)
 rm rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet/src/org/eclipse/equinox/http/servlet/internal/multipart/MultipartSupport{Impl,FactoryImpl,Part}.java
 
@@ -727,10 +733,6 @@ for f in eclipse.platform.swt.binaries/bundles/org.eclipse.swt.gtk.linux.*/META-
     echo -e "Eclipse-BundleShape: dir\n\n" >> $f;
 done
 
-# Add dep on Java API stubs when compiling with JDT
-%pom_xpath_inject "pom:pluginManagement/pom:plugins/pom:plugin[pom:artifactId='tycho-compiler-plugin']/pom:dependencies" \
-  "<dependency><groupId>org.eclipse</groupId><artifactId>java10api</artifactId><version>10</version></dependency>" eclipse-platform-parent
-
 # Build fake ant bundle that contains symlinks to system jars
 dependencies/fake_ant_dependency.sh
 
@@ -787,7 +789,7 @@ export M_ARCH="$LDFLAGS"
 
 #This is the lowest value where the build succeeds. 512m is not enough.
 export MAVEN_OPTS="-Xmx1024m -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState ${MAVEN_OPTS}"
-export JAVA_HOME=%{_jvmdir}/java-11
+export JAVA_HOME=%{_jvmdir}/java
 
 # Pre-build agent jar needed for AdvancedSourceLookupSupport
 sed -i -e '/createSourcesJar/d' -e 's/7\.2/7.0/' eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/pom.xml
@@ -802,7 +804,7 @@ QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
 %if %{with bootstrap}
    -P !api-generation,!build-docs \
 %endif
-   -Declipse.javadoc=%{_jvmdir}/java-11/bin/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
+   -Declipse.javadoc=%{_jvmdir}/java/bin/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
    -Dtycho.local.keepTarget \
    -Dfedora.p2.repos=$(pwd)/.m2/p2/repo-sdk/plugins -DbuildType=X
 

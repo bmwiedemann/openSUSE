@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>880010</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1ba4caf87cdf00799311457fe2a615a3</srcmd5>
+    <version>4.15</version>
+    <time>1634853321</time>
+    <user>dimstar_suse</user>
+    <comment>widen asm requirements</comment>
+    <requestid>926739</requestid>
+  </revision>
 </revisionlist>

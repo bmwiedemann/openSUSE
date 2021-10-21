@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 21 04:51:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with objectweb-asm 9.x
+
+-------------------------------------------------------------------
+Wed Oct 20 17:44:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require Java10 APIs artifact when building with java 11
+
+-------------------------------------------------------------------
 Thu Mar 18 17:38:41 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1183728, CVE-2020-27225]
