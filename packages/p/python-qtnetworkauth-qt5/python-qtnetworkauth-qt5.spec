@@ -1,5 +1,5 @@
 #
-# spec file for package python-qtetworkauth-qt5
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,8 +19,9 @@
 %define mname qtnetworkauth-qt5
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define plainpython python
 Name:           python-%{mname}
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for the Qt Network Authorization library
 License:        GPL-3.0-only
@@ -28,15 +29,15 @@ Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtnetworkauth
 Source:         https://files.pythonhosted.org/packages/source/P/PyQtNetworkAuth/PyQtNetworkAuth-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-devel >= %{version}}
+BuildRequires:  %{python_module sip-devel >= 5.3}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(Qt5NetworkAuth) >= 5.15
-BuildRequires:  %{python_module pyqt-builder >= 1.9}
-BuildRequires:  %{python_module sip-devel >= 5.3}
-Requires:       python-qt5-sip
 Requires:       python-qt5 >= %{version}
+Requires:       python-qt5-sip
 Provides:       python-PyQtNetworkAuth = %{version}-%{release}
 %python_subpackages
 
@@ -45,13 +46,14 @@ PyQtNetworkAuth is a set of Python bindings for The Qt Company’s Qt Network
 Authorization library. The bindings sit on top of PyQt5 and are implemented
 as a single module.
 
-
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Tools/IDE
-Supplements:    packageand(eric:python-%{mname})
-Supplements:    packageand(python-sip-devel:python-%{mname}) 
+Requires:       python-%{mname}
 Requires:       python-qt5-devel
+Requires:       %{plainpython}(abi) = %{python_version}
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-qt5-devel and python-%{mname})
 
 %description    devel
 This package provides Qt5 Network Authorization library API files
