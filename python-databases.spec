@@ -19,20 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-databases
-Version:        0.4.3
+Version:        0.5.3
 Release:        0
 Summary:        Async database support for Python
 License:        BSD-3-Clause
 URL:            https://github.com/encode/databases
 Source:         https://github.com/encode/databases/archive/%{version}.tar.gz#/databases-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sqlalchemy-14.patch gh#encode/databases#299 mcepl@suse.com
-# Upgrade used API of SQLAlchemy to 1.4
-Patch0:         sqlalchemy-14.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sqlalchemy >= 1.3
-Suggests:       python-aiocontextvars
+Requires:       python-sqlalchemy >= 1.4
+%if 0%{?python_version_nodots} < 37
+Requires:       python-aiocontextvars
+%endif
 Suggests:       python-aiomysql
 Suggests:       python-aiopg
 Suggests:       python-aiosqlite
@@ -40,12 +39,11 @@ Suggests:       python-asyncpg
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiosqlite}
+BuildRequires:  %{python_module aiocontextvars if %python-base < 3.7}
 BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sqlalchemy >= 1.3}
-BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
-BuildRequires:  (python36-aiocontextvars if python36-base)
+BuildRequires:  %{python_module sqlalchemy >= 1.4}
 # /SECTION
 %python_subpackages
 
@@ -77,6 +75,7 @@ export PYTHONPATH=${PWD}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/databases
+%{python_sitelib}/databases-%{version}*-info
 
 %changelog
