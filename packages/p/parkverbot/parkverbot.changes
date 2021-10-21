@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:05:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop harden_parkverbot.service.patch (merged upstream)
+
+-------------------------------------------------------------------
+Thu Oct 14 10:40:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_parkverbot.service.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 13:10:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3

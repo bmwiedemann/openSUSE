@@ -1,7 +1,7 @@
 #
 # spec file for package parkverbot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           parkverbot
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Daemon to prevent hard disk head parking in rotational media
 License:        GPL-2.0-or-later
@@ -31,7 +31,7 @@ Source3:        %name.keyring
 BuildRequires:  pkg-config >= 0.23
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libHX) >= 3.12
+BuildRequires:  pkgconfig(libHX) >= 4.2
 
 %description
 Modern rotational hard disks have a misfeature involving the regular
