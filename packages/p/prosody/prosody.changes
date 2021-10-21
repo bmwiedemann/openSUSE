@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:28:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prosody.service
+
+-------------------------------------------------------------------
 Mon Aug 16 14:00:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.10:
