@@ -17,6 +17,19 @@ After=var-run.mount nss-lookup.target network.target remote-fs.target time-sync.
 Before=mail-transfer-agent.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=forking
 EnvironmentFile=-/etc/sysconfig/postgrey
 ExecStart=/usr/sbin/postgrey -d $POSTGREY_CONN_OPTIONS $POSTGREY_DBDIR $POSTGREY_EXTRA_OPTIONS
