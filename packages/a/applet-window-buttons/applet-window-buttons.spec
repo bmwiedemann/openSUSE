@@ -20,7 +20,7 @@
 %define qt5_version 5.9
 
 Name:           applet-window-buttons
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Plasma 5 applet to show window buttons in panels
 License:        GPL-2.0-or-later
@@ -39,8 +39,8 @@ BuildRequires:  kwindowsystem-devel >= %{kf5_version}
 BuildRequires:  kxmlgui-devel >= %{kf5_version}
 BuildRequires:  libSM-devel
 BuildRequires:  plasma-framework-devel >= %{kf5_version}
-BuildRequires:  plasma5-workspace-devel >= 5.12
-BuildRequires:  cmake(KDecoration2) >= 5.12
+BuildRequires:  plasma5-workspace-devel >= 5.23
+BuildRequires:  cmake(KDecoration2) >= 5.23
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Quick) >= %{qt5_version}
