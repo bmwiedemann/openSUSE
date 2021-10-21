@@ -1439,4 +1439,11 @@ Removal of SuSEfirewall2 service.
     <comment>update to 2.5.8</comment>
     <requestid>924764</requestid>
   </revision>
+  <revision rev="171" vrev="71">
+    <srcmd5>f6ca5df4fe1708a16f0c2c232283140b</srcmd5>
+    <version>unknown</version>
+    <time>1634804483</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1190197</comment>
+  </revision>
 </revisionlist>
