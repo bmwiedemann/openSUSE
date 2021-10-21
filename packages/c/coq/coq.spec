@@ -20,7 +20,7 @@
 %bcond_without ide
 
 Name:           coq
-Version:        8.13.2
+Version:        8.14.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -36,14 +36,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.05.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
+BuildRequires:  ocaml-dune >= 2.5.1
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(zarith)
 %if %{with ide}
 BuildRequires:  update-desktop-files
-BuildRequires:  ocamlfind(lablgtk3)
-BuildRequires:  pkgconfig(gdk-3.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  ocamlfind(lablgtk3-sourceview3)
 %endif
 
 %description
@@ -57,7 +55,7 @@ For a graphical interface install %{name}-ide.
 %package ide
 Summary:        IDE for The Coq Proof Assistant
 Group:          Productivity/Scientific/Math
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 
 %description ide
 The Coq Integrated Development Interface is a graphical interface for the Coq proof assistant.
@@ -65,7 +63,7 @@ The Coq Integrated Development Interface is a graphical interface for the Coq pr
 %package devel
 Summary:        Development files for coq
 Group:          Development/Libraries/Other
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 Requires:       ocaml >= 4.05.0
 Requires:       ocamlfind(findlib)
 
@@ -82,14 +80,12 @@ HTML reference manual for Coq and full documentation of the standard library.
 
 %prep
 %setup -q -a 50 -a 51
-# META for ocamlfind doesn't contain a version, so configure.ml fails. We patch that.
-sed -i 's/v, _ = tryrun camlexec.find \["query"; "-format"; "%v"; "lablgtk3"\]/v = "%{pkg_version ocamlfind(lablgtk3)}"/' \
-    configure.ml
 
 %build
 export CFLAGS='%{optflags}'
 # TODO: Add -with-doc yes
 ./configure                \
+   -prefix %{_prefix}      \
    -bindir %{_bindir}      \
    -libdir %{_libdir}/coq  \
    -mandir %{_mandir}      \
@@ -109,13 +105,12 @@ export CFLAGS='%{optflags}'
 make %{?_smp_mflags} world
 
 %install
-%if %{with ide}
-# Fixup dependencies before we install. Some are apparently not detected.
-sed -i 's#^ide/ide_MLLIB_DEPENDENCIES:=.*$#& ide/configwin_types ide/protocol/richpp#' \
-    .mllibfiles.d
-%endif
+make DESTDIR=%{buildroot} install
 
-make COQINSTALLPREFIX=%{buildroot} install
+# For some reason, some of the files are installed into /usr/lib.
+%if "%{_libdir}" != "%{_prefix}/lib"
+mv %{buildroot}%{_prefix}/lib/* %{buildroot}%{_libdir}
+%endif
 
 %if %{with ide}
 %suse_update_desktop_file -i %{SOURCE1}
@@ -124,7 +119,7 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/mime/packages/coq.xml
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 ln -s %{_datadir}/coq/coq.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/coq.png
 %else
-rm %{buildroot}%{_bindir}/coqidetop{,.opt} %{buildroot}%{_mandir}/man1/coqide.1
+rm %{buildroot}%{_bindir}/coqidetop{.byte,.opt}
 %endif
 
 # Sometimes we get identical x and x.opt files, replace by symlink x -> x.opt.
@@ -139,9 +134,12 @@ done
 
 # Fix executable bit and shebangs, preferring python3.
 # (https://www.python.org/dev/peps/pep-0394/#for-python-runtime-distributors)
-chmod -x %{buildroot}%{_libdir}/%{name}/tools/TimeFileMaker.py
+chmod -x %{buildroot}%{_libdir}/coq-core/tools/TimeFileMaker.py
 sed -i '1s|^#!/usr/bin/env *|#!/usr/bin/|;1s|^#!/usr/bin/python$|#!/usr/bin/python3|' \
-    %{buildroot}%{_libdir}/%{name}/tools/make-{one-time-file,both-{time,single-timing}-files}.py
+    %{buildroot}%{_libdir}/coq-core/tools/make-{one-time-file,both-{time,single-timing}-files}.py
+
+# Remove /usr/doc that's not FHS-compliant, also we have the files elsewhere.
+rm -r %{buildroot}%{_prefix}/doc
 
 # Remove superfluous man page.
 rm %{buildroot}%{_mandir}/man1/coqtop.byte.1
@@ -151,24 +149,27 @@ find %{buildroot}%{_libdir}/coq -empty -name '*.vos' -delete
 
 # Build lists of runtime and devel files by ending.
 # Compiled theories and shared objects are needed at runtime.
-find %{buildroot}%{_libdir}/coq/{plugins,theories} -type d | \
-    sed "s|%{buildroot}|%%dir |g" >runtime.list
-find %{buildroot}%{_libdir}/coq -name '*.cmxs' \
+find %{buildroot}%{_libdir} -type d | sed "s|%{buildroot}|%%dir |g" >dir.list
+sed -i '1d; /coq-core\/tools/d' dir.list
+find %{buildroot}%{_libdir} -name '*.cmxs' \
                 -or -name '*.so' \
-                -or -name '*.vo' | sed "s|%{buildroot}||g" >>runtime.list
+                -or -name '*.vo' | sed "s|%{buildroot}||g" >runtime.list
 
 # Object files, static libraries and import definitions are only needed for development.
 # For now, we also put the standard library Coq sources here, since the runtime
 # package contains the HTML documentation for the standard library.
-find %{buildroot}%{_libdir}/coq -type d | sed "s|%{buildroot}|%%dir |g" >devel.list
-find %{buildroot}%{_libdir}/coq -name '*.a' \
+find %{buildroot}%{_libdir} -name '*.a' \
                 -or -name '*.cma' \
                 -or -name '*.cmi' \
+                -or -name '*.cmt' \
+                -or -name '*.cmti' \
                 -or -name '*.cmx' \
                 -or -name '*.cmxa' \
                 -or -name '*.glob' \
+                -or -name '*.ml' \
+                -or -name '*.mli' \
                 -or -name '*.o' \
-                -or -name '*.v' | sed "s|%{buildroot}||g" >>devel.list
+                -or -name '*.v' | sed "s|%{buildroot}||g" >devel.list
 
 # Until we can build it, we fetch the documentation from the official website:
 # svn export https://github.com/coq/doc/trunk/V%{version}/refman
@@ -182,45 +183,43 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 
 # Drop some CSS files and headers in stdlib documentation, add some margin directly.
 find stdlib/ -name '*.html' -exec sed -i '
-s#//coq.inria.fr/sites/all/themes/coq/coqdoc.css#/usr/lib64/coq/tools/coqdoc/coqdoc.css#
+s#//coq.inria.fr/sites/all/themes/coq/coqdoc.css#%{_libdir}/coq-core/tools/coqdoc/coqdoc.css#
 /<link type="text\/css" rel="stylesheet" media="all" href="\/\/coq.inria.fr\/.*.css" \/>/d
 /<div id="container">/s/>/ style="margin:1em;">/
 /^  <div id="headertop">$/,/^  <\/div>$/d
 /^  <div id="header">$/,/^  <\/div>$/d
 ' {} +
-cp -r refman stdlib %{buildroot}%{_docdir}/coq
-rm -r %{buildroot}%{_docdir}/coq/refman/{.doctrees,_sources}
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -r refman stdlib %{buildroot}%{_docdir}/%{name}
+rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 
-%files -f runtime.list
+%files -f dir.list -f runtime.list
 %license LICENSE CREDITS
 %doc README.md
 
 %{_bindir}/coq-tex
 %{_bindir}/coq_makefile
 %{_bindir}/coqc
+%{_bindir}/coqc.byte
 %{_bindir}/coqchk
 %{_bindir}/coqdep
 %{_bindir}/coqdoc
+%{_bindir}/coqnative
 %{_bindir}/coqpp
 %{_bindir}/coqproofworker.opt
 %{_bindir}/coqqueryworker.opt
 %{_bindir}/coqtacticworker.opt
 %{_bindir}/coqtop
+%{_bindir}/coqtop.byte
 %{_bindir}/coqtop.opt
 %{_bindir}/coqwc
 %{_bindir}/coqworkmgr
+%{_bindir}/csdpcert
 %{_bindir}/ocamllibdep
 %{_bindir}/votour
 
-%dir %{_libdir}/coq
-%{_libdir}/coq/META
-%{_libdir}/coq/revision
-%dir %{_libdir}/coq/kernel
-%dir %{_libdir}/coq/kernel/byterun
-%{_libdir}/coq/plugins/micromega/csdpcert
-%{_libdir}/coq/tools
-%exclude %{_libdir}/coq/tools/CoqMakefile.in
-%dir %{_libdir}/coq/user-contrib
+%{_libdir}/coq-core/tools
+%exclude %{_libdir}/coq-core/tools/CoqMakefile.in
 
 %{_mandir}/man1/coq-tex.1%{ext_man}
 %{_mandir}/man1/coq_makefile.1%{ext_man}
@@ -228,6 +227,7 @@ rm -r %{buildroot}%{_docdir}/coq/refman/{.doctrees,_sources}
 %{_mandir}/man1/coqchk.1%{ext_man}
 %{_mandir}/man1/coqdep.1%{ext_man}
 %{_mandir}/man1/coqdoc.1%{ext_man}
+%{_mandir}/man1/coqnative.1%{ext_man}
 %{_mandir}/man1/coqtop.1%{ext_man}
 %{_mandir}/man1/coqtop.opt.1%{ext_man}
 %{_mandir}/man1/coqwc.1%{ext_man}
@@ -241,21 +241,22 @@ rm -r %{buildroot}%{_docdir}/coq/refman/{.doctrees,_sources}
 %if %{with ide}
 %files ide
 %{_bindir}/coqide
-%{_bindir}/coqidetop
+%{_bindir}/coqidetop.byte
 %{_bindir}/coqidetop.opt
 %{_mandir}/man1/coqide.1%{ext_man}
 %{_datadir}/%{name}
 %{_datadir}/applications/coq.desktop
 %{_datadir}/icons/hicolor/256x256/apps/coq.png
 %{_datadir}/mime/packages/coq.xml
-%{_docdir}/%{name}/FAQ-CoqIde
 %endif
 
-%files devel -f devel.list
-%{_libdir}/coq/tools/CoqMakefile.in
+%files devel -f dir.list -f devel.list
+%{_libdir}/coq-core/revision
+%{_libdir}/{coq,coq-core,coq-stdlib,coqide,coqide-server}/{META,dune-package,opam}
+%{_libdir}/coq-core/tools/CoqMakefile.in
 
 %files doc
-%{_docdir}/coq/refman
-%{_docdir}/coq/stdlib
+%{_docdir}/%{name}/refman
+%{_docdir}/%{name}/stdlib
 
 %changelog

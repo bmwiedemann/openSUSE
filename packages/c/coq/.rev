@@ -195,4 +195,34 @@
   can build the documentation directly in OBS.</comment>
     <requestid>916845</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f1d85d08c795b0ce16cb1083b9fa8484</srcmd5>
+    <version>8.14.0</version>
+    <time>1634853325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.14.0.
+  * The internal representation of match has changed to a more
+    space-efficient and cleaner structure, allowing the fix of a
+    completeness issue with cumulative inductive types in the type-
+    checker. The internal representation is now closer to the user-
+    level view of match, where the argument context of branches and
+    the inductive binders in and as do not carry type annotations.
+  * A new coqnative binary performs separate native compilation of
+    libraries, starting from a .vo file. It is supported by
+    coq_makefile.
+  * Improvements to typeclasses and canonical structure resolution,
+    allowing more terms to be considered as classes or keys.
+  * More control over notations declarations and support for
+    primitive types in string and number notations.
+  * Removal of deprecated tactics, notably omega, which has been
+    replaced by a greatly improved lia, along with many bug fixes.
+  * New Ltac2 APIs for interaction with Ltac1, manipulation of
+    inductive types and printing.
+  * Many changes and additions to the standard library in the
+    numbers, vectors and lists libraries. A new signed primitive
+    integers library Sint63 is available in addition to the
+    unsigned Uint63 library.
+  * For more details, see refman/changes.html in coq-doc.</comment>
+    <requestid>926632</requestid>
+  </revision>
 </revisionlist>

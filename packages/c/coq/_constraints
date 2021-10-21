@@ -2,7 +2,10 @@
 <constraints>
   <hardware>
     <memoryperjob>
-      <size unit="M">800</size>
+      <size unit="M">900</size>
     </memoryperjob>
+    <disk>
+      <size unit="G">4</size>
+    </disk>
   </hardware>
 </constraints>
