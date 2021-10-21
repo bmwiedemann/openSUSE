@@ -1,5 +1,5 @@
 #
-# spec file for package python-notebook
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,10 +25,11 @@
 %bcond_with test
 BuildArch:      noarch
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         plainpython python
 Name:           python-notebook%{psuffix}
-Version:        6.2.0
+Version:        6.4.5
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -54,6 +55,8 @@ Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-ipywidgets
 Suggests:       %{name}-latex
 Provides:       python-jupyter_notebook = %{version}
@@ -62,6 +65,7 @@ Obsoletes:      python-jupyter_notebook < %{version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  update-desktop-files
 %endif
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
@@ -106,6 +110,7 @@ Requires:       python-notebook = %{version}
 Provides:       python-jupyter_notebook-lang = %{version}
 Provides:       python-notebook-lang-all = %{version}
 Obsoletes:      python-jupyter_notebook-lang < %{version}
+Requires:       %{plainpython}(abi) = %{python_version}
 
 %description    lang
 Provides translations for the Jupyter notebook.
@@ -208,6 +213,7 @@ sed -E '
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbextension
 %python_clone -a %{buildroot}%{_bindir}/jupyter-notebook
 %python_clone -a %{buildroot}%{_bindir}/jupyter-serverextension
+%suse_update_desktop_file jupyter-notebook
 
 %endif
 
@@ -247,6 +253,8 @@ fi
 %files -n jupyter-notebook
 %license LICENSE
 %{_datadir}/icons/hicolor/*/apps/JupyterNotebook.*
+%{_datadir}/icons/hicolor/*/apps/notebook.svg
+%{_datadir}/applications/jupyter-notebook.desktop
 
 %files -n jupyter-notebook-lang
 %license LICENSE

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Oct 20 18:30:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.4.5
+  * Recover from failure to render mimetype
+  * Fix crypto handling
+  * Fix jupyter_client warning
+  * Fix nbsphinx settings
+  * Fully revert the pinning of nbsphinx to 0.8.6
+  * Pin nbsphinx to 0.8.6, clean up orphaned resources
+  * Fix typo in docstring
+- Release 6.4.4
+  * Update Manual Release Instructions
+  * Use default JupyterLab CSS sanitizer options for Markdown
+  * Fix syntax highlight
+- Release 6.4.3
+  * Add @babel/core dependency
+  * Switch webpack to production mode
+  * Clean up link checking
+- Release 6.4.2
+  * Add missing file to manifest
+  * Fix issue #3218
+  * Fix version of jupyter-packaging in pyproject.toml
+  * "#element".tooltip is not a function on home page fixed.
+  * Enhancements to the desktop entry
+  * Add missing spaces to help messages in config file
+- Release 6.4.0
+  * Fix Handling of Encoded Paths in Save As Dialog
+  * Fix: split_cell doesn't always split cell
+  * Correct 'Content-Type' headers
+  * Fix skipped tests & remove deprecation warnings
+  * [Gateway] Track only this server's kernels
+  * Bind the HTTPServer in start #6061
+  * Revert "do not apply asyncio patch for tornado >=6.1"
+  * Use Jupyter Releaser
+  * Add Workflow Permissions for Lock Bot
+  * Fixes related to the recent changes in the documentation
+  * Add maths checks in CSS reference test
+  * Add Issue Lock and Answered Bots
+  * Spelling correction
+  * Minor typographical and comment changes
+  * Fixes related to the recent changes in the documentation
+  * Fix readthedocs environment
+- Release 6.3.0
+  * Add square logo and desktop entry files
+  * Modernize Changelog
+  * Add missing "import inspect"
+  * Add Codecov badge to README
+  * Remove configuration for nosetests from setup.cfg
+  * Update security.rst
+  * Docs-Translations: Updated Hindi and Chinese Readme.md
+  * Allow /metrics by default if auth is off
+  * Skip terminal tests on Windows 3.9+ (temporary)
+  * Update GatewayKernelManager to derive from
+    AsyncMappingKernelManager
+  * Drop use of deprecated pyzmq.ioloop
+  * Drop support for Python 3.5
+  * Allow jupyter_server-based contents managers in notebook
+  * Russian translation fixes
+  * Increase culling test idle timeout
+  * Re-enable support for answer_yes flag
+  * Replace Travis and Appveyor with Github Actions
+  * DOC: Server extension, extra docs on
+    configuration/authentication.
+- Silence rpmlint2 
+
+-------------------------------------------------------------------
 Sun Feb 14 18:12:07 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
