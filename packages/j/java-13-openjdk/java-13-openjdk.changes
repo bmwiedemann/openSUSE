@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Oct 21 11:42:27 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.9+3 (October 2021 CPU)
+  * Security fixes:
+    + JDK-8267729, CVE-2021-35578, bsc#1191904: Improve TLS client
+      handshaking
+    + JDK-8268205: Enhance DTLS client handshake
+    + JDK-8268199: Correct certificate requests
+    + JDK-8268193: Improve requests of certificates
+    + JDK-8269618, CVE-2021-35603, bsc#1191906: Better session
+      identification
+    + JDK-8269624: Enhance method selection support
+    + JDK-8267735, CVE-2021-35586, bsc#1191914: Better BMP support
+    + JDK-8267712: Better LDAP reference processing
+    + JDK-8266689, CVE-2021-35567, bsc#1191903: More Constrained
+      Delegation
+    + JDK-8267086: ArrayIndexOutOfBoundsException in
+      java.security.KeyFactory.generatePublic
+    + JDK-8266103: Better specified spec values
+    + JDK-8265580, CVE-2021-35559, bsc#1191911: Enhanced style for
+      RTF kit
+    + JDK-8265574: Improve handling of sheets
+    + JDK-8269763: The JEditorPane is blank after JDK-8265167
+    + JDK-8265167, CVE-2021-35556, bsc#1191910: Richer Text Editors
+    + JDK-8263314: Enhance XML Dsig modes
+    + JDK-8266137, CVE-2021-35564, bsc#1191913: Improve Keystore
+      integrity
+    + JDK-8266109: More Resilient Classloading
+    + JDK-8268506: More Manifest Digests
+    + JDK-8266115: More Manifest Jar Loading
+    + JDK-8266097: Better hashing support
+    + JDK-8270404: Better canonicalization
+    + JDK-8270398: Enhance canonicalization
+    + JDK-8265776: Improve Stream handling for SSL
+  * Other changes:
+    + JDK-8211227: Inconsistent TLS protocol version in debug output
+    + JDK-8262392: Update Mesa 3-D Headers to version 21.0.3
+    + JDK-8259271: gc/parallel/TestDynShrinkHeap.java still fails
+      "assert(covered_region.contains(new_memregion)) failed: new
+      region is not in covered_region"
+    + JDK-8260704: ParallelGC: oldgen expansion needs release-store
+      for _end
+    + JDK-8257999: Parallel GC crash in gc/parallel/
+      /TestDynShrinkHeap.java: new region is not in covered_region
+    + JDK-8266248: Compilation failure in
+      PLATFORM_API_MacOSX_MidiUtils.c with Xcode 12.5
+    + JDK-8264848: [macos] libjvm.dylib linker warning due to macOS
+      version mismatch 8272700: [macos] Build failure with Xcode
+      13.0 after JDK-8264848
+    + JDK-8273671: Backport of 8260616 misses one JNF header
+      inclusion removal
+    + JDK-8268427: Improve AlgorithmConstraints:checkAlgorithm
+      performance
+    + JDK-8270317: Large Allocation in CipherSuite
+    + JDK-8261236: C2: ClhsdbJstackXcompStress test fails when
+      StressGCM is enabled
+    + JDK-8270216: [macOS] Update named used for Java run loop mode
+    + JDK-8269934: RunThese24H.java failed with
+      EXCEPTION_ACCESS_VIOLATION in
+      java_lang_Thread::get_thread_status
+    + JDK-8272602: [macos] not all KEY_PRESSED events sent when
+      control modifier is used
+    + JDK-8254631: Better support ALPN byte wire values in SunJSSE
+    + JDK-8267625: AARCH64: typo in LIR_Assembler::emit_profile_type
+    + JDK-8268775: Password is being converted to String in
+      AccessibleJPasswordField
+    + JDK-8265231: (fc) ReadDirect and WriteDirect tests fail after
+      fix for JDK-8264821
+    + JDK-8258753: StartTlsResponse.close() hangs due to
+      synchronization issues
+    + JDK-8258373: Update the text handling in the JPasswordField
+    + JDK-8254967: com.sun.net.HttpsServer spins on TLS session
+      close
+    + JDK-8257620: Do not use objc_msgSend_stret to get macOS
+      version
+    + JDK-8249588: libwindowsaccessbridge issues on 64bit Windows
+    + JDK-8253899: Make IsClassUnloadingEnabled signature match
+      specification
+    + JDK-8261109: [macOS] Remove disabled warning for JNF in
+      make/autoconf/flags-cflags.m4
+    + JDK-8267652: c2 loop unrolling by 8 results in reading memory
+      past array
+    + JDK-8268965: TCP Connection Reset when connecting simple
+      socket to SSL server
+    + JDK-8268635: Corrupt oop in ClassLoaderData
+- Remove the unneeded icedtea-sound provider
+- Removed patches:
+  * icedtea-sound-1.0.1-jdk9.patch
+  * icedtea-sound-soundproperties.patch
+    + not needed since the icedtea-sound provider is removed
+
+-------------------------------------------------------------------
 Thu Aug 26 13:45:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
