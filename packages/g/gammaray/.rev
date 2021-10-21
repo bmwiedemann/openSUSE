@@ -168,4 +168,12 @@
   The glslang 11.4.0 update broke the build.</comment>
     <requestid>898285</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>edfc45fea91c9bb9c40bb03006a682ea</srcmd5>
+    <version>2.11.3</version>
+    <time>1634853322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926620</requestid>
+  </revision>
 </revisionlist>

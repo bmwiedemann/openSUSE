@@ -1,7 +1,7 @@
 #
 # spec file for package gammaray
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %define tarname GammaRay
 Name:           gammaray
-Version:        2.11.2
+Version:        2.11.3
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
@@ -73,7 +73,7 @@ BuildRequires:  cmake(VTK) = 7.1.0
 BuildRequires:  libqt5-qtdoc-devel
 # Build issue with glslang 11.4.0
 # https://github.com/KDAB/GammaRay/issues/635
-%if 0%{?suse_version} <= 1500 
+%if 0%{?suse_version} <= 1500
 BuildRequires:  glslang-devel
 %endif
 BuildRequires:  libqt5-qtscxml-private-headers-devel >= 5.8.0
@@ -114,7 +114,9 @@ frameworks in Qt. Development files.
 
 install -d -m 755 %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
-%suse_update_desktop_file GammaRay Development Qt Debugger
+
+%suse_update_desktop_file GammaRay Development Debugger
+
 %fdupes %{buildroot}
 
 %post   -p /sbin/ldconfig
@@ -122,7 +124,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
 %files
 %license LICENSE.*
-%doc CHANGES ReadMe.txt
+%doc CHANGES README.txt
 %dir %{_datadir}/icons/hicolor/512x512/
 %dir %{_datadir}/icons/hicolor/512x512/apps/
 %{_bindir}/gammaray
@@ -139,7 +141,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %if 0%{?suse_version} <= 1320
 %dir %{_datadir}/appdata
 %endif
-%{_datadir}/appdata/GammaRay.appdata.xml
+%{_kf5_appstreamdir}/com.kdab.GammaRay.metainfo.xml
 %{_datadir}/gammaray
 
 %files devel

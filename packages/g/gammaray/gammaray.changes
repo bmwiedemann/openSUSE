@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 20 18:24:58 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix build by fixing the %files section for renamed/removed files
+
+-------------------------------------------------------------------
+Wed Oct 20 17:49:05 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 2.11.3
+  * Increase CMake requirement to version 3.4.0 (reflecting reality).
+  * Update 3rdparty/StackWalker.
+  * Update 3rdparty/backward-cpp.
+  * Don't fail self-test for lldb version 10.x.
+  * Support for CMAKE_SYSTEM_PROCESSOR amd64.
+  * Fix crash when editing the margins property of a QtCharts/ChartView.
+  * Fix crash when attaching to an ASAN-enabled application.
+  * Register stream operators for Qt::CaseSensitivity.
+  * Clean some runtime, compile , CMake warnings, etc.
+
+-------------------------------------------------------------------
+Thu Aug  5 05:53:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the duplicate category from the desktop file.
+
+-------------------------------------------------------------------
 Tue Jun  8 08:36:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Don't build gammaray with glslang on Tumbleweed.
