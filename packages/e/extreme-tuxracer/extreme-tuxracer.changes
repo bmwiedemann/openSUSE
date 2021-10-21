@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:27:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Autotools build now prefers linking against libOpenGL over libGL
+  * New translations
+    * Esperanto
+    * Dutch
+    * Romanian
+  * Updated translations
+    * French
+    * Swedish
+
+-------------------------------------------------------------------
 Fri Mar 27 14:40:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update 0.8.0
