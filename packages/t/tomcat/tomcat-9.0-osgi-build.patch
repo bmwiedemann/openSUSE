@@ -1,14 +1,17 @@
-Index: apache-tomcat-9.0.35-src/build.xml
+Index: apache-tomcat-9.0.37-src/build.xml
 ===================================================================
---- apache-tomcat-9.0.35-src.orig/build.xml
-+++ apache-tomcat-9.0.35-src/build.xml
-@@ -3327,6 +3327,9 @@ Read the Building page on the Apache Tom
-     <path id="bndlib.classpath">
+--- apache-tomcat-9.0.37-src.orig/build.xml
++++ apache-tomcat-9.0.37-src/build.xml
+@@ -3307,6 +3307,12 @@ Read the Building page on the Apache Tom
+     <!-- Add bnd tasks to project -->
+     <path id="bnd.classpath">
        <fileset file="${bnd.jar}" />
-       <fileset file="${bndlib.jar}" />
++      <fileset file="${bndlib.jar}" />
 +      <fileset file="${bndlibg.jar}" />
 +      <fileset file="${bndannotation.jar}" />
++      <fileset file="${osgiannotation.jar}" />
++      <fileset file="${osgicmpn.jar}" />
 +      <fileset file="${slf4j-api.jar}" />
      </path>
  
-     <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="bndlib.classpath" />
+     <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="bnd.classpath" />

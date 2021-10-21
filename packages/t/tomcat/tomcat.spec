@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 36
+%define micro_version 43
 %define packdname apache-tomcat-%{version}-src
 %define serverxmltool_version 1.0
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
@@ -80,14 +80,9 @@ Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 # PATCH-FIX-OPENSUSE: include all necessary aqute-bnd jars
 Patch4:         tomcat-9.0-osgi-build.patch
 # PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
-Patch5:         tomcat-9.0.31-java8compat.patch
+Patch5:         tomcat-9.0.43-java8compat.patch
 # PATCH-FIX-OPENSUSE: set ajp connector secreteRequired to false by default to avoid tomcat not starting
 Patch6:         tomcat-9.0.31-secretRequired-default.patch
-Patch7:         tomcat-9.0-CVE-2020-13943.patch
-Patch8:         tomcat-9.0-CVE-2020-17527.patch
-Patch9:         tomcat-9.0-CVE-2021-24122.patch
-Patch10:        tomcat-9.0-CVE-2021-25122.patch
-Patch11:        tomcat-9.0-CVE-2021-25329.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -95,8 +90,8 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-daemon
 BuildRequires:  apache-commons-dbcp >= 2.0
 BuildRequires:  apache-commons-pool2
-BuildRequires:  aqute-bnd
-BuildRequires:  aqute-bndlib
+BuildRequires:  aqute-bnd >= 5.1.1
+BuildRequires:  aqute-bndlib >= 5.1.1
 BuildRequires:  ecj >= 4.4.0
 BuildRequires:  fdupes
 BuildRequires:  findutils
@@ -262,11 +257,6 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
@@ -306,6 +296,9 @@ ant -Dbase.path="." \
     -Dbndlib.jar="$(build-classpath aqute-bnd/biz.aQute.bndlib)" \
     -Dbndlibg.jar="$(build-classpath aqute-bnd/aQute.libg)" \
     -Dbndannotation.jar="$(build-classpath aqute-bnd/biz.aQute.bnd.annotation)" \
+    -Dosgiannotation.jar="$(build-classpath osgi-annotation/osgi.annotation)" \
+    -Dosgi-annotations.jar="$(build-classpath aqute-bnd/biz.aQute.bnd.annotation)" \
+    -Dosgicmpn.jar="$(build-classpath osgi-compendium/osgi.cmpn)" \
 	-Dslf4j-api.jar="$(build-classpath slf4j/slf4j-api)" \
     -Dcommons-pool.home="$(build-classpath commons-pool2)" \
     -Dcommons-dbcp.home="$(build-classpath commons-dbcp2)" \

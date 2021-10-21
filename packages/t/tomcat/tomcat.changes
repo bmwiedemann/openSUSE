@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 18 21:42:48 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.43. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.43_(markt)
+- Removed Patches because fixed upstream now:
+  * tomcat-9.0-CVE-2021-25122.patch
+  * tomcat-9.0-CVE-2021-25329.patch
+- Rebased patch:
+  tomcat-9.0.39-java8compat.patch -> tomcat-9.0.43-java8compat.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 18:26:39 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.41. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.41_(markt)
+
+-------------------------------------------------------------------
+Mon Oct 18 13:05:17 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.40. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.40_(markt)
+- Removed Patches because fixed upstream now:
+  * tomcat-9.0-CVE-2020-17527.patch
+  * tomcat-9.0-CVE-2021-24122.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 13:11:34 UTC 2021 - Abid Mehmood <amehmood@suse.com>
 
 - Fixed CVEs:
@@ -14,6 +40,32 @@ Wed Mar 17 16:16:52 UTC 2021 - Abid Mehmood <amehmood@suse.com>
 - Log if file access is blocked due to symlinks: CVE-2021-24122 (bsc#1180947) 
 - Added patch:
   * tomcat-9.0-CVE-2021-24122.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 21:42:07 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.39. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.39_(markt)
+- Rebased patches:
+  * tomcat-9.0.38-java8compat.patch -> tomcat-9.0.39-java8compat.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 14:57:39 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.38. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.38_(markt)
+- Rebased patches:
+  * tomcat-9.0.37-java8compat.patch -> tomcat-9.0.38-java8compat.patch
+- Removed tomcat-9.0-CVE-2020-13943.patch because that fix is upstream now
+
+-------------------------------------------------------------------
+Mon Feb 22 08:56:03 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
+
+- Update to Tomcat 9.0.37. See changelog at
+  https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.37_(markt)
+- Rebased patches:
+  * tomcat-9.0-osgi-build.patch
+  * tomcat-9.0.31-java8compat.patch -> tomcat-9.0.37-java8compat.patch
 
 -------------------------------------------------------------------
 Wed Dec 16 12:17:22 UTC 2020 - Abid Mehmood <amehmood@suse.com>
