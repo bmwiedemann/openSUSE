@@ -15,9 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define _lto_cflags %{nil}
-
 Name:           aespipe
 Version:        2.4f
 Release:        0
@@ -45,6 +42,8 @@ patch  < aes-GPL.diff
 %build
 autoreconf -fiv
 %configure \
+CFLAGS="$CFLAGS -fno-strict-aliasing" \
+LDFLAGS="$LDFLAGS -fno-strict-aliasing" \
 %ifarch %{ix86}
   --enable-asm=x86   --enable-padlock --enable-intelaes \
 %endif
