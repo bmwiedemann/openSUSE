@@ -121,6 +121,6 @@ install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-us
 %{_sysusersdir}/system-user-%{name}.conf
 
 %files overlay
-%attr(0755, root, warewulf) %{_localstatedir}/lib/warewulf/overlays
+%{_localstatedir}/lib/warewulf/overlays
 
 %changelog

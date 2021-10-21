@@ -7,4 +7,12 @@
     <comment>Warewulf v4 combines ultra scalability, flexibility, and simplicity with being light weight, non-intrusive, and a great tool for scientists and seasoned system administrators alike. Warewulf empowers you to scalably and easily manage thousands of compute resources.</comment>
     <requestid>925261</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c1de064eab4bbe64dde94a4871a20aa</srcmd5>
+    <version>4.2.0rc1</version>
+    <time>1634853338</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>926774</requestid>
+  </revision>
 </revisionlist>
