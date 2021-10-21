@@ -26,6 +26,7 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
+Patch0:	harden_qbittorrent-nox@.service.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -69,6 +70,7 @@ version.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 for ui in nox gui; do

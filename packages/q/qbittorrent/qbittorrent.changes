@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 06:42:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_qbittorrent-nox@.service.patch
+
+-------------------------------------------------------------------
 Sun Aug 29 19:21:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.8
