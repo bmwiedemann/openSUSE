@@ -17,7 +17,7 @@
 
 
 Name:           jackson-databind
-Version:        2.10.5.1
+Version:        2.13.0
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later
@@ -28,7 +28,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jackson-annotations
 BuildRequires:  jackson-core
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 Requires:       mvn(com.fasterxml.jackson.core:jackson-annotations)
 Requires:       mvn(com.fasterxml.jackson.core:jackson-core)
