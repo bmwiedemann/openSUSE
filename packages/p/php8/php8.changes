@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 21 17:09:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.12: This is a security release (CVE-2021-21703)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-8.php#8.0.12
+
+-------------------------------------------------------------------
 Thu Sep 23 16:47:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.11: This is a security release fixing CVE-2021-21706.

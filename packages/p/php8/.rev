@@ -130,4 +130,14 @@
   + php8-gd-removed-unused-constants.patch</comment>
     <requestid>921175</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3af36ca761aba92a60dcf655b907794f</srcmd5>
+    <version>8.0.12</version>
+    <time>1634853345</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.12: This is a security release (CVE-2021-21703)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-8.php#8.0.12</comment>
+    <requestid>926820</requestid>
+  </revision>
 </revisionlist>
