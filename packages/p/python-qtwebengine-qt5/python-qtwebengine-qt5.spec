@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        5.15.4
+Version:        5.15.5
 Release:        0
 Summary:        Python bindings for the Qt5 WebEngine framework
 License:        GPL-3.0-only
@@ -46,24 +46,22 @@ PyQtWebEngine is a set of Python bindings for the Qt5 WebEngine
 framework. The framework provides the ability to embed web
 content in applications.
 
-%package api
-Summary:        Eric API files for %{name}
-Group:          Development/Libraries/C and C++
-Supplements:    packageand(eric:python-%{mname})
-
-%description api
-This package provides Qt5 WebEngine framework API files for the Eric IDE.
-
-%package sip
-Summary:        Sip files for %{name}
-Group:          Development/Libraries/Python
+%package devel
+Summary:        Development files for %{name}
 Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
 Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
+Provides:       python-%{mname}-sip = %{version}-%{release}
+Obsoletes:      python-%{mname}-sip < %{version}-%{release}
+Provides:       python-%{mname}-api = %{version}-%{release}
+Obsoletes:      python-%{mname}-api < %{version}-%{release}
 Requires:       python-qt5-devel
+Requires:       %{oldpython}(abi) = %{python_version}
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-qt5-devel and python-%{mname})
 
-%description sip
-This package provides the SIP files used to generate the Python bindings for
-%{name}
+%description devel
+This package provides the framework API files for the Eric IDE.
+and  the SIP files used to generate the Python bindings for %{name}
 
 %prep
 %autosetup -p1 -n PyQtWebEngine-%{version}
@@ -83,13 +81,10 @@ This package provides the SIP files used to generate the Python bindings for
 %{python_sitearch}/PyQt5/QtWebEngineWidgets.*
 %{python_sitearch}/PyQtWebEngine-%{version}.dist-info/
 
-%files %{python_files api}
+%files %{python_files devel}
 %license LICENSE
 %dir %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/
 %{_datadir}/qt5/qsci/api/python_%{python_bin_suffix}/PyQtWebEngine.api
-
-%files %{python_files sip}
-%license LICENSE
 %{pyqt5_sipdir}/QtWebEngine/
 %{pyqt5_sipdir}/QtWebEngineCore/
 %{pyqt5_sipdir}/QtWebEngineWidgets/

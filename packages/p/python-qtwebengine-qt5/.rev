@@ -106,4 +106,12 @@ Required for python-AnyQt</comment>
     <comment></comment>
     <requestid>918870</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>08af69608d3fac729d552ebe6dc05327</srcmd5>
+    <version>5.15.5</version>
+    <time>1634853314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.5</comment>
+    <requestid>926296</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:01:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.15.5
+  * PyQtWebEngine.msp: Only enable QWebEngineClientCertificateStore
+    when SSL is enabled.
+  * PyQtWebEngine.msp: Removed the internal QtWebEngineCore
+    namespace.
+- Merge sip and api subpackage into devel, update requirements
+
+-------------------------------------------------------------------
 Mon Sep 13 15:58:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove the Supplements for python-sip -- boo#1190441
