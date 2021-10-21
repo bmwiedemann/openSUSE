@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 20 09:52:49 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version upgrade to 2.13.0
+  * 2.13.0 (30-Sep-2021)
+    + #130: Add Jakarta-variant of "JAXB" annotation introspector,
+      module ('jackson-module-jakarta-xmlbind-annotations')
+    + #140: Add new module jackson-module-no-ctor-deser which
+      supports no-default-constructor POJOs
+    + Make 'JaxbAnnotationIntrospector' implement
+      'AnnotationIntrospector.XmlExtensions'
+    + Update 'jakarta.xml.bind-api' dep (2.3.2 -> 2.3.3)
+    + Remove "jakarta" classfier from
+      'jackson-module-jaxb-annotations' (due to new dedicated
+      module)
+  * 2.12.5 (27-Aug-2021)
+    + #141: (blackbird) Blackbird fails to deserialize varargs
+      array
+  * 2.12.4 (06-Jul-2021)
+    + #131: (afterburner) Failing to serialize 'Thread' returned by
+      'Thread.currentThread()' when Afterburner or Blackbird
+      registered
+    + #132: (mrbean) (minimal) Prevent Mr Bean from materializing
+      'java.util.TimeZone'
+  * 2.12.1 (08-Jan-2021)
+    + #120: Afterburner does not support the new CoercionConfig
+    + #123: BlackBird not support fluent setter
+  * 2.12.0 (29-Nov-2020)
+    + #85: Add Blackbird module -- alternative for Afterburner that
+      works better with new(er) JVMs
+    + #100: (mrbean) Prevent "double-prefixing" Mr Bean generated
+      classes
+    + #115: (jaxb) Remove ' java.beans.Introspector' dependency from
+      JAXB module (to get rid of 'java.desktop' module dep)
+    + #116: (jaxb) Jakarta Namespace Support
+    + #117: (afterburner) Use of 'ToStringSerializer' via
+      '@JsonSerialize' on 'int'/'long' property does not work
+    + #118: (afterburner) Using
+      '@JsonFormat(shape = JsonFormat.Shape.STRING)' on 'int',
+      'long' properties not working
+    + Add Gradle Module Metadata
+  * 2.11.3 (02-Oct-2020)
+    + #109: (mrbean) Fix detection of inherited default method in
+      Java 8+ interface
+    + #110: (mrbean) Avoid generating implementations of synthetic
+      bridge methods
+  * 2.11.2 (02-Aug-2020)
+    + (mrbean / afterburner) Asm version 7.0 -> 7.3.1
+  * 2.11.1 (25-Jun-2020)
+    + #97: (afterburner) (partial fix) Afterburner breaks
+      serialization of ObjectMapper
+
+-------------------------------------------------------------------
 Mon Apr 13 00:29:29 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Initial package
