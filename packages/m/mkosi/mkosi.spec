@@ -1,7 +1,7 @@
 #
 # spec file for package mkosi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,33 @@
 
 
 Name:           mkosi
-Version:        5
+Version:        10
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source:         https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python3 >= 3.5
+BuildRequires:  pkgconfig
 BuildRequires:  python3-setuptools
-Requires:       python3 >= 3.5
+BuildRequires:  pkgconfig(python3) >= 3.7
+Requires:       python3 >= 3.7
 Requires:       squashfs
-Recommends:     btrfs-progs
+Requires:       tar
+Requires:       xz
+Recommends:     arch-install-scripts
+Recommends:     btrfsprogs
+Recommends:     debootstrap >= 1.0.117
+Recommends:     dnf >= 4.8.0
 Recommends:     dosfstools
+Recommends:     dpkg
 Recommends:     edk2-ovmf
 Recommends:     gnupg
-Recommends:     tar
+Recommends:     pacman >= 6.0.1
 Recommends:     veritysetup
-Recommends:     xz
-# To build other distros:
-Recommends:     debootstrap >= 1.0.83
-Recommends:     dnf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  x86_64
+Recommends:     zstd
 BuildArch:      noarch
+ExclusiveArch:  x86_64
 
 %description
 A fancy wrapper around dnf --installroot, debootstrap, pacstrap and zypper that
@@ -55,24 +58,20 @@ supported (not plain MBR/BIOS).
 %setup -q
 
 %build
-python3 setup.py build
+%py3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%py3_install
 
 %check
-%{buildroot}%{_bindir}/mkosi -h
+%{buildroot}%{_bindir}/mkosi -h >/dev/null
 
 %files
-%defattr(-,root,root)
-%doc mkosi.md
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
+%doc mkosi.md README.md
 %license LICENSE
-%else
-%doc LICENSE
-%endif
 %{_bindir}/%{name}
-%doc mkosi.default
-%{python3_sitelib}/
+%{_mandir}/man1/mkosi.1%{?ext_man}
+%{python3_sitelib}/mkosi/
+%{python3_sitelib}/mkosi-%{version}-py*.egg-info/
 
 %changelog
