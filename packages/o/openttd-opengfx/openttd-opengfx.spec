@@ -17,7 +17,7 @@
 
 
 Name:           openttd-opengfx
-Version:        0.6.1
+Version:        7.1
 Release:        0
 Summary:        Default baseset graphics for OpenTTD
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/OpenGFX-%{version}.t
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  grfcodec
-BuildRequires:  nml >= 0.5
+BuildRequires:  nml >= 0.6
 BuildRequires:  openttd-data
 BuildRequires:  python3-base
 BuildRequires:  xz

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 21 12:53:49 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 7.1
+  * Fix: [Makefile] Don't generate broken OBG
+  * Fix: Remove animated pixels from snowy arctic NE riverbanks
+  * Add: GUI sprites for OpenTTD 12.0
+  * Fix: Remove animated pixels from highscore.png
+  * Codechange: change version numbering system to match change of OpenTTD versions from 12.0 onward
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Apr 15 17:36:15 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use SourceURLs, see https://en.opensuse.org/SourceUrls
