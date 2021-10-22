@@ -7170,9 +7170,11 @@ unsorted:
   - jackson-jaxrs-providers-javadoc 
   - jackson-jaxrs-providers-parent 
   - jackson-module-afterburner 
+  - jackson-module-blackbird 
   - jackson-module-guice 
   - jackson-module-jaxb-annotations 
   - jackson-module-mrbean 
+  - jackson-module-no-ctor-deser 
   - jackson-module-osgi 
   - jackson-module-paranamer 
   - jackson-modules-base 
@@ -21963,6 +21965,7 @@ unsorted:
   - python36-azure-mgmt-servicebus 
   - python36-azure-mgmt-servicefabric 
   - python36-azure-mgmt-servicefabricmanagedclusters 
+  - python36-azure-mgmt-servicelinker 
   - python36-azure-mgmt-signalr 
   - python36-azure-mgmt-sql 
   - python36-azure-mgmt-sqlvirtualmachine 
@@ -21984,6 +21987,11 @@ unsorted:
   - python36-azure-monitor-query 
   - python36-azure-multiapi-storage 
   - python36-azure-nspkg 
+  - python36-azure-purview-account 
+  - python36-azure-purview-administration 
+  - python36-azure-purview-catalog 
+  - python36-azure-purview-nspkg 
+  - python36-azure-purview-scanning 
   - python36-azure-sdk 
   - python36-azure-search-documents 
   - python36-azure-search-nspkg 
@@ -23657,8 +23665,7 @@ unsorted:
   - python36-qtnetworkauth-qt5 
   - python36-qtnetworkauth-qt5-devel 
   - python36-qtwebengine-qt5 
-  - python36-qtwebengine-qt5-api 
-  - python36-qtwebengine-qt5-sip 
+  - python36-qtwebengine-qt5-devel 
   - python36-queuelib 
   - python36-quicktions 
   - python36-radexreader 
@@ -24764,6 +24771,7 @@ unsorted:
   - python38-azure-mgmt-servicebus 
   - python38-azure-mgmt-servicefabric 
   - python38-azure-mgmt-servicefabricmanagedclusters 
+  - python38-azure-mgmt-servicelinker 
   - python38-azure-mgmt-signalr 
   - python38-azure-mgmt-sql 
   - python38-azure-mgmt-sqlvirtualmachine 
@@ -24785,6 +24793,11 @@ unsorted:
   - python38-azure-monitor-query 
   - python38-azure-multiapi-storage 
   - python38-azure-nspkg 
+  - python38-azure-purview-account 
+  - python38-azure-purview-administration 
+  - python38-azure-purview-catalog 
+  - python38-azure-purview-nspkg 
+  - python38-azure-purview-scanning 
   - python38-azure-sdk 
   - python38-azure-search-documents 
   - python38-azure-search-nspkg 
@@ -26561,8 +26574,7 @@ unsorted:
   - python38-qtnetworkauth-qt5 
   - python38-qtnetworkauth-qt5-devel 
   - python38-qtwebengine-qt5 
-  - python38-qtwebengine-qt5-api 
-  - python38-qtwebengine-qt5-sip 
+  - python38-qtwebengine-qt5-devel 
   - python38-quantities 
   - python38-quantum-blackbird 
   - python38-queuelib 
@@ -27741,6 +27753,7 @@ unsorted:
   - python39-azure-mgmt-servicebus 
   - python39-azure-mgmt-servicefabric 
   - python39-azure-mgmt-servicefabricmanagedclusters 
+  - python39-azure-mgmt-servicelinker 
   - python39-azure-mgmt-signalr 
   - python39-azure-mgmt-sql 
   - python39-azure-mgmt-sqlvirtualmachine 
@@ -27762,6 +27775,11 @@ unsorted:
   - python39-azure-monitor-query 
   - python39-azure-multiapi-storage 
   - python39-azure-nspkg 
+  - python39-azure-purview-account 
+  - python39-azure-purview-administration 
+  - python39-azure-purview-catalog 
+  - python39-azure-purview-nspkg 
+  - python39-azure-purview-scanning 
   - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
@@ -29658,8 +29676,7 @@ unsorted:
   - python39-qtnetworkauth-qt5 
   - python39-qtnetworkauth-qt5-devel 
   - python39-qtwebengine-qt5 
-  - python39-qtwebengine-qt5-api 
-  - python39-qtwebengine-qt5-sip 
+  - python39-qtwebengine-qt5-devel 
   - python39-quantities 
   - python39-quantum-blackbird 
   - python39-queuelib 
