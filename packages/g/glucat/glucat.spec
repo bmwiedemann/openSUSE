@@ -17,7 +17,7 @@
 
 
 Name:           glucat
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Library of C++ templates implementing universal Clifford algebras
 License:        LGPL-3.0-only
@@ -71,8 +71,10 @@ BuildRequires:  tex(xcolor.sty)
 BuildRequires:  tex(xkeyval.sty)
 %endif
 BuildRequires:  tex(adjustbox.sty)
+BuildRequires:  tex(alphalph.sty)
 BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(colortbl.sty)
+BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(float.sty)
@@ -182,4 +184,3 @@ make %{?_smp_mflags} check
 %{_docdir}/%{name}/demos/
 
 %changelog
-

@@ -180,4 +180,14 @@
     <comment></comment>
     <requestid>895540</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fb9b70ea67fcff4a3a6523301610abee</srcmd5>
+    <version>0.8.5</version>
+    <time>1634943085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5:
+- New BuildRequires: tex(enumitem.sty) and tex(alphalph.sty) needed to build API documentation.
+</comment>
+    <requestid>927015</requestid>
+  </revision>
 </revisionlist>

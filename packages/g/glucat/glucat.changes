@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 21 11:51:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.5:
+  * Support for the the Intel icpx oneAPI C++ compiler.
+  * Support for compiling with recent Clang, GCC and Intel C++
+    compilers.
+  * Restructured ./configure script to better support different
+    configuration options and compiler differences.
+  * Updated PyClical plotting demo to support more recent versions
+    of Matplotlib Pyplot.
+- New BuildRequires: tex(enumitem.sty) and tex(alphalph.sty)
+  needed to build API documentation.
+
+-------------------------------------------------------------------
 Tue May 25 23:16:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop duplicated TeX related BuildRequires.
