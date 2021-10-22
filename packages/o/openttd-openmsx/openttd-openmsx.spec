@@ -17,14 +17,13 @@
 
 
 Name:           openttd-openmsx
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        An OpenTTD Music set
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://github.com/OpenTTD/OpenMSX
-Source0:        https://github.com/OpenTTD/OpenMSX/archive/refs/tags/%{version}.tar.gz
-Patch0:         0001-openmsx-fix-install-target.patch
+Source0:        https://cdn.openttd.org/openmsx-releases/%{version}/openmsx-%{version}-source.tar.xz
 BuildRequires:  python
 Requires:       openttd-data >= 1.2
 BuildArch:      noarch
@@ -36,8 +35,7 @@ Recommends:     timidity
 OpenMSX is a base music set for OpenTTD.
 
 %prep
-%setup -q -n OpenMSX-%{version}
-%patch0
+%setup -q -n openmsx-%{version}-source
 
 %build
 %make_build PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
