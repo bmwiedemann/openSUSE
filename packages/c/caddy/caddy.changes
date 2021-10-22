@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 22 11:02:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.5:
+  * Hotfix for a regression introduced in 2.4.4 related to
+    combining the encode and reverse_proxy directives.
+  * cmd: export CaddyVersion(), Commands()
+  * encode: ignore flushing until after first write
+  * go.mod: Update CertMagic
+
+-------------------------------------------------------------------
 Thu Sep 02 14:38:58 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 2.4.4:

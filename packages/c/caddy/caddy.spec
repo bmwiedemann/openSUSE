@@ -19,9 +19,9 @@
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
-Summary:        Fast, multi-platform web server with automatic HTTPS 
+Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://caddyserver.com/
