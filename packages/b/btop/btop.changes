@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 16:03:46 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.19
+
+- Update to upstream release 1.0.19:
+  * Fixed: Makefile now tests compiler flag compatibility
+
+-------------------------------------------------------------------
 Tue Oct 19 15:40:53 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.18
 
 - Update to upstream release 1.0.18:
