@@ -19,6 +19,11 @@
 %global bundled_slf4j_version 1.7.25
 %global homedir %{_datadir}/%{name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %bcond_with  logback
 Name:           maven
 Version:        3.8.1
@@ -98,6 +103,12 @@ Requires(postun):aaa_base
 #BuildArch:      noarch
 %if %{with logback}
 BuildRequires:  mvn(ch.qos.logback:logback-classic)
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %endif
 
 %description
@@ -357,9 +368,28 @@ ln -sf %{confdir}/settings.xml %{buildroot}%{homedir}/conf/settings.xml
 mv %{buildroot}%{homedir}/conf/logging %{buildroot}%{confdir}/
 ln -sf %{confdir}/logging %{buildroot}%{homedir}/conf
 
-# Ghosts for alternatives
 install -d -m 755 %{buildroot}%{_bindir}/
 install -d -m 755 %{buildroot}%{_mandir}/man1/
+
+%if %{with libalternatives}
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mvn
+mkdir -p %{buildroot}%{_datadir}/libalternatives/mvn
+cat > %{buildroot}%{_datadir}/libalternatives/mvn/%{?maven_alternatives_priority}1.conf <<EOF
+binary=%{homedir}/bin/mvn
+group=mvn, mvnDebug
+EOF
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/mvnDebug
+mkdir -p %{buildroot}%{_datadir}/libalternatives/mvnDebug
+cat > %{buildroot}%{_datadir}/libalternatives/mvnDebug/%{?maven_alternatives_priority}1.conf <<EOF
+binary=%{homedir}/bin/mvnDebug
+group=mvn, mvnDebug
+man=mvn.1
+EOF
+mv %{buildroot}%{homedir}/bin/mvn.1.gz %{buildroot}%{_mandir}/man1
+%endif
+
+%if ! %{with libalternatives}
+# Ghosts for alternatives
 touch %{buildroot}%{_bindir}/{mvn,mvnDebug}
 touch %{buildroot}%{_mandir}/man1/{mvn,mvnDebug}.1
 
@@ -373,6 +403,14 @@ update-alternatives --install %{_bindir}/mvn mvn %{homedir}/bin/mvn %{?maven_alt
 if [ $1 -eq 0 ]; then
   update-alternatives --remove mvn %{homedir}/bin/mvn
 fi
+%else
+
+%pre
+# removing old update-alternatives entries
+if [ "$1" > 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+  update-alternatives --remove mvn %{homedir}/bin/mvn
+fi
+%endif
 
 %files lib -f .mfiles
 %doc README.md
@@ -385,11 +423,22 @@ fi
 %config(noreplace) %{confdir}/logging/simplelogger.properties
 
 %files
+%{_datadir}/bash-completion
+%if ! 0%{with libalternatives}
 %ghost %{_bindir}/mvn
 %ghost %{_bindir}/mvnDebug
-%{_datadir}/bash-completion
 %ghost %{_mandir}/man1/mvn.1.gz
 %ghost %{_mandir}/man1/mvnDebug.1.gz
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/mvn
+%dir %{_datadir}/libalternatives/mvnDebug
+%{_datadir}/libalternatives/mvn/%{?maven_alternatives_priority}1.conf
+%{_datadir}/libalternatives/mvnDebug/%{?maven_alternatives_priority}1.conf
+%{_bindir}/mvn
+%{_bindir}/mvnDebug
+%{_mandir}/man1/mvn.1%{?ext_man}
+%endif
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE

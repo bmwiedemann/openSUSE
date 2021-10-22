@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 14:44:11 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Tue May 11 09:57:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the compatibility version guava20 any more,

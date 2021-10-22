@@ -47,4 +47,12 @@
     <comment>Don't build against the compatibility version of guava</comment>
     <requestid>892243</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>86b489a3f7662b77ee88ab1d9da22f15</srcmd5>
+    <version>3.8.1</version>
+    <time>1634943073</time>
+    <user>dimstar_suse</user>
+    <comment>Use libalternatives instead of update-alternatives</comment>
+    <requestid>926877</requestid>
+  </revision>
 </revisionlist>
