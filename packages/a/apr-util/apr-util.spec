@@ -1,7 +1,7 @@
 #
 # spec file for package apr-util
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define         apuver 1
-%define         libname lib%{name}%{apuver}
+%define         libname lib%{name}%{apuver}-0
 %define         dso_libdir %{_libdir}/apr-util-%{apuver}
 %define         includedir %{_includedir}/apr-%{apuver}
 Name:           apr-util
@@ -71,8 +71,8 @@ Summary:        Development files for the Apache Portable Runtime (APR) Utility 
 # until this is fixed the devel package should require those
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Provides:       %{libname}-devel = %{version}
-Obsoletes:      %{libname}-devel < %{version}-%{release}
+Provides:       libapr-util1-devel = %{version}
+Obsoletes:      libapr-util1-devel < %{version}-%{release}
 Requires:       %{libname} = %{version}
 Requires:       apr-devel
 Requires:       gdbm-devel

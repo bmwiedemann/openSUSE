@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:42:46 UTC 2021 - pgajdos@suse.com
+
+- fix shlib-policy-name-error [bsc#1191748]
+
+-------------------------------------------------------------------
 Tue Sep  1 11:33:52 UTC 2020 - pgajdos@suse.com
 
 - drop dependency on Berkeley DB [jsc#SLE-12211], gdbm DBM connector
