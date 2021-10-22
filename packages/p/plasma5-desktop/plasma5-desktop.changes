@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:05:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * Fix "clear emoji history" action (kde#443974)
+  * kickoff: Replace Kicker DragHelper with Qt Quick Drag (kde#443708)
+  * Make tooltip interactive when there is a player but no window is present (kde#443425)
+  * taskmanager: Disconnect from backend.showAllPlaces on destruction (kde#443820)
+  * Add systemsettings runner to hardcoded list of allowed runners for kicker (kde#443776)
+  * Folder View: Don't cancel multi-selection with right-click (kde#443743)
+  * [applets/kicker] Explicitly set visible property when opacity is 0
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0
