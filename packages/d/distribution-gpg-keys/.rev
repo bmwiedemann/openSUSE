@@ -44,4 +44,12 @@
   + Add various vendor repository GPG keys</comment>
     <requestid>807974</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20d95604d48996867ef61172a53b6443</srcmd5>
+    <version>1.58</version>
+    <time>1634943094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926948</requestid>
+  </revision>
 </revisionlist>

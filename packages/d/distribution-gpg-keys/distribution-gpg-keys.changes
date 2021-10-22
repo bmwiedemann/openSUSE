@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 22 07:16:29 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Update to v1.58
+  - [1.39]
+    + Add Rosa Linux and Intel keys
+  - [1.40]
+    + Add EuroLinux keys
+    + Add Datto's third party repository keys
+  - [1.41]
+    + Add QubesOS and Fedora 34 keys
+  - [1.42]
+    + Add RPMFusion 33 keys
+  - [1.43]
+  - [1.44]
+    + Add Oracle Linux, Fedora ELN and Zoom keys
+    + Update symlinks
+  - [1.45]
+    + Update symlinks
+  - [1.46]
+  - [1.47]
+    + Add Remi 2021 key
+  - [1.48]
+    + Add Fedora 35 keys
+  - [1.49]
+    + Add Mariadb and Alma Linux keys
+    + Update symlinks
+  - [1.50]
+  - [1.51]
+    + Add Intel new key
+    + Add Fedora 36 key
+    + Add missing CentOS keys
+  - [1.52-1.53]
+  - [1.54]
+    + Add SUSE keys
+    + Add OpenSUSE
+  - [1.55]
+    + Add Rocky Linux keys
+  - [1.56-1.57]
+  - [1.58]
+    + Add RPMFusion 36 keys
+    + Update symlinks
+
+-------------------------------------------------------------------
 Thu May 21 11:16:49 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Version 1.38
