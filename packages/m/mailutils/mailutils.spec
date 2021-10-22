@@ -16,7 +16,7 @@
 #
 
 
-%define somajor 5
+%define somajor 8
 # See bug boo#1095783
 # Currently disabled suid/sgid program dotlock and maidag
 %bcond_with     set_user_identity
@@ -185,13 +185,18 @@ if test $1 -gt 2 -o \( $1 -eq 2 -a $2 -ge 2 \)
 then
  echo Using guile $1.$2.$3
 else
-%patch3
  echo Using guile $1.$2.$3
  mv libmu_scm libmu_scm-guile-2.2
  mv include/mailutils/guile.h include/mailutils/guile-2.2.h
  tar xfJ %{SOURCE1}
+%patch3 -b .p3
 fi
 autoreconf -fiv
+#
+# Check our somajor value with the actual value of VI_CURRENT
+#
+test %{somajor} == $(sed -rn '/^VI_CURRENT=/{ s/VI_CURRENT[[:space:]]*=[[:space:]]*//p; }' < ./configure)
+
 #
 # Avoid build require for emacs as emacs does
 # build require one the sub packages herein!
