@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  8 13:28:16 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.4.2
+  * Add feature to skip tests based on feature availability
+  * Skip tests requiring shared memory if feature not available
+  * Add API to retrieve wq occupancy attribute
+
+-------------------------------------------------------------------
 Thu Sep  9 10:18:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.4.1
