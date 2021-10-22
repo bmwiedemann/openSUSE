@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 30 00:46:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.0:
+  * Restructure internal memory storage to increase performance
+    and simplify caching common computations for different
+    particles. Most notably replace KnotArray1F and KnotArrayNF
+    with single class KnotArray.
+  * Precompute coefficients for polynomial interpolators at init
+    time.
+  * Add specialised method to interpolators, to evaluate pdf's for
+    all common particles (-6,...-6,21) and allow for the caching
+    of common computations withoutthe need of a complicated cache.
+  * Update the fast ASCII NumParser to always use the C locale.
+  * Enable out-of-source builds, avoiding sensitivity to
+    pre-installed versions during the build, and converting the
+    Cython syntax to Py3-style.  -atch.
+  * Bugfix to Python wrapper object parentage handling.
+  * Add a PIDs::PIDCode enum (and PIDs enum with equivalent
+    signature in Python) for more semantic access to particle ID
+    codes.
+  * Update embedded yaml-cpp code to version 0.6.3.
+  * PDFSet::uncertainties() now allows alternative=True for
+    non-replica sets (in which case it does nothing).
+  * lhapdf script bugfixes and improvements, including only
+    complaining about failed URLs after *all* attempts have
+    failed.
+  * Add matching by ID code to the lhapdf list and show commands.
+
+-------------------------------------------------------------------
 Mon Feb 15 00:44:15 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix building for multiple python flavours.

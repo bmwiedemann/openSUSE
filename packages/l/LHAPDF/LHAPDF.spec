@@ -16,11 +16,11 @@
 #
 
 
-%define so_name libLHAPDF-6_3_0
+%define so_name libLHAPDF-6_4_0
 %define execname lhapdf
 
 Name:           LHAPDF
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
