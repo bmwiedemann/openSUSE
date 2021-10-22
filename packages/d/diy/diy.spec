@@ -1,7 +1,7 @@
 #
 # spec file for package diy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ Source:         https://github.com/diatomic/diy/archive/%{version}.tar.gz#/%{pna
 Patch0:         diy-disable-memory-heavy-tests.patch
 # PATCH-FIX-UPSTREAM diy-include-stdexcept.patch badshah400@gmail.com -- Include a missing header flagged by GCC 10
 Patch1:         diy-include-stdexcept.patch
+# PATCH-FIX-UPSTREAM diy-glibc2.34-drop-SIGSTKSZ.patch gh#catchorg/Catch2#2178 badshah400@gmail.com -- Replace SIGSTKSZ by hard-coded 32kb to allow compilation against glibc 2.34 where SIGSTKSZ is no longer a constant
+Patch2:         diy-glibc2.34-drop-SIGSTKSZ.patch
 BuildRequires:  cmake >= 3.2
 BuildRequires:  gcc-c++
 %if %{with mpi}
