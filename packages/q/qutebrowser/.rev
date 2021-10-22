@@ -1734,4 +1734,24 @@ Fixed
   behaves correctly in practice.</comment>
     <requestid>921083</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>36bdc89aeda6134d54ce0d5b440ee6ec</srcmd5>
+    <version>2.4.0</version>
+    <time>1634943066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0
+Added
+  * New content.blocking.hosts.block_subdomains setting which can
+    be used to disable the subdomain blocking for the hosts-based
+    adblocker introduced in v2.3.0.
+  * New downloads.prevent_mixed_content setting to prevent insecure
+    mixed-content downloads (true by default).
+  * New --private flag for :tab-clone, which clones a tab into a
+    new private window, mirroring the same flags for :open and
+    :tab-give.
+Fixed
+  * Speculative fix for a crash when closing qutebrowser while a
+    systray notification is shown.</comment>
+    <requestid>926836</requestid>
+  </revision>
 </revisionlist>

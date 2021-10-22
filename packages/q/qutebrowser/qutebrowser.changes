@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 21 19:58:09 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.4.0
+Added
+  * New content.blocking.hosts.block_subdomains setting which can
+    be used to disable the subdomain blocking for the hosts-based
+    adblocker introduced in v2.3.0.
+  * New downloads.prevent_mixed_content setting to prevent insecure
+    mixed-content downloads (true by default).
+  * New --private flag for :tab-clone, which clones a tab into a
+    new private window, mirroring the same flags for :open and
+    :tab-give.
+Fixed
+  * Speculative fix for a crash when closing qutebrowser while a
+    systray notification is shown.
+
+-------------------------------------------------------------------
 Thu Sep 23 06:05:30 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Disable test suite. This is too non-deterministic and random
