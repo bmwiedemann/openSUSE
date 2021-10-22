@@ -803,4 +803,11 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment>Bugfix release containing various Salt related fixes.</comment>
     <requestid>924828</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>21ff29edd7c4caff3b16569bc6cc00c3</srcmd5>
+    <version>3.5.6</version>
+    <time>1634892327</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191945</comment>
+  </revision>
 </revisionlist>
