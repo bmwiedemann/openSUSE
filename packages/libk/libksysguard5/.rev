@@ -1048,4 +1048,12 @@
     <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
     <requestid>924712</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>c14011ba5148b585143f452575adabdc</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943050</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926379</requestid>
+  </revision>
 </revisionlist>
