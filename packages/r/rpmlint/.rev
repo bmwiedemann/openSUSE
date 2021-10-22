@@ -3313,4 +3313,16 @@ oddjob-gpupdate isn't blocked)</comment>
 - Fixes boo#1190387.</comment>
     <requestid>925483</requestid>
   </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>42f8117ab473683e81eaaecc107311e0</srcmd5>
+    <version>2.1+git20211019.ca2517e</version>
+    <time>1634943010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211019.ca2517e:
+  * Ignore library names that have number in their names.
+
+- Update to version 2.1+git20211018.b53feea:
+  * Tweak shlib-policy-name-error.</comment>
+    <requestid>926164</requestid>
+  </revision>
 </revisionlist>

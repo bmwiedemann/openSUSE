@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:39:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211019.ca2517e:
+  * Ignore library names that have number in their names.
+
+-------------------------------------------------------------------
+Tue Oct 19 06:28:57 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211018.b53feea:
+  * Tweak shlib-policy-name-error.
+
+-------------------------------------------------------------------
 Fri Oct 15 14:06:25 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211015.6dc5311:
