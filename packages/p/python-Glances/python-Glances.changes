@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:58:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * glances.service
+
+-------------------------------------------------------------------
 Fri Sep 03 07:20:11 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 3.2.3.1:
