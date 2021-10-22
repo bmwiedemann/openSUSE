@@ -55,7 +55,10 @@ remote repositories.
 %build
 
 %install
-maven_home=$(realpath $(dirname $(realpath $(which mvn)))/..)
+# Please, keep in sync with maven package, since the use
+# of libalternatives in some distro versions makes it
+# more tedious to detect automatically
+maven_home=%{_datadir}/maven
 
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
 cp -aL ${maven_home}/* %{buildroot}%{_datadir}/%{name}/

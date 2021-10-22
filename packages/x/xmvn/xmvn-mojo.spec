@@ -1,5 +1,5 @@
 #
-# spec file for package xmvn-mojo
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #

@@ -47,4 +47,12 @@
     <comment>maven-libs and xmvn-minimal must be in sync</comment>
     <requestid>892670</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>c086b2a972e59b1645973be6fc9b9fea</srcmd5>
+    <version>3.1.0</version>
+    <time>1634943079</time>
+    <user>dimstar_suse</user>
+    <comment>Set maven_home manually and fix build with libalternatives-enabled maven</comment>
+    <requestid>926898</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 22 09:15:52 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven_home manually since the diversity of alternatives
+  in different distro versions makes it tedious to detect this
+  automatically
+
+-------------------------------------------------------------------
 Thu May 13 10:07:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Require the maven-libs we built against in order to avoid hanging
