@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 22 15:35:02 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211022.c7c2beb4:
+  * Adjust secret_config_id in the dashboard.generator pipeline
+  * Add pipeline to publish the vagrant boxes to Vagrant Cloud
+
+-------------------------------------------------------------------
 Tue Oct 12 09:29:06 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211012.2f5f796d:
