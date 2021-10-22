@@ -30,6 +30,7 @@ Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
 Patch0:         fix-test.patch
 Patch1:         fix-test-tumbleweed.patch
 Patch2:         fix-4-file-5.40.patch
+Patch3:         fix-support-file-5.41.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  file
@@ -62,6 +63,9 @@ supports both textual and MIME-type output.
 %if %{?pkg_vcmp:%{pkg_vcmp file >= 5.40}}%{!?pkg_vcmp:0}
 %patch2 -p0
 %endif
+%if %{?pkg_vcmp:%{pkg_vcmp file >= 5.41}}%{!?pkg_vcmp:0}
+%patch3 -p1
+%endif
 
 %build
 %python_build
@@ -72,7 +76,7 @@ supports both textual and MIME-type output.
 
 %check
 export LC_ALL=en_US.UTF-8
-%python_expand PYTHONPATH=. $python test/test.py
+%pyunittest -v test.test
 
 %files %{python_files}
 %license LICENSE

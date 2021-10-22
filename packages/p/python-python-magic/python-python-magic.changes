@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:09:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use pyunittest macro instead of the home-grown solution.
+
+-------------------------------------------------------------------
+Fri Oct 22 08:02:27 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add fix-support-file-5.41.patch to support file 5.41.
+
+-------------------------------------------------------------------
 Fri Apr 16 13:00:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch fix-4-file-5.40.patch to support file 5.40 (boo#1184881)
