@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 13 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.20    2021-10-11
+          [BUGFIXES]
+           * Fix for perl 5.20 - cannot use assert() as an expression
+
+  0.19    2021-10-05
+          [CHANGES]
+           * Defined XPK_PREFIXED_BLOCK_ENTERLEAVE and XPK_SETUP for customizing
+             the parser context around blocks
+
+-------------------------------------------------------------------
 Wed Sep 29 03:07:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.18
