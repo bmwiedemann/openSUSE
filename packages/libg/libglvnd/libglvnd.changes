@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:22:54 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- libglvnd.rpmlintrc
+  * workaround for future buildcheck (boo#1191763) 
+
+-------------------------------------------------------------------
 Mon Sep 27 13:40:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - covers jira#SLE/SLE-18743 

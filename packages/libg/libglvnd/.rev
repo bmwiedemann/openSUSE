@@ -259,4 +259,13 @@
     <comment>- covers jira#SLE/SLE-18743</comment>
     <requestid>921809</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>4d22f22ecc113a4f7b2e8fc72a383e02</srcmd5>
+    <version>1.3.3</version>
+    <time>1634943027</time>
+    <user>dimstar_suse</user>
+    <comment>- libglvnd.rpmlintrc
+  * workaround for future buildcheck (boo#1191763)</comment>
+    <requestid>926555</requestid>
+  </revision>
 </revisionlist>

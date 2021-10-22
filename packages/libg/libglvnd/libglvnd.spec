@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/libglvnd
 Source:         https://github.com/NVIDIA/libglvnd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+Source2:        libglvnd.rpmlintrc
 Patch1:         disable-glx-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
