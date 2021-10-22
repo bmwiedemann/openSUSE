@@ -16,6 +16,7 @@
 #
 
 
+%define libname libfltk1_3
 Name:           fltk
 Version:        1.3.5
 Release:        0
@@ -51,7 +52,7 @@ installation of this package requires a 3D library such as Mesa.
 %package devel
 Summary:        Development files for the FLTK GUI toolkit
 Group:          Development/Libraries/C and C++
-Requires:       libfltk1 = %{version}
+Requires:       %{libname} = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
 Provides:       fltk = %{version}
@@ -62,12 +63,12 @@ graphical user interface toolkit for the X Window System,
 OpenGL, and Microsoft Windows NT 4.0, 95, or 98. The
 installation of this package requires a 3D library such as Mesa.
 
-%package -n libfltk1
+%package -n %{libname}
 Summary:        The FLTK GUI toolkit library
 Group:          System/Libraries
 Obsoletes:      fltk < 1.3.2
 
-%description -n libfltk1
+%description -n %{libname}
 The Fast Light Tool Kit ("FLTK", pronounced "fulltick") is a C++
 graphical user interface toolkit for the X Window System,
 OpenGL, and Microsoft Windows NT 4.0, 95, or 98. The
@@ -76,8 +77,8 @@ installation of this package requires a 3D library such as Mesa.
 %package devel-static
 Summary:        Static libraries for the FLTK GUI toolkit
 Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
 Requires:       fltk-devel = %{version}
-Requires:       libfltk1 = %{version}
 
 %description devel-static
 The Fast Light Tool Kit ("FLTK", pronounced "fulltick") is a C++
@@ -97,9 +98,9 @@ export LDFLAGS="-pie"
 %configure \
   --enable-shared \
   --enable-threads
-make %{?_smp_mflags}
+%make_build
 cd documentation
-make html %{?_smp_mflags}
+%make_build html
 
 %install
 make install libdir=%{buildroot}%{_libdir}/ \
@@ -109,8 +110,8 @@ make install libdir=%{buildroot}%{_libdir}/ \
 	     mandir=%{buildroot}%{_mandir} STRIP=true
 rm -r %{buildroot}%{_mandir}/cat*
 
-%post -n libfltk1 -p /sbin/ldconfig
-%postun -n libfltk1 -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files devel
 %doc examples makeinclude
@@ -120,8 +121,9 @@ rm -r %{buildroot}%{_mandir}/cat*
 %{_includedir}/*
 %{_bindir}/*
 
-%files -n libfltk1
-%doc CHANGES COPYING README
+%files -n %{libname}
+%license COPYING
+%doc CHANGES README
 %{_libdir}/*.so.*
 
 %files devel-static

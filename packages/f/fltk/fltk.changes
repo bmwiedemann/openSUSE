@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 20 15:35:37 UTC 2021 - pgajdos@suse.com
+
+- fix shlib-policy-name-error [bsc#1191754]
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
 Thu Apr 22 09:28:38 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - explicitly pass -fPIC and -pie via CFLAGS and LDFLAGS to make /usr/bin/fluid
