@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 21 19:31:51 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.17.0 (jsc#SLE-18326)
+  + openCryptoki 3.17
+    - tools: added function to list keys to p11sak
+    - common: added support for OpenSSL 3.0
+    - common: added support for event notifications
+    - ICA: added SW fallbacks
+  * openCryptoki 3.16
+    - EP11: protected-key option
+    - EP11: support attribute-bound keys
+    - CCA: import and export of secure key objects
+    - Bug fixes
+- Removed the following obsolete patches:
+  ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c.patch
+  ocki-3.15.1-Fix-compiling-with-c.patch
+  ocki-3.15.1-A-slot-ID-has-nothing-to-do-with-the-number-of-slots.patch
+  ocki-3.15.1-SOFT-Fix-problem-with-C_Get-SetOperationState-and-di.patch
+  ocki-3.15.1-Added-NULL-pointer-to-avoid-double-free-for-the-list.patch
+  ocki-3.15.1-SOFT-Check-the-EC-Key-on-C_CreateObject-and-C_Derive.patch
+  ocki-3.15.1-Fixed-p11sak-and-corresponding-test-case.patch
+  ocki-3.15.1-p11sak-Fix-CKA_LABEL-handling.patch
+  ocki-3.15.1-pkcstok_migrate-Quote-strings-with-spaces-in-opencry.patch
+  ocki-3.15.1-pkcstok_migrate-Don-t-remove-tokversion-x.y-during-m.patch
+  ocki-3.15.1-pkcstok_migrate-Fix-detection-if-pkcsslotd-is-still-.patch
+  ocki-3.15.1-pkcstok_migrate-Rework-string-quoting-for-opencrypto.patch
+
+-------------------------------------------------------------------
+Thu Aug  5 20:33:40 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Added the following patches for bsc#1188879:
+  * ocki-3.15.1-pkcstok_migrate-Quote-strings-with-spaces-in-opencry.patch
+    When modifying opencryptoki.conf during token migration, put quotes
+    around strings that contain spaces, e.g. for the slot description and
+    manufacturer.
+  * ocki-3.15.1-pkcstok_migrate-Don-t-remove-tokversion-x.y-during-m.patch
+    When migrating a slot the opencryptoki.conf file is modified. If it
+    contains slots that already contain the 'tokversion = x.y' keyword,
+    this is accidentally removed when migrating another slot.
+  * ocki-3.15.1-pkcstok_migrate-Fix-detection-if-pkcsslotd-is-still-.patch
+    Change the code to use the pid file that pkcsslotd creates, and check
+    if the process with the pid contained in the pid file still exists and
+    runs pkcsslotd.
+  * ocki-3.15.1-pkcstok_migrate-Rework-string-quoting-for-opencrypto.patch
+    Always quote the value of 'description' and 'manufacturer'. Quote the
+    value of 'stdll', 'confname', and 'tokname' if it contains spaces, and
+    never quote the value of 'hwversion', 'firmwareversion', and 'tokversion'.
+
+-------------------------------------------------------------------
 Tue Jun 22 14:47:36 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Added the following patches for bsc#1182726 " p11sak list-key segfault"

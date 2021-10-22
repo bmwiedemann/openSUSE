@@ -26,7 +26,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.15.1
+Version:        3.17.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -39,20 +39,13 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
-Patch2:         ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c.patch
-Patch3:         ocki-3.15.1-Fix-compiling-with-c.patch
-Patch4:         ocki-3.15.1-A-slot-ID-has-nothing-to-do-with-the-number-of-slots.patch
-Patch5:         ocki-3.15.1-SOFT-Fix-problem-with-C_Get-SetOperationState-and-di.patch
-Patch6:         ocki-3.15.1-Added-NULL-pointer-to-avoid-double-free-for-the-list.patch
-Patch7:         ocki-3.15.1-SOFT-Check-the-EC-Key-on-C_CreateObject-and-C_Derive.patch
-Patch8:         ocki-3.15.1-Fixed-p11sak-and-corresponding-test-case.patch
-Patch9:         ocki-3.15.1-p11sak-Fix-CKA_LABEL-handling.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libitm1
 BuildRequires:  libtool
+BuildRequires:  libudev-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 1.0
 BuildRequires:  pkgconfig
@@ -135,14 +128,6 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 cp %{SOURCE2} .
 
@@ -150,6 +135,7 @@ cp %{SOURCE2} .
 ./bootstrap.sh
 
 %configure --with-systemd=%{_unitdir} \
+    --with-libudev=yes \
     --enable-tpmtok \
 %ifarch aarch64  # Apparently, gcc for aarch64 doesn't support transactional memory
     --enable-locks \
