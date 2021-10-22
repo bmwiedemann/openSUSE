@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+* Thu Oct 21 16:29:09 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 0.9.0
+- Drop patch merged upstream: 0001-Find-and-link-against-pthread.patch
+- Use more wildcards to pick files to package
+
+-------------------------------------------------------------------
 * Thu Apr  1 20:10:43 UTC 2021 - Luca Boccassi <bluca@debian.org>
 
 - Initial packaging of version 0.8.3

@@ -1,7 +1,7 @@
 #
 # spec file for package sdbus-cpp
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Luca Boccassi <bluca@debian.org>
 # Copyright (c) 2020-2021 RedHat Inc.
 #
@@ -17,9 +17,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global version_major 0
-%global version_minor 8
-%global version_micro 3
+%global version_minor 9
+%global version_micro 0
 
 Name:           sdbus-cpp
 Version:        %{version_major}.%{version_minor}.%{version_micro}
@@ -30,8 +31,6 @@ Group:          Development/Libraries/C and C++
 
 URL:            https://github.com/Kistler-Group/sdbus-cpp
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/Kistler-Group/sdbus-cpp/pull/171
-Patch0:         0001-Find-and-link-against-pthread.patch
 
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
@@ -75,7 +74,6 @@ BuildRequires:  pkgconfig(expat)
 The stub code generator for generating the adapter and proxy interfaces
 out of the D-Bus IDL XML description.
 
-
 %prep
 %autosetup -n %{name}-%{version}
 
@@ -91,25 +89,24 @@ out of the D-Bus IDL XML description.
 %install
 %cmake_install
 
-
 %post -n libsdbus-c++0 -p /sbin/ldconfig
 
 %postun -n libsdbus-c++0 -p /sbin/ldconfig
 
 %files -n libsdbus-c++0
 %license %{_docdir}/sdbus-c++/COPYING
-%{_libdir}/libsdbus-c++.so.%{version_major}
-%{_libdir}/libsdbus-c++.so.%{version}
+%{_libdir}/libsdbus-c++.so.*
 
 %files devel
 %dir %{_libdir}/cmake/sdbus-c++
+%dir %{_libdir}/cmake/sdbus-c++-tools
 %dir %{_docdir}/sdbus-c++
 %doc %{_docdir}/sdbus-c++/AUTHORS
 %doc %{_docdir}/sdbus-c++/ChangeLog
 %doc %{_docdir}/sdbus-c++/NEWS
 %doc %{_docdir}/sdbus-c++/README
-%{_libdir}/cmake/sdbus-c++/*.cmake
-%{_libdir}/pkgconfig/sdbus-c++.pc
+%{_libdir}/cmake/sdbus-c++*
+%{_libdir}/pkgconfig/sdbus-c++*
 %{_libdir}/libsdbus-c++.so
 %{_includedir}/*
 

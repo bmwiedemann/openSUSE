@@ -32,4 +32,15 @@ https://launchpad.net/ubuntu/+source/sdbus-cpp
 The spec file was imported from Fedora and adapted for SUSE.</comment>
     <requestid>884894</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed382e4fa74d4d056bf903461f9da7bd</srcmd5>
+    <version>0.9.0</version>
+    <time>1634943100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new version 0.9.0
+- Drop patch merged upstream: 0001-Find-and-link-against-pthread.patch
+- Use more wildcards to pick files to package
+</comment>
+    <requestid>926981</requestid>
+  </revision>
 </revisionlist>
