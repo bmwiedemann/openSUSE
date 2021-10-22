@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 21 11:50:04 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Install by default to any available Dell BOSS drive and identify
+  such drives more clearly in the Guided Setup (jsc#SLE-17578).
+- Try to avoid by default to install into SD Cards if a fixed disk
+  is available (bsc#1187438).
+- 4.4.11
+
+-------------------------------------------------------------------
+Tue Oct 19 11:22:52 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Do not force the same mount_by method in fstab and in crypttab
+  (needed for jsc#SLE-20416 and bsc#1181196)
+- 4.4.10
+
+-------------------------------------------------------------------
+Thu Oct 14 14:19:03 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Fix (un)masking systemd units by using the systemctl --plain
+  flag for getting an output without status glyphs (bsc#1191347).
+- 4.4.9
+
+-------------------------------------------------------------------
 Thu Sep 30 11:21:19 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Recommend to install libyui-qt-graph package (bsc#1191109) in
