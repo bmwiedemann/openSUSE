@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 21 06:28:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add back X11 root window properties until firefox is adjusted
+  (boo#1191825):
+  * 0001-Revert-Drop-setupX11-from-startplasma-waylandsession.patch
+  * 0002-Revert-Drop-X11-root-properties-for-KDE-full-session.patch
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * [freespacenotifier] impr: no notification for ro filesystems
+  * kcms/colors: Don't apply header accent colors to non-Header color schemes (kde#443786)
+  * [kcms/colors] Notify global settings change after saving
+  * krdb: Fix removal of Xft.dpi from Xresources (kde#350039)
+  * sddm-theme: fix missing password field on "Other" page (kde#443737)
+  * pipewire: Report DRM_FORMAT_MOD_INVALID when no modifiers are offered
+  * [digital-clock] Do not assign undefined when agenda is not visible (kde#443380)
+- Drop patches, now upstream:
+  * 0001-sddm-theme-fix-missing-password-field-on-Other-page.patch
+
+-------------------------------------------------------------------
 Fri Oct 15 08:54:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to show password input on the "Other" page in SDDM (kde#443737):

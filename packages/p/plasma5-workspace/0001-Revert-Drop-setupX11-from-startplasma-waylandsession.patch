@@ -1,0 +1,30 @@
+From 5db85cf17cd11236f8ee44ba95dd56b81087c6aa Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 21 Oct 2021 08:20:33 +0200
+Subject: [PATCH 1/2] Revert "Drop setupX11 from startplasma-waylandsession"
+
+This reverts commit 8bf0e43620de3416e783c307ba10111c6964757b.
+---
+ startkde/startplasma-waylandsession.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/startkde/startplasma-waylandsession.cpp b/startkde/startplasma-waylandsession.cpp
+index 3a054a04f..ed496cc24 100644
+--- a/startkde/startplasma-waylandsession.cpp
++++ b/startkde/startplasma-waylandsession.cpp
+@@ -19,6 +19,12 @@ int main(int argc, char **argv)
+ 
+     out << "startplasma-waylandsession: Starting up...";
+ 
++    if (qEnvironmentVariableIsSet("DISPLAY")) {
++        setupX11();
++    } else {
++        qWarning() << "running kwin without Xwayland support";
++    }
++
+     if (!syncDBusEnvironment()) {
+         out << "Could not sync environment to dbus.\n";
+         return 2;
+-- 
+2.33.0
+

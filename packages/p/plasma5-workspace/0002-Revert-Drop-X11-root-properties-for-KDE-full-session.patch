@@ -1,0 +1,86 @@
+From 075b2f27722d2f28a5c3d4e201c7e7e787cb68de Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 21 Oct 2021 08:20:38 +0200
+Subject: [PATCH 2/2] Revert "Drop X11 root properties for KDE full session /
+ session version"
+
+This reverts commit 9a4e3d39c2a9ca48f39a60ae2ea88e9921723cec.
+---
+ startkde/startplasma-waylandsession.cpp |  1 +
+ startkde/startplasma-x11.cpp            |  1 +
+ startkde/startplasma.cpp                | 22 ++++++++++++++++++++++
+ startkde/startplasma.h                  |  1 +
+ 4 files changed, 25 insertions(+)
+
+diff --git a/startkde/startplasma-waylandsession.cpp b/startkde/startplasma-waylandsession.cpp
+index ed496cc24..d0c83bf5a 100644
+--- a/startkde/startplasma-waylandsession.cpp
++++ b/startkde/startplasma-waylandsession.cpp
+@@ -41,6 +41,7 @@ int main(int argc, char **argv)
+     // Keep for KF5; remove in KF6 (KInit will be gone then)
+     runSync(QStringLiteral("kdeinit5_shutdown"), {});
+ 
++    cleanupX11();
+     out << "startplasma-waylandsession: Done.\n";
+ 
+     return 0;
+diff --git a/startkde/startplasma-x11.cpp b/startkde/startplasma-x11.cpp
+index d6b2c5439..7ddf7b3ea 100644
+--- a/startkde/startplasma-x11.cpp
++++ b/startkde/startplasma-x11.cpp
+@@ -93,6 +93,7 @@ int main(int argc, char **argv)
+     runSync(QStringLiteral("kdeinit5_shutdown"), {});
+ 
+     cleanupPlasmaEnvironment(oldSystemdEnvironment);
++    cleanupX11();
+ 
+     out << "startkde: Done.\n";
+ 
+diff --git a/startkde/startplasma.cpp b/startkde/startplasma.cpp
+index 8d0b0ba89..5f78e7016 100644
+--- a/startkde/startplasma.cpp
++++ b/startkde/startplasma.cpp
+@@ -336,6 +336,28 @@ void setupX11()
+     //     so don't move this up.
+ 
+     runSync(QStringLiteral("xsetroot"), {QStringLiteral("-cursor_name"), QStringLiteral("left_ptr")});
++    runSync(QStringLiteral("xprop"),
++            {QStringLiteral("-root"),
++             QStringLiteral("-f"),
++             QStringLiteral("KDE_FULL_SESSION"),
++             QStringLiteral("8t"),
++             QStringLiteral("-set"),
++             QStringLiteral("KDE_FULL_SESSION"),
++             QStringLiteral("true")});
++    runSync(QStringLiteral("xprop"),
++            {QStringLiteral("-root"),
++             QStringLiteral("-f"),
++             QStringLiteral("KDE_SESSION_VERSION"),
++             QStringLiteral("32c"),
++             QStringLiteral("-set"),
++             QStringLiteral("KDE_SESSION_VERSION"),
++             QStringLiteral("5")});
++}
++
++void cleanupX11()
++{
++    runSync(QStringLiteral("xprop"), {QStringLiteral("-root"), QStringLiteral("-remove"), QStringLiteral("KDE_FULL_SESSION")});
++    runSync(QStringLiteral("xprop"), {QStringLiteral("-root"), QStringLiteral("-remove"), QStringLiteral("KDE_SESSION_VERSION")});
+ }
+ 
+ void cleanupPlasmaEnvironment(const std::optional<QStringList> &oldSystemdEnvironment)
+diff --git a/startkde/startplasma.h b/startkde/startplasma.h
+index e8684be74..00c5c1570 100644
+--- a/startkde/startplasma.h
++++ b/startkde/startplasma.h
+@@ -26,6 +26,7 @@ void importSystemdEnvrionment();
+ void runEnvironmentScripts();
+ void setupPlasmaEnvironment();
+ void cleanupPlasmaEnvironment(const std::optional<QStringList> &oldSystemdEnvironment);
++void cleanupX11();
+ bool syncDBusEnvironment();
+ void setupFontDpi();
+ QProcess *setupKSplash();
+-- 
+2.33.0
+

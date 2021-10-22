@@ -1777,4 +1777,15 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment> (forwarded request 925395 from Vogtinator)</comment>
     <requestid>925411</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>9a81c110fe87d6913a0069d74cb937be</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943065</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back X11 root window properties until firefox is adjusted
+  (boo#1191825):
+  * 0001-Revert-Drop-setupX11-from-startplasma-waylandsession.patch
+  * 0002-Revert-Drop-X11-root-properties-for-KDE-full-session.patch (forwarded request 926668 from Vogtinator)</comment>
+    <requestid>926765</requestid>
+  </revision>
 </revisionlist>
