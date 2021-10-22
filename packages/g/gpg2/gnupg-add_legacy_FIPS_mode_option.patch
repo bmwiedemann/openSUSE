@@ -3,11 +3,11 @@
  g10/gpg.c    |    9 +++++++++
  2 files changed, 27 insertions(+)
 
-Index: gnupg-2.3.0/doc/gpg.texi
+Index: gnupg-2.2.20/doc/gpg.texi
 ===================================================================
---- gnupg-2.3.0.orig/doc/gpg.texi
-+++ gnupg-2.3.0/doc/gpg.texi
-@@ -2178,6 +2178,24 @@ implies, this option is for experts only
+--- gnupg-2.2.20.orig/doc/gpg.texi
++++ gnupg-2.2.20/doc/gpg.texi
+@@ -2133,6 +2133,24 @@ implies, this option is for experts only
  understand the implications of what it allows you to do, leave this
  off. @option{--no-expert} disables this option.
  
@@ -32,37 +32,36 @@ Index: gnupg-2.3.0/doc/gpg.texi
  @end table
  
  
-Index: gnupg-2.3.0/g10/gpg.c
+Index: gnupg-2.2.20/g10/gpg.c
 ===================================================================
---- gnupg-2.3.0.orig/g10/gpg.c
-+++ gnupg-2.3.0/g10/gpg.c
-@@ -437,6 +437,7 @@ enum cmd_and_opt_values
+--- gnupg-2.2.20.orig/g10/gpg.c
++++ gnupg-2.2.20/g10/gpg.c
+@@ -429,6 +429,7 @@ enum cmd_and_opt_values
+     oUseOnlyOpenPGPCard,
+     oIncludeKeyBlock,
      oNoIncludeKeyBlock,
-     oChUid,
-     oForceSignKey,
 +    oSetLegacyFips,
  
      oNoop
    };
-@@ -870,6 +871,7 @@ static gpgrt_opt_t opts[] = {
-   ARGPARSE_s_s (oAEADAlgo,   "aead-algo", "@"),
-   ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
-   ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
+@@ -874,6 +875,7 @@ static ARGPARSE_OPTS opts[] = {
+   ARGPARSE_s_n (oAllowMultipleMessages,      "allow-multiple-messages", "@"),
+   ARGPARSE_s_n (oNoAllowMultipleMessages, "no-allow-multiple-messages", "@"),
+   ARGPARSE_s_n (oAllowWeakDigestAlgos, "allow-weak-digest-algos", "@"),
 +  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
  
+   ARGPARSE_s_s (oDefaultNewKeyAlgo, "default-new-key-algo", "@"),
  
-   ARGPARSE_header (NULL, N_("Options for unattended use")),
-@@ -3688,6 +3690,14 @@ main (int argc, char **argv)
-             opt.flags.full_timestrings = 1;
+@@ -3614,6 +3616,13 @@ main (int argc, char **argv)
+             opt.flags.use_only_openpgp_card = 1;
              break;
  
-+         case oSetLegacyFips:
-+           if(gcry_fips_mode_active())
-+             gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG,
-+                           "Enable legacy support in FIPS 140-2 mode");
-+           else
-+             log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
-+           break;
++	  case oSetLegacyFips:
++	    if(gcry_fips_mode_active())
++	      gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG, "Enable legacy support in FIPS 140-2 mode");
++	    else
++	      log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
++	    break;
 +
  	  case oNoop: break;
  

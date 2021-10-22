@@ -1270,4 +1270,11 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>925429</requestid>
   </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>3e8962d2aa8f10eb6be389e474c425c9</srcmd5>
+    <version>2.2.27</version>
+    <time>1634906391</time>
+    <user>dimstar_suse</user>
+    <comment>https://progress.opensuse.org/issues/101358</comment>
+  </revision>
 </revisionlist>
