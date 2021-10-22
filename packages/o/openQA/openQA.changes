@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct 21 19:20:47 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634844038.99a1a2378:
+  * Make text results rendering unified with other
+  * Add error handling when updating 'force_result' label comments
+  * t: Prevent aborting the complete test run when interactively debugging
+  * Elaborate on local adjustment of apparmor profiles
+  * t: Mark statements as uncoverable in WebUIConnection.pm
+  * Tidy up Helpers.pm to satisfy CircleCI
+  * Restart the job which incomplete with a known QEMU terminated issue
+  * Override job incomplete reason when fail to allocate memory
+  * Prevent creation of comments with invalid "force_result" command
+  * Makefile: Use many more retries for unstable full-stack.t
+  * Add missing dependency for python-scripts
+  * Use 'backoff' style delay for AMQP publishing attempts
+  * Change test to reflect changes in UI
+  * Make sections clickable for "sort by group" view
+  * Make progress bar sections clickable for children
+  * Add links to overview in progress bar segments for builds
+  * Add a retry delay for publishing AMQP events
+  * Add retry for publishing AMQP events
+  * Streamline error handling when publishing AMQP event
+  * Simplify AMQP plugin code
+  * Avoid escaping issues when making AMQP URL by using `Mojo::URL`
+  * t: Provide more fitting error feedback scope in api/09-comments.t
+  * t: Use signatures in api/09-comments.t
+  * Immediately prevent writing invalid comments with "force_result"
+  * Add configurable regex match rule for "force_result" labels
+  * Ensure force_result is only accepted when being part of the label string
+  * t: Add test for 'job_update_result' event
+  * Prevent deletion of 'force_result' label comments
+  * Add possibility to override the job result with special comments
+  * templates: Add force_result label help text
+  * templates: Replace obsolete wiki reference labels
+  * docs: Add force_result label description
+  * OpenQA::Schema::Result::Comments: Use signatures
+  * OpenQA::WebAPI::Controller::API::V1::Comment: Simplify
+  * OpenQA::WebAPI::Controller::API::V1::Comment: Use signatures
+  * CI: Try to continue on spurious zypper refresh problems
+
+-------------------------------------------------------------------
 Sun Oct 17 08:03:23 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634301296.a0543cf54:
