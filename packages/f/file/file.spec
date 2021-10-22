@@ -33,7 +33,7 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.40
+Version:        5.41
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -43,7 +43,7 @@ Source2:        baselibs.conf
 Source3:        file-rpmlintrc
 Source4:        ftp://ftp.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch:          file-5.39.dif
+Patch:          file-5.41.dif
 Patch1:         file-5.19-misc.dif
 Patch4:         file-4.24-autoconf.dif
 Patch5:         file-5.14-tex.dif
@@ -63,19 +63,7 @@ Patch32:        file-5.19-clicfs.dif
 Patch34:        file-5.23-endian.patch
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-Patch40:        file-5.38-allow-readlinkat.dif
 # Upstream commits as patches
-Patch41:        file-5.40-1c677c04.patch
-Patch42:        file-5.40-9e2becec.patch
-Patch43:        file-5.40-6b34436a.patch
-Patch44:        file-5.40-9b0459af.patch
-Patch45:        file-5.40-f0601504.patch
-Patch46:        file-5.40-3096f87f.patch
-Patch47:        file-5.40-f7705dca.patch
-Patch48:        file-5.40-749e1ecf.patch
-Patch49:        file-5.40-4c5fe1ad.patch
-# My fix of the ASCII count bug
-Patch60:        file-5.40-ascii.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         _miscdir    %{_datadir}/misc
@@ -119,16 +107,6 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
-%patch41 -p0
-%patch42 -p0
-%patch43 -p0
-%patch44 -p0
-%patch45 -p0
-%patch46 -p0
-%patch47 -p0
-%patch48 -p0
-%patch49 -p0
-%patch60 -p0
 %patch1  -p0 -b .misc
 %patch4  -p0 -b .conf
 %patch5  -p0 -b .tex
@@ -148,7 +126,6 @@ to develop applications that require the magic "file" interface.
 %patch34 -p0 -b .endian
 %patch37 -p1 -b .getenv
 %patch39 -p1 -b .btrfs
-%patch40 -p1 -b .readlinkat
 %patch -b .0
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
@@ -223,6 +200,6 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_libdir}/pkgconfig/libmagic.pc
 %doc %{_mandir}/man3/libmagic.3.gz
 %license COPYING
-%doc README AUTHORS NEWS ChangeLog
+%doc README.DEVELOPER AUTHORS NEWS ChangeLog
 
 %changelog

@@ -4,7 +4,7 @@
  2 files changed, 10 insertions(+), 114 deletions(-)
 
 --- src/apprentice.c
-+++ src/apprentice.c	2019-02-21 07:03:30.961751563 +0000
++++ src/apprentice.c	2021-10-19 08:56:33.418646912 +0000
 @@ -50,7 +50,7 @@ FILE_RCSID("@(#)$File: apprentice.c,v 1.
  #endif
  #include <dirent.h>
@@ -14,7 +14,7 @@
  
  #define	EATAB {while (isascii(CAST(unsigned char, *l)) && \
  		      isspace(CAST(unsigned char, *l)))  ++l;}
-@@ -124,9 +124,11 @@ private struct mlist *mlist_alloc(void);
+@@ -124,9 +124,11 @@ private void mlist_free_all(struct magic
  private void mlist_free(struct mlist *);
  private void byteswap(struct magic *, uint32_t);
  private void bs1(struct magic *);
@@ -29,10 +29,11 @@
  private char *mkdbname(struct magic_set *, const char *, int);
  private struct magic_map *apprentice_buf(struct magic_set *, struct magic *,
      size_t);
-@@ -3347,67 +3349,6 @@ byteswap(struct magic *magic, uint32_t n
+@@ -3355,67 +3357,6 @@ byteswap(struct magic *magic, uint32_t n
+ 		bs1(&magic[i]);
  }
  
- /*
+-/*
 - * swap a short
 - */
 -private uint16_t
@@ -93,13 +94,12 @@
 -	return rv;
 -}
 -
--/*
-  * byteswap a single magic entry
-  */
- private void
+ protected uintmax_t 
+ file_varint2uintmax_t(const unsigned char *us, int t, size_t *l)
+ {
 --- src/cdf.c
-+++ src/cdf.c	2019-02-21 07:05:15.503772161 +0000
-@@ -48,6 +48,7 @@ FILE_RCSID("@(#)$File: cdf.c,v 1.114 201
++++ src/cdf.c	2021-10-19 08:53:37.577690786 +0000
+@@ -48,6 +48,7 @@ FILE_RCSID("@(#)$File: cdf.c,v 1.120 202
  #include <time.h>
  #include <ctype.h>
  #include <limits.h>
@@ -107,7 +107,7 @@
  
  #ifndef EFTYPE
  #define EFTYPE EINVAL
-@@ -120,55 +121,9 @@ cdf_calloc(const char *file __attribute_
+@@ -124,55 +125,9 @@ cdf_calloc(const char *file __attribute_
  	return calloc(n, u);
  }
  

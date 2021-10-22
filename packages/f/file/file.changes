@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 21 06:24:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Remove file-5.38-allow-readlinkat.dif as already doen in latest
+  file 5.41 
+
+-------------------------------------------------------------------
+Tue Oct 19 09:52:12 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.41:
+  * Avinash Sonawane: Fix tzname detection
+  * Fix relationship tests with "search" magic, don't short circuit
+    logic
+  * Fix memory leak in compile mode
+  * PR/272: kiefermat: Only set returnval = 1 when we printed something
+    (in all cases print or !print). This simplifies the logic and fixes
+    the issue in the PR with -k and --mime-type there was no continuation
+    printed before the default case.
+  * PR/270: Don't translate unprintable characters in %s magic formats
+    when -r
+  * PR/269: Avoid undefined behavior with clang (adding offset to NULL)
+  * Add a new flag (f) that requires that the match is a full word,
+     not a partial word match.
+  * Add varint types (unused)
+  * PR/256: mutableVoid: If the file is less than 3 bytes, use the file
+    length to determine type
+  * PR/259: aleksandr.v.novichkov: mime printing through indirect magic
+    is not taken into account, use match directly so that it does.
+- Remove patches now upstream
+  * file-5.40-1c677c04.patch
+  * file-5.40-3096f87f.patch
+  * file-5.40-4c5fe1ad.patch
+  * file-5.40-6b34436a.patch
+  * file-5.40-749e1ecf.patch
+  * file-5.40-9b0459af.patch
+  * file-5.40-9e2becec.patch
+  * file-5.40-ascii.patch
+  * file-5.40-f0601504.patch
+  * file-5.40-f7705dca.patch
+- Port patches
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.23-endian.patch
+  * file-5.28-btrfs-image.dif
+  * file-5.38-allow-readlinkat.dif
+  * file-secure_getenv.patch
+- Port and rename patch file-5.39.dif which is now file-5.41.dif
+
+-------------------------------------------------------------------
 Fri Apr 23 10:26:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch file-5.40-ascii.patch
