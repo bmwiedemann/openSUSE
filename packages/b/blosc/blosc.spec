@@ -19,7 +19,7 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        MIT AND BSD-3-Clause AND BSD-2-Clause

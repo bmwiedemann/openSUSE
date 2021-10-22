@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:43:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.21.1
+  * Fix pthread on ppc64le.
+  * Updates in internal codecs, important performance improvements
+
+-------------------------------------------------------------------
 Fri Apr 16 20:03:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.21.0:
