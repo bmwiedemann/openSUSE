@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Oct 15 14:52:00 UTC 2021 - Michael Du <duyizhaozj321@yahoo.com>
 
-- Revert privoxy-nopcreposix.patch because of #bsc1184945.
+- Revert privoxy-nopcreposix.patch because of bsc#1184945.
 
 -------------------------------------------------------------------
 Fri Apr  9 19:47:02 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
