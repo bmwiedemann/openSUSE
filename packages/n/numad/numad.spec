@@ -1,7 +1,7 @@
 #
 # spec file for package numad
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           numad
-Url:            http://git.fedorahosted.org/git/numad.git
+URL:            http://git.fedorahosted.org/git/numad.git
 Summary:        Userspace daemon that automatically binds workloads to NUMA nodes
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Daemons
 Version:        0.5.20130522
 Release:        0
@@ -32,6 +32,7 @@ Patch4:         numad-versioning.patch
 Patch5:         numad-rpm-opt-flags.patch
 Patch6:         numad-opensuse-systemd.patch
 Patch7:         numad-systemd-simple-type.patch
+Patch8:         harden_numad.service.patch
 
 %if 0%{?suse_version} > 1140
 BuildRequires:  pkgconfig(systemd)
@@ -62,6 +63,7 @@ to regress performance.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 make OPT_CFLAGS="$RPM_OPT_FLAGS" %{?_smp_mflags}
