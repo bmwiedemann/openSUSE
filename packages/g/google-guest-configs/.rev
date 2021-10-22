@@ -44,4 +44,20 @@
     <comment></comment>
     <requestid>916053</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e205f899b285ad9768970f9f5fe539a</srcmd5>
+    <version>20210916.00</version>
+    <time>1634943106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210916.00
+  * Revert &quot;dont set IP in etc/hosts; remove rsyslog (#26)&quot; (#28)
+- from version 20210831.00
+  * restore rsyslog (#27)
+- from version 20210830.00
+  * Fix NVMe partition names (#25)
+- from version 20210824.00
+  * dont set IP in etc/hosts; remove rsyslog (#26)
+  * update OWNERS (forwarded request 926984 from glaubitz)</comment>
+    <requestid>927010</requestid>
+  </revision>
 </revisionlist>

@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
 # systemd-rpm-macros(or kmod) is wrong in 15.2
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           google-guest-configs
-Version:        20210702.00
+Version:        20210916.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
