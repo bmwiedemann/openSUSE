@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 15 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.27
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.27 2021-10-13 (rurban)
+          - Only add -Werror=declaration-after-statement for 5.035004 and earlier (PR #186 nwc)
+  	- Fix 125_shared_boolean.t for threads (PR #184 Sinan Unur)
+
+-------------------------------------------------------------------
 Tue Apr 13 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.26
