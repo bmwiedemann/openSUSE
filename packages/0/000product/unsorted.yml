@@ -6795,6 +6795,7 @@ unsorted:
   - ibm-data-db2 
   - ibmswtpm2 
   - ibmtss 
+  - ibmtss-base 
   - ibmtss-devel 
   - ibsim 
   - ibus-anthy 
@@ -11288,6 +11289,7 @@ unsorted:
   - libibdm1 
   - libibmad5 
   - libibmad5-32bit: [x86_64] 
+  - libibmtss1 
   - libibnetdisc5 
   - libibumad3 
   - libibumad3-32bit: [x86_64] 

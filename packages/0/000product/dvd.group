@@ -891,7 +891,6 @@
     <package name="hyper-v" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="iagno" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iagno-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ibmtss-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-dict-emoji" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-gtk" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2109,7 +2108,6 @@
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libibmtss1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libibverbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -4527,7 +4525,7 @@
     <package name="system-user-root" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
     <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-vscan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
