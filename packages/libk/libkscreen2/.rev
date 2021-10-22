@@ -1022,4 +1022,12 @@
     <comment>breeze and libkscreen2 got respun (forwarded request 924755 from Vogtinator)</comment>
     <requestid>924757</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>eb50a6cbd5fb90a68857cca5be90085f</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943049</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926378</requestid>
+  </revision>
 </revisionlist>
