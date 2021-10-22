@@ -18,7 +18,7 @@
 
 %define cpan_name Spreadsheet-ReadSXC
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.34
+Version:        0.35
 Release:        0
 Summary:        Extract OpenOffice 1.x spreadsheet data
 License:        Artistic-1.0 OR GPL-1.0-or-later

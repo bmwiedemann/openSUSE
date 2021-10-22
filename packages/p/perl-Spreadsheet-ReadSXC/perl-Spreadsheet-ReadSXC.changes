@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 20 15:55:40 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Update remove_filter_signatures.diff
+
+-------------------------------------------------------------------
+Fri Sep 10 03:08:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.35
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.35  2021-09-08
+      * Fix memory leak in the XML parser callbacks
+        Reported as GH #8 with a test case, thanks to troost-c!
+
+-------------------------------------------------------------------
 Fri Mar 12 11:14:30 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Update patch remove_filter_signatures.diff
