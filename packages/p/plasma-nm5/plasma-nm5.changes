@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:05:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * openconnect: Adjust version check in CMake and allow version 3.99 again
+  * openconnect widget: Default to "anyconnect" when protocol is not set.
+  * openconnect: Make FSID passphrase + empty private key combination work. (kde#443770)
+  * Only include mobileproviderstest with ModemManager
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0
