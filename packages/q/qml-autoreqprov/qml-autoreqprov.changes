@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 18:45:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Check for a Qt runtime directory instead of qmake to also work if
+  no development packages are installed
+
+-------------------------------------------------------------------
 Tue Oct  5 10:48:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update qml.req for Qt 6.2. qmlimportscanner is now installed in

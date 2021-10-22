@@ -33,4 +33,12 @@
   queried to find the install dir. (forwarded request 923265 from cgiboudeaux)</comment>
     <requestid>923271</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>db3b7df1462e084ee53a513a6222a6df</srcmd5>
+    <version>1.1</version>
+    <time>1634943032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926353</requestid>
+  </revision>
 </revisionlist>

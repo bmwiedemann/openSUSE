@@ -25,10 +25,10 @@ qtver=
 [[ -n ${qtvers} ]] || qtvers="5 6 7"
 
 for ver in ${qtvers}; do
-	command -v "qmake${ver}" &>/dev/null || command -v "qmake-qt${ver}" &>/dev/null && qtver="${qtver}${ver}"
+	stat /usr/lib*/qt${ver} &>/dev/null && qtver="${qtver}${ver}"
 done
 
-# zero or more than one qmake found. Abort.
+# Zero or more than one version of Qt found. Abort.
 if [[ ${#qtver} -ne 1 ]]; then
 	echo "Failed to guess Qt version!" >&2
 	exit 1
