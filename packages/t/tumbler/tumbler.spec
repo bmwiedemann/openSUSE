@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ BuildRequires:  xfce4-dev-tools
 %endif
 # no matter what rpmlint says, we need the same lib-version
 Requires:       %libname = %{version}
+Recommends:     ffmpegthumbnailer
 
 %description
 Tumbler is a D-Bus service for applications to request thumbnails for various
@@ -207,6 +208,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/libtumbler-1.so.*
 
 %files lang -f %{name}.lang
+
 %files devel
 %{_includedir}/tumbler-1
 %{_libdir}/pkgconfig/tumbler-1.pc
