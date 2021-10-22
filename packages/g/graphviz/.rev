@@ -743,4 +743,12 @@
     <comment>Fixed a typo and wrong mail address in the last changelog entry. Sorry for the request spam.</comment>
     <requestid>917610</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d749603384e509a78ead534d865540e9</srcmd5>
+    <version>2.49.1</version>
+    <time>1634943023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926500</requestid>
+  </revision>
 </revisionlist>

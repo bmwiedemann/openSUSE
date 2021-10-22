@@ -1,6 +1,8 @@
---- configure.ac.orig	2019-04-02 14:33:44.229152722 +0200
-+++ configure.ac	2019-04-02 14:34:01.573185574 +0200
-@@ -2605,7 +2605,7 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -2395,7 +2395,7 @@ else
  
    AC_CHECK_HEADER(GL/glut.h,
      AC_CHECK_LIB(glut,main,

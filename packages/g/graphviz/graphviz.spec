@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,7 +53,7 @@
 %define sle12 0
 %endif
 Name:           graphviz%{psuffix}
-Version:        2.48.0
+Version:        2.49.1
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -134,7 +134,7 @@ BuildRequires:  java-devel >= 1.6.0
 %if %{with ocaml}
 BuildRequires:  ocaml
 %endif
-%else # if "{flavor}" == "addons"
+%else
 BuildRequires:  ghostscript_any
 %endif
 
@@ -332,8 +332,10 @@ programs that use the graphviz libraries including man3 pages.
 
 
 
-#autosetup breaks graphviz-addons
 
+
+
+#autosetup breaks graphviz-addons
 %prep
 %setup -q -n %{mname}-%{version}
 %patch0

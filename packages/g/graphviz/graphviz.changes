@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Oct 16 13:16:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.49.1:
+  - the CMake build system installs gzipped man pages if `gzip` is available #1883
+  - CMake projects using Graphviz as a subproject (`add_subdirectory`) can now
+    link against and use `gvc`.
+  - various problems in the generation of Javascript bindings
+  - 2.48.0: test suite is failing #2112
+  - Ensure correct file-level dependency for generated file in cmake generated
+    projects #2119
+  - compile failures with a C++20-compatible toolchain #2122
+  - compile errors on macOS when using Bison 3.8 #2127
+  - Make Graphviz buildable as a cmake subproject/subdirectory #1477
+  - Header not found in Cmake project #2109
+  - a very basic C++ API for a subset of the functions in lib/cgraph and
+    lib/gvc, allowing a graph to be rendered from DOT source to a
+    specified format. The new API is available through two new
+    libraries: lib/cgraph++ and lib/gvc++. It is experimental, meaning
+    that it might have breaking changes also in upcoming patch or minor
+    releases (towards #2001)
+  - CMake builds now support an `with_expat` option that allows the support for
+    using HTML-like labels through the optional expat library to be explicitly
+    enabled (default) or disabled
+  - CMake builds now support an with_zlib option that allows the support for
+    raster image compression through the optional zlib library to be explicitly
+    enabled (default) or disabled
+  - the CMake build system now enables `-Wextra` when building C++
+  - some Cgraph functions that take `char*` arguments that they do not modify have
+    been updated to take `const char*` arguments #634
+  - incorrectly using the `layout` attribute on anything other than a graph now
+    results in a warning about this being invalid #2078
+  - `edgepaint` accepts more standard `--` prefixed command line arguments and
+    rejects invalid options #1971
+  - improved detection of Lefty dependencies in the Autotools build system
+  - libexpr rejects printing the time (`%t`) if no format is provided
+  - `-DDATE=…` option in the CMake build system has been removed
+  - the Autotools build system no longer writes the DATE file and the portable
+    source tarball no longer includes this
+  - The attached dot file causes a segfault when processed #2095
+  - fix typos and update URLs in `edgepaint` usage text and man page
+  - Fix clang's undefined behavior warning in dotLayout
+  - gvpr doesn't build on macOS but MKDEFS_EXECUTABLE points to wrong
+    directory #2101
+  - the generated gdefs.h header is no longer installed
+  - `ccomps` out-of-memory message no longer incorrectly refers to `gc`
+  - do not abort when `calloc(0, x)` or `calloc(x, 0)` in `gcalloc` return `NULL`
+  - failed Exshort_t type discrimination #1799
+  - dot manpage is in wrong directory on Windows #1936
+  - CMake builds fail when when the ltdl library is not available even if the
+    `enable_ltdl` option is `ON`
+  - CMake builds fail when when the optional `zlib` library is not available
+  - fix graph rotation in quartz plugin
+
+-------------------------------------------------------------------
 Mon Sep  6 10:59:30 UTC 2021 - Christian Voegl <christian.voegl@suse.com>
 
 - Changelog Update for SLES:
