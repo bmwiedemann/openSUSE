@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct 22 11:45:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211021.00
+  * Added patch report logging for Zypper. (#395)
+- from version 20211012.00
+  * Replace deprecated instance filters with the new filters (#394)
+- from version 20211006.00
+  * Added patch report log messages for Yum and Apt (#392)
+- from version 20210930.00
+  * Config: Add package info caching (#391)
+- from version 20210928.00
+  * Fixed the runWithPty function to set ctty to child's filedesc (#389)
+- from version 20210927.00
+  * e2e_tests: fix a test output mismatch (#390)
+- from version 20210924.00
+  * Fix some e2e test failures (#388)
+- from version 20210923.02
+  * Correctly check for folder existance in package upgrade (#387)
+- from version 20210923.01
+  * ReportInventory: Fix bug in deb/rpm inventory, reduce calls to append (#386)
+- from version 20210923.00
+  * Deprecate old config directory in favor of new cache directory (#385)
+- from version 20210922.02
+  * Fix rpm/deb package formating for inventory reporting (#384)
+- from version 20210922.01
+  * Add centos stream rocky linux and available package tests (#383)
+- from version 20210922.00
+  * Add more info logs, actually cleanup unmanaged repos (#382)
+- from version 20210901.00
+  * Add E2E tests for Windows Application (#379)
+  * Return lower-case package name (#377)
+  * Update Terraform scripts for multi-project deployments tutorial. (#378)
+- from version 20210811.00
+  * Support Windows Application Inventory (#371)
+- from version 20210723.00
+  * Send basic inventory with RegisterAgent (#373)
+- from version 20210722.1
+  * e2e_tests: move to manually generated osconfig library (#372)
+- from version 20210722.00
+  * Create OWNERS file for examples directory (#368)
+- from version 20210719.00
+  * Update Zypper patch info parsing (#370)
+
+-------------------------------------------------------------------
 Tue Jul 27 10:01:30 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Build with go1.15 for reproducible build results (boo#1102408)

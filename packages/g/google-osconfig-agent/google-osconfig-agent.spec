@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-osconfig-agent
-Version:        20210712.1
+Version:        20211021.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
