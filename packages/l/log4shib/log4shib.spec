@@ -19,7 +19,7 @@
 %define libvers 2
 %define pkgdocdir %{_docdir}/%{name}
 Name:           log4shib
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Log for C++, Shibboleth Edition
 License:        LGPL-2.1-only
