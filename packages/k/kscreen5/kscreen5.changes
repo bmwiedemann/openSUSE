@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:05:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * Fix algorithm for common sizes in Generator::cloneScreens (kde#442822)
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0

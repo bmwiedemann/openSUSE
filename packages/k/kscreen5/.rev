@@ -955,4 +955,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.23.0, lightly tested. KDE:Frameworks5 is already publish disabled. (forwarded request 924672 from Vogtinator)</comment>
     <requestid>924701</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>f209d928817e8bd8f5bb3c78458e5b95</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943043</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926368</requestid>
+  </revision>
 </revisionlist>
