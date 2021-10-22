@@ -17,7 +17,7 @@
 
 
 Name:           tpm2.0-tools
-Version:        5.1.1
+Version:        5.2
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
@@ -28,9 +28,6 @@ Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{
 # git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
 Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
-Patch2:         0001-tpm2_checkquote-fix-uninitialized-variable.patch
-Patch3:         0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch
-Patch4:         0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
@@ -83,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %defattr(-,root,root)
-%doc README.md doc/CHANGELOG.md
+%doc doc/README.md doc/CHANGELOG.md
 %license doc/LICENSE
 /usr/bin/tpm2*
 /usr/bin/tss2*
