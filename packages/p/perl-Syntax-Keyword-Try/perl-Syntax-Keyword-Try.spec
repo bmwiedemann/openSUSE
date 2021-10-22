@@ -18,7 +18,7 @@
 
 %define cpan_name Syntax-Keyword-Try
 Name:           perl-Syntax-Keyword-Try
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        C<try/catch/finally> syntax for perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
