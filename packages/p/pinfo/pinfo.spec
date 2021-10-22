@@ -1,7 +1,7 @@
 #
 # spec file for package pinfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 Pinfo is a curses based, Lynx-style info browser.
@@ -42,7 +42,7 @@ Pinfo is a curses based, Lynx-style info browser.
 
 %build
 autoreconf -fiv
-export CPPFLAGS="-Wno-error=unused-parameter"
+export CPPFLAGS="-Wno-error=unused-parameter -Wno-error=format"
 %configure \
 	--with-curses=%{_prefix}
 %make_build
