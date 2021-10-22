@@ -17,7 +17,7 @@
 
 
 Name:           google-guest-oslogin
-Version:        20210728.00
+Version:        20211013.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0
@@ -77,8 +77,8 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %defattr(0644,root,root,0755)
 %doc README.md
 %license LICENSE
-%attr(0755,root,root) %{_bindir}/google_oslogin_control
 %attr(0755,root,root) %{_bindir}/google_authorized_keys
+%attr(0755,root,root) %{_bindir}/google_authorized_keys_sk
 %attr(0755,root,root) %{_bindir}/google_oslogin_nss_cache
 %{_mandir}/man8/*
 %{_libdir}/libnss*

@@ -86,4 +86,27 @@
     <comment></comment>
     <requestid>910303</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>49b683435096342da84ce07a914e2635</srcmd5>
+    <version>20211013.00</version>
+    <time>1634943097</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211013.00
+  * remove deprecated binary (#79)
+- from version 20211001.00
+  * no message if no groups (#78)
+- from version 20210907.00
+  * use sigaction for signals (#76)
+- from version 20210906.00
+  * include cstdlib for exit (#75)
+  * catch SIGPIPE in authorized_keys (#73)
+- from version 20210805.00
+  * fix double free in ParseJsonToKey (#70)
+- from version 20210804.00
+  * fix packaging for authorized_keys_sk (#68)
+  * add authorized_keys_sk (#66)
+- Add google_authorized_keys_sk to %files section
+- Remove google_oslogin_control from %files section (forwarded request 926951 from glaubitz)</comment>
+    <requestid>926956</requestid>
+  </revision>
 </revisionlist>
