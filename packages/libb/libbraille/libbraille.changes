@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 13:12:57 UTC 2021 - pgajdos@suse.com
+
+- fix shlib-policy-name-error [bsc#1191761]
+
+-------------------------------------------------------------------
 Tue May  5 10:51:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Let the distro decide if it wants to disable python2 bindings

@@ -122,4 +122,12 @@
   by the builder. (forwarded request 800329 from dimstar)</comment>
     <requestid>800330</requestid>
   </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>6bde0c72de398cf2576d1b0c8ee5f725</srcmd5>
+    <version>0.19.0</version>
+    <time>1634943014</time>
+    <user>dimstar_suse</user>
+    <comment>- fix shlib-policy-name-error [bsc#1191761]</comment>
+    <requestid>926318</requestid>
+  </revision>
 </revisionlist>

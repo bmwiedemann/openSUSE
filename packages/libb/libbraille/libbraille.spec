@@ -1,7 +1,7 @@
 #
 # spec file for package libbraille
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 # Python2 is  EOL; let the distro decide if they will want to build py2 support. TW does not
 %bcond_without python2
+%define libsfx  0-14
 
 Name:           libbraille
 Version:        0.19.0
 Release:        0
-Summary:        Access to Braille displays and terminals
+Summary:        Access to Braille Displays and Terminals
 License:        LGPL-2.1-only
 URL:            https://sourceforge.net/projects/libbraille/files/libbraille/
 Source:         http://downloads.sourceforge.net/project/libbraille/libbraille/libbraille-%{version}/libbraille-%{version}.tar.gz
@@ -45,12 +46,21 @@ develop for Braille displays. It provides an API to
 write text on the display, directly draw dots, or get the value of
 keys pressed on the Braille keyboard.
 
-%package fake
+%package -n libbraille%{libsfx}
+Summary:        Access to Braille Displays and Terminals
+
+%description -n libbraille%{libsfx}
+Libbraille is a computer shared library which makes it possible to
+develop for Braille displays. It provides an API to
+write text on the display, directly draw dots, or get the value of
+keys pressed on the Braille keyboard.
+
+%package fake%{libsfx}
 Summary:        Fake graphical display for libbraille
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and gtk2)
 
-%description fake
+%description fake%{libsfx}
 Libbraille is a computer shared library which makes it possible to
 develop for Braille displays. It provides an API to
 write text on the display, directly draw dots, or get the value of
@@ -106,21 +116,25 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post -n libbraille%{libsfx} -p /sbin/ldconfig
+%postun -n libbraille%{libsfx}  -p /sbin/ldconfig
+%post fake%{libsfx} -p /sbin/ldconfig
+%postun fake%{libsfx}  -p /sbin/ldconfig
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README TODO
 %config(noreplace) %{_sysconfdir}/libbraille.conf
 %{_bindir}/*
-%{_libdir}/*.so.*
+%{_datadir}/libbraille
+
+%files -n libbraille%{libsfx}
 %dir %{_libdir}/libbraille
 %{_libdir}/libbraille/*.so.*
-%{_datadir}/libbraille
 %exclude %{_libdir}/libbraille/fake-0.so.*
+%{_libdir}/*.so.*
 
-%files fake
+%files fake%{libsfx}
 %{_libdir}/libbraille/fake-0.so.*
 
 %if %{with python2}
