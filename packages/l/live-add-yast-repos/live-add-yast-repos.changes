@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:53:09 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add Requires: zypper
+
+-------------------------------------------------------------------
 Wed May 12 11:02:33 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Ignore MicroOS-release to solve have choice

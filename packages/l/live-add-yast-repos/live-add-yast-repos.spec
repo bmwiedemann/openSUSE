@@ -27,6 +27,7 @@ Source1:        geturls.xsl
 Source2:        gpl-2.0.txt
 BuildRequires:  distribution-release
 BuildRequires:  libxslt-tools
+Requires:       zypper
 #!BuildConflicts: dummy-release
 #!BuildConflicts: MicroOS-release
 
