@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.6.0+git.1626161722.332be6e5
+Version:        4.7.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://getpelican.com/
 # Use the source instead of the pypi release for the tests
 # Source:         https://github.com/getpelican/pelican/archive/%%{version}.tar.gz
-Source:         pelican-%{version}.tar.xz
+Source:         pelican-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2 >= 2.11}
 BuildRequires:  %{python_module Markdown >= 3.1.1}
 BuildRequires:  %{python_module Pygments}
