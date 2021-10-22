@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:44:09 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add precious.toml to skip_doc
+
+-------------------------------------------------------------------
+Wed Oct 20 03:06:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.35
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.35      2021-10-19 15:53:52Z
+      - Add Samsung as a detected browser (GH#192) (Olaf Alders)
+
+-------------------------------------------------------------------
 Wed Aug  4 03:06:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.34
