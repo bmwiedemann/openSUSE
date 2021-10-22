@@ -1014,4 +1014,24 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2021-10-01T15:13:10 UTC (#1445)</comment>
     <requestid>923476</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>af1b7364169c95400beea52c2d355fc1</srcmd5>
+    <version>20211016</version>
+    <time>1634943019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211016:
+  * Fix sorting of One.com domains
+  * Add siiites.com (#1416)
+  * Add ts.net and beta.tailscale.net domains. (#1453)
+  * Revise Sorting for Cape Verde (.cv)
+  * Update public_suffix_list.dat (#1456)
+  * updated email address (#1450)
+  * util: gTLD data autopull updates for 2021-10-08T15:12:46 UTC (#1451)
+  * add ip.linodeusercontent.com (#1448)
+  * Adding upli.io (#1446)
+  * added tickets.io (#1429)
+  * util: gTLD data autopull updates for 2021-10-07T15:11:34 UTC (#1449)
+  * util: gTLD data autopull updates for 2021-10-06T15:12:57 UTC (#1447)</comment>
+    <requestid>926474</requestid>
+  </revision>
 </revisionlist>

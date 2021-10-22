@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 20 06:58:02 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211016:
+  * Fix sorting of One.com domains
+  * Add siiites.com (#1416)
+  * Add ts.net and beta.tailscale.net domains. (#1453)
+  * Revise Sorting for Cape Verde (.cv)
+  * Update public_suffix_list.dat (#1456)
+  * updated email address (#1450)
+  * util: gTLD data autopull updates for 2021-10-08T15:12:46 UTC (#1451)
+  * add ip.linodeusercontent.com (#1448)
+  * Adding upli.io (#1446)
+  * added tickets.io (#1429)
+  * util: gTLD data autopull updates for 2021-10-07T15:11:34 UTC (#1449)
+  * util: gTLD data autopull updates for 2021-10-06T15:12:57 UTC (#1447)
+
+-------------------------------------------------------------------
 Wed Oct  6 09:31:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211006:
