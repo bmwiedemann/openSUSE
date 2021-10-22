@@ -19,14 +19,14 @@
 
 %define sover 1
 Name:           adwaita-qt
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/FedoraQt/adwaita-qt
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qtbase-devel >= 5.12
 BuildRequires:  libqt5-qtx11extras-devel

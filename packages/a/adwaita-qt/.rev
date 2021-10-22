@@ -115,4 +115,14 @@
     width/heigh. (forwarded request 898801 from dimstar)</comment>
     <requestid>899641</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d25e454b5cc01667432783dd1160e676</srcmd5>
+    <version>1.4.0</version>
+    <time>1634943078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  + Base colors are now parsed from stylesheets provided by GTK 4
+  + Added variants for HighContrast and HighContrastInverse (forwarded request 926321 from susnux)</comment>
+    <requestid>926903</requestid>
+  </revision>
 </revisionlist>
