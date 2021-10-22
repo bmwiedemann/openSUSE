@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 21:20:22 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 3.9.0 (jsc#SLE-18454, jsc#SLE-18564)
+  - [FEATURE] Add support for OpenSSL 3.0
+  - [FEATURE] icainfo: new parm -c to display available EC curves
+- Replaced the obsolete PreReq: %fillup_prereq
+  with                  Requires(post): %fillup_prereq
+  in the spec file.
+
+-------------------------------------------------------------------
 Mon Jun  7 18:29:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 3.8.0 (jsc#SLE-18334)
