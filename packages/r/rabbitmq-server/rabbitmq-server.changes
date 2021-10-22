@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 21 08:16:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_rabbitmq-server.service.patch
+  Modified:
+  * rabbitmq-server.service
+
+-------------------------------------------------------------------
 Wed Oct 20 11:17:30 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.8:

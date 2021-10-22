@@ -1,0 +1,24 @@
+Index: rabbitmq-server-3.9.8/deps/rabbit/docs/rabbitmq-server.service.example
+===================================================================
+--- rabbitmq-server-3.9.8.orig/deps/rabbit/docs/rabbitmq-server.service.example
++++ rabbitmq-server-3.9.8/deps/rabbit/docs/rabbitmq-server.service.example
+@@ -5,6 +5,19 @@ After=network.target epmd@0.0.0.0.socket
+ Wants=network.target epmd@0.0.0.0.socket
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=notify
+ User=rabbitmq
+ Group=rabbitmq

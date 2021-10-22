@@ -54,6 +54,7 @@ Source4:        rabbitmq-env.conf
 Source6:        rabbitmq-server.service
 Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
+Patch0:	harden_rabbitmq-server.service.patch
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 23.2
@@ -130,6 +131,7 @@ Optional dependency offering zsh completion for %{name}.
 %prep
 %setup -q
 cp %{SOURCE8} .
+%patch0 -p1
 
 %build
 # Make elixir happy with Unicode
