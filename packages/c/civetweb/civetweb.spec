@@ -16,14 +16,14 @@
 #
 
 
-%define         soname  1_14_0
+%define         soname  1_15_0
 %define         _libname libcivetweb
 
 Name:           civetweb
 Summary:        A C/C++ web server
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Version:        1.14
+Version:        1.15
 Release:        0
 URL:            https://github.com/civetweb/civetweb
 Source0:        https://github.com/civetweb/civetweb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
