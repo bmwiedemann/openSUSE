@@ -1,4 +1,52 @@
 --------------------------------------------------------------------
+Tue Oct 19 17:57:05 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+- 4.4.51
+
+--------------------------------------------------------------------
+Tue Oct 19 10:42:57 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#840
+- BIOS RAIDs can also not be removed
+- 4.4.50
+
+--------------------------------------------------------------------
+Sat Oct 16 23:27:17 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.4.49
+
+--------------------------------------------------------------------
+Fri Oct 15 18:49:08 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#839
+- allow to create partitions with any number
+- coding style
+- 4.4.48
+
+--------------------------------------------------------------------
+Thu Oct 14 14:18:31 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#838
+- Use dev name in fstab for LUKS devices (jsc#SLE-20416, bsc#1181196)
+- 4.4.47
+
+--------------------------------------------------------------------
+Wed Oct 13 16:22:11 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.4.46
+
+--------------------------------------------------------------------
+Wed Oct 13 14:12:41 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#837
+- simplified parted flag handling
+- added partition id for 'linux-home'
+- 4.4.45
+
+--------------------------------------------------------------------
 Mon Oct 11 09:52:49 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#836
