@@ -1,0 +1,24 @@
+From 1674a2e0dbc430be6bc61c820bc7abdd7f112b92 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 20 Oct 2021 18:55:49 +0200
+Subject: [PATCH] Update version number for 5.23.1
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 88f41de0..fb2559ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ cmake_minimum_required(VERSION 3.16)
+ project(breeze)
+-set(PROJECT_VERSION "5.23.0")
++set(PROJECT_VERSION "5.23.1")
+ set(PROJECT_VERSION_MAJOR 5)
+ 
+ set(KF5_MIN_VERSION "5.86")
+-- 
+2.33.0
+

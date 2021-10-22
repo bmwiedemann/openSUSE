@@ -1079,4 +1079,20 @@
     <comment>breeze and libkscreen2 got respun (forwarded request 924755 from Vogtinator)</comment>
     <requestid>924756</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>0af6bc37b9c6d438735bbc529ef9483f</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943064</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the version number:
+  * 0001-Update-version-number-for-5.23.1.patch
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * Don't set alignment for spinboxes (kde#443769)</comment>
+    <requestid>926587</requestid>
+  </revision>
 </revisionlist>

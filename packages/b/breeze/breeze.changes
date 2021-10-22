@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 20 17:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the version number:
+  * 0001-Update-version-number-for-5.23.1.patch
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * Don't set alignment for spinboxes (kde#443769)
+
+-------------------------------------------------------------------
 Mon Oct 11 17:48:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0
