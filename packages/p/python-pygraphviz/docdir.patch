@@ -1,13 +1,15 @@
-Index: setup.py
-===================================================================
---- setup.py.orig
-+++ setup.py
-@@ -36,7 +36,7 @@
- sys.path.pop(0)
+---
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -54,7 +54,7 @@ with open("pygraphviz/__init__.py") as f
+             break
  
  packages = ["pygraphviz", "pygraphviz.tests"]
--docdirbase = 'share/doc/pygraphviz-%s' % release.version
-+docdirbase = 'share/doc/packages/pygraphviz-%s' % release.version
+-docdirbase = f"share/doc/pygraphviz-{version}"
++docdirbase = f"share/doc/packages/pygraphviz-{version}"
  data = [
      (docdirbase, glob("*.txt")),
-     (os.path.join(docdirbase, 'examples'), glob("examples/*.py")),
+     (os.path.join(docdirbase, "examples"), glob("examples/*.py")),

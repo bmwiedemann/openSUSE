@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygraphviz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,29 +20,30 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
+%global skip_python36 1
 Name:           python-pygraphviz
-Version:        1.6
+Version:        1.7
 Release:        0
-URL:            http://networkx.lanl.gov/pygraphviz
+URL:            https://pygraphviz.github.io/
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-%{version}.zip
 # PATCH-FIX-UPSTREAM docdir.patch
-Patch:          docdir.patch
+Patch0:         docdir.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  graphviz-devel >= 2.16
-BuildRequires:  pkg-config
+BuildRequires:  graphviz-devel >= 2.42
+BuildRequires:  libpng-devel
+BuildRequires:  pkgconf-pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
 BuildRequires:  unzip
 # Needed even without tests
-BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module nose >= 1.3.7}
-Requires:       graphviz >= 2.16
+BuildRequires:  %{python_module pytest}
+Requires:       graphviz >= 2.42
 %python_subpackages
 
 %description
@@ -58,34 +59,23 @@ Provides:       %{python_module pygraphviz-doc = %{version}}
 This package provides documentation and help files for %{name}
 
 %prep
-%setup -q -n pygraphviz-%{version}
-%patch
+%autosetup -p1 -n pygraphviz-%{version}
 
 %build
-# Need command-line flags only available in install
+export CFLAGS="%{optflags}"
+%python_build
 
 %install
 export CFLAGS="%{optflags}"
-%python_exec setup.py install -O1 --force --root %{buildroot} --prefix %{_prefix} --include-path %{_includedir}/graphviz/ --library-path %{_libdir}/graphviz/
-
-%{python_expand pushd %{buildroot}%{$python_sitearch}
-# Fix wrong-script-interpreter
-sed -i "s|#!/usr/bin/env python|#!%__$python|" pygraphviz/tests/test.py
-chmod a+x pygraphviz/tests/test.py
-# Deduplicating files can generate a RPMLINT warning for pyc mtime
-$python -m compileall -d %{$python_sitearch} pygraphviz/tests/
-$python -O -m compileall -d %{$python_sitearch} pygraphviz/tests/
-%fdupes .
-popd
-}
+%python_install
+%fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with tests}
 %check
-pushd examples
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -c "import pygraphviz;pygraphviz.test()"
-}
-popd
+# export PYTEST_ADDOPTS="--doctest-modules --durations=10 --import-mode=importlib"
+export PYTEST_ADDOPTS="--import-mode=importlib"
+# skip tests because of gh#pygraphviz/pygraphviz#366
+%pytest_arch -k 'not (test_drawing_makes_file or test_drawing_makes_file1 or test_drawing_makes_file)'
 %endif
 
 %files %{python_files}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 19 19:58:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.7:
+  - Drop Python 3.6 support
+  - Add Python 3.9 support
+  - Require Graphviz 2.42+, (Graphviz 2.46+ recommended)
+  - Improve installation process and documentation
+  - Switch from nose to pytest
+  - Remove old Python 2 code
+  - AGraph.eq includes attribute comparison (PR #246)
+
+-------------------------------------------------------------------
 Mon Sep 28 11:16:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.6:
