@@ -23,7 +23,7 @@ tar:
 	tar --format=posix -cf ../$$tar $$basename && \
 	cd $$basename && \
 	# Patches for the JS frontend go after here \
-	# No patches currently needed \
+	patch -p1 -i ../../0001-Add-source-code-reference.patch && \
 	# End patches section \
 	yarn install --pure-lockfile && \
 	yarn run build && \

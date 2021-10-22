@@ -35,6 +35,7 @@ Source2:        %{name}-rpmlintrc
 Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
+Source5:        0001-Add-source-code-reference.patch
 Patch1:         drop-grafana-aws-sdk-0.3.0-module.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core

@@ -1,0 +1,37 @@
+From 4a0ab78a061ac25039f33a3f9b620ef0f8032d3a Mon Sep 17 00:00:00 2001
+From: Witek Bedyk <witold.bedyk@suse.com>
+Date: Thu, 16 Sep 2021 15:43:01 +0200
+Subject: [PATCH] Patch SLE15 source code
+
+---
+ public/app/core/components/Footer/Footer.tsx | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/public/app/core/components/Footer/Footer.tsx b/public/app/core/components/Footer/Footer.tsx
+index 5b7be702bd..4b4948c30e 100644
+--- a/public/app/core/components/Footer/Footer.tsx
++++ b/public/app/core/components/Footer/Footer.tsx
+@@ -45,14 +45,12 @@ export let getVersionLinks = (): FooterLink[] => {
+ 
+   links.push({ text: `v${buildInfo.version} (${buildInfo.commit})` });
+ 
+-  if (buildInfo.hasUpdate) {
+-    links.push({
+-      text: `New version available!`,
+-      icon: 'download-alt',
+-      url: 'https://grafana.com/grafana/download?utm_source=grafana_footer',
+-      target: '_blank',
+-    });
+-  }
++  links.push({
++    text: `Source code`,
++    icon: 'download-alt',
++    url: 'https://build.opensuse.org/package/show/openSUSE:Factory/grafana',
++    target: '_blank',
++  });
+ 
+   return links;
+ };
+-- 
+2.26.2
+
