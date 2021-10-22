@@ -32,14 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       0
+%global updatever       1
 %global patchver        0
-%global datever         2021-09-14
-%global buildver        35
+%global datever         2021-10-19
+%global buildver        12
 %global openjdk_repo    jdk17u
-%global openjdk_tag     jdk-17+35
-%global openjdk_dir     jdk17u-jdk-17-35
-%global icedtea_sound_version 1.0.1
+%global openjdk_tag     jdk-17.0.1+12
+%global openjdk_dir     jdk17u-jdk-17.0.1-12
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -116,7 +115,6 @@
 %global with_system_pcsc 0
 %global with_system_lcms 0
 %endif
-%global with_pulseaudio 1
 %bcond_with zero
 %if ! %{with zero}
 %global with_systemtap 1
@@ -151,8 +149,6 @@ URL:            https://openjdk.java.net/
 Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
 # Accessibility support
 Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
-# Pulseaudio support
-Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
 Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapated from IcedTea.
@@ -188,9 +184,6 @@ Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 Source100:      config.guess
 # wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'
 Source101:      config.sub
-# RPM/distribution specific patches
-Patch1:         icedtea-sound-1.0.1-jdk9.patch
-Patch2:         icedtea-sound-soundproperties.patch
 # Restrict access to java-atk-wrapper classes
 Patch3:         java-atk-wrapper-security.patch
 # RHBZ 808293
@@ -205,7 +198,6 @@ Patch10:        memory-limits.patch
 Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
-Patch14:        harfbuzz-libs.patch
 Patch15:        system-pcsclite.patch
 
 Patch16:        system-crypto-policy.patch
@@ -213,8 +205,6 @@ Patch17:        nss-security-provider.patch
 Patch18:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
-#
-Patch30:        openjdk-glibc234.patch
 #
 # OpenJDK specific patches
 #
@@ -326,11 +316,6 @@ BuildRequires:  libffi-devel
 %endif
 %if %{with_systemtap}
 BuildRequires:  systemtap-sdt-devel
-%endif
-# pulse audio requirements
-%if %{with_pulseaudio}
-BuildRequires:  libpulse-devel >= 0.9.11
-BuildRequires:  pulseaudio >= 0.9.11
 %endif
 %if %{with_system_pcsc}
 BuildRequires:  pcsc-lite-devel
@@ -459,7 +444,6 @@ need to.
 %prep
 %setup -q -n %{openjdk_dir}
 %setup -q -D -n %{openjdk_dir} -T -a 8
-%setup -q -D -n %{openjdk_dir} -T -a 9
 %setup -q -D -n %{openjdk_dir} -T -a 20
 %setup -q -D -n %{openjdk_dir} -T -a 21
 %setup -q -D -n %{openjdk_dir} -T -a 22
@@ -484,11 +468,6 @@ rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
-%patch1
-%if %{with_pulseaudio}
-%patch2 -p1
-%endif
-
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -496,7 +475,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
-%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1
@@ -507,8 +485,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch18 -p1
 
 %patch20 -p1
-
-%patch30 -p1
 
 %patch200 -p1
 
@@ -635,24 +611,6 @@ install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
-
-%if %{with_pulseaudio}
-# Build the pulseaudio plugin
-pushd icedtea-sound-%{icedtea_sound_version}
-autoreconf --force --install
-%configure \
-    --with-jdk-home=$JAVA_HOME \
-    --disable-docs
-make %{?_smp_mflags}
-cp icedtea-sound.jar $JAVA_HOME/../jmods/
-cp build/native/libicedtea-sound.so $JAVA_HOME/lib/
-popd
-# Merge the icedtea-sound into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "icedtea.sound,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-%endif
 
 # Build the accessibility plugin
 pushd java-atk-wrapper-%{java_atk_wrapper_version}
@@ -1153,9 +1111,6 @@ fi
 %files
 %dir %{_jvmdir}/%{sdkdir}/lib
 %{_jvmdir}/%{sdkdir}/lib/libawt_xawt.so
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/lib/libicedtea-sound.so
-%endif
 %{_jvmdir}/%{sdkdir}/lib/libjawt.so
 %{_jvmdir}/%{sdkdir}/lib/libsplashscreen.so
 %dir %{_datadir}/icons/hicolor
@@ -1359,9 +1314,6 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/jmods
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/jmods/*.jmod
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/jmods/icedtea-sound.jar
-%endif
 %{_jvmdir}/%{sdkdir}/jmods/java-atk-wrapper.jar
 
 %files demo -f %{name}-demo.files
