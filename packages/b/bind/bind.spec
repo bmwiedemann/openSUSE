@@ -80,6 +80,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libidn2)
+BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libuv)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-utils

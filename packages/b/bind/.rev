@@ -1671,4 +1671,12 @@ New Features
     <comment></comment>
     <requestid>914627</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>2f0f8cbf2c8a01f68bf8820fe82c9e62</srcmd5>
+    <version>9.16.20</version>
+    <time>1634943025</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 926001 from jmoellers)</comment>
+    <requestid>926547</requestid>
+  </revision>
 </revisionlist>

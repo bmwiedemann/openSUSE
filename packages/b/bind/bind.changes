@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 18 09:55:18 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Just specifying "geoip-directory;" in /etc/named.conf is not
+  correct syntax. Must either put a path name or the string
+  "none". Appended the work "none" to make it correct syntax.
+
+-------------------------------------------------------------------
+Fri Oct  8 13:02:17 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Added build requirement of libmaxminddb to the spec file
+  Also added an entry for "geoip-directory" with the default path
+  to /etc/named.conf.
+  [bsc#1190884, vendor-files/config/named.conf, bind.spec]
+
+-------------------------------------------------------------------
 Thu Aug 19 06:25:35 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to 9.16.20
