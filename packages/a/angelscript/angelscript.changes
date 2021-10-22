@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 21 14:45:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.35.1
+  * Bug fixes
+    * Fixed invalid bytecode sequence on calling method on explicit
+      temporary object of value type
+    * Fixed freeze in compiler when compiling script that declared
+      the same interface twice and inherited from another
+    * Fixed a problem with lambdas declared within shared functions
+      not being considered shared (Thanks Phong Ba)
+    * Fixed invalid bytecode sequence on creating a delegate from a
+      lambda
+    * Declaring arrays using the type[] syntax will now properly
+      add implicit handle for the type when needed
+    * Fixed crash if attempting to call CreateScriptObjectCopy with
+      an asITypeInfo for a script function
+    * Fixed error in compilation of ternary condition operator with
+      regards to deferred arguments
+    * Added more sanity checks in LoadByteCode to avoid crash on
+      invalid stream data
+    * Fixed crash when instantiating shared class after original
+      module was discarded
+    * Fixed assert failure in compiler on implicit conversion
+      between unsigned integer types of different sizes
+    * Fixed invalid bytecode sequence in initialization lists with
+      value types whose opAssign returns void
+    * Fixed registering asBEHAVE_LIST_CONSTRUCT on value type
+      templates
+    * Fixed compiler error in as_symboltable.h on GCC 11
+    * Compiler no longer silently accepts implicit conversion from
+      null handle to object type registered with ASHANDLE if there
+      is no matching implicit constructor
+    * Fixed problem in native calling convention on arm64 when
+      function returned a reference to a class with
+      asOBJ_APP_CLASS_ALLFLOATS
+  * Script language
+    * Ternary condition operator is now able to implicitly convert
+      the types in the expressions to a common type
+    * Declarations of shorthand nested namespaces is now supported
+  * Add-ons
+    * Fixed compilation error in filesystem add-on
+    * Fixed datetime add-on to properly handle timezones with
+      day-light-savings in a portable way
+    * Fixed WRAP_MFN on gnuc when used within templated functions
+    * Fixed issue in array::sort with callback that could cause
+      objects in the array to be destroyed by gc
+- Removed angelscript-fix-aarch64.patch, upstream merged 
+
+-------------------------------------------------------------------
 Fri Apr  2 07:48:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:
@@ -283,5 +332,3 @@ Sat Mar  3 21:34:28 UTC 2012 - joop.boonen@opensuse.org
 Fri Feb 24 00:00:00 UTC 2012 - virus0025@gmail.com
 
 - initial version
-
--------------------------------------------------------------------
