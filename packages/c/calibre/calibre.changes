@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 22 05:28:38 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.30.0
+  * New Features
+    - Add support for the new Kobo Sage and Libra 2 e-book reader
+      devices
+    - E-book viewer: Read aloud: Allow right clicking to play/pause
+      reading
+    - Sending books by e-mail: Preserve non-English characters in
+      attached filenames
+    - Tab browser: Allow searching for sub-categories by right
+      clicking on them
+  * Bug Fixes
+    - E-book viewer: Fix cover and full screen images not centered
+      in paged mode when more than one page is displayed per screen
+    - ToC Editor: Ignore in succession clicks on the OK and Cancel
+      buttons to avoid accidentally closing the window when
+      finishing creating a new entry
+    - Comments editor: Fix the formatting buttons not showing the
+      current state correctly and fix some keyboard shortcuts not
+      working when more than one comments editor is present in a
+      single window
+    - Tag browser: Fix renaming of User categories in Virtual
+      libraries
+    - Make removing large numbers of custom column icons easier
+
+-------------------------------------------------------------------
 Fri Oct  8 05:31:22 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.29.0
