@@ -18,7 +18,7 @@
 
 %define cpan_name JavaScript-Minifier-XS
 Name:           perl-JavaScript-Minifier-XS
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        XS based JavaScript minifier
 License:        Artistic-1.0 OR GPL-1.0-or-later
