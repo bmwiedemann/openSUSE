@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:12:46 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_phoromatic-client.service.patch
+  * harden_phoromatic-server.service.patch
+  * harden_phoronix-result-server.service.patch
+
+-------------------------------------------------------------------
 Fri Jul  2 08:04:26 UTC 2021 - pgajdos@suse.com
 
 - version update to 10.4.0

@@ -24,6 +24,9 @@ License:        GPL-3.0-only
 Group:          System/Benchmark
 URL:            http://www.phoronix-test-suite.com/
 Source0:        https://phoronix-test-suite.com/releases/phoronix-test-suite-%{version}.tar.gz
+Patch0:	harden_phoromatic-client.service.patch
+Patch1:	harden_phoromatic-server.service.patch
+Patch2:	harden_phoronix-result-server.service.patch
 # https://github.com/phoronix-test-suite/phoronix-test-suite/issues/505 [bsc#1175508]
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -58,6 +61,9 @@ tests and 20 suites.
 %prep
 %setup -q -n %{name}
 find ob-cache -type f -name *.sh -exec chmod +x {} \;
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 
