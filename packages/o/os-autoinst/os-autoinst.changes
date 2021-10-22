@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 21 18:11:55 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634839907.cef5afdf:
+  * t: Cleanup files at the and of tests
+  * Exclude more files in .gitignore and remove others
+  * Upload coverage data to codecov from the build directory
+  * Use signatures in ocr
+  * Use signatures in signalblocker
+  * Run `codecovbash` in the source directory so it can find source files
+  * Fix assignment of `build_dir` for CI build/tests
+  * consoles/sshSerial: Make ssh port configurable
+  * Use signatures in myjsonrpc
+  * CI: Do out-of-source tree build
+
+-------------------------------------------------------------------
 Fri Oct 15 00:30:56 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634214936.d7a89a59:
