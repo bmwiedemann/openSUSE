@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:34:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210930
+  * ACPICA kernel-resident subsystem:
+    * Avoid evaluating methods too early during system resume.
+    * Added a new _OSI string, "Windows 2020".
+  * iASL Compiler/Disassembler and ACPICA tools:
+    * iASL compiler: Updated the check for usage of _CRS, _DIS,
+      _PRS, and _SRSobjects
+    * iASL table disassembler: Added disassembly support for the
+      NHLT ACPI table.
+    * Added a new subtable type for ACPI 6.4 SRAT Generic Port Affinity
+    * Added the flag for online capable in the MADT, introduced in
+      ACPI 6.3.
+- Update to version 20210730:
+  * iASL Compiler/Disassembler and ACPICA tools:
+    * iasl: Check usage of _CRS, _DIS, _PRS, and _SRS objects
+    * iASL Table Disassembler/Table compiler: Fix for WPBT table with
+      no command-line arguments.
+    * Handle the case where the Command-line Arguments table field does
+      not exist (zero).
+  * Headers: Add new DBG2 Serial Port Subtypes
+  * iASL: Add full support for the AEST table (data compiler)
+    * Add PRMT module header to facilitate parsing.
+    * Table disassembler: Add missing strings to decode subtable types.
+
+-------------------------------------------------------------------
 Wed Jun 30 11:26:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20210604:
