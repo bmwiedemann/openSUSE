@@ -38,8 +38,11 @@ Source11:       hylafax-usage.service
 Source12:       hylafax-faxqclean.timer
 Source13:       hylafax-faxqclean.service
 Source14:       hylafax-faxmodem@.service
+Source15:       hylafax-service.xml
+Source16:       hylafax-helper.xml
 Patch0:         hylafax.diff
 
+BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  ghostscript
 BuildRequires:  libjbig-devel
@@ -178,6 +181,8 @@ install -D -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/hylafax-usage.service
 install -D -m 0644 %{SOURCE12} %{buildroot}%{_unitdir}/hylafax-faxqclean.timer
 install -D -m 0644 %{SOURCE13} %{buildroot}%{_unitdir}/hylafax-faxqclean.service
 install -D -m 0644 %{SOURCE14} %{buildroot}%{_unitdir}/hylafax-faxmodem@.service
+install -D -m 0644 %{SOURCE15} %{buildroot}%{_prefix}/lib/firewalld/services/hylafax.xml
+install -D -m 0644 %{SOURCE16} %{buildroot}%{_prefix}/lib/firewalld/helpers/hylafax.xml
 
 for lnk in hylafax-hfaxd hylafax-faxq; do
     ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc$lnk
@@ -221,6 +226,8 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_unitdir}/hylafax-faxqclean.timer
 %{_unitdir}/hylafax-faxmodem@.service
 %{_unitdir}/hylafax-faxqclean.service
+%{_prefix}/lib/firewalld/services/hylafax.xml
+%{_prefix}/lib/firewalld/helpers/hylafax.xml
 %{_sbindir}/rchylafax-faxq
 %{_sbindir}/rchylafax-hfaxd
 %{_sbindir}/rchylafax
