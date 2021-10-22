@@ -1284,4 +1284,12 @@
   * kde443953.patch (forwarded request 925991 from Vogtinator)</comment>
     <requestid>925992</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>254708831d233e307571cc91aab1309b</srcmd5>
+    <version>5.23.1</version>
+    <time>1634943047</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
+    <requestid>926374</requestid>
+  </revision>
 </revisionlist>

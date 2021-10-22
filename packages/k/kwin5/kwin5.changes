@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:05:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * platforms/drm: fix disabled outputs with legacy drivers
+  * platforms/drm: reverse output creation order
+  * x11: Properly unredirect windows if compositing is not possible (kde#443953)
+  * Restore old behavior of Workspace::clientArea(clientOpt, Toplevel) (kde#443787)
+  * Do not ask for decoration settings without guarding
+  * scripting: Guard against nullptr m_client in WindowThumbnailItem (kde#443765)
+  * Properly update parent item's bounding rect when moving item (kde#443756)
+  * Fix AbstractClient::adjustedSize() for wayland windows with no committed buffer (kde#443705)
+  * Set KDE_COMPILERSETTINGS_LEVEL
+  * pipewire: Fix downloading software-rotated textures
+  * [wayland] fix crash on startup with lv3:ralt_alt XKB option (kde#440027)
+- Drop patches, now upstream:
+  * kde443953.patch
+
+-------------------------------------------------------------------
 Mon Oct 18 10:01:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix black screen when compositing fails to initialize
