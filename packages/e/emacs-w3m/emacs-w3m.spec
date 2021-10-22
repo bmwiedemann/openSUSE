@@ -21,7 +21,7 @@ Summary:        An interface program to use w3m with Emacs
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 # Summary(ja): w3m を Emacs 上で動かすためのプログラムです
-Version:        1.4.632+396+g051dba16
+Version:        1.4.632+501+gc088fe62
 Release:        0
 Url:            http://emacs-w3m.namazu.org/
 Source0:        emacs-w3m-%{version}.tar.xz

@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Fri Oct 15 19:01:52 UTC 2021 - schwab@linux-m68k.org
+
+- Update to version 1.4.632+501+gc088fe62:
+  * * w3m-lnum.el (w3m-lnum-get-match-info, w3m-lnum-get-action): Rearrange docstrings so to be in 80-column
+  * Typo fix
+  * Use rfc6068.el if possible instead of rfc2368.el (issue #109)
+  * * sb-sankei.el (shimbun-sankei-keep-login): Consult akamai cookie instead of local timer for expiry period. (shimbun-sankei-logout): Remove login/out cookies first and save last. (shimbun-sankei-login): Remove akamai cookie first as well. (shimbun-sankei-last-login): Remove variable. (shimbun-sankei-get-headers): Use date-to-time instead of encode-time and parse-time-string or timezone-parse-date.
+  * * w3m-filter.el (w3m-filter-configuration): Add desc template
+  * * w3m-filter.el (w3m-filter-configuration): Make Custom-set work
+  * * w3m-bookmark.el (w3m-bookmark-menubar-update): Add a workaround to avoid a miscellaneous error
+  * Treat application/emacs-lisp as text/plain ([emacs-w3m:13845])
+  * user-agents: bugfix, update, improve friendliness (PR#106)
+  * * w3m.el (w3m-user-agent-alist): Fill in in 80-column, reindent
+  * user-agent variables: update, and add reference feature
+  * w3m-user-agent-default-alist: bugfix macro element
+  * New and improved filter for github (PR#105)
+  * * w3m-filter.el (w3m-filter-github): Fill in in 80-column, reindent
+  * w3m-filter: new and improved filter for github
+  * * sb-sankei.el (shimbun-headers): Run shimbun-sankei-keep-login
+  * * sb-sankei.el (shimbun-sankei-login): Cache a copy of password always
+  * * sb-sankei.el (shimbun-sankei-logout{in|out}): Make those functions, instead of shimbun-sankei-keep-login, manage shimbun-sankei-last-login.
+  * * sb-sankei.el (shimbun-sankei-keep-login): Fix last commit
+  * Keep logging in in Sankei
+  * Add timeout to w3m-download
+  * Fix last commit (1059e92)
+  * Hard-code the shell used in `w3m-download' with "sh" ([emacs-w3m:13826])
+  * Use defvar-local in w3m.el (PR#101)
+  * Replace make-variable-buffer-local with defvar-local
+  * Bugfix: db-history single-page advances point too far (PR#100)
+  * * w3m.el (w3m--goto-url--handler-function): Fix point position. (PR#99)
+  * Position point on the first entry in the db history (PR#99) ;; slightly modified by yamaoka
+  * Fix typo 講読→購読
+  * reindent
+  * Bugfix: db-history single-page advances point too far
+  * * w3m.el (w3m--goto-url--handler-function): Fix point position. (PR#99)
+  * Position point on the first entry in the db history (PR#99) ;; slightly modified by yamaoka
+  * Fix typo 講読→購読
+  * reindent
+  * Fix typo 講読→購読
+  * Add docstring for function w3m--goto-url--handler-function
+  * db-history: advance to first history link
+  * reindent
+  * force-wide-display
+  * (shimbun-sankei-clear-contents): Show restrictions
+  * Fix previous commit
+  * Delete nonsense distinction of writer and byliner
+  * (shimbun-sankei-clear-contents): Distinguish author and writer
+  * Fix last commit
+  * Fix last commit
+  * Add iframe tag to movie tag so to be able to view it in other browsers
+  * Add links to embedded movies on Sankei
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Fix regexp
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Fix regexp
+  * Support multiple article pages on Sankei
+  * Minor fix in last commit
+  * Show author name if it is expressed clearly in the original
+  * Minor improvements on read and scan-sexps usage
+  * * sb-yoshirin.el: Spelling fix: thumnail -> thumbnail
+  * Minor fix to Sankei
+  * Display most detailed headline on Sankei
+  * Display headline that might be the only place to show the author
+  * Bugfix: make w3m-select-buffer-toggle-style work properly (PR#95)
+  * Make Sankei support raw html embedded in java script
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Modify last commit
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Don't infloop
+  * * sb-sankei.el (shimbun-sankei-clear-contents) : Fix regexps
+  * * sb-sankei.el (shimbun-sankei-clear-contents) : Trivial fix
+  * Make Sankei work on Emacs 26 and 27
+  * Make Sankei support raw html embedded in java script
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Modify last commit
+  * * sb-sankei.el (shimbun-sankei-clear-contents): Don't infloop
+  * * sb-sankei.el (shimbun-sankei-clear-contents) : Fix regexps
+  * * sb-sankei.el (shimbun-sankei-clear-contents) : Trivial fix
+  * Make Sankei work on Emacs 26 and 27
+  * Sigh; w3m-select-buffer-window needs to match the selected w3m buffer, not the select buffer.
+  * Ensure that w3m-select-buffer-window is kept updated properly.
+  * By the time split-window is called, the locally let selected-window variable is no longer a valid window. Thus, we *actually* need to call the selected-window function here.
+  * Fetch more images
+  * * doc/emacs-w3m.texi, doc/emacs-w3m-ja.texi (Newspapers Supported by Shimbun): Update Sankei groups.
+  * Make Sankei work
+  * Make Mainichi work
+  * Make Asahi work (as for at least the rss group)
+  * Declare w3m-queries-log-file in w3m-util.el
+  * Move w3m-queries-log-file from w3m-util.el to w3m.el
+  * Update
+  * Reindent
+  * w3m-queries-log-file: Use expand-file-name in variable defcustom
+  * tweaks to handling url query parts
+  * Update
+  * Reindent
+  * Place entire logic in function w3m-external-view
+  * Revert last change that made `w3m-process-stop' do kill page buffer
+  * Reindent
+  * w3m-delete-buffer-if-empty: Only operate on live buffers
+  * Fixes for w3m-current-url = NIL, loading images from ext program
+  * Delete useless history warning
+  * Make shimbun-sankei-login work
+  * Silence the byte compiler on Emacs 28
+
+-------------------------------------------------------------------
 Sun Mar 21 18:54:48 UTC 2021 - schwab@linux-m68k.org
 
 - Update to version 1.4.632+396+g051dba16:
