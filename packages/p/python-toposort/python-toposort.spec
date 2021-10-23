@@ -1,7 +1,7 @@
 #
 # spec file for package python-toposort
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-toposort
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        Implements a topological sort algorithm
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://bitbucket.org/ericvsmith/toposort
+URL:            https://gitlab.com/ericvsmith/toposort
 Source:         https://files.pythonhosted.org/packages/source/t/toposort/toposort-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,20 +39,24 @@ Implements a topological sort algorithm.
 %prep
 %setup -q -n toposort-%{version}
 chmod a-x *.txt
+# can't discover and execute at the same time
+sed -i '/unittest.main/d' test/test_toposort.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %doc CHANGES.txt README.txt
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/toposort.py*
+%pycache_only %{python_sitelib}/__pycache__/toposort*
+%{python_sitelib}/toposort-%{version}*-info
 
 %changelog

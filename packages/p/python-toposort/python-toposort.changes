@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 22 20:19:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.7
+  * Changed to use setup.cfg and pyproject.toml.  Deleted setup.py.
+  * GH issue #1: No longer modify input data structures.  Thanks
+    Lenz Furrer.
+
+-------------------------------------------------------------------
 Tue Dec 10 16:39:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - initial version
