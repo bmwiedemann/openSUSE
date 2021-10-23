@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 22 16:17:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- disable python36 build: pytest-doctestplus dropped support
+
+-------------------------------------------------------------------
 Fri Apr 16 15:02:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix test suite: Don't error on OBS resource warnings 

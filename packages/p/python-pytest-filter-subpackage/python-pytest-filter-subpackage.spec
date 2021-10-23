@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-pytest-filter-subpackage
 Version:        0.1.1
 Release:        0
@@ -39,7 +40,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This package contains a simple plugin for the `pytest`_ framework that provides a
+This package contains a simple plugin for the pytest framework that provides a
 shortcut to testing all code and documentation for a given sub-package.
 
 %prep
