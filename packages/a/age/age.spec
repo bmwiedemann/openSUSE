@@ -18,7 +18,7 @@
 Name:           age
 Version:        1.0.0
 Release:        0
-Summary:        A simple, modern and secure file encryption tool
+Summary:        A file encryption tool
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
 URL:            https://github.com/FiloSottile/age
