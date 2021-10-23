@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.19.1
+Version:        1.19.2
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -60,7 +60,7 @@ BuildRequires:  graphviz >= 2.26
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-recommonmark
 %endif
-BuildRequires:  meson >= 0.41.0
+BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkg-config
 %if %{with debug_gui}
 BuildRequires:  pkgconfig(cairo)

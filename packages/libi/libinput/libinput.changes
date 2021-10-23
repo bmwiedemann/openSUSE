@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 22 09:49:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 1.19.2:
+  * quirks: add quirk for GPD Win Max
+  * evdev: disable button scroll timeout for extra mouse buttons
+  * evdev: avoid usage of bogus BTN_FORWARD name
+  * gestures: avoid processing the last hold and
+    motion event twice
+  * quirks: Add quirk for StarLabs clickpads with two
+    phyisical buttons
+  * quirks: Update dmi for StarBook Mk V
+  * quirks: relax DMI modalias match for Purism Librem 14v1
+
+-------------------------------------------------------------------
 Tue Sep 28 08:28:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.19.1
