@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Oct 15 10:02:06 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.24.0 → 9.24.1
+
+-------------------------------------------------------------------
+Thu Oct 14 16:00:27 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure embedded test exposes the kernel
+
+-------------------------------------------------------------------
+Thu Oct 14 11:27:16 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed use of LUKS encrypted images with empty pass
+
+  For initial provisioning of LUKS encrypted disk images an
+  empty passphrase key is handy to avoid interaction in the
+  deployment process. However, the dracut kiwi modules were
+  lacking the information that the luks keyfile could be an
+  empty passphrase key which must not be opened with the
+  potential risk to get prompted for input. This commit
+  introduces a new profile environment variable evaluated
+  by the dracut kiwi lib code to open the LUKS pool and
+  allows to distinguish the situation on key files with
+  or without a passphrase
+
+-------------------------------------------------------------------
+Thu Oct 14 10:11:01 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed type annotations for LuksDevice class
+
+-------------------------------------------------------------------
+Wed Oct 13 17:10:30 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed repo setup for test-image-embedded
+
+  Use obsrepositories
+
+-------------------------------------------------------------------
+Wed Oct 13 17:03:48 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added a build test for no-initrd / no-bootloader
+
+  It's allowed to configure an image building without an
+  initrd and/or bootloader setup. These are settings mostly
+  used in the embedded world and this build test makes sure
+  images of that kind can be build
+
+-------------------------------------------------------------------
+Wed Oct 13 00:31:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add support for portable result data (#1949)
+
+  In addition to the serialized Result instance kiwi.result
+  file this commit also creates a portable version of this
+  information in kiwi.result.json. Only the information that
+  can be expressed as json document is part of the portable
+  version. This is related to Issue #1918
+
+-------------------------------------------------------------------
+Thu Oct 07 16:12:47 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added documentation for kiwi stackbuild plugin
+
+  Restructure the documentation to put all plugin documentation
+  under its own category. Add a chapter about the stackbuild
+  plugin, it's concepts and use cases. This Fixes #1907
+
+-------------------------------------------------------------------
 Thu Oct 07 09:54:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.63 → 9.24.0

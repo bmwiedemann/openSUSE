@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.0
+Version:        9.24.1
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -335,6 +335,7 @@ Requires:       python%{python3_pkgversion}-yaml
 %else
 Requires:       python%{python3_pkgversion}-PyYAML
 %endif
+Requires:       python%{python3_pkgversion}-simplejson
 Requires:       python%{python3_pkgversion}-docopt
 Requires:       python%{python3_pkgversion}-lxml
 Requires:       python%{python3_pkgversion}-requests
