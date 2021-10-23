@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 22 09:50:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add upstream patch (GIMP issue #6210)
+  + 0001-Issue-6210-Subpixel-font-rendering-system-settings-s.patch
+    Fix issue where the textool produces false color artifacts
+    when using font anti-aliasing and system is set to subpixel
+    rendering.
+
+-------------------------------------------------------------------
 Thu Oct  7 12:50:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - gimp-tips no longer has translations

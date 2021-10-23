@@ -42,6 +42,8 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
+# https://gitlab.gnome.org/GNOME/gimp/-/commit/a08055f1a18886fdacaf0cba5887b7ff2f687732
+Patch0:         0001-Issue-6210-Subpixel-font-rendering-system-settings-s.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -212,6 +214,7 @@ applications that want to make use of the GIMP libraries.
 
 %prep
 %setup -q
+%autopatch -p1
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
