@@ -33,14 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       12
+%global updatever       13
 %global patchver        0
-%global datever         2021-07-20
-%global buildver        7
-%global hg_project      jdk-updates
-%global hg_repository   jdk11u
-%global hg_revision     f412f2537f15
-%global icedtea_sound_version 1.0.1
+%global datever         2021-10-19
+%global buildver        8
+%global openjdk_repo    jdk11u
+%global openjdk_tag     jdk-11.0.13+8
+%global openjdk_dir     jdk11u-jdk-11.0.13-8
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
 %global java_activation_repository activation
@@ -116,12 +115,12 @@
 %global with_system_pcsc 0
 %endif
 %global with_system_harfbuzz 1
-%global with_pulseaudio 1
 %if %{is_release}
 %global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}
 %else
 %global package_version %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
 %endif
+%global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %bcond_with zero
 %bcond_with aot
 %if ! %{with zero}
@@ -138,7 +137,6 @@
 %global tapsetroot      %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
-%global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %if %{with_systemtap}
 # Where to install systemtap tapset (links)
 # We would like these to be in a package specific subdir,
@@ -159,11 +157,9 @@ License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only 
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
-Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
+Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
 # Accessibility support
 Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
-# Pulseaudio support
-Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Systemtap tapsets. Zipped up to keep it small.
 Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapted from IcedTea.
@@ -199,9 +195,6 @@ Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 Source100:      config.guess
 # wget -O config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD'
 Source101:      config.sub
-# RPM/distribution specific patches
-Patch1:         icedtea-sound-1.0.1-jdk9.patch
-Patch2:         icedtea-sound-soundproperties.patch
 # Restrict access to java-atk-wrapper classes
 Patch3:         java-atk-wrapper-security.patch
 # RHBZ 808293
@@ -235,7 +228,6 @@ Patch101:       s390-size_t.patch
 #
 Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
-Patch202:       jdk11-glibc234.patch
 #
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
@@ -339,11 +331,6 @@ BuildRequires:  libffi-devel
 %if %{with_systemtap}
 BuildRequires:  systemtap-sdt-devel
 %endif
-# pulse audio requirements
-%if %{with_pulseaudio}
-BuildRequires:  libpulse-devel >= 0.9.11
-BuildRequires:  pulseaudio >= 0.9.11
-%endif
 %if %{with_system_pcsc}
 BuildRequires:  pcsc-lite-devel
 %endif
@@ -361,13 +348,13 @@ The OpenJDK %{featurever} runtime environment.
 Summary:        OpenJDK %{featurever} Runtime Environment
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-Requires(post): java-ca-certificates
 # mozilla-nss has to be installed to prevent
 # java.security.ProviderException: Could not initialize NSS
 # ...
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
+Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
@@ -469,6 +456,7 @@ Requires:       jpackage-utils
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
 Requires(postun):update-alternatives
+BuildArch:      noarch
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
@@ -476,7 +464,6 @@ Provides:       java-10-openjdk-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
 Obsoletes:      java-10-openjdk-javadoc < %{version}-%{release}
 %endif
-BuildArch:      noarch
 
 %description javadoc
 The OpenJDK %{featurever} API documentation.
@@ -502,18 +489,17 @@ with accessibility on, so please do not install this package unless you really
 need to.
 
 %prep
-%setup -q -n %{hg_repository}-%{hg_revision}
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 8
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 9
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 20
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 21
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 22
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 23
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 24
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 25
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 26
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 27
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 28
+%setup -q -n %{openjdk_dir}
+%setup -q -D -n %{openjdk_dir} -T -a 8
+%setup -q -D -n %{openjdk_dir} -T -a 20
+%setup -q -D -n %{openjdk_dir} -T -a 21
+%setup -q -D -n %{openjdk_dir} -T -a 22
+%setup -q -D -n %{openjdk_dir} -T -a 23
+%setup -q -D -n %{openjdk_dir} -T -a 24
+%setup -q -D -n %{openjdk_dir} -T -a 25
+%setup -q -D -n %{openjdk_dir} -T -a 26
+%setup -q -D -n %{openjdk_dir} -T -a 27
+%setup -q -D -n %{openjdk_dir} -T -a 28
 
 # Replace config.sub and config.guess with fresh versions
 cp %{SOURCE100} make/autoconf/build-aux/
@@ -526,11 +512,6 @@ rm -rvf src/java.desktop/share/native/libsplashscreen/libpng
 rm -rvf src/java.desktop/share/native/libsplashscreen/giflib
 rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
-
-%patch1
-%if %{with_pulseaudio}
-%patch2 -p1
-%endif
 
 %patch3 -p1
 %patch4 -p1
@@ -566,8 +547,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %ifarch %{arm6}
 %patch201
 %endif
-
-%patch202 -p1
 
 %patch302 -p1
 %patch303 -p1
@@ -616,7 +595,7 @@ sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
-sed -i -e "s:@NSS_SECMOD@:/etc/pki/nssdb:g" nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
 
@@ -724,24 +703,6 @@ install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
-
-%if %{with_pulseaudio}
-# Build the pulseaudio plugin
-pushd icedtea-sound-%{icedtea_sound_version}
-autoreconf --force --install
-%configure \
-    --with-jdk-home=$JAVA_HOME \
-    --disable-docs
-make %{?_smp_mflags}
-cp icedtea-sound.jar $JAVA_HOME/../jmods/
-cp build/native/libicedtea-sound.so $JAVA_HOME/lib/
-popd
-# Merge the icedtea-sound into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "icedtea.sound,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-%endif
 
 # Build the accessibility plugin
 pushd java-atk-wrapper-%{java_atk_wrapper_version}
@@ -1246,9 +1207,6 @@ fi
 %files
 %dir %{_jvmdir}/%{sdkdir}/lib
 %{_jvmdir}/%{sdkdir}/lib/libawt_xawt.so
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/lib/libicedtea-sound.so
-%endif
 %{_jvmdir}/%{sdkdir}/lib/libjawt.so
 %{_jvmdir}/%{sdkdir}/lib/libsplashscreen.so
 %dir %{_datadir}/icons/hicolor
@@ -1457,9 +1415,6 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/jmods
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/jmods/*.jmod
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/jmods/icedtea-sound.jar
-%endif
 %{_jvmdir}/%{sdkdir}/jmods/java-atk-wrapper.jar
 
 %files demo -f %{name}-demo.files

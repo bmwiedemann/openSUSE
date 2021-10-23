@@ -383,4 +383,12 @@
     <comment>revert NSS changes + other way to support FIPS mode</comment>
     <requestid>919449</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b93986f0a24929ed874bac82290bb195</srcmd5>
+    <version>11.0.13.0</version>
+    <time>1635023619</time>
+    <user>dimstar_suse</user>
+    <comment>October 2021 CPU</comment>
+    <requestid>926810</requestid>
+  </revision>
 </revisionlist>
