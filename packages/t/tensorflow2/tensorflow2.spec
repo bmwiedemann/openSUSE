@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package tensorflow2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -746,6 +746,8 @@ for file in `find tensorflow/lite -name \*.h`; do
   # Disable spurious-executable-perm
   chmod -x %{buildroot}%{_includedir}/$file
 done
+install -D tensorflow/core/public/version.h %{buildroot}%{_includedir}/tensorflow/core/public/version.h
+chmod -x %{buildroot}%{_includedir}/tensorflow/core/public/version.h
 # Install tensorflow-lite.pc
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 cat <<EOF > %{buildroot}%{_libdir}/pkgconfig/tensorflow-lite.pc
@@ -878,6 +880,8 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_libdir}/libtensorflow-lite.a
 %dir %{_includedir}/tensorflow/lite/
 %{_includedir}/tensorflow/lite/*
+%dir %{_includedir}/tensorflow/core/public/
+%{_includedir}/tensorflow/core/public/version.h
 %{package_libdir}/pkgconfig/*.pc
 
 %else

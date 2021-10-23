@@ -196,4 +196,13 @@
     <comment></comment>
     <requestid>922962</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>24349806df07af6b1a100557883d89a4</srcmd5>
+    <version>2.6.0</version>
+    <time>1635023648</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure tensorflow/core/public/version.h is installed in the
+  'lite' version (bsc#1191805). (forwarded request 927105 from eeich)</comment>
+    <requestid>927109</requestid>
+  </revision>
 </revisionlist>
