@@ -31,4 +31,12 @@
     <comment>New stable rel (forwarded request 830037 from iznogood)</comment>
     <requestid>831452</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a61430658821eb0e78d68ee249b0ecce</srcmd5>
+    <version>2.5</version>
+    <time>1635023626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 926700 from jsegitz)</comment>
+    <requestid>926901</requestid>
+  </revision>
 </revisionlist>

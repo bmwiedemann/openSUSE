@@ -1,0 +1,24 @@
+Index: phodav-2.5/data/spice-webdavd.service
+===================================================================
+--- phodav-2.5.orig/data/spice-webdavd.service
++++ phodav-2.5/data/spice-webdavd.service
+@@ -4,6 +4,19 @@ Requires=dbus.service avahi-daemon.servi
+ After=dbus.service avahi-daemon.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ EnvironmentFile=-/etc/sysconfig/spice-webdavd
+ ExecStart=/usr/sbin/spice-webdavd -p 9843 $SPICE_WEBDAVD_EXTRA_ARGS

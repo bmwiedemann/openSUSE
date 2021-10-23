@@ -25,6 +25,7 @@ License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing 
 URL:            https://wiki.gnome.org/phodav
 Source0:        https://download.gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.xz
+Patch0:	harden_spice-webdavd.service.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  gtk-doc
