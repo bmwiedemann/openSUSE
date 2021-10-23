@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 21 17:55:23 UTC 2021 - Marina Latini <marina.latini@suse.com>
+
+- Obsolete python2-bugzilla 
+
+-------------------------------------------------------------------
+Thu Oct 21 13:49:24 UTC 2021 - Marina Latini <marina.latini@suse.com>
+
+- Disable python2 building, as the support was dropped with 3.0.0
+
+-------------------------------------------------------------------
 Wed Dec 30 13:25:13 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.0.2:
