@@ -405,4 +405,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>925437</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>3d93aea420a11d51dc8ec22a4ec0556a</srcmd5>
+    <version>7.18.1</version>
+    <time>1635023652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927129</requestid>
+  </revision>
 </revisionlist>

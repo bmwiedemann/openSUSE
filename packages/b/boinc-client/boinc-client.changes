@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 23 16:17:52 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop boinc-gui.desktop and icons, because upstream provides a
+  desktop entry with icons now.
+
+-------------------------------------------------------------------
 Fri Oct  8 12:03:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.18.1

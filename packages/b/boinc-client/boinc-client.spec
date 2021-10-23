@@ -45,8 +45,6 @@ URL:            https://boinc.berkeley.edu/
 
 #Git-Clone:     https://github.com/BOINC/boinc
 Source0:        https://github.com/BOINC/boinc/archive/client_release/%{minor_version}/%{version}.tar.gz
-Source1:        boinc-icons.tar.bz2
-Source2:        boinc-gui.desktop
 Source3:        README.SUSE
 Source4:        sysconfig.%{name}
 Source5:        boinc-logrotate
@@ -138,7 +136,7 @@ This package contains development files for libboinc.
 
 %prep
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%autosetup -p1 -n %{name}_release-%{minor_version}-%{version} -D -a 1
+%autosetup -p1 -n %{name}_release-%{minor_version}-%{version} -D
 
 %build
 # Fix default path for boincscr
@@ -259,19 +257,6 @@ install -Dm0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 # Install bash completion
 install -Dpm0644 client/scripts/boinc.bash %{buildroot}%{_datadir}/bash-completion/completions/boinc
 
-%if %{with manager}
-# Install desktop-file and icons
-install -Dm0644 boinc-gui-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/boinc-gui.png
-install -Dm0644 boinc-gui-64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/boinc-gui.png
-install -Dm0644 boinc-gui-48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/boinc-gui.png
-install -Dm0644 boinc-gui-32.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/boinc-gui.png
-install -Dm0644 boinc-gui-22.png %{buildroot}%{_datadir}/icons/hicolor/22x22/apps/boinc-gui.png
-install -Dm0644 boinc-gui-16.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/boinc-gui.png
-
-# Install *.desktop File
-%suse_update_desktop_file -i boinc-gui Utility
-%endif
-
 # Remove static libraries, libtool archives
 rm %{buildroot}%{_libdir}/*.la
 
@@ -361,7 +346,6 @@ fi
 %{_bindir}/boincmanager
 %{_bindir}/boincscr
 %{_datadir}/applications/boinc.desktop
-%{_datadir}/applications/boinc-gui.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/boincmgr.1.gz
 %{_mandir}/man1/boinc-manager.1.gz
