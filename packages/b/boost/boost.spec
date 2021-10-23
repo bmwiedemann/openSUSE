@@ -1212,6 +1212,7 @@ This package contains Boost::JSON runtime library.
 Summary:        Development headers for Boost.JSON library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_json%{library_version} = %{version}
+Requires:       libboost_container%{library_version}-devel = %{version}
 Conflicts:      libboost_json-devel-impl
 Provides:       libboost_json-devel-impl = %{version}
 

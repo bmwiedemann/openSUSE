@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 21 10:37:47 CEST 2021 - aschnell@suse.com
+
+- make boost-json-devel require boost-container-devel (bsc#1191822)
+
+-------------------------------------------------------------------
 Fri Sep 17 08:29:43 CEST 2021 - aschnell@suse.com
 
 - update to 1.77.0:
