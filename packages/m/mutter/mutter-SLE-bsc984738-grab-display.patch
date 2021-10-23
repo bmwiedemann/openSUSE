@@ -1,7 +1,8 @@
-diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/display.c mutter-40.0.new/src/core/display.c
---- mutter-40.0.old/src/core/display.c	2021-04-23 08:52:33.877578506 +0800
-+++ mutter-40.0.new/src/core/display.c	2021-04-23 09:07:24.330113775 +0800
-@@ -827,6 +827,8 @@
+Index: mutter-41.0/src/core/display.c
+===================================================================
+--- mutter-41.0.orig/src/core/display.c
++++ mutter-41.0/src/core/display.c
+@@ -826,6 +826,8 @@ meta_display_new (MetaContext  *context,
    display->check_fullscreen_later = 0;
    display->work_area_later = 0;
  
@@ -10,8 +11,8 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/di
    display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
    display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
                                                    terminal has the focus */
-@@ -1140,6 +1142,50 @@
-   meta_quit (META_EXIT_SUCCESS);
+@@ -1141,6 +1143,50 @@ meta_display_close (MetaDisplay *display
+   the_display = NULL;
  }
  
 +/* Grab/ungrab routines taken from fvwm.
@@ -61,10 +62,11 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/di
  /**
   * meta_display_for_x_display:
   * @xdisplay: An X display
-diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/display-private.h mutter-40.0.new/src/core/display-private.h
---- mutter-40.0.old/src/core/display-private.h	2021-04-23 08:52:33.877578506 +0800
-+++ mutter-40.0.new/src/core/display-private.h	2021-04-23 09:07:24.330113775 +0800
-@@ -144,6 +144,8 @@
+Index: mutter-41.0/src/core/display-private.h
+===================================================================
+--- mutter-41.0.orig/src/core/display-private.h
++++ mutter-41.0/src/core/display-private.h
+@@ -140,6 +140,8 @@ struct _MetaDisplay
    GHashTable *stamps;
    GHashTable *wayland_windows;
  
@@ -73,19 +75,20 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/di
    /* serials of leave/unmap events that may
     * correspond to an enter event we should
     * ignore
-@@ -261,6 +263,8 @@
-   )
+@@ -258,6 +260,8 @@ struct _MetaDisplayClass
  
- gboolean      meta_display_open                (void);
+ MetaDisplay * meta_display_new (MetaContext  *context,
+                                 GError      **error);
 +void          meta_display_grab                (MetaDisplay *display);
 +void          meta_display_ungrab              (MetaDisplay *display);
  
  void meta_display_manage_all_xwindows (MetaDisplay *display);
  void meta_display_unmanage_windows   (MetaDisplay *display,
-diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/keybindings.c mutter-40.0.new/src/core/keybindings.c
---- mutter-40.0.old/src/core/keybindings.c	2021-04-23 08:52:33.877578506 +0800
-+++ mutter-40.0.new/src/core/keybindings.c	2021-04-23 09:11:57.619333618 +0800
-@@ -1253,6 +1253,9 @@
+Index: mutter-41.0/src/core/keybindings.c
+===================================================================
+--- mutter-41.0.orig/src/core/keybindings.c
++++ mutter-41.0/src/core/keybindings.c
+@@ -1253,6 +1253,9 @@ meta_display_grab_window_buttons (MetaDi
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -95,7 +98,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
    /* Grab Alt + button1 for moving window.
     * Grab Alt + button2 for resizing window.
     * Grab Alt + button3 for popping up window menu.
-@@ -1289,6 +1292,9 @@
+@@ -1289,6 +1292,9 @@ meta_display_ungrab_window_buttons (Meta
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -105,7 +108,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
    if (keys->window_grab_modifiers == 0)
      return;
  
-@@ -1319,6 +1325,9 @@
+@@ -1319,6 +1325,9 @@ meta_display_grab_focus_window_button (M
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -115,7 +118,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
    /* Grab button 1 for activating unfocused windows */
    meta_verbose ("Grabbing unfocused window buttons for %s", window->desc);
  
-@@ -1343,6 +1352,9 @@
+@@ -1343,6 +1352,9 @@ meta_display_ungrab_focus_window_button
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -125,7 +128,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
    meta_verbose ("Ungrabbing unfocused window buttons for %s", window->desc);
  
    if (!window->have_focus_click_grab)
-@@ -1588,6 +1600,10 @@
+@@ -1588,6 +1600,10 @@ meta_window_grab_keys (MetaWindow  *wind
  
    if (meta_is_wayland_compositor ())
      return;
@@ -136,7 +139,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
    if (window->all_keys_grabbed)
      return;
  
-@@ -1627,6 +1643,9 @@
+@@ -1627,6 +1643,9 @@ meta_window_ungrab_keys (MetaWindow  *wi
        MetaDisplay *display = window->display;
        MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -146,10 +149,11 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/ke
        if (window->grab_on_frame &&
            window->frame != NULL)
          change_window_keygrabs (keys, window->frame->xwindow, FALSE);
-diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/meta-x11-display.c mutter-40.0.new/src/x11/meta-x11-display.c
---- mutter-40.0.old/src/x11/meta-x11-display.c	2021-04-23 08:52:33.884245138 +0800
-+++ mutter-40.0.new/src/x11/meta-x11-display.c	2021-04-23 09:07:24.330113775 +0800
-@@ -1945,7 +1945,7 @@
+Index: mutter-41.0/src/x11/meta-x11-display.c
+===================================================================
+--- mutter-41.0.orig/src/x11/meta-x11-display.c
++++ mutter-41.0/src/x11/meta-x11-display.c
+@@ -1916,7 +1916,7 @@ meta_x11_display_set_input_focus_interna
     * we know which is which by making two requests that the server will
     * process at the same time.
     */
@@ -158,7 +162,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/met
  
    XSetInputFocus (x11_display->xdisplay,
                    xwindow,
-@@ -1957,8 +1957,7 @@
+@@ -1928,8 +1928,7 @@ meta_x11_display_set_input_focus_interna
                     x11_display->atom__MUTTER_FOCUS_SET,
                     XA_STRING, 8, PropModeAppend, NULL, 0);
  
@@ -168,10 +172,11 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/met
  
    meta_x11_error_trap_pop (x11_display);
  }
-diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/window-x11.c mutter-40.0.new/src/x11/window-x11.c
---- mutter-40.0.old/src/x11/window-x11.c	2021-04-23 08:52:33.884245138 +0800
-+++ mutter-40.0.new/src/x11/window-x11.c	2021-04-23 09:07:24.330113775 +0800
-@@ -522,6 +522,8 @@
+Index: mutter-41.0/src/x11/window-x11.c
+===================================================================
+--- mutter-41.0.orig/src/x11/window-x11.c
++++ mutter-41.0/src/x11/window-x11.c
+@@ -522,6 +522,8 @@ meta_window_x11_manage (MetaWindow *wind
  
    meta_icon_cache_init (&priv->icon_cache);
  
@@ -180,7 +185,7 @@ diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/win
    meta_x11_display_register_x_window (display->x11_display,
                                        &window->xwindow,
                                        window);
-@@ -582,6 +584,13 @@
+@@ -582,6 +584,13 @@ meta_window_x11_manage (MetaWindow *wind
  
    meta_window_x11_update_shape_region (window);
    meta_window_x11_update_input_region (window);
