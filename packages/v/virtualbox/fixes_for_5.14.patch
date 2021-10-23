@@ -1,46 +1,46 @@
-Index: VirtualBox-6.1.22/src/VBox/Additions/linux/sharedfolders/regops.c
+Index: VirtualBox-6.1.28/src/VBox/Additions/linux/sharedfolders/regops.c
 ===================================================================
---- VirtualBox-6.1.22.orig/src/VBox/Additions/linux/sharedfolders/regops.c
-+++ VirtualBox-6.1.22/src/VBox/Additions/linux/sharedfolders/regops.c
-@@ -2126,7 +2126,11 @@ static int vbsf_iter_lock_pages(struct i
+--- VirtualBox-6.1.28.orig/src/VBox/Additions/linux/sharedfolders/regops.c
++++ VirtualBox-6.1.28/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -2138,7 +2138,11 @@ static int vbsf_iter_lock_pages(struct i
      int    rc       = 0;
  
      Assert(iov_iter_count(iter) + pStash->cb > 0);
 +#if RTLNX_VER_MAX(5, 14,0)
-     if (!(iter->type & ITER_KVEC)) {
+     if (!(VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)) {
 +#else
 +    if (!iov_iter_is_kvec(iter)) {
 +#endif
          /*
           * Do we have a stashed page?
           */
-@@ -2373,7 +2377,11 @@ static size_t vbsf_iter_max_span_of_page
+@@ -2385,7 +2389,11 @@ static size_t vbsf_iter_max_span_of_page
  {
      size_t cPages;
  # if RTLNX_VER_MIN(3,16,0)
 +# if RTLNX_VER_MAX(5, 14, 0)
-     if (iter_is_iovec(iter) || (iter->type & ITER_KVEC)) {
+     if (iter_is_iovec(iter) || (VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)) {
 +#else
 +    if (iter_is_iovec(iter) || iov_iter_is_kvec(iter)) {
 +#endif
- #endif
+ # endif
          const struct iovec *pCurIov    = iter->iov;
          size_t              cLeft      = iter->nr_segs;
-@@ -2436,7 +2444,11 @@ static size_t vbsf_iter_max_span_of_page
+@@ -2448,7 +2456,11 @@ static size_t vbsf_iter_max_span_of_page
      } else {
          /* Won't bother with accurate counts for the next two types, just make
             some rough estimates (does pipes have segments?): */
 +#if RTLNX_VER_MAX(5, 14,0)
-         size_t cSegs = iter->type & ITER_BVEC ? RT_MAX(1, iter->nr_segs) : 1;
+         size_t cSegs = VBSF_GET_ITER_TYPE(iter) & ITER_BVEC ? RT_MAX(1, iter->nr_segs) : 1;
 +#else
 +        size_t cSegs = (iov_iter_type(iter) == ITER_BVEC) ? RT_MAX(1, iter->nr_segs) : 1;
 +#endif
          cPages = (iov_iter_count(iter) + (PAGE_SIZE * 2 - 2) * cSegs) >> PAGE_SHIFT;
      }
  # endif
-@@ -3793,7 +3805,9 @@ struct address_space_operations vbsf_reg
- #endif
- #if RTLNX_VER_MIN(2,6,24)
+@@ -3831,7 +3843,9 @@ struct address_space_operations vbsf_reg
+     .write_end      = vbsf_write_end,
+ #elif RTLNX_VER_MIN(2,6,24)
      .write_begin    = vbsf_write_begin,
 +#if RTLNX_VER_MAX(5, 14, 0)
      .write_end      = simple_write_end,

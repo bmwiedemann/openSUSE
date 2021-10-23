@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 20 05:48:42 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.28 (released October 19 2021 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fixed guru meditation while booting nested-guests accessing debug registers under certain conditions
+  UI: Bug fixes for touchpad-based scrolling
+  VMSVGA: Fixed VM black screen issue on first resize after restoring from saved state (bug #20067)
+  VMSVGA: Fixed display corruption on Linux Mint (bug #20513)
+  Storage: Fixed a possible write error under certain circumstances when using VHD images (bug #20512)
+  Network: Multiple updates in virtio-net device support
+  Network: Disconnecting cable in saved VM state now is handled properly by virtio-net
+  Network: More administrative control over network ranges, see user manual
+  NAT: Fixed not rejecting TFTP requests with absolute pathnames (bug #20589)
+  Audio: Fixed VM session aborting after PC hibernation (bug #20516)
+  Audio: Fixed setting the line-in volume of the HDA emulation on modern Linux guests
+  Audio: Fixed resuming playback of the AC'97 emulation while a snapshot has been taken
+  API: Added bindings support for Python 3.9 (bug #20252)
+  API: Fixed rare hang of VM when changing settings at runtime
+  Linux host: Improved kernel modules installation detection which prevents unnecessary modules rebuild
+  Host Services: Shared Clipboard: Prevent guest clipboard reset when clipboard sharing is disabled (bug #20487)
+  Host Services: Shared Clipboard over VRDP: Fixed to continue working when guest service reconnects to host (bug #20366)
+  Host Services: Shared Clipboard over VRDP: Fixed preventing remote RDP client to hang when guest has no clipboard data to report
+  Linux Host and Guest: Introduced initial support for kernels 5.14 and 5.15
+  Linux Host and Guest: Introduced initial support for RHEL 8.5 kernel
+  Windows Guest: Introduced Windows 11 guest support, including unattended installation
+
+  Deleted file "fix_ordering_of_qt_includes.patch" - fixed upstream.
+
+  Fixes CVE-2021-35538, CVE-2021-35545, CVE-2021-35540, CVE-2021-35542, and CVE-2021-2475 (boo#1191869)
+
+-------------------------------------------------------------------
 Tue Oct 12 13:03:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Use kernel_module_directory macro for kernel modules (boo#1191526)
