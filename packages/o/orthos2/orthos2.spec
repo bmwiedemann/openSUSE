@@ -17,7 +17,7 @@
 
 
 Name:           orthos2
-Version:        1.0.90+git.0a104f7
+Version:        1.0.141+git.58cc722
 Release:        0
 Summary:        Machine administration
 URL:            https://github.com/openSUSE/orthos2
@@ -38,6 +38,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  nginx
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+Requires(post): sudo
 %if 0%{?suse_version}
 BuildRequires:  python-rpm-macros
 %endif
@@ -58,10 +59,12 @@ Requires:       python3-django >= 3.2
 Requires:       python3-django-auth-ldap
 Requires:       python3-django-extensions
 Requires:       python3-djangorestframework
+Requires:       python3-ldap
 Requires:       python3-netaddr
 Requires:       python3-paramiko
 Requires:       python3-psycopg2
 Requires:       python3-validators
+
 %endif
 # Needed to install /etc/logrotate.d/orthos2
 Requires:       logrotate
@@ -87,9 +90,11 @@ Orthos is the machine administration tool of the development network at SUSE. It
 %package docs
 Summary:        HTML documentation for orthos2
 #BuildRequires:  python3-django >= 3.2
-BuildRequires:  python3-django-extensions
+BuildRequires:  python3-django-auth-ldap
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-django-extensions
 BuildRequires:  python3-djangorestframework
+BuildRequires:  python3-ldap
 BuildRequires:  python3-netaddr
 BuildRequires:  python3-paramiko
 BuildRequires:  python3-sphinx_rtd_theme
@@ -130,6 +135,8 @@ ln -sf service %{buildroot}%{_sbindir}/rcorthos2_debug
 # This should go into setup.py - but copying tons of non *.py files recursively
 # is cumbersome...
 cp -r orthos2/frontend/static /%{buildroot}/%{python3_sitelib}/orthos2/frontend
+# ToDo: Try to separate the html templates somewhere else
+cp -r templates/* %{buildroot}/%{python3_sitelib}/orthos2
 ln -sr %{buildroot}%{python3_sitelib}/orthos2 %{buildroot}/usr/lib/orthos2/orthos2
 mkdir -p %{buildroot}/usr/share/orthos2/data_migrations
 mkdir -p %{buildroot}/usr/share/orthos2/taskmanager_migrations
@@ -152,6 +159,10 @@ getent passwd orthos >/dev/null || \
 %post
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 %service_add_post orthos2.service orthos2_taskmanager.service orthos2.socket orthos2_debug.service
+
+sudo -i -u orthos /usr/lib/orthos2/manage.py makemigrations
+sudo -i -u orthos /usr/lib/orthos2/manage.py migrate
+sudo -i -u orthos /usr/lib/orthos2/manage.py collectstatic --noinput
 
 %preun
 %service_del_preun  orthos2.service orthos2_taskmanager.service orthos2.socket orthos2_debug.service
@@ -194,22 +205,22 @@ getent passwd orthos >/dev/null || \
 %attr(755,orthos,orthos) /usr/share/orthos2/taskmanager_migrations
 %attr(755,orthos,orthos) /usr/share/orthos2/frontend_migrations
 %attr(755,orthos,orthos) /usr/share/orthos2/api_migrations
-%attr(644,orthos,orthos) /usr/lib/orthos2/ansible/ansible.cfg
-%attr(644,orthos,orthos) /usr/lib/orthos2/ansible/inventory.template
-%attr(644,orthos,orthos) /usr/lib/orthos2/ansible/roles
-%attr(644,orthos,orthos) /usr/lib/orthos2/ansible/site.yml
-
 /usr/lib/orthos2/*
 %attr(755,orthos,orthos) %dir /srv/www/orthos2
 %ghost %dir /run/%{name}
 %ghost %dir /run/%{name}/ansible
-%attr(775,orthos,orthos) %dir /usr/lib/orthos2/ansible
 %attr(755,orthos,orthos) %dir /var/log/orthos2
 %attr(775,orthos,orthos) %dir /var/lib/orthos2
 %attr(775,orthos,orthos) %dir /var/lib/orthos2/archiv
 %attr(775,orthos,orthos) %dir /var/lib/orthos2/orthos-vm-images
 %attr(775,orthos,orthos) %dir /var/lib/orthos2/database
 %attr(700,orthos,orthos) %dir /var/lib/orthos2/.ssh
+
+# defattr(fileattr, user, group, dirattr)
+# Add whole ansible directory with correct attr for dirs and files
+# Always keep this at the end with defattr
+%defattr(664, orthos, orthos, 775)
+%attr(664,orthos,orthos) /usr/lib/orthos2/ansible
 
 %files docs
 %dir %{orthos_web_docs}

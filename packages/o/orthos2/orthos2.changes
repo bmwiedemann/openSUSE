@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct 16 08:36:47 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.141+git.58cc722:
+  * Add pylint CI workflow
+  * Create pylint.yml
+  * Add unique natural keys to be able to dump db table without fixed primary key
+  * Catch exception in add_machine if hypervisor does not exist
+  * client: Properly catch Exception on server side
+  * Add missing import in client
+  * Tiny fixups
+  * Enhance documentation
+  * Move user orthosrc file to ~/.config/orthosrc
+  * Only show non-administrative machine in free machines list
+  * Add not fully finished dump_test_db script and README for Django scripts
+  * Enhance ansible scanning
+  * Provide ordinary users with "(Re-)Create token" functionality via user preferences
+  * Do not allow password change in ldap case
+
+-------------------------------------------------------------------
+Fri Oct 15 18:27:52 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.141+git.58cc722:
+  * Add unique natural keys to be able to dump db table without fixed primary key
+  * Catch exception in add_machine if hypervisor does not exist
+  * Ask client in add_machine for arch, system and group as ordered lists
+  * Make orthos2_debug systemd service file hostname independent
+  * Move user orthosrc file to ~/.config/orthosrc
+  * Only show non-administrative machine in free machines list
+  * Add not fully finished dump_test_db script and README for Django scripts
+  * Enhance ansible scanning
+  * Add ssh configs to ansible and fix wrong inventory template for multiple hosts
+  * Provide ordinary users with "(Re-)Create token" functionality via user preferences
+  * Do not allow password change in ldap case
+
+-------------------------------------------------------------------
 Mon Oct 04 17:59:23 UTC 2021 - trenn@suse.de
 
 - Update to version 1.0.90+git.0a104f7:
