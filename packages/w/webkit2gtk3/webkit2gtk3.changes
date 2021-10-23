@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 21 20:07:32 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.34.1:
+  + Update user agent browser versions.
+  + Fix a crash with GTK >= 3.24.30.
+  + Fix a crash when loading videos on reddit.
+  + Fix file type detection when application calls
+    g_desktop_app_info_set_as_default_for_extension() passing html.
+
+-------------------------------------------------------------------
 Wed Sep 29 10:16:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libjavascriptcoregtk-4_0-18 and llibwebkit2gtk-4_0-37 to

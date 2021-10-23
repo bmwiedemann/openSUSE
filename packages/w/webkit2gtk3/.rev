@@ -1109,4 +1109,12 @@
   baselibs.conf: provide those libraries as multilib version. (forwarded request 922145 from dimstar)</comment>
     <requestid>922149</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5633a3811ea3166a667271d21038dc2b</srcmd5>
+    <version>2.34.1</version>
+    <time>1635023627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.1 (forwarded request 926830 from mgorse)</comment>
+    <requestid>926902</requestid>
+  </revision>
 </revisionlist>

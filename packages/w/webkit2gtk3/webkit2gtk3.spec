@@ -73,7 +73,7 @@ ExclusiveArch:  do-not-build
 %define _gold_linker 0
 %endif
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.34.0
+Version:        2.34.1
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
