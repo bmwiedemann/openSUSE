@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,14 +20,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pygit2
-Version:        1.3.0
+Version:        1.7.0
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libgit2_1.patch gh#libgit2/pygit2#1040 
-Patch0:         libgit2_1.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}
@@ -47,8 +45,8 @@ Requires:       python-cached-property
 Bindings for libgit2, a linkable C library for the Git version-control system.
 
 %prep
-%setup -q -n pygit2-%{version}
-%patch0 -p1
+%autosetup -p1 -n pygit2-%{version}
+
 # do not add options to pytest
 rm pytest.ini
 
