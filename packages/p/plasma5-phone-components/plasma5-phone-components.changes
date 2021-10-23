@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 14:05:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * panel: Fix quicksetting delegate width not getting enforced on label
+
+-------------------------------------------------------------------
 Thu Oct  7 13:50:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.0
