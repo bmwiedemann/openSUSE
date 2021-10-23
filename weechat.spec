@@ -1,7 +1,7 @@
 #
 # spec file for package weechat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           weechat
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Multi-protocol extensible Chat Client
 License:        GPL-3.0-or-later
@@ -174,6 +174,7 @@ install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.de
 %{_libdir}/weechat/plugins/trigger.so
 %{_libdir}/weechat/plugins/xfer.so
 %{_libdir}/weechat/plugins/fset.so
+%{_libdir}/weechat/plugins/typing.so
 %{_datadir}/applications/weechat.desktop
 %{_datadir}/icons/hicolor/*/apps/weechat.png
 
