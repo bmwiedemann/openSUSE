@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 22 17:39:23 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- Added patches:
+  - openmw-sigaltstack.patch
+  - openmw-cast-float-to-btScalar.patch
+- Updated patches:
+  - openmw-add-missing-include.patch
+
+-------------------------------------------------------------------
 Mon Jun 28 10:58:06 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Fix builds on GCC 11. Upstream seems to have fixed this but there isn't a

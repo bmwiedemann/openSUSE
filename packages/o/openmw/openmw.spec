@@ -26,10 +26,14 @@ Group:          Amusements/Games/RPG
 URL:            https://www.openmw.org
 Source:         https://github.com/OpenMW/openmw/archive/%{name}-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM: openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
+# PATCH-FIX-UPSTREAM openmw-add-missing-include.patch gh#OpenMW/openmw!2817 malcolmlewis@opensuse.org -- Add missing algorithm include for later boost releases.
 Patch0:         openmw-add-missing-include.patch
-# OPENSUSE-FIX: Fix build on GCC 11 due to new required includes for std::numeric_limit.
+# PATCH-FIX-UPSTREAM 0001-add-GCC-11-needed-includes.patch https://gitlab.com/OpenMW/openmw/-/issues/6357 adam@mizerski.pl -- Fix build on GCC 11 due to new required includes for std::numeric_limit.
 Patch1:         0001-add-GCC-11-needed-includes.patch
+# PATCH-FIX-UPSTREAM openmw-sigaltstack.patch https://gitlab.com/OpenMW/openmw/-/issues/6356 adam@mizerski.pl -- fix error: size of array 'altstack' is not an integral constant-expression
+Patch2:         openmw-sigaltstack.patch
+# PATCH-FIX-UPSTREAM openmw-cast-float-to-btScalar.patch adam@mizerski.pl -- this will be included in 0.47.0 release
+Patch3:         openmw-cast-float-to-btScalar.patch
 BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -92,8 +96,7 @@ The OpenCS is not based on the editing tool which came with the original Morrowi
 
 %prep
 %setup -q -n openmw-openmw-%{version}
-%patch0 -p2
-%patch1 -p1
+%autopatch -p1
 cp 'files/mygui/DejaVu Font License.txt' ./DejaVuFontLicense.txt
 
 ## fix __DATE__ and __TIME__
@@ -108,7 +111,11 @@ for file in tables.tex main.tex recordtypes.tex filters.tex creating_file.tex fi
 done
 
 %build
-%cmake -DGLOBAL_DATA_PATH="%{_datadir}/" \
+# -DBT_USE_DOUBLE_PRECISION should be discovered by cmake from bullet config, but it's not.
+%cmake \
+       -DCMAKE_C_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
+       -DCMAKE_CXX_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \
+       -DGLOBAL_DATA_PATH="%{_datadir}/" \
        -DMORROWIND_DATA_FILES="%{_datadir}/%{name}/data/" \
        -DOPENMW_RESOURCE_FILES="%{_datadir}/%{name}/resources/" \
        -DUSE_SYSTEM_TINYXML="ON" \

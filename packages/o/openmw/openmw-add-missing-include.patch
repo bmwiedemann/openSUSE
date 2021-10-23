@@ -1,6 +1,7 @@
-diff -Naur a/openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp b/openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp
---- a/openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp	2020-06-08 04:11:24.000000000 -0500
-+++ b/openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp	2020-11-15 20:03:09.136071793 -0600
+Index: openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp
+===================================================================
+--- openmw-openmw-0.46.0.orig/components/detournavigator/offmeshconnectionsmanager.hpp
++++ openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsmanager.hpp
 @@ -13,6 +13,7 @@
  
  #include <boost/optional.hpp>
@@ -9,3 +10,15 @@ diff -Naur a/openmw-openmw-0.46.0/components/detournavigator/offmeshconnectionsm
  #include <map>
  #include <mutex>
  #include <unordered_map>
+Index: openmw-openmw-0.46.0/components/vfs/filesystemarchive.cpp
+===================================================================
+--- openmw-openmw-0.46.0.orig/components/vfs/filesystemarchive.cpp
++++ openmw-openmw-0.46.0/components/vfs/filesystemarchive.cpp
+@@ -1,5 +1,7 @@
+ #include "filesystemarchive.hpp"
+ 
++#include <algorithm>
++
+ #include <boost/filesystem.hpp>
+ 
+ #include <components/debug/debuglog.hpp>

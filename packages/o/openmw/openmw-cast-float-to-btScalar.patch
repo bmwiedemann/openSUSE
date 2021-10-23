@@ -1,0 +1,38 @@
+From 14d0ca4cd3e9aa9e329590913d5f8fb55077587d Mon Sep 17 00:00:00 2001
+From: elsid <elsid.mail@gmail.com>
+Date: Sun, 25 Nov 2018 11:42:26 +0300
+Subject: [PATCH] Cast float to btScalar
+
+---
+ .../detournavigator/recastmeshbuilder.cpp      | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/components/detournavigator/recastmeshbuilder.cpp b/components/detournavigator/recastmeshbuilder.cpp
+index d96ba2f29cf..f613683571b 100644
+--- a/components/detournavigator/recastmeshbuilder.cpp
++++ b/components/detournavigator/recastmeshbuilder.cpp
+@@ -163,15 +163,15 @@ namespace DetourNavigator
+ 
+         transformBoundingBox(transform, aabbMin, aabbMax);
+ 
+-        aabbMin.setX(std::max(mBounds.mMin.x(), aabbMin.x()));
+-        aabbMin.setX(std::min(mBounds.mMax.x(), aabbMin.x()));
+-        aabbMin.setY(std::max(mBounds.mMin.y(), aabbMin.y()));
+-        aabbMin.setY(std::min(mBounds.mMax.y(), aabbMin.y()));
+-
+-        aabbMax.setX(std::max(mBounds.mMin.x(), aabbMax.x()));
+-        aabbMax.setX(std::min(mBounds.mMax.x(), aabbMax.x()));
+-        aabbMax.setY(std::max(mBounds.mMin.y(), aabbMax.y()));
+-        aabbMax.setY(std::min(mBounds.mMax.y(), aabbMax.y()));
++        aabbMin.setX(std::max(static_cast<btScalar>(mBounds.mMin.x()), aabbMin.x()));
++        aabbMin.setX(std::min(static_cast<btScalar>(mBounds.mMax.x()), aabbMin.x()));
++        aabbMin.setY(std::max(static_cast<btScalar>(mBounds.mMin.y()), aabbMin.y()));
++        aabbMin.setY(std::min(static_cast<btScalar>(mBounds.mMax.y()), aabbMin.y()));
++
++        aabbMax.setX(std::max(static_cast<btScalar>(mBounds.mMin.x()), aabbMax.x()));
++        aabbMax.setX(std::min(static_cast<btScalar>(mBounds.mMax.x()), aabbMax.x()));
++        aabbMax.setY(std::max(static_cast<btScalar>(mBounds.mMin.y()), aabbMax.y()));
++        aabbMax.setY(std::min(static_cast<btScalar>(mBounds.mMax.y()), aabbMax.y()));
+ 
+         transformBoundingBox(transform.inverse(), aabbMin, aabbMax);
+ 
