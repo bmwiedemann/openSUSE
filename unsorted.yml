@@ -23464,7 +23464,6 @@ unsorted:
   - python36-pytest-env 
   - python36-pytest-error-for-skips 
   - python36-pytest-expect 
-  - python36-pytest-filter-subpackage 
   - python36-pytest-fixture-config 
   - python36-pytest-flake8 
   - python36-pytest-flake8dir 
@@ -24891,7 +24890,6 @@ unsorted:
   - python38-buttplug 
   - python38-bytecode 
   - python38-cPyparsing 
-  - python38-cached-property 
   - python38-cachelib 
   - python38-cachetools: [i586] 
   - python38-cachey 
@@ -26239,7 +26237,6 @@ unsorted:
   - python38-pygame 
   - python38-pygame-devel 
   - python38-pygerrit2 
-  - python38-pygit2 
   - python38-pyglet 
   - python38-pygments-ansi-color 
   - python38-pygments-pytest 

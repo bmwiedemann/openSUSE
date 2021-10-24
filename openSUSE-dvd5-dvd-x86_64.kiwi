@@ -4011,6 +4011,7 @@
       <repopackage name="python38-botocore"/>
       <repopackage name="python38-Bottleneck"/>
       <repopackage name="python38-brotlipy"/>
+      <repopackage name="python38-cached-property"/>
       <repopackage name="python38-cachetools" arch="x86_64"/>
       <repopackage name="python38-certifi"/>
       <repopackage name="python38-cffi"/>
@@ -4133,6 +4134,7 @@
       <repopackage name="python38-pycups"/>
       <repopackage name="python38-pycurl"/>
       <repopackage name="python38-pydot"/>
+      <repopackage name="python38-pygit2"/>
       <repopackage name="python38-Pygments"/>
       <repopackage name="python38-pygraphviz"/>
       <repopackage name="python38-PyHamcrest"/>
