@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:57:05 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+- Fix device filtering to follow major.minor semantic (jsc#SLE-17782)
+- 4.4.2
+
+-------------------------------------------------------------------
 Thu Jun 24 16:07:05 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
 - do not activate DASD devices after formatting (bsc#1187012)
