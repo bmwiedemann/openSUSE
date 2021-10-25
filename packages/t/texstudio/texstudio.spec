@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
@@ -70,6 +70,6 @@ rm -f %{buildroot}%{_datadir}/texstudio/{AUTHORS,COPYING,CHANGELOG.txt}
 %{_datadir}/applications/texstudio.desktop
 %{_datadir}/icons/hicolor/scalable/apps/texstudio.svg
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/texstudio.appdata.xml
+%{_datadir}/metainfo/texstudio.metainfo.xml
 
 %changelog

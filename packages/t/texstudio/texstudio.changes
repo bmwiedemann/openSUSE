@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 22 17:14:41 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 4.0.2
+  * fix structure view (inlcudes and cursor marking, #1828) 
+  * fix completer tooltip on bibids (#1835)
+  * OSX: fix "slanted" cursor (#1836)
+  * more cwls
+- Update to version 4.0.1
+  * add more cwls
+  * fix pdfviewer page display
+  * build OSX with QT6.2, fix special charcters entry (alt+n + n , etc.) (#1770)
+  * activate crash handler on win again
+  * fix strcuture detection for included files
+
+-------------------------------------------------------------------
 Tue Sep 28 07:36:11 UTC 2021 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 4.0.0
