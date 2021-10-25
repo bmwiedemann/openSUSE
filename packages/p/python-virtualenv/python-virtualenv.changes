@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 29 16:35:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 20.8.1
+  * Fixed a bug where while creating a venv on top of an existing
+    one, without cleaning, when seeded wheel version mismatch
+    occurred, multiple .dist-info directories may be present,
+    confounding entrypoint discovery
+  * upgrade embedded setuptools to 58.1.0 and pip to 21.2.4
+- Release to 20.8.0
+  * Add nushell activation script
+- Release 2.7.1
+  * Fix unpacking dictionary items in PythonInfo.install_path
+    (#2165)
+- Fix and activate the test suite
+- Update importlib* dependencies for older pythons
+- Disable the python2 build because there is no
+  python2-platformdirs on any distribution
+
+-------------------------------------------------------------------
 Tue Sep 14 08:21:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on two modules. 

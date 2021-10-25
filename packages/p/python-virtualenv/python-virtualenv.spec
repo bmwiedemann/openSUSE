@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global flavor @BUILD_FLAVOR@%%{nil}
-%if "%%{flavor}" == "test"
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# there is no platformdirs for python2 on any of the target distributions
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-virtualenv%{psuffix}
-Version:        20.7.0
+Version:        20.8.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -34,8 +36,8 @@ URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
 BuildRequires:  %{python_module distlib >= 0.3.1}
 BuildRequires:  %{python_module filelock >= 3.0.0}
-BuildRequires:  %{python_module importlib-metadata >= 0.12}
-BuildRequires:  %{python_module importlib-resources >= 1.0}
+BuildRequires:  %{python_module importlib-metadata >= 0.12 if %python-base < 3.8}
+BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7}
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  %{python_module six >= 1.9.0}
@@ -47,19 +49,21 @@ Requires:       python-filelock >= 3.0.0
 Requires:       python-platformdirs >= 2
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
+%if 0%{python_version_nodots} < 38
+Requires:       python-importlib-metadata >= 0.12
+%endif
+%if 0%{python_version_nodots} < 37
+Requires:       python-importlib_resources >= 1.0
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-Requires:       python-importlib-metadata >= 0.12
-Requires:       python-importlib_resources >= 1.0
 %ifpython2
 Requires:       python-contextlib2 >= 0.6.0
 Requires:       python-pathlib2 >= 2.3.3
 %endif
 %if %{with test}
 BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
-BuildRequires:  %{python_module coverage >= 4.5.1}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
@@ -69,6 +73,7 @@ BuildRequires:  %{python_module pytest-env >= 0.6.2}
 BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
+BuildRequires:  ca-certificates
 %endif
 
 %python_subpackages
@@ -101,17 +106,20 @@ rm -r tests/unit/activation
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
+%endif
 
 %check
 %if %{with test}
 export LANG="en_US.UTF8"
-skiptests="test_seed_link_via_app_data"
-# test_seed_link_via_app_data - online tests downloads from pypi
-%pytest
-rm -rf %{buildroot}
+export PIP_CERT="/etc/ssl/ca-bundle.pem"
+export PYTHONPATH=$PWD/src
+# online tests downloads from pypi
+donttest="test_seed_link_via_app_data"
+%pytest -k "not ($donttest)"
 %endif
 
 %if !%{with test}
@@ -124,7 +132,8 @@ rm -rf %{buildroot}
 %files %{python_files}
 %license LICENSE
 %doc README.md docs/changelog.rst
-%{python_sitelib}/virtualenv*
+%{python_sitelib}/virtualenv
+%{python_sitelib}/virtualenv-%{version}*-info
 %python_alternative %{_bindir}/virtualenv
 %endif
 

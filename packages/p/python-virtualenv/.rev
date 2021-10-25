@@ -557,4 +557,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     discovery order/mechanism raises errors</comment>
     <requestid>918847</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>bb7e407253ea2bac4f510c5b0a0bba9b</srcmd5>
+    <version>20.8.1</version>
+    <time>1635167815</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923557</requestid>
+  </revision>
 </revisionlist>
