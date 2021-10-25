@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 23 18:23:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.18.1
+  * Fix build failure with Poppler ≥ 21.10.
+
+-------------------------------------------------------------------
 Fri Jun 11 13:00:35 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.9.18.
