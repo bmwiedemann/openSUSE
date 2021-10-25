@@ -180,6 +180,8 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+# The provider for python(abi) is in rpm-build-python
+BuildRequires:  rpm-build-python
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
@@ -191,9 +193,15 @@ BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{with doc}
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
+BuildRequires:  python3-Sphinx
+%else
+# This is because of single-Python images on multi-Python
+# distributions (bsc#1183858)
 BuildRequires:  %{python_pkg_name}-Sphinx
+%endif
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)

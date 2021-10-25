@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 13 08:49:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+
+-------------------------------------------------------------------
+Wed Oct  6 12:34:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Due to conflicting demands of bsc#1183858 and platforms where
+  Python 3.6 is only in interpreter+pip set we have to make
+  complicated ugly construct about Sphinx BR.
+
+-------------------------------------------------------------------
 Thu Sep 23 19:53:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Make python36 primary interpreter on SLE-15
@@ -70,11 +86,24 @@ Tue Aug 10 00:09:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
   - python3-sorted_tar.patch
   - riscv64-ctypes.patch
 
+------------------------------------------------------------------
+Mon Jul 26 15:07:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rebuild to get new headers, avoid building in support for
+  stropts.h (bsc#1187338).
+
 -------------------------------------------------------------------
 Tue Jul 20 15:45:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use versioned python-Sphinx to avoid dependency on other
   version of Python (bsc#1183858).
+
+-------------------------------------------------------------------
+Fri Jul 16 14:25:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Modify Lib/ensurepip/__init__.py to contain the same version
+  numbers as are in reality the ones in the bundled wheels
+  (bsc#1187668).
 
 -------------------------------------------------------------------
 Tue Jun  8 12:41:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
