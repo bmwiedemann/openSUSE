@@ -131,6 +131,8 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  pkg-config
+# The provider for python(abi) is in rpm-build-python
+BuildRequires:  rpm-build-python
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 #!BuildIgnore:  python
