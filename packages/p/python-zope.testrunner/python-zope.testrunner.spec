@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testrunner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.testrunner
-Version:        5.2
+Version:        5.3.0
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
@@ -69,7 +69,7 @@ find -size 0 -delete
 
 %if %{with test}
 %check
-%python_exec setup.py test
+%pyunittest src/zope/testrunner/tests/*.py
 %endif
 
 %if !%{with test}

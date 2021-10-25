@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  5 10:30:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.3.0
+  - Add support for Python 3.9.
+  - Fix `package init file missing` warning
+    (`#112 <https://github.com/zopefoundation/zope.testrunner/pull/112>`_).
+  - Make standard streams provide a `buffer` attribute on Python 3 when using
+    `--buffer` or testing under subunit.
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Jul 21 08:53:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 5.2
