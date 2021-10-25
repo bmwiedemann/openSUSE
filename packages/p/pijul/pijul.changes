@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Oct 24 17:21:15 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.55:
+  * Better estimation of the maximum number of open patches that
+    Pijul can keep.
+  * Proper escaping of UTF-8 filenames in the patch text format.
+  * Add patch filtering to "git log".
+  * Add JSON output for "git log".
+  * "pijul init" does not modify already existing .ignore files.
+  * Improve detection of binary files.
+
+-------------------------------------------------------------------
+Tue Sep 28 09:52:50 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.54:
+  * Improve push/pull reporting.
+  * Fix a panic when outputting zombie folders.
+  * Better computation of progress bars width.
+  * Pushing/pulling from/to Nest discussions again.
+  * Allow remotes to have different push and pull addresses.
+  * Correct reporting of permission errors on external subcommands.
+  * Add a .ignore file when initializing a repository containing a
+    list of commonly ignored entries. See the "--kind" flag
+    of the "pijul init" subcommand.
+
+- Changes from version 1.0.0-alpha.53:
+  * Fix newline issues with OpenSSH which caused clone via SSH
+    to hang.
+  * Do not remove untracked files when outputting.
+  * Make recursive directory remove optional.
+  * Add an option to limit the output size of "pijul log".
+  * Make "pijul diff --short" more informative.
+  * Fix "pijul diff --untracked".
+  * Use the change time in addition to the modified time when
+    detecting untouched files.
+  * Print modifications only once in "pijul diff".
+  * Do not compute the entire diff if only "--json --untracked"
+    is wanted.
+  * Unrecord the pending patch when pulling, in the special
+    case that there is no thing to download.
+  * Add a progress bar to "git push".
+  * Fix "addition error" on "pijul git".
+  * Better "pijul git" error message when recording.
+
+-------------------------------------------------------------------
 Tue Jul 20 11:55:00 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update to upstream version 1.0.0-alpha.52. 

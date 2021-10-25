@@ -40,4 +40,41 @@
     <comment></comment>
     <requestid>907323</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb27e6728db5975700632b81c8b665ad</srcmd5>
+    <version>1.0.0~alpha.55</version>
+    <time>1635167847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-alpha.55:
+  * Better estimation of the maximum number of open patches that
+    Pijul can keep.
+  * Proper escaping of UTF-8 filenames in the patch text format.
+  * Add patch filtering to &quot;git log&quot;.
+  * Add JSON output for &quot;git log&quot;.
+  * &quot;pijul init&quot; does not modify already existing .ignore files.
+  * Improve detection of binary files.
+
+- Update to upstream version 1.0.0-alpha.54:
+  * Improve push/pull reporting.
+  * Fix a panic when outputting zombie folders.
+  * Better computation of progress bars width.
+  * Pushing/pulling from/to Nest discussions again.
+  * Allow remotes to have different push and pull addresses.
+  * Correct reporting of permission errors on external subcommands.
+  * Add a .ignore file when initializing a repository containing a
+    list of commonly ignored entries. See the &quot;--kind&quot; flag
+    of the &quot;pijul init&quot; subcommand.
+- Changes from version 1.0.0-alpha.53:
+  * Fix newline issues with OpenSSH which caused clone via SSH
+    to hang.
+  * Do not remove untracked files when outputting.
+  * Make recursive directory remove optional.
+  * Add an option to limit the output size of &quot;pijul log&quot;.
+  * Make &quot;pijul diff --short&quot; more informative.
+  * Fix &quot;pijul diff --untracked&quot;.
+  * Use the change time in addition to the modified time when
+    detecting untouched files.
+  * Print modifications only once in &quot;pijul diff&quot;.</comment>
+    <requestid>927203</requestid>
+  </revision>
 </revisionlist>
