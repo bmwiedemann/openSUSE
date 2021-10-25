@@ -5668,4 +5668,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191855</comment>
   </revision>
+  <revision rev="614" vrev="1">
+    <srcmd5>43ca162a6cf6a1ae7ba547f649bd3781</srcmd5>
+    <version>5.14.14</version>
+    <time>1635167807</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.14 &amp; x86_32 fix &amp; firedtv CVE fix &amp; 5.14.13 &amp; 5.14.12 &amp; rtw89 driver &amp; rpm 4.17 fix</comment>
+    <requestid>926672</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.14.11
+%define patchversion 5.14.14
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
+BuildRequires:  kernel%kernel_flavor-srchash-2b5383fe758239ef81e1e716e6d695475849520b
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.14.11
+Version:        5.14.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g834dddd
+Release:        <RELEASE>.g2b5383f
 %else
 Release:        0
 %endif
@@ -149,6 +149,7 @@ ROOT=""
                -k /boot/%{kernel_name}-*-default -M /boot/System.map-*-default -i /tmp/initrd.kvm -B
 %else
 dracut --reproducible --host-only --no-hostonly-cmdline \
+	--no-early-microcode --nofscks --strip --hardlink \
 	--drivers="$KERNEL_MODULES" --force /tmp/initrd.kvm \
 	`echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p'`
 %endif

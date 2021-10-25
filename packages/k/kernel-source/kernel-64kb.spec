@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.11
+%define patchversion 5.14.14
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -107,9 +107,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.11
+Version:        5.14.14
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g834dddd
+Release:        <RELEASE>.g2b5383f
 %else
 Release:        0
 %endif
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
-Provides:       kernel-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
+Provides:       kernel-%build_flavor-base-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       kernel-srchash-2b5383fe758239ef81e1e716e6d695475849520b
 # END COMMON DEPS
-Provides:       %name-srchash-834ddddeb1efc7bdc2eee06a237cf469e92e2082
+Provides:       %name-srchash-2b5383fe758239ef81e1e716e6d695475849520b
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
