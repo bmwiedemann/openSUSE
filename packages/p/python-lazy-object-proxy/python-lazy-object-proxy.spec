@@ -59,6 +59,8 @@ from Python's ast
 
 %prep
 %setup -q -n lazy-object-proxy-%{version}
+# unpin setuptools_scm
+sed -i '/setuptools_scm/ s/,<6.0//' setup.cfg pyproject.toml
 
 %build
 %if !%{with test}

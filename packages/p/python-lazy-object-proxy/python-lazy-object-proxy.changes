@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 13 09:02:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unpin setuptools_scm<6.0 limit
+
+-------------------------------------------------------------------
 Sat Jul 31 15:58:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
