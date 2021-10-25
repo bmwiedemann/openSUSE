@@ -146,6 +146,11 @@ Patch5:         0006-Fix-libclang-usage.patch
 Patch6:         0007-use-system-node.patch
 # Leap 15.2 only patch
 Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+# Quick fix for MINSIGSTKSZ no longer being compile-time constant with glibc 2.34.
+# This is only used in unit tests, and hopefully they just don't run into signals anyway.
+# Upstream fix is https://github.com/catchorg/Catch2/commit/8f277a54c0b9c1d1024dedcb2dec1d206971e745,
+# but that's quite large and is hard to apply because the files are concatenated here.
+Patch8:         0009-Fix-catch-build.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  R-core-devel
@@ -248,6 +253,7 @@ Provides:       bundled(rapidxml) = %{bundled_rapidxml_version}
 Provides:       bundled(reveal.js) = %{bundled_revealjs_version}
 Provides:       bundled(sundown) = %{bundled_sundown_version}
 Provides:       bundled(tree.hh) = %{bundled_treehh_version}
+ExcludeArch:    %ix86
 %{?systemd_requires}
 
 %description
@@ -297,6 +303,7 @@ on a server has a number of benefits, including:
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch8 -p1
 %endif
 
 tar -xf %{SOURCE2}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 23 15:45:10 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add 0009-Fix-catch-build.patch to fix build with glibc 2.34.
+
+-------------------------------------------------------------------
+Fri Sep 10 12:52:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude build for %ix86: not all dependencies are available.
+
+-------------------------------------------------------------------
 Fri Aug 27 12:43:56 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Add missing symlink to pandoc

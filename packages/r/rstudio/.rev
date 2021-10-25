@@ -169,4 +169,12 @@ Rebase patches:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>916738</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f463ebc9d029b4de2012d3e1ba138743</srcmd5>
+    <version>1.4.1717</version>
+    <time>1635167840</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0009-Fix-catch-build.patch to fix build with glibc 2.34. (forwarded request 927121 from aaronpuchert)</comment>
+    <requestid>927136</requestid>
+  </revision>
 </revisionlist>
