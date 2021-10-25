@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define doc_ver 5.0.4
 Name:           python-nbformat
@@ -29,10 +35,15 @@ URL:            https://github.com/jupyter/nbformat
 Source:         %{url}/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  unzip
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Requires:       jupyter-nbformat = %{version}
 Requires:       python-ipython_genutils
 Requires:       python-jsonschema > 2.5.0
@@ -88,6 +99,10 @@ This package provides the jupyter components.
 %check
 # we don't have the alternative validator, cannot fallback from it
 %pytest -k "not (fastjsonschema or test_fallback_validator_with_iter_errors_using_ref)"
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jupyter-trust
 
 %post
 %python_install_alternative jupyter-trust
