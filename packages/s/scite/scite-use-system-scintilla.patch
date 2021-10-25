@@ -1,7 +1,7 @@
-Index: scite-5.1.0/scite/gtk/makefile
+Index: scite-5.1.3/scite/gtk/makefile
 ===================================================================
---- scite-5.1.0.orig/scite/gtk/makefile
-+++ scite-5.1.0/scite/gtk/makefile
+--- scite-5.1.3.orig/scite/gtk/makefile
++++ scite-5.1.3/scite/gtk/makefile
 @@ -8,6 +8,7 @@
  
  srcdir ?= .
@@ -29,7 +29,7 @@ Index: scite-5.1.0/scite/gtk/makefile
 @@ -155,7 +156,7 @@ SRC_OBJS = \
  	Utf8_16.o
  
- $(PROG): SciTEGTK.o GUIGTK.o Widget.o DirectorExtension.o $(SRC_OBJS) $(LUA_OBJS)
+ $(PROG): SciTEGTK.o Strips.o GUIGTK.o Widget.o DirectorExtension.o $(SRC_OBJS) $(LUA_OBJS)
 -	$(CXX) $(BASE_FLAGS) $(LDFLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers -Wl,-rpath,$(libdir) $^ -o $@ $(CONFIGLIB) $(LIBS) -L ../../scintilla/bin -lscintilla $(LDLIBS)
 +	$(CXX) $(BASE_FLAGS) $(LDFLAGS) -rdynamic -Wl,--as-needed -Wl,-rpath,'$${ORIGIN}' -Wl,--version-script $(srcdir)/lua.vers -Wl,-rpath,$(libdir) $^ -o $@ $(CONFIGLIB) $(LIBS) -lscintilla $(LDLIBS)
  
@@ -51,10 +51,10 @@ Index: scite-5.1.0/scite/gtk/makefile
  	rm -f $(DESTDIR)$(libdir)/liblexilla.so
  	rm -rf $(DESTDIR)$(SYSCONF_PATH)
  ifdef gnomeprefix
-Index: scite-5.1.0/lexilla/src/makefile
+Index: scite-5.1.3/lexilla/src/makefile
 ===================================================================
---- scite-5.1.0.orig/lexilla/src/makefile
-+++ scite-5.1.0/lexilla/src/makefile
+--- scite-5.1.3.orig/lexilla/src/makefile
++++ scite-5.1.3/lexilla/src/makefile
 @@ -37,6 +37,7 @@ else
      BASE_FLAGS += -fvisibility=hidden
  endif
