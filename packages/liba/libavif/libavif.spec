@@ -18,10 +18,11 @@
 
 %bcond_without aom
 
-%define lib_name libavif12
+# Also update baselibs.conf if you bump the version
+%define lib_name libavif13
 
 Name:           libavif
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -122,7 +123,8 @@ This package holds the development files for libavif.
 
 %files -n %{lib_name}
 %license LICENSE
-%{_libdir}/libavif.so.*
+%{_libdir}/libavif.so.13
+%{_libdir}/libavif.so.13.0.0
 
 %files devel
 %license LICENSE
