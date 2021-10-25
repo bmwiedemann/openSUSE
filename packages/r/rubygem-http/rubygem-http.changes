@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Oct 25 09:00:00 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 5.0.4
+
+## 5.0.4 (2021-10-07)
+
+* [#698](https://github.com/httprb/http/pull/698)
+  Fix `HTTP::Timeout::Global#connect_ssl`.
+  ([@tarcieri])
+
+## 5.0.3 (2021-10-06)
+
+* [#695](https://github.com/httprb/http/pull/695)
+  Revert DNS resolving feature.
+  ([@PhilCoggins])
+
+* [#694](https://github.com/httprb/http/pull/694)
+  Fix cookies extraction.
+  ([@flosacca])
+
+## 5.0.2 (2021-09-10)
+
+* [#686](https://github.com/httprb/http/pull/686)
+  Correctly reset the parser.
+  ([@bryanp])
+
+* [#684](https://github.com/httprb/http/pull/684)
+  Don't set Content-Length for GET, HEAD, DELETE, or CONNECT requests without a BODY.
+  ([@jyn514])
+
+* [#679](https://github.com/httprb/http/pull/679)
+  Use features on redirected requests.
+  ([@nomis])
+
+* [#678](https://github.com/schwern)
+  Restore `HTTP::Response` `:uri` option for backwards compatibility.
+  ([@schwern])
+
+* [#676](https://github.com/httprb/http/pull/676)
+  Update addressable because of CVE-2021-32740.
+  ([@matheussilvasantos])
+
+* [#653](https://github.com/httprb/http/pull/653)
+  Avoid force encodings on frozen strings.
+  ([@bvicenzo])
+
+* [#638](https://github.com/httprb/http/pull/638)
+  DNS failover handling.
+  ([@midnight-wonderer])
+
+-------------------------------------------------------------------
 Wed Aug 25 11:58:36 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Cleanup spec

@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-http
-Version:        5.0.1
+Version:        5.0.4
 Release:        0
 Summary:        HTTP should be easy
 License:        MIT
