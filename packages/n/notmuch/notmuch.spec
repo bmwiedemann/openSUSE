@@ -18,7 +18,7 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.33.2
+Version:        0.34
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
@@ -232,6 +232,7 @@ fi
 %{_mandir}/man5/%{name}-hooks.5%{?ext_man}
 %{_mandir}/man7/%{name}-search-terms.7%{?ext_man}
 %{_mandir}/man7/%{name}-properties.7%{?ext_man}
+%{_mandir}/man7/%{name}-sexp-queries.7%{?ext_man}
 
 %files -n libnotmuch%{libversion}
 %{_libdir}/libnotmuch.so.%{libversion}*

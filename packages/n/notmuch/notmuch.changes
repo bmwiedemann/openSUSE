@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 22 08:03:40 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.34
+
+What's new in notmuch 0.34
+=========================
+
+General
+-------
+
+An optional new s-expression based query parser is available if
+notmuch is built with the `sfsexp` library. See
+notmuch-sexp-queries(7) for syntax, and use `notmuch config get
+built_with.sexpr_queries` to check if notmuch is compiled with
+s-expression query support.
+
+CLI
+---
+
+Support multiple `Delivered-To` headers in notmuch-reply(1).
+
+Emacs
+-----
+
+Functions are now allowed in `notmuch-search-result-format`.
+
+Improvements to unthreaded view on large threads.
+
+Tolerate bad/missing working directory for most commands.
+
+Allow customization of tree drawing symbols in notmuch-tree mode.
+
+-------------------------------------------------------------------
 Thu Sep 30 14:22:26 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.33.2

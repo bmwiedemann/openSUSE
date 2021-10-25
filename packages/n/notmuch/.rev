@@ -331,4 +331,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>922515</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>345ab931604fd0f5af4e8aa02f81fd2b</srcmd5>
+    <version>0.34</version>
+    <time>1635167858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927267</requestid>
+  </revision>
 </revisionlist>
