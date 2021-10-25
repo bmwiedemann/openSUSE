@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 24 07:09:44 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211024.0472da96:
+  * pkglistgen: Do not generate weakremovers if in release package mode
+  * pkglistgen: Generate the release packages first
+
+-------------------------------------------------------------------
 Fri Oct 22 15:35:02 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211022.c7c2beb4:
