@@ -18,7 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cryptography-vectors
-Version:        3.3.2
+# ALWAYS KEEP IN SYNC WITH python-cryptography!
+Version:        3.4.8
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
@@ -27,6 +28,7 @@ URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Source3:        python-cryptography-vectors-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,8 +48,12 @@ Vectors for testing of the python cryptography package.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+#%%check
+# this is test data only package for tests with python-cryptography.
+
 %files %{python_files}
-%license LICENSE
-%{python_sitelib}/*
+%license LICENSE*
+%{python_sitelib}/cryptography_vectors
+%{python_sitelib}/cryptography_vectors-%{version}*-info
 
 %changelog

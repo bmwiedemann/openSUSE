@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct 12 18:49:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Downgrade to 3.4.8
+  * Always keep in sync with python-cryptograhy
+
+-------------------------------------------------------------------
+Thu Oct  7 10:58:04 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add pem-certificate filters in python-cryptography-vectors-rpmlintrc
+
+-------------------------------------------------------------------
+Thu Oct  7 08:46:49 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 35.0.0:
+  * Changed the version scheme.
+  * BACKWARDS INCOMPATIBLE: The X.509 PEM parsers now require that
+    the PEM string passed have PEM delimiters of the correct type.
+  * BACKWARDS INCOMPATIBLE: The X.509 certificate parser no longer
+    allows negative serial numbers. RFC 5280 has always prohibited these.
+  * BACKWARDS INCOMPATIBLE: Invalid ASN.1 found during X.509 parsing
+    will raise an error on initial parse rather than when the
+    invalid field is accessed.
+  * Rust is now required for building cryptography, the
+    CRYPTOGRAPHY_DONT_BUILD_RUST environment variable is no longer
+    respected.
+  * Parsers for X.509 no longer use OpenSSL and have been rewritten
+    in Rust. This should be backwards compatible (modulo the items
+    listed above) and improve both security and performance.
+  * Added support for OpenSSL 3.0.0 as a compilation target.
+  * Added support for SM3 and SM4, when using OpenSSL 1.1.1. These
+    algorithms are provided for compatibility in regions where they
+    may be required, and are not generally recommended.
+  * We now ship manylinux_2_24 and musllinux_1_1 wheels, in addition
+    to our manylinux2010 and manylinux2014 wheels.
+  * Added rfc4514_attribute_name attribute to X509.NameAttribite.
+  * Added KBKDFCMAC.
+
+-------------------------------------------------------------------
 Sun Feb  7 20:09:32 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 3.3.12
