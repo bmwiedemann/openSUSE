@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00bce6b4ebd5f769890aca2934c190c3</srcmd5>
+    <version>0.3.0</version>
+    <time>1635167841</time>
+    <user>dimstar_suse</user>
+    <comment>New package: QCoro, a library for coroutines with Qt
+(soon a dependency of new KDE software)</comment>
+    <requestid>927171</requestid>
+  </revision>
+</revisionlist>
