@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,7 +36,7 @@
 %define         skip_python36 1
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.27.0
+Version:        7.28.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -42,7 +48,7 @@ BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Pygments
 Requires:       python-backcall
 Requires:       python-base >= 3.7
@@ -82,8 +88,13 @@ BuildRequires:  %{python_module ipython-iptest = %{version}}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 %if %{with ico}
 BuildRequires:  icoutils
 %endif
@@ -216,6 +227,15 @@ popd
 %endif
 
 %if !%{with test}
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative ipython
+
+%pre iptest
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative iptest
+
 %post
 %python_install_alternative ipython ipython3 ipython.1.gz ipython3.1.gz
 %desktop_database_post
@@ -254,7 +274,6 @@ popd
 %files %{python_files iptest}
 %python_alternative %{_bindir}/iptest
 %python_alternative %{_bindir}/iptest3
-
 %endif
 %endif
 

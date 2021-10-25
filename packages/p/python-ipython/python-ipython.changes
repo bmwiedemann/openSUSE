@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 10 19:39:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.28.0:
+  * async with doesn’t allow newlines PR #13090
+  * Dynamically changing to vi mode via %config magic) PR #13091
+  * init_virtualenv now uses Pathlib PR #12548
+  * Fix Improper path comparison of virtualenv directories
+    PR #13140
+  * Fix virtual environment user warning for lower case pathes
+    PR #13094
+  * Adapt to all sorts of drive names for cygwin PR #13153
+  * enable autoplay in embed YouTube player PR #13133
+
+-------------------------------------------------------------------
+Mon Oct  4 08:59:34 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Wed Sep 15 05:36:58 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.27.0:

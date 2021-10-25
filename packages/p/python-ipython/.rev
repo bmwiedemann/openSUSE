@@ -1006,4 +1006,21 @@
     <comment></comment>
     <requestid>920898</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7109ad0742488d3e8875b6274eb6905a</srcmd5>
+    <version>7.28.0</version>
+    <time>1635167816</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.28.0:
+  * async with doesn’t allow newlines PR #13090
+  * Dynamically changing to vi mode via %config magic) PR #13091
+  * init_virtualenv now uses Pathlib PR #12548
+  * Fix Improper path comparison of virtualenv directories
+    PR #13140
+  * Fix virtual environment user warning for lower case pathes
+    PR #13094
+  * Adapt to all sorts of drive names for cygwin PR #13153
+  * enable autoplay in embed YouTube player PR #13133 (forwarded request 924563 from bnavigator)</comment>
+    <requestid>924564</requestid>
+  </revision>
 </revisionlist>
