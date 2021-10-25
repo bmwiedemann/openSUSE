@@ -1,5 +1,5 @@
 #
-# spec file for package python-jupyter-core
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,6 +16,13 @@
 #
 
 
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -24,11 +31,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-core%{psuffix}
-Version:        4.7.1
+Version:        4.8.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -40,11 +46,16 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_core-filesystem
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-jupyter_core-filesystem
 Requires:       python-traitlets
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%endif
 Recommends:     python-ipython
 Provides:       python-jupyter_core = %{version}-%{release}
 Obsoletes:      python-jupyter_core < %{version}-%{release}
@@ -57,6 +68,7 @@ Obsoletes:      jupyter-jupyter_core < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -100,6 +112,11 @@ pushd jupyter_core/tests
 %pytest -k "not test_jupyter_path_prefer_env"
 popd
 %endif
+
+%pre
+# removing old update-alternatives entries
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jupyter
 
 %post
 %python_install_alternative jupyter jupyter-migrate jupyter-troubleshoot

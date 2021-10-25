@@ -9,7 +9,7 @@ system paths in the .spec file.
 
 --- a/jupyter_core/paths.py
 +++ b/jupyter_core/paths.py
-@@ -117,10 +117,7 @@
+@@ -124,10 +124,7 @@ if os.name == 'nt':
      else:  # PROGRAMDATA is not defined by default on XP.
          SYSTEM_JUPYTER_PATH = [os.path.join(sys.prefix, 'share', 'jupyter')]
  else:
@@ -21,7 +21,7 @@ system paths in the .spec file.
  
  ENV_JUPYTER_PATH = [os.path.join(sys.prefix, 'share', 'jupyter')]
  
-@@ -169,10 +166,7 @@
+@@ -186,10 +183,7 @@ if os.name == 'nt':
      else:  # PROGRAMDATA is not defined by default on XP.
          SYSTEM_CONFIG_PATH = []
  else:

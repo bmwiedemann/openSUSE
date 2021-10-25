@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 17 17:28:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.8.1
+  * Print an error message instead of an exception when a command
+    is not found (PR #218)
+  * Return canonical path when using %APPDATA% on Windows (PR #222)
+  * Print full usage on missing or invalid commands (PR #225)
+  * Remove dependency on pywin32 package on PyPy (PR #230)
+  * Update packages listed in jupyter --version (PR #232)
+  * Inherit base aliases/flags from traitlets Application,
+    including --show-config from traitlets 5 (PR #233)
+  * Trigger warning when trying to check hidden file status on PyPy
+    (PR #238)
+
+-------------------------------------------------------------------
+Tue Oct  5 15:35:48 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Wed Feb  3 22:46:22 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Require the jupyter-jupyter_core-filesystem so that depending
