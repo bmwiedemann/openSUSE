@@ -164,4 +164,15 @@
 </comment>
     <requestid>902705</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c2a07894b91a266c6ef10b788d08fd3</srcmd5>
+    <version>0.g89</version>
+    <time>1635167800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.g89:
+  * find-provides.ksyms: Do not set IFS - it is not needed for anything.
+  * find-provides.ksyms: Fix compressed modules.
+  * Allow locale directory to be named &quot;locales&quot; too</comment>
+    <requestid>926731</requestid>
+  </revision>
 </revisionlist>

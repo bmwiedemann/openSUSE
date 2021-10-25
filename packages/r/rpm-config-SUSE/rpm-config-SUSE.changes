@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 21 10:33:43 UTC 2021 - lnussel@suse.de
+
+- Update to version 0.g89:
+  * find-provides.ksyms: Do not set IFS - it is not needed for anything.
+  * find-provides.ksyms: Fix compressed modules.
+  * Allow locale directory to be named "locales" too
+
+-------------------------------------------------------------------
 Fri Jun 25 13:45:53 UTC 2021 - lnussel@suse.de
 
 - Update to version 0.g83:
