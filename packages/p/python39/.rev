@@ -344,4 +344,12 @@
       side and needs remote attackers to control the HTTP server.</comment>
     <requestid>919259</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ff1a66adb22de9de3acfaaf5d95e3d60</srcmd5>
+    <version>3.9.7</version>
+    <time>1635167804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925076</requestid>
+  </revision>
 </revisionlist>
