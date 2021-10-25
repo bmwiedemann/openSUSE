@@ -1,7 +1,7 @@
 #
-# spec file for package python-pep517
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,45 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-pep517
-Version:        0.9.1
+Name:           python-pep517%{psuffix}
+Version:        0.11.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
 URL:            https://github.com/takluyver/pep517
 Source:         https://files.pythonhosted.org/packages/source/p/pep517/pep517-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-toml
-Recommends:     python-pip
-Recommends:     python-wheel >= 0.25
+BuildRequires:  python3-flit-core >= 2
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pip}
+%if %{with test}
+BuildRequires:  %{python_module flit-core >= 2 if %python-base >= 3}
+BuildRequires:  %{python_module mock if %python-base < 3.6}
+BuildRequires:  %{python_module pep517 = %{version}}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 30}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module wheel >= 0.25}
-%if 0%{?suse_version} >= 1550
-# necessary assumption: only TW has multiple python flavors and no python2 flavor
-BuildRequires:  %{python_module flit-core}
-%else
-BuildRequires:  python3-flit-core
+BuildRequires:  %{python_module wheel}
 %endif
-# /SECTION
+%if 0%{?python_version_nodots} < 36
+Requires:       python-toml
+%else
+Requires:       python-tomli
+%endif
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+Requires:       python-zipp
+%endif
 %python_subpackages
 
 %description
@@ -60,22 +70,37 @@ sed -i 's/--flake8//' pytest.ini
 # https://github.com/pypa/pep517/issues/101
 sed -i "s/'--ignore-installed',//" pep517/envbuild.py
 
-# Needed for test_meta to avoid pypi.org fetches
-sed -i 's/"flit_core >=2,<3"/"flit_core"/' pyproject.toml
-
+%if ! %{with test}
 %build
-%python_build
+# only build once for all flavors using python3-flit-core as backend
+# even usable by python2 if necessary
+mkdir dist
+python3 -m pip wheel \
+  --no-deps \
+  --disable-pip-version-check \
+  --use-pep517 \
+  --no-build-isolation \
+  --progress-bar off \
+  --verbose \
+  -w dist/ \
+  .
 
 %install
-%python_install
+%pyproject_install dist/pep517-%{version}-py2.py3-none-any.whl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc README.rst doc/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pep517
+%{python_sitelib}/pep517-%{version}*-info
+%endif
 
 %changelog

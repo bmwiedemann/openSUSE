@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 16 09:50:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.11
+  * Support editable hooks (PEP 660).
+  * Use the TOML 1.0 compliant tomli parser module on Python 3.6
+    and above.
+  * Ensure TOML files are always read as UTF-8.
+  * Switch CI to Github actions.
+- Release 0.10
+  * Avoid shadowing imports such as colorlog in the backend, by
+    moving the _in_process.py script into a separate subpackage.
+  * Issue warnings when using the deprecated pep517.build and
+    pep517.check modules at the command line. See the PyPA build
+    project for a replacement.
+  * Allow building with flit_core 3.x.
+  * Prefer the standard library unittest.mock to mock for tests on
+    Python 3.6 and above.
+- Avoid possible bootstrap build depcycles with _multibuild
+- Use pep517 install instead of distutils in order to produce
+  proper dist-info
+
+-------------------------------------------------------------------
 Wed Nov 25 22:44:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - BuildRequire flit-core for all possible python3 flavors
