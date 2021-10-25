@@ -2048,4 +2048,11 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Hardening</comment>
     <requestid>926927</requestid>
   </revision>
+  <revision rev="212" vrev="7">
+    <srcmd5>3896ebbf234f1493c0203b4dab6a54da</srcmd5>
+    <version>3.6.2</version>
+    <time>1635144628</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191988</comment>
+  </revision>
 </revisionlist>
