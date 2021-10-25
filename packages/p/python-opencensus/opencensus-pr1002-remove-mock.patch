@@ -1,0 +1,1283 @@
+From 3b84410c0fe47a5e28340161ddd48c3fccb17db0 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sat, 23 Oct 2021 13:27:51 +0200
+Subject: [PATCH] remove mock
+
+---
+ .../opencensus-ext-azure/tests/test_azure_log_exporter.py    | 5 ++++-
+ .../tests/test_azure_metrics_exporter.py                     | 5 ++++-
+ .../tests/test_azure_standard_metrics.py                     | 5 ++++-
+ .../tests/test_azure_statsbeat_metrics.py                    | 5 ++++-
+ .../opencensus-ext-azure/tests/test_azure_trace_exporter.py  | 5 ++++-
+ contrib/opencensus-ext-azure/tests/test_storage.py           | 5 ++++-
+ contrib/opencensus-ext-azure/tests/test_transport_mixin.py   | 5 ++++-
+ contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py       | 5 ++++-
+ .../opencensus-ext-django/tests/test_django_db_middleware.py | 5 ++++-
+ .../opencensus-ext-django/tests/test_django_middleware.py    | 5 ++++-
+ contrib/opencensus-ext-flask/tests/test_flask_middleware.py  | 5 ++++-
+ .../tests/test_google_cloud_clientlibs_trace.py              | 5 ++++-
+ contrib/opencensus-ext-grpc/tests/test_client_interceptor.py | 5 ++++-
+ contrib/opencensus-ext-grpc/tests/test_server_interceptor.py | 5 ++++-
+ contrib/opencensus-ext-httplib/tests/test_httplib_trace.py   | 5 ++++-
+ contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py  | 5 ++++-
+ contrib/opencensus-ext-mysql/tests/test_mysql_trace.py       | 5 ++++-
+ contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py  | 5 ++++-
+ contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py  | 5 ++++-
+ .../opencensus-ext-postgresql/tests/test_postgresql_trace.py | 5 ++++-
+ .../opencensus-ext-prometheus/tests/test_prometheus_stats.py | 5 ++++-
+ contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py   | 5 ++++-
+ contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py   | 5 ++++-
+ contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py  | 5 ++++-
+ .../opencensus-ext-pyramid/tests/test_pyramid_middleware.py  | 5 ++++-
+ contrib/opencensus-ext-requests/tests/test_requests_trace.py | 5 ++++-
+ .../opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py | 5 ++++-
+ .../tests/test_stackdriver_exporter.py                       | 5 ++++-
+ .../tests/test_stackdriver_stats.py                          | 5 ++++-
+ .../opencensus-ext-threading/tests/test_threading_trace.py   | 5 ++++-
+ contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py  | 5 ++++-
+ tests/system/stats/stackdriver/stackdriver_stats_test.py     | 5 ++++-
+ .../monitored_resource_util/test_aws_identity_doc_utils.py   | 5 ++++-
+ .../monitored_resource_util/test_gcp_metadata_config.py      | 5 ++++-
+ tests/unit/common/monitored_resource_util/test_k8s_utils.py  | 5 ++++-
+ .../monitored_resource_util/test_monitored_resource.py       | 5 ++++-
+ tests/unit/common/test_http_handler.py                       | 5 ++++-
+ tests/unit/common/test_resource.py                           | 5 ++++-
+ tests/unit/common/test_utils.py                              | 5 ++++-
+ tests/unit/common/transports/test_async.py                   | 5 ++++-
+ tests/unit/common/transports/test_sync.py                    | 5 ++++-
+ tests/unit/log/test_log.py                                   | 5 ++++-
+ tests/unit/metrics/export/test_cumulative.py                 | 5 ++++-
+ tests/unit/metrics/export/test_gauge.py                      | 5 ++++-
+ tests/unit/metrics/test_transport.py                         | 5 ++++-
+ tests/unit/stats/test_aggregation.py                         | 5 ++++-
+ tests/unit/stats/test_aggregation_data.py                    | 5 ++++-
+ tests/unit/stats/test_base_stats.py                          | 5 ++++-
+ tests/unit/stats/test_measure_to_view_map.py                 | 5 ++++-
+ tests/unit/stats/test_measurement_map.py                     | 5 ++++-
+ tests/unit/stats/test_metric_utils.py                        | 5 ++++-
+ tests/unit/stats/test_stats_recorder.py                      | 5 ++++-
+ tests/unit/stats/test_view.py                                | 5 ++++-
+ tests/unit/stats/test_view_data.py                           | 5 ++++-
+ tests/unit/stats/test_view_manager.py                        | 5 ++++-
+ tests/unit/trace/exporters/test_logging_exporter.py          | 5 ++++-
+ tests/unit/trace/propagation/test_b3_format.py               | 5 ++++-
+ tests/unit/trace/propagation/test_binary_format.py           | 5 ++++-
+ tests/unit/trace/propagation/test_text_format.py             | 5 ++++-
+ tests/unit/trace/samplers/test_always_off.py                 | 5 ++++-
+ tests/unit/trace/samplers/test_always_on.py                  | 5 ++++-
+ tests/unit/trace/samplers/test_base_sampler.py               | 5 ++++-
+ tests/unit/trace/samplers/test_probability.py                | 5 ++++-
+ tests/unit/trace/test_attributes.py                          | 5 ++++-
+ tests/unit/trace/test_base_span.py                           | 5 ++++-
+ tests/unit/trace/test_blank_span.py                          | 5 ++++-
+ tests/unit/trace/test_config_integration.py                  | 5 ++++-
+ tests/unit/trace/test_execution_context.py                   | 5 ++++-
+ tests/unit/trace/test_ext_utils.py                           | 5 ++++-
+ tests/unit/trace/test_link.py                                | 5 ++++-
+ tests/unit/trace/test_span.py                                | 5 ++++-
+ tests/unit/trace/test_stack_trace.py                         | 5 ++++-
+ tests/unit/trace/test_time_event.py                          | 5 ++++-
+ tests/unit/trace/test_tracer.py                              | 5 ++++-
+ tests/unit/trace/tracers/test_context_tracer.py              | 5 ++++-
+ 75 files changed, 300 insertions(+), 75 deletions(-)
+
+diff --git a/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py b/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
+index 60aff5f2d..7035dfb6c 100644
+--- a/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
++++ b/contrib/opencensus-ext-azure/tests/test_azure_log_exporter.py
+@@ -17,7 +17,10 @@
+ import shutil
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.azure import log_exporter
+ 
+diff --git a/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py b/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
+index a3cde2bdc..f06153a2c 100644
+--- a/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
++++ b/contrib/opencensus-ext-azure/tests/test_azure_metrics_exporter.py
+@@ -16,7 +16,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common import utils
+ from opencensus.ext.azure.common.protocol import DataPoint
+diff --git a/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py b/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
+index 317c0e2c5..f6b953c97 100644
+--- a/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
++++ b/contrib/opencensus-ext-azure/tests/test_azure_standard_metrics.py
+@@ -16,7 +16,10 @@
+ import sys
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import requests
+ 
+ from opencensus.ext.azure.metrics_exporter import standard_metrics
+diff --git a/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py b/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
+index b487348c7..7516f998c 100644
+--- a/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
++++ b/contrib/opencensus-ext-azure/tests/test_azure_statsbeat_metrics.py
+@@ -17,7 +17,10 @@
+ import platform
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import requests
+ 
+ from opencensus.ext.azure.common import Options
+diff --git a/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py b/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
+index 43df5ec3e..d94248cd5 100644
+--- a/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
++++ b/contrib/opencensus-ext-azure/tests/test_azure_trace_exporter.py
+@@ -17,7 +17,10 @@
+ import shutil
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.azure import trace_exporter
+ from opencensus.trace.link import Link
+diff --git a/contrib/opencensus-ext-azure/tests/test_storage.py b/contrib/opencensus-ext-azure/tests/test_storage.py
+index 666f68647..0d4c43542 100644
+--- a/contrib/opencensus-ext-azure/tests/test_storage.py
++++ b/contrib/opencensus-ext-azure/tests/test_storage.py
+@@ -16,7 +16,10 @@
+ import shutil
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.azure.common.storage import (
+     LocalFileBlob,
+diff --git a/contrib/opencensus-ext-azure/tests/test_transport_mixin.py b/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
+index 1099b1ac9..3f1527049 100644
+--- a/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
++++ b/contrib/opencensus-ext-azure/tests/test_transport_mixin.py
+@@ -17,7 +17,10 @@
+ import shutil
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import requests
+ from azure.core.exceptions import ClientAuthenticationError
+ from azure.identity._exceptions import CredentialUnavailableError
+diff --git a/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py b/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
+index 3ac633a10..46bd8203e 100644
+--- a/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
++++ b/contrib/opencensus-ext-dbapi/tests/test_dbapi_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.dbapi import trace
+ 
+diff --git a/contrib/opencensus-ext-django/tests/test_django_db_middleware.py b/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
+index 18bf385c9..ea0b2659c 100644
+--- a/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
++++ b/contrib/opencensus-ext-django/tests/test_django_db_middleware.py
+@@ -16,7 +16,10 @@
+ from collections import namedtuple
+ 
+ import django
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import pytest
+ from django.test.utils import teardown_test_environment
+ 
+diff --git a/contrib/opencensus-ext-django/tests/test_django_middleware.py b/contrib/opencensus-ext-django/tests/test_django_middleware.py
+index 522ea458c..33acd4264 100644
+--- a/contrib/opencensus-ext-django/tests/test_django_middleware.py
++++ b/contrib/opencensus-ext-django/tests/test_django_middleware.py
+@@ -16,7 +16,10 @@
+ import traceback
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from django.test import RequestFactory
+ from django.test.utils import teardown_test_environment
+ 
+diff --git a/contrib/opencensus-ext-flask/tests/test_flask_middleware.py b/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
+index 4ef5a9982..720231920 100644
+--- a/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
++++ b/contrib/opencensus-ext-flask/tests/test_flask_middleware.py
+@@ -18,7 +18,10 @@
+ import unittest
+ 
+ import flask
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.rpc import code_pb2
+ from werkzeug.exceptions import NotFound
+ 
+diff --git a/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py b/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
+index c503fadff..61041fbe4 100644
+--- a/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
++++ b/contrib/opencensus-ext-google-cloud-clientlibs/tests/test_google_cloud_clientlibs_trace.py
+@@ -15,7 +15,10 @@
+ import unittest
+ 
+ import grpc
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.google_cloud_clientlibs import trace
+ 
+diff --git a/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py b/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
+index ab7851b20..2aa873fc0 100644
+--- a/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
++++ b/contrib/opencensus-ext-grpc/tests/test_client_interceptor.py
+@@ -17,7 +17,10 @@
+ import unittest
+ 
+ import grpc
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.api_core import bidi
+ from google.protobuf import proto_builder
+ from grpc.framework.foundation import logging_pool
+diff --git a/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py b/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
+index 850c036fa..119bf6408 100644
+--- a/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
++++ b/contrib/opencensus-ext-grpc/tests/test_server_interceptor.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.rpc import code_pb2
+ 
+ from opencensus.ext.grpc import server_interceptor
+diff --git a/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py b/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
+index cf0a30e94..7e8110bae 100644
+--- a/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
++++ b/contrib/opencensus-ext-httplib/tests/test_httplib_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.httplib import trace
+ from opencensus.trace import span as span_module
+diff --git a/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py b/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
+index 85c4b924f..1eb903c0c 100644
+--- a/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
++++ b/contrib/opencensus-ext-jaeger/tests/test_jaeger_exporter.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.jaeger import trace_exporter
+ from opencensus.ext.jaeger.trace_exporter.gen.jaeger import jaeger
+diff --git a/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py b/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
+index 04e11caa4..441f48e67 100644
+--- a/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
++++ b/contrib/opencensus-ext-mysql/tests/test_mysql_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.mysql import trace
+ 
+diff --git a/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py b/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
+index 796628531..945e30ac9 100644
+--- a/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
++++ b/contrib/opencensus-ext-ocagent/tests/test_stats_exporter.py
+@@ -21,7 +21,10 @@
+ from datetime import datetime
+ 
+ import grpc
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.protobuf import timestamp_pb2
+ 
+ from opencensus.common import resource, utils
+diff --git a/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py b/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
+index 077a1f5bf..dc43a5777 100644
+--- a/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
++++ b/contrib/opencensus-ext-ocagent/tests/test_trace_exporter.py
+@@ -18,7 +18,10 @@
+ import unittest
+ 
+ import grpc
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.version import __version__
+ from opencensus.ext.ocagent.trace_exporter import TraceExporter
+diff --git a/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py b/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
+index 28555de8b..5079ad74f 100644
+--- a/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
++++ b/contrib/opencensus-ext-postgresql/tests/test_postgresql_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.postgresql import trace
+ 
+diff --git a/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py b/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
+index bc19b47ef..0673130f2 100644
+--- a/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
++++ b/contrib/opencensus-ext-prometheus/tests/test_prometheus_stats.py
+@@ -15,7 +15,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from prometheus_client.core import Sample
+ 
+ from opencensus.ext.prometheus import stats_exporter as prometheus
+diff --git a/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py b/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
+index a8e15250e..c582fe529 100644
+--- a/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
++++ b/contrib/opencensus-ext-pymongo/tests/test_pymongo_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.pymongo import trace
+ 
+diff --git a/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py b/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
+index 015ffe2ae..18e2e1130 100644
+--- a/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
++++ b/contrib/opencensus-ext-pymysql/tests/test_pymysql_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.pymysql import trace
+ 
+diff --git a/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py b/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
+index 4ff7addb0..dc8cc6d7e 100644
+--- a/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
++++ b/contrib/opencensus-ext-pyramid/tests/test_pyramid_config.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.pyramid import config
+ 
+diff --git a/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py b/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
+index 63121b740..dc0136de4 100644
+--- a/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
++++ b/contrib/opencensus-ext-pyramid/tests/test_pyramid_middleware.py
+@@ -17,7 +17,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from pyramid.registry import Registry
+ from pyramid.response import Response
+ from pyramid.testing import DummyRequest
+diff --git a/contrib/opencensus-ext-requests/tests/test_requests_trace.py b/contrib/opencensus-ext-requests/tests/test_requests_trace.py
+index 37cd5a2f8..442ef36d1 100644
+--- a/contrib/opencensus-ext-requests/tests/test_requests_trace.py
++++ b/contrib/opencensus-ext-requests/tests/test_requests_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import requests
+ 
+ from opencensus.ext.requests import trace
+diff --git a/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py b/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
+index 9df47e415..bb2d94c3e 100644
+--- a/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
++++ b/contrib/opencensus-ext-sqlalchemy/tests/test_sqlalchemy_trace.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.sqlalchemy import trace
+ from opencensus.trace import span as span_module
+diff --git a/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py b/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
+index c48e21681..0e9e97f67 100644
+--- a/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
++++ b/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_exporter.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.version import __version__
+ from opencensus.ext.stackdriver import trace_exporter
+diff --git a/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py b/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
+index 9c2f0e183..cb02d7f24 100644
+--- a/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
++++ b/contrib/opencensus-ext-stackdriver/tests/test_stackdriver_stats.py
+@@ -16,7 +16,10 @@
+ from datetime import datetime, timedelta
+ 
+ import google.auth
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.api import metric_pb2
+ from google.cloud import monitoring_v3
+ 
+diff --git a/contrib/opencensus-ext-threading/tests/test_threading_trace.py b/contrib/opencensus-ext-threading/tests/test_threading_trace.py
+index 6985f7b8b..76968a2c9 100644
+--- a/contrib/opencensus-ext-threading/tests/test_threading_trace.py
++++ b/contrib/opencensus-ext-threading/tests/test_threading_trace.py
+@@ -17,7 +17,10 @@
+ from concurrent.futures import ThreadPoolExecutor
+ from multiprocessing.pool import Pool
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.threading import trace
+ from opencensus.trace import execution_context, tracer
+diff --git a/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py b/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
+index 607d13c3c..f130664e1 100644
+--- a/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
++++ b/contrib/opencensus-ext-zipkin/tests/test_zipkin_exporter.py
+@@ -15,7 +15,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.ext.zipkin import trace_exporter
+ from opencensus.trace import span_context
+diff --git a/tests/system/stats/stackdriver/stackdriver_stats_test.py b/tests/system/stats/stackdriver/stackdriver_stats_test.py
+index c92dd726f..82de9d473 100644
+--- a/tests/system/stats/stackdriver/stackdriver_stats_test.py
++++ b/tests/system/stats/stackdriver/stackdriver_stats_test.py
+@@ -17,7 +17,10 @@
+ import sys
+ import time
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.cloud import monitoring_v3
+ 
+ from opencensus.ext.stackdriver import stats_exporter as stackdriver
+diff --git a/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py b/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
+index 5658b862e..97d41d8d7 100644
+--- a/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
++++ b/tests/unit/common/monitored_resource_util/test_aws_identity_doc_utils.py
+@@ -15,7 +15,10 @@
+ import json
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.monitored_resource import aws_identity_doc_utils
+ 
+diff --git a/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py b/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
+index d636bcf77..25bbaf5f1 100644
+--- a/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
++++ b/tests/unit/common/monitored_resource_util/test_gcp_metadata_config.py
+@@ -15,7 +15,10 @@
+ import os
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.monitored_resource import gcp_metadata_config
+ 
+diff --git a/tests/unit/common/monitored_resource_util/test_k8s_utils.py b/tests/unit/common/monitored_resource_util/test_k8s_utils.py
+index efdc13b4c..5606e1dfc 100644
+--- a/tests/unit/common/monitored_resource_util/test_k8s_utils.py
++++ b/tests/unit/common/monitored_resource_util/test_k8s_utils.py
+@@ -15,7 +15,10 @@
+ import os
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.monitored_resource import k8s_utils
+ 
+diff --git a/tests/unit/common/monitored_resource_util/test_monitored_resource.py b/tests/unit/common/monitored_resource_util/test_monitored_resource.py
+index 38a1fe4b5..30cf9e472 100644
+--- a/tests/unit/common/monitored_resource_util/test_monitored_resource.py
++++ b/tests/unit/common/monitored_resource_util/test_monitored_resource.py
+@@ -16,7 +16,10 @@
+ import sys
+ from contextlib import contextmanager
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.monitored_resource import monitored_resource
+ 
+diff --git a/tests/unit/common/test_http_handler.py b/tests/unit/common/test_http_handler.py
+index cfabbc066..1e33a5718 100644
+--- a/tests/unit/common/test_http_handler.py
++++ b/tests/unit/common/test_http_handler.py
+@@ -16,7 +16,10 @@
+ import socket
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.http_handler import get_request
+ 
+diff --git a/tests/unit/common/test_resource.py b/tests/unit/common/test_resource.py
+index 682000c4a..016ba4f1a 100644
+--- a/tests/unit/common/test_resource.py
++++ b/tests/unit/common/test_resource.py
+@@ -17,7 +17,10 @@
+ import os
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common import resource as resource_module
+ from opencensus.common.resource import Resource
+diff --git a/tests/unit/common/test_utils.py b/tests/unit/common/test_utils.py
+index 49419afa9..15b0d7c24 100644
+--- a/tests/unit/common/test_utils.py
++++ b/tests/unit/common/test_utils.py
+@@ -29,7 +29,10 @@
+ import unittest
+ import weakref
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common import utils
+ 
+diff --git a/tests/unit/common/transports/test_async.py b/tests/unit/common/transports/test_async.py
+index ce8e3ab0b..1d8a88609 100644
+--- a/tests/unit/common/transports/test_async.py
++++ b/tests/unit/common/transports/test_async.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.transports import async_
+ 
+diff --git a/tests/unit/common/transports/test_sync.py b/tests/unit/common/transports/test_sync.py
+index c812b025e..0e4cf7de0 100644
+--- a/tests/unit/common/transports/test_sync.py
++++ b/tests/unit/common/transports/test_sync.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common.transports import sync
+ 
+diff --git a/tests/unit/log/test_log.py b/tests/unit/log/test_log.py
+index 528d9e7bd..6b151f522 100644
+--- a/tests/unit/log/test_log.py
++++ b/tests/unit/log/test_log.py
+@@ -16,7 +16,10 @@
+ import sys
+ from contextlib import contextmanager
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus import log
+ 
+diff --git a/tests/unit/metrics/export/test_cumulative.py b/tests/unit/metrics/export/test_cumulative.py
+index 0a7dc4ebb..5bd574c94 100644
+--- a/tests/unit/metrics/export/test_cumulative.py
++++ b/tests/unit/metrics/export/test_cumulative.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ from opencensus.metrics.export import cumulative, gauge, metric_descriptor
+ from opencensus.metrics.export import value as value_module
+diff --git a/tests/unit/metrics/export/test_gauge.py b/tests/unit/metrics/export/test_gauge.py
+index 59fafd5ef..36064d59a 100644
+--- a/tests/unit/metrics/export/test_gauge.py
++++ b/tests/unit/metrics/export/test_gauge.py
+@@ -15,7 +15,10 @@
+ import gc
+ import unittest
+ 
+-from mock import Mock
++try:
++    from unittest.mock import Mock
++except ImportError:
++    from mock import Mock
+ 
+ from opencensus.metrics.export import gauge, metric_descriptor
+ from opencensus.metrics.export import value as value_module
+diff --git a/tests/unit/metrics/test_transport.py b/tests/unit/metrics/test_transport.py
+index cd2ad0a52..d1b53f1d8 100644
+--- a/tests/unit/metrics/test_transport.py
++++ b/tests/unit/metrics/test_transport.py
+@@ -16,7 +16,10 @@
+ import sys
+ import time
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.metrics import transport
+ 
+diff --git a/tests/unit/stats/test_aggregation.py b/tests/unit/stats/test_aggregation.py
+index 671c1910d..6dd9cb4ca 100644
+--- a/tests/unit/stats/test_aggregation.py
++++ b/tests/unit/stats/test_aggregation.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.metrics.export import value
+ from opencensus.stats import aggregation as aggregation_module
+diff --git a/tests/unit/stats/test_aggregation_data.py b/tests/unit/stats/test_aggregation_data.py
+index d1870f2c9..547893dc8 100644
+--- a/tests/unit/stats/test_aggregation_data.py
++++ b/tests/unit/stats/test_aggregation_data.py
+@@ -16,7 +16,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.metrics.export import point
+ from opencensus.metrics.export import value as value_module
+diff --git a/tests/unit/stats/test_base_stats.py b/tests/unit/stats/test_base_stats.py
+index 1d403c7dc..8b0ae55ce 100644
+--- a/tests/unit/stats/test_base_stats.py
++++ b/tests/unit/stats/test_base_stats.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.stats import base_exporter
+ 
+diff --git a/tests/unit/stats/test_measure_to_view_map.py b/tests/unit/stats/test_measure_to_view_map.py
+index a754baf04..0cba2ec43 100644
+--- a/tests/unit/stats/test_measure_to_view_map.py
++++ b/tests/unit/stats/test_measure_to_view_map.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.stats import measure_to_view_map as measure_to_view_map_module
+ from opencensus.stats.aggregation import CountAggregation
+diff --git a/tests/unit/stats/test_measurement_map.py b/tests/unit/stats/test_measurement_map.py
+index 89add276b..4c7f4101c 100644
+--- a/tests/unit/stats/test_measurement_map.py
++++ b/tests/unit/stats/test_measurement_map.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.stats import measurement_map as measurement_map_module
+ from opencensus.tags import Tag, TagContext, TagMap
+diff --git a/tests/unit/stats/test_metric_utils.py b/tests/unit/stats/test_metric_utils.py
+index 355f0da2e..f439b374d 100644
+--- a/tests/unit/stats/test_metric_utils.py
++++ b/tests/unit/stats/test_metric_utils.py
+@@ -15,7 +15,10 @@
+ import datetime
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.metrics.export import metric_descriptor, point, value
+ from opencensus.stats import (
+diff --git a/tests/unit/stats/test_stats_recorder.py b/tests/unit/stats/test_stats_recorder.py
+index ce22597e9..7ffe4e664 100644
+--- a/tests/unit/stats/test_stats_recorder.py
++++ b/tests/unit/stats/test_stats_recorder.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.stats import execution_context
+ from opencensus.stats import stats_recorder as stats_recorder_module
+diff --git a/tests/unit/stats/test_view.py b/tests/unit/stats/test_view.py
+index 30dca3cdc..e96358f68 100644
+--- a/tests/unit/stats/test_view.py
++++ b/tests/unit/stats/test_view.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.metrics.export import metric_descriptor
+ from opencensus.stats import aggregation, measure
+diff --git a/tests/unit/stats/test_view_data.py b/tests/unit/stats/test_view_data.py
+index 87791802a..d1a85e5b3 100644
+--- a/tests/unit/stats/test_view_data.py
++++ b/tests/unit/stats/test_view_data.py
+@@ -15,7 +15,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common import utils
+ from opencensus.stats import aggregation as aggregation_module
+diff --git a/tests/unit/stats/test_view_manager.py b/tests/unit/stats/test_view_manager.py
+index b6dea72bc..0659cc125 100644
+--- a/tests/unit/stats/test_view_manager.py
++++ b/tests/unit/stats/test_view_manager.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.stats import execution_context
+ from opencensus.stats import view_manager as view_manager_module
+diff --git a/tests/unit/trace/exporters/test_logging_exporter.py b/tests/unit/trace/exporters/test_logging_exporter.py
+index 4dd45e938..c57f5eec6 100644
+--- a/tests/unit/trace/exporters/test_logging_exporter.py
++++ b/tests/unit/trace/exporters/test_logging_exporter.py
+@@ -15,7 +15,10 @@
+ import logging
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import logging_exporter, span_context
+ from opencensus.trace import span_data as span_data_module
+diff --git a/tests/unit/trace/propagation/test_b3_format.py b/tests/unit/trace/propagation/test_b3_format.py
+index 68feb20f0..a5356663f 100644
+--- a/tests/unit/trace/propagation/test_b3_format.py
++++ b/tests/unit/trace/propagation/test_b3_format.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace.propagation import b3_format
+ from opencensus.trace.span_context import INVALID_SPAN_ID
+diff --git a/tests/unit/trace/propagation/test_binary_format.py b/tests/unit/trace/propagation/test_binary_format.py
+index 077864a35..ac3d84f81 100644
+--- a/tests/unit/trace/propagation/test_binary_format.py
++++ b/tests/unit/trace/propagation/test_binary_format.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace.propagation import binary_format
+ 
+diff --git a/tests/unit/trace/propagation/test_text_format.py b/tests/unit/trace/propagation/test_text_format.py
+index 4a19dce47..f20ab91eb 100644
+--- a/tests/unit/trace/propagation/test_text_format.py
++++ b/tests/unit/trace/propagation/test_text_format.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace.propagation import text_format
+ 
+diff --git a/tests/unit/trace/samplers/test_always_off.py b/tests/unit/trace/samplers/test_always_off.py
+index 6bd3419fb..91e958f2f 100644
+--- a/tests/unit/trace/samplers/test_always_off.py
++++ b/tests/unit/trace/samplers/test_always_off.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ 
+ class TestAlwaysOffSampler(unittest.TestCase):
+diff --git a/tests/unit/trace/samplers/test_always_on.py b/tests/unit/trace/samplers/test_always_on.py
+index caea3c5aa..440b7fd86 100644
+--- a/tests/unit/trace/samplers/test_always_on.py
++++ b/tests/unit/trace/samplers/test_always_on.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ 
+ class TestAlwaysOnSampler(unittest.TestCase):
+diff --git a/tests/unit/trace/samplers/test_base_sampler.py b/tests/unit/trace/samplers/test_base_sampler.py
+index ed7046899..6ba6b97cb 100644
+--- a/tests/unit/trace/samplers/test_base_sampler.py
++++ b/tests/unit/trace/samplers/test_base_sampler.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ 
+ class TestBaseSampler(unittest.TestCase):
+diff --git a/tests/unit/trace/samplers/test_probability.py b/tests/unit/trace/samplers/test_probability.py
+index 165716ce6..994797b0f 100644
+--- a/tests/unit/trace/samplers/test_probability.py
++++ b/tests/unit/trace/samplers/test_probability.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import samplers
+ 
+diff --git a/tests/unit/trace/test_attributes.py b/tests/unit/trace/test_attributes.py
+index 018cdc47c..4049e5f33 100644
+--- a/tests/unit/trace/test_attributes.py
++++ b/tests/unit/trace/test_attributes.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import attributes as attributes_module
+ 
+diff --git a/tests/unit/trace/test_base_span.py b/tests/unit/trace/test_base_span.py
+index d27bc6826..b01d1be02 100644
+--- a/tests/unit/trace/test_base_span.py
++++ b/tests/unit/trace/test_base_span.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace.base_span import BaseSpan
+ 
+diff --git a/tests/unit/trace/test_blank_span.py b/tests/unit/trace/test_blank_span.py
+index d9d1e1c15..ff983e1a0 100644
+--- a/tests/unit/trace/test_blank_span.py
++++ b/tests/unit/trace/test_blank_span.py
+@@ -15,7 +15,10 @@
+ import datetime
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.common import utils
+ from opencensus.trace.link import Link
+diff --git a/tests/unit/trace/test_config_integration.py b/tests/unit/trace/test_config_integration.py
+index 548c8fd96..b38ec1e0b 100644
+--- a/tests/unit/trace/test_config_integration.py
++++ b/tests/unit/trace/test_config_integration.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import config_integration
+ 
+diff --git a/tests/unit/trace/test_execution_context.py b/tests/unit/trace/test_execution_context.py
+index 9df5e7d1f..a5885fc0f 100644
+--- a/tests/unit/trace/test_execution_context.py
++++ b/tests/unit/trace/test_execution_context.py
+@@ -15,7 +15,10 @@
+ import threading
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import execution_context
+ 
+diff --git a/tests/unit/trace/test_ext_utils.py b/tests/unit/trace/test_ext_utils.py
+index e322158a7..9b9fdc84f 100644
+--- a/tests/unit/trace/test_ext_utils.py
++++ b/tests/unit/trace/test_ext_utils.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.rpc import code_pb2
+ 
+ from opencensus.trace import utils
+diff --git a/tests/unit/trace/test_link.py b/tests/unit/trace/test_link.py
+index a8d6def22..ae1380760 100644
+--- a/tests/unit/trace/test_link.py
++++ b/tests/unit/trace/test_link.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import link as link_module
+ 
+diff --git a/tests/unit/trace/test_span.py b/tests/unit/trace/test_span.py
+index 75637ad88..886dfeb84 100644
+--- a/tests/unit/trace/test_span.py
++++ b/tests/unit/trace/test_span.py
+@@ -16,7 +16,10 @@
+ import unittest
+ from collections import OrderedDict
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from google.rpc import code_pb2
+ 
+ from opencensus.common import utils
+diff --git a/tests/unit/trace/test_stack_trace.py b/tests/unit/trace/test_stack_trace.py
+index a33a1895c..cedff0142 100644
+--- a/tests/unit/trace/test_stack_trace.py
++++ b/tests/unit/trace/test_stack_trace.py
+@@ -15,7 +15,10 @@
+ import sys
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import stack_trace as stack_trace_module
+ 
+diff --git a/tests/unit/trace/test_time_event.py b/tests/unit/trace/test_time_event.py
+index 063dfb4ad..fa34e898f 100644
+--- a/tests/unit/trace/test_time_event.py
++++ b/tests/unit/trace/test_time_event.py
+@@ -15,7 +15,10 @@
+ import unittest
+ from datetime import datetime
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import time_event as time_event_module
+ 
+diff --git a/tests/unit/trace/test_tracer.py b/tests/unit/trace/test_tracer.py
+index 82b9a16a3..2d6bb6f7b 100644
+--- a/tests/unit/trace/test_tracer.py
++++ b/tests/unit/trace/test_tracer.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import samplers, span_data
+ from opencensus.trace import tracer as tracer_module
+diff --git a/tests/unit/trace/tracers/test_context_tracer.py b/tests/unit/trace/tracers/test_context_tracer.py
+index 1898fb37f..3957dbfcb 100644
+--- a/tests/unit/trace/tracers/test_context_tracer.py
++++ b/tests/unit/trace/tracers/test_context_tracer.py
+@@ -14,7 +14,10 @@
+ 
+ import unittest
+ 
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ 
+ from opencensus.trace import execution_context, span
+ from opencensus.trace.tracers import context_tracer

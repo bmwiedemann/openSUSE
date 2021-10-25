@@ -1,7 +1,7 @@
 #
-# spec file for package python-opencensus
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,29 +27,31 @@
 %endif
 %bcond_without python2
 Name:           python-opencensus%{psuffix}
-Version:        0.7.7
+Version:        0.8.0
 Release:        0
 Summary:        A stats collection and distributed tracing framework
 License:        Apache-2.0
 URL:            https://github.com/census-instrumentation/opencensus-python
-Source:         https://github.com/census-instrumentation/opencensus-python/archive/v%{version}.tar.gz
+Source:         https://github.com/census-instrumentation/opencensus-python/archive/v%{version}.tar.gz#/opencensus-python-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM opencensus-pr1002-remove-mock.patch -- gh#census-instrumentation/opencensus-python#1002
+Patch0:         https://github.com/census-instrumentation/opencensus-python/pull/1002.patch#/opencensus-pr1002-remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core < 2.0.0
+Requires:       python-google-api-core < 3.0.0
 Requires:       python-google-api-core >= 1.0.0
-Requires:       python-opencensus-context >= 0.1.1
+Requires:       python-opencensus-context >= 0.1.2
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module opencensus >= %{version}}
 BuildRequires:  %{python_module opencensus-context >= 0.1.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module retrying}
-%endif
 %if %{with python2}
+BuildRequires:  python-mock
 BuildRequires:  python-unittest2
+%endif
 %endif
 %python_subpackages
 
@@ -61,7 +63,7 @@ and collect performance stats. This repository contains Python related
 utilities and supporting software needed by OpenCensus.
 
 %prep
-%setup -q -n opencensus-python-%{version}
+%autosetup -p1 -n opencensus-python-%{version}
 # do not hardcode versions
 sed -i -e 's:==:>=:g' setup.py
 
@@ -81,14 +83,17 @@ sed -i -e 's:==:>=:g' setup.py
 
 %check
 %if %{with test}
-%pytest tests/unit
+# recursion error in mock != 3; gh#census-instrumentation/opencensus-python#868
+donttest="TestGetExporterThreadPeriodic and (test_multiple_producers or test_threaded_export)"
+%pytest tests/unit -k "not ($donttest)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/opencensus
+%{python_sitelib}/opencensus-%{version}*-info
 %endif
 
 %changelog

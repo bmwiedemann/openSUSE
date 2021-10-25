@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 23 10:47:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.0
+  * Added integration tracking functionality, includes django,
+    flask, http-lib, logging, mysql, postgresql, pymongo, pymysql,
+    pyramid, requests, sqlalchemy modules (#1065)
+  * Support Python 3.8, 3.9 (#1048)
+- Releases 0.7.8 to 0.7.13
+  * Updated azure, django, flask, requests, grpc, httplib, pyramid
+    stackdriver modules
+  * Hotfix for breaking change (#915)
+- Remove test mock requirement for python3
+  * opencensus-pr1002-remove-mock.patch
+  * gh#census-instrumentation/opencensus-python#1002
+
+-------------------------------------------------------------------
 Tue Mar 10 12:56:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Provide init in opencensus/ext folder to provide basis
