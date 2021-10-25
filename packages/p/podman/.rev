@@ -767,4 +767,12 @@ Bugfixes
     <comment>Stage with libcontainers-common</comment>
     <requestid>919693</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>c8901e5c69dba5c98778b156dba123dd</srcmd5>
+    <version>3.4.1</version>
+    <time>1635167830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926669</requestid>
+  </revision>
 </revisionlist>
