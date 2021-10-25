@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 08:45:47 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Use official China timezone Asia/Shanghai (bsc#1187857)
+- 4.4.7
+
+-------------------------------------------------------------------
 Mon Sep  6 13:48:04 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Use only one server when proposing the default NTP servers to
@@ -13,7 +19,6 @@ Wed Aug 18 10:23:48 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 - 4.4.5
 
 -------------------------------------------------------------------
-Wed Aug 18 10:23:48 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 Thu Aug  5 10:21:22 UTC 2021 - Martin Vidner <mvidner@suse.com>
 
 - Offer the fr-afnor keyboard only if it is defined (bsc#1188867)
