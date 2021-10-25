@@ -16,6 +16,13 @@
 #
 
 
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %define ver 1.21.2
 %define _ver 1_21_2
@@ -86,7 +93,7 @@ BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  unzip
 %if 0%{?suse_version}
 BuildRequires:  fdupes
@@ -110,14 +117,19 @@ Recommends:     libopenblas_pthreads0
 # Protect it from substitution
 %define oldpy_numpy python-numpy
 Conflicts:      %{oldpy_numpy} <= 1.12.0
+ %if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+ %else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+ %endif
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %endif
 %python_subpackages
 
@@ -280,6 +292,10 @@ popd
 %endif
 
 %if %{without hpc}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative f2py
+
 %post
 %python_install_alternative f2py
 

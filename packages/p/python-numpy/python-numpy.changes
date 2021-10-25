@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  6 19:16:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- The update- and libalternatives logic is required in the standard
+  build, not the hpc flavor
+
+-------------------------------------------------------------------
+Thu Sep 30 10:05:18 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Mon Sep 20 16:51:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.21.2
