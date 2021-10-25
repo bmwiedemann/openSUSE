@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pypi_name cheroot
 %bcond_without python2
@@ -34,7 +40,7 @@ BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools_scm_git_archive >= 1.0}
 BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 %if %{with python2}
 BuildRequires:  python-backports.functools_lru_cache
 BuildRequires:  python-selectors2
@@ -60,8 +66,13 @@ BuildRequires:  %{python_module urllib3 >= 1.25}
 Requires:       python-jaraco.functools
 Requires:       python-more-itertools >= 2.6
 Requires:       python-six >= 1.11.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 # the package and distribution name is lowercase-cheroot,
 # but PyPI claims the name is capital-Cheroot
 # *smacks head against desk*
@@ -97,6 +108,10 @@ pytest_opts="--ignore  cheroot/test/test_wsgi.py"
 %endif
 # test_tls_client_auth[...-False-localhost-builtin] fails ocassionally on server-side OBS
 %pytest $pytest_opts -k "not (test_tls_client_auth and False-localhost-builtin)"
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative cheroot
 
 %post
 %python_install_alternative cheroot

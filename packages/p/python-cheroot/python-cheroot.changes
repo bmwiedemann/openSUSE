@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 13:46:46 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Thu Sep 30 08:50:54 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Mon Mar 29 17:49:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update BuildRequirements for testing:
