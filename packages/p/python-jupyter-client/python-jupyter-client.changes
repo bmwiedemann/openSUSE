@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Oct 17 18:33:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.6
+  * Fallback to the old ipykernel "json_clean" if we are not able
+    to serialize a JSON message #708 (@martinRenou)
+  * Add test for serializing bytes #707 (@martinRenou)
+- Release 7.0.5
+  * avoid use of deprecated zmq.utils.jsonapi #703 (@minrk)
+  * Use logger.warning instead of deprecated warn method #700
+    (@kevin-bates)
+- Release 7.0.4
+  * Fix json_default so that it's closer to what ipykernel had
+    before #698 (@martinRenou)
+  * Clean up the pending task #697 (@shingo78)
+  * fix kernel can only restart once issue #695 (@mofanke)
+  * Prevent failure if kernel is not found when shutting it down
+    #694 (@martinRenou)
+- Release 7.0.3
+  * Address missing local-provisioner scenario #692 (@kevin-bates)
+  * use load_connection_info(info) when constructing a blocking
+    client #688 (@minrk)
+- Release 7.0.2
+  * Don't set event loop policy on Windows at import time #686
+    (@minrk)
+  * Improve migration guide #685 (@davidbrochart)
+- Release 7.0.1
+  * Use formal method names when called internally #683
+    (@kevin-bates)
+- Release 7.0.0
+  * The 7.0 release brings a major feature in Kernel Provisioners,
+    which enable the ability for third parties to manage the
+    lifecycle of a kernel's runtime environment.
+  * Being a major release, there are some backward incompatible
+    changes. Please see the migration guide for further details.
+  * Enhancements made:
+  * Kernel Provisioning - initial implementation #612
+    (@kevin-bates)
+  * Fix up some async method aliases in KernelManager #670
+    (@kevin-bates)
+  * Support answer_yes when removing kernel specs #659
+    (@davidbrochart)
+  * Include process ID in message ID #655 (@takluyver)
+  * Fix qtconsole issues #638 (@davidbrochart)
+  * Added debugger key in kernel_info_reply #486 (@JohanMabille)
+  * Prepare for use with Jupyter Releaser #676 (@afshin)
+  * Force install jupyter_client master #675 (@davidbrochart)
+  * Fix project name #674 (@vidartf)
+  * Rename trait to allowed_kernelspecs #672 (@blink1073)
+  * Remove block parameter from get_msg() #671 (@davidbrochart)
+  * Only import nest_asyncio locally #665 (@SylvainCorlay)
+  * Use a default serializer that is not only for date types #664
+    (@martinRenou)
+  * Updated debug_info_response #657 (@JohanMabille)
+  * Do not block on exit #651 (@impact27)
+  * Update test kernel with native coroutine, remove
+    async_generator dependency #646 (@kevin-bates)
+  * setup.py and CI improvements #645 (@dolfinus)
+  * Test downstream projects #644 (@davidbrochart)
+  * Remove deprecations in kernel manager #643 (@kevin-bates)
+  * Add block=True back to get_msg() #641 (@davidbrochart)
+  * Pin python>=3.6.1 #636 (@davidbrochart)
+  * Use pre-commit #631 (@davidbrochart)
+  * Attempt CI with ipykernel 6.0 prerelease #629 (@SylvainCorlay)
+  * Make KernelManager subclass tests DRY #628 (@davidbrochart)
+  * Add tests to ensure MultiKernelManager subclass methods are
+    called #627 (@kevin-bates)
+  * Add type annotations, refactor sync/async #623 (@davidbrochart)
+  * Create migration guide #681 (@blink1073)
+  * Update changelog for 7.0.0rc0 #673 (@blink1073)
+  * Added documentation for richInspectVariables request #654
+    (@JohanMabille)
+  * Change to edit_magic payload #652 (@yitzchak)
+  * Added missing documentation for the inspectVariables request
+    and resp… #649 (@JohanMabille)
+  * Add status field to other replies in documentation #648
+    (@yitzchak)
+- Drop jupyter_client-pr646-remove-async_generator.patch
+
+-------------------------------------------------------------------
 Thu Aug 12 10:13:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove the ringdisabled conditional: ipykernel5 will be in Ring1
