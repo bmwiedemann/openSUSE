@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 24 08:03:30 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1634908963.3d5c24113:
+  * Also ignore all aborted results for 'todo' flag
+  * Fix missing display of aborted test results in overview status line
+  * Turn around double negation in Schema::Result::Jobs
+  * t: Make summary line check stricter in 10-tests_overview.t
+  * t: Simplify fixture job creation in 10-tests_overview.t
+  * t: Bump timeout of api/04-jobs.t based on local runtime
+  * t: Bump timeout of ui/18-test-details.t based on local runtime
+  * Update the link for OSD's setup and administration which has been moved
+  * Use signatures in OpenQA::Worker::WebUIConnection
+  * Use Time::Seconds in OpenQA::Worker::Settings
+  * Use signatures in OpenQA::Worker::Settings
+  * Consistently describe "Idle" workers as such
+  * t: Add test for worker statistics and numbers
+  * templates: Delete unused worker statistics variables
+  * Use diag instead of note when bailing with log
+  * Enable diagnostics for serialization errors
+  * fullstack: Add context to result panel wait
+
+-------------------------------------------------------------------
 Thu Oct 21 19:20:47 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634844038.99a1a2378:
