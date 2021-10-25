@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-context
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define repo_version 0.7.7
+%define repo_version 0.8.0
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-opencensus-context
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Python in-process context propogation
 License:        Apache-2.0
@@ -28,6 +28,10 @@ Source:         https://github.com/census-instrumentation/opencensus-python/arch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module contextvars if (%python-base >= 3.6 and %python-base < 3.7)}
+%if 0%{python_version_nodots} == 36
+Requires:       python-contextvars
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,11 +59,14 @@ rm -rf %{buildroot}%{$python_sitelib}/opencensus/common/__pycache__
 }
 
 %check
-%python_exec -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license ../../LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/opencensus
+%dir %{python_sitelib}/opencensus/common/
+%{python_sitelib}/opencensus/common/runtime_context
+%{python_sitelib}/opencensus_context-%{version}*-info
 
 %changelog
