@@ -581,4 +581,12 @@
   (workaround for bsc#1187332).</comment>
     <requestid>903200</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>86d2cc7802be7c20bab5ce1186d34b12</srcmd5>
+    <version>13</version>
+    <time>1635167801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922188</requestid>
+  </revision>
 </revisionlist>

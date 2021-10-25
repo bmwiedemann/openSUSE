@@ -31,7 +31,7 @@ BuildArch:      noarch
 #!BuildIgnore:  %{name}
 
 # We need our own definition of %{_unitdir}.
-%{?load:%{S:0}}
+%{load:%{S:0}}
 
 %description
 Starting with openSUSE 12.1, several RPM macros must be used to package systemd
