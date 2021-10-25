@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct 17 12:12:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.0.0
+  Deprecations and Removals 
+  * #116: Remove deprecated implprefix support. Decorate hook
+    implementations using an instance of HookimplMarker instead.
+    The deprecation was announced in release 0.7.0.  
+  * #120: Remove the deprecated proc argument to call_historic. Use
+    result_callback instead, which has the same behavior. The
+    deprecation was announced in release 0.7.0.  
+  * #265: Remove the _Result.result property. Use
+    _Result.get_result() instead. Note that unlike result,
+    get_result() raises the exception if the hook raised. The
+    deprecation was announced in release 0.6.0.  
+  * #267: Remove official support for Python 3.4.
+  * #272: Dropped support for Python 2. Continue to use pluggy
+    0.13.x for Python 2 support.
+  *  #308: Remove official support for Python 3.5.
+  * #313: The internal pluggy.callers, pluggy.manager and
+    pluggy.hooks are now explicitly marked private by a _ prefix
+    (e.g. pluggy._callers). Only API exported by the top-level
+    pluggy module is considered public.
+  * #59: Remove legacy __multicall__ recursive hook calling system.
+    The deprecation was announced in release 0.5.0.
+  Features
+  * #282: When registering a hookimpl which is declared as
+    hookwrapper=True but whose function is not a generator
+    function, a PluggyValidationError exception is now raised.
+  * #309: Add official support for Python 3.9.
+  * #251: Add specname option to @hookimpl. If specname is
+    provided, it will be used instead of the function name when
+    matching this hook implementation to a hook specification
+    during registration (allowing a plugin to register a hook
+    implementation that was not named the same thing as the
+    corresponding @hookspec).
+
+-------------------------------------------------------------------
 Mon Jan  6 12:52:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.13.1:

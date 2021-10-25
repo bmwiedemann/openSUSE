@@ -1,7 +1,7 @@
 #
-# spec file for package python-pluggy
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,29 +27,29 @@
 %bcond_with test
 %endif
 Name:           python-pluggy%{psuffix}
-Version:        0.13.1
+Version:        1.0.0
 Release:        0
-Summary:        Plugin registration and hook calling mechanisms for Python
+Summary:        A minimalist production ready plugin system
 License:        MIT
 URL:            https://github.com/pytest-dev/pluggy
 Source:         https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 0.12
+%endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module importlib-metadata >= 0.12 if %python-base < 3.8}
+BuildRequires:  %{python_module pytest >= 6.2.5}
 %endif
 %python_subpackages
 
 %description
-This is the plugin manager as used by pytest but stripped
-of pytest specific details.
-
-During the 0.x series this plugin does not have much documentation
-except extensive docstrings in the pluggy.py module.
+This is the core framework used by the pytest, tox, and devpi projects.
 
 %prep
 %setup -q -n pluggy-%{version}
@@ -71,7 +72,8 @@ except extensive docstrings in the pluggy.py module.
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.rst
-%{python_sitelib}/*
+%{python_sitelib}/pluggy
+%{python_sitelib}/pluggy-%{version}*-info
 %endif
 
 %changelog
