@@ -1,0 +1,25 @@
+From e118e0423d6ec95c9894a987db671844f8220117 Mon Sep 17 00:00:00 2001
+From: Francis Murtagh <francis.murtagh@arm.com>
+Date: Fri, 22 Oct 2021 18:06:32 +0100
+Subject: [PATCH] Bugfix: GCC-11 stringop-overread warning treated as error
+
+ * Occured in Ubuntu Impish
+ * GCC Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=99578
+
+Signed-off-by: Francis Murtagh <francis.murtagh@arm.com>
+Change-Id: Ic2b1ae64bb2f1362ec3eb5c2b7a829deee2e9018
+---
+
+diff --git a/src/backends/cl/ClContextDeserializer.cpp b/src/backends/cl/ClContextDeserializer.cpp
+index 8a1b585..35a8afa 100644
+--- a/src/backends/cl/ClContextDeserializer.cpp
++++ b/src/backends/cl/ClContextDeserializer.cpp
+@@ -65,7 +65,7 @@
+ 
+     for (Program const* program : *clContext->programs())
+     {
+-        auto programName = program->name()->c_str();
++        const char* volatile programName = program->name()->c_str();
+         auto programBinary = program->binary();
+         std::vector<uint8_t> binary(programBinary->begin(), programBinary->begin() + programBinary->size());
+ 

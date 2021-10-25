@@ -81,8 +81,10 @@ Source1:        armnn-rpmlintrc
 Patch1:         96beb97.diff
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/548
 Patch2:         febc20f.diff
+# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/548
+Patch3:         e118e04.diff
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/581
-Patch3:         0011-update-doctest-for-glibc2.34.patch
+Patch4:         0011-update-doctest-for-glibc2.34.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -356,10 +358,11 @@ This package contains the libarmnnOnnxParser library from armnn.
 %if %{pkg_vcmp tensorflow2-lite-devel >= 2.4}
 # This patch breaks build on TF < 2.4
 %patch1 -p1
+%endif
+%endif
 %patch2 -p1
 %patch3 -p1
-%endif
-%endif
+%patch4 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -380,7 +383,7 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
-  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread -Wno-error=stringop-overread -Wno-error=deprecated-declarations" \
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread " \
   -DBOOST_LIBRARYDIR=%{_libdir} \
 %if %{with armnn_onnx}
   -DBUILD_ONNX_PARSER=ON \

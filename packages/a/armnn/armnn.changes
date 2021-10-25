@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 25 07:21:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix stringop-overread error:
+  * e118e04.diff
+
+-------------------------------------------------------------------
 Thu Oct 21 15:24:42 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix uninitialized var error:
