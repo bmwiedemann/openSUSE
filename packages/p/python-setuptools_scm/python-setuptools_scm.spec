@@ -1,5 +1,5 @@
 #
-# spec file for package python-setuptools_scm
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,27 +25,29 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define skip_python2 1
 Name:           python-setuptools_scm%{psuffix}
-Version:        4.1.2
+Version:        6.3.2
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-%{version}.tar.gz
-Patch0:         add-rpmfail-pytest-markers.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module tomli >= 1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
-Suggests:       python-toml
+Requires:       python-tomli
 BuildArch:      noarch
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module virtualenv}
 BuildRequires:  git-core
 BuildRequires:  mercurial
 %endif
@@ -61,7 +63,6 @@ in SCM metadata. It also handles file finders for the supperted SCMs.
 %prep
 %setup -q -n setuptools_scm-%{version}
 %autopatch -p1
-sed -i 's/yield_fixture/fixture/' testing/conftest.py
 
 %build
 %python_build
@@ -74,16 +75,16 @@ sed -i 's/yield_fixture/fixture/' testing/conftest.py
 
 %if %{with test}
 %check
-# both tests in test_integration.py encounter https://github.com/pypa/setuptools_scm/issues/386 (at least on Python 2)
-# ignore unraisable exceptions (basically https://github.com/pypa/setuptools_scm/commit/cf54011725bb5e6ac9911b06e23ffc5c2938a53f)
-%pytest -p no:unraisableexception -k 'not test_integration'
+# pip download needs network
+%pytest -k "not test_pip_download"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.rst
-%{python_sitelib}/setuptools_scm*
+%{python_sitelib}/setuptools_scm
+%{python_sitelib}/setuptools_scm-%{version}*-info
 %endif
 
 %changelog

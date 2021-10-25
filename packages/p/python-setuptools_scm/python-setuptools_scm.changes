@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Sun Oct  3 21:10:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Drop add-rpmfail-pytest-markers.patch
+
+-------------------------------------------------------------------
+Sun Oct  3 19:23:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.3.3
+  * only put minimal setuptools version into toml extra to warn
+    people with old strict pins
+- Release 6.3.2
+  * fix #629: correctly convert Version data in tags_to_version
+    parser to avoid errors
+- Release 6.3.1
+  * fix #625: restore tomli in install_requires after the
+    regression changes in took it out and some users never added
+    it even tho they have pyproject.toml files
+- Release 6.3.0
+  * Warning
+    This release explicitly warns on unsupported setuptools. This
+    unfortunately has to happen as the legacy setup_requires
+    mechanism incorrectly configures the setuptools working-set
+    when a more recent setuptools version than available is
+    required.
+    As all releases of setuptools are affected as the historic
+    mechanism for ensuring a working setuptools setup was shipping
+    a ez_setup file next to setup.py, which would install the
+    required version of setuptools.
+    This mechanism has long since been deprecated and removed as
+    most people haven't been using it
+  * fix #612: depend on packaging to ensure version parsing parts
+  * fix #611: correct the typo that hid away the toml extra and
+    add it in setup.py as well
+  * fix #615: restore support for the git_archive plugin which
+    doesn't pass over the config
+  * restore the ability to run on old setuptools while to avoid
+    breaking pipelines
+- Release 6.2.0
+  * fix #608: resolve tomli dependency issue by making it a hard
+    dependency as all intended/supported install options use pip/
+    wheel this is only a feature release
+  * ensure python 3.10 works
+- Release 6.1.1
+  * fix #605: completely disallow bdist_egg - modern enough
+    setuptools>=45 uses pip
+  * fix #606: re-integrate and harden toml parsing
+  * fix #597: harden and expand support for figuring the current
+    distribution name from pyproject.toml (project.name or tool.
+    setuptools_scm.dist_name) section or setup.cfg (metadata.name)
+- Release 6.1.0
+  * fix #587: don't fail file finders when distribution is not
+    given
+  * fix #524: new parameters normalize and version_cls to
+    customize the version normalization class.
+  * fix #585: switch from toml to tomli for toml 1.0 support
+  * fix #591: allow to opt in for searching parent directories in
+    the api
+  * fix #589: handle yaml encoding using the expected defaults
+  * fix #575: recommend storing the version_module inside of mypkg/
+    _version.py
+  * fix #571: accept branches starting with v as release branches
+  * fix #557: Use packaging.version for version_tuple
+  * fix #544: enhance errors on unsupported python/setuptools
+    versions
+- Release v6.0.1
+  * fix #537: drop node_date on old git to avoid errors on missing
+    %cI
+  * v6.0.0
+  * fix #517: drop dead python support >3.6 required
+  * drop dead setuptools support > 45 required (can install wheels)
+  * drop egg building (use wheels)
+  * add git node_date metadata to get the commit time-stamp of HEAD
+  * allow version schemes to be priority ordered lists of version
+    schemes
+  * support for calendar versioning (calver) by date
+- Release v5.0.2
+  * fix #415: use git for matching prefixes to support the windows
+    situation
+- Release v5.0.1
+  * fix #509: support
+    SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${DISTRIBUTION_NAME} for
+    pyproject.toml
+- Release 5.0.0
+  * fix #339: strict errors on missing scms when parsing a scm dir
+    to avoid false version lookups
+  * fix #337: if relative_to is a directory instead of a file,
+    consider it as direct target instead of the containing folder
+    and print a warning
+  * fix #352: add support for generally ignoring specific vcs roots
+  * fix #471: better error for version bump failing on complex but
+    accepted tag
+  * fix #479: raise indicative error when tags carry non-parsable
+    information
+  * Add no-guess-dev which does no next version guessing, just
+    adds .post1.devN in case there are new commits after the tag
+  * add python3.9
+  * enhance documentation
+  * consider SOURCE_DATE_EPOCH for versioning
+  * add a version_tuple to write_to templates
+  * fix #321: add support for the
+    SETUPTOOLS_SCM_PRETEND_VERSION_FOR_${DISTRIBUTION_NAME} env
+    var to target the pretend key
+  * fix #142: clearly list supported scm
+  * fix #213: better error message for non-zero dev numbers in tags
+  * fix #356: add git branch to version on describe failure
+
+-------------------------------------------------------------------
 Tue Jan 12 10:07:27 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Workaround pytest 6.2 failures
