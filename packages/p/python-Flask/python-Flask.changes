@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct  5 14:19:00 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Tue Oct  5 09:49:23 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.0.2
+  * Fix type annotation for teardown_* methods. #4093
+  * Fix type annotation for before_request and before_app_request decorators. #4104
+  * Fixed the issue where typing requires template global decorators to 
+    accept functions with no arguments. #4098
+  * Support View and MethodView instances with async handlers. #4112
+  * Enhance typing of app.errorhandler decorator. #4095
+  * Fix registering a blueprint twice with differing names. #4124
+  * Fix the type of static_folder to accept pathlib.Path. #4150
+  * jsonify handles decimal.Decimal by encoding to str. #4157
+  * Correctly handle raising deferred errors in CLI lazy loading. #4096
+  * The CLI loader handles **kwargs in a create_app function. #4170
+  * Fix the order of before_request and other callbacks that trigger before the view returns.
+    They are called from the app down to the closest nested blueprint. #4229
+
+-------------------------------------------------------------------
+Sun Aug 22 19:07:48 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Sat Jun 19 07:28:01 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - skip building for Python 2.x

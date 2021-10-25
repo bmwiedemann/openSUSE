@@ -16,11 +16,17 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define oldpython python
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -35,13 +41,18 @@ BuildRequires:  %{python_module itsdangerous >= 2.0}
 BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Jinja2 >= 3.0
 Requires:       python-Werkzeug >= 2.0
 Requires:       python-click >= 7.1.2
 Requires:       python-itsdangerous >= 2.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %if %{?suse_version} < 1500
 BuildRequires:  python
@@ -71,12 +82,15 @@ reference for python-Flask.
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/flask
-
 %fdupes %{buildroot}%{python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 %pytest
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative flask
 
 %post
 %python_install_alternative flask
