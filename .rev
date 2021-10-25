@@ -173,4 +173,19 @@
   * error.code() is a property not function (11/28/20) (Harshavardhana)</comment>
     <requestid>920715</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70294d9f6d90b38de9a4f52222a2af0a</srcmd5>
+    <version>7.1.1</version>
+    <time>1635167850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.1:
+  * Fix transition xml name in lifecycleconfig (#1142) (10/09/21) (Bala FA)
+  * Remove nose tests and move to python unittest (#1152) (10/09/21) (Steve Kowalik)
+  * Use unquote_plus() to decode url encoded value. (#1158) (10/09/21) (Bala FA)
+  * Ignore cert addition if custom httpclient is passed (#1157) (10/08/21) (Anton Samokhvalov)
+  * use f-string wherever possible (#1155) (10/08/21) (Bala FA)
+  * Raise ValueError instead of returning in ChainedProvider (#1146) (09/01/21) (Bala FA) 
+- Drop remove-nose.patch, merged upstream.</comment>
+    <requestid>927217</requestid>
+  </revision>
 </revisionlist>

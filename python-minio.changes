@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 24 23:25:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.1:
+  * Fix transition xml name in lifecycleconfig (#1142) (10/09/21) (Bala FA)
+  * Remove nose tests and move to python unittest (#1152) (10/09/21) (Steve Kowalik)
+  * Use unquote_plus() to decode url encoded value. (#1158) (10/09/21) (Bala FA)
+  * Ignore cert addition if custom httpclient is passed (#1157) (10/08/21) (Anton Samokhvalov)
+  * use f-string wherever possible (#1155) (10/08/21) (Bala FA)
+  * Raise ValueError instead of returning in ChainedProvider (#1146) (09/01/21) (Bala FA) 
+- Drop remove-nose.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Sep 22 03:51:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1.0:

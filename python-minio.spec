@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-minio
-Version:        7.1.0
+Version:        7.1.1
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
 URL:            https://github.com/minio/minio-py
 Source:         https://files.pythonhosted.org/packages/source/m/minio/minio-%{version}.tar.gz
-Patch0:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
