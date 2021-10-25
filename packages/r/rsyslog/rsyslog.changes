@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Oct 20 09:15:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2110.0:
+  * 2021-10-13: config bugfix: global(security.abortonidresolutionfail=) did not work
+    when used with rscript based configuration, it was not checked.
+  * 2021-10-13: config bugfix: global param $privDropToUser did not work correctly
+    The parameter was not implemented for rscript based configuration and
+    did not properly apply to legacy configuration. In essence, it almost always
+    did not work as expected.
+    see also: https://github.com/rsyslog/rsyslog/issues/4642
+    see also: https://github.com/rsyslog/rsyslog/commit/cbcaf2c7e5b67e5465e47bc7cc67af2eae47bd31
+  * 2021-10-12: rscript bugfix: ruleset called async when ruleset had queue.type="direct"
+    The call rscript statement is able to call a rule set either synchronously or
+    asynchronously. We did this, because practice showed that both modes
+    are needed. For various reasons we decided to make async
+    calls if the ruleset has a queue assigned and sync if not.
+    To know if a "queue is assigned" we just checked if queue parameters were
+    given. It was overlookeded the case of someone explicitly specifying a
+    "direct  queue", aka "no queue". As such, queue="direct" triggered async
+    calls. That in turn meant that when a write operation to a variable was
+    made inside that rule set, other rulesets could or could not see the
+    write. While if was often not seen, this was a data race where the
+    change could also be seen by the outside.
+    This is now fixed. No matter if queue.type="direct" is specified or
+    left out, the call will always by synchronous. Any values written to
+    variables will also be seen by the "outside world" in later processing
+    stages.
+    Note that this has some potential to BREAK EXISTING CONFIGURATIONS.
+    We deem this acceptable because:
+    1. this was racy at all, so unexpected behaviour could alwas occur
+    2. it is actually unlikely that someone used the triggering conditions
+       in practice. But we can not outrule this, especially when the
+       configuration was auto-generated.
+    Potential compatibility issues can be solved by defining a small
+    array-memory queue on the ruleset in question instead of specifying
+    direct type.
+    Again, we expect that almost all users will never experience any
+    problems. If you do, however, please let us know: we may add an
+    option to re-enable the bug.
+  * 2021-10-12: ksi bugfix: locking bug fixed in rsksiCtxOpenFile
+    Thanks to Taavi Valjaots for the patch.
+  * 2021-10-11: core bugfix: fix typo in error message
+    Thanks to github user jkschulz for the patch.
+  * 2021-10-11: tcpsrv bugfix: compilation without exceptions
+    tcpsrv.c:992:1: error: label at end of compound statement
+     finalize_it:
+     ^~~~~~~~~~~
+    Quoting from pthread.h:
+      pthread_cleanup_push and pthread_cleanup_pop are macros and must always
+      be used in matching pairs at the same nesting level of braces.
+    Amends commit bcdd220142ec9eb106550195ba331fd114adb0bd.
+    Thanks to Orgad Shaneh for the patch.
+  * 2021-10-11: mkubernetes bugfix: no connection retry to kubernetes APP
+    When connection to the kubernates API was not possible, mmkubernetes
+    did not retry. This does now happen via regular rsyslog retry
+    mechanism.
+    Thanks to github user jayme-github for the analysis and patch.
+    closes https://github.com/rsyslog/rsyslog/issues/4669
+  * 2021-10-11: openssl bugfix: Correct gnutlsPriorityString (custom ciphers) behaviour
+    * Only apply default anon ciphers if gnutlsPriorityString is NULL and
+      Authentication Mode is set to anon. Otherwise we do not set them
+      as they overwrite custom Ciphers.
+    * Added two tests for custom cipher configuration (anon/certvalid mode).
+    * Add call for applyGnutlsPriorityString if gnutlsPriorityString changes.
+    * Merged openssl init code from Connect into osslInitSession
+    closes: https://github.com/rsyslog/rsyslog/issues/4686
+  * 2021-10-11: build issue: handle undefined MAXPATHLEN, PATH_MAX
+    While we handled missing PATH_MAX, we did not handle missing MAXPATHLEN.
+    This happens under GNU/Hurd, because there is no official limit. However,
+    extremely long pathes are extremely uncommon, so we do not want to
+    use slow dynamic alloc each time we need to build pathes. So we
+    impose a limit of 4KiB, which should be fairly enough. Note that
+    this obviously increases stack requirements in GNU/Hurd.
+    As suggested by Michael Biebl, we have now implemented a generic
+    approach to handle this via autoconf.
+  * 2021-09-12: openssl: extended output information on connection failure
+    Now includes the remote client/server IP address in the log output.
+  * 2021-09-12: imhttp enhancements - query parameter ingestion & basic auth support
+    * Basic Authentication support & tests
+      * configured via imhttp option "basicAuthFile". This option should be configured
+        to point to your htpasswd file generated via a standard htpasswd tool.
+      tests:
+      * imhttp-post-payload-basic-auth.sh
+      * imhttp-post-payload-basic-auth-vg.sh
+    * Query parameter ingestion capability & tests
+      use t `addmetadata` option to inject query parameters into
+      metadata for imhttp input.
+    DISTRO PACKAGERS BEWARE: NEW DEPENDENCY FOR IMHTTP:
+    libaprutil (libaprutil1-dev on debian'ish, apr-util-devel on Red Hat)
+    Thanks to Nelson Yen for the patch.
+  * 2021-09-07: testbench bugfix: privdrop tests under root user did not work
+    When running under root, the privdrop tests did not properly work. This
+    patch fixes the issue and skips test where necessary.
+    This also includes some modernization of the related tests.
+    closes https://github.com/rsyslog/rsyslog/issues/4619
+  * 2021-09-07: core/ratelimiting: fix rate limiting for already parsed messages
+    Rate limiting may not have worked if the considered message had already
+    been parsed (not having NEEDS_PARSING in msgFlags).
+    This affects also imuxsock in its default configuration
+    (useSpecialParser="true" and ratelimit.severity="1")
+  * 2021-09-07: core bugfix: use of property $wday terminates string
+    When $wday is used inside a template, all template parts after it
+    are ignored. For exmaple:
+    template(name="json_filename" type="string" string="/var/log/%$wday%.log")
+    would generate something like "/var/log/0" - the ".log" part would be
+    missing. For the same reason, $wday can not reliably checked in script
+    filters.
+    Thanks to Alain Thivillon for reporting the bug and providing an
+    excellent analysis, which essentiellay was exactly this fix here.
+    closes https://github.com/rsyslog/rsyslog/issues/4670
+  * 2021-09-07: core/queue bugfix: potential misadressing when queue discarded messages
+    When a discard mark was set, the queue was very busy and discarded messages, a
+    NULL pointer access could happen. Depending on circumstances, several problems
+    could occur, including a SEGFAULT. This is now fixed.
+    closes: https://github.com/rsyslog/rsyslog/issues/4437
+  * 2021-09-07: imdiga bugfix: iOverallQueueSize calculation could be incorrect
+    This issue only affects testbench and rsyslog development debugging. The active
+    messages counter, used for synchronizing test steps, went wrong when the queue
+    discarded messages on it's consumer thread. Now fixed.
+  * 2021-09-06: gnutls driver: SAN priority did not work correctly on server side
+    PrioritizeSAN was not propagated when accepting a new connection, this is now fixed.
+    Thanks to Attila Lakatos for the patch.
+  * 2021-08-24: config: implement script-equavalent for $PrivDrop* statements
+    closes https://github.com/rsyslog/rsyslog/issues/891
+
+-------------------------------------------------------------------
 Wed Aug 18 08:20:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2108.0:
