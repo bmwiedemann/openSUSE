@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  6 09:54:21 UTC 2021 - Stean Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Thu Aug  5 11:18:16 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Get rid of ipykernel dependency (requires new ipython)

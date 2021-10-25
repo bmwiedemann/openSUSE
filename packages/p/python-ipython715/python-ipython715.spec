@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-ipython715
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -45,7 +51,7 @@ BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools >= 18.5}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Pygments
 Requires:       python-backcall
 Requires:       python-base >= 3.5
@@ -88,8 +94,13 @@ BuildRequires:  %{python_module matplotlib if (%python-base without python36-bas
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 %if %{with ico}
 BuildRequires:  icoutils
 %endif
@@ -229,6 +240,15 @@ popd
 %endif
 
 %if !%{with test}
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative ipython
+
+%pre iptest
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative iptest
+
 %post
 %python_install_alternative ipython ipython3 ipython.1.gz ipython.3.gz
 %desktop_database_post
