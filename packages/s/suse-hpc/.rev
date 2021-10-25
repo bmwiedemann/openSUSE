@@ -204,4 +204,15 @@
 - Made sure, these macros are backward compatible to Leap 15. (forwarded request 879574 from eeich)</comment>
     <requestid>879575</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>408b70b954722fae643a08dfb978631c</srcmd5>
+    <version>0.5</version>
+    <time>1635167806</time>
+    <user>dimstar_suse</user>
+    <comment>- Cope with the fact that RPM 4.17 no longer has
+  __elflib_exclude_path defined.
+  Thanks to Dominique Leuenberger &amp;lt;dimstar@opensuse.org&amp;gt; for
+  spotting this! (forwarded request 927098 from eeich)</comment>
+    <requestid>927099</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 23 09:08:29 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Cope with the fact that RPM 4.17 no longer has
+  __elflib_exclude_path defined.
+  Thanks to Dominique Leuenberger <dimstar@opensuse.org> for
+  spotting this!
+
+-------------------------------------------------------------------
 Mon Mar 15 07:58:32 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add hooks for extra module files and master packages to
