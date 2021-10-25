@@ -576,4 +576,14 @@ Latest changes:
    (pull request #71), related to issue #50</comment>
     <requestid>926010</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f2b6deaedd6f2102248caefdc7b01f85</srcmd5>
+    <version>0.8.4</version>
+    <time>1635167861</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.4
+  * Make sure tools like modinfo are found also by non-root users
+    (issue#72)</comment>
+    <requestid>927295</requestid>
+  </revision>
 </revisionlist>
