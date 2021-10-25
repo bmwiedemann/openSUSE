@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wadllib
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Navigate HTTP resources using WADL files as guides
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/wadllib
 Source:         https://files.pythonhosted.org/packages/source/w/wadllib/wadllib-%{version}.tar.gz
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module lazr.uri}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,7 +54,7 @@ cd src
 
 %files %{python_files}
 %license COPYING.txt
-%doc README.txt
+%doc README.rst NEWS.rst HACKING.rst
 %{python_sitelib}/*
 
 %changelog
