@@ -16,10 +16,16 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Mako
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        A Python templating language
 License:        MIT
@@ -32,15 +38,18 @@ BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-MarkupSafe >= 0.9.2
 Requires:       python-setuptools
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
-Recommends:     python-Beaker >= 1.1
+Requires(postun):update-alternatives
 %endif
+BuildArch:      noarch
+Recommends:     python-Beaker >= 1.1
 Provides:       python-mako = %{version}
 Obsoletes:      python-mako < %{version}
 %ifpython2
@@ -71,6 +80,10 @@ scoping semantics.
 
 %check
 %pytest
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative mako-render
 
 %post
 %python_install_alternative mako-render

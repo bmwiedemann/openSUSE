@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 16 19:02:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.5:
+  * Fixed some issues with running the test suite which would 
+    be revealed by running tests in random order. 
+
+-------------------------------------------------------------------
+Wed Oct  6 07:34:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove obsolete %suse_version %if
+
+-------------------------------------------------------------------
+Tue Oct  5 14:45:17 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Thu Sep 30 15:22:55 UTC 2021 - Stefan Schubert <schubi@schubi.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Sun Jan 24 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.4:
