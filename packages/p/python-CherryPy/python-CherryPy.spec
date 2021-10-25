@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
@@ -28,14 +34,19 @@ Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/Cherry
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-cheroot >= 8.2.1
 Requires:       python-jaraco.collections
 Requires:       python-more-itertools
 Requires:       python-portend >= 2.1.1
 Requires:       python-zc.lockfile
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Recommends:     python-Routes >= 2.3.1
 Recommends:     python-flup
 Recommends:     python-memcached >= 1.58
@@ -88,6 +99,10 @@ rm pytest.ini
 export TRAVIS="true"
 # testCombinedTools fails with trace in cheroot tests
 %pytest -k 'not testCombinedTools'
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative cherryd 
 
 %post
 %python_install_alternative cherryd
