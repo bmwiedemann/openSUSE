@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -33,13 +39,18 @@ BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-pyudev
 %define oldpython python
 %define cpkg %{oldpython}-rtslib-fb-common
 Requires:       %{cpkg}
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Provides:       python-rtslib = %{version}-%{release}
 Obsoletes:      python-rtslib < %{version}
 %if 0%{?sle_version} >= 150000
@@ -103,6 +114,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %pre
 %{service_add_pre target.service}
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative targetctl
 
 %preun
 %{stop_on_removal target}

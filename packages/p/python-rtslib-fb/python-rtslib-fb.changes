@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 19:14:14 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Sat Nov  7 18:05:32 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Fixed issue in SPEC file w/r/t package split with common.
