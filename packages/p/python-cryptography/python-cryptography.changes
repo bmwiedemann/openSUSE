@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 12 18:54:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add disable-RustExtension.patch in order to avoid a build
+  requirement setuptools_rust
+- Next version (35.0) needs a full Rust toolchain.
+- Clean runtime, build and test requirements
+- Disable python2 build: Not supported anymore
+
+-------------------------------------------------------------------
+Mon Oct  4 07:00:30 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.4.8
+- keep new rust support disabled for now to avoid new dependencies
+
+-------------------------------------------------------------------
 Mon Apr 26 10:07:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary %ifpython3 construct
