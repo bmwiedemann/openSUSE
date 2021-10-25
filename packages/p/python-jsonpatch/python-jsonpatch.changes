@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 12 08:43:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+
+-------------------------------------------------------------------
+Tue Oct  5 14:30:43 UTC 2021 - schubi <schubi@localhost>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Thu Sep 30 13:32:40 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Fri Sep 17 21:02:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't use python setup.py test expression.

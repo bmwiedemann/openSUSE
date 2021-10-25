@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpatch
 Version:        1.32
@@ -28,10 +34,15 @@ Source:         https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonp
 BuildRequires:  %{python_module jsonpointer >= 1.9}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires:       python-jsonpointer >= 1.9
+BuildRequires:  python-rpm-macros >= 20210929
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
+Requires:       python-jsonpointer >= 1.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,6 +65,10 @@ rm %{buildroot}%{_bindir}/jsondiff
 
 %check
 %pyunittest -v tests
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jsonpatch
 
 %post
 %python_install_alternative jsonpatch
