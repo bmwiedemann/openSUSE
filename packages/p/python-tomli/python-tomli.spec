@@ -1,5 +1,5 @@
 #
-# spec file for package python-tomli
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-tomli
+Name:           python-tomli%{psuffix}
 Version:        1.2.1
 Release:        0
 Summary:        A lil' TOML parser
@@ -28,9 +36,19 @@ URL:            https://github.com/hukkin/tomli
 Source:         https://github.com/hukkin/tomli/archive/refs/tags/%{version}.tar.gz#/tomli-%{version}-gh.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
+# Avoid build cycles
+# https://flit.readthedocs.io/en/latest/bootstrap.html
+#!BuildIgnore:  python3-tomli
+#!BuildIgnore:  python36-tomli
+#!BuildIgnore:  python38-tomli
+#!BuildIgnore:  python39-tomli
+#!BuildIgnore:  python310-tomli
+#!BuildIgnore:  ca-certificates
+%if %{with test}
 BuildRequires:  %{python_module pytest-randomly}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,19 +61,24 @@ Tomli is a Python library for parsing TOML
 %setup -q -n tomli-%{version}
 
 %build
+export PYTHONPATH=$PWD
 %pyproject_wheel
 
 %install
+%if ! %{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/tomli
 %{python_sitelib}/tomli-%{version}*-info
+
+%else
+
+%check
+%pytest
+%endif
 
 %changelog
