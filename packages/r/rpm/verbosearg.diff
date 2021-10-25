@@ -1,0 +1,32 @@
+--- ./rpmio/macro.c.orig
++++ ./rpmio/macro.c
+@@ -1141,7 +1141,10 @@ static size_t doExpand(MacroBuf mb, rpmMacroEntry me, ARGV_t argv)
+ 
+ static size_t doVerbose(MacroBuf mb, rpmMacroEntry me, ARGV_t argv)
+ {
+-    mbAppend(mb, rpmIsVerbose() ? '1' : '0');
++    if (argv[1] != NULL)
++	mbAppendStr(mb, rpmIsVerbose() ? argv[1] : "");
++    else
++	mbAppend(mb, rpmIsVerbose() ? '1' : '0');
+     return 0;
+ }
+ 
+@@ -1282,7 +1285,7 @@ static struct builtins_s {
+     { "uncompress",	doUncompress,	1,	ME_FUNC },
+     { "undefine",	doUndefine,	1,	ME_FUNC },
+     { "url2path",	doFoo,		1,	ME_FUNC },
+-    { "verbose",	doVerbose,	0,	ME_FUNC },
++    { "verbose",	doVerbose,	-1,	ME_FUNC },
+     { "warn",		doOutput,	1,	ME_FUNC },
+     { NULL,		NULL,		0 }
+ };
+@@ -1347,7 +1350,7 @@ doExpandThisMacro(MacroBuf mb, rpmMacroEntry me, ARGV_t args, size_t *parsed)
+ 	int nargs = argvCount(args) - 1;
+ 	int needarg = (me->nargs != 0);
+ 	int havearg = (nargs > 0);
+-	if (needarg != havearg) {
++	if (((me->flags & ME_PARSE) || me->nargs >= 0) && needarg != havearg) {
+ 	    mbErr(mb, 1, "%%%s: %s\n", me->name, needarg ?
+ 		    _("argument expected") : _("unexpected argument"));
+ 	    goto exit;

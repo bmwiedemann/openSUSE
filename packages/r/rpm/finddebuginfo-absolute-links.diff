@@ -1,15 +1,6 @@
-From: Jan Blunck <jblunck@suse.de>
-Subject: Do the symbolic links right in the first place
-
-Since brp-symlink relinks symbolic links to enforce a certain policy we should
-do it right in the first place. So this patch changes find-debuginfo.sh scripts
-behavior to reflect that policy.
-
-Signed-off-by: Jan Blunck <jblunck@suse.de>
-
---- ./scripts/find-debuginfo.sh.orig	2017-12-01 15:26:21.939199791 +0000
-+++ ./scripts/find-debuginfo.sh	2017-12-01 15:27:03.153081225 +0000
-@@ -305,7 +305,17 @@ debug_link()
+--- ./scripts/find-debuginfo.in.orig	2021-09-23 20:23:21.967469723 +0000
++++ ./scripts/find-debuginfo.in	2021-09-23 20:24:51.623286108 +0000
+@@ -391,7 +391,17 @@ debug_link()
    local l="/usr/lib/debug$2"
    local t="$1"
    echo >> "$LINKSFILE" "$l $t"

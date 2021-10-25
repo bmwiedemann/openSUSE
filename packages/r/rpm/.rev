@@ -2280,4 +2280,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>894744</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>c55011a96cc2b7f3051477f2d3182794</srcmd5>
+    <version>4.17.0</version>
+    <time>1635167802</time>
+    <user>dimstar_suse</user>
+    <comment>update to rpm-4.17.0</comment>
+    <requestid>923520</requestid>
+  </revision>
 </revisionlist>

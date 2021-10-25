@@ -20,7 +20,6 @@
 %{?!_fillupdir:%define _fillupdir /var/adm/fillup-templates}
 
 %global librpmsover 9
-%global without_bdb 1
 
 Name:           rpm
 BuildRequires:  binutils
@@ -59,54 +58,44 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.16.1.3
+Version:        4.17.0
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
-Source:         http://ftp.rpm.org/releases/rpm-4.16.x/rpm-%{version}.tar.bz2
+Source:         http://ftp.rpm.org/releases/rpm-4.17.x/rpm-%{version}.tar.bz2
 Source1:        RPM-HOWTO.tar.bz2
+Source2:        https://sourceware.org/ftp/debugedit/5.0/debugedit-5.0.tar.xz
+Source3:        python-rpm-packaging.tar.bz2
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
-Source11:       db-4.8.30.tar.bz2
 Source12:       baselibs.conf
 Source13:       rpmconfigcheck.service
-Patch2:         db.diff
-Patch5:         usr-lib-sysimage-rpm.patch
 # quilt patches start here
+Patch5:         usr-lib-sysimage-rpm.patch
 Patch13:        ignore-auxv.diff
 Patch12:        localetag.diff
-Patch15:        dbfsync.diff
 Patch16:        dbrointerruptable.diff
 Patch18:        refreshtestarch.diff
-Patch20:        waitlock.diff
-Patch21:        suspendlock.diff
 Patch24:        brp.diff
 Patch25:        brpcompress.diff
 Patch26:        checkfilesnoinfodir.diff
-Patch27:        finddebuginfo.diff
 Patch29:        findlang.diff
 Patch30:        macrosin.diff
 Patch32:        platformin.diff
 Patch33:        rpmpopt.diff
 Patch34:        rpmrc.diff
-Patch35:        taggedfileindex.diff
 Patch36:        rpmqpack.diff
 Patch38:        build.diff
 Patch43:        rpm-shorten-changelog.diff
 Patch45:        whatrequires-doc.diff
 Patch46:        remove-brp-strips.diff
 Patch47:        requires-ge-macro.diff
-Patch49:        finddebuginfo-absolute-links.diff
 Patch51:        specfilemacro.diff
-Patch55:        debugsubpkg.diff
-Patch56:        debuglink.diff
-Patch57:        debuginfo-mono.patch
 Patch60:        safeugid.diff
 Patch61:        noprereqdeprec.diff
 Patch66:        remove-translations.diff
 Patch67:        headeradddb.diff
-Patch68:        dbprivate.diff
 Patch69:        nobuildcolor.diff
 Patch70:        fileattrs.diff
 Patch71:        nomagiccheck.diff
@@ -121,14 +110,18 @@ Patch99:        enable-postin-scripts-error.diff
 Patch100:       rpm-findlang-inject-metainfo.patch
 Patch102:       emptymanifest.diff
 Patch103:       find-lang-qt-qm.patch
-Patch109:       pythondistdeps.diff
 Patch117:       findsupplements.diff
 Patch122:       db_conversion.diff
 Patch123:       nextiteratorheaderblob.diff
-Patch129:       ndbglue.diff
-Patch130:       dwarf5.diff
 Patch131:       posttrans.diff
-Patch132:       add-dwz-single-file-mode-option.patch
+Patch132:       verbosearg.diff
+Patch200:       finddebuginfo.diff
+Patch201:       finddebuginfo-absolute-links.diff
+Patch202:       debugsubpkg.diff
+Patch203:       debuglink.diff
+Patch204:       debuginfo-mono.patch
+Patch205:       singlefilemode.diff
+Patch300:       python-rpm-packaging.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -233,37 +226,38 @@ Provides and requires generator for .pl files and modules.
 
 %prep
 %setup -q -n rpm-%{version}
+tar -xjf %{SOURCE1}
+tar -xJf %{SOURCE2}
+tar -xjf %{SOURCE3}
+
 rm -rf sqlite
-%if 0%{?!without_bdb:1}
-tar xjf %{SOURCE11}
-ln -s db-4.8.30 db
-cd db
-%patch2 -p1
-cd ..
-chmod -R u+w db/*
-rm -f rpmdb/db.h
-cp build-aux/config.guess build-aux/config.sub db/dist/
-%endif
-%patch5 -p1
-%patch       -P 12 -P 13       -P 15 -P 16       -P 18
-%patch -P 20 -P 21             -P 24 -P 25 -P 26 -P 27       -P 29
-%patch -P 30       -P 32 -P 33 -P 34 -P 35 -P 36       -P 38
-%patch                   -P 43       -P 45 -P 46 -P 47       -P 49
-%patch       -P 51                   -P 55 -P 56 -P 57
-%patch -P 60 -P 61                         -P 66 -P 67 -P 68 -P 69
+%patch -P  5      -P 12 -P 13             -P 16       -P 18
+%patch                         -P 24 -P 25 -P 26             -P 29
+%patch -P 30       -P 32 -P 33 -P 34       -P 36       -P 38
+%patch                   -P 43       -P 45 -P 46 -P 47
+%patch       -P 51                             
+%patch -P 60 -P 61                         -P 66 -P 67       -P 69
 %patch -P 70 -P 71       -P 73       -P 75       -P 77 -P 78
 %patch                               -P 85
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
-%patch -P 109                                           -P 117
-%patch -P 122 -P 123 -P 129 -P 130 -P 131
-%patch132 -p1
+%patch                                                  -P 117
+%patch -P 122 -P 123               -P 131 -P 132
+
+# debugedit patches
+pushd debugedit-5.0
+%patch -P 200 -P 201 -P 202 -P 203 -P 204 -P 205
+popd
+
+# python-rpm-packaging patches
+pushd python-rpm-packaging
+%patch -P 300
+popd
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
 %endif
 
-tar -xjvf %{SOURCE1}
 rm -f m4/libtool.m4
 rm -f m4/lt*.m4
 
@@ -279,6 +273,7 @@ BUILDTARGET="--build=%{_target_cpu}-suse-linux-gnueabi"
 %else
 BUILDTARGET="--build=%{_target_cpu}-suse-linux"
 %endif
+export __FIND_DEBUGINFO=/usr/lib/rpm/find-debuginfo
 
 autoreconf -fi
 ./configure --disable-dependency-tracking --prefix=%{_prefix} --mandir=%{_mandir} --infodir=%{_infodir} \
@@ -295,12 +290,20 @@ autoreconf -fi
 --enable-ndb \
 --enable-bdb-ro \
 --enable-zstd \
-%{?without_bdb: --enable-bdb=no} \
+--enable-sqlite=no \
 %{?with_python: --enable-python} \
 $BUILDTARGET
 
 rm po/de.gmo
 make %{?_smp_mflags}
+
+%if "%{NAME}" != "python-rpm"
+pushd debugedit-5.0
+./configure --bindir=/usr/lib/rpm
+touch find-debuginfo.1
+make
+popd
+%endif
 
 %install
 mkdir -p %{buildroot}/usr/lib
@@ -310,9 +313,6 @@ ln -s ../share/locale %{buildroot}/usr/lib/locale
 mkdir -p %{buildroot}/bin
 %if !0%{?usrmerged}
 ln -s /usr/bin/rpm %{buildroot}/bin/rpm
-%endif
-%if 0%{?!without_bdb:1}
-install -m 644 db3/db.h %{buildroot}/usr/include/rpm
 %endif
 # remove .la file and the static variant of libpopt
 # have to remove the dependency from other .la files as well
@@ -341,8 +341,6 @@ export RPM_BUILD_ROOT
 %ifarch s390x
 [ -f scripts/brp-%_arch-linux ] && sh scripts/brp-%_arch-linux
 %endif
-chmod 755 doc/manual
-rm -rf doc/manual/Makefile*
 rm -f %{buildroot}/usr/lib/rpmpopt
 rm -rf %{buildroot}%{_mandir}/{fr,ja,ko,pl,ru,sk}
 rm -f %{buildroot}%{_prefix}/share/locale/de/LC_MESSAGES/rpm.mo
@@ -383,11 +381,20 @@ sh %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 # so we need to enforce the platform here.
 echo -n "%{_target_cpu}-suse-linux-gnueabi" > %{buildroot}/etc/rpm/platform
 %endif
-%if 0%{?without_bdb:1}
+
 # make ndb the default database backend
 echo "setting the default database backend to 'ndb'"
-sed -i -e '/_db_backend/s/bdb/ndb/' %{buildroot}/usr/lib/rpm/macros
-%endif
+sed -i -e '/_db_backend/s/sqlite/ndb/' %{buildroot}/usr/lib/rpm/macros
+
+# install debugedit files
+pushd debugedit-5.0
+make install-exec DESTDIR="%{buildroot}"
+popd
+
+# install python-rpm-packaging files
+cp -a python-rpm-packaging/fileattrs/*.attr %{buildroot}/usr/lib/rpm/fileattrs
+cp -a python-rpm-packaging/scripts/* %{buildroot}/usr/lib/rpm
+chmod 755 %{buildroot}/usr/lib/rpm/brp-python-bytecompile
 
 %post
 %{fillup_only -an services}
@@ -428,7 +435,7 @@ fi
 %files -f rpm.lang
 %defattr(-,root,root)
 %license 	COPYING
-%doc 	doc/manual
+%doc 	docs/manual
 %doc    RPM-HOWTO
 	/etc/rpm
 %if !0%{?usrmerged}
@@ -481,7 +488,6 @@ fi
 %files build
 %defattr(-,root,root)
 /usr/bin/rpmbuild
-/usr/lib/rpm/libtooldeps.sh
 /usr/lib/rpm/pkgconfigdeps.sh
 /usr/lib/rpm/ocamldeps.sh
 /usr/lib/rpm/elfdeps
@@ -490,9 +496,12 @@ fi
 /usr/lib/rpm/sepdebugcrcfix
 /usr/bin/rpmspec
 /usr/lib/rpm/brp-*
+%exclude /usr/lib/rpm/brp-python-hardlink
+%exclude /usr/lib/rpm/brp-python-bytecompile
 /usr/lib/rpm/check-*
 /usr/lib/rpm/*find*
 /usr/lib/rpm/fileattrs/
+%exclude /usr/lib/rpm/fileattrs/python.attr
 %exclude /usr/lib/rpm/fileattrs/pythondist.attr
 %exclude /usr/lib/rpm/fileattrs/perl*.attr
 /usr/lib/rpm/*.prov
@@ -506,8 +515,11 @@ fi
 
 %files build-python
 %defattr(-,root,root)
+/usr/lib/rpm/fileattrs/python.attr
 /usr/lib/rpm/fileattrs/pythondist.attr
 /usr/lib/rpm/pythondistdeps.py
+/usr/lib/rpm/brp-python-hardlink
+/usr/lib/rpm/brp-python-bytecompile
 
 %files build-perl
 %defattr(-,root,root)

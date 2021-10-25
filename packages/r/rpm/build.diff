@@ -1,17 +1,3 @@
---- db3/configure
-+++ db3/configure
-@@ -10,9 +10,9 @@
- # XXX edit CFLAGS= ... out of invocation args ???
- ARGS="`echo $* | sed -e 's% [^ ]*CFLAGS=[^ ]*%%' -e 's% -[^-][^ ]*%%g' -e 's% --param=[^ ]*%%g' -e 's%--cache-file=.*$%%'`"
- 
--CC="$CC" CFLAGS="$CFLAGS" $db_dist/configure $ARGS \
-+CC="$CC" CFLAGS="$CFLAGS" $db_dist/configure \
- 	--enable-shared --enable-static \
--	--with-uniquename=_rpmdb --srcdir=$db_dist
-+	--with-uniquename=_rpmdb --srcdir=$db_dist --with-pic $ARGS
- 
- mv Makefile Makefile.orig
- cat Makefile.orig | sed -e '/^install[:-]/c\
 --- installplatform
 +++ installplatform
 @@ -118,6 +118,11 @@
