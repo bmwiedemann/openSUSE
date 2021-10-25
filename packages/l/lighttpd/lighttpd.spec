@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.59
+Version:        1.4.60
 Release:        0
 #
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
@@ -39,6 +39,7 @@ Source2:        %{name}.sysconfig
 Source3:        %{name}.keyring
 Source4:        lightytest.sh
 Source7:        lighttpd.logrotate
+Patch0:         harden_lighttpd.service.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  e2fsprogs-devel
@@ -275,6 +276,7 @@ A module to provide PAM authentication in lighttpd.
 
 %prep
 %setup -q -n %{pkg_name}-%{pkg_version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 24 15:02:25 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.60:
+  * HTTP/2 smoother and lower memory use (in general)
+  * HTTP/2 tuning to better handle aggressive client initial
+    requests
+  * reduce memory footprint; workaround poor glibc behavior;
+    jemalloc is better
+  * mod_magnet lua performance improvements
+  * mod_dirlisting performance improvements and new caching option
+  * memory constraints for extreme edge cases in mod_dirlisting,
+    mod_ssi, mod_webdav
+  * connect(), write(), read() time limits on backends (separate
+    from client timeouts)
+  * lighttpd restarts if large discontinuity in time occurs
+    (embedded systems)
+  * RFC7233 Range support for all non-streaming responses, not
+    only static files
+  * connect() to backend now has default 8 second timeout
+    (configurable)
+
+-------------------------------------------------------------------
+Tue Oct  5 09:16:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_lighttpd.service.patch
+
+-------------------------------------------------------------------
 Tue Sep 21 13:57:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Fix squatted descriptions.
