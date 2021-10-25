@@ -1,7 +1,7 @@
 #
 # spec file for package libchardet
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libchardet1
 %define _name   chardet
 Name:           libchardet
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Mozilla Universal Chardet library
 License:        MPL-1.1
-Group:          Development/Libraries/C and C++
-Url:            https://github.com/Joungkyun/libchardet
-Source:         https://github.com/Joungkyun/libchardet/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/Joungkyun/libchardet
+Source:         https://github.com/Joungkyun/libchardet/releases/download/%{version}/libchardet-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.12
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 Mozilla's Universal Charset Detector C/C++ API.
 
 %package -n %{lname}
 Summary:        Mozilla Universal Chardet library
-Group:          System/Libraries
 
 %description -n %{lname}
 Mozilla's Universal Charset Detector C/C++ API.
 
 %package devel
 Summary:        Development files of libchardet
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
@@ -59,7 +56,7 @@ application which will use libchardet.
 %build
 %configure \
   --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -74,13 +71,11 @@ mv -f %{buildroot}%{_datadir}/doc/%{name}/ \
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}/
 %{_bindir}/%{_name}-config
 %{_libdir}/%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{_name}/
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{_name}.pc
