@@ -224,4 +224,12 @@
   - Fixed a resource leak in ``WheelFile.open()`` (PR by Jon Dufresne)</comment>
     <requestid>867605</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>1411dd5958e62232646f87d2b6ce16eb</srcmd5>
+    <version>0.36.2</version>
+    <time>1635167813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923472</requestid>
+  </revision>
 </revisionlist>
