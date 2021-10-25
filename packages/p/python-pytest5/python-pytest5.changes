@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 18 14:16:06 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Unpin pluggy in egg metadata
+
+-------------------------------------------------------------------
 Sun Feb 14 20:35:39 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - *Really* fix the conditional to work on all distros using

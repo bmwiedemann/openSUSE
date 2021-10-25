@@ -87,6 +87,8 @@ newer Pytest versions
 %prep
 %setup -q -n pytest-%{version}
 %autopatch -p1
+# unpin pluggy: v1.0 did not remove any API which was not deprecated in time
+sed -i '/pluggy/ s/,<1.0//' setup.py
 
 %build
 %python_build
