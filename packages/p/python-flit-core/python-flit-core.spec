@@ -1,5 +1,5 @@
 #
-# spec file for package python-flit-core
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,21 +16,33 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-flit-core
-Version:        3.2.0
+Name:           python-flit-core%{psuffix}
+Version:        3.4.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
 URL:            https://github.com/takluyver/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module base >= 3.6}
+%if %{with test}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-toml
+BuildRequires:  unzip
+Requires:       python-tomli
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,19 +53,29 @@ Flit is a simple way to put Python packages and modules on PyPI.
 %setup -q -n flit_core-%{version}
 
 %build
-%pyproject_wheel
+# https://flit.readthedocs.io/en/latest/bootstrap.html
+python3 build_dists.py
 
+%if !%{with test}
 %install
-%pyproject_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/flit_core/tests
-%fdupes %{buildroot}%{$python_sitelib}
+%{python_expand # do manually what pip would do
+mkdir -p %{buildroot}%{$python_sitelib}
+unzip dist/flit_core-%{version}-py3-none-any.whl -d %{buildroot}%{$python_sitelib}
+rm -r  %{buildroot}%{$python_sitelib}/flit_core/tests
 }
+%python_compileall
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %{python_sitelib}/flit_core
 %{python_sitelib}/flit_core-%{version}*-info
+%endif
 
 %changelog

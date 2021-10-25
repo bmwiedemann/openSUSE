@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 15 19:27:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Break build cycle by using upstream recommended bootstrap method
+  https://flit.readthedocs.io/en/latest/bootstrap.html
+
+-------------------------------------------------------------------
+Fri Oct 15 17:32:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 3.4
+  * Python 3.6 or above is now required, both for flit and
+    flit_core.
+  * Add a --setup-py option to flit build and flit publish,
+    and a warning when neither this nor --no-setup-py are
+    specified (PR #431). A future version will stop
+    generating setup.py files in sdists by default.
+  * Add support for standardised editable installs - pip
+    install -e - according to PEP 660 (PR #400).
+  * Add a --pypirc option for flit publish to specify an
+    alternative path to a .pypirc config file describing
+    package indexes (PR #434).
+  * Fix installing dependencies specified in a [project]
+    table (PR #433)
+  * Fix building wheels when SOURCE_DATE_EPOCH (see
+    Reproducible builds) is set to a date before 1980 (PR
+    #448).
+  * Switch to using the tomli TOML parser, in common with
+    other packaging projects (PR #438). This supports TOML
+    version 1.0.
+  * Add a document on Bootstrapping (PR #441).
+- Release Version 3.3
+  * PKG-INFO files in sdists are now generated the same way
+    as METADATA in wheels, fixing some issues with sdists
+    (PR #410).
+  * flit publish now sends SHA-256 hashes, fixing uploads
+    to GitLab package repositories (PR #416).
+  * The [project] metadata table from PEP 621 is now fully
+    supported and documented. Projects using this can now
+    specify requires = ["flit_core >=3.2,<4"] in the
+    [build-system] table.
+- Multibuild: break another depcycle with
+  pytest/importlib-metadata/tomli
+
+-------------------------------------------------------------------
 Wed Apr 14 19:29:23 UTC 2021 - Matthias Bach <marix@marix.org>
 
 - Update to version 3.2
