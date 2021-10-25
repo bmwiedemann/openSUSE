@@ -16,7 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define svngroup svn
 %define svnuser svn
 %define sqlite_minimum_version 3.8.2
@@ -46,6 +45,7 @@ Source4:        contrib-1804739.tar.bz2
 Source10:       subversion.sysconfig.svnserve
 Source14:       svnserve.service
 Source15:       svnserve.tmpfiles
+Source16:       svn.sysusers
 Source42:       subversion.svngrep.sh
 Source43:       subversion.svndiff.sh
 Source50:       https://people.apache.org/keys/group/subversion.asc#/subversion.keyring
@@ -82,6 +82,7 @@ BuildRequires:  python3-py3c
 BuildRequires:  python3-xml
 BuildRequires:  ruby-devel >= 1.8.2
 BuildRequires:  swig
+BuildRequires:  sysuser-tools
 BuildRequires:  update-alternatives
 BuildRequires:  utf8proc-devel
 BuildRequires:  pkgconfig(apr-1) >= 1.3.0
@@ -97,7 +98,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildConflicts: pkgconfig(liblz4) = 124
 Requires:       libsqlite3-0 >= %{sqlite_minimum_version}
 Requires(post): %fillup_prereq
-Requires(pre):  shadow
+%sysusers_requires
 Recommends:     %{name}-bash-completion
 # workaround for boo#969159
 Conflicts:      libsvn_auth_kwallet-1-0 < %{version}
@@ -248,6 +249,7 @@ parameters and keywords for the svn command and other tools.
 sed -i -e 's#%{_bindir}/env python#%{_bindir}/python3#' subversion/tests/cmdline/*.py
 
 %build
+%sysusers_generate_pre %{SOURCE16} %{name} system-user-svn.conf
 # Re-boot strap, needed for patch37
 PATH=%{_prefix}/bin:$PATH ./autogen.sh --release
 
@@ -400,6 +402,9 @@ find %{buildroot}%{_docdir}/%{name} -type f -print0 | xargs -0 chmod 644
 rm -rf tools/*/*.in
 rm -rf doc/doxygen/html/installdox
 
+# sysusers
+install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-svn.conf
+
 %check
 export LANG=C LC_ALL=C
 
@@ -423,9 +428,7 @@ ln -s /dev/shm/svn-test-work subversion/tests/cmdline/
 %make_build davautocheck CLEANUP=true FS_TYPE=bdb || (cat fails.log; exit 1)
 %endif
 
-%pre
-getent group %{svngroup} >/dev/null || groupadd -r %{svngroup}
-getent passwd %{svnuser} >/dev/null || useradd -r -g %{svngroup} -d /srv/svn -s /sbin/nologin -c "user for Apache Subversion svnserve" %{svnuser}
+%pre -f %{name}.pre
 %service_add_pre svnserve.service
 
 %preun
@@ -468,6 +471,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/svnserve.conf
 %dir %attr(755,%{svnuser},%{svngroup}) /srv/svn
 %{_unitdir}/svnserve.service
 %{_tmpfilesdir}/svnserve.conf
+%{_sysusersdir}/system-user-svn.conf
 %attr(755,root,root) %{_bindir}/svn
 %attr(755,root,root) %{_bindir}/svnadmin
 %attr(755,root,root) %{_bindir}/svndiff
