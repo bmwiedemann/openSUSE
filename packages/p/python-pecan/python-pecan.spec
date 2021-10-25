@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pecan
@@ -44,15 +50,20 @@ BuildRequires:  uwsgi
 # we need sqlite module
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.8
 Requires:       python-WebTest >= 1.3.1
 Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
 Requires:       python-six
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %if 0%{?suse_version}
 Suggests:       python-Genshi
@@ -83,6 +94,11 @@ sed -ie "/^pep8$/d" test-requirements.txt
 
 %check
 %pyunittest discover -v
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pecan
+%python_libalternatives_reset_alternative gunicorn_pecan
 
 %post
 %python_install_alternative pecan

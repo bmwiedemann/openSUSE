@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 14:24:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Fri Oct  1 09:26:15 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Thu May 27 06:49:51 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest macro
