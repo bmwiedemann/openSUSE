@@ -275,4 +275,12 @@
     locale file to be loaded and only allow files within Babel's data directory.</comment>
     <requestid>892302</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c7a4aaba6071660b6168161a9fc1de0f</srcmd5>
+    <version>2.9.1</version>
+    <time>1635167812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923431</requestid>
+  </revision>
 </revisionlist>

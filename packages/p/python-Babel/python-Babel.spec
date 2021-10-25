@@ -16,6 +16,13 @@
 #
 
 
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Babel
@@ -31,10 +38,15 @@ BuildRequires:  %{python_module pytest >= 2.3.5}
 BuildRequires:  %{python_module pytz >= 2015.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-pytz >= 2015.7
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %ifpython2
 Obsoletes:      %{oldpython}-babel < %{version}
@@ -67,6 +79,8 @@ A collection of tools for internationalizing Python applications.
 # Since /usr/bin/pybabel became ghosted to be used with update-alternatives, we have to get rid
 # of the old binary resulting from the non-update-alternativies-ified package:
 [ -h %{_bindir}/pybabel ] || rm -f %{_bindir}/pybabel
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pybabel
 
 %post
 %python_install_alternative pybabel
