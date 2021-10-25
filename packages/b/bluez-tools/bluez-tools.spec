@@ -1,7 +1,7 @@
 #
 # spec file for package bluez-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluez-tools
-Version:        0.1.38+git20190428
+Version:        0.1.38+git.20201024T225355.f653217
 Release:        0
 Summary:        A set of tools to manage bluetooth devices
 License:        GPL-2.0-or-later
