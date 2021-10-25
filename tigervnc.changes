@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 21 10:16:38 UTC 2021 - Joan Torres <joan.torres@suse.com>
+
+- Not using System crypto policies for <= sle15-sp3 (boo#1191394)
+
+-------------------------------------------------------------------
 Tue Sep 28 10:58:00 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - contains fix for crash in free() when using "-f" option of

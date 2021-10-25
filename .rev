@@ -773,4 +773,12 @@
   vncpasswd  command (bsc#1171519)</comment>
     <requestid>921976</requestid>
   </revision>
+  <revision rev="83" vrev="18">
+    <srcmd5>7e337765143588079d73744cdcdc8343</srcmd5>
+    <version>1.10.1</version>
+    <time>1635167834</time>
+    <user>dimstar_suse</user>
+    <comment>- Not using System crypto policies for &lt;= sle15-sp3 (boo#1191394)</comment>
+    <requestid>926742</requestid>
+  </revision>
 </revisionlist>

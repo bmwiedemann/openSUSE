@@ -265,7 +265,9 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch21 -p1
 %patch22 -p1
 %patch8 -p1
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %patch23 -p1
+%endif
 %patch24 -p1
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
