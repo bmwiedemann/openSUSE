@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 14 08:32:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use unconditional load: the %{?load…} construct does not work
+  with RPM 4.17, and not being able to load would give completely
+  different result anyway.
+- Fix the construct to block invalid ruby versions. The syntax
+  %{ruby:3 < 3.1} 'worked', but essentially just translated to
+  %{ruby} in older RPM versions.
+
+-------------------------------------------------------------------
 Tue Aug  3 08:58:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Switch to Ruby 3.0 on Tumbleweed

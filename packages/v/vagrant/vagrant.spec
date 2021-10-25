@@ -75,7 +75,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # we use the rpm macros in this spec
 # need to load them *after* defining the rb_* macros
-%{?load:%{SOURCE97}}
+%{load:%{SOURCE97}}
 
 %global vagrant_plugin_name vagrant
 
@@ -86,9 +86,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 #  s.required_ruby_version     = ">= 2.5", "< 3.1"
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby:3 < 3.1}
+BuildRequires:  %{ruby} < 3.1
 %else
-BuildRequires:  %{ruby:2 >= 2.5}
+BuildRequires:  %{ruby} >= 2.5
 %endif
 #
 #
