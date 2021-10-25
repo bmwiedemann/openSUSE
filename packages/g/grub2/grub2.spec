@@ -324,7 +324,7 @@ Requires:       grub2-%{grubarch} = %{version}-%{release}
 %ifarch s390x
 # required utilities by grub2-s390x-04-grub2-install.patch
 # use 'showconsole' to determine console device. (bnc#876743)
-Requires:       /sbin/showconsole
+Requires:       (/sbin/showconsole or /usr/sbin/showconsole)
 Requires:       kexec-tools
 # for /sbin/zipl used by grub2-zipl-setup
 Requires:       s390-tools

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 08:26:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fix installation on usrmerged s390x
+
+-------------------------------------------------------------------
 Wed Sep 22 14:29:12 UTC 2021 - rw@suse.com
 
 - Improve support for SLE Micro 5.1 on s390x.  (bsc#1190395)
