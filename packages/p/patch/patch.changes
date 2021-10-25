@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 29 10:33:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not query %{verbose} to add V=1 or not: verbose changed
+  semantics between rpm versions and there is currently no variant
+  supporting rpm < 4.17 and rpm >= 4.17.
+
+-------------------------------------------------------------------
 Wed May  9 09:52:04 UTC 2018 - jdelvare@suse.de
 
 - ed-style-07-dont-leak-tmp-file.patch,
