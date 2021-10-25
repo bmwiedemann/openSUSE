@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 21 11:29:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Automatic systemd hardening effort by the security team. This has
+  not been tested. For details please see
+  https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort 
+
+-------------------------------------------------------------------
 Wed Nov 25 15:04:45 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
