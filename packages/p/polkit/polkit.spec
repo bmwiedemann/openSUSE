@@ -60,7 +60,8 @@ BuildRequires:  pkgconfig(systemd)
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
 Requires:       dbus-1
-Requires:       libpolkit0 = %{version}-%{release}
+Requires:       libpolkit-agent-1-0 = %{version}-%{release}
+Requires:       libpolkit-gobject-1-0 = %{version}-%{release}
 %sysusers_requires
 Requires(post): permissions
 %systemd_ordering
@@ -79,7 +80,8 @@ processes.
 Summary:        Development files for PolicyKit
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
-Requires:       libpolkit0 = %{version}
+Requires:       libpolkit-agent-1-0 = %{version}
+Requires:       libpolkit-gobject-1-0 = %{version}
 Requires:       pkgconfig
 Requires:       typelib-1_0-Polkit-1_0 = %{version}
 
@@ -96,17 +98,31 @@ BuildArch:      noarch
 %description doc
 Development documentation for PolicyKit Authorization Framework.
 
-%package -n libpolkit0
-Summary:        PolicyKit Authorization Framework -- Libraries
+%package -n libpolkit-agent-1-0
+Summary:        PolicyKit Authorization Framework -- Agent Library
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
+Obsoletes:      libpolkit0 < %version-%release
 
-%description -n libpolkit0
+%description -n libpolkit-agent-1-0
 PolicyKit is a toolkit for defining and handling authorizations.
 It is used for allowing unprivileged processes to speak to privileged
 processes.
 
-This package contains the libraries only.
+This package contains the agent library only.
+
+%package -n libpolkit-gobject-1-0
+Summary:        PolicyKit Authorization Framework -- GObject Library
+Group:          System/Libraries
+Requires:       %{name} >= %{version}
+Obsoletes:      libpolkit0 < %version-%release
+
+%description -n libpolkit-gobject-1-0
+PolicyKit is a toolkit for defining and handling authorizations.
+It is used for allowing unprivileged processes to speak to privileged
+processes.
+
+This package contains the gobject library only.
 
 %package -n typelib-1_0-Polkit-1_0
 Summary:        PolicyKit Authorization Framework -- Introspection bindings
@@ -175,11 +191,15 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %verify_permissions -e %{_bindir}/pkexec
 %verify_permissions -e %{_libexecdir}/polkit-1/polkit-agent-helper-1
 
-%post -n libpolkit0 -p /sbin/ldconfig
-%postun -n libpolkit0 -p /sbin/ldconfig
+%post -n libpolkit-agent-1-0 -p /sbin/ldconfig
+%postun -n libpolkit-agent-1-0 -p /sbin/ldconfig
+%post -n libpolkit-gobject-1-0 -p /sbin/ldconfig
+%postun -n libpolkit-gobject-1-0 -p /sbin/ldconfig
 
-%files -n libpolkit0
+%files -n libpolkit-agent-1-0
 %{_libdir}/libpolkit-agent-1.so.*
+
+%files -n libpolkit-gobject-1-0
 %{_libdir}/libpolkit-gobject-1.so.*
 
 %files -n typelib-1_0-Polkit-1_0

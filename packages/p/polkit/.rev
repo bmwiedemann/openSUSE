@@ -677,4 +677,12 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
   is only for admin changes.</comment>
     <requestid>907023</requestid>
   </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>69c3f77d10a073248ff0b82f19f99c10</srcmd5>
+    <version>0.118</version>
+    <time>1635167828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926578</requestid>
+  </revision>
 </revisionlist>

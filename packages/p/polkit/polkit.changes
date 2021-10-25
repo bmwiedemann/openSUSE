@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 15:12:07 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- fork libpolkit0 package into libpolkit-agent-1-0 and libpolkit-gobject-1-0
+  as mandated. bsc#1191781
+
+-------------------------------------------------------------------
 Sun Jul 18 12:16:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers
