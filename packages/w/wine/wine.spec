@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.19
-Version:        6.19
+%define realver 6.20
+Version:        6.20
 Release:        0
 
 %if "%{flavor}" != ""
@@ -95,9 +95,13 @@ BuildRequires:  valgrind-devel
 %if 0%{?suse_version} >= 1550
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
+BuildRequires:  mingw64-zlib-devel
+Requires:       mingw64-libz
 %endif
 %ifarch %ix86
 BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-zlib-devel
+Requires:       mingw32-libz
 %endif
 %endif
 BuildRequires:  pkgconfig(egl)
@@ -139,7 +143,7 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-#Patch0:         susefixes.patch
+Patch0:         wine-fix-faudio.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
 Recommends:     wine-mono >= 6.1.1
@@ -158,7 +162,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.19
+%define staging_version 6.20
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

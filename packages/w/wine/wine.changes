@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 23 08:22:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.20 development release
+  - MSXml, XAudio, DInput and a few other modules converted to PE.
+  - A few system libraries are bundled with the source to support PE builds.
+  - HID joystick is now the only supported joystick backend in DirectInput.
+  - Better support for MSVCRT builds in Winelib.
+  - Various bug fixes.
+- update staging to 6.20 release
+- wine-fix-faudio.patch: fix build
+
+-------------------------------------------------------------------
 Sat Oct  9 07:57:53 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.19 development release

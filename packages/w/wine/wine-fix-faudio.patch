@@ -1,0 +1,10 @@
+--- wine-6.20/libs/faudio/src/FAudio_platform_win32.c.xx	2021-10-23 16:09:26.791259433 +0200
++++ wine-6.20/libs/faudio/src/FAudio_platform_win32.c	2021-10-23 16:09:38.291259232 +0200
+@@ -622,6 +622,7 @@
+ {
+ 	if (!data) return 0;
+ 	FAudio_free(data);
++	return 0;
+ }
+ 
+ FAudioIOStream* FAudio_memopen(void *mem, int len)

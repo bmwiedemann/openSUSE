@@ -4164,4 +4164,19 @@
 - update staging to 6.19 release</comment>
     <requestid>924349</requestid>
   </revision>
+  <revision rev="355" vrev="1">
+    <srcmd5>6ba1f07d952e569118694635308bd746</srcmd5>
+    <version>6.20</version>
+    <time>1635167844</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.20 development release
+  - MSXml, XAudio, DInput and a few other modules converted to PE.
+  - A few system libraries are bundled with the source to support PE builds.
+  - HID joystick is now the only supported joystick backend in DirectInput.
+  - Better support for MSVCRT builds in Winelib.
+  - Various bug fixes.
+- update staging to 6.20 release
+- wine-fix-faudio.patch: fix build</comment>
+    <requestid>927182</requestid>
+  </revision>
 </revisionlist>
