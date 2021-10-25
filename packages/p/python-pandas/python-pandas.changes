@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Oct 20 12:29:00 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 1.3.4
+  * Fixed regression in DataFrame.convert_dtypes() incorrectly
+    converts byte strings to strings (GH43183)
+  * Fixed regression in GroupBy.agg() where it was failing
+    silently with mixed data types along axis=1 and MultiIndex (GH43209)
+  * Fixed regression in merge() with integer and NaN keys
+    failing with outer merge (GH43550)
+  * Fixed regression in DataFrame.corr() raising ValueError with
+    method="spearman" on 32-bit platforms (GH43588)
+  * Fixed performance regression in MultiIndex.equals() (GH43549)
+  * Fixed performance regression in GroupBy.first() and GroupBy.last()
+    with StringDtype (GH41596)
+  * Fixed regression in Series.cat.reorder_categories() failing to
+    update the categories on the Series (GH43232)
+  * Fixed regression in Series.cat.categories() setter failing to
+    update the categories on the Series (GH43334)
+  * Fixed regression in read_csv() raising UnicodeDecodeError exception
+    when memory_map=True (GH43540)
+  * Fixed regression in DataFrame.explode() raising AssertionError
+    when column is any scalar which is not a string (GH43314)
+  * Fixed regression in Series.aggregate() attempting to pass args
+    and kwargs multiple times to the user supplied func in certain cases (GH43357)
+  * Fixed regression when iterating over a DataFrame.groupby.rolling
+    object causing the resulting DataFrames to have an incorrect index if the input groupings were not sorted (GH43386)
+  * Fixed regression in DataFrame.groupby.rolling.cov() and 
+    DataFrame.groupby.rolling.corr() computing incorrect results if the
+    input groupings were not sorted (GH43386)
+  * Fixed bug in pandas.DataFrame.groupby.rolling() and
+    pandas.api.indexers.FixedForwardWindowIndexer leading to
+    segfaults and window endpoints being mixed across groups (GH43267)
+  * Fixed bug in GroupBy.mean() with datetimelike values
+    including NaT values returning incorrect results (GH43132)
+  * Fixed bug in Series.aggregate() not passing the first args
+    to the user supplied func in certain cases (GH43357)
+  * Fixed memory leaks in Series.rolling.quantile() and
+    Series.rolling.median() (GH43339)
+
+-------------------------------------------------------------------
 Mon Sep 20 18:28:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.3.3
