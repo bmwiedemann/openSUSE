@@ -2640,7 +2640,6 @@ Inside the plan, top-level properties include:
       - As a consequence, the following characters will be **removed**:
         - `U+27F5` LONG LEFTWARDS ARROW
         - `U+27F6` LONG RIGHTWARDS ARROW
-    - Remove `NWID` and `WWID` OpenType feature.
   - `fixed`: Apply `fontconfig-mono` changes and further remove ligations.
 * `serifs`: Optional, String, configures style of serifs.
   - When set to `slab`, the font will be converted into slab-serif.
@@ -3098,8 +3097,8 @@ It is possible to create a customized TTC build by using the following method:
    from = ["iosevka-custom1", "iosevka-custom-2"]
    ```
  2. Run build with the following command:
-  - `npm run built -- ttc::iosevka-custom`: Create TTCs from collection `iosevka-custom`; The file will be saved into `dist/.ttc`.
-  - `npm run built -- super-ttc::iosevka-custom`: Create a single-file TTC from collection `iosevka-custom`; The file will be saved into `dist/.super-ttc`.
+  - `npm run build -- ttc::iosevka-custom`: Create TTCs from collection `iosevka-custom`; The file will be saved into `dist/.ttc`.
+  - `npm run build -- super-ttc::iosevka-custom`: Create a single-file TTC from collection `iosevka-custom`; The file will be saved into `dist/.super-ttc`.
 
 ## For Chinese and Japanese users...
 
