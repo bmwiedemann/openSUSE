@@ -39,4 +39,54 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>916925</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>348fd3e46b7d755ac85a77e21677cb81</srcmd5>
+    <version>nightly1730</version>
+    <time>1635167839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version nightly1730:
+  * fix build on glibc 2.34 (#5872)
+  * Update translations (2021-10-16) (#5867)
+- Update to version nightly1728:
+  * gl_format_reinterpreter.cpp: attempt to skip D24S8 to RGBA8 reinterpretation fast path for older nvidia GPUs,
+- Update to version nightly1727:
+  * video_core: Disable disk shader cache when GL_ARB_get_program_binary is unsupported (#5785)
+  * Update README.md (#5855)
+  * (zhaowenlan1779) android/applets: Implement Mii Selector
+  * gl_shader_gen.cpp: Fix separable shaders when GL_EXT_clip_cull_distance is not supported
+  * gl_rasterizer.cpp: don't check for GL_ARB_copy_image when using GLES
+  * video_core/CMakeLists.txt: Use toolchain cmake in shader header generator
+  * gl_shader_decompiler: Improve performance of accurate_mul on Android.
+  * Shield TV driver bug workaround
+  * gl_shader_gen.cpp:fix implicit type conversion error for gles
+  * common/logging: Create a new backed for android's logcat
+  * gl_shader_util: Specify default precision for uimage2D
+  * video_core: implement optimized D24S8-&gt;RGBA8 reinterpreters
+  * Use immutable storage when available
+  * android: disable OpenGL debug message again
+  * video_core: implement GLES depth/stencil downloads
+  * video_core: fix texture filters in GLES
+  * android: Update .gitignore for CXX compile cache.
+  * android: renderer_opengl: Various fixes for GLES.
+  * android: log: TrimSourcePath: Cannot be constexpr.
+  * android: video_core: Enable HW shadows and texture barrier on GLES.
+  * video_core: gl_shader_manager: Only set shader samplers on fragment shader.
+  * android: video_core: Require GLES 3.2 in shaders.
+  * android: video_core: gl_rasterizer_cache: Make cache access thread safe.
+  * android: audio_core: Remove noisy log.
+  * core/CmakeLists.txt: correct mic.h order
+  * android: renderer_opengl: Partially implement glLogicOp on GLES.
+  * android: renderer_opengl: Optimize GetTexImageOES and fix bugs.
+  * android: gl_rasterizer_cache: Skip costly shutdown procedure.
+  * (jroweboy)gl_rasterizer_cache.cpp: Check Framebuffer Status
+  * Perf: Remove more breakpoint checking in the interpreter. Move filtering earlier in the logging chain
+  * use separate texture buffer for light and fog
+- Update to version nightly1724:
+  * dsp_interface: Move sink to the last in member list (#5844)
+- Update to version nightly1723:
+  * CI: Decouple clang-format from the linux build matrix (#5838)
+  * core.h: remove nodiscard for SendSignal (#5837)
+</comment>
+    <requestid>927178</requestid>
+  </revision>
 </revisionlist>
