@@ -1,7 +1,7 @@
 #
-# spec file for package qscintilla
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ ExclusiveArch:  do_not_build
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 %define sonum   15
 Name:           qscintilla%{?psuffix}
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only
@@ -203,7 +203,6 @@ pushd Python
 %pyqt_install
 popd
 %endif
-
 
 %post -n libqscintilla2_%{_qt}-%{sonum} -p /sbin/ldconfig
 %postun -n libqscintilla2_%{_qt}-%{sonum} -p /sbin/ldconfig

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 24 16:16:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.13.1
+  * Documented how to build for multiple architectures on macOS.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Tue Jul  6 12:09:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the python3Y-qscintilla-qt5-sip obsoletion.
