@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:48:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3-base: Fix execution of test suite. Otherwise
+  we fail with
+  ./t0282-gpt-move-backup.sh: /usr/bin/python3: bad interpreter: No
+  such file or directory.
+
+-------------------------------------------------------------------
+Mon Sep 20 07:35:15 CEST 2021 - aschnell@suse.com
+
+- run checks during build
+- added patches:
+  tests-disable.patch
+
+-------------------------------------------------------------------
 Mon Jul 26 16:50:36 CEST 2021 - aschnell@suse.com
 
 - update to version 3.4:

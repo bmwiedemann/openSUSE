@@ -74,6 +74,7 @@ Patch101:       fatresize-fix-getting-dev-name.patch
 # Tests patches
 Patch156:       tests-add-helper-require_swap_.patch
 Patch157:       tests-add-dev-md-check-to-t6100.patch
+Patch158:       tests-disable.patch
 
 # SUSE tests patches
 Patch200:       tests-adapt-to-SUSE.patch
@@ -87,6 +88,7 @@ BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkg-config
+BuildRequires:  python3-base
 BuildRequires:  readline-devel
 PreReq:         %install_info_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -157,6 +159,7 @@ to develop applications that require these.
 %patch101 -p1
 %patch156 -p1
 %patch157 -p1
+%patch158 -p1
 %patch200 -p1
 
 %build
@@ -169,6 +172,9 @@ AUTOPOINT=true autoreconf --force --install
 		--enable-selinux		\
 		--disable-silent-rules
 make %{?_smp_mflags}
+
+%check
+make check
 
 %install
 %make_install
