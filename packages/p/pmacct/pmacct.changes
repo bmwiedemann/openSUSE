@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 19 09:52:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * pmacct.nfacctd.service
+  * pmacct.pmacctd.service
+  * pmacct.sfacctd.service
+
+-------------------------------------------------------------------
 Sun Mar 14 15:56:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.7.6
