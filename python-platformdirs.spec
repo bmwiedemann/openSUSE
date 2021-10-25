@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-platformdirs
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT
@@ -31,8 +31,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/platformdirs/pl
 Patch0:         no-furo.patch
 BuildRequires:  %{python_module appdirs == 1.4.4}
 BuildRequires:  %{python_module pytest >= 6}
-BuildRequires:  %{python_module pytest-cov >= 2.7}
 BuildRequires:  %{python_module pytest-mock >= 3.6}
+BuildRequires:  %{python_module setuptools_scm >= 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,6 +56,7 @@ HTML Documentation and examples for %{name}.
 
 %build
 %python_build
+
 PYTHONPATH=src sphinx-build -b html docs/ docs/build/html
 rm -r docs/build/html/.{buildinfo,doctrees}
 
@@ -64,12 +65,14 @@ rm -r docs/build/html/.{buildinfo,doctrees}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm tox.ini
 %pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/platformdirs*
+%{python_sitelib}/platformdirs
+%{python_sitelib}/platformdirs-%{version}*-info
 
 %files -n %{name}-doc
 %doc docs/build/html/
