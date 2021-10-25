@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 21 10:15:38 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to freerdp 2.4.1
+
+  Important security issues, boo#1191895:
+  *  CVE-2021-41159: Improper client input validation for gateway connections allows to overwrite memory
+  *  CVE-2021-41160: Improper region checks in all clients allow out of bound write to memory
+ 
+  Noteworthy changes:
+  * Refactored RPC gateway parsing code
+  * OpenSSL 3.0 compatibility fixes
+  * USB redirection: fixed transfer lengths
+
+  Fixed issues:
+  * #gh:FreeRDP/FreeRDP#7363: Length checks in ConvertUTF8toUTF16
+  * #gh:FreeRDP/FreeRDP#7349: Added checks for bitmap width and heigth values
+
+- Force library update to the latest, renamed versions (followup to
+  boo#1191755)
+
+-------------------------------------------------------------------
+Wed Oct 20 06:56:31 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Renamed libraries to follow packaging standards as requested in
+  boo#1191755
+
+-------------------------------------------------------------------
 Thu Oct  7 17:15:54 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Finally nailed it: CMAKE_INSTALL_LIBDIR is absolute on Leaps and

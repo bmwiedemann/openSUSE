@@ -31,6 +31,7 @@
 #global _with_gss 1
 
 %define major_version 2
+%define libfreerdp_package %{major_version}-%{major_version}
 %define uwac_version 0
 %define uwac_package %{uwac_version}-%{uwac_version}
 %ifarch aarch64 %{arm}
@@ -38,7 +39,7 @@
 %endif
 
 Name:           freerdp
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -88,12 +89,12 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xv)
-Requires:       lib%{name}%{major_version} = %{version}-%{release}
-Requires:       libwinpr%{major_version} = %{version}-%{release}
 %{?_with_ffmpeg:
 BuildRequires:  pkgconfig(libavcodec) >= 57.48.101
 BuildRequires:  pkgconfig(libavutil)
 }
+# force installation of latest library version
+Requires:       lib%{name}%{libfreerdp_package} = %{version}-%{release}
 
 %description
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
@@ -127,13 +128,15 @@ This package contains a proxy that allows to select specific features and
 channels allowed for all connections passing through.
 It allows monitoring of the running sessions.
 
-%package -n lib%{name}%{major_version}
+%package -n lib%{name}%{libfreerdp_package}
 Summary:        Remote Desktop Viewer client library
 Group:          System/Libraries
 Obsoletes:      lib%{name} < %{version}-%{release}
 Provides:       lib%{name} = %{version}-%{release}
+Obsoletes:      lib%{name}2 < %{version}-%{release}
+Provides:       lib%{name}2 = %{version}-%{release}
 
-%description -n lib%{name}%{major_version}
+%description -n lib%{name}%{libfreerdp_package}
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
 following the Microsoft Open Specifications. This package provides the shared
 libraries used by the client.
@@ -141,30 +144,33 @@ libraries used by the client.
 %package devel
 Summary:        Development Files for freerdp
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{major_version} = %{version}-%{release}
+Requires:       lib%{name}%{libfreerdp_package} = %{version}-%{release}
+Requires:       winpr-devel = %{version}-%{release}
 
 %description devel
 This package contains development files necessary for developing applications
 based on libfreerdp.
 
-%package -n     libwinpr%{major_version}
+%package -n     libwinpr%{libfreerdp_package}
 Summary:        Windows Portable Runtime
 Group:          Productivity/Networking/Other
+Obsoletes:      libwinpr2 < %{version}-%{release}
+Provides:       libwinpr2 = %{version}-%{release}
 
-%description -n libwinpr%{major_version}
+%description -n libwinpr%{libfreerdp_package}
 WinPR provides API compatibility for applications targeting non-Windows
 environments. When on Windows, the original native API is being used instead of
 the equivalent WinPR implementation, without having to modify the code using it.
 
-%package -n winpr%{major_version}-devel
+%package -n winpr-devel
 Summary:        Windows Portable Runtime development files
 Group:          Development/Languages/C and C++
 Requires:       cmake >= 2.8
-Requires:       libwinpr%{major_version} = %{version}-%{release}
+Requires:       libwinpr%{libfreerdp_package} = %{version}-%{release}
 Obsoletes:      libwinpr2-devel < %{version}-%{release}
 Provides:       libwinpr2-devel = %{version}-%{release}
 
-%description -n winpr%{major_version}-devel
+%description -n winpr-devel
 This package contains header files for developing applications that
 use the winpr and winpr-tools libraries.
 
@@ -268,10 +274,10 @@ cd build
 %make_install
 %fdupes %{buildroot}%{_libdir}/cmake/
 
-%post   -n lib%{name}%{major_version} -p /sbin/ldconfig
-%postun -n lib%{name}%{major_version} -p /sbin/ldconfig
-%post -n libwinpr%{major_version} -p /sbin/ldconfig
-%postun -n libwinpr%{major_version} -p /sbin/ldconfig
+%post   -n lib%{name}%{libfreerdp_package} -p /sbin/ldconfig
+%postun -n lib%{name}%{libfreerdp_package} -p /sbin/ldconfig
+%post -n libwinpr%{libfreerdp_package} -p /sbin/ldconfig
+%postun -n libwinpr%{libfreerdp_package} -p /sbin/ldconfig
 %post -n libuwac%{uwac_package} -p /sbin/ldconfig
 %postun -n libuwac%{uwac_package} -p /sbin/ldconfig
 
@@ -295,7 +301,7 @@ cd build
 %files proxy
 %{_bindir}/%{name}-proxy
 
-%files -n lib%{name}%{major_version}
+%files -n lib%{name}%{libfreerdp_package}
 %license LICENSE
 %{_libdir}/lib%{name}%{major_version}.so.*
 %{_libdir}/lib%{name}-client%{major_version}.so.*
@@ -317,12 +323,12 @@ cd build
 %{_libdir}/pkgconfig/%{name}-server%{major_version}.pc
 %{_libdir}/pkgconfig/%{name}-shadow%{major_version}.pc
 
-%files -n libwinpr%{major_version}
+%files -n libwinpr%{libfreerdp_package}
 %license LICENSE
 %{_libdir}/libwinpr%{major_version}.so.*
 %{_libdir}/libwinpr-tools%{major_version}.so.*
 
-%files -n winpr%{major_version}-devel
+%files -n winpr-devel
 %{_libdir}/cmake/WinPR%{major_version}
 %{_includedir}/winpr%{major_version}
 %{_libdir}/libwinpr%{major_version}.so
