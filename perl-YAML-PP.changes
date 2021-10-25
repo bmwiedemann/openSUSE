@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 25 03:08:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.029 2021-10-25 00:02:53+02:00
+      - Fix basic implicit mappings in flow sequences, e.g. [a, b: c, d]
+  0.028 2021-10-21 22:00:36+02:00
+      - Fix empty values with properties in flow mappings and sequences
+        (`[ &foo , bar]`, `{ &foo , k: v }`)
+      - Fix: Allow comment lines with tabs in flow
+      - Fix: parsing of explicit block indenting (issue #46)
+      - Automatically tie new hashes inside tied hashes (issue #44)
+      - yamlpp-load-dump: Add options --dump-module and --include*
+      - docs: Add mising constants (issue #45)
+
+-------------------------------------------------------------------
 Sat Apr 10 03:09:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.027
