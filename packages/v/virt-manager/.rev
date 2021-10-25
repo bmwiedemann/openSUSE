@@ -1782,4 +1782,12 @@
     <comment>Fix for bsc#1191356 - virt-manager should not depend on gtk4</comment>
     <requestid>924117</requestid>
   </revision>
+  <revision rev="226" vrev="12">
+    <srcmd5>4995d169de3fdf5e88fcf94694f24647</srcmd5>
+    <version>3.2.0</version>
+    <time>1635167839</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1191358 viewer disconnect problem and spec file dependency</comment>
+    <requestid>927021</requestid>
+  </revision>
 </revisionlist>

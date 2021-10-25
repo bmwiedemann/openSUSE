@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:09:51 MDT 2021 - carnold@suse.com
+
+- Add dependency in spec file for python3-gobject-Gdk (bsc#1191705)
+  virt-manager.spec
+
+-------------------------------------------------------------------
+Tue Oct 12 16:47:47 MDT 2021 - carnold@suse.com
+
+- bsc#1191358 - The Virtual Machine Manager shows disconnected
+  after rebooting virtual machine in Xen mode in SLES15 SP3.
+  virtman-init-viewer-on-reboot.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 14:53:51 MDT 2021 - carnold@suse.com
 
 - bsc#1191356 - virt-manager should not depend on gtk4

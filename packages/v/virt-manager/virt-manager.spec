@@ -74,6 +74,7 @@ Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
 Patch160:       virtman-show-no-firmware-for-xenpv.patch
 Patch161:       virtman-legacy-bios-support.patch
+Patch162:       virtman-init-viewer-on-reboot.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -98,6 +99,7 @@ Requires:       gtk3
 Requires:       python3-gobject
 # For console widget
 Requires:       python3-cairo
+Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Recommends:     python3-SpiceClientGtk
 Requires:       virt-install
@@ -206,6 +208,7 @@ machine).
 %patch159 -p1
 %patch160 -p1
 %patch161 -p1
+%patch162 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1
