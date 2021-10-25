@@ -24,19 +24,22 @@
 %define skip_python2 1
 %endif
 Name:           python-ipykernel5
-Version:        5.5.5
+Version:        5.5.6
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM ipykernel-pr34+736-remove-block-client7.patch -- backported gh#ipython/ipykernel#736
+Patch0:         ipykernel-pr634+736-remove-block-client7.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       python-ipython >= 5.0.0
+Requires:       python-ipython_genutils
 Requires:       python-jupyter-client
 Requires:       python-jupyter-core
 Requires:       python-tornado >= 4.2
@@ -56,14 +59,11 @@ Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
 Provides:       jupyter-ipykernel = %{version}-%{release}
 Obsoletes:      jupyter-ipykernel < %{version}-%{release}
 %endif
-%if "%{python_flavor}" == "python36"
-# This shim is necessary until the python36-ipykernel = 5.5 binary requiring jupyter-ipykernel = 5.5 is wiped from the repositories
-Provides:       jupyter-ipykernel = %{version}-%{release}
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 5.0.0}
+BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module nose}

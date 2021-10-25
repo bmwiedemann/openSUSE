@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 18 08:55:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Allow updating to jupyter_client 7 through backporting
+  gh#ipython/ipykernel#634 and gh#ipython/ipykernel#736 to
+  ipykernel-pr634+736-remove-block-client7.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 08:04:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.5.6
+  * Add ipython_genutils dependency
+- Block updating to jupyter_client 7
+
+-------------------------------------------------------------------
 Thu Sep 16 08:35:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on nose_warnings_filters. 
