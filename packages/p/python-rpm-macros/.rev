@@ -425,4 +425,21 @@ prerequisite for new python submission</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>904437</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1071db90eff692b76ec32b5ddf38019d</srcmd5>
+    <version>20211022.38e7c70</version>
+    <time>1635167826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211022.38e7c70:
+  * no newline after python_install_alternative
+- Update to version 20211018.c7614ad:
+  * remove ghost gh#openSUSE/python-rpm-macros#118
+  * revert reset name change
+  * fix README
+  * move u-a/la switch for scriptlets to build phase
+- Update to version 20211001.fc6c04e:
+  * Supporting libalternatives.
+</comment>
+    <requestid>926976</requestid>
+  </revision>
 </revisionlist>

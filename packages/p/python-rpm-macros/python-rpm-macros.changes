@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 22 12:47:07 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20211022.38e7c70:
+  * no newline after python_install_alternative
+
+-------------------------------------------------------------------
+Mon Oct 18 14:21:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 20211018.c7614ad:
+  * remove ghost gh#openSUSE/python-rpm-macros#118
+  * revert reset name change
+  * fix README
+  * move u-a/la switch for scriptlets to build phase
+
+-------------------------------------------------------------------
+Fri Oct 01 15:47:31 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20211001.fc6c04e:
+  * Supporting libalternatives.
+
+-------------------------------------------------------------------
 Tue Jun 29 20:51:43 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 20210628.eccf3f2:
