@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 14:54:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.5.1
+  * Version bump, source archive name fixed
+
+-------------------------------------------------------------------
 Fri Oct  8 16:20:06 CEST 2021 - tiwai@suse.de
 
 - Install pre-built firmware for avoiding build error on BE hosts
