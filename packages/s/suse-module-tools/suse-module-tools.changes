@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 22 20:37:38 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.13:
+  * fixup "rpm-script: fix bad exit status in OpenQA (bsc#1191922)"
+
+-------------------------------------------------------------------
+Fri Oct 22 13:12:38 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.12:
+  * rpm-script: fix bad exit status in OpenQA (bsc#1191922)
+  * cert-script: Deal with existing $cert.delete file (bsc#1191804).
+  * cert-script: Ignore kernel keyring for kernel certificates (bsc#1191480).
+  * cert-script: Only print mokutil output in verbose mode.
+
+-------------------------------------------------------------------
 Mon Oct  4 14:25:41 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.11:

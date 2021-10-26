@@ -491,4 +491,13 @@ source service setup which messed up my spec file.
     (boo#1191260)</comment>
     <requestid>923052</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>787d3aa5097574a4497561a6a500a0e9</srcmd5>
+    <version>16.0.13</version>
+    <time>1635272008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.13:
+  * fixup &quot;rpm-script: fix bad exit status in OpenQA (bsc#1191922)&quot; (forwarded request 927056 from mwilck)</comment>
+    <requestid>927057</requestid>
+  </revision>
 </revisionlist>
