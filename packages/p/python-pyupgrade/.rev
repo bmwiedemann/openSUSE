@@ -311,4 +311,21 @@
 </comment>
     <requestid>921380</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2a807418c4445834d8e6bd7e2a50a83d</srcmd5>
+    <version>2.28.0</version>
+    <time>1635272057</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.28.0:
+ - don't rewrite old super calls for __new__
+ - fix super replacement of multiple lines
+ - Fix bug with calling different superclass method
+ - Revert &quot;Revert &quot;Merge pull request #317 from asottile/old_super&quot;&quot;
+   This reverts commit 2719335fa7bdb582b35ac90547a0f763d4225036.
+ - fix raise_from with multi lines / trailing commas
+ - fix rewrite causing syntax error when the first arg has newlines
+ - fix invalid dedent with comment after block
+</comment>
+    <requestid>927577</requestid>
+  </revision>
 </revisionlist>
