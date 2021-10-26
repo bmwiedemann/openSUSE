@@ -1,7 +1,7 @@
 #
 # spec file for package python-sox
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sox
-Version:        1.3.7
+Version:        1.4.1
 Release:        0
 License:        BSD-3-Clause
 Summary:        Python wrapper around SoX
-Url:            https://github.com/rabitt/pysox
+URL:            https://github.com/rabitt/pysox
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/py2.py3/s/sox/sox-%{version}-py2.py3-none-any.whl
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       sox
 BuildArch:      noarch
 
