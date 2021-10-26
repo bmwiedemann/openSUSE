@@ -1,0 +1,51 @@
+diff --git a/toolkit/components/remote/nsRemoteService.cpp b/toolkit/components/remote/nsRemoteService.cpp
+--- a/toolkit/components/remote/nsRemoteService.cpp
++++ b/toolkit/components/remote/nsRemoteService.cpp
+@@ -107,7 +107,8 @@
+   bool useX11Remote = mozilla::widget::GdkIsX11Display();
+ 
+ #  if defined(MOZ_ENABLE_DBUS)
+-  if (!useX11Remote || getenv(DBUS_REMOTE_ENV)) {
++  const char* dbusRemoteEnv = getenv(DBUS_REMOTE_ENV);
++  if (!useX11Remote || (dbusRemoteEnv && *dbusRemoteEnv == '1')) {
+     client = MakeUnique<nsDBusRemoteClient>();
+   }
+ #  endif
+diff --git a/toolkit/xre/nsAppRunner.cpp b/toolkit/xre/nsAppRunner.cpp
+--- a/toolkit/xre/nsAppRunner.cpp
++++ b/toolkit/xre/nsAppRunner.cpp
+@@ -4125,7 +4125,7 @@
+   const char* x11Display = PR_GetEnv("DISPLAY");
+   // MOZ_ENABLE_WAYLAND is our primary Wayland on/off switch.
+   const char* waylandPref = PR_GetEnv("MOZ_ENABLE_WAYLAND");
+-  bool enableWayland = !x11Display || (waylandPref && *waylandPref);
++  bool enableWayland = !x11Display || (waylandPref && *waylandPref == '1');
+   if (!enableWayland) {
+     const char* backendPref = PR_GetEnv("GDK_BACKEND");
+     enableWayland = (backendPref && strncmp(backendPref, "wayland", 7) == 0);
+diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
+--- a/widget/gtk/nsFilePicker.cpp
++++ b/widget/gtk/nsFilePicker.cpp
+@@ -616,7 +616,7 @@
+   if (mUseNativeFileChooser && sGtkNativeDialogShowPtr != nullptr) {
+     const char* portalEnvString = g_getenv("GTK_USE_PORTAL");
+     bool setPortalEnv =
+-        (portalEnvString && atoi(portalEnvString) == 0) || !portalEnvString;
++        (portalEnvString && *portalEnvString == '0') || !portalEnvString;
+     if (setPortalEnv) {
+       setenv("GTK_USE_PORTAL", "1", true);
+     }
+diff --git a/widget/gtk/nsWindow.cpp b/widget/gtk/nsWindow.cpp
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -8835,7 +8835,7 @@
+   // decorations does not work with CSD.
+   // We check GTK_CSD as well as gtk_window_should_use_csd() does.
+   const char* csdOverride = getenv("GTK_CSD");
+-  if (csdOverride && atoi(csdOverride)) {
++  if (csdOverride && *csdOverride == '1') {
+     sGtkWindowDecoration = GTK_DECORATION_CLIENT;
+     return sGtkWindowDecoration;
+   }
+
+

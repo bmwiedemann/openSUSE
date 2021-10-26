@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 22 21:27:02 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.2.1
+  * Preference added to disable automatic pausing RSS feed updates
+    after a fetch failure
+  * several bugfixes as outlined in release notes
+    https://www.thunderbird.net/en-US/thunderbird/91.2.1/releasenotes/
+
+-------------------------------------------------------------------
+Fri Oct 22 09:16:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase memory required per threads for aarch64 to avoid OOM
+
+-------------------------------------------------------------------
+Thu Oct 21 13:23:29 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO on Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Oct 15 20:29:41 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add mozilla-bmo1724679.patch (bmo#1724679, boo#1182863)
+  fix some env variables which are enabled for any value
+
+-------------------------------------------------------------------
 Mon Oct  4 19:55:48 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.2.0

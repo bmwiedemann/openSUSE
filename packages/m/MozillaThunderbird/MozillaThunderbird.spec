@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          91
-%define mainver        %major.2.0
-%define orig_version   91.2.0
+%define mainver        %major.2.1
+%define orig_version   91.2.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -208,6 +208,7 @@ Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
 Patch30:        mozilla-bmo531915.patch
+Patch31:        mozilla-bmo1724679.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -309,6 +310,7 @@ fi
 %patch28 -p1
 %patch29 -p1
 %patch30 -p1
+%patch31 -p1
 %endif
 
 %build
@@ -390,7 +392,7 @@ echo "export MOZ_REQUIRE_SIGNING="
 echo ""
 cat << EOF
 %else
-%ifarch ppc64 ppc64le
+%ifarch aarch64 ppc64 ppc64le
 %limit_build -m 2500
 %else
 %limit_build -m 2000
@@ -459,7 +461,7 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1500
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
