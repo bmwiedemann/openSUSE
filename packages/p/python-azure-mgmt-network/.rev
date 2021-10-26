@@ -159,4 +159,15 @@
     CHANGELOG.md file provided with this package (forwarded request 926046 from glaubitz)</comment>
     <requestid>926055</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8c4f0873d1413cbb18fb94c6065fbd11</srcmd5>
+    <version>19.2.0</version>
+    <time>1635272055</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 19.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 927505 from glaubitz)</comment>
+    <requestid>927526</requestid>
+  </revision>
 </revisionlist>
