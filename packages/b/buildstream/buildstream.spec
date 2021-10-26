@@ -1,7 +1,7 @@
 #
 # spec file for package buildstream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,26 @@
 #
 
 
-%define real_name BuildStream
-
 Name:           buildstream
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        A framework for modelling build pipelines in YAML
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
-URL:            https://wiki.gnome.org/Projects/BuildStream
-Source0:        https://download.gnome.org/sources/BuildStream/1.6/%{real_name}-%{version}.tar.xz
+URL:            https://buildstream.build/
+Source0:        https://github.com/apache/buildstream/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  bubblewrap
 BuildRequires:  fdupes
 BuildRequires:  python3-base >= 3.4
 BuildRequires:  python3-devel >= 3.4
-BuildRequires:  python3-gobject
 BuildRequires:  python3-pytest-runner
 BuildRequires:  python3-setuptools
 BuildRequires:  typelib-1_0-OSTree-1_0
 Requires:       bubblewrap
 Requires:       python3-base >= 3.4
 Requires:       python3-click
+Requires:       python3-grpcio >= 1.34
 Requires:       python3-gobject
 Requires:       python3-psutil
 Requires:       python3-ruamel.yaml >= 0.16
@@ -48,9 +46,9 @@ BuildStream is a flexible and extensible framework for the modelling of
 build and CI pipelines in a declarative YAML format, written in python.
 
 %prep
-%setup -q -n %{real_name}-%{version}
+%setup -q
 # Fix the shebang
-find -type f -exec sed -i 's|%{_bindir}/env python3|%{_bindir}/python3|' {} \;
+find -type f -exec sed -i 's|/usr/bin/env python3|%{_bindir}/python3|' {} \;
 
 %build
 %python3_build

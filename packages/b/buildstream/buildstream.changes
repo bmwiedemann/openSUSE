@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:24:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.3
+  + Support for python 3.10
+  + Updated minimum required version of grpcio, to fix working
+    properly with existing artifact cache services.
+  + Fix some issues with previous fix for handling with CAS
+  + Ensure paths specified in user configuration are absolute
+- Update URL and SourceUrl
+
+-------------------------------------------------------------------
 Fri Nov  6 08:26:26 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.1:
