@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC

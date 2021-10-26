@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 26 12:59:09 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Update to version 1.3.0
+  - [1.3.0]
+    * Features:
+      + Implement ISUPPORT parsing + the UTF8ONLY IRCv3 specification
+      + Add support for RPL_UMODEIS
+      + Make nick completion case-insensitive
+      + Add button for inserting emoji
+    * Bug fixes:
+      + Fix configuration syntax errors caused by trailing commas
+  - [1.2.4]
+    * Bug fixes
+      + Fix bugs introduced by https://github.com/SrainApp/srain/pull/316
+      + Fix crach when URL preview async task failed
+  - [1.2.3]
+    * Bug fixes:
+      + Eliminate GDK warning
+  - [1.2.2]
+    * Changed:
+      + Add libera.chat IRC network (#311)
+      + Updated Dutch translation (b6830e9)
+
+
+-------------------------------------------------------------------
 Sat Apr 10 08:35:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.1
