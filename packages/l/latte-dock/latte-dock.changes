@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 26 09:02:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.3
+  * Support GlobalScale in combination with PLASMA_USE_QT_SCALING
+    properly under X11 environment (kde#444222)
+  * Add CornerMargin option for latte and plasma indicators and
+    expose it through the indicators api (kde#442675)
+  * Unblock visibility mode properly when Meta is used to show an
+    application launcher such as Win11, Simple menu etc.
+    (kde#441053)
+  * Fix focus behavior when applets are requesting input such as
+    notes applet (kde#443236)
+  * Expose indicators iconOffsetX/Y value to applets
+  * Enable/disable "CanBeAboveFullscreenWindows" option properly
+    (kde#443536)
+  * Disable GtkFrameExtents for docks and panels that
+    ByPassWindowManager ("CanBeAboveFullscreenWindows" option)
+    under X11
+  * Draw always a contrasted border for latte indicator
+  * Simplify latte indicator implementation
+  * Enforce RoundToIconSize for all applets always and as such the
+    Items Size is always respected. If the user has blur issues
+    with its icons, he should specify an items size that is
+    provided by its icons theme. For example, 16px., 24px., 36px.,
+    48px.
+  * Identify kickofflegacy applet properly
+  * Fix popup positioning for plasma-style popups when the dock
+    background is using very big corner roundness
+  * Prevent session manager from restoring latte just like
+    Spectacle is already doing
+  * Respect virtual desktops navigation wrapping around option
+  * Expose translations for default dock and panel templates
+    (kde#442435)
+
+-------------------------------------------------------------------
 Mon Sep 13 18:27:27 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.2

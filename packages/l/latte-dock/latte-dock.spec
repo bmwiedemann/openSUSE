@@ -21,7 +21,7 @@
 
 %define kf5_version 5.48.0
 Name:           latte-dock
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        Task manager
 License:        GPL-2.0-or-later
