@@ -1,7 +1,7 @@
-Index: julia-1.6.1/deps/mbedtls.mk
+Index: julia-1.6.2/deps/mbedtls.mk
 ===================================================================
---- julia-1.6.1.orig/deps/mbedtls.mk
-+++ julia-1.6.1/deps/mbedtls.mk
+--- julia-1.6.2.orig/deps/mbedtls.mk
++++ julia-1.6.2/deps/mbedtls.mk
 @@ -5,7 +5,9 @@ MBEDTLS_SRC = mbedtls-$(MBEDTLS_VER)
  MBEDTLS_URL = https://github.com/ARMmbed/mbedtls/archive/v$(MBEDTLS_VER).tar.gz
  
@@ -23,10 +23,10 @@ Index: julia-1.6.1/deps/mbedtls.mk
  	echo 1 > $@
  
  $(BUILDDIR)/$(MBEDTLS_SRC)/build-configured: \
-Index: julia-1.6.1/deps/patches/mbedtls-fix-build-failure-on-gcc-11.patch
+Index: julia-1.6.2/deps/patches/mbedtls-fix-build-failure-on-gcc-11.patch
 ===================================================================
 --- /dev/null
-+++ julia-1.6.1/deps/patches/mbedtls-fix-build-failure-on-gcc-11.patch
++++ julia-1.6.2/deps/patches/mbedtls-fix-build-failure-on-gcc-11.patch
 @@ -0,0 +1,321 @@
 +From 2630f6720df59a2084220b1c06f4730a0a330ea0 Mon Sep 17 00:00:00 2001
 +From: Rodrigo Dias Correa <rodrigo@correas.us>

@@ -37,7 +37,7 @@
 %else
 %define compat_mode  0
 %endif
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
@@ -49,6 +49,8 @@ Patch0:         julia-env-script-interpreter.patch
 Patch1:         julia-fix_doc_build.patch
 # PATCH-FIX-UPSTREAM julia-fix-mbedtls-build-failure-gcc-11.patch ronisbr@gmail.com - Fix MBEDTLS building using GCC 11.
 Patch2:         julia-fix-mbedtls-build-failure-gcc-11.patch
+# PATCH-FIX-UPSTREAM julia-fix-task-build-failure-gcc-11.patch pandom79@gmail.com - Fix task.c building using GCC 11.
+Patch3:         julia-fix-task-build-failure-gcc-11.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -182,6 +184,7 @@ Contains the Julia manual, the reference documentation of the standard library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;

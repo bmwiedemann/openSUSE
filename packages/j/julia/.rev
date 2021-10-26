@@ -419,4 +419,15 @@
     <comment></comment>
     <requestid>899669</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ccdf13dc81bfd6702a0049c35c51cb79</srcmd5>
+    <version>1.6.3</version>
+    <time>1635272021</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 1.6.3.
+  * Bugfix release, see NEWS.md for details.
+- Add patch 'julia-fix-task-build-failure-gcc-11.patch' to fix 
+  task.c build failure using GCC 11.</comment>
+    <requestid>927334</requestid>
+  </revision>
 </revisionlist>

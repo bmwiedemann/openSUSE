@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 23 13:50:11 UTC 2021 - Domenico Panella <pandom79@gmail.com>
+
+- Version bump to 1.6.3.
+  * Bugfix release, see NEWS.md for details.
+- Add patch 'julia-fix-task-build-failure-gcc-11.patch' to fix 
+  task.c build failure using GCC 11.
+
+-------------------------------------------------------------------
+Wed Jul 28 15:11:29 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- Version bump to 1.6.2.
+  * Bugfix release, see NEWS.md for details.
+
+-------------------------------------------------------------------
 Sat Jun 12 19:24:28 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
 
 - Add patch `julia-fix-mbedtls-build-failure-gcc-11.patch` to fix
