@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:26:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_nut-driver.service.patch
+  * harden_nut-monitor.service.patch
+  * harden_nut-server.service.patch
+
+-------------------------------------------------------------------
 Sun Jun 27 11:43:12 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with GCC11 (as default in GCC11 is now -std=gnu++17)

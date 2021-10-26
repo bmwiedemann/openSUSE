@@ -668,4 +668,12 @@ This is exactly like request 221664, just Source URI was fixed and ENABLE_IPMI w
     <comment></comment>
     <requestid>902791</requestid>
   </revision>
+  <revision rev="70" vrev="17">
+    <srcmd5>dba3a801b8bc65d4b1fcf26b1e9f2d44</srcmd5>
+    <version>2.7.4</version>
+    <time>1635272063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927573</requestid>
+  </revision>
 </revisionlist>
