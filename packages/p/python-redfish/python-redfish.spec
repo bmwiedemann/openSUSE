@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-redfish
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module jsonpath-rw}
 BuildRequires:  %{python_module jsonpointer}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests-toolbelt}
 # /SECTION
 %python_subpackages
 

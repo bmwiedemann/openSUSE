@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 25 21:00:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+  * Added support for performing multi-part HTTP POST requests
+
+-------------------------------------------------------------------
 Mon Aug 30 14:07:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.2
