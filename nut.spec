@@ -59,6 +59,9 @@ Patch11:        openssl-1_1.patch
 Patch12:        nut-upssched.patch
 Patch13:        reproducible.patch
 Patch14:        nutscanner-ftbfs.patch
+Patch15:	harden_nut-driver.service.patch
+Patch16:	harden_nut-monitor.service.patch
+Patch17:	harden_nut-server.service.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  avahi-devel
@@ -178,6 +181,9 @@ cp -a %{SOURCE2} %{SOURCE6} %{SOURCE7} .
 %patch13 -p1
 %patch14 -p1
 sed -i s/@now@/`date -r ChangeLog +%%Y-%%m-%%d`/g docs/docinfo.xml.in
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 
 sed -i s:%{_prefix}/local/ups/bin:/bin: conf/upssched.conf.sample.in
 

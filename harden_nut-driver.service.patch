@@ -1,0 +1,22 @@
+Index: nut-2.7.4/scripts/systemd/nut-driver.service.in
+===================================================================
+--- nut-2.7.4.orig/scripts/systemd/nut-driver.service.in
++++ nut-2.7.4/scripts/systemd/nut-driver.service.in
+@@ -4,6 +4,17 @@ After=local-fs.target network.target
+ StopWhenUnneeded=yes
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@SBINDIR@/upsdrvctl start
+ ExecStop=@SBINDIR@/upsdrvctl stop
+ Type=forking
