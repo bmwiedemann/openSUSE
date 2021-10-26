@@ -42,4 +42,22 @@
     <comment></comment>
     <requestid>788511</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06355698fea5a80b7ef05aae4f91e222</srcmd5>
+    <version>0.4.14</version>
+    <time>1635272064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.14:
+  - revert support Apache JSON protocol and binary type, via
+    2-#157.
+  - Support Apache JSON protocol and binary type, via 2-#139.
+  - Fix HTTP_URI typo in http.py, via 2-#148.
+  - Support custom headers for HTTP, via 2-#149.
+  - Support raising TApplicationException in user handlers, via
+    2-#154.
+  - Support include files with dot in name, via 2-#125.
+- Add new SSL certificates in new_certs.tar.xz
+</comment>
+    <requestid>927531</requestid>
+  </revision>
 </revisionlist>

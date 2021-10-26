@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 26 11:02:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.14:
+  - revert support Apache JSON protocol and binary type, via
+    2-#157.
+  - Support Apache JSON protocol and binary type, via 2-#139.
+  - Fix HTTP_URI typo in http.py, via 2-#148.
+  - Support custom headers for HTTP, via 2-#149.
+  - Support raising TApplicationException in user handlers, via
+    2-#154.
+  - Support include files with dot in name, via 2-#125.
+- Add new SSL certificates in new_certs.tar.xz
+
+-------------------------------------------------------------------
 Thu Mar 26 11:07:36 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.4.11

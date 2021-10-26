@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thriftpy2
-Version:        0.4.11
+Version:        0.4.14
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Thriftpy/thriftpy2
-Source:         https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
+Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
+Source1:        new_certs.tar.xz
 BuildRequires:  %{python_module Cython >= 0.28.4}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest >= 2.8}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  fdupes
@@ -45,7 +47,9 @@ ThriftPy is a pure python implementation of Apache Thrift in a
 pythonic way.
 
 %prep
-%setup -q -n thriftpy2-%{version}
+%autosetup -p1 -n thriftpy2-%{version}
+
+tar xv -C tests/ssl -f %{SOURCE1}
 
 %build
 export CFLAGS="%{optflags}"
