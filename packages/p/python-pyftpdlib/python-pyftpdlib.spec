@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/giampaolo/pyftpdlib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyftpdlib/pyftpdlib-%{version}.tar.gz
+Source1:        keycert.pem
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pysendfile}
@@ -55,6 +56,7 @@ write very asynchronous FTP servers with Python.
 %prep
 %setup -q -n pyftpdlib-%{version}
 sed -i '1 {/env python/ d}' pyftpdlib/test/*.py pyftpdlib/_compat.py
+cp %{SOURCE1} pyftpdlib/test
 
 %build
 %python_build

@@ -136,4 +136,13 @@
     <comment></comment>
     <requestid>891607</requestid>
   </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>82b99645fbb65a53abcd3513b77cbebc</srcmd5>
+    <version>1.5.6</version>
+    <time>1635272029</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate new private key/x509 certificate for the test suite.
+  (thanks, Jason!)</comment>
+    <requestid>927405</requestid>
+  </revision>
 </revisionlist>
