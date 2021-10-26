@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 22 03:08:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.22
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.22  2021-10-16
+    - Added a referer method to Mojo::Headers, as an alias for the referrer method.
+    - Fixed response status log message to use the "trace" log level instead of "debug".
+
+-------------------------------------------------------------------
 Sat Aug 14 03:07:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.21
