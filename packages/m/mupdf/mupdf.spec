@@ -1,7 +1,7 @@
 #
 # spec file for package mupdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           mupdf
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://mupdf.com/
-Source0:        %{URL}/downloads/archive/%{name}-%{version}-source.tar.xz
+Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.xz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
@@ -35,12 +35,12 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
 BuildRequires:  libcurl-devel
+BuildRequires:  libgumbo-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
-BuildRequires:  libgumbo-devel
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(openssl)
@@ -73,7 +73,7 @@ based on mupdf.
 %prep
 %autosetup -p1 -n %{name}-%{version}-source
 
-for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs)
+for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract)
 do
   rm -rf thirdparty/$d
 done
