@@ -810,4 +810,16 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191945</comment>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b83f1597aa4c544a7bc777fa67fd1ad1</srcmd5>
+    <version>3.6.0</version>
+    <time>1635272008</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.6.0
+  - Simplify mount hierarchy by just using a single slave bind
+    mount as the root of the update environment; this may avoid the
+    error messages of failed unmounts
+    May fix [boo#1191945]</comment>
+    <requestid>927034</requestid>
+  </revision>
 </revisionlist>
