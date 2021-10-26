@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:20:01 UTC 2021 - lars@linux-schulserver.de - 1.5.0
+
+- update to 1.5.0
+  + full PHP8 support
+  + Dark mode for Elastic skin
+  + OAuth2/XOauth support (with plugin hooks)
+  + Collected recipients and trusted senders
+  + Moving recipients between inputs with drag & drop
+  + Full unicode support with MySQL database
+  + Support of IMAP LITERAL- extension RFC 7888
+    <https://datatracker.ietf.org/doc/html/rfc7888>
+  + Support of RFC 2231 <https://datatracker.ietf.org/doc/html/rfc2231>
+    encoded names
+  + Cache refactoring
+  More at https://github.com/roundcube/roundcubemail/releases/tag/1.5.0
+- adjusted some file names to new release 
+  (_styles.less -> styles.less; _variables.less -> variables.less; 
+   CHANGELOG -> CHANGELOG.md)
+- vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh does not exist 
+  any longer
+- added SECURITY.md to documentation
+- mark the whole documentation directory as documentation instead of 
+  listing some files and others not (avoid duplicate entries in RPM-DB)
+- adjust requirements: php-intl is now required
+
+-------------------------------------------------------------------
 Mon Feb  8 21:26:29 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.4.11 with security fix:

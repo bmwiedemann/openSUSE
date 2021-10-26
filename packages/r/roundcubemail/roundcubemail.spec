@@ -20,7 +20,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_name      %(php -r "print 'php' . PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.4.11
+Version:        1.5.0
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -44,6 +44,7 @@ Requires:       %{php_name}-dom
 Requires:       %{php_name}-exif
 Requires:       %{php_name}-gettext
 Requires:       %{php_name}-iconv
+Requires:       %{php_name}-intl
 Requires:       %{php_name}-json
 Requires:       %{php_name}-mbstring
 Requires:       %{php_name}-openssl
@@ -61,7 +62,6 @@ Requires:       php-pear-Net_Socket >= 1.0.12
 Requires:       (%{php_name}-mysql or %{php_name}-pgsql)
 Recommends:     logrotate
 Recommends:     %{php_name}-fileinfo
-Recommends:     %{php_name}-intl
 Recommends:     %{php_name}-imagick
 Recommends:     php-pear-Crypt_GPG >= 1.6.3
 Recommends:     %{php_name}-zip
@@ -94,8 +94,6 @@ cp %{SOURCE4} .
 for file in .arcconfig .gitignore .php_cs.dist .scrutinizer.yml .travis.yml ; do
 	find . -name "$file" -delete
 done
-# remove php documentor script
-rm vendor/pear/net_smtp/phpdoc.sh
 # remove 0-byte files
 find . -size 0 -delete
 # no need to check .htaccess each time, the apache config takes care of the restrictions
@@ -117,7 +115,6 @@ rm INSTALL
 sed -i 's|/usr/bin/env php|%{_bindir}/php|' \
 	bin/*.sh \
 	vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry \
-	vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh \
 	plugins/enigma/bin/import_keys.sh
 
 %build
@@ -162,7 +159,7 @@ done
 
 # skins have some configurable files in their directories
 mkdir -p %{buildroot}%{roundcubeconfigpath}/skins/elastic/styles
-for file in _styles.less _variables.less ; do
+for file in styles.less variables.less ; do
         mv %{buildroot}%{roundcubepath}/skins/elastic/styles/$file %{buildroot}%{roundcubeconfigpath}/skins/elastic/styles/
         ln -s %{roundcubeconfigpath}/skins/elastic/styles/$file %{buildroot}%{roundcubepath}/skins/elastic/styles/
 done
@@ -178,10 +175,10 @@ sed -e "s#__ROUNDCUBEPATH__#%{roundcubepath}#g" \
 # install docs
 install -d -m 0755 %{buildroot}/%{_defaultdocdir}/%{name}
 %if 0%{?suse_version} >= 1500
-TXT="CHANGELOG UPGRADING README.md README.openSUSE SQL"
+TXT="CHANGELOG.md UPGRADING README.md README.openSUSE SQL SECURITY.md"
 rm %{buildroot}%{roundcubepath}/LICENSE
 %else
-TXT="CHANGELOG UPGRADING README.md README.openSUSE SQL LICENSE"
+TXT="CHANGELOG.md UPGRADING README.md README.openSUSE SQL SECURITY.md LICENSE"
 %endif
 for i in $TXT; do
     mv -v %{buildroot}%{roundcubepath}/$i %{buildroot}%{_defaultdocdir}/%{name}/
@@ -303,17 +300,12 @@ exit 0
 
 %files
 %defattr(0644, root, root,0755)
-%doc CHANGELOG
 %if 0%{?suse_version} >= 1500
 %license LICENSE
 %else
 %doc LICENSE
 %endif
-%doc README.md
-%doc README.openSUSE
-%doc UPGRADING
-%doc SQL/
-%doc %{_defaultdocdir}/%{name}/*
+%doc %{_defaultdocdir}/%{name}
 %dir %{roundcubepath}
 %dir %{roundcubeconfigpath}
 %dir %{roundcubeconfigpath}/skins
@@ -329,8 +321,8 @@ exit 0
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.conf
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{name}.inc
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_styles.less
-%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/_variables.less
+%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/styles.less
+%config(noreplace) %{roundcubeconfigpath}/skins/elastic/styles/variables.less
 %{roundcubepath}/composer.json-dist
 %{roundcubepath}/composer.json
 %{roundcubepath}/composer.lock
@@ -339,7 +331,6 @@ exit 0
 %{roundcubepath}/robots.txt
 %dir %{roundcubepath}/bin
 %attr(0755,root,root) %{roundcubepath}/bin/*.sh
-%attr(0755,root,root) %{roundcubepath}/vendor/roundcube/plugin-installer/src/bin/rcubeinitdb.sh
 %attr(0755,root,root) %{roundcubepath}/plugins/password/helpers/change_ldap_pass.pl
 %attr(0755,root,root) %{roundcubepath}/vendor/pear/crypt_gpg/scripts/crypt-gpg-pinentry
 %{roundcubepath}/installer/
