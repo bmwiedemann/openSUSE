@@ -1154,4 +1154,12 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>923058</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4cf8869ed6b044159d5d46ce99974bfe</srcmd5>
+    <version>7.4.25</version>
+    <time>1635272007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927032</requestid>
+  </revision>
 </revisionlist>
