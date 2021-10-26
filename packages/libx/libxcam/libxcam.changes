@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 18 23:31:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * 360 stitching GLES pipeline supports processing YUV420p pixel format 
+- drop Fix-build-with-Vulkan-1.2.140.patch (upstream)
+- build against openCV 4
+
+-------------------------------------------------------------------
 Thu Jul 23 18:18:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.4.0:
