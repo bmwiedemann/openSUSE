@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Requires:       python3-nbxmpp >= 2.0.1
 Requires:       python3-precis-i18n >= 1.0.0
 Requires:       python3-pyOpenSSL >= 16.2
 Requires:       python3-pycairo >= 1.16.0
+Requires:       typelib(Soup) = 2.4
 # gajim-remote
 Recommends:     python3-dbus-python
 # WebP avatars.
@@ -52,12 +53,9 @@ Recommends:     python3-Pillow
 # OMEMO encryption
 Recommends:     gajim-plugin-omemo
 Recommends:     python3-axolotl
-#
-Recommends:     %{name}-lang
 # zeroconf support.
 Suggests:       dbus-1-glib
 BuildArch:      noarch
-
 
 %description
 Gajim is a Jabber/XMPP client. It works with MATE and GNOME, but does
