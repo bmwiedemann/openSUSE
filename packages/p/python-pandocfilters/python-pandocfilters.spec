@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            http://github.com/jgm/pandocfilters
 Source:         https://pypi.io/packages/source/p/pandocfilters/pandocfilters-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     pandoc >= 1.16
 BuildArch:      noarch
@@ -33,8 +34,8 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Pandoc filters are pipes that read a JSON serialization of the 
-Pandoc AST from stdin, transform it in some way, and write it 
+Pandoc filters are pipes that read a JSON serialization of the
+Pandoc AST from stdin, transform it in some way, and write it
 to stdout. They can be used with pandoc (>= 1.12) either using
 pipes.
 pandoc -t json -s | ./caps.py | pandoc -f json
@@ -44,16 +45,19 @@ or using the --filter (or -F) command-line option.
 %setup -q -n pandocfilters-%{version}
 # Fix usr/bin/env call in example
 sed -i 's/^#\!\/.*//g' examples/*.py
+# Fix: spurious-executable-perm (Badness: 50)
+chmod a-x examples/*.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc README README.rst 
+%doc README.rst
 %doc examples/
 %license LICENSE
 %{python_sitelib}/*

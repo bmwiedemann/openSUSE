@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 25 19:55:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Making rpmlint more happy.
+
+-------------------------------------------------------------------
+Mon Oct 25 14:02:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark exampls/*.py non-executable.
+
+-------------------------------------------------------------------
 Thu Mar  4 21:06:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

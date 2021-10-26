@@ -43,4 +43,14 @@
   * Documentation fixes</comment>
     <requestid>876830</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f5048b19c04fa357ffeb46f5edd2b060</srcmd5>
+    <version>1.4.3</version>
+    <time>1635272025</time>
+    <user>dimstar_suse</user>
+    <comment>- Making rpmlint more happy.
+- Mark exampls/*.py non-executable.
+</comment>
+    <requestid>927363</requestid>
+  </revision>
 </revisionlist>
