@@ -354,9 +354,9 @@ ln -sf %{_localstatedir}/cache/spack %{buildroot}%{_localstatedir}/lib/spack/cac
 # 0889be20e0d9dcdf4346cdeaa0647285187375f3
 rm -r %{buildroot}%{_localstatedir}/lib/spack/repos/builtin/packages/patchelf/test/
 
-echo "g %{name} -" > system-user-%{name}.conf
-%sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
-install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+echo "g %{name} -" > system-group-%{name}.conf
+%sysusers_generate_pre system-group-%{name}.conf %{name} system-group-%{name}.conf
+install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-group-%{name}.conf
 
 %fdupes %{buildroot}%{spack_dir}
 %fdupes %{buildroot}%{_datarootdir}/spack
@@ -424,7 +424,7 @@ sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 %dir %{_sysconfdir}/skel/.spack
 %config %{_sysconfdir}/skel/.spack/config.yaml
 # repos directory is installed in -recipes
-%{_sysusersdir}/system-user-%{name}.conf
+%{_sysusersdir}/system-group-%{name}.conf
 %exclude %{_localstatedir}/lib/spack/repos
 
 %files recipes

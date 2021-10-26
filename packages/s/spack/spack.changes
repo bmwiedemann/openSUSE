@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 17:00:57 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix sysuser file name.
+
+-------------------------------------------------------------------
 Fri Oct  1 05:55:10 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Utilize sysuser infrastructure to set group spack. 
