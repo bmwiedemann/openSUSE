@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-transitions
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
@@ -35,12 +36,15 @@ Suggests:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dill}
-BuildRequires:  %{python_module graphviz}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pycodestyle}
-BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
+# pygraphviz dropped support for Python 3.6
+BuildRequires:  %{python_module graphviz if (%python-base without python36-base)}
+BuildRequires:  %{python_module pygraphviz if (%python-base without python36-base)}
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 # png support for graphviz
 BuildRequires:  graphviz-gnome
 # /SECTION
@@ -63,12 +67,12 @@ sed -i 's/\r$//' LICENSE Changelog.md README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -v tests/test_codestyle.py
-%pytest
+%pytest --ignore tests/test_codestyle.py
 
 %files %{python_files}
 %license LICENSE
 %doc Changelog.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/transitions
+%{python_sitelib}/transitions-%{version}*-info
 
 %changelog
