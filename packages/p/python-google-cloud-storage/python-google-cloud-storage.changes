@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 30 09:19:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-relative-imports.patch to fix relative imports.
+
+-------------------------------------------------------------------
 Thu Sep 30 09:04:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Copy the testsuite before we run it to avoid import problems.

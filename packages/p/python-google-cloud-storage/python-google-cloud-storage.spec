@@ -30,14 +30,19 @@ Patch0:         no-sic.patch
 # PATCH-FIX-UPSTREAM no-network.patch gh#googleapis/python-storage#457 mcepl@suse.com
 # mark tests as requiring network
 Patch1:         no-network.patch
+# PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
+# fix relative imports
+Patch2:         no-relative-imports.patch
 BuildRequires:  %{python_module google-auth >= 1.11.0}
 BuildRequires:  %{python_module google-cloud-core >= 1.4.1}
 BuildRequires:  %{python_module google-resumable-media >= 1.2.0}
 BuildRequires:  %{python_module mock >= 3.0.0}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth >= 1.11.0
@@ -58,17 +63,15 @@ to users via direct download. This package provides client to it.
 %autosetup -p1 -n google-cloud-storage-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# We shouldn't be running tests from the BUILD/*/ directory, where pytest finds another google/ subdirectory
-trap 'rm -rf -- ~/tests' INT TERM HUP EXIT
-cp -r tests ~/ && cd
-%pytest tests/unit -m 'not network'
+export PYTEST_ADDOPTS="--import-mode=importlib"
+%pytest tests/unit -k 'not network'
 
 %files %{python_files}
 %license LICENSE
