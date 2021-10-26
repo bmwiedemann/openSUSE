@@ -234,6 +234,8 @@ Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
 Patch0013:      0013-riscv-enable-CMD_BTRFS.patch
 Patch0014:      0014-Disable-timer-check-in-file-loading.patch
+Patch0015:      0015-Enable-EFI-and-ISO-partitions-suppo.patch
+Patch0016:      0016-Revert-video-backlight-fix-pwm-s-du.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

@@ -1749,4 +1749,16 @@ boundary checks.
     <comment></comment>
     <requestid>923182</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>197bfa977c54177c213cff3ff2956ebb</srcmd5>
+    <version>2021.10</version>
+    <time>1635272011</time>
+    <user>dimstar_suse</user>
+    <comment>Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.10
+* Patches added:
+  0015-Enable-EFI-and-ISO-partitions-suppo.patch - boo#1191966
+  0016-Revert-video-backlight-fix-pwm-s-du.patch - boo#1187573
+</comment>
+    <requestid>927247</requestid>
+  </revision>
 </revisionlist>

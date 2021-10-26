@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 22 13:01:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.10
+* Patches added:
+  0015-Enable-EFI-and-ISO-partitions-suppo.patch - boo#1191966
+  0016-Revert-video-backlight-fix-pwm-s-du.patch - boo#1187573
+
+-------------------------------------------------------------------
 Tue Oct  5 08:09:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2021.10
