@@ -20,9 +20,8 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define src_ver 1.2.4.2.g15998
 Name:           alsa-topology-conf
-Version:        1.2.5
+Version:        1.2.5.1
 Release:        0
 Summary:        ALSA topology configurations
 License:        BSD-3-Clause
@@ -42,7 +41,7 @@ Supplements:    modalias(pci:v00008086d00009D71sv*sd*bc*sc*i*)
 This package contains the configuration files for ALSA topology support.
 
 %prep
-%setup -q -n %{name}-%{src_ver}
+%setup -q
 
 %build
 
