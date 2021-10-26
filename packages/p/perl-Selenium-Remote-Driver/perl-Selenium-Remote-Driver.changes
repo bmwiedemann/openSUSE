@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 22 03:10:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.45
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.45 2021-10-21 TEODESIAN
+      - Remove ill-advised test reaching out to saucelabs at install-time, vendors are the users' problem
+
+-------------------------------------------------------------------
 Sat Mar 27 03:08:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.44
