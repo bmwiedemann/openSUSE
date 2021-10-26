@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 25 19:48:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  * Dropped Python 2.7 and 3.5, new minimum is 3.6
+  * Updated the PAExec executable to 1.29
+
+-------------------------------------------------------------------
 Mon Dec 14 14:09:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.0
