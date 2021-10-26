@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  5 16:04:01 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Fri Oct  1 08:16:33 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Tue Jun 22 08:52:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.9.6
