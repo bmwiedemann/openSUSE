@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 11:36:39 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add patch:
+  * logrotate-dont_warn_on_size=_syntax.patch (boo#1191816)
+
+-------------------------------------------------------------------
 Thu May 27 16:31:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.1:
