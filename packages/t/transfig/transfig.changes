@@ -13,6 +13,15 @@ Wed Oct  6 10:45:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 - Remove patch 6827c09d.patch now upstream
 - Add patch 1b09a8.patch from upstream (for ticket #137)
 - Port patch fig2dev-3.2.6-fig2mpdf.patch back
+- This Update includes the fixes for
+  * bsc#1190618, CVE-2020-21529: stack buffer overflow in the bezier_spline function in genepic.c.
+  * bsc#1190615, CVE-2020-21530: segmentation fault in the read_objects function in read.c.
+  * bsc#1190617, CVE-2020-21531: global buffer overflow in the conv_pattern_index function in gencgm.c.
+  * bsc#1190616, CVE-2020-21532: global buffer overflow in the setfigfont function in genepic.c.
+  * bsc#1190612, CVE-2020-21533: stack buffer overflow in the read_textobject function in read.c.
+  * bsc#1190611, CVE-2020-21534: global buffer overflow in the get_line function in read.c.
+  * bsc#1190607, CVE-2020-21535: segmentation fault in the gencgm_start function in gencgm.c.
+  * bsc#1192019, CVE-2021-32280: NULL pointer dereference in compute_closed_spline() in trans_spline.c
 
 -------------------------------------------------------------------
 Mon Aug 16 07:40:07 UTC 2021 - Dr. Werner Fink <werner@suse.de>
