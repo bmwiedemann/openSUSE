@@ -516,4 +516,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment>Update to version 5.1.3 (forwarded request 842188 from sebschub)</comment>
     <requestid>842548</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>db1a289327d3c79ba46f335a2bc75816</srcmd5>
+    <version>5.1.4</version>
+    <time>1635272044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927506</requestid>
+  </revision>
 </revisionlist>

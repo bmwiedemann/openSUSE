@@ -1,7 +1,7 @@
 #
 # spec file for package gramps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.1.3
+Version:        5.1.4
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -42,8 +42,8 @@ Requires:       python3-cairo
 Requires:       python3-gobject >= 3.12.0
 Requires:       python3-gobject-Gdk
 Requires:       xdg-utils
-Recommends:     graphviz
 Recommends:     ghostscript
+Recommends:     graphviz
 Recommends:     python3-Pillow
 Recommends:     python3-PyICU
 # python3-fontconfig is required for the Genealogical Symbols option; currently no package available
@@ -75,9 +75,6 @@ python3 setup.py install --root=%{buildroot}
 echo -n %{_datadir} > %{buildroot}%{python3_sitelib}/gramps/gen/utils/resource-path
 # Application Registry is obsolete since GNOME 2.8.
 rm -r %{buildroot}%{_datadir}/mime-info
-# Icon is installed in a non-default location
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
-mv %{buildroot}%{_datadir}/icons/gramps.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 # We package those files as package docs...
 rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %suse_update_desktop_file -r %{name} Office Database
@@ -87,13 +84,11 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %post
 %desktop_database_post
 %icon_theme_cache_post
-%icon_theme_cache_post gnome
 %mime_database_post
 
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
-%icon_theme_cache_postun gnome
 %mime_database_postun
 
 %files
@@ -103,8 +98,7 @@ rm -r %{buildroot}%{_datadir}/doc/%{name}/
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/gnome/
+%{_datadir}/icons/hicolor/*/*/
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/mime/packages/%{name}.xml
 %{python3_sitelib}/%{name}/

@@ -1,6 +1,8 @@
---- gramps-5.1.0_orig/gramps/gui/grampsgui.py	2019-08-22 09:17:54.101297170 +0200
-+++ gramps-5.1.0/gramps/gui/grampsgui.py	2019-08-22 09:19:48.686880378 +0200
-@@ -613,7 +613,8 @@
+Index: gramps-5.1.4/gramps/gui/grampsgui.py
+===================================================================
+--- gramps-5.1.4.orig/gramps/gui/grampsgui.py
++++ gramps-5.1.4/gramps/gui/grampsgui.py
+@@ -613,7 +613,8 @@ class Gramps:
          self._vm = ViewManager(app, dbstate,
                                 config.get("interface.view-categories"))
  
