@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 11:46:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * privoxy.service
+
+-------------------------------------------------------------------
 Fri Oct 15 14:52:00 UTC 2021 - Michael Du <duyizhaozj321@yahoo.com>
 
 - Revert privoxy-nopcreposix.patch because of bsc#1184945.
