@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 23 12:07:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.29.2
+  * libmpg123: Fix non-live-decoder safeguard for
+    mpg123_framebyframe_decode() (was a no-op in practice).
+
+-------------------------------------------------------------------
 Mon Oct 18 06:45:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.29.1
