@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-AMQP-RabbitMQ
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Net-AMQP-RabbitMQ
 Name:           perl-Net-AMQP-RabbitMQ
-Version:        2.40008
+Version:        2.40009
 Release:        0
 #Upstream: MPL
-%define cpan_name Net-AMQP-RabbitMQ
 Summary:        Interact with RabbitMQ over AMQP using librabbitmq
 License:        MPL-1.1
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Math::Int64) >= 0.34
@@ -47,11 +45,11 @@ You should be making good use of 'eval' around these methods to ensure that
 you appropriately catch the errors.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 # MANUAL no testing (needs network)
@@ -63,7 +61,6 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md README.md
 %license LICENSE LICENSE-MIT
 

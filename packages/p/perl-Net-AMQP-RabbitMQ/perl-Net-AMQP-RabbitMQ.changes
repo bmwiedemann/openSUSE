@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 24 03:07:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.40009
+   see /usr/share/doc/packages/perl-Net-AMQP-RabbitMQ/Changes
+
+  2.40009 - 2021-10-23
+      - Fixed a process where subprocess closed the parent process's connection - fixes #202
+      - Changed over to GitHub Actions from TravisCI
+      - Added support for librabbitmq-c's RPC timeout functionality. - fixes #206
+      - Updated to use the latest rabbitmq-c version.
+      - Merged #201, which allows setting `client_properties` in connect.
+      - Merged #200, which fixes minor document typos - fixes #199
+      - Merged #198, which adds minor documentation clarification - fixes #61
+
+-------------------------------------------------------------------
 Wed Oct 21 11:38:16 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 2.40008
