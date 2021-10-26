@@ -7,4 +7,14 @@
     <comment> </comment>
     <requestid>814670</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0abad899e4119a67ded4488faef8827</srcmd5>
+    <version>2.0</version>
+    <time>1635272030</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Stop using nose assert methods.
+- Switch to using pytest to run the testsuite.</comment>
+    <requestid>927413</requestid>
+  </revision>
 </revisionlist>

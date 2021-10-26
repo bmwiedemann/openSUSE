@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-assets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/miracle2k/django-assets
 Source:         https://files.pythonhosted.org/packages/source/d/django-assets/django-assets-%{version}.tar.gz
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -35,7 +36,7 @@ Requires:       python-webassets >= 2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.7}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module webassets >= 2.0}
 # /SECTION
 %python_subpackages
@@ -46,6 +47,7 @@ Asset management for Django, to compress and merge CSS and Javascript files.
 %prep
 %setup -q -n django-assets-%{version}
 dos2unix README.rst
+%autopatch -p1
 
 %build
 %python_build
@@ -55,7 +57,7 @@ dos2unix README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGES README.rst
