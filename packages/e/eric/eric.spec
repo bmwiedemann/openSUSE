@@ -20,7 +20,7 @@
 %define distname eric6
 
 Name:           eric
-Version:        21.1
+Version:        21.9
 Release:        0
 Summary:        Python IDE based on Qt5
 License:        GPL-3.0-or-later
@@ -100,8 +100,8 @@ ln -sf eric6 %{buildroot}%{_bindir}/%{name}
 %{_datadir}/metainfo/%{distname}.appdata.xml
 %{_datadir}/applications/%{distname}.desktop
 %{_datadir}/applications/%{distname}_browser.desktop
-%{_datadir}/pixmaps/eric.png
-%{_datadir}/pixmaps/ericWeb.png
+%{_datadir}/icons/eric.png
+%{_datadir}/icons/ericWeb.png
 %{python3_sitelib}/
 
 %files api

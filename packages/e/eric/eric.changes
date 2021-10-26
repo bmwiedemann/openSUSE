@@ -1,4 +1,186 @@
 -------------------------------------------------------------------
+Mon Oct 25 13:25:33 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 21.9
+  - bug fixes
+  - MicroPython
+    -- extended the list of known CircuitPython and UF2 capable
+    devices
+  - Unit Test
+    -- added support for sub-tests
+
+- Update to version 21.7
+  - bug fixes
+
+- Update to version 21.6
+  - bug fixes
+  - Tasks
+    -- made the task properties dialog adapt to the task kind
+    -- added code to get typed manual tasks
+  - UML Diagrams
+    -- extended the class items to show class attributes
+    -- added code to load a saved UML diagram via the file browser
+    or
+    the project others browser
+    -- improved the diagram layout of the Import Diagram and the
+    Application Diagram
+    -- added code to save and load diagrams as JSON files
+    -- changed code to print diagrams
+
+- Update to version 21.5
+  - bug fixes
+  - Code Style Checker
+    -- added a checker to find code that could be simplified
+    -- added capability to the results page to filter the messages
+    based on
+    message code
+    -- improved the statistics handling
+    -- updated pycodestyle to version 2.7.0
+  - MicroPython
+    -- added option to select the baud rate for flashing ESP32 and
+    ESP8266 boards
+    -- updated the BBC micro:bit API file to support micro:bit V2
+  - Python Lexer
+    -- updated the substyle contents
+  - Syntax Checker
+    -- updated pyflakes to version 2.3.1
+  - Third Party packages
+    -- removed most of the bundled Third Party packages in favour
+    of pip
+    installed packages
+
+- Update to version 21.4
+  - bug fixes
+  - Code Style Checker
+    -- added a checker to help porting to the 'pathlib' module
+  - Debugger
+    -- extended the Start... dialogs to allow to override some
+    global
+    configuration settings (redirect stdin/stdout/stderr)
+  - Editor
+    -- added capability to delete the matching brace if the cursor
+    is
+    in between them (e.g. {}) and backspace is pressed
+  - Pip Interface
+    -- added support for a re-installation of selected packages
+  - Shell
+    -- changed the shell special commands to start with a '%' (e.g.
+    %start)
+
+- Update to version 21.3
+  - bug fixes
+  - General
+    -- changed the default file format for several generated files
+    to be based on
+    JSON
+    -- added support for Cython
+  - Debugger
+    -- added capability to delete environment variables for the
+    debugged script
+    by adding a '-' to the variable name in the start dialog
+  - Debug Viewer
+    -- changed code to show project relative paths in the
+    breakpoint viewer
+  - Editor
+    -- integrated the "Quick Search" functionality into the editor
+    search widget
+    -- added support for Cython to the code outline/navigation
+    lists
+    -- added support for Cython to the Typing Completers
+  - File Browser
+    -- added capability to show/hide hidden files (i.e. those
+    starting with '.')
+    -- added capability to create new files/directories and delete
+    them
+    -- added Cython support to show the file structure of these
+    files
+  - Mercurial Interface
+    -- added support for Mercurial 5.7
+  - MicroPython
+    -- added support for "Raspberry Pi Pico" (i.e. RP2040 based
+    boards)
+    -- extended the list of supported (recognized) CircuitPython
+    boards
+    -- added capability to manually configure devices not yet known
+    by eric6
+    -- added a generic dialog for flashing UF2 capable devices
+    (with device
+    detection)
+    -- added code to support 'middle button paste'
+  - pip Interface
+    -- changed code for the search function to work with the PyPI
+    search page
+    because the XML-RPC search interface of PyPI is still disabled
+    -- extended the Package Details dialog to include buttons to
+    install,
+    upgrade or uninstall the package
+
+- Update to version 21.2
+  - bug fixes
+  - General
+    -- added support for PyQt6
+    -- added support for PySide6
+  - Code Style Checker
+    -- added a commented code whitelist patterns to the
+    Miscellaneous Checker
+    -- added support for the '@yield' and '@ytype' tags
+  - Debugger
+    -- added support for debugging multiprocess scripts using these
+    methods
+    --- QProcess.start(), QProcess.startDetached()
+    --- subprocess.Popen()
+    --- multiprocessing.Process()
+    --- os.spawnl...(), os.spawnv...(), os.posix_spawn...(),
+    os.fork(),
+    os.fork_exec()
+    --- _winapi.CreateProcess(), _subprocess.CreateProcess()
+    -- added support for debugging code strings (-c, --code) or
+    script modules
+    (-m, --module)
+    -- added support for the "Continue Until" action execution code
+    until the
+    current cursor line (if it is greater than the current line) or
+    until
+    returning from the current frame
+  - Documentation Generator
+    -- added support for the '@yield' and '@ytype' tags to document
+    generators
+  - Editor
+    -- added code to enclose the current selection by entering ", '
+    or a bracket
+    ( (, ), [, ], {, }, <, > ) characters
+    -- extended the exporters to support sub-styles
+    -- added functionality to insert docstring templates via the
+    context menu
+    (cursor placed on first line of function definition), after
+    entering
+    the docstring start string (e.g. """ for Python) or via a
+    keyboard
+    shortcut (default: Ctrl+Alt+D) when cursor is either placed on
+    the
+    function definition line or after the end of the function
+    definition
+  - Find File Dialog
+    -- added option to exclude hidden files and directories
+    -- changed directory tree search logic to derive the file
+    patterns from the
+    project file type associations, if the directory to be searched
+    is a
+    sub-directory of the project
+  - User Interface
+    -- added capability to show Qt6 documentation (configurable)
+  - VirtualEnv Manager
+    -- improved the handling of virtual environments slightly
+  - Web-Browser
+    -- added an error page for not supported eric: URLs
+  - Third Party packages
+    -- updated eradicate.py to 2.0.0
+    -- updated chardet to 4.0.0
+    -- updated coverage.py to 5.3.1
+    -- updated editorconfig to 0.12.3
+    -- updated Pygments to 2.7.4
+
+-------------------------------------------------------------------
 Sat Jan  2 13:33:03 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to version 21.1
