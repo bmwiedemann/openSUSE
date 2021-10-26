@@ -1,7 +1,7 @@
 #
 # spec file for package pam_ccreds
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           pam_ccreds
 Version:        10
 Release:        0
 Summary:        Pam module to cache login credentials
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Security
-Url:            http://www.padl.com/OSS/pam_ccreds.html
+URL:            http://www.padl.com/OSS/pam_ccreds.html
 
 Source:         pam_ccreds-%{version}.tar.bz2
 Source2:        baselibs.conf
@@ -52,16 +52,16 @@ provides a mechanism for disconnected use of network directories.
 # So we disable it here, if you want to retest, just delete this comment and the line below.
 export SUSE_ASNEEDED=0
 autoreconf --verbose --force --install
-%configure --libdir=/%{_lib} --with-pamdir=/%{_lib}/security
+%configure --libdir=/%{_lib} --with-pamdir=%{_pam_moduledir}
 make %{?_smp_mflags}
 
 %install
-install -d 755 $RPM_BUILD_ROOT/%{_lib}/security
-install -m 755 pam_ccreds.so $RPM_BUILD_ROOT/%{_lib}/security
+install -d 755 %{buildroot}%{_pam_moduledir}
+install -m 755 pam_ccreds.so %{buildroot}%{_pam_moduledir}
 
 %files
 %defattr(444,root,root,755)
 %doc README COPYING pam.conf
-%attr(555,root,root) /%{_lib}/security/pam_ccreds.so
+%attr(555,root,root) %{_pam_moduledir}/pam_ccreds.so
 
 %changelog

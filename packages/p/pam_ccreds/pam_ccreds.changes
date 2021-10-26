@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  4 13:23:11 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Use the %_pam_moduledir macro in pam_ccreds.spec in order to
+  have the package follow UsrMerge.
+  [bsc#1190947, pam_ccreds.spec]
+
+-------------------------------------------------------------------
 Fri Jun 14 01:13:12 UTC 2013 - jengelh@inai.de
 
 - Add pam_ccreds-db6.diff to fix compile abort with db >= 5
