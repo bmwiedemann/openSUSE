@@ -98,7 +98,9 @@ ensure that all elements behave all together in the expected way.
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gst-validate-launcher.in
 
 %build
-%meson
+%meson \
+  -Ddebug_viewer=enabled \
+  %{nil}
 %meson_build
 
 %install
@@ -120,6 +122,14 @@ sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' validate/tools/gs
 %{_datadir}/gstreamer-1.0/validate/
 %dir %{_libdir}/gstreamer-1.0/
 %dir %{_libdir}/gstreamer-1.0/validate/
+
+%{_bindir}/gst-debug-viewer
+%{python_sitelib}/GstDebugViewer/
+%{_datadir}/applications/org.freedesktop.GstDebugViewer.desktop
+%{_datadir}/gst-debug-viewer/
+%{_datadir}/icons/hicolor/48x48/apps/gst-debug-viewer.png
+%{_datadir}/icons/hicolor/scalable/apps/gst-debug-viewer.svg
+%{_datadir}/metainfo/org.freedesktop.GstDebugViewer.appdata.xml
 
 %files -n libgstvalidate-1_0-0
 %{_libdir}/libgstvalidate-1.0.so.*
