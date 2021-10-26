@@ -14,4 +14,5 @@
     <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled"/>
+  <service name="download_files" mode="disabled"/>
 </services>

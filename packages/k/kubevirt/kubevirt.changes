@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 19 16:24:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Pack only kubevirt-{operator,cr}.yaml into manifests
+- Include manifests/testing/* into tests package
+- Use disks-images-provider.yaml from upstream
+
+-------------------------------------------------------------------
 Mon Oct 11 15:02:22 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.46.0

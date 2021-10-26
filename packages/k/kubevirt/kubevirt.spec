@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
 Source2:        kubevirt_containers_meta
 Source3:        kubevirt_containers_meta.service
+Source4:        https://github.com/kubevirt/kubevirt/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
@@ -208,16 +209,23 @@ install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}
 # virt-launcher SELinux policy needs to land in virt-handler container
 install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
 
-mkdir -p %{buildroot}%{_datadir}/kube-virt
-cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
-# Dont install OLM manifests
-rm -rf %{buildroot}%{_datadir}/kube-virt/manifests/release/olm
+# Install release manifests
+mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/release
+install -m 0644 _out/manifests/release/kubevirt-operator.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
+install -m 0644 _out/manifests/release/kubevirt-cr.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
 # TODO:
 # Create a proper Pod Security Policy (PSP) for KubeVirt. For now, add one
 # that uses the CaaSP privileged PSP. It can be used with CaaSP-based
 # Kubernetes clusters.
 install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
-install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
+
+# Install manifests for testing
+mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/testing
+install -m 0644 _out/manifests/testing/* %{buildroot}%{_datadir}/kube-virt/manifests/testing/
+# The generated disks-images-provider.yaml refers to nonexistent container
+# images. Overwrite it with the upstream version for testing.
+install -m 0644 %{S:4} %{buildroot}/%{_datadir}/kube-virt/manifests/testing/
+install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt/manifests/testing/
 
 # Install kubevirt_containers_meta build service
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
@@ -266,14 +274,16 @@ install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/kube-virt
-%{_datadir}/kube-virt/manifests
+%dir %{_datadir}/kube-virt/manifests
+%{_datadir}/kube-virt/manifests/release
 
 %files tests
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/kube-virt
+%dir %{_datadir}/kube-virt/manifests
 %{_bindir}/virt-tests
-%{_datadir}/kube-virt/default-config.json
+%{_datadir}/kube-virt/manifests/testing
 
 %files -n obs-service-kubevirt_containers_meta
 %license LICENSE
