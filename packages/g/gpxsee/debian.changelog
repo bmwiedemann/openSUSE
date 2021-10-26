@@ -1,3 +1,11 @@
+gpxsee (9.10) stable; urgency=low
+
+  * Added waypoint icons highlighting.
+  * Various GPI parser fixes/improvements (icons related).
+  * Added support for East Asian encodings in Garmin formats.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 25 Oct 2021 12:40:48 +0200
+
 gpxsee (9.9) stable; urgency=medium
 
   * Fixed scroll wheel zooming on devices with "fine-resolution

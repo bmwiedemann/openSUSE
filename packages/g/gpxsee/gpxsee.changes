@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 25 12:35:14 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.10
+  * Added waypoint icons highlighting.
+  * Various GPI parser fixes/improvements (icons related).
+  * Added support for East Asian encodings in Garmin formats.
+
+-------------------------------------------------------------------
 Sat Oct 16 11:05:33 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.9
