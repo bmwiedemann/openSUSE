@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 25 18:38:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.1
+  * Improved compatibility with 2021 Quake re-release
+  Known issues:
+  * Some entities don't animate smoothly with FTE protocol
+   extensions. cl_nopext 1 is a workaround right now. Same bug
+   exists in QSS.
+
+-------------------------------------------------------------------
 Sat Sep  4 15:49:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.11.0
