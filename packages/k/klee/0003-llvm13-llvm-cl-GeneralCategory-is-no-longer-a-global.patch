@@ -1,0 +1,51 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Tue, 24 Aug 2021 13:59:29 +0200
+Subject: llvm13: llvm::cl::GeneralCategory is no longer a global
+Patch-mainline: no
+References: llvm 13
+
+Therefore, llvm::cl::getGeneralCategory() should be used instead.
+
+See: https://reviews.llvm.org/D105959
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ tools/kleaver/main.cpp | 5 ++++-
+ tools/klee/main.cpp    | 4 ++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/tools/kleaver/main.cpp b/tools/kleaver/main.cpp
+index 9a79474c77e6..0a4cfbffa945 100644
+--- a/tools/kleaver/main.cpp
++++ b/tools/kleaver/main.cpp
+@@ -387,8 +387,11 @@ static bool printInputAsSMTLIBv2(const char *Filename,
+ }
+ 
+ int main(int argc, char **argv) {
+-
++#if LLVM_VERSION_CODE >= LLVM_VERSION(13, 0)
++  KCommandLine::HideOptions(llvm::cl::getGeneralCategory());
++#else
+   KCommandLine::HideOptions(llvm::cl::GeneralCategory);
++#endif
+ 
+   bool success = true;
+ 
+diff --git a/tools/klee/main.cpp b/tools/klee/main.cpp
+index f340e7438af2..506493152073 100644
+--- a/tools/klee/main.cpp
++++ b/tools/klee/main.cpp
+@@ -1157,7 +1157,11 @@ linkWithUclibc(StringRef libDir, std::string opt_suffix,
+ int main(int argc, char **argv, char **envp) {
+   atexit(llvm_shutdown);  // Call llvm_shutdown() on exit.
+ 
++#if LLVM_VERSION_CODE >= LLVM_VERSION(13, 0)
++  KCommandLine::HideOptions(llvm::cl::getGeneralCategory());
++#else
+   KCommandLine::HideOptions(llvm::cl::GeneralCategory);
++#endif
+ 
+   llvm::InitializeNativeTarget();
+ 
+-- 
+2.33.1
+

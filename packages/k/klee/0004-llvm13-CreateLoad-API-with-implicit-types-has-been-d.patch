@@ -1,0 +1,78 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Tue, 24 Aug 2021 13:59:31 +0200
+Subject: llvm13: CreateLoad API with implicit types has been deprecated
+Patch-mainline: no
+References: llvm 13
+
+See: https://github.com/llvm/llvm-project/commit/6312c53870897435b38881795460ad9f34bf9819
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ lib/Core/ExternalDispatcher.cpp |  6 ++++--
+ lib/Module/IntrinsicCleaner.cpp | 13 +++++++++----
+ 2 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/lib/Core/ExternalDispatcher.cpp b/lib/Core/ExternalDispatcher.cpp
+index baa5327aad3d..b1bfff47c9e6 100644
+--- a/lib/Core/ExternalDispatcher.cpp
++++ b/lib/Core/ExternalDispatcher.cpp
+@@ -287,7 +287,8 @@ Function *ExternalDispatcherImpl::createDispatcher(Function *target,
+       ConstantInt::get(Type::getInt64Ty(ctx), (uintptr_t)(void *)&gTheArgsP),
+       PointerType::getUnqual(PointerType::getUnqual(Type::getInt64Ty(ctx))),
+       "argsp");
+-  auto argI64s = Builder.CreateLoad(argI64sp, "args");
++  auto argI64s = Builder.CreateLoad(
++      argI64sp->getType()->getPointerElementType(), argI64sp, "args");
+ 
+   // Get the target function type.
+   FunctionType *FTy = cast<FunctionType>(
+@@ -306,7 +307,8 @@ Function *ExternalDispatcherImpl::createDispatcher(Function *target,
+                           ConstantInt::get(Type::getInt32Ty(ctx), idx));
+ 
+     auto argp = Builder.CreateBitCast(argI64p, PointerType::getUnqual(argTy));
+-    args[i] = Builder.CreateLoad(argp);
++    args[i] =
++        Builder.CreateLoad(argp->getType()->getPointerElementType(), argp);
+ 
+     unsigned argSize = argTy->getPrimitiveSizeInBits();
+     idx += ((!!argSize ? argSize : 64) + 63) / 64;
+diff --git a/lib/Module/IntrinsicCleaner.cpp b/lib/Module/IntrinsicCleaner.cpp
+index b3b356d2959d..5e720e45684a 100644
+--- a/lib/Module/IntrinsicCleaner.cpp
++++ b/lib/Module/IntrinsicCleaner.cpp
+@@ -96,24 +96,29 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+               Builder.CreatePointerCast(dst, i8pp, "vacopy.cast.dst");
+           auto castedSrc =
+               Builder.CreatePointerCast(src, i8pp, "vacopy.cast.src");
+-          auto load = Builder.CreateLoad(castedSrc, "vacopy.read");
++          auto load =
++              Builder.CreateLoad(castedSrc->getType()->getPointerElementType(),
++                                 castedSrc, "vacopy.read");
+           Builder.CreateStore(load, castedDst, false /* isVolatile */);
+         } else {
+           assert(WordSize == 8 && "Invalid word size!");
+           Type *i64p = PointerType::getUnqual(Type::getInt64Ty(ctx));
+           auto pDst = Builder.CreatePointerCast(dst, i64p, "vacopy.cast.dst");
+           auto pSrc = Builder.CreatePointerCast(src, i64p, "vacopy.cast.src");
+-          auto val = Builder.CreateLoad(pSrc, std::string());
++
++          auto pType = pSrc->getType()->getPointerElementType();
++
++          auto val = Builder.CreateLoad(pType, pSrc);
+           Builder.CreateStore(val, pDst, ii);
+ 
+           auto off = ConstantInt::get(Type::getInt64Ty(ctx), 1);
+           pDst = Builder.CreateGEP(nullptr, pDst, off, std::string());
+           pSrc = Builder.CreateGEP(nullptr, pSrc, off, std::string());
+-          val = Builder.CreateLoad(pSrc, std::string());
++          val = Builder.CreateLoad(pType, pSrc);
+           Builder.CreateStore(val, pDst);
+           pDst = Builder.CreateGEP(nullptr, pDst, off, std::string());
+           pSrc = Builder.CreateGEP(nullptr, pSrc, off, std::string());
+-          val = Builder.CreateLoad(pSrc, std::string());
++          val = Builder.CreateLoad(pType, pSrc);
+           Builder.CreateStore(val, pDst);
+         }
+         ii->eraseFromParent();
+-- 
+2.33.1
+

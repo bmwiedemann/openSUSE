@@ -1205,4 +1205,12 @@ build with uclibc</comment>
   * 0007-llvm12-Implement-llvm.abs-intrinsic.patch</comment>
     <requestid>922992</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e4eca81c191a3ddf116ae2162b10e3e</srcmd5>
+    <version>2.2+20211017</version>
+    <time>1635272039</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927481</requestid>
+  </revision>
 </revisionlist>

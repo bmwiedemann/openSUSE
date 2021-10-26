@@ -16,7 +16,7 @@
 #
 
 
-%define llvm_version_major 12
+%define llvm_version_major 13
 %define llvm_version %{llvm_version_major}
 
 %ifarch x86_64
@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.2+20210915
+Version:        2.2+20211017
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -39,6 +39,15 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
 Patch0:         0001-test-disable-until-it-is-fixed.patch
+Patch1:         0001-Support-FileHandling.cpp-rewrite-to-C-14.patch
+Patch2:         0002-llvm13-llvm-fs-F_None-has-been-removed.patch
+Patch3:         0003-llvm13-llvm-cl-GeneralCategory-is-no-longer-a-global.patch
+Patch4:         0004-llvm13-CreateLoad-API-with-implicit-types-has-been-d.patch
+Patch5:         0005-llvm13-CreateGEP-no-longer-accepts-nullptr.patch
+Patch6:         0006-llvm13-llvm-APInt-toString-has-been-moved-to-StringE.patch
+Patch7:         0007-llvm13-Add-LLVM-13-to-lit.cfg.patch
+Patch8:         0008-llvm13-Add-LLVM-13-to-Travis-CI-and-GitHub-Actions.patch
+
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel

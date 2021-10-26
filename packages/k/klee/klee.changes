@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:47:49 UTC 2021 - jslaby@suse.cz
+
+- Update to version 2.2+20211017:
+  * test/Runtime/POSIX/Futimesat: futimesat(2) requires _GNU_SOURCE on glibc platforms
+  * test/Runtime/POSIX/Futimesat: Compile with -std=c99
+  * test/Feature/FunctionAlias.c: Add missing CHECK-UNKNOWN prefix
+- add llvm 13 support
+  * 0001-Support-FileHandling.cpp-rewrite-to-C-14.patch
+  * 0002-llvm13-llvm-fs-F_None-has-been-removed.patch
+  * 0003-llvm13-llvm-cl-GeneralCategory-is-no-longer-a-global.patch
+  * 0004-llvm13-CreateLoad-API-with-implicit-types-has-been-d.patch
+  * 0005-llvm13-CreateGEP-no-longer-accepts-nullptr.patch
+  * 0006-llvm13-llvm-APInt-toString-has-been-moved-to-StringE.patch
+  * 0007-llvm13-Add-LLVM-13-to-lit.cfg.patch
+  * 0008-llvm13-Add-LLVM-13-to-Travis-CI-and-GitHub-Actions.patch
+- switch to llvm 13
+
+-------------------------------------------------------------------
 Mon Oct 04 10:57:30 UTC 2021 - jslaby@suse.cz
 
 - Update to version 2.2+20210915:

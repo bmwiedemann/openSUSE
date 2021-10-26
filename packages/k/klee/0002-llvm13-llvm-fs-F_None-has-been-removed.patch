@@ -1,0 +1,38 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Tue, 24 Aug 2021 13:59:28 +0200
+Subject: llvm13: llvm::fs::F_None has been removed
+Patch-mainline: no
+References: llvm 13
+
+... and should be replaced with llvm::fs::OF_None since LLVM 7.
+
+See: https://reviews.llvm.org/D101506
+     https://github.com/llvm/llvm-project/commit/1f67a3cba9b09636c56e2109d8a35ae96dc15782
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ lib/Support/FileHandling.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lib/Support/FileHandling.cpp b/lib/Support/FileHandling.cpp
+index 9809b87d0051..462055210df7 100644
+--- a/lib/Support/FileHandling.cpp
++++ b/lib/Support/FileHandling.cpp
+@@ -24,8 +24,15 @@ std::unique_ptr<llvm::raw_fd_ostream>
+ klee_open_output_file(const std::string &path, std::string &error) {
+   error.clear();
+   std::error_code ec;
++
++#if LLVM_VERSION_CODE >= LLVM_VERSION(7, 0)
++  auto f = std::make_unique<llvm::raw_fd_ostream>(path.c_str(), ec,
++                                                  llvm::sys::fs::OF_None);
++#else
+   auto f = std::make_unique<llvm::raw_fd_ostream>(path.c_str(), ec,
+                                                   llvm::sys::fs::F_None);
++#endif
++
+   if (ec)
+     error = ec.message();
+   if (!error.empty()) {
+-- 
+2.33.1
+

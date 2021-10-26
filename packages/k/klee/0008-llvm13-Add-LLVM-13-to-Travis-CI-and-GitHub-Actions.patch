@@ -1,0 +1,51 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Sat, 16 Oct 2021 17:26:01 +0200
+Subject: llvm13: Add LLVM 13 to Travis CI and GitHub Actions
+Patch-mainline: no
+References: llvm 13
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ .github/workflows/build.yaml | 4 ++++
+ .travis.yml                  | 3 +++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/.github/workflows/build.yaml b/.github/workflows/build.yaml
+index 9aaa99c71e95..c542781532d4 100644
+--- a/.github/workflows/build.yaml
++++ b/.github/workflows/build.yaml
+@@ -36,6 +36,7 @@ jobs:
+     strategy:
+       matrix:
+         name: [
++                "LLVM 13",
+                 "LLVM 12",
+                 "LLVM 11",
+                 "LLVM 10",
+@@ -59,6 +60,9 @@ jobs:
+                 "No TCMalloc, optimised runtime",
+             ]
+         include:
++          - name: "LLVM 13"
++            env:
++              LLVM_VERSION: 13
+           - name: "LLVM 12"
+             env:
+               LLVM_VERSION: 12
+diff --git a/.travis.yml b/.travis.yml
+index 8c7598aad7cb..111ba1a0a3ba 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -53,6 +53,9 @@ env:
+ jobs:
+     include:
+     # Check supported LLVM versions
++    - name: "LLVM 13"
++      env: LLVM_VERSION=13.0
++
+     - name: "LLVM 12"
+       env: LLVM_VERSION=12.0
+ 
+-- 
+2.33.1
+

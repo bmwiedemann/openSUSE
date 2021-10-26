@@ -1,0 +1,62 @@
+From: Lukas Zaoral <lzaoral@redhat.com>
+Date: Tue, 24 Aug 2021 13:59:32 +0200
+Subject: llvm13: CreateGEP no longer accepts nullptr
+Patch-mainline: no
+References: llvm 13
+
+See: https://reviews.llvm.org/D105653
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ lib/Core/ExternalDispatcher.cpp |  2 +-
+ lib/Module/IntrinsicCleaner.cpp | 17 +++++++++--------
+ 2 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/lib/Core/ExternalDispatcher.cpp b/lib/Core/ExternalDispatcher.cpp
+index b1bfff47c9e6..e43a8a8368ef 100644
+--- a/lib/Core/ExternalDispatcher.cpp
++++ b/lib/Core/ExternalDispatcher.cpp
+@@ -303,7 +303,7 @@ Function *ExternalDispatcherImpl::createDispatcher(Function *target,
+     auto argTy =
+         (i < FTy->getNumParams() ? FTy->getParamType(i) : (*ai)->getType());
+     auto argI64p =
+-        Builder.CreateGEP(nullptr, argI64s,
++        Builder.CreateGEP(argI64s->getType()->getPointerElementType(), argI64s,
+                           ConstantInt::get(Type::getInt32Ty(ctx), idx));
+ 
+     auto argp = Builder.CreateBitCast(argI64p, PointerType::getUnqual(argTy));
+diff --git a/lib/Module/IntrinsicCleaner.cpp b/lib/Module/IntrinsicCleaner.cpp
+index 5e720e45684a..f4b867e55316 100644
+--- a/lib/Module/IntrinsicCleaner.cpp
++++ b/lib/Module/IntrinsicCleaner.cpp
+@@ -106,19 +106,20 @@ bool IntrinsicCleanerPass::runOnBasicBlock(BasicBlock &b, Module &M) {
+           auto pDst = Builder.CreatePointerCast(dst, i64p, "vacopy.cast.dst");
+           auto pSrc = Builder.CreatePointerCast(src, i64p, "vacopy.cast.src");
+ 
+-          auto pType = pSrc->getType()->getPointerElementType();
++          auto pSrcType = pSrc->getType()->getPointerElementType();
++          auto pDstType = pDst->getType()->getPointerElementType();
+ 
+-          auto val = Builder.CreateLoad(pType, pSrc);
++          auto val = Builder.CreateLoad(pSrcType, pSrc);
+           Builder.CreateStore(val, pDst, ii);
+ 
+           auto off = ConstantInt::get(Type::getInt64Ty(ctx), 1);
+-          pDst = Builder.CreateGEP(nullptr, pDst, off, std::string());
+-          pSrc = Builder.CreateGEP(nullptr, pSrc, off, std::string());
+-          val = Builder.CreateLoad(pType, pSrc);
++          pDst = Builder.CreateGEP(pDstType, pDst, off);
++          pSrc = Builder.CreateGEP(pSrcType, pSrc, off);
++          val = Builder.CreateLoad(pSrcType, pSrc);
+           Builder.CreateStore(val, pDst);
+-          pDst = Builder.CreateGEP(nullptr, pDst, off, std::string());
+-          pSrc = Builder.CreateGEP(nullptr, pSrc, off, std::string());
+-          val = Builder.CreateLoad(pType, pSrc);
++          pDst = Builder.CreateGEP(pDstType, pDst, off);
++          pSrc = Builder.CreateGEP(pSrcType, pSrc, off);
++          val = Builder.CreateLoad(pSrcType, pSrc);
+           Builder.CreateStore(val, pDst);
+         }
+         ii->eraseFromParent();
+-- 
+2.33.1
+
