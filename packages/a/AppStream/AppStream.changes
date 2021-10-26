@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 13:13:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.14.6. Check the NEWS file for the list of changes.
+- Only install the license files once.
+
+-------------------------------------------------------------------
 Fri Aug 27 05:36:31 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Create and install a Vala API file

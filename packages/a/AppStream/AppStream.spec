@@ -22,7 +22,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
-Version:        0.14.4
+Version:        0.14.6
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -133,6 +133,9 @@ GObject introspection bindings for interfaces provided by AppStream.
 %install
 %meson_install
 
+# Unneeded test file
+rm -r %{buildroot}%{_datadir}/installed-tests
+
 %check
 %meson_test
 
@@ -150,7 +153,6 @@ appstreamcli refresh --force || true
 
 %files
 %doc NEWS
-%license LICENSE*
 %{_bindir}/appstreamcli
 %config(noreplace) %{_sysconfdir}/appstream.conf
 %dir %{_datadir}/metainfo
@@ -158,13 +160,11 @@ appstreamcli refresh --force || true
 %{_mandir}/man1/appstreamcli.*
 
 %files -n libappstream%{libappstream_sover}
-%doc NEWS
 %license LICENSE*
 %{_libdir}/libappstream.so.%{libappstream_sover}
 %{_libdir}/libappstream.so.%{version}
 
 %files -n libAppStreamQt%{libAppStreamQt_sover}
-%license LICENSE*
 %{_libdir}/libAppStreamQt.so.%{libAppStreamQt_sover}
 %{_libdir}/libAppStreamQt.so.%{version}
 
@@ -187,7 +187,6 @@ appstreamcli refresh --force || true
 %endif
 
 %files -n typelib-1_0-AppStream-1.0
-%license LICENSE*
 %{_libdir}/girepository-1.0/AppStream-1.0.typelib
 
 %files doc
