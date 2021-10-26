@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 16:07:00 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Typo fix to sysuser file.
+
+-------------------------------------------------------------------
 Thu Oct  7 17:25:55 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Restore tmpfiles.d handling which was deleted for no good

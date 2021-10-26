@@ -158,7 +158,7 @@ install -m 0755 -d %{buildroot}%{_fillupdir}
   mv %{buildroot}%{_sysconfdir}/sysconfig/munge \
      %{buildroot}%{_fillupdir}/sysconfig.munge
   %if 0%{?have_sysuser}
-  echo "u %munge_u - \"%munge_descr\" %{munge_run}\n" > system-user-%{name}.conf
+  echo -e "u %munge_u - \"%munge_descr\" %{munge_run}\n" > system-user-%{name}.conf
   %sysusers_generate_pre system-user-%{name}.conf %{name} system-user-%{name}.conf
   install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
   %endif
