@@ -18,7 +18,7 @@
 
 %define cpan_name Feed-Find
 Name:           perl-Feed-Find
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Syndication feed auto-discovery
 License:        Artistic-1.0 OR GPL-1.0-or-later

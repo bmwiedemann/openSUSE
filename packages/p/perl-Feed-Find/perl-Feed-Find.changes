@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 23 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Feed-Find/Changes
+
+  0.12  2021.10.22
+      - Add GitHub info to Makefile.PL
+
+-------------------------------------------------------------------
 Tue Jun 15 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.11
