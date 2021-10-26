@@ -1,7 +1,7 @@
 #
 # spec file for package pam_passwdqc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           pam_passwdqc
-Url:            http://www.openwall.com/passwdqc/
+URL:            http://www.openwall.com/passwdqc/
 BuildRequires:  pam-devel
 Requires:       pam
 Recommends:     passwdqc
-Provides:       pam-modules:/%_lib/security/pam_passwdqc.so
+Provides:       pam-modules:%{_pam_moduledir}/pam_passwdqc.so
 Version:        1.4.0
 Release:        0
 Summary:        Simple Password Strength Checking Module
@@ -82,18 +82,18 @@ EXTRA_CFLAGS="-fno-strict-aliasing"
     EXTRA_CFLAGS="$EXTRA_CFLAGS -Wa,--noexecstack"
 %endif
 make CFLAGS="$RPM_OPT_FLAGS $EXTRA_CFLAGS -fPIC -DHAVE_SHADOW -DLINUX_PAM" \
-     SHARED_LIBDIR="/%{_lib}" \
-     DEVEL_LIBDIR="/usr/%{_lib}" \
-     SECUREDIR="/%{_lib}/security"
+     SHARED_LIBDIR="%{_lib}" \
+     DEVEL_LIBDIR="%{_libdir}" \
+     SECUREDIR="%{_pam_moduledir}"
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT SHARED_LIBDIR="/%{_lib}" DEVEL_LIBDIR="/%{_libdir}" SECUREDIR="/%{_lib}/security" install
+make DESTDIR=%{buildroot} SHARED_LIBDIR=/"%{_lib}" DEVEL_LIBDIR="/%{_libdir}" SECUREDIR="%{_pam_moduledir}" install
 
 %check
 # Check for module problems.  Specifically, check that every module we just
 # installed can actually be loaded by a minimal PAM-aware application.
-export LD_LIBRARY_PATH="$RPM_BUILD_ROOT/%{_lib}/"
-for module in $RPM_BUILD_ROOT/%{_lib}/security/pam*.so ; do
+export LD_LIBRARY_PATH="%{buildroot}/%{_lib}/"
+for module in %{buildroot}%{_pam_moduledir}/pam*.so ; do
    if ! sh $RPM_SOURCE_DIR/dlopen.sh -lpam -ldl ${module} ; then
       exit 1
    fi
@@ -105,7 +105,7 @@ done
 
 %files 
 %defattr(-,root,root,755)
-%attr(755,root,root) /%{_lib}/security/pam_*.so
+%attr(755,root,root) %{_pam_moduledir}/pam_*.so
 %attr(644,root,root) %doc %{_mandir}/man8/pam_*.8.*
 
 %files -n libpasswdqc0
