@@ -169,6 +169,7 @@ echo > examples/CMakeLists.txt
 %endif
 
 %check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
 %ctest
 
 %post -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig

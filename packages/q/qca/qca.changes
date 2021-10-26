@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 21 13:00:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Set LD_LIBRARY_PATH before running tests.
+
+-------------------------------------------------------------------
 Tue Sep 14 20:24:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Run ctest in %check
