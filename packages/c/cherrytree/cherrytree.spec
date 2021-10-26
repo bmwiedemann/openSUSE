@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        0.99.40
+Version:        0.99.42+3
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(gtksourceviewmm-3.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml++-2.6)
-BuildRequires:  pkgconfig(spdlog)
+BuildRequires:  pkgconfig(spdlog) >= 1.5
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uchardet)
 # For password-protected format

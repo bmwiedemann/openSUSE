@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:06:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.42:
+  * Unified search in nodes name+tags and search in nodes content.
+  * Fixed search in multiple nodes with the option first from
+    selection/first in all range.
+  * Fixed issue with password protected data extraction on windows
+    and non ascii paths.
+  * Link to node insert/edit dialog, added search for anchor
+    name in the tree.
+  * Implemented node property to exclude node and/or
+    subnodes from search.
+  * Applying a colour to foreground/background of text
+    to use default gtk3 palette.
+  * Added in preferenced dialog, tab theme, possibility
+    to choose 2 new icon themes.
+  * Added option to hide the status bar.
+  * Added configurability of selected node's background/foreground
+    colour in the tree.
+  * Tree explorer added view option to show lines connecting
+    the nodes parent-children.
+  * Added syntax highlighting for AutoHotkey.
+  * Added in preferences dialog, tab fonts, buttons to reset the
+    fonts to default values.
+  * At F8/current day node do not visit year/month if already
+    existing, only day.
+  * Support for portable mode in non-windows os looking for
+    config/config.cfg beside cherrytree binary executable.
+  * Tree sorting menu items: moved siblings only sorting first
+    and after separator sorting whole tree.
+  * Added experimantal option menubar_in_titlebar that can be
+    activated in config.cfg, but off by default.
+  * Added flip image buttons to image properties dialog.
+  * Rich text tag monospace: added configurability of the
+    foreground colour.
+  * Fix incorrect insertion from plain text clipboard of
+    link with pipe char.
+  * Fix apply link to image via toolbar button rather than
+    right click.
+  * Fix after unmaximise main window, close, reopen -> still
+    maximised.
+  * Fix fullscreen expands the width of tree explorer rather
+    than the editing frame when tree on the right.
+  * Fix segfault/crash from exporting imported markdown file
+    with a table.
+  * Fix todo lists in ubuntu 18.04 not cycling through
+    available mark choices.
+  * Fix print/export to pdf of table columns widths.
+  * Print/export to pdf of scalable tags (h1..h6,small) and
+    monospace use configured properties.
+  * Node name header font size/family to follow the tree font.
+  * Improved table sorting to use not only first column.
+  * Improved import from markdown of a table with or without
+    pre/post text.
+
+-------------------------------------------------------------------
 Mon Aug 09 00:59:34 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.40:
