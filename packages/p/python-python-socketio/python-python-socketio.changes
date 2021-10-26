@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 23 16:21:35 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.4.1  
+  * Catch-all event handlers (commit)
+  * Implement disconnect method for external processes #684 (commit) 
+
+-------------------------------------------------------------------
 Wed Oct  6 10:45:54 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update to version 5.4.0

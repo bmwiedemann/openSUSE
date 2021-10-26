@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-socketio
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        SocketIO server
 License:        MIT
