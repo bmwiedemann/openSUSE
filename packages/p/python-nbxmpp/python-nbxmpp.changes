@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 26 08:56:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Version the typelib(Soup) BuildRequires to stick to 2.4: this is
+  what the code explicitly checks for (avoid choice with newer Soup
+  tyeplibs).
+
+-------------------------------------------------------------------
 Tue May 18 12:27:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Make running tests verbose

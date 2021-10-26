@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros >= 20200714
 BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module precis-i18n}
-BuildRequires:  typelib(Soup)
+BuildRequires:  typelib(Soup) = 2.4
 Recommends:     python-gssapi
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
