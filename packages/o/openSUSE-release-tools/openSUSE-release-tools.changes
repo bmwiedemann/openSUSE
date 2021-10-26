@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 26 05:55:54 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211026.802e0d64:
+  * filter out 15-sp3 and 15-sp4 from factory-source review
+
+-------------------------------------------------------------------
+Mon Oct 25 08:19:48 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211025.11d2c9be:
+  * Change vagrant publisher resource to staging-bot
+
+-------------------------------------------------------------------
 Sun Oct 24 07:09:44 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211024.0472da96:
