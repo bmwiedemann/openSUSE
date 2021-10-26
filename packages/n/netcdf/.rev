@@ -586,4 +586,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
       encoded (i.e. xx). This is to support the different decoding</comment>
     <requestid>904626</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>5fac95a852705f14bca9c3602ff35dee</srcmd5>
+    <version>4.8.0</version>
+    <time>1635272022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch (forwarded request 927359 from eeich)</comment>
+    <requestid>927360</requestid>
+  </revision>
 </revisionlist>

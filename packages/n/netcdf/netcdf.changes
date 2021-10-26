@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Oct 25 14:09:10 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix:
+   * CVE-2019-20007 https://sourceforge.net/p/ezxml/bugs/13
+   * CVE-2019-20006 https://sourceforge.net/p/ezxml/bugs/15
+   * CVE-2019-20201 https://sourceforge.net/p/ezxml/bugs/16
+   * CVE-2019-20202 https://sourceforge.net/p/ezxml/bugs/17
+   * CVE-2019-20199 https://sourceforge.net/p/ezxml/bugs/18
+   * CVE-2019-20200 https://sourceforge.net/p/ezxml/bugs/19
+   * CVE-2019-20198 https://sourceforge.net/p/ezxml/bugs/20
+   * CVE-2021-26221 https://sourceforge.net/p/ezxml/bugs/21
+   * CVE-2021-26222 https://sourceforge.net/p/ezxml/bugs/22
+   * CVE-2021-30485 https://sourceforge.net/p/ezxml/bugs/25
+   * CVE-2021-31229 https://sourceforge.net/p/ezxml/bugs/26
+   * CVE-2021-31347 &
+   * CVE-2021-31348 https://sourceforge.net/p/ezxml/bugs/27
+   * CVE-2021-31598 https://sourceforge.net/p/ezxml/bugs/28
+     (bsc#1191856)
+  Note:
+   * CVE-2021-26220 https://sourceforge.net/p/ezxml/bugs/23
+     not relevant for netcdf: code isn't used.
+   * CVE-2019-20005 https://sourceforge.net/p/ezxml/bugs/14
+     Issue cannot be reproduced and no patch is available upstream.
+  Added:
+   * Fix-CVE-2021-30485-bug-25.patch
+   * Fix-CVE-2021-31229-bug-26-CVE-2019-20201-bug-16-CVE-2019-20198-bug-20.patch
+   * Fix-CVE-2021-31347-bug-27.patch
+   * Fix-for-CVE-2019-20006-CVE-2019-20202-CVE-2021-31598-ezxml-bug-15-17-28.patch
+   * Fix-for-CVE-2019-20007-ezxml-bug-13.patch
+   * Fix-for-CVE-2019-20199-ezxml-bug-18.patch
+   * Fix-for-CVE-2019-20200-ezxml-bug-19.patch
+   * Fix-for-CVE-2021-26221-ezxml-bug-21.patch
+   * Fix-for-CVE-2021-26222-ezxml-bug-22.patch
+
+-------------------------------------------------------------------
+Thu Oct 21 17:32:47 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add Patches:
+  These should allow us to reenable strict aliasing.
+  * swap-4-8-b-Satisfy-strict-aliasing-rules.patch
+  * Fix-type-punning-in-val_NC_check_voff-by-using-memcpy-instead-of-assignment.patch
+  * Fix-type-punning-in-xxdrntohdouble-by-using-memcpy-instead-of-assignment.patch
+ * NCD4_dumpbytes-use-correct-swapline-for-object-size.patch
+ * d4util.h-make-swapinlineXX-more-robust-against-type-punning.patch
+ * parseServers-Fix-uninitialized-variable-simplify-error-path.patch
+ * bin_reclaim_compound-Fixed-uninitialized-variable.patch
+ * val_NC_check_voff-Fix-uninitialized-variable-warning.patch
+ * pr_att-Fix-uninitialized-variable.patch
+ * NCD4_dumpbytes-Add-missing-initialization-of-float-types.patch
+ * NCZ_def_var_chunking-make-sure-cs-is-set-before-used.patch
+ * Fix-spurious-uninitialized-variable-warning.patch
+
+-------------------------------------------------------------------
+Sun Aug  8 22:01:06 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Removed generation of libsrc/ncx.c:
+  This was an issue with an older version and has been fixed since.
+  With this, no longer requiring m4 explicitly.
+- Valgrind is used for validation tests only, these have not been
+  performed. When they were added some of them failed. This requires
+  further investigations. For now, valgrind testing has been made
+  optional.
+
+-------------------------------------------------------------------
 Tue Jul  6 11:54:21 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Gcc11 has raised the bar on strict aliasing requirements even

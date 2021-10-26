@@ -37,6 +37,8 @@
  %endif
 %endif 
 
+%bcond_with valgrind_checks
+
 %if "%flavor" == ""
 %define package_name %{pname}
 ExclusiveArch:  do_not_build
@@ -460,6 +462,14 @@ ExcludeArch:    s390
 
 %define purpose() This package contains %{?with_mpi:the %{mpi_flavor}%{?mpi_ver} version of }%{**}%{purpose_compiler}
 
+%if %{with valgrind_checks}
+%ifnarch %ix86 x86_64 ppc ppc64 s390x armv7l aarch64
+%{error: Vagrind not support on this platform!}
+%else
+%define valgrind_checks 1
+%endif
+%endif
+
 Name:           %{package_name}
 Summary:        Command-line programs for the NetCDF scientific data format
 License:        NetCDF
@@ -469,15 +479,39 @@ Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
+Patch1:         swap-4-8-b-Satisfy-strict-aliasing-rules.patch
+Patch2:         Fix-type-punning-in-val_NC_check_voff-by-using-memcpy-instead-of-assignment.patch
+Patch3:         Fix-type-punning-in-xxdrntohdouble-by-using-memcpy-instead-of-assignment.patch
+Patch4:         NCD4_dumpbytes-use-correct-swapline-for-object-size.patch
+Patch5:         d4util.h-make-swapinlineXX-more-robust-against-type-punning.patch
+Patch6:         parseServers-Fix-uninitialized-variable-simplify-error-path.patch
+Patch7:         bin_reclaim_compound-Fixed-uninitialized-variable.patch
+Patch8:         val_NC_check_voff-Fix-uninitialized-variable-warning.patch
+Patch9:         pr_att-Fix-uninitialized-variable.patch
+Patch10:        NCD4_dumpbytes-Add-missing-initialization-of-float-types.patch
+Patch11:        NCZ_def_var_chunking-make-sure-cs-is-set-before-used.patch
+Patch12:        Fix-spurious-uninitialized-variable-warning.patch
+Patch13:        Fix-for-CVE-2019-20200-ezxml-bug-19.patch
+Patch14:        Fix-for-CVE-2019-20006-CVE-2019-20202-CVE-2021-31598-ezxml-bug-15-17-28.patch
+Patch15:        Fix-for-CVE-2019-20199-ezxml-bug-18.patch
+Patch16:        Fix-for-CVE-2019-20007-ezxml-bug-13.patch
+Patch17:        Fix-for-CVE-2021-26221-ezxml-bug-21.patch
+Patch18:        Fix-for-CVE-2021-26222-ezxml-bug-22.patch
+Patch19:        Fix-CVE-2021-30485-bug-25.patch
+Patch20:        Fix-CVE-2021-31229-bug-26-CVE-2019-20201-bug-16-CVE-2019-20198-bug-20.patch
+Patch21:        Fix-CVE-2021-31347-bug-27.patch
+
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  doxygen
 BuildRequires:  gawk
+BuildRequires:  libcurl-devel >= 7.18.0
 BuildRequires:  libtool
-BuildRequires:  m4
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel >= 1.2.5
-%ifarch %ix86 x86_64 ppc ppc64 s390x armv7l aarch64
+%if 0%{?valgrind_checks}
 BuildRequires:  valgrind
 %endif
-BuildRequires:  libcurl-devel >= 7.18.0
 %if %{without hpc}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -620,7 +654,6 @@ and sharing of array-oriented scientific data.
 %{?with_hpc:%hpc_debug}
 %setup -q -n %{pname}-c-%{version}
 %autopatch -p1
-m4 libsrc/ncx.m4 > libsrc/ncx.c
 
 # Create baselib.conf dynamically (non-HPC build only).
 %if %{without hpc}
@@ -645,9 +678,6 @@ export FC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpif90
 export CXX=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpic++
 %endif
 autoreconf -fv
-%if %{gcc_version} >= 11
-%global optflags %optflags -fno-strict-aliasing
-%endif
 export CFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export CXXFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
@@ -793,6 +823,9 @@ module load %{hdf5_module_file}
     make check || { echo -e "WARNING: ignore check error for ppc64/s390x"; }
 %else
     make check
+%endif
+%if 0%{?valgrind_checks}
+    make check-valgrind
 %endif
 %endif
 
