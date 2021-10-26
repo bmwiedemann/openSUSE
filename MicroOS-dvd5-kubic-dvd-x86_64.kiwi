@@ -55,6 +55,7 @@
     </metadata>
     <repopackages>
       <repopackage name="aaa_base"/>
+      <repopackage name="alts" arch="x86_64"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
@@ -258,6 +259,7 @@
       <repopackage name="less" arch="x86_64"/>
       <repopackage name="libacl1"/>
       <repopackage name="libaio1" arch="x86_64"/>
+      <repopackage name="libalternatives1" arch="x86_64"/>
       <repopackage name="libapparmor1"/>
       <repopackage name="libappstream-glib8" arch="x86_64"/>
       <repopackage name="libarchive13" arch="x86_64"/>
@@ -435,7 +437,8 @@
       <repopackage name="libpmem1" arch="x86_64"/>
       <repopackage name="libpmemobj1" arch="x86_64"/>
       <repopackage name="libpng16-16" arch="x86_64"/>
-      <repopackage name="libpolkit0" arch="x86_64"/>
+      <repopackage name="libpolkit-agent-1-0" arch="x86_64"/>
+      <repopackage name="libpolkit-gobject-1-0" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
       <repopackage name="libprotobuf-lite28" arch="x86_64"/>
@@ -647,7 +650,6 @@
       <repopackage name="python38-alembic" arch="x86_64"/>
       <repopackage name="python38-apipkg" arch="x86_64"/>
       <repopackage name="python38-appdirs" arch="x86_64"/>
-      <repopackage name="python38-asn1crypto" arch="x86_64"/>
       <repopackage name="python38-attrs" arch="x86_64"/>
       <repopackage name="python38-base" arch="x86_64"/>
       <repopackage name="python38-blinker" arch="x86_64"/>
@@ -691,7 +693,6 @@
       <repopackage name="python38-PrettyTable" arch="x86_64"/>
       <repopackage name="python38-psutil" arch="x86_64"/>
       <repopackage name="python38-py" arch="x86_64"/>
-      <repopackage name="python38-pyasn1" arch="x86_64"/>
       <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycparser" arch="x86_64"/>
       <repopackage name="python38-PyJWT" arch="x86_64"/>

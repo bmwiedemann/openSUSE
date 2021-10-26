@@ -8802,6 +8802,9 @@ unsorted:
   - libPythonQt-Qt5-Python3-3 
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
+  - libQCoroCore0 
+  - libQCoroDBus0 
+  - libQCoroNetwork0 
   - libQMatrixClient0_5_3 
   - libQgpsmm29 
   - libQt53DAnimation-devel 
@@ -9502,7 +9505,7 @@ unsorted:
   - libavformat58_76-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif12-32bit: [x86_64] 
+  - libavif13-32bit: [x86_64] 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
@@ -12704,8 +12707,9 @@ unsorted:
   - libpocl2 
   - libpodofo-devel 
   - libpoke0 
+  - libpolkit-agent-1-0-32bit: [x86_64] 
+  - libpolkit-gobject-1-0-32bit: [x86_64] 
   - libpolkit-qt5-1-devel 
-  - libpolkit0-32bit: [x86_64] 
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
@@ -23838,7 +23842,6 @@ unsorted:
   - python36-slimit 
   - python36-slip 
   - python36-slip-dbus 
-  - python36-slixmpp 
   - python36-smartypants 
   - python36-smbprotocol 
   - python36-smmap 
@@ -23848,7 +23851,6 @@ unsorted:
   - python36-snowballstemmer 
   - python36-social-auth-app-django 
   - python36-social-auth-core 
-  - python36-socketIO-client-nexus 
   - python36-socketpool 
   - python36-softlayer 
   - python36-sorl-thumbnail 
@@ -24524,6 +24526,7 @@ unsorted:
   - python38-asciitree 
   - python38-asdf 
   - python38-asgiref 
+  - python38-asn1crypto 
   - python38-aspectlib 
   - python38-aspy.yaml 
   - python38-asteval 
@@ -26764,7 +26767,6 @@ unsorted:
   - python38-snuggs 
   - python38-social-auth-app-django 
   - python38-social-auth-core 
-  - python38-socketIO-client-nexus 
   - python38-socketpool 
   - python38-softlayer 
   - python38-sorl-thumbnail 
@@ -29889,7 +29891,6 @@ unsorted:
   - python39-snuggs 
   - python39-social-auth-app-django 
   - python39-social-auth-core 
-  - python39-socketIO-client-nexus 
   - python39-socketpool 
   - python39-softlayer 
   - python39-sorl-thumbnail 
@@ -30335,6 +30336,7 @@ unsorted:
   - qca-qt6 
   - qca-qt6-devel 
   - qca-qt6-plugins 
+  - qcoro-devel 
   - qcustomplot-devel 
   - qcustomplot-doc 
   - qd-devel 
@@ -31142,9 +31144,9 @@ unsorted:
   - rssguard 
   - rsstail 
   - rstart 
-  - rstudio 
-  - rstudio-desktop 
-  - rstudio-server 
+  - rstudio: [x86_64] 
+  - rstudio-desktop: [x86_64] 
+  - rstudio-server: [x86_64] 
   - rsvg-convert 
   - rsvndump 
   - rsvndump-lang 
@@ -31202,7 +31204,6 @@ unsorted:
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-em-websocket 
   - ruby2.7-rubygem-gettext-setup 
-  - ruby2.7-rubygem-http 
   - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-spring-watcher-listen 
@@ -41966,7 +41967,7 @@ unsorted:
   - wine-staging-devel 
   - wine-staging-devel-32bit: [x86_64] 
   - winetricks 
-  - winpr2-devel 
+  - winpr-devel 
   - winrs 
   - wipe 
   - wireguard-tools 

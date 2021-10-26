@@ -1476,7 +1476,7 @@
       <repopackage name="libavdevice58_13" arch="x86_64"/>
       <repopackage name="libavfilter7_110"/>
       <repopackage name="libavformat58_76"/>
-      <repopackage name="libavif12"/>
+      <repopackage name="libavif13"/>
       <repopackage name="libavresample4_0"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
@@ -1759,7 +1759,7 @@
       <repopackage name="libfreecell-solver0"/>
       <repopackage name="libfreehand-0_1-1"/>
       <repopackage name="libfreeipmi17"/>
-      <repopackage name="libfreerdp2"/>
+      <repopackage name="libfreerdp2-2"/>
       <repopackage name="libfreetype6"/>
       <repopackage name="libfreetype6-32bit" arch="x86_64"/>
       <repopackage name="libfreshclam2"/>
@@ -2516,8 +2516,9 @@
       <repopackage name="libpng16-16"/>
       <repopackage name="libpng16-16-32bit" arch="x86_64"/>
       <repopackage name="libpodofo0_9_7"/>
+      <repopackage name="libpolkit-agent-1-0"/>
+      <repopackage name="libpolkit-gobject-1-0"/>
       <repopackage name="libpolkit-qt5-1-1"/>
-      <repopackage name="libpolkit0"/>
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
@@ -2995,7 +2996,7 @@
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
       <repopackage name="libwebsockets19"/>
-      <repopackage name="libwinpr2"/>
+      <repopackage name="libwinpr2-2"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
       <repopackage name="libwnck-3-0"/>
@@ -3992,7 +3993,6 @@
       <repopackage name="python38-argcomplete" arch="x86_64"/>
       <repopackage name="python38-argon2-cffi"/>
       <repopackage name="python38-argparse-manpage" arch="x86_64"/>
-      <repopackage name="python38-asn1crypto"/>
       <repopackage name="python38-async_generator"/>
       <repopackage name="python38-async_timeout"/>
       <repopackage name="python38-atpublic"/>
@@ -4450,6 +4450,7 @@
       <repopackage name="ruby2.7-rubygem-hoe"/>
       <repopackage name="ruby2.7-rubygem-hpricot"/>
       <repopackage name="ruby2.7-rubygem-html2haml"/>
+      <repopackage name="ruby2.7-rubygem-http"/>
       <repopackage name="ruby2.7-rubygem-http-cookie"/>
       <repopackage name="ruby2.7-rubygem-http-form_data"/>
       <repopackage name="ruby2.7-rubygem-http_parser.rb"/>
