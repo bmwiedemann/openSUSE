@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 24 18:30:43 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to version 4.7.1:
+  * Extend rich logging to server component (#2927)
+  * Fix an issue where metadata flagged to be discarded was being cached (#2926)
+  * Adjust suffix in server to allow redirection when needed (#2931)
+  * Add MIME types for web fonts (#2929)
+  * Distribute sample data used to run tests (#2935)
+  * Add Python 3.10 to test matrix
+
+-------------------------------------------------------------------
 Thu Oct 21 15:12:12 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
 
 - Update to version 4.7.0:
