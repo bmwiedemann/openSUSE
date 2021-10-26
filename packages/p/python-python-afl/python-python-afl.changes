@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 26 03:31:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add remove-nose.patch:
+  * Stop using nose methods, using bare asserts instead. 
+
+-------------------------------------------------------------------
 Tue Jun  1 11:08:33 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest_arch rpm macro

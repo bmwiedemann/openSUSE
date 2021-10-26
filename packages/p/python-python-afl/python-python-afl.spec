@@ -27,6 +27,7 @@ URL:            https://jwilk.net/software/python-afl
 Source:         https://files.pythonhosted.org/packages/source/p/python-afl/python-afl-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         https://github.com/jwilk/python-afl/compare/%{version}...sebix:0.7.2-fix-setup-tests.patch#/Use-setuptools-and-use-test-command-for-setup.patch
+Patch1:         remove-nose.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +39,6 @@ Requires(postun):update-alternatives
 # name with _ automatically redirected by pypi to name with -
 Provides:       python-python_afl
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  afl >= 2
 BuildRequires:  procps
@@ -52,7 +52,7 @@ The scripts to run the fuzzer are only in the package for python3.
 
 %prep
 %setup -q -n python-afl-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
