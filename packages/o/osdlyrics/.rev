@@ -32,4 +32,14 @@
   * Fix python logging (forwarded request 814184 from hillwood)</comment>
     <requestid>814187</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a9a439842dfbb48dc9d74dc2f2be38f</srcmd5>
+    <version>0.5.5</version>
+    <time>1635272032</time>
+    <user>dimstar_suse</user>
+    <comment>* Fix D-Bus race-condition
+  * Enhance metadata parsing
+  * Update romanian translation (forwarded request 927447 from hillwood)</comment>
+    <requestid>927448</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 26 05:38:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+ 
+- Update version to 0.5.5
+  * Fix D-Bus race-condition
+  * Enhance metadata parsing
+  * Update romanian translation
+
+-------------------------------------------------------------------
 Fri Jun 12 15:02:18 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update to 0.5.5RC2

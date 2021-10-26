@@ -1,7 +1,7 @@
 #
 # spec file for package osdlyrics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,14 @@
 #
 
 
-%define  with_mpd     0
-# %define  commit       18cc4a872c3a18e99a33ac233f7c8cb2f5dfc624
-# %define  shortcommit  18cc4a8
-%define _version 0.5.5-rc2
-
 Name:           osdlyrics
-Version:        0.4.99.2
+Version:        0.5.5
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Visualization
 URL:            https://github.com/osdlyrics/osdlyrics
-Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{_version}/%{name}-%{_version}.tar.gz
+Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{version}/%{name}-%{version}.tar.gz
 # Source0:        https://github.com/osdlyrics/osdlyrics/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 Source1:        %{name}.appdata.xml
 BuildRequires:  fdupes
@@ -57,9 +52,6 @@ Requires:       python3-pycurl
 Requires:       sqlite3
 Recommends:     %{name}-lang
 Recommends:     python3-%{name}
-%if %{with_mpd}
-BuildRequires:  mpd
-%endif
 
 %description
 OSD Lyrics is a lyrics show compatible with various media players. It is not a
@@ -80,17 +72,12 @@ This package contains python3 module for osdlyrics
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{version}
 
 %build
 NOCONFIGURE=1 ./autogen.sh
 %configure  --enable-appindicator \
-            PYTHON=/usr/bin/python3 \
-%if %{with_mpd}
-            --enable-mpd
-%else
-            --disable-mpd
-%endif
+            PYTHON=/usr/bin/python3
 
 %make_build
 
@@ -102,7 +89,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo
 %suse_update_desktop_file %{name}
 
 %find_lang %{name}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license LICENSE
