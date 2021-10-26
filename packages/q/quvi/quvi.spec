@@ -1,7 +1,7 @@
 #
 # spec file for package quvi
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,13 @@ Name:           quvi
 Version:        0.9.5
 Release:        0
 Summary:        Command line tool for parsing flash media stream URLs
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://quvi.sourceforge.net/
+URL:            http://quvi.sourceforge.net/
 Source:         http://sourceforge.net/projects/quvi/files/0.9/quvi/quvi-0.9.5.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         reproducible.patch
+Patch1:         quvi-glibc-2.34.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(glib-2.0) >= 2.24
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.24
@@ -40,8 +41,7 @@ quvi is a command line tool for parsing flash media stream URLs.
 It supports many websites including YouTube and Dailymotion.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
