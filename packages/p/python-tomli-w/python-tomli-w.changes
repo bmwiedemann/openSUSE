@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Oct 15 17:48:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 0.3.0
+- Requirement of full flit (not flit-core)
