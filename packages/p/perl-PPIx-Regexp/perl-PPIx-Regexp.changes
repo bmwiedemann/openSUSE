@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 23 03:08:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.081
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.081		2021-10-22	T. R. Wyant
+      Any use of the postderef argument is now fatal.
+
+      Correct generation of 'provides' metadata.  Thanks to Favio Poletti
+      for blogging
+      https://github.polettix.it/ETOOBUSY/2021/06/15/the-real-pause-workaround/,
+      and ultimately to Joel Berger for the pointer to
+      https://metacpan.org/pod/CPAN::Meta::Spec#no_index
+
+      Add YAPE::Regex to SEE ALSO
+
+-------------------------------------------------------------------
 Sat Apr 17 03:09:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.080
