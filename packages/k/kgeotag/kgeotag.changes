@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Oct 25 14:14:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.1.0
+  * Bugfix: When walking along a track, the date and time were
+    displayed to be in the set timezone, but not actually converted
+    to it. Now, the timestamps are translated correctly.
+  * Enhancement: Added an "Assign images to GPS data" main menu
+    entry. This one triggers an automatic image assignment af all
+    loaded images, like "(Re)Assign all images" from the "Automatic
+    assignment" dock. The search type to perform can be defined in
+    the settings.
+  * Bugfix: Enabled exact matching also if a used GPX track and/or
+    the image metadata contain milliseconds. If so, the
+    `QHash<QDateTime, ...>::contains()` call used to search for
+    exact matches won't yield a result, even if there's a
+    seconds-exact match (if not also the milliseconds matched, and
+    this is quite unlikely).
+- Drop 0001-Don-t-look-for-a-specific-Marble-version.patch, merged
+  upstream
+- Change URL to new project homepage
+
+-------------------------------------------------------------------
+Wed Aug 25 12:55:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix the marble detection:
+  * 0001-Don-t-look-for-a-specific-Marble-version.patch
+
+-------------------------------------------------------------------
+Sun Jun 27 17:45:52 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Initial package
+
