@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-chaos
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure Chaos Management Client Library for Python
 License:        MIT
