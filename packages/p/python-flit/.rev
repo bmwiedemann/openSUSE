@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>809376</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b9f58ea17255be19ad6135fec29fcef</srcmd5>
+    <version>3.4.0</version>
+    <time>1635272014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4
+  * Changelog since v1.3:
+    https://flit.readthedocs.io/en/latest/history.html
+- Remove upstreamed patches:
+  - merged_pr_278.patch
+</comment>
+    <requestid>925555</requestid>
+  </revision>
 </revisionlist>

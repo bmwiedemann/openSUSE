@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 15 18:09:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.4
+  * Changelog since v1.3:
+    https://flit.readthedocs.io/en/latest/history.html
+- Remove upstreamed patches:
+  - merged_pr_278.patch
+
+-------------------------------------------------------------------
 Tue May 26 06:34:17 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
