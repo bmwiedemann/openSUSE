@@ -16,16 +16,16 @@
 #
 
 
-%define sigil_doc_version 2021.05.27
+%define sigil_doc_version 2021.10.12
 Name:           sigil
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
 Group:          Productivity/Other
 URL:            https://sigil-ebook.com/
 Source0:        https://github.com/Sigil-Ebook/Sigil/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/Sigil-Ebook/Sigil/raw/master/docs/Sigil_User_Guide_%{sigil_doc_version}_epub3.epub
+Source1:        https://github.com/Sigil-Ebook/Sigil/raw/master/docs/Sigil_User_Guide_%{sigil_doc_version}_eopub3.epub
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE Disabled __DATE__ and __TIME__ which is replaced later in pre section
 Patch0:         %{name}-gt-0.9.0-Dialogs-About.cpp.patch
@@ -175,7 +175,7 @@ popd
 
 %files
 %license COPYING.txt
-%doc ChangeLog.txt README.md Sigil_User_Guide_%{sigil_doc_version}_epub3.epub
+%doc ChangeLog.txt README.md Sigil_User_Guide_%{sigil_doc_version}_eopub3.epub
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/

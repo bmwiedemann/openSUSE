@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 25 12:34:24 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.8.0
+  * Bug Fixes:
+    - Reports now generate properly quoted csv when saved
+    - Workaround Bug in QtWebengine when using custom scheme
+      handler and specific audio/video codecs
+    - Fix CV -> Preview sync after intial load when Preview Zoom is
+      not equal to 100%
+    - Fix link tags with rel set to stylesheets via Mend and Mend
+      and Prettify that are missing type
+    - Fix GoToLinkOrStyle to work on css link tags in head
+    - Fix logic in GoToLinkOrStyle to better identify the actual
+      target with styles
+    - Fix insert media file when cursor at very start of tag
+    - Fix Windows and macOS bugs when generating Keyboard Shortcuts
+    - Fix insert closing tag when cursor at very start of tag
+    - Fix double copy to Clipboard from OPF and NCX Tabs
+    - Fix GoToLinkOrStyle when class attribute present but cursor
+      not in the class attribute
+    - Fix TabManager scroll to position to properly handle position
+      of 0
+    - Fix crash using Split At Markers when body tag is completely
+      empty (no whitespace or anything)
+  * New Features:
+    - BookBrowser can now link javascripts similarly to how it
+      links stylesheets
+    - Epub3 javascripts can now open windows if javascript is
+      enabled
+    - Add Find and Replace context menu to clear its curent values
+      and history
+    - Add support for 3 Automation lists that support editing and
+      automatically running a list of commands that can include all
+      Sigil plugins and a limited set of Tools
+    - Add support for BookBrowser to insert a blank javascript file
+    - Do not require replacement prompt if current book is
+      unmodified and input plugin is run
+- Update sigil user guide to version 2021.10.12.
+
+-------------------------------------------------------------------
 Fri Jul 23 05:50:52 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.7.0
