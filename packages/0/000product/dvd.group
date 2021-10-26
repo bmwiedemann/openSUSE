@@ -104,7 +104,7 @@
     <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
-    <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -1680,7 +1680,7 @@
     <package name="libavcodec58_134" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavfilter7_110" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat58_76" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libavif12" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libavif13" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavresample4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1921,7 +1921,7 @@
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
-    <package name="libfreerdp2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libfreerdp2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfreshclam2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libfribidi0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2426,8 +2426,9 @@
     <package name="libply5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libpng16-16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpodofo0_9_7" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libpolkit-agent-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpolkit-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpolkit-qt5-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpolkit0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2801,7 +2802,7 @@
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwebsockets19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libwinpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwinpr2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3656,7 +3657,6 @@
     <package name="python38-apipkg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-argon2-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python38-asn1crypto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-async_generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-async_timeout" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-atpublic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3766,7 +3766,7 @@
     <package name="python38-publicsuffix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-py" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python38-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4076,6 +4076,7 @@
     <package name="ruby2.7-rubygem-hoe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-hpricot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-html2haml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-http" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-http-cookie" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-http-form_data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-http_parser.rb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

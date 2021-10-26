@@ -60,6 +60,7 @@
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourceserifpro-fonts" arch="x86_64"/>
       <repopackage name="adwaita-icon-theme" arch="x86_64"/>
+      <repopackage name="alts" arch="x86_64"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
@@ -414,6 +415,7 @@
       <repopackage name="libaccountsservice0" arch="x86_64"/>
       <repopackage name="libacl1"/>
       <repopackage name="libaio1" arch="x86_64"/>
+      <repopackage name="libalternatives1" arch="x86_64"/>
       <repopackage name="libaom3" arch="x86_64"/>
       <repopackage name="libapparmor1"/>
       <repopackage name="libappstream-glib8" arch="x86_64"/>
@@ -442,7 +444,7 @@
       <repopackage name="libavahi-glib1" arch="x86_64"/>
       <repopackage name="libavcodec58_134" arch="x86_64"/>
       <repopackage name="libavformat58_76" arch="x86_64"/>
-      <repopackage name="libavif12" arch="x86_64"/>
+      <repopackage name="libavif13" arch="x86_64"/>
       <repopackage name="libavtp0" arch="x86_64"/>
       <repopackage name="libavutil56_70" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
@@ -906,8 +908,9 @@
       <repopackage name="libpkgconf3"/>
       <repopackage name="libplist-2_0-3" arch="x86_64"/>
       <repopackage name="libpng16-16" arch="x86_64"/>
+      <repopackage name="libpolkit-agent-1-0" arch="x86_64"/>
+      <repopackage name="libpolkit-gobject-1-0" arch="x86_64"/>
       <repopackage name="libpolkit-qt5-1-1" arch="x86_64"/>
-      <repopackage name="libpolkit0" arch="x86_64"/>
       <repopackage name="libpoppler-cpp0" arch="x86_64"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
@@ -1362,7 +1365,6 @@
       <repopackage name="python38-alembic" arch="x86_64"/>
       <repopackage name="python38-apipkg" arch="x86_64"/>
       <repopackage name="python38-appdirs" arch="x86_64"/>
-      <repopackage name="python38-asn1crypto" arch="x86_64"/>
       <repopackage name="python38-attrs" arch="x86_64"/>
       <repopackage name="python38-base" arch="x86_64"/>
       <repopackage name="python38-blinker" arch="x86_64"/>
@@ -1404,7 +1406,6 @@
       <repopackage name="python38-Pillow" arch="x86_64"/>
       <repopackage name="python38-psutil" arch="x86_64"/>
       <repopackage name="python38-py" arch="x86_64"/>
-      <repopackage name="python38-pyasn1" arch="x86_64"/>
       <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycairo" arch="x86_64"/>
       <repopackage name="python38-pycparser" arch="x86_64"/>
