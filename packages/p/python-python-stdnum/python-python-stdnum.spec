@@ -1,7 +1,7 @@
 #
-# spec file for package python-python-stdnum
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname python-stdnum
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{modname}
-Version:        1.13
+Version:        1.17
 Release:        0
 Summary:        Python module to handle standardized numbers and codes
 License:        LGPL-2.0-or-later
@@ -57,7 +57,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %license COPYING
-%doc NEWS ChangeLog README
+%doc NEWS ChangeLog README.md
 %{python_sitelib}/*
 
 %changelog

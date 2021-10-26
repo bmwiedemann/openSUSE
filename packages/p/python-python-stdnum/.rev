@@ -88,4 +88,15 @@
     - CN (法人番号, hōjin bangō, Japanese Corporate Number)</comment>
     <requestid>786833</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>676eb87cd19a9598834f97d13e77aee3</srcmd5>
+    <version>1.17</version>
+    <time>1635272031</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix incorrect update: it is README.md not README these days.
+- version 1.17
+  for changeslog see NEWS
+</comment>
+    <requestid>927422</requestid>
+  </revision>
 </revisionlist>

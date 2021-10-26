@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 26 06:16:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix incorrect update: it is README.md not README these days.
+
+-------------------------------------------------------------------
+Sat Oct 23 16:12:22 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.17
+  for changeslog see NEWS
+
+-------------------------------------------------------------------
 Fri Mar 20 11:34:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop not really needed nose dependency
