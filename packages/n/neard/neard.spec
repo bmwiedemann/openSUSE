@@ -1,7 +1,7 @@
 #
 # spec file for package neard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010-2012 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,19 @@
 
 
 Name:           neard
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        NFC for Linux
 License:        GPL-2.0-only
 Group:          Hardware/Mobile
-URL:            http://01.org/linux-nfc/
-#Git-Clone:	git://git.kernel.org/pub/scm/network/nfc/neard
-Source:         https://www.kernel.org/pub/linux/network/nfc/neard-%{version}.tar.xz
+URL:            https://github.com/linux-nfc/neard
+#Git-Clone:     https://git.kernel.org/pub/scm/network/nfc/neard.git/
+Source:         https://git.kernel.org/pub/scm/network/nfc/neard.git/snapshot/%name-%version.tar.gz
 Source1:        neard.service
 Source2:        99-neard.rules
 Patch1:         neard-0.13-fix-dbus_send_destination_config.patch
-Patch2:	harden_neard.service.patch
+Patch2:         harden_neard.service.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  check-devel
 BuildRequires:  libtool
@@ -61,9 +62,7 @@ Requires:       neard
 Files needed to test applications for the NFC stack.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -77,6 +76,11 @@ autoreconf -fiv
 %make_install
 install --mode=0644 -D %{SOURCE1} %{buildroot}%{_unitdir}/neard.service
 install --mode=0644 -D %{SOURCE2} %{buildroot}%{_prefix}/lib/udev/rules.d/99-neard.rules
+perl -i -lpe 's{^#!/usr/bin/env }{#!/usr/bin/}' \
+	"%buildroot/%_libdir/neard/test/phdc-simple-manager"
+# add missing shebang line to soothe rpmlint
+perl -i -lpe 's{^}{#!/usr/bin/python\n} if $.==1' \
+	"%buildroot/%_libdir/neard/test/neardutils.py"
 
 %pre
 %service_add_pre neard.service
