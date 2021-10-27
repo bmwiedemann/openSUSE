@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Oct 27 08:01:52 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 0.16.2:
+  * Bug fixes
+    * hermite_multidimensional_numba can now handle a cutoff of
+      type np.ndarray with shape=[]. #283
+- Version 0.16.1:
+  * Improvements
+    * Faster implementation of hermite_multidimensional_numba and
+      hermite_multidimensional_numba_grad. #280
+  * Bug fixes
+    * Updates the samples.generate_torontonian_sample function to
+      ensure probabilities are normalized. #250
+    * Pins Numba to version <0.54 to avoid binary imcompatibilities
+      with the 1.21 release of NumPy. #250
+- Version 0.16.0:
+  * New features
+    * Adds the function hafnian_sparse to compute sparse loop hafnians
+      (pure Python implementation). #245
+    * The symplectic.squeezing function is now generalized to multiple
+      modes of single mode squeezing. #249
+    * Adds a function symplectic.passive_transformation which allows for
+      Gaussian states to be transformed by arbitrary non-unitary, non-square
+      linear optical transformations. #249
+    * The torontonian_sample_state function now can sample displaced
+      Gaussian states. #248
+    * Adds the function hafnian_banded to calculate the hafnian of a
+      banded matrix. #246
+    * Adds the functions hermite_multidimensional_numba and
+      grad_hermite_multidimensional_numba to calculate renormalized
+      multidimensional Hermite polynomials and its gradients using numba. #251
+    * Adds the functions mzgate and grad_mzgate to calculate the Fock
+      representation of the Mach-Zehnder gate and its gradients. #257
+    * Adds the ability to calculate n-body photon number distributions
+      using the function n_body_marginals. #253
+    * Adds the ability to calculate cumulants and arbitrary expectation
+      values of products of powers of photon numbers with the functions
+      photon_number_cumulant and photon_number_moment respectively. #264
+    * Adds support for calculating the permanent using the BBFG
+      algorithm and changes this to the default method for calculating
+      permanents. #267
+    * Adds the ability to calculate click cumulants in threshold
+      detection with the function click_cumulant. #264
+  * Improvements
+    * Speeds up the calculation of photon number variances/covariances. #244
+    * Updates documentation for the the tor function. #265
+    * Numba methods for multidimensional hermite can now detect
+      dtype automatically. #271
+  * Bug fixes
+    * Corrects bug in the function photon_number_covar that gave
+      incorrect results when the covariance between two modes with
+      finite displacements was calculated. #264
+    * Fixes a bug in setup.py that would cause the build to fail when
+      using miniforge for M1 macs. #273
+    * Updates the samples.generate_hafnian_sample function to renormalizing
+      probabilities. #250
+  * Breaking changes
+    * Torontonians and approximations to the hafnian for non-negative
+      matrices are no longer calculated in C++ using the Eigen software
+      library. Instead, they are now calculated in pure Python using Numba.
+      These changes have the nice result of making The Walrus compilable
+      from source using only a C++ compiler. #262 #259.
+- Version 0.15.1
+  * Bug fixes
+    * Builds The Walrus binaries against an older version of NumPy, to avoid
+      a breaking ABI change in NumPy 1.20. #240
+- Version 0.15.0
+  * New features
+    * Adds the function random_banded_interferometer to generate unitary
+      matrices with a given bandwidth. #208
+    * Adds the function tvd_cutoff_bounds to calculate bounds in the total
+      variation distance between a Fock-truncated and an ideal GBS
+      distribution. #210
+    * Adds function for calculating threshold detection probabilities
+      for Gaussian states with displacement. #220
+    * Adds new functions total_photon_number_distribution and
+      characteristic_function to study properties of the total photon
+      number distribution of a k identical lossy squeezers. #230
+    * Adds new functions xxpp_to_xpxp and xpxp_to_xxpp in the symplectic
+      module to swap the ordering of the quadrature operators in vectors
+      and matrices. #237
+  * Improvements
+    * The hafnians and loop hafnians of diagonal matrices are now calculated
+      in polynomial time. #212
+    * Refactors setup.py to avoid issues with CFLAGS. #229
+    * The fidelity function in quantum/gaussian_checks.py is rewritten to
+      add clarity. #226
+    * Simplifies logic of normal_ordered_expectation by removing mutually
+      cancelling np.conj. #228
+  * Bug fixes
+    * Removes unnecessary np.real_if_close statements in quantum/fock_tensors.py
+      causing the probabilities to not be normalized. #215
+    * Fixes the prefactor in pure_state_amplitude. #231
+
+-------------------------------------------------------------------
 Mon Feb  8 14:35:31 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python 3.6 because numpy does not support it.

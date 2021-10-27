@@ -21,7 +21,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-thewalrus
-Version:        0.14.0
+Version:        0.16.2
 Release:        0
 Summary:        An open-source software architecture for photonic quantum computing
 License:        Apache-2.0
