@@ -1,7 +1,7 @@
 #
 # spec file for package python-pprintpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wolever/pprintpp
 Source:         https://files.pythonhosted.org/packages/source/p/pprintpp/pprintpp-%{version}.tar.gz
 Patch0:         https://github.com/wolever/pprintpp/commit/3a35e815.patch
+# https://github.com/wolever/pprintpp/pull/28
+Patch1:         python-pprintpp-remove-nose.patch
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,6 +45,7 @@ A drop-in replacement for pprint that is arguably prettier.
 %prep
 %setup -q -n pprintpp-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 export LANG=en_US.utf-8
@@ -55,7 +59,7 @@ export LANG=en_US.utf-8
 
 %check
 export LANG=en_US.utf-8
-%python_exec setup.py test --test-suite=test
+%pytest -v test.py
 
 %post
 %python_install_alternative pypprint
