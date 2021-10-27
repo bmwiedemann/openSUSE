@@ -58,4 +58,14 @@
   * allow chardet 4</comment>
     <requestid>917212</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>323b13f985ceaefbf9acd1fbff62d418</srcmd5>
+    <version>1.1.0</version>
+    <time>1635366064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * add Python 3.10 support
+  * drop Python 3.5 support</comment>
+    <requestid>927596</requestid>
+  </revision>
 </revisionlist>

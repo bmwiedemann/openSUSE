@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:38:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * add Python 3.10 support
+  * drop Python 3.5 support 
+
+-------------------------------------------------------------------
 Tue Sep  7 06:59:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
