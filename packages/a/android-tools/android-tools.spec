@@ -17,7 +17,7 @@
 
 
 Name:           android-tools
-Version:        31.0.2
+Version:        31.0.3
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
@@ -62,10 +62,8 @@ It includes tools that interface with the Android platform.
 %package python3
 Summary:        Python3 Android platform tools
 Group:          Hardware/Mobile
-BuildRequires:  python3-protobuf
 Requires:       %{name} = %{version}
 Requires:       python3
-Requires:       python3-protobuf
 Supplements:    (%{name} and python3)
 BuildArch:      noarch
 
@@ -103,18 +101,18 @@ export GOFLAGS="-mod=vendor -buildmode=pie -trimpath"
 %install
 %cmake_install
 
+# generate man pages
 install -d -m 0755 %{buildroot}%{_mandir}/man1
 for f in adb fastboot
 do
     help2man -N %{buildroot}%{_bindir}/${f} | sed -e 's|\(/home/.*\)\(/usr/.*\)|\2|g' \
 	> %{buildroot}%{_mandir}/man1/${f}.1
 done
-for f in aftltool avbtool mkbootimg
+for f in avbtool mkbootimg
 do
     help2man -N %{buildroot}%{_bindir}/${f} --version-string="%{version}" \
 	> %{buildroot}%{_mandir}/man1/${f}.1
 done
-rm -r %{buildroot}%{_bindir}/__pycache__
 
 %files
 %license LICENSE
@@ -131,10 +129,8 @@ rm -r %{buildroot}%{_bindir}/__pycache__
 %{_mandir}/man1/fastboot.1%{?ext_man}
 
 %files python3
-%{_bindir}/aftltool{,.py}
 %{_bindir}/avbtool{,.py}
 %{_bindir}/mkbootimg
-%{_mandir}/man1/aftltool.1%{?ext_man}
 %{_mandir}/man1/avbtool.1%{?ext_man}
 %{_mandir}/man1/mkbootimg.1%{?ext_man}
 

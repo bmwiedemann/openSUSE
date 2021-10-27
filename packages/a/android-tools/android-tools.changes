@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 24 07:56:40 UTC 2021 - munix9@googlemail.com
+
+- Update to version 31.0.3
+  * fastboot
+    - Support flashing vbmeta_vendor.img for fastboot flashall / update.
+
+  * aftltool removed upstream
+
+-------------------------------------------------------------------
 Wed Aug  4 10:47:05 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Fix Supplements: supplement against bash-completion, not bash. otherwise
