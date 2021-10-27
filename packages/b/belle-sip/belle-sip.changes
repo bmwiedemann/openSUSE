@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:28:44 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36
+  * add option to deactivate potentially weak digest authentication schemes
+  * fix via header of CANCEL request
+  * fix null pointer crash when receiving an INVITE without from-tag
+  * fix prack auth
+  * fix special case dns resolver issue and add test
+  * fix cast warning
+  * implement UDP listening point without server socket
+
+-------------------------------------------------------------------
 Mon Aug 30 15:37:47 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.0
 
 - Move belr grammar files from belle-sip-devel to a new 

@@ -20,7 +20,7 @@
 %define soname  libbellesip
 %define sover   1
 Name:           belle-sip
-Version:        5.0.0
+Version:        5.0.36
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  belr-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 BuildRequires:  pkgconfig(zlib)
 
 %description
