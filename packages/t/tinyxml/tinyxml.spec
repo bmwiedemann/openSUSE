@@ -1,7 +1,7 @@
 #
 # spec file for package tinyxml
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,7 +34,8 @@ Source4:        use_stl_def
 Source5:        Makefile.am.docs
 Patch0:         tinyxml-c_headers.patch
 Patch1:         tinyxml-entity.patch
-Url:            http://sourceforge.net/projects/tinyxml
+Patch2:         tinyxml-2.62-fix-infinite-loop.patch
+URL:            http://sourceforge.net/projects/tinyxml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -60,7 +61,7 @@ TinyXML solves the text I/O file once and for all.
 
 %package        devel
 Summary:        Development files for libtinyxml
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lib_package} = %{version}
 Provides:       libtinyxml-devel = %{version}
@@ -73,7 +74,7 @@ developing applications that use libtinyxml.
 
 %package        docs
 Summary:        Documentaqtion for libtinyxml
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lib_package} = %{version}
 
@@ -85,6 +86,7 @@ libtinyxml
 %setup -q -n tinyxml
 %patch0
 %patch1
+%patch2 -p1
 mkdir -p m4
 cp %{S:1} %{S:2} %{S:3} %{S:4} .
 cp %{S:5} docs/Makefile.am

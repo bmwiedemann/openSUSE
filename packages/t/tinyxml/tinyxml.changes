@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 25 14:32:25 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Added tinyxml-2.62-fix-infinite-loop.patch to fix an infinite loop
+  for inputs containing the sequence 0xEF0x00 (bsc#1191576) 
+
+-------------------------------------------------------------------
 Sun May 13 12:19:58 UTC 2012 - lists.nico.k@googlemail.com
 
 - updated to 2.6.2:
