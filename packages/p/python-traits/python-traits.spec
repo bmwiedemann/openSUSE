@@ -1,5 +1,5 @@
 #
-# spec file for package python-traits
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-traits%{psuffix}
-Version:        6.2.0
+Version:        6.3.1
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check
@@ -36,7 +36,6 @@ Summary:        Explicitly typed attributes for Python
 # which is GPLv2+ all remaining source or image files are in BSD
 # 3-clause license. Confirmed from upstream.
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
-Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traits
 Source:         https://github.com/enthought/traits/archive/%{version}.tar.gz#/traits-%{version}.tar.gz
 # Import of pyface.toolkit mysteriously fails. But it is needed by only one test, which needs traitsui,
@@ -50,7 +49,6 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyface}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif

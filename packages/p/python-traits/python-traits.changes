@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Oct 27 03:27:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.3.1:
+  * Make PrefixMap._map available again, for compatibility with Mayavi. (#1578)
+  * Support for Python 3.10 has been added.
+  * The observe mini-language now supports use of "*" for listening to all
+    traits on a HasTraits object. Currently this support is limited to
+    cases where the "*" appears in a terminal position. For example,
+    observe("foo:*") is supported, but observe("*:foo") is not. (#1496, #1525)
+  * The Any trait type now supports a factory argument (with accompanying
+    args and kw arguments). This can be used to specify a per-instance
+    default, for example with Any(factory=dict). (#1557, #1558)
+  * When a method is decorated with an observe decorator, the method
+    signature is now checked, and a warning issued if it doesn't match the
+    expected signature.  (#1529)
+  * The Date, Datetime and Time trait types have a new argument allow_none.
+    (#1432)
+  * The Date trait type has a new argument allow_datetime .(#1429)
+  * The ObserverGraph instances that result from compiling ObserverExpression
+    objects and observe mini-language strings are now cached.
+  * The equality definition on ObserverExpression has been simplified. (#1517)
+  * A failure to parse an observe mini-language string now raises ValueError
+    rather than LarkError. (#1507)
+  * Invalid assignments to PrefixList and PrefixMap traits produced an
+    unnecessarily nested exception. This has been fixed. (#1564)
+  * An observe-decorated listener method whose name has the special form
+    "_traitname_changed" will no longer be triggered both as as result of the
+    observe decorator and the special naming: it will only be triggered via
+    the observe decorator. (#1560)
+  * The delegate parameter was mistyped in the typing stubs for the Delegate
+    trait type. This has been fixed. (#1556)
+  * The Function and Method trait types will no longer fail when arguments are
+    passed. Note that these trait types are already deprecated, and should not
+    be used in new code. (#1543)
+  * A use of the (deprecated) distutils library has been replaced with
+    sysconfig. (#1452)
+  * Dynamic default handing has been fixed in the _instance_handler_factory
+    used by the TraitsUI TableEditor. (#1446, #1450)
+  * A bad observe-decorated listener signature in a test has been fixed. (#1530)
+- Remove nose from BuildRequires, the nose portion of the testsuite is
+  firmly deprecated.
+
+-------------------------------------------------------------------
 Tue Feb 23 19:17:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - unskip python36. NumPy is actually optional.

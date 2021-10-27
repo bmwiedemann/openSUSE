@@ -75,4 +75,41 @@
     <comment></comment>
     <requestid>874718</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>330931e45c7b51ed897c09d716344f79</srcmd5>
+    <version>6.3.1</version>
+    <time>1635366070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.3.1:
+  * Make PrefixMap._map available again, for compatibility with Mayavi. (#1578)
+  * Support for Python 3.10 has been added.
+  * The observe mini-language now supports use of &quot;*&quot; for listening to all
+    traits on a HasTraits object. Currently this support is limited to
+    cases where the &quot;*&quot; appears in a terminal position. For example,
+    observe(&quot;foo:*&quot;) is supported, but observe(&quot;*:foo&quot;) is not. (#1496, #1525)
+  * The Any trait type now supports a factory argument (with accompanying
+    args and kw arguments). This can be used to specify a per-instance
+    default, for example with Any(factory=dict). (#1557, #1558)
+  * When a method is decorated with an observe decorator, the method
+    signature is now checked, and a warning issued if it doesn't match the
+    expected signature.  (#1529)
+  * The Date, Datetime and Time trait types have a new argument allow_none.
+    (#1432)
+  * The Date trait type has a new argument allow_datetime .(#1429)
+  * The ObserverGraph instances that result from compiling ObserverExpression
+    objects and observe mini-language strings are now cached.
+  * The equality definition on ObserverExpression has been simplified. (#1517)
+  * A failure to parse an observe mini-language string now raises ValueError
+    rather than LarkError. (#1507)
+  * Invalid assignments to PrefixList and PrefixMap traits produced an
+    unnecessarily nested exception. This has been fixed. (#1564)
+  * An observe-decorated listener method whose name has the special form
+    &quot;_traitname_changed&quot; will no longer be triggered both as as result of the
+    observe decorator and the special naming: it will only be triggered via
+    the observe decorator. (#1560)
+  * The delegate parameter was mistyped in the typing stubs for the Delegate
+    trait type. This has been fixed. (#1556)
+  * The Function and Method trait types will no longer fail when arguments are</comment>
+    <requestid>927624</requestid>
+  </revision>
 </revisionlist>
