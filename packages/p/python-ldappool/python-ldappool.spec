@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldappool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldappool
-Version:        2.4.1
+Version:        3.0.0
 Release:        0
 Summary:        A connection pool for python-ldap
-License:        MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack/ldappool
 Source:         https://files.pythonhosted.org/packages/source/l/ldappool/ldappool-%{version}.tar.gz

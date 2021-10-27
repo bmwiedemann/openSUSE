@@ -32,4 +32,24 @@
     <comment></comment>
     <requestid>867327</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6dcfb748ac9230365c7766dbce68af99</srcmd5>
+    <version>3.0.0</version>
+    <time>1635366062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Remove lower-constraints, uncap PrettyTable
+  * Switch to newer openstackdocstheme and reno versions
+  * Cleanup py27 support
+  * Update hacking for Python3
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Follow the PTI for docs
+  * Add Python 3 Train unit tests
+  * Add bindep.txt
+  * Sync Sphinx requirement
+  * OpenDev Migration Patch
+  * Update the min version of tox
+  * Drop py35 jobs</comment>
+    <requestid>927593</requestid>
+  </revision>
 </revisionlist>

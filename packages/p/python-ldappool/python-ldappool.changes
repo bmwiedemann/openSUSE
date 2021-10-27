@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:23:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Remove lower-constraints, uncap PrettyTable
+  * Switch to newer openstackdocstheme and reno versions
+  * Cleanup py27 support
+  * Update hacking for Python3
+  * [ussuri][goal] Drop python 2.7 support and testing
+  * Follow the PTI for docs
+  * Add Python 3 Train unit tests
+  * Add bindep.txt
+  * Sync Sphinx requirement
+  * OpenDev Migration Patch
+  * Update the min version of tox
+  * Drop py35 jobs
+
+-------------------------------------------------------------------
 Mon Jan 25 22:34:03 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - OpenStack package -- test on primary python3 only.
