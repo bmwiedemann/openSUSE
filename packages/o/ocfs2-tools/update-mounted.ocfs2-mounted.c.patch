@@ -1,0 +1,26 @@
+From 2fad0b521e244844a6a95e9f1df6201f5f51a203 Mon Sep 17 00:00:00 2001
+From: Kastixx <b.m.kast@gmail.com>
+Date: Tue, 19 Oct 2021 12:50:19 +0300
+Subject: [PATCH 2/2] Update mounted.ocfs2/mounted.c
+
+Co-authored-by: Yuri Kotov <jura.kotov@gmail.com>
+---
+ mounted.ocfs2/mounted.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mounted.ocfs2/mounted.c b/mounted.ocfs2/mounted.c
+index 4fc53da5..4e399910 100644
+--- a/mounted.ocfs2/mounted.c
++++ b/mounted.ocfs2/mounted.c
+@@ -530,7 +530,7 @@ static void do_quick_detect(struct list_head *dev_list)
+ 
+ 		for (offset = 1; offset <= 8; offset <<= 1) {
+ 			ret = do_pread(fd, buf, sizeof(buf), (offset * 1024));
+-			if (ret < (int) sizeof(buf))
++			if (ret == -1 || ret != sizeof(buf))
+ 				break;
+ 			di = (struct ocfs2_dinode *)buf;
+ 			if (!memcmp(di->i_signature,
+-- 
+2.12.3
+

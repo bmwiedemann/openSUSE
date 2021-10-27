@@ -1,7 +1,7 @@
 #
 # spec file for package ocfs2-tools
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,8 @@ Patch225:       0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
 Patch228:       0007-Improve-error-message-if-DLM-service-is-unavailable.patch
 Patch405:       0007-vendor-Add-vendor-files-for-sles12.patch
 Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
+Patch501:       fixed-mounted.ocfs2-output-when-some-devices-are-Not.patch
+Patch502:       update-mounted.ocfs2-mounted.c.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -162,6 +164,8 @@ OCFS2 filesystem.
 %patch228 -p1
 %patch405 -p1
 %patch406 -p1
+%patch501 -p1
+%patch502 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

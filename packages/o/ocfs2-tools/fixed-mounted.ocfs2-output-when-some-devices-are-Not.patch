@@ -1,0 +1,45 @@
+From 34888925e54a210cb0e7989eef57ea8041fbc9e8 Mon Sep 17 00:00:00 2001
+From: Kastixx <b.m.kast@gmail.com>
+Date: Tue, 19 Oct 2021 01:32:14 +0300
+Subject: [PATCH 1/2] Fixed `mounted.ocfs2` output when some devices are Not
+ Ready
+
+When `mounted.ocfs2 -d` (quick scan) encounters a device in Not Ready state, it tries to read the device, fails, and in theory should skip it and proceed to the next one. However, due to an integer comparison with mixed signedness it does not break out of a read loop when `do_pread` returns an error code (-1), and fills the structure for current file system with the data that is left in the buffer from the previous file system.
+
+In such conditions, the command produces the following output:
+```
+# these two devices are working
+/dev/mapper/360000970000197600444533037353334_part1 pcmk hacluster B9223C9922754CE88236EDDE6B281D15 ALPHA
+/dev/mapper/360000970000197600444533037353335_part1 pcmk hacluster ACAC4B66517D4EDEA6FA8A9D8E9FC9CF BETA
+# these two are not ready
+/dev/mapper/360000970000197600444533037423031       pcmk hacluster ACAC4B66517D4EDEA6FA8A9D8E9FC9CF BETA
+/dev/mapper/360000970000197600444533037423032       pcmk hacluster ACAC4B66517D4EDEA6FA8A9D8E9FC9CF BETA
+# this one is OK
+/dev/mapper/360000970000197600444533037423030_part1 pcmk hacluster 7A0C73F5A4C04135874F307384D3F67E GAMMA
+# these two are not ready again
+/dev/mapper/360000970000197600444533037423033       pcmk hacluster 7A0C73F5A4C04135874F307384D3F67E GAMMA
+/dev/mapper/360000970000197600444533037423034       pcmk hacluster 7A0C73F5A4C04135874F307384D3F67E GAMMA
+```
+Here, labels and UUIDs for offline devices are the same as for preceding active ones.
+
+The fix converts the unsigned value returned by `sizeof` to signed integer explicitly.
+---
+ mounted.ocfs2/mounted.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mounted.ocfs2/mounted.c b/mounted.ocfs2/mounted.c
+index 8902fe0c..4fc53da5 100644
+--- a/mounted.ocfs2/mounted.c
++++ b/mounted.ocfs2/mounted.c
+@@ -530,7 +530,7 @@ static void do_quick_detect(struct list_head *dev_list)
+ 
+ 		for (offset = 1; offset <= 8; offset <<= 1) {
+ 			ret = do_pread(fd, buf, sizeof(buf), (offset * 1024));
+-			if (ret < sizeof(buf))
++			if (ret < (int) sizeof(buf))
+ 				break;
+ 			di = (struct ocfs2_dinode *)buf;
+ 			if (!memcmp(di->i_signature,
+-- 
+2.12.3
+
