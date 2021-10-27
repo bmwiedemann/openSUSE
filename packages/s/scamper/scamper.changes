@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to 20211026:
+ scamper:
+ * in trace, allow probes to multiple consecutive hops to be
+   outstanding in the network without having to stop and wait,
+   using the -N parameter documented in scamper's man page.
+ * in trace, do optional PTR lookups using the option documented
+   in scamper's man page.  output these hostnames into warts and
+   json outputs.
+ * bump libscamperfile version for the above changes.
+ * document that scamper's control socket can be told to return
+   JSON through an option now documented in scamper's man page.
+ * improvements to reading warts files via fuzzing.
+ * other man page tidy ups.
+ sc_erosprober:
+ * add the ability to adjust the probe list at run time through a
+   unix domain socket, documented in the sc_erosprober man page.
+ sc_hoiho:
+ * add the ability to learn regular expressions that extract
+   geographic hints from router hostnames, documented in the
+   sc_hoiho man page
+
+-------------------------------------------------------------------
 Mon Apr  5 19:33:43 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 20210324:
