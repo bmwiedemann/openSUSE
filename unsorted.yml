@@ -7882,6 +7882,8 @@ unsorted:
   - kfloppy-lang 
   - kfourinline 
   - kfourinline-lang 
+  - kgeotag 
+  - kgeotag-lang 
   - kglobalaccel-devel 
   - kgpg 
   - kgpg-lang 
@@ -10949,9 +10951,6 @@ unsorted:
   - libgsoap-2_8_117 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
-  - libgssglue-devel 
-  - libgssglue1 
-  - libgssglue1-32bit: [x86_64] 
   - libgstadaptivedemux-1_0-0-32bit: [x86_64] 
   - libgstallocators-1_0-0-32bit: [x86_64] 
   - libgstapp-1_0-0-32bit: [x86_64] 
@@ -15088,6 +15087,7 @@ unsorted:
   - lua51-luaevent 
   - lua51-luaexpat 
   - lua51-luafilesystem 
+  - lua51-lualdap 
   - lua51-luaposix 
   - lua51-luarocks 
   - lua51-luasec 
@@ -15140,6 +15140,7 @@ unsorted:
   - lua53-luaevent 
   - lua53-luaexpat 
   - lua53-luafilesystem 
+  - lua53-lualdap 
   - lua53-luaposix 
   - lua53-luarocks 
   - lua53-luasec 
@@ -15193,6 +15194,7 @@ unsorted:
   - lua54-luaevent 
   - lua54-luaexpat 
   - lua54-luafilesystem 
+  - lua54-lualdap 
   - lua54-luaposix 
   - lua54-luarocks 
   - lua54-luasec 
@@ -22135,6 +22137,7 @@ unsorted:
   - python36-check-manifest 
   - python36-checkdmarc 
   - python36-cheroot 
+  - python36-circuitbreaker 
   - python36-ciscoconfparse 
   - python36-cl 
   - python36-cleo 
@@ -23992,6 +23995,7 @@ unsorted:
   - python36-tokenize-rt 
   - python36-toml 
   - python36-tomli 
+  - python36-tomli-w 
   - python36-tomlkit 
   - python36-tools 
   - python36-toolz 
@@ -24950,6 +24954,7 @@ unsorted:
   - python38-checkdmarc 
   - python38-cheroot 
   - python38-chest 
+  - python38-circuitbreaker 
   - python38-cirq: [x86_64] 
   - python38-ciscoconfparse 
   - python38-cl 
@@ -26928,6 +26933,7 @@ unsorted:
   - python38-tmx 
   - python38-tokenize-rt 
   - python38-tomli 
+  - python38-tomli-w 
   - python38-tomlkit 
   - python38-tools 
   - python38-toolz 
@@ -27941,6 +27947,7 @@ unsorted:
   - python39-checkdmarc 
   - python39-cheroot 
   - python39-chest 
+  - python39-circuitbreaker 
   - python39-cirq: [x86_64] 
   - python39-ciscoconfparse 
   - python39-cl 
@@ -30058,6 +30065,7 @@ unsorted:
   - python39-tokenize-rt 
   - python39-toml 
   - python39-tomli 
+  - python39-tomli-w 
   - python39-tomlkit 
   - python39-tools 
   - python39-toolz 
@@ -31751,7 +31759,7 @@ unsorted:
   - scap-workbench 
   - scap-workbench-doc 
   - scat 
-  - sccache: [x86_64] 
+  - sccache 
   - sccs 
   - scdl 
   - scdoc 
