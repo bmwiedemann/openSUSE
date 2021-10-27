@@ -20,7 +20,7 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.27a2
+Version:        0.9.27a3
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later

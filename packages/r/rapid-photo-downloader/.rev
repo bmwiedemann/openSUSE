@@ -649,4 +649,12 @@
   - Fix bug #1938341: Albanian translations not compiled.</comment>
     <requestid>909545</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>290f848af37ba085597ad2dbcac342e0</srcmd5>
+    <version>0.9.27a3</version>
+    <time>1635366069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.27a3</comment>
+    <requestid>927613</requestid>
+  </revision>
 </revisionlist>
