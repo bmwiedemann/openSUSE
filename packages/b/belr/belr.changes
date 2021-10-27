@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:24:28 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to version 5.0.36:
+  * Cast on assert to remove warning on x64
+  * Remove a useless usage shared_ptr<> in the Parser and Regognizers
+
+-------------------------------------------------------------------
 Sat Jul 3 15:00:00 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.20
 
 - Update to version 4.5.20:

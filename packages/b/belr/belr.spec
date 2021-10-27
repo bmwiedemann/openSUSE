@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        4.5.20
+Version:        5.0.36
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
@@ -31,9 +31,9 @@ Source1:        baselibs.conf
 Patch0:         belr-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 
 %description
 Belr parses input formatted according to a language defined by an
@@ -41,6 +41,7 @@ ABNF grammar, such as the protocols standardised at IETF.
 
 %package -n %{soname}%{sover}
 Summary:        Language recognition library
+Group:          Development/Tools/Other
 
 %description -n %{soname}%{sover}
 Belr parses input formatted according to a language defined by an
