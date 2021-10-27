@@ -61,4 +61,15 @@
     shielded nested scope</comment>
     <requestid>925754</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2df47aee1bc1855945f224101147024f</srcmd5>
+    <version>3.3.4</version>
+    <time>1635366061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.4:
+  * Fixed ``BrokenResourceError`` instead of ``EndOfStream`` being raised in
+   ``TLSStream`` when the peer abruptly closes the connection while
+   ``TLSStream`` is receiving data with ``standard_compatible=False`` set</comment>
+    <requestid>927591</requestid>
+  </revision>
 </revisionlist>

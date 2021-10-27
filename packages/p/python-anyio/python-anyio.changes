@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:18:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.4:
+  * Fixed ``BrokenResourceError`` instead of ``EndOfStream`` being raised in
+   ``TLSStream`` when the peer abruptly closes the connection while
+   ``TLSStream`` is receiving data with ``standard_compatible=False`` set
+
+-------------------------------------------------------------------
 Sat Oct 16 21:03:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.3:
