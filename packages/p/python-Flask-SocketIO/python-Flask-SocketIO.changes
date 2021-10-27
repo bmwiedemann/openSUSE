@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 23 15:18:45 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Update to version 5.1.1 
+  * Only use SSL socket if at least one SSL kwarg is not None #1639 (commit) (thanks JT Raber!)
+  * Remove unused SSL arguments from eventlet server options #1639 (commit)
+  * Remove executable permissions from files that lack shebang lines #1621 (commit) (thanks Ben Beasley!)
+  * Improved project structure (commit)
+    Release 5.1.0 - 2021-05-28
+  * Add reloader_options argument to socketio.run#1556 (commit)
+  * Pass auth data from client in connect event handler #1555 (commit)
+  * Do not show simple-websocket install prompt if it is already installed (commit)
+  * Fix namespace bug in example #1543 (commit)
+  * Added index to documentation #724 (commit)
+  * Fixed typo in documentation #1551 (commit) (thanks Mayank Anuragi!)
+
+-------------------------------------------------------------------
 Tue May 25 17:24:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.0.3 
