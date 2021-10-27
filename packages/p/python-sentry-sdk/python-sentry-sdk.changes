@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 25 20:39:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.4.3
+  * Turned client reports on by default.
+- Update to 1.4.2
+  * Made envelope modifications in the HTTP transport non
+    observable.
+- Update to 1.4.1
+  * Fix race condition between finish and start_child in tracing.
+- Update to 1.4.0
+  * No longer set the last event id for transactions.
+  * Added support for client reports (disabled by default for now).
+  * Added tracestate header handling.
+  * Added real ip detection to asgi integration.
+
+-------------------------------------------------------------------
 Wed Aug 25 12:00:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.3.1
