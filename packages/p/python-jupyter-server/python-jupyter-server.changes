@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 17 18:39:09 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Sun Oct 17 17:39:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.11.1

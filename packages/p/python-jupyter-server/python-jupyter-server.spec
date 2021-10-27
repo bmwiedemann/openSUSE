@@ -16,6 +16,13 @@
 #
 
 
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
@@ -48,7 +55,7 @@ BuildRequires:  %{python_module websocket-client}
 # We need the full stdlib
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-anyio >= 3.1.0
@@ -65,8 +72,13 @@ Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
 Requires:       python-websocket-client
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 # SECTION extras_require test
@@ -92,6 +104,7 @@ languages, sharing, and interactive widgets.
 
 %package test
 Summary:        The backend to Jupyter web applications - test requirements
+Group:          Development/Languages/Python
 Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}
 Requires:       python-pytest >= 6
@@ -129,6 +142,10 @@ if [ -e ~/.local/share/jupyter ]; then
     echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
 fi
 %pytest jupyter_server
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jupyter-server
 
 %post
 %python_install_alternative jupyter-server
