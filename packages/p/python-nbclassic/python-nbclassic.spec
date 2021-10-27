@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-nbclassic
@@ -30,10 +36,17 @@ BuildRequires:  %{python_module jupyter_server >= 1.8}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-nbclassic = %{version}
 Requires:       python-jupyter_server >= 1.8
 Requires:       python-notebook
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
@@ -74,6 +87,10 @@ This package contains the jupyterlab server configuration file
 install -m 644 -D -t %{buildroot}%{_jupyter_server_confdir} jupyter_server_config.d/*
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jupyter-nbclassic
 
 %post
 %python_install_alternative jupyter-nbclassic

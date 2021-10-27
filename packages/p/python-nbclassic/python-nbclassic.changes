@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 10:31:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Mon Aug 16 12:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - reenable python36 build (uses python-ipykernel5 package)
