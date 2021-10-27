@@ -37,6 +37,7 @@ Source20:       %{name}.service
 Patch0:         fix_werkzeug.patch
 Patch1:         revert_werkzeug_setup.patch
 Patch2:         fix_werkzeug_2.x.patch
+Patch3:         Update_changed_fields.diff
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
 BuildRequires:  python3-bcrypt
@@ -84,6 +85,7 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 %patch0 -p1
 %patch1 -p1
+%patch3 -p1
 
 #Werkzeug2 is not compatible with Werkzeug 1.x, so we need a conditional patch
 echo 0%{?suse_version}
