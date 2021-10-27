@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 26 16:51:38 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211026.f1790c67:
+  * pkglistgen: Keep caching repo solv files but copy them away
+
+-------------------------------------------------------------------
+Tue Oct 26 10:04:07 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211026.417c4e6d:
+  * pkglistgen: Skip relying on the global cache directory
+
+-------------------------------------------------------------------
 Tue Oct 26 05:55:54 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211026.802e0d64:
