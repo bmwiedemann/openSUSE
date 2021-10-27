@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:44:52 MDT 2021 - carnold@suse.com
+
+- Fix build errors in Factory
+  * Alert ocaml_deprecated_cli: Setting a warning with a sequence
+    of lowercase or uppercase letters, like 'CDEFLMPSUVYZX', is
+    deprecated.
+  63c9cd93-m4-guestfs-ocaml.m4-Fix-deprecated-warning-format.patch
+  * Error (warning 6 [labels-omitted]): label verbose was omitted
+    in the application of this function.
+  a4930f5f-customize-Suppress-OCaml-warning.patch
+
+-------------------------------------------------------------------
+Tue Oct  5 15:53:39 MDT 2021 - carnold@suse.com
+
+- Update spec file licenses to GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Wed Sep 15 10:31:29 MDT 2021 - carnold@suse.com
 
 - bsc#1190501 - virt-builder fails to install packages when

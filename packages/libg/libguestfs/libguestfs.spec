@@ -139,7 +139,7 @@ BuildRequires:  gtk2-devel
 URL:            http://libguestfs.org/
 Summary:        Compatibility package for guestfs-tools
 # Upstream patches
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 
 # Upstream
 Patch1:         e26cfa44-daemon-Build-with--pthread.patch
@@ -148,6 +148,8 @@ Patch3:         68a02c2f-customize--resize--sparsify--sysprep-Link-explicitly-wi
 Patch4:         c0de4de9-appliance-add-reboot-and-netconfig-for-SUSE.patch
 Patch5:         9db0c98c-appliance-enable-bashs-Process-Substitution-feature.patch
 Patch6:         f47e0bb6-appliance-reorder-mounting-of-special-filesystems-in-init.patch
+Patch7:         63c9cd93-m4-guestfs-ocaml.m4-Fix-deprecated-warning-format.patch
+Patch8:         a4930f5f-customize-Suppress-OCaml-warning.patch
 
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
@@ -185,7 +187,6 @@ performing partial backups, cloning VMs, and much else besides.
 
 %package -n guestfs-tools
 Summary:        Tools for accessing and modifying virtual machine disk images
-License:        GPL-2.0-only
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 Requires:       libguestfs0 = %{version}
@@ -237,7 +238,6 @@ virtual machines.
 
 %package -n guestfsd
 Summary:        Daemon for the libguestfs appliance
-License:        GPL-2.0-only
 Conflicts:      libaugeas0 < 1.0.0
 
 %description -n guestfsd
@@ -250,14 +250,12 @@ This package is only required for building the appliance.
 %package -n ocaml-libguestfs
 Summary:        OCaml bindings for libguestfs
 #
-License:        GPL-2.0-only
 
 %description -n ocaml-libguestfs
 Allows OCaml scripts to directly use libguestfs.
 
 %package -n ocaml-libguestfs-devel
 Summary:        Development files for libguesfs OCaml bindings
-License:        GPL-2.0-only
 
 %description -n ocaml-libguestfs-devel
 Allows OCaml scripts to directly use libguestfs.
@@ -266,7 +264,6 @@ Allows OCaml scripts to directly use libguestfs.
 %if %{with perl_bindings}
 %package -n perl-Sys-Guestfs
 Summary:        Perl bindings for libguestfs
-License:        GPL-2.0-only
 BuildRequires:  perl
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Getopt::Long)
@@ -293,7 +290,6 @@ Allows Perl scripts to directly use libguestfs.
 %if %{with lua_bindings}
 %package -n lua-libguestfs
 Summary:        Lua bindings for libguestfs
-License:        GPL-2.0-only
 BuildRequires:  lua-devel
 %define _configure_lua --enable-lua
 #
@@ -307,7 +303,6 @@ Allows lua scripts to directly use libguestfs.
 %{?!python_module:%define python_module() python3-%{**}}
 %package -n python3-libguestfs
 Summary:        Python 3 bindings for libguestfs
-License:        GPL-2.0-only
 BuildRequires:  pkgconfig(python3)
 %define _configure_python --enable-python
 #
@@ -322,7 +317,6 @@ Allows Python 3 scripts to directly use libguestfs.
 %if %{with ruby_bindings}
 %package -n rubygem-libguestfs
 Summary:        Ruby bindings for libguestfs
-License:        GPL-2.0-only
 BuildRequires:  ruby
 BuildRequires:  ruby-devel
 BuildRequires:  rubygem(rake)
@@ -335,7 +329,6 @@ Allows Ruby scripts to directly use libguestfs.
 
 %package test
 Summary:        Testcases for libguestfs
-License:        GPL-2.0-only
 Requires:       %{name}
 
 %description test
@@ -438,7 +431,6 @@ Recommends:     ldmtool
 Recommends:     guestfs-winsupport
 
 Summary:        Virtual machine needed for libguestfs
-License:        GPL-2.0-only
 Provides:       libguestfs-data = %{version}
 Obsoletes:      libguestfs-data < %{version}
 
@@ -448,7 +440,6 @@ This package provides such an image, an initrd and a kernel.
 
 %package -n guestfs-winsupport
 Summary:        Windows guest support in libguestfs
-License:        GPL-2.0-or-later
 Requires:       libguestfs >= 1.32
 BuildRequires:  ntfs-3g
 BuildRequires:  ntfsprogs
@@ -459,7 +450,6 @@ Provides the needed pieces for libguestfs to handle Windows guests.
 
 %package devel
 Summary:        Development files for libguestfs
-License:        GPL-2.0-only
 Requires:       libguestfs0 = %{version}
 
 %description devel
@@ -472,7 +462,6 @@ performing partial backups, cloning VMs, and much else besides.
 
 %package -n libguestfs0
 Summary:        Runtime library of libguestfs
-License:        LGPL-2.1-only
 Requires:       %{kvm_binary}
 Requires:       db48-utils
 Requires:       guestfs-data >= %{version}
@@ -501,7 +490,6 @@ virtual machines.
 
 %package -n virt-v2v
 Summary:        Convert a virtual machine to run on KVM
-License:        GPL-2.0-only
 Requires:       libguestfs0 = %{version}
 Requires:       qemu-block-ssh
 # Conflicts with the old perl version
@@ -515,7 +503,6 @@ from libvirt-managed hosts.
 %if %{with p2v}
 %package -n virt-p2v
 Summary:        Convert a physical machine to run on KVM
-License:        GPL-2.0-only
 Requires:       gawk
 Requires:       virt-v2v = %{version}
 
