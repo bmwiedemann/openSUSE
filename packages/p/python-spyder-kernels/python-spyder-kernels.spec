@@ -28,6 +28,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM spyder-kernels-pr328-unpin_jupyter-client.patch -- gh#spyder-ide/spyder-kernels#328
+Patch0:         https://github.com/spyder-ide/spyder-kernels/pull/328.patch#/spyder-kernels-pr328-unpin_jupyter-client.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,7 @@ BuildRequires:  %{python_module dask-distributed}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 5.3.0}
 BuildRequires:  %{python_module ipython >= 7.6.0}
-BuildRequires:  %{python_module jupyter_client >= 5.3.4 with %python-jupyter_client < 7}
+BuildRequires:  %{python_module jupyter_client >= 5.3.4}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
@@ -52,9 +54,9 @@ BuildRequires:  %{python_module xarray}
 Requires:       python-cloudpickle
 Requires:       python-ipykernel >= 5.3.0
 Requires:       python-ipython >= 7.6.0
+Requires:       python-jupyter_client >= 5.3.4
 Requires:       python-pyzmq >= 17
 Requires:       python-wurlitzer >= 1.0.3
-Requires:       (python-jupyter_client >= 5.3.4 with python-jupyter_client < 7)
 BuildArch:      noarch
 
 %python_subpackages
@@ -70,7 +72,7 @@ file-based execution of Python code in different environments,
 all inside the IDE.
 
 %prep
-%setup -q -n spyder-kernels-%{version}
+%autosetup -p1 -n spyder-kernels-%{version}
 
 %build
 %python_build

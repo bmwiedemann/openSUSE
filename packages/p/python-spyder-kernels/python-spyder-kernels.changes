@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 25 19:15:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unpin jupyter_client<7
+  * spyder-kernels-pr328-unpin_jupyter-client.patch
+  * gh#spyder-ide/spyder-kernels#328
+
+-------------------------------------------------------------------
 Sun Oct 10 18:58:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.1.3
