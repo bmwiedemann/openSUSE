@@ -19,12 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname circuitbreaker
 Name:           python-circuitbreaker
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Python implementation of the "Circuit Breaker" Pattern
 License:        BSD-3-Clause
 URL:            https://github.com/fabfuel/circuitbreaker
-Source:         https://github.com/fabfuel/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/%{modname}/%{modname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM use_stdlib_mock.patch bugno mcepl@suse.com
 # Don't depend on the external mock
 Patch0:         use_stdlib_mock.patch
