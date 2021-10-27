@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 20 19:30:59 UTC 2021 - Stefan Schubert <schubi@schubi.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Wed Oct 20 18:30:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.4.5

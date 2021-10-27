@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-notebook
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,6 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -39,7 +46,7 @@ Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebo
 Source100:      python-notebook-rpmlintrc
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-notebook = %{version}
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
@@ -65,6 +72,13 @@ Obsoletes:      python-jupyter_notebook < %{version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-notebook-filesystem
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 BuildRequires:  update-desktop-files
 %endif
 %if %{with test}
@@ -231,6 +245,10 @@ fi
 %endif
 
 %if !%{with test}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jupyter-notebook
+
 %post
 %python_install_alternative jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension
 
