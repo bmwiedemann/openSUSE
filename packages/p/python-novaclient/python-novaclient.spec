@@ -17,14 +17,14 @@
 
 
 Name:           python-novaclient
-Version:        17.4.0
+Version:        17.6.0
 Release:        0
 Epoch:          0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-novaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.6.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient
@@ -91,7 +91,7 @@ This package contains auto-generated documentation.
 %build
 %{py3_build}
 
-PBR_VERSION=17.4.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PBR_VERSION=17.6.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 

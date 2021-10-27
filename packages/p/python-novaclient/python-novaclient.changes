@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:31:47 UTC 2021 - cloud-devel@suse.de
+
+- update to version 17.6.0
+  - Update master for stable/wallaby
+  - Use importlib instead of imp
+  - Microversion 2.89 - os-volume_attachments
+  - When creating a client, pass the default logger
+  - Refactor constructing request body
+  - Microversion 2.90 - Configurable hostnames
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 xena unit tests
+  - Use Block Storage API v3 instead of API v2
+  - Use py3 as the default runtime for tox
+  - Add pre-commit
+  - Use well named anchor into the microversion history
+  - tests: Add missing 'nova update' unit tests
+  - Add unit tests for client logger
+  - Change minversion of tox to 3.18.0
+
+-------------------------------------------------------------------
 Sun May  2 17:17:33 UTC 2021 - cloud-devel@suse.de
 
 - update to version 17.4.0
