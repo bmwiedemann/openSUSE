@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-protonvpn-nm-lib
-Version:        3.3.2
+Version:        3.6.0
 Release:        0
 Summary:        ProtonVPN NetworkManager library
 License:        GPL-3.0-or-later
@@ -32,19 +32,16 @@ BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       NetworkManager
 Requires:       NetworkManager-openvpn
-Requires:       gtk3
-Requires:       openvpn
+Requires:       dbus-1-x11
 Requires:       python-dbus-python
 Requires:       python-distro
+Requires:       python-gobject
 Requires:       python-jinja2
 Requires:       python-keyring
-Requires:       python-proton-client < 0.6.0
 Requires:       python-proton-client >= 0.5.0
 Requires:       python-pyxdg
 Requires:       python-systemd
-Requires:       xdg-utils
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +56,7 @@ The ProtonVPN NetworkManager library
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/protonvpn_nm_lib
+%python_expand %fdupes %{buildroot}%{python_sitelib}/protonvpn_nm_lib
 
 %check
 %pytest tests
