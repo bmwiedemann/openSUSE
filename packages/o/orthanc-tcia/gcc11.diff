@@ -1,0 +1,10 @@
+--- a/Plugin/HttpCache.h	Wed Sep 15 22:33:12 2021 +0200
++++ b/Plugin/HttpCache.h	Mon Oct 25 20:47:20 2021 +0200
+@@ -22,6 +22,7 @@
+ #include <boost/date_time/posix_time/posix_time_types.hpp>
+ #include <boost/noncopyable.hpp>
+ #include <boost/thread/mutex.hpp>
++#include <map>
+ 
+ 
+ namespace OrthancPlugins
