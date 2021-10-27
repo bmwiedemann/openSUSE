@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Tue Oct 26 09:41:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.48.0
+  * Support for creating database systems from backups with database software
+    images in the Database service
+  * Support for optionally providing a SID prefix during Exadata database
+    creation in the Database service
+  * Support for node subsetting on VM clusters in the Database service
+  * Support for non-CDB to PDB conversion in the Database service
+  * Support for default homepages, unprocessed data buckets, and parsing
+    geostats in the Logging Analytics service
+  * Support for Circuit Breakers. Please refer `here <https://docs.oracle.com/en-us/
+    iaas/tools/python/latest/sdk_behaviors/circuit_breakers.html>`__ to learn more.
+  * Support for enabling/disabling Retries globally for operations using Default
+    Retry Strategy. Please refer `here <https://docs.oracle.com/en-us/iaas/tools/
+    python/latest/sdk_behaviors/retries.html#overriding-the-retry-behavior-at-
+    global-sdk-level>`__ for more info.
+  * Default Retry strategy will now retry operations for max 8 attempts and have a
+    timeout of 600 seconds before failing. The strategy will now use `De-Correlated
+    jitter <https://docs.oracle.com/en-us/iaas/tools/python/latest/sdk_behaviors/
+    retries.html#de-correlated-jitter>`__ as the default delay strategy.
+- from version 2.47.1
+  * Support for the Data Labeling Service
+  * Support for the Web Application Firewall service
+  * Support for querying and setting Application Performance Monitoring configurations
+    in the Application Performance Monitoring service
+  * Support for the run-once monitor feature and network data collection in the
+    Application Performance Monitoring service
+  * Support for Oracle Enterprise Manager bridges, source auto-association, source event
+    types mapping, and partitioning and searching data by LogSet in the Logging Analytics
+    service
+  * Support for Log events APIs used by plugins like fluentd, fluentbit, etc. to upload
+    data in the Logging Analytics service
+  * Support for a new ActionType: FAILED in work requests in the VMware Provisioning service
+  * Support for calling Oracle Cloud Infrastructure services in the il-jerusalem-1 region
+- from version 2.47.0
+  * Support for configuring Binlog variables in the MySQL Database service.
+  * Support new response value "OPERATOR" for backup creationType in list
+    and get MDS backup API in the MySQL Database service.
+  * Support for SetAutoUpgradableConfig and GetAutoUpgradableConfig operations
+    in Management Agent Cloud service.
+  * Support for additional installType filter for List Management Agents, Images
+    and Count API operations in Management Agent Cloud service.
+  * Support for list and read DeploymentUpgrade, cancel and restore DeploymentBackup
+    in the Golden Gate service.
+  * Support for non-autonomous databases targets, executing Pre-Migration advisor,
+    uploading Datapump logs into Object Storage bucket, and filtering Database
+    Objects in the Database Migration service.
+  * Support for calling Oracle Cloud Infrastructure services in the ap-ibaraki-1 region.
+  * Param `is_agent_auto_upgradable` is removed from model `UpdateManagementAgentDetails`
+    in the Management Agent Cloud Service
+  * Param `display_name` is removed from operations `list_work_requests`, `list_work_request_logs`
+    and `list_work_request_errors` in the Database Migration Service Client
+  * Allowed values for param `sort_order` from operation `list_work_requests` changed to
+    `timeAccepted` in the Database Migration Service Client
+  * Allowed values for param `sort_order` from operations `list_work_request_errors` and
+    `list_work_request_logs` changed to `timestamp` in the Database Migration Service Client
+  * Param `time_stamp` renamed to `timestamp` in models `WorkRequestLogEntry`,
+    `WorkRequestError` for the Database Migration Service
+  * Param `compartment_id` is removed from model `UpdateAgentDetails` for the
+    Database Migration Service
+- from version 2.46.0
+  * Support for autonomous databases and clones on shared infrastructure not
+    requiring mTLS in the Database service
+  * Support for server-side encryption using object-specific KMS keys in
+    the Object Storage service
+  * Support for Windows in the Java Management service
+  * Support for using network security groups in the API Gateway service
+  * Support for network security groups in the Functions service
+  * Support for signed container images in the Functions service
+  * Support for setting message format when creating and updating
+    alarms in the Monitoring service
+  * Support for user and security assessment features in the Data Safe service
+  * Operations `request_summarized_application_usage`, `request_summarized_installation_usage`,
+    `request_summarized_jre_usage`, `request_summarized_managed_instance_usage` were removed
+    from the Java Management Service Client
+  * Models `RequestSummarizedApplicationUsageDetails`, `RequestSummarizedInstallationUsageDetails`,
+    `RequestSummarizedJreUsageDetails` and `RequestSummarizedManagedInstanceUsageDetails` were
+    removed from Java Management Service
+  * Dependency `configparser` will only be installed for Python 2. The built-in configparser
+    will be used for Python 3
+- from version 2.45.1
+  * Support for serviceHostKeyFingerprint property for InstanceConsoleConnection in Core service
+  * Support for Shielded Instances in Core service
+  * Support for ML Jobs in the Data Science service
+- from version 2.45.0
+  * Support for terraform advanced options (detailed log level, refresh, and parallelism)
+    on jobs in the Resource Manager service
+  * Support for forced cancellation when cancelling jobs in the Resource Manager service
+  * Support for getting the detailed log content of a job in the Resource Manager service
+  * Support for provider information in the responses of list operations
+    in the Management Dashboard service
+  * Support for scheduled jobs in Database Management service
+  * Support for monitoring and management of OCI virtual machine, bare metal,
+    and ExaCS databases in the Database Management service
+  * Support for a unified way of managing both external and cloud databases
+    in the Database Management service
+  * Support for metrics and Performance Hub on virtual machine, bare metal,
+    and ExaCS databases in the Database Management service
+  * Param `oci_splat_generated_ocids` is removed from operation `create_template`
+    in the Resource Manager service
+- from version 2.44.2
+  * Support for Oracle Analytics Cloud and OCI Vault integration on
+    connections in the Data Catalog service
+  * Support for critical event monitoring in the OS Management service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 25 11:42:49 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.44.1

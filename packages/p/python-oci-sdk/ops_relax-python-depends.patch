@@ -1,52 +1,60 @@
-diff -Nru oci-python-sdk-2.40.1.orig/requirements.txt oci-python-sdk-2.40.1/requirements.txt
---- oci-python-sdk-2.40.1.orig/requirements.txt	2021-06-22 21:12:42.000000000 +0200
-+++ oci-python-sdk-2.40.1/requirements.txt	2021-06-28 15:11:30.579505642 +0200
-@@ -1,18 +1,18 @@
+diff -Nru oci-python-sdk-2.48.0.orig/requirements.txt oci-python-sdk-2.48.0/requirements.txt
+--- oci-python-sdk-2.48.0.orig/requirements.txt	2021-10-19 19:21:13.000000000 +0200
++++ oci-python-sdk-2.48.0/requirements.txt	2021-10-26 11:39:11.847089373 +0200
+@@ -1,19 +1,18 @@
 -autodocsumm==0.1.11
 +autodocsumm>=0.1.11
  certifi
 -configparser==4.0.2
 -coverage==4.5.2
-+configparser>=4.0.2
-+coverage>=4.5.2
- cryptography>=3.2.1,<=3.4.7
+-cryptography>=3.2.1,<=3.4.7
 -flake8==3.6.0
 -mock==2.0.0
 -pyOpenSSL==19.1.0
 -pytest==4.1.0
 -pytest-cov==2.6.1
 -attrs==19.1.0
+-python-dateutil>=2.5.3,<=2.7.3
++coverage>=4.5.2
++cryptography>=3.2.1
 +flake8>=3.6.0
 +mock>=2.0.0
 +pyOpenSSL>=19.1.0
 +pytest>=4.1.0
 +pytest-cov>=2.6.1
 +attrs>=19.1.0
- python-dateutil>=2.5.3,<=2.7.3
++python-dateutil>=2.5.3
  pytz>=2016.10
 -sphinx-rtd-theme==0.4.2
 -sphinx==1.8.3
 -tox==3.14.3
 -vcrpy==2.0.1
 -wheel==0.32.3
+-circuitbreaker>=1.3.1,<2.0.0
+\ No newline at end of file
 +sphinx-rtd-theme>=0.4.2
 +sphinx>=1.8.3
 +tox>=3.14.3
 +vcrpy>=2.0.1
 +wheel>=0.32.3
-diff -Nru oci-python-sdk-2.40.1.orig/setup.py oci-python-sdk-2.40.1/setup.py
---- oci-python-sdk-2.40.1.orig/setup.py	2021-06-22 21:12:42.000000000 +0200
-+++ oci-python-sdk-2.40.1/setup.py	2021-06-28 15:11:12.030895437 +0200
-@@ -31,9 +31,9 @@
++circuitbreaker>=1.3.1
+diff -Nru oci-python-sdk-2.48.0.orig/setup.py oci-python-sdk-2.48.0/setup.py
+--- oci-python-sdk-2.48.0.orig/setup.py	2021-10-19 19:21:13.000000000 +0200
++++ oci-python-sdk-2.48.0/setup.py	2021-10-26 11:39:52.287354894 +0200
+@@ -31,12 +31,11 @@
  
  requires = [
      "certifi",
--    "configparser==4.0.2",
+-    "configparser==4.0.2 ; python_version < '3'",
 -    "cryptography>=3.2.1,<=3.4.7",
 -    "pyOpenSSL>=17.5.0,<=19.1.0",
-+    "configparser>=4.0.2",
+-    "python-dateutil>=2.5.3,<3.0.0",
 +    "cryptography>=3.2.1",
 +    "pyOpenSSL>=17.5.0",
-     "python-dateutil>=2.5.3,<3.0.0",
++    "python-dateutil>=2.5.3",
      "pytz>=2016.10",
+-    "circuitbreaker>=1.3.1,< 2.0.0"
++    "circuitbreaker>=1.3.1"
  ]
+ 
+ setup(

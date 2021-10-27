@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.44.1
+Version:        2.48.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -34,6 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT
 Requires:       python-certifi
+Requires:       python-circuitbreaker >= 1.3.1
 Requires:       python-cryptography >= 3.2.1
 Requires:       python-httpsig_cffi
 Requires:       python-pyOpenSSL >= 19.1.0
@@ -46,6 +47,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module circuitbreaker >= 1.3.1}
 BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module httpsig_cffi}
 BuildRequires:  %{python_module pyOpenSSL >= 19.1.0}
