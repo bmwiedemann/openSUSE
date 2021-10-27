@@ -17,7 +17,7 @@
 
 
 Name:           CastXML
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        C-family Abstract Syntax Tree XML Output
 License:        Apache-2.0
@@ -38,7 +38,7 @@ Summary:        C-family Abstract Syntax Tree XML Output
 CastXML is a C-family abstract syntax tree XML output tool.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DCastXML_INSTALL_MAN_DIR:PATH=%{_mandir} \
