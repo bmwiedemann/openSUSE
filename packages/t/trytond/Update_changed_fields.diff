@@ -1,0 +1,47 @@
+diff --git a/trytond/convert.py b/trytond/convert.py
+index c1dde99f19ae579d3d84d0e9f75272ea857f86f1..b57f1c710aefb7579d4edd9d07baad30df23ba8b 100644
+--- a/trytond/convert.py
++++ b/trytond/convert.py
+@@ -9,6 +9,8 @@ import re
+ from collections import defaultdict
+ from decimal import Decimal
+ 
++from trytond.config import config
++
+ from . import __version__
+ from .tools import grouped_slice
+ from .transaction import Transaction
+@@ -19,6 +21,9 @@ logger = logging.getLogger(__name__)
+ CDATA_START = re.compile('^\s*\<\!\[cdata\[', re.IGNORECASE)
+ CDATA_END = re.compile('\]\]\>\s*$', re.IGNORECASE)
+ 
++_update_changed_fields = config.getboolean('optional',
++    'update_changed_fields', default=True)
++
+ 
+ class DummyTagHandler:
+     """Dubhandler implementing empty methods. Will be used when whe
+@@ -668,11 +673,18 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
+                 # if they are not false in a boolean context (ie None,
+                 # False, {} or [])
+                 if db_field != expected_value and (db_field or expected_value):
+-                    logger.warning(
+-                        "Field %s of %s@%s not updated (id: %s), because "
+-                        "it has changed since the last update",
+-                        key, record.id, model, fs_id)
+-                    continue
++                    if _update_changed_fields:
++                        logger.warning(
++                            "Field %s of %s@%s (id: %s) "
++                            "has changed since the last update\n"
++                            "It will be nevertheless updated",
++                            key, record.id, model, fs_id)
++                    else:
++                        logger.warning(
++                            "Field %s of %s@%s not updated (id: %s), because "
++                            "it has changed since the last update",
++                            key, record.id, model, fs_id)
++                        continue
+ 
+                 # so, the field in the fs and in the db are different,
+                 # and no user changed the value in the db:

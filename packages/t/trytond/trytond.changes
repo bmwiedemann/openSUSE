@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 27 16:15:35 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Update_changed_fields.diff added to force update of XML files
+
+-------------------------------------------------------------------
 Tue Jul 27 14:04:30 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - fix_werkzeug_2.x.patch added for python-Werkzeug 2.x compatibility 
