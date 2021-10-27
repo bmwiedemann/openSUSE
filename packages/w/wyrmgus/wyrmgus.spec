@@ -17,13 +17,15 @@
 
 
 Name:           wyrmgus
-Version:        5.0.1
+Version:        5.2.3
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM missing include file - https://github.com/Andrettin/Wyrmgus/issues/179
+Patch1:         Wyrmgus-5.2.3_missing_include.patch
 BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -62,6 +64,7 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 
 %prep
 %setup -q -n Wyrmgus-%{version}
+%patch1 -p1
 
 %build
 %cmake \

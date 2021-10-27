@@ -106,4 +106,21 @@
     <comment></comment>
     <requestid>913891</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ba4eeea60fe3110ef3aef2190d51a27</srcmd5>
+    <version>5.2.3</version>
+    <time>1635366055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.3
+  * Fixed issue which caused a crash if two wall tiles were being built
+    at the same time while adjacent to each other
+  * Fix to Linux compilation error at assert_util.cpp
+  * Improved support for optional subtemplates to have north_of/south_of/
+    etc. settings
+  * Removed the now-unused &quot;sync&quot; parameter for sml_data::print_to_file()
+  * Normalize the hero persistent data save file's filepath 
+- Add Wyrmgus-5.2.3_missing_include.patch
+</comment>
+    <requestid>927807</requestid>
+  </revision>
 </revisionlist>
