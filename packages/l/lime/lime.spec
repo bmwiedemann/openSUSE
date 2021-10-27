@@ -19,7 +19,7 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        5.0.3
+Version:        5.0.36
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
-BuildRequires:  pkgconfig(belle-sip) >= 4.5.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(belle-sip) >= 5.0.0
 
 %description
 LIME is an encryption library for one-to-one and group instant
@@ -50,6 +50,7 @@ LIME offers two major security benefits to instant messaging users:
 
 %package -n %{soname}%{sover}
 Summary:        Instant Message End-to-End Encryption Library
+Group:          Productivity/Networking/Instant Messenger
 
 %description -n %{soname}%{sover}
 LIME is an encryption library for one-to-one and group instant
