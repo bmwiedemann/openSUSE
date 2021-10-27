@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sun Oct 17 14:01:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.7
+  * Addition: bento Add support for Kazakh (Cyrillic) language
+    detection
+  * Improvement: sparkle Further improve inferring the language
+    from a given code page (single-byte).
+  * Removed: fire Remove redundant logging entry about detected
+    language(s).
+  * Improvement: zap Refactoring for potential performance
+    improvements in loops.
+  * Improvement: sparkles Various detection improvement (MD+CD).
+  * Bugfix: bug Fix a minor inconsistency between Python 3.5 and
+    other versions regarding language detection.
+- Update to version 2.0.6
+  * Bugfix: bug Unforeseen regression with the loss of the
+    backward-compatibility with some older minor of Python 3.5.x.
+  * Bugfix: bug Fix CLI crash when using --minimal output in
+    certain cases.
+  * Improvement: sparkles Minor improvement to the detection
+    efficiency (less than 1%).
+- Update to version 2.0.5
+  * Improvement: sparkles The BC-support with v1.x was improved,
+    the old staticmethods are restored.
+  * Remove: fire The project no longer raise warning on tiny
+    content given for detection, will be simply logged as warning
+    instead.
+  * Improvement: sparkles The Unicode detection is slightly
+    improved, see #93
+  * Bugfix: bug In some rare case, the chunks extractor could cut
+    in the middle of a multi-byte character and could mislead the
+    mess detection.
+  * Bugfix: bug Some rare 'space' characters could trip up the
+    UnprintablePlugin/Mess detection.
+  * Improvement: art Add syntax sugar __bool__ for results
+    CharsetMatches list-container.
+- Update to version 2.0.4
+  * Improvement: sparkle Adjust the MD to lower the sensitivity,
+    thus improving the global detection reliability.
+  * Improvement: sparkle Allow fallback on specified encoding
+    if any.
+  * Bugfix: bug The CLI no longer raise an unexpected exception
+    when no encoding has been found.
+  * Bugfix: bug Fix accessing the 'alphabets' property when the
+    payload contains surrogate characters.
+  * Bugfix: bug pencil2 The logger could mislead (explain=True) on
+    detected languages and the impact of one MBCS match (in #72)
+  * Bugfix: bug Submatch factoring could be wrong in rare edge
+    cases (in #72)
+  * Bugfix: bug Multiple files given to the CLI were ignored when
+    publishing results to STDOUT. (After the first path) (in #72)
+  * Internal: art Fix line endings from CRLF to LF for certain
+    files.
+- Update to version 2.0.3
+  * Improvement: sparkles Part of the detection mechanism has been
+    improved to be less sensitive, resulting in more accurate
+    detection results. Especially ASCII. #63 Fix #62
+  * Improvement: sparklesAccording to the community wishes, the
+    detection will fall back on ASCII or UTF-8 in a last-resort
+    case.
+- Update to version 2.0.2
+  * Bugfix: bug Empty/Too small JSON payload miss-detection fixed.
+  * Improvement: sparkler Don't inject unicodedata2 into sys.modules
+- Update to version 2.0.1
+  * Bugfix: bug Make it work where there isn't a filesystem
+    available, dropping assets frequencies.json.
+  * Improvement: sparkles You may now use aliases in cp_isolation
+    and cp_exclusion arguments.
+  * Bugfix: bug Using explain=False permanently disable the verbose
+    output in the current runtime #47
+  * Bugfix: bug One log entry (language target preemptive) was not
+    show in logs when using explain=True #47
+  * Bugfix: bug Fix undesired exception (ValueError) on getitem of
+    instance CharsetMatches #52
+  * Improvement: wrench Public function normalize default args
+    values were not aligned with from_bytes #53
+- Update to version 2.0.0
+  * Performance: zap 4x to 5 times faster than the previous 1.4.0
+    release.
+  * Performance: zap At least 2x faster than Chardet.
+  * Performance: zap Accent has been made on UTF-8 detection,
+    should perform rather instantaneous.
+  * Improvement: back The backward compatibility with Chardet has
+    been greatly improved. The legacy detect function returns an
+    identical charset name whenever possible.
+  * Improvement: sparkle The detection mechanism has been slightly
+    improved, now Turkish content is detected correctly (most of
+    the time)
+  * Code: art The program has been rewritten to ease the
+    readability and maintainability. (+Using static typing)
+  * Tests: heavy_check_mark New workflows are now in place to
+    verify the following aspects: Performance, Backward-
+    Compatibility with Chardet, and Detection Coverage in addition#
+    to currents tests. (+CodeQL)
+  * Dependency: heavy_minus_sign This package no longer require
+    anything when used with Python 3.5 (Dropped cached_property)
+  * Docs: pencil2 Performance claims have been updated, the guide
+    to contributing, and the issue template.
+  * Improvement: sparkle Add --version argument to CLI
+  * Bugfix: bug The CLI output used the relative path of the
+    file(s). Should be absolute.
+  * Deprecation: red_circle Methods coherence_non_latin, w_counter,
+    chaos_secondary_pass of the class CharsetMatch are now
+    deprecated and scheduled for removal in v3.0
+  * Improvement: sparkle If no language was detected in content,
+    trying to infer it using the encoding name/alphabets used.
+  * Removal: fire Removed support for these languages: Catalan,
+    Esperanto, Kazakh, Baque, Volapük, Azeri, Galician, Nynorsk,
+    Macedonian, and Serbocroatian.
+  * Improvement: sparkle utf_7 detection has been reinstated.
+  * Removal: fire The exception hook on UnicodeDecodeError has
+    been removed.
+- Update to version 1.4.1
+  * Improvement: art Logger configuration/usage no longer
+    conflict with others #44
+- Update to version 1.4.0
+  * Dependency: heavy_minus_sign Using standard logging instead
+    of using the package loguru.
+  * Dependency: heavy_minus_sign Dropping nose test framework in
+    favor of the maintained pytest.
+  * Dependency: heavy_minus_sign Choose to not use dragonmapper
+    package to help with gibberish Chinese/CJK text.
+  * Dependency: wrench heavy_minus_sign Require cached_property
+    only for Python 3.5 due to constraint. Dropping for every
+    other interpreter version.
+  * Bugfix: bug BOM marker in a CharsetNormalizerMatch instance
+    could be False in rare cases even if obviously present. Due
+    to the sub-match factoring process.
+  * Improvement: sparkler Return ASCII if given sequences fit.
+  * Performance: zap Huge improvement over the larges payload.
+  * Change: fire Stop support for UTF-7 that does not contain a
+    SIG. (Contributions are welcome to improve that point)
+  * Feature: sparkler CLI now produces JSON consumable output.
+  * Dependency: Dropping PrettyTable, replaced with pure JSON
+    output.
+  * Bugfix: bug Not searching properly for the BOM when trying
+    utf32/16 parent codec.
+  * Other: zap Improving the package final size by compressing
+    frequencies.json.
+
+-------------------------------------------------------------------
 Thu May 20 09:46:56 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.3.9

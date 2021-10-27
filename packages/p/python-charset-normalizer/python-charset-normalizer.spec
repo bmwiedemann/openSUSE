@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        1.3.9
+Version:        2.0.7
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
 URL:            https://github.com/ousret/charset_normalizer
-Source:         https://files.pythonhosted.org/packages/source/c/charset_normalizer/charset_normalizer-%{version}.tar.gz
+Source:         https://github.com/Ousret/charset_normalizer/archive/refs/tags/%{version}.tar.gz#/charset_normalizer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
@@ -45,6 +44,7 @@ BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module cached-property >= 1.5}
 BuildRequires:  %{python_module dragonmapper >= 0.2}
 BuildRequires:  %{python_module loguru >= 0.5}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zhon}
 # /SECTION
@@ -55,8 +55,6 @@ Python Universal Charset detector.
 
 %prep
 %setup -q -n charset_normalizer-%{version}
-dos2unix README.md
-chmod a-x charset_normalizer/assets/frequencies.json
 
 %build
 %python_build
@@ -79,6 +77,6 @@ chmod a-x charset_normalizer/assets/frequencies.json
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/normalizer
-%{python_sitelib}/*
+%{python_sitelib}/charset_normalizer*
 
 %changelog

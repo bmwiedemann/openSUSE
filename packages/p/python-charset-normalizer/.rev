@@ -70,4 +70,41 @@
     <comment></comment>
     <requestid>894589</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14d3376cf184283fb63eca4305d057a8</srcmd5>
+    <version>2.0.7</version>
+    <time>1635366065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.7
+  * Addition: bento Add support for Kazakh (Cyrillic) language
+    detection
+  * Improvement: sparkle Further improve inferring the language
+    from a given code page (single-byte).
+  * Removed: fire Remove redundant logging entry about detected
+    language(s).
+  * Improvement: zap Refactoring for potential performance
+    improvements in loops.
+  * Improvement: sparkles Various detection improvement (MD+CD).
+  * Bugfix: bug Fix a minor inconsistency between Python 3.5 and
+    other versions regarding language detection.
+- Update to version 2.0.6
+  * Bugfix: bug Unforeseen regression with the loss of the
+    backward-compatibility with some older minor of Python 3.5.x.
+  * Bugfix: bug Fix CLI crash when using --minimal output in
+    certain cases.
+  * Improvement: sparkles Minor improvement to the detection
+    efficiency (less than 1%).
+- Update to version 2.0.5
+  * Improvement: sparkles The BC-support with v1.x was improved,
+    the old staticmethods are restored.
+  * Remove: fire The project no longer raise warning on tiny
+    content given for detection, will be simply logged as warning
+    instead.
+  * Improvement: sparkles The Unicode detection is slightly
+    improved, see #93
+  * Bugfix: bug In some rare case, the chunks extractor could cut
+    in the middle of a multi-byte character and could mislead the
+    mess detection.</comment>
+    <requestid>927599</requestid>
+  </revision>
 </revisionlist>
