@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 26 05:34:54 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.6:
+  * Updated UnicodeData to 14.0
+  * Fixed fcft_glyph.wc to be the Unicode codepoint instead of font index.
+  * Fixed assertion in glyph_cache_resize when rasterizing a large amount of
+    code points.
+  * Fixed bad performance of grapheme cache when rasterizing
+    many grapheme clusters.
+
+-------------------------------------------------------------------
 Sat Aug 14 16:40:38 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.5:

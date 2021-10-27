@@ -64,4 +64,18 @@
     representing a failed grapheme glyph.</comment>
     <requestid>912100</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1e1acd0d4ec59f165d1bc34cb6a5ff0</srcmd5>
+    <version>2.4.6</version>
+    <time>1635366062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.6:
+  * Updated UnicodeData to 14.0
+  * Fixed fcft_glyph.wc to be the Unicode codepoint instead of font index.
+  * Fixed assertion in glyph_cache_resize when rasterizing a large amount of
+    code points.
+  * Fixed bad performance of grapheme cache when rasterizing
+    many grapheme clusters.</comment>
+    <requestid>927598</requestid>
+  </revision>
 </revisionlist>
