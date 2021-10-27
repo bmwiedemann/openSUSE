@@ -268,4 +268,13 @@
     <comment>- Remove duplicate sources.</comment>
     <requestid>926410</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8e5542be3887b1100c5a7d7bf33a5240</srcmd5>
+    <version>0.36.9</version>
+    <time>1635366063</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.36.9:
+  * Ensure ServiceInfo orders newest addresses first</comment>
+    <requestid>927595</requestid>
+  </revision>
 </revisionlist>
