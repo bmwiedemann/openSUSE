@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:37:33 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.3.1
+  - Drop use of deprecated collections classes
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores
+  - Remove lower-constraints remnants
+  - Use TOX_CONSTRAINTS_FILE
+  - Fix formatting of release list
+  - Use py3 as the default runtime for tox
+  - Ussuri+ is python3 only and update python to python3
+  - Update master for stable/wallaby
+  - Move flake8 as a pre-commit local target.
+
+-------------------------------------------------------------------
 Sun May  2 17:12:57 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.2.0

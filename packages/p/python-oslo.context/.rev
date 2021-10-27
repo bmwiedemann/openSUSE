@@ -226,4 +226,22 @@
     <comment></comment>
     <requestid>889991</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>99084f9cb9169d7c8e1df5b82b31466d</srcmd5>
+    <version>3.3.1</version>
+    <time>1635366067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.3.1
+  - Drop use of deprecated collections classes
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores
+  - Remove lower-constraints remnants
+  - Use TOX_CONSTRAINTS_FILE
+  - Fix formatting of release list
+  - Use py3 as the default runtime for tox
+  - Ussuri+ is python3 only and update python to python3
+  - Update master for stable/wallaby
+  - Move flake8 as a pre-commit local target.</comment>
+    <requestid>927612</requestid>
+  </revision>
 </revisionlist>
