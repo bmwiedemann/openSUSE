@@ -19,7 +19,7 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        4.5.20
+Version:        5.0.36
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
@@ -31,16 +31,17 @@ Source1:        baselibs.conf
 Patch0:         belcard-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
-BuildRequires:  pkgconfig(belr) >= 4.5.0
 BuildRequires:  libudev-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(belr) >= 5.0.0
 
 %description
 Belcard is a C++ library to manipulate the vCard standard format files.
 
 %package -n %{soname}%{sover}
 Summary:        C++ library to manipulate vCard standard format files
+Group:          Development/Languages/C and C++
 Requires:       %{name}-data >= %{version}
 
 %description -n %{soname}%{sover}
@@ -48,6 +49,7 @@ Belcard is a C++ library to manipulate the vCard standard format files.
 
 %package data
 Summary:        Belcard data files
+Group:          Development/Languages/C and C++
 Requires:       %{soname}%{sover} = %{version}
 BuildArch:      noarch
 
