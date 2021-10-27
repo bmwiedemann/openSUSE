@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:21:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.9:
+  - Fix vCategories for correct en/de coding.
+  - vDuration property value: Fix changing duration sign after multiple
+    ``to_ical`` calls.
+
+-------------------------------------------------------------------
 Sat Oct 16 19:14:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.8:

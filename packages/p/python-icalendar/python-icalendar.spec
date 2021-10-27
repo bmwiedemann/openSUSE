@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define	modname icalendar
 Name:           python-%{modname}
-Version:        4.0.8
+Version:        4.0.9
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
