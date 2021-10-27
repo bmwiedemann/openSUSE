@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        24.0.5
+Version:        24.1.2
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -40,7 +40,6 @@ Source10:       epmd-user.conf
 Patch0:         otp-R16B-rpath.patch
 # PATCH-FIX-OPENSUSE erlang-not-install-misc.patch - matwey.kornilov@gmail.com -- patch from Fedora, this removes unneeded magic
 Patch4:         erlang-not-install-misc.patch
-BuildRequires:  sysuser-tools
 BuildRequires:  Mesa-devel
 BuildRequires:  autoconf
 BuildRequires:  dejavu-fonts
@@ -51,6 +50,7 @@ BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  openssh
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  update-alternatives
 BuildRequires:  wxWidgets-devel >= 3.1
 BuildRequires:  xsltproc

@@ -1,4 +1,390 @@
 -------------------------------------------------------------------
+Wed Oct 20 13:10:47 UTC 2021 - matwey.kornilov@gmail.com
+
+- Changes for 24.1.2:
+  * kernel: The undocumented DNS encode/decode module inet_dns has
+    been cleaned up to handle the difference between "symbolic" and
+    "raw" records in a more consistent manner. PR-5145/OTP-17584
+    introduced a change that contributed to an already existing
+    confusion, which this correction should remedy.
+  * erts: The python scripts that existed in
+    erts/lib_src/yielding_c_fun/lib/tiny_regex_c/scripts had a
+    license that was incompatible with Erlang/OTP's license. This
+    ticket removes these scripts that were not used by us.
+  * ssl: Before that change, TLS downgrade could occasionally fail
+    when data intended for downgraded socket were delivered
+    together with CLOSE_NOTIFY alert to ssl app.
+  * ssl: Avoid re-encoding of decoded certificates. This could
+    cause unexpected failures as some subtle encoding errors can be
+    tolerated when decoding but hence creating another sequence of
+    bytes if the decoded value is re-encoded.
+  * ssl: Fix possible process leak when the process doing
+    ssl:transport_accept dies before initiating the TLS handshake.
+  * ssl: Fix dtls memory leak, the replay window code was broken.
+  * public_key: Avoid re-encoding of decoded certificates. This
+    could cause unexpected failures as some subtle encoding errors
+    can be tolerated when decoding but hence creating another
+    sequence of bytes if the decoded value is re-encoded.
+  * crypto: Fixed minor memory leak at crypto module purge.
+  * crypto: Fix possible inconsistency in fips mode when linking
+    with some cryptolibs.
+- Changes for 24.1.1:
+  * kernel: Add more info about the socket 'type' ('socket' or
+    'port') for the DOWN message when monitoring sockets.
+  * stdlib: Fixed a bug that could cause a child to become orphaned
+    when a supervisor died between unlinking and sending the
+    shutdown signal to this child. There was also a possibility for
+    erratic supervisor reports caused by a race between a
+    supervisor shutting down a child and that child exiting by
+    itself at the same time.
+  * erts: A race between an exiting port and handling of
+    simultaneously received signals to that port could cause a
+    runtime system crash. The effected signals are link, monitor
+    and demonitor. On OTP 22 a similiar race could also cause a
+    memory leak when receiving an unlink signal.
+  * erts: A user defined tag on a monitor message could cause the
+    runtime system to crash when the monitor message had been
+    received.
+  * erts: A call to erlang:demonitor(Ref) where the reference Ref
+    referred to an active alias, but not an active monitor, caused
+    the runtime system to crash.
+  * erts: The message queue of a process entered an inconsistent
+    state after a receive expression with an invalid timeout value
+    was executed. If the exception raised due to the invalid
+    timeout value was caught, the following receive expression
+    executed by the process could fail to match messages already
+    present in the message queue. On OTP 24 this could also cause
+    the whole runtime system to crash.
+  * erts: Sending a Port ! {PortOwner, close} signal from a process
+    other than the port owner could erroneously trigger a badsig
+    exit signal being sent to the port owner process even though
+    the correct PortOwner had been passed in the signal.
+  * snmp: Sockets are monitored, but the handling of the 'DOWN'
+    message expected a new style socket ('socket'), old style
+    (port) was not handled.
+- Changes for 24.1:
+  * kernel: The extended error information has been corrected and
+    improved for the following BIFs: binary_to_existing_atom/2,
+    list_to_existing_atom/1, erlang:send_after/{3,4}, and
+    erlang:start_timer/{3,4}.
+  * kernel: Fixed rare bug that could cause net_kernel process to
+    hang for ever. Have seen to happen with massive number of TLS
+    connections while remote nodes are restarting. Bug exists since
+    OTP-22.0.
+  * kernel: Improve handling of closed sockets for inet:info/1.
+  * kernel: This change fixes a performance problem introduced in
+    pull-request #2675. Pull-request #2675 made so the system tried
+    to start children of already started applications which is
+    unnecessary. This change fixes this performance problem.
+  * kernel: Fix code:get_doc/1 to not crash when module is located
+    in an escript.
+  * kernel: Parsing of the result value in the native DNS resolver
+    has been made more defensive against incorrect results.
+  * kernel: A bug in the option handling for the legacy socket
+    adaptor, that is; when using inet_backend = socket, has been
+    fixed. Now socket options are set before the bind() call so
+    options regarding, for example address reuse have the desired
+    effect.
+  * kernel: inet:ntoa/1 has been fixed to not accept invalid
+    numerical addresses.
+  * kernel: Parsing of DNS records has been improved for records of
+    known types to not accept and present malformed ones in raw
+    format.
+  * kernel: The ip_mreq() type for the {ip,add_membership} and
+    {ip,drop_membership} socket options has been corrected to have
+    an interface field instead of, incorrectly, an address field.
+  * kernel: Add simple utility function to display existing sockets
+    i the erlang shell (socket:i/0).
+  * kernel: gen_udp can now be configured to use the socket inet-
+    backend (in the same way as gen_tcp).
+  * kernel: Functions erlang:set_cookie(Cookie) and
+    erlang:get_cookie(Node) have been added for completeness and to
+    facilitate configuring distributed nodes with different
+    cookies. The documentation regarding distribution cookies has
+    been improved to be less vague.
+  * kernel: A workaround has been implemented for Linux's quirky
+    behaviour to not adjust the source IP address when connecting a
+    connected (reconnecing) UDP socket. The workaround is to, on
+    Linux, always dissolve any connection before connecting an UDP
+    socket.
+  * kernel: Documented our recommendation against opening NFS-
+    mounted files, FIFOs, devices, and similar using file:open/2.
+  * debugger: Improve record handling, print known records with
+    record syntax.
+  * observer: Atoms with Unicode code points greater than 255 (for
+    example Greek or Cyrillic characters) would not be displayed
+    correctly by crashdump_viewer.
+  * observer: Fix the crashdump_viewer to be able to parse
+    monitor_node/2 monitors correctly.
+  * observer: Observer now has a sectiion for new socket.
+  * observer: Added a trace all button to the trace window.
+  * parsetools: Fix a bug in Leex which caused the Erlang Compiler
+    to generate warnings.
+  * parsetools: Fix a bug in Yecc which caused the Erlang Compiler
+    to generate warnings.
+  * mnesia: Fixed that index keys was deleted for set tables when
+    mnesia:delete_object/1 tried to delete a non-existing record.
+  * mnesia: Optimized table loading and added max_transfer_size
+    configuration parameter.
+  * stdlib: Fix io:format with ~p to no longer interpret floats as
+    printable characters.
+  * stdlib: Fix specs for base64 encode/decode functions to also
+    include 0.
+  * stdlib: The failing call io:format("~p\n") would result in a
+    warning for line number 0 instead of the correct line and
+    column numbers. This has been corrected, and all warnings for
+    failing calls to io:format() has been rephrased to make it
+    clearer exactly what the problem is.
+  * stdlib: When the options warn_missing_spec and export_all were
+    given, there would only be warnings for missing specs for
+    functions that had been explicitly exported using an -export
+    attribute.
+  * stdlib: Calling c:ls/1 with an atom whose contents is the the
+    name of a file (as opposed to a directory) would crash.
+  * stdlib: The MODULE and MODULE_STRING macros would always appear
+    to be defined (when tested by -ifdef), even though no -module()
+    declaration had been seen yet. Changed so that -ifdef ?MODULE.
+    will not consider ?MODULE defined if -module() has not been
+    previously seen.
+  * stdlib: Fix bug with rendering of missing types and callbacks
+    in shell_docs.
+  * stdlib: When the deterministic option was given to the
+    compiler, the ?FILE macro would be expanded to full path of the
+    source file before the first include directive and to base part
+    of the filename after include directive.
+  * stdlib: Fixed broken win32reg:delete_key and fixed
+    win32reg:value for default value.
+  * stdlib: Fixed error information for the call maps:get(some_key,
+    #{}).
+  * stdlib: Most output functions in the io module now print extra
+    error information when provided with invalid arguments. The
+    functions are: io:format, io:fwrite, io:put_chars, io:nl and
+    io:write.
+  * stdlib: EEP-54 (Provide more information about errors) now
+    includes two new return values for the format_error callback,
+    general and reason. Multi-line error descriptions returned from
+    a format_error callback are now correctly indented. The
+    documentation for erl_error, error/3 and Errors and Error
+    Handling in the Erlang Reference Manual have been extended.
+  * stdlib: In the documentation for the lists module, it has been
+    clarified that predicate funs must return a boolean.
+  * stdlib: The documentation for c:c/1, c:c/2, and c:c/3 has been
+    clarified.
+  * tools: The cover tool would not work on modules compiled with
+    the tuple_calls option.
+  * common_test: Float allowed as multiply_timetraps parameter.
+  * common_test: Remove usage of legacy API macro and functions.
+  * erts: Atoms with Unicode code points greater than 255 (for
+    example Greek or Cyrillic characters) would not be displayed
+    correctly by crashdump_viewer.
+  * erts: Fix rare minor memory leak related to jit code loading.
+  * erts: The extended error information has been corrected and
+    improved for the following BIFs: binary_to_existing_atom/2,
+    list_to_existing_atom/1, erlang:send_after/{3,4}, and
+    erlang:start_timer/{3,4}.
+  * erts: Fix bug provoked when building with gcc 10 and link time
+    optimization (-flto), causing Erlang compiler to crash. Bug
+    exists since OTP-24.0.
+  * erts: Corrected bugs where builds were not reducible even when
+    the deterministic option was given. In particular, modules with
+    map literals with more than 32 elements could cause this
+    problem. As part of this fix, the term_to_binary BIF now
+    accepts the option deterministic.
+  * erts: After an exception has been caught in a process, the
+    stack trace would be kept in the process longer than necessary.
+  * erts: Fix rare race bug in memory management of distribution
+    entries. Have been seen to cause VM crash when massive number
+    of repeated concurrent failing connection attempts.
+  * erts: The configure test for --disable-esock-socket-registry
+    has been corrected so disabling now works.
+  * erts: init:stop() no longer unloads loaded code before
+    terminating the runtime system. On systems with slow CPUs (such
+    as Raspberry PI Zero), that can significantly speed up
+    termination of the runtime system.
+  * erts: Fixed match specifications that use maps in either the
+    guard or the body to work properly. With this fix both keys and
+    values in maps can be expressions. Various other crashes and
+    bugs when using maps in match specifications have also been
+    fixed.
+  * erts: Parsing of the result value in the native DNS resolver
+    has been made more defensive against incorrect results.
+  * erts: When binary_to_term/2 failed, the extended error
+    information would always blame the second argument even if the
+    actual error was in the first argument.
+  * erts: On 32-bit computers, binary_to_term/1,2 is now more
+    resilient against corrupted binaries containing maps in the
+    external format.
+  * erts: A call to process_info(Pid, status) could erroneously
+    report the status running when it should have reported waiting.
+    This occurred when the calling process was executing on a
+    higher priority than the process being inspected. This bug has
+    been present since OTP 21.0 (erts version 10.0).
+  * erts: Optimize memory usage of erts internal processes used
+    during code loading/purging by hibernating them after a long
+    time of inactivity.
+  * erts: Add the type erlang:stacktrace/0.
+  * erts: The arity argument of error/2,3 can now be none to
+    indicate that the calling functions arity should be used.
+  * erts: Optimize match spec compiler for immediate (single word)
+    constant terms.
+  * erts: Functions erlang:set_cookie(Cookie) and
+    erlang:get_cookie(Node) have been added for completeness and to
+    facilitate configuring distributed nodes with different
+    cookies. The documentation regarding distribution cookies has
+    been improved to be less vague.
+  * erts: A workaround has been implemented for Linux's quirky
+    behaviour to not adjust the source IP address when connecting a
+    connected (reconnecing) UDP socket. The workaround is to, on
+    Linux, always dissolve any connection before connecting an UDP
+    socket.
+  * erts: The internal documentation for how to use Yielding C Fun
+    (YCF) has been updated to contain text about best practices for
+    using YCF for ERTS.
+  * erts: Optimize garbage collection for processes with large
+    number of binaries, funs and/or external pids/ports/refs.
+  * erl_docgen: Fix codeinclude tags to work as part of reference
+    manual documentation.
+  * erl_docgen: Fix creation of link elements with anchors in
+    EEP-48 style documentation.
+  * dialyzer: Do not crash if a PLT file no longer exists.
+  * dialyzer: Fix bug in erl_types related to maps.
+  * dialyzer: Fix bugs in erl_types regarding improper lists.
+  * dialyzer: The underspecs and overspecs options will now
+    generate correct warnings for misused opaque types.
+  * eunit: In an eunit test, when a test case times out, include a
+    stacktrace.
+  * snmp: It is now possible to configure the built-in net-if
+    processes (both agent and manager) to use the new (gen_udp-)
+    option 'inet_backend'.
+  * asn1: A parameterized type with a SEQUENCE with extension
+    ("...") made the compiler backend to crash. The previous fix
+    for this in GH-4514 was not complete.
+  * wx: Fix crash when closing an application.
+  * wx: Some functions with overloaded color arguments could not be
+    used. For example the copy constructor wxTextAttr:new(TextAttr)
+    did not work.
+  * wx: Added the Microsoft Edge WebView loader dll to the
+    installer on windows.
+  * wx: Handle specific Mac gui application events.
+  * erl_interface: erl_call now prints an error when the arguments
+    cannot be parsed.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * edoc: Fix broken documentation link in edoc_extract:file/4.
+  * ssl: Fix Makefile dependency generation to work no matter what
+    the ERL_TOP folder is called.
+  * ssl: If trying to downgrade a TLS-1.3 connection to a plain TCP
+    connection, possible TLS-1.3 session ticket messages will be
+    ignored in the "downgrade" state while waiting for the close
+    notify alert.
+  * ssl: Corrected error handling to correctly generate an
+    insufficient security alert when there are no suitable groups
+    that can be negotiated in TLS-1.3 instead of crashing resulting
+    in an internal error alert.
+  * ssl: Properly handle default session data storage. When a
+    client tries to reuse an expired session the default server
+    storage handling would crash loosing other session data. This
+    would cause a error report and possible loss of abbreviated
+    handshakes.
+  * ssl: Add support for RSA-PSS-PSS signatures and
+    signature_algorithms_cert in TLS-1.2. This is a TLS-1.3 RFC
+    requirement to backport this functionality.
+  * ssl: Use inet:monitor/1 to monitor listen-sockets so that we
+    are compatible with the new socket backend for gen_tcp.
+  * ssl: Enhance ssl:prf/4 handling and testing
+  * ssl: Enhanced cipher suite filtering functionality, making sure
+    TLS-1.3 and TLS-1.2 cipher suites can be supported correctly
+    together even when TLS-1.2 anonymous ciphers are included.
+  * ssl: Enhance gracefulness especially in TLS-1.3
+  * os_mon: On a Mac with Apple Silicon, memsup:get_os_wordsize/0
+    would return 32 instead of 64.
+  * ssh: Fixed that a slow start (>30s) of a client subsystem could
+    cause a log entry with the password.
+  * ssh: Fixed an error when running as an sftp server and a client
+    requests a directory contents listing. The fix is to handle the
+    error code {error, eacces} as {error, enoent} in the
+    ssh_sftpd:get_attrs/5 internal function; that is, just skip it.
+  * ssh: The "Key exchange failed" Info Report is now more
+    informative.
+  * inets: Before this change hrefs in dir listing page contained
+    percentage encoded forward slashes which did not work properly
+    with httpd.
+  * inets: Restored HTTP headers handling in inets/mod_esi.
+  * inets: inets/httpd dir listing icons and other improvements
+  * inets: httpc: Improve performance by removing redundant URI
+    handling
+  * compiler: If a parse transform raised an exception using
+    throw/1 or exit/1, the compiler would report that as an
+    internal compiler error, which would be confusing. Amended to
+    report that the parse transform failed.
+  * compiler: The failing call io:format("~p\n") would result in a
+    warning for line number 0 instead of the correct line and
+    column numbers. This has been corrected, and all warnings for
+    failing calls to io:format() has been rephrased to make it
+    clearer exactly what the problem is.
+  * compiler: When the options warn_missing_spec and export_all
+    were given, there would only be warnings for missing specs for
+    functions that had been explicitly exported using an -export
+    attribute.
+  * compiler: In rare circumstances, the compiler could emit an
+    incorrect warning for a term that was constructed but never
+    used.
+  * compiler: Corrected bugs where builds were not reducible even
+    when the deterministic option was given. In particular, modules
+    with map literals with more than 32 elements could cause this
+    problem. As part of this fix, the term_to_binary BIF now
+    accepts the option deterministic.
+  * compiler: The MODULE and MODULE_STRING macros would always
+    appear to be defined (when tested by -ifdef), even though no
+    -module() declaration had been seen yet. Changed so that -ifdef
+    ?MODULE. will not consider ?MODULE defined if -module() has not
+    been previously seen.
+  * compiler: In a guard, not (X =:= true) would incorrectly
+    evaluate to false for non-boolean values of X.
+  * compiler: When the deterministic option was given to the
+    compiler, the ?FILE macro would be expanded to full path of the
+    source file before the first include directive and to base part
+    of the filename after include directive.
+  * public_key: public_key:pkix_sign/2 now honors the salt length
+    from the provided input parameters. Earlier this could result
+    in incorrect signatures if not using recommended defaults.
+  * public_key: When decoding an 'ECPrivateKey' unwrap the private
+    key. For more precise information see RFC 8410, section 7.
+  * runtime_tools: Observer now has a sectiion for new socket.
+  * runtime_tools: The dbg docs have been expanded to include the
+    meaning of all the function name acronyms.
+  * megaco: It is now possible to configure the built-in transports
+    (megaco_tcp and megaco udp) to use the new (gen_udp- and
+    gen_tcp-) option 'inet_backend'.
+  * crypto: Fix bug in crypto:ensure_engine_unloaded. Also fixed
+    minor memory leak related to engine unloading.
+  * crypto: Fixes that FIPS enable and disable (or vice versa) on
+    Windows sometimes leads to core dump at the time of process
+    exit.
+  * crypto: Disable fips if cryptolib < 1.0.1 and OTP/crypto is
+    configured with --enable-fips If not, there could be compiling
+    or loading problems with antique OpenSSL versions.
+  * jinterface: Fixed rare race bug that could cause
+    NullPointerException on local close of connection.
+- Changes for 24.0.6:
+  * erts: A call to the process_info() BIF could end up hanging for
+    ever due to a bug introduced when the new selective receive
+    optimization was introduced in OTP 24.0. Note that this bug
+    only effects process_info().
+  * erts: Fix buffer overrun problem in the tty driver. The problem
+    happens on some platforms when using the CTRL+R functionality
+    of newshell with very long strings in the history.
+  * erts: Fix race-condition that could cause a crash when tracing
+    scheduling or garbage collections on a process that was running
+    on a dirty scheduler.
+  * erts: Fix rare bug where re:run would crash/return invalid
+    results when given a subbinary as subject. This bug has existed
+    since Erlang/OTP 20.0.
+  * erts: binary_to_term/1,2 is now more resilient against
+    corrupted binaries containing maps in the external format.
+
+-------------------------------------------------------------------
 Tue Sep 14 07:19:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
