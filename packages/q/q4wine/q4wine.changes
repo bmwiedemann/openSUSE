@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 25 21:35:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.13.13
+  Fixed:
+  * Prefix Import feature is not working as expected.
+  * Misspelled Color Theme Settings.
+  * CMake warning.
+  * XDG Base Directory Specification support.
+  * Use LC_ALL instead of LANG to force override applciation locale.
+
+-------------------------------------------------------------------
 Sun Feb  9 00:21:28 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 1.13.12.
