@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 17 15:57:25 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.11.15.0
+  + Changes for compatibility with OpenImageIO 2.3. #1393 #1388
+  + Fix potential crashes (or at least undefined behavior) due to
+    missing
+  + virtual destructor of internal Symbol type. #1397
+- Apply 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff and 1420.diff
+  in order to build with LLVM 13.
+- Add partio library dependency
+
+-------------------------------------------------------------------
 Tue Aug 31 14:36:55 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix source URL

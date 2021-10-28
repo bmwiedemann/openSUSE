@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.14.2
+Version:        1.11.15.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -31,6 +31,10 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
+# PATCH-FIX-UPSTREAM: 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff - fix build with LLVM >= 12
+Patch0:         8682211d0bfe5c4be63a4a003d06037ff9721e66.diff
+# PATCH-FIX-UPSTREAM: 1420.diff - fix build with LLVM >= 13
+Patch1:         1420.diff
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  bison
@@ -41,6 +45,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  partio-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
