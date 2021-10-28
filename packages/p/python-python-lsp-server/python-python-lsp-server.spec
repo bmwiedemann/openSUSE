@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
-BuildRequires:  %{python_module flake8 >= 3.8.0}
+BuildRequires:  %{python_module flake8 >= 3.8.0 with %python-flake8 < 4}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module pluggy}
@@ -55,7 +55,7 @@ Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
 Suggests:       python-autopep8
-Suggests:       python-flake8 >= 3.8.0
+Suggests:       (python-flake8 >= 3.8.0 with python-flake8 < 4)
 Suggests:       python-mccabe >= 0.6.0
 Suggests:       python-pycodestyle >= 2.7.0
 Suggests:       python-pydocstyle >= 2.0.0
@@ -88,7 +88,7 @@ will be enabled:
 %prep
 %setup -q -n python-lsp-server-%{version}
 # the only relevant changes from https://github.com/python-lsp/python-lsp-server/pull/94
-sed -i 's/pylint>=2.5.0,<2.10.0/pylint>=2.5.0/' setup.cfg
+sed -i 's/pylint>=2.5.0,<2.10.0/pylint>=2.5.0/' setup.py
 sed -i "s/open(document.path, 'w')/open(document.path, 'w', encoding='utf-8')/" test/plugins/test_pylint_lint.py
 
 %build
