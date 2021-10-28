@@ -25,6 +25,8 @@ Summary:        Image reading library
 License:        MIT
 URL:            http://luispedro.org/software/imread
 Source:         https://files.pythonhosted.org/packages/source/i/imread/imread-%{version}.tar.gz
+# https://github.com/luispedro/imread/issues/39
+Patch0:         python-imread-remove-nose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
@@ -37,10 +39,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
-# SECTION test requirements
-BuildRequires:  %{python_module nose}
-# /SECTION
 Requires:       python-numpy
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -56,6 +58,7 @@ imsave
 
 %prep
 %setup -q -n imread-%{version}
+%patch0 -p1
 
 %build
 export EXCLUDE_WEBP=0
@@ -67,7 +70,9 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+find -name '_imread.*.so' -exec cp {} imread \;
+pushd imread
+%pytest_arch
 
 %files %{python_files}
 %doc ChangeLog README.rst
