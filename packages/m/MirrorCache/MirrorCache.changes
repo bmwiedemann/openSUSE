@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 21 06:57:03 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.014:
+  * Stop rescanning folders which are not requested anymore
+  * Schedule rescan depending on age of file and last scan (#212)
+
+-------------------------------------------------------------------
+Thu Oct 14 10:14:44 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.012:
+  * Rework mirror scan (#211)
+  * Fix root redirect in subtree mirrorlist
+  * Show only folders from TOP_FOLDERS variable if defined
+  * Fix detecting vpn when ipv6 is enabled
+
+-------------------------------------------------------------------
 Thu Oct 07 07:01:48 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.011:
