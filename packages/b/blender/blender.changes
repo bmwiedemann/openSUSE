@@ -1,40 +1,111 @@
 -------------------------------------------------------------------
+Tue Oct 12 16:13:12 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.93.5
+  + Crash selecting 3D tracking marker. [T90651]
+  + Image Editor not sampling color from the the currently selected
+    pass. [T90772]
+  + PulseAudio breaks animation playback in new scene (no imported
+    sound involved) LTS backport, 3.0 is fine. [T90887]
+  + Blender popup windows open on the wrong screen. [T90752]
+  + Fix buffer size mismatch in SCRIPT_OT_python_file_run.
+    [rB515bdda3d9c]
+  + Fix invalid mask use for the UV-project modifier.
+    [rB969d6d3a0ff]
+  + Fix “Text to Object” creating invisible object. [rB933c6b7d8a3]
+  + Fix T88909: Win32 getTitle() UTF8 Support. [rBd6facd44b53]
+  + Fix error scaling thumbnails to zero dimensions.
+    [rB16637e7ff40]
+  + Audio causes issues with Playback when PC put to Sleep,
+    Hibernate or when Screensaver appears. [T88887]
+  + GPencil Time Offset Modifier together with Armature Modifier
+    or/and Lattice Modifier broken in 2.93.3. [T91060]
+  + Grease Pencil: Adding driver in Transform doesn’t behave as
+    expected during playback. [T88433]
+  + GPencil: Sculpt Smooth Brush is using Affect Pressure but is
+    not used internally. [T91159]
+  + Loop Tools Relax. [T90600]
+  + Text “Scale to Fit” no longer working properly since 2.93.4.
+    [T91401]
+  + Fix memory leak if an error occurred assigning id-property
+    sequence. [rBec448d5a6ac]
+  + Bisect straight line gesture features dont work (“Flip” /
+    “Snap” option). [T91320]
+  + Workbench doesn’t respect GP simplify options when rendering.
+    [T91448]
+  + GPencil: Scripting weight_get and Vertex Groups not working at
+    expected with several groups. [T91511]
+  + GPencil: Interpolate Sequence crash and quit. [T91534]
+  + Eevee ambient occlusion is incorrect on M1 macMini. [T87801]
+  + Intel HD graphics: Changing Roughness Value to 0 causes mesh to
+    be black. [T88754]
+  + VSE playback periodically refuses to work (Pulseaudio, OpenAL
+    seems fine). [T89045]
+  + GPencil: Tint modifier “apply” removes the effect. [T91607]
+  + Texture Paint Stencil doesn’t use assigned UV Layer. [T91557]
+  + Fix default surface resolution U/V mis-match. [rB4528c9a357a]
+  + Fix ‘WM_window_find_under_cursor’. [rB1ff10bb6d18]
+  + Fix building without audaspace. [rBaf42086e743]
+
+- See also https://www.blender.org/download/lts/2-93/
+
+-------------------------------------------------------------------
 Wed Sep  8 07:47:56 UTC 2021 - Mathias Homann <Mathias.Homann@opensuse.org>
 
-- Update to Blender 2.93.4
-  * VSE: Flush audio encode after finishing video export. [rB85c08c9717b]
-  * FFMPEG: Fix building with older versions that need FFMPEG_USE_DURATION_WORKAROUND. [rB7ec351c0d53]
-  * VSE: Fix “off by one” error when encoding audio. [rB9511009438d]
-  * VSE: Fix memory leak when adding bad image/movie strips. [rB54a821e8fd7]
-  * VSE: Fix video strip duration calculation. [rBd486d248687]
-  * VSE: Fix seeking issues. [rB00dd68405d8]
-  * VSE: Fix audaspace not reading ffmpeg files with start offset correctly. [rB489df7ac88c]
-  * VSE: Use lines to draw waveform. [rBc634d859b21]
-  * M2T video seeking is broken. [T87967]
-  * Add sanity NULL checks when loading sound sequences. [rB1a4122d4415]
-  * wrong address to get boost libraries in /build_files/build_environment/install_deps.sh. [T90719]
-  * Effect Strip added to a nested Metastrip gets duplicate name (thus inherits fcurves from other Strips). [T90737]
-  * Memorie spike shrink-wrap and geometry nodes. [T89429]
-  * Fix: DNA struct alignment on 32 bit. [rB9fb9bf59967]
-  * Makesdna: Fix detecting 32 bit padding issues. [rB70df9119f46]
-  * Fix FTBFS on mips64el architecture. [rB9d94b358ca1]
-  * Fix memory leak with building springs in the cloth simulator. [rB20f04ce62af]
-  * Knife project leaks memory each time a text, curve, or surface object is used for cutting. [T90791]
-  * Grease Pencil layer transformations ignored by select tool. [T90690]
-  * Fix memory leak in edit-mesh dissolve degenerate. [rBe1e2abd4bf0]
-  * Scale to Fit overflows into a second line. [T89241]
-  * Memory leak after importing a model/ toggling shading workspace. [T88033]
-  * ASAN: Trying to Undo a knife-project operation causes heap-use-after-free failure. [T90493]
-  * blender 2.93.1 fails to build with python 3.10.0b4 (upcoming python 3.10). [T89931]
-  * Incorrect result of Vector Projection (Geometry Nodes -> Attribute Vector Math). [T90567]
-  * Grease Pencil Reproject Strokes on surfaces from a camera’s point of view is incorrectly placing the strokes on the Back Faces when canvas is intersecting the object. [T89101]
-  * Something in Blender can generate invalid (Nan) values in UVMaps. [T79775]
-  * Blender Crashing when opening file. [T89805]
-  * bpy.types.Object.parent_bone not reset when clearing a bone parent. [T88498]
-  * UI bugs in NLA Editor and Action Editor. [T87681]
-  * Animation channels widgets (graph, action, NLA, *dopesheet*) block input for the search channel, and invert search toggle. [T90364]
-
-
+- Update to 2.93.4
+  + VSE: Flush audio encode after finishing video export.
+    [rB85c08c9717b]
+  + FFMPEG: Fix building with older versions that need
+    FFMPEG_USE_DURATION_WORKAROUND. [rB7ec351c0d53]
+  + VSE: Fix “off by one” error when encoding audio.
+    [rB9511009438d]
+  + VSE: Fix memory leak when adding bad image/movie strips.
+    [rB54a821e8fd7]
+  + VSE: Fix video strip duration calculation. [rBd486d248687]
+  + VSE: Fix seeking issues. [rB00dd68405d8]
+  + VSE: Fix audaspace not reading ffmpeg files with start offset
+    correctly. [rB489df7ac88c]
+  + VSE: Use lines to draw waveform. [rBc634d859b21]
+  + M2T video seeking is broken. [T87967]
+  + Add sanity NULL checks when loading sound sequences.
+    [rB1a4122d4415]
+  + wrong address to get boost libraries in
+    /build_files/build_environment/install_deps.sh. [T90719]
+  + Effect Strip added to a nested Metastrip gets duplicate name
+    (thus inherits fcurves from other Strips). [T90737]
+  + Memorie spike shrink-wrap and geometry nodes. [T89429]
+  + Fix: DNA struct alignment on 32 bit. [rB9fb9bf59967]
+  + Makesdna: Fix detecting 32 bit padding issues. [rB70df9119f46]
+  + Fix FTBFS on mips64el architecture. [rB9d94b358ca1]
+  + Fix memory leak with building springs in the cloth simulator.
+    [rB20f04ce62af]
+  + Knife project leaks memory each time a text, curve, or surface
+    object is used for cutting. [T90791]
+  + Grease Pencil layer transformations ignored by select tool.
+    [T90690]
+  + Fix memory leak in edit-mesh dissolve degenerate.
+    [rBe1e2abd4bf0]
+  + Scale to Fit overflows into a second line. [T89241]
+  + Memory leak after importing a model/ toggling shading
+    workspace. [T88033]
+  + ASAN: Trying to Undo a knife-project operation causes heap-use-
+    after-free failure. [T90493]
+  + blender 2.93.1 fails to build with python 3.10.0b4 (upcoming
+    python 3.10). [T89931]
+  + Incorrect result of Vector Projection (Geometry Nodes ->
+    Attribute Vector Math). [T90567]
+  + Grease Pencil Reproject Strokes on surfaces from a camera’s
+    point of view is incorrectly placing the strokes on the Back
+    Faces when canvas is intersecting the object. [T89101]
+  + Something in Blender can generate invalid (Nan) values in
+    UVMaps. [T79775]
+  + Blender Crashing when opening file. [T89805]
+  + bpy.types.Object.parent_bone not reset when clearing a bone
+    parent. [T88498]
+  + UI bugs in NLA Editor and Action Editor. [T87681]
+  + Animation channels widgets (graph, action, NLA, *dopesheet*)
+    block input for the search channel, and invert search toggle.
+    [T90364]
 
 -------------------------------------------------------------------
 Sat Aug 21 16:41:00 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>

@@ -59,7 +59,7 @@
 %bcond_with usd
 %bcond_with openxr
 Name:           blender
-Version:        2.93.4
+Version:        2.93.5
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -282,6 +282,8 @@ rm -rf extern/libopenjpeg
 # silence warning about missing includedir
 #mkdir -p extern/glew/include
 for i in `grep -rl "%{_bindir}/env python3"`;do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i} ;done
+
+#sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
 
 %build
 export SUSE_ASNEEDED=0
