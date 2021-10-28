@@ -57,4 +57,12 @@ No matter what the .changes say, libcanberra is still needed ref configure
   upstreams port. (forwarded request 913042 from iznogood)</comment>
     <requestid>913699</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8cbf32f412bb4c2b22131f98cca857d7</srcmd5>
+    <version>1.0.3</version>
+    <time>1635438680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927911</requestid>
+  </revision>
 </revisionlist>
