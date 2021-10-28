@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Oct 22 10:08:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to ncurses 6.3 (patch 20211021)
+  + update release notes
+  + add "ncu2openbsd" script, to illustrate how to update an OpenBSD
+    system to use a current ncurses release.
+- Add upstream keyring to verify source signatures of both ncurses
+  and tack tar ball with their ASC (armored ASCii signature) counterpart
+
+-------------------------------------------------------------------
+Tue Oct 19 06:38:00 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211018
+  + check for screen size-change in scr_init() and scr_restore(), in case
+    a screen dump does not match the current screen dimensions (report by
+    Frank Tkalcevic).
+
+-------------------------------------------------------------------
+Mon Oct 18 06:31:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211017
+  + amend change for pkg-config to account for "none" being returned in
+    the libdir-path result rather than "no" (report by Gabriele Balducci).
+- Add ncurses patch 20211016
+  + build-fix for pmake with libtool.
+  + improve make-tar.sh scripts, adding COPYING to tar file, and clean up
+    shellcheck warnings.
+  + add link for "reset6" manpage in test-package ncurses6-doc
+  + revise configure option --with-pkg-config-libdir, using the actual
+    search path from pkg-config or pkgconf using the output from --debug
+    (report by Pascal Pignard).
+  + freeze ABI in ".map" files.
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Oct 11 09:09:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211009
+  + implement "+m" option in tabs program.
+  + fill in some details for infoton -TD
+  + fix spelling/consistency in several descriptions -TD
+  + use vt420+lrmm in vt420 -TD
+  + modify save_tty_settings() to avoid opening /dev/tty for cases other
+    than reset/init, e.g., for clear.
+  + modify output of "toe -as" to show first description found rather
+    than the last.
+  + improve tic checks for number of parameters of smglp, smgrp, smgtp,
+    and smgbp (cf: 20020525).
+  + correct off-by-one comparison in last_char(), which did not allow
+    special case of ":" in a terminfo description field (cf: 20120407).
+  + remove check in tic that assumes that none or both parameterized and
+    non-parameterized margin-setting capabilities are present
+    (cf: 20101002).
+
+-------------------------------------------------------------------
 Mon Oct  4 05:45:27 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20211002

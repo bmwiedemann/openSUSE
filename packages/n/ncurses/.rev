@@ -3329,4 +3329,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>924628</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>d614bfd1bd0076357945a5b96fc84f2a</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1635438676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ncurses 6.3 (patch 20211021)
+  + update release notes
+  + add &quot;ncu2openbsd&quot; script, to illustrate how to update an OpenBSD
+    system to use a current ncurses release.
+- Add upstream keyring to verify source signatures of both ncurses
+  and tack tar ball with their ASC (armored ASCii signature) counterpart
+
+- Add ncurses patch 20211018
+  + check for screen size-change in scr_init() and scr_restore(), in case
+    a screen dump does not match the current screen dimensions (report by
+    Frank Tkalcevic).
+
+- Add ncurses patch 20211017
+  + amend change for pkg-config to account for &quot;none&quot; being returned in
+    the libdir-path result rather than &quot;no&quot; (report by Gabriele Balducci).
+- Add ncurses patch 20211016
+  + build-fix for pmake with libtool.
+  + improve make-tar.sh scripts, adding COPYING to tar file, and clean up
+    shellcheck warnings.
+  + add link for &quot;reset6&quot; manpage in test-package ncurses6-doc
+  + revise configure option --with-pkg-config-libdir, using the actual
+    search path from pkg-config or pkgconf using the output from --debug
+    (report by Pascal Pignard).
+  + freeze ABI in &quot;.map&quot; files.
+- Correct offsets of patch ncurses-6.2.dif
+
+- Add ncurses patch 20211009
+  + implement &quot;+m&quot; option in tabs program.
+  + fill in some details for infoton -TD
+  + fix spelling/consistency in several descriptions -TD</comment>
+    <requestid>927252</requestid>
+  </revision>
 </revisionlist>

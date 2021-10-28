@@ -34,7 +34,7 @@
 %endif
 
 %define patchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
-%define basevers 6.2
+%define basevers 6.3
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -68,15 +68,15 @@ Obsoletes:      ncurses-64bit
 # but also build the ABI version 5 as this is part of the source
 # tar ball including the latest upstream fixes for ABI 5.
 #
-Version:        6.2.%{patchlvl}
+Version:        6.3.%{patchlvl}
 Release:        0
 Summary:        Terminal control library
 #Git:           http://ncurses.scripts.mit.edu
 License:        MIT
 Group:          System/Base
 URL:            http://www.invisible-island.net/ncurses/ncurses.html
-Source0:        ftp://ftp.invisible-island.net/ncurses/ncurses-6.2.tar.gz
-Source1:        ncurses-6.2-patches.tar.bz2
+Source0:        ftp://ftp.invisible-island.net/ncurses/ncurses-%{basevers}.tar.gz
+Source1:        ncurses-%{basevers}-patches.tar.bz2
 Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
@@ -85,6 +85,9 @@ Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-202
 Source6:        edit.sed
 Source7:        baselibs.conf
 Source8:        cursescheck
+Source9:        ftp://ftp.invisible-island.net/ncurses/ncurses-%{basevers}.tar.gz.asc
+Source10:       ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20210619.tgz.asc
+Source11:       ncurses.keyring
 Patch0:         ncurses-6.2.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
