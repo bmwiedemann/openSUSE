@@ -283,4 +283,26 @@
     <comment>New stable rel (forwarded request 873759 from iznogood)</comment>
     <requestid>875388</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>25ab5f04b896c99d28fffd7171ebb5a5</srcmd5>
+    <version>1.0.27</version>
+    <time>1635438685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.27:
+  + Add Save button to toolbar.
+  + Add calculus example &quot;zooming animation&quot; to show
+    differentiability.
+  + Allow setting editor color scheme in the settings dialog.
+  + Closing window acts exactly like the quit button/menu item.
+  + Current program is marked with larger font instead of bold,
+    since that doesn't work with all themes.
+  + Improve performance of surface plots, and get rid of flicker.
+  + Remove menu icons.
+  + Leave the Stop button on the plot window enabled if a script is
+    running.
+  + Remove dependence on AMTK.
+  + Updated translations.
+- Drop pkgconfig(amtk-5) BuildRequires: following upstream changes. (forwarded request 927919 from iznogood)</comment>
+    <requestid>927932</requestid>
+  </revision>
 </revisionlist>

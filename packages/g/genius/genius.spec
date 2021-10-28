@@ -17,7 +17,7 @@
 
 
 Name:           genius
-Version:        1.0.26
+Version:        1.0.27
 Release:        0
 Summary:        General purpose calculator and mathematics tool
 License:        GPL-3.0-or-later
@@ -31,7 +31,6 @@ BuildRequires:  intltool
 BuildRequires:  mpfr-devel >= 2.3.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(amtk-5)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.41.1
