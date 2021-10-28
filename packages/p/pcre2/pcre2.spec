@@ -18,15 +18,14 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.37
+Version:        10.38
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.pcre.org
-#SVN-Clone:	svn://vcs.exim.org/pcre/code/trunk
-Source0:        https://ftp.pcre.org/pub/pcre/%{name}-%{version}.tar.bz2
-Source2:        https://ftp.pcre.org/pub/pcre/%{name}-%{version}.tar.bz2.sig
+Source0:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source2:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 #PATCH-FIX-OPENSUSE tchvatal@suse.cz upstream thinks it is good idea to use rpath, taken from RH
