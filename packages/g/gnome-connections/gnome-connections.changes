@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 27 13:05:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Prevent search from stealing display key-press events.
+  + Improve the parsing of incomplete addresses.
+  + Draw RDP thumbnails on the app side.
+  + Do not tap to clipboard until VNC connection is connected.
+  + Fix missing app title in the Shell.
+  + Add parameters to the Exec key in the desktop file.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 17 14:22:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:
