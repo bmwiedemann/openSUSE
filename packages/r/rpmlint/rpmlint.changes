@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 22 19:03:03 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211022.a5287ad:
+  * Mitigate Perl false positives for no-dependency-on.
+
+-------------------------------------------------------------------
+Thu Oct 21 06:51:57 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211021.74e867e:
+  * Checking libalternatives entries and links.
+  * Fix -r argument.
+  * opensuse.toml: add permissions-parse-error to BlockedFilters
+  * dbus-services: adjust digest for test whitelisting (need a different file there)
+  * polkit-rules-whitelist: fix package name for test whitelisting
+  * Remove unused VS code settings.
+  * Whitelisting pam_u2f module (bsc#1190790)
+
+-------------------------------------------------------------------
 Tue Oct 19 08:39:16 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211019.ca2517e:

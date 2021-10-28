@@ -3325,4 +3325,22 @@ oddjob-gpupdate isn't blocked)</comment>
   * Tweak shlib-policy-name-error.</comment>
     <requestid>926164</requestid>
   </revision>
+  <revision rev="364" vrev="1">
+    <srcmd5>ddf28e9fe04bde36f759596ee4cfe631</srcmd5>
+    <version>2.1+git20211022.a5287ad</version>
+    <time>1635438674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211022.a5287ad:
+  * Mitigate Perl false positives for no-dependency-on.
+
+- Update to version 2.1+git20211021.74e867e:
+  * Checking libalternatives entries and links.
+  * Fix -r argument.
+  * opensuse.toml: add permissions-parse-error to BlockedFilters
+  * dbus-services: adjust digest for test whitelisting (need a different file there)
+  * polkit-rules-whitelist: fix package name for test whitelisting
+  * Remove unused VS code settings.
+  * Whitelisting pam_u2f module (bsc#1190790)</comment>
+    <requestid>927090</requestid>
+  </revision>
 </revisionlist>
