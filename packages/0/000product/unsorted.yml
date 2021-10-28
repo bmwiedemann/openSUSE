@@ -18094,6 +18094,7 @@ unsorted:
   - orthanc-postgresql 
   - orthanc-python 
   - orthanc-source 
+  - orthanc-tcia 
   - orthanc-webviewer 
   - orthanc-wsi 
   - orthos-client 
@@ -21753,6 +21754,7 @@ unsorted:
   - python36-autodoc 
   - python36-autodocsumm 
   - python36-autoflake 
+  - python36-autopage 
   - python36-autopep8 
   - python36-autoupgrade-ng 
   - python36-avahi 
@@ -23930,7 +23932,6 @@ unsorted:
   - python36-subscene-api 
   - python36-subst 
   - python36-suds-community 
-  - python36-suds-jurko 
   - python36-suntime 
   - python36-sure 
   - python36-svgwrite 
@@ -24557,6 +24558,7 @@ unsorted:
   - python38-autodoc 
   - python38-autodocsumm 
   - python38-autoflake 
+  - python38-autopage 
   - python38-autopep8 
   - python38-autoray 
   - python38-autoupgrade-ng 
@@ -26857,7 +26859,6 @@ unsorted:
   - python38-subscene-api 
   - python38-subst 
   - python38-suds-community 
-  - python38-suds-jurko 
   - python38-sunpy 
   - python38-suntime 
   - python38-sure 
@@ -27540,6 +27541,7 @@ unsorted:
   - python39-autodoc 
   - python39-autodocsumm 
   - python39-autoflake 
+  - python39-autopage 
   - python39-autopep8 
   - python39-autoray 
   - python39-autoupgrade-ng 
@@ -29985,7 +29987,6 @@ unsorted:
   - python39-subscene-api 
   - python39-subst 
   - python39-suds-community 
-  - python39-suds-jurko 
   - python39-sunpy 
   - python39-suntime 
   - python39-sure 
