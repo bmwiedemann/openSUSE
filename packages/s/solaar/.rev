@@ -181,4 +181,14 @@
     <comment></comment>
     <requestid>897895</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff5277bebd71ffd48da5b8ce3670b163</srcmd5>
+    <version>1.0.7</version>
+    <time>1635438682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * https://github.com/pwr-Solaar/Solaar/blob/1.0.7/ChangeLog
+</comment>
+    <requestid>927872</requestid>
+  </revision>
 </revisionlist>
