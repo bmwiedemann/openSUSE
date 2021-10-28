@@ -1,7 +1,7 @@
 #
 # spec file for package python-Durus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,17 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Durus
-Version:        3.9
+Version:        4.2
 Release:        0
 Summary:        A Python Object Database
 License:        CNRI-Python
 URL:            https://www.mems-exchange.org/software/durus/
 Source:         https://files.pythonhosted.org/packages/source/D/Durus/Durus-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %ifpython2
 Provides:       %{oldpython}-durus = %{version}
 Obsoletes:      %{oldpython}-durus < %{version}
@@ -42,7 +42,9 @@ multiple client processes.
 
 %prep
 %setup -q -n Durus-%{version}
-sed -i "1d" {db_renumber,__main__}.py # Fix non-executable scripts
+# Fix non-executable scripts
+sed -i "1d" bin/db_renumber.py
+sed -i "1d" durus/__main__.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -64,7 +66,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license LICENSE.txt
-%doc ACKS.txt CHANGES.txt README.txt doc/FAQ.txt
+%doc ACKS.txt CHANGES.txt README.md doc/FAQ.txt
 %python_alternative %{_bindir}/durus
 %{python_sitearch}/*
 

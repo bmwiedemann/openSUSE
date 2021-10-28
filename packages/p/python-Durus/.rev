@@ -75,4 +75,29 @@
     <comment></comment>
     <requestid>833522</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3b434aa52aad64690726e3ed0810c11</srcmd5>
+    <version>4.2</version>
+    <time>1635438682</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2:
+  * Use setuptools.
+  * Set zip_safe to False.
+  * Remove reference to DurusWorks.
+  * Use python3 for scripts.
+  * Small optimization for setting _p_* attributes.
+  * Pickler.clear_memo() can get slow.  Work-around that issue.
+  * When finishing FileStorage commit, log file size.
+  * Order pack todo queue by file offset.
+  * Add support for an inherited server socket.
+  * Improve db_to_py3k.py script.
+  * Move scripts to 'bin' directory.
+  * Define separate methods for PersistentSet.
+  * Add --storage-class option to 'durus' command line tool.
+  * Fix suble bug in FileStorage2 packer.
+  * Add create_from_records() method.
+  * Restore DFS20 file storage format.
+- Remove nose from BuildRequires.</comment>
+    <requestid>927869</requestid>
+  </revision>
 </revisionlist>
