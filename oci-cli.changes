@@ -1,4 +1,224 @@
 -------------------------------------------------------------------
+Wed Oct 27 13:35:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.0
+  * Support for Node subsetting feature for vmcluster resources
+    for ExaCC in Database Service
+    * ``oci db vm-cluster add --db-servers``
+    * ``oci db vm-cluster create --db-servers``
+    * ``oci db vm-cluster remove --db-servers``
+  * Support for convert to pdb, rollback, sync, sync-rollback, list-pdb-conversion-history,
+    get-pdb-conversion-history in Database Service
+    * ``oci db database convert-to-new-pdb``
+    * ``oci db database convert-to-new-pdb-precheck``
+    * ``oci db database convert-to-pdb-sync``
+    * ``oci db database convert-to-pdb-sync-rollback``
+    * ``oci db database list-pdb-conversion-history``
+    * ``oci db pdb-conversion-history get --history-id``
+  * Support to optionally provide peer database unique name AND SID prefix
+    during database creation in ExaCS and ExaCC in Database Service
+    * ``oci db database create --sid-prefix``
+    * ``oci db database create-from-backup --sid-prefix``
+    * ``oci db data-guard-association create from-existing-db-system
+      --peer-db-unique-name  --peer-sid-prefix``
+    * ``oci db data-guard-association create from-existing-vm-cluster
+      --peer-db-unique-name  --peer-sid-prefix``
+  * Support for a parameter for creating db system from the backup with
+    database software image in Database Service
+    * ``oci db system launch-from-backup --database-software-image-id``
+  * Support for preference get/update/remove in Log Analytics Service
+    * ``oci log-analytics preference get``
+    * ``oci log-analytics preference update``
+    * ``oci log-analytics preference remove``
+  * Support for unprocessed data bucket in Log Analytics Service
+    * ``oci log-analytics upload set-unprocessed-bucket``
+    * ``oci log-analytics upload get-unprocessed-bucket``
+    * ``oci log-analytics source disable-auto-assoc``
+  * Support for new parameter ``object-name-filters`` to object
+    collection rule in Log Analytics Service
+    * ``oci log-analytics object-collection-rule create --object-name-filters``
+  * Logic for CLI retries.
+    * Number of attempts is now 8 (previously 5)
+    * Maximum time for retries is now 600s (previously 300s)
+    * Exponential backoff with de-correlated jitter is used
+- from version 3.1.2
+  * Support for Web Application Firewall service
+    * ``oci waf``
+  * Support for Application Performance Monitoring Configuration service
+    * ``oci apm-config``
+  * Support for Data Labeling Service Control Plane
+    * ``oci data-labeling-service``
+  * Support for Data Labeling Service Data Plane
+    * ``oci data-labeling-service-dataplane``
+  * Log Analytics service
+    * Support for partitioning/searching data via logset
+      * ``oci log-analytics storage get-log-sets-count``
+    * Support for filtering by log-set-name-contains from the existing list-log-sets API
+      * ``oci log-analytics storage list-log-sets --log-set-name-contains``
+  * Application Performance Monitoring Synthetic service
+    * Support for run once feature in monitor.
+      * ``oci apm-synthetics monitor create-rest-monitor --is-run-once``
+    * Support for enabling network data collection on the monitor by providing a network configuration
+      * ``oci apm-synthetics monitor create-browser-monitor --configuration-network-configuration``
+- from version 3.1.1
+  * Management Agent service
+    * Support for set-auto-upgradable-config and get-auto-upgradable-config
+      * ``oci management-agent agent set-auto-upgradable-config``
+      * ``oci management-agent agent get-auto-upgradable-config``
+    * Support for additional -install-type parameters for List Management Agents,
+      Images and Count operations
+      * ``oci management-agent agent list --install-type``
+      * ``oci management-agent agent summarize-agent-counts --install-type``
+      * ``oci management-agent agent-image list --install-type``
+  * Support for configuring Binlog variables in the MySQL Database service
+    * ``oci mysql configuration create --variables '{"binlogRowMetadata": "<MINIMAL|FULL>"}'``
+    * ``oci mysql configuration create --variables '{"binlog-row-value-options": "PARTIAL_JSON"}'``
+    * ``oci mysql configuration create --variables '{"binlog-transaction-compression": <true|false>}'``
+  * Support for new creation type `OPERATOR` when listing MDS backups in MySQL service
+    * ``oci mysql backup list --creation-type OPERATOR``
+  * Support for deployment upgrade operations and cancelling deployment
+    backups in Golden Gate service
+    * ``oci goldengate deployment-upgrade get|list``
+    * ``oci goldengate deployment-backup cancel``
+  * Database Migration service
+    * Support for getting job advisor reports and listing migration object types
+      * ``oci database-migration job get-advisor-report``
+      * ``oci database-migration migration-object-type-summary list``
+    * Support for advisor settings for migration create and update operations
+      * ``oci database-migration migration update --advisor-settings``
+      * ``oci database-migration migration create --advisor-settings``
+    * Support for including objects when cloning or creating a database migration job
+      * ``oci database-migration migration clone --include-objects``
+      * ``oci database-migration migration create --include-objects``
+  * Removed --display-name param from work-request operations and --compartment-id
+    param from agent update operation in Database Migration service
+    * ``oci database-migration work-request list``
+    * ``oci database-migration work-request-error list``
+    * ``oci database-migration work-request-logs list``
+    * ``oci database-migration agent update``
+- from version 3.1.0
+  * Support for One-way TLS Connections in Database service
+    * Support for creating autonomous database and clones on shared infrastructure
+      that do not require mTLS
+      * ``oci db autonomous-database create --is-mtls-connection-required false``
+    * Support for updating autonomous database and clones on shared infrastructure
+      to not require mTLS
+      * ``oci db autonomous-database update --is-mtls-connection-required false``
+    * Support to check if an autonomous database on shared infrastructure requires
+      mTLS, with added field isMtlsRequired
+      * ``oci db autonomous-database get --autonomous-database-id <ocid>``
+    * Support to get connection string profiles for an autonomous database on shared
+      infrastructure, with added field profiles in connectionStrings
+      * ``oci db autonomous-database get --autonomous-database-id <ocid>``
+  * Support for Server side encryption using object specific KMS key in Object Storage Service
+    * New parameter --opc-sse-kms-key-id has been added to the below commands for passing kms key id
+      * ``oci os object put --opc-sse-kms-key-id <target_key_id>``
+      * ``oci os object copy --opc-sse-kms-key-id <target_key_id>``
+  * Allow filter based on operating system family and sort by operating system name in JMS service
+    * ``oci jms application-usage summarize --os-family --sort-by``
+    * ``oci jms installation-usage summarize --os-family --sort-by``
+    * ``oci jms jre-usage summarize --os-family --sort-by``
+    * ``oci jms managed-instance-usage summarize --os-family --sort-by``
+  * Support for using Network Security Groups with API Gateway service
+    * ``oci api-gateway gateway create --network-security-group-ids``
+    * ``oci api-gateway gateway update --network-security-group-ids``
+  * Support for Network Security Groups in Functions service
+    * ``oci fn application create --network-security-group-ids``
+  * Support for a new parameter ``image-policy-config`` for Applications in Functions service
+    * ``oci fn application create --image-policy-config``
+    * ``oci fn application update --image-policy-config``
+  * Support for a new optional field "messageFormat" which will enable customers to
+    chose the format of alert message while creating and updating alarms in Monitoring service
+    * ``oci monitoring alarm create --message-format``
+    * ``oci monitoring alarm update --message-format``
+  * Support for DataSafe User and Security Assessment features in Data Safe service
+    * ``oci data-safe security-assessment``
+    * ``oci data-safe user-assessment``
+  * Support for upto micro-second precision for datatime parameters
+  * [BREAKING] Remove redundant request-summarized operations.
+    * ``oci jms application-usage request-summarized``
+    * ``oci jms installation-usage request-summarized``
+    * ``oci jms jre-usage request-summarized``
+    * ``oci jms managed-instance-usage request-summarized``
+  * Fixed bug in Management Dashborad service
+    * ``oci management-dashboard dashboard export``
+- from version 3.0.5
+  * Interactive command for instance principal authentication setup for
+    an existing Compute instance
+    * ``oci setup instance-principal``
+  * Support for browser-based config file creation for CLI commands that
+    are run with a nonexistent config file and api_key auth
+  * Support for --region, --config-location, and --profile-name options
+    for browser-based CLI config file creation
+    * ``oci setup bootstrap --region --config-location --profile-name``
+  * Support for Shielded Instances in the Compute service
+    * ``oci compute measured-boot-report``
+  * Support for ML Jobs in the Data Science service
+    * ``oci data-science job``
+    * ``oci data-science job-run``
+    * ``oci data-science job-shape``
+- from version 3.0.4
+  * Support for scheduled jobs in Database Management service  
+    * Create scheduled jobs for managed databases
+      * ``oci database-management job``
+    * Update a schedule job
+      * ``oci database-management job update``
+    * Get summary of job execution status
+      * ``oci database-management job-executions-status summarize``
+  *  Support for a unified way of managing both external and cloud databases in the Database Management service
+    * Create private endpoints to be used for managing Cloud databases as part of Database Management service
+      * ``oci database-management private-endpoint``
+    * List databases that are managed using specified private endpoint
+      * ``oci database-management associated-database-summary list-associated-databases``
+    * Get metrics for a specified Pluggable Database (PDB) managed by Database Management service
+      * ``oci database-management pdb-metrics``
+    * Get health metrics for a fleet of databases filtered by database deployment type and database version
+      * ``oci database-management fleet-health-metrics``
+    * Support for using Secrets for executing a SQL job in Database Management service
+      * ``oci database-management job``
+    * Filter Managed Databases by their deployment type and management option
+      * ``oci database-management managed-database``
+  * Support for enable, disable, modify in Database Management service
+    * ``oci db database enable-database-management``
+    * ``oci db database disable-database-management ``
+    * ``oci db database modify-database-management``
+  * Support for getting the detailed log content of a job in the Resource Manager service
+    * ``oci resource-manager job get-job-detailed-log-content``
+  * Support for ``--max-wait-seconds``, ``--wait-for-state``, ``--wait-interval-seconds``
+    to Management Dashboard service
+    * ``oci management-dashboard dashboard change-compartment``
+    * ``oci management-dashboard saved-search change-compartment``
+  * Support for terraform advanced options (detailed log level, refresh, and parallelism)
+    on jobs in the Resource Manager service
+    * ``oci resource-manager job create-plan-job --terraform-advanced-options``
+    * ``oci resource-manager job create-apply-job --terraform-advanced-options``
+    * ``oci resource-manager job create-destroy-job --terraform-advanced-options``
+  * Support for forced cancellation when cancelling jobs in the Resource Manager service
+    * ``oci resource-manager job cancel --is-forced``
+  * Updated fallback virtualenv url in install.py script
+  * Updated install.py for "root" user to be able to install cli on ubuntu without sudo.
+- from version  3.0.3
+  * Prompt to create a config file with a profile using API key pair authentication if a
+    CLI command is run with a nonexistent config file and api_key auth
+  * Support for Oracle Analytics Cloud and OCI Vault integration on connections in
+    Data Catalog service
+    * ``oci data-catalog data-asset parse-connection --wallet-secret-id, --wallet-secret-name``
+  * Support for critical event monitoring in the OS Management service
+    * ``oci os-management event``
+    * ``oci os-management managed-instance install-all-updates --update-type``
+    * ``oci os-management managed-instance install-all-windows-updates --update-type``
+    * ``oci os-management managed-instance-group install-all-updates``
+    * ``oci os-management scheduled-job list --is-restricted``
+    * ``oci os-management update-managed-instance-details update-managed-instance``
+    * ``oci os-management work-request-summary``
+  * Modified supported version for the following package: arrow (>=1.0.0),
+    cryptography (>=3.2.1, <=3.4.7)  
+  * Configparser has been removed from the requirements
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Aug 25 13:20:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.0.2
