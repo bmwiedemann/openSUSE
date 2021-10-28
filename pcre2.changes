@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 24 14:41:00 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.38:
+  * Following Perl's lead, \K is now locked out in lookaround 
+    assertions by default, but an option is provided to re-enable
+    the previous behaviour
+
+-------------------------------------------------------------------
 Thu May 27 12:30:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pcre2 10.37:
