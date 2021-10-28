@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 20 21:47:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.1
+  * Allow map markers to scale relative to automap zoom.
+  * Add cvars to control automap line alpha and thickness.
+  * Resolved a VM abort upon morphing while the tome of power is
+    active.
+- Remove 0001-gles-look-for-libGLESv2.so.2.patch (merged)
+
+-------------------------------------------------------------------
 Wed Sep 22 11:26:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7.0

@@ -148,4 +148,12 @@ and that one is GPL3.</comment>
     <comment>- Update to release 4.7.0</comment>
     <requestid>922201</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1041847cc0ce683e2534b22cacd219c2</srcmd5>
+    <version>4.7.1</version>
+    <time>1635438681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927866</requestid>
+  </revision>
 </revisionlist>
