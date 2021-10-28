@@ -130,4 +130,14 @@
 </comment>
     <requestid>807457</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>450fa03f96b4e5cf1b515ec35df0a101</srcmd5>
+    <version>1.1.4</version>
+    <time>1635438684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/pam_wrapper-1.1.4/CHANGELOG
+</comment>
+    <requestid>927924</requestid>
+  </revision>
 </revisionlist>
