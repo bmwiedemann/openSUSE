@@ -20,7 +20,7 @@
 %define         skip_python2  1
 %define         skip_python36 1
 Name:           python-veusz
-Version:        3.3.1
+Version:        3.4
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
@@ -65,8 +65,8 @@ Summary:        GUI scientific plotting package
 Requires:       python3-veusz = %{version}
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Requires(postun):desktop-file-utils
+Requires(postun):shared-mime-info
 Obsoletes:      veusz3 < %{version}
 Provides:       veusz3 = %{version}
 

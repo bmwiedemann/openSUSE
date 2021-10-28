@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 27 15:36:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4:
+  * Font styles can be chosen.
+  * Add setting to specify minor ticks in axis.
+  * Add setting to ignore NaN values in point plotter, rather than
+    breaking lines.
+  * Add copy and paste of images.
+  * Add embedding SVG graphics.
+  * New tight-Bezier line style.
+  * Add hide icon (eye) in settings and grey tabs as appropriate.
+  * Add \ddot latex command.
+  * Axis auto ranges (e.g. 5-95%) can now have decimals.
+  * Filename set after Load().
+  * Fix renaming 2D datasets.
+  * Fix for blank dataset output names in dataset plugin.
+  * Fix for crash in QDP plugin.
+  * Linux dark mode improvements.
+  * Font foundry name removed from SVG files.
+  * Add page colour or fill setting.
+  * Change default xy plotter marker size and fill colour for new
+    documents.
+  * Add function widget global colour setting.
+
+-------------------------------------------------------------------
 Fri Feb 19 08:04:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - veusz should need primary python3 binary
