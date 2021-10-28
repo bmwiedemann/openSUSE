@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 27 07:22:11 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211027.80b3fafb:
+  * gocd: Also run the microos stagings only once per hour
+  * miniobs: The upstream OBS project changed repo names
+  * pkglistgen: Skip repos without state
+  * gocd: Fix typo found by accident
+
+-------------------------------------------------------------------
+Wed Oct 27 07:16:55 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211027.014d1c7a:
+  * gocd: Run release package generation for stagings only once an hour
+
+-------------------------------------------------------------------
 Tue Oct 26 16:51:38 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211026.f1790c67:
