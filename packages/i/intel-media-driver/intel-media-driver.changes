@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 28 10:38:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- mention baselibs.conf as source in specfile 
+
+-------------------------------------------------------------------
+Mon Oct 25 17:15:44 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
+
+- Fix 32bit build (dependency for Steam in-home streaming hardware decode)
+
+-------------------------------------------------------------------
 Mon Oct  4 15:04:15 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in a previous changelog 

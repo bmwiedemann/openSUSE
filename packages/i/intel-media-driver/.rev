@@ -186,4 +186,14 @@ versions of libva(2)</comment>
     <comment>- fixed JIRA number in a previous changelog</comment>
     <requestid>923060</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ced1cfe25a1b36e10f7963397819cfac</srcmd5>
+    <version>21.3.4</version>
+    <time>1635438686</time>
+    <user>dimstar_suse</user>
+    <comment>- mention baselibs.conf as source in specfile 
+
+- Fix 32bit build (dependency for Steam in-home streaming hardware decode)</comment>
+    <requestid>927930</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,7 @@ URL:            https://github.com/intel/media-driver
 Source:         https://github.com/intel/media-driver/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Source2:        supplements.inc
+Source3:        baselibs.conf
 Patch1:         Werror-initialize-in-right-order.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig
 #Note this is NOT libva library version!
 BuildRequires:  pkgconfig(libva) >= 1.12.0
 BuildRequires:  pkgconfig(pciaccess)
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 i586
 %include %{S:2}
 
 %description
@@ -74,8 +75,18 @@ popd
 %define __sourcedir media-driver
 sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
 
+%ifarch i586
+sed -i -e 's/-m${ARCH}/-m32/' -e 's/${ARCH}/"32"/' media-driver/media_driver/cmake/linux/media_compile_flags_linux.cmake
+%endif
+
 %build
 srcroot=`pwd`
+
+%ifarch i586
+export CFLAGS="%optflags -D_FILE_OFFSET_BITS=64" \
+       CXXFLAGS="%optflags -D_FILE_OFFSET_BITS=64"
+%endif
+
 %cmake \
     -DBUILD_SHARED_LIBS:BOOL=OFF -DMEDIA_BUILD_FATAL_WARNINGS:BOOL=OFF
 %cmake_build
