@@ -21,43 +21,44 @@
 Name:           gmmlib
 Version:        21.2.2
 Release:        0
-Summary:        Intel(R) Graphics Memory Management Library Package
+Summary:        Intel Graphics Memory Management Library Package
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/gmmlib
 Source0:        https://github.com/intel/gmmlib/archive/intel-gmmlib-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-ExclusiveArch:  x86_64
+ExclusiveArch:  %ix86 x86_64
 
 %description
-The Intel(R) Graphics Memory Management Library provides device specific
-and buffer management for the Intel(R) Graphics Compute Runtime for
-OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
+The Intel Graphics Memory Management Library provides device specific
+and buffer management for the Intel Graphics Compute Runtime for
+OpenCL and the Intel Media Driver for VAAPI.
 
 %package -n %{libname}
-Summary:        Intel(R) Graphics Memory Management Library development package
+Summary:        Intel Graphics Memory Management Library development package
 Group:          Development/Libraries/C and C++
 
 %description -n %{libname}
-The Intel(R) Graphics Memory Management Library provides device specific
-and buffer management for the Intel(R) Graphics Compute Runtime for
-OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
+The Intel Graphics Memory Management Library provides device specific
+and buffer management for the Intel Graphics Compute Runtime for
+OpenCL and the Intel Media Driver for VAAPI.
 
 This package contains shared library.
 
 %package    devel
-Summary:        Intel(R) Graphics Memory Management Library development package
+Summary:        Intel Graphics Memory Management Library development package
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       libigdgmm-devel = %{version}
 Obsoletes:      libigdgmm-devel < %{version}
 
 %description   devel
-The Intel(R) Graphics Memory Management Library provides device specific
-and buffer management for the Intel(R) Graphics Compute Runtime for
-OpenCL(TM) and the Intel(R) Media Driver for VAAPI.
+The Intel Graphics Memory Management Library provides device specific
+and buffer management for the Intel Graphics Compute Runtime for
+OpenCL and the Intel Media Driver for VAAPI.
 
 This package provides development files.
 

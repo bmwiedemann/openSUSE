@@ -117,4 +117,12 @@
     <comment>- fixed JIRA number in previous changelog</comment>
     <requestid>923057</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>86a4dd3cf4ba40412d803342dc729952</srcmd5>
+    <version>21.2.2</version>
+    <time>1635438686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927991</requestid>
+  </revision>
 </revisionlist>

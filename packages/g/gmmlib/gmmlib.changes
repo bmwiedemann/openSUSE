@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 28 12:41:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Allow building on rpmbuild --target=i686.
+- Drop R/TM, too hard to get right.
+
+-------------------------------------------------------------------
+Thu Oct 28 10:40:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- mention baselibs.conf as source in specfile 
+
+-------------------------------------------------------------------
+Mon Oct 25 17:12:32 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
+
+- Fix 32bit build (dependency for Steam-in-home streaming)
+
+-------------------------------------------------------------------
 Mon Oct  4 14:59:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in previous changelog 
