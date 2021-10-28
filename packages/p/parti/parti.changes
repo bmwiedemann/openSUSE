@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Oct 28 12:18:03 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#12
+- split into separate parts
+- catch and log all disk accesses
+- gpt, filesystem, disk json output implemented
+- json related functions
+- el torito json output
+- add mbr json output
+- add apple partition table json output
+- updated git2log
+- refactor code and add JSON output
+- 2.0
+
+--------------------------------------------------------------------
 Fri Jan 8 14:12:27 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/parti#11

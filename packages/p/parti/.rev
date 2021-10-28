@@ -75,4 +75,23 @@
     <comment>submitted by snwint via jenkins</comment>
     <requestid>861714</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e093c7df2dac18415630195082986ff0</srcmd5>
+    <version>2.0</version>
+    <time>1635438687</time>
+    <user>dimstar_suse</user>
+    <comment>- merge gh#wfeldt/parti#12
+- split into separate parts
+- catch and log all disk accesses
+- gpt, filesystem, disk json output implemented
+- json related functions
+- el torito json output
+- add mbr json output
+- add apple partition table json output
+- updated git2log
+- refactor code and add JSON output
+- 2.0
+--------------------------------------------------------------------</comment>
+    <requestid>927946</requestid>
+  </revision>
 </revisionlist>

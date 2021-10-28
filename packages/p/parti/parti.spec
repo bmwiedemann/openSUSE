@@ -18,7 +18,7 @@
 
 
 Name:           parti
-Version:        1.20
+Version:        2.0
 Release:        0
 Summary:        Show partition table information
 License:        GPL-3.0
@@ -28,6 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(json-c)
 %if 0%{suse_version} >= 1500
 Requires:       mkisofs
 %else
