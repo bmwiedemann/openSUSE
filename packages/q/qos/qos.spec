@@ -1,8 +1,7 @@
 #
 # spec file for package qos
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright 2013 Archie L. Cobbs.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,14 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-    %define _fillupdir /var/adm/fillup-templates
-%endif
 
 %define systemdsvc  %{_usr}/lib/systemd/system
 %define servicefile %{name}.service
@@ -28,21 +22,23 @@
 %define modprobe    /sbin/modprobe
 %define tcutil      %{_sbindir}/tc
 %define iputil      /bin/ip
-
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+    %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
 Name:           qos
 Version:        1.0.1
 Release:        0
-BuildArch:      noarch
 Summary:        Simple traffic shaping utility for fighting bufferbloat
 #Source0:            https://github.com/archiecobbs/qos/archive/1.0.1.tar.gz
 License:        Apache-2.0
 Group:          System/Management
+URL:            https://github.com/archiecobbs/qos
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{servicefile}.in
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            https://github.com/archiecobbs/qos
 Requires:       iproute2
-Requires(post):  %fillup_prereq
+Requires(post): %fillup_prereq
+BuildArch:      noarch
 %systemd_requires
 
 %description
@@ -68,7 +64,7 @@ The Solution: QoS
     redirection.
 
 %prep
-%setup
+%setup -q
 
 %build
 subst()
@@ -82,6 +78,11 @@ subst()
 }
 subst < src/scripts/%{name}.sh > %{name}
 subst < %{_sourcedir}/%{servicefile}.in > %{servicefile}
+
+# Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
+%if 0%{?is_opensuse} && 0%{?sle_version} < 150300
+  sed -r -i '/^(Protect(Clock|Home|Hostname|KernelLogs)|PrivateMounts)=/d' %{servicefile}
+%endif
 
 %install
 

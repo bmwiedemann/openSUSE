@@ -46,4 +46,12 @@
     <comment>bsc#1116033</comment>
     <requestid>649083</requestid>
   </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>96496f61b3825dad71786ace23c70604</srcmd5>
+    <version>1.0.1</version>
+    <time>1635539648</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928011</requestid>
+  </revision>
 </revisionlist>
