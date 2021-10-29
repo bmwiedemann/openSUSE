@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 25 21:23:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.0
+  * Fix blocking when stopping sockets in some cases
+  * Add callback to allow user created sockets
+  * Add ability to change the connect timeout
+  * Add support for password authentication to ssh transport
+  * Update tools to allow for password authentication when using
+    ssh transport
+  * Improve error handling in ssh transport
+  * Improve error output in TCP transport
+  * Improve libssh detection when running configure
+  * Initialise structures properly in rtrclient
+  * Fix several compiler warnings
+  * Extend log messages to include prefixes when using ssh transport
+  * Fix bug that constantly called tr_recv because of ignoring
+    timeout argument when using ssh transport
+  * Apply kernel coding style in all source files
+
+-------------------------------------------------------------------
 Thu Jul 18 18:01:45 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.0

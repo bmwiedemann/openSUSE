@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3b4692b..ca59bd8 100644
+index 7e9aa98..7b1fea9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -101,14 +101,10 @@ ADD_TEST(test_trie tests/test_trie)
+@@ -112,14 +112,10 @@ ADD_TEST(test_trie tests/test_trie)
  ADD_TEST(test_ht_spkitable tests/test_ht_spkitable)
  ADD_TEST(test_ht_spkitable_locks tests/test_ht_spkitable_locks)
  
@@ -16,4 +16,4 @@ index 3b4692b..ca59bd8 100644
 -
  #install lib
  set (RTRLIB_VERSION_MAJOR 0)
- set (RTRLIB_VERSION_MINOR 7)
+ set (RTRLIB_VERSION_MINOR 8)
