@@ -682,4 +682,19 @@
     <comment> (forwarded request 924613 from alarrosa)</comment>
     <requestid>924746</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>3d28f6006577f48c1166d545d864b960</srcmd5>
+    <version>1.12.2</version>
+    <time>1635539616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.2:
+  + Install translations referenced by LANG, LANGUAGE or LC_ALL
+  + Fix error handling for the syscalls that are blocked when not
+    using --devel
+  + Improve diagnostic messages when seccomp rules cannot be
+    applied
+  + Updated translations.
+</comment>
+    <requestid>927401</requestid>
+  </revision>
 </revisionlist>
