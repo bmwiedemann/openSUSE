@@ -4,6 +4,19 @@ Documentation=http://mailgraph.schweikert.ch/
 After=mail-transfer-agent.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Environment="MAILGRAPH_OPTS=-v --statfile /var/log/mailgraph/mailgraph.stats"
 Environment="MAILGRAPH_PID=/var/run/mailgraph.pid"
 Environment="MAILGRAPH_RRD=/var/lib/mailgraph"
