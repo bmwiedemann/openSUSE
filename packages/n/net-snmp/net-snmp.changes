@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Oct 23 11:32:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix shlib-policy-name-error for SLPP boo#1191774
+
+-------------------------------------------------------------------
+Mon Oct 18 06:31:40 UTC 2021 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 5.9.1:
+  - General: Many bug fixes
+- Change to use systemd service files directly from net-snmp package.
+  Patch clean-up and renaming.
+  Add:
+  * net-snmp-5.9.1-suse-systemd-service-files.patch
+  * net-snmp-5.9.1-harden_snmpd.service.patch
+  * net-snmp-5.9.1-harden_snmptrapd.service.patch
+  * net-snmp-5.9.1-add-lustre-fs-support.patch
+  Remove:
+  * snmpd.service
+  * snmptrapd.service
+  * harden_snmpd.service.patch
+  * harden_snmptrapd.service.patch
+  * net-snmp-5.8-add-lustre-fs-support.patch
+
+-------------------------------------------------------------------
+Fri Oct 15 07:26:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_snmpd.service.patch
+  * harden_snmptrapd.service.patch
+  Modified:
+  * snmpd.service
+  * snmptrapd.service
+
+-------------------------------------------------------------------
 Sun Sep 19 18:54:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing keyring and validate source signature

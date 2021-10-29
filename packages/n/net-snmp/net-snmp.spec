@@ -27,22 +27,20 @@
 %ifnarch s390 s390x
 %define netsnmp_with_sensors 1
 %endif
-%define libname libsnmp30
+%define libname libsnmp40
 %bcond_without python2
 Name:           net-snmp
-Version:        5.9
+Version:        5.9.1
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
 Group:          Productivity/Networking/Other
 URL:            https://sourceforge.net/projects/net-snmp
 Source:         https://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz
-Source1:        snmpd.service
-Source2:        snmpd.conf
-Source3:        README.SUSE
-Source4:        snmptrapd.service
-Source5:        net-snmp.logrotate
-Source6:        test_installed
+Source1:        snmpd.conf
+Source2:        README.SUSE
+Source3:        net-snmp.logrotate
+Source4:        test_installed
 Source7:        https://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz.asc
 Source8:        http://www.net-snmp.org/net-snmp-admin.asc#/%{name}.keyring
 Source10:       snmpd.sysconfig
@@ -56,10 +54,13 @@ Patch3:         net-snmp-5.8-pie.patch
 Patch4:         net-snmp-5.8-net-snmp-config-headercheck.patch
 Patch5:         net-snmp-5.8-perl-tk-warning.patch
 Patch6:         net-snmp-5.8-velocity-mib.patch
-Patch8:         net-snmp-5.8-snmpstatus-suppress-output.patch
-Patch9:         net-snmp-5.8-fix-Makefile.PL.patch
-Patch10:        net-snmp-5.8-modern-rpm-api.patch
-Patch12:        net-snmp-5.8-add-lustre-fs-support.patch
+Patch7:         net-snmp-5.8-snmpstatus-suppress-output.patch
+Patch8:         net-snmp-5.8-fix-Makefile.PL.patch
+Patch9:         net-snmp-5.8-modern-rpm-api.patch
+Patch10:        net-snmp-5.9.1-add-lustre-fs-support.patch
+Patch11:        net-snmp-5.9.1-harden_snmpd.service.patch
+Patch12:        net-snmp-5.9.1-harden_snmptrapd.service.patch
+Patch13:        net-snmp-5.9.1-suse-systemd-service-files.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
@@ -278,13 +279,12 @@ popd
 %install
 %make_install INSTALL_PREFIX=%{buildroot}
 install -Dd %{buildroot}%{_localstatedir}/log %{buildroot}%{_localstatedir}/lib/net-snmp %{buildroot}%{_libexecdir}/net-snmp/agents %{buildroot}%{netsnmp_agentx_socket_dir_fhs}
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/snmpd.service
-install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/snmptrapd.service
-install -D -m 0600 %{SOURCE2} %{buildroot}%{_sysconfdir}/snmp/snmpd.conf
-install -m 0644 %{SOURCE3} .
-install -m 0644 %{SOURCE4} .
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/net-snmp
-install -m 0744 %{SOURCE6} testing/
+install -D -m 0644 dist/snmpd.service %{buildroot}%{_unitdir}/snmpd.service
+install -D -m 0644 dist/snmptrapd.service %{buildroot}%{_unitdir}/snmptrapd.service
+install -D -m 0600 %{SOURCE1} %{buildroot}%{_sysconfdir}/snmp/snmpd.conf
+install -m 0644 %{SOURCE2} .
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/net-snmp
+install -m 0744 %{SOURCE4} testing/
 ln -sf service %{buildroot}%{_sbindir}/rcsnmpd
 ln -sf service %{buildroot}%{_sbindir}/rcsnmptrapd
 install -m 0644 /dev/null  %{buildroot}%{netsnmp_logfile}

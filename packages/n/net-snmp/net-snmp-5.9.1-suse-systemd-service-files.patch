@@ -1,0 +1,34 @@
+diff -Nrup net-snmp-5.9.1-orig/dist/snmpd.service net-snmp-5.9.1/dist/snmpd.service
+--- net-snmp-5.9.1-orig/dist/snmpd.service	2021-10-21 15:22:42.168690298 +0000
++++ net-snmp-5.9.1/dist/snmpd.service	2021-10-21 15:23:10.579979496 +0000
+@@ -21,8 +21,11 @@ ProtectControlGroups=true
+ RestrictRealtime=true
+ # end of automatic additions 
+ # Type=notify is also supported. It should be set when snmpd.socket is not used.
+-Type=simple
+-ExecStart=/usr/sbin/snmpd -f
++Type=notify
++Environment=OPTIONS="-LS0-6d"
++EnvironmentFile=-/etc/sysconfig/snmpd
++ExecStart=/usr/sbin/snmpd $OPTIONS -f
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff -Nrup net-snmp-5.9.1-orig/dist/snmptrapd.service net-snmp-5.9.1/dist/snmptrapd.service
+--- net-snmp-5.9.1-orig/dist/snmptrapd.service	2021-10-21 15:22:42.184689898 +0000
++++ net-snmp-5.9.1/dist/snmptrapd.service	2021-10-21 15:24:50.933468801 +0000
+@@ -19,8 +19,11 @@ RestrictRealtime=true
+ # end of automatic additions 
+ # Type=notify is also supported. It should be set when snmptrapd.socket is not
+ # used.
+-Type=simple
+-ExecStart=/usr/sbin/snmptrapd -f
++Type=notify
++Environment=OPTIONS="-Lsd"
++EnvironmentFile=-/etc/sysconfig/snmptrapd
++ExecStart=/usr/sbin/snmptrapd $OPTIONS -f
++ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]
+ WantedBy=multi-user.target
