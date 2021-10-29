@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Tue Oct 26 07:19:39 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#841
+- run external programs in C.UTF-8 if codeset is UTF-8
+- 4.4.53
+
+--------------------------------------------------------------------
+Wed Oct 20 18:29:51 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.4.52
+
+--------------------------------------------------------------------
 Tue Oct 19 17:57:05 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Czech) (bsc#1149754)
