@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:27:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  Changes
+  * Relocate tests/ to test/ in source tree
+  * Relocate docs/ to doc/ in source tree
+  Fixes
+  * Prefix CFLAGS/CPPFLAGS/etc with AM_ in test/Makefile.am to
+    prevent clashing with environment. Fix imported from libuEv
+  * Replace obsolete AM_CONFIG_HEADER with AC_CONFIG_HEADERS
+
+-------------------------------------------------------------------
 Sun Mar 28 13:37:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

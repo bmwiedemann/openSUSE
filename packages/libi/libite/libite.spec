@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           libite
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        BSD function library
 License:        MIT AND X11
@@ -77,7 +77,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %postun -n libite%{sover} -p /sbin/ldconfig
 
 %files -n libite%{sover}
-%doc ChangeLog.md HACKING.md README.md
+%doc ChangeLog.md README.md
 %license LICENSE
 %{_libdir}/libite.so.%{sover}*
 
