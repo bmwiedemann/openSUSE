@@ -820,6 +820,7 @@ Summary:        Development headers for Boost.Nowide libraries
 Group:          Development/Libraries/C and C++
 Conflicts:      boost-nowide-devel-impl
 Provides:       boost-nowide-devel-impl = %{version}
+Requires:       libboost_nowide%{library_version} = %{version}
 
 %description -n libboost_nowide%{library_version}-devel
 Development headers for Boost.Nowide* boost libraries.
