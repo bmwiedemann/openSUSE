@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 27 15:15:27 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.20
+
+- Update to upstream release 1.0.20:
+  * Added: Improved cpu sensor detection for Ryzen Mobile, by @adnanpri
+  * Changed: Updated makefile
+  * Changed: Regex for Fx::uncolor() changed to string search and replace
+  * Changed: Removed all use of regex with dedicated string functions
+
+-------------------------------------------------------------------
 Thu Oct 21 16:03:46 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.19
 
 - Update to upstream release 1.0.19:
