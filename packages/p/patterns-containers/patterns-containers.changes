@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 27 08:39:30 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Only require rook on architectures it's available on
+
+-------------------------------------------------------------------
 Mon Jul  5 10:04:59 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Remove cilium from kubeadm pattern 

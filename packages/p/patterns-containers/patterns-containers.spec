@@ -62,7 +62,10 @@ Requires:       lvm2
 Requires:       metallb-k8s-yaml
 Requires:       nfs-client
 Requires:       nfs-client-provisioner-k8s-yaml
+# ExclusiveArch in the rook package
+%ifarch x86_64 aarch64
 Requires:       rook-k8s-yaml
+%endif
 Requires:       rpcbind
 Requires:       weave-k8s-yaml
 Requires:       pattern() = basesystem
