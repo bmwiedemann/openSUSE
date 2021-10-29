@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 28 14:58:44 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.6
+  - desktop#3904 [stable-3.3] Only use basic authentication if needed
+  - desktop#3931 [stable-3.3] Windows. Remove CWD from DLL search paths.
+  - desktop#3932 [stable-3.3] Remove Temporary solution for file
+    restoration issue due to set the data-fingerprint.
+
+-------------------------------------------------------------------
 Thu Sep 30 21:33:04 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.5
