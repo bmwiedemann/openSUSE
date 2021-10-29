@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 25 03:06:31 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.120
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.120     2021-10-24 12:12:57-04:00 America/New_York
+      - No changes from 0.119-TRIAL.
+  0.119     2021-10-20 18:15:24-04:00 America/New_York (TRIAL RELEASE)
+      [Changes]
+      - The `tempdir` and `tempfile` methods may be called on a Path::Tiny object
+        representing a directory, in which case the directory will be used as the
+        container for the temporary object (as if the `DIR` argument were used).
+
+-------------------------------------------------------------------
 Fri Feb  5 03:12:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.118
