@@ -76,4 +76,28 @@
     <comment>Eliminate the -lang recommends (forwarded request 767105 from dimstar)</comment>
     <requestid>767347</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>df9a1dadb35e1f910cde9b3b970a9e1f</srcmd5>
+    <version>0.2.0</version>
+    <time>1635539627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0:
+  + New Features:
+    - Migrate to gettext
+    - Port to DocBook 5
+    - Port to the Meson build system
+  + Bugfixes:
+    - Do not leak plug_name
+    - Fix gtk-doc build when srcdir != builddir
+- Add meson BuildRequires and macros following upstreams port to
+  meson buildsystem.
+- Add gtk-doc and docbook5-xsl-stylesheets BuildRequires, build
+  gtk-doc development documentation and manpages. Following this
+  split out new -doc sub-package.
+- Drop intltool, no longer needed.
+- Package COPYING as license, as this was somehow missed in the
+  past.
+- Modernize spec/cleanup. (forwarded request 927044 from iznogood)</comment>
+    <requestid>927478</requestid>
+  </revision>
 </revisionlist>

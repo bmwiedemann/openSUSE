@@ -1,7 +1,7 @@
 #
 # spec file for package colord-gtk
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           colord-gtk
-Version:        0.1.26
+Version:        0.2.0
 Release:        0
 Summary:        System Daemon for Managing Color Devices -- GTK Integration
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
-URL:            http://colord.hughsie.com/
-Source0:        http://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
+URL:            https://www.freedesktop.org/software/colord
+Source0:        %{url}/releases/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-BuildRequires:  intltool >= 0.35.0
+
+BuildRequires:  docbook5-xsl-stylesheets
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  xsltproc
@@ -58,7 +61,7 @@ It is used by gnome-color-manager for system integration and use when
 there are no users logged in.
 
 %package -n typelib-1_0-ColordGtk-1_0
-Summary:        System Daemon for Managing Color Devices -- GTK Integration Introspection bindings
+Summary:        GTK Integration Introspection bindings for colord-gtk
 Group:          System/Libraries
 
 %description -n typelib-1_0-ColordGtk-1_0
@@ -80,20 +83,28 @@ colord is a system activated daemon that maps devices to color profiles.
 It is used by gnome-color-manager for system integration and use when
 there are no users logged in.
 
+%package doc
+Summary:        Development Documentation for colord-gtk
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+This package contains development documentation for the colord-gtk packages.
+
+
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure \
-   --disable-static \
-   --enable-vala
-make %{?_smp_mflags}
+%meson \
+	-Dvapi=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 
 %post -n libcolord-gtk1 -p /sbin/ldconfig
@@ -103,8 +114,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %{_bindir}/cd-convert
+%{_mandir}/man1/cd-convert.1%{ext_man}
 
 %files -n libcolord-gtk1
+%license COPYING
 %{_libdir}/libcolord-gtk.so.*
 
 %files -n typelib-1_0-ColordGtk-1_0
@@ -117,5 +130,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/colord-gtk.pc
 %{_datadir}/gir-1.0/ColordGtk-1.0.gir
 %{_datadir}/vala/vapi/colord-gtk.vapi
+%{_datadir}/vala/vapi/colord-gtk.deps
+
+%files doc
+%doc AUTHORS NEWS README
+%{_datadir}/gtk-doc/html/%{name}
 
 %changelog
