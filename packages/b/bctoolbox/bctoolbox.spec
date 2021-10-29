@@ -18,13 +18,13 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.0.35
+Version:        5.0.36
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
-Source:         https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bctoolbox-fix-pkgconfig.patch
 Patch0:         bctoolbox-fix-pkgconfig.patch
@@ -43,6 +43,7 @@ belle-sip, mediastreamer2 and linphone.
 
 %package devel
 Summary:        Development files for %{name}, a utility library for linphone/belle-sip/etc
+Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       lib%{name}-tester%{sover} = %{version}
@@ -56,6 +57,7 @@ This package contains development files.
 
 %package -n lib%{name}%{sover}
 Summary:        Utility library for software from Belledonne Communications
+Group:          Development/Libraries/C and C++
 
 %description -n lib%{name}%{sover}
 Utilities library used by Belledonne Communications softwares like
@@ -65,6 +67,7 @@ This package the contains shared library.
 
 %package -n lib%{name}-tester%{sover}
 Summary:        Utility library for software from Belledonne Communications
+Group:          Development/Libraries/C and C++
 
 %description -n lib%{name}-tester%{sover}
 Utilities library used by Belledonne Communications softwares like
@@ -78,11 +81,6 @@ This package the contains shared library for testing component.
 %patch1 -p1
 
 %build
-# workaround for building with GCC11, issue opened upstream https://github.com/BelledonneCommunications/bctoolbox/issues/13
-%if 0%{?suse_version} > 1500
-export CFLAGS="%(echo %{optflags}) -Wno-array-parameter"
-export CXXFLAGS="$CFLAGS"
-%endif
 %cmake -DENABLE_STATIC=OFF
 %cmake_build
 
