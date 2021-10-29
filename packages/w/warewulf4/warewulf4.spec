@@ -26,7 +26,7 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.2.0rc1
+Version:        4.2.0
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
@@ -57,7 +57,9 @@ Requires:       tftp
 Warewulf v4 combines ultra scalability, flexibility, and simplicity with being light weight, non-intrusive, and a great tool for scientists and seasoned system administrators alike. Warewulf empowers you to scalably and easily manage thousands of compute resources.
 
 %package overlay
-Requires(pre):       %{name}
+# Smells like a circular dependcy, but needed in this case as the
+# files belong to the warewulf user
+Requires(pre):  %{name}
 Summary:        Default overlay for warewulf
 Group:          Productivity/Clustering/Computing
 
@@ -121,6 +123,9 @@ install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-us
 %{_sysusersdir}/system-user-%{name}.conf
 
 %files overlay
-%{_localstatedir}/lib/warewulf/overlays
+# The configuration files in this location are for the compute
+# nodes, so when modified we do not replace them as sensible
+# admin will read the changelog
+%config(noreplace) %{_localstatedir}/lib/warewulf/overlays
 
 %changelog
