@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 24 17:56:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.1:
+  + Fix support for older versions of Vala.
+  + Fix trying to build sysprof as a subproject on Windows.
+  + Fix missing `extern "C"` in an installed header.
+  + Improve `gssapi` dependency handling.
+  + Fix `libsoup-doc` build target.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct  2 01:25:51 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add libsoup2-extend-test-cert.patch to fix tests after 2027 (boo#1102840)

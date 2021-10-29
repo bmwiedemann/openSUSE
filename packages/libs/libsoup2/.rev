@@ -15,4 +15,18 @@
     <comment>Add libsoup2-extend-test-cert.patch to fix tests after 2027 (boo#1102840) (forwarded request 922724 from bmwiedemann)</comment>
     <requestid>923218</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fff315c0f09403b7dd7ab89cea8e37d2</srcmd5>
+    <version>2.74.1</version>
+    <time>1635539624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.1:
+  + Fix support for older versions of Vala.
+  + Fix trying to build sysprof as a subproject on Windows.
+  + Fix missing `extern &quot;C&quot;` in an installed header.
+  + Improve `gssapi` dependency handling.
+  + Fix `libsoup-doc` build target.
+  + Updated translations. (forwarded request 927207 from iznogood)</comment>
+    <requestid>927471</requestid>
+  </revision>
 </revisionlist>

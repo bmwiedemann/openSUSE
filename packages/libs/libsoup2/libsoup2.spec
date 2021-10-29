@@ -1,5 +1,5 @@
 #
-# spec file for package libsoup
+# spec file for package libsoup2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 Name:           libsoup2
 %define _name libsoup
-Version:        2.74.0
+Version:        2.74.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
