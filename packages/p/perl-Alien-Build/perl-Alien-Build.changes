@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 21 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.44
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.44      2021-10-20 17:51:21 -0600
+    - Fix bug in Alien::Build::Log::Abbreviate (gh#286 kiwiroy++)
+
+  2.43_01   2021-09-30 10:10:07 -0600
+    - Fix test for Decode::DirListingFtpCopy which was incorrectly testing
+      Decode::DirListing (gh#285, gh#286)
+
+-------------------------------------------------------------------
 Thu Sep 30 03:06:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.42
