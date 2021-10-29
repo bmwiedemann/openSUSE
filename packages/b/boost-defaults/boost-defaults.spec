@@ -493,6 +493,9 @@ cp %{SOURCE1} .
 %files -n libboost_mpi_python3-devel
 %doc README
 
+%files -n libboost_nowide-devel
+%doc README
+
 %files -n python3-boost_parallel_mpi
 %doc README
 
