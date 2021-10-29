@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 29 10:30:10 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.321c5259:
+  * gocd: Experiment with a special sysctl for container cleanup
+
+-------------------------------------------------------------------
 Wed Oct 27 07:22:11 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211027.80b3fafb:
