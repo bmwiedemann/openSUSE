@@ -1,4 +1,325 @@
 -------------------------------------------------------------------
+Tue Oct 26 07:38:52 UTC 2021 - jlee@suse.com
+
+- Removed patches which are merged to mainline: 
+    ovmf-bsc1186151-fix-iscsi-overflows.patch
+    ovmf-xen-relocate-shared_info_page-map.patch
+- Removed patches because replaced:
+    ovmf-fix-xen-s3-detection.patch -> ovmf-OvmfPkg-OvmfXen-set-PcdAcpiS3Enable-at-initializatio.patch
+    ovmf-xen-add-qemu-kernel-loader-fs.patch -> ovmf-OvmfPkg-OvmfXen-add-QemuKernelLoaderFsDxe.patch
+
+-------------------------------------------------------------------
+Fri Oct 22 07:09:41 UTC 2021 - jlee@suse.com
+
+- Removed edk2-stable202105.tar.gz because we updated to edk2-stable202108 
+
+-------------------------------------------------------------------
+Thu Oct 14 03:24:33 UTC 2021 - jlee@suse.com
+
+- Update to edk2-stable202108
+    - Features (https://github.com/tianocore/edk2/releases):
+	OvmfPkg: remove Xen support from OvmfPkg*.dsc, in favor of OvmfXen.dsc
+	Add CLANGDWARF toolchain for generating ELF+DWARF
+	NetworkPkg/IScsiDxe: remotely exploitable buffer overflows
+	NetworkPkg/IScsiDxe: add sha256 support to CHAP
+	Create header files and multiple Hobs for Universal Payload
+	Add search feature in config editor
+	Add additional build option to treat Dynamic Pcd as DynamicEx Pcd
+	Add a new MicrocodeLib for microcode loading
+	Implement key enrolment from default key variables
+	StandaloneMm support for 32bit Arm machines
+	Add firmware support for Cloud Hypervisor on arm64
+	Support architecture-specific openssl acceleration
+	Support measured AMD SEV boot with kernel/initrd/cmdline
+	Add ACPI 6.4 header
+	Add new BootDiscoveryPolicyUiLib
+    - Patches (git log --oneline --reverse edk2-stable202105~..edk2-stable202108):
+	e1999b264f ArmPkg/ArmGic: Fix maximum number of interrupts in GICv3
+	b8ed8c0fb2 Maintainers.txt: add Sami Mujawar as top-level ArmVirtPkg reviewer
+	dbc22a1785 UefiCpuPkg/MpInitLib: Allocate a separate SEV-ES AP reset stack area
+	0095070e70 MdePkg/Register/Amd: expand the SEV MSR to include the SNP definition
+	f828fc9876 MdePkg/Register/Amd: realign macros with more space for future expansion
+	34e16ff883 MdePkg/Register/Amd: define GHCB macros for hypervisor feature detection
+	f0983b2074 MdePkg/Register/Amd: define GHCB macro for Register GPA structure
+	4665fa6503 MdePkg/Register/Amd: define GHCB macro for the Page State Change
+	dfd41aef78 MdePkg/Register/Amd: define GHCB macros for SNP AP creation
+	5a7cbd54a1 MdePkg/BaseLib: add support for PVALIDATE instruction
+	2b5b2ff04d MdePkg/BaseLib: add support for RMPADJUST instruction
+	901a9bfc3a OvmfPkg/BaseMemEncryptSevLib: introduce MemEncryptSevClearMmioPageEncMask()
+	c394fa4c9e OvmfPkg/AmdSevDxe: use MemEncryptSevClearMmioPageEncMask() to clear EncMask
+	8ee4e52ba8 OvmfPkg/QemuFlashFvbServicesRuntimeDxe: use Mmio helper to clear enc mask
+	b4a8de5d27 OvmfPkg/TpmMmioSevDecryptPei: use MemEncryptSevClearMmioPageEncMask()
+	adfa3327d4 OvmfPkg/BaseMemEncryptSevLib: remove Flush parameter
+	fe5da0927a IntelFsp2WrapperPkg: Remove microcode related PCDs
+	d3ff5dbe1d MdePkg: MmControl: Fix function and structure definition mismatches
+	197e27c90a MdePkg: Add new 16550-compatible Serial Port Subtypes to DBG2
+	fdf3666f01 MdePkg: Update DBG2 and SPCR header with NVIDIA 16550 Subtype
+	b233eb1849 EmbeddedPkg/RealTimeClockRuntimeDxe: Improve GetWakeupTime
+	b5379899b3 MdeModulePkg/Xhci: Fix TRT when data length is 0
+	039e07f626 MdePkg/MdeModulePkg: Move AML_NAME_SEG_SIZE definition
+	1f515342d8 DynamicTablesPkg: Use AML_NAME_SEG_SIZE define
+	75e9154f81 OvmfPkg/VirtioMmioDeviceLib: Add EFIAPI to VirtioMmioSetQueueAddress
+	c410ad4da4 MdePkg/BaseLib: Fix AsmReadSs() with GCC toolchain
+	c1aa3bab12 BaseTools: Add ClangBase.lds for CLANG8 tool chain with max-page-size
+	c6b872c6ab BaseTools GenFw: Support CLANG8ELF with conversion ELF to PE/COFF image
+	cf9959adff BaseTools: Update build_rule to skip CLANG resource section generation
+	4b56ad2049 BaseTools: Add new CLANG8ELF tool chain for new LLVM/CLANG8
+	e1636fe18f BaseTools: Update ClangBase.lds to keep dynamic section
+	924c2b847f BaseTools: Change CLANG8ELF to CLANGDWARF
+	e25566cd2b OvmfPkg: remove the Xen drivers from the IA32, IA32X64, and X64 platforms
+	aa7f19f480 OvmfPkg: remove the Xen drivers from the AmdSev platform
+	7bc04a75a7 OvmfPkg: switch IA32, IA32X64, X64 to the fw_cfg-only ACPI platform driver
+	d697037446 OvmfPkg: switch the AmdSev platform to the fw_cfg-only ACPI platform driver
+	ae4aa4a346 OvmfPkg/README: bump minimum QEMU version to 1.7.1, machine types to 1.7
+	2a85d9b07e OvmfPkg/AcpiPlatformDxe: fix header file warts
+	180f1908b3 OvmfPkg/AcpiPlatformDxe: sort #includes and [LibraryClasses]
+	6d1e56e715 OvmfPkg/AcpiPlatformDxe/QemuLoader.h: remove QemuFwCfgLib class dependency
+	747b1ef725 OvmfPkg/AcpiPlatformDxe: move "QemuLoader.h" to IndustryStandard
+	cc302b799e OvmfPkg/AcpiPlatformDxe: consolidate #includes and [LibraryClasses]
+	c9bba52fc7 OvmfPkg/XenAcpiPlatformDxe: create from AcpiPlatformDxe
+	a31fcb5096 OvmfPkg/AcpiPlatformDxe: remove the "AcpiPlatformDxe.inf" driver
+	4115840c28 OvmfPkg/XenAcpiPlatformDxe: remove the QEMU ACPI linker/loader client
+	d6ba8aa6ef OvmfPkg/XenAcpiPlatformDxe: remove QEMU fw_cfg dependency
+	3f975ee570 OvmfPkg/XenAcpiPlatformDxe: remove the InstallAcpiTable() helper function
+	8f8d3d90c5 OvmfPkg/XenAcpiPlatformDxe: remove OVMF's built-in ACPI tables
+	4174c5c787 OvmfPkg/Bhyve/AcpiPlatformDxe: fix file path typo in comment
+	d491c88a0c OvmfPkg/AcpiTables: remove unused module
+	e7641171b6 OvmfPkg/OvmfXen: make "PcdPciDisableBusEnumeration" Fixed-at-Build
+	3357ac7380 OvmfPkg/XenAcpiPlatformDxe: remove delayed ACPI table installation
+	d06eb2d1d9 OvmfPkg/PlatformPei: remove Xen support
+	8899e3fe6a OvmfPkg: drop PcdPciDisableBusEnumeration from the IA32, IA32X64, X64 DSCs
+	2833589ad0 OvmfPkg: drop PcdPciDisableBusEnumeration from the AmdSev platform
+	e43cca74ad OvmfPkg/Bhyve: make "PcdPciDisableBusEnumeration" Fixed-at-Build
+	b005f9f1f5 OvmfPkg/OvmfXen: remove IncompatiblePciDeviceSupport DXE driver
+	8c8f886f27 OvmfPkg/Bhyve: remove IncompatiblePciDeviceSupport DXE driver
+	984c93ece3 OvmfPkg/IncompatiblePciDeviceSupportDxe: remove PcdPciDisableBusEnumeration
+	32fef03563 OvmfPkg/PciHostBridgeLib: consolidate #includes and INF file sections
+	e120c962f5 OvmfPkg/PciHostBridgeLibScan: create from PciHostBridgeLib
+	c2f24ba321 OvmfPkg/Bhyve: consume PciHostBridgeLibScan
+	307763c3da OvmfPkg/OvmfXen: consume PciHostBridgeLibScan
+	242678da2a OvmfPkg/PciHostBridgeLib: remove Bhyve and Xen support
+	33d4f3e39e OvmfPkg/PciHostBridgeLibScan: remove QEMU (fw_cfg) support
+	4c81178cf0 OvmfPkg/PciHostBridgeLibScan: remove PcdOvmfHostBridgePciDevId
+	8af38170b5 OvmfPkg/PciHostBridgeLibScan: clean up file names and file-top comments
+	7e25086a00 OvmfPkg/SmbiosPlatformDxe: clean up #includes and INF
+	5072593738 OvmfPkg/SmbiosPlatformDxe: return EFI_NOT_FOUND if there is no SMBIOS data
+	4db374562f OvmfPkg/SmbiosPlatformDxe: locate SMBIOS protocol in InstallAllStructures()
+	a8ab14424e OvmfPkg/SmbiosPlatformDxe: split GetXenSmbiosTables() decl. to new header
+	9d84e74ca0 OvmfPkg/SmbiosPlatformDxe: declare InstallAllStructures() in header file
+	d4a8aaee73 OvmfPkg/SmbiosPlatformDxe: create Xen-specific module INF file
+	ce270905bf OvmfPkg/SmbiosPlatformDxe: split Xen entry point from QEMU entry point
+	51adb689e1 OvmfPkg: restrict XenPlatformLib to BdsDxe in the IA32, IA32X64, X64 DSCs
+	ddb3fdbef3 BaseTools GenFw: Fix regression issue to convert the image to ACPI data
+	558d83ab1a OvmfPkg/README: Fix typo in README
+	beb443fde0 ShellPkg: Fix typo
+	702ba436ed OvmfPkg/PlatformCI: bump QEMU choco package version to 2021.5.5
+	83761337ec NetworkPkg/IScsiDxe: wrap IScsiCHAP source files to 80 characters
+	29cab43bb7 NetworkPkg/IScsiDxe: simplify "ISCSI_CHAP_AUTH_DATA.InChallenge" size
+	95616b8661 NetworkPkg/IScsiDxe: clean up "ISCSI_CHAP_AUTH_DATA.OutChallengeLength"
+	e8f28b09e6 NetworkPkg/IScsiDxe: clean up library class dependencies
+	cf01b2dc8f NetworkPkg/IScsiDxe: fix potential integer overflow in IScsiBinToHex()
+	d90fff40cb NetworkPkg/IScsiDxe: assert that IScsiBinToHex() always succeeds
+	dc469f1371 NetworkPkg/IScsiDxe: reformat IScsiHexToBin() leading comment block
+	47b76780b4 NetworkPkg/IScsiDxe: fix IScsiHexToBin() hex parsing
+	54e90edaed NetworkPkg/IScsiDxe: fix IScsiHexToBin() buffer overflow
+	b8649cf2a3 NetworkPkg/IScsiDxe: check IScsiHexToBin() return values
+	288bd74a22 Pytool: SpellCheck: Fix incorrect file mask across package matrices
+	1ad794b627 MdeModulePkg: Fix device path when boot manager menu is from different FV
+	11b1c1d4b9 SecurityPkg: TcgStorageOpalLib: Initialize SupportedAttributes parameter.
+	d58016b768 UefiPayloadPkg: Get platform specific logic via protocol for BDS
+	d8c18ba3f4 MdeModulePkg: Add Universal Payload general definition header file
+	b597b6e24c MdeModulePkg: Add new structure for the PCI Root Bridge Info Hob
+	99de2e7e03 UefiPayloadPkg: UefiPayload retrieve PCI root bridge from Guid Hob
+	9d53e01efe MdeModulePkg: Add new structure for the Universal Payload SMBios Table Hob
+	70e8c9c3bc MdeModulePkg/Universal/SmbiosDxe: Scan for existing tables
+	302a8f353c UefiPayloadPkg: Create gUniversalPayloadSmbiosTableGuid Hob
+	75293330ea MdeModulePkg: Add new structure for the Universal Payload ACPI Table Hob
+	761329ee27 MdeModulePkg/ACPI: Install ACPI table from HOB.
+	8c0d678063 UefiPayloadPkg: Create gUniversalPayloadAcpiTableGuid Hob
+	fa24b6ed26 UefiPayloadPkg: Use DynamicEx instead of Dynamic to pass PCD across binary
+	c511426abe MdeModulePkg/UniversalPayload: Add definition for extra info in payload
+	fe471d4a57 UefiPayloadPkg: Add PayloadLoaderPeim which can load ELF payload
+	ab2b389e7a PeiCore: Remove assertion when failing to load PE image
+	1b380aa603 BaseTools GenFw: Keep read only alloc section as text when convert ELF
+	9cf9de668f StandaloneMmPkg: Core: Spelling error in comment
+	610385fa3b ArmPlatformPkg: SpellCheck: Switch spellcheck CI to AuditOnly
+	04ddd1271e ArmPkg: SpellCheck: Update valid acronyms in ExtendedWords
+	cdf7544703 MdeModulePkg PciBusDxe: Increase the width of data read during oprom shadow
+	2847c72fda Maintainers.txt: Add Reviewers for Universal Payload definitions
+	1162ae8297 Maintainers.txt: Add reviewers for ACPI and SMBIOS modules
+	a63914d3f6 ArmPkg: Move cache defs used in Universal/Smbios into ArmCache.h
+	6cfeeb71c4 UefiCpuPkg/CpuCommonFeaturesLib: Correct the CPU location check
+	d9a7612f8d MdeModulePkg/BdsDxe: Update BdsEntry to use Variable Policy
+	5959879e92 ArmVirtPkg: Add PCIe host bridge utility lib for ArmVirtPkg
+	4dda0f7ab4 ArmVirtPkg: Enable PCIe support for Kvmtool
+	1e5e58d39b UefiPayloadPkg/UefiPayloadEntry: Improve bootloader memrange parsing
+	7471751a4d UefiPayloadPkg/UefiPayloadEntry: Remove 4GB memory WA
+	20ca528828 CryptoPkg: BaseCryptLib: Update Salt length requirement for RSA-PSS scheme.
+	18b2272e4d Azurepipeline: SpellCheck: Enforce Node dependency to use version 14.x
+	eba32695ee CryptoPkg/BaseCryptLib: Enabled CryptSha512 for Smm/Runtime drivers
+	12e34cd2f7 OvmfPkg/Bhyve: clean up TPM_ENABLE remnants
+	82f727c4af UefiPayloadPkg: Add HobLib for UniversalPayload
+	ea0bd5f6a7 MdeModulePkg: Add new structure for the Universal Payload Serial Port Info
+	a75c029f60 UefiPayloadPkg: Add a separate PlatformHookLib for Universal Payload
+	d63595c3c9 UefiPayloadPkg: Update the function definition of HobConstructor
+	0ff6de9358 UefiPayloadPkg: Create separate Payload Entry for UniversalPayload
+	b208d37c73 UefiPayloadPkg: Get and enter DxeCore for Universal Payload
+	27cb64fffc UefiPayloadPkg: Fix up UPL Pcd database
+	6b69f73b59 UefiPayloadPkg: Include UniversalPayLoad modules in UefiPayloadPkg.dsc
+	86e6948cfb UefiPayloadPkg: Remove assert when reserve MMIO/IO resource for devices
+	2db0ed93ff UefiPayloadPkg: Add macro to enable and disable some drivers
+	3eb72b308a UefiPayloadPkg: Add PcdInstallAcpiSdtProtocol feature in UefiPayloadPkg
+	caa139fe17 UefiPayloadPkg: Add PcdResetOnMemoryTypeInformationChange in UefiPayloadPkg
+	8efd912baf UefiPayloadPkg: Add new structure for BootManagerMenuFile HOB
+	19a541d70e UefiPayloadPkg: consume the BootManagerMenuFile HOB
+	333a866106 BaseTools: Remove check for Split.exe in toolset.bat
+	f0a3f6d9c3 BaseTools: Fix spelling of "overwrite" and "overwriting" in toolset.bat
+	17143c4837 BaseTools: Reset ERRORLEVEL in toolsetup.bat after edk2basetools check
+	abfff7c45d BaseTools GenFw: Add support for RISCV GOT/PLT relocations
+	27b8a52957 MdePkg: MmConfiguration: Move definition of EFI_MM_RESERVED_MMRAM_REGION
+	d1fc3d7ef3 MdePkg: MmConfiguration: Added definition of MM Configuration PPI
+	5a2e030f73 OvmfPkg/GenericQemuLoadImageLib: plug cmdline blob leak on success
+	932449710c OvmfPkg/X86QemuLoadImageLib: plug cmdline blob leak on success
+	24b0e9d128 Revert "OvmfPkg/QemuKernelLoaderFsDxe: don't expose kernel command line"
+	cf20302474 OvmfPkg/GenericQemuLoadImageLib: Read cmdline from QemuKernelLoaderFs
+	9421f5ab8d OvmfPkg/X86QemuLoadImageLib: State fw_cfg dependency in file header
+	b37cfdd280 OvmfPkg/XenPlatformPei: Relocate shared_info page mapping
+	55dee4947b MdePkg : Add IPMI Macro and Structure Defintions to resolve build errors
+	580b11201e IntelFsp2Pkg: Add Config Editor tool support
+	939ed3a592 UefiPayloadPkg/PayloadLoader: Fix bug in locating relocation section
+	3cde0d553d UefiPayloadPkg/PayloadLoader: Remove assertion
+	49eeda113a NetworkPkg/IScsiDxe: re-set session-level authentication state before login
+	7eba9f698e NetworkPkg/IScsiDxe: add horizontal whitespace to IScsiCHAP files
+	7b6c2b2a26 NetworkPkg/IScsiDxe: distinguish "maximum" and "selected" CHAP digest sizes
+	903ce1d8f8 NetworkPkg/IScsiDxe: support multiple hash algorithms for CHAP
+	47fea2abcb NetworkPkg/IScsiDxe: support SHA256 in CHAP
+	bb33c27fbe NetworkPkg: introduce the NETWORK_ISCSI_MD5_ENABLE feature test macro
+	8697dc60cc Maintainers.txt: Update Maintainers and reviewers for UefiPayloadPkg
+	fea7901dba UefiPayloadPkg: Fix the build failure
+	1e0c441c92 OvmfPkg/Bhyve: add USB support
+	44ced03798 OvmfPkg/Bhyve: use static PCI32Base address
+	b3db0cb1f8 MdeModulePkg/PartitionDxe: Ignore PMBR BootIndicator per UEFI spec
+	0a6b303dce UefiCpuPkg/ExceptionLib: Conditionally clear shadow stack token busy bit
+	d10e058016 MdeModulePkg/RegularExpressionDxe: Fix memory assert in FreePool()
+	4c051c2c65 MdeModulePkg: Update YAML file to fix CI error
+	31fcee6d99 ArmVirtPkg: Add PlatformHasAcpiDtDxe for Cloud Hypervisor
+	c28fc8ab3b ArmVirtPkg: Install Acpi tables for Cloud Hypervisor
+	0e3b6bd0ee ArmVirtPkg: support Cloud Hypervisor in edk2
+	b560e9d9b6 IntelFsp2Pkg: PatchFv parseInfFile function modification
+	f47c4676dd Pytool: SpellCheck: Defer path expansion in cspell parameters
+	cc89d245f9 Maintainers.txt: remove Laszlo Ersek's entries
+	84af6ea320 BaseTools/Scripts: Ignore Mergify merge commits in PatchCheck.py
+	b491eace37 .mergify: Simplify Mergify rules using GitHub status checks
+	5ef08a49e3 .azurepipelines: Remove FINISHED and FAILED states
+	ad1009ec62 MdePkg/Include: Add STATIC_ASSERT for L'' and L"" strings
+	3de3c24755 BaseTools: Remove non-ascii character of StructurePcd comment
+	40a9066439 BaseTools: Enable the flag to treat dynamic pcd as dynamicEx
+	22fe311bd2 .pytool/EccCheck: Locate BaseTools dir with EDK_TOOLS_PATH
+	a050c599df .pytool/EccCheck: Rename edk2_path as workspace_path
+	50672d2692 .pytool/EccCheck: Check ecc_csv exists
+	fb5b6220a9 .pytool/EccCheck: Set PACKAGES_PATH env var in Ecc
+	fda5226aa3 UefiPayloadPkg: Dump hob information from boot loader
+	7d748705b1 MdeModulePkg: Change the PldHeader to Header in ExtraData.h
+	9bf4aee734 UefiPayloadPkg: Assign the length of UniversalPayload ExtraData
+	d0b6596b8e MdeModulePkg/RamDiskDxe: Init list head before registering RamDisk protocol
+	91f5d3b410 IntelFsp2Pkg: BaseCacheLib EfiProgramMtrr MtrrNumber Should be UINT32
+	be282b1493 UefiPayloadPkg: Add PCD_DYNAMIC_AS_DYNAMICEX and set to True
+	cac83b6f3b IntelFsp2Pkg: Add search function for Config Editor
+	4bac086e8e UefiPayloadPkg: Add FV Guid for DXEFV and PLDFV
+	fddb8d24ec ArmPlatformPkg/Scripts: Infer dll load address from console output
+	885efcd3f9 MdePkg/Include: Smbios Specification 3.4.0 changes
+	83b43c4cb1 MdeModulePkg PCD: Print which PCD was unable to be found
+	c32c5911c4 BaseTools GenFw: Add support for R_RISCV_PCREL_LO12_S relocation
+	097aeeb119 MdePkg/BaseLib: Add MemoryFence implementation for RiscV64
+	391cffcb61 MdeModulePkg PiSmmCore: Change MemoryAttributes message to DEBUG_VERBOSE
+	8781b143de BaseTools/Scripts: Fix GetMaintainer.py line endings
+	28ef05ce10 BaseTools/Scripts: Allow GitHub ID at end Maintainers.txt lines
+	2f5ad3f451 Maintainers.txt: Add GitHub IDs
+	332632abf3 Maintainers.txt: Add Jiewen Yao as OvmfPkg Maintainer
+	4d28a1c2fd BaseTools: Remove COMMON section from the GCC discard list
+	878a92a887 CryptoPkg/OpensslLib: Add native instruction support for X64
+	147f34b56c CryptoPkg/OpensslLib: Commit the auto-generated assembly files for X64
+	ac70e71b1f NetworkPkg: Making the HTTP IO timeout value programmable with PCD
+	ab796d3e2a NetworkPkg: Add HTTP Additional Event Notifications
+	b461d67639 OvmfPkg/ResetVector: move SEV specific code in a separate file
+	7f05102f65 OvmfPkg/ResetVector: add the macro to invoke MSR protocol based VMGEXIT
+	dc485c556d OvmfPkg/ResetVector: add the macro to request guest termination
+	f05eb2dfe5 OvmfPkg/AmdSev/SecretDxe: fix header comment to generic naming
+	35e267cb34 OvmfPkg/AmdSev: use GenericQemuLoadImageLib in AmdSev builds
+	a26a08dc1f OvmfPkg: PlatformBootManagerLibGrub: Allow executing kernel via fw_cfg
+	0cb48007f7 OvmfPkg: add library class BlobVerifierLib with null implementation
+	c73e31f54d OvmfPkg: add BlobVerifierLibNull to DSC
+	6bf5580a3d ArmVirtPkg: add BlobVerifierLibNull to DSC
+	d10ad8444f OvmfPkg/QemuKernelLoaderFsDxe: call VerifyBlob after fetch from fw_cfg
+	5ace477f34 OvmfPkg/AmdSev/SecretPei: build hob for full page
+	0deeab36d1 OvmfPkg/AmdSev: reserve MEMFD space for for firmware config hashes
+	385b9d80a0 OvmfPkg/AmdSev: add BlobVerifierLibSevHashes
+	514b3aa08e OvmfPkg/AmdSev: Enforce hash verification of kernel blobs
+	8e6bb64fe4 EmbeddedPkg/VirtualRealTimeClockLib: Fix SetTime issues
+	610bcc69ed ArmVirtPkg: Remove meaningless comment
+	3445058aea MdeModulePkg/CapsuleApp: Fix typo in error message
+	2e1fb41339 build: Fix python3.10 threading DeprecationWarnings
+	0b1b0a9674 python: Replace distutils.utils.split_quotes with shlex.split
+	fc50df0d8e BaseTools: Drop check for distutils.utils
+	03e77558d4 BaseTools: use shutil.copyfile instead shutil.copy2
+	2b47aaecef MdeModulePkg: Add BootDiscoveryPolicyUiLib.
+	bb806a6e88 SecurityPkg: Create SecureBootVariableLib.
+	9732659698 SecurityPkg: Create library for enrolling Secure Boot variables.
+	12a4d0cb9d ArmVirtPkg: add SecureBootVariableLib class resolution
+	3d427c5f83 OvmfPkg: add SecureBootVariableLib class resolution
+	b926956418 EmulatorPkg: add SecureBootVariableLib class resolution
+	db959018b6 SecurityPkg: Remove duplicated functions from SecureBootConfigDxe.
+	a97e9e327e ArmPlatformPkg: Create include file for default key content.
+	94e065582b SecurityPkg: Add SecureBootDefaultKeysDxe driver
+	19107590b6 SecurityPkg: Add EnrollFromDefaultKeys application.
+	45f3dd2ce9 SecurityPkg: Add new modules to Security package.
+	55266a9b8a SecurityPkg: Add option to reset secure boot keys.
+	6355287206 Maintainers.txt: Add new maintainer and reviewer to EmbeddedPkg/
+	9abc60f9f7 EmbeddedPkg/libfdt: Add strcmp and strncpy to libfdt_env.h
+	0856cdc89e MdePkg: add definition of LINUX_EFI_INITRD_MEDIA_GUID
+	97fdcbda4e OvmfPkg: Remove Initrd LINUX_EFI_INITRD_MEDIA_GUID
+	4de77ae989 UefiCpuPkg/CpuCacheInfoLib: Sort CpuCacheInfo array
+	3c6107758b SecurityPkg: Fix GetSupportedAndActivePcrs counter calculation
+	b40bdd6ecd UefiPayloadPkg: Add Fixed PCDs and use Macro to define the default value.
+	d497eace3b UefiPayloadPkg: define some PCD as DynamicEX PCD
+	ac6e5d6b41 UefiPayloadPkg: change the default value of some PCDs.
+	672bd1c711 UefiPayloadPkg: Add a macro to enable or diable the serial driver.
+	d02dbb53cd UefiPayloadPkg: Fix the non-ascii character in UniversalPayloadEntry.c
+	a7ddc7847c RedfishPkg/JsonLib: Add more JsonLib functions
+	5963ce5d28 MdePkg: Add ACPI 6.4 header file
+	4d7137f261 MdePkg: Increment FADT version
+	d910e83299 MdePkg: Rename SBSA Generic Watchdog to Arm Generic Watchdog
+	ad3dea9861 MdePkg: Update PMTT to ACPI 6.4
+	ced4cb7609 MdePkg: Add SPA Location Cookie field to SPA Range structure
+	c82d6dd4a3 MdePkg: Remove DPPT table
+	357383bc4f MdePkg: Add flags and MinTransferSize to Generic Initiator
+	7b17bcd9a0 MdePkg: Add 'Type 5' PCC structure
+	0938f9235c MdePkg: Add Multiprocessor Wakeup structure
+	75c4a8e10d MdePkg: Add the Platform Health Assessment Table (PHAT)
+	1803757a9b MdePkg: Add Secure Access Components in the SDEV table
+	605c4a1ff2 MdePkg: Add Cache ID to PPTT
+	3d359ff905 MdePkg: Fix broken coding style in Acpi64.h
+	7311e96417 RedfishPkg/RefishCrtLib: Public RefishCrtLib
+	03e19e6bc8 ArmPkg/IndustryStandard: 32b/64b agnostic FF-A, Mm SVC and Std SMC IDs
+	aee0098faf ArmPkg: prepare 32bit ARM build of StandaloneMmPkg
+	ca1773878d GenFv: Arm: support images entered in Thumb mode
+	b7f0226a46 StandaloneMmPkg: fix pointer/int casts against 32bit architectures
+	a776bbabd9 StandaloneMmPkg: build for 32bit arm machines
+	ac826886c9 MdeModulePkg/UefiSortLib:Add UefiSortLib unit test
+	6fdd1c13a7 MdeModulePkg PCD: Reinstall PCD service PPIS when memory available
+	ef56f55d19 EmbeddedPkg/NonCoherentDmaLib: Avoid dereferencing unset Map field
+	8dd4fc5be6 UefiCpuPkg/CpuCacheInfoLib: Correct logical for identifying cache type
+	7b4a99be8a CryptoPkg: BaseCryptLib fix incorrect param order
+    - Removed patches which are merged to mainline: 
+	ovmf-bsc1186151-fix-iscsi-overflows.patch
+	ovmf-xen-relocate-shared_info_page-map.patch
+    - Updated patches
+	ovmf-fix-xen-s3-detection.patch -> ovmf-OvmfPkg-OvmfXen-set-PcdAcpiS3Enable-at-initializatio.patch
+	ovmf-xen-add-qemu-kernel-loader-fs.patch -> ovmf-OvmfPkg-OvmfXen-add-QemuKernelLoaderFsDxe.patch
+    - Added patches
+	ovmf-OvmfPkg-OvmfXen-Fix-build-with-QemuKernelLoaderFsDxe.patch
+
+-------------------------------------------------------------------
 Fri Jul  9 05:48:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-fix-xen-s3-detection.patch to fix the S3 detection in

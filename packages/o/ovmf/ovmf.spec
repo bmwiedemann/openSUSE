@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 # needssslcertforbuild
 
@@ -22,13 +22,13 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202105
+Version:        202108
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
-URL:            https://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
-Source0:        https://github.com/tianocore/edk2/archive/edk2-stable%{version}.tar.gz
+Url:            https://sourceforge.net/apps/mediawiki/tianocore/index.php?title=EDK2
+Source0:        https://github.com/tianocore/edk2/releases/download/edk2-stable%{version}/edk2-edk2-stable%{version}.tar.gz
 Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
 Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
 Source112:      openssl.keyring
@@ -51,10 +51,9 @@ Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
-Patch7:         %{name}-bsc1186151-fix-iscsi-overflows.patch
-Patch8:         %{name}-xen-relocate-shared_info_page-map.patch
-Patch9:         %{name}-fix-xen-s3-detection.patch
-Patch10:        %{name}-xen-add-qemu-kernel-loader-fs.patch
+Patch7:         %{name}-OvmfPkg-OvmfXen-set-PcdAcpiS3Enable-at-initializatio.patch
+Patch8:         %{name}-OvmfPkg-OvmfXen-add-QemuKernelLoaderFsDxe.patch
+Patch9:         %{name}-OvmfPkg-OvmfXen-Fix-build-with-QemuKernelLoaderFsDxe.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -175,7 +174,6 @@ rm -rf $PKG_TO_REMOVE
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
-%patch10 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
