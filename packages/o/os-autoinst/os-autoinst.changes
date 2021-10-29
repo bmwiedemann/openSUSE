@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 28 23:46:18 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1635464770.6790629e:
+  * Add quirk for QEMU >= 5 on PPC
+  * t: Add test for qemu_params_ofw
+  * backend:qemu: Extract 'qemu_params_ofw'
+  * t: Check git status at the end of every test
+  * t: Add test for one error handling of myjsonrpc
+  * myjsonrpc: Remove redundant next at end of while
+  * myjsonrpc: Slightly simplify the code
+  * t: Use signatures in 24-myjsonrpc.t
+  * myjsonrpc: Provide stack trace on undefined value used as symbol ref
+
+-------------------------------------------------------------------
 Thu Oct 21 18:11:55 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634839907.cef5afdf:
