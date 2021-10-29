@@ -19,17 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wrapt
-Version:        1.12.1
+Version:        1.13.2
 Release:        0
 Summary:        A Python module for decorators, wrappers and monkey patching
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/GrahamDumpleton/wrapt
 Source:         https://github.com/GrahamDumpleton/wrapt/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#GrahamDumpleton/wrapt#168 -- fix pytest 6 dummy collection
-Patch0:         https://github.com/GrahamDumpleton/wrapt/pull/168.patch#/fix-dummy-collector-pytest6.patch
-# PATCH-FIX-UPSTREAM gh#GrahamDumpleton/wrapt#161 -- fix test for Python 3.9
-Patch1:         https://github.com/GrahamDumpleton/wrapt/pull/161.patch#/wrapt-pr161-py39tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

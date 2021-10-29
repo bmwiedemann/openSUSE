@@ -121,4 +121,41 @@
     <comment></comment>
     <requestid>880495</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>036a3bf9117676a2ead5e2b12706f18e</srcmd5>
+    <version>1.13.2</version>
+    <time>1635539577</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.2:
+  * Note that the next signficant release of `wrapt` will drop support for
+    Python 2.7 and Python 3.5.
+  * Fix Python version constraint so PyPi classifier for ``pip`` requires
+    Python 2.7 or Python 3.5+.
+  * When a reference to a class method was taken out of a class, and then
+    wrapped in a function wrapper, and called, the class type was not being
+    passed as the instance argument, but as the first argument in args,
+    with the instance being ``None``. The class type should have been passed
+    as the instance argument.
+  * If supplying an adapter function for a signature changing decorator
+    using input in the form of a function argument specification, name lookup
+    exceptions would occur where the adaptor function had annotations which
+    referenced non builtin Python types. Although the issues have been
+    addressed where using input data in the format usually returned by
+    ``inspect.getfullargspec()`` to pass the function argument specification,
+    you can still have problems when supplying a function signature as
+    string. In the latter case only Python builtin types can be referenced
+    in annotations.
+  * When a decorator was applied on top of a data/non-data descriptor in a
+    class definition, the call to the special method ``__set_name__()`` to
+    notify the descriptor of the variable name was not being propogated. Note
+    that this issue has been addressed in the ``FunctionWrapper`` used by
+    ``@wrapt.decorator`` but has not been applied to the generic
+    ``ObjectProxy`` class. If using ``ObjectProxy`` directly to construct a
+    custom wrapper which is applied to a descriptor, you will need to
+    propogate the ``__set_name__()`` call yourself if required.
+  * The ``issubclass()`` builtin method would give incorrect results when used
+    with a class which had a decorator applied to it. Note that this has only
+    been able to be fixed for Python 3.7+. Also, due to what is arguably a</comment>
+    <requestid>927607</requestid>
+  </revision>
 </revisionlist>
