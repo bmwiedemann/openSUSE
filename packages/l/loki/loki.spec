@@ -28,6 +28,7 @@ Source1:        loki.service
 Source2:        promtail.service
 Source3:        sysconfig.loki
 Source4:        sysconfig.promtail
+Patch0:	harden_promtail.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
@@ -57,6 +58,7 @@ This package contains the Promtail client.
 
 %prep
 %setup -q %{name}-%{version}
+%patch0 -p1
 
 %build
 %define buildpkg github.com/grafana/loki/pkg/build

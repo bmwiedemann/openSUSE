@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  6 06:11:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_promtail.service.patch
+  Modified:
+  * loki.service
+  * promtail.service
+
+-------------------------------------------------------------------
 Fri Jun 25 08:58:58 UTC 2021 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Fix config fillup 

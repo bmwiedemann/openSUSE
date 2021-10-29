@@ -32,4 +32,12 @@
     <comment>- Fix config fillup</comment>
     <requestid>902308</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6ff62461450302cbcba5a39389e95682</srcmd5>
+    <version>2.2.1+git.1617669398.babea82e</version>
+    <time>1635539680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928144</requestid>
+  </revision>
 </revisionlist>
