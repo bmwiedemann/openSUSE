@@ -1293,4 +1293,18 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment></comment>
     <requestid>858356</requestid>
   </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>ae109308ad5b6dd940128c1cd75026e4</srcmd5>
+    <version>2.24.33</version>
+    <time>1635539620</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gtk2-rpmlintrc (boo#1191758):
+  + Filter wrong split request for libgdk-x11-2.0.so.0: the
+    library shares the version info with gtk2 and is allowed to be
+    in the same library package.
+  + Filter libgail.so.18 split request: the error is actually
+    correct, but gtk2 being a legacy package does not justify the
+    extra efort. The libgtk-2_0-0 package is the only consumer. (forwarded request 926890 from dimstar)</comment>
+    <requestid>927467</requestid>
+  </revision>
 </revisionlist>

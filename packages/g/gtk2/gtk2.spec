@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source2:        README.SUSE
 Source3:        gtkrc
 Source4:        baselibs.conf
 Source5:        macros.gtk2
+Source99:       gtk2-rpmlintrc
 # PATCH-FIX-OPENSUSE gtk2-GTK_PATH64.patch sbrabec@novell.com - 64-bit dual install. Use GTK_PATH64 environment variable instead of GTK_PATH
 Patch0:         gtk2-GTK_PATH64.patch
 # PATCH-FEATURE-UPSTREAM bugzilla-129753-gtk+-2.8.9-localize-font-style-name.diff bnc129753 bgo319484 mfabian@novell.com - Translate the font styles in the GUI
@@ -129,7 +130,7 @@ Summary:        Amharic input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       locale(%{name}:am)
 
 %description immodule-amharic
@@ -144,7 +145,7 @@ Summary:        Inuktitut input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       locale(%{name}:iu)
 
 %description immodule-inuktitut
@@ -159,7 +160,7 @@ Summary:        Multipress input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 
 %description immodule-multipress
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -174,7 +175,7 @@ Summary:        Thai-Lao input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       locale(%{name}:lo)
 Provides:       locale(%{name}:th)
 
@@ -190,7 +191,7 @@ Summary:        Tigrigna input methods for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       %{name}-immodules-tigrigna = %{version}
 Provides:       locale(%{name}:ti)
 Obsoletes:      %{name}-immodules-tigrigna < %{version}
@@ -207,7 +208,7 @@ Summary:        Vietnamese input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       locale(%{name}:vi)
 
 %description immodule-vietnamese
@@ -222,7 +223,7 @@ Summary:        X input method for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools >= 2.24.20
-Requires(postun): %{name}-tools >= 2.24.20
+Requires(postun):%{name}-tools >= 2.24.20
 Provides:       locale(%{name}:ja)
 Provides:       locale(%{name}:ko)
 Provides:       locale(%{name}:th)
@@ -239,7 +240,7 @@ This package provides an input method based on the X Input Method.
 Summary:        Auxiliary utilities for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -260,7 +261,7 @@ ranging from small one-off projects to complete application suites.
 Summary:        Upstream theme configuration for the GTK+ toolkit library v2
 Group:          System/Libraries
 Requires:       libgtk-2_0-0 = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -457,6 +458,7 @@ fi
 %endif
 
 %postun -n libgtk-2_0-0 -p /sbin/ldconfig
+
 %postun immodule-amharic
 %{_gtk_query_immodules_update_cache}
 
@@ -488,7 +490,7 @@ fi
 
 %files -n libgtk-2_0-0
 %license COPYING
-%doc AUTHORS README NEWS
+%doc AUTHORS NEWS
 %if "%{_lib}" == "lib64"
 %doc README.SUSE
 %endif
