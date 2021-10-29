@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 28 20:16:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Use the correct alternative for f2py during build
+
+-------------------------------------------------------------------
 Mon Jan 18 01:35:19 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 because of SciPy 1.6.0

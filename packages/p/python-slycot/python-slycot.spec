@@ -52,10 +52,17 @@ Slycot is a wrapper for the SLICOT control and systems library.
 
 %build
 export CFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
+# BLA_VENDOR="Generic":
 # openblas-devel is pulled in by numpy-devel, but we link against the
 # generic BLAS/LAPACK binaries so that update-alternatives can choose
 # the implementation for runtime.
-%python_build --generator "Unix Makefiles" -DBLA_VENDOR="Generic"
+%{python_expand  # find correct f2py flavor alternative (plain python_build does look at the arguments to exapand)
+   %{$python_build} \
+   --generator "Unix Makefiles" \
+   -DBLA_VENDOR="Generic" \
+   -DF2PY_EXECUTABLE=%{_bindir}/f2py-%{$python_bin_suffix}
+}
 
 %install
 # scikit-build installs into sitelib instead of platlib

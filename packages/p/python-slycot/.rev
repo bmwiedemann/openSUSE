@@ -106,4 +106,12 @@
     <comment></comment>
     <requestid>863998</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>4e2cf014074dd820df33743547b89d2a</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1635539652</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the correct alternative for f2py during build</comment>
+    <requestid>928035</requestid>
+  </revision>
 </revisionlist>
