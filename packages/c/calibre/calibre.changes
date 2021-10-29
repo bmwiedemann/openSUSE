@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct 29 10:11:24 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.31.1
+  * Bug fixes
+    - Fixes a bug in an HTML serialization library calibre uses
+      that broke a few things, such as the comments editor tool in
+      the metadata dialog
+
+-------------------------------------------------------------------
+Fri Oct 29 08:53:49 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.31.0
+  * New features
+    - Kindle driver: Support the new Kindle PaperWhite 2021
+    - Add an option under Preferences->Behavior to have calibre
+      recognize numbers when sorting (this was previously under
+      Preferences->Tweaks)
+    - E-book viewer: Add a button to directly open the viewer help
+      section in the calibre user manual to the viewer controls
+    - E-book viewer: Prevent the display from sleeping when using
+      auto-scroll or read aloud modes (Implemented only on Windows
+      and macOS)
+    - Edit book: Set semantics tool: Add support for EPUB 3 landmarks
+    - Add an entry to the Connect/share menu to open the content
+      server in a local browser when it is running
+  * Bug fixes
+    - Content server: Fix some OPDS feeds failing with non-ASCII
+      content
+    - Tag browser: Fix incorrect first letter partitioning when
+      enabling numeric collation of items that start with a number
+
+-------------------------------------------------------------------
 Fri Oct 22 05:28:38 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.30.0
