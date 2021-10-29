@@ -149,4 +149,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Move cursor to the beginning of buffer if on the same line. (forwarded request 924560 from bnavigator)</comment>
     <requestid>924561</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>75d77b56340a533402cc3c029460a5d9</srcmd5>
+    <version>5.1.1</version>
+    <time>1635539662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928106</requestid>
+  </revision>
 </revisionlist>

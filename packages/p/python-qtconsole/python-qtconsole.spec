@@ -44,6 +44,8 @@ Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-traitlets
+# QtPy does note require or depend on one of the frameworks itself
+Requires:       (python-qt5 or python-pyside2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-jupyter_qtconsole = %{version}
