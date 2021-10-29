@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:53:59 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- qemu: virtio-net: heap use-after-free in virtio_net_receive_rcu
+  (bsc#1189938 CVE-2021-3748)
+  solved by virtio-net-fix-use-after-unmap-free-for-.patch
+- kvm,qemu: out-of-bounds write in UAS (USB Attached SCSI) device emulation
+  (bsc#1189702 CVE-2021-3713)
+* Patches added:
+  uas-add-stream-number-sanity-checks.patch
+
+-------------------------------------------------------------------
 Fri Oct  8 13:48:40 UTC 2021 - Li Zhang <li.zhang@suse.com>
 
 - Stable fixes from upstream

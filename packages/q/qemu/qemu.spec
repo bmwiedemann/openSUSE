@@ -1,5 +1,5 @@
 #
-# spec file for package qemu
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -195,6 +195,7 @@ Patch00059:     qemu-nbd-Change-default-cache-mode-to-wr.patch
 Patch00060:     virtio-mem-pci-Fix-memory-leak-when-crea.patch
 Patch00061:     vhost-vsock-fix-migration-issue-when-seq.patch
 Patch00062:     block-introduce-max_hw_iov-for-use-in-sc.patch
+Patch00063:     uas-add-stream-number-sanity-checks.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1148,6 +1149,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00060 -p1
 %patch00061 -p1
 %patch00062 -p1
+%patch00063 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

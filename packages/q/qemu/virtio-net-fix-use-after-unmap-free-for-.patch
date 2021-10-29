@@ -3,6 +3,7 @@ Date: Thu, 2 Sep 2021 13:44:12 +0800
 Subject: virtio-net: fix use after unmap/free for sg
 
 Git-commit: bedd7e93d01961fcb16a97ae45d93acf357e11f6
+References: CVE-2021-3748 1189938
 
 When mergeable buffer is enabled, we try to set the num_buffers after
 the virtqueue elem has been unmapped. This will lead several issues,

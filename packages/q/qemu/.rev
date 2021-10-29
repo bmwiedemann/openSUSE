@@ -2941,4 +2941,19 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>924805</requestid>
   </revision>
+  <revision rev="214" vrev="34">
+    <srcmd5>7ac6bc7dafc9010cf1528347efe2e178</srcmd5>
+    <version>unknown</version>
+    <time>1635539578</time>
+    <user>dimstar_suse</user>
+    <comment>- qemu: virtio-net: heap use-after-free in virtio_net_receive_rcu
+  (bsc#1189938 CVE-2021-3748)
+  solved by virtio-net-fix-use-after-unmap-free-for-.patch
+- kvm,qemu: out-of-bounds write in UAS (USB Attached SCSI) device emulation
+  (bsc#1189702 CVE-2021-3713)
+* Patches added:
+  uas-add-stream-number-sanity-checks.patch
+</comment>
+    <requestid>927619</requestid>
+  </revision>
 </revisionlist>
