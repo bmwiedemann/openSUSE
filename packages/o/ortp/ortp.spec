@@ -20,21 +20,22 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        5.0.35
+Version:        5.0.36
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/ortp/
-Source:         https://github.com/BelledonneCommunications/ortp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/ortp/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE deps.diff
 Patch0:         deps.diff
 BuildRequires:  cmake >= 3.0
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 
 %description
 oRTP is a C library implementing the RTP protocol (RFC 1889).
@@ -64,10 +65,7 @@ develop programs using the oRTP library.
 %autosetup -p1
 
 %build
-%cmake \
-  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
-  -DENABLE_STATIC=OFF
+%cmake -DENABLE_STATIC=OFF
 %cmake_build
 
 %install
@@ -84,12 +82,7 @@ sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
-%dir %{_docdir}/%{name}
-%license %{_docdir}/%{name}/LICENSE.txt
-%doc %{_docdir}/%{name}/html
-%doc %{_docdir}/%{name}/README.md
-%doc %{_docdir}/%{name}/CHANGELOG.md
-%doc %{_docdir}/%{name}/AUTHORS.md
+%doc %{_docdir}/%{name}/
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
