@@ -105,7 +105,7 @@ Mon Apr 19 07:18:23 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
 * Patches added:
-  0014-fs-btrfs-fix-the-false-alert-of-dec.patch - boo#1183717
+  0014-fs-btrfs-fix-the-false-alert-of-dec.patch - boo#1183717 bsc#1184947
 
 -------------------------------------------------------------------
 Fri Apr  9 12:43:13 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
@@ -119,7 +119,7 @@ Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.
 -------------------------------------------------------------------
 Tue Apr  6 11:25:03 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
-- Add u-boot-zturnv5 flavour instead of u-boot-zturn.
+- Add u-boot-zturnv5 flavour instead of u-boot-zturn. (bsc#1184733)
   I've failed to find anybody who has v4 zturn board.
 
 -------------------------------------------------------------------
@@ -130,7 +130,7 @@ Tue Apr  6 08:00:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Tue Apr  6 07:22:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Update to 2021.04
+- Update to 2021.04 (bsc#1183116)
 - Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
 * Patches dropped:
   0006-boo-1123170-Remove-ubifs-support-fr.patch
