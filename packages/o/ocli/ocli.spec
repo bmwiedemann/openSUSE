@@ -1,8 +1,8 @@
 #
 # spec file for package ocli
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,14 @@
 Name:           ocli
 Version:        0.9.0
 Release:        0
-Summary:        OwnTracks command line interface publisher 
+Summary:        OwnTracks command line interface publisher
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/owntracks/ocli
 Source:         https://github.com/owntracks/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-FIX-adapted-for-gpsd-3.20.patch
 Patch1:         0001-FIX-adapted-for-gpsd-3.21.patch
+Patch2:         0001-FIX-adapted-for-gpsd-3.23.1.patch
 BuildRequires:  gpsd-devel
 BuildRequires:  mosquitto-devel
 Provides:       owntracks-cli-publisher
@@ -41,6 +42,7 @@ compatible software to process location data.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags}"
