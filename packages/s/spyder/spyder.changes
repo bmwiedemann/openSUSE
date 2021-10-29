@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 27 13:55:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches required for newer distro packages
+  * spyder-pr16565-unpin-pylint.patch gh#spyder-ide/spyder#16565
+  * spyder-jupyter_client7.patch
+
+-------------------------------------------------------------------
 Mon Sep 20 11:49:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Still crashing the linux kernel. Disable tests. boo#1190482

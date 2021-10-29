@@ -17,7 +17,7 @@
 
 
 # boo#1190482
-%bcond_with  test
+%bcond_with     test
 Name:           spyder
 Version:        5.1.5
 Release:        0
@@ -27,6 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+# PATCH-FIX-UPSTREAM spyder-pr16565-unpin-pylint.patch -- gh#spyder-ide/spyder#16565
+Patch0:         spyder-pr16565-unpin-pylint.patch
+# PATCH-FIX-OPENSUSE spyder-jupyter_client7.patch -- Don't override old jupyter_client private method _kill_kernel code@bnavigator.de
+Patch1:         spyder-jupyter_client7.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 49.6.0
