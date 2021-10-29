@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 28 10:36:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Require python3 instead of python, which is python2
+  * See last commit. We do not want to pull in obsolete python2
+  * This removes compatibility with SLE 11, RHEL7 and older
+- Work around older rpm versions in older distributions
+
+-------------------------------------------------------------------
 Fri Jul 02 16:13:40 UTC 2021 - bwiedemann@suse.com
 
 - Update to version 0.3.9+git.1625238904.d59f20e:
