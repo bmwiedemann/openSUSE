@@ -47,6 +47,7 @@ Patch103:       %{name}-strip.patch
 Patch104:       %{name}-no_BuildDate.patch
 #RPMLINT-FIX-openSUSE: env-script-interpreter
 Patch105:       %{name}_env-script-interpreter.patch
+Patch106:	harden_proftpd.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #BuildRequires:  gpg-offline
 BuildRequires:  fdupes
@@ -154,6 +155,7 @@ rm README.AIX
 %patch103
 %patch104
 %patch105
+%patch106 -p1
 
 %build
 rm contrib/mod_wrap.c
