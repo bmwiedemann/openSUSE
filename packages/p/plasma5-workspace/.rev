@@ -1788,4 +1788,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0002-Revert-Drop-X11-root-properties-for-KDE-full-session.patch (forwarded request 926668 from Vogtinator)</comment>
     <requestid>926765</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>2d9509afdcb6b6709aead06eecdbd5d2</srcmd5>
+    <version>5.23.2</version>
+    <time>1635539613</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.2</comment>
+    <requestid>927718</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 26 14:56:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * Hide KRunner window when pressing escape (kde#444240)
+  * [applets/clipboard] Fix selecting clipboard entries with Enter
+  * Set Qt.ImhNoPredictiveText for text fields that act as search fields
+  * [shell] Ignore placeholder screens
+- Add a version to BuildRequires: cmake(Breeze)
+
+-------------------------------------------------------------------
 Thu Oct 21 06:28:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add back X11 root window properties until firefox is adjusted
