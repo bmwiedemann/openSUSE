@@ -1,7 +1,7 @@
 #
 # spec file for package solfege
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,7 +77,7 @@ sing chords, scales, dictation and remember rhythmic patterns.
 %patch3 -p1
 
 for i in `grep -rl "/usr/bin/env python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
-#for i in `grep -rl "!/usr/bin/python "`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3 /' ${i}) ;done
+for i in `grep -rl "!/usr/bin/python"`;do $(chmod 0755 ${i} ; sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i}) ;done
 
 %build
 autoreconf -fi

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 29 03:51:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace missed /usr/bin/python shebangs with python3. 
+
+-------------------------------------------------------------------
 Thu May  7 13:07:30 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Fix lilypond font requirement for lilypond-2.20.0
