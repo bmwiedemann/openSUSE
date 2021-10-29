@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 26 14:55:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * pk: Properly resolve package ids after a transactions is done (kde#443615)
+  * packagekit: Do not re-create sources list on refresh
+  * pk: Allow enabling/disabling repositories
+  * pk: Try to detect if a local file we are trying to install already is installed (kde#443612)
+  * Fix InstallApplicationButton against KF 5.86 (kde#444022)
+
+-------------------------------------------------------------------
 Tue Oct 19 14:05:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.1
