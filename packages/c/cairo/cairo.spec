@@ -37,7 +37,8 @@ Patch2:         cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
 Patch3:         cairo-composite_color_glyphs.patch
 # PATCH-FIX-UPSTREAM cairo-pdf-add-missing-flush.patch - fix pdf generation (upstream issue #342)
 Patch4:         cairo-pdf-add-missing-flush.patch
-
+# PATCH-FIX-UPSTREAM cairo-do-not-override-explicitly-requested-grayscale-aa.patch -- Fix font antialiasing requested by applications
+Patch5:         cairo-do-not-override-explicitly-requested-grayscale-aa.patch
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)

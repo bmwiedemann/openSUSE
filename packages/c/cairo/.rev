@@ -683,4 +683,15 @@ Tweaked resub (forwarded request 600750 from iznogood)</comment>
     <comment></comment>
     <requestid>779971</requestid>
   </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>95f89342379f225ce294ee763cf133f8</srcmd5>
+    <version>1.16.0</version>
+    <time>1635539626</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream patch to fix applications not being able to explicitly set font anti-aliasing.
+Needed to fix at least GIMP issue https://gitlab.gnome.org/GNOME/gimp/-/issues/6210
+
+Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwarded request 926915 from susnux)</comment>
+    <requestid>927476</requestid>
+  </revision>
 </revisionlist>

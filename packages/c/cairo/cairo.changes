@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 22 09:24:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add upstream patch
+  + cairo-do-not-override-explicitly-requested-grayscale-aa.patch
+    Do not replace explicitly set applications settings by user
+    settings for font antialiasing.
+    See: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114
+
+-------------------------------------------------------------------
 Sun Feb 23 20:24:08 UTC 2020 - Martin Wilck <mwilck@suse.com>
 
 - Add an upstream bug fix
