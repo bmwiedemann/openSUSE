@@ -18,8 +18,8 @@
 #
 
 
-%global version_major 0
-%global version_minor 9
+%global version_major 1
+%global version_minor 0
 %global version_micro 0
 
 Name:           sdbus-cpp
@@ -40,17 +40,17 @@ BuildRequires:  pkgconfig(libsystemd) >= 236
 High-level C++ D-Bus library for Linux designed to provide easy-to-use
 yet powerful API in modern C++
 
-%package -n libsdbus-c++0
+%package -n libsdbus-c++1
 Summary:        Shared library for %{name}
 Group:          Development/Libraries/C and C++
 
-%description -n libsdbus-c++0
+%description -n libsdbus-c++1
 Shared library files for %{name}.
 
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libsdbus-c++0 = %{version}
+Requires:       libsdbus-c++1 = %{version}
 
 %description devel
 CMake, pkg-config, headers and other development files for %{name}.
@@ -67,7 +67,7 @@ READMEs and generated doxygen documentation for %{name}
 %package xml2cpp
 Summary:        Stub code generator for sdbus-c++
 Group:          Development/Libraries/C and C++
-Requires:       libsdbus-c++0 = %{version}
+Requires:       libsdbus-c++1 = %{version}
 BuildRequires:  pkgconfig(expat)
 
 %description xml2cpp
@@ -89,12 +89,12 @@ out of the D-Bus IDL XML description.
 %install
 %cmake_install
 
-%post -n libsdbus-c++0 -p /sbin/ldconfig
+%post -n libsdbus-c++1 -p /sbin/ldconfig
 
-%postun -n libsdbus-c++0 -p /sbin/ldconfig
+%postun -n libsdbus-c++1 -p /sbin/ldconfig
 
-%files -n libsdbus-c++0
-%license %{_docdir}/sdbus-c++/COPYING
+%files -n libsdbus-c++1
+%license COPYING
 %{_libdir}/libsdbus-c++.so.*
 
 %files devel
@@ -105,6 +105,7 @@ out of the D-Bus IDL XML description.
 %doc %{_docdir}/sdbus-c++/ChangeLog
 %doc %{_docdir}/sdbus-c++/NEWS
 %doc %{_docdir}/sdbus-c++/README
+%doc %{_docdir}/sdbus-c++/COPYING
 %{_libdir}/cmake/sdbus-c++*
 %{_libdir}/pkgconfig/sdbus-c++*
 %{_libdir}/libsdbus-c++.so
@@ -119,8 +120,10 @@ out of the D-Bus IDL XML description.
 %doc %{_docdir}/sdbus-c++/sdbus-c++-class-diagram.uml
 %doc %{_docdir}/sdbus-c++/systemd-dbus-config.md
 %doc %{_docdir}/sdbus-c++/using-sdbus-c++.md
+%license COPYING
 
 %files xml2cpp
 %{_bindir}/sdbus-c++-xml2cpp
+%license COPYING
 
 %changelog
