@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 15 18:22:54 UTC 2021 - Andrew Daugherity <adaugherity@tamu.edu>
+
+- unbreak build on SLES 12 & RHEL 7 (_rpmmacrodir not set)
+
+-------------------------------------------------------------------
 Fri Jun 11 12:02:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move macros.nagios from /etc/rpm to %{_rpmmacrodir}

@@ -33,6 +33,11 @@ Source6:        macros.icinga
 Source7:        macros.icinga2
 BuildArch:      noarch
 
+# _rpmmacrodir doesn't exist on SLES 12 or RHEL 7
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir %{_rpmconfigdir}/macros.d
+%endif
+
 %description
 This package provides rpm macros for building packages for
 Nagios, check_mk and/or Icinga.
