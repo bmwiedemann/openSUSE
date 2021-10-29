@@ -21,7 +21,7 @@
 
 %bcond_without lang
 Name:           plasma5-firewall
-Version:        5.23.1
+Version:        5.23.2
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
