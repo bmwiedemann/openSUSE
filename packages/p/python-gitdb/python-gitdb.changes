@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 26 20:29:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.9:
+  * update signing key
+  * fix Sphinx warnings
+  * Support Python 3.7+
+  * Allow smmap 5 
+
+-------------------------------------------------------------------
 Tue May 18 22:00:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.7:
