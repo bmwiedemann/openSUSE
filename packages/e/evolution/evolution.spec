@@ -190,7 +190,7 @@ to develop applications that require these.
   -DENABLE_YTNEF=OFF \
   -DWITH_GLADE_CATALOG=ON \
   -DENABLE_GTK_DOC=ON \
-  -DCMAKE_SKIP_RPATH=OFF
+  -DCMAKE_SKIP_INSTALL_RPATH=OFF
 %cmake_build
 
 %install

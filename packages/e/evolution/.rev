@@ -2088,4 +2088,13 @@ Recommended for 12.3</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 920919 from dimstar)</comment>
     <requestid>921602</requestid>
   </revision>
+  <revision rev="250" vrev="2">
+    <srcmd5>faf760faf0d2cb4352b5342a2f459b17</srcmd5>
+    <version>3.42.0</version>
+    <time>1635539623</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF
+  as that should be used with the newest cmake macros (boo#1190880) (forwarded request 927007 from alarrosa)</comment>
+    <requestid>927468</requestid>
+  </revision>
 </revisionlist>
