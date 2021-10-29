@@ -151,4 +151,13 @@
     <comment></comment>
     <requestid>927772</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2ce38ed567fceb0fd78338828b4168ac</srcmd5>
+    <version>1.11.1</version>
+    <time>1635539651</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11</comment>
+    <requestid>928027</requestid>
+  </revision>
 </revisionlist>
