@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  6 12:04:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * minetest@.service
+
+-------------------------------------------------------------------
 Tue Jun  1 13:18:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility patch:

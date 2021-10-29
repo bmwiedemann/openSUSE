@@ -178,4 +178,12 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>896713</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>beaeb8e37ccd468dcd636897e218805c</srcmd5>
+    <version>5.4.1</version>
+    <time>1635539656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928050</requestid>
+  </revision>
 </revisionlist>
