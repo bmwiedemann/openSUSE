@@ -675,4 +675,12 @@
     <comment></comment>
     <requestid>917460</requestid>
   </revision>
+  <revision rev="78" vrev="24">
+    <srcmd5>68999df87d2a1277615c4f55159296b2</srcmd5>
+    <version>20200505</version>
+    <time>1635539584</time>
+    <user>dimstar_suse</user>
+    <comment>- remove mention of &quot;Minimal&quot; from the base pattern</comment>
+    <requestid>927758</requestid>
+  </revision>
 </revisionlist>

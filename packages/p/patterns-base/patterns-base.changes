@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 27 11:38:14 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- remove mention of "Minimal" from the base pattern
+
+-------------------------------------------------------------------
 Thu Aug 19 11:35:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fix typo in the icon name for the fips pattern (bsc#1189550)

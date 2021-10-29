@@ -103,7 +103,7 @@ Provides:       pattern-icon() = pattern-basis
 Requires:       pattern() = base
 
 %description basesystem
-This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
+This is the base runtime system.  It contains only a basic multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
 
 %files basesystem
 %dir %{_docdir}/patterns
@@ -113,7 +113,7 @@ This is the base runtime system.  It contains only a minimal multiuser booting s
 
 %package base
 %pattern_basetechnologies
-Summary:        Minimal Base System
+Summary:        Base System
 Group:          Metapackages
 Provides:       pattern() = base
 Provides:       pattern-icon() = pattern-basis
@@ -188,7 +188,7 @@ Suggests:       openssl-1_1
 Suggests:       libz1
 
 %description base
-This is the base runtime system.  It contains only a minimal multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
+This is the base runtime system.  It contains only a basic multiuser booting system. For running on real hardware, you need to add additional packages and pattern to make this pattern useful on its own.
 
 %files base
 %dir %{_docdir}/patterns
