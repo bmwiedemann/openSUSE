@@ -54,4 +54,12 @@
 *  add a locally tested collection of patches (forwarded request 909082 from seife)</comment>
     <requestid>909509</requestid>
   </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>22ed7894cf50c7156f737e80d2a9760a</srcmd5>
+    <version>1.2.9a</version>
+    <time>1635539674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928152</requestid>
+  </revision>
 </revisionlist>
