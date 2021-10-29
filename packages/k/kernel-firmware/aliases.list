@@ -1648,6 +1648,8 @@ ice: pci:v00008086d0000151Dsv*sd*bc*sc*i*
 ice: pci:v00008086d00001591sv*sd*bc*sc*i*
 ice: pci:v00008086d00001592sv*sd*bc*sc*i*
 ice: pci:v00008086d00001593sv*sd*bc*sc*i*
+ice: pci:v00008086d00001599sv*sd*bc*sc*i*
+ice: pci:v00008086d0000159Asv*sd*bc*sc*i*
 ice: pci:v00008086d0000159Bsv*sd*bc*sc*i*
 ice: pci:v00008086d0000188Asv*sd*bc*sc*i*
 ice: pci:v00008086d0000188Bsv*sd*bc*sc*i*
@@ -4741,6 +4743,8 @@ rtl8xxxu: usb:v7392p7811d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:vCDABp8010d*dc*dsc*dp*icFFiscFFipFFin*
+rtw89_pci: pci:v000010ECd00008852sv*sd*bc*sc*i*
+rtw89_pci: pci:v000010ECd0000A85Asv*sd*bc*sc*i*
 s2255drv: usb:v1943p2255d*dc*dsc*dp*ic*isc*ip*in*
 s2255drv: usb:v1943p2257d*dc*dsc*dp*ic*isc*ip*in*
 s5p_mfc: of:N*T*Csamsung,exynos5433-mfc

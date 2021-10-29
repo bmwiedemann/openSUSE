@@ -107,8 +107,8 @@ rtl8188ee:	realtek
 rtl8188eu:	realtek		rtl8188eu r8188eu
 rtl8821ae:	realtek
 rtl8822be:	realtek		rtl8822be r8822be
-rtw88:		realtek
-rtw89:		realtek
+rtw88:		realtek		rtw88_pci
+rtw89:		realtek		rtw89_pci
 rtl8192ee:	realtek
 rtl8723bs:	realtek
 rtl8xxxu:	realtek

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 27 13:37:10 UTC 2021 - tiwai@suse.com
+
+- Update to version 20211027 (git commit 1d00989a6596):
+  * linux-firmware: Update AMD cpu microcode
+  * QCA: Update Bluetooth firmware for WCN685x
+  * bnx2x: Add FW 7.13.20.0
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2010.1006
+  * linux-firmware: Update NXP Management Complex firmware to version 10.28.1
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * rtw89: 8852a: update fw to v0.13.30.0
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+- Update topics and aliases for rtw88 and rtw89
+
+-------------------------------------------------------------------
 Thu Sep 30 08:04:26 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210928 (git commit 7a30050592e2):
