@@ -12,3 +12,6 @@
 
 ## Do not refresh zypper service when registering (default: false)
 # no_zypper_refs: false
+
+## Enable additional debug output (default: false)
+# debug: false

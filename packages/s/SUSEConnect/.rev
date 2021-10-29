@@ -481,4 +481,17 @@
   not in the body (see bsc#1185611)</comment>
     <requestid>907443</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>974f68a23d5881211dafb717b94abb0f</srcmd5>
+    <version>0.3.32</version>
+    <time>1635539587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.32
+- Allow --regcode and --instance-data attributes at the same time (jsc#PCT-164)
+- Document that 'debug' can also get set in the config file
+- --status will also print the subscription name
+
+- Add subscription name to output of 'SUSEConnect --status'</comment>
+    <requestid>927797</requestid>
+  </revision>
 </revisionlist>

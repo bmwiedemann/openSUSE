@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "SUSECONNECT" "5" "April 2019" "" "SUSEConnect"
+.TH "SUSECONNECT" "5" "October 2021" "" "SUSEConnect"
 .
 .SH "NAME"
 \fBSUSEConnect\fR \- SUSE Customer Center registration tool config file
@@ -19,9 +19,6 @@ Example:
 \fB\-\-\-\fR
 .
 .P
-\fBregcode: <regcode>\fR
-.
-.P
 \fBurl: https://scc\.suse\.com\fR
 .
 .P
@@ -31,10 +28,10 @@ Example:
 \fBinsecure: false\fR
 .
 .P
-Each line of the file specifies a single parameter\. The fields are as follows:
+\fBdebug: false\fR
 .
-.IP "\(bu" 4
-regcode: (mandatory) Registration code to use for the base product on the system
+.P
+Each line of the file specifies a single parameter\. The fields are as follows:
 .
 .IP "\(bu" 4
 url: (optional) URL of the registration server\. Corresponds to the \-\-url argument to SUSEConnect\. Defaults to https://scc\.suse\.com
@@ -44,6 +41,9 @@ language: (optional) Language code to use for error messages
 .
 .IP "\(bu" 4
 insecure: (optional) Do not verify SSL certificates when using https (default: false)
+.
+.IP "\(bu" 4
+debug: (optional) Enable additional debugging output (default: false)
 .
 .IP "" 0
 .
