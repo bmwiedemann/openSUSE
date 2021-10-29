@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>slurmd</short>
+    <description>slurmdbd is the database daemon for the SLURM cluster management.</description>
+  <port protocol="tcp" port="6819"/>
+  <port protocol="udp" port="6819"/>
+</service>

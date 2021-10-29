@@ -829,4 +829,15 @@
     <comment></comment>
     <requestid>924633</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>0313dc1c95bed7fa62ec7f5225ab8c12</srcmd5>
+    <version>21.08.2</version>
+    <time>1635539680</time>
+    <user>dimstar_suse</user>
+    <comment>- Utilize sysuser infrastructure to set user/group slurm.
+  For munge authentication slurm should have a fixed UID across
+  all nodes including the management server. Set it to 120
+- Limit firewalld service definitions to SUSE versions &amp;gt;= 15. (forwarded request 928191 from eeich)</comment>
+    <requestid>928192</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 29 15:54:53 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set user/group slurm.
+  For munge authentication slurm should have a fixed UID across
+  all nodes including the management server. Set it to 120
+- Limit firewalld service definitions to SUSE versions >= 15.
+
+-------------------------------------------------------------------
+Mon Oct 18 13:36:14 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- added service definitions for firewalld 
+
+-------------------------------------------------------------------
 Wed Oct  6 07:12:52 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - update to 21.08.2 

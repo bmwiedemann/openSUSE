@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>slurmd</short>
+    <description>slurmd is the daemon which starts jobs for the SLURM cluster management.</description>
+  <port protocol="tcp" port="6818"/>
+  <port protocol="udp" port="6818"/>
+</service>

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package slurm
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,6 +53,10 @@ ExclusiveArch:  do_not_build
 %define base_ver 2011
 %endif
 
+%if 0%{?suse_version} >= 1500
+%define have_sysuser 1
+%endif
+
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %(echo %{_ver} | tr -d _)
 %define upgrade 1
 %endif
@@ -99,6 +103,7 @@ ExclusiveArch:  do_not_build
 %define have_hdf5 1
 %define have_boolean_deps 1
 %define have_lz4 1
+%define have_firewalld 1
 %endif
 
 %ifarch x86_64
@@ -118,6 +123,9 @@ ExclusiveArch:  do_not_build
  %define slurm_u daemon
  %define slurm_g root
 %endif
+%define slurm_uid 120
+%define slurmdir %{_sysconfdir}/slurm
+%define slurmdescr "SLURM workload manager"
 
 %define libslurm libslurm%{so_version}
 %{!?_rundir:%define _rundir /var/run}
@@ -135,6 +143,9 @@ Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 Source1:        slurm-rpmlintrc
+Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmd.xml
+Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
+Source12:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmdbd.xml
 Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
@@ -156,6 +167,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
 BuildRequires:  fdupes
+%{?have_firewalld:BuildRequires:  firewalld}
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 %if 0%{?have_hdf5}
@@ -198,6 +210,7 @@ BuildRequires:  libssh2-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  rrdtool-devel
 %if 0%{?with_systemd}
+%{?have_sysuser:BuildRequires:  sysuser-tools}
 %{?systemd_ordering}
 BuildRequires:  dejagnu
 BuildRequires:  pkgconfig(systemd)
@@ -609,6 +622,11 @@ install -D -m600 etc/slurmdbd.conf.example %{buildroot}/%{_sysconfdir}/%{pname}/
 install -D -m600 etc/slurmdbd.conf.example %{buildroot}%{_sysconfdir}/%{pname}/slurmdbd.conf.example
 install -D -m755 contribs/sjstat %{buildroot}%{_bindir}/sjstat
 install -D -m755 contribs/sgather/sgather %{buildroot}%{_bindir}/sgather
+%if 0%{?have_firewalld}
+install -D -m644 %{S:10} %{buildroot}/%{_prefix}/lib/firewalld/services/slurmd.xml
+install -D -m644 %{S:11} %{buildroot}/%{_prefix}/lib/firewalld/services/slurmctld.xml
+install -D -m644 %{S:12} %{buildroot}/%{_prefix}/lib/firewalld/services/slurmdbd.xml
+%endif
 
 cat <<EOF >%{buildroot}%{_sysconfdir}/%{pname}/plugstack.conf
 include %{_sysconfdir}/%{pname}/plugstack.conf.d/*.conf
@@ -653,6 +671,11 @@ sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmd.pid@" \
 sed -i -e "s@PIDFile=.*@PIDFile=%{_localstatedir}/run/slurm/slurmdbd.pid@" \
        -e 's@After=\(.*\)@After=\1 mariadb.service@' \
  %{buildroot}/%{_unitdir}/slurmdbd.service
+%if 0%{?have_sysuser}
+echo "u %slurm_u %{slurm_uid} \"%slurmdescr\" %{slurmdir}\n" > system-user-%{pname}.conf
+%sysusers_generate_pre system-user-%{pname}.conf %{pname} system-user-%{pname}.conf
+install -D -m 644 system-user-%{pname}.conf %{buildroot}%{_sysusersdir}/system-user-%{pname}.conf
+%endif
 %endif
 
 # Delete static files:
@@ -831,13 +854,13 @@ rm -f %{buildroot}/%{_libdir}/slurm/openapi_*
 %insserv_cleanup
 %endif
 
-%pre config
-%define slurmdir %{_sysconfdir}/slurm
-%define slurmdescr "SLURM workload manager"
+%pre config %{?have_sysuser:-f %{pname}.pre}
+%if 0%{!?have_sysuser:1}
 getent group %slurm_g >/dev/null || groupadd -r %slurm_g
 getent passwd %slurm_u >/dev/null || useradd -r -g %slurm_g -d %slurmdir -s /bin/false -c %{slurmdescr} %slurm_u
 [ -d %{_localstatedir}/spool/slurm ] && /bin/chown -h %slurm_u:%slurm_g %{_localstatedir}/spool/slurm
 exit 0
+%endif
 
 %post config
 %if 0%{?with_systemd}
@@ -1231,6 +1254,12 @@ exit 0
 %{?_rundir:%ghost %{_rundir}/slurm}
 %dir %attr(0755, %slurm_u, %slurm_g)%{_localstatedir}/spool/slurm
 %config(noreplace) %{_sysconfdir}/logrotate.d/slurm*
+%if 0%{?have_firewalld}
+%{_prefix}/lib/firewalld/services/slurmd.xml
+%{_prefix}/lib/firewalld/services/slurmctld.xml
+%{_prefix}/lib/firewalld/services/slurmdbd.xml
+%endif
+%{?have_sysuser:%{_sysusersdir}/system-user-%{pname}.conf}
 
 %files config-man
 %{?comp_at}
