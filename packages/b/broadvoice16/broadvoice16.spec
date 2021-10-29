@@ -1,7 +1,7 @@
 #
 # spec file for package broadvoice16
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define static 0
 %define shared 1
@@ -32,8 +33,9 @@ Source2:        README
 Source3:        README.SUSE
 Source4:        meson_options.txt
 Source5:        meson.build
-BuildRequires:  unzip
+Source6:        baselibs.conf
 BuildRequires:  meson
+BuildRequires:  unzip
 
 %description
 BroadVoice is a family of speech coding algorithms created by
@@ -107,7 +109,6 @@ PATH=%{buildroot}%{_bindir}:$PATH LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 
 %postun -p /sbin/ldconfig
 %endif
-
 
 %files 
 %license COPYING
