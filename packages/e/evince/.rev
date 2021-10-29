@@ -1204,4 +1204,13 @@
     <comment>Yet a release (forwarded request 924536 from iznogood)</comment>
     <requestid>924745</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>bc4e334147f0d0d0d4494000a4509cb5</srcmd5>
+    <version>41.2</version>
+    <time>1635539625</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase patch to fit the meson.build update:
+  + 0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch (forwarded request 927261 from yfjiang)</comment>
+    <requestid>927473</requestid>
+  </revision>
 </revisionlist>
