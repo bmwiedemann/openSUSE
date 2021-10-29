@@ -37,7 +37,7 @@ BuildRequires:  %{python_module typogrify}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Jinja2
-Requires:       python-Markdown
+Requires:       python-Markdown > 3.2.0
 Requires:       python-MarkupSafe
 Requires:       python-Pygments
 Requires:       python-toml

@@ -31,4 +31,15 @@
 - Switch to building only default flavour of python3.</comment>
     <requestid>915470</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5db6a38ad076fed17468b1cacd14ddac</srcmd5>
+    <version>2021.7</version>
+    <time>1635539628</time>
+    <user>dimstar_suse</user>
+    <comment>- Specify python-Markdown version to at least 3.2.0, because
+  permalink_class options in TOC used by gi-docgen was introduced
+  on 3.2.0:
+  https://github.com/Python-Markdown/markdown/commit/1f3ec538a2acf25607253fc7c7a992950463931d (forwarded request 927449 from yfjiang)</comment>
+    <requestid>927480</requestid>
+  </revision>
 </revisionlist>
