@@ -5232,4 +5232,20 @@
     <comment></comment>
     <requestid>926026</requestid>
   </revision>
+  <revision rev="348" vrev="3">
+    <srcmd5>19a3468b582b53e1b2cdd668dc27a0e5</srcmd5>
+    <version>93.0</version>
+    <time>1635539588</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused pkgconfig(gdk-x11-2.0) BuildRequires
+- (re-)enable LTO on Tumbleweed
+
+- Rebase mozilla-sandbox-fips.patch to punch another hole in the
+  sandbox containment, to be able to open /proc/sys/crypto/fips_enabled
+  from within the newly introduced socket process sandbox.
+  This fixes bsc#1191815 and bsc#1190141
+
+- Add patch to fix build on aarch64 (bmo#1729124)</comment>
+    <requestid>927811</requestid>
+  </revision>
 </revisionlist>

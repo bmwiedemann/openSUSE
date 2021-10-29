@@ -145,7 +145,6 @@ BuildRequires:  clang6-devel
 %else
 BuildRequires:  clang-devel >= 5
 %endif
-BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -522,7 +521,7 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} > 1500
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1

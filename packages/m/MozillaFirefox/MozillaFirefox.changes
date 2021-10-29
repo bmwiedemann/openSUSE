@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 26 19:48:24 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Drop unused pkgconfig(gdk-x11-2.0) BuildRequires
+- (re-)enable LTO on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Oct 20 06:49:52 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Rebase mozilla-sandbox-fips.patch to punch another hole in the
+  sandbox containment, to be able to open /proc/sys/crypto/fips_enabled
+  from within the newly introduced socket process sandbox.
+  This fixes bsc#1191815 and bsc#1190141
+
+-------------------------------------------------------------------
 Mon Oct 18 12:44:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
-- Add patch to fix build on aarch64 - bmo#1729124 
+- Add patch to fix build on aarch64 (bmo#1729124)
   * mozilla-bmo1729124.patch
 
 -------------------------------------------------------------------
