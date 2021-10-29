@@ -16,114 +16,137 @@
 #
 
 
+%global desc \
+PARI/GP is a computer algebra system designed for computations\
+in number theory (factorizations, algebraic number theory, elliptic\
+curves) and other entities like matrices, polynomials,\
+power series, algebraic numbers, and transcendental functions.\
+%nil
 # See
 # http://pari.math.u-bordeaux.fr/archives/pari-dev-1211/msg00006.html
 # for details on the SO versioning.
-
+%global sover 7
+%global lname   libpari-gmp-tls%sover
 Name:           pari
-%define sover 7
-%define lname   libpari-gmp-tls%sover
-Version:        2.13.1
+Version:        2.13.2
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
-URL:            https://pari.math.u-bordeaux.fr/
-#Git-Clone:	https://pari.math.u-bordeaux.fr/git/pari.git
-#Git-Web:	https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
-Source:         https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-%version.tar.gz
-Source2:        https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-%version.tar.gz.asc
-Patch1:         pari-nodate.diff
+URL:            https://pari.math.u-bordeaux.fr
+#Git-Clone:     https://pari.math.u-bordeaux.fr/git/pari.git
+#Git-Web:       https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
+Source0:        %url/pub/pari/unix/pari-%version.tar.gz
+Source2:        %url/pub/pari/unix/pari-%version.tar.gz.asc
 BuildRequires:  fltk-devel
 BuildRequires:  gmp-devel
-BuildRequires:  libX11-devel
+BuildRequires:  pkg-config
 BuildRequires:  readline-devel
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-luatex
+BuildRequires:  texlive-luatex-bin
+BuildRequires:  texlive-luatexbase
+BuildRequires:  texlive-tex-bin
 BuildRequires:  xorg-x11-proto-devel
+BuildRequires:  pkgconfig(x11)
 
 %description
-PARI/GP is a computer algebra system designed for fast computations
-in number theory (factorizations, algebraic number theory, elliptic
-curves), but also contains a large number of other useful functions
-to compute with mathematical entities such as matrices, polynomials,
-power series, algebraic numbers etc., and a lot of transcendental
-functions.
+%desc
 
 %package gp
 Summary:        Frontend to the PARI Computer Algebra System
 Group:          Productivity/Scientific/Math
 
 %description gp
-PARI/GP is a computer algebra system designed for fast computations
-in number theory (factorizations, algebraic number theory, elliptic
-curves), but also contains a large number of other useful functions
-to compute with mathematical entities such as matrices, polynomials,
-power series, algebraic numbers etc., and a lot of transcendental
-functions.
+%desc
+
+%package doc
+Summary:        Documentation for the PARI Computer Algebra System
+Group:          Documentation/Other
+BuildArch:      noarch
+
+%description doc
+%desc
+
+This package contains the documentation and examples for the PARI Computer Algebra System.
 
 %package -n %lname
-Summary:        Computer Algebra System library for fast computations in Number Theory
+Summary:        Shared library for the PARI Computer Algebra System
 # This is used by the data packages to avoid having a too-old version of libpari:
 Group:          System/Libraries
 Provides:       libpari-gmp = %version
 
 %description -n %lname
-PARI/GP is a computer algebra system designed for fast computations
-in number theory (factorizations, algebraic number theory, elliptic
-curves), but also contains a large number of other useful functions
-to compute with mathematical entities such as matrices, polynomials,
-power series, algebraic numbers etc., and a lot of transcendental
-functions.
+%desc
+
+This package contains shared library for the PARI CAS.
 
 %package devel
-Summary:        Development files for the PARI CAS
+Summary:        Development files for the PARI Computer Algebra System
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-PARI/GP is a computer algebra system designed for fast computations
-in number theory (factorizations, algebraic number theory, elliptic
-curves), but also contains a large number of other useful functions
-to compute with mathematical entities such as matrices, polynomials,
-power series, algebraic numbers etc., and a lot of transcendental
-functions.
+%desc
+
+This package contains development files for the PARI CAS.
 
 %prep
-%autosetup -p1
+%autosetup
+# Kill __DATE__ from source, it’s pointless and can cause rebuilds.
+sed -i -e 's/__DATE__/"today"/' src/language/paricfg.c
+# Set proprer page dimensions
+sed -i -e '27 i \\\else\\\pagewidth=11.69in\\\pageheight=8.26in' doc/refmacro.tex
+# Don’t build DVI docs
+sed -i -e 's/^\(doc all:\) .*/\1/' config/DOC_Make.SH
 
 %build
-./Configure --prefix="%_prefix" \
-	--bindir="%_bindir" --includedir="%_includedir" \
+./Configure \
+	--prefix="%_prefix" \
+	--bindir="%_bindir" \
+	--includedir="%_includedir" \
 	--libdir="%_libdir" \
-	--sysdatadir="%_libdir" --datadir="%_datadir/%name" \
+	--sysdatadir="%_libdir" \
+	--datadir="%_datadir/%name" \
 	--mt=pthread
-%make_build all \
+%make_build -e \
 	CFLAGS="%optflags -fno-strict-aliasing" \
-	STRIP=true
+	STRIP=true \
+	PDFTEX=luatex \
+	PDFLATEX=lualatex \
+	all docpdf
 
 %install
 %make_install
+install -dm0755 %buildroot%_sysconfdir
+install -m0644 misc/gprc.dft %buildroot%_sysconfdir/gprc
+
+install -dm0755 %buildroot%_defaultdocdir/%name
+install -Dm0644 doc/*.pdf %buildroot%_defaultdocdir/%name
+rm -rf %buildroot%_datadir/%name/doc
+mv %buildroot%_datadir/%name/examples %buildroot%_defaultdocdir/%name
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files gp
+%doc AUTHORS CHANGES* README* NEW
+%config %_sysconfdir/gprc
 %_bindir/*
 %_datadir/%name
 %_libdir/%name.cfg
-%_mandir/man*/*
+%_mandir/*/*.1*
+
+%files doc
+%_defaultdocdir/%name/
 
 %files -n %lname
-%if 0%{?sle_version} <= 150000 && !0%{?is_opensuse}
-%dir %_licensedir
-%endif
 %license COPYING
 %_libdir/libpari-gmp-tls.so.%version
 %_libdir/libpari-gmp-tls.so.%sover
 
 %files devel
-%doc examples/
-%doc CHANGES CHANGES-* NEW README
-%_includedir/pari/
+%_includedir/%name/
 %_libdir/libpari.so
 
 %changelog

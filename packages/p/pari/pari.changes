@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 29 01:01:54 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to release 2.13.2. Fixed
+  [last column crossreferences current development release 2.14.0]
+  * rnfidealup(, non-integral ideal) -> division by 0         [F22]
+  * memory leak in ellheight                                  [F23]
+  * memory leak in bnfinit                                    [F24]
+  * nfeltdiv(nfinit(x^2+1), 0, 1+x/2) -> SEGV [#2277]         [F26]
+  * znchargauss(g,chi,0) -> oo loop                           [F28]
+  * bnflog(bnr, ...) -> SEGV                                  [F29]
+  * elliptic functions: incorrect reduction
+    of z/w1 mod [1,tau] => catastrophic cancellation          [F30]
+  * powcx(x, t_COMPLEX with 0 imaginary part) -> crash        [F31]
+  * nfsubfields(t_POL in other var than x,,1) -> SEGV         [F32]
+  * extra terms in power t_SER substitutions [#2281]          [F33]
+  * k=bnfinit(quadpoly(-2923,a));
+    bnrclassfield(k,3) -> SEGV [#2280]                        [F34]
+  * rnfdisc mishandled polynomials with denominators [#2284]  [F35]
+  * elltamagawa(ellinit([-1456/243,93184/19683])) ->
+    wrong result                                              [F36]
+  * mfsearch would sometimes miss the trivial form            [F37]
+  * typo in allh [affects ECPP tunings]                       [F38]
+  * mfisetaquo(mffrometaquo([1,12;193,12])) -> 0              [F39]
+  * polroots(1.E-47*t^6+1.E-47*t^5+4.E-46*t^4) ->
+    bug in type [#2286]                                       [F40]
+  * ceil(quadgen(5)) -> 1 instead of 0 [#2288]                [F41]
+  * floor(Mod(0,3)*quadgen(5)) -> crash                       [F42]
+  * wrong ispower(t_RFRAC) and issquare(t_RFRAC, &z) [#2289]  [F45]
+  * 1+O(x)==O(x)                                              [F47]
+  * qfauto([[1,0;0,1],[0,0;1,0]]) -> SEGV                     [F49]
+  * bnfsunit(...)[4] (the S-regulator) did not correspond to
+    its definition in the documentation [ was using log(p)
+    instead of log(Norm P)) for P in S above p ]              [F50]
+  * rnfdisc could return corrupted result                     [F51]
+  * concat(List([1])[1..0]) ->SEGV (instead of error) [#2299] [F53]
+  * List([1])[1..0]==List() -> 0 instead of 1                 [F54]
+- Build PDF documentation and place it into separate
+  pari-doc package. Move examples from pari-devel package
+  to pari-doc.
+- Add %{_sysconfdir}/gprc to packaging.
+- Remove patch pari-nodate.diff (replace with the sed one-liner
+  in the %prep section).
+- Remove obsolete stuff from the spec file.
+- Apply spec-cleaner.
+
+-------------------------------------------------------------------
 Sun Feb  7 21:15:14 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to release 2.13.1. Fixes the following bugs:

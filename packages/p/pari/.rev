@@ -180,4 +180,12 @@
     <comment></comment>
     <requestid>870617</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c4480b38da2dd76aa0013d0595c9ddde</srcmd5>
+    <version>2.13.2</version>
+    <time>1635539661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.2. Fixed</comment>
+    <requestid>928099</requestid>
+  </revision>
 </revisionlist>
