@@ -17,7 +17,7 @@
 
 
 Name:           ipcalc
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        IPv4/IPv6 tool assisting in network calculations on the command line
 License:        GPL-2.0-or-later
