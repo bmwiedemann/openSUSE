@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:18:12 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1635405484.2bcc5e885:
+  * Add "retries" option to openqa-cli to work around busy openQA instances
+  * t: Fix 03-auth.t for perl-Mojolicious >= 9.22
+  * Dependency cron 2021-10-27
+  * Log slow SQLite queries that run longer than 60 seconds
+  * t: Mark more lines as uncoverable
+  * Increase SQLite busy timeout to 10 minutes and add a missing index
+  * Dependency cron 2021-10-25
+  * Dependency cron 2021-10-25
+  * tools: Prevent unnecessary commit of files from CI
+  * Delete erroneously commited file gendep_before.txt (71bef7e3c)
+  * t: Mark all uncovered fail-handler lines as such in FullstackUtils
+  * Display badges for all categories on test result overview
+
+-------------------------------------------------------------------
 Sun Oct 24 08:03:30 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1634908963.3d5c24113:
