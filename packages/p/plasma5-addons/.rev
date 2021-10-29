@@ -1000,4 +1000,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
     <requestid>926386</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>08448cc264614d22f7e6f5bccbf8f39a</srcmd5>
+    <version>5.23.2</version>
+    <time>1635539608</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.2 (forwarded request 927575 from Vogtinator)</comment>
+    <requestid>927699</requestid>
+  </revision>
 </revisionlist>
