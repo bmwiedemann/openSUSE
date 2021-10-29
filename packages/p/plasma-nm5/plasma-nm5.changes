@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 26 14:56:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * Set Qt.ImhNoPredictiveText for text field that acts as a search field
+  * openconnect: Adjust version check in CMake and allow version 3.99 again
+
+-------------------------------------------------------------------
 Tue Oct 19 14:05:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.1
