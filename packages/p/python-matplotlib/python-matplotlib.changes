@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 23 15:49:11 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.4.3
+  Patches removed (in version 3.4.3):
+  inkscape11.patch
+  0001-FIX-Pillow-asarray-bug.patch
+  0002-Dont-modify-arrays-when-masking-values-for-log.patch
+ 
+-------------------------------------------------------------------
 Tue Jul 27 12:09:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Fix tests with inkscape11.patch
