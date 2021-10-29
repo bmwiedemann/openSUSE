@@ -1,7 +1,7 @@
 #
 # spec file for package arb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           arb
 %define lname   libarb2
-Version:        2.19.0
+Version:        2.21.1
 Release:        0
 Summary:        Arbitrary-precision floating-point ball arithmetic library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libmpir-devel
 BuildRequires:  libtool
 BuildRequires:  mpfr-devel
+# packagers: see history.rst for changelog
 
 %description
 Arb is a C library for arbitrary-precision floating-point ball

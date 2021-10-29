@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 29 09:21:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.21.0
+  * Experimental new arb_fpwrap module: accurate floating-point
+    wrappers of Arb mathematical functions (supersedes the
+    external arbcmath.h).
+  * Fixed memory leak in arf_load_file.
+  * New and faster gamma function code.
+  * Most gamma function internals are now located in the
+    arb_hypgeom and acb_hypgeom modules. The user-facing
+    functions (arb_gamma, etc.) are still available under the old
+    names for compatibility. The internal algorithms for rising
+    factorials (binary splitting, etc.) have been moved without
+    aliases.
+  * Added arb_fma, arb_fma_arf, arb_fma_ui (like addmul, but take
+    a separate input and output).
+  * Slightly faster internal Bernoulli number generation for small n.
+  * Better enclosures for acb_barnes_g at negative reals.
+  * Added Graeffe transforms (arb_poly_graeffe_transform,
+    acb_poly_graeffe_transform).
+  * Added acb_add_error_arb.
+
+-------------------------------------------------------------------
 Thu Dec 24 11:22:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.19.0
