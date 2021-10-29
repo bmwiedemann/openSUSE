@@ -1,0 +1,88 @@
+From 49822c2130a2a6e1d5a9e414f5a0726a461d9b00 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 25 Oct 2021 12:08:46 -0400
+Subject: [PATCH] Add --disable-sbin-override for when /sbin is a symlink
+
+mount.nfs* umount.nfs* and nfsdcltrack are currently always installed in
+/sbin.
+
+Many distros are moving to a "merged /usr" where /sbin and others are
+symlinks into /usr/sbin or similar.  In these cases it is inelegant to
+install in /sbin (i.e. install through a symlink).
+
+So we add "--disable-sbin-override" as a configure option.  This causes
+the same sbindir to be used for *mount.nfs* and nfsdcltrack as for other
+system binaries.
+
+Note that autotools notices if we simply define "sbindir=/sbin"
+inside an "if CONFIG_foo" clause, gives a warning, and defeats our
+intent.
+
+So instead, we use the @CONFIG_SBIN_OVERRIDE_TRUE@ prefix to find
+the new declaration when we don't want it.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ configure.ac                  | 6 ++++++
+ utils/mount/Makefile.am       | 8 +++++---
+ utils/nfsdcltrack/Makefile.am | 9 ++++++---
+ 3 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bc2d0f02979c..93626d62be40 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -187,6 +187,12 @@ else
+ 	enable_libmount=no
+ fi
+ 
++AC_ARG_ENABLE(sbin-override,
++	[AC_HELP_STRING([--disable-sbin-override],
++		[Don't force nfsdcltrack and mount helpers into /sbin: always honour --sbindir])],
++	enable_sbin_override=$enableval,
++	enable_sbin_override=yes)
++	AM_CONDITIONAL(CONFIG_SBIN_OVERRIDE, [test "$enable_sbin_override" = "yes"])
+ AC_ARG_ENABLE(junction,
+ 	[AC_HELP_STRING([--enable-junction],
+ 			[enable support for NFS junctions @<:@default=no@:>@])],
+diff --git a/utils/mount/Makefile.am b/utils/mount/Makefile.am
+index ad0be93b1def..3101f7abd7f4 100644
+--- a/utils/mount/Makefile.am
++++ b/utils/mount/Makefile.am
+@@ -1,8 +1,10 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-# These binaries go in /sbin (not /usr/sbin), and that cannot be
+-# overridden at config time.
+-sbindir = /sbin
++# These binaries go in /sbin (not /usr/sbin), unless CONFIG_SBIN_OVERRIDE
++# is disabled as may be appropriate when /sbin is a symlink.
++# Note that we don't use "if CONFIG_SBIN_OVERRIDE" as that
++# causes autotools to notice the override and disable it.
++@CONFIG_SBIN_OVERRIDE_TRUE@sbindir = /sbin
+ 
+ man8_MANS	= mount.nfs.man umount.nfs.man
+ man5_MANS	= nfs.man
+diff --git a/utils/nfsdcltrack/Makefile.am b/utils/nfsdcltrack/Makefile.am
+index 2f7fe3de6922..769e4a455fcf 100644
+--- a/utils/nfsdcltrack/Makefile.am
++++ b/utils/nfsdcltrack/Makefile.am
+@@ -1,8 +1,11 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-# These binaries go in /sbin (not /usr/sbin), and that cannot be
+-# overridden at config time. The kernel "knows" the /sbin name.
+-sbindir = /sbin
++# These binaries go in /sbin (not /usr/sbin) as the kernel "knows" the
++# /sbin name.  If /sbin is a symlink, CONFIG_SBIN_OVERRIDE can be
++# disabled to install in /usr/sbin anyway.
++# Note that we don't use "if CONFIG_SBIN_OVERRIDE" as that
++# causes autotools to notice the override and disable it.
++@CONFIG_SBIN_OVERRIDE_TRUE@sbindir = /sbin
+ 
+ man8_MANS	= nfsdcltrack.man
+ EXTRA_DIST	= $(man8_MANS)
+-- 
+2.33.1
+

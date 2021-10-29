@@ -43,6 +43,7 @@ Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
 Patch1:         0001-gssd-fix-crash-in-debug-message.patch
+Patch2:         Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch
 
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
@@ -141,6 +142,7 @@ export LDFLAGS="-pie"
 	--enable-mount \
 	--enable-libmount-mount \
 	--disable-static \
+	--disable-sbin-override \
 	--with-pluginpath=%{_libdir}/libnfsidmap-1.0.0 \
 	--enable-mountconfig
 make %{?_smp_mflags}
@@ -206,7 +208,7 @@ fi
 ###
 %{fillup_only -n nfs nfs}
 #
-%set_permissions /sbin/mount.nfs
+%set_permissions %{_sbindir}/mount.nfs
 /sbin/ldconfig
 %service_add_post auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
@@ -218,7 +220,7 @@ fi
 %service_del_postun auth-rpcgss-module.service nfs-idmapd.service nfs-blkmap.service rpc-statd-notify.service rpc-gssd.service rpc-statd.service rpc-svcgssd.service
 
 %verifyscript -n nfs-client
-%verify_permissions -e /sbin/mount.nfs
+%verify_permissions -e %{_sbindir}/mount.nfs
 
 %pre -n nfs-kernel-server
 %service_add_pre nfs-svcgssd.service nfs-mountd.service nfs-server.service
@@ -254,14 +256,12 @@ fi
 %config %{_sysconfdir}/idmapd.conf
 %config %{_sysconfdir}/nfsmount.conf
 %config %{_sysconfdir}/nfs.conf
-%verify(not mode) %attr(0755,root,root) /sbin/mount.nfs
-/sbin/mount.nfs4
-/sbin/umount.nfs
-/sbin/umount.nfs4
+%verify(not mode) %attr(0755,root,root) %{_sbindir}/mount.nfs
+%{_sbindir}/mount.nfs4
+%{_sbindir}/umount.nfs
+%{_sbindir}/umount.nfs4
 %attr(0755,root,root) %{_sbindir}/mountstats
 %attr(0755,root,root) %{_sbindir}/nfsiostat
-%{_sbindir}/nfsdclddb
-%{_sbindir}/nfsdclnts
 %{_sbindir}/nfsdcld
 %{_sbindir}/nfsidmap
 %{_sbindir}/nfsstat
@@ -343,7 +343,9 @@ fi
 %{_sbindir}/rcnfs-server
 %{_sbindir}/rpc.mountd
 %{_sbindir}/rpc.nfsd
-/sbin/nfsdcltrack
+%{_sbindir}/nfsdcltrack
+%attr(0755,root,root) %{_sbindir}/nfsdclddb
+%attr(0755,root,root) %{_sbindir}/nfsdclnts
 %{_mandir}/man5/exports.5%{ext_man}
 %{_mandir}/man7/nfsd.7%{ext_man}
 %{_mandir}/man8/exportfs.8%{ext_man}

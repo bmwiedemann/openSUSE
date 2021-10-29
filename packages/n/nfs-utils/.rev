@@ -1574,4 +1574,16 @@
   (boo#1190144)</comment>
     <requestid>917833</requestid>
   </revision>
+  <revision rev="166" vrev="27">
+    <srcmd5>5ed5d9ec37cd562eb5984635f38279f9</srcmd5>
+    <version>unknown</version>
+    <time>1635539616</time>
+    <user>dimstar_suse</user>
+    <comment>- add Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch
+  and use it to move last few binaries from /sbin to /usr/sbin
+  (bsc#1191082)
+- Move nfsdclddb and nfsdclnts from nfs-client to
+  nfs-kernel-server and fix their permissions.</comment>
+    <requestid>927402</requestid>
+  </revision>
 </revisionlist>

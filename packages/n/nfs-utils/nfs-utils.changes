@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 25 23:53:37 UTC 2021 - Neil Brown <nfbrown@suse.com>
+
+- add Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch
+  and use it to move last few binaries from /sbin to /usr/sbin
+  (bsc#1191082)
+- Move nfsdclddb and nfsdclnts from nfs-client to
+  nfs-kernel-server and fix their permissions.
+
+-------------------------------------------------------------------
 Thu Sep  9 23:35:04 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Add 0001-gssd-fix-crash-in-debug-message.patch
