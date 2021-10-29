@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct 17 13:52:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * Added support for formatting & coloring of JSON bodies
+    preceded by non-JSON data (e.g., an XXSI prefix).
+  * Added charset auto-detection when `Content-Type` doesn’t
+    include it.
+  * Added `--response-charset` to allow overriding the response
+    encoding for terminal display purposes.
+  * Added `--response-mime` to allow overriding the response mime
+    type for coloring and formatting for the terminal.
+  * Added the ability to silence warnings through using `-q` or
+    `--quiet` twice (e.g. `-qq`).
+  * Added installed plugin list to `--debug` output.
+  * Fixed duplicate keys preservation in JSON data.
+
+-------------------------------------------------------------------
 Mon Sep  6 19:32:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Fix tests

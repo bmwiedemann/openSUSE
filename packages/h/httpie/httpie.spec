@@ -17,7 +17,7 @@
 
 
 Name:           httpie
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Source1:        http.1
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.5.2
+BuildRequires:  python3-charset-normalizer >= 2.0.0
 BuildRequires:  python3-defusedxml >= 0.6.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
@@ -37,6 +38,7 @@ BuildRequires:  python3-requests-toolbelt >= 0.9.1
 BuildRequires:  python3-responses
 BuildRequires:  python3-setuptools
 Requires:       python3-Pygments >= 2.5.2
+Requires:       python3-charset-normalizer >= 2.0.0
 Requires:       python3-defusedxml >= 0.6.0
 Requires:       python3-requests >= 2.22.0
 Requires:       python3-requests-toolbelt >= 0.9.1
