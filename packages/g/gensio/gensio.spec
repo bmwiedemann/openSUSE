@@ -25,7 +25,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.2.9
+Version:        2.3.1
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -78,6 +78,11 @@ other gensios are called filters.
 Summary:        Library to abstract stream and packet I/O
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       lksctp-tools-devel
+Requires:       pkgconfig(avahi-client)
+%if %{with openipmi}
+Requires:       pkgconfig(OpenIPMI)
+%endif
 
 %description devel
 This is gensio (pronounced gen'-see-oh), a framework for giving a
@@ -131,16 +136,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/gtlssh.1%{?ext_man}
 %{_mandir}/man1/gtlssync.1%{?ext_man}
 %{_mandir}/man5/gensio.5%{?ext_man}
-%{_mandir}/man5//sergensio.5%{?ext_man}
+%{_mandir}/man5/sergensio.5%{?ext_man}
 
 %files -n %{libname}
-%{_libdir}/libgensio.so.%{sover}*
+%{_libdir}/libgensio*.so.%{sover}*
 
 %files devel
 %dir %{_includedir}/gensio
-%{_includedir}/gensio/*.h
-%{_libdir}/libgensio.so
-%{_libdir}/pkgconfig/libgensio.pc
+%{_includedir}/gensio/
+%{_libdir}/libgensio*.so
+%{_libdir}/pkgconfig/libgensio*.pc
 %{_mandir}/man3/gensio_*3%{?ext_man}
 %{_mandir}/man3/sergensio_*3%{?ext_man}
 %{_mandir}/man3/str_to_gensio*.3%{?ext_man}
