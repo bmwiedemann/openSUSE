@@ -18,19 +18,20 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        5.0.35
+Version:        5.0.36
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
+Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/
-Source:         https://github.com/BelledonneCommunications/bzrtp/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
+Source:         https://gitlab.linphone.org/BC/public/bzrtp/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bzrtp-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbzrtp.pc.
 Patch0:         bzrtp-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 
@@ -40,6 +41,7 @@ The library written in C89.
 
 %package -n lib%{name}%{sover}
 Summary:        ZRTP key exchange protocol implementation
+Group:          Productivity/Telephony/Utilities
 
 %description -n lib%{name}%{sover}
 bzrtp is an implementation of the ZRTP key exchange protocol.
@@ -47,6 +49,7 @@ The library written in C89.
 
 %package devel
 Summary:        Development files for libbzrtp
+Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel

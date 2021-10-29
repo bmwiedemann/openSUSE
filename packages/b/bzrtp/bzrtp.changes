@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:34:46 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * Fix compilation issue with CLang 11
+
+-------------------------------------------------------------------
 Fri Oct 15 05:42:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.35:
