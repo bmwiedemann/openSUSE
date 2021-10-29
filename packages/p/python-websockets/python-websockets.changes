@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Oct 29 05:31:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 10.0:
+  - Backwards-incompatible changes
+    - websockets 10.0 requires Python ≥ 3.7.
+    - The ``loop`` parameter is deprecated from all APIs.
+      The ``loop`` parameter is also removed
+      from `~server.WebSocketServer`. This should be transparent.
+    - `~client.connect` times out after 10 seconds by default.
+      You can adjust the timeout with the ``open_timeout`` parameter. Set it to
+      `None` to disable the timeout entirely.
+    - The ``legacy_recv`` option is deprecated.
+    - The signature of `~exceptions.ConnectionClosed` changed.
+      If you raise `~exceptions.ConnectionClosed` or a subclass, rather
+      than catch them when websockets raises them, you must change your code.
+    - A ``msg`` parameter was added to `~exceptions.InvalidURI`.
+      If you raise `~exceptions.InvalidURI`, rather than catch it when
+      websockets raises it, you must change your code.
+  - New features
+    - websockets 10.0 introduces a Sans-I/O API for easier
+      integration in third-party libraries.
+    - Added compatibility with Python 3.10.
+    - Added `~websockets.broadcast` to send a message to many
+      clients.
+    - Added support for reconnecting automatically by using
+      `~client.connect` as an asynchronous iterator.
+    - Added ``open_timeout`` to :func:`~client.connect`.
+    - Documented how to integrate with Django.
+    - Documented how to deploy websockets in production, with
+      several options.
+    - Documented how to authenticate connections.
+    - Documented how to broadcast messages to many connections.
+  - Improvements
+    - Improved logging.
+    - Optimized default compression settings to reduce memory
+      usage.
+    - Optimized processing of client-to-server messages when the
+      C extension isn't available.
+    - Supported relative redirects in `~client.connect`.
+    - Handled TCP connection drops during the opening handshake.
+    - Made it easier to customize authentication with
+      `~auth.BasicAuthWebSocketServerProtocol.check_credentials`.
+    - Provided additional information in
+      `~exceptions.ConnectionClosed` exceptions.
+    - Clarified several exceptions or log messages.
+    - Restructured documentation.
+    - Improved API documentation.
+    - Extended FAQ.
+  - Bug fixes
+    - Avoided a crash when receiving a ping while the connection
+      is closing.
+- The test suite is temporarily suspended as it is completely
+  broken (gh#aaugustin/websockets#1081).
+
+-------------------------------------------------------------------
 Wed Aug 11 09:17:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
