@@ -870,4 +870,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
     <requestid>926356</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>968cb231ef90773d033e047b0ad62c19</srcmd5>
+    <version>5.23.2</version>
+    <time>1635539590</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.2 (forwarded request 927575 from Vogtinator)</comment>
+    <requestid>927669</requestid>
+  </revision>
 </revisionlist>
