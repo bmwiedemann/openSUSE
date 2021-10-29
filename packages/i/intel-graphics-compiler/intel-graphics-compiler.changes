@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Fri Oct 29 10:04:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Oct 21 17:08:55 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Compile with PIE flags
+- Use proper library names with SO-version included
+
+-------------------------------------------------------------------
+Thu Oct 21 12:05:20 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Split all shared libraries into their own packages
+- Only build for x86_64 
+
+-------------------------------------------------------------------
+Wed Oct  6 09:51:16 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Forgot to remove no longer needed Make-IGC-compile-with-gcc-11.patch 
+
+-------------------------------------------------------------------
+Tue Oct  5 14:19:03 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Build without vector compiler since it requires a checked out git repo
+- Build with -Wno-nonnull to fix build failure
+
+-------------------------------------------------------------------
+Tue Oct  5 11:11:15 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8744 
+  * Initial implementation of INTEL Joint Matrix SPIR-V extension,
+  * Fix cross-compiling elf_packager,
+  * LLVM 13 build fixes,
+  * Continued work on DIModule SPIRV extension,
+  * Extend VC dumps with the debug info diagnostics,
+  * Other fixes and improvements.
+
+-------------------------------------------------------------------
+Tue Sep 28 08:49:22 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8708
+  * Switch to LLVM11.1.0
+  * Part fix for buildbreak on LLVM12
+  * Part fix for buildbreak on LLVM13
+  * Fix for excessive stateless allocations
+  * Simplify extraction of DISubprogram node
+  * Support funnel shift intrinsics
+  * Enable madw use in i64 mul emulator.
+  * Forcing SIMD16 when there are too many memory access instructions
+  * Support for cl_khr_integer_dot_product
+  * Formatting fixes in DWARF emitters
+  * Other minor fixes and improvements.
+
+-------------------------------------------------------------------
+Fri Sep 17 15:36:34 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add disk space constraints to support the llvm10 build
+- Limit number of jobs due to memory constraints when building llvm10 
+
+-------------------------------------------------------------------
+Tue Sep 14 16:45:11 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.8517 (jsc#SLE-20149)
+  * Fix compile output dumping when recompilation happens
+  * simplify extraction of DISubprogram nodes
+  * Apply WA on flag spill
+  * regsiter allocation support for NoMask WA
+  * Enable madw use in i64 mul emulator
+  * Fix the madw issue if the dst is not GRF-aligned or the stride is not 1.
+  * Enabling CustomPasses for OpenCL
+  * Calculate correct sub-reg offset for spilled destination when preload is skipped.
+  * Add missing check on argument type.
+  * Add support for FNeg instruction uniform analysis
+  * Prepare VCBE to handle standalone stack calls
+  * Parsing Options for internal options
+  * Add diagnostics to GenXLegalization
+  * Insert extra mov to avoid immediate source for BF_CVT instruction
+  * Change passing -debug option to finalizer
+  * Add diagnostics to GenXLegalization
+  * Refactor SPIRV builtins related to SPV_INTEL_subgroups extension
+  * Mark payload live-outs as busy for gtpin.
+  * Remove unecessary DebugFlag enum values
+  * Add PatternMatch support for FNeg instruction
+  * Mark setup inputs as PayloadLiveOut to avoid GTPin's issue
+  * Fix arguments kind rewriting in bindless promotion
+  * Enable optimization to skip redundant fill in RMW.
+  * Convert URB partial writes to full-mask writes
+  * Fix the src/dst regioning issue in emitSimdMediaBlockWrite().
+  * Autogenerate getTranslatedBuiltinOperands in CMCL
+  * Autogenerate getTranslatedBuiltinType in CMCL
+  * Add an assertion in GenXAggregatePseudoLowering
+  * Emit error for externs unresolved during lining
+  * Autogenerate IntrinsicForBuiltin array in CMCL
+  * Remove strinstream usage causing memory freeing issues
+  * Add support for LLVM 12 in Vector Compiler
+  * Support plain samplers for ze binary
+  * Fix predicate commonning in GenXCategory
+  * Add option for scheduling control
+  * Apply WA on flag spill
+  * Autogenerate BuiltinCallHandlers array in CMCL.
+  * Fix use-after-free in GenXSimdCFConformance
+  * Fix non-deterministic processing in GenXCisaBuilder
+  * Fix calculation of type size for function pointers
+  * Mark payload live-outs as busy for gtpin.
+  * Allow mid-thread pre-emption even when stack calls are used.
+  * Preserve memory ordering in GenXBaling
+  * Fix FixInvalidFuncName pass
+  * Adding numWorkgroupUsed
+  * ZEBIN ELF spec update.
+  * Support plain samplers for OCL binary
+  * Treat all memory-related operations as high-cost in baling
+  * Refactor CMCL builtin return type definition 
+- Add patch to fix compilation with GCC11
+- Build with vc-intrinsics
+
+-------------------------------------------------------------------
+Mon Mar 23 11:27:04 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial changelog entry for version 1.0.3041
+- Based on package by Jacek Danecki Jacek.Danecki@intel.com
