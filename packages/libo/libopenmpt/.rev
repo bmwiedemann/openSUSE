@@ -586,4 +586,12 @@ Changes in 0.5.3:
     malformed files even though no more pattern data can be read.</comment>
     <requestid>913906</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e4c60c80e4ac6e1b02231e6c5ca794f1</srcmd5>
+    <version>0.5.12</version>
+    <time>1635539617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927424</requestid>
+  </revision>
 </revisionlist>

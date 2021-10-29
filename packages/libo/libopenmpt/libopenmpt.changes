@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 22 13:02:36 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.5.12:
+  * [Sec] Possible crash when loading malformed MDL files. (r15603)
+
+  * [Bug] Fixed various undefined behaviour found with ubsan.
+  * Seeking with sample sync sometimes didn’t compute the correct
+    sample position with pingpong-looped samples.
+  * IT: Tremor command I11 erroneously behaved like I00 (use previous
+    parameter) unless IT Old Effects were enabled.
+  * PTM: Panning was translated wrong in some edge cases.
+  * IMF / PTM: Note Slide commands were sometimes slightly off.
+  * OKT: Better support for fine note slides.
+  * DBM: Echo enable effect parameter range checks were incorrect.
+
+  * XM: Sample texts in XMs made with MadTracker are now also
+    decoded using Windows-1252 encoding.
+
+  * in_openmpt: Song metadata is no longer reverted when viewing
+    file info.
+  * mpg123: Update to v1.29.0 (2021-09-06).
+
+-------------------------------------------------------------------
 Mon Aug 23 22:18:43 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.11:
