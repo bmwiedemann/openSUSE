@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 14:40:45 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * pure-ftpd.service
+
+-------------------------------------------------------------------
 Mon May  3 05:30:57 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Small cleanup
