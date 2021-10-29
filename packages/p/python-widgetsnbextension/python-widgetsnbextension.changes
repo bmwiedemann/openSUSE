@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 29 09:05:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Bump release in order to facilitate removal of
+  jupyter-widgetsnbextension source package
+- Provide/Obsolete old python-jupyter_widgetsnbextension name
+
+-------------------------------------------------------------------
 Sun Oct 17 20:19:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for 3.5.1 

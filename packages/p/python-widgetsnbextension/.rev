@@ -7,4 +7,15 @@
     <comment>new subpackage of ipywidgets</comment>
     <requestid>925904</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>885452d26605296a893c942f87608d60</srcmd5>
+    <version>3.5.1</version>
+    <time>1635539651</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump release in order to facilitate removal of
+  jupyter-widgetsnbextension source package
+- Provide/Obsolete old python-jupyter_widgetsnbextension name
+</comment>
+    <requestid>928095</requestid>
+  </revision>
 </revisionlist>

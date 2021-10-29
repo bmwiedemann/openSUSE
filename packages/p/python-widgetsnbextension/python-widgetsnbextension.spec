@@ -31,6 +31,8 @@ BuildRequires:  %{python_module notebook >= 4.4.1}
 BuildRequires:  fdupes
 Requires:       python-notebook >= 4.4.1
 Requires:       jupyter-widgetsnbextension = %{version}
+Provides:       python-jupyter_widgetsnbextension = %{version}
+Obsoletes:      python-jupyter_widgetsnbextension < %{version}
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,8 +45,9 @@ Install the corresponding Jupyter widgets package into your kernel, i.e.,
 IPython users would install ipywidgets into their kernel.
 
 %package -n jupyter-widgetsnbextension
-Summary:  Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
-Provides: juypter-js-widgets = %{version}
+Summary:       Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
+Provides:      juypter-js-widgets = %{version}
+Requires:      python3-widgetsnbextension = %{version}
 
 %description  -n jupyter-widgetsnbextension
 This package makes Jupyter widgets available in the classic Jupyter Notebook.
