@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 13:18:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prometheus-postgres_exporter.service
+
+-------------------------------------------------------------------
 Tue Aug 17 08:07:41 UTC 2021 - Martin Seidl <mseidl@suse.de>
 
 - Package rename (from golang-github-wrouesnel-postgres_exporter)
