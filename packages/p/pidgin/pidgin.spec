@@ -17,12 +17,12 @@
 
 
 %define _name   Pidgin
+%define sover   0
 Name:           pidgin
 Version:        2.14.7
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://pidgin.im/
 Source:         http://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://downloads.sf.net/%{name}/%{name}-%{version}.tar.bz2.asc
@@ -81,6 +81,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xscrnsaver)
 Requires:       ca-certificates-mozilla
+Requires:       libpurple = %{version}
 Requires:       perl-base >= %{perl_version}
 Recommends:     gstreamer-plugins-good
 %if 0%{?suse_version} >= 1500 && !0%{?is_opensuse}
@@ -98,7 +99,6 @@ support many more with plugins.
 
 %package devel
 Summary:        Development Headers, Documentation, and Libraries for Pidgin
-Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       libpurple-devel = %{version}
 Requires:       pkgconfig(glib-2.0)
@@ -111,12 +111,13 @@ and plugins.
 
 %package -n libpurple
 Summary:        GLib-based Instant Messenger Library
-Group:          System/Libraries
 Requires:       ca-certificates-mozilla
 # Not really required, but standard XMPP accounts require it, if compiled with SASL support.
 Requires:       cyrus-sasl-digestmd5
 Requires:       cyrus-sasl-plain
+Requires:       libpurple%{sover} = %{version}
 Requires:       libpurple-branding
+Requires:       libpurple-client%{sover} = %{version}
 Requires:       perl >= %{perl_version}
 # Needed for purple-url-handler.
 Requires:       python3-dbus-python
@@ -132,9 +133,26 @@ support many more with plugins.
 
 %lang_package -n libpurple
 
+%package -n libpurple%{sover}
+Summary:        GLib-based Instant Messenger Library
+
+%description -n libpurple%{sover}
+libpurple is a library intended to be used by programmers seeking
+to write an IM client that connects to many IM networks.
+
+This package provides the core libpurple library.
+
+%package -n libpurple-client%{sover}
+Summary:        GLib-based Instant Messenger Library
+
+%description -n libpurple-client%{sover}
+libpurple is a library intended to be used by programmers seeking
+to write an IM client that connects to many IM networks.
+
+This package provides the core libpurple client library.
+
 %package -n libpurple-branding-upstream
 Summary:        GLib-based Instant Messenger Library -- Upstream default configuration
-Group:          System/Libraries
 Requires:       libpurple = %{version}
 Supplements:    (libpurple and branding-upstream)
 Conflicts:      libpurple-branding
@@ -156,7 +174,6 @@ This package provides the upstream default configuration for Pidgin.
 
 %package -n libpurple-devel
 Summary:        Development Headers, Documentation, and Libraries for libpurple
-Group:          Development/Libraries/C and C++
 Requires:       libpurple = %{version}
 Requires:       pkgconfig(glib-2.0)
 Requires:       pkgconfig(libxml-2.0)
@@ -169,7 +186,6 @@ client.
 
 %package -n libpurple-tcl
 Summary:        TCL Plugin Support for Pidgin
-Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple = %{version}
 Supplements:    (libpurple and tcl)
 
@@ -179,7 +195,6 @@ or use Pidgin plugins written in the TCL programming language.
 
 %package -n libpurple-plugin-sametime
 Summary:        Sametime Plugin for Pidgin using the Meanwhile Library
-Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple = %{version}
 # libpurple-meanwhile was last used in openSUSE Leap 42.2.
 Provides:       libpurple-meanwhile = %{version}
@@ -190,7 +205,6 @@ IBM Sametime plugin for Pidgin using the Meanwhile library.
 
 %package -n finch
 Summary:        Text-Based User Interface for Pidgin Instant Messaging Client
-Group:          Productivity/Networking/Instant Messenger
 Requires:       libpurple = %{version}
 
 %description -n finch
@@ -201,7 +215,6 @@ and text.
 
 %package -n finch-devel
 Summary:        Headers etc. for finch Stuffs
-Group:          Development/Libraries/C and C++
 Requires:       finch = %{version}
 Requires:       glibc-devel
 Requires:       libpurple-devel = %{version}
@@ -273,8 +286,19 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
 %post -n libpurple -p /sbin/ldconfig
+
 %postun -n libpurple -p /sbin/ldconfig
+
+%post -n libpurple%{sover} -p /sbin/ldconfig
+
+%postun -n libpurple%{sover} -p /sbin/ldconfig
+
+%post -n libpurple-client%{sover} -p /sbin/ldconfig
+
+%postun -n libpurple-client%{sover} -p /sbin/ldconfig
+
 %post -n finch -p /sbin/ldconfig
+
 %postun -n finch -p /sbin/ldconfig
 
 %files
@@ -301,12 +325,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/purple-send
 %{_bindir}/purple-send-async
 %{_bindir}/purple-url-handler
-%{_libdir}/libpurple.so.*
-%{_libdir}/libpurple-client.so.*
 %{_libdir}/purple-2/
 %exclude %{_libdir}/purple-2/libjabber.so
 %exclude %{_libdir}/purple-2/libsametime.so
 %exclude %{_libdir}/purple-2/tcl.so
+
+%files -n libpurple0
+%{_libdir}/libpurple.so.*
+
+%files -n libpurple-client0
+%{_libdir}/libpurple-client.so.*
 
 %files -n libpurple-lang -f %{name}.lang
 

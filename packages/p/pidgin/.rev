@@ -1052,4 +1052,13 @@
     <comment></comment>
     <requestid>924951</requestid>
   </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>9cb86aac0ed4839459414a43edf68f42</srcmd5>
+    <version>2.14.7</version>
+    <time>1635539614</time>
+    <user>dimstar_suse</user>
+    <comment>- Extract libpurple.so.* and libpurple-client.so.* to their own packages (boo#1191780).
+</comment>
+    <requestid>927340</requestid>
+  </revision>
 </revisionlist>
