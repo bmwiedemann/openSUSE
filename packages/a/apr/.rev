@@ -114,4 +114,12 @@
   + apr-CVE-2021-3594.patch</comment>
     <requestid>915695</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>24817da9286c1f1b3df94fbdfffaeb5f</srcmd5>
+    <version>1.7.0</version>
+    <time>1635539634</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927559</requestid>
+  </revision>
 </revisionlist>

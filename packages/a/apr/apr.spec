@@ -17,7 +17,7 @@
 
 
 %define         aprver 1
-%define         libname lib%{name}%{aprver}
+%define         libname lib%{name}%{aprver}-0
 %define         installbuilddir %{_libdir}/apr-%{aprver}/build
 %define         includedir %{_includedir}/apr-%{aprver}
 Name:           apr
@@ -72,8 +72,8 @@ ID services.
 Summary:        Development files for the Apache Portable Runtime (APR) library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Provides:       %{libname}-devel = %{version}
-Obsoletes:      %{libname}-devel < %{version}-%{release}
+Provides:       libapr1-devel = %{version}
+Obsoletes:      libapr1-devel < %{version}-%{release}
 
 %description devel
 APR is Apache's Portable Runtime Library, designed to be a support
