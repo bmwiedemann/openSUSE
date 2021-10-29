@@ -1023,4 +1023,20 @@
   https://gitlab.gnome.org/GNOME/libsoup/-/issues/236 (forwarded request 922302 from Guillaume_G)</comment>
     <requestid>922351</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>2cfa35cd0a594612f1579ed617b5526b</srcmd5>
+    <version>3.0.2</version>
+    <time>1635539624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2:
+  + Add support for multiple auth challenges in one response.
+  + Fix SoupCache test failures on 32bit
+  + Don't treat `-Wincompatible-pointer-types` as error. The
+    `glib-mkenums` tool sometimes triggered this.
+  + Improve `gssapi` dependency handling.
+  + Fix undefined `ssize_t` on Windows.
+  + Updated translations.
+- No longer ignore test failure on 32-bit arches, fixed upstream. (forwarded request 927205 from iznogood)</comment>
+    <requestid>927470</requestid>
+  </revision>
 </revisionlist>
