@@ -88,7 +88,6 @@ Recommends:     gitk
 Suggests:       git-daemon
 Suggests:       git-web
 %if 0%{?suse_version} >= 1500
-BuildRequires:  system-user-nobody
 BuildRequires:  sysuser-tools
 %endif
 %if %{with docs}
@@ -248,8 +247,8 @@ Summary:        Simple Server for Git Repositories
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires(pre):  %fillup_prereq
-%if 0%{?suse_version} >= 1550
-Requires(pre):  group(nobody)
+%if 0%{?suse_version} >= 1500
+Requires(pre):  group(nogroup)
 %sysusers_requires
 %{?systemd_requires}
 %else
@@ -354,7 +353,7 @@ chmod 755 .make
 ./.make -C contrib/subtree/
 
 %if 0%{?suse_version} >= 1500
-%sysusers_generate_pre %{SOURCE11} git-daemon
+%sysusers_generate_pre %{SOURCE11} git-daemon git-daemon.conf
 %endif
 
 %install
