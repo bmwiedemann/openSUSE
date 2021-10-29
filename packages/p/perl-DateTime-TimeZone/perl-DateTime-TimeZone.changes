@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 23 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.51
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.51    2021-10-21
+
+  - This release is based on version 2021e of the Olson database. This release
+    includes contemporary changes for Palestine.
+
+-------------------------------------------------------------------
 Sat Oct 16 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.50
