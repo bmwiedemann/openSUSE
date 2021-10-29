@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 21 18:28:10 UTC 2021 - jeffm@suse.com
+
+- Update to version 1.3.0+git.20211021:
+  * blkparse: fix incorrectly sized memset in check_cpu_map
+  * blkparse: skip check_cpu_map with pipe input
+
+-------------------------------------------------------------------
 Mon Oct 11 13:08:42 UTC 2021 - ddiss@suse.com
 
 - Update to version 1.3.0+git.20210628:

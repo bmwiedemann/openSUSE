@@ -18,7 +18,7 @@
 
 %{!?_without_docs: %global with_docs 1}
 Name:           blktrace
-Version:        1.3.0+git.20210628
+Version:        1.3.0+git.20211021
 Release:        0
 Summary:        Block IO tracer
 License:        GPL-2.0-only
