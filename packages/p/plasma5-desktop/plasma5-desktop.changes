@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 27 11:10:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2.1
+  * New bugfix release
+- Changes since 5.23.2:
+  * kickoff: Fix drag and drop causing delegates to reset to a 0 X position and overlap (kde#443975)
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * [Folder View] Fix executing file without prompting (kde#435560)
+  * KCM Touchpad: Load config for touchpad on init (kde#443011)
+  * Remove defunct check for proxyAction in foldermodel (kde#444128)
+  * taskmanager: Show highlight before ToolTipInstance starts loading for grouped tooltips
+  * Fix updating apps model (kde#444101)
+  * Fix pinned applet closes (kde#443589)
+  * taskmanager: Prevent useless component creation/destruction for grouped tooltips
+  * applets/taskmanager: Always set mprisSourceName to parentPid
+  * Make Applet config window a tiny bit smaller and reduce minimum size (kde#443712)
+  * Set Qt.ImhNoPredictiveText for text fields that act as search fields (kde#439914)
+  * Desktop as folder: restore functionality of the "delete" action (kde#442765)
+  * Fix create-folder-shortcut (F10) (kde#443512)
+
+-------------------------------------------------------------------
 Tue Oct 19 14:05:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.1

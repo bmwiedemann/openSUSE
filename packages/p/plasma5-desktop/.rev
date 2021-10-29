@@ -1450,4 +1450,15 @@
     <comment>Plasma 5.23.1. Random plasma5-openSUSE failures due to qml-autoreprov. (forwarded request 926351 from Vogtinator)</comment>
     <requestid>926387</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>915c03d67125681ff4ca37d70fa0322b</srcmd5>
+    <version>5.23.2.1</version>
+    <time>1635539613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.23.2.1
+  * New bugfix release
+- Changes since 5.23.2:
+  * kickoff: Fix drag and drop causing delegates to reset to a 0 X position and overlap (kde#443975) (forwarded request 927791 from Vogtinator)</comment>
+    <requestid>927792</requestid>
+  </revision>
 </revisionlist>
