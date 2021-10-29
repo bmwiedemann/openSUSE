@@ -5684,7 +5684,7 @@ unsorted:
   - gmic 
   - gmic-bash-completion 
   - gmime-devel 
-  - gmmlib-devel: [x86_64] 
+  - gmmlib-devel 
   - gmock 
   - gmp-devel 
   - gmp-devel-32bit: [x86_64] 
@@ -7006,7 +7006,8 @@ unsorted:
   - intel-gpu-tools 
   - intel-gpu-tools-devel 
   - intel-hybrid-driver 
-  - intel-media-driver: [x86_64] 
+  - intel-media-driver 
+  - intel-media-driver-32bit: [x86_64] 
   - intel-vaapi-driver-32bit: [x86_64] 
   - intelhex 
   - inter-fonts 
@@ -11327,9 +11328,11 @@ unsorted:
   - libiec61883-0-32bit: [x86_64] 
   - libiec61883-devel 
   - libiec61883-tools 
-  - libigdgmm11: [x86_64] 
-  - libigfxcmrt-devel: [x86_64] 
-  - libigfxcmrt7: [x86_64] 
+  - libigdgmm11 
+  - libigdgmm11-32bit: [x86_64] 
+  - libigfxcmrt-devel 
+  - libigfxcmrt7 
+  - libigfxcmrt7-32bit: [x86_64] 
   - libilbc0 
   - libimaevm2: [i586] 
   - libimagequant-devel 
@@ -12556,6 +12559,7 @@ unsorted:
   - libparserutils-devel 
   - libparserutils0 
   - libparted0-32bit: [x86_64] 
+  - libpartio1 
   - libpasswdqc0 
   - libpasswdqc0-32bit: [x86_64] 
   - libpath_utils-devel 
@@ -18369,6 +18373,9 @@ unsorted:
   - partclone-lang 
   - parted-devel 
   - parti 
+  - partio 
+  - partio-devel 
+  - partio-doc 
   - partitionmanager 
   - partitionmanager-lang 
   - parzip 
@@ -21331,6 +21338,7 @@ unsorted:
   - python3-ovs 
   - python3-ovsdbapp 
   - python3-paraview 
+  - python3-partio 
   - python3-pcp 
   - python3-plist 
   - python3-plplot 
