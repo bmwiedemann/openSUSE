@@ -1095,4 +1095,12 @@
   * Don't set alignment for spinboxes (kde#443769)</comment>
     <requestid>926587</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>285750e095dc68b53aec1a5e04f4a35d</srcmd5>
+    <version>5.23.2</version>
+    <time>1635539590</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.2 (forwarded request 927575 from Vogtinator)</comment>
+    <requestid>927668</requestid>
+  </revision>
 </revisionlist>

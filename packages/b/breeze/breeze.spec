@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.23.1
+Version:        5.23.2
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source:         breeze-%{version}.tar.xz
 Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Update-version-number-for-5.23.1.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 0.0.13
 BuildRequires:  fdupes

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 26 14:55:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * fix paint for standalone buttons with dynamic size
+  * Update version number for 5.23.1
+- Drop patches, now upstream:
+  * 0001-Update-version-number-for-5.23.1.patch
+
+-------------------------------------------------------------------
 Wed Oct 20 17:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix the version number:
