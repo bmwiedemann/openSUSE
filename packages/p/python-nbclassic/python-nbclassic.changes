@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 19:14:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11
+
+-------------------------------------------------------------------
 Wed Sep  8 10:31:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

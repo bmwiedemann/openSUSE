@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>927760</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1a87e34f7c404d92b8a240405fa464b7</srcmd5>
+    <version>0.3.1</version>
+    <time>1635539650</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11</comment>
+    <requestid>928026</requestid>
+  </revision>
 </revisionlist>
