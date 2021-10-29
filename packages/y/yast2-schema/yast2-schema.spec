@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# add 'hostname' element to the rules.xml schema
-BuildRequires:  autoyast2 >= 4.4.16
+# add 'keep_unknown_lv' element to the partitioning schema
+BuildRequires:  autoyast2 >= 4.4.18
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3

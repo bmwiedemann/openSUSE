@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 25 08:16:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add the "keep_unknown_lv" element to the partitioning schema
+  (bsc#1191968).
+- 4.4.4
+
+-------------------------------------------------------------------
 Tue Sep 21 12:03:42 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add the "hostname" element to the rules schema (bsc#1190696).
