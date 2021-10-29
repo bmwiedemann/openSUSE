@@ -204,6 +204,8 @@ done
   # gh#astropy/astropy#12017
   donttest+=" or test_stats"
 %endif
+# https://github.com/astropy/astropy/issues/12050
+donttest+=" or (test_no_numpy_warnings and contours)"
 testselect_expr="${donttest:+-k \"not (${donttest# or })\"}"
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
