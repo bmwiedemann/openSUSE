@@ -299,7 +299,9 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 9085
 Provides:       pattern-visible()
+%ifarch %{ix86} ia64 x86_64 %{arm} aarch64
 Requires:       dmidecode
+%endif
 Requires:       keylime-agent
 Requires:       keylime-firewalld
 Requires:       pattern() = microos_ima_evm
@@ -503,6 +505,7 @@ Requires:       xdg-desktop-portal-gnome
 %if 0%{is_opensuse}
 # bnc#430161
 Requires:       NetworkManager
+Requires:       NetworkManager-openvpn-gnome
 Requires:       canberra-gtk-play
 #
 # Branding

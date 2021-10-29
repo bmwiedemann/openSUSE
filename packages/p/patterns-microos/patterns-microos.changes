@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 27 08:40:21 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Install dmidecode only on archs where it is available
+
+-------------------------------------------------------------------
+Fri Oct 22 14:59:42 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Add NetworkManager-openvpn-gnome to gnome pattern 
+
+-------------------------------------------------------------------
 Thu Oct  7 19:32:06 UTC 2021 - Teoh Han Hui <teohhanhui@gmail.com>
 
 - Add xdg-desktop-portal-gnome to gnome pattern
