@@ -33,8 +33,6 @@ $RepeatedMsgReduction   on
 # kernel logging (may be also provided by /sbin/klogd)
 # see also http://www.rsyslog.com/doc-imklog.html.
 $ModLoad imklog.so
-# set log level 1 (same as in /etc/sysconfig/syslog).
-$klogConsoleLogLevel    1
 
 #
 # Set the default permissions for all log files.
