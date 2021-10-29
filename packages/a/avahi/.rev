@@ -1089,4 +1089,13 @@
     <comment></comment>
     <requestid>926288</requestid>
   </revision>
+  <revision rev="143" vrev="9">
+    <srcmd5>a0fc34f913b8c49df763e1da79f70019</srcmd5>
+    <version>0.8</version>
+    <time>1635539628</time>
+    <user>dimstar_suse</user>
+    <comment>Change %python38_version_nodots to %suse_version which is compatible with Leap and SLE. See also:
+https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 927314 from yfjiang)</comment>
+    <requestid>927479</requestid>
+  </revision>
 </revisionlist>
