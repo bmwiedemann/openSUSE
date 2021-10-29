@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 26 14:55:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * [wayland] fix ignored keyboard RepeatRate (kde#443721)
+  * kwineffects: Fix destruction of s_fbo with shared GLTexture objects (kde#443951)
+  * WaylandOutput: schedule update on mode change (kde#444303)
+  * platforms/drm: fix direct scanout check
+  * Fix focus loss on decoration destruction (kde#411884)
+  * input: fix crash on touch quicktile
+  * platforms/drm: fix init with explicit modifiers
+  * platforms/drm: allow overriding eglstream choice
+  * platforms/drm: set draw buffer for gbm
+  * platforms/drm: use gbm with NVidia driver 495+
+
+-------------------------------------------------------------------
 Tue Oct 19 14:05:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.1
