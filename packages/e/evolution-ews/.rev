@@ -988,4 +988,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920921 from dimstar)</comment>
     <requestid>921604</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>fa48ba696638bc14988233aad451a37b</srcmd5>
+    <version>3.42.0</version>
+    <time>1635539623</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF
+  as that should be used with the newest cmake macros (boo#1190880) (forwarded request 927008 from alarrosa)</comment>
+    <requestid>927469</requestid>
+  </revision>
 </revisionlist>

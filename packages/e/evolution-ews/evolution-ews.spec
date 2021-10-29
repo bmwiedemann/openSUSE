@@ -69,7 +69,7 @@ using exchange web services protocol.
 
 %build
 %cmake \
-  -DCMAKE_SKIP_RPATH=OFF \
+  -DCMAKE_SKIP_INSTALL_RPATH=OFF \
   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
 %cmake_build
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 22 12:35:14 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF
+  as that should be used with the newest cmake macros (boo#1190880)
+
+-------------------------------------------------------------------
 Fri Sep 17 09:31:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.42.0:
