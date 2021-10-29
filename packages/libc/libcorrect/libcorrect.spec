@@ -1,8 +1,8 @@
 #
 # spec file for package libcorrect
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,21 @@ applications that want to make use of libcorrect.
 %install
 %cmake_install
 
+# creates support file for pkg-config
+mkdir -p %{buildroot}/%{_libdir}/pkgconfig
+tee %{buildroot}/%{_libdir}/pkgconfig/libcorrect.pc << "EOF"
+prefix=%{_prefix}
+exec_prefix=${prefix}
+libdir=${exec_prefix}/%{_lib}
+includedir=${prefix}/include
+
+Name:           libcorrect
+Description: C library for Convolutional codes and Reed-Solomon
+Version:        %{version}
+Libs: -lcorrect
+Cflags: -I${_includedir}/
+EOF
+
 %post   -n libcorrect%{sover} -p /sbin/ldconfig
 %postun -n libcorrect%{sover} -p /sbin/ldconfig
 
@@ -91,5 +106,6 @@ applications that want to make use of libcorrect.
 %files devel
 %{_includedir}/correct*.h
 %{_libdir}/libcorrect.so
+%{_libdir}/pkgconfig/libcorrect.pc
 
 %changelog
