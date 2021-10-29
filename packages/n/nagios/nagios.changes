@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:27:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * nagios-archive.service
+  * nagios.service
+
+-------------------------------------------------------------------
 Mon May 10 14:53:04 UTC 2021 - lars@linux-schulserver.de - 4.4.6
 
 - new nagios-exec-start-post script to fix bsc#1003362
