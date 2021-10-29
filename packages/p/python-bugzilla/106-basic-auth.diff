@@ -1,0 +1,83 @@
+---
+ bugzilla/base.py |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+Index: python-bugzilla-3.0.2/bugzilla/base.py
+===================================================================
+--- python-bugzilla-3.0.2.orig/bugzilla/base.py
++++ python-bugzilla-3.0.2/bugzilla/base.py
+@@ -175,7 +175,8 @@ class Bugzilla(object):
+     def __init__(self, url=-1, user=None, password=None, cookiefile=-1,
+                  sslverify=True, tokenfile=-1, use_creds=True, api_key=None,
+                  cert=None, configpaths=-1,
+-                 force_rest=False, force_xmlrpc=False, requests_session=None):
++                 force_rest=False, force_xmlrpc=False, requests_session=None,
++                 basic_auth=False):
+         """
+         :param url: The bugzilla instance URL, which we will connect
+             to immediately. Most users will want to specify this at
+@@ -212,6 +213,7 @@ class Bugzilla(object):
+         :param requests_session: An optional requests.Session object the
+             API will use to contact the remote bugzilla instance. This
+             way the API user can set up whatever auth bits they may need.
++        :param basic_auth: Use headers with HTTP Basic authentication
+         """
+         if url == -1:
+             raise TypeError("Specify a valid bugzilla url, or pass url=None")
+@@ -253,6 +255,7 @@ class Bugzilla(object):
+         self._setcookiefile(cookiefile)
+         self._settokenfile(tokenfile)
+         self._setconfigpath(configpaths)
++        self._basic_auth = basic_auth
+ 
+         if url:
+             self.connect(url)
+@@ -607,6 +610,9 @@ class Bugzilla(object):
+         if not self.password:
+             raise ValueError("missing password")
+ 
++        if self._basic_auth:
++            self._backend.set_basic_auth(self.user, self.password)
++
+         payload = {"login": self.user}
+         if restrict_login:
+             payload['restrict_login'] = True
+Index: python-bugzilla-3.0.2/bugzilla/_backendxmlrpc.py
+===================================================================
+--- python-bugzilla-3.0.2.orig/bugzilla/_backendxmlrpc.py
++++ python-bugzilla-3.0.2/bugzilla/_backendxmlrpc.py
+@@ -2,6 +2,7 @@
+ # See the COPYING file in the top-level directory.
+ 
+ from logging import getLogger
++import base64
+ import sys
+ from xmlrpc.client import (Binary, Fault, ProtocolError,
+                            ServerProxy, Transport)
+@@ -136,6 +137,9 @@ class _BugzillaXMLRPCProxy(ServerProxy,
+             self.__bugzillasession.set_token_value(ret.get('token'))
+         return ret
+ 
++    def clear_token(self):
++        self.__bugzillasession.set_token_value(None)
++
+ 
+ class _BackendXMLRPC(_BackendBase):
+     """
+@@ -150,6 +154,16 @@ class _BackendXMLRPC(_BackendBase):
+     def is_xmlrpc(self):
+         return True
+ 
++    def set_basic_auth(self, user, password):
++        """
++        Set basic authentication method.
++
++        :return:
++        """
++        b64str = base64.b64encode("{}:{}".format(user, password).encode("utf-8"))
++        authstr = "Basic {}".format(b64str.decode("utf-8"))
++        self._bugzillasession._session.headers["Authorization"] = authstr
++
+     def bugzilla_version(self):
+         return self._xmlrpc_proxy.Bugzilla.version()
+ 

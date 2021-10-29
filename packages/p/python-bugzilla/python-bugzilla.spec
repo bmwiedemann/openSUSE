@@ -27,6 +27,9 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-bugzilla/python-bugzilla
 Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla/python-bugzilla-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 106-basic-auth.diff bsc#1098219 mcepl@suse.com
+# Fix basic authentication on bugzilla.suse.com
+Patch0:         106-basic-auth.diff
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -34,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       osc
 Conflicts:      %{oldpython}-bugzillatools
 Obsoletes:      python2-bugzilla

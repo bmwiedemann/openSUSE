@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 26 10:25:23 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix problem with basic-auth patch for version higher than 3.0.0 (bsc#1098219)
+
+- Modified:
+  * 106-basic-auth.diff 
+
+-------------------------------------------------------------------
+Tue Oct 26 05:50:05 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Revert removing of 106-basic-auth.diff
+
+-------------------------------------------------------------------
 Thu Oct 21 17:55:23 UTC 2021 - Marina Latini <marina.latini@suse.com>
 
 - Obsolete python2-bugzilla 
