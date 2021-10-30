@@ -203,4 +203,117 @@
 </comment>
     <requestid>928132</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>badbf7079e2a170b729d5ab734c91d40</srcmd5>
+    <version>10.0</version>
+    <time>1635628438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.0:
+  - Backwards-incompatible changes
+    - websockets 10.0 requires Python ≥ 3.7.
+    - The ``loop`` parameter is deprecated from all APIs.
+      The ``loop`` parameter is also removed
+      from `~server.WebSocketServer`. This should be transparent.
+    - `~client.connect` times out after 10 seconds by default.
+      You can adjust the timeout with the ``open_timeout`` parameter. Set it to
+      `None` to disable the timeout entirely.
+    - The ``legacy_recv`` option is deprecated.
+    - The signature of `~exceptions.ConnectionClosed` changed.
+      If you raise `~exceptions.ConnectionClosed` or a subclass, rather
+      than catch them when websockets raises them, you must change your code.
+    - A ``msg`` parameter was added to `~exceptions.InvalidURI`.
+      If you raise `~exceptions.InvalidURI`, rather than catch it when
+      websockets raises it, you must change your code.
+  - New features
+    - websockets 10.0 introduces a Sans-I/O API for easier
+      integration in third-party libraries.
+    - Added compatibility with Python 3.10.
+    - Added `~websockets.broadcast` to send a message to many
+      clients.
+    - Added support for reconnecting automatically by using
+      `~client.connect` as an asynchronous iterator.
+    - Added ``open_timeout`` to :func:`~client.connect`.
+    - Documented how to integrate with Django.
+    - Documented how to deploy websockets in production, with
+      several options.
+    - Documented how to authenticate connections.
+    - Documented how to broadcast messages to many connections.
+  - Improvements
+    - Improved logging.
+    - Optimized default compression settings to reduce memory
+      usage.
+    - Optimized processing of client-to-server messages when the
+      C extension isn't available.
+    - Supported relative redirects in `~client.connect`.
+    - Handled TCP connection drops during the opening handshake.
+    - Made it easier to customize authentication with
+      `~auth.BasicAuthWebSocketServerProtocol.check_credentials`.
+    - Provided additional information in
+      `~exceptions.ConnectionClosed` exceptions.
+    - Clarified several exceptions or log messages.
+    - Restructured documentation.
+    - Improved API documentation.
+    - Extended FAQ.
+  - Bug fixes
+    - Avoided a crash when receiving a ping while the connection
+      is closing.
+- The test suite is temporarily broken on Python 3.9.7
+  (gh#aaugustin/websockets#1051).
+- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
+  test_keepalive_ping_with_no_ping_timeout pass again.
+- Remove skip-test_keepalive_ping_with_no_ping_timeout.patch, of course.
+- Use %pyunittest macro instead of doing it on our own.
+- Add skip-test_keepalive_ping_with_no_ping_timeout.patch for
+  gh#aaugustin/websockets#1026.
+- update to 9.1:
+   **Version 9.1 fixes a security issue introduced in version 8.0.**
+  * Restored compatibility of ``python -m websockets`` with Python &lt; 3.9.
+  * Restored compatibility with mypy.
+  * Fixed issues with the packaging of the 9.0 release.
+      * :class:`~datastructures.Headers` and
+	:exc:`~datastructures.MultipleValuesError` were moved from
+	``websockets.http`` to :mod:`websockets.datastructures`. If you're using
+	them, you should adjust the import path.
+      * The ``client``, ``server``, ``protocol``, and ``auth`` modules were
+	moved from the ``websockets`` package to ``websockets.legacy``
+	sub-package, as part of an upcoming refactoring. Despite the name,
+	they're still fully supported. The refactoring should be a transparent
+	upgrade for most uses when it's available. The legacy implementation
+	will be preserved according to the `backwards-compatibility policy`_.
+      * The ``framing``, ``handshake``, ``headers``, ``http``, and ``uri``
+	modules in the ``websockets`` package are deprecated. These modules
+	provided low-level APIs for reuse by other WebSocket implementations,
+	but that never happened. Keeping these APIs public makes it more
+	difficult to improve websockets for no actual benefit.
+  * Added compatibility with Python 3.9.
+  * Added support for IRIs in addition to URIs.
+  * Added close codes 1012, 1013, and 1014.
+  * Raised an error when passing a :class:`dict` to
+- Remove Suggest python-asyncio, which is in Python 3 stdlib
+- update to 8.1
+  * Added compatibility with Python 3.8.
+- drop upstreamed patch python38-support.patch
+- Add python38-support.patch from upstream that fixes build failures
+  against Python 3.8.
+- Update to 8.0.2:
+  * Restored the ability to pass a socket with the sock parameter of :func:`~server.serve`.
+  * Removed an incorrect assertion when a connection drops.
+- Update to 8.0.1:
+  * Version 8.0 drops compatibility with Python 3.4 and 3.5.
+  * Various fixes
+- Update to 7.0:
+  * Various fixes
+  * Repository layout changes
+- Call the tests the same way as upstream to avoid import cycles
+- Do make sure to error out on test failure.
+- Version update to 6.0:
+  * compatibility with python 3.6
+- Update to version 5.0.1
+  * CVE-2018-1000518: Defend against zip bombs (boo#1099269).
+- Add WEBSOCKETS_TESTS_TIMEOUT_FACTOR=5, otherwise tests in several
+  projects fail
+- initial version
+</comment>
+    <requestid>928264</requestid>
+  </revision>
 </revisionlist>

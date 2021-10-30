@@ -19,6 +19,8 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
+# gh#aaugustin/websockets#1051
+%define         skip_python39 1
 Name:           python-websockets
 Version:        10.0
 Release:        0
@@ -60,7 +62,7 @@ export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=10
 # https://github.com/aaugustin/websockets/issues/855 is an intermittent failure
 # for test_keepalive_ping_does_not_crash_when_connection_lost on s390x
 # export PYTHONWARNINGS=default
-%pyunittest_arch -v || /bin/true
+%pyunittest_arch -v
 
 %files %{python_files}
 %license LICENSE

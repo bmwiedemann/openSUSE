@@ -50,8 +50,8 @@ Fri Oct 29 05:31:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
   - Bug fixes
     - Avoided a crash when receiving a ping while the connection
       is closing.
-- The test suite is temporarily suspended as it is completely
-  broken (gh#aaugustin/websockets#1081).
+- The test suite is temporarily broken on Python 3.9.7
+  (gh#aaugustin/websockets#1051).
 
 -------------------------------------------------------------------
 Wed Aug 11 09:17:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
