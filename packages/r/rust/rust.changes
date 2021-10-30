@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 25 22:36:36 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Remove rls/gdb as they are superceded by rustup
+
+-------------------------------------------------------------------
 Fri Sep 10 03:07:24 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update to version 1.55

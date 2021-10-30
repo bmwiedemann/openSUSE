@@ -33,15 +33,7 @@ Obsoletes:      %{1}1.51%{?2:-%{2}}
 # armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
 # but may not always work.
 #
-%ifarch x86_64 aarch64
-%bcond_without tier1
-%else
-%bcond_with tier1
-%endif
 
-# Rpm specs have a limitation that if the parent package is noarch, all child packages must
-# also be noarch. Since rls is arch dependent, we MUST have all packages as arch dependent
-# because of this.
 Name:           rust
 Version:        %{version_current}
 Release:        0
@@ -68,44 +60,6 @@ abstractions", even though some of these abstractions feel like those
 of a high-level language. Even then, Rust still allows precise control
 like a low-level language would.
 
-%package -n rust-gdb
-Summary:        Gdb integration for rust binaries
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rust = %{version}
-Requires:       rust%{version_suffix}-gdb
-%obsolete_rust_versioned rust gdb
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-# Legacy SUSE-only form
-Supplements:    packageand(rust:gdb)
-%else
-# Standard form
-Supplements:    (rust and gdb)
-%endif
-
-%description -n rust-gdb
-This subpackage provides pretty printers and a wrapper script for
-invoking gdb on rust binaries.
-
-
-# As this is masked by tier1, this is arch specific even if it has no content.
-
-%package -n rls
-Summary:        Language server for Rust lang
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rls%{version_suffix}
-Requires:       rust = %{version}
-%obsolete_rust_versioned rls
-
-%description -n rls
-The RLS provides a server that runs in the background, providing IDEs,
-editors, and other tools with information about Rust programs. It
-supports functionality such as 'goto definition', symbol search,
-reformatting, and code completion, and enables renaming and
-refactorings.  It can be used with an IDE such as Gnome-Builder.
-
 %package -n cargo
 Summary:        The Rust package manager
 License:        Apache-2.0 OR MIT
@@ -123,25 +77,11 @@ Cargo downloads dependencies of Rust projects and compiles it.
 
 %install
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust/README
-install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust-gdb/README
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/cargo/README
-%if %{with tier1}
-install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rls/README
-%endif
 
 %files
 %defattr(-,root,root,-)
 %doc /usr/share/doc/packages/rust
-
-%files -n rust-gdb
-%defattr(-,root,root,-)
-%doc /usr/share/doc/packages/rust-gdb
-
-%if %{with tier1}
-%files -n rls
-%defattr(-,root,root,-)
-%doc /usr/share/doc/packages/rls
-%endif
 
 %files -n cargo
 %defattr(-,root,root,-)
