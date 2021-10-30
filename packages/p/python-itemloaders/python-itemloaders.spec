@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+# Scrapy and thus itemadapter on TW have disabled python36 due to uvloop
+%define skip_python36 1
 Name:           python-itemloaders
 Version:        1.0.4
 Release:        0
