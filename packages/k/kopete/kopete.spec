@@ -71,15 +71,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
-BuildRequires:  pkgconfig(libsrtp)
-%if 0%{?is_opensuse} || !0%{?sle_version}
-BuildRequires:  mediastreamer2-devel
-%endif
-%if 0%{?is_opensuse} || !0%{?sle_version}
-BuildRequires:  pkgconfig(ortp) >= 0.22
-%endif
 
 %description
 Kopete is the KDE instant messenger and supports multiple protocols.

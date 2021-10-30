@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 29 14:02:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the libjingle build dependencies. The build fails for
+  various reasons.
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
