@@ -3,8 +3,11 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/pipewire.git</param>
-    <param name="revision">refs/tags/0.3.38</param>
+    <param name="revision">refs/tags/0.3.39</param>
     <param name="versionformat">@PARENT_TAG@</param>
+<!--    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+-->
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

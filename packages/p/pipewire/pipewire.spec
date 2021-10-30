@@ -44,7 +44,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.38
+Version:        0.3.39
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,8 +53,9 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-Patch0:         0001-fix-compilation-on-ARM.patch
-
+Patch0:         0001-cpu-fix-compilation-on-some-architectures.patch
+Patch1:         0001-map-make-_insert_at-fail-on-a-removed-item.patch
+Patch2:         0002-map-use-uintptr_t-for-the-next-pointer.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -99,13 +100,13 @@ BuildRequires:  pkgconfig(libavformat)
 %if %{with aptx}
 BuildRequires:  pkgconfig(libfreeaptx)
 %endif
+BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
@@ -237,7 +238,7 @@ The framework is used to build a modular daemon that can be configured to:
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
-Requires:       pipewire
+Requires:       pipewire = %{version}
 
 %description spa-plugins-%{spa_ver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -274,16 +275,6 @@ Group:          Development/Libraries/C and C++
 
 %description doc
 This package contains documentation for the PipeWire media server.
-
-%package media-session
-Summary:        PipeWire Media Session Manager
-Group:          Development/Libraries/C and C++
-Recommends:     %{name} >= %{version}-%{release}
-Provides:       pipewire-session-manager
-
-%description media-session
-This package contains the reference Media Session Manager for the
-PipeWire media server.
 
 %package alsa
 Summary:        PipeWire media server ALSA support
@@ -361,6 +352,7 @@ export CC=gcc-9
 %else
     -Djack-devel=false \
 %endif
+    -Dsession-managers="[]" \
     %{nil}
 %meson_build
 
@@ -371,7 +363,6 @@ cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/50-pipewire.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
         %{buildroot}%{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
-touch %{buildroot}%{_datadir}/pipewire/media-session.d/with-alsa
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
 
@@ -406,7 +397,7 @@ if [ -f /run/systemd/rpm/needs-user-preset/pipewire.socket ]; then
   echo "Switching Pipewire activation using systemd user socket."
   echo "Please log out from all sessions once to make it effective."
 fi
-%systemd_user_post pipewire.service pipewire.socket pipewire-media-session.service
+%systemd_user_post pipewire.service pipewire.socket
 
 # If the pipewire.socket user unit is not enabled and the workaround
 # for boo#1186561 has never been executed, we need to execute it now
@@ -435,43 +426,6 @@ fi
 
 %postun
 %systemd_user_postun pipewire.service pipewire.socket
-
-%pre media-session
-%systemd_user_pre pipewire-media-session.service
-
-%post media-session
-%systemd_user_post pipewire-media-session.service
-
-# If the pipewire-media-session user service is not enabled and the
-# wireplumber user service is not enabled either (since it can replace pipewire-media-session)
-# and the workaround for boo#1186561 has never been executed,
-# we need to execute it now
-if [ ! -L %{_sysconfdir}/systemd/user/pipewire.service.wants/pipewire-media-session.service \
-    -a ! -L %{_sysconfdir}/systemd/user/pipewire.service.wants/wireplumber.service \
-    -a ! -f %{_localstatedir}/lib/pipewire/pipewire-media-session_post_workaround \
-    -a -x /usr/bin/systemctl ]; then
-    for service in pipewire-media-session.service ; do
-        /usr/bin/systemctl --global preset "$service" || :
-    done
-
-    mkdir -p %{_localstatedir}/lib/pipewire
-    cat << EOF > %{_localstatedir}/lib/pipewire/pipewire-media-session_post_workaround
-# The existence of this file means that the pipewire user services were
-# enabled at least once. Please don't remove this file as that would
-# make the services to be enabled again in the next package update.
-#
-# Check the following bugs for more information:
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1184852
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1183012
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
-EOF
-fi
-
-%preun media-session
-%systemd_user_preun pipewire-media-session.service
-
-%postun media-session
-%systemd_user_postun pipewire-media-session.service
 
 %pre pulseaudio
 %systemd_user_pre pipewire-pulse.service pipewire-pulse.socket
@@ -531,15 +485,6 @@ fi
 %ghost %dir %{_localstatedir}/lib/pipewire
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
-%files media-session
-%{_bindir}/pipewire-media-session
-%{_userunitdir}/pipewire-media-session.service
-%dir %{_datadir}/pipewire/media-session.d/
-%{_datadir}/pipewire/media-session.d/alsa-monitor.conf
-%{_datadir}/pipewire/media-session.d/bluez-monitor.conf
-%{_datadir}/pipewire/media-session.d/media-session.conf
-%{_datadir}/pipewire/media-session.d/v4l2-monitor.conf
-
 %files -n %{libpipewire}
 %license LICENSE COPYING
 %doc README.md
@@ -559,7 +504,6 @@ fi
 %{_mandir}/man1/pw-jack.1%{ext_man}
 %{_datadir}/pipewire/jack.conf
 %config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
-%{_datadir}/pipewire/media-session.d/with-jack
 
 %files libjack-%{apiver_str}-devel
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so
@@ -591,6 +535,7 @@ fi
 %{_bindir}/pw-record
 %{_bindir}/pw-reserve
 %{_bindir}/pw-top
+%{_bindir}/pw-v4l2
 %{_mandir}/man1/pw-cat.1%{ext_man}
 %{_mandir}/man1/pw-cli.1%{ext_man}
 %{_mandir}/man1/pw-dot.1%{ext_man}
@@ -631,6 +576,8 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-pulse-tunnel.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-zeroconf-discover.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-rt.so
+%dir %{_libdir}/pipewire-%{apiver}/v4l2
+%{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
 %dir %{_datadir}/alsa-card-profile
 %dir %{_datadir}/alsa-card-profile/mixer
 %{_datadir}/alsa-card-profile/mixer/*
@@ -718,7 +665,6 @@ fi
 %files pulseaudio
 %{_bindir}/pipewire-pulse
 %{_userunitdir}/pipewire-pulse.*
-%{_datadir}/pipewire/media-session.d/with-pulseaudio
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
 %files alsa
@@ -732,7 +678,6 @@ fi
 %dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
-%{_datadir}/pipewire/media-session.d/with-alsa
 
 %files lang -f %{name}.lang
 
