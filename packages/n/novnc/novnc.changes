@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 22 14:28:42 UTC 2021 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 1.3.0
+    Application:
+      * Added French and Portuguese (Brazil) translations
+      * The novnc_proxy command (earlier launch.sh) is now able to interface better
+        towards Websockify and now has it's own man page
+    Library:
+      * RTCDataChannel is now supported as a communication channel, an alternative
+        to WebSockets
+      * Resizes of the viewport are handled in a more modern way. This allows our
+        library to not only react on browser window changes, but to size changes of
+        the screen element as well
+      * Fixed a bug with the Alt key on Firefox
+      * Fixed a disconnect that happened when using some VNC servers. The error
+        displayed in this case was "Error decoding rect: TypeError"
+      * Plain authentication passwords now support longer passwords, which can be
+        useful if you're using a password manager
+      * Support for Internet Explorer has been dropped. This made it possible to use
+        more modern features and clean up a large number of workarounds
+- python3-websockify >= 0.9.0 is necessary
+    https://github.com/novnc/noVNC/issues/1276#issuecomment-521174077
+- Fix patch novnc-1.1.0-fix-interpreter.patch
+    * Renamed to patch novnc-1.3.0-fix-interpreter.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 15:28:30 UTC 2020 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 1.2.0:
