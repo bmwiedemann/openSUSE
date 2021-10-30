@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 27 17:45:57 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Split libgraphviz into tlibcdt, libcgraph, libgvc, libgvpr, libpathplan,
+  libxdot, and  liblab_gamut packages, in order to fix shlib naming policy
+  errors (boo#1191756)
+
+-------------------------------------------------------------------
 Sat Oct 16 13:16:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.49.1:

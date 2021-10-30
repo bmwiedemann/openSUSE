@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package graphviz
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -303,10 +303,74 @@ Provides some additional PDF and HTML documentation for graphviz.
 Summary:        Library for the manipulation of layout of graphs
 Group:          System/Libraries
 Recommends:     graphviz-plugins-core
+Requires:       libcdt5
 
 %description -n %{libname}
 Library for the manipulation of layout of graphs (as in nodes and edges,
-not as in bar charts).
+not as in bar charts). This is a meta package.
+
+%package -n libcdt5
+Summary:        Container data types for Graphviz
+Group:          System/Libraries
+
+%description -n libcdt5
+Library providing container data types for Graphviz. This is part of the %{libname} meta package
+
+%package -n libcgraph6
+Summary:        Library for graph programming
+Group:          System/Libraries
+Requires:       %{libname}
+
+%description -n libcgraph6
+Libcgraph  supports  graph  programming  by  maintaining  graphs in memory and reading and
+writing graph files.  Graphs are composed of nodes, edges, and  nested  subgraphs.   These
+graph  objects  may  be  attributed  with  string  name-value pairs and programmer-defined
+records. This package is part of the %{libname} meta package.
+
+%package -n libgvc6
+Summary:        Graphviz context library
+Group:          System/Libraries
+Requires:       %{libname} = %{version}
+
+%description -n libgvc6
+libgvc  provides  a  context for applications wishing to manipulate and render graphs.  It
+provides a command line parsing,  common  rendering  code,  and  a  plugin  mechanism  for
+renderers. This package is part of the %{libname} meta package.
+
+%package -n libgvpr2
+Summary:        Library for graph filtering
+Group:          System/Libraries
+Requires:       %{libname} = %{version}
+
+%description -n libgvpr2
+The gvpr library allows an application to perform general-purpose graph
+manipulation and filtering based on an awk-like language
+
+%package -n libpathplan4
+Summary:        Library for finding smooth shortest paths
+Group:          System/Libraries
+Requires:       %{libname} = %{version}
+
+%description -n libpathplan4
+The pathplan library contains functions for finding shortest paths in polygons in fitting bezier
+curves to those paths. This package is part of the %{libname} meta package.
+
+%package -n libxdot4
+Summary:        Library for parsing and deparsing of xdot operations
+Group:          System/Libraries
+Requires:       %{libname} = %{version}
+
+%description -n libxdot4
+The libxdot library provides support for parsing and deparsing graphical operations specificed by the xdot language.
+This package is part of the %{libname} meta package.
+
+%package -n liblab_gamut1
+Summary:        Library containing a rich set of graph drawing tools
+Group:          System/Libraries
+Requires:       %{libname} = %{version}
+
+%description -n liblab_gamut1
+The lab_gamut library contains a rich set of graph drawing tools. This package is part of the %{libname} meta package.
 
 %package plugins-core
 Summary:        Core plugins for graphviz
@@ -506,9 +570,33 @@ if ! test -x %{_bindir}/dot; then
     rm -f %{_libdir}/%{mname}/%{config_file}
 fi
 
-%post -n %{libname} -p /sbin/ldconfig
+%post -n libcdt5 -p /sbin/ldconfig
 
-%postun -n %{libname} -p /sbin/ldconfig
+%postun -n libcdt5 -p /sbin/ldconfig
+
+%post -n libcgraph6 -p /sbin/ldconfig
+
+%postun -n libcgraph6 -p /sbin/ldconfig
+
+%post -n libgvc6 -p /sbin/ldconfig
+
+%postun -n libgvc6 -p /sbin/ldconfig
+
+%post -n libgvpr2 -p /sbin/ldconfig
+
+%postun -n libgvpr2 -p /sbin/ldconfig
+
+%post -n libpathplan4 -p /sbin/ldconfig
+
+%postun -n libpathplan4 -p /sbin/ldconfig
+
+%post -n libxdot4 -p /sbin/ldconfig
+
+%postun -n libxdot4 -p /sbin/ldconfig
+
+%post -n liblab_gamut1 -p /sbin/ldconfig
+
+%postun -n liblab_gamut1 -p /sbin/ldconfig
 
 %if "%{flavor}" == "addons"
 %files -n graphviz-gvedit
@@ -715,8 +803,28 @@ fi
 %exclude %{_mandir}/man1/smyrna.1%{ext_man}
 
 %files -n %{libname}
-%{_libdir}/*.so.*
 %config %{_sysconfdir}/ld.so.conf.d/graphviz.conf
+
+%files -n libcdt5
+%{_libdir}/libcdt.so.5*
+
+%files -n libcgraph6
+%{_libdir}/libcgraph.so.6*
+
+%files -n libgvc6
+%{_libdir}/libgvc.so.6*
+
+%files -n libgvpr2
+%{_libdir}/libgvpr.so.2*
+
+%files -n libpathplan4
+%{_libdir}/libpathplan.so.4*
+
+%files -n libxdot4
+%{_libdir}/libxdot.so.4*
+
+%files -n liblab_gamut1
+%{_libdir}/liblab_gamut.so.1*
 
 %files plugins-core
 %dir %{_libdir}/%{name}
