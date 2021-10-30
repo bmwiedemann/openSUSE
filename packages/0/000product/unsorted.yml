@@ -1421,6 +1421,7 @@ unsorted:
   - brltty-driver-libbraille 
   - brltty-utils 
   - broadvoice16 
+  - broadvoice16-32bit: [x86_64] 
   - broadvoice16-devel 
   - broadvoice32 
   - broadvoice32-devel 
@@ -1605,7 +1606,7 @@ unsorted:
   - busybox-unzip 
   - busybox-vi 
   - busybox-vlan 
-  - busybox-warewulf3: [x86_64] 
+  - busybox-warewulf3 
   - busybox-wget 
   - busybox-which 
   - busybox-whois 
@@ -2156,6 +2157,7 @@ unsorted:
   - colm-doc 
   - color-filesystem 
   - colord-gtk 
+  - colord-gtk-doc 
   - colord-kde 
   - colord-kde-lang 
   - colordiff 
@@ -6900,6 +6902,7 @@ unsorted:
   - idzebra-devel 
   - idzebra-doc 
   - ifuse 
+  - iga: [x86_64] 
   - igerman98-doc 
   - ignition 
   - ignition-dracut-grub2 
@@ -9692,6 +9695,7 @@ unsorted:
   - libboost_mpi_python-py3-1_77_0 
   - libboost_mpi_python-py3-1_77_0-devel 
   - libboost_mpi_python3-devel 
+  - libboost_nowide-devel 
   - libboost_nowide1_77_0 
   - libboost_nowide1_77_0-32bit: [x86_64] 
   - libboost_nowide1_77_0-devel 
@@ -11328,6 +11332,12 @@ unsorted:
   - libiec61883-0-32bit: [x86_64] 
   - libiec61883-devel 
   - libiec61883-tools 
+  - libiga-devel: [x86_64] 
+  - libiga64-1: [x86_64] 
+  - libigc-devel: [x86_64] 
+  - libigc1: [x86_64] 
+  - libigdfcl-devel: [x86_64] 
+  - libigdfcl1: [x86_64] 
   - libigdgmm11 
   - libigdgmm11-32bit: [x86_64] 
   - libigfxcmrt-devel 
@@ -12340,6 +12350,7 @@ unsorted:
   - libopenblas_serial-devel 
   - libopenblas_serial0 
   - libopencascade7 
+  - libopencl-clang11: [x86_64] 
   - libopencsd1 
   - libopencsd_c_api1 
   - libopencsg1 
@@ -13458,7 +13469,7 @@ unsorted:
   - libscotch-gnu-hpc 
   - libscotch0 
   - libscotch_6_1_0-gnu-hpc 
-  - libsdbus-c++0 
+  - libsdbus-c++1 
   - libseafile0 
   - libsearpc-devel 
   - libsearpc1 
@@ -13571,7 +13582,7 @@ unsorted:
   - libsndfile-progs 
   - libsndfile1-32bit: [x86_64] 
   - libsndio7_1 
-  - libsnmp30-32bit: [x86_64] 
+  - libsnmp40-32bit: [x86_64] 
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
@@ -18349,6 +18360,7 @@ unsorted:
   - parboiled-scala-javadoc 
   - parcellite 
   - pari-devel 
+  - pari-doc 
   - pari-elldata 
   - pari-galdata 
   - pari-galpol 
@@ -24141,7 +24153,6 @@ unsorted:
   - python36-weblib 
   - python36-webruntime 
   - python36-websocket-client 
-  - python36-websockets 
   - python36-wfuzz 
   - python36-whatever 
   - python36-whatthepatch 
