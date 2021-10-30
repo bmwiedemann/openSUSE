@@ -10,24 +10,22 @@ with luajit upstream.
 
 Author: Rodrigo R. Galvao <rosattig@br.ibm.com>
 ---
- dynasm/dasm_ppc.lua    |    5 +
- src/Makefile           |   11 +-
- src/host/buildvm_asm.c |   16 +-
- src/lj_arch.h          |   18 +-
- src/lj_ccall.c         |  166 ++++++-
- src/lj_ccall.h         |   13 +
- src/lj_ccallback.c     |   68 ++-
- src/lj_ctype.h         |    2 +-
- src/lj_def.h           |    4 +
- src/lj_frame.h         |    9 +
- src/lj_target_ppc.h    |   14 +
- src/vm_ppc.dasc        | 1290 ++++++++++++++++++++++++++++++++----------------
- 12 files changed, 1162 insertions(+), 454 deletions(-)
+ dynasm/dasm_ppc.lua    |    5 
+ src/Makefile           |   11 
+ src/host/buildvm_asm.c |    6 
+ src/lj_arch.h          |   15 
+ src/lj_ccall.c         |  167 ++++++
+ src/lj_ccall.h         |   13 
+ src/lj_ccallback.c     |   67 ++
+ src/lj_ctype.h         |    2 
+ src/lj_def.h           |    4 
+ src/lj_frame.h         |    9 
+ src/lj_target_ppc.h    |   14 
+ src/vm_ppc.dasc        | 1320 ++++++++++++++++++++++++++++++++-----------------
+ 12 files changed, 1170 insertions(+), 463 deletions(-)
 
-Index: luajit-2.1.0~beta3+git20210112+dfsg/dynasm/dasm_ppc.lua
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/dynasm/dasm_ppc.lua
-+++ luajit-2.1.0~beta3+git20210112+dfsg/dynasm/dasm_ppc.lua
+--- a/dynasm/dasm_ppc.lua
++++ b/dynasm/dasm_ppc.lua
 @@ -257,9 +257,11 @@ map_op = {
    addic_3 =	"30000000RRI",
    ["addic._3"] = "34000000RRI",
@@ -50,11 +48,9 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/dynasm/dasm_ppc.lua
    clrldi_3 =	op_alias("rldicl_4", function(p)
      p[4] = p[3]; p[3] = "0"
    end),
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/Makefile
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/Makefile
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/Makefile
-@@ -459,7 +459,16 @@ ifeq (ppc,$(TARGET_LJARCH))
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -462,7 +462,16 @@ ifeq (ppc,$(TARGET_LJARCH))
      DASM_AFLAGS+= -D GPR64
    endif
    ifeq (PS3,$(TARGET_SYS))
@@ -72,10 +68,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/Makefile
    endif
  endif
  endif
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/host/buildvm_asm.c
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/host/buildvm_asm.c
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/host/buildvm_asm.c
+--- a/src/host/buildvm_asm.c
++++ b/src/host/buildvm_asm.c
 @@ -140,7 +140,11 @@ static void emit_asm_wordreloc(BuildCtx
  #else
  #define TOCPREFIX ""
@@ -89,11 +83,9 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/host/buildvm_asm.c
      fprintf(ctx->fp, "\t%s %d, %d, " TOCPREFIX "%s\n",
  	    (ins & 1) ? "bcl" : "bc", (ins >> 21) & 31, (ins >> 16) & 31, sym);
    } else if ((ins >> 26) == 18) {
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_arch.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_arch.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_arch.h
-@@ -314,8 +314,18 @@
+--- a/src/lj_arch.h
++++ b/src/lj_arch.h
+@@ -309,8 +309,18 @@
  #if LJ_TARGET_CONSOLE
  #define LJ_ARCH_PPC32ON64	1
  #define LJ_ARCH_NOFFI		1
@@ -113,7 +105,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_arch.h
  #endif
  
  #if _ARCH_PWR7
-@@ -480,9 +490,6 @@
+@@ -476,9 +486,6 @@
  #error "No support for ILP32 model on ARM64"
  #endif
  #elif LJ_TARGET_PPC
@@ -123,10 +115,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_arch.h
  #if defined(__NO_FPRS__) && !defined(_SOFT_FLOAT)
  #error "No support for PPC/e500 anymore (use LuaJIT 2.0)"
  #endif
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.c
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_ccall.c
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.c
+--- a/src/lj_ccall.c
++++ b/src/lj_ccall.c
 @@ -370,21 +370,98 @@
  #elif LJ_TARGET_PPC
  /* -- PPC calling conventions --------------------------------------------- */
@@ -351,10 +341,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.c
  #if LJ_TARGET_MIPS64 || (LJ_TARGET_ARM64 && LJ_BE)
      if ((ctype_isinteger_or_bool(d->info) || ctype_isenum(d->info)
  #if LJ_TARGET_MIPS64
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_ccall.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.h
+--- a/src/lj_ccall.h
++++ b/src/lj_ccall.h
 @@ -86,10 +86,23 @@ typedef union FPRArg {
  #elif LJ_TARGET_PPC
  
@@ -379,10 +367,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccall.h
  #define CCALL_SPS_FREE		0
  
  typedef intptr_t GPRArg;
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccallback.c
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_ccallback.c
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccallback.c
+--- a/src/lj_ccallback.c
++++ b/src/lj_ccallback.c
 @@ -61,8 +61,24 @@ static MSize CALLBACK_OFS2SLOT(MSize ofs
  
  #elif LJ_TARGET_PPC
@@ -472,7 +458,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccallback.c
  #elif LJ_TARGET_MIPS
  static void *callback_mcode_init(global_State *g, uint32_t *page)
  {
-@@ -657,6 +709,15 @@ static void callback_conv_result(CTState
+@@ -662,6 +714,15 @@ static void callback_conv_result(CTState
  	*(int32_t *)dp = ctr->size == 1 ? (int32_t)*(int8_t *)dp :
  					  (int32_t)*(int16_t *)dp;
      }
@@ -488,10 +474,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ccallback.c
  #if LJ_TARGET_MIPS64 || (LJ_TARGET_ARM64 && LJ_BE)
      /* Always sign-extend results to 64 bits. Even a soft-fp 'float'. */
      if (ctr->size <= 4 &&
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ctype.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_ctype.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ctype.h
+--- a/src/lj_ctype.h
++++ b/src/lj_ctype.h
 @@ -153,7 +153,7 @@ typedef struct CType {
  
  /* Simplify target-specific configuration. Checked in lj_ccall.h. */
@@ -501,10 +485,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_ctype.h
  
  typedef LJ_ALIGN(8) union FPRCBArg { double d; float f[2]; } FPRCBArg;
  
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_def.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_def.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_def.h
+--- a/src/lj_def.h
++++ b/src/lj_def.h
 @@ -71,7 +71,11 @@ typedef unsigned int uintptr_t;
  #define LJ_MAX_IDXCHAIN	100		/* __index/__newindex chain limit. */
  #define LJ_STACK_EXTRA	(5+2*LJ_FR2)	/* Extra stack space (metamethods). */
@@ -517,10 +499,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_def.h
  
  /* Minimum table/buffer sizes. */
  #define LJ_MIN_GLOBAL	6		/* Min. global table size (hbits). */
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_frame.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_frame.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_frame.h
+--- a/src/lj_frame.h
++++ b/src/lj_frame.h
 @@ -210,6 +210,15 @@ enum { LJ_CONT_TAILCALL, LJ_CONT_FFI_CAL
  #define CFRAME_OFS_MULTRES	408
  #define CFRAME_SIZE		384
@@ -537,10 +517,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_frame.h
  #elif LJ_ARCH_PPC32ON64
  #define CFRAME_OFS_ERRF		472
  #define CFRAME_OFS_NRES		468
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_target_ppc.h
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/lj_target_ppc.h
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/lj_target_ppc.h
+--- a/src/lj_target_ppc.h
++++ b/src/lj_target_ppc.h
 @@ -30,8 +30,13 @@ enum {
  
    /* Calling conventions. */
@@ -578,10 +556,8 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/lj_target_ppc.h
    PPCI_B = 0x48000000,
    PPCI_BL = 0x48000001,
    PPCI_BC = 0x40800000,
-Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
-===================================================================
---- luajit-2.1.0~beta3+git20210112+dfsg.orig/src/vm_ppc.dasc
-+++ luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
+--- a/src/vm_ppc.dasc
++++ b/src/vm_ppc.dasc
 @@ -21,35 +21,40 @@
  |// GPR64   64 bit registers (but possibly 32 bit pointers, e.g. PS3).
  |//         Affects reg saves, stack layout, carry/overflow/dot flags etc.
@@ -1961,7 +1937,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  lwz TMP1, LFUNC:TMP2->pc
    |  lwz KBASE, PC2PROTO(k)(TMP1)
    |3:
-@@ -3129,6 +3327,8 @@ static void build_subroutines(BuildCtx *
+@@ -3130,6 +3328,8 @@ static void build_subroutines(BuildCtx *
    |  sfi2d CARG3, CARG4
    |
    |->vm_modi:
@@ -1970,7 +1946,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  divwo. TMP0, CARG1, CARG2
    |  bso >1
    |.if GPR64
-@@ -3147,7 +3347,8 @@ static void build_subroutines(BuildCtx *
+@@ -3148,7 +3348,8 @@ static void build_subroutines(BuildCtx *
    |  cmpwi CARG2, 0
    |   li CARG1, 0
    |  beqlr
@@ -1980,7 +1956,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  blr
    |
    |//-----------------------------------------------------------------------
-@@ -3160,10 +3361,18 @@ static void build_subroutines(BuildCtx *
+@@ -3161,10 +3362,18 @@ static void build_subroutines(BuildCtx *
    |->vm_cachesync:
    |.if JIT or FFI
    |  // Compute start of first cache line and number of cache lines.
@@ -1999,7 +1975,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  beqlr
    |  mtctr CARG2
    |  mr CARG3, CARG1
-@@ -3185,39 +3394,70 @@ static void build_subroutines(BuildCtx *
+@@ -3186,39 +3395,70 @@ static void build_subroutines(BuildCtx *
    |//-- FFI helper functions -----------------------------------------------
    |//-----------------------------------------------------------------------
    |
@@ -2083,7 +2059,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  lp RC, L:CRET1->top
    |     .FPU lus TMP3, 0x59c0		// TOBIT = 2^52 + 2^51 (float).
    |     li ZERO, 0
-@@ -3246,9 +3486,21 @@ static void build_subroutines(BuildCtx *
+@@ -3247,9 +3487,21 @@ static void build_subroutines(BuildCtx *
    |  mr CARG1, CTSTATE
    |  mr CARG2, RA
    |  bl extern lj_ccallback_leave	// (CTState *cts, TValue *o)
@@ -2107,7 +2083,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  b ->vm_leave_unw
    |.endif
    |
-@@ -3261,23 +3513,46 @@ static void build_subroutines(BuildCtx *
+@@ -3262,23 +3514,46 @@ static void build_subroutines(BuildCtx *
    |   lbz CARG2, CCSTATE->nsp
    |   lbz CARG3, CCSTATE->nfpr
    |  neg TMP1, TMP1
@@ -2160,7 +2136,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |  bge <1
    |2:
    |  bney cr1, >3
-@@ -3289,28 +3564,55 @@ static void build_subroutines(BuildCtx *
+@@ -3290,28 +3565,55 @@ static void build_subroutines(BuildCtx *
    |  .FPU lfd f6, CCSTATE->fpr[5]
    |  .FPU lfd f7, CCSTATE->fpr[6]
    |  .FPU lfd f8, CCSTATE->fpr[7]
@@ -2232,7 +2208,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
    |   mr r14, TMP2
    |  blr
    |.endif
-@@ -3334,13 +3636,13 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3335,13 +3637,13 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_ISLT: case BC_ISGE: case BC_ISLE: case BC_ISGT:
      |  // RA = src1*8, RD = src2*8, JMP with RD = target
      |.if DUALNUM
@@ -2250,7 +2226,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    decode_RD4 TMP2, TMP2
      |  checknum cr1, CARG3
      |    addis SAVE0, TMP2, -(BCBIAS_J*4 >> 16)
-@@ -3364,7 +3666,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3365,7 +3667,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |7:  // RA is not an integer.
      |  bgt cr0, ->vmeta_comp
      |  // RA is a number.
@@ -2259,7 +2235,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  bgt cr1, ->vmeta_comp
      |  blt cr1, >4
      |  // RA is a number, RD is an integer.
-@@ -3384,7 +3686,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3385,7 +3687,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  bl ->vm_sfi2d_1
      |.endif
      |4:
@@ -2268,7 +2244,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |5:
      |.if FPU
      |  fcmpu cr0, f0, f1
-@@ -3405,10 +3707,10 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3406,10 +3708,10 @@ static void build_ins(BuildCtx *ctx, BCO
      }
      |  b <1
      |.else
@@ -2281,7 +2257,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checknum cr0, TMP0
      |    lwz TMP2, -4(PC)
      |   lfdx f1, BASE, RD
-@@ -3439,15 +3741,23 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3440,15 +3742,23 @@ static void build_ins(BuildCtx *ctx, BCO
      vk = op == BC_ISEQV;
      |  // RA = src1*8, RD = src2*8, JMP with RD = target
      |.if DUALNUM
@@ -2309,7 +2285,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  cror 4*cr7+gt, 4*cr0+gt, 4*cr1+gt
      |    addis SAVE0, SAVE0, -(BCBIAS_J*4 >> 16)
      if (vk) {
-@@ -3456,14 +3766,14 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3457,14 +3767,14 @@ static void build_ins(BuildCtx *ctx, BCO
        |  ble cr7, ->BC_ISNEN_Z
      }
      |.else
@@ -2328,7 +2304,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checknum cr1, CARG3
      |   addis SAVE0, SAVE0, -(BCBIAS_J*4 >> 16)
      |  bge cr0, >5
-@@ -3481,8 +3791,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3482,8 +3792,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |.endif
      |5:  // Either or both types are not numbers.
      |.if not DUALNUM
@@ -2339,7 +2315,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.endif
      |.if FFI
      |  cmpwi cr7, CARG1, LJ_TCDATA
-@@ -3498,10 +3808,16 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3499,10 +3809,16 @@ static void build_ins(BuildCtx *ctx, BCO
      |.if FFI
      |  beq cr7, ->vmeta_equal_cd
      |.endif
@@ -2356,7 +2332,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   mr SAVE1, PC
      |  cror 4*cr0+eq, 4*cr0+eq, 4*cr0+gt	// 0 or 2.
      |  cror 4*cr0+lt, 4*cr0+lt, 4*cr0+gt	// 1 or 2.
-@@ -3541,9 +3857,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3542,9 +3858,9 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_ISEQS: case BC_ISNES:
      vk = op == BC_ISEQS;
      |  // RA = src*8, RD = str_const*8 (~), JMP with RD = target
@@ -2368,7 +2344,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    lwz TMP2, 0(PC)
      |   subfic RD, RD, -4
      |    addi PC, PC, 4
-@@ -3575,15 +3891,14 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3576,15 +3892,14 @@ static void build_ins(BuildCtx *ctx, BCO
      vk = op == BC_ISEQN;
      |  // RA = src*8, RD = num_const*8, JMP with RD = target
      |.if DUALNUM
@@ -2387,7 +2363,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    addis SAVE0, SAVE0, -(BCBIAS_J*4 >> 16)
      if (vk) {
        |->BC_ISEQN_Z:
-@@ -3600,7 +3915,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3601,7 +3916,7 @@ static void build_ins(BuildCtx *ctx, BCO
      } else {
        |->BC_ISNEN_Z:  // Dummy label.
      }
@@ -2396,7 +2372,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    addi PC, PC, 4
      |   lfdx f0, BASE, RA
      |    lwz SAVE0, -4(PC)
-@@ -3638,7 +3953,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3639,7 +3954,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |7:  // RA is not an integer.
      |  bge cr0, <3
      |  // RA is a number.
@@ -2405,7 +2381,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  blt cr1, >1
      |  // RA is a number, RD is an integer.
      |.if FPU
-@@ -3670,7 +3985,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3671,7 +3986,7 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_ISEQP: case BC_ISNEP:
      vk = op == BC_ISEQP;
      |  // RA = src*8, RD = primitive_type*8 (~), JMP with RD = target
@@ -2414,7 +2390,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   srwi TMP1, RD, 3
      |    lwz TMP2, 0(PC)
      |   not TMP1, TMP1
-@@ -3700,7 +4015,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3701,7 +4016,7 @@ static void build_ins(BuildCtx *ctx, BCO
  
    case BC_ISTC: case BC_ISFC: case BC_IST: case BC_ISF:
      |  // RA = dst*8 or unused, RD = src*8, JMP with RD = target
@@ -2423,7 +2399,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   lwz INS, 0(PC)
      |   addi PC, PC, 4
      if (op == BC_IST || op == BC_ISF) {
-@@ -3745,7 +4060,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3746,7 +4061,7 @@ static void build_ins(BuildCtx *ctx, BCO
  
    case BC_ISTYPE:
      |  // RA = src*8, RD = -type*8
@@ -2432,7 +2408,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  srwi TMP1, RD, 3
      |  ins_next1
      |.if not PPE and not GPR64
-@@ -3759,7 +4074,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3760,7 +4075,7 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_ISNUM:
      |  // RA = src*8, RD = -(TISNUM-1)*8
@@ -2441,7 +2417,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next1
      |  checknum TMP0
      |  bge ->vmeta_istype
-@@ -3785,17 +4100,20 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3786,17 +4101,20 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_NOT:
      |  // RA = dst*8, RD = src*8
      |  ins_next1
@@ -2466,7 +2442,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checknum TMP1
      |.if DUALNUM
      |  bne >5
-@@ -3807,18 +4125,13 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3808,18 +4126,13 @@ static void build_ins(BuildCtx *ctx, BCO
      |.else
      |  nego. TMP0, TMP0
      |  bso >4
@@ -2487,7 +2463,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  lus TMP1, 0x41e0			// 2^31.
      |  li TMP0, 0
      |  b >7
-@@ -3828,8 +4141,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3829,8 +4142,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |  xoris TMP1, TMP1, 0x8000
      |7:
      |  ins_next1
@@ -2498,7 +2474,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.if DUALNUM
      |  b <3
      |.else
-@@ -3838,15 +4151,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3839,15 +4152,15 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_LEN:
      |  // RA = dst*8, RD = src*8
@@ -2518,7 +2494,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.else
      |  tonum_u f0, CRET1		// Result is a non-negative integer.
      |  ins_next1
-@@ -3881,9 +4194,16 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3882,9 +4195,16 @@ static void build_ins(BuildCtx *ctx, BCO
      ||vk = ((int)op - BC_ADDVN) / (BC_ADDNV-BC_ADDVN);
      ||switch (vk) {
      ||case 0:
@@ -2537,7 +2513,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   .endif
      |   .if FPU
      |    lfdx f14, BASE, RB
-@@ -3904,9 +4224,16 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3905,9 +4225,16 @@ static void build_ins(BuildCtx *ctx, BCO
      |   .endif
      ||  break;
      ||case 1:
@@ -2556,7 +2532,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   .endif
      |   .if FPU
      |    lfdx f15, BASE, RB
-@@ -3927,8 +4254,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -3928,8 +4255,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |   .endif
      ||  break;
      ||default:
@@ -2567,7 +2543,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   .if FPU
      |    lfdx f14, BASE, RB
      |    lfdx f15, BASE, RC
-@@ -4014,30 +4341,52 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4015,30 +4342,52 @@ static void build_ins(BuildCtx *ctx, BCO
      ||vk = ((int)op - BC_ADDVN) / (BC_ADDNV-BC_ADDVN);
      ||switch (vk) {
      ||case 0:
@@ -2638,7 +2614,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  bne >5
      |  bne cr1, >5
      |.if "intins" == "intmod"
-@@ -4045,16 +4394,12 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4046,16 +4395,12 @@ static void build_ins(BuildCtx *ctx, BCO
      |  mr CARG2, CARG4
      |.endif
      |  intins CARG1, CARG2, CARG4
@@ -2658,7 +2634,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |5:  // FP variant.
      |.if FPU
      ||if (vk == 1) {
-@@ -4137,8 +4482,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4138,8 +4483,8 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_POW:
      |  // NYI: (partial) integer arithmetic.
@@ -2669,7 +2645,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.if FPU
      |   lfdx FARG1, BASE, RB
      |   lfdx FARG2, BASE, RC
-@@ -4177,6 +4522,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4178,6 +4523,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  // Returns NULL (finished) or TValue * (metamethod).
      |  cmplwi CRET1, 0
      |   lp BASE, L->base
@@ -2677,7 +2653,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  bne ->vmeta_binop
      |  ins_next1
      |.if FPU
-@@ -4200,8 +4546,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4201,8 +4547,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |  ins_next1
      |  lwzx TMP0, KBASE, TMP1		// KBASE-4-str_const*4
      |  li TMP2, LJ_TSTR
@@ -2688,7 +2664,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next2
      break;
    case BC_KCDATA:
-@@ -4212,8 +4558,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4213,8 +4559,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |  ins_next1
      |  lwzx TMP0, KBASE, TMP1		// KBASE-4-cdata_const*4
      |  li TMP2, LJ_TCDATA
@@ -2699,7 +2675,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next2
      |.endif
      break;
-@@ -4223,14 +4569,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4224,14 +4570,15 @@ static void build_ins(BuildCtx *ctx, BCO
      |  slwi RD, RD, 13
      |  srawi RD, RD, 16
      |  ins_next1
@@ -2717,7 +2693,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  sub TMP2, TMP2, TMP1		// TMP2 = abs(x)
      |  cntlzw TMP3, TMP2
      |  subfic TMP1, TMP3, 0x40d		// TMP1 = exponent-1
-@@ -4242,8 +4589,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4243,8 +4590,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |   add RD, RD, TMP1		// hi = hi + exponent-1
      |    and RD, RD, TMP0		// hi = x == 0 ? 0 : hi
      |  ins_next1
@@ -2728,7 +2704,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next2
      |.endif
      break;
-@@ -4266,15 +4613,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4267,15 +4614,15 @@ static void build_ins(BuildCtx *ctx, BCO
      |  srwi TMP1, RD, 3
      |  not TMP0, TMP1
      |  ins_next1
@@ -2747,7 +2723,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  cmpw RA, RD
      |   addi RA, RA, 8
      |  blt <1
-@@ -4318,15 +4665,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4319,15 +4666,15 @@ static void build_ins(BuildCtx *ctx, BCO
      |   lwz CARG2, UPVAL:RB->v
      |  andix. TMP3, TMP3, LJ_GC_BLACK	// isblack(uv)
      |    lbz TMP0, UPVAL:RB->closed
@@ -2767,7 +2743,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  cror 4*cr0+eq, 4*cr0+eq, 4*cr1+eq
      |   subi TMP2, TMP2, (LJ_TNUMX+1)
      |  bne >2				// Upvalue is closed and black?
-@@ -4359,8 +4706,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4360,8 +4707,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |   lbz TMP3, STR:TMP1->marked
      |   lbz TMP2, UPVAL:RB->closed
      |   li TMP0, LJ_TSTR
@@ -2778,7 +2754,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  bne >2
      |1:
      |  ins_next
-@@ -4407,7 +4754,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4408,7 +4755,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  lwzx UPVAL:RB, LFUNC:RB, RA
      |  ins_next1
      |  lwz TMP1, UPVAL:RB->v
@@ -2787,7 +2763,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next2
      break;
  
-@@ -4422,6 +4769,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4423,6 +4770,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |   add CARG2, BASE, RA
      |  bl extern lj_func_closeuv	// (lua_State *L, TValue *level)
      |  lp BASE, L->base
@@ -2795,7 +2771,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |1:
      |  ins_next
      break;
-@@ -4440,8 +4788,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4441,8 +4789,9 @@ static void build_ins(BuildCtx *ctx, BCO
      |  // Returns GCfuncL *.
      |  lp BASE, L->base
      |   li TMP0, LJ_TFUNC
@@ -2807,7 +2783,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next
      break;
  
-@@ -4474,8 +4823,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4475,8 +4824,9 @@ static void build_ins(BuildCtx *ctx, BCO
      }
      |  lp BASE, L->base
      |   li TMP0, LJ_TTAB
@@ -2819,7 +2795,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next
      if (op == BC_TNEW) {
        |3:
-@@ -4508,13 +4858,13 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4509,13 +4859,13 @@ static void build_ins(BuildCtx *ctx, BCO
  
    case BC_TGETV:
      |  // RA = dst*8, RB = table*8, RC = key*8
@@ -2838,7 +2814,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.endif
      |  checktab CARG1
      |   checknum cr1, CARG2
-@@ -4541,9 +4891,14 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4542,9 +4892,14 @@ static void build_ins(BuildCtx *ctx, BCO
      |   slwi TMP2, TMP2, 3
      |.endif
      |  ble ->vmeta_tgetv		// Integer key and in array part?
@@ -2855,7 +2831,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.else
      |   lwzux SAVE0, TMP1, TMP2
      |   lwz SAVE1, 4(TMP1)
-@@ -4571,15 +4926,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4572,15 +4927,15 @@ static void build_ins(BuildCtx *ctx, BCO
      |5:
      |  checkstr CARG2; bne ->vmeta_tgetv
      |.if not DUALNUM
@@ -2874,7 +2850,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   subfic TMP1, TMP1, -4
      |  checktab CARG1
      |   lwzx STR:RC, KBASE, TMP1	// KBASE-4-str_const*4
-@@ -4595,16 +4950,16 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4596,16 +4951,16 @@ static void build_ins(BuildCtx *ctx, BCO
      |  sub TMP1, TMP0, TMP1
      |  add NODE:TMP2, NODE:TMP2, TMP1	// node = tab->node + (idx*32-idx*8)
      |1:
@@ -2897,7 +2873,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next
      |
      |4:  // Follow hash chain.
-@@ -4625,16 +4980,21 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4626,16 +4981,21 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_TGETB:
      |  // RA = dst*8, RB = table*8, RC = index*8
@@ -2923,7 +2899,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.else
      |  lwzux TMP1, TMP2, RC
      |   lwz TMP3, 4(TMP2)
-@@ -4661,12 +5021,10 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4662,12 +5022,10 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_TGETR:
      |  // RA = dst*8, RB = table*8, RC = key*8
@@ -2938,7 +2914,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   lwz TMP1, TAB:CARG1->array
      |.else
      |  lfdx f0, BASE, RC
-@@ -4696,13 +5054,13 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4697,13 +5055,13 @@ static void build_ins(BuildCtx *ctx, BCO
  
    case BC_TSETV:
      |  // RA = src*8, RB = table*8, RC = key*8
@@ -2957,7 +2933,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.endif
      |  checktab CARG1
      |   checknum cr1, CARG2
-@@ -4729,7 +5087,12 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4730,7 +5088,12 @@ static void build_ins(BuildCtx *ctx, BCO
      |   slwi TMP0, TMP2, 3
      |.endif
      |  ble ->vmeta_tsetv		// Integer key and in array part?
@@ -2970,7 +2946,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  lbz TMP3, TAB:RB->marked
      |.if FPU
      |    lfdx f14, BASE, RA
-@@ -4763,7 +5126,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4764,7 +5127,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |5:
      |  checkstr CARG2; bne ->vmeta_tsetv
      |.if not DUALNUM
@@ -2979,7 +2955,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.endif
      |  b ->BC_TSETS_Z			// String key?
      |
-@@ -4773,9 +5136,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4774,9 +5137,9 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_TSETS:
      |  // RA = src*8, RB = table*8, RC = str_const*8 (~)
@@ -2991,7 +2967,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   subfic TMP1, TMP1, -4
      |  checktab CARG1
      |   lwzx STR:RC, KBASE, TMP1	// KBASE-4-str_const*4
-@@ -4800,9 +5163,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4801,9 +5164,9 @@ static void build_ins(BuildCtx *ctx, BCO
      |    lbz TMP3, TAB:RB->marked
      |  add NODE:TMP2, NODE:TMP2, TMP1	// node = tab->node + (idx*32-idx*8)
      |1:
@@ -3004,7 +2980,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |     lwz NODE:TMP1, NODE:TMP2->next
      |  checkstr CARG1; bne >5
      |   cmpw TMP0, STR:RC; bne >5
-@@ -4847,14 +5210,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4848,14 +5211,15 @@ static void build_ins(BuildCtx *ctx, BCO
      |  beq ->vmeta_tsets		// 'no __newindex' flag NOT set: check.
      |6:
      |  li TMP0, LJ_TSTR
@@ -3022,7 +2998,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.else
      |  stw SAVE0, 0(CRET1)
      |  stw SAVE1, 4(CRET1)
-@@ -4867,9 +5231,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4868,9 +5232,9 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_TSETB:
      |  // RA = src*8, RB = table*8, RC = index*8
@@ -3034,7 +3010,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checktab CARG1; bne ->vmeta_tsetb
      |  lwz TMP1, TAB:RB->asize
      |   lwz TMP2, TAB:RB->array
-@@ -4883,7 +5247,12 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4884,7 +5248,12 @@ static void build_ins(BuildCtx *ctx, BCO
      |   lwz SAVE1, 4(CARG2)
      |.endif
      |  bge ->vmeta_tsetb
@@ -3048,7 +3024,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checknil TMP1; beq >5
      |1:
      |  andix. TMP0, TMP3, LJ_GC_BLACK	// isblack(table)
-@@ -4912,13 +5281,11 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4913,13 +5282,11 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_TSETR:
      |  // RA = dst*8, RB = table*8, RC = key*8
@@ -3064,7 +3040,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   lwz TMP1, TAB:CARG2->array
      |.else
      |  lfdx f0, BASE, RC
-@@ -4959,9 +5326,9 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -4960,9 +5327,9 @@ static void build_ins(BuildCtx *ctx, BCO
      |  add RA, BASE, RA
      |1:
      |   add TMP3, KBASE, RD
@@ -3076,7 +3052,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    srwi CARG3, TMP0, 3
      |    beq >4				// Nothing to copy?
      |  add CARG3, CARG3, TMP3
-@@ -5020,8 +5387,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5021,8 +5388,7 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_CALL:
      |  // RA = base*8, (RB = (nresults+1)*8,) RC = (nargs+1)*8
      |  mr TMP2, BASE
@@ -3086,7 +3062,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    subi NARGS8:RC, NARGS8:RC, 8
      |   addi BASE, BASE, 8
      |  checkfunc TMP0; bne ->vmeta_call
-@@ -5035,8 +5401,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5036,8 +5402,7 @@ static void build_ins(BuildCtx *ctx, BCO
      break;
    case BC_CALLT:
      |  // RA = base*8, (RB = 0,) RC = (nargs+1)*8
@@ -3096,7 +3072,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |    subi NARGS8:RC, NARGS8:RC, 8
      |    lwz TMP1, FRAME_PC(BASE)
      |  checkfunc TMP0
-@@ -5099,8 +5464,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5100,8 +5465,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |  // RA = base*8, (RB = (nresults+1)*8, RC = (nargs+1)*8 ((2+1)*8))
      |  mr TMP2, BASE
      |  add BASE, BASE, RA
@@ -3107,7 +3083,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.if FPU
      |    lfd f1, -8(BASE)
      |    lfd f0, -16(BASE)
-@@ -5110,8 +5475,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5111,8 +5476,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |    lwz CARG3, -16(BASE)
      |    lwz CARG4, -12(BASE)
      |.endif
@@ -3118,7 +3094,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  checkfunc TMP1
      |     li NARGS8:RC, 16		// Iterators get 2 arguments.
      |.if FPU
-@@ -5133,8 +5498,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5134,8 +5499,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |  // NYI: add hotloop, record BC_ITERN.
      |.endif
      |  add RA, BASE, RA
@@ -3129,7 +3105,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  lwz TMP0, TAB:RB->asize
      |  lwz TMP1, TAB:RB->array
      |   addi PC, PC, 4
-@@ -5142,10 +5507,11 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5143,10 +5508,11 @@ static void build_ins(BuildCtx *ctx, BCO
      |  cmplw RC, TMP0
      |   slwi TMP3, RC, 3
      |  bge >5				// Index points after array part?
@@ -3143,7 +3119,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   lwzux CARG1, TMP3, TMP1
      |   lwz CARG2, 4(TMP3)
      |.endif
-@@ -5153,8 +5519,8 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5154,8 +5520,8 @@ static void build_ins(BuildCtx *ctx, BCO
      |     lwz INS, -4(PC)
      |  beq >4
      |.if DUALNUM
@@ -3154,7 +3130,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.else
      |   tonum_u f1, RC
      |.endif
-@@ -5167,7 +5533,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5168,7 +5534,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  stw CARG2, 12(RA)
      |.endif
      |     decode_RD4 TMP1, INS
@@ -3163,7 +3139,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |     add PC, TMP1, TMP3
      |.if not DUALNUM
      |   stfd f1, 0(RA)
-@@ -5189,10 +5555,11 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5190,10 +5556,11 @@ static void build_ins(BuildCtx *ctx, BCO
      |  bgty <3
      |   slwi RB, RC, 3
      |   sub TMP3, TMP3, RB
@@ -3177,7 +3153,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  add CARG3, TMP2, TMP3
      |  lwz CARG1, 0(CARG3)
      |  lwz CARG2, 4(CARG3)
-@@ -5224,7 +5591,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5225,7 +5592,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |.endif
      |    addi RC, RC, 1
      |     add PC, TMP1, TMP2
@@ -3186,7 +3162,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  b <3
      |
      |7:  // Skip holes in hash part.
-@@ -5235,10 +5602,10 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5236,10 +5603,10 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_ISNEXT:
      |  // RA = base*8, RD = target (points to ITERN)
      |  add RA, BASE, RA
@@ -3201,7 +3177,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   cmpwi cr0, TMP2, LJ_TTAB
      |  cmpwi cr1, TMP0, LJ_TFUNC
      |    cmpwi cr6, TMP3, LJ_TNIL
-@@ -5252,17 +5619,25 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5253,17 +5620,25 @@ static void build_ins(BuildCtx *ctx, BCO
      |  bne cr0, >5
      |  lus TMP1, 0xfffe
      |  ori TMP1, TMP1, 0x7fff
@@ -3229,7 +3205,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  b <1
      break;
  
-@@ -5306,7 +5681,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5307,7 +5682,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |    addi RA, RA, 8
      |   blt cr1, <1			// More vararg slots?
      |2:  // Fill up remainder with nil.
@@ -3238,7 +3214,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  cmplw RA, TMP2
      |   addi RA, RA, 8
      |  blt <2
-@@ -5353,6 +5728,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5354,6 +5729,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  add RA, BASE, RA
      |  add RC, BASE, SAVE0
      |  subi TMP3, BASE, 8
@@ -3246,7 +3222,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  b <6
      break;
  
-@@ -5425,13 +5801,14 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5426,13 +5802,14 @@ static void build_ins(BuildCtx *ctx, BCO
      |  bgt >6
      |   sub BASE, TMP2, RA
      |  lwz LFUNC:TMP1, FRAME_FUNC(BASE)
@@ -3262,7 +3238,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   addi RD, RD, 8
      |  stwx TISNIL, TMP2, TMP1
      |  b <5
-@@ -5474,13 +5851,14 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5475,13 +5852,14 @@ static void build_ins(BuildCtx *ctx, BCO
      |  bgt >6
      |   sub BASE, TMP2, RA
      |  lwz LFUNC:TMP1, FRAME_FUNC(BASE)
@@ -3278,7 +3254,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   addi RD, RD, 8
      |  stwx TISNIL, TMP2, TMP1
      |  b <5
-@@ -5506,11 +5884,13 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5507,11 +5885,13 @@ static void build_ins(BuildCtx *ctx, BCO
      vk = (op == BC_IFORL || op == BC_JFORL);
      |.if DUALNUM
      |  // Integer loop.
@@ -3295,7 +3271,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
        |  bne >9
        |.if GPR64
        |  // Need to check overflow for (a<<32) + (b<<32).
-@@ -5522,15 +5902,15 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5523,15 +5903,15 @@ static void build_ins(BuildCtx *ctx, BCO
        |  addo. CARG1, CARG1, CARG3
        |.endif
        |    cmpwi cr6, CARG3, 0
@@ -3318,7 +3294,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
        |  cmplw cr7, SAVE0, TISNUM
        |  cmplw cr1, TMP2, TISNUM
        |  crand 4*cr0+eq, 4*cr0+eq, 4*cr7+eq
-@@ -5541,11 +5921,11 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5542,11 +5922,11 @@ static void build_ins(BuildCtx *ctx, BCO
      |    blt cr6, >5
      |  cmpw CARG1, CARG2
      |1:
@@ -3332,7 +3308,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      if (op != BC_JFORL) {
        |  add RD, PC, RD
      }
-@@ -5565,11 +5945,6 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5566,11 +5946,6 @@ static void build_ins(BuildCtx *ctx, BCO
      |5:  // Invert check for negative step.
      |  cmpw CARG2, CARG1
      |  b <1
@@ -3344,7 +3320,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |.endif
      if (vk) {
        |.if DUALNUM
-@@ -5604,7 +5979,12 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5605,7 +5980,12 @@ static void build_ins(BuildCtx *ctx, BCO
        |.if DUALNUM
        |9:  // FP loop.
        |.else
@@ -3357,7 +3333,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
        |  lwz SAVE0, FORL_STEP*8(RA)
        |  lwz TMP2, FORL_STOP*8(RA)
        |  cmplw cr0, TMP1, TISNUM
-@@ -5707,17 +6087,16 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5708,17 +6088,16 @@ static void build_ins(BuildCtx *ctx, BCO
  #endif
    case BC_IITERL:
      |  // RA = base*8, RD = target
@@ -3380,7 +3356,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      }
      |1:
      |  ins_next
-@@ -5746,7 +6125,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5747,7 +6126,7 @@ static void build_ins(BuildCtx *ctx, BCO
      |  // Traces on PPC don't store the trace number, so use 0.
      |   stw ZERO, DISPATCH_GL(vmstate)(DISPATCH)
      |  lwzx TRACE:TMP2, TMP1, RD
@@ -3389,7 +3365,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  lp TMP2, TRACE:TMP2->mcode
      |   stw BASE, DISPATCH_GL(jit_base)(DISPATCH)
      |  mtctr TMP2
-@@ -5798,7 +6177,7 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5799,7 +6178,7 @@ static void build_ins(BuildCtx *ctx, BCO
      }
      |
      |3:  // Clear missing parameters.
@@ -3398,7 +3374,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  addi NARGS8:RC, NARGS8:RC, 8
      |  b <2
      break;
-@@ -5815,11 +6194,11 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5816,11 +6195,11 @@ static void build_ins(BuildCtx *ctx, BCO
      |  lwz TMP2, L->maxstack
      |   add TMP1, BASE, RC
      |  add TMP0, RA, RC
@@ -3412,7 +3388,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  bge ->vm_growstack_l
      |  lbz TMP2, -4+PC2PROTO(numparams)(PC)
      |   mr RA, BASE
-@@ -5830,18 +6209,19 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5831,18 +6210,19 @@ static void build_ins(BuildCtx *ctx, BCO
      |  beq >3
      |1:
      |  cmplw RA, RC			// Less args than parameters?
@@ -3437,7 +3413,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |  ins_next2
      |
      |4:  // Clear missing parameters.
-@@ -5853,35 +6233,35 @@ static void build_ins(BuildCtx *ctx, BCO
+@@ -5854,35 +6234,35 @@ static void build_ins(BuildCtx *ctx, BCO
    case BC_FUNCCW:
      |  // BASE = new base, RA = BASE+framesize*8, RB = CFUNC, RC = nargs*8
      if (op == BC_FUNCC) {
@@ -3481,7 +3457,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      |   slwi RD, CRET1, 3
      |  lp TMP1, L->top
      |    li_vmstate INTERP
-@@ -5932,7 +6312,11 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -5933,7 +6313,11 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.byte 0x1\n"
  	"\t.string \"\"\n"
  	"\t.uleb128 0x1\n"
@@ -3493,7 +3469,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
  	"\t.byte 65\n"
  	"\t.byte 0xc\n\t.uleb128 1\n\t.uleb128 0\n"
  	"\t.align 2\n"
-@@ -5945,14 +6329,24 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -5946,14 +6330,24 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.long .Lbegin\n"
  	"\t.long %d\n"
  	"\t.byte 0xe\n\t.uleb128 %d\n"
@@ -3519,7 +3495,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      fprintf(ctx->fp,
  	"\t.align 2\n"
  	".LEFDE0:\n\n");
-@@ -5968,8 +6362,12 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -5969,8 +6363,12 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.long lj_vm_ffi_call\n"
  #endif
  	"\t.long %d\n"
@@ -3533,7 +3509,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
  	"\t.byte 0xd\n\t.uleb128 0xe\n"
  	"\t.align 2\n"
  	".LEFDE1:\n\n", (int)ctx->codesz - fcofs);
-@@ -5984,7 +6382,11 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -5985,7 +6383,11 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.byte 0x1\n"
  	"\t.string \"zPR\"\n"
  	"\t.uleb128 0x1\n"
@@ -3545,7 +3521,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
  	"\t.byte 65\n"
  	"\t.uleb128 6\n"			/* augmentation length */
  	"\t.byte 0x1b\n"			/* pcrel|sdata4 */
-@@ -6002,14 +6404,24 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -6003,14 +6405,24 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.long %d\n"
  	"\t.uleb128 0\n"			/* augmentation length */
  	"\t.byte 0xe\n\t.uleb128 %d\n"
@@ -3571,7 +3547,7 @@ Index: luajit-2.1.0~beta3+git20210112+dfsg/src/vm_ppc.dasc
      fprintf(ctx->fp,
  	"\t.align 2\n"
  	".LEFDE2:\n\n");
-@@ -6037,8 +6449,12 @@ static void emit_asm_debug(BuildCtx *ctx
+@@ -6038,8 +6450,12 @@ static void emit_asm_debug(BuildCtx *ctx
  	"\t.long lj_vm_ffi_call-.\n"
  	"\t.long %d\n"
  	"\t.uleb128 0\n"			/* augmentation length */

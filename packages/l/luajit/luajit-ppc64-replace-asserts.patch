@@ -1,0 +1,22 @@
+Index: luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccallback.c
+===================================================================
+--- luajit-2.1.0~beta3+git.1624618403.e9577376.orig/src/lj_ccallback.c
++++ luajit-2.1.0~beta3+git.1624618403.e9577376/src/lj_ccallback.c
+@@ -216,7 +216,7 @@ static void *callback_mcode_init(global_
+     *p++ = (uint64_t)vm_toc;
+     *p++ = (uint64_t)g | ((uint64_t)slot << 47);
+   }
+-  lua_assert(p - page <= CALLBACK_MCODE_SIZE / 8);
++  lj_assertG_(g, p - page <= CALLBACK_MCODE_SIZE / 8, "CALLBACK_MCODE_SIZE too small for CALLBACK_MAX_SLOT");
+   return p;
+ }
+ #else
+@@ -227,7 +227,7 @@ static void *callback_mcode_init(global_
+   MSize slot;
+ #if LJ_ARCH_PPC_ELFV2
+   // Needs to be in sync with lj_vm_ffi_callback.
+-  lua_assert(CALLBACK_MCODE_SIZE == 4096);
++  lj_assertG_(g, CALLBACK_MCODE_SIZE == 4096, "CALLBACK_MCODE_SIZE has unexpected size");
+   for (slot = 0; slot < CALLBACK_MAX_SLOT; slot++) {
+     *p = PPCI_B | (((page+CALLBACK_MAX_SLOT-p) & 0x00ffffffu) << 2);
+     p++;

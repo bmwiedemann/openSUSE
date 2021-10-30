@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>924043</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7cd6f61d7e6a9b86ad8bd8ff6a5b920a</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1635628401</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace luajit-ppc64-remove-asserts.patch with
+  luajit-ppc64-replace-asserts.patch to use the proper assert
+  functions instead of removing them.
+- Add luajit-ppc64-remove-asserts.patch: remove calls to
+  lua_assert. Fixes the build with our revision (bsc#1191615).
+- Add luajit-s390x.patch: add s390x support, based on Fedora's
+  patch and ported to our revision.
+- Remove ExcludeArch, since package currently builds on s390x.
+</comment>
+    <requestid>927861</requestid>
+  </revision>
 </revisionlist>

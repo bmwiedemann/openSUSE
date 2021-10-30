@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 27 20:20:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Replace luajit-ppc64-remove-asserts.patch with
+  luajit-ppc64-replace-asserts.patch to use the proper assert
+  functions instead of removing them.
+
+-------------------------------------------------------------------
+Mon Oct 25 21:55:16 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add luajit-ppc64-remove-asserts.patch: remove calls to
+  lua_assert. Fixes the build with our revision (bsc#1191615).
+- Add luajit-s390x.patch: add s390x support, based on Fedora's
+  patch and ported to our revision.
+- Remove ExcludeArch, since package currently builds on s390x.
+
+-------------------------------------------------------------------
 Thu Oct  7 15:09:55 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Exclude s390x for now. There is a not-yet-upstreamed port

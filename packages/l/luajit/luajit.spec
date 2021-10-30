@@ -30,14 +30,19 @@ URL:            https://luajit.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch0:         luajit-lua-versioned.patch
-Patch2:         https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0002-Enable-debugging-symbols-in-the-build.patch
-Patch3:         https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
-Patch4:         https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0002-Enable-debugging-symbols-in-the-build.patch
+Patch2:         0002-Enable-debugging-symbols-in-the-build.patch
+# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
+Patch3:         0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
+# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+Patch4:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+Patch5:         luajit-ppc64-replace-asserts.patch
+# Most recent s390x patches at https://github.com/luajit/luajit/pull/631
+Patch6:         luajit-s390x.patch
 BuildRequires:  pkgconfig
 Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
 Obsoletes:      lua51-luajit <= 2.2.0
 Obsoletes:      moonjit <= 2.2.0
-ExcludeArch:    s390x
 
 %description
 A Just-In-Time Compiler for Lua language
