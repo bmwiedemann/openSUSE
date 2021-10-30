@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:19:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde33:
+  * Picking: reuse LayerFilterJob to perform layer filtering
+  * Trigger an update on the quick window when creating a render aspect
+  * Render enough frames to flush the Qt3D pipeline when dirty
+  * Fix for QShaderNode fix that selected highest version number of a rule
+  * Fix call to drawBuffers in SubmissionContext
+  * Fix parameter priorization documentation
+  * CameraLens: use ParametersDirty rather than AllDirty
+  * Rerun bounding volume update jobs when entity enabled property changes
+
+-------------------------------------------------------------------
 Tue Jun 22 19:35:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
