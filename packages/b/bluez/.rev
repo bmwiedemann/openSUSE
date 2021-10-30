@@ -1445,4 +1445,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>915199</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>f8c3428a73ce47d223c5559bcf8b21f7</srcmd5>
+    <version>5.62</version>
+    <time>1635628384</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927172</requestid>
+  </revision>
 </revisionlist>

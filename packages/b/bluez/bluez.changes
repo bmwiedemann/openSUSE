@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 17 07:39:24 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.62:
+  * Fix issue with handling truncation when loading LTKs.
+  * Fix issue with accepting Exchange MTU on EATT bearer.
+  * Fix issue with clearing DeviceLost timers on power down.
+  * Fix issue with AVCTP browsing channel and missing ERTM.
+  * Fix issue with AVDTP and local SEID pool for each adapter.
+  * Add support for BR/EDR and LE connection failure reasons.
+- drop obsoleted patch
+  0005-media-rename-local-function-conflicting-with-pause-2.patch
+
+-------------------------------------------------------------------
 Tue Aug 24 06:57:14 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 5.61:

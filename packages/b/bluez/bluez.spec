@@ -25,7 +25,7 @@
 %bcond_without bluez_deprecated
 #
 Name:           bluez
-Version:        5.61
+Version:        5.62
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -50,7 +50,6 @@ Patch5:         bluez-test-2to3.diff
 %if 0%{?suse_version} >= 1550
 Patch6:         0002-Use-g_memdup2-everywhere.patch
 %endif
-Patch7:         0005-media-rename-local-function-conflicting-with-pause-2.patch
 #
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688
 Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
