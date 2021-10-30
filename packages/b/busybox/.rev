@@ -715,4 +715,11 @@
     <comment></comment>
     <requestid>927965</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>88e2ffe2d380f5ec395343ac3bbbaf1b</srcmd5>
+    <version>1.33.1</version>
+    <time>1635578871</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:busybox revision:68, using expand</comment>
+  </revision>
 </revisionlist>
