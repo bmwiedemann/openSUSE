@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 29 09:15:11 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.12.6 improved AgsAnimationWindow to obtain stride
+  from format.
+- new since 3.12.5 fixed SIGSEGV with AgsRampAccelerationDialog and
+  AgsSelectAccelerationDialog.
+- implemented missing paste flags of AgsCompositeToolbar.
+- implemented missing channel selector toggle of
+  AgsCompositeToolbar.
+- minor improvements.
+
+-------------------------------------------------------------------
 Wed Oct 20 07:02:26 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.12.3 fixed SIGSEGV while destroy AgsMachine and
