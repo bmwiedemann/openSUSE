@@ -3895,4 +3895,14 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>926876</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>ef88fbca02b2ec3bb93cc31fb1c001aa</srcmd5>
+    <version>3.6.15</version>
+    <time>1635628403</time>
+    <user>dimstar_suse</user>
+    <comment>- The previous construct works only on the current Factory, not
+  in SLE.
+</comment>
+    <requestid>927865</requestid>
+  </revision>
 </revisionlist>
