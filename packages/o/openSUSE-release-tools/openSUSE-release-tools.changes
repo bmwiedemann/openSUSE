@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct 29 14:19:42 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.a924a9b0:
+  * Revert container-cleaner experiments
+
+-------------------------------------------------------------------
+Fri Oct 29 13:37:47 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.4c20c475:
+  * One more endless loop test against the API
+
+-------------------------------------------------------------------
+Fri Oct 29 13:28:38 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.b54a9360:
+  * Make the container cleaner endless loop against login proxy without auth
+
+-------------------------------------------------------------------
+Fri Oct 29 13:12:11 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.c711dd57:
+  * Now test endless loop on a different SSL host
+
+-------------------------------------------------------------------
+Fri Oct 29 12:58:44 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.80bb54c9:
+  * Debug endless loop to verify the underlying problem
+
+-------------------------------------------------------------------
+Fri Oct 29 12:21:10 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.ca55ff6c:
+  * gocd: Disable cache for container cleaner
+
+-------------------------------------------------------------------
+Fri Oct 29 12:04:40 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211029.faa760d6:
+  * gocd: Run container cleanup with full debug
+
+-------------------------------------------------------------------
 Fri Oct 29 10:30:10 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211029.321c5259:
