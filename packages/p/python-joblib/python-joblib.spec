@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-joblib
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
@@ -105,7 +105,7 @@ DISABLED_TESTS="test_hash_numpy_noncontiguous or \
                 test_parallel_call_cached_function_defined_in_jupyter"
 if [ $(python3 -c 'import sys; print(sys.byteorder)') != "little" ]; then
   DISABLED_TESTS+=" or test_joblib_pickle_across_python_versions"
-fi                
+fi
 %pytest -k "not ($DISABLED_TESTS)"
 
 %files %{python_files}
