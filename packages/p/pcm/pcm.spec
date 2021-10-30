@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202107
+Version:        202110
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause

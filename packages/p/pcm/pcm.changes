@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 30 15:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202110:
+* support ADL (Alder Lake) in pcm tool
+* display average uncore frequency in pcm.x
+* allow verbose CPU topology printing with PCM_PRINT_TOPOLOGY environment variables
+* pcm-raw: support event group multiplexing
+* pcm-iio: support csv output
+* developed a workaround to make PCM work in VMware guest
+* various bug fixes
+
+-------------------------------------------------------------------
 Sun Jul 25 17:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202107:
