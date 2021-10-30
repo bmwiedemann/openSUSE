@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 25 11:35:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- fix_wine.patch: give Wine .dll same context as .so (bsc#1191976)
+
+-------------------------------------------------------------------
 Tue Sep 28 12:44:22 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Fix auditd service start with systemd hardening directives (boo#1190918)

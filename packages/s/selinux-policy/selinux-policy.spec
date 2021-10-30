@@ -137,6 +137,7 @@ Patch053:       fix_systemd_watch.patch
 # kernel specific sysctl.conf (boo#1184804)
 Patch054:       fix_kernel_sysctl.patch
 Patch055:       fix_auditd.patch
+Patch056:       fix_wine.patch
 
 Patch100:       sedoctool.patch
 
