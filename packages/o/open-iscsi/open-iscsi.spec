@@ -16,6 +16,11 @@
 #
 
 
+# ensure usr-merge does not effect existing SLE
+%if ! 0%{?is_opensuse}
+%define _sbindir /sbin
+%endif
+
 %define iscsi_minor_release 1
 %define iscsi_patch_release 5
 %define iscsi_patch_release_suse %{iscsi_patch_release}-suse

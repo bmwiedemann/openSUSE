@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 25 22:43:23 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Fix the usr-merge changes (bsc#1192013). This includes catching
+  all the places that /sbin was still used directly, as well as
+  making the SPEC file build using /usr/sbin for openSUSE but
+  still use /sbin for SLE, for now.
+
+-------------------------------------------------------------------
 Tue Oct  5 19:23:33 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Fix possible systemd cycle by adding an "obsoletes" for
