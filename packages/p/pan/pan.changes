@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:39:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.148:
+  + gmime3 is used by default and gmime2 is deprecated.
+  + Some UI bugs fixed.
+  + README was converted from ASCII to org-mode format.
+- Adapt Source and setup for changed version tagging (v0.148 vs
+  0.148).
+- New BuildRequires: libtool (needed to generate missing configure
+  file in release tarball), yelp (needed to build help files).
+
+-------------------------------------------------------------------
 Tue Sep 28 18:54:03 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.147:

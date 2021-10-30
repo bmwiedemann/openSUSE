@@ -17,19 +17,21 @@
 
 
 Name:           pan
-Version:        0.147
+Version:        0.148
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Clients
 URL:            http://pan.rebelbase.com/
-Source0:        http://pan.rebelbase.com/download/releases/%{version}/source/%{name}-%{version}.tar.bz2
+Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext >= 0.21
 BuildRequires:  itstool
+BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
+BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(enchant) >= 1.6.0
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gmime-3.0)
@@ -48,9 +50,10 @@ handling, multiple servers, and secure connections.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--with-gtk3 \
 	--with-gnutls \
@@ -69,13 +72,12 @@ handling, multiple servers, and secure connections.
 
 %files
 %license COPYING COPYING-DOCS
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.org
 %doc %{_datadir}/help/C/%{name}/
 %{_mandir}/man?/pan.?%{ext_man}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
