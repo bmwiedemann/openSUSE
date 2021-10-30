@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 20 17:54:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite package to the single-spec %python_subpackage_only style and
+  eliminate unnecessary multibuild.
+
+-------------------------------------------------------------------
 Tue Jun  1 11:04:14 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix python-lxml regression with libxml2 2.9.12:

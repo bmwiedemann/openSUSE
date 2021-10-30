@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package libxml2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,34 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Define "python" as a package in _multibuild file
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "python"
-%global pprefix python-
 %define oldpython python
-%bcond_without python
-%bcond_without python2
-%else
-%global pprefix %{nil}
-%bcond_with python
-%endif
 %define bname libxml2
 %define lname libxml2-2
-Name:           %{pprefix}%{bname}
+Name:           libxml2
 Version:        2.9.12
 Release:        0
-%if !%{with python}
+License:        MIT
 Summary:        A Library to Manipulate XML Files
-License:        MIT
-%else
-Summary:        Python  Bindings for libxml2
-License:        MIT
-%endif
 URL:            http://xmlsoft.org
 Source:         ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz
 Source1:        ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz.asc
 Source2:        baselibs.conf
 Source3:        libxml2.keyring
+# PATCH-FIX-UPSTREAM libxml2-python3-unicode-errors.patch bsc#1064286 mcepl@suse.com
+# remove segfault after doc.freeDoc()
 Patch1:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
@@ -54,43 +41,23 @@ Patch3:         libxml2-make-XPATH_MAX_NODESET_LENGTH-configurable.patch
 # PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/libxml2/-/issues/255
 Patch4:         libxml2-fix-lxml-corrupted-subtree-structures.patch
 Patch5:         libxml2-fix-regression-in-xmlNodeDumpOutputInternal.patch
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-%if !%{with python}
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(zlib)
-%else
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module xml}
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       %{lname} = %{version}
-Provides:       python-libxml2-python = %{version}-%{release}
-Obsoletes:      %{bname}-python < %{version}-%{release}
-Obsoletes:      python-libxml2-python < %{version}-%{release}
-%if "%{python_flavor}" == "python2"
-Provides:       %{bname}-python = %{version}-%{release}
-Provides:       %{oldpython}-libxml2 = %{version}-%{release}
-Obsoletes:      %{oldpython}-libxml2 < %{version}-%{release}
-%endif
-%endif
+BuildRequires:  pkgconfig(zlib)
+# TW: generate subpackages for every python3 flavor
+%define python_subpackage_only 1
 %python_subpackages
 
 %description
 The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
-%if %{with python}
-This package contains a module that permits
-applications written in the Python programming language to use the
-interface supplied by the libxml2 library to manipulate XML files.
-
-This library allows manipulation of XML files. It includes support for
-reading, modifying, and writing XML and HTML files. There is DTD
-support that includes parsing and validation even with complex DTDs,
-either at parse time or later once the document has been modified.
-%endif
 
 %package -n %{lname}
 Summary:        A Library to Manipulate XML Files
@@ -121,9 +88,11 @@ This package contains xmllint, a very useful tool proving libxml's power.
 
 %package devel
 Summary:        Development files for libxml2, an XML manipulation library
+Requires:       %{bname} = %{version}
 Requires:       %{bname}-tools = %{version}
 Requires:       %{lname} = %{version}
 Requires:       glibc-devel
+Requires:       libxml2 = %{version}
 Requires:       readline-devel
 Requires:       xz-devel
 Requires:       zlib-devel
@@ -147,16 +116,35 @@ The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
 
+%package -n python-%{name}
+Summary:        Python  Bindings for %{name}
+Requires:       %{lname} = %{version}
+Requires:       python-extras
+Requires:       python-testtools >= 1.8.0
+Provides:       %{bname}-python = %{version}-%{release}
+Provides:       python-libxml2-python = %{version}-%{release}
+Obsoletes:      %{bname}-python < %{version}-%{release}
+Obsoletes:      python-libxml2-python < %{version}-%{release}
+%if "%{python_flavor}" == "python2"
+Provides:       %{bname}-python = %{version}-%{release}
+Provides:       %{oldpython}-libxml2 = %{version}-%{release}
+Obsoletes:      %{oldpython}-libxml2 < %{version}-%{release}
+%endif
+
+%description -n python-%{name}
+This package contains a module that permits
+applications written in the Python programming language to use the
+interface supplied by the libxml2 library to manipulate XML files.
+
+This library allows manipulation of XML files. It includes support for
+reading, modifying, and writing XML and HTML files. There is DTD
+support that includes parsing and validation even with complex DTDs,
+either at parse time or later once the document has been modified.
+
 %prep
-%setup -q -n libxml2-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1 -n libxml2-%{version}
 
 %build
-%if !%{with python}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
     --disable-silent-rules \
@@ -174,14 +162,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
     --with-http
 
 %make_build BASE_DIR="%{_docdir}" DOC_MODULE="%{bname}"
-%else
 pushd python
 %python_build
 popd
-%endif
 
 %install
-%if !%{with python}
 %make_install BASE_DIR="%{_docdir}" DOC_MODULE="%{bname}"
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p "%{buildroot}/%{_docdir}/%{bname}"
@@ -190,23 +175,19 @@ ln -s libxml2/libxml %{buildroot}%{_includedir}/libxml
 # Remove duplicated file Copyright as not found by fdupes
 rm -fr %{buildroot}%{_docdir}/%{bname}/Copyright
 %fdupes %{buildroot}%{_datadir}
-%else
+
 pushd python
 %python_install
 popd
 chmod a-x python/tests/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%endif
 
 %check
-%if !%{with python}
 # qemu-arm can't keep up atm, disabling check for arm
 %ifnarch %{arm}
 %make_build check
 %endif
-%endif
 
-%if !%{with python}
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
@@ -244,16 +225,12 @@ chmod a-x python/tests/*.py
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 
-%else
-
-%files %{python_files}
+%files %{python_files %{name}}
 %doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
 %doc doc/python.html
 %pycache_only %{python_sitearch}/__pycache__/*libxml2*
 %{python_sitearch}/*libxml2*
-
-%endif
 
 %changelog

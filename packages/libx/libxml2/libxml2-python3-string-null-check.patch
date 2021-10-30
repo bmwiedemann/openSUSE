@@ -8,11 +8,9 @@ encoded. We should check for this and return None, rather than returning
 NULL. Fixes a NULL pointer dereference when reporting an error with an
 invalid string.
 ---
- python/types.c | 4 ++++
+ python/types.c |    4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/python/types.c b/python/types.c
-index 124af565..50951ba3 100644
 --- a/python/types.c
 +++ b/python/types.c
 @@ -150,6 +150,10 @@ libxml_charPtrConstWrap(const char *str)
@@ -26,6 +24,3 @@ index 124af565..50951ba3 100644
      return (ret);
  }
  
--- 
-2.18.0
-
