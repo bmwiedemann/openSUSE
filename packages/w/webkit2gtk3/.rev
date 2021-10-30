@@ -1117,4 +1117,12 @@
     <comment>- Update to version 2.34.1 (forwarded request 926830 from mgorse)</comment>
     <requestid>926902</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>23bdd8fb35566a33c3f0e0c5cbd24d4e</srcmd5>
+    <version>2.34.1</version>
+    <time>1635628407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927912</requestid>
+  </revision>
 </revisionlist>

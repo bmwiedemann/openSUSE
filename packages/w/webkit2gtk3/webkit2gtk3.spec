@@ -88,6 +88,8 @@ Source99:       webkit2gtk3.keyring
 Patch0:         no-forced-sse.patch
 # PATCH-FIX-UPSTREAM fix-warnings.patch mgorse@suse.com -- silence return-type warnings.
 Patch1:         fix-warnings.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-link-fix.patch mgorse@suse.com -- annotate executeJSCJITProbe.
+Patch2:         webkit2gtk3-link-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -98,7 +100,11 @@ BuildRequires:  bison >= 2.3
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
-BuildRequires:  gcc-c++ >= 4.9
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  gcc10-c++ >= 4.9
+%else
+BuildRequires:  gcc-c++ >= 7.3
+%endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
@@ -344,6 +350,10 @@ export PYTHON=%{_bindir}/python3
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+  -DCMAKE_C_COMPILER=gcc-10 \
+  -DCMAKE_CXX_COMPILER=g++-10 \
+%endif
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkit2gtk%{_wk2sover} \
   -DPORT=GTK \
 %if "%{flavor}" == "gtk4"

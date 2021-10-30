@@ -1,12 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:10:23 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-link-fix.patch: taken from upstream, fixes the
+  build on SLE-15-SP4.
+- Use gcc10 package on SLE <= 15-SP4. Gcc 7 is currently the
+  default there.
+- Update gcc-c++ version requirement to match the cmake check.
+
+-------------------------------------------------------------------
 Thu Oct 21 20:07:32 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.34.1:
+- Update to version 2.34.1 (boo#1191937):
   + Update user agent browser versions.
   + Fix a crash with GTK >= 3.24.30.
   + Fix a crash when loading videos on reddit.
   + Fix file type detection when application calls
     g_desktop_app_info_set_as_default_for_extension() passing html.
+  + Security fixes: CVE-2021-42762.
 
 -------------------------------------------------------------------
 Wed Sep 29 10:16:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -23,8 +33,9 @@ Wed Sep 29 06:47:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Wed Sep 22 16:18:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to version 2.34.0:
+- Update to version 2.34.0 (boo#1192063):
   + Fix another regression in JavaScriptCore on 32bit systems.
+  + Security fixes: CVE-2021-30846.
 
 -------------------------------------------------------------------
 Mon Sep 20 02:33:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
@@ -92,7 +103,7 @@ Sun Sep 19 19:00:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
 - Update to version 2.32.4 (boo#1190701):
   + Do not append .asc extension to downloaded text/plain files.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2021-30858.
+  + Security fixes: CVE-2021-30848, CVE-2021-30849, CVE-2021-30858.
 - Drop fix-lto.patch: fixed upstream.
 
 -------------------------------------------------------------------

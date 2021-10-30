@@ -1,0 +1,31 @@
+From 94396c05ce816b9f7245ac493367c84219cef407 Mon Sep 17 00:00:00 2001
+From: "ysuzuki@apple.com"
+ <ysuzuki@apple.com@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Thu, 2 Sep 2021 08:13:12 +0000
+Subject: [PATCH] Unreviewed, annotate executeJSCJITProbe with
+ REFERENCED_FROM_ASM WTF_INTERNAL
+
+* assembler/ProbeContext.h:
+
+git-svn-id: http://svn.webkit.org/repository/webkit/trunk@281911 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ Source/JavaScriptCore/ChangeLog                | 6 ++++++
+ Source/JavaScriptCore/assembler/ProbeContext.h | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/Source/JavaScriptCore/assembler/ProbeContext.h b/Source/JavaScriptCore/assembler/ProbeContext.h
+index 54db1ce832ef..36f430bcb509 100644
+--- a/Source/JavaScriptCore/assembler/ProbeContext.h
++++ b/Source/JavaScriptCore/assembler/ProbeContext.h
+@@ -249,7 +249,7 @@ private:
+     friend JS_EXPORT_PRIVATE void* probeStateForContext(Context&); // Not for general use. This should only be for writing tests.
+ };
+ 
+-extern "C" void executeJSCJITProbe(State*);
++extern "C" void executeJSCJITProbe(State*) REFERENCED_FROM_ASM WTF_INTERNAL;
+ 
+ } // namespace Probe
+ } // namespace JSC
+-- 
+2.33.0
+
