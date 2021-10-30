@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20211028" schemaversion="4.1">
+<image name="OBS__openSUSE___20211029" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211028</productvar>
+      <productvar name="VERSION">20211029</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211028,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211029,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211028/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211029/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1376,7 +1376,7 @@
       <repopackage name="libappstream4"/>
       <repopackage name="libAppStreamQt2"/>
       <repopackage name="libapr-util1-0"/>
-      <repopackage name="libapr1"/>
+      <repopackage name="libapr1-0"/>
       <repopackage name="libarchive13"/>
       <repopackage name="libargon2-1"/>
       <repopackage name="libaria2-0"/>
@@ -2375,6 +2375,7 @@
       <repopackage name="libpulse0"/>
       <repopackage name="libpurple"/>
       <repopackage name="libpurple-branding-openSUSE"/>
+      <repopackage name="libpurple-client0"/>
       <repopackage name="libpurple-lang"/>
       <repopackage name="libpurple-plugin-bot-sentry"/>
       <repopackage name="libpurple-plugin-bot-sentry-lang"/>
@@ -2396,6 +2397,7 @@
       <repopackage name="libpurple-plugin-telegram"/>
       <repopackage name="libpurple-plugin-telegram-lang"/>
       <repopackage name="libpurple-tcl"/>
+      <repopackage name="libpurple0"/>
       <repopackage name="libpwquality-lang"/>
       <repopackage name="libpwquality1"/>
       <repopackage name="libpython2_7-1_0"/>
@@ -2589,7 +2591,7 @@
       <repopackage name="libsnapper5"/>
       <repopackage name="libsnappy1"/>
       <repopackage name="libsndfile1"/>
-      <repopackage name="libsnmp30"/>
+      <repopackage name="libsnmp40"/>
       <repopackage name="libSoapySDR0_8"/>
       <repopackage name="libsodium23"/>
       <repopackage name="libsoftokn3"/>
