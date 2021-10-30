@@ -107,6 +107,8 @@ Patch6:         gcc11-fix-error.patch
 Patch7:         pld-skia-patches.patch
 # bsc#1189813 LO-L3: Shadow effect for tables in PPTX partly incorrect
 Patch8:         bsc1189813.patch
+# bsc#1187982 LO-L3: PPTX: one column becomes two within one text frame
+Patch9:         bsc1187982.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -987,6 +989,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
