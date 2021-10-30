@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 28 18:35:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.13
+  Broker:
+  * Fix `max_keepalive` option not being able to be set to 0.
+  * Fix LWT messages not being delivered if `per_listener_settings`
+    was set to true.
+  * Various fixes around inflight quota management.
+  * Fix problem parsing config files with Windows line endings.
+  * Don't send retained messages when a shared subscription is made
+  * Fix client id not showing in log on failed connections, where
+    possible.
+  * Fix broker sending duplicate CONNACK on failed MQTT v5
+    reauthentication.
+  * Fix mosquitto_plugin.h not including mosquitto_broker.h.
+  Client library:
+  * Initialise sockpairR/W to invalid in `mosquitto_reinitialise()`
+    to avoid closing invalid sockets in `mosquitto_destroy()` on
+    error.
+  Clients:
+  - Fix date format in mosquitto_sub output.
+
+-------------------------------------------------------------------
 Wed Oct  6 14:18:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
