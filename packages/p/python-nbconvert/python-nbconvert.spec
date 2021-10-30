@@ -25,7 +25,9 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Note: only update to > 6.0 when there is no python36 Jupyter stack anymore
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %define doc_ver 6.0.7
 Name:           python-nbconvert%{psuffix}
 Version:        6.0.7
@@ -36,9 +38,6 @@ URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
 Source1:        https://media.readthedocs.org/pdf/nbconvert/%{doc_ver}/nbconvert.pdf
 Source2:        https://media.readthedocs.org/htmlzip/nbconvert/%{doc_ver}/nbconvert.zip
-# PATCH-FIX-UPSTREAM skip_network_tests.patch gh#jupyter/nbconvert#1526 mcepl@suse.com
-# Skip tests requiring network access
-Patch0:         skip_network_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -82,7 +81,6 @@ BuildRequires:  %{python_module nbclient >= 0.5}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat >= 4.4}
 BuildRequires:  %{python_module pandocfilters >= 1.4.1}
-BuildRequires:  %{python_module pyppeteer}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module tornado >= 4.0}
@@ -173,7 +171,7 @@ pushd docs
 export LANG=en_US.UTF-8
 %{python_expand # installed package in :test flavor
 $python -B -m ipykernel.kernelspec --user
-pytest-%{$python_bin_suffix} -v -k 'not network' --pyargs nbconvert
+pytest-%{$python_bin_suffix} -v -k 'not test_webpdf' --pyargs nbconvert
 }
 popd
 %endif

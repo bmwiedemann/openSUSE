@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 30 17:35:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Do not require webpdf extra pyppeteer on tests. Not usefully
+  used in offline testing, not available for python36.
+- Drop skip_network_tests.patch (upstreamed for 6.1) not required
+  due to the above
+- Note: we have to stay on version 6.0 until the whole python36
+  stack is removed from entire TW or the Jupyter ecosystem on TW.
+
+-------------------------------------------------------------------
 Thu Apr  8 22:30:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Actually break the cycle: test flavor needs a psuffix
