@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ec6d269d7eb8e32a51b4021e658abb1</srcmd5>
+    <version>0.4.0</version>
+    <time>1635628385</time>
+    <user>dimstar_suse</user>
+    <comment>New package pipewire-media-session splitted from pipewire (where
+it existed previously as a subpackage). Should be accepted together
+with pipewire 0.3.39</comment>
+    <requestid>927199</requestid>
+  </revision>
+</revisionlist>

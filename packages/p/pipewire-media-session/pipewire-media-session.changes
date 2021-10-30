@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Oct 22 21:30:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gcc-c++ and cmake BuildRequires, not needed.
+- Add generic c_compiler BuildRequires.
+- Minor cleanup of spec-file.
+
+-------------------------------------------------------------------
+Thu Oct 21 06:05:51 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.4.0, the first tagged version of
+  pipewire-media-session
+
+-------------------------------------------------------------------
+Mon Oct 18 17:55:17 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial version of pipewire-media-session
+  0.3.38+git20211019.da0b9c2ae
