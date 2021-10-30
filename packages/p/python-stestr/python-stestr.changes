@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 20:23:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fixed the detection of test worker failures before reporting final
+    result status  
+
+-------------------------------------------------------------------
 Thu Jun 17 20:39:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

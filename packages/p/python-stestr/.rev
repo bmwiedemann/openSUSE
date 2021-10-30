@@ -270,4 +270,12 @@
     remove runs from the stestr repository.</comment>
     <requestid>900665</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>faa61e23c27f886108880ff73e77c69c</srcmd5>
+    <version>3.2.1</version>
+    <time>1635628383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927140</requestid>
+  </revision>
 </revisionlist>
