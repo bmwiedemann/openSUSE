@@ -1606,7 +1606,7 @@ unsorted:
   - busybox-unzip 
   - busybox-vi 
   - busybox-vlan 
-  - busybox-warewulf3 
+  - busybox-warewulf3: [x86_64] 
   - busybox-wget 
   - busybox-which 
   - busybox-whois 
