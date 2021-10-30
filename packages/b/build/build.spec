@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20210902
+Version:        20211025
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -254,7 +254,7 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc README.md
+%doc README.md docs
 /usr/bin/build
 /usr/bin/pbuild
 /usr/bin/buildvc

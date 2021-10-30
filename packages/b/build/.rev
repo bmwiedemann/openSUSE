@@ -1368,4 +1368,26 @@ Fixes:
 - fixed regression in multiline macro evaluation from 20th August release</comment>
     <requestid>915720</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>966de12b76e483e7b2019e385c176985</srcmd5>
+    <version>20211025</version>
+    <time>1635628390</time>
+    <user>dimstar_suse</user>
+    <comment>Features:
+- deb zstd support (for Ubuntu 21.10)
+- support KVM builds with enabled network
+- modulemd support improvements
+- Support a &quot;Distmacro&quot; directive for recipe parser-only macros
+Fixes:
+- Load selinux policy when using a preinstall image
+- Use the pax format for preinstall images if bsdtar is available
+- Add %riscv to std_macros
+- Fix combine_configs dropping newlines
+pbuild:
+- Implement SCC calculation
+- Improve --shell-after-build and --single options
+- initial documentation of pbuild
+- Bugfixes</comment>
+    <requestid>927270</requestid>
+  </revision>
 </revisionlist>
