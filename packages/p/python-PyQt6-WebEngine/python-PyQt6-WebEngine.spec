@@ -23,7 +23,7 @@
 %define pyqt_build_for_qt6 1
 %define skip_python36 1
 Name:           python-%{mname}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
@@ -57,7 +57,8 @@ libraries that make up the framework.
 Summary:        Devel files for %{name}
 Group:          Development/Tools/IDE
 Requires:       python-PyQt6-devel
-Supplements:    packageand(eric:python-%{mname})
+Supplements:    (eric and python-%{mname})
+Supplements:    (python-PyQt6-devel and python-%{mname})
 
 %description devel
 This package provides Qt6 API files for the Eric IDE and the SIP files
