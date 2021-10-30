@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Oct 16 23:34:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to version 1.4.25:
+  * Fixed regression due to :ticket:`7024` where the reorganization of the
+    "platform machine" names used by the ``greenlet`` dependency mis-spelled
+    "aarch64" and additionally omitted uppercase "AMD64" as is needed for
+    Windows machines.
+  * Fixed a bug in :meth:`_asyncio.AsyncSession.execute` and
+    :meth:`_asyncio.AsyncSession.stream` that required ``execution_options``
+    to be an instance of ``immutabledict`` when defined. It now
+    correctly accepts any mapping.
+  * Improve the interface used by adapted drivers, like the asyncio ones,
+    to access the actual connection object returned by the driver.
+  * Implemented missing methods in :class:`_functions.FunctionElement` which,
+    while unused, would lead pylint to report them as unimplemented abstract
+    methods.
+  * Fixed an issue where :meth:`_reflection.has_table` returned
+    ``True`` for local temporary tables that actually belonged to a
+    different SQL Server session (connection). An extra check is now
+    performed to ensure that the temp table detected is in fact owned
+    by the current session.
+  * Fixed issue where the ability of the
+    :meth:`_events.ConnectionEvents.before_execute` method to alter the SQL
+    statement object passed, returning the new object to be invoked, was
+    inadvertently removed. This behavior has been restored.
+  * Ensure that ``str()`` is called on the an
+    :paramref:`_url.URL.create.password` argument, allowing usage of objects
+    that implement the ``__str__()`` method as password attributes. Also
+    clarified that one such object is not appropriate to dynamically change the
+    password for each database connection; the approaches at
+    :ref:`engines_dynamic_tokens` should be used instead.
+  * Fixed ORM issue where column expressions passed to ``query()`` or
+    ORM-enabled ``select()`` would be deduplicated on the identity of the
+    object, such as a phrase like ``select(A.id, null(), null())`` would
+    produce only one "NULL" expression, which previously was not the case in
+    1.3. However, the change also allows for ORM expressions to render as given
+    as well, such as ``select(A.data, A.data)`` will produce a result row with
+    two columns.
+  * Fixed issue where mypy plugin would crash when interpreting a
+    ``query_expression()`` construct.
+  * Added new methods :meth:`_orm.Session.scalars`,
+  * Added loader options to :meth:`_orm.Session.merge` and
+    :meth:`_asyncio.AsyncSession.merge` via a new
+    :paramref:`_orm.Session.merge.options` parameter, which will apply the
+    given loader options to the ``get()`` used internally by merge, allowing
+    eager loading of relationships etc. to be applied when the merge process
+    loads a new object. Pull request courtesy Daniel Stone.
+  * Added initial support for the ``asyncmy`` asyncio database driver for MySQL
+    and MariaDB. This driver is very new, however appears to be the only
+    current alternative to the ``aiomysql`` driver which currently appears to
+    be unmaintained and is not working with current Python versions. Much
+    thanks to long2ice for the pull request for this dialect.
+  * Fixed a two issues where combinations of ``select()`` and ``join()`` when
+    adapted to form a copy of the element would not completely copy the state
+    of all column objects associated with subqueries. A key problem this caused
+    is that usage of the :meth:`_sql.ClauseElement.params` method (which should
+    probably be moved into a legacy category as it is inefficient and error
+    prone) would leave copies of the old :class:`_sql.BindParameter` objects
+    around, leading to issues in correctly setting the parameters at execution
+    time.
+
+-------------------------------------------------------------------
 Thu Jul 22 01:35:15 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.22:

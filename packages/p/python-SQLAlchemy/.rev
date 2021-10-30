@@ -804,4 +804,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>908428</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>6355b0afed60c7c9c2715dbfb92b2f12</srcmd5>
+    <version>1.4.25</version>
+    <time>1635628383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927141</requestid>
+  </revision>
 </revisionlist>
