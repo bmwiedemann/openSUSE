@@ -14,7 +14,7 @@ From: https://forums.gentoo.org/viewtopic-p-8644495.html
 --- a/sandbox/linux/services/credentials.cc
 +++ b/sandbox/linux/services/credentials.cc
 @@ -98,7 +98,9 @@
-   // attempt this optimization.
+   // TODO(crbug.com/1247458) Broken in MSan builds after LLVM f1bb30a4956f.
    clone_flags |= CLONE_VM | CLONE_VFORK | CLONE_SETTLS;
 
 -  char tls_buf[PTHREAD_STACK_MIN] = {0};

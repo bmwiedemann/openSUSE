@@ -17,6 +17,7 @@
 
 
 %define rname chromium
+%define outputdir ${TMPOUT}
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} > 1500
@@ -27,10 +28,8 @@
 %bcond_with system_vpx
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
-%bcond_without system_harfbuzz
 %bcond_without pipewire
 %else
-%bcond_with system_harfbuzz
 %bcond_with pipewire
 %endif
 %bcond_without system_ffmpeg
@@ -40,21 +39,25 @@
 %else
 %bcond_without swiftshader
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without system_harfbuzz
+%else
+%bcond_with system_harfbuzz
+%endif
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        94.0.4606.81
+Version:        95.0.4638.54
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
 Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
 Source1:        README.SUSE
-Source2:        https://github.com/google/highway/archive/refs/tags/0.12.2.tar.gz#/highway-0.12.2.tar.gz
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
-# https://github.com/chromium/chromium/tree/%%{version}/chrome/installer/linux/common/installer.include
+# https://source.chromium.org/chromium/chromium/src/+/refs/tags/%%{version}:chrome/installer/linux/common/installer.include
 Source105:      INSTALL.sh
 #
 Patch0:         chromium-libusb_interrupt_event_handler.patch
@@ -77,7 +80,7 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-94-compiler.patch
+Patch15:        chromium-95-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch19:        chromium-86-nearby-include.patch
@@ -86,20 +89,21 @@ Patch21:        chromium-gcc11.patch
 Patch25:        chromium-90-fseal.patch
 Patch29:        chromium-93-EnumTable-crash.patch
 Patch31:        chromium-89-missing-cstring-header.patch
-Patch36:        chromium-90-ruy-include.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
-Patch44:        chromium-91-libyuv-aarch64.patch
+Patch44:        chromium-95-libyuv-aarch64.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch51:        chromium-glibc-2.34.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch63:        chromium-ffmpeg-lp152.patch
-Patch64:        chromium-94-CustomSpaces-include.patch
 Patch65:        chromium-94-sql-no-assert.patch
 Patch67:        chromium-older-harfbuzz.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
 Patch70:        pipewire-do-not-typecheck-the-portal-session_handle.patch
+Patch71:        chromium-95-BitstreamReader-namespace.patch
+Patch72:        chromium-95-quiche-include.patch
+Patch73:        chromium-95-system-zlib.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -134,7 +138,6 @@ BuildRequires:  ninja >= 1.7.2
 BuildRequires:  nodejs >= 8.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  snappy-devel
@@ -282,17 +285,12 @@ Requires:       %{name} = %{version}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%ifarch aarch64
-%setup -q -T -D -b2 -n highway-0.12.2
-%endif
 %setup -q -n %{rname}-%{version}
 %autopatch -p1
 
 %build
-%ifarch aarch64
-rm -rf third_party/highway/src/*
-mv ../highway-0.12.2/* third_party/highway/src
-%endif
+mktemp -d -t chromium-XXXXXXXXXX > temp.txt
+export TMPOUT=`cat temp.txt`
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
@@ -441,6 +439,8 @@ keeplibs=(
     third_party/lss
     third_party/lzma_sdk
     third_party/mako
+    third_party/maldoca
+    third_party/maldoca/src/third_party
     third_party/markupsafe
     third_party/mesa
     third_party/metrics_proto
@@ -601,6 +601,7 @@ export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else"
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
 %if %{with clang}
 export LDFLAGS="${LDFLAGS} -Wl,--build-id=sha1"
+export CXXFLAGS="${CXXFLAGS} -Wno-unused-command-line-argument -Wno-unknown-warning-option"
 %endif
 %ifarch aarch64
 %if %{without clang}
@@ -726,7 +727,6 @@ myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"
 %if %{with pipewire}
 myconf_gn+=" rtc_use_pipewire=true rtc_link_pipewire=true"
-myconf_gn+=" rtc_pipewire_version=\"0.3\""
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
@@ -763,18 +763,15 @@ myconf_gn+=" google_api_key=\"${google_api_key}\""
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
-gn gen --args="${myconf_gn}" out/Release
+gn gen --args="${myconf_gn}" %{outputdir}
 
-# bundled xcb proto for python2
-export PYTHONPATH="$PWD/xcb-proto-1.14${PYTHONPATH+:}${PYTHONPATH}"
-
-ninja -v %{?_smp_mflags} -C out/Release chrome chromedriver
+ninja -v %{?_smp_mflags} -C %{outputdir} chrome chromedriver
 
 %install
-export OUTPUTDIR="out/Release"
-bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true}
+export TMPOUT=`cat temp.txt`
+bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true} -o %{outputdir}
 # chromedriver
-cp -a ${OUTPUTDIR}/chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
+cp -a %{outputdir}/chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
 # link to browser plugin path.  Plugin patch doesn't work. Why?
 mkdir -p %{buildroot}%{_libdir}/browser-plugins

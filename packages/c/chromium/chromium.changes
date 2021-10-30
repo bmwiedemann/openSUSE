@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct 24 11:10:51 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 95.0.4638.54 (boo#1191844):
+  * CVE-2021-37981: Heap buffer overflow in Skia
+  * CVE-2021-37982: Use after free in Incognito
+  * CVE-2021-37983: Use after free in Dev Tools
+  * CVE-2021-37984: Heap buffer overflow in PDFium
+  * CVE-2021-37985: Use after free in V8
+  * CVE-2021-37986: Heap buffer overflow in Settings
+  * CVE-2021-37987: Use after free in Network APIs
+  * CVE-2021-37988: Use after free in Profiles
+  * CVE-2021-37989: Inappropriate implementation in Blink
+  * CVE-2021-37990: Inappropriate implementation in WebView
+  * CVE-2021-37991: Race in V8
+  * CVE-2021-37992: Out of bounds read in WebAudio
+  * CVE-2021-37993: Use after free in PDF Accessibility
+  * CVE-2021-37996: Insufficient validation of untrusted input in Downloads
+  * CVE-2021-37994: Inappropriate implementation in iFrame Sandbox
+  * CVE-2021-37995: Inappropriate implementation in WebApp Installer
+- Added patches:
+  * chromium-95-BitstreamReader-namespace.patch
+  * chromium-95-compiler.patch
+  * chromium-95-libyuv-aarch64.patch
+  * chromium-95-quiche-include.patch
+  * chromium-95-system-zlib.patch
+- Removed patches:
+  * chromium-94-compiler.patch
+  * chromium-91-libyuv-aarch64.patch
+  * chromium-90-ruy-include.patch
+  * chromium-94-CustomSpaces-include.patch
+
+-------------------------------------------------------------------
+Sat Oct 16 13:13:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove Python 2 requirement
+
+-------------------------------------------------------------------
 Sat Oct  9 19:13:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Disable DCHECK(): that's for debug only

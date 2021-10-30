@@ -1,14 +1,14 @@
 #!/bin/bash
 set -x
-while getopts s:l:i: option
+while getopts s:o:l:i: option
 do
 case "${option}" in
 s) STAGEDIR=${OPTARG};;
+o) OUTPUTDIR=${OPTARG};;
 l) LIBDIR=${OPTARG};;
 i) ICUDATAFILE=${OPTARG};;
 esac
 done
-OUTPUTDIR="out/Release"
 SHLIB_PERMS="755"
 PROGNAME="chrome"
 PACKAGE="chromium-browser"

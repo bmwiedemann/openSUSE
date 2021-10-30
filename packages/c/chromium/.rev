@@ -3796,4 +3796,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>update</comment>
     <requestid>924488</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>8dad24c0e1e2bd26862339905ffe8f80</srcmd5>
+    <version>95.0.4638.54</version>
+    <time>1635628384</time>
+    <user>dimstar_suse</user>
+    <comment>M95</comment>
+    <requestid>927179</requestid>
+  </revision>
 </revisionlist>
