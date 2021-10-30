@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 %define use_zstd 1
 %endif
 

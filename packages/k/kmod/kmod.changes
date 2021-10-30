@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:38:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Enable ZSTD on 15.3 as well (boo#1192104).
+- Only test ZSTD in testsuite on releases where it is available.
+
+-------------------------------------------------------------------
 Fri Sep 24 10:40:22 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Enable ZSTD on 15.4 (jsc#SLE-21256).

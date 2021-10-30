@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%define use_zstd 1
+%endif
+
 Name:           kmod-testsuite
 %define lname	libkmod2
 Version:        29
@@ -47,9 +51,11 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(liblzma) >= 4.99
+%if 0%{?use_zstd}
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(libzstd)
+%endif
 BuildRequires:  pkgconfig(zlib)
 Requires:       suse-module-tools
 %if !0%{?is_opensuse}
@@ -75,7 +81,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-xz \
 	--with-zlib \
 	--with-openssl \
+%if 0%{?use_zstd}
 	--with-zstd \
+%endif
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 	--bindir="%_bindir"
