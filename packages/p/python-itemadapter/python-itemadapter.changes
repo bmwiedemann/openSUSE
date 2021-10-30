@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 30 13:06:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.4.0
+  * Added ItemAdapter.is_item_class and
+    ItemAdapter.get_field_meta_from_class (#54)
+  * Added built-in support for pydantic models (#53)
+  * Adapter interface: added the ability to support arbitrary
+    types, by implementing a MutableMapping-based interface. By way
+    of this change, now any type can be used as a Scrapy item.
+  * Dropped support for Python 3.5 (#38).
+  * The new get_field_meta_from_class function offers the same
+    functionality as ItemAdapter.get_field_meta but for an item
+    class, as opposed to an item object (#34, #35).
+  * ItemAdapter.__repr__ no longer raises exceptions caused by the
+    underlying item (#31, #41).
+- Disable python36 build due to Scrapy 
+
+-------------------------------------------------------------------
 Wed Jul  8 06:54:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to multibuild

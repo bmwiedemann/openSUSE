@@ -1,7 +1,7 @@
 #
-# spec file for package python-itemadapter
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,8 +27,10 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+# Scrapy on TW has disabled python36 due to uvloop
+%define skip_python36 1
 Name:           python-itemadapter%{psuffix}
-Version:        0.1.0
+Version:        0.4.0
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
@@ -37,10 +39,10 @@ Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 40.5.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs
 %if %{with test}
 BuildRequires:  %{python_module Scrapy >= 2.0}
 BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest >= 5.4}
 %endif
 %python_subpackages
