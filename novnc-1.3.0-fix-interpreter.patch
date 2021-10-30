@@ -5,10 +5,10 @@ Upstream: no
 
 ---
 
-Index: utils/launch.sh
+Index: utils/novnc_proxy
 ===================================================================
---- utils/launch.sh.orig
-+++ utils/launch.sh
+--- a/utils/novnc_proxy
++++ b/utils/novnc_proxy
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/bin/bash

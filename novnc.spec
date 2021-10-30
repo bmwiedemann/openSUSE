@@ -1,7 +1,7 @@
 #
 # spec file for package novnc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,16 @@
 
 
 Name:           novnc
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        VNC client using HTML5 (Web Sockets, Canvas) with encryption support
-License:        MPL-2.0 AND LGPL-3.0-only
+License:        LGPL-3.0-only AND MPL-2.0
 Group:          System/Daemons
 URL:            https://github.com/novnc/noVNC
 Source0:        noVNC-%{version}.tar.gz
 Patch1:         novnc-0.3-manpage.patch
-Patch2:         novnc-1.1.0-fix-interpreter.patch
-%if 0%{?suse_version} < 1330
-Requires:       python2-websockify
-%else
-Requires:       python3-websockify
-%endif
+Patch2:         novnc-1.3.0-fix-interpreter.patch
+Requires:       python3-websockify >= 0.9.0
 BuildArch:      noarch
 
 %description
@@ -40,8 +36,7 @@ instances.
 
 %prep
 %setup -q -n noVNC-%{version}
-%patch1 -p1
-%patch2
+%autopatch -p1
 
 %build
 
@@ -61,7 +56,7 @@ mkdir -p %{buildroot}/%{_usr}/share/novnc/vendor
 cp -rp vendor  %{buildroot}/%{_usr}/share/novnc
 
 mkdir -p %{buildroot}/%{_bindir}
-install utils/launch.sh  %{buildroot}/%{_bindir}/novnc_server
+install utils/novnc_proxy  %{buildroot}/%{_bindir}/novnc_server
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 install -m 444 docs/novnc_server.1 %{buildroot}%{_mandir}/man1/
