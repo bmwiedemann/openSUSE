@@ -82,12 +82,6 @@
 # but may not always work.
 #
 
-%ifarch x86_64 aarch64
-%bcond_without tier1
-%else
-%bcond_with tier1
-%endif
-
 # === broken distro llvm ===
 # In some situations the llvm provided on the platform may not work.
 # we add these conditions here.
@@ -183,8 +177,10 @@ BuildRequires:  ccache
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+%ifarch  %{arm} %{ix86}
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libssh2) >= 1.6.0
+%endif
 
 %if !%with bundled_llvm
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150400
@@ -209,6 +205,9 @@ Provides:       rust-std = %{version}
 Conflicts:      rust-std-static < %{version}
 Obsoletes:      rust-std-static < %{version}
 Provides:       rust-std-static = %{version}
+Conflicts:      rust-gdb < %{version}
+Obsoletes:      rust-gdb < %{version}
+Provides:       rust-gdb = %{version}
 
 # Restrict the architectures as building rust relies on being
 # initially bootstrapped before we can build the n+1 release
@@ -231,73 +230,6 @@ abstractions", even though some of these abstractions feel like those
 of a high-level language. Even then, Rust still allows precise control
 like a low-level language would.
 
-%package doc
-Summary:        Rust documentation
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Obsoletes:      rust-doc < %{version}
-Provides:       rust-doc = %{version}
-
-%description doc
-Documentation for the Rust language.
-
-%package gdb
-Summary:        Gdb integration for rust binaries
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rust-std = %{version}
-Obsoletes:      rust+gdb < %{version}
-Provides:       rust+gdb = %{version}
-
-%description gdb
-This subpackage provides pretty printers and a wrapper script for
-invoking gdb on rust binaries.
-
-%package src
-Summary:        Sources for the Rust standard library
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-BuildArch:      noarch
-Requires:       rust-std = %{version}
-Obsoletes:      rust-src < %{version}
-Provides:       rust-src = %{version}
-
-%description src
-This package includes source files for the Rust standard library. This
-is commonly used for function detail lookups in helper programs such
-as RLS or racer.
-
-%package -n rls%{version_suffix}
-Summary:        Language server for Rust lang
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rust-analysis = %{version}
-Requires:       rust-src = %{version}
-Requires:       rust-std = %{version}
-Obsoletes:      rust+rls < %{version}
-Provides:       rust+rls = %{version}
-
-%description -n rls%{version_suffix}
-The RLS provides a server that runs in the background, providing IDEs,
-editors, and other tools with information about Rust programs. It
-supports functionality such as 'goto definition', symbol search,
-reformatting, and code completion, and enables renaming and
-refactorings.  It can be used with an IDE such as Gnome-Builder.
-
-%package analysis
-Summary:        Compiler analysis data for the Rust standard library
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rust-std = %{version}
-Obsoletes:      rust-analysis < %{version}
-Provides:       rust-analysis = %{version}
-
-%description analysis
-This package contains analysis data files produced with rustc's
--Zsave-analysis feature for the Rust standard library. The RLS (Rust
-Language Server) uses this data to provide information about the Rust
-standard library.
-
 %package -n cargo%{version_suffix}
 Summary:        The Rust package manager
 License:        Apache-2.0 OR MIT
@@ -307,29 +239,9 @@ Obsoletes:      cargo-vendor < %{version}
 Provides:       cargo-vendor = %{version}
 Obsoletes:      rust+cargo < %{version}
 Provides:       rust+cargo = %{version}
-Obsoletes:      rustfmt < %{version}
-Provides:       rustfmt = %{version}
-Obsoletes:      cargo-fmt < %{version}
-Provides:       cargo-fmt = %{version}
-Obsoletes:      clippy < %{version}
-Provides:       clippy = %{version}
 
 %description -n cargo%{version_suffix}
 Cargo downloads dependencies of Rust projects and compiles it.
-
-%package -n cargo%{version_suffix}-doc
-Summary:        Documentation for Cargo
-# Cargo no longer builds its own documentation
-# https://github.com/rust-lang/cargo/pull/4904
-License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Rust
-Requires:       rust-std = %{version}
-Obsoletes:      cargo-doc < %{version}
-Provides:       cargo-doc = %{version}
-BuildArch:      noarch
-
-%description -n cargo%{version_suffix}-doc
-This package includes HTML documentation for Cargo.
 
 %prep
 %ifarch x86_64
@@ -420,8 +332,8 @@ chmod +x library/core/src/unicode/printable.py
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
   %{!?with_sccache: --enable-ccache} \
-  %{?with_tier1: --enable-docs} \
-  %{!?with_tier1: --disable-docs} \
+  --disable-docs \
+  --disable-compiler-docs \
   --enable-verbose-tests \
   --disable-jemalloc \
   --disable-rpath \
@@ -429,11 +341,7 @@ chmod +x library/core/src/unicode/printable.py
   %{debug_info} \
   --enable-vendor \
   --enable-extended \
-%if %{with tier1}
-  --tools="cargo","rls","clippy","rustfmt","analysis","src" \
-%else
-  --tools="cargo","src" \
-%endif
+  --tools="cargo" \
   --release-channel="stable"
 
 # Sometimes we may be rebuilding with the same compiler,
@@ -450,6 +358,7 @@ cat > .env.sh <<\EOF
 export RUSTFLAGS="%{rustflags}"
 export DESTDIR=%{buildroot}
 export LIBSSH2_SYS_USE_PKG_CONFIG=1
+export CARGO_FEATURE_VENDORED=1
 # END EXPORTS
 EOF
 
@@ -462,40 +371,15 @@ export CXXFLAGS="$CFLAGS"
 unset FFLAGS
 
 ./x.py build -v
-%if %{with tier1}
-./x.py doc -v --stage 1
-%endif
 
 %install
 # Reread exports file
 . ./.env.sh
 
 ./x.py install
-./x.py install src
 
 # Remove executable permission from HTML documentation
 # to prevent RPMLINT errors.
-%if %{with tier1}
-chmod -R -x+X %{buildroot}%{_docdir}/rust/html
-
-# Remove lockfile to avoid errors.
-rm %{buildroot}%{_docdir}/rust/html/.lock
-
-# Sanitize the HTML documentation
-find %{buildroot}%{_docdir}/rust/html -empty -delete
-find %{buildroot}%{_docdir}/rust/html -type f -exec chmod -x '{}' '+'
-find %{buildroot}%{_docdir}/rust/html -type f -name '.nojekyll' -exec rm -v '{}' '+'
-
-# The html docs for x86 and x86_64 are the same in most places
-%fdupes -s %{buildroot}%{_docdir}/%{name}/html
-%fdupes -s %{buildroot}/%{_mandir}
-%fdupes %{buildroot}/%{_prefix}
-
-# Cargo no longer builds its own documentation
-# https://github.com/rust-lang/cargo/pull/4904
-mkdir -p %{buildroot}%{_docdir}/cargo
-ln -sT ../rust/html/cargo/ %{buildroot}%{_docdir}/cargo/html
-%endif
 
 # Remove the license files from _docdir: make install put duplicates there
 rm %{buildroot}%{_docdir}/rust/{README.md,COPYRIGHT,LICENSE*}
@@ -511,9 +395,6 @@ find %{buildroot}%{rustlibdir} -type f -name '.cirrus.yml' -exec rm -v '{}' '+'
 find %{buildroot}%{rustlibdir} -type f -name '.clang-format' -exec rm -v '{}' '+'
 find %{buildroot}%{rustlibdir} -type d -name '.github' -exec rm -r -v '{}' '+'
 
-# Remove exec bits from scripts in the src pkg
-find %{buildroot}%{rustlibdir}/src/ -type f -exec chmod -x '{}' '+'
-
 # The shared libraries should be executable to allow fdupes find duplicates.
 find %{buildroot}%{common_libdir} -maxdepth 1 -type f -name '*.so' -exec chmod -v +x '{}' '+'
 
@@ -527,8 +408,10 @@ rm -rf %{buildroot}%{rustlibdir}/*-unknown-linux-gnu*/bin
 # Create the path for crate-devel packages
 mkdir -p %{buildroot}%{_datadir}/cargo/registry
 
-# Move the bash-completion to correct directory for openSUSE
-install -D %{buildroot}%{_sysconfdir}/bash_completion.d/cargo %{buildroot}%{_datadir}/bash-completion/completions/cargo
+# Remove completions
+rm -rf %{buildroot}%{_sysconfdir}/bash_completion.d
+rm -rf %{buildroot}%{_datadir}/zsh
+
 # There should be nothing here at all
 rm -rf %{buildroot}%{_sysconfdir}
 # cargo does not respect our _libexec setting on Leap:
@@ -549,23 +432,13 @@ rm -rf %{buildroot}/home
 %doc CONTRIBUTING.md README.md RELEASES.md
 %{_bindir}/rustc
 %{_bindir}/rustdoc
+%{_bindir}/rust-gdb
+%{_bindir}/rust-gdbgui
 %{_bindir}/rust-lldb
 %{_bindir}/rust-llvm-dwp
 %{_mandir}/man1/rustc.1%{?ext_man}
 %{_mandir}/man1/rustdoc.1%{?ext_man}
 %{_prefix}/lib/lib*.so
-%dir %{rustlibdir}
-%dir %{rustlibdir}/%{rust_triple}
-%dir %{rustlibdir}/%{rust_triple}/lib
-%{rustlibdir}/%{rust_triple}/lib/*.so
-%{rustlibdir}/%{rust_triple}/lib/*.rlib
-%{_libexecdir}/cargo-credential-1password
-%exclude %{_docdir}/rust/html
-%exclude %{rustlibdir}/src
-
-%files gdb
-%{_bindir}/rust-gdb
-%{_bindir}/rust-gdbgui
 %dir %{rustlibdir}
 %dir %{rustlibdir}%{_sysconfdir}
 %{rustlibdir}%{_sysconfdir}/gdb_load_rust_pretty_printers.py
@@ -575,57 +448,19 @@ rm -rf %{buildroot}/home
 %{rustlibdir}%{_sysconfdir}/lldb_lookup.py
 %{rustlibdir}%{_sysconfdir}/lldb_providers.py
 %{rustlibdir}%{_sysconfdir}/rust_types.py
-
-%if %{with tier1}
-%files doc
-%dir %{_docdir}/rust
-%dir %{_docdir}/rust/html
-%doc %{_docdir}/rust/html/*
-%endif
-
-%files src
-%dir %{rustlibdir}
-%{rustlibdir}/src
-
-%if %{with tier1}
-%files -n rls%{version_suffix}
-%license src/tools/rls/LICENSE-{APACHE,MIT}
-%doc src/tools/rls/{README.md,COPYRIGHT,debugging.md}
-%{_bindir}/rls
-%endif
-
-%if %{with tier1}
-%files analysis
-%{rustlibdir}/%{rust_triple}/analysis/
-%endif
+%dir %{rustlibdir}/%{rust_triple}
+%dir %{rustlibdir}/%{rust_triple}/lib
+%{rustlibdir}/%{rust_triple}/lib/*.so
+%{rustlibdir}/%{rust_triple}/lib/*.rlib
+%{_libexecdir}/cargo-credential-1password
 
 %files -n cargo%{version_suffix}
 %license src/tools/cargo/LICENSE-{APACHE,MIT,THIRD-PARTY}
 %license src/tools/rustfmt/LICENSE-{APACHE,MIT}
 %license src/tools/clippy/LICENSE-{APACHE,MIT}
 %{_bindir}/cargo
-%if %{with tier1}
-%{_bindir}/cargo-fmt
-%{_bindir}/rustfmt
-%{_bindir}/cargo-clippy
-%{_bindir}/clippy-driver
-%doc src/tools/rustfmt/{README,CHANGELOG,Configurations}.md
-%doc src/tools/clippy/{README.md,CHANGELOG.md}
-%endif
 %{_mandir}/man1/cargo*.1%{?ext_man}
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/cargo
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_cargo
 %dir %{_datadir}/cargo
 %dir %{_datadir}/cargo/registry
-
-%if %{with tier1}
-%files -n cargo%{version_suffix}-doc
-%dir %{_docdir}/cargo
-%{_docdir}/cargo/html
-%endif
 
 %changelog

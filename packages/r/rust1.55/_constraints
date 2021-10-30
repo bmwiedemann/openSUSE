@@ -9,11 +9,8 @@
       <size unit="G">40</size>
     </disk>
   </hardware>
-<!-- armv6 and armv7 are smaller platforms so we should request less -->
   <overwrite>
     <conditions>
-      <arch>armv6l</arch>
-      <arch>armv7l</arch>
       <arch>ppc</arch>
     </conditions>
     <hardware>
@@ -28,6 +25,8 @@
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
     </conditions>
     <hardware>
       <physicalmemory>
