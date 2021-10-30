@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:18:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * BUGFIX: TOO_MANY_MATCHES warning was causing strings to be globally disabled
+  * BUGFIX: fullworld modifier not working as expected in Mac OS due to locale issue
+  * BUGFIX: Default value for pe.number_of_imported_function not set to 0 
+
+-------------------------------------------------------------------
 Sat May 29 11:29:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.1.1
