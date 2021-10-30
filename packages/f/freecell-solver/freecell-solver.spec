@@ -20,7 +20,7 @@
 %define soversion 0
 %define libname libfreecell-solver
 Name:           freecell-solver
-Version:        6.2.0
+Version:        6.6.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT

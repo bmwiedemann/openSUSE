@@ -56,4 +56,17 @@
     <comment>Update to 6.2.0 (forwarded request 889549 from susnux)</comment>
     <requestid>889557</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fd4c6f19a3ce53d8b1e4ee7f0bd9f8b</srcmd5>
+    <version>6.6.0</version>
+    <time>1635628437</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.6.0
+  * Ignore the FCS_SINGLE_HARD_THREAD and
+    FCS_DISABLE_MULTI_NEXT_INSTS options while removing complexity
+    from the source code.
+  * Better rinutils bootstrap shim.
+  * Silence some compiler warnings.</comment>
+    <requestid>928255</requestid>
+  </revision>
 </revisionlist>
