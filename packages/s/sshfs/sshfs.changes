@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 25 09:25:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- sshfs 3.7.2:
+  * Add a secondary check so if a mkdir request fails with EPERM an
+    access request will be tried - returning EEXIST if the access
+    was successful
+
+-------------------------------------------------------------------
 Mon Nov  9 10:39:19 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.7.1
