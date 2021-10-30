@@ -40,6 +40,7 @@ Source6:        pcsc-lite-reader-conf
 Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2.asc
 Source8:        %{name}.keyring
 Patch0:         systemd-service.patch
+Patch1:         harden_pcscd.service.patch
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -109,6 +110,7 @@ compile plugins for the pcsc-lite package.
 %setup -q
 %patch0 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
+%patch1 -p1
 
 %build
 %configure \
