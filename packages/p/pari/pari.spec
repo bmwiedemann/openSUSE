@@ -109,12 +109,14 @@ sed -i -e 's/^\(doc all:\) .*/\1/' config/DOC_Make.SH
 	--sysdatadir="%_libdir" \
 	--datadir="%_datadir/%name" \
 	--mt=pthread
-%make_build -e \
+%make_build \
 	CFLAGS="%optflags -fno-strict-aliasing" \
 	STRIP=true \
+	all
+%make_build \
 	PDFTEX=luatex \
 	PDFLATEX=lualatex \
-	all docpdf
+	docpdf
 
 %install
 %make_install

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 31 20:36:12 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Split '%make_build all docpdf' into separate executions due to
+  non-reproducible results during parallel build with varying
+  numbers of jobs. Thanks to Bernhard M. Wiedemann for reporting
+  the bug.
+
+-------------------------------------------------------------------
 Fri Oct 29 01:01:54 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to release 2.13.2. Fixed

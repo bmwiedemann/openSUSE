@@ -188,4 +188,12 @@
     <comment>- Update to release 2.13.2. Fixed</comment>
     <requestid>928099</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c3053160a01f3987408fa1a5c1a5a3b1</srcmd5>
+    <version>2.13.2</version>
+    <time>1635717351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928429</requestid>
+  </revision>
 </revisionlist>
