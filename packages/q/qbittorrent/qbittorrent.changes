@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 31 15:54:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.9
+  Bug fixes:
+  * Fix "no action" option on torrent double click
+  * Fix broken behavior of "priority by shown file order"
+  Web UI:
+  * Fix WebUI crash when tracker URL is invalid
+  * Revert "WebUI: group trackers by hostname"
+
+-------------------------------------------------------------------
 Thu Oct 21 06:42:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
