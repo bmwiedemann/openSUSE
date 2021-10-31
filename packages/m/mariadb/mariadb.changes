@@ -4,6 +4,14 @@ Thu Oct  7 15:02:44 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 - Fix socket address in mariadb@.socket file
 
 -------------------------------------------------------------------
+Wed Oct  6 11:43:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_mariadb.service.patch
+  Modified:
+  * mariadb.service.in
+
+-------------------------------------------------------------------
 Mon Sep 20 09:01:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Replace %{_rpmconfigdir}/macros.d with %{_rpmmacrodir},

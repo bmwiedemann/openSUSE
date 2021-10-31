@@ -1736,4 +1736,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment>- Fix socket address in mariadb@.socket file</comment>
     <requestid>923825</requestid>
   </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>f8418d0c87dd1989833e4bf115e7a10d</srcmd5>
+    <version>10.6.4</version>
+    <time>1635717335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928153</requestid>
+  </revision>
 </revisionlist>
