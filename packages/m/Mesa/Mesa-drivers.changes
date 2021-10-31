@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 28 19:07:09 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.2.5
+  * bit of everything: general vulkan, panfrost, and zink are the
+    biggest changes. 
+
+-------------------------------------------------------------------
 Fri Oct 15 09:14:11 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.2.4

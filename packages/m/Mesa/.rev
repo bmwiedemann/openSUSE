@@ -4601,4 +4601,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1191855</comment>
   </revision>
+  <revision rev="421" vrev="293">
+    <srcmd5>49d7c79664e5f21ee7dfa5ee66505614</srcmd5>
+    <version>unknown</version>
+    <time>1635717323</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.5
+  * bit of everything: general vulkan, panfrost, and zink are the
+    biggest changes.</comment>
+    <requestid>928030</requestid>
+  </revision>
 </revisionlist>
