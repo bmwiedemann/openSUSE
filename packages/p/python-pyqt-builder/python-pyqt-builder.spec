@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP

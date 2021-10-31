@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 29 15:02:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.12.2
+  * Bug fix release related to Apple Silicon and Arm64 Qt wheels
+
+-------------------------------------------------------------------
 Sat Oct 16 16:00:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.12.1
