@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 31 08:03:40 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1635525801.1df7a829f:
+  * Make text result thumb look same across browsers
+  * Display previews for `wait_serial`-results like before 009e9256
+  * docs: Add instructions for "installation from source"
+  * templates: Fix redundant spaces around the duration on finished jobs
+  * templates: Add comma to prevent ambiguous state+timestamp combinations
+
+-------------------------------------------------------------------
 Thu Oct 28 07:18:12 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1635405484.2bcc5e885:
