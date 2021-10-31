@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  6 12:01:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_memcached.service.patch
+  Modified:
+  * memcached.service
+
+-------------------------------------------------------------------
 Fri Jun  4 13:18:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

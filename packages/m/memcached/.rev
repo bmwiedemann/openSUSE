@@ -442,4 +442,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>902722</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>e51d086c7ea6b7e7f6f24f0366684be6</srcmd5>
+    <version>1.6.9</version>
+    <time>1635717336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928154</requestid>
+  </revision>
 </revisionlist>

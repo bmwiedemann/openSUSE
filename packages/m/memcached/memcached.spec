@@ -40,6 +40,7 @@ Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
 Source5:        system-user-memcached.conf
+Patch0:	harden_memcached.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
@@ -87,6 +88,7 @@ This package contains development files
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fi
