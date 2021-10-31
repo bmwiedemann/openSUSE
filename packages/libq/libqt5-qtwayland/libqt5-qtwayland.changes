@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:16:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde34:
+  * Fix the logic for decoding modifiers map in Wayland text input protocol
+  * Client: Always destroy frame callback in the actual callback
+  * Client: Don't always recreate frame callbacks
+  * Wayland client: Fix crash when windows are shown/hidden during drag
+  * Correctly detect if image format is supported by QImageWriter
+  * Do not update the mask if we do not have a surface
+
+-------------------------------------------------------------------
 Mon Jun 21 20:18:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch

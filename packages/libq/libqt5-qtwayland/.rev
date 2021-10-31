@@ -355,4 +355,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902327</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>46c0c1d8f2d4f273f7a52d8f1a025b0a</srcmd5>
+    <version>5.15.2+kde34</version>
+    <time>1635717327</time>
+    <user>dimstar_suse</user>
+    <comment>Qt updates from KDE git</comment>
+    <requestid>928085</requestid>
+  </revision>
 </revisionlist>
