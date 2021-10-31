@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 31 14:22:55 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 21.10.0 (changes since 20.6.0):
+  * Possibility to use yt-dlp instead of youtube-dl.
+  * yt-dlp is used by default.
+  * Possibility to use some invidious sites.
+- Remove any Qt4 support conditionals.
+- Rebase smplayer-makeflags.patch.
+
+-------------------------------------------------------------------
 Sun Jun 28 10:09:17 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to version 20.6.0:

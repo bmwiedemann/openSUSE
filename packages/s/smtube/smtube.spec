@@ -1,7 +1,7 @@
 #
 # spec file for package smtube
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_with restricted
 Name:           smtube
-Version:        20.6.0
+Version:        21.10.0
 Release:        0
 Summary:        Small YouTube Browser
 License:        GPL-2.0-or-later
@@ -30,8 +30,14 @@ Source1:        %{name}.1
 # PATCH-FIX-OPENSUSE smtube-makeflags.patch
 Patch0:         %{name}-makeflags.patch
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Script)
+BuildRequires:  pkgconfig(Qt5WebKitWidgets)
+BuildRequires:  pkgconfig(Qt5Widgets)
+Requires:       youtube-dl
 Recommends:     %{name}-lang
 Recommends:     smplayer
 Suggests:       MPlayer
@@ -40,17 +46,6 @@ Suggests:       gnome-mplayer
 Suggests:       mpv
 Suggests:       totem
 Suggests:       vlc
-Requires:       youtube-dl
-%if 0%{?suse_version} >= 1320 || (0%{?sle_version} >= 120100 && 0%{?is_opensuse})
-BuildRequires:  libqt5-linguist
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-BuildRequires:  pkgconfig(Qt5Widgets)
-%else
-BuildRequires:  libQtWebKit-devel
-BuildRequires:  libqt4-devel
-%endif
 
 %description
 SMTube is an application that allows to browse, search and play
@@ -88,13 +83,8 @@ done
 %build
 make \
   MAKEFLAGS="%{?_smp_mflags} V=1"      \
-%if 0%{?suse_version} >= 1320 || (0%{?sle_version} >= 120100 && 0%{?is_opensuse})
   QMAKE=%{_libqt5_bindir}/qmake        \
   LRELEASE=%{_libqt5_bindir}/lrelease  \
-%else
-  QMAKE=%{_libdir}/qt4/bin/qmake       \
-  LRELEASE=%{_libdir}/qt4/bin/lrelease \
-%endif
   PREFIX=%{_prefix}
 
 %install
@@ -104,24 +94,14 @@ make \
 
 install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
-rm -rf %{buildroot}%{_docdir}/%{name}/*
+rm -r %{buildroot}%{_docdir}/%{name}/*
 
 %suse_update_desktop_file %{name}
 %find_lang %{name} --with-qt
 
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files
 %license Copying.txt
-%doc Changelog Readme.txt Release_notes.txt
+%doc Readme.txt Release_notes.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations/
