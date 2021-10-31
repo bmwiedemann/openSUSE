@@ -1,7 +1,7 @@
 #
 # spec file for package pocl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define sover  2.6.0
+%define sover  2.8.0
 Name:           pocl
-Version:        1.6
+Version:        1.8
 Release:        0
 Summary:        Portable Computing Language - an OpenCL implementation
 # The whole code is under MIT
@@ -31,8 +31,7 @@ URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
-BuildConflicts: clang-devel >= 12
-BuildRequires:  clang-devel >= 6
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 30 11:37:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8
+  * Support for Clang/LLVM 13
+  * Improved debugging support with Valgrind, LTTNG
+  * Improved support for SPIR/SPIR-V on CUDA
+- Update to version 1.7
+  * Support for Clang/LLVM 12
+  * Improved support for cross-compiling
+  * Improved support for SPIR-V binaries when using CPU device
+  * Implemented OpenCL 3.0 features: clGetDeviceInfo queries
+    + CL_DEVICE_ATOMIC_MEMORY_CAPABILITIES (Minimal implementation)
+    + CL_DEVICE_ATOMIC_FENCE_CAPABILITIES (Minimal implementation)
+
+-------------------------------------------------------------------
 Fri Dec 25 14:30:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6
