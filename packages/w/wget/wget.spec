@@ -18,7 +18,7 @@
 
 %bcond_with	regression_tests
 Name:           wget
-Version:        1.21.1
+Version:        1.21.2
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.gnu.org/software/wget/
 Source:         https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/wget/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=wget&download=1#/wget.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=90497#/%{name}.keyring
 Patch0:         wgetrc.patch
 Patch1:         wget-libproxy.patch
 Patch6:         wget-1.14-no-ssl-comp.patch
@@ -35,7 +35,8 @@ Patch7:         wget-fix-pod-syntax.diff
 Patch8:         wget-errno-clobber.patch
 Patch9:         remove-env-from-shebang.patch
 Patch10:        wget-do-not-propagate-credentials.patch
-Patch11:        0001-src-main.c-Introduce-truncate_filename-option.patch
+# for AX_CODE_COVERAGE
+BuildRequires:  autoconf-archive >= 2015.02.04
 BuildRequires:  automake
 BuildRequires:  gpgme-devel >= 0.4.2
 BuildRequires:  libcares-devel
@@ -44,21 +45,11 @@ BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig >= 0.9.0
-%if %{?suse_version} > 1110
-BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(uuid)
-%else
-BuildRequires:  libmetalink-devel
-BuildRequires:  libpsl-devel
-BuildRequires:  libuuid-devel
-BuildRequires:  pcre-devel
-%endif
-%if 0%{?suse_version} > 1110
-BuildRequires:  libproxy-devel
-%endif
 %if %{with regression_tests}
 # For the Testsuite
 BuildRequires:  perl-HTTP-Daemon
@@ -74,21 +65,16 @@ This can be done in script files or via the command line.
 %prep
 %setup -q
 %patch0 -p1
-%if 0%{?suse_version} > 1110
 %patch1 -p1
-%endif
 %patch6
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 %build
-%if 0%{?suse_version} > 1110
-# only wget-libproxy.patch needs this
+# wget-libproxy.patch
 autoreconf --force
-%endif
 %configure \
 	--with-ssl=openssl \
 	--with-cares \
