@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 31 11:40:35 UTC 2021 - ldreier@vodafonemail.de
+
+- add plib-1.8.5-CVE-2021-38714.patch from Anton Gladky to fix
+  original security issue (boo#1189887)
+
+-------------------------------------------------------------------
 Tue Aug 31 06:02:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Disable libssg and libssgaux build to fix (boo#1189887)

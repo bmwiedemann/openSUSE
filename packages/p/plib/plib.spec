@@ -33,6 +33,8 @@ Patch1:         plib-1.8.5-strncat.patch
 Patch2:         plib-1.8.5-CVE-2011-4620.patch
 # PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/plib/bugs/51/
 Patch3:         plib-1.8.5-CVE-2012-4552.patch
+# PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/plib/bugs/55/
+Patch4:         plib-1.8.5-CVE-2021-38714.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -80,11 +82,12 @@ programming. It contains the following libraries:
 %patch1
 %patch2
 %patch3
+%patch4
 
 %build
 autoreconf -fiv
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%configure --disable-static --enable-ssg=no --enable-ssgaux=no
+%configure --disable-static
 make %{?_smp_mflags}
 
 %install
