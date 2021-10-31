@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  7 10:26:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * munin-cgi-graph.service
+  * munin-cgi-html.service
+  * munin-cron.service
+  * munin-node.service
+
+-------------------------------------------------------------------
 Fri Mar  5 09:49:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Run munin-update as user munin [bsc#1183078]
