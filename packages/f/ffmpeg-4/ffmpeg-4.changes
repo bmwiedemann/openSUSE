@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 28 15:58:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.1:
+  * Stable bug fix release, mainly codecs and format fixes.
+- Refresh patches with quilt.
+- Drop patches fixed upstream:
+  * ffmpeg-CVE-2021-33815.patch
+  * ffmpeg-CVE-2021-38114.patch
+  * ffmpeg-CVE-2021-38171.patch
+  * ffmpeg-CVE-2020-22037.patch
+
+-------------------------------------------------------------------
 Sun Sep 26 02:44:57 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2020-22037.patch: Backport from upstream to fix

@@ -432,4 +432,12 @@
     <comment>- Add ffmpeg-CVE-2020-22037.patch</comment>
     <requestid>921538</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>889127e075a347a2a73332bbbdb62ede</srcmd5>
+    <version>4.4.1</version>
+    <time>1635717321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928013</requestid>
+  </revision>
 </revisionlist>

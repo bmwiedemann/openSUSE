@@ -96,7 +96,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.4
+Version:        4.4.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -118,10 +118,6 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
 Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
-Patch10:        ffmpeg-CVE-2021-33815.patch
-Patch11:        ffmpeg-CVE-2021-38114.patch
-Patch12:        ffmpeg-CVE-2021-38171.patch
-Patch13:        ffmpeg-CVE-2020-22037.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

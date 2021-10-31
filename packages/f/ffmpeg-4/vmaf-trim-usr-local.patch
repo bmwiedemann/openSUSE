@@ -2,10 +2,10 @@
  libavfilter/vf_libvmaf.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: ffmpeg-4.4/libavfilter/vf_libvmaf.c
+Index: ffmpeg-4.4.1/libavfilter/vf_libvmaf.c
 ===================================================================
---- ffmpeg-4.4.orig/libavfilter/vf_libvmaf.c
-+++ ffmpeg-4.4/libavfilter/vf_libvmaf.c
+--- ffmpeg-4.4.1.orig/libavfilter/vf_libvmaf.c
++++ ffmpeg-4.4.1/libavfilter/vf_libvmaf.c
 @@ -72,7 +72,7 @@ typedef struct LIBVMAFContext {
  #define FLAGS AV_OPT_FLAG_FILTERING_PARAM|AV_OPT_FLAG_VIDEO_PARAM
  
