@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Oct 16 15:18:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4:
+  * imlib2_view: Move property stuff to separate file
+  * imlib2_view: Cleanups
+  * imlib2_view: By default scale large images to fit on screen
+  * imlib2_view: Add some debug
+  * imlib2_view: Fix issue with new default scaling
+  * WEBP loader: Remove forgotten debug printout
+  * WEBP loader: Rename fd variable to be same as everywhere else
+  * LBM loader: Fix potential out-of-bounds memory access
+  * GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix
+  * Revert "GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix"
+  * GIF, TIFF, WEBP loaders: Fix loading if filename does not have usual suffix - take 2
+  * Add script to generate Changelog
+  * Update Changelog to new format
+  * image.c: Use the LOAD_... macros to check loader return values
+  * autofoo: Resurrect non-pkg check for bzip2
+  * Remove some unnecessary X_DISPLAY_MISSING stuff
+  * rend.c: Remove some pointless lines
+  * Add XBM loader
+  * Add imlib2_load and /build to .gitignore
+  * Remove obsolete and unused AC_HEADER_STDC
+  * Restore file:key functionality
+  * ICO loader: Fix (disabled) debug stuff
+  * ICO loader: Enable specifying ico image index by key
+  * Remove unused Context functions
+  * context.c: Fix potential segv
+  * LBM loader: Fix handling of missing RLE data
+  * Fix clang-analyzer warnings - bin (trivial)
+  * Fix clang-analyzer warnings - loaders (trivial)
+  * Fix clang-analyzer warnings - loaders (suppress bogus)
+  * Fix clang-analyzer warnings - lib (mostly trivial)
+  * Fix clang-analyzer warnings - lib (less trivial)
+  * autofoo: Move more to pkg-config
+  * TIFF loader: Drop use of libtiff defined types deprecated in libtiff-4.3.0
+  * TGA loader: Fix loading small images without footer
+  * Spec file: Add git tag to rpm file name (if built from git checkout)
+  * Cleanups: while->for loops (loaders list)
+  * Cleanups: while->for loops (context list)
+  * Cleanups: while->for loops (im->tags list)
+  * Cleanups: while->for loops (images list)
+  * Cleanups: while->for loops (pixmaps list)
+  * Drop unused Imlib_Object_List:last
+  * Add feature to build with ASAN (--enable-gcc-asan)
+  * Correct (disabled) debug printouts
+  * Loaders: Remove unnecessary headers
+  * WEBP saver: Use fopen() etc. like all other savers
+
+-------------------------------------------------------------------
 Mon Dec 14 07:43:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.7.1:

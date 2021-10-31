@@ -1,7 +1,7 @@
 #
 # spec file for package imlib2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define lname	libImlib2-1
 Name:           imlib2
-Version:        1.7.1
+Version:        1.7.4
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
 URL:            https://sourceforge.net/projects/enlightenment/
-Source:         http://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  giflib-devel
 BuildRequires:  libICE-devel
 BuildRequires:  libjpeg-devel
