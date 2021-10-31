@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 29 07:38:02 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Avoid error with HCN IDs containing same consecutive bytes (bsc#1192095 ltc#194963).
+  + hcnmgr-Avoid-hexdum-squeezing-consecutive-identical-.patch
+
+-------------------------------------------------------------------
 Fri Sep  3 18:04:46 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Optimize lsdevinfo filtering to prevent LPM timeouts (bsc#1189571 LTC#193419).
