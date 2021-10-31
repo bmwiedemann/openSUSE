@@ -19,18 +19,18 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-widgetsnbextension
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source:         https://files.pythonhosted.org/packages/source/w/widgetsnbextension/widgetsnbextension-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module notebook >= 4.4.1}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-notebook >= 4.4.1
+BuildRequires:  python-rpm-macros
 Requires:       jupyter-widgetsnbextension = %{version}
+Requires:       python-notebook >= 4.4.1
 Provides:       python-jupyter_widgetsnbextension = %{version}
 Obsoletes:      python-jupyter_widgetsnbextension < %{version}
 BuildArch:      noarch
@@ -45,14 +45,13 @@ Install the corresponding Jupyter widgets package into your kernel, i.e.,
 IPython users would install ipywidgets into their kernel.
 
 %package -n jupyter-widgetsnbextension
-Summary:       Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
-Provides:      juypter-js-widgets = %{version}
-Requires:      python3-widgetsnbextension = %{version}
+Summary:        Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
+Provides:       juypter-js-widgets = %{version}
+Requires:       python3-widgetsnbextension = %{version}
 
 %description  -n jupyter-widgetsnbextension
 This package makes Jupyter widgets available in the classic Jupyter Notebook.
 It provides the Jupyter configuration files.
-
 
 %prep
 %setup -q -n widgetsnbextension-%{version}

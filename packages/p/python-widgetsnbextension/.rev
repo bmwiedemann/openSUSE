@@ -18,4 +18,16 @@
 </comment>
     <requestid>928095</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>547119d72bb33ffb302689cf37c55a0e</srcmd5>
+    <version>3.5.2</version>
+    <time>1635717341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.2
+  * no release notes
+  * bundled JS package updates
+
+- Required by ipywidgets (forwarded request 928353 from bnavigator)</comment>
+    <requestid>928354</requestid>
+  </revision>
 </revisionlist>
