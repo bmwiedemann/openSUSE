@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 16 10:20:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+ * Upgrade bundled zlib version from 1.2.8 to 1.2.11 in the `librdkafka.redist`
+   NuGet package. The updated zlib version fixes CVEs:
+   CVE-2016-9840, CVE-2016-9841, CVE-2016-9842, CVE-2016-9843
+   See https://github.com/edenhill/librdkafka/issues/2934 for more information.
+ * librdkafka now uses [vcpkg](https://vcpkg.io/) for up-to-date Windows
+   dependencies in the `librdkafka.redist` NuGet package:
+   OpenSSL 1.1.1l, zlib 1.2.11, zstd 1.5.0.
+ * The upstream dependency (OpenSSL, zstd, zlib) source archive checksums are
+   now verified when building with `./configure --install-deps`.
+   These builds are used by the librdkafka builds bundled with
+   confluent-kafka-go, confluent-kafka-python and confluent-kafka-dotnet.
+ * Producer `flush()` now overrides the `linger.ms` setting for the duration
+   of the `flush()` call, effectively triggering immediate transmission of
+   queued messages. (#3489)
+ * Lots of bugfixes, see included CHANGELOG.md for details
+- build against system libraries rather than bundled ones
+- enable all features
+
+-------------------------------------------------------------------
 Sun Jun  6 11:34:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

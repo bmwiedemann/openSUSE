@@ -16,15 +16,14 @@
 #
 
 
+%define libname %{name}1
 # lto breaks crc32 detection in configure script
 # See https://github.com/edenhill/librdkafka/issues/2426
 %ifnarch x86_64
 %define _lto_cflags %{nil}
 %endif
-
-%define libname %{name}1
 Name:           librdkafka
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
@@ -36,10 +35,9 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-# lz4 is not in SLE12 available
-%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
-BuildRequires:  liblz4-devel
-%endif
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 librdkafka is a C library implementation of the Apache Kafka protocol,
@@ -68,17 +66,18 @@ This package contains development headers and examples.
 %setup -q
 
 %build
-%configure --enable-ssl \
-%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
-           --enable-lz4 \
-%else
-           --disable-lz4 \
-%endif
-           --enable-sasl
-make %{?_smp_mflags}
+%configure \
+	--enable-gssapi \
+        --enable-lz4 --enable-lz4-ext \
+	--enable-regex-ext \
+        --enable-sasl \
+	--enable-ssl \
+	--enable-zlib \
+	--enable-zstd
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -88,7 +87,6 @@ find %{buildroot} -name '*.a' -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root,-)
 %{_docdir}/../%{name}
 %doc %attr(0644,root,root) %{_docdir}/../%{name}/README.md
 %doc %attr(0644,root,root) %{_docdir}/../%{name}/CONFIGURATION.md
@@ -100,7 +98,6 @@ find %{buildroot} -name '*.a' -delete -print
 %{_libdir}/librdkafka++.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %dir %{_includedir}/%{name}
 %attr(0644,root,root) %{_includedir}/%{name}/*
 %{_libdir}/librdkafka.so
