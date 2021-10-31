@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 29 14:54:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.4.0
+  * Added support for the 'py_ssize_t_clean' argument to the
+    '%Module' directive.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Sat Oct 16 15:58:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.3.1
