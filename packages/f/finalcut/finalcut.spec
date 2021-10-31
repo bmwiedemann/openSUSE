@@ -17,7 +17,7 @@
 
 %define sover   0
 Name:           finalcut
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Console widget library
 License:        LGPL-3.0-or-later
@@ -139,7 +139,7 @@ cp -p examples/.libs/* %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/*.cpp %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/Makefile.clang %{buildroot}%{_libdir}/%{name}/examples
 cp -p examples/Makefile.gcc %{buildroot}%{_libdir}/%{name}/examples
-cp -p fonts/40-finalcut-newfont.conf %{buildroot}/usr/share/fontconfig/conf.avail
+cp -p final/font/40-finalcut-newfont.conf %{buildroot}/usr/share/fontconfig/conf.avail
 ln -s /usr/share/fontconfig/conf.avail/40-finalcut-newfont.conf %{buildroot}/etc/fonts/conf.d/40-finalcut-newfont.conf
 rm -f %{buildroot}%{_libdir}/libfinal.la
 rm %{buildroot}%{_docdir}/%{name}/ChangeLog %{buildroot}%{_docdir}/%{name}/COPYING.LESSER
