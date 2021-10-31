@@ -31,7 +31,7 @@ ExclusiveArch:  do_not_build
 %define skip_python2 1
 %define mname qt5
 Name:           python-%{mname}
-Version:        5.15.5
+Version:        5.15.6
 Release:        0
 Summary:        Python bindings for Qt 5
 License:        SUSE-GPL-2.0-with-FLOSS-exception OR GPL-3.0-only OR NonFree
@@ -78,7 +78,7 @@ BuildRequires:  pkgconfig(Qt5RemoteObjects)
 %endif
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-sip}
-BuildRequires:  %{python_module sip-devel >= 5.3}
+BuildRequires:  %{python_module sip-devel >= 6.4}
 Requires:       python-qt5-sip
 %requires_ge    python-dbus-python
 Provides:       python-PyQt5 = %{version}-%{release}
@@ -96,7 +96,7 @@ Requires:       libqt5-qtbase-devel
 Requires:       python-%{mname} = %{version}
 Requires:       python-dbus-python-devel
 Requires:       python-devel
-Requires:       python-sip-devel >= 5.3
+Requires:       python-sip-devel >= 6.4
 Requires:       pkgconfig(Qt5Bluetooth)
 Requires:       pkgconfig(Qt5Designer)
 Requires:       pkgconfig(Qt5Help)

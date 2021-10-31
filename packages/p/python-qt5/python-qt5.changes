@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 29 15:16:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.15.6
+  * Bug fixes
+  * affecting source builds for Python 3.10
+  * minor improvements to the QObject type hints
+
+-------------------------------------------------------------------
 Tue Oct 19 08:54:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v5.15.5
