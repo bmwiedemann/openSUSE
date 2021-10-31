@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Oct 29 10:34:01 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#528
+- add kernel modules for USB PHYs (bsc#1184867)
+- 17.16
+
+--------------------------------------------------------------------
 Mon Sep 20 11:25:53 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#523
