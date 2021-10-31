@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:21:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde4:
+  * Avoid reparenting of InputPanel when the window is being destroyed
+
+-------------------------------------------------------------------
 Tue Jun 22 19:34:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
