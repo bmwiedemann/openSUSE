@@ -16,6 +16,9 @@
 #
 
 
+%ifarch ppc64
+%define         _lto_cflags      %{nil}
+%endif
 %define _name   libtorrent
 %define libver  2_0
 %define sover   2.0

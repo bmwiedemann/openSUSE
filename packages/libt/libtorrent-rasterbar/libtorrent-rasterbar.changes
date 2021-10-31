@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 31 10:36:56 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix linking problem on ppc64 
+
+-------------------------------------------------------------------
 Sat Sep 25 17:02:38 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add libtorrent-rasterbar-2.0.4-handler-buffer.patch: bump handler
