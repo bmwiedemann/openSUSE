@@ -269,4 +269,12 @@ A model Open Source game.</comment>
   * Correct unit display adjustments on certain tiles when at zoom level other than 100% (issue #5974)</comment>
     <requestid>925039</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8c810d22b07b9a8eb64e4185530528de</srcmd5>
+    <version>1.16.0</version>
+    <time>1635717349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928416</requestid>
+  </revision>
 </revisionlist>
