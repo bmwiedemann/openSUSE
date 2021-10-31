@@ -185,4 +185,12 @@
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902350</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5b479821fd1b384436f8fa9b0f6d7267</srcmd5>
+    <version>5.15.2+kde8</version>
+    <time>1635717325</time>
+    <user>dimstar_suse</user>
+    <comment>Qt updates from KDE git</comment>
+    <requestid>928082</requestid>
+  </revision>
 </revisionlist>
