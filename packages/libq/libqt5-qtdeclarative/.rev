@@ -610,4 +610,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902325</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>d772915aabc355b7802176f39718ec5e</srcmd5>
+    <version>5.15.2+kde36</version>
+    <time>1635717324</time>
+    <user>dimstar_suse</user>
+    <comment>Qt updates from KDE git</comment>
+    <requestid>928081</requestid>
+  </revision>
 </revisionlist>

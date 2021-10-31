@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:20:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde36:
+  * Do not revert properties of deleted objects
+  * Revert "Fix for possible crash in QSGDefaultLayer::grab"
+  * Fix distorted text with subpixel matrix translation
+  * Fix sweep step for tainted QObject JavaScript wrappers
+  * QQmlDelegateModel: Refresh the view when a column is added at 0
+  * QQuickLoader: Do not incubate if the source arrives after setActive(false)
+  * Include <limits> in Yarr.h to fix build with GCC 11
+
+-------------------------------------------------------------------
 Wed Jun 23 07:01:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde29:
