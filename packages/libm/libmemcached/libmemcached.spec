@@ -1,7 +1,7 @@
 #
 # spec file for package libmemcached
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,18 @@ usage, thread safe, and provide full access to server side methods.
 The libmemcachedutil library contains utility functions used by
 libmemcached.
 
+%package -n libmemcachedprotocol0
+Summary:        Libmemcached is a C/C++ client library and tools for the memcached server
+Group:          System/Libraries
+
+%description -n libmemcachedprotocol0
+Libmemcached is a C/C++ client library and tools for the memcached server
+(http://memcached.org/). It has been designed to be light on memory
+usage, thread safe, and provide full access to server side methods.
+
+The libmemcachedprotocol library contains functions with interacting with
+the memcached server.
+
 %package devel
 Summary:        Libmemcached is a C/C++ client library and tools for the memcached server
 Group:          Development/Libraries/C and C++
@@ -115,6 +127,8 @@ rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
 %postun -n %{libsoname} -p /sbin/ldconfig
 %post -n libmemcachedutil2 -p /sbin/ldconfig
 %postun -n libmemcachedutil2 -p /sbin/ldconfig
+%post -n libmemcachedprotocol0 -p /sbin/ldconfig
+%postun -n libmemcachedprotocol0 -p /sbin/ldconfig
 
 %files
 %{_bindir}/memcapable
@@ -141,6 +155,8 @@ rm -f %{buildroot}%{_datadir}/aclocal/ax_libmemcached.m4
 %{_libdir}/libhashkit.so.2.*.*
 %{_libdir}/libmemcachedutil.so.2
 %{_libdir}/libmemcachedutil.so.2.*.*
+
+%files -n libmemcachedprotocol0
 %{_libdir}/libmemcachedprotocol.so.0
 %{_libdir}/libmemcachedprotocol.so.0.*.*
 
