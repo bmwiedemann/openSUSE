@@ -1,6 +1,6 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -25,7 +25,7 @@ all: src/smplayer webserver/simple_web_s
+@@ -26,7 +26,7 @@ all: src/smplayer webserver/simple_web_s
  
  src/smplayer:
  	./get_svn_revision.sh
@@ -9,8 +9,8 @@
  	cd src && $(LRELEASE) smplayer.pro
  
  webserver/simple_web_server:
-@@ -80,7 +80,6 @@ install: all
- 	install -m 644 smplayer_enqueue.desktop $(DESTDIR)$(APPLNK_DIR)
+@@ -85,7 +85,6 @@ install: all
+ 
  	-install -d $(DESTDIR)$(PREFIX)/share/man/man1/
  	install -m 644 man/smplayer.1 $(DESTDIR)$(PREFIX)/share/man/man1/
 -	gzip -9 -f $(DESTDIR)$(PREFIX)/share/man/man1/smplayer.1

@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        21.1.0
+Version:        21.10.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ Patch0:         %{name}-makeflags.patch
 Patch1:         %{name}-defaults.patch
 # PATCH-FIX-UPSTREAM smplayer-add_kde_protocols_to_desktop_file.patch -- To play network shared video correctly: #PM-48.
 Patch2:         %{name}-add_kde_protocols_to_desktop_file.patch
-# PATCH-FIX-UPSTREAM smplayer-21.1.0-gcc11.diff -- github.com/smplayer-dev/smplayer/commit/4aa67eac23b0f397c4d4fcc953e739d7c707aad1
-Patch3:         %{name}-21.1.0-gcc11.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -110,13 +108,14 @@ mv %{buildroot}%{_bindir}/{,%{name}-}simple_web_server
 
 %files
 %license Copying*.txt
-%doc Changelog Finding_subtitles.txt Readme.txt Release_notes.txt Not_so_obvious_things.txt Watching_TV.txt
+%doc Readme.txt Release_notes.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-simple_web_server
 %{_datadir}/applications/%{name}*.desktop
 %dir %{_datadir}/icons/hicolor/*/
 %dir %{_datadir}/icons/hicolor/*/apps/
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations/
 %{_mandir}/man?/%{name}.?%{?ext_man}
