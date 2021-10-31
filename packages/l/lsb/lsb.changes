@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 28 08:51:24 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Change all requires to be in /usr (bsc#1191073)
+- Remove symlinks in /lib, we assume they aren't needed from those
+  3rd party rpms that require lsb (time will tell)
+
+-------------------------------------------------------------------
 Mon Oct 12 08:23:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update location of pidof and ed (bsc#1177540)

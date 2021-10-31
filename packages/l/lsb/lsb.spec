@@ -1,7 +1,7 @@
 #
 # spec file for package lsb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,51 +31,71 @@ Requires:       %{_bindir}/awk
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/batch
 Requires:       %{_bindir}/bc
+Requires:       %{_bindir}/cat
 Requires:       %{_bindir}/chfn
+Requires:       %{_bindir}/chgrp
+Requires:       %{_bindir}/chmod
+Requires:       %{_bindir}/chown
 Requires:       %{_bindir}/chsh
 Requires:       %{_bindir}/cksum
 Requires:       %{_bindir}/cmp
 Requires:       %{_bindir}/col
 Requires:       %{_bindir}/comm
+Requires:       %{_bindir}/cp
 Requires:       %{_bindir}/crontab
 Requires:       %{_bindir}/csplit
 Requires:       %{_bindir}/cut
+Requires:       %{_bindir}/dd
+Requires:       %{_bindir}/df
 Requires:       %{_bindir}/diff
 Requires:       %{_bindir}/dirname
 Requires:       %{_bindir}/du
+Requires:       %{_bindir}/echo
 Requires:       %{_bindir}/ed
 Requires:       %{_bindir}/env
 Requires:       %{_bindir}/expand
 Requires:       %{_bindir}/expr
+Requires:       %{_bindir}/false
 Requires:       %{_bindir}/file
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/fold
 Requires:       %{_bindir}/foomatic-rip
+Requires:       %{_bindir}/fuser
 Requires:       %{_bindir}/gencat
 Requires:       %{_bindir}/getconf
 Requires:       %{_bindir}/gettext
 Requires:       %{_bindir}/groups
 Requires:       %{_bindir}/gs
 Requires:       %{_bindir}/head
+Requires:       %{_bindir}/hostname
 Requires:       %{_bindir}/iconv
 Requires:       %{_bindir}/id
 Requires:       %{_bindir}/install
 Requires:       %{_bindir}/ipcrm
 Requires:       %{_bindir}/ipcs
 Requires:       %{_bindir}/join
+Requires:       %{_bindir}/kill
 Requires:       %{_bindir}/killall
+Requires:       %{_bindir}/ln
 Requires:       %{_bindir}/locale
 Requires:       %{_bindir}/localedef
+Requires:       %{_bindir}/logger
 Requires:       %{_bindir}/logname
 Requires:       %{_bindir}/lp
 Requires:       %{_bindir}/lpr
+Requires:       %{_bindir}/ls
 Requires:       %{_bindir}/m4
 Requires:       %{_bindir}/mailx
 Requires:       %{_bindir}/make
 Requires:       %{_bindir}/man
 Requires:       %{_bindir}/md5sum
+Requires:       %{_bindir}/mkdir
 Requires:       %{_bindir}/mkfifo
+Requires:       %{_bindir}/mknod
+Requires:       %{_bindir}/more
+Requires:       %{_bindir}/mount
 Requires:       %{_bindir}/msgfmt
+Requires:       %{_bindir}/mv
 Requires:       %{_bindir}/newgrp
 Requires:       %{_bindir}/nice
 Requires:       %{_bindir}/nl
@@ -88,18 +108,34 @@ Requires:       %{_bindir}/pathchk
 Requires:       %{_bindir}/pidof
 Requires:       %{_bindir}/pr
 Requires:       %{_bindir}/printf
+Requires:       %{_bindir}/ps
+Requires:       %{_bindir}/pwd
 Requires:       %{_bindir}/renice
+Requires:       %{_bindir}/rm
+Requires:       %{_bindir}/rmdir
 Requires:       %{_bindir}/rsync
+Requires:       %{_bindir}/sed
+Requires:       %{_bindir}/sh
+Requires:       %{_bindir}/sleep
+Requires:       %{_bindir}/sort
 Requires:       %{_bindir}/split
 Requires:       %{_bindir}/strip
+Requires:       %{_bindir}/stty
+Requires:       %{_bindir}/su
 Requires:       %{_bindir}/sum
+Requires:       %{_bindir}/sync
 Requires:       %{_bindir}/tail
+Requires:       %{_bindir}/tar
 Requires:       %{_bindir}/tee
 Requires:       %{_bindir}/test
 Requires:       %{_bindir}/time
+Requires:       %{_bindir}/touch
 Requires:       %{_bindir}/tr
+Requires:       %{_bindir}/true
 Requires:       %{_bindir}/tsort
 Requires:       %{_bindir}/tty
+Requires:       %{_bindir}/umount
+Requires:       %{_bindir}/uname
 Requires:       %{_bindir}/unexpand
 Requires:       %{_bindir}/uniq
 Requires:       %{_bindir}/wc
@@ -115,46 +151,10 @@ Requires:       %{_sbindir}/groupadd
 Requires:       %{_sbindir}/groupdel
 Requires:       %{_sbindir}/groupmod
 Requires:       %{_sbindir}/sendmail
+Requires:       %{_sbindir}/shutdown
 Requires:       %{_sbindir}/useradd
 Requires:       %{_sbindir}/userdel
 Requires:       %{_sbindir}/usermod
-Requires:       /bin/cat
-Requires:       /bin/chgrp
-Requires:       /bin/chmod
-Requires:       /bin/chown
-Requires:       /bin/cp
-Requires:       /bin/dd
-Requires:       /bin/df
-Requires:       /bin/echo
-Requires:       /bin/false
-Requires:       /bin/fuser
-Requires:       /bin/hostname
-Requires:       /bin/kill
-Requires:       /bin/ln
-Requires:       /bin/logger
-Requires:       /bin/ls
-Requires:       /bin/mkdir
-Requires:       /bin/mknod
-Requires:       /bin/more
-Requires:       /bin/mount
-Requires:       /bin/mv
-Requires:       /bin/ps
-Requires:       /bin/pwd
-Requires:       /bin/rm
-Requires:       /bin/rmdir
-Requires:       /bin/sed
-Requires:       /bin/sh
-Requires:       /bin/sleep
-Requires:       /bin/sort
-Requires:       /bin/stty
-Requires:       /bin/su
-Requires:       /bin/sync
-Requires:       /bin/tar
-Requires:       /bin/touch
-Requires:       /bin/true
-Requires:       /bin/umount
-Requires:       /bin/uname
-Requires:       /sbin/shutdown
 Requires:       Mesa
 Requires:       cpio
 Requires:       grep
@@ -259,46 +259,6 @@ echo -n "core-2.0-ia32:core-3.2-ia32:core-4.0-ia32" >>  %{buildroot}%{_sysconfdi
 echo -n "core-2.0-%{_target_cpu}:core-3.2-%{_target_cpu}:core-4.0-%{_target_cpu}" >>  %{buildroot}%{_sysconfdir}/lsb-release
 %endif
 echo "\"" >> %{buildroot}%{_sysconfdir}/lsb-release
-%ifarch x86_64
-mkdir -p %{buildroot}/lib
-ln -sf /lib64/ld-linux-x86-64.so.2 %{buildroot}/lib64/ld-lsb-x86-64.so.2
-ln -sf /lib64/ld-linux-x86-64.so.2 %{buildroot}/lib64/ld-lsb-x86-64.so.3
-%endif
-%ifarch %{ix86} x86_64
-ln -sf /lib/ld-linux.so.2 %{buildroot}/lib/ld-lsb.so.2
-ln -sf /lib/ld-linux.so.2 %{buildroot}/lib/ld-lsb.so.3
-%endif
-%ifarch ppc64
-mkdir -p %{buildroot}/lib
-ln -s /lib64/ld64.so.1 %{buildroot}/lib64/ld-lsb-ppc64.so.2
-ln -s /lib64/ld64.so.1 %{buildroot}/lib64/ld-lsb-ppc64.so.3
-%endif
-%ifarch ppc ppc64
-ln -s /lib/ld.so.1            %{buildroot}/lib/ld-lsb-ppc32.so.2
-ln -s /lib/ld.so.1            %{buildroot}/lib/ld-lsb-ppc32.so.3
-%endif
-%ifarch ia64
-ln -s /lib/ld-linux-ia64.so.2 %{buildroot}/lib/ld-lsb-ia64.so.2
-ln -s /lib/ld-linux-ia64.so.2 %{buildroot}/lib/ld-lsb-ia64.so.3
-%endif
-%ifarch s390x
-mkdir -p %{buildroot}/lib
-ln -sf /lib64/ld64.so.1         %{buildroot}/lib64/ld-lsb-s390x.so.2
-ln -sf /lib64/ld64.so.1         %{buildroot}/lib64/ld-lsb-s390x.so.3
-%endif
-%ifarch s390
-ln -sf /lib/ld.so.1	      %{buildroot}/lib/ld-lsb-s390.so.2
-ln -sf /lib/ld.so.1           %{buildroot}/lib/ld-lsb-s390.so.3
-%endif
-%ifarch sparc
-ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-sparc.so.2
-ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-sparc.so.3
-%endif
-# These platforms do not have a LSB, just add something to make it compile
-%ifarch axp mips
-ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-%{_target_cpu}.so.2
-ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-%{_target_cpu}.so.3
-%endif
 mkdir -p %{buildroot}%{_sysconfdir}/lsb-release.d
 touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-noarch
 touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-noarch
@@ -346,25 +306,5 @@ touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-%{_target_cpu}
 %dir %{_sysconfdir}/lsb-release.d
 %{_sysconfdir}/lsb-release.d/*
 %{_sysconfdir}/lsb-release
-%ifarch %{ix86} x86_64
-/lib/ld-lsb.so.2
-/lib/ld-lsb.so.3
-%endif
-%ifarch ppc ppc64
-/lib/ld-lsb-ppc32.so.2
-/lib/ld-lsb-ppc32.so.3
-%endif
-%ifarch x86_64
-/lib64/ld-lsb-x86-64.so.2
-/lib64/ld-lsb-x86-64.so.3
-%endif
-%ifarch s390
-/lib/ld-lsb-s390.so.2
-/lib/ld-lsb-s390.so.3
-%endif
-%ifarch ppc64 s390x ia64
-/%{_lib}/ld-lsb-%{_target_cpu}.so.2
-/%{_lib}/ld-lsb-%{_target_cpu}.so.3
-%endif
 
 %changelog
