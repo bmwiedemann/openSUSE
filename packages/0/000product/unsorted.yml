@@ -1766,7 +1766,6 @@ unsorted:
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
   - cargo1.55 
-  - cargo1.55-doc: [x86_64] 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -14576,6 +14575,7 @@ unsorted:
   - libxcrypt-devel-static 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
+  - libxdot4 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
@@ -21398,7 +21398,6 @@ unsorted:
   - python3-sss_nss_idmap 
   - python3-sssd-config 
   - python3-stdeb 
-  - python3-stestr 
   - python3-stevedore 
   - python3-stp 
   - python3-susepubliccloudinfo 
@@ -22774,8 +22773,6 @@ unsorted:
   - python36-iso8601 
   - python36-isodate 
   - python36-isort 
-  - python36-itemadapter 
-  - python36-itemloaders 
   - python36-itsdangerous 
   - python36-itypes 
   - python36-iwlib 
@@ -23939,6 +23936,7 @@ unsorted:
   - python36-starlette 
   - python36-statsd 
   - python36-stem 
+  - python36-stestr 
   - python36-stomp.py 
   - python36-stomper 
   - python36-straight-plugin 
@@ -25337,7 +25335,6 @@ unsorted:
   - python38-expiringdict 
   - python38-exrex 
   - python38-extension-helpers 
-  - python38-extras 
   - python38-extratools 
   - python38-ez_setup 
   - python38-ezdxf 
@@ -25367,7 +25364,6 @@ unsorted:
   - python38-fire 
   - python38-first 
   - python38-fissix 
-  - python38-fixtures 
   - python38-flake8 
   - python38-flake8-blind-except 
   - python38-flake8-bugbear 
@@ -25780,7 +25776,6 @@ unsorted:
   - python38-ligotimegps 
   - python38-limnoria 
   - python38-line_profiler 
-  - python38-linecache2 
   - python38-lineup-widget 
   - python38-link-traits 
   - python38-linstor 
@@ -25946,7 +25941,6 @@ unsorted:
   - python38-node-semver 
   - python38-nodeenv 
   - python38-nornir 
-  - python38-nose 
   - python38-nose2 
   - python38-notebook 
   - python38-notebook-lang 
@@ -26068,7 +26062,6 @@ unsorted:
   - python38-patiencediff 
   - python38-patsy 
   - python38-pbkdf2 
-  - python38-pbr 
   - python38-pcodedmp 
   - python38-pdd 
   - python38-pdfminer.six 
@@ -26864,6 +26857,7 @@ unsorted:
   - python38-statsd 
   - python38-statsmodels 
   - python38-stem 
+  - python38-stestr 
   - python38-stomp.py 
   - python38-stomper 
   - python38-straight-plugin 
@@ -26922,7 +26916,6 @@ unsorted:
   - python38-testresources 
   - python38-testscenarios 
   - python38-testsuite 
-  - python38-testtools 
   - python38-text-unidecode 
   - python38-textX 
   - python38-textdistance 
@@ -26969,7 +26962,6 @@ unsorted:
   - python38-tox-wheel 
   - python38-tpfd 
   - python38-tqdm 
-  - python38-traceback2 
   - python38-traitlets 
   - python38-traits 
   - python38-traitsui 
@@ -29992,6 +29984,7 @@ unsorted:
   - python39-statsd 
   - python39-statsmodels 
   - python39-stem 
+  - python39-stestr 
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
@@ -30235,7 +30228,6 @@ unsorted:
   - python39-weblib 
   - python39-webruntime 
   - python39-websocket-client 
-  - python39-websockets 
   - python39-wfuzz 
   - python39-whatever 
   - python39-whatthepatch 
@@ -31095,9 +31087,7 @@ unsorted:
   - rke2 
   - rkhunter 
   - rkward 
-  - rls: [x86_64] 
   - rls1.54: [x86_64] 
-  - rls1.55: [x86_64] 
   - rlwrap 
   - rmail 
   - rmedigicontrol 
@@ -31596,7 +31586,6 @@ unsorted:
   - ruqola 
   - rust 
   - rust-cbindgen 
-  - rust-gdb 
   - rust-packaging 
   - rust-srpm-macros 
   - rust1.54 
@@ -31605,10 +31594,8 @@ unsorted:
   - rust1.54-gdb 
   - rust1.54-src 
   - rust1.55 
-  - rust1.55-analysis: [x86_64] 
-  - rust1.55-doc: [x86_64] 
-  - rust1.55-gdb 
-  - rust1.55-src 
+  - rust1.55-gdb: [i586] 
+  - rust1.55-src: [i586] 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
