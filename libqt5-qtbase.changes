@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 28 07:14:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde254:
+  * Revert "QPushButton: fix support of style sheet rule for text alignment"
+  * Revert "Fix invalid text layout data when a full layout run is interrupted"
+  * Optimize mime type matching
+  * fix potential mem leak on connection lost
+  * tst_QSslSocket - replace an old certificate
+  * tst_QSslCertificate::verify - remove QSKIP
+  * tst_QSslCertificate::verify - skip auto-test
+  * Doc: bump the OpenSSL minimum supported version to 1.1.1
+  * QHttpSocketEngine: Fix memory leak
+  * QSslCertificate(OpenSSL) - harden protection against nullpointers
+  * QSslCertificate: Guard against accessing empty QByteArray
+  * Make QStyle::proxy() always return the leaf proxy
+  * Prefer previously used channels in QHttpNetworkConnection
+  * Fix populating selection clipboard with keyboard
+  * QSslCertificate::operator == - cleanup error queue
+  * Revert "Fix highdpi conversion of QTabletEvent coordinates on xcb"
+  * Fix highdpi conversion of QTabletEvent coordinates on xcb
+  * Support transformations in pattern/texture brushes in pdf
+  * Respect font stretch if set together with font style
+  * Fix QPainterPath with QFont::SmallCaps
+  * Avoid generating large pdf files when using dashed cosmetic pens
+  * PDF generation: disentangle native pen from transforms
+  * qmake: Switch to using Xcode's new build system
+  * Explicitly set input files for qtpreprocess
+  * Only embed launch screen when building an app
+  * Explicitly set output files for qtpreprocess
+  * Fix memory leak
+  * Fix reading gamma from PNGs without ICC profile
+  * QPlatformWindow: fix isAncestorOf not breaking recursion
+  * Cater for upstream changes in eglplatform.h
+  * QTextOdfWriter: fix exporting pixmaps to ODT
+  * Fix access to content: URLs with transient read/write permissions
+
+-------------------------------------------------------------------
 Fri Aug 27 17:51:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.2+kde222:
