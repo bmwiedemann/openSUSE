@@ -599,7 +599,7 @@
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
-    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="git-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="git-cvs" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-email" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="git-gui" supportstatus="unsupported"/> <!-- reason: dvd:git -->
@@ -1756,9 +1756,11 @@
     <package name="libcdio_paranoia2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcdr-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcdrdeflt1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcdt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcelt0-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcfg6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libcfitsio9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcgraph6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libchamplain-0_12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcheese-gtk25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2089,7 +2091,9 @@
     <package name="libgupnp-dlna-backend-gstreamer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgupnp-igd-1_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgusb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgvc6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgvnc-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgvpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgweather-3-16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgweather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgxps2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2210,6 +2214,7 @@
     <package name="libktorrent-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libkwalletbackend5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkyotocabinet16" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="liblab_gamut1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2392,6 +2397,7 @@
     <package name="libparanoia1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libparted0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libpathplan4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcap1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcaudio0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpci3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2605,7 +2611,7 @@
     <package name="libserf-1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsgutils2-1_46-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:git -->
+    <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3480,6 +3486,7 @@
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-media-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-media-session-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3696,9 +3703,11 @@
     <package name="python38-docutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-et_xmlfile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-fastparquet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-filetype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3735,6 +3744,7 @@
     <package name="python38-liblarch-gtk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-libvirt-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-libxml2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="python38-linecache2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python38-matplotlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3748,6 +3758,7 @@
     <package name="python38-netaddr" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-netifaces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="python38-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="python38-nose" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-notify2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python38-numexpr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-numpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -3758,6 +3769,7 @@
     <package name="python38-packaging" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-pandas" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-passlib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-pbr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-pexpect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python38-pip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-ply" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3826,12 +3838,14 @@
     <package name="python38-soupsieve" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tables" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tabulate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-testtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-thrift" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python38-toml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
+    <package name="python38-traceback2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-trio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-typing_extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
