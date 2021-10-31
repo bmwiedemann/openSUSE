@@ -57,4 +57,13 @@ Update to 4.6.1</comment>
     <comment></comment>
     <requestid>925907</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>566e25b6cd9a558ccab1b1376cbb8258</srcmd5>
+    <version>4.8.1</version>
+    <time>1635717322</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11</comment>
+    <requestid>928028</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 19:16:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11
+
+-------------------------------------------------------------------
 Sun Oct 17 17:28:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 4.8.1
