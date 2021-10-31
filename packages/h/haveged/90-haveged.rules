@@ -1,2 +1,0 @@
-ACTION=="add", KERNEL=="random" , SUBSYSTEM=="mem", TAG+="systemd", ENV{SYSTEMD_WANTS}+="haveged.service"
-

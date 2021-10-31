@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 11 13:26:52 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Improvements on the linux kernel random subsystem have made 
+  the haveged service/daemon obsolete, remove the service files,
+  initrd modules and udev rules, the other components
+  are still useful.
+
+-------------------------------------------------------------------
 Mon Jan  4 08:28:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.14:
