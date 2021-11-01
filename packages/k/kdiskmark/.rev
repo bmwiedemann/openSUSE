@@ -33,4 +33,12 @@
     <comment>Update to 2.2.1</comment>
     <requestid>908781</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6043f6d6424992ae5f0cd41487ac54b1</srcmd5>
+    <version>2.3.0</version>
+    <time>1635788144</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.3.0</comment>
+    <requestid>928450</requestid>
+  </revision>
 </revisionlist>

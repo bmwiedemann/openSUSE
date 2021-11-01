@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 31 21:51:05 UTC 2021 - Dmitry Sidorov <jonmagon@gmail.com>
+
+- Update to version 2.3.0
+  * Added measurement time limit
+  * Fixed display of units above bars
+  * The pause between tests selector has been moved to the settings window
+  * Default value for threads of the first RND test is now one
+  
+-------------------------------------------------------------------
 Tue Jul 27 14:50:15 UTC 2021 - Dmitry Sidorov <jonmagon@gmail.com>
 
 - Update to version 2.2.1
