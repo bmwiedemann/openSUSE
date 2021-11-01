@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  1 16:12:18 UTC 2021 - Andy Li <andy@onthewings.net>
+
+- Update to 4.2.4
+  * hl : add clipboard support in hl 1.12
+  * eval : added `%` operator to `eval.numbers.Int64` and `UInt64`
+  * macro : support maps in `haxe.macro.Context.makeExpr`
+  * js : added `-D js-global=globalThis` to customize global object name
+  * php : added more externs for PHP buildins
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.4/extra/CHANGES.txt
+
+-------------------------------------------------------------------
 Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
 
 - Update to 4.2.1

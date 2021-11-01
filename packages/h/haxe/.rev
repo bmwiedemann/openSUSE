@@ -270,4 +270,19 @@ We're in the process of easing the installation process across different Linux d
     https://github.com/HaxeFoundation/haxe/blob/4.2.1/extra/CHANGES.txt</comment>
     <requestid>891989</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9998da5a5598ced52e2aacf12dad3e67</srcmd5>
+    <version>4.2.4</version>
+    <time>1635801662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.4
+  * hl : add clipboard support in hl 1.12
+  * eval : added `%` operator to `eval.numbers.Int64` and `UInt64`
+  * macro : support maps in `haxe.macro.Context.makeExpr`
+  * js : added `-D js-global=globalThis` to customize global object name
+  * php : added more externs for PHP buildins
+  * Various bug fixes detailed in
+    https://github.com/HaxeFoundation/haxe/blob/4.2.4/extra/CHANGES.txt</comment>
+    <requestid>928582</requestid>
+  </revision>
 </revisionlist>
