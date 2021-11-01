@@ -590,4 +590,12 @@ Touchstreams plugin was enabled for Factory. (forwarded request 178518 from Dark
     <comment></comment>
     <requestid>917218</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>94248b25fa814d7673ee3d2606bebeca</srcmd5>
+    <version>0.6.70+git.14794.g33744ae6ce</version>
+    <time>1635788143</time>
+    <user>dimstar_suse</user>
+    <comment>Qt5WebKit became truly optional.</comment>
+    <requestid>928557</requestid>
+  </revision>
 </revisionlist>

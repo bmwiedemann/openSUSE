@@ -20,6 +20,7 @@
 %global __requires_exclude (org.LC.common.1)|(org.LC.Blasq.1)|(SB2.1)|(Mellonetray.1)|(org.LC.Ooronee.1)
 
 %bcond_without ffmpeg
+%bcond_with QtWebKit
 
 %define plugin_dir %{_libdir}/leechcraft/plugins-qt5
 %define translations_dir %{_datadir}/leechcraft/translations
@@ -27,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-14771-g9d21b0f8ad
+%define LEECHCRAFT_VERSION 0.6.70-14794-g33744ae6ce
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -46,7 +47,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.14771.g9d21b0f8ad
+Version:        0.6.70+git.14794.g33744ae6ce
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -81,9 +82,7 @@ BuildRequires:  libqxmpp-qt5-devel >= 1.1
 BuildRequires:  libsensors4-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1325
 BuildRequires:  wt-devel
-%endif
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.13
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.13
 BuildRequires:  pkgconfig(Qt5Core) >= 5.13
@@ -106,8 +105,9 @@ BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
 %ifnarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.13
 %endif
-# Will be removed soon! WIP: core, blogique, lhtr etc.
+%if %{with QtWebKit}
 BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
+%endif
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
 BuildRequires:  pkgconfig(Qt5Xml) >= 5.13
@@ -184,8 +184,17 @@ Recommends:     %{name}-secman-simplestorage
 Recommends:     %{name}-visualnotifications
 Suggests:       %{name}-lastfmscrobble
 
+%ifarch ppc ppc64 ppc64le s390 s390x
+Obsoletes:      %{name}-azoth
+%endif
+%if %{without QtWebKit}
+Obsoletes:      %{name}-blogique
+%endif
 Obsoletes:      %{name}-choroid
 Obsoletes:      %{name}-harbinger
+%if %{without QtWebKit}
+Obsoletes:      %{name}-lhtr
+%endif
 Obsoletes:      %{name}-nacheku
 Obsoletes:      %{name}-popishu
 %ifarch ppc ppc64 ppc64le s390 s390x
@@ -232,8 +241,8 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-http = %{version}
 Requires:       libQt5Sql5-sqlite
 Recommends:     %{name}-poshuku = %{version}
-%if 0%{?suse_version} < 1325
-Obsoletes:      %{name}-aggregator-webaccess
+%if %{without QtWebKit}
+Obsoletes:      %{name}-aggregator-bodyfetch
 %endif
 
 %description aggregator
@@ -252,6 +261,7 @@ It features:
 A web browser plugin is recommended to show the news in a fancy way.
 
 
+%if %{with QtWebKit}
 %package aggregator-bodyfetch
 Summary:        LeechCraft Aggregator Bodyfetch Module
 License:        BSL-1.0
@@ -268,9 +278,9 @@ were originally there.
 Fetching is done according to little scripts called recipes. For this to
 work, a script provider like Qrosp should be installed. Please refer to the
 guide to writing recipes if you are interested in writing your own.
+%endif
 
 
-%if 0%{?suse_version} > 1325
 %package aggregator-webaccess
 Summary:        LeechCraft Aggregator Web Interface Module
 License:        BSL-1.0
@@ -281,7 +291,7 @@ Requires:       %{name}-aggregator = %{version}
 WebAccess provides a basic web interface for the
 Aggregator feed reader, so one can read news
 articles from a mobile device or another machine.
-%endif
+
 
 %package anhero
 Summary:        LeechCraft Crash handler Module
@@ -775,6 +785,7 @@ This package provides a Picasa image storage client subplugin
 for LeechCraft Blasq.
 
 
+%if %{with QtWebKit}
 %package blogique
 Summary:        LeechCraft Blogging client Module
 License:        BSL-1.0
@@ -811,6 +822,7 @@ Provides:       %{name}-blogique-subplugin = %{version}
 
 %description blogique-metida
 This package provides a LiveJournal subplugin for LeechCraft Blogique.
+%endif
 
 
 %package certmgr
@@ -1259,6 +1271,7 @@ Requires:       %{name}-sb = %{version}
 This package provides another Network Monitor plugin for Leechcraft.
 
 
+%if %{with QtWebKit}
 %package lhtr
 Summary:        LeechCraft HTML WYSIWYG editor Module
 License:        BSL-1.0
@@ -1269,6 +1282,7 @@ Recommends:     %{name}-poshuku
 %description lhtr
 This package provides a HTML WYSIWYG editor plugin for Leechcraft,
 usable with mail and blog modules.
+%endif
 
 
 %package liznoo
@@ -1661,7 +1675,13 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku-backend = %{version}
 Recommends:     %{name}-imgaste = %{version}
 Recommends:     %{name}-intermutko = %{version}
+%if %{without QtWebKit}
+Obsoletes:      %{name}-poshuku-dcac
+%endif
 Obsoletes:      %{name}-poshuku-foc
+%if %{without QtWebKit}
+Obsoletes:      %{name}-poshuku-speeddial
+%endif
 Obsoletes:      %{name}-poshuku-webkitview
 
 %description poshuku
@@ -1703,6 +1723,7 @@ Features:
  * Whitelists for the Flash blocker.
 
 
+%if %{with QtWebKit}
 %package poshuku-dcac
 Summary:        LeechCraft Poshuku DC/AC Module
 License:        BSL-1.0
@@ -1712,6 +1733,7 @@ Requires:       %{name}-poshuku = %{version}
 %description poshuku-dcac
 This package provides the DC/AC plugin for LeechCraft Poshuku
 which inverts colors on web pages.
+%endif
 
 
 %package poshuku-fatape
@@ -1819,6 +1841,7 @@ This package provides a QR coDe support plugin for LeechCraft Poshuku
 which can represent the URL of a web page as a QR code.
 
 
+%if %{with QtWebKit}
 %package poshuku-speeddial
 Summary:        LeechCraft Poshuku Speed Dial Module
 License:        BSL-1.0
@@ -1827,6 +1850,7 @@ Requires:       %{name}-poshuku = %{version}
 
 %description poshuku-speeddial
 This package provides the Speed Dial support plugin for LeechCraft Poshuku.
+%endif
 
 
 %package poshuku-webengineview
@@ -2267,7 +2291,11 @@ cmake ../src \
         -DENABLE_UTIL_TESTS=True \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
+%if %{with QtWebKit}
                 -DENABLE_AGGREGATOR_BODYFETCH=True \
+%else
+                -DENABLE_AGGREGATOR_BODYFETCH=False \
+%endif
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
         -DENABLE_AUSCRIE=True \
 %ifnarch ppc ppc64 ppc64le s390 s390x
@@ -2314,9 +2342,13 @@ cmake ../src \
                 -DENABLE_BLASQ_RAPPOR=True \
                 -DENABLE_BLASQ_SPEGNERSI=False \
                 -DENABLE_BLASQ_VANGOG=True \
+%if %{with QtWebKit}
         -DENABLE_BLOGIQUE=True \
                 -DENABLE_BLOGIQUE_HESTIA=True \
                 -DENABLE_BLOGIQUE_METIDA=True \
+%else
+        -DENABLE_BLOGIQUE=False \
+%endif
         -DENABLE_CERTMGR=True \
         -DENABLE_CHOROID=False \
         -DENABLE_CPULOAD=True \
@@ -2344,8 +2376,12 @@ cmake ../src \
         -DENABLE_LAUGHTY=True \
         -DENABLE_LAUNCHY=True \
         -DENABLE_LEMON=True \
+%if %{with QtWebKit}
         -DENABLE_LHTR=True \
                 -DWITH_LHTR_HTML=True \
+%else
+        -DENABLE_LHTR=False \
+%endif
         -DENABLE_LIZNOO=True \
         -DENABLE_LMP=True \
                 -DENABLE_LMP_BRAINSLUGZ=True \
@@ -2394,8 +2430,12 @@ cmake ../src \
                 -DENABLE_IDN=True \
                 -DENABLE_POSHUKU_AUTOSEARCH=True \
                 -DENABLE_POSHUKU_CLEANWEB=True \
+%if %{with QtWebKit}
                 -DENABLE_POSHUKU_DCAC=True \
                         -DENABLE_POSHUKU_DCAC_TESTS=True \
+%else
+                -DENABLE_POSHUKU_DCAC=False \
+%endif
                 -DENABLE_POSHUKU_FATAPE=True \
                 -DENABLE_POSHUKU_FILESCHEME=True \
                 -DENABLE_POSHUKU_FUA=True \
@@ -2404,7 +2444,11 @@ cmake ../src \
                         -DENABLE_POSHUKU_ONLINEBOOKMARKS_DELICIOUS=True \
                         -DENABLE_POSHUKU_ONLINEBOOKMARKS_READITLATER=True \
                 -DENABLE_POSHUKU_QRD=True \
+%if %{with QtWebKit}
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
+%else
+                -DENABLE_POSHUKU_SPEEDDIAL=False \
+%endif
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
                         -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=True \
                 -DENABLE_POSHUKU_WEBKITVIEW=False \
@@ -2530,20 +2574,20 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_aggregator_??.qm
 %{translations_dir}/*craft_aggregator_??_??.qm
 %{plugin_dir}/*craft_aggregator.so
+%dir %{_datadir}/leechcraft/scripts
 
+%if %{with QtWebKit}
 %files aggregator-bodyfetch
 %defattr(-,root,root)
 %{plugin_dir}/*craft_aggregator_bodyfetch.so
-%dir %{_datadir}/leechcraft/scripts
-%{_datadir}/leechcraft/scripts/aggregator/
+%{_datadir}/leechcraft/scripts/aggregator
+%endif
 
-%if 0%{?suse_version} > 1325
 %files aggregator-webaccess
 %defattr(-,root,root)
 %{plugin_dir}/*craft_aggregator_webaccess.so
 %{settings_dir}/aggregatorwebaccesssettings.xml
 %{translations_dir}/*craft_aggregator_webaccess*.qm
-%endif
 
 %files anhero
 %defattr(-,root,root)
@@ -2761,6 +2805,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/lib%{name}_blasq_vangog.so
 %{translations_dir}/*craft_blasq_vangog*.qm
 
+%if %{with QtWebKit}
 %files blogique
 %defattr(-,root,root)
 %{plugin_dir}/lib%{name}_blogique.so
@@ -2781,6 +2826,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/lib%{name}_blogique_metida.so
 %{settings_dir}/blogiquemetidasettings.xml
 %{translations_dir}/*craft_blogique_metida*.qm
+%endif
 
 %files certmgr
 %defattr(-,root,root)
@@ -2973,11 +3019,13 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_lemon_*.qm
 %{settings_dir}/lemonsettings.xml
 
+%if %{with QtWebKit}
 %files lhtr
 %defattr(-,root,root)
 %{plugin_dir}/lib%{name}_lhtr.so
 %{translations_dir}/*craft_lhtr_*.qm
 %{settings_dir}/lhtrsettings.xml
+%endif
 
 %files liznoo
 %defattr(-,root,root)
@@ -3181,12 +3229,14 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_poshuku_cleanweb*.qm
 %{plugin_dir}/*craft_poshuku_cleanweb.so
 
+%if %{with QtWebKit}
 %files poshuku-dcac
 %defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_dcac.so
 %{translations_dir}/*craft_poshuku_dcac_??.qm
 %{translations_dir}/*craft_poshuku_dcac_??_??.qm
 %{settings_dir}/poshukudcacsettings.xml
+%endif
 
 %files poshuku-fatape
 %defattr(-,root,root)
@@ -3231,12 +3281,14 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_poshuku_qrd_??.qm
 %{translations_dir}/*craft_poshuku_qrd_??_??.qm
 
+%if %{with QtWebKit}
 %files poshuku-speeddial
 %defattr(-,root,root)
 %{plugin_dir}/lib%{name}_poshuku_speeddial.so
 %{settings_dir}/poshukuspeeddialsettings.xml
 %{translations_dir}/*craft_poshuku_speeddial_??.qm
 %{translations_dir}/*craft_poshuku_speeddial_??_??.qm
+%endif
 
 %files poshuku-webengineview
 %defattr(-,root,root)
