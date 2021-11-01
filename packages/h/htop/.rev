@@ -532,4 +532,13 @@
     information simplifies the markup of the command line.</comment>
     <requestid>921167</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>28d2b67765904361fa0ae7f8a12c1057</srcmd5>
+    <version>3.1.1</version>
+    <time>1635788148</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 3.1.1 (boo#1192144):
+   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1</comment>
+    <requestid>928540</requestid>
+  </revision>
 </revisionlist>

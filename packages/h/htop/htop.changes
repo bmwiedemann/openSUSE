@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  1 10:32:29 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+-  Update to version 3.1.1 (boo#1192144):
+   * See https://github.com/htop-dev/htop/compare/3.1.0...3.1.1 
+
+-------------------------------------------------------------------
 Thu Sep 23 09:29:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable linux capabilities
