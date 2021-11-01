@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 31 10:10:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.2.0
+  * Fixes bulk update/delete on both Endpoint and RecordSet.
+
+-------------------------------------------------------------------
 Sun Aug  1 09:33:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.1.3
