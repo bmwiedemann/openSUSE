@@ -3,19 +3,20 @@ Index: liblinphone-4.4.0/CMakeLists.txt
 --- liblinphone-4.4.0.orig/CMakeLists.txt
 +++ liblinphone-4.4.0/CMakeLists.txt
 @@ -138,12 +138,7 @@ find_package(Sqlite3 REQUIRED)
- find_package(XML2 REQUIRED)
  
  if (ENABLE_DB_STORAGE)
--	#APPLE platform does not use dlopen for soci backend
--	if (APPLE OR ANDROID)
--		find_package(Soci REQUIRED COMPONENTS sqlite3)
--	else()
--		find_package(Soci REQUIRED)
--	endif()
-+        find_package(Soci REQUIRED COMPONENTS sqlite3)
- 	set(HAVE_DB_STORAGE 1)
- endif()
- 
+ 	if(NOT DISABLE_SOCI_PACKAGE_SEARCH)
+-		#APPLE platform does not use dlopen for soci backend
+-		if (APPLE OR ANDROID)
+-			find_package(Soci REQUIRED COMPONENTS sqlite3)
+-		else()
+-			find_package(Soci REQUIRED)
+-		endif()
++		find_package(Soci REQUIRED COMPONENTS sqlite3)
+ 	else()
+ 		set(SOCI_FOUND YES)
+ 		set(SOCI_LIBRARIES soci_core)
+
 Index: liblinphone-4.4.0/src/CMakeLists.txt
 ===================================================================
 --- liblinphone-4.4.0.orig/src/CMakeLists.txt

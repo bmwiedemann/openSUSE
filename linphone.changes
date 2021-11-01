@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:53:27 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * Use UTF8 instead of locale in chat message modifiers`
+  * Fix bad chat room when creating a call
+  * Crash on ec-calibration : Use tone sent callback only on MS_DTMF_GEN_EVENT
+  * Added missing conference APIs
+  * Play ring tone only if tone indications are enabled
+  * Fix tonemanager on infinite rings and wrong ring type
+  * fix crash of kickOffConnectivity
+  * Add option to deactivate potentially weak digest authentication schemes
+  * Fix issue when receiving an INVITE with ICE and rtcp-mux
+  * Fix call repair in case of multi account
+  * Fix regression with ICE not setting candidates correctly for completed check-lists
+  * Improve reliability of account creation by increasing account creation timeout to 30s
+  * Change contact address if call in IncomingReceived state is added to conference
+  * fix crash when session refresh after BYE received
+  * Repair streaming from file feature of AudioStream/VideoStream
+  * Fixed error logs showing CoreManager's core being const
+  * Logging facility optimization
+  * Fix bug with ChatRoomParams::isGroup() erroneously returning true for some basic chatrooms
+  * Count unread chat messages in all Chat Rooms with a weak address testing
+  * avoid to downgrade chat message participant state and add unitest
+  * Stop audio stream when setting new device
+    This fix allow changing device on Desktop while ringback
+  * Audio : Allow setting NULL device (case of no cards available)
+  * Fixed call to content.isFileEncrypted() on a FileTransferContent
+  * Fixed mic gain
+- Update to 5.0.0:
+  * Support of Capability Negociation framework - RFC5939
+    limited to media encryption choice (None, SRTP, DTLS-SRTP, ZRTP)
+  * New API to manage SIP accounts: LinphoneAccount and LinphoneAccountParams
+    replacing LinphoneProxyConfig which is now deprecated.
+    LinphoneProxyConfig remains fully usable for backward compatibility with previous version.
+  * New implementation of LinphoneAccountCreator relying on http REST API.
+  * Added LDAP contact provider API integrated with LinphoneMagicSearch
+  * Added asynchronous API to the LinphoneMagicSearch API (for contact searching).
+  * Fixed erroneous ICE ufrag and passwd parameters sent in reINVITE while ICE
+    was refused previously.
+  * Fixed swift and C# wrappers corner-case usage issues.
+- Build and use Belledonne's version of libldap
+- delete build-liblinphone4-with-mediastreamer5.patch
+- add linphone-build-jsoncpp.patch
+- add BuildRequires:  jsoncpp-devel
+
+-------------------------------------------------------------------
 Mon Sep 27 16:45:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.25
 
 - removed unnecessary baselibs.conf
