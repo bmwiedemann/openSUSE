@@ -147,4 +147,15 @@
 - Remove temporary version override (forwarded request 908409 from glaubitz)</comment>
     <requestid>908442</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c77996aa40fa1b0ffc99d1efbf52bdb8</srcmd5>
+    <version>8.2.0</version>
+    <time>1635788150</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 928518 from glaubitz)</comment>
+    <requestid>928545</requestid>
+  </revision>
 </revisionlist>
