@@ -18,14 +18,14 @@
 
 
 Name:           bucklespring
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Nostalgia keyboard sound emulator
 License:        GPL-2.0-only
 Group:          Amusements/Toys/Other
 URL:            https://github.com/zevv/bucklespring
 #Git-Clone:     https://github.com/zevv/bucklespring.git
-Source:         https://github.com/zevv/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/zevv/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alure)
