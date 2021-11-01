@@ -40,6 +40,7 @@ BuildRequires:  python3-pytest-flake8
 BuildRequires:  unifdef
 Requires:       astyle
 Requires:       clang
+Requires:       colordiff
 Requires:       indent
 Requires:       llvm
 Requires:       python3-Pebble
