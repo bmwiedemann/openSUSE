@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 01 09:00:49 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 1.12.0:
+  * --command-name can now take parameter names from --parameter-* options
+  * Exit codes (or signals) are now printed in cases of command failures
+  * Exit codes are now part of the JSON output
+  * When --export-* commands are used, result files are now created before benchmark execution
+  * When --export-* options are used, result files are now written after each individual benchmark command
+  * Reduce number of shell startup time measurements from 200 to 50
+  * User and system time are now in consistent time units
+
+-------------------------------------------------------------------
 Thu Sep 30 04:28:10 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Replace rust-packaging with cargo-packaging

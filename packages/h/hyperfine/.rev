@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>922264</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1501c0b99505910602e840667c10558c</srcmd5>
+    <version>1.12.0</version>
+    <time>1635788150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.0:
+  * --command-name can now take parameter names from --parameter-* options
+  * Exit codes (or signals) are now printed in cases of command failures
+  * Exit codes are now part of the JSON output
+  * When --export-* commands are used, result files are now created before benchmark execution
+  * When --export-* options are used, result files are now written after each individual benchmark command
+  * Reduce number of shell startup time measurements from 200 to 50
+  * User and system time are now in consistent time units
+</comment>
+    <requestid>928543</requestid>
+  </revision>
 </revisionlist>

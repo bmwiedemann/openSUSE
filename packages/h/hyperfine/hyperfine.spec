@@ -17,17 +17,17 @@
 
 
 Name:           hyperfine
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
 Group:          System/Benchmark
 URL:            https://github.com/sharkdp/%{name}
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.43.0
+BuildRequires:  rust >= 1.46
 ExclusiveArch:  %{rust_arches}
 
 %description
