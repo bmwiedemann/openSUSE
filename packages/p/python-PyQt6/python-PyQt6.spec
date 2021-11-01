@@ -21,7 +21,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module PyQt6-sip}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
-BuildRequires:  %{python_module sip-devel >= 6.2}
+BuildRequires:  %{python_module sip-devel >= 6.4}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -79,7 +79,7 @@ Group:          Development/Libraries/Python
 Requires:       python-%{mname} = %{version}
 Requires:       python-dbus-python-devel >= 0.8
 Requires:       python-devel
-Requires:       python-sip-devel >= 6.2
+Requires:       python-sip-devel >= 6.4
 Requires:       qt6-base-devel
 Requires:       qt6-macros
 Requires:       cmake(Qt6Bluetooth)
@@ -127,6 +127,7 @@ This package contains programming examples for PyQt6.
 %prep
 %autosetup -p1 -n PyQt6-%{version}
 dos2unix examples/quick/models/*/view.qml
+dos2unix examples/multimedia*/*/*.ui
 
 %build
 %{pyqt_build -v \
