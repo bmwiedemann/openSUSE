@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 25 18:53:13 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.1:
+  - Fixed
+    - Crash when using OpenType fonts as replacements
+    - Detect forms that contain null pointers
+    - Regression: include fonts in native image build
+- Update to version 3.3.0:
+   - Added
+     - Support filling multi-valued list fields
+     - Support replacing fonts in form fields
+   - Changed
+     - Renamed namespace of internal iText library
+     - Partially updated internal iText library code to 4.2.0
+       NB: might introduce regressions!
+   - Fixed
+     - Crashes with non-conforming inputs
+
+-------------------------------------------------------------------
 Sun Aug  1 09:41:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to version 3.2.3:

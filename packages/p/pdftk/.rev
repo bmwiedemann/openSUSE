@@ -49,4 +49,12 @@
   - Better form detection (in particular forms created by pdftk cat) (forwarded request 909595 from Kieltux)</comment>
     <requestid>909603</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b6cc236993b66bed526e0d9de2abd0a</srcmd5>
+    <version>3.3.1</version>
+    <time>1635801661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928580</requestid>
+  </revision>
 </revisionlist>
