@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-proton-client
-Version:        0.5.1
+Version:        0.7.1
 Release:        0
 Summary:        Safely login with ProtonVPN credentials to connect to Proton
 License:        GPL-3.0-or-later
@@ -54,7 +54,7 @@ wrapper to Proton Technologies API, abstracting from the SRP authentication.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/proton
+%python_expand %fdupes %{buildroot}%{python_sitelib}/proton
 
 %check
 # skip test_tlspinning.py as OBS has no network access
