@@ -402,4 +402,12 @@ Fix macros to generate file permissions</comment>
     <comment>automated update of haskell stack</comment>
     <requestid>892192</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>180a06023d111e17921452490590b657</srcmd5>
+    <version>1.9.95</version>
+    <time>1635788143</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build, remove white space</comment>
+    <requestid>928503</requestid>
+  </revision>
 </revisionlist>
