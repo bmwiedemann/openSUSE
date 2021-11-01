@@ -17,14 +17,14 @@
 #
 
 Name:           fbcat
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Framebuffer screenshot programs
 License:        GPL-2.0
 Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/jwilk/fbcat
-Source0:        https://github.com/jwilk/fbcat/releases/download/%{version}/fbcat-%{version}.tar.gz#/fbcat-%{version}.tar.gz
-Source1:        https://github.com/jwilk/fbcat/releases/download/%{version}/fbcat-%{version}.tar.gz.asc#/fbcat-%{version}.tar.gz.asc
+Source0:        https://github.com/jwilk/fbcat/releases/download/%{version}/fbcat-%{version}.tar.gz
+Source1:        https://github.com/jwilk/fbcat/releases/download/%{version}/fbcat-%{version}.tar.gz.asc
 
 %description
 Contains fbcat and fbgrab for taking a screenshot using the framebuffer
@@ -39,7 +39,7 @@ Two executables are provided:
 %autosetup
 
 %build
-make CFLAGS='%{optflags}' %{?_smp_mflags}
+%make_build CFLAGS='%{optflags}'
 
 %install
 %make_install PREFIX=%{_prefix}

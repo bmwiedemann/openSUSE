@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  1 12:42:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.2
+  * fbgrab: don't print full path in the help message.
+  * Makefile: use bindir and mandir variables.
+
+-------------------------------------------------------------------
 Thu Mar 18 14:43:58 UTC 2021 - malcolmlewis@opensuse.org
 
 - Clean up for factory submission.
