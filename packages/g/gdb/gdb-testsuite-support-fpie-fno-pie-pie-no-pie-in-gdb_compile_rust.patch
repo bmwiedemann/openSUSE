@@ -1,0 +1,95 @@
+[gdb/testsuite] Support -fPIE/-fno-PIE/-pie/-no-pie in gdb_compile_rust
+
+When running gdb.rust/*.exp test-cases with target board unix/-fPIE/-pie, I
+run into:
+...
+builtin_spawn -ignore SIGHUP rustc --color never gdb.rust/watch.rs \
+  -g -lm -fPIE -pie -o outputs/gdb.rust/watch/watch^M
+error: Unrecognized option: 'f'^M
+^M
+compiler exited with status 1
+...
+
+The problem is that -fPIE and -fpie are gcc options, but for rust we use
+rustc, which has different compilation options.
+
+Fix this by translating the gcc options to rustc options in gdb_compile_rust,
+similar to how that is done for ada in target_compile_ada_from_dir.
+
+Likewise for unix/-fno-PIE/-no-pie.
+
+Tested on x86_64-linux, with:
+- native
+- unix/-fPIE/-pie
+- unix/-fno-PIE/-no-pie
+specifically, on openSUSE Leap 15.2 both with package gcc-PIE:
+- installed (making gcc default to PIE)
+- uninstalled (making gcc default to non-PIE).
+and rustc 1.52.1.
+
+---
+ gdb/testsuite/lib/rust-support.exp | 47 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 44 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/lib/rust-support.exp b/gdb/testsuite/lib/rust-support.exp
+index 2896ac82453..2f78d6dde0e 100644
+--- a/gdb/testsuite/lib/rust-support.exp
++++ b/gdb/testsuite/lib/rust-support.exp
+@@ -27,13 +27,54 @@ proc set_lang_rust {} {
+ }
+ 
+ proc gdb_compile_rust {sources dest options} {
++    set res -1
++
+     if {[llength $sources] > 1} {
+ 	error "gdb rust setup can only compile one source file at a time"
+     }
+-    if {[gdb_compile [lindex $sources 0] $dest executable $options] != ""} {
+-	return -1
++
++    global board
++    set board [target_info name]
++    set multilib_flags_orig [board_info $board multilib_flags]
++    set multilib_flags {}
++    foreach op $multilib_flags_orig {
++	# Pretend rustc supports -pie/-no-pie/-fPIE/-fno-PIE.
++	switch $op {
++	    "-pie" - "-no-pie" {
++		# Pass it to linker.
++		lappend multilib_flags -C link-arg=$op
++	    }
++	    "-fno-PIE" {
++		# Translate to rustc codegen equivalent.
++
++		# The rustc documentation insists that we should use static
++		# here, but that causes segfaults leading to:
++		# UNTESTED: gdb.rust/rawids.exp: could not run to breakpoint
++		# UNTESTED: gdb.rust/pp.exp: could not run to breakpoint
++		# Instead, we use dynamic-no-pic which does seem to work.
++		lappend multilib_flags -C relocation-model=dynamic-no-pic
++	    }
++	    "-fPIE" {
++		# Translate to rustc codegen equivalent.
++		lappend multilib_flags -C relocation-model=pic
++	    }
++	    default {
++		# Pass unmodified.
++		lappend multilib_flags $op
++	    }
++	}
++    }
++
++    save_target_board_info { multilib_flags } {
++	unset_board_info multilib_flags
++	set_board_info multilib_flags "$multilib_flags"
++	if {[gdb_compile [lindex $sources 0] $dest executable \
++		 $options] == ""} {
++	    set res ""
++	}
+     }
+-    return ""
++
++    return $res
+ }
+ 
+ # Return the version of LLVM used by the Rust compiler.  Note that

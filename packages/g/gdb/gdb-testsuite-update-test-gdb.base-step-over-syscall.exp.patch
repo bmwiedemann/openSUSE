@@ -1,0 +1,241 @@
+gdb/testsuite: update test gdb.base/step-over-syscall.exp
+
+I was looking at PR gdb/19675 and the related test
+gdb.base/step-over-syscall.exp.  This test includes a call to kfail
+when we are testing a displaced step over a clone syscall.
+
+While looking at the test I removed the call to kfail and ran the
+test, and was surprised that the test passed.
+
+I ran the test a few times and it does sometimes fail, but mostly it
+passed fine.
+
+PR gdb/19675 describes how, when we displaced step over a clone, the
+new thread is created with a $pc in the displaced step buffer.  GDB
+then fails to "fix" this $pc (for the new thread), and the thread will
+be set running with its current $pc value.  This means that the new
+thread will just start executing from whatever happens to be after the
+displaced stepping buffer.
+
+In the original PR gdb/19675 bug report Yao Qi was seeing the new
+thread cause a segfault, the problem is, what actually happens is
+totally undefined.
+
+On my machine, I'm seeing the new thread reenter main, it then starts
+trying to run the test again (in the new thread).  This just happens
+to be safe enough (in this simple test) that most of the time the
+inferior doesn't crash.
+
+In this commit I try to make the test slightly more likely to fail by
+doing a couple of things.
+
+First, I added a static variable to main, this is set true when the
+first thread enters main, if a second thread ever enters main then I
+force an abort.
+
+Second, when the test is finishing I want to ensure that the new
+threads have had a chance to do "something bad" if they are going to.
+So I added a global counter, as each thread starts successfully it
+decrements the counter.  The main thread does not proceed to the final
+marker function (where GDB has placed a breakpoint) until all threads
+have started successfully.  This means that if the newly created
+thread doesn't successfully enter clone_fn then the counter will never
+reach zero and the test will timeout.
+
+With these two changes my hope is that the test should fail more
+reliably, and so, I have also changed the test to call setup_kfail
+before the specific steps that we expect to misbehave instead of just
+calling kfail and skipping parts of the test completely.  The benefit
+of this is that if/when we fix GDB this test will start to KPASS and
+we'll know to update this test to remove the setup_kfail call.
+
+---
+ gdb/testsuite/gdb.base/step-over-clone.c     | 39 ++++++++++++++++
+ gdb/testsuite/gdb.base/step-over-syscall.exp | 69 +++++++++++++++++++++++-----
+ 2 files changed, 97 insertions(+), 11 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/step-over-clone.c b/gdb/testsuite/gdb.base/step-over-clone.c
+index 581bf5fdde5..ef6fd922eb1 100644
+--- a/gdb/testsuite/gdb.base/step-over-clone.c
++++ b/gdb/testsuite/gdb.base/step-over-clone.c
+@@ -19,6 +19,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <sched.h>
++#include <pthread.h>
+ 
+ static void
+ marker ()
+@@ -26,9 +27,22 @@ marker ()
+ 
+ #define STACK_SIZE 0x1000
+ 
++/* These are used to signal that the threads have started correctly.  The
++   GLOBAL_THREAD_COUNT is set to the number of threads in main, then
++   decremented (under a lock) in each new thread.  */
++pthread_mutex_t global_lock = PTHREAD_MUTEX_INITIALIZER;
++int global_thread_count = 0;
++
+ static int
+ clone_fn (void *unused)
+ {
++  /* Signal that this thread has started correctly.  */
++  if (pthread_mutex_lock (&global_lock) != 0)
++    abort ();
++  global_thread_count--;
++  if (pthread_mutex_unlock (&global_lock) != 0)
++    abort ();
++
+   return 0;
+ }
+ 
+@@ -38,9 +52,21 @@ main (void)
+   int i, pid;
+   unsigned char *stack[6];
+ 
++  /* Due to bug gdb/19675 the cloned thread _might_ try to reenter main
++     (this depends on where the displaced instruction is placed for
++     execution).  However, if we do reenter main then lets ensure we fail
++     hard rather then just silently executing the code below.  */
++  static int started = 0;
++  if (!started)
++    started = 1;
++  else
++    abort ();
++
+   for (i = 0; i < (sizeof (stack) / sizeof (stack[0])); i++)
+     stack[i] = malloc (STACK_SIZE);
+ 
++  global_thread_count = (sizeof (stack) / sizeof (stack[0]));
++
+   for (i = 0; i < (sizeof (stack) / sizeof (stack[0])); i++)
+     {
+       pid = clone (clone_fn, stack[i] + STACK_SIZE, CLONE_FILES | CLONE_VM,
+@@ -50,5 +76,18 @@ main (void)
+   for (i = 0; i < (sizeof (stack) / sizeof (stack[0])); i++)
+     free (stack[i]);
+ 
++  /* Set an alarm so we don't end up stuck waiting for threads that might
++     never start correctly.  */
++  alarm (120);
++
++  /* Now wait for all the threads to start up.  */
++  while (global_thread_count != 0)
++    {
++      /* Force memory barrier so GLOBAL_THREAD_COUNT will be refetched.  */
++      asm volatile ("" ::: "memory");
++      sleep (1);
++    }
++
++  /* Call marker, this is what GDB is waiting for.  */
+   marker ();
+ }
+diff --git a/gdb/testsuite/gdb.base/step-over-syscall.exp b/gdb/testsuite/gdb.base/step-over-syscall.exp
+index a4821d7cd5a..7e9746e8dd9 100644
+--- a/gdb/testsuite/gdb.base/step-over-syscall.exp
++++ b/gdb/testsuite/gdb.base/step-over-syscall.exp
+@@ -41,11 +41,50 @@ if { [istarget "i\[34567\]86-*-linux*"] || [istarget "x86_64-*-linux*"] } {
+     return -1
+ }
+ 
+-proc_with_prefix check_pc_after_cross_syscall { syscall syscall_insn_next_addr } {
++proc_with_prefix check_pc_after_cross_syscall { displaced syscall syscall_insn_next_addr } {
++    global gdb_prompt
++
+     set syscall_insn_next_addr_found [get_hexadecimal_valueof "\$pc" "0"]
+ 
++    # After the 'stepi' we expect thread 1 to still be selected.
++    # However, when displaced stepping over a clone bug gdb/19675
++    # means this might not be the case.
++    #
++    # Which thread we end up in depends on a race between the original
++    # thread-1, and the new thread (created by the clone), so we can't
++    # guarantee which thread we will be in at this point.
++    #
++    # For the fork/vfork syscalls, which are correctly handled by
++    # displaced stepping we will always be in thread-1 or the original
++    # process at this point.
++    set curr_thread "unknown"
++    gdb_test_multiple "info threads" "" {
++	-re "Id\\s+Target Id\\s+Frame\\s*\r\n" {
++	    exp_continue
++	}
++	-re "^\\* (\\d+)\\s+\[^\r\n\]+\r\n" {
++	    set curr_thread $expect_out(1,string)
++	    exp_continue
++	}
++	-re "^\\s+\\d+\\s+\[^\r\n\]+\r\n" {
++	    exp_continue
++	}
++	-re "$gdb_prompt " {
++	}
++    }
++
++    # If we are displaced stepping over a clone, and we ended up in
++    # the wrong thread then the following check of the $pc value will
++    # fail.
++    if { $displaced == "on" && $syscall == "clone" && $curr_thread != 1 } {
++	# GDB doesn't support stepping over clone syscall with
++	# displaced stepping.
++	setup_kfail "*-*-*" "gdb/19675"
++    }
++
+     gdb_assert {$syscall_insn_next_addr != 0 \
+-      && $syscall_insn_next_addr == $syscall_insn_next_addr_found} \
++      && $syscall_insn_next_addr == $syscall_insn_next_addr_found \
++      && $curr_thread == 1} \
+ 	"single step over $syscall final pc"
+ }
+ 
+@@ -204,7 +243,12 @@ proc step_over_syscall { syscall } {
+ 
+ 	set testfile "step-over-$syscall"
+ 
+-	if [build_executable ${testfile}.exp ${testfile} ${testfile}.c {debug}] {
++	set options [list debug]
++	if { $syscall == "clone" } {
++	    lappend options "pthreads"
++	}
++
++	if [build_executable ${testfile}.exp ${testfile} ${testfile}.c $options] {
+ 	    untested "failed to compile"
+ 	    return -1
+ 	}
+@@ -214,13 +258,6 @@ proc step_over_syscall { syscall } {
+ 		continue
+ 	    }
+ 
+-	    if { $displaced == "on" && $syscall == "clone" } {
+-		# GDB doesn't support stepping over clone syscall with
+-		# displaced stepping.
+-		kfail "gdb/19675" "single step over clone"
+-		continue
+-	    }
+-
+ 	    set ret [setup $syscall]
+ 
+ 	    set syscall_insn_addr [lindex $ret 0]
+@@ -257,12 +294,22 @@ proc step_over_syscall { syscall } {
+ 	    if {[gdb_test "stepi" "x/i .*=>.*" "single step over $syscall"] != 0} {
+ 		return -1
+ 	    }
+-	    check_pc_after_cross_syscall $syscall $syscall_insn_next_addr
++	    check_pc_after_cross_syscall $displaced $syscall $syscall_insn_next_addr
+ 
+ 	    # Delete breakpoint syscall insns to avoid interference to other syscalls.
+ 	    delete_breakpoints
+ 
+ 	    gdb_test "break marker" "Breakpoint.*at.* file .*${testfile}.c, line.*"
++
++	    # If we are displaced stepping over a clone syscall then
++	    # we expect the following check to fail.  See also the
++	    # code in check_pc_after_cross_syscall.
++	    if { $displaced == "on" && $syscall == "clone" } {
++		# GDB doesn't support stepping over clone syscall with
++		# displaced stepping.
++		setup_kfail "*-*-*" "gdb/19675"
++	    }
++
+ 	    gdb_test "continue" "Continuing\\..*Breakpoint \[0-9\]+, marker \\(\\) at.*" \
+ 		"continue to marker ($syscall)"
+ 	}

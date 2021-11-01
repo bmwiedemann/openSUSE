@@ -9,8 +9,8 @@ Subject: gdb-ccache-workaround.patch
 diff --git a/gdb/testsuite/gdb.base/macscp.exp b/gdb/testsuite/gdb.base/macscp.exp
 --- a/gdb/testsuite/gdb.base/macscp.exp
 +++ b/gdb/testsuite/gdb.base/macscp.exp
-@@ -25,6 +25,14 @@ if { [test_compiler_info "gcc-*"] || [test_compiler_info "clang-*"] } {
-     lappend options additional_flags=-g3
+@@ -27,6 +27,14 @@ if { [test_compiler_info "gcc-*"] } {
+     lappend options additional_flags=-fdebug-macro
  }
  
 +# Workaround ccache making lineno non-zero for command-line definitions.

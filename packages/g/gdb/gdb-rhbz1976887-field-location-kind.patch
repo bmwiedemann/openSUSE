@@ -1,0 +1,30 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alexandra=20H=C3=A1jkov=C3=A1?= <ahajkova@redhat.com>
+Date: Wed, 29 Sep 2021 10:58:50 +0200
+Subject: gdb-rhbz1976887-field-location-kind.patch
+
+;;Backport upstream patch which fixes internal-error: Unexpected
+;;type field location kind (RHBZ 1976887).
+
+gdbtypes.c: Add the case for FIELD_LOC_KIND_DWARF_BLOCK
+
+The case for FIELD_LOC_KIND_DWARF_BLOCK was missing for
+switch TYPE_FIELD_LOC_KIND. Thas caused an internal-error
+under some circumstances.
+
+Fixes bug 28030.
+
+diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
+--- a/gdb/gdbtypes.c
++++ b/gdb/gdbtypes.c
+@@ -5571,6 +5571,10 @@ copy_type_recursive (struct objfile *objfile,
+ 				  xstrdup (TYPE_FIELD_STATIC_PHYSNAME (type,
+ 								       i)));
+ 	      break;
++            case FIELD_LOC_KIND_DWARF_BLOCK:
++              SET_FIELD_DWARF_BLOCK (new_type->field (i),
++                                     TYPE_FIELD_DWARF_BLOCK (type, i));
++              break;
+ 	    default:
+ 	      internal_error (__FILE__, __LINE__,
+ 			      _("Unexpected type field location kind: %d"),

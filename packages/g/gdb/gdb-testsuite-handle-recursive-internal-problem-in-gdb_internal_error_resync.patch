@@ -1,0 +1,68 @@
+[gdb/testsuite] Handle recursive internal problem in gdb_internal_error_resync
+
+I came across this problem when testing gdb.base/gdb-sigterm.exp
+on a machine with a pre-release version of glib-2.34 installed:
+
+A problem internal to GDB has been detected,
+further debugging may prove unreliable.
+Quit this debugging session? (y or n) Recursive internal problem.
+FAIL: gdb.base/gdb-sigterm.exp: expect eof #0 (GDB internal error)
+Resyncing due to internal error.
+ERROR: : spawn id exp11 not open
+    while executing
+"expect {
+-i exp11 -timeout 10
+	    -re "Quit this debugging session\\? \\(y or n\\) $" {
+		send_gdb "n\n" answer
+		incr count
+	    }
+	    -re "Create..."
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel $body" NONE : spawn id exp11 not open
+ERROR: Could not resync from internal error (timeout)
+gdb.base/gdb-sigterm.exp: expect eof #0: stepped 9 times
+UNRESOLVED: gdb.base/gdb-sigterm.exp: 50 SIGTERM passes
+
+I don't have a problem with the latter ERROR nor the UNRESOLVED
+messages.  However the first ERROR regarding the exp11 spawn id
+not being open is not especially useful.
+
+This commit handles the "Recursive internal problem" case, avoiding
+the problematic ERROR shown above.
+
+With this commit in place, the log messages look like this instead:
+
+A problem internal to GDB has been detected,
+further debugging may prove unreliable.
+Quit this debugging session? (y or n) Recursive internal problem.
+FAIL: gdb.base/gdb-sigterm.exp: expect eof #15 (GDB internal error)
+Resyncing due to internal error.
+ERROR: Could not resync from internal error (recursive internal problem)
+gdb.base/gdb-sigterm.exp: expect eof #15: stepped 12 times
+UNRESOLVED: gdb.base/gdb-sigterm.exp: 50 SIGTERM passes
+
+gdb/testsuite/ChangeLog:
+
+	* lib/gdb.exp (gdb_internal_error_resync): Handle "Recursive
+	internal problem".
+
+---
+ gdb/testsuite/lib/gdb.exp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index dbf4016aca1..7a8332dd573 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -756,6 +756,10 @@ proc gdb_internal_error_resync {} {
+     set count 0
+     while {$count < 10} {
+ 	gdb_expect {
++	    -re "Recursive internal problem\\." {
++		perror "Could not resync from internal error (recursive internal problem)"
++		return 0
++	    }
+ 	    -re "Quit this debugging session\\? \\(y or n\\) $" {
+ 		send_gdb "n\n" answer
+ 		incr count

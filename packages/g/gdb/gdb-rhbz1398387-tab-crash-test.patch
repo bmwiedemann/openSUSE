@@ -428,7 +428,7 @@ new file mode 100644
 +
 +if { ![istarget x86_64-*-* ] || ![is_lp64_target] } {
 +    return
-+}   
++}
 +
 +standard_testfile
 +

@@ -1,0 +1,62 @@
+[gdb/testsuite] Fix gdb.threads/thread-specific-bp.exp
+
+On OBS I ran into a failure in test-case gdb.threads/thread-specific-bp.exp:
+...
+(gdb) PASS: gdb.threads/thread-specific-bp.exp: non-stop: continue to end
+info breakpoint^M
+Num     Type           Disp Enb Address            What^M
+1       breakpoint     keep y   0x0000555555555167 in main at $src:36^M
+        breakpoint already hit 1 time^M
+2       breakpoint     keep y   0x0000555555555151 in start at $src:23^M
+        breakpoint already hit 1 time^M
+3       breakpoint     keep y   0x0000555555555167 in main at $src:36 thread 2^M
+        stop only in thread 2^M
+4       breakpoint     keep y   0x000055555555515c in end at $src:29^M
+        breakpoint already hit 1 time^M
+(gdb) [Thread 0x7ffff7db1640 (LWP 19984) exited]^M
+Thread-specific breakpoint 3 deleted - thread 2 no longer in the thread list.^M
+FAIL: gdb.threads/thread-specific-bp.exp: non-stop: \
+  thread-specific breakpoint was deleted (timeout)
+...
+
+Fix this by waiting for the "[Thread 0x7ffff7db1640 (LWP 19984) exited]"
+message before issuing the "info breakpoint command".
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.threads/thread-specific-bp.exp | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/thread-specific-bp.exp b/gdb/testsuite/gdb.threads/thread-specific-bp.exp
+index 331f9470c22..ceb2c25b066 100644
+--- a/gdb/testsuite/gdb.threads/thread-specific-bp.exp
++++ b/gdb/testsuite/gdb.threads/thread-specific-bp.exp
+@@ -87,9 +87,24 @@ proc check_thread_specific_breakpoint {mode} {
+ 	    set cmd "continue"
+ 	}
+ 	set test "continue to end"
+-	gdb_test_multiple "$cmd" $test {
+-	    -re "Breakpoint .* end .* at .*\r\n$gdb_prompt " {
+-		pass $test
++	set thread_exited 0
++	set prompt 0
++	gdb_test_multiple "$cmd" $test -lbl {
++	    -re "\\\[Thread \[^\r\n\]* exited](?=\r\n)" {
++		if { $prompt } {
++		    pass $gdb_test_name
++		} else {
++		    set thread_exited 1
++		    exp_continue
++		}
++	    }
++	    -re -wrap "" {
++		if { $thread_exited } {
++		    pass $gdb_test_name
++		} else {
++		    set prompt 1
++		    exp_continue
++		}
+ 	    }
+ 	}
+ 

@@ -1,4 +1,301 @@
 -------------------------------------------------------------------
+Thu Oct 28 13:40:28 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Mention removed fedora patches:
+  * gdb-6.3-test-self-20050110.patch
+  * gdb-bz1219747-attach-kills.patch
+  * gdb-6.6-buildid-locate-core-as-arg.patch
+  * gdb-attach-fail-reasons-5of5.patch
+  * gdb-archer-pie-addons.patch
+  * gdb-jit-reader-multilib.patch
+  * gdb-6.5-bz218379-solib-trampoline-lookup-lock-fix.patch
+  * gdb-archer.patch
+  * gdb-config.patch
+  * gdb-6.8-quit-never-aborts.patch
+- Mention removed patches:
+  * gdb-breakpoint-fix-assert-in-jit_event_handler.patch
+  * gdb-fix-section-matching-in-find_pc_sect_compunit.patch
+  * gdb-fortran-fix-print-dynamic-array.patch
+  * gdb-build-hardcode-with-included-regex.patch
+  * gdb-handle-no-upper-bound-in-value-subscript.patch
+  * gdb-fix-internal-error-in-process_event_stop_test.patch
+  * gdb-don-t-return-non-existing-path-in-debuginfod-source-query.patch
+  * gdb-archer-pie-addons-keep-disabled.patch
+  * gdb-fix-filename-in-not-in-executable-format-error.patch
+  * gdb-fix-use-of-invalid-pointer-in-remote-async-inferior-event-handler.patch
+  * gdb-breakpoints-handle-glibc-with-debuginfo-in-create_exception_master_breakpoint.patch
+- Maintenance scripts:
+  * Add KFAILs in qa.sh.
+  * Add missing '-a' in gdb.log greps in qa.sh.
+  * Fix error handling in qa.sh.
+- Patches added:
+  * gdb-testsuite-handle-sigill-in-two-gdb.arch-powerpc-test-cases.patch
+  * gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
+
+-------------------------------------------------------------------
+Fri Oct 22 07:03:55 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Disable big endian powerpc.
+- Maintenance scripts:
+  * Fix patch filtering in clean.sh.
+  * Add KFAIL in qa.sh.
+- Patches added:
+  * gdb-testsuite-add-checks-to-gdb.arch-i386-sse.exp.patch
+  * gdb-testsuite-add-gdb.testsuite-dump-system-info.exp.patch
+  * gdb-testsuite-add-kfail-in-gdb.threads-fork-plus-threads.exp.patch
+  * gdb-testsuite-factor-out-dump_info-in-gdb.testsuite-dump-system-info.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.threads-fork-and-threads.exp.patch
+  * gdb-testsuite-fix-gdb.threads-linux-dp.exp.patch
+  * gdb-testsuite-fix-port-detection-in-gdb.debuginfod-fetch_src_and_symbols.exp.patch
+  * gdb-testsuite-handle-recursive-internal-problem-in-gdb_internal_error_resync.patch
+  * gdb-testsuite-handle-runto-fail-in-gdb.mi-mi-var-cp.exp.patch
+  * gdb-tui-fix-breakpoint-display-functionality.patch
+  * gdb-testsuite-Fix-gdb.threads-thread-specific-bp.exp.patch
+- Patches dropped:
+  * fix-gdb.threads-linux-dp.exp.patch
+
+-------------------------------------------------------------------
+Wed Oct 20 15:48:40 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Added maintenance script:
+  * qa.sh
+- Drop 32bit packages for s390x.
+
+-------------------------------------------------------------------
+Tue Oct 19 08:00:06 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix SLE-15 s390x: unresolvable, nothing provides
+  glibc-devel-static-32bit.
+- Disable test-case gdb.base/break-interp.exp for SLE-11.
+  It causes a
+  "glibc detected *** expect: double free or corruption (out)" in
+  expect and a subsequent runtest abort.  This might be the cause
+  of the package build failure due to
+  "Job seems to be stuck here, killed. (after 8hrs of inactivity)"
+- Patches added:
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-amd-case.patch
+  * gdb-testsuite-fix-gdb.ada-big_packed_array.exp-xfail-for-m32.patch
+  * gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
+  * fix-gdb.multi-multi-term-settings.exp-race.patch
+  * gdb-testsuite-update-test-gdb.base-step-over-syscall.exp.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 17:46:06 UTC 2021 - Tom de Vries <tdevries@suse.com> - 11.1
+
+- Rebase to 11.1 release (as in fedora 35 @ 9cd9368):
+  * GDB now supports general memory tagging functionality if the
+    underlying architecture supports the proper primitives and hooks.
+    Currently this is enabled only for AArch64 MTE.
+  * GDB will now look for the .gdbinit file in a config directory
+    before looking for ~/.gdbinit.  The file is searched for in
+    the following locations: $XDG_CONFIG_HOME/gdb/gdbinit,
+    $HOME/.config/gdb/gdbinit, $HOME/.gdbinit.
+  * GDB will now load and process commands from
+    ~/.config/gdb/gdbearlyinit or ~/.gdbearlyinit if these files
+    are present.  These files are processed earlier than any of
+    the other initialization files and can affect parts of GDB's
+    startup that previously had already been completed before the
+    initialization files were read, for example styling of the
+    initial GDB greeting.
+  * GDB now has two new options "--early-init-command" and
+    "--early-init-eval-command" with corresponding short options
+    "-eix" and "-eiex" that allow options (that would normally
+    appear in a gdbearlyinit file) to be passed on the command
+    line.
+  * set startup-quietly on|off
+    show startup-quietly
+    When 'on', this causes GDB to act as if "-silent" were passed
+    on the command line.  This command needs to be added to an
+    early initialization file (e.g. ~/.config/gdb/gdbearlyinit)
+    in order to affect GDB.
+  * For RISC-V targets, the target feature
+    "org.gnu.gdb.riscv.vector" is now understood by GDB, and can
+    be used to describe the vector registers of a target.
+  * TUI windows now support mouse actions.  The mouse wheel
+    scrolls the appropriate window.
+  * Key combinations that do not have a specific action on the
+    focused window are passed to GDB.  For example, you now can
+    use Ctrl-Left/Ctrl-Right to move between words in the command
+    window regardless of which window is in focus.  Previously
+    you would need to focus on the command window for such key
+    combinations to work.
+  * set python ignore-environment on|off
+    show python ignore-environment
+      When 'on', this causes GDB's builtin Python to ignore any
+      environment variables that would otherwise affect how Python
+      behaves.  This command needs to be added to an early
+      initialization file (e.g. ~/.config/gdb/gdbearlyinit) in
+      order to affect GDB.
+  * set python dont-write-bytecode auto|on|off
+    show python dont-write-bytecode
+      When 'on', this causes GDB's builtin Python to not write any
+      byte-code (.pyc files) to disk.  This command needs to be
+      added to an early initialization file
+      (e.g. ~/.config/gdb/gdbearlyinit) in order to affect GDB.
+      When 'off' byte-code will always be written.
+      When set to 'auto' (the default) Python will check the
+      PYTHONDONTWRITEBYTECODE environment variable.
+  * break [PROBE_MODIFIER] [LOCATION] [thread THREADNUM]
+        [-force-condition] [if CONDITION]
+      This command would previously refuse setting a breakpoint if
+      the CONDITION expression is invalid at a location.  It now
+      accepts and defines the breakpoint if there is at least one
+      location at which the CONDITION is valid.  The locations
+      for which the CONDITION is invalid, are automatically
+      disabled.  If CONDITION is invalid at all of the locations,
+      setting the breakpoint is still rejected.  However, the
+      '-force-condition' flag can be used in this case for forcing
+      GDB to define the breakpoint, making all the current
+      locations automatically disabled.  This may be useful if the
+      user knows the condition will become meaningful at a future
+      location, e.g. due to a shared library load.
+- Update libipt to v2.0.4.  Dropped obsoleted patch:
+  * v1.5-libipt-static.patch
+- Obsoleted fedora patches dropped:
+  * gdb-moribund-utrace-workaround.patch
+  * gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
+  * gdb-vla-intel-fix-print-char-array.patch
+  * gdb-vla-intel-fortran-strides.patch
+  * gdb-vla-intel-fortran-vla-strings.patch
+  * gdb-vla-intel-stringbt-fix.patch
+  * gdb-vla-intel-tests.patch
+- Obsoleted fedora fixup patches dropped:
+  * fixup-2-gdb-archer-vla-tests.patch
+  * fixup-2-gdb-rhbz1156192-recursive-dlopen-test.patch
+  * fixup-3-gdb-archer-vla-tests.patch
+  * fixup-gdb-6.3-test-pie-20050107.patch
+  * fixup-gdb-6.3-threaded-watchpoints2-20050225.patch
+  * fixup-gdb-6.5-sharedlibrary-path.patch
+  * fixup-gdb-6.8-bz442765-threaded-exec-test.patch
+  * fixup-gdb-archer-vla-tests.patch
+  * fixup-gdb-base-gnu-ifunc-strstr-workaround-exp.patch
+  * fixup-gdb-btrobust.patch
+  * fixup-gdb-bz634108-solib_address.patch
+  * fixup-gdb-dts-rhel6-python-compat.patch
+  * fixup-gdb-gnat-dwarf-crash-3of3.patch
+  * fixup-gdb-rhbz1156192-recursive-dlopen-test.patch
+  * fixup-gdb-test-ivy-bridge.patch
+  * fixup-gdb-vla-intel-fortran-vla-strings.patch
+  * fixup-gdb-vla-intel-tests.patch
+- Obsoleted patches dropped:
+  * amd64-linux-siginfo-include-order.patch
+  * gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
+  * gdb-support-dw-lle-start-end.patch
+  * gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder-again.patch
+  * gdb-symtab-fix-language-of-frame-without-debug-info.patch
+  * gdb-symtab-read-cu-base-address-for-enqueued-cu.patch
+  * gdb-symtab-use-early-continue-in-find_pc_sect_compunit.patch
+  * gdb-testsuite-catch-condition-evaluation-errors-in-gdb-assert.patch
+  * gdb-testsuite-detect-gdb-prompt-after-monitor-exit.patch
+  * gdb-testsuite-disable-selftests-for-factory.patch
+  * gdb-testsuite-fix-control-flow-in-gdb-reverse-insn-reverse-exp.patch
+  * gdb-testsuite-fix-failure-in-gdb-base-step-over-no-symbols-exp.patch
+  * gdb-testsuite-fix-gdb-dlang-watch-loc-exp-on-ppc64.patch
+  * gdb-testsuite-fix-gdb-reverse-insn-reverse-x86-c-for-m32.patch
+  * gdb-testsuite-fix-gdb.arch-amd64-stap-three-arg-disp.s.patch
+  * gdb-testsuite-fix-unset-of-debuginfod_urls-in-default_gdb_init.patch
+  * gdb-testsuite-fix-xfail-handling-in-gdb.threads-gcore-thread.exp.patch
+  * gdb-testsuite-gdb-base-morestack-exp-no-clang.patch
+  * gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
+  * gdb-testsuite-handle-sigill-in-gdb-reverse-insn-reverse-exp.patch
+  * gdb-testsuite-ignore-debuginfod_urls.patch
+  * gdb-testsuite-prevent-pagination-in-gdb-internalflags.patch
+  * gdb-threads-fix-lin_thread_get_thread_signals-for-glibc-2.28.patch
+  * gdb-try-to-load-libthread_db-only-after-reading-all-shared-libraries-when-attaching.patch
+  * gdb-tui-fix-len_without_escapes-in-tui-disasm.c.patch
+- Fedora patches updated:
+  * gdb-6.3-bz140532-ppc-unwinding-test.patch
+  * gdb-6.3-bz202689-exec-from-pthread-test.patch
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.3-inheritancetest-20050726.patch
+  * gdb-6.3-mapping-zero-inode-test.patch
+  * gdb-6.3-test-dtorfix-20050121.patch
+  * gdb-6.3-test-movedir-20050125.patch
+  * gdb-6.3-threaded-watchpoints2-20050225.patch
+  * gdb-6.5-bz109921-DW_AT_decl_file-test.patch
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+  * gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
+  * gdb-6.5-bz243845-stale-testing-zombie-test.patch
+  * gdb-6.5-ia64-libunwind-leak-test.patch
+  * gdb-6.5-last-address-space-byte-test.patch
+  * gdb-6.5-readline-long-line-crash-test.patch
+  * gdb-6.5-section-num-fixup-test.patch
+  * gdb-6.5-sharedlibrary-path.patch
+  * gdb-6.6-buildid-locate-rpm-scl.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-6.6-bz229517-gcore-without-terminal.patch
+  * gdb-6.6-bz230000-power6-disassembly-test.patch
+  * gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
+  * gdb-6.8-bz442765-threaded-exec-test.patch
+  * gdb-bz601887-dwarf4-rh-test.patch
+  * gdb-bz634108-solib_address.patch
+  * gdb-ccache-workaround.patch
+  * gdb-container-rh-pkg.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-fortran-frame-string.patch
+  * gdb-glibc-strstr-workaround.patch
+  * gdb-lineno-makeup-test.patch
+  * gdb-linux_perf-bundle.patch
+  * gdb-physname-pr11734-test.patch
+  * gdb-ppc-power7-test.patch
+  * gdb-rhbz1156192-recursive-dlopen-test.patch
+  * gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
+  * gdb-rhbz1350436-type-printers-error.patch
+  * gdb-rhbz1398387-tab-crash-test.patch
+  * gdb-test-dw2-aranges.patch
+  * gdb-test-ivy-bridge.patch
+  * gdb-test-pid0-core.patch
+- Patches updated:
+  * gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
+  * gdb-gcore-bash.patch
+- Fedora patches added:
+  * gdb-6.3-attach-see-vdso-test.patch
+  * gdb-6.3-inferior-notification-20050721.patch
+  * gdb-6.5-gcore-buffer-limit-test.patch
+  * gdb-6.5-missed-trap-on-step-test.patch
+  * gdb-rhbz1976887-field-location-kind.patch
+  * gdb-rhbz2012976-paper-over-fortran-lex-problems.patch
+  * gdb-test-for-rhbz1976887.patch
+- Fedora fixup patches added:
+  * fixup-2-gdb-6.6-buildid-locate.patch
+  * fixup-gdb-glibc-strstr-workaround.patch
+  * fixup-gdb-linux_perf-bundle.patch
+  * fixup-gdb-rhbz1325795-framefilters-test.patch
+  * fixup-gdb-rhbz1553104-s390x-arch12-test.patch
+- Patches added:
+  * fix-gdb.mi-new-ui-mi-sync.exp.patch
+  * fix-gdb.threads-linux-dp.exp.patch
+  * gdb-add-index.sh-fix-bashism.patch
+  * gdb-build-add-cxx_dialect-to-cxx.patch
+  * gdb-build-make-c-exp.y-work-with-bison-3.8.patch
+  * gdb-python-finishbreakpoint-update.patch
+  * gdb-symtab-add-call_site_eq-and-call_site_hash.patch
+  * gdb-symtab-c-ify-call_site.patch
+  * gdb-symtab-fix-htab_find_slot-call-in-read_call_site_scope.patch
+  * gdb-symtab-remove-compunit_call_site_htab.patch
+  * gdb-symtab-use-unrelocated-addresses-in-call_site.patch
+  * gdb-testsuite-add-nopie-in-two-test-cases.patch
+  * gdb-testsuite-fix-fail-in-gdb.base-annota1.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.tui-corefile-run.exp.patch
+  * gdb-testsuite-fix-gdb.base-dcache-flush.exp.patch
+  * gdb-testsuite-fix-gdb.gdb-selftest.exp.patch
+  * gdb-testsuite-fix-gdb.python-py-events.exp.patch
+  * gdb-testsuite-fix-gdb.server-server-kill.exp-with-m32.patch
+  * gdb-testsuite-fix-gdb.threads-check-libthread-db.exp-with-glibc-2.34.patch
+  * gdb-testsuite-handle-supports_memtag-in-gdb.base-gdb-caching-proc.exp.patch
+  * gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
+  * gdb-testsuite-refactor-regexp-in-gdb.base-annota1.exp.patch
+  * gdb-testsuite-support-fpie-fno-pie-pie-no-pie-in-gdb_compile_rust.patch
+  * gdb-testsuite-use-compiler-generated-instead-of-gas-generated-stabs.patch
+- Fedora patches replaced:
+  * fixup-gdb-6.6-buildid-locate.patch
+- Added maintenance scripts:
+  * import-patches.sh
+  * clean.sh
+
+-------------------------------------------------------------------
 Tue Jul 20 13:46:59 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - amd64-linux-siginfo-include-order.patch: Adjust include order to avoid

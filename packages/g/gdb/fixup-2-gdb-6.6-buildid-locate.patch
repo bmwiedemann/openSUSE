@@ -1,0 +1,20 @@
+fixup-2-gdb-6.6-buildid-locate.patch
+
+---
+ gdb/testsuite/lib/gdb.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+index e2ce31cc553..2b94f79d132 100644
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -131,7 +131,8 @@ if ![info exists INTERNAL_GDBFLAGS] {
+ 		   "-nx" \
+ 		   "-data-directory $BUILD_DATA_DIRECTORY" \
+ 		   {-iex "set height 0"} \
+-		   {-iex "set width 0"}]]
++		   {-iex "set width 0"} \
++		   {-iex "set build-id-verbose 0"}]]
+ }
+ 
+ # The variable gdb_prompt is a regexp which matches the gdb prompt.

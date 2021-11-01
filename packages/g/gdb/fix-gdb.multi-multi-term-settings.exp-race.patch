@@ -1,0 +1,182 @@
+Fix gdb.multi/multi-term-settings.exp race
+
+The gdb.multi/multi-term-settings.exp testcase sometimes fails like so:
+
+ Running /home/pedro/gdb/mygit/src/gdb/testsuite/gdb.multi/multi-term-settings.exp ...
+ FAIL: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: stop with control-c (SIGINT)
+
+It's easier to reproduce if you stress the machine at the same time, like e.g.:
+
+  $ stress -c 24
+
+Looking at gdb.log, we see:
+
+ (gdb) attach 60422
+ Attaching to program: build/gdb/testsuite/outputs/gdb.multi/multi-term-settings/multi-term-settings, process 60422
+ [New Thread 60422.60422]
+ Reading symbols from /lib/x86_64-linux-gnu/libc.so.6...
+ Reading symbols from /usr/lib/debug//lib/x86_64-linux-gnu/libc-2.31.so...
+ Reading symbols from /lib64/ld-linux-x86-64.so.2...
+ (No debugging symbols found in /lib64/ld-linux-x86-64.so.2)
+ 0x00007f2fc2485334 in __GI___clock_nanosleep (clock_id=<optimized out>, clock_id@entry <mailto:clock_id@entry>=0, flags=flags@entry <mailto:flags@entry>=0, req=req@entry <mailto:req@entry>=0x7ffe23126940, rem=rem@entry <mailto:rem@entry>=0x0) at ../sysdeps/unix/sysv/linux/clock_nanosleep.c:78
+ 78	../sysdeps/unix/sysv/linux/clock_nanosleep.c: No such file or directory.
+ (gdb) PASS: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: inf2: attach
+ set schedule-multiple on
+ (gdb) PASS: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: set schedule-multiple on
+ info inferiors
+   Num  Description       Connection                         Executable
+   1    process 60404     1 (extended-remote localhost:2349) build/gdb/testsuite/outputs/gdb.multi/multi-term-settings/multi-term-settings
+ * 2    process 60422     1 (extended-remote localhost:2349) build/gdb/testsuite/outputs/gdb.multi/multi-term-settings/multi-term-settings
+ (gdb) PASS: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: info inferiors
+ pid=60422, count=46
+ pid=60422, count=47
+ pid=60422, count=48
+ pid=60422, count=49
+ pid=60422, count=50
+ pid=60422, count=51
+ pid=60422, count=52
+ pid=60422, count=53
+ pid=60422, count=54
+ pid=60422, count=55
+ pid=60422, count=56
+ pid=60422, count=57
+ pid=60422, count=58
+ pid=60422, count=59
+ pid=60422, count=60
+ pid=60422, count=61
+ pid=60422, count=62
+ pid=60422, count=63
+ pid=60422, count=64
+ pid=60422, count=65
+ pid=60422, count=66
+ pid=60422, count=67
+ pid=60422, count=68
+ pid=60422, count=69
+ pid=60404, count=54
+ pid=60404, count=55
+ pid=60404, count=56
+ pid=60404, count=57
+ pid=60404, count=58
+ PASS: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: continue
+ Quit
+ (gdb) FAIL: gdb.multi/multi-term-settings.exp: inf1_how=attach: inf2_how=attach: stop with control-c (SIGINT)
+
+If you look at the testcase's sources, you'll see that the intention
+is to resumes the program with "continue", wait to see a few of those
+"pid=..., count=..." lines, and then interrupt the program with
+Ctrl-C.  But somehow, that resulted in GDB printing "Quit", instead of
+the Ctrl-C stopping the program with SIGINT.
+
+Here's what is happening:
+
+ #1 - those "pid=..., count=..." lines we see above weren't actually
+      output by the inferior after it has been continued (see #1).
+      Note that "inf1_how" and "inf2_how" are "attach".  What happened
+      is that those "pid=..., count=..." lines were output by the
+      inferiors _before_ they were attached to.  We see them at that
+      point instead of earlier, because that's where the testcase
+      reads from the inferiors' spawn_ids.
+
+ #2 - The testcase mistakenly thinks those "pid=..., count=..." lines
+      happened after the continue was processed by GDB, meaning it has
+      waited enough, and so sends the Ctrl-C.  GDB hasn't yet passed
+      the terminal to the inferior, so the Ctrl-C results in that
+      Quit.
+
+The fix here is twofold:
+
+ #1 - flush inferior output right after attaching
+
+ #2 - consume the "Continuing" printed by "continue", indicating the
+      inferior has the terminal.  This is the same as done throughout
+      the testsuite to handle this exact problem of sending Ctrl-C too
+      soon.
+
+gdb/testsuite/ChangeLog:
+yyyy-mm-dd  Pedro Alves  <pedro@palves.net <mailto:pedro@palves.net>>
+
+	* gdb.multi/multi-term-settings.exp (create_inferior): Flush
+	inferior output.
+	(coretest): Use $gdb_test_name.  After issuing "continue", wait
+	for "Continuing".
+
+Change-Id: Iba7671dfe1eee6b98d29cfdb05a1b9aa2f9defb9
+
+---
+ gdb/testsuite/gdb.multi/multi-term-settings.exp | 40 +++++++++++++++++++++----
+ 1 file changed, 34 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.multi/multi-term-settings.exp b/gdb/testsuite/gdb.multi/multi-term-settings.exp
+index 20ec03d94b3..dcc6f2ece0f 100644
+--- a/gdb/testsuite/gdb.multi/multi-term-settings.exp
++++ b/gdb/testsuite/gdb.multi/multi-term-settings.exp
+@@ -95,6 +95,22 @@ proc create_inferior {which_inf inf_how} {
+ 	if {[gdb_test "attach $testpid" \
+ 		 "Attaching to program: .*, process $testpid.*(in|at).*" \
+ 		 "attach"] == 0} {
++
++	    # The program is now stopped, but if testing against
++	    # gdbserver, then the inferior's output emmitted before it
++	    # stopped isn't flushed unless we explicitly do so,
++	    # because it is on a different spawn_id.  Do it now, to
++	    # avoid confusing tests further below.
++	    gdb_test_multiple "" "flush inferior output" {
++		-timeout 1
++		-i $test_spawn_id -re "pid=" {
++		    exp_continue
++		}
++		timeout {
++		    pass $gdb_test_name
++		}
++	    }
++
+ 	    return $test_spawn_id
+ 	}
+     } else {
+@@ -179,9 +195,9 @@ proc coretest {inf1_how inf2_how} {
+ 	uplevel 1 {
+ 	    if {$count1 >= 3 && $count2 >= 3} {
+ 		if $expect_ttou {
+-		    fail "$test (expected SIGTTOU)"
++		    fail "$gdb_test_name (expected SIGTTOU)"
+ 		} else {
+-		    pass $test
++		    pass $gdb_test_name
+ 		}
+ 	    } else {
+ 		exp_continue
+@@ -195,8 +211,20 @@ proc coretest {inf1_how inf2_how} {
+     set count1 0
+     set count2 0
+ 
+-    set test "continue"
+-    gdb_test_multiple $test $test {
++    # We're going to interrupt with Ctrl-C.  For this to work we must
++    # be sure to consume the "Continuing." message first, or GDB may
++    # still own the terminal.  Also, note that in the attach case, we
++    # flushed inferior output right after attaching, so that we're
++    # sure that the "pid=" lines we see are emitted by the inferior
++    # after it is continued, instead of having been emitted before it
++    # was attached to.
++    gdb_test_multiple "continue" "continue, hand over terminal" {
++	-re "Continuing" {
++	    pass $gdb_test_name
++	}
++    }
++
++    gdb_test_multiple "" "continue" {
+ 	-i $infs_spawn_ids -re "pid=$pid1, count=" {
+ 	    incr count1
+ 	    pass_or_exp_continue
+@@ -207,9 +235,9 @@ proc coretest {inf1_how inf2_how} {
+ 	}
+ 	-i $gdb_spawn_id -re "received signal SIGTTOU.*$gdb_prompt " {
+ 	    if $expect_ttou {
+-		pass "$test (expected SIGTTOU)"
++		pass "$gdb_test_name (expected SIGTTOU)"
+ 	    } else {
+-		fail "$test (SIGTTOU)"
++		fail "$gdb_test_name (SIGTTOU)"
+ 	    }
+ 	}
+     }

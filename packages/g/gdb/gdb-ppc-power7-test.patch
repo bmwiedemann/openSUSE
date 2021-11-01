@@ -25,7 +25,7 @@ new file mode 100644
 +#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 +
 +# Test PowerPC Power7 instructions disassembly.
 +
@@ -48,7 +48,7 @@ new file mode 100644
 +gdb_start
 +gdb_reinitialize_dir $srcdir/$subdir
 +gdb_load ${objfile}
-+ 
++
 +
 +# Disassemble the function.
 +

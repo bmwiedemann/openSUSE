@@ -1,0 +1,110 @@
+[gdb/symtab] Add call_site_eq and call_site_hash
+
+In commit b4c919f7525 "[gdb/symtab] Fix htab_find_slot call in
+read_call_site_scope" , I removed the comment:
+...
+It must be the first field as we overload core_addr_hash and core_addr_eq for
+it.
+...
+for field pc of struct call_site.
+
+However, this was not tested, and when indeed moving field pc to the second
+location, we run into a testsuite failure in gdb.trace/entry-values.exp.
+
+This is caused by core_addr_eq (the eq_f function for the htab) being
+called with a pointer to the pc field (as passed into htab_find_slot) and a
+pointer to a hash table element.  Now that pc is no longer the first field,
+the pointer to hash table element no longer points to the pc field.
+
+This could be fixed by simply reinstating the comment, but we're trying to
+get rid of this kind of tricks that make refactoring more difficult.
+
+Instead, fix this by:
+- reverting commit b4c919f7525, apart from the comment removal, such that
+  we're passing a pointer to element to htab_find_slot
+- updating the htab_find_slot call in compunit_symtab::find_call_site
+  in a similar manner
+- adding a call_site_eq and call_site_hash, and using these in the hash table
+  instead of core_addr_eq and core_addr_hash.
+
+Tested on x86_64-linux, both with and without a trigger patch that moves pc to
+the second location in struct call_site.
+
+---
+ gdb/dwarf2/read.c |  7 ++++---
+ gdb/gdbtypes.h    | 15 +++++++++++++++
+ gdb/symtab.c      |  5 ++++-
+ 3 files changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index d3742bbce8c..7def1e246c4 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -13287,7 +13287,7 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+   struct gdbarch *gdbarch = objfile->arch ();
+   CORE_ADDR pc, baseaddr;
+   struct attribute *attr;
+-  struct call_site *call_site;
++  struct call_site *call_site, call_site_local;
+   void **slot;
+   int nparams;
+   struct die_info *child_die;
+@@ -13312,10 +13312,11 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+   pc = gdbarch_adjust_dwarf2_addr (gdbarch, pc);
+ 
+   if (cu->call_site_htab == NULL)
+-    cu->call_site_htab = htab_create_alloc_ex (16, core_addr_hash, core_addr_eq,
++    cu->call_site_htab = htab_create_alloc_ex (16, call_site_hash, call_site_eq,
+ 					       NULL, &objfile->objfile_obstack,
+ 					       hashtab_obstack_allocate, NULL);
+-  slot = htab_find_slot (cu->call_site_htab, &pc, INSERT);
++  call_site_local.pc = pc;
++  slot = htab_find_slot (cu->call_site_htab, &call_site_local, INSERT);
+   if (*slot != NULL)
+     {
+       complaint (_("Duplicate PC %s for DW_TAG_call_site "
+diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
+index f2e077c70a2..77d1e66a6b1 100644
+--- a/gdb/gdbtypes.h
++++ b/gdb/gdbtypes.h
+@@ -1806,6 +1806,21 @@ struct call_site
+     struct call_site_parameter parameter[1];
+   };
+ 
++static inline int
++call_site_eq (const void *a_, const void *b_)
++{
++  const struct call_site *a = (const call_site *)a_;
++  const struct call_site *b = (const call_site *)b_;
++  return core_addr_eq (&a->pc, &b->pc);
++}
++
++static inline hashval_t
++call_site_hash (const void *a_)
++{
++  const struct call_site *a = (const call_site *)a_;
++  return core_addr_hash (&a->pc);
++}
++
+ /* The type-specific info for TYPE_CODE_FIXED_POINT types.  */
+ 
+ struct fixed_point_type_info
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index 1d30c8fc7a8..fe430edadb2 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -334,10 +334,13 @@ search_domain_name (enum search_domain e)
+ call_site *
+ compunit_symtab::find_call_site (CORE_ADDR pc) const
+ {
++  struct call_site call_site_local;
+   if (m_call_site_htab == nullptr)
+     return nullptr;
+ 
+-  void **slot = htab_find_slot (m_call_site_htab, &pc, NO_INSERT);
++  call_site_local.pc = pc;
++  void **slot
++    = htab_find_slot (m_call_site_htab, &call_site_local, NO_INSERT);
+   if (slot == nullptr)
+     return nullptr;
+ 

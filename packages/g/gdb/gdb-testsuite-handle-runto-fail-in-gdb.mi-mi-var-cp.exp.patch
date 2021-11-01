@@ -1,0 +1,164 @@
+[gdb/testsuite] Handle runto fail in gdb.mi/mi-var-cp.exp
+
+On OBS I ran into:
+...
+PASS: gdb.mi/mi-var-cp.exp: run to mi-var-cp.cc:81 (set breakpoint)
+UNRESOLVED: gdb.mi/mi-var-cp.exp: unable to start target
+...
+followed by 81 FAILs and two more UNRESOLVEDs.
+
+I didn't manage to reproduce this, but I did notice that the initial
+problem causing the UNRESOLVED caused all subsequent UNRESOLVEDs and FAILs.
+
+I emulated the problem by commenting out the send_gdb "run\n" in
+mi_run_cmd_full.
+
+Fix this by:
+- handling mi_run_cmd failure in mi_get_inline_test
+- handling mi_run_inline_test failure in gdb.mi/mi-var-cp.exp, and
+  other test-cases using mi_get_inline_test
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.mi/mi-var-child.exp |  4 +++-
+ gdb/testsuite/gdb.mi/mi-var-cmd.exp   | 18 ++++++++++++++----
+ gdb/testsuite/gdb.mi/mi-var-cp.exp    | 18 +++++++++++++-----
+ gdb/testsuite/gdb.mi/mi-var-rtti.exp  | 22 +++++++++++++++-------
+ gdb/testsuite/lib/mi-support.exp      |  6 +++++-
+ 5 files changed, 50 insertions(+), 18 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.mi/mi-var-child.exp b/gdb/testsuite/gdb.mi/mi-var-child.exp
+index 8632fe26cf8..63cea065c3f 100644
+--- a/gdb/testsuite/gdb.mi/mi-var-child.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-child.exp
+@@ -1205,7 +1205,9 @@ mi_varobj_update * {psnp->ptrs.0.next.next.long_ptr} \
+ 
+ mi_prepare_inline_tests $srcfile
+ 
+-mi_run_inline_test child_deletion
++if { [mi_run_inline_test child_deletion] < 0 } {
++    return -1
++}
+ 
+ 
+ mi_gdb_exit
+diff --git a/gdb/testsuite/gdb.mi/mi-var-cmd.exp b/gdb/testsuite/gdb.mi/mi-var-cmd.exp
+index fe0826d480d..fbf57aa25ac 100644
+--- a/gdb/testsuite/gdb.mi/mi-var-cmd.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-cmd.exp
+@@ -587,14 +587,24 @@ proc set_frozen {varobjs flag} {
+ }
+ 
+ mi_prepare_inline_tests $srcfile
+-mi_run_inline_test frozen
+ 
+-mi_run_inline_test bitfield
++set inline_tests {
++    frozen
++    bitfield
++}
++
++# Needs to be last, following tests rely on this.
++lappend inline_tests floating
++
++foreach inline_test $inline_tests {
++    if { [mi_run_inline_test $inline_test] < 0 } {
++	return -1
++    }
++}
+ 
+ # Since the inline test framework does not really work with
+-# function calls, first to inline tests and then do the reminder
++# function calls, first to inline tests and then do the remainder
+ # manually.
+-mi_run_inline_test floating
+ set do_at_tests_callee_breakpoint [gdb_get_line_number "breakpoint inside callee"]
+ mi_gdb_test "-break-insert var-cmd.c:$do_at_tests_callee_breakpoint" ".*" \
+     "inside breakpoint inside callee"
+diff --git a/gdb/testsuite/gdb.mi/mi-var-cp.exp b/gdb/testsuite/gdb.mi/mi-var-cp.exp
+index 4e8abe8d961..8fdd0f863a7 100644
+--- a/gdb/testsuite/gdb.mi/mi-var-cp.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-cp.exp
+@@ -38,11 +38,19 @@ mi_gdb_load ${binfile}
+ 
+ mi_prepare_inline_tests $srcfile
+ 
+-mi_run_inline_test reference_update
+-mi_run_inline_test base_in_reference
+-mi_run_inline_test reference_to_pointer
+-mi_run_inline_test reference_to_struct
+-mi_run_inline_test path_expression
++set inline_tests {
++    reference_update
++    base_in_reference
++    reference_to_pointer
++    reference_to_struct
++    path_expression
++}
++
++foreach inline_test $inline_tests {
++    if { [mi_run_inline_test $inline_test] < 0 } {
++	return -1
++    }
++}
+ 
+ set lineno [gdb_get_line_number "/* anonymous_structs_and_unions */"]
+ mi_create_breakpoint "$srcfile:$lineno" \
+diff --git a/gdb/testsuite/gdb.mi/mi-var-rtti.exp b/gdb/testsuite/gdb.mi/mi-var-rtti.exp
+index b574e5c4edb..a0a2e132aaf 100644
+--- a/gdb/testsuite/gdb.mi/mi-var-rtti.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-rtti.exp
+@@ -109,13 +109,21 @@ proc check_new_derived_with_rtti {var_name var_type testname} {
+         "delete varobj for ${var_name} (with RTTI) in $testname"
+ }
+ 
+-mi_run_inline_test use_rtti_for_ptr
+-mi_run_inline_test use_rtti_for_ref
+-mi_run_inline_test use_rtti_for_ptr_child
+-mi_run_inline_test use_rtti_for_ref_child
+-mi_run_inline_test use_rtti_with_multiple_inheritence
+-mi_run_inline_test type_update_when_use_rtti
+-mi_run_inline_test skip_type_update_when_not_use_rtti
++set inline_tests {
++    use_rtti_for_ptr
++    use_rtti_for_ref
++    use_rtti_for_ptr_child
++    use_rtti_for_ref_child
++    use_rtti_with_multiple_inheritence
++    type_update_when_use_rtti
++    skip_type_update_when_not_use_rtti
++}
++
++foreach inline_test $inline_tests {
++    if { [mi_run_inline_test $inline_test] < 0 } {
++       return -1
++    }
++}
+ 
+ mi_gdb_exit
+ return 0
+diff --git a/gdb/testsuite/lib/mi-support.exp b/gdb/testsuite/lib/mi-support.exp
+index 288c651d4d4..28e23b11005 100644
+--- a/gdb/testsuite/lib/mi-support.exp
++++ b/gdb/testsuite/lib/mi-support.exp
+@@ -1945,7 +1945,9 @@ proc mi_run_inline_test { testcase } {
+ 	if {$first==1} {
+ 	    # Start the program afresh.
+ 	    mi_tbreak "$mi_autotest_source:$line"
+-	    mi_run_cmd
++	    if { [mi_run_cmd] < 0 } {
++		return -1
++	    }
+ 	    set line_now [mi_get_stop_line "$testcase: step to $line"]
+ 	    set first 0
+ 	} elseif {$line_now!=$line} {
+@@ -1972,6 +1974,8 @@ proc mi_run_inline_test { testcase } {
+ 	# will need more experience to be sure.
+ 	eval $statements
+     }
++
++    return 0
+ }
+ 
+ proc get_mi_thread_list {name} {

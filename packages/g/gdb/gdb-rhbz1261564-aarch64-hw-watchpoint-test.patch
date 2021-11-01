@@ -73,7 +73,7 @@ new file mode 100644
 +set test "rwatch aligned.var4"
 +if [istarget "s390*-*-*"] {
 +    gdb_test $test {Target does not support this type of hardware watchpoint\.}
-+    untested "s390* does not support hw read watchpoint" 
++    untested "s390* does not support hw read watchpoint"
 +    return
 +}
 +gdb_test $test "Hardware read watchpoint \[0-9\]+: aligned.var4"

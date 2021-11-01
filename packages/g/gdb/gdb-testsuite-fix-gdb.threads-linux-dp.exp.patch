@@ -1,0 +1,53 @@
+[gdb/testsuite] Fix gdb.threads/linux-dp.exp
+
+On openSUSE Tumbleweed with glibc-debuginfo installed I get:
+...
+ (gdb) PASS: gdb.threads/linux-dp.exp: continue to breakpoint: thread 5's print
+ where^M
+ #0  print_philosopher (n=3, left=33 '!', right=33 '!') at linux-dp.c:105^M
+ #1  0x0000000000401628 in philosopher (data=0x40537c) at linux-dp.c:148^M
+ #2  0x00007ffff7d56b37 in start_thread (arg=<optimized out>) \
+                          at pthread_create.c:435^M
+ #3  0x00007ffff7ddb640 in clone3 () \
+                          at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:81^M
+ (gdb) PASS: gdb.threads/linux-dp.exp: first thread-specific breakpoint hit
+...
+while without debuginfo installed I get instead:
+...
+ (gdb) PASS: gdb.threads/linux-dp.exp: continue to breakpoint: thread 5's print
+ where^M
+ #0  print_philosopher (n=3, left=33 '!', right=33 '!') at linux-dp.c:105^M
+ #1  0x0000000000401628 in philosopher (data=0x40537c) at linux-dp.c:148^M
+ #2  0x00007ffff7d56b37 in start_thread () from /lib64/libc.so.6^M
+ #3  0x00007ffff7ddb640 in clone3 () from /lib64/libc.so.6^M
+ (gdb) FAIL: gdb.threads/linux-dp.exp: first thread-specific breakpoint hit
+...
+
+The problem is that the regexp used:
+...
+  "\(from .*libpthread\|at pthread_create\|in pthread_create\)"
+...
+expects the 'from' part to match libpthread, but in glibc 2.34 libpthread has
+been merged into libc.
+
+Fix this by updating the regexp.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.threads/linux-dp.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/linux-dp.exp b/gdb/testsuite/gdb.threads/linux-dp.exp
+index 099971dca39..b01e87fa9ea 100644
+--- a/gdb/testsuite/gdb.threads/linux-dp.exp
++++ b/gdb/testsuite/gdb.threads/linux-dp.exp
+@@ -226,7 +226,7 @@ gdb_continue_to_breakpoint "thread 5's print"
+ # If you do have debug info, the output obviously depends more on the
+ # exact library in use; under NPTL, you get:
+ #    #2  0x0012b7fc in start_thread (arg=0x21) at pthread_create.c:264
+-gdb_test "where" "print_philosopher.*philosopher.* \(from .*libpthread\|at pthread_create\|in pthread_create\).*" \
++gdb_test "where" "print_philosopher.*philosopher.* \(from .*libpthread\|at pthread_create\|in pthread_create|from .*libc\\.\).*" \
+ 	"first thread-specific breakpoint hit"
+ 
+ # Make sure it's catching the right thread.  Try hitting the

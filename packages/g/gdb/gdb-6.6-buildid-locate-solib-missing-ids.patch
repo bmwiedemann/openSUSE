@@ -14,7 +14,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1339862
 diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
 --- a/gdb/solib-svr4.c
 +++ b/gdb/solib-svr4.c
-@@ -1340,14 +1340,27 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+@@ -1350,14 +1350,28 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
  	}
  
        {
@@ -38,13 +38,14 @@ diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
 +	   not do any build-id checking of the libraries.  There may be missing
 +	   build-ids dumped in the core file and we would map all the libraries
 +	   to the only existing file loaded that time - the executable.  */
-+	if (symfile_objfile != NULL
-+	    && (symfile_objfile->flags & OBJF_BUILD_ID_CORE_LOADED) != 0)
++	if (current_program_space->symfile_object_file != NULL
++	    && (current_program_space->symfile_object_file->flags
++	         & OBJF_BUILD_ID_CORE_LOADED) != 0)
 +	  build_id = build_id_addr_get (li->l_ld);
  	if (build_id != NULL)
  	  {
  	    char *name, *build_id_filename;
-@@ -1362,23 +1375,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
+@@ -1372,23 +1386,7 @@ svr4_read_so_list (svr4_info *info, CORE_ADDR lm, CORE_ADDR prev_lm,
  		xfree (name);
  	      }
  	    else
@@ -60,8 +61,8 @@ diff --git a/gdb/solib-svr4.c b/gdb/solib-svr4.c
 -		   instead) if the on-disk files no longer match the
 -		   running program version.  */
 -
--		if (symfile_objfile != NULL
--		    && (symfile_objfile->flags
+-		if (current_program_space->symfile_object_file != NULL
+-		    && (current_program_space->symfile_object_file->flags
 -			& OBJF_BUILD_ID_CORE_LOADED) != 0)
 -		  newobj->so_name[0] = 0;
 -	      }

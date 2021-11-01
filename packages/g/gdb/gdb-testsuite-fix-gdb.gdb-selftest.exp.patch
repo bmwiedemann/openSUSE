@@ -1,0 +1,44 @@
+[gdb/testsuite] Fix gdb.gdb/selftest.exp
+
+With a gdb build with CFLAGS "-O2 -g -flto=auto", I run into:
+...
+ #7  gdb_main (args=0x7fffffffd220) at src/gdb/main.c:1368^M
+ #8  main (argc=<optimized out>, argv=<optimized out>) at src/gdb/gdb.c:32^M
+ (gdb) FAIL: gdb.gdb/selftest.exp: backtrace through signal handler
+...
+which means that this regexp in proc test_with_self fails:
+...
+  -re "#0.*(read|poll).*in main \\(.*\\) at .*gdb\\.c.*$gdb_prompt $" {
+...
+
+The problem is that gdb_main has been inlined into main, and consequently the
+backtrace uses:
+...
+ #x  <fn> ...
+...
+instead of
+...
+ #x  <address> in <fn> ...
+...
+
+Fix this by updating the regexp to not require "in" before " main".
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.gdb/selftest.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.gdb/selftest.exp b/gdb/testsuite/gdb.gdb/selftest.exp
+index bee3010bca1..35b06e53e90 100644
+--- a/gdb/testsuite/gdb.gdb/selftest.exp
++++ b/gdb/testsuite/gdb.gdb/selftest.exp
+@@ -143,7 +143,7 @@ proc test_with_self { } {
+     setup_xfail "i*86-pc-linuxaout-gnu"
+     set description "backtrace through signal handler"
+     gdb_test_multiple "backtrace" "$description" {
+-	-re "#0.*(read|poll).*in main \\(.*\\) at .*gdb\\.c.*$gdb_prompt $" {
++	-re "#0.*(read|poll).* main \\(.*\\) at .*gdb\\.c.*$gdb_prompt $" {
+ 	    pass "$description"
+ 	}
+     }

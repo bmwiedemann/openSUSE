@@ -233,11 +233,11 @@ new file mode 100644
 +    && ![istarget *-*-openbsd*]
 +    && ![istarget arm-*-eabi*]
 +    && ![istarget powerpc-*-eabi*]} {
-+    return 0  
++    return 0
 +}
 +
 +if {![istarget x86_64-*]} {
-+    return 0  
++    return 0
 +}
 +
 +set testfile "rh-dwarf4-x86_64"

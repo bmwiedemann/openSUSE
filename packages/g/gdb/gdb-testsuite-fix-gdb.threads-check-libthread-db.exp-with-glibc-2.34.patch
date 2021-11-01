@@ -1,0 +1,49 @@
+[gdb/testsuite] Fix gdb.threads/check-libthread-db.exp with glibc 2.34
+
+When running test-case gdb.threads/check-libthread-db.exp on openSUSE
+Tumbleweed (with glibc 2.34) I get:
+...
+(gdb) continue^M
+Continuing.^M
+[Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib64/libthread_db.so.1".^M
+Stopped due to shared library event:^M
+  Inferior loaded /lib64/libm.so.6^M
+    /lib64/libc.so.6^M
+(gdb) FAIL: gdb.threads/check-libthread-db.exp: user-initiated check: continue
+...
+
+The check expect the inferior to load libpthread, but since glibc 2.34
+libpthread has been integrated into glibc, and consequently it's no longer
+a dependency:
+...
+$ ldd outputs/gdb.threads/check-libthread-db/check-libthread-db
+        linux-vdso.so.1 (0x00007ffe4cae4000)
+        libm.so.6 => /lib64/libm.so.6 (0x00007f167c77c000)
+        libc.so.6 => /lib64/libc.so.6 (0x00007f167c572000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f167c86e000)
+...
+
+Fix this by updating the regexp to expect libpthread or libc.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.threads/check-libthread-db.exp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/check-libthread-db.exp b/gdb/testsuite/gdb.threads/check-libthread-db.exp
+index 6ecf40db6a9..423c29978c8 100644
+--- a/gdb/testsuite/gdb.threads/check-libthread-db.exp
++++ b/gdb/testsuite/gdb.threads/check-libthread-db.exp
+@@ -58,7 +58,9 @@ with_test_prefix "user-initiated check" {
+ 
+     # User-initiated check with NPTL possibly uninitialized.
+     gdb_test "continue" \
+-	".*Stopped due to shared library event.*Inferior loaded .*libpthread.*"
++	[multi_line \
++	     "Stopped due to shared library event:" \
++	     "  Inferior loaded .*(libpthread|libc).*"]
+ 
+     gdb_test_sequence "maint check libthread-db" \
+ 	"libpthread.so possibly not initialized" \

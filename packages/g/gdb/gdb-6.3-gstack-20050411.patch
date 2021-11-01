@@ -16,7 +16,7 @@ Subject: gdb-6.3-gstack-20050411.patch
 diff --git a/gdb/Makefile.in b/gdb/Makefile.in
 --- a/gdb/Makefile.in
 +++ b/gdb/Makefile.in
-@@ -1726,7 +1726,7 @@ info install-info clean-info dvi pdf install-pdf html install-html: force
+@@ -1753,7 +1753,7 @@ info install-info clean-info dvi pdf install-pdf html install-html: force
  install: all
  	@$(MAKE) $(FLAGS_TO_PASS) install-only
  
@@ -25,7 +25,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e "$$t"` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -1775,7 +1775,25 @@ install-guile:
+@@ -1802,7 +1802,25 @@ install-guile:
  install-python:
  	$(SHELL) $(srcdir)/../mkinstalldirs $(DESTDIR)$(GDB_DATADIR)/python/gdb
  
@@ -52,7 +52,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
  	transformed_name=`t='$(program_transform_name)'; \
  			  echo gdb | sed -e $$t` ; \
  		if test "x$$transformed_name" = x; then \
-@@ -1798,6 +1816,18 @@ uninstall: force $(CONFIG_UNINSTALL)
+@@ -1825,6 +1843,18 @@ uninstall: force $(CONFIG_UNINSTALL)
  	fi
  	@$(MAKE) DO=uninstall "DODIRS=$(SUBDIRS)" $(FLAGS_TO_PASS) subdir_do
  
@@ -67,7 +67,7 @@ diff --git a/gdb/Makefile.in b/gdb/Makefile.in
 +		fi ; \
 +		rm -f $(DESTDIR)$(bindir)/$$transformed_name$(EXEEXT) \
 +		      $(DESTDIR)$(man1dir)/$$transformed_name.1
-+ 
++
  # The C++ name parser can be built standalone for testing.
  test-cp-name-parser.o: cp-name-parser.c
  	$(COMPILE) -DTEST_CPNAMES cp-name-parser.c
@@ -109,7 +109,7 @@ new file mode 100644
 +
 +# Run GDB, strip out unwanted noise.
 +# --readnever is no longer used since .gdb_index is now in use.
-+$GDB --quiet -nx $GDBARGS /proc/$1/exe $1 <<EOF 2>&1 | 
++$GDB --quiet -nx $GDBARGS /proc/$1/exe $1 <<EOF 2>&1 |
 +set width 0
 +set height 0
 +set pagination no
@@ -153,7 +153,7 @@ new file mode 100644
 +  /* Use the most simple notification not to get caught by attach on exiting
 +     the function.  */
 +  write (1, msg, strlen (msg));
-+  
++
 +  for (;;);
 +}
 +

@@ -33,7 +33,7 @@ diff --git a/gdb/testsuite/gdb.threads/tls-sepdebug-main.c b/gdb/testsuite/gdb.t
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.threads/tls-sepdebug-main.c
-@@ -0,0 +1,25 @@
+@@ -0,0 +1,31 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2006 Free Software Foundation, Inc.
@@ -47,7 +47,7 @@ new file mode 100644
 +   but WITHOUT ANY WARRANTY; without even the implied warranty of
 +   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +   GNU General Public License for more details.
-+ 
++
 +   You should have received a copy of the GNU General Public License
 +   along with this program; if not, write to the Free Software
 +   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -55,9 +55,15 @@ new file mode 100644
 +   Please email any bugs, comments, and/or additions to this file to:
 +   bug-gdb@prep.ai.mit.edu  */
 +
++#include <pthread.h>
++
++extern __thread int var;
++
 +int main()
 +{
-+  return 0;
++  /* Ensure we link against pthreads even with --as-needed.  */
++  pthread_testcancel();
++  return var;
 +}
 diff --git a/gdb/testsuite/gdb.threads/tls-sepdebug-shared.c b/gdb/testsuite/gdb.threads/tls-sepdebug-shared.c
 new file mode 100644
@@ -77,7 +83,7 @@ new file mode 100644
 +   but WITHOUT ANY WARRANTY; without even the implied warranty of
 +   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +   GNU General Public License for more details.
-+ 
++
 +   You should have received a copy of the GNU General Public License
 +   along with this program; if not, write to the Free Software
 +   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -90,22 +96,29 @@ diff --git a/gdb/testsuite/gdb.threads/tls-sepdebug.exp b/gdb/testsuite/gdb.thre
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.threads/tls-sepdebug.exp
-@@ -0,0 +1,87 @@
+@@ -0,0 +1,94 @@
 +# Copyright 2006 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
 +# it under the terms of the GNU General Public License as published by
 +# the Free Software Foundation; either version 2 of the License, or
 +# (at your option) any later version.
-+# 
++#
 +# This program is distributed in the hope that it will be useful,
 +# but WITHOUT ANY WARRANTY; without even the implied warranty of
 +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +# GNU General Public License for more details.
-+# 
++#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++
++# This test uses gdb_exit and gdb_start, which are not supported
++# on non-extended-remote sessions.
++if {[use_gdb_stub]} {
++    untested "skipping test because of stub"
++    return 0
++}
 +
 +if $tracelevel then {
 +    strace $tracelevel
@@ -158,22 +171,22 @@ new file mode 100644
 +    gdb_exit
 +    gdb_start
 +    ###gdb_reinitialize_dir $srcdir/$subdir
-+    
++
 +    gdb_test "set env LD_LIBRARY_PATH=$ld_library_path" \
 +             "" \
 +             "set env LD_LIBRARY_PATH is $name"
-+    
++
 +    gdb_load ${binmainfile}
-+    
++
 +    # For C programs, "start" should stop in main().
-+    
++
 +    gdb_test "start" \
 +             "main \\(\\) at .*${srcmainfile}.*" \
 +             "start"
-+    
++
 +    # Check for: Cannot find shared library `/usr/lib/debug/lib/libc-2.4.90.so.debug' in dynamic linker's load module list
 +    # as happens with TLS variables and `separate_debug_objfile_backlink'.
-+    
++
 +    gdb_test "print var" \
 +             "\\\$1 = \[0-9\].*" \
 +             "print TLS variable from a shared library with $name-directory separate debug info file"

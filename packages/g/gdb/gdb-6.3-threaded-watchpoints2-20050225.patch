@@ -54,7 +54,7 @@ diff --git a/gdb/testsuite/gdb.threads/watchthreads-threaded.c b/gdb/testsuite/g
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.threads/watchthreads-threaded.c
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,65 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -72,8 +72,8 @@ new file mode 100644
 +   You should have received a copy of the GNU General Public License
 +   along with this program; if not, write to the Free Software
 +   Foundation, Inc., 59 Temple Place - Suite 330,
-+   Boston, MA 02111-1307, USA.  
-+ 
++   Boston, MA 02111-1307, USA.
++
 +   This file is copied from schedlock.c.  */
 +
 +#include <stdio.h>
@@ -120,7 +120,6 @@ new file mode 100644
 +
 +    pthread_exit(NULL);
 +}
-+
 diff --git a/gdb/testsuite/gdb.threads/watchthreads-threaded.exp b/gdb/testsuite/gdb.threads/watchthreads-threaded.exp
 new file mode 100644
 --- /dev/null
@@ -142,7 +141,7 @@ new file mode 100644
 +#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 +
 +# Check that GDB can support multiple watchpoints across threads.
 +
@@ -213,9 +212,9 @@ new file mode 100644
 +       { set args_2 1; set test_flag 1 }
 +    -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = 0.*New value = 1.*main \\\(\\\) at .*watchthreads-threaded.c:$init_line.*$gdb_prompt $"
 +       { set args_3 1; set test_flag 1 }
-+    -re "Hardware watchpoint 3: args\\\[2\\\].*Old value = $args_2.*New value = [expr $args_2+1].*in thread_function \\\(arg=0x2\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
++    -re "Hardware watchpoint 3: args\\\[2\\\].*Old value = $args_2.*New value = [expr $args_2+1].*thread_function \\\(arg=0x2\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
 +       { set args_2 [expr $args_2+1]; set test_flag 1 }
-+    -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = $args_3.*New value = [expr $args_3+1].*in thread_function \\\(arg=0x3\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
++    -re "Hardware watchpoint 4: args\\\[3\\\].*Old value = $args_3.*New value = [expr $args_3+1].*thread_function \\\(arg=0x3\\\) at .*watchthreads-threaded.c:$inc_line.*$gdb_prompt $"
 +       { set args_3 [expr $args_3+1]; set test_flag 1 }
 +  }
 +  # If we fail above, don't bother continuing loop
@@ -232,7 +231,7 @@ new file mode 100644
 +# Verify that we hit first watchpoint in child thread.
 +set message "watchpoint on args\[2\] hit in thread"
 +if { $args_2 > 1 } {
-+  pass $message 
++  pass $message
 +} else {
 +  fail $message
 +}
@@ -240,15 +239,15 @@ new file mode 100644
 +# Verify that we hit second watchpoint in child thread.
 +set message "watchpoint on args\[3\] hit in thread"
 +if { $args_3 > 1 } {
-+  pass $message 
++  pass $message
 +} else {
-+  fail $message 
++  fail $message
 +}
 +
 +# Verify that all watchpoint hits are accounted for.
 +set message "combination of threaded watchpoints = 30 + initial values"
 +if { [expr $args_2+$args_3] == [expr [expr 30+$init_args_2]+$init_args_3] } {
-+  pass $message 
++  pass $message
 +} else {
-+  fail $message 
++  fail $message
 +}
