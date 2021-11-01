@@ -11857,6 +11857,7 @@ unsorted:
   - libmemcache0 
   - libmemcached 
   - libmemcached-devel 
+  - libmemcachedprotocol0 
   - libmemcachedutil2 
   - libmemkind0: [x86_64] 
   - libmenu-cache3 
