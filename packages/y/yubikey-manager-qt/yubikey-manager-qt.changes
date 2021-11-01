@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  1 18:52:08 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to version 1.2.4 (released 2021-10-26)
+  * Update device names and images.
+  * PIV: Fix import of certificate.
+
+-------------------------------------------------------------------
 Tue May 18 18:35:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.3
