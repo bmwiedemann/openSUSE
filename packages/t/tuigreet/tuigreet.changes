@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Nov  1 07:56:13 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 0.7.1 
+  * Upgraded greetd_ipc to 0.8.0.
+  * Used async throughout tuigreet to prevent blocking the UI.
+  * Better handle different kinds of PAM prompts (such as fingerprint
+    scanner prompts).
+  * Allow customizing power commands to shut down and reboot the machine.
+  * Miscellaneous UI improvements and typo fixes.
+  * Added Polish and Catalan translations.
+  * Updated man page.
+- tuigreet version 0.7.0
+  * Upgraded greetd_ipc to 0.8.0.
+  * Used async throughout tuigreet to prevent blocking the UI.
+  * Better handle different kinds of PAM prompts (such as fingerprint
+    scanner prompts).
+  * Allow customizing power commands to shut down and reboot the machine.
+  * Miscellaneous UI improvements and typo fixes.
+  * Added Polish and Catalan translations.
+- tuigreet version 0.6.1
+  * manpage was added.
+- tuigreet version 0.6.0
+  * Added option to remember last selected session between runs.
+  * Add customization of the password redaction character instead of *.
+  * Added translations in Italian and Portugese.
+- tuigreet version 0.5.0.
+  * tuigreet used to terminate on authentication failure, which would
+    pose security issues if greetd was configured to restart
+    automatically with an `initial_session` set. Now, tuigreet loops on
+    failure and keeps running (#24).
+  * Following the previous item, all manual means of exiting tuigreet
+    have been removed (such as hitting the ESC key).
+  * Added localization of the user interface, with initial translations
+    in English, French and German (thanks to @brodi1 for the German
+    translation).
+- tuigreet version 0.4.0
+  * Add a space at the end of prompts if missing.
+  * Added option to add global padding to the terminal.
+  * Added menu to shut down and reboot the machine.
+  * Fixed issue with container padding and greeting message.
+- tuigreet version 0.3.1.
+  * Fixed issue where popup menus would put the UI into an unrecoverable
+    state
+  * Fixed issue where closing a popup would not return to the correct mode
+  * Fixed issue with the time format
+  * Added options to provide custom directories to look for sessions
+    desktop files
+- tuigreet version 0.3.0.
+  * Fixed issue where popup menus would put the UI into an unrecoverable
+    state
+  * Fixed issue with the time format
+  * Added options to provide custom directories to look for sessions
+    desktop files
+
+-------------------------------------------------------------------
 Tue Sep 28 05:44:40 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Replace rust-packaging with cargo-packaging
