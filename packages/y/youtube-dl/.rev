@@ -1530,4 +1530,12 @@
   * Address youtube download speed being capped at 80KB/s</comment>
     <requestid>926095</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>1c4c00a13d984cbe1524d2d67a188833</srcmd5>
+    <version>2021.10.22</version>
+    <time>1635788142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928439</requestid>
+  </revision>
 </revisionlist>
