@@ -91,4 +91,15 @@
 - Update Requires from setup.py (forwarded request 922982 from glaubitz)</comment>
     <requestid>922987</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>acc0c497ccb2d716fb57e481a229823c</srcmd5>
+    <version>10.0.0</version>
+    <time>1635788151</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 928523 from glaubitz)</comment>
+    <requestid>928546</requestid>
+  </revision>
 </revisionlist>
