@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 31 17:15:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Keep ipython binding files in python sitelib -- fixes boo#1187199
+- Remove shebang in __main__.py
+- Deduplicate docs
+
+-------------------------------------------------------------------
 Mon Mar 15 07:03:16 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 2.8.2

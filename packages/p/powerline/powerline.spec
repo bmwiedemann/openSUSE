@@ -108,16 +108,20 @@ to your ~/.tmux.conf file.
 %prep
 %autosetup -p1
 
+# remove shebang in file not meant to be directly called
+sed -i -e '1{/^#!/ d}' powerline/bindings/pdb/__main__.py
 # Change shebang in all relevant files in this directory and all subdirectories
 find -type f -exec sed -i '1s=^#!%{_bindir}/\(python\|env python\)[23]\?=#!%{_bindir}/python3=' {} +
 
-%build
-
-%install
 sed -i -e "/DEFAULT_SYSTEM_CONFIG_DIR/ s@None@'%{_sysconfdir}/xdg'@" powerline/config.py
 sed -i -e "/TMUX_CONFIG_DIRECTORY/ s@BINDINGS_DIRECTORY@'%{_prefix}/share'@" powerline/config.py
-CFLAGS="%{optflags}" \
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot} --optimize=1
+
+%build
+export CFLAGS="%{optflags}"
+%python3_build
+
+%install
+%python3_install
 
 # build docs
 pushd docs
@@ -129,6 +133,10 @@ sed -i -e 's/abuild/user/g' _build/html/develop/extensions.html
 
 make man
 popd
+# Install and deduplicate
+mkdir -p %{buildroot}%{_docdir}/%{name}-docs
+cp -a docs/_build/html %{buildroot}%{_docdir}/%{name}-docs/
+%fdupes %{buildroot}%{_docdir}/%{name}-docs/
 
 # config
 install -d -m0755 %{buildroot}/%{_sysconfdir}/xdg/%{name}
@@ -169,8 +177,8 @@ mv %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/i3/powerline-i3.p
 
 # ipython
 install -d -m0755 %{buildroot}/%{_datadir}/%{name}/ipython
-mv %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/ipython/post_0_11.py %{buildroot}/%{_datadir}/%{name}/ipython
-mv %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/ipython/pre_0_11.py %{buildroot}/%{_datadir}/%{name}/ipython
+ln -rs %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/ipython/post_0_11.py %{buildroot}/%{_datadir}/%{name}/ipython
+ln -rs %{buildroot}/%{powerline_python_sitelib}/powerline/bindings/ipython/pre_0_11.py %{buildroot}/%{_datadir}/%{name}/ipython
 
 # qtile
 install -d -m0755 %{buildroot}/%{_datadir}/%{name}/qtile
@@ -269,7 +277,8 @@ python3 -m pytest -vv -rs -k 'not (test_user or test_system_load or test_network
 %{_datadir}/%{name}/tcsh/powerline.tcsh
 %dir %{_datadir}/%{name}/zsh
 %{_datadir}/%{name}/zsh/powerline.zsh
-%{powerline_python_sitelib}/*
+%{powerline_python_sitelib}/powerline
+%{powerline_python_sitelib}/powerline_status-%{version}*-info
 
 %files fonts
 %license LICENSE
@@ -280,7 +289,7 @@ python3 -m pytest -vv -rs -k 'not (test_user or test_system_load or test_network
 %{_datadir}/fonts/truetype/PowerlineSymbols.otf
 
 %files docs
-%doc docs/_build/html
+%{_docdir}/%{name}-docs
 
 %files -n vim-plugin-powerline
 %license LICENSE
