@@ -19,8 +19,6 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
-# gh#aaugustin/websockets#1051
-%define         skip_python39 1
 Name:           python-websockets
 Version:        10.0
 Release:        0
@@ -29,7 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -62,7 +60,9 @@ export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=10
 # https://github.com/aaugustin/websockets/issues/855 is an intermittent failure
 # for test_keepalive_ping_does_not_crash_when_connection_lost on s390x
 # export PYTHONWARNINGS=default
-%pyunittest_arch -v
+# test suite temporarily broken on python 3.9.7: gh#aaugustin/websockets#1051
+python39_donttest=(-k testnothing)
+%pyunittest_arch -v "${$python_donttest[@]}"
 
 %files %{python_files}
 %license LICENSE

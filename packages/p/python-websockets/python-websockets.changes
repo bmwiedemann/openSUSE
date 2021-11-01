@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 30 22:51:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Reactivate python39 build, only disable testing. No need to break
+  consuming packages -- gh#aaugustin/websockets#1051
+
+-------------------------------------------------------------------
 Fri Oct 29 05:31:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 10.0:
