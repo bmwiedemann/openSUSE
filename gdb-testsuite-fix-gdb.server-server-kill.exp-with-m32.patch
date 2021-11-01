@@ -1,0 +1,51 @@
+[gdb/testsuite] Fix gdb.server/server-kill.exp with -m32
+
+When running test-case gdb.server/server-kill.exp with target board unix/-m32,
+I run into:
+...
+0xf7fd6b20 in _start () from /lib/ld-linux.so.2^M
+(gdb) Executing on target: kill -9 13082    (timeout = 300)
+builtin_spawn -ignore SIGHUP kill -9 13082^M
+bt^M
+(gdb) FAIL: gdb.server/server-kill.exp: kill_pid_of=server: test_unwind_syms: bt
+...
+
+The test-case expects the backtrace command to trigger remote communication,
+which then should result in a "Remote connection closed" or similar.
+
+However, no remote communication is triggered, because we hit the "Check that
+this frame is unwindable" case in get_prev_frame_always_1.
+
+We don't hit this problem in the kill_pid_of=inferior case, because there we
+run to main before doing the backtrace.
+
+Fix this by doing the same in the kill_pid_of=server case.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.server/server-kill.exp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.server/server-kill.exp b/gdb/testsuite/gdb.server/server-kill.exp
+index 655821cc6f9..4125e5bf92d 100644
+--- a/gdb/testsuite/gdb.server/server-kill.exp
++++ b/gdb/testsuite/gdb.server/server-kill.exp
+@@ -69,11 +69,13 @@ proc prepare {} {
+ 
+     gdbserver_run ""
+ 
+-    if { $::kill_pid_of == "inferior" } {
+-	# Continue past server_pid assignment.
+-	gdb_breakpoint ${srcfile}:[gdb_get_line_number "i = 0;"]
+-	gdb_continue_to_breakpoint "after server_pid assignment"
++    # Continue past server_pid assignment.  We do this for both scenarios,
++    # to avoid doing a backtrace from _start, which may not trigger remote
++    # communication.
++    gdb_breakpoint ${srcfile}:[gdb_get_line_number "i = 0;"]
++    gdb_continue_to_breakpoint "after server_pid assignment"
+ 
++    if { $::kill_pid_of == "inferior" } {
+ 	# Get the pid of GDBServer.
+ 	set test "p server_pid"
+ 	set server_pid 0

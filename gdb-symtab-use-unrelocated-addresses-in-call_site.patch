@@ -1,0 +1,194 @@
+[gdb/symtab] Use unrelocated addresses in call_site
+
+Consider test-case gdb.trace/entry-values.exp with target board
+unix/-fPIE/-pie.
+
+Using this command we have an abbreviated version, and can see the correct
+@entry values for foo:
+...
+$ gdb -q -batch outputs/gdb.trace/entry-values/entry-values \
+  -ex start \
+  -ex "break foo" \
+  -ex "set print entry-values both" \
+  -ex continue
+Temporary breakpoint 1 at 0x679
+
+Temporary breakpoint 1, 0x0000555555554679 in main ()
+Breakpoint 2 at 0x55555555463e
+
+Breakpoint 2, 0x000055555555463e in foo (i=0, i@entry=2, j=2, j@entry=3)
+...
+
+Now, let's try the same again, but run directly to foo rather than stopping at
+main:
+...
+$ gdb -q -batch outputs/gdb.trace/entry-values/entry-values \
+  -ex "break foo" \
+  -ex "set print entry-values both" \
+  -ex run
+Breakpoint 1 at 0x63e
+
+Breakpoint 1, 0x000055555555463e in foo (i=0, i@entry=<optimized out>, \
+  j=2, j@entry=<optimized out>)
+...
+
+So, what explains the difference?  Noteworthy, this is a dwarf assembly
+test-case, with debug info for foo and bar, but not for main.
+
+In the first case:
+- we run to main
+- this does not trigger expanding debug info, because there's none for main
+- we set a breakpoint at foo
+- this triggers expanding debug info.  Relocated addresses are used in
+  call_site info (because the exec is started)
+- we continue to foo, and manage to find the call_site info
+
+In the second case:
+- we set a breakpoint at foo
+- this triggers expanding debug info.  Unrelocated addresses are used in
+  call_site info (because the exec is not started)
+- we run to foo
+- this triggers objfile_relocate1, but it doesn't update the call_site
+  info addresses
+- we don't manage to find the call_site info
+
+We could fix this by adding the missing call_site relocation in
+objfile_relocate1.
+
+This solution however is counter-trend in the sense that we're trying to
+work towards the situation where when starting two instances of an executable,
+we need only one instance of debug information, implying the use of
+unrelocated addresses.
+
+So, fix this instead by using unrelocated addresses in call_site info.
+
+Tested on x86_64-linux.
+
+This fixes all remaining unix/-fno-PIE/-no-pie vs unix/-fPIE/-pie
+regressions, like f.i. PR24892.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=24892
+
+Co-Authored-By: Tom de Vries <tdevries@suse.de>
+
+---
+ gdb/dwarf2/loc.c  |  9 ++++++++-
+ gdb/dwarf2/read.c |  4 +++-
+ gdb/gdbtypes.c    |  5 ++++-
+ gdb/gdbtypes.h    | 10 +++++-----
+ gdb/symtab.c      |  6 +++++-
+ 5 files changed, 25 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/dwarf2/loc.c b/gdb/dwarf2/loc.c
+index 83b5fe1ac88..ba94780cc75 100644
+--- a/gdb/dwarf2/loc.c
++++ b/gdb/dwarf2/loc.c
+@@ -979,7 +979,14 @@ call_site_to_target_addr (struct gdbarch *call_site_gdbarch,
+       }
+ 
+     case FIELD_LOC_KIND_PHYSADDR:
+-      return FIELD_STATIC_PHYSADDR (call_site->target);
++      {
++	dwarf2_per_objfile *per_objfile = call_site->per_objfile;
++	compunit_symtab *cust = per_objfile->get_symtab (call_site->per_cu);
++	int sect_idx = COMPUNIT_BLOCK_LINE_SECTION (cust);
++	CORE_ADDR delta = per_objfile->objfile->section_offsets[sect_idx];
++
++	return FIELD_STATIC_PHYSADDR (call_site->target) + delta;
++      }
+ 
+     default:
+       internal_error (__FILE__, __LINE__, _("invalid call site target kind"));
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 59ce3cf2b45..e73c0855fc1 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -13309,6 +13309,7 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+     }
+   pc = attr->as_address () + baseaddr;
+   pc = gdbarch_adjust_dwarf2_addr (gdbarch, pc);
++  pc -= baseaddr;
+ 
+   if (cu->call_site_htab == NULL)
+     cu->call_site_htab = htab_create_alloc_ex (16, call_site::hash,
+@@ -13465,7 +13466,8 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+ 		       sect_offset_str (die->sect_off), objfile_name (objfile));
+ 	  else
+ 	    {
+-	      lowpc = gdbarch_adjust_dwarf2_addr (gdbarch, lowpc + baseaddr);
++	      lowpc = (gdbarch_adjust_dwarf2_addr (gdbarch, lowpc + baseaddr)
++		       - baseaddr);
+ 	      SET_FIELD_PHYSADDR (call_site->target, lowpc);
+ 	    }
+ 	}
+diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
+index 1b3ed1b32ed..f1efbb98720 100644
+--- a/gdb/gdbtypes.c
++++ b/gdb/gdbtypes.c
+@@ -6307,7 +6307,10 @@ objfile_type (struct objfile *objfile)
+ CORE_ADDR
+ call_site::pc () const
+ {
+-  return m_pc;
++  compunit_symtab *cust = this->per_objfile->get_symtab (this->per_cu);
++  CORE_ADDR delta
++	= this->per_objfile->objfile->section_offsets[COMPUNIT_BLOCK_LINE_SECTION (cust)];
++  return m_unrelocated_pc + delta;
+ }
+ 
+ void _initialize_gdbtypes ();
+diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
+index a071188ffa1..8b1fd75bccf 100644
+--- a/gdb/gdbtypes.h
++++ b/gdb/gdbtypes.h
+@@ -1777,19 +1777,19 @@ struct call_site
+   {
+     call_site (CORE_ADDR pc, dwarf2_per_cu_data *per_cu,
+ 	       dwarf2_per_objfile *per_objfile)
+-      : per_cu (per_cu), per_objfile (per_objfile), m_pc (pc)
++      : per_cu (per_cu), per_objfile (per_objfile), m_unrelocated_pc (pc)
+     {}
+ 
+     static int
+     eq (const call_site *a, const call_site *b)
+     {
+-      return core_addr_eq (&a->m_pc, &b->m_pc);
++      return core_addr_eq (&a->m_unrelocated_pc, &b->m_unrelocated_pc);
+     }
+ 
+     static hashval_t
+     hash (const call_site *a)
+     {
+-      return core_addr_hash (&a->m_pc);
++      return core_addr_hash (&a->m_unrelocated_pc);
+     }
+ 
+     static int
+@@ -1831,8 +1831,8 @@ struct call_site
+     dwarf2_per_objfile *const per_objfile = nullptr;
+ 
+   private:
+-    /* Address of the first instruction after this call.  */
+-    const CORE_ADDR m_pc;
++    /* Unrelocated address of the first instruction after this call.  */
++    const CORE_ADDR m_unrelocated_pc;
+ 
+   public:
+     /* * Describe DW_TAG_call_site's DW_TAG_formal_parameter.  */
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index 14cc2b5bd8d..17607fb447b 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -337,7 +337,11 @@ compunit_symtab::find_call_site (CORE_ADDR pc) const
+   if (m_call_site_htab == nullptr)
+     return nullptr;
+ 
+-  struct call_site call_site_local (pc, nullptr, nullptr);
++  CORE_ADDR delta
++    = this->objfile->section_offsets[COMPUNIT_BLOCK_LINE_SECTION (this)];
++  CORE_ADDR unrelocated_pc = pc - delta;
++
++  struct call_site call_site_local (unrelocated_pc, nullptr, nullptr);
+   void **slot
+     = htab_find_slot (m_call_site_htab, &call_site_local, NO_INSERT);
+   if (slot == nullptr)

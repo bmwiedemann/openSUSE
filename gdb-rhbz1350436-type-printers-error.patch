@@ -42,21 +42,23 @@ diff --git a/gdb/testsuite/gdb.python/py-typeprint.exp b/gdb/testsuite/gdb.pytho
 diff --git a/gdb/testsuite/gdb.python/py-typeprint.py b/gdb/testsuite/gdb.python/py-typeprint.py
 --- a/gdb/testsuite/gdb.python/py-typeprint.py
 +++ b/gdb/testsuite/gdb.python/py-typeprint.py
-@@ -15,7 +15,7 @@
+@@ -15,8 +15,7 @@
  
  import gdb
  
+-
 -class Recognizer(object):
 +class StringRecognizer(object):
      def __init__(self):
          self.enabled = True
  
-@@ -30,6 +30,26 @@ class StringTypePrinter(object):
+@@ -32,7 +31,27 @@ class StringTypePrinter(object):
          self.enabled = True
  
      def instantiate(self):
 -        return Recognizer()
 +        return StringRecognizer()
+ 
  
  gdb.type_printers.append(StringTypePrinter())
 +

@@ -1,0 +1,51 @@
+[gdb/testsuite] Add nopie in two test-cases
+
+When running test-case gdb.dwarf2/dw2-restrict.exp on openSUSE Leap 15.2 with
+gcc-PIE installed (switching compiler default to -fPIE/-pie), I get:
+...
+gdb compile failed, ld: outputs/gdb.dwarf2/dw2-restrict/dw2-restrict0.o: \
+  warning: relocation in read-only section `.text'
+ld: warning: creating DT_TEXTREL in a PIE
+UNTESTED: gdb.dwarf2/dw2-restrict.exp: failed to prepare
+...
+
+This is due to using a hardcoded .S file that was generated with -fno-PIE.
+
+Fix this by adding the missing nopie.
+
+Likewise in gdb.arch/amd64-tailcall-noret.exp.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.arch/amd64-tailcall-noret.exp | 2 ++
+ gdb/testsuite/gdb.dwarf2/dw2-restrict.exp       | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-tailcall-noret.exp b/gdb/testsuite/gdb.arch/amd64-tailcall-noret.exp
+index c68abce61e3..fb1d5695a11 100644
+--- a/gdb/testsuite/gdb.arch/amd64-tailcall-noret.exp
++++ b/gdb/testsuite/gdb.arch/amd64-tailcall-noret.exp
+@@ -25,6 +25,8 @@ if [info exists COMPILE] {
+     return
+ }
+ 
++lappend opts nopie
++
+ if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} $opts] } {
+     return -1
+ }
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-restrict.exp b/gdb/testsuite/gdb.dwarf2/dw2-restrict.exp
+index 6f98b6cfb18..2a46510c7a3 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-restrict.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-restrict.exp
+@@ -27,7 +27,8 @@ if {![istarget x86_64-*] || ![is_lp64_target]} {
+ 
+ standard_testfile .S
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile {nodebug}]} {
++if {[prepare_for_testing "failed to prepare" $testfile $srcfile \
++	 {nodebug nopie}]} {
+     return -1
+ }
+ 

@@ -1,0 +1,70 @@
+[gdb/testsuite] Factor out dump_info in gdb.testsuite/dump-system-info.exp
+
+Factor out new proc dump_info in test-case gdb.testsuite/dump-system-info.exp,
+and in the process:
+- fix a few typos
+- remove unnecessary "test -r /proc/cpuinfo"
+
+Tested on x86_64-linux.
+
+Co-Authored-By: Pedro Alves <pedro@palves.net>
+
+---
+ gdb/testsuite/gdb.testsuite/dump-system-info.exp | 42 +++++++++---------------
+ 1 file changed, 16 insertions(+), 26 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.testsuite/dump-system-info.exp b/gdb/testsuite/gdb.testsuite/dump-system-info.exp
+index bf181469bd5..1831479265c 100644
+--- a/gdb/testsuite/gdb.testsuite/dump-system-info.exp
++++ b/gdb/testsuite/gdb.testsuite/dump-system-info.exp
+@@ -15,34 +15,24 @@
+ # The purpose of this test-case is to dump /proc/cpuinfo and similar system
+ # info into gdb.log.
+ 
+-# Check if /proc/cpuinfo is available.
+-set res [remote_exec target "test -r /proc/cpuinfo"]
+-set status [lindex $res 0]
+-set output [lindex $res 1]
+ 
+-if { $status == 0 && $output == "" } {
+-    verbose -log "Cpuinfo available, dumping:"
+-    remote_exec target "cat /proc/cpuinfo"
+-} else {
+-    verbose -log "Cpuinfo not available"
+-}
+-
+-set res [remote_exec target "lsb_release -a"]
+-set status [lindex $res 0]
+-set output [lindex $res 1]
++proc dump_info {cmd {what ""}} {
+ 
+-if { $status == 0 } {
+-    verbose -log "lsb_release -a availabe, dumping:\n$output"
+-} else {
+-    verbose -log "lsb_release -a not available"
+-}
++  if {$what == ""} {
++    set what $cmd
++  }
+ 
+-set res [remote_exec target "uname -a"]
+-set status [lindex $res 0]
+-set output [lindex $res 1]
++  set res [remote_exec target $cmd]
++  set status [lindex $res 0]
++  set output [lindex $res 1]
+ 
+-if { $status == 0 } {
+-    verbose -log "uname -a availabe, dumping:\n$output"
+-} else {
+-    verbose -log "uname -a not available"
++  if { $status == 0 } {
++    verbose -log "$what available, dumping:\n$output"
++  } else {
++    verbose -log "$what not available"
++  }
+ }
++
++dump_info "cat /proc/cpuinfo" "Cpuinfo"
++dump_info "uname -a"
++dump_info "lsb_release -a"

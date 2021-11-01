@@ -1,0 +1,50 @@
+[gdb/testsuite] Fix gdb.python/py-events.exp
+
+With test-case gdb.python/py-events.exp on ubuntu 18.04.5 we run into:
+...
+(gdb) info threads^M
+  Id   Target Id                                     Frame ^M
+* 1    Thread 0x7ffff7fc3740 (LWP 31467) "py-events" do_nothing () at \
+         src/gdb/testsuite/gdb.python/py-events-shlib.c:19^M
+(gdb) FAIL: gdb.python/py-events.exp: get current thread
+...
+
+The info thread commands uses "Thread" instead of "process" because
+libpthread is already loaded:
+...
+new objfile name: /lib/x86_64-linux-gnu/libdl.so.2^M
+[Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".^M
+event type: new_objfile^M
+new objfile name: /lib/x86_64-linux-gnu/libpthread.so.0^M
+...
+and consequently thread_db_target::pid_to_str is used.
+
+Fix this by parsing the "Thread" expression.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.python/py-events.exp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.python/py-events.exp b/gdb/testsuite/gdb.python/py-events.exp
+index 753709361f5..d6dc9fd4252 100644
+--- a/gdb/testsuite/gdb.python/py-events.exp
++++ b/gdb/testsuite/gdb.python/py-events.exp
+@@ -82,9 +82,13 @@ delete_breakpoints
+ # Test inferior call events
+ 
+ gdb_test_multiple "info threads" "get current thread" {
+-    -re "\[^\n\r\]*process (\[0-9\]+)\[^\n\r\]*do_nothing.*$gdb_prompt $" {
++    -re -wrap "process ($decimal)\[^\n\r\]*do_nothing.*" {
+ 	set process_id $expect_out(1,string)
+-	pass "get current thread"
++	pass $gdb_test_name
++    }
++    -re -wrap "Thread $hex \\(LWP ($decimal)\\)\[^\n\r\]*do_nothing.*" {
++	set process_id $expect_out(1,string)
++	pass $gdb_test_name
+     }
+ }
+ 

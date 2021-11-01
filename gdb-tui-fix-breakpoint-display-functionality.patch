@@ -1,0 +1,115 @@
+[gdb/tui] Fix breakpoint display functionality
+
+In commit 81e6b8eb208 "Make tui-winsource not use breakpoint_chain", a loop
+body was transformed into a lambda function body:
+...
+-      for (bp = breakpoint_chain;
+-           bp != NULL;
+-           bp = bp->next)
++      iterate_over_breakpoints ([&] (breakpoint *bp) -> bool
+...
+and consequently:
+- a continue was replaced by a return, and
+- a final return was added.
+
+Then in commit 240edef62f0 "gdb: remove iterate_over_breakpoints function", we
+transformed back to a loop body:
+...
+-      iterate_over_breakpoints ([&] (breakpoint *bp) -> bool
++      for (breakpoint *bp : all_breakpoints ())
+...
+but without reverting the changes that introduced the two returns.
+
+Consequently, breakpoints no longer show up in the tui source window.
+
+Fix this by reverting the changes that introduced the two returns.
+
+Build on x86_64-linux, tested with all .exp test-cases that contain
+tuiterm_env.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28483
+
+gdb/ChangeLog:
+
+2021-10-22  Tom de Vries  <tdevries@suse.de>
+
+	PR tui/28483
+	* tui/tui-winsource.c (tui_source_window_base::update_breakpoint_info):
+	Fix returns in loop body.
+
+gdb/testsuite/ChangeLog:
+
+2021-10-22  Tom de Vries  <tdevries@suse.de>
+
+	PR tui/28483
+	* gdb.tui/break.exp: New file.
+
+---
+ gdb/testsuite/gdb.tui/break.exp | 37 +++++++++++++++++++++++++++++++++++++
+ gdb/tui/tui-winsource.c         |  3 +--
+ 2 files changed, 38 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.tui/break.exp b/gdb/testsuite/gdb.tui/break.exp
+new file mode 100644
+index 00000000000..de4821c570a
+--- /dev/null
++++ b/gdb/testsuite/gdb.tui/break.exp
+@@ -0,0 +1,37 @@
++# Copyright 2021 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Verify that breakpoint marker is shown.
++
++tuiterm_env
++
++standard_testfile tui-layout.c
++
++if {[build_executable "failed to prepare" ${testfile} ${srcfile}] == -1} {
++    return -1
++}
++
++Term::clean_restart 24 80 $testfile
++if {![Term::enter_tui]} {
++    unsupported "TUI not supported"
++    return
++}
++
++set text [Term::get_all_lines]
++gdb_assert {![string match "No Source Available" $text]} \
++    "initial source listing"
++
++Term::command "b main"
++Term::check_contents "break marker present" "\\|b\\+"
+diff --git a/gdb/tui/tui-winsource.c b/gdb/tui/tui-winsource.c
+index afd51e95980..955b68901fe 100644
+--- a/gdb/tui/tui-winsource.c
++++ b/gdb/tui/tui-winsource.c
+@@ -460,7 +460,7 @@ tui_source_window_base::update_breakpoint_info
+       for (breakpoint *bp : all_breakpoints ())
+ 	{
+ 	  if (bp == being_deleted)
+-	    return false;
++	    continue;
+ 
+ 	  for (bp_location *loc : bp->locations ())
+ 	    {
+@@ -478,7 +478,6 @@ tui_source_window_base::update_breakpoint_info
+ 		    mode |= TUI_BP_HARDWARE;
+ 		}
+ 	    }
+-	  return false;
+ 	}
+ 
+       if (line->break_mode != mode)

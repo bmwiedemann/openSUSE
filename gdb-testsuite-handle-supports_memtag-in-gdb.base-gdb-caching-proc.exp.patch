@@ -1,0 +1,56 @@
+[gdb/testsuite] Handle supports_memtag in gdb.base/gdb-caching-proc.exp
+
+In test-case gdb.base/gdb-caching-proc.exp, we run all procs declared with
+gdb_caching_proc.  Some of these require a gdb instance, some not.
+
+We could just do a clean_restart every time, but that would amount to 44 gdb
+restarts.  We try to minimize this by doing this only for the few procs that
+need it, and hardcoding those in the test-case.
+
+For those procs, we do a clean_restart, execute the proc, and then do a
+gdb_exit, to make sure the gdb instance doesn't linger such that we detect
+procs that need a gdb instance but are not listed in the test-case.
+
+However, that doesn't work in the case of gnat_runtime_has_debug_info.  This
+proc doesn't require a gdb instance because it starts its own.  But it doesn't
+clean up the gdb instance, and since it's not listed, the test-case
+doesn't clean up the gdb instance eiter.  Consequently, the proc
+supports_memtag (which should be listed, but isn't) uses the gdb instance
+started by gnat_runtime_has_debug_info rather than throwing an error.  Well,
+unless gnat_runtime_has_debug_info fails before starting a gdb instance, in
+which case we do run into the error.
+
+Fix this by:
+- doing gdb_exit unconditionally
+- fixing the resulting error by adding supports_memtag in the test-case to
+  the "needing gdb instance" list
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/gdb-caching-proc.exp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/gdb-caching-proc.exp b/gdb/testsuite/gdb.base/gdb-caching-proc.exp
+index 82675dfc061..a3f08f5db32 100644
+--- a/gdb/testsuite/gdb.base/gdb-caching-proc.exp
++++ b/gdb/testsuite/gdb.base/gdb-caching-proc.exp
+@@ -85,6 +85,7 @@ proc test_file { file } {
+ 	    switch $procname {
+ 		"is_address_zero_readable" { set setup_gdb 1 }
+ 		"target_is_gdbserver" { set setup_gdb 1 }
++		"supports_memtag" { set setup_gdb 1 }
+ 		default {set setup_gdb 0 }
+ 	    }
+ 
+@@ -94,9 +95,7 @@ proc test_file { file } {
+ 
+ 	    test_proc $procname
+ 
+-	    if { $setup_gdb } {
+-		gdb_exit
+-	    }
++	    gdb_exit
+ 	}
+     }
+ }

@@ -1,0 +1,73 @@
+[gdb/testsuite] Handle SIGILL in two gdb.arch powerpc test-cases
+
+On powerpc64le-linux, with test-case gdb.arch/powerpc-addpcis.exp I run into
+SIGILL:
+...
+(gdb) PASS: gdb.arch/powerpc-addpcis.exp: get hexadecimal valueof "$r3"
+stepi^M
+^M
+Program terminated with signal SIGILL, Illegal instruction.^M
+The program no longer exists.^M
+(gdb) PASS: gdb.arch/powerpc-addpcis.exp: set r4
+...
+because it's a power9 insn, and I'm running on a power8 machine.
+
+Fix this by handling the SIGILL.  Likewise in gdb.arch/powerpc-lnia.exp.
+
+Tested on powerpc64le-linux.
+
+---
+ gdb/testsuite/gdb.arch/powerpc-addpcis.exp | 14 +++++++++++++-
+ gdb/testsuite/gdb.arch/powerpc-lnia.exp    | 14 +++++++++++++-
+ 2 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/powerpc-addpcis.exp b/gdb/testsuite/gdb.arch/powerpc-addpcis.exp
+index d1bc7f49ce6..ff7052ce475 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-addpcis.exp
++++ b/gdb/testsuite/gdb.arch/powerpc-addpcis.exp
+@@ -50,7 +50,19 @@ gdb_breakpoint $bp1
+ gdb_breakpoint $bp2
+ gdb_breakpoint $bp3
+ 
+-gdb_test "stepi" "" "set r3 "
++set insn_supported 1
++gdb_test_multiple "stepi" "set r3" {
++    -re "Program received signal SIGILL, Illegal instruction\\..*" {
++	set insn_supported 0
++    }
++    -re -wrap "" {
++	pass $gdb_test_name
++    }
++}
++if { ! $insn_supported } {
++    unsupported "illegal instruction"
++    return
++}
+ set check_r3 [get_hexadecimal_valueof "\$r3" "default0"]
+ gdb_test "stepi" "" "set r4"
+ set check_r4 [get_hexadecimal_valueof "\$r4" "default0"]
+diff --git a/gdb/testsuite/gdb.arch/powerpc-lnia.exp b/gdb/testsuite/gdb.arch/powerpc-lnia.exp
+index 0f56d834046..4ab4f8d92be 100644
+--- a/gdb/testsuite/gdb.arch/powerpc-lnia.exp
++++ b/gdb/testsuite/gdb.arch/powerpc-lnia.exp
+@@ -54,7 +54,19 @@ gdb_breakpoint $bp3
+ 
+ # single-step through the lnia instructions, and retrieve the
+ # register values as we proceed.
+-gdb_test "stepi" "" "set r3"
++set insn_supported 1
++gdb_test_multiple "stepi" "set r3" {
++    -re "Program received signal SIGILL, Illegal instruction\\..*" {
++	set insn_supported 0
++    }
++    -re -wrap "" {
++	pass $gdb_test_name
++    }
++}
++if { ! $insn_supported } {
++    unsupported "illegal instruction"
++    return
++}
+ set check_r3 [get_hexadecimal_valueof "\$r3" "default0"]
+ gdb_test "stepi" "" "set r4"
+ set check_r4 [get_hexadecimal_valueof "\$r4" "default0"]

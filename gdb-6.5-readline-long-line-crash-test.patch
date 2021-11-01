@@ -12,22 +12,22 @@ diff --git a/gdb/testsuite/gdb.base/readline-overflow.exp b/gdb/testsuite/gdb.ba
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.base/readline-overflow.exp
-@@ -0,0 +1,104 @@
+@@ -0,0 +1,96 @@
 +# Copyright 2006 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
 +# it under the terms of the GNU General Public License as published by
 +# the Free Software Foundation; either version 2 of the License, or
 +# (at your option) any later version.
-+# 
++#
 +# This program is distributed in the hope that it will be useful,
 +# but WITHOUT ANY WARRANTY; without even the implied warranty of
 +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +# GNU General Public License for more details.
-+# 
++#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 +
 +# Please email any bugs, comments, and/or additions to this file to:
 +# bug-gdb@prep.ai.mit.edu
@@ -46,19 +46,11 @@ new file mode 100644
 +
 +global env
 +
-+save_vars { env(INPUTRC) env(GDBHISTFILE) env(HISTSIZE) TERM timeout } {
++save_vars { env(GDBHISTFILE) env(HISTSIZE) TERM timeout } {
 +    # The arrow key test relies on the standard VT100 bindings, so
 +    # make sure that an appropriate terminal is selected.  The same
 +    # bug doesn't show up if we use ^P / ^N instead.
 +    setenv TERM vt100
-+
-+    # Don't let a .inputrc file or an existing setting of INPUTRC mess up
-+    # the test results.  Even if /dev/null doesn't exist on the particular
-+    # platform, the readline library will use the default setting just by
-+    # failing to open the file.  OTOH, opening /dev/null successfully will
-+    # also result in the default settings being used since nothing will be
-+    # read from this file.
-+    set env(INPUTRC) "/dev/null"
 +
 +    set timeout 600
 +

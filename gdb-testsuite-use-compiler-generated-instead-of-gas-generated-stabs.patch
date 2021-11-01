@@ -1,0 +1,74 @@
+[gdb/testsuite] Use compiler-generated instead of gas-generated stabs
+
+The test-case gdb.dwarf2/dw2-ranges.exp is the only one in the gdb testsuite
+that uses gas-generated stabs.
+
+While the use seems natural alongside the use of gas-generated dwarf in the
+same test-case, there are a few known issues, filed on the gdb side as:
+- PR symtab/12497 - "stabs: PIE relocation does not work"
+- PR symtab/28221 - "[readnow, stabs] FAIL: gdb.dwarf2/dw2-ranges.exp: \
+  info line func"
+and on the gas side as:
+- PR gas/28233 - "[gas, --gstabs] Generate stabs more similar to gcc"
+
+The test-case contains a KFAIL for PR12497, but it's outdated and fails to
+trigger.
+
+The intention of the test-case is to test gas-generated dwarf, and using
+gcc-generated stabs instead of gas-generated stabs works fine.
+
+Supporting compiler-generated stabs is already a corner-case for gdb, and
+there's no current commitment/incentive to support/workaround gas-generated
+stabs, which can be considered a corner-case of a corner-case.
+
+Work around these problem by using compiler-generated stabs in the test-case.
+
+Tested on x86_64-linux.
+
+gdb/testsuite/ChangeLog:
+
+2021-08-22  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.dwarf2/dw2-ranges.exp: Use compiler-generated stabs.
+
+---
+ gdb/testsuite/gdb.dwarf2/dw2-ranges.exp | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-ranges.exp b/gdb/testsuite/gdb.dwarf2/dw2-ranges.exp
+index 8566e0034cf..288fc941afa 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-ranges.exp
++++ b/gdb/testsuite/gdb.dwarf2/dw2-ranges.exp
+@@ -35,7 +35,6 @@ if !$gcc_compiled {
+ standard_testfile .c -2.c -3.c
+ set asmfile [standard_output_file ${testfile}.s]
+ set asmfile2 [standard_output_file ${testfile}2.s]
+-set asmfile3 [standard_output_file ${testfile}3.s]
+ set objfile [standard_output_file ${testfile}.o]
+ set objfile2 [standard_output_file ${testfile}2.o]
+ set objfile3 [standard_output_file ${testfile}3.o]
+@@ -55,8 +54,7 @@ if {[gdb_compile "${srcdir}/${subdir}/${srcfile2}" "${asmfile2}" assembly {}] !=
+ # STABS compilation is intentional as it tests the STABS lookup where is no
+ # partial_symtab->psymtabs_addrmap supported for that CU (Compilation Unit) in
+ # a file containing psymtabs_addrmap-supporting DWARF CUs.
+-if {[gdb_compile "${srcdir}/${subdir}/${srcfile3}" "${asmfile3}" assembly {}] != ""
+-    || [gdb_compile "${asmfile3}" "${objfile3}" object {additional_flags=-gstabs}] != "" } {
++if {[gdb_compile "${srcdir}/${subdir}/${srcfile3}" "${objfile3}" object {additional_flags=-gstabs}] != "" } {
+     return -1
+ }
+ 
+@@ -82,12 +80,5 @@ gdb_test "info line func" "Line \[0-9\]* of .* starts at address .* and ends at
+ gdb_test "info line main2" "Line \[0-9\]* of .* starts at address .* and ends at .*"
+ gdb_test "info line func2" "Line \[0-9\]* of .* starts at address .* and ends at .*"
+ 
+-set test "info line main3"
+-gdb_test_multiple $test $test {
+-    -re "Line \[0-9\]* of .* starts at address .* and ends at .*\r\n$gdb_prompt $" {
+-	pass $test
+-    }
+-    -re "Line \[0-9\]* of .* is at address .* but contains no code\\.\r\n$gdb_prompt $" {
+-	kfail symtab/12497 $test
+-    }
+-}
++gdb_test "info line main3" \
++    "Line \[0-9\]* of .* starts at address .* and ends at .*"

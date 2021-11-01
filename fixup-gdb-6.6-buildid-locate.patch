@@ -1,20 +1,23 @@
-[gdb/testsuite] Fixup buildid-locate
+fixup-gdb-6.6-buildid-locate.patch
 
 ---
- gdb/testsuite/gdb.base/gdbinit-history.exp | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ gdb/build-id.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/gdb/testsuite/gdb.base/gdbinit-history.exp b/gdb/testsuite/gdb.base/gdbinit-history.exp
-index baa1b49153..1e9eabbb73 100644
---- a/gdb/testsuite/gdb.base/gdbinit-history.exp
-+++ b/gdb/testsuite/gdb.base/gdbinit-history.exp
-@@ -181,7 +181,8 @@ proc test_empty_history_filename { } {
-     global env
-     global gdb_prompt
+diff --git a/gdb/build-id.c b/gdb/build-id.c
+index 830098688d5..a1920ab5a09 100644
+--- a/gdb/build-id.c
++++ b/gdb/build-id.c
+@@ -1314,10 +1314,10 @@ find_separate_debug_file_by_buildid (struct objfile *objfile,
+   return std::string ();
+ }
  
--    set common_history [list "set height 0" "set width 0"]
-+    set common_history [list "set height 0" "set width 0" \
-+			    "set build-id-verbose 0"]
+-extern void _initialize_build_id (void);
++void _initialize_build_id ();
  
-     set test_dir [standard_output_file history_test]
-     remote_exec host "mkdir -p $test_dir"
+ void
+-_initialize_build_id (void)
++_initialize_build_id ()
+ {
+   add_setshow_zinteger_cmd ("build-id-verbose", no_class, &build_id_verbose,
+ 			    _("\

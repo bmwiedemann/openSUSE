@@ -1,0 +1,72 @@
+[gdb/testsuite] Fix race in gdb.threads/detach-step-over.exp
+
+On OBS with openSUSE Leap 15.2 and target board unix/m32, I run into:
+...
+FAIL: gdb.threads/detach-step-over.exp: \
+  breakpoint-condition-evaluation=host: target-non-stop=off: non-stop=off: \
+  displaced=off: iter 1: all threads running
+...
+
+I can easily reproduce this by doing:
+...
+
+            # Wait a bit, to give time for the threads to hit the
+            # breakpoint.
+-           sleep 1
+
+            set running_count 0
+            set interrupted 0
+...
+
+Fix this by counting the running threads in a loop.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.threads/detach-step-over.exp | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/detach-step-over.exp b/gdb/testsuite/gdb.threads/detach-step-over.exp
+index 27718551188..9c5f98efeef 100644
+--- a/gdb/testsuite/gdb.threads/detach-step-over.exp
++++ b/gdb/testsuite/gdb.threads/detach-step-over.exp
+@@ -203,7 +203,8 @@ proc test {condition_eval target_non_stop non_stop displaced} {
+ 
+ 	    set running_count 0
+ 	    set interrupted 0
+-	    gdb_test_multiple "info threads" "all threads running" {
++	    set running_expected [expr ($n_threads + 1) * 2]
++	    gdb_test_multiple "info threads" "threads running" {
+ 		-re "\\(running\\)" {
+ 		    incr running_count
+ 		    exp_continue
+@@ -225,9 +226,28 @@ proc test {condition_eval target_non_stop non_stop displaced} {
+ 		    }
+ 		}
+ 		-re "$gdb_prompt $" {
+-		    gdb_assert {$running_count == ($n_threads + 1) * 2} $gdb_test_name
+ 		}
+ 	    }
++	    if { $interrupted == 0 } {
++		while { $running_count < $running_expected } {
++		    sleep 1
++		    set prev_running_count $running_count
++		    set running_count 0
++		    gdb_test_multiple "info threads" "threads running" {
++			-re "\\(running\\)" {
++			    incr running_count
++			    exp_continue
++			}
++			-re "$gdb_prompt $" {
++			}
++		    }
++		    if { $running_count == $prev_running_count } {
++			break
++		    }
++		}
++		gdb_assert {$running_count == $running_expected} \
++		    "all threads running"
++	    }
+ 
+ 	    gdb_test "detach" "Detaching from.*"
+ 

@@ -39,15 +39,15 @@ new file mode 100644
 +# it under the terms of the GNU General Public License as published by
 +# the Free Software Foundation; either version 2 of the License, or
 +# (at your option) any later version.
-+# 
++#
 +# This program is distributed in the hope that it will be useful,
 +# but WITHOUT ANY WARRANTY; without even the implied warranty of
 +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +# GNU General Public License for more details.
-+# 
++#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 +
 +standard_testfile .f90
 +if { [prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} {debug f90}] } {
@@ -67,7 +67,7 @@ new file mode 100644
 +
 +# Fix rejected upstream:
 +# https://sourceware.org/ml/gdb-patches/2014-07/msg00768.html
-+setup_kfail "rejected" *-*-* 
++setup_kfail "rejected" *-*-*
 +gdb_test "frame" { \(s='foo', .*}
 diff --git a/gdb/testsuite/gdb.fortran/fortran-frame-string.f90 b/gdb/testsuite/gdb.fortran/fortran-frame-string.f90
 new file mode 100644

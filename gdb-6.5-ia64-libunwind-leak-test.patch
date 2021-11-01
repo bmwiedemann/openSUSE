@@ -24,7 +24,7 @@ new file mode 100644
 +   but WITHOUT ANY WARRANTY; without even the implied warranty of
 +   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +   GNU General Public License for more details.
-+ 
++
 +   You should have received a copy of the GNU General Public License
 +   along with this program; if not, write to the Free Software
 +   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -44,22 +44,27 @@ diff --git a/gdb/testsuite/gdb.base/unwind-leak.exp b/gdb/testsuite/gdb.base/unw
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.base/unwind-leak.exp
-@@ -0,0 +1,83 @@
+@@ -0,0 +1,88 @@
 +# Copyright 2007 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
 +# it under the terms of the GNU General Public License as published by
 +# the Free Software Foundation; either version 2 of the License, or
 +# (at your option) any later version.
-+# 
++#
 +# This program is distributed in the hope that it will be useful,
 +# but WITHOUT ANY WARRANTY; without even the implied warranty of
 +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 +# GNU General Public License for more details.
-+# 
++#
 +# You should have received a copy of the GNU General Public License
 +# along with this program; if not, write to the Free Software
-+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++
++if {[use_gdb_stub]} {
++    untested "skipping test because of use_gdb_stub"
++    return -1
++}
 +
 +set testfile unwind-leak
 +set srcfile ${testfile}.c
@@ -104,7 +109,7 @@ new file mode 100644
 +verbose -log "cycles = $cycles, permit_kb = $permit_kb"
 +
 +set fail 0
-+set test "breakpoint stop/continue cycles" 
++set test "breakpoint stop/continue cycles"
 +for {set i $cycles} {$i > 0} {set i [expr {$i - 1}]} {
 +    gdb_test_multiple "continue" $test {
 +	-re "Breakpoint 2, main .*alarm .*.*${gdb_prompt} $" {

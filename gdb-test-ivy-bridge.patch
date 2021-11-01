@@ -57,21 +57,21 @@ new file mode 100644
 +	vcvtps2ph $0x2,%ymm4,%xmm4
 +	vcvtps2ph $0x2,%ymm8,(%r8)
 +	vcvtps2ph $0x2,%xmm4,%xmm4
-+	vcvtps2ph $0x2,%xmm4,(%rcx) 
++	vcvtps2ph $0x2,%xmm4,(%rcx)
 +
 +	.intel_syntax noprefix
 +	vcvtph2ps ymm4,xmm4
 +	vcvtph2ps ymm8,XMMWORD PTR [r8]
 +	vcvtph2ps ymm4,[rcx]
 +	vcvtph2ps xmm6,xmm4
-+	vcvtph2ps xmm4,QWORD PTR [rcx]          
++	vcvtph2ps xmm4,QWORD PTR [rcx]
 +	vcvtph2ps xmm4,[rcx]
 +	vcvtps2ph xmm4,ymm4,0x2
-+	vcvtps2ph XMMWORD PTR [rcx],ymm4,0x2    
-+	vcvtps2ph [rcx],ymm4,0x2 
++	vcvtps2ph XMMWORD PTR [rcx],ymm4,0x2
++	vcvtps2ph [rcx],ymm4,0x2
 +	vcvtps2ph xmm4,xmm4,0x2
-+	vcvtps2ph QWORD PTR [r8],xmm8,0x2       
-+	vcvtps2ph [rcx],xmm4,0x2 
++	vcvtps2ph QWORD PTR [r8],xmm8,0x2
++	vcvtps2ph [rcx],xmm4,0x2
 +
 +/* gas/i386/x86-64-fsgs.s */
 +	.att_syntax prefix
@@ -80,34 +80,34 @@ new file mode 100644
 +	rdfsbase %r8d
 +	rdfsbase %r8
 +	rdgsbase %ebx
-+	rdgsbase %rbx   
-+	rdgsbase %r8d   
-+	rdgsbase %r8    
-+	wrfsbase %ebx   
-+	wrfsbase %rbx   
-+	wrfsbase %r8d   
-+	wrfsbase %r8    
-+	wrgsbase %ebx   
-+	wrgsbase %rbx   
-+	wrgsbase %r8d   
-+	wrgsbase %r8    
++	rdgsbase %rbx
++	rdgsbase %r8d
++	rdgsbase %r8
++	wrfsbase %ebx
++	wrfsbase %rbx
++	wrfsbase %r8d
++	wrfsbase %r8
++	wrgsbase %ebx
++	wrgsbase %rbx
++	wrgsbase %r8d
++	wrgsbase %r8
 +
 +	.intel_syntax noprefix
-+	rdfsbase ebx    
-+	rdfsbase rbx    
-+	rdfsbase r8d    
++	rdfsbase ebx
++	rdfsbase rbx
++	rdfsbase r8d
 +	rdfsbase r8
-+	rdgsbase ebx    
-+	rdgsbase rbx    
-+	rdgsbase r8d    
++	rdgsbase ebx
++	rdgsbase rbx
++	rdgsbase r8d
 +	rdgsbase r8
-+	wrfsbase ebx    
-+	wrfsbase rbx    
-+	wrfsbase r8d    
++	wrfsbase ebx
++	wrfsbase rbx
++	wrfsbase r8d
 +	wrfsbase r8
-+	wrgsbase ebx    
-+	wrgsbase rbx    
-+	wrgsbase r8d    
++	wrgsbase ebx
++	wrgsbase rbx
++	wrgsbase r8d
 +	wrgsbase r8
 diff --git a/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp b/gdb/testsuite/gdb.arch/amd64-ivy-bridge.exp
 new file mode 100644
@@ -136,7 +136,7 @@ new file mode 100644
 +set testfile amd64-ivy-bridge
 +set test compilation
 +if [prepare_for_testing ${testfile}.exp ${testfile}.x ${testfile}.S [list debug "additional_flags=-m64 -nostdlib"]] {
-+    fail $test
++    unsupported $test
 +    return -1
 +}
 +pass $test
@@ -288,7 +288,7 @@ diff --git a/gdb/testsuite/gdb.arch/i386-ivy-bridge.S b/gdb/testsuite/gdb.arch/i
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.arch/i386-ivy-bridge.S
-@@ -0,0 +1,67 @@
+@@ -0,0 +1,66 @@
 +/* Copyright 2011 Free Software Foundation, Inc.
 +
 +   This program is free software; you can redistribute it and/or modify
@@ -325,23 +325,23 @@ new file mode 100644
 +	vcvtph2ps %xmm4,%xmm6
 +	vcvtph2ps (%ecx),%xmm4
 +	vcvtps2ph $0x2,%ymm4,%xmm4
-+	vcvtps2ph $0x2,%ymm4,(%ecx) 
++	vcvtps2ph $0x2,%ymm4,(%ecx)
 +	vcvtps2ph $0x2,%xmm4,%xmm4
-+	vcvtps2ph $0x2,%xmm4,(%ecx) 
++	vcvtps2ph $0x2,%xmm4,(%ecx)
 +
 +	.intel_syntax noprefix
 +	vcvtph2ps ymm4,xmm4
 +	vcvtph2ps ymm4,XMMWORD PTR [ecx]
 +	vcvtph2ps ymm4,[ecx]
 +	vcvtph2ps xmm6,xmm4
-+	vcvtph2ps xmm4,QWORD PTR [ecx]          
++	vcvtph2ps xmm4,QWORD PTR [ecx]
 +	vcvtph2ps xmm4,[ecx]
 +	vcvtps2ph xmm4,ymm4,0x2
-+	vcvtps2ph XMMWORD PTR [ecx],ymm4,0x2    
-+	vcvtps2ph [ecx],ymm4,0x2 
++	vcvtps2ph XMMWORD PTR [ecx],ymm4,0x2
++	vcvtps2ph [ecx],ymm4,0x2
 +	vcvtps2ph xmm4,xmm4,0x2
-+	vcvtps2ph QWORD PTR [ecx],xmm4,0x2      
-+	vcvtps2ph [ecx],xmm4,0x2 
++	vcvtps2ph QWORD PTR [ecx],xmm4,0x2
++	vcvtps2ph [ecx],xmm4,0x2
 +
 +/* gas/i386/fsgs.s */
 +	.att_syntax prefix
@@ -351,11 +351,10 @@ new file mode 100644
 +	wrgsbase %ebx
 +
 +	.intel_syntax noprefix
-+	rdfsbase ebx    
-+	rdgsbase ebx    
-+	wrfsbase ebx    
-+	wrgsbase ebx    
-+
++	rdfsbase ebx
++	rdgsbase ebx
++	wrfsbase ebx
++	wrgsbase ebx
 diff --git a/gdb/testsuite/gdb.arch/i386-ivy-bridge.exp b/gdb/testsuite/gdb.arch/i386-ivy-bridge.exp
 new file mode 100644
 --- /dev/null

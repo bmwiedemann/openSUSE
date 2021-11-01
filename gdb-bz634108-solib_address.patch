@@ -38,4 +38,4 @@ new file mode 100644
 +# Skip all tests if Python scripting is not enabled.
 +if { [skip_python_tests] } { continue }
 +
-+gdb_test "python print gdb.solib_name(-1)" "None" "gdb.solib_name exists"
++gdb_test "python print (gdb.solib_name(-1))" "None" "gdb.solib_name exists"

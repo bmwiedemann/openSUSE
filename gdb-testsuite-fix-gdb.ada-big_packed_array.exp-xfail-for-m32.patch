@@ -1,0 +1,53 @@
+[gdb/testsuite] Fix gdb.ada/big_packed_array.exp xfail for -m32
+
+With test-case gdb.ada/big_packed_array.exp and target board unix/-m32 I run
+into:
+...
+(gdb) print bad^M
+$2 = (0 => 0 <repeats 24 times>, 160)^M
+(gdb) FAIL: gdb.ada/big_packed_array.exp: scenario=minimal: print bad
+...
+
+The problem is that while the variable is an array of 196 bits (== 24.5 bytes),
+the debug information describes it as 25 unsigned char.  This is PR
+gcc/101643, and the test-case contains an xfail for this, which catches only:
+...
+(gdb) print bad^M
+$2 = (0 => 0 <repeats 25 times>)^M
+...
+
+Fix this by updating the xfail pattern.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.ada/big_packed_array.exp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.ada/big_packed_array.exp b/gdb/testsuite/gdb.ada/big_packed_array.exp
+index 32ff0dd3e1c..e62f053166b 100644
+--- a/gdb/testsuite/gdb.ada/big_packed_array.exp
++++ b/gdb/testsuite/gdb.ada/big_packed_array.exp
+@@ -43,6 +43,7 @@ foreach_with_prefix scenario {all minimal} {
+ 
+     set re "= \\(false <repeats 196 times>\\)"
+     set re_xfail "= \\(0 => 0 <repeats 25 times>\\)"
++    set re_xfail2 "= \\(0 => 0 <repeats 24 times>, ($decimal)\\)"
+     gdb_test_multiple "print bad" "" {
+        -re -wrap $re  {
+            pass $gdb_test_name
+@@ -54,5 +55,14 @@ foreach_with_prefix scenario {all minimal} {
+            }
+            fail $gdb_test_name
+        }
++       -re -wrap $re_xfail2 {
++	   set last $expect_out(1,string)
++           if { $have_xfail && [string is integer $last] \
++		    && [expr ($last & 0xf) == 0] } {
++               # gcc/101643
++               setup_xfail *-*-*
++           }
++           fail $gdb_test_name
++       }
+     }
+ }

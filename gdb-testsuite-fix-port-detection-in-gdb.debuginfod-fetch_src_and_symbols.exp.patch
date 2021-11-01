@@ -1,0 +1,52 @@
+[gdb/testsuite] Fix port detection in gdb.debuginfod/fetch_src_and_symbols.exp
+
+On OBS I ran into this failure with test-case
+gdb.debuginfod/fetch_src_and_symbols.exp:
+...
+Failed to listen for connections: Address already in use^M
+[Thu Oct 21 11:48:49 2021] (559/559): started http server on IPv6 port=8000^M
+  ...
+FAIL: gdb.debuginfod/fetch_src_and_symbols.exp: local_url: find port timeout
+...
+
+The test-case is trying to start debuginfod on a port to see if it's
+available, and it handles either this message:
+  "started http server on IPv4 IPv6 port=$port"
+meaning success, or:
+  "failed to bind to port"
+meaning failure, in which case the debuginfod instance is killed, and we try
+the next port.
+
+The test-case only uses the v4 address 127.0.0.1, so fix this by:
+- accepting "started http server on IPv4 port=$port"
+- rejecting "started http server on IPv6 port=$port"
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.debuginfod/fetch_src_and_symbols.exp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.debuginfod/fetch_src_and_symbols.exp b/gdb/testsuite/gdb.debuginfod/fetch_src_and_symbols.exp
+index 81d4791eb6d..bb0c0c7ff29 100644
+--- a/gdb/testsuite/gdb.debuginfod/fetch_src_and_symbols.exp
++++ b/gdb/testsuite/gdb.debuginfod/fetch_src_and_symbols.exp
+@@ -180,12 +180,17 @@ proc local_url { } {
+ 	spawn debuginfod -vvvv -d $db -p $port -F $debugdir
+ 	expect {
+ 	    "started http server on IPv4 IPv6 port=$port" { set found 1 }
+-	    "failed to bind to port" { kill_wait_spawned_process $spawn_id }
++	    "started http server on IPv4 port=$port" { set found 1 }
++	    "started http server on IPv6 port=$port" {}
++	    "failed to bind to port" {}
+ 	    timeout {
+ 		fail "find port timeout"
+ 		return -1
+ 	    }
+ 	}
++	if { ! $found } {
++	    kill_wait_spawned_process $spawn_id
++	}
+     }
+ 
+     set metrics [list "ready 1" \

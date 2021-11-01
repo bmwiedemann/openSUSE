@@ -1,0 +1,185 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Mon, 11 Oct 2021 11:22:04 -0700
+Subject: gdb-rhbz2012976-paper-over-fortran-lex-problems.patch
+
+;; Backport gdb.fortran testsuite changes in order to avoid Fortran
+;; lexical analyzer bug.
+
+[gdb/testsuite] Fix FAIL in gdb.mi/mi-var-child-f.exp
+
+When running test-case gdb.mi/mi-var-child-f.exp on openSUSE Tumbleweed
+(with glibc 2.34) I run into:
+...
+(gdb) ^M
+PASS: gdb.mi/mi-var-child-f.exp: mi runto prog_array
+Expecting: ^(-var-create array \* array[^M
+]+)?(\^done,name="array",numchild="[0-9]+",value=".*",type=.*,has_more="0"[^M
+]+[(]gdb[)] ^M
+[ ]*)
+-var-create array * array^M
+&"Attempt to use a type name as an expression.\n"^M
+^error,msg="-var-create: unable to create variable object"^M
+(gdb) ^M
+FAIL: gdb.mi/mi-var-child-f.exp: create local variable array (unexpected output)
+...
+
+The problem is that the name array is used both:
+- as the name for a local variable
+- as the name of a type in glibc, in file malloc/dynarray-skeleton.c, as included
+  by nss/nss_files/files-hosts.c.
+
+Fix this by ignoring the shared lib symbols.
+
+Likewise in a couple of other fortran tests.
+
+Tested on x86_64-linux.
+
+diff --git a/gdb/testsuite/gdb.fortran/allocated.exp b/gdb/testsuite/gdb.fortran/allocated.exp
+--- a/gdb/testsuite/gdb.fortran/allocated.exp
++++ b/gdb/testsuite/gdb.fortran/allocated.exp
+@@ -25,11 +25,17 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
++# Avoid shared lib symbols.
++gdb_test_no_output "set auto-solib-add off"
++
+ if ![fortran_runto_main] {
+     untested "could not run to main"
+     return -1
+ }
+ 
++# Avoid libc symbols, in particular the 'array' type.
++gdb_test_no_output "nosharedlibrary"
++
+ # Set all the breakpoints.
+ for { set i 1 } { $i < 6 } { incr i } {
+     gdb_breakpoint [gdb_get_line_number "Breakpoint $i"]
+diff --git a/gdb/testsuite/gdb.fortran/array-slices-bad.exp b/gdb/testsuite/gdb.fortran/array-slices-bad.exp
+--- a/gdb/testsuite/gdb.fortran/array-slices-bad.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices-bad.exp
+@@ -25,11 +25,17 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
++# Avoid shared lib symbols.
++gdb_test_no_output "set auto-solib-add off"
++
+ if ![fortran_runto_main] {
+     untested "could not run to main"
+     return -1
+ }
+ 
++# Avoid libc symbols, in particular the 'array' type.
++gdb_test_no_output "nosharedlibrary"
++
+ # gdb_breakpoint [gdb_get_line_number "Display Message Breakpoint"]
+ gdb_breakpoint [gdb_get_line_number "First Breakpoint"]
+ gdb_breakpoint [gdb_get_line_number "Second Breakpoint"]
+diff --git a/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp b/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
+--- a/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices-sub-slices.exp
+@@ -25,11 +25,17 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
++# Avoid shared lib symbols.
++gdb_test_no_output "set auto-solib-add off"
++
+ if ![fortran_runto_main] {
+     untested "could not run to main"
+     return -1
+ }
+ 
++# Avoid libc symbols, in particular the 'array' type.
++gdb_test_no_output "nosharedlibrary"
++
+ # gdb_breakpoint [gdb_get_line_number "Display Message Breakpoint"]
+ gdb_breakpoint [gdb_get_line_number "Stop Here"]
+ gdb_breakpoint [gdb_get_line_number "Final Breakpoint"]
+diff --git a/gdb/testsuite/gdb.fortran/array-slices.exp b/gdb/testsuite/gdb.fortran/array-slices.exp
+--- a/gdb/testsuite/gdb.fortran/array-slices.exp
++++ b/gdb/testsuite/gdb.fortran/array-slices.exp
+@@ -55,11 +55,17 @@ proc run_test { repack } {
+ 
+     clean_restart ${binfile}
+ 
++    # Avoid shared lib symbols.
++    gdb_test_no_output "set auto-solib-add off"
++
+     if ![fortran_runto_main] {
+ 	untested "could not run to main"
+ 	return -1
+     }
+ 
++    # Avoid libc symbols, in particular the 'array' type.
++    gdb_test_no_output "nosharedlibrary"
++
+     gdb_test_no_output "set fortran repack-array-slices $repack"
+ 
+     # gdb_breakpoint [gdb_get_line_number "Display Message Breakpoint"]
+diff --git a/gdb/testsuite/gdb.fortran/lbound-ubound.exp b/gdb/testsuite/gdb.fortran/lbound-ubound.exp
+--- a/gdb/testsuite/gdb.fortran/lbound-ubound.exp
++++ b/gdb/testsuite/gdb.fortran/lbound-ubound.exp
+@@ -25,12 +25,17 @@ if {[prepare_for_testing ${testfile}.exp ${testfile} ${srcfile} \
+     return -1
+ }
+ 
++# Avoid shared lib symbols.
++gdb_test_no_output "set auto-solib-add off"
+ 
+ if ![fortran_runto_main] {
+     untested "could not run to main"
+     return -1
+ }
+ 
++# Avoid libc symbols, in particular the 'array' type.
++gdb_test_no_output "nosharedlibrary"
++
+ gdb_breakpoint [gdb_get_line_number "Test Breakpoint"]
+ gdb_breakpoint [gdb_get_line_number "Final Breakpoint"]
+ 
+diff --git a/gdb/testsuite/gdb.fortran/subarray.exp b/gdb/testsuite/gdb.fortran/subarray.exp
+--- a/gdb/testsuite/gdb.fortran/subarray.exp
++++ b/gdb/testsuite/gdb.fortran/subarray.exp
+@@ -27,16 +27,17 @@ if {[prepare_for_testing "failed to prepare" $testfile $srcfile {debug f90}]} {
+     return -1
+ }
+ 
+-gdb_exit
+-gdb_start
+-gdb_reinitialize_dir $srcdir/$subdir
+-gdb_load ${binfile}
++# Avoid shared lib symbols.
++gdb_test_no_output "set auto-solib-add off"
+ 
+ if ![fortran_runto_main] then {
+     perror "couldn't run to main"
+     continue
+ }
+ 
++# Avoid libc symbols, in particular the 'array' type.
++gdb_test_no_output "nosharedlibrary"
++
+ # Try to set breakpoint at the last write statement.
+ 
+ set bp_location [gdb_get_line_number "str(:)"]
+diff --git a/gdb/testsuite/gdb.mi/mi-var-child-f.exp b/gdb/testsuite/gdb.mi/mi-var-child-f.exp
+--- a/gdb/testsuite/gdb.mi/mi-var-child-f.exp
++++ b/gdb/testsuite/gdb.mi/mi-var-child-f.exp
+@@ -36,8 +36,14 @@ if {[gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" \
+ mi_gdb_reinitialize_dir $srcdir/$subdir
+ mi_gdb_load ${binfile}
+ 
++# Avoid shared lib symbols.
++mi_gdb_test "-gdb-set auto-solib-add off" "\\^done"
++
+ mi_runto prog_array
+ 
++# Avoid libc symbols, in particular the 'array' type.
++mi_gdb_test "nosharedlibrary" ".*\\^done"
++
+ mi_create_varobj "array" "array" "create local variable array"
+ 
+ 

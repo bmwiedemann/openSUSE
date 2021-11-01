@@ -1,0 +1,48 @@
+[gdb/testsuite] Fix gdb.base/dcache-flush.exp
+
+When running test-case gdb.base/dcache-flush.exp on ubuntu 18.04.5, I run into:
+...
+(gdb) PASS: gdb.base/dcache-flush.exp: p var2
+info dcache^M
+Dcache 4096 lines of 64 bytes each.^M
+Contains data for Thread 0x7ffff7fc6b80 (LWP 3551)^M
+Line 0: address 0x7fffffffd4c0 [47 hits]^M
+Line 1: address 0x7fffffffd500 [31 hits]^M
+Line 2: address 0x7fffffffd5c0 [7 hits]^M
+Cache state: 3 active lines, 85 hits^M
+(gdb) FAIL: gdb.base/dcache-flush.exp: check dcache before flushing
+...
+The regexp expects "Contains data for process $decimal".
+
+This is another case of thread_db_target::pid_to_str being used.
+
+Fix this by updating the regexp.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/dcache-flush.exp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/dcache-flush.exp b/gdb/testsuite/gdb.base/dcache-flush.exp
+index 4ac10b9fab1..ff59b2bb7ae 100644
+--- a/gdb/testsuite/gdb.base/dcache-flush.exp
++++ b/gdb/testsuite/gdb.base/dcache-flush.exp
+@@ -34,7 +34,7 @@ gdb_test "p var2" " = 3"
+ gdb_test "info dcache" \
+     [multi_line \
+ 	 "Dcache $decimal lines of $decimal bytes each." \
+-	 "Contains data for process $decimal" \
++	 "Contains data for (process $decimal|Thread \[^\r\n\]*)" \
+ 	 "Line 0: address $hex \[$decimal hits\].*" \
+ 	 "Cache state: $decimal active lines, $decimal hits" ] \
+     "check dcache before flushing"
+@@ -58,7 +58,7 @@ with_test_prefix "refilling" {
+ gdb_test "info dcache" \
+     [multi_line \
+ 	 "Dcache $decimal lines of $decimal bytes each." \
+-	 "Contains data for process $decimal" \
++	 "Contains data for (process $decimal|Thread \[^\r\n\]*)" \
+ 	 "Line 0: address $hex \[$decimal hits\].*" \
+ 	 "Cache state: $decimal active lines, $decimal hits" ] \
+     "check dcache before refilling"

@@ -1,0 +1,317 @@
+[gdb/symtab] C++-ify call_site
+
+- add constructor
+- add member function call_site::pc ()
+
+Tested on x86_64-linux.
+
+Co-Authored-By: Tom de Vries <tdevries@suse.de>
+
+---
+ gdb/dwarf2/frame-tailcall.c |  4 +--
+ gdb/dwarf2/loc.c            | 18 ++++++------
+ gdb/dwarf2/read.c           | 27 +++++++++---------
+ gdb/gdbtypes.c              |  9 ++++++
+ gdb/gdbtypes.h              | 67 +++++++++++++++++++++++++++++----------------
+ gdb/symtab.c                |  3 +-
+ 6 files changed, 77 insertions(+), 51 deletions(-)
+
+diff --git a/gdb/dwarf2/frame-tailcall.c b/gdb/dwarf2/frame-tailcall.c
+index f112b4ecca4..9fe498b0924 100644
+--- a/gdb/dwarf2/frame-tailcall.c
++++ b/gdb/dwarf2/frame-tailcall.c
+@@ -240,14 +240,14 @@ pretend_pc (struct frame_info *this_frame, struct tailcall_cache *cache)
+   gdb_assert (next_levels >= 0);
+ 
+   if (next_levels < chain->callees)
+-    return chain->call_site[chain->length - next_levels - 1]->pc;
++    return chain->call_site[chain->length - next_levels - 1]->pc ();
+   next_levels -= chain->callees;
+ 
+   /* Otherwise CHAIN->CALLEES are already covered by CHAIN->CALLERS.  */
+   if (chain->callees != chain->length)
+     {
+       if (next_levels < chain->callers)
+-	return chain->call_site[chain->callers - next_levels - 1]->pc;
++	return chain->call_site[chain->callers - next_levels - 1]->pc ();
+       next_levels -= chain->callers;
+     }
+ 
+diff --git a/gdb/dwarf2/loc.c b/gdb/dwarf2/loc.c
+index d57cdc165ba..83b5fe1ac88 100644
+--- a/gdb/dwarf2/loc.c
++++ b/gdb/dwarf2/loc.c
+@@ -920,10 +920,10 @@ call_site_to_target_addr (struct gdbarch *call_site_gdbarch,
+ 	  {
+ 	    struct bound_minimal_symbol msym;
+ 	    
+-	    msym = lookup_minimal_symbol_by_pc (call_site->pc - 1);
++	    msym = lookup_minimal_symbol_by_pc (call_site->pc () - 1);
+ 	    throw_error (NO_ENTRY_VALUE_ERROR,
+ 			 _("DW_AT_call_target is not specified at %s in %s"),
+-			 paddress (call_site_gdbarch, call_site->pc),
++			 paddress (call_site_gdbarch, call_site->pc ()),
+ 			 (msym.minsym == NULL ? "???"
+ 			  : msym.minsym->print_name ()));
+ 			
+@@ -932,12 +932,12 @@ call_site_to_target_addr (struct gdbarch *call_site_gdbarch,
+ 	  {
+ 	    struct bound_minimal_symbol msym;
+ 	    
+-	    msym = lookup_minimal_symbol_by_pc (call_site->pc - 1);
++	    msym = lookup_minimal_symbol_by_pc (call_site->pc () - 1);
+ 	    throw_error (NO_ENTRY_VALUE_ERROR,
+ 			 _("DW_AT_call_target DWARF block resolving "
+ 			   "requires known frame which is currently not "
+ 			   "available at %s in %s"),
+-			 paddress (call_site_gdbarch, call_site->pc),
++			 paddress (call_site_gdbarch, call_site->pc ()),
+ 			 (msym.minsym == NULL ? "???"
+ 			  : msym.minsym->print_name ()));
+ 			
+@@ -966,11 +966,11 @@ call_site_to_target_addr (struct gdbarch *call_site_gdbarch,
+ 	msym = lookup_minimal_symbol (physname, NULL, NULL);
+ 	if (msym.minsym == NULL)
+ 	  {
+-	    msym = lookup_minimal_symbol_by_pc (call_site->pc - 1);
++	    msym = lookup_minimal_symbol_by_pc (call_site->pc () - 1);
+ 	    throw_error (NO_ENTRY_VALUE_ERROR,
+ 			 _("Cannot find function \"%s\" for a call site target "
+ 			   "at %s in %s"),
+-			 physname, paddress (call_site_gdbarch, call_site->pc),
++			 physname, paddress (call_site_gdbarch, call_site->pc ()),
+ 			 (msym.minsym == NULL ? "???"
+ 			  : msym.minsym->print_name ()));
+ 			
+@@ -1076,7 +1076,7 @@ func_verify_no_selftailcall (struct gdbarch *gdbarch, CORE_ADDR verify_addr)
+ static void
+ tailcall_dump (struct gdbarch *gdbarch, const struct call_site *call_site)
+ {
+-  CORE_ADDR addr = call_site->pc;
++  CORE_ADDR addr = call_site->pc ();
+   struct bound_minimal_symbol msym = lookup_minimal_symbol_by_pc (addr - 1);
+ 
+   fprintf_unfiltered (gdb_stdlog, " %s(%s)", paddress (gdbarch, addr),
+@@ -1252,7 +1252,7 @@ call_site_find_chain_1 (struct gdbarch *gdbarch, CORE_ADDR caller_pc,
+ 
+ 	  if (target_call_site)
+ 	    {
+-	      if (addr_hash.insert (target_call_site->pc).second)
++	      if (addr_hash.insert (target_call_site->pc ()).second)
+ 		{
+ 		  /* Successfully entered TARGET_CALL_SITE.  */
+ 
+@@ -1271,7 +1271,7 @@ call_site_find_chain_1 (struct gdbarch *gdbarch, CORE_ADDR caller_pc,
+ 	      call_site = chain.back ();
+ 	      chain.pop_back ();
+ 
+-	      size_t removed = addr_hash.erase (call_site->pc);
++	      size_t removed = addr_hash.erase (call_site->pc ());
+ 	      gdb_assert (removed == 1);
+ 
+ 	      target_call_site = call_site->tail_call_next;
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 7def1e246c4..59ce3cf2b45 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -13287,7 +13287,6 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+   struct gdbarch *gdbarch = objfile->arch ();
+   CORE_ADDR pc, baseaddr;
+   struct attribute *attr;
+-  struct call_site *call_site, call_site_local;
+   void **slot;
+   int nparams;
+   struct die_info *child_die;
+@@ -13312,10 +13311,11 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+   pc = gdbarch_adjust_dwarf2_addr (gdbarch, pc);
+ 
+   if (cu->call_site_htab == NULL)
+-    cu->call_site_htab = htab_create_alloc_ex (16, call_site_hash, call_site_eq,
+-					       NULL, &objfile->objfile_obstack,
++    cu->call_site_htab = htab_create_alloc_ex (16, call_site::hash,
++					       call_site::eq, NULL,
++					       &objfile->objfile_obstack,
+ 					       hashtab_obstack_allocate, NULL);
+-  call_site_local.pc = pc;
++  struct call_site call_site_local (pc, nullptr, nullptr);
+   slot = htab_find_slot (cu->call_site_htab, &call_site_local, INSERT);
+   if (*slot != NULL)
+     {
+@@ -13345,14 +13345,16 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+       nparams++;
+     }
+ 
+-  call_site
+-    = ((struct call_site *)
+-       obstack_alloc (&objfile->objfile_obstack,
+-		      sizeof (*call_site)
+-		      + (sizeof (*call_site->parameter) * (nparams - 1))));
++  struct call_site *call_site
++    = new (XOBNEWVAR (&objfile->objfile_obstack,
++		      struct call_site,
++		      sizeof (*call_site) + sizeof (call_site->parameter[0]) * nparams))
++    struct call_site (pc, cu->per_cu, per_objfile);
+   *slot = call_site;
+-  memset (call_site, 0, sizeof (*call_site) - sizeof (*call_site->parameter));
+-  call_site->pc = pc;
++
++  /* We never call the destructor of call_site, so we must ensure it is
++     trivially destructible.  */
++  gdb_static_assert(std::is_trivially_destructible<struct call_site>::value);
+ 
+   if (dwarf2_flag_true_p (die, DW_AT_call_tail_call, cu)
+       || dwarf2_flag_true_p (die, DW_AT_GNU_tail_call, cu))
+@@ -13473,9 +13475,6 @@ read_call_site_scope (struct die_info *die, struct dwarf2_cu *cu)
+ 		 "block nor reference, for DIE %s [in module %s]"),
+ 	       sect_offset_str (die->sect_off), objfile_name (objfile));
+ 
+-  call_site->per_cu = cu->per_cu;
+-  call_site->per_objfile = per_objfile;
+-
+   for (child_die = die->child;
+        child_die && child_die->tag;
+        child_die = child_die->sibling)
+diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
+index 05ce646bc59..1b3ed1b32ed 100644
+--- a/gdb/gdbtypes.c
++++ b/gdb/gdbtypes.c
+@@ -37,6 +37,7 @@
+ #include "cp-support.h"
+ #include "bcache.h"
+ #include "dwarf2/loc.h"
++#include "dwarf2/read.h"
+ #include "gdbcore.h"
+ #include "floatformat.h"
+ #include "f-lang.h"
+@@ -6301,6 +6302,14 @@ objfile_type (struct objfile *objfile)
+   return objfile_type;
+ }
+ 
++/* See gdbtypes.h.  */
++
++CORE_ADDR
++call_site::pc () const
++{
++  return m_pc;
++}
++
+ void _initialize_gdbtypes ();
+ void
+ _initialize_gdbtypes ()
+diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
+index 77d1e66a6b1..a071188ffa1 100644
+--- a/gdb/gdbtypes.h
++++ b/gdb/gdbtypes.h
+@@ -1775,52 +1775,71 @@ struct call_site_parameter
+ 
+ struct call_site
+   {
+-    /* Address of the first instruction after this call.  */
+-
+-    CORE_ADDR pc;
++    call_site (CORE_ADDR pc, dwarf2_per_cu_data *per_cu,
++	       dwarf2_per_objfile *per_objfile)
++      : per_cu (per_cu), per_objfile (per_objfile), m_pc (pc)
++    {}
++
++    static int
++    eq (const call_site *a, const call_site *b)
++    {
++      return core_addr_eq (&a->m_pc, &b->m_pc);
++    }
++
++    static hashval_t
++    hash (const call_site *a)
++    {
++      return core_addr_hash (&a->m_pc);
++    }
++
++    static int
++    eq (const void *a, const void *b)
++    {
++      return eq ((const call_site *)a, (const call_site *)b);
++    }
++
++    static hashval_t
++    hash (const void *a)
++    {
++      return hash ((const call_site *)a);
++    }
++
++    /* Return the address of the first instruction after this call.  */
++
++    CORE_ADDR pc () const;
+ 
+     /* * List successor with head in FUNC_TYPE.TAIL_CALL_LIST.  */
+ 
+-    struct call_site *tail_call_next;
++    struct call_site *tail_call_next = nullptr;
+ 
+     /* * Describe DW_AT_call_target.  Missing attribute uses
+        FIELD_LOC_KIND_DWARF_BLOCK with FIELD_DWARF_BLOCK == NULL.  */
+ 
+-    struct call_site_target target;
++    struct call_site_target target {};
+ 
+     /* * Size of the PARAMETER array.  */
+ 
+-    unsigned parameter_count;
++    unsigned parameter_count = 0;
+ 
+     /* * CU of the function where the call is located.  It gets used
+        for DWARF blocks execution in the parameter array below.  */
+ 
+-    dwarf2_per_cu_data *per_cu;
++    dwarf2_per_cu_data *const per_cu = nullptr;
+ 
+     /* objfile of the function where the call is located.  */
+ 
+-    dwarf2_per_objfile *per_objfile;
++    dwarf2_per_objfile *const per_objfile = nullptr;
+ 
++  private:
++    /* Address of the first instruction after this call.  */
++    const CORE_ADDR m_pc;
++
++  public:
+     /* * Describe DW_TAG_call_site's DW_TAG_formal_parameter.  */
+ 
+-    struct call_site_parameter parameter[1];
++    struct call_site_parameter parameter[];
+   };
+ 
+-static inline int
+-call_site_eq (const void *a_, const void *b_)
+-{
+-  const struct call_site *a = (const call_site *)a_;
+-  const struct call_site *b = (const call_site *)b_;
+-  return core_addr_eq (&a->pc, &b->pc);
+-}
+-
+-static inline hashval_t
+-call_site_hash (const void *a_)
+-{
+-  const struct call_site *a = (const call_site *)a_;
+-  return core_addr_hash (&a->pc);
+-}
+-
+ /* The type-specific info for TYPE_CODE_FIXED_POINT types.  */
+ 
+ struct fixed_point_type_info
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+index fe430edadb2..14cc2b5bd8d 100644
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -334,11 +334,10 @@ search_domain_name (enum search_domain e)
+ call_site *
+ compunit_symtab::find_call_site (CORE_ADDR pc) const
+ {
+-  struct call_site call_site_local;
+   if (m_call_site_htab == nullptr)
+     return nullptr;
+ 
+-  call_site_local.pc = pc;
++  struct call_site call_site_local (pc, nullptr, nullptr);
+   void **slot
+     = htab_find_slot (m_call_site_htab, &call_site_local, NO_INSERT);
+   if (slot == nullptr)

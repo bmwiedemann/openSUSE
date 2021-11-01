@@ -1,0 +1,193 @@
+[gdb/build] Add CXX_DIALECT to CXX
+
+Say we use a gcc version that (while supporting c++11) does not support c++11
+by default, and needs an -std setting to enable it.
+
+If gdb would use the default AX_CXX_COMPILE_STDCXX from autoconf-archive, then
+we'd have:
+...
+CXX="g++ -std=gnu++11"
+...
+
+That mechanism however has the following problem (quoting from commit
+0bcda685399):
+...
+the top level Makefile passes CXX down to subdirs, and that overrides whatever
+gdb/Makefile may set CXX to.  The result would be that a make invocation from
+the build/gdb/ directory would use "g++ -std=gnu++11" as expected, while a
+make invocation at the top level would not.
+...
+
+Commit 0bcda685399 fixes this by using a custom AX_CXX_COMPILE_STDCXX which
+does:
+...
+CXX=g++
+CXX_DIALECT=-std=gnu++11
+...
+
+The problem reported in PR28318 is that using the custom instead of the
+default AX_CXX_COMPILE_STDCXX makes the configure test for std::thread
+support fail.
+
+We could simply add $CXX_DIALECT to the test for std::thread support, but
+that would have to be repeated for each added c++ support test.
+
+Instead, fix this by doing:
+...
+CXX="g++ -std=gnu++11"
+CXX_DIALECT=-std=gnu++11
+...
+
+This is somewhat awkward, since it results in -std=gnu++11 occuring twice in
+some situations:
+...
+$ touch src/gdb/dwarf2/read.c
+$ ( cd build/gdb; make V=1 dwarf2/read.o )
+g++-4.8 -std=gnu++11 -x c++ -std=gnu++11 ...
+...
+
+However, both settings are needed:
+ - the switch in CXX for the std::thread tests (and other tests)
+ - the switch in CXX_DIALECT so it can be appended in Makefiles, to
+   counteract the fact that the top-level Makefile overrides CXX
+
+The code added in gdb/ax_cxx_compile_stdcxx.m4 is copied from the default
+AX_CXX_COMPILE_STDCXX from autoconf-archive.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28318
+
+gdb/ChangeLog:
+
+2021-10-04  Tom de Vries  <tdevries@suse.de>
+
+	PR build/28318
+	* ax_cxx_compile_stdcxx.m4: Add CXX_DIALECT to CXX.
+	* configure: Regenerate.
+
+gdbserver/ChangeLog:
+
+2021-10-04  Tom de Vries  <tdevries@suse.de>
+
+	PR build/28318
+	* configure: Regenerate.
+
+gdbsupport/ChangeLog:
+
+2021-10-04  Tom de Vries  <tdevries@suse.de>
+
+	PR build/28318
+	* configure: Regenerate.
+
+---
+ gdb/ax_cxx_compile_stdcxx.m4 | 8 ++++++++
+ gdb/configure                | 8 ++++++++
+ gdbserver/configure          | 8 ++++++++
+ gdbsupport/configure         | 8 ++++++++
+ 7 files changed, 48 insertions(+)
+
+diff --git a/gdb/ax_cxx_compile_stdcxx.m4 b/gdb/ax_cxx_compile_stdcxx.m4
+index 413755a2e88..29d8e10bcc4 100644
+--- a/gdb/ax_cxx_compile_stdcxx.m4
++++ b/gdb/ax_cxx_compile_stdcxx.m4
+@@ -94,6 +94,10 @@ AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
+          CXX="$ac_save_CXX"])
+       if eval test x\$$cachevar = xyes; then
+         CXX_DIALECT="$switch"
++        CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+@@ -118,6 +122,10 @@ AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
+            CXX="$ac_save_CXX"])
+         if eval test x\$$cachevar = xyes; then
+           CXX_DIALECT="$switch"
++          CXX="$CXX $switch"
++          if test -n "$CXXCPP" ; then
++            CXXCPP="$CXXCPP $switch"
++          fi
+           ac_success=yes
+           break
+         fi
+diff --git a/gdb/configure b/gdb/configure
+index 5d89635c043..6d4c2b17ed2 100755
+--- a/gdb/configure
++++ b/gdb/configure
+@@ -5841,6 +5841,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+       if eval test x\$$cachevar = xyes; then
+         CXX_DIALECT="$switch"
++        CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+@@ -6160,6 +6164,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+         if eval test x\$$cachevar = xyes; then
+           CXX_DIALECT="$switch"
++          CXX="$CXX $switch"
++          if test -n "$CXXCPP" ; then
++            CXXCPP="$CXXCPP $switch"
++          fi
+           ac_success=yes
+           break
+         fi
+diff --git a/gdbserver/configure b/gdbserver/configure
+index b227167e270..f05c1a9b976 100755
+--- a/gdbserver/configure
++++ b/gdbserver/configure
+@@ -5625,6 +5625,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+       if eval test x\$$cachevar = xyes; then
+         CXX_DIALECT="$switch"
++        CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+@@ -5944,6 +5948,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+         if eval test x\$$cachevar = xyes; then
+           CXX_DIALECT="$switch"
++          CXX="$CXX $switch"
++          if test -n "$CXXCPP" ; then
++            CXXCPP="$CXXCPP $switch"
++          fi
+           ac_success=yes
+           break
+         fi
+diff --git a/gdbsupport/configure b/gdbsupport/configure
+index a9dd02c5b72..ae6047865ae 100755
+--- a/gdbsupport/configure
++++ b/gdbsupport/configure
+@@ -6520,6 +6520,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+       if eval test x\$$cachevar = xyes; then
+         CXX_DIALECT="$switch"
++        CXX="$CXX $switch"
++        if test -n "$CXXCPP" ; then
++          CXXCPP="$CXXCPP $switch"
++        fi
+         ac_success=yes
+         break
+       fi
+@@ -6839,6 +6843,10 @@ eval ac_res=\$$cachevar
+ $as_echo "$ac_res" >&6; }
+         if eval test x\$$cachevar = xyes; then
+           CXX_DIALECT="$switch"
++          CXX="$CXX $switch"
++          if test -n "$CXXCPP" ; then
++            CXXCPP="$CXXCPP $switch"
++          fi
+           ac_success=yes
+           break
+         fi

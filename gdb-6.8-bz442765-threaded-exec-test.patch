@@ -175,7 +175,7 @@ diff --git a/gdb/testsuite/gdb.threads/threaded-exec.exp b/gdb/testsuite/gdb.thr
 +gdb_load ${binfile_nothreads}
  
 -gdb_run_cmd
-+gdb_run_cmd ${binfile_nothreads} ${binfile_threads} 0
++gdb_run_cmd [list ${binfile_nothreads} ${binfile_threads} 0]
  
  gdb_test_multiple {} "Program exited" {
     -re "\r\n\\\[Inferior .* exited normally\\\]\r\n$gdb_prompt $" {

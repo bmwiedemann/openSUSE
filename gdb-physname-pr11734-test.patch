@@ -12,7 +12,7 @@ diff --git a/gdb/testsuite/gdb.cp/pr11734-1.cc b/gdb/testsuite/gdb.cp/pr11734-1.
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.cp/pr11734-1.cc
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,29 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2010 Free Software Foundation, Inc.
@@ -42,12 +42,11 @@ new file mode 100644
 +  p->foo ();
 +  return 0;
 +}
-+
 diff --git a/gdb/testsuite/gdb.cp/pr11734-2.cc b/gdb/testsuite/gdb.cp/pr11734-2.cc
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.cp/pr11734-2.cc
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,26 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2010 Free Software Foundation, Inc.
@@ -74,12 +73,11 @@ new file mode 100644
 +pr11734::foo(void)
 +{
 +}
-+
 diff --git a/gdb/testsuite/gdb.cp/pr11734-3.cc b/gdb/testsuite/gdb.cp/pr11734-3.cc
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.cp/pr11734-3.cc
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,26 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2010 Free Software Foundation, Inc.
@@ -106,12 +104,11 @@ new file mode 100644
 +pr11734::foo (int a)
 +{
 +}
-+
 diff --git a/gdb/testsuite/gdb.cp/pr11734-4.cc b/gdb/testsuite/gdb.cp/pr11734-4.cc
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.cp/pr11734-4.cc
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,26 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2010 Free Software Foundation, Inc.
@@ -138,7 +135,6 @@ new file mode 100644
 +pr11734::foo (char *a)
 +{
 +}
-+
 diff --git a/gdb/testsuite/gdb.cp/pr11734.exp b/gdb/testsuite/gdb.cp/pr11734.exp
 new file mode 100644
 --- /dev/null
@@ -203,7 +199,7 @@ diff --git a/gdb/testsuite/gdb.cp/pr11734.h b/gdb/testsuite/gdb.cp/pr11734.h
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.cp/pr11734.h
-@@ -0,0 +1,28 @@
+@@ -0,0 +1,27 @@
 +/* This testcase is part of GDB, the GNU debugger.
 +
 +   Copyright 2010 Free Software Foundation, Inc.
@@ -231,4 +227,3 @@ new file mode 100644
 +  void foo (int);
 +  void foo (char *);
 +};
-+

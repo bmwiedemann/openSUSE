@@ -44,17 +44,17 @@ glibc-debuginfo-2.7-2.x86_64: /usr/lib/debug/lib64/libc.so.6.debug:
 diff --git a/gdb/printcmd.c b/gdb/printcmd.c
 --- a/gdb/printcmd.c
 +++ b/gdb/printcmd.c
-@@ -1210,6 +1210,10 @@ print_command_1 (const char *args, int voidprint)
+@@ -1306,6 +1306,10 @@ process_print_command_args (const char *args, value_print_options *print_opts,
  
    if (exp != nullptr && *exp)
      {
 +      /* '*((int *(*) (void)) __errno_location) ()' is incompatible with
 +	 function descriptors.  */
-+      if (target_has_execution && strcmp (exp, "errno") == 0)
++      if (target_has_execution () && strcmp (exp, "errno") == 0)
 +	exp = "*(*(int *(*)(void)) __errno_location) ()";
-       expression_up expr = parse_expression (exp);
-       val = evaluate_expression (expr.get ());
-     }
+       /* VOIDPRINT is true to indicate that we do want to print a void
+ 	 value, so invert it for parse_expression.  */
+       expression_up expr = parse_expression (exp, nullptr, !voidprint);
 diff --git a/gdb/testsuite/gdb.dwarf2/dw2-errno.c b/gdb/testsuite/gdb.dwarf2/dw2-errno.c
 new file mode 100644
 --- /dev/null

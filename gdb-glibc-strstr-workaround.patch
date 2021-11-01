@@ -10,7 +10,7 @@ diff --git a/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp b/gdb/testsu
 new file mode 100644
 --- /dev/null
 +++ b/gdb/testsuite/gdb.base/gnu-ifunc-strstr-workaround.exp
-@@ -0,0 +1,115 @@
+@@ -0,0 +1,119 @@
 +# Copyright (C) 2012 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
@@ -53,6 +53,10 @@ new file mode 100644
 +	pass $test
 +    }
 +    -re "type = int \\(\\)\r\n$gdb_prompt $" {
++	untested "$test (no DWARF)"
++	return 0
++    }
++    -re "type = <unknown return type> \\(\\)\r\n$gdb_prompt $" {
 +	untested "$test (no DWARF)"
 +	return 0
 +    }
@@ -124,5 +128,5 @@ new file mode 100644
 +    }
 +}
 +
-+gdb_test {print strstr("abc","b")} { = 0x[0-9a-f]+ "bc"}
-+gdb_test {print strstr("def","e")} { = 0x[0-9a-f]+ "ef"}
++gdb_test {print (char *)strstr("abc","b")} { = 0x[0-9a-f]+ "bc"}
++gdb_test {print (char *)strstr("def","e")} { = 0x[0-9a-f]+ "ef"}
