@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct  2 07:23:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.8.2
+  * in Yacc compatibility mode (options -y/--yacc) Bison now
+    generates prototypes for yyerror and yylex if POSIXLY_CORRECT
+    is set 
+  * -g/--graph now generates a *.gv file by default, instead of *.dot
+  * Support for the YYPRINT macro is removed
+  * The "lalr1.d" skeleton is now officially part of Bison
+  * Option -H, --header and directive %header supersede
+    --defines and %defines, respectively
+  * --html generates HTML reports directly in one step
+  * A new C++ native GLR parser
+  * Counterexamples now show the rule numbers, and always show ε
+    for rules with an empty right-hand side
+  * Support for Lookahead correction (LAC) in Java
+  * User actions may now use YYNOMEM to abort the current parse
+    with memory exhaustion
+  * Support for custom error messages and location print macros
+
+-------------------------------------------------------------------
 Fri Mar 12 21:47:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - move COPYING file into licenses subdirectory 
