@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 02 04:06:08 UTC 2021 - william.brown@suse.com
+
+- Update to version 0.1.4+git5add8c5:
+  * chore: add Cargo.lock file
+  * Create directory leading up to resolv.conf
+  * Bump version to 0.1.4
+  * main: Fix APFS volume help message
+  * changevm: Fix "cpus" and "mem" arguments
+  * ci: Add code quality checks for PRs
+  * Fix some cargo and clippy warnings
+  * fix compile failures on macos m1
+  * README.md: Add "Supported platforms"
+  * Bump version to 0.1.3
+
+-------------------------------------------------------------------
 Fri Oct  1 09:55:28 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix the build, after the libkrun pakaging changes and the switch to cargo
