@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  2 11:12:58 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.11 with OpenJ9 0.29.0 virtual machine
+  * including Oracle July 2021 and October 2021 CPU changes
+    (bsc#1188564, bsc#1188565, bsc#1188566, bsc#1191901,
+    bsc#1191909, bsc#1191910, bsc#1191911, bsc#1191912,
+    bsc#1191913, bsc#1191903, bsc#1191904, bsc#1191914,
+    bsc#1191906)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.29
+- Remove the unneeded icedtea-sound provider
+- Removed patches:
+  * icedtea-sound-1.0.1-jdk9.patch
+  * icedtea-sound-soundproperties.patch
+    + not needed since the icedtea-sound provider is removed
+  * maybe-uninitialized.patch
+  * omr-no-return-in-nonvoid-function.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Fri Jun 18 10:19:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Remove the forcing of DWARF version 4, since the libdwarf in

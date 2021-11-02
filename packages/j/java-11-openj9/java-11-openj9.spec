@@ -29,21 +29,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       11
+%global updatever       13
 %global patchver        0
-%global datever         2021-04-20
-%global buildver        9
+%global datever         2021-10-19
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   7796c80419e3e37731bdcf4a61361a8bb8a333fe
-%global root_branch     openj9-0.26.0
+%global root_revision   2d83aa3b76142e7dd319dc7dadea5ce310aeedf3
+%global root_branch     v0.29.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    162e6f729733666e22726ce5326f5982bb030330
-%global omr_branch      v0.26.0-release
+%global omr_revision    299b6a2d28cf992edf57ca43b67ed6d6917675bf
+%global omr_branch      v0.29.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision b4cc246d9d2362346bc567861e6e0e536da3f390
-%global openj9_branch   v0.26.0-release
-%global openj9_tag      openj9-0.26.0
-%global icedtea_sound_version 1.0.1
+%global openj9_revision e1e72c497688c765183573526f7418a6fe891e93
+%global openj9_branch   v0.29.0-release
+%global openj9_tag      openj9-0.29.0
 %global freemarker_version 2.3.29
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -98,7 +97,6 @@
 # Turn on/off some features
 %global with_system_pcsc 1
 %global with_system_harfbuzz 1
-%global with_pulseaudio 1
 Name:           java-%{featurever}-openj9
 Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
 Release:        0
@@ -116,8 +114,6 @@ Source3:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freem
 Source4:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}-sources.jar
 # Accessibility support
 Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
-# Pulseaudio support
-Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Desktop files. Adapted from IcedTea.
 Source11:       jconsole.desktop.in
 # nss configuration file
@@ -145,9 +141,6 @@ Source27:       %{com_sun_istack_runtime_repository}-%{com_sun_istack_runtime_ta
 # https://codeload.github.com/javaee/%{jaxb_ri_repository}/tar.gz/%{jaxb_ri_tag}
 Source28:       %{jaxb_ri_repository}-%{jaxb_ri_tag}.tar.gz
 Source100:      openj9-nogit.patch.in
-# RPM/distribution specific patches
-Patch1:         icedtea-sound-1.0.1-jdk9.patch
-Patch2:         icedtea-sound-soundproperties.patch
 # Restrict access to java-atk-wrapper classes
 Patch3:         java-atk-wrapper-security.patch
 # Allow multiple initialization of PKCS11 libraries
@@ -161,8 +154,6 @@ Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
-Patch32:        omr-no-return-in-nonvoid-function.patch
-Patch33:        maybe-uninitialized.patch
 #
 # OpenJDK specific patches
 #
@@ -186,7 +177,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-ca-certificates
@@ -263,16 +253,18 @@ Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
 ExclusiveArch:  x86_64 ppc64le s390x aarch64
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 %if %{bootcycle}
 BuildRequires:  java-devel >= 10
 BuildConflicts: java-devel >= 12
 %else
 BuildRequires:  java-%{javaver}-devel
-%endif
-# pulse audio requirements
-%if %{with_pulseaudio}
-BuildRequires:  libpulse-devel >= 0.9.11
-BuildRequires:  pulseaudio >= 0.9.11
 %endif
 %if %{with_system_harfbuzz}
 BuildRequires:  harfbuzz-devel
@@ -411,7 +403,6 @@ need to.
 %prep
 %setup -q -n openj9-openjdk-jdk11-%{root_revision} -a 1 -a 2
 %setup -q -D -n openj9-openjdk-jdk11-%{root_revision} -T -a 8
-%setup -q -D -n openj9-openjdk-jdk11-%{root_revision} -T -a 9
 %setup -q -D -n openj9-openjdk-jdk11-%{root_revision} -T -a 20
 %setup -q -D -n openj9-openjdk-jdk11-%{root_revision} -T -a 21
 %setup -q -D -n openj9-openjdk-jdk11-%{root_revision} -T -a 22
@@ -437,11 +428,6 @@ rm -rvf src/java.desktop/share/native/libsplashscreen/giflib
 rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
-%patch1
-%if %{with_pulseaudio}
-%patch2 -p1
-%endif
-
 %patch3 -p1
 %patch5 -p1
 %patch13 -p1
@@ -454,8 +440,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch30 -p1
 %patch31 -p1
-%patch32
-%patch33 -p1
 
 %patch302 -p1
 %patch303 -p1
@@ -493,6 +477,12 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
+%if 0%{?suse_version} >= 1550
+    CPP=cpp-7 \
+    CXX=g++-7 \
+    CC=gcc-7 \
+    NM=gcc-nm-7 \
+%endif
     --with-version-feature=%{featurever} \
     --with-version-interim=%{interimver} \
     --with-version-update=%{updatever} \
@@ -537,24 +527,6 @@ export JAVA_HOME=$(pwd)/%{imagesdir}/jdk
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
-
-%if %{with_pulseaudio}
-# Build the pulseaudio plugin
-pushd icedtea-sound-%{icedtea_sound_version}
-autoreconf --force --install
-%configure \
-    --with-jdk-home=$JAVA_HOME \
-    --disable-docs
-make %{?_smp_mflags}
-cp icedtea-sound.jar $JAVA_HOME/../jmods/
-cp build/native/libicedtea-sound.so $JAVA_HOME/lib/
-popd
-# Merge the icedtea-sound into the JDK
-source $JAVA_HOME/release; export MODULES
-$JAVA_HOME/bin/jlink --module-path $JAVA_HOME/../jmods --add-modules "icedtea.sound,${MODULES//\ /,}" --output $JAVA_HOME/../newjdk
-cp -rf $JAVA_HOME/../newjdk/* $JAVA_HOME/
-rm -rf $JAVA_HOME/../newjdk
-%endif
 
 # Build the accessibility plugin
 pushd java-atk-wrapper-%{java_atk_wrapper_version}
@@ -1017,9 +989,6 @@ fi
 %files
 %dir %{_jvmdir}/%{sdkdir}/lib
 %{_jvmdir}/%{sdkdir}/lib/libawt_xawt.so
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/lib/libicedtea-sound.so
-%endif
 %{_jvmdir}/%{sdkdir}/lib/libjawt.so
 %{_jvmdir}/%{sdkdir}/lib/libsplashscreen.so
 %dir %{_datadir}/icons/hicolor
@@ -1216,9 +1185,6 @@ fi
 %dir %{_jvmdir}/%{sdkdir}/jmods
 %{_jvmdir}/%{sdkdir}/release
 %{_jvmdir}/%{sdkdir}/jmods/*.jmod
-%if %{with_pulseaudio}
-%{_jvmdir}/%{sdkdir}/jmods/icedtea-sound.jar
-%endif
 %{_jvmdir}/%{sdkdir}/jmods/java-atk-wrapper.jar
 
 %files demo -f %{name}-demo.files

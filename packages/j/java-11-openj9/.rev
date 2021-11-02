@@ -63,4 +63,12 @@
     <comment>Allow DWARF5 symbols</comment>
     <requestid>900753</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf3bc5f47d426fafcdee16ade12b12e8</srcmd5>
+    <version>11.0.13.0</version>
+    <time>1635877140</time>
+    <user>dimstar_suse</user>
+    <comment>July and October 2021 CPU</comment>
+    <requestid>928750</requestid>
+  </revision>
 </revisionlist>
