@@ -18,7 +18,7 @@
 
 %define python_flavor python3
 Name:           urlscan
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
@@ -56,10 +56,10 @@ rm -rvf %{buildroot}%{python_sitelib}/%{name}-%{version}-*-info
 
 %files
 %license COPYING
-%doc README.rst
 %{_bindir}/%{name}
 %{python_sitelib}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %doc %{_defaultdocdir}/%{name}/muttrc
+%dir %{_docdir}/urlscan
 
 %changelog

@@ -115,4 +115,12 @@
   * Fix urwid reverse error. Thanks to @pavoljuhas. Closes #99 (forwarded request 892593 from dirkmueller)</comment>
     <requestid>893552</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd1de24f3c106e62243580199405d248</srcmd5>
+    <version>0.9.7</version>
+    <time>1635877154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928790</requestid>
+  </revision>
 </revisionlist>
