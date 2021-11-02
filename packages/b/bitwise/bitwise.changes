@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  1 09:28:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.43
+  * Add support for IPv4 parsing and output in command line mode
+  * Fix compiler warnings
+
+-------------------------------------------------------------------
 Fri Apr 16 18:14:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.42
