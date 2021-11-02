@@ -19,19 +19,19 @@
 # 5.0.x are bugfix versions, do not require users to upgrade symbols/footprints/packages
 %define compatversion 5.0.0
 
-# LZMA compression is to slow and causes frequent build failures
+# LZMA compression is too slow and causes frequent build failures
 # due to timeouts
 %define _binary_payload w5T.xzdio
 
 Name:           kicad-packages3D
-Version:        5.1.10
+Version:        5.1.11
 Release:        0
 Summary:        3D model libraries for rendering and MCAD integration
 # License is CC-BY-SA-4.0 but there is an exception
-# See included LICENSE.md and kicad-pcb.org/libraries/license/
+# See included LICENSE.md and kicad.org/libraries/license/
 License:        CC-BY-SA-4.0
 Group:          Productivity/Scientific/Electronics
-URL:            https://kicad-pcb.org
+URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/libraries/kicad-packages3D/-/archive/%{version}/kicad-packages3D-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
