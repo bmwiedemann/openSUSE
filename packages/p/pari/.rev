@@ -196,4 +196,32 @@
     <comment></comment>
     <requestid>928429</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5e2ddc87d56204dc07c8542117aee4ec</srcmd5>
+    <version>2.13.3</version>
+    <time>1635877137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.3. Fixed
+  [last column crossreferences current development release 2.14.0]
+  * zeta(-2 + O(x)) =&gt; division by 0                          [F25]
+  * (-1)^(-1/2) -&gt; I instead of -I                            [F56]
+  * GC error in ZX_Uspensky(, flag = 0)                       [F58]
+  * ellisomat(ell/nf not integral) -&gt; oo-loop or wrong result [F59]
+  * (f(~v)=v[1]=1);(g(v) = f(~v)); my(V=[0]);g(V);V -&gt; [1]
+    instead of [0] due to missing copy on write [#2304]       [F60]
+  * hypergeom([1/12,1/12],2/3,3) -&gt; wrong result              [F61]
+  * overflow in mulu_interval(,ULONG_MAX) [#2309]             [F62]
+  * ellE(1) -&gt; domain error [#2312]                           [F63]
+  * log1p(-1 + 10^-10) -&gt; oo time                             [F64]
+  * bernvec entries were wrong from B_{2*4064} on [#2311]     [F65]
+  * plotrecthraw for multi-curves                             [F66]
+  * RgXn_powu(,,1) wrong result [#2314]                       [F67]
+  * erfc incorrect on negative imaginary axis [#2315]         [F68]
+  * mfgalpoistype bug for dihedral types (when conductor at oo
+    is not stable under Galois) [#2293]                       [F69]
+  * [32bit] forfactored(n=223092868, 223092871, ) -&gt;
+    SEGV [#2318]                                              [F70]
+  * Fp_issquare(0, p) would return 0                          [F71] (forwarded request 928639 from urbic)</comment>
+    <requestid>928684</requestid>
+  </revision>
 </revisionlist>

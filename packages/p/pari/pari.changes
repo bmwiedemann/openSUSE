@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov  2 00:19:07 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to release 2.13.3. Fixed
+  [last column crossreferences current development release 2.14.0]
+  * zeta(-2 + O(x)) => division by 0                          [F25]
+  * (-1)^(-1/2) -> I instead of -I                            [F56]
+  * GC error in ZX_Uspensky(, flag = 0)                       [F58]
+  * ellisomat(ell/nf not integral) -> oo-loop or wrong result [F59]
+  * (f(~v)=v[1]=1);(g(v) = f(~v)); my(V=[0]);g(V);V -> [1]
+    instead of [0] due to missing copy on write [#2304]       [F60]
+  * hypergeom([1/12,1/12],2/3,3) -> wrong result              [F61]
+  * overflow in mulu_interval(,ULONG_MAX) [#2309]             [F62]
+  * ellE(1) -> domain error [#2312]                           [F63]
+  * log1p(-1 + 10^-10) -> oo time                             [F64]
+  * bernvec entries were wrong from B_{2*4064} on [#2311]     [F65]
+  * plotrecthraw for multi-curves                             [F66]
+  * RgXn_powu(,,1) wrong result [#2314]                       [F67]
+  * erfc incorrect on negative imaginary axis [#2315]         [F68]
+  * mfgalpoistype bug for dihedral types (when conductor at oo
+    is not stable under Galois) [#2293]                       [F69]
+  * [32bit] forfactored(n=223092868, 223092871, ) ->
+    SEGV [#2318]                                              [F70]
+  * Fp_issquare(0, p) would return 0                          [F71]
+
+-------------------------------------------------------------------
 Sun Oct 31 20:36:12 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Split '%make_build all docpdf' into separate executions due to
