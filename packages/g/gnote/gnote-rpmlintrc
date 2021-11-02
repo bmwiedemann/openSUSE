@@ -1,4 +1,2 @@
-# Filter shared library policy missing suffix as we don't want to split the package at the moment:
-addFilter("gnote.* shlib-policy-missing-suffix")
 # Filter devel file in non devel package as splitting out a devel package is not needed, internal gnote use only.
 addFilter("gnote.* devel-file-in-non-devel-package")

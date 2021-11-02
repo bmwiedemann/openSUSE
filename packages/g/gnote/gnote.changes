@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 31 16:40:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Bugs fixed:
+    - Fix search box focus when very first search in window is in
+      note.
+    - Fix note always re-opening in new window.
+  + Updated translations.
+- Drop 2a6b5aa.patch: Fixed upstream.
+- Replace post(un) handling with new ldconfig_scriptlets macro.
+- Replace gcc-c++ with generic c++_compiler BuildRequires.
+- Update Supplements to current standard.
+- Remove a filter from rpmlintrc, no longer needed and now gives a
+  warning, remove it to silence rpmlintrc.
+
+-------------------------------------------------------------------
 Mon Oct  4 08:12:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2a6b5aa.patch: Fix search box focus when very first search

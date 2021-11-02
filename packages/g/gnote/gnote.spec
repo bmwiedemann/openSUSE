@@ -19,7 +19,7 @@
 %define base_version 41
 
 Name:           gnote
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -27,11 +27,10 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
 Source0:        https://download.gnome.org/sources/gnote/41/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
-# PATCH-FIX-UPSTREAM 2a6b5aa.patch boo#1191141 dimstar@opensuse.org -- Fix search box focus when very first search in window is in note.
-Patch0:         https://gitlab.gnome.org/GNOME/gnote/-/commit/2a6b5aa.patch
+
+BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  libboost_test-devel >= 1.5.1
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -54,7 +53,7 @@ Summary:        Note editor for GNOME -- Search Provider for GNOME Shell
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-%{name}
 It is the same note taking application, including most of the add-ins (more are
@@ -69,7 +68,8 @@ search results from documents.
 %autosetup -p1
 
 %build
-%meson
+%meson \
+	%{nil}
 %meson_build
 
 %install
@@ -78,9 +78,7 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
