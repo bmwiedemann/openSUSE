@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 31 10:09:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.1
+  * Fix file parser for gzip files
+  * Fix uname parser for cases where the 'processor' and/or
+    'hardware_platform' fields are missing on linux
+  * Fix uname parser on FreeBSD
+  * Add lsusb parser tested on linux
+  * Add CSV file streaming parser
+  * Add testing for Python 3.10.0
+
+-------------------------------------------------------------------
 Mon Sep 27 05:49:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.17.0
