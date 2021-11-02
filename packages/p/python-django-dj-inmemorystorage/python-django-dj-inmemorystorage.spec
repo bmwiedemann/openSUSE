@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-dj-inmemorystorage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 export DJANGO_SETTINGS_MODULE=inmemorystorage.test_settings
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

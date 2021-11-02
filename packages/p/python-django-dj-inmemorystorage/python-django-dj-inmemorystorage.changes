@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:06:16 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Tue Aug 18 07:33:48 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Specify supported Django version (1.11+)
