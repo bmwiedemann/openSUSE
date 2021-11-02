@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Nov  1 23:19:17 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211101
+* Added icons
+
+  * ayatana-indicator-notification #2848
+  * bsnes #2825
+  * Colorway #2849
+  * dialog-objects
+  * Eqonomize #2835
+  * GameJolt Client #2847
+  * Feather Wallet #2851
+  * MAD Linux #2830
+  * Mailspring (Flathub) #2007
+  * mesen #2850
+  * Molotov.tv #2833
+  * OpenJDK 17 #2836
+  * papirus-folders GUI
+  * Rare #2844
+  * Revolt (Flathub) #2007
+  * Servez #2832
+  * Share Preview #2838
+  * Sparrow Wallet #2827
+  * Strawberry Music Player (Flathub) #2007
+  * Subtitle Composer (Flathub) #2007
+  * The Gnumeric Spreadsheet (Flathub) #2007
+  * WhatPulse #2845
+  * xemu (Flathub) #2007
+  * Xonsh #2837
+
+* Updated icons
+
+  * Among Us
+  * GNOME Twitch
+  * Moe Era
+  * MyNotes
+  * Notes (categories icon)
+  * Notification Bell (preferences icon) #2841
+  * PIA Manager
+  * Simplenote
+  * SkullGirls
+  * Stem Link
+  * Sticky Notes
+  * TeamViewer
+  * Unity & Unity Hub #2843
+  * YouTube
+  * Youtube DL
+  * Youtube Music
+
+* Changes and fixes
+
+  * Fixed color changing for folder_home2, folder_man, and 
+    folder_wordprocessing places icons
+  * Minor fixes to Anki icon
+
+-------------------------------------------------------------------
 Sat Oct  2 06:49:11 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20211001
