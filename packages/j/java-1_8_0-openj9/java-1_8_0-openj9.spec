@@ -26,19 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       292
-%global buildver        b10
+%global updatever       312
+%global buildver        b07
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   2a5e26881428745325f8ebc14e1abd34edb9bd81
-%global root_branch     openj9-0.26.0
+%global root_revision   8860d39588d2d66201a71dd205443b7fd8182acd
+%global root_branch     v0.29.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    162e6f729733666e22726ce5326f5982bb030330
-%global omr_branch      v0.26.0-release
+%global omr_revision    299b6a2d28cf992edf57ca43b67ed6d6917675bf
+%global omr_branch      v0.29.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision b4cc246d9d2362346bc567861e6e0e536da3f390
-%global openj9_branch   v0.26.0-release
-%global openj9_tag      openj9-0.26.0
-%global icedtea_sound_version 1.0.1
+%global openj9_revision e1e72c497688c765183573526f7418a6fe891e93
+%global openj9_branch   v0.29.0-release
+%global openj9_tag      openj9-0.29.0
 %global freemarker_version 2.3.29
 # priority must be 6 digits in total
 %global priority        1801
@@ -60,11 +59,6 @@
 # real file made by update-ca-certificates
 %global javacacerts %{_var}/lib/ca-certificates/java-cacerts
 # turn zero on non jit arches by default
-%if 0%{?suse_version} >= 1140
-%global with_pulseaudio 1
-%else
-%global with_pulseaudio 0
-%endif
 %ifarch x86_64
 %global archinstall amd64
 %endif
@@ -101,8 +95,6 @@ URL:            https://www.eclipse.org/openj9/
 Source0:        %{root_repository}/%{root_revision}.zip
 Source1:        %{omr_repository}/%{omr_revision}.zip
 Source2:        %{openj9_repository}/%{openj9_revision}.zip
-# Pulseaudio plugin
-Source3:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Use the freemarker jar from maven central
 Source9:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}.jar
 # Package also the sources
@@ -122,20 +114,13 @@ Patch1:         java-atk-wrapper-security.patch
 Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
-# gcc warnings compiling various libraries files
-Patch4:         jdk-gcc-warnings.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
 Patch203:       system-lcms.patch
 Patch205:       link-with-as-needed.patch
-
 Patch210:       openj9-no-werror.patch
-Patch211:       omr-no-return-in-nonvoid-function.patch
-Patch212:       maybe-uninitialized.patch
-
 Patch300:       alternative-path-to-tzdb_dat.patch
-
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -146,7 +131,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  java-ca-certificates
@@ -210,6 +194,13 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 ExclusiveArch:  x86_64 ppc64le s390x aarch64
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 %if %{bootcycle}
 BuildRequires:  java-devel >= 1.7
 BuildConflicts: java >= 9
@@ -217,11 +208,6 @@ BuildConflicts: java-devel >= 9
 BuildConflicts: java-headless >= 9
 %else
 BuildRequires:  %{name}-devel
-%endif
-# pulse audio requirements
-%if %{with_pulseaudio}
-BuildRequires:  libpulse-devel >= 0.9.11
-BuildRequires:  pulseaudio >= 0.9.11
 %endif
 
 %description
@@ -345,9 +331,6 @@ this package unless you really need to.
 
 %prep
 %setup -q -n openj9-openjdk-jdk8-%{root_revision} -a 1 -a 2
-%if %{with_pulseaudio}
-%setup -q -D -n openj9-openjdk-jdk8-%{root_revision} -T -a 3
-%endif
 
 # Set up the build tree using the subrepository tarballs
 pwd
@@ -355,10 +338,6 @@ mv openj9-omr-%{omr_revision} omr
 mv openj9-%{openj9_revision} openj9
 
 cp openj9/LICENSE LICENSE.openj9
-
-%if %{with_pulseaudio}
-mv icedtea-sound-%{icedtea_sound_version} icedtea-sound
-%endif
 
 # Remove libraries that are linked
 rm -rvf jdk/src/share/native/java/util/zip/zlib-*
@@ -374,13 +353,10 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch205 -p1
 
 %patch210
-%patch211
-%patch212 -p1
 
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %patch300 -p1
 
@@ -414,6 +390,12 @@ EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 
 bash configure \
+%if 0%{?suse_version} >= 1550
+    CPP=cpp-7 \
+    CXX=g++-7 \
+    CC=gcc-7 \
+    NM=gcc-nm-7 \
+%endif
     --disable-zip-debug-info \
     --with-milestone="fcs" \
     --with-update-version=%{updatever} \
@@ -432,20 +414,14 @@ bash configure \
     --with-boot-jdk=%{_sysconfdir}/alternatives/java_sdk \
     --with-freemarker-jar=%{SOURCE9}
 
-# The combination of FULL_DEBUG_SYMBOLS=0 and ALT_OBJCOPY=/does_not_exist
-# disables FDS for all build configs and reverts to pre-FDS make logic.
-# STRIP_POLICY=none says don't do any stripping. DEBUG_BINARIES=true says
-# ignore all the other logic about which debug options and just do '-g'.
-
 make \
+    JAVAC_FLAGS=-g \
+    LOG=trace \
     DEBUG_BINARIES=true \
-    FULL_DEBUG_SYMBOLS=0 \
-    ZIP_DEBUGINFO_FILES=0 \
-    STRIP_POLICY=none \
-    POST_STRIP_CMD=true \
-    ALT_OBJCOPY=/does_not_exist \
-    LOG=debug \
-    HAS_AUTOCONF=1 \
+    STRIP_POLICY=no_strip \
+    POST_STRIP_CMD="" \
+    WARNINGS_ARE_ERRORS="-Wno-error" \
+    CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error" \
     %{imagestarget} docs
 
 # remove redundant *diz and *debuginfo files
@@ -461,25 +437,6 @@ echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/jre/lib/tz.properties
 if [ -f %{imagesdir}/j2sdk-image/jre/lib/security/cacerts ]; then
         rm %{imagesdir}/j2sdk-image/jre/lib/security/cacerts
 fi
-
-%if %{with_pulseaudio}
-# Build the pulseaudio plugin
-pushd icedtea-sound
-%configure \
-    --with-jdk-home=$JAVA_HOME \
-    --disable-docs
-make %{?_smp_mflags}
-cp icedtea-sound.jar $JAVA_HOME/jre/lib/ext/
-cp build/native/libicedtea-sound.so $JAVA_HOME/jre/lib/%{archinstall}/
-echo "#Config file to enable PulseAudio support" > $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.Clip=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.Port=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.SourceDataLine=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.TargetDataLine=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-popd
-%endif
 
 # Check unlimited policy has been used
 $JAVA_HOME/bin/javac -d . %{SOURCE14}
@@ -618,7 +575,6 @@ find %{buildroot}%{_jvmdir}/%{jredir} -type f -o -type l \
 #see https://bugzilla.redhat.com/show_bug.cgi?id=875408
 NOT_HEADLESS=\
 "%{_jvmdir}/%{jredir}/lib/%{archinstall}/libjsoundalsa.so
-%{_jvmdir}/%{jredir}/lib/%{archinstall}/libicedtea-sound.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libsplashscreen.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libawt_xawt.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libjawt.so"
