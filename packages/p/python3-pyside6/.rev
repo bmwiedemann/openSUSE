@@ -18,4 +18,12 @@
   * 0001-shiboken6-Adapt-to-LLVM-12.01.patch (forwarded request 924859 from cgiboudeaux)</comment>
     <requestid>924863</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab3379b3535f97f22e6f75db4138d397</srcmd5>
+    <version>6.2.1</version>
+    <time>1635877157</time>
+    <user>dimstar_suse</user>
+    <comment>pyside 6.2.1 (forwarded request 928812 from cgiboudeaux)</comment>
+    <requestid>928813</requestid>
+  </revision>
 </revisionlist>

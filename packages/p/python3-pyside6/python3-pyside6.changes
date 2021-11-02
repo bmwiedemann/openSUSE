@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 30 09:41:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/dist/changes-6.2.1
+- Drop upstream changes:
+  * 0001-Fix-hang-in-test-bug_430.py-in-Qt-6.3.patch
+  * 0001-shiboken6-Adapt-to-LLVM-12.01.patch
+
+-------------------------------------------------------------------
 Tue Oct 12 09:51:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patches to fix a test failure...
