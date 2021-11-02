@@ -47,8 +47,8 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(linphone) >= 4.5.0
-BuildRequires:  pkgconfig(mediastreamer) >= 4.5.0
+BuildRequires:  pkgconfig(linphone) >= 5.0.0
+BuildRequires:  pkgconfig(mediastreamer) >= 5.0.0
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -91,6 +91,9 @@ echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.
   -DENABLE_UPDATE_CHECK=OFF \
   -DENABLE_STRICT=OFF       \
   -DENABLE_STATIC=OFF
+#the next two lines are necessary to compile linphone-desktop-4.2.5 with liblinphone 5.0.x
+sed -i '/Video is not yet fully supported/s@enableVideo@setVideoEnabled@' ../linphone-app/src/app/cli/Cli.cpp
+sed -i '/Video is not yet fully supported/s@enableVideo@setVideoEnabled@' ../linphone-app/src/components/conference/ConferenceAddModel.cpp
 %cmake_build
 
 %install

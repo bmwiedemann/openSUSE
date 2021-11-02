@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:57:57 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- allow to build linphone-desktop-4.2.5 with liblinphone 5.0.x
+
+-------------------------------------------------------------------
 Thu Sep 30 13:19:44 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
 
 - add BuildRequires:  pkgconfig(Qt5TextToSpeech)
