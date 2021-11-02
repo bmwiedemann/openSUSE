@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:30:32 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Wed Jul  1 16:36:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.2.0
