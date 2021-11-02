@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-datalake-store
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-datalake-store
-Version:        0.0.51
+Version:        0.0.52
 Release:        0
 Summary:        Microsoft Azure Data Lake Store Client Library
 License:        MIT
