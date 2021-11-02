@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 27 11:39:42 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Split the install section into an install and a check section.
+  Otherwise i[345]86 will not build.
+
+-------------------------------------------------------------------
+Mon Oct  4 13:44:39 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Use the %_pam_moduledir macro in pam_mktemp.spec in order to
+  have the package follow UsrMerge.
+  [bsc#1190953, pam_mktemp.spec]
+
+-------------------------------------------------------------------
 Thu Dec 15 13:52:07 UTC 2011 - coolo@suse.com
 
 - fix license to be in spdx.org format

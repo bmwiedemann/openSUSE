@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mktemp
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           pam_mktemp
-Url:            http://www.openwall.com/pam/
+URL:            http://www.openwall.com/pam/
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  pam-devel
 Requires:       pam
-Provides:       pam-modules:/%_lib/security/pam_mktemp.so
+Provides:       pam-modules:%{_pam_moduledir}/pam_mktemp.so
 Version:        1.1.1
 Release:        0
 Summary:        PAM Module to Provide Per-User Private Directories Under /tmp
@@ -58,22 +59,15 @@ make CFLAGS="$RPM_OPT_FLAGS $EXTRA_CFLAGS -fPIC -DHAVE_SHADOW -DLINUX_PAM" \
 	%{?_smp_mflags}
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_lib}/security
-make DESTDIR=$RPM_BUILD_ROOT install
-#
-# Remove stuff we don't wish to have now:
-#
-rm -rf $RPM_BUILD_ROOT/usr/{include,lib}
-rm -rf $RPM_BUILD_ROOT/%{_lib}/security/*.la
-#
-# On 64bit archs, we need to move same libraries ourself:
-#
-if [ %_lib = lib64 ]; then
-  mv $RPM_BUILD_ROOT/lib/security/* $RPM_BUILD_ROOT/%{_lib}/security/
-fi
+make DESTDIR=%{buildroot} SHARED_LIBDIR=/"%{_lib}" DEVEL_LIBDIR="%{_libdir}" SECUREDIR="%{_pam_moduledir}" install
+# Remove stuff we don't wish to have now. Note that "make" seems to install library files in /usr/lib!
+rm -rf %{buildroot}%{_prefix}/include/security/*.h %{buildroot}/usr/lib/lib*
+
+%check
 # Check for module problems.  Specifically, check that every module we just
 # installed can actually be loaded by a minimal PAM-aware application.
-for module in $RPM_BUILD_ROOT/%{_lib}/security/pam*.so ; do
+export LD_LIBRARY_PATH="%{buildroot}/%{_lib}/"
+for module in %{buildroot}%{_pam_moduledir}/pam*.so ; do
    if ! sh $RPM_SOURCE_DIR/dlopen.sh -lpam -ldl ${module} ; then
       exit 1
    fi
@@ -82,6 +76,6 @@ done
 %files 
 %defattr(-,root,root,755)
 %doc LICENSE README
-%attr(755,root,root) /%{_lib}/security/pam_*.so
+%attr(755,root,root) %{_pam_moduledir}/pam_*.so
 
 %changelog
