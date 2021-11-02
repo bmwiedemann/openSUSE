@@ -1,0 +1,46 @@
+From 8affa48ac7c55ade04713654a22f1c56319b1195 Mon Sep 17 00:00:00 2001
+From: Joel Anderson <joelanderson333@gmail.com>
+Date: Fri, 5 Jun 2020 11:11:03 +0100
+Subject: [PATCH] Fix a potential infinite loop in the Windows resource parser.
+
+	PR 26082
+	* mclex.c (yylex): Add test for an empty input stream.
+---
+ binutils/mclex.c   | 18 ++++++++++--------
+ 1 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/binutils/mclex.c b/binutils/mclex.c
+index 7e0688b07b..1b5d5c374f 100644
+--- a/binutils/mclex.c
++++ b/binutils/mclex.c
+@@ -337,17 +337,19 @@ yylex (void)
+   if (mclex_want_line)
+     {
+       start_token = input_stream_pos;
++      if (input_stream_pos[0] == 0)
++	return -1;
+       if (input_stream_pos[0] == '.'
+ 	  && (input_stream_pos[1] == '\n'
+ 	      || (input_stream_pos[1] == '\r' && input_stream_pos[2] == '\n')))
+-      {
+-	mclex_want_line = FALSE;
+-	while (input_stream_pos[0] != 0 && input_stream_pos[0] != '\n')
+-	  ++input_stream_pos;
+-	if (input_stream_pos[0] == '\n')
+-	  ++input_stream_pos;
+-	return MCENDLINE;
+-      }
++	{
++	  mclex_want_line = FALSE;
++	  while (input_stream_pos[0] != 0 && input_stream_pos[0] != '\n')
++	    ++input_stream_pos;
++	  if (input_stream_pos[0] == '\n')
++	    ++input_stream_pos;
++	  return MCENDLINE;
++	}
+       while (input_stream_pos[0] != 0 && input_stream_pos[0] != '\n')
+ 	++input_stream_pos;
+       if (input_stream_pos[0] == '\n')
+-- 
+2.26.1
+

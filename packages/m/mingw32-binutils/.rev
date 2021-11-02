@@ -7,4 +7,12 @@
     <comment>new package for win32 cross compilation</comment>
     <requestid>749984</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c80863f5dec86ff5ad5592a32982785d</srcmd5>
+    <version>2.33.1</version>
+    <time>1635877139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928737</requestid>
+  </revision>
 </revisionlist>
