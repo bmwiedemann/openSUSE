@@ -17,7 +17,7 @@
 
 
 Name:           aml
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Another Main Loop
 License:        ISC
