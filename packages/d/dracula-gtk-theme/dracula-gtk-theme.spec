@@ -17,7 +17,7 @@
 
 
 Name:           dracula-gtk-theme
-Version:        2.0+git34.2413487
+Version:        2.0+git59.cf9d6aa
 Release:        0
 Summary:        A dark theme for GTK
 License:        GPL-3.0-only
@@ -43,7 +43,8 @@ rm -rf \
     ./gtk-2.0/render-assets.sh          \
     ./gtk-3.20/assets/render-gtk3-assets-hidpi.py    \
     ./gtk-3.20/assets/render-gtk3-assets.py          \
-    ./src
+    ./src                               \
+    ./.gitignore
 
 # Fix executable permissions. We don't need this.
 chmod -R -x+X .

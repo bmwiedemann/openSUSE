@@ -33,4 +33,37 @@
     <comment></comment>
     <requestid>898272</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf532efac1f04c6127df3b4b7ae9b9f5</srcmd5>
+    <version>2.0+git59.cf9d6aa</version>
+    <time>1635877134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+git59.cf9d6aa:
+  * Gnome-shell: Fix no hover effect in search results item
+  * KDE: Improve input appearance
+  * Gnome: Fix tabs color in chrome, fixes #126
+  * KDE: Improve sddm input appearance
+  * Gnome-shell: Fix dark text in entries placeholders, fixes #48
+  * KDE: Update sddm theme
+  * KDE: Remove unnecessary file in sddm theme
+  * Gnome-shell: Fix white popups on shell theme, fixes #137, fixes #119, fixes #97
+  * Gnome-shell: Fix color of horizontal workspace switcher, fix #133
+  * KDE: Fix KeyboardLayoutButton in LockScreen
+  * KDE: Update osd tyle, fixes #114
+  * Gnome-shell v40: Fix visual glithes in calendar and icon grid
+  * Rebuild gtk theme
+  * Fix missing bracket
+  * KDE: Colorscheme -  Improve alternate background color
+  * Update _xfce.scss
+  * Update _xfce.scss
+  * Update _thunar.scss
+  * Gnome-shell: Add syles for pop-os/cosmic
+  * KDE: Fix low contrast in logout screen
+  * Gnome-shell v40: Improve window caption appearance
+  * KDE: Fix color inconsistency in some widgets
+  * Gnome-shell: Fix padding bug on selected window preview at activities window
+  * Gnome: Add initial support to v40
+</comment>
+    <requestid>928675</requestid>
+  </revision>
 </revisionlist>
