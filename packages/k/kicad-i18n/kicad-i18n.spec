@@ -17,13 +17,13 @@
 
 
 Name:           kicad-i18n
-Version:        5.1.10
+Version:        5.1.11
 Release:        0
 Summary:        Localization for KiCad
 # license same as KiCad package
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          System/Localization
-URL:            https://kicad-pcb.org
+URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gettext
