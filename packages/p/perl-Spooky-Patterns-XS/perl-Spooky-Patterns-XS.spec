@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spooky-Patterns-XS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Algorithm::Diff)
 BuildRequires:  perl(File::Slurp)
 BuildRequires:  perl(Test::Deep)
-ExclusiveArch:  x86_64 ppc64le
+ExclusiveArch:  x86_64 aarch64
 %{perl_requires}
 
 %description
