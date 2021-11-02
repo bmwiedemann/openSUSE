@@ -19,18 +19,16 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.0.35
+Version:        5.0.36
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
-Source:         https://github.com/BelledonneCommunications/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-GCC-11.patch
-Patch2:         fix-srtp2-linphone.patch
+Patch1:         fix-srtp2-linphone.patch
 BuildRequires:  bcmatroska2-devel >= 0.23.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -50,13 +48,13 @@ BuildRequires:  spandsp-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
 BuildRequires:  pkgconfig(libbcg729)
-BuildRequires:  pkgconfig(libbzrtp) >= 1.0.6
+BuildRequires:  pkgconfig(libbzrtp) >= 5.0.0
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 1.0.2
+BuildRequires:  pkgconfig(ortp) >= 5.0.0
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(theora)
@@ -66,6 +64,7 @@ BuildRequires:  pkgconfig(xv)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libjpeg-devel >= 8.2.0
 %endif
+BuildRequires:  broadvoice16-devel
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0

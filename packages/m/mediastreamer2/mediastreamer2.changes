@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 19 23:49:34 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * Fix tone manager issues and crash with a full refactoring
+- remove 0001-Fix-build-with-GCC-11.patch
+- add BuildRequires:  broadvoice16-devel
+
+-------------------------------------------------------------------
 Fri Oct 15 05:44:57 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.35:
