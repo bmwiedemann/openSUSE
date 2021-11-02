@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 30 13:13:23 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.11
+  See https://kicad.org/blog/2021/11/KiCad-5.1.11-Release/ for details.
+- Replace references to old domain (hijacked) with kicad.org
+  https://www.kicad.org/blog/2021/10/Avoid-links-to-former-kicad-domain/
+
+-------------------------------------------------------------------
 Wed Apr 28 15:37:06 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.10
