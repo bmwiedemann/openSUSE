@@ -8421,7 +8421,6 @@ unsorted:
   - leechcraft 
   - leechcraft-advancednotifications 
   - leechcraft-aggregator 
-  - leechcraft-aggregator-bodyfetch 
   - leechcraft-aggregator-webaccess 
   - leechcraft-anhero 
   - leechcraft-auscrie 
@@ -8460,9 +8459,6 @@ unsorted:
   - leechcraft-blasq-deathnote 
   - leechcraft-blasq-rappor 
   - leechcraft-blasq-vangog 
-  - leechcraft-blogique 
-  - leechcraft-blogique-hestia 
-  - leechcraft-blogique-metida 
   - leechcraft-certmgr 
   - leechcraft-cpuload 
   - leechcraft-cstp 
@@ -8495,7 +8491,6 @@ unsorted:
   - leechcraft-laughty 
   - leechcraft-launchy 
   - leechcraft-lemon 
-  - leechcraft-lhtr 
   - leechcraft-liznoo 
   - leechcraft-lmp 
   - leechcraft-lmp-brainslugz 
@@ -8528,7 +8523,6 @@ unsorted:
   - leechcraft-poshuku 
   - leechcraft-poshuku-autosearch 
   - leechcraft-poshuku-cleanweb 
-  - leechcraft-poshuku-dcac 
   - leechcraft-poshuku-fatape 
   - leechcraft-poshuku-filescheme 
   - leechcraft-poshuku-fua 
@@ -8537,7 +8531,6 @@ unsorted:
   - leechcraft-poshuku-onlinebookmarks-delicious 
   - leechcraft-poshuku-onlinebookmarks-readitlater 
   - leechcraft-poshuku-qrd 
-  - leechcraft-poshuku-speeddial 
   - leechcraft-poshuku-webengineview 
   - leechcraft-rosenthal 
   - leechcraft-sb2 
@@ -22011,6 +22004,7 @@ unsorted:
   - python36-azure-mgmt-testbase 
   - python36-azure-mgmt-timeseriesinsights 
   - python36-azure-mgmt-trafficmanager 
+  - python36-azure-mgmt-videoanalyzer 
   - python36-azure-mgmt-vmwarecloudsimple 
   - python36-azure-mgmt-web 
   - python36-azure-monitor 
@@ -24816,6 +24810,7 @@ unsorted:
   - python38-azure-mgmt-testbase 
   - python38-azure-mgmt-timeseriesinsights 
   - python38-azure-mgmt-trafficmanager 
+  - python38-azure-mgmt-videoanalyzer 
   - python38-azure-mgmt-vmwarecloudsimple 
   - python38-azure-mgmt-web 
   - python38-azure-monitor 
@@ -27793,6 +27788,7 @@ unsorted:
   - python39-azure-mgmt-testbase 
   - python39-azure-mgmt-timeseriesinsights 
   - python39-azure-mgmt-trafficmanager 
+  - python39-azure-mgmt-videoanalyzer 
   - python39-azure-mgmt-vmwarecloudsimple 
   - python39-azure-mgmt-web 
   - python39-azure-monitor 
@@ -30229,6 +30225,7 @@ unsorted:
   - python39-weblib 
   - python39-webruntime 
   - python39-websocket-client 
+  - python39-websockets 
   - python39-wfuzz 
   - python39-whatever 
   - python39-whatthepatch 
@@ -32088,8 +32085,6 @@ unsorted:
   - smproxy 
   - smssend 
   - smtpping 
-  - smtube 
-  - smtube-lang 
   - smuxi 
   - smuxi-engine 
   - smuxi-engine-campfire 
