@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 25 21:19:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.4
+  * Small update to fix a bug and being slightly clearer on the
+    network legend unit.
+- Update to version 0.6.3
+  * Small release with some bug fixes and a change in how we
+    calculate Linux memory usage.
+- Update to version 0.6.2
+  Features
+  * Add F9 key as an alternative process kill key.
+  Bug Fixes
+  * Fixes two bugs causing the battery widget colours and mouse
+    events to be broken.
+
+-------------------------------------------------------------------
 Thu May 13 16:17:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.1
