@@ -25,15 +25,23 @@
 %endif
 
 Name:           deepin-calendar
-Version:        5.8.0.19
+Version:        5.8.16
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://github.com/linuxdeepin/dde-calendar
 Source0:        https://github.com/linuxdeepin/dde-calendar/archive/%{version}/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-hardcode-path.patch hillwood@opensuse.org
+# https://github.com/linuxdeepin/dde-calendar/pull/49
+Patch0:         fix-hardcode-path.patch
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
@@ -60,8 +68,7 @@ The deepin-calendar is a calendar for Deepin Desktop Environment.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
-# %patch0 -p1
+%autosetup -p1 -n %{_name}-%{version}
 sed -i 's/lrelease)/lrelease-qt5)/g' CMakeLists.txt
 sed -i 's/lupdate)/lupdate-qt5)/g' CMakeLists.txt
 sed -i '/<QQueue>/a #include <QMouseEvent>' calendar-client/src/widget/dayWidget/daymonthview.cpp \
@@ -83,6 +90,7 @@ sed -i '/include <QMessageBox>/a #include <QWheelEvent>' calendar-client/src/wid
 sed -i 's/1.2.2/%{version}/g' calendar-client/CMakeLists.txt
 sed -i 's/Exec=dde-calendar/Exec=env QT_QPA_PLATFORMTHEME=deepin dde-calendar/g' \
 calendar-client/assets/dde-calendar.desktop
+sed -i 's/5.5//g' calendar-client/CMakeLists.txt calendar-service/CMakeLists.txt
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
@@ -103,7 +111,6 @@ install -m0644 calendar-client/assets/resources/icon/%{_name}.svg \
 %doc README.md
 %license LICENSE
 %{_bindir}/%{_name}
-%{_prefix}/lib/deepin-aiassistant
 %{_datadir}/applications/%{_name}.desktop
 %{_sysconfdir}/xdg/autostart/%{_name}-service.desktop
 %dir %{_prefix}/lib/deepin-daemon
@@ -112,7 +119,10 @@ install -m0644 calendar-client/assets/resources/icon/%{_name}.svg \
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/%{_name}.svg
-%{_datadir}/deepin-manual
+%{_datadir}/deepin-manual/manual-assets/application/%{_name}
+%dir %{_libdir}/deepin-aiassistant
+%dir %{_libdir}/deepin-aiassistant/serivce-plugins
+%{_libdir}/deepin-aiassistant/serivce-plugins/libuosschedulex-plugin.so
 
 %files lang
 %defattr(-,root,root,-)

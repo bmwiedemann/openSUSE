@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 28 03:34:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.16
+  * Update manual documents
+  * Fix bugs
+- Add fix-hardcode-path.patch
+
+-------------------------------------------------------------------
+Thu Jul 29 08:01:45 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.12
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Jun  3 13:17:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Stop owning directories provided by filesystem and other packages
+  (every dir should only have one owner) (boo#1184786)   
+
+-------------------------------------------------------------------
 Sat May  1 13:15:45 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.0.19
