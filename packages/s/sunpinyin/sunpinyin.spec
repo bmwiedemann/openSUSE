@@ -1,7 +1,7 @@
 #
 # spec file for package sunpinyin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sunpinyin
-Version:        2.0.99
+Version:        2.0.99.2
 Release:        0
 Summary:        A Statistical Language Model Based Chinese Input Method
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/sunpinyin/sunpinyin
-Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc1/%{name}-3.0.0-rc1.tar.gz
+URL:            https://github.com/sunpinyin/sunpinyin
+Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc2/%{name}-3.0.0-rc2.tar.gz
 # https://sourceforge.net/projects/open-gram
 Source1:        http://jaist.dl.sourceforge.net/project/open-gram/lm_sc.3gm.arpa-20140820.tar.bz2
 Source2:        http://jaist.dl.sourceforge.net/project/open-gram/dict.utf8-20131214.tar.bz2
 Source3:        sunpinyin-dictgen-local.mk.in
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org do not download online
+# PATCH-FIX-OPENSUSE marguerite@opensuse.org do not download online
 Patch1:         no-download.patch
-#PATCH-FIX-UPSTREAM bmwiedemann@opensuse.org make build reproducible
-Patch2:         reproducible.patch
+# PATCH-FIX-UPSTREAM bmwiedemann@opensuse.org make build reproducible
+# Patch2:         reproducible.patch
 # PATCH-FIx-UPSTREAM sunpinyin-scons-on-py3.patch dimstar@opensuse.org -- Fix build with scons using python3 as interpreter
-Patch3:         sunpinyin-scons-on-py3.patch
+# Patch3:         sunpinyin-scons-on-py3.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  scons
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(sqlite3)
+Provides:       locale(ibus:zh_CN;zh_SG)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Sunpinyin is a statistical language model based Chinese input method engine. to model the Chinese language, it use a backoff bigram and trigram language model.
+Sunpinyin is a statistical language model based Chinese input method engine. to
+model the Chinese language, it use a backoff bigram and trigram language model.
 
 %package -n lib%{name}3
 Summary:        Libraries for Sunpinyin
@@ -51,14 +53,16 @@ Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 
 %description -n lib%{name}3
-Sunpinyin is a statistical language model based Chinese input method engine. to model the Chinese language, it use a backoff bigram and trigram language model.
+Sunpinyin is a statistical language model based Chinese input method engine. to
+model the Chinese language, it use a backoff bigram and trigram language model.
 
 %package data
 Summary:        Data files for Sunpinyin
 Group:          System/I18n/Chinese
 
 %description data
-Sunpinyin is a statistical language model based Chinese input method engine. to model the Chinese language, it use a backoff bigram and trigram language model.
+Sunpinyin is a statistical language model based Chinese input method engine. to
+model the Chinese language, it use a backoff bigram and trigram language model.
 
 This package provides data files needed by it.
 
@@ -67,7 +71,8 @@ Summary:        Dictionary tools for Sunpinyin
 Group:          System/I18n/Chinese
 
 %description tools
-Sunpinyin is a statistical language model based Chinese input method engine. to model the Chinese language, it use a backoff bigram and trigram language model.
+Sunpinyin is a statistical language model based Chinese input method engine. to
+model the Chinese language, it use a backoff bigram and trigram language model.
 
 This package provides dictionary tools needed by it.
 
@@ -80,15 +85,13 @@ Provides:       lib%{name}-devel = %{version}
 Obsoletes:      lib%{name}-devel < %{version}
 
 %description devel
-Sunpinyin is a statistical language model based Chinese input method engine. to model the Chinese language, it use a backoff bigram and trigram language model.
+Sunpinyin is a statistical language model based Chinese input method engine. to
+model the Chinese language, it use a backoff bigram and trigram language model.
 
 This package provides development headers for it.
 
 %prep
-%setup -q -n %{name}-3.0.0-rc1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}-3.0.0-rc2
 cp -r %{SOURCE1} .
 cp -r %{SOURCE2} .
 cp -r %{SOURCE3} src
@@ -118,7 +121,8 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %files -n lib%{name}3
 %defattr(-,root,root)
-%doc AUTHORS NEWS COPYING LGPL.LICENSE OPENSOLARIS.LICENSE README.md TODO
+%doc AUTHORS NEWS README.md TODO
+%license COPYING LGPL.LICENSE OPENSOLARIS.LICENSE
 %{_libdir}/lib%{name}.so.*
 
 %files data

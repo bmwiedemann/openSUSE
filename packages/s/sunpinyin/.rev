@@ -117,4 +117,12 @@ When I sr'ed it the blasted sourceservice kicked in, and pulled down the source 
     <comment></comment>
     <requestid>618066</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bf931539ffc3f969ca5bee73d78c3e94</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1635877132</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop sunpinyin-scons-on-py3.patch and reproducible.patch. Merge by upstream. (forwarded request 928655 from hillwood)</comment>
+    <requestid>928656</requestid>
+  </revision>
 </revisionlist>
