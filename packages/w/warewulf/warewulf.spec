@@ -94,7 +94,9 @@ BuildRequires:  device-mapper-devel
 BuildRequires:  e2fsprogs
 BuildRequires:  haveged
 BuildRequires:  ipmitool
+%if 0%{?full_build}
 BuildRequires:  ipxe-bootimgs
+%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  libtirpc-devel
 BuildRequires:  libuuid-devel

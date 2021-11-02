@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  2 16:16:13 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Include ipxe-bootimgs for %%full_build architectures only:
+  On Leap/SLE 15, it seems to be available for x86_64 only.
+
+-------------------------------------------------------------------
 Mon Oct  4 18:08:59 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix minor issues:
