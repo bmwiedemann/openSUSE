@@ -2,7 +2,7 @@ Index: motion-release-4.3.2/data/motion.service.in
 ===================================================================
 --- motion-release-4.3.2.orig/data/motion.service.in
 +++ motion-release-4.3.2/data/motion.service.in
-@@ -23,6 +23,17 @@ Documentation=man:motion(1)
+@@ -23,6 +23,16 @@ Documentation=man:motion(1)
  After=local-fs.target network.target
  
  [Service]
@@ -10,7 +10,6 @@ Index: motion-release-4.3.2/data/motion.service.in
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
