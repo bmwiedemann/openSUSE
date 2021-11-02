@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-sunpinyin
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,15 @@
 
 
 Name:           ibus-sunpinyin
-Version:        2.0.99
+Version:        2.0.99.2
 Release:        0
 Summary:        Sunpinyin module for ibus
-License:        LGPL-2.1-only OR CDDL-1.0
+License:        CDDL-1.0 OR LGPL-2.1-only
 Group:          System/I18n/Chinese
-Url:            https://github.com/sunpinyin/sunpinyin
-Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc1/sunpinyin-3.0.0-rc1.tar.gz
-# PATCH-FIX-UPSTREAM ibus-sunpinyin-scons-on-py3.patch dimstar@opensuse.org -- Fix build with scons using python3 as interpreter
-Patch0:         ibus-sunpinyin-scons-on-py3.patch
-# PATCH-FIX-UPSTREAM ibus-sunpinyin-migrate-to-python3.patch hillwood@opensuse.org -- Use python3, python2 is EOF
-Patch1:         ibus-sunpinyin-migrate-to-python3.patch
+URL:            https://github.com/sunpinyin/sunpinyin
+Source:         https://github.com/sunpinyin/sunpinyin/archive/v3.0.0-rc2/sunpinyin-3.0.0-rc2.tar.gz
 # PATCH-FIX-UPSTREAM ibus-sunpinyin-fix-libexecdir.patch hillwood@opensuse.org -- libexecdir should be in %{_libdir}/ibus/
-Patch2:         ibus-sunpinyin-fix-libexecdir.patch
+Patch0:         ibus-sunpinyin-fix-libexecdir.patch
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  scons >= 1.2.0
@@ -46,10 +42,7 @@ ibus-sunpinyin is a wrapper around SunPinyin which enables user to use
 SunPinyin with IBus framework.
 
 %prep
-%setup -q -n sunpinyin-3.0.0-rc1
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n sunpinyin-3.0.0-rc2
 sed -i "s/LIBEXECDIR'\].*ibus-sunpinyin.*/LIBEXECDIR'\]/" SConstruct
 
 %build
@@ -72,7 +65,7 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/setup/main.py
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%doc wrapper/ibus/README 
+%doc wrapper/ibus/README
 %license wrapper/ibus/COPYING wrapper/ibus/LGPL.LICENSE wrapper/ibus/OPENSOLARIS.LICENSE
 %{_libdir}/ibus/ibus-engine-sunpinyin
 %{_libdir}/ibus/ibus-setup-sunpinyin
