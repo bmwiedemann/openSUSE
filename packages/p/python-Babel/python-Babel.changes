@@ -12,8 +12,9 @@ Thu Sep 30 15:35:45 UTC 2021 - Stefan Schubert <schubi@suse.de>
 Tue May 11 21:40:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:
-  * The internal locale-data loading functions now validate the name of the
-    locale file to be loaded and only allow files within Babel's data directory.  
+  * bsc#1185768 (CVE-2021-42771) The internal locale-data loading
+    functions now validate the name of the locale file to be
+    loaded and only allow files within Babel's data directory.
 
 -------------------------------------------------------------------
 Fri Mar  5 10:31:45 UTC 2021 - Markéta Machová <mmachova@suse.com>
