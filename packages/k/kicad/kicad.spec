@@ -26,12 +26,12 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.10
+Version:        5.1.11
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-URL:            https://kicad-pcb.org
+URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{version}/kicad-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE davejplater@gmail.com -kicad-suse-help-path.patch - kicad looks in /usr/share/doc/kicad for help files and doesn't find them.
 # this patch adds packges/ befor kicad and enables help to function.
@@ -82,6 +82,7 @@ Requires:       kicad-symbols = %{compatversion}
 Requires:       kicad-footprints = %{compatversion}
 # KiCad functions without these packages
 Recommends:     kicad-packages3D = %{compatversion}
+Recommends:     kicad-i18n = %{version}
 Recommends:     kicad-templates = %{compatversion}
 Obsoletes:      kicad = 20140120
 Provides:       kicad = %{compatversion}
