@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-system-monitor
-Version:        5.8.2
+Version:        5.8.15
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
@@ -31,11 +31,20 @@ Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
 Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
+Source2:        %{name}.svg
+# PATCH-FIX-UPSTREAN fix-return-type-errors.patch hillwood@opensuse.org
+Patch0:         fix-return-type-errors.patch
+%ifarch ppc ppc64 ppc64le s390 s390x
+BuildRequires:  deepin-desktop-base
+%else
+BuildRequires:  deepin-manual
+%endif
 BuildRequires:  appstream-glib
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
 BuildRequires:  dtkcore
 BuildRequires:  fdupes
+BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libcap-devel
@@ -49,13 +58,17 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dde-dock)
+BuildRequires:  pkgconfig(dframeworkdbus)
 BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwm)
+BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
@@ -75,20 +88,21 @@ Recommends:     %{name}-lang
 deepin-system-monitor is a simple process and system monitor for the Deepin
 Desktop.
 
+%package -n deepin-dock-plugin-system-monitor
+Summary:        The system monitor plugin of deepin dock
+Group:          System/GUI/Other
+Requires:       %{name} = %{version}
+Requires:       deepin-dock
+
+%description -n deepin-dock-plugin-system-monitor
+The package provide system monitor plugin for deepin dock
+
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-system-monitor/g' \
-translations/desktop/%{name}.desktop
-sed -i 's/5.5//g' src/CMakeLists.txt
-
-%if 0%{?suse_version} > 1500
-# Workaround build failure with GCC 10
-sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
-sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
-sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
-%endif
+deepin-system-monitor-main/translations/desktop/%{name}.desktop
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
@@ -97,6 +111,7 @@ sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
 %install
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dm644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %find_lang %{name} --with-qt
 %suse_update_desktop_file -r %{name} QT System Monitor
 %fdupes %{buildroot}%{_datadir}
@@ -104,20 +119,30 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %files
 %license LICENSE COPYING
 %doc README.md CHANGELOG.md
+%config %{_sysconfdir}/xdg/autostart/%{name}-*.desktop
 %{_bindir}/%{name}
+%{_bindir}/%{name}-*
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
-%dir %{_datadir}/icons/hicolor/scalable/apps
-%{_datadir}/icons/hicolor/scalable/apps/deepin-system-monitor.svg
-%dir %{_datadir}/deepin-system-monitor
-%dir %{_datadir}/deepin-system-monitor/translations
-%{_datadir}/deepin-system-monitor/translations/deepin-system-monitor.qm
+%{_datadir}/deepin-manual/manual-assets/application/%{name}
+%{_datadir}/glib-2.0/schemas/com.deepin.*
+%{_datadir}/dbus-1/services/com.deepin.SystemMonitor.Daemon.service
+%{_datadir}/dbus-1/services/com.deepin.SystemMonitorPluginPopup.service
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+
+%files -n deepin-dock-plugin-system-monitor
+%dir %{_prefix}/lib/dde-dock
+%dir %{_prefix}/lib/dde-dock/plugins
+%{_prefix}/lib/dde-dock/plugins/libdeepin-system-monitor-plugin.so
 
 %files lang -f %{name}.lang
 # RPM currently can not handle Asturian
+%dir %{_datadir}/deepin-system-monitor
+%dir %{_datadir}/deepin-system-monitor/translations
+%{_datadir}/deepin-system-monitor/translations/deepin-system-monitor.qm
 %lang(ast) %{_datadir}/deepin-system-monitor/translations/deepin-system-monitor_ast.qm
 
 %changelog
