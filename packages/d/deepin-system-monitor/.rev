@@ -84,4 +84,12 @@
     <comment> (forwarded request 910947 from hillwood)</comment>
     <requestid>910948</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84e84abb3611a9ff100569d00f201d87</srcmd5>
+    <version>5.8.15</version>
+    <time>1635956761</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-return-type-errors.patch. (forwarded request 928897 from hillwood)</comment>
+    <requestid>928898</requestid>
+  </revision>
 </revisionlist>
