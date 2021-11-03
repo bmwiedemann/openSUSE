@@ -1,7 +1,7 @@
 #
 # spec file for package man-pages-zh_CN
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           man-pages-zh_CN
-Version:        1.5.2.1
+Version:        1.6.3.6
 Release:        0
 Summary:        Simplified Chinese Linux man pages
-License:        GFDL-1.3+
+License:        GFDL-1.3-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/marguerite/man-pages-zh_CN
-Source:         https://github.com/marguerite/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+URL:            https://github.com/man-pages-zh/manpages-zh
+Source:         %{URL}/archive/v%{version}/manpages-zh-%{version}.tar.gz
 BuildRequires:  libtool
-BuildRequires:  xz
+BuildRequires:  opencc
+BuildRequires:  python3
 Provides:       locale(man:zh)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -33,24 +34,21 @@ BuildArch:      noarch
 %description
 Modern Linux man pages localization project for Chinese language.
 
-It's based on manpages-zh project, a successor for CMPP linux man 
-pages translation project (discontinued), and Linux CN linux man 
+It's based on manpages-zh project, a successor for CMPP linux man
+pages translation project (discontinued), and Linux CN linux man
 pages translation project, with some new addons from openSUSE
 maintainers.
 
 %prep
-%setup -q
+%setup -q -n manpages-zh-%{version}
 
 %build
-./autogen.sh
+autoreconf -fiv
 %configure --disable-zhtw
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
-# remove man pages packaged somewhere else
-for man in apropos.1 man.1 whatis.1; do
-  rm %{buildroot}%{_mandir}/zh_CN/man1/$man
-done
+rm -rf %{buildroot}%{_datadir}/doc/manpages-zh
 
 %files
 %defattr(-,root,root)
