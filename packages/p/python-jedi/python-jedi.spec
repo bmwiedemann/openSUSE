@@ -30,8 +30,8 @@ Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM Support pytest completion for Python 3.9 -- gh#davidhalter/jedi#1699
 Patch0:         https://github.com/davidhalter/jedi/commit/85ec94cf.patch#/jedi-py39-pytest.patch
 BuildRequires:  %{python_module parso >= 0.8.0}
-# need pytest 5 https://github.com/davidhalter/jedi/issues/1660
-BuildRequires:  %{python_module pytest < 6.0.0}
+# need pytest <6 https://github.com/davidhalter/jedi/issues/1660; pytest4 in Leap cannot work with pluggy 1.0 in :backports
+BuildRequires:  %{python_module pytest5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes

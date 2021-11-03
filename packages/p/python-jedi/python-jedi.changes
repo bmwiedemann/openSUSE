@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 31 15:56:52 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Force pytest5 because it has the pluggy<1 pin patched out
+
+-------------------------------------------------------------------
 Sat Mar 13 13:33:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add jedi-py39-pytest.patch to support Python 3.9
