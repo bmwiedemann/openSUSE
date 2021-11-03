@@ -434,4 +434,13 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>910472</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>b1691210d505f4943e547b267a407245</srcmd5>
+    <version>5.9.3</version>
+    <time>1635956717</time>
+    <user>dimstar_suse</user>
+    <comment>- Use custom hypothesis profile obs in order to suppress failing
+  health checks (forwarded request 928402 from bnavigator)</comment>
+    <requestid>928403</requestid>
+  </revision>
 </revisionlist>

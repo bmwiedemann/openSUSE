@@ -80,6 +80,16 @@ too.
 %setup -q -n isort-%{version}
 chmod -x LICENSE
 
+echo "
+# increase test deadline for slow obs executions
+import hypothesis
+hypothesis.settings.register_profile(
+    'obs',
+    deadline=5000,
+    suppress_health_check=[hypothesis.HealthCheck.too_slow]
+)
+" >> tests/conftest.py
+
 %build
 %pyproject_wheel
 
@@ -131,6 +141,7 @@ done
 pytest-%{$python_bin_suffix} -v \
          -W "ignore::UserWarning" \
          -W "ignore::DeprecationWarning" \
+         --hypothesis-profile="obs" \
          ${ignoretests} \
          -k "not (${donttest} ${$python_donttest})"
 }

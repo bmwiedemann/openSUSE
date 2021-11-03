@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 31 16:49:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Use custom hypothesis profile obs in order to suppress failing
+  health checks
+
+-------------------------------------------------------------------
 Fri Jul 30 08:30:57 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 5.9.3:
