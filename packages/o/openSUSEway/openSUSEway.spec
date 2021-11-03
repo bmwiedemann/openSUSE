@@ -20,7 +20,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
@@ -29,7 +29,6 @@ URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE add-configuration-for-play-pause-next-prev-multimedi.patch gh#openSUSE/openSUSEway#41 mcepl@suse.com
 # Add multimedia keys configuration
-Patch0:         add-configuration-for-play-pause-next-prev-multimedi.patch
 BuildArch:      noarch
 BuildRequires:  aaa_base
 BuildRequires:  systemd

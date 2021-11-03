@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:01:48 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- New in 0.14 release
+  * Add configuration for Play/Pause, Next, Prev multimedia keys. by @mcepl in #41i
+    ** removes add-configuration-for-play-pause-next-prev-multimedi.patch
+  * Allow users different MPRIS handler for multimedia keys. by @mcepl in #43
+  * number of packages to update indicator to waybar by @denisok in #44
+  * add style to gtkgreet to match openSUSEway theme by @denisok in #45
+  * Use late evaluation of $term variable for bindsym $mod+Return by @mcepl in #46
+  * Fixes greeter if GDM installed. GDM messes up tty1 by @denisok in #53.
+
+-------------------------------------------------------------------
 Mon Apr 26 21:13:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Added add-configuration-for-play-pause-next-prev-multimedi.patch
