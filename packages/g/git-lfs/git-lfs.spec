@@ -18,13 +18,15 @@
 
 %define rb_build_ruby_abis     %{rb_default_ruby_abi}
 %define rb_build_versions      %{rb_default_ruby}
+
 %if 0%{?suse_version} >= 1550 || (0%{?suse_version} >= 1500 && 0%{?is_opensuse})
 %bcond_with    build_docs
 %else
 %bcond_with    build_docs
 %endif
+
 Name:           git-lfs
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Git extension for versioning large files
 License:        MIT
