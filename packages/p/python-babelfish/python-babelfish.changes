@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  2 10:39:37 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sat Mar 14 08:56:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
