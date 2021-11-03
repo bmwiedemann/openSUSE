@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:22:50 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest_arch rpm macro
+
+-------------------------------------------------------------------
 Thu Jul 23 03:26:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Switch to PyPI release

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysha3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tiran/pysha3
 Source:         https://files.pythonhosted.org/packages/source/p/pysha3/pysha3-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +46,11 @@ This is a python wrapper library for SHA-3 (keccak).
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+# see tests.test_main
+classes="SHA3_224Tests or SHA3_256Tests or SHA3_384Tests or SHA3_512Tests or\
+         Shake_128Tests or Shake_256Tests or\
+         Keccak_224Tests or Keccak_256Tests or Keccak_384Tests or Keccak_512Tests"
+%pytest_arch -k "$classes" tests.py
 
 %files %{python_files}
 %doc CHANGES.txt README.txt
