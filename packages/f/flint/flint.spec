@@ -17,8 +17,8 @@
 
 
 Name:           flint
-%define lname	libflint15
-Version:        2.7.1
+%define lname	libflint16
+Version:        2.8.2
 Release:        0
 Summary:        C library for doing number theory
 License:        LGPL-2.1-or-later
@@ -87,7 +87,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libflint.so.15*
+%_libdir/libflint.so.*
 %license LICENSE
 
 %files devel

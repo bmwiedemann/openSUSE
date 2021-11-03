@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  1 13:16:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 2.8.2
+  * New fq_default module which combines existing finite fields
+  * Speedups for linear algebra when using BLAS and/or threading
+  * New series expansions with coefficients in QQ
+  * Faster CRT
+  * New fmpz_mod_mpoly module
+  * Polynomial factoring improvements over ZZ
+  * Add fmpz_mat_can_solve_fflu and fmpz_mat_can_solve
+  * Implement nmod_mat_det_howell
+  * Add fmpz_mod_poly_divides, fmpz_divides, n_divides, nmod_poly_divides
+  * Interface for multiplying matrices by vectors and arrays
+  * Nearest Euclidean division
+  * Subresultant GCD
+  * XGCD over ZZ with canonical Bezout coefficients
+  * Add fmpz_mpoly resultant and discriminant
+  * Add deprecations list
+  * Add FLINT_SGN macro
+  * Speedups for series computations
+  * Improve Taylor shift
+  * Numerous bug fixes and speedups
+
+-------------------------------------------------------------------
 Fri May 07 08:41:53 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to release 2.7.1
