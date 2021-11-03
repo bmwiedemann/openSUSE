@@ -19,4 +19,18 @@
     <comment>- fixed JIRA number in previous changelog</comment>
     <requestid>923066</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6c5bb591a5342f39b7a895861d08557c</srcmd5>
+    <version>2021.6.0</version>
+    <time>1635956737</time>
+    <user>dimstar_suse</user>
+    <comment>- remove third-party-programs.txt during setup
+  * When not building on Windows using Visual Studio, the Visual
+    Studio runtimes are not needed to be installed so we can remove
+    these licenses from being mentioned. On Linux we're using
+    cmake/make/gcc for building/installation and we don't have any
+    (need for) MS Visual Studio runtime. (oneapi-src/oneVPL issue#27)
+    --&gt; https://github.com/oneapi-src/oneVPL/issues/27</comment>
+    <requestid>928847</requestid>
+  </revision>
 </revisionlist>

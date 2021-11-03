@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  2 18:49:30 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- remove third-party-programs.txt during setup
+  * When not building on Windows using Visual Studio, the Visual
+    Studio runtimes are not needed to be installed so we can remove
+    these licenses from being mentioned. On Linux we're using
+    cmake/make/gcc for building/installation and we don't have any
+    (need for) MS Visual Studio runtime. (oneapi-src/oneVPL issue#27)
+    --> https://github.com/oneapi-src/oneVPL/issues/27
+
+-------------------------------------------------------------------
 Mon Oct  4 15:20:51 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed JIRA number in previous changelog

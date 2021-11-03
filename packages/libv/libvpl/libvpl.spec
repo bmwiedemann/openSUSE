@@ -64,6 +64,14 @@ This package contains example applications for the oneAPI Video Processing Libra
 
 %prep
 %autosetup -p1 -n oneVPL-%{version}
+# When not building on Windows using Visual Studio, the Visual
+# Studio runtimes are not needed to be installed so we can remove
+# these licenses from being mentioned. On Linux we're using
+# cmake/make/gcc for building/installation and we don't have any
+# (need for) MS Visual Studio runtime. (oneapi-src/oneVPL issue#27)
+# --> https://github.com/oneapi-src/oneVPL/issues/27
+rm third-party-programs.txt
+touch third-party-programs.txt
 
 %build
 mkdir -p build 
