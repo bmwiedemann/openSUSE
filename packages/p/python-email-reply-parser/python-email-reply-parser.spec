@@ -1,7 +1,7 @@
 #
 # spec file for package python-email-reply-parser
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-email-reply-parser
-Version:        0.5.9
+Version:        0.5.12
 Release:        0
-License:        MIT
 Summary:        Email reply parser
-Url:            https://github.com/zapier/email-reply-parser
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/zapier/email-reply-parser
 Source:         https://github.com/zapier/email-reply-parser/archive/v%{version}.tar.gz#/email_reply_parser-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,7 +46,7 @@ Email reply parser.
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.md
