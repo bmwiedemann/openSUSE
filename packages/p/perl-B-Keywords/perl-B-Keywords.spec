@@ -18,9 +18,9 @@
 
 %define cpan_name B-Keywords
 Name:           perl-B-Keywords
-Version:        1.22
+Version:        1.23
 Release:        0
-#Upstream:  2017-2019 Reini Urban, All rights reserved. This program is free software; you can redistribute it and/or modify it under the terms of either: a) the GNU General Public License as published by the Free Software Foundation; version 2, or b) the "Artistic License" which comes with Perl.
+#Upstream:  2017-2021 Reini Urban, All rights reserved. This program is free software; you can redistribute it and/or modify it under the terms of either: a) the GNU General Public License as published by the Free Software Foundation; version 2, or b) the "Artistic License" which comes with Perl.
 Summary:        Lists of reserved barewords and symbol names
 License:        GPL-2.0-only OR Artistic-1.0
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,13 +34,16 @@ BuildRequires:  perl-macros
 %description
 'B::Keywords' supplies several arrays of exportable keywords: '@Scalars',
 '@Arrays', '@Hashes', '@Filehandles', '@Symbols', '@Functions',
-'@Barewords', '@TieIOMethods', '@UNIVERSALMethods' and '@ExporterSymbols'.
+'@Barewords', '@BarewordsExtra', '@TieIOMethods', '@UNIVERSALMethods' and
+'@ExporterSymbols'.
 
 The '@Symbols' array includes the contents of each of '@Scalars',
 '@Arrays', '@Hashes', '@Functions' and '@Filehandles'.
 
 Similarly, '@Barewords' adds a few non-function keywords and operators to
 the '@Functions' array.
+
+'@BarewordsExtra' adds a few barewords which are not in keywords.h.
 
 All additions and modifications are welcome.
 
