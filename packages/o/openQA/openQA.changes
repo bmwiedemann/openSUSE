@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 02 16:03:41 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1635851989.3196423d5:
+  * Remove workaround for broken Chromium on Leap 15.3
+  * Unschedule jobs which are too long in 'SCHEDULED' state
+
+-------------------------------------------------------------------
 Sun Oct 31 08:03:40 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1635525801.1df7a829f:
