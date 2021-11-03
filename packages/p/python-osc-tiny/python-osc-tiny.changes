@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 22 10:45:07 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.4.1
+  * Bugfix for configuration utilities
+
+- Release 0.4.0
+  * Added support to parse `osc` configuration
+  * Bugfix for `origin` extension
+  
+
+-------------------------------------------------------------------
 Wed Feb 24 10:49:30 UTC 2021 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.3.3
