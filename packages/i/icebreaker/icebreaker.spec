@@ -17,17 +17,13 @@
 
 
 Name:           icebreaker
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        An action-puzzle game involving bouncing penguins
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            http://www.mattdm.org/icebreaker/
 Source:         https://mattdm.org/icebreaker/2.2.x/icebreaker-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE Workaround a syntax error
-Patch0:         version.patch
-# PATCH-FIX-OPENSUSE This must have been designed with a version of GCC that detects less warnings.
-Patch1:         cflags.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(sdl)
@@ -40,13 +36,13 @@ an exact clone of) the 1992 game Jezzball by Dima Pavlovsky, itself
 having similarities to the 1981 game of Qix.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
-%make_build VERSION=%{version} OPTIMIZE="%{optflags}" prefix=%{_prefix}
+%make_build OPTIMIZE="%{optflags}" prefix=%{_prefix}
 
 %install
-%make_install VERSION=%{version} prefix=%{buildroot}%{_prefix}
+%make_install prefix=%{buildroot}%{_prefix}
 
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications icebreaker.desktop
 install -Dm0644 metainfo.xml %{buildroot}%{_datadir}/metainfo/org.mattdm.icebreaker.metainfo.xml

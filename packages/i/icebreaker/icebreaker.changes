@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  1 13:53:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.1
+  * Add keywords in desktop file
+- Drop upstream resolved version.patch and cflags.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 08:16:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler plot from description. Expand on origin
