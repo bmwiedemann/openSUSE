@@ -722,4 +722,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:busybox revision:68, using expand</comment>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>c951706ba97fac7f6a7cd70c7233ece9</srcmd5>
+    <version>1.34.1</version>
+    <time>1635956719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928280</requestid>
+  </revision>
 </revisionlist>

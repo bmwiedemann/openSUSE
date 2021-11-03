@@ -17,7 +17,7 @@
 
 
 Name:           busybox
-Version:        1.33.1
+Version:        1.34.1
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -28,13 +28,14 @@ Source1:        BusyBox.1
 Source2:        busybox.config
 # Make sure busybox-static.config stays in sync with busybox.config -
 # exception: SELinux commands - these do not build statically.
-Source3:        busybox-static.config
+Source3:        busybox.config.static
 Source4:        man.conf
 Source5:        https://busybox.net/downloads/%{name}-%{version}.tar.bz2.sig
 Source6:        https://busybox.net/~vda/vda_pubkey.gpg#/%{name}.keyring
-Source7:        busybox-warewulf3.config
+Source7:        busybox.config.static.warewulf3
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
+Patch2:         testsuite-gnu-echo.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
@@ -43,7 +44,7 @@ BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
 
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 i586
 %define build_ww3 1
 %endif
 
@@ -80,17 +81,18 @@ Requires:       %{name} = %{version}
 Requires:       zip
 
 %description testsuite
-Using this package you can test the busybox build on different kernels and glibc. 
+Using this package you can test the busybox build on different kernels and glibc.
 It needs to run with permission to the current directory, so either copy it away
 as is or run as root:
 
-cd /usr/share/busybox/testsuite 
+cd /usr/share/busybox/testsuite
 PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %patch100 -p0
 cp -a %{SOURCE1} docs/
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
@@ -103,14 +105,14 @@ export BUILD_VERBOSE=2
 export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
-cp -a %{SOURCE3} .config
+cat %{SOURCE3} %{SOURCE2} > .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
 mv busybox busybox-static
 
 %if 0%{?build_ww3}
 make -e %{?_smp_mflags} clean
-cp -a %{SOURCE7} .config
+cat %{SOURCE7} %{SOURCE3} %{SOURCE2} > .config
 make %{?_smp_mflags} -e oldconfig
 make -e %{?_smp_mflags}
 mv busybox busybox-warewulf3
@@ -156,8 +158,8 @@ export BUILD_VERBOSE=2
 export CFLAGS="%{optflags} -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
-export SKIP_KNOWN_BUGS=1 
-export SKIP_INTERNET_TESTS=1 
+export SKIP_KNOWN_BUGS=1
+export SKIP_INTERNET_TESTS=1
 make -e %{?_smp_mflags} test
 
 %files
