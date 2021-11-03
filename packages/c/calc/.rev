@@ -344,4 +344,19 @@
     <comment></comment>
     <requestid>925094</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>86da984948320d2315b62ed9f9c130a3</srcmd5>
+    <version>2.14.0.6</version>
+    <time>1635956785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.6:
+  * Fixed typo in cal/statistics.cal
+  * Fixed an old Windoz pun in README.WINDOWS
+  * Fixed a really obscure bug in the internal initconstants()
+    function of const.c that has been sitting for over 31 years!
+  * Fixed issues identied by the default CodeUL GitHub security code scan:
+    + Wrong type of arguments to printf in have_fpos_pos.c
+    + Multiplication result converted to larger type in zfunc.c</comment>
+    <requestid>928961</requestid>
+  </revision>
 </revisionlist>

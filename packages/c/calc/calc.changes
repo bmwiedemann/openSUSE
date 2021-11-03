@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  3 08:26:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.6:
+  * Fixed typo in cal/statistics.cal
+  * Fixed an old Windoz pun in README.WINDOWS
+  * Fixed a really obscure bug in the internal initconstants()
+    function of const.c that has been sitting for over 31 years!
+  * Fixed issues identied by the default CodeUL GitHub security code scan:
+    + Wrong type of arguments to printf in have_fpos_pos.c
+    + Multiplication result converted to larger type in zfunc.c
+
+-------------------------------------------------------------------
 Wed Oct 13 10:32:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Drop explicit -march definition (bsc#1191604, bsc#1100677)
