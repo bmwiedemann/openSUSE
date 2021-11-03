@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  1 03:06:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.103016
+   see /usr/share/doc/packages/perl-CPAN-Uploader/Changes
+
+  0.103016  2021-10-30 22:49:45-04:00 America/New_York
+          - update author contact info
+          - add policy on required versions of perl
+          - drop prereq on File::HomeDir (thanks, Karen Etheridge)
+          - document the CPAN_UPLOADER_URI env var (thanks, Marcus Ramberg)
+          - fix some text and behavior around reaching max retries (thansk,
+            Thibault DUPONCHELLE)
+
+-------------------------------------------------------------------
 Sat Aug 22 03:07:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.103015
