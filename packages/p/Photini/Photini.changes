@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  3 09:15:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.11.0
+  * Can use PySide6 instead of PySide2 or PyQt5.
+  * New config option to enlarge user interface on high
+    resolution screens.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Thu Sep 16 14:15:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.9.0
