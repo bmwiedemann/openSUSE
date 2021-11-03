@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 03 00:32:55 UTC 2021 - wbrown@suse.de
+
+- Update to version 20211103:
+  * Bump `rustsec-admin` to v0.5.3 (#1091)
+  * Add cvss information from nvd (#1085)
+  * Add missing method to time vulnerability (#1086)
+  * Add CVE alias for RUSTSEC-2021-0069 (#1087)
+  * Assigned RUSTSEC-2021-0121 to crypto2 (#1084)
+  * Unsound implementation of Chacha20 in crypto2 (#1072)
+  * Assigned RUSTSEC-2020-0159 to chrono (#1083)
+  * Add `chrono` advisory for chrono#499 (localtime_r) (#1082)
+  * Update vec-const advisory (#1081)
+  * Assigned RUSTSEC-2021-0120 to abomonation (#1080)
+
+-------------------------------------------------------------------
 Sun Oct 24 23:45:27 UTC 2021 - wbrown@suse.de
 
 - Update to version 20211025:
