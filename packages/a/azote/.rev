@@ -109,4 +109,15 @@
     switch (#143).</comment>
     <requestid>881838</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be43ed4462218be79adfa97615949c16</srcmd5>
+    <version>1.9.2</version>
+    <time>1635956780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * escape some special characters #155
+  * fixed improper environment detection on dwl, and possibly some
+    other wlroots-based compositors</comment>
+    <requestid>928962</requestid>
+  </revision>
 </revisionlist>

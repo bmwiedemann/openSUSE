@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  3 08:28:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.2:
+  * escape some special characters #155
+  * fixed improper environment detection on dwl, and possibly some
+    other wlroots-based compositors
+
+-------------------------------------------------------------------
 Mon Mar 29 11:08:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.1:
