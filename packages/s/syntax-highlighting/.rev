@@ -487,4 +487,12 @@
     <comment>KDE Frameworks 5.87.0 (forwarded request 924235 from cgiboudeaux)</comment>
     <requestid>924483</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>d3dfc26f9c59cfbbfdb5e26d48bbc088</srcmd5>
+    <version>5.87.0</version>
+    <time>1635956717</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the optional QtQuick dependency. (boo#1192170)</comment>
+    <requestid>928251</requestid>
+  </revision>
 </revisionlist>

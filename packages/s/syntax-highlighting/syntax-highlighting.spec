@@ -41,6 +41,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5XmlPatterns) >= 5.15.0
@@ -51,6 +52,13 @@ BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 %description
 This is a tier1/functional version of the Kate syntax highlighting engine.
 It's not tied to a particular output format or editor engine.
+
+%package imports
+Summary:        QML components for syntax-highlighting
+Requires:       %{lname} = %{version}
+
+%description imports
+This package contains QML imports for syntax-highlighting.
 
 %package -n %{lname}
 Summary:        Syntax highlighting engine and library
@@ -104,6 +112,11 @@ It's not tied to a particular output format or editor engine.
 %{_kf5_debugdir}/ksyntaxhighlighting.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_bindir}/kate-syntax-highlighter
+
+%files imports
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde/
+%{_kf5_qmldir}/org/kde/syntaxhighlighting/
 
 %files -n %{lname}
 %license LICENSES/*
