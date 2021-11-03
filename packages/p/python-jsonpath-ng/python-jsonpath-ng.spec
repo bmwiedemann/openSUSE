@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpath-ng
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
@@ -72,7 +72,7 @@ export PYTHONPATH=${CWD}
 if [[ ! -d %{buildroot}%{$python_sitelib}/oslotest ]]; then
   rm tests/test_jsonpath_rw_ext.py
 fi
-$python setup.py test
+$python -m pytest
 }
 
 %files %{python_files}
