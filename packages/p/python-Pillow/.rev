@@ -486,4 +486,34 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>918469</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2e70ad938beed55bd36136e3ca53c904</srcmd5>
+    <version>8.4.0</version>
+    <time>1635956725</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.4.0:
+  - Prefer global transparency in GIF when replacing with background color #5756
+  - Added &quot;exif&quot; keyword argument to TIFF saving #5575
+  - Copy Python palette to new image in quantize() #5696
+  - Read ICO AND mask from end #5667
+  - Actually check the framesize in FliDecode.c #5659
+  - Determine JPEG2000 mode purely from ihdr header box #5654
+  - Fixed using info dictionary when writing multiple APNG frames #5611
+  - Allow saving 1 and L mode TIFF with PhotometricInterpretation 0 #5655
+  - For GIF save_all with palette, do not include palette with each frame #5603
+  - Keep transparency when converting from P to LA or PA #5606
+  - Copy palette to new image in transform() #5647
+  - Added &quot;transparency&quot; argument to EpsImagePlugin load() #5620
+  - Corrected pathlib.Path detection when saving #5633
+  - Added WalImageFile class #5618
+  - Consider I;16 pixel size when drawing text #5598
+  - If default conversion from P is RGB with transparency, convert to RGBA #5594
+  - Speed up rotating square images by 90 or 270 degrees #5646
+  - Add support for reading DPI information from JPEG2000 images
+  - Catch TypeError from corrupted DPI value in EXIF #5639
+  - Do not close file pointer when saving SGI images #5645
+  - Deprecate ImagePalette size parameter #5641
+  - Prefer command line tools SDK on macOS #5624</comment>
+    <requestid>928313</requestid>
+  </revision>
 </revisionlist>
