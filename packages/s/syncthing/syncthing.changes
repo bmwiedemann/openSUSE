@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  2 20:13:46 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.4
+  * Bugfixes:
+    #7991: Encryption trailer not updated on shortcut
+    #7994: Index "out of sync with reality" on receive-encrypted folder
+    #8000: stdiscosrv + strelaysrv systemd services not restarting on upgrade
+    #8012: Not retrying to sync when a new connection is established
+
+  * Enhancements:
+    #4293: make "Reduced by ignore patterns" label act like "editIgnoresButton"
+
+-------------------------------------------------------------------
 Wed Oct  6 14:58:24 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.3

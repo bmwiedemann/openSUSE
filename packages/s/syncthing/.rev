@@ -953,4 +953,20 @@
 </comment>
     <requestid>923545</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>2f6e96cb2a4a063922b90ac34c1d9109</srcmd5>
+    <version>1.18.4</version>
+    <time>1635956739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.4
+  * Bugfixes:
+    #7991: Encryption trailer not updated on shortcut
+    #7994: Index &quot;out of sync with reality&quot; on receive-encrypted folder
+    #8000: stdiscosrv + strelaysrv systemd services not restarting on upgrade
+    #8012: Not retrying to sync when a new connection is established
+  * Enhancements:
+    #4293: make &quot;Reduced by ignore patterns&quot; label act like &quot;editIgnoresButton&quot;
+</comment>
+    <requestid>928852</requestid>
+  </revision>
 </revisionlist>
