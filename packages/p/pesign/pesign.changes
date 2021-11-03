@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 05:58:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_pesign.service.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 15:55:09 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link as Position Independent Executable (bsc#1184124).

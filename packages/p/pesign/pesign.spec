@@ -40,6 +40,7 @@ Patch6:         pesign-boo1143063-remove-var-tracking.patch
 Patch7:         pesign-boo1158197-fix-pesigncheck-gcc10.patch
 # PATCH-FIX-UPSTREAM pesign-boo1185663-set-rpmmacrodir.patch boo#1185663 glin@suse.com -- Set the rpm macro directory at build time
 Patch8:         pesign-boo1185663-set-rpmmacrodir.patch
+Patch9:         harden_pesign.service.patch
 BuildRequires:  efivar-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  mozilla-nss-devel
@@ -64,6 +65,7 @@ with the PE and Authenticode specifications.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie"
