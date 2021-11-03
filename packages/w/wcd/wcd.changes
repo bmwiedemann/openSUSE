@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  2 20:47:06 UTC 2021 - Erwin Waterlander <waterlan@xs4all.nl>
+
+- Update to 6.0.4
+  * New Serbian translation of the manual.
+  * Updated French translations of messages and manual.
+  * Updated Esperanto translation.
+
+-------------------------------------------------------------------
 Thu Aug 15 18:43:45 UTC 2019 - waterlan <waterlan@xs4all.nl>
 
 - Fix BuildRequires. gettext -> gettext-runtime (required for msgfmt).
