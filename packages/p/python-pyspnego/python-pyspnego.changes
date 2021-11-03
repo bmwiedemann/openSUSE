@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Oct 29 18:44:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.1
+  * Do not convert GSSAPI service to lowercase for GSSAPI and
+    uppercase for SSPI
+    * SPNs are case insensitive on Windows but case sensitive on
+      Linux
+    * Convering the service portion to upper or lower case could
+      cause problems finding the target server on non-Windows
+      GSSAPI implementations
+
+-------------------------------------------------------------------
+Mon Oct 25 19:41:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  Packaging Changes
+  * Changed project structure to a src layout
+  * Include both Cython pyx/pyd and C files for SSPI in the
+    sdist generated
+  * Added Python 3.10 wheel
+  Bugfixes
+  * Ensure bad SPNEGO token inputs are raised as InvalidTokenError
+    rather than struct.error
+- Update to version 0.2.0
+  Breaking Changes
+  * Drop support for Python 2.7 and 3.5 - new minimum is 3.6+
+  * Made the gss, negotiate, ntlm, sspi exports private, use the
+    spnego.client and spnego.server functions instead
+    + A deprecation warning is raised when importing from these
+      package directly and this will be removed in the next major
+      release
+  Features
+  * Added support for CredSSP authentication using
+    protocol='credssp'
+  * Allow optional keyword arguments to be used with spnego.client
+    and spnego.server to control authentication specific options
+  Bugfixes
+  * Use Kerberos API to acquire Kerberos credential to get a
+    forwardable token in a thread safe manner
+  * Fix default credential logic when no username is provided
+    based on GSSAPI rules rather than just the default principal
+  * Ignore SPNEGO mechListMIC if it contains the same value as
+    the responseToken due to an old Windows SPNEGO logic bug.
+  * Do not use SSPI when auth='ntlm' and the password is in the
+    form {lm_hash}:{nt_hash}
+
+-------------------------------------------------------------------
 Thu May 13 16:27:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.6
