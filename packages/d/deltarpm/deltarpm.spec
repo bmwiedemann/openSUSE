@@ -1,7 +1,7 @@
 #
 # spec file for package deltarpm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,13 +21,13 @@
 # we need to build against recent rpm, so avoid the new payload
 %define _binary_payload w9.bzdio
 Name:           deltarpm
-Version:        3.6.2
+Version:        3.6.3
 Release:        0
 Summary:        Tools to Create and Apply deltarpms
 License:        BSD-3-Clause
 Group:          System/Packages
 Url:            https://github.com/rpm-software-management/deltarpm/
-Source:         deltarpm-3.6.2.tar.bz2
+Source:         deltarpm-3.6.3.tar.gz
 BuildRequires:  libbz2-devel
 %if %{with python2}
 BuildRequires:  python2-devel

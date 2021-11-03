@@ -1,3 +1,8 @@
+Fri Oct 29 15:09:47 CEST 2021 - mls@suse.de
+
+- update to deltarpm-3.6.3
+  * support for threaded zstd compression
+
 -------------------------------------------------------------------
 Sat Jun 22 05:53:28 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
 

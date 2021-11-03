@@ -210,4 +210,12 @@
     <comment>- Actually enable zstd compression (forwarded request 711409 from Pharaoh_Atem)</comment>
     <requestid>712123</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d907a302b170bd611534d766557d8dc4</srcmd5>
+    <version>3.6.3</version>
+    <time>1635956708</time>
+    <user>dimstar_suse</user>
+    <comment>- update to deltarpm-3.6.3</comment>
+    <requestid>928133</requestid>
+  </revision>
 </revisionlist>
