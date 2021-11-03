@@ -33,6 +33,9 @@ Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
+# PATCH-FIX-OPENSUSE kdeconnect-openssh-8.8.patch boo#1191886
+Patch0:         https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/kdeconnect/trunk/kdeconnect-openssh-8.8.patch
+Patch1:         kdeconnect-add-back-ssh-dss.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -68,7 +71,9 @@ BuildRequires:  pkgconfig(xtst)
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       plasma-framework-components
-Requires:       sshfs
+# kdeconnect-openssh-8.8.patch needs https://github.com/libfuse/sshfs/pull/269,
+# which is so far only on the way to TW.
+Requires:       sshfs >= 3.7.2
 Recommends:     kpeoplevcard
 Conflicts:      kdeconnect-kde4
 

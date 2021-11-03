@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 31 12:09:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make sshfs depencency versioned for kdeconnect-openssh-8.8.patch
+- Add patch to add back option removed by kdeconnect-openssh-8.8.patch:
+  * kdeconnect-add-back-ssh-dss.patch
+
+-------------------------------------------------------------------
+Sun Oct 31 08:47:15 UTC 2021 - munix9@googlemail.com
+
+- Add kdeconnect-openssh-8.8.patch (boo#1191886),
+  (kde#351725) and (kde#443155)
+  See also https://bugs.archlinux.org/task/72350
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
