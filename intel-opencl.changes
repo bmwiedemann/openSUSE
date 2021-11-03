@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sat Oct 30 13:24:48 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- spec-clean cleanup
+- Description fix
+- Set a release
+
+-------------------------------------------------------------------
+Thu Oct 28 22:20:55 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Only build for x86_64 
+
+-------------------------------------------------------------------
+Thu Oct 28 18:53:07 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Since the IGC package is now split up in libs, use libigc-devel instead
+
+-------------------------------------------------------------------
+Wed Oct  6 08:57:48 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 21.39.21127
+  * Updated IGC
+  * Updated metric_library_api header file
+  * Added ADLS device id (jsc#SLE-18964)
+
+-------------------------------------------------------------------
+Tue Sep 28 08:59:43 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 21.38.21026
+  * Updated IGC, opencl-clang, VC intrinsics, spirv-translator built with
+    llvm 11
+  * Updated igsc
+  * Updated L0 loader 
+
+-------------------------------------------------------------------
+Sat Sep 25 18:40:54 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Make sure we have a sufficiently recent version of libigdgmm-devel 
+
+-------------------------------------------------------------------
+Fri Sep 24 08:21:16 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add requirement on intel-graphics-compiler-opencl 
+
+-------------------------------------------------------------------
+Tue Sep 14 15:53:37 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 21.36.20889 (jsc#SLE-20149)
+  * OpenCL and Level Zero packages provided in this release were compiled
+    with DG1 support disabled.
+  * Binary packages were repackaged to fix dependency issue with IGC
+    release 1.0.8517. Please use IGC packages with version number 1.0.8517.
+- Move icd file into default directory
+
+-------------------------------------------------------------------
+Mon Mar 23 12:45:11 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial changelog entry for version 20.11.16158
