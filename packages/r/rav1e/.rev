@@ -98,4 +98,15 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
     <comment></comment>
     <requestid>921943</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e39e2865c04b5650fe5e3e54d7b938a3</srcmd5>
+    <version>0.5.0</version>
+    <time>1635956713</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0
+  * https://github.com/xiph/rav1e/releases/tag/v0.5.0
+- Removed f553646d70fba8e265d436103a73520eb7adec8c.patch
+</comment>
+    <requestid>928388</requestid>
+  </revision>
 </revisionlist>

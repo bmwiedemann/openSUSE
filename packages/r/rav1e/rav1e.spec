@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
@@ -30,9 +30,6 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source98:       README.suse-maint
 Source99:       baselibs.conf
-#
-# Fix squared artefacts on image when converting to AVIF
-Patch0:         https://github.com/xiph/rav1e/commit/f553646d70fba8e265d436103a73520eb7adec8c.patch
 #
 BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging
