@@ -111,4 +111,12 @@
     <comment>Switch to Ruby 3</comment>
     <requestid>911059</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>05d0d9f3879620395ba1c9c0bc90b861</srcmd5>
+    <version>0.5.3</version>
+    <time>1635956792</time>
+    <user>dimstar_suse</user>
+    <comment>Fix ruby macro usage</comment>
+    <requestid>929003</requestid>
+  </revision>
 </revisionlist>

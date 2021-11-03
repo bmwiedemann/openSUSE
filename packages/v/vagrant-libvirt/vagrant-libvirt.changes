@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:52:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Fix ruby macro usage
+
+-------------------------------------------------------------------
 Wed Aug  4 08:22:57 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Unrestrict rspec-* versions

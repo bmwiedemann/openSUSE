@@ -47,9 +47,9 @@ Recommends:     guestfs-tools
 BuildRequires:  vagrant
 
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby:3 < 3.1}
+BuildRequires:  %{ruby} < 3.1
 %else
-BuildRequires:  %{ruby:2 >= 2.5}
+BuildRequires:  %{ruby} >= 2.5
 %endif
 BuildRequires:  ruby-macros >= 5
 
