@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 14 18:16:22 CEST 2021 - mls@suse.de
+
+- Add support for using a thread pool for threaded zstd compression
+  new patch: zstdpool.diff
+- Switch to threaded zstd compression with a pool of 8 threads
+  new patch: zstdthreaded.diff
+
+-------------------------------------------------------------------
 Thu Sep 23 20:57:45 CEST 2021 - mls@suse.de
 
 - update to rpm-4.17.0

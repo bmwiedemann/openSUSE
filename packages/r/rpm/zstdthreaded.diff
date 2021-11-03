@@ -1,0 +1,14 @@
+--- macros.in.orig	2021-10-15 07:40:15.601628187 +0000
++++ macros.in	2021-10-15 07:42:23.557282503 +0000
+@@ -374,7 +374,10 @@ package or when debugging this package.\
+ #		"w.ufdio"	uncompressed
+ #
+ #%_source_payload	w9.gzdio
+-%_binary_payload	w19.zstdio
++%_binary_payload	w19T0.zstdio
++
++# use a pool with 8 threads for threaded zstd compression
++%_zstd_pool_threads	8
+ 
+ #	Algorithm to use for generating file checksum digests on build.
+ #	If not specified or 0, MD5 is used.

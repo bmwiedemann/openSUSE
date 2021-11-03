@@ -2288,4 +2288,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>update to rpm-4.17.0</comment>
     <requestid>923520</requestid>
   </revision>
+  <revision rev="292" vrev="2">
+    <srcmd5>9e1623dd316765f3905f186b49c9c32f</srcmd5>
+    <version>4.17.0</version>
+    <time>1635956709</time>
+    <user>dimstar_suse</user>
+    <comment>Switch to threaded zstd compression with a pool of 8 threads</comment>
+    <requestid>928134</requestid>
+  </revision>
 </revisionlist>
