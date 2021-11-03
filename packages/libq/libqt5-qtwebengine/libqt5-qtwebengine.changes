@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Oct 29 09:53:05 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.7:
+  * Update Chromium:
+    [Backport] Linux sandbox: update syscalls numbers on 32-bit platforms
+    [Backport] sandbox: linux: allow clock_nanosleep & gettime64
+    [Backport] Linux sandbox: update syscall numbers for all platforms.
+    [Backport] Ease HarfBuzz API change with feature detection
+    [Backport] Security bug 1248665
+    [Backport] CVE-2021-37975 : Use after free in V8
+    [Backport] CVE-2021-37980 : Inappropriate implementation in Sandbox
+    [Backport] CVE-2021-37979 : Heap buffer overflow in WebRTC (2/2)
+    [Backport] CVE-2021-37979 : Heap buffer overflow in WebRTC (1/2)
+    [Backport] CVE-2021-37978 : Heap buffer overflow in Blink
+    [Backport] CVE-2021-30616: Use after free in Media.
+    [Backport] CVE-2021-37962 : Use after free in Performance Manager (2/2)
+    [Backport] CVE-2021-37962 : Use after free in Performance Manager (1/2)
+    [Backport] CVE-2021-37973 : Use after free in Portals
+    [Backport] CVE-2021-37971 : Incorrect security UI in Web Browser UI.
+    [Backport] CVE-2021-37968 : Inappropriate implementation in Background Fetch API
+    [Backport] CVE-2021-37967 : Inappropriate implementation in Background Fetch API
+    [Backport] Linux sandbox: return ENOSYS for clone3
+    [Backport] Linux sandbox: fix fstatat() crash
+    [Backport] Reland "Reland "Linux sandbox syscall broker: use struct kernel_stat""
+    [Backport] Security bug 1238178 (2/2)
+    [Backport] Security bug 1238178 (1/2)
+    [Backport] CVE-2021-30633: Use after free in Indexed DB API (2/2)
+    [Backport] CVE-2021-30633: Use after free in Indexed DB API (1/2)
+    [Backport] CVE-2021-30630: Inappropriate implementation in Blink
+    [Backport] CVE-2021-30629: Use after free in Permissions
+    [Backport] CVE-2021-30628: Stack buffer overflow in ANGLE
+    [Backport] CVE-2021-30627: Type Confusion in Blink layout
+    [Backport] CVE-2021-30626: Out of bounds memory access in ANGLE
+    [Backport] CVE-2021-30625: Use after free in Selection API
+    [Backport] Security bug 1206289
+    [Backport] CVE-2021-30613: Use after free in Base internals
+    [Backport] Security bug 1227228
+    [Backport] CVE-2021-30618: Inappropriate implementation in DevTools
+  * Update patch level
+  * Blacklist certificate test until certicates have been renewed
+  * Block CORS from local URLs when remote access is not enabled
+  * Do not wait on weak_pointer for termination errors
+  * Support MSVC_VER 16.8
+  * Fix wrong save file filter for Markdown Editor example
+  * Add Chromium version source documentation
+  * Bump version from 5.15.6 to 5.15.7
+  * Fix crash when clicking on a link in PDF
+- Drop openSUSE patches:
+  * fix1163766.patch. Should be addressed with:
+    https://github.com/qt/qtwebengine-chromium/commit/652f834de
+    https://github.com/qt/qtwebengine-chromium/commit/faae106ed
+    https://github.com/qt/qtwebengine-chromium/commit/6b7b3f1bf
+  * chromium-glibc-2.33.patch. Should be addressed with the
+    [Backport] Linux sandbox: fix fstatat() crash and
+    Reland "Reland "Linux sandbox syscall broker: use struct kernel_stat""
+    changes.
+  * chromium-older-harfbuzz.patch
+- Drop upstream changes:
+  * 0001-return-ENOSYS-for-clone3.patch
+  * chromium-harfbuzz-3.0.0.patch
+  * skia-harfbuzz-3.0.0.patch
+- Rebase patches:
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
 Tue Sep 21 11:34:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add patches from Arch to fix build with HarfBuzz 3.0.0:

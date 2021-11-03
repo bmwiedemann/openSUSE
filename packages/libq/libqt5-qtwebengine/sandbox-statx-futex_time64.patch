@@ -8,11 +8,11 @@ Return -ENOSYS instead to trigger the fallback in glibc.
 futex_time64 is also used internally in glibc, so handle that as well.
 The signature is identical where it matters.
 
-diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-index 3c67b124786..4772dc096f5 100644
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+index 6f7768f7d..b3335e2bf 100644
 --- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
 +++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-@@ -194,6 +194,11 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+@@ -203,6 +203,11 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
    if (sysno == __NR_futex)
      return RestrictFutex();
  
@@ -24,8 +24,8 @@ index 3c67b124786..4772dc096f5 100644
    if (sysno == __NR_set_robust_list)
      return Error(EPERM);
  
-@@ -257,6 +262,12 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
-     return RestrictKillTarget(current_pid, sysno);
+@@ -283,6 +288,12 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+     return RewriteFstatatSIGSYS(fs_denied_errno);
    }
  
 +#if defined(__NR_statx)
