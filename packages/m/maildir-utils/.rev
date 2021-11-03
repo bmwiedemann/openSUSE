@@ -343,4 +343,41 @@
   * view-gnus: Add S-SPC to scroll-down binding</comment>
     <requestid>914603</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>99976ecc47a888f76a20b8985ac976b7</srcmd5>
+    <version>1.6.9</version>
+    <time>1635956784</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.9:
+  * Just a version bump because 1.6.8 had a mistake in them
+
+- Update to 1.6.8:
+  * mu-query: honor maxnum for threaded queries
+  * lib/mu: fix a few leaks
+  * guile: fix user script path detection
+
+- Update to 1.6.7:
+  * Add Emacs v29 support for enabling mu4e
+  * mu-find: unbreak json output
+  * build: detect wordexp
+  * mu4e.texi: improve regexp example
+  * mu int: improve docs for regexp addresses
+  * mu4e.texi: Add regexp --my-address example
+
+- Update to 1.6.6:
+  * Fix mu-init manpage markup
+  * Extracting attachments #2116
+  * mu4e-view: remove overlays before erasing
+  * mu4e-view: remove overlays when erasing
+  * mu4e-server: rename from mu4e-proc
+  * mu4e-utils: refactor into mu4e-helpers, separate files
+  * mu4e-view: remove old view
+  * vars: refactor variables
+  * mu4e-search: split off search functionality in minor-mode
+  * build: update coding-style settings
+  * mu4e-context: make it a minor-mode
+  * mu4e-context: fix some flycheck warnings
+  * mu4e-helpers: split off from mu4e-utils</comment>
+    <requestid>928957</requestid>
+  </revision>
 </revisionlist>

@@ -17,13 +17,13 @@
 
 
 Name:           maildir-utils
-Version:        1.6.5
+Version:        1.6.9
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.djcbsoftware.nl/code/mu/
-Source:         https://github.com/djcb/mu/releases/download/%{version}/mu-%{version}.tar.xz
+Source:         https://github.com/djcb/mu/releases/download/%{version}-signed/mu-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.14
 BuildRequires:  emacs-nox >= 24.4
