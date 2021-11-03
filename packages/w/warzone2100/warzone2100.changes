@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Mon Nov  1 21:36:15 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+- Updated to 4.2.0
+  * General:
+    * Fix: Handle repair point choice better so it doesn't pick less
+      than ideal ones
+    * Add: --loadreplay command line option
+  * Graphics:
+    * Add: Update Ultimate Scavengers button image
+  * Campaign:
+    * Add: Increase oil drum power in Beta (150) and Gamma (200)
+    * Fix: Fix fastplay video not working since 4.2.0-beta2
+    * Fix: Prevent old transporter issue on Beta-end where it can come
+      back and fail the player due to little time left to send it away 
+      again
+  * Scripting:
+    * Change: Update JS documents
+  * Multiplayer:
+    * Change: Display team chooser column at all times
+    * Change: Make inactivityMinutes / idleTime configurable
+    * Fix: Fix a desync in replays due to structure limits not being the 
+      same in the replay
+    * Fix: Fix a crash/assert when players were transitioned to
+      spectators
+    * Fix: Fix order of players in specstats window
+    * Fix: Crash on autogame with spectator host
+    * Fix: Joining new game after quitting lobby with spectator host
+    * Fix: Client sends invalid command to host if autorating URL is
+      enabled
+    * Fix: Spectator host autorating URL requests for all clients
+    * Fix: Unable to refresh lobby after being kicked
+    * Fix: Replay desync at start due to replay spectator
+  * MP-Balance:
+    * Change: Reduced effectiveness of all-rounder weapons against
+      cyborgs to 60% from 65% and make HMG come earlier
+    * Change: Slightly increase Super Auto-Cannon Cyborgs damage
+  * Other:
+    * Fix: Mingw / Clang compile warning fixes
+    * Fix: Fix a potential chat related crash
+    * Fix: Fix potential crash due to 0-sized decals VBO on maps without
+      decals
+    * Fix: Crash if transporter is recycled
+    * Fix: Suppress and log wzDisplayDialog in headless mode
+    * Fix: wzapi::gameOverMessage: Trigger a graceful shutdown in
+      autogame / headless mode
+- Updated to 4.2.0-beta2
+  * General:
+    * Add: Make selected structures and units blink on radar
+    * Add: Power per second to power bar tooltip
+    * Fix: Command interface fixes, documentation added
+    * Fix: Crash caused by crash-handling provider
+    * Fix: Always release sequence resources at shutdown
+    * Fix: Additional null checks
+    * Fix: Repair: Return to HQ as fallback
+    * Fix: Improve replay warning / error messages
+    * Fix: NETSendNPlayerInfoTo: Only assert when multiplay game in
+      lobby
+    * Fix: Struct stats lookup maps tweaks / refactoring
+    * Fix: Add a missing break for attack orders
+  * Campaign:
+    * Change: Decrease the player return LZ in Beta 08
+    * Change: Add additional research messages for Nexus Resistance
+      Circuits
+  * Multiplayer:
+    * Change: Ignore allies' attack to determine activity
+    * Change: Limit Ultimate Scavengers' Helicopter usage times on
+      T1 technology
+    * Fix: Desync when moving to repair
+    * Fix: Don't load map preview twice for the host
+  * Other:
+    * Change: Add video install information for Ubuntu in README
+- Updated to 4.2.0-beta1
+  * General:
+    * Add: Add Ultimate Scavengers to the game 
+    * Add: Implement remove from group shortcut 
+    * Add: Use a stable config directory for release builds
+    * Change: First steps at moving savegame format totally to JSON--now 
+      converted the .gam file
+    * Change: Return units to mobiles turrets & randomize repair points
+    * Fix: Fix orders from Commanders after loading saves
+    * Fix: Don't reveal artillery unless the CB tower is completely
+      built
+    * Fix: Fix sensors logic under commander so attaching them isn't
+      useless
+    * Fix: Prevent lobby refresh and filter buttons from disappearing
+      unless invalid data gets sent somehow
+    * Fix: Only play "assigned to commander" sound if group is not full
+    * Fix: Don't block ready status button when player clicks ready
+      too fast
+    * Fix: Primary AA turret units not attacking things if the
+      Secondary could, among other fixes
+    * Fix: Improve ManufactureOptions/StatsButton clickability
+  * Graphics:
+    * Change: Major revision to the Blender 2.9x pie addon
+    * Fix: OpenGL init resiliency
+  * Campaign:
+    * Change: Update Beta 11 mission objectives in the Intel menu
+    * Change: Increase default message duration times for campaigns
+    * Change: Improve the Alpha 7 Intel objective text
+    * Change: Update camBalance for Gamma. Campaign rebalance is
+      basically complete
+    * Fix: Allow mission objectives to persist into offworld missions
+  * Multiplayer:
+    * Add: Spectator slots for multiplayer games + replay functionality
+      for skirmish/multiplayer
+    * Add: Support non-0-index hostPlayer, configuring "spectatorHost"
+      from autohost json
+    * Add: Headless / autohost enhancements, spectator stats, lobby
+      chat slash commands, netplay bug fixes
+    * Add: Add new random maps "DustyMaze": one 2-player and
+      two 4-player maps
+    * Change: Make lobby games scrollable
+    * Fix: Fix double host exit screen
+    * Fix: Properly load ttypes.ttp for script maps so water is shown
+      and more
+  * Scripting:
+    * Add: Add a way for scripts to determine if games are a challenge
+    * Change: Cleanup and improve JS API documentation
+  * Balance:
+    * Change: Make Machineguns less powerful short-term but not as
+      to weaken them long-term
+    * Change: Make phosphorus and thermite bombs less strong with
+      only 2 bombs and a flamer modifier instead of artillery round
+    * Change: Tweak timeline and research cost of Bombard, Pepperpot,
+      and Incendiary Mortar
+    * Change: Tweaks to Anti-Air research costs and timeline
+    * Change: Change the required research for the Nexus Link Turret
+      and Nexus Resistance Circuits. Balancing weapon parameters
+    * Change: Heavy Laser weight reduction from 20,000 to 5,000.
+      Restoring the playability of this turret
+    * Change: Additional reduction in the cost of Tank Killer and Super 
+      Tank Killer Cyborg research
+    * Change: Reducing the cost and time of producing black and red 
+      bodies to increase the relevance of their use
+    * Change: Increase Super Rail Cyborg range and reduce damage to
+      maintain relevance 
+    * Change: Make the VTOL MG parameters more balanced by reducing
+      damage
+    * Change: Change Howitzer research to not depend on Cannon Laser
+      Designator, Bind Hellstorm Emplacement to Howitzer Emplacement, 
+      Increase Ground 
+      Shaker production time, reduce periodical damage on Incendiary
+      Howitzer
+    * Change: Improve accuracy of VTOL HMG
+    * Change: Swap precedence of VTOL Factory, VTOL Propulsion, and VTOL 
+      Rearming Pad
+    * Change: Nerf VTOL Heavy Laser range and damage, VTOL Pulse Laser
+      damage, and VTOL Scourge Missile splash radius
+    * Change: Reduce costs of Anti-Air structures, Increase
+      Stormbringer range, reduce weights of Tornado, Vindicator, 
+      Stormbringer, and Whirlwind, 
+      reduce build time for Whirlwind, and reduce total held rockets in 
+      Sunburst AA before a rearm
+    * Change: start time Base 4.5 -> 3, AdvancedBase 7.9 -> 6.4
+    * Change: Nerf Super Auto-Cannon Cyborg damage, improved ROF of
+      HVC Cyborg, improved ROF of Super Tank-Killer Cyborg and 
+      Tank Killer Rocket
+    * Change: Increasing HVC turret range from 9 to 9.5 and decreasing
+      weight from 4000 to 2500 to make HVC playable on light 
+      bodies, Slightly improved ROF for Super HVC Cyborg
+    * Change: Move Tank-Killer so it comes a littler earlier and only
+      depend on the fifth rocket damage upgrade
+    * Change: Slight Incendiary Mortar research cost and timeline
+      reduction
+  * Other:
+    * Add: Add autorating url in config
+    * Change: Don't show enemy building being repaired
+    * Fix: Don't crash with JumpToResourceExtractor keybind after level
+      reload
+    * Fix: Don't double load a random backdrop on a connection cancel
+
+-------------------------------------------------------------------
 Mon Aug 16 16:47:22 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.1.3
