@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  2 14:40:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 40670.patch: test: fix test-datetime-change-notify after
+  daylight change.
+
+-------------------------------------------------------------------
+Fri Oct 15 19:57:42 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- test-skip-y2038-on-32bit-time_t.patch: Add patch to skip the test
+  'test/parallel/test-fs-utimes-y2K38.js' which fails with a FP
+  on platforms with 32-bit time_t.
+- nodejs16.spec: Reference it.
+
+-------------------------------------------------------------------
 Thu Aug 12 13:51:48 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 16.6.2:

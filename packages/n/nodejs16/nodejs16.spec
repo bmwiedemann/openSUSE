@@ -131,6 +131,7 @@ Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
+Patch0:         https://patch-diff.githubusercontent.com/raw/nodejs/node/pull/40670.patch
 Patch1:         cares_public_headers.patch
 Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
@@ -156,6 +157,9 @@ Patch120:       flaky_test_rerun.patch
 
 # Use versioned binaries and paths
 Patch200:       versioned.patch
+
+# Skip year 2038 test on platforms with 32-bit time_t.
+Patch210:       test-skip-y2038-on-32bit-time_t.patch
 
 BuildRequires:  pkg-config
 %if 0%{?suse_version}
@@ -640,6 +644,7 @@ tar Jxf %{SOURCE11}
 tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 
+%patch0 -p1
 %patch1 -p1
 %patch3 -p1
 %patch5 -p1
@@ -658,6 +663,7 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %patch110 -p1
 %patch120 -p1
 %patch200 -p1
+%patch210 -p1
 
 # remove backup files, if any
 find -name \*~ -print0 -delete
