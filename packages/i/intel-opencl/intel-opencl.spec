@@ -1,0 +1,78 @@
+#
+# spec file for package intel-opencl
+#
+# Copyright (c) 2021 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           intel-opencl
+Version:        21.39.21127
+Release:        1%{?dist}
+Summary:        Intel(R) Graphics Compute Runtime for OpenCL(TM)
+License:        MIT
+Group:          Development/Libraries/C and C++
+URL:            https://github.com/intel/compute-runtime
+Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  libigc-devel
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(igc-opencl)
+BuildRequires:  libigdgmm-devel >= 21.2.2
+BuildRequires:  pkgconfig(libva)
+ExclusiveArch:  x86_64
+
+%description
+Intel(R) Graphics Compute Runtime for OpenCL(TM).
+
+%package devel
+Summary:        Intel Graphics Compute Runtime for OpenCL Driver
+Requires:       %{name} = %{version}-%{release}
+
+%description devel
+Development package for Intel Graphics Compute Runtime for OpenCL.
+
+%prep
+%autosetup -n compute-runtime-%{version}
+
+%build
+%define __builder ninja
+%cmake \
+  -DSKIP_UNIT_TESTS=1
+%cmake_build
+
+%install
+%cmake_install
+chmod +x %{buildroot}%{_libdir}/intel-opencl/libigdrcl.so
+mkdir -p %{buildroot}/%{_datadir}/OpenCL/vendors
+mv %{buildroot}/%{_sysconfdir}/OpenCL/vendors/intel.icd %{buildroot}/%{_datadir}/OpenCL/vendors/
+rm -Rf %{buildroot}%{_prefix}/lib/debug
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%files
+%{_libdir}/intel-opencl/libigdrcl.so
+%{_libdir}/libocloc.so
+%{_bindir}/ocloc
+%{_datadir}/OpenCL/vendors/intel.icd
+%{_libdir}/intel-opencl
+%{_datadir}/OpenCL
+%{_datadir}/OpenCL/vendors
+
+%files devel
+%{_includedir}/ocloc_api.h
+
+%changelog
