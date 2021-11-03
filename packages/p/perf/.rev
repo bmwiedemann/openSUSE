@@ -511,4 +511,14 @@
   * add perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch</comment>
     <requestid>909041</requestid>
   </revision>
+  <revision rev="62" vrev="71">
+    <srcmd5>ecb50feadb4da8b1098309c15b670d31</srcmd5>
+    <version>MACRO</version>
+    <time>1635956790</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix for kernel 5.15
+  add perf-5.15-don-t-install-headers-with-x-permissions.patch
+- skip info files generation which was enabled in 5.15</comment>
+    <requestid>928994</requestid>
+  </revision>
 </revisionlist>

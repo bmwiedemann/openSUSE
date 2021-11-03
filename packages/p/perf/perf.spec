@@ -40,8 +40,9 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
-Patch0:         perf-5.14-don-t-install-headers-with-x-permissions.patch
-Patch1:         perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
+Patch0:         perf-5.15-don-t-install-headers-with-x-permissions.patch
+Patch1:         perf-5.14-don-t-install-headers-with-x-permissions.patch
+Patch2:         perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -96,9 +97,16 @@ chmod +x tools/perf/util/generate-cmdlist.sh
 # don't error out on deprecated definitions in gtk2.h
 sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c
 
+# skip info-from-txt generation (it's the same as man anyway)
+sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
+
 %if %{version_pure} >= 514
+%if %{version_pure} >= 515
 %patch0 -p1
+%else
 %patch1 -p1
+%endif
+%patch2 -p1
 %endif
 
 %build

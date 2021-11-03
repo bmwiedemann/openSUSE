@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:10:21 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix for kernel 5.15
+  add perf-5.15-don-t-install-headers-with-x-permissions.patch
+- skip info files generation which was enabled in 5.15
+
+-------------------------------------------------------------------
 Mon Jul 26 07:05:21 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix for kernel 5.14
