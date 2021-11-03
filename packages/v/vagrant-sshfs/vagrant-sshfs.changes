@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  3 11:16:07 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Fix ruby macro usage
+
+-------------------------------------------------------------------
 Fri Oct  8 13:44:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - testsuite.sh: avoid reuse of existing directory or symlink from other users

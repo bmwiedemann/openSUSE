@@ -43,9 +43,9 @@ Source3:        testsuite.sh
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
 Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{ruby:3 < 3.1}
+BuildRequires:  %{ruby} < 3.1
 %else
-BuildRequires:  %{ruby:2 >= 2.5}
+BuildRequires:  %{ruby} >= 2.5
 %endif
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1
