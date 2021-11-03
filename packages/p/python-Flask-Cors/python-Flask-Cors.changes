@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  3 04:02:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest to run the testsuite. 
+
+-------------------------------------------------------------------
 Sun Apr  4 23:24:30 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:

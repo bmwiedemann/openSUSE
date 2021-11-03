@@ -22,11 +22,10 @@ Version:        3.0.10
 Release:        0
 Summary:        A Flask extension adding a decorator for CORS support
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/corydolphin/flask-cors
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flask-Cors-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +52,7 @@ making cross-origin AJAX possible.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE
