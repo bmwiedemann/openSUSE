@@ -16,10 +16,10 @@
 #
 
 
-%define sover 20
+%define sover 21
 
 Name:           libopenshot
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  cppzmq-devel
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 BuildRequires:  cmake(OpenShotAudio) >= 0.2.1

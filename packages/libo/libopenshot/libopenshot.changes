@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  1 14:21:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- python3_sitearch is defined in python-rpm-macros, BuildRequire
+  explicitly.
+
+-------------------------------------------------------------------
+Mon Nov 01 13:31:56 UTC 2021 - code@bnavigator.de
+
+- Update to version 0.2.7:
+  * Bumping version to 0.2.7, SO 21
+  * Reversing y_offset direction to match previous OpenShot crop
+    behavior
+  * Adding an X and Y offset to the current crop effect, to better
+    support previous clip crop parameters (for migrating crop
+    options from OpenShot 2.5.1 to OpenShot 2.6). Also refactoring
+    the crop effect, to actually copy the pixels into a new image
+    buffer.
+  * Merge master 0.2.6 into develop
+  * set default crop border to 0
+
+-------------------------------------------------------------------
 Mon Aug 30 15:23:17 UTC 2021 - tiwai@suse.com
 
 - Use the released version 0.2.6 instead of develop branch;
