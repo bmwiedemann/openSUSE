@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 01 13:36:59 UTC 2021 - code@bnavigator.de
+
+- Update to version 0.2.2:
+  * Bump version to 0.2.2 (SO still 8)
+  * Ensure NEED_ASIO is always set
+
+-------------------------------------------------------------------
 Mon Aug 30 15:26:45 UTC 2021 - tiwai@suse.com
 
 - Use the released version 0.2.1 instead of development branch;
