@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  2 16:54:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.51
+  * New release with modified copyrights
+  * Fix typos and syntax
+  * Fix insert_before() and insert_after(), update Copyrights
+  * Expose a proxy function to call ipaddress.collapse_addresses()
+  * More logging work... prepare for debugging overhaul.
+  * Refine error logging in setup.py
+  * Fix get_metadata() returned value in setup.py
+  * Rework version.json to metadata.json
+
+-------------------------------------------------------------------
 Tue Jul 13 07:29:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.36
