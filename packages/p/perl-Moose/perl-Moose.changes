@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  1 03:09:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2200
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2200   2021-10-31
+    - no changes since 2.2100
+  2.2100   2021-04-13 (TRIAL RELEASE)
+    [OTHER]
+    - Replaced all uses of Sub::Name with Sub::Util, since the latter is part of
+      core as of Perl 5.22.
+
+-------------------------------------------------------------------
 Wed Mar 31 03:07:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2015

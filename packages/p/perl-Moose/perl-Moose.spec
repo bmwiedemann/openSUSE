@@ -18,7 +18,7 @@
 
 %define cpan_name Moose
 Name:           perl-Moose
-Version:        2.2015
+Version:        2.2200
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 Summary:        Postmodern object system for Perl 5
@@ -51,6 +51,7 @@ BuildRequires:  perl(Params::Util) >= 1.00
 BuildRequires:  perl(Scalar::Util) >= 1.19
 BuildRequires:  perl(Sub::Exporter) >= 0.980
 BuildRequires:  perl(Sub::Name) >= 0.20
+BuildRequires:  perl(Sub::Util) >= 1.40
 BuildRequires:  perl(Test::CleanNamespaces) >= 0.13
 BuildRequires:  perl(Test::Fatal) >= 0.001
 BuildRequires:  perl(Test::More) >= 0.96
@@ -77,6 +78,7 @@ Requires:       perl(Params::Util) >= 1.00
 Requires:       perl(Scalar::Util) >= 1.19
 Requires:       perl(Sub::Exporter) >= 0.980
 Requires:       perl(Sub::Name) >= 0.20
+Requires:       perl(Sub::Util) >= 1.40
 Requires:       perl(Try::Tiny) >= 0.17
 Requires:       perl(parent) >= 0.223
 Recommends:     perl(Data::OptList) >= 0.110
