@@ -47,4 +47,12 @@
     <comment>- Update to release 7.1a</comment>
     <requestid>858491</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90d93c4874e6519135f16abb257f65b2</srcmd5>
+    <version>7.1b</version>
+    <time>1635956741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1b</comment>
+    <requestid>928856</requestid>
+  </revision>
 </revisionlist>

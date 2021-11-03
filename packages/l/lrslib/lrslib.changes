@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 25 14:53:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1b
+  * Fixed an issue where output can be lost in arithmetic change.
+  * Place lrsrestart.h into buildroot upon `make install`.
+
+-------------------------------------------------------------------
 Thu Dec 24 12:30:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1a
