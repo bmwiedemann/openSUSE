@@ -534,4 +534,16 @@
     <comment></comment>
     <requestid>906101</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fc33f783dae403fb640220b325b56172</srcmd5>
+    <version>1.26.7</version>
+    <time>1635956710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.7:
+  * Fixed a bug with HTTPS hostname verification involving IP addresses and lack
+    of SNI.
+  * Fixed a bug where IPv6 braces weren't stripped during certificate hostname
+    matching.</comment>
+    <requestid>928316</requestid>
+  </revision>
 </revisionlist>
