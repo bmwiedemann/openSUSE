@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  7 10:25:52 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * mumble-server.service
+
+-------------------------------------------------------------------
 Fri Feb 12 08:53:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mumble 1.3.4:
