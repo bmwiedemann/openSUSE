@@ -129,7 +129,7 @@ Patch27:        llvm-exegesis-link-dylib.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 BuildRequires:  binutils-devel >= 2.21.90
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -1089,6 +1089,10 @@ pushd build
 
 # On armv6l, fpext frem(12.0f, 5.0f) to double = inf for some reason.
 sed -i '1i; XFAIL: armv6' ../test/ExecutionEngine/frem.ll
+# Disable tests that seem to hang (armv6) or fail with relocation errors (ppc).
+sed -i '1i; UNSUPPORTED: armv6' ../test/CodeGen/Generic/PBQP.ll
+sed -i '1i; UNSUPPORTED: armv6\n; XFAIL: powerpc-' \
+  ../test/ExecutionEngine/{mov64zext32,test-interp-vec-{arithm_{float,int},logical,setcond-{fp,int}}}.ll
 %ifarch ppc64le
 # Sporadic failures, possibly races?
 rm ../test/tools/llvm-cov/{multithreaded-report,sources-specified}.test
@@ -1101,6 +1105,9 @@ python3 bin/llvm-lit -sv test/
 # On s390x, this test complains that a required pass couldn't be found and then crashes. (FIXME)
 # But we don't observe the failure on armv7l, probably because we have assertions disabled.
 sed -i 's/XFAIL: armv7, thumbv7/XFAIL: s390x/' ../tools/clang/test/CodeGen/sanitize-coverage.c
+# Tests hang on armv6l.
+sed -i '1i// UNSUPPORTED: armv6' \
+  ../tools/clang/test/Modules/{preprocess-{build-diamond.m,decluse.cpp,module.cpp},string_names.cpp}
 %ifarch ppc64le
 # Sporadic failures, possibly races?
 rm -r ../tools/clang/test/ClangScanDeps

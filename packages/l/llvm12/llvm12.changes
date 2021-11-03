@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 09:30:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable tests that seem to hang on armv6
+- Set minimal cmake version required
+
+-------------------------------------------------------------------
 Sat Oct  2 20:13:04 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't build clang-tools, libc++ and python3-clang anymore,

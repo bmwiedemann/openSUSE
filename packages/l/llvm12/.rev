@@ -59,4 +59,13 @@
 - Remove version requirement from clang-tools dependency.</comment>
     <requestid>923004</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>f1b124b4b1f5313b3943ba235081cf26</srcmd5>
+    <version>12.0.1</version>
+    <time>1635956718</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests that seem to hang on armv6
+- Set minimal cmake version required</comment>
+    <requestid>928273</requestid>
+  </revision>
 </revisionlist>
