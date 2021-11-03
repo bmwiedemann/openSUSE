@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
@@ -38,6 +38,31 @@ nnn is a fork of noice, a terminal file browser with keyboard
 shortcuts for navigation, opening files and running tasks. There is
 no config file and MIME associations are hard-coded.
 
+%package bash-completion
+Summary:        Bash completions for %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+The official bash completion script for %{name}.
+
+%package fish-completion
+Summary:        Fish Completion for %{name}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+The official fish completion script for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+The official zsh completion script for %{name}.
+
 %prep
 %setup -q
 
@@ -48,10 +73,23 @@ export CFLAGS="%{optflags}"
 %install
 %make_install PREFIX=%{_prefix}
 
+install -Dm0644 misc/auto-completion/fish/nnn.fish $RPM_BUILD_ROOT%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm0644 misc/auto-completion/bash/nnn-completion.bash $RPM_BUILD_ROOT%{_datadir}/bash-completion/completions/%{name}
+install -Dm0644 misc/auto-completion/zsh/_nnn $RPM_BUILD_ROOT%{_datadir}/zsh/site-functions/_%{name}
+
 %files
 %license LICENSE
 %doc README.md CHANGELOG
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+
+%files bash-completion
+%{_datadir}/bash-completion
+
+%files fish-completion
+%{_datadir}/fish
+
+%files zsh-completion
+%{_datadir}/zsh/
 
 %changelog
