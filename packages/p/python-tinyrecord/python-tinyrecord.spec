@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyrecord
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/eugene-eeo/tinyrecord
 Source:         https://github.com/eugene-eeo/tinyrecord/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tinydb}
