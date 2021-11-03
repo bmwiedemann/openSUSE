@@ -1,5 +1,5 @@
 #
-# spec file for package python-torch
+# spec file for package python-torchvision
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,8 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define srcname vision
 %define skip_python2 1
+%define skip_python36 1
 
 Name:           python-torchvision
 Version:        0.6.1
@@ -26,9 +28,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pytorch/vision
 Source0:        https://github.com/pytorch/vision/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-BuildRequires:  %{python_module torch-devel >= 1.5.1}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module torch-devel >= 1.5.1}
 BuildRequires:  %{pythons}
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
@@ -40,7 +42,7 @@ ExcludeArch:    %ix86
 %python_subpackages
 
 %description
-The torchvision package consists of popular datasets, 
+The torchvision package consists of popular datasets,
 model architectures, and common image transformations
 for computer vision.
 
