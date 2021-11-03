@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:16:50 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 3.3.3 bugfix release
+  + Full changelog https://github.com/OSGeo/gdal/blob/v3.3.3/gdal/NEWS
+- Removed upstream patches
+  + gdal-poppler-2.10-a.patch
+  + gdal-poppler-2.10-b.patch
+
+-------------------------------------------------------------------
 Wed Oct 20 06:53:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build with poppler 2.10:
@@ -8,15 +17,15 @@ Wed Oct 20 06:53:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 -------------------------------------------------------------------
 Tue Sep  7 19:18:02 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
-- Update to version 3.3.2 bugfix release 
-  + Full changelog 
+- Update to version 3.3.2 bugfix release
+  + Full changelog
     https://github.com/OSGeo/gdal/blob/v3.3.2/gdal/NEWS
 
 -------------------------------------------------------------------
 Sun Jul 11 19:48:30 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.3.1 bugfix release
-  + Full changelog 
+  + Full changelog
     https://github.com/OSGeo/gdal/blob/v3.3.1/gdal/NEWS
 
 -------------------------------------------------------------------
