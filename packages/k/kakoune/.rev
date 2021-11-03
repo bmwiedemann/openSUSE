@@ -241,4 +241,15 @@
 - Remove 0001-Add-missing-limits-includes.patch</comment>
     <requestid>914969</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b1328da34ff732746b6e50ae83311d59</srcmd5>
+    <version>2021.10.28</version>
+    <time>1635956783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.10.28:
+  * g and v do not auto lower case the next key, so GL needs to be
+    manually mapped to Gl for example.
+  * Fix flickering issues on some terminals such as the linux console</comment>
+    <requestid>928955</requestid>
+  </revision>
 </revisionlist>
