@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 28 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.22
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.22: Wed 27 Oct 16:54:38 CEST 2021
+
+  	Changes:
+  	- webm keeps on producting unexpected results [issue #11, Даша Федорова]
+  	- iana updates
+
+-------------------------------------------------------------------
 Sat May 29 03:06:39 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.21
