@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:02:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.7:
+  * Fixed a bug with HTTPS hostname verification involving IP addresses and lack
+    of SNI.
+  * Fixed a bug where IPv6 braces weren't stripped during certificate hostname
+    matching.
+
+-------------------------------------------------------------------
 Tue Jul 13 10:53:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.26.6
