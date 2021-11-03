@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.16
+Version:        1.8.18
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -92,7 +92,7 @@ other mail user agents.  It forwards mail to an SMTP server that does
 the delivery.  msmtp supports multiple accounts.
 
 This subpackage provides a mail transfer agent that can be used as
-a minimalistic replacement of sendmail.
+a minimalistic replacement of sendmail and a minimal SMTP server.
 
 %prep
 %setup -q
@@ -108,7 +108,7 @@ for i in scripts/msmtpqueue/*.sh \
 done
 
 %build
-%configure --docdir="%{_docdir}/%{name}" --with-tls=gnutls --without-msmtpd --with-libgsasl
+%configure --docdir="%{_docdir}/%{name}" --with-tls=gnutls --with-libgsasl
 %make_build
 
 %install
@@ -202,7 +202,9 @@ rm -f "%{buildroot}%{_infodir}/dir"
 %doc %dir %{_docdir}/%{name}
 
 %files mta
+%{_bindir}/msmtpd
 %{_sbindir}/sendmail
+%{_mandir}/man1/msmtpd.1%{?ext_man}
 %{_mandir}/man1/sendmail.1%{?ext_man}
 
 %changelog

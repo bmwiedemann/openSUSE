@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 23 08:55:15 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.18:
+  * this release fixes a few minor problems related to translations
+    and the documentation.
+- additional changes from version 1.8.17:
+  * msmtpd now supports logging to syslog or to a file with the
+    option --log, and authentication (for special use cases) with
+    the option --auth.
+- build msmtpd and package it in msmtp-mta
+
+-------------------------------------------------------------------
 Tue Sep 14 20:12:40 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.16:
