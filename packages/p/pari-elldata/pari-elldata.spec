@@ -1,7 +1,7 @@
 #
 # spec file for package pari-elldata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           pari-elldata
-Version:        20190912
+Version:        20210301
 Release:        0
 Summary:        Elliptic Curve Data for the PARI CAS
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://pari.math.u-bordeaux.fr/
-
-Source:         http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz
-Source2:        http://pari.math.u-bordeaux.fr/pub/pari/packages/elldata.tgz.asc
+URL:            https://pari.math.u-bordeaux.fr
+Source:         %url/pub/pari/packages/elldata.tgz
+Source2:        %url/pub/pari/packages/elldata.tgz.asc
 Source3:        LICENSE
-Source4:        %name.keyring
+Source4:        COPYING
+Source5:        %name.keyring
 BuildArch:      noarch
 Conflicts:      libpari-gmp < 2.2.11
 
@@ -36,18 +36,19 @@ PARI/GP version of J. E. Cremona's Elliptic Curve Data, needed by
 the PARI functions "ellsearch" and "ellidentify".
 
 %prep
-%setup -qn data
-cp "%_sourcedir/LICENSE" .
+%autosetup -n data
+cp -av %_sourcedir/LICENSE %_sourcedir/COPYING .
+mv -v elldata/README .
 
 %build
 
 %install
-c="%buildroot/%_datadir/pari"
-mkdir -p "$c"
-mv elldata "$c/"
+install -dm0755 %buildroot/%_datadir/pari
+mv -v elldata %buildroot/%_datadir/pari/
 
 %files
-%_datadir/pari
-%license LICENSE
+%_datadir/pari/
+%license COPYING LICENSE
+%doc README
 
 %changelog
