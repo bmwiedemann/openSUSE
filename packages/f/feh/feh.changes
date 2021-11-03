@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  1 12:48:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.7.2:
+    * Fix crash when running feh without stdin file descriptor
+    * Support JPEG XL files when using imlib2-jxl
+    * Fix support for images smaller than 16 bytes
+    * Fix some out of bounds reads
+
+-------------------------------------------------------------------
 Wed May 12 02:26:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.7.0:
