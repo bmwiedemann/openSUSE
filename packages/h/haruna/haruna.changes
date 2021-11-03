@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:32:27 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.3
+  * fix(settings): load icon in settings page 
+  * fix: lower tooltip font size
+  * fix: rename icon in desktop file
+  * fix: install only one icon
+  * fix(header): fix toolbutton menu not closing
+  * feat(mpv): keep file loaded after eof is reached
+  * Revert "fix: keep file loaded after reaching end of file"
+  * feat(playlistmodel): add appendVideo method
+  * fix(settings): raise window when clicking configure button 
+  * fix: keep file loaded after reaching end of file
+  * fix(settings): load correct file for the General page
+  * fix: report bug button in about page not working
+  * fix(youtube-dl): prioritize yt-dlp 
+  * fix(icon): install haruna.svg icon 
+  * fix(mpris): only show filename if there's no title 
+  * refactor(Settings): add about page and move navigation code
+    in settings editor
+  * Extract messages for configuration keys
+  * refactor(Settings): move actions inside list view
+  * fix(Settings): make sidebar elements translatable
+
+-------------------------------------------------------------------
 Sun Sep 26 13:01:03 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7.2

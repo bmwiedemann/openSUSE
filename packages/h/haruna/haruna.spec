@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -74,7 +74,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/org.kde.haruna.desktop
-%{_datadir}/icons/hicolor/*/apps/org.kde.haruna.svg
+%{_datadir}/icons/hicolor/*/apps/haruna.svg
 %{_datadir}/metainfo/org.kde.haruna.metainfo.xml
 
 %changelog
