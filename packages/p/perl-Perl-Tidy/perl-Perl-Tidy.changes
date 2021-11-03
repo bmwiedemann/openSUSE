@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat Oct 30 03:06:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20211029
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2021 10 29
+      - No significant bugs have been found since the last release, but several
+        minor issues have been fixed.  Vertical alignment has been improved for
+        lists of call args which are not contained within parens (next item).
+      - Vertical alignment of function calls without parens has been improved with
+        the goal of making vertical alignment essentially the same with or
+        without parens around the call args.  Some examples:
+          # OLD
+          mkTextConfig $c, $x, $y, -anchor => 'se', $color;
+          mkTextConfig $c, $x + 30, $y, -anchor => 's',  $color;
+          mkTextConfig $c, $x + 60, $y, -anchor => 'sw', $color;
+          mkTextConfig $c, $x, $y + 30, -anchor => 'e', $color;
+          # NEW
+          mkTextConfig $c, $x,      $y,      -anchor => 'se', $color;
+          mkTextConfig $c, $x + 30, $y,      -anchor => 's',  $color;
+          mkTextConfig $c, $x + 60, $y,      -anchor => 'sw', $color;
+          mkTextConfig $c, $x,      $y + 30, -anchor => 'e',  $color;
+          # OLD
+          is id_2obj($id), undef, "unregistered object not retrieved";
+          is scalar keys %$ob_reg, 0, "object registry empty";
+          is register($obj), $obj, "object returned by register";
+          is scalar keys %$ob_reg, 1, "object registry nonempty";
+          is id_2obj($id), $obj, "registered object retrieved";
+          # NEW
+          is id_2obj($id),         undef, "unregistered object not retrieved";
+          is scalar keys %$ob_reg, 0,     "object registry empty";
+          is register($obj),       $obj,  "object returned by register";
+          is scalar keys %$ob_reg, 1,     "object registry nonempty";
+          is id_2obj($id),         $obj,  "registered object retrieved";
+        This will cause some changes in alignment, hopefully for the better,
+        particularly in test code which often uses numerous parenless function
+        calls with functions like 'ok', 'is', 'is_deeply', ....
+      - Two new parameters were added to control the block types to which the
+        -bl (--opening-brace-on-new-line) flag applies.  The new parameters are
+        -block-left-list=s, or -bll=s, and --block-left-exclusion-list=s,
+        or -blxl=s.  Previously the -bl flag was 'hardwired' to apply to
+        nearly all blocks. The default values of the new parameters
+        retain the the old default behavior but allow it to be changed.
+      - The default behavior of the -bli (-brace-left-and-indent) flag has changed
+        slightly.  Previously, if you set -bli, then the -bl flag would also
+        automatically be set.  Consequently, block types which were not included
+        in the default list for -bli would get -bl formatting.  This is no longer done,
+        and these two styles are now controlled independently.  The manual describes
+        the controls.  If you want to recover the exact previous default behavior of
+        the -bli then add the -bl flag.
+      - A partial fix was made for issue for git #74. The -lp formatting style was
+        being lost when a one-line anonymous sub was followed by a closing brace.
+      - Fixed issue git #73, in which the -nfpva flag was not working correctly.
+        Some unwanted vertical alignments of spaced function perens
+        were being made.
+      - Updated the man pages to clarify the flags -valign and -novalign
+        for turning vertical alignment on and off (issue git #72).
+        Added parameters -vc -vsc -vbc for separately turning off vertical
+        alignment of code, side comments and block comments.
+      - Fixed issue git #68, where a blank line following a closing code-skipping
+        comment, '#>>V', could be lost.
+      - This version runs 10 to 15 percent faster on large files than the
+        previous release due to optimizations made with the help of NYTProf.
+      - This version of perltidy was stress-tested for many cpu hours with
+        random input parameters. No instabilities,  internal fault checks,
+        undefined variable references or other irregularities were seen.
+      - Numerous minor fixes have been made, mostly very rare formatting instabilities
+        found in random testing. An effort has been made to minimize changes to
+        existing formatting that these fixes produce, but occasional changes
+        may occur. Many of these updates are listed at:
+             https://github.com/perltidy/perltidy/blob/master/local-docs/BugLog.pod
+
+-------------------------------------------------------------------
 Sun Jul 18 03:07:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20210717
