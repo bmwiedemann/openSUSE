@@ -1,7 +1,7 @@
 #
 # spec file for package resolv_wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,10 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}-rpmlintrc
 
+%if 0%{?suse_version} >= 1550
+Patch0:         resolv_wrapper_fix_glibc.patch
+%endif
+
 BuildRequires:  cmake
 BuildRequires:  glibc-devel
 BuildRequires:  libcmocka-devel
@@ -56,6 +60,10 @@ development/testing.
 
 %prep
 %setup -q
+
+%if 0%{?suse_version} >= 1550
+%patch0 -p1
+%endif
 
 %build
 %cmake \
@@ -80,7 +88,6 @@ make %{?_smp_mflags} VERBOSE=1
 %dir %{_libdir}/cmake/resolv_wrapper
 %{_libdir}/cmake/resolv_wrapper/resolv_wrapper-config-version.cmake
 %{_libdir}/cmake/resolv_wrapper/resolv_wrapper-config.cmake
-%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/resolv_wrapper.pc
 %{_mandir}/man1/resolv_wrapper.1*
 
