@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 31 07:57:37 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 95.0.4638.69 (boo#1192184):
+  * CVE-2021-37997: Use after free in Sign-In
+  * CVE-2021-37998: Use after free in Garbage Collection
+  * CVE-2021-37999: Insufficient data validation in New Tab Page
+  * CVE-2021-38000: Insufficient validation of untrusted input in Intents
+  * CVE-2021-38001: Type Confusion in V8
+  * CVE-2021-38002: Use after free in Web Transport
+  * CVE-2021-38003: Inappropriate implementation in V8
+
+-------------------------------------------------------------------
 Sun Oct 24 11:10:51 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 95.0.4638.54 (boo#1191844):

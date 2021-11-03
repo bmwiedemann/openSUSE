@@ -47,7 +47,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        95.0.4638.54
+Version:        95.0.4638.69
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
