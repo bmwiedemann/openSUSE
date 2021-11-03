@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 02 16:18:12 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1635869279.8838dc09:
+  * Fix handling resume command (of developer mode) when not paused
+  * Fix passing border_offset parameter to mouse_hide
+  * t: Use Test::Warnings in all tests
+  * Use proper SPDX identifier in t/15-logging.t as well
+  * t: Add Test::Warnings to 30-mmapi.t
+  * xt: Add style check to ensure all tests use Test::Most
+  * t: Use Test::Most in all tests for consistency
+  * Switch from usb-ehci to qemu-xhci
+  * Provide more explicit error handling on invalid product dir
+  * t: Move subtest in 14-isotovideo which does not need mocked backend
+  * t: Extract OpenQA::Isotovideo::Utils specific test
+
+-------------------------------------------------------------------
 Thu Oct 28 23:46:18 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1635464770.6790629e:
