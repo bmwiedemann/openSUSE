@@ -41,8 +41,9 @@ as is.
 %setup -qa1 -n %{name}-%{name}-v%{version}
 
 %build
+BUILD_DATE=$(date --utc --date="@${SOURCE_DATE_EPOCH}" "+%Y-%m-%dT%H:%M:%SZ")
 cd kustomize
-go build -mod vendor -buildmode=pie .
+go build -mod vendor -buildmode=pie -ldflags="-s -X sigs.k8s.io/kustomize/api/provenance.version=%{version} -X sigs.k8s.io/kustomize/api/provenance.buildDate=${BUILD_DATE}" .
 
 %install
 # Install the binary.

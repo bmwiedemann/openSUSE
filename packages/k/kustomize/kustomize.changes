@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 21 11:57:03 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Use SOURCE_DATE_EPOCH for the build date
+
+-------------------------------------------------------------------
+Tue Oct 19 19:17:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- include the version and build date in the version output 
+
+-------------------------------------------------------------------
 Wed Feb 10 04:02:15 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version 3.10.0
