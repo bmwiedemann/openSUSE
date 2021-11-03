@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  3 03:52:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * No code changes, include binary wheels for new version of python.
+- Switch from nose to pytest, dropping the awful mv calls.
+- LICENSE now shipped in sdist.
+
+-------------------------------------------------------------------
 Mon Mar 11 11:06:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.3:

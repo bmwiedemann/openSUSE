@@ -1,7 +1,7 @@
 #
 # spec file for package python-editdistance
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-editdistance
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        An implementation of the edit distance (Levenshtein distance)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://www.github.com/aflc/editdistance
 Source:         https://files.pythonhosted.org/packages/source/e/editdistance/editdistance-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -63,14 +62,10 @@ This package contains the files needed for binding the %{name} C module.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Hide source during tests so that nose finds the installed version
-mv editdistance _editdistance
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m nose
-mv _editdistance editdistance
+%pytest_arch
 
 %files %{python_files}
-# Lack of separate license noted at https://github.com/aflc/editdistance/issues/23
-%license README.rst
+%license LICENSE
 %doc README.rst
 %exclude %{python_sitearch}/editdistance/*.h
 %{python_sitearch}/
