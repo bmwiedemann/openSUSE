@@ -18,7 +18,7 @@
 
 %define cpan_name Getopt-Long-Descriptive
 Name:           perl-Getopt-Long-Descriptive
-Version:        0.109
+Version:        0.110
 Release:        0
 Summary:        Getopt::Long, but simpler and more powerful
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
 BuildRequires:  perl(CPAN::Meta::Requirements)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Params::Validate) >= 0.97
 BuildRequires:  perl(Sub::Exporter) >= 0.972
 BuildRequires:  perl(Sub::Exporter::Util)
