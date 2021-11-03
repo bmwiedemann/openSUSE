@@ -20243,7 +20243,6 @@ unsorted:
   - plasma-applet-weather-widget 
   - plasma-applet-weather-widget-lang 
   - plasma-framework-devel 
-  - plasma-mycroft 
   - plasma-nm5-fortisslvpn 
   - plasma-nm5-iodine 
   - plasma-nm5-l2tp 
@@ -23729,7 +23728,6 @@ unsorted:
   - python36-requests-futures 
   - python36-requests-gssapi 
   - python36-requests-hawk 
-  - python36-requests-html 
   - python36-requests-kerberos 
   - python36-requests-mock 
   - python36-requests-oauthlib 
@@ -26635,7 +26633,6 @@ unsorted:
   - python38-requests-futures 
   - python38-requests-gssapi 
   - python38-requests-hawk 
-  - python38-requests-html 
   - python38-requests-mock 
   - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
@@ -29743,7 +29740,6 @@ unsorted:
   - python39-requests-futures 
   - python39-requests-gssapi 
   - python39-requests-hawk 
-  - python39-requests-html 
   - python39-requests-kerberos 
   - python39-requests-mock 
   - python39-requests-oauthlib 
@@ -31592,8 +31588,6 @@ unsorted:
   - rust1.54-gdb 
   - rust1.54-src 
   - rust1.55 
-  - rust1.55-gdb: [i586] 
-  - rust1.55-src: [i586] 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
