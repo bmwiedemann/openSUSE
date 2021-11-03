@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 29 18:01:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 3.1.11
+  * Create special invite links that require admins to approve users
+    before they become members.
+  * Admins can view the applicants' profiles and bios by tapping the
+    Join Requests bar at the top of the chat.
+  * Add internal labels to your chat's Invite Links to keep them
+    organized.
+  * Run natively on Apple Silicon
+- Update tg_owt
+
+-------------------------------------------------------------------
 Mon Oct 11 10:54:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.1.9
