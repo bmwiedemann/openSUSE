@@ -662,4 +662,12 @@ ProxyCommand parsing in ssh configuration files:
 </comment>
     <requestid>914405</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>390fda924d9006b9ff665a891b7bc10c</srcmd5>
+    <version>0.9.6</version>
+    <time>1635956763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928800</requestid>
+  </revision>
 </revisionlist>
