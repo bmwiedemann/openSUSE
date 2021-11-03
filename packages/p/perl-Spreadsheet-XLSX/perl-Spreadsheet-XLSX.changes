@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 26 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.16
+
+  	- added GitHub repository
+  	- fix RT #125112: Update module name in comments and POD
+  	- improve POD
+  	- improve kwalitee test
+
+-------------------------------------------------------------------
 Wed Nov  4 10:29:57 UTC 2015 - coolo@suse.com
 
 - updated to 0.15
