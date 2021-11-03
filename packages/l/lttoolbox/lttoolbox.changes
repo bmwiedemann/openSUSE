@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Oct 28 12:26:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.4
+  * postgenerator failed when ~ in middle of wblanked word
+
+-------------------------------------------------------------------
+Fri Nov 27 17:55:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.3
+  * Support for wordbound blanks stream format.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:29:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.2
+  * Support for weights
+  * New `lt-proc -x` mode: intergen
+
+-------------------------------------------------------------------
+Mon Jul  7 14:40:33 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 3.3.0~svn55329) for build.opensuse.org
