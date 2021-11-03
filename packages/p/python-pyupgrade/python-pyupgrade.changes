@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  2 19:39:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.29.0:
+ - Revert "Merge pull request #320 from asottile/new_class_super_v2"
+   This reverts commit b3f8c7b2e9ccb06c6028d5dd90c8f5490a49e95b, reversing
+   changes made to 41308214566af7c5589ebc7e8a760522c82dc3bc.
+ - Revert "Merge pull request #545 from asottile/skip-staticmethod"
+   This reverts commit 8768d42facdaa1ef771a5a689b11329a54afd00a, reversing
+   changes made to a2f517f0103c1f74bffbc06be510bcec4cd181ec.
+- update to version 2.28.1:
+ - don't rewrite old-super for staticmethods
+
+-------------------------------------------------------------------
 Sun Sep 26 07:22:08 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.28.0:

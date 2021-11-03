@@ -328,4 +328,20 @@
 </comment>
     <requestid>927577</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67757ad850cbda9658298427ecc157c9</srcmd5>
+    <version>2.29.0</version>
+    <time>1635956751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.29.0:
+ - Revert &quot;Merge pull request #320 from asottile/new_class_super_v2&quot;
+   This reverts commit b3f8c7b2e9ccb06c6028d5dd90c8f5490a49e95b, reversing
+   changes made to 41308214566af7c5589ebc7e8a760522c82dc3bc.
+ - Revert &quot;Merge pull request #545 from asottile/skip-staticmethod&quot;
+   This reverts commit 8768d42facdaa1ef771a5a689b11329a54afd00a, reversing
+   changes made to a2f517f0103c1f74bffbc06be510bcec4cd181ec.
+- update to version 2.28.1:
+ - don't rewrite old-super for staticmethods</comment>
+    <requestid>928868</requestid>
+  </revision>
 </revisionlist>
