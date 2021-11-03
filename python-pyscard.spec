@@ -18,7 +18,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 %define modname pyscard
 Name:           python-pyscard
 Version:        2.0.2
@@ -57,10 +56,10 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%if %{with test}
+
 %check
-%python_exec setup.py test
-%endif
+mv smartcard smartcard_hide
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %doc ChangeLog doc README.md
