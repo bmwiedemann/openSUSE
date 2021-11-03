@@ -399,4 +399,21 @@
   - Fixed compatibility with OpenSSL 1.1.0.</comment>
     <requestid>868439</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>504f536596d5209afa065bc128b4eb57</srcmd5>
+    <version>21.0.0</version>
+    <time>1635956725</time>
+    <user>dimstar_suse</user>
+    <comment>- Add check_inv_ALPN_lists.patch checks for invalid ALPN lists
+  before calling OpenSSL (gh#pyca/pyopenssl#1056).
+- update to 21.0.0:
+  - The minimum ``cryptography`` version is now 3.3.
+  - Drop support for Python 3.5
+  - Raise an error when an invalid ALPN value is set.
+  - Added ``OpenSSL.SSL.Context.set_min_proto_version`` and ``OpenSSL.SSL.Context.set_max_proto_version``
+  - Updated ``to_cryptography`` and ``from_cryptography`` methods to support an
+    upcoming release of ``cryptography`` without raising deprecation warnings.
+</comment>
+    <requestid>928309</requestid>
+  </revision>
 </revisionlist>

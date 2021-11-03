@@ -1,0 +1,51 @@
+From cc5c00ae5fd3c19d07fff79b5c4a08f5e58697ad Mon Sep 17 00:00:00 2001
+From: "Nathaniel J. Smith" <njs@pobox.com>
+Date: Wed, 27 Oct 2021 11:54:08 -0700
+Subject: [PATCH 1/2] Check for invalid ALPN lists before calling OpenSSL, for
+ consistency
+
+Fixes gh-1043
+---
+ src/OpenSSL/SSL.py |   12 ++++++++++++
+ tests/test_ssl.py  |    2 +-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+--- a/src/OpenSSL/SSL.py
++++ b/src/OpenSSL/SSL.py
+@@ -1423,6 +1423,12 @@ class Context(object):
+             This list should be a Python list of bytestrings representing the
+             protocols to offer, e.g. ``[b'http/1.1', b'spdy/2']``.
+         """
++        # Different versions of OpenSSL are inconsistent about how they handle
++        # empty proto lists (see #1043), so we avoid the problem entirely by
++        # rejecting them ourselves.
++        if not protos:
++            raise ValueError("at least one protocol must be specified")
++
+         # Take the list of protocols and join them together, prefixing them
+         # with their lengths.
+         protostr = b"".join(
+@@ -2451,6 +2457,12 @@ class Connection(object):
+             This list should be a Python list of bytestrings representing the
+             protocols to offer, e.g. ``[b'http/1.1', b'spdy/2']``.
+         """
++        # Different versions of OpenSSL are inconsistent about how they handle
++        # empty proto lists (see #1043), so we avoid the problem entirely by
++        # rejecting them ourselves.
++        if not protos:
++            raise ValueError("at least one protocol must be specified")
++
+         # Take the list of protocols and join them together, prefixing them
+         # with their lengths.
+         protostr = b"".join(
+--- a/tests/test_ssl.py
++++ b/tests/test_ssl.py
+@@ -1934,7 +1934,7 @@ class TestApplicationLayerProtoNegotiati
+         protocols list. Ensure that we produce a user-visible error.
+         """
+         context = Context(SSLv23_METHOD)
+-        with pytest.raises(Error):
++        with pytest.raises(ValueError):
+             context.set_alpn_protos([])
+ 
+     def test_alpn_set_on_connection(self):

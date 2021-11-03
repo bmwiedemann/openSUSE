@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pyOpenSSL
-Version:        20.0.1
+Version:        21.0.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -28,8 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpe
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
+# PATCH-FIX-UPSTREAM check_inv_ALPN_lists.patch gh#pyca/pyopenssl#1056 mcepl@suse.com
+#  Check for invalid ALPN lists before calling OpenSSL
+Patch1:         check_inv_ALPN_lists.patch
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module cryptography >= 2.8}
+BuildRequires:  %{python_module cryptography >= 3.3}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest >= 3.0.1}
@@ -40,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
-Requires:       python-cryptography >= 2.8
+Requires:       python-cryptography >= 3.3
 Requires:       python-six >= 1.5.2
 Provides:       pyOpenSSL = %{version}
 BuildArch:      noarch
