@@ -22,7 +22,7 @@ Name:           sccache
 Version:        0.2.15~git0.6b6d2f7
 Release:        0
 Summary:        A compiler caching tool for Rust, C and C++ with optional cloud storage
-License:        Apache-2.0
+License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR CC0-1.0) AND ((Apache-2.0 AND BSD-2-Clause) OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT
 Group:          Development/Languages/Rust
 URL:            https://github.com/mozilla/%{name}
 Source0:        %{name}-%{version}.tar.xz
