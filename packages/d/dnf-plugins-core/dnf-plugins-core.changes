@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  3 11:50:23 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.0.24
+  + [copr] Avoid using deprecated function distro.linux_distribution() (rh#2011550)
+  + [copr] don't traceback on empty lines in /etc/os-release
+  + [leaves] Show strongly connected components
+  + [needs-restarting] Fix wrong boot time (rh#1960437)
+  + [playground] Disable playground command, since it doesn't work
+
+-------------------------------------------------------------------
 Fri Aug 27 03:27:24 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.0.22

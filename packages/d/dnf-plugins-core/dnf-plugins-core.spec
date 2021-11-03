@@ -2,7 +2,7 @@
 # spec file for package dnf-plugins-core
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.0.22
+Version:        4.0.24
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later

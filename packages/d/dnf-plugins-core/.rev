@@ -252,4 +252,17 @@
   + [versionlock] Work correctly with packages with minorbump part of release (rh#1961217)</comment>
     <requestid>914476</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b66647c16a82e84a00e2ffa0b4195cba</srcmd5>
+    <version>4.0.24</version>
+    <time>1635956795</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.24
+  + [copr] Avoid using deprecated function distro.linux_distribution() (rh#2011550)
+  + [copr] don't traceback on empty lines in /etc/os-release
+  + [leaves] Show strongly connected components
+  + [needs-restarting] Fix wrong boot time (rh#1960437)
+  + [playground] Disable playground command, since it doesn't work</comment>
+    <requestid>929012</requestid>
+  </revision>
 </revisionlist>
