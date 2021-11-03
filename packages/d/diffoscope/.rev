@@ -219,4 +219,28 @@
 </comment>
     <requestid>925543</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9e78484e9c3e889a9020b7a911f7fe05</srcmd5>
+    <version>189</version>
+    <time>1635956738</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 189:
+ - Try some alternative suffixes (eg. &quot;.py&quot;) to support distributions that
+   strip or retain them. (Closes: reproducible-builds/diffoscope#283)
+ - Skip Python bytecode testing where we do not have an expected diff.
+   (Closes: reproducible-builds/diffoscope#284)
+ - Refactor the find_executable utility into an explicit method.
+ - Split out a custom call to assert_diff to support a .startswith equivalent.
+ - Use skipif instead of manual conditionals in some tests.
+ - Add an external tool reference for Guix to support ppudump and dumppdf.
+ - Update uImage test output for file(1) version 5.41.
+ - Add Arch Linux as CI test target.
+ - Add external tools on Arch Linux for ffmpeg, openssl and ocalobjinfo.
+- update to version 188:
+ - Add support for Python Sphinx inventory files, usually named objects.inv.
+ - Fix Python bytecode decompilation tests with Python 3.10+.
+   (Closes: reproducible-builds/diffoscope#278)
+</comment>
+    <requestid>928848</requestid>
+  </revision>
 </revisionlist>
