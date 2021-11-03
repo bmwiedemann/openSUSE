@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 22 17:31:09 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- Renamed patches:
+  - MyGUI-libCommon-fixup.patch -> MyGUI-libs-versioning.patch
+- Added patches:
+  - MyGUI-install-libCommon.patch
+- Extracted "tools" to a subpackage; fixed generated desktop files.
+- Moved devel "*.so" files to "devel" subpackage. MyGUI contains only libs with
+  versions. Installing dependent applications doesn't pull MyGUI-devel.
+
+-------------------------------------------------------------------
 Mon Jun 28 08:34:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update BuildRequires to fix OBS builds.

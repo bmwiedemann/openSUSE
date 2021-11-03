@@ -32,8 +32,10 @@ Source1:        %{name}.png
 Patch0:         %{name}-lib_suffix.patch
 # PATCH-FIX-UPSTREAM MyGUI-gcc47-visibility.patch
 Patch1:         %{name}-gcc47-visibility.patch
-# PATCH-FIX-UPSTREAM MyGUI-libCommon-fixup.patch -- https://github.com/MyGUI/mygui/issues/157
-Patch2:         MyGUI-libCommon-fixup.patch
+# PATCH-FEATURE-OPENSUSE MyGUI-libs-versioning.patch -- Add versioning to libs; Upstream seems uninterested: https://github.com/MyGUI/mygui/issues/157
+Patch2:         MyGUI-libs-versioning.patch
+# PATCH-FEATURE-OPENSUSE MyGUI-install-libCommon.patch -- Use cmake to install libCommon
+Patch3:         MyGUI-install-libCommon.patch
 BuildRequires:  cmake
 BuildRequires:  dejavu
 BuildRequires:  dos2unix
@@ -90,9 +92,21 @@ for games and 3D applications.
 
 This package contains the shared library for package MyGUI.
 
+%package tools
+Summary:        Tools applications for MyGUI
+Group:          Development/Tools/GUI Builders
+Requires:       %{name} = %{version}
+
+%description tools
+MyGUI is a library for creating Graphical User Interfaces (GUIs)
+for games and 3D applications.
+
+This package contains tools applications for package MyGUI.
+
 %package devel
 Summary:        Development files for MyGUI
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 Requires:       libMyGUIEngine%{_sover} = %{version}
 Requires:       libOIS-devel
 Requires:       libOgreMain-devel
@@ -122,11 +136,7 @@ This subpackage contains the development documentation for MyGUI.
 %setup -q -n mygui-%{name}%{version}
 %autopatch -p1
 
-dos2unix     *.txt COPYING.MIT
-chmod 644 *.txt COPYING.MIT
-
 %build
-install -dm 755 build
 # this is probably an error in OGRE packaging... but let's just fix the build.
 export OGRE_LIBRARIES="`pkg-config --libs OGRE` -lboost_system"
 %cmake \
@@ -155,11 +165,7 @@ pushd ../Docs
 popd
 
 %install
-pushd build
-%make_install
-# Install libCommon manually as cmake does not install it
-cp -a %{_lib}/libCommon.so* %{buildroot}%{_libdir}/
-popd
+%cmake_install
 
 # rename demos to avoid duplicate names with other packages
 pushd %{buildroot}%{_bindir}
@@ -178,8 +184,8 @@ sed -i -e 's|PluginFolder=%{_prefix}/local/lib/OGRE|%{_libdir}/OGRE|g' %{buildro
 
 # wrapper-script for binaries
 cat > %{name}.sh <<EOF
-#! /bin/bash
-if [ -z "\$1" ]; then
+#!/bin/bash
+if [[ -z "\$1" ]]; then
   echo "missing parameter..."
   echo ""
   echo "usage:"
@@ -188,8 +194,7 @@ if [ -z "\$1" ]; then
   echo "\$0 FontViewer"
   echo ""
   echo "or one of the installed demo applications:"
-  myDemos=\`ls -1 %{_bindir}/%{name}-Demo_*\`
-  echo \$myDemos | sed -e 's|%{_bindir}/||g'
+  ls -1 %{_bindir}/%{name}-Demo_* | sed -e 's|%{_bindir}/||g'
   exit 1
 fi
 
@@ -210,10 +215,9 @@ fi
 
 # call binary from local working-directory
 cd \$HOME/.%{name}
-%{_bindir}/\$1
+exec "%{_bindir}/\$1"
 EOF
-install -m 755 %{name}.sh \
-	%{buildroot}%{_bindir}
+install -m 755 -t %{buildroot}%{_bindir} %{name}.sh
 
 # use system fonts
 pushd %{buildroot}%{_datadir}/%{capname}/Media/MyGUI_Media
@@ -222,12 +226,10 @@ pushd %{buildroot}%{_datadir}/%{capname}/Media/MyGUI_Media
 popd
 
 # icon
-install -dm 755 %{buildroot}%{_datadir}/pixmaps
-install -m 644 %{SOURCE1} \
-  %{buildroot}%{_datadir}/pixmaps
+install -D -m 644 -t %{buildroot}%{_datadir}/pixmaps %{SOURCE1}
 
 # menu-entries
-for i in LayoutEditor ImageSetViewer FontViewer; do
+for i in FontEditor ImageEditor LayoutEditor SkinEditor; do
   cat > $i.desktop << EOF
 [Desktop Entry]
 Name=MyGUI $i
@@ -238,15 +240,12 @@ Icon=%{name}
 Terminal=false
 Type=Application
 EOF
-	%suse_update_desktop_file -i $i Development GUIDesigner
+  %suse_update_desktop_file -i $i Development GUIDesigner
 done
 
 # remove unwanted files
 rm -r %{buildroot}%{_datadir}/%{capname}/Media/UnitTests
 rm -r %{buildroot}%{_datadir}/%{capname}/Media/Wrapper/WrapperBaseApp
-# don't ask me where this file went, it vanished with 12.1...
-# for now simply ignore the error... :-)
-rm Docs/html/installdox || true
 
 %fdupes -s %{buildroot}
 
@@ -257,49 +256,20 @@ rm Docs/html/installdox || true
 %postun -p /sbin/ldconfig
 
 %files
-%doc *.txt
+%doc README.md
 %license COPYING.MIT
 %{_bindir}/%{name}.sh
-%{_bindir}/FontEditor
-%{_bindir}/ImageEditor
-%{_bindir}/LayoutEditor
-%{_bindir}/SkinEditor
-%{_libdir}/libCommon.so.*
-%dir %{_datadir}/%{capname}
-%{_datadir}/%{capname}/*.cfg
-%{_datadir}/%{capname}/*.xml
-%dir %{_datadir}/%{capname}/Media
-%{_datadir}/%{capname}/Media/Common/
-%{_datadir}/%{capname}/Media/MyGUI_Media/
-%dir %{_datadir}/%{capname}/Media/Tools
-%dir %{_datadir}/%{capname}/Media/Tools/LayoutEditor
-%dir %{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeTemplates
-%{_datadir}/%{capname}/Media/Tools/FontEditor
-%{_datadir}/%{capname}/Media/Tools/ImageEditor
-%{_datadir}/%{capname}/Media/Tools/EditorFramework
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/B*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeGeneratorWindow.layout
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeTemplates/BaseLayoutCPP.xml
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/E*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/I*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/M*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/P*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/S*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/T*
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/W*
-%{_datadir}/%{capname}/Media/Tools/SkinEditor
-%{_datadir}/applications/FontViewer.desktop
-%{_datadir}/applications/ImageSetViewer.desktop
-%{_datadir}/applications/LayoutEditor.desktop
-%{_datadir}/pixmaps/*.png
+%{_libdir}/lib*.so.*
+%exclude %{_libdir}/libMyGUIEngine.so.*
+%{_libdir}/Plugin_*.so
+%{_datadir}/%{capname}/
+%exclude %{_datadir}/%{capname}/Media/Demos/
+%exclude %{_datadir}/%{capname}/Media/Tools/
 
 %files devel
-%dir %{_includedir}/%{capname}
-%{_includedir}/%{capname}/*.h
-%{_libdir}/*.so
+%{_includedir}/%{capname}/
+%{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeTemplates/BaseLayoutTemplate.cpp
-%{_datadir}/%{capname}/Media/Tools/LayoutEditor/CodeTemplates/BaseLayoutTemplate.h
 
 %files devel-doc
 %doc Docs/html/*
@@ -310,5 +280,17 @@ rm Docs/html/installdox || true
 %files demo
 %{_bindir}/%{name}-Demo_*
 %{_datadir}/%{capname}/Media/Demos/
+
+%files tools
+%{_bindir}/FontEditor
+%{_bindir}/ImageEditor
+%{_bindir}/LayoutEditor
+%{_bindir}/SkinEditor
+%{_datadir}/%{capname}/Media/Tools/
+%{_datadir}/applications/FontEditor.desktop
+%{_datadir}/applications/ImageEditor.desktop
+%{_datadir}/applications/LayoutEditor.desktop
+%{_datadir}/applications/SkinEditor.desktop
+%{_datadir}/pixmaps/*.png
 
 %changelog

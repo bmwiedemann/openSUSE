@@ -1,0 +1,10 @@
+Index: mygui-MyGUI3.4.0/Common/CMakeLists.txt
+===================================================================
+--- mygui-MyGUI3.4.0.orig/Common/CMakeLists.txt
++++ mygui-MyGUI3.4.0/Common/CMakeLists.txt
+@@ -173,3 +173,5 @@ if(NOT WIN32)
+ 		include_directories(${X11_INCLUDE_DIR})
+ 	endif(UNIX AND NOT APPLE)
+ endif()
++
++mygui_install_target(${PROJECTNAME} "")
