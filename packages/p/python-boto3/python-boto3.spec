@@ -19,25 +19,25 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-boto3
-Version:        1.18.33
+Version:        1.19.6
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
 URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
-BuildRequires:  %{python_module botocore < 1.22.0}
-BuildRequires:  %{python_module botocore >= 1.21.33}
+BuildRequires:  %{python_module botocore < 1.23.0}
+BuildRequires:  %{python_module botocore >= 1.22.6}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module s3transfer < 0.6.0}
 BuildRequires:  %{python_module s3transfer >= 0.5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-botocore < 1.22.0
-Requires:       python-botocore >= 1.21.33
+Requires:       python-botocore < 1.23.0
+Requires:       python-botocore >= 1.22.6
 Requires:       python-jmespath < 1.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.6.0
@@ -79,7 +79,7 @@ sed -i 's/from botocore.vendored //' boto3/compat.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v tests/unit
+%pytest --ignore tests/integration -k "not no_bare_six_imports"
 
 %files %{python_files}
 %license LICENSE
