@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typepy
-Version:        1.1.5
+Version:        1.3.0
 Release:        0
 Summary:        Python library for run time variable type checker
 License:        MIT
