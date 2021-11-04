@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -28,9 +28,14 @@ Source:         https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
+BuildRequires:  rtaudio-devel
 
 %description
 JackTrip is a system used for multi-machine network performance over the
@@ -42,6 +47,7 @@ audio signal streaming.
 %setup -q
 
 %build
+mv build .build
 %meson
 %meson_build
 
@@ -49,7 +55,17 @@ audio signal streaming.
 %meson_install
 
 %files
-%doc CHANGESLOG.txt README.md TODO.txt
+%doc README.md
+%license LICENSE.md
 %{_bindir}/jacktrip
+%{_datadir}/applications/*
+%{_datadir}/metainfo/*
+%dir %{_datadir}/icons/hicolor/48x48
+%dir %{_datadir}/icons/hicolor/48x48/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%dir %{_datadir}/icons/hicolor/symbolic
+%dir %{_datadir}/icons/hicolor/symbolic/apps
+%{_datadir}/icons/hicolor/*/apps/*
 
 %changelog

@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>884939</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ef0333bea6640880ffa2c5b97d711164</srcmd5>
+    <version>1.4.0</version>
+    <time>1636038602</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed changelog and build for Leap 15.3 (forwarded request 929122 from ozu)</comment>
+    <requestid>929149</requestid>
+  </revision>
 </revisionlist>
