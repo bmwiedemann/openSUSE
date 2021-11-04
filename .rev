@@ -1425,4 +1425,12 @@
   * lvmlockd: remove cmirrord support as it's incompatible with lvmlockd</comment>
     <requestid>921052</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>7e7d5a9d6ce33f783e31419fe3c89a39</srcmd5>
+    <version>4.9.0+git25.278c776d</version>
+    <time>1636038982</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928570</requestid>
+  </revision>
 </revisionlist>
