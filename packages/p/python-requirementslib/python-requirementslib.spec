@@ -42,6 +42,7 @@ Requires:       python-appdirs
 Requires:       python-attrs >= 19.2.0
 Requires:       python-boltons >= 19.0.0
 Requires:       python-cached-property
+Requires:       python-chardet
 Requires:       python-distlib >= 0.2.8
 Requires:       python-first
 Requires:       python-orderedmultidict
@@ -66,6 +67,7 @@ BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module boltons >= 19.0.0}
 BuildRequires:  %{python_module cached-property}
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module distlib >= 0.2.8}
 BuildRequires:  %{python_module first}
