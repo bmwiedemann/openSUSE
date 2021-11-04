@@ -1,8 +1,8 @@
 #
 # spec file for package logwarn
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (C) 2010-2011 Archie L. Cobbs. All rights reserved.
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2010-2011 Archie L. Cobbs. All rights reserved.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,8 @@ Release:        0
 Summary:        Utility for finding interesting messages in log files
 License:        Apache-2.0
 Group:          System/Monitoring
-Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
 URL:            https://github.com/archiecobbs/%{name}/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  nagios-rpm-macros
@@ -51,22 +50,22 @@ tion.
 %setup -q
 
 %build
-%{configure}
-make
+%configure
+%make_build
 
 %install
-%{makeinstall}
+%make_install
 install -d %{buildroot}%{_var}/lib/%{name}
-install -d %{buildroot}%{_datadir}/doc/packages/%{name}
-install COPYING %{buildroot}%{_datadir}/doc/packages/%{name}/
-rm -rf %{buildroot}%{_datadir}/doc/packages/%{name}/INSTALL
+install -d %{buildroot}%{_docdir}/%{name}
+install COPYING %{buildroot}%{_docdir}/%{name}/
+rm -rf %{buildroot}%{_docdir}/%{name}/INSTALL
 
 %files
 %attr(0755,root,root) %{_bindir}/%{name}
 %attr(0644,root,root) %{_mandir}/man1/%{name}.1.gz
 %defattr(0644,root,root,0755)
 %{_var}/lib/%{name}
-%doc %{_datadir}/doc/packages/%{name}
+%doc %{_docdir}/%{name}
 
 %package nagios-plugin
 Summary:        Nagios plugin based on the logwarn(1) utility
