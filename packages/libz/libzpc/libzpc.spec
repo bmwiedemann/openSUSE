@@ -24,24 +24,24 @@ License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source:         libzpc-1.0.0.tar.gz
-Source1:        %{name}-rpmlintrc
+Patch0:         libzpc-sles15p4-mark-stack-nonexec.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
+BuildRequires:  texlive-bibtex-bin
 ExclusiveArch:  s390x
 
 %description
-The IBM Z Protected-key Crypto library libzpc is an open-source
-library targeting the 64-bit Linux on IBM Z (s390x) platform. It
-provides interfaces for cryptographic primitives. The underlying
-implementations make use of z/Architecture's extensive
-performance-boosting hardware support and its protected-key feature
-which ensures that key material is never present in main memory at any
-time.
+The IBM Z Protected-key Crypto library libzpc is a library targeting
+the 64-bit Linux on IBM Z (s390x) platform. It provides interfaces for
+cryptographic primitives. The underlying implementations make use of
+z/Architecture's performance-boosting hardware support and its
+protected-key feature which ensures that key material is never present
+in main memory at any time.
 
 %package -n libzpc1
-Summary:        Library
+Summary:        IBM Z Protected-key Crypto library
 Group:          System/Libraries
 
 %description -n libzpc1
@@ -49,15 +49,16 @@ This package contains the shared library to work with the
 IBM protected-key cryptography hardware
 
 %package devel
-Summary:        Deep Learning Library development files
-Requires:       libzpc0 = %{version}-%{release}
+Summary:        Header files for the IBM Z Protected-key Crypto library
+Group:          Productivity/Security
+Requires:       libzpc1 = %{version}-%{release}
 
 %description devel
-This package provides the sole include file and symbolic link to the
+This package provides the header files and symbolic link to the
 shared library for the libzpc RPM.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 mkdir build && cd build

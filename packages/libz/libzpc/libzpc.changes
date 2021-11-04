@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  2 14:42:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- libzpc-sles15p4-mark-stack-nonexec.patch: note the asssembler as
+  non execstack
+- libzpc-rpmlintrc removed
+
+-------------------------------------------------------------------
+Mon Nov  1 15:46:47 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Cleaned up the wording in the description. Updated the
+  summaries to actually reflect the contents of the packages.
+- Changed the %setup macro to use $autosetup instead.
+- Added a BuildRequires for texlive-bibtex-bin
+
+-------------------------------------------------------------------
 Tue Oct 19 21:49:30 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Initial version 1.0.0 (jsc#SLE-18746)

@@ -7,4 +7,18 @@
     <comment>New package per IBM request, Jira # SLE-18746.</comment>
     <requestid>928174</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1075c8d931c67ab9258bfea7a1f714ad</srcmd5>
+    <version>1.0.0</version>
+    <time>1636038596</time>
+    <user>dimstar_suse</user>
+    <comment>- libzpc-sles15p4-mark-stack-nonexec.patch: note the asssembler as
+  non execstack
+- libzpc-rpmlintrc removed
+- Cleaned up the wording in the description. Updated the
+  summaries to actually reflect the contents of the packages.
+- Changed the %setup macro to use $autosetup instead.
+- Added a BuildRequires for texlive-bibtex-bin</comment>
+    <requestid>929077</requestid>
+  </revision>
 </revisionlist>
