@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 29 01:52:42 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Remove -lang package from Requires
+
+-------------------------------------------------------------------
 Thu Sep 16 14:07:38 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Add gettext-tools as Requires (boo#1190403)

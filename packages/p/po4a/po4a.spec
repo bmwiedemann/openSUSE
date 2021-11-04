@@ -78,7 +78,6 @@ Recommends:     libterm-readkey-perl
 Recommends:     libtext-wrapi18n-perl
 Recommends:     libunicode-linebreak-perl
 %else
-Requires:       %{name}-lang = %{version}
 Requires:       gettext-tools
 Requires:       perl-SGMLS
 Requires:       perl-YAML-Tiny
