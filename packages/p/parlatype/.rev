@@ -89,4 +89,12 @@
 - Remove parlatype-2.0-asr.patch: contained in release</comment>
     <requestid>816278</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>046706543753e22a40b82889d5b4a4d6</srcmd5>
+    <version>3.0</version>
+    <time>1636038574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929150</requestid>
+  </revision>
 </revisionlist>

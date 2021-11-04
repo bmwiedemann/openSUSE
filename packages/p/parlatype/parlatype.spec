@@ -1,7 +1,7 @@
 #
 # spec file for package parlatype
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-%define c_lib   libparlatype3
+%define c_lib   libparlatype5
 Name:           parlatype
-Version:        2.1
+Version:        3.0
 Release:        0
 Summary:        GNOME audio player for transcriptions
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://gkarsay.github.io/parlatype/
 Source:         https://github.com/gkarsay/parlatype/releases/download/v%{version}/parlatype-%{version}.tar.gz
+Patch0:         parlatype-asr.patch
 BuildRequires:  AppStream-devel
 BuildRequires:  automake
+BuildRequires:  glib2-devel >= 2.58
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
+BuildRequires:  iso-codes-devel
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
@@ -64,16 +67,18 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%meson -Dasr=false
+%meson -Ddeepspeech=false -Dpocketsphinx=false
 %meson_build
 
 %install
 %meson_install
 
 %find_lang %{name}
-%find_lang libparlatype3
+%find_lang org.parlatype.Parlatype %{no_lang_C} %{name}.lang
+%find_lang libparlatype5
 
 %post -n %{c_lib} -p /sbin/ldconfig
 %postun -n %{c_lib} -p /sbin/ldconfig
@@ -83,7 +88,7 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 %doc NEWS README.md
 %{_bindir}/parlatype
 %{_mandir}/man1/parlatype.1%{?ext_man}
-%{_datadir}/help/
+%{_datadir}/help/C/org.parlatype.Parlatype/
 %{_datadir}/icons/hicolor/
 %{_datadir}/applications/org.parlatype.Parlatype.desktop
 %{_datadir}/dbus-1/services/org.parlatype.Parlatype.service
@@ -100,6 +105,6 @@ Parlatype ships its own library, libparlatype, which provides a GStreamer backen
 
 %files lang -f %{name}.lang
 
-%files lang -f libparlatype3.lang
+%files lang -f libparlatype5.lang
 
 %changelog
