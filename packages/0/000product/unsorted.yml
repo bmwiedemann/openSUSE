@@ -127,6 +127,7 @@ unsorted:
   - MyGUI-demo 
   - MyGUI-devel 
   - MyGUI-devel-doc 
+  - MyGUI-tools 
   - NetworkManager-branding-upstream 
   - NetworkManager-devel 
   - NetworkManager-devel-32bit: [x86_64] 
@@ -1606,7 +1607,7 @@ unsorted:
   - busybox-unzip 
   - busybox-vi 
   - busybox-vlan 
-  - busybox-warewulf3: [x86_64] 
+  - busybox-warewulf3 
   - busybox-wget 
   - busybox-which 
   - busybox-whois 
@@ -2744,6 +2745,7 @@ unsorted:
   - deepin-dock 
   - deepin-dock-devel 
   - deepin-dock-plugin-screen-recorder 
+  - deepin-dock-plugin-system-monitor 
   - deepin-draw 
   - deepin-draw-lang 
   - deepin-editor 
@@ -5945,7 +5947,6 @@ unsorted:
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-czerwonk-ping_exporter 
-  - golang-github-golang-protobuf 
   - golang-github-jteeuwen-go-bindata 
   - golang-github-linuxdeepin-dde-api 
   - golang-github-linuxdeepin-deepin-daemon 
@@ -7010,6 +7011,8 @@ unsorted:
   - intel-hybrid-driver 
   - intel-media-driver 
   - intel-media-driver-32bit: [x86_64] 
+  - intel-opencl: [x86_64] 
+  - intel-opencl-devel: [x86_64] 
   - intel-vaapi-driver-32bit: [x86_64] 
   - intelhex 
   - inter-fonts 
@@ -8925,17 +8928,6 @@ unsorted:
   - libQt5WaylandClient5-32bit: [x86_64] 
   - libQt5WaylandCompositor5-32bit: [x86_64] 
   - libQt5WebChannel5-32bit: [x86_64] 
-  - libQt5WebKit-private-headers-devel 
-  - libQt5WebKit5 
-  - libQt5WebKit5-32bit: [x86_64] 
-  - libQt5WebKit5-devel 
-  - libQt5WebKit5-devel-32bit: [x86_64] 
-  - libQt5WebKit5-imports 
-  - libQt5WebKitWidgets-devel 
-  - libQt5WebKitWidgets-devel-32bit: [x86_64] 
-  - libQt5WebKitWidgets-private-headers-devel 
-  - libQt5WebKitWidgets5 
-  - libQt5WebKitWidgets5-32bit: [x86_64] 
   - libQt5WebSockets5-32bit: [x86_64] 
   - libQt5WebView5 
   - libQt5WebView5-imports 
@@ -9882,9 +9874,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10545,7 +10537,7 @@ unsorted:
   - libflickcurl-devel 
   - libflickcurl0 
   - libflickcurl0-32bit: [x86_64] 
-  - libflint15 
+  - libflint16 
   - libflorence-1_0-1 
   - libfltk1_3-32bit: [x86_64] 
   - libfluidsynth3 
@@ -11735,6 +11727,7 @@ unsorted:
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
+  - liblttoolbox3-3_5-1 
   - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
@@ -12382,7 +12375,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio8 
   - libopenshot-devel 
-  - libopenshot20 
+  - libopenshot21 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -13076,8 +13069,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13100,7 +13093,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13327,7 +13320,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -15054,6 +15047,8 @@ unsorted:
   - lttng-tools-devel 
   - lttng-ust-devel 
   - lttng-ust-doc 
+  - lttoolbox 
+  - lttoolbox-devel 
   - lua-Hamliblua 
   - lua-fennel 
   - lua-genders 
@@ -17014,6 +17009,9 @@ unsorted:
   - nmtree 
   - nng-devel 
   - nnn 
+  - nnn-bash-completion 
+  - nnn-fish-completion 
+  - nnn-zsh-completion 
   - no-more-secrets 
   - nodejs-default 
   - nodejs-devel-default 
@@ -18019,6 +18017,7 @@ unsorted:
   - openscap-devel 
   - openscap-docker 
   - openscap-utils 
+  - openshot-qt 
   - openslide-doc 
   - openslide-tools 
   - openslp-devel 
@@ -20751,7 +20750,6 @@ unsorted:
   - protobuf-devel 
   - protobuf-java 
   - protobuf-source 
-  - protoc-gen-go 
   - proxychains-ng 
   - prun-ohpc 
   - psgml 
@@ -23424,7 +23422,6 @@ unsorted:
   - python36-pyperf 
   - python36-pypiserver 
   - python36-pypng 
-  - python36-pyppeteer 
   - python36-pyprimes 
   - python36-pypsexec 
   - python36-pypuppetdb 
@@ -23452,7 +23449,6 @@ unsorted:
   - python36-pysmi 
   - python36-pysnmp 
   - python36-pysolr 
-  - python36-pyspnego 
   - python36-pysrt 
   - python36-pystache 
   - python36-pysvn 
@@ -24013,7 +24009,6 @@ unsorted:
   - python36-toolz 
   - python36-toposort 
   - python36-topy 
-  - python36-torchvision: [x86_64] 
   - python36-tornado 
   - python36-tornado5 
   - python36-tornado6 
@@ -26317,7 +26312,6 @@ unsorted:
   - python38-pypipegraph 
   - python38-pypiserver 
   - python38-pypng 
-  - python38-pyppeteer 
   - python38-pyprel 
   - python38-pyprimes 
   - python38-pyproj 
@@ -29409,7 +29403,6 @@ unsorted:
   - python39-pypipegraph 
   - python39-pypiserver 
   - python39-pypng 
-  - python39-pyppeteer 
   - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
@@ -30079,6 +30072,7 @@ unsorted:
   - python39-topy 
   - python39-torch: [x86_64] 
   - python39-torch-devel: [x86_64] 
+  - python39-torchvision: [x86_64] 
   - python39-tornado 
   - python39-tornado5 
   - python39-tornado6 
@@ -30879,7 +30873,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -32503,6 +32497,7 @@ unsorted:
   - synergy 
   - synnefo 
   - syntax-highlighting-devel 
+  - syntax-highlighting-imports 
   - sysbench 
   - sysdig: [x86_64] 
   - sysfsutils 
