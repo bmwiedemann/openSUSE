@@ -1,8 +1,7 @@
 #
 # spec file for package nmtree
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright 2020 Archie L. Cobbs <archie@dellroad.org>
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           nmtree
 Version:        1.0.0
 Release:        0
 Summary:        Utility for mapping directory hierarchies
 License:        BSD-3-Clause
 Group:          Productivity/File utilities
-Url:            https://github.com/archiecobbs/%{name}
+URL:            https://github.com/archiecobbs/%{name}
 Source:         https://github.com/archiecobbs/%{name}/archive/%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -46,17 +45,17 @@ This is a port of the NetBSD version of mtree.
 %build
 autoreconf -vfi -I .
 %configure --program-prefix=n
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-mv %{buildroot}%{_datadir}/doc/packages/{,n}mtree
+mv %{buildroot}%{_docdir}/{,n}mtree
 
 %files
 %attr(0755,root,root) %{_bindir}/%{name}
 %attr(0644,root,root) %{_mandir}/man5/%{name}.5.gz
 %attr(0644,root,root) %{_mandir}/man8/%{name}.8.gz
 %defattr(0644,root,root,0755)
-%doc %{_datadir}/doc/packages/%{name}
+%doc %{_docdir}/%{name}
 
 %changelog
