@@ -9292,7 +9292,7 @@ unsorted:
   - libada7 
   - libada7-32bit: [x86_64] 
   - libaddrxlat-devel 
-  - libaddrxlat1 
+  - libaddrxlat2 
   - libadlmidi-devel 
   - libadms0 
   - libadns-devel 
@@ -11489,7 +11489,7 @@ unsorted:
   - libkdstatemachineeditor_debuginterfacesource-static 
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
-  - libkdumpfile8 
+  - libkdumpfile9 
   - libkea-asiodns13 
   - libkea-asiolink27 
   - libkea-cc25 
@@ -12055,9 +12055,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0 
-  - libnco-5_0_0 
+  - libnco-5_0_3 
   - libnco-devel 
-  - libnco_c++-5_0_0 
+  - libnco_c++-5_0_3 
   - libncurses5 
   - libncurses5-32bit: [x86_64] 
   - libncurses6-32bit: [x86_64] 
@@ -15347,6 +15347,7 @@ unsorted:
   - mISDNuser-devel 
   - mac-robber 
   - macchanger 
+  - macchina: [x86_64] 
   - macrofusion 
   - madplay 
   - madplay-lang 
@@ -20377,6 +20378,7 @@ unsorted:
   - plymouth-theme-tribar 
   - plzip 
   - pmacct 
+  - pmccabe 
   - pmdk-convert: [x86_64] 
   - pmdk-devel-doc: [x86_64] 
   - pmdk-tools: [x86_64] 
@@ -21912,6 +21914,7 @@ unsorted:
   - python36-azure-mgmt-dataprotection 
   - python36-azure-mgmt-datashare 
   - python36-azure-mgmt-deploymentmanager 
+  - python36-azure-mgmt-deviceupdate 
   - python36-azure-mgmt-devspaces 
   - python36-azure-mgmt-devtestlabs 
   - python36-azure-mgmt-digitaltwins 
@@ -22017,6 +22020,7 @@ unsorted:
   - python36-azure-purview-catalog 
   - python36-azure-purview-nspkg 
   - python36-azure-purview-scanning 
+  - python36-azure-schemaregistry 
   - python36-azure-sdk 
   - python36-azure-search-documents 
   - python36-azure-search-nspkg 
@@ -24716,6 +24720,7 @@ unsorted:
   - python38-azure-mgmt-dataprotection 
   - python38-azure-mgmt-datashare 
   - python38-azure-mgmt-deploymentmanager 
+  - python38-azure-mgmt-deviceupdate 
   - python38-azure-mgmt-devspaces 
   - python38-azure-mgmt-devtestlabs 
   - python38-azure-mgmt-digitaltwins 
@@ -24821,6 +24826,7 @@ unsorted:
   - python38-azure-purview-catalog 
   - python38-azure-purview-nspkg 
   - python38-azure-purview-scanning 
+  - python38-azure-schemaregistry 
   - python38-azure-sdk 
   - python38-azure-search-documents 
   - python38-azure-search-nspkg 
@@ -27694,6 +27700,7 @@ unsorted:
   - python39-azure-mgmt-dataprotection 
   - python39-azure-mgmt-datashare 
   - python39-azure-mgmt-deploymentmanager 
+  - python39-azure-mgmt-deviceupdate 
   - python39-azure-mgmt-devspaces 
   - python39-azure-mgmt-devtestlabs 
   - python39-azure-mgmt-digitaltwins 
@@ -27799,6 +27806,7 @@ unsorted:
   - python39-azure-purview-catalog 
   - python39-azure-purview-nspkg 
   - python39-azure-purview-scanning 
+  - python39-azure-schemaregistry 
   - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
@@ -31118,7 +31126,7 @@ unsorted:
   - rook-integration: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
-  - rosegarden 
+  - rosegarden: [x86_64] 
   - rott 
   - roundcubemail 
   - rox-filer 
@@ -31652,6 +31660,7 @@ unsorted:
   - sar2-data 
   - sarg 
   - sassc 
+  - sassist 
   - sat4j 
   - saweri-fonts 
   - sax3 
