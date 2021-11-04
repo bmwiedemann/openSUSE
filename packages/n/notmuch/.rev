@@ -339,4 +339,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>927267</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>71877d23f20b65e0a3cf8c205ee3a2f9</srcmd5>
+    <version>0.34.1</version>
+    <time>1636038600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929139</requestid>
+  </revision>
 </revisionlist>
