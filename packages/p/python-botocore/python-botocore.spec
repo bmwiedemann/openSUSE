@@ -16,22 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+# Multibuild: some tests need to find botocore in the system sitelib
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-botocore
-Version:        1.21.33
+Version:        1.22.6
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
-BuildRequires:  %{python_module jmespath < 1.0.0}
-BuildRequires:  %{python_module jmespath >= 0.7.1}
-BuildRequires:  %{python_module python-dateutil < 3.0.0}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 < 1.27}
-BuildRequires:  %{python_module urllib3 >= 1.25.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jmespath < 1.0.0
@@ -43,14 +46,12 @@ Requires:       python-six
 Requires:       python-urllib3 < 1.27
 Requires:       python-urllib3 >= 1.25.4
 BuildArch:      noarch
-# SECTION Testing requirements
-BuildRequires:  %{python_module mock >= 1.3.0}
-BuildRequires:  %{python_module nose >= 1.3.7}
-BuildRequires:  %{python_module pluggy >= 0.7}
-BuildRequires:  %{python_module py >= 1.5.0}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
-# /SECTION
+%if %{with test}
+BuildRequires:  %{python_module botocore = %{version}}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  procps
+%endif
 %python_subpackages
 
 %description
@@ -68,20 +69,28 @@ sed -i 's/from botocore\.vendored //' botocore/*.py tests/functional/*.py tests/
 sed -i 's/botocore.vendored.requests.model.Response/requests.model.Response/' botocore/endpoint.py
 sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/integration/*.py tests/unit/*.py
 
+%if !%{with test}
 %build
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v tests/unit
+# TODO: Figure out whether integration tests are possible offline
+# no_bare_six_imports: we "fixed" that above.
+%pytest --ignore tests/integration -k "not no_bare_six_imports"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/botocore/
 %{python_sitelib}/botocore-%{version}-py*.egg-info
+%endif
 
 %changelog
