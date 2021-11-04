@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 21 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.6
+   see /usr/share/doc/packages/perl-File-Find-Object/Changes
+
+  0.3.6       2021-08-26
+      - Extract https://metacpan.org/pod/File::TreeCreate .
+
+-------------------------------------------------------------------
 Tue Sep 14 19:47:20 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - refresh spec file

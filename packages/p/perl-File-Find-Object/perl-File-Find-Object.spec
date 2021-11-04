@@ -18,10 +18,10 @@
 
 %define cpan_name File-Find-Object
 Name:           perl-File-Find-Object
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
-License:        Artistic-2.0
 Summary:        An object oriented File::Find replacement
+License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::XSAccessor)
+BuildRequires:  perl(File::TreeCreate)
 BuildRequires:  perl(Module::Build) >= 0.280000
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(parent)
