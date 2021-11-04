@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 27 16:20:52 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Run spec-cleaner on spec file
+
+-------------------------------------------------------------------
 Tue Sep 14 15:58:18 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Added hardening to systemd service(s) (bsc#1181400)

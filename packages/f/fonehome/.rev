@@ -110,4 +110,12 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>920675</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>f23435543b071a954373eca9e5c4a60c</srcmd5>
+    <version>1.2.1</version>
+    <time>1636038588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929068</requestid>
+  </revision>
 </revisionlist>

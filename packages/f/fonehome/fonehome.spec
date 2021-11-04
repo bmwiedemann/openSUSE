@@ -26,7 +26,6 @@
 %define hostsfile   %{confdir}/%{name}.hosts
 %define retrydelay  30
 %define syslogfac   daemon
-
 # server side
 %define username    %{name}
 %define usergroup   %{name}
@@ -37,25 +36,22 @@
 %define authkeys    %{serverdir}/.ssh/authorized_keys
 %define compldir    %{_sysconfdir}/bash_completion.d
 %define complfile   %{compldir}/fhssh.sh
-
 %define authkeys_comment    restrict what %{username} user can do
 %define authkeys_options    no-X11-forwarding,no-agent-forwarding,no-pty,permitopen="0.0.0.0:9",command="sleep 99999d"
-
 Name:           fonehome
 Version:        1.2.1
 Release:        0
 Summary:        Remote access to machines behind firewalls
 License:        Apache-2.0
 Group:          System/Daemons
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+URL:            https://github.com/archiecobbs/%{name}/
 Source:         %{name}-%{version}.tar.gz
 Patch0:         harden_fonehome.service.patch
-URL:            https://github.com/archiecobbs/%{name}/
 Requires:       bc
 Requires:       findutils
 Requires:       openssh
 Requires:       sed
+BuildArch:      noarch
 %systemd_requires
 
 %description
@@ -75,7 +71,7 @@ deployed in the field and want to maintain access to them from a central
 operations server.
 
 %prep
-%setup
+%setup -q
 %patch0 -p1
 
 # Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
@@ -123,10 +119,10 @@ install -d %{buildroot}%{_mandir}/man1
 install *.1 %{buildroot}%{_mandir}/man1/
 
 # docs
-install -d %{buildroot}%{_datadir}/doc/packages/%{name}
-install -d %{buildroot}%{_datadir}/doc/packages/%{name}-server
-install CHANGES README COPYING %{buildroot}%{_datadir}/doc/packages/%{name}/
-install CHANGES README COPYING %{buildroot}%{_datadir}/doc/packages/%{name}-server/
+install -d %{buildroot}%{_docdir}/%{name}
+install -d %{buildroot}%{_docdir}/%{name}-server
+install CHANGES README COPYING %{buildroot}%{_docdir}/%{name}/
+install CHANGES README COPYING %{buildroot}%{_docdir}/%{name}-server/
 
 # script files
 install -d %{buildroot}%{_bindir}
@@ -176,17 +172,17 @@ install /dev/null %{buildroot}%{authkeys}
 %{_unitdir}/%{name}.service
 %attr(755,root,root) %{scriptfile}
 %attr(755,root,root) %{_sbindir}/rc%{name}
-%doc %{_datadir}/doc/packages/%{name}
-%{_mandir}/man1/%{name}.1*
+%doc %{_docdir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{clientdir}
 
 %package server
 Summary:        Server for %{name} SSH connections
 Group:          System/Daemons
-Requires(pre):  pwdutils
 Requires(post): openssh
 Requires(post): sed
 Requires(post): util-linux
+Requires(pre):  shadow
 
 %description server
 fonehome allows remote access to machines behind firewalls using SSH
@@ -223,10 +219,10 @@ fi
 
 %files server
 %defattr(644,root,root,755)
-%{_mandir}/man1/fhssh.1*
-%{_mandir}/man1/fhscp.1*
-%{_mandir}/man1/fhshow.1*
-%doc %{_datadir}/doc/packages/%{name}-server
+%{_mandir}/man1/fhssh.1%{?ext_man}
+%{_mandir}/man1/fhscp.1%{?ext_man}
+%{_mandir}/man1/fhshow.1%{?ext_man}
+%doc %{_docdir}/%{name}-server
 %attr(755,root,root) %{_bindir}/fhshow
 %attr(755,root,root) %{_bindir}/fhssh
 %attr(755,root,root) %{_bindir}/fhscp
