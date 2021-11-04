@@ -2,7 +2,6 @@
 # spec file for package csvprintf
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright 2010 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +22,8 @@ Release:        0
 Summary:        Simple CSV file parser for the UNIX command line
 License:        Apache-2.0
 Group:          Productivity/File utilities
-Source:         https://archie-public.s3.amazonaws.com/%{name}/%{name}-%{version}.tar.gz
 URL:            https://github.com/archiecobbs/csvprintf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://archie-public.s3.amazonaws.com/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  xsltproc
@@ -47,21 +45,18 @@ command converts XML documents so generated back into CSV files.
 %setup -q
 
 %build
-%{configure}
-make
+%configure
+%make_build
 
 %install
-%{makeinstall}
-
-%clean
-rm -rf %{buildroot}
+%make_install
 
 %files
 %attr(0755,root,root) %{_bindir}/%{name}
 %attr(0755,root,root) %{_bindir}/xml2csv
 %attr(0644,root,root) %{_mandir}/man1/*
 %defattr(0644,root,root,0755)
-%doc %{_datadir}/doc/packages/%{name}
+%doc %{_docdir}/%{name}
 %{_datadir}/%{name}
 
 %changelog

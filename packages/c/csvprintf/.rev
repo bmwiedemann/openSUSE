@@ -42,4 +42,12 @@
 - Remove obsolete Groups tag (fate#326485)</comment>
     <requestid>875174</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b90845c2607b7a1ac64f6c91f3f45b4a</srcmd5>
+    <version>1.1.0</version>
+    <time>1636038591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929070</requestid>
+  </revision>
 </revisionlist>
