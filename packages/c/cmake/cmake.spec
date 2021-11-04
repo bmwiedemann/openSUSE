@@ -37,7 +37,7 @@
 %endif
 %define shortversion 3.21
 Name:           cmake%{?psuffix}
-Version:        3.21.3
+Version:        3.21.4
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -55,8 +55,6 @@ Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
 Patch2:         cmake-fix-png-include-dir.patch
-# PATCH-FIX-UPSTREAM - https://gitlab.kitware.com/cmake/cmake/-/issues/22754
-Patch3:         cmake-fix-zstd-armv6.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

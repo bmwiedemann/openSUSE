@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 31 11:07:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.21.4:
+  * The Visual Studio 17 2022 generator is not based on the
+    "Visual Studio 2022" release candidates.
+- drop cmake-fix-zstd-armv6.patch, upstream
+
+-------------------------------------------------------------------
 Wed Oct 13 12:34:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix bundled zstd to avoid a crash on armv6 - boo#1191588:
