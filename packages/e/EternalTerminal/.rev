@@ -112,4 +112,18 @@
   * ssh config fixes</comment>
     <requestid>896385</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f32795188fcd44aa6a9836115e1cfa28</srcmd5>
+    <version>6.1.9</version>
+    <time>1636038598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.9:
+  * Security &amp; Compatibility fixes
+
+- Add et-limits.patch:
+  Fix build by patching in-tree sentry.
+  See https://github.com/MisterTea/EternalTerminal/issues/412
+  and https://github.com/getsentry/sentry-native/issues/501</comment>
+    <requestid>929131</requestid>
+  </revision>
 </revisionlist>

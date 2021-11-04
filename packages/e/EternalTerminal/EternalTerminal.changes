@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  4 08:39:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.9:
+  * Security & Compatibility fixes
+
+-------------------------------------------------------------------
 Mon May 31 15:10:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.1.8:
   * ssh config fixes
+- Add et-limits.patch:
+  Fix build by patching in-tree sentry.
+  See https://github.com/MisterTea/EternalTerminal/issues/412
+  and https://github.com/getsentry/sentry-native/issues/501
 
 -------------------------------------------------------------------
 Wed Apr  7 07:37:08 UTC 2021 - Michael Vetter <mvetter@suse.com>

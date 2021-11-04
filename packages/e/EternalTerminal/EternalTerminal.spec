@@ -18,13 +18,14 @@
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
 Name:           EternalTerminal
-Version:        6.1.8
+Version:        6.1.9
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
 URL:            https://mistertea.github.io/EternalTerminal/
 Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{version}.tar.gz
 Source1:        et.xml
+Patch0:         et-limits.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
@@ -47,9 +48,10 @@ Eternal Terminal (ET) is a remote shell that automatically reconnects without
 interrupting the session.
 
 %prep
-%autosetup -n EternalTerminal-et-v%{version}
+%autosetup -n EternalTerminal-et-v%{version} -p1
 
 %build
+export CXXFLAGS="%{optflags} -std=c++17"
 # see https://github.com/MisterTea/EternalTerminal/issues/403
 %cmake -DDISABLE_VCPKG:BOOL=ON -DProtobuf_LITE_LIBRARY=%{_libdir}/libprotobuf-lite.so
 make %{?_smp_mflags}
