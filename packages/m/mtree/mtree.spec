@@ -29,7 +29,6 @@ Patch0:         %{name}-stat-mtime.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libopenssl-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The %{name} utility compares the file hierarchy rooted in the current
@@ -48,14 +47,13 @@ is also available in the package "nmtree".
 %build
 ./autogen.sh
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 make install DESTDIR='%{buildroot}'
 rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/%{name}
 %{_mandir}/man5/*
 %{_mandir}/man8/*

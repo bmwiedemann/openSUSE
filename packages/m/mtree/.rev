@@ -70,4 +70,12 @@
     + Fixes build issue with struct stat &quot;st_mtimespec&quot; field</comment>
     <requestid>873859</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>0d9189540479169970d8985b6b991436</srcmd5>
+    <version>1.0.4</version>
+    <time>1636038592</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929071</requestid>
+  </revision>
 </revisionlist>
