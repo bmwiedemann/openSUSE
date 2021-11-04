@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 25 14:12:30 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.9.0+git25.278c776d:
+  * portblock: use ss when available, netstat is "obsolete"
+  * iSCSILogicalUnit: do not use lio_iblock with lio-t
+  * VirtualDomain: Added the ability to unset utilization variables (#1703)
+  * nfsserver: Fix NFSv4 lock failover: set NFS Server Scope (#1688)
+  * metadata.rng: update to support resource agent version according to the OCF standard
+  * ocf.py: add agent and OCF version parameters (both defaults to 1.0)
+  * ra-dev-guide: update agent/OCF version info (#1699)
+  * all agents: specify agent and OCF versions corrently in metadata
+  * nfsnotify: fix rpcuser error when resource start on debian (#1696)
+  * gcp-pd-move/gcp-vpc-move-route: dont fail failed resources instantly (caused by OCF_ERR_CONFIGURED)
+  * symlink: fix symlink vs target realpath comparison (#1691)
+
+-------------------------------------------------------------------
 Wed Sep 22 19:42:24 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.9.0+git10.8dc8b40b:
