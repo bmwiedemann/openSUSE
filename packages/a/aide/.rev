@@ -266,4 +266,14 @@
     <comment>- added missing pcre-devel buildrequires. (forwarded request 882697 from msmeissn)</comment>
     <requestid>882699</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>370aa145dc21c43be0837f827cabc4eb</srcmd5>
+    <version>0.17.3</version>
+    <time>1636038602</time>
+    <user>dimstar_suse</user>
+    <comment>- Added aide.service and aide.timer in order to run
+  aide periodically in the background via systemd timer.
+- aide-systemd.patch: hook in new manpages</comment>
+    <requestid>929164</requestid>
+  </revision>
 </revisionlist>

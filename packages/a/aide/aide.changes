@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  4 10:51:25 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added aide.service and aide.timer in order to run
+  aide periodically in the background via systemd timer.
+- aide-systemd.patch: hook in new manpages
+
+-------------------------------------------------------------------
 Fri Apr  2 07:03:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - added missing pcre-devel buildrequires.

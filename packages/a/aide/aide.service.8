@@ -1,0 +1,24 @@
+.TH AIDE.SERVICE 8 "2021-02-10" "aide v0.17.3" "systemd environment"
+.SH NAME
+\fBaide\fP \- Advanced Intrusion Detection Environment
+
+systemd environment
+.SH SYNOPSIS
+aide.service
+
+aide.timer
+.SH DESCRIPTION
+For easier maintenance of big clusters, aide can be run by systemd.timer(5) in regular intervals.
+
+The specific time can be set in /usr/lib/systemd/system/\fBaide.timer\fR (tag OnCalendar) or can be configured in /etc/systemd/system/aide.timer.d/local.conf. See systemd.unit(5) for more information.
+
+The timer can be manually started via the call "systemctl start aide.timer" or can be started while the boot process which has been enabled by the call "systemctl enable aide.timer".
+
+The result of the check will be written to "/var/log/aide_service.log". This can be set in the file /etc/aide_systemd.conf.
+
+.SH HINT
+Keep in mind that you have to init the database with the call "aide --init ; cp /var/lib/aide/aide.db.new /var/lib/aide/aide.db" at first before you are starting this service.
+
+.SH SEE ALSO
+.BR aide (1)
+.BR aide.conf (5)

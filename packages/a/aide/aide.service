@@ -1,0 +1,10 @@
+[Unit]
+Description=Checking system for changed files
+Documentation=man:aide(1)
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "/usr/bin/aide --check --config=/etc/aide_service.conf; exit 0" 
+IOSchedulingClass=idle
+IOSchedulingPriority=7

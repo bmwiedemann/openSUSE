@@ -26,19 +26,27 @@ Source0:        https://github.com/aide/aide/releases/download/v%{version}/aide-
 Source1:        aide.conf
 Source2:        aide-cron_daily.sh
 Source3:        aide-test.sh
+Source4:        aide.service
+Source5:        aide.service.8
+Source6:        aide.timer
+Source7:        aide.timer.8
+Source8:        aide_service.conf
 Source42:       https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source43:       aide.keyring
 Patch1:         aide-0.17.3-as-needed.patch
 Patch2:         aide-xattr-in-libc.patch
+Patch3:         aide-systemd.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
+BuildRequires:  gzip
 BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 
 %description
@@ -54,6 +62,7 @@ Simple AIDE test script for externalized testing.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -fiv
@@ -76,8 +85,17 @@ autoreconf -fiv
 %make_install
 install -m 700 -d     %{buildroot}%{_localstatedir}/lib/aide
 install -m 700 -d     %{buildroot}%{_sysconfdir}
+install -m 700 -d     %{buildroot}%{_unitdir}/
+install -m 700 -d     %{buildroot}%{_mandir}/man8
 install -m 600 %{SOURCE1} %{buildroot}%{_sysconfdir}/aide.conf
 install -m 700 %{SOURCE3} %{buildroot}%{_bindir}/
+install -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/aide.service
+install -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/aide.timer
+install -m 644 %{SOURCE5} %{buildroot}%{_mandir}/man8/aide.service.8
+install -m 644 %{SOURCE7} %{buildroot}%{_mandir}/man8/aide.timer.8
+install -m 600 %{SOURCE8} %{buildroot}%{_sysconfdir}/aide_service.conf
+gzip -9 %{buildroot}%{_mandir}/man8/aide.service.8
+gzip -9 %{buildroot}%{_mandir}/man8/aide.timer.8
 mkdir -p doc/examples%{_sysconfdir}/cron.daily/
 cp -a %{SOURCE2} doc/examples%{_sysconfdir}/cron.daily/aide.sh
 
@@ -88,6 +106,13 @@ if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
   sed -i '/verbose=/d' %{_sysconfdir}/aide.conf
   sed -i 's/\t/ /g' %{_sysconfdir}/aide.conf
 fi
+%systemd_post %{name}.service %{name}.timer
+
+%preun
+%systemd_preun %{name}.service %{name}.timer
+
+%postun
+%systemd_postun %{name}.service %{name}.timer
 
 %check
 rm -rf %{_localstatedir}/tmp/aide-test
@@ -123,6 +148,11 @@ rm -rf $TESTDIR
 /%{_mandir}/man5/aide.conf.5.gz
 %{_localstatedir}/lib/aide
 %config(noreplace) %{_sysconfdir}/aide.conf
+%config(noreplace) %{_sysconfdir}/aide_service.conf
+%{_unitdir}/aide.service
+%{_unitdir}/aide.timer
+%{_mandir}/man8/aide.timer.8*
+%{_mandir}/man8/aide.service.8*
 
 %files test
 %{_bindir}/aide-test.sh
