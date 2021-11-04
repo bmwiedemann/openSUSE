@@ -63,4 +63,12 @@
     <comment>Qt 6.2.0</comment>
     <requestid>922698</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>befe5581315c669e6926f607ce924f15</srcmd5>
+    <version>6.2.1</version>
+    <time>1636038566</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.1</comment>
+    <requestid>928718</requestid>
+  </revision>
 </revisionlist>
