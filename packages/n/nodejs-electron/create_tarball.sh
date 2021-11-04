@@ -33,7 +33,7 @@ cleanup_and_exit() {
     fi
 }
 
-pushd $ELECTRON_TMPDIR
+pushd "$ELECTRON_TMPDIR" || cleanup_and_exit 1
 
 echo ">>>>>> Downloading depot tools"
 git clone --depth=1 https://chromium.googlesource.com/chromium/tools/depot_tools.git
@@ -41,7 +41,8 @@ if [ $? -ne 0 ]; then
     echo "ERROR: git clone depot_tools failed"
     cleanup_and_exit 1
 fi
-export PATH="$(pwd)/depot_tools:$PATH"
+PATH="$(pwd)/depot_tools:$PATH"
+export PATH
 
 
 echo ">>>>>> Downloading chromium-${CHROMIUM_VERSION}"
@@ -107,17 +108,17 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ">>>>>> Get node modules for electron"
-pushd src/electron
+pushd src/electron || cleanup_and_exit 1
 yarn install --frozen-lockfile
 if [ $? -ne 0 ]; then
     echo "ERROR: yarn install failed"
     cleanup_and_exit 1
 fi
-popd
+popd || cleanup_and_exit 1
 
-mv src ${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}
+mv src "${ELECTRON_PKGNAME}-${ELECTRON_PKGVERSION}"
 
-pushd ${ELECTRON_PATH}
+pushd "${ELECTRON_PATH}" || cleanup_and_exit 1
 
 echo ">>>>>> Create LASTCHANGE(.committime) file"
 echo -n "LASTCHANGE=$(git log -1 --format=format:%H HEAD)" > build/util/LASTCHANGE
@@ -363,8 +364,10 @@ if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 
-find . -type d -name .git | xargs rm -rf
-popd
+rm -rf third_party/blink/web_tests # 1.6GB
+rm -rf third_party/catapult/tracing/test_data # 200MB
+find . -type d -name .git -print0 | xargs -0 rm -rf
+popd || cleanup_and_exit 1
 
 echo ">>>>>> Create tarball"
 XZ_OPT="-T$(nproc)" tar cJf $ELECTRON_PKGDIR/$ELECTRON_PKGNAME-$ELECTRON_PKGVERSION.tar.xz $ELECTRON_PKGNAME-$ELECTRON_PKGVERSION
@@ -373,6 +376,6 @@ if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
 
-popd
+popd || cleanup_and_exit 1
 
 cleanup_and_exit 0

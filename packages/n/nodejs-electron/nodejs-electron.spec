@@ -17,6 +17,7 @@
 
 
 %define mod_name electron
+ExcludeArch:    %{ix86}
 %ifarch x86_64
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without lto
@@ -49,7 +50,7 @@
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.5.1
+Version:        13.6.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -275,6 +276,10 @@ Provides:       nodejs-electron-prebuilt = %{version}
 
 %description
 Nodejs application: Build cross platform desktop apps with JavaScript, HTML, and CSS
+
+%if 0%{?fedora}
+%global debug_package %{nil}
+%endif
 
 %prep
 %autosetup -n %{mod_name}-%{version} -p1
