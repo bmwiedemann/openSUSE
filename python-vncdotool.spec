@@ -23,9 +23,10 @@ Version:        1.0.0
 Release:        0
 Summary:        Command line VNC client
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sibson/vncdotool
 Source:         https://files.pythonhosted.org/packages/source/v/vncdotool/vncdotool-%{version}.tar.gz
+Patch0:         remove-nose.patch
+Patch1:         fix-mocking.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,8 +39,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -48,6 +49,7 @@ Command line VNC client.
 
 %prep
 %setup -q -n vncdotool-%{version}
+%autopatch -p1
 sed -i 's/from unittest.mock import /from mock.mock import /' tests/unit/helpers.py
 
 %build
@@ -71,7 +73,7 @@ sed -i 's/from unittest.mock import /from mock.mock import /' tests/unit/helpers
 %python_uninstall_alternative vnclog
 
 %check
-%python_exec setup.py test
+%pytest -k 'not functional'
 
 %files %{python_files}
 %doc README.rst

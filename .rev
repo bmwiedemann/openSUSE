@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>923563</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eb2a2469e41deaade41b38105c02f3f9</srcmd5>
+    <version>1.0.0</version>
+    <time>1636038978</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Stop requiring nose for the test suite.
+- Add patch fix-mocking.patch:
+  * Use correct form of mocking for a UNIX domain socket test.
+- Use pytest to run the test suite.</comment>
+    <requestid>928446</requestid>
+  </revision>
 </revisionlist>
