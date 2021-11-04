@@ -2,7 +2,6 @@
 # spec file for package s3backer
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright 2008 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +22,11 @@ Release:        0
 Summary:        FUSE-based single file backing store via Amazon S3
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
 URL:            https://github.com/archiecobbs/%{name}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
+BuildRequires:  fuse-devel >= 2.5
+BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
 %if 0%{?suse_version} >= 1100
 BuildRequires:  libcurl-devel >= 7.16.2
 BuildRequires:  libopenssl-devel
@@ -33,14 +34,11 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  curl-devel >= 7.16.2
 BuildRequires:  openssl-devel
 %endif
-BuildRequires:  fuse-devel >= 2.5
-BuildRequires:  zlib-devel
 %if 0%{?suse_version} < 1000 || 0%{?fedora_version} != 0 || 0%{?centos_version} != 0
 BuildRequires:  expat
 %else
 BuildRequires:  libexpat-devel
 %endif
-BuildRequires:  pkgconfig
 
 %description
 s3backer is a filesystem that contains a single file backed by the Amazon
@@ -60,8 +58,8 @@ mount on Mac OS X).
 
 %build
 export SUSE_ASNEEDED=0
-%{configure}
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
 make install DESTDIR='%{buildroot}'
@@ -69,7 +67,6 @@ install -m 0644 COPYING %{buildroot}%{_docdir}/%{name}/
 rm -f %{buildroot}%{_docdir}/%{name}/INSTALL
 
 %files
-%defattr(-,root,root,-)
 %{_bindir}/*
 %{_mandir}/man1/*
 %{_docdir}/%{name}
