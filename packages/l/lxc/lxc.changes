@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 12 08:03:52 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- use --withpamdir and use pam macros to fix UsrMerge problems
+- update to 4.0.10
+  Bugfixes
+  * Fix issues with less common architectures
+  * Support for additional idmap mounts
+  * nft support in lxc-net
+  * Cleaner mount entries for sys:mixed
+  * Switched GPG server to keyserver.ubuntu.com
+
+-------------------------------------------------------------------
 Mon May 31 06:57:57 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix wrong Source URLs in spec 

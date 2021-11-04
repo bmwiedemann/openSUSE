@@ -35,7 +35,7 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        4.0.9
+Version:        4.0.10
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -137,6 +137,9 @@ Bash command line completion support for %{name}.
 ./autogen.sh
 %configure \
 	--enable-pam \
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
+	--with-pamdir=%_pam_moduledir \
+%endif
 	--disable-static \
 	--disable-examples \
 	--disable-rpath \
@@ -253,7 +256,11 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 
 %files -n pam_cgfs
 %defattr(-,root,root)
-/%{_lib}/security/pam_cgfs.so
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
+%_pam_moduledir/pam_cgfs.so
+%else
+%{_lib}/security/pam_cgfs.so
+%endif
 
 %files -n liblxc%{shlib_version}
 %defattr(-,root,root)
