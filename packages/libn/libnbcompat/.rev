@@ -7,4 +7,12 @@
     <comment>Simplify build per 837218 rejection.</comment>
     <requestid>837803</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb83f7166d991ba82e1e25a1468e334e</srcmd5>
+    <version>1.0.1</version>
+    <time>1636038584</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929066</requestid>
+  </revision>
 </revisionlist>

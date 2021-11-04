@@ -1,8 +1,7 @@
 #
 # spec file for package libnbcompat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright 2020 Archie L. Cobbs <archie@dellroad.org>
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # the "0" below is the shared library "current" number (see Autobook, section 11.4)
 %define libname     libnbcompat0
-
 Name:           libnbcompat
 Version:        1.0.1
 Release:        0
-Summary:        NetBSD compatibility library 
+Summary:        NetBSD compatibility library
 License:        BSD-4-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/archiecobbs/%{name}
+URL:            https://github.com/archiecobbs/%{name}
 Source:         https://github.com/archiecobbs/%{name}/archive/%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -39,7 +37,7 @@ BuildRequires:  make
 bootstrap tools that are missing on other operating systems.
 
 %package -n %{libname}
-Summary:        NetBSD compatibility library 
+Summary:        NetBSD compatibility library
 Group:          Development/Libraries/C and C++
 
 %description -n %{libname}
@@ -62,11 +60,11 @@ bootstrap tools that are missing on other operating systems.
 %build
 autoreconf -vfi -I .
 %configure --disable-static LIBDIR='%{_libdir}'
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-find %{buildroot} -type f -name '*.la' -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
