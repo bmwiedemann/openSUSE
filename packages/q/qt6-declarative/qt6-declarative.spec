@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.0
+%define real_version 6.2.1
 %define short_version 6.2
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -848,6 +848,20 @@ The goal of the Dom library is to provide a nicer to use basis for the
 Qml Code model, to be used by the various QML tools, the designer and
 the new compiler.
 
+%package -n qt6-quickcontrolstestutils-devel-static
+Summary:        Qt6 QuickControlsTestUtils static library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+
+%description -n qt6-quickcontrolstestutils-devel-static
+The Qt6 QuickControlsTestUtils static library.
+
+%package -n qt6-quicktestutils-devel-static
+Summary:        Qt6 QuickTestUtils static library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+
+%description -n qt6-quicktestutils-devel-static
+The Qt6 QuickTestUtils static library.
+
 %endif
 
 %prep
@@ -1433,6 +1447,24 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Dependencies,Targets*}.cmake
 %{_qt6_libdir}/libQt6QmlDom.prl
 %{_qt6_metatypesdir}/qt6qmldomprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldom_private.pri
+
+%files -n qt6-quickcontrolstestutils-devel-static
+%{_qt6_cmakedir}/Qt6QuickControlsTestUtilsPrivate/
+%{_qt6_descriptionsdir}/QuickControlsTestUtilsPrivate.json
+%{_qt6_includedir}/QtQuickControlsTestUtils/
+%{_qt6_libdir}/libQt6QuickControlsTestUtils.a
+%{_qt6_libdir}/libQt6QuickControlsTestUtils.prl
+%{_qt6_metatypesdir}/qt6quickcontrolstestutilsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quickcontrolstestutilsprivate_private.pri
+
+%files -n qt6-quicktestutils-devel-static
+%{_qt6_cmakedir}/Qt6QuickTestUtilsPrivate/
+%{_qt6_descriptionsdir}/QuickTestUtilsPrivate.json
+%{_qt6_includedir}/QtQuickTestUtils/
+%{_qt6_libdir}/libQt6QuickTestUtils.a
+%{_qt6_libdir}/libQt6QuickTestUtils.prl
+%{_qt6_metatypesdir}/qt6quicktestutilsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_quicktestutilsprivate_private.pri
 
 %else
 
