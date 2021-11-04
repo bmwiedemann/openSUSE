@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.0
+%define real_version 6.2.1
 %define short_version 6.2
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -50,22 +50,17 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-# PATCH-FIX-UPSTREAM
-Patch0:       0001-Fix-build-when-x11-over-egl-es2.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
-Patch100:       qtwebengine-boo1163766.patch
-Patch101:       rtc-dont-use-h264.patch
-Patch102:       sandbox-statx-futex_time64.patch
+Patch100:       rtc-dont-use-h264.patch
+Patch101:       sandbox-statx-futex_time64.patch
 # PATCH-FIX-UPSTREAM
-Patch103:       0001-Fix-build-with-glibc-2.34.patch
-# PATCH-FIX-UPSTREAM
-Patch104:       0001-return-ENOSYS-for-clone3.patch
+Patch102:       0001-Fix-build-with-glibc-2.34.patch
 # PATCH-FIX-OPENSUSE -- Needed for leap 15.2
-Patch105:       chromium-90-fseal.patch
+Patch103:       chromium-90-fseal.patch
 # PATCH-FIX-OPENSUSE -- disable-gpu-when-using-nouveau-boo-1005323.diff
 # PATCH-NEEDS-REBASE
 %if 0
-Patch106:       disable-gpu-when-using-nouveau-boo-1005323.diff
+Patch104:       disable-gpu-when-using-nouveau-boo-1005323.diff
 %endif
 #
 # Chromium/blink don't support all archs
@@ -329,9 +324,11 @@ ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
+%if %{no_flavor}
 # Determine the right number of parallel processes based on the available memory
 # Copied from the Qt 5 webengine package
 %limit_build -m 2750
+%endif
 
 # Ensure that also the internal chromium build follows the right number of
 # parallel processes instead of its defaults.

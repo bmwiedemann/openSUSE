@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 26 11:23:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  * https://www.qt.io/blog/qt-6.2.1-released
+
+- Drop openSUSE patch qtwebengine-boo1163766.patch.
+  should be addressed with:
+    https://github.com/qt/qtwebengine-chromium/commit/652f834de
+    https://github.com/qt/qtwebengine-chromium/commit/faae106ed
+    https://github.com/qt/qtwebengine-chromium/commit/6b7b3f1bf
+- Drop upstream changes:
+  * 0001-Fix-build-when-x11-over-egl-es2.patch
+  * 0001-return-ENOSYS-for-clone3.patch
+- Rebase patches:
+  * 0001-Fix-build-with-glibc-2.34.patch
+  * sandbox-statx-futex_time64.patch
+
+-------------------------------------------------------------------
 Thu Sep 30 12:31:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.0:
