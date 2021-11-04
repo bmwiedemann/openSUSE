@@ -50,7 +50,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  rpcgen
-BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(devmapper)
@@ -146,7 +145,7 @@ export LDFLAGS="-pie"
 	--with-pluginpath=%{_libdir}/libnfsidmap-1.0.0 \
 	--enable-mountconfig
 make %{?_smp_mflags}
-%sysusers_generate_pre %{SOURCE12} statd
+%sysusers_generate_pre %{SOURCE12} statd statd-user.conf
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install

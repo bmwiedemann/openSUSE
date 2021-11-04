@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 28 12:51:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+- Remove unneeded group line (user implies group)
+- Add Shell parameter to statd-user.conf
+
+-------------------------------------------------------------------
 Mon Oct 25 23:53:37 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - add Add-disable-sbin-override-for-when-sbin-is-a-symlink.patch

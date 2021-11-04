@@ -1586,4 +1586,12 @@
   nfs-kernel-server and fix their permissions.</comment>
     <requestid>927402</requestid>
   </revision>
+  <revision rev="167" vrev="28">
+    <srcmd5>46e893e2a820ca0e6dfd23c536f6092f</srcmd5>
+    <version>unknown</version>
+    <time>1636038975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928432</requestid>
+  </revision>
 </revisionlist>
