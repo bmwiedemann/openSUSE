@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 28 10:54:23 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add BuildRequire: llvm12-devel on Tumbleweed; see boo#1192067
+- Change llvm_bundling to be required on x86_64, aarch64 and ppc64le
+  on 15.3, too. Otherwise cargo segfaults when building
+  MozillaFirefox-93.0
+
+-------------------------------------------------------------------
 Mon Oct 18 01:33:07 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Swap to internal libgit due to issue in current platform libgit2

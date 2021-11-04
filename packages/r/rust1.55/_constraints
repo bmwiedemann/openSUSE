@@ -22,11 +22,10 @@
   </overwrite>
 <!-- aarch64:  X-Gene cpus are the only ones that work as there is a bug in others - select -->
 <!--  12G of ram to force non-broken cpu's to be used. -->
+<!--      <arch>armv6l</arch> <arch>armv7l</arch> -->
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
-      <arch>armv6l</arch>
-      <arch>armv7l</arch>
     </conditions>
     <hardware>
       <physicalmemory>

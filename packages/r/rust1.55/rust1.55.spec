@@ -87,8 +87,8 @@
 # we add these conditions here.
 
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150400
-%ifarch s390x
-# On s390x with llvm11, the codegen is unable to produce functional binaries.
+%ifarch s390x x86_64 aarch64 ppc64le
+# On s390x, x86_64, aarch64 and ppc64le with llvm11, the codegen is unable to produce functional binaries.
 # Use bundled llvm12 instead.
 %bcond_without bundled_llvm
 %endif
@@ -186,7 +186,13 @@ BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150400
 BuildRequires:  llvm11-devel
 %else
+%if 0%{?is_opensuse} == 1 && 0%{?suse_version} >= 1550
+# Use distro provided LLVM on Tumbleweed, but pin it to LLVM12!
+# For details see boo#1192067
+BuildRequires:  llvm12-devel
+%else
 BuildRequires:  llvm-devel >= 10.0
+%endif
 %endif
 # End if sle_version
 %else
@@ -377,9 +383,6 @@ unset FFLAGS
 . ./.env.sh
 
 ./x.py install
-
-# Remove executable permission from HTML documentation
-# to prevent RPMLINT errors.
 
 # Remove the license files from _docdir: make install put duplicates there
 rm %{buildroot}%{_docdir}/rust/{README.md,COPYRIGHT,LICENSE*}
