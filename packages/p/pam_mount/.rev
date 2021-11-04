@@ -553,4 +553,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>862287</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d7a60d9912e1274df22874ca9a6c989f</srcmd5>
+    <version>2.18</version>
+    <time>1636038600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929141</requestid>
+  </revision>
 </revisionlist>

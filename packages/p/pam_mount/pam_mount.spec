@@ -114,11 +114,13 @@ mkdir -p "$b/%_docdir/%name/examples"
 cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
 install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
 install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
+%if !0%{?usrmerged}
 mkdir -p "$b/sbin"
 ln -s /usr/sbin/mount.crypt "$b/sbin"
 ln -s /usr/sbin/umount.crypt "$b/sbin"
 ln -s /usr/sbin/mount.crypt_LUKS "$b/sbin"
 ln -s /usr/sbin/umount.crypt_LUKS "$b/sbin"
+%endif
 %fdupes %buildroot/%_prefix
 
 %post
@@ -149,7 +151,9 @@ fi
 %_sbindir/umount.*
 %_sbindir/pmvarrun
 %_sbindir/pmt-ehd
+%if !0%{?usrmerged}
 /sbin/*mount*
+%endif
 %config(noreplace) %_sysconfdir/security/pam_mount.conf.xml
 %doc %_mandir/man5/pam_mount.conf.5.gz
 %doc %_mandir/man8/*.8.gz
