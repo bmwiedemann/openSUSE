@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  1 04:47:41 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-nose.patch:
+  * Stop requiring nose for the test suite.
+- Add patch fix-mocking.patch:
+  * Use correct form of mocking for a UNIX domain socket test.
+- Use pytest to run the test suite.
+
+-------------------------------------------------------------------
 Wed Oct  6 10:31:59 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - skip python2 to make it build for Leap 15.3
