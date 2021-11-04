@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>928221</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>210d41b2f9357b02a685d700cdadd9a6</srcmd5>
+    <version>6.2.1</version>
+    <time>1636038575</time>
+    <user>dimstar_suse</user>
+    <comment>remove sip-devel runtime dependency for -devel package
+in order to avoid conflicts like boo#1192300</comment>
+    <requestid>929037</requestid>
+  </revision>
 </revisionlist>

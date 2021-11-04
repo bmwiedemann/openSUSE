@@ -79,7 +79,6 @@ Group:          Development/Libraries/Python
 Requires:       python-%{mname} = %{version}
 Requires:       python-dbus-python-devel >= 0.8
 Requires:       python-devel
-Requires:       python-sip-devel >= 6.4
 Requires:       qt6-base-devel
 Requires:       qt6-macros
 Requires:       cmake(Qt6Bluetooth)
@@ -104,6 +103,9 @@ Requires:       cmake(Qt6WebSockets)
 # / SECTION
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+# If and which version of sip is required depends on the project trying
+# to build against PyQt6.
+Recommends:     python-sip-devel
 Recommends:     python-qscintilla-qt6
 Provides:       python-qt6-devel = %{version}-%{release}
 
