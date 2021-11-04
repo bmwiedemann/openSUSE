@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  4 11:09:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace enable-docs=true option with new disable-help=false
+  option passed to meson.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:19:43 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

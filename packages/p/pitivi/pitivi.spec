@@ -72,7 +72,7 @@ sed -i -e '1s!/usr/bin/env !/usr/bin/!' bin/pitivi.in
 rm -rf subprojects/gst-transcoder
 
 %build
-%meson -Denable-docs=true
+%meson -Ddisable-help=false
 %meson_build
 
 python3 -m compileall -q -j 0 .
