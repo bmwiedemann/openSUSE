@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.0
+%define real_version 6.2.1
 %define short_version 6.2
 %define tar_name qtlocation-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-location%{?pkg_suffix}
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Qt 6 Location plugins and libraries
 License:        GPL-3.0-or-later
