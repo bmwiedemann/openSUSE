@@ -58,12 +58,30 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection.cpp mysql-
    bool secure_auth= true;
  #endif
  
+@@ -602,7 +602,7 @@
+       } else {
+         throw sql::InvalidArgumentException("No string value passed for password");
+       }
+-    } else if (!it->first.compare(OPT_PASSWORD1)) {
++    /*} else if (!it->first.compare(OPT_PASSWORD1)) {
+       try {
+         p_s = (it->second).get< sql::SQLString >();
+       } catch (sql::InvalidArgumentException&) {
+@@ -638,7 +638,7 @@
+       } else {
+         throw sql::InvalidArgumentException("No string value passed for password3");
+       }
+-    } else if (!it->first.compare(OPT_PORT)) {
++    */} else if (!it->first.compare(OPT_PORT)) {
+       try {
+         p_i = (it->second).get< int >();
+       } catch (sql::InvalidArgumentException&) {
 @@ -902,7 +902,7 @@
        } catch (sql::InvalidArgumentException&) {
          throw sql::InvalidArgumentException("Wrong type passed for useLegacyAuth expected sql::SQLString");
        }
--#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
-+#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
+-  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
++  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
        if (p_b) {
          secure_auth= !*p_b;
        } else {
@@ -71,11 +89,27 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection.cpp mysql-
      } else if (!it->first.compare(OPT_CONNECT_ATTR_RESET)) {
        proxy->options(MYSQL_OPT_CONNECT_ATTR_RESET, 0);
  
--#if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000
-+#if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000 && !defined(MYCPPCONN_MARIADB_BUILD)
+-  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000
++  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000 && !defined(MYCPPCONN_MARIADB_BUILD)
  
      //Deprecated
      } else if (!it->first.compare("sslVerify")) {
+@@ -961,6 +961,7 @@
+         throw sql::InvalidArgumentException("Wrong type passed for OPT_OCI_CONFIG_FILE. Expected sql::SQLString.");
+       }
+ 
++      /*
+       try {
+         proxy->plugin_option(MYSQL_CLIENT_AUTHENTICATION_PLUGIN,
+                                 "authentication_oci_client",
+@@ -972,6 +972,7 @@
+           OPT_OCI_CONFIG_FILE
+         );
+       }
++      */
+ 
+     }
+     else if (!it->first.compare(OPT_PLUGIN_DIR)) {
 @@ -1000,7 +1000,7 @@
  
    }
@@ -242,15 +276,3 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/FindMySQL.cmake mysql-connector-c+
    if(NOT EXISTS "${MYSQL_INCLUDE_DIR}/mysql.h")
      message(FATAL_ERROR "Could not find \"mysql.h\" in \"${MYSQL_INCLUDE_DIR}\" "
                          "found from running \"${MYSQL_CONFIG_EXECUTABLE}\"")
-diff -uNr mysql-connector-c++-8.0.15-org/jdbc.cmake mysql-connector-c++-8.0.15-src/jdbc.cmake
---- mysql-connector-c++-8.0.15-org/jdbc.cmake	2019-01-28 09:12:59.000000000 +0200
-+++ mysql-connector-c++-8.0.15-src/jdbc.cmake	2019-02-16 12:26:42.480429868 +0200
-@@ -66,7 +66,7 @@
-   list(APPEND jdbc_cmake_opts -DMYSQL_CONFIG_EXECUTABLE=${MYSQL_CONFIG_EXECUTABLE})
- endif()
- 
--list(APPEND jdbc_cmake_opts -DMYSQLCLIENT_STATIC_LINKING=ON)
-+#list(APPEND jdbc_cmake_opts -DMYSQLCLIENT_STATIC_LINKING=ON)
- 
- if(CMAKE_BUILD_TYPE)
-   if(CMAKE_BUILD_TYPE MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")

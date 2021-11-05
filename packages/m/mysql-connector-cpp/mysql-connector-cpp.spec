@@ -19,7 +19,7 @@
 %define libname libmysqlcppconn9
 %define x_libname libmysqlcppconn8-2
 Name:           mysql-connector-cpp
-Version:        8.0.25
+Version:        8.0.27
 Release:        0
 Summary:        MySQL Connector/C++: Standardized database driver for C++ development
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -32,8 +32,6 @@ Patch1:         mysql-connector-cpp-config.patch
 Patch3:         mysql-connector-cpp-libmysql_dynamic_proxy_typos.patch
 # PATCH-FIX-OPENSUSE fix library to work with MariaDB instead of MySQL
 Patch4:         mysql-connector-cpp-mariadb.patch
-# PATCH-FIX-OPENSUSE fix absence of -ldl
-Patch5:         mysql-connector-cpp-dlfcn.patch
 # PATCH-FIX-OPENSUSE use system protobuf (due to some build issues in OBS)
 Patch6:         mysql-connector-cpp-use-system-protobuf.patch
 # PATCH-FIX-OPENSUSE test for optional flag (not present in mariadb or older mysql)
@@ -143,6 +141,7 @@ chmod -x jdbc/examples/*
 	-DMYSQLCPPCONN_GCOV_ENABLE=OFF \
 	-DMYSQLCPPCONN_ICU_ENABLE=OFF \
 	-DMYSQLCPPCONN_BUILD_EXAMPLES=OFF \
+	-DMYSQLCLIENT_STATIC_LINKING=OFF \
 	-DMYSQLCLIENT_STATIC_BINDING=0 \
 	-DMYSQL_CXX_LINKAGE=0 \
     -DWITH_JDBC=ON \

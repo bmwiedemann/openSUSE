@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  2 11:38:38 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.27
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-26.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-27.html
+- Dependency on dl fixed upstream
+  * dropped mysql-connector-cpp-dlfcn.patch
+- Dynamic library fixed absent bind_param
+  * modified mysql-connector-cpp-libmysql_dynamic_proxy_typos.patch
+- Commented out new mysql features
+  * modified mysql-connector-cpp-mariadb.patch
+- Internal protobuf changed upstream
+  * modified mysql-connector-cpp-use-system-protobuf.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 21:09:01 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.25
