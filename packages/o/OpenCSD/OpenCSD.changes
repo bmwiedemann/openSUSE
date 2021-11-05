@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:13:10 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 1.2.0
+    - __Bugfix__: Fix include and install for ETE decoder headers.
+    - __Update__: Add API for counting packet decode statistics, and Frame debmux statistics.
+    - __Update__: Update test scripts to allow additional command line options to be passed.
+    - __Bugfix__: Fix various build warnings.
+    - __Bugfix__: Remove unused variable (github issue #38 from Yi Kong)
+    - __Bugfix__: Remove noisy printf (James Clark)
+    - __Bugfix__: Fix documentation issues (github issues #39 & #40 from rbresalier)
+
+-------------------------------------------------------------------
 Thu Jun 17 09:55:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.1.0:
