@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  5 12:57:22 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.2.0:
+  * Fixes #299 (#302)
+  * Continue work on pinned notes
+  * Make add-note-symbolic use the canvas better
+  * 3.1.7 - More UI changes
+  * Make new UI for notebook selection plus All Notes Trash
+
+-------------------------------------------------------------------
 Fri Oct  8 14:36:12 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.1.6:
