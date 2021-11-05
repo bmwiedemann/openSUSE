@@ -17,7 +17,7 @@
 
 
 Name:           vido
-Version:        1.3.1
+Version:        2.1.0
 Release:        0
 Summary:        Online Video Downloader
 License:        GPL-3.0-or-later
@@ -77,6 +77,7 @@ popd
 %{_datadir}/applications/com.github.bernardodsanderson.vido.desktop
 %{_datadir}/icons/hicolor/*/apps/com.github.bernardodsanderson.vido.??g
 %{_datadir}/metainfo/com.github.bernardodsanderson.vido.appdata.xml
+%{_datadir}/glib-2.0/schemas/com.github.bernardodsanderson.vido.gschema.xml
 
 %files lang -f %{name}.lang
 
