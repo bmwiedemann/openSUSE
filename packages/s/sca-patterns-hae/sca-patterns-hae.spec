@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-hae
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define category HAE
 
 Name:           sca-patterns-hae
-Version:        1.3.1
+Version:        1.5.0
 Release:        0
 Summary:        Supportconfig Analysis Patterns for HAE
 License:        GPL-2.0-only
@@ -33,7 +33,7 @@ Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-patterns-hae
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-Requires:       sca-patterns-base
+Requires:       sca-patterns-base >= 1.5.0
 BuildArch:      noarch
 
 %description

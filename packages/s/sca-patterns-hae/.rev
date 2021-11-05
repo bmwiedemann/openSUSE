@@ -15,4 +15,12 @@
     <comment>Updated Package</comment>
     <requestid>856087</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c2760ca94a95a2590db969f04173fb8</srcmd5>
+    <version>1.5.0</version>
+    <time>1636149509</time>
+    <user>dimstar_suse</user>
+    <comment>python3 conversions (forwarded request 929454 from jrecord)</comment>
+    <requestid>929455</requestid>
+  </revision>
 </revisionlist>
