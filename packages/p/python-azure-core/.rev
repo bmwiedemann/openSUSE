@@ -178,4 +178,15 @@
     CHANGELOG.md file provided with this package (forwarded request 928762 from glaubitz)</comment>
     <requestid>928767</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>577d8bcc6a52922bba08bb001dcb850e</srcmd5>
+    <version>1.20.0</version>
+    <time>1636149552</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.20.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 929682 from glaubitz)</comment>
+    <requestid>929738</requestid>
+  </revision>
 </revisionlist>
