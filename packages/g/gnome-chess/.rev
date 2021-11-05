@@ -381,4 +381,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920934 from dimstar)</comment>
     <requestid>921615</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0fe1808c8745b418b51a23c90edf809f</srcmd5>
+    <version>41.1</version>
+    <time>1636149520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + Fix Exec= line in desktop file. (forwarded request 928195 from iznogood)</comment>
+    <requestid>929577</requestid>
+  </revision>
 </revisionlist>
