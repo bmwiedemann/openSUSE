@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 05 08:27:15 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 1.29.4:
+  * Remove deprecated nbdkit-streaming-plugin
+  * Added retry-request-filter, an alternative, more lightweight,
+    filter with different trade-offs for nbdkit-retry-filter.
+  * cc: Document how to create OCaml plugin scripts
+  * cc: Add binding for .cleanup
+  * docs: Document NBDKIT_VERSION_* macros
+
+-------------------------------------------------------------------
 Wed Aug 25 23:03:26 UTC 2021 - jfehlig@suse.com
 
 - Update to version 1.27.8:

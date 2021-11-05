@@ -78,4 +78,12 @@ near future.</comment>
   * data: Optimize single element lists containing a single byte</comment>
     <requestid>914307</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9a3b2faff2bd706aa7d60746b57a01e</srcmd5>
+    <version>1.29.4</version>
+    <time>1636149556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929758</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.27.8
+Version:        1.29.4
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -154,8 +154,6 @@ nbdkit-sparse-random-plugin Makes sparse random disks.
 
 nbdkit-split-plugin         Concatenates one or more files.
 
-nbdkit-streaming-plugin     A streaming file serving plugin.
-
 nbdkit-zero-plugin          Zero-length plugin for testing.
 
 %package example-plugins
@@ -165,6 +163,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description example-plugins
 This package contains example plugins for %{name}.
+
 
 
 
@@ -284,6 +283,7 @@ Provides:       %{name}-pause-filter = %{version}-%{release}
 Provides:       %{name}-rate-filter = %{version}-%{release}
 Provides:       %{name}-readahead-filter = %{version}-%{release}
 Provides:       %{name}-retry-filter = %{version}-%{release}
+Provides:       %{name}-retry-request-filter = %{version}-%{release}
 Provides:       %{name}-stats-filter = %{version}-%{release}
 Provides:       %{name}-swab-filter = %{version}-%{release}
 Provides:       %{name}-tls-fallback-filter = %{version}-%{release}
@@ -294,69 +294,71 @@ This package contains filters for %{name} which only depend on simple
 C libraries: glibc, gnutls.  Other filters for nbdkit with more
 complex dependencies are packaged separately.
 
-nbdkit-blocksize-filter    Adjusts block size of requests sent to plugins.
+nbdkit-blocksize-filter     Adjusts block size of requests sent to plugins.
 
-nbdkit-cache-filter        Server-side cache.
+nbdkit-cache-filter         Server-side cache.
 
-nbdkit-cacheextents-filter Caches extents.
+nbdkit-cacheextents-filter  Caches extents.
 
-nbdkit-checkwrite-filter   Checks writes match contents of plugin.
+nbdkit-checkwrite-filter    Checks writes match contents of plugin.
 
-nbdkit-cow-filter          Copy-on-write overlay for read-only plugins.
+nbdkit-cow-filter           Copy-on-write overlay for read-only plugins.
 
-nbdkit-ddrescue-filter     Filter for serving from ddrescue dump.
+nbdkit-ddrescue-filter      Filter for serving from ddrescue dump.
 
-nbdkit-delay-filter        Injects read and write delays.
+nbdkit-delay-filter         Injects read and write delays.
 
-nbdkit-error-filter        Injects errors.
+nbdkit-error-filter         Injects errors.
 
-nbdkit-exitlast-filter     Exits on last client connection.
+nbdkit-exitlast-filter      Exits on last client connection.
 
-nbdkit-exitwhen-filter     Exits gracefully when an event occurs.
+nbdkit-exitwhen-filter      Exits gracefully when an event occurs.
 
-nbdkit-exportname-filter   Adjusts export names between client and plugin.
+nbdkit-exportname-filter    Adjusts export names between client and plugin.
 
-nbdkit-extentlist-filter   Places extent list over a plugin.
+nbdkit-extentlist-filter    Places extent list over a plugin.
 
-nbdkit-fua-filter          Modifies flush behaviour in plugins.
+nbdkit-fua-filter           Modifies flush behaviour in plugins.
 
-nbdkit-ip-filter           Filters clients by IP address.
+nbdkit-ip-filter            Filters clients by IP address.
 
-nbdkit-limit-filter        Limits the number of clients that can connect concurrently.
+nbdkit-limit-filter         Limits the number of clients that can connect concurrently.
 
-nbdkit-log-filter          Logs all transactions to a file.
+nbdkit-log-filter           Logs all transactions to a file.
 
-nbdkit-multi-conn-filter   Modifies the way multiple clients can connect to the same export simultaneously.
+nbdkit-multi-conn-filter    Modifies the way multiple clients can connect to the same export simultaneously.
 
-nbdkit-nocache-filter      Disables cache requests in the underlying plugin.
+nbdkit-nocache-filter       Disables cache requests in the underlying plugin.
 
-nbdkit-noextents-filter    Disables extents in the underlying plugin.
+nbdkit-noextents-filter     Disables extents in the underlying plugin.
 
-nbdkit-nofilter-filter     Passthrough filter.
+nbdkit-nofilter-filter      Passthrough filter.
 
-nbdkit-noparallel-filter   Serializes requests to the underlying plugin.
+nbdkit-noparallel-filter    Serializes requests to the underlying plugin.
 
-nbdkit-nozero-filter       Adjusts handling of zero requests by plugins.
+nbdkit-nozero-filter        Adjusts handling of zero requests by plugins.
 
-nbdkit-offset-filter       Serves an offset and range.
+nbdkit-offset-filter        Serves an offset and range.
 
-nbdkit-partition-filter    Serves a single partition.
+nbdkit-partition-filter     Serves a single partition.
 
-nbdkit-pause-filter        Pauses NBD requests.
+nbdkit-pause-filter         Pauses NBD requests.
 
-nbdkit-rate-filter         Limits bandwidth by connection or server.
+nbdkit-rate-filter          Limits bandwidth by connection or server.
 
-nbdkit-readahead-filter    Prefetches data when reading sequentially.
+nbdkit-readahead-filter     Prefetches data when reading sequentially.
 
-nbdkit-retry-filter        Reopens connection on error.
+nbdkit-retry-filter         Reopens connection on error.
 
-nbdkit-stats-filter        Displays statistics about operations.
+nbdkit-retry-request-filter Retries single requests if they fail.
 
-nbdkit-swab-filter         Filter for swapping byte order.
+nbdkit-stats-filter         Displays statistics about operations.
 
-nbdkit-tls-fallback-filter TLS protection filter.
+nbdkit-swab-filter          Filter for swapping byte order.
 
-nbdkit-truncate-filter     Truncates, expands, rounds up or rounds down size.
+nbdkit-tls-fallback-filter  TLS protection filter.
+
+nbdkit-truncate-filter      Truncates, expands, rounds up or rounds down size.
 
 %package gzip-filter
 Summary:        GZip filter for %{name}
@@ -406,6 +408,8 @@ for %{name}.
 
 %prep
 %autosetup -p1
+# Disable webserver test which does not run on OBS
+sed -i "s/LIBNBD_TESTS += test-retry-request-mirror//" tests/Makefile.am
 
 %build
 autoreconf -fiv
@@ -531,7 +535,6 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/plugins/nbdkit-sh-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-sparse-random-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-split-plugin.so
-%{_libdir}/%{name}/plugins/nbdkit-streaming-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-zero-plugin.so
 %{_mandir}/man1/nbdkit-data-plugin.1*
 %{_mandir}/man1/nbdkit-eval-plugin.1*
@@ -548,7 +551,6 @@ export LIBGUESTFS_TRACE=1
 %{_mandir}/man3/nbdkit-sh-plugin.3*
 %{_mandir}/man1/nbdkit-sparse-random-plugin.1*
 %{_mandir}/man1/nbdkit-split-plugin.1*
-%{_mandir}/man1/nbdkit-streaming-plugin.1*
 %{_mandir}/man1/nbdkit-zero-plugin.1*
 
 %files example-plugins
@@ -616,6 +618,7 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/filters/nbdkit-rate-filter.so
 %{_libdir}/%{name}/filters/nbdkit-readahead-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-filter.so
+%{_libdir}/%{name}/filters/nbdkit-retry-request-filter.so
 %{_libdir}/%{name}/filters/nbdkit-stats-filter.so
 %{_libdir}/%{name}/filters/nbdkit-swab-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
@@ -648,6 +651,7 @@ export LIBGUESTFS_TRACE=1
 %{_mandir}/man1/nbdkit-rate-filter.1*
 %{_mandir}/man1/nbdkit-readahead-filter.1*
 %{_mandir}/man1/nbdkit-retry-filter.1*
+%{_mandir}/man1/nbdkit-retry-request-filter.1*
 %{_mandir}/man1/nbdkit-stats-filter.1*
 %{_mandir}/man1/nbdkit-swab-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
