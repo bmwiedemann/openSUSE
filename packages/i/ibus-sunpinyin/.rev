@@ -20,4 +20,12 @@
   * update using glade 3.38 (forwarded request 928647 from hillwood)</comment>
     <requestid>928648</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>533fa61f0978a1f8a088d6775ae943cd</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1636149527</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ibus-sunpinyin-setup can not launch. (forwarded request 929648 from hillwood)</comment>
+    <requestid>929649</requestid>
+  </revision>
 </revisionlist>
