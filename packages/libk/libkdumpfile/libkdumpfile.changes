@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:58:13 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- upgrade to libkdumpfile-0.4.1
+  * Support Linux on AArch64
+  * Support for x86 Secure Memory Encryption
+  * Clean up vmcoreinfo string API
+  * Expose mmap and read cache statistics
+- Drop patches that are upstream:
+  * libkdumpfile-use-python-distutils.patch
+  * libkdumpfile-uninstall-using-distutils.patch
+  * libkdumpfile-honour-DESTDIR.patch
+  * libkdumpfile-move-python-setup-command-options.patch
+  * libkdumpfile-python-includedir.patch
+
+-------------------------------------------------------------------
 Fri Feb 19 08:36:57 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Fix build for openSUSE:Factory.

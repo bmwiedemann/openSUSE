@@ -30,7 +30,7 @@
 %endif
 
 # There was no Python single-spec before SLE15
-%if %{defined python_module}
+%if %{defined pythons}
 %define new_python_macros 1
 %else
 %define new_python_macros 0
@@ -48,24 +48,19 @@
 %define oldpython python
 
 Name:           libkdumpfile
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 %if "%name" == "libkdumpfile"
 Summary:        Kernel dump file access library
-License:        LGPL-3.0-or-later OR GPL-2.0-or-later
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Languages/Python
 %else
 Summary:        Python interface for libkdumpfile
-License:        LGPL-3.0-or-later OR GPL-2.0-or-later
+License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 Group:          Development/Languages/Python
 %endif
 URL:            https://github.com/ptesarik/libkdumpfile
 Source:         https://github.com/ptesarik/libkdumpfile/releases/download/v%{version}/%{name}-%{version}.tar.bz2
-Patch1:         %{name}-use-python-distutils.patch
-Patch2:         %{name}-uninstall-using-distutils.patch
-Patch3:         %{name}-honour-DESTDIR.patch
-Patch4:         %{name}-move-python-setup-command-options.patch
-Patch5:         %{name}-python-includedir.patch
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -126,28 +121,28 @@ the Python interpreter.
 Summary:        Include files and libraries for libkdumpfile development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libkdumpfile8 = %{version}
+Requires:       libkdumpfile9 = %{version}
 
 %description -n %{name}-devel
 This package contains all necessary include files and libraries needed
 to develop applications that require libkdumpfile.
 
-%package -n libkdumpfile8
+%package -n libkdumpfile9
 Summary:        Kernel dump file access library
 Group:          System/Libraries
 
-%description -n libkdumpfile8
+%description -n libkdumpfile9
 A library that provides an abstraction layer for reading kernel dump
 core files.  It supports different kernel dump core formats, virtual
 to physical translation, Xen mappings and more.
 
 This package contains the libkdumpfile library.
 
-%package -n libaddrxlat1
+%package -n libaddrxlat2
 Summary:        Address translation library used primarily by libkdumpfile
 Group:          System/Libraries
 
-%description -n libaddrxlat1
+%description -n libaddrxlat2
 A library that provides an abstraction layer for translating addresses
 between address spaces (i.e. physical vs virtual).
 
@@ -157,7 +152,7 @@ This package contains the libaddrxlat library.
 Summary:        Include files and libraries for libaddrxlat development
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libaddrxlat1 = %{version}
+Requires:       libaddrxlat2 = %{version}
 
 %description -n libaddrxlat-devel
 This package contains all necessary include files and libraries needed
@@ -177,11 +172,6 @@ to develop applications that require libaddrxlat.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 # Avoid autotools recheck after patching config*
 touch aclocal.m4 Makefile.in config.h.in configure
@@ -231,15 +221,15 @@ rm -v %{?buildroot}%{python3_sitearch}/_kdumpfile*.la
 rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
 %endif
 
-%post -n libkdumpfile8 -p /sbin/ldconfig
+%post -n libkdumpfile9 -p /sbin/ldconfig
 
-%post -n libaddrxlat1 -p /sbin/ldconfig
+%post -n libaddrxlat2 -p /sbin/ldconfig
 
-%postun -n libkdumpfile8 -p /sbin/ldconfig
+%postun -n libkdumpfile9 -p /sbin/ldconfig
 
-%postun -n libaddrxlat1 -p /sbin/ldconfig
+%postun -n libaddrxlat2 -p /sbin/ldconfig
 
-%files -n libkdumpfile8
+%files -n libkdumpfile9
 %defattr(-,root,root)
 %{_libdir}/libkdumpfile.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
@@ -251,7 +241,7 @@ rm -v %{?buildroot}%{python3_sitearch}/_addrxlat*.la
 %{_libdir}/libkdumpfile.so
 %{_libdir}/pkgconfig/libkdumpfile.pc
 
-%files -n libaddrxlat1
+%files -n libaddrxlat2
 %defattr(-,root,root)
 %{_libdir}/libaddrxlat.so.*
 %license COPYING COPYING.GPLv2 COPYING.GPLv3 COPYING.LGPLv3
