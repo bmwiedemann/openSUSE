@@ -20,18 +20,18 @@ Name:           spotifyd
 Version:        0.3.2
 Release:        0
 Summary:        Spotify client running as a UNIX daemon
-Group:          Productivity/Multimedia/Sound/Players
 License:        GPL-3.0-or-later
+Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/Spotifyd/spotifyd
 Source0:        https://github.com/Spotifyd/spotifyd/archive/refs/tags/v%{version}.tar.gz#/spotifyd-%{version}.tar.gz
 Source1:        vendor.tar.bz2
 BuildRequires:  cargo
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-client)
-BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  systemd-rpm-macros
 
 %description
 Spotifyd streams music just like the official client, but is more lightweight
@@ -65,7 +65,7 @@ cargo install \
   --features alsa_backend,dbus_keyring,dbus_mpris,pulseaudio_backend
 
 install -pm0755 -D target/release/spotifyd %{buildroot}%{_bindir}/spotifyd
-install -pm0644 -D contrib/spotifyd.service %{buildroot}%{_unitdir}/spotifyd.service
+install -pm0644 -D contrib/spotifyd.service %{buildroot}%{_userunitdir}/spotifyd.service
 
 %pre
 %service_add_pre spotifyd.service
@@ -82,7 +82,7 @@ install -pm0644 -D contrib/spotifyd.service %{buildroot}%{_unitdir}/spotifyd.ser
 %files
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_unitdir}/spotifyd.service
+%{_userunitdir}/spotifyd.service
 %{_bindir}/spotifyd
 
 %changelog
