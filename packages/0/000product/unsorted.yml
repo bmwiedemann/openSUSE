@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -9874,9 +9874,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -12544,7 +12544,7 @@ unsorted:
   - libparaview5_9 
   - libpari-gmp-tls7 
   - libparlatype-devel 
-  - libparlatype3 
+  - libparlatype5 
   - libparpack2-openmpi1 
   - libparpack2-openmpi1-32bit: [x86_64] 
   - libparpack2-openmpi2 
@@ -13069,8 +13069,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13093,7 +13093,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13320,7 +13320,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -19065,6 +19065,7 @@ unsorted:
   - perl-File-Tail 
   - perl-File-Temp 
   - perl-File-Touch 
+  - perl-File-TreeCreate 
   - perl-File-Type 
   - perl-File-Unpack 
   - perl-File-Which 
@@ -21861,6 +21862,8 @@ unsorted:
   - python36-azure-loganalytics 
   - python36-azure-media-nspkg 
   - python36-azure-media-videoanalyzer-edge 
+  - python36-azure-messaging-nspkg 
+  - python36-azure-messaging-webpubsubservice 
   - python36-azure-mgmt 
   - python36-azure-mgmt-advisor 
   - python36-azure-mgmt-agfood 
@@ -24663,6 +24666,8 @@ unsorted:
   - python38-azure-loganalytics 
   - python38-azure-media-nspkg 
   - python38-azure-media-videoanalyzer-edge 
+  - python38-azure-messaging-nspkg 
+  - python38-azure-messaging-webpubsubservice 
   - python38-azure-mgmt 
   - python38-azure-mgmt-advisor 
   - python38-azure-mgmt-agfood 
@@ -27639,6 +27644,8 @@ unsorted:
   - python39-azure-loganalytics 
   - python39-azure-media-nspkg 
   - python39-azure-media-videoanalyzer-edge 
+  - python39-azure-messaging-nspkg 
+  - python39-azure-messaging-webpubsubservice 
   - python39-azure-mgmt 
   - python39-azure-mgmt-advisor 
   - python39-azure-mgmt-agfood 
@@ -30654,6 +30661,7 @@ unsorted:
   - qt6-quickcontrols2-private-devel 
   - qt6-quickcontrols2impl-devel 
   - qt6-quickcontrols2impl-private-devel 
+  - qt6-quickcontrolstestutils-devel-static 
   - qt6-quickdialogs2-devel 
   - qt6-quickdialogs2-private-devel 
   - qt6-quickdialogs2quickimpl-devel 
@@ -30668,6 +30676,7 @@ unsorted:
   - qt6-quicktemplates2-private-devel 
   - qt6-quicktest-devel 
   - qt6-quicktest-private-devel 
+  - qt6-quicktestutils-devel-static 
   - qt6-quicktimeline-devel 
   - qt6-quicktimeline-docs-html 
   - qt6-quicktimeline-docs-qch 
@@ -30873,7 +30882,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
