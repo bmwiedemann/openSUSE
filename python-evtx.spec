@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define commands dump dump_chunk_slack eid_record_numbers extract_record filter_records info record_structure structure templates
 %bcond_without python2
@@ -35,14 +41,19 @@ BuildRequires:  python2-xml
 %endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-hexdump
 Requires:       python-lxml
 %ifpython2
 Requires:       python-xml
 %endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,6 +84,12 @@ done
 
 %check
 %pytest
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
+  print(rpm.expand("%python_libalternatives_reset_alternative evtx_" .. c .. ".py"))
+end}
 
 %post
 %{lua:for c in rpm.expand("%{commands}"):gmatch("%S+") do
