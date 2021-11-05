@@ -29,4 +29,12 @@
     <comment></comment>
     <requestid>921990</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84b1d7b13c891b8a21f789e91da59234</srcmd5>
+    <version>1.0.0~alpha.4</version>
+    <time>1636149523</time>
+    <user>dimstar_suse</user>
+    <comment>New release (forwarded request 928877 from iznogood)</comment>
+    <requestid>929598</requestid>
+  </revision>
 </revisionlist>
