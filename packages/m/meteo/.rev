@@ -114,4 +114,12 @@
     <comment></comment>
     <requestid>734431</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>edff98f598cfd5075bbc5345be6f2faf</srcmd5>
+    <version>0.9.9.1</version>
+    <time>1636149528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 929663 from awissu)</comment>
+    <requestid>929664</requestid>
+  </revision>
 </revisionlist>
