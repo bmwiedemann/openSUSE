@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  1 20:26:57 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.2.0
+  - Prepare installer for Windows
+  - Handle segfaults and other crashes in code
+  - Create config for debug builds
+  - Allow unhiding app window when second instance of AntiMicroX is launched
+  - Typo in udev rule name: 60-antimicrox-uinput.rules instead
+    60-antimcrox-uinput.rules
+  - Move gui-related files to separate directory
+  - Logging system improvements
+  - Some additional logs and notes
+  - Fix compile warnings
+  - Set homepage url for packages
+  - Create config for debug build
+  - Cmake cleanup
+- Rebase remove_datetime_aboutdialog.patch
+
+-------------------------------------------------------------------
 Sat Sep 11 04:41:12 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.1.7

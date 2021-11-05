@@ -1,7 +1,7 @@
-diff -Nur antimicrox-3.1.5/src/aboutdialog.cpp new/src/aboutdialog.cpp
---- antimicrox-3.1.5/src/aboutdialog.cpp	2021-03-14 15:07:59.000000000 +0100
-+++ new/src/aboutdialog.cpp	2021-03-14 19:25:52.854157598 +0100
-@@ -60,11 +60,11 @@
+diff -Nur antimicrox-3.2.0/src/gui/aboutdialog.cpp new/src/gui/aboutdialog.cpp
+--- antimicrox-3.2.0/src/gui/aboutdialog.cpp	2021-10-29 16:42:57.000000000 +0200
++++ new/src/gui/aboutdialog.cpp	2021-11-01 21:32:44.180607449 +0100
+@@ -49,11 +49,11 @@
      QStringList finalInfoText = QStringList();
  
      finalInfoText.append(tr("Program Version %1").arg(PadderCommon::programVersion));

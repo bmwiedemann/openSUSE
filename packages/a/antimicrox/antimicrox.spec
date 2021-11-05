@@ -17,7 +17,7 @@
 
 
 Name:           antimicrox
-Version:        3.1.7
+Version:        3.2.0
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 License:        GPL-3.0-or-later
@@ -75,9 +75,6 @@ which was later abandoned and revived by juliagoda.
 # remove redundant changelog
 rm %{buildroot}%{_datadir}/%{name}/CHANGELOG.md
 rm %{buildroot}%{_datadir}/doc/%{name}/CHANGELOG.md
- 
-# rename udev rule - see gh#AntiMicroX/antimicrox/#204
-mv %{buildroot}%{_udevrulesdir}/60-antimcrox-uinput.rules %{buildroot}%{_udevrulesdir}/60-%{name}-uinput.rules
 
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file -r io.github.antimicrox.%{name} System HardwareSettings
