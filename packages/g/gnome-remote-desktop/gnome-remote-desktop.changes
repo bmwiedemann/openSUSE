@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 30 14:40:59 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 41.1:
+  + vnc-pipewire-stream: Take frame data from pending frame, when
+    needed
+  + rdp-pipewire-stream: Take frame data from pending frame, when
+    needed
+  + rdp/rdpgfx: Unref surface serial after looking up surface
+    context
+  + rdp-graphics-pipeline: Fix small style issue
+  + rdp-fuse-clipboard:
+    - Fix potential race when accessing FuseFile path
+    - Fix small style issue
+  + clipboard-rdp: Always check return value of ConvertFromUnicode
+  + session-rdp: Only signal GCond, when all encode jobs are
+    complete
+
+-------------------------------------------------------------------
 Mon Sep 20 16:56:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:

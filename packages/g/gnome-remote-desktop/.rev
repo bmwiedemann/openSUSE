@@ -52,4 +52,25 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Scripted push from GNOME:Next (forwarded request 920945 from dimstar)</comment>
     <requestid>921625</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>697bcf892ca12c2b66014f853c803980</srcmd5>
+    <version>41.1</version>
+    <time>1636149521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + vnc-pipewire-stream: Take frame data from pending frame, when
+    needed
+  + rdp-pipewire-stream: Take frame data from pending frame, when
+    needed
+  + rdp/rdpgfx: Unref surface serial after looking up surface
+    context
+  + rdp-graphics-pipeline: Fix small style issue
+  + rdp-fuse-clipboard:
+    - Fix potential race when accessing FuseFile path
+    - Fix small style issue
+  + clipboard-rdp: Always check return value of ConvertFromUnicode
+  + session-rdp: Only signal GCond, when all encode jobs are
+    complete (forwarded request 928278 from iznogood)</comment>
+    <requestid>929586</requestid>
+  </revision>
 </revisionlist>
