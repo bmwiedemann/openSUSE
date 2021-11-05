@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 02:56:27 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Enable cargo_audit
+- Add cargo_vendor update to resolve audit issues
+
+-------------------------------------------------------------------
 Wed Jun 23 07:40:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.
