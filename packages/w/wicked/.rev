@@ -1579,4 +1579,22 @@
  [+ 0002-dhcp6-request-nis-options-on-sle15-by-default.1181812.patch]</comment>
     <requestid>900218</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>f30019add1e53861311b04f413953195</srcmd5>
+    <version>0.6.67</version>
+    <time>1636149500</time>
+    <user>dimstar_suse</user>
+    <comment>- dbus: config files in /usr shouldn't be marked as config in spec
+
+- version 0.6.67
+- dbus: install bus config in /usr (bsc#1183407,jsc#SLE-9750)
+- logging: log reaped sub-process command and as debug, not error
+- ifstatus: Don't show link as &quot;up&quot; without RUNNING flag set
+- firewalld: Make the zone assignment permanent (boo#1189560)
+- fsm: cleanup and improve ifconfig and ifpolicy access utils
+- dbus: cleanup the dbus-service.h file and unused property makros
+- cleanup: applied code-spell run typo corrections
+- dracut: initial fixes and improved option handling (boo#1182227)</comment>
+    <requestid>929130</requestid>
+  </revision>
 </revisionlist>

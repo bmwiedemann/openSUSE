@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.66
+Version:        0.6.67
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_66 = %{version}-%{release}
+Provides:       libwicked-0_6_67 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -114,6 +114,13 @@ PreReq:         %fillup_prereq %insserv_prereq
 %define         wicked_statedir %_localstatedir/run/%{name}
 %endif
 %define         wicked_storedir %_localstatedir/lib/%{name}
+%if 0%{?suse_version} >= 1550
+%define		dbus_config_base %_datadir/dbus-1
+%define		dbus_config_tag	 %nil
+%else
+%define		dbus_config_base %_sysconfdir/dbus-1
+%define		dbus_config_tag	 %config
+%endif
 
 %description
 Wicked is a network configuration infrastructure incorporating a number
@@ -165,7 +172,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_66 = %{version}-%{release}
+Requires:       libwicked-0_6_67 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -205,6 +212,7 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS"
 %if ! %{with dbusstart}
 	--without-dbus-servicedir	\
 %endif
+	--with-dbus-configdir=%{dbus_config_base}/system.d \
 	--disable-static
 make %{?_smp_mflags}
 
@@ -333,16 +341,18 @@ fi
 %dir %_sysconfdir/wicked/extensions
 %config(noreplace) %_sysconfdir/wicked/extensions/*
 %dir %_sysconfdir/wicked/ifconfig
-%dir %_sysconfdir/dbus-1
-%dir %_sysconfdir/dbus-1/system.d
+%dir %{dbus_config_base}
+%dir %{dbus_config_base}/system.d
 # mark the policies as config to keep backup, but replace on upgrade
-%config %_sysconfdir/dbus-1/system.d/org.opensuse.Network.conf
-%config %_sysconfdir/dbus-1/system.d/org.opensuse.Network.AUTO4.conf
-%config %_sysconfdir/dbus-1/system.d/org.opensuse.Network.DHCP4.conf
-%config %_sysconfdir/dbus-1/system.d/org.opensuse.Network.DHCP6.conf
-%config %_sysconfdir/dbus-1/system.d/org.opensuse.Network.Nanny.conf
+%{dbus_config_tag} %{dbus_config_base}/system.d/org.opensuse.Network.conf
+%{dbus_config_tag} %{dbus_config_base}/system.d/org.opensuse.Network.AUTO4.conf
+%{dbus_config_tag} %{dbus_config_base}/system.d/org.opensuse.Network.DHCP4.conf
+%{dbus_config_tag} %{dbus_config_base}/system.d/org.opensuse.Network.DHCP6.conf
+%{dbus_config_tag} %{dbus_config_base}/system.d/org.opensuse.Network.Nanny.conf
 %if %{with dbusstart}
+%if "%dbus_config_base" != "%_datadir/dbus-1"
 %dir %_datadir/dbus-1
+%endif
 %dir %_datadir/dbus-1/system-services
 %_datadir/dbus-1/system-services/org.opensuse.Network.*.service
 %endif

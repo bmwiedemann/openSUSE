@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  4 08:06:33 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- dbus: config files in /usr shouldn't be marked as config in spec
+
+-------------------------------------------------------------------
+Fri Oct  1 14:19:44 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.6.67
+- dbus: install bus config in /usr (bsc#1183407,jsc#SLE-9750)
+- logging: log reaped sub-process command and as debug, not error
+- ifstatus: Don't show link as "up" without RUNNING flag set
+- firewalld: Make the zone assignment permanent (boo#1189560)
+- fsm: cleanup and improve ifconfig and ifpolicy access utils
+- dbus: cleanup the dbus-service.h file and unused property makros
+- cleanup: applied code-spell run typo corrections
+- dracut: initial fixes and improved option handling (boo#1182227)
+
+-------------------------------------------------------------------
 Tue Jun 15 17:30:40 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.6.66
