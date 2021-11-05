@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.0.0
-%define  soname 5_0_0
+Version:        5.0.3
+%define  soname 5_0_3
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files
@@ -37,14 +37,14 @@ BuildRequires:  libaec-devel
 BuildRequires:  libsz2-devel
 BuildRequires:  netcdf
 BuildRequires:  pkgconfig
+BuildRequires:  texinfo
+BuildRequires:  texlive
+BuildRequires:  udunits2-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(netcdf) >= 4.1.3
 BuildRequires:  pkgconfig(netcdf-cxx4) >= 4.1.3
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  texinfo
-BuildRequires:  texlive
-BuildRequires:  udunits2-devel
 %if 0%{?fedora_version}
 %define ext_man .gz
 %define ext_info .gz
@@ -54,7 +54,7 @@ BuildRequires:  texinfo-tex
 %else
 BuildRequires:  antlr-devel
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 %endif
 
 %description
@@ -146,6 +146,8 @@ mkdir -p %{buildroot}%{_includedir}/nco
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_infodir}/dir
+# Fix shbangs
+sed -i "1 s|env bash|bash|" %{buildroot}%{_bindir}/{ncclimo,ncremap}
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
