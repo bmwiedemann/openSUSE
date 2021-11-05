@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 01:38:38 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to updated version 1.5.0
+  + Converted to python3 (bsc#1191005, SLE-21579)
+
+-------------------------------------------------------------------
 Thu Sep 16 15:01:07 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Added video links to patterns (bsc#1190460)
