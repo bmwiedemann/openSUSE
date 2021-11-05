@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 13:01:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4
+  * Fixed a couple of multithread-safety bugs in the trampoline and
+    callback packages.
+- Remove unused ffcall-trampoline.patch
+
+-------------------------------------------------------------------
 Thu May  6 07:50:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Move /etc/rpm/macros.ffcall to /usr/lib/rpm/macros.d/ (boo#1185666)

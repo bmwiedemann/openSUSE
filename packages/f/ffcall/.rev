@@ -178,4 +178,15 @@
     <comment>- Move /etc/rpm/macros.ffcall to /usr/lib/rpm/macros.d/ (boo#1185666)</comment>
     <requestid>890920</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>688ce26ff61628740c7726c774c7684a</srcmd5>
+    <version>2.4</version>
+    <time>1636149501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4
+  * Fixed a couple of multithread-safety bugs in the trampoline and
+    callback packages.
+- Remove unused ffcall-trampoline.patch (forwarded request 928559 from susnux)</comment>
+    <requestid>929193</requestid>
+  </revision>
 </revisionlist>
