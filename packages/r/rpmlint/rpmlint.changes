@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 03 09:31:34 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211103.8d20461:
+  * permissions-whitelist: update texlive-filesystem digests
+  * permissions-whitelist: update sendmail digests
+  * Enhance error message of LibraryDependencyCheck.
+
+-------------------------------------------------------------------
+Mon Nov 01 08:05:57 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211101.f2e73fe:
+  * Fix no-library-dependency-for.
+
+-------------------------------------------------------------------
+Sun Oct 31 13:27:38 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211027.7242d3d:
+  * dbus-services: adjust wicked whitelisting to new paths (bsc#1192033)
+  * Add new LibraryDependencyCheck.
+  * Rework the lib_regex pattern
+  * security whitelistings: test whitelistings for file-digest-mismatch errors
+  * scoring.toml: fix alphabetical order of permissions-file errors
+  * security whitelistings: add badness for file-digest-mismatch errors
+
+-------------------------------------------------------------------
 Fri Oct 22 19:03:03 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211022.a5287ad:

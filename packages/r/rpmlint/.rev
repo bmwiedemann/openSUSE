@@ -3343,4 +3343,26 @@ oddjob-gpupdate isn't blocked)</comment>
   * Whitelisting pam_u2f module (bsc#1190790)</comment>
     <requestid>927090</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>e1020a9638b541c1ad89d71cd953be53</srcmd5>
+    <version>2.1+git20211103.8d20461</version>
+    <time>1636149499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211103.8d20461:
+  * permissions-whitelist: update texlive-filesystem digests
+  * permissions-whitelist: update sendmail digests
+  * Enhance error message of LibraryDependencyCheck.
+
+- Update to version 2.1+git20211101.f2e73fe:
+  * Fix no-library-dependency-for.
+
+- Update to version 2.1+git20211027.7242d3d:
+  * dbus-services: adjust wicked whitelisting to new paths (bsc#1192033)
+  * Add new LibraryDependencyCheck.
+  * Rework the lib_regex pattern
+  * security whitelistings: test whitelistings for file-digest-mismatch errors
+  * scoring.toml: fix alphabetical order of permissions-file errors
+  * security whitelistings: add badness for file-digest-mismatch errors</comment>
+    <requestid>928975</requestid>
+  </revision>
 </revisionlist>
