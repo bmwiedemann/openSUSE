@@ -1,7 +1,7 @@
-# 
+#
 # spec file for package sca-patterns-suma
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,6 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 %define sca_common sca
 %define patdirbase /usr/lib/%{sca_common}
 %define patdir %{patdirbase}/patterns
@@ -20,17 +24,17 @@
 %define mode 544
 %define category suma
 
-Name:         sca-patterns-suma
-Version:      1.0
-Release:      0
-Summary:      Supportconfig Analysis Patterns for SUSE Manager
-License:      GPL-2.0
-URL:          https://github.com/g23guy/sca-patterns-suma
-Group:        System/Monitoring
-Source:       %{name}-%{version}.tar.gz
-BuildRequires: fdupes
-Requires:     sca-patterns-base
-Buildarch:    noarch
+Name:           sca-patterns-suma
+Version:        1.5.0
+Release:        0
+Summary:        Supportconfig Analysis Patterns for SUSE Manager
+License:        GPL-2.0-only
+Group:          System/Monitoring
+URL:            https://github.com/g23guy/sca-patterns-suma
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  fdupes
+Requires:       sca-patterns-base >= 1.5.0
+BuildArch:      noarch
 
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
@@ -67,4 +71,3 @@ install -m %{mode} patterns/%{category}/suma21all/* %{buildroot}/%{patdir}/%{cat
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/suma21all/*
 
 %changelog
-
