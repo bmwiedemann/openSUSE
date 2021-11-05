@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  3 14:16:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for i586: one of the main dependencies, lilypond, is
+  not built for that arch.
+
+-------------------------------------------------------------------
 Sat Aug  7 16:14:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21.06.1:

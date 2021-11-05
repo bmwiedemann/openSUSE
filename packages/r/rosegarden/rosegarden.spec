@@ -68,6 +68,8 @@ Requires:       lilypond-fonts-common >= 2.20
 Requires:       xsynth-dssi
 Recommends:     fluidsynth-dssi
 Recommends:     qsynth
+#Unsatisfied dependency for Factory i586
+ExcludeArch:    i586
 
 %description
 Rosegarden is a well-rounded audio and MIDI sequencer,

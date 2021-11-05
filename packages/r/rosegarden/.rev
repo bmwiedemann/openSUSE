@@ -342,4 +342,12 @@ Fixes bnc#745619 (forwarded request 108469 from plater)</comment>
     <comment></comment>
     <requestid>910661</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>abf38ac35f5eecd1619d1b6cf2222b6d</srcmd5>
+    <version>21.06.1</version>
+    <time>1636149519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929560</requestid>
+  </revision>
 </revisionlist>
