@@ -44,6 +44,7 @@ SunPinyin with IBus framework.
 %prep
 %autosetup -p1 -n sunpinyin-3.0.0-rc2
 sed -i "s/LIBEXECDIR'\].*ibus-sunpinyin.*/LIBEXECDIR'\]/" SConstruct
+sed -i "s/exec python /exec python3 /g" wrapper/ibus/setup/ibus-setup-sunpinyin.in
 
 %build
 cd wrapper/ibus/
