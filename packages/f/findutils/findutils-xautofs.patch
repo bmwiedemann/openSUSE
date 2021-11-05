@@ -11,7 +11,7 @@ Index: doc/find.texi
 ===================================================================
 --- doc/find.texi.orig
 +++ doc/find.texi
-@@ -1475,6 +1475,10 @@ them.
+@@ -1519,6 +1519,10 @@ them.
  There are two ways to avoid searching certain filesystems.  One way is
  to tell @code{find} to only search one filesystem:
  
@@ -40,7 +40,7 @@ Index: find/find.1
 ===================================================================
 --- find/find.1.orig
 +++ find/find.1
-@@ -567,6 +567,9 @@ to stat them; this gives a significant i
+@@ -576,6 +576,9 @@ to stat them; this gives a significant i
  .IP "\-version, \-\-version"
  Print the \fBfind\fR version number and exit.
  
@@ -54,7 +54,7 @@ Index: find/ftsfind.c
 ===================================================================
 --- find/ftsfind.c.orig
 +++ find/ftsfind.c
-@@ -479,6 +479,12 @@ consider_visiting (FTS *p, FTSENT *ent)
+@@ -432,6 +432,12 @@ consider_visiting (FTS *p, FTSENT *ent)
  	}
      }
  
@@ -87,7 +87,7 @@ Index: find/parser.c
    PARSE_TEST       ("xtype",                 xtype),	     /* GNU */
  #ifdef UNIMPLEMENTED_UNIX
    /* It's pretty ugly for find to know about archive formats.
-@@ -2604,6 +2606,16 @@ parse_xdev (const struct parser_table* e
+@@ -2595,6 +2597,16 @@ parse_xdev (const struct parser_table* e
  }
  
  static bool

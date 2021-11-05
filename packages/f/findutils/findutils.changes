@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  4 23:23:36 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-port-year2038-to-glibc-2.34.patch: Add patch to avoid
+  build failure regarding 64-bit time_t on i586 with glibc-2.34.
+- findutils.spec: Reference it, and add BR:automake and run 'autoreconf'.
+  While at it, remove obsolete condition for suse_version 1100.
+- findutils-xautofs.patch: Refresh.
+
+-------------------------------------------------------------------
 Mon Apr 19 10:33:38 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Use new Group Release Keyring 

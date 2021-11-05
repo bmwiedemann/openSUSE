@@ -41,14 +41,18 @@ Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
+
+# Upstream gnulib patch to avoid i586 build failure with glibc-2.34; remove with findutils>4.8.0.
+# Requires installed automake and running 'autoreconf -fi' below.
+Patch100:       gnulib-port-year2038-to-glibc-2.34.patch
+BuildRequires:  automake
+
 # BuildRequire dejagnu for 'runtest' to execute all tests.
 BuildRequires:  dejagnu
 BuildRequires:  makeinfo
 Provides:       find = %{version}
 Obsoletes:      find < %{version}
-%if 0%{?suse_version} > 1100
 BuildRequires:  libselinux-devel
-%endif
 
 %description
 The findutils package contains programs which will help you locate
@@ -66,8 +70,12 @@ useful for finding things on your system.
 %prep
 %setup -q
 %patch0
+%patch100
 
 %build
+# Patch100 requires to refresh 'configure'; remove with findutils>4.8.0.
+AUTOPOINT=true autoreconf -fi
+
 %if 0%{?qemu_user_space_build}
 # this is a workaround for a qemu-user bug, we hit. A qemu patch is being discussed, but for now ...
 export DEFAULT_ARG_SIZE="(31u * 1024u)"
