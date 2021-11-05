@@ -17,13 +17,13 @@
 
 
 Name:           aws-cli
-Version:        1.20.7
+Version:        1.21.6
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/aws-cli
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/aws/%{name}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       groff
 Provides:       awscli = %{version}
@@ -34,9 +34,10 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.0.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.21.7
+Requires:       python3-botocore >= 1.22.6
 Requires:       python3-colorama <= 0.4.4
 Requires:       python3-colorama >= 0.2.5
+Requires:       python3-docutils < 0.20
 Requires:       python3-docutils >= 0.10
 Requires:       python3-rsa < 5.0.0
 Requires:       python3-rsa >= 3.1.2
@@ -50,7 +51,7 @@ BuildRequires:  python-setuptools
 Requires:       python
 Requires:       python-PyYAML <= 5.5
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.21.7
+Requires:       python-botocore >= 1.22.6
 Requires:       python-colorama <= 0.4.4
 Requires:       python-colorama >= 0.2.5
 Requires:       python-docutils >= 0.10
@@ -95,6 +96,7 @@ install -DTm644 %{buildroot}%{_bindir}/aws_bash_completer %{buildroot}%{_datadir
 install -DTm644 %{buildroot}%{_bindir}/aws_zsh_completer.sh %{buildroot}%{_sysconfdir}/zsh_completion.d/_aws
 
 %files
+%defattr(-, root, root)
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -113,6 +115,7 @@ install -DTm644 %{buildroot}%{_bindir}/aws_zsh_completer.sh %{buildroot}%{_sysco
 %exclude %{_bindir}/aws_bash_completer
 %exclude %{_bindir}/aws_zsh_completer.sh
 %{_datadir}/bash-completion/completions/aws
-%{_sysconfdir}/zsh_completion.d
+%dir %{_sysconfdir}/zsh_completion.d
+%config %attr(644,root,root) %{_sysconfdir}/zsh_completion.d/_aws
 
 %changelog

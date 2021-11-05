@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 29 16:16:56 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.21.6
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.21.6/CHANGELOG.rst
+- Relax upper version dependency for python-docutils in Requires
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
+Fri Sep 10 07:32:58 UTC 2021 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to version 1.20.32 
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.20.32/CHANGELOG.rst
+- Fix rpmlint warnings
+  + use defattr for default permissions
+  + mark zsh completion file as a config file
+- Use github download url as a Source0
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Wed Jul 28 04:18:32 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.20.7
