@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov  2 03:43:28 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo_audit service
+- Resolve incomplete use of services for getting source tars.
+
+-------------------------------------------------------------------
+Tue Nov 02 03:25:04 UTC 2021 - slunkad@suse.de
+
+- Update to version 5.0.0:
+  * cargo: Afterburn release 5.0.0
+  * providers: add Azure Stack Hub (azurestack)
+  * providers: move azure into microsoft module
+  * build(deps): bump anyhow from 1.0.39 to 1.0.40
+  * ci: adapt to new buildroot image
+  * build(deps): bump serde from 1.0.124 to 1.0.125
+  * build(deps): bump anyhow from 1.0.38 to 1.0.39
+  * cargo: accept mockito 0.29
+  * build(deps): bump mockito from 0.29.0 to 0.30.0
+  * cli: stop wrapping command-line parse errors
+  * Switch from error-chain to anyhow
+
+-------------------------------------------------------------------
 Tue Jul 13 18:39:31 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Forward port fix-authorized-keys-location.patch

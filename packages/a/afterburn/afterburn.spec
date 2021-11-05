@@ -26,8 +26,8 @@ Release:        0
 Summary:        A cloud provider agent
 License:        Apache-2.0
 URL:            https://coreos.github.io/afterburn/
-Source0:        https://github.com/coreos/afterburn/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/coreos/afterburn/releases/download/v%{version}/afterburn-%{version}-vendor.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source2:        cargo_config
 Patch1:         fix-authorized-keys-location.patch
 Patch2:         set-default-user.patch
@@ -73,28 +73,28 @@ install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/cmdline.d
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service 
-install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-checkin.service %{buildroot}%{_unitdir}/%{name}-checkin.service 
+install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
+install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-checkin.service %{buildroot}%{_unitdir}/%{name}-checkin.service
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-firstboot-checkin.service %{buildroot}%{_unitdir}/%{name}-firstboot-checkin.service
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys.target %{buildroot}%{_unitdir}/%{name}-sshkeys.target
 sed -e 's,@DEFAULT_INSTANCE@,'suse',' < systemd/%{name}-sshkeys@.service.in > systemd/%{name}-sshkeys@.service.tmp
 mv systemd/%{name}-sshkeys@.service.tmp systemd/%{name}-sshkeys@.service
-install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys@.service %{buildroot}%{_unitdir}/%{name}-sshkeys@.service 
+install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys@.service %{buildroot}%{_unitdir}/%{name}-sshkeys@.service
 mkdir -p %{buildroot}%{dracutmodulesdir}
 cp -a dracut/* %{buildroot}%{dracutmodulesdir}
 rm %{buildroot}%{dracutmodulesdir}/30afterburn/afterburn-network-kargs.service
 
 %pre
-%service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
+%service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
 
 %post
-%service_add_post %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
+%service_add_post %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
 
 %preun
-%service_del_preun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
+%service_del_preun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
 
 %postun
-%service_del_postun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
+%service_del_postun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
 
 %files
 %license LICENSE

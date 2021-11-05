@@ -40,4 +40,12 @@
 - Create target dir for afterburn to write configuration file to</comment>
     <requestid>906250</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bb8c04ff77668ac21501b628f04fd21a</srcmd5>
+    <version>5.0.0</version>
+    <time>1636149507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929456</requestid>
+  </revision>
 </revisionlist>
