@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov  4 17:14:29 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 1.7.0 (jsc#SLE-18328)
+  * v1.7.0 (2021-10-29)
+    Changes:
+    - Add support for SMC-Rv2
+    - `smcd`/`smcr`: Add support for new commands `seid` and `ueid`
+      to manage system and user EIDs
+  * v1.6.1 (2021-10-01)
+    Bug fixes:
+    - `smcd`/`smcr` statistics:
+        - Fix memory overread in is_data_consistent()
+        - Fix memory and file handle leaks
+        - Use correct fallback counter values after reset
+  * v1.6.0 (2021-07-01)
+    Changes:
+    - `smcd`/`smcr`: Add new command `stats`
+    - `smc_rnics`: Recognize unknown Mellanox cards
+    - `smc_run`: Add various command-line switches
+    Bug fixes:
+    - `smc_chk`: Remove 'EXPERIMENTAL' flag
+    - `smc_chk`: Improve cleanup
+    - `smc_chk`: Start server with intended port
+    - `Makefile`: Install `smc_chk.8` on s390 only
+    - `Makefile`: Fix extra compile flags handling
+    - `smc_rnics`: Handle malformed FID arguments
+- Removed the following obsolete patches against version 1.5.0:
+  * smc-tools-sles15sp3-smc_chk-Remove-EXPERIMENTAL-flag-for-C-option.patch
+  * smc-tools-sles15sp3-Makefile-Install-smc_chk.8-on-s390-only.patch
+- Removed unnecessary smc-tools-rpmlintrc file.
+
+-------------------------------------------------------------------
 Wed Feb 10 19:12:48 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgrade to version 1.5.0 (bsc#1181649).
