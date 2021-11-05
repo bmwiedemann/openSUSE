@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  4 10:48:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add subtitlecomposer-fix_empty_lines_crash.patch
+  (fixes boo#1192342)
+
+-------------------------------------------------------------------
 Sat Oct 16 05:19:18 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add subtitlecomposer-ARM_GLES.patch

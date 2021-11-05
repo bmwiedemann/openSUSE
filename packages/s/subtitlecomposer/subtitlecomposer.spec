@@ -28,6 +28,8 @@ Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{versi
 Source2:        subtitlecomposer.keyring
 # PATCH-FIX-UPSTREAM subtitlecomposer-ARM_GLES.patch
 Patch0:         subtitlecomposer-ARM_GLES.patch
+# PATCH-FIX-UPSTREAM subtitlecomposer-fix_empty_lines_crash.patch
+Patch1:         subtitlecomposer-fix_empty_lines_crash.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libQt5Widgets-private-headers-devel
