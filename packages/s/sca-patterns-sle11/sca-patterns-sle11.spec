@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle11
-Version:        1.3.5
+Version:        1.5.0
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE11
 License:        GPL-2.0-only
@@ -33,7 +33,7 @@ Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-patterns-sle11
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-Requires:       sca-patterns-base
+Requires:       sca-patterns-base >= 1.5.0
 BuildArch:      noarch
 
 %description

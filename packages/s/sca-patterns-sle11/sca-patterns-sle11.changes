@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 01:33:23 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to updated version 1.5.0
+  + Converted to python3 (bsc#1191005, SLE-21579)
+
+-------------------------------------------------------------------
 Tue Aug 17 14:40:39 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.3.5

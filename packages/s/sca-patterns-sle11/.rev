@@ -127,4 +127,12 @@
     <comment>Factory Ready (forwarded request 912703 from jrecord)</comment>
     <requestid>912704</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d917a0ac26a654df049f05db40ba1012</srcmd5>
+    <version>1.5.0</version>
+    <time>1636149511</time>
+    <user>dimstar_suse</user>
+    <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929476 from jrecord)</comment>
+    <requestid>929477</requestid>
+  </revision>
 </revisionlist>
