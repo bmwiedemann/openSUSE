@@ -139,4 +139,16 @@ _ Remove fix-build-plasma-5.21.patch (part of release now)</comment>
   the minumum requirement</comment>
     <requestid>926771</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bf79c9c356bb233231a3f3a8a7df84c9</srcmd5>
+    <version>0.10.1</version>
+    <time>1636149504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * fix glitches with slide-in/out animations
+  * improve cpu and hard disk usage
+  * remove all workarounds related to faulty buttons painting
+  * respect and trust bug fixes in decorations provided with Plasma 5.23.2</comment>
+    <requestid>929220</requestid>
+  </revision>
 </revisionlist>
