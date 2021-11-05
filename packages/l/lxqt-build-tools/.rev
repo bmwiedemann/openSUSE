@@ -90,4 +90,13 @@
   * A CMake FindXTerm module is added.</comment>
     <requestid>885929</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9598ce5f018850829ea20764880d0ea</srcmd5>
+    <version>0.10.0</version>
+    <time>1636149545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Set the minimum required version of Qt to 5.15.</comment>
+    <requestid>929697</requestid>
+  </revision>
 </revisionlist>
