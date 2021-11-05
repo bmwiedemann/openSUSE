@@ -24,7 +24,7 @@
 %define patgrp root
 
 Name:           sca-patterns-base
-Version:        1.3.3
+Version:        1.5.0
 Release:        0
 Summary:        Supportconfig Analysis Pattern Base Libraries
 License:        GPL-2.0-only
@@ -33,7 +33,7 @@ URL:            https://github.com/g23guy/sca-patterns-base
 Source:         %{name}-%{version}.tar.gz
 Requires:       bash
 Requires:       perl
-Requires:       python-base
+Requires:       python3-base
 BuildArch:      noarch
 
 %description
