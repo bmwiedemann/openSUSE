@@ -93,8 +93,6 @@ slide shows, set your desktop background, and more.
 
 %build
 %meson \
-	-Dtracing=false \
-	-Ddocumentation=true \
 	-Dlibchamplain=true \
 	%{nil}
 %meson_build
