@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Nov  5 09:01:26 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Prevent test suite to run outside of `x86_64` because of repeated `SIGSEGV` on `arm64` 
+
+-------------------------------------------------------------------
+Thu Nov  4 11:10:37 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Initial packaging for v5.0.3
