@@ -22,7 +22,7 @@ profile galene /usr/sbin/galene {
   /etc/galene/cert.pem r,
   /etc/galene/key.pem r,
   /etc/galene/ice-servers.json r,
-  /etc/galene/passwd r,
+  /etc/galene/config.json r,
 
   # Grant read access to static web content
   /usr/share/galene/static/ r,
