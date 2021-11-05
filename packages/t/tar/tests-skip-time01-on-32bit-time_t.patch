@@ -1,0 +1,36 @@
+Skip some parts of 'tests/time01.at' on some platforms.
+
+This test fails if coreutils' touch was built with 64-bit time_t,
+while tar was built with 32-bit time_t.  This is currently the case
+on i586, ppc and armv7l.  Skip the failing last command on those
+platforms.
+
+The failure was seen since coreutils-9.0.
+
+Discussed at:
+  https://lists.gnu.org/r/bug-tar/2021-10/msg00006.html
+
+Remove this patch once tar(1) also builds with 64-bit time_t.
+---
+ tests/time01.at |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+Index: tar-1.34/tests/time01.at
+===================================================================
+--- tar-1.34.orig/tests/time01.at
++++ tar-1.34/tests/time01.at
+@@ -61,6 +61,14 @@ do
+ done
+ 
+ tar -c -f archive.tar dir
++
++case "$( uname -m )" in
++  i686 | ppc | armv7l)
++    # "SUSE: disabled for now on platforms with 32-bit time_t"
++    AT_SKIP_TEST
++    ;;
++esac
++
+ tar -d -f archive.tar dir
+ ],
+ [0],

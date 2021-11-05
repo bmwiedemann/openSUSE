@@ -41,6 +41,7 @@ Patch3:         %{name}-ignore_lone_zero_blocks.patch
 Patch4:         %{name}-recursive--files-from.patch
 Patch5:         add_readme-tests.patch
 Patch6:         tar-PIE.patch
+Patch7:         tests-skip-time01-on-32bit-time_t.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -110,6 +111,7 @@ it may as well access remote devices or files.
 #%patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 %define my_cflags -W -Wall -Wpointer-arith -Wstrict-prototypes -Wformat-security -Wno-unused-parameter -fPIE
@@ -134,7 +136,7 @@ cd -
 %if !0%{?qemu_user_space_build:1}
 # Checks disabled in qemu because of races happening when we emulate
 # multi-threaded programs
-%make_build check
+%make_build check || { cat tests/testsuite.log; exit 1; }
 %endif
 
 %install
