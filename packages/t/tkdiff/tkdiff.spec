@@ -1,7 +1,7 @@
 #
 # spec file for package tkdiff
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global longver 4-3-5
+%global longver 5-2-1
 %global shortver %(echo %{longver}|sed 's|-|.|g')
 Name:           tkdiff
 Version:        %{shortver}
