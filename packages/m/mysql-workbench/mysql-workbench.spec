@@ -18,7 +18,7 @@
 
 %define edition community
 Name:           mysql-workbench
-Version:        8.0.25
+Version:        8.0.27
 Release:        0
 Summary:        A MySQL visual database modeling, administration and querying tool
 License:        GPL-2.0-only AND GPL-2.0-or-later

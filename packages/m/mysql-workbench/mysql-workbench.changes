@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:06:31 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.27
+  * release notes (8.0.26 has no changes):
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-27.html
+- Upstream code changes
+  * modified mysql-workbench-mariadb.patch
+
+-------------------------------------------------------------------
 Thu Jul  1 12:33:28 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Removed unused patch, because it is marked as error

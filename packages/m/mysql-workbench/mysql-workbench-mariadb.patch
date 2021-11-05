@@ -31,8 +31,8 @@ diff -uNr mysql-workbench-community-8.0.19-org/library/cdbc/src/driver_manager.c
 -    ssize_t sslModeWb = parameter_values.get_int("useSSL", 0);
 +    /*ssize_t sslModeWb = parameter_values.get_int("useSSL", 0);
      sql::ssl_mode sslMode = sql::SSL_MODE_DISABLED;
-     switch(sslModeWb)
-     {
+     switch (sslModeWb) {
+       case 0:
 @@ -355,7 +355,7 @@
          sslMode = sql::SSL_MODE_VERIFY_IDENTITY;
          break;

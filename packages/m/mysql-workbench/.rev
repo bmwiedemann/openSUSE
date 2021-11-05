@@ -447,4 +447,12 @@ So i make some changes:
     <comment></comment>
     <requestid>904041</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9259f86794e09b49a94dc8fee65dd595</srcmd5>
+    <version>8.0.27</version>
+    <time>1636149546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929720</requestid>
+  </revision>
 </revisionlist>
