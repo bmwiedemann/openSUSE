@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/dell/sassist</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/0.8.6</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">sassist</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
+
+

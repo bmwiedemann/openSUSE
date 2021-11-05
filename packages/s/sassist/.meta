@@ -1,0 +1,5 @@
+<package name="sassist" project="openSUSE:Factory">
+  <title>Dell SupportAssist</title>
+  <description>Dell SupportAssist log collector for Linux</description>
+  <devel project="isv:SUSE:SupportTools:Factory" package="sassist"/>
+</package>
