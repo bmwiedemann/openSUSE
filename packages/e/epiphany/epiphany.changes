@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:10:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing option distributor_name=openSUSE to meson, no longer
+  used nor recognized.
+- Drop pkgconfig(libportal) BuildRequires, and pass
+  libportal=disabled to meson, we are not building a flatpak, so no
+  need for libportal.
+- Drop epiphany-rpmlintrc, no longer needed.
+- Update Supplements to current standard.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:33:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

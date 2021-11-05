@@ -1,2 +1,0 @@
-# Filter out warning about branding req not being versioned, we do this on purpose
-addFilter("suse-branding-unversioned-requires")

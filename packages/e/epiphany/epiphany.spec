@@ -24,7 +24,6 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        https://download.gnome.org/sources/epiphany/41/%{name}-%{version}.tar.xz
-Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
@@ -47,7 +46,6 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
 BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
-BuildRequires:  pkgconfig(libportal) >= 0.0.2
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.48.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
@@ -68,7 +66,7 @@ simplicity and standards compliance.
 Summary:        GNOME Web Browser -- Upstream default bookmarks and user agent string
 Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -85,7 +83,7 @@ Summary:        Epiphany Search Provider for GNOME Shell
 Group:          Productivity/Networking/Web/Browsers
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name} and gnome-shell)
 
 %description -n gnome-shell-search-provider-epiphany
 Epiphany is a Web browser for the GNOME Desktop.
@@ -101,9 +99,9 @@ search results from Web (epiphany)
 %build
 %meson \
 	-Ddeveloper_mode=false \
-	-Ddistributor_name=openSUSE \
 	-Dunit_tests=disabled \
 	-Dsoup2=disabled \
+	-Dlibportal=disabled \
 	%{nil}
 %meson_build
 

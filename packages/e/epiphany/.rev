@@ -1463,4 +1463,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>Scripted push from GNOME:Next (forwarded request 920917 from dimstar)</comment>
     <requestid>921601</requestid>
   </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>977c99ef0c4272b75a7e6bdce8557440</srcmd5>
+    <version>41.0</version>
+    <time>1636149524</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929186 from iznogood)</comment>
+    <requestid>929603</requestid>
+  </revision>
 </revisionlist>
