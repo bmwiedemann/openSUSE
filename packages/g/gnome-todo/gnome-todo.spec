@@ -75,7 +75,6 @@ GNOME desktop environment.
 
 %build
 %meson \
-	-Ddocumentation=false \
         -Dintrospection=false \
 	%{nil}
 %meson_build
