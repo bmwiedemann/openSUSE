@@ -1137,4 +1137,12 @@
     <comment></comment>
     <requestid>929179</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>ccc1b5073b1f57aa823c234d64fb29d7</srcmd5>
+    <version>0.103.4</version>
+    <time>1636149501</time>
+    <user>dimstar_suse</user>
+    <comment>Fix some mistakes in the .changes file.</comment>
+    <requestid>929611</requestid>
+  </revision>
 </revisionlist>

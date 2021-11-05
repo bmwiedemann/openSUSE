@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Nov  3 20:52:19 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- Update to 0.103.4
+- bsc#1192346: Update to 0.103.4
   * FreshClam:
     - Add a 24-hour cool-down for FreshClam clients that have received
       an HTTP 403 (Forbidden) response from the CDN. This is to reduce
@@ -62,9 +62,16 @@ Wed Nov  3 20:52:19 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
     multi-byte grapheme. Patch courtesy of Andrea De Pasquale.
 
 -------------------------------------------------------------------
+Wed Jun 30 12:17:30 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- clamav-document-maxsize.patch: in the "clamscan" and "clamdscan" manpages,
+  document that files over a certain size by default will silently not be
+  scanned and how this can be adjusted (bsc#1187509)
+
+-------------------------------------------------------------------
 Mon Jun 21 18:44:32 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- Update to 0.103.3
+- bsc#1188284: Update to 0.103.3
   * Fixed a scan performance issue when ENGINE_OPTIONS_FORCE_TO_DISK is
     enabled. This issue did not impacted most users but for those
     affected it caused every scanned file to be copied to the temp

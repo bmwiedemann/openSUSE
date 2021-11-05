@@ -40,6 +40,8 @@ Patch5:         clamav-obsolete-config.patch
 Patch6:         clamav-disable-yara.patch
 Patch12:        clamav-fips.patch
 Patch13:        clamav-ck_assert_msg.patch
+Patch14:        clamav-document-maxsize.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -147,6 +149,7 @@ that want to make use of libclamav.
 %patch6
 %patch12
 %patch13 -p1
+%patch14 -p1
 
 %build
 %if 0%{?suse_version} <= 1500
