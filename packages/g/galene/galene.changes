@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov  5 16:50:04 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- adapted AppArmor profile to new config files in 0.4.1
+
+-------------------------------------------------------------------
+Fri Nov 05 14:43:31 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.4.1:
+  * Create a new file data/config.json with global configuration.
+  * Remove data/passwd and the -redirect option with entries in config.json;
+    these are incompatible changes.
+  * Change the group URL from /group/name to /group/name/, which allows
+    using relative links.  The old URL is redirected to the new one.
+  * Extend the protocol with the ability to consult the group status before
+    joining; this allows using the group's displayName before the user has
+    logged in, and will be required for new authorisation schemes.
+  * Allow scrolling of the login dialog, useful on small devices.
+  * Fixed a typo that prevented the group name from being displayed.
+  * Made failed videos more visible.
+  * No longer attempt to save passwords in browser JavaScript, it's
+    insecure and not very useful.
+
+-------------------------------------------------------------------
 Mon Sep  6 11:08:02 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - avoid switching off IPv6
