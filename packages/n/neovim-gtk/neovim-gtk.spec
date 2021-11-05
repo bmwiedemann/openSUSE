@@ -27,8 +27,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Text/Editors
 URL:            https://github.com/daa84/neovim-gtk
 Source0:        neovim-gtk-%{version}.tar.xz
-# cargo build && cargo vendor && tar cvJf neovim-gtk-vendor.tar.xz
-Source1:        neovim-gtk-vendor.tar.xz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pango-devel
@@ -46,13 +46,7 @@ support.
 %setup -q -a1
 %autopatch -p1
 mkdir .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "./vendor"
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
 cargo build --release
