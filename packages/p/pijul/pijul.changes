@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 03:07:30 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Sun Oct 24 17:21:15 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update to upstream version 1.0.0-alpha.55:

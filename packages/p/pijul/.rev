@@ -77,4 +77,12 @@
   * Print modifications only once in &quot;pijul diff&quot;.</comment>
     <requestid>927203</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8cecfb293ebaf0d04486c1fc570cc780</srcmd5>
+    <version>1.0.0~alpha.55</version>
+    <time>1636149515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929551</requestid>
+  </revision>
 </revisionlist>
