@@ -25,6 +25,7 @@ Group:          Development/Languages/Other
 URL:            http://elixir-lang.org
 Source0:        https://github.com/elixir-lang/elixir/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        macros.elixir
+Patch0:         0001-Add-retries-to-tests-that-write-to-stderr-on-Windows.patch
 BuildRequires:  gcc
 BuildRequires:  make
 # required by Mix.SCM.Git see also (https://github.com/elixir-lang/elixir/issues/1386)
@@ -66,6 +67,7 @@ Elixir source code.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # Elixir wants UTF-8 locale, force it

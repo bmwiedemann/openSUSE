@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 11:51:18 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-Add-retries-to-tests-that-write-to-stderr-on-Windows.patch:
+  fix build for Factory
+
+-------------------------------------------------------------------
 Tue Sep 28 18:07:15 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.12.3
