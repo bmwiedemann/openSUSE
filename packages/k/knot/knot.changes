@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  4 19:43:56 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.1.4, see:
+  https://www.knot-dns.cz/2021-11-04-version-314.html
+
+-------------------------------------------------------------------
+Tue Oct 19 20:37:52 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.1.3, see:
+  https://www.knot-dns.cz/2021-10-18-version-313.html
+
+-------------------------------------------------------------------
 Fri Sep 17 19:15:39 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - migrate to user creation via sysuser-tools

@@ -61,4 +61,16 @@ https://www.knot-dns.cz/</comment>
   https://www.knot-dns.cz/2021-09-08-version-312.html</comment>
     <requestid>919883</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a02deb01ec9f919b8aa1b90d190b0d0</srcmd5>
+    <version>3.1.4</version>
+    <time>1636149509</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.4, see:
+  https://www.knot-dns.cz/2021-11-04-version-314.html
+- update to version 3.1.3, see:
+  https://www.knot-dns.cz/2021-10-18-version-313.html
+</comment>
+    <requestid>929465</requestid>
+  </revision>
 </revisionlist>
