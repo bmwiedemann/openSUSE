@@ -1,7 +1,7 @@
 #
 # spec file for package spamass-milter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           spamass-milter
 Version:        0.4.0
@@ -36,14 +37,18 @@ Patch2:         spamass-milter-0.4.0-bits.patch
 Patch3:         spamass-milter-0.4.0-group.patch
 # PATCH-FEATURE-UPSTREAM spamass-milter-0.4.0-auth-no-ssf.patch brc#730308
 Patch4:         spamass-milter-0.4.0-auth-no-ssf.patch
+BuildRequires:  curl
 BuildRequires:  gcc-c++
 BuildRequires:  sendmail-devel
 BuildRequires:  spamassassin
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
-BuildRequires:  curl
 Requires:       postfix
+%if 0%{?suse_version} == 1500
+Requires:       spamassassin
+%else
 Requires:       spamassassin-spamc
+%endif
 %sysusers_requires
 
 %description
@@ -75,9 +80,13 @@ install -m 644 -D %{SOURCE2} \
 install -m 644 -D %{SOURCE3} \
 	%{buildroot}%{_sysusersdir}/spamass-milter.conf
 install -m 644 -D %{SOURCE4} %{buildroot}%{_unitdir}/spamass-milter.service
+%if 0%{?suse_version} == 1500
+install -m 644 -D %{SOURCE5} \
+	%{buildroot}%{_sysconfdir}/default/spamass-milter
+%else
 install -m 644 -D %{SOURCE5} \
 	%{buildroot}%{_distconfdir}/default/spamass-milter
-
+%endif
 # Create dummy sockets for %%ghost-ing
 : > %{buildroot}%{_rundir}/spamass-milter/socket
 
@@ -98,7 +107,11 @@ install -m 644 -D %{SOURCE5} \
 %doc README.postfix
 %license COPYING
 %{_mandir}/man1/spamass-milter.1%{?ext_man}
-%{_distconfdir}/default/spamass-milter
+%if 0%{?suse_version} == 1500
+%config %{_sysconfdir}/default/spamass-milter
+%else
+%config %{_distconfdir}/default/spamass-milter
+%endif
 %{_tmpfilesdir}/spamass-milter.conf
 %{_sysusersdir}/spamass-milter.conf
 %{_unitdir}/spamass-milter.service

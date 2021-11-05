@@ -6,7 +6,7 @@
 Description = Mail filter for SpamAssassin
 After = local-fs.target
 After = network.target
-After = spamassassin.service
+After = spamd.service
 Before = postfix.service
 
 [Service]
