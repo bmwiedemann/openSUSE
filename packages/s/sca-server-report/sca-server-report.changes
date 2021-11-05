@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  4 21:49:23 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to updated version 1.5.0
+  + Converted code base from python2 to python3 (bsc#119105, SLE-21579)
+
+-------------------------------------------------------------------
+Mon Oct  4 14:58:16 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Added python2 to requires (bsc#1191199)
+
+-------------------------------------------------------------------
 Tue May 25 23:55:37 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Fixed sca report header supportconfig file (bsc#1186442)

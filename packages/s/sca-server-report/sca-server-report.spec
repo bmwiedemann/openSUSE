@@ -22,15 +22,15 @@
 %define sca_python %{libbase}/python
 
 Name:           sca-server-report
-Version:        1.0.1
+Version:        1.5.0
 Release:        0
 Summary:        Supportconfig Analysis Server Report
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-server-report
 Source:         %{name}-%{version}.tar.gz
-Requires:       python
-Requires:       sca-patterns-base
+Requires:       python3-base
+Requires:       sca-patterns-base >= 1.5.0
 Requires:       w3m
 BuildArch:      noarch
 
