@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  4 14:31:35 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.22
+
+- Update to upstream release 1.0.22:
+  * Fixed: Bad values for disks and network on 32-bit
+
+-------------------------------------------------------------------
+Tue Nov  2 20:43:52 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.21
+
+- Update to upstream release 1.0.21:
+  * Fixed: Removed extra spaces in cpu name
+  * Added: / as alternative bind for filter
+  * Fixed: Security issue when running with SUID bit set
+
+-------------------------------------------------------------------
 Wed Oct 27 15:15:27 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.20
 
 - Update to upstream release 1.0.20:
