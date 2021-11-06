@@ -812,4 +812,27 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>927141</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>5073ab96f534a986f87ee5f27ccf0b67</srcmd5>
+    <version>1.4.26</version>
+    <time>1636218785</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.4.26:
+  * a repair to the workings of the update() statement in an ORM context when
+    used with hybrid and composite attributes.
+  * Fixes for the with_loader_criteria() ORM option
+  * adjustments to the ORM Session interface to accommodate for new API features
+  * some new legacy warnings for lesser used patterns with Query.join()
+  * SQL / ORM fixes for the use case of selecting from repeated, non-labeled
+    column expressions, typically the null() construct when used as a
+    placeholder in a UNION statement.
+  * For PostgreSQL, refinements to the &quot;expanding IN&quot; SQL feature when used
+    with PostgreSQL ARRAY datatypes as well as fixes for the mostly
+    PostgreSQL-specific any_() and all_() column methods.
+  * For MySQL, repaired support for new behaviors in MariaDB 10.6
+  * For SQL Server, reflection fixes and improvements for foreign key
+    constraints as well table /view detection. 
+</comment>
+    <requestid>928869</requestid>
+  </revision>
 </revisionlist>

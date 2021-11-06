@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 27 19:23:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to version 1.4.26:
+  * a repair to the workings of the update() statement in an ORM context when
+    used with hybrid and composite attributes.
+  * Fixes for the with_loader_criteria() ORM option
+  * adjustments to the ORM Session interface to accommodate for new API features
+  * some new legacy warnings for lesser used patterns with Query.join()
+  * SQL / ORM fixes for the use case of selecting from repeated, non-labeled
+    column expressions, typically the null() construct when used as a
+    placeholder in a UNION statement.
+  * For PostgreSQL, refinements to the "expanding IN" SQL feature when used
+    with PostgreSQL ARRAY datatypes as well as fixes for the mostly
+    PostgreSQL-specific any_() and all_() column methods.
+  * For MySQL, repaired support for new behaviors in MariaDB 10.6
+  * For SQL Server, reflection fixes and improvements for foreign key
+    constraints as well table /view detection. 
+
+-------------------------------------------------------------------
 Sat Oct 16 23:34:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to version 1.4.25:
