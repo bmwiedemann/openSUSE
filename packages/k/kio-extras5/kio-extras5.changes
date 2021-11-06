@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:34:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * man kio: fix crash due to bad memory pointer on REQ_ps handling (kde#443983)
+  * kio_filenamesearch: fix crash due to KCoreDirLister changes (kde#438187)
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
