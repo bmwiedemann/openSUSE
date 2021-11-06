@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  4 12:46:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Stop passing the no longer user nor recognized option
+  static=false to meson.
+
+-------------------------------------------------------------------
 Mon Sep  6 06:47:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.0:
