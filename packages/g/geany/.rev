@@ -464,4 +464,13 @@
     <comment>Update to version 1.38 (forwarded request 924551 from stroeder)</comment>
     <requestid>924749</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f8ec9c87ff39fbe7e4c1a3c9d6527f74</srcmd5>
+    <version>1.38</version>
+    <time>1636218955</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libgeany0 by -devel package: we install the .so symlink
+  and are thus responsible for the link target too. (forwarded request 929646 from dimstar)</comment>
+    <requestid>929709</requestid>
+  </revision>
 </revisionlist>

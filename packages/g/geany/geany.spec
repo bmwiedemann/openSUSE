@@ -51,6 +51,7 @@ Summary:        Development files for the Geany IDE
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       gtk3-devel
+Requires:       libgeany0 = %{version}
 
 %description devel
 Geany is a text editor using the GTK+ toolkit with basic features of

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 11:31:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require libgeany0 by -devel package: we install the .so symlink
+  and are thus responsible for the link target too.
+
+-------------------------------------------------------------------
 Sun Oct 10 11:40:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 1.38
