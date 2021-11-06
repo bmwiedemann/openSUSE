@@ -139,9 +139,7 @@ This package contains developer documentation.
 %meson \
 	-D enable-easy-codec-installation=yes \
 	-D enable-gtk-doc=true \
-	-D enable-introspection=yes \
 	-D enable-python=yes \
-	-D enable-vala=yes \
 	%{nil}
 # workaround parallel build breakage (bgo#786248)
 %meson_build src/Totem-1.0.gir

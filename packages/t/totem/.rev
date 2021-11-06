@@ -1134,4 +1134,13 @@
     <comment></comment>
     <requestid>925185</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>4ca2ae1a074a9b7090240ee4968d8f34</srcmd5>
+    <version>3.38.2</version>
+    <time>1636218949</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop passing the no longer used nor recognized options
+  enable-introspection=yes and enable-vala=yes to meson. (forwarded request 929178 from dimstar)</comment>
+    <requestid>929701</requestid>
+  </revision>
 </revisionlist>
