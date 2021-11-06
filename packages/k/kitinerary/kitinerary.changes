@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:34:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Too many changes since 21.08.2, only listing bugfixes:
+  * Handle English language MÁV ticket date formats (kde#444550)
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
