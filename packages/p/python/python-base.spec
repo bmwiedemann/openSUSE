@@ -367,6 +367,12 @@ find . -name '*.py' -type f | grep -vE "^./Parser/|^./Python/" \
 install -m 644 %{SOURCE5} %{buildroot}%{_libdir}/python%{python_version}/site-packages/_local.pth
 install -d -m 755 %{buildroot}%{_rpmconfigdir}/macros.d/
 install -m 644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/macros.d/
+%if %{suse_version} < 1500
+# on SLE12 and SLE11 the python2 modules will still be called python-xxxx
+# as this SPEC file is used on SLE12, keep it in here for the time being
+sed -i -e 's/python2_package_prefix python2/python2_package_prefix python/;' %{buildroot}%{_rpmconfigdir}/macros.d/macros.python2
+%endif
+
 # make sure /usr/lib/python/site-packages exists even on lib64 machines
 mkdir -p %{buildroot}%{_prefix}/lib/python%{python_version}/site-packages
 ########################################

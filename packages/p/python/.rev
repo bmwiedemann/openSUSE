@@ -1531,4 +1531,12 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment></comment>
     <requestid>925440</requestid>
   </revision>
+  <revision rev="162" vrev="13">
+    <srcmd5>1130af374a0d4c509b8c2d6cfcd08181</srcmd5>
+    <version>2.7.18</version>
+    <time>1636218785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928845</requestid>
+  </revision>
 </revisionlist>

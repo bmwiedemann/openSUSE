@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  2 08:09:03 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- on sle12, python2 modules will still be called python-xxxx until EOL,
+  for newer SLE versions they will be python2-xxxx
+
+-------------------------------------------------------------------
 Fri Oct 15 08:17:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rpm-build-python: The provider to inject python(abi)
