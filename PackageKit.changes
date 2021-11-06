@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Nov  5 11:16:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.4:
+  + Libraries:
+    - Add specific error code when user declined interaction
+    - Avoid spurious GObject::notify signal emissions
+    - Correct 'cancellable' use in pk_client_repair_system_async()
+    - Fix a leak on calling set_locale() a second time
+    - Fix a possible use-after-free under pk_client_cancel_cb()
+    - Improve thread safety on an operation cancellation
+  + Backends:
+    - dnf:
+      . Read update information also when getting list of updates
+      . Honor install_weak_deps=False if it is there
+      . Use 'hy_query_get_advisory_pkgs', if available
+  + New Features:
+    - PkDetails: Add 'download-size' property
+    - PkPackage: Add update severity property
+  + Bugfixes:
+    - Let the finish understand the 'cancelled' exit code
+    - Make backends that use pk-backend-spawn work (#477)
+    - Only set polkit interactive flag if method call has too
+- Changes from version 1.2.3:
+  + Backends:
+    - alpm:
+      . Add post transaction hook
+      . Rename errno to alpm_err to avoid name clashes
+    - aptcc: Auto-remove old kernels, unless configured otherwise
+    - dnf: Add support for coercing upgrade to distupgrade
+    - zypp:
+      . Make sure pool is initialized at the beginning of some
+        methods
+      . Reset update mode after getting updates
+  + Bugfixes:
+    - Append to cron log instead of overwriting it
+    - Cancel a transaction if calling Cancel fails or the daemon
+      disappears
+    - Do not crash when calling pk_dbus_get_uid() before D-Bus is
+      setup
+    - Fix all compiler warnings
+    - Fix multilib conflicts in generated pk-enum-types.h
+    - Free scheduler array correctly again
+    - Remove large transaction size sanity check
+- Drop patches fixed upstream:
+  + PackageKit-zypp-cleanup-tmp-files.patch
+  + PackageKit-zypp-reset-update-mode-after-get-updates.patch
+  + PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
+  + PackageKit-zypp-initialize-pool.patch
+  + PackageKit-remove-transaction-size-limit.patch
+  + PackageKit-cancel-transaction-if-daemon-disappears.patch
+  + PackageKit-dnf-ignore-weak-deps.patch
+- Add 505.patch: pk-offline: Add flags to D-Bus invoking methods.
+  That's currently to be able to set whether the method should be
+  interactive or not. The old functions call the methods as
+  non-interactive.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:19:18 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Aug 20 01:31:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-fix-crash-with-empty-search-string.patch:
