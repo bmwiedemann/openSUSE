@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 27 06:25:52 UTC 2021 - Tim Serong <tserong@suse.com>
+
+- Re-enable RTTI, without which other applications can't subclass
+  snappy::Source (this breaks Ceph, as one example)
+- Add reenable-rtti.patch
+
+-------------------------------------------------------------------
 Tue Jul 13 16:38:54 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 1.1.9:

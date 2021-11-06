@@ -29,6 +29,7 @@ Source1:        snappy.pc
 Source99:       baselibs.conf
 Patch0:         use-system-test-libs.patch
 Patch1:         fix-always-inline.patch
+Patch2:         reenable-rtti.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  lzo-devel
