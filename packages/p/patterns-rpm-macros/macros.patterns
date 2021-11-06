@@ -18,6 +18,9 @@ Provides: pattern-category() = Advanced%20Systems%20Management
 %pattern_basetechnologies \
 Provides: pattern-category() = Base%20Technologies
 
+%pattern_budgiedesktop \
+Provides: pattern-category() = Budgie%20Desktop
+
 %pattern_desktopfunctions \
 Provides: pattern-category() = Desktop%20Functions
 
