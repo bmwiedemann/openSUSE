@@ -1060,4 +1060,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
   directories upon user creation (boo#1189853).</comment>
     <requestid>914414</requestid>
   </revision>
+  <revision rev="74" vrev="9">
+    <srcmd5>90ce5647967e0c03cda33de786d7a3e6</srcmd5>
+    <version>0.6.55</version>
+    <time>1636218929</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929156 from iznogood)</comment>
+    <requestid>929601</requestid>
+  </revision>
 </revisionlist>

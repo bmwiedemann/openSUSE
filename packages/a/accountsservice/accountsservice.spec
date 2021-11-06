@@ -114,7 +114,6 @@ querying and manipulating user account information.
 
 %build
 %meson \
-	-Duser-heuristics=true \
 	-Dsystemd=true \
 	-Dintrospection=true \
 	-Dgtk_doc=true \
