@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://michaelrsweet.github.io/htmldoc/index.html
 Source:         https://github.com/michaelrsweet/htmldoc/releases/download/v%{version}/htmldoc-%{version}-source.tar.gz
+# CVE-2021-40985 [bsc#1192357], buffer overflow may lead to DoS via a crafted BMP image
+Patch0:         htmldoc-CVE-2021-40985.patch
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -41,6 +43,7 @@ Portable Document Format (PDF) files that can be viewed online or printed.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
