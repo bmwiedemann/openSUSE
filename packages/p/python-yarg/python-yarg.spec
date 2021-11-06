@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
@@ -53,7 +52,9 @@ tar -xzf %{SOURCE1}
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 
 %check
-%python_exec setup.py test
+# https://github.com/kura/yarg/issues/8
+sed -i 's:from mock:from unittest.mock:' tests/test_*.py
+%pyunittest discover -v
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
