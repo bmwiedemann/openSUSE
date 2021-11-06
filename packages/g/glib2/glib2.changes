@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 28 14:20:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.70.1:
+  + Fix network changes not being signalled from NetworkManager.
+  + Fix build when building with --fatal-meson-warnings.
+  + Bugs fixed: glgo#GNOME/GLib#2505, glgo#GNOME/GLib!2245,
+    glgo#GNOME/GLib!2253, glgo#GNOME/GLib!2256,
+    glgo#GNOME/GLib!2259, glgo#GNOME/GLib!2262,
+    glgo#GNOME/GLib!2271, glgo#GNOME/GLib!2276,
+    glgo#GNOME/GLib!2300, glgo#GNOME/GLib!2301,
+    glgo#GNOME/GLib!2302, glgo#GNOME/GLib!2304.
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
 Fri Sep 17 12:12:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.70.0:

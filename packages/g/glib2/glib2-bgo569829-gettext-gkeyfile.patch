@@ -1,8 +1,8 @@
-Index: glib-2.67.2/glib/gkeyfile.c
+Index: glib-2.70.1/glib/gkeyfile.c
 ===================================================================
---- glib-2.67.2.orig/glib/gkeyfile.c
-+++ glib-2.67.2/glib/gkeyfile.c
-@@ -512,6 +512,7 @@ struct _GKeyFile
+--- glib-2.70.1.orig/glib/gkeyfile.c
++++ glib-2.70.1/glib/gkeyfile.c
+@@ -513,6 +513,7 @@ struct _GKeyFile
  
    gboolean checked_locales;
    gchar **locales;
@@ -10,7 +10,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
  
    gint ref_count;  /* (atomic) */
  };
-@@ -636,6 +637,7 @@ g_key_file_init (GKeyFile *key_file)
+@@ -637,6 +638,7 @@ g_key_file_init (GKeyFile *key_file)
    key_file->parse_buffer = NULL;
    key_file->list_separator = ';';
    key_file->flags = 0;
@@ -18,7 +18,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
  }
  
  static void
-@@ -655,6 +657,12 @@ g_key_file_clear (GKeyFile *key_file)
+@@ -657,6 +659,12 @@ g_key_file_clear (GKeyFile *key_file)
        key_file->parse_buffer = NULL;
      }
  
@@ -31,7 +31,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
    tmp = key_file->groups;
    while (tmp != NULL)
      {
-@@ -874,6 +882,11 @@ g_key_file_load_from_fd (GKeyFile
+@@ -876,6 +884,11 @@ g_key_file_load_from_fd (GKeyFile
        return FALSE;
      }
  
@@ -43,7 +43,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -986,6 +999,11 @@ g_key_file_load_from_data (GKeyFile
+@@ -988,6 +1001,11 @@ g_key_file_load_from_data (GKeyFile
        return FALSE;
      }
  
@@ -55,7 +55,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
    return TRUE;
  }
  
-@@ -2225,6 +2243,8 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2227,6 +2245,8 @@ g_key_file_get_locale_string (GKeyFile
    GError *key_file_error;
    gchar **languages;
    gboolean free_languages = FALSE;
@@ -64,7 +64,7 @@ Index: glib-2.67.2/glib/gkeyfile.c
    gint i;
  
    g_return_val_if_fail (key_file != NULL, NULL);
-@@ -2246,6 +2266,23 @@ g_key_file_get_locale_string (GKeyFile
+@@ -2248,6 +2268,23 @@ g_key_file_get_locale_string (GKeyFile
        free_languages = FALSE;
      }
    
@@ -88,8 +88,8 @@ Index: glib-2.67.2/glib/gkeyfile.c
    for (i = 0; languages[i]; i++)
      {
        candidate_key = g_strdup_printf ("%s[%s]", key, languages[i]);
-@@ -2262,6 +2299,39 @@ g_key_file_get_locale_string (GKeyFile
-       translated_value = NULL;
+@@ -2261,6 +2298,39 @@ g_key_file_get_locale_string (GKeyFile
+ 	break;
     }
  
 +  /* Fallback to gettext */
@@ -128,10 +128,10 @@ Index: glib-2.67.2/glib/gkeyfile.c
    /* Fallback to untranslated key
     */
    if (!translated_value)
-Index: glib-2.67.2/glib/gkeyfile.h
+Index: glib-2.70.1/glib/gkeyfile.h
 ===================================================================
---- glib-2.67.2.orig/glib/gkeyfile.h
-+++ glib-2.67.2/glib/gkeyfile.h
+--- glib-2.70.1.orig/glib/gkeyfile.h
++++ glib-2.70.1/glib/gkeyfile.h
 @@ -320,6 +320,7 @@ gboolean  g_key_file_remove_group
  #define G_KEY_FILE_DESKTOP_KEY_URL              "URL"
  #define G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE "DBusActivatable"
