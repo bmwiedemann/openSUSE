@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 29 18:09:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.1:
+  + LDAP: Fix a memory leak when filling a contact address
+  + book/cal-backend: Add some safety checks around
+    pending_operations queue
+  + Correct 'Since:' tag in the developer comments
+  + ERemindersWidget: Incorrect value for last selected snooze time
+    after open
+  + Camel: Correct a copy&paste error in a function documentation
+  + org.gnome.Evolution-alarm-notify.desktop: Add
+    X-GNOME-UsesNotifications=true
+  + Bugs fixed: glgo#GNOME/evolution-data-server#352,
+    glgo#GNOME/evolution-data-server#355,
+    glgo#GNOME/evolution-data-server#360,
+    glgo#GNOME/evolution-data-server#361,
+    glgo#GNOME/evolution-data-server!81,
+    glgo#GNOME/evolution-data-server#1621.
+  + Updated translations.
+- Replace post(un) handling with new ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Mon Sep 20 10:15:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF

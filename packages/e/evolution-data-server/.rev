@@ -1965,4 +1965,29 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>Scripted push from GNOME:Next (forwarded request 920920 from dimstar)</comment>
     <requestid>921603</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>84ec0c9a5db8c7f67c7276effc7708c5</srcmd5>
+    <version>3.42.1</version>
+    <time>1636218916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42.1:
+  + LDAP: Fix a memory leak when filling a contact address
+  + book/cal-backend: Add some safety checks around
+    pending_operations queue
+  + Correct 'Since:' tag in the developer comments
+  + ERemindersWidget: Incorrect value for last selected snooze time
+    after open
+  + Camel: Correct a copy&amp;paste error in a function documentation
+  + org.gnome.Evolution-alarm-notify.desktop: Add
+    X-GNOME-UsesNotifications=true
+  + Bugs fixed: glgo#GNOME/evolution-data-server#352,
+    glgo#GNOME/evolution-data-server#355,
+    glgo#GNOME/evolution-data-server#360,
+    glgo#GNOME/evolution-data-server#361,
+    glgo#GNOME/evolution-data-server!81,
+    glgo#GNOME/evolution-data-server#1621.
+  + Updated translations.
+- Replace post(un) handling with new ldconfig_scriptlets macro. (forwarded request 928217 from iznogood)</comment>
+    <requestid>929581</requestid>
+  </revision>
 </revisionlist>

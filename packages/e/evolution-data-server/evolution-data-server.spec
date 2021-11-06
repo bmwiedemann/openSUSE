@@ -31,7 +31,7 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.42.0
+Version:        3.42.1
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
@@ -337,32 +337,15 @@ This package contains developer documentation.
 %find_lang evolution-data-server
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libcamel-1_2-%{so_camel} -p /sbin/ldconfig
-%postun -n libcamel-1_2-%{so_camel} -p /sbin/ldconfig
-
-%post -n libebackend-1_2-%{so_ebackend} -p /sbin/ldconfig
-%postun -n libebackend-1_2-%{so_ebackend} -p /sbin/ldconfig
-
-%post -n libebook-1_2-%{so_ebook} -p /sbin/ldconfig
-%postun -n libebook-1_2-%{so_ebook} -p /sbin/ldconfig
-
-%post -n libebook-contacts-1_2-%{so_ebook_contacts} -p /sbin/ldconfig
-%postun -n libebook-contacts-1_2-%{so_ebook_contacts} -p /sbin/ldconfig
-
-%post -n libecal-2_0-%{so_ecal} -p /sbin/ldconfig
-%postun -n libecal-2_0-%{so_ecal} -p /sbin/ldconfig
-
-%post -n libedata-book-1_2-%{so_edata_book} -p /sbin/ldconfig
-%postun -n libedata-book-1_2-%{so_edata_book} -p /sbin/ldconfig
-
-%post -n libedata-cal-2_0-%{so_edata_cal} -p /sbin/ldconfig
-%postun -n libedata-cal-2_0-%{so_edata_cal} -p /sbin/ldconfig
-
-%post -n libedataserver-1_2-%{so_edataserver} -p /sbin/ldconfig
-%postun -n libedataserver-1_2-%{so_edataserver} -p /sbin/ldconfig
-
-%post -n libedataserverui-1_2-%{so_edataserverui} -p /sbin/ldconfig
-%postun -n libedataserverui-1_2-%{so_edataserverui} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcamel-1_2-%{so_camel}
+%ldconfig_scriptlets -n libebackend-1_2-%{so_ebackend}
+%ldconfig_scriptlets -n libebook-1_2-%{so_ebook}
+%ldconfig_scriptlets -n libebook-contacts-1_2-%{so_ebook_contacts}
+%ldconfig_scriptlets -n libecal-2_0-%{so_ecal}
+%ldconfig_scriptlets -n libedata-book-1_2-%{so_edata_book}
+%ldconfig_scriptlets -n libedata-cal-2_0-%{so_edata_cal}
+%ldconfig_scriptlets -n libedataserver-1_2-%{so_edataserver}
+%ldconfig_scriptlets -n libedataserverui-1_2-%{so_edataserverui}
 
 %files
 %license COPYING
