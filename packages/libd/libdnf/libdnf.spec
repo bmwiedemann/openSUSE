@@ -2,7 +2,7 @@
 # spec file for package libdnf
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%global libsolv_version 0.7.17
-%global libmodulemd_version 2.12.0
-%global librepo_version 1.13.0
+%global libsolv_version 0.7.20
+%global libmodulemd_version 2.13.0
+%global librepo_version 1.13.1
 %global dnf_conflict 4.3.0
 %global swig_version 3.0.12
 
@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.63.1
+Version:        0.65.0
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later

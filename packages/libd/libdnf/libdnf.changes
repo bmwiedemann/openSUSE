@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  3 11:11:08 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.65.0
+  + Add support for excluding packages to be installed as weak dependencies
+  + Add support for autodetecting packages to be excluded from being installed as weak dependencies
+  + Turn off strict validation of modulemd documents (rh#2004853, rh#2007166, rh#2007167)
+  + Implement logic for demodularization of modular rpms (rh#1805260)
+  + DnfContext: fix handling of default module profiles
+  + ModuleMetadata: gracefully handle modules with no defaults
+  + Remove failovermethod config option (rh#1961083)
+
+-------------------------------------------------------------------
 Fri Aug 27 03:02:35 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 0.63.1
