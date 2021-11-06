@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 26 03:08:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.06
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.06      2021-10-25 20:56:12Z
+      [DOCUMENTATION]
+      - Document methods that don't work with :content_file (GH#219) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Wed Sep 22 03:10:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.05
