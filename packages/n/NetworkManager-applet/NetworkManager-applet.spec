@@ -36,7 +36,6 @@ BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 # Needed by Patch0.
 #BuildRequires:  polkit-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
@@ -89,14 +88,11 @@ connection settings.
 # Needs rebase.
 # %%patch0 -p1
 %patch1 -p1
-translation-update-upstream po nm-applet
 
 %build
 %meson \
 	-Dappindicator=yes \
 	-Dselinux=false \
-	-Dintrospection=true \
-	-Dlibnm_gtk=false \
 	%{nil}
 %meson_build
 
