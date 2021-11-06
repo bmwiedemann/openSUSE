@@ -18,10 +18,10 @@
 
 %define soname 8
 Name:           yara
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        A malware identification and classification tool
-License:        Apache-2.0
+License:        BSD-3-Clause
 Group:          System/Filesystems
 URL:            https://virustotal.github.io/yara/
 Source:         https://github.com/VirusTotal/yara/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
