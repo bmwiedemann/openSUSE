@@ -54,4 +54,17 @@
     <comment>New upstream release (forwarded request 806169 from iznogood)</comment>
     <requestid>807571</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>efeee71f4e76fe77cd765c01c053ad71</srcmd5>
+    <version>0.2.5</version>
+    <time>1636218919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.5:
+  + Fix CVE-2021-39358 by forcing TLS certificate validation
+  + Temporarily disable testcases.
+- Replace post(un) handling with new ldconfig_scriptlets macro.
+- Drop libtool BuildRequires and bootstrap call, no longer needed.
+- Split out new doc subpackage. (forwarded request 928263 from iznogood)</comment>
+    <requestid>929584</requestid>
+  </revision>
 </revisionlist>
