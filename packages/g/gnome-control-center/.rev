@@ -1726,4 +1726,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>921701</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>b317fc308d4f5b312a488ebf5195e01d</srcmd5>
+    <version>41.1</version>
+    <time>1636218915</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 928216 from iznogood)</comment>
+    <requestid>929580</requestid>
+  </revision>
 </revisionlist>

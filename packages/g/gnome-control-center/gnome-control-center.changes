@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 29 17:59:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Mouse & Touchpad: Avoid cropping illustration.
+  + Network: Fix enabling data after APN is set.
+  + Power: Use translated strings for power button action
+    behaviors.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 26 07:09:41 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Bring back gnome-control-center-disable-error-message-for-NM.patch

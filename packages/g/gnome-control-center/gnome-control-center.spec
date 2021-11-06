@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -204,7 +204,7 @@ GNOME control center.
 	-Dcheese=true \
 	-Ddocumentation=true \
 	%{!?with_ibus: -Dibus=false} \
-        -Dmalcontent=true \
+	-Dmalcontent=true \
 	%{nil}
 %meson_build
 
