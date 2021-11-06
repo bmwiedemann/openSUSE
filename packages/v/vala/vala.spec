@@ -23,7 +23,7 @@
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
 %define         vala_priority 54
 Name:           vala
-Version:        0.54.2
+Version:        0.54.3
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later
@@ -160,10 +160,8 @@ if [ ! -f %{_bindir}/vala-%{vala_version} ]; then
   update-alternatives --remove vala %{_bindir}/vala-%{vala_version}
 fi
 
-%post   -n libvala-%{vala_libversion}-0 -p /sbin/ldconfig
-%postun -n libvala-%{vala_libversion}-0 -p /sbin/ldconfig
-%post   -n libvaladoc-%{vala_libversion}-0 -p /sbin/ldconfig
-%postun -n libvaladoc-%{vala_libversion}-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libvala-%{vala_libversion}-0
+%ldconfig_scriptlets -n libvaladoc-%{vala_libversion}-0
 
 %files
 %license COPYING

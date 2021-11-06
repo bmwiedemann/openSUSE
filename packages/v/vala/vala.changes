@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 30 10:45:12 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.54.3:
+  + Various improvements and bug fixes:
+    - codegen: Actually free data when using "remove(_all)" on
+      GLib.Queue/(S)List
+    - vala:
+      . Parameter following ellipsis parameter is not allowed
+      . More thorough check of ValueType and set CodeNode.error on
+        failure
+      . Really check compatiblity of error types for delegate
+        symbol
+      . Correctly output signature of callable throwing error
+      . Report error for non ErrorType in throws
+      . Implement
+        CodeWriter.visit_foreach_statement()/visit_catch_clause()
+    - parser: Make sure ErrorCodes are accessible as needed
+    - girparser: Add support for "ref_/ref_sink_/unref_function"
+      metadata for classes
+- Replace post(un) handling for libvala and libvaladoc with new
+  ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Mon Oct  4 09:54:37 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.54.2:

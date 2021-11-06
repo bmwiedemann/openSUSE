@@ -1098,4 +1098,30 @@
     - gtk4: Update to 4.5.0~da5efea6 (forwarded request 922970 from iznogood)</comment>
     <requestid>923221</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>f8f3e0d979588c7dca106f926f63ce84</srcmd5>
+    <version>0.54.3</version>
+    <time>1636218918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.54.3:
+  + Various improvements and bug fixes:
+    - codegen: Actually free data when using &quot;remove(_all)&quot; on
+      GLib.Queue/(S)List
+    - vala:
+      . Parameter following ellipsis parameter is not allowed
+      . More thorough check of ValueType and set CodeNode.error on
+        failure
+      . Really check compatiblity of error types for delegate
+        symbol
+      . Correctly output signature of callable throwing error
+      . Report error for non ErrorType in throws
+      . Implement
+        CodeWriter.visit_foreach_statement()/visit_catch_clause()
+    - parser: Make sure ErrorCodes are accessible as needed
+    - girparser: Add support for &quot;ref_/ref_sink_/unref_function&quot;
+      metadata for classes
+- Replace post(un) handling for libvala and libvaladoc with new
+  ldconfig_scriptlets macro. (forwarded request 928260 from iznogood)</comment>
+    <requestid>929583</requestid>
+  </revision>
 </revisionlist>
