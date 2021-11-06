@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 29 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.45
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.45      2021-10-28 04:55:28 -0600
+    - On macOS / OS X the Build::Copy plugin now uses cp -pPR instead of
+      cp -aR; on modern macOS this does the same thing, on very old versions
+      of OS X the -a option is not recognized (gh#288)
+
+-------------------------------------------------------------------
 Thu Oct 21 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.44
