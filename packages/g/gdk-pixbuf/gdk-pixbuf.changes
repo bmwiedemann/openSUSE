@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  4 10:19:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing no longer used nor recognized options jasper=false
+  and x11=false to meson, fails the build when using meson 0.60.x.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:30:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Jul 30 03:00:12 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop gdk-pixbuf-bsc1180393-CVE-2020-29385.patch on SLE and Leap
