@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  4 21:23:39 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.3 (released 2021-11-04) includes security fixes to the
+  archive/zip and debug/macho packages, as well as bug fixes to the
+  compiler, linker, runtime, the go command, the misc/wasm
+  directory, and to the net/http and syscall packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2021-41771 CVE-2021-41772
+  * boo#1192377 go#48990 CVE-2021-41771
+  * go#48992 debug/macho: invalid dynamic symbol table command can cause panic
+  * boo#1192378 go#48085 CVE-2021-41772
+  * go#48252 archive/zip: Reader.Open panics on empty string
+  * go#49199 cmd/go: go list all breaks in //go:build-only repos
+  * go#49154 misc/wasm, cmd/link: Go 1.17.2 causes WASM builds to throw command line too long with many environment variables
+  * go#49086 cmd/link: -buildmode=pie -linkshared panic at runtime
+  * go#49077 x/net/http2: backport critical fixes
+  * go#49010 net,runtime: apparent deadlock in (*net.conn).Close and runtime.netpollblock on arm64 platforms
+  * go#48823 x/net/http2: client can hang forever if headers' size exceeds connection's buffer size and server hangs past request time
+  * go#48650 x/net/http2: pool deadlock
+  * go#48479 cmd/compile: 64 bits shifts on arm get wrong results
+  * go#48475 cmd/compile: incorrect arm/arm64 simplification rules
+  * go#48075 syscall: SysProcAttr{ NoInheritHandles: true } broken in 1.17 on Windows
+
+-------------------------------------------------------------------
 Fri Oct  8 00:41:43 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.2 (released 2021-10-07) includes a security fix to the
