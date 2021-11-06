@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  2 04:12:22 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit obs service
+
+-------------------------------------------------------------------
+Wed Oct 27 13:12:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.3:
+  + Bugfixes, mostly for text layout. Also, text links in PDF!
+    - Support text-decoration=overline.
+    - Basic support for the unicode-bidi property. Librsvg still
+      considers each tspan independently of others, which is
+      incorrect, but at least bidi-override works now for a single
+      embedding level.
+    - Fix placement of tspan that changes the text direction.
+    - :lang() selector should now match lang attribute from an
+      element's parent.
+    - Fix the text-anchor property for right-to-left text.
+    - PDF now includes links inside text elements.
+
+-------------------------------------------------------------------
 Sat Oct 16 11:42:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.52.2:
