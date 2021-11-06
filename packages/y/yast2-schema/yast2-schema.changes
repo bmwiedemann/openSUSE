@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  4 16:05:56 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add 'description' to the interfaces in the networking section
+  (bsc#1192270).
+- 4.4.5
+
+-------------------------------------------------------------------
 Mon Oct 25 08:16:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add the "keep_unknown_lv" element to the partitioning schema
