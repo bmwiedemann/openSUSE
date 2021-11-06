@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov  5 07:36:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Fix icon updates while hidden
+  + Fix erratic scrolling in GTK apps
+  + Fix GTK color picker support
+  + Fix sound-file support in notifications
+  + Fix high-contrast switches
+  + Only allow one extension prefs dialog at a time
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop 380d2db1d9047ecffcef7d78f00184963b403efc.patch: Fixed
+  upstream
+
+-------------------------------------------------------------------
 Wed Oct  6 20:15:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 380d2db1d9047ecffcef7d78f00184963b403efc.patch: inputMethod:
