@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:34:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * Relax the check for non square DPI (kde#444168)
+  * Make Quick Annotations button open the full toolbar when no Quick Annotations are configured
+  * CI: add the deb-src of testing since we're based on testing not unstable
+  * Fix bookmark menu actions missing after switching tabs (kde#442668)
+  * util.printd: Don't crash if we get an unexpected oDate argument (kde#443255)
+
+-------------------------------------------------------------------
 Tue Oct  5 16:29:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
