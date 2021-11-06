@@ -522,4 +522,24 @@
   + Add patch: dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch</comment>
     <requestid>914475</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ab596af623ee8775de66870b2cce0966</srcmd5>
+    <version>4.10.0</version>
+    <time>1636218800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 4.10.0
+  + Add support for autodetecting packages to be excluded from being
+    installed as weak dependencies (rh#1699672)
+  + Add support for excluding packages to be installed as weak dependencies (rh#1699672)
+  + Add fail_fast parameter to download_payloads methods for use in reposync
+  + Acquire all relevant locks during &quot;dnf clean&quot;
+  + API: Raise CompsError when group/env not found in install_group
+    and install_environment (rh#1947958)
+  + [API] Add method &quot;set_or_append_opt_value&quot; to BaseConfig (rh#1967925)
+  + Add aliases for commands: info, updateinfo, provides (rh#1938333)
+  + Add report about demodularized rpms into module info (rh#1805260)
+  + Remove DNSSEC errors on COPR group email keys
+  + Documentation inprovements - rh#1938352, rh#1993899, rh#1963704</comment>
+    <requestid>929011</requestid>
+  </revision>
 </revisionlist>

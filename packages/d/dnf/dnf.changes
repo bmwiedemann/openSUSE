@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  3 11:23:00 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update 4.10.0
+  + Add support for autodetecting packages to be excluded from being
+    installed as weak dependencies (rh#1699672)
+  + Add support for excluding packages to be installed as weak dependencies (rh#1699672)
+  + Add fail_fast parameter to download_payloads methods for use in reposync
+  + Acquire all relevant locks during "dnf clean"
+  + API: Raise CompsError when group/env not found in install_group
+    and install_environment (rh#1947958)
+  + [API] Add method "set_or_append_opt_value" to BaseConfig (rh#1967925)
+  + Add aliases for commands: info, updateinfo, provides (rh#1938333)
+  + Add report about demodularized rpms into module info (rh#1805260)
+  + Remove DNSSEC errors on COPR group email keys
+  + Documentation inprovements - rh#1938352, rh#1993899, rh#1963704
+
+-------------------------------------------------------------------
 Fri Aug 27 03:14:14 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.8.0
