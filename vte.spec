@@ -23,7 +23,7 @@
 %define _name   vte
 
 Name:           vte
-Version:        0.66.0
+Version:        0.66.1
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -32,8 +32,8 @@ URL:            https://gitlab.gnome.org/GNOME/vte
 Source:         %{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE vte-enable-build-flag-pie.patch yfjiang@suse.com -- enable PIE flag to be compatible with gcc default linking option
 Patch0:         vte-enable-build-flag-pie.patch
-# PATCH-FIX-UPSTREAM vte-silence-COMMAND_PROMPT.patch dimstar@opensuse.org -- Silence warning when opening terminal
-Patch1:         vte-silence-COMMAND_PROMPT.patch
+# PATCH-FIX-SLE vte-revert-back-to-c++17.patch yu.daike@suse.com -- revert c++20 features back to c++17
+Patch100:       vte-revert-back-to-c++17.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -133,7 +133,11 @@ widgets in Glade.
 %lang_package
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -n %{_name}-%{version} -N
+%patch0 -p1
+%if 0%{?sle_version}
+%patch100 -p1
+%endif
 
 %build
 %meson \

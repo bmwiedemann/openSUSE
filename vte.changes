@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 30 18:42:01 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 0.66.1:
+  + app: Add option to set initial title
+  + vte.sh: Fix the check for PROMPT_COMMAND when it is unset
+  + Updated translations.
+- Drop vte-silence-COMMAND_PROMPT.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct 27 00:46:24 UTC 2021 - Daike Yu <yu.daike@suse.com>
+
+- Add vte-revert-back-to-c++17.patch
+  revert c++20 features back to c++17 to build on SLE/Leap
+
+-------------------------------------------------------------------
 Fri Sep 24 11:21:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add vte-silence-COMMAND_PROMPT.patch: Silence warning when
