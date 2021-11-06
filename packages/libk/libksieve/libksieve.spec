@@ -16,12 +16,13 @@
 #
 
 
+%define soversion 5
 %define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksieve
-Version:        21.08.2
+Version:        21.08.3
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -64,6 +65,24 @@ ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 This package contains the libksieve library, which is used to support
 the Sieve server-side mail filtering protocol in KDE PIM applications.
 
+%package -n libksieve%{soversion}
+Summary:        Sieve and Managesieve support library for KDE PIM applications
+Requires:       libksieve = %{version}
+# Before 21.08.3, the libraries were in libksieve
+Conflicts:      libksieve < 21.08.3
+
+%description -n libksieve%{soversion}
+This package contains the libksieve library, which is used to support
+the Sieve server-side mail filtering protocol in KDE PIM applications.
+
+%package devel
+Summary:        Development package for libksieve
+Group:          Development/Libraries/KDE
+Requires:       libksieve%{soversion} = %{version}
+
+%description devel
+This package contains development headers of libksieve.
+
 %lang_package
 
 %prep
@@ -80,29 +99,22 @@ the Sieve server-side mail filtering protocol in KDE PIM applications.
   %{kf5_find_htmldocs}
 %endif
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
-%package devel
-Summary:        Development package for libksieve
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/KDE
-Requires:       libksieve = %{version}
-
-%description devel
-This package contains development headers of libksieve.
+%post   -n libksieve%{soversion} -p /sbin/ldconfig
+%postun -n libksieve%{soversion} -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
 %{_kf5_debugdir}/libksieve.categories
 %{_kf5_debugdir}/libksieve.renamecategories
 %{_kf5_knsrcfilesdir}/ksieve_script.knsrc
+%{_kf5_plugindir}/kf5/kio/sieve.so
+%{_kf5_sharedir}/sieve/
+
+%files -n libksieve%{soversion}
+%license LICENSES/*
 %{_kf5_libdir}/libKF5KManageSieve.so.*
 %{_kf5_libdir}/libKF5KSieve.so.*
 %{_kf5_libdir}/libKF5KSieveUi.so.*
-%{_kf5_plugindir}/kf5/kio/sieve.so
-%{_kf5_sharedir}/sieve/
 
 %files devel
 %{_kf5_includedir}/KManageSieve/
