@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  5 14:02:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- If the machine we install onto has shim installed, it is likely
+  an EFI based system. Require fwupd-efi in this case
+  (boo#1192206).
+
+-------------------------------------------------------------------
+Fri Nov  5 11:27:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require libfwupdplugin2 by the -devel package: the -devel package
+  installs the .so symlink, thus we must guarantee the target
+  library to be present.
+
+-------------------------------------------------------------------
 Fri Oct 15 07:30:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

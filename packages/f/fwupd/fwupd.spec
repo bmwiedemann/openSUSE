@@ -51,8 +51,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
-Patch3:	harden_fwupd-offline-update.service.patch
-Patch4:	harden_fwupd-refresh.service.patch
+Patch3:         harden_fwupd-offline-update.service.patch
+Patch4:         harden_fwupd-refresh.service.patch
 
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}
@@ -119,6 +119,7 @@ Provides:       dbxtool
 Requires:       shim >= 11
 %endif
 %endif
+Requires:       (fwupd-efi if shim)
 
 %description
 fwupd is a daemon to allows session software to update device firmware on
@@ -179,6 +180,7 @@ A debugging utility for the TPM event log.
 Summary:        Allow session software to update device firmware
 Group:          Development/Languages/C and C++
 Requires:       libfwupd2 = %{version}
+Requires:       libfwupdplugin2 = %{version}
 
 %description devel
 fwupd is a daemon to allows session software to update device firmware on
