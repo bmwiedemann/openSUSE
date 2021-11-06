@@ -55,7 +55,7 @@ dealing with storage devices.
 
 %build
 %meson \
-	-Dlibsystemd=true \
+	-Dlogind=libsystemd \
 	-Dgsd_plugin=true \
 	%{nil}
 %meson_build

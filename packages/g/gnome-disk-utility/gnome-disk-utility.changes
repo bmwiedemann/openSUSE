@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:42:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace option libsystemd=true with new logind=libsystemd,
+  following upstream changes.
+
+-------------------------------------------------------------------
 Sat Sep 18 08:31:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:
