@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  4 12:54:16 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Dropped support for legacy format of the proposal settings
+  (related to fate#318196).
+- 4.4.13
+
+-------------------------------------------------------------------
+Wed Nov  3 11:46:26 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Set the volume group extent size according to the AutoYaST
+  profile (bsc#1192124).
+- 4.4.12
+
+-------------------------------------------------------------------
+Tue Nov  2 15:46:24 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Change the API to avoid the performance penalty introduced by
+  the original check for SD Cards (related to bsc#1187438).
+
+-------------------------------------------------------------------
 Thu Oct 21 11:50:04 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Install by default to any available Dell BOSS drive and identify
