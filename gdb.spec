@@ -358,6 +358,10 @@ Patch2110:      gdb-testsuite-Fix-gdb.threads-thread-specific-bp.exp.patch
 Patch2111:      gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
 #https://sourceware.org/pipermail/gdb-patches/2021-October/182921.html
 Patch2112:      gdb-testsuite-handle-sigill-in-two-gdb.arch-powerpc-test-cases.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/182985.html
+Patch2113:      gdb-tdep-aarch64-make-gdbserver-register-set-selection-dynamic.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-May/178990.html
+Patch2114:      gdb-cli-add-ignore-errors-command.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -772,6 +776,8 @@ find -name "*.info*"|xargs rm -f
 %patch2110 -p1
 %patch2111 -p1
 %patch2112 -p1
+%patch2113 -p1
+%patch2114 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

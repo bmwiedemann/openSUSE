@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  2 13:03:51 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (add back ignore-errors command, dropped in
+  11.1 update):
+  * gdb-cli-add-ignore-errors-command.patch
+
+-------------------------------------------------------------------
+Mon Nov  1 10:04:24 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added [swo#28355]:
+  * gdb-tdep-aarch64-make-gdbserver-register-set-selection-dynamic.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 13:40:28 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Mention removed fedora patches:
