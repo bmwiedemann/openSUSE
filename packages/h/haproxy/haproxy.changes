@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Nov 03 16:31:38 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.8+git0.d1f8d41e0:
+  * [RELEASE] Released version 2.4.8
+  * SCRIPTS: git-show-backports: re-enable file-based filtering
+  * DOC/peers: some grammar fixes for peers 2.1 spec
+  * MINOR: stream: Improve dump of bogus streams
+  * BUILD/MINOR: cpuset freebsd build fix
+  * DOC: config: Fix alphabetical order of fc_* samples
+  * BUG/MINOR: sample: fix backend direction flags consecutive to last fix
+  * BUG/MEDIUM: sample: Cumulate frontend and backend sample validity flags
+  * BUG/MEDIUM: stream-int: Block reads if channel cannot receive more data
+  * BUG/MINOR: http: Authorization value can have multiple spaces after the scheme
+  * BUG/MEDIUM: http-ana: Drain request data waiting the tarpit timeout expiration
+  * MINOR: halog: Add support for extracting captures using -hdr
+  * BUG/MINOR: halog: Add missing newlines in die() messages
+  * CLEANUP: halog: Use consistent indentation in help()
+  * MINOR: halog: Rename -qry to -query
+  * DOC: halog: Move the `-qry` parameter into the correct section in help text
+  * MINOR: halog: Add -qry parameter allowing to preserve the query string in -uX
+  * BUG/MEDIUM: resolvers: Track api calls with a counter to free resolutions
+  * BUG/MEDIUM: resolvers: Don't recursively perform requester unlink
+  * MEDIUM: resolvers: remove the last occurrences of the "safe" argument
+  * MEDIUM: resolvers: use a kill list to preserve the list consistency
+  * CLEANUP: resolvers: replace all LIST_DELETE with LIST_DEL_INIT
+  * CLEANUP: resolvers: simplify resolv_link_resolution() regarding requesters
+  * CLEANUP: always initialize the answer_list
+  * CLEANUP: resolvers: do not export resolv_purge_resolution_answer_records()
+  * BUG/MEDIUM: mux-h1: Perform a connection shutdown when the h1c is released
+  * BUG/MINOR: mux-h1: Save shutdown mode if the shutdown is delayed
+  * BUILD: atomic: fix build on mac/arm64
+  * BUG/MINOR: backend: fix improper insert in avail tree for always reuse
+  * BUILD: fix compilation on NetBSD
+  * MINOR: memprof: add one pointer size to the size of allocations
+  * MINOR: memprof: report the delta between alloc and free on realloc()
+  * BUG/MEDIUM: lua: fix memory leaks with realloc() on non-glibc systems
+  * BUG/MINOR: mux-h2: do not prevent from sending a final GOAWAY frame
+  * BUG/MINOR: task: do not set TASK_F_USR1 for no reason
+  * BUG/MAJOR: buf: fix varint API post- vs pre- increment
+  * BUG/MEDIUM: resolvers: always check a valid item in query_list
+  * BUILD: resolvers: avoid a possible warning on null-deref
+  * BUG/MAJOR: resolvers: add other missing references during resolution removal
+  * MINOR: resolvers: merge address and target into a union "data"
+  * BUG/MEDIUM: resolvers: use correct storage for the target address
+  * BUG/MEDIUM: resolvers: fix truncated TLD consecutive to the API fix
+  * MINOR: resolvers: fix the resolv_dn_label_to_str() API about trailing zero
+  * BUG/MINOR: resolvers: do not reject host names of length 255 in SRV records
+  * BUG/MEDIUM: resolver: make sure to always use the correct hostname length
+  * MINOR: resolvers: fix the resolv_str_to_dn_label() API about trailing zero
+  * BUG/MAJOR: dns: attempt to lock globaly for msg waiter list instead of use barrier
+  * BUG/MAJOR: dns: tcp session can remain attached to a list after a free
+  * BUG/MEDIUM: tcpcheck: Properly catch early HTTP parsing errors
+  * Revert "CLEANUP: server: always include the storage for SSL settings"
+  * BUG/MEDIUM: stream: Keep FLT_END analyzers if a stream detects a channel error
+  * BUG/MEDIUM: cpuset: fix cpuset size for FreeBSD
+  * BUG/MINOR: sample: Fix 'fix_tag_value' sample when waiting for more data
+  * BUG/MINOR: http-ana: Don't eval front after-response rules if stopped on back
+  * MINOR: initcall: Rename __GLOBL and __GLOBL1.
+  * DOC: configuration: add clarification on escaping in keyword arguments
+  * BUG/MEDIUM: mux_h2: Handle others remaining read0 cases on partial frames
+  * BUG/MEDIUM: sample: properly verify that variables cast to sample
+  * MINOR: sample: provide a generic var-to-sample conversion function
+  * CLEANUP: sample: uninline sample_conv_var2smp_str()
+  * CLEANUP: sample: rename sample_conv_var2smp() to *_sint
+  * CLEANUP: server: always include the storage for SSL settings
+
+-------------------------------------------------------------------
 Mon Oct 04 13:15:48 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.7+git0.b5e51a5e2:
