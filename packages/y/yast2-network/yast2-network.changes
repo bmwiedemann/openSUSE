@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  4 15:02:24 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST
+  - When the interface section contains the "device" (deprecated)
+    and "name" elements then use the "device" as the "name" and the
+    "name" as the "description". (bsc#1192270)
+  - Add the "description" element to the interface section.
+- 4.4.29
+
+-------------------------------------------------------------------
+Wed Nov  3 22:19:45 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when checking if a virtual interface is connected
+  (bsc#1192183, bsc#1192270).
+- 4.4.28
+
+-------------------------------------------------------------------
 Wed Oct 13 09:09:15 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix reading of the routing configuration (bsc#1191589)
