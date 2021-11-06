@@ -17,7 +17,7 @@
 
 
 Name:           gnome-autoar
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://gitlab.gnome.org/GNOME/gnome-autoar
 Source0:        https://download.gnome.org/sources/gnome-autoar/0.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.6
@@ -94,16 +94,18 @@ This package brings files required to develop against gnome-autoar
 %meson \
 	-Dvapi=true \
 	-Dgtk_doc=true \
+	-Dtests=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 
-%post   -n libgnome-autoar-0-0 -p /sbin/ldconfig
-%postun -n libgnome-autoar-0-0 -p /sbin/ldconfig
-%post   -n libgnome-autoar-gtk-0-0 -p /sbin/ldconfig
-%postun -n libgnome-autoar-gtk-0-0 -p /sbin/ldconfig
+%check
+%meson_test
+
+%ldconfig_scriptlets -n libgnome-autoar-0-0
+%ldconfig_scriptlets -n libgnome-autoar-gtk-0-0
 
 %files devel
 %{_includedir}/gnome-autoar-0/
@@ -129,10 +131,10 @@ This package brings files required to develop against gnome-autoar
 %files -n libgnome-autoar-0-0
 %license COPYING
 %{_libdir}/libgnome-autoar-0.so.0
-%{_libdir}/libgnome-autoar-0.so.0.1.0
+%{_libdir}/libgnome-autoar-0.so.0.1.1
 
 %files -n libgnome-autoar-gtk-0-0
 %{_libdir}/libgnome-autoar-gtk-0.so.0
-%{_libdir}/libgnome-autoar-gtk-0.so.0.1.0
+%{_libdir}/libgnome-autoar-gtk-0.so.0.1.1
 
 %changelog

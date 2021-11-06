@@ -99,4 +99,19 @@
     <comment> (forwarded request 911817 from iznogood)</comment>
     <requestid>913680</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b263f5709fc5d7a210c226cc9cd544cf</srcmd5>
+    <version>0.4.1</version>
+    <time>1636218917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  + Fix regression of extraction in symlinked locations.
+  + Handle passphrase prompt cancellation to prevent showing error
+    dialogs.
+  + Downgrade meson dependency to 0.56.0.
+- Replace post(un) handling with new ldconfig_scriptlets macro.
+- Add check section and meson_test macro, as well as pass
+  tests=true to meson, run tests during build. (forwarded request 928257 from iznogood)</comment>
+    <requestid>929582</requestid>
+  </revision>
 </revisionlist>
