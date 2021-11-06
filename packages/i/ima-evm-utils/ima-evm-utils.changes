@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov  5 08:16:40 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.4
+	* Elliptic curve support and tests
+	* PKCS11 support and tests
+	* Ability to manually specify the keyid included in the IMA xattr
+	* Improve IMA measurement list per TPM bank verification
+	* Linking with IBM TSS
+	* Set default hash algorithm in package configuration
+	* (Minimal) support and test EVM portable signatures
+	* CI testing:
+	  * Refresh and include new distros
+	  * Podman support
+	  * GitHub Actions
+	  * Limit "sudo" usage
+	* Misc bug fixes and code cleanup
+	  * Fix static analysis bug reports, memory leaks
+	  * Remove experimental code that was never upstreamed in the kernel
+	  * Use unsigned variable, remove unused variables, etc
+- Upstream bumped soname to 3.0.0
+
+-------------------------------------------------------------------
 Thu Oct 29 06:12:46 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 1.3.2

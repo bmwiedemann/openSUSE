@@ -1,7 +1,7 @@
 #
 # spec file for package ima-evm-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 2
+%define sover 3
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.3.2
+Version:        1.4
 Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
