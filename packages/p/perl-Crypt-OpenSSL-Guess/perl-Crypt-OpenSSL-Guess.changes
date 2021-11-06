@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 29 03:06:50 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-Guess/Changes
+
+  0.14 2021-10-28T15:35:02Z
+
+      - macOS: check dylib exists in library paths (PR#11)
+      - backport from Net::SSLeay 1.91_01 (PR#10)
+
+-------------------------------------------------------------------
 Tue May  4 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13

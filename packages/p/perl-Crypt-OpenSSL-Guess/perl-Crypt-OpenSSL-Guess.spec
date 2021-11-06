@@ -18,7 +18,7 @@
 
 %define cpan_name Crypt-OpenSSL-Guess
 Name:           perl-Crypt-OpenSSL-Guess
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Guess OpenSSL include path
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  perl(Test::More) >= 0.98
 Crypt::OpenSSL::Guess provides helpers to guess OpenSSL include path on any
 platforms.
 
-Often MacOS's homebrew OpenSSL cause a problem on installation due to
+Often macOS's homebrew OpenSSL cause a problem on installation due to
 include path is not added. Some CPAN module provides to modify include path
 with configure-args, but Carton or Module::CPANfile is not supported to
 pass configure-args to each modules. Crypt::OpenSSL::* modules should use
