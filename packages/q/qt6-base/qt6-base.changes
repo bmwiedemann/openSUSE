@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  4 20:59:52 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add patch for critical performance regression in qscrollarea
+  * 0001-qscrollarea-performance-fix.patch
+
+-------------------------------------------------------------------
 Tue Oct 26 11:22:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.1

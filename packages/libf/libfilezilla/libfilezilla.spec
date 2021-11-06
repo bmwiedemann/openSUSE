@@ -16,11 +16,11 @@
 #
 
 
-%define major		16
+%define major		22
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.31.1
+Version:        0.34.2
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -42,9 +42,10 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gmp)
-BuildRequires:  pkgconfig(gnutls) >= 3.5.7
+BuildRequires:  pkgconfig(gnutls) >= 3.7.0
 BuildRequires:  pkgconfig(hogweed) >= 3.1
 BuildRequires:  pkgconfig(nettle) >= 3.1
+Recommends:     %{name}-lang
 
 %description
 libfilezilla is C++ library, offering some basic functionality to

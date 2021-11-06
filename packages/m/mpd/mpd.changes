@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Nov  6 02:02:33 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 0.23.3
+  * Add patch mpd-service.patch.
+  * Add BuildRequires for fmt, libopenmpt, libpipewire-0.3.
+  * Increased the minimum version for meson to 0.56.0.
+  * Changed meson option -Dupnp from enabled to pupnp.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.3/NEWS
+  * split permission "player" from "control"
+  * add option "host_permissions"
+  * protocol:
+    * new command "getvol"
+    * show the audio format in "playlistinfo"
+    * support "listfiles" with arbitrary storage plugins
+    * support relative positions in "addid"
+    * fix relative positions in "move" and "moveid"
+    * add "position" parameter to "findadd" and "searchadd"
+    * add position parameter to "load"
+    * use decimal notation instead of scientific notation
+    * "load" supports relative positions
+    * add optional position parameter to "add" and "playlistadd"
+    * allow range in "playlistdelete"
+  * database:
+    * proxy: require MPD 0.20 or later
+    * proxy: require libmpdclient 2.11 or later
+    * proxy: split search into chunks to avoid exceeding the output buffer
+    * simple: add option to hide CUE target songs
+    * upnp: support libnpupnp instead of libupnp
+    * fix scanning files with question mark in the name
+    * inotify: fix use-after-free bug
+  * archive:
+    * zzip, iso9660: ignore file names which are invalid UTF-8
+  * decoder:
+    * openmpt: new plugin
+    * wavpack: fix WVC file support
+  * input: nfs: fix playback bug
+  * neighbor: mention: failed plugin name in error message
+  * output:
+    * emit "mixer" idle event when replay gain changes volume
+    * alsa: add option "stop_dsd_silence" to work around DSD DAC noise
+    * oss: support DSD over PCM
+    * pipewire: new plugin
+    * pipewire: emit "mixer" idle events on external volume change
+    * pipewire: attempt to change the graph sample rate
+    * pipewire: send artist and title to PipeWire
+    * pipewire: DSD support
+    * snapcast: new plugin
+    * snapcast: fix time stamp bug which caused "Failed to get chunk"
+  * player:
+    * do not cross-fade songs shorter than 20 seconds
+    * fix "albumart" timeout bug
+  * systemd: add "RuntimeDirectory" directive
+  * tags:
+    * new tags "ComposerSort", "Ensemble", "Movement", "MovementNumber",
+      and "Location"
+
+-------------------------------------------------------------------
 Wed Sep  1 07:24:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.22.11

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 18 14:50:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service (bsc#1181400). Added patch:
+  * harden_opendkim.service.patch
+  Modified:
+  * opendkim.service
+
+-------------------------------------------------------------------
 Thu Oct 14 11:22:08 UTC 2021 - Togan Muftuoglu <toganm@opensuse.org>
 
 - Add cve-2020-12272.patch (CVE-2020-12272)

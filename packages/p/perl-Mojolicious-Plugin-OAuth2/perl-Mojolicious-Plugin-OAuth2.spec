@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious-Plugin-OAuth2
 Name:           perl-Mojolicious-Plugin-OAuth2
-Version:        1.59
+Version:        2.01
 Release:        0
-Summary:        Auth against OAuth2 APIs
 License:        Artistic-2.0
+Summary:        Auth against OAuth2 APIs including OpenID Connect
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,22 +29,22 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::SSL) >= 1.94
-BuildRequires:  perl(Mojolicious) >= 7.53
+BuildRequires:  perl(Mojolicious) >= 8.25
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(IO::Socket::SSL) >= 1.94
-Requires:       perl(Mojolicious) >= 7.53
+Requires:       perl(Mojolicious) >= 8.25
+Recommends:     perl(Crypt::OpenSSL::Bignum) >= 0.09
+Recommends:     perl(Crypt::OpenSSL::RSA) >= 0.31
+Recommends:     perl(Mojo::JWT) >= 0.09
 %{perl_requires}
 
 %description
 This Mojolicious plugin allows you to easily authenticate against a at
-http://oauth.net provider. It includes configurations for a few popular
-providers, but you can add your own easily as well.
+http://oauth.net or at https://openid.net/connect/ provider. It includes
+configurations for a few popular providers, but you can add your own as
+well.
 
-Note that OAuth2 requires https, so you need to have the optional
-Mojolicious dependency required to support it. Run the command below to
-check if IO::Socket::SSL is installed.
-
-   $ mojo version
+See register for a full list of bundled providers.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

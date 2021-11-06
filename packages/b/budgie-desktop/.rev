@@ -335,4 +335,14 @@
     <comment>update</comment>
     <requestid>925713</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>1e040bab93ba914d798a6b1881f7a616</srcmd5>
+    <version>10.5.3+12</version>
+    <time>1636219086</time>
+    <user>dimstar_suse</user>
+    <comment>- Move some recommends to patterns-budgie
+- Require libgnomesu and nm-applet
+</comment>
+    <requestid>929879</requestid>
+  </revision>
 </revisionlist>

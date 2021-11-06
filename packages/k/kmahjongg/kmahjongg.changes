@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:34:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * Don't generate random game numbers bigger than INT_MAX (kde#444188)
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2

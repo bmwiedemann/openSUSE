@@ -48,8 +48,9 @@ Requires:       pattern() = x11
 Requires:       pattern() = x11_yast
 Requires:       budgie-desktop
 Recommends:     gdm
-Recommends:     gnome-software
 Recommends:     gnome-terminal
+Recommends:     gnome-backgrounds
+Recommends:     gnome-software
 Suggests:       cheese
 Suggests:       dconf-editor
 Suggests:       evince
@@ -68,7 +69,6 @@ Suggests:       gnome-documents
 Suggests:       gnome-logs
 Suggests:       gnome-maps
 Suggests:       gnome-screenshot
-Suggests:       gnome-software
 Suggests:       gnome-system-monitor
 
 %description budgie

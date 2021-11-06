@@ -16,11 +16,11 @@
 #
 
 
-%define mver    0.22
+%define mver    0.23
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.22.11
+Version:        0.23.3
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -32,7 +32,8 @@ Source3:        %{name}-user.conf
 Source4:        %{name}.firewalld
 Source5:        %{name}.tmpfiles.d
 Patch0:         %{name}-conf.patch
-Patch1:         %{name}-sndfile.patch
+Patch1:         %{name}-service.patch
+Patch2:         %{name}-sndfile.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -44,7 +45,7 @@ BuildRequires:  libcue-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libmikmod-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 # MPD_ENABLE_AUTO_PKG
@@ -57,6 +58,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
@@ -73,6 +75,8 @@ BuildRequires:  pkgconfig(libmodplug)
 BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libnfs)
+BuildRequires:  pkgconfig(libopenmpt)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libupnp)
@@ -180,7 +184,7 @@ This package contains optional documentation provided in addition to this packag
 %endif
     -Dzlib=enabled \
     -Dbzip2=enabled \
-    -Dupnp=enabled \
+    -Dupnp=pupnp \
     -Dzzip=enabled \
     -Dadplug=disabled \
     -Daudiofile=enabled \

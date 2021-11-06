@@ -44,6 +44,7 @@ Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
 Patch101:       0001-Require-GCC-10.patch
 %endif
+Patch102:       0001-qscrollarea-performance-fix.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel

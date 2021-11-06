@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:33:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * Include iso-codes data files needed by KF::I18n 5.88
+  * [EventDelegate] Hide location name if there is none
+  * [Delegates] Use preferredWidth instead of width
+  * Prevent map panning in the location picker switching to the previous page
+  * For departureCountry check departureLocation
+  * Don't let checkbox labels force the minimum page width (kde#443200)
+  * Add 21.08.2 changelog
+
+-------------------------------------------------------------------
 Tue Oct  5 16:27:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2

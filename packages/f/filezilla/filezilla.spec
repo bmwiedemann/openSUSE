@@ -16,10 +16,10 @@
 #
 
 
-%define main_version 3.55.1
+%define main_version 3.56.2
 
 Name:           filezilla
-Version:        3.55.1
+Version:        3.56.2
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.31.1
+BuildRequires:  pkgconfig(libfilezilla) >= 0.34.2
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -50,9 +50,9 @@ BuildRequires:  pkgconfig(sqlite3) >= 3.7.8
 # See boo#966384 filezilla fails to start
 Requires:       libpugixml1 >= 1.7
 Recommends:     %{name}-lang
-# upstream use gnutls 3.6.6
+# upstream use gnutls 3.6.7
 %if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gnutls) >= 3.6.5
+BuildRequires:  pkgconfig(gnutls) >= 3.6.7
 %else
 BuildRequires:  pkgconfig(gnutls) >= 3.4.15
 %endif

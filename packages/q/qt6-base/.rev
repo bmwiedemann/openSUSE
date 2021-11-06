@@ -87,4 +87,13 @@
     <comment>Qt 6.2.1 (forward) (forwarded request 928696 from cgiboudeaux)</comment>
     <requestid>928698</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>98f842b86e0c112c87f7ab30bb54882f</srcmd5>
+    <version>6.2.1</version>
+    <time>1636219080</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for critical performance regression in qscrollarea
+  * 0001-qscrollarea-performance-fix.patch (forwarded request 929782 from cgiboudeaux)</comment>
+    <requestid>929783</requestid>
+  </revision>
 </revisionlist>

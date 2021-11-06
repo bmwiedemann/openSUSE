@@ -63,12 +63,10 @@ Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       ibus
+Requires:       libgnomesu
+Requires:       NetworkManager-applet
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     NetworkManager-applet
-Recommends:     budgie-desktop-doc
-Recommends:     gnome-backgrounds
-Recommends:     gnome-software
 
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
@@ -98,6 +96,7 @@ applets for the Budgie Panel.
 %package doc
 Summary:        Documentation files for the Budgie Desktop
 Group:          Documentation/HTML
+Supplements:    (budgie-desktop and patterns-base-documentation)
 
 %description doc
 This package provides API Documentation for the Budgie Plugin API, in the

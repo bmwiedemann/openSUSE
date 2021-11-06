@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Nov  6 13:01:39 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.34.2
+  * New features:
+    - fz::file::open now returns fz::result
+  * Bugfixes and minor changes:
+    - fz::tls_layer: Additional fixes for trust path extration
+    - MSW: fz::local_filesys::get_next_file now handles directory
+      contents returned by the kernel in oversized buffers with
+      embedded nulls
+- Changes from 0.34.1
+  * Bugfixes and minor changes:
+    - *nix: Handle supplementary groups when impersonating
+    - *nix: fz::recv_fd now sets the MSG_CMSG_CLOEXEC flag
+    - *nix: fz::local_filesys::get_link_target now handles link
+      targets larger than 1024 bytes
+    - MSW: Restrict DLL search path for system DLLs to the system32
+      directory
+    - fz::tls_layer: Fixed how trust path extration interacts with
+      CRLs
+- Changes from 0.34.0
+  * Bugfixes and minor changes:
+    - MSW: Load shell32.dll and ole32.dll on-demand at runtime,
+      it is not available in all environments
+    - Made fz::local_filesys movable
+
+-------------------------------------------------------------------
 Thu Aug 12 08:40:13 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.31.1

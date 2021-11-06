@@ -54,6 +54,7 @@ Patch1:         %{name}-default_config.patch
 Patch2:         cve-2020-12272.patch
 # PATCH-FIX-UPSTREAM  Plug memory leak in Unbound callback function https://github.com/trusteddomainproject/OpenDKIM/pull/57/commits/0010ca7150b09c3c259c17bdd9431a8bfe39e299
 Patch3:         unbound-fix.patch
+Patch4:         harden_opendkim.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -216,6 +217,7 @@ This package holds the development files.
 %patch1
 %patch2 -p1
 %patch3 -p0
+%patch4 -p1
 
 %build
 autoreconf -iv

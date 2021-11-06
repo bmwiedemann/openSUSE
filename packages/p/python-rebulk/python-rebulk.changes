@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 05:38:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.1.0
+  * defaults: Add overrides support
+  * python: Add python 3.10 support, drop python 3.5 support
+
+-------------------------------------------------------------------
 Sat Dec 26 10:13:50 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0.1

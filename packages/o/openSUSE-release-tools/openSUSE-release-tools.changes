@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 05 08:30:15 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211105.c4e7e358:
+  * Retry GETs if they catch a TimeoutError
+
+-------------------------------------------------------------------
 Fri Nov 05 06:57:13 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211105.cd161f34:

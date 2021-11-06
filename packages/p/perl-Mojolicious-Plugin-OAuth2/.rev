@@ -15,4 +15,28 @@
     <comment></comment>
     <requestid>873066</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5a8b99cdc6411ea347c416c73697e3c</srcmd5>
+    <version>2.01</version>
+    <time>1636219082</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove last description paragraph talking about manual installation
+  of modules, the recommends are in place
+
+- updated to 2.01
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-OAuth2/Changes
+  2.01 2021-10-28T18:29:45+0900
+   - Test suite is compatible with older versions of Mojolicious
+   - OpenID Connect require Mojo::JWT 0.09
+  2.00 2021-10-27T19:36:44+0900
+   - Removed $c-&gt;oauth2-&gt;get_token()
+     https://github.com/marcusramberg/Mojolicious-Plugin-OAuth2/blob/07e214eb556093de8691b145116b60ab64a4a21a/t/delayed.t#L23-L28
+   - Add support for &quot;OpenID Connect&quot; #65
+     Contributor: Roy Storey
+   - Add &quot;debian_salsa&quot; as an OAuth2 id provider #62
+     Contributor: Gregor Herrmann
+   - Moved mock code to Mojolicious::Plugin::OAuth2::Mock
+   - Bumped Mojolicious version to 8.25</comment>
+    <requestid>929823</requestid>
+  </revision>
 </revisionlist>

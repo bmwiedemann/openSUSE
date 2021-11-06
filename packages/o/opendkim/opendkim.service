@@ -4,6 +4,19 @@ Documentation=man:opendkim(8) man:opendkim.conf(5) man:opendkim-genkey(8) man:op
 After=local-fs.target network.target syslog.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=simple
 PIDFile=/run/opendkim/opendkim.pid
 ExecStart=/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf
