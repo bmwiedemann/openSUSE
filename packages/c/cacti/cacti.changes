@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Nov  6 16:22:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.19:
+  * Further fixes for grave character security protection (boo#1192408)
+  * Fix Over aggressive escaping causing menu visibility issues on Create Device page
+  * Add SHA256 and AES256 security levels for SNMP polling
+  * Import graph template(Preview Only) show color_id new value as a blank area
+  * Fix Editing graphs errors due to missing sequence
+  * Fix 2hen hovering over a Tree Graph, row shows same highlighting as Graph Edit screen
+  * Fix 2hen RealTime is not active, console errors may appear
+  * Fix race conditions may occur when multiple RRDtool processes are running
+  * Fix errors creating graphs from templates
+  * Fix errors when duplicating reports
+  * Fix Boost may be blocked by overflowing poller_output table
+  * Fix Template import may be blocked due to unmet dependency warnings with snmp ports
+  * Fix Newer MySQL versions may error if committing a transaction when not in one
+  * Fix SNMP Agent may not find a cache item
+  * Fix Correct issues running under PHP 8.x
+  * Fix When polling is disabled, boost may crash and creates many arch tables
+  * Fix When poller runs, memory tables may not always be present
+  * Fix Timezones may sometimes be incorrectly calculated
+  * Fix Allow monitoring IPv6 with interface graphs
+  * Fix When a data source uses a Data Input Method, those without a mapping should be flagged
+  * Fix When RRDfile is not yet created, errors may appear when displaying the graph
+  * Fix Cacti missing key indexes that result in Preset pages slowdowns
+  * Fix Data Sources page shows no name when Data Source has no name cache
+  * Fix db_update_table function can not alter table from signed to unsigned
+  * Fix data remains in poller_output table even if it's flushed to rrd files
+  * Fix Parameter list for lib/database.php:db_connect_real() is not correct in 3 places
+  * Fix Offset is a reserved word in MariaDB 10.6 affecting Report
+  * Fix Rendering large trees slowed due to lack of permission caching
+  * Fix Error on interpretation of snmpUtime, when to big
+  * Fix Applying right axis formatting creates an error-image
+  * Fix Unable to Save Graph Settings from the Graphs pages
+  * Fix Graph Template Cache is nullified too often when Graph Automation is running
+  * Fix When Adding a Data Query to a Device, no Progress Spinner is shown
+  * Fix New Browser Breaks Plugins that depend on non UTC date time data
+  * Fix errors when testing remote poller connectivity
+  * Fix errors when renaming poller
+  * Fix Removing spikes by Variance does not appear to be working beyond the first RRA
+  * Fix LDAP API lacks timeout options leading to bad login experiences
+  * Add a normal/wrap class for general use
+  * Limit File Types available for Template Import operations
+  * Fix Cacti does not provide an option of providing a client side certificate for LDAP/AD authentication
+  * Support Stronger Encryption Available Starting in Net-SNMP v5.8
+  * Allow Cacti to use multiple possible LDAP servers
+  * Add a 15 minute polling/sampling interval
+  * Provide additional admin email notifications
+  * Add warnings for undesired changes to plugin hook return values
+  * When creating a Graph, make testing the Data Sources optional by Template
+  * Update phpseclib to 2.0.33
+  * Update jstree.js to 3.3.12
+  * Improve performance of Cacti poller on heavily loaded systems
+  * MariaDB recommendations need some tuning for recent updates
+
+-------------------------------------------------------------------
 Sat Jul 10 06:40:29 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.18:
