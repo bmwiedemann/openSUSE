@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 12:32:44 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioning section: dropped support for the legacy format of
+  the proposal settings (related to fate#318196).
+- 4.4.4
+
+-------------------------------------------------------------------
 Mon Sep  6 15:08:30 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix default ntp servers definition allowing zero or multiple
