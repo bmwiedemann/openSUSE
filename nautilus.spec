@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.8.0
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.6
 BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
-BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
@@ -59,6 +58,10 @@ BuildRequires:  pkgconfig(pango) >= 1.44.4
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 Requires:       tracker-miner-files >= 2.99
 Recommends:     gvfs
+# Needed for tests
+BuildRequires:  python3-gobject
+BuildRequires:  tracker-miner-files >= 2.99
+#
 
 %description
 Nautilus is the file manager for the GNOME desktop.
@@ -100,6 +103,7 @@ search results from Files (nautilus)
 Summary:        File Manager for the GNOME Desktop -- Development Files
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
+Requires:       libnautilus-extension1 = %{version}
 Requires:       typelib-1_0-Nautilus-3_0 = %{version}
 
 %description devel
@@ -114,7 +118,10 @@ This package contains development files for nautilus.
 
 %build
 %meson \
-	-D docs=true
+	-D docs=true \
+	-D libportal=false \
+	-D tests=headless \
+	%{nil}
 %meson_build
 
 %install
@@ -136,8 +143,10 @@ mkdir -p %{buildroot}%{_bindir}
 install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %endif
 
-%post -n libnautilus-extension1 -p /sbin/ldconfig
-%postun -n libnautilus-extension1 -p /sbin/ldconfig
+%check
+%meson_test
+
+%ldconfig_scriptlets -n libnautilus-extension1
 
 %files
 %license LICENSE
