@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20210911
+Version:        20211027
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -73,8 +73,8 @@ then
   tee %{buildroot}${file_attr} <<_EOF_
 %%__${tag}_provides ${attr_sh} --provides
 %%__${tag}_requires ${attr_sh} --requires
-%%__${tag}_magic    ^(ELF|Objective caml|OCaml) .*$
-%%__${tag}_path     .(cma|cmi|cmo|cmx|cmxa|cmxs)$
+%%__${tag}_magic    ^(Objective caml|OCaml) .*$
+%%__${tag}_path     .(cma|cmi|cmo|cmx|cmxa)$
 %%__${tag}_flags    magic_and_path
 _EOF_
   echo "${file_attr}" >> files.fileattrs
@@ -128,6 +128,10 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	%%{nil}
 %%_find_debuginfo_dwz_opts %%{nil}
 
+# Compatibility for quilt setup and old packages
+%%ocaml_native_compiler 1
+%%suse_ocaml_native_compiler 1
+
 # Create file list for base pkg and base-devel pkg
 # Files with known extensions or names are written to 'files' or 'files.devel'
 # Other unknown files are shown on stdout
@@ -173,6 +177,7 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	find %%{buildroot}%%{ocaml_standard_library} ! -type d | awk\\\
 		-v "buildroot=%%{buildroot}"\\\
 		-v "ocaml_standard_library=%%{ocaml_standard_library}"\\\
+		-v "out_files_main=%%{name}.files"\\\
 		-v "out_files_devel=%%{name}.files.devel"\\\
 		-v "out_files_ldconf=%%{name}.files.ldsoconf"\\\
 		-v "out_files_unhandled=%%{name}.files.unhandled"\\\
@@ -221,6 +226,15 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 		print "%%dir " dirname >> out_files_devel\
 		if (parent_dir != "") {\
 			print "%%dir " parent_dir >> out_files_devel\
+		}\
+		next\
+	}\
+	function files_main(line) {\
+		_split(line)\
+		print file_path >> out_files_main\
+		print "%%dir " dirname >> out_files_main\
+		if (parent_dir != "") {\
+			print "%%dir " parent_dir >> out_files_main\
 		}\
 		next\
 	}\
@@ -279,7 +293,7 @@ tee %{buildroot}%{_rpmmacrodir}/macros.%{name} <<'_EOF_'
 	}\
 	# ELF shared library with native code\
 	/\\/[^/]+\\.cmxs$/{\
-		files_devel($0)\
+		files_main($0)\
 	}\
 	# Some helper binary\
 	/\\/[^/]+\\.exe$/{\

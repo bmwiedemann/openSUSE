@@ -163,4 +163,12 @@ trim changes file</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921281</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7905958b8ad30a227f0f1eb2eedd6726</srcmd5>
+    <version>20211027</version>
+    <time>1636218795</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928950</requestid>
+  </revision>
 </revisionlist>
