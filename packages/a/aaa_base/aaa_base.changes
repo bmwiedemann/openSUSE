@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 02 13:29:56 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20211102.80d7177:
+  * Add $HOME/.local/bin to PATH, if it exists (bsc#1192248)
+  * Avoid tcsh undefined LANG variable (boo#1190142)
+
+-------------------------------------------------------------------
 Mon Aug 23 13:01:26 UTC 2021 - kukuk@suse.com
 
 - Update to version 84.87+git20210823.4c98889:

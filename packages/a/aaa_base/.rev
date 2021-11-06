@@ -3939,4 +3939,14 @@
   * Remove /etc/hushlogins (forwarded request 913772 from kukuk)</comment>
     <requestid>913774</requestid>
   </revision>
+  <revision rev="484" vrev="1">
+    <srcmd5>96f66df342a79e75e38ca3851c16c839</srcmd5>
+    <version>84.87+git20211102.80d7177</version>
+    <time>1636218781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20211102.80d7177:
+  * Add $HOME/.local/bin to PATH, if it exists (bsc#1192248)
+  * Avoid tcsh undefined LANG variable (boo#1190142)</comment>
+    <requestid>928785</requestid>
+  </revision>
 </revisionlist>
