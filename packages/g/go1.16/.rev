@@ -208,4 +208,28 @@
   * go#47858 time: timer reset sometimes ignored, causing delayed ticks (forwarded request 924123 from jfkw)</comment>
     <requestid>924125</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5d88cbc6032057605cfa6d981c457e71</srcmd5>
+    <version>1.16.10</version>
+    <time>1636218908</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.10 (released 2021-11-04) includes security fixes to the
+  archive/zip and debug/macho packages, as well as bug fixes to the
+  compiler, linker, runtime, the misc/wasm directory, and to the
+  net/http package.
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2021-41771 CVE-2021-41772
+  * boo#1192377 go#48990 CVE-2021-41771
+  * go#48991 debug/macho: invalid dynamic symbol table command can cause panic
+  * boo#1192378 go#48085 CVE-2021-41772
+  * go#48251 archive/zip: Reader.Open panics on empty string
+  * go#49153 misc/wasm, cmd/link: Go 1.17.2 causes WASM builds to throw command line too long with many environment variables
+  * go#49076 x/net/http2: backport critical fixes
+  * go#49009 net,runtime: apparent deadlock in (*net.conn).Close and runtime.netpollblock on arm64 platforms
+  * go#48822 x/net/http2: client can hang forever if headers' size exceeds connection's buffer size and server hangs past request time
+  * go#48649 x/net/http2: pool deadlock
+  * go#48478 cmd/compile: 64 bits shifts on arm get wrong results
+  * go#48474 cmd/compile: incorrect arm/arm64 simplification rules (forwarded request 929547 from jfkw)</comment>
+    <requestid>929549</requestid>
+  </revision>
 </revisionlist>
