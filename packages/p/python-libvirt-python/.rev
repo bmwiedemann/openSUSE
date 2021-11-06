@@ -537,4 +537,16 @@ fix a jira reference in the changelog.
   - jsc#SLE-18260</comment>
     <requestid>922673</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>02c0b3dadbe87322924c9de06c12a018</srcmd5>
+    <version>7.9.0</version>
+    <time>1636218907</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.9.0.
+
+- Update to 7.9.0
+  - Add all new APIs and constants in libvirt 7.9.0
+  - jsc#SLE-19264</comment>
+    <requestid>929472</requestid>
+  </revision>
 </revisionlist>
