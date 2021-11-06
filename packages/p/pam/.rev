@@ -1039,4 +1039,12 @@
   - bsc1184358-prevent-LOCAL-from-being-resolved.patch</comment>
     <requestid>919240</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>8d631f4a2a82dcad8530cf087f4272b7</srcmd5>
+    <version>1.5.2</version>
+    <time>1636218782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928945</requestid>
+  </revision>
 </revisionlist>

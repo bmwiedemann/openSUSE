@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  2 20:32:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add /run/pam_timestamp to pam.tmpfiles
+
+-------------------------------------------------------------------
+Tue Oct 12 13:49:53 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Corrected macro definition of %_pam_moduledir:
+  %_pam_moduledir %{_libdir}/security
+  [macros.pam]
+
+-------------------------------------------------------------------
+Wed Oct  6 09:14:11 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Prepend a slash to the expansion of %{_lib} in macros.pam as
+  this are defined without a leading slash!
+
+-------------------------------------------------------------------
 Wed Sep 15 13:34:52 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Rename motd.tmpfiles to pam.tmpfiles
