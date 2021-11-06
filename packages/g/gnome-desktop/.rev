@@ -1285,4 +1285,15 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920938 from dimstar)</comment>
     <requestid>921618</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>d008445f4ddfb5f87f8802624a3d3213</srcmd5>
+    <version>41.1</version>
+    <time>1636218926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + gnome-languages: Avoid passing NULL to newlocale.
+  + Avoid the use of `allow-none` for out parameters.
+  + Updated translations. (forwarded request 928876 from iznogood)</comment>
+    <requestid>929597</requestid>
+  </revision>
 </revisionlist>
