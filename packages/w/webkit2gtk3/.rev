@@ -1125,4 +1125,14 @@
     <comment></comment>
     <requestid>927912</requestid>
   </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>b90b708eb72cf78af678d209ca00dfad</srcmd5>
+    <version>2.34.1</version>
+    <time>1636218925</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pkgconfig(libavif) BuildRequires and pass USE_AVIF=ON to
+  cmake, build avif decoding support.
+- Add wayland-protocols to BuildRequires. (forwarded request 928625 from iznogood)</comment>
+    <requestid>929594</requestid>
+  </revision>
 </revisionlist>

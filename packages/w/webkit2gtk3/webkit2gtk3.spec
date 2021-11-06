@@ -150,6 +150,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.2
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libavif) >= 0.9.0
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.1
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
@@ -168,6 +169,7 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(manette-0.2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(xt)
@@ -359,6 +361,7 @@ export PYTHON=%{_bindir}/python3
 %if "%{flavor}" == "gtk4"
   -DUSE_GTK4=ON \
 %endif
+  -DUSE_AVIF=ON \
   -DENABLE_MINIBROWSER=ON \
   -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \

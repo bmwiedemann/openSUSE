@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  1 18:14:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libavif) BuildRequires and pass USE_AVIF=ON to
+  cmake, build avif decoding support.
+
+-------------------------------------------------------------------
+Mon Nov  1 17:54:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add wayland-protocols to BuildRequires.
+
+-------------------------------------------------------------------
 Tue Oct 26 22:10:23 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add webkit2gtk3-link-fix.patch: taken from upstream, fixes the
