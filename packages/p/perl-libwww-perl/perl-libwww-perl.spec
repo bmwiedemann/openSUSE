@@ -18,7 +18,7 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.57
+Version:        6.58
 Release:        0
 Summary:        The World-Wide Web library for Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -52,6 +52,7 @@ BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI) >= 1.10
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(WWW::RobotRules) >= 6
+BuildRequires:  perl(parent) >= 0.217
 Requires:       perl(Encode::Locale)
 Requires:       perl(File::Listing) >= 6
 Requires:       perl(HTML::Entities)
@@ -69,6 +70,7 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(URI) >= 1.10
 Requires:       perl(URI::Escape)
 Requires:       perl(WWW::RobotRules) >= 6
+Requires:       perl(parent) >= 0.217
 %{perl_requires}
 # MANUAL BEGIN
 Recommends:     perl(LWP::Protocol::https) >= 6.06
