@@ -151,4 +151,44 @@
     <comment>- Fix requirement version (forwarded request 898235 from alois)</comment>
     <requestid>898236</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>944dcb67230b59a1636a03da0a6ea16b</srcmd5>
+    <version>3.4.1</version>
+    <time>1636240742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.1
+  Fix:
+  * other: Detect &quot;Open Matte&quot; with non-space separator
+  * packaging: Use stdlib importlib.resources in py 3.7+
+- Update to version 3.4.0
+  Feature:
+  * other: Add restored support and match 4k-* patterns
+  * other: Add 2in1 support
+  * python: Add python 3.10 support, drop python 3.5 support
+  * audio_channels: Add support for &quot;1.0&quot; audio channels
+  * streaming_service: Add more streaming services
+  * other: Add ONA/OAD support
+  * other: Add Repack and ReRip followed by a digit support
+  Fix:
+  * source: Avoid Shots to be guessed as Showtime and TS
+  * screen_size: Add 540i
+  * language: Fix language and subtitle_languages in some
+    situations
+  * packaging: Use importlib-resources instead of pkgutil
+  * other: Fix Open Matte when written as is
+  * frame_rate: Enhance frame_rate when ending with .000 or
+    space separated
+  * packaging: Use importlib-resources instead of pkg_resources
+  * edition: Better support for &quot;Criterion&quot;
+  * advanced-config: Fix removal of custom rebulk rules
+  * streaming_service: Make SBS ambiguous
+  * streaming_service: Keep pattern to avoid rebuilding rules
+  * proper_count: Fix proper_count raw output to include all
+    matches
+  * website: Fix website when it contains a digit
+  Documentation:
+  * Add new properties
+</comment>
+    <requestid>929826</requestid>
+  </revision>
 </revisionlist>

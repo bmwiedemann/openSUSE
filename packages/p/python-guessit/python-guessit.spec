@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-guessit
-Version:        3.3.1
+Version:        3.4.1
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only
@@ -27,16 +27,20 @@ URL:            https://github.com/wackou/guessit
 Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.5.5}
+BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 3.0.0}
+BuildRequires:  %{python_module rebulk >= 3.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.5.5
+Requires:       python-importlib-resources
 Requires:       python-python-dateutil
-Requires:       python-rebulk >= 3.0.0
+Requires:       python-rebulk >= 3.1.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -52,13 +56,13 @@ and TV shows episodes.
 %prep
 %autosetup -n guessit-%{version}
 # Remove shebang from non-executable files
-for i in {'audio_codec','bit_rate','bonus','cds','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
+for i in {'audio_codec','bit_rate','bonus','cd','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
   sed -i -e "1d" "guessit/rules/properties/$i.py"
 done
-for i in {'common/comparators','common/date','common/expected','common/formatters','common/__init__','common/numeral','common/pattern','common/quantity','common/validators','common/words','__init__','markers/groups','markers/__init__','markers/path','processors'}; do
+for i in {'common/comparators','common/date','common/expected','common/formatters','common/__init__','common/numeral','common/pattern','common/quantity','common/validators','common/words','__init__','markers/groups','markers/__init__','markers/path','processors','properties/audio_codec','properties/bit_rate','properties/bonus','properties/cd','properties/container','properties/country','properties/crc','properties/date','properties/edition','properties/episodes','properties/episode_title','properties/film','properties/__init__','properties/language','properties/mimetype','properties/other','properties/part','properties/release_group','properties/screen_size','properties/size','properties/source','properties/streaming_service','properties/title','properties/type','properties/video_codec','properties/website'}; do
   sed -i -e "1d" "guessit/rules/$i.py"
 done
-for i in {'api','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
+for i in {'api','data/__init__','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
   sed -i -e "1d" "guessit/$i.py"
 done
 
