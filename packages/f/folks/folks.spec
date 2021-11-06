@@ -146,6 +146,7 @@ Summary:        Development files for libfolks
 Group:          Development/Libraries/GNOME
 Requires:       libfolks%{soversion} = %{version}
 Requires:       libfolks-eds%{soversion} = %{version}
+Requires:       libfolks-telepathy%{soversion} = %{version}
 Requires:       typelib-1_0-Folks-0_7 = %{version}
 Requires:       typelib-1_0-FolksEds-0_7 = %{version}
 Requires:       typelib-1_0-FolksTelepathy-0_7 = %{version}

@@ -426,4 +426,14 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920922 from dimstar)</comment>
     <requestid>921605</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>28effd92de2df17e764a8c12f9143276</srcmd5>
+    <version>0.15.3</version>
+    <time>1636218951</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libfolks-telepathy%{soversion} from the -devel package:
+  we install the .so symlink and must thus guarantee to have the
+  link target preset too. (forwarded request 929645 from dimstar)</comment>
+    <requestid>929704</requestid>
+  </revision>
 </revisionlist>

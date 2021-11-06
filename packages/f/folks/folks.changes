@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 11:29:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require libfolks-telepathy%{soversion} from the -devel package:
+  we install the .so symlink and must thus guarantee to have the
+  link target preset too.
+
+-------------------------------------------------------------------
 Fri Aug  6 19:18:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.15.3:
