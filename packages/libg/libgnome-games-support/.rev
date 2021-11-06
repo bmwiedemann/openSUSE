@@ -119,4 +119,14 @@
   + Updated translations.</comment>
     <requestid>889364</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0148f2e228d9f6d2ffce933c509fcb43</srcmd5>
+    <version>1.8.2</version>
+    <time>1636218920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2:
+  + Add margins to category bar in scores dialog.
+  + Fix build with latest vala. (forwarded request 928306 from iznogood)</comment>
+    <requestid>929588</requestid>
+  </revision>
 </revisionlist>

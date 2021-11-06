@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           libgnome-games-support
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
