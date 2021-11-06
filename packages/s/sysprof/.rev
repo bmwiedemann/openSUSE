@@ -187,4 +187,19 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920979 from dimstar)</comment>
     <requestid>921655</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2efaa4b74c1f826552e37b68e1c6f34e</srcmd5>
+    <version>3.42.1</version>
+    <time>1636218934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42.1:
+  + Build fixes for close()/lseek() usage
+  + Show recording time in local time instead of UTC
+  + Improve resolving of symbols in presence of toolbox, flatpak,
+    and btrfs
+  + Fix checking of paranoid state in Linux kernel
+  + Updated translations.
+- Drop sysprof-fix-includes-close-lseek.patch: Fixed upstream. (forwarded request 929569 from iznogood)</comment>
+    <requestid>929608</requestid>
+  </revision>
 </revisionlist>

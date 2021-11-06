@@ -29,7 +29,7 @@
 %define sover 4
 
 Name:           sysprof%{_name_suffix}
-Version:        3.42.0
+Version:        3.42.1
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

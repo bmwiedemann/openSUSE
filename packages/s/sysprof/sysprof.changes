@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  5 08:21:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.1:
+  + Build fixes for close()/lseek() usage
+  + Show recording time in local time instead of UTC
+  + Improve resolving of symbols in presence of toolbox, flatpak,
+    and btrfs
+  + Fix checking of paranoid state in Linux kernel
+  + Updated translations.
+- Drop sysprof-fix-includes-close-lseek.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:38:22 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add sysprof-fix-includes-close-lseek.patch to fix certain build
+  errors on Leap and SLE (boo#1192200).
+
+-------------------------------------------------------------------
 Wed Sep 22 07:37:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.0:
