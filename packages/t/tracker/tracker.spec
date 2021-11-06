@@ -21,7 +21,7 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
@@ -138,7 +138,6 @@ This subpackage contains the data files for the Tracker miners.
 %build
 %meson \
 	-Ddocs=true \
-	-Dfunctional_tests=false \
 	-Dstemmer=disabled \
 	%{nil}
 %meson_build
@@ -155,13 +154,21 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %fdupes %{buildroot}%{_datadir}/vala/
 
-#ifnarch %arm
+#ifnarch %%arm
 #check
 #meson_test
 #endif
 
-%post -n libtracker-sparql-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
-%postun -n libtracker-sparql-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtracker-sparql-%{RPMTrackerAPI}-0
+
+%post
+%systemd_user_post tracker-xdg-portal-3.service
+
+%preun
+%systemd_user_preun tracker-xdg-portal-3.service
+
+%postun
+%systemd_user_postun_with_restart tracker-xdg-portal-3.service
 
 %files
 %license COPYING

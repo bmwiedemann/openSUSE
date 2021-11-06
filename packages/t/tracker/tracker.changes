@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov  4 10:48:18 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing no longer used nor recognized option
+  functional_tests=false to meson.
+
+-------------------------------------------------------------------
+Sat Oct 30 21:38:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.1:
+  + Better, more understandable errors when parsing the ontology.
+  + Compare doubles with an epsilon in tests.
+  + Fixes for issues spotted by Coverity.
+  + Updated translations.
+- Replace post(un) handling with new ldconfig_scriplets macro for
+  the shared library package.
+- Add missing systemd user service handling in post/preun/postun
+
+-------------------------------------------------------------------
 Mon Sep 20 17:16:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.0:
