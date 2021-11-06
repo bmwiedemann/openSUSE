@@ -997,4 +997,12 @@
   as that should be used with the newest cmake macros (boo#1190880) (forwarded request 927008 from alarrosa)</comment>
     <requestid>927469</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>28070ee1948e24667f2cbf9edf377de8</srcmd5>
+    <version>3.42.1</version>
+    <time>1636218914</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 928207 from iznogood)</comment>
+    <requestid>929579</requestid>
+  </revision>
 </revisionlist>
