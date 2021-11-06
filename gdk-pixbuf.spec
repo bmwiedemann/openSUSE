@@ -42,7 +42,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  unzip
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
@@ -132,7 +131,6 @@ This package contains the development files for gdk-pixbuf.
 %prep
 %setup -c -T -q
 unzip -P gecko %{SOURCE0}
-translation-update-upstream
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE2} .
 %endif
@@ -142,8 +140,6 @@ cp -a %{SOURCE2} .
 	-Dpng=true \
 	-Dtiff=true \
 	-Djpeg=true \
-	-Djasper=false \
-	-Dx11=false \
 	-Dbuiltin_loaders=none \
 	-Dgtk_doc=false \
 	-Dintrospection=enabled \
