@@ -1052,4 +1052,16 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment></comment>
     <requestid>921700</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>b82f5c00f70b80fb429bbf2edd7d0cc3</srcmd5>
+    <version>0.66.1</version>
+    <time>1636218923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.66.1:
+  + app: Add option to set initial title
+  + vte.sh: Fix the check for PROMPT_COMMAND when it is unset
+  + Updated translations.
+- Drop vte-silence-COMMAND_PROMPT.patch: Fixed upstream. (forwarded request 928374 from iznogood)</comment>
+    <requestid>929593</requestid>
+  </revision>
 </revisionlist>
