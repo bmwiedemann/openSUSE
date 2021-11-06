@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  4 10:07:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove py_ssize_t_clean argument from QtCoremod.sip in order to
+  make downstream packages buildable with sip < 6.4 -- boo#1192300
+
+-------------------------------------------------------------------
+Wed Nov  3 14:18:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't require python-sip-devel for python-qt5-devel. The project
+  building against PyQt should explicitly know about the proper
+  requirement. -- boo#1192300
+
+-------------------------------------------------------------------
 Fri Oct 29 15:16:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.15.6

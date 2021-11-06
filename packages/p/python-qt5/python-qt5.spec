@@ -96,7 +96,6 @@ Requires:       libqt5-qtbase-devel
 Requires:       python-%{mname} = %{version}
 Requires:       python-dbus-python-devel
 Requires:       python-devel
-Requires:       python-sip-devel >= 6.4
 Requires:       pkgconfig(Qt5Bluetooth)
 Requires:       pkgconfig(Qt5Designer)
 Requires:       pkgconfig(Qt5Help)
@@ -120,6 +119,9 @@ Requires:       pkgconfig(Qt5XmlPatterns)
 Requires:       %{oldpython}(abi) = %{python_version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+# If and which version of sip is required depends on the project trying
+# to build against PyQt5.
+Recommends:     python-sip-devel
 Recommends:     python-qscintilla-qt5
 Recommends:     pkgconfig(Qt5Quick3D)
 Provides:       python-PyQt5-devel = %{version}-%{release}
@@ -197,6 +199,14 @@ This package contains the extension for QtRemoteObjects.
 chmod -x examples/activeqt/webbrowser/webbrowser.py
 dos2unix examples/tools/codecs/encodedfiles/iso-8859-1.txt
 dos2unix examples/tools/codecs/encodedfiles/iso-8859-15.txt
+
+# remove argument to `#define PY_SSIZE_T_CLEAN`
+# before any `#include <Python.h>` which was introduced by SIP 6.4
+# for Python 3.10 builds but prevents downstream packages stuck on
+# SIP v4 or SIP v5 (qgis) from building -- boo#1192300
+# https://docs.python.org/3/c-api/arg.html#arg-parsing
+  sed -e 's/, py_ssize_t_clean=True//' \
+      -i sip/QtCore/QtCoremod.sip
 
 %build
 # sip-build requires QtCore as target, even if we want a nonring module only
