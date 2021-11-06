@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -27,11 +27,6 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRequires:  make
-BuildRequires:  makeinfo
 Provides:       awk
 
 %description
@@ -45,7 +40,6 @@ almost completely POSIX 1003.2 compliant.
 %autosetup -p1
 
 %build
-autoreconf -fiv
 %configure
 %make_build
 

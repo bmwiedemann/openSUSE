@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 31 11:36:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU awk 5.1.1
+  * asort and asorti now allow FUNCTAB and SYMTAB as the first
+    argument if a second destination array is supplied. Similarly,
+    using either array as the second argument is now a fatal error.
+    Additionally, using either array as the destination for split(),
+    match(), etc. also causes a fatal error.
+  * The new -I/--trace option prints a trace of the byte codes as
+    they are executed.
+  * A number of subtle bugs relating to MPFR mode that caused
+    differences between regular operation and MPFR mode have been
+    fixed.
+  * The API now handles MPFR/GMP values slightly differently,
+    requiring different memory management for those values.
+  * $0 and the fields are now cleared before starting a BEGINFILE
+    rule.
+  * Handling of Infinity and NaN values has been improved
+  * The "no effect" lint warnings have been fixed up and now behave
+    more sanely.
+  * The behavior of strongly-typed regexp constants when passed as
+    the third argument to sub() or gsub() has been clarified in the
+    code and in the manual.
+  * Similar to item #4 above, division by zero is now fatal in MPFR
+    mode, as it is in regular mode.
+
+-------------------------------------------------------------------
 Thu Sep 23 15:02:47 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - remove update-alternatives support, as on linux systems GNU software
