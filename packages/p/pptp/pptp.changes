@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 20:08:59 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1191717: The upgrade to 1.10.0 also fixes an issue in
+  combination with Microtic routers.
+
+-------------------------------------------------------------------
 Wed Dec  4 17:19:58 UTC 2019 - Reinhard Max <max@suse.com>
 
 - Update to versioin 1.10.0

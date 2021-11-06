@@ -152,4 +152,12 @@
   * fix for (null) in &quot;pptp: GRE-to-PPP gateway on (null)&quot;.</comment>
     <requestid>754108</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5ddfd0a34acc0034452216b10d732416</srcmd5>
+    <version>1.10.0</version>
+    <time>1636218905</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929462</requestid>
+  </revision>
 </revisionlist>
