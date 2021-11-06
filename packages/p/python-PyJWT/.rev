@@ -210,4 +210,24 @@
   - Export `PyJWK` and `PyJWKSet`</comment>
     <requestid>894171</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bb24e9e7cc839c051140a775529ae2bd</srcmd5>
+    <version>2.3.0</version>
+    <time>1636218941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+  * Revert &quot;Remove arbitrary kwargs.&quot; (#701)
+  * Add exception chaining (#702)
+- from version 2.2.0
+  * Remove arbitrary kwargs. (#657)
+  * Use timezone package as Python 3.5+ is required. (#694)
+  * Assume JWK without the &quot;use&quot; claim is valid for signing
+    as per RFC7517 (#668)
+  * Prefer `headers[&quot;alg&quot;]` to `algorithm` in `jwt.encode()`. (#673)
+  * Fix aud validation to support {'aud': null} case. (#670)
+  * Make `typ` optional in JWT to be compliant with RFC7519. (#644)
+  * Remove upper bound on cryptography version. (#693)
+  * Add support for Ed448/EdDSA. (#675) (forwarded request 928968 from glaubitz)</comment>
+    <requestid>929638</requestid>
+  </revision>
 </revisionlist>
