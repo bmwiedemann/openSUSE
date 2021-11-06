@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov  6 18:24:32 UTC 2021 - cloud-devel@suse.de
+
+- removed 0001-Replace-add_stylesheet-add_javascript.patch
+- update to version 2.2.0
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Move flake8 as a pre-commit local target.
+  - Adding pre-commit
+  - Fix hacking min version to 3.0.1
+  - Remove install unnecessary packages
+  - Use TOX_CONSTRAINTS_FILE
+  - bump py37 to py38 in tox.ini
+  - Replace 'add_stylesheet', 'add_javascript'
+  - Bump py37 to py38 in tox.ini
+  - Switch testing to Xena testing runtime
+  - Stop install unnecessary packages when run tox -edocs
+
+-------------------------------------------------------------------
 Mon Aug  9 18:48:40 UTC 2021 - cloud-devel@suse.de
 
 - added 0001-Replace-add_stylesheet-add_javascript.patch

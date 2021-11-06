@@ -165,4 +165,25 @@
   compatibility with newer Sphinx</comment>
     <requestid>919239</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>baffd5ca3a0e4d8e9757d55acbfde5f3</srcmd5>
+    <version>2.2.0</version>
+    <time>1636240750</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Replace-add_stylesheet-add_javascript.patch
+- update to version 2.2.0
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Move flake8 as a pre-commit local target.
+  - Adding pre-commit
+  - Fix hacking min version to 3.0.1
+  - Remove install unnecessary packages
+  - Use TOX_CONSTRAINTS_FILE
+  - bump py37 to py38 in tox.ini
+  - Replace 'add_stylesheet', 'add_javascript'
+  - Bump py37 to py38 in tox.ini
+  - Switch testing to Xena testing runtime
+  - Stop install unnecessary packages when run tox -edocs</comment>
+    <requestid>929914</requestid>
+  </revision>
 </revisionlist>
