@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:34:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- Changes since 21.08.2:
+  * kcmkontact: Fix writing of configured startup module (kde#444170)
+  * Use show/hide sidebar action
+
+-------------------------------------------------------------------
 Tue Oct  5 16:28:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.2
