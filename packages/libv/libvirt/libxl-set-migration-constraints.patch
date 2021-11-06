@@ -16,10 +16,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  tools/virsh.pod                  |    8 ++++++++
  6 files changed, 125 insertions(+), 6 deletions(-)
 
-Index: libvirt-7.8.0/docs/manpages/virsh.rst
+Index: libvirt-7.9.0/docs/manpages/virsh.rst
 ===================================================================
---- libvirt-7.8.0.orig/docs/manpages/virsh.rst
-+++ libvirt-7.8.0/docs/manpages/virsh.rst
+--- libvirt-7.9.0.orig/docs/manpages/virsh.rst
++++ libvirt-7.9.0/docs/manpages/virsh.rst
 @@ -3167,7 +3167,8 @@ migrate
        [--postcopy-bandwidth bandwidth]
        [--parallel [--parallel-connections connections]]
@@ -43,10 +43,10 @@ Index: libvirt-7.8.0/docs/manpages/virsh.rst
  Running migration can be canceled by interrupting virsh (usually using
  ``Ctrl-C``) or by ``domjobabort`` command sent from another virsh instance.
  
-Index: libvirt-7.8.0/include/libvirt/libvirt-domain.h
+Index: libvirt-7.9.0/include/libvirt/libvirt-domain.h
 ===================================================================
---- libvirt-7.8.0.orig/include/libvirt/libvirt-domain.h
-+++ libvirt-7.8.0/include/libvirt/libvirt-domain.h
+--- libvirt-7.9.0.orig/include/libvirt/libvirt-domain.h
++++ libvirt-7.9.0/include/libvirt/libvirt-domain.h
 @@ -1079,6 +1079,25 @@ typedef enum {
   */
  # define VIR_MIGRATE_PARAM_TLS_DESTINATION          "tls.destination"
@@ -73,10 +73,10 @@ Index: libvirt-7.8.0/include/libvirt/libvirt-domain.h
  /* Domain migration. */
  virDomainPtr virDomainMigrate (virDomainPtr domain, virConnectPtr dconn,
                                 unsigned long flags, const char *dname,
-Index: libvirt-7.8.0/src/libxl/libxl_driver.c
+Index: libvirt-7.9.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-7.8.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-7.8.0/src/libxl/libxl_driver.c
+--- libvirt-7.9.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.9.0/src/libxl/libxl_driver.c
 @@ -6005,6 +6005,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
@@ -117,10 +117,10 @@ Index: libvirt-7.8.0/src/libxl/libxl_driver.c
              goto cleanup;
      }
  
-Index: libvirt-7.8.0/src/libxl/libxl_migration.c
+Index: libvirt-7.9.0/src/libxl/libxl_migration.c
 ===================================================================
---- libvirt-7.8.0.orig/src/libxl/libxl_migration.c
-+++ libvirt-7.8.0/src/libxl/libxl_migration.c
+--- libvirt-7.9.0.orig/src/libxl/libxl_migration.c
++++ libvirt-7.9.0/src/libxl/libxl_migration.c
 @@ -334,18 +334,38 @@ libxlMigrateDstReceive(virNetSocket *soc
  static int
  libxlDoMigrateSrcSend(libxlDriverPrivate *driver,
@@ -281,10 +281,10 @@ Index: libvirt-7.8.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      if (ret == 0) {
-Index: libvirt-7.8.0/src/libxl/libxl_migration.h
+Index: libvirt-7.9.0/src/libxl/libxl_migration.h
 ===================================================================
---- libvirt-7.8.0.orig/src/libxl/libxl_migration.h
-+++ libvirt-7.8.0/src/libxl/libxl_migration.h
+--- libvirt-7.9.0.orig/src/libxl/libxl_migration.h
++++ libvirt-7.9.0/src/libxl/libxl_migration.h
 @@ -35,6 +35,9 @@
      VIR_MIGRATE_PARAM_URI,              VIR_TYPED_PARAM_STRING, \
      VIR_MIGRATE_PARAM_DEST_NAME,        VIR_TYPED_PARAM_STRING, \
@@ -327,11 +327,11 @@ Index: libvirt-7.8.0/src/libxl/libxl_migration.h
  
  virDomainPtr
  libxlDomainMigrationDstFinish(virConnectPtr dconn,
-Index: libvirt-7.8.0/tools/virsh-domain.c
+Index: libvirt-7.9.0/tools/virsh-domain.c
 ===================================================================
---- libvirt-7.8.0.orig/tools/virsh-domain.c
-+++ libvirt-7.8.0/tools/virsh-domain.c
-@@ -10457,6 +10457,18 @@ static const vshCmdOptDef opts_migrate[]
+--- libvirt-7.9.0.orig/tools/virsh-domain.c
++++ libvirt-7.9.0/tools/virsh-domain.c
+@@ -10685,6 +10685,18 @@ static const vshCmdOptDef opts_migrate[]
       .completer = virshCompleteEmpty,
       .help = N_("override the destination host name used for TLS verification")
      },
@@ -350,7 +350,7 @@ Index: libvirt-7.8.0/tools/virsh-domain.c
      {.name = NULL}
  };
  
-@@ -10477,6 +10489,7 @@ doMigrate(void *opaque)
+@@ -10705,6 +10717,7 @@ doMigrate(void *opaque)
      unsigned long long ullOpt = 0;
      int rv;
      virConnectPtr dconn = data->dconn;
@@ -358,7 +358,7 @@ Index: libvirt-7.8.0/tools/virsh-domain.c
  #ifndef WIN32
      sigset_t sigmask, oldsigmask;
  
-@@ -10607,6 +10620,22 @@ doMigrate(void *opaque)
+@@ -10835,6 +10848,22 @@ doMigrate(void *opaque)
              goto save_error;
      }
  

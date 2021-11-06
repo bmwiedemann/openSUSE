@@ -136,7 +136,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.8.0
+Version:        7.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -282,9 +282,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         3f9c1a4b-fix-host-validate-sev.patch
-Patch1:         1b9ce05c-lxc-fix-cgroupV1.patch
-Patch2:         2703b0b5-qemu-dont-report-eof.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1631,8 +1628,8 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/qemu.conf
 %config(noreplace) %{_sysconfdir}/%{name}/qemu-lockd.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd.qemu
-%dir %attr(0750, %{qemu_user}, %{qemu_group}) %{_localstatedir}/lib/%{name}/qemu/
-%dir %attr(0750, %{qemu_user}, %{qemu_group}) %{_localstatedir}/cache/%{name}/qemu/
+%dir %attr(0751, %{qemu_user}, %{qemu_group}) %{_localstatedir}/lib/%{name}/qemu/
+%dir %attr(0750, root, root) %{_localstatedir}/cache/%{name}/qemu/
 %dir %attr(0700, root, root) %{_localstatedir}/log/%{name}/qemu/
 %{_datadir}/augeas/lenses/libvirtd_qemu.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
@@ -1641,7 +1638,7 @@ fi
 %dir %attr(0711, root, root) %{_localstatedir}/lib/%{name}/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/
 %dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/%{name}/
-%dir %attr(0731, tss, tss) %{_localstatedir}/log/swtpm/%{name}/qemu/
+%dir %attr(0730, tss, tss) %{_localstatedir}/log/swtpm/%{name}/qemu/
 %{_bindir}/virt-qemu-run
 %doc %{_mandir}/man1/virt-qemu-run.1*
 %doc %{_mandir}/man8/virtqemud.8*

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  4 16:29:03 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.9.0
+  - jsc#SLE-19264
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    3f9c1a4b-fix-host-validate-sev.patch,
+    2703b0b5-qemu-dont-report-eof.patch,
+    1b9ce05c-lxc-fix-cgroupV1.patch
+- Include collection of active VM config files in the
+  supportconfig plugin
+
+-------------------------------------------------------------------
 Mon Oct 18 15:44:15 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - supportconfig: Use systemctl command 'is-active' instead of
