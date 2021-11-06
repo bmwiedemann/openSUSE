@@ -772,4 +772,28 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 920949 from dimstar)</comment>
     <requestid>921629</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>169c0cfacdab13aad345ab179f3df098</srcmd5>
+    <version>41.1</version>
+    <time>1636218912</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + Fix showing a ‘transaction in progress’ error when using the
+    rpm-ostree plugin
+  + Don’t recommend a reboot if firmware updates fail
+  + Fix flathub repo being considered present on Fedora 35 with
+    filtered flathub
+  + Allow searching for extensions
+  + Fix translation of main button on updates page
+  + Fix codec installation process
+  + Various minor UI tweaks and fixes
+  + Add new GNOME Circle apps to the featured carousel
+  + Improve metadata support for snaps
+  + Fix update checks being missed across suspend/hibernation
+  + Ensure application lists are updated when repositories are
+    enabled/installed or disabled/removed
+  + Updated translations.
+- Drop now unused _version 40_0 define. (forwarded request 928012 from iznogood)</comment>
+    <requestid>929576</requestid>
+  </revision>
 </revisionlist>
