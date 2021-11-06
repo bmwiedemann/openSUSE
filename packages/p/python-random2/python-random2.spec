@@ -1,7 +1,7 @@
 #
 # spec file for package python-random2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://pypi.python.org/pypi/random2
 Source:         https://files.pythonhosted.org/packages/source/r/random2/random2-%{version}.zip
 # PATCH-FIX-UPSTREAM -- python3.9.patch Origin: Debian
 Patch0:         python3.9.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +58,9 @@ adjusted. This package fixes that.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# see tests.test_suite
+classes='WichmannHill_TestBasicOps or MersenneTwister_TestBasicOps or TestDistributions or TestModule'
+%pytest -k "$classes" src/tests.py
 
 %files %{python_files}
 %doc CHANGES.txt README.txt PKG-INFO
