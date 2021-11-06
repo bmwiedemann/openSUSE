@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.320000
+Version:        1.330000
 Release:        0
-%define cpan_version 1.32
-Provides:       perl(DateTime::Locale) = 1.320000
+%define cpan_version 1.33
+Provides:       perl(DateTime::Locale) = 1.330000
 Summary:        Localization support for DateTime.pm
 License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}

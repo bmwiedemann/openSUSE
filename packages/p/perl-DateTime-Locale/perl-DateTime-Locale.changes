@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 31 03:07:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.33     2021-10-30
+  - Rebuilt all locale data with the data from CLDR 40.0.0. There are some
+    notable data changes in CLDR 40.0.0.
+  - Data change: The root locale is now named "und", not "root".
+  - Data change: The "en-US-POSIX" locale has been removed from CLDR. If you
+    load this locale you will now get the "en-US" locale.
+
+-------------------------------------------------------------------
 Sat May  1 03:06:59 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.32
