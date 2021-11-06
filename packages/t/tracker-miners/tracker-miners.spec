@@ -17,13 +17,15 @@
 
 
 Name:           tracker-miners
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.2/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch bsc#1191207 alynx.zhou@suse.com -- Revert the commit to avoid wrong no metadata info
+Patch1:         0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
@@ -103,6 +105,15 @@ This package contains a miner to index files and applications.
 %install
 %meson_install
 %find_lang tracker3-miners
+
+%post
+%systemd_user_post tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
+
+%preun
+%systemd_user_preun tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
+
+%postun
+%systemd_user_postun_with_restart tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
 
 %files
 %license COPYING

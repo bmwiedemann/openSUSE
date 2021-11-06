@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov  5 09:15:42 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch:
+  Revert the commit to avoid wrong no metadata info. (bsc#1191207)
+
+-------------------------------------------------------------------
+Sat Oct 30 22:11:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.1:
+  + Fix files moving between hidden and non-hidden
+  + Update nfo:fileName on content specific graphs too when moved
+  + Update nfo:fileLastModified in content specific graphs
+  + Add nfo:fileSize to the basic set of file info on the graph
+  + Fix tracker-miner-fs-3 crash when finding internal SPARQL
+    errors
+  + Handle symlinks to directories as indexed folders better
+  + Fix tracker-writeback support for musicbrainz release tags and
+    artist
+  + Fix duplicate entries on files created and instantly modified
+  + Fix unintended double extraction with disc-generic extractor
+  + Fixes for coverity warnings
+  + Updated translations.
+- Add missing systemd user service handling in post/preun/postun
+
+-------------------------------------------------------------------
 Wed Sep 22 18:27:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.0:
