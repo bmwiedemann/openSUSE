@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 31 08:27:25 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add func_math_tests_MDEV-26645.diff to avoid test failures in the func_math
+  test on Tumbleweed s390x and ppc64 until MDEV-26645 gets fixed upstream
+
+-------------------------------------------------------------------
 Thu Oct  7 15:02:44 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix socket address in mariadb@.socket file

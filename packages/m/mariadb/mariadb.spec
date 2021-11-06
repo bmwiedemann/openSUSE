@@ -80,6 +80,7 @@ Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch8:	harden_mariadb.service.patch
+Patch9:         func_math_tests_MDEV-26645.diff
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -366,6 +367,11 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%if 0%{?suse_version} > 1500
+%ifarch s390x ppc64 ppc64le
+%patch9
+%endif
+%endif
 
 cp %{_sourcedir}/suse-test-run .
 
