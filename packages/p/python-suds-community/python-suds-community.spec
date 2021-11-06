@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-suds-community
-Version:        0.8.5
+Version:        1.0.0
 Release:        0
 Summary:        Lightweight SOAP client (Jurko's fork)
 License:        LGPL-3.0-or-later

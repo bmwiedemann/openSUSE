@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>925747</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24fa7470d9c54f70b9b685d84548d941</srcmd5>
+    <version>1.0.0</version>
+    <time>1636240745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * python 2.x removal</comment>
+    <requestid>929907</requestid>
+  </revision>
 </revisionlist>
