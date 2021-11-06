@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  5 08:36:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.16
+  * Increase width of size bar depending on terminal size
+  * Set/increment $NCDU_LEVEL variable when spawning a shell
+  * Indicate whether apparent size or disk usage is being displayed
+  * Display setuid, setgid and sticky bits in file flags in extended mode
+  * Fix error handling while reading --exclude-from file
+  * Improve JSON import to allow for several future extensions to the format
+  * Export link count in JSON dumps
+  * Don't export inode in JSON dumps for non-hardlinks
+
+-------------------------------------------------------------------
 Thu Aug 20 11:54:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.15.1
