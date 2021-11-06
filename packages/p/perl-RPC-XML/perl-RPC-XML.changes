@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr  8 03:07:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.82
+   see /usr/share/doc/packages/perl-RPC-XML/ChangeLog
+
+  0.82	Wednesday January  6, 2021, 09:59:00 AM -0800
+  	* Makefile.PL
+  	* lib/RPC/XML/Server.pm
+  	Bump version numbers.
+  	* Makefile.PL
+  	* lib/RPC/XML/Server.pm
+  	* t/40_server.t
+  	* t/40_server_xmllibxml.t
+  	* t/41_server_hang.t
+  	* t/60_net_server.t
+  	* t/util.pl
+  	RT #120472: Applied patch from Petr Písař for fixes to IPv6
+  	support. Full detail in the message for this commit in the git
+  	repository.
+  0.81	Tuesday January  5, 2021, 06:33:00 PM -0800
+  	* MANIFEST
+  	* perlcritic.rc (added)
+  	Add a perlcritic.rc file for testers who run author tests.
+  	* t/40_server.t
+  	* t/40_server_xmllibxml.t
+  	Remove redundant testing and general clean-up. Removed tests of
+  	url() that were just re-testing HTTP::Daemon::url().
+  	* lib/RPC/XML/Client.pm
+  	Parameterize the request-as-string debug feature.
+  	* lib/RPC/XML/Client.pm
+  	Merge pull request #13 from
+  	enrico-sorcinelli/add-request-string. Added xmlrpc request
+  	string as object property. (Enrico Sorcinelli)
+
+-------------------------------------------------------------------
 Thu Mar 11 11:40:19 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add perl(HTTP::Daemon) BuildRequires: so far, this was pulled in

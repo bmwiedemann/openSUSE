@@ -16,37 +16,41 @@
 #
 
 
-Name:           perl-RPC-XML
-Version:        0.80
-Release:        0
 %define cpan_name RPC-XML
+Name:           perl-RPC-XML
+Version:        0.82
+Release:        0
 Summary:        Set of classes for core data, message and XML handling
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJRAY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         RPC-XML-0.77-fixtest.dif
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(HTTP::Daemon)
-BuildRequires:  perl(LWP) >= 5.834
-BuildRequires:  perl(Module::Load) >= 0.24
-BuildRequires:  perl(Scalar::Util) >= 1.33
-BuildRequires:  perl(Test::More) >= 0.94
-BuildRequires:  perl(XML::Parser) >= 2.31
-Requires:       perl(LWP) >= 5.834
-Requires:       perl(Module::Load) >= 0.24
-Requires:       perl(Scalar::Util) >= 1.33
-Requires:       perl(Test::More) >= 0.94
-Requires:       perl(XML::Parser) >= 2.31
-Recommends:     perl(Compress::Raw::Zlib) >= 2.063
-Recommends:     perl(DateTime) >= 0.70
-Recommends:     perl(DateTime::Format::ISO8601) >= 0.07
-Recommends:     perl(XML::LibXML) >= 1.85
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.56
+BuildRequires:  perl(HTTP::Daemon) >= 6.12
+BuildRequires:  perl(HTTP::Message) >= 6.26
+BuildRequires:  perl(IO::Socket::IP)
+BuildRequires:  perl(LWP) >= 6.51
+BuildRequires:  perl(Module::Load) >= 0.36
+BuildRequires:  perl(Scalar::Util) >= 1.55
+BuildRequires:  perl(Test::More) >= 1.302183
+BuildRequires:  perl(XML::Parser) >= 2.46
+Requires:       perl(HTTP::Daemon) >= 6.12
+Requires:       perl(HTTP::Message) >= 6.26
+Requires:       perl(LWP) >= 6.51
+Requires:       perl(Module::Load) >= 0.36
+Requires:       perl(Scalar::Util) >= 1.55
+Requires:       perl(XML::Parser) >= 2.46
+Recommends:     perl(DateTime) >= 1.54
+Recommends:     perl(DateTime::Format::ISO8601) >= 0.15
+Recommends:     perl(XML::LibXML) >= 2.0206
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(HTTP::Daemon)
+# MANUAL END
 
 %description
 The *RPC::XML* package is an implementation of the *XML-RPC* standard. The
@@ -64,13 +68,12 @@ server basis. For these, see RPC::XML::Client and RPC::XML::Server,
 respectively.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
-%patch0 -p1
+%autosetup  -n %{cpan_name}-%{version} -p1
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -81,7 +84,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc ChangeLog ChangeLog.xml README README.apache2
 
 %changelog
