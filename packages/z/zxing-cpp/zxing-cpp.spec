@@ -18,19 +18,30 @@
 
 %define sover 1
 Name:           zxing-cpp
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
 Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
-Source0:        https://github.com/nu-book/zxing-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-GCC-11.patch
+# PATCH-FIX-OPENSUSE cmake-check-system-first.patch -- Search system for needed libraries first
+Patch0:         cmake-check-system-first.patch
+BuildRequires:  pkgconfig
+# Use cmake3 package on SLE12 because cmake is too old (version 3.5)
+%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
+BuildRequires:  cmake3-full >= 3.10
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+%endif
+# only TW has fmt
+%if 0%{?suse_version} > 1500
+# For blackbox tests
+BuildRequires:  cmake(fmt) >= 7.1.2
+%endif
 
 %description
 ZXing ("zebra crossing") is an multi-format 1D/2D barcode image
@@ -61,11 +72,28 @@ other applications.
 %autosetup -p1
 
 %build
-%cmake
+# Use g++-11 to build a C++17 codebase
+# Examples require QT5-base/multimedia, but doing so creates a cycle
+# Blackbox tests require fmt
+%cmake \
+    -DBUILD_EXAMPLES=OFF \
+%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
+    -DCMAKE_CXX_COMPILER=/usr/bin/g++-11 \
+%endif
+%if 0%{?suse_version} < 1550
+    -DBUILD_BLACKBOX_TESTS=OFF \
+%endif
+ ;
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%if 0%{?sle_version}
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%endif
+%ctest
 
 %post -n libZXing%{sover} -p /sbin/ldconfig
 %postun -n libZXing%{sover} -p /sbin/ldconfig

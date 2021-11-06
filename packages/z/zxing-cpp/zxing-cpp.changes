@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov  5 11:58:38 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Do not build examples to avoid a cycle with QT5Multimedia
+
+-------------------------------------------------------------------
+Wed Nov  3 14:42:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use the updated cmake3-full package instead of cmake on SLE12
+- Do not build examples on SLE12
+- Only build blackbox tests on TW
+
+-------------------------------------------------------------------
+Sat May 29 10:37:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.0
+  * new BarcodeFormat names, old ones are deprecated
+  * new ZXingQtCamReader demo app based on QtMultimedia and QtQuick
+  * new QRCode reader, faster and better support for rotated symbols
+  * added Structured Append support for DataMatrix, Aztec and MaxiCode
+  * added DMRE support for DataMatrix
+  * switch to the reimplemented 1D detectors, about 5x faster
+  * a lot faster and more capable isPure detection for all 2D codes
+  * 20% faster ReedSolomon error correcting
+  * PDF417 is faster and supports flipped symbols
+  * reduced false positive rate for UPC/EAN barcodes and improved
+    Add-On symbol handling
+  * proper ECI handling in all 2D barcodes
+  * much improved python wrapper
+  * deprecate the use of ResultMetadata
+- Add cmake-check-system-first.patch
+- Drop upstream merged 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 07:50:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.1. No changelog available.
