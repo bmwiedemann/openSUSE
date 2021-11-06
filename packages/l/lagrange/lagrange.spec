@@ -18,7 +18,7 @@
 
 %define app_id fi.skyjake.Lagrange
 Name:           lagrange
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
@@ -28,6 +28,7 @@ BuildRequires:  cmake
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  zip
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcurl)
@@ -37,8 +38,6 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
-# https://github.com/skyjake/lagrange/issues/369#issuecomment-955632717
-BuildRequires:  zip
 
 %description
 Lagrange is a desktop GUI client for browsing Geminispace. It offers modern
