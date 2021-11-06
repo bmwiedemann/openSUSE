@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 26 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.10
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.10      2021-10-25 20:58:42Z
+      - Remove Authority section from dist.ini (GH#86) (Olaf Alders)
+      - Make URI::mailto parse subaddresses with + sign correctly (GH#89) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Thu Mar  4 03:08:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.09
