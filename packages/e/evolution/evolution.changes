@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 29 18:13:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.1:
+  + GalViewInstanceSaveAsDialog: Do not show the dialog in the
+    init()
+  + By_Company.galview: Correct the column index in the grouping
+    part
+  + ESrvConfigLookup: Use correct extension name for properties
+  + mail-importer: Ensure Message-ID header on imported message
+  + EWebView: Change mouse leave detection code
+  + mail-notification: Use different icon name in the notification
+    under Flatpak
+  + Bugs fixed: glgo#GNOME/evolution#1555,
+    glgo#GNOME/evolution#1586, glgo#GNOME/evolution#1609,
+    glgo#GNOME/evolution#1611, glgo#GNOME/evolution#1612,
+    glgo#GNOME/evolution#1613, glgo#GNOME/evolution#1621,
+    glgo#GNOME/evolution#1623, glgo#GNOME/evolution#1640,
+    glgo#GNOME/evolution#1646, glgo#GNOME/evolution#1649,
+    glgo#GNOME/evolution#1657, glgo#GNOME/evolution#1667,
+    glgo#GNOME/evolution#1672.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 22 12:08:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace CMAKE_SKIP_RPATH=OFF with CMAKE_SKIP_INSTALL_RPATH=OFF

@@ -2097,4 +2097,12 @@ Recommended for 12.3</comment>
   as that should be used with the newest cmake macros (boo#1190880) (forwarded request 927007 from alarrosa)</comment>
     <requestid>927468</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>160cc33348ec516b67263c7c95251f1a</srcmd5>
+    <version>3.42.1</version>
+    <time>1636218913</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 928204 from iznogood)</comment>
+    <requestid>929578</requestid>
+  </revision>
 </revisionlist>
