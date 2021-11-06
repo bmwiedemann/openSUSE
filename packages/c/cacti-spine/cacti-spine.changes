@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  6 16:19:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.19:
+  * Fix 1ssues with polling loop may skip some datasources
+  * Fix ping no longer works due to hostname changes
+  * Fix RRD steps are not always calculated correctly
+  * Fix unable to build when DES no longer supported
+  * Fix IPv6 devices are not properly parsed
+  * Reduce a number of compiler warnings
+  * Fix compiler warnings due to lack of return in thread_mutex_trylock
+  * Fix Spine will not look at non-timetics uptime when sysUpTimeInstance overflows
+  * Improve performance of Cacti poller on heavily loaded systems
+- drop cacti-spine-1.2.18-Fix-non-void-return.patch, upstream
+
+-------------------------------------------------------------------
 Sat Aug 21 07:56:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.18:

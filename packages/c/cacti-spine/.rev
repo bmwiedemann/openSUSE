@@ -263,4 +263,12 @@
     <comment>cacti-spine 1.2.18</comment>
     <requestid>913439</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3c332aeee38c0db2f0dd8f2b4fcd2b46</srcmd5>
+    <version>1.2.19</version>
+    <time>1636240743</time>
+    <user>dimstar_suse</user>
+    <comment>cacti-spine 1.2.19</comment>
+    <requestid>929897</requestid>
+  </revision>
 </revisionlist>
