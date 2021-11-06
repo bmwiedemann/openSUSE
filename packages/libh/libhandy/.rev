@@ -179,4 +179,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920967 from dimstar)</comment>
     <requestid>921646</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f88cce2ec5efb6a8cf13607214d5ead5</srcmd5>
+    <version>1.4.0</version>
+    <time>1636218948</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop passing the no longer user nor recognized option
+  static=false to meson. (forwarded request 929175 from dimstar)</comment>
+    <requestid>929700</requestid>
+  </revision>
 </revisionlist>
