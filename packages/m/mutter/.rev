@@ -1491,4 +1491,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>- Rebase mutter-SLE-bsc984738-grab-display.patch. (forwarded request 926424 from yfjiang)</comment>
     <requestid>926900</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>16a2e843c751ef2c95412efa0005f279</srcmd5>
+    <version>41.1</version>
+    <time>1636218932</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 929557 from iznogood)</comment>
+    <requestid>929606</requestid>
+  </revision>
 </revisionlist>

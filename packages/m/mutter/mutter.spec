@@ -23,14 +23,13 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source:         https://download.gnome.org/sources/mutter/41/%{name}-%{version}.tar.xz
-
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
 # PATCH-FIX-UPSTREAM mutter-disable-cvt-s390x.patch bsc#1158128 fcrozat@suse.com -- Do not search for cvt on s390x, it doesn't exist there
@@ -46,6 +45,9 @@ Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
+%ifnarch s390x
+BuildRequires:  (libxcvt if xorg-x11-server > 21)
+%endif
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server
@@ -118,7 +120,7 @@ Obsoletes:      typelib-1_0-Meta-3_0
 Obsoletes:      libmutter-8-0 <= %{version}
 # mutter-data was essentilly hard-required at the same version, as mutter requires
 # libmutter-<n>-0 (which has a soname bump at every major version change), libmutter
-# required mutter-data >= %{version} and mutter-data required mutter=%{version}.
+# required mutter-data >= %%{version} and mutter-data required mutter=%%{version}.
 Obsoletes:      mutter-data <= %{version}
 
 %description
