@@ -345,4 +345,12 @@
     <comment>update</comment>
     <requestid>915620</requestid>
   </revision>
+  <revision rev="41" vrev="42">
+    <srcmd5>bb49b1bd63b77eee163b57e973febd7e</srcmd5>
+    <version>MACRO</version>
+    <time>1636218938</time>
+    <user>dimstar_suse</user>
+    <comment>2021-11-01</comment>
+    <requestid>929624</requestid>
+  </revision>
 </revisionlist>
