@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-sharp2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,11 @@
 
 %define _name gtk-sharp
 
+%ifnarch ppc64 ppc64le s390x
+%bcond_without monodoc
+%else
+%bcond_with monodoc
+%endif
 Name:           gtk-sharp2
 URL:            https://github.com/mono/gtk-sharp
 Summary:        .Net Language Bindings for GTK+
@@ -34,7 +39,9 @@ BuildRequires:  libglade2-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libtool
 BuildRequires:  mono-devel
+%if %{with monodoc}
 BuildRequires:  monodoc-core
+%endif
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 BuildRequires:  vte-devel
@@ -164,7 +171,9 @@ rm %{buildroot}%{_libdir}/*.*a
 %files -n gtk-sharp2-doc
 %defattr(-, root, root)
 %doc COPYING ChangeLog README
+%if %{with monodoc}
 %{_prefix}/lib/monodoc
+%endif
 
 %files -n glib-sharp2
 %defattr(-, root, root)

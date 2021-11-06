@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  1 19:36:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Disable docs on ppc64 and s390x. Mdoc.exe currently isn't
+  available there.
+
+-------------------------------------------------------------------
 Tue Mar  2 04:01:01 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - glade-sharp2 requires libglade-2_0-0 (boo#1177544)
