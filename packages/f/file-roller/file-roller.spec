@@ -36,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gthread-2.0)
@@ -93,13 +92,12 @@ contained in the archive, and extract files from the archive.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \
 	-D notification=enabled \
 	-D libarchive=enabled \
-	-D magic=enabled
+	%{nil}
 %meson_build
 
 %install

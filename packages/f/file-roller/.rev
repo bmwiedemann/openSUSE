@@ -1174,4 +1174,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909273 from yfjiang)</comment>
     <requestid>909322</requestid>
   </revision>
+  <revision rev="156" vrev="4">
+    <srcmd5>b6bfabebfd701e6c3094836c9f38a775</srcmd5>
+    <version>3.40.0</version>
+    <time>1636218931</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929198 from iznogood)</comment>
+    <requestid>929605</requestid>
+  </revision>
 </revisionlist>

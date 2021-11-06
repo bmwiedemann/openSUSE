@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  4 14:59:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop pass option magic=enabled to meson, no longer needed, nor
+  used.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:29:00 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Jul 30 02:03:59 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop 0001-Fix-use-after-free-in-error-message-reporting.patch on
