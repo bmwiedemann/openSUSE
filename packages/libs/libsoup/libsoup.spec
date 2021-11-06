@@ -93,7 +93,7 @@ This package provides the GObject Introspection bindings for libsoup.
 %package devel
 Summary:        HTTP client/server library for GNOME - Development Files
 Group:          Development/Libraries/GNOME
-Requires:       %{name} = %{version}
+Requires:       %{name}-3_0-0 = %{version}
 Requires:       typelib-1_0-Soup-3_0 = %{version}
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}

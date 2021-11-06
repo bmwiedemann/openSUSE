@@ -1039,4 +1039,14 @@
 - No longer ignore test failure on 32-bit arches, fixed upstream. (forwarded request 927205 from iznogood)</comment>
     <requestid>927470</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>651f5ceaef06700970b4ff0b4bf087a1</srcmd5>
+    <version>3.0.2</version>
+    <time>1636218952</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libsoup-3_0-0 instead of libsoup by in the devel package:
+  defacto the same package, as the library provides the base name,
+  but more explicit and clearer. (forwarded request 929647 from dimstar)</comment>
+    <requestid>929705</requestid>
+  </revision>
 </revisionlist>
