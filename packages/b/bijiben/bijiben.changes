@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  4 14:45:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing option static=false to meson, no longer used nor
+  needed.
+- Replace option update-mimed=false with update_mimedb=false
+  following upstream changes.
+
+-------------------------------------------------------------------
 Mon May 17 07:32:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer own /usr/share/help/C: this is owned by the file system

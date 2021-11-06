@@ -70,8 +70,7 @@ search results from documents.
 
 %build
 %meson \
-	-Dstatic=false \
-	-Dupdate-mimed=false \
+	-Dupdate_mimedb=false \
 	%{nil}
 %meson_build
 
