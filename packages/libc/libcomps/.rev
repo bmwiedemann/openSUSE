@@ -118,4 +118,13 @@
   + Patch: fix-sphinx.patch</comment>
     <requestid>914473</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1434518aae328fc99afd7333c0991cb2</srcmd5>
+    <version>0.1.18</version>
+    <time>1636218798</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.18
+  + Fix several covscan warnings</comment>
+    <requestid>929009</requestid>
+  </revision>
 </revisionlist>
