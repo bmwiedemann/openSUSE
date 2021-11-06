@@ -1427,4 +1427,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 920970 from dimstar)</comment>
     <requestid>921648</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>2ce1e6e8de042218a2250799e9c80521</srcmd5>
+    <version>41.1</version>
+    <time>1636218954</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing libnautilus-extension1 Requires to devel sub-package. (forwarded request 929688 from iznogood)</comment>
+    <requestid>929707</requestid>
+  </revision>
 </revisionlist>
