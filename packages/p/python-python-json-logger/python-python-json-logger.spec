@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-json-logger
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A python library adding a json log formatter
 License:        BSD-2-Clause
