@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct 31 17:49:23 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.3.0
+  * several fixes as outlined here
+    https://www.thunderbird.net/en-US/thunderbird/91.3.0/releasenotes/
+  MFSA 2021-50  (bsc#1192250)
+  * CVE-2021-38503 (bmo#1729517)
+    iframe sandbox rules did not apply to XSLT stylesheets
+  * CVE-2021-38504 (bmo#1730156)
+    Use-after-free in file picker dialog
+  * CVE-2021-38505 (bmo#1730194)
+    Windows 10 Cloud Clipboard may have recorded sensitive user data
+  * CVE-2021-38506 (bmo#1730750)
+    Thunderbird could be coaxed into going into fullscreen mode
+    without notification or warning
+  * CVE-2021-38507 (bmo#1730935)
+    Opportunistic Encryption in HTTP2 could be used to bypass the
+    Same-Origin-Policy on services hosted on other ports
+  * MOZ-2021-0008 (bmo#1667102)
+    Use-after-free in HTTP2 Session object
+  * CVE-2021-38508 (bmo#1366818)
+    Permission Prompt could be overlaid, resulting in user
+    confusion and potential spoofing
+  * CVE-2021-38509 (bmo#1718571)
+    Javascript alert box could have been spoofed onto an
+    arbitrary domain
+  * CVE-2021-38510 (bmo#1731779)
+    Download Protections were bypassed by .inetloc files on Mac OS
+  * MOZ-2021-0007 (bmo#1606864, bmo#1712671, bmo#1730048,
+    bmo#1735152)
+    Memory safety bugs fixed in Thunderbird ESR 91.3
+- Drop unused pkgconfig(gdk-x11-2.0) BuildRequires
+
+-------------------------------------------------------------------
 Fri Oct 22 21:27:02 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.2.1

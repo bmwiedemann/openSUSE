@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          91
-%define mainver        %major.2.1
-%define orig_version   91.2.1
+%define mainver        %major.3.0
+%define orig_version   91.3.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -134,7 +134,6 @@ BuildRequires:  clang6-devel
 %else
 BuildRequires:  clang-devel >= 5
 %endif
-BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
