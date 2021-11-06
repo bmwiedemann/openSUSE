@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -47,13 +53,18 @@ Patch0:         pip-shipped-requests-cabundle.patch
 Patch1:         remove_mock.patch
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       ca-certificates
 Requires:       coreutils
 Requires:       python-setuptools
 Requires:       python-xml
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Recommends:     ca-certificates-mozilla
 BuildArch:      noarch
 %if %{with test}
@@ -146,6 +157,8 @@ donttest+=" or test_from_link_vcs_without_source_dir"
 # of the old binary resulting from the non-update-alternatives-ified package:
 [ -h %{_bindir}/pip ] || rm -f %{_bindir}/pip
 [ -h %{_bindir}/pip3 ] || rm -f %{_bindir}/pip3
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pip
 
 %if !%{with test} && !%{with wheel}
 %post
