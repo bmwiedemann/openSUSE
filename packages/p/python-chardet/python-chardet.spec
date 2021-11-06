@@ -1,7 +1,7 @@
 #
 # spec file for package python-chardet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -34,9 +40,14 @@ URL:            https://github.com/chardet/chardet
 Source0:        https://files.pythonhosted.org/packages/source/c/chardet/chardet-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module hypothesis}
@@ -95,6 +106,10 @@ mv %{buildroot}%{_bindir}/chardetect %{buildroot}%{_bindir}/chardetect-%{$python
 %endif
 
 %if !%{with test}
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative chardetect
+
 %post
 %python_install_alternative chardetect
 
