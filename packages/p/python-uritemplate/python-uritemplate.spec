@@ -1,7 +1,7 @@
 #
 # spec file for package python-uritemplate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 %bcond_without tests
 Name:           python-uritemplate
-Version:        3.0.1
+Version:        4.1.1
 Release:        0
 Summary:        URI Template Expansison
 License:        Apache-2.0

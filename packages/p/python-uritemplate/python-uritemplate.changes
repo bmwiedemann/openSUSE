@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  6 18:27:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  - Add type annotations to uritemplate and distribute them for others to use
+  - Update to a modern documentation theme as well
+  - Drop support for Python 2.7, 3.4, and 3.5
+  - Better support number-like types as values for variables in a template
+
+-------------------------------------------------------------------
 Fri Feb  7 15:44:07 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.0.1

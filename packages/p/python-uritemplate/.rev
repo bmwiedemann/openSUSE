@@ -46,4 +46,16 @@
     <comment></comment>
     <requestid>772470</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a2db12d6a4a1c7039a884e641c3b753</srcmd5>
+    <version>4.1.1</version>
+    <time>1636240751</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  - Add type annotations to uritemplate and distribute them for others to use
+  - Update to a modern documentation theme as well
+  - Drop support for Python 2.7, 3.4, and 3.5
+  - Better support number-like types as values for variables in a template</comment>
+    <requestid>929913</requestid>
+  </revision>
 </revisionlist>
