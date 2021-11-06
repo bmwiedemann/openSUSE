@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Oct 20 12:13:20 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#39
+- fix test suite for 32-bit architectures
+- 3.4
+
+--------------------------------------------------------------------
 Fri Oct 1 13:16:19 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/libx86emu#34
