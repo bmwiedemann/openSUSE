@@ -17,16 +17,17 @@
 
 
 %define lib_version %(echo %{version} | cut -d. -f1-2)
-%define src_version 2.2.0
+
 Name:           mjpegtools
-Version:        2.2.0~beta
+Version:        2.2.1
 Release:        0
 Summary:        MJPEG Video Capture and Processing Tools
 License:        GPL-2.0-only
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://mjpeg.sourceforge.net/
-Source:         https://netix.dl.sourceforge.net/project/mjpeg/mjpegtools/%{src_version}/mjpegtools-%{src_version}.tar.bz2
+Source:         https://sourceforge.net/projects/mjpeg/files/%{name}/%{version}/%{name}-%{version}.tar.gz/download#/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
+
 Patch1:         mjpegtools-vector_alignment.patch
 Patch2:         mjpegtools-getopt.patch
 Patch3:         mjpegtools-writeable_strings.patch
@@ -148,8 +149,7 @@ This package contains all files needed to develop code that uses the
 mjpegtools libraries.
 
 %prep
-%autosetup -N -n %{name}-%{src_version}
-%autopatch -p1
+%autosetup -p1
 
 %build
 sed -i~ '/currently broken/d' mpeg2enc/mpeg2enc.cc
