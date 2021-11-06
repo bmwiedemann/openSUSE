@@ -32,7 +32,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -50,22 +50,10 @@ Patch1:         PackageKit-systemd-timers.patch
 Patch2:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch ngompa13@gmail.com -- Band-aid to deal with OBS producing differently named appstream repodata files
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-cleanup-tmp-files.patch bsc#1169739 gh#hughsie/PackageKit/commit#cf73b01a sckang@suse.com -- Revert "Revert "zypp: Clean up temporary files when PK quits""
-Patch4:         PackageKit-zypp-cleanup-tmp-files.patch
+# PATCH-FIX-UPSTREAM 505.patch -- pk-offline: Add flags to D-Bus invoking methods
+Patch4:         https://patch-diff.githubusercontent.com/raw/PackageKit/PackageKit/pull/505.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch5:         PackageKit-fix-crash-pre-dbus.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-reset-update-mode-after-get-updates.patch gh#hughsie/PackageKit/commit#b208f551 bsc#1180150 sckang@suse.com -- zypp: Reset update mode after getting updates
-Patch6:         PackageKit-zypp-reset-update-mode-after-get-updates.patch
-# PATCH-FIX-UPSTREAM PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch gh#hughsie/PackageKit#449 -- Use dup for upgrades on Tumbleweed with DNF
-Patch7:         PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-initialize-pool.patch gh#hughsie/PackageKit/commit#3efa0c524, bsc#1180597 -- zypp: Make sure pool is initialized at the beginning of some methods
-Patch8:         PackageKit-zypp-initialize-pool.patch
-# PATCH-FIX-UPSTREAM PackageKit-remove-transaction-size-limit.patch gh#hughsie/PackageKit/commit#ff01813 gh#hughsie/PackageKit/commit#ff01813 -- Fix a "too many packages to process" error against full rebuilds
-Patch9:         PackageKit-remove-transaction-size-limit.patch
-# PATCH-FIX-UPSTREAM PackageKit-cancel-transaction-if-daemon-disappears.patch gh#hughsie/PackageKit#464 sckang@suse.com -- Fix hangs in packagekit-glib2 client if daemon crashes
-Patch10:        PackageKit-cancel-transaction-if-daemon-disappears.patch
-# PATCH-FIX-UPSTREAM PackageKit-dnf-ignore-weak-deps.patch gh#dfaggioli/PackageKit#486 gh#Conan-Kudo/PackageKit#488 gh#Conan-Kudo/PackageKit/commit/#ecd4a96  -- dnf-backend: honor install_weak_deps=False if it is there
-Patch11:        PackageKit-dnf-ignore-weak-deps.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-crash-with-empty-search-string.patch gh#hughsie/PackageKit/commit#21ccf49, bsc#1179287 sckang@suse.com -- zypp: Fix crash when search string is NULL
 Patch12:        PackageKit-zypp-fix-crash-with-empty-search-string.patch
 
@@ -94,7 +82,6 @@ BuildRequires:  polkit-devel >= 0.98
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
 BuildRequires:  sqlite-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(libsystemd)
