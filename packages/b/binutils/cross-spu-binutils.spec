@@ -39,6 +39,15 @@ BuildRequires:  zlib-devel
 %endif
 Version:        2.37
 Release:        0
+
+# disable libalternatives for now until it's changed to not
+# introduce cmake/cunit-tests into the bootstrap cycle
+%if 0 && 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 #
 # RUN_TESTS
 %define run_tests %(test ! -f %_sourcedir/RUN_TESTS ; echo $?)
@@ -104,12 +113,17 @@ Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
 Patch40:        binutils-fix-abierrormsg.diff
 Patch41:        binutils-fix-relax.diff
+Patch42:        binutils-compat-old-behaviour.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if %{with libalternatives}
+Requires:       alts
+%else
 PreReq:         update-alternatives
+%endif
 
 %description
 C compiler utilities: ar, as, gprof, ld, nm, objcopy, objdump, ranlib,
@@ -121,7 +135,11 @@ Summary:        The gold linker
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 Requires:       binutils = %{version}-%{release}
+%if %{with libalternatives}
+Requires:       alts
+%else
 PreReq:         update-alternatives
+%endif
 %if 0%{!?cross:1}
 %define gold_archs %ix86 aarch64 %arm x86_64 ppc ppc64 ppc64le s390x %sparc
 %endif
@@ -195,6 +213,9 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%if %{suse_version} < 1550
+%patch42 -p1
+%endif
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -205,6 +226,22 @@ cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 #
 # test_vanilla
 %endif
+# in parallel builds, when the flex or bison inputs are patched (possibly
+# in the ...-branch.diff) it might happen that the dependency tracking
+# of automake is confused and uses the old .c files from srcdir/ld/ while
+# also generating the new .c files in builddir/ld leading to trouble.
+# I haven't found the right entries to ensure this doesn't happen, so
+# simply remove the intermediates
+rm -f ld/ldlex.c
+rm -f ld/ldgram.c ld/ldgram.h
+
+# The 2.37 released tarball contains wrongly pre-generated (empty) man pages
+# so we remove those here as well.  Consider removing for later releases.
+rm -f binutils/doc/*.1
+rm -f binutils/doc/cxxfilt.man
+rm -f gprof/*.1
+rm -f gas/doc/*.1
+rm -f ld/*.1
 
 %build
 %define _lto_cflags %{nil}
@@ -275,6 +312,7 @@ cd build-dir
 	--enable-compressed-debug-sections=gas \
 %endif
 %if %{suse_version} < 1550
+	--disable-x86-used-note \
 	--disable-separate-code \
 %endif
 	--enable-new-dtags \
@@ -287,6 +325,16 @@ cd build-dir
 %endif
 	--enable-obsolete
 
+# we patch headers (bfd-in.h) that are input to other headers
+# which are generated only with --enable-maintainer-mode (which we
+# don't do) or explicitely by make headers, so do this:
+make %{?_smp_mflags} all-bfd TARGET-bfd=headers
+# the above interacts with --enable-pgo-build=lto because all-bfd doesn't
+# have the PGO handling, hence it's config.cache files are wrong
+# remove all of those for reconfigure
+rm */config.cache
+# force reconfiguring
+rm bfd/Makefile
 make %{?_smp_mflags}
 
 %else
@@ -354,6 +402,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS,aarch64-suse-linux"
 %endif
   ${EXTRA_TARGETS:+--enable-targets="${EXTRA_TARGETS#,}"}
 make %{?_smp_mflags} all-bfd TARGET-bfd=headers
+rm */config.cache
 # force reconfiguring
 rm bfd/Makefile
 make %{?_smp_mflags}
@@ -372,7 +421,7 @@ cd build-dir
 %if 0%{?cross:1}
 make -k check CFLAGS="-O2 -g" CXXFLAGS="-O2 -g" CFLAGS_FOR_TARGET="-O2 -g" CXXFLAGS_FOR_TARGET="-O2 -g" || %{make_check_handling}
 %else
-make -k check CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" CXXFLAGS_FOR_TARGET="$RPM_OPT_FLAGS" || %{make_check_handling}
+make -k check CFLAGS="-g $RPM_OPT_FLAGS" CXXFLAGS="-g $RPM_OPT_FLAGS" CFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS" CXXFLAGS_FOR_TARGET="-g $RPM_OPT_FLAGS" || %{make_check_handling}
 %endif
 
 %install
@@ -391,12 +440,24 @@ if [ ! -f "%buildroot/%_bindir/ld.bfd" ]; then
 else
   rm -f "%buildroot/%_bindir/ld";
 fi
+%if ! 0%{with libalternatives}
 mkdir -p "%buildroot/%_sysconfdir/alternatives";
 # Keep older versions of brp-symlink happy
 %if %{suse_version} < 1310
 ln -s "%_bindir/ld" "%buildroot/%_sysconfdir/alternatives/ld"
 %endif
 ln -s "%_sysconfdir/alternatives/ld" "%buildroot/%_bindir/ld";
+%else
+ln -s %{_bindir}/alts "%buildroot/%_bindir/ld";
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ld;
+cat > %{buildroot}%{_datadir}/libalternatives/ld/1.conf <<EOF
+binary=%{_bindir}/ld.gold
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/ld/2.conf <<EOF
+binary=%{_bindir}/ld.bfd
+EOF
+%endif
+
 rm -rf $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
 ln -sf ../../bin/{ar,as,ld,nm,ranlib,strip} $RPM_BUILD_ROOT%{_prefix}/%{HOST}/bin
@@ -468,20 +529,38 @@ rm -f $RPM_BUILD_ROOT%{_prefix}/bin/*-c++filt
 %if 0%{!?cross:1}
 %post
 /sbin/ldconfig
+%if ! %{with libalternatives}
 "%_sbindir/update-alternatives" --install \
 	"%_bindir/ld" ld "%_bindir/ld.bfd" 2
+%endif
 %install_info --info-dir=%{_infodir} %{_infodir}/as.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/bfd.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/binutils.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/gprof.info.gz
 %install_info --info-dir=%{_infodir} %{_infodir}/ld.info.gz
 
+%if ! %{with libalternatives}
 %post gold
 "%_sbindir/update-alternatives" --install \
 	"%_bindir/ld" ld "%_bindir/ld.gold" 1
+%endif
 
 %post -n libctf0 -p /sbin/ldconfig
 %post -n libctf-nobfd0 -p /sbin/ldconfig
+
+%if %{with libalternatives}
+%pre
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.bfd";
+fi;
+
+%pre gold
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.gold";
+fi;
+%endif
 
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/as.info.gz
@@ -489,14 +568,18 @@ rm -f $RPM_BUILD_ROOT%{_prefix}/bin/*-c++filt
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/binutils.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gprof.info.gz
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/ld.info.gz
+%if ! %{with libalternatives}
 if [ "$1" = 0 ]; then
 	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.bfd";
 fi;
+%endif
 
+%if ! %{with libalternatives}
 %preun gold
 if [ "$1" = 0 ]; then
 	"%_sbindir/update-alternatives" --remove ld "%_bindir/ld.gold";
 fi;
+%endif
 
 %postun -n libctf0 -p /sbin/ldconfig
 %postun -n libctf-nobfd0 -p /sbin/ldconfig
@@ -515,7 +598,13 @@ fi;
 %dir %{_libdir}/bfd-plugins
 %{_libdir}/bfd-plugins/libdep.so
 %{_bindir}/*
+%if ! 0%{with libalternatives}
 %ghost %_sysconfdir/alternatives/ld
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/ld
+%{_datadir}/libalternatives/ld/2.conf
+%endif
 %ifarch %gold_archs
 %exclude %{_bindir}/gold
 %exclude %{_bindir}/ld.gold
@@ -534,6 +623,11 @@ fi;
 %doc gold/NEWS gold/README
 %{_bindir}/gold
 %{_bindir}/ld.gold
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/ld
+%{_datadir}/libalternatives/ld/1.conf
+%endif
 %endif
 
 %if 0%{!?cross:1}

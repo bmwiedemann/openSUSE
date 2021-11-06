@@ -56,7 +56,7 @@ index 2e27cf48a8..7162d0cf91 100644
    asection *sinterp;
    bfd *abfd;
    struct bfd_link_hash_entry *ehdr_start = NULL;
-@@ -1572,7 +1597,65 @@ ldelf_before_allocation (char *audit, char *depaudit,
+@@ -1608,7 +1633,67 @@ ldelf_before_allocation (char *audit, char *depaudit,
       by dynamic linking.  */
    rpath = command_line.rpath;
    if (rpath == NULL)
@@ -73,12 +73,14 @@ index 2e27cf48a8..7162d0cf91 100644
 +         fseek (ldso, 0, SEEK_END);
 +         endcur = ftell (ldso);
 +         fseek (ldso, 0, SEEK_SET);
-+         dirs = xmalloc (endcur);
++         dirs = xmalloc (endcur + 1);
 +         if (fread (dirs, 1, endcur, ldso) != (size_t) endcur)
 +           {
 +             free (dirs);
 +             dirs = NULL;
 +           }
++	 else
++	   dirs[endcur] = '\0';
 +       }
 +      if (dirs)
 +       {

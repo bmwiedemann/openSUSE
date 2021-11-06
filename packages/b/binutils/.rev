@@ -1955,4 +1955,40 @@ contain it.
     <comment>- Bump binutils-2.37-branch.diff: fixes PR28138. (forwarded request 910001 from marxin)</comment>
     <requestid>910009</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>ffef0cc81fb93fad8bdf6b9c4c728517</srcmd5>
+    <version>2.37</version>
+    <time>1636218783</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase binutils-2.37-branch.diff: fixes PR28523 aka boo#1188941.
+
+- Fix empty man-pages from broken release tarball [PR28144].
+
+- Update binutils-skip-rpaths.patch with contained a memory corruption
+  (boo#1191473).
+
+- Configure with --disable-x86-used-note on old code streams.
+- Disable libalternatives temporarily for build cycle reasons.
+- make TARGET-bfd=headers again, we patch bfd-in.h
+- This state submitted to SLE12 and SLE15 code streams for annual
+  toolchain update. [jsc#PM-2767, jsc#SLE-21561, jsc#SLE-19618]
+- Bump binutils-2.37-branch.diff to 66d5c7003, to include fixes for
+  PR28422, PR28192, PR28391.  Also adds some s390x arch14
+  instructions [jsc#SLE-18637].
+
+- Using libalternatives instead of update-alternatives.
+
+- Adjust for testsuite fails on older products that configure
+  binutils in different ways, adds  binutils-compat-old-behaviour.diff
+  and adjusts binutils-revert-nm-symversion.diff and
+  binutils-revert-plt32-in-branches.diff.
+
+- Rebase binutils-2.37-branch.diff: fixes PR28523 aka boo#1188941.
+
+- Fix empty man-pages from broken release tarball [PR28144].
+
+- Update binutils-skip-rpaths.patch with contained a memory corruption
+  (boo#1191473).</comment>
+    <requestid>929013</requestid>
+  </revision>
 </revisionlist>

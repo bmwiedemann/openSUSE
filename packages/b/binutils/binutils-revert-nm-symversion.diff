@@ -4,31 +4,60 @@ file with symbol names.  ld errors on the '@' characters.  Until
 those packages are fixed we use this patch.  We have to carry it
 for old code streams forever.
 
-diff --git a/binutils/nm.c b/binutils/nm.c
-index 2637756c647..253714ef179 100644
---- a/binutils/nm.c
-+++ b/binutils/nm.c
-@@ -458,7 +458,7 @@ print_symname (const char *form, struct extended_symbol_info *info,
- 	name = alloc;
-     }
+Index: binutils-2.37/binutils/nm.c
+===================================================================
+--- binutils-2.37.orig/binutils/nm.c
++++ binutils-2.37/binutils/nm.c
+@@ -183,7 +183,7 @@ static int show_version = 0;	/* Show the
+ static int show_synthetic = 0;	/* Display synthesized symbols too.  */
+ static int line_numbers = 0;	/* Print line numbers for symbols.  */
+ static int allow_special_symbols = 0;  /* Allow special symbols.  */
+-static int with_symbol_versions = -1; /* Output symbol version information.  */
++static int with_symbol_versions = 0; /* Output symbol version information.  */
+ static int quiet = 0;		/* Suppress "no symbols" diagnostic.  */
  
--  if (info != NULL && info->elfinfo && with_symbol_versions)
-+  if (info != NULL && info->elfinfo && with_symbol_versions && 0)
-     {
-       const char *version_string;
-       bool hidden;
-diff --git a/ld/testsuite/ld-elf/pr25708.d b/ld/testsuite/ld-elf/pr25708.d
-index 60b8e31807a..1b62e25347e 100644
---- a/ld/testsuite/ld-elf/pr25708.d
-+++ b/ld/testsuite/ld-elf/pr25708.d
-@@ -2,8 +2,9 @@
- #ld: -shared -version-script pr13195.t
- #nm: -D --with-symbol-versions
- #target: *-*-linux* *-*-gnu* arm*-*-uclinuxfdpiceabi
--#xfail: hppa64-*-* ![check_shared_lib_support] 
-+#xfail: *-*-* ![check_shared_lib_support]
- # h8300 doesn't support -shared, and hppa64 creates .foo
-+# our binutils revert the printing of symversions with nm -D
+ /* The characters to use for global and local ifunc symbols.  */
+Index: binutils-2.37/ld/testsuite/ld-elf/shared.exp
+===================================================================
+--- binutils-2.37.orig/ld/testsuite/ld-elf/shared.exp
++++ binutils-2.37/ld/testsuite/ld-elf/shared.exp
+@@ -938,8 +938,7 @@ run_cc_link_tests [list \
+ 	"-fPIC" \
+ 	{pr26302b.c} \
+ 	{{readelf {-sW} pr26302.rd} \
+-	 {nm {-u} pr26302.nd} \
+-	 {nm {-u -D} pr26302.nd} \
++	 {nm {-u --with-symbol-versions} pr26302.nd} \
+ 	 {nm {-u -D --with-symbol-versions} pr26302.nd}} \
+ 	"pr26302b.so" \
+     ] \
+Index: binutils-2.37/gas/testsuite/gas/symver/symver0.d
+===================================================================
+--- binutils-2.37.orig/gas/testsuite/gas/symver/symver0.d
++++ binutils-2.37/gas/testsuite/gas/symver/symver0.d
+@@ -1,4 +1,4 @@
+-#nm: -n
++#nm: -n --with-symbol-versions
+ #name: symver symver0
+ #
+ # The #... and #pass are there to match extra symbols inserted by
+Index: binutils-2.37/gas/testsuite/gas/symver/symver1.d
+===================================================================
+--- binutils-2.37.orig/gas/testsuite/gas/symver/symver1.d
++++ binutils-2.37/gas/testsuite/gas/symver/symver1.d
+@@ -1,4 +1,4 @@
+-#nm: -n
++#nm: -n --with-symbol-versions
+ #name: symver symver1
+ #
+ # The #... and #pass are there to match extra symbols inserted by
+Index: binutils-2.37/gas/testsuite/gas/symver/symver6.d
+===================================================================
+--- binutils-2.37.orig/gas/testsuite/gas/symver/symver6.d
++++ binutils-2.37/gas/testsuite/gas/symver/symver6.d
+@@ -1,4 +1,4 @@
+-#nm: -n
++#nm: -n --with-symbol-versions
+ #name: symver symver6
+ #
  
- #..
- 0+ A VERS_2.0

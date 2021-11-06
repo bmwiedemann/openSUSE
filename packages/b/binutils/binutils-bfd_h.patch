@@ -1,8 +1,10 @@
 Remove the #error to avoid issues with legacy not dealing with this
 
---- bfd/bfd-in.h.orig	2012-11-30 13:44:35.715871571 +0100
-+++ bfd/bfd-in.h	2012-11-30 13:44:43.428871298 +0100
-@@ -25,11 +25,6 @@
+Index: bfd/bfd-in.h
+===================================================================
+--- bfd/bfd-in.h.orig
++++ bfd/bfd-in.h
+@@ -23,11 +23,6 @@
  #ifndef __BFD_H_SEEN__
  #define __BFD_H_SEEN__
  

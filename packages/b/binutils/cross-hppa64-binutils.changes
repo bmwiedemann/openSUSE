@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov  3 08:23:52 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Rebase binutils-2.37-branch.diff: fixes PR28523 aka boo#1188941.
+
+-------------------------------------------------------------------
+Tue Nov  2 15:57:53 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Fix empty man-pages from broken release tarball [PR28144].
+
+-------------------------------------------------------------------
+Mon Nov  1 09:34:38 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update binutils-skip-rpaths.patch with contained a memory corruption
+  (boo#1191473).
+
+-------------------------------------------------------------------
+Fri Oct  8 14:11:44 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Configure with --disable-x86-used-note on old code streams.
+- Disable libalternatives temporarily for build cycle reasons.
+- make TARGET-bfd=headers again, we patch bfd-in.h
+- This state submitted to SLE12 and SLE15 code streams for annual
+  toolchain update. [jsc#PM-2767, jsc#SLE-21561, jsc#SLE-19618]
+- Bump binutils-2.37-branch.diff to 66d5c7003, to include fixes for
+  PR28422, PR28192, PR28391.  Also adds some s390x arch14
+  instructions [jsc#SLE-18637].
+
+-------------------------------------------------------------------
+Fri Sep 10 23:16:12 CEST 2021 - Stefan Schubert schubi@suse.de
+
+- Using libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Wed Sep  8 15:09:58 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Adjust for testsuite fails on older products that configure
+  binutils in different ways, adds  binutils-compat-old-behaviour.diff
+  and adjusts binutils-revert-nm-symversion.diff and
+  binutils-revert-plt32-in-branches.diff.
+
+-------------------------------------------------------------------
 Tue Aug  3 13:36:19 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Bump binutils-2.37-branch.diff: fixes PR28138.
