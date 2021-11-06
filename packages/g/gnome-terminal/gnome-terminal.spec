@@ -17,7 +17,7 @@
 
 
 Name:           gnome-terminal
-Version:        3.42.0
+Version:        3.42.1
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -56,7 +56,7 @@ This package provides the GNOME terminal emulator application.
 Summary:        GNOME Terminal -- Search Provider for GNOME Shell
 Group:          System/X11/Terminals
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-terminal
 This package contains a search provider to enable GNOME Shell to get
@@ -65,7 +65,7 @@ search results from GNOME Terminal.
 %package -n nautilus-extension-terminal
 Summary:        Nautilus Extension to Open Terminal in Folders
 Group:          System/GUI/GNOME
-Supplements:    packageand(nautilus:%{name})
+Supplements:    (nautilus and %{name})
 # nautilus-open-terminal was merged into gnome-terminal source during 3.9 development.
 Provides:       nautilus-open-terminal = %{version}
 Obsoletes:      nautilus-open-terminal < %{version}
@@ -94,7 +94,6 @@ arbitrary folders.
 %doc AUTHORS ChangeLog
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnome-terminal
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.Terminal.metainfo.xml
 %{_datadir}/applications/org.gnome.Terminal.desktop
 %{_libexecdir}/gnome-terminal-server

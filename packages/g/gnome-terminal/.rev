@@ -2302,4 +2302,14 @@
   meson/meson_build/meson_install. (forwarded request 921097 from iznogood)</comment>
     <requestid>921666</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>9127ae2df68daea487143155399b4f5b</srcmd5>
+    <version>3.42.1</version>
+    <time>1636218921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42.1:
+  + Updated translations.
+- Update Supplements to current standard. (forwarded request 928308 from iznogood)</comment>
+    <requestid>929589</requestid>
+  </revision>
 </revisionlist>
