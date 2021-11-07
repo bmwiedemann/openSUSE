@@ -1,6 +1,7 @@
 #
 # spec file for package xsv
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +21,7 @@ Name:           xsv
 Version:        0.13.0
 Release:        0
 Summary:        A fast CSV toolkit written in Rust
-License:        MIT or Unlicense
+License:        MIT OR Unlicense
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/BurntSushi/xsv/
 Source:         https://github.com/BurntSushi/xsv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
