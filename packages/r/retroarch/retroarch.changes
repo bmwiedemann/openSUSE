@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Oct 31 02:45:41 UTC 2021 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to version 1.9.12
+  * COMMAND: Command interface should work again
+  * INPUT/HID: Rewrote the HID deregistration algorithm; it should
+    no longer cause issues when dealing with multiple pads of the
+    same HID/VID combo
+  * INPUT/HID: Fix initialization bug that caused wiimotes to fail
+    to register without an accessory attached
+  * INPUT/HID: Fix Wiimote regression
+  * INPUT/UDEV: Add extra abs check for dolphinbar
+  * INPUT/UDEV: Add relative left mouse button when pointer device
+    is not abs
+  * INPUT/WAYLAND: Fix keyboard input on Wayland - fixes 'Certain
+    cores ignore user input'
+  * NETPLAY: Improvements from Cthulhu
+  * LIBRETRO: Enable SRAM for contentless cores
+  * LIBRETRO: Add environment callback to get the rate retro_run is
+    called - GET_THROTTLE_STATE and RETRO_THROTTLE_UNBLOCKED
+    environment callback
+  * LINUX: Update metadata manifest
+  * MENU/OZONE: New themes - Solarized Light, Solarized Dark
+- Update to version 1.9.11
+  * INPUT: Refactor menu toggle combo button logic to allow quit
+    combo button
+  * INPUT/UDEV: Add mouse relative check and set appropriately to
+    fix issue
+  * LIBRETRO: Add environment callback to enable cores to notify
+    the frontend that a core otion value has changed
+  * STEAM/LINUX: Move to new 'soldier' runtime
+  * WAYLAND: Remove xdg-shell-v6 protocol
+- Update to version 1.9.10
+  * AUDIO/MIXER: Pad sample buffers to prevent potential
+    heap-buffer-overflows when resampling (fixes crash when using
+    30 kHz menu audio files)
+  * AUDIO/LINUX/SNAP: Add JACK support
+  * CHEEVOS: Don't write achievement credentials to overrides
+  * CHEEVOS: Disable slowmotion when enabling hardcore mode
+  * GFX/WIDGETS: New regular widget message appearance
+  * INPUT/MOUSE: Add distinct mouse zero index label for drivers
+    that do not support multimouse
+  * INPUT/RUMBLE: Add generic rumble gain to input settings
+  * INPUT/UDEV/X11: Add workaround to fix keyboard input when
+    using X11 + Udev
+  * LOCALIZATION: Fetch translations from Crowdin
+  * OPENDINGUX/BETA: Disable OpenAL
+  * PLAYLISTS: Add 'Refresh Playlist' option
+  * VIDEO/REFRESH RATE: Automatic PAL/NTSC refresh rate switch
+    where available - as long as the platform display server allows
+    changing refresh rates and the display has the desired refresh
+    rate
+  * VIDEO FILTERS: Add 'Picoscale_256x-320x240' video filter
+
+-------------------------------------------------------------------
 Thu Sep  9 14:00:30 UTC 2021 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 1.9.9
