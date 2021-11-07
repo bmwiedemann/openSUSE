@@ -24,4 +24,41 @@
     <comment></comment>
     <requestid>794553</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09dad3f91d8fb2dc5e187b468f6eb780</srcmd5>
+    <version>0.8.0</version>
+    <time>1636319355</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Add ``backtrack_causes`` to ``get_preference``, which contains information
+    about the requirements involved in the most recent backtrack. This allows
+    the provider to utilise this information to tweak the ordering as well as
+    for recording/reporting conflicts.
+  * When merging a candidate's dependencies, make sure the merge target is
+    up-to-date within the loop, so the merge does not lose information when a
+    candidate returns multiple dependency specifications under one identifier
+    (e.g. specifyiung two dependencies ``a&gt;1`` and ``a&lt;2``, instead of one single
+    ``a&gt;1,&lt;2`` dependency).  `#80 &lt;https://github.com/sarugaku/resolvelib/issues/80&gt;`_
+  * Redesign ``get_preference()`` to include resolution state on dependencies
+    other than the currently working one, to allow the provider to better take
+    account of the global resolver knowledge and determine the best strategy. The
+    provider now can, for example, correctly calculate how far a dependency is
+    from the root node in the graph.  `#74 &lt;https://github.com/sarugaku/resolvelib/issues/74&gt;`_
+  * A new argument ``incompatibilities`` is now passed to the ``find_matches()``
+    hook, which the provider must use to exclude matches from the return value.
+  * Redesign ``find_matches()`` to include resolution state on dependencies other
+    than the currently working one, to handle usages that need to return candidates
+    based on non-local states. One such example is PEP 508 direct URLs specified
+    on a package, which need to be available to the same package specified with
+    extras (which would have a different identifier).
+  * The resolver no longer relies on implicit candidate equality to detect
+    incompatibilities. This is done by an additional ``find_matches()`` argument;
+    see the *Features* section to learn more.
+  * Provide type stubs for most classes. 
+  * Fix a state management bug that causes the resolver to enter an infinite loop
+    in certain backtracking cases.
+  * Fix a performance regression if ``find_matches()`` returns a non-built-in sequence instance.
+  * ``find_matches()`` now may return a ``Callable[[], Iterator[Candidate]]`` to</comment>
+    <requestid>930003</requestid>
+  </revision>
 </revisionlist>
