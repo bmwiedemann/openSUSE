@@ -66,4 +66,12 @@
   * Use custom YAML subclass to be compatible with ruamel_yaml&gt;=0.17</comment>
     <requestid>911189</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0815a0216d1c204a96b8b06ca8631056</srcmd5>
+    <version>0.10.0</version>
+    <time>1636319357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930008</requestid>
+  </revision>
 </revisionlist>

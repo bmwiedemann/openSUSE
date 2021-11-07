@@ -64,8 +64,7 @@ Conflicts:      morituri
 Whipper is an audio CD ripper that aims for accuracy over speed. It
 automatically tags tracks using MusicBrainz data, takes drive offsets into
 account, supports AccurateRip, and can rip certain hidden tracks.
-It is written in Python 2. Whipper was forked from the Morituri project,
-after Morituri development halted.
+Whipper was forked from the Morituri project, after Morituri development halted.
 
 %prep
 %setup -q
@@ -86,7 +85,7 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 pytest whipper/test/
 
 %files
-%doc CHANGELOG.md README
+%doc CHANGELOG.md README.md
 %license LICENSE
 %{_bindir}/accuraterip-checksum
 %{_bindir}/whipper
