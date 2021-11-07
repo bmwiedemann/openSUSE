@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  5 09:17:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.5
+  * search: Ensure a path before using it as a key in the skip table
+  * nemo-view.c: Follow the same invocation rules for bulk renaming
+    as we do for normal renaming.
+  * nemo-file.h: Use the correct icon names for read-only and
+    unreadable emblems.
+  * nemo-window-manager-views.c: When removing a folder, don't close
+    the entire window if that folder is open on another tab.
+
+-------------------------------------------------------------------
 Fri Jul 16 20:15:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.3:
