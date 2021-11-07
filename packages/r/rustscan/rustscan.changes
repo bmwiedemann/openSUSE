@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 04:00:35 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Fri Nov  6 16:55:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
