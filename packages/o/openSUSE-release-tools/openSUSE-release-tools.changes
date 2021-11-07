@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 07 13:56:21 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211107.bab90ef3:
+  * devel-project: make "list" the default command work in Python 3.3
+  * devel-project: Add a func callback to main parser
+
+-------------------------------------------------------------------
 Fri Nov 05 08:30:15 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211105.c4e7e358:
