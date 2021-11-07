@@ -104,7 +104,7 @@
     <package name="alsa-plugins-upmix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-ucm-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="alsa-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
-    <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="alts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="amarok" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-milter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="amavisd-new" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -1637,7 +1637,7 @@
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libadwaitaqt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaio1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libalternatives1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libamtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libao-plugins4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2208,6 +2208,7 @@
     <package name="libkscreen2-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksieve-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libksieve5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libksysguard5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -5169,6 +5170,7 @@
     <package name="fontconfig-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="freetype2-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="fwupd-efi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gcc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcc-info" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gcc11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

@@ -3913,7 +3913,6 @@ unsorted:
   - fwnncom 
   - fwts 
   - fwupd-devel 
-  - fwupd-efi: [x86_64] 
   - fwupdtpmevlog 
   - fxload 
   - fzf 
@@ -4211,6 +4210,7 @@ unsorted:
   - gf2x-devel 
   - gfan 
   - gfbgraph-devel 
+  - gfbgraph-doc 
   - gfio 
   - gflags 
   - gflags-devel 
@@ -4862,8 +4862,6 @@ unsorted:
   - ghc-lifted-base-devel: [x86_64] 
   - ghc-liquid-fixpoint: [x86_64] 
   - ghc-liquid-fixpoint-devel: [x86_64] 
-  - ghc-liquidhaskell: [x86_64] 
-  - ghc-liquidhaskell-devel: [x86_64] 
   - ghc-logict: [x86_64] 
   - ghc-logict-devel: [x86_64] 
   - ghc-lucid: [x86_64] 
@@ -10514,7 +10512,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla16 
+  - libfilezilla22 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11328,7 +11326,7 @@ unsorted:
   - libigfxcmrt7 
   - libigfxcmrt7-32bit: [x86_64] 
   - libilbc0 
-  - libimaevm2: [i586] 
+  - libimaevm3: [i586] 
   - libimagequant-devel 
   - libiml0 
   - libimobiledevice-1_0-6-32bit: [x86_64] 
@@ -14837,7 +14835,6 @@ unsorted:
   - linuxptp 
   - linuxrc 
   - linuxrc-devtools 
-  - liquidhaskell: [x86_64] 
   - lirc-config 
   - lirc-core 
   - lirc-devel 
