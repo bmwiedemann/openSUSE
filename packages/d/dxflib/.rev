@@ -84,4 +84,12 @@
     <comment>- Update to release 3.26.4</comment>
     <requestid>920134</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2a64867b29a9ba5283d4530bc203c685</srcmd5>
+    <version>3.26.4</version>
+    <time>1636319348</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pkgconfig support</comment>
+    <requestid>929984</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,7 @@ URL:            https://qcad.org/en/dxflib-downloads
 Source:         https://qcad.org/archives/dxflib/%name-%version-src.tar.gz
 Patch1:         dxflib-versioning.diff
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 
@@ -69,6 +70,21 @@ install -pm0644 src/*.h "$b/%_includedir/%name/"
 cp -a libdxflib*.so.* "$b/%_libdir/"
 ln -Tsfv "libdxflib-%version.so.1" "$b/%_libdir/libdxflib.so"
 
+# creates support file for pkg-config
+mkdir -p "$b/%_libdir/pkgconfig"
+cat >"$b/%_libdir/pkgconfig/dxflib.pc" <<-"EOF"
+prefix=%_prefix
+exec_prefix=${prefix}
+libdir=${exec_prefix}/%_lib
+includedir=${prefix}/include
+
+Name:           dxflib
+Description:    Library for reading dxf files
+Version:        %version
+Libs:           -L${libdir} -ldxflib
+Cflags:         -I${includedir}/dxflib
+EOF
+
 %check
 %make_build check
 
@@ -82,5 +98,6 @@ ln -Tsfv "libdxflib-%version.so.1" "$b/%_libdir/libdxflib.so"
 %files devel
 %_includedir/%name/
 %_libdir/libdxflib.so
+%_libdir/pkgconfig/%name.pc
 
 %changelog
