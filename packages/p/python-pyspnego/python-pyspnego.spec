@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-pyspnego
 Version:        0.3.1
 Release:        0
@@ -30,12 +29,18 @@ Source:         https://github.com/jborean93/pyspnego/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cryptography
+%if 0%{python_version_nodots} < 37
+Requires:       python-dataclasses
+%endif
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-gssapi >= 1.5.0
 Suggests:       python-ruamel.yaml
 BuildArch:      noarch
@@ -48,6 +53,7 @@ NTLM/SPNEGO/Kerberos tokens into a human readable format.
 
 %prep
 %setup -q -n pyspnego-%{version}
+sed -i '1{/^#!/ d}' src/spnego/__main__.py
 
 %build
 %python_build
@@ -70,6 +76,7 @@ NTLM/SPNEGO/Kerberos tokens into a human readable format.
 %license LICENSE
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/pyspnego-parse
-%{python_sitelib}/*
+%{python_sitelib}/spnego
+%{python_sitelib}/pyspnego-%{version}*-info
 
 %changelog
