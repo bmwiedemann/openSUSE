@@ -4179,4 +4179,18 @@
 - wine-fix-faudio.patch: fix build</comment>
     <requestid>927182</requestid>
   </revision>
+  <revision rev="356" vrev="1">
+    <srcmd5>e5ea1b8fa6548b4f43d8c5ba28315fed</srcmd5>
+    <version>6.21</version>
+    <time>1636319349</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.21 development release
+  - WinSpool, GPhoto, and a few other modules converted to PE.
+  - Better support for inline functions in DbgHelp.
+  - Beginnings of a MSDASQL implementation.
+  - Various bug fixes.
+- update staging to 6.21 release
+- wine-fix-faudio.patch: removed, fixed upstream</comment>
+    <requestid>930000</requestid>
+  </revision>
 </revisionlist>

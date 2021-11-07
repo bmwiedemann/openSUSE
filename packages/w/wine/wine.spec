@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.20
-Version:        6.20
+%define realver 6.21
+Version:        6.21
 Release:        0
 
 %if "%{flavor}" != ""
@@ -143,7 +143,6 @@ Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
 # SUSE specific patches
 # - currently none, but add them here
-Patch0:         wine-fix-faudio.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
 Recommends:     wine-mono >= 6.1.1
@@ -162,7 +161,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.20
+%define staging_version 6.21
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
