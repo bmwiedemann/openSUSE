@@ -17,7 +17,7 @@
 
 
 Name:           libretro-database
-Version:        1.9.1
+Version:        1.9.12
 Release:        0
 Summary:        RetroArch Database
 License:        MIT
