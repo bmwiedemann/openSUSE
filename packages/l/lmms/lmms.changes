@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  6 12:02:56 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Disable VST build until lmms issue boo#1192413 is fixed
+
+-------------------------------------------------------------------
 Tue May 25 14:50:08 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Fix workaround to find the correct libwine directory to fix

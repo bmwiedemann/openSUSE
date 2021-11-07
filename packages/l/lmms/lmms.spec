@@ -26,7 +26,7 @@
 
 %bcond_without  carla
 %bcond_without  crippled_stk
-%bcond_without  wine
+%bcond_with  wine
 %if %{with carla}
 %define carlavers %(carla --version|grep Carla | cut -b 21,22,23,24,25,26)
 %endif
@@ -40,7 +40,9 @@ URL:            https://lmms.io/
 Source0:        https://github.com/LMMS/lmms/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/mjansson/rpmalloc/archive/%{rpmallocrev}.tar.gz
 Source2:        https://github.com/lukas-w/qt5-x11embed/archive/%{qt5x11embedrev}.tar.gz
+%if %{with wine}
 Source3:        lmms-warning
+%endif
 # PATCH-FIX-OPENSUSE Patch for providing proper return code in a function
 Patch0:         lmms-1.2.0-return.patch
 %if %{with crippled_stk}
@@ -53,6 +55,7 @@ Patch3:         lmms-rpmalloc-fpic.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  fltk-devel
@@ -62,6 +65,7 @@ BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libmp3lame-devel
 BuildRequires:  libqt5-qttools
 BuildRequires:  libstk-devel
+BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
 BuildRequires:  pkgconfig(Qt5Core)
@@ -88,7 +92,6 @@ BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(zlib)
 %if %{with wine}
 #Extra packages
-BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++-32bit
 BuildRequires:  libQt5DBus-private-headers-devel
 BuildRequires:  libQt5KmsSupport-devel-static
@@ -101,7 +104,6 @@ BuildRequires:  libQt5PrintSupport-private-headers-devel
 BuildRequires:  libQt5Sql-private-headers-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  libstdc++-devel-32bit
-BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  mtdev-devel
 BuildRequires:  tslib
 BuildRequires:  tslib-devel
@@ -216,9 +218,11 @@ mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions
 cp %{_builddir}/lmms*/doc/bash-completion/lmms %{buildroot}%{_datadir}/bash-completion/completions/lmms
 
 %fdupes -s %{buildroot}/%{_datadir}
+%if %{with wine}
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
 #%%{name}-warning
 cp %{S:3}  %{buildroot}%{_localstatedir}/adm/update-messages/
+%endif
 
 %files
 %doc doc/AUTHORS README.md INSTALL.txt
