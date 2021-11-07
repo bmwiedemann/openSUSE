@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  7 11:52:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * Bugfix release
+
+-------------------------------------------------------------------
 Fri Oct 22 19:01:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - We build gensio with support for SCTP, MDNS and OpenIPMI; let's
