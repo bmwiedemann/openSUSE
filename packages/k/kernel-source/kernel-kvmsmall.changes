@@ -1,4 +1,359 @@
 -------------------------------------------------------------------
+Sun Oct 31 23:59:37 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.15 final
+- refresh configs
+  - drop CONFIG_RESET_PISTACHIO
+- commit 2ab31e7
+
+-------------------------------------------------------------------
+Sun Oct 31 23:48:08 CET 2021 - mkubecek@suse.cz
+
+- config: update and enable armv6hl
+  Update armv6hl configs to 5.15-rc7 and enable them. Where possible, values
+  are taken from armv7hl, the rest is guesswork based on values of similar
+  config options.
+- commit 22c5286
+
+-------------------------------------------------------------------
+Sun Oct 31 23:40:56 CET 2021 - mkubecek@suse.cz
+
+- config: update and enable armv7hl
+  Update armv7hl configs to 5.15-rc7 and enable them. Where possible, values
+  are taken from arm64, the rest is guesswork based on values of similar
+  config options.
+- commit 3b362e7
+
+-------------------------------------------------------------------
+Sun Oct 31 23:29:12 CET 2021 - mkubecek@suse.cz
+
+- config: update and enable arm64
+  Update arm64 configs to 5.15-rc7 and enable them. Where possible, values
+  are taken from x86_64, the rest is guesswork based on values of similar
+  config options.
+- commit 482d5b4
+
+-------------------------------------------------------------------
+Fri Oct 29 17:33:37 CEST 2021 - tiwai@suse.de
+
+- rtw89: Fix variable dereferenced before check 'sta'
+  (bsc#1191321).
+- rtw89: fix return value in hfc_pub_cfg_chk (bsc#1191321).
+- rtw89: remove duplicate register definitions (bsc#1191321).
+- rtw89: fix error function parameter (bsc#1191321).
+- rtw89: remove unneeded semicolon (bsc#1191321).
+- rtw89: fix return value check in rtw89_cam_send_sec_key_cmd()
+  (bsc#1191321).
+- rtw89: Remove redundant check of ret after call to
+  rtw89_mac_enable_bb_rf (bsc#1191321).
+- rtw89: Fix two spelling mistakes in debug messages
+  (bsc#1191321).
+- rtw89: Fix variable dereferenced before check 'sta'
+  (bsc#1191321).
+- rtw89: fix return value in hfc_pub_cfg_chk (bsc#1191321).
+- rtw89: remove duplicate register definitions (bsc#1191321).
+- rtw89: fix error function parameter (bsc#1191321).
+- rtw89: remove unneeded semicolon (bsc#1191321).
+- rtw89: fix return value check in rtw89_cam_send_sec_key_cmd()
+  (bsc#1191321).
+- rtw89: Remove redundant check of ret after call to
+  rtw89_mac_enable_bb_rf (bsc#1191321).
+- rtw89: Fix two spelling mistakes in debug messages
+  (bsc#1191321).
+- commit 719bb03
+
+-------------------------------------------------------------------
+Thu Oct 28 17:01:59 CEST 2021 - ykaukab@suse.de
+
+- config: arm64: enable dpaa2 restool support
+  References: bsc#1191190
+- commit c86f145
+
+-------------------------------------------------------------------
+Wed Oct 27 10:29:29 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.14.15 (bsc#1012628).
+- block/mq-deadline: Move dd_queued() to fix defined but not
+  used warning (bsc#1012628).
+- parisc: math-emu: Fix fall-through warnings (bsc#1012628).
+- sh: pgtable-3level: fix cast to pointer from integer of
+  different size (bsc#1012628).
+- arm: dts: vexpress-v2p-ca9: Fix the SMB unit-address
+  (bsc#1012628).
+- ARM: dts: at91: sama5d2_som1_ek: disable ISC node by default
+  (bsc#1012628).
+- block: decode QUEUE_FLAG_HCTX_ACTIVE in debugfs output
+  (bsc#1012628).
+- xen/x86: prevent PVH type from getting clobbered (bsc#1012628).
+- r8152: avoid to resubmit rx immediately (bsc#1012628).
+- drm/amdgpu/display: fix dependencies for DRM_AMD_DC_SI
+  (bsc#1012628).
+- drm/amdgpu: init iommu after amdkfd device init (bsc#1012628).
+- xtensa: xtfpga: use CONFIG_USE_OF instead of CONFIG_OF
+  (bsc#1012628).
+- xtensa: xtfpga: Try software restart before simulating CPU reset
+  (bsc#1012628).
+- NFSD: Keep existing listeners on portlist error (bsc#1012628).
+- powerpc/lib: Add helper to check if offset is within conditional
+  branch range (bsc#1012628).
+- powerpc/bpf: Validate branch ranges (bsc#1012628).
+- powerpc/security: Add a helper to query stf_barrier type
+  (bsc#1012628).
+- powerpc/bpf: Emit stf barrier instruction sequences for
+  BPF_NOSPEC (bsc#1012628).
+- ASoC: pcm512x: Mend accesses to the I2S_1 and I2S_2 registers
+  (bsc#1012628).
+- ASoC: fsl_xcvr: Fix channel swap issue with ARC (bsc#1012628).
+- ASoC: pcm179x: Add missing entries SPI to device ID table
+  (bsc#1012628).
+- ASoC: cs4341: Add SPI device ID table (bsc#1012628).
+- KVM: arm64: Fix host stage-2 PGD refcount (bsc#1012628).
+- KVM: arm64: Release mmap_lock when using VM_SHARED with MTE
+  (bsc#1012628).
+- netfilter: xt_IDLETIMER: fix panic that occurs when timer_type
+  has garbage value (bsc#1012628).
+- netfilter: nf_tables: skip netdev events generated on netns
+  removal (bsc#1012628).
+- dma-debug: fix sg checks in debug_dma_map_sg() (bsc#1012628).
+- ASoC: wm8960: Fix clock configuration on slave mode
+  (bsc#1012628).
+- ice: Fix failure to re-add LAN/RDMA Tx queues (bsc#1012628).
+- ice: Avoid crash from unnecessary IDA free (bsc#1012628).
+- ice: fix getting UDP tunnel entry (bsc#1012628).
+- ice: Print the api_patch as part of the fw.mgmt.api
+  (bsc#1012628).
+- netfilter: ip6t_rt: fix rt0_hdr parsing in rt_mt6 (bsc#1012628).
+- netfilter: ipvs: make global sysctl readonly in non-init netns
+  (bsc#1012628).
+- sctp: fix transport encap_port update in sctp_vtag_verify
+  (bsc#1012628).
+- lan78xx: select CRC32 (bsc#1012628).
+- tcp: md5: Fix overlap between vrf and non-vrf keys
+  (bsc#1012628).
+- ipv6: When forwarding count rx stats on the orig netdev
+  (bsc#1012628).
+- hamradio: baycom_epp: fix build for UML (bsc#1012628).
+- net: dsa: lantiq_gswip: fix register definition (bsc#1012628).
+- net/sched: act_ct: Fix byte count on fragmented packets
+  (bsc#1012628).
+- NIOS2: irqflags: rename a redefined register name (bsc#1012628).
+- net: dsa: Fix an error handling path in
+  'dsa_switch_parse_ports_of()' (bsc#1012628).
+- powerpc/smp: do not decrement idle task preempt count in CPU
+  offline (bsc#1012628).
+- net: hns3: Add configuration of TM QCN error event
+  (bsc#1012628).
+- net: hns3: reset DWRR of unused tc to zero (bsc#1012628).
+- net: hns3: add limit ets dwrr bandwidth cannot be 0
+  (bsc#1012628).
+- net: hns3: schedule the polling again when allocation fails
+  (bsc#1012628).
+- net: hns3: fix vf reset workqueue cannot exit (bsc#1012628).
+- net: hns3: disable sriov before unload hclge layer
+  (bsc#1012628).
+- net: stmmac: Fix E2E delay mechanism (bsc#1012628).
+- ptp: Fix possible memory leak in ptp_clock_register()
+  (bsc#1012628).
+- e1000e: Fix packet loss on Tiger Lake and later (bsc#1012628).
+- igc: Update I226_K device ID (bsc#1012628).
+- ice: Add missing E810 device ids (bsc#1012628).
+- net/mlx5e: IPsec: Fix a misuse of the software parser's fields
+  (bsc#1012628).
+- net/mlx5e: IPsec: Fix work queue entry ethernet segment checksum
+  flags (bsc#1012628).
+- drm/panel: ilitek-ili9881c: Fix sync for Feixin K101-IM2BYL02
+  panel (bsc#1012628).
+- drm/kmb: Work around for higher system clock (bsc#1012628).
+- drm/kmb: Remove clearing DPHY regs (bsc#1012628).
+- drm/kmb: Disable change of plane parameters (bsc#1012628).
+- drm/kmb: Corrected typo in handle_lcd_irq (bsc#1012628).
+- drm/kmb: Enable ADV bridge after modeset (bsc#1012628).
+- net: enetc: fix ethtool counter name for PM0_TERR (bsc#1012628).
+- net: enetc: make sure all traffic classes can send large frames
+  (bsc#1012628).
+- can: rcar_can: fix suspend/resume (bsc#1012628).
+- can: peak_usb: pcan_usb_fd_decode_status(): fix back to
+  ERROR_ACTIVE state notification (bsc#1012628).
+- can: peak_pci: peak_pci_remove(): fix UAF (bsc#1012628).
+- can: isotp: isotp_sendmsg(): fix return error on FC timeout
+  on TX path (bsc#1012628).
+- can: isotp: isotp_sendmsg(): add result check for
+  wait_event_interruptible() (bsc#1012628).
+- can: isotp: isotp_sendmsg(): fix TX buffer concurrent access
+  in isotp_sendmsg() (bsc#1012628).
+- can: j1939: j1939_tp_rxtimer(): fix errant alert in
+  j1939_tp_rxtimer (bsc#1012628).
+- can: j1939: j1939_netdev_start(): fix UAF for rx_kref of
+  j1939_priv (bsc#1012628).
+- can: j1939: j1939_xtp_rx_dat_one(): cancel session if receive
+  TP.DT with error length (bsc#1012628).
+- can: j1939: j1939_xtp_rx_rts_session_new(): abort TP less than
+  9 bytes (bsc#1012628).
+- ceph: skip existing superblocks that are blocklisted or shut
+  down when mounting (bsc#1012628).
+- ceph: fix handling of "meta" errors (bsc#1012628).
+- tracing: Have all levels of checks prevent recursion
+  (bsc#1012628).
+- ocfs2: fix data corruption after conversion from inline format
+  (bsc#1012628).
+- ocfs2: mount fails with buffer overflow in strlen (bsc#1012628).
+- mm/userfaultfd: selftests: fix memory corruption with thp
+  enabled (bsc#1012628).
+- userfaultfd: fix a race between writeprotect and exit_mmap()
+  (bsc#1012628).
+- mm/mempolicy: do not allow illegal MPOL_F_NUMA_BALANCING |
+  MPOL_LOCAL in mbind() (bsc#1012628).
+- elfcore: correct reference to CONFIG_UML (bsc#1012628).
+- vfs: check fd has read access in kernel_read_file_from_fd()
+  (bsc#1012628).
+- mm/secretmem: fix NULL page->mapping dereference in
+  page_is_secretmem() (bsc#1012628).
+- ALSA: usb-audio: Provide quirk for Sennheiser GSP670 Headset
+  (bsc#1012628).
+- ALSA: hda/realtek: Add quirk for Clevo PC50HS (bsc#1012628).
+- ASoC: DAPM: Fix missing kctl change notifications (bsc#1012628).
+- ASoC: nau8824: Fix headphone vs headset, button-press detection
+  no longer working (bsc#1012628).
+- blk-cgroup: blk_cgroup_bio_start() should use irq-safe
+  operations on blkg->iostat_cpu (bsc#1012628).
+- audit: fix possible null-pointer dereference in
+  audit_filter_rules (bsc#1012628).
+- net: dsa: mt7530: correct ds->num_ports (bsc#1012628).
+- ucounts: Move get_ucounts from cred_alloc_blank to
+  key_change_session_keyring (bsc#1012628).
+- ucounts: Pair inc_rlimit_ucounts with dec_rlimit_ucoutns in
+  commit_creds (bsc#1012628).
+- ucounts: Proper error handling in set_cred_ucounts
+  (bsc#1012628).
+- ucounts: Fix signal ucount refcounting (bsc#1012628).
+- KVM: PPC: Book3S HV: Fix stack handling in
+  idle_kvm_start_guest() (bsc#1012628).
+- KVM: PPC: Book3S HV: Make idle_kvm_start_guest() return 0 if
+  it went to guest (bsc#1012628).
+- powerpc/idle: Don't corrupt back chain when going idle
+  (bsc#1012628).
+- mm, slub: fix mismatch between reconstructed freelist depth
+  and cnt (bsc#1012628).
+- mm, slub: fix potential memoryleak in kmem_cache_open()
+  (bsc#1012628).
+- mm, slub: fix potential use-after-free in slab_debugfs_fops
+  (bsc#1012628).
+- mm, slub: fix incorrect memcg slab count for bulk free
+  (bsc#1012628).
+- KVM: nVMX: promptly process interrupts delivered while in
+  guest mode (bsc#1012628).
+- KVM: SEV: Flush cache on non-coherent systems before
+  RECEIVE_UPDATE_DATA (bsc#1012628).
+- KVM: SEV-ES: rename guest_ins_data to sev_pio_data
+  (bsc#1012628).
+- KVM: SEV-ES: clean up kvm_sev_es_ins/outs (bsc#1012628).
+- KVM: SEV-ES: keep INS functions together (bsc#1012628).
+- KVM: SEV-ES: fix length of string I/O (bsc#1012628).
+- KVM: SEV-ES: go over the sev_pio_data buffer in multiple passes
+  if needed (bsc#1012628).
+- KVM: SEV-ES: reduce ghcb_sa_len to 32 bits (bsc#1012628).
+- KVM: x86: leave vcpu->arch.pio.count alone in
+  emulator_pio_in_out (bsc#1012628).
+- KVM: x86: check for interrupts before deciding whether to exit
+  the fast path (bsc#1012628).
+- KVM: x86: split the two parts of emulator_pio_in (bsc#1012628).
+- KVM: x86: remove unnecessary arguments from
+  complete_emulator_pio_in (bsc#1012628).
+- nfc: nci: fix the UAF of rf_conn_info object (bsc#1012628).
+- isdn: cpai: check ctr->cnr to avoid array index out of bound
+  (bsc#1012628).
+- netfilter: Kconfig: use 'default y' instead of 'm' for bool
+  config option (bsc#1012628).
+- selftests: netfilter: remove stray bash debug line
+  (bsc#1012628).
+- net: bridge: mcast: use multicast_membership_interval for IGMPv3
+  (bsc#1012628).
+- KVM: SEV-ES: Set guest_state_protected after VMSA update
+  (bsc#1012628).
+- drm: mxsfb: Fix NULL pointer dereference crash on unload
+  (bsc#1012628).
+- net: hns3: fix the max tx size according to user manual
+  (bsc#1012628).
+- KVM: MMU: Reset mmu->pkru_mask to avoid stale data
+  (bsc#1012628).
+- kunit: fix reference count leak in kfree_at_end (bsc#1012628).
+- drm/msm/a6xx: Serialize GMU communication (bsc#1012628).
+- gcc-plugins/structleak: add makefile var for disabling
+  structleak (bsc#1012628).
+- iio/test-format: build kunit tests without structleak plugin
+  (bsc#1012628).
+- device property: build kunit tests without structleak plugin
+  (bsc#1012628).
+- thunderbolt: build kunit tests without structleak plugin
+  (bsc#1012628).
+- bitfield: build kunit tests without structleak plugin
+  (bsc#1012628).
+- objtool: Check for gelf_update_rel[a] failures (bsc#1012628).
+- objtool: Update section header before relocations (bsc#1012628).
+- btrfs: deal with errors when checking if a dir entry exists
+  during log replay (bsc#1012628).
+- net: stmmac: add support for dwmac 3.40a (bsc#1012628).
+- ARM: dts: spear3xx: Fix gmac node (bsc#1012628).
+- isdn: mISDN: Fix sleeping function called from invalid context
+  (bsc#1012628).
+- platform/x86: intel_scu_ipc: Increase virtual timeout to 10s
+  (bsc#1012628).
+- platform/x86: intel_scu_ipc: Update timeout value in comment
+  (bsc#1012628).
+- ALSA: hda: avoid write to STATESTS if controller is in reset
+  (bsc#1012628).
+- spi: Fix deadlock when adding SPI controllers on SPI buses
+  (bsc#1012628).
+- spi-mux: Fix false-positive lockdep splats (bsc#1012628).
+- libperf test evsel: Fix build error on !x86 architectures
+  (bsc#1012628).
+- libperf tests: Fix test_stat_cpu (bsc#1012628).
+- perf/x86/msr: Add Sapphire Rapids CPU support (bsc#1012628).
+- Input: snvs_pwrkey - add clk handling (bsc#1012628).
+- ASoC: codec: wcd938x: Add irq config support (bsc#1012628).
+- scsi: iscsi: Fix set_param() handling (bsc#1012628).
+- scsi: storvsc: Fix validation for unsolicited incoming packets
+  (bsc#1012628).
+- scsi: mpi3mr: Fix duplicate device entries when scanning
+  through sysfs (bsc#1012628).
+- scsi: qla2xxx: Fix a memory leak in an error path of
+  qla2x00_process_els() (bsc#1012628).
+- mm/thp: decrease nr_thps in file's mapping on THP split
+  (bsc#1012628).
+- sched/scs: Reset the shadow stack when idle_task_exit
+  (bsc#1012628).
+- net: hns3: fix for miscalculation of rx unused desc
+  (bsc#1012628).
+- net/mlx5: Lag, move lag destruction to a workqueue
+  (bsc#1012628).
+- net/mlx5: Lag, change multipath and bonding to be mutually
+  exclusive (bsc#1012628).
+- drm/kmb: Enable alpha blended second plane (bsc#1012628).
+- drm/kmb: Limit supported mode to 1080p (bsc#1012628).
+- autofs: fix wait name hash calculation in autofs_wait()
+  (bsc#1012628).
+- scsi: core: Fix shost->cmd_per_lun calculation in
+  scsi_add_host_with_dma() (bsc#1012628).
+- s390/pci: cleanup resources only if necessary (bsc#1012628).
+- s390/pci: fix zpci_zdev_put() on reserve (bsc#1012628).
+- bpf, test, cgroup: Use sk_{alloc,free} for test cases
+  (bsc#1012628).
+- net: mdiobus: Fix memory leak in __mdiobus_register
+  (bsc#1012628).
+- e1000e: Separate TGP board type from SPT (bsc#1012628).
+- ARM: 9122/1: select HAVE_FUTEX_CMPXCHG (bsc#1012628).
+- pinctrl: stm32: use valid pin identifier in
+  stm32_pinctrl_resume() (bsc#1012628).
+- Update config files.
+- commit 3416a5a
+
+-------------------------------------------------------------------
+Mon Oct 25 20:41:14 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc7
+- commit 89a05b7
+
+-------------------------------------------------------------------
 Thu Oct 21 07:05:03 CEST 2021 - jslaby@suse.cz
 
 - Update
@@ -261,11 +616,18 @@ Thu Oct 21 06:25:12 CEST 2021 - jslaby@suse.cz
 - commit 6859230
 
 -------------------------------------------------------------------
+Wed Oct 20 16:19:53 CEST 2021 - jack@suse.cz
+
+- Update tags in patches.suse/readahead-request-tunables.patch (VM
+  Performance, bsc#548529 bsc#1189955).
+- commit b531271
+
+-------------------------------------------------------------------
 Wed Oct 20 15:53:19 CEST 2021 - tiwai@suse.de
 
 - media: firewire: firedtv-avc: fix a buffer overflow in
   avc_ca_pmt() (CVE-2021-3542 bsc#1184673).
-- commit 08ab8da
+- commit 45f5ddd
 
 -------------------------------------------------------------------
 Wed Oct 20 11:25:06 CEST 2021 - jslaby@suse.cz
@@ -273,6 +635,13 @@ Wed Oct 20 11:25:06 CEST 2021 - jslaby@suse.cz
 - x86/fpu: Mask out the invalid MXCSR bits properly (x86_32
   breakage).
 - commit 565cd48
+
+-------------------------------------------------------------------
+Wed Oct 20 11:14:15 CEST 2021 - msuchanek@suse.de
+
+- kernel-binary.spec: Bump dwarves requirement to 1.22.
+  1.22 is finally released, and it is required for functionality.
+- commit c88d345
 
 -------------------------------------------------------------------
 Tue Oct 19 11:14:43 CEST 2021 - dmueller@suse.com
@@ -291,7 +660,15 @@ Tue Oct 19 11:14:43 CEST 2021 - dmueller@suse.com
 Mon Oct 18 15:56:46 CEST 2021 - tiwai@suse.de
 
 - Update upstream commit id for rtw89 patch (bsc#1191321)
-- commit 8dccb66
+- commit 9587a7b
+
+-------------------------------------------------------------------
+Mon Oct 18 08:25:00 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc6
+- refresh configs
+  - drop SIMPLE_PM_BUS
+- commit b7fe390
 
 -------------------------------------------------------------------
 Sun Oct 17 12:06:12 CEST 2021 - jslaby@suse.cz
@@ -618,7 +995,17 @@ Mon Oct 11 17:36:41 CEST 2021 - mbrugger@suse.com
 Mon Oct 11 15:49:06 CEST 2021 - tiwai@suse.de
 
 - Enable CONFIG_RTW88_DEBUG and CONFIG_RTW89_DEBUG on debug flavors (bsc#1191321)
-- commit a76143b
+- commit d98701e
+
+-------------------------------------------------------------------
+Mon Oct 11 08:27:50 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc5
+- update configs
+  - FIRMWARE_MEMMAP=y (ppc64, ppc64le, s390x)
+  - FW_CFG_SYSFS=m (ppc64)
+  - FB_SIMPLE=n (s390x)
+- commit f616781
 
 -------------------------------------------------------------------
 Sun Oct 10 10:34:14 CEST 2021 - jslaby@suse.cz
@@ -714,7 +1101,7 @@ Fri Oct  8 15:22:18 CEST 2021 - tiwai@suse.de
 
 - iwlwifi: Fix MODULE_FIRMWARE() for non-existing ucode version
   (boo#1191417).
-- commit 6597512
+- commit b3fa747
 
 -------------------------------------------------------------------
 Thu Oct  7 09:53:27 CEST 2021 - jslaby@suse.cz
@@ -1024,11 +1411,17 @@ Tue Oct  5 16:04:12 CEST 2021 - ludwig.nussel@suse.de
 - commit e350c14
 
 -------------------------------------------------------------------
+Mon Oct  4 00:30:43 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc4
+- commit 01d91cd
+
+-------------------------------------------------------------------
 Fri Oct  1 09:22:19 CEST 2021 - tiwai@suse.de
 
 - ALSA: usb-audio: Restrict rates for the shared clocks
   (bsc#1190418).
-- commit d0ace7f
+- commit ffe0c6a
 
 -------------------------------------------------------------------
 Fri Oct  1 08:16:48 CEST 2021 - jslaby@suse.cz
@@ -1310,7 +1703,20 @@ Thu Sep 30 04:53:41 CEST 2021 - mbrugger@suse.com
 
 - arm64: Update config files. (bsc#1185927)
   Set PINCTRL_ZYNQMP as build-in.
-- commit 4ae263c
+- commit 94782db
+
+-------------------------------------------------------------------
+Mon Sep 27 16:46:36 CEST 2021 - trenn@suse.com
+
+- Those are all really old, some of them might have been fixed via BIOS enhancements:
+- Delete patches.suse/acpi_thermal_passive_blacklist.patch. (bsc#1189969)
+- Delete
+  patches.suse/acpi_thinkpad_introduce_acpi_root_table_boot_param.patch. (bsc#1189968)
+- Delete patches.suse/perf_timechart_fix_zero_timestamps.patch. (bsc#1189958)
+- Delete patches.suse/pstore_disable_efi_backend_by_default.patch. (bsc#1189961)
+- Delete
+  patches.suse/x86-apic-force-bigsmp-apic-on-IBM-EXA3-4.patch. (bsc#1189956)
+- commit c421931
 
 -------------------------------------------------------------------
 Mon Sep 27 12:35:22 CEST 2021 - msuchanek@suse.de
@@ -1324,6 +1730,20 @@ Mon Sep 27 08:35:53 CEST 2021 - jslaby@suse.cz
 
 - blacklist.conf: add idxd commit
 - commit 06dbf6b
+
+-------------------------------------------------------------------
+Sun Sep 26 23:30:32 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc3
+- eliminated 3 patches:
+  - patches.rpmify/scripts-sorttable-riscv-fix-undelcred-identifier-EM_.patch
+  - patches.suse/posix-cpu-timers-Fix-spuriously-armed-0-value-itimer.patch
+  - patches.suse/nvmem-nintendo-otp-add-dependency-on-CONFIG_HAS_IOME.patch
+    (still meaningful in upstream but no longer needed four our configs)
+- refresh configs
+  - drop NVMEM_NINTENDO_OTP
+  - i386: drop XEN_PCIDEV_FRONTEND and SWIOTLB_XEN
+- commit e48f187
 
 -------------------------------------------------------------------
 Sun Sep 26 19:11:12 CEST 2021 - jslaby@suse.cz
@@ -1506,6 +1926,12 @@ Sun Sep 26 19:05:29 CEST 2021 - jslaby@suse.cz
 - PCI: pci-bridge-emul: Add PCIe Root Capabilities Register
   (bsc#1012628).
 - commit 94242c6
+
+-------------------------------------------------------------------
+Sat Sep 25 11:07:54 CEST 2021 - msuchanek@suse.de
+
+- rpm/config.sh: Compress modules with zstd (jsc#SLE-21256).
+- commit 66843b7
 
 -------------------------------------------------------------------
 Wed Sep 22 17:44:35 CEST 2021 - msuchanek@suse.de
@@ -1802,6 +2228,18 @@ Tue Sep 21 17:59:30 CEST 2021 - jslaby@suse.cz
   New suse-module-tools were accepted to factory:
   https://build.opensuse.org/request/show/919089
 - commit 6abad1e
+
+-------------------------------------------------------------------
+Mon Sep 20 07:47:39 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc2
+- eliminated 2 patches
+  - patches.suse/memblock-introduce-saner-memblock_free_ptr-interface.patch
+  - patches.suse/tools-bootconfig-define-memblock_free_ptr-to-fix-build-error.patch
+- update configs
+  - ARCH_NR_GPIO (1024 on x86_64, 512 on i386)
+  - drop WARN_DYNAMIC_STACK on s390x
+- commit 05c92eb
 
 -------------------------------------------------------------------
 Sat Sep 18 20:35:21 CEST 2021 - jslaby@suse.cz
@@ -2538,6 +2976,15 @@ Fri Sep 17 14:32:36 CEST 2021 - msuchanek@suse.de
 - commit 413e05b
 
 -------------------------------------------------------------------
+Fri Sep 17 13:34:05 CEST 2021 - mkubecek@suse.cz
+
+- nvmem: nintendo-otp: add dependency on CONFIG_HAS_IOMEM
+  (202108250657.h5CWR7Xf-lkp@intel.com).
+  Fix s390x/zfcpdump build.
+- refresh configs (s390x/zfcpdump: NVMEM_NINTENDO_OTP=n)
+- commit 68ad835
+
+-------------------------------------------------------------------
 Fri Sep 17 11:19:26 CEST 2021 - msuchanek@suse.de
 
 - rpm/kernel-binary.spec: Use only non-empty certificates.
@@ -2573,7 +3020,48 @@ Thu Sep 16 07:45:13 CEST 2021 - jslaby@suse.cz
 
 - posix-cpu-timers: Fix spuriously armed 0-value itimer (timer
   breakage).
-- commit c8203f6
+- commit 2b37340
+
+-------------------------------------------------------------------
+Wed Sep 15 21:46:44 CEST 2021 - vbabka@suse.cz
+
+- tools/bootconfig: Define memblock_free_ptr() to fix build error
+  (Build fix for tools.).
+- commit 890a28b
+
+-------------------------------------------------------------------
+Wed Sep 15 18:14:45 CEST 2021 - mkubecek@suse.cz
+
+- scripts/sorttable: riscv: fix undelcred identifier 'EM_RISCV'
+  error (e8965b25-f15b-c7b4-748c-d207dda9c8e8@i2se.com).
+  Fix build on systems with glibc-devel < 2.24.
+- commit 62f1dd0
+
+-------------------------------------------------------------------
+Wed Sep 15 17:00:40 CEST 2021 - mkubecek@suse.cz
+
+- config: disable ZERO_CALL_USED_REGS
+  This was enable due to a misunderstanding, I thought it was a workaround
+  for a recent CPU vulnerability. Now it rather seems to be just another
+  hardening with questionable gain and measurable performance impact.
+- commit b09844e
+
+-------------------------------------------------------------------
+Wed Sep 15 11:48:44 CEST 2021 - vbabka@suse.cz
+
+- memblock: introduce saner 'memblock_free_ptr()' interface
+  (Fixes memory corruption on boot in 5.15-rc1).
+- commit 4311d55
+
+-------------------------------------------------------------------
+Wed Sep 15 11:39:01 CEST 2021 - vbabka@suse.cz
+
+- config: disable CONFIG_SYSFB_SIMPLEFB
+  The new option in 5.15 is a rename from CONFIG_X86_SYSFB which we had disabled
+  due to bsc#855821. Moreover, enabling CONFIG_SYSFB_SIMPLEFB caused regression
+  on my UEFI desktop - no printk output on screen between grub's loading of
+  kernel and initrd, and a gpu modesetting driver taking over.
+- commit 69dc36e
 
 -------------------------------------------------------------------
 Wed Sep 15 11:07:49 CEST 2021 - jslaby@suse.cz
@@ -3137,11 +3625,139 @@ Wed Sep 15 08:43:50 CEST 2021 - tiwai@suse.de
 - commit ca483c1
 
 -------------------------------------------------------------------
+Mon Sep 13 16:35:48 CEST 2021 - rgoldwyn@suse.com
+
+- Delete patches.suse/apparmor-compatibility-with-v2.x-net.patch (bsc#118997)
+  Apparmor upgraded to v3.x
+- commit a1d1731
+
+-------------------------------------------------------------------
 Mon Sep 13 10:47:02 CEST 2021 - tiwai@suse.de
 
 - Bluetooth: Move shutdown callback before flushing tx and rx
   queue (bsc#1190424).
 - commit 40ccc64
+
+-------------------------------------------------------------------
+Mon Sep 13 09:45:53 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.15-rc1
+- eliminated 36 patches (27 stable, 9 mainline)
+  - patches.kernel.org/*
+  - patches.suse/Bluetooth-avoid-circular-locks-in-sco_sock_connect.patch
+  - patches.suse/Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+  - patches.suse/Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+  - patches.suse/Bluetooth-schedule-SCO-timeouts-with-delayed_work.patch
+  - patches.suse/Bluetooth-switch-to-lock_sock-in-SCO.patch
+  - patches.suse/HID-usbhid-Simplify-code-in-hid_submit_ctrl.patch
+  - patches.suse/crypto-ecc-handle-unaligned-input-buffer-in-ecc_swap.patch
+  - patches.suse/memcg-enable-accounting-of-ipc-resources.patch
+  - patches.suse/watchdog-Fix-NULL-pointer-dereference-when-releasing.patch
+- refresh
+  - patches.suse/add-suse-supported-flag.patch
+  - patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch
+  - patches.suse/suse-hv-guest-os-id.patch
+- disable ARM architectures (need config update)
+- new config options
+  - General setup
+    - CONFIG_WERROR=n
+    - CONFIG_PRINTK_INDEX=y
+  - Processor type and features
+    - CONFIG_PERF_EVENTS_AMD_UNCORE=m
+  - Firmware Drivers
+    - CONFIG_SYSFB_SIMPLEFB=y
+  - Memory Management options
+    - CONFIG_DAMON=n
+  - Networking support
+    - CONFIG_IPV6_IOAM6_LWTUNNEL=n
+    - CONFIG_MCTP=m
+  - File systems
+    - CONFIG_F2FS_IOSTAT=y
+    - CONFIG_NTFS3_FS=m
+    - CONFIG_NTFS3_64BIT_CLUSTER=n
+    - CONFIG_NTFS3_LZX_XPRESS=y
+    - CONFIG_NTFS3_FS_POSIX_ACL=y
+    - CONFIG_SMB_SERVER=m
+    - CONFIG_SMB_SERVER_SMBDIRECT=n
+    - CONFIG_SMB_SERVER_CHECK_CAP_NET_ADMIN=y
+    - CONFIG_SMB_SERVER_KERBEROS5=y
+  - Security options
+    - CONFIG_ZERO_CALL_USED_REGS=y
+  - Cryptographic API
+    - CONFIG_CRYPTO_SM4_AESNI_AVX_X86_64=m
+    - CONFIG_CRYPTO_SM4_AESNI_AVX2_X86_64=m
+    - CONFIG_MODULE_SIG_KEY_TYPE_RSA=y
+    - CONFIG_MODULE_SIG_KEY_TYPE_ECDSA=n
+  - Kernel hacking
+    - CONFIG_FAIL_SUNRPC=n
+  - SCSI device support
+    - CONFIG_SCSI_UFS_HPB=y
+    - CONFIG_SCSI_UFS_FAULT_INJECTION=n
+  - Network device support
+    - CONFIG_NET_VENDOR_LITEX=y
+    - CONFIG_MAXLINEAR_GPHY=m
+    - CONFIG_MHI_WWAN_MBIM=m
+  - Power management
+    - CONFIG_CHARGER_CROS_PCHG=m
+    - CONFIG_SENSORS_AQUACOMPUTER_D5NEXT=m
+    - CONFIG_SENSORS_SBRMI=m
+    - CONFIG_REGULATOR_RTQ2134=m
+    - CONFIG_REGULATOR_RTQ6752=m
+  - Graphics support
+    - CONFIG_DRM_VMWGFX_MKSSTATS=n
+    - CONFIG_DRM_PANEL_WIDECHIPS_WS2401=n
+  - Sound card support
+    - CONFIG_SND_HDA_CODEC_CS8409=m
+    - CONFIG_SND_SOC_AMD_ACP5x=m
+    - CONFIG_SND_SOC_ICS43432=n
+    - CONFIG_SND_SOC_SDW_MOCKUP=m
+  - DMA Engine support
+    - CONFIG_INTEL_IDXD_COMPAT=y
+    - CONFIG_AMD_PTDMA=m
+  - X86 Platform Specific Device Drivers
+    - CONFIG_MERAKI_MX100=m
+    - CONFIG_INTEL_SAR_INT1092=m
+  - IOMMU Hardware Support
+    - CONFIG_IOMMU_DEFAULT_DMA_STRICT=n
+    - CONFIG_IOMMU_DEFAULT_DMA_LAZY=n
+  - Industrial I/O support
+    - CONFIG_SENSIRION_SGP40=n
+    - CONFIG_AD5110=n
+  - Misc devices
+    - CONFIG_I2C_VIRTIO=m
+    - CONFIG_GPIO_VIRTIO=m
+    - CONFIG_DMABUF_SYSFS_STATS=n
+    - CONFIG_VDPA_USER=m
+    - CONFIG_NVMEM_NINTENDO_OTP=m
+  - OF dependent (i386, ppc64/ppc64le, riscv64)
+    - HI6421V600_IRQ=m
+    - LITEX_LITEETH=m
+    - MFD_RSMU_I2C=n
+    - MFD_RSMU_SPI=n
+    - VIDEO_IMX335=m
+    - VIDEO_IMX412=m
+    - VIDEO_OV9282=m
+    - DRM_PANEL_INNOLUX_EJ030NA=n
+    - DRM_PANEL_SAMSUNG_ATNA33XC20=n
+    - DRM_PANEL_SAMSUNG_DB7430=n
+    - COMMON_CLK_XLNX_CLKWZRD=m
+    - DMA_RESTRICTED_POOL=n
+  - i386
+    - CS89x0_ISA=n
+  - ppc64
+    - DEBUG_WX=n
+    - PTDUMP_DEBUGFS=n
+  - s390x
+    - KCSAN=n
+    - KFENCE=y (=n in zfcpdump)
+    - KFENCE_STATIC_KEYS=y
+    - KFENCE_SAMPLE_INTERVAL=0
+    - KFENCE_NUM_OBJECTS=255
+    - KFENCE_STRESS_TEST_FAULTS=0
+  - riscv64
+    - POWER_RESET_TPS65086=y
+    - DRM_PANEL_ILITEK_ILI9341=n
+- commit 8787773
 
 -------------------------------------------------------------------
 Mon Sep 13 09:37:40 CEST 2021 - martin.wilck@suse.com
@@ -14505,6 +15121,12 @@ Sun Apr 11 18:10:28 CEST 2021 - jslaby@suse.cz
   (bsc#1012628).
 - ARM: dts: am33xx: add aliases for mmc interfaces (bsc#1012628).
 - commit 0ea11a6
+
+-------------------------------------------------------------------
+Fri Apr  9 22:32:34 CEST 2021 - msuchanek@suse.de
+
+- Add obsolete_rebuilds_subpackage (boo#1172073 bsc#1191731).
+- commit f037781
 
 -------------------------------------------------------------------
 Fri Apr  9 12:42:23 CEST 2021 - msuchanek@suse.de

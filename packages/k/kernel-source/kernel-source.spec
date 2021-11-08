@@ -17,8 +17,8 @@
 # icecream 0
 
 
-%define srcversion 5.14
-%define patchversion 5.14.14
+%define srcversion 5.15
+%define patchversion 5.15.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -35,9 +35,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.14.14
+Version:        5.15.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2b5383f
+Release:        <RELEASE>.g5a1fa5e
 %else
 Release:        0
 %endif
@@ -48,7 +48,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       %name-srchash-5a1fa5e459da98061f01493a2d0eab3731f49916
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -259,6 +259,7 @@ install -m 644 %_sourcedir/kernel-{module,cert}-subpackage \
 install -m 755 -d $RPM_BUILD_ROOT/usr/lib/rpm/kernel
 install -m 755 %_sourcedir/{splitflist,mergedep,moddep,modflist,kernel-subpackage-build} $RPM_BUILD_ROOT/usr/lib/rpm/kernel
 install -m 644 %_sourcedir/kernel-subpackage-spec $RPM_BUILD_ROOT/usr/lib/rpm/kernel
+install -m 644 %_sourcedir/kernel-spec-macros $RPM_BUILD_ROOT/usr/lib/rpm/kernel
 install -m 644 -T %_sourcedir/kernel-default-base.spec.txt $RPM_BUILD_ROOT/usr/lib/rpm/kernel/kernel-default-base.spec
 %endif
 

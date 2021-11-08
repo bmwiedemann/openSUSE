@@ -17,11 +17,11 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.14
-%define patchversion 5.14.14
+%define srcversion 5.15
+%define patchversion 5.15.0
 %define variant %{nil}
 %define vanilla_only 0
-%define compress_modules xz
+%define compress_modules zstd
 %define compress_vmlinux xz
 %define livepatch livepatch%{nil}
 
@@ -107,9 +107,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.14
+Version:        5.15.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2b5383f
+Release:        <RELEASE>.g5a1fa5e
 %else
 Release:        0
 %endif
@@ -135,7 +135,7 @@ BuildRequires:  modutils
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
 # pahole for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
-BuildRequires:  dwarves >= 1.21
+BuildRequires:  dwarves >= 1.22
 # for objtool
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-2b5383fe758239ef81e1e716e6d695475849520b
-Provides:       kernel-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       kernel-%build_flavor-base-srchash-5a1fa5e459da98061f01493a2d0eab3731f49916
+Provides:       kernel-srchash-5a1fa5e459da98061f01493a2d0eab3731f49916
 # END COMMON DEPS
-Provides:       %name-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       %name-srchash-5a1fa5e459da98061f01493a2d0eab3731f49916
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1364,7 +1364,7 @@ Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
 %endif
 %if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
-Requires:       dwarves >= 1.21
+Requires:       dwarves >= 1.22
 %endif
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
