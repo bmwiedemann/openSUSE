@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyeclib/pyeclib
 Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/License.txt
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  liberasurecode-devel >= 1.4.0
 BuildRequires:  python-rpm-macros

@@ -27,4 +27,12 @@
     <comment></comment>
     <requestid>897203</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c27b09e89426df619c9380e0a25b51ff</srcmd5>
+    <version>1.6.0</version>
+    <time>1636388682</time>
+    <user>dimstar_suse</user>
+    <comment>- six is needed by testsuite</comment>
+    <requestid>930143</requestid>
+  </revision>
 </revisionlist>
