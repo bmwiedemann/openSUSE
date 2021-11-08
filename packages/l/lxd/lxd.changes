@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  8 03:24:36 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.20. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-20-has-been-released/12540
+  boo#1192432
+
+  + Live migration of virtual machines
+  + Network peering for OVN
+  + Network zones (DNS)
+  + SR-IOV acceleration for OVN networking
+  + Linux sysctl configuration on containers
+  + Core scheduling for virtual machines
+  + Cluster member configuration
+  * Improvement to network leases
+
+-------------------------------------------------------------------
 Sun Sep  5 06:43:47 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.18. The full upstream changelog is available from:

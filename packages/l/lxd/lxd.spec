@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        4.18
+Version:        4.20
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
