@@ -31,7 +31,7 @@
 %endif
 
 Name:           bpftrace
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
@@ -50,9 +50,11 @@ BuildRequires:  libxml2-devel
 BuildRequires:  llvm%{llvm_major_version}-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  cmake(cereal)
 BuildRequires:  pkgconfig(libbcc) >= 0.11
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  rubygem(asciidoctor)
 ExcludeArch:    %arm %ix86
 
 %description
@@ -107,6 +109,7 @@ chmod +x %{buildroot}%{_datadir}/bpftrace/tools/*.bt
 
 %files
 %{_bindir}/bpftrace
+%{_bindir}/bpftrace-aotrt
 %{_mandir}/man8/bpftrace.8%{?ext_man}
 %doc README.md docs/
 %license LICENSE
