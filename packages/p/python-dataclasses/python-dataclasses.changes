@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Nov  8 09:51:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8:
+  * Fix ClassVar in .replace() 
+
+-------------------------------------------------------------------
+Sun May 24 08:38:51 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Really enable the testing
+
+-------------------------------------------------------------------
+Thu May  7 20:50:19 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Enable test. 
+
+-------------------------------------------------------------------
+Fri Apr 17 14:31:49 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 0.7)
