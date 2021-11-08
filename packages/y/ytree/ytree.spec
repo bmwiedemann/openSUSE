@@ -17,7 +17,7 @@
 
 
 Name:           ytree
-Version:        2.03
+Version:        2.04
 Release:        0
 Summary:        A filemanager similar to XTree
 License:        GPL-2.0-only
@@ -44,7 +44,7 @@ install -D -m0755 ytree %{buildroot}/%{_bindir}/ytree
 %files
 %license COPYING
 %doc CHANGES README THANKS
-%doc ytree.conf 
+%doc ytree.conf
 %{_bindir}/ytree
 %{_mandir}/man1/ytree.1%{?ext_man}
 
