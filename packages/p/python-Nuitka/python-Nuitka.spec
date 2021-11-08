@@ -105,12 +105,12 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        0.6.14.7
+Version:        0.6.17.4
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://nuitka.net
+URL:            https://nuitka.net
 Source:         https://files.pythonhosted.org/packages/source/N/Nuitka/Nuitka-%{version}.tar.gz
 Source1:        nuitka-rpmlintrc
 BuildRequires:  %{python_module devel}
@@ -119,13 +119,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  scons
 Requires:       gcc-c++
+Requires:       python-Jinja2
+Requires:       python-PyYAML
 Requires:       python-appdirs
 Requires:       python-atomicwrites
 Requires:       python-boltons
 Requires:       python-devel
 Requires:       scons
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
@@ -134,6 +136,8 @@ Recommends:     strace
 Suggests:       execstack
 Suggests:       gdb
 Suggests:       libfuse2
+Suggests:       python-glob2
+Suggests:       python-zstd
 BuildArch:      noarch
 # SECTION Testing requirements
 %if %{with test_clang}
@@ -142,19 +146,25 @@ BuildRequires:  clang
 %if %{with test_gcc} || %{with test_clang}
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module boltons}
+BuildRequires:  %{python_module glob2}
 BuildRequires:  %{python_module glfw}
+BuildRequires:  %{python_module gtk if (%python-base with python-base)}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 BuildRequires:  %{python_module passlib}
-#BuildRequires: %%{python_module pendulum}
-BuildRequires:  %{python_module pycairo}
+BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module pmw}
+BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module rsa}
@@ -163,14 +173,13 @@ BuildRequires:  %{python_module tk}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xml}
+BuildRequires:  %{python_module zstd}
 BuildRequires:  ccache
 BuildRequires:  chrpath
+BuildRequires:  openSUSE-release
 BuildRequires:  gdb
 BuildRequires:  strace
 BuildRequires:  tk
-BuildRequires:  %{python_module gtk if (%python-base with python-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 # pyside2 has working tests, however it exists on few arch
 #BuildRequires:  python3-pyside2
 # AppImageKit not available in Factory yet
@@ -194,10 +203,21 @@ used in the same way as pure Python objects.
 # De-vendor
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/atomicwrites/
-rm -r nuitka/build/inline_copy/tqdm/
+rm -r nuitka/build/inline_copy/jinja2/
+rm -r nuitka/build/inline_copy/markupsafe/  # dep of Jinja2
+rm -r nuitka/build/inline_copy/yaml
+rm -r nuitka/build/inline_copy/yaml_27/
+rm -r nuitka/build/inline_copy/yaml_35/
+
 # SCons has copies here that are automatically excluded, but remove them to be sure
 rm -r nuitka/build/inline_copy/lib/scons*/
 rm nuitka/build/inline_copy/bin/scons.py
+
+# De-vendor optional dependencies
+rm -r nuitka/build/inline_copy/tqdm/
+rm -r nuitka/build/inline_copy/zstd/  # 'Onefile' feature
+
+rm -r nuitka/build/inline_copy/glob2/  # Only needed for Python <3.5
 
 # Ensure there are no other inline copies
 rm -r nuitka/build/inline_copy/clcache/  # Only needed for Windows
@@ -207,7 +227,7 @@ rmdir nuitka/build/inline_copy/bin/
 rmdir nuitka/build/inline_copy/lib/
 rmdir nuitka/build/inline_copy/ || (ls nuitka/build/inline_copy/ && exit 1)
 
-# De-vendor https://github.com/Nuitka/Nuitka/issues/967
+# De-vendor backwards compatibility https://github.com/Nuitka/Nuitka/issues/967
 echo 'from collections import OrderedDict' > nuitka/containers/odict.py
 echo 'from boltons.setutils import IndexedSet as OrderedSet' > nuitka/containers/oset.py
 
@@ -215,20 +235,10 @@ sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_r
 
 # Allow these tests to run
 # https://github.com/Nuitka/Nuitka/issues/965
-sed -Ei 's/(Boto3Using|NumpyUsing|PySideUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
-
-# - Boto3Using needs BR boto3, and moto which
-#   is not available on many arch, and test fails with
-# ModuleNotFoundError: No module named 'moto.s3'
-rm tests/standalone/Boto3Using.py
+sed -Ei 's/(NumpyUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
 
 # - NumpyUsing fails
-rm tests/standalone/NumpyUsing.py
-
-# Pendulum fails with OOM in pyparsing on most arch, except for s390x,
-# with clang, and a new error in 0.6.13:
-# https://github.com/Nuitka/Nuitka/issues/1037
-rm tests/standalone/PendulumUsing.py
+#rm tests/standalone/NumpyUsing.py
 
 # adjust mtime so that deduplicating the cache files after install does not make them inconsistent
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
@@ -277,33 +287,28 @@ sed -i '1 s/python3/$python /' build/testbin/*
 export SCONS_LIB_DIR=$PWD/my-scons
 export PATH=$PWD/build/testbin:$PATH
 
-# Use `export CC=clang` to force using clang
-# which has known failures
-# https://github.com/Nuitka/Nuitka/issues/960
-
-# Reflection tests are very time consuming and not helpful for smoke tests
-
 %{python_expand #
 
 %if %{with test_clang}
 
-# FlaskUsing OOM in LLVM on Python 3.6 and 3.8 with clang
+# clang with debug
+
+# Use `export CC=clang` to force using clang
+# which has known failures
+
+# FlaskUsing et al OOM in LLVM on Python 3 with clang
 # https://github.com/Nuitka/Nuitka/issues/960
 # Also numpy causes the opengl tests to OOM
-mv tests/standalone/FlaskUsing.py /tmp
-mv tests/standalone/OpenGLUsing.py /tmp
-mv tests/standalone/PandasUsing.py /tmp
-
-# https://github.com/Nuitka/Nuitka/issues/1057
-if [[ "$python" == "python3.8" || "$python" == "python3.9" ]]; then
-  mv tests/standalone/RsaUsing.py /tmp
+if [[ "$python" != "python2" ]]; then
+  mv tests/standalone/FlaskUsing.py /tmp
+  mv tests/standalone/OpenGLUsing.py /tmp
+  mv tests/standalone/PandasUsing.py /tmp
+  mv tests/standalone/PendulumUsing.py /tmp
 fi
-
-# clang with debug
 
 export NUITKA_EXTRA_OPTIONS="--debug"
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
+CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -329,7 +334,7 @@ fi
 
 export NUITKA_EXTRA_OPTIONS=""
 
-CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
+CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
@@ -345,15 +350,13 @@ rm -r /tmp/* ||:
 
 %endif
 %if %{with test_gcc}
-# gcc with debug
+# gcc without debug
+# Please add/remove --debug periodically as many bugs
+# have been found with/without this flag.
 
-# PandasUsing on ppc64 regularly fails in various modules like
-# `scons: *** [module.pandas.io.formats.style.o] Error 1`
-mv tests/standalone/PandasUsing.py /tmp
+export NUITKA_EXTRA_OPTIONS=""
 
-export NUITKA_EXTRA_OPTIONS="--debug"
-
-CC=gcc $python ./tests/run-tests --skip-reflection-test --no-other-python
+CC=gcc $python ./tests/run-tests --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
 %if 0%{?suse_version} >= 1550
