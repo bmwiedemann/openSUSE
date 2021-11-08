@@ -7,4 +7,12 @@
     <comment>Submit new package rustup</comment>
     <requestid>924303</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6bb25f5518aed6240b17490ae1bf412</srcmd5>
+    <version>1.24.3~git1.0a74fef5</version>
+    <time>1636388632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928441</requestid>
+  </revision>
 </revisionlist>

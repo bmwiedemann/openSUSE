@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  1 00:37:07 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add ownership of directories that are considered unowned in leap15.3
+
+-------------------------------------------------------------------
+Mon Oct 11 04:25:24 UTC 2021 - william.brown@suse.com
+
+- Apply patch:
+  * Symlink rustup-init when in no self update mode
+- Add requires on gcc so that system linker is present as a dependency
+
+-------------------------------------------------------------------
+Sat Oct  9 15:42:41 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Add symlink to rustup-init. rustup and rustup-init are the same
+  binary, but that binary behaves diferently based on the name it's
+  executed by.
+  rustup-init takes care of the initial setup, which includes
+  setting PATH, modifying .bashrc etc. It's supposed to be called
+  only once.
+  rustup doesn't perform those steps and it only manages
+  toolchains. It can be used the entire time.
+- Install bash and zsh completion.
+
+-------------------------------------------------------------------
 Thu Oct  7 04:59:11 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update rustup to be primary replacement to rls and other developer tools
