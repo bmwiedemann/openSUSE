@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 11:04:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six dependency declaration 
+
+-------------------------------------------------------------------
 Tue Oct  5 12:35:19 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives. 
