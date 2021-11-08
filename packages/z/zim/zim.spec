@@ -35,7 +35,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3
 BuildRequires:  typelib-1_0-Gtk-3_0
 BuildRequires:  update-desktop-files
-Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       python3-pyxdg
 Requires:       xdg-utils
 # for the version control plugin

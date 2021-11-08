@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  8 13:51:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace python3-gobject with python3-gobject-Gdk Requires. This
+  should fix boo#1188958.
+
+-------------------------------------------------------------------
 Sat Oct 16 13:29:14 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 0.74.2:
