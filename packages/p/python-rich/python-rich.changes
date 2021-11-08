@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Nov  7 18:35:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 10.13.0
+  Added
+  * Added json.dumps parameters to print_json.
+  Fixed
+  * Fixed an edge case bug when console module try to detect if
+    they are in a tty at the end of a pytest run.
+  * Fixed issue with TERM env vars that have more than one hyphen.
+  * Fixed missing new line after progress bar when terminal is not
+    interactive.
+  * Fixed exception in IPython when disabling pprint with %pprint.
+  * Fixed issue where values longer than the console width
+    produced invalid JSON.
+  * Fixes trailing comma when pretty printing dataclass with last
+    field repr=False.
+  Changed
+  * Markdown codeblocks now word-wrap #1515
+
+-------------------------------------------------------------------
+Mon Oct 25 21:30:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.12.0
+  Updated
+  * Official Py3.10 release
+  Fixed
+  * Fixed detection of custom repr when pretty printing dataclasses
+- Update to version 10.11.0
+  * Added two new options to Tracebacks, to hide framework code,
+    and guard against very long tracebacks.
+- Update to version 10.10.0
+  * Added stdin support to rich.json
+  * Fixed pretty printing of objects with fo magic with getattr.
+- Update to version 10.9.0
+  * This release highlights JSON keys with a different color
+- Update to version 10.8.0
+  * This release adds pretty printing of JSON
+
+-------------------------------------------------------------------
+Fri Aug 20 11:34:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.7.0
+  * https://github.com/willmcgugan/rich/releases/tag/v10.7.0
+
+-------------------------------------------------------------------
 Tue May 18 16:01:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.2.1
