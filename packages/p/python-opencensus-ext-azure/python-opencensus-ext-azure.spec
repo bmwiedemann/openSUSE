@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-ext-azure
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,42 @@
 #
 
 
-%define repo_version 0.7.7
+%define repo_version 0.8.0
+%if 0%{?suse_version} >= 1500
+# mirror python-azure-core
+%define skip_python2 1
+%bcond_with python2
+%else
+%bcond_with python2
+%endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-opencensus-ext-azure
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        OpenCensus Azure Monitor Exporters
 License:        Apache-2.0
 URL:            https://github.com/census-instrumentation/opencensus-python
 Source:         https://github.com/census-instrumentation/opencensus-python/archive/v%{repo_version}.tar.gz#/opencensus-%{repo_version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module opencensus}
-BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module requests}
+# PATCH-FIX-UPSTREAM opencensus-pr1002-remove-mock.patch -- gh#census-instrumentation/opencensus-python#1002
+Patch0:         https://github.com/census-instrumentation/opencensus-python/pull/1002.patch#/opencensus-pr1002-remove-mock.patch
+BuildRequires:  %{python_module azure-core >= 1.12.0}
+BuildRequires:  %{python_module azure-identity >= 1.5.0}
+BuildRequires:  %{python_module opencensus >= 0.7.13}
+BuildRequires:  %{python_module psutil >= 5.6.3}
+BuildRequires:  %{python_module requests >= 2.19.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
+BuildRequires:  python-mock
+BuildRequires:  python-unittest2
+%endif
 BuildArch:      noarch
+Requires:       python-azure-core >= 1.12.0
+Requires:       python-azure-identity >= 1.5.0
+Requires:       python-opencensus >= 0.7.13
+Requires:       python-psutil >= 5.6.3
+Requires:       python-requests >= 2.19.0
 %python_subpackages
 
 %description
@@ -40,6 +59,9 @@ OpenCensus Azure Monitor Exporters
 
 %prep
 %setup -q -n opencensus-python-%{repo_version}/contrib/opencensus-ext-azure
+pushd ../..
+%patch0 -p1
+popd
 # for discovery to work
 touch tests/__init__.py
 
@@ -64,6 +86,9 @@ rm -rf %{buildroot}%{$python_sitelib}/opencensus/ext/__pycache__
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license ../../LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/opencensus
+%dir %{python_sitelib}/opencensus/ext
+%{python_sitelib}/opencensus/ext/azure
+%{python_sitelib}/opencensus_ext_azure-%{version}*-info
 
 %changelog
