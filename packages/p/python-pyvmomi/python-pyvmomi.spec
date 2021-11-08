@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyvmomi
-Version:        7.0.2
+Version:        7.0.3
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0

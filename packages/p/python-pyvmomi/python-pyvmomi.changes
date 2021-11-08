@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 25 20:06:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.3
+  * Added new bindings to support vSphere 7.0U3. Includes updates
+    to VIM, PBM, EAM and SMS namespaces.
+  * New features of vSphere 7.0U3 based on REST APIs are available
+    via the vSphere Automation SDK for Python.
+  * Outdated samples are removed. Community samples project:
+    https://github.com/vmware/pyvmomi-community-samples
+  * Bindings files are renamed to _typeinfo_{namespace}.py
+  * "stable" version alias is removed
+  * "public" version alias is renamed to "LTS"
+
+-------------------------------------------------------------------
 Fri May 28 10:00:57 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
