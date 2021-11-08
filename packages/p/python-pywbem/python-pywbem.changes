@@ -1,4 +1,281 @@
 -------------------------------------------------------------------
+Fri Oct 22 19:45:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  * Unsupported CIM infrastructure versions returned in CIM-XML
+    responses from WBEM servers are now raised as a new exception
+    `pywbem.CIMVersionError`, and were previously raised as
+    `pywbem.CIMXMLParseError`. Unsupported DTD versions and CIM-XML
+    protocol versions returned in CIM-XML responses from WBEM
+    servers are now raised as new exceptions
+    `pywbem.DTDVersionError` and `pywbem.ProtocolVersionError`, and
+    were previously ignored by pywbem. Since these new exceptions
+    are derived from `pywbem.VersionError` which is derived from
+    `pywbem.VersionError`, this change is only incompatible if such
+    unsupported versions were specifically handled by users.
+  * The `pywbem.WBEMServer.get_selected_profiles()` method now
+    raises `pywbem.ModelError` instead of `KeyError` when required
+    properties were found to be missing. This is an incompatible
+    change for users that catch this exception. (related to issue
+    #2580).
+  * The operation recorder support added in pywbem 0.9 as an
+    experimental feature was changed to become internal. As part of
+    this, the "WBEM operation recording" section has been removed
+    from the documentation, the operation recorder specific classes
+    are no longer documented, and the operation recorder specific
+    attributes and methods of the 'WBEMConnection' class have been
+    declared to be internal and have been removed from the
+    documentation. The logging support which uses the operation
+    recorder remains publicly available. If you are using the
+    operation recorder, please create an issue in the issue tracker
+    describing how you use it.
+  * MOF compiler: Fixed bug where MOF compiler did not correctly
+    install a CIM schema in a non-default namespace because it
+    tried to get the qualifiers from the default namespace. (see
+    issue #2502)
+  * Test: Changed dependency to 'typed-ast' to match the needs of
+    'astroid' and to install it only on CPython. This allows
+    re-enabling PyPy3 on Travis.
+  * Test: Pinned psutil to <=5.6.3 on PyPy2+3 to avoid an
+    installation error.
+  * Test: Increased the minimum version of 'pyzmq' on Python 3.9 to
+    19.0.0 to avoid an installation error.
+  * Test: Circumvented unicode issue with
+    lxml.etree.fromstring()/XML() on Python 3.9 by passing in
+    binary strings.
+  * Test: Adjusted _format()/_ascii2() testcases to PyPy3 behavior
+    with binary vs unicode results.
+  * Test: Suppressed pylint warning about 'tracemalloc' methods on
+    PyPy.
+  * Test: Disabled leaktest in travis also on PyPy3 (in addition to
+    PyPy2).
+  * Test: Disabled 'make resourcetest' in Travis on Pypy2+3, and
+    suppressed Pylint issues about using 'tracemalloc' methods and
+    disabled its unit tests.
+  * Fixed the bug that pywbem allowed reference typed CIMQualifier
+    and CIMQualifierDeclaration objects. DSP0004 disallows
+    reference types on qualifiers and qualifier declarations. This
+    fix now causes CIM-XML responses received from a WBEM server
+    with reference typed qualifier values and qualifier
+    declarations to raise `pywbem.CIMXMLParseError` from
+    `WBEMConnection` operations.
+  * Fixed a `DeprecationWarning` issued by urllib3 about using the
+    `whitelist_methods` parameter of `Retry`.
+  * Security: Increased minimum version of 'PyYAML' to 5.2 on
+    Python 3.4 and to 5.3.1 on Python 2.7 and >=3.5 to address
+    security issues reported by safety. The relevant functions of
+    'PyYAML' are not used by pywbem, though.
+  * Security: Increased minimum version of 'urllib3' to 1.24.2 on
+    Python 3.4 and to 1.25.9 on Python 2.7 and >=3.5 to address
+    security issues reported by safety. To support these versions
+    of 'urllib3', increased minimum version of 'requests' to 2.20.1
+    on Python 3.4 and to 2.22.0 on Python 2.7 and >=3.5.
+  * Security: Increased minimum versions of several packages that
+    are needed only for test or development of pywbem to address
+    security issues reported by safety: requests-toolbelt to 0.8.0;
+    lxml to 4.6.2 (except for Python 3.4); pylint to 2.5.2 and
+    astroid to 2.4.0 on Python >=3.5; typed-ast to 1.3.2 on Python
+    3.4; twine to 3.0.0 on Python >=3.6; pkginfo to 1.4.2; bleach
+    to 3.1.2 on Python 3.4 and to 3.1.4 on Python 2.7 and Python
+    >=3.5.
+  * Fixed issue on GitHub Actions with macos by no longer running
+    "brew update" in pywbem_os_setup.sh. (issue #2544)
+  * Docs: Fixed incorrect attribute name 'provider_classnames' in
+    method provider example. (issue #2564)
+  * Mitigated the coveralls HTTP status 422 by pinning
+    coveralls-python to <3.0.0.
+  * Test: Add tests to test_mof_compiler to test for errors where
+    the namespace name component of the namespace pragma is
+    missing.
+  * In `CIMNamespaceProvider.post_register_setup()`, fixed an
+    `AttributeError` when accessing the 'Name' property of a CIM
+    instance (related to issue #2580).
+  * In the `MOFCompiler` class, fixed that if a MOF instance
+    already exists, the ModifyInstance operation failed because the
+    instance path was not specified. The fix is to construct the
+    instance path from the key properties in instance specified in
+    MOF. That fix has the limitation that it does not account for
+    instance providers that add key properties or that ignore
+    provided key properties (e.g. InstanceID). (issue #2586)
+  * Corrected issue in pywbem_mock where DeleteQualifier() was not
+    checking whether the qualifier was used in any classes in the
+    namespace before being deleted. (see #2585)
+  * Fixed an incorrect calculation of the min/max values for the
+    server response time in the statistics support of pywbem (issue
+    #2599)
+  * Security - Add safety issue 40072 (lxml version 4.6,3) to
+    safety ignore list. No change to pywbem since we apparently do
+    not use the affected component (see issue #2645)
+  * Test: Pinned decorator package to python <=5.0.0 on Python
+    2+3.4 because decorator 5.0.0 does not support python < 3.5
+    (see issue #2647)
+  * Fix pywem_mock issue with Delete class not calling providers to
+    handle the DeleteInstance (see issue #2643)
+  * Test: Workaround for BadStatusLine issue in
+    test_WBEMListener_send_indications test function. This is not a
+    fix for the root cause of the issue. For details, see pywbem
+    issue #2659.
+  * Fixed installation of 'pywinpty' package on Python 2.7 by
+    pinning it to <1.0. It failed because it does not declare its
+    supported Python versions. (see issue #2680)
+  * Fixed that the test workflow ignored errors that occurred
+    during 'make install' and 'make develop', by splitting the
+    multiple commands in these steps into separate steps.
+  * Finalized the pywbem mock support. (issue #2651)
+  * Logging: Added a value 'off' for the log destination in the
+    ``pywbem.configure_logging()`` function that disables logging.
+    (part of issue #86)
+  * Improved exception handling during the parsing of CIM-XML
+    responses received from a WBEM server. Exceptions that were
+    raised as TypeError or ValueError during the creation of CIM
+    objects that are part of the operation result, are now raised
+    as pywbem.CIMXMLParseError. Note that this is not an
+    incompatible change because users were already potentially
+    getting pywbem.CIMXMLParseError exceptions in other cases. (see
+    issue #2512)
+  * Test: Added CIM-XML testcases in the area of instance paths.
+    (see issue #2514)
+  * Docs: Clarified that `pywbem.type_from_name()` returns
+    `CIMInstanceName` for type name "reference", even though for
+    use in CIM method parameters, `CIMClassName` is also valid.
+  * Issued a new `pywbem.MissingKeybindingsWarning` warning if a
+    `CIMInstanceName` object that does not have any keybindings
+    gets converted to CIM-XML by calling its `tocimxml()` method,
+    or gets converted to a WBEM URI by calling its `to_wbem_uri()`
+    method, or gets parsed from CIM-XML via an INSTANCENAME element
+    without keybindings. This is motivated by the fact that DSP0004
+    does not allow instance paths without keys (section 8.2.5).
+    (See issue #2514)
+  * Reduced memory consumption of CIM objects and CIM types by
+    defining their attributes to use Python slots. (see issue
+    #2509)
+  * Reduced memory consumption of CIM objects by using lazy
+    initialization of dictionary-type attributes. This resulted in
+    significant savings when the attribute is typically unused, for
+    example in ``CIMInstance.qualifiers``. (see issue #2511)
+  * Added Python 3.9 to the supported Python versions and added
+    tests for it on Travis.
+  * Added a check for the DTDVERSION attribute value in CIM-XML
+    responses from WBEM servers to start with '2.'. A different
+    version of the CIM-XML DTD standard DSP0203 was never
+    published, so this is not expected to be an incompatible
+    change.
+  * Unsupported versions for CIM infrastructure, DTD or protocol
+    version returned in CIM-XML responses from WBEM servers are now
+    raised as new exceptions `pywbem.CIMVersionError`,
+    `pywbem.DTDVersionError`, and `pywbem.ProtocolVersionError`,
+    respectively. These new exceptions are derived from the
+    existing exception `pywbem.VersionError`. Previously,
+    unsupported CIM infrastructure versions were raised as
+    `pywbem.CIMXMLParseError`, and unsupported DTD or protocol
+    versions were ignored by pywbem.
+  * Removed the pinning of Pylint to 2.5.2 on Python >=3.5.
+    Disabled the following warnings that were newly reported by the
+    latest version (2.6.0) of Pylint: 'signature-differs' because
+    it does not recognize compatible signature changes;
+    'raise-missing-from' and 'super-with-arguments' because these
+    issues cannot reasonably be addressed as long as Python 2.7 is
+    supported.
+  * In the makefile, added an ignore list for issues reported by
+    safety along with the reasons why each issue is ignored. This
+    allowed enforcing that the safety command reports no issues.
+  * Migrated from Travis and Appveyor to GitHub Actions. This
+    required several changes in package dependencies for
+    development.
+  * Docs: Added examples to the `pywbem.siunit()` and
+    `pywbem.siunit_obj()` functions.
+  * Extend the MOF compiler so that the pywbem_mock can compile MOF
+    containing the namespace pragma that defines a namespace other
+    than the one defined in the compile_mof_string() or
+    compile_mof_file() methods namespace parameter if the namespace
+    exists. Extend documentation on use of the namespace parameter
+    to reflect the behavior if the MOF contains a namespace pragma.
+    Since the code gives precedence to tha pragma over the
+    namespace specified in in the namespace parameter, the
+    documentation reflects this. (see issue #2256 partial fix).
+  * The `pywbem.siunit()` function supported the PUnit format as
+    defined in DSP0004. It turned out that the CIM Schema used
+    PUnit qualifiers with a slightly extended format where the
+    numeric modifiers were the middle instead of just at the end.
+    Extened the PUnit format supported by the `siunit()` function
+    accordingly. (issue #2574)
+  * Improved and fixed the messages in the compile log of class
+    `MOFCompiler` and ensured that the target namespace of the
+    compiled objects is included in the messages and added messages
+    for changes to the target namespace caused by 'pragma
+    namespace' directives.
+  * The 'mof_compiler' script now displays the compiled objects and
+    their target namespace when specifying verbose mode (-v
+    option).
+  * Improvements in `pywbem_mock.CIMNamespaceProvider` and
+    `pywbem.WBEMServer` to more cleanly handle Interop namespaces
+    (related to issue #2580).
+  * Improvements in the log messages of the `MOFCompiler` class.
+    (related to issue #2586)
+  * Added a `close()` method to `pywbem.WBEMConnection` that closes
+    the underlying session of the 'requests' package. This avoids
+    the ResourceWarning 'unclosed socket' that the 'requests'
+    package issued so far when the Python process terminates. Added
+    the ability for `pywbem.WBEMConnection` to be used as a context
+    manager, that closes the connection at the end. (see issue
+    #2591)
+  * Added a mechanism to suspend the statistics counting of server
+    time if one or more operations do not return the server
+    response time, in order to prevent incorrect interpretations of
+    the counters when only a subset of the operations returned
+    server response time. (issue #2603)
+  * Added validation tests to pywbem_mock ModifyClass to limit
+    classes that can be modified (no subclasses, and no instances
+    exist, and correct superclass) (see issue #2447)
+  * Docs: Used 'autodocsumm' Sphinx extension for generating
+    attribute and method summary tables for classes in the
+    documentation. Moved documentation of some base classes into a
+    new 'Base Classes' section in the appendix.
+  * Added a `conn_close()` method to the `pywbem.MOFCompiler` class
+    that closes the underlying connection. Used that function in
+    the 'mof_compiler' script to remove a ResourceWarning about
+    unclosed sockets. (issue #2610)
+  * Added 'make perftest' to run performance tests. At this point,
+    the performance tests measure the sending of indications to the
+    pywbem.WBEMListener.
+  * Test: Added support for end2end testing of WBEM servers based
+    on server and vault files of the 'easy-server' Python package.
+    The server files can specify WBEM servers and their expected
+    supported functions. WBEM servers can be somewhere in the
+    network or can be containers on DockerHub which are
+    automatically pulled and started. At this point, the
+    OpenPegasus container on DockerHub is used and the end2end
+    tests are run in the GitHub Actions test workflow on Ubuntu
+    (Docker is not available in GHithub Actions on Windows or
+    MacOS).
+  * Test: Fixed all remaining ResourceWarnings during test. (issue
+    #86)
+  * Test: Cleaned up DeprecationWarning for the propagation of key
+    property values introduced in pywbem 1.1.0. (see issue #2498)
+  * Add index section to generated documentation.
+  * Fixed new issues reported by pylint 2.7.0. At the same time,
+    needed to temporarily pin pylint to <2.7.0 and astroid to
+    <2.5.0 due to massive elongation of the run time of pylint in
+    the pywbem project.
+  * Added tests for pywbem_mock ModifyClass request operation to
+    test the validation exceptions and correctness of modified
+    class. (see issue #2210)
+  * Cleaned up TODOs noted in pywbem and pywbem_mock to fix any
+    that were actually bugs, etc. and either create issues or mark
+    the others as FUTURE with more explanation.  (See issue #2491)
+  * Enforced that the pywbem source code does not contain any TODOs
+    (pylint fixme). Note that the pywbem test code may still
+    contain TODOs.
+  * Removed remove_duplicate_setuptools.py script since the project
+    is no longer using Travis.
+  * On Python 3.4, the urllib3 package is pinned to <1.25.8 because
+    1.25.9 removed Python 3.4 support. As a consequence, `safety
+    issue
+    <https://github.com/pyupio/safety-db/blob/master/data/insecure_full.json>`_
+    38834 cannot be addressed on Python 3.4.
+- Drop pywbem-pr2533-fix-urllib3-warnings.patch
+
+-------------------------------------------------------------------
 Mon Dec 14 17:02:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix fail because of urllib3 deprecation warnings

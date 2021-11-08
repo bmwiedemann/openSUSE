@@ -16,37 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%bcond_without cythonize
 Name:           python-pywbem
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Python module for making CIM operation calls using the WBEM protocol
 License:        LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://pywbem.github.io/
 Source0:        https://github.com/pywbem/pywbem/archive/%{version}.tar.gz#/pywbem-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pywbem-pr2533-fix-urllib3-warnings.patch -- gh#pywbem/pywbem#2533
-Patch0:         pywbem-pr2533-fix-urllib3-warnings.patch
 BuildRequires:  %{python_module FormEncode}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nocasedict >= 1.0.1}
 BuildRequires:  %{python_module nocaselist >= 1.0.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module requests >= 2.20.0}
+BuildRequires:  %{python_module requests >= 2.20.1}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools >= 38.4.1}
 BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module yamlloader}
+BuildRequires:  %{python_module wheel}
+%if %{with cythonize}
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module devel}
+%else
+BuildArch:      noarch
+%endif
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  python-rpm-macros
@@ -55,16 +59,12 @@ Requires:       python-PyYAML
 Requires:       python-nocasedict >= 1.0.1
 Requires:       python-nocaselist >= 1.0.3
 Requires:       python-ply >= 3.10
-Requires:       python-requests >= 2.20.0
+Requires:       python-requests >= 2.20.1
 Requires:       python-six >= 1.14.0
 Requires:       python-yamlloader >= 0.5.5
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-pywebmtools
-BuildArch:      noarch
-%ifpython2
-Provides:       pywbem = %{version}
-%endif
 %python_subpackages
 
 %description
