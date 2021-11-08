@@ -16,11 +16,7 @@
 #
 
 
-%ifarch ppc64 ppc64le s390x
-%bcond_with    luajit
-%else
 %bcond_without luajit
-%endif
 
 %bcond_with gegl_docs
 
