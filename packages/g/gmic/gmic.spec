@@ -16,15 +16,6 @@
 #
 
 
-# Disable LTO as it removes important symbols
-#
-# g++ use_libgmic.cpp -o use_gmic -L/tmp/local/gmic/lib64 -lgmic
-# use_libgmic.cpp:function main: error: undefined reference to 'cimg_library::CImgList<float>::assign(unsigned int)'
-#
-# https://discuss.pixls.us/t/gmic-lookup-symbol-err-on-opensuse-darktable-master-build/15827
-#
-%define _lto_cflags %{nil}
-
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
 Name:           gmic
 Version:        2.9.9
@@ -35,9 +26,10 @@ Summary:        GREYC's Magick for Image Computing (denoise and others)
 License:        CECILL-2.1
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://gmic.eu
-# Git URL:      https://framagit.org/dtschump/gmic
+# Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Source1:        gmic_qt.png
+Patch0:         0001-cmake-Set-target-compile-flags-correctly.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  pkgconfig
