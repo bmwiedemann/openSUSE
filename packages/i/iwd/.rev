@@ -202,4 +202,17 @@
     <comment></comment>
     <requestid>921835</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>936443401e98bdff8eaf7d4a9614f6e7</srcmd5>
+    <version>1.19</version>
+    <time>1636388666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.19
+  * Fix issue with handling OCV if offloading is supported.
+  * Fix issue with handling SA Query on channel switch event.
+  * Fix issue with starting FT-over-DS actions after roaming.
+  * Add support for OWE transition networks.
+  * Add support for extended key IDs. </comment>
+    <requestid>930077</requestid>
+  </revision>
 </revisionlist>
