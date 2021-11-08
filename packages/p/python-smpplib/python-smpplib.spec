@@ -1,8 +1,8 @@
 #
 # spec file for package python-smpplib
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smpplib
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        SMPP library for Python
 License:        LGPL-2.0-only
@@ -27,16 +27,16 @@ Group:          Development/Languages/Python
 URL:            https://pypi.org/project/smpplib/
 #Git-Clone:     https://github.com/python-smpplib/python-smpplib.git
 Source:         https://github.com/python-smpplib/python-smpplib/archive/%{version}.tar.gz#/smpplib-%{version}.tar.gz
-Patch0:         python-smpplib-use-unittest-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-six
 BuildArch:      noarch
-%python_subpackages 
+%python_subpackages
 
 %description
 SMPP is the Short Message Peer-to-Peer protocol for conveying SMS
@@ -46,7 +46,6 @@ allows you to send and receive SMS to an SMS gateway or SMSC.
 
 %prep
 %setup -q -n python-smpplib-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -54,7 +53,7 @@ allows you to send and receive SMS to an SMS gateway or SMSC.
 %install
 %python_install
 # Remove tests from sitelib
-%python_expand rm -R %{buildroot}%{$python_sitelib}/tests
+%python_expand rm -R %{buildroot}%{$python_sitelib}/smpplib/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
