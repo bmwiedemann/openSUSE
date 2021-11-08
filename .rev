@@ -315,4 +315,15 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920932 from dimstar)</comment>
     <requestid>921613</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2d1cf3e444d909a45cbe1039e1ea524b</srcmd5>
+    <version>41.1</version>
+    <time>1636388667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + Fix Google Meet URL detection.
+  + Updated translations.
+- Update Supplements to current standard. (forwarded request 929784 from iznogood)</comment>
+    <requestid>930081</requestid>
+  </revision>
 </revisionlist>
