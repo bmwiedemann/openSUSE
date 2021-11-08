@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  2 08:18:49 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- revert last change, e.g. for VMs where we are not being fed entropy
+  from the host or similar setups.
+
+--------------------------------------------------------------------
 Mon Oct 11 13:26:52 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Improvements on the linux kernel random subsystem have made 

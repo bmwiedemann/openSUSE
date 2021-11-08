@@ -554,4 +554,14 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <comment></comment>
     <requestid>928130</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>86e0860cb816b2d7c60c1a45cbbdfb00</srcmd5>
+    <version>1.9.14</version>
+    <time>1636388634</time>
+    <user>dimstar_suse</user>
+    <comment>- revert last change, e.g. for VMs where we are not being fed entropy
+  from the host or similar setups.
+--------------------------------------------------------------------</comment>
+    <requestid>928677</requestid>
+  </revision>
 </revisionlist>

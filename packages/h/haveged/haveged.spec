@@ -25,6 +25,10 @@ License:        GPL-3.0-only
 Group:          System/Daemons
 URL:            https://github.com/jirka-h/haveged
 Source0:        https://github.com/jirka-h/haveged/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source2:        %{name}.service
+Source3:        90-haveged.rules
+Source4:        haveged-dracut.module
+Source5:        %{name}-switch-root.service
 Patch0:         ppc64le.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
@@ -35,7 +39,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
+Enhances:       apache2
+Enhances:       gpg2
+Enhances:       openssl
+Enhances:       openvpn
+Enhances:       php5
+Enhances:       smtp_daemon
+Enhances:       systemd
 %{?systemd_requires}
 
 %description
@@ -76,6 +87,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
     --disable-static \
     --disable-enttest \
     --enable-nistest \
+    --enable-daemon \
     --enable-clock_gettime
 make %{?_smp_mflags}
 
@@ -91,15 +103,54 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
+install -Dpm 0644 %{SOURCE2} \
+  %{buildroot}%{_unitdir}/%{name}.service
+install -Dpm 0644 %{SOURCE3} \
+  %{buildroot}%{_udevrulesdir}/90-%{name}.rules
+install -Dpm 0644 %{SOURCE5} \
+  %{buildroot}%{_unitdir}/%{name}-switch-root.service
+install -Dpm 0755 %{SOURCE4} \
+  %{buildroot}%{_prefix}/lib/dracut/modules.d/98%{name}/module-setup.sh
 rm -f %{buildroot}%{_libdir}/libhavege.*a
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+
+%post
+%{?udev_rules_update:%udev_rules_update}
+%service_add_post %{name}.service
+%service_add_post %{name}-switch-root.service
+%{?regenerate_initrd_post}
+
+%postun
+%service_del_postun %{name}.service
+%service_del_postun %{name}-switch-root.service
+%{?regenerate_initrd_post}
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+
+%pre
+%service_add_pre %{name}.service
+%service_add_pre %{name}-switch-root.service
+
+%preun
+%service_del_preun %{name}.service
+%service_del_preun %{name}-switch-root.service
 
 %post -n libhavege2 -p /sbin/ldconfig
 %postun -n libhavege2 -p /sbin/ldconfig
 
 %files
 %license COPYING
+%{_sbindir}/rc%{name}
 %{_sbindir}/%{name}
 %{_mandir}/man8/%{name}.8%{?ext_man}
+%{_unitdir}/%{name}.service
+%{_unitdir}/%{name}-switch-root.service
+%{_udevrulesdir}/90-%{name}.rules
+%dir %{_prefix}/lib/dracut
+%dir %{_prefix}/lib/dracut/modules.d
+%dir %{_prefix}/lib/dracut/modules.d/98%{name}
+%{_prefix}/lib/dracut/modules.d/98%{name}/module-setup.sh
 
 %files devel
 %license COPYING
