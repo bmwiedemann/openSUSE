@@ -1,7 +1,7 @@
 #
 # spec file for package python-robot-detection
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/rory/robot-detection
 # https://github.com/rory/robot-detection/issues/2
 Source0:        https://github.com/rory/robot-detection/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six

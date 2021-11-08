@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>752909</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f75bd7b801676913fdcc24e1af421d29</srcmd5>
+    <version>0.4.0</version>
+    <time>1636388679</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly add six for testsuite</comment>
+    <requestid>930136</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:31:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- explicitly add six for testsuite 
+
+-------------------------------------------------------------------
 Mon Dec  2 10:47:17 UTC 2019 - pgajdos@suse.com
 
 - call spec-cleaner
