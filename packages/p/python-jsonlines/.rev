@@ -8,4 +8,13 @@
 </comment>
     <requestid>632159</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ef4f6eed7ac4b1918eff2a85056519f</srcmd5>
+    <version>2.0.0</version>
+    <time>1636388674</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * drop support for python versions older than 3.6</comment>
+    <requestid>930117</requestid>
+  </revision>
 </revisionlist>
