@@ -5608,4 +5608,26 @@ handle manual pages that consist only of a .so directive such as
   is used, which consists of pam_warn.so + pam_deny.so, and will throw</comment>
     <requestid>925519</requestid>
   </revision>
+  <revision rev="339" vrev="2">
+    <srcmd5>78a99f14abab1bf52c066f5c0ecb5545</srcmd5>
+    <version>249.5</version>
+    <time>1636388638</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch
+  Temporarly revert commit ed8fbbf1745c6a2dc0b8cd560ac8a3353f72e979
+  until the regression it introduced [1] is addressed by upstream and
+  a fix is released via the stable tree.
+  [1] https://github.com/systemd/systemd/issues/21025
+
+- Disable nss-systemd and translations features for the mini flavour
+
+- Really enable libiptc for masquerading support (bsc#1191651)
+  Currently used by systemd-nspawn and systemd-networkd.
+
+- Convert systemd package to multibuild
+
+  8de173ff93 mount-util: fix fd_is_mount_point() when both the parent and directory are network fs (bsc#1190984)
+  [...]</comment>
+    <requestid>928747</requestid>
+  </revision>
 </revisionlist>

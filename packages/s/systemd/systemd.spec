@@ -21,8 +21,16 @@
 # found at: https://github.com/openSUSE/systemd.
 #
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "mini"
+%define bootstrap 1
+%define mini -mini
+%else
 %define bootstrap 0
 %define mini %nil
+%endif
+
 %define min_kernel_version 4.5
 %define suse_version +suse.47.g8521f8d22f
 %define _testsuitedir /usr/lib/systemd/tests
@@ -59,7 +67,7 @@
 # Kept to ease migrations toward SLE
 %bcond_with     split_usr
 
-Name:           systemd
+Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
 Version:        249.5
 Release:        0
@@ -80,6 +88,7 @@ BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -163,7 +172,7 @@ Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
 Obsoletes:      systemd-analyze < 201
 Source0:        systemd-v%{version}%{suse_version}.tar.xz
-Source1:        %{name}-rpmlintrc
+Source1:        systemd-rpmlintrc
 Source2:        systemd-user
 %if %{with sysvcompat}
 Source3:        systemd-sysv-convert
@@ -200,6 +209,7 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
+Patch100:       0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -643,7 +653,9 @@ Have fun with these services at your own risk.
         -Duserdb=false \
 %endif
 %if 0%{?bootstrap}
+        -Dtranslations=false \
         -Dnss-myhostname=false \
+        -Dnss-systemd=false \
 %else
         -Dtpm2=true \
         -Dman=true \
@@ -697,11 +709,6 @@ Have fun with these services at your own risk.
 
 %install
 %meson_install
-
-%if 0%{?bootstrap}
-rm %{buildroot}%{_libdir}/libnss_systemd.so*
-rm -r %{buildroot}%{_datadir}/locale
-%endif
 
 # Don't ship resolvconf symlink for now as it conflicts with the
 # binary shipped by openresolv and provides limited compatibility

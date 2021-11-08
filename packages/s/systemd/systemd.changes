@@ -1,7 +1,38 @@
 -------------------------------------------------------------------
+Tue Nov  2 10:26:58 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Add 0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch
+
+  Temporarly revert commit ed8fbbf1745c6a2dc0b8cd560ac8a3353f72e979
+  until the regression it introduced [1] is addressed by upstream and
+  a fix is released via the stable tree.
+
+  [1] https://github.com/systemd/systemd/issues/21025
+
+-------------------------------------------------------------------
+Tue Oct 19 14:41:37 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Disable nss-systemd and translations features for the mini flavour
+
+-------------------------------------------------------------------
+Mon Oct 18 13:01:01 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Really enable libiptc for masquerading support (bsc#1191651)
+
+  Currently used by systemd-nspawn and systemd-networkd.
+
+-------------------------------------------------------------------
+Mon Oct 18 10:06:08 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Convert systemd package to multibuild
+
+-------------------------------------------------------------------
 Fri Oct 15 12:09:44 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 8521f8d22fd44400289fcea03493ebd7f8b1487d (merge of v249.5)
+
+  8de173ff93 mount-util: fix fd_is_mount_point() when both the parent and directory are network fs (bsc#1190984)
+  [...]
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/355e113ce193e5e2d195278c57d47f9a1b00ae46...8521f8d22fd44400289fcea03493ebd7f8b1487d
