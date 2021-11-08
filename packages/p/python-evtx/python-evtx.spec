@@ -36,6 +36,7 @@ BuildRequires:  %{python_module hexdump}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python2-xml
 %endif
@@ -44,6 +45,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-hexdump
 Requires:       python-lxml
+Requires:       python-six
 %ifpython2
 Requires:       python-xml
 %endif
@@ -52,7 +54,7 @@ BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages
