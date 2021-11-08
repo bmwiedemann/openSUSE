@@ -18,20 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xdoctest
-Version:        0.15.4
+Version:        0.15.10
 Release:        0
 Summary:        Enhanced Python builtin doctest module
 License:        Apache-2.0
 URL:            https://github.com/Erotemic/xdoctest
-Source:         https://github.com/Erotemic/xdoctest/archive/%{version}.tar.gz#/xdoctest-%{version}.tar.gz
-Patch0:         https://github.com/Erotemic/xdoctest/pull/97.patch
+Source:         https://github.com/Erotemic/xdoctest/archive/refs/tags/v%{version}.tar.gz#/xdoctest-%{version}.tar.gz
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-pygments
 BuildArch:      noarch
 %python_subpackages
@@ -41,7 +42,6 @@ A rewrite of the builtin doctest module with a pytest plugin.
 
 %prep
 %setup -q -n xdoctest-%{version}
-%autopatch -p1
 sed -i '1{/^#!/d}' xdoctest/__main__.py
 sed -i 's/--ignore-glob=setup.py//' pytest.ini
 

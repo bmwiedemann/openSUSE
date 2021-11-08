@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:44:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.10:
+  * The xdoctest "analysis" option now defaults to "auto" everywhere.
+  * Disabled workaround 16806 in Python 3.8+
+  * Removed the distracting and very long internal traceback
+  * Pytest now defaults to --xdoctest-verbose=2 by default
+  * Directive syntax errors are now handled as doctest runtime errors and
+    return better debugging information
+- drop 97.patch, upstream 
+
+-------------------------------------------------------------------
 Fri Feb 19 00:21:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.4:
