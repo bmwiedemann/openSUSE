@@ -1,7 +1,7 @@
 #
 # spec file for package python-patchy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-patchy
-Version:        2.1.0
+Version:        2.4.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Patch the inner source of python functions at runtime
-Url:            https://github.com/adamchainz/patchy
+URL:            https://github.com/adamchainz/patchy
 Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/p/patchy/patchy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/adamchainz/patchy/archive/refs/tags/%{version}.tar.gz#/patchy-%{version}.tar.gz
+BuildRequires:  %{python_module pkgutil-resolve-name}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pkgutil-resolve-name}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pkgutil-resolve-name
 BuildArch:      noarch
 
@@ -51,7 +53,7 @@ Patch the inner source of python functions at runtime.
 %pytest
 
 %files %{python_files}
-%doc AUTHORS.rst README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/*
 

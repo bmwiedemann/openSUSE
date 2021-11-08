@@ -7,4 +7,19 @@
     <comment>dep of https://build.opensuse.org/package/show/devel:languages:python:django/python-django-perf-rec</comment>
     <requestid>851892</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72ff1c1186ebf21f2d053575727ad30d</srcmd5>
+    <version>2.4.0</version>
+    <time>1636388686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Add type hints.
+  * Support Python 3.10.
+  * Stop distributing tests to reduce package size. Tests are not intended to be
+    run outside of the tox setup in the repository. Repackagers can use GitHub's
+    tarballs per tag.
+  * Drop Python 3.5 support.
+  * Move license from BSD to MIT License.</comment>
+    <requestid>930148</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:59:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Add type hints.
+  * Support Python 3.10.
+  * Stop distributing tests to reduce package size. Tests are not intended to be
+    run outside of the tox setup in the repository. Repackagers can use GitHub's
+    tarballs per tag.
+  * Drop Python 3.5 support.
+  * Move license from BSD to MIT License.
+
+-------------------------------------------------------------------
 Sun Jul  5 17:48:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.0
