@@ -27,6 +27,7 @@ URL:            https://livereload.readthedocs.io/en/latest/
 Source:         https://github.com/lepture/python-livereload/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -15,4 +15,12 @@
     <comment>- Use pytest (and not nose) for the testsuite, actually running it.</comment>
     <requestid>919656</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1733bfd4cfac59cf6b2bb25553dc6422</srcmd5>
+    <version>2.6.3</version>
+    <time>1636388689</time>
+    <user>dimstar_suse</user>
+    <comment>- add six dependency for tests</comment>
+    <requestid>930157</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 11:38:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add six dependency for tests 
+
+-------------------------------------------------------------------
 Fri Sep 17 06:34:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pytest (and not nose) for the testsuite, actually running it. 
