@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>755464</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46cc9096f07038ec92dc886a7131fbeb</srcmd5>
+    <version>1.0.3</version>
+    <time>1636388676</time>
+    <user>dimstar_suse</user>
+    <comment>- add six build dependency</comment>
+    <requestid>930125</requestid>
+  </revision>
 </revisionlist>
