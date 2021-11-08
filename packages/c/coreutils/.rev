@@ -1138,4 +1138,27 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment></comment>
     <requestid>889683</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2f65d8b035580b08976f603e2863039c</srcmd5>
+    <version>9.0</version>
+    <time>1636388650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0.
+
+- coreutils-i18n.patch:
+  * Refresh patch, and re-sync with Fedora.
+
+- coreutils-chmod-fix-exit-status-ign-symlinks.patch: Add upstream patch to
+  fix a regression with the exit code of chmod introduced in 9.0.
+
+- coreutils-skip-tests-rm-ext3-perf.patch: Add patch to skip the test
+  'tests/rm/ext3-perf.sh' temporarily as it hangs on OBS.
+
+- coreutils.spec:
+  * Version: bump version.
+  * spec file cleanups (spec-cleaner run) 
+  * Remove the above removed patches.
+  * Reference the above new patches.</comment>
+    <requestid>923327</requestid>
+  </revision>
 </revisionlist>
