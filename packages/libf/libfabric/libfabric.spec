@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.9682913a72c9
+%define git_ver .0.bcb41c462e1e
 
 Name:           libfabric
-Version:        1.13.1
+Version:        1.13.2
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -34,6 +34,7 @@ BuildRequires:  automake
 BuildRequires:  libibverbs-devel
 BuildRequires:  libnl3-devel
 %ifarch x86_64
+BuildRequires:  libnuma-devel
 BuildRequires:  libpsm2-devel
 %endif
 %ifarch x86_64 %{ix86}
@@ -82,6 +83,7 @@ autoreconf -fi
 %endif
 %ifarch x86_64
     --enable-psm2 \
+    --enable-psm3 \
 %endif
     --disable-static
 make %{?_smp_mflags}
