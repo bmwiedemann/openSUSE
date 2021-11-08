@@ -106,4 +106,16 @@
   proper upgrade from previous version 4.4.0b4 (forwarded request 903459 from glaubitz)</comment>
     <requestid>903469</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d49876223c1df3429a210bf49120b2d6</srcmd5>
+    <version>4.5.0b4</version>
+    <time>1636388692</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.5.0b4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 930129 from glaubitz)</comment>
+    <requestid>930169</requestid>
+  </revision>
 </revisionlist>
