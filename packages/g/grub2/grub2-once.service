@@ -5,12 +5,12 @@ After=local-fs.target
 Before=sysinit.target shutdown.target
 Conflicts=shutdown.target
 ConditionPathIsReadWrite=/boot/grub2/grubenv
-ConditionPathExists=/var/tmp/grub2-cleanup-once
+ConditionPathExists=/var/lib/misc/grub2-cleanup-once
 
 [Service]
 Type=oneshot
 ExecStart=-/usr/bin/grub2-editenv /boot/grub2/grubenv unset next_entry
-ExecStartPost=-/usr/bin/rm -f /var/tmp/grub2-cleanup-once
+ExecStartPost=-/usr/bin/rm -f /var/lib/misc/grub2-cleanup-once
 StandardOutput=journal
 
 [Install]

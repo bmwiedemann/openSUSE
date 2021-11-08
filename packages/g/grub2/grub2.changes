@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 21 12:51:46 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Remove openSUSE Tumbleweed specific handling for default grub
+  distributor (bsc#1191198)
+- Use /usr/lib/os-release as fallback (bsc#1191196)
+  * grub2-default-distributor.patch
+  * grub2-check-default.sh
+- VUL-0: grub2: grub2-once uses fixed file name in /var/tmp (bsc#1190474)
+  * grub2-once
+  * grub2-once.service
+- Fix unknown TPM error on buggy uefi firmware (bsc#1191504)
+  * 0001-tpm-Pass-unknown-error-as-non-fatal-but-debug-print-.patch
+- Fix error /boot/grub2/locale/POSIX.gmo not found (bsc#1189769)
+  * 0001-Filter-out-POSIX-locale-for-translation.patch
+- Fix error lvmid disk cannot be found after second disk added to the root
+  volume group (bsc#1189874) (bsc#1071559)
+  * 0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
+- Fix error in grub installation due to unnecessary requirement to support
+  excessive device for the root logical volume (bsc#1184135)
+  * 0001-disk-diskfilter-Use-nodes-in-logical-volume-s-segmen.patch
+- Fix regression in reading xfs v4
+  *0001-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
+
+-------------------------------------------------------------------
 Tue Oct 19 08:26:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fix installation on usrmerged s390x

@@ -1,8 +1,16 @@
-Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
+v1:
+As long as VERSION in /etc/os-release has been commented out for rolling
+release, we can replace openSUSE Tumbleweed specific handling for grub
+distributor with a generic one.
+
+v2:
+Use /usr/lib/os-release as fallback to /etc/os-release
+
+Index: grub-2.06/grub-core/osdep/unix/config.c
 ===================================================================
---- grub-2.02~beta3.orig/grub-core/osdep/unix/config.c
-+++ grub-2.02~beta3/grub-core/osdep/unix/config.c
-@@ -61,6 +61,143 @@ grub_util_get_localedir (void)
+--- grub-2.06.orig/grub-core/osdep/unix/config.c
++++ grub-2.06/grub-core/osdep/unix/config.c
+@@ -61,6 +61,131 @@ grub_util_get_localedir (void)
    return LOCALEDIR;
  }
  
@@ -69,7 +77,6 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
 +  char *cfgfile;
 +  char buf[1024];
 +  FILE *fp = NULL;
-+  char *os_pretty_name = NULL;
 +  char *os_name = NULL;
 +  char *os_version = NULL;
 +
@@ -77,7 +84,12 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
 +  if (!grub_util_is_regular (cfgfile))
 +    {
 +      grub_free (cfgfile);
-+      return NULL;
++      cfgfile = grub_util_path_concat (2, "/usr/lib", "os-release");
++      if (!grub_util_is_regular (cfgfile))
++        {
++          grub_free (cfgfile);
++          return NULL;
++        }
 +    }
 +
 +  fp = grub_util_fopen (cfgfile, "r");
@@ -97,30 +109,19 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
 +      if (buf[grub_strlen(buf) - 1] == '\n')
 +	buf[grub_strlen(buf) - 1] = '\0';
 +
-+      if (!os_pretty_name
-+	  && (os_pretty_name = os_release_get_val (buf, "PRETTY_NAME")))
-+	continue;
 +      if (!os_name
 +	  && (os_name = os_release_get_val (buf, "NAME")))
 +	continue;
 +      if (!os_version
 +	  && (os_version = os_release_get_val (buf, "VERSION")))
 +	continue;
-+      if (os_pretty_name && os_name && os_version)
++      if (os_name && os_version)
 +	break;
 +    }
 +
 +  fclose (fp);
 +
-+  if (os_name && grub_strncmp (os_name, "openSUSE Tumbleweed", sizeof ("openSUSE Tumbleweed") - 1) == 0)
-+    {
-+      grub_free (os_name);
-+      if (os_version)
-+	grub_free (os_version);
-+
-+      return os_pretty_name;
-+    }
-+  else if (os_name && os_version)
++  if (os_name && os_version)
 +    {
 +      char *os_name_version;
 +
@@ -128,16 +129,11 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
 +
 +      grub_free (os_name);
 +      grub_free (os_version);
-+      if (os_pretty_name)
-+	grub_free (os_pretty_name);
 +
 +      return os_name_version;
 +    }
 +
-+  if (os_pretty_name)
-+    grub_free (os_pretty_name);
-+  if (os_version)
-+    grub_free (os_version);
++  grub_free (os_version);
 +
 +  return os_name;
 +}
@@ -146,7 +142,7 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
  void
  grub_util_load_config (struct grub_util_config *cfg)
  {
-@@ -125,7 +262,17 @@ grub_util_load_config (struct grub_util_
+@@ -125,7 +250,17 @@ grub_util_load_config (struct grub_util_
        waitpid (pid, NULL, 0);
      }
    if (f)
@@ -165,7 +161,7 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
  
    f = grub_util_fopen (cfgfile, "r");
    if (f)
-@@ -136,4 +283,13 @@ grub_util_load_config (struct grub_util_
+@@ -136,4 +271,13 @@ grub_util_load_config (struct grub_util_
    else
      grub_util_warn (_("cannot open configuration file `%s': %s"),
  		    cfgfile, strerror (errno));
@@ -179,20 +175,25 @@ Index: grub-2.02~beta3/grub-core/osdep/unix/config.c
 +    }
 +#endif
  }
-Index: grub-2.02~beta3/util/grub-mkconfig.in
+Index: grub-2.06/util/grub-mkconfig.in
 ===================================================================
---- grub-2.02~beta3.orig/util/grub-mkconfig.in
-+++ grub-2.02~beta3/util/grub-mkconfig.in
-@@ -206,6 +206,14 @@ GRUB_ACTUAL_DEFAULT="$GRUB_DEFAULT"
+--- grub-2.06.orig/util/grub-mkconfig.in
++++ grub-2.06/util/grub-mkconfig.in
+@@ -225,6 +225,19 @@ GRUB_ACTUAL_DEFAULT="$GRUB_DEFAULT"
  
  if [ "x${GRUB_ACTUAL_DEFAULT}" = "xsaved" ] ; then GRUB_ACTUAL_DEFAULT="`"${grub_editenv}" - list | sed -n '/^saved_entry=/ s,^saved_entry=,,p'`" ; fi
  
-+if [ x"${GRUB_DISTRIBUTOR}" = x ] && [ -f "${sysconfdir}/os-release" ] ; then
-+    . "${sysconfdir}/os-release"
-+    if echo "$NAME" | grep -q "^openSUSE Tumbleweed" ; then
-+      GRUB_DISTRIBUTOR="${PRETTY_NAME}"
-+    else
++if [ x"${GRUB_DISTRIBUTOR}" = x ] ; then
++    for i in "${sysconfdir}/os-release" "/usr/lib/os-release" ; do
++      if [ -f "$i" ] ; then
++        . "$i"
++        break
++      fi
++    done
++    if [ x"${NAME}" != x ] && [ x"${VERSION}" != x ] ; then
 +      GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
++    else
++      GRUB_DISTRIBUTOR="${NAME}"
 +    fi
 +fi
  

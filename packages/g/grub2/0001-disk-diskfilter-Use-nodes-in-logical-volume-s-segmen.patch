@@ -1,0 +1,180 @@
+From 5cc00eac24c7019d9696a859f69b587e11f1621e Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 27 Sep 2021 17:39:56 +0800
+Subject: [PATCH] disk/diskfilter: Use nodes in logical volume's segment as
+ member device
+
+Currently the grub_diskfilter_memberlist() function returns all physical
+volumes added to a volume group to which a logical volume (LV) belongs.
+However, this is suboptimal as it doesn't fit the intended behavior of
+returning underlying devices that make up the LV. To give a clear
+picture, the result should be identical to running commands below to
+display the logical volumes with underlying physical volumes in use.
+
+  localhost:~ # lvs -o lv_name,vg_name,devices /dev/system/root
+    LV   VG     Devices
+    root system /dev/vda2(512)
+
+  localhost:~ # lvdisplay --maps /dev/system/root
+    --- Logical volume ---
+      ...
+    --- Segments ---
+    Logical extents 0 to 4604:
+      Type                linear
+      Physical volume     /dev/vda2
+      Physical extents    512 to 5116
+
+As shown above, we can know system-root LV uses only /dev/vda2 to
+allocate it's extents, or we can say that /dev/vda2 is the member device
+comprising the system-root LV.
+
+It is important to be precise on the member devices, because that helps
+to avoid pulling in excessive dependency. Let's use an example to
+demonstrate why it is needed.
+
+  localhost:~ # findmnt /
+  TARGET SOURCE                  FSTYPE OPTIONS
+  /      /dev/mapper/system-root ext4   rw,relatime
+
+  localhost:~ # pvs
+    PV               VG     Fmt  Attr PSize    PFree
+    /dev/mapper/data system lvm2 a--  1020.00m    0
+    /dev/vda2        system lvm2 a--    19.99g    0
+
+  localhost:~ # cryptsetup status /dev/mapper/data
+  /dev/mapper/data is active and is in use.
+    type:    LUKS1
+    cipher:  aes-xts-plain64
+    keysize: 512 bits
+    key location: dm-crypt
+    device:  /dev/vdb
+    sector size:  512
+    offset:  4096 sectors
+    size:    2093056 sectors
+    mode:    read/write
+
+  localhost:~ # vgs
+    VG     #PV #LV #SN Attr   VSize  VFree
+    system   2   3   0 wz--n- 20.98g    0
+
+  localhost:~ # lvs -o lv_name,vg_name,devices
+    LV   VG     Devices
+    data system /dev/mapper/data(0)
+    root system /dev/vda2(512)
+    swap system /dev/vda2(0)
+
+We can learn from above that /dev/mapper/data is an encrypted volume and
+also gets assigned to volume group "system" as one of it's physical
+volumes. And also it is not used by root device, /dev/mapper/system-root,
+for allocating extents, so it shouldn't be taking part in the process of
+setting up GRUB to access root device.
+
+However, running grub-install reports error as volume group "system"
+contains encrypted volume.
+
+  error: attempt to install to encrypted disk without cryptodisk
+  enabled. Set `GRUB_ENABLE_CRYPTODISK=y' in file `/etc/default/grub'.
+
+Certainly we can enable GRUB_ENABLE_CRYPTODISK=y and move on, but that
+is not always acceptable since the server may need to be booted unattended.
+Additionally, typing passphrase for every system startup can be a big
+hassle of which most users would like to avoid.
+
+This patch solves the problem by returning exact physical volume, /dev/vda2,
+rightly used by system-root from the example above, thus grub-install will
+not error out because the excessive encrypted device to boot the root device
+is not configured.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Tested-by: Olav Reinert <seroton10@gmail.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/diskfilter.c | 61 ++++++++++++++++++++++++++-----------
+ 1 file changed, 44 insertions(+), 17 deletions(-)
+
+diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
+index d094f7882..39d74cb86 100644
+--- a/grub-core/disk/diskfilter.c
++++ b/grub-core/disk/diskfilter.c
+@@ -396,6 +396,8 @@ grub_diskfilter_memberlist (grub_disk_t disk)
+   grub_disk_dev_t p;
+   struct grub_diskfilter_vg *vg;
+   struct grub_diskfilter_lv *lv2 = NULL;
++  struct grub_diskfilter_segment *seg;
++  unsigned int i, j;
+ 
+   if (!lv->vg->pvs)
+     return NULL;
+@@ -427,27 +429,52 @@ grub_diskfilter_memberlist (grub_disk_t disk)
+ 	    }
+     }
+ 
+-  for (pv = lv->vg->pvs; pv; pv = pv->next)
+-    {
+-      if (!pv->disk)
++  for (i = 0, seg = lv->segments; i < lv->segment_count; i++, seg++)
++    for (j = 0; j < seg->node_count; ++j)
++      if (seg->nodes[j].pv != NULL)
+ 	{
+-	  /* TRANSLATORS: This message kicks in during the detection of
+-	     which modules needs to be included in core image. This happens
+-	     in the case of degraded RAID and means that autodetection may
+-	     fail to include some of modules. It's an installation time
+-	     message, not runtime message.  */
+-	  grub_util_warn (_("Couldn't find physical volume `%s'."
+-			    " Some modules may be missing from core image."),
+-			  pv->name);
+-	  continue;
++	  pv = seg->nodes[j].pv;
++
++	  if (pv->disk == NULL)
++	    {
++	      /*
++	       * TRANSLATORS: This message kicks in during the detection of
++	       * which modules needs to be included in core image. This happens
++	       * in the case of degraded RAID and means that autodetection may
++	       * fail to include some of modules. It's an installation time
++	       * message, not runtime message.
++	       */
++	      grub_util_warn (_("Couldn't find physical volume `%s'."
++				" Some modules may be missing from core image."),
++			      pv->name);
++	      continue;
++	    }
++
++	  for (tmp = list; tmp != NULL; tmp = tmp->next)
++	    if (!grub_strcmp (tmp->disk->name, pv->disk->name))
++	      break;
++	  if (tmp != NULL)
++	    continue;
++
++	  tmp = grub_malloc (sizeof (*tmp));
++	  if (tmp == NULL)
++	    goto fail;
++	  tmp->disk = pv->disk;
++	  tmp->next = list;
++	  list = tmp;
+ 	}
+-      tmp = grub_malloc (sizeof (*tmp));
+-      tmp->disk = pv->disk;
+-      tmp->next = list;
+-      list = tmp;
+-    }
+ 
+   return list;
++
++ fail:
++  while (list != NULL)
++    {
++      tmp = list;
++      list = list->next;
++      grub_free (tmp);
++    }
++
++  return NULL;
+ }
+ 
+ void
+-- 
+2.31.1
+

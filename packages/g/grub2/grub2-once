@@ -178,10 +178,12 @@ sub parse_menuentry($$$) {
 sub enable_restore_grubenv_service {
 
     my $systemctl = "/usr/bin/systemctl";
-    my $cleanup = "/var/tmp/grub2-cleanup-once";
+    my $cleanup = "/var/lib/misc/grub2-cleanup-once";
 
-    open(my $fh, ">", $cleanup) or die "open: $cleanup $!\n";
-    close($fh);
+    unless (-e $cleanup) {
+        open(my $fh, ">", $cleanup) or die "open: $cleanup $!\n";
+        close($fh);
+    }
 
     return 0 if (system("$systemctl --quiet is-enabled grub2-once") == 0);
     system "$systemctl --no-reload enable grub2-once >/dev/null 2>&1";

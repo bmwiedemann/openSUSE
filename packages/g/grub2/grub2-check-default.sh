@@ -99,7 +99,25 @@ if [ -n "$FALLBACK" ]; then
   exit 0
 fi
 
-source /etc/os-release
+for i in /etc/os-release /usr/lib/os-release ; do
+  if [ -f "$i" ]; then
+    OS_RELEASE="$i"
+    break
+  fi
+done
+
+if [ -z "$OS_RELEASE" ]; then
+  debug_print "No os-release file present"
+  exit 0
+fi
+
+debug_print "Applying settings from $OS_RELEASE"
+source "$OS_RELEASE"
+
+if [ -z "$VERSION" ]; then
+  debug_print "No os-release version tag present, assuming rolling release"
+  exit 0
+fi
 
 NEW_SAVED_ENTRY=`echo $SAVED_ENTRY | sed -ne "s/$NAME [0-9a-zA-Z_.-]\{1,\}/$NAME $VERSION/pg"`
 

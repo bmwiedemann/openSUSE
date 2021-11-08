@@ -307,6 +307,11 @@ Patch789:       0001-Workaround-volatile-efi-boot-variable.patch
 Patch790:       0001-30_uefi-firmware-fix-printf-format-with-null-byte.patch
 Patch791:       0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
 Patch792:       0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
+Patch793:       0001-tpm-Pass-unknown-error-as-non-fatal-but-debug-print-.patch
+Patch794:       0001-Filter-out-POSIX-locale-for-translation.patch
+Patch795:       0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
+Patch796:       0001-disk-diskfilter-Use-nodes-in-logical-volume-s-segmen.patch
+Patch797:       0001-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

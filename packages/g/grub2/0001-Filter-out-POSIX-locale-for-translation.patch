@@ -1,0 +1,36 @@
+From 87b01d35b4db56778e2d9f99d18656026f818bab Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 26 Oct 2021 13:31:24 +0800
+Subject: [PATCH] Filter out POSIX locale for translation
+
+The POSIX locale is default or native operating system's locale
+identical to the C locale, so no translation to human speaking languages
+provided.
+
+For this reason we should filter out LANG=POSIX as well as LANG=C upon
+generating grub.cfg to avoid looking up for it's gettext's message
+catalogs that will consequently result in the unpleasant message.
+
+error: file `/boot/grub/locale/POSIX.gmo' not found
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub.d/00_header.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index 57a35a14a..b21caa4bc 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -250,7 +250,7 @@ EOF
+ EOF
+ 
+ # Gettext variables and module
+-if [ "x${LANG}" != "xC" ] &&  [ "x${LANG}" != "x" ]; then
++if [ "x${LANG}" != "xC" ] && [ "x${LANG}" != "xPOSIX" ] && [ "x${LANG}" != "x" ]; then
+   cat << EOF
+   set locale_dir=\$prefix/locale
+   set lang=${grub_lang}
+-- 
+2.31.1
+
