@@ -1,7 +1,7 @@
 #
 # spec file for package python-requestsexceptions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Import exceptions from potentially bundled packages in requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            http://www.openstack.org/
+URL:            http://www.openstack.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requestsexceptions/requestsexceptions-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
@@ -50,8 +50,7 @@ regardless of whether they are bundled.
 %python_install
 
 %check
-sed -i -e "s,hacking.*,," *txt
-%python_exec setup.py test
+# no tests found
 
 %files %{python_files}
 %license LICENSE
