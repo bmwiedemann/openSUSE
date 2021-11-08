@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  5 18:35:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.10.1:
+  * Fix bug in the authorisation codepath added in 0.10.0, where
+    holding a profile could still succeed despite having sent a
+    denial to the calling process.
+  * Make pylint test optional.
+- Drop f83685732b9dd8211840645ce76f43718b30218b.patch:
+  incorporated upstream.
+
+-------------------------------------------------------------------
 Wed Oct  6 20:32:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.0:

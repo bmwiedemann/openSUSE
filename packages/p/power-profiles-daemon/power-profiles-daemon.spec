@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ URL:            https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE hold-profile-hardening.patch boo#1189900 -- Hardening of HoldProfile D-Bus method
 Patch0:         hold-profile-hardening.patch
-# PATCH-FIX-UPSTREAM f83685732b9dd8211840645ce76f43718b30218b.patch -- build: Make pylint test optional
-Patch1:         https://gitlab.freedesktop.org/hadess/power-profiles-daemon/-/commit/f83685732b9dd8211840645ce76f43718b30218b.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  gtk-doc
