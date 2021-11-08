@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:34:02 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Add policycoreutils-python-utils to desktop-common
+  While it's too heavyweight for regular MicroOS patterns, on an
+  interactively used desktop system its nice to have the tools to
+  debug when selinux goes wrong.
+
+-------------------------------------------------------------------
 Wed Oct 27 08:40:21 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Install dmidecode only on archs where it is available

@@ -382,6 +382,7 @@ Requires:       bash-completion
 Requires:       bluez-firmware
 Requires:       glibc-locale
 Requires:       hicolor-icon-theme-branding-openSUSE
+Requires:       policycoreutils-python-utils
 Requires:       polkit-default-privs
 Requires:       systemd-icon-branding-openSUSE
 Requires:       udisks2
