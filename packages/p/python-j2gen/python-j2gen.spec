@@ -1,7 +1,7 @@
 #
 # spec file for package python-j2gen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -59,7 +59,7 @@ Jinja2 template renderer with yaml input files
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %post
 %python_install_alternative j2gen
