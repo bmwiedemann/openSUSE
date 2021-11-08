@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  2 16:33:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 1.12:
+  - New devices:
+    - ELAN 2513
+    - HP Probook x360, 435 G7
+    - Waltop Slim Tablet 12.1
+    - XP-PEN Star 3
+    - Lenovo ThinkPad L390 Yoga, Yoga C940, Yoga 460, Yoga 720
+    - ThinkVision M14t, IdeaPad Flex5
+    - HP EliteBook x360 1030 G3
+    - Dell XPS 13 9310 2-in-1
+    - HUION Kamvas Pro 13
+    - ELAN 2514 variant 2718
+  - libwacom's hwdb no longer tags devices with "Keyboard" in
+    their name as ID_INPUT_TABLET
+
+-------------------------------------------------------------------
 Sat May  8 18:29:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:

@@ -21,7 +21,7 @@
 %bcond_with meson
 %endif
 Name:           libwacom
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -32,7 +32,7 @@ Source2:        https://github.com/linuxwacom/libwacom/releases/download/%{name}
 Source3:        %{name}.keyring
 Source99:       baselibs.conf
 %if %{with meson}
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.51.0
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
