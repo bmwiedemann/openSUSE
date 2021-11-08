@@ -1,5 +1,5 @@
 #
-# spec file for package python-patsy
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -29,16 +29,12 @@
 %endif
 %define skip_python36 1
 Name:           python-patsy%{pkg_suffix}
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A Python package for statistical models and design matrices
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pydata/patsy
 Source:         https://files.pythonhosted.org/packages/source/p/patsy/patsy-%{version}.tar.gz
-# patsy is EOL https://github.com/pydata/patsy/pull/162#issuecomment-688831172
-# https://github.com/pydata/patsy/pull/163
-Patch0:         python-patsy-remove-nose.patch
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +46,6 @@ Requires:       python-six
 Recommends:     python-scipy
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module patsy = %{version}}
 BuildRequires:  %{python_module pytest}
@@ -66,7 +61,6 @@ mini-language used in `R <http://www.r-project.org/>`_ and
 
 %prep
 %setup -q -n patsy-%{version}
-%patch0 -p1
 
 %if !%{with test}
 %build
@@ -87,7 +81,7 @@ mini-language used in `R <http://www.r-project.org/>`_ and
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/patsy/
 %{python_sitelib}/patsy-%{version}-py*.egg-info
 %endif

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  8 03:57:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.2:
+  * Fix some deprecation warnings associated with importing from the
+    collections module (rather than collections.abc) in Python 3.7+.
+- README renamed to use Markdown.
+- Drop patch python-patsy-remove-nose.patch, merged upstream.
+- Remove unneeded nose BuildRequires.
+
+-------------------------------------------------------------------
 Fri Feb 12 14:39:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python36 build 

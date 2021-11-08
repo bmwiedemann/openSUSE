@@ -48,4 +48,17 @@ Needed by python-seaborn, see request 436927</comment>
     <comment>- skip python36 build</comment>
     <requestid>871461</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83565be51afa98dbf7f52bba52e64226</srcmd5>
+    <version>0.5.2</version>
+    <time>1636388663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * Fix some deprecation warnings associated with importing from the
+    collections module (rather than collections.abc) in Python 3.7+.
+- README renamed to use Markdown.
+- Drop patch python-patsy-remove-nose.patch, merged upstream.
+- Remove unneeded nose BuildRequires.</comment>
+    <requestid>930035</requestid>
+  </revision>
 </revisionlist>
