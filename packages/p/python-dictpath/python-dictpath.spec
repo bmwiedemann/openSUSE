@@ -26,9 +26,11 @@ URL:            https://github.com/p1c2u/dictpath
 # Use the github tarball because it contains the tests
 Source:         https://github.com/p1c2u/dictpath/archive/refs/tags/%{version}.tar.gz#/dictpath-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-six
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 %if %{with python2}
