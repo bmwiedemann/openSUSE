@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 27 12:05:40 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
 Tue Mar  9 06:13:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.0:

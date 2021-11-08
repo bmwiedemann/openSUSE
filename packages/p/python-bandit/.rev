@@ -97,4 +97,12 @@
 - Refresh remove-non-test-deps.patch</comment>
     <requestid>877896</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e37786960d68edc244372a7cc10a053e</srcmd5>
+    <version>1.7.0</version>
+    <time>1636388655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929843</requestid>
+  </revision>
 </revisionlist>

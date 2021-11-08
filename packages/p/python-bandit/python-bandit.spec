@@ -17,10 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Tests require python-hacking, which isn't compatible with pycodestyle
-%bcond_without  builddocs
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 # CLI tool, no module
 %define pythons python3
+# Tests require python-hacking, which isn't compatible with pycodestyle
+%bcond_without  builddocs
 Name:           python-bandit
 Version:        1.7.0
 Release:        0
@@ -29,8 +37,20 @@ License:        Apache-2.0
 URL:            https://github.com/PyCQA/bandit
 Source:         https://files.pythonhosted.org/packages/source/b/bandit/bandit-%{version}.tar.gz
 Patch0:         remove-non-test-deps.patch
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-GitPython >= 1.0.1
+Requires:       python-PyYAML >= 5.3.1
+Requires:       python-six >= 1.10.0
+Requires:       python-stestr >= 1.0.0
+Requires:       python-stevedore >= 1.20.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
+%if %{with test}
 BuildRequires:  %{python_module GitPython >= 1.0.1}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
+BuildRequires:  %{python_module bandit == %{version}}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.8.0}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module mock >= 3.0.5}
@@ -43,22 +63,12 @@ BuildRequires:  %{python_module stevedore >= 1.20.0}
 BuildRequires:  %{python_module testrepository >= 0.0.18}
 BuildRequires:  %{python_module testscenarios >= 0.5.0}
 BuildRequires:  %{python_module testtools >= 2.3.0}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+%endif
 # doc requirements
 %if %{with builddocs}
 BuildRequires:  %{python_module Sphinx >= 1.2.1}
 BuildRequires:  %{python_module reno >= 1.8.0}
 %endif
-Requires:       python-GitPython >= 1.0.1
-Requires:       python-PyYAML >= 5.3.1
-Requires:       python-six >= 1.10.0
-Requires:       python-stestr >= 1.0.0
-Requires:       python-stevedore >= 1.20.0
-BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-
 %python_subpackages
 
 %description
@@ -72,35 +82,36 @@ it generates a report.
 %patch0 -p1
 sed -i '/^#!/d' bandit/__main__.py
 
+%if !%{with test}
 %build
 %python_build
+%endif
 
+%if !%{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/bandit
 %python_clone -a %{buildroot}%{_bindir}/bandit-config-generator
 %python_clone -a %{buildroot}%{_bindir}/bandit-baseline
+%endif
 
+%if %{with test}
 %check
-# Copy executables to py2/3 build areas, to be used for testing
-%{python_expand mkdir build/bin
-for filepath in %{buildroot}/%{_bindir}/bandit*-%{$python_bin_suffix}; do
-  filename=$(basename $filepath)
-  unsuffixed=${filename/-%{$python_bin_suffix}/}
-  cp $filepath build/bin/$unsuffixed
-done
-}
-%{python_expand export PATH="$(pwd)/build/bin:$PATH"
-$python setup.py test
-}
+%pyunittest discover -v
+%endif
 
+%if !%{with test}
 %post
 %{python_install_alternative bandit bandit-config-generator bandit-baseline }
+%endif
 
+%if !%{with test}
 %postun
 %python_uninstall_alternative bandit
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS ChangeLog README.rst
@@ -108,5 +119,6 @@ $python setup.py test
 %python_alternative %{_bindir}/bandit-config-generator
 %python_alternative %{_bindir}/bandit-baseline
 %{python_sitelib}/*
+%endif
 
 %changelog
