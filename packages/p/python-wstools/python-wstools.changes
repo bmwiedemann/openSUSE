@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:38:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six dependency declaration 
+
+-------------------------------------------------------------------
 Fri Aug 27 12:07:52 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest rpm macro

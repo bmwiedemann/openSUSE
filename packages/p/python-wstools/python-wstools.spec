@@ -28,8 +28,10 @@ Source:         https://files.pythonhosted.org/packages/8d/d0/0e48ae89e4b2a9aa3a
 BuildRequires:  %{python_module pbr >= 1.10}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools >= 17.1}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
