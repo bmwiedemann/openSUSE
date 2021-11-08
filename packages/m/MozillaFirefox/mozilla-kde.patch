@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  0dd1b6436342922d434e7c818875b2a02a73b5ed
+# Parent  9eb4df0e07175ce38fc6699b2b8544b9eda7f0ad
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -370,7 +370,7 @@ diff --git a/toolkit/xre/nsKDEUtils.cpp b/toolkit/xre/nsKDEUtils.cpp
 new file mode 100644
 --- /dev/null
 +++ b/toolkit/xre/nsKDEUtils.cpp
-@@ -0,0 +1,344 @@
+@@ -0,0 +1,321 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -410,36 +410,13 @@ new file mode 100644
 +#define MAKE_STR( n ) MAKE_STR2( n )
 +
 +static bool getKdeSession()
++{
++    if (PR_GetEnv("KDE_FULL_SESSION"))
 +    {
-+    Display* dpy = XOpenDisplay( NULL );
-+    if( dpy == NULL )
-+        return false;
-+    Atom kde_full_session = XInternAtom( dpy, "KDE_FULL_SESSION", true );
-+    bool kde = false;
-+    if( kde_full_session != None )
-+        {
-+        int cnt;
-+        if( Atom* props = XListProperties( dpy, DefaultRootWindow( dpy ), &cnt ))
-+            {
-+            for( int i = 0;
-+                 i < cnt;
-+                 ++i )
-+                {
-+                if( props[ i ] == kde_full_session )
-+                    {
-+                    kde = true;
-+#ifdef DEBUG_KDE
-+                    fprintf( stderr, "KDE SESSION %d\n", kde );
-+#endif
-+                    break;
-+                    }
-+                }
-+            XFree( props );
-+            }
-+        }
-+    XCloseDisplay( dpy );
-+    return kde;
++      return true;
 +    }
++    return false;
++}
 +
 +static bool getKdeSupport()
 +    {
@@ -1283,7 +1260,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -137,16 +137,17 @@ FINAL_LIBRARY = "xul"
+@@ -136,16 +136,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1845,7 +1822,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2023,62 +2024,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2025,62 +2026,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {

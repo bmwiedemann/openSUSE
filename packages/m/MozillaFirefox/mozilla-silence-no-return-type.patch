@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  45a1eadbae67aa05c6fa271d3dec5ac1cb0cfae8
+# Parent  9b29b6b7548b93a599167774e747f6e0661cfbe1
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2039,18 +2039,16 @@ name = "glsl-to-cxx"
+@@ -2078,18 +2078,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -20,9 +20,9 @@ diff --git a/Cargo.lock b/Cargo.lock
  ]
  
  [[package]]
- name = "goblin"
- version = "0.1.3"
- source = "registry+https://github.com/rust-lang/crates.io-index"
+ name = "gluesmith"
+ version = "0.1.0"
+ dependencies = [
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
@@ -33,7 +33,7 @@ diff --git a/Cargo.toml b/Cargo.toml
  chardetng = { git = "https://github.com/hsivonen/chardetng", rev="302c995f91f44cf26e77dc4758ad56c3ff0153ad" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  libudev-sys = { path = "dom/webauthn/libudev-sys" }
- packed_simd = { git = "https://github.com/hsivonen/packed_simd", rev="6a16f954950401b92b4e220fbf2dfaf6f00e1fb2" }
+ packed_simd = { git = "https://github.com/hsivonen/packed_simd", rev="8b4bd7d8229660a749dbe419a57ea01df9de5453" }
  minidump_writer_linux = { git = "https://github.com/msirringhaus/minidump_writer_linux.git", rev = "029ac0d54b237f27dc7d8d4e51bc0fb076e5e852" }
 +glslopt = { path = "third_party/rust/glslopt/" }
  # The following overrides point to dummy projects, as a temporary measure until this is resolved:

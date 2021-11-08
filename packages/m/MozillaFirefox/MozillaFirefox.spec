@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          93
-%define mainver        %major.0
-%define orig_version   93.0
+%define major          94
+%define mainver        %major.0.1
+%define orig_version   94.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -100,13 +100,13 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.51
-BuildRequires:  rust >= 1.51
+BuildRequires:  cargo >= 1.53
+BuildRequires:  rust >= 1.53
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
 # specific version
-BuildRequires:  rust+cargo >= 1.51
+BuildRequires:  rust+cargo >= 1.53
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -118,7 +118,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.32
-BuildRequires:  mozilla-nss-devel >= 3.70
+BuildRequires:  mozilla-nss-devel >= 3.71
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -218,15 +218,12 @@ Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch24:        mozilla-bmo1602730.patch
 Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
 Patch29:        mozilla-silence-no-return-type.patch
-Patch30:        mozilla-bmo1725828.patch
 Patch31:        mozilla-bmo531915.patch
-Patch32:        mozilla-bmo1729124.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -349,15 +346,12 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch24 -p1
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
-%patch30 -p1
 %patch31 -p1
-%patch32 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1

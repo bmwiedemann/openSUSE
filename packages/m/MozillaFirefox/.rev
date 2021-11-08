@@ -5248,4 +5248,12 @@
 - Add patch to fix build on aarch64 (bmo#1729124)</comment>
     <requestid>927811</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>e38a1464ce3bd3a2dd6121fe625bf0a2</srcmd5>
+    <version>94.0.1</version>
+    <time>1636388648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929844</requestid>
+  </revision>
 </revisionlist>

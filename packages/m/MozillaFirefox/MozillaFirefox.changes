@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Nov  5 18:02:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 94.0.1:
+  * fixes for other platforms
+
+-------------------------------------------------------------------
+Sat Oct 30 07:52:22 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 94.0
+  * https://www.mozilla.org/en-US/firefox/94.0/releasenotes
+  MFSA 2021-48 (bsc#1192250)
+  * CVE-2021-38503 (bmo#1729517)
+    iframe sandbox rules did not apply to XSLT stylesheets
+  * CVE-2021-38504 (bmo#1730156)
+    Use-after-free in file picker dialog
+  * CVE-2021-38505 (bmo#1730194)
+    Windows 10 Cloud Clipboard may have recorded sensitive user data
+  * CVE-2021-38506 (bmo#1730750)
+    Firefox could be coaxed into going into fullscreen mode
+    without notification or warning
+  * CVE-2021-38507 (bmo#1730935)
+    Opportunistic Encryption in HTTP2 could be used to bypass the
+    Same-Origin-Policy on services hosted on other ports
+  * MOZ-2021-0003 (bmo#1736886)
+    Universal XSS in Firefox for Android via QR Code URLs
+  * CVE-2021-38508 (bmo#1366818)
+    Permission Prompt could be overlaid, resulting in user
+    confusion and potential spoofing
+  * MOZ-2021-0004 (bmo#1659155)
+    Web Extensions could access pre-redirect URL when their
+    context menu was triggered by a user
+  * CVE-2021-38509 (bmo#1718571)
+    Javascript alert box could have been spoofed onto an
+    arbitrary domain
+  * CVE-2021-38510 (bmo#1731779)
+    Download Protections were bypassed by .inetloc files on Mac OS
+  * MOZ-2021-0005 (bmo#1719203)
+    'Copy Image Link' context menu action could have been abused
+    to see authentication tokens
+  * MOZ-2021-0006 (bmo#1724233)
+    URL Parsing may incorrectly parse internationalized domains
+  * MOZ-2021-0007 (bmo#1606864, bmo#1712671, bmo#1730048, bmo#1735152)
+    Memory safety bugs fixed in Firefox 94 and Firefox ESR 91.3
+- removed obsolete patches
+  * mozilla-bmo1602730.patch
+  * mozilla-bmo1725828.patch
+  * mozilla-bmo1729124.patch
+- requires
+  NSS >= 3.71
+  rust >= 1.53
+- fix Plasma detection (boo#1191825)
+- fix Link error "undefined hidden symbol:"
+  https://github.com/openSUSE/firefox-maintenance/issues/37
+
+-------------------------------------------------------------------
 Tue Oct 26 19:48:24 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Drop unused pkgconfig(gdk-x11-2.0) BuildRequires
