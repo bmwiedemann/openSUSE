@@ -33,6 +33,13 @@ Mon Oct  4 12:59:24 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
   * Fixed asking for a user pin when formatting a card (#1737)
   * Added support for French CPx Healthcare cards (#2217)
   * Added ATR for new CardOS 5.4 version (#2296)
+  * Fixes security issues:
+    * tcos: use after return (bsc#1192005, CVE-2021-42780)
+    * oberthur: use after free (bsc#1191992, CVE-2021-42779)
+    * oberthur: multiple heap buffer overflows (bsc#1192000,
+      CVE-2021-42781)
+    * multiple stack buffer overflow issues (bsc#1191957,
+      CVE-2021-42782)
 
 -------------------------------------------------------------------
 Sun Jun 27 16:48:49 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
