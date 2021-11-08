@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 23 11:51:17 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.71
+  * bmo#1717716 - Set nssckbi version number to 2.52.
+  * bmo#1667000 - Respect server requirements of tlsfuzzer/test-tls13-signature-algorithms.py
+  * bmo#1373716 - Import of PKCS#12 files with Camellia encryption is not supported
+  * bmo#1717707 - Add HARICA Client ECC Root CA 2021.
+  * bmo#1717707 - Add HARICA Client RSA Root CA 2021.
+  * bmo#1717707 - Add HARICA TLS ECC Root CA 2021.
+  * bmo#1717707 - Add HARICA TLS RSA Root CA 2021.
+  * bmo#1728394 - Add TunTrust Root CA certificate to NSS.
+- required for Firefox 94
+
+-------------------------------------------------------------------
 Fri Oct  1 18:22:18 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.70

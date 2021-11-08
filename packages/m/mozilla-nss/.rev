@@ -2436,4 +2436,21 @@
 - required for Firefox 93</comment>
     <requestid>923247</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>29751a6f71f19af7388629b0cf749d76</srcmd5>
+    <version>3.71</version>
+    <time>1636388642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.71
+  * bmo#1717716 - Set nssckbi version number to 2.52.
+  * bmo#1667000 - Respect server requirements of tlsfuzzer/test-tls13-signature-algorithms.py
+  * bmo#1373716 - Import of PKCS#12 files with Camellia encryption is not supported
+  * bmo#1717707 - Add HARICA Client ECC Root CA 2021.
+  * bmo#1717707 - Add HARICA Client RSA Root CA 2021.
+  * bmo#1717707 - Add HARICA TLS ECC Root CA 2021.
+  * bmo#1717707 - Add HARICA TLS RSA Root CA 2021.
+  * bmo#1728394 - Add TunTrust Root CA certificate to NSS.
+- required for Firefox 94</comment>
+    <requestid>928802</requestid>
+  </revision>
 </revisionlist>
