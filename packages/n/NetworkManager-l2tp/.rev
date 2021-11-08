@@ -94,4 +94,12 @@
 - AppData file location is now /usr/share/metainfo. (forwarded request 871745 from dkosovic)</comment>
     <requestid>873916</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5bc59601b95eb16fe7568f56a9907b39</srcmd5>
+    <version>1.20.0</version>
+    <time>1636388639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928780</requestid>
+  </revision>
 </revisionlist>

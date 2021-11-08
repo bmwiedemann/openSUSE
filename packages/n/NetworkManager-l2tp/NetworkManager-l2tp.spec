@@ -18,7 +18,7 @@
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
 Name:           NetworkManager-l2tp
-Version:        1.8.6
+Version:        1.20.0
 Release:        0
 Summary:        NetworkManager VPN support for L2TP and L2TP/IPsec
 License:        GPL-2.0-or-later
@@ -26,20 +26,19 @@ Group:          Productivity/Networking/System
 URL:            https://github.com/nm-l2tp/NetworkManager-l2tp
 Source0:        https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  intltool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ppp-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libnm) >= 1.8.0
+BuildRequires:  pkgconfig(libnm) >= 1.20.0
 BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(nss)
-Requires:       NetworkManager >= 1.8.0
+Requires:       NetworkManager >= 1.20.0
 Requires:       xl2tpd
 %requires_eq    ppp
-Recommends:     strongswan
+Recommends:     (strongswan or libreswan)
 
 %description
 This package contains software for integrating L2TP and L2TP/IPsec
