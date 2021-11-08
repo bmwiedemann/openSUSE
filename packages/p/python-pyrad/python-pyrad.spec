@@ -26,9 +26,11 @@ URL:            https://github.com/pyradius/pyrad
 Source0:        https://github.com/pyradius/pyrad/archive/%{version}.tar.gz
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 

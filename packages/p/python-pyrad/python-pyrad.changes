@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:30:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six dependency declaration
+
+-------------------------------------------------------------------
 Sun Jun 13 19:00:10 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Use %pyunittest, dropped build dependency on pytest

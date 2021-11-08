@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>899980</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6d192413026e9596a61328aab5ba81f8</srcmd5>
+    <version>2.4</version>
+    <time>1636388678</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six dependency declaration</comment>
+    <requestid>930134</requestid>
+  </revision>
 </revisionlist>
