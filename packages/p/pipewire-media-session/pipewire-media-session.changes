@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  2 08:47:28 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.4.1:
+  * Minor bugfix release functionally equivalent to the previous
+    release. This release corrects a few leftovers pointing to the
+    wrong repository and sets the minimum required PipeWire
+    version. This way we fail early during meson setup rather than
+    with linker errors during the build.
+
+- Add patch to reduce the required meson version so the package
+  builds in the Leap 15.3 repository (boo#1192186):
+  * reduce-meson-required-version.patch
+
+-------------------------------------------------------------------
 Fri Oct 22 21:30:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gcc-c++ and cmake BuildRequires, not needed.

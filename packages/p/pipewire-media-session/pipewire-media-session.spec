@@ -17,16 +17,16 @@
 
 
 Name:           pipewire-media-session
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Example session manager for Pipewire
 License:        MIT
 URL:            https://gitlab.freedesktop.org/pipewire/media-session
 Source:         media-session-%{version}.tar.xz
-
+Patch0:         reduce-meson-required-version.patch
 BuildRequires:  c_compiler
 BuildRequires:  doxygen
-BuildRequires:  meson >= 0.58.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libcap)
@@ -42,7 +42,10 @@ PipeWire Media Session is an example session manager for PipeWire.
 %lang_package
 
 %prep
-%autosetup -p1 -n media-session-%{version}
+%setup -n media-session-%{version}
+%if %{pkg_vcmp meson < 0.56.0}
+%patch0 -p1
+%endif
 
 %build
 %meson \
@@ -92,7 +95,6 @@ fi
 
 %postun
 %systemd_user_postun pipewire-media-session.service
-
 
 %files
 %license COPYING LICENSE
