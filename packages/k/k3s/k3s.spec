@@ -23,7 +23,7 @@
 %define baseversion 1.20
 
 Name:           k3s
-Version:        1.21.3+k3s1
+Version:        1.22.3+k3s1
 Release:        0
 Summary:        A container orchestration system based on a reduced Kubernetes feature set
 License:        Apache-2.0

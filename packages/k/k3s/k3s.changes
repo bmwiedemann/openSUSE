@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Thu Nov 04 17:44:06 UTC 2021 - egotthold@suse.com
+
+- Update to version 1.22.3+k3s1:
+  * Upgrade containerd
+  * Bump klipper-lb image for arm fix
+  * Fix log/reap reexec
+  * Fix other uses of NewForConfigOrDie in contexts where we could return err
+  * Watch the local Node object instead of get/sleep looping
+  * Block scheduler startup on untainted node when using embedded CCM
+  * Update to v1.22.3 (#4348)
+  * Revert "Add ability to reconcile bootstrap data between datastore and disk (#3398)"
+  * reset buffer after use (#4279) (#4329)
+  * remove integration test
+  * Copy old bootstrap buffer data for use during migration (#4215)
+  * Add ability to reconcile bootstrap data between datastore and disk (#3398)
+  * Update peer address when running cluster-reset
+  * Bump klipper-helm version
+  * Added configuration input to etcd-snapshot (#4280) (#4281)
+  * Update to the newest flannel
+  * Refactor log and reaper exec to omit MAINPID
+  * Add containerd ready channel to delay etcd node join
+  * Bump klog fork version
+  * [Release-1.22] - Add etcd s3 timeout (#4207) (#4230)
+  * Fix race condition in cloud provider
+  * Display cluster tls error only in debug mode (#4200)
+  * set transport to skip verify if se skip flag passed (#4102) (#4103)
+  * Add "etcd-" prefix to etcd-snapshot commands as aliases (#4161) (#4170)
+  * Dual-stack support LB controller
+  * Bump containerd to v1.5.7+k3s1
+  * Don't evacuate the root cgroup when rootless
+  * Skip tests that violate version skew policy
+  * Properly handle operation as init process
+  * Enable the inheritance of settings for ipv6
+  * Update build images to python3 for compat with recent gsutil change
+  * Revert "Use the newer klipper-lb image"
+  * Disable automounting service account token in servicelb pods
+  * Make sure there are no duplicates in etcd member list (#4025)
+  * Use the newer klipper-lb image
+  * Enable JobTrackingWithFinalizers FeatureGate
+  * Fix regression from commit 137e80cd865efe51aa3ef0323fd6b0a014b7b9de
+  * Bump golang version
+  * Update Kubernetes to v1.22.2-k3s1
+  * Remove expiremental from cluster commands (#4024)
+  * Nvidia container runtime discovery in containerd config template (#3890)
+  * Fix premature etcd shutdown when joining an existing cluster
+  * Add StargzSupported stub for Windows
+  * Retrieve "CONTAINERD_" environment variables
+  * No-op when etcd member was already removed and use existing name for etcd controller (#4014)
+  * Add tests to the dual-stack PR and enable dual-stack with flannel backend
+  * Add dual-stack support
+  * Bump helm-controller and klipper-helm image version
+  * Return the error since it just gets logged and retried anyways
+  * Use SubjectAccessReview to validate CCM RBAC
+  * Set controller authn/authz kubeconfigs
+  * Pass context into all Executor functions
+  * Handle cgroup v1/2/hybrid in check-config.sh more explicitly/accurately
+  * [master] Add `etcd-member-management` controller to K3s (#4001)
+  * go mod tidy
+  * Minor cleanup on cribbed function
+  * Wait for apiserver readyz instead of healthz
+  * Anything not EL7 is EL8
+  * Add exposed metrics listener instead of replacing loopback listener
+  * Replace klog with non-exiting fork
+  * SupportPodPidsLimit is locked to true of 1.20, making pids cgroup support mandatory
+  * Migrate sqlite data to etcd when initializing the cluster
+  * feat: add option to disable s3 over https
+  * Ship Stargz Snapshotter (#2936)
+  * Add missing node name entry to apiserver SAN list
+  * added raspberry installation hint (#2379)
+  * Update maintainers to reflect team changes
+  * Bump kine for metrics/tls changes
+  * Small updates to CONTRIBUTING (#3734)
+  * Fix condition for adding kubernetes endpoints (#3941)
+  * Bump stable to v1.21.4+k3s1
+  * Creation of K3s integration test Sonobuoy plugin (#3931)
+  * Make consistent use of os-release vars
+  * Fix issue where addon checksum was never stored
+  * Move cniplugins version to 0.9.1
+  * Add functions to separate ipv4 from ipv6 functions
+  * github actions: enable workflow_dispatch (#3923)
+  * Redux: Enable K3s integration test to run on existing cluster (#3905)
+  * Check /etc/os-release exists before sourcing it
+  * install.sh: Inform user of current k3s+SELinux support status for SUSE/openSUSE systems
+  * Remove runtime V1 (`containerd-shim`)
+  * Update RootlessKit to v0.14.5 (#3902)
+  * Fix rootless regression in 1.22 (Set KubeletInUserNamespace gate) (#3901)
+  * Revert "Enable K3s integration test to run on existing cluster (#3892)" (#3899)
+  * Enable K3s integration test to run on existing cluster (#3892)
+  * Set osImage for docker image
+  * Fix PREVIOUS_CHANNEL lookup when current minor release is not stable
+  * Fix lint failures
+  * Replace dropped v1beta1 APIs with v1
+  * Update wrangler to v0.8.5
+  * Wrap errors in runControllers for additional context
+  * Disable deprecated insecure port
+  * Update containerd to 1.5
+  * Update grpc
+  * Update kine for etcd v3.5 compat
+  * update golangci config to sync with RKE2
+  * Bump gopls and golangci-lint
+  * Update etcd to v3.5.0
+  * Update Kubernetes to v1.22.1
+  * K3s Flock Integration Test (#3887)
+  * Reset load balancer state during restoraion (#3877)
+  * Add missing labels to stalebot config
+  * Update Kubernetes to v1.21.4-k3s1
+  * Bump containerd to v1.4.9-k3s1
+  * Bump helm-controller to work around tiller crashes
+  * Fix URL pruning when joining an etcd member (#3832)
+  * Added new testing documentation (#3823)
+  * Added locking system for integration tests (#3820)
+  * Updated the code to use GetNetworkByName and tweaked logic.
+  * Moved testing utils into tests directory. Improved gotests template. (#3805)
+  * account for an s3 folder when listing objects (#3807)
+  * Prevent snapshot commands from creating empty snapshot directory (#3783)
+  * Use New Image Names (#3749)
+  * Fix Node stuck at deletion (#3771)
+  * Bump helm-controller to v0.10.2
+  * install.sh: Use built-in shell functionality instead of awk
+  * Wrap context with lease before importing images
+  * Fix initial start of etcd only nodes (#3748)
+  * update rancher/local-path-provisioner to v0.0.20
+  * Update MAINTAINERS (#3744)
+  * Improve config retrieval messages
+  * Sync DisableKubeProxy into control struct
+  * Add nightly automation tests
+  * Add in stalebot config, starting with 6mo old stale issues. (#3739)
+  * Notify systemd for etcd only node (#3732)
+  * Exporting the AddFeatureGate function and adding a unit test for it. (#3661)
+  * Added logic to strip any existing hyphens before processing the args. (#3662)
+  * Fix to allow non-root users access to storage volumes. (#3714)
+  * Wait until server is ready before configuring kube-proxy (#3716)
+  * Introduction of Integration Tests (#3695)
+  * add gotests templates (#3709)
+  * Ignore markdown files for github actions (#3676)
+  * Update 1.21 stable version
+  * more fixes
+  * more fixes
+  * replace error with warn in delete
+  * fix warning msg
+  * migrate old token key format
+  * simplifying the code
+  * migrate empty string key properly
+  * Fix multiple bootstrap keys found
+  * move go routines for api server ready beneath wait group
+  * Bump Kubernetes to v1.21.3
+  * Bump containerd to v1.4.8-k3s1
+  * adding startup hooks args to access to Disables and Skips (#3674)
+  * Update .github/ISSUE_TEMPLATE/feature_request.md
+  * Update .github/ISSUE_TEMPLATE/bug_report.md
+  * Fix to allow prune to correctly cleanup custom named snapshots (#3649)
+  * Add checkbox to denote backporting required on issue templates
+  * Adding support for waitgroup to the Startuphooks (#3654)
+  * Bump helm-controller to v0.10.1 (#3644)
+  * Add issue template for creating release checklist issues (#3604)
+  * fix a runtime core panic (#3627)
+  * Convert existing unit tests to standard layout (#3621)
+  * Upgrade k3s-root version
+  * prevent snapshot save when snapshots are disabled (#3475)
+  * 🐳 burp to inetaf/tcpproxy
+  * Bump the packaged runc binary version
+  * Update etcd snapshot error message to be more informative when etcd database is not found (#3568)
+  * Fixing various bugs related to windows.
+  * Update ROADMAP.md
+  * Dispatch to rancher/system-agent-installer-k3s when tagged (#3589)
+  * Update embedded kube-router (#3557)
+  * missing build tag for windows
+  * Set ulimits in docker-compose.yml
+  * Update to v1.21.2
+  * Fix coverage reporting to include all packages, not just those with tests
+  * Add unit tests for pkg/etcd (#3549)
+  * Fix spelling to satisfy codespell check
+  * Allow passing targeted environment variables to containerd
+  * Add user-facing change section to PR template
+  * (docs) Update README.md
+  * Export cli server flags and etcd restoration functions (#3527)
+  * Bump kine to resolve race condition and unrevisioned delete
+  * Changes local storage pods to have 700 permissions (#3537)
+  * Redux: Add Unit Test Coverage to CI (#3524)
+  * Move cloud-controller-manager into an embedded executor (#3525)
+  * Bump stable version to v1.21.2+k3s1 (#3526)
+  * Adds a command-line flag '--disable-helm-controller' that will disable the server's built-in helm controller.
+  * Revert "Add Unit Test Coverage to CI (#3494)" (#3499)
+  * Add Unit Test Coverage to CI (#3494)
+  * Basic windows agent that will join a cluster without CNI.
+  * Fix storing bootstrap data with empty token string (#3422)
+  * Fail to start k3s if nm-cloud-setup is enabled
+  * Renamed client-cloud-controller crt and key (#3470)
+  * Redux: Change containerd image leases from context lifespan to permanent  (#3464)
+  * Revert "Change containerd image leases from 24h to permanent (#3452)" (#3461)
+  * Change containerd image leases from 24h to permanent (#3452)
+  * Send systemd notifications for both server and agent (#3430)
+  * Emit events for AddOn lifecycle
+  * Add comments, clean up imports and function names
+  * Tidy up function calls with many args
+  * Add nodename to UA string for deploy controller
+  * Changed iptables version check for fail if version is between 1.8.0 and 1.8.3 and using nf_tables mode (#3425)
+  * Add kubernetes.default.svc to serving certs
+  * Change Replace with ReplaceAll function
+  * fix possible race where bootstrap data might not save
+  * add log message indicating etcd snapshots are disabled
+  * Fix RBAC cloud-controller-manager name 3308 (#3388)
+  * cgroup2 CI: add rootless
+  * k3s-rootless.service: use fuse-overlayfs snapshotter
+  * Add a path for wireguard's privatekey
+  * Initial windows support for agent (#3375)
+  * Bump stable version to v1.21.1+k3s1 and add v1.21 channel
+  * Update flannel version
+  * containerd: v1.4.4-k3s2
+  * Bump channel stable version to v1.20.7+k3s1
+  * Fix shell expansion and file permission issues install.sh
+  * runc: v1.0.0-rc95 (#3348)
+  * move object channel defer close to goroutine
+  * add retention default and wire in s3 prune
+  * Handle conntrack-related sysctls in supervisor agent setup
+  * Add support for multiple env files for systemd unit
+  * add etcd snapshot save subcommand
+
+-------------------------------------------------------------------
 Fri Jul 23 09:58:56 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.3+k3s1:
