@@ -30,10 +30,12 @@ Source:         https://github.com/DinoTools/python-ssdeep/archive/%{version}.ta
 BuildRequires:  %{python_module cffi >= 0.8.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  libfuzzy-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi
+Requires:       python-six
 Requires:       ssdeep
 # SECTION tests
 BuildRequires:  %{python_module pytest-runner}
