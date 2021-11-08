@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-aioftp
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        FTP client/server for asyncio
 License:        Apache-2.0
