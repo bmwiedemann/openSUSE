@@ -335,4 +335,14 @@ See README (forwarded request 157221 from babelworx)</comment>
     <comment></comment>
     <requestid>866524</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>55b1f50e12a25367341fce7022fb68ff</srcmd5>
+    <version>1.7.4.2</version>
+    <time>1636388635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.4.2:
+  * Fixes a lot of bugs, e.g., for options -r and -R.
+  * Further bugfixes, see the CHANGES file (forwarded request 928587 from mnhauke)</comment>
+    <requestid>928678</requestid>
+  </revision>
 </revisionlist>

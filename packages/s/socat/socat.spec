@@ -18,13 +18,13 @@
 
 
 Name:           socat
-Version:        1.7.4.1
+Version:        1.7.4.2
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
-License:        SUSE-GPL-2.0-with-openssl-exception AND MIT
+License:        MIT AND SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Networking/Other
 URL:            http://www.dest-unreach.org/socat/
-Source:         http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
+Source:         http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
 Patch2:         socat-common-fixes.patch

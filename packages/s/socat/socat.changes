@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  1 18:46:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.4.2:
+  * Fixes a lot of bugs, e.g., for options -r and -R.
+  * Further bugfixes, see the CHANGES file
+
+-------------------------------------------------------------------
 Mon Jan 11 22:24:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.4.1:
