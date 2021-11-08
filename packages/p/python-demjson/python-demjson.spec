@@ -1,7 +1,7 @@
 #
 # spec file for package python-demjson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,11 @@ URL:            http://deron.meranda.us/python/demjson/
 Source:         https://files.pythonhosted.org/packages/source/d/demjson/demjson-%{version}.tar.gz
 BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

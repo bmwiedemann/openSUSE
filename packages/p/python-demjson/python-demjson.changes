@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:12:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add six dependency for testsuite 
+
+-------------------------------------------------------------------
 Wed Jan 20 09:52:52 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary bcond tests
