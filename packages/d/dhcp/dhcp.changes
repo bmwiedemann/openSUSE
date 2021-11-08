@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 26 11:58:59 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Add a fallback definition for %make_build to fix build on SLE-12.
+- Handle sysusers with a bcond to improve readability and simplify
+  removal once we don't have to support SLE-12 anymore.
+- bsc#1192020: Drop the obsolete dependency on "group(nogroup)".
+
+-------------------------------------------------------------------
 Thu Aug  5 11:33:54 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1186249: Remove remaining references to /etc/init.d from

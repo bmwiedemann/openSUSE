@@ -26,6 +26,11 @@
 %else
 %define sbindir /sbin
 %endif
+%if 0%{?suse_version} >= 1330
+%bcond_without sysusers
+%else
+%bcond_with sysusers
+%endif
 Name:           dhcp
 Version:        4.4.2.P1
 Release:        0
@@ -95,8 +100,7 @@ BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
-%if 0%{?suse_version} >= 1330
-BuildRequires:  sysuser-shadow
+%if %{with sysusers}
 BuildRequires:  sysuser-tools
 %endif
 
@@ -105,13 +109,12 @@ Summary:        ISC DHCP Server
 Group:          Productivity/Networking/Boot/Servers
 Requires:       dhcp = %{version}
 Requires(post): %fillup_prereq
-%systemd_ordering
+%{?systemd_ordering}
 %if 0%{?suse_version} < 1500
 Requires:       net-tools
 %endif
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(nogroup)
-# %sysusers_requires
+%if %{with sysusers}
+%sysusers_requires
 %else
 Requires(pre):  shadow
 %endif
@@ -134,7 +137,7 @@ Summary:        ISC DHCP Relay Agent
 Group:          Productivity/Networking/Boot/Servers
 Requires:       dhcp = %{version}
 Requires(post): %fillup_prereq
-%systemd_ordering
+%{?systemd_ordering}
 %if 0%{?suse_version} < 1500
 Requires:       net-tools
 %endif
@@ -260,13 +263,17 @@ export CFLAGS LDFLAGS FFLAGS CXXFLAGS
 	--with-srv6-lease-file=%{_localstatedir}/lib/dhcp6/db/dhcpd6.leases
 #
 : building bind sources
+%if 0%{?!make_build:1}
+# SLE-12 compatbility still needed as of October 2021
+%define make_build %{__make} %{?_smp_mflags}
+%endif
 %make_build -j1 -C bind all
 cat bind/configure.log
 cat bind/build.log
 cat bind/install.log
 : building dhcp sources
 %make_build
-%if 0%{?suse_version} >= 1330
+%if %{with sysusers}
 %sysusers_generate_pre %{SOURCE47} dhcp-server
 %endif
 
@@ -399,14 +406,15 @@ mv %{buildroot}%{_includedir}/{dhcpctl,omapip} \
    %{buildroot}%{_includedir}/dhcp/
 mv %{buildroot}%{_libdir}/lib*.* \
    %{buildroot}%{_libdir}/dhcp/
-%if 0%{?suse_version} >= 1330
+%if %{with sysusers}
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE47} %{buildroot}%{_sysusersdir}/
 %endif
 
-%if 0%{?suse_version} >= 1330
+%if %{with sysusers}
 %pre server -f dhcp-server.pre
 %else
+
 %pre server
 getent passwd dhcpd >/dev/null || useradd -r -g nogroup -s /bin/false -c "DHCP server daemon" -d %{_localstatedir}/lib/dhcp dhcpd
 %endif
@@ -479,7 +487,7 @@ fi
 %{_sbindir}/rcdhcpd6
 %{_unitdir}/dhcpd.service
 %{_unitdir}/dhcpd6.service
-%if 0%{?suse_version} >= 1330
+%if %{with sysusers}
 %{_sysusersdir}/dhcp-user.conf
 %endif
 %dir %{_libexecdir}/initscripts/legacy-actions/dhcpd
