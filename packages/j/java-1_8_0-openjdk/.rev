@@ -658,4 +658,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>911810</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>28de6c16a56644ccf3997f4ae4e0c2e9</srcmd5>
+    <version>1.8.0.312</version>
+    <time>1636388649</time>
+    <user>dimstar_suse</user>
+    <comment>October 2021 CPU</comment>
+    <requestid>929871</requestid>
+  </revision>
 </revisionlist>

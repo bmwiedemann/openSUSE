@@ -1,0 +1,11 @@
+--- openjdk/jdk/src/share/lib/security/java.security-linux	2021-09-16 11:10:18.388933075 +0200
++++ openjdk/jdk/src/share/lib/security/java.security-linux	2021-10-11 13:35:57.523155519 +0200
+@@ -74,7 +74,7 @@
+ security.provider.7=com.sun.security.sasl.Provider
+ security.provider.8=org.jcp.xml.dsig.internal.dom.XMLDSigRI
+ security.provider.9=sun.security.smartcardio.SunPCSC
+-security.provider.10=sun.security.pkcs11.SunPKCS11 ${java.home}/lib/security/nss.cfg
++#security.provider.10=sun.security.pkcs11.SunPKCS11 ${java.home}/lib/security/nss.cfg
+ 
+ #
+ # Sun Provider SecureRandom seed source.

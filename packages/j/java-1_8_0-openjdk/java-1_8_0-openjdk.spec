@@ -16,11 +16,9 @@
 #
 
 
-%{!?make_build:%global make_build make %{?_smp_mflags}}
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.20.0
-%global icedtea_sound_version 1.0.1
+%global icedtea_version 3.21.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -33,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       302
-%global buildver        08
+%global updatever       312
+%global buildver        07
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -55,11 +53,6 @@
 %global with_improved_font_rendering 1
 %else
 %global with_improved_font_rendering 0
-%endif
-%if 0%{?suse_version} >= 1140
-%global with_pulseaudio 1
-%else
-%global with_pulseaudio 0
 %endif
 %if 0%{?suse_version} >= 1220
 %global with_system_lcms 1
@@ -135,6 +128,12 @@
 %if 0%{?__isa_bits}
 %global bits %{__isa_bits}
 %endif
+%if 0%{?suse_version} > 1500 && !0%{?sle_version}
+%global with_shenandoah 1
+%else
+%global with_shenandoah 0
+%endif
+%global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %bcond_without bootstrap
 %bcond_with zero
 # Turn on/off some features depending on openSUSE version
@@ -146,11 +145,6 @@
 %endif
 %else
 %global with_systemtap 0
-%endif
-%if 0%{?suse_version} > 1500 && !0%{?sle_version}
-%global with_shenandoah 1
-%else
-%global with_shenandoah 0
 %endif
 %if %{with_systemtap}
 # Where to install systemtap tapset (links)
@@ -172,17 +166,18 @@ License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only 
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 Source0:        https://icedtea.classpath.org/download/source/icedtea-%{icedtea_version}.tar.xz
-Source1:        https://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
-Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
-Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/corba.tar.xz
-Source4:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxp.tar.xz
-Source5:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxws.tar.xz
-Source6:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jdk.tar.xz
-Source7:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
-Source8:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
-Source9:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
-Source10:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
-Source11:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
+Source1:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
+Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/corba.tar.xz
+Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxp.tar.xz
+Source4:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxws.tar.xz
+Source5:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jdk.tar.xz
+Source6:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
+Source7:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
+Source8:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
+Source9:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
+Source10:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
+# nss fips configuration file
+Source17:       nss.fips.cfg.in
 # RPM/distribution specific patches
 # RHBZ 1015432
 Patch2:         1015432.patch
@@ -203,6 +198,8 @@ Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
+Patch5000:      comment-nss-security-provider.patch
+Patch5001:      fips.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -220,7 +217,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxslt
-BuildRequires:  mozilla-nss-devel
+BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -291,11 +288,6 @@ Requires:       openssl
 %endif
 %if %{with_systemtap}
 BuildRequires:  systemtap-sdt-devel
-%endif
-# pulse audio requirements
-%if %{with_pulseaudio}
-BuildRequires:  libpulse-devel >= 0.9.11
-BuildRequires:  pulseaudio >= 0.9.11
 %endif
 %if %{with_system_pcsc}
 BuildRequires:  pcsc-lite-devel
@@ -419,12 +411,15 @@ this package unless you really need to.
 
 %prep
 %setup -q -n icedtea-%{icedtea_version}
-%setup -q -D -n icedtea-%{icedtea_version} -T -a 1
 
 %patch1001 -p1
 %ifarch s390
 %patch1002 -p1
 %endif
+
+# Setup nss.fips.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
 
 %build
 %define _lto_cflags %{nil}
@@ -461,6 +456,7 @@ sh autogen.sh
         --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-%{release}-%{_arch}" \
         --with-jdk-home="%{_sysconfdir}/alternatives/java_sdk" \
         --enable-nss \
+        --enable-sysconf-nss \
         --enable-non-nss-curves \
 %if %{with bootstrap}
         --enable-bootstrap \
@@ -506,23 +502,23 @@ sh autogen.sh
 %else
         --disable-improved-font-rendering \
 %endif
-        --with-openjdk-src-zip=%{SOURCE2} \
-        --with-corba-src-zip=%{SOURCE3} \
-        --with-jaxp-src-zip=%{SOURCE4} \
-        --with-jaxws-src-zip=%{SOURCE5} \
-        --with-jdk-src-zip=%{SOURCE6} \
-        --with-langtools-src-zip=%{SOURCE7} \
+        --with-openjdk-src-zip=%{SOURCE1} \
+        --with-corba-src-zip=%{SOURCE2} \
+        --with-jaxp-src-zip=%{SOURCE3} \
+        --with-jaxws-src-zip=%{SOURCE4} \
+        --with-jdk-src-zip=%{SOURCE5} \
+        --with-langtools-src-zip=%{SOURCE6} \
 %ifarch %{arm}
-        --with-hotspot-src-zip=%{SOURCE9} \
-%else
-%if %{with zero} || %{without shenandoah}
         --with-hotspot-src-zip=%{SOURCE8} \
 %else
-        --with-hotspot-src-zip=%{SOURCE10} \
+%if %{with zero} || %{without shenandoah}
+        --with-hotspot-src-zip=%{SOURCE7} \
+%else
+        --with-hotspot-src-zip=%{SOURCE9} \
         --with-hotspot-build=shenandoah \
 %endif
 %endif
-        --with-nashorn-src-zip=%{SOURCE11}
+        --with-nashorn-src-zip=%{SOURCE10}
 
 make patch %{?_smp_mflags}
 
@@ -545,6 +541,9 @@ patch -p0 -i %{PATCH2002}
 patch -p0 -i %{PATCH3000}
 
 patch -p0 -i %{PATCH4000}
+
+patch -p0 -i %{PATCH5000}
+patch -p0 -i %{PATCH5001}
 
 (cd openjdk/common/autoconf
  bash ./autogen.sh
@@ -569,25 +568,6 @@ for PEM in %{_sysconfdir}/ssl/certs/*.pem; do
     yes | $JAVA_HOME/jre/bin/keytool -import -alias ${ALIAS} -keystore %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts -storepass 'changeit' -file ${ALIAS}.pem || :
     rm ${ALIAS}.pem
 done
-%endif
-
-%if %{with_pulseaudio}
-# Build the pulseaudio plugin
-pushd icedtea-sound-%{icedtea_sound_version}
-%configure \
-    --with-jdk-home=$JAVA_HOME \
-    --disable-docs
-make %{?_smp_mflags}
-cp icedtea-sound.jar $JAVA_HOME/jre/lib/ext/
-cp build/native/libicedtea-sound.so $JAVA_HOME/jre/lib/%{archinstall}/
-echo "#Config file to enable PulseAudio support" > $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.Clip=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.Port=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.SourceDataLine=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "javax.sound.sampled.TargetDataLine=org.classpath.icedtea.pulseaudio.PulseAudioMixerProvider" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-echo "" >> $JAVA_HOME/jre/lib/pulseaudio.properties
-popd
 %endif
 
 # Check debug symbols are present and can identify code
@@ -695,6 +675,9 @@ pushd %{buildoutputdir}images/j2sdk-image
 
 popd
 
+# Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
+install -m 644 nss.fips.cfg %{buildroot}%{_jvmdir}/%{jredir}/lib/security/
+
 # Install Javadoc documentation.
 install -d -m 755 %{buildroot}%{_javadocdir}
 cp -a %{buildoutputdir}/docs %{buildroot}%{_javadocdir}/%{sdklnk}
@@ -728,7 +711,6 @@ find %{buildroot}%{_jvmdir}/%{jredir} -type f -o -type l \
 #see https://bugzilla.redhat.com/show_bug.cgi?id=875408
 NOT_HEADLESS=\
 "%{_jvmdir}/%{jredir}/lib/%{archinstall}/libjsoundalsa.so
-%{_jvmdir}/%{jredir}/lib/%{archinstall}/libicedtea-sound.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libsplashscreen.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libawt_xawt.so
 %{_jvmdir}/%{jredir}/lib/%{archinstall}/libjawt.so"
@@ -1089,6 +1071,7 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/blacklisted.certs
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/nss.cfg
+%config(noreplace) %{_jvmdir}/%{jredir}/lib/security/nss.fips.cfg
 %{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
 %{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
