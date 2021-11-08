@@ -1,0 +1,5 @@
+<package name="python-django-parler" project="openSUSE:Factory">
+  <title></title>
+  <description>Simple Django model translations without nasty hacks, featuring nice admin integration</description>
+  <devel project="devel:languages:python:django" package="python-django-parler"/>
+</package>
