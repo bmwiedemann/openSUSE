@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  3 16:29:58 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.11.0
+  * Improved performance validating deep record data
+  * Drop Python 2 support
+  * Drop Python 3.5 support
+  * The avro package fully supports Python 3. We will no
+    longer publish a separate avro-python3 package
+- Disable Python2 builds
+
+-------------------------------------------------------------------
 Fri Apr 16 08:45:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.10.2
