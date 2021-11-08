@@ -14964,7 +14964,6 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
-  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
@@ -23453,6 +23452,7 @@ unsorted:
   - python36-pysmi 
   - python36-pysnmp 
   - python36-pysolr 
+  - python36-pyspnego 
   - python36-pysrt 
   - python36-pystache 
   - python36-pysvn 
