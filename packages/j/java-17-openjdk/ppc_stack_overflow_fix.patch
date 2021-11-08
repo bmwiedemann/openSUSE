@@ -1,6 +1,6 @@
---- jdk16/src/hotspot/cpu/zero/stack_zero.hpp	2016-12-27 22:00:30.000000000 +0100
-+++ jdk16/src/hotspot/cpu/zero/stack_zero.hpp	2017-01-09 08:35:53.221098668 +0100
-@@ -96,7 +96,7 @@
+--- a/src/hotspot/cpu/zero/stack_zero.hpp	2016-12-27 22:00:30.000000000 +0100
++++ b/src/hotspot/cpu/zero/stack_zero.hpp	2017-01-09 08:35:53.221098668 +0100
+@@ -97,7 +97,7 @@
    int shadow_pages_size() const {
      return _shadow_pages_size;
    }
@@ -9,9 +9,9 @@
  
   public:
    void overflow_check(int required_words, TRAPS);
---- jdk16/src/hotspot/cpu/zero/stack_zero.inline.hpp	2016-12-27 22:00:30.000000000 +0100
-+++ jdk16/src/hotspot/cpu/zero/stack_zero.inline.hpp	2017-01-09 08:35:53.221098668 +0100
-@@ -47,11 +47,11 @@
+--- a/src/hotspot/cpu/zero/stack_zero.inline.hpp	2016-12-27 22:00:30.000000000 +0100
++++ b/src/hotspot/cpu/zero/stack_zero.inline.hpp	2017-01-09 08:35:53.221098668 +0100
+@@ -46,11 +46,11 @@
  // This method returns the amount of ABI stack available for us
  // to use under normal circumstances.  Note that the returned
  // value can be negative.

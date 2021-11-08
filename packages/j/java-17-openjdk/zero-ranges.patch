@@ -1,6 +1,6 @@
 --- jdk10/src/hotspot/cpu/zero/globals_zero.hpp	2016-01-21 19:16:09.000000000 +0100
 +++ jdk10/src/hotspot/cpu/zero/globals_zero.hpp	2016-01-29 15:52:57.611610069 +0100
-@@ -50,9 +50,9 @@
+@@ -53,9 +53,9 @@
  #define DEFAULT_STACK_SHADOW_PAGES (5 LP64_ONLY(+1) DEBUG_ONLY(+3))
  #define DEFAULT_STACK_RESERVED_PAGES (0)
  

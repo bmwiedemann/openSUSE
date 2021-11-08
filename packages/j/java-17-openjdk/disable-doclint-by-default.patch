@@ -1,6 +1,6 @@
 --- jdk15/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java	2020-03-11 22:25:18.000000000 +0100
 +++ jdk15/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java	2020-03-17 19:11:23.870026518 +0100
-@@ -147,12 +147,12 @@
+@@ -155,12 +155,12 @@
              files = List.of(new TestJFO("Test.java", code));
  
              test(List.of(htmlVersion),

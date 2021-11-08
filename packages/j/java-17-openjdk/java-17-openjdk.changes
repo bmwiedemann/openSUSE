@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Nov  5 16:52:14 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fips.patch
+    + return in native code after generating java.io.IOException
+
+-------------------------------------------------------------------
+Thu Nov  4 07:44:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * PStack-808293.patch
+  * adlc-parser.patch
+  * alternative-tzdb_dat.patch
+  * disable-doclint-by-default.patch
+  * java-atk-wrapper-security.patch
+  * jaw-jdk10.patch
+  * jaw-misc.patch
+  * loadAssistiveTechnologies.patch
+  * memory-limits.patch
+  * multiple-pkcs11-library-init.patch
+  * ppc_stack_overflow_fix.patch
+  * system-crypto-policy.patch
+  * system-pcsclite.patch
+  * zero-ranges.patch
+    + Rediff to apply all hunks without shifts
+  * fips.patch
+    + Fix unused function compiler warning found in systemconf.c
+    + Allow plain key import
+
+-------------------------------------------------------------------
 Fri Oct 22 05:58:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.1+12 (October 2021 CPU)

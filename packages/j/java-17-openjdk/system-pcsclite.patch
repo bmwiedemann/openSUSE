@@ -52,7 +52,7 @@
 +])
 --- jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:35:09.825368428 +0200
 +++ jdk15/make/autoconf/spec.gmk.in	2020-05-07 13:37:41.358280752 +0200
-@@ -769,6 +769,7 @@
+@@ -767,6 +767,7 @@
  # Build setup
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@

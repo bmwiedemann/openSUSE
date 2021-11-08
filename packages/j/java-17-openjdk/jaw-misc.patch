@@ -17,7 +17,7 @@
  JAVA_ERROR_MESSAGE="Java $JAVA_REQUIRED or later is required to build java-access-bridge"
  
  AC_ARG_VAR([JAVA_HOME],[Java Runtime Environment location])
-@@ -98,12 +98,6 @@ if test -z "$JAVAC"; then
+@@ -109,12 +108,6 @@ if test -z "$JAVAC"; then
  fi
  AC_SUBST(JAVAC)
  

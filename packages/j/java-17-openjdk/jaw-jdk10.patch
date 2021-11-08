@@ -1,6 +1,6 @@
 --- java-atk-wrapper-0.33.2/configure.ac	2017-11-06 13:37:11.504756491 +0100
 +++ java-atk-wrapper-0.33.2/configure.ac	2017-11-06 13:37:47.224756626 +0100
-@@ -64,7 +64,7 @@
+@@ -63,7 +63,7 @@
  # java wrapper
  
  AM_CONDITIONAL(USER, test `whoami` = "root")
@@ -9,7 +9,7 @@
  JAVA_ERROR_MESSAGE="Java $JAVA_REQUIRED or later is required to build java-access-bridge"
  
  AC_ARG_VAR([JAVA_HOME],[Java Runtime Environment location])
-@@ -170,6 +170,8 @@
+@@ -163,6 +163,8 @@
      wrapper/org/GNOME/Makefile
      wrapper/org/GNOME/Accessibility/Makefile
      wrapper/org/GNOME/Accessibility/AtkWrapper.java
