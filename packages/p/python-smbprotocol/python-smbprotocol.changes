@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov  2 20:52:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.2
+  * Add missing FileAttributes enum values
+  * Set messages with FileAttributes to be non-strict allowing
+    unknown values in the future to be parsed without an error
+
+-------------------------------------------------------------------
+Wed Oct 27 19:19:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.1
+  * Raises ObjectPathNotFound if a DFS referral is required but
+    not referrals are available (#149)
+
+-------------------------------------------------------------------
+Mon Oct 25 19:46:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * Added support for 256bit keyed encryption ciphers
+  * Added support for signing with AES GCM
+  * Now sends the SMB2_NETNAME_NEGOTIATE_CONTEXT_ID with the
+    negotiate request
+  * Adds the Python requirement of pykrb5 for Kerberos support on
+    non-Windows
+  * Fix unpacking security descriptor ACEs with extra data on the
+    end
+  * Set index_number in FileInternalInformation to be an unsigned
+    integer to match the other structures
+  * Clear out expired DFS referrals to avoid memory leaks and
+    stale DFS information
+- Update to version 1.7.0
+  * Improve connection health checks to reduce the occurances of
+    an infinite deadlock
+  * Added more exception error classes
+  * Added create_action to the Open object that describes how the
+    file was opened
+  * Added follow_symlinks option to SMBDirEntry.from_path to
+    control whether the entry.
+
+-------------------------------------------------------------------
 Tue Aug 17 15:32:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.2
