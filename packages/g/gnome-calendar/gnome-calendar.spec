@@ -17,7 +17,7 @@
 
 
 Name:           gnome-calendar
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
@@ -51,7 +51,7 @@ Calendar is a calendar application for GNOME.
 Summary:        GNOME Shell search provider to return results from the GNOME Calendar
 Group:          Productivity/Office/Organizers
 Requires:       %{name} = %{version}
-Supplements:    packageand(gnome-shell:%{name})
+Supplements:    (gnome-shell and %{name})
 
 %description -n gnome-shell-search-provider-gnome-calendar
 This package contains a search provider to enable GNOME Shell to get
