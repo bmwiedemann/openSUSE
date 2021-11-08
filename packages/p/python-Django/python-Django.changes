@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:45:45 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.9
+  + Fixed a bug in Django 3.2 that caused a migration crash on SQLite
+    when altering a field with a functional index
+
+-------------------------------------------------------------------
 Tue Oct  5 14:25:34 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.8
