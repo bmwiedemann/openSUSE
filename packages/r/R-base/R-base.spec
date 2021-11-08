@@ -16,16 +16,14 @@
 #
 
 
-%if 0%{?sle_version} < 150000
-%define macrosdir %{_sysconfdir}/rpm/
-%else
-%define macrosdir %{_rpmconfigdir}/macros.d/
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir %{_sysconfdir}/rpm/
 %endif
 
 %define release 1
 
 Name:           R-base
-Version:        4.1.1
+Version:        4.1.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -134,7 +132,6 @@ make DESTDIR=%{buildroot} install
 make DESTDIR=%{buildroot} install-pdf
 
 # Installation of Info-files
-#%{__install} -m 755 -d %{_infodir}
 %if 0%{?suse_version} > 1320
 make DESTDIR=%{buildroot} INFODIR=%{buildroot}%{_infodir} install-info
 %{__rm} -f %{buildroot}%{_infodir}/dir
@@ -154,9 +151,9 @@ cat << EOF >%{buildroot}/etc/ld.so.conf.d/R.conf
 EOF
 
 # Install RPM macros
-mkdir -p %{buildroot}%{macrosdir}
-install -m 644 -t %{buildroot}%{macrosdir} %{SOURCE10}
-sed -i 's|@vers@|%{Rversion}|' %{buildroot}%{macrosdir}/macros.R
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m 644 -t %{buildroot}%{_rpmmacrodir} %{SOURCE10}
+sed -i 's|@vers@|%{Rversion}|' %{buildroot}%{_rpmmacrodir}/macros.R
 
 # Add noarch R library directory
 mkdir -p %{buildroot}%{_datadir}/R/library
@@ -397,7 +394,7 @@ libraries to allow you to devel with R-base.
 %{_libdir}/R/include/R_ext/stats_package.h
 %{_libdir}/R/include/R_ext/stats_stubs.h
 
-%{macrosdir}/macros.R
+%config %{_rpmmacrodir}/macros.R
 %{_libdir}/pkgconfig/libR.pc
 
 #R-core-libs
@@ -1314,7 +1311,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.20.44
+Version:        0.20.45
 Release:        %release
 Requires:       R-base
 
@@ -1383,9 +1380,9 @@ Summary:        Package provides recommended R-Matrix
 Version:        1.3.4
 Release:        %release
 Requires:       R-base
-Obsoletes:      R-Matrix-devel < 1.3.4
+Obsoletes:      R-Matrix-devel <= 1.3.2
 Provides:       R-Matrix-devel
-# This is for backwards-compatibility only. Nothind *should*
+# This is for backwards-compatibility only. Nothing *should*
 # (Build)Require R-Matrix-devel
 
 %description -n R-Matrix
@@ -1426,27 +1423,9 @@ This packages provides R-Matrix, one of the recommended packages.
 %{_libdir}/R/library/Matrix/include/Matrix_stubs.c
 %{_libdir}/R/library/Matrix/include/cholmod.h
 
-#%package -n R-Matrix-devel
-#Summary:        Package provides header files for recommended R-Matrix
-#Version:        1.3.2
-#Release:        %release
-#Requires:       R-Matrix
-#Requires:       R-base
-#
-#%description -n R-Matrix-devel
-#Package provides header files for recommended R-Matrix
-#
-#%files -n R-Matrix-devel
-#%defattr(-, root, root)
-#
-#%dir %{_libdir}/R/library/Matrix/include/
-#%{_libdir}/R/library/Matrix/include/Matrix.h
-#%{_libdir}/R/library/Matrix/include/Matrix_stubs.c
-#%{_libdir}/R/library/Matrix/include/cholmod.h
-
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.36
+Version:        1.8.38
 Release:        %release
 Requires:       R-base
 
@@ -1477,7 +1456,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.152
+Version:        3.1.153
 Release:        %release
 Requires:       R-base
 
@@ -1606,7 +1585,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.2.11
+Version:        3.2.13
 Release:        %release
 Requires:       R-base
 
