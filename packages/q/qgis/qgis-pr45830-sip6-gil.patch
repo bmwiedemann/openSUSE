@@ -1,0 +1,73 @@
+From 6559a76cd6e02b442c15d895bfde827e1e25e9e6 Mon Sep 17 00:00:00 2001
+From: Sandro Mani <manisandro@gmail.com>
+Date: Wed, 3 Nov 2021 09:31:16 +0100
+Subject: [PATCH] Set release_gil = True when generating bindings
+
+---
+ python/3d/project.py.in       | 1 +
+ python/analysis/project.py.in | 1 +
+ python/core/project.py.in     | 1 +
+ python/gui/project.py.in      | 1 +
+ python/server/project.py.in   | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/python/3d/project.py.in b/python/3d/project.py.in
+index ecbdce41f570..df8f76b7f5d6 100644
+--- a/python/3d/project.py.in
++++ b/python/3d/project.py.in
+@@ -37,6 +37,7 @@ class Qgis3D(PyQtBindings):
+         super().__init__(project, '3d')
+         self.sip_file = '3d.sip'
+         self.exceptions = True
++        self.release_gil = True
+         self.disabled_features = "@SIP_DISABLE_FEATURES@".split(";")
+ 
+     def apply_user_defaults(self, tool):
+diff --git a/python/analysis/project.py.in b/python/analysis/project.py.in
+index d62cfc8d7c5e..55c65cf0b34b 100644
+--- a/python/analysis/project.py.in
++++ b/python/analysis/project.py.in
+@@ -37,6 +37,7 @@ class QgisAnalysis(PyQtBindings):
+         super().__init__(project, 'analysis')
+         self.sip_file = 'analysis.sip'
+         self.exceptions = True
++        self.release_gil = True
+         self.disabled_features = "@SIP_DISABLE_FEATURES@".split(";")
+ 
+     def apply_user_defaults(self, tool):
+diff --git a/python/core/project.py.in b/python/core/project.py.in
+index 1fd92b7f9374..5f383d434d15 100644
+--- a/python/core/project.py.in
++++ b/python/core/project.py.in
+@@ -37,6 +37,7 @@ class QgisCore(PyQtBindings):
+         super().__init__(project, 'core')
+         self.sip_file = 'core.sip'
+         self.exceptions = True
++        self.release_gil = True
+         self.disabled_features = "@SIP_DISABLE_FEATURES@".split(";")
+ 
+     def apply_user_defaults(self, tool):
+diff --git a/python/gui/project.py.in b/python/gui/project.py.in
+index aa9cd77f7036..c6a751721136 100644
+--- a/python/gui/project.py.in
++++ b/python/gui/project.py.in
+@@ -37,6 +37,7 @@ class QgisGui(PyQtBindings):
+         super().__init__(project, 'gui')
+         self.sip_file = 'gui.sip'
+         self.exceptions = True
++        self.release_gil = True
+         self.disabled_features = "@SIP_DISABLE_FEATURES@".split(";")
+ 
+     def apply_user_defaults(self, tool):
+diff --git a/python/server/project.py.in b/python/server/project.py.in
+index a07045619c15..146d96a56448 100644
+--- a/python/server/project.py.in
++++ b/python/server/project.py.in
+@@ -37,6 +37,7 @@ class QgisServer(PyQtBindings):
+         super().__init__(project, 'server')
+         self.sip_file = 'server.sip'
+         self.exceptions = True
++        self.release_gil = True
+         self.disabled_features = "@SIP_DISABLE_FEATURES@".split(";")
+ 
+     def apply_user_defaults(self, tool):

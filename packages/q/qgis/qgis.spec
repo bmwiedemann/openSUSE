@@ -1,5 +1,5 @@
 #
-# spec file for package qgis
+# spec file for package qgis-ltr
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.20.3
+Version:        3.22.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -35,10 +35,8 @@ Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
-# PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/commit/6f9cbde7c782274ebe5875da7dbac98d68e9827
-Patch2:         qgis-fix-missing-qwt-inc.patch
-# PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/commit/581cb40603dd3daca2916b564a4cd2630d005556
-Patch3:         qgis-fix-missing-qwt-inc-part2.patch
+# PATCH-FIX-UPSTREAM ggis-pr45830-sip6-gil.patch -- release GIL with sip6 https://github.com/qgis/QGIS/pull/45830
+Patch2:         https://github.com/qgis/QGIS/pull/45830.patch#/qgis-pr45830-sip6-gil.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch4:         qgis-fix-cmake-findpdal.patch
 BuildRequires:  FastCGI-devel
@@ -71,14 +69,11 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-future
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-pygments
+BuildRequires:  python3-pyqt-builder
 BuildRequires:  python3-qscintilla-qt5
 BuildRequires:  python3-qscintilla-qt5-sip
 BuildRequires:  python3-qt5-devel
-# The package can build with sip v4 or sip v5 but needs to use the same module
-# as PyQt5 (python-sip vs python-qt5-sip).The correct sip.so is pulled in by
-# python-qt5, do not explicitly depend on it.
-# qgis is not compatible with sip6 yet - https://github.com/qgis/QGIS/issues/38911
-BuildRequires:  python3-sip5-devel
+BuildRequires:  python3-sip-devel
 BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  qwt6-devel
@@ -146,6 +141,9 @@ Requires:       python3-termcolor
 Recommends:     %{name}-sample-data
 Recommends:     apache2-mod_fcgid
 Recommends:     gpsbabel
+Recommends:     mod_spatialite
+# It's in Application:Geo, but not in Factory
+Suggests:       saga-gis
 %if %is_ltr
 Conflicts:      qgis
 %else
@@ -301,8 +299,8 @@ popd
 %exclude %{_libdir}/libqgisgrass7.so
 %exclude %{_libdir}/libqgisgrass7.so.*
 %exclude %{_libdir}/qgis/libgrassplugin7.so
-%exclude %{_libdir}/qgis/libgrassprovider7.so
-%exclude %{_libdir}/qgis/libgrassrasterprovider7.so
+%exclude %{_libdir}/qgis/libprovider_grass7.so
+%exclude %{_libdir}/qgis/libprovider_grassraster7.so
 %exclude %{_libdir}/qgis/grass
 %endif
 %exclude %{_datadir}/qgis/%{sampledir}
@@ -311,13 +309,12 @@ popd
 
 %files devel
 %{_includedir}/qgis/
-%{_libdir}/liboauth2authmethod_static.a
 
 %if %{with grass}
 %files plugin-grass
 %{_libdir}/qgis/libgrassplugin7.so
-%{_libdir}/qgis/libgrassprovider7.so
-%{_libdir}/qgis/libgrassrasterprovider7.so
+%{_libdir}/qgis/libprovider_grass7.so
+%{_libdir}/qgis/libprovider_grassraster7.so
 %{_libdir}/libqgisgrass7.so
 %{_libdir}/libqgisgrass7.so.*
 %defattr(755,root,root)

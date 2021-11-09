@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  5 12:28:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.22.0
+  https://changelog.qgis.org/en/qgis/version/3.22/
+- Drop upstreamed patches
+  * qgis-fix-missing-qwt-inc.patch
+  * qgis-fix-missing-qwt-inc-part2.patch
+- Refresh fix-fastcgi-include.patch
+- Add recommendation for mod_spatialite -- boo#1185415
+- Suggest saga-gis -- boo#1190435
+- Enable SIP6 and add qgis-pr45830-sip6-gil.patch -- boo#1192300
+- Update qgis.rpmlintrc
+
+-------------------------------------------------------------------
 Fri Oct 22 08:17:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.20.3 (monthly bugfix) 
