@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  5 15:44:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Bumped version to 1.0.0 and required Qt 5.15.0.
+- Move into main package liblxqt:
+  * /usr/share/lxqt/power.conf
+  * /usr/bin/lxqt-backlight_backend
+  * /usr/share/polkit-1/actions/org.lxqt.backlight.pkexec.policy
+
+-------------------------------------------------------------------
 Fri Apr 16 06:36:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:

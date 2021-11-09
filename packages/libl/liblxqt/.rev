@@ -305,4 +305,17 @@
   * Modernized and cleaned up the code.</comment>
     <requestid>885931</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>817a18d6c928bfb2726abe5ca4e6ae6c</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped version to 1.0.0 and required Qt 5.15.0.
+- Move into main package liblxqt:
+  * /usr/share/lxqt/power.conf
+  * /usr/bin/lxqt-backlight_backend
+  * /usr/share/polkit-1/actions/org.lxqt.backlight.pkexec.policy</comment>
+    <requestid>930495</requestid>
+  </revision>
 </revisionlist>

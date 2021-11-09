@@ -17,7 +17,7 @@
 
 
 Name:           liblxqt
-Version:        0.17.0
+Version:        1.0.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
@@ -29,18 +29,20 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 3.7.0
+BuildRequires:  pkgconfig(Qt5Xdg) >= 3.8.0
 BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
 Obsoletes:      liblxqt-qt5 < %{version}
 Provides:       liblxqt-qt5 = %{version}
+# moved files to correct location in liblxqt1 (/lxqt-backlight_backend, power.conf, polkit)
+Conflicts:      liblxqt0
 
 %description
 liblxqt represents the core library of LXQt providing essential
@@ -48,20 +50,21 @@ functionality needed by nearly all of its components.
 
 %lang_package
 
-%package -n liblxqt0
+%package -n liblxqt1
 Summary:        LXQt core library
 Group:          System/Libraries
 Recommends:     %{name}-lang
 Provides:       liblxqt
+Recommends:     %{name} >= %{version}
 
-%description -n liblxqt0
+%description -n liblxqt1
 liblxqt represents the core library of LXQt providing essential
 functionality needed by nearly all of its components.
 
 %package devel
 Summary:        Devel files for liblxqt
 Group:          Development/Libraries/C and C++
-Requires:       liblxqt0 = %{version}
+Requires:       liblxqt1 = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(Qt5Xdg)
 
@@ -84,28 +87,29 @@ applications that want to make use of liblxqt.
 
 %find_lang %{name} --with-qt
 
-%post -n liblxqt0 -p /sbin/ldconfig
-%postun -n liblxqt0 -p /sbin/ldconfig
+%post -n liblxqt1 -p /sbin/ldconfig
+%postun -n liblxqt1 -p /sbin/ldconfig
 
-%files -n liblxqt0
-%license COPYING
-%doc AUTHORS
-%{_libdir}/%{name}.so.0
-%{_libdir}/%{name}.so.0.*
+%files
 %dir %{_datadir}/lxqt/
 %{_datadir}/lxqt/power.conf
 %{_bindir}/lxqt-backlight_backend
 %dir %{_datadir}/polkit-1/
 %{_datadir}/polkit-1/actions/
 
+%files -n liblxqt1
+%license COPYING
+%doc AUTHORS
+%{_libdir}/%{name}.so.?
+%{_libdir}/%{name}.so.?.*
+
 %files devel
 %{_includedir}/lxqt/
-%{_datadir}/cmake/lxqt/
 %{_libdir}/pkgconfig/lxqt.pc
 %{_libdir}/%{name}.so
+%{_datadir}/cmake/lxqt/
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/liblxqt
 %{_datadir}/lxqt/translations/liblxqt/*
