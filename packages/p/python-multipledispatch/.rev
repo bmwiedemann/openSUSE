@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>694224</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c6a2c1362e84fa5fb6919e2b2c90aadd</srcmd5>
+    <version>0.6.0</version>
+    <time>1636498481</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six dependency</comment>
+    <requestid>930188</requestid>
+  </revision>
 </revisionlist>

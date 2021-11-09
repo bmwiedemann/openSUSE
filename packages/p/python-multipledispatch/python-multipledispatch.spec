@@ -1,7 +1,7 @@
 #
 # spec file for package python-multipledispatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,15 @@ Release:        0
 Summary:        Multiple dispatch in Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://github.com/mrocklin/multipledispatch/
+URL:            https://multiple-dispatch.readthedocs.io/
 Source:         https://github.com/mrocklin/multipledispatch/archive/0.6.0.tar.gz
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
