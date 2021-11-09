@@ -139,4 +139,14 @@
   * Code cleanup as well as translations update.</comment>
     <requestid>885956</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d16762e8c36ea25c090be4d5387f497</srcmd5>
+    <version>2.3.0</version>
+    <time>1636498475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Bumped minimum required Qt version to 5.15 and made a small
+    fix to About dialog.</comment>
+    <requestid>930124</requestid>
+  </revision>
 </revisionlist>

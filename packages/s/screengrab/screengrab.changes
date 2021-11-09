@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:15:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  * Bumped minimum required Qt version to 5.15 and made a small
+    fix to About dialog.
+
+-------------------------------------------------------------------
 Fri Apr 16 10:40:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.0:
