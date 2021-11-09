@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Nov  4 15:18:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed missing license translations after going back in the
+  installation workflow (bsc#1186747)
+- 4.4.12
+
+-------------------------------------------------------------------
+Thu Nov  4 08:34:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Adjusted low memory message (bsc#1139325)
+- 4.4.11
+
+-------------------------------------------------------------------
+Wed Sep 15 12:35:42 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Check if the "pkg" UI plug-in is available and if not, ask
+  the user if it should be installed
+  (jsc#SLE-20346, jsc#SLE-20462)
+- 4.4.10
+
+-------------------------------------------------------------------
+Mon Aug 23 13:31:34 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Include some hints in the "Priority" label in the repository
+  manager (if there is enough screen space) (bsc#1154693)
+- 4.4.9
+
+-------------------------------------------------------------------
+Tue Aug 17 15:18:07 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed evaluating module dependencies on the SLE Full medium
+  - Ignore soft dependencies (Recommends), use only hard
+    dependencies (Requires)
+  - Do not select "Python2" module for "Workstation Extensions"
+    (bsc#1188633)
+- 4.4.8
+
+-------------------------------------------------------------------
+Thu Aug 12 13:28:52 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Adjusted memory check to display a low memory warning on RPi
+  (bsc#1139325)
+- 4.4.7
+
+-------------------------------------------------------------------
 Fri Jun 18 08:39:06 UTC 2021 - Stefan Schubert <schubi@schubi.de>
 
 - Adding NFS repository: Checking user input e.g. white spaces in

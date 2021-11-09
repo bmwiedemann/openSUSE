@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        4.4.6
+Version:        4.4.12
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -48,8 +48,8 @@ BuildRequires:  ruby-solv
 Requires:       yast2-country-data >= 2.16.3
 # raw_name
 Requires:       yast2-pkg-bindings >= 4.2.8
-# Installation::InstallationInfo
-Requires:       yast2 >= 4.4.4
+# UIExtensionChecker
+Requires:       yast2 >= 4.4.19
 # unzipping license file
 Requires:       unzip
 # HTTP, FTP, HTTPS modules (inst_productsources.ycp)
