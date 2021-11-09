@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Nov  2 12:11:05 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.16.0
+  + New feature: Introducing a new http_cache parameter, whose documentation
+    is available by searching http_cache (dict) from our API Reference Doc
+    (Implementation #407). If an app utilizes this feature, it will also
+    address #80 & #334.
+  + Improvement: Prevent concurrent interactive flows listening on same port
+    when running on Windows (#427)
+  + Improvement: Detecting Regional Endpoint from env var. Also ensure the
+    entire regional endpoint behavior needs to opt in. (#425)
+- from version 1.15.0
+  + New feature: Now both initiate_auth_code_flow() and acquire_token_interactive()
+    accept a new optional parameter max_age which is the allowable elapsed time
+    in seconds since the last time the End-User was actively authenticated. If
+    the elapsed time is greater than this value, Microsoft identity platform
+    will actively re-authenticate the End-User. (#381, #389)
+  + Improvement: MSAL will now automatically utilize a backup authentication
+    system, to provide better resiliency. (#376, #395, #409)
+  + Improvement: Previously, acquire_token_interactive() was not able to be aborted
+    by CTRL+C when running on Windows. It is now fixed. (#393, #404)
+  + Bugfix: The http cache feature shipped in #379 came with an unexpected side
+    effect to slow down the Device Code Flow. Now fixed. (#408, #410)
+  + Change: Adopting cryptography 35.0.0 (#414)
+- from version 1.14.0
+  UPDATE: There was a bug in this version, being fixed in subsequent
+          1.15.0. We recommend everyone to upgrade to msal>=1.15.0,<2.
+  There is no API-level change in this MSAL release. So, all existing
+  apps do not need any code changes. Just upgrade, and your app will
+  gain the following behaviors.
+  + Behavior Change: By default, MSAL Python will launch Edge browser when
+    running on Linux, when Edge is installed on current desktop. (#388)
+  + Behavior Change: MSAL Python will use an in-memory http-level cache.
+    This would improve the latency in normal cases, and improve responsiveness
+    for invalid requests and outage. (#159, #379)
+  + Behavior Change: MSAL Python will no longer use env var REGION_NAME as
+    the Azure region name. (#394, #382)
+  + Bugfix: MSAL Python will no longer throw exception when your app
+    excludes the profile scope. (#387, #390)
+- from version 1.13.0
+  + New feature: MSAL supports a confidential client being authenticated
+    by a pre-signed assertion. Usage:
+
+    cca = ConfidentialClientApplication(
+        ...,
+        client_credential={"client_assertion": "...a JWT with claims aud, exp, iss, jti, nbf, and sub..."},
+        ...)
+
+    This can be useful for where the signing takes place externally for
+    example using Azure Key Vault (AKV). AKV sample included (#161, #271).
+
+   + Improvement: Skip unnecessary and repetitive region detection. (#372, #373)
+
+-------------------------------------------------------------------
 Tue Jun 29 12:40:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.12.0
