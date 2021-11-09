@@ -1,8 +1,8 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/probonopd/AppImageKit.git</param>
-    <param name="revision">appimagetool/master</param>
-    <param name="versionprefix">9~pre</param>
+    <param name="url">https://github.com/AppImage/AppImageKit.git</param>
+    <param name="revision">10</param>
+    <param name="version">10</param>
     <param name="submodules">enable</param>
     <param name="scm">git</param>
   </service>

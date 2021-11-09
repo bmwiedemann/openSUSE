@@ -9,4 +9,4 @@ RestartSec=5s
 StartLimitInterval=0
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

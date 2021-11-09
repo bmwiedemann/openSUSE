@@ -1,7 +1,7 @@
 #
-# spec file for package 
+# spec file for package appimaged
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           appimaged
-Version:        9~pre.1495805837.d05eac1
+Version:        10
 Release:        0
-License:        MIT
-Url:            http://www.appimage.org
+URL:            http://www.appimage.org
 Summary:        Daemon handles (un)registering AppImages with the system
-Group:  System/Daemons
+License:        MIT
+Group:          System/Daemons
 Source0:        AppImageKit-%version.tar.xz
 Source1:        appimaged.service
-BuildRequires:  glib2-devel libpng-devel
-BuildRequires:  inotify-tools-devel
-BuildRequires:  cairo-devel
-BuildRequires:  fuse-devel
-BuildRequires:  xz-devel
-BuildRequires:  libarchive-devel
-BuildRequires:  openssl-devel
-BuildRequires:  libtool
 BuildRequires:  autoconf
 BuildRequires:  automake
-
-Requires: zsync
+BuildRequires:  cairo-devel
+BuildRequires:  fuse-devel
+BuildRequires:  glib2-devel
+BuildRequires:  inotify-tools-devel
+BuildRequires:  libarchive-devel
+BuildRequires:  libpng-devel
+BuildRequires:  libtool
+BuildRequires:  openssl-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  xz-devel
+Requires:       zsync
 
 %description
 appimaged is a daemon that handles registering and unregistering AppImages
@@ -44,7 +46,6 @@ and such).
 
 The package comes also with appimage.validate CLI tool to verify signature
 of AppImage files.
- 
 
 %prep
 %setup -q -n AppImageKit-%version
@@ -101,8 +102,10 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_userunitdir}/appimaged.service
 
 %files
 %defattr(-,root,root)
-%doc LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/appimage.validate
 %{_bindir}/appimaged
 %{_userunitdir}/appimaged.service
 
+%changelog
