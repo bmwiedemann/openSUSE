@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:25:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Added an option to make desktop items sticky by default.
+  * Allowed the recursive customization of folders.
+  * Prevented closing of file operation dialog on closing the main window.
+  * Keep the custom position of a desktop item on inline renaming.
+  * Added per-folder settings actions to the current tab's context menu.
+    Also, set the tab icon according to the customization, if any.
+  * Added an action to remove settings of nonexistent folders.
+  * Add a new tab on double clicking an empty space of the tab-bar.
+  * Added an option to disable smooth scrolling in list and compact modes.
+  * Disabled tab DND under Wayland (because of Wayland's limitations).
+
+-------------------------------------------------------------------
 Fri Apr 16 06:46:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
