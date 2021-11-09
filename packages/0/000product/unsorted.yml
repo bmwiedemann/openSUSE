@@ -3024,6 +3024,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -4860,8 +4861,6 @@ unsorted:
   - ghc-lifted-async-devel: [x86_64] 
   - ghc-lifted-base: [x86_64] 
   - ghc-lifted-base-devel: [x86_64] 
-  - ghc-liquid-fixpoint: [x86_64] 
-  - ghc-liquid-fixpoint-devel: [x86_64] 
   - ghc-logict: [x86_64] 
   - ghc-logict-devel: [x86_64] 
   - ghc-lucid: [x86_64] 
@@ -8102,6 +8101,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9872,9 +9872,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13067,8 +13067,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13091,7 +13091,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13318,7 +13318,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -13613,6 +13613,7 @@ unsorted:
   - libspatialite-devel 
   - libspatialite7 
   - libspdlog1 
+  - libspdlog1-32bit: [x86_64] 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -15872,7 +15873,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -17814,11 +17815,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -22101,7 +22105,6 @@ unsorted:
   - python36-bugzilla 
   - python36-bugzillatools 
   - python36-build 
-  - python36-buttplug 
   - python36-bytecode 
   - python36-cPyparsing 
   - python36-cached-property 
@@ -22386,6 +22389,7 @@ unsorted:
   - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
   - python36-django-oscar 
+  - python36-django-parler 
   - python36-django-perf-rec 
   - python36-django-pglocks 
   - python36-django-phonenumber-field 
@@ -25215,6 +25219,7 @@ unsorted:
   - python38-django-oidc-provider 
   - python38-django-oscar 
   - python38-django-pandas 
+  - python38-django-parler 
   - python38-django-perf-rec 
   - python38-django-pglocks 
   - python38-django-phonenumber-field 
@@ -28218,6 +28223,7 @@ unsorted:
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
+  - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
   - python39-django-phonenumber-field 
@@ -30887,7 +30893,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -41701,7 +41707,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - vhba-kmp-default 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
