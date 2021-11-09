@@ -174,4 +174,12 @@
   * Fix threading issue introduced in 4.7</comment>
     <requestid>876092</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ae1b3d94c973e7d9b6b6d84898507020</srcmd5>
+    <version>4.7.2</version>
+    <time>1636498432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929838</requestid>
+  </revision>
 </revisionlist>

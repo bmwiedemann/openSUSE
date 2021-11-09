@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-rsa
@@ -28,11 +34,16 @@ URL:            https://stuvel.eu/rsa
 Source:         https://files.pythonhosted.org/packages/source/r/rsa/rsa-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-pyasn1 >= 0.1.3
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(pre):  coreutils
 Requires(preun): update-alternatives
+%endif
+Requires(pre):  coreutils
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pyasn1 >= 0.1.3}
@@ -63,6 +74,10 @@ export LC_ALL=en_US.utf8
 %python_clone -a %{buildroot}%{_bindir}/pyrsa-keygen
 %python_clone -a %{buildroot}%{_bindir}/pyrsa-sign
 %python_clone -a %{buildroot}%{_bindir}/pyrsa-verify
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pyrsa-priv2pub
 
 %post
 %{python_install_alternative pyrsa-priv2pub pyrsa-decrypt pyrsa-encrypt pyrsa-keygen pyrsa-sign pyrsa-verify}
