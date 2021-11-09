@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-babelfish
-Version:        0.5.5
+Version:        0.6.0
 Release:        0
 Summary:        A Python library to work with countries and languages
 License:        BSD-3-Clause
@@ -45,12 +45,9 @@ BabelFish is a Python library to work with countries and languages.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%pyunittest discover -v
-
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/babelfish
 %{python_sitelib}/babelfish-%{version}-py%{python_version}.egg-info
 

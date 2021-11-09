@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  8 17:24:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.0
+  * Use poetry as build system
+  * Use pytest as test runner
+  * Move documentation to README
+  * Switch to "main" branch
+
+-------------------------------------------------------------------
 Tue Nov  2 10:39:37 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
