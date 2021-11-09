@@ -158,4 +158,14 @@
     been able to be fixed for Python 3.7+. Also, due to what is arguably a</comment>
     <requestid>927607</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>38d6a630a49766ed510bbd7bffac8c05</srcmd5>
+    <version>1.13.3</version>
+    <time>1636498447</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.3:
+  * Adds wheels for Python 3.10 on PyPi and where possible also now
+   generating binary wheels for ``musllinux``.</comment>
+    <requestid>929911</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wrapt
-Version:        1.13.2
+Version:        1.13.3
 Release:        0
 Summary:        A Python module for decorators, wrappers and monkey patching
 License:        BSD-2-Clause

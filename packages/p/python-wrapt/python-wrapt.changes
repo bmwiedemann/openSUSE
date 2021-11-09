@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  6 18:18:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.3:
+  * Adds wheels for Python 3.10 on PyPi and where possible also now
+   generating binary wheels for ``musllinux``. 
+
+-------------------------------------------------------------------
 Tue Oct 26 21:13:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.2:
