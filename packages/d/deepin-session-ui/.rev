@@ -31,4 +31,12 @@
 - Update version to 5.4.6 (forwarded request 900406 from hillwood)</comment>
     <requestid>901176</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5cea09999cb2453da60050985ec45e4d</srcmd5>
+    <version>5.4.7</version>
+    <time>1636498479</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build: do not package translations in main and -lang package. (forwarded request 930163 from dimstar)</comment>
+    <requestid>930183</requestid>
+  </revision>
 </revisionlist>
