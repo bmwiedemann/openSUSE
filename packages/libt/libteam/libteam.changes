@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 17:14:17 UTC 2021 - Otto Hollmann <otto.hollmann@suse.com>
+
+- teamd: better handle failures to chown(TEAMD_RUN_DIR) during
+  teamd_drop_privileges() (bsc#1185424) 
+   [+ better_handle_failures_to_chown.patch]
+
+-------------------------------------------------------------------
 Fri Oct 15 07:32:26 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

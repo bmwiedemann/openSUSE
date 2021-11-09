@@ -17,6 +17,8 @@
 
 
 %bcond_without python2
+# _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
+%{!?_tmpfilesdir: %global _tmpfilesdir %{_libexecdir}/tmpfiles.d }
 Name:           libteam
 Version:        1.31
 Release:        0
@@ -32,6 +34,7 @@ Patch2:         start_teamd_from_usr_sbin.patch
 Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
 Patch4:         0001-allow-send_interface-dbus.patch
 Patch5:	harden_teamd@.service.patch
+Patch6:         better_handle_failures_to_chown.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
@@ -145,6 +148,14 @@ python ./setup.py install --root="$b" --prefix="%_prefix"
 popd
 %endif
 
+# Install /usr/lib/tmpfiles.d/libteam.conf
+mkdir -p %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/libteam.conf <<EOF
+# See tmpfiles.d(5) for details
+# Type(d=directory) Path Mode UID GID Age(until delete when cleaning)
+d %teamd_daemon_directory 0755 %teamd_user %teamd_group -
+EOF
+
 rm -f "$b/%_libdir"/*.la
 %if 0%{?_unitdir:1}
 mkdir -p "$b/%_unitdir"
@@ -168,6 +179,8 @@ test -L %teamd_daemon_directory  || rm -rf %teamd_daemon_directory && :
 %endif
 
 %post tools
+# Use %%tmpfiles_create when 13.2 is oldest in support scope
+/usr/bin/systemd-tmpfiles --create %{_tmpfilesdir}/libteam.conf || :
 # reload dbus to apply new teamd's policy
 systemctl reload dbus.service 2>/dev/null || :
 %if 0%{?_unitdir:1}
@@ -217,6 +230,7 @@ fi
 %if 0%{?_unitdir:1}
 %_unitdir
 %endif
+%{_tmpfilesdir}/libteam.conf
 
 %if %{with python2}
 %files -n python-libteam
