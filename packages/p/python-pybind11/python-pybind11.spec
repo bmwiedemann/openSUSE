@@ -16,24 +16,35 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.6.2
+Version:        2.8.0
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pybind/pybind11/commit/0c93a0f3fcf6bf26be584558d7426564720cea6f Fix Unicode support for ostream redirects
-Patch0:         unicode.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,7 +72,6 @@ This package contains files for developing applications using pybind11.
 
 %prep
 %setup -q -n pybind11-%{version}
-%autopatch -p1
 
 %build
 %python_build
@@ -91,6 +101,10 @@ rm -rfv %{buildroot}%{_includedir}/python3.*/pybind11
 rm tests/test_embed/test_interpreter.py
 export PYTHONPATH=${PWD}/build/tests/
 %pytest -k 'not (tests_build_wheel or tests_build_global_wheel)'
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pybind11-config
 
 %post
 %python_install_alternative pybind11-config
