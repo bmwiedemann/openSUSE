@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:50:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Idleness checks can be paused from the tray icon for 30
+    minutes to 4 hours.
+
+-------------------------------------------------------------------
 Fri Apr 16 09:57:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:

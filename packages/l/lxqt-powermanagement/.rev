@@ -451,4 +451,14 @@
   * An option to disable idle watcher when the active window is full-screen.</comment>
     <requestid>885943</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>180e5a701bdfe449e3ae8d7782346f3a</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Idleness checks can be paused from the tray icon for 30
+    minutes to 4 hours.</comment>
+    <requestid>930105</requestid>
+  </revision>
 </revisionlist>
