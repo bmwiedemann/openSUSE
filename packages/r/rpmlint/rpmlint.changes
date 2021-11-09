@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 06 08:10:44 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211105.14a37df:
+  * Fix backward compatibility with rpmlintrc files.
+  * Fixed bug where a valid symlink is reported as invalid.
+    This appears to be a regression from rpmlint 1.
+    Comparing the two reveals that the comparison of link
+    to path.parent would never make sense, and comparing
+    link to path.name would resemble rpmlint 1's behavior.
+  * dbus-services: add setroubleshoot whitelisting (bsc#1186344)
+
+-------------------------------------------------------------------
 Wed Nov 03 09:31:34 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211103.8d20461:

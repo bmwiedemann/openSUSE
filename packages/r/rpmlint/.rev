@@ -3365,4 +3365,19 @@ oddjob-gpupdate isn't blocked)</comment>
   * security whitelistings: add badness for file-digest-mismatch errors</comment>
     <requestid>928975</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>96d2a13719d6aed6e2b2c0a78f1bea98</srcmd5>
+    <version>2.1+git20211105.14a37df</version>
+    <time>1636498430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211105.14a37df:
+  * Fix backward compatibility with rpmlintrc files.
+  * Fixed bug where a valid symlink is reported as invalid.
+    This appears to be a regression from rpmlint 1.
+    Comparing the two reveals that the comparison of link
+    to path.parent would never make sense, and comparing
+    link to path.name would resemble rpmlint 1's behavior.
+  * dbus-services: add setroubleshoot whitelisting (bsc#1186344)</comment>
+    <requestid>929829</requestid>
+  </revision>
 </revisionlist>
