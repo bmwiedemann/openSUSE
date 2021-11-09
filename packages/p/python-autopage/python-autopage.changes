@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 20:01:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python2 build, it doesn't work anymore
+
+-------------------------------------------------------------------
 Tue Oct 26 20:10:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.4.0) 

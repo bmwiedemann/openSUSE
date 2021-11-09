@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>927589</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>134078e30f8e5c67eb5d6fa9f46c1d34</srcmd5>
+    <version>0.4.0</version>
+    <time>1636498487</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python2 build, it doesn't work anymore</comment>
+    <requestid>930234</requestid>
+  </revision>
 </revisionlist>
