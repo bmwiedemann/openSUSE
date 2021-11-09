@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  1 12:48:19 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+- Filter the installation proposals (in the Installation Settings
+  screen) according to the AutoYaST profile even before
+  tab switching (related to bsc#1190294)
+- 4.4.21
+
+-------------------------------------------------------------------
+Thu Oct 28 08:33:55 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Remove obsolete prep_shrink client (with yast2-storage-ng such a
+  client is not needed anymore).
+
+-------------------------------------------------------------------
 Fri Oct  8 10:04:16 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix file copying when using relurl:// and file:// naming schemes
