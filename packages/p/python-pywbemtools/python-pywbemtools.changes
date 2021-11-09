@@ -1,4 +1,263 @@
 -------------------------------------------------------------------
+Fri Oct 22 20:10:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9.0
+  * Modified the --timestats general option from boolean to choice
+    with 3 choices for when statistics are displayed (after each
+    command or via a command). See   issue #588)
+  * Deprecated the 'server namespaces' and 'server interop'
+    commands. Use the new commands 'namespace list' and 'namespace
+    interop', respectively. (issue #877)
+  * The '--force' / '-f' option of the 'class delete' command has
+    been deprecated because its name does not sufficiently make it
+    clear that other inhibitors than existing instances of the
+    class (such as existing subclasses, or referencing classes)
+    will still cause rejection of the command. Use the new
+    '--include-instances' option instead. (issue #885)
+  * Fixed a ValueError on Windows that was raised when the
+    connections file was not on the home drive.
+  * Limit click package to < 8.0 because of a) incompatibility with
+    python 2.7, b) incompatibility between click 8.0 and
+    clicl-repl. (see issues #816 and #817)
+  * Limit mock package to lt 4.0.3 to avoid issue issue that causes
+    test failure. (see #822)
+  * Fix issue caused by mock package version 4.0.3 by creating
+    replacements for warnings.warn and warnings.warn_explicit
+    functions  and removing the use of the patch decorator in
+    pywbemcli.py before the definition of the cli function.  (see
+    issue #822)
+  * Fixes issue where in pywbemcli the --timeout and --use-pull
+    general options were not always correctly included in the new
+    object context in interactive mode if they were specified on
+    the interactive mode cmd line.
+  * Fixed issue in tests with use of stdin and inputting the
+    instance path for instance get and instance delete. This was a
+    test setup issue and not a code issue. (see issue # 387)
+  * Mitigated the coveralls HTTP status 422 by pinning
+    coveralls-python to <3.0.0.
+  * Fix issue where documentation index disappeared when we changed
+    the documentation theme (see issue #868)
+  * Test: Fixed behavior of 'pdb' test condition, which is supposed
+    to stop in the pdb debugger before executing the command
+    function, but did immediately leave the debugger again because
+    of redirections of the standard streams. The debugger now
+    properly comes up when 'pdb' is specified as a condition.
+  * Test: Fixed restoring of environment variables that are
+    modified by testcases, and displaying of PYWBEMCLI environment
+    variables during testing in verbose mode.
+  * Change MOFCompiler.add_mof/remove_mof() to only display
+    exceptions received if not MOFCompileError since the MOF
+    compiler logs all MOFCompileError exceptions. (see issue #395)
+  * Increased the minimum pywbem version to 1.2.0.
+  * Add new option to class find command (--summary) to display a
+    summary of the counts of classes found instead of the full list
+    of the classes to make the command more useful for real servers
+    that may return many classes for a class find. (see issue #810)
+  * Extend the class tree command to optionally provide extra
+    information about each class in the tree including 1) the value
+    of the Version qualifier if it exists and whether the class is
+    Abstract, an Association, or an Indication class. (see. # 817)
+  * Migrated from Travis and Appveyor to GitHub Actions. This
+    required several changes in package dependencies for
+    development.
+  * The verbose option ('-v' / '--verbose') now also displays the
+    objects that are compiled into a mock environment when setting
+    it up.
+  * Added 'qualifier delete' command. (see #884)
+  * Enabled the tests for Python 3.4 on Windows again - this
+    required some changes in the Makefile and constraints files.
+  * Added a 'namespace' command group that allows listing, creating
+    and deleting CIM namespaces, and showing the Interop namespace.
+    The 'server namespaces' and 'server interop' commands that
+    provide a subset of that functionality have been deprecated.
+    (issue #877)
+  * Added commands 'add-mof' and 'remove-mof' for compiling MOF to
+    the 'server' command group. (issue #886)
+  * Test: Added end2end test capability using the OpenPegasus
+    container image on Docker Hub.
+  * Added new command group ('statistics') that contols use of
+    statistics. See issue #588)
+  * Implement command to get statistics from server and present as
+    a table #895)
+  * Test: Added a unit test module for _utils.py.
+  * Added an '--include-instances' option to the 'class delete'
+    command that replaces the deprecated '--force' / '-f' option.
+    (issue #885)
+  * Added an '--include-objects' option to the 'namespace delete'
+    command that causes the deletion of instances, classes and
+    qualifier types in the targeted namespace before the namespace
+    itself is deleted. The objects in the namespace are deleted in
+    the correct order of dependencies so that no dangling
+    dependencies exist at any point in the operation. (issue #885)
+  * Added a ''--dry-run' option to the 'class delete' and
+    'namespace delete' commands. If used, it displays the message
+    about each deletion with a 'Dry run:' prefix and does not
+    perform the actual deletion. (issue #911)
+  * Cleaned up the circumvention for Click issue #1231 by upgrading
+    the minimum Click version to 7.1.1, where possible. The
+    circumvention is still required on Python 2.7 and 3.4 on
+    Windows.
+  * Clarified in the help text of general option '--pdb' that it
+    will be ignored in interactive mode but can be specified on
+    each interactive command.
+  * Test: Added a check that rejects the use of the 'pdb' test
+    condition when the test specifies stdin for the test, because
+    the 'pdb' test condition disables the stdin/stdout/stderr
+    redirection.
+- Release 0.8.0
+  * Moving the commands "server profiles" and "serve centralinsts"
+    to the new group profiles with the commmand names "profile
+    list" and "profile centralinsts" added a command group and
+    removed 2 commands from the server command group. (See issue
+    #612)
+  * The `--deprecation-warnings` / `--no-deprecation-warnings`
+    general option has been remamed to `--warn` / `--no-warn`, and
+    it now controls the display of all Python warnings.
+  * Order display of instance names when the .? is used to pick an
+    instance name so the same order of instance names is displayed
+    for all versions of Python. (See issue #458 and #459)
+  * Pinned prompt-toolkit to <3.0 on Python 3.8 on Windows to avoid
+    WinError 995. (See issue #690)
+  * Fixed exception when command entered in interactive mode, on
+    Python 2. (See issue #224)
+  * Test: Default connection file does not get restored in some
+    cases during test. (See issue #680)
+  * AssociationShrub produces instancename slightly different table
+    output in some cases for pywbem 1 vs previous
+    versions(inclusion of "/:" prefix). (see issue #704)
+  * Test: Fixed attempt in test_class_cmds.py to invoke a
+    non-static method on a class object. (see issue #707)
+  * Fix help message for "--deprecated" to be unicode so python 2.7
+    help does not fail. (see issue #725). This error was added with
+    issue #678
+  * Upgraded nocasedict and nocaselist packages to pick up fixes.
+  * Error in test defintion for qualdecl Indication causes failure
+    with pywbem i.1.0 where mocker validates qualifiers scopes.
+    (see issue #766)
+  * Test: Preventive fix for potential issue with virtualenv
+    raising AttributeError during installtest on Python 3.4. (see
+    issue #775)
+  * Test: Added checking for no expected warning. (see issue #774)
+  * Fixed incorrect property order in instance table output, where
+    key properties were not ordered before non-key properties but
+    ordered along with them. (see issue #782)
+  * Docs/Test: Fixed failing install of Jinja2 on Python 3.4 by
+    adding it to dev-requirements.txt and pinning it to <2.11 for
+    Python 3.4.
+  * Test: Aligned qualifier definitions in test MOF with CIM
+    Schema. (related to issue #788)
+  * Upgraded pywbem to 1.1.1 to pick up fixes and enhancements.
+    (see issues #749, #183)
+  * Introduced caching of the mock environment used by connection
+    definitions in order to speed up the loading of the connection
+    definition. The mock environments are stored in directory
+    ~/.pywbemcli_mockcache and are automatically managed. The
+    pywbemcli --verbose general option can be used to show messages
+    about the cache management. (See issue #689)
+  * A new approach for the setup of mock scripts has been
+    introduced: The mock script defines a `setup(conn, server,
+    verbose)` function that is called when the mock environment is
+    built. It is not called when the mock environment is
+    reinstantiated from the cache. The old approach with setting
+    global variables CONN, SERVER, VERBOSE is still supported, but
+    the mock environment cannot be cached and will be built every
+    time when mock scripts with that setup approach are used. On
+    Python <3.5, mock scripts with the `setup()` function are
+    rejected, because the functionality to import them is not
+    available, and the compile+exec approach does not allow
+    executing the setup() function. (See issue #689)
+  * Modify general help to display the full path of the default
+    connections file. (See issue #660)
+  * Move the commands associated with WBEM management profiles from
+    the server group to a new profile group. (See issue #612). See
+    also Incompatible changes.
+  * Add --deprecated/-no-deprecated as a new qualifier filter for
+    the class enumerate, class find, and instance count commands.
+    Extend the behavior so that for each of the possible filters it
+    looks for the qualifier on all of the elements (property,
+    method, parameter) in addition to the class itself.  See issue
+    #678)
+  * Test: Enabled coveralls to run on all Python versions in the
+    Travis CI, resulting in a combined coverage for all Python
+    versions.
+  * For instance display in table format, added the display of the
+    units of properties to the table headers. If a property in the
+    class has a PUnit or Units qualifier set, the unit is
+    translated to a human readable SI unit using the
+    pywbem.siunit_obj() function, and appended to the property name
+    in square brackets. (See issue #727)
+  * Consolidated the warnings control, such that the deprecation
+    messages were changed to be issued as Python warnings, and the
+    `--warn` / `--no-warn` general options now control the display
+    of all Python warnings. If `--warn` is used, all Python
+    warnings are shown once. If `--no-warn` is used (default), the
+    `PYTHONWARNINGS` environment variable determines which warnings
+    are shown. If that variable is not set, no warnings are shown.
+    (See issue #723) Added the 'mock' package and for Python 2.7,
+    the 'funcsigs' package as new dependencies.
+  * Specifying a property list (--pl option) on instance commands
+    with table output formats now uses the order of properties as
+    specified in the property list in the output table, instead of
+    sorting them. (See issue #702)
+  * Allow unsetting general options. Originally the general options
+    could be either set specifically by defining them on the
+    command line or the default would be enabled. However, in
+    interactive mode the need may arise to set an option back to
+    its default value (i.e. the equivalent of not including it on
+    the command line). This fixes the options so that there is an
+    alternative that will will set them to the default value. (see
+    issue #350)
+  * Converted remaining unittest testcases to pytest. (See issue
+    #91)
+  * Test: When testing with latest package levels, the package
+    versions of indirect dependencies are now also upgraded to the
+    latest compatible version from Pypi. (see issue #784)
+  * Remove unused NocaseList from __common.py
+  * Moved the general option --pull_max_cnt to become part of the
+    persistent server definition rather than transient.  This means
+    that this parameter is part of the data maintained in the
+    server definitionfile and applies to just the server defined.
+    (See issue #694)
+  * Docs: Improved the description and help texts of the
+    connections file and the --connections-file general option in
+    various places, for consistency. (Related to issue #708)
+  * Move code associated with display_cimobjects() to a separate
+    module. This is part of creating table representation of
+    classes (See issue #249)
+  * Resolved remaining Pylint issues and enforced clean pylint
+    checks. (See issue #668)
+  * Renamed the default connections file in the user's home
+    directory from `pywbemcli_connection_definitions.yaml` to
+    `.pywbemcli_connections.yaml`, because it is really an internal
+    file not meant for being edited. An existing file with the old
+    name is migrated automatically. (See issue #716)
+  * Refactor error handling for connections file handlingif there
+    are problems with the YAML file or loading the file. Created
+    new exceptions for the Connections File and created a unit test
+    and function error test. (see issue #661)
+  * Separate code to execute test files (ex. setup up mock of
+    prompt) from the process of executing files defined by the
+    --mock-server general option. The new capability is controled
+    by an environment variable "PYWBEMCLI_STARTUP_SCRIPT" that is
+    considered intenal to pywbemcli testing.
+  * Refactor statistics display to present information consistent
+    with the display in pywbem. (see issue # 724)
+  * Refactor connections show command and clean up its
+    documentation.  (see issue #732)
+  * Remove use of pydicti dictionary package in favor of
+    NocaseDict.
+  * set pylint disable on all uses of pdb.set_trace(). This is an
+    issue between the add-on package pdbpp and lint, not pdb.  (see
+    issue # 751)
+  * Docs: Changed Sphinx theme to sphinx_rtd_theme. (see issue
+    #792)
+  * Modified the class WbemServerMock in tests/unit/testmock to
+    define a WBEM server configuration that includes multiple
+    namespaces, a user and an interop namespace to test
+    cross-namespace mock. (see issue #183)
+- Drop pywbemtools-pr755-replace-pydicti-nocasedict.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 12:40:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - initial specfile for version 0.7.3 
