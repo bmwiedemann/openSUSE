@@ -250,4 +250,13 @@
   * Code cleanup.</comment>
     <requestid>885942</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7a706be605efc7e83d9eb100f6313bf</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498466</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped minimum required Qt version and updated translations.</comment>
+    <requestid>930104</requestid>
+  </revision>
 </revisionlist>
