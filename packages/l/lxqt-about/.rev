@@ -275,4 +275,13 @@
   * Moved to Qt5 signal/slot syntax.</comment>
     <requestid>885938</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a260b499f6ed5df6f70ab8aee7dee08e</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped version to 1.0.0 and made miscellaneous updates.</comment>
+    <requestid>930099</requestid>
+  </revision>
 </revisionlist>
