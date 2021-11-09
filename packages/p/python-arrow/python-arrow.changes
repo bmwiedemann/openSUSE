@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  6 17:33:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Added quarter granularity to humanize
+  * Added Sinhala and Urdu locales
+  * Support Python 3.10
+  * Updated Azerbaijani, Hebrew, and Serbian locale
+  * Added Albanian, Tamil and Zulu locales.
+  * Added support for Decimal as input to arrow.get().
+  * The Estonian, Finnish, Nepali and Zulu locales now support dehumanize.
+  * Improved validation checks when using parser tokens A and hh.
+  * Minor bug fixes to Catalan, Cantonese, Greek and Nepali locales.
+
+-------------------------------------------------------------------
 Sun Jul  4 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

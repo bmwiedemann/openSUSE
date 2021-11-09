@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-arrow%{?psuffix}
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module dateutil >= 2.7.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module pytz >= 2021.1}
 BuildRequires:  %{python_module simplejson}
 %endif
 %python_subpackages

@@ -245,4 +245,21 @@
   * Updated Turkish locale and added tests.</comment>
     <requestid>903987</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>511809db0123feac4c6d90abf9d1f65e</srcmd5>
+    <version>1.2.1</version>
+    <time>1636498444</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Added quarter granularity to humanize
+  * Added Sinhala and Urdu locales
+  * Support Python 3.10
+  * Updated Azerbaijani, Hebrew, and Serbian locale
+  * Added Albanian, Tamil and Zulu locales.
+  * Added support for Decimal as input to arrow.get().
+  * The Estonian, Finnish, Nepali and Zulu locales now support dehumanize.
+  * Improved validation checks when using parser tokens A and hh.
+  * Minor bug fixes to Catalan, Cantonese, Greek and Nepali locales.</comment>
+    <requestid>929904</requestid>
+  </revision>
 </revisionlist>
