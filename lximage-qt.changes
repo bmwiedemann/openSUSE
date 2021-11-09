@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:31:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Fixed bugs in image fitting, flipping and rotation.
+  * Added options to hide/show main toolbar and/or menubar.
+  * Added option to use system Trash.
+  * Added option to change Thumbnail dimensions.
+  * Added option to change the position of thumbnails dock.
+  * Fixed wheel scrolling on image with touchpad.
+  * Allowed direct image renaming (with shortcut).
+  * Remember EXIF dock width.
+  * Added command-line option for starting in fullscreen.
+  * Allowed custom shortcuts to override hard-coded shortcuts.
+  * Added option to disable image smoothing on zooming.
+
+-------------------------------------------------------------------
 Fri Apr 16 06:58:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:

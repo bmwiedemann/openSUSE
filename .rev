@@ -349,4 +349,23 @@
   * Options are added to Preferences dialog for thumbnails.</comment>
     <requestid>885935</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e10978826e44ed9e9194a44c3b4ef9ee</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fixed bugs in image fitting, flipping and rotation.
+  * Added options to hide/show main toolbar and/or menubar.
+  * Added option to use system Trash.
+  * Added option to change Thumbnail dimensions.
+  * Added option to change the position of thumbnails dock.
+  * Fixed wheel scrolling on image with touchpad.
+  * Allowed direct image renaming (with shortcut).
+  * Remember EXIF dock width.
+  * Added command-line option for starting in fullscreen.
+  * Allowed custom shortcuts to override hard-coded shortcuts.
+  * Added option to disable image smoothing on zooming.</comment>
+    <requestid>930096</requestid>
+  </revision>
 </revisionlist>
