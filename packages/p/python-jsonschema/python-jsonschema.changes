@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 22 21:08:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Tue May 25 07:59:29 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest rpm macro

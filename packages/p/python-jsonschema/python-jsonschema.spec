@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jsonschema
@@ -40,13 +46,18 @@ BuildRequires:  %{python_module six >= 1.11.0}
 BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  %{python_module webcolors}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-attrs >= 17.4.0
 Requires:       python-importlib-metadata
 Requires:       python-pyrsistent >= 0.14.0
 Requires:       python-six >= 1.11.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,6 +84,10 @@ for Python (supporting 2.6+ including Python 3).
 
 %check
 %pytest jsonschema/tests
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jsonschema
 
 %post
 %python_install_alternative jsonschema
