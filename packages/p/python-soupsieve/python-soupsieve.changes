@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  6 18:00:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3:
+  * Officially support Python 3.10.
+  * Add static typing.
+  * `:has()`, `:is()`, and `:where()` now use use a forgiving selector list.
+  * Add support to output a pretty print format of a compiled `SelectorList` for debug purposes.
+  * Some small corner cases discovered with static typing. 
+
+-------------------------------------------------------------------
 Sun May  9 17:07:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 2.2.1:

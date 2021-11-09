@@ -1,5 +1,5 @@
 #
-# spec file for package python-soupsieve-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-soupsieve%{psuffix}
-Version:        2.2.1
+Version:        2.3
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT

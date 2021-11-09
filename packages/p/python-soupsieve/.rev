@@ -144,4 +144,17 @@
   - **FIX**: Fix an issue with namespaces when one of the keys is `self`.</comment>
     <requestid>891894</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3c932bedc2122e55621564e772ce136b</srcmd5>
+    <version>2.3</version>
+    <time>1636498446</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3:
+  * Officially support Python 3.10.
+  * Add static typing.
+  * `:has()`, `:is()`, and `:where()` now use use a forgiving selector list.
+  * Add support to output a pretty print format of a compiled `SelectorList` for debug purposes.
+  * Some small corner cases discovered with static typing.</comment>
+    <requestid>929908</requestid>
+  </revision>
 </revisionlist>
