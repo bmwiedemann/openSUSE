@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 19:08:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future plans/marketing from description.
+
+-------------------------------------------------------------------
 Tue Oct 19 11:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build fails with LLVM 13, so still use LLVM 12 on Tumbleweed

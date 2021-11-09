@@ -37,7 +37,7 @@
 Name:           tvm
 Version:        0.7.0
 Release:        0
-Summary:        An End to End Deep Learning Compiler Stack
+Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/v%{version}.tar.gz
@@ -97,8 +97,7 @@ ExcludeArch:    %{arm} %{ix86}
 %python_subpackages
 
 %description
-TVM is an open deep learning compiler stack for CPUs, GPUs, and specialized accelerators.
-It aims to close the gap between the productivity-focused deep learning frameworks, and the performance- or efficiency-oriented hardware backends.
+TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerators.
 
 %package -n tvmc
 Summary:        TVM command line driver
@@ -113,12 +112,13 @@ TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
 profiling and execution of models, via a command line interface.
 
 %package -n %{name}-devel
-Summary:        An End to End Deep Learning Compiler Stack
+Summary:        Headers for the TVM Deep Learning Compiler Stack
 Requires:       libtvm = %{version}
 
 %description -n %{name}-devel
-TVM is an open deep learning compiler stack for CPUs, GPUs, and specialized accelerators.
-It aims to close the gap between the productivity-focused deep learning frameworks, and the performance- or efficiency-oriented hardware backends.
+TVM is a deep learning compiler stack for CPUs, GPUs, and specialized accelerators.
+
+This package contains the headers.
 
 %package -n libtvm
 Summary:        Libraries generated for TVM
