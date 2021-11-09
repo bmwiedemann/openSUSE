@@ -52,6 +52,14 @@ Group:          System/Libraries
 The SpatiaLite extension enables SQLite to support spatial data too
 [aka GEOMETRY], in a way conformant to OpenGis specifications.
 
+%package -n mod_spatialite
+Summary:        Spatial SQLite extension
+Requires:       %{libname} = %{version}
+
+%description -n mod_spatialite
+The SpatiaLite extension enables SQLite to support spatial data too
+[aka GEOMETRY], in a way conformant to OpenGis specifications.
+
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
@@ -86,12 +94,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libspatialite.so.%{sover}*
 %{_libdir}/mod_spatialite.so.%{sover}*
 
+%files -n mod_spatialite
+%license COPYING
+%doc README README.coverage
+%{_libdir}/mod_spatialite.so
+
 %files devel
 %license COPYING
 %doc README README.coverage
 %{_includedir}/*
 %{_libdir}/libspatialite.so
-%{_libdir}/mod_spatialite.so
 %{_libdir}/pkgconfig/spatialite.pc
 
 %changelog
