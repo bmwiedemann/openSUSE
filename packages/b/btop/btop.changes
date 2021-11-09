@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  9 14:57:37 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.24
+
+- Update to upstream release 1.0.24:
+  * Changed: Collection ordering
+  * Fixed: Restore all escape seq mouse modes on exit
+  * Fixed: SIGINT not cleaning up on exit
+
+- Update to upstream relaese 1.0.23:
+  * Fixed: Config parser missing first value when not including version header
+  * Fixed: Vim keys menu lists selection
+  * Fixed: Stall when clearing input queue on exit and queue is >1
+  * Fixed: Inconsistent behaviour of "q" key in the menus
+
+-------------------------------------------------------------------
 Thu Nov  4 14:31:35 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.22
 
 - Update to upstream release 1.0.22:
