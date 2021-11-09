@@ -1,7 +1,7 @@
 #
 # spec file for package python-UkPostcodeParser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@ United Kingdom Postcode parser.
 %check
 # no tests as it is ko for 2 years https://github.com/hamstah/ukpostcodeparser/issues/8
 sed -i 's/test_\(091\|097\|098\|125\|131\)/_test_\1/' ukpostcodeparser/test/parser.py
-%python_exec setup.py test
+%pyunittest ukpostcodeparser.test.parser
 
 %files %{python_files}
 %license LICENSE
