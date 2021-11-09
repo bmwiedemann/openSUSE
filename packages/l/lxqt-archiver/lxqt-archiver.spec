@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-archiver
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later
@@ -29,14 +29,14 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  libexif-devel
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libfm-qt) >= 0.17.0
+BuildRequires:  pkgconfig(libfm-qt) >= 1.0.0
 Requires:       bsdtar
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:36:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Show password prompt for archives with encrypted lists.
+  * Fixed listing RAR archive contents with encrypted file list.
+
+-------------------------------------------------------------------
 Fri Apr 16 07:00:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:

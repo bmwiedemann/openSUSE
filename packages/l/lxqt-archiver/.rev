@@ -39,4 +39,14 @@
   * The directory view is made horizontally scrollable.</comment>
     <requestid>885936</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80c195fad5545ac6d40da78777d13725</srcmd5>
+    <version>0.5.0</version>
+    <time>1636498460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Show password prompt for archives with encrypted lists.
+  * Fixed listing RAR archive contents with encrypted file list.</comment>
+    <requestid>930097</requestid>
+  </revision>
 </revisionlist>
