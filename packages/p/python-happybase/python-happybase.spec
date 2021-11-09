@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://github.com/wbolster/happybase/archive/%{version}.tar.gz
 Patch0:         use_pytest.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module thriftpy2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

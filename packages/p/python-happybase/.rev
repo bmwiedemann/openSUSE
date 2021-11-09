@@ -153,4 +153,12 @@
     <comment></comment>
     <requestid>790163</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0a8d7778952218e75a79855f84055075</srcmd5>
+    <version>1.2.0</version>
+    <time>1636498480</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six buildrequires</comment>
+    <requestid>930184</requestid>
+  </revision>
 </revisionlist>

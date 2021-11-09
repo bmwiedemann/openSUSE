@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 13:54:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six buildrequires 
+
+-------------------------------------------------------------------
 Tue Mar 31 12:03:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Switch from nose to pytest
