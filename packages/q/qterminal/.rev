@@ -190,4 +190,17 @@
   * Removed two warnings that were shown when QTerminal was started.</comment>
     <requestid>885952</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dc7a26de8200ec89ed8ce0764a6ff453</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped minimum required Qt version to 5.15.
+  * Respect preset splitting on opening new window and double clicking tab-bar.
+  * Trim shell strings.
+  * Added an option for keeping drop-down window open.
+  * Added a workaround for wrong menu positions under Wayland.</comment>
+    <requestid>930119</requestid>
+  </revision>
 </revisionlist>
