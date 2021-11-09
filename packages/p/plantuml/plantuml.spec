@@ -17,7 +17,7 @@
 
 
 Name:           plantuml
-Version:        1.2021.12
+Version:        1.2021.13
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
