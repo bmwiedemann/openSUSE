@@ -251,7 +251,7 @@
   </attribute>
   <attribute namespace="OSRT" name="Config">
     <value># restricts what stagings the staging-bot will use, when available, for --try-strategies
-splitter-whitelist = B C D E F G H I J
+splitter-whitelist = 
 
 # now just for testing
 source_projects_expand = devel:languages:haskell
