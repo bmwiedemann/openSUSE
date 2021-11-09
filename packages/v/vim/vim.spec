@@ -17,12 +17,19 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3408
+%define patchlevel 3582
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
 %define make make VIMRCLOC=%{_sysconfdir} VIMRUNTIMEDIR=%{_datadir}/vim/current MAKE="make -e" %{?_smp_mflags}
 %bcond_without python2
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           vim
 Version:        %{pkg_version}.%{patchlevel_compact}
 Release:        0
@@ -71,7 +78,6 @@ Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
 Patch102:       vim-8.1.0297-dump3.patch
-Patch103:       no-common.patch
 Patch104:       vim-8.2.2411-globalvimrc.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
@@ -91,8 +97,12 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xt)
 Requires:       vim-data-common = %{version}-%{release}
+%if %{with libalternatives}
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Recommends:     vim-data = %{version}-%{release}
 Conflicts:      vim-base < 8.2
 Provides:       vi
@@ -117,11 +127,15 @@ file name completion, block operations, and editing of binary data.
 
 %package data
 Summary:        Data files needed for extended vim functionality
-# Used to be in vim-plugins package
 Group:          Productivity/Text/Editors
 Requires:       vim-data-common = %{version}-%{release}
+# Used to be in vim-plugins package
 Obsoletes:      vim-plugin-matchit <= 1.13.2
 Provides:       vim-plugin-matchit = 1.13.2
+# conflicts with nginx own plugin
+Obsoletes:      vim-plugin-nginx < %{version}
+Provides:       vim-plugin-nginx = %{version}
+
 BuildArch:      noarch
 
 %description data
@@ -140,8 +154,13 @@ Summary:        A GUI for Vi
 Group:          Productivity/Text/Editors
 Requires:       gvim_client
 Requires:       vim-data = %{version}-%{release}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Conflicts:      gvim < 8.2
 Provides:       gvim-base = %{version}-%{release}
 Provides:       gvim-enhanced = %{version}-%{release}
@@ -160,8 +179,13 @@ want less features, you might want to install vim instead.
 %package small
 Summary:        Vim with reduced features
 Group:          Productivity/Text/Editors
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Provides:       vi
 Provides:       vim_client
 Requires:       vim-data-common = %{version}-%{release}
@@ -195,7 +219,6 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
-%patch103 -p1
 %patch104 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
@@ -312,9 +335,46 @@ done
 # install vim
 install -D -m 0755 vim-small %{buildroot}%{_bindir}/vim-small
 install -D -m 0755 vim-nox11 %{buildroot}%{_bindir}/vim-nox11
+%if ! %{with libalternatives}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/vim %{buildroot}%{_bindir}/vim
 ln -s -f %{_sysconfdir}/alternatives/vi %{buildroot}%{_bindir}/vi
+%else
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/vi
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/vim
+mkdir -p %{buildroot}%{_datadir}/libalternatives/vi
+cat > %{buildroot}%{_datadir}/libalternatives/vi/20.conf <<EOF
+binary=%{_bindir}/vim-nox11
+group=vim, vi
+options=KeepArgv0
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/vi/30.conf <<EOF
+binary=%{_bindir}/gvim
+group=vim, vi
+options=KeepArgv0
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/vi/19.conf <<EOF
+binary=%{_bindir}/vim-small
+group=vim, vi
+options=KeepArgv0
+EOF
+mkdir -p %{buildroot}%{_datadir}/libalternatives/vim
+cat > %{buildroot}%{_datadir}/libalternatives/vim/20.conf <<EOF
+binary=%{_bindir}/vim-nox11
+group=vim, vi
+options=KeepArgv0
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/vim/30.conf <<EOF
+binary=%{_bindir}/gvim
+group=vim, vi
+options=KeepArgv0
+EOF
+cat > %{buildroot}%{_datadir}/libalternatives/vim/19.conf <<EOF
+binary=%{_bindir}/vim-small
+group=vim, vi
+options=KeepArgv0
+EOF
+%endif
 
 # compat symlinks
 mkdir %{buildroot}/bin
@@ -430,6 +490,32 @@ LC_ALL=en_US.UTF-8 make -j1 test || { echo "Ignore transient errors for PowerPC.
 LC_ALL=en_US.UTF-8 make -j1 test
 %endif
 
+%if %{with libalternatives}
+# with libalternatives
+%pre
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] && [ ! -e %{_bindir}/vim-nox11 ]; then
+    %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-nox11
+fi
+
+%pre -n gvim
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] && [ ! -e %{_bindir}/gvim ] ; then
+    %{_sbindir}/update-alternatives --remove vim %{_bindir}/gvim
+fi
+
+%pre small
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] && [ ! -e %{_bindir}/vim-small ]; then
+    %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
+fi
+
+%post -n gvim
+%icon_theme_cache_post
+
+%postun -n gvim
+%icon_theme_cache_postun
+%else
+
+# without libalternatives
 %post
 %{_sbindir}/update-alternatives \
  --install %{_bindir}/vim vim %{_bindir}/vim-nox11 20 \
@@ -462,10 +548,19 @@ fi
 if [ ! -e %{_bindir}/vim-small ] ; then
   %{_sbindir}/update-alternatives --remove vim %{_bindir}/vim-small
 fi
+%endif
 
 %files
+%if ! %{with libalternatives}
 %ghost %{_sysconfdir}/alternatives/vim
 %ghost %{_sysconfdir}/alternatives/vi
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/vi
+%{_datadir}/libalternatives/vi/20.conf
+%dir %{_datadir}/libalternatives/vim
+%{_datadir}/libalternatives/vim/20.conf
+%endif
 %{_bindir}/vim-nox11
 %{_bindir}/vim
 # symlinks
@@ -593,13 +688,20 @@ fi
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/syntax.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/vim.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/*.vim
-%{_datadir}/vim/%{VIM_SUBDIR}/rgb.txt
 
 %files -n gvim
 %doc runtime/doc/gui_x11.txt
 %ghost %config(missingok) %{_sysconfdir}/gvimrc
+%if ! %{with libalternatives}
 %ghost %{_sysconfdir}/alternatives/vim
 %ghost %{_sysconfdir}/alternatives/vi
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/vi
+%{_datadir}/libalternatives/vi/30.conf
+%dir %{_datadir}/libalternatives/vim
+%{_datadir}/libalternatives/vim/30.conf
+%endif
 %{_bindir}/vi
 %{_bindir}/vim
 %{_bindir}/egview
@@ -620,8 +722,16 @@ fi
 
 %files small
 %license LICENSE
+%if ! %{with libalternatives}
 %ghost %{_sysconfdir}/alternatives/vim
 %ghost %{_sysconfdir}/alternatives/vi
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/vi
+%{_datadir}/libalternatives/vi/19.conf
+%dir %{_datadir}/libalternatives/vim
+%{_datadir}/libalternatives/vim/19.conf
+%endif
 %{_bindir}/vi
 %{_bindir}/vim
 %{_bindir}/vim-small

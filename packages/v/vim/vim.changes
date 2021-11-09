@@ -1,4 +1,245 @@
 -------------------------------------------------------------------
+Fri Nov  5 17:51:31 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3582, fixes the following problems
+  * Overflow check fails with 32 ints.
+  * Manipulating highlighting is complicated.
+  * CI sometimes fails for MinGW.
+  * gj does not move properly with a wide character.
+  * Reading character past end of line.
+  * Reading uninitialized memory when giving spell suggestions.
+- add obsolete/conflict with nginx vim plugin 
+
+-------------------------------------------------------------------
+Wed Nov  3 17:31:20 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3577, fixes the following problems
+  * Test_very_large_count fails on 32bit systems.
+  * Some unicode control characters are considered printable.
+  * Memory leak when closing window and using "multispace" in 'listchars'.
+  * Cannot decide whether to skip test that fails with 64 bit ints. (closes
+  #9072)
+  * Divide by zero.
+  * Overflow check still fails when sizeof(int) == sizeof(long).
+  * Some functions are not documented for use with a method.
+  * Overflow check fails with 32 ints.
+
+-------------------------------------------------------------------
+Wed Nov  3 15:16:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Current vim seems to have timing problems with its parser to
+  distinguish between <ESC> and <ESC>[~3 at least in urxvt 
+
+-------------------------------------------------------------------
+Tue Nov  2 12:42:28 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fix boo#1192225 
+
+-------------------------------------------------------------------
+Tue Nov  2 11:57:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3570, fixes the following problems
+  * CTRL-I in Insert mode is not tested
+  * Ctrl-hat test fails with Athena and Motif. (Elimar Riesebieter)
+  * Error for :let when vimrc is Vim 9 script.
+  * Test_very_large_count fails on 32bit systems.
+
+-------------------------------------------------------------------
+Tue Nov  2 09:50:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid the second to parse the Delete ANSI sequence in gvim 
+
+-------------------------------------------------------------------
+Sun Oct 31 10:11:52 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- Updated to version 8.2.3567, fixes the following problems
+  * Xxd revert does not handle end of line correctly.
+  * Xxd has various way to exit.
+  * ModeChanged is not triggered on every mode change.
+  * Filler lines are incorrect for other window in diff mode after making
+  a change.
+  * Vim9: cannot call imported funcref at script level.
+  * Vim9: asserting the wrong variable.
+  * Loop variable recreated every time.
+  * Using freed memory with lambda.
+  * Cscope has a complicated way of giving an error message.
+  * Cannot add color names.
+  * Build failure with +eval but without GUI or +termguicolors
+  * Invalid memory access when scrolling without a valid screen.
+  * Makefile dependencies are outdated. (Gary Johnson)
+  * Build failure on old systems when using nano timestamp.
+  * CTRL-I in Insert mode is not tested
+
+-------------------------------------------------------------------
+Fri Oct 22 14:53:00 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+- Test_suspend disabled temporary.
+  Updated patches:
+  disable-unreliable-tests-arch.patch, disable-unreliable-tests.patch
+
+-------------------------------------------------------------------
+Fri Oct 22 13:53:00 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3552, fixes the following problems
+  * Vim9: need more tests for empty string arguments.
+  * Some type casts are not needed.
+  * Cannot distinguish Normal and Terminal-Normal mode.
+  * The ModeChanged event only uses one character for the new_mode and
+  old_mode values.
+  * Pattern matching with ModeChanged not tested.
+  * nginx files are not recognized.
+  * Cannot detect insert scroll mode.
+  * Completion submode not indicated for virtual replace.
+  * CursorHoldI event interferes with "CTRL-G U". (Naohiro Ono)
+  * Problem with :cd when editing file in non-existent directory. (Yee
+  Cheng Chin)
+  * Some files with json syntax are not recognized.
+  * Crash with error in :catch and also in :finally.
+  * Crash when using CTRL-T after an empty search pattern.
+  * Other crashes with empty search pattern not tested.
+  * Some files with tcl syntax are not recognized.
+  * Some places use "Vimscript" instead of "Vim script".
+  * Expression register set by not executed put command.
+  * Renaming a buffer on startup may cause using freed memory.
+  * Startup test fails on MS-Windows.
+  * Still crash with error in :catch and also in :finally.
+  * Crash when calling job_start with an invalid argument. (Virginia Senioria)
+  * Test does not fail without the fix for a crash.
+  * Failures when char is unsigned.
+  * Reading beyond end of line ending in quote and backslash.
+  * #ifdef for using sysinfo() is incomplete.
+  * Crash when going through spell suggestions.
+  * Python 3 test fails with Python 3.10.
+  * Illegal memory access with invalid sequence of commands.
+  * Illegal memory access if buffer name is very long.
+  * Issue template is not easy to use.
+  * ml_get error after search with range.
+  * Superfluous return statements.
+  * xpm2 filetype dection is not so good.
+  * Crash when pasting too many times.
+  * Large count test fails on MS-Windows.
+  * Illegal memory access in utf_head_off.
+  * GUI geometry startup test fails on some systems. (Drew Vogel)
+  * Put test fails when run by itself.
+  * Recover test may fail on some systems.
+  * GUI geometry startup test fails.
+  * tmux filetype dection is incomplete
+  * Cannot enter password in shell command.
+  * Vim9: using g:pat:cmd is confusing.
+  * Vim9: warning for signed vs unsigned.
+  * Vim9: build failure without the +eval feature.
+  * Vim9: special cases for "g" and "s" insufficiently tested.
+  * Generating proto files may fail.
+  * Vim9: bad separators for "g" and "s" insufficiently tested.
+  * Undo file is not synced. (Sami Farin)
+  * Changes are only detected with one second accuracy.
+  * Vim9: entry for loop variable is created every round.
+  * Timestamp test fails on some systems.
+  * Using freed memory when using a timer and searching. (Dominique Pellé)
+  * Autoread test with nano second time sometimes fails.
+  * Nano time test fails on Mac and FreeBSD.
+  * Terminal window does not have transparent background when 'termguicolors'
+  is used.
+  * TextChanged does not trigger after TextChangedI.
+  * Test_xrestore sometimes fails.
+  * TOML files are not recognized.
+  * Cannot define a function for thesaurus completion.
+  * Options completion test fails.
+  * Cannot use \x and \u when setting 'listchars'.
+  * Duplicated code in xxd.
+  * GUI: ligatures are not used.
+  * Option variable name does not match option name. (Christ van Willigen)
+  * Tests have clumsy check for X11 based GUI.
+  * Gcc complains about uninitialized variable. (Tony Mechelynck)
+  * 'thesaurus' and 'thesaurusfunc' do not have the same scope.
+  * Xxd usage output is incomplete.
+  * ":buf \{a}" fails while ":edit \{a}" works.
+  * Command line completion test fails on MS-Windows.
+  * The previous '' mark is restored after moving the cursor to the original
+  jump position. (Tony Chen)
+  * Inefficient code in xxd.
+  * Autoread test is a bit flaky.
+  * If-else indenting is confusing.
+  * The do_highlight() function is way too long.
+  * mode() does not return the right value in 'operatorfunc'.
+  * Else-if indenting is confusing.
+  * GTK3: with 'rightleft' set scrollbar may move unintentionally.
+  * The mark '] is wrong after put with a count. (Naohiro Ono)
+  * Compiler warning for unused variable in tiny version.
+  * Too many comments are old style.
+  * Swapname has double slash when 'directory' ends in double slash. (Shane
+  Smith)
+  * Unix: may leak file descriptor when using a non-existing directory.
+  * setcellwidths() may make 'listchars' or 'fillchars' invalid.
+  * Build failure without the +eval feature.
+  * Opening the quickfix window triggers BufWinEnter twice. (Yorick Peterse)
+  * GTK GUI crashen when reading from stdin.
+  * Mistakes in test comments.
+  * completion() does not work properly.
+  * Checking first character of url twice.
+  * Xxd revert does not handle end of line correctly.
+
+-------------------------------------------------------------------
+Fri Oct  1 08:42:38 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- updated vim-7.4-rpmlintrc
+- drop no-common.patch 
+- Updated to version 8.2.3459, fixes the following problems
+  * Can delete a numbered function. (Naohiro Ono)
+  * Reading beyond end of line with invalid utf-8 character.
+  * Crash with linebreak, listchars and large tabstop.
+  * Vim9: crash when using base name of import. (Naohiro Ono)
+  * Vim9: importing the wrong file.
+  * Vim9: too many characters are allowed in import name.
+  * fullcommand() gives the wrong name if there is a buffer-local user
+  command. (Naohiro Ono)
+  * Vim9: Not all function argument types are properly checked.
+  * Second error is reported while exception is being thrown.
+  * Vim9: a failing debug expression aborts script sourcing.
+  * Garbage collection while evaluating may cause trouble.
+  * A failing debug expression may make Vim unusable.
+  * _REENTRANT defined more than once.
+  * A bit of code is not covered by tests.
+  * Vim9: no failure if return type differs from returned variable.
+  * Vim9: list += list creates a new list in :def function.
+  * A sequence of spaces is hard to see in list mode.
+  * Warning for using uninitialized variable.
+  * Crash when deleting a listener in a listener callback. (Naohiro Ono)
+  * Double free when list is copied.
+  * Using freed memory when replacing. (Dhiraj Mishra)
+  * Leaking memory when assigning to list or dict.
+  * No generic way to trigger an autocommand on mode change.
+  * Completion for :disas sorts local functions first.
+  * Octave/Matlab filetype detection does not work properly.
+  * :delcommand does not take a -buffer option.
+  * Function prototype for trigger_modechanged() is incomplete.
+  * Vim9: dict is not passed to dict function.
+  * Check for optional bool type has confusing return type.
+  * Compiler warnings for 32/64 bit usage.
+  * Cannot manipulate blobs.
+  * Deleted lines go to wrong yank register.
+  * Recover test fails if there is an old swap file.
+  * Vim9: || and && are not handled at compile time when possible.
+  * Vim9: memory leak when and/or fails.
+  * concealed text not revealed when leaving insert mode. (Michael Soyka)
+  * On Solaris longVersion may be declared twice. (Vladimir Marek)
+  * Not enough tests for empty string arguments.
+  * A couple of declarations are not ANSI C.
+  * :endtry after function call that throws not found.
+  * Sort fails if the sort compare function returns 999.
+  * Coveralls action fails.
+  * Not all apache files are recognized.
+  * MPD files are not recognized.
+  * Autocmd not executed when editing a directory ending in a path separator
+  inside try block.
+  * Using a count with "gp" leave cursor in wrong position. (Naohiro Ono)
+  * Using a count with "gp" leaves '] in wrong position. (Naohiro Ono)
+  * Vim9: Not all functions are tested with an empty string argument.
+  * Not all dictdconf files are recognized.
+  * Vim9: need more tests for empty string arguments.
+
+-------------------------------------------------------------------
 Fri Sep 17 10:34:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Changed used terminal description in %check scriptlet from "linux"

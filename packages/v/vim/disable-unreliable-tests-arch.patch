@@ -34,7 +34,7 @@ Index: vim-8.2.3318/src/testdir/Make_all.mak
  	test_regex_char_classes \
  	test_regexp_latin \
  	test_regexp_utf8 \
-@@ -459,7 +452,6 @@ NEW_TESTS_RES = \
+@@ -458,7 +451,6 @@ NEW_TESTS_RES = \
  	test_quickfix.res \
  	test_quotestar.res \
  	test_random.res \

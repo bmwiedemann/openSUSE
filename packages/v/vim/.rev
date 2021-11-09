@@ -5347,4 +5347,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>920261</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>ed9786b8381bc586ed4049861f1e50cd</srcmd5>
+    <version>8.2.3582</version>
+    <time>1636498428</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.3582, fixes the following problems
+  * Overflow check fails with 32 ints.
+  * Manipulating highlighting is complicated.
+  * CI sometimes fails for MinGW.
+  * gj does not move properly with a wide character.
+  * Reading character past end of line.
+  * Reading uninitialized memory when giving spell suggestions.
+- add obsolete/conflict with nginx vim plugin 
+
+- Updated to version 8.2.3577, fixes the following problems
+  * Test_very_large_count fails on 32bit systems.
+  * Some unicode control characters are considered printable.
+  * Memory leak when closing window and using &quot;multispace&quot; in 'listchars'.
+  * Cannot decide whether to skip test that fails with 64 bit ints. (closes
+  #9072)
+  * Divide by zero.
+  * Overflow check still fails when sizeof(int) == sizeof(long).
+  * Some functions are not documented for use with a method.
+  * Overflow check fails with 32 ints.
+
+- Current vim seems to have timing problems with its parser to
+  distinguish between &lt;ESC&gt; and &lt;ESC&gt;[~3 at least in urxvt 
+
+- fix boo#1192225 
+
+- Updated to version 8.2.3570, fixes the following problems
+  * CTRL-I in Insert mode is not tested
+  * Ctrl-hat test fails with Athena and Motif. (Elimar Riesebieter)
+  * Error for :let when vimrc is Vim 9 script.
+  * Test_very_large_count fails on 32bit systems.</comment>
+    <requestid>929735</requestid>
+  </revision>
 </revisionlist>

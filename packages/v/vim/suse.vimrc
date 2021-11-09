@@ -292,8 +292,10 @@ endif
 
 " This escape sequence is the well known ANSI sequence for
 " Remove Character Under The Cursor (RCUTC[tm])
-map! <Esc>[3~ <Delete>
-map  <ESC>[3~    x
+if !has("gui_running") && myterm == "xterm"
+    map! <Esc>[3~ <Delete>
+    map  <ESC>[3~    x
+endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
