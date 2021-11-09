@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-waitress
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -39,13 +45,18 @@ Source:         https://files.pythonhosted.org/packages/source/w/waitress/waitre
 Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 %if "%{flavor}" == ""
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 %else
 # Documentation requirements
 BuildRequires:  python3-Sphinx
@@ -80,6 +91,10 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 %check
 # disable one test, that requires network
 %pytest -k 'not test_service_port'
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative waitress-serve
 
 %post
 %python_install_alternative waitress-serve

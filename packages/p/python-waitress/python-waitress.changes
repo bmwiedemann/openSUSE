@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:27:31 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Fri Aug 27 11:27:31 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.0.0
