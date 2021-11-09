@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 17:20:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.4.2
+  Fix:
+  * dependencies: Use babelfish>=0.6.0 
+
+-------------------------------------------------------------------
 Sat Nov  6 07:06:31 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.4.1
