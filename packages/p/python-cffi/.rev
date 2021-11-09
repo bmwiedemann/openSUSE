@@ -331,4 +331,19 @@
   * Revert &quot;grovel: detect :float and :double in the :auto type&quot;</comment>
     <requestid>906722</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>76f1267caa20ca6762e3d554cdf19c72</srcmd5>
+    <version>1.15.0</version>
+    <time>1636498445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.0:
+  * Fixed MANIFEST.in to include missing file for Windows arm64 support
+  * Fixed Linux wheel build to use gcc default ISA for libffi
+  * Updated setup.py Python trove specifiers to currently-tested Python versions
+  * CPython 3.10 support (including wheels)
+  * MacOS arm64 support (including wheels)
+  * Initial Windows arm64 support
+  * Misc. doc and test updates</comment>
+    <requestid>929906</requestid>
+  </revision>
 </revisionlist>
