@@ -16,14 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-PyVirtualDisplay
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
 URL:            https://github.com/ponty/PyVirtualDisplay
 Source:         https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-EasyProcess
@@ -37,10 +39,9 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module entrypoint2}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vncdotool >= 0.13.0}
-BuildRequires:  maim
 BuildRequires:  xmessage
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xvfb-run
@@ -61,8 +62,12 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# xvnc omitted due to "vncext: pseudocolour not supported"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run --server-args "-screen 0 1920x1080x24" $python -m pytest tests -rs -k 'not (examples or smart or xvnc)'
+donttest="examples or smart"
+%{python_expand #
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+xvfb-run --server-args "-screen 0 1920x1080x24" \
+  $python -m pytest -v tests -rs -k "not ($donttest)" -n auto
+}
 
 %files %{python_files}
 %license LICENSE.txt

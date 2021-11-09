@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 16 09:16:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.2
+  * no release notes
+- Disable python2: not supported, not resolvable on Leaps
+
+-------------------------------------------------------------------
 Sat Mar 27 13:35:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.1
