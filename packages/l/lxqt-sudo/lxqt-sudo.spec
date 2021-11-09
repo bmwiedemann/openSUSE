@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-sudo
-Version:        0.17.0
+Version:        1.0.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
@@ -28,10 +28,10 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 Requires:       sudo

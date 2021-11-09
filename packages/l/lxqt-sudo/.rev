@@ -129,4 +129,13 @@
   * Code: Handled what was deprecated by Qt5.15.</comment>
     <requestid>885946</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>18a13cd7a0b1fbee4132a0b9910e974f</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Code: Handled what was deprecated by Qt5.15.</comment>
+    <requestid>930109</requestid>
+  </revision>
 </revisionlist>
