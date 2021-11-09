@@ -177,4 +177,13 @@
   * Handled Qt5.15's deprecations.</comment>
     <requestid>885937</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>49bce65e56a4c19f3a953ddaeacf4f56</srcmd5>
+    <version>0.4.6</version>
+    <time>1636498461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.6:
+  * Bumped minimum required Qt version to 5.15 and dropped dead code.</comment>
+    <requestid>930098</requestid>
+  </revision>
 </revisionlist>

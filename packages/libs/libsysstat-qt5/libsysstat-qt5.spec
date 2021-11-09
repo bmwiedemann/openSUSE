@@ -18,7 +18,7 @@
 
 %define         _name libsysstat
 Name:           libsysstat-qt5
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Library used to query system info and statistics
 License:        LGPL-2.1-or-later
@@ -29,9 +29,9 @@ Source1:        https://github.com/lxqt/libsysstat/releases/download/%{version}/
 Source2:        libsysstat-qt5.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.12.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
 
 %description
 Library used to query system info and statistics.

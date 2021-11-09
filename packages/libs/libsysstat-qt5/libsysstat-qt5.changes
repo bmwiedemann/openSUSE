@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:38:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.6:
+  * Bumped minimum required Qt version to 5.15 and dropped dead code.
+
+-------------------------------------------------------------------
 Fri Apr 16 07:03:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.5:
