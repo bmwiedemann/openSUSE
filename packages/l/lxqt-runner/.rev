@@ -291,4 +291,14 @@
   * Activated Home and End in the drop-down list.</comment>
     <requestid>885948</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12134e985b2707f33cfb8cc6ec1ed3a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Fixed compilation with menu-cache.
+  * Visible names are used to sort items.</comment>
+    <requestid>930111</requestid>
+  </revision>
 </revisionlist>
