@@ -298,4 +298,12 @@ Not sure I solved this one the best way possible, comments wanted. (forwarded re
     <comment></comment>
     <requestid>925657</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>564f8061f97ce49370c4e124269c4680</srcmd5>
+    <version>0.10.3</version>
+    <time>1636498503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930485</requestid>
+  </revision>
 </revisionlist>

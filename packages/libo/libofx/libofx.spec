@@ -57,6 +57,7 @@ Summary:        Development files for libofx, an OFX Command Parser and API
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       glibc-devel
+Requires:       libofx7 = %{version}
 
 %description devel
 LibOFX is a parser and API for applications to support

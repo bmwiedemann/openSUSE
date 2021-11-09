@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  9 14:50:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require libofx7 from the devel package: requiring the library as
+  the target to the .so symlink is mandatory.
+
+-------------------------------------------------------------------
 Thu Oct 14 09:55:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.10.3:
