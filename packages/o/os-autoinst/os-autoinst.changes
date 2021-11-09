@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 09 16:17:05 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1636474618.9c079e07:
+  * t: Add test for backend::spvm
+  * t: Add test for backend::driver
+  * t: Add test for backend::null
+  * Simplify backend::baseclass::alive
+  * Delete unused exception handling in backend::qemu
+  * backend::qemu: Fix bug that qemu alive status was never tested
+  * Declare likely obsolete backend::pvm as deprecated
+  * Mark only sporadically test covered statements
+  * t: Improve Test::More error output context in helper
+  * t: Output state file content in case of error where missing
+  * Add simple instantiation test of backend::pvm
+  * dist: Do not build for i586
+  * Fix missing subsecond display in video captions
+  * doc: Add missing documentation for NOVALINK variables
+  * Update tidy to 20211029
+
+-------------------------------------------------------------------
 Tue Nov 02 16:18:12 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1635869279.8838dc09:

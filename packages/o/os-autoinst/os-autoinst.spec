@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1635869279.8838dc09
+Version:        4.6.1636474618.9c079e07
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -93,6 +93,7 @@ Recommends:     perl(Inline::Python)
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/useradd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    %{ix86}
 
 %description
 The OS-autoinst project aims at providing a means to run fully
