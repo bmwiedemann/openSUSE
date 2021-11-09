@@ -1,5 +1,5 @@
 #
-# spec file for package python
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 %define skip_python2 1
 Name:           python-construct%{?psuffix}
-Version:        2.10.60
+Version:        2.10.67
 Release:        0
 Summary:        A declarative parser/builder for binary data
 License:        MIT
@@ -85,7 +85,7 @@ rm -rf tests/deprecated_gallery
 # local source dir is needed for tests
 export PYTHONPATH=$(pwd)
 # Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
-python36_donttest="numpy or test_overall_parse or test_overall_build"
+python36_donttest="numpy or test_overall_parse or test_overall_build or test_compiled_example_benchmark or test_compiled_example_integrity"
 %pytest --benchmark-disable ${$python_donttest:+ -k "not (${$python_donttest})"}
 %endif
 
