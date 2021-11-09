@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:21:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_brickd-resume.service.patch
+  * harden_brickd.service.patch
+
+-------------------------------------------------------------------
 Thu Dec 10 20:06:30 UTC 2020 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.3:

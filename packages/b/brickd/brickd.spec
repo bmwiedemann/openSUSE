@@ -1,7 +1,7 @@
 #
 # spec file for package brickd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Frank Kunz
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          System/Daemons
 URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickd/archive/v%{version}.tar.gz
 Source1:        https://github.com/Tinkerforge/daemonlib/archive/brickd-%{version}.tar.gz
+Patch0:         harden_brickd-resume.service.patch
+Patch1:         harden_brickd.service.patch
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(systemd)
 Suggests:       logrotate
@@ -38,6 +40,8 @@ the TCP/IP socket connection to the language binding APIs.
 %prep
 %setup -q -a 1 -n %{name}-%{version}
 mv daemonlib-%{name}-%{version} src/daemonlib
+%patch0 -p1
+%patch1 -p1
 
 %build
 pushd src/brickd
