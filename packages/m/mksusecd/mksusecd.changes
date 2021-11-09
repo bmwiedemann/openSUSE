@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Tue Nov 9 11:08:08 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#55
+- rename --instsys option to --instsys-url
+- add new --initrd option for extending the installation system
+- allow RPMs as media sources and add special handling for
+  skelcd-installer-xxx packages
+- implement instsys extending for suse and rh style media
+- support updating .treeinfo files
+- code to distinguish suse and rh media
+- add openSUSE spec file
+- require at least checkmedia version 6
+- add support for rh media (jsc#SCL-6)
+- 2.0
+
+--------------------------------------------------------------------
 Mon Feb 22 15:34:35 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#53
