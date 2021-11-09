@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  3 12:49:19 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- remove glibc-locale-base from enhanced_base, already recommended in base
+- replace no longer existing system-tuning-common-SUSE with udev-extra-rules
+- add handling for grub2-branding-SLE (should be done in grub2 really)
+
+-------------------------------------------------------------------
 Wed Oct 27 11:38:14 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - remove mention of "Minimal" from the base pattern

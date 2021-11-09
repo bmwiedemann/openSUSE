@@ -358,7 +358,6 @@ Recommends:     fuse
 Recommends:     gawk
 Recommends:     gettext-runtime
 Recommends:     glibc-locale
-Recommends:     glibc-locale-base
 Recommends:     gpart
 Recommends:     gpg2
 Recommends:     gpm
@@ -424,7 +423,7 @@ Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
 #SUSE hardware tunings
-Recommends:     system-tuning-common-SUSE
+Recommends:     udev-extra-rules
 Recommends:     systemd-sysvinit
 Recommends:     time
 Recommends:     timezone
@@ -630,7 +629,13 @@ Requires:       (grub2-snapper-plugin if snapper)
 Requires:       biosdevname
 %endif
 %ifnarch s390x ppc64 ppc64le
+%if 0%{?is_opensuse}
 Requires:       (grub2-branding-openSUSE if branding-openSUSE)
+%else
+%if 0%{?sle_version}
+Requires:       (grub2-branding-SLE if branding-SLE)
+%endif
+%endif
 %endif
 %ifarch x86_64
 Requires:       grub2-x86_64-efi
