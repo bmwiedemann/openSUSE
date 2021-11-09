@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 17:54:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.6
+  * Fix ulfius_websocket_wait_close
+  * Fix ulfius_send_http_request when url contains spaces
+
+-------------------------------------------------------------------
 Wed Oct 27 19:20:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.5
