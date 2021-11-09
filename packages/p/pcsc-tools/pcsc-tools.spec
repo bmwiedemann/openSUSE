@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcsc-tools
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        Smart card tools
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig
 Requires:       perl-pcsc
 Requires:       perl(Glib)
 Requires:       perl(Gtk2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 These tools are used to test a PC/SC driver, card or reader
@@ -47,14 +46,14 @@ sed 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' -i ATR_analysis gscriptor scriptor
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc README Changelog gpl*
+%license gpl*.txt
+%doc Changelog README
 %{_bindir}/ATR_analysis
 %{_bindir}/gscriptor
 %{_bindir}/pcsc_scan
