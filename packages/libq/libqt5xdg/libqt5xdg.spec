@@ -18,7 +18,7 @@
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
@@ -31,9 +31,9 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.12
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
@@ -91,7 +91,7 @@ Tools for QtXdg.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -106,6 +106,9 @@ make %{?_smp_mflags}
 %license COPYING
 %doc AUTHORS
 %{_libdir}/libQt5Xdg.so.*
+%dir %{_datadir}/lxqt
+%{_datadir}/lxqt/lxqt-qtxdg.conf
+%{_datadir}/lxqt/qtxdg.conf
 
 %files devel
 %{_datadir}/cmake/qt5xdg

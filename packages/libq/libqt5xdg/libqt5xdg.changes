@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  5 15:48:22 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.8.0:
+  * Added support for default terminal.
+  * Considered XDG_DATA_HOME when computing desktop entry id.
+  * Made sure that hicolor is searched before dash fallbacks.
+  * Considered Qt's fallback search paths when finding icons.
+  * Handle relative paths in qtxdg-desktop-file-start.
+
+-------------------------------------------------------------------
 Fri Apr 16 11:23:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update 3.7.1:
