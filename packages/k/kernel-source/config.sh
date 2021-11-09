@@ -1,9 +1,9 @@
 # The version of the main tarball to use
-SRCVERSION=5.15
+SRCVERSION=5.14
 # variant of the kernel-source package, either empty or "-rt"
 VARIANT=
 # enable kernel module compression
-COMPRESS_MODULES="zstd"
+COMPRESS_MODULES="xz"
 COMPRESS_VMLINUX="xz"
 # Compile binary devicetrees on master and stable branches.
 BUILD_DTBS="Yes"
