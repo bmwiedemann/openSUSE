@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  2 08:58:05 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add libprotobuf-c-devel as an explicit dependency, for fixing
+  the build;
+- Get rid of rpmlintrc, as it's no longer needed.
+
+-------------------------------------------------------------------
 Mon Aug 23 15:22:18 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - make libkrun support conditional, so we can have crun (without

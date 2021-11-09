@@ -22,7 +22,6 @@ Name:           crun
 Version:        0.21
 Release:        0
 Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        crun-rpmlintrc
 URL:            https://github.com/containers/crun
 # We always run autogen.sh
 BuildRequires:  autoconf
@@ -32,6 +31,7 @@ BuildRequires:  git-core
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-md2man
 BuildRequires:  libcap-devel
+BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
