@@ -1400,4 +1400,12 @@
     :class:`.DropTableOp` class, which when &quot;reversed&quot; into a</comment>
     <requestid>925915</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>84321e85df6764d53b0ec49a031242b8</srcmd5>
+    <version>1.7.4</version>
+    <time>1636498448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930005</requestid>
+  </revision>
 </revisionlist>

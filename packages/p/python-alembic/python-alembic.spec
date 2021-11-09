@@ -25,23 +25,24 @@ Summary:        A database migration tool for SQLAlchemy
 License:        MIT
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
-Source1:        python-alembic-rpmlintrc
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.0}
-BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.9}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module python-editor >= 0.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 1.3.0
-Requires:       python-importlib-resources
 Requires:       python-python-dateutil
-Requires:       python-python-editor >= 0.3
+%if 0%{?python_version_nodots} < 39
+Requires:       python-importlib-resources
+Requires:       python-importlib-metadata
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -73,7 +74,7 @@ offers the following functionality:
 %python_clone -a %{buildroot}%{_bindir}/alembic
 
 %check
-%pytest
+%pytest -n auto
 
 %post
 %python_install_alternative alembic
@@ -85,6 +86,7 @@ offers the following functionality:
 %license LICENSE
 %doc CHANGES README.rst
 %python_alternative %{_bindir}/alembic
-%{python_sitelib}/alembic*
+%{python_sitelib}/alembic
+%{python_sitelib}/alembic-%{version}*-info
 
 %changelog
