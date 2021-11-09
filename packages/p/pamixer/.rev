@@ -18,4 +18,12 @@
   * add &quot;--get-volume-human&quot; option that gives 75% or muted</comment>
     <requestid>827409</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf08c5d03e8ae99d41ad456867bc2c32</srcmd5>
+    <version>1.5</version>
+    <time>1636498486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930220</requestid>
+  </revision>
 </revisionlist>

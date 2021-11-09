@@ -1,0 +1,23 @@
+diff -Nur pamixer-1.5/Makefile new/Makefile
+--- pamixer-1.5/Makefile	2021-10-04 10:09:29.000000000 +0200
++++ new/Makefile	2021-11-06 12:32:09.179999619 +0100
+@@ -1,6 +1,8 @@
+ LDLIBS   ?= -lpulse -lboost_program_options
+-CXXFLAGS ?= -std=c++11 -Wall -Werror -Wextra -pedantic -DVERSION=\"1.5\"
++CXXFLAGS ?= -Wall -Werror -Wextra -pedantic
++CXXFLAGS += -std=c++11 -DVERSION=\"1.5\"
+ PREFIX   ?= /usr/local
++MANDIR   ?= $(PREFIX)/man
+ RM       ?= rm -f
+ 
+ target   := pamixer
+@@ -28,6 +30,6 @@
+ install: pamixer
+ 	install -d $(DESTDIR)$(PREFIX)/bin/
+ 	install $(target) $(DESTDIR)$(PREFIX)/bin/
+-	install -d $(DESTDIR)$(PREFIX)/man/man1/
+-	install $(manpage) $(DESTDIR)$(PREFIX)/man/man1/
+-	gzip $(DESTDIR)$(PREFIX)/man/man1/$(manpage)
++	install -d $(DESTDIR)$(MANDIR)/man1/
++	install -m 644 $(manpage) $(DESTDIR)$(MANDIR)/man1/
++	gzip $(DESTDIR)$(MANDIR)/man1/$(manpage)
