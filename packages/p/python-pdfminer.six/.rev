@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>833065</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b0206c15f4098715e06c7cf9fa34b470</srcmd5>
+    <version>20200726</version>
+    <time>1636498493</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run the testsuite.
+- Add patch import-from-non-pythonpath-files.patch:
+  * Allow the test suite to find modules not shipped as modules.</comment>
+    <requestid>930278</requestid>
+  </revision>
 </revisionlist>

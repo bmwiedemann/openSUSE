@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
 # https://github.com/pdfminer/pdfminer.six/pull/489
 Patch0:         python-pdfminer.six-remove-nose.patch
+Patch1:         import-from-non-pythonpath-files.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -43,7 +43,7 @@ Requires:       python-pycryptodome
 Requires:       python-six
 Requires:       python-sortedcontainers
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-pdfminer3k = %{version}
 Obsoletes:      python-pdfminer3k < %{version}
 BuildArch:      noarch
@@ -63,7 +63,7 @@ of text analysis.
 
 %prep
 %setup -q -n pdfminer.six-%{version}
-%patch0 -p1
+%autopatch -p1
 sed -i -e '/^#!\//, 1d' pdfminer/psparser.py
 sed  -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
 
@@ -80,7 +80,7 @@ mv %{buildroot}%{_bindir}/pdf2txt.py %{buildroot}%{_bindir}/pdf2txt
 %python_clone -a %{buildroot}%{_bindir}/dumppdf
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} -v
+%pytest
 
 %post
 %python_install_alternative pdf2txt

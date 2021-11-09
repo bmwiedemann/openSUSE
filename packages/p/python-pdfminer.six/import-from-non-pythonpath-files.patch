@@ -1,0 +1,36 @@
+Index: pdfminer.six-20200726/tests/test_tools_dumppdf.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_tools_dumppdf.py
++++ pdfminer.six-20200726/tests/test_tools_dumppdf.py
+@@ -5,8 +5,11 @@ from tempfile import NamedTemporaryFile
+ 
+ from helpers import absolute_sample_path
+ from pdfminer.pdfdocument import PDFNoValidXRefWarning
+-from tools import dumppdf
+ 
++import importlib.util
++spec = importlib.util.spec_from_file_location("dumppdf", "tools/dumppdf.py")
++dumppdf = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(dumppdf)
+ 
+ def run(filename, options=None):
+     absolute_path = absolute_sample_path(filename)
+Index: pdfminer.six-20200726/tests/test_tools_pdf2txt.py
+===================================================================
+--- pdfminer.six-20200726.orig/tests/test_tools_pdf2txt.py
++++ pdfminer.six-20200726/tests/test_tools_pdf2txt.py
+@@ -4,9 +4,13 @@ import os
+ from shutil import rmtree
+ from tempfile import NamedTemporaryFile, mkdtemp
+ 
+-import tools.pdf2txt as pdf2txt
+ from helpers import absolute_sample_path
+ 
++import importlib.util
++spec = importlib.util.spec_from_file_location("pdf2txt", "tools/pdf2txt.py")
++pdf2txt = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(pdf2txt)
++
+ 
+ def run(sample_path, options=None):
+     absolute_path = absolute_sample_path(sample_path)
