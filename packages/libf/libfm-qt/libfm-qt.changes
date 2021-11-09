@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:21:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Added support for adding/removing of emblems with File Properties dialog.
+  * Added mount, unmount and eject actions to file context menu under computer:/// or wherever possible.
+  * Avoided a freeze on mounting encrypted volumes.
+  * Workaround for a bug in GFileMonitor regarding folder symlinks.
+  * Added "Empty Trash" action to Trash's folder menu.
+  * Enabled Qt's alternating row colors for detailed list view.
+  * Ensured a correct selection order with Shift+mouse in icon view.
+  * Prevented self-overwriting in file prompt dialog.
+  * Fixed Cyrillic case-insensitive regex search.
+  * Enhancements and fixes to smooth scrolling from inside view.
+  * Added an item to LXQt file dialog for showing hidden files.
+  * Added an option to LXQt file dialog for disabling smooth scrolling (in list and compact modes).
+  * Remember hidden columns of LXQt file dialog (in list mode).
+  * Show the context menu of the current folder when the Menu key is pressed and there is no selection.
+  * Fixed two small memory leaks.
+
+-------------------------------------------------------------------
 Fri Apr 16 06:40:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
