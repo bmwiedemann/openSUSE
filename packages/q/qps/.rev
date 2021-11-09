@@ -185,4 +185,16 @@
     minimized to tray.</comment>
     <requestid>885957</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>92d0ae5aefb624fe7742b6f9a689412b</srcmd5>
+    <version>2.4.0</version>
+    <time>1636498476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Ensure that only one sort indicator exists.
+  * Enhanced filtering.
+  * Bumped minimum required Qt version to 5.15.
+  * Code cleanup.</comment>
+    <requestid>930126</requestid>
+  </revision>
 </revisionlist>

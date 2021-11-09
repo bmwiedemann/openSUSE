@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:17:26 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  * Ensure that only one sort indicator exists.
+  * Enhanced filtering.
+  * Bumped minimum required Qt version to 5.15.
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Fri Apr 16 10:42:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.0:
