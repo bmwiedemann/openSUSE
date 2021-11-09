@@ -212,4 +212,13 @@
   * Updated translations</comment>
     <requestid>885953</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c6a1a31465e0261b70836795584fd689</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped minimum required Qt version to 5.15.</comment>
+    <requestid>930121</requestid>
+  </revision>
 </revisionlist>

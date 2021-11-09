@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        0.17.0
+Version:        1.0.0
 Release:        0
 Summary:        OpenSSH password tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,7 +30,7 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5UiTools) >= 5.12
+BuildRequires:  pkgconfig(Qt5UiTools) >= 5.15
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 Recommends:     %{name}-lang
@@ -45,7 +45,7 @@ Tool that will prompt user for password when using OpenSSH in LXQt
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -59,7 +59,7 @@ install -Dm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}.?%{ext_man}
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/lxqt-openssh-askpass
