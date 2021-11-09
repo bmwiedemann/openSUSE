@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 08 15:51:20 UTC 2021 - info@paolostivanin.com
+
+- Update to version 4.8.0:
+  * The Docker container now supports the following new environment
+variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
+
+-------------------------------------------------------------------
 Mon Sep 20 07:05:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
