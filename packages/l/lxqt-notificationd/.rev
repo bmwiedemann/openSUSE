@@ -308,4 +308,13 @@
   * Code cleanup.</comment>
     <requestid>885941</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fefebcdf6f85b12532ba098266930120</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * The do-not-disturb mode is added.</comment>
+    <requestid>930102</requestid>
+  </revision>
 </revisionlist>
