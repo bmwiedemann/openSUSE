@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %bcond_without python2
 Name:           python-websocket-client
 Version:        0.58.0
@@ -27,10 +33,15 @@ Source0:        https://files.pythonhosted.org/packages/source/w/websocket_clien
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-six
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Provides:       python-websocket-client-test = %{version}
 Obsoletes:      python-websocket-client-test < %{version}
 BuildArch:      noarch
@@ -62,6 +73,10 @@ sed -i '1 i #!/usr/bin/python' bin/wsdump.py
 
 %check
 %python_exec websocket/tests/test_websocket.py
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative wsdump.py
 
 %post
 %python_install_alternative wsdump.py
