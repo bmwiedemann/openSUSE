@@ -1304,4 +1304,13 @@ comply with openSUSE policy
   * Code cleanup and modernization.</comment>
     <requestid>885944</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0d3e46ffb320ed858e502f0d68042a32</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped minimum required Qt version to 5.15 and updated translations.</comment>
+    <requestid>930107</requestid>
+  </revision>
 </revisionlist>
