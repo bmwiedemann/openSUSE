@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  5 16:39:28 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.6-462-g5fefbbf8888:
+  + rebased on top of upstream commit SHA1 dd7139c66c1d36da50475ec97d8d6b54b07d1dea
+    * (bsc#1191751) rgw/tracing: unify SO version numbers within librgw2 package
+    * spec: make selinux scriptlets respect CEPH_AUTO_RESTART_ON_UPGRADE
+
+-------------------------------------------------------------------
 Mon Sep 20 13:15:38 UTC 2021 - Stefen Allen <sallen@suse.com>
 
 - Update to Version: 16.2.6.45+g8fda9838398:
