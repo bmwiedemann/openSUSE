@@ -388,4 +388,12 @@ bsc#1022468</comment>
     <comment>links 2.24</comment>
     <requestid>918840</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>03c9004b206aca23a6457885a6dc8cc4</srcmd5>
+    <version>2.25</version>
+    <time>1636498510</time>
+    <user>dimstar_suse</user>
+    <comment>links 2.25</comment>
+    <requestid>930504</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 16:50:51 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.25:
+  * delete the expired Let's encrypt certificate from the builtin
+    certificate store
+  * Set the flag X509_V_FLAG_TRUSTED_FIRST, so that Let's encrypt
+    works with openssl-1.0.2
+ 
+-------------------------------------------------------------------
 Sun Sep 12 20:16:22 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.24:
