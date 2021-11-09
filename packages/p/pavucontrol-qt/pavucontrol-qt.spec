@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol-qt
-Version:        0.17.0
+Version:        1.0.0
 Release:        0
 Summary:        Qt port of pavucontrol
 License:        GPL-2.0-only
@@ -28,11 +28,11 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.9.0
+BuildRequires:  lxqt-build-tools-devel >= 0.10.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libpulse) >= 5.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16
