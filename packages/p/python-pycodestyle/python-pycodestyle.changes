@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:31:35 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.8.0
+  * fix false negative with multiple comparisons
+  * fix false positives with ``match``
+  * improve performance of bare except check
+  * Backport tokenize performance improvement from python 3.10
+  * fix for lambdas containing positional-only args
+  * Remove ``indent_size_str`` "setting"
+  * allow ``__all__`` to be typed
+  * fix false positives for ``*`` in ``case``
+  * detect tabs as whitespace
+
+-------------------------------------------------------------------
 Tue Mar 16 18:44:38 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.7.0
