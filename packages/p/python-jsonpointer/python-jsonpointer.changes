@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 22 20:52:50 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Mon Mar 15 08:57:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1:

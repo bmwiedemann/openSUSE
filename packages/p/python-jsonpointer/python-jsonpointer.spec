@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpointer
 Version:        2.1
@@ -27,9 +33,14 @@ URL:            https://github.com/stefankoegl/python-json-pointer
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpointer/jsonpointer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,6 +60,10 @@ A module to identify specific nodes in a JSON document (according to draft 08).
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests.py
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative jsonpointer
 
 %post
 %python_install_alternative jsonpointer
