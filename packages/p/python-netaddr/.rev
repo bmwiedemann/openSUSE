@@ -232,4 +232,12 @@
     <comment></comment>
     <requestid>819016</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>73f24e7ddd275f5737d68cca1c9d50ed</srcmd5>
+    <version>0.8.0</version>
+    <time>1636498488</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distros</comment>
+    <requestid>930242</requestid>
+  </revision>
 </revisionlist>

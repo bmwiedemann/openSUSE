@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 21:36:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix build for older distros
+
+-------------------------------------------------------------------
 Sat Jul  4 18:19:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.0
@@ -26,7 +31,6 @@ Thu May 21 10:56:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 Tue Dec  4 12:50:45 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
-
 
 -------------------------------------------------------------------
 Sun Aug  6 09:31:51 UTC 2017 - mardnh@gmx.de
