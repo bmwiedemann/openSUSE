@@ -40,6 +40,9 @@ BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
 Recommends:     %{name}-lang
+Recommends:     gstreamer-plugins-base
+Recommends:     gstreamer-plugins-good
+Recommends:     gstreamer-plugins-ugly
 Provides:       eidete = %{version}
 Obsoletes:      eidete < %{version}
 
