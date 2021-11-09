@@ -57,4 +57,14 @@
   * Added alternate background color to the calendar widget in some themes.</comment>
     <requestid>885949</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9fa787fda0c4894c91a3479a6c63458</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Two new themes (Silver and Arch-colors) are added.
+  * Many problems are fixed in most themes, especially with dark widgets styles.</comment>
+    <requestid>930114</requestid>
+  </revision>
 </revisionlist>
