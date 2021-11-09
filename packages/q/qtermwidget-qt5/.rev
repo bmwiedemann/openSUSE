@@ -188,4 +188,17 @@
   * Fixed the execution after pasting when Ctrl is hold.</comment>
     <requestid>885950</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56d261cf9c66cdd3817bf64a35d4086c</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Bumped minimum required Qt version to 5.15.
+  * Fixed crash under (Plasma) Wayland on opening tab and splitting.
+  * Quote drag-and-drop file names.
+  * Backported CNL and CPL support from Konsole.
+  * Some code cleanup.</comment>
+    <requestid>930115</requestid>
+  </revision>
 </revisionlist>

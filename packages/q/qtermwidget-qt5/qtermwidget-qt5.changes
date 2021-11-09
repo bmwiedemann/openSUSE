@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:08:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Bumped minimum required Qt version to 5.15.
+  * Fixed crash under (Plasma) Wayland on opening tab and splitting.
+  * Quote drag-and-drop file names.
+  * Backported CNL and CPL support from Konsole.
+  * Some code cleanup.
+
+-------------------------------------------------------------------
 Fri Apr 16 10:26:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
