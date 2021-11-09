@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.21.3
+Version:        1.21.4
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -78,19 +78,6 @@ BuildRequires:  google-perftools-devel
 %description
 nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.
 It has been running on many heavily loaded Russian sites for more than two years.
-
-%package -n vim-plugin-nginx
-Summary:        VIM support for nginx config files
-Group:          Productivity/Text/Editors
-%requires_eq    vim
-Supplements:    (nginx and vim_client)
-BuildArch:      noarch
-
-%description -n vim-plugin-nginx
-nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.
-It has been running on many heavily loaded Russian sites for more than two years.
-
-This package holds the VIM support for nginx config files.
 
 %package -n nginx-source
 Summary:        The nginx source
@@ -150,10 +137,6 @@ rm %{buildroot}/srv/www/htdocs/index.html
 mkdir -p %{buildroot}%{ngx_doc_dir}
 cp -av CHANGES* LICENSE \
   %{buildroot}%{ngx_doc_dir}
-
-mkdir -p %{buildroot}%{vim_data_dir}/
-cp -av contrib/vim/* \
-  %{buildroot}%{vim_data_dir}/
 
 mkdir -p %{buildroot}%{_datadir}/nginx/
 mkdir -p %{buildroot}%{ngx_conf_dir}/vhosts.d/
@@ -231,14 +214,6 @@ copydocs() {
 %{_unitdir}/nginx.service
 %{_sysusersdir}/nginx.conf
 %{_datadir}/nginx/
-
-%files -n vim-plugin-nginx
-%license LICENSE
-%dir %{vim_data_dir}/ftdetect/
-%{vim_data_dir}/ftdetect/nginx.vim
-%{vim_data_dir}/ftplugin/nginx.vim
-%{vim_data_dir}/indent/nginx.vim
-%{vim_data_dir}/syntax/nginx.vim
 
 %files -n nginx-source
 %{src_install_dir}
