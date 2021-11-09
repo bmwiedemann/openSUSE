@@ -1,8 +1,8 @@
 #
 # spec file for package clustershell
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017 Stephane Thiell <sthiell@stanford.edu>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@
 %global srcname ClusterShell
 
 Name:           clustershell
-Version:        1.8.3
+Version:        1.8.4
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
@@ -114,7 +114,6 @@ Requires:       %{python3_pkgprefix}-setuptools
 
 %description -n %{python3_pkgprefix}-%{name}
 ClusterShell Python 3 module and related command line tools.
-
 
 %prep
 %setup -q -n %{srcname}-%{version}
@@ -197,6 +196,7 @@ rm -rf %{buildroot}
 %{python3_sitelib}/ClusterShell-*-py?.?.egg-info
 
 %else
+
 %files -n %{python3_pkgprefix}-%{name}
 %if 0%{?rhel}
 %defattr(-,root,root,-)

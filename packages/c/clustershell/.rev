@@ -103,4 +103,12 @@
     <comment>- Grab updated spec file from upstream to fix Python2 handling. (forwarded request 833058 from eeich)</comment>
     <requestid>833066</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60b64cea08a2a2fb1ed3c0e66db93bdd</srcmd5>
+    <version>1.8.4</version>
+    <time>1636498487</time>
+    <user>dimstar_suse</user>
+    <comment>update to upstream release 1.8.4</comment>
+    <requestid>930223</requestid>
+  </revision>
 </revisionlist>
