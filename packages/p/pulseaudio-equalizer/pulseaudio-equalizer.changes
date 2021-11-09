@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov  6 19:51:16 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.0.2:
+  * No changelog available.
+- Drop 0000-add-python3-compat.patch, 0001-pulse-path.patch,
+  0002-remove-preamp.patch, 0005-window-icon.patch,
+  0003-force-default-persistence-value.patch,
+  0004-do-not-crash-on-missing-preset.patch,
+  0007-pygobject3-port.patch, 0009-do-not-zero-volume.patch: fixed
+  upstream.
+- Replace 0006-fix-desktop.patch with %suse_update_desktop_file,
+  the icon change has been done upstream.
+- Simplify and rename 0008-fix-locale-issues.patch to
+  pulseaudio-equalizer-fix-locale-issues.patch: iconv does not
+  appear to be necessary.
+- Add pulseaudio-equalizer-use-pactl.patch: Use pactl instead of
+  pacmd for compatibility with other PulseAudio daemon
+  implementations.
+- Require pulseaudio-daemon instead of pulseaudio.
+
+-------------------------------------------------------------------
 Sun Feb 25 18:16:05 UTC 2018 - sor.alexei@meowr.ru
 
 - Add 0000-add-python3-compat.patch: Add Python3 compatibility.

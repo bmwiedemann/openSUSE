@@ -1,0 +1,10 @@
+--- a/bin/pulseaudio-equalizer.in
++++ b/bin/pulseaudio-equalizer.in
+@@ -21,6 +21,7 @@ PA_CONTROL_MAX='30'
+ PA_PREAMP='1.0'
+ PA_CURRENT_PRESET=''
+ 
++export LC_MESSAGES=C
+ if [ -z "$XDG_CONFIG_HOME" ]; then
+   CONFIG_DIR="$HOME"/.config/pulse
+ else
