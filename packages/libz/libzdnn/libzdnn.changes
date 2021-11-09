@@ -2,4 +2,7 @@
 Thu Oct 21 18:58:18 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Initial version of the package (jsc#SLE-21645)
+  Includes the following two patches from upstream:
+    sles15sp4-libzdnn-Fix-initialization-of-CFLAGS_INIT-2.patch
+    sles15sp4-libzdnn-Limit-symbol-check-to-global-symbols-3.patch
 
