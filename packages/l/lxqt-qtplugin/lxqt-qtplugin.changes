@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:29:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Added workarounds for Qt's poor handling of some dark palettes.
+  * Used the C++11 override specifier in some places.
+
+-------------------------------------------------------------------
 Fri Apr 16 06:54:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:
