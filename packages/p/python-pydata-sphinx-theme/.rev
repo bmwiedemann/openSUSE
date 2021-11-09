@@ -7,4 +7,41 @@
     <comment>Dependency of python-sphinx-book-theme and consequently python-sphinxcontrib-copybutton.</comment>
     <requestid>914695</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9a1a78bbe038b5335efa676dceb2e5d</srcmd5>
+    <version>0.7.1</version>
+    <time>1636498485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1: 
+  * Fixing prevnext translations (#486)
+  * RLS: v0.7.0
+  * Update API styling for changes in sphinx 4.x (#485)
+  * Avoid adding margin to docutils container (from bootstrap container) (#474)
+  * Add css for blockquote and references/citations (#482)
+  * Move API docs related CSS to separate file (#476)
+  * Improve styling of the Previous / Next buttons (#473)
+  * 👌 Round edges (#472)
+  * Bump docutils version (#463)
+  * FIX: added gtag date and moved google analytics to header (#439)
+  * Add explicit heading aria-level to complement heading role (#456)
+  * revert style changes (#459)
+  * include tests in sdist (#457)
+  * Add pa11y testing and reporting (#294)
+  * move parent theme css earlier in the inclusion order (#451)
+  * FIX: Include built css/js assets in source again (#450)
+  * Re-build assests with yarn to fix linting  (#448)
+  * Bump url-parse from 1.5.1 to 1.5.3 (#443)
+  * TST: update role for caption in expected html output (sphinx 4.1) (#441)
+  * Remove CircleCI from jobs (#445)
+  * Bump path-parse from 1.0.6 to 1.0.7 (#442)
+  * Use a variable for the color of editthispage (#412)
+  * Bump color-string from 1.5.3 to 1.6.0 (#440)
+  * Bump postcss from 7.0.32 to 7.0.36 (#425)
+  * fix Fairlearn link (#430)
+  * DOC: Add a few more projects that have adopted the theme. (#423)
+  * Fixing admonition title CSS (#407)
+  * Add MNE-Python to theme users list (#405)
+  * Bump dns-packet from 1.3.1 to 1.3.4 (#421)</comment>
+    <requestid>930208</requestid>
+  </revision>
 </revisionlist>

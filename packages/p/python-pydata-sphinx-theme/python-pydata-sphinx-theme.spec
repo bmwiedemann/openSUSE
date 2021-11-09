@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-pydata-sphinx-theme
-Version:        0.6.3
+Version:        0.7.1
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause
 URL:            https://github.com/pydata/pydata-sphinx-theme
 # Source:         https://files.pythonhosted.org/packages/source/p/pydata-sphinx-theme/pydata-sphinx-theme-%%{version}.tar.gz
 Source:         pydata-sphinx-theme-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_sidebar_tests.patch gh#pydata/pydata-sphinx-theme#437 mcepl@suse.com
-# Make tests compatible with Sphinx 4.1
-Patch0:         fix_sidebar_tests.patch
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -36,10 +33,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx
 Requires:       python-beautifulsoup4
-Requires:       python-docutils < 0.17
+Requires:       python-docutils
 Suggests:       python-beautifulsoup4
 Suggests:       python-codecov
-Suggests:       python-docutils = 0.16
+Suggests:       python-docutils
 Suggests:       python-jupyter_sphinx
 Suggests:       python-numpy
 Suggests:       python-numpydoc
@@ -52,7 +49,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils < 0.17}
+BuildRequires:  %{python_module docutils}
 # /SECTION
 %python_subpackages
 
