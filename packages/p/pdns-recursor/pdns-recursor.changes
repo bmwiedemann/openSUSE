@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  5 12:00:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.5.7:
+  * A SHA-384 DS should not trump a SHA-256 one, only potentially ignore SHA-1 DS records.
+    References: #10908, pull request 10912
+  * rec_control wipe-cache-typed should check if a qtype arg is present and valid.
+    References: #10905, pull request 10911
+  * Put the correct string into appliedPolicyTrigger for Netmask matching rules.
+    References: #10842, pull request 10863
+
+-------------------------------------------------------------------
 Mon Oct 11 12:53:39 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.5.6:
