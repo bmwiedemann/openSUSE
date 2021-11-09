@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  9 08:48:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
 Thu Jul 15 05:11:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.9.0:

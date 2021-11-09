@@ -16,6 +16,13 @@
 #
 
 
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
@@ -33,10 +40,15 @@ BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-setuptools
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Provides:       python-pygments = %{version}
 Obsoletes:      python-pygments < %{version}
 BuildArch:      noarch
@@ -73,6 +85,10 @@ install -Dm0644 doc/pygmentize.1 %{buildroot}%{_mandir}/man1/pygmentize.1
 }
 
 %prepare_alternative pygmentize
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pygmentize
 
 %post
 %{python_install_alternative pygmentize pygmentize.1}
