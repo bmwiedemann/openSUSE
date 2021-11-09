@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov  5 16:52:14 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fips.patch
+    + return in native code after generating java.io.IOException
+
+-------------------------------------------------------------------
+Wed Nov  3 07:05:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * system-crypto-policy.patch
+    + rediff to changed context
+  * fips.patch
+    + Allow plain key import in fips mode unless
+      com.suse.fips.plainKeySupport is set to false
+
+-------------------------------------------------------------------
 Thu Oct 21 10:54:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.13+8 (October 2021 CPU)
