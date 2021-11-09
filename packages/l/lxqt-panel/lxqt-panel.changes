@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:56:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Added "Custom Command" plugin.
+  * Added context menu and drag-and-drop support to search results of main menu.
+  * Better icon handling in Status Notifier.
+  * Fixed the keypad navigation in main menu.
+  * Prevented sliding of volume tooltip.
+  * Removed special treatment of Openbox and Compton configs.
+
+-------------------------------------------------------------------
 Fri Apr 16 18:31:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lxqt-panel-0.17.1:

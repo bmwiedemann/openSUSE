@@ -1142,4 +1142,18 @@
     <comment></comment>
     <requestid>886283</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9cef13a0b97a81b997befcf3da49e4df</srcmd5>
+    <version>1.0.0</version>
+    <time>1636498469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Added &quot;Custom Command&quot; plugin.
+  * Added context menu and drag-and-drop support to search results of main menu.
+  * Better icon handling in Status Notifier.
+  * Fixed the keypad navigation in main menu.
+  * Prevented sliding of volume tooltip.
+  * Removed special treatment of Openbox and Compton configs.</comment>
+    <requestid>930110</requestid>
+  </revision>
 </revisionlist>
