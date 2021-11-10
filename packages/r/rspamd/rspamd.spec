@@ -52,12 +52,12 @@
 
 %global _wwwdir /srv/www/webapps
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 9
 %endif
 
 Name:           rspamd
-Version:        2.7
+Version:        3.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -68,7 +68,6 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 # PATCH-FIX-UPSTREAM - https://github.com/rspamd/rspamd/issues/3656
-Patch2:         rspamd-add-lua-5.4.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -100,6 +99,7 @@ BuildRequires:  pcre-devel
 BuildRequires:  pcre2-devel
 %endif
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 %if %{with ext_hiredis}
 BuildRequires:  pkgconfig(hiredis)
@@ -116,11 +116,16 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %endif
+BuildRequires:  pkgconfig(libzstd)
 
-%if 0%{?suse_version} < 1500
-Requires:       lua51-LPeg
+%if 0%{?suse_version} >= 1550
+Requires:       lua54-lpeg
 %else
+%if 0%{?suse_version} >= 1500
 Requires:       lua53-lpeg
+%else
+Requires:       lua51-LPeg
+%endif
 %endif
 %if 0%{?with split_out_client}
 Requires:       rspamd-client = %{version}
@@ -163,10 +168,7 @@ This package holds the client tools (rspamc and rspamadm)
 %endif
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %if 0%{?force_gcc_version}
@@ -229,6 +231,8 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with jemalloc}
   -DENABLE_JEMALLOC=ON                      \
   %endif
+  -DSYSTEM_FMT=ON                           \
+  -DSYSTEM_ZSTD=ON                          \
   -DDEBIAN_BUILD=1                          \
   -DRSPAMD_GROUP=%{rspamd_group}            \
   -DRSPAMD_USER=%{rspamd_user}
@@ -373,6 +377,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 
 %dir %{_sysconfdir}/rspamd/modules.d
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/antivirus.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/aws_s3.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/arc.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/asn.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/chartable.conf
@@ -383,6 +388,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/dmarc.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/elastic.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/emails.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/external_relay.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/external_services.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/force_actions.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/forged_recipients.conf
@@ -421,7 +427,9 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %dir %{_sysconfdir}/rspamd/override.d
 
 %dir %{_datadir}/rspamd
+%{_datadir}/rspamd/aws_s3.lua
 %{_datadir}/rspamd/effective_tld_names.dat
+%{_datadir}/rspamd/external_relay.lua
 %{_datadir}/rspamd/http_headers.lua
 
 %dir %{_datadir}/rspamd/elastic
@@ -484,6 +492,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/global_functions.lua
 %{_datadir}/rspamd/lualib/lpegre.lua
 %{_datadir}/rspamd/lualib/lua_auth_results.lua
+%{_datadir}/rspamd/lualib/lua_aws.lua
 %{_datadir}/rspamd/lualib/lua_bayes_learn.lua
 %{_datadir}/rspamd/lualib/lua_cfg_transform.lua
 %{_datadir}/rspamd/lualib/lua_clickhouse.lua
@@ -494,6 +503,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/lua_maps_expressions.lua
 %{_datadir}/rspamd/lualib/lua_meta.lua
 %{_datadir}/rspamd/lualib/lua_mime.lua
+%{_datadir}/rspamd/lualib/lua_mime_types.lua
 %{_datadir}/rspamd/lualib/lua_redis.lua
 %{_datadir}/rspamd/lualib/lua_settings.lua
 %{_datadir}/rspamd/lualib/lua_smtp.lua
@@ -511,6 +521,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
 %{_datadir}/rspamd/lualib/lua_content/init.lua
 %{_datadir}/rspamd/lualib/lua_content/pdf.lua
+%{_datadir}/rspamd/lualib/lua_content/vcard.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_ffi
 %{_datadir}/rspamd/lualib/lua_ffi/common.lua
@@ -537,6 +548,7 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/lua_scanners/kaspersky_se.lua
 %{_datadir}/rspamd/lualib/lua_scanners/oletools.lua
 %{_datadir}/rspamd/lualib/lua_scanners/p0f.lua
+%{_datadir}/rspamd/lualib/lua_scanners/pyzor.lua
 %{_datadir}/rspamd/lualib/lua_scanners/razor.lua
 %{_datadir}/rspamd/lualib/lua_scanners/savapi.lua
 %{_datadir}/rspamd/lualib/lua_scanners/sophos.lua
@@ -553,11 +565,12 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 
 %dir %{_datadir}/rspamd/lualib/rspamadm
 %{_datadir}/rspamd/lualib/rspamadm/clickhouse.lua
-%{_datadir}/rspamd/lualib/rspamadm/confighelp.lua
 %{_datadir}/rspamd/lualib/rspamadm/configgraph.lua
+%{_datadir}/rspamd/lualib/rspamadm/confighelp.lua
 %{_datadir}/rspamd/lualib/rspamadm/configwizard.lua
 %{_datadir}/rspamd/lualib/rspamadm/cookie.lua
 %{_datadir}/rspamd/lualib/rspamadm/corpus_test.lua
+%{_datadir}/rspamd/lualib/rspamadm/dmarc_report.lua
 %{_datadir}/rspamd/lualib/rspamadm/dns_tool.lua
 %{_datadir}/rspamd/lualib/rspamadm/fuzzy_convert.lua
 %{_datadir}/rspamd/lualib/rspamadm/fuzzy_stat.lua
@@ -566,10 +579,13 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %{_datadir}/rspamd/lualib/rspamadm/mime.lua
 %{_datadir}/rspamd/lualib/rspamadm/rescore.lua
 %{_datadir}/rspamd/lualib/rspamadm/stat_convert.lua
+%{_datadir}/rspamd/lualib/rspamadm/statistics_dump.lua
 %{_datadir}/rspamd/lualib/rspamadm/template.lua
 %{_datadir}/rspamd/lualib/rspamadm/vault.lua
+%{_datadir}/rspamd/lualib/rspamadm/neural_test.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
+%{_datadir}/rspamd/lualib/plugins/dmarc.lua
 %{_datadir}/rspamd/lualib/plugins/neural.lua
 %{_datadir}/rspamd/lualib/plugins/rbl.lua
 
