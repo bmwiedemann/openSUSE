@@ -93,6 +93,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
 Requires:       libffi-devel
+Requires:       libgirepository-1_0-1 = %{version}
 
 %description devel
 The goal of the project is to describe the APIs and collect them in
@@ -124,8 +125,7 @@ diff -s %{SOURCE3} gobject-introspection-typelib.installed
 # fixup shebangs in files installed to /usr/bin
 sed -i "s|%{_bindir}/env python|%{_bindir}/python|" %{buildroot}%{_bindir}/*
 
-%post -n libgirepository-1_0-1 -p /sbin/ldconfig
-%postun -n libgirepository-1_0-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgirepository-1_0-1
 
 %files
 %license COPYING COPYING.GPL
