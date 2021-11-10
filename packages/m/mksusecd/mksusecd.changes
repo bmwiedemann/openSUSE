@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Wed Nov 10 13:39:01 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#54
+- mksusecd: add support for zstd-compressed archives and initrd
+- mksusecd: support zstd compression for kernel modules
+- zstd compression for initrd and kernel modules (jsc#SLE-18766,
+  jsc#SLE-18768, jsc#SLE-20248, jsc#SLE-21256)
+- 2.1
+
+--------------------------------------------------------------------
 Tue Nov 9 11:08:08 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#55
