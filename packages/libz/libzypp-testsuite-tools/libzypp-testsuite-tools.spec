@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp-testsuite-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libzypp-testsuite-tools
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 4.6
-BuildRequires:  libexpat-devel
-BuildRequires:  libtool
-BuildRequires:  libzypp-devel >= 15.10.0
+Version:        5.0.4
+Release:        0
+License:        GPL-2.0-only
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Package, Patch, Pattern, and Product Management - testsuite-tools
-License:        GPL-2.0
 Group:          System/Packages
-Version:        5.0.3
-Release:        0
-Source:         zypp-testsuite-tools-5.0.3.tar.bz2
+Source:         %{name}-%{version}.tar.bz2
+BuildRequires:  cmake >= 3.1
+BuildRequires:  gcc-c++ >= 7
+BuildRequires:  libzypp-devel >= 17.25.3
 
 %description
 Package, Patch, Pattern, and Product Management - testsuite-tools
@@ -45,25 +43,31 @@ Authors:
     Ladislav Slezak <lslezak@suse.cz>
 
 %prep
-%setup -q -n zypp-testsuite-tools-5.0.3
+%setup -q
 
 %build
-mv configure.ac x
-grep -v devel/ x > configure.ac
-autoreconf --force --install --symlink --verbose
-%{?suse_update_config:%{suse_update_config -f}}
-CXXFLAGS="$RPM_OPT_FLAGS" \
-%configure --disable-static
-make %{?jobs:-j %jobs}
+mkdir -p build
+cd build
+CMAKE_FLAGS=
+cmake $CMAKE_FLAGS \
+      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+      -DSYSCONFDIR=%{_sysconfdir} \
+      -DMANDIR=%{_mandir} \
+      -DCMAKE_VERBOSE_MAKEFILE=TRUE \
+      -DCMAKE_C_FLAGS_RELEASE:STRING="$RPM_OPT_FLAGS" \
+      -DCMAKE_CXX_FLAGS_RELEASE:STRING="$RPM_OPT_FLAGS" \
+      -DCMAKE_BUILD_TYPE=Release \
+      ..
 
 %install
+cd build
 make install DESTDIR=$RPM_BUILD_ROOT
 # legacy symlinks
 ln -s deptestomatic $RPM_BUILD_ROOT/%{_prefix}/lib/zypp/testsuite/bin/deptestomatic.multi
 ln -s deptestomatic $RPM_BUILD_ROOT/%{_prefix}/lib/zypp/testsuite/bin/deptestomatic.noui
-%fdupes -s $RPM_BUILD_ROOT
 
 %clean
+rm -rf "$RPM_BUILD_ROOT"
 
 %files
 %defattr(0755,root,root)

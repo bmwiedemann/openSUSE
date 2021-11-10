@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 10 11:13:38 CET 2021 - ma@suse.com
+
+- Switch to using CMake
+- CMake: use ZYPPCOMMON_CXX_STANDARD
+- Support libzypps new yaml testcase format
+- BuildRequires: libzypp-devel >= 17.25.3
+- version 5.0.4
+
+-------------------------------------------------------------------
 Wed May 31 16:26:20 CEST 2017 - ma@suse.com
 
 - Fix unrecognized solver flags (bsc#1041889)

@@ -377,4 +377,12 @@ Contains files with GPL-2.0 (i.e. &quot;only&quot;) licenses - see e.g. src/XmlN
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>501779</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>34ecb501186761fd1ca4e9f1f87b7963</srcmd5>
+    <version>5.0.4</version>
+    <time>1636577204</time>
+    <user>dimstar_suse</user>
+    <comment>Softwarestack update</comment>
+    <requestid>930643</requestid>
+  </revision>
 </revisionlist>
