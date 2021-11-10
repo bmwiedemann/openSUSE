@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:34:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six declaration for testsuite 
+
+-------------------------------------------------------------------
 Mon Aug 16 07:51:00 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - %pytest_arch added to fix Leap test issues

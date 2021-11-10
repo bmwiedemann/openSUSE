@@ -96,4 +96,12 @@
     <comment></comment>
     <requestid>912371</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>06da7bea7d6e5daac8197a1e6d17937e</srcmd5>
+    <version>2.7.4</version>
+    <time>1636577154</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing six declaration for testsuite</comment>
+    <requestid>930138</requestid>
+  </revision>
 </revisionlist>
