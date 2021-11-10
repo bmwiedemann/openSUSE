@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 10 15:47:19 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Uncompress kernel modules to avoid double-compressing in squashfs
+  and initrd (boo#1192457)
+
+-------------------------------------------------------------------
 Mon Oct 18 14:22:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Can't ignore breeze5-wallpapers on Leap yet

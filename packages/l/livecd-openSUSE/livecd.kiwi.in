@@ -54,6 +54,8 @@
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="live-langset-data"/>
     <package name="live-add-yast-repos"/>
+    <!-- used by config.sh -->
+    <package name="zstd"/>
     <archive name="livecd-udev.tar.xz"/>
     @PACKAGES@
   </packages>
