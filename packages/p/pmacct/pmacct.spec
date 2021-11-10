@@ -24,7 +24,7 @@
 %bcond_with ndpi
 
 Name:           pmacct
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Accounting and aggregation toolsuite for IPv4 and IPv6
 License:        GPL-2.0-only
