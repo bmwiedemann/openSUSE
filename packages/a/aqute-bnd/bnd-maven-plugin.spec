@@ -17,7 +17,7 @@
 
 
 Name:           bnd-maven-plugin
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        BND Maven plugin
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -26,7 +26,6 @@ Group:          Development/Libraries/Java
 URL:            https://bnd.bndtools.org/
 Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
 Patch0:         0001-Disable-removed-commands.patch
-Patch1:         0002-Fix-ant-compatibility.patch
 Patch2:         0003-Port-to-OSGI-7.0.0.patch
 Patch3:         aqute-bnd-java8compat.patch
 Patch4:         0004-maven-plugin-dependencies.patch
@@ -60,7 +59,6 @@ API documentation for %{name}.
 %setup -q -n bnd-%{version}.REL
 
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1

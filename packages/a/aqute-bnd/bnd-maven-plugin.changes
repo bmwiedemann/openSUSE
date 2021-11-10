@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 10 08:13:30 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to aqute-bnd 5.1.1
+  * ant plugin is in separate artifact
+- Removed patch:
+  * 0002-Fix-ant-compatibility.patch
+    + fixed by upstream
+
+-------------------------------------------------------------------
 Tue Oct 19 07:20:57 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patches:

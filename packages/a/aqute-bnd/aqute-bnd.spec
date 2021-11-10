@@ -17,7 +17,7 @@
 
 
 Name:           aqute-bnd
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        BND Tool
 # Part of jpm is under BSD, but jpm is not included in binary RPM
@@ -26,13 +26,13 @@ Group:          Development/Libraries/Java
 URL:            https://bnd.bndtools.org/
 Source0:        https://github.com/bndtools/bnd/archive/%{version}.REL.tar.gz
 Source1:        bnd-%{version}.REL-build_xml.tar.xz
+Source2:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.ant/%{version}/biz.aQute.bnd.ant-%{version}.pom
 Source3:        https://repo1.maven.org/maven2/biz/aQute/bnd/aQute.libg/%{version}/aQute.libg-%{version}.pom
 Source4:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd/%{version}/biz.aQute.bnd-%{version}.pom
 Source5:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/%{version}/biz.aQute.bndlib-%{version}.pom
 Source6:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.annotation/%{version}/biz.aQute.bnd.annotation-%{version}.pom
 Source7:        https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.bnd.exporters/%{version}/biz.aQute.bnd.exporters-%{version}.pom
 Patch0:         0001-Disable-removed-commands.patch
-Patch1:         0002-Fix-ant-compatibility.patch
 Patch2:         0003-Port-to-OSGI-7.0.0.patch
 Patch3:         aqute-bnd-java8compat.patch
 Patch4:         0004-maven-plugin-dependencies.patch
@@ -95,7 +95,6 @@ build-jar-repository -s lib \
   slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium ant jline
 
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
@@ -148,12 +147,19 @@ cp -p %{SOURCE4} pom.xml
 %pom_add_dep biz.aQute.bnd:biz.aQute.bndlib:%{version}
 %pom_add_dep biz.aQute.bnd:aQute.libg:%{version}
 %pom_add_dep biz.aQute.bnd:biz.aQute.bnd.annotation:%{version}
-%pom_add_dep org.apache.ant:ant
+%pom_add_dep biz.aQute.bnd:biz.aQute.bnd.ant:%{version}
 %pom_add_dep org.osgi:osgi.annotation
 %pom_add_dep org.osgi:osgi.core
 %pom_add_dep org.osgi:osgi.cmpn
 %pom_add_dep org.slf4j:slf4j-api
 %pom_add_dep org.slf4j:slf4j-simple::runtime
+popd
+
+# bndlib.ant
+pushd biz.aQute.bnd.ant
+cp -p %{SOURCE2} pom.xml
+%pom_remove_dep :::provided::
+%pom_add_dep org.osgi:osgi.annotation
 popd
 
 # maven-plugins
@@ -185,6 +191,7 @@ install -pm 0644 biz.aQute.bnd.annotation/target/biz.aQute.bnd.annotation-%{vers
 install -pm 0644 aQute.libg/target/aQute.libg-%{version}.jar %{buildroot}%{_javadir}/%{name}/aQute.libg.jar
 install -pm 0644 biz.aQute.bndlib/target/biz.aQute.bndlib-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bndlib.jar
 install -pm 0644 biz.aQute.bnd/target/biz.aQute.bnd-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bnd.jar
+install -pm 0644 biz.aQute.bnd.ant/target/biz.aQute.bnd.ant-%{version}.jar %{buildroot}%{_javadir}/%{name}/biz.aQute.bnd.ant.jar
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 0644 biz.aQute.bnd.exporters/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.aQute.bnd.exporters.pom
@@ -197,6 +204,8 @@ install -pm 0644 biz.aQute.bndlib/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/bi
 %add_maven_depmap %{name}/biz.aQute.bndlib.pom %{name}/biz.aQute.bndlib.jar -f bndlib -a biz.aQute.bnd:bndlib,biz.aQute:bndlib
 install -pm 0644 biz.aQute.bnd/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.aQute.bnd.pom
 %add_maven_depmap %{name}/biz.aQute.bnd.pom %{name}/biz.aQute.bnd.jar -a biz.aQute.bnd:bnd,biz.aQute:bnd
+install -pm 0644 biz.aQute.bnd.ant/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/biz.aQute.bnd.ant.pom
+%add_maven_depmap %{name}/biz.aQute.bnd.ant.pom %{name}/biz.aQute.bnd.ant.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 mv biz.aQute.bnd.exporters/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bnd.exporters
@@ -204,6 +213,7 @@ mv biz.aQute.bnd.annotation/target/site/apidocs %{buildroot}%{_javadocdir}/%{nam
 mv aQute.libg/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/aQute.libg
 mv biz.aQute.bndlib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bndlib
 mv biz.aQute.bnd/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bnd
+mv biz.aQute.bnd.ant/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/biz.aQute.bnd.ant
 %fdupes -s %{buildroot}%{_javadocdir}
 
 install -d -m 755 %{buildroot}%{_sysconfdir}/ant.d
