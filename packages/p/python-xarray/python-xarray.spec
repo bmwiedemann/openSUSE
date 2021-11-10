@@ -21,7 +21,7 @@
 # NEP 29: Numpy 1.20 dropped support for Python 3.6, python36-numpy is removed from Tumbleweed. xarray will follow on next release
 %define         skip_python36 1
 Name:           python-xarray
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -33,9 +33,9 @@ Patch0:         local_dataset.patch
 # PATCH-FIX-UPSTREAM scipy-interpolate.patch gh#pydata/xarray#5375 mcepl@suse.com
 # Add missing import scipy.interpolate
 Patch1:         scipy-interpolate.patch
-BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module numpy >= 1.18}
 BuildRequires:  %{python_module numpy-devel >= 1.14}
-BuildRequires:  %{python_module pandas >= 0.25}
+BuildRequires:  %{python_module pandas >= 1.1}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,27 +45,30 @@ Requires:       python-pandas >= 0.25
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch
-Suggests:       python-dask-all
+Suggests:       python-dask-all >= 2.30
 # SECTION extras accel
-Recommends:     python-scipy >= 1.3
+Recommends:     python-scipy >= 1.5
 Recommends:     python-bottleneck
-Recommends:     python-numbagg
+Recommends:     python-numbagg >= 0.51
 # /SECTION
 # SECTION extras viz
-Suggests:       python-matplotlib
-Suggests:       python-seaborn
+Suggests:       python-matplotlib >= 3.3
+Suggests:       python-seaborn >= 0.11
 Suggests:       python-nc-time-axis
 #/SECTION
 # SECTION extras io
 Suggests:       python-netCDF4
 Suggests:       python-h5netcdf
-Suggests:       python-scipy
 Suggests:       python-pydap
-Suggests:       python-zarr
+Suggests:       python-zarr >= 2.5
 Suggests:       python-fsspec
-Suggests:       python-cftime
+Suggests:       python-cftime >= 1.2
 Suggests:       python-rasterio
 Suggests:       python-cfgrib
+Suggests:       python-distributed >= 2.30
+Suggests:       python-pint >= 0.16
+Suggests:       python-sparse >= 0.11
+Suggests:       python-toolz >= 0.11
 #/SECTION
 # SECTION tests
 BuildRequires:  %{python_module dask-dataframe}
