@@ -97,4 +97,25 @@
 - package LICENSE and *.md</comment>
     <requestid>690315</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af214b1b69a4e3813229acc777e0643f</srcmd5>
+    <version>0.38.2</version>
+    <time>1636577163</time>
+    <user>dimstar_suse</user>
+    <comment>- add dependency to xml library 
+
+- update to 0.38.2:
+  * Fix another regression caused by new feature to merge sibling groups
+  * Fix regression caused by new feature to merge sibling groups
+  * Fix issue with dropping xlink:href attribute when collapsing referenced gradients
+  * Fix issue with dropping ID while de-duplicating gradients
+  * Improve `--shorten-ids` so it re-maps IDs that are already used in the
+    document if they're shorter
+  * Fix whitespace handling for SVG 1.2 flowed text
+  * Improvement: Merge sibling `&lt;g&gt;` nodes with identical attributes
+  * Improve performance of XML serialization
+  * Improve performance of gradient de-duplication
+  * Some general performance improvements</comment>
+    <requestid>930172</requestid>
+  </revision>
 </revisionlist>

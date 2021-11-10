@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  8 12:34:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add dependency to xml library 
+
+-------------------------------------------------------------------
+Mon Nov  8 10:23:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.2:
+  * Fix another regression caused by new feature to merge sibling groups
+  * Fix regression caused by new feature to merge sibling groups
+  * Fix issue with dropping xlink:href attribute when collapsing referenced gradients
+  * Fix issue with dropping ID while de-duplicating gradients
+  * Improve `--shorten-ids` so it re-maps IDs that are already used in the
+    document if they're shorter
+  * Fix whitespace handling for SVG 1.2 flowed text
+  * Improvement: Merge sibling `<g>` nodes with identical attributes
+  * Improve performance of XML serialization
+  * Improve performance of gradient de-duplication
+  * Some general performance improvements
+
+-------------------------------------------------------------------
 Mon Apr  1 10:37:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Conflict with old scour to avoid conflict on /usr/bin/scour

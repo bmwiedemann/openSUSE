@@ -1,7 +1,7 @@
 #
 # spec file for package python-scour
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scour
-Version:        0.37
+Version:        0.38.2
 Release:        0
 Summary:        An SVG scrubber
 License:        Apache-2.0
@@ -27,13 +27,18 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/oberstet/scour
 Source:         https://github.com/scour-project/scour/archive/v%{version}/scour-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
+%ifpython2
+Requires:       python-xml
+%endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      %{oldpython}-scour < 0.37
 Provides:       scour = %{version}
 BuildArch:      noarch
@@ -59,7 +64,7 @@ sed -i '/^#!/ d' scour/{scour.py,yocto_css.py,svg_transform.py}
 %python_clone -a %{buildroot}%{_bindir}/scour
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python testscour.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test_scour.py
 
 %post
 %python_install_alternative scour
