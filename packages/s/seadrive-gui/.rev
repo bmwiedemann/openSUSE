@@ -60,4 +60,13 @@
 </comment>
     <requestid>917255</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3147c7c56d2fff6c84c2be5f24489399</srcmd5>
+    <version>2.0.18</version>
+    <time>1636577192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.18 (no changelog)
+</comment>
+    <requestid>930604</requestid>
+  </revision>
 </revisionlist>
