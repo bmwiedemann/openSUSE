@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  8 11:45:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.3
+  * Most notable change is a fix for the GBM backend to work with
+    the Nvidia driver series 495.
+- supersedes U_glamor-Fix-handling-of-1-bit-pixmaps.patch
+
+-------------------------------------------------------------------
 Thu Oct  7 12:22:22 UTC 2021 - Joan Torres <joan.torres@suse.com>
 
 - Specfile cleanup

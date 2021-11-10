@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        21.1.2
+Version:        21.1.3
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,7 +34,6 @@ License:        MIT
 Group:          System/X11/Servers/XF86_4
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
-Patch0:         U_glamor-Fix-handling-of-1-bit-pixmaps.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -132,7 +131,6 @@ This package contains the Xwayland Server development files.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
 
 %build
 %define _lto_cflags %{nil}
