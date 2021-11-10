@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.1.8
+Version:        2.1.12
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
@@ -36,6 +36,7 @@ Provides:       composer = %{version}
 Provides:       php-composer = %{version}
 Provides:       php5-composer = %{version}
 Provides:       php7-composer = %{version}
+Obsoletes:      php-composer < %{version}
 BuildArch:      noarch
 %if 0%{?sles_version} >= 10
 BuildRequires:  php53 >= 5.3.2
