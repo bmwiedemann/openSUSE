@@ -299,4 +299,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>866790</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ef52d6c5474ea1078ad57644a6b1d131</srcmd5>
+    <version>8.1.1</version>
+    <time>1636577171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930397</requestid>
+  </revision>
 </revisionlist>
