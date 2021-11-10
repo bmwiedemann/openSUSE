@@ -16,6 +16,8 @@
 #
 
 
+%define sover 0_6-3
+
 Name:           libcroco
 Version:        0.6.13
 Release:        0
@@ -30,6 +32,7 @@ Source99:       baselibs.conf
 Patch0:         libcroco-CVE-2017-8834.patch
 # PATCH-FIX-UPSTREAM libcroco-CVE-2020-12825.patch boo#1171685 mgorse@suse.com -- limit recursion in block and any productions.
 Patch1:         libcroco-CVE-2020-12825.patch
+
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
@@ -38,7 +41,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
 Libcroco is a stand-alone CSS2 parsing library. It provides a low-level
 event-driven SAC-like API and a CSS object model-like API.
 
-%package 0_6-3
+%package %{sover}
 Summary:        CSS2 Parser Library
 # bug437293
 Group:          System/Libraries
@@ -46,7 +49,7 @@ Group:          System/Libraries
 Obsoletes:      libcroco-64bit
 %endif
 
-%description 0_6-3
+%description %{sover}
 Libcroco is a stand-alone CSS2 parsing library. It provides a low-level
 event-driven SAC-like API and a CSS object model-like API.
 
@@ -54,6 +57,7 @@ event-driven SAC-like API and a CSS object model-like API.
 Summary:        CSS2 Parser Library Development Files
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       %{name}-%{sover} = %{version}
 
 %description devel
 Libcroco is a stand-alone CSS2 parsing library. It provides a low-level
@@ -72,18 +76,18 @@ event-driven SAC-like API and a CSS object model like API.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post 0_6-3 -p /sbin/ldconfig
-%postun 0_6-3 -p /sbin/ldconfig
+%ldconfig_scriptlets %{sover}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog HACKING NEWS README TODO
+%doc NEWS
 %{_bindir}/csslint-0.6
 
-%files 0_6-3
+%files %{sover}
 %{_libdir}/*.so.*
 
 %files devel
+%doc AUTHORS ChangeLog HACKING README TODO
 %doc %{_datadir}/gtk-doc/html/libcroco/
 %{_bindir}/*-config
 %{_includedir}/*

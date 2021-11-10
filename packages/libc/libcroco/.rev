@@ -395,4 +395,16 @@ No indication of GPL-2.0 licensed files in the package (forwarded request 175739
     <comment></comment>
     <requestid>913179</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>a245fff651e541b37e036190f55c654d</srcmd5>
+    <version>0.6.13</version>
+    <time>1636577143</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0_6-3 define sover, make future soversion bumps easy to
+  handle.
+- Add missing explicit libname-sover Requires to devel subpackage.
+- Use ldconfig_scriplets macro for post(un) handling.
+- Move doc files mainly developers care for to devel package. (forwarded request 929771 from iznogood)</comment>
+    <requestid>930078</requestid>
+  </revision>
 </revisionlist>
