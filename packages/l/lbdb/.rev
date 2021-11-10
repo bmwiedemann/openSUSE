@@ -194,4 +194,15 @@
     <comment></comment>
     <requestid>893874</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>501b53cb07d78e4cc741328f112e9629</srcmd5>
+    <version>0.49.1</version>
+    <time>1636577193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.49.1:
+  * Update to Standards-Version 4.6.0
+  * Create empty config.rpath to make autoconf 2.71 happy
+</comment>
+    <requestid>930599</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lbdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lbdb
-Version:        0.49
+Version:        0.49.1
 Release:        0
 Summary:        Address Database for mutt
 License:        GPL-2.0-or-later
