@@ -36,7 +36,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210826'
-  boo#1183454: '20211107'
+  boo#1183454: '20211109'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -83,14 +83,14 @@
   boo#1189810: '20210906'
   boo#1189853: '20210902'
   boo#1189868: '20211025'
-  boo#1189869: '20211107'
+  boo#1189869: '20211109'
   boo#1189909: '20210916'
   boo#1189913: '20210903'
   boo#1189915: '20210918'
   boo#1189927: '20210923'
   boo#1190434: '20211107'
   boo#1190529: '20210914'
-  boo#1190670: '20211107'
+  boo#1190670: '20211109'
   boo#1190762: '20210930'
   boo#1190764: '20211025'
   boo#1190823: '20211107'
@@ -125,7 +125,7 @@
   kde#433155: '20210318'
   poo#100470: '20211012'
   poo#100479: '20211006'
-  poo#100991: '20211107'
+  poo#100991: '20211109'
   poo#101109: '20211102'
   poo#101121: '20211016'
   poo#101608: '20211107'
@@ -147,7 +147,7 @@
   poo#78007: '20210106'
   poo#78536: '20210302'
   poo#78538: '20210410'
-  poo#80628: '20211107'
+  poo#80628: '20211109'
   poo#80966: '20210408'
   poo#81256: '20210118'
   poo#81382: '20210208'
@@ -225,7 +225,7 @@
   poo#95789: '20210726'
   poo#96302: '20210801'
   poo#96389: '20210801'
-  poo#96611: '20211106'
+  poo#96611: '20211109'
   poo#96641: '20210807'
   poo#96644: '20210930'
   poo#97103: '20210908'
@@ -240,7 +240,7 @@
   poo#98646: '20210921'
   poo#98739: '20210927'
   poo#99039: '20211107'
-  poo#99057: '20211107'
+  poo#99057: '20211109'
   poo#99102: '20210921'
   poo#99312: '20211107'
   poo#99435: '20210928'
@@ -256,7 +256,7 @@ splitter-whitelist =
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = openSUSE:infrastructure:MirrorCache
+devel-whitelist = Kernel:tools
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -615,10 +615,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20211109'
 published: '20211107'
 publishing: '20211107'
-testing: '20211107'
+testing: '20211109'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
