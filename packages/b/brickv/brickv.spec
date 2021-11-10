@@ -18,14 +18,13 @@
 
 
 Name:           brickv
-Version:        2.4.19
+Version:        2.4.20
 Release:        0
 Summary:        Tinkerforge Brick Viewer
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickv/archive/v%{version}.tar.gz
-Patch0:         0001-udev-rules-Fix-ATTR-assignment.patch
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,7 +44,6 @@ Small Qt GUI to control and test all Bricks and Bricklets from Tinkerforge.
 
 %prep
 %setup -q
-%patch0 -p1
 # remove unneeded shebangs
 sed -i 's|#!/usr/bin/env python3||g' src/brickv/main.py
 sed -i 's|#!/usr/bin/env python3||g' src/brickv/plugin_system/plugins/red/build_serviceproviders.py
@@ -73,6 +71,7 @@ popd
 
 %files -n %{name}
 %doc src/changelog README.rst
+%license license.txt
 %{_bindir}/%{name}
 %{python3_sitelib}/brickv*
 %{_udevrulesdir}/*.rules

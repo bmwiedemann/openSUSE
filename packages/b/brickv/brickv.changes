@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  9 19:00:57 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to new upstream version 2.4.20
+  - Hide unused custom line ending controls in hex mode in RS485 Bricklet plugin
+  - Reuse thread in Data Logger timer to avoid slow memory leak
+  - Fix Data Logger device list clearing on config loading
+  - Fix slow memory leak in Data Logger data tab
+  - Add firmware version column to Health Monitor dialog
+  - Improve udev rule compatibility on Linux
+  - Add support for RTC driver config to HAT Brick plugin
+  - Add support for simple mode to NFC Bricklet plugin
+  - Increase required PySerial version to 3.0
+  - Add support for flashing ESP32 (Ethernet) Bricks
+- remove upstream patch 0001-udev-rules-Fix-ATTR-assignment.patch
+
+-------------------------------------------------------------------
 Tue Sep  7 19:23:04 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Fix shebang
