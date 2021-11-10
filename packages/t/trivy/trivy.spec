@@ -19,7 +19,7 @@
 
 %global goipath github.com/aquasecurity/trivy
 Name:           trivy
-Version:        0.18.3
+Version:        0.20.2
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         0001-suse-mark-sle-15.3-as-maintained-add-opensuse-15.3.patch
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.16
 Requires:       ca-certificates

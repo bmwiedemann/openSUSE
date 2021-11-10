@@ -136,4 +136,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>900585</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b9764506f3f4363cac4cc0f60c283ed</srcmd5>
+    <version>0.20.2</version>
+    <time>1636577208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.2:
+  * docs: update builtin.md (#1335)
+  * chore: fix issues with Homebrew formula (#1329)
+  * chore: bump GoReleaser to v0.183.0 (#1328)
+  * docs: update iac.md for a typo (#1326)
+  * docs: typo fix (#1308)
+  * Add new networking API features to Ingress (#1262)
+  * chore(release): bump up GoReleaser to v0.182.1 (#1299)
+  * fix(yarn): support quoted version (#1298)
+  * feat(custom-forward): Forward the extended advisory data (#1247)
+  * feat(javascript) : Initialize npm driver for javascript packages (#1289)
+  * fix(cli): fix incorrect comparision of DB metadata type. (#1286)
+  * docs: add footer to readme (#1281)
+  * feat(report): add package path (#1274)
+  * feat(command): add rootfs command (#1271)
+  * fix: update fanal (#1272)
+  * feat(commands): remove deprecated options (#1270)
+  * Aggregate jar result for table (#1269)
+  * BREAKING(report): migrate to new json schema (#1265)
+  * feat: improve --skip-dirs and --skip-files (#1249)
+  * fix(gobinary): skip large files (#1259)
+  * Disable library analyzer for OS only scan type (#1191)
+  * chore: update trivy version (#1252)
+  * refactor: move from io/ioutil to io and os package (#1245)
+  * fix: brew test command (#1253)
+  * fix:added layer info in packages (#1248)
+  * fix(go/binary): improve debug messages (#1244)
+  * Update db.go (#1199)
+  * fix(deps): fix CVE-2021-32760 for github.com/containerd/containerd (#1243)
+  * feat(debian): support the versions that reached EOL (#1237)</comment>
+    <requestid>930653</requestid>
+  </revision>
 </revisionlist>
