@@ -30,7 +30,7 @@ Requires:       gpg2
 Summary:        Create driver update from rpms
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
-Version:        1.52
+Version:        1.53
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/openSUSE/mkdud

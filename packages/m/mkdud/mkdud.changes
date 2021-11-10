@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Nov 10 13:34:34 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#37
+- adapt to support zstd compressed kernel modules
+- 1.53
+
+--------------------------------------------------------------------
 Fri May 14 09:10:05 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#36
