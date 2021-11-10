@@ -32,4 +32,12 @@
     <comment>Staging:I</comment>
     <requestid>784209</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ec98f532c48f6d2cb3dc11c0656671e4</srcmd5>
+    <version>5.0.0</version>
+    <time>1636577158</time>
+    <user>dimstar_suse</user>
+    <comment>- add six dependency for testsuite</comment>
+    <requestid>930152</requestid>
+  </revision>
 </revisionlist>
