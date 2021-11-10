@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  7 19:13:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.2:
+  * CPIO: Support for PWB and v7 binary cpio formats
+  * ZIP reader: Support of deflate algorithm in symbolic link decompression 
+  * security: fix handling of symbolic link ACLs on Linux (boo#1192425)
+  * security: never follow symlinks when setting file flags on Linux (boo#1192426)
+  * security: do not follow symlinks when processing the fixup list (boo#1192427)
+  * fix extraction of hardlinks to symlinks
+  * 7zip reader and writer fixes
+  * RAR reader fixes
+  * ZIP reader: fix excessive read for padded zip
+  * CAB reader: fix double free
+  * handle short writes from archive_write_callback
+ 
+-------------------------------------------------------------------
 Wed Jan  6 16:11:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.1:

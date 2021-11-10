@@ -29,9 +29,8 @@
 %bcond_without	openssl
 %bcond_without	ext2fs
 %endif
-
 Name:           libarchive
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
