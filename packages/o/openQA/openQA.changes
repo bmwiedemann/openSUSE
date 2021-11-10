@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 09 14:44:51 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1636468466.ad625ca71:
+  * Dependency cron 2021-11-07
+  * Move verbose authentication log messages to trace level
+  * Add support for trace log level (below debug level)
+  * Skip uefi-vars download unless parent has UEFI=1
+
+-------------------------------------------------------------------
 Fri Nov 05 00:03:41 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1636004420.dae9f4e5c:
