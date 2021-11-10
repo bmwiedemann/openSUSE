@@ -747,4 +747,12 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
 - no longer builds on 32-bit arches (since 4.5.0 release)</comment>
     <requestid>908440</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>54e2108832e1918b23ecd27ade800835</srcmd5>
+    <version>4.5.2</version>
+    <time>1636577200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930627</requestid>
+  </revision>
 </revisionlist>

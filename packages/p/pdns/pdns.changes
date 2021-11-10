@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:04:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.5.2 with bug fixes:
+  * bindbackend: skip rejected zones during list and search PR#10968
+  * make the zone cache more robust for bad data and save some SOA queries for DNSSEC zones PR#10964
+  * api, check SOA location PR#10962
+  * improve dnsname exception handling for SOA records PR#10952
+  * improve SOA parse exception handling PR#10792
+  * try to reload rejected zones in bind-backend once every bind-check-interval PR#10778
+
+-------------------------------------------------------------------
 Mon Jul 26 12:52:56 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 4.5.1
