@@ -88,4 +88,12 @@
   * python-PyNaCl-hypothesis-remove-average_size.patch</comment>
     <requestid>819131</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>201ad186c8ac906fa135a4dce1622dfa</srcmd5>
+    <version>1.4.0</version>
+    <time>1636577156</time>
+    <user>dimstar_suse</user>
+    <comment>- six is needed by testsuite</comment>
+    <requestid>930142</requestid>
+  </revision>
 </revisionlist>

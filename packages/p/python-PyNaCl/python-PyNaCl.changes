@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:39:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- six is needed by testsuite 
+
+-------------------------------------------------------------------
 Sun Jul  5 14:42:24 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 1.4.0
