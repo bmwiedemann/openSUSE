@@ -26,14 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        0.5.2
+Version:        1.0.0
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1
 Group:          Development/Languages/Python
 URL:            https://github.com/snide/sphinx_rtd_theme/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_rtd_theme/sphinx_rtd_theme-%{version}.tar.gz
-Patch0:         sphinx41.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -42,7 +41,7 @@ Requires:       python-Sphinx
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils < 0.17}
+BuildRequires:  %{python_module docutils < 0.18}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readthedocs-sphinx-ext}
 %endif
@@ -55,7 +54,6 @@ if you're just trying to use it on your project outside of that site.
 
 %prep
 %setup -q -n sphinx_rtd_theme-%{version}
-%patch0 -p1
 dos2unix OFL-License.txt
 
 # We cannot build the Javascript from source at this time, due to many missing

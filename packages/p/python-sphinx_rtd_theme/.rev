@@ -108,4 +108,15 @@
     <comment></comment>
     <requestid>906027</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1ea6208541b78347bc8e7eb9bae4129</srcmd5>
+    <version>1.0.0</version>
+    <time>1636577167</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * compatibility with docutils 0.17
+  * sphinx 4.1+ support
+- drop sphinx41.patch: upstream</comment>
+    <requestid>930211</requestid>
+  </revision>
 </revisionlist>

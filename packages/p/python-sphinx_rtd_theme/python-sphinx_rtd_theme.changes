@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  8 15:47:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * compatibility with docutils 0.17
+  * sphinx 4.1+ support
+- drop sphinx41.patch: upstream 
+
+-------------------------------------------------------------------
 Tue Jul 13 06:56:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add sphinx41.patch to fix build with Sphinx 4.1.0
