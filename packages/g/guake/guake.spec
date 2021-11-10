@@ -17,15 +17,13 @@
 
 
 Name:           guake
-Version:        3.7.0
+Version:        3.8.1
 Release:        0
 Summary:        Drop-down terminal for GNOME
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
 URL:            http://guake-project.org/
 Source:         https://github.com/Guake/guake/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM guake-follow-focus-with-dual-monitors.patch gh#Guake/guake#1775,gh#Guake/guake#1761,boo#1187177 badshah400@gmail.com -- Fix issue where guake follows mouse focus when have 2 monitors
-Patch0:         guake-follow-focus-with-dual-monitors.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -82,7 +80,7 @@ rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
 %{_datadir}/applications/guake-prefs.desktop
 %{_datadir}/applications/guake.desktop
 %{_datadir}/glib-2.0/schemas/org.guake.gschema.xml
-%{_datadir}/metainfo/guake.appdata.xml
+%{_datadir}/metainfo/guake.desktop.metainfo.xml
 %{_datadir}/pixmaps/guake.png
 %{_datadir}/guake/
 
