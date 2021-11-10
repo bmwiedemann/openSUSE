@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -1134,6 +1134,7 @@ unsorted:
   - barcode-devel 
   - baresip 
   - baresip-video 
+  - barrel 
   - barrier 
   - barvinok 
   - barvinok-devel 
@@ -1878,6 +1879,8 @@ unsorted:
   - cfityk 
   - cflow 
   - cfssl: [i586] 
+  - cg3 
+  - cg3-devel 
   - cgal-demo-examples-devel 
   - cgal-devel 
   - cgal-doc 
@@ -9872,9 +9875,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -9884,6 +9887,7 @@ unsorted:
   - libcfg6-32bit: [x86_64] 
   - libcfile-devel 
   - libcfile1 
+  - libcg3-1 
   - libcglm0: [x86_64] 
   - libcgns4_1 
   - libchafa0 
@@ -10552,7 +10556,7 @@ unsorted:
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt9 
+  - libfm-qt10 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -11740,11 +11744,12 @@ unsorted:
   - liblxc-devel 
   - liblxc1 
   - liblxpanel0 
+  - liblxqt 
   - liblxqt-devel 
   - liblxqt-globalkeys-ui0 
   - liblxqt-globalkeys0 
   - liblxqt-lang 
-  - liblxqt0 
+  - liblxqt1 
   - liblz1 
   - liblz4-devel 
   - liblzo2-2-32bit: [x86_64] 
@@ -13067,8 +13072,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13091,7 +13096,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13318,7 +13323,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -16057,6 +16062,7 @@ unsorted:
   - moc 
   - mockito 
   - mockito-javadoc 
+  - mod_spatialite 
   - modello 
   - modello-javadoc 
   - modello-maven-plugin 
@@ -16313,6 +16319,8 @@ unsorted:
   - mpitests-openmpi4 
   - mpitests-openmpi4-gnu-hpc 
   - mplus-fonts 
+  - mpop 
+  - mpop-doc 
   - mpris-ctl 
   - mpv 
   - mpv-bash-completion 
@@ -18111,13 +18119,13 @@ unsorted:
   - orthos2-docs 
   - ortp 
   - ortp-devel 
-  - os-autoinst 
-  - os-autoinst-devel 
+  - os-autoinst: [x86_64] 
+  - os-autoinst-devel: [x86_64] 
   - os-autoinst-distri-opensuse-deps 
-  - os-autoinst-openvswitch 
+  - os-autoinst-openvswitch: [x86_64] 
   - os-autoinst-qemu-kvm: [x86_64] 
   - os-autoinst-qemu-x86: [x86_64] 
-  - os-autoinst-s390-deps 
+  - os-autoinst-s390-deps: [x86_64] 
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
@@ -26483,6 +26491,7 @@ unsorted:
   - python38-python-dbusmock 
   - python38-python-docs-theme 
   - python38-python-dotenv 
+  - python38-python-editor 
   - python38-python-engineio 
   - python38-python-fedora 
   - python38-python-for-android 
@@ -30893,7 +30902,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -41745,7 +41754,6 @@ unsorted:
   - vim-plugin-minibufexpl 
   - vim-plugin-multiplesearch 
   - vim-plugin-neomutt 
-  - vim-plugin-nginx 
   - vim-plugin-powerline 
   - vim-plugin-project 
   - vim-plugin-quilt 
