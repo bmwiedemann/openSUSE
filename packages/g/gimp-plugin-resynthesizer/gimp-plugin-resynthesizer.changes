@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 10 06:40:10 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3.20210530:
+  * implement imageSynth2 which takes two masks
+  * update translations
+  * update documentation
+
+-------------------------------------------------------------------
 Thu May 28 13:21:37 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add missing copyright header to the spec file
