@@ -23,11 +23,13 @@ Release:        0
 Summary:        An ISO 8601 Date/Time/Duration Parser and Formatter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://cheeseshop.python.org/pypi/isodate
+URL:            https://pypi.org/project/isodate/
 Source:         https://files.pythonhosted.org/packages/source/i/isodate/isodate-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
