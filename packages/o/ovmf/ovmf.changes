@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 10:09:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update rpmlintrc (fixes aarch64 build)
+
+-------------------------------------------------------------------
 Tue Oct 26 07:38:52 UTC 2021 - jlee@suse.com
 
 - Removed patches which are merged to mainline: 
