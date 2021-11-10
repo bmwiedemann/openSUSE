@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:56:53 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 14.18.1:
+  * deps: update llhttp to 2.1.4
+  - HTTP Request Smuggling due to spaced in headers
+    (bsc#1191601, CVE-2021-22959)
+  - HTTP Request Smuggling when parsing the body
+    (bsc#1191602, CVE-2021-22960)
+
+- changes in 14.18.0:
+  * buffer:
+    + introduce Blob
+    + add base64url encoding option
+  * child_process:
+    + allow options.cwd receive a URL
+    + add timeout to spawn and fork
+    + allow promisified exec to be cancel
+    + add 'overlapped' stdio flag
+  * dns: add "tries" option to Resolve options
+  * fs:
+    + allow empty string for temp directory prefix
+    + allow no-params fsPromises fileHandle read
+    + add support for async iterators to fsPromises.writeFile
+  * http2: add support for sensitive headers
+  * process: add 'worker' event
+  * tls: allow reading data into a static buffer
+  * worker: add setEnvironmentData/getEnvironmentData
+
+- changes in 14.17.6:
+  * deps: upgrade npm to 6.14.15 which fixes a number of
+    security issues
+    (bsc#1190057, CVE-2021-37701, bsc#1190056, CVE-2021-37712,
+     bsc#1190055, CVE-2021-37713, bsc#1190054, CVE-2021-39134,
+     bsc#1190053, CVE-2021-39135)
+
+- test-skip-y2038-on-32bit-time_t.patch: fix test failure when
+  64-bit time_t is used on 32-bit arches
+- refreshed patches: versioned.patch, flaky_test_rerun.patch
+
+-------------------------------------------------------------------
 Thu Aug 12 13:50:24 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 14.17.5:

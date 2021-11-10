@@ -70,4 +70,41 @@
 - z15-test-skip.patch: skip problematic test on s390x</comment>
     <requestid>911862</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c4128b2425187554026947e246290222</srcmd5>
+    <version>14.18.1</version>
+    <time>1636577213</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.18.1:
+  * deps: update llhttp to 2.1.4
+  - HTTP Request Smuggling due to spaced in headers
+    (bsc#1191601, CVE-2021-22959)
+  - HTTP Request Smuggling when parsing the body
+    (bsc#1191602, CVE-2021-22960)
+- changes in 14.18.0:
+  * buffer:
+    + introduce Blob
+    + add base64url encoding option
+  * child_process:
+    + allow options.cwd receive a URL
+    + add timeout to spawn and fork
+    + allow promisified exec to be cancel
+    + add 'overlapped' stdio flag
+  * dns: add &quot;tries&quot; option to Resolve options
+  * fs:
+    + allow empty string for temp directory prefix
+    + allow no-params fsPromises fileHandle read
+    + add support for async iterators to fsPromises.writeFile
+  * http2: add support for sensitive headers
+  * process: add 'worker' event
+  * tls: allow reading data into a static buffer
+  * worker: add setEnvironmentData/getEnvironmentData
+- changes in 14.17.6:
+  * deps: upgrade npm to 6.14.15 which fixes a number of
+    security issues
+    (bsc#1190057, CVE-2021-37701, bsc#1190056, CVE-2021-37712,
+     bsc#1190055, CVE-2021-37713, bsc#1190054, CVE-2021-39134,
+     bsc#1190053, CVE-2021-39135)</comment>
+    <requestid>930657</requestid>
+  </revision>
 </revisionlist>

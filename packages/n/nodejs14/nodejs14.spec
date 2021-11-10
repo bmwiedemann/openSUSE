@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs14
-Version:        14.17.5
+Version:        14.18.1
 Release:        0
 
 # Double DWZ memory limits
@@ -45,6 +45,12 @@ Release:        0
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
+%endif
+
+%if %node_version_number >= 16
+%bcond_without corepack
+%else
+%bcond_with corepath
 %endif
 
 %if %node_version_number >= 12
@@ -149,9 +155,11 @@ Patch106:       skip_no_console.patch
 
 Patch120:       flaky_test_rerun.patch
 
+Patch130:       z15-test-skip.patch
+Patch132:       test-skip-y2038-on-32bit-time_t.patch
+
 # Use versioned binaries and paths
 Patch200:       versioned.patch
-Patch201:       z15-test-skip.patch
 
 BuildRequires:  pkg-config
 %if 0%{?suse_version}
@@ -209,7 +217,11 @@ BuildRequires:  zlib-devel
 
 # Python dependencies
 %if %node_version_number >= 12
-BuildRequires:  python3
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  python36
+%else
+BuildRequires:  python3 > 3.6.0
+%endif
 
 %if 0%{?suse_version}
 BuildRequires:  netcfg
@@ -241,7 +253,7 @@ BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
 
 %else
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 1.1.1k
+Provides:       bundled(openssl) = 1.1.1l
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -312,19 +324,15 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(brotli) = 1.0.9
-Provides:       bundled(libuv) = 1.41.0
+Provides:       bundled(libuv) = 1.42.0
 Provides:       bundled(uvwasi) = 0.0.11
 Provides:       bundled(v8) = 8.4.371.23
 
-Provides:       bundled(llhttp) = 2.1.3
+Provides:       bundled(llhttp) = 2.1.4
 
-Provides:       bundled(node-acorn) = 8.0.4
-Provides:       bundled(node-acorn-class-fields) = 0.3.1
-Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
-Provides:       bundled(node-acorn-private-methods) = 0.3.0
-Provides:       bundled(node-acorn-static-class-features) = 0.2.0
-Provides:       bundled(node-acorn-walk) = 8.0.0
-Provides:       bundled(node-cjs-module-lexer) = 1.2.1
+Provides:       bundled(node-acorn) = 8.4.1
+Provides:       bundled(node-acorn-walk) = 8.1.0
+Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -354,7 +362,7 @@ Requires:       nodejs14 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.14
+Provides:       npm(npm) = 6.14.15
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -626,7 +634,7 @@ Provides:       bundled(node-path-exists) = 3.0.0
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-path-is-inside) = 1.0.2
 Provides:       bundled(node-path-key) = 2.0.1
-Provides:       bundled(node-path-parse) = 1.0.6
+Provides:       bundled(node-path-parse) = 1.0.7
 Provides:       bundled(node-performance-now) = 2.1.0
 Provides:       bundled(node-pify) = 3.0.0
 Provides:       bundled(node-prepend-http) = 1.0.4
@@ -710,7 +718,7 @@ Provides:       bundled(node-strip-ansi) = 5.2.0
 Provides:       bundled(node-strip-eof) = 1.0.0
 Provides:       bundled(node-strip-json-comments) = 2.0.1
 Provides:       bundled(node-supports-color) = 5.4.0
-Provides:       bundled(node-tar) = 4.4.15
+Provides:       bundled(node-tar) = 4.4.19
 Provides:       bundled(node-term-size) = 1.2.0
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-through) = 2.3.8
@@ -752,12 +760,22 @@ Provides:       bundled(node-xtend) = 4.0.1
 Provides:       bundled(node-y18n) = 4.0.1
 Provides:       bundled(node-yallist) = 2.1.2
 Provides:       bundled(node-yallist) = 3.0.3
+Provides:       bundled(node-yallist) = 3.1.1
 Provides:       bundled(node-yargs) = 14.2.3
 Provides:       bundled(node-yargs-parser) = 15.0.1
 
 %description -n npm14
 A package manager for Node.js that allows developers to install and
 publish packages to a package registry.
+
+%package -n corepack14
+Summary:        Helper bridge between NodeJS projects and their dependencies
+Group:          Development/Languages/NodeJS
+Requires:       nodejs-common >= 5.0
+
+%description -n corepack14
+Zero-runtime-dependency package acting as bridge between Node projects
+and their package managers.
 
 %package docs
 Summary:        Node.js API documentation
@@ -788,13 +806,9 @@ tar Jxf %{SOURCE90} -C deps/npm
 tar Jxf %{SOURCE11}
 %endif
 
-%if %{node_version_number} >= 16 && 0%{?suse_version} > 0 && 0%{?suse_version} < 1500
-tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
-%endif
-
 %patch1 -p1
 %patch3 -p1
-%patch4 -p1
+# %patch4 -p1
 %patch5 -p1
 %patch7 -p1
 %if 0%{with valgrind_tests}
@@ -809,8 +823,9 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %patch104 -p1
 %patch106 -p1
 %patch120 -p1
+%patch130 -p1
+%patch132 -p1
 %patch200 -p1
-%patch201 -p1
 
 # remove backup files, if any
 find -name \*~ -print0 -delete
@@ -851,10 +866,11 @@ find deps/cares -name *.[ch] -delete
 find deps/zlib -name *.[ch] -delete
 
 cat > spec.build.config <<EOF
+export PREFIX=/usr
 export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags} -fno-strict-aliasing"
 # -Wno-class-memaccess is not available in gcc < 8 (= system compiler on Leap until at least 15.3 is gcc7)
 export CXXFLAGS="%{?build_cxxflags:%build_cxxflags}%{?!build_cxxflags:%optflags} -Wno-error=return-type -fno-strict-aliasing"
-%if 0%{?sle_version} > 150300
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
 %endif
 export LDFLAGS="%{?build_ldflags}"
@@ -1086,6 +1102,13 @@ make test-ci
 %ghost %{_mandir}/man1/npx.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/npx-default
 %ghost %{_sysconfdir}/alternatives/npx.1%{ext_man}
+%endif
+
+%if %{node_version_number} >= 16
+%files -n corepack%{node_version_number}
+%defattr(-, root, root)
+%{_bindir}/corepack%{node_version_number}
+%{_libdir}/node_modules/corepack%{node_version_number}
 %endif
 
 %files devel

@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v14.17.4/Makefile
+Index: node-v14.18.1/Makefile
 ===================================================================
---- node-v14.17.4.orig/Makefile
-+++ node-v14.17.4/Makefile
+--- node-v14.18.1.orig/Makefile
++++ node-v14.18.1/Makefile
 @@ -51,7 +51,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v14.17.4/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v14.17.4/tools/install.py
+Index: node-v14.18.1/tools/install.py
 ===================================================================
---- node-v14.17.4.orig/tools/install.py
-+++ node-v14.17.4/tools/install.py
+--- node-v14.18.1.orig/tools/install.py
++++ node-v14.18.1/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -137,10 +137,10 @@ Index: node-v14.17.4/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v14.17.4/doc/node.1
+Index: node-v14.18.1/doc/node.1
 ===================================================================
---- node-v14.17.4.orig/doc/node.1
-+++ node-v14.17.4/doc/node.1
+--- node-v14.18.1.orig/doc/node.1
++++ node-v14.18.1/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-v14.17.4/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v14.17.4/src/node.stp
+Index: node-v14.18.1/src/node.stp
 ===================================================================
---- node-v14.17.4.orig/src/node.stp
-+++ node-v14.17.4/src/node.stp
+--- node-v14.18.1.orig/src/node.stp
++++ node-v14.18.1/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-v14.17.4/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v14.17.4/deps/npm/man/man1/npm.1
+Index: node-v14.18.1/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v14.17.4.orig/deps/npm/man/man1/npm.1
-+++ node-v14.17.4/deps/npm/man/man1/npm.1
+--- node-v14.18.1.orig/deps/npm/man/man1/npm.1
++++ node-v14.18.1/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
- .TH "NPM" "1" "July 2021" "" ""
+ .TH "NPM" "1" "August 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm14\fR \- javascript package manager
@@ -356,10 +356,10 @@ Index: node-v14.17.4/deps/npm/man/man1/npm.1
 +npm14 help npmrc
  
  .RE
-Index: node-v14.17.4/src/node_main.cc
+Index: node-v14.18.1/src/node_main.cc
 ===================================================================
---- node-v14.17.4.orig/src/node_main.cc
-+++ node-v14.17.4/src/node_main.cc
+--- node-v14.18.1.orig/src/node_main.cc
++++ node-v14.18.1/src/node_main.cc
 @@ -136,6 +136,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -368,10 +368,10 @@ Index: node-v14.17.4/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v14.17.4/deps/npm/man/man1/npx.1
+Index: node-v14.18.1/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v14.17.4.orig/deps/npm/man/man1/npx.1
-+++ node-v14.17.4/deps/npm/man/man1/npx.1
+--- node-v14.18.1.orig/deps/npm/man/man1/npx.1
++++ node-v14.18.1/deps/npm/man/man1/npx.1
 @@ -1,32 +1,32 @@
  .TH "NPX" "1" "July 2020" "npx@10.2.3" "User Commands"
  .SH "NAME"
@@ -456,10 +456,10 @@ Index: node-v14.17.4/deps/npm/man/man1/npx.1
  
  .RE
  
-Index: node-v14.17.4/tools/test.py
+Index: node-v14.18.1/tools/test.py
 ===================================================================
---- node-v14.17.4.orig/tools/test.py
-+++ node-v14.17.4/tools/test.py
+--- node-v14.18.1.orig/tools/test.py
++++ node-v14.18.1/tools/test.py
 @@ -936,7 +936,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -469,10 +469,10 @@ Index: node-v14.17.4/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v14.17.4/node.gyp
+Index: node-v14.18.1/node.gyp
 ===================================================================
---- node-v14.17.4.orig/node.gyp
-+++ node-v14.17.4/node.gyp
+--- node-v14.18.1.orig/node.gyp
++++ node-v14.18.1/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -483,4 +483,4 @@ Index: node-v14.17.4/node.gyp
 +    'node_lib_target_name%': 'libnode14',
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
-     'library_files': [
+     # We list the deps/ files out instead of globbing them in js2c.py since we
