@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:45:06 UTC 2021 - pgajdos@suse.com
+
+- %check: really test the package [bsc#1191736]
+
+-------------------------------------------------------------------
 Wed Aug 11 15:25:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic, as it has no effect with --disable-static.

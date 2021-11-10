@@ -120,7 +120,8 @@ nm -C -D %{buildroot}%{_libdir}/libcrack.so.2 | grep ' T '
 %endif
 
 %check
-%make_build check
+sed -i 's:\(util/cracklib-check\):\1 %{buildroot}/usr/lib/cracklib_dict:' Makefile
+%make_build test
 
 %post -n libcrack2 -p /sbin/ldconfig
 %postun -n libcrack2 -p /sbin/ldconfig
