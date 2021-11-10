@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:27:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix kwin_wayland on GLES:
+  * 0001-platforms-drm-only-use-glDrawBuffer-with-desktop-GL.patch
+
+-------------------------------------------------------------------
 Tue Oct 26 14:55:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.2

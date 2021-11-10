@@ -39,6 +39,8 @@ Source:         kwin-%{version}.tar.xz
 Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-platforms-drm-only-use-glDrawBuffer-with-desktop-GL.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 # PATCH-FIX-OPENSUSE
