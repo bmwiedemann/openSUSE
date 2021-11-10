@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  4 13:27:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.6.0
+  * Fix: Ignore Settings for W292 Do Not Work
+  * Fix: Multiple #autopep8: off/on directives in one file do not work
+  * Fix: --hang-closing option does not work for non-indented lines
+  * Requires pycodestyle >= 2.8
+
+-------------------------------------------------------------------
 Mon May 31 06:08:11 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

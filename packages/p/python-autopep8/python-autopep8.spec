@@ -18,18 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autopep8
-Version:        1.5.7
+Version:        1.6.0
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
-BuildRequires:  %{python_module pycodestyle >= 2.7}
+BuildRequires:  %{python_module pycodestyle >= 2.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  python-rpm-macros
-Requires:       python-pycodestyle >= 2.7
+Requires:       python-pycodestyle >= 2.8
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
