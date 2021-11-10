@@ -107,4 +107,15 @@
 - Update Requires from setup.py (forwarded request 926036 from glaubitz)</comment>
     <requestid>926051</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>93a45532bdc057acc22255b39ca4f0ab</srcmd5>
+    <version>1.7.1</version>
+    <time>1636577180</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.7.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 930533 from glaubitz)</comment>
+    <requestid>930542</requestid>
+  </revision>
 </revisionlist>
