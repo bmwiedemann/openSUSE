@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  9 19:41:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.60
+  * Fix race-condition for `CiscoConfParse` kwarg in IOSConfigList,
+    NXOSConfigList, and ASAConfigList.
+  * Add explicit configuration file encoding with default encoding
+    from python's locale module.
+  * Add tests to catch breakage similar to Github Issue #209.
+  * Remove colorama dependency.
+
+-------------------------------------------------------------------
 Tue Nov  2 16:54:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.51
