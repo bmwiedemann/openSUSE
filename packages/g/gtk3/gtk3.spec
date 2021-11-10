@@ -1,5 +1,5 @@
 #
-# spec file for package gtk3-doc
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
@@ -56,7 +56,6 @@ BuildRequires:  hicolor-icon-theme
 # libtool is needed since we are using a git checkout
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
 BuildRequires:  pkgconfig(atk-bridge-2.0)
@@ -380,16 +379,6 @@ This package contains the API documentation for GTK+ 3.x.
 
 %prep
 %setup -q -n %{_name}-%{version}
-translation-update-upstream
-translation-update-upstream po-properties gtk30-properties
-# remove incomplete translations caused by translation-update-upstream (global LINGUAS file, two domains)
-for LNG in po/*.po ; do
-    LNG=`basename ${LNG%%.po}`
-    if ! test -f po-properties/$LNG.po ; then
-        echo "Removing incomplete $LNG from LINGUAS."
-        sed -i "/^$LNG\$/d" po/LINGUAS
-    fi
-done
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE1} .
 %patch0 -p1

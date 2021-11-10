@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:55:10 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Mon Aug  2 01:03:32 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop patch fixed upstream on SLE and Leap 15.4:

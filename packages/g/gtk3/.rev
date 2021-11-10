@@ -1502,4 +1502,13 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909643 from yfjiang)</comment>
     <requestid>909731</requestid>
   </revision>
+  <revision rev="170" vrev="3">
+    <srcmd5>241d827f046e9d4fabc64c4cc10335ba</srcmd5>
+    <version>3.24.30</version>
+    <time>1636577166</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).</comment>
+    <requestid>930193</requestid>
+  </revision>
 </revisionlist>
