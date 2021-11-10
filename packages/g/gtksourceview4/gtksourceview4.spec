@@ -51,6 +51,7 @@ features typical of a source editor.
 Summary:        GTK+ Source Editing Widget
 Group:          System/Libraries
 Provides:       %{name} = %{version}
+Provides:       lib%{name} = %{version}
 
 %description -n libgtksourceview-4-0
 GtkSourceView is a text widget that extends GtkTextView, the standard
@@ -78,7 +79,7 @@ Summary:        GTK+ Source Editing Widget -- Catalog for Glade
 Group:          Development/Tools/GUI Builders
 Requires:       glade
 Requires:       libgtksourceview-4-0 = %{version}
-Supplements:    packageand(glade:%{name}-devel)
+Supplements:    (glade and %{name}-devel)
 Obsoletes:      glade-catalog-gtksourceview <= %{version}
 Provides:       glade-catalog-gtksourceview = %{version}
 
@@ -95,7 +96,8 @@ GtkSourceView widget in Glade.
 %package devel
 Summary:        GTK+ Source Editing Widget
 Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
+Requires:       libgtksourceview-4-0 = %{version}
+Requires:       libgtksourceview4 = %{version}
 Requires:       typelib-1_0-GtkSource-4 = %{version}
 
 %description devel
@@ -113,9 +115,9 @@ features typical of a source editor.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %meson \
-    -Dglade_catalog=true \
-    -Dgtk_doc=true \
-    %{nil}
+	-Dglade_catalog=true \
+	-Dgtk_doc=true \
+	%{nil}
 %meson_build
 
 %install
@@ -125,8 +127,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Install language definition for *.changes files:
 install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-4/language-specs/
 
-%post -n libgtksourceview-4-0 -p /sbin/ldconfig
-%postun -n libgtksourceview-4-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtksourceview-4-0
 
 %files -n libgtksourceview-4-0
 %license COPYING

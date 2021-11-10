@@ -186,4 +186,28 @@ Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943),
     <comment>Scripted push from GNOME:Next (forwarded request 920960 from dimstar)</comment>
     <requestid>921639</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bc727d25c9c686ecd620222608025d01</srcmd5>
+    <version>4.8.2</version>
+    <time>1636577144</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libgtksourceview-4-0 instead of gtksourceview4 in the
+  devel package: defacto the same package, as the library provides
+  the base name, but more explicit and clearer.
+- Add libgtksourceview4 Provides to libgtksourceview-4-0 and add a
+  explicit Requires in devel subpackage, silence rpmlint.
+- Use ldconfig_scriptlets for post(un) handling.
+- Update Supplements to current standard.
+
+
+We need to take a look at this:
+
+[  215s] glade-catalog-gtksourceview4.x86_64: W: self-obsoletion glade-catalog-gtksourceview &lt;= 4.8.2 obsoletes glade-catalog-gtksourceview = 4.8.2
+[  215s] The package obsoletes itself. This is known to cause errors in various tools
+[  215s] and should thus be avoided, usually by using appropriately versioned Obsoletes
+[  215s] and/or Provides and avoiding unversioned ones.
+[  215s] 
+[  215s]  6 packages and 0 specfiles checked; 0 errors, 1 warnings, 0 badness; has taken 1.3 s (forwarded request 929780 from iznogood)</comment>
+    <requestid>930079</requestid>
+  </revision>
 </revisionlist>
