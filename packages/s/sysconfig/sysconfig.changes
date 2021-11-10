@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  8 17:09:26 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.85.8
+- netconfig: revert NM default policy change change (boo#1185882)
+  With the change to the default policy, netconfig with NetworkManager
+  as network.service accepted settings from all services/programs
+  directly instead only from NetworkManager, where plugins/services
+  have to deliver their settings to apply them.
+
+-------------------------------------------------------------------
 Tue Jun  8 16:42:18 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link as Position Independent Executable (bsc#1184124).

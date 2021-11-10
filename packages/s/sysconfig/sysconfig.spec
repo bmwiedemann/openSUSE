@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(systemd)
 %define         udevdir	/lib/udev
 %endif
 Name:           sysconfig
-Version:        0.85.7
+Version:        0.85.8
 Release:        0
 Summary:        The sysconfig scheme for traditional network scripts
 License:        GPL-2.0-or-later

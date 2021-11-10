@@ -1737,4 +1737,17 @@ also obs request: #660553
     <comment></comment>
     <requestid>901443</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>fdd3a61a93ef33c9519bfed752aee714</srcmd5>
+    <version>0.85.8</version>
+    <time>1636577169</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.85.8
+- netconfig: revert NM default policy change change (boo#1185882)
+  With the change to the default policy, netconfig with NetworkManager
+  as network.service accepted settings from all services/programs
+  directly instead only from NetworkManager, where plugins/services
+  have to deliver their settings to apply them.</comment>
+    <requestid>930219</requestid>
+  </revision>
 </revisionlist>
