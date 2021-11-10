@@ -1,7 +1,7 @@
 #
 # spec file for package hardinfo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,11 @@ Release:        0
 Summary:        Displays system information
 License:        GPL-2.0-only
 Group:          System/Benchmark
-Url:            http://hardinfo.org/
+URL:            http://hardinfo.org/
 Source:         http://downloads.sf.net/%{name}.berlios/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM hardinfo-0.5.1-reproducible.patch bwiedemann@suse.com -- make build reproducible
 Patch0:         hardinfo-0.5.1-reproducible.patch
+Patch1:         hardinfo-dyamic-libsoup.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(mount)
 Recommends:     apcupsd
 Recommends:     sensors
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 HardInfo is a small application that displays information about your
@@ -46,8 +47,7 @@ Currently it knows about PCI, ISA PnP, USB, IDE, SCSI, Serial and
 parallel port devices.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 cat > %{name}.desktop << EOF
 [Desktop Entry]
@@ -70,7 +70,7 @@ export SOURCE_DATE_EPOCH="$(date -d "$SOURCE_DATE" "+%%s")"
 
 %endif
 %configure --prefix=%{_prefix}
-make ARCHOPTS="%{optflags} -fgnu89-inline" %{?_smp_mflags}
+%make_build ARCHOPTS="%{optflags} -fgnu89-inline"
 
 %install
 %make_install
@@ -89,7 +89,7 @@ install -Dpm 0644 pixmaps/logo.png %{buildroot}%{_datadir}/icons/hicolor/48x48/a
 %endif
 
 %files
-%doc LICENSE
+%license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
 %{_datadir}/%{name}/
