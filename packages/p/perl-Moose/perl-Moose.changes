@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  8 03:07:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2201
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2201   2021-11-07
+
+    [OTHER]
+
+    - remove remaining traces of Sub::Name
+
+-------------------------------------------------------------------
 Mon Nov  1 03:09:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2200
