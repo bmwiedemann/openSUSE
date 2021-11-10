@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 20:53:51 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.21
+  * Fixed compatibility with PHP 8.1 by adding return types to
+    APCUIterator.
+  * APCUIterator::current() and ::key() can no longer be called on an
+    invalid iterator.
+
+-------------------------------------------------------------------
 Thu Mar  4 10:10:35 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.20

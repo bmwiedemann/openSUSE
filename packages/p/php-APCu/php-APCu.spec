@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.1.20
+Version:        5.1.21
 Release:        0
 Summary:        APCu - APC User Cache
 License:        PHP-3.01
