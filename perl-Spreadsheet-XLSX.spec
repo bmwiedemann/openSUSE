@@ -18,7 +18,7 @@
 
 %define cpan_name Spreadsheet-XLSX
 Name:           perl-Spreadsheet-XLSX
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        Perl extension for reading MS Excel 2007 files;
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -31,9 +31,9 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Zip) >= 1.18
 BuildRequires:  perl(Spreadsheet::ParseExcel)
 BuildRequires:  perl(Test::NoWarnings)
+BuildRequires:  perl(Test::Warnings)
 Requires:       perl(Archive::Zip) >= 1.18
 Requires:       perl(Spreadsheet::ParseExcel)
-Requires:       perl(Test::NoWarnings)
 %{perl_requires}
 
 %description

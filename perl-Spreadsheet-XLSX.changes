@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  4 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.17
+
+  	- fix RT #139898: missing file from MANIFEST
+  	- fix RT #127829, #80565, #79016: [Warning] Argument "#N/A" isn't numeric in int
+
+-------------------------------------------------------------------
 Tue Oct 26 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.16
