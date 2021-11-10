@@ -140,4 +140,12 @@
   * Remove obsolete Python 2.3 compat code.</comment>
     <requestid>850936</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fee12da70bfd1c0ee473d3f38a1d6413</srcmd5>
+    <version>2.5.1</version>
+    <time>1636577153</time>
+    <user>dimstar_suse</user>
+    <comment>- add six dependency declaration</comment>
+    <requestid>930132</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Routes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Version:        2.5.1
 Release:        0
 Summary:        Routing Recognition and Generation Tools
 License:        BSD-3-Clause
-URL:            http://routes.groovie.org/
+URL:            https://routes.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/R/Routes/Routes-%{version}.tar.gz
 # for testing
 BuildRequires:  %{python_module WebOb}
@@ -31,8 +31,10 @@ BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 Requires:       python-repoze.lru >= 0.3
+Requires:       python-six
 Provides:       python-routes = %{version}
 Obsoletes:      python-routes < %{version}
 BuildArch:      noarch
