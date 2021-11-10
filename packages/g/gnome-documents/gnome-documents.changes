@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 10 07:11:16 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Update 35.patch to be precisely the same as upstream, this is
+  necessary to make obs bot happy.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:38:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Mar 19 14:47:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to git master / 3.34.0+26:

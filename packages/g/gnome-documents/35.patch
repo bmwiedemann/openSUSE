@@ -1,4 +1,4 @@
-From bdac6006aebf40cc3d7105357ba3c813415cbe97 Mon Sep 17 00:00:00 2001
+From 38fc56ab890c9272498ad3c5043147e537dc6575 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 16:21:26 +0100
 Subject: [PATCH 1/8] search: Don't inspect Tracker settings
@@ -80,7 +80,7 @@ index df5907c5..738ca336 100644
 GitLab
 
 
-From b1a5f853bb625621e5ddfc49c68841f2f19778ea Mon Sep 17 00:00:00 2001
+From 613c214f98451a756b819c0da0b239c69253fecc Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 16:26:05 +0100
 Subject: [PATCH 2/8] application: Drop unused import
@@ -107,7 +107,7 @@ index eadcd43f..86bb1eff 100644
 GitLab
 
 
-From 68cd88e403322495e9f0de3ac9960a92e7c255f4 Mon Sep 17 00:00:00 2001
+From f4a6d68538b2efead616d2e2d26e5c037878d1ad Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 16:41:57 +0100
 Subject: [PATCH 3/8] notification: Delete indexing notification
@@ -307,7 +307,7 @@ index 4629b832..7d77f40b 100644
 GitLab
 
 
-From 6b49c764004369f579549438d1a58bd0e5e6767f Mon Sep 17 00:00:00 2001
+From 442616018c83c620619e7ea1b462b08cb664f930 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 16:54:46 +0100
 Subject: [PATCH 4/8] application: Use
@@ -423,7 +423,7 @@ index 86bb1eff..d1a1d454 100644
 GitLab
 
 
-From 1a7724a9b1bc3add322958c7392957b3760b7591 Mon Sep 17 00:00:00 2001
+From e4b48b1227b7cdff28abfc77dfafe6a83e286aa9 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 17:02:04 +0100
 Subject: [PATCH 5/8] changeMonitor: Rewrite to use TrackerNotifier
@@ -647,7 +647,7 @@ index 5308b042..0172cd65 100644
 GitLab
 
 
-From 3aa5fbc61583cf55454859bcbb76b3570df0bcbc Mon Sep 17 00:00:00 2001
+From 3296833675ff48f7c578ac766aeac346e7911d68 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Sun, 17 Jan 2021 17:03:14 +0100
 Subject: [PATCH 6/8] Port queries to Tracker3
@@ -996,7 +996,7 @@ index 007568c1..1ed63f2e 100644
 GitLab
 
 
-From ba601fd31c610af06b83c41fdb872e8f32398a11 Mon Sep 17 00:00:00 2001
+From f2721143344fbb0f1836a70a0efbaa7c246ae8dc Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Fri, 22 Jan 2021 18:00:55 +0100
 Subject: [PATCH 7/8] flatpak: Update reference to use Tracker3
@@ -1129,7 +1129,7 @@ index 4f5142ea..ef90754e 100644
 GitLab
 
 
-From 557e0768ef0ff079267b4bd40df02a633caefc81 Mon Sep 17 00:00:00 2001
+From 912235ec6243eb34c27517f119e88ce8eb495a55 Mon Sep 17 00:00:00 2001
 From: Carlos Garnacho <carlosg@gnome.org>
 Date: Tue, 26 Jan 2021 16:48:29 +0100
 Subject: [PATCH 8/8] flatpak: Update flatpak reference

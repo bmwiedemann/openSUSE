@@ -37,7 +37,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(evince-document-3.0) >= 3.13.3
 BuildRequires:  pkgconfig(evince-view-3.0) >= 3.13.3
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.48.0
@@ -78,7 +77,6 @@ search results from documents.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \
