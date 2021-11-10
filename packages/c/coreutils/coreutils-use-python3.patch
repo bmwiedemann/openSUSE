@@ -1,6 +1,4 @@
-Index: tests/du/move-dir-while-traversing.sh
-===================================================================
---- tests/du/move-dir-while-traversing.sh.orig
+--- tests/du/move-dir-while-traversing.sh
 +++ tests/du/move-dir-while-traversing.sh
 @@ -20,9 +20,9 @@
  print_ver_ du
@@ -15,7 +13,7 @@ Index: tests/du/move-dir-while-traversing.sh
  
  # Move a directory "up" while du is processing its sub-directories.
  # While du is processing a hierarchy .../B/C/D/... this script
-@@ -33,7 +33,7 @@ python -m pyinotify -h > /dev/null \
+@@ -33,7 +33,7 @@
  # rename syscall before du finishes processing the subtree under D/.
  
  cat <<'EOF' > inotify-watch-for-dir-access.py

@@ -33,9 +33,9 @@ Index: doc/coreutils.texi
  Delaying
  
  * sleep invocation::             Delay for a specified time
-@@ -18310,90 +18304,6 @@ timeout -s INT 5s env --ignore-signal=IN
- timeout -s INT -k 3s 5s env --ignore-signal=INT sleep 20
- @end example
+@@ -18089,90 +18083,6 @@ the exit status of @var{command} otherwi
+ @end display
+ 
  
 -@node Process control
 -@chapter Process control

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package coreutils%{?name_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,54 +16,27 @@
 #
 
 
+%bcond_with ringdisabled
+
 # there are more fancy ways to define a package name using magic
 # macros but OBS and the bots that rely on parser information from
 # OBS can't deal with all of them
 %define flavor @BUILD_FLAVOR@%{nil}
-%bcond_with ringdisabled
 %if "%{flavor}" != ""
 %define name_suffix -%{flavor}
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
 %endif
+
 Name:           coreutils%{?name_suffix}
-Version:        9.0
-Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
 Group:          System/Base
 URL:            https://www.gnu.org/software/coreutils/
-Source0:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz
-Source1:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=coreutils&download=1&file=./coreutils.keyring
-Source3:        baselibs.conf
-Patch1:         coreutils-remove_hostname_documentation.patch
-Patch3:         coreutils-remove_kill_documentation.patch
-Patch4:         coreutils-i18n.patch
-Patch8:         coreutils-sysinfo.patch
-Patch16:        coreutils-invalid-ids.patch
-# OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
-Patch100:       coreutils-build-timeout-as-pie.patch
-# There is no network in the build root so make the test succeed
-Patch112:       coreutils-getaddrinfo.patch
-# Assorted fixes
-Patch113:       coreutils-misc.patch
-# Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
-# a glibc issue in mkstemp.
-Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
-Patch301:       coreutils-skip-gnulib-test-tls.patch
-# tests: shorten extreme-expensive factor tests
-Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
-# Stop using Python 2.x
-Patch304:       coreutils-use-python3.patch
-Patch500:       coreutils-disable_tests.patch
-Patch501:       coreutils-test_without_valgrind.patch
-# Upstream patch - remove with version >9.0:
-# chmod: fix exit status when ignoring symlinks
-Patch800:       coreutils-chmod-fix-exit-status-ign-symlinks.patch
-# tests: skip tests/rm/ext3-perf.sh temporarily as it hangs on OBS.
-Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
+Version:        8.32
+Release:        0
+
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  libacl-devel
@@ -73,7 +46,7 @@ BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
 BuildRequires:  perl
 BuildRequires:  xz
-%if 0%{?suse_version} > 1320
+%if %{suse_version} > 1320
 BuildRequires:  gcc-PIE
 %endif
 %if "%{name}" == "coreutils-testsuite"
@@ -87,13 +60,17 @@ BuildRequires:  strace
 BuildRequires:  timezone
 # Some tests need the 'bin' user.
 BuildRequires:  user(bin)
-%ifarch %{ix86} x86_64 ppc ppc64 s390x armv7l armv7hl
+%ifarch %ix86 x86_64 ppc ppc64 s390x armv7l armv7hl
 BuildRequires:  valgrind
 %endif
 %endif
+
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 Provides:       fileutils = %{version}
 Provides:       mktemp = %{version}
+%if 0%{?usrmerged}
+Provides:       /bin/mktemp
+%endif
 Provides:       sh-utils = %{version}
 Provides:       stat = %{version}
 Provides:       textutils = %{version}
@@ -102,6 +79,73 @@ Conflicts:      coreutils
 Provides:       coreutils = %{version}-%{release}
 %endif
 %endif
+
+# this will create a cycle, broken up randomly - coreutils is just
+# too core to have other prerequisites.
+#PreReq:         permissions
+
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+#cgit-URL:	https://git.savannah.gnu.org/cgit/coreutils.git/
+#Git-Clone:	git://git.sv.gnu.org/coreutils
+# For upgrading the upstream version, increase the version number (above),
+# then remove the old tarball and signature files and let OSC download
+# those files of the new version:
+#    osc rm coreutils-*.tar.xz coreutils-*.tar.xz.sig
+#    osc service localrun download_files
+#    osc addremove
+# Then adjust the downstream patches (using quilt).
+# Finally, add a changelog entry and commit:
+#    osc vc
+#    osc ci
+
+Source0:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz.sig
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=coreutils&download=1&file=./coreutils.keyring
+Source3:        baselibs.conf
+
+Patch1:         coreutils-remove_hostname_documentation.patch
+Patch3:         coreutils-remove_kill_documentation.patch
+Patch4:         coreutils-i18n.patch
+Patch8:         coreutils-sysinfo.patch
+Patch16:        coreutils-invalid-ids.patch
+
+# OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
+Patch100:       coreutils-build-timeout-as-pie.patch
+
+# There is no network in the build root so make the test succeed
+Patch112:       coreutils-getaddrinfo.patch
+
+# Assorted fixes
+Patch113:       coreutils-misc.patch
+
+# Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
+# a glibc issue in mkstemp.
+Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
+
+Patch301:       coreutils-skip-gnulib-test-tls.patch
+
+# tests: shorten extreme-expensive factor tests
+Patch303:       coreutils-tests-shorten-extreme-factor-tests.patch
+# Stop using Python 2.x
+Patch304:       coreutils-use-python3.patch
+Patch500:       coreutils-disable_tests.patch
+Patch501:       coreutils-test_without_valgrind.patch
+
+# Upstream commits (squashed) after the release of coreutils-8.32:
+#   [PATCH 1/2] ls: restore 8.31 behavior on removed directories
+#   [PATCH 2/2] ls: improve removed-directory test
+# Remove this patch with the next coreutils release.
+Patch800:       coreutils-ls-restore-8.31-behavior-on-removed-dirs.patch
+
+Patch820:       coreutils-gnulib-disable-test-float.patch
+
+# Avoid FP error in gnulib tests 'test-perror2' and 'test-strerror_r'.
+Patch840:       gnulib-test-avoid-FP-perror-strerror.patch
+
+# Upstream patch - remove with version >8.32:
+# avoid FP error in 'tests/ls/stat-free-color.sh'.
+Patch860:       coreutils-tests-fix-FP-in-ls-stat-free-color.patch
 
 # ================================================
 %description
@@ -121,9 +165,9 @@ the GNU fileutils, sh-utils, and textutils packages.
 %package doc
 Summary:        Documentation for the GNU Core Utilities
 Group:          Documentation/Man
-Supplements:    (coreutils and patterns-base-documentation)
-Supplements:    (coreutils-single and patterns-base-documentation)
 Provides:       coreutils:%{_infodir}/coreutils.info.gz
+Supplements:    (coreutils-single and patterns-base-documentation)
+Supplements:    (coreutils and patterns-base-documentation)
 BuildArch:      noarch
 
 %description doc
@@ -140,7 +184,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch8
 %patch16
 #
-%if 0%{?suse_version} <= 1320
+%if %{suse_version} <= 1320
 %patch100
 %endif
 %patch112
@@ -148,7 +192,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch300
 
-%ifarch %{ix86} x86_64 ppc ppc64
+%ifarch %ix86 x86_64 ppc ppc64
 %patch301
 %endif
 
@@ -158,14 +202,21 @@ This package contains the documentation for the GNU Core Utilities.
 %patch501
 
 %patch800
-%patch810
+
+%ifarch ppc ppc64le
+# Disable gnulib test 'test-float' temporarily as it fails on ppc and ppc64le.
+%patch820
+%endif
+
+%patch840
+%patch860
 
 # ================================================
 %build
-%if 0%{?suse_version} >= 1200
+%if 0%{suse_version} >= 1200
 AUTOPOINT=true autoreconf -fi
 %endif
-export CFLAGS="%{optflags}"
+export CFLAGS="%optflags"
 %configure --libexecdir=%{_libdir} \
            --enable-install-program=arch \
 	   --enable-no-install-program=kill \
@@ -177,12 +228,12 @@ export CFLAGS="%{optflags}"
            DEFAULT_POSIX2_VERSION=200112 \
            alternative=199209
 
-%make_build -C po update-po
+make -C po update-po
 
 # Regenerate manpages
 touch man/*.x
 
-%make_build all
+make all %{?_smp_mflags} V=1
 
 # make sure that parse-datetime.{c,y} ends up in debuginfo (rh#1555079)
 ln -v lib/parse-datetime.{c,y} .
@@ -194,20 +245,31 @@ ln -v lib/parse-datetime.{c,y} .
   chmod a+x tests/misc/sort-mb-tests.sh
   # Avoid parallel make, because otherwise some timeout based tests like
   # rm/ext3-perf may fail due to high CPU or IO load.
-  %make_build check-very-expensive \
+  make check-very-expensive \
     && install -d -m 755 %{buildroot}%{_docdir}/%{name} \
     && xz -c tests/test-suite.log \
          > %{buildroot}%{_docdir}/%{name}/test-suite.log.xz
 %else
   # Run the shorter check otherwise.
-  %make_build check
+  make check
 %endif
 
 # ================================================
 %install
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
-make install DESTDIR=%{buildroot} pkglibexecdir=%{_libdir}/%{name}
+make install DESTDIR="%buildroot" pkglibexecdir=%{_libdir}/%{name}
 
+#UsrMerge
+%if !0%{?usrmerged}
+install -d %{buildroot}/bin
+for i in arch basename cat chgrp chmod chown cp date dd df echo \
+  false ln ls mkdir mknod mktemp mv pwd rm rmdir sleep sort stat \
+  stty sync touch true uname readlink md5sum
+do
+  ln -sf %{_bindir}/$i %{buildroot}/bin/$i
+done
+%endif
+#EndUsrMerge
 echo '.so man1/test.1' > %{buildroot}/%{_mandir}/man1/\[.1
 %if "%{name}" == "coreutils"
 %find_lang coreutils
@@ -238,17 +300,24 @@ rm -rf %{buildroot}%{_datadir}/locale
 %files
 %if "%{name}" == "coreutils" || "%{name}" == "coreutils-single"
 
+%defattr(-,root,root)
 %license COPYING
 %doc NEWS README THANKS
 %{_bindir}/*
+#UsrMerge
+%if !0%{?usrmerged}
+/bin/*
+%endif
+#EndUsrMerge
 %{_libdir}/%{name}
 
 %if "%{name}" == "coreutils"
 %files lang -f coreutils.lang
+%defattr(-,root,root)
 
 %files doc
-%{_infodir}/coreutils.info*.gz
-%{_mandir}/man1/*.1%{?ext_man}
+%doc %{_infodir}/coreutils.info*.gz
+%doc %{_mandir}/man1/*.1.gz
 %endif
 
 %else

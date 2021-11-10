@@ -1,0 +1,46 @@
+Upstream patch to avoid FP in testsuite.
+Remove with coreutils version > 8.32.
+
+Discussed at:
+  https://lists.gnu.org/r/coreutils/2021-04/msg00050.html
+Upstream patch:
+  https://git.sv.gnu.org/cgit/coreutils.git/commit/?id=b7091093bb
+
+From b7091093bb6505c33279f9bc940b2e94763a6e5d Mon Sep 17 00:00:00 2001
+From: Bernhard Voelker <mail@bernhard-voelker.de>
+Date: Wed, 21 Apr 2021 00:12:00 +0200
+Subject: [PATCH] tests: fix FP in ls/stat-free-color.sh
+
+On newer systems like Fedora 34 and openSUSE Tumbleweed, ls(1) calls
+newfstatat(STDOUT_FILENO, ...), but only when there is something to
+output.
+
+* tests/ls/stat-free-color.sh: Add -a option to the reference invocation
+of ls, thus enforcing something gets output.
+---
+ tests/ls/stat-free-color.sh |   10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+Index: tests/ls/stat-free-color.sh
+===================================================================
+--- tests/ls/stat-free-color.sh.orig
++++ tests/ls/stat-free-color.sh
+@@ -56,12 +56,14 @@ eval $(dircolors -b color-without-stat)
+ # The system may perform additional stat-like calls before main.
+ # Furthermore, underlying library functions may also implicitly
+ # add an extra stat call, e.g. opendir since glibc-2.21-360-g46f894d.
+-# To avoid counting those, first get a baseline count for running
+-# ls with one empty directory argument.  Then, compare that with the
+-# invocation under test.
++# Finally, ls(1) makes a stat call for stdout, but only in the case
++# when there is something to output.
++# To get the comparison right, first get a baseline count for running
++# 'ls -a' with one empty directory argument.  Then, compare that with
++# the invocation under test.
+ mkdir d || framework_failure_
+ 
+-strace -q -o log1 -e $stats ls --color=always d || fail=1
++strace -q -o log1 -e $stats ls -a --color=always d || fail=1
+ n_stat1=$(grep -vF '+++' log1 | wc -l) || framework_failure_
+ 
+ test $n_stat1 = 0 \
