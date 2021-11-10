@@ -1,7 +1,7 @@
 #
 # spec file for package python-junitxml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/j/junitxml/junitx
 # tests are failing
 Patch0:         junitxml-tests.patch
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module xml}
+%ifpython2
+Requires:       python-xml
+%endif
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
