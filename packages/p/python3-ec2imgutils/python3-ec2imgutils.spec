@@ -1,7 +1,7 @@
 #
 # spec file for package python3-ec2imgutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018 SUSE Linux GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
 %define upstream_name ec2imgutils
 
 Name:           python3-ec2imgutils
-Version:        9.0.3
+Version:        9.0.4
 Release:        0
 Summary:        Image management utilities for AWS EC2
-License:        GPL-3.0-or-later
+License:        GPL-3.0+
 Group:          System/Management
-URL:            https://github.com/SUSE-Enceladus/ec2imgutils
+Url:            https://github.com/SUSE-Enceladus/ec2imgutils
 Source0:        %{upstream_name}-%{version}.tar.bz2
 Requires:       python3
 Requires:       python3-boto3 >= 1.18.7
@@ -86,3 +86,5 @@ gzip %{buildroot}/%{_mandir}/man1/*
 %{_bindir}/*
 
 %changelog
+
+

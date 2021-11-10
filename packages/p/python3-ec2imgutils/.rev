@@ -145,4 +145,12 @@
     boot mode for the given instance type.</comment>
     <requestid>921179</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7af5d438b5f4fc2e0ebc5e09159c547</srcmd5>
+    <version>9.0.4</version>
+    <time>1636577227</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930678</requestid>
+  </revision>
 </revisionlist>
