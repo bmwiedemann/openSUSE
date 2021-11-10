@@ -83,6 +83,9 @@ Patch4:         tomcat-9.0-osgi-build.patch
 Patch5:         tomcat-9.0.43-java8compat.patch
 # PATCH-FIX-OPENSUSE: set ajp connector secreteRequired to false by default to avoid tomcat not starting
 Patch6:         tomcat-9.0.31-secretRequired-default.patch
+Patch7:         tomcat-9.0-CVE-2021-41079.patch
+Patch8:         tomcat-9.0-CVE-2021-33037.patch
+Patch9:         tomcat-9.0-CVE-2021-30640.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -90,8 +93,8 @@ BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-daemon
 BuildRequires:  apache-commons-dbcp >= 2.0
 BuildRequires:  apache-commons-pool2
-BuildRequires:  aqute-bnd >= 5.1.1
-BuildRequires:  aqute-bndlib >= 5.1.1
+BuildRequires:  aqute-bnd >= 5.2
+BuildRequires:  aqute-bndlib >= 5.2
 BuildRequires:  ecj >= 4.4.0
 BuildRequires:  fdupes
 BuildRequires:  findutils
@@ -257,6 +260,9 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
@@ -293,6 +299,7 @@ ant -Dbase.path="." \
     -Dwsdl4j-lib.jar="$(build-classpath wsdl4j)" \
     -Dsaaj-api.jar="$(build-classpath geronimo-saaj-1.1-api)" \
     -Dbnd.jar="$(build-classpath aqute-bnd/biz.aQute.bnd)" \
+    -Dbndant.jar="$(build-classpath aqute-bnd/biz.aQute.bnd.ant)" \
     -Dbndlib.jar="$(build-classpath aqute-bnd/biz.aQute.bndlib)" \
     -Dbndlibg.jar="$(build-classpath aqute-bnd/aQute.libg)" \
     -Dbndannotation.jar="$(build-classpath aqute-bnd/biz.aQute.bnd.annotation)" \

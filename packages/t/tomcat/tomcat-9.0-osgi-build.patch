@@ -2,10 +2,11 @@ Index: apache-tomcat-9.0.37-src/build.xml
 ===================================================================
 --- apache-tomcat-9.0.37-src.orig/build.xml
 +++ apache-tomcat-9.0.37-src/build.xml
-@@ -3307,6 +3307,12 @@ Read the Building page on the Apache Tom
+@@ -3307,6 +3307,13 @@ Read the Building page on the Apache Tom
      <!-- Add bnd tasks to project -->
      <path id="bnd.classpath">
        <fileset file="${bnd.jar}" />
++      <fileset file="${bndant.jar}" />
 +      <fileset file="${bndlib.jar}" />
 +      <fileset file="${bndlibg.jar}" />
 +      <fileset file="${bndannotation.jar}" />

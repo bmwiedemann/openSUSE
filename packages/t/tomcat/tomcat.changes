@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 10 06:51:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tomcat-9.0-osgi-build.patch
+    + account for biz.aQute.bnd.ant artifact in aqute-bnd >= 5.2.0
+
+-------------------------------------------------------------------
+Fri Oct 29 11:15:32 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-30640: Escape parameters in JNDI Realm queries (bsc#1188279)
+  * CVE-2021-33037: Process T-E header from both HTTP 1.0 and HTTP 1.1. clients (bsc#1188278)
+- Added patches:
+  * tomcat-9.0-CVE-2021-30640.patch
+  * tomcat-9.0-CVE-2021-33037.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 08:33:07 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-41079: Validate incoming TLS packet (bsc#1190558)
+- Added patches:
+  * tomcat-9.0-CVE-2021-41079.patch
+
+-------------------------------------------------------------------
 Mon Oct 18 21:42:48 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 
 - Update to Tomcat 9.0.43. See changelog at

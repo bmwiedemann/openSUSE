@@ -745,4 +745,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>9.0.43</comment>
     <requestid>926588</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>b0433b7f490b5de0321dd12f0d0ae415</srcmd5>
+    <version>9.0.43</version>
+    <time>1636577199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930612</requestid>
+  </revision>
 </revisionlist>
