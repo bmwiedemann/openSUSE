@@ -867,4 +867,19 @@
     <comment>Eliminate the -lang recommends (forwarded request 767173 from dimstar)</comment>
     <requestid>767437</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>fb4169a0605dcb399914d4050b2e6b24</srcmd5>
+    <version>3.24.11</version>
+    <time>1636577145</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libgtksourceview-3_0-1 instead of gtksourceview in the
+  devel package: defacto the same package, as the library provides
+  the base name, but more explicit and clearer.
+- Add libgtksourceview3 Provides to libgtksourceview-3_0-1 and add
+  a explicit Requires in devel subpackage, silence rpmlint.
+- Modernize spec, use autosetup, make_build and ldconfig_scriptlets
+  macros.
+- Update Supplements to current standard. (forwarded request 929781 from iznogood)</comment>
+    <requestid>930080</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        http://download.gnome.org/sources/gtksourceview/3.24/%{name}-%{version}.tar.xz
 Source1:        changes.lang
+
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  itstool
 BuildRequires:  libxml2-devel >= 2.6
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.48
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.9
@@ -49,6 +49,7 @@ features typical of a source editor.
 Summary:        GTK+ Source Editing Widget
 Group:          System/Libraries
 Provides:       gtksourceview = %{version}
+Provides:       libgtksourceview3 = %{version}
 Obsoletes:      gtksourceview < %{version}
 
 %description -n libgtksourceview-3_0-1
@@ -77,7 +78,7 @@ Summary:        Glade catalog for the GTK+ source editing widget
 Group:          Development/Tools/GUI Builders
 Requires:       glade
 Requires:       libgtksourceview-3_0-1 = %{version}
-Supplements:    packageand(glade:%{name}-devel)
+Supplements:    (glade and %{name}-devel)
 
 %description -n glade-catalog-gtksourceview
 GtkSourceView is a text widget that extends GtkTextView, the standard
@@ -92,7 +93,8 @@ GtkSourceView widget in Glade.
 %package devel
 Summary:        Development files for the GTK+ source editing widget
 Group:          Development/Languages/C and C++
-Requires:       gtksourceview = %{version}
+Requires:       libgtksourceview-3_0-1 = %{version}
+Requires:       libgtksourceview3 = %{version}
 Requires:       typelib-1_0-GtkSource-3_0 = %{version}
 
 %description devel
@@ -105,15 +107,15 @@ features typical of a source editor.
 %lang_package
 
 %prep
-%setup -q
-translation-update-upstream
+%autosetup -p1
 
 %build
 %configure \
-        --disable-static \
-        --enable-glade-catalog \
-        --disable-gtk-doc
-make %{?_smp_mflags}
+	--disable-static \
+	--enable-glade-catalog \
+	--disable-gtk-doc \
+	%{nil}
+%make_build
 
 %install
 %make_install
@@ -123,8 +125,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 install -m 644 %{S:1} %{buildroot}%{_datadir}/gtksourceview-3.0/language-specs/
 %fdupes %{buildroot}%{_datadir}
 
-%post -n libgtksourceview-3_0-1 -p /sbin/ldconfig
-%postun -n libgtksourceview-3_0-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtksourceview-3_0-1
 
 %files -n libgtksourceview-3_0-1
 %license COPYING

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  5 22:07:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Require libgtksourceview-3_0-1 instead of gtksourceview in the
+  devel package: defacto the same package, as the library provides
+  the base name, but more explicit and clearer.
+- Add libgtksourceview3 Provides to libgtksourceview-3_0-1 and add
+  a explicit Requires in devel subpackage, silence rpmlint.
+- Modernize spec, use autosetup, make_build and ldconfig_scriptlets
+  macros.
+- Update Supplements to current standard.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:56:04 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:14:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
