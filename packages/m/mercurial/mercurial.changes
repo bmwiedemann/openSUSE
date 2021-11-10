@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  6 07:59:14 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.9.3
+  + Bug fixes:
+    * Fixed committing empty files with `narrow`
+    * Allow overriding `pip`'s pep517 compliance to build C or Rust extensions
+    * Fixed regression on outgoing email when not specifying revisions
+    * Fixed a regression causing bookmarks to disappear when using Rust persistent nodemap
+
+  See https://www.mercurial-scm.org/repo/hg/log?rev=5.9.2..5.9.3 
+  for complete changelog
+
+- Mercurial 5.9.2
+  No upstream release notes, see
+  https://www.mercurial-scm.org/repo/hg/log?rev=5.9.1..5.9.2 for changelog
+
+-------------------------------------------------------------------
 Fri Sep 24 09:19:10 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
 
 - Adding bug and CVE references from SLE to prepare the submission
