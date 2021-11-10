@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 21:02:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 1.10.0
+  * Replace runtime define of a constant to facilitate opcache
+    preloading.
+  * Resolve minor issue found by the Clang static analyzer in the C
+    extension.
+
+-------------------------------------------------------------------
 Wed Apr 14 18:01:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to version 1.10.0
