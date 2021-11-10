@@ -147,6 +147,7 @@ cd nompi
 # regression are currently broken on i686, https://redmine.gromacs.org/issues/2584
 # and cannot be used with GMX_BUILD_MDRUN_ONLY=ON
 %cmake \
+  -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_VERBOSE_MAKEFILE=TRUE \
   -DCMAKE_BUILD_TYPE=Release \
@@ -172,6 +173,7 @@ cd ../..
 mkdir openmpi
 cd openmpi
 %{cmake} \
+  -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_VERBOSE_MAKEFILE=TRUE \
   -DCMAKE_BUILD_TYPE=Release \

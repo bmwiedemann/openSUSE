@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 10 14:04:47 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Tag build with "openSUSE" for easier debugging by upstream
+
+-------------------------------------------------------------------
 Thu Sep 30 21:06:36 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use openmpi macros to always build with the default openmpi version. 
