@@ -18,7 +18,7 @@
 
 %define libvers 20
 Name:           xml-security-c
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Apache XML security C++ library
 License:        Apache-2.0
@@ -27,7 +27,6 @@ URL:            https://santuario.apache.org/
 Source0:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2
 Source1:        http://www.apache.org/dist/santuario/c-library/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
-Patch0:         xml-security-c-2.0.2-xalan-1.12.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libxalan-c-devel >= 1.11
 BuildRequires:  libxerces-c-devel >= 3.2
