@@ -17,20 +17,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global skip_python36 1
 Name:           python-lazyarray
-Version:        0.3.3
+Version:        0.5.0
 Release:        0
 Summary:        Lazily-evaluated numerical array class, compatible with NumPy arrays
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://github.com/NeuralEnsemble/lazyarray/
 Source:         https://files.pythonhosted.org/packages/source/l/lazyarray/lazyarray-%{version}.tar.gz
+# gh#NeuralEnsemble/lazyarray/pulls/15
+Patch0:         use-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy >= 1.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -56,9 +57,10 @@ and memory in cases where:
   never used)
 * only parts of an array are used (for example in distributed computation,
   in which each MPI node operates on a subset of the elements of the array)
-  
+
 %prep
 %setup -q -n lazyarray-%{version}
+%autopatch -p1
 
 %build
 %python_build

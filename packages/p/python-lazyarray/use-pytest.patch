@@ -1,0 +1,534 @@
+From 69b649519a19eececd738abfa8e879a5d6e09f5d Mon Sep 17 00:00:00 2001
+From: "Ankur Sinha (Ankur Sinha Gmail)" <sanjay.ankur@gmail.com>
+Date: Sat, 22 May 2021 15:40:03 +0100
+Subject: [PATCH 1/2] fix(tests): use pytest
+
+nose is deprecated upstream (the last commit was in 2016.) and is also being deprecated in Fedora.
+https://github.com/nose-devs/nose/commits/master
+
+The nose website says:
+https://nose.readthedocs.io/en/latest/
+
+"Nose has been in maintenance mode for the past several years and will likely cease without a new person/team to take over maintainership. New projects should consider using Nose2, py.test, or just plain unittest/unittest2."
+
+Deprecation of nose in Fedora: https://fedoraproject.org/wiki/Changes/DeprecateNose
+---
+ test/test_lazyarray.py | 203 ++++++++++++++++++++---------------------
+ 1 file changed, 101 insertions(+), 102 deletions(-)
+
+Index: lazyarray-0.5.0/test/test_lazyarray.py
+===================================================================
+--- lazyarray-0.5.0.orig/test/test_lazyarray.py
++++ lazyarray-0.5.0/test/test_lazyarray.py
+@@ -7,11 +7,10 @@ Copyright Andrew P. Davison, Joël Chava
+ 
+ from lazyarray import larray, VectorizedIterable, sqrt, partial_shape
+ import numpy as np
+-from nose.tools import assert_raises, assert_equal, assert_not_equal
+-from nose import SkipTest
+ from numpy.testing import assert_array_equal, assert_array_almost_equal
+ import operator
+ from copy import deepcopy
++import pytest
+ from scipy.sparse import bsr_matrix, coo_matrix, csc_matrix, csr_matrix, dia_matrix, dok_matrix, lil_matrix
+ 
+ 
+@@ -96,11 +95,11 @@ def test_create_with_function2D():
+ 
+ 
+ def test_create_inconsistent():
+-    assert_raises(ValueError, larray, [1, 2, 3], shape=4)
++    pytest.raises(ValueError, larray, [1, 2, 3], shape=4)
+ 
+ 
+ def test_create_with_string():
+-    assert_raises(TypeError, larray, "123", shape=3)
++    pytest.raises(TypeError, larray, "123", shape=3)
+ 
+ 
+ def test_create_with_larray():
+@@ -180,19 +179,19 @@ def test_create_with_sparse_array():
+ 
+ 
+     def test_getitem_from_2D_sparse_array():
+-        assert_raises(IndexError, bsr.__getitem__, (3, 0))
+-        assert_raises(IndexError, coo.__getitem__, (3, 0))
+-        assert_raises(IndexError, csc.__getitem__, (3, 0))
+-        assert_raises(IndexError, csr.__getitem__, (3, 0))
+-        assert_raises(IndexError, dia.__getitem__, (3, 0))
+-        assert_raises(IndexError, dok.__getitem__, (3, 0))
+-        assert_raises(IndexError, lil.__getitem__, (3, 0))
++        pytest.raises(IndexError, bsr.__getitem__, (3, 0))
++        pytest.raises(IndexError, coo.__getitem__, (3, 0))
++        pytest.raises(IndexError, csc.__getitem__, (3, 0))
++        pytest.raises(IndexError, csr.__getitem__, (3, 0))
++        pytest.raises(IndexError, dia.__getitem__, (3, 0))
++        pytest.raises(IndexError, dok.__getitem__, (3, 0))
++        pytest.raises(IndexError, lil.__getitem__, (3, 0))
+ 
+ 
+ # def test_columnwise_iteration_with_flat_array():
+ # m = larray(5, shape=(4,3)) # 4 rows, 3 columns
+ #    cols = [col for col in m.by_column()]
+-#    assert_equal(cols, [5, 5, 5])
++#    assert cols == [5, 5, 5]
+ #
+ # def test_columnwise_iteration_with_structured_array():
+ #    input = np.arange(12).reshape((4,3))
+@@ -213,7 +212,7 @@ def test_create_with_sparse_array():
+ # m = larray(5, shape=(4,3)) # 4 rows, 3 columns
+ #    mask = np.array([True, False, True])
+ #    cols = [col for col in m.by_column(mask=mask)]
+-#    assert_equal(cols, [5, 5])
++#    assert cols == [5, 5]
+ #
+ # def test_columnwise_iteration_with_structured_array_and_mask():
+ #    input = np.arange(12).reshape((4,3))
+@@ -228,15 +227,15 @@ def test_size_related_properties():
+     m1 = larray(1, shape=(9, 7))
+     m2 = larray(1, shape=(13,))
+     m3 = larray(1)
+-    assert_equal(m1.nrows, 9)
+-    assert_equal(m1.ncols, 7)
+-    assert_equal(m1.size, 63)
+-    assert_equal(m2.nrows, 13)
+-    assert_equal(m2.ncols, 1)
+-    assert_equal(m2.size, 13)
+-    assert_raises(ValueError, lambda: m3.nrows)
+-    assert_raises(ValueError, lambda: m3.ncols)
+-    assert_raises(ValueError, lambda: m3.size)
++    assert m1.nrows == 9
++    assert m1.ncols == 7
++    assert m1.size == 63
++    assert m2.nrows == 13
++    assert m2.ncols == 1
++    assert m2.size == 13
++    pytest.raises(ValueError, lambda: m3.nrows)
++    pytest.raises(ValueError, lambda: m3.ncols)
++    pytest.raises(ValueError, lambda: m3.size)
+ 
+ 
+ def test_evaluate_with_flat_array():
+@@ -279,31 +278,31 @@ def test_evaluate_twice_with_vectorized_
+ 
+ def test_evaluate_structured_array_size_1_simplify():
+     m = larray([5.0], shape=(1,))
+-    assert_equal(m.evaluate(simplify=True), 5.0)
++    assert m.evaluate(simplify=True) == 5.0
+     n = larray([2.0], shape=(1,))
+-    assert_equal((m/n).evaluate(simplify=True), 2.5)
++    assert (m/n).evaluate(simplify=True) == 2.5
+ 
+ 
+ def test_iadd_with_flat_array():
+     m = larray(5, shape=(4, 3))
+     m += 2
+     assert_array_equal(m.evaluate(), 7 * np.ones((4, 3)))
+-    assert_equal(m.base_value, 5)
+-    assert_equal(m.evaluate(simplify=True), 7)
++    assert m.base_value == 5
++    assert m.evaluate(simplify=True) == 7
+ 
+ 
+ def test_add_with_flat_array():
+     m0 = larray(5, shape=(4, 3))
+     m1 = m0 + 2
+-    assert_equal(m1.evaluate(simplify=True), 7)
+-    assert_equal(m0.evaluate(simplify=True), 5)
++    assert m1.evaluate(simplify=True) == 7
++    assert m0.evaluate(simplify=True) == 5
+ 
+ 
+ def test_lt_with_flat_array():
+     m0 = larray(5, shape=(4, 3))
+     m1 = m0 < 10
+-    assert_equal(m1.evaluate(simplify=True), True)
+-    assert_equal(m0.evaluate(simplify=True), 5)
++    assert m1.evaluate(simplify=True) is True
++    assert m0.evaluate(simplify=True) == 5
+ 
+ 
+ def test_lt_with_structured_array():
+@@ -358,7 +357,7 @@ def test_multiple_operations_with_functi
+     m1 = 0.2 + m0
+     assert_array_almost_equal(m0.evaluate(), np.array([0.0, 0.01, 0.02, 0.03, 0.04]), decimal=12)
+     assert_array_almost_equal(m1.evaluate(), np.array([0.20, 0.21, 0.22, 0.23, 0.24]), decimal=12)
+-    assert_equal(m1[0], 0.2)
++    assert m1[0] == 0.2
+ 
+ 
+ def test_operations_combining_constant_and_structured_arrays():
+@@ -373,10 +372,10 @@ def test_apply_function_to_constant_arra
+     m0 = larray(5, shape=(4, 3))
+     m1 = f(m0)
+     assert isinstance(m1, larray)
+-    assert_equal(m1.evaluate(simplify=True), 13)
++    assert m1.evaluate(simplify=True) == 13
+     # the following tests the internals, not the behaviour
+     # it is just to check I understand what's going on
+-    assert_equal(m1.operations, [(operator.mul, 2), (operator.add, 3)])
++    assert m1.operations == [(operator.mul, 2), (operator.add, 3)]
+ 
+ 
+ def test_apply_function_to_structured_array():
+@@ -404,24 +403,24 @@ def test_add_two_constant_arrays():
+     m0 = larray(5, shape=(4, 3))
+     m1 = larray(7, shape=(4, 3))
+     m2 = m0 + m1
+-    assert_equal(m2.evaluate(simplify=True), 12)
++    assert m2.evaluate(simplify=True) == 12
+     # the following tests the internals, not the behaviour
+     # it is just to check I understand what's going on
+-    assert_equal(m2.base_value, m0.base_value)
+-    assert_equal(m2.operations, [(operator.add, m1)])
++    assert m2.base_value == m0.base_value
++    assert m2.operations == [(operator.add, m1)]
+ 
+ 
+ def test_add_incommensurate_arrays():
+     m0 = larray(5, shape=(4, 3))
+     m1 = larray(7, shape=(5, 3))
+-    assert_raises(ValueError, m0.__add__, m1)
++    pytest.raises(ValueError, m0.__add__, m1)
+ 
+ 
+ def test_getitem_from_2D_constant_array():
+     m = larray(3, shape=(4, 3))
+     assert m[0, 0] == m[3, 2] == m[-1, 2] == m[-4, 2] == m[2, -3] == 3
+-    assert_raises(IndexError, m.__getitem__, (4, 0))
+-    assert_raises(IndexError, m.__getitem__, (2, -4))
++    pytest.raises(IndexError, m.__getitem__, (4, 0))
++    pytest.raises(IndexError, m.__getitem__, (2, -4))
+ 
+ 
+ def test_getitem_from_1D_constant_array():
+@@ -437,7 +436,7 @@ def test_getitem__with_slice_from_consta
+ 
+ def test_getitem__with_thinslice_from_constant_array():
+     m = larray(3, shape=(4, 3))
+-    assert_equal(m[2:3, 0:1], 3)
++    assert m[2:3, 0:1] == 3
+ 
+ 
+ def test_getitem__with_mask_from_constant_array():
+@@ -448,7 +447,7 @@ def test_getitem__with_mask_from_constan
+ 
+ def test_getitem_with_numpy_integers_from_2D_constant_array():
+     if not hasattr(np, "int64"):
+-        raise SkipTest("test requires a 64-bit system")
++        pytest.skip("test requires a 64-bit system")
+     m = larray(3, shape=(4, 3))
+     assert m[np.int64(0), np.int32(0)] == 3
+ 
+@@ -469,23 +468,23 @@ def test_getslice_past_bounds_from_const
+ def test_getitem_from_structured_array():
+     m = larray(3 * np.ones((4, 3)), shape=(4, 3))
+     assert m[0, 0] == m[3, 2] == m[-1, 2] == m[-4, 2] == m[2, -3] == 3
+-    assert_raises(IndexError, m.__getitem__, (4, 0))
+-    assert_raises(IndexError, m.__getitem__, (2, -4))
++    pytest.raises(IndexError, m.__getitem__, (4, 0))
++    pytest.raises(IndexError, m.__getitem__, (2, -4))
+ 
+ 
+ def test_getitem_from_2D_functional_array():
+     m = larray(lambda i, j: 2 * i + j, shape=(6, 5))
+-    assert_equal(m[5, 4], 14)
++    assert m[5, 4] == 14
+ 
+ 
+ def test_getitem_from_1D_functional_array():
+     m = larray(lambda i: i ** 3, shape=(6,))
+-    assert_equal(m[5], 125)
++    assert m[5] == 125
+ 
+ 
+ def test_getitem_from_3D_functional_array():
+     m = larray(lambda i, j, k: i + j + k, shape=(2, 3, 4))
+-    assert_raises(NotImplementedError, m.__getitem__, (0, 1, 2))
++    pytest.raises(NotImplementedError, m.__getitem__, (0, 1, 2))
+ 
+ 
+ def test_getitem_from_vectorized_iterable():
+@@ -493,8 +492,8 @@ def test_getitem_from_vectorized_iterabl
+     m = larray(input, shape=(7,))
+     m3 = m[3]
+     assert isinstance(m3, (int, np.integer))
+-    assert_equal(m3, 0)
+-    assert_equal(m[0], 1)
++    assert m3 == 0
++    assert m[0] == 1
+ 
+ 
+ def test_getitem_with_slice_from_2D_functional_array():
+@@ -543,7 +542,7 @@ def test_getslice_from_2D_functional_arr
+ 
+ def test_getitem_from_iterator_array():
+     m = larray(iter([1, 2, 3]), shape=(3,))
+-    assert_raises(NotImplementedError, m.__getitem__, 2)
++    pytest.raises(NotImplementedError, m.__getitem__, 2)
+ 
+ 
+ def test_getitem_from_array_with_operations():
+@@ -561,23 +560,23 @@ def test_getitem_from_array_with_operati
+ def test_evaluate_with_invalid_base_value():
+     m = larray(range(5))
+     m.base_value = "foo"
+-    assert_raises(ValueError, m.evaluate)
++    pytest.raises(ValueError, m.evaluate)
+ 
+ 
+ def test_partially_evaluate_with_invalid_base_value():
+     m = larray(range(5))
+     m.base_value = "foo"
+-    assert_raises(ValueError, m._partially_evaluate, 3)
++    pytest.raises(ValueError, m._partially_evaluate, 3)
+ 
+ 
+ def test_check_bounds_with_invalid_address():
+     m = larray([[1, 3, 5], [7, 9, 11]])
+-    assert_raises(TypeError, m.check_bounds, (object(), 1))
++    pytest.raises(TypeError, m.check_bounds, (object(), 1))
+ 
+ 
+ def test_check_bounds_with_invalid_address2():
+     m = larray([[1, 3, 5], [7, 9, 11]])
+-    assert_raises(ValueError, m.check_bounds, ([], 1))
++    pytest.raises(ValueError, m.check_bounds, ([], 1))
+ 
+ 
+ def test_partially_evaluate_constant_array_with_one_element():
+@@ -587,18 +586,18 @@ def test_partially_evaluate_constant_arr
+     a1 = 3 * np.ones((1, 1))
+     m2 = larray(3, shape=(1, 1, 1))
+     a2 = 3 * np.ones((1, 1, 1))
+-    assert_equal(a[0], m[0])
+-    assert_equal(a.shape, m.shape)
+-    assert_equal(a[:].shape, m[:].shape)
+-    assert_equal(a, m.evaluate())
+-    assert_equal(a1.shape, m1.shape)
+-    assert_equal(a1[0,:].shape, m1[0,:].shape)
+-    assert_equal(a1[:].shape, m1[:].shape)
+-    assert_equal(a1, m1.evaluate())
+-    assert_equal(a2.shape, m2.shape)
+-    assert_equal(a2[:, 0,:].shape, m2[:, 0,:].shape)
+-    assert_equal(a2[:].shape, m2[:].shape)
+-    assert_equal(a2, m2.evaluate())
++    assert a[0] == m[0]
++    assert a.shape == m.shape
++    assert a[:].shape == m[:].shape
++    assert a == m.evaluate()
++    assert a1.shape == m1.shape
++    assert a1[0, :].shape == m1[0, :].shape
++    assert a1[:].shape == m1[:].shape
++    assert a1 == m1.evaluate()
++    assert a2.shape == m2.shape
++    assert a2[:, 0, :].shape == m2[:, 0, :].shape
++    assert a2[:].shape == m2[:].shape
++    assert a2 == m2.evaluate()
+ 
+ 
+ def test_partially_evaluate_constant_array_with_boolean_index():
+@@ -606,24 +605,24 @@ def test_partially_evaluate_constant_arr
+     a = 3 * np.ones((4, 5))
+     addr_bool = np.array([True, True, False, False, True])
+     addr_int = np.array([0, 1, 4])
+-    assert_equal(a[::2, addr_bool].shape, a[::2, addr_int].shape)
+-    assert_equal(a[::2, addr_int].shape, m[::2, addr_int].shape)
+-    assert_equal(a[::2, addr_bool].shape, m[::2, addr_bool].shape)
++    assert a[::2, addr_bool].shape == a[::2, addr_int].shape
++    assert a[::2, addr_int].shape == m[::2, addr_int].shape
++    assert a[::2, addr_bool].shape == m[::2, addr_bool].shape
+ 
+ 
+ def test_partially_evaluate_constant_array_with_all_boolean_indices_false():
+     m = larray(3, shape=(3,))
+     a = 3 * np.ones((3,))
+     addr_bool = np.array([False, False, False])
+-    assert_equal(a[addr_bool].shape, m[addr_bool].shape)
++    assert a[addr_bool].shape == m[addr_bool].shape
+ 
+ 
+ def test_partially_evaluate_constant_array_with_only_one_boolean_indice_true():
+     m = larray(3, shape=(3,))
+     a = 3 * np.ones((3,))
+     addr_bool = np.array([False, True, False])
+-    assert_equal(a[addr_bool].shape, m[addr_bool].shape)
+-    assert_equal(m[addr_bool][0], a[0])
++    assert a[addr_bool].shape == m[addr_bool].shape
++    assert m[addr_bool][0] == a[0]
+ 
+ 
+ def test_partially_evaluate_constant_array_with_boolean_indice_as_random_valid_ndarray():
+@@ -633,8 +632,8 @@ def test_partially_evaluate_constant_arr
+     while not addr_bool.any():
+         # random array, but not [False, False, False]
+         addr_bool = np.random.rand(3) > 0.5
+-    assert_equal(a[addr_bool].shape, m[addr_bool].shape)
+-    assert_equal(m[addr_bool][0], a[addr_bool][0])
++    assert a[addr_bool].shape == m[addr_bool].shape
++    assert m[addr_bool][0] == a[addr_bool][0]
+ 
+ 
+ def test_partially_evaluate_constant_array_size_one_with_boolean_index_true():
+@@ -644,19 +643,19 @@ def test_partially_evaluate_constant_arr
+     m1 = larray(3, shape=(1, 1))
+     a1 = 3 * np.ones((1, 1))
+     addr_bool1 = np.array([[True]], ndmin=2)
+-    assert_equal(m[addr_bool][0], a[0])
+-    assert_equal(m[addr_bool], a[addr_bool])
+-    assert_equal(m[addr_bool].shape, a[addr_bool].shape)
+-    assert_equal(m1[addr_bool1][0], a1[addr_bool1][0])
+-    assert_equal(m1[addr_bool1].shape, a1[addr_bool1].shape)
++    assert m[addr_bool][0] == a[0]
++    assert m[addr_bool] == a[addr_bool]
++    assert m[addr_bool].shape == a[addr_bool].shape
++    assert m1[addr_bool1][0] == a1[addr_bool1][0]
++    assert m1[addr_bool1].shape == a1[addr_bool1].shape
+ 
+ 
+ def test_partially_evaluate_constant_array_size_two_with_boolean_index_true():
+     m2 = larray(3, shape=(1, 2))
+     a2 = 3 * np.ones((1, 2))
+     addr_bool2 = np.ones((1, 2), dtype=bool)
+-    assert_equal(m2[addr_bool2][0], a2[addr_bool2][0])
+-    assert_equal(m2[addr_bool2].shape, a2[addr_bool2].shape)
++    assert m2[addr_bool2][0] == a2[addr_bool2][0]
++    assert m2[addr_bool2].shape == a2[addr_bool2].shape
+ 
+ 
+ def test_partially_evaluate_constant_array_size_one_with_boolean_index_false():
+@@ -667,16 +666,16 @@ def test_partially_evaluate_constant_arr
+     addr_bool = np.array([False])
+     addr_bool1 = np.array([[False]], ndmin=2)
+     addr_bool2 = np.array([False])
+-    assert_equal(m[addr_bool].shape, a[addr_bool].shape)
+-    assert_equal(m1[addr_bool1].shape, a1[addr_bool1].shape)
++    assert m[addr_bool].shape == a[addr_bool].shape
++    assert m1[addr_bool1].shape == a1[addr_bool1].shape
+ 
+ 
+ def test_partially_evaluate_constant_array_size_with_empty_boolean_index():
+     m = larray(3, shape=(1,))
+     a = np.array([3])
+     addr_bool = np.array([], dtype='bool')
+-    assert_equal(m[addr_bool].shape, a[addr_bool].shape)
+-    assert_equal(m[addr_bool].shape, (0,))
++    assert m[addr_bool].shape == a[addr_bool].shape
++    assert m[addr_bool].shape == (0,)
+ 
+ 
+ def test_partially_evaluate_functional_array_with_boolean_index():
+@@ -684,9 +683,9 @@ def test_partially_evaluate_functional_a
+     a = np.arange(20.0).reshape((4, 5))
+     addr_bool = np.array([True, True, False, False, True])
+     addr_int = np.array([0, 1, 4])
+-    assert_equal(a[::2, addr_bool].shape, a[::2, addr_int].shape)
+-    assert_equal(a[::2, addr_int].shape, m[::2, addr_int].shape)
+-    assert_equal(a[::2, addr_bool].shape, m[::2, addr_bool].shape)
++    assert a[::2, addr_bool].shape == a[::2, addr_int].shape
++    assert a[::2, addr_int].shape == m[::2, addr_int].shape
++    assert a[::2, addr_bool].shape == m[::2, addr_bool].shape
+ 
+ 
+ def test_getslice_with_vectorized_iterable():
+@@ -699,7 +698,7 @@ def test_getslice_with_vectorized_iterab
+ def test_equality_with_lazyarray():
+     m1 = larray(42.0, shape=(4, 5)) / 23.0 + 2.0
+     m2 = larray(42.0, shape=(4, 5)) / 23.0 + 2.0
+-    assert_equal(m1, m2)
++    assert m1 == m2
+ 
+ 
+ def test_equality_with_number():
+@@ -707,16 +706,16 @@ def test_equality_with_number():
+     m2 = larray([42, 42, 42])
+     m3 = larray([42, 42, 43])
+     m4 = larray(42.0, shape=(4, 5)) + 2
+-    assert_equal(m1, 42.0)
+-    assert_equal(m2, 42)
+-    assert_not_equal(m3, 42)
+-    assert_raises(Exception, m4.__eq__, 44.0)
++    assert m1 == 42.0
++    assert m2 == 42
++    assert m3 != 42
++    pytest.raises(Exception, m4.__eq__, 44.0)
+ 
+ 
+ def test_equality_with_array():
+     m1 = larray(42.0, shape=(4, 5))
+     target = 42.0 * np.ones((4, 5))
+-    assert_raises(TypeError, m1.__eq__, target)
++    pytest.raises(TypeError, m1.__eq__, target)
+ 
+ 
+ def test_deepcopy():
+@@ -724,8 +723,8 @@ def test_deepcopy():
+     m2 = deepcopy(m1)
+     m1.shape = (3, 4)
+     m3 = deepcopy(m1)
+-    assert_equal(m1.shape, m3.shape, (3, 4))
+-    assert_equal(m2.shape, (4, 5))
++    assert m1.shape == m3.shape == (3, 4)
++    assert m2.shape == (4, 5)
+     assert_array_equal(m1.evaluate(), m3.evaluate())
+ 
+ 
+@@ -739,7 +738,7 @@ def test_deepcopy_with_ufunc():
+ 
+ def test_set_shape():
+     m = larray(42) + larray(lambda i: 3 * i)
+-    assert_equal(m.shape, None)
++    assert m.shape is None
+     m.shape = (5,)
+     assert_array_equal(m.evaluate(), np.array([42, 45, 48, 51, 54]))
+ 
+@@ -798,8 +797,8 @@ def test__issue4():
+     b = larray(np.arange(12).reshape((4, 3)))
+     mask1 = (slice(None), int(True))
+     mask2 = (slice(None), np.array([int(True)]))
+-    assert_equal(b[mask1].shape, partial_shape(mask1, b.shape), a[mask1].shape)
+-    assert_equal(b[mask2].shape, partial_shape(mask2, b.shape), a[mask2].shape)
++    assert b[mask1].shape == partial_shape(mask1, b.shape) == a[mask1].shape
++    assert b[mask2].shape == partial_shape(mask2, b.shape) == a[mask2].shape
+ 
+ 
+ def test__issue3():
+@@ -837,15 +836,15 @@ def test_partial_shape():
+         (np.array([], bool), (0, 3)),
+     ]
+     for mask, expected_shape in test_cases:
+-        assert_equal(partial_shape(mask, a.shape), a[mask].shape)
+-        assert_equal(partial_shape(mask, a.shape), expected_shape)
++        assert partial_shape(mask, a.shape) == a[mask].shape
++        assert partial_shape(mask, a.shape) == expected_shape
+     b = np.arange(5)
+     test_cases = [
+         (np.arange(5), (5,))
+     ]
+     for mask, expected_shape in test_cases:
+-        assert_equal(partial_shape(mask, b.shape), b[mask].shape)
+-        assert_equal(partial_shape(mask, b.shape), expected_shape)
++        assert partial_shape(mask, b.shape) == b[mask].shape
++        assert partial_shape(mask, b.shape) == expected_shape
+ 
+ def test_is_homogeneous():
+     m0 = larray(10, shape=(5,))
+Index: lazyarray-0.5.0/test/test_ufunc.py
+===================================================================
+--- lazyarray-0.5.0.orig/test/test_ufunc.py
++++ lazyarray-0.5.0/test/test_ufunc.py
+@@ -7,7 +7,7 @@ Copyright Andrew P. Davison, 2012-2017
+ from lazyarray import larray, sqrt, cos, power, fmod
+ import numpy as np
+ from numpy.testing import assert_array_equal, assert_array_almost_equal
+-from nose.tools import assert_raises
++import pytest
+ 
+ 
+ def test_sqrt_from_array():
+@@ -59,4 +59,4 @@ def test_power_with_plain_array():
+ def test_fmod_with_array_as_2nd_arg():
+     A = larray(np.array([1, 4, 9, 16, 25]))
+     B = larray(np.array([1, 4, 9, 16, 25]))
+-    assert_raises(TypeError, fmod, A, B)
++    pytest.raises(TypeError, fmod, A, B)

@@ -23,4 +23,19 @@
     <comment>- skip python 3.6 (skip scipy)</comment>
     <requestid>871492</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7587efe98a307ce8ae7d353c7d894b2c</srcmd5>
+    <version>0.5.0</version>
+    <time>1636577191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Drop support for Python 2.7
+  * Added a more general way to specify that an array-like object should be
+    treated as a scalar by lazyarray (for arrays of arrays, etc.)
+  * Add partial support for NumPy ufuncs that require two arguments,
+    e.g. &quot;power&quot;.
+- Add patch use-pytest.patch:
+  * Drop use of nose, use pytest methods.</comment>
+    <requestid>930576</requestid>
+  </revision>
 </revisionlist>

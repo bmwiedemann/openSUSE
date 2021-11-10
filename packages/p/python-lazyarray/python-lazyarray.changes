@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 10 04:15:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0:
+  * Drop support for Python 2.7
+  * Added a more general way to specify that an array-like object should be
+    treated as a scalar by lazyarray (for arrays of arrays, etc.)
+  * Add partial support for NumPy ufuncs that require two arguments,
+    e.g. "power".
+- Add patch use-pytest.patch:
+  * Drop use of nose, use pytest methods.
+
+-------------------------------------------------------------------
 Fri Feb 12 16:06:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (skip scipy) 
