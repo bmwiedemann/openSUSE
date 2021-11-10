@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 19:13:29 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.142.0:
+  * Add support for transitive dependencies (needs). by @pjotre86 in #1983
+  * Add documentation for needs parameterization. by @pjotre86 in #1987
+  * Process feedback for pr 1983 by @pjotre86 in #1992
+  * Make .Environment values available in .gotmpl files. by @pjotre86 in #2000
+
+-------------------------------------------------------------------
 Sat Oct 16 08:16:35 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.141.0:
