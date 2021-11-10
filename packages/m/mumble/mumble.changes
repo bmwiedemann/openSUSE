@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 10 00:49:17 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Enable JACK support
+
+-------------------------------------------------------------------
 Thu Oct  7 10:25:52 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

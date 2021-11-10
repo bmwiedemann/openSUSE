@@ -22,6 +22,7 @@
 %else
 %bcond_with ice
 %endif
+%bcond_without jack
 %bcond_without pulseaudio
 %bcond_without systemd
 %bcond_without bonjour
@@ -132,6 +133,9 @@ BuildRequires:  pkgconfig
 %endif
 %if %{with pulseaudio}
 BuildRequires:  pulseaudio-devel
+%endif
+%if %{with jack}
+BuildRequires:  libjack-devel
 %endif
 %if 0%{?suse_version}
 %ifarch x86_64
