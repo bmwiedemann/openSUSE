@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  8 12:52:16 CET 2021 - tiwai@suse.de
+
+- Support "pulse" as an alias for pulseaudio (bsc#1191868,
+  bsc#1189778):
+  audio-Support-pulse-as-an-alias-for-pulseaudio.patch
+
+-------------------------------------------------------------------
 Wed Aug 11 15:31:36 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
 
 - sdl2-fix-wayland-fullscreen.patch

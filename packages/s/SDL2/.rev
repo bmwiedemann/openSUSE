@@ -272,4 +272,12 @@
     <comment>add warning about changed SDL window behavior</comment>
     <requestid>913402</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>caebc2d05b4865649bb057c7982de2a8</srcmd5>
+    <version>2.0.16</version>
+    <time>1636577162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930164</requestid>
+  </revision>
 </revisionlist>

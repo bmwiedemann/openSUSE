@@ -34,6 +34,7 @@ Patch1:         sdl2-symvers.patch
 Patch2:         SDL2-endian.patch
 Patch3:         sdl2-khronos.patch
 Patch4:         sdl2-fix-wayland-fullscreen.patch
+Patch5:         audio-Support-pulse-as-an-alias-for-pulseaudio.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
