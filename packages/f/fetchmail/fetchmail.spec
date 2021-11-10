@@ -51,6 +51,7 @@ Patch10:        fetchmail-oauth2-c-calculate-and-pass-in-correct-buffer-size-to-
 Patch11:        fetchmail-increase-max-password-length-to-handle-oauth-tokens.patch
 Patch12:        fetchmail-bump-max-passwordlen-to-1bytes.patch
 Patch13:        fetchmail-add-readme-oauth2-issue-27.patch
+Patch14:        fetchmail-bison-3.8.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
@@ -108,6 +109,7 @@ files (.fetchmailrc).
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 cp -a %{SOURCE2} %{SOURCE3} .
 
 ACLOCAL="aclocal -I m4 -I m4-local" autoreconf -fvi

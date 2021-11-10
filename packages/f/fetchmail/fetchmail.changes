@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  9 16:23:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add fetchmail-bison-3.8.patch: Fix build with bison 3.8.
+
+-------------------------------------------------------------------
 Wed Oct  6 15:00:19 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 6.4.22: [bsc#1190069, CVE-2021-39272]
