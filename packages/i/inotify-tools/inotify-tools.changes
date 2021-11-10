@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Oct 16 15:13:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.21.9.6:
+- update to 3.21.9.6 (jsc#SLE-21025):
   * update path for includes in stats.h 
   * Fix spellings in manpages
 

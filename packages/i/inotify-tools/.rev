@@ -79,4 +79,12 @@
   * Fix spellings in manpages</comment>
     <requestid>925709</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f36b8bfd780b281513113f960f7f0c6b</srcmd5>
+    <version>3.21.9.6</version>
+    <time>1636577184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.9.6 (jsc#SLE-21025):</comment>
+    <requestid>930621</requestid>
+  </revision>
 </revisionlist>
