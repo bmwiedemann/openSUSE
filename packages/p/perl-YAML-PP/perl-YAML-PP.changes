@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  8 03:08:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.030
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.030 2021-11-07 21:57:28+01:00
+
+      - preserve: Keep existing data (issue #44)
+      - Forbid directive without directive end marker
+      - Support explicit empty key/value pairs in flow mappings
+      - Enforce EOL after end of flow context
+      - Forbid multiple question marks in flow mappings
+
+-------------------------------------------------------------------
 Mon Oct 25 03:08:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.029
