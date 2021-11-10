@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  6 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.080
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.080     2021-11-05 08:15:46-04:00 America/New_York
+      - No changes from 0.079-TRIAL.
+  0.079     2021-11-04 12:33:43-04:00 America/New_York (TRIAL RELEASE)
+      [FIXED]
+      - Fixed uninitialized value warnings on older Perls when the REQUEST_METHOD
+        environment variable is set and CGI_HTTP_PROXY is not.
+
+-------------------------------------------------------------------
 Tue Aug  3 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.078

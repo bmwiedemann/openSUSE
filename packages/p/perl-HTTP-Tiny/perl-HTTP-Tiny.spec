@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Tiny
 Name:           perl-HTTP-Tiny
-Version:        0.078
+Version:        0.080
 Release:        0
 Summary:        Small, simple, correct HTTP/1.1 client
 License:        Artistic-1.0 OR GPL-1.0-or-later
