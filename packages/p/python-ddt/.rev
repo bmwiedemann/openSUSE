@@ -134,4 +134,12 @@
   * Fix zero padding issue</comment>
     <requestid>925752</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0936a994aca4eaaf8f1f03249b78dfd0</srcmd5>
+    <version>1.4.4</version>
+    <time>1636577150</time>
+    <user>dimstar_suse</user>
+    <comment>- add six dependency</comment>
+    <requestid>930120</requestid>
+  </revision>
 </revisionlist>
