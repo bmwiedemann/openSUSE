@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zc.buildout
-Version:        2.13.4
+Version:        3.0.0b3
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/zc.buildout
 Source:         https://files.pythonhosted.org/packages/source/z/zc.buildout/zc.buildout-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools < 52}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
 BuildArch:      noarch
@@ -74,7 +74,7 @@ Buildout is a project designed to solve 2 problems:
 %python_uninstall_alternative buildout
 
 %files %{python_files}
-%doc README.rst CHANGES.rst COPYRIGHT.txt DEVELOPERS.txt
+%doc README.rst CHANGES.rst COPYRIGHT.txt
 %license LICENSE.txt
 %{python_sitelib}/*
 %python_alternative %{_bindir}/buildout
