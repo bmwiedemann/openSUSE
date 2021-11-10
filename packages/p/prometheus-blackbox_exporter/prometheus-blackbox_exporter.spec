@@ -30,10 +30,10 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libcap-progs
 BuildRequires:  golang(API) >= 1.14
-%{go_nostrip}
 %{?systemd_ordering}
 Requires(pre):  user(prometheus)
 Requires(pre):  group(prometheus)
+Requires(post): permissions
 
 %description
 Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP.
@@ -56,9 +56,17 @@ install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{build
 
 %post
 %service_add_post prometheus-blackbox_exporter.service
-if [ -x %{_sbindir}/setcap ]; then
-    %{_sbindir}/setcap cap_net_raw=ep %{_bindir}/blackbox_exporter
-fi
+# Because of more relaxed ping_group_range setting in sysctl in SLE/openSUSE 15
+# everyone is allowed to create IPPROTO_ICMP sockets
+# and hence no need to set capability
+%if 0%{?suse_version} == 1315
+  %set_permissions %{_bindir}/blackbox_exporter
+%endif
+
+%verifyscript
+%if 0%{?suse_version} == 1315
+  %verify_permissions -e %{_bindir}/blackbox_exporter
+%endif
 
 %preun
 %service_del_preun prometheus-blackbox_exporter.service
@@ -70,7 +78,7 @@ fi
 %defattr(-,root,root)
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{_bindir}/blackbox_exporter
+%verify(not caps) %attr(755,root,root) %{_bindir}/blackbox_exporter
 %{_unitdir}/prometheus-blackbox_exporter.service
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/blackbox.yml
