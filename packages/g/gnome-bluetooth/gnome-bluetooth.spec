@@ -31,7 +31,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -73,6 +72,7 @@ Summary:        Development files for the GNOME Bluetooth libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
+Requires:       libgnome-bluetooth13 = %{version}
 Requires:       typelib-1_0-GnomeBluetooth-1_0 = %{version}
 
 %description devel
@@ -84,7 +84,6 @@ This package provides the necessary files for development with GNOME Bluetooth.
 
 %prep
 %autosetup -p1
-translation-update-upstream po gnome-bluetooth2
 
 %build
 %meson \
@@ -97,8 +96,7 @@ translation-update-upstream po gnome-bluetooth2
 %find_lang %{name}2 %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libgnome-bluetooth13 -p /sbin/ldconfig
-%postun -n libgnome-bluetooth13 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnome-bluetooth13
 
 %files
 %license COPYING

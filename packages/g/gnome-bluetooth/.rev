@@ -780,4 +780,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Resolve conflict changelog entry between Factory and SLE/Leap. (forwarded request 909694 from yfjiang)</comment>
     <requestid>909741</requestid>
   </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>623b8ff16150e955ef74483edf7a705a</srcmd5>
+    <version>3.34.5</version>
+    <time>1636577148</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929864 from iznogood)</comment>
+    <requestid>930084</requestid>
+  </revision>
 </revisionlist>

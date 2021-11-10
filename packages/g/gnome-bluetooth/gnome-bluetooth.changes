@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  6 11:15:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing explicit libgnome-bluetooth13 Requires to devel sub
+  package, it was already pulled in via typelib Requires, so no
+  real world change.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:35:54 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Mar 24 09:45:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.34.5 (bsc#1186277):
