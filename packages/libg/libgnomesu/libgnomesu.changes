@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov  6 11:20:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing explicit libgnomesu0 Requires to devel package.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Modernize spec, use autosetup and make_build macro, update
+  Supplements to current standard.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:58:57 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Mar 19 12:21:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.6:

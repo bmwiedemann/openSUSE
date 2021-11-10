@@ -23,20 +23,20 @@ Summary:        GNOME su Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://github.com/openSUSE/libgnomesu
-Source:         https://github.com/openSUSE/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        gnomesu-pam.pamd
 # Patch: Avoid patches if possible! Update openSUSE upstream instead.
+
 BuildRequires:  fdupes
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pam-devel
-BuildRequires:  translation-update-upstream
 Requires:       gsettings-desktop-schemas
 Requires:       pam
 Requires(pre):  permissions
 # Ensure that gnomesu always gets installed
-Supplements:    packageand(xdg-utils:gnome-session)
+Supplements:    (xdg-utils and gnome-session)
 
 %description
 Libgnomesu is a library for providing superuser privileges to GNOME
@@ -55,6 +55,7 @@ applications. It supports sudo, consolehelper, PAM, and su.
 Summary:        Development files for libgnomesu
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
+Requires:       libgnomesu0 = %{version}
 
 %description devel
 This package contains all files needed to develop with libgnomesu.
@@ -62,10 +63,8 @@ This package contains all files needed to develop with libgnomesu.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 cp -a %{SOURCE1} pam-backend/gnomesu-pam
-# Upstream is dead, libgnomesu.po in LCN includes strings in our patches:
-translation-update-upstream
 
 %build
 export SUID_CFLAGS="-fPIE"
@@ -75,7 +74,7 @@ export SUID_LDFLAGS="-pie"
 	--disable-silent-rules \
 	--libexecdir=%{_libexecdir}/%{name} \
 	--disable-setuid-error
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/%{name}
@@ -94,8 +93,7 @@ rm -f %{buildroot}%{_libexecdir}/%{name}/gnomesu-backend
 %verifyscript
 %verify_permissions -e %{_libexecdir}/%{name}/gnomesu-pam-backend
 
-%post -n libgnomesu0 -p /sbin/ldconfig
-%postun -n libgnomesu0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnomesu0
 
 %files
 %license COPYING
