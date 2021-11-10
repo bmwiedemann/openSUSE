@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 10 11:10:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- added imagick-fix-457-ensure-format-is-always-lowercase.patch
+  to fix test-failures in latest tumbleweed/factory builds
+  #gh/Imagick/imagick#457
+
+-------------------------------------------------------------------
+Tue Nov  9 22:02:45 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Upgrade to version 3.5.1
+  - Better detection of appropriate OpenMP library to use, i.e. GCC
+    or Clang.
+
+-------------------------------------------------------------------
 Sun Jun 20 11:27:28 UTC 2021 - munix9@googlemail.com
 
 - Upgrade to version 3.5.0

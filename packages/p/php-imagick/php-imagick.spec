@@ -1,5 +1,5 @@
 #
-# spec file for package php-imagick
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Wrapper to the ImageMagick library
 License:        PHP-3.01
@@ -39,10 +39,13 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/imagick
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
+# SUSE: Make build reproduceable
 Patch0:         imagick-reproducible.patch
+# PATCH-FIX-UPSTREAM imagick-fix-457-ensure-format-is-always-lowercase.patch
+Patch10:        imagick-fix-457-ensure-format-is-always-lowercase.patch
+BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std
-BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  re2c
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
