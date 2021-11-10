@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-monitor-query
-Version:        1.0.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure Azure Monitor Query Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-query/azure-monitor-query-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-query/azure-monitor-query-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-monitor-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -61,10 +59,10 @@ type. Telemetry such as events and traces are stored as logs in addition to perf
 so that it can all be combined for analysis.
 
 %prep
-%setup -q -n azure-monitor-query-%{realversion}
+%setup -q -n azure-monitor-query-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-query-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-query-%{version}
 %python_build
 
 %install
