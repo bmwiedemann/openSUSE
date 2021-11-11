@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:37:13 UTC 2021 - psimons@suse.com
+
+- Update base-orphans to version 0.8.6.
+  ## Changes in 0.8.6 [2021.10.29]
+   - Backport `Eq`, `Ord`, `Bounded`, `Enum`, and `Ix` instances for `Solo`,
+     introduced in GHC 9.2/`base-4.16`
+   - Remove the backported `Eq1` and `Ord1` instances for `Fixed` that were
+     introduced in `base-orphans-0.8.5`. While these briefly appeared in a
+     release candidate version of GHC 9.2.1, they were ultimately removed from
+     the final 9.2.1 release. This release of `base-orphans` synchronizes with
+     that change.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:33:00 UTC 2021 - psimons@suse.com
 
 - Update base-orphans to version 0.8.5.

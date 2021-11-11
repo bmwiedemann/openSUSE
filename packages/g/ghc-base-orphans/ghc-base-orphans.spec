@@ -19,7 +19,7 @@
 %global pkg_name base-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Backwards-compatible orphan instances for base
 License:        MIT
