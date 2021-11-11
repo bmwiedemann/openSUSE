@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 10 18:53:48 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use OpenCV 4 on TW again, instead of the old OpenCV 3.
+- Use system wcslib
+- Cleanup previous changes:
+  * cmake is just an extraneous build dependency
+  * deduplicate SVG icons and other files
+
+-------------------------------------------------------------------
+Wed Nov 10 16:47:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Move icon to correct place, fixes bsc#1192563
+
+-------------------------------------------------------------------
 Tue Jul  6 11:30:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.99.10.1:

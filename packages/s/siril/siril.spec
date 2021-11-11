@@ -24,9 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-# Remove git build dep when fixed upstream: https://gitlab.com/free-astro/siril/-/issues/583
-BuildRequires:  git
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -47,9 +46,14 @@ BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4)
+%if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(opencv)
+%else
+BuildRequires:  pkgconfig(opencv4)
+%endif
 BuildRequires:  pkgconfig(rtprocess)
 BuildRequires:  pkgconfig(shared-mime-info)
+BuildRequires:  pkgconfig(wcslib)
 
 %description
 Siril is meant to be Iris for Linux (sirI-L). It is an astronomical image
@@ -73,8 +77,8 @@ rm %{buildroot}/%{_datadir}/doc/siril/*
 %find_lang %{name}
 install -m 0644 -D platform-specific/linux/org.free_astro.siril.desktop %{buildroot}%{_datadir}/applications/org.free_astro.siril.desktop
 install -m 0644 -D platform-specific/linux/siril.xml                    %{buildroot}%{_datadir}/mime/packages/siril.xml
-# remove duplicate file
-rm -f %{buildroot}%{_datadir}/siril/pixmaps/siril.svg
+
+%fdupes %{buildroot}/%{_datadir}
 
 %files -f %{name}.lang
 %doc ChangeLog NEWS README.md AUTHORS
