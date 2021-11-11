@@ -18,13 +18,15 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.6
+Version:        7.7
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.atnf.csiro.au/people/mcalabre/WCS/wcslib/
 Source0:        ftp://ftp.atnf.csiro.au/pub/software/wcslib/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM -- fix building of tofits util in Fortran tests
+Patch0:         0001-Fix-utils-tofits-location-in-Fortran-GNUmakefile.patch
 BuildRequires:  cfitsio-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -83,27 +85,21 @@ This package contains tools for working with files created or
 opened with %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# required to pass the tests with newest gfortran.
-# see https://gcc.gnu.org/gcc-10/porting_to.html
-# Fortran Language issues
-%if 0%{?suse_version} >= 1550
-  export FFLAGS="%{optflags} -fallow-argument-mismatch"
-%endif
 %configure --docdir=%{_docdir}/%{name} --without-pgplot
 %make_build
 
 %install
 %make_install
 
-cp -a THANKS %{buildroot}%{_docdir}/%{name}/html/
+cp -a THANKS %{buildroot}%{_docdir}/%{name}/
 
 # Remove static libraries
 rm -rf %{buildroot}%{_libdir}/*.a
 
-%fdupes -s %{buildroot}%{_docdir}/%{name}/html
+%fdupes %{buildroot}%{_docdir}/%{name}/html
 
 %check
 make check
@@ -120,10 +116,12 @@ make check
 %{_bindir}/HPXcvt
 %{_bindir}/fitshdr
 %{_bindir}/sundazel
+%{_bindir}/tofits
 %{_bindir}/wcsware
 %{_mandir}/man1/HPXcvt.1%{?ext_man}
 %{_mandir}/man1/fitshdr.1%{?ext_man}
 %{_mandir}/man1/sundazel.1%{?ext_man}
+%{_mandir}/man1/tofits.1%{?ext_man}
 %{_mandir}/man1/wcsware.1%{?ext_man}
 
 %files doc
