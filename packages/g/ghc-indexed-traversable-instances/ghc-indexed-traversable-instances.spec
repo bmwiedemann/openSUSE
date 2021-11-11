@@ -19,13 +19,14 @@
 %global pkg_name indexed-traversable-instances
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1
+Version:        0.1.1
 Release:        0
 Summary:        More instances of FunctorWithIndex, FoldableWithIndex, TraversableWithIndex
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-OneTuple-devel
 BuildRequires:  ghc-indexed-traversable-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-tagged-devel
