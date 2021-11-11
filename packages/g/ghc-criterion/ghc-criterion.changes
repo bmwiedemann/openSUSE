@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:17:07 UTC 2021 - psimons@suse.com
+
+- Update criterion to version 1.5.11.0.
+  1.5.11.0
+
+  * Allow building with `aeson-2.0.0.0`.
+
+-------------------------------------------------------------------
 Fri Sep  3 13:23:55 UTC 2021 - psimons@suse.com
 
 - Update criterion to version 1.5.10.0 revision 1.
