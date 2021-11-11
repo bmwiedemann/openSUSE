@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 11 12:42:23 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.21:
+  * Add update of API docs to deploy step.
+  * Fix build of pages.
+  * Fix command line warning messages.
+  * Remove Dockerfiles for .10 versions.
+  * Fixes to make API docs work right.
+  * Fix #93 - dupliicity wants private encryption key.
+  * PAR2 backend failes to create par2 file with spaces in name.
+  * Fix LP bug 930151 - Restore a symlink changes target
+    attributes.
+  * Fix #89 part 2 - handle small input files where par2 fails.
+  * Fix theme name, sphinx\_rtd\_theme.
+  * Fix #90 - rclone backend fails with spaces in pathnames.
+  * Fix #89 - Add PAR2 number volumes option.
+  * Fix #88 - Add PAR2 creation failure error message.
+  * Fix bug #87, Restore fails and stops on corrupted backup
+    volume.
+  * Fix bug #86, PAR2 backend fails on restore, with patch
+    supplied.
+  * Fix PEP8 style errors.
+  * Fix issue #81 - Assertion fail when par2 prefix forgotten.
+  * Fix issue #79 - Multibackend degradation.
+  * Add verbose exception on progress file failure.
+- Update URL and source URI.
+- Fix _service file.
+
+-------------------------------------------------------------------
 Fri Jul  9 10:27:32 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Fix "duplicity --version" (boo#1188132) 

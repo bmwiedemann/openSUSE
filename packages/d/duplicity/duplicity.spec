@@ -17,13 +17,13 @@
 
 
 Name:           duplicity
-Version:        0.8.20
+Version:        0.8.21
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-URL:            http://duplicity.nongnu.org/
-Source:         https://files.pythonhosted.org/packages/source/d/duplicity/duplicity-%{version}.tar.gz
+URL:            https://duplicity.gitlab.io/duplicity-web/
+Source:         https://launchpad.net/duplicity/0.8-series/%{version}/+download/duplicity-%{version}.tar.gz
 Patch1:         duplicity-remove_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
