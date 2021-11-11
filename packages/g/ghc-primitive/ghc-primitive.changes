@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:31:06 UTC 2021 - psimons@suse.com
+
+- Update primitive to version 0.7.3.0.
+  ## Changes in version 0.7.3.0
+
+    * Correct implementations of `*>` for `Array` and `SmallArray`.
+
+    * Drop support for GHC < 7.10
+
+    * Export `runByteArray` and `runPrimArray`.
+
+    * Export `createArray` and `createSmallArray`.
+
+    * Export `emptyByteArray`, `emptyPrimArray`, `emptyArray` and `emptySmallArray`.
+
+-------------------------------------------------------------------
 Wed Aug  4 08:16:01 UTC 2021 - psimons@suse.com
 
 - Update primitive to version 0.7.2.0.

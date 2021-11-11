@@ -19,7 +19,7 @@
 %global pkg_name primitive
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.2.0
+Version:        0.7.3.0
 Release:        0
 Summary:        Primitive memory-related operations
 License:        BSD-3-Clause
