@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:22:20 UTC 2021 - psimons@suse.com
+
+- Update stm-chans to version 3.0.0.6.
+  3.0.0.6 (2021-10-17):
+      - Removed old __HADDOCK__ hack
+      - Updating stale emails, urls, etc
+  3.0.0.5 (2021-10-16):
+      - Fixed the cabal file for Cabal >1.24
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
