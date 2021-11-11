@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:26:56 UTC 2021 - psimons@suse.com
+
+- Update base16-bytestring to version 1.0.2.0.
+  # 1.0.2.0
+
+  * Support sized primitive types in GHC 9.2 ([#16](https://github.com/haskell/base16-bytestring/pull/16) - thanks Bodigrim!)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base16-bytestring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name base16-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.1.0
+Version:        1.0.2.0
 Release:        0
 Summary:        RFC 4648-compliant Base16 encodings for ByteStrings
 License:        BSD-3-Clause
