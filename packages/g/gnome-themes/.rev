@@ -488,4 +488,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767154 from dimstar)</comment>
     <requestid>767419</requestid>
   </revision>
+  <revision rev="71" vrev="21">
+    <srcmd5>097ea98b2bf7cfd499317bdb5a3d4b14</srcmd5>
+    <version>3.0.0</version>
+    <time>1636663108</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>930908</requestid>
+  </revision>
 </revisionlist>
