@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 11 00:07:56 UTC 2021 - Michael Fritch <michael.fritch@suse.com>
+
+- Add patch to fix getopt return value on aarch64 (bsc#1192367)
+    * Add getopt_aarch64.patch
+- Disable build of the XFS FSAL
+  + https://github.com/nfs-ganesha/nfs-ganesha/issues/533
+
+-------------------------------------------------------------------
 Fri Jul 23 18:57:06 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
 
 - Enable FSAL_RGW again, as it turned out to be compatible with Ceph 16.x, but

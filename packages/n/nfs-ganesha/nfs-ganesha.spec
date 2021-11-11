@@ -52,7 +52,7 @@ BuildRequires:  distribution-release
 %bcond_with gpfs
 %global use_fsal_gpfs %{on_off_switch gpfs}
 
-%bcond_without xfs
+%bcond_with xfs
 %global use_fsal_xfs %{on_off_switch xfs}
 
 %bcond_with lustre
@@ -119,6 +119,7 @@ URL:            https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
 Source:         %{name}-%{version}.tar.bz2
 Patch0:         fix-compilation--faulty-version-comparison.patch
+Patch1:         getopt_aarch64.patch
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -494,6 +495,7 @@ be used with NFS-Ganesha to support Gluster
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export LANGUAGE=en_US.UTF-8
