@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:22:04 UTC 2021 - psimons@suse.com
+
+- Update quickcheck-instances to version 0.3.26.1.
+  0.3.26.1
+
+  * Support `hashable-1.4`
+
+  0.3.26
+
+  * Support base-4.16 / GHC-9.2
+  * Add instances for `text-short`'s `ShortText` type
+  * Add instances for `Solo`
+  * Fix bug in `CoArbitrary (Hashed a)` instance
+
+-------------------------------------------------------------------
 Wed Jul 28 07:41:13 UTC 2021 - psimons@suse.com
 
 - Update quickcheck-instances to version 0.3.25.2 revision 2.
