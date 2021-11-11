@@ -19,19 +19,20 @@
 %global pkg_name text-short
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Memory-efficient representation of Unicode text strings
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
