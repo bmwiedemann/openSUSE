@@ -762,4 +762,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767229 from dimstar)</comment>
     <requestid>767489</requestid>
   </revision>
+  <revision rev="104" vrev="8">
+    <srcmd5>952ec305fb36f0aa447d9e9de0cfb75a</srcmd5>
+    <version>3.22.0</version>
+    <time>1636663112</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>930922</requestid>
+  </revision>
 </revisionlist>
