@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aeson-pretty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name aeson-pretty
 Name:           ghc-%{pkg_name}
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        JSON pretty-printing library and command-line tool
 License:        BSD-3-Clause
@@ -80,6 +80,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.markdown
+%doc CHANGELOG.markdown README.markdown
 
 %changelog
