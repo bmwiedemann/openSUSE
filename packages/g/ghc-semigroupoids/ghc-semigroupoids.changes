@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:17:19 UTC 2021 - psimons@suse.com
+
+- Update semigroupoids to version 5.3.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Oct  8 07:18:53 UTC 2021 - psimons@suse.com
+
+- Update semigroupoids to version 5.3.6.
+  5.3.6 [2021.10.07]
+  ------------------
+  * Allow building with GHC 9.2.
+  * Allow building with `transformers-0.6.*`.
+  * Add `Alt` instance for `Identity`.
+  * Add `Conclude`, `Decide` and `Divise` type classes and instances.
+  * Add `(<.*>)`, `(<*.>)`, and `traverseMaybe` functions, which make it easier
+    to defined `Traversable1` instances for data types that have fields with a
+    combination of `Traversable` and `Traversable1` instances.
+  * Add `Semigroupoids.Do` module with overloads for use with `QualifiedDo`.
+  * Add `Apply`, `Alt`, `Plus`, `Bind` and `BindTrans` instances for the CPS
+    versions of `WriterT` and `RWST`.
+  * Add `psum` function to `Data.Functor.Plus`.
+  * Add `Categorical` data type.
+
+-------------------------------------------------------------------
 Tue Jul 27 07:51:53 UTC 2021 - psimons@suse.com
 
 - Update semigroupoids to version 5.3.5 revision 1.

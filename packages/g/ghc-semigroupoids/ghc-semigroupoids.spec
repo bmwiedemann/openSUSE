@@ -18,7 +18,7 @@
 
 %global pkg_name semigroupoids
 Name:           ghc-%{pkg_name}
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
 Summary:        Semigroupoids: Category sans id
 License:        BSD-2-Clause
@@ -60,12 +60,15 @@ Similarly many structures are nearly a comonad, but not quite, for instance
 lists provide a reasonable 'extend' operation in the form of 'tails', but do
 not always contain a value.
 
-Ideally the following relationships would hold:
+We describe the relationships between the type classes defined in this package
+and those from `base` (and some from `contravariant`) in the diagram below.
+Thick-bordered nodes correspond to type classes defined in this package;
+thin-bordered ones correspond to type classes from elsewhere. Solid edges
+indicate a subclass relationship that actually exists; dashed edges indicate a
+subclass relationship that /should/ exist, but currently doesn't.
 
-> Foldable ----> Traversable <--- Functor ------> Alt ---------> Plus
-Semigroupoid > | | | | | > v v v v v > Foldable1 ---> Traversable1 Apply
---------> Applicative -> Alternative Category > | | | | > v v v v > Bind
----------> Monad -------> MonadPlus Arrow >
+<<https://raw.githubusercontent.com/ekmett/semigroupoids/b9151e725856265717fe462c7abe4e59417ec593/img/classes.svg
+Relationships among type classes from this package and others>>
 
 Apply, Bind, and Extend (not shown) give rise the Static, Kleisli and Cokleisli
 semigroupoids respectively.
