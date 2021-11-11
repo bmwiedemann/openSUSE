@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:20:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sat Apr 17 18:31:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed broken upstream URL in SPEC file

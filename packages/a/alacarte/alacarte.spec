@@ -36,7 +36,6 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.2
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(pygobject-3.0)
@@ -51,7 +50,6 @@ type to edit, add, and delete any menu entry.
 
 %prep
 %setup -q
-translation-update-upstream
 %patch0 -p1
 
 %build
