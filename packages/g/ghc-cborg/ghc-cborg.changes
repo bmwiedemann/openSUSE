@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:22:00 UTC 2021 - psimons@suse.com
+
+- Update cborg to version 0.2.6.0.
+  ## 0.2.6.0  -- 2021-10-31
+
+  * Support for GHC 9.2
+
+  * Support for `text-2.0` and zero-copy `Text` serialisation support
+
+  ## 0.2.5.0  -- 2021-04-08
+
+  * Support for `ghc-bignum` and GHC 9.0
+
+  ## 0.2.4.0  -- 2021-07-05
+
+  * Fix decoding on 32-bit systems (#244)
+
+-------------------------------------------------------------------
 Fri Sep  3 13:45:32 UTC 2021 - psimons@suse.com
 
 - Update cborg to version 0.2.5.0 revision 1.
