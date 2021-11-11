@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  8 16:31:37 UTC 2021 - psimons@suse.com
+
+- Update vector-th-unbox to version 0.2.2.
+  ## 0.2.2
+
+  * Fixed the build failure on GHC 9.2
+  * Dropped the support for GHC older than 8.0
+
+-------------------------------------------------------------------
 Tue Feb 23 10:03:17 UTC 2021 - psimons@suse.com
 
 - Update vector-th-unbox to version 0.2.1.9.

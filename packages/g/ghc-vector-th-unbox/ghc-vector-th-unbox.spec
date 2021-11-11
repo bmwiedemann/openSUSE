@@ -19,7 +19,7 @@
 %global pkg_name vector-th-unbox
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.9
+Version:        0.2.2
 Release:        0
 Summary:        Deriver for Data.Vector.Unboxed using Template Haskell
 License:        BSD-3-Clause
