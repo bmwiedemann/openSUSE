@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.0.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-messaging-webpubsubservice
-Version:        1.0.0b2
+Version:        1.0.0.0
 Release:        0
 Summary:        Microsoft Azure WebPubSub Service Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-messaging-webpubsubservice/azure-messaging-webpubsubservice-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-messaging-webpubsubservice/azure-messaging-webpubsubservice-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-messaging-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -35,14 +37,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.19.0
-Requires:       python-cryptography >= 2.8.0
 Requires:       python-PyJWT >= 1.7.1
-Requires:       python-six >= 1.12.0
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.20.0
 Requires:       python-azure-messaging-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-cryptography >= 2.8.0
 Requires:       python-msrest >= 0.6.21
+Requires:       python-six >= 1.12.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
@@ -87,10 +89,10 @@ Use the client library to:
  * Grant/revoke/check permissions for an existing connection
 
 %prep
-%setup -q -n azure-messaging-webpubsubservice-%{version}
+%setup -q -n azure-messaging-webpubsubservice-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-messaging-webpubsubservice-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-messaging-webpubsubservice-%{realversion}
 %python_build
 
 %install
