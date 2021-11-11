@@ -1,0 +1,3 @@
+#Type Name ID    GECOS          Home directory Shell
+u     vnc  -     "user for VNC" /var/lib/empty -
+m     vnc  shadow -             -              -

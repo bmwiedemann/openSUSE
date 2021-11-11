@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 29 16:57:10 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- buildrequire xorg-x11-server-sdk/xorg-x11-server-source >= 21.1.0
+
+-------------------------------------------------------------------
+Thu Oct 28 13:05:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+
+-------------------------------------------------------------------
+Thu Oct 28 12:03:58 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_tigervnc-211.patch, xserver211.patch
+  * fixes build against xorg-server 21.1 sources
+
+-------------------------------------------------------------------
 Thu Oct 21 10:16:38 UTC 2021 - Joan Torres <joan.torres@suse.com>
 
 - Not using System crypto policies for <= sle15-sp3 (boo#1191394)

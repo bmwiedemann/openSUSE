@@ -781,4 +781,17 @@
     <comment>- Not using System crypto policies for &lt;= sle15-sp3 (boo#1191394)</comment>
     <requestid>926742</requestid>
   </revision>
+  <revision rev="84" vrev="19">
+    <srcmd5>da939757fde0648a92aadfab7f8ea38c</srcmd5>
+    <version>1.10.1</version>
+    <time>1636662949</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire xorg-x11-server-sdk/xorg-x11-server-source &gt;= 21.1.0
+
+- Change to systemd-sysusers
+
+- u_tigervnc-211.patch, xserver211.patch
+  * fixes build against xorg-server 21.1 sources</comment>
+    <requestid>928186</requestid>
+  </revision>
 </revisionlist>
