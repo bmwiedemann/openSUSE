@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  4 21:53:05 UTC 2021 - psimons@suse.com
+
+- Update cereal to version 0.5.8.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Oct 14 08:02:19 UTC 2021 - psimons@suse.com
+
+- Update cereal to version 0.5.8.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
