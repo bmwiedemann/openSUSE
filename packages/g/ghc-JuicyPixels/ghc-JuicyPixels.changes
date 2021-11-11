@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 13 19:06:54 UTC 2021 - psimons@suse.com
+
+- Update JuicyPixels to version 3.3.6.
+  v3.3.6 October 2021
+  -------------------
+
+   * Bytestring bound bump
+   * Fix bug #187.  (Some JPEGs are misidentified as SourceTiff.)
+   * Fix EXIF handling of strings of four characters or fewer.
+   * Fix endianness bug in short ExifString and ExifUndefined.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
