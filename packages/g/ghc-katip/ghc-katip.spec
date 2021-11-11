@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-katip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name katip
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.5.0
+Version:        0.8.7.0
 Release:        0
 Summary:        A structured logging framework
 License:        BSD-3-Clause
