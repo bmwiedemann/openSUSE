@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Nov  4 12:10:04 UTC 2021 - psimons@suse.com
+
+- Update lua to version 2.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/lua-2.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov  1 08:37:01 UTC 2021 - psimons@suse.com
+
+- Add lua at version 2.0.0.1.
+
