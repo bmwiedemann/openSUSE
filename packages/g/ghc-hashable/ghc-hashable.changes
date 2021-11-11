@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  4 12:28:59 UTC 2021 - psimons@suse.com
+
+- Update hashable to version 1.3.5.0.
+  ## Version 1.3.5.0
+
+   * Add `Solo` instance (base-4.15+, GHC-9+)
+
+-------------------------------------------------------------------
 Thu Oct  7 07:58:49 UTC 2021 - psimons@suse.com
 
 - Update hashable to version 1.3.4.1.
