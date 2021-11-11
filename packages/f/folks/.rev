@@ -436,4 +436,12 @@
   link target preset too. (forwarded request 929645 from dimstar)</comment>
     <requestid>929704</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>f3f69b4b5dd3b5b305b85a2a2db46363</srcmd5>
+    <version>0.15.3</version>
+    <time>1636662982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930866</requestid>
+  </revision>
 </revisionlist>
