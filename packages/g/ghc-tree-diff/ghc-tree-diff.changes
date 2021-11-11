@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:51:23 UTC 2021 - psimons@suse.com
+
+- Update tree-diff to version 0.2.1.
+  ## 0.2.1
+
+  - Support `aeson-2.0.0.0`
+
+-------------------------------------------------------------------
 Fri Sep  3 13:20:36 UTC 2021 - psimons@suse.com
 
 - Update tree-diff to version 0.2 revision 1.
