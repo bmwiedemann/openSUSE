@@ -11,7 +11,7 @@ Fri Oct  8 09:45:09 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The following issues have already been fixed in this package but
   weren't previously mentioned in the changes file:
-  * bsc#1181131
+  * bsc#1181131, CVE-2021-20193
   * bsc#1120610
 
 -------------------------------------------------------------------
