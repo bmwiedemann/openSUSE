@@ -19,7 +19,7 @@
 %global pkg_name blaze-builder
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.2.1
+Version:        0.4.2.2
 Release:        0
 Summary:        Efficient buffered output
 License:        BSD-3-Clause
@@ -41,17 +41,17 @@ BuildRequires:  ghc-utf8-string-devel
 %endif
 
 %description
-This library provides an implementation of the older blaze-builder interface in
-terms of the new builder that shipped with bytestring-0.10.4.0
+This library allows to efficiently serialize Haskell values to lazy bytestrings
+with a large average chunk size. The large average chunk size allows to make
+good use of cache prefetching in later processing steps (e.g.
+compression) and reduces the system call overhead when writing the resulting
+lazy bytestring to a file or sending it over the network.
 
-This implementation is mostly intended as a bridge to the new builder, so that
-code that uses the old interface can interoperate with code that uses the new
-implementation. Note that no attempt has been made to preserve the old internal
-modules, so code that has these dependencies cannot use this interface.
-
-New code should, for the most part, use the new interface. However, this module
-does implement a chunked HTTP encoding, which is not otherwise implemented
-(yet?) with the new builder.
+This library was inspired by the module Data.Binary.Builder provided by the
+binary package. It was originally developed with the specific needs of the
+blaze-html package in mind. Since then it has been restructured to serve as a
+drop-in replacement for Data.Binary.Builder, which it improves upon both in
+speed as well as expressivity.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
