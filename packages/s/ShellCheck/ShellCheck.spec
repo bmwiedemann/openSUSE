@@ -19,13 +19,12 @@
 %global pkg_name ShellCheck
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch0:         haddock.patch
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -74,7 +73,7 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{name} library development files.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %ghc_lib_build
@@ -96,7 +95,7 @@ install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 
 %files
 %license LICENSE
-%doc README.md
+%doc CHANGELOG.md README.md
 %{_bindir}/shellcheck
 %{_mandir}/man1/shellcheck.1%{?ext_man}
 
@@ -104,6 +103,6 @@ install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 %license LICENSE
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc README.md
+%doc CHANGELOG.md README.md
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  7 14:54:02 UTC 2021 - psimons@suse.com
+
+- Update ShellCheck to version 0.8.0.
+- drop haddock.patch
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Fri Apr 23 11:05:19 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add haddock.patch to fix build with haddock 
