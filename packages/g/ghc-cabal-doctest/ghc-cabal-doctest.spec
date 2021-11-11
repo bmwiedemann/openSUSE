@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cabal-doctest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %global pkg_name cabal-doctest
 Name:           ghc-%{pkg_name}
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
-Summary:        A Setup.hs helper for doctests running
+Summary:        A Setup.hs helper for running doctests
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
@@ -32,11 +31,9 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 
 %description
-Currently (beginning of 2017), there isn't 'cabal doctest' command.
-Yet, to properly work doctest needs plenty of configuration. This library
-provides the common bits for writing custom Setup.hs See
-<https://github.com/haskell/cabal/issues/2327 Cabal/2327> for the progress of
-'cabal doctest', i.e. whether this library is obsolete.
+As of now (end of 2021), there isn't 'cabal doctest' command. Yet, to properly
+work, 'doctest' needs plenty of configuration. This library provides the common
+bits for writing a custom 'Setup.hs'.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -50,7 +47,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
