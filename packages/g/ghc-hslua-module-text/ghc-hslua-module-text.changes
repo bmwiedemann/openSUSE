@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:44:59 UTC 2021 - psimons@suse.com
+
+- Update hslua-module-text to version 1.0.0.
+  ## 1.0.0
+
+  Release pending.
+
+  - Use hslua 2.0.
+
+-------------------------------------------------------------------
+Tue Oct 19 07:23:46 UTC 2021 - psimons@suse.com
+
+- Update hslua-module-text to version 0.3.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-text
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 %global pkg_name hslua-module-text
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.1
+Version:        1.0.0
 Release:        0
 Summary:        Lua module for text
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-hslua-devel
+BuildRequires:  ghc-hslua-core-devel
+BuildRequires:  ghc-hslua-marshalling-devel
+BuildRequires:  ghc-hslua-packaging-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
@@ -39,6 +40,9 @@ BuildRequires:  ghc-tasty-lua-devel
 
 %description
 UTF-8 aware subset of Lua's `string` module.
+
+This package is part of HsLua, a Haskell framework built around the embeddable
+scripting language <https://lua.org Lua>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
