@@ -17,37 +17,38 @@
 
 
 %global pkg_name xmonad-contrib
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.16
+Version:        0.17.0
 Release:        0
-Summary:        Third party extensions for xmonad
+Summary:        Community-maintained extensions extensions for xmonad
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-X11-xft-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-time-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
+BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-xmonad-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-hspec-devel
+%endif
 
 %description
-Third party tiling algorithms, configurations and scripts to xmonad, a tiling
-window manager for X.
+Community-maintained tiling algorithms and extension modules for xmonad, an X11
+tiling window manager.
 
 For an introduction to building, configuring and using xmonad extensions, see
 "XMonad.Doc". In particular:
@@ -71,13 +72,15 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:56:21 UTC 2021 - psimons@suse.com
+
+- Update xmonad-contrib to version 0.17.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmonad-contrib-0.17.0/src/CHANGES.md
+
+-------------------------------------------------------------------
 Wed Jun  2 08:14:09 UTC 2021 - psimons@suse.com
 
 - Update xmonad-contrib to version 0.16 revision 1.
