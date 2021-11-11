@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 04 08:21:40 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.016:
+  * Add script for manual testing download.o.o
+  * Add route /rest/scan_tree
+  * Add job for recursive scan (#222)
+  * Introduce variable MIRRORCACHE_TRUST_ADDR (#221)
+  * Add BACKSTAGE_WORKERS parameter to scripts (#220)
+  * Fix automatic mirror capability management when two capabilities are disabled for the same mirror (#219)
+  * Dont try to find mirror for unversioned Debian files (#218)
+  * Add hypnotoad service (#217)
+  * Log statistics the old way
+  * Add stress tests
+
+-------------------------------------------------------------------
+Thu Oct 28 08:56:27 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.015:
+  * Add hypnotoad service (#217)
+  * Log statistics the old way
+  * Add stress tests
+  * Add indices on sync_requested and scan_requested to avoid deadlock
+  * Allow hash.mtime differ for up to 1 min
+  * Rework estimation of inactive jobs count
+
+-------------------------------------------------------------------
 Thu Oct 21 06:57:03 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.014:
