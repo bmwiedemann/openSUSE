@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 11 13:56:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.19.2+git.20211102:
+  * merge Github PR#77
+  * use max (9) Gzip compression
+  * Add Catalan translation
+  * Update POT file
+  * Add more network speeds
+
+-------------------------------------------------------------------
 Thu Oct 14 10:44:03 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19.2+git.20211013:

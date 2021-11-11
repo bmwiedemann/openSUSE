@@ -264,4 +264,17 @@ factory)</comment>
   * Fix another typo</comment>
     <requestid>925234</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b72856bdd09caf6f491114dcee684f9d</srcmd5>
+    <version>B.02.19.2+git.20211102</version>
+    <time>1636663101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2+git.20211102:
+  * merge Github PR#77
+  * use max (9) Gzip compression
+  * Add Catalan translation
+  * Update POT file
+  * Add more network speeds</comment>
+    <requestid>930871</requestid>
+  </revision>
 </revisionlist>
