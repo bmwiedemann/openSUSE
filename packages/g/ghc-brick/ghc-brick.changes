@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:22:10 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.64.2.
+  0.64.2
+  ------
+
+  Bug fixes:
+   * `Brick.Themes.saveTheme` now correctly saves background colors (#338)
+   * `Brick.Widgets.List.listMoveToEnd` now uses the correct destination
+     index (#337)
+
+-------------------------------------------------------------------
 Mon Sep 20 07:11:38 UTC 2021 - psimons@suse.com
 
 - Update brick to version 0.64.1.
