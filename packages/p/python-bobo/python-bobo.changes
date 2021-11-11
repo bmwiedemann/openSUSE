@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 11 08:38:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove test BuildRequires, a different package runs the tests. 
+
+-------------------------------------------------------------------
 Wed May 27 09:36:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bobo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-bobo
 Version:        2.4.0
 Release:        0
 Summary:        Web application framework for the impatient
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            http://bobo.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/b/bobo/bobo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -32,15 +30,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-# SECTION test requirements
-%if %{with test}
-BuildRequires:  %{python_module WebOb}
-BuildRequires:  %{python_module bobodoctestumentation >= 2.4.0}
-BuildRequires:  %{python_module six}
-%endif
-# /SECTION
 %python_subpackages
 
 %description
