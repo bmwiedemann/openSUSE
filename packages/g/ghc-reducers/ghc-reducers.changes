@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 12:26:29 UTC 2021 - psimons@suse.com
+
+- Update reducers to version 3.12.4.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Mon Jan 11 10:05:28 UTC 2021 - psimons@suse.com
 
 - Update reducers to version 3.12.3 revision 2.
