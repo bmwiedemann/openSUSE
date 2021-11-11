@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  3 15:52:06 UTC 2021 - psimons@suse.com
+
+- Update lifted-async to version 0.10.2.2.
+  ## v0.10.2.2 - 2021-11-02
+
+  * Allow base-4.17 for GHC 9.2.1 ([#37](https://github.com/maoe/lifted-async/pull/37))
+
+-------------------------------------------------------------------
 Fri Jul 23 08:07:01 UTC 2021 - psimons@suse.com
 
 - Update lifted-async to version 0.10.2.1.
