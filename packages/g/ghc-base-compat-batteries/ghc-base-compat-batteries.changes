@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:31:11 UTC 2021 - psimons@suse.com
+
+- Update base-compat-batteries to version 0.12.1.
+  ## Changes in 0.12.1 [2021.10.30]
+   - Backport `Solo` to the `Data.Tuple.Compat` module. If using `ghc-prim-0.7.0`
+     or later, `Solo` is taken from `ghc-prim`. If using an older version of
+     `ghc-prim`, `Solo` is taken from the `OneTuple` compatibility library.
+
+   - This coincides with the `base-compat-0.12.1` release. Refer to the
+     [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0121-20211030)
+     for more details.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:32:48 UTC 2021 - psimons@suse.com
 
 - Update base-compat-batteries to version 0.12.0 revision 1.
