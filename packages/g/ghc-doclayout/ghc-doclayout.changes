@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 12 10:51:12 UTC 2021 - psimons@suse.com
+
+- Update doclayout to version 0.3.1.1.
+  ## 0.3.1.1
+
+    * Fix the end of the block of zero width characters which contains
+      the zero-width joiners and directional markings (Stephen Morgan, #5).
+      This fixes a regression introduced in 0.3.1, affecting code
+      points 0x2010 to 0x2030.
+
+  ## 0.3.1
+
+    * Improved handling of emojis.  Emojis are double-wide, but
+      previously this library did not treat them as such.  We now
+      have comprehensive support of emojis, including variation
+      modifiers and zero-width joiners, verified by a test suite.
+      Performance has been confirmed to be no worse for text without emojis.
+      (Stephen Morgan, #1).  API changes: export `realLengthNoShortcut`,
+      `isEmojiModifier`, `isEmojiVariation`, `isEmojiJoiner`.
+
+-------------------------------------------------------------------
 Tue Mar 16 09:55:00 UTC 2021 - psimons@suse.com
 
 - Update doclayout to version 0.3.0.2.

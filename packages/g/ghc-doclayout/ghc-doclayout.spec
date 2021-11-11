@@ -19,13 +19,15 @@
 %global pkg_name doclayout
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0.2
+Version:        0.3.1.1
 Release:        0
 Summary:        A prettyprinting library for laying out text documents
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-emojis-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
@@ -35,6 +37,7 @@ ExcludeArch:    %{ix86}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
