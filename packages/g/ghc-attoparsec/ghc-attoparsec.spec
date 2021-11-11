@@ -19,7 +19,7 @@
 %global pkg_name attoparsec
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Fast combinator parsing for bytestrings and text
 License:        BSD-3-Clause

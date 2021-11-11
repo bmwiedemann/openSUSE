@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:26:56 UTC 2021 - psimons@suse.com
+
+- Update attoparsec to version 0.14.2.
+  0.14.2
+
+  * Support for GHC 9.2.1
+
+-------------------------------------------------------------------
 Tue Mar 23 08:31:04 UTC 2021 - psimons@suse.com
 
 - Update attoparsec to version 0.14.1.
