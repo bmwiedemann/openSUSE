@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:52:55 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Don't recommend bbswitch, there's no relation to tlp (boo#1190631)
+
+-------------------------------------------------------------------
 Wed Oct  6 12:14:34 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - tlp-sleep.service does not exist anymore

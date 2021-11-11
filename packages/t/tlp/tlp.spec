@@ -35,7 +35,6 @@ Requires:       rfkill
 Requires:       usbutils
 Requires:       util-linux >= 2.17
 Recommends:     %{name}-rdw = %{version}
-Recommends:     bbswitch
 Recommends:     ethtool
 Recommends:     lsb-release
 Recommends:     smartmontools
