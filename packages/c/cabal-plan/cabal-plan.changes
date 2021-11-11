@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:50:47 UTC 2021 - psimons@suse.com
+
+- Update cabal-plan to version 0.7.2.1.
+  ## 0.7.2.1
+
+  * Support Cabal-3.6
+  * Support aeson-2.0.0.0
+  * Drop support for GHC prior 8.2
+
+-------------------------------------------------------------------
 Fri Sep 10 09:57:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax overconstrained deps on base-compat 

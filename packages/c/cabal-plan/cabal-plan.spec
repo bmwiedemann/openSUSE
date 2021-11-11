@@ -18,7 +18,7 @@
 
 %global pkg_name cabal-plan
 Name:           %{pkg_name}
-Version:        0.7.2.0
+Version:        0.7.2.1
 Release:        0
 Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later
@@ -99,9 +99,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver 'optics-core' '^>= 0.3' '^>= 0.4'
-cabal-tweak-dep-ver 'semialign' '^>= 1.1' '^>= 1.2'
-cabal-tweak-dep-ver 'base-compat' '^>=0.11' '^>= 0.12'
 
 %build
 %define cabal_configure_options -fexe
