@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:29:08 UTC 2021 - psimons@suse.com
+
+- Update indexed-traversable to version 0.1.2.
+  # 0.1.2 [2021-10-30]
+
+  - Changed `(<$>)` + `(<*>)` to `liftA2` to potentially avoid extra `fmap`.
+  - Add `(#..)`, coercive composition after a 2-parameter function.
+  - Switched references to lens 'Of'- functions to base functions.
+
+  Thanks to wygulmage for contributions.
+
+-------------------------------------------------------------------
 Wed Jul 28 07:43:08 UTC 2021 - psimons@suse.com
 
 - Update indexed-traversable to version 0.1.1 revision 1.

@@ -18,13 +18,12 @@
 
 %global pkg_name indexed-traversable
 Name:           ghc-%{pkg_name}
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        FunctorWithIndex, FoldableWithIndex, TraversableWithIndex
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-containers-devel
@@ -66,7 +65,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
