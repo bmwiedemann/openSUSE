@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:27:04 UTC 2021 - psimons@suse.com
+
+- Update typed-process to version 0.2.7.0.
+  ## 0.2.7.0
+
+  * Include empty argument in the show instance.
+
+-------------------------------------------------------------------
 Thu Oct  7 07:58:33 UTC 2021 - psimons@suse.com
 
 - Update typed-process to version 0.2.6.3.
