@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
@@ -49,6 +49,7 @@ to the 'yacc' tool for C.
 find . -type f -exec chmod -x {} +
 
 %build
+%define cabal_configure_options -f-bootstrap
 %ghc_bin_build
 cd doc
 autoreconf
@@ -57,31 +58,22 @@ autoreconf
 
 %install
 %ghc_bin_install
-install -D --mode=444 doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 # drop artifacts from autoconf that differ across builds to fix build-compare
 rm -rf doc/autom4te.cache doc/config.log doc/config.status
+
+install -D --mode=444 doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
 %cabal_test
 
 %files
 %license LICENSE
-%doc CHANGES README.md TODO doc examples
+%doc ChangeLog.md README.md doc examples
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %{_mandir}/man1/*
-%{_datadir}/%{name}-%{version}/GLR_Base
-%{_datadir}/%{name}-%{version}/GLR_Lib
-%{_datadir}/%{name}-%{version}/GLR_Lib-ghc
-%{_datadir}/%{name}-%{version}/GLR_Lib-ghc-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-coerce
-%{_datadir}/%{name}-%{version}/HappyTemplate-ghc
+%{_datadir}/%{name}-%{version}/GLR_Base.hs
+%{_datadir}/%{name}-%{version}/GLR_Lib.hs
+%{_datadir}/%{name}-%{version}/HappyTemplate.hs
 
 %changelog
