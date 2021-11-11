@@ -288,4 +288,12 @@
     <comment>- Update a valid URL of the Source field in spec. (forwarded request 909647 from yfjiang)</comment>
     <requestid>909736</requestid>
   </revision>
+  <revision rev="42" vrev="21">
+    <srcmd5>b044774a84ec1dd6501f335ea1e641dc</srcmd5>
+    <version>2.30.3</version>
+    <time>1636663110</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>930914</requestid>
+  </revision>
 </revisionlist>

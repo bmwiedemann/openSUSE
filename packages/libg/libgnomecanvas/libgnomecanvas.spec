@@ -26,8 +26,8 @@ URL:            https://gitlab.gnome.org/Archive/libgnomecanvas
 Source:         https://download.gnome.org/sources/%{name}/2.30/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 
+BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gail) >= 1.9.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.2.0
@@ -66,7 +66,6 @@ to develop applications that require these.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

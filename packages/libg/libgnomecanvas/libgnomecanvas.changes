@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:58:28 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+- Require intltool explicitly, it's needed by build.
+
+-------------------------------------------------------------------
 Mon Aug  2 01:36:12 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Update a valid URL of the Source field in spec.
