@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 11 16:00:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5
+  * Locations for error and warning messages have been improved.
+  * The `show` command now correctly prints all possible commands
+    to define a type when requested to show a type that does not
+    exist.
+  * A deprecated warning is now printed for a `register` array,
+    `enum`, `class`, `struct`, `union`, pointer, pointer to
+    member, reference, and rvalue reference between C++11 and
+    C++14. (Previously, a warning was printed only for built-in
+    types and `typedef`s.)
+
+-------------------------------------------------------------------
 Fri Oct 15 07:59:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.4
