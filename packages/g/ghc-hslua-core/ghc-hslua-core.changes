@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Nov  4 12:10:32 UTC 2021 - psimons@suse.com
+
+- Update hslua-core to version 2.0.0.2.
+  ## hslua-core 2.0.0.2
+
+  Released 2021-11-03.
+
+  - Fixed output of `pushTypeMismatchError` when there is no value
+    at the given index. Previously the function would report the
+    value as type `string` and now reports it as `no value`.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:26:50 UTC 2021 - psimons@suse.com
+
+- Add hslua-core at version 2.0.0.1.
+
