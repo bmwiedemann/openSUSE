@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:39:52 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.2.
+  texmath (0.12.3.2)
+
+    * OMML writer: remove m:nor element in math operators (#178).
+      This caused the document's main font, rather than the math
+      font, to be used in formatting operators, which is undesirable.
+
+-------------------------------------------------------------------
 Mon Aug 16 07:24:01 UTC 2021 - psimons@suse.com
 
 - Update texmath to version 0.12.3.1.
