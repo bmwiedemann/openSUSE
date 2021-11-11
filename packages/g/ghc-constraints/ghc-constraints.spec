@@ -19,7 +19,7 @@
 %global pkg_name constraints
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.13
+Version:        0.13.1
 Release:        0
 Summary:        Constraint manipulation
 License:        BSD-2-Clause

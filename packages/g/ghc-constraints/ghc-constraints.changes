@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:24:20 UTC 2021 - psimons@suse.com
+
+- Update constraints to version 0.13.1.
+  0.13.1 [2021.10.31]
+  -------------------
+  * Allow building with GHC 9.2.
+
+-------------------------------------------------------------------
+Tue Oct 19 07:21:55 UTC 2021 - psimons@suse.com
+
+- Update constraints to version 0.13 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Feb 19 23:03:15 UTC 2021 - psimons@suse.com
 
 - Update constraints to version 0.13.
