@@ -43,6 +43,7 @@ Sun Mar 25 10:05:47 UTC 2018 - mardnh@gmx.de
   * Fix race condition in handle_timeout()
   * Allow transferred argument to be optional in bulk APIs
   * Various other bug fixes and improvements
+  * Fix the inclusion of "sys/time.h" on PowerPC (bsc#1178376)
 
 -------------------------------------------------------------------
 Thu Mar 22 09:10:18 UTC 2018 - jengelh@inai.de
