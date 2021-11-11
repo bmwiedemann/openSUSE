@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:21:47 UTC 2021 - psimons@suse.com
+
+- Update git-lfs to version 1.1.2.
+  haskell-git-lfs (1.1.2) unstable; urgency=medium
+
+    * Expand aeson bounds to allow 2.x
+      (This may fix a DOS attack, although any impact on git-lfs has not been
+      determined.)
+    * Expand containers bounds to allow 0.5.x
+
+   -- Joey Hess <id@joeyh.name>  Mon, 18 Oct 2021 16:20:25 -0400
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

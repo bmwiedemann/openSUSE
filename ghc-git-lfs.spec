@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-git-lfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name git-lfs
 Name:           ghc-%{pkg_name}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Git-lfs protocol
 License:        AGPL-3.0-or-later
