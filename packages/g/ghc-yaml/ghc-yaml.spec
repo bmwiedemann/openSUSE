@@ -19,7 +19,7 @@
 %global pkg_name yaml
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.6.0
+Version:        0.11.7.0
 Release:        0
 Summary:        Support for parsing and rendering YAML documents
 License:        BSD-3-Clause
