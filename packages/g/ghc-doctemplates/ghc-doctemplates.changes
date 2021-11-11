@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 12 11:34:11 UTC 2021 - psimons@suse.com
+
+- Update doctemplates to version 0.10.0.1.
+  ## 0.10.0.1
+
+    * Don't rely on aeson Object being implemented as a HashMap.
+      This change is needed for doctemplates to compile against aeson 2.0.0.0.
+
+-------------------------------------------------------------------
 Mon Jul 19 07:05:18 UTC 2021 - psimons@suse.com
 
 - Update doctemplates to version 0.10.

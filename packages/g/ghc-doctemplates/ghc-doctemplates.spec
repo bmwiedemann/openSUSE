@@ -19,7 +19,7 @@
 %global pkg_name doctemplates
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10
+Version:        0.10.0.1
 Release:        0
 Summary:        Pandoc-style document templates
 License:        BSD-3-Clause
@@ -38,7 +38,6 @@ BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-text-conversions-devel
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
