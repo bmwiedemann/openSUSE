@@ -192,4 +192,13 @@
   modesetting driver for X since a long time now (boo#1186721)</comment>
     <requestid>896889</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c62171ca5c49b8485d39a0fb01b68eb0</srcmd5>
+    <version>1.0.17</version>
+    <time>1636662948</time>
+    <user>dimstar_suse</user>
+    <comment>- U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
+  * fixes build aginst xorg-server 21.1</comment>
+    <requestid>927989</requestid>
+  </revision>
 </revisionlist>

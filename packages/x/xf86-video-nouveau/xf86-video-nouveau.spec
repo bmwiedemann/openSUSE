@@ -25,6 +25,7 @@ Group:          System/X11/Servers/XF86_4
 URL:            https://nouveau.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Patch0:         N_xf86-video-nouveau_nva3-noaccel-info.patch
+Patch1:         U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
 BuildRequires:  libtool
 BuildRequires:  pciutils-devel
 BuildRequires:  pkgconfig
@@ -47,6 +48,7 @@ cards. “Nouveau” [nuvo] is the French word for “new”.
 %prep
 %setup -q
 %patch0 -p1 -F 1 -b .nva3info
+%patch1 -p1
 
 %build
 autoreconf -fi

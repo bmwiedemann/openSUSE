@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 14:40:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_nouveau-fixup-driver-for-new-X-server-ABI.patch 
+  * fixes build aginst xorg-server 21.1 
+
+-------------------------------------------------------------------
 Wed Jun  2 10:08:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer autoinstall the package depending on PCI ID; we have
