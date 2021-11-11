@@ -8,14 +8,14 @@ Signed-off-by: Egbert Eich <eich@suse.com>
 
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- hw/xfree86/vbe/vbe.c | 147 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- hw/xfree86/vbe/vbe.h |   3 ++
+ hw/xfree86/in10/vbe.c | 147 ++++++++++++++++++++++++++++++++++++++++++++++++++-
+ hw/xfree86/in10/vbe.h |   3 ++
  2 files changed, 149 insertions(+), 1 deletion(-)
 
-diff --git a/hw/xfree86/vbe/vbe.c b/hw/xfree86/vbe/vbe.c
-index 39f0cef..179d4c6 100644
---- a/hw/xfree86/vbe/vbe.c
-+++ b/hw/xfree86/vbe/vbe.c
+Index: xorg-server-21.1.0/hw/xfree86/int10/vbe.c
+===================================================================
+--- xorg-server-21.1.0.orig/hw/xfree86/int10/vbe.c
++++ xorg-server-21.1.0/hw/xfree86/int10/vbe.c
 @@ -20,6 +20,28 @@
  #include "vbe.h"
  #include <X11/extensions/dpmsconst.h>
@@ -91,7 +91,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return NULL;
-@@ -458,6 +486,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode, VbeCRTCInfoBlock * block)
+@@ -458,6 +486,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode,
         Output: AX = Status
         (All other registers are preserved)
       */
@@ -99,7 +99,7 @@ index 39f0cef..179d4c6 100644
      pVbe->pInt10->num = 0x10;
      pVbe->pInt10->ax = 0x4f02;
      pVbe->pInt10->bx = mode;
-@@ -471,6 +500,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode, VbeCRTCInfoBlock * block)
+@@ -471,6 +500,7 @@ VBESetVBEMode(vbeInfoPtr pVbe, int mode,
          pVbe->pInt10->bx &= ~(1 << 11);
  
      xf86ExecX86int10(pVbe->pInt10);
@@ -107,7 +107,7 @@ index 39f0cef..179d4c6 100644
  
      return (R16(pVbe->pInt10->ax) == 0x4f);
  }
-@@ -488,10 +518,12 @@ VBEGetVBEMode(vbeInfoPtr pVbe, int *mode)
+@@ -488,10 +518,12 @@ VBEGetVBEMode(vbeInfoPtr pVbe, int *mode
         BX := Current video mode
         (All other registers are preserved)
       */
@@ -120,7 +120,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) == 0x4f) {
          *mode = R16(pVbe->pInt10->bx);
-@@ -521,12 +553,14 @@ VBEGetModeInfo(vbeInfoPtr pVbe, int mode)
+@@ -521,12 +553,14 @@ VBEGetModeInfo(vbeInfoPtr pVbe, int mode
         AX    := status
         (All other registers are preserved)
       */
@@ -135,7 +135,7 @@ index 39f0cef..179d4c6 100644
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return NULL;
  
-@@ -586,6 +620,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+@@ -586,6 +620,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveR
         (All other registers are preserved)
       */
  
@@ -143,7 +143,7 @@ index 39f0cef..179d4c6 100644
      if ((pVbe->version & 0xff00) > 0x100) {
          int screen = pVbe->pInt10->pScrn->scrnIndex;
  
-@@ -597,9 +632,9 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+@@ -597,9 +632,9 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveR
              pVbe->pInt10->dx = 0;
              pVbe->pInt10->cx = 0x000f;
              xf86ExecX86int10(pVbe->pInt10);
@@ -154,7 +154,7 @@ index 39f0cef..179d4c6 100644
              if (function == MODE_SAVE) {
                  int npages = (R16(pVbe->pInt10->bx) * 64) / 4096 + 1;
  
-@@ -618,6 +653,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+@@ -618,6 +653,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveR
  
              if (!*memory)
                  return FALSE;
@@ -162,7 +162,7 @@ index 39f0cef..179d4c6 100644
              pVbe->pInt10->num = 0x10;
              pVbe->pInt10->ax = 0x4f04;
              switch (function) {
-@@ -635,6 +671,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveRestoreFunction function,
+@@ -635,6 +671,7 @@ VBESaveRestore(vbeInfoPtr pVbe, vbeSaveR
              pVbe->pInt10->es = SEG_ADDR(*real_mode_pages);
              pVbe->pInt10->bx = SEG_OFF(*real_mode_pages);
              xf86ExecX86int10(pVbe->pInt10);
@@ -170,7 +170,7 @@ index 39f0cef..179d4c6 100644
              return (R16(pVbe->pInt10->ax) == 0x4f);
  
          }
-@@ -652,11 +689,13 @@ VBEBankSwitch(vbeInfoPtr pVbe, unsigned int iBank, int window)
+@@ -652,11 +689,13 @@ VBEBankSwitch(vbeInfoPtr pVbe, unsigned
  
         Output:
       */
@@ -184,7 +184,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return FALSE;
-@@ -690,12 +729,14 @@ VBESetGetLogicalScanlineLength(vbeInfoPtr pVbe, vbeScanwidthCommand command,
+@@ -690,12 +729,14 @@ VBESetGetLogicalScanlineLength(vbeInfoPt
         DX := Maximum Number of Scan Lines
       */
  
@@ -199,7 +199,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return FALSE;
-@@ -715,12 +756,15 @@ VBESetGetLogicalScanlineLength(vbeInfoPtr pVbe, vbeScanwidthCommand command,
+@@ -715,12 +756,15 @@ VBESetGetLogicalScanlineLength(vbeInfoPt
  Bool
  VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y, Bool wait_retrace)
  {
@@ -215,7 +215,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return FALSE;
-@@ -731,10 +775,12 @@ VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y, Bool wait_retrace)
+@@ -731,10 +775,12 @@ VBESetDisplayStart(vbeInfoPtr pVbe, int
  Bool
  VBEGetDisplayStart(vbeInfoPtr pVbe, int *x, int *y)
  {
@@ -228,7 +228,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return FALSE;
-@@ -761,6 +807,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVbe, int bits)
+@@ -761,6 +807,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVb
         BH := Current number of bits of color per primary
       */
  
@@ -236,7 +236,7 @@ index 39f0cef..179d4c6 100644
      pVbe->pInt10->num = 0x10;
      pVbe->pInt10->ax = 0x4f08;
      if (!bits)
-@@ -768,6 +815,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVbe, int bits)
+@@ -768,6 +815,7 @@ VBESetGetDACPaletteFormat(vbeInfoPtr pVb
      else
          pVbe->pInt10->bx = (bits & 0x00ff) << 8;
      xf86ExecX86int10(pVbe->pInt10);
@@ -244,7 +244,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return 0;
-@@ -805,6 +853,8 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
+@@ -805,6 +853,8 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bo
         DS     := Selector for memory mapped registers
       */
  
@@ -253,7 +253,7 @@ index 39f0cef..179d4c6 100644
      pVbe->pInt10->num = 0x10;
      pVbe->pInt10->ax = 0x4f09;
      if (!secondary)
-@@ -818,6 +868,7 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
+@@ -818,6 +868,7 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bo
      if (set)
          memcpy(pVbe->memory, data, num * sizeof(CARD32));
      xf86ExecX86int10(pVbe->pInt10);
@@ -275,7 +275,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return NULL;
-@@ -967,6 +1020,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+@@ -967,6 +1020,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mo
         AX := VBE Return Status
         ECX := Closest pixel clock
       */
@@ -283,7 +283,7 @@ index 39f0cef..179d4c6 100644
  
      pVbe->pInt10->num = 0x10;
      pVbe->pInt10->ax = 0x4f0b;
-@@ -974,6 +1028,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+@@ -974,6 +1028,7 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mo
      pVbe->pInt10->cx = clock;
      pVbe->pInt10->dx = mode;
      xf86ExecX86int10(pVbe->pInt10);
@@ -291,7 +291,7 @@ index 39f0cef..179d4c6 100644
  
      if (R16(pVbe->pInt10->ax) != 0x4f)
          return 0;
-@@ -981,6 +1036,92 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int clock)
+@@ -981,6 +1036,92 @@ VBEGetPixelClock(vbeInfoPtr pVbe, int mo
      return pVbe->pInt10->cx;
  }
  
@@ -416,11 +416,11 @@ index 39f0cef..179d4c6 100644
  
      if ((pVbe->pInt10->ax & 0xff) != 0x4f) {
          xf86DrvMsgVerb(screen, X_INFO, 3, "VESA VBE PanelID invalid\n");
-diff --git a/hw/xfree86/vbe/vbe.h b/hw/xfree86/vbe/vbe.h
-index 3907c53..9b37f46 100644
---- a/hw/xfree86/vbe/vbe.h
-+++ b/hw/xfree86/vbe/vbe.h
-@@ -336,6 +336,9 @@ VBEVesaSaveRestore(vbeInfoPtr pVbe, vbeSaveRestorePtr vbe_sr,
+Index: xorg-server-21.1.0/hw/xfree86/int10/vbe.h
+===================================================================
+--- xorg-server-21.1.0.orig/hw/xfree86/int10/vbe.h
++++ xorg-server-21.1.0/hw/xfree86/int10/vbe.h
+@@ -335,6 +335,9 @@ VBEVesaSaveRestore(vbeInfoPtr pVbe, vbeS
  
  extern _X_EXPORT int VBEGetPixelClock(vbeInfoPtr pVbe, int mode, int Clock);
  extern _X_EXPORT Bool VBEDPMSSet(vbeInfoPtr pVbe, int mode);

@@ -21,18 +21,18 @@ provider is there.
  randr/randr.c | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Index: xorg-server-1.20.5/randr/randr.c
+Index: xorg-server-21.1.0/randr/randr.c
 ===================================================================
---- xorg-server-1.20.5.orig/randr/randr.c
-+++ xorg-server-1.20.5/randr/randr.c
-@@ -647,7 +647,9 @@ RRTellChanged(ScreenPtr pScreen)
+--- xorg-server-21.1.0.orig/randr/randr.c
++++ xorg-server-21.1.0/randr/randr.c
+@@ -651,7 +651,9 @@ RRTellChanged(ScreenPtr pScreen)
  
-         xorg_list_for_each_entry(iter, &master->slave_list, slave_head) {
-             pSlaveScrPriv = rrGetScrPriv(iter);
--            pSlaveScrPriv->provider->changed = FALSE;
-+            if (pSlaveScrPriv->provider) {
-+                pSlaveScrPriv->provider->changed = FALSE;
-+            }
-             if (iter->is_output_slave) {
-                 for (i = 0; i < pSlaveScrPriv->numOutputs; i++)
-                     pSlaveScrPriv->outputs[i]->changed = FALSE;
+         xorg_list_for_each_entry(iter, &primary->secondary_list, secondary_head) {
+             pSecondaryScrPriv = rrGetScrPriv(iter);
+-            pSecondaryScrPriv->provider->changed = FALSE;
++            if (pSecondaryScrPriv->provider) {
++                pSecondaryScrPriv->provider->changed = FALSE;
++            } 
+             if (iter->is_output_secondary) {
+                 for (i = 0; i < pSecondaryScrPriv->numOutputs; i++)
+                     pSecondaryScrPriv->outputs[i]->changed = FALSE;

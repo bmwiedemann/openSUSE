@@ -29,7 +29,7 @@ else
 	echo ""
 	echo ""
 	echo "Trying to guess the right tarball"
-	sh $0 --tar xserver-*.tar.xz
+	sh $0 --tar xorg-server-*.tar.xz
 	echo "... Please verify if the result makes sense"
 	exit 2
 fi

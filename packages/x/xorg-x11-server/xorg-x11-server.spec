@@ -40,7 +40,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.13
+Version:        21.1.1
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -72,7 +72,6 @@ BuildRequires:  pkgconfig(bigreqsproto) >= 1.1.0
 BuildRequires:  pkgconfig(compositeproto)
 BuildRequires:  pkgconfig(damageproto) >= 1.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
-BuildRequires:  pkgconfig(dmx) >= 1.0.99.1
 BuildRequires:  pkgconfig(dri) >= 7.8.0
 BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(dri3proto)
@@ -96,6 +95,7 @@ BuildRequires:  pkgconfig(inputproto) >= 1.9.99.902
 BuildRequires:  pkgconfig(kbproto) >= 1.0.3
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
 BuildRequires:  pkgconfig(pixman-1) >= 0.24
@@ -207,6 +207,7 @@ Patch1:         N_default-module-path.diff
 Patch2:         N_zap_warning_xserver.diff
 Patch3:         N_driver-autoconfig.diff
 Patch4:         N_fix_fglrx_screendepth_issue.patch
+Patch5:         U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
 Patch6:         N_fix-dpi-values.diff
 Patch7:         N_Install-Avoid-failure-on-wrapper-installation.patch
 Patch8:         u_xorg-wrapper-Drop-supplemental-group-IDs.patch
@@ -219,7 +220,6 @@ Patch101:       u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grab
 # PATCH-FIX-UPSTREAM u_x86emu-include-order.patch schwab@suse.de -- Change include order to avoid conflict with system header, remove duplicate definitions
 
 Patch104:       u_xorg-server-xdmcp.patch
-Patch112:       u_render-Cast-color-masks-to-unsigned-long-before-shifting-them.patch
 
 Patch115:       N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch
 
@@ -241,13 +241,7 @@ Patch1222:      b_sync-fix.patch
 
 Patch1401:      u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
 
-Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
-
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
-
-Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
-
-Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
 
 Patch1900:      u_no-lto-for-tests.patch
 
@@ -257,7 +251,7 @@ Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 This package contains the X.Org Server.
 
 %package extra
-Summary:        Additional Xservers (Xdmx, Xephyr, Xnest)
+Summary:        Additional Xservers Xephyr, Xnest)
 Group:          System/X11/Servers/XF86_4
 Requires:       Mesa
 Requires:       xkbcomp
@@ -267,7 +261,7 @@ Provides:       xorg-x11-Xnest
 Obsoletes:      xorg-x11-Xnest
 
 %description extra
-This package contains additional Xservers (Xdmx, Xephyr, Xnest).
+This package contains additional Xservers (Xephyr, Xnest).
 
 %package Xvfb
 Summary:        Virtual Xserver Xvfb
@@ -368,6 +362,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch2 -p1
 %patch3 -p0
 %patch4 -p0
+# back to 96 dpi fix
+%patch5 -p1 -R
 %patch6 -p0
 %patch7 -p1
 %patch8 -p1
@@ -379,7 +375,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch100 -p1
 #%patch101 -p1
 %patch104 -p1
-%patch112 -p1
 %patch115 -p1
 %patch117 -p1
 %patch160 -p1
@@ -388,7 +383,13 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 ### not applicable anymore
 #%patch210 -p1
 %patch215 -p1
-%patch1000 -p1
+### apparently supersed by upstream 
+###  commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
+###  Author: Dave Airlie <airlied@redhat.com>
+###  Date:   Fri Aug 17 09:49:24 2012 +1000
+###
+###    xf86: autobind GPUs to the screen
+#%patch1000 -p1
 
 ### disabled for now
 #%patch1162 -p1
@@ -397,10 +398,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 ### patch222 might not be applicable anymore
 #%patch1222 -p1
 %patch1401 -p1
-%patch1502 -p1
 %patch1503 -p1
-%patch1600 -p1
-%patch1801 -p1
 %patch1900 -p1
 %patch1910 -p1
 
@@ -422,7 +420,6 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
             --enable-dri2 \
             --enable-dri3 \
             --enable-glamor \
-            --enable-dmx \
             --enable-xnest \
             --enable-kdrive \
             --enable-kdrive-evdev \
@@ -606,7 +603,6 @@ fi
 %dir %{_libdir}/xorg
 %{_libdir}/xorg/protocol.txt
 %{_mandir}/man1/*
-%exclude %{_mandir}/man1/Xdmx.1*
 %exclude %{_mandir}/man1/Xephyr.1*
 %exclude %{_mandir}/man1/Xnest.1*
 %dir %{_datadir}/factory
@@ -622,7 +618,6 @@ fi
 %endif
 %{_bindir}/X
 
-%{_bindir}/cvt
 %{_bindir}/gtf
 %{_libdir}/xorg/modules/
 %{_mandir}/man4/*
@@ -649,19 +644,6 @@ fi
 %defattr(-,root,root)
 %{_bindir}/Xephyr
 %{_bindir}/Xnest
-%{_bindir}/Xdmx
-%{_bindir}/dmxaddinput
-%{_bindir}/dmxaddscreen
-%{_bindir}/dmxinfo
-%{_bindir}/dmxreconfig
-%{_bindir}/dmxresize
-%{_bindir}/dmxrminput
-%{_bindir}/dmxrmscreen
-%{_bindir}/dmxtodmx
-%{_bindir}/dmxwininfo
-%{_bindir}/vdltodmx
-%{_bindir}/xdmxconfig
-%{_mandir}/man1/Xdmx.1*
 %{_mandir}/man1/Xephyr.1*
 %{_mandir}/man1/Xnest.1*
 

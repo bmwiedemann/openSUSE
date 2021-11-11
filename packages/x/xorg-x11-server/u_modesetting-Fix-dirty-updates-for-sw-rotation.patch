@@ -19,11 +19,11 @@ Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
  .../drivers/modesetting/drmmode_display.h     |  2 +
  3 files changed, 63 insertions(+), 22 deletions(-)
 
-diff --git a/hw/xfree86/drivers/modesetting/driver.c b/hw/xfree86/drivers/modesetting/driver.c
-index ef4a314..deca1ed 100644
---- a/hw/xfree86/drivers/modesetting/driver.c
-+++ b/hw/xfree86/drivers/modesetting/driver.c
-@@ -503,9 +503,41 @@ GetRec(ScrnInfoPtr pScrn)
+Index: xorg-server-21.1.0/hw/xfree86/drivers/modesetting/driver.c
+===================================================================
+--- xorg-server-21.1.0.orig/hw/xfree86/drivers/modesetting/driver.c
++++ xorg-server-21.1.0/hw/xfree86/drivers/modesetting/driver.c
+@@ -515,9 +515,41 @@ GetRec(ScrnInfoPtr pScrn)
      return TRUE;
  }
  
@@ -67,7 +67,7 @@ index ef4a314..deca1ed 100644
  {
      modesettingPtr ms = modesettingPTR(scrn);
      RegionPtr dirty = DamageRegion(damage);
-@@ -520,13 +552,9 @@ dispatch_dirty_region(ScrnInfoPtr scrn,
+@@ -532,13 +564,9 @@ dispatch_dirty_region(ScrnInfoPtr scrn,
          if (!clip)
              return -ENOMEM;
  
@@ -84,7 +84,7 @@ index ef4a314..deca1ed 100644
  
          /* TODO query connector property to see if this is needed */
          ret = drmModeDirtyFB(ms->fd, fb_id, clip, num_cliprects);
-@@ -549,20 +577,31 @@ static void
+@@ -561,20 +589,31 @@ static void
  dispatch_dirty(ScreenPtr pScreen)
  {
      ScrnInfoPtr scrn = xf86ScreenToScrn(pScreen);
@@ -127,8 +127,8 @@ index ef4a314..deca1ed 100644
      }
  }
  
-@@ -574,7 +613,7 @@ dispatch_dirty_pixmap(ScrnInfoPtr scrn, xf86CrtcPtr crtc, PixmapPtr ppix)
-     DamagePtr damage = ppriv->slave_damage;
+@@ -586,7 +625,7 @@ dispatch_dirty_pixmap(ScrnInfoPtr scrn,
+     DamagePtr damage = ppriv->secondary_damage;
      int fb_id = ppriv->fb_id;
  
 -    dispatch_dirty_region(scrn, ppix, damage, fb_id);
@@ -136,11 +136,11 @@ index ef4a314..deca1ed 100644
  }
  
  static void
-diff --git a/hw/xfree86/drivers/modesetting/drmmode_display.c b/hw/xfree86/drivers/modesetting/drmmode_display.c
-index 88992f5..b29db12 100644
---- a/hw/xfree86/drivers/modesetting/drmmode_display.c
-+++ b/hw/xfree86/drivers/modesetting/drmmode_display.c
-@@ -598,7 +598,7 @@ drmmode_crtc_can_test_mode(xf86CrtcPtr crtc)
+Index: xorg-server-21.1.0/hw/xfree86/drivers/modesetting/drmmode_display.c
+===================================================================
+--- xorg-server-21.1.0.orig/hw/xfree86/drivers/modesetting/drmmode_display.c
++++ xorg-server-21.1.0/hw/xfree86/drivers/modesetting/drmmode_display.c
+@@ -627,7 +627,7 @@ drmmode_crtc_can_test_mode(xf86CrtcPtr c
      return ms->atomic_modeset;
  }
  
@@ -149,19 +149,16 @@ index 88992f5..b29db12 100644
  drmmode_crtc_get_fb_id(xf86CrtcPtr crtc, uint32_t *fb_id, int *x, int *y)
  {
      drmmode_crtc_private_ptr drmmode_crtc = crtc->driver_private;
-diff --git a/hw/xfree86/drivers/modesetting/drmmode_display.h b/hw/xfree86/drivers/modesetting/drmmode_display.h
-index 59d79e9..0ed96ab 100644
---- a/hw/xfree86/drivers/modesetting/drmmode_display.h
-+++ b/hw/xfree86/drivers/modesetting/drmmode_display.h
-@@ -297,6 +297,8 @@ void drmmode_copy_fb(ScrnInfoPtr pScrn, drmmode_ptr drmmode);
+Index: xorg-server-21.1.0/hw/xfree86/drivers/modesetting/drmmode_display.h
+===================================================================
+--- xorg-server-21.1.0.orig/hw/xfree86/drivers/modesetting/drmmode_display.h
++++ xorg-server-21.1.0/hw/xfree86/drivers/modesetting/drmmode_display.h
+@@ -311,6 +311,8 @@ void drmmode_copy_fb(ScrnInfoPtr pScrn,
  
  int drmmode_crtc_flip(xf86CrtcPtr crtc, uint32_t fb_id, uint32_t flags, void *data);
  
 +Bool drmmode_crtc_get_fb_id(xf86CrtcPtr crtc, uint32_t *fb_id, int *x, int *y);
 +
  void drmmode_set_dpms(ScrnInfoPtr scrn, int PowerManagementMode, int flags);
+ void drmmode_crtc_set_vrr(xf86CrtcPtr crtc, Bool enabled);
  
- #endif
--- 
-2.31.1
-

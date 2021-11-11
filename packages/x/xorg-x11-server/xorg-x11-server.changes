@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Nov 11 08:35:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
+  * reverse apply this one to go back to fixed 96 dpi (gitlab 
+    fdo/xserver issue#1241) 
+- N_fix-dpi-values.diff
+  * back to version for xserver < 21.1.0
+
+-------------------------------------------------------------------
+Sun Nov  7 09:22:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.1
+  * s/__/@/ in inputtestdrv manpage
+  * Make xf86CompatOutput() return NULL when there are no privates
+  * Makefile.am: Add missing meson build files to release tarball 
+
+-------------------------------------------------------------------
+Wed Oct 27 11:58:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.0
+  * The meson support is now fully mature. While autotools support
+    will still be kept for this release series, it will be dropped
+    afterwards.
+  * Glamor support for Xvfb.
+  * Variable refresh rate support in the modesetting driver.
+  * XInput 2.4 support which adds touchpad gestures.
+  * DMX DDX has been removed.
+  * X server now correctly reports display DPI in more cases. This
+    may affect rendering of client applications that have their own
+    workarounds for hi-DPI screens.
+  * A large number of small features and various bug fixes.
+- updated xorg-server-provides
+- supersedes patches
+  * U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
+  * U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
+  * U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
+  * u_render-Cast-color-masks-to-unsigned-long-before-shifting-them.patch
+- refreshed patches
+  * N_fix-dpi-values.diff
+  * N_zap_warning_xserver.diff
+  * u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
+  * u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
+  * u_vesa-Add-VBEDPMSGetCapabilities-VBEDPMSGet.patch
+- disabled n_xserver-optimus-autoconfig-hack.patch, which I believe is 
+  superseded by:
+  commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
+  Author: Dave Airlie <airlied@redhat.com>
+  Date:   Fri Aug 17 09:49:24 2012 +1000
+
+    xf86: autobind GPUs to the screen
+- added pkgconfig(libxcvt)
+- cvt binary moved to libxcvt0 package
+
+-------------------------------------------------------------------
 Fri Jul 30 15:07:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.20.13
