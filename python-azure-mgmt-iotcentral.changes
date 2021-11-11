@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:43:31 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 9.0.0.0 to ensure
+  proper upgrade from previous version 9.0.0b1
+
+-------------------------------------------------------------------
 Fri Aug  6 13:37:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -96,4 +96,17 @@
 - Update Requires from setup.py (forwarded request 910498 from glaubitz)</comment>
     <requestid>910505</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a904d4400ecd97a113acf2ded7e9b54b</srcmd5>
+    <version>9.0.0.0</version>
+    <time>1636663105</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 9.0.0.0 to ensure
+  proper upgrade from previous version 9.0.0b1 (forwarded request 930889 from glaubitz)</comment>
+    <requestid>930892</requestid>
+  </revision>
 </revisionlist>
