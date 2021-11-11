@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  2 11:34:56 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing libopenssl1_1-hmac 32bit package
+
+-------------------------------------------------------------------
 Tue Aug 24 19:32:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1l:
