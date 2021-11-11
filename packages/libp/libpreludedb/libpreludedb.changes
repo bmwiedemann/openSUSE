@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  1 04:13:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove python-devel Requires on devel-bindings package
+
+-------------------------------------------------------------------
 Sun Oct 25 18:06:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libpreludedb 5.2.0:

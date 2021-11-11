@@ -1,7 +1,7 @@
 #
 # spec file for package libpreludedb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,6 @@ database independently of the type/format of the database.
 Summary:        Development files for libpreludedb
 Group:          Development/Libraries/C and C++
 Requires:       libpreludedb-devel = %{version}
-Requires:       python-devel
 Requires:       python3-devel
 Requires:       swig
 
