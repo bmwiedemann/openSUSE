@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-silently
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name silently
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.5.1
+Version:        1.2.5.2
 Release:        0
 Summary:        Prevent or capture writing to stdout and other handles
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ BuildRequires:  ghc-temporary-devel
 %endif
 
 %description
-Prevent or capture writing to stdout and other handles.
+Prevent or capture writing to stdout, stderr, and other handles.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -70,5 +70,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md README.md
 
 %changelog
