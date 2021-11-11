@@ -58,6 +58,7 @@ Source17:       tigervnc.firewalld
 Source18:       tigervnc-https.firewalld
 Source19:       xvnc.target
 Source21:       xvnc-novnc.service.in
+Source22:       vnc.sysusers
 Patch1:         tigervnc-newfbsize.patch
 Patch2:         tigervnc-clean-pressed-key-on-exit.patch
 Patch3:         u_tigervnc-ignore-epipe-on-write.patch
@@ -75,6 +76,8 @@ Patch21:        U_0001-Properly-store-certificate-exceptions.patch
 Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
 Patch23:        n_utilize-system-crypto-policies.patch
 Patch24:        tigervnc-FIPS-use-RFC7919.patch
+Patch25:        u_tigervnc-211.patch
+Patch26:        xserver211.patch
 Provides:       tightvnc = 1.3.9
 Obsoletes:      tightvnc < 1.3.9
 Provides:       vnc
@@ -90,8 +93,8 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  nasm
-BuildRequires:  xorg-x11-server-sdk
-BuildRequires:  xorg-x11-server-source
+BuildRequires:  xorg-x11-server-sdk >= 21.1.0
+BuildRequires:  xorg-x11-server-source >= 21.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xproto)
@@ -103,8 +106,9 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  mozilla-nss
 BuildRequires:  pam-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  xorg-x11-libICE-devel
 BuildRequires:  xorg-x11-libSM-devel
@@ -159,8 +163,8 @@ extensions for advanced authentication methods and TLS encryption.
 %package -n xorg-x11-Xvnc
 Summary:        TigerVNC implementation of Xvnc
 Group:          System/X11/Servers/XF86_4
-Requires(post): /usr/sbin/useradd
-Requires(post): /usr/sbin/groupadd
+Requires(pre):  group(shadow)
+%sysusers_requires
 Requires(post): /bin/awk
 Requires(post): systemd
 %if %{use_firewalld}
@@ -269,13 +273,16 @@ It maps common x11vnc arguments to x0vncserver arguments.
 %patch23 -p1
 %endif
 %patch24 -p1
+%patch25 -p0
 
 cp -r %{_prefix}/src/xserver/* unix/xserver/
 pushd unix/xserver
-patch -p1 < ../xserver120.patch
+#patch -p1 < ../xserver120.patch
+%patch26 -p1
 popd
 
 %build
+%sysusers_generate_pre %{SOURCE22} xorg-x11-Xvnc vnc.conf
 export CXXFLAGS="%optflags"
 export CFLAGS="%optflags"
 sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
@@ -368,6 +375,8 @@ install -D %{SOURCE16} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
 install -D %{SOURCE19} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
 install -D xvnc-novnc.service -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 
+install -Dm0644 %{SOURCE22} %{buildroot}%{_sysusersdir}/vnc.conf
+
 rm -rf %{buildroot}%{_datadir}/doc/tigervnc-*
 
 %find_lang '%{name}'
@@ -386,14 +395,8 @@ if [ "$1" = 0 ] ; then
 fi
 %endif
 
-%pre -n xorg-x11-Xvnc
+%pre -n xorg-x11-Xvnc -f xorg-x11-Xvnc.pre
 %service_add_pre xvnc.socket
-
-getent group %{vncgroup} > /dev/null || groupadd -r %{vncgroup} || :
-getent passwd %{vncuser} > /dev/null || useradd -r -g %{vncgroup} -d %{_sharedstatedir}/empty -s /sbin/nologin -c "user for VNC" %{vncuser} || :
-# add vnc user to shadow group. (bsc#980326)
-# more details about the reasoning in bsc#1162951
-usermod -G shadow -a %{vncuser} || :
 
 %post -n xorg-x11-Xvnc
 %service_add_post xvnc.socket
@@ -487,6 +490,7 @@ fi
 %{_unitdir}/xvnc@.service
 %{_unitdir}/xvnc.socket
 %{_unitdir}/xvnc.target
+%{_sysusersdir}/vnc.conf
 %{_sbindir}/rcxvnc
 
 %exclude %{_sharedstatedir}/xkb/compiled/README.compiled
