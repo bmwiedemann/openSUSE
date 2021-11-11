@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 10 14:51:22 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.5.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-3.1.2.5/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Oct  8 07:37:52 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.4.
+  ## Version 3.1.2.4
+
+  * Regenerate `configure` script with autoconf-2.69 to temporarily fix broken cabal-3.4.0.0 on Windows. Note that the old one was generated with autoconf-2.71.
+    [#513](https://github.com/haskell/network/issues/513)
+
+-------------------------------------------------------------------
 Thu Oct  7 07:57:19 UTC 2021 - psimons@suse.com
 
 - Update network to version 3.1.2.3.
