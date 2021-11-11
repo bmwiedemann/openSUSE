@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Mon Nov 8 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.4
+
+  Added:
+  * "AESContext", RSA public keys, encryption, decryption, sign, and verify
+  * "HMACContext"
+  * Revamped UI theme editor
+  * Support for translating the class reference
+  * Initial support for the RISC-V architecture
+  * Rooms and portals-based occlusion culling
+  * Ring emitter for 3D particles
+  * Structs and fragment-to-light varyings in shaders
+  * Global const arrays in shaders
+  * Object validity checks
+  * High quality tonemapper
+  * Auto-reload scripts with external editor
+  * Allow to create a node at specific position
+  * Assign value to property by dropping to scene tree
+  * Allow dropping property path into script editor
+  * Save branch as scene by dropping to filesystem
+  * Implement a "%command%" placeholder in the Main Run Args settin
+  * Keyboard shortcuts to the project manager
+  * History navigation in the script editor using extra mouse buttons
+  * Focus font color for Button and derivatives
+  * ButtonGroup: "pressed" signal
+  * ColorPicker: Display previous color and allow selecting it back
+  * DynamicFont: Allow using WOFF fonts
+  * ScrollBar: "increment_pressed" and "decrement_pressed" icons
+  * Theme: support for partial custom editor theme
+  * Theme: API to retrieve the default font
+  * Improved glTF module with scene export support
+  * Lossless WebP encoding
+  * Input: physical scancodes to fix non-latin layout scancodes 
+  * Allow checking for exact matches with action events
+  * Multiple address resolution in DNS requests
+  * Enable setting the number of physics solver iterations
+  * Heightmap collision shape support in Physics 3D
+  * Expose collider RID in 2D/3D kinematic collision
+  * Support for disabling physics on "SoftBody"
+  * GLES2: Add basic support for CPU blendshapes
+  * GLES3: Add support for contrast-adaptive sharpening in 3D
+  * Soft shadows for the CPU lightmapper
+  * High quality glow mode
+  * Horizon specular occlusion
+  * Shaders: "TIME" available in custom functions by default
+  * Allow dropping custom node scripts in VisualScript editor
+  * Frame delta smoothing
+  * OS data directory getter methods exposed
+  * Getter for the project data directory
+  * BVH thread safety
+  * Property "Engine.print_error_messages" to disable printing errors
+  * Setting to configure number of threads for lightmap baking
+  * Allow for platform "Thread" implementation override
+  * Method "Thread.is_alive()" to check if the thread is still doing work
+  * Method "String::parse_url()" for parsing URLs
+  * Property "dtls_hostname" for ENet
+  * Animation "reset" track
+  * Options to clean/simplify convex hull generated from mesh
+  * 2D Viewport scale factor property
+  * LSP: support for custom host setting
+
+  Changed:
+  * Most recently added current "Camera2D" takes precedence
+  * Add Node name to "print()" of all nodes
+  * Thread callbacks can now take optional parameters
+  * "AStar.get_available_point_id()" returns 0 instead of 1 when empty
+  * Button: Don't change hovering during focus events
+  * DynamicFont: Re-add support for kerning
+  * LineEdit: Double click selects words, triple click selects all the content
+  * Return RID instead of Object ID in "area"-/"body_shape_entered"/-"exited"
+  * "VisualServer" now sorts based on AABB position
+  * Default shader specular render mode to "SCHLICK_GGX"
+
+  Fixed:
+  * Make all file access 64-bit
+  * Ignore property groups and categories in GDScript code completion
+  * LSP: "SymbolKind" reporting wrong types and better "get_node()" parsing
+  * Breaking Compatibility: swapped axes in "OpenSimplexNoise.get_image()"
+
+  And much more:
+  https://downloads.tuxfamily.org/godotengine/3.4/Godot_v3.4-stable_changelog_chrono.txt
+
+- "certs_fallback.patch" and "linker_pie_flag.patch" rebased
+
+-------------------------------------------------------------------
 Tue Oct 5 12:00:00 UTC 2021 - cunix@mail.de
 
 - Update to 3.3.4

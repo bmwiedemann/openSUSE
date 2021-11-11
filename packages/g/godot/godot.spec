@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.3.4
+Version:        3.4
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -69,8 +69,10 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1500
+# Does not work currently:
+# BuildRequires:  embree-devel-static >= 3.13.0
 BuildRequires:  mbedtls-devel
-BuildRequires:  pkgconfig(bullet)
+BuildRequires:  pkgconfig(bullet) >= 2.90
 BuildRequires:  pkgconfig(libwslay)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(miniupnpc)
@@ -139,13 +141,15 @@ Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
 # Embree 3.13.0+ supports both x86_64 and aarch64.
-# per 20210521 Factory is at 3.12.2, Leap at 3.8 .
-# Currently build fails on Leap and Tumbleweed with Distro (unbundled) embree
-Provides:       bundled(embree) = 3.12.1
+# per 20211108 Factory is at 3.13.0, Leap at 3.8 .
+# Currently build fails with Distro (unbundled) embree on Tumbleweed although
+# the required version is available.
+# Perhaps because it is build with special flags (static) for blender.
+Provides:       bundled(embree) = 3.13.0
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(bullet) = 2.89
+Provides:       bundled(bullet) = 3.17
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
 Provides:       bundled(mbedtls) = 2.16.11
