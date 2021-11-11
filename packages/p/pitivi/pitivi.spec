@@ -34,7 +34,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-gobject
-BuildRequires:  python3-nose
 BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.12.2
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.1

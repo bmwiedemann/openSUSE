@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 11 00:06:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python3-nose. 
+
+-------------------------------------------------------------------
 Thu Nov  4 11:09:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace enable-docs=true option with new disable-help=false
