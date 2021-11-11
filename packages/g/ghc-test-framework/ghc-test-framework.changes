@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:44:44 UTC 2021 - psimons@suse.com
+
+- Update test-framework to version 0.8.2.0 revision 7.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Feb 20 00:08:00 UTC 2021 - psimons@suse.com
 
 - Update test-framework to version 0.8.2.0 revision 6.
