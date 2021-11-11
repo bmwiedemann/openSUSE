@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-data-tables
-Version:        12.1.0
+Version:        12.2.0
 Release:        0
 Summary:        Microsoft Azure Azure Data Tables Client Library for Python
 License:        MIT
@@ -39,7 +39,7 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.14.0
 Requires:       python-azure-data-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.19
+Requires:       python-msrest >= 0.6.21
 %ifpython2
 Requires:       python-enum34 >= 1.0.4
 Requires:       python-futures
