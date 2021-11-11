@@ -28,6 +28,7 @@ Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-
 Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Patch0:         u_fno-common.patch
+Patch1:         U_ati-cleanup-terminology-to-use-primary-secondary.patch
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -68,6 +69,7 @@ driver as appropriate.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fiv

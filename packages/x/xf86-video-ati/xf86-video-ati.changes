@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 28 14:31:23 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_ati-cleanup-terminology-to-use-primary-secondary.patch
+  * fixes build aginst xorg-server 21.1 
+
+-------------------------------------------------------------------
 Tue Mar 16 21:44:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec (move license to licensedir) 

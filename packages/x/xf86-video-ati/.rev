@@ -540,4 +540,13 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
     <comment></comment>
     <requestid>879516</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>b470d19f3c97c502ca60307670bf5bb4</srcmd5>
+    <version>19.1.0</version>
+    <time>1636662948</time>
+    <user>dimstar_suse</user>
+    <comment>- U_ati-cleanup-terminology-to-use-primary-secondary.patch
+  * fixes build aginst xorg-server 21.1</comment>
+    <requestid>927988</requestid>
+  </revision>
 </revisionlist>
