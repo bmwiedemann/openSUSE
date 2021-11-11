@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:26:51 UTC 2021 - psimons@suse.com
+
+- Update wai-extra to version 3.1.7.
+  ## 3.1.7
+
+  * Added new `mPrelogRequests` option to `DetailedSettings` [#857](https://github.com/yesodweb/wai/pull/857)
+
+-------------------------------------------------------------------
 Tue Jan 19 09:00:23 UTC 2021 - psimons@suse.com
 
 - Update wai-extra to version 3.1.6.
