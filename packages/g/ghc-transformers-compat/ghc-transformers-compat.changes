@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:29:32 UTC 2021 - psimons@suse.com
+
+- Update transformers-compat to version 0.7.1.
+  0.7.1 [2021.10.30]
+  ------------------
+  * Backport new instances from GHC 9.2/`base-4.16`
+    * `Eq1`, `Read1`, and `Show1` instances for `Complex`
+    * `Eq{1,2}`, `Ord{1,2}`, `Show{1,2}`, and `Read{1,2}` instances for `(,,)`
+       and `(,,,)`
+
+-------------------------------------------------------------------
 Tue Jul 27 07:52:46 UTC 2021 - psimons@suse.com
 
 - Update transformers-compat to version 0.7.

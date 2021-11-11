@@ -18,7 +18,7 @@
 
 %global pkg_name transformers-compat
 Name:           ghc-%{pkg_name}
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        A small compatibility shim for the transformers library
 License:        BSD-3-Clause
