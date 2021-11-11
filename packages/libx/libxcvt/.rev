@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62e63c7dd186b37ad8ed8800c6997aad</srcmd5>
+    <version>0.1.1</version>
+    <time>1636662947</time>
+    <user>dimstar_suse</user>
+    <comment>- moved cvt binary and cvt manual page to main package, since it 
+  violates the SLPP to have non-library files in a library package 
+
+- created package (needed since xorg-server 21.1.0)</comment>
+    <requestid>927933</requestid>
+  </revision>
+</revisionlist>
