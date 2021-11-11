@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:26:45 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20211028.
+  git-annex (8.20211028) upstream; urgency=medium
+
+    * Removed support for accessing git remotes that use versions of
+      git-annex older than 6.20180312.
+    * git-annex-shell: Removed several commands that were only needed to
+      support git-annex versions older than 6.20180312.
+    * Negotiate P2P protocol version with tor remotes, allowing
+      use of protocol version 1. This negotiation is not supported
+      by versions of git-annex older than 6.20180312.
+    * Fix bug that caused stale git-annex branch information to read
+      when annex.private or remote.name.annex-private is set.
+    * git-annex get when run as the first git-annex command in a new repo
+      did not populate all unlocked files.
+      (Reversion in version 8.20210621)
+    * Fix using lookupkey and info inside a subdirectory of the git repository.
+      (Reversion in version 8.20211011)
+    * Avoid some sqlite crashes on Windows SubSystem for Linux (WSL).
+    * Call annex.freezecontent-command on the annex object file
+      after it has been moved into place in annex/objects/. This allows
+      the hook to freeze the file in ways that prevent moving it, such as
+      removing the Windows delete permission.
+      Thanks, Reiko Asakura.
+    * addurl: Support adding the same url to multiple files at the same
+      time when using -J with --batch --with-files.
+    * When retrieval from a chunked remote fails, display the error that
+      occurred when downloading the chunk, rather than the error that
+      occurred when trying to download the unchunked content, which is less
+      likely to actually be stored in the remote.
+    * Avoid crashing tilde expansion on user who does not exist.
+    * test: Put gpg temp home directory in system temp directory,
+      not filesystem being tested.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 28 Oct 2021 11:58:29 -0400
+
+-------------------------------------------------------------------
+Tue Oct 12 10:51:25 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20211011.
+  git-annex (8.20211011) upstream; urgency=medium
+
+    * Added annex.bwlimit and remote.name.annex-bwlimit config to limit
+      the bandwidth of transfers. It works for git remotes and many
+      but not all special remotes.
+    * Bug fix: Git configs such as annex.verify were incorrectly overriding
+      per-remote git configs such as remote.name.annex-verify.
+      (Reversion in version 4.20130323)
+    * borg: Significantly improved memory use when a borg repository
+      contains many archives.
+    * borg: Avoid trying to extract xattrs, ACLS, and bsdflags when
+      retrieving from a borg repository.
+    * Sped up git-annex smudge --clean by 25%.
+    * Resume where it left off when copying a file to/from a local git remote
+      was interrupted.
+    * sync --content: Avoid a redundant checksum of a file that was
+      incrementally verified, when used on NTFS and perhaps other filesystems.
+    * reinject: Fix crash when reinjecting a file from outside the repository.
+      (Reversion in version 8.20210621)
+    * Avoid cursor jitter when updating progress display.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 11 Oct 2021 12:52:14 -0400
+
+-------------------------------------------------------------------
 Sun Sep  5 17:54:01 UTC 2021 - psimons@suse.com
 
 - Update git-annex to version 8.20210903.
