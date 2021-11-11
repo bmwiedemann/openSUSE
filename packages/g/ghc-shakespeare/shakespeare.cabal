@@ -1,0 +1,151 @@
+name:            shakespeare
+version:         2.0.25
+x-revision: 1
+license:         MIT
+license-file:    LICENSE
+author:          Michael Snoyman <michael@snoyman.com>
+maintainer:      Michael Snoyman <michael@snoyman.com>
+synopsis:        A toolkit for making compile-time interpolated templates
+description:
+    Shakespeare is a family of type-safe, efficient template languages. Shakespeare templates are expanded at compile-time, ensuring that all interpolated variables are in scope. Variables are interpolated according to their type through a typeclass.
+    .
+    Shakespeare templates can be used inline with a quasi-quoter or in an external file.
+    .
+    Note there is no dependency on haskell-src-extras. Instead Shakespeare believes logic should stay out of templates and has its own minimal Haskell parser.
+    .
+    Packages that use this: xml-hamlet
+    .
+    Please see the documentation at <http://www.yesodweb.com/book/shakespearean-templates> for more details.
+
+category:        Web, Yesod
+stability:       Stable
+cabal-version:   >= 1.10
+build-type:      Simple
+homepage:        http://www.yesodweb.com/book/shakespearean-templates
+extra-source-files:
+  test/reload.txt
+  test/texts/*.text
+  test/juliuses/*.julius
+  test/juliuses/*.coffee
+  test-messages/*.msg
+  test/cassiuses/*.cassius
+  test/cassiuses/*.lucius
+  test/hamlets/*.hamlet
+  test/tmp.hs
+  ChangeLog.md
+
+library
+    build-depends: aeson <1.6
+
+    default-language: Haskell2010
+    build-depends:   base             >= 4.9     && < 5
+                   , time             >= 1
+                   , containers
+                   , template-haskell >= 2.7
+                   , parsec           >= 2       && < 4
+                   , text             >= 0.7
+                   , process          >= 1.0
+                   , ghc-prim
+                   , bytestring
+                   , directory        >= 1.2
+                   , aeson
+                   , blaze-markup
+                   , blaze-html
+                   , exceptions
+                   , transformers
+                   , vector
+                   , unordered-containers
+                   , scientific       >= 0.3.0.0
+                   , th-lift
+
+    exposed-modules: Text.Shakespeare.I18N
+                     Text.Shakespeare.Text
+                     Text.Roy
+                     Text.Julius
+                     Text.Coffee
+                     Text.Hamlet
+                     Text.Hamlet.RT
+                     Text.Hamlet.Runtime
+                     Text.Lucius
+                     Text.Cassius
+                     Text.Shakespeare.Base
+                     Text.Shakespeare
+                     Text.TypeScript
+                     Text.Internal.Css
+                     Text.Internal.CssCommon
+    other-modules:   Text.Hamlet.Parse
+                     Text.MkSizeType
+                     Text.IndentToBrace
+
+    ghc-options:     -Wall
+
+    if flag(test_export)
+      cpp-options: -DTEST_EXPORT
+
+    if os(windows)
+      CPP-Options: "-DWINDOWS"
+
+    if flag(test_coffee)
+        cpp-options: -DTEST_COFFEE
+
+    if flag(test_roy)
+        cpp-options: -DTEST_ROY
+
+    if flag(test_export)
+        cpp-options: -DTEST_EXPORT
+
+Flag test_export
+  default: False
+
+flag test_coffee
+    description: render tests through coffeescript render function
+    -- cabal configure --enable-tests -ftest_coffee && cabal build && dist/build/test/test
+    default: False
+
+flag test_roy
+    description: render tests through roy render function
+    -- cabal configure --enable-tests -ftest_roy && cabal build && dist/build/test/test
+    default: False
+
+test-suite test
+    default-language: Haskell2010
+    hs-source-dirs: test
+    main-is: Spec.hs
+    other-modules:  Text.Shakespeare.BaseSpec
+                    Text.Shakespeare.I18NSpec
+                    Text.Shakespeare.TextSpec
+                    Text.Shakespeare.BuilderQQ
+                    Text.CssSpec
+                    Text.HamletSpec
+                    Text.JuliusSpec
+                    Quoter
+                    HamletTestTypes
+
+    cpp-options: -DTEST_EXPORT
+
+    type: exitcode-stdio-1.0
+
+    ghc-options:   -Wall
+    build-depends: base             >= 4.9     && < 5
+                 , shakespeare
+                 , time             >= 1
+                 , containers
+                 , parsec           >= 2       && < 4
+                 , hspec            == 2.*
+                 , text             >= 0.7
+                 , process
+                 , template-haskell >= 2.7
+                 , ghc-prim
+                 , HUnit
+                 , bytestring
+                 , directory
+                 , aeson
+                 , transformers
+                 , blaze-markup
+                 , blaze-html
+                 , exceptions
+
+
+source-repository head
+  type:     git
+  location: https://github.com/yesodweb/shakespeare.git
