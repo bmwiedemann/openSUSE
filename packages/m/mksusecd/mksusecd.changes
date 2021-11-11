@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Thu Nov 11 16:13:05 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#58
+- read list of special initrd modules from .base_modules if it exists
+- 2.4
+
+--------------------------------------------------------------------
+Thu Nov 11 14:34:04 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#57
+- fix zstd compression handling
+- 2.3
+
+--------------------------------------------------------------------
+Thu Nov 11 10:18:23 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#56
+- rework documentation and split off proper man page
+- adjust spec file
+- 2.2
+
+--------------------------------------------------------------------
 Wed Nov 10 13:39:01 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#54

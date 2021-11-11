@@ -18,16 +18,24 @@
 
 
 Name:           mksusecd
-Version:        2.1
+Version:        2.4
 Release:        0
 Summary:        Tool to create SUSE Linux installation ISOs
 License:        GPL-3.0+
 Group:          Hardware/Other
-Url:            https://github.com/wfeldt/mksusecd
+URL:            https://github.com/wfeldt/mksusecd
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  libuuid-devel
 BuildRequires:  xz
-Requires:       checkmedia
+%if 0%?suse_version >= 1500 || 0%?sle_version >= 120400
+BuildRequires:  rubygem(asciidoctor)
+%else
+BuildRequires:  asciidoc
+%if 0%?suse_version >= 1310 || 0%?sle_version >= 120000
+BuildRequires:  libxslt-tools
+%endif
+%endif
+Requires:       checkmedia >= 6.0
 %if %suse_version >= 1500
 Requires:       createrepo-implementation
 Requires:       mkisofs
@@ -52,11 +60,18 @@ This is a tool to create SUSE Linux installation ISOs.
 
 %install
 make DESTDIR=%{buildroot} LIBDIR=%{_libexecdir} BINDIR=%{_bindir} install %{?_smp_mflags}
+install -D -m 644 mksusecd.1 %{buildroot}%{_mandir}/man1/mksusecd.1
 
 %files
 %defattr(-,root,root)
 %{_bindir}/*
 %{_libexecdir}/%{name}
-%doc README* COPYING* *.md
+%doc README* *.md
+%doc %{_mandir}/man1/mksusecd.*
+%if %suse_version >= 1500
+%license COPYING*
+%else
+%doc COPYING*
+%endif
 
 %changelog
