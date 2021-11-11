@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 28 19:03:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use full URL for source tarball.
+
+-------------------------------------------------------------------
+Thu Oct 28 12:45:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
 Thu Oct 28 10:48:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved cvt binary and cvt manual page to main package, since it 
