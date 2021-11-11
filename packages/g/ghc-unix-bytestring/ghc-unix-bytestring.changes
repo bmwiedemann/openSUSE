@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov  3 15:44:25 UTC 2021 - psimons@suse.com
+
+- Update unix-bytestring to version 0.3.7.6.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/unix-bytestring-0.3.7.6/src/CHANGELOG
+
+-------------------------------------------------------------------
+Tue Oct 19 07:23:01 UTC 2021 - psimons@suse.com
+
+- Update unix-bytestring to version 0.3.7.5.
+  0.3.7.5 (2021-xx-xx):
+      - Updating maintainer emails/urls
+      - Removed the __HADDOCK__ hack
+      - Generally cleaning up old cruft
+  0.3.7.4 (2021-10-16):
+      - Started using GithubActions for CI.
+      - Corrected parsing errors with newer GHC.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

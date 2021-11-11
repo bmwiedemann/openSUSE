@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-unix-bytestring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name unix-bytestring
 Name:           ghc-%{pkg_name}
-Version:        0.3.7.3
+Version:        0.3.7.6
 Release:        0
 Summary:        Unix/Posix-specific functions for ByteStrings
 License:        BSD-3-Clause
@@ -72,6 +72,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG README
+%doc CHANGELOG README.md
 
 %changelog
