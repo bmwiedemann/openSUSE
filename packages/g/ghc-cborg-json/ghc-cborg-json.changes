@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:31:11 UTC 2021 - psimons@suse.com
+
+- Update cborg-json to version 0.2.3.0.
+  ## 0.2.3.0  -- 2021-10-31
+
+  * Support for `aeson-2.0`, GHC 9.0, GHC 9.2, and `bytestring-0.11`.
+
+-------------------------------------------------------------------
 Sun May  9 11:09:57 UTC 2021 - psimons@suse.com
 
 - Update cborg-json to version 0.2.2.0 revision 3.
