@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:27:02 UTC 2021 - psimons@suse.com
+
+- Update serialise to version 0.2.4.0.
+  ## 0.2.4.0  -- 2021-10-31
+
+  * Add instances for `Data.Void`, `strict`, and `these`.
+
+  * Compatibility with GHC 9.0 and 9.2
+
+-------------------------------------------------------------------
 Tue Mar 23 08:33:03 UTC 2021 - psimons@suse.com
 
 - Update serialise to version 0.2.3.0 revision 2.
