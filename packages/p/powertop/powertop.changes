@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 11 09:41:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * powertop.service
+
+-------------------------------------------------------------------
 Sun Jun  6 13:14:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14:

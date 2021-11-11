@@ -482,4 +482,12 @@ A powertop_libc++_fix.patch</comment>
     <comment></comment>
     <requestid>897928</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>463799054f4bf977c73bee27750bf88b</srcmd5>
+    <version>2.14</version>
+    <time>1636663097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930842</requestid>
+  </revision>
 </revisionlist>
