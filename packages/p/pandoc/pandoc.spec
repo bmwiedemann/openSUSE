@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.14.2
+Version:        2.16.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
-BuildRequires:  ghc-HsYAML-devel
 BuildRequires:  ghc-JuicyPixels-devel
 BuildRequires:  ghc-SHA-devel
 BuildRequires:  ghc-aeson-devel
@@ -59,9 +58,11 @@ BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
 BuildRequires:  ghc-hslua-devel
+BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-module-path-devel
 BuildRequires:  ghc-hslua-module-system-devel
 BuildRequires:  ghc-hslua-module-text-devel
+BuildRequires:  ghc-hslua-module-version-devel
 BuildRequires:  ghc-http-client-devel
 BuildRequires:  ghc-http-client-tls-devel
 BuildRequires:  ghc-http-types-devel
@@ -72,6 +73,8 @@ BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-parsec-devel
+BuildRequires:  ghc-pretty-devel
+BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
@@ -90,9 +93,9 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-devel
+BuildRequires:  ghc-yaml-devel
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zlib-devel
 ExcludeArch:    %{ix86}
@@ -145,8 +148,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver 'skylighting' '< 0.12' '< 0.13'
-cabal-tweak-dep-ver 'skylighting-core' '< 0.12' '< 0.13'
 
 %build
 %ghc_lib_build
