@@ -18,7 +18,7 @@
 
 %global pkg_name charset
 Name:           ghc-%{pkg_name}
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        Fast unicode character sets based on complemented PATRICIA tries
 License:        BSD-3-Clause

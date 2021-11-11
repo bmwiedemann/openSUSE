@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 12:26:25 UTC 2021 - psimons@suse.com
+
+- Update charset to version 0.3.9.
+  0.3.9 [2021.11.01]
+  ------------------
+  * Allow building with GHC 9.2.
+
+-------------------------------------------------------------------
 Sat Feb 20 00:08:08 UTC 2021 - psimons@suse.com
 
 - Update charset to version 0.3.8.
