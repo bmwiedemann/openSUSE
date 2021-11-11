@@ -19,7 +19,7 @@
 %global pkg_name iproute
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.11
+Version:        1.7.12
 Release:        0
 Summary:        IP Routing Table
 License:        BSD-3-Clause
