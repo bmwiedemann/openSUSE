@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:23:41 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Oct 14 08:01:08 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.2.1.
+  ## 2.13.2.1
+
+  * [#1329](https://github.com/yesodweb/persistent/pull/1329)
+      * Prevent discovery of constrained `PersistEntity` instances in
+        `discoverEntities` (since the discovered instances won't work without
+        constraints anyway).
+
+  ## 2.13.2.0
+
+  * [#1314](https://github.com/yesodweb/persistent/pull/1314)
+      * Fix typos and minor documentation issues in Database.Persist and
+        Database.Persist.Quasi.
+  * [#1317](https://github.com/yesodweb/persistent/pull/1317)
+      * Expose `orderClause` from the Persistent internals, which allows users
+        to produce well-formatted `ORDER BY` clauses.
+
+  * [#1319](https://github.com/yesodweb/persistent/pull/1319)
+      * Add a `Num` instance for `OverflowNatural`
+
+-------------------------------------------------------------------
+Tue Oct 12 09:50:03 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Sep  3 11:57:07 UTC 2021 - psimons@suse.com
 
 - Update persistent to version 2.13.1.2.
