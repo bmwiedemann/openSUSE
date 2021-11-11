@@ -1,7 +1,7 @@
 #
 # spec file for package cpphs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ Summary:        A liberalised re-implementation of cpp, the C pre-processor
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-polyparse-devel
@@ -61,6 +62,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 find . -type f -exec chmod -x {} +
 
 %build
