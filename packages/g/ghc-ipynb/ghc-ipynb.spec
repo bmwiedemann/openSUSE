@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ipynb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ipynb
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.1
+Version:        0.1.0.2
 Release:        0
 Summary:        Data structure for working with Jupyter notebooks (ipynb)
 License:        BSD-3-Clause
@@ -35,14 +35,12 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-unordered-containers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-aeson-diff-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-microlens-aeson-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-vector-devel
 %endif
 
 %description

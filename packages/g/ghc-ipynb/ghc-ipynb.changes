@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:27:06 UTC 2021 - psimons@suse.com
+
+- Update ipynb to version 0.1.0.2.
+  ## 0.1.0.2 -- 2020-10-23
+
+  * Changes for aeson 2 compatibility.
+
+  * Simplified round trip test to avoid use of aeson-diff, which doesn't work with aeson 2.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
