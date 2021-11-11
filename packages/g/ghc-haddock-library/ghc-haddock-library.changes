@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 13 11:32:00 UTC 2021 - psimons@suse.com
+
+- Update haddock-library to version 1.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun May 30 18:14:56 UTC 2021 - psimons@suse.com
 
 - Update haddock-library to version 1.10.0.
