@@ -19,28 +19,27 @@
 %global pkg_name xmonad
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.15
+Version:        0.17.0
 Release:        0
 Summary:        A tiling window manager
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 Source10:       xmonad.desktop
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-data-default-class-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-extensible-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-setlocale-devel
+BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xinerama)
@@ -52,6 +51,7 @@ Provides:       windowmanager
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-quickcheck-classes-devel
 %endif
 
 %description
@@ -82,7 +82,6 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
-cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %ghc_lib_build
