@@ -19,7 +19,7 @@
 %global pkg_name hslua
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.0.1
+Version:        2.0.1
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT
@@ -29,24 +29,27 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-hslua-classes-devel
+BuildRequires:  ghc-hslua-core-devel
+BuildRequires:  ghc-hslua-marshalling-devel
+BuildRequires:  ghc-hslua-objectorientation-devel
+BuildRequires:  ghc-hslua-packaging-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hslua-devel
 BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-quickcheck-devel
 %endif
 
 %description
-HsLua provides bindings, wrappers, types, and helper functions to bridge
-Haskell and <https://www.lua.org/ Lua>.
+HsLua provides wrappers and helpers to bridge Haskell and <https://www.lua.org/
+Lua>.
 
-This package contains a full Lua interpreter version 5.3.6. If you want to link
-it with a system-wide Lua installation, use the 'system-lua' flag.
+It builds upon the /lua/ package, which allows to bundle a Lua interpreter with
+a Haskell program.
 
 <https://github.com/hslua/hslua-examples Example programs> are available in a
 separate repository.
