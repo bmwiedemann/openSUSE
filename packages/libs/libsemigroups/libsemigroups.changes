@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 11 11:33:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.3
+  * This release contains a minor change to the FroidurePin class
+    template that resolves an issue with the python binding.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:41:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.2
