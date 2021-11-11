@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:08:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.3:
+  * v6.15.3
+  * Update CHANGELOG.md
+  * Fix various memory leaks
+  * Fix MSVC compilation error
+  * AstroBWT: fixed rare incorrect hashes
+  * AstroBWT even bigger speedup
+  * AstroBWT speedup
+  * Code cleanup.
+  * fix: expand validation of tx_extra for merge mining tag
+  * Cap max threads to 4096 with nVidia OpenCL
+  * Adjust API version logic
+  * Adjust definitions and replace literal 0x4038
+  * Revert amd_bitalign/amd_bfe polyfills
+  * Apply "no-static-without-amd" fixes
+  * Attempt repair of cn/r output-array access problem
+  * Second try at fixing cn/r atomic_inc() call
+  * Attempt fix for cn/r on Apple-AMD
+  * Add Ellesmere correctly (still just a Polaris alias)
+  * Add every Apple AMD GPU type
+  * Possibly fix problem with clGetProgramInfo crash
+  * Readjust OclDevice logic and add OCL_VENDOR_APPLE
+  * Fix #2583 compiling without kawpow (string ref is nonexistent then)
+  * v6.15.3-dev
+
+-------------------------------------------------------------------
 Wed Oct  6 08:49:50 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.15.2:
