@@ -18,7 +18,7 @@
 
 %global pkg_name base-compat
 Name:           ghc-%{pkg_name}
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        A compatibility layer for base
 License:        MIT

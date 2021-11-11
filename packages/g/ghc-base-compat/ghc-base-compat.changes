@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  1 08:29:35 UTC 2021 - psimons@suse.com
+
+- Update base-compat to version 0.12.1.
+  ## Changes in 0.12.1 [2021.10.30]
+   - Backport `Solo` to `Data.Tuple.Compat` when building with `ghc-prim-0.7.0`
+     or later
+
+-------------------------------------------------------------------
 Thu Sep  2 08:32:54 UTC 2021 - psimons@suse.com
 
 - Update base-compat to version 0.12.0.
