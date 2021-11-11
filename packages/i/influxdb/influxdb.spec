@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.8.6
+Version:        1.8.10
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
@@ -35,7 +35,7 @@ Source2:        influxdb.service
 Source3:        influxdb.tmpfiles
 Source4:        influxdb.init
 Source5:        Compability_note.txt
-Patch0:	harden_influxdb.service.patch
+Patch0:         harden_influxdb.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -153,7 +153,6 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %{_bindir}/influxd
 %{_bindir}/influx_stress
 %{_bindir}/influx_tools
-%{_bindir}/influx_tsm
 %{_sbindir}/rcinfluxdb
 %if %{with systemd}
 %{_unitdir}/influxdb.service
@@ -172,7 +171,6 @@ getent passwd influxdb >/dev/null || useradd -r -g influxdb \
 %{_mandir}/man1/influx.1.gz
 %{_mandir}/man1/influx_inspect.1.gz
 %{_mandir}/man1/influx_stress.1.gz
-%{_mandir}/man1/influx_tsm.1.gz
 %{_mandir}/man1/influxd-backup.1.gz
 %{_mandir}/man1/influxd-config.1.gz
 %{_mandir}/man1/influxd-restore.1.gz

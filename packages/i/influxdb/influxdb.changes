@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 27 21:28:51 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 1.8.10
+  Bugfixes:
+  * #22076: fix: systemd service -- handle 40x and block indefinitely
+  * #22253: fix: influxdb packages should depend on curl
+  * #22427: fix(snapshotter): properly read payload
+  * #22561: fix(restore): parameter validation, Windows temp file deletion
+  * #22616: fix: better error for no data from snapshots
+  * #21953: fix: prevent silently dropped writes with overlapping shards
+  * #21991: fix: restore portable backup bug
+  * #21987: fix: systemd-startup script should be executable by group and
+    others
+  * #22026: fix: handle https in systemd wrapper, and prevent it from looping
+    forever
+  * #22039: fix: error instead of panic when enterprise tries to restore with
+    OSS
+  * #21749: fix: rename arm rpms with yum-compatible names
+  * #21775: fix: convert arm arch names for rpms during builds via docker
+  * #21865: fix: systemd unit should block on startup until http endpoint is
+    ready
+  * #21891: chore: update protobuf libraries and remove influxdb_tsm
+
+-------------------------------------------------------------------
 Wed Sep 22 14:38:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
