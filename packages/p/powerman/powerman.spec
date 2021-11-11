@@ -39,6 +39,7 @@ URL:            https://github.com/chaos/powerman
 Source0:        https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch1:         service-dynamic-user-autofiles.patch
 Patch2:         service-dynamic-user-configure.patch
+Patch3:         harden_powerman.service.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -80,6 +81,7 @@ Header files, pkg-config file and man pages for developing applications using Po
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure \

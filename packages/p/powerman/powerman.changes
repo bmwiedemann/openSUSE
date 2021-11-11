@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 13:06:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_powerman.service.patch
+
+-------------------------------------------------------------------
 Thu May 13 07:54:21 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.3.26
