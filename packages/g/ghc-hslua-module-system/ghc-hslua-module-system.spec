@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hslua-module-system
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,34 +19,34 @@
 %global pkg_name hslua-module-system
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.2.1
+Version:        1.0.0
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-hslua-devel
+BuildRequires:  ghc-hslua-core-devel
+BuildRequires:  ghc-hslua-marshalling-devel
+BuildRequires:  ghc-hslua-packaging-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-temporary-devel
+BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-lua-devel
-BuildRequires:  ghc-text-devel
 %endif
 
 %description
 Provides access to system information and functionality to Lua scripts via
 Haskell's `System` module.
 
-Intended usage for this package is to preload it by adding the loader function
-to `package.preload`. Note that the Lua `package` library must have already
-been loaded before the loader can be added.
+This package is part of HsLua, a Haskell framework built around the embeddable
+scripting language <https://lua.org Lua>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
