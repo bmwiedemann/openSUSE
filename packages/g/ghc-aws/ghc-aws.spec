@@ -25,6 +25,7 @@ Summary:        Amazon Web Services (AWS) for Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-attoparsec-devel
@@ -94,9 +95,8 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base64-bytestring '== 1.0.*' '< 2'
-cabal-tweak-dep-ver base16-bytestring '== 0.1.*' '< 2'
-cabal-tweak-dep-ver attoparsec '< 0.14' '< 0.15'
+cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build
