@@ -217,4 +217,17 @@
     <comment></comment>
     <requestid>907166</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>88d54bb4194b2add8e1fd85213a85ac2</srcmd5>
+    <version>0.1.5</version>
+    <time>1636662950</time>
+    <user>dimstar_suse</user>
+    <comment>- u_fix-build-against-xserver-21_1.patch
+  * fixes build aginst xorg-server 21.1; reson:
+    commit 454b3a826edb5fc6d0fea3a9cfd1a5e8fc568747
+    Author: Adam Jackson &lt;ajax@redhat.com&gt;
+    Date:   Mon Jul 22 13:51:06 2019 -0400
+       hw: Rename boolean config value field from bool to boolean</comment>
+    <requestid>928538</requestid>
+  </revision>
 </revisionlist>

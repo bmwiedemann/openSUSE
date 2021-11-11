@@ -38,6 +38,7 @@ Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%
 Patch0:         n_hardcode_libdrm_cflags.patch
 Patch1:         n_disable-surfaces-on-kms.patch
 Patch2:         Xspice-python3.patch
+Patch3:         u_fix-build-against-xserver-21_1.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -82,6 +83,7 @@ XSpice is both an X and a Spice server that can be accessed by a Spice client.
 %patch0 -p0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -fi

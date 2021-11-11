@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  1 10:19:06 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_fix-build-against-xserver-21_1.patch
+  * fixes build aginst xorg-server 21.1; reson:
+    commit 454b3a826edb5fc6d0fea3a9cfd1a5e8fc568747
+    Author: Adam Jackson <ajax@redhat.com>
+    Date:   Mon Jul 22 13:51:06 2019 -0400
+       hw: Rename boolean config value field from bool to boolean
+
+-------------------------------------------------------------------
 Fri Jul 16 04:56:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Requires on python >= 2.6
