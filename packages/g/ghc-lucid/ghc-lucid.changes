@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 19 07:21:39 UTC 2021 - psimons@suse.com
+
+- Update lucid to version 2.10.0.
+  ## 2.9.13
+
+  * Change internal attributes representation from HashMap to Map. This
+    introduces stable ordering, at a negligible performance cost for
+    realistic element sizes. This may affect some test suites.
+  * doctype no longer accepts attributes. You can use `with` with
+    `doctypeHtml` now, if needed.
+
+-------------------------------------------------------------------
 Tue Mar  2 09:33:12 UTC 2021 - psimons@suse.com
 
 - Update lucid to version 2.9.12.1.

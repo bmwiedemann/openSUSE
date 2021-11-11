@@ -19,7 +19,7 @@
 %global pkg_name lucid
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.9.12.1
+Version:        2.10.0
 Release:        0
 Summary:        Clear to write, read and edit DSL for HTML
 License:        BSD-3-Clause
