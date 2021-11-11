@@ -1168,4 +1168,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1192570</comment>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>2f65d8b035580b08976f603e2863039c</srcmd5>
+    <version>9.0</version>
+    <time>1636662983</time>
+    <user>dimstar_suse</user>
+    <comment>QA issues found/fixed</comment>
+    <requestid>930890</requestid>
+  </revision>
 </revisionlist>

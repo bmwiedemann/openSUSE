@@ -19,7 +19,7 @@ Index: src/chgrp.c
 ===================================================================
 --- src/chgrp.c.orig
 +++ src/chgrp.c
-@@ -89,7 +89,7 @@ parse_group (const char *name)
+@@ -89,7 +89,7 @@ parse_group (char const *name)
          {
            uintmax_t tmp;
            if (! (xstrtoumax (name, NULL, 10, &tmp, "") == LONGINT_OK
