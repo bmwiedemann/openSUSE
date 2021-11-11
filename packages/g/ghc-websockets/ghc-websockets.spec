@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-websockets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name websockets
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.7.2
+Version:        0.12.7.3
 Release:        0
 Summary:        A sensible and clean way to write WebSocket-capable servers in Haskell
 License:        BSD-3-Clause
@@ -80,7 +80,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build
