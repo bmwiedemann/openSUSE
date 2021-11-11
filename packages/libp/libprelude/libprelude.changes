@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 11 11:39:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove python-devel Requires on devel-bindings package 
+- Drop unrequired and broken Requires on python in python3-libprelude.
+
+-------------------------------------------------------------------
 Sun Oct 25 19:48:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libprelude 5.2.0:
