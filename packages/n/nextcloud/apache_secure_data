@@ -28,6 +28,7 @@ Redirect 301 /ocs-provider/ /nextcloud/ocs-provider/
   RewriteEngine on
   RewriteRule ^/\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
   RewriteRule ^/\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
+  RewriteRule ^/\.well-known/nodeinfo /nextcloud/public.php?service=nodeinfo [QSA,L]
   RewriteRule ^/\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
   RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
   RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
