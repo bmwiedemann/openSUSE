@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-mintty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name mintty
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        A reliable way to detect the presence of a MinTTY console on Windows
 License:        BSD-3-Clause
