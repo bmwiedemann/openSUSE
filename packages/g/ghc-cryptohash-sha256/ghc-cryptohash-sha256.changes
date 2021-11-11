@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 12 11:34:17 UTC 2021 - psimons@suse.com
+
+- Update cryptohash-sha256 to version 0.11.102.1.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Wed Jun 16 08:26:59 UTC 2021 - psimons@suse.com
 
 - Update cryptohash-sha256 to version 0.11.102.0 revision 1.
