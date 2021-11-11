@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 14 08:00:01 UTC 2021 - psimons@suse.com
+
+- Update hpack to version 0.34.5.
+  ## Changes in 0.34.5
+    - Compatibility with `aeson-2.*`
+
+-------------------------------------------------------------------
+Tue Oct 12 11:34:33 UTC 2021 - psimons@suse.com
+
+- Update hpack to version 0.34.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Apr 29 09:45:20 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC as do not build on power8:05
