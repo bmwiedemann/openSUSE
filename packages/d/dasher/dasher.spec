@@ -1,7 +1,7 @@
 #
 # spec file for package dasher
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -39,7 +39,6 @@ BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libexpat-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xtst)
 Recommends:     %{name}-data-recommended
@@ -88,7 +87,6 @@ This package contains data files to use dasher with additional languages.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-translation-update-upstream
 cp %{SOURCE2} .
 
 %build
@@ -110,12 +108,15 @@ sh %{SOURCE1} %{buildroot} "%{_datadir}" %{name}-data-recommended.lst %{name}-da
 %fdupes %{buildroot}
 
 %pre -f %{name}.schemas_pre
+
 %post
 %desktop_database_post
 %icon_theme_cache_post
 
 %posttrans -f %{name}.schemas_posttrans
+
 %preun -f %{name}.schemas_preun
+
 %postun
 %desktop_database_postun
 %icon_theme_cache_postun
