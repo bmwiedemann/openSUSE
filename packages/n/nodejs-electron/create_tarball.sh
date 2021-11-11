@@ -272,7 +272,6 @@ keeplibs=(
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
     third_party/opencv
-    third_party/openh264
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src

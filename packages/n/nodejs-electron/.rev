@@ -83,4 +83,14 @@
     <comment></comment>
     <requestid>929041</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7ab14862e9876372aa927f496ea79fdf</srcmd5>
+    <version>13.6.1</version>
+    <time>1636663074</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build with H264
+- Removed electron-13-openh264-format-security.patch
+</comment>
+    <requestid>930713</requestid>
+  </revision>
 </revisionlist>

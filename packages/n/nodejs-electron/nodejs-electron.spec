@@ -94,8 +94,6 @@ Patch22:        electron-13-fix-base-check-nomerge.patch
 Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
 # Fix blink nodestructor
 Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
-# Remove -Wno-format-security from openh264
-Patch25:        electron-13-openh264-format-security.patch
 Patch26:        a9831f1cbf93fb18dd951453635f488037454ce9.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
@@ -429,6 +427,8 @@ myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
 myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" icu_use_data_file=false"
+myconf_gn+=" media_use_openh264=false"
+myconf_gn+=" rtc_use_h264=false"
 
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
