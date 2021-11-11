@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Sep 29 15:58:49 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
-- Use %set_permissions and %verify_permissions for SLE 12
+- Use %set_permissions and %verify_permissions for SLE 12 (bsc#1191194)
 - Remove %{go_nostrip}
 
 -------------------------------------------------------------------
@@ -12,7 +12,7 @@ Tue Sep 21 13:17:32 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 -------------------------------------------------------------------
 Tue Sep 14 13:16:51 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
-- Clean up spec file formatting
+- Clean up spec file formatting (jsc#SLE-22351)
 
 -------------------------------------------------------------------
 Tue Aug 24 10:15:16 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
