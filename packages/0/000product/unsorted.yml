@@ -1321,6 +1321,7 @@ unsorted:
   - boinc-manager 
   - boinc-manager-lang 
   - bolt-tools 
+  - bom 
   - bomber 
   - bomber-lang 
   - bomns 
@@ -7850,6 +7851,7 @@ unsorted:
   - kernel-devel 
   - kernel-docs-html 
   - kernel-firmware 
+  - kernel-install-tools 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
   - kernel-macros 
@@ -12760,7 +12762,7 @@ unsorted:
   - libprimesieve-devel 
   - libprimesieve9 
   - libprofiler0 
-  - libproj19 
+  - libproj22 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
@@ -20717,6 +20719,7 @@ unsorted:
   - proj-data-jp 
   - proj-data-nc 
   - proj-data-nl 
+  - proj-data-no 
   - proj-data-nz 
   - proj-data-pt 
   - proj-data-se 
