@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 11 08:41:37 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to bug fix relase 3.8.4 with following fix:
+  * Fix the oras contexts to avoid hangs upon failed pushes to 
+    Harbor registry.
+
+
+-------------------------------------------------------------------
 Fri Oct 15 12:16:57 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - build requires libseccomp-devel (boo#1191697)

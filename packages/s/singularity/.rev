@@ -301,4 +301,14 @@
     <comment>- fix sysuser file name (forwarded request 925523 from eeich)</comment>
     <requestid>925524</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c13319c890d1f9a192706992adf662c6</srcmd5>
+    <version>3.8.4</version>
+    <time>1636663092</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to bug fix relase 3.8.4 with following fix:
+  * Fix the oras contexts to avoid hangs upon failed pushes to 
+    Harbor registry.</comment>
+    <requestid>930817</requestid>
+  </revision>
 </revisionlist>
