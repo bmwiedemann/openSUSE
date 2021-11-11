@@ -259,4 +259,20 @@
     <comment></comment>
     <requestid>920804</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7d523e5299ce0ddb21601254bcac51e</srcmd5>
+    <version>4.43.0</version>
+    <time>1636663084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.43.0
+  * Send Shadowsocks handshake with payload data if available
+  * Custom TCP Fast Open queue length support
+  * Fix Trojan fallback cannot get ALPN
+  * Fix QueryStrategy ignored
+  * Fix UDP connection transport connection terminated unnecessarily
+  * refactor: move from io/ioutil to io and os package
+  * Fix some tests to use udp.PickPort() 
+  * Fix flaky TestVMessDynamicPort (forwarded request 930773 from hillwood)</comment>
+    <requestid>930774</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v4
 
 Name:           v2ray-core
-Version:        4.42.2
+Version:        4.43.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -43,8 +43,8 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 # This package (v4.37.3+) can not be built with go version < 1.16
-BuildRequires:  golang(API) = 1.16
 BuildRequires:  unzip
+BuildRequires:  golang(API) = 1.16
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       v2ray = %{version}-%{release}

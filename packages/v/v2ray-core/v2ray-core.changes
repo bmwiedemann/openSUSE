@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 11 02:55:40 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.43.0
+  * Send Shadowsocks handshake with payload data if available
+  * Custom TCP Fast Open queue length support
+  * Fix Trojan fallback cannot get ALPN
+  * Fix QueryStrategy ignored
+  * Fix UDP connection transport connection terminated unnecessarily
+  * refactor: move from io/ioutil to io and os package
+  * Fix some tests to use udp.PickPort() 
+  * Fix flaky TestVMessDynamicPort
+
+-------------------------------------------------------------------
 Tue Sep 21 13:38:23 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update to 4.42.2
