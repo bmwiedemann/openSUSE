@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 11 13:19:48 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 21.43.21438 
+  * Linked with gmmlib on all architectures
+  * Exposed clGetKernelSuggestedLocalWorkSizeKHR func
+  * igsc revision updated
+
+-------------------------------------------------------------------
 Sat Oct 30 13:24:48 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - spec-clean cleanup

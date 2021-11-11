@@ -17,7 +17,7 @@
 
 
 Name:           intel-opencl
-Version:        21.39.21127
+Version:        21.43.21438
 Release:        1%{?dist}
 Summary:        Intel(R) Graphics Compute Runtime for OpenCL(TM)
 License:        MIT
@@ -27,10 +27,10 @@ Source0:        https://github.com/intel/compute-runtime/archive/%{version}/comp
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libigc-devel
+BuildRequires:  libigdgmm-devel >= 21.2.2
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
-BuildRequires:  libigdgmm-devel >= 21.2.2
 BuildRequires:  pkgconfig(libva)
 ExclusiveArch:  x86_64
 
