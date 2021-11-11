@@ -1,5 +1,5 @@
 #
-# spec file for package python-proto-plus
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,9 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 %define modname proto-plus
-Name:           python-proto-plus
+Name:           python-proto-plus%{psuffix}
 Version:        1.19.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
@@ -31,8 +39,11 @@ BuildRequires:  %{python_module protobuf >= 3.12.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.22.2}
+BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-protobuf >= 3.12.0
@@ -52,15 +63,21 @@ that largely behave like native Python types.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
