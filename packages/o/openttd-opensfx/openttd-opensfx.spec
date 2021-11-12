@@ -17,7 +17,7 @@
 
 
 Name:           openttd-opensfx
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        OpenSFX replacement sounds for OpenTTD
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND CDDL-1.1

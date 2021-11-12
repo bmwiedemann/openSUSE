@@ -27,4 +27,13 @@ GPLv2 and CDDLv1.1 and CC-BY-SA-3.0
 </comment>
     <requestid>926924</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3260d0f258eee3c4c5da57fd46074962</srcmd5>
+    <version>1.0.3</version>
+    <time>1636729171</time>
+    <user>dimstar_suse</user>
+    <comment>- upstream update 1.0.3:
+  - Fix: Issue preventing BaNaNaS upload due to a lack of any checksum changes</comment>
+    <requestid>931134</requestid>
+  </revision>
 </revisionlist>
