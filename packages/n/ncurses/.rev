@@ -3366,4 +3366,31 @@
   + fix spelling/consistency in several descriptions -TD</comment>
     <requestid>927252</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>dd5f23070938c09f951e7aad052b870b</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1636729132</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20211106
+  + improve check in misc/Makefile.in for empty $PKG_CONFIG_LIBDIR
+  + modify wnoutrefresh to call pnoutrefresh if its parameter is a pad,
+    rather than treating it as an error, and modify new_panel to permit
+    its window-parameter to be a pad (report by Giorgos Xou).
+  + fix a memory-leak in del_curterm (prompted by discussion with Bram
+    Moolenaar, cf: 20210821).
+
+- Add ncurses patch 20211030
+  + simplify some references to WINDOWS._flags using macros.
+  + add a &quot;check&quot; rule in Ada95 makefile, to help with test-packages.
+  + build-fix for cross-compiling to MingW, conditionally add -lssp
+- Correct offsets of patch ncurses-6.3.dif
+
+- Add ncurses patch 20211026
+  + corrected regex needed for older pkg-config used in Solaris 10.
+  + amend configure option's auto-search to account for systems where
+    none of the directories known to pkg-config exist, adapted from
+    mailing-list comment (report by Milan P. Stanic).
+- Port patch ncurses-6.2.dif which is now named ncurses-6.3.dif</comment>
+    <requestid>930176</requestid>
+  </revision>
 </revisionlist>
