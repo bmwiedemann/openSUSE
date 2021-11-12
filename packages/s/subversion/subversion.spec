@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define svngroup svn
 %define svnuser svn
 %define sqlite_minimum_version 3.8.2
