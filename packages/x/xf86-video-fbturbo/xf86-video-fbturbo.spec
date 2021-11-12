@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-fbturbo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Release:        0
 Summary:        Xorg DDX driver for ARM devices (Allwinner, RPi and others)
 License:        X11 AND GPL-2.0-or-later
 Group:          System/X11/Servers/XF86_4
-Url:            https://github.com/ssvb/xf86-video-fbturbo
+URL:            https://github.com/ssvb/xf86-video-fbturbo
 # https://github.com/ssvb/%{name}/archive/%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.gz
 Source1:        99-fbturbo.conf
 Patch0:         n_xorg-server-1.20.patch
+Patch1:         n_xorg-server-21.1.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
@@ -56,6 +57,7 @@ store management for faster window moves).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure
