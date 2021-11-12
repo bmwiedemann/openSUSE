@@ -1098,4 +1098,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- Update to 5.14.1 (forwarded request 922131 from dsterba)</comment>
     <requestid>922132</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>675de7e782a62582f8e66010cf2b7eb8</srcmd5>
+    <version>5.15</version>
+    <time>1636729150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.15 (forwarded request 930706 from dsterba)</comment>
+    <requestid>930707</requestid>
+  </revision>
 </revisionlist>
