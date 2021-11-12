@@ -25,4 +25,13 @@
   /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
     <requestid>719827</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>529c00b60976e209dab2f2f448e76377</srcmd5>
+    <version>0.4.git.1444169281.f9a6ed7</version>
+    <time>1636729174</time>
+    <user>dimstar_suse</user>
+    <comment>- n_xorg-server-21.1.patch
+  * WindowRec::backStorage has been removed from dix of xserver 21.1</comment>
+    <requestid>931147</requestid>
+  </revision>
 </revisionlist>
