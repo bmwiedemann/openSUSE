@@ -19,6 +19,6 @@ Signed-off-by: Enzo Matsumiya <ematsumiya@suse.de>
  # the next line after copying the file to /etc/systemd/system/auditd.service
 -#ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
 +ExecStopPost=/sbin/auditctl -R /etc/audit/audit-stop.rules
- 
- ### Security Settings ###
- MemoryDenyWriteExecute=true
+ Restart=on-failure
+ # Do not restart for intentional exits. See EXIT CODES section in auditd(8).
+ RestartPreventExitStatus=2 4 6
