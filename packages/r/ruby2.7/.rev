@@ -74,4 +74,16 @@
     <comment>- use modern make_* macros</comment>
     <requestid>915101</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>be469d2a9cceffd760b3abc6b098b097</srcmd5>
+    <version>2.7.4</version>
+    <time>1636729151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.4
+  https://www.ruby-lang.org/en/news/2021/07/07/ruby-2-7-4-released/
+  * CVE-2021-31810: Trusting FTP PASV responses vulnerability in Net::FTP
+  * CVE-2021-32066: A StartTLS stripping vulnerability in Net::IMAP
+  * CVE-2021-31799: A command injection vulnerability in RDoc</comment>
+    <requestid>930726</requestid>
+  </revision>
 </revisionlist>

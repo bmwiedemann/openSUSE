@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 10 17:04:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.7.4
+  https://www.ruby-lang.org/en/news/2021/07/07/ruby-2-7-4-released/
+  * CVE-2021-31810: Trusting FTP PASV responses vulnerability in Net::FTP
+  * CVE-2021-32066: A StartTLS stripping vulnerability in Net::IMAP
+  * CVE-2021-31799: A command injection vulnerability in RDoc
+
+-------------------------------------------------------------------
 Mon Aug 30 15:02:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - use modern make_* macros
