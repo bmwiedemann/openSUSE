@@ -30,6 +30,7 @@ Source:         https://github.com/sarugaku/requirementslib/archive/%{version}.t
 Source1:        https://raw.githubusercontent.com/mahmoud/boltons/master/LICENSE#/LICENSE.boltons
 Source2:        https://raw.githubusercontent.com/pyinstaller/pyinstaller/develop/setup.py#/pyinstaller-setup.py
 Patch0:         use-boltons.patch
+BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module parver}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module vistir}
