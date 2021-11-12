@@ -53,7 +53,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1718,6 +1718,7 @@ typedef struct {
+@@ -1763,6 +1763,7 @@ typedef struct {
  } libxl_domain_suspend_suse_properties;
  #define LIBXL_SUSPEND_DEBUG 1
  #define LIBXL_SUSPEND_LIVE 2
@@ -83,7 +83,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -529,6 +529,7 @@ static int do_libxl_domain_suspend(libxl
+@@ -530,6 +530,7 @@ static int do_libxl_domain_suspend(libxl
      dss->type = type;
      dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
      dss->min_remaining = props->min_remaining ?: LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT;
@@ -139,7 +139,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  libxl_domain_type = Enumeration("domain_type", [
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -175,7 +175,11 @@ struct cmd_spec cmd_table[] = {
+@@ -176,7 +176,11 @@ const struct cmd_spec cmd_table[] = {
        "-p                Do not unpause domain after migrating it.\n"
        "-D                Preserve the domain id\n"
        "--max_iters N     Number of copy iterations before final stop+move\n"

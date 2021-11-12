@@ -9,7 +9,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  tools/include/xentoollog.h       |    1 
  tools/libs/ctrl/xc_domain.c      |   12 ++++++-
  tools/libs/ctrl/xc_private.h     |    9 +++++
- tools/libs/ctrl/xc_resume.c      |    5 ++-
+ tools/libs/guest/xg_resume.c     |    5 ++-
  tools/libs/guest/xg_sr_common.c  |   59 +++++++++++++++++++++++++++++++++++++++
  tools/libs/guest/xg_sr_common.h  |    3 +
  tools/libs/guest/xg_sr_restore.c |    3 +
@@ -29,7 +29,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  /*
 --- a/tools/libs/ctrl/xc_domain.c
 +++ b/tools/libs/ctrl/xc_domain.c
-@@ -68,20 +68,28 @@ int xc_domain_cacheflush(xc_interface *x
+@@ -66,20 +66,28 @@ int xc_domain_cacheflush(xc_interface *x
  int xc_domain_pause(xc_interface *xch,
                      uint32_t domid)
  {
@@ -78,9 +78,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  #if defined(HAVE_VALGRIND_MEMCHECK_H) && !defined(NDEBUG) && !defined(__MINIOS__)
  /* Compile in Valgrind client requests? */
  #include <valgrind/memcheck.h>
---- a/tools/libs/ctrl/xc_resume.c
-+++ b/tools/libs/ctrl/xc_resume.c
-@@ -282,7 +282,10 @@ out:
+--- a/tools/libs/guest/xg_resume.c
++++ b/tools/libs/guest/xg_resume.c
+@@ -259,7 +259,10 @@ out:
   */
  int xc_domain_resume(xc_interface *xch, uint32_t domid, int fast)
  {
@@ -249,7 +249,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
 --- a/tools/xl/xl.c
 +++ b/tools/xl/xl.c
-@@ -406,6 +406,8 @@ int main(int argc, char **argv)
+@@ -420,6 +420,8 @@ int main(int argc, char **argv)
      logger = xtl_createlogger_stdiostream(stderr, minmsglevel, xtl_flags);
      if (!logger) exit(EXIT_FAILURE);
  

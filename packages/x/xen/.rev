@@ -2614,4 +2614,12 @@
     <comment>Update to Xen version 4.15.1 with various other fixes.</comment>
     <requestid>918052</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>aa9def5f8cfe0b15b6220c241f238d15</srcmd5>
+    <version>4.16.0_01</version>
+    <time>1636729139</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.16.0. For Tumbleweed, requires rebuilt qemu and libvirt packages against this new Xen version to go in at the same time.</comment>
+    <requestid>930561</requestid>
+  </revision>
 </revisionlist>

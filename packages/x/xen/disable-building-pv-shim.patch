@@ -1,7 +1,7 @@
-Index: xen-4.14.0-testing/xen/arch/x86/configs/pvshim_defconfig
+Index: xen-4.16.0-testing/xen/arch/x86/configs/pvshim_defconfig
 ===================================================================
---- xen-4.14.0-testing.orig/xen/arch/x86/configs/pvshim_defconfig
-+++ xen-4.14.0-testing/xen/arch/x86/configs/pvshim_defconfig
+--- xen-4.16.0-testing.orig/xen/arch/x86/configs/pvshim_defconfig
++++ xen-4.16.0-testing/xen/arch/x86/configs/pvshim_defconfig
 @@ -2,8 +2,8 @@
  CONFIG_PV=y
  CONFIG_XEN_GUEST=y
@@ -12,4 +12,4 @@ Index: xen-4.14.0-testing/xen/arch/x86/configs/pvshim_defconfig
 +CONFIG_PV_SHIM_EXCLUSIVE=n
  CONFIG_NR_CPUS=32
  CONFIG_EXPERT=y
- CONFIG_SCHED_NULL=y
+ # Disable features not used by the PV shim

@@ -44,9 +44,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/guest/xg_private.h
 +++ b/tools/libs/guest/xg_private.h
-@@ -154,4 +154,9 @@ int pin_table(xc_interface *xch, unsigne
- #define M2P_SIZE(_m)    ROUNDUP(((_m) * sizeof(xen_pfn_t)), M2P_SHIFT)
- #define M2P_CHUNKS(_m)  (M2P_SIZE((_m)) >> M2P_SHIFT)
+@@ -179,4 +179,9 @@ struct xc_cpu_policy {
+ };
+ #endif /* x86 */
  
 +#define SUPERPAGE_2MB_SHIFT   9
 +#define SUPERPAGE_2MB_NR_PFNS (1UL << SUPERPAGE_2MB_SHIFT)

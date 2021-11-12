@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:09:58 MST 2021 - carnold@suse.com
+
+- Update to Xen 4.16.0 RC2 release
+  xen-4.16.0-testing-src.tar.bz2
+- Modified files
+  ipxe-use-rpm-opt-flags.patch
+  ipxe.tar.bz2 (new version)
+
+-------------------------------------------------------------------
+Mon Nov  1 11:15:13 MDT 2021 - carnold@suse.com
+
+- Update to Xen 4.16.0 RC1 release
+  xen-4.16.0-testing-src.tar.bz2
+- Drop patches contained in new tarball or invalid
+  615c9fd0-VT-d-fix-deassign-of-device-with-RMRR.patch
+  libxc-sr-383b41974d5543b62f3181d216070fe3691fb130.patch
+  libxc-sr-5588ebcfca774477cf823949e5703b0ac48818cc.patch
+  libxc-sr-9e59d9f8ee3808acde9833192211da25f66d8cc2.patch
+  libxc-sr-f17a73b3c0264c62dd6b5dae01ed621c051c3038.patch
+  xenstore-launch.patch
+
+-------------------------------------------------------------------
+Wed Oct  6 08:19:42 MDT 2021 - carnold@suse.com
+
+- bsc#1191363 - VUL-0: CVE-2021-28702: xen: PCI devices with RMRRs
+  not deassigned correctly (XSA-386)
+  615c9fd0-VT-d-fix-deassign-of-device-with-RMRR.patch
+
+-------------------------------------------------------------------
+Mon Sep 13 11:50:00 CEST 2021 - jbeulich@suse.com
+
+- Revert "Simplify %autosetup".
+
+-------------------------------------------------------------------
 Fri Sep 10 13:07:31 MDT 2021 - carnold@suse.com
 
 - Update to Xen 4.15.1 bug fix release

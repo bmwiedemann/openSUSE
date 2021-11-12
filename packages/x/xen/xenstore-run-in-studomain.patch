@@ -11,7 +11,7 @@ References: fate#323663 - Run Xenstore in stubdomain
  #
  # Select type of xentore service.
  #
-@@ -66,14 +66,14 @@ XENSTORED_ROOTDIR=
+@@ -81,14 +81,14 @@ XENSTORED_TRACE=
  XENSTORE_DOMAIN_KERNEL=
  
  ## Type: integer
@@ -30,7 +30,7 @@ References: fate#323663 - Run Xenstore in stubdomain
  # - plain integer value for max size in MiB
 --- a/tools/hotplug/Linux/launch-xenstore.in
 +++ b/tools/hotplug/Linux/launch-xenstore.in
-@@ -61,7 +61,7 @@ fi
+@@ -48,7 +48,7 @@ test_xenstore && exit 0
  
  test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/xencommons && . @CONFIG_DIR@/@CONFIG_LEAF_DIR@/xencommons
  
@@ -39,7 +39,7 @@ References: fate#323663 - Run Xenstore in stubdomain
  
  /bin/mkdir -p @XEN_RUN_DIR@
  
-@@ -87,9 +87,10 @@ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/x
+@@ -95,9 +95,10 @@ test -f @CONFIG_DIR@/@CONFIG_LEAF_DIR@/x
  [ "$XENSTORETYPE" = "domain" ] && {
  	[ -z "$XENSTORE_DOMAIN_KERNEL" ] && XENSTORE_DOMAIN_KERNEL=@LIBEXEC@/boot/xenstore-stubdom.gz
  	XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --kernel $XENSTORE_DOMAIN_KERNEL"
@@ -50,5 +50,5 @@ References: fate#323663 - Run Xenstore in stubdomain
 +	[ -z "$XENSTORE_MAX_DOMAIN_SIZE" ] && XENSTORE_MAX_DOMAIN_SIZE="1/100"
 +	XENSTORE_DOMAIN_ARGS="$XENSTORE_DOMAIN_ARGS --maxmem $XENSTORE_MAX_DOMAIN_SIZE"
  
- 	echo $nonl Starting $XENSTORE_DOMAIN_KERNEL...
+ 	echo -n Starting $XENSTORE_DOMAIN_KERNEL...
  	${LIBEXEC_BIN}/init-xenstore-domain $XENSTORE_DOMAIN_ARGS || exit 1

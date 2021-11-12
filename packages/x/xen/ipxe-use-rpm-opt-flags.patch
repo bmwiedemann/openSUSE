@@ -1,10 +1,10 @@
 References: bsc#969377 - xen does not build with GCC 6
 
-Index: xen-4.8.0-testing/tools/firmware/etherboot/patches/ipxe-use-rpm-opt-flags.patch
-===================================================================
---- /dev/null
-+++ xen-4.8.0-testing/tools/firmware/etherboot/patches/ipxe-use-rpm-opt-flags.patch
-@@ -0,0 +1,11 @@
+zbin.c: See upstream commit 956f6a7227b62ce98d7840439af17bbca04f0c86
+
+--- /dev/null	2021-01-21 12:33:57.508399729 -0700
++++ xen-4.16.0-testing/tools/firmware/etherboot/patches/ipxe-use-rpm-opt-flags.patch	2021-11-08 16:38:11.557409210 -0700
+@@ -0,0 +1,46 @@
 +--- ipxe/src/Makefile.orig	2016-03-04 15:48:15.000000000 -0700
 ++++ ipxe/src/Makefile	2016-03-04 15:48:40.000000000 -0700
 +@@ -4,7 +4,7 @@
@@ -12,10 +12,45 @@ Index: xen-4.8.0-testing/tools/firmware/etherboot/patches/ipxe-use-rpm-opt-flags
 + 
 + CLEANUP		:=
 +-CFLAGS		:=
-++CFLAGS		:= $(RPM_OPT_FLAGS) -Wno-error=array-bounds -Wno-nonnull-compare -Wno-unused-const-variable -Wno-misleading-indentation -Wno-shift-negative-value -Wno-implicit-fallthrough -Wno-nonnull
+++CFLAGS		:= $(RPM_OPT_FLAGS) -Wno-error=array-bounds -Wno-nonnull-compare -Wno-unused-const-variable -Wno-misleading-indentation -Wno-shift-negative-value -Wno-implicit-fallthrough -Wno-nonnull -Wno-address-of-packed-member -Wno-maybe-uninitialized -Wno-enum-conversion -Wno-format-overflow -Wno-format-truncation
 + ASFLAGS		:=
 + LDFLAGS		:=
 + MAKEDEPS	:= Makefile
++--- ipxe/src/util/zbin.c
+++++ ipxe/src/util/zbin.c
++@@ -386,16 +386,16 @@ static int process_zinfo_add ( struct input_file *input
++ 		 ( ( 1UL << ( 8 * datasize ) ) - 1 ) : ~0UL );
++ 
++ 	if ( val < 0 ) {
++-		fprintf ( stderr, "Add %s%#x+%#lx at %#zx %sflows field\n",
++-			  ( ( addend < 0 ) ? "-" : "" ), abs ( addend ), size,
+++		fprintf ( stderr, "Add %s%#lx+%#lx at %#zx %sflows field\n",
+++			  ( ( addend < 0 ) ? "-" : "" ), labs ( addend ), size,
++ 			  offset, ( ( addend < 0 ) ? "under" : "over" ) );
++ 		return -1;
++ 	}
++ 
++ 	if ( val & ~mask ) {
++-		fprintf ( stderr, "Add %s%#x+%#lx at %#zx overflows %zd-byte "
+++		fprintf ( stderr, "Add %s%#lx+%#lx at %#zx overflows %zd-byte "
++ 			  "field (%d bytes too big)\n",
++-			  ( ( addend < 0 ) ? "-" : "" ), abs ( addend ), size,
+++			  ( ( addend < 0 ) ? "-" : "" ), labs ( addend ), size,
++ 			  offset, datasize,
++ 			  ( int )( ( val - mask - 1 ) * add->divisor ) );
++ 		return -1;
++@@ -414,9 +414,9 @@ static int process_zinfo_add ( struct input_file *input
++ 	}
++ 
++ 	if ( DEBUG ) {
++-		fprintf ( stderr, "ADDx [%#zx,%#zx) (%s%#x+(%#zx/%#x)) = "
+++		fprintf ( stderr, "ADDx [%#zx,%#zx) (%s%#lx+(%#zx/%#x)) = "
++ 			  "%#lx\n", offset, ( offset + datasize ),
++-			  ( ( addend < 0 ) ? "-" : "" ), abs ( addend ),
+++			  ( ( addend < 0 ) ? "-" : "" ), labs ( addend ),
++ 			  len, add->divisor, val );
++ 	}
++ 
 Index: xen-4.8.0-testing/tools/firmware/etherboot/patches/series
 ===================================================================
 --- xen-4.8.0-testing.orig/tools/firmware/etherboot/patches/series

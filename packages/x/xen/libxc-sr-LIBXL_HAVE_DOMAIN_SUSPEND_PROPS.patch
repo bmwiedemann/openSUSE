@@ -21,7 +21,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
 
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1705,13 +1705,28 @@ static inline int libxl_retrieve_domain_
+@@ -1750,13 +1750,28 @@ static inline int libxl_retrieve_domain_
      libxl_retrieve_domain_configuration_0x041200
  #endif
  
@@ -56,7 +56,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
   * Suspended domain can be resumed with libxl_domain_resume()
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -505,7 +505,8 @@ static void domain_suspend_cb(libxl__egc
+@@ -506,7 +506,8 @@ static void domain_suspend_cb(libxl__egc
  
  }
  
@@ -66,7 +66,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
                           const libxl_asyncop_how *ao_how)
  {
      AO_CREATE(ctx, domid, ao_how);
-@@ -526,8 +527,8 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+@@ -527,8 +528,8 @@ int libxl_domain_suspend(libxl_ctx *ctx,
      dss->domid = domid;
      dss->fd = fd;
      dss->type = type;
@@ -77,7 +77,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
      dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
  
      rc = libxl__fd_flags_modify_save(gc, dss->fd,
-@@ -542,6 +543,21 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+@@ -543,6 +544,21 @@ int libxl_domain_suspend(libxl_ctx *ctx,
      return AO_CREATE_FAIL(rc);
  }
  
@@ -101,7 +101,7 @@ Acked-by: Christian Lindig <christian.lindig@citrix.com>
  {
 --- a/tools/ocaml/libs/xl/xenlight_stubs.c
 +++ b/tools/ocaml/libs/xl/xenlight_stubs.c
-@@ -614,10 +614,11 @@ value stub_libxl_domain_suspend(value ct
+@@ -618,10 +618,11 @@ value stub_libxl_domain_suspend(value ct
  	int ret;
  	uint32_t c_domid = Int_val(domid);
  	int c_fd = Int_val(fd);

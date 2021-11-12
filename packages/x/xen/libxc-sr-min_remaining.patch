@@ -51,7 +51,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1714,6 +1714,7 @@ static inline int libxl_retrieve_domain_
+@@ -1759,6 +1759,7 @@ static inline int libxl_retrieve_domain_
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */
      uint32_t max_iters;
@@ -72,7 +72,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          goto stop_copy;
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -528,6 +528,7 @@ static int do_libxl_domain_suspend(libxl
+@@ -529,6 +529,7 @@ static int do_libxl_domain_suspend(libxl
      dss->fd = fd;
      dss->type = type;
      dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
@@ -92,7 +92,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      int rc;
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -164,17 +164,18 @@ struct cmd_spec cmd_table[] = {
+@@ -165,17 +165,18 @@ const struct cmd_spec cmd_table[] = {
        &main_migrate, 0, 1,
        "Migrate a domain to another host",
        "[options] <Domain> <host>",

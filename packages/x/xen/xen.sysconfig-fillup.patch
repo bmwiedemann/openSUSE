@@ -18,8 +18,10 @@ Basically fillup removed all comments, and also the two added key=value lines.
 
 Prevent this by defining all keys, with empty values, so that consumers
 of the values will continue to use the built-in defaults.
---- a/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
-+++ b/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
+Index: xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
+===================================================================
+--- xen-4.16.0-testing.orig/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
++++ xen-4.16.0-testing/tools/hotplug/Linux/init.d/sysconfig.xencommons.in
 @@ -3,7 +3,9 @@
  ## Default: "none"
  #
@@ -52,8 +54,8 @@ of the values will continue to use the built-in defaults.
 +XENSTORED=
  
  ## Type: string
- ## Default: ""
-@@ -44,30 +46,31 @@ XENSTORED_ARGS=
+ ## Default: unlimited
+@@ -57,9 +59,10 @@ XENSTORED_ARGS=
  ## Type: string
  ## Default: Not defined, tracing off
  #
@@ -64,16 +66,9 @@ of the values will continue to use the built-in defaults.
 +#
 +XENSTORED_TRACE=
  
- ## Type: string
- ## Default: "@XEN_LIB_STORED@"
- #
- # Running xenstored on XENSTORED_ROOTDIR
- # Only evaluated if XENSTORETYPE is "daemon".
--#XENSTORED_ROOTDIR=@XEN_LIB_STORED@
-+XENSTORED_ROOTDIR=
- 
- ## Type: string
- ## Default: @LIBEXEC@/boot/xenstore-stubdom.gz
+ ## Type: integer
+ ## Default: 50
+@@ -75,14 +78,14 @@ XENSTORED_ARGS=
  #
  # xenstore domain kernel.
  # Only evaluated if XENSTORETYPE is "domain".
@@ -90,7 +85,7 @@ of the values will continue to use the built-in defaults.
  
  ## Type: string
  ## Default: not set, no autoballooning of xenstore domain
-@@ -78,7 +81,7 @@ XENSTORED_ARGS=
+@@ -93,7 +96,7 @@ XENSTORED_ARGS=
  # - combination of both in form of <val>:<frac> (e.g. 8:1/100), resulting
  #   value will be the higher of both specifications
  # Only evaluated if XENSTORETYPE is "domain".
@@ -99,7 +94,7 @@ of the values will continue to use the built-in defaults.
  
  ## Type: string
  ## Default: ""
-@@ -91,4 +94,4 @@ XENSTORE_DOMAIN_ARGS=
+@@ -106,4 +109,4 @@ XENSTORE_DOMAIN_ARGS=
  #QEMU_XEN=@qemu_xen_path@
  
  # Dom0 UUID

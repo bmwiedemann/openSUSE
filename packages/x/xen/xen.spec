@@ -29,7 +29,7 @@
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 41121
-%define xen_build_dir xen-4.15.1-testing
+%define xen_build_dir xen-4.16.0-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -130,12 +130,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.15.1_01
+Version:        4.16.0_01
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.15.1-testing-src.tar.bz2
+Source0:        xen-4.16.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        ipxe.tar.bz2
 Source3:        mini-os.tar.bz2
@@ -169,40 +169,36 @@ Source99:       baselibs.conf
 # Upstream patches
 # EMBARGOED security fixes
 # libxc
-Patch301:       libxc-sr-383b41974d5543b62f3181d216070fe3691fb130.patch
-Patch302:       libxc-sr-9e59d9f8ee3808acde9833192211da25f66d8cc2.patch
-Patch303:       libxc-sr-5588ebcfca774477cf823949e5703b0ac48818cc.patch
-Patch304:       libxc-sr-f17a73b3c0264c62dd6b5dae01ed621c051c3038.patch
-Patch305:       libxc-bitmap-long.patch
-Patch306:       libxc-sr-xl-migration-debug.patch
-Patch307:       libxc-sr-readv_exact.patch
-Patch308:       libxc-sr-save-show_transfer_rate.patch
-Patch309:       libxc-sr-save-mfns.patch
-Patch310:       libxc-sr-save-types.patch
-Patch311:       libxc-sr-save-errors.patch
-Patch312:       libxc-sr-save-iov.patch
-Patch313:       libxc-sr-save-rec_pfns.patch
-Patch314:       libxc-sr-save-guest_data.patch
-Patch315:       libxc-sr-save-local_pages.patch
-Patch316:       libxc-sr-restore-pfns.patch
-Patch317:       libxc-sr-restore-types.patch
-Patch318:       libxc-sr-restore-mfns.patch
-Patch319:       libxc-sr-restore-map_errs.patch
-Patch320:       libxc-sr-restore-populate_pfns-pfns.patch
-Patch321:       libxc-sr-restore-populate_pfns-mfns.patch
-Patch322:       libxc-sr-restore-read_record.patch
-Patch323:       libxc-sr-restore-handle_buffered_page_data.patch
-Patch324:       libxc-sr-restore-handle_incoming_page_data.patch
-Patch325:       libxc-sr-LIBXL_HAVE_DOMAIN_SUSPEND_PROPS.patch
-Patch326:       libxc-sr-precopy_policy.patch
-Patch327:       libxc-sr-max_iters.patch
-Patch328:       libxc-sr-min_remaining.patch
-Patch329:       libxc-sr-abort_if_busy.patch
-Patch330:       libxc-sr-xg_sr_bitmap.patch
-Patch331:       libxc-sr-xg_sr_bitmap-populated_pfns.patch
-Patch332:       libxc-sr-restore-hvm-legacy-superpage.patch
-Patch333:       libxc-sr-track-migration-time.patch
-Patch334:       libxc-sr-number-of-iterations.patch
+Patch301:       libxc-bitmap-long.patch
+Patch302:       libxc-sr-xl-migration-debug.patch
+Patch303:       libxc-sr-readv_exact.patch
+Patch304:       libxc-sr-save-show_transfer_rate.patch
+Patch305:       libxc-sr-save-mfns.patch
+Patch306:       libxc-sr-save-types.patch
+Patch307:       libxc-sr-save-errors.patch
+Patch308:       libxc-sr-save-iov.patch
+Patch309:       libxc-sr-save-rec_pfns.patch
+Patch310:       libxc-sr-save-guest_data.patch
+Patch311:       libxc-sr-save-local_pages.patch
+Patch312:       libxc-sr-restore-pfns.patch
+Patch313:       libxc-sr-restore-types.patch
+Patch314:       libxc-sr-restore-mfns.patch
+Patch315:       libxc-sr-restore-map_errs.patch
+Patch316:       libxc-sr-restore-populate_pfns-pfns.patch
+Patch317:       libxc-sr-restore-populate_pfns-mfns.patch
+Patch318:       libxc-sr-restore-read_record.patch
+Patch319:       libxc-sr-restore-handle_buffered_page_data.patch
+Patch320:       libxc-sr-restore-handle_incoming_page_data.patch
+Patch321:       libxc-sr-LIBXL_HAVE_DOMAIN_SUSPEND_PROPS.patch
+Patch322:       libxc-sr-precopy_policy.patch
+Patch323:       libxc-sr-max_iters.patch
+Patch324:       libxc-sr-min_remaining.patch
+Patch325:       libxc-sr-abort_if_busy.patch
+Patch326:       libxc-sr-xg_sr_bitmap.patch
+Patch327:       libxc-sr-xg_sr_bitmap-populated_pfns.patch
+Patch328:       libxc-sr-restore-hvm-legacy-superpage.patch
+Patch329:       libxc-sr-track-migration-time.patch
+Patch330:       libxc-sr-number-of-iterations.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -213,8 +209,7 @@ Patch405:       xen-arch-kconfig-nr_cpus.patch
 Patch406:       suse-xendomains-service.patch
 Patch407:       replace-obsolete-network-configuration-commands-in-s.patch
 Patch408:       disable-building-pv-shim.patch
-Patch409:       xenstore-launch.patch
-Patch410:       ignore-ip-command-script-errors.patch
+Patch409:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
@@ -421,11 +416,8 @@ Authors:
 %endif
 
 %prep
-%autosetup -p1 -n %xen_build_dir -a 3
-# extract manually because autosetup, unlike setup, can handle just a singe archive (the last one specified with -a)
-tar xfa %SOURCE1
-tar xfa %SOURCE2
-tar xfa %SOURCE4
+%setup -q -n %xen_build_dir -a 1 -a 2 -a 3 -a 4
+%autosetup -D -T -n %xen_build_dir -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -505,6 +497,7 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         --disable-xen \
         --enable-tools \
         --enable-docs \
+        --disable-rombios \
         --prefix=/usr \
         --exec_prefix=/usr \
         --bindir=%{_bindir} \
@@ -1043,6 +1036,8 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 /usr/sbin/xen-lowmemd
 /usr/sbin/xen-memshare
 /usr/sbin/xen-ucode
+/usr/sbin/xen-mceinj
+/usr/sbin/xen-vmtrace
 %endif
 /usr/sbin/xenhypfs
 /usr/sbin/xen-list

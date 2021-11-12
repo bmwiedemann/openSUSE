@@ -46,7 +46,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
 --- a/tools/include/libxl.h
 +++ b/tools/include/libxl.h
-@@ -1713,6 +1713,7 @@ static inline int libxl_retrieve_domain_
+@@ -1758,6 +1758,7 @@ static inline int libxl_retrieve_domain_
  
  typedef struct {
      uint32_t flags; /* LIBXL_SUSPEND_* */
@@ -67,7 +67,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 --- a/tools/libs/light/libxl_domain.c
 +++ b/tools/libs/light/libxl_domain.c
-@@ -527,6 +527,7 @@ static int do_libxl_domain_suspend(libxl
+@@ -528,6 +528,7 @@ static int do_libxl_domain_suspend(libxl
      dss->domid = domid;
      dss->fd = fd;
      dss->type = type;
@@ -87,7 +87,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      int rc;
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -173,7 +173,8 @@ struct cmd_spec cmd_table[] = {
+@@ -174,7 +174,8 @@ const struct cmd_spec cmd_table[] = {
        "                of the domain.\n"
        "--debug         Enable verification mode.\n"
        "-p              Do not unpause domain after migrating it.\n"

@@ -35,7 +35,7 @@ v02:
  
 --- a/tools/xl/xl_cmdtable.c
 +++ b/tools/xl/xl_cmdtable.c
-@@ -171,7 +171,7 @@ struct cmd_spec cmd_table[] = {
+@@ -172,7 +172,7 @@ const struct cmd_spec cmd_table[] = {
        "                migrate-receive [-d -e]\n"
        "-e              Do not wait in the background (on <host>) for the death\n"
        "                of the domain.\n"

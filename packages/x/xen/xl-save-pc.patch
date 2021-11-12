@@ -40,7 +40,7 @@ Keep going if the event type and shutdown reason remains the same.
  install: all
 --- a/tools/xl/xl.h
 +++ b/tools/xl/xl.h
-@@ -300,6 +300,7 @@ typedef enum {
+@@ -301,6 +301,7 @@ typedef enum {
      DOMAIN_RESTART_SOFT_RESET,   /* Soft reset should be performed */
  } domain_restart_type;
  
