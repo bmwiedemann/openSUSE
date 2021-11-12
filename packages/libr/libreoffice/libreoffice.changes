@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 10 09:42:34 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.2.3.1
+- Drop patches:
+  * bsc1187982.patch
+  * bsc1189813.patch
+
+-------------------------------------------------------------------
 Fri Oct 22 20:04:38 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1187982: LO-L3: PPTX: one column becomes two within one text frame

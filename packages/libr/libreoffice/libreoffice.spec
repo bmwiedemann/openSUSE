@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.2.2.2
+Version:        7.2.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -105,10 +105,6 @@ Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 Patch7:         pld-skia-patches.patch
-# bsc#1189813 LO-L3: Shadow effect for tables in PPTX partly incorrect
-Patch8:         bsc1189813.patch
-# bsc#1187982 LO-L3: PPTX: one column becomes two within one text frame
-Patch9:         bsc1187982.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -988,8 +984,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif
