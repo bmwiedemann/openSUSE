@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  9 17:45:22 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- add aa-notify-more-arch-mr809.diff: Add support for reading s390x
+  and aarch64 wtmp files (boo#1181155)
+
+-------------------------------------------------------------------
 Fri Oct 15 20:22:11 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add add-samba-bgqd.diff: add profile for samba-bgqd (boo#1191532)

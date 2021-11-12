@@ -2197,4 +2197,13 @@ libapparmor:
     <comment>- add add-samba-bgqd.diff: add profile for samba-bgqd (boo#1191532)</comment>
     <requestid>925557</requestid>
   </revision>
+  <revision rev="159" vrev="5">
+    <srcmd5>295d5b12caa97a7b9e60801d4c0bffc5</srcmd5>
+    <version>3.0.3</version>
+    <time>1636729136</time>
+    <user>dimstar_suse</user>
+    <comment>- add aa-notify-more-arch-mr809.diff: Add support for reading s390x
+  and aarch64 wtmp files (boo#1181155) (forwarded request 930526 from cboltz)</comment>
+    <requestid>930527</requestid>
+  </revision>
 </revisionlist>

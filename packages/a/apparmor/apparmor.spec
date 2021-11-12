@@ -84,6 +84,9 @@ Patch7:         profiles-python-3.10-mr783.diff
 # add samba-bgqd profile (submitted upstream 2021-10-15 https://gitlab.com/apparmor/apparmor/-/merge_requests/807)
 Patch8:         add-samba-bgqd.diff
 
+# aa-notify: Add support for reading s390x and aarch64 wtmp file (boo#1181155) (merged upstream 2021-11-08 in master and 3.0 branch - https://gitlab.com/apparmor/apparmor/-/merge_requests/809)
+Patch9:         aa-notify-more-arch-mr809.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -348,6 +351,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch5
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %define _lto_cflags %{nil}
