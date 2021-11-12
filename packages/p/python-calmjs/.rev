@@ -24,4 +24,20 @@
     <comment></comment>
     <requestid>866032</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7bedc19ed8f4faf37a3428d17b41d708</srcmd5>
+    <version>3.4.2</version>
+    <time>1636729159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.2:
+  - This is a maintenance release for Python 3.10; no substantial
+    changes were been made.
+  - Provided a check for disabling integration tests using the
+    CALMJS_SKIP_INTEGRATION environment variable, when set to a non-
+    empty string, the integration tests found in test_dist will be
+    skipped. [ #60 ]
+- Fix running of tests (gh#calmjs/calmjs#61).
+</comment>
+    <requestid>930992</requestid>
+  </revision>
 </revisionlist>
