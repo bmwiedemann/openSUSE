@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov 12 06:40:13 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.32.0
+  * New Features
+    - Edit book: Add a tool to transform HTML tags based on rules
+      (Tools->Transform HTML)
+    - Driver for the new Tolino Vision 6
+    - Kobo driver: Add support for the latest firmware released
+      last week
+    - When picking a random book ensure recently chosen books are
+      not re-selected
+    - Icon theme chooser dialog: Allow right clicking on a theme to
+      visit its homepage
+  * Bug Fixes
+    - Amazon metadata download: Add support for more markup
+      variations in amazon's sites that could prevent the fetching
+      of ratings, comments and series metadata for some books
+    - Google search: Add support for new beta search results page
+      markup that was preventing using cached Google pages to
+      search for Amazon metadata
+    - PDF Output: Fix the option to preserve cover aspect ratio
+      being ignored when converting comics
+    - DOCX Input: Sanitize image filenames more strictly to
+      workaround broken EPUB software
+    - Linux binary: Fix file dialogs not working on Fedora 35 under
+      KDE
+    - When sending email to the Kindle and PocketBook sync services
+      use ASCII filenames as there have been some reports of issues
+      with non-ASCII filenames with these services.
+    - Book Details: Fix missing copy options on composite columns
+    - Ask for confirmation when deleting covers from books
+
+-------------------------------------------------------------------
 Fri Oct 29 10:11:24 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.31.1
