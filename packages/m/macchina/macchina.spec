@@ -1,7 +1,7 @@
 #
 # spec file for package macchina
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           macchina
-Version:        5.0.3~git0.303b6e7
+Version:        5.0.4~git0.72b9c2b
 Release:        0
 Summary:        Fast, minimal and customizable system information frontend
 License:        MIT
 Group:          Productivity/Text/Utilities
-Url:            https://github.com/Macchina-CLI/macchina#macchina
+URL:            https://github.com/Macchina-CLI/macchina#macchina
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -56,13 +56,11 @@ install -m0644 -t %{buildroot}%{_datadir}/%{name} macchina.toml
 true # Skipping tests on other archs than x86_64 due to SIGSEGV on arm64
 %endif
 
-
 %files
-%license LICENSE 
+%license LICENSE
 %doc CHANGELOG.txt README.md
 %{_datadir}/%{name}/%{name}.toml
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 
 %changelog
-
