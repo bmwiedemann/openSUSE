@@ -17,14 +17,14 @@
 
 
 Name:           libgpg-error
-Version:        1.42
+Version:        1.43
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnupg.org/
-Source0:        https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-%{version}.tar.bz2
-Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-%{version}.tar.bz2.sig
+Source0:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2
+Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar.bz2.sig
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf

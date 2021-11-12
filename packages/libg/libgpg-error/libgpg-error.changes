@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  5 10:58:23 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.43:
+  * Fix for building against GNU libc 2.34.
+  * Fix gpgrt-config problems.
+  * Fix gpgrt_free for legacy platforms.
+  * Fix truncation of error message in the middle of a character.
+  * Fix the --disable-threads configure options.
+  * Improve lock-obj generation for cross-builds.
+  * Improve cross-builds.
+  * Improve gpgrt_wait_processes.
+
+-------------------------------------------------------------------
 Fri Jun 18 14:28:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static).
