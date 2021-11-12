@@ -1169,6 +1169,8 @@ unsorted:
   - bazel3.7: [x86_64] 
   - bb 
   - bbe 
+  - bbswitch 
+  - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -3028,7 +3030,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3928,7 +3929,6 @@ unsorted:
   - fzy 
   - g3utils 
   - g810-led 
-  - gaa 
   - gajim 
   - gajim-lang 
   - gajim-plugin-omemo 
@@ -4261,6 +4261,8 @@ unsorted:
   - ghc-MonadRandom-devel: [x86_64] 
   - ghc-OddWord: [x86_64] 
   - ghc-OddWord-devel: [x86_64] 
+  - ghc-OneTuple: [x86_64] 
+  - ghc-OneTuple-devel: [x86_64] 
   - ghc-Only: [x86_64] 
   - ghc-Only-devel: [x86_64] 
   - ghc-QuickCheck: [x86_64] 
@@ -4749,13 +4751,25 @@ unsorted:
   - ghc-hslogger: [x86_64] 
   - ghc-hslogger-devel: [x86_64] 
   - ghc-hslua: [x86_64] 
+  - ghc-hslua-classes: [x86_64] 
+  - ghc-hslua-classes-devel: [x86_64] 
+  - ghc-hslua-core: [x86_64] 
+  - ghc-hslua-core-devel: [x86_64] 
   - ghc-hslua-devel: [x86_64] 
+  - ghc-hslua-marshalling: [x86_64] 
+  - ghc-hslua-marshalling-devel: [x86_64] 
   - ghc-hslua-module-path: [x86_64] 
   - ghc-hslua-module-path-devel: [x86_64] 
   - ghc-hslua-module-system: [x86_64] 
   - ghc-hslua-module-system-devel: [x86_64] 
   - ghc-hslua-module-text: [x86_64] 
   - ghc-hslua-module-text-devel: [x86_64] 
+  - ghc-hslua-module-version: [x86_64] 
+  - ghc-hslua-module-version-devel: [x86_64] 
+  - ghc-hslua-objectorientation: [x86_64] 
+  - ghc-hslua-objectorientation-devel: [x86_64] 
+  - ghc-hslua-packaging: [x86_64] 
+  - ghc-hslua-packaging-devel: [x86_64] 
   - ghc-hspec: [x86_64] 
   - ghc-hspec-core: [x86_64] 
   - ghc-hspec-core-devel: [x86_64] 
@@ -4867,6 +4881,8 @@ unsorted:
   - ghc-lifted-base-devel: [x86_64] 
   - ghc-logict: [x86_64] 
   - ghc-logict-devel: [x86_64] 
+  - ghc-lua: [x86_64] 
+  - ghc-lua-devel: [x86_64] 
   - ghc-lucid: [x86_64] 
   - ghc-lucid-devel: [x86_64] 
   - ghc-lukko: [x86_64] 
@@ -5387,6 +5403,8 @@ unsorted:
   - ghc-websockets-snap-devel: [x86_64] 
   - ghc-weeder: [x86_64] 
   - ghc-weeder-devel: [x86_64] 
+  - ghc-witherable: [x86_64] 
+  - ghc-witherable-devel: [x86_64] 
   - ghc-wizards: [x86_64] 
   - ghc-wizards-devel: [x86_64] 
   - ghc-wl-pprint-annotated: [x86_64] 
@@ -8106,7 +8124,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -12398,6 +12415,7 @@ unsorted:
   - libopenssl1_0_0-hmac-32bit: [x86_64] 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit: [x86_64] 
+  - libopenssl1_1-hmac-32bit: [x86_64] 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
   - libopenvas_wincmd1 
@@ -14566,6 +14584,8 @@ unsorted:
   - libxclass-0_9_2 
   - libxcrypt-devel-32bit: [x86_64] 
   - libxcrypt-devel-static 
+  - libxcvt 
+  - libxcvt-devel: [i586] # devel package of dvd:libxcvt0 
   - libxdg-basedir-devel 
   - libxdg-basedir1 
   - libxdot4 
@@ -15880,7 +15900,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
+  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -16976,7 +16996,6 @@ unsorted:
   - nfs-ganesha-rados-urls: [x86_64] 
   - nfs-ganesha-rgw: [x86_64] 
   - nfs-ganesha-vfs: [x86_64] 
-  - nfs-ganesha-xfs: [x86_64] 
   - nfs4-acl-tools 
   - nfsidmap-devel 
   - nfswatch 
@@ -17825,14 +17844,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -21890,6 +21906,7 @@ unsorted:
   - python36-azure-mgmt-authorization 
   - python36-azure-mgmt-automanage 
   - python36-azure-mgmt-automation 
+  - python36-azure-mgmt-avs 
   - python36-azure-mgmt-azureadb2c 
   - python36-azure-mgmt-azurestack 
   - python36-azure-mgmt-azurestackhci 
@@ -24068,6 +24085,7 @@ unsorted:
   - python36-txt2tags 
   - python36-txtorcon 
   - python36-typed-ast 
+  - python36-typedload 
   - python36-typeguard 
   - python36-typepy 
   - python36-typer 
@@ -24697,6 +24715,7 @@ unsorted:
   - python38-azure-mgmt-authorization 
   - python38-azure-mgmt-automanage 
   - python38-azure-mgmt-automation 
+  - python38-azure-mgmt-avs 
   - python38-azure-mgmt-azureadb2c 
   - python38-azure-mgmt-azurestack 
   - python38-azure-mgmt-azurestackhci 
@@ -27004,6 +27023,7 @@ unsorted:
   - python38-txt2tags 
   - python38-txtorcon 
   - python38-typed-ast 
+  - python38-typedload 
   - python38-typeguard 
   - python38-typepy 
   - python38-typer 
@@ -27679,6 +27699,7 @@ unsorted:
   - python39-azure-mgmt-authorization 
   - python39-azure-mgmt-automanage 
   - python39-azure-mgmt-automation 
+  - python39-azure-mgmt-avs 
   - python39-azure-mgmt-azureadb2c 
   - python39-azure-mgmt-azurestack 
   - python39-azure-mgmt-azurestackhci 
@@ -30145,6 +30166,7 @@ unsorted:
   - python39-txt2tags 
   - python39-txtorcon 
   - python39-typed-ast 
+  - python39-typedload 
   - python39-typeguard 
   - python39-typepy 
   - python39-typer 
@@ -31101,6 +31123,7 @@ unsorted:
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
+  - ritchie-cli 
   - rk-devel 
   - rkdeveloptool 
   - rke 
@@ -41719,7 +41742,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default 
+  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
@@ -42207,8 +42230,11 @@ unsorted:
   - xf86-video-amdgpu 
   - xf86-video-fbturbo 
   - xf86-video-fbturbo-live 
+  - xf86-video-glint 
   - xf86-video-intel-32bit: [x86_64] 
+  - xf86-video-mach64 
   - xf86-video-openchrome 
+  - xf86-video-tga 
   - xf86-video-trident 
   - xf86dga 
   - xfburn 
