@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 12 00:17:17 UTC 2021 - wbrown@suse.de
+
+- Update to version 20211112:
+  * Assigned RUSTSEC-2021-0122 to flatbuffers (#1100)
+  * Add `flatbuffers` advisory for flatbuffers#6627 (#1093)
+  * add cve info to advisories (#1099)
+  * Bump `rustsec-admin` to v0.5.3 (#1091)
+  * Add cvss information from nvd (#1085)
+  * Add missing method to time vulnerability (#1086)
+  * Add CVE alias for RUSTSEC-2021-0069 (#1087)
+  * Assigned RUSTSEC-2021-0121 to crypto2 (#1084)
+  * Unsound implementation of Chacha20 in crypto2 (#1072)
+  * Assigned RUSTSEC-2020-0159 to chrono (#1083)
+
+-------------------------------------------------------------------
 Wed Nov 03 00:32:55 UTC 2021 - wbrown@suse.de
 
 - Update to version 20211103:
