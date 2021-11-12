@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Nov  9 08:06:25 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- update to 4.0.1:
+  * Update spec python module dependencies accordingly.
+  * Fix parallel execution collecting a SyntaxError (See also #1410 #1408).
+
+- update to 4.0.0:
+  * Remove --install-hook vcs integration (See also #1008).
+  * Remove setuptools command (See also #1009).
+  * Migrate from GitLab to GitHub (See also #1305).
+  * Due to constant confusion by users, user-level |Flake8| configuration files
+    are no longer supported. Files will not be searched for in the user's home
+    directory (e.g., ~/.flake8) nor in the XDG config directory (e.g.,
+    ~/.config/flake8).  (See also #1404).
+
+  * pycodestyle has been updated to >= 2.8.0, < 2.9.0 (See also #1406).
+  * Pyflakes has been updated to >= 2.4.0, < 2.5.0 (See also #1406).
+  * flake8 requires python >= 3.6 (See also #1010).
+
+  * Add --extend-select option (See also #1312 #1061).
+  * Automatically create directories for output files (See also #1329).
+
+  * ast parse before tokenizing to improve SyntaxError errors (See also
+    #1320 #740).
+  * Fix warning in --indent-size argparse help (See also #1367).
+  * Fix handling SyntaxError in python 3.10+ (See also #1374
+    #1372).
+  * Fix writing non-cp1252-encodable when output is piped on windows (See also
+    #1382 #1381).
+
+- Rebase fix-mock-patch-with-python3.4.patch and remove ignore-selectable-groups-warning.patch.
+
+-------------------------------------------------------------------
 Fri Sep 24 09:06:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add ignore-selectable-groups-warning.patch:

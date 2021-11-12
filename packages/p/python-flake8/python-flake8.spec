@@ -19,21 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.9.2
+Version:        4.0.1
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
 URL:            https://gitlab.com/pycqa/flake8
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
 Patch0:         fix-mock-patch-with-python3.4.patch
-Patch1:         ignore-selectable-groups-warning.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-mccabe >= 0.6.0
-Requires:       python-pycodestyle >= 2.7.0
-Requires:       python-pyflakes >= 2.3.0
+Requires:       python-pycodestyle >= 2.8.0
+Requires:       python-pyflakes >= 2.4.0
 Requires:       python-typing
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -42,8 +41,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pycodestyle >= 2.7.0}
-BuildRequires:  %{python_module pyflakes >= 2.3.0}
+BuildRequires:  %{python_module pycodestyle >= 2.8.0}
+BuildRequires:  %{python_module pyflakes >= 2.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
 %if %{with python2}

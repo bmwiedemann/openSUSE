@@ -347,4 +347,12 @@
   * Ignore unfixed warning.</comment>
     <requestid>921252</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>abaa56981eea92800a81896cea7f5158</srcmd5>
+    <version>4.0.1</version>
+    <time>1636729147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930697</requestid>
+  </revision>
 </revisionlist>
