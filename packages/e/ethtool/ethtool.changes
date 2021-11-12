@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 20:24:51 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 5.15
+  * Feature: new extended link substates for bad signal (no arg)
+  * Feature: coalesce cqe mode attributes (-c and -C)
+  * Fix: multiple fixes of EEPROM module data parsing (-m)
+  * Fix: fix condition to display MDI-X info (no arg)
+
+-------------------------------------------------------------------
 Sun Sep 12 21:04:47 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to new upstream release 5.14
