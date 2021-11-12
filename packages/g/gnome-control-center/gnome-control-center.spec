@@ -36,6 +36,8 @@ Source0:        https://download.gnome.org/sources/gnome-control-center/41/%{nam
 
 # PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-fix-autologin-shortcut.patch glgo#GNOME/gnome-control-center!1084 bsc#1191887 qkzhu@suse.com -- Make autologin_switch a activatable_widget
+Patch1:         gnome-control-center-fix-autologin-shortcut.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -192,6 +194,7 @@ GNOME control center.
 %setup -q
 
 %patch0 -p1
+%patch1 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1

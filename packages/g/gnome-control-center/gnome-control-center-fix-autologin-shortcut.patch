@@ -1,0 +1,28 @@
+From cb4d444ac1b46c3ea92dbb803d02de832ed4a9d9 Mon Sep 17 00:00:00 2001
+From: Chingkai Chu <3013329+chuchingkai@users.noreply.github.com>
+Date: Wed, 27 Oct 2021 16:52:41 +0800
+Subject: [PATCH] user-accounts: Make autologin_switch a activatable_widget
+
+If we don't add this property for autologin_row, the shortcut to
+toggle the GtkSwitch won't work.
+
+See: https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/1501
+---
+ panels/user-accounts/cc-user-panel.ui | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/panels/user-accounts/cc-user-panel.ui b/panels/user-accounts/cc-user-panel.ui
+index 134a9a39a..060bbaf5d 100644
+--- a/panels/user-accounts/cc-user-panel.ui
++++ b/panels/user-accounts/cc-user-panel.ui
+@@ -414,6 +414,7 @@
+                                         <property name="visible">True</property>
+                                         <property name="title" translatable="yes">A_utomatic Login</property>
+                                         <property name="use_underline">True</property>
++                                        <property name="activatable_widget">autologin_switch</property>
+                                         <child>
+                                           <object class="GtkSwitch" id="autologin_switch">
+                                             <property name="visible">True</property>
+-- 
+2.33.1
+
