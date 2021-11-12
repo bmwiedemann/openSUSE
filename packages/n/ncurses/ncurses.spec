@@ -88,7 +88,7 @@ Source8:        cursescheck
 Source9:        ftp://ftp.invisible-island.net/ncurses/ncurses-%{basevers}.tar.gz.asc
 Source10:       ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20210619.tgz.asc
 Source11:       ncurses.keyring
-Patch0:         ncurses-6.3.dif
+Patch0:         ncurses-6.2.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
