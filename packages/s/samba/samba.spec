@@ -53,7 +53,7 @@
 %define talloc_version 2.3.3
 %define tevent_version 0.11.0
 %define tdb_version    1.4.4
-%define ldb_version    2.4.0
+%define ldb_version    2.4.1
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -184,7 +184,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.15.0+git.185.378416e547c
+Version:        4.15.2+git.193.a4d6307f1fd
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -873,6 +873,18 @@ The Ceph VFS module for Samba allows shares to be backed by the Ceph
 distributed file system. A Ceph CTDB lock helper binary is included so
 that RADOS locks can be used for CTDB split-brain avoidance.
 
+
+%package -n samba-tool
+Summary:        Main Samba administration tool
+License:        GPL-3.0-or-later
+Group:          Productivity/Networking/Samba
+Requires:       samba = %{version}
+Requires:       samba-python3 = %{version}
+Requires:       samba-ldb-ldap = %{version}
+
+%description -n samba-tool
+The package contains samba-tool, the main tool for Samba Administration.
+
 %package ad-dc
 Summary:        Samba Active Directory-compatible Domain Controller
 License:        GPL-3.0-or-later
@@ -883,6 +895,7 @@ Requires:       samba-dsdb-modules = %{version}
 Recommends:     krb5-server >= 1.15.1
 %endif
 Requires:       samba-python3 = %{version}
+Requires:       samba-tool = %{version}
 Recommends:     samba-winbind = %{version}
 Recommends:     tdb-tools >= %{tdb_version}
 Provides:       samba-kdc = %{version}
@@ -1067,10 +1080,7 @@ make install \
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
 rm \
-	%{buildroot}/%{_libdir}/samba/ldb/ildap.so \
-	%{buildroot}/%{_libdir}/samba/ldb/ldbsamba_extensions.so \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
-	%{buildroot}/%{_mandir}/man8/samba-tool.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8* \
 	%{buildroot}/%{_unitdir}/samba-ad-dc.service
 %endif
@@ -1859,8 +1869,8 @@ exit 0
 %if %{with_dc}
 %{_libdir}/samba/libdb-glue-samba4.so
 %{_libdir}/samba/libdfs-server-ad-samba4.so
-%{_libdir}/samba/libdnsserver-common-samba4.so
 %endif
+%{_libdir}/samba/libdnsserver-common-samba4.so
 %{_libdir}/samba/libdsdb-module-samba4.so
 %if %{with_dc}
 %{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
@@ -2403,11 +2413,14 @@ exit 0
 %{_libdir}/ctdb/ctdb_mutex_ceph_rados_helper
 %endif
 
+%files -n samba-tool
+%{_bindir}/samba-tool
+%{_mandir}/man8/samba-tool.8.*
+
 %if %{with_dc}
 %files ad-dc
 %{_fillupdir}/sysconfig.samba-ad-dc
 %{_unitdir}/samba-ad-dc.service
-%{_bindir}/samba-tool
 %{_sbindir}/samba
 %{_sbindir}/samba_dnsupdate
 %{_sbindir}/samba_kcc
@@ -2518,14 +2531,15 @@ exit 0
 %{_datadir}/samba/admx/en-US
 %{_datadir}/samba/admx/en-US/samba.adml
 %{_mandir}/man8/samba.8.*
-%{_mandir}/man8/samba-tool.8.*
 %{_mandir}/man8/samba_downgrade_db.8.*
+%endif
 
 %files ldb-ldap
 %defattr(-,root,root)
 %{_libdir}/samba/ldb/ildap.so
 %{_libdir}/samba/ldb/ldbsamba_extensions.so
 
+%if %{with_dc}
 %files dsdb-modules
 %defattr(-,root,root)
 %{_libdir}/samba/ldb/acl.so

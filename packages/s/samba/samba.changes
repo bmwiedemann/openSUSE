@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:26:01 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix regression introduced by CVE-2020-25717 patches, winbindd
+  does not start when 'allow trusted domains' is off; (bso#14899);
+
+- Update to 4.15.2
+  * CVE-2016-2124:  SMB1 client connections can be downgraded to
+    plaintext authentication; (bso#12444); (bsc#1014440);
+  * CVE-2020-25717: A user on the domain can become root on domain
+    members; (bso#14556); (bsc#1192284);
+  * CVE-2020-25718: Samba AD DC did not correctly sandbox Kerberos
+    tickets issued by an RODC; (bso#14558); (bsc#1192246);
+  * CVE-2020-25719: Samba AD DC did not always rely on the SID and
+    PAC in Kerberos tickets; (bso#14561); (bsc#1192247);
+  * CVE-2020-25721: Kerberos acceptors need easy access to stable
+    AD identifiers (eg objectSid); (bso#14557); (bsc#1192505);
+  * CVE-2020-25722: Samba AD DC did not do suffienct access and
+    conformance checking of data stored; (bso#14564);
+    (bsc#1192283);
+  * CVE-2021-3738: Use after free in Samba AD DC RPC server;
+    (bso#14468); (bsc#1192215);
+  * CVE-2021-23192: Subsequent DCE/RPC fragment injection
+    vulnerability; (bso#14875); (bsc#1192214);
+
+- Update to 4.15.1
+ * vfs_shadow_copy2: core dump in make_relative_path; (bso#14682);
+ * Log clutter from filename_convert_internal; (bso#14685);
+ * MacOSX compilation fixes; (bso#14862);
+ * rodc_rwdc test flaps; (bso#14868);
+ * Provide a fix for MS CVE-2020-17049 in Samba [SECURITY] 'Bronze
+   bit' S4U2Proxy Constrained Delegation bypass in Samba with
+   embedded Heimdal; (bso#14642);
+ * Python ldb.msg_diff() memory handling failure; (bso#14836);
+ * "in" operator on ldb.Message is case sensitive; (bso#14845);
+ * Release LDB 2.4.1 for Samba 4.15.1; (bso#14848);
+ * samldb_krbtgtnumber_available() looks for incorrect string;
+   (bso#14854);
+ * Fix Samba support for UF_NO_AUTH_DATA_REQUIRED; (bso#14871);
+ * Allow special chars like "@" in samAccountName when generating
+   the salt; (bso#14874);
+ * Correctly ignore comments in CTDB public addresses file;
+   (bso#14826);
+ * Fix transit path validation; (bso#12998);
+ * Fix that child winbindd logs to log.winbindd instead of
+   log.wb-<DOMAIN>; (bso#14852);
+ * SMB3 cancel requests should only include the MID together with
+   AsyncID when AES-128-GMAC is used; (bso#14855);
+ * Prepare to operate with MIT krb5 >= 1.20; (bso#14870);
+ * Heimdal prefers RC4 over AES for machine accounts; (bso#14864);
+
+-------------------------------------------------------------------
+Wed Oct 13 17:07:47 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Enable samba-tool without ad dc.
+
+-------------------------------------------------------------------
 Thu Sep 30 15:57:14 UTC 2021 - Noel Power <nopower@suse.com>
 
 -  Adjust spec to use pam macros; (bsc#1191046).
