@@ -822,4 +822,14 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     May fix [boo#1191945]</comment>
     <requestid>927034</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c244cfc8d48f2a45486cfe99189c83e7</srcmd5>
+    <version>3.6.1</version>
+    <time>1636729149</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.6.1
+  - Fix rsyncing /etc into the running system with --drop-if-no-change [bsc#1192242]
+</comment>
+    <requestid>930705</requestid>
+  </revision>
 </revisionlist>

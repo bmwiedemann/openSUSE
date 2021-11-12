@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 10 14:55:06 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.6.1
+  - Fix rsyncing /etc into the running system with
+    --drop-if-no-change [bsc#1192242]
+
+-------------------------------------------------------------------
 Fri Oct 22 17:53:36 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.6.0
