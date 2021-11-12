@@ -345,4 +345,12 @@
 </comment>
     <requestid>929879</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>f714c151ce6cdf514589abec5f7e9218</srcmd5>
+    <version>10.5.3+12</version>
+    <time>1636729170</time>
+    <user>dimstar_suse</user>
+    <comment>fix</comment>
+    <requestid>931043</requestid>
+  </revision>
 </revisionlist>

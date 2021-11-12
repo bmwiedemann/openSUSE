@@ -64,6 +64,7 @@ Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       ibus
 Requires:       libgnomesu
+Requires:       xdg-user-dirs-gtk
 Requires:       NetworkManager-applet
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
