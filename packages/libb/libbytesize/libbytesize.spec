@@ -19,7 +19,7 @@
 %define somajor 1
 %define libname %{name}%{somajor}
 Name:           libbytesize
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only

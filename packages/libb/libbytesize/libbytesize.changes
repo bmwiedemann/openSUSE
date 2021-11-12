@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 17 06:47:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6:
+  * Make sure Size can be interpreted as integer in Python 3.10
+  * Translation updates
+
+-------------------------------------------------------------------
 Sat Jan 30 00:02:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5:
