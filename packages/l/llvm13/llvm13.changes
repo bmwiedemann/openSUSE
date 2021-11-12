@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  2 21:18:57 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Let clang recommend gcc and glibc-devel as we need both for
+  building executables. No hard requirement because Clang can be
+  used as a frontend only. (boo#1191587)
+- Set minimal CMake version required.
+
+-------------------------------------------------------------------
+Tue Nov  2 13:30:06 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Backport llvm-fix-building-with-GCC-12.patch in order to fix building
+  with GCC 12.
+
+-------------------------------------------------------------------
 Sat Oct  2 20:13:04 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 13.0.0.

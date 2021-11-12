@@ -1,0 +1,28 @@
+From c5029023fb076f72a3e5bf26085642bcd1fa22fb Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Tue, 2 Nov 2021 09:34:09 +0100
+Subject: [PATCH] Fix building with GCC 12:
+
+Fixes: https://bugs.llvm.org/show_bug.cgi?id=52380
+
+Differential Revision: https://reviews.llvm.org/D112990
+---
+ llvm/lib/Target/AMDGPU/SILoadStoreOptimizer.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/llvm/lib/Target/AMDGPU/SILoadStoreOptimizer.cpp b/llvm/lib/Target/AMDGPU/SILoadStoreOptimizer.cpp
+index 58415ecc9432..1f5312e5cb14 100644
+--- a/llvm/lib/Target/AMDGPU/SILoadStoreOptimizer.cpp
++++ b/llvm/lib/Target/AMDGPU/SILoadStoreOptimizer.cpp
+@@ -2065,7 +2065,7 @@ SILoadStoreOptimizer::collectMergeableInsts(
+     // adjacent to each other in the list, which will make it easier to find
+     // matches.
+     MergeList.sort(
+-        [] (const CombineInfo &A, CombineInfo &B) {
++        [] (const CombineInfo &A, const CombineInfo &B) {
+           return A.Offset < B.Offset;
+         });
+     ++I;
+-- 
+2.33.1
+

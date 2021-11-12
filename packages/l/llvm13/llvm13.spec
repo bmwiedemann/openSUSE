@@ -137,8 +137,9 @@ Patch26:        lld-default-sha1.patch
 Patch27:        llvm-exegesis-link-dylib.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
+Patch34:        llvm-fix-building-with-GCC-12.patch
 BuildRequires:  binutils-devel >= 2.21.90
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -239,6 +240,8 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     clang%{_sonum}-doc
 Recommends:     clang-tools
+Recommends:     gcc
+Recommends:     glibc-devel
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 
@@ -561,6 +564,7 @@ This package contains the development files for Polly.
 %patch24 -p1
 %patch27 -p2
 %patch33 -p2
+%patch34 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1

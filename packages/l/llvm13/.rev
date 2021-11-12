@@ -34,4 +34,12 @@
 - Relax constraints so that we can build on more machines.</comment>
     <requestid>923001</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5202afbe8027847454a7ef6be67f1868</srcmd5>
+    <version>13.0.0</version>
+    <time>1636729140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930567</requestid>
+  </revision>
 </revisionlist>
