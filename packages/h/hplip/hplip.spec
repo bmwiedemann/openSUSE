@@ -24,7 +24,7 @@
 %define pyexe %{_bindir}/python3
 %global use_qt5 1
 Name:           hplip
-Version:        3.21.6
+Version:        3.21.10
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -45,6 +45,9 @@ Source2:        hplip.keyring
 # Source100... is for special SUSE sources:
 # Source102 is a small man page for /usr/bin/hpijs:
 Source102:      hpijs.1.gz
+# Actual drivers for hplip-missing-drivers.patch
+Source103:      hp-laserjet_cp_1025nw.ppd.gz
+Source104:      hp-laserjet_professional_p_1102w.ppd.gz
 #
 Source1000:     %{name}-rpmlintrc
 # Patch100... is for special Suse patches:
@@ -331,6 +334,8 @@ sed -i 's,%{_bindir}/python\>,%{pyexe},'  \
 sed -i -e '/#!.*xdg-open$/d' \
   -e 's|%{_datadir}/icons/Humanity/devices/48/printer.svg|printer|' hp-uiscan.desktop.in
 
+cp -p %{SOURCE103} %{SOURCE104} ppd/hpcups
+
 %build
 # If AUTOMAKE='automake --foreign' is not set, autoreconf (in fact automake)
 # complains about missing files like NEWS, README, AUTHORS, ChangeLog
@@ -550,6 +555,9 @@ popd
 install -d %{buildroot}%{_mandir}/man1
 install -m 644 %{SOURCE102} %{buildroot}%{_mandir}/man1/
 
+# remove libtool archives
+find "%{buildroot}" -type f -name "*.la" -delete -print
+
 # Run fdupes:
 # The RPM macro fdupes runs /usr/bin/fdupes that links files with identical content.
 # Never run fdupes carelessly over the whole buildroot directory
@@ -717,8 +725,6 @@ exit 0
 %{_libdir}/libhpipp.so
 %{_libdir}/libhpmud.so
 %{_libdir}/libhpdiscovery.so
-%{_libdir}/*.la
 %{_libdir}/sane/libsane-hpaio.so
-%{_libdir}/sane/*.la
 
 %changelog

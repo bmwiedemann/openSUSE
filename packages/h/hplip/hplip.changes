@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Nov  7 15:43:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 3.21.10
+  Added support for the following new printers:
+  * HP ENVY Inspire 7200e series
+  * HP ENVY Inspire 7900e series
+  * HP LaserJet MFP M140a
+  * HP LaserJet MFP M139a
+  * HP LaserJet MFP M141a
+  * HP LaserJet MFP M142a
+  * HP LaserJet MFP M140w
+  * HP LaserJet MFP M140we
+  * HP LaserJet MFP M139w
+  * HP LaserJet MFP M139we
+  * HP LaserJet MFP M141w
+  * HP LaserJet MFP M141we
+  * HP LaserJet MFP M142we
+  * HP LaserJet MFP M142w
+  * HP LaserJet M109a
+  * HP LaserJet M110a
+  * HP LaserJet M111a
+  * HP LaserJet M112a
+  * HP LaserJet M109w
+  * HP LaserJet M109we
+  * HP LaserJet M110w
+  * HP LaserJet M110we
+  * HP LaserJet M111w
+  * HP LaserJet M111we
+  * HP LaserJet M112we
+  * HP LaserJet M112w
+  * HP DesignJet Z6 Pro 64in
+  * HP DesignJet Z9 Pro 64in
+  * HP PageWide XL Pro 5200 PS MFP series
+  * HP PageWide XL Pro 8200 PS MFP series
+  * HP PageWide XL 3920 MFP
+  * HP PageWide XL 4200 Printer
+  * HP PageWide XL 4200 Multifunction Printer
+  * HP PageWide XL 4700 Printer
+  * HP PageWide XL 4700 Multifunction Printer
+  * HP PageWide XL 5200 Printer
+  * HP PageWide XL 5200 Multifunction Printer
+  * HP PageWide XL 8200 Printer
+  * HP Smart Tank 500 series
+  * HP Smart Tank 530 series
+  * HP Smart Tank Plus 570 series
+  * HP Smart Tank 7600
+  * HP Smart Tank 750
+  * HP Smart Tank 790
+  * HP Smart Tank Plus 710-720
+  * HP Smart Tank Plus 7000
+  * HP Smart Tank Plus 660-670
+  * HP Smart Tank Plus 6000
+  * HP DeskJet Ink Advantage Ultra 4800 All-in-One Printer series
+- Rebased hplip-missing-drivers.patch & don't edit Makefile.in
+- Rebased hplip-remove-imageprocessor.diff
+- Remove libtool archives
+- Add drivers for hplip-missing-drivers.patch from Fedora
+  (lp#1843592,rh#1739855,rh#1740132,rh#1742949)
+
+-------------------------------------------------------------------
 Tue Aug 24 07:11:04 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to 3.21.6

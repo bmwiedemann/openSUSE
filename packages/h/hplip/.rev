@@ -1233,4 +1233,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>915201</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>c5a8543ec591dc119b1f05480aeeaf4e</srcmd5>
+    <version>3.21.10</version>
+    <time>1636729142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.21.10
+  Added support for the following new printers:
+  * HP ENVY Inspire 7200e series
+  * HP ENVY Inspire 7900e series
+  * HP LaserJet MFP M140a
+  * HP LaserJet MFP M139a
+  * HP LaserJet MFP M141a
+  * HP LaserJet MFP M142a
+  * HP LaserJet MFP M140w
+  * HP LaserJet MFP M140we
+  * HP LaserJet MFP M139w
+  * HP LaserJet MFP M139we
+  * HP LaserJet MFP M141w
+  * HP LaserJet MFP M141we
+  * HP LaserJet MFP M142we
+  * HP LaserJet MFP M142w
+  * HP LaserJet M109a
+  * HP LaserJet M110a
+  * HP LaserJet M111a
+  * HP LaserJet M112a
+  * HP LaserJet M109w
+  * HP LaserJet M109we
+  * HP LaserJet M110w
+  * HP LaserJet M110we
+  * HP LaserJet M111w
+  * HP LaserJet M111we
+  * HP LaserJet M112we
+  * HP LaserJet M112w
+  * HP DesignJet Z6 Pro 64in
+  * HP DesignJet Z9 Pro 64in</comment>
+    <requestid>930613</requestid>
+  </revision>
 </revisionlist>

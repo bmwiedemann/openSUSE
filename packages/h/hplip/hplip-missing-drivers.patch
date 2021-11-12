@@ -1,39 +1,3 @@
-diff --git a/Makefile.in b/Makefile.in
-index 57b2812..250e2dc 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -1542,6 +1542,7 @@ am__dist_ppd_DATA_DIST = prnt/ps/hp-designjet_z6810ps_42in-ps.ppd.gz \
- 	ppd/hpcups/hp-laserjet_cm1418fnw-pcl3.ppd.gz \
- 	ppd/hpcups/hp-laserjet_cp1025.ppd.gz \
- 	ppd/hpcups/hp-laserjet_cp1025nw.ppd.gz \
-+	ppd/hpcups/hp-laserjet_cp_1025nw.ppd.gz \
- 	ppd/hpcups/hp-laserjet_m1005.ppd.gz \
- 	ppd/hpcups/hp-laserjet_m101-m106.ppd.gz \
- 	ppd/hpcups/hp-laserjet_m1120_mfp.ppd.gz \
-@@ -1655,6 +1656,7 @@ am__dist_ppd_DATA_DIST = prnt/ps/hp-designjet_z6810ps_42in-ps.ppd.gz \
- 	ppd/hpcups/hp-laserjet_professional_p1608dn.ppd.gz \
- 	ppd/hpcups/hp-laserjet_professional_p1609dn.ppd.gz \
- 	ppd/hpcups/hp-laserjet_professional_p_1102w.ppd.gz \
-+	ppd/hpcups/hp-laserjet_professional_p1102w.ppd.gz \
- 	ppd/hpcups/hp-mopier_240-pcl3.ppd.gz \
- 	ppd/hpcups/hp-mopier_320-pcl3.ppd.gz \
- 	ppd/hpcups/hp-neverstop_laser_100x.ppd.gz \
-@@ -3895,6 +3897,7 @@ dist_unrel_DATA =
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_cm1418fnw-pcl3.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_cp1025.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_cp1025nw.ppd.gz \
-+@HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_cp_1025nw.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_m1005.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_m101-m106.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_m1120_mfp.ppd.gz \
-@@ -4007,6 +4010,7 @@ dist_unrel_DATA =
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_professional_p1607dn.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_professional_p1608dn.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_professional_p1609dn.ppd.gz \
-+@HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_professional_p1102w.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-laserjet_professional_p_1102w.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-mopier_240-pcl3.ppd.gz \
- @HPLIP_CLASS_DRIVER_FALSE@   ppd/hpcups/hp-mopier_320-pcl3.ppd.gz \
 diff --git a/cups_drv.inc b/cups_drv.inc
 index 3863c52..50c570d 100644
 --- a/cups_drv.inc
@@ -45,7 +9,7 @@ index 3863c52..50c570d 100644
 +   ppd/hpcups/hp-laserjet_cp_1025nw.ppd.gz \
     ppd/hpcups/hp-laserjet_m1005.ppd.gz \
     ppd/hpcups/hp-laserjet_m101-m106.ppd.gz \
-    ppd/hpcups/hp-laserjet_m1120_mfp.ppd.gz \
+    ppd/hpcups/hp-laserjet_m109-m112.ppd.gz \
 @@ -510,6 +511,7 @@ cups_ppd_printers = \
     ppd/hpcups/hp-laserjet_professional_p1607dn.ppd.gz \
     ppd/hpcups/hp-laserjet_professional_p1608dn.ppd.gz \
