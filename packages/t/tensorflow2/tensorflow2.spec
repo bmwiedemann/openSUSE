@@ -1,5 +1,5 @@
 #
-# spec file for package tensorflow2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,12 +18,15 @@
 
 #
 %define pname tensorflow2
-%define vers 2.6.0
+%define vers 2.6.2
+# compatible versions used for dependencies
+%define base_vers_min 2.6
+%define base_vers_max 2.7
 #%%define cand -rc4
-%define _vers 2_6_0
+%define _vers 2_6_2
 %define libmaj 2
 %define libmin 6
-%define libref 0
+%define libref 2
 %define python_ver_hack python3.[0-9]
 %ifarch aarch64
 %define mklconfig mkl_aarch64
@@ -221,6 +224,7 @@ Patch21:        tensorflow-2.6.0-numpy-tensor-small.patch
 Patch22:        tensorflow-2.6.0-tf-keras-hdf5-3.patch
 # PATCH-FIX-OPENSUSE tensorflow-2.6.0-compile-with-protobuf-3.16.patch https://github.com/protocolbuffers/protobuf/pull/8354
 Patch23:        tensorflow-2.6.0-compile-with-protobuf-3.16.patch
+# cuda header is fetched on vanilla, disable it the hard way
 
 # See https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/pip_package/setup.py
 Requires:       python3
@@ -231,14 +235,14 @@ Requires:       python3-astunparse
 Requires:       python3-flatbuffers
 Requires:       python3-gast
 Requires:       python3-h5py
-Requires:       python3-keras = %{version}
 Requires:       python3-opt-einsum
 Requires:       python3-protobuf
 Requires:       python3-six
-Requires:       python3-tensorboard = %{version}
-Requires:       python3-tensorflow-estimator = %{version}
 Requires:       python3-termcolor
 Requires:       python3-wrapt
+Requires:       (python3-keras >= %{base_vers_min} with python3-keras < %{base_vers_max})
+Requires:       (python3-tensorboard >= %{base_vers_min} with python3-tensorboard < %{base_vers_max})
+Requires:       (python3-tensorflow-estimator >= %{base_vers_min} with python3-tensorflow-estimator < %{base_vers_max})
 %if %{with hpc}
 Requires:       python3-numpy-%{compiler_family}%{?c_f_ver}-hpc
 %else
@@ -332,7 +336,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-flatbuffers
 BuildRequires:  python3-gast
 BuildRequires:  python3-h5py
-BuildRequires:  python3-keras = %{version}
 BuildRequires:  python3-mock
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-opt-einsum
@@ -340,8 +343,6 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-protobuf
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
-BuildRequires:  python3-tensorboard = %{version}
-BuildRequires:  python3-tensorflow-estimator = %{version}
 BuildRequires:  python3-termcolor
 BuildRequires:  python3-wheel
 BuildRequires:  python3-wrapt
@@ -351,6 +352,9 @@ BuildRequires:  swig
 BuildRequires:  unzip
 BuildRequires:  upb-devel
 BuildRequires:  zlib-devel
+BuildRequires:  (python3-keras >= %{base_vers_min} with python3-keras < %{base_vers_max})
+BuildRequires:  (python3-tensorboard >= %{base_vers_min} with python3-tensorboard < %{base_vers_max})
+BuildRequires:  (python3-tensorflow-estimator >= %{base_vers_min} with python3-tensorflow-estimator < %{base_vers_max})
 %if %{with hpc}
 %hpc_requires
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -683,6 +687,7 @@ cd -
   --verbose_failures \\\
   --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" \\\
   --config=%{mklconfig} \\\
+  --config=nonccl \\\
   --config=v2 \\\
   --config=noaws \\\
   --override_repository="upb=/usr/share/bazel-workspaces/upb" \\\
