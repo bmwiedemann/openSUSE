@@ -48,4 +48,18 @@
   This aligns ruby3.0 with ruby2.7 and ruby-common</comment>
     <requestid>913948</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f0568b4c5357a57d0ea1ae99e8b07b0</srcmd5>
+    <version>3.0.2</version>
+    <time>1636729152</time>
+    <user>dimstar_suse</user>
+    <comment>- provide the correct rubygems version 
+
+- update to 3.0.2
+  https://www.ruby-lang.org/en/news/2021/07/07/ruby-3-0-2-released/
+  * CVE-2021-31810: Trusting FTP PASV responses vulnerability in Net::FTP
+  * CVE-2021-32066: A StartTLS stripping vulnerability in Net::IMAP
+  * CVE-2021-31799: A command injection vulnerability in RDoc</comment>
+    <requestid>930727</requestid>
+  </revision>
 </revisionlist>

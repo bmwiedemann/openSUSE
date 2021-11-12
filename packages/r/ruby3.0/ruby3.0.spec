@@ -25,7 +25,7 @@ Name:           ruby3.0
 ####
 
 %define patch_level p0
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 %define pkg_version %{version}
 # make the exported API version explicit
@@ -198,7 +198,7 @@ The Ruby standard library
 Summary:        Development files to link against Ruby
 Group:          Development/Languages/Ruby
 Requires:       %{name} = %{version}
-Provides:       rubygems = 3.0.1
+Provides:       rubygems = 3.2.22
 Provides:       rubygems_with_buildroot_patch
 %if %{with jemalloc}
 Requires:       jemalloc-devel

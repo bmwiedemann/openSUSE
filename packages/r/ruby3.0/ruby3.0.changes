@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 10 17:02:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- provide the correct rubygems version 
+
+-------------------------------------------------------------------
+Sat Nov  6 18:59:17 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 3.0.2
+  https://www.ruby-lang.org/en/news/2021/07/07/ruby-3-0-2-released/
+  * CVE-2021-31810: Trusting FTP PASV responses vulnerability in Net::FTP
+  * CVE-2021-32066: A StartTLS stripping vulnerability in Net::IMAP
+  * CVE-2021-31799: A command injection vulnerability in RDoc
+
+-------------------------------------------------------------------
 Tue Aug 24 07:26:12 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Do not create links for /etc/alternatives at all but rely on
