@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>930747</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cac58510890843497738a2f23e86611e</srcmd5>
+    <version>0.99.10.1</version>
+    <time>1636729168</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix incorrect/missing licenses
+- Run spec-cleaner
+</comment>
+    <requestid>931025</requestid>
+  </revision>
 </revisionlist>

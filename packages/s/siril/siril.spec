@@ -20,7 +20,7 @@ Name:           siril
 Version:        0.99.10.1
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
-License:        GPL-3.0-only
+License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
@@ -46,14 +46,14 @@ BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(rtprocess)
+BuildRequires:  pkgconfig(shared-mime-info)
+BuildRequires:  pkgconfig(wcslib)
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(opencv)
 %else
 BuildRequires:  pkgconfig(opencv4)
 %endif
-BuildRequires:  pkgconfig(rtprocess)
-BuildRequires:  pkgconfig(shared-mime-info)
-BuildRequires:  pkgconfig(wcslib)
 
 %description
 Siril is meant to be Iris for Linux (sirI-L). It is an astronomical image
@@ -82,7 +82,7 @@ install -m 0644 -D platform-specific/linux/siril.xml                    %{buildr
 
 %files -f %{name}.lang
 %doc ChangeLog NEWS README.md AUTHORS
-%license LICENSE.md
+%license LICENSE.md LICENSE_sleef.txt
 %{_bindir}/siril
 %{_bindir}/siril-cli
 %{_mandir}/man1/siril.1%{?ext_man}

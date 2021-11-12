@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 06:39:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix incorrect/missing licenses
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Nov 10 18:53:48 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use OpenCV 4 on TW again, instead of the old OpenCV 3.
