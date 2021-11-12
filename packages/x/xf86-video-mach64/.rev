@@ -128,4 +128,13 @@ Fixes a crash in the mach64 driver (bnc#865607)
     <comment></comment>
     <requestid>887247</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7274a824220892928d8a22a8ac48a90c</srcmd5>
+    <version>6.9.6</version>
+    <time>1636729181</time>
+    <user>dimstar_suse</user>
+    <comment>- u_xorg-server-21.1.patch
+  * fixes build against xorg-server 21.1</comment>
+    <requestid>931153</requestid>
+  </revision>
 </revisionlist>

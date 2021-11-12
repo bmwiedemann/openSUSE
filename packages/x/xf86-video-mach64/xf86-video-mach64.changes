@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 14:02:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_xorg-server-21.1.patch
+  * fixes build against xorg-server 21.1 
+
+-------------------------------------------------------------------
 Wed Apr 21 09:06:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 

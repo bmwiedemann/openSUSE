@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
+Patch0:         u_xorg-server-21.1.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontsproto)
@@ -48,6 +49,7 @@ mach64 is an Xorg driver for ATI Mach64 series video cards.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
