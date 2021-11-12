@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  9 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.34
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.34      2021-11-08 14:27:36Z
+      - Catch case of empty name/value in header words split. (GH#168) (Galen Huntington)
+
+-------------------------------------------------------------------
 Tue Jun 29 03:06:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.33
