@@ -50,7 +50,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.6.4
+Version:        10.6.5
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -76,11 +76,11 @@ Patch1:         mariadb-10.2.4-logrotate.patch
 Patch2:         mariadb-10.1.1-mysqld_multi-features.patch
 Patch3:         mariadb-10.0.15-logrotate-su.patch
 Patch4:         mariadb-10.2.4-fortify-and-O.patch
-Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch8:	harden_mariadb.service.patch
 Patch9:         func_math_tests_MDEV-26645.diff
+Patch10:        fix-pamdir.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -363,7 +363,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch2
 %patch3
 %patch4
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
@@ -371,6 +370,10 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %ifarch s390x ppc64 ppc64le
 %patch9
 %endif
+%endif
+# usrmerge has only been applied to TW
+%if 0%{?suse_version} > 1500
+%patch10 -p1
 %endif
 
 cp %{_sourcedir}/suse-test-run .
@@ -857,7 +860,7 @@ exit 0
 %if %{with galera}
 %exclude %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %endif
-%config(noreplace) %{_sysconfdir}/security/user_map.conf
+%config(noreplace) %{_pam_secconfdir}/user_map.conf
 %config %{_sysconfdir}/logrotate.d/%{name}
 %doc %{_defaultdocdir}/%{name}
 %dir %{_libexecdir}/mysql
@@ -888,7 +891,7 @@ exit 0
 %if 0%{with_cracklib_plugin} > 0
 %exclude %{_libdir}/mysql/plugin/cracklib_password_check.so
 %endif
-/%{_lib}/security/pam_user_map.so
+%{_pam_moduledir}/pam_user_map.so
 %dir %attr(0750, root, mysql) %{_libdir}/mysql/plugin/auth_pam_tool_dir
 %verify(not mode) %attr(4755,root,root) %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-something

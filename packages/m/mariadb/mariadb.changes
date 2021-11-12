@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  9 08:34:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.6.5
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1065-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1065-changelog
+  * fixes for the following security vulnerabilities:
+    10.6.5: none
+- Not affected by [CVE-2021-35604], bsc#1192497
+- Drop upstreamed patch:
+  * mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+
+-------------------------------------------------------------------
+Mon Nov  8 15:36:39 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use pam macros instead of hardcoding directories, fixes bsc#1191038
+- Add fix-pamdir.patch
+
+-------------------------------------------------------------------
 Sun Oct 31 08:27:25 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - Add func_math_tests_MDEV-26645.diff to avoid test failures in the func_math
