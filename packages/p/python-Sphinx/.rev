@@ -792,4 +792,13 @@
     <comment></comment>
     <requestid>918913</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>c5f25eae4d5f2fac07158eb3db07e1dc</srcmd5>
+    <version>4.2.0</version>
+    <time>1636729154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Provides and Obsoletes ... we cannot use python_module there
+</comment>
+    <requestid>930743</requestid>
+  </revision>
 </revisionlist>

@@ -201,7 +201,7 @@ Requires:       python3-Sphinx = %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Supplements:    python3-Sphinx
-Obsoletes:      %{python_module Sphinx-doc-man-common <= %{version}}
+Obsoletes:      python-Sphinx-doc-man-common <= %{version}
 
 %description -n python-Sphinx-doc-man
 Sphinx is a tool that facilitates creating documentation for Python
@@ -213,7 +213,7 @@ This package contains the manual pages for the Sphinx executables.
 %package -n python-Sphinx-doc-html
 Summary:        HTML Documentation for python-Sphinx
 Group:          Documentation/HTML
-Provides:       %{python_module Sphinx-doc-html = %{version}}
+Provides:       python-Sphinx-doc-html = %{version}
 
 %description -n python-Sphinx-doc-html
 Sphinx is a tool that facilitates creating documentation for Python
