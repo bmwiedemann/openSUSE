@@ -98,4 +98,12 @@
     <comment></comment>
     <requestid>907303</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e8dca23c2237b4f19dc61d3235dad4d6</srcmd5>
+    <version>2.8.1</version>
+    <time>1636729161</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multibuild to avoid a build loop.</comment>
+    <requestid>930995</requestid>
+  </revision>
 </revisionlist>

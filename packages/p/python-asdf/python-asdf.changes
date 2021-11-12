@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 11 23:33:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add multibuild to avoid a build loop. 
+
+-------------------------------------------------------------------
 Mon Jul 19 16:39:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.8.1

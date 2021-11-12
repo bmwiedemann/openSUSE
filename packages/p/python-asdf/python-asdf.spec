@@ -1,5 +1,5 @@
 #
-# spec file for package python-asdf
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,10 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define         skip_python2 1
 # current astropy in TW requires python >= 3.7
 %define         skip_python36 1
-Name:           python-asdf
+Name:           python-asdf%{psuffix}
 Version:        2.8.1
 Release:        0
 Summary:        Python tools to handle ASDF files
@@ -52,12 +60,15 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module gwcs}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -77,14 +88,17 @@ chmod a-x asdf/tests/data/example_schema.json
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/asdftool
 %{python_expand #
 sed -i -e 's|^#!/usr/bin/env python|#!%{__$python}|' %{buildroot}%{$python_sitelib}/asdf/reference_files/generate/generate
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 %{python_expand # the tests assume the existence of a `python` command
 mkdir -p build/bin
@@ -94,6 +108,7 @@ export PATH="$(pwd)/build/bin:$PATH"
 # import everything from the source directory because of collection conflicts with buildroot
 export PYTHONPATH=":x"
 %pytest --import-mode=append
+%endif
 
 %post
 %python_install_alternative asdftool
@@ -101,6 +116,7 @@ export PYTHONPATH=":x"
 %postun
 %python_uninstall_alternative asdftool
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
@@ -108,5 +124,6 @@ export PYTHONPATH=":x"
 %{python_sitelib}/asdf
 %{python_sitelib}/asdf-%{version}*-info
 %{python_sitelib}/pytest_asdf
+%endif
 
 %changelog
