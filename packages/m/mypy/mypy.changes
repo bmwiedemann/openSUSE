@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Tue Nov  2 19:49:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- disable the tests to fix the build temporarily
+
+-------------------------------------------------------------------
+Sat Jul 10 14:47:09 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Remove obsolete build (prep) instructions: typeshed has been removed from the archive.
+
+-------------------------------------------------------------------
+Sun Jul  4 20:06:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.910:
+  - Mypy 0.900 added --install-types to install missing stub packages. We received feedback that this wasn’t a good fit for all use cases, since it asks for interactive confirmation from the user, and it requires another mypy invocation to actually perform type checking.
+  - This release adds the new option --non-interactive that can be used with --install-types to install suggested stub packages without asking for confirmation. This can be useful in Continuous Integration jobs. The option causes mypy to both install stub packages and perform type checking within a single invocation. When not using --non-interactive, you’d have to run mypy again to get up-to-date results with the installed stubs.
+  - This option provides a new way to migrate existing mypy runner scripts after updating to mypy 0.9xx: just add the --install-types --non-interactive options to your mypy command line.
+  - Note that --install-types currently always installs the latest stubs for all supported packages. If you want reproducible results from your builds, we recommend explicitly pinning stub package versions in your requirements.txt file, for example.
+ - Python 3.5 Deprecation
+  - Running mypy on Python 3.5 is now deprecated. A future mypy release will drop Python 3.5 support. We haven’t decided when this will happen, but this might happen in the next feature release after 0.910.
+ - Stubgen Improvements
+  - Don't annotate unknown argument and return types (Sebastian Rittau, PR 10626)
+ - Never generate a variable initializer (Sebastian Rittau, PR 10623)
+ - Use NamedTuple class syntax (Sebastian Rittau, PR 10625)
+ - Use T | None (PEP 604) instead of Optional[T] (Sebastian Rittau, PR 10624) 
+  - Other Fixes and Improvements
+  - Fix some crashes from faulty casts (Shantanu, PR 10560)
+ - Update docs for deferral of PEP 563 to 3.11 (Smart, PR 10655)
+ - Don't suggest to install stubs for packages with py.typed files (Sebastian Rittau, PR 10652)
+ - Correct the type package name of pyopenssl ( Sebastian Rittau, PR 10656)
+ - Improve error reporting when --install-types has no cache (PR 10667)
+ - Suggest types-setuptools for pkg_resources (Sebastian Rittau, PR 10681)
+ - Fix crash with assignment to variable guarded with TypeGuard (PR 10683)
+ - Don't ask to install a stub package if stubs are installed (PR 10670)
+ - Fix crash when inferring multiple assignment with overloaded function (PR 10689) 
+- update to version 0.900:
+  - Third-party Library Stubs in Stub Packages (Breaking Change)
+  - Mypy now only ships with type stubs for stdlib modules (plus typing_extensions and mypy_extensions). If you use third-party libraries that don’t include stubs or inline type annotations, you can explicitly install stub packages, usually called types-<name>.
+  - You can also now run mypy --install-types to install all missing stub packages in the mypy run (or the previous run, if you don’t pass any files to check).
+ - Using cached types_requests-0.1.8-py2.py3-none-any.whl (22 kB)
+  - For more information, read the blog post about this change and why we did this. There is more detail in the docs.
+ - Python 2 Support is Opt-in (Breaking Change)
+  - If you want to type check Python 2 code, you now have to install mypy[python2] using pip (on Python 3.8 and later):
+  - python3 -m pip install -U mypy[python2]
+  - This will install the additional typed-ast pip dependency that is required for Python 2 support. Type checking Python 2 code is still fully supported by mypy.
+  - TypeGuard
+  - Mypy now supports defining user-defined functions that perform type narrowing, similar to isinstance. Read PEP 647 for the details.
+  - Since TypeGuard will be included in Python 3.10, which hasn’t been released yet, you will have to import it from a recent version of typing_extensions for now.
+  - Support for pyproject.toml
+  - Binary Wheels for Apple Silicon
+  - We now include binary wheels for Apple Silicon. This can make mypy runs over 4x faster on supported hardware. This requires a native Apple Silicon build of Python 3.9 to work.
+  - Type Narrowing with type(x)
+  - Hosted Documentation for Mypyc
+  - We now have hosted user documentation for mypyc, the compiler we use to speed up mypy. Mypyc is still experimental, but we are looking for early adopters.
+ - New Mypyc Features
+  - Support __setitem__, __delitem__, __len__ and __contains__ in native classes (PR 10451)
+ - Basic support for class-based named tuples (PR 10252)
+ - Support class-based TypedDict definitions (PR 10226) 
+  - Mypyc Performance Improvements
+  - Pre-allocate space in list comprehensions (97littleleaf11, PR 10295)
+ - Faster dict true test (97littleleaf11, PR 10333)
+ - Implement dict.setdefault primitive (97littleleaf11, PR 10286)
+ - Optimize truth value testing for strings (pranavrajpal, PR 10269)
+ - Faster set creation with generator expression (97littleleaf11, PR 10261)
+ - Add a primitive for loading the bool type (97littleleaf11, PR 10257)
+ - Faster creation of a tuple from list/tuple (97littleleaf11, PR 10217)
+ - Use vectorcalls to speed up calls to Python objects (PR 10153)
+ - Add primitive for str.replace (97littleleaf11, PR 10088)
+ - Add primitives for list.index() and list.remove() (PR 9961)
+ - Intern string literals (PR 9960)
+ - Add fast path for simple calls in wrapper functions (PR 9948)
+ - Use METH_FASTCALL with __call__ (PR 9946)
+ - Use faster METH_FASTCALL wrapper functions on Python 3.7+ (PR 9894)
+ - Add primitives for list.sort() and list.reverse() (PR 9897)
+ - Recognize six.moves.xrange as an alias of range (PR 9896)
+ - Some tagged integer micro-optimizations (PR 9801)
+ - Add primitive for dict.copy (vsakkas, PR 9721) 
+  - Other Mypyc Fixes and Improvements
+  - Fix reference counting in dict.setdefault (97littleleaf11, PR 10334)
+ - Don't coerce types checked with isinstance (Sara Sinback, PR 10245)
+ - Simplify argument parsing in legacy wrapper functions (PR 10234)
+ - Simplify generated C by omitting gotos to the next block (PR 10230)
+ - Box initializers of final variables when required (PR 10229)
+ - Fix compilation of unreachable expressions (PR 10228)
+ - Foundational support for tuple literals (and None and bool literals, PR 10148)
+ - Use tables to construct and store literals (PR 10147)
+ - Fix overflow error handling in list.insert (PR 9895)
+ - Always add implicit None return type to __init__ method (Thomas Johnson, PR 9866)
+ - Small documentation updates (Thomas Johnson, PR 10184)
+ - Updates to introduction in the documentation (PR 10179)
+ - Various small doc updates (PR 10177)
+ - Make mypyc docs use the same theme as mypy docs (PR 10176)
+ - Fix mypyc failing to compile on CPython 3.10.0a6 (Adrian Freund, PR 10202)
+ - Avoid declaring variable in C for loop initialization (Thomas Johnson, PR 10091) 
+  - Stubgen Improvements
+  - Properly convert overloaded functions (Chad Dombrova, PR 9613)
+ - Fix invoking mro() (Gen Xu, PR 10138)
+ - Render a bit better stubs (Sergei Izmailov, PR 9903)
+ - Fixed Any and Dict missing from stubgen imports list (Ashley Whetter, PR 9900)
+ - Fix type error (Shantanu, PR 10523)
+ - Fixes and typos (Sergei Izmailov, PR 9877) 
+  - Stubtest Improvements
+  - Improve build error messages (Shantanu, PR 10365)
+ - Check overloads are functions, don't early return (Shantanu, PR 10258)
+ - Fix signature construction for overload + implicit classmethod (Shantanu, PR 9921) 
+  - Documentation Updates
+  - Add security documentation for --install-types (Adam Weeden, PR 10555)
+ - Improve documentation of extending mypy (Nikita Sobolev, PR 10222)
+ - Update documentation links (Shantanu, PR 10159)
+ - Fix incomplete error codes documentation (Iulian Onofrei, PR 9799)
+ - Document explicit_package_bases config file option (Sam Bull, PR 10020)
+ - Clarify that mypy_path is relative to current working directory (Gustav Gränsbo, PR 9959)
+ - Emphasise that users probably want --follow-imports=normal (Shantanu, PR 9955) 
+  - Other Notable Fixes and Improvements
+  - Make ignore_missing_imports work for third-party libraries which previously had bundled stubs (PR 10582)
+ - Restrict the number of errors shown when there are missing stubs (PR 10579)
+ - Mention fullname of PlaceholderNode in assertion to simplify debugging (Adam Weeden, PR 10565)
+ - Use double quotes in error messages instead of single quotes (Dixith)
+ - Use double quotes in various error messages (Prasanth Chettri, PR 10053)
+ - Fix crash on TypeGuard plus "and" (Jelle Zijlstra, PR 10496)
+ - Fix spurious name undefined error in class body within import cycle (PR 10498)
+ - Remove assertion from TypeGuard serialization (Jelle Zijlstra, PR 10486)
+ - Do not allow to use Final and ClassVar at same time (Yurii Karabas, PR 10478)
+ - Allow running mypy if Python 2 typeshed stubs aren't installed (PR 10494)
+ - Allow inline comments in VERSIONS (Sebastian Rittau, PR 10472)
+ - Infer unreachability for await no_return() (Shantanu, PR 10458)
+ - Fix unresolved reference + tuples crashing (EXPLOSION, PR 10401)
+ - Fix crash with type alias inside __init__ in incremental mode (PR 10432)
+ - Fix crash with nested NamedTuple in incremental mode (PR 10431)
+ - Fix crash related to module-level __getattr__ in incremental mode (PR 10430)
+ - Add support for functools.cached_property (Marc Mueller, PR 10408)
+ - Don't narrow Type[X] with a metaclass (PR 10424)
+ - Remove note: setup.cfg does need [mypy] section (James Cooke, PR 10364)
+ - Fix inference of IntEnum value attribute type (Python 2, PR 10417)
+ - Don't report error when using total_ordering in Python 2 mode (PR 10416)
+ - Fix narrowing down TypedDict unions with enum literal types (PR 10415)
+ - Fix inference of IntEnum value attribute type (PR 10412)
+ - Use typeddict-item error code for more errors (PR 10410)
+ - Fix a bunch of tests broken by python 3.10 (Adrian Freund, PR 10404)
+ - Support maximum version marker of stdlib typeshed modules (Sebastian Rittau, PR 10402)
+ - First look into @python2 subdirectory of search path items in Python 2 mode (PR 10392)
+ - Make enum type compatible with union of all enum item literals (PR 10388)
+ - Fix an issue with union types containing literals (Adrian Freund, PR 10373)
+ - Fix re-exporting __all__ in a stub file (PR 10382)
+ - Extend the dataclass plugin to deal with callable properties (Aaron Ecay, PR 10292)
+ - Make TypedDict incompatible type message more understandable (Akshay K, PR 10326)
+ - Make --explicit-package-bases invertible (Gustav Gränsbo, PR 9969)
+ - Fix crash for protocol classes and Hashable false negative (Christoph Tyralla, PR 10308)
+ - Fix strict equality false positive when strict optional disabled (Kamil Turek, PR 10174)
+ - Issue an error when overriding typeguard with non-typeguard in subclass (Kamil Turek, PR 10300)
+ - Support functools.total_ordering (Ashley Whetter, PR 7831)
+ - Support reversed operand order when comparing against sys.version_info (Kamil Turek, PR 10288)
+ - Only import distutils if it is needed (Adrian Freund, PR 10203)
+ - Recombine complete union of enum literals into original type (PR 9097, PR 9063) (Ethan Leba)
+ - Support union type arguments when showing protocol member conflicts (97littleleaf11, PR 10154)
+ - Fix recently added enum value type prediction (Paddy, PR 10057)
+ - Support subclassing of NodeVisitor and TraverserVisitor in plugins (Nikita Sobolev, PR 10125)
+ - Speed up processing of new files in daemon by caching ASTs (PR 10128)
+ - Add narrowing and closures to common issues (Shantanu, PR 9956)
+ - Add Python script to build wheels using cibuildwheel (PR 10096)
+ - Don't try to follow imports to encodings.* (PR 10094)
+ - Speed up case sensitive is-file check in file system cache (PR 10093)
+ - Use fast path for finding modules in mypy daemon (PR 10095)
+ - Fix following stub imports in daemon when using --follow-imports=skip (PR 10092)
+ - Use sys.executable instead of python3 for --install-types (Anthony Sottile, PR 10086)
+ - Add build-requirements.txt to MANIFEST.in (PR 10071)
+ - Add separate requirements file for mypy self-compile (PR 10069)
+ - Expand user home for cache_dir (Marco Zatta, PR 10051)
+ - Fix daemon crash when deleting packages (PR 10036)
+ - Keep track of fine-grained dependencies for modules in typeshed (PR 10034)
+ - Fix import following issue in daemon (PR 10032)
+ - Fix mypy daemon crash when following from a new module (PR 10030)
+ - Detect invalid value for --custom-typeshed-dir (PR 9985)
+ - Fix pip install for new typeshed (Ivan Levkivskyi, PR 9976)
+ - Report incompatible assignments for descriptors with overloaded __set__ methods (Christoph Tyralla, PR 9893)
+ - Fix TypedDict.get("missing_key") with string literal (Adrian Freund, PR 9906) 
+- update to version0.812L
+ - Improved Source File Finding
+  - Mypy 0.800 changed how mypy finds modules if you run mypy as mypy directory/ or mypy -p package. Mypy started looking for source files in directories without a __init__.py file. This is often the expected behavior, and it avoids excluding some files that should be type checked.
+  - However, this caused issues for some users, such as when using mypy . to type check all files under the current directory. Mypy could now try to type check files inside nested virtual environments and node_modules directories, which is usually not desirable. This could result in mypy needlessly complaining about duplicate module names, in particular.
+  - Now mypy will skip directories named site-packages or node_modules, and any directory beginning with a dot (such as .git) when recursively looking for files to check.
+  - This doesn’t affect how mypy resolves imports — it only affects when mypy is given a directory or a package to type check. You can override the exclusions by explicitly passing the files on the command line.
+  - Excluding Paths
+  - Mypy now supports the --exclude regex command line option to exclude paths matching a regular expression when searching for files to type check. For example, mypy --exclude '/setup\.py$' skips all setup.py files. This lets you exclude additional paths that mypy started finding after mypy 0.800 changed module finding behavior, as discussed above.
+  - You can also specify this in the config file (exclude=regex). The option expects forward slashes as directory separators on all platforms, including Windows, for consistency.
+
+-------------------------------------------------------------------
 Sat Feb 20 11:05:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 0.812
