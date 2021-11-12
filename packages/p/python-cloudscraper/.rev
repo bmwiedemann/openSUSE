@@ -46,4 +46,12 @@
     <comment></comment>
     <requestid>892562</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6fff5a0a7c3ae5aa42ba4c080496b1ef</srcmd5>
+    <version>1.2.58</version>
+    <time>1636729163</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a broken test.</comment>
+    <requestid>931000</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 12 01:28:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a broken test. 
+
+-------------------------------------------------------------------
 Wed May 12 17:06:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace nodejs10 BuildRequires with nodejs-default:
