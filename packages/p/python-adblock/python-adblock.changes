@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 03:03:01 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Thu Sep 30 04:09:06 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Replace rust-packaging with cargo-packaging
