@@ -16,8 +16,8 @@
 #
 
 
-%define libname %{name}1
-%define exname  libexslt0
+%define libver 1
+%define libexver 0
 Name:           libxslt
 Version:        1.1.34
 Release:        0
@@ -57,12 +57,12 @@ as possible and sticks closely to ANSI C/POSIX for easy embedding.
 It includes support for the EXSLT set of extension functions as well
 as some common extensions present in other XSLT engines.
 
-%package -n %{libname}
+%package -n libxslt%{libver}
 Summary:        XSL Transformation Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
-%description -n %{libname}
+%description -n libxslt%{libver}
 This C library allows you to transform XML files into other XML files
 (or HTML, text, and more) using the standard XSLT stylesheet
 transformation mechanism.
@@ -73,15 +73,25 @@ as possible and sticks closely to ANSI C/POSIX for easy embedding.
 It includes support for the EXSLT set of extension functions as well
 as some common extensions present in other XSLT engines.
 
+%package -n libexslt%{libexver}
+Summary:        EXSLT Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+
+%description -n libexslt%{libexver}
+This is the EXSLT C library developed for libxslt.
+EXSLT is a community initiative to provide extensions to XSLT.
+
 %package devel
 Summary:        Development files for libxslt
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
 Requires:       %{name}-tools = %{version}
 Requires:       glibc-devel
+Requires:       libexslt%{libexver} = %{version}
 Requires:       libgcrypt-devel
 Requires:       libgpg-error-devel
+Requires:       libxslt%{libver} = %{version}
 
 %description devel
 libxslt allows you to transform XML files into other XML files
@@ -118,10 +128,10 @@ autoreconf -fvi
   --disable-static \
   --without-python \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
@@ -133,12 +143,18 @@ install -D -m0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/xslt-config.1
 #kill all "la" files
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%post -n libxslt%{libver} -p /sbin/ldconfig
+%postun -n libxslt%{libver} -p /sbin/ldconfig
+%post -n libexslt%{libexver} -p /sbin/ldconfig
+%postun -n libexslt%{libexver} -p /sbin/ldconfig
 
-%files -n %{libname}
-%{_libdir}/libxslt.so.*
-%{_libdir}/libexslt.so.*
+%files -n libxslt%{libver}
+%license COPYING* Copyright
+%{_libdir}/libxslt.so.%{libver}*
+
+%files -n libexslt%{libexver}
+%license COPYING* Copyright
+%{_libdir}/libexslt.so.%{libexver}*
 
 %files tools
 %license COPYING* Copyright
@@ -147,6 +163,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/xsltproc.1%{?ext_man}
 
 %files devel
+%license COPYING* Copyright
 %{_libdir}/libxslt.so
 %{_libdir}/libexslt.so
 %{_libdir}/*.sh
