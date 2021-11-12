@@ -26,6 +26,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM foliate-WebKit-version.patch boo#1192627 dimstar@opensuse.org -- Fix launch in case WebKit2-5.0 happens to be installed
+Patch0:         foliate-WebKit-version.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
