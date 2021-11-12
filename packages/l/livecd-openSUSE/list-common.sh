@@ -277,9 +277,7 @@ install xf86-video-ark
 install xf86-video-ati
 install xf86-video-chips
 install xf86-video-fbdev
-install xf86-video-glint
 install xf86-video-i128
-install xf86-video-mach64
 install xf86-video-mga
 install xf86-video-neomagic
 install xf86-video-nouveau
@@ -291,7 +289,6 @@ install xf86-video-siliconmotion i686,x86_64
 install xf86-video-sis
 install xf86-video-sisusb
 install xf86-video-tdfx
-install xf86-video-tga
 install xf86-video-v4l
 install xf86-video-vesa
 install xf86-video-voodoo

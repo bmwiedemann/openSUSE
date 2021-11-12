@@ -403,9 +403,7 @@
     <package name="xf86-video-ati"/>
     <package name="xf86-video-chips"/>
     <package name="xf86-video-fbdev"/>
-    <package name="xf86-video-glint"/>
     <package name="xf86-video-i128"/>
-    <package name="xf86-video-mach64"/>
     <package name="xf86-video-mga"/>
     <package name="xf86-video-neomagic"/>
     <package name="xf86-video-nouveau"/>
@@ -417,7 +415,6 @@
     <package name="xf86-video-sis"/>
     <package name="xf86-video-sisusb"/>
     <package name="xf86-video-tdfx"/>
-    <package name="xf86-video-tga"/>
     <package name="xf86-video-v4l"/>
     <package name="xf86-video-vesa"/>
     <package name="xf86-video-voodoo"/>

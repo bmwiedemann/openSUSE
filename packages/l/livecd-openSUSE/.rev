@@ -1328,4 +1328,11 @@
     <comment></comment>
     <requestid>930716</requestid>
   </revision>
+  <revision rev="165" vrev="165">
+    <srcmd5>ad113ac38919fff970229b36c0db3a91</srcmd5>
+    <version>unknown</version>
+    <time>1636716387</time>
+    <user>dimstar_suse</user>
+    <comment>Drop no longer supported X drivers</comment>
+  </revision>
 </revisionlist>
