@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Nov 12 12:53:45 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#842
+- support PBKDF for LUKS2 (jsc#SLE-21309)
+- updated documentation
+- refactored pool generation
+- 4.4.56
+
+--------------------------------------------------------------------
+Fri Nov 12 02:10:45 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+- 4.4.55
+
+--------------------------------------------------------------------
+Sun Oct 31 14:01:15 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+- 4.4.54
+
+--------------------------------------------------------------------
 Tue Oct 26 07:19:39 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#841
