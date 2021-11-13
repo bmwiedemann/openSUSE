@@ -26,9 +26,9 @@ BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
-Version:        8.6.11
+Version:        8.6.12
 Release:        0
-%define         rrc .1
+%define         rrc %{nil}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Graphical User Interface Toolkit for Tcl
 License:        TCL

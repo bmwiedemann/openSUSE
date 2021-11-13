@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 10 12:30:02 UTC 2021 - Reinhard Max <max@suse.com>
+
+- New version 8.6.12:
+  * (bug)[7beaed] ttk::bindMouseWheel syntax error 
+  * (new) support 4 new keycodes: CodeInput, SingleCandidate,
+    MultipleCandidate, PreviousCandidate
+  * (new) Portable keycodes: OE, oe, Ydiaeresis 
+  * (bug)[9e1312] <Enter> to parent after child destroyed 
+  * (bug)[d3cd4c] more robust notebook processing 
+  * (bug)[234ee4] crash in [clipboard get] invalid encoding 
+  * (bug)[be9cad] Poor trace housekeeping -> tkwait segfault 
+  * (bug)[9b6065] restore Tcl [update], see window-2.12 
+  * (bug)[34db75,ea876b] cursor motion in peer text 
+  * (bug)[c97464] memleak in TkpDrawAngledChars 
+  * (bug)[171ba7] crash when grab and focus are not coordinated 
+  * crash due to failed transient record housekeeping 
+  * (bug)[099109] segfault reusing a container toplevel 
+  * (bug)[4efbfe] static package init order in wish 
+  * (bug)[033886] Win: hang in font loading 
+  * (bug)[8ebed3] multi-thread safety in Xft use 
+  * (new)[TIP 608] New virtual event <<TkWorldChanged>> 
+
+-------------------------------------------------------------------
 Sat Apr 17 03:05:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 8.6.11.1 (still presenting itself as 8.6.11)
