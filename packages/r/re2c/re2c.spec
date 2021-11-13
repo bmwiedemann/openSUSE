@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        2.1.1
+Version:        2.2
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
@@ -26,6 +26,7 @@ URL:            https://re2c.org/
 Source:         https://github.com/skvadrik/re2c/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  gcc-c++
+BuildRequires:  python3-base >= 3.7
 
 %description
 re2c is a tool for writing fast and flexible lexers. Unlike other such
