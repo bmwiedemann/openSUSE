@@ -78,4 +78,20 @@
     many grapheme clusters.</comment>
     <requestid>927598</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a5fcf972083ee3cec267303aa2b8bdf</srcmd5>
+    <version>2.5.0</version>
+    <time>1636840120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  * Added fcft_set_emoji_presentation that can be used to override
+    emojis' default presentation style.
+  * Changed fcft_*_rasterize so that emoji's default presentation is now
+    accounted for when searching for a font containing the emoji codepoint,
+    codepoints whose default presentation is &quot;text&quot; will no longer consider
+    emoji fonts, and codepoints whose default presentation is &quot;emoji&quot; will
+    no longer consider non-emoji fonts.
+  * Improved handling of RTL scripts in fcft_text_run_rasterize</comment>
+    <requestid>931251</requestid>
+  </revision>
 </revisionlist>

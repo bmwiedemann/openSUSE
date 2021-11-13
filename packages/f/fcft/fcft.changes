@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 13 12:28:21 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.5.0:
+  * Added fcft_set_emoji_presentation that can be used to override
+    emojis' default presentation style.
+  * Changed fcft_*_rasterize so that emoji's default presentation is now
+    accounted for when searching for a font containing the emoji codepoint,
+    codepoints whose default presentation is "text" will no longer consider
+    emoji fonts, and codepoints whose default presentation is "emoji" will
+    no longer consider non-emoji fonts.
+  * Improved handling of RTL scripts in fcft_text_run_rasterize
+
+-------------------------------------------------------------------
 Tue Oct 26 05:34:54 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.6:

@@ -18,7 +18,7 @@
 
 %define libname libfcft3
 Name:           fcft
-Version:        2.4.6
+Version:        2.5.0
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -27,10 +27,12 @@ URL:            https://codeberg.org/dnkl/fcft
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tllist)
 
