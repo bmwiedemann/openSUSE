@@ -500,4 +500,12 @@ source service setup which messed up my spec file.
   * fixup &quot;rpm-script: fix bad exit status in OpenQA (bsc#1191922)&quot; (forwarded request 927056 from mwilck)</comment>
     <requestid>927057</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2546eabc506f316614155c279413c7b9</srcmd5>
+    <version>16.0.14+2</version>
+    <time>1636840086</time>
+    <user>dimstar_suse</user>
+    <comment>Use _udevrulesdir, fix log msg (forwarded request 930464 from mwilck)</comment>
+    <requestid>930465</requestid>
+  </revision>
 </revisionlist>

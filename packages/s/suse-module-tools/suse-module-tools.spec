@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.13
+Version:        16.0.14+2
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -65,6 +65,10 @@ Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
 Requires(post): coreutils
 Provides:       suse-kernel-rpm-scriptlets = 0
+Provides:       udev-extra-rules = 0.3.0
+Obsoletes:      udev-extra-rules < 0.3.0
+Provides:       system-tuning-common-SUSE = 0.3.0
+Obsoletes:      system-tuning-common-SUSE < 0.3.0
 # Use weak dependencies for dracut and kmod in order to
 # keep Ring0 lean. In normal deployments, these packages
 # will be available anyway.
@@ -172,6 +176,10 @@ install -d -m 755 %{buildroot}/usr/lib/systemd/system-generators
 install -m 755 udev-trigger-generator %{buildroot}/usr/lib/systemd/system-generators
 %endif
 
+# udev rules (formerly system-tuning-common-SUSE, udev-extra-rules)
+install -d -m 755 %{buildroot}%{_udevrulesdir}
+install -m 644 udevrules/*.rules %{buildroot}%{_udevrulesdir}
+
 mkdir -p %{buildroot}%{_defaultlicensedir}
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150100
@@ -205,6 +213,7 @@ fi
 exit 0
 
 %post
+%udev_rules_update
 %service_add_post %{systemd_units}
 exit 0
 
@@ -213,6 +222,7 @@ exit 0
 exit 0
 
 %postun
+%udev_rules_update
 %service_del_postun_without_restart %{systemd_units}
 exit 0
 
@@ -248,6 +258,7 @@ exit 0
 %{_unitdir}/*.service
 %{_unitdir}/systemd-sysctl.service.d
 %{_modulesloaddir}
+%{_udevrulesdir}
 %ifarch ppc64 ppc64le
 /usr/lib/systemd/system-generators
 %endif

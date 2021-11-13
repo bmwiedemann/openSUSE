@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 08 22:05:58 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.14:
+  * add udev rules from udev-extra-rules (formerly system-tuning-common-SUSE).
+    Both packages are now obsoleted by suse-module-tools.
+    (jsc#SLE-21032)
+  * 60-io-scheduler.rules: don't use BFQ for real multiqueue devices
+    (jsc#SLE-21032, bsc#1192161)
+  * 60-io-scheduler.rules: use "none" for multipath components
+    (bsc#1192161)
+
+-------------------------------------------------------------------
 Fri Oct 22 20:37:38 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.13:
