@@ -32,4 +32,18 @@
 </comment>
     <requestid>888109</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>898f1005a4c19764e7e2092451045da6</srcmd5>
+    <version>4.0.0</version>
+    <time>1636840114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0
+  * no release notes
+  * drop python2 support
+  * URL change
+  * JS package updates
+  * License file included in sdist
+</comment>
+    <requestid>931197</requestid>
+  </revision>
 </revisionlist>

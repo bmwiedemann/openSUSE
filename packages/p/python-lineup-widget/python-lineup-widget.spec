@@ -20,14 +20,13 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-lineup-widget
-Version:        1.0.7
+Version:        4.0.0
 Release:        0
 License:        MIT
 Summary:        Wrapper around the LineUpjs library for multi attribute rankings
-URL:            https://github.com/datavisyn/lineup_widget
+URL:            https://github.com/lineupjs/lineup_widget
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/l/lineup-widget/lineup_widget-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/lineupjs/lineup_widget/v%{version}/LICENSE.txt
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pandas >= 0.18.0}
@@ -63,25 +62,21 @@ This package provides the jupyter notebook extensions.
 
 %prep
 %setup -q -n lineup_widget-%{version}
-cp %{SOURCE10} .
 
 %build
 %python_build
+sed -i 's/\r$//' README.md lineup_widget/__init__.py lineup_widget/static/*.svg
+find . -type f -exec chmod a-x '{}' ';'
 
 %install
 %python_install
 %jupyter_move_config
 
-chmod a-x %{buildroot}%{_jupyter_nb_notebook_confdir}/lineup_widget.json
-chmod a-x %{buildroot}%{_jupyter_nbextension_dir}/lineup_widget/*
-%python_expand chmod a-x %{buildroot}%{$python_sitelib}/lineup_widget-%{version}-py*.egg-info/*
-%python_expand chmod a-x %{buildroot}%{$python_sitelib}/lineup_widget/*.py
-%python_expand chmod a-x %{buildroot}%{$python_sitelib}/lineup_widget/static/*
-
-%python_expand sed -i 's/\r$//' %{buildroot}%{$python_sitelib}/lineup_widget/__init__.py
-%python_expand sed -i 's/\r$//' %{buildroot}%{$python_sitelib}/lineup_widget/static/*.svg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
+
+#%%check
+# no python unit tests
 
 %files %{python_files}
 %license LICENSE.txt

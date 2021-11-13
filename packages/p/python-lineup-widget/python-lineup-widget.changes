@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 12 22:18:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.0
+  * no release notes
+  * drop python2 support
+  * URL change
+  * JS package updates
+  * License file included in sdist
+
+-------------------------------------------------------------------
 Fri Apr 23 21:30:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't build python36-* package (missing pandas)
