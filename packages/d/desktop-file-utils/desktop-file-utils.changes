@@ -50,7 +50,7 @@ Wed Jul 31 21:17:49 UTC 2019 - bjorn.lie@gmail.com
   + Sort output lines internally to conserve reproducibility.
   + Use pledge(2) on OpenBSD to limit capabilities.
   + Fix missing ; when appending to a list not ending with one.
-  + Add font as valid media type.
+  + Add font as valid media type (bsc#1148080).
   + Fix broken emacs blocking compile.
 - Drop desktop-file-utils-add-Pantheon.patch: Fixed upstream.
 - Drop no longer needed manual install of emacs lisp file.
