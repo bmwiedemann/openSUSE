@@ -3380,4 +3380,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: add setroubleshoot whitelisting (bsc#1186344)</comment>
     <requestid>929829</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>a8812a6ccee376daece4ab89d24e2fda</srcmd5>
+    <version>2.1+git20211110.8430dc4</version>
+    <time>1636840108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211110.8430dc4:
+  * polkit-rules-whitelist: follow-up whitelisting for gnome-initial-setup (bsc#1192542)
+
+- Update to version 2.1+git20211109.f2e93f8:
+  * Add missing re.compile.
+  * Prevent duplicate files in lint input</comment>
+    <requestid>930630</requestid>
+  </revision>
 </revisionlist>

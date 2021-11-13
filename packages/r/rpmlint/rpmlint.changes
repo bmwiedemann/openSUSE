@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 10 10:38:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211110.8430dc4:
+  * polkit-rules-whitelist: follow-up whitelisting for gnome-initial-setup (bsc#1192542)
+
+-------------------------------------------------------------------
+Wed Nov 10 07:56:22 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211109.f2e93f8:
+  * Add missing re.compile.
+  * Prevent duplicate files in lint input
+
+-------------------------------------------------------------------
 Sat Nov 06 08:10:44 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211105.14a37df:
