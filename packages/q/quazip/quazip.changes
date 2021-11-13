@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 13 14:07:50 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2
+  * Add CMake option to disable installation
+  * Qt's internal zlib can be used now (QUAZIP_USE_QT_ZLIB, OFF
+    by default)
+  * Make tests optional (QUAZIP_ENABLE_TESTS, OFF by default)
+  * Fix: QuaZip::close() can be safely called multiple times now
+  * Fix: -lz added to pkgconfig
+- Fix -devel package runtime requirement
+
+-------------------------------------------------------------------
 Sun Oct 11 11:36:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.1

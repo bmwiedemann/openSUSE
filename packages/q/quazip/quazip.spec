@@ -1,7 +1,7 @@
 #
 # spec file for package quazip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver 1
 %define lib_ver 1_0_0
 Name:           quazip
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -54,7 +54,7 @@ Useful to access ZIP archives from Qt5 programs.
 
 %package        devel
 Summary:        Development files for %{name}
-Requires:       libquazip5-%{so_ver} = %{version}-%{release}
+Requires:       libquazip%{so_ver}-qt5-%{lib_ver} = %{version}
 Requires:       pkgconfig(Qt5Core)
 Provides:       libquazip-qt5-devel = %{version}
 Obsoletes:      libquazip-qt5-devel < %{version}
