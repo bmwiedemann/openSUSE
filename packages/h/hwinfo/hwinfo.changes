@@ -1,4 +1,15 @@
 --------------------------------------------------------------------
+Thu Nov 11 17:14:55 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#106
+- Always read numerical 32bit serial number from EDID header.
+  Override this with ASCII serial number from display descriptor,
+  if available.
+- Display numerical 32bit serial number for monitors without serial
+  number display descriptor
+- 21.78
+
+--------------------------------------------------------------------
 Fri Oct 1 11:55:16 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#105
