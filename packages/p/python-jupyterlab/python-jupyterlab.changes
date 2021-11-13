@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Nov 12 21:58:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.2.3
+  * [3.2.x] Expose window.jupyterapp #11417 (@jtpio)
+  * Handle relative paths to themePath and schemaDir #11427
+    (@jtpio)
+  * fix #11377 & bump Yjs dependencies & fix modeldb overwriting
+    yjs content
+  * akes ILabShell optional in toc extension
+- Changes in 3.2.2
+  * Make orig_nbformat optional #11005 #11370 (@nanoant)
+  * Updated dialog with text to a reasonable width #11331 (@3coins)
+  * Fix for terminal theme style #11291 (@3coins)
+  * Only trigger dirty status update on value changes #11346
+    (@krassowski)
+  * Run nested code cells directly from markdown headings #11375
+    (@jess-x)
+  * Fix release_test #11390 (@fcollonval)
+  * Removed cat package.json #11372 (@ceesu)
+  * Relax @playright/test dependency in Galata #11371 (@jtpio)
+- Changes in 3.2.1
+  * Updated button styles to accessible colors #11321 (@3coins)
+  * Fix for debugger not working for scripts #11311 (@3coins)
+  * Added handling of '\r' ended files #11310 (@lucabarcelos)
+  * Emit indexChanged on model state updates #11298 (@krassowski)
+  * Fix ANSI vs URL conflict, prefix www. with https:// #11272
+    (@krassowski)
+  * Pass version spec as an input #11322 (@jtpio)
+
+-------------------------------------------------------------------
 Sun Oct 17 18:19:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.2.0

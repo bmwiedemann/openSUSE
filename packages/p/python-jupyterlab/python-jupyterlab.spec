@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab
-Version:        3.2.0
+Version:        3.2.3
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
