@@ -87,4 +87,12 @@
     <comment>Update to release 2021.1 (forwarded request 901709 from susnux)</comment>
     <requestid>901710</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0a34d3b1ebbeb1e54192fa650a22d2bf</srcmd5>
+    <version>2021.3</version>
+    <time>1636840100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.3</comment>
+    <requestid>930984</requestid>
+  </revision>
 </revisionlist>
