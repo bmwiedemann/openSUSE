@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 12 08:27:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.16:
+  * bump version to 5.16
+  * info: add FILS_CRYPTO_OFFLOAD extended feature
+  * update nl80211.h
+  * iw: print BSS coloring capability if supported
+  * iw: add set sar_specs command
+  * iw: nl80211: add NLA_F_NESTED to nla_nest_start() with older libnl versions
+  * iw: mesh: add comments in the mesh confguration parameter printing sections
+  * iw: event: add the missing time display format in the "iw event" help menu
+  * iw: link: mention the need for MAC addr arg in link get_sta cmd usage menu
+  * iw: fix vendor event static warnings
+- Switch to _service
+
+-------------------------------------------------------------------
 Tue Oct 20 06:58:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.9:
