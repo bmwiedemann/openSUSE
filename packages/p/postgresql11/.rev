@@ -251,4 +251,17 @@ Upgrade to version 11.11:
   is unclear. This affects only the test subpackage.</comment>
     <requestid>923705</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>81bd15dbb6e3eac94e0208f67a2e495c</srcmd5>
+    <version>11.14</version>
+    <time>1636840092</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1192516: Upgrade to version 11.14:
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/11/release-11-14.html</comment>
+    <requestid>930952</requestid>
+  </revision>
 </revisionlist>
