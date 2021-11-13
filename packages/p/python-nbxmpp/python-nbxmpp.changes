@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:27:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+ * Ignore messages with incorrect id
+ * AdHoc: Make parsing AdHoc commands more compliant
+ * Correctly handle RSM count request
+ * Improve XEP-0050 Compliance
+ * GSSAPI: Catch OSError
+
+-------------------------------------------------------------------
 Tue Oct 26 08:56:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Version the typelib(Soup) BuildRequires to stick to 2.4: this is
