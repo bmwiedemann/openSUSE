@@ -24,4 +24,14 @@
 </comment>
     <requestid>929880</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1b609335d061ad05eddc2f094b40bc25</srcmd5>
+    <version>20200903</version>
+    <time>1636840116</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable budgie applets pattern
+- Add all applets to budgie applets pattern
+</comment>
+    <requestid>931254</requestid>
+  </revision>
 </revisionlist>

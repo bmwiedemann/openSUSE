@@ -78,30 +78,56 @@ The Budgie Desktop is a feature-rich, modern desktop designed to keep out the wa
 %dir %{_defaultdocdir}/patterns
 %{_defaultdocdir}/patterns/budgie.txt
 
-################################################################################
-## Hide until patterns-rpm-macros fixed ##
+%package budgie_applets
+%pattern_budgiedesktop
+Summary:        Applets for Budgie Desktop Environment
+Group:          Metapackages
+Provides:       pattern() = budgie_applets
+Provides:       pattern-icon() = pattern-budgie
+Provides:       pattern-order() = 2370
+Provides:       pattern-visible()
+Requires:       pattern() = budgie
+## Other applets ##
+Recommends:     budgie-calendar-applet
+Recommends:     budgie-screenshot-applet
+Recommends:     budgie-haste-applet
+## BUDGIE EXTRAS ##
+Recommends:     budgie-app-launcher-applet
+Recommends:     budgie-applications-menu-applet
+Recommends:     budgie-brightness-controller-applet
+Recommends:     budgie-clockworks-applet
+Recommends:     budgie-countdown-applet
+Recommends:     budgie-dropby-applet
+Recommends:     budgie-fuzzyclock-applet
+Recommends:     budgie-hotcorners-applet
+Recommends:     budgie-kangaroo-applet
+Recommends:     budgie-keyboard-autoswitch-applet
+Recommends:     budgie-network-manager-applet
+Recommends:     budgie-previews
+Recommends:     budgie-quickchar
+Recommends:     budgie-quicknote-applet
+Recommends:     budgie-recentlyused-applet
+Recommends:     budgie-rotation-lock-applet
+Recommends:     budgie-showtime-applet
+Recommends:     budgie-takeabreak-applet
+Recommends:     budgie-trash-applet
+Recommends:     budgie-visualspace-applet
+Recommends:     budgie-wallstreet
+Recommends:     budgie-weathershow-applet
+Recommends:     budgie-window-mover-applet
+Recommends:     budgie-window-shuffler
+Recommends:     budgie-workspace-overview-applet
+Recommends:     budgie-workspace-stopwatch-applet
+Recommends:     budgie-workspace-wallpaper-applet
+#
 
-#%%package budgie_applets
-#%%pattern_budgiedesktop
-#Summary: Applets for Budgie Desktop Environment
-#Group: Metapackages
-#Requires: pattern() = budgie
-#Provides: pattern-icon() = pattern-budgie
-#Provides: pattern-order() = 1660
-#Provides: pattern-visible()
-### BUDGIE APPLETS ##
-#Recommends: budgie-calendar-applet
-#Recommends: budgie-screenshot-applet
-#Recommends: budgie-haste-applet
+%description budgie_applets
+Applets for Budgie Desktop Environment
 
-#%%description budgie_applets
-#Applets for Budgie Desktop Environment
+%files budgie_applets
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/budgie_applets.txt
 
-#%%files budgie_applets
-#%%dir %%{_defaultdocdir}/patterns
-#%%{_defaultdocdir}/patterns/budgie_applets.txt
-
-################################################################################
 
 %prep
 
@@ -110,6 +136,6 @@ The Budgie Desktop is a feature-rich, modern desktop designed to keep out the wa
 %install
 mkdir -p %{buildroot}%{_defaultdocdir}/patterns
 echo 'This file marks the pattern budgie to be installed.' >%{buildroot}%{_defaultdocdir}/patterns/budgie.txt
-#echo 'This file marks the pattern budgie_applets to be installed.' >%%{buildroot}%%{_defaultdocdir}/patterns/budgie_applets.txt
+echo 'This file marks the pattern budgie_applets to be installed.' >%{buildroot}%{_defaultdocdir}/patterns/budgie_applets.txt
 
 %changelog
