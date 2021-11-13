@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 12 07:28:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enable signature again as now Kimmo has provided his public key 
+
+-------------------------------------------------------------------
+Thu Nov 11 13:23:13 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.23.00
+  * Add "jobs -Z" to setproctitle(3)
+  * Add ln=target in LS_COLORS
+  * Add a :Q modifier that preserves empty arguments
+- Port patches
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.21.00.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Disable signature as signed with unknown key
+
+-------------------------------------------------------------------
 Wed Aug  4 12:24:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Key-binding: support also other variants of terminals like xterm-256color

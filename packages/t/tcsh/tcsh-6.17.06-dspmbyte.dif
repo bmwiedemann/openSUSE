@@ -52,7 +52,7 @@
  # endif /* SETLOCALEBUG */
 --- sh.set.c
 +++ sh.set.c	2021-04-27 07:38:12.412808424 +0000
-@@ -1160,11 +1160,11 @@ update_dspmbyte_vars(void)
+@@ -1163,11 +1163,11 @@ update_dspmbyte_vars(void)
  	dstr1 = vp->vec[0];
  	if (eq (dstr1, STRsjis))
  	    iskcode = 1;
@@ -66,7 +66,7 @@
  	    iskcode = 4;
  	else if ((dstr1[0] - '0') >= 0 && (dstr1[0] - '0') <= 3) {
  	    iskcode = 0;
-@@ -1248,7 +1248,7 @@ update_dspmbyte_vars(void)
+@@ -1251,7 +1251,7 @@ update_dspmbyte_vars(void)
  	_enable_mbdisp = 0;
  	dspmbyte_ls = 0;
      }
@@ -75,7 +75,7 @@
      {
  	Char mbmapstr[300];
  	for (lp = 0; lp < 256; lp++)
-@@ -1256,7 +1256,7 @@ update_dspmbyte_vars(void)
+@@ -1259,7 +1259,7 @@ update_dspmbyte_vars(void)
  	mbmapstr[lp] = 0;
  	setcopy(STRmbytemap, mbmapstr, VAR_READWRITE);
      }
@@ -84,7 +84,7 @@
  }
  
  /* dspkanji/dspmbyte autosetting */
-@@ -1265,6 +1265,7 @@ void
+@@ -1268,6 +1268,7 @@ void
  autoset_dspmbyte(const Char *pcp)
  {
      int i;
@@ -92,7 +92,7 @@
      static const struct dspm_autoset_Table {
  	Char *n;
  	Char *v;
-@@ -1287,13 +1288,18 @@ autoset_dspmbyte(const Char *pcp)
+@@ -1290,13 +1291,18 @@ autoset_dspmbyte(const Char *pcp)
  #if defined(HAVE_NL_LANGINFO) && defined(CODESET)
      static const struct dspm_autoset_Table dspmc[] = {
  	{ STRstarutfstar8, STRutf8 },
@@ -126,7 +126,7 @@
  Char STRGB2312[]	= { 'g', 'b', '2', '3', '1', '2', '\0' };
  #  ifdef MBYTEDEBUG	/* Sorry, use for beta testing */
  Char STRmbytemap[]	= { 'm', 'b', 'y', 't', 'e', 'm', 'a', 'p', '\0' };
-@@ -440,7 +442,7 @@ Char STRkilldup[] 	= { 'k', 'i', 'l', 'l
+@@ -441,7 +443,7 @@ Char STRkilldup[] 	= { 'k', 'i', 'l', 'l
  Char STRshlvl[]		= { 's', 'h', 'l', 'v', 'l', '\0' };
  Char STRKSHLVL[]	= { 'S', 'H', 'L', 'V', 'L', '\0' };
  Char STRLANG[]		= { 'L', 'A', 'N', 'G', '\0' };

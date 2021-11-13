@@ -17,7 +17,7 @@
 
 
 Name:           tcsh
-Version:        6.22.04
+Version:        6.23.00
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause

@@ -830,4 +830,23 @@
     <comment>- Key-binding: support also other variants of terminals like xterm-256color</comment>
     <requestid>910148</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d8ef2a8346fe23e56692102a915386e5</srcmd5>
+    <version>6.23.00</version>
+    <time>1636840102</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable signature again as now Kimmo has provided his public key 
+
+- Update to tcsh 6.23.00
+  * Add &quot;jobs -Z&quot; to setproctitle(3)
+  * Add ln=target in LS_COLORS
+  * Add a :Q modifier that preserves empty arguments
+- Port patches
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.21.00.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Disable signature as signed with unknown key</comment>
+    <requestid>931028</requestid>
+  </revision>
 </revisionlist>
