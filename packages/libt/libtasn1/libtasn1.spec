@@ -18,7 +18,7 @@
 
 %define somajor 6
 Name:           libtasn1
-Version:        4.17.0
+Version:        4.18.0
 Release:        0
 Summary:        ASN.1 parsing library
 License:        GFDL-1.3-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -27,7 +27,6 @@ URL:            https://www.gnu.org/software/libtasn1/
 Source0:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
-Source3:        libtasn1-rpmlintrc
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 

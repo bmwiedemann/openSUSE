@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 11 19:36:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update libtasn1.keyring with upstream keys
+
+-------------------------------------------------------------------
+Thu Nov 11 13:40:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libtasn1 4.18.0:
+  * Improve GTK-DOC manual
+  * Improve --help and --version for tools with gnulib
+  * Update gnulib files and various maintenance fixes
+- drop libtasn1-rpmlintrc due to no longer being required on TW
+
+-------------------------------------------------------------------
 Mon May 17 18:08:25 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libtasn1 4.17.0:
