@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 11 15:44:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- updated to version 2.8:
+  - fixed test failure in test_DateTimeParserGenerator.py with version 70.1rc
+  - added wrappers for UCurrNameStyle and for ucurr_getName() onto CurrencyUnit
+  - added support for ICU 70.1
+  - added FieldPosition-less overloads to RuleBasedNumberFormat.format()
+  - added pyproject.toml file to (also) build via python -m build
+
+-------------------------------------------------------------------
 Mon Nov  8 10:34:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six declaration for testsuite 
