@@ -1235,7 +1235,6 @@ unsorted:
   - bin86 
   - bindfs 
   - bing 
-  - binutils: [i586] 
   - binutils-devel 
   - binutils-devel-32bit: [x86_64] 
   - binutils-gold 
@@ -3958,7 +3957,6 @@ unsorted:
   - gc-devel 
   - gcab-devel 
   - gcad3d 
-  - gcc: [i586] 
   - gcc-32bit: [x86_64] 
   - gcc-PIE 
   - gcc-ada 
@@ -3997,7 +3995,6 @@ unsorted:
   - gcc10-objc 
   - gcc10-objc-32bit: [x86_64] 
   - gcc10-testresults 
-  - gcc11: [i586] 
   - gcc11-32bit: [x86_64] 
   - gcc11-ada 
   - gcc11-ada-32bit: [x86_64] 
@@ -4010,8 +4007,6 @@ unsorted:
   - gcc11-fortran-32bit: [x86_64] 
   - gcc11-go 
   - gcc11-go-32bit: [x86_64] 
-  - gcc11-info: [i586] 
-  - gcc11-locale: [i586] 
   - gcc11-obj-c++ 
   - gcc11-obj-c++-32bit: [x86_64] 
   - gcc11-objc 
@@ -9439,7 +9434,6 @@ unsorted:
   - libart_lgpl_2-2-32bit: [x86_64] 
   - libasan4 
   - libasan4-32bit: [x86_64] 
-  - libasan6: [i586] 
   - libasan6-32bit: [x86_64] 
   - libasan6-gcc10 
   - libasan6-gcc10-32bit: [x86_64] 
@@ -10116,8 +10110,6 @@ unsorted:
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
-  - libctf-nobfd0: [i586] 
-  - libctf0: [i586] 
   - libcthreads-devel 
   - libcthreads1 
   - libctl-devel 
@@ -11431,7 +11423,6 @@ unsorted:
   - libite-devel 
   - libite5 
   - libiterm-devel 
-  - libitm1: [i586] 
   - libitm1-32bit: [x86_64] 
   - libitm1-gcc10 
   - libitm1-gcc10-32bit: [x86_64] 
@@ -31681,6 +31672,7 @@ unsorted:
   - samba-krb-printing 
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
+  - samba-tool 
   - sampler 
   - samplicator 
   - samtools 
@@ -32343,6 +32335,7 @@ unsorted:
   - ssh-contact 
   - ssh-contact-client 
   - ssh-contact-service 
+  - ssh-import-id 
   - ssh-tools 
   - sshguard 
   - sshpass 
@@ -32727,12 +32720,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_6_0-gnu-hpc: [x86_64] 
-  - tensorflow2_2_6_0-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_6_0-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_6_0-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_6_0-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_6_0-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_6_2-gnu-hpc: [x86_64] 
+  - tensorflow2_2_6_2-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_6_2-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_6_2-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_6_2-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_6_2-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
@@ -42230,12 +42223,8 @@ unsorted:
   - xf86-video-amdgpu 
   - xf86-video-fbturbo 
   - xf86-video-fbturbo-live 
-  - xf86-video-glint 
   - xf86-video-intel-32bit: [x86_64] 
-  - xf86-video-mach64 
   - xf86-video-openchrome 
-  - xf86-video-tga 
-  - xf86-video-trident 
   - xf86dga 
   - xfburn 
   - xfburn-lang 
