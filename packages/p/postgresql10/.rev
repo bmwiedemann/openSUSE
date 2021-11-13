@@ -608,4 +608,17 @@
   is unclear. This affects only the test subpackage.</comment>
     <requestid>923706</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d4a789adb7b2513434fb50972243dd94</srcmd5>
+    <version>10.19</version>
+    <time>1636840093</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1192516: Upgrade to 10.19:
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/10/release-10-19.html</comment>
+    <requestid>930953</requestid>
+  </revision>
 </revisionlist>

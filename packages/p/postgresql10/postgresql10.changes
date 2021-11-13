@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 10 18:11:54 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1192516: Upgrade to 10.19:
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/10/release-10-19.html
+
+-------------------------------------------------------------------
 Tue Oct  5 11:29:31 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Let genlists skip non-existing binaries to avoid lots of version

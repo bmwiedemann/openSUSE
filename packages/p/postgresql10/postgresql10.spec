@@ -1,5 +1,5 @@
 #
-# spec file for package postgresql10
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 10.18
+%define pgversion 10.19
 %define pgmajor 10
 %define pgsuffix %pgmajor
 %define buildlibs 0
@@ -154,7 +154,7 @@ Provides:       postgresql = %version-%release
 Provides:       postgresql-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
+Requires(postun):postgresql-noarch >= %pgmajor
 # At this point we changed the package layout on SLE and conflict with
 # older releases to get a clean cut.
 Conflicts:      postgresql-noarch < 12.0.1
@@ -243,7 +243,7 @@ Provides:       %pgname-server-devel = %version-%release
 Provides:       postgresql-server-devel = %version-%release
 Provides:       postgresql-server-devel-implementation = %version-%release
 Requires(post): postgresql-server-noarch >= %pgmajor
-Requires(postun): postgresql-server-noarch >= %pgmajor
+Requires(postun):postgresql-server-noarch >= %pgmajor
 Requires:       %pgname-devel = %version
 Requires:       %pgname-server = %version-%release
 # Installation of postgresql??-devel is exclusive
@@ -302,10 +302,10 @@ Recommends:     %{name}-llvmjit
 Provides:       postgresql-server-implementation = %version-%release
 Requires:       %libpq >= %version
 Requires(pre):  postgresql-server-noarch >= %pgmajor
-Requires(preun): postgresql-server-noarch >= %pgmajor
-Requires(postun): postgresql-server-noarch >= %pgmajor
+Requires(preun):postgresql-server-noarch >= %pgmajor
+Requires(postun):postgresql-server-noarch >= %pgmajor
 Requires(post): postgresql-noarch >= %pgmajor
-Requires(postun): postgresql-noarch >= %pgmajor
+Requires(postun):postgresql-noarch >= %pgmajor
 
 %description server
 PostgreSQL is an advanced object-relational database management system
