@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 19 10:36:08 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Users client uses the shadow tools to write changes into the
+  system (jsc#SLE-20592).
+- Remove support for group password.
+- Avoid crash when trying to read a shadow suite file
+  (e.g., /etc/group) and the file does not exist (bsc#1191591).
+- 4.4.8
+
+-------------------------------------------------------------------
 Tue Oct 19 08:50:07 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - The shadow tools are used for reading the useradd default values

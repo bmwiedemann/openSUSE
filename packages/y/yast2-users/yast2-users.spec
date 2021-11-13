@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.4.7
+Version:        4.4.8
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -32,8 +32,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl-Digest-SHA1
 BuildRequires:  update-desktop-files
-# Updated API for Y2Issues
-BuildRequires:  yast2 >= 4.4.14
+# Y2Issues::WithIssues mixin
+BuildRequires:  yast2 >= 4.4.18
 BuildRequires:  yast2-core-devel
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-perl-bindings
@@ -58,8 +58,8 @@ Requires:       yast2-perl-bindings >= 2.18.0
 # this forces using yast2-ldap with correct LDAP object names (fate#303596)
 Requires:       yast2-ldap >= 3.1.2
 
-# Updated API for Y2Issues
-Requires:       yast2 >= 4.4.14
+# Y2Issues::WithIssues mixin
+Requires:       yast2 >= 4.4.18
 # cryptsha256, cryptsha516
 Requires:       yast2-core >= 2.21.0
 
@@ -98,6 +98,6 @@ This package provides GUI for maintenance of linux users and groups.
 %{yast_plugindir}
 %{yast_icondir}
 %license COPYING
-%doc %{yast_docdir}
+%doc README.md
 
 %changelog
