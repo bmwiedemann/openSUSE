@@ -57,6 +57,7 @@ Patch405:       0007-vendor-Add-vendor-files-for-sles12.patch
 Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
 Patch501:       fixed-mounted.ocfs2-output-when-some-devices-are-Not.patch
 Patch502:       update-mounted.ocfs2-mounted.c.patch
+Patch503:       libocfs2-roll-back-when-dir_index-creation-fails.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -166,6 +167,7 @@ OCFS2 filesystem.
 %patch406 -p1
 %patch501 -p1
 %patch502 -p1
+%patch503 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

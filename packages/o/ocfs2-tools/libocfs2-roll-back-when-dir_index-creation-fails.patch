@@ -1,0 +1,110 @@
+From cd88c938afc7ce28efe032ba6081e8a77c5f4c52 Mon Sep 17 00:00:00 2001
+From: Gang He <ghe@suse.com>
+Date: Thu, 4 Nov 2021 13:57:34 +0800
+Subject: [PATCH] libocfs2: roll-back when dir_index creation fails
+
+When we try to create a directory index tree, we should truncate
+the directory index tree if this creation failed for some reason,
+e.g. there is not any more blocks to allocate.
+Otherwise, the file was attached a problematic directory index
+tree, this index will affect file lookup under this directory file.
+---
+ libocfs2/dir_indexed.c | 40 ++++++++++++++++++++++++++--------------
+ 1 file changed, 26 insertions(+), 14 deletions(-)
+
+diff --git a/libocfs2/dir_indexed.c b/libocfs2/dir_indexed.c
+index f59d9455..e5da18d5 100644
+--- a/libocfs2/dir_indexed.c
++++ b/libocfs2/dir_indexed.c
+@@ -1239,20 +1239,26 @@ errcode_t ocfs2_dx_dir_build(ocfs2_filesys *fs,
+ 		goto out;
+ 
+ 	ret = ocfs2_malloc_block(fs->fs_io, &dx_buf);
+-	if (ret)
++	if (ret) {
++		ocfs2_delete_dx_root(fs, dr_blkno);
+ 		goto out;
++	}
+ 
+ 	ret = ocfs2_read_dx_root(fs, dr_blkno, dx_buf);
+-	if (ret)
++	if (ret) {
++		ocfs2_delete_dx_root(fs, dr_blkno);
+ 		goto out;
++	}
+ 	dx_root = (struct ocfs2_dx_root_block *)dx_buf;
+ 
+ 	/* set inode to use indexed-dirs */
+ 	di->i_dyn_features |= OCFS2_INDEXED_DIR_FL;
+ 
+ 	ret = ocfs2_init_dir_trailers(fs, di, dx_root);
+-	if (ret)
++	if (ret) {
++		ocfs2_delete_dx_root(fs, dr_blkno);
+ 		goto out;
++	}
+ 
+ 	dx_root->dr_dir_blkno = di->i_blkno;
+ 	dx_root->dr_num_entries = 0;
+@@ -1261,11 +1267,15 @@ errcode_t ocfs2_dx_dir_build(ocfs2_filesys *fs,
+ 	di->i_dx_root = dr_blkno;
+ 
+ 	ret = ocfs2_write_dx_root(fs, dr_blkno, dx_buf);
+-	if (ret)
++	if (ret) {
++		ocfs2_delete_dx_root(fs, dr_blkno);
+ 		goto out;
++	}
+ 	ret = ocfs2_write_inode(fs, dir, di_buf);
+-	if (ret)
++	if (ret) {
++		ocfs2_delete_dx_root(fs, dr_blkno);
+ 		goto out;
++	}
+ 
+ 	ctxt.dir_blkno = dir;
+ 	ctxt.dx_root_blkno = dr_blkno;
+@@ -1276,18 +1286,18 @@ errcode_t ocfs2_dx_dir_build(ocfs2_filesys *fs,
+ 	if (ctxt.err)
+ 		ret = ctxt.err;
+ 	if (ret)
+-		goto out;
++		goto trunc_out;
+ 
+ 	ret = ocfs2_read_dx_root(fs, dr_blkno, dx_buf);
+ 	if (ret)
+-		goto out;
++		goto trunc_out;
+ 	ret = ocfs2_read_inode(fs, dir, di_buf);
+ 	if (ret)
+-		goto out;
++		goto trunc_out;
+ 
+ 	ret = ocfs2_write_inode(fs, dir, di_buf);
+-	if(ret)
+-		goto out;
++	if (ret)
++		goto trunc_out;
+ 
+ 	/* check quota for dx_leaf */
+ 	change = ocfs2_clusters_to_bytes(fs,
+@@ -1297,10 +1307,12 @@ errcode_t ocfs2_dx_dir_build(ocfs2_filesys *fs,
+ 
+ 	ret = ocfs2_apply_quota_change(fs, usrhash, grphash,
+ 					uid, gid, change, 0);
+-	if (ret) {
+-		/* exceed quota, truncate the indexed tree */
+-		ret = ocfs2_dx_dir_truncate(fs, dir);
+-	}
++
++trunc_out:
++	/* if the indexed dir attribute creation fails,
++	 * we must roll back */
++	if (ret)
++		ocfs2_dx_dir_truncate(fs, dir);
+ 
+ out:
+ 	err = ocfs2_finish_quota_change(fs, usrhash, grphash);
+-- 
+2.12.3
+
