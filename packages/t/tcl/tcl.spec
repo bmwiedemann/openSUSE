@@ -18,11 +18,11 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.11
+Version:        8.6.12
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.2.0
+%define itclver 4.2.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL
@@ -41,7 +41,6 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-s
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
-Patch0:         tcl-aa4a13c15516da45.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -81,7 +80,10 @@ the Tcl language itself.
 
 %prep
 %setup -q -n %name%version
-%patch0
+if ! test -d pkgs/itcl%itclver; then
+   : Version mismatch in itcl, please chek the %%itclver macro!
+   exit 1
+fi
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -154,6 +156,8 @@ ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 ln -sf tclsh.1.gz %buildroot%_mandir/man1/tclsh%TCL_MINOR.1.gz
 mkdir -p %buildroot%_datadir/tcl
 install -D %{S:3} -m 644 %buildroot%_rpmmacrodir/macros.tcl
+# We are Tcl, not SQLite
+rm -f %buildroot%bindir/sqlite*
 
 %if "%_lib" == "lib64"
 %post

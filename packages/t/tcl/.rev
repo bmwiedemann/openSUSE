@@ -650,4 +650,27 @@ sqlite3 patch I will submit in a moment.</comment>
   libraries.</comment>
     <requestid>890815</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d59128f85e3bbb8d0e6a7080f760222f</srcmd5>
+    <version>8.6.12</version>
+    <time>1636840081</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 8.6.12:
+  * (bug)[d43f96] [string trim*] broken for Emoji
+  * (bug)[22324b] [string reverse] broken for Emoji
+  * (bug)[1dab71,7c64aa] BRE broken by uninitialized value use
+  * (bug)[8419c5] Unix tty channels tolerate EINTR
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[4c591f] [string compare] EIAS violation
+  * (bug)[266494] [concat foo [list #]] EIAS violation
+  * (bug)[24b918] Save IO buffers from modern optimizers
+  * (new) support for POSIX error EILSEQ
+  * (bug)[688fcc] segfault during traced delete of alias
+  * (bug)[ccc448] segfault in ensemble rewrite machinery
+  * (new) Update to Unicode-14
+  * (bug)[a8579d] failed proc argument spec processing
+  * Obsoletes tcl-aa4a13c15516da45.patch
+- Bump %itclver and ensure it stays in sync.</comment>
+    <requestid>930669</requestid>
+  </revision>
 </revisionlist>

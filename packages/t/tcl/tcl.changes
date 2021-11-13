@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  9 17:08:21 UTC 2021 - Reinhard Max <max@suse.com>
+
+- New version 8.6.12:
+  * (bug)[d43f96] [string trim*] broken for Emoji
+  * (bug)[22324b] [string reverse] broken for Emoji
+  * (bug)[1dab71,7c64aa] BRE broken by uninitialized value use
+  * (bug)[8419c5] Unix tty channels tolerate EINTR
+        *** POTENTIAL INCOMPATIBILITY ***
+  * (bug)[4c591f] [string compare] EIAS violation
+  * (bug)[266494] [concat foo [list #]] EIAS violation
+  * (bug)[24b918] Save IO buffers from modern optimizers
+  * (new) support for POSIX error EILSEQ
+  * (bug)[688fcc] segfault during traced delete of alias
+  * (bug)[ccc448] segfault in ensemble rewrite machinery
+  * (new) Update to Unicode-14
+  * (bug)[a8579d] failed proc argument spec processing
+  * Obsoletes tcl-aa4a13c15516da45.patch
+- Bump %itclver and ensure it stays in sync.
+
+-------------------------------------------------------------------
 Wed May  5 18:32:38 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1185662: Move tcl.macros /usr/lib/rpm/macros.d .
