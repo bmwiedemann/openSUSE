@@ -59,4 +59,18 @@
     <comment></comment>
     <requestid>886594</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>5c4ca1e6643288ecbf5781f823d4fab2</srcmd5>
+    <version>unknown</version>
+    <time>1636840122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to python 3.1.1 / jupyter 6.1.2 / jupyterlab 2.1.1
+  * Removed py2 compatibility code.
+  * Fixed issue with certain output diffs in web view.
+- Fixes CVE-2021-41134, CWE-75, CWE-80, boo#1192355
+  * Improper handling of user controlled input caused a stored
+    cross-site scripting (XSS) vulnerability. All previous versions
+    of nbdime are affected. (forwarded request 931265 from bnavigator)</comment>
+    <requestid>931266</requestid>
+  </revision>
 </revisionlist>

@@ -16,11 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define mainver 3.0.0
-%define jupver  6.1.0
-%define labver  2.1.0
+%define mainver 3.1.1
+%define jupver  6.1.2
+%define labver  2.1.1
 Name:           python-nbdime
 Version:        %{mainver}
 Release:        0
@@ -31,27 +31,25 @@ Source:         https://files.pythonhosted.org/packages/py2.py3/n/nbdime/nbdime-
 BuildRequires:  %{python_module GitPython >= 2.1.6}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module jupyter-server-mathjax >= 0.2.2}
 BuildRequires:  %{python_module jupyter-server}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
-# SECTION test requirements (including jupyter_server[test])
-BuildRequires:  %{python_module ipykernel}
+# SECTION test requirements
+BuildRequires:  %{python_module jupyter-server-test}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-tornado}
-BuildRequires:  %{python_module pytest-tornasync}
-BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       jupyter-nbdime = %{jupver}
 Requires:       python-GitPython >= 2.1.6
@@ -62,7 +60,6 @@ Requires:       python-jupyter-server
 Requires:       python-jupyter-server-mathjax >= 0.2.2
 Requires:       python-nbformat
 Requires:       python-requests
-Requires:       python-six
 Requires:       python-tornado
 Conflicts:      python-jupyter_nbdime-git < 1.0.5
 Conflicts:      python-jupyter_nbdime-hg < 1.0.5
