@@ -36,4 +36,16 @@
     <comment></comment>
     <requestid>869705</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e24552ddbbd4d9c523986f6273f92b9</srcmd5>
+    <version>0.3.1</version>
+    <time>1636840113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update o 0.3.1
+  * Drop python 3.6
+  * Add python 3.9
+  * Fix bugs with JLab 3.0
+  * Dist with prebuilt extension (forwarded request 931192 from bnavigator)</comment>
+    <requestid>931193</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 12 22:05:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update o 0.3.1
+  * Drop python 3.6
+  * Add python 3.9
+  * Fix bugs with JLab 3.0
+  * Dist with prebuilt extension
+
+-------------------------------------------------------------------
 Thu Feb  4 19:31:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.3.0

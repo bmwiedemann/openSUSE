@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-jupyterlab-templates
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Templates for notebooks in JupyterLab
 License:        Apache-2.0
-URL:            https://github.com/timkpaine/jupyterlab_templates
+URL:            https://github.com/jpmorganchase/jupyterlab_templates
 Source:         https://files.pythonhosted.org/packages/py2.py3/j/jupyterlab-templates/jupyterlab_templates-%{version}-py2.py3-none-any.whl
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
@@ -79,7 +80,8 @@ cp %{buildroot}%{python3_sitelib}/jupyterlab_templates-%{version}.dist-info/LICE
 
 %files -n jupyter-jupyterlab-templates
 %license LICENSE
-%config %{_jupyter_servextension_confdir}/jupyterlab_templates.json
-%{_jupyter_labextensions_dir}/jupyterlab_templates-%{version}.tgz
+%config %{_jupyter_server_confdir}/jupyterlab_templates.json
+%dir %{_jupyter_prefix}/labextensions
+%{_jupyter_prefix}/labextensions/jupyterlab_templates
 
 %changelog
