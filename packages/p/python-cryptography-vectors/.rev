@@ -84,4 +84,13 @@
     <comment></comment>
     <requestid>924950</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d0bb6393ab30dcfc83fd85e322767c95</srcmd5>
+    <version>3.4.8</version>
+    <time>1636840085</time>
+    <user>dimstar_suse</user>
+    <comment>- disable python2 build as python-cryptography also has it disabled,
+  this allows a python2-specific version to be injected</comment>
+    <requestid>930229</requestid>
+  </revision>
 </revisionlist>

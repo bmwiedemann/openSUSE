@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  8 19:36:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- disable python2 build as python-cryptography also has it disabled,
+  this allows a python2-specific version to be injected
+
+-------------------------------------------------------------------
 Tue Oct 12 18:49:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Downgrade to 3.4.8
