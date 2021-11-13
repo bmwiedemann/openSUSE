@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-peewee
-Version:        3.14.4
+Version:        3.14.8
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause

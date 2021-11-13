@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:29:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.8:
+  * Returning clause can still be specified for Sqlite, however it just needs
+    to be done so manually rather than having it applied automatically.
+  * Fix bug in APSW extension with Sqlite 3.35 and newer, due to handling of
+    last insert rowid with RETURNING. Refs #2479.
+  * Fix pesky bug in new `last_insert_id()` on the `SqliteExtDatabase`.
+  * Only raise `DoesNotExist` when `lazy_load` is enabled on ForeignKeyField
+  * Add missing convenience method `ModelSelect.get_or_none()`
+  * Allow `ForeignKeyField` to specify a custom `BackrefAccessorClass`
+  * Ensure foreign-key-specific conversions are applied on INSERT and UPDATE
+  * Add handling of MySQL error 4031 (inactivity timeout) to the `ReconnectMixin`
+    helper class.
+  * Support specification of conflict target for ON CONFLICT/DO NOTHING.
+  * Add `encoding` parameter to the DataSet `freeze()` and `thaw()` methods
+  * Fix bug which prevented `DeferredForeignKey` from being used as a model's
+    primary key
+  * Ensure foreign key's related object cache is cleared when the foreign-key is
+    set to `None`. 
+  * Allow specification of `(schema, table)` to be used with CREATE TABLE AS...
+  * Allow reusing open connections with DataSet
+  * Add `highlight()` and `snippet()` helpers to Sqlite `SearchField`, for use
+    with full-text search extension.
+  * Preserve user-provided aliases in column names.
+  * Add support for Sqlite 3.37 strict tables.
+  * Ensure database is inherited when using `ThreadSafeDatabaseMetadata`, and
+    also adds an implementation in `playhouse.shortcuts` along with basic unit
+    tests.
+  * Better handling of Model's dirty fields when saving, fixes #2466.
+  * Add basic support for MariaDB connector driver in `playhouse.mysql_ext`
+  * Begin a basic implementation for a psycopg3-compatible pg database
+  * Add provisional support for RETURNING when using the appropriate versions of
+    Sqlite or MariaDB.
+
+-------------------------------------------------------------------
 Mon Sep  6 13:42:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.14.4
