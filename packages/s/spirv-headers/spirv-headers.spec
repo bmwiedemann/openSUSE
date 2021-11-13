@@ -17,19 +17,20 @@
 
 
 Name:           spirv-headers
-Version:        1.5.4.g108
+Version:        1.5.5.g9
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
 
-#Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%version.tar.gz
+#Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%%version.tar.gz
 Source:         SPIRV-Headers-%version.tar.xz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  pkg-config
 
 %description
 This repository contains machine-readable files from the SPIR-V
@@ -44,18 +45,17 @@ registry. This includes:
 %autosetup -n SPIRV-Headers-%version
 
 %build
-# Because Khronos does not know what DESTDIR is.
-%cmake -DCMAKE_INSTALL_PREFIX="%buildroot/%_prefix"
+%cmake
 %cmake_build
 
 %install
-pushd build/
-make install-headers
-popd
+%cmake_install
 %fdupes %buildroot/%_prefix
 
 %files
 %_includedir/spirv/
+%_datadir/cmake/
+%_datadir/pkgconfig/*.pc
 %license LICENSE
 
 %changelog

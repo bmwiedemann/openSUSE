@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 11 19:38:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.5.5.g9 (814e728b)
+  * Add spirv-headers pkgconfig file
+  * Implement header definitions for SPV_NV_bindless_texture
+  * Add SpecConstantSubgroupMaxSize to the clspv reflection
+    non-semantic instruction set
+  * Rename ConstFunctionPointerINTEL to
+    ConstantFunctionPointerINTEL
+
+-------------------------------------------------------------------
 Mon Sep  6 05:11:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.5.4.g108 (449bc986)
