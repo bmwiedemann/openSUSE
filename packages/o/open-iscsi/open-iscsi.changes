@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 11 18:45:37 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Merged latest upstream. Mostly cleanup, but includes a fix for
+  iscsi-init.service when trying to write to the root volume too
+  early (bsc#1192568), as well as an upstream fix for possible
+  deadlock when dealing with sysfs.
+
+-------------------------------------------------------------------
 Mon Oct 25 22:43:23 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Fix the usr-merge changes (bsc#1192013). This includes catching
