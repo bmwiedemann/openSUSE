@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 05:56:34 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.47.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.47.1
+
+-------------------------------------------------------------------
 Tue Oct 19 16:24:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Pack only kubevirt-{operator,cr}.yaml into manifests

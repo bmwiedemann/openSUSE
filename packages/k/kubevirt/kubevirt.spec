@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.46.0
+Version:        0.47.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -190,7 +190,7 @@ build_tests="true" \
 	cmd/virt-operator \
 	%{nil}
 
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} GO_BUILD=true ./hack/build-manifests.sh
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} KUBEVIRT_NO_BAZEL=true GO_BUILD=true ./hack/build-manifests.sh
 
 %install
 mkdir -p %{buildroot}%{_bindir}
