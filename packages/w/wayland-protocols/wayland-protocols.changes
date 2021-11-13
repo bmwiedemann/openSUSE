@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  4 07:19:04 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch:
+  Temporarily disable the unstable xdg-decoration pedantic test on
+  ppc64 until the upstream issue is more clearly diagnosed:
+
+  https://gitlab.freedesktop.org/wayland/wayland-protocols/-/issues/48
+
+-------------------------------------------------------------------
 Wed Oct 13 08:04:58 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Run test-suite during build:
