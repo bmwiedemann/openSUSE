@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Nov 11 21:15:17 UTC 2021 - mwilck@suse.com
+
+- Update to version 1.47:
+  * sg_rep_zones: add support for REPORT ZONE DOMAINS and
+    REPORT REALMS in this utility
+  * sg_raw: fix prints of NVMe NVM command names
+  * sg_logs: additions to Volume statistics lpage [ssc5r05c]
+    - additions to Command duration limits statistics log
+      page [spc6r06]
+  * sg_vpd: fix do_hex type on some recent pages
+    - zoned block dev char vpd: add zone alignment mode and
+      zone starting LBA granularity [zbc2r11]
+  * sg_read_buffer: fix --length= problem
+  * sg_dd, sgm_dd, sgp_dd: don't close negative file descriptors
+  * sg_dd: srand48_r() and mrand48_r() are GNU libc specific,
+    put conditional in so non-reentrant version used otherwise
+    - 'iflag=00,ff' places the 32 bit block address (big endian)
+      into each block
+  * sgp_dd: major rework, fix issue with error being ignored
+    - new: --chkaddr which checks for block address in each block
+    - add check for stdatomic.h presence in configure.ac
+  * sg_xcopy: tweak CSCD identification descriptor
+  * sg_get_elem_status: fix issue with '--maxlen=' option
+    - add 2 depopulation revocation health attributes [sbc5r01]
+  * transport error handling improved. To fix report of a
+    BAD_TARGET transport error but the utility still continued.
+    - introduce SG_LIB_TRANSPORT_ERROR [35] exit status
+  * several utilities: override '--maxlen=LEN' when LEN
+    is < 16 (or 4), take default (or 4) instead
+  * scripts: 55-scsi-sg3_id.rules remove outdated rule (bsc#1189297)
+  * sg_lib: add sg_scsi_status_is_good(),
+    sg_scsi_status_is_bad() and sg_get_zone_type_str()
+  * pt_linux: fix verify(BytChk=0) which Linux SNTL translated
+    to write, other SNTL cleanups
+  * pt_linux_nvme: fix fua setting
+  * pt: check_pt_file_handle() add return value of 5 for
+    
+- _service updates:
+  * re-enable service, hadn't been used for 1.46 release
+  * use upstream author's git repository, simplify versioning scheme
+  * use obscpio format
+
+-------------------------------------------------------------------
 Tue Apr 20 09:15:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.46:
@@ -61,6 +104,10 @@ Tue Apr 20 09:15:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   * testing: remove master-slave terminology for sgv4
   * examples: add nvme_read_ctl.hex and nvme_write_ctl.hex
 
+- Earlier SUSE fixes included in 1.46: 
+  * 40-usb-blacklist.rules: use ID_SCSI_INQUIRY
+    (bsc#840054, bsc#1131482)
+ 
 -------------------------------------------------------------------
 Thu Apr 25 19:11:45 UTC 2019 - mwilck@suse.com
 

@@ -17,15 +17,14 @@
 
 
 Name:           sg3_utils
-%define lname	libsgutils2-1_46-2
-Version:        1.46
+Version:        1.47
+%global lname libsgutils2-%(echo %{version} | sed y/./_/)-2
 Release:        0
 Summary:        A collection of tools that send SCSI commands to devices
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://sg.danny.cz/sg/sg3_utils.html
-Source:         https://sg.danny.cz/sg/p/sg3_utils-%{version}.tar.xz
-#Source:         sg3_utils-%{version}.tar.xz
+Source:         sg3_utils-%{version}.tar.gz
 Source1:        dracut.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
