@@ -1,5 +1,6 @@
---- mpd-0.22.4.orig/doc/mpdconf.example	2021-01-21 19:21:20.000000000 +0300
-+++ mpd-0.22.4/doc/mpdconf.example	2021-01-23 14:43:26.000000000 +0300
+diff -Pdpru mpd-0.23.4.orig/doc/mpdconf.example mpd-0.23.4/doc/mpdconf.example
+--- mpd-0.23.4.orig/doc/mpdconf.example	2021-11-11 12:16:36.000000000 +0300
++++ mpd-0.23.4/doc/mpdconf.example	2021-11-13 01:39:07.843410617 +0300
 @@ -17,7 +17,7 @@
  # playlist files not created by the server but only if they are in the MPD
  # format. This setting defaults to playlist saving being disabled.
@@ -15,23 +16,25 @@
  #
 -#db_file			"~/.mpd/database"
 +#db_file			"/var/lib/mpd/mpd.db"
- #
+ 
  # These settings are the locations for the daemon log files for the daemon.
- # These logs are great for troubleshooting, depending on your log_level
-@@ -34,25 +34,25 @@
- # The special value "syslog" makes MPD use the local syslog daemon. This
- # setting defaults to logging to syslog.
+ #
+@@ -35,7 +35,7 @@
+ # If you use systemd, do not configure a log_file.  With systemd, MPD
+ # defaults to the systemd journal, which is fine.
  #
 -#log_file			"~/.mpd/log"
-+log_file			"/var/log/mpd.log"
- #
++#log_file			"/var/log/mpd.log"
+ 
  # This setting sets the location of the file which stores the process ID
  # for use of mpd --kill and some init scripts. This setting is disabled by
- # default and the pid file will not be stored.
+@@ -43,19 +43,19 @@
+ #
+ # If you use systemd, do not configure a pid_file.
  #
 -#pid_file			"~/.mpd/pid"
-+pid_file			"/run/mpd/mpd.pid"
- #
++#pid_file			"/run/mpd/mpd.pid"
+ 
  # This setting sets the location of the file which contains information about
  # most variables to get MPD back into the same general shape it was in before
  # it was brought down. This setting is disabled by default and the server
@@ -48,7 +51,7 @@
  #
  ###############################################################################
  
-@@ -64,14 +64,14 @@
+@@ -67,14 +67,14 @@
  # initialization. This setting is disabled by default and MPD is run as the
  # current user.
  #
@@ -65,7 +68,7 @@
  #
  # This setting sets the address for the daemon to listen on. Careful attention
  # should be paid if this is assigned to anything other than the default, any.
-@@ -82,7 +82,7 @@
+@@ -85,7 +85,7 @@
  #bind_to_address		"any"
  #
  # And for Unix Socket
@@ -74,7 +77,7 @@
  #
  # This setting is the TCP port that is desired for the daemon to get assigned
  # to.
-@@ -93,7 +93,7 @@
+@@ -96,7 +96,7 @@
  # troubleshooting. Available setting arguments are "notice", "info", "verbose",
  # "warning" and "error".
  #
@@ -83,7 +86,7 @@
  #
  # Setting "restore_paused" to "yes" puts MPD into pause mode instead
  # of starting playback after startup.
-@@ -117,7 +117,7 @@
+@@ -120,7 +120,7 @@
  # This setting enables automatic update of MPD's database when files in
  # music_directory are changed.
  #
@@ -92,7 +95,7 @@
  #
  # Limit the depth of the directories being watched, 0 means only watch
  # the music directory itself.  There is no limit by default.
-@@ -147,7 +147,7 @@
+@@ -150,7 +150,7 @@
  # If this setting is set to "yes", service information will be published with
  # Zeroconf / Avahi.
  #
@@ -101,7 +104,7 @@
  #
  # The argument to this setting will be the Zeroconf / Avahi unique name for
  # this MPD server on the network. %h will be replaced with the hostname.
-@@ -214,8 +214,9 @@ input {
+@@ -217,8 +217,9 @@ input {
  #
  #audio_output {
  #	type		"alsa"
@@ -109,11 +112,17 @@
 -##	device		"hw:0,0"	# optional
 +#	name		"ALSA Device"
 +##	device	"plug:plugequal"	# optional
-+##	mixer_control	"Master"		# optional
++## mixer_control	"Master"		# optional
  ##	mixer_type      "hardware"	# optional
  ##	mixer_device	"default"	# optional
  ##	mixer_control	"PCM"		# optional
-@@ -243,9 +244,9 @@ input {
+@@ -241,14 +242,14 @@ input {
+ #audio_output {
+ #	type		"shout"
+ #	encoder		"vorbis"		# optional
+-#	name		"My Shout Stream"
++#	name		"Shout Stream"
+ #	host		"localhost"
  #	port		"8000"
  #	mount		"/mpd.ogg"
  #	password	"hackme"
@@ -126,16 +135,16 @@
  ##	protocol	"icecast2"		# optional
  ##	user		"source"		# optional
  ##	description	"My Stream Description"	# optional
-@@ -263,34 +264,34 @@ input {
+@@ -266,34 +267,34 @@ input {
  #	name		"My recorder"
  #	encoder		"vorbis"		# optional, vorbis or lame
  #	path		"/var/lib/mpd/recorder/mpd.ogg"
 -##	quality		"5.0"			# do not define if bitrate is defined
 -#	bitrate		"128"			# do not define if quality is defined
 -#	format		"44100:16:1"
-+#	quality		"6.0"			# do not define if bitrate is defined
-+##	bitrate		"192"			# do not define if quality is defined
-+##	format		"48000:16:2"	#optional
++##	quality		"6.0"			# do not define if bitrate is defined
++#	bitrate		"192"			# do not define if quality is defined
++#	format		"48000:16:2"
  #}
  #
  # An example of a httpd output (built-in HTTP streaming server):
@@ -147,16 +156,14 @@
 +#	name		"HTTP Stream"
 +#	encoder	"vorbis"		# optional, vorbis or lame
  #	port		"8000"
--#	bind_to_address	"0.0.0.0"		# optional, IPv4 or IPv6
+ #	bind_to_address	"0.0.0.0"		# optional, IPv4 or IPv6
 -##	quality		"5.0"			# do not define if bitrate is defined
 -#	bitrate		"128"			# do not define if quality is defined
 -#	format		"44100:16:1"
--#	max_clients	"0"			# optional 0=no limit
-+#	bind_to_address	"0.0.0.0"	# optional, IPv4 or IPv6
-+#	quality		"6.0"			# do not define if bitrate is defined
-+##	bitrate		"192"			# do not define if quality is defined
-+##	format		"48000:16:2"	#optional
-+##	max_clients	"0"			# optional 0=no limit
++##	quality		"6.0"			# do not define if bitrate is defined
++#	bitrate		"192"			# do not define if quality is defined
++#	format		"48000:16:2"
+ #	max_clients	"0"			# optional 0=no limit
  #}
  #
  # An example of a pulseaudio output (streaming to a remote pulseaudio server)
@@ -175,16 +182,16 @@
  #
  # An example of a winmm output (Windows multimedia API).
  #
-@@ -352,7 +353,7 @@ input {
+@@ -355,7 +356,7 @@ input {
  #	command		"AudioCompress -m | aplay -f cd 2>/dev/null"
  ## Or to send raw PCM stream through PCM:
  #	command		"nc example.org 8765"
 -#	format		"44100:16:2"
-+##	format		"48000:16:2"	# optional
++#	format		"48000:16:2"
  #}
  #
  ## An example of a null output (for no audio output):
-@@ -410,6 +411,6 @@ input {
+@@ -413,6 +414,6 @@ input {
  # If file or directory names do not display correctly for your locale then you
  # may need to modify this setting.
  #

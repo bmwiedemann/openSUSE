@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.23.3
+Version:        0.23.4
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -32,8 +32,7 @@ Source3:        %{name}-user.conf
 Source4:        %{name}.firewalld
 Source5:        %{name}.tmpfiles.d
 Patch0:         %{name}-conf.patch
-Patch1:         %{name}-service.patch
-Patch2:         %{name}-sndfile.patch
+Patch1:         %{name}-sndfile.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

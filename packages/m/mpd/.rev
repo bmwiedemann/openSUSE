@@ -536,4 +536,23 @@
       and &quot;Location&quot;</comment>
     <requestid>929891</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b982b48207a6895a6b4f4b5db723c6b1</srcmd5>
+    <version>0.23.4</version>
+    <time>1636840117</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.4
+  * Changed file mpd-user.conf​ (disabled pid_file).
+  * Refreshed patch mpd-conf.patch.
+  * Removed patch mpd-service.patch.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.4/NEWS
+  * protocol: add optional position parameter to &quot;searchaddpl&quot;
+  * decoder: ffmpeg: support libavcodec 59
+  * output: alsa: add option &quot;thesycon_dsd_workaround&quot; to work around device bug
+  * fix crash on debug builds if startup fails
+  * systemd:
+    * remove &quot;RuntimeDirectory&quot; directive because it caused problems
+    * ignore the &quot;pid_file&quot; setting if started as systemd service</comment>
+    <requestid>931211</requestid>
+  </revision>
 </revisionlist>

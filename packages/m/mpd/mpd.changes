@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 12 23:12:23 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 0.23.4
+  * Changed file mpd-user.conf​ (disabled pid_file).
+  * Refreshed patch mpd-conf.patch.
+  * Removed patch mpd-service.patch.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.4/NEWS
+  * protocol: add optional position parameter to "searchaddpl"
+  * decoder: ffmpeg: support libavcodec 59
+  * output: alsa: add option "thesycon_dsd_workaround" to work around device bug
+  * fix crash on debug builds if startup fails
+  * systemd:
+    * remove "RuntimeDirectory" directive because it caused problems
+    * ignore the "pid_file" setting if started as systemd service
+
+-------------------------------------------------------------------
 Sat Nov  6 02:02:33 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.23.3
