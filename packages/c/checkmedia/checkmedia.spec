@@ -1,7 +1,7 @@
 #
 # spec file for package checkmedia
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 Version:        6.1
 Release:        0
-Url:            https://github.com/openSUSE/checkmedia
+URL:            https://github.com/openSUSE/checkmedia
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gpg
 BuildRequires:  xz
@@ -76,7 +76,7 @@ install -d -m 755 %{buildroot}/usr/bin
 %{_libdir}/*.so.*
 %doc README.adoc
 %doc mediacheck.md
-%if %suse_version >= 1500
+%if 0%{?suse_version} >= 1500
 %license COPYING
 %else
 %doc COPYING

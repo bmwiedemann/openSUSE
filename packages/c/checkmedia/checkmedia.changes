@@ -1,8 +1,14 @@
+-------------------------------------------------------------------
+Tue Nov  9 13:24:34 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- minor spec file adjustments
+
 --------------------------------------------------------------------
 Fri Oct 8 15:15:57 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#16
 - fix auto-detecting a suitable signature location for rh media
+  (jsc#SCL-6)
 - 6.1
 
 --------------------------------------------------------------------

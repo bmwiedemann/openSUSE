@@ -268,4 +268,14 @@
     <comment>submitted by snwint via jenkins</comment>
     <requestid>924254</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>60c622411eea6d2eccc885b0b2ba3e47</srcmd5>
+    <version>6.1</version>
+    <time>1636840085</time>
+    <user>dimstar_suse</user>
+    <comment>
+- minor spec file adjustments
+  (jsc#SCL-6)</comment>
+    <requestid>930458</requestid>
+  </revision>
 </revisionlist>
