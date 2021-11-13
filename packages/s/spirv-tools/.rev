@@ -218,4 +218,12 @@ join Staging:E</comment>
     <comment>- Update to release 2021.3</comment>
     <requestid>917058</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f17194be5ae7341dbd2b3cd55679ca7e</srcmd5>
+    <version>2021.4</version>
+    <time>1636840099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.4</comment>
+    <requestid>930983</requestid>
+  </revision>
 </revisionlist>

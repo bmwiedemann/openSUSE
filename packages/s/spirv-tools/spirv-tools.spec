@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-suse22
+%define lname libSPIRV-Tools-suse23
 
 Name:           spirv-tools
-Version:        2021.3
+Version:        2021.4
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.5.4.g106
+BuildRequires:  spirv-headers >= 1.5.5.g9
 
 %description
 The package includes an assembler, binary module parser,
