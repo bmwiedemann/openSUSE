@@ -55,7 +55,9 @@ Patch4:         https://patch-diff.githubusercontent.com/raw/PackageKit/PackageK
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch5:         PackageKit-fix-crash-pre-dbus.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-crash-with-empty-search-string.patch gh#hughsie/PackageKit/commit#21ccf49, bsc#1179287 sckang@suse.com -- zypp: Fix crash when search string is NULL
-Patch12:        PackageKit-zypp-fix-crash-with-empty-search-string.patch
+Patch6:         PackageKit-zypp-fix-crash-with-empty-search-string.patch
+# PATCH-FIX-SLE PackageKit-zypp-c++17.patch gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349 sckang@suse.com -- Fix build failure when building with libzypp > 17.28.5 and gcc < 11.
+Patch1000:      PackageKit-zypp-c++17.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -270,7 +272,11 @@ This package provides the upstream default configuration for PackageKit.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 1000
+%if 0%{?sle_version} > 150300 && 0%{?sle_version} < 160000
+%patch1000 -p1
+%endif
 
 %build
 %meson \
