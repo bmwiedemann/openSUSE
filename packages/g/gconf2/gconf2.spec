@@ -1,7 +1,7 @@
 #
 # spec file for package gconf2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ BuildRequires:  libxml2-devel
 BuildRequires:  polkit-devel
 # for 2to3
 BuildRequires:  python3-tools
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 # gconf-sanity-check was dropped by upstream in GConf 3.2.6
 Obsoletes:      gconf-sanity-check < %{version}
@@ -94,7 +93,6 @@ to develop applications that require these.
 
 %prep
 %setup -q -n %{_name}-%{version}
-translation-update-upstream
 %patch2
 %patch3
 %patch4
