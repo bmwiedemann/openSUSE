@@ -1,7 +1,7 @@
 #
 # spec file for package libgtop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source99:       baselibs.conf
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.26.0
 BuildRequires:  pkgconfig(xau)
 
@@ -103,8 +102,6 @@ from /dev/kmem.
 
 %prep
 %setup -q
-translation-update-upstream po libgtop
-# rpmlint note: libgtop has a separate translation for both Bengali and Bengali India
 
 %build
 %configure\
@@ -118,6 +115,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libgtop-2_0-%{sover} -p /sbin/ldconfig
 %postun -n libgtop-2_0-%{sover} -p /sbin/ldconfig
+
 %preun doc
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}2.info.gz
 
