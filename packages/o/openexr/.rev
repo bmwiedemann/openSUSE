@@ -675,4 +675,27 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   * openexr-fix-armv7-2.patch (forwarded request 917760 from Guillaume_G)</comment>
     <requestid>917761</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8f2973eba534b4b941a65ea7324a0968</srcmd5>
+    <version>3.1.3</version>
+    <time>1636931172</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.1.3
+  Patch release with a change to default zip compression level:
+  * Default zip compression level is now 4 (instead of 6), which in our
+    tests improves compression times by 2x with only a tiny drop in
+    compression ratio.
+  * ``setDefaultZipCompression()`` and ``setDefaultDwaCompression()``
+    now set default compression levels for writing.
+  * The Header how has ``zipCompressionLevel()`` and
+    ``dwaCompressionLevel()`` to return the levels used for writing.
+  Also, various bug fixes, build improvements, and documentation
+  updates. In particular:
+  * Fixes a build failure with Imath prior to v3.1
+  * Fixes a bug in detecting invalid chromaticity values
+- deleted patches
+  - openexr-fix-armv7-2.patch (upstreamed)
+  - openexr-fix-armv7.patch (upstreamed)</comment>
+    <requestid>930805</requestid>
+  </revision>
 </revisionlist>
