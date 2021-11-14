@@ -273,4 +273,12 @@ BUG FIXES:
     <comment></comment>
     <requestid>925093</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>67705c003007e3410af458820951b045</srcmd5>
+    <version>4.3.8</version>
+    <time>1636931206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931295</requestid>
+  </revision>
 </revisionlist>

@@ -38,7 +38,7 @@ RestrictSUIDSGID=yes
 DevicePolicy=closed
 MemoryDenyWriteExecute=yes
 SystemCallArchitectures=native
-SystemCallFilter=~ @clock @cpu-emulation @debug @keyring @module @mount @raw-io @reboot @swap @obsolete @chown @privileged @resources @pkey @setuid
+SystemCallFilter=~ @clock @cpu-emulation @debug @keyring @module @mount @raw-io @reboot @swap @obsolete @resources @pkey
 
 [Install]
 WantedBy=multi-user.target

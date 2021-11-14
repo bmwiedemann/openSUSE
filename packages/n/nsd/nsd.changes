@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 13 18:17:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- adjusted SystemCallFilter= in nsd.service
+
+-------------------------------------------------------------------
 Wed Oct 13 12:45:45 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - set RestrictAddressFamilies= in nsd.service
