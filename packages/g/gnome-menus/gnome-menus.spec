@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-menus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source99:       baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.29.15
 Requires:       %{name}-branding = %{version}
@@ -101,7 +100,6 @@ http://www.freedesktop.org/Standards/menu-spec
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

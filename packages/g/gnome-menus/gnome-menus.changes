@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:39:21 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Mar 11 13:44:47 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.36.0:
