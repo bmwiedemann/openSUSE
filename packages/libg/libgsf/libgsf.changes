@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:59:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Thu Apr 16 11:16:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.14.47:

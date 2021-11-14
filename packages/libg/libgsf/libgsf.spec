@@ -1,7 +1,7 @@
 #
 # spec file for package libgsf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source99:       baselibs.conf
 BuildRequires:  intltool
 BuildRequires:  libbz2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0
@@ -97,7 +96,6 @@ with structured file formats.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure --disable-static \
