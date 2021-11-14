@@ -38,7 +38,6 @@ BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  openssh
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(avahi-client) >= 0.6
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
@@ -159,7 +158,6 @@ gvfs plugins.
 
 %prep
 %setup -q
-translation-update-upstream po %{name}
 
 %if 0%{?sle_version}
 %patch1000 -p1
