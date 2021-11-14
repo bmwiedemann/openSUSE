@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 10 09:03:23 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Bump soname to 1_2-1 reflecting real the library version. Obsolete
+  packages had the mismatched version number.
+
+-------------------------------------------------------------------
 Mon Sep 20 11:27:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.0:

@@ -17,7 +17,7 @@
 
 
 # When bumping soname, do not forget to bump in baselibs.conf too.
-%define soname 1_2-0
+%define soname 1_2-1
 %define sover 1.2
 
 Name:           gupnp
@@ -54,6 +54,8 @@ libraries utilizing the GUPnP framework.
 %package -n libgupnp-%{soname}
 Summary:        Implementation of the UPnP specification
 Group:          Development/Libraries/C and C++
+# libgupnp-1.2.so.1 was wrongly shipped for a while in libgupnp-1_2-0
+Obsoletes:      libgupnp-1_2-0
 
 %description -n libgupnp-%{soname}
 GUPnP implements the UPnP specification: resource announcement and
