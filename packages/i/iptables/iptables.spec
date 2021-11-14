@@ -16,11 +16,17 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           iptables
 Version:        1.8.7
 Release:        0
 Summary:        IP packet filter administration utilities
-License:        GPL-2.0-only AND Artistic-2.0
+License:        Artistic-2.0 AND GPL-2.0-only
 Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/iptables/
 #Git-Clone:     git://git.netfilter.org/iptables
@@ -43,8 +49,13 @@ BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
 BuildRequires:  pkgconfig(libnftnl) >= 1.1.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%endif
 # During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,
 # iptables-restore-translate and iptables-translate were moved from iptables-nft subpackage
 # (now iptables-backend-nft) to the main package so we need to add a conflict here otherwise
@@ -59,10 +70,15 @@ the various Netfilter packet filter engines inside the Linux kernel.
 Summary:        Metapackage to make nft the default backend for iptables/arptables/ebtables
 Group:          Productivity/Networking/Security
 Requires:       iptables >= 1.8.0
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       iptables-nft = %{version}-%{release}
-Obsoletes:      iptables-nft < %{version}-%{release}
+Requires(postun):update-alternatives
+%endif
+Provides:       iptables-nft = %version-%release
+Obsoletes:      iptables-nft < %version-%release
 
 %description backend-nft
 Installation of this package adds higher priority alternatives (cf.
@@ -166,7 +182,7 @@ rm -f extensions/libipt_unclean.man
 # includedir is overriden on purpose to detect projects that
 # fail to include libxtables_CFLAGS
 %configure --includedir="%_includedir/%name" --enable-libipq
-make %{?_smp_mflags} V=1
+%make_build V=1
 
 %install
 %make_install
@@ -176,16 +192,68 @@ rm -f "$b/%_libdir/"libiptc.so*
 # iptables-apply is not installed by upstream Makefile
 install -m0755 iptables/iptables-apply "$b/%_sbindir/"
 rm -f "$b/%_libdir"/*.la
-rm -f "$b/%_sysconfdir/ethertypes" # -> netcfg
+rm -f "$b/%_sysconfdir/ethertypes" # provided by netcfg
 
 for i in iptables iptables-restore iptables-save ip6tables ip6tables-restore \
     ip6tables-save arptables arptables-restore arptables-save ebtables \
     ebtables-restore ebtables-save; do
-	ln -fsv "/etc/alternatives/$i" "$b/%_sbindir/$i"
+%if ! %{with libalternatives}
+	ln -fsv "%_sysconfdir/alternatives/$i" "$b/%_sbindir/$i"
+%else
+	ln -fsv %_bindir/alts "$b/%_sbindir/$i"
+%endif
 done
+
 %if 0%{?suse_version}
 %fdupes %buildroot/%_prefix
 %endif
+
+%if %{with libalternatives}
+mkdir -pv "$b/%_datadir/libalternatives/iptables"
+cat >"$b/%_datadir/libalternatives/iptables/1.conf" <<-EOF
+	binary=%_sbindir/xtables-legacy-multi
+	group=iptables, ip6tables, ip6tables-restore, ip6tables-save, iptables-restore, iptables-save
+	options=KeepArgv0
+EOF
+cat >"$b/%_datadir/libalternatives/iptables/2.conf" <<-EOF
+	binary=%_sbindir/xtables-nft-multi
+	group=iptables, ip6tables, ip6tables-restore, ip6tables-save, iptables-restore, iptables-save
+	options=KeepArgv0
+EOF
+for i in ip6tables ip6tables-restore ip6tables-save iptables-restore iptables-save; do
+	mkdir -pv "$b/%_datadir/libalternatives/$i"
+	cp -av "$b/%_datadir/libalternatives/iptables/"*.conf "$b/%_datadir/libalternatives/$i/"
+done
+
+mkdir -pv $b/%_datadir/libalternatives/arptables
+cat >"$b/%_datadir/libalternatives/arptables/2.conf" <<-EOF
+	binary=%_sbindir/xtables-nft-multi
+	group=arptables, arptables-restore, arptables-save
+EOF
+for i in arptables-restore arptables-save; do
+	mkdir -pv "$b/%_datadir/libalternatives/$i"
+	cp -av "$b/%_datadir/libalternatives/arptables/2.conf" "$b/%_datadir/libalternatives/$i/"
+done
+
+mkdir -p "$b/%_datadir/libalternatives/ebtables"
+cat >"$b/%_datadir/libalternatives/ebtables/2.conf" <<-EOF
+	binary=%_sbindir/xtables-nft-multi
+	group=ebtables, ebtables-restore, ebtables-save
+EOF
+for i in ebtables-restore ebtables-save; do
+	mkdir -pv "$b/%_datadir/libalternatives/$i"
+	cp -av "$b/%_datadir/libalternatives/ebtables/2.conf" "$b/%_datadir/libalternatives/$i/"
+done
+
+%endif
+
+%if %{with libalternatives}
+%pre
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f "%_sbindir/update-alternatives" ]; then
+         update-alternatives --remove iptables "%_sbindir/xtables-legacy-multi"
+fi
+%else
 
 %post
 update-alternatives \
@@ -200,6 +268,17 @@ update-alternatives \
 if test "$1" = 0; then
 	update-alternatives --remove iptables "%_sbindir/xtables-legacy-multi"
 fi
+%endif
+
+%if %{with libalternatives}
+%pre backend-nft
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f "%_sbindir/update-alternatives" ]; then
+	update-alternatives --remove iptables "%_sbindir/xtables-nft-multi"
+	update-alternatives --remove arptables "%_sbindir/xtables-nft-multi"
+	update-alternatives --remove ebtables "%_sbindir/xtables-nft-multi"
+fi
+%else
 
 %post backend-nft
 update-alternatives \
@@ -222,6 +301,7 @@ if test "$1" = 0; then
 	update-alternatives --remove arptables "%_sbindir/xtables-nft-multi"
 	update-alternatives --remove ebtables "%_sbindir/xtables-nft-multi"
 fi
+%endif
 
 %post   -n libipq0 -p /sbin/ldconfig
 %postun -n libipq0 -p /sbin/ldconfig
@@ -249,12 +329,16 @@ fi
 %_mandir/man1/*tables*
 %_mandir/man8/*tables*
 # backend-legacy (implicit)
+%if ! %{with libalternatives}
 %ghost %_sysconfdir/alternatives/iptables
 %ghost %_sysconfdir/alternatives/iptables-restore
 %ghost %_sysconfdir/alternatives/iptables-save
 %ghost %_sysconfdir/alternatives/ip6tables
 %ghost %_sysconfdir/alternatives/ip6tables-restore
 %ghost %_sysconfdir/alternatives/ip6tables-save
+%else
+%_datadir/libalternatives/
+%endif
 %_sbindir/iptables
 %_sbindir/iptables-restore
 %_sbindir/iptables-save
@@ -263,6 +347,7 @@ fi
 %_sbindir/ip6tables-save
 
 %files backend-nft
+%if ! %{with libalternatives}
 %ghost %_sysconfdir/alternatives/iptables
 %ghost %_sysconfdir/alternatives/iptables-restore
 %ghost %_sysconfdir/alternatives/iptables-save
@@ -275,6 +360,9 @@ fi
 %ghost %_sysconfdir/alternatives/ebtables
 %ghost %_sysconfdir/alternatives/ebtables-restore
 %ghost %_sysconfdir/alternatives/ebtables-save
+%else
+%_datadir/libalternatives/
+%endif
 %_sbindir/iptables
 %_sbindir/iptables-restore
 %_sbindir/iptables-save
