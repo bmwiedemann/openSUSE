@@ -114,7 +114,8 @@ Requires:       gdk-pixbuf-loader-rsvg
 Requires:       gstreamer-plugin-pipewire
 # "System settings" menu item
 Requires:       gnome-control-center
-Requires:       gnome-session
+Requires:       (gnome-session or budgie-desktop)
+Suggests:       gnome-session
 # For a GSettings schema and power system icon
 Requires:       gnome-settings-daemon
 # "High Contrast" in accessibility status icon

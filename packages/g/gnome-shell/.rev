@@ -1862,4 +1862,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>New stable release (forwarded request 929561 from iznogood)</comment>
     <requestid>929607</requestid>
   </revision>
+  <revision rev="210" vrev="2">
+    <srcmd5>d605e88ddd36c94e4416c50cf109ca5d</srcmd5>
+    <version>41.1</version>
+    <time>1636931171</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using a boolean dependency Requires for gnome-session
+  to allow Budgie-only installation (forwarded request 930487 from gmbr3)</comment>
+    <requestid>930498</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  5 09:08:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using a boolean dependency Requires for gnome-session
+  to allow Budgie-only installation
+
+-------------------------------------------------------------------
 Fri Nov  5 07:36:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
