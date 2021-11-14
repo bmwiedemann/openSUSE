@@ -32,7 +32,6 @@ BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
@@ -89,8 +88,6 @@ to develop applications that require these.
 
 %prep
 %autosetup -p1
-translation-update-upstream po libwnck
-# rpmlint note: libwnck has a separate translation for both Bengali and Bengali India
 
 %build
 %meson \
