@@ -142,6 +142,11 @@ Requires:       zypper
 %if 0%{?sle_version}
 Recommends:     SUSEConnect
 Recommends:     rollback-helper
+# SLES users expect all FS tools to be installed
+# bsc#1095916
+Recommends:     e2fsprogs
+Recommends:     btrfsprogs
+Recommends:     xfsprogs
 %endif
 # Support multiversion(kernel) (jsc#SLE-10162)
 Requires:       purge-kernels-service
@@ -203,9 +208,11 @@ This is the base runtime system.  It contains only a basic multiuser booting sys
 Summary:        A very basic desktop (previously part of x11 pattern)
 Group:          Metapackages
 Provides:       pattern() = basic_desktop
-Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 1802
+%if 0%{?is_opensuse}
+Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-visible()
+%endif
 Requires:       pattern() = x11
 
 # choose icewm-default if you have a choice
@@ -318,9 +325,11 @@ Provides:       pattern-visible()
 %obsolete_legacy_pattern enhanced_base
 Requires:       pattern() = base
 Recommends:     pattern() = apparmor
+%if 0%{?is_opensuse}
 Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
 Recommends:     pattern() = yast2_basis
+%endif
 
 Requires:       openssh
 Recommends:     aaa_base-extras
@@ -785,8 +794,8 @@ Requires:       pattern() = base
 %if 0%{?is_opensuse}
 Recommends:     pattern() = x11_enhanced
 %else
-# Upgrade path for SLE 15 SP1 and older
-Recommends:     pattern() = basic_desktop
+# Requires to be safe on upgrade path for SLE
+Requires:       pattern() = basic_desktop
 %endif
 
 Requires:       xorg-x11-fonts-core
@@ -838,6 +847,12 @@ Requires:       pattern() = fonts
 Requires:       pattern() = x11
 Recommends:     pattern() = x11_yast
 Recommends:     pattern() = yast2_desktop
+# For SLE-15-SPX - install basis and server here to keep behavior functionally the same
+# Jump / Leap can follow the same setup as Tumbleweed
+%if !0%{?is_opensuse}
+Recommends:     pattern() = yast2_basis
+Recommends:     pattern() = yast2_server
+%endif
 
 # 1057377
 Requires:       glibc-locale

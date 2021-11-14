@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  9 10:44:13 UTC 2021 - Guilherme Moro <gmoro@suse.com>
+
+- Add filesystem tools to base for SLE  (bsc#1095916)
+
+-------------------------------------------------------------------
+Mon Nov  8 15:03:51 UTC 2021 - Guilherme Moro <gmoro@suse.com>
+
+- Use the correct icon for "A very basic desktop" pattern on Leap
+  for SLE don't show the pattern at all but require it from
+  x11 (bsc#1171725)
+
+-------------------------------------------------------------------
+Mon Nov  8 14:09:42 UTC 2021 - Guilherme Moro <gmoro@suse.com>
+
+- Further handling for yast2 patterns split (boo#1159875)
+- Handle also SLE specific changes
+
+-------------------------------------------------------------------
 Wed Nov  3 12:49:19 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - remove glibc-locale-base from enhanced_base, already recommended in base
