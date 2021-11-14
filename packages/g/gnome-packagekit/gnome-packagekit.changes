@@ -6,6 +6,12 @@ Thu Sep 16 01:46:52 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
   (glgo#GNOME/gnome-packagekit!3, bsc#1190330).
 
 -------------------------------------------------------------------
+Thu Sep 16 01:39:52 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri May 14 19:32:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Normalize used patch tags.

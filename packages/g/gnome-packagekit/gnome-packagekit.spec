@@ -53,7 +53,6 @@ BuildRequires:  gettext-devel
 BuildRequires:  gnome-menus-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-1)
@@ -94,7 +93,6 @@ YaST Software Management.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson
