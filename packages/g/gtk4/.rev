@@ -380,4 +380,12 @@
     <comment>- Fix a syntax error in the gtk4_immodule_postun RPM macro (forwarded request 922847 from ftake)</comment>
     <requestid>923220</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c3d6f296ab2adcd4cadbfa359c6adad2</srcmd5>
+    <version>4.4.1</version>
+    <time>1636931205</time>
+    <user>dimstar_suse</user>
+    <comment>New release++</comment>
+    <requestid>931264</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -32,8 +32,10 @@ URL:            https://www.gtk.org/
 Source:         https://download.gnome.org/sources/gtk/4.4/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
-Source98:       gtk4-rpmlintrc
-Source99:       baselibs.conf
+Source99:       gtk4-rpmlintrc
+
+# PATCH-FIX-UPSTREAM  gtk4-fix-link-to-g_signal_emit.patch glgo#GNOME/gtk!4108 yfjiang@suse.com -- Fix link to g_signal_emit() in doc
+Patch0:         gtk4-fix-link-to-g_signal_emit.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
@@ -49,7 +51,8 @@ BuildRequires:  gettext-tools >= 0.19.7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
-BuildRequires:  sassc
+# sassc is ONLY needed when building gitcheckouts, and not when using tarball releases
+#BuildRequires:  sassc
 BuildRequires:  vulkan-devel
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
@@ -61,6 +64,7 @@ BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.65.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
@@ -69,12 +73,13 @@ BuildRequires:  pkgconfig(graphene-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.9.1
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
 BuildRequires:  pkgconfig(gstreamer-player-1.0)
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(pango) >= 1.47.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(rest-0.7)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
@@ -183,6 +188,14 @@ ranging from small one-off projects to complete application suites.
 This package provides the upstream theme configuration for widgets and
 icon themes.
 
+%package docs
+Summary:        Developer documentation for GTK
+BuildArch:      noarch
+
+%description docs
+This package contains developer documentation for version 4 of the GTK
+widget toolkit.
+
 %package devel
 Summary:        Development files for the GTK+ toolkit library v4
 Group:          Development/Libraries/X11
@@ -216,17 +229,17 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 %build
 %meson \
 	-Dbuild-tests=false \
-	-Ddocumentation=true \
+	-Dgtk_doc=true \
 	-Dbroadway-backend=true \
 	-Dcloudproviders=enabled \
 	-Dcolord=enabled \
-	-Dprint-backends=all \
+	-Dprint-cups=enabled \
 	-Dvulkan=enabled \
 	-Dwayland-backend=true \
 	-Dx11-backend=true \
-	-Dxinerama=enabled \
 	-Dintrospection=enabled \
 	-Dman-pages=true \
+	-Dtracker=enabled \
 	%{nil}
 %meson_build
 
@@ -308,11 +321,15 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %files branding-upstream
 %{_datadir}/gtk-4.0/settings.ini
 
+%files docs
+%{_datadir}/doc/gdk4/
+%{_datadir}/doc/gdk4-wayland/
+%{_datadir}/doc/gdk4-x11/
+%{_datadir}/doc/gsk4/
+%{_datadir}/doc/gtk4/
+
 %files devel
 %doc CONTRIBUTING.md
-#doc #{_datadir}/gtk-doc/html/gdk4/
-#doc #{_datadir}/gtk-doc/html/gsk4/
-#doc #{_datadir}/gtk-doc/html/gtk4/
 %{_bindir}/gtk4-demo
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-widget-factory

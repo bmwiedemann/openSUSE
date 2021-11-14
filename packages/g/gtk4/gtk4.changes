@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Nov 13 14:52:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop baselibs.conf, there should not be any consumers of 32bit
+  for this rather new package, so lets not build for the past.
+
+-------------------------------------------------------------------
+Thu Nov 11 02:42:53 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gtk4-fix-link-to-g_signal_emit.patch: fix build failure
+  caused by inproper link to g_signal_emit.
+
+-------------------------------------------------------------------
+Thu Nov  4 20:37:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable sassc BuildRequires, only needed when building from git.
+- Add pkgconfig(gi-docgen) and  pkgconfig(iso-codes) BuildRequires
+  and pass gtk_doc=true to meson instead of documentation=true
+  following upstream changes. Also split develdocumentation out
+  into it's own sub-package.
+- Drop pkgconfig(json-glib-1.0) BuildRequires, not needed nor used.
+- Replace option print-backends=all with print-cups=enabled
+  following upstream changes.
+- Stop passing xinerama=enabled to meson, not needed nor used.
+- Add pkgconfig(tracker-sparql-3.0) BuildRequires and pass
+  tracker=enabled to meson, build with tracker support.
+
+-------------------------------------------------------------------
+Mon Nov  1 15:21:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.1:
+  + input:
+    - Fix compose data on bigendian systems
+    - Accept long replacement strings for compose sequences
+  + a11y:
+    - Fix accessible relations for menu buttons
+    - Fix accessible descriptions in some cases
+    - Simplify atspi context a bit
+  + GtkTextView:
+    - Fix applying css properties such as letterspacing, line
+      decoration, font features, etc
+    - Improve grouping for undo
+    - Invalidate Pango contexts when font settings change
+    - Fix a crash
+  + Theme: Improve styling for toggle buttons in toolbars
+  + gsk: Avoid coordinate overflow with big text selections
+  + GtkFileChooser: Fix handling of choices
+  + GtkStackSwitcher: Expand child buttons
+  + GtkCalendar: Fix day names for weeks that start on monday
+  + GtkWindow: Prefer menubars when handling F10
+  + GtkFontButton: Make sure the dialog is on the same display
+  + X11: Fix handling of randr events
+  + build: Fix detection of pre-compiled css files
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct  3 08:58:01 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Fix a syntax error in the gtk4_immodule_postun RPM macro
