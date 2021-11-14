@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:40:38 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sun Aug 15 03:14:36 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add gnome-session-s390-not-require-g-s-d_wacom.patch: Remove the

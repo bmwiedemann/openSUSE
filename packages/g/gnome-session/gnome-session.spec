@@ -37,7 +37,6 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.76
 BuildRequires:  pkgconfig(egl)
@@ -111,7 +110,6 @@ functional GNOME desktop.
 %ifarch s390 s390x
 %patch2 -p1
 %endif
-translation-update-upstream po gnome-session-3.0
 
 %build
 %meson \
