@@ -35,7 +35,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -93,7 +92,6 @@ applications that want to make use of libgnomekbd.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:58:47 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Tue Jun  1 17:24:30 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Add libgnomekbd_avoid_implicit_definition.patch: Add string.h into
