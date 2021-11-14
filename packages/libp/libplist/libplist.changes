@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 16:56:24 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Obsolete old python 2 plist module. It conflicts with the
+  python 3 version.
+
+-------------------------------------------------------------------
 Sun Nov  8 10:54:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update baselibs.conf.

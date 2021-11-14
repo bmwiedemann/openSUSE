@@ -97,6 +97,8 @@ This package contains the development files for C++.
 Summary:        Library for handling Apple Binary and XML Property Lists -- Python Bindings
 Requires:       %{cname} = %{version}
 Requires:       python3-Cython >= 0.17
+Obsoletes:      python-plist < %{version}
+Conflicts:      python-plist
 
 %description -n python3-plist
 libplist is a library for handling Apple Binary and XML Property Lists.

@@ -278,4 +278,12 @@ LGPL-2.1 can be relicensed to GPL without further permission. No need to explici
     <comment></comment>
     <requestid>854966</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>76e1fbdfb3c63e625c3747b7eeac97fa</srcmd5>
+    <version>2.2.0</version>
+    <time>1636931173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930807</requestid>
+  </revision>
 </revisionlist>
