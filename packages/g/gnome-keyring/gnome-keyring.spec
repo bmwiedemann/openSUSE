@@ -47,7 +47,6 @@ BuildRequires:  libselinux-devel
 BuildRequires:  openssh
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gck-1) >= 3.3.4
 BuildRequires:  pkgconfig(gcr-3) >= 3.27.90
@@ -121,7 +120,6 @@ The PAM module can be used to unlock the keyring on login.
 %patch1000 -p1
 %patch1001 -p1
 %endif
-translation-update-upstream
 
 %build
 autoreconf -f
