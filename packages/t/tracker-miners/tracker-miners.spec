@@ -24,8 +24,6 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.2/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch bsc#1191207 alynx.zhou@suse.com -- Revert the commit to avoid wrong no metadata info
-Patch1:         0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel

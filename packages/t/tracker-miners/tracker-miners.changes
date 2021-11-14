@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  9 08:31:20 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Drop 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch:
+  Upstream fix landed in tracker instead of tracker-miners.
+  (bsc#1191207, glgo#GNOME/tracker#337)
+
+-------------------------------------------------------------------
 Fri Nov  5 09:15:42 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch:
