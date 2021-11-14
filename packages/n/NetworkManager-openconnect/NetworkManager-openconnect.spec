@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openconnect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source0:        https://download.gnome.org/sources/NetworkManager-openconnect/1.
 Source1:        system-user-nm-openconnect.conf
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gcr-3) >= 3.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(libnm) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openconnect) >= 3.02
-BuildRequires:  sysuser-tools
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       openconnect
@@ -60,7 +59,6 @@ OpenConnect, an implementation of the Cisco AnyConnect VPN system.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

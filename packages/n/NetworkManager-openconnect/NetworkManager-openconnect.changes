@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:00:00 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sun Jun 13 13:30:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator
