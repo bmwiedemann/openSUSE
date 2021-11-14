@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-color-manager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ BuildRequires:  docbook-utils-minimal
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(colord) >= 1.3.1
@@ -55,7 +54,6 @@ install and generate color profiles in the GNOME desktop.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson
