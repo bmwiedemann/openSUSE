@@ -34,7 +34,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 
 %description
 JSON-GLib provides a parser and a generator GObject classes and various
@@ -94,7 +93,6 @@ json-glib library.
 
 %prep
 %setup -q
-translation-update-upstream po %{name}-1.0
 
 %build
 %meson \
