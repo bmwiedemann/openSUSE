@@ -1,0 +1,119 @@
+From ad0f8ab4a83cb8ecd2bb55619d06cc6544e45f7d Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sun, 7 Nov 2021 13:54:01 +0100
+Subject: [PATCH] libtracker-sparql: Fix actual 0-path matches in ? and * path
+ operators
+
+These operators ("zero or one" and "zero or more" respectively) so far have
+worked on the prerequisite that the contained property path has at least
+one match with the given constraints. E.g.:
+
+  SELECT ?u { <URI> nie:interpretedAs? ?u }
+
+Would return no results if the given uri had no nie:interpretedAs, but here
+we still want to have the 0-length match, regardless of there being a match
+or not.
+
+This commit fixes this by making these common table expressions look for
+"self" in the rdfs:Resource table, this is ensured to always match as long
+as the resource exists.
+
+Fixes: https://gitlab.gnome.org/GNOME/tracker/-/issues/337
+---
+ src/libtracker-data/tracker-sparql.c | 43 ++++++++++++++++++++++++----
+ 1 file changed, 37 insertions(+), 6 deletions(-)
+
+diff --git a/src/libtracker-data/tracker-sparql.c b/src/libtracker-data/tracker-sparql.c
+index d12786e45..f6d42228a 100644
+--- a/src/libtracker-data/tracker-sparql.c
++++ b/src/libtracker-data/tracker-sparql.c
+@@ -895,10 +895,42 @@ _prepend_path_element (TrackerSparql      *sparql,
+ {
+ 	TrackerStringBuilder *old;
+ 	gchar *table_name, *graph_column;
++	gchar *zero_length_match = NULL;
+ 
+ 	if (path_elem->op == TRACKER_PATH_OPERATOR_NONE &&
+ 	    tracker_token_is_empty (&sparql->current_state->graph)) {
+ 		tracker_sparql_add_union_graph_subquery (sparql, path_elem->data.property);
++	} else if (path_elem->op == TRACKER_PATH_OPERATOR_ZEROORONE ||
++	           path_elem->op == TRACKER_PATH_OPERATOR_ZEROORMORE) {
++		const gchar *graph;
++
++		graph = tracker_token_get_idstring (&sparql->current_state->graph);
++
++		if (tracker_token_is_empty (&sparql->current_state->graph) ||
++		    tracker_token_get_variable (&sparql->current_state->graph)) {
++			TrackerOntologies *ontologies;
++			TrackerClass *rdfs_resource;
++
++			ontologies = tracker_data_manager_get_ontologies (sparql->data_manager);
++			rdfs_resource = tracker_ontologies_get_class_by_uri (ontologies, RDFS_NS "Resource");
++			tracker_sparql_add_union_graph_subquery_for_class (sparql,
++			                                                   rdfs_resource);
++
++			zero_length_match = g_strdup_printf ("SELECT ID, ID, graph, %d, %d "
++			                                     "FROM \"unionGraph_rdfs:Resource\"",
++			                                     TRACKER_PROPERTY_TYPE_RESOURCE,
++			                                     TRACKER_PROPERTY_TYPE_RESOURCE);
++		} else if (tracker_sparql_find_graph (sparql, graph)) {
++			zero_length_match = g_strdup_printf ("SELECT ID, ID, %d, %d, %d "
++			                                     "FROM \"%s\".\"rdfs:Resource\"",
++			                                     tracker_sparql_find_graph (sparql, graph),
++			                                     TRACKER_PROPERTY_TYPE_RESOURCE,
++			                                     TRACKER_PROPERTY_TYPE_RESOURCE,
++			                                     graph);
++		} else {
++			/* Graph does not exist, ensure to come back empty */
++			zero_length_match = g_strdup ("SELECT * FROM (SELECT 0 AS ID, NULL, NULL, 0, 0 LIMIT 0)");
++		}
+ 	}
+ 
+ 	old = tracker_sparql_swap_builder (sparql, sparql->current_state->with_clauses);
+@@ -991,14 +1023,13 @@ _prepend_path_element (TrackerSparql      *sparql,
+ 		                       "(SELECT ID, value, graph, ID_type, value_type "
+ 		                       "FROM \"%s_helper\" "
+ 		                       "UNION "
+-		                       "SELECT ID, ID, graph, ID_type, ID_type "
+-		                       "FROM \"%s\" "
++		                       "%s "
+ 		                       "UNION "
+ 		                       "SELECT value, value, graph, value_type, value_type "
+ 		                       "FROM \"%s\") ",
+ 		                       path_elem->name,
+ 		                       path_elem->name,
+-		                       path_elem->data.composite.child1->name,
++		                       zero_length_match,
+ 		                       path_elem->data.composite.child1->name);
+ 		break;
+ 	case TRACKER_PATH_OPERATOR_ONEORMORE:
+@@ -1018,8 +1049,7 @@ _prepend_path_element (TrackerSparql      *sparql,
+ 	case TRACKER_PATH_OPERATOR_ZEROORONE:
+ 		_append_string_printf (sparql,
+ 		                       "\"%s\" (ID, value, graph, ID_type, value_type) AS "
+-		                       "(SELECT ID, ID, graph, ID_type, ID_type "
+-				       "FROM \"%s\" "
++		                       "(%s "
+ 				       "UNION "
+ 				       "SELECT ID, value, graph, ID_type, value_type "
+ 				       "FROM \"%s\" "
+@@ -1027,7 +1057,7 @@ _prepend_path_element (TrackerSparql      *sparql,
+ 				       "SELECT value, value, graph, value_type, value_type "
+ 				       "FROM \"%s\") ",
+ 				       path_elem->name,
+-				       path_elem->data.composite.child1->name,
++		                       zero_length_match,
+ 				       path_elem->data.composite.child1->name,
+ 				       path_elem->data.composite.child1->name);
+ 		break;
+@@ -1075,6 +1105,7 @@ _prepend_path_element (TrackerSparql      *sparql,
+ 	}
+ 
+ 	tracker_sparql_swap_builder (sparql, old);
++	g_free (zero_length_match);
+ }
+ 
+ static inline gchar *
+-- 
+GitLab
+

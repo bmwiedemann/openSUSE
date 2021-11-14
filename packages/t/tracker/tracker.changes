@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  9 08:25:17 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add tracker-fix-actual-0-path-matches.patch: Fix no metadata
+  available when using tracker3 info caused by a wrong sparql
+  implementation. (bsc#1191207, glgo#GNOME/tracker#337)
+
+-------------------------------------------------------------------
 Thu Nov  4 10:48:18 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing no longer used nor recognized option

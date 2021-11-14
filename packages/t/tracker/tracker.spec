@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.2/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM tracker-fix-actual-0-path-matches.patch bsc#1191207, glgo#GNOME/tracker#337 alynx.zhou@suse.com -- Fix no metadata available when using tracker3 info
+Patch1:         tracker-fix-actual-0-path-matches.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
