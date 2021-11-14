@@ -36,6 +36,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
