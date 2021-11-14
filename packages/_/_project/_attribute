@@ -36,7 +36,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210826'
-  boo#1183454: '20211112'
+  boo#1183454: '20211113'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -90,7 +90,7 @@
   boo#1189927: '20210923'
   boo#1190434: '20211112'
   boo#1190529: '20210914'
-  boo#1190670: '20211112'
+  boo#1190670: '20211113'
   boo#1190762: '20210930'
   boo#1190764: '20211025'
   boo#1190823: '20211112'
@@ -106,6 +106,8 @@
   boo#1191994: '20211025'
   boo#1192118: '20211112'
   boo#1192420: '20211106'
+  boo#1192667: '20211112'
+  boo#1192668: '20211112'
   bsc#1161276: '20211112'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
@@ -616,10 +618,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20211112'
+    <value>failed: '20211113'
 published: '20211111'
 publishing: '20211111'
-testing: '20211112'
+testing: '20211113'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
