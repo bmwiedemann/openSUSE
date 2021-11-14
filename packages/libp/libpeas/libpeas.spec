@@ -32,7 +32,6 @@ BuildRequires:  gettext
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
@@ -171,7 +170,6 @@ every application the chance to assume its own extensibility.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \
