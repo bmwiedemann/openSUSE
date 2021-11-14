@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:27:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Expect failure of test_fpclass and test_float on riscv64
+- Bump disk space constraint
+
+-------------------------------------------------------------------
 Wed Oct  6 19:16:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - The update- and libalternatives logic is required in the standard

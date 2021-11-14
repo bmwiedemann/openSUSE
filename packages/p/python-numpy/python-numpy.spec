@@ -279,6 +279,12 @@ test_failok+=" or test_pareto"
 # gh#numpy/numpy#18388
 test_failok+=" or test_float_remainder_overflow"
 %endif
+%ifarch riscv64
+# These tests fail due to non-portable assumptions about the signbit of NaN
+# gh#numpy/numpy#8213
+test_failok+=" or test_fpclass"
+test_failok+=" or test_float"
+%endif
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
