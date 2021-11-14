@@ -1900,4 +1900,14 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment> (forwarded request 929652 from iznogood)</comment>
     <requestid>929706</requestid>
   </revision>
+  <revision rev="223" vrev="2">
+    <srcmd5>377ec16bf05ad3b5caeb55b6f2170def</srcmd5>
+    <version>1.2.4</version>
+    <time>1636931177</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PackageKit-zypp-c++17.patch: Fix build failure when building
+  with libzypp &gt; 17.28.5 and gcc &lt; 11
+  (gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349).</comment>
+    <requestid>930858</requestid>
+  </revision>
 </revisionlist>

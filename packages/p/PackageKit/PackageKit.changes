@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  5 12:07:00 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-c++17.patch: Fix build failure when building
+  with libzypp > 17.28.5 and gcc < 11
+  (gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349).
+
+-------------------------------------------------------------------
 Fri Nov  5 11:16:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.4:
@@ -355,7 +362,7 @@ Wed Nov 13 02:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
   array of strings to pk_backend_job_files()
   (gh#hughsie/PackageKit#351).
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Oct 14 07:00:32 UTC 2019 - Jonathan Kang <sckang@suse.com>
 
 - Remove zypp-Switch-to-doUpgrade-solver-when-required-by-distribution.patch,
