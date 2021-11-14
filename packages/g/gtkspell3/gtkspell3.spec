@@ -1,7 +1,7 @@
 #
 # spec file for package gtkspell3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source:         https://sourceforge.net/projects/gtkspell/files/%{version}/%{nam
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -74,7 +73,6 @@ word opens a menu of suggested replacements.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \
