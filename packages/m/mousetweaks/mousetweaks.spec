@@ -1,7 +1,7 @@
 #
 # spec file for package mousetweaks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source0:        https://download.gnome.org/sources/mousetweaks/3.32/%{name}-%{ve
 
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
@@ -43,7 +42,6 @@ the GNOME desktop.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 export LANG=C.UTF-8
