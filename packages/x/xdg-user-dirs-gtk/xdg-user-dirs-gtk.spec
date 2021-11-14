@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs-gtk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Patch1:         %{name}-XFCE-autostart.patch
 BuildRequires:  gnome-common
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  xdg-user-dirs
 Requires:       xdg-user-dirs
@@ -44,7 +43,6 @@ to help move they standard user directories to the correct names.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 NOCONFIGURE=1 ./autogen.sh
