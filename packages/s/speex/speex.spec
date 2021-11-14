@@ -1,7 +1,7 @@
 #
 # spec file for package speex
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,10 +24,11 @@ Release:        0
 Summary:        An Open Source, Patent Free Speech Codec
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://www.speex.org/
+URL:            http://www.speex.org/
 Source0:        http://downloads.xiph.org/releases/speex/%{name}-%{upstream_version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         speex-no-build-date.patch
+Patch1:         speex-CVE-2020-23903.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(speexdsp)
@@ -66,6 +67,7 @@ SpeeX library.
 %prep
 %setup -q -n %{name}-%{upstream_version}
 %patch0 
+%patch1 -p1
 
 %build
 %configure \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 11 13:18:22 CET 2021 - tiwai@suse.de
+
+- Fix zero division error in read_samples (CVE-2020-23903 bsc#1192580)
+  speex-CVE-2020-23903.patch
+
+-------------------------------------------------------------------
 Sun Feb 19 17:19:52 UTC 2017 - tom.mbrt@googlemail.com
 
 - Update to stable 1.2 release
