@@ -1,7 +1,7 @@
 #
 # spec file for package atk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  glib2-devel >= 2.31.2
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.0
-BuildRequires:  translation-update-upstream
 
 Requires:       %{name}-lang = %{version}
 Requires:       libatk-1_0-0
@@ -88,7 +87,6 @@ This package contains additional documentation for the ATK Library.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \
