@@ -38,7 +38,6 @@ BuildRequires:  iso-codes-devel
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52
@@ -105,7 +104,6 @@ This subpackage contains the header files for creating gedit plugins.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \

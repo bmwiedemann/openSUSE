@@ -1045,4 +1045,12 @@
     <comment>Update to 40.1 (forwarded request 886275 from dimstar)</comment>
     <requestid>887491</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>60160c95633fe4c1b7ec329347b92c50</srcmd5>
+    <version>40.1</version>
+    <time>1636931182</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>930900</requestid>
+  </revision>
 </revisionlist>
