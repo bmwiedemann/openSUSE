@@ -3029,6 +3029,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -8119,6 +8120,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9128,7 +9130,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse22-32bit: [x86_64] 
+  - libSPIRV-Tools-suse23-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -15891,7 +15893,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -17835,11 +17837,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18426,6 +18431,7 @@ unsorted:
   - patterns-base-x11-32bit 
   - patterns-base-x11_enhanced-32bit 
   - patterns-budgie-budgie 
+  - patterns-budgie-budgie_applets 
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
@@ -22867,7 +22873,6 @@ unsorted:
   - python36-jupyter_nbextensions_configurator 
   - python36-jupyterlab 
   - python36-jupyterlab-pygments 
-  - python36-jupyterlab-templates 
   - python36-jupyterlab-widgets 
   - python36-jupytext 
   - python36-jwcrypto 
@@ -41452,6 +41457,7 @@ unsorted:
   - ucpp-devel 
   - udav 
   - udev-browse 
+  - udev-extra-rules 
   - udev-mini 
   - udev-persistent-ifnames 
   - udhcp 
@@ -41735,7 +41741,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - vhba-kmp-default 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 
