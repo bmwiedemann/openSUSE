@@ -33,7 +33,6 @@ BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libarchive) >= 3.0
@@ -91,7 +90,6 @@ playlist formats, to save them too.
 
 %prep
 %autosetup
-translation-update-upstream
 
 %build
 %meson \
