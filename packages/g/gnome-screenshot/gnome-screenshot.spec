@@ -30,7 +30,6 @@ Patch0:         gnome-screenshot-onlyshowin.patch
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
@@ -48,7 +47,6 @@ area and save the snapshot image to a file.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson

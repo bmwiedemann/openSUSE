@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:40:25 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sat Mar 20 18:20:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
