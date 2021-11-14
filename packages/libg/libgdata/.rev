@@ -499,4 +499,12 @@
     <comment>Update to 0.18.1 (forwarded request 879918 from dimstar)</comment>
     <requestid>880100</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>bca6688cdc227d8ba3a35dd84f168c9e</srcmd5>
+    <version>0.18.1</version>
+    <time>1636931193</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>930912</requestid>
+  </revision>
 </revisionlist>

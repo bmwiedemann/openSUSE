@@ -32,7 +32,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.14
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
@@ -92,7 +91,6 @@ applications that want to make use of libgdata.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \
