@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:04:42 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211109:
+  * Added FlashDrive.io domain names (#1401)
+  * Remove: gb.com (#1467)
+  * util: gTLD data autopull updates for 2021-10-28T15:13:34 UTC (#1464)
+  * Remove elluciancrm domains (#1443)
+
+-------------------------------------------------------------------
 Wed Oct 20 06:58:02 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211016:
