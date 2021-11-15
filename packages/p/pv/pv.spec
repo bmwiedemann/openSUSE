@@ -1,7 +1,7 @@
 #
 # spec file for package pv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           pv
-Version:        1.6.6
+Version:        1.6.20
 Release:        0
 Summary:        PipeViewer - Monitor the Progress of Data through Pipes
 License:        Artistic-2.0
 Group:          System/Base
 URL:            http://ivarch.com/programs/pv.shtml
 
+#Git-Clone:     https://github.com/a-j-wood/pv
 Source:         http://ivarch.com/programs/sources/%name-%version.tar.bz2
 Source2:        http://ivarch.com/programs/sources/%name-%version.tar.bz2.txt
 Source3:        %name.keyring
