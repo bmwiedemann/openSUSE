@@ -117,4 +117,15 @@
     <comment></comment>
     <requestid>905852</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6567f57733075d9dcc1ac213ca8de206</srcmd5>
+    <version>3.10.0.2</version>
+    <time>1636986383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.0.2:
+  * Docs improvements
+  * Fixes crash  and _GenericAlias import
+  * Support most use cases for PEP 612 with Generic</comment>
+    <requestid>931292</requestid>
+  </revision>
 </revisionlist>

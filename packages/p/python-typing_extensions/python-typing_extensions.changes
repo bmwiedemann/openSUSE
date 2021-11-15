@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:42:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to 3.10.0.2:
+  * Docs improvements
+  * Fixes crash  and _GenericAlias import
+  * Support most use cases for PEP 612 with Generic 
+
+-------------------------------------------------------------------
 Mon Jul 12 13:11:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.10.0.0
