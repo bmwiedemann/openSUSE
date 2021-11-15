@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 14 13:28:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.8
+  * Prepare for use with Jupyter Releaser #175 (@davidbrochart)
+  * Move IPYKERNEL_CELL_NAME from tox to pytest #172
+    (@frenzymadness)
+  * Added CLI to README #170 (@palewire)
+  * Add "jupyter execute" command-line interface #165 (@palewire)
+  * Fix: updating buffers overwrote previous buffers #169
+    (@maartenbreddels)
+  * Fix tests for ipykernel without debugpy #166 (@frenzymadness)
+  * gitignore Pipfile #164 (@palewire)
+  * Fixed CONTRIBUTING.md link #163 (@palewire)
+  * Fix typo #162 (@The-Compiler)
+  * Move format & lint to pre-commit #161 (@chrisjsewell)
+  * Add skip-execution cell tag functionality #151 (@chrisjsewell)
+- Not enabling new jupyter-run entrypoint due to conflict with
+  jupyter_client
+
+-------------------------------------------------------------------
 Wed Sep 22 19:04:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix async_parallel_notebooks deselection expression

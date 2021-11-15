@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient%{psuffix}
-Version:        0.5.4
+Version:        0.5.8
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -43,6 +43,8 @@ Requires:       python-jupyter-client >= 6.1.5
 Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
 Requires:       python-traitlets >= 4.2
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module async_generator if %python-base < 3.7}
@@ -67,6 +69,8 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
 %setup -q -n nbclient-%{version}
+# conflict with jupyter_client -- https://github.com/jupyter/nbclient/pull/173#issuecomment-968292909
+sed -i '/jupyter-run =/ d' setup.py
 
 %build
 %python_build
@@ -74,6 +78,7 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 %if ! %{with test}
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jupyter-execute
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -85,11 +90,18 @@ export IPYKERNEL_CELL_NAME="<IPY-INPUT>"
 %endif
 
 %if ! %{with test}
+%post
+%python_install_alternative jupyter-execute
+
+%postun
+%python_uninstall_alternative jupyter-execute
+
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
+%python_alternative %{_bindir}/jupyter-execute
 %{python_sitelib}/nbclient
-%{python_sitelib}/nbclient-%{version}-py*.egg-info/
+%{python_sitelib}/nbclient-%{version}*-info/
 %endif
 
 %changelog

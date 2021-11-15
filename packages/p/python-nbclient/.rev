@@ -106,4 +106,27 @@
 </comment>
     <requestid>921032</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88bfa91e4d7b5c8e729481d432def475</srcmd5>
+    <version>0.5.8</version>
+    <time>1636986400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.8
+  * Prepare for use with Jupyter Releaser #175 (@davidbrochart)
+  * Move IPYKERNEL_CELL_NAME from tox to pytest #172
+    (@frenzymadness)
+  * Added CLI to README #170 (@palewire)
+  * Add &quot;jupyter execute&quot; command-line interface #165 (@palewire)
+  * Fix: updating buffers overwrote previous buffers #169
+    (@maartenbreddels)
+  * Fix tests for ipykernel without debugpy #166 (@frenzymadness)
+  * gitignore Pipfile #164 (@palewire)
+  * Fixed CONTRIBUTING.md link #163 (@palewire)
+  * Fix typo #162 (@The-Compiler)
+  * Move format &amp; lint to pre-commit #161 (@chrisjsewell)
+  * Add skip-execution cell tag functionality #151 (@chrisjsewell)
+- Not enabling new jupyter-run entrypoint due to conflict with
+  jupyter_client (forwarded request 931394 from bnavigator)</comment>
+    <requestid>931395</requestid>
+  </revision>
 </revisionlist>
