@@ -465,4 +465,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment>big toolchain update, please stage together. so versions change, so this has high potential to break stuff. Probably best to stage it isolated</comment>
     <requestid>878579</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>bf2854d4cc1ac1ff6b2e83b477344c98</srcmd5>
+    <version>3.3</version>
+    <time>1636986361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930937</requestid>
+  </revision>
 </revisionlist>

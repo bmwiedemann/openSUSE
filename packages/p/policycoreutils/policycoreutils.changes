@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:15:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.3
+  * Lots of fuzzing fixes
+  * `fixfiles -C` doesn't exclude /dev and /run anymore
+  Refreshed get_os_version.patch
+
+-------------------------------------------------------------------
 Tue Mar  9 09:18:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.2

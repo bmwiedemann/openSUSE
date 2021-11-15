@@ -17,12 +17,12 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.2
-%define libsemanage_ver  3.2
-%define libselinux_ver   3.2
+%define libsepol_ver     3.3
+%define libsemanage_ver  3.3
+%define libselinux_ver   3.3
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
