@@ -907,4 +907,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later) (forwarded request 923167 from coolo)</comment>
     <requestid>923176</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ff9d590e419709a85fb9675a92f46d56</srcmd5>
+    <version>0.186</version>
+    <time>1636986359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930893</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.185
+Version:        0.186
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
-Patch0:         disable-run-readelf-self-test.patch
-Patch1:         tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
 Patch2:         harden_debuginfod.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -81,6 +79,7 @@ Summary:        Libraries and headers to build debuginfod client applications
 Group:          Development/Libraries/C and C++
 Conflicts:      libdebuginfod-dummy-devel = %{version}
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
+Requires:       libdebuginfod1 = %{version}
 
 %description -n libdebuginfod-devel
 The libdebuginfod-devel package contains the libraries
@@ -100,7 +99,6 @@ The elfutils-debuginfod-client package contains a command-line frontend.
 %autosetup -n elfutils-%version -p1
 
 %build
-%global _lto_cflags %{_lto_cflags} -flto-partition=none -Wno-error=stack-usage=
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -112,7 +110,7 @@ find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g
 MODVERSION="suse-build `eval echo ${DATE} ${TIME}`"
 sed --in-place "s/^MODVERSION=.*\$/MODVERSION=\"${MODVERSION}\"/" configure.ac
 export CFLAGS="%optflags"
-CFLAGS+=" -g" # make tests pass when user does not want debuginfo (boo#1031556)
+CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient
 CFLAGS+=" -fPIC"
@@ -181,6 +179,8 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_libdir}/libdebuginfod-%{version}.so
 %config %{_sysconfdir}/profile.d/debuginfod.sh
 %config %{_sysconfdir}/profile.d/debuginfod.csh
+%dir %{_sysconfdir}/debuginfod
+%config %{_sysconfdir}/debuginfod/elfutils.urls
 
 %files -n libdebuginfod-devel
 %{_libdir}/pkgconfig/libdebuginfod.pc
@@ -192,6 +192,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files -n debuginfod-client
 %{_bindir}/debuginfod-find
 %{_mandir}/man1/debuginfod-find.1*
+%{_mandir}/man7/debuginfod-client-config.7*
 
 %pre
 getent group debuginfod >/dev/null || %{_sbindir}/groupadd -r debuginfod

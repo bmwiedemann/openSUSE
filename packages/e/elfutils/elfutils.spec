@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.185
+Version:        0.186
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source3:        %{name}.changes
 Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
-Patch0:         disable-run-readelf-self-test.patch
-Patch1:         tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -127,6 +125,7 @@ Summary:        Libraries and headers to build debuginfod client applications
 Group:          Development/Libraries/C and C++
 Provides:       libdebuginfod-devel = %{version}
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
+Requires:       libdebuginfod1-dummy = %{version}
 
 %description -n libdebuginfod-dummy-devel
 The libdebuginfod-devel package contains the libraries
@@ -148,7 +147,7 @@ The package is dummy.
 %autosetup -p1
 
 %build
-%global _lto_cflags %{_lto_cflags} -flto-partition=none -Wno-error=stack-usage= -ffat-lto-objects
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # Change DATE/TIME macros to use last change time of elfutils.changes
 # See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
@@ -160,7 +159,7 @@ find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g
 MODVERSION="suse-build `eval echo ${DATE} ${TIME}`"
 sed --in-place "s/^MODVERSION=.*\$/MODVERSION=\"${MODVERSION}\"/" configure.ac
 export CFLAGS="%optflags"
-CFLAGS+=" -g" # make tests pass when user does not want debuginfo (boo#1031556)
+CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient
 CFLAGS+=" -fPIC"
@@ -272,6 +271,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %files -n debuginfod-dummy-client
 %{_bindir}/debuginfod-find
 %{_mandir}/man1/debuginfod-find.1*
+%{_mandir}/man7/debuginfod-client-config.7*
 
 %files lang -f %{name}.lang
 
