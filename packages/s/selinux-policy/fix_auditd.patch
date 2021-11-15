@@ -1,6 +1,8 @@
---- a/policy/modules/system/logging.if
-+++ b/policy/modules/system/logging.if
-@@ -430,6 +430,7 @@ interface(`logging_manage_audit_config',
+Index: fedora-policy-20211111/policy/modules/system/logging.if
+===================================================================
+--- fedora-policy-20211111.orig/policy/modules/system/logging.if
++++ fedora-policy-20211111/policy/modules/system/logging.if
+@@ -431,6 +431,7 @@ interface(`logging_manage_audit_config',
  
  	files_search_etc($1)
  	manage_files_pattern($1, auditd_etc_t, auditd_etc_t)

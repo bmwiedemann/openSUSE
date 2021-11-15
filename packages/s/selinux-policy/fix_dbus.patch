@@ -1,10 +1,10 @@
-Index: fedora-policy-20210419/policy/modules/contrib/dbus.te
+Index: fedora-policy-20211111/policy/modules/contrib/dbus.te
 ===================================================================
---- fedora-policy-20210419.orig/policy/modules/contrib/dbus.te
-+++ fedora-policy-20210419/policy/modules/contrib/dbus.te
-@@ -80,6 +80,7 @@ read_lnk_files_pattern(system_dbusd_t, d
- manage_dirs_pattern(system_dbusd_t, system_dbusd_tmp_t, system_dbusd_tmp_t)
+--- fedora-policy-20211111.orig/policy/modules/contrib/dbus.te
++++ fedora-policy-20211111/policy/modules/contrib/dbus.te
+@@ -81,6 +81,7 @@ manage_dirs_pattern(system_dbusd_t, syst
  manage_files_pattern(system_dbusd_t, system_dbusd_tmp_t, system_dbusd_tmp_t)
+ manage_sock_files_pattern(system_dbusd_t, system_dbusd_tmp_t, system_dbusd_tmp_t)
  files_tmp_filetrans(system_dbusd_t, system_dbusd_tmp_t, { dir file sock_file })
 +allow system_dbusd_t system_dbusd_tmp_t:file execute;
  

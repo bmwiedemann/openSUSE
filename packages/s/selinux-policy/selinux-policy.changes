@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:21:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20211111. Refreshed:
+  * fix_dbus.patch
+  * fix_systemd.patch
+  * fix_authlogin.patch
+  * fix_auditd.patch
+  * fix_kernel_sysctl.patch
+  * fix_networkmanager.patch
+  * fix_chronyd.patch
+  * fix_unconfineduser.patch
+  * fix_unconfined.patch
+  * fix_firewalld.patch
+  * fix_init.patch
+  * fix_xserver.patch
+  * fix_logging.patch
+  * fix_hadoop.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 11:35:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - fix_wine.patch: give Wine .dll same context as .so (bsc#1191976)

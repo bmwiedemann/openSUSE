@@ -1,8 +1,8 @@
-Index: fedora-policy/policy/modules/contrib/firewalld.te
+Index: fedora-policy-20211111/policy/modules/contrib/firewalld.te
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/firewalld.te	2020-02-24 08:16:03.798820784 +0000
-+++ fedora-policy/policy/modules/contrib/firewalld.te	2020-02-24 08:18:03.164764310 +0000
-@@ -129,6 +129,7 @@ optional_policy(`
+--- fedora-policy-20211111.orig/policy/modules/contrib/firewalld.te
++++ fedora-policy-20211111/policy/modules/contrib/firewalld.te
+@@ -131,6 +131,7 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -10,10 +10,10 @@ Index: fedora-policy/policy/modules/contrib/firewalld.te
  	iptables_domtrans(firewalld_t)
  	iptables_read_var_run(firewalld_t)
  ')
-Index: fedora-policy/policy/modules/system/iptables.if
+Index: fedora-policy-20211111/policy/modules/system/iptables.if
 ===================================================================
---- fedora-policy.orig/policy/modules/system/iptables.if	2020-02-19 09:36:25.440182406 +0000
-+++ fedora-policy/policy/modules/system/iptables.if	2020-02-24 08:17:53.076600108 +0000
+--- fedora-policy-20211111.orig/policy/modules/system/iptables.if
++++ fedora-policy-20211111/policy/modules/system/iptables.if
 @@ -2,6 +2,25 @@
  
  ########################################
