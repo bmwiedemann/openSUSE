@@ -17,22 +17,22 @@
 
 
 %define sonum   5
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 #BuildRequires:  aspell-devel
@@ -44,6 +44,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  myspell-dictionaries
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
@@ -84,6 +85,19 @@ Group:          System/GUI/KDE
 Sonnet is a plugin-based spell checking library for Qt-based
 applications. It supports several different plugins, including
 HSpell, Enchant, ASpell and HUNSPELL.
+
+%package imports
+Summary:        KDE spell checking library: QML files
+Requires:       libKF5SonnetCore%{sonum} = %{version}
+Requires:       libKF5SonnetUi%{sonum} = %{version}
+
+%description imports
+
+Sonnet is a plugin-based spell checking library for Qt-based
+applications. It supports several different plugins, including
+HSpell, Enchant, ASpell and HUNSPELL.
+This package contains files that allow use of sonnet with
+QtQuick based applications.
 
 %package devel
 Summary:        KDE spell checking library: Build Environment
@@ -148,6 +162,14 @@ to the Sonnet spell checking framework.
 
 %files -n libKF5SonnetUi%{sonum}
 %{_kf5_libdir}/libKF5SonnetUi.so.*
+
+%files imports
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde/
+%dir %{_kf5_qmldir}/org/kde/sonnet
+%{_kf5_qmldir}/org/kde/sonnet/libsonnetquickplugin.so
+%{_kf5_qmldir}/org/kde/sonnet/plugins.qmltypes
+%{_kf5_qmldir}/org/kde/sonnet/qmldir
 
 %files devel
 %dir %{_kf5_plugindir}/designer
