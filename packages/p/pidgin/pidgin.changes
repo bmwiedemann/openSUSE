@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 13 12:30:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pidgin 2.14.8:
+  * Fix a regression in purple_str_to_time
+- drop pidgin-fix-double-free-crash.patch, now included
+
+-------------------------------------------------------------------
 Mon Oct 25 12:00:44 MSK 2021 - Andrey Karepin <egdfree@opensuse.org>
 
 - Extract libpurple.so.* and libpurple-client.so.* to own packages
