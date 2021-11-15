@@ -1,0 +1,30 @@
+Index: hunter-3.3.8/pyproject.toml
+===================================================================
+--- hunter-3.3.8.orig/pyproject.toml
++++ hunter-3.3.8/pyproject.toml
+@@ -2,7 +2,7 @@
+ requires = [
+     "setuptools>=30.3.0",
+     "wheel",
+-    "setuptools_scm>=3.3.1,!=4.0.0,<6.0",
++    "setuptools_scm>=3.3.1,!=4.0.0",
+ ]
+ 
+ [tool.ipdb]
+Index: hunter-3.3.8/setup.py
+===================================================================
+--- hunter-3.3.8.orig/setup.py
++++ hunter-3.3.8/setup.py
+@@ -156,10 +156,10 @@ setup(
+         ':platform_system != "Windows"': ['manhole >= 1.5'],
+     },
+     setup_requires=[
+-        'setuptools_scm>=3.3.1,!=4.0.0,<6.0',
++        'setuptools_scm>=3.3.1,!=4.0.0',
+         'cython',
+     ] if Cython else [
+-        'setuptools_scm>=3.3.1,!=4.0.0,<6.0',
++        'setuptools_scm>=3.3.1,!=4.0.0',
+     ],
+     entry_points={
+         'console_scripts': [
