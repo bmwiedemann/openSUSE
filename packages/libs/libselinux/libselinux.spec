@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.2
+%define libsepol_ver 3.3
 Name:           libselinux
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
