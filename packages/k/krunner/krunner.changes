@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Deprecate K_EXPORT_PLASMA_RUNNER_WITH_JSON macro in favor or K_PLUGIN_CLASS_WITH_JSON
+  * Deprecate RunnerManager::allowedRunners method
+  * Add FreeBSD CI
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.
