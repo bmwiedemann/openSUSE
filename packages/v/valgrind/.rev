@@ -1258,4 +1258,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     <comment>- update to 3.17.0 (jsc#SLE-18713):</comment>
     <requestid>903173</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>19d11d38a40eb6a03e04ae209d6435fb</srcmd5>
+    <version>3.18.1</version>
+    <time>1636986375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931245</requestid>
+  </revision>
 </revisionlist>
