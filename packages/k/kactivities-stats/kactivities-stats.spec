@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ActivitiesStats1
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,15 +25,15 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kactivities-stats
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/kactivities-stats-%{version}.tar.xz
+Source:         kactivities-stats-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/kactivities-stats-%{version}.tar.xz.sig
+Source1:        kactivities-stats-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
