@@ -17,8 +17,7 @@
 
 
 #
-%bcond_with libalternatives_issue_11_fixed
-%if 0%{?suse_version} > 1500 && %{with libalternatives_issue_11_fixed}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -35,7 +34,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jupyter-core%{psuffix}
-Version:        4.8.1
+Version:        4.9.1
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -43,6 +42,8 @@ URL:            https://github.com/jupyter/jupyter_core
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_core/jupyter_core-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- use_rpms_paths.patch -- change paths so they are easy to replace at build time
 Patch0:         use_rpms_paths.patch
+# PATCH-FIX-UPSTREAM argv0_subcommand.patch -- gh#jupyter/jupyter_core#248, merged after the release of 4.9.1
+Patch1:         argv0_subcommand.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traitlets}
 BuildRequires:  fdupes
@@ -84,8 +85,7 @@ There is no reason to install this package on its own.  It will be pulled in
 as a dependency by packages that require it.
 
 %prep
-%setup -q -n jupyter_core-%{version}
-%patch0 -p1
+%autosetup -p1 -n jupyter_core-%{version}
 # Set the appropriate hardcoded paths dynamically
 sed -i "s|\"_datadir_jupyter_\"|\"%{_datadir}/jupyter\"|" jupyter_core/paths.py
 sed -i "s|\"_sysconfdir_jupyter_\"|\"%{_sysconfdir}/jupyter\"|" jupyter_core/paths.py
@@ -115,7 +115,6 @@ popd
 %endif
 
 %pre
-# removing old update-alternatives entries
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative jupyter
 

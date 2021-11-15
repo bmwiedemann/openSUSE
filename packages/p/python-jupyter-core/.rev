@@ -66,4 +66,24 @@ Update to 4.6.1</comment>
   gh#openSUSE/libalternatives#11</comment>
     <requestid>928028</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>578788b9964466b8209a355a0eef8043</srcmd5>
+    <version>4.9.1</version>
+    <time>1636986371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.9.1
+  * Add Python site user base subdirectories to config and data
+    user-level paths if site.ENABLE_USER_SITE is True. One way to
+    disable these directory additions is to set the
+    PYTHONNOUSERSITE environment variable. These locations can be
+    customized by setting the PYTHONUSERBASE environment variable.
+  * Add a workaround for virtualenv for getting the user site
+    directory.
+- Patch for solving gh#openSUSE/libalternatives#11:
+  argv0_subcommand.patch
+  This patch can be removed while releasing version &gt;4.9.1.
+- Enabled using libalternatives again.
+</comment>
+    <requestid>931208</requestid>
+  </revision>
 </revisionlist>

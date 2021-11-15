@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 12 21:09:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.9.1
+  * Add Python site user base subdirectories to config and data
+    user-level paths if site.ENABLE_USER_SITE is True. One way to
+    disable these directory additions is to set the
+    PYTHONNOUSERSITE environment variable. These locations can be
+    customized by setting the PYTHONUSERBASE environment variable.
+  * Add a workaround for virtualenv for getting the user site
+    directory.
+
+-------------------------------------------------------------------
+Fri Nov 12 08:25:01 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Patch for solving gh#openSUSE/libalternatives#11:
+  argv0_subcommand.patch
+  This patch can be removed while releasing version >4.9.1.
+- Enabled using libalternatives again.
+
+-------------------------------------------------------------------
 Thu Oct 28 19:16:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - revert the usage of libalternatives due to
