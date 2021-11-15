@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:22:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.5:
+  * Use more permissive versions for the ``typed-ast`` dependencie
+    (<2.0 instead of <1.5)
+  * Fix crash on inference of ``__len__``.
+  * Added missing ``kind`` (for ``Const``) and ``conversion``
+    (for ``FormattedValue``) fields to repr.
+  * Fix crash with assignment expressions, nested if expressions
+    and filtering of statements
+  * Fix incorrect filtering of assignment expressions statements
+
+-------------------------------------------------------------------
 Wed Oct 27 13:31:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.8.4
