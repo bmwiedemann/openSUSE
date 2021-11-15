@@ -1,7 +1,7 @@
 #
 # spec file for package libEMF
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           libEMF
 Version:        1.0.13
 Release:        0
 Summary:        Library for Manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://libemf.sourceforge.net/
 Source:         http://downloads.sourceforge.net/libemf/libemf-%{version}.tar.gz
@@ -73,7 +73,7 @@ SO/OO graphics object.
 
 %package devel
 Summary:        Library for manipulation with Enhanced MetaFile (EMF, ECMA-234)
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libEMF1 = %{version}
