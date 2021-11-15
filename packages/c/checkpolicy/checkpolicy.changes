@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 11 13:23:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.3
+  * When reading a binary policy by checkpolicy, do not automatically change the version
+    to the max policy version supported by libsepol or, if specified, the value given
+    using the "-c" flag.
+  * Updated documentation
+  * Prints the reason why opening a source policy file failed
+
+-------------------------------------------------------------------
 Tue Mar  9 08:59:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.2

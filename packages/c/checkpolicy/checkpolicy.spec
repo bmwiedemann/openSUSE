@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.2
+%define libsepol_ver 3.3
 Name:           checkpolicy
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later
