@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Remove code for loading libkdeinit5_foo.so modules
+  * Add FreeBSD CI
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
