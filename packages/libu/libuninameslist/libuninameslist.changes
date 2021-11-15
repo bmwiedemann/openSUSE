@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 13 12:00:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210917:
+  * Version 1.9, Unicode 14.0. French version 1.4 is at Unicode 13.1.
+    Unicode has changed cadence to release later for this year. This
+    contains Official 14.0 NamesList.txt codes released on 2021sep14.
+    Unicode 14.0 adds 838 characters for total of 144,697 characters.
+    Several edits, and improvements were added to the French library.
+  * Unicode 14.0_Beta (Nameslist.txt 14_Beta for review until Jul08).
+  * PR#24 "Remove .libs from linker paths". Bug found using slibtool.
+  * Add code to reduce need for 'make clean' after ./configure steps.
+
+-------------------------------------------------------------------
 Sat Aug 15 22:11:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20200505:
