@@ -772,4 +772,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.23.2 (forwarded request 927575 from Vogtinator)</comment>
     <requestid>927695</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>290c244eb823b30a88096b05af7c287e</srcmd5>
+    <version>5.23.3</version>
+    <time>1636986394</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.23.3(.1)</comment>
+    <requestid>931360</requestid>
+  </revision>
 </revisionlist>
