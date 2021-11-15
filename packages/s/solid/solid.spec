@@ -17,18 +17,18 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.87
+%define _tar_path 5.88
 %bcond_without lang
 Name:           solid
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  bison
