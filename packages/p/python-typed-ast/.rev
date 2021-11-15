@@ -154,4 +154,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>887094</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4574cf6f98e472202ddd51575ed34965</srcmd5>
+    <version>1.5.0</version>
+    <time>1636986382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Drop python 3.5 support
+  * Define _PyUnicode_DecodeUnicodeEscape even on Python 3.6+
+  * Recommend ast on Python 3.8+</comment>
+    <requestid>931291</requestid>
+  </revision>
 </revisionlist>
