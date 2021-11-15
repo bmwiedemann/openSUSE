@@ -6367,7 +6367,7 @@ unsorted:
   - gtk3-tools-32bit: [x86_64] 
   - gtk4-branding-upstream 
   - gtk4-devel 
-  - gtk4-devel-32bit: [x86_64] 
+  - gtk4-docs 
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-plata 
@@ -8781,6 +8781,7 @@ unsorted:
   - libOpenColorIO2_0 
   - libOpenEXR-3_1-30-32bit: [x86_64] 
   - libOpenEXRCore-3_1-30 
+  - libOpenEXRCore-3_1-30-32bit: [x86_64] 
   - libOpenEXRUtil-3_1-30 
   - libOpenEXRUtil-3_1-30-32bit: [x86_64] 
   - libOpenIPMI0 
@@ -10988,7 +10989,6 @@ unsorted:
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
-  - libgtk-4-1-32bit: [x86_64] 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-1 
@@ -11043,7 +11043,7 @@ unsorted:
   - libguilereadline-v-17-17 
   - libgumbo-devel 
   - libgumbo1 
-  - libgupnp-1_2-0-32bit: [x86_64] 
+  - libgupnp-1_2-1-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
   - libgupnp-dlna-devel 
@@ -22860,7 +22860,6 @@ unsorted:
   - python36-jupyter-jupyterlab-server-test 
   - python36-jupyter-nbutils 
   - python36-jupyter-packaging 
-  - python36-jupyter-protocol 
   - python36-jupyter-server 
   - python36-jupyter-server-mathjax 
   - python36-jupyter-server-test 
@@ -25711,7 +25710,6 @@ unsorted:
   - python38-jupyter-jupyterlab-server-test 
   - python38-jupyter-nbutils 
   - python38-jupyter-packaging 
-  - python38-jupyter-protocol 
   - python38-jupyter-server 
   - python38-jupyter-server-mathjax 
   - python38-jupyter-server-test 
@@ -28753,7 +28751,6 @@ unsorted:
   - python39-jupyter-jupyterlab-server-test 
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
-  - python39-jupyter-protocol 
   - python39-jupyter-server 
   - python39-jupyter-server-mathjax 
   - python39-jupyter-server-test 
