@@ -1,7 +1,7 @@
 #
 # spec file for package libjcat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define sover 1
 
 Name:           libjcat
-Version:        0.1.3
+Version:        0.1.8
 Release:        0
 Summary:        Library for reading and writing gzip-compressed JSON catalog files
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/hughsie/libjcat
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/hughsie/libjcat/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # for certtool
 BuildRequires:  gnutls
 BuildRequires:  gpgme-devel
