@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 14 14:21:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5.0
+  * Compatibility with newer versions of pytest.
+  * Compatibility with newer versions of nbconvert.
+  * Allow user-specified magic handlers.
+- Enable test suite
+
+-------------------------------------------------------------------
 Tue Dec 15 12:52:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Provide the old jupyter package name only for the primary

@@ -77,4 +77,16 @@
     <comment></comment>
     <requestid>856392</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>947733799588d5ade7e5b2703bce6935</srcmd5>
+    <version>0.5.0</version>
+    <time>1636986402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0
+  * Compatibility with newer versions of pytest.
+  * Compatibility with newer versions of nbconvert.
+  * Allow user-specified magic handlers.
+- Enable test suite (forwarded request 931402 from bnavigator)</comment>
+    <requestid>931403</requestid>
+  </revision>
 </revisionlist>

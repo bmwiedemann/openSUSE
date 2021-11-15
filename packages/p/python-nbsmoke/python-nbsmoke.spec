@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsmoke
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbsmoke
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Basic notebook checks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/pyviz/nbsmoke
+URL:            https://github.com/pyviz-dev/nbsmoke
 Source:         https://files.pythonhosted.org/packages/source/n/nbsmoke/nbsmoke-%{version}.tar.gz
 Source99:       python-nbsmoke-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-beautifulsoup4
 Requires:       python-ipykernel
 Requires:       python-jupyter-client
 Requires:       python-nbconvert
 Requires:       python-nbformat
+Requires:       python-param
 Requires:       python-pyflakes
 Requires:       python-pytest >= 3.1.1
-Requires:       python-requests
+Recommends:     python-beautifulsoup4
+Recommends:     python-requests
 Provides:       python-jupyter_nbsmoke = %{version}
 Obsoletes:      python-jupyter_nbsmoke < %{version}
 BuildArch:      noarch
@@ -47,6 +48,7 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
+BuildRequires:  %{python_module param}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module pytest >= 3.1.1}
 BuildRequires:  %{python_module requests}
@@ -78,12 +80,16 @@ far as possible, but has not yet been widely tested.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python -c "import nbsmoke"
+# unix socket problem in OBS
+donttest="test_run_good_html"
+# linter problem
+python39_donttest="or test_lint_bad"
+%pytest -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/nbsmoke-%{version}-py*.egg-info
+%{python_sitelib}/nbsmoke-%{version}*-info
 %{python_sitelib}/nbsmoke/
 
 %changelog
