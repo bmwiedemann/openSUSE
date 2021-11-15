@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause

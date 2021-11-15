@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 14 14:14:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.2.0
+  * Fix hidden execution requests.
+  * Fix ANSI code for erase line.
+
+-------------------------------------------------------------------
 Fri Oct 29 10:04:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Require a Qt backend. boo#1136083
