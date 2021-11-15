@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Add FreeBSD CI
+  * Add Android CI
+  * Remove obsolete license texts: framework now LGPL-2.0-or-later
+  * Relicense files to LGPL-2.0-or-later
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
