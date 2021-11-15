@@ -85,7 +85,7 @@ rm -r %{buildroot}%{_includedir}/bv16-floatingpoint
 
 %check
 %if 0%{?tools}
-%ifarch s390x ppc64 %sparc %sparc64
+%ifarch s390x ppc ppc64 %sparc %sparc64
 %define endianness BigEndian
 %else
 %define endianness LittleEndian
@@ -110,7 +110,7 @@ PATH=%{buildroot}%{_bindir}:$PATH LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %postun -p /sbin/ldconfig
 %endif
 
-%files 
+%files
 %license COPYING
 %doc README README.SUSE BroadVoice16.doc
 %if 0%{?tools}
