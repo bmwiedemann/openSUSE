@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 11 13:26:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.3
+  * Fixed use-after-free in parse_module_store()
+  * Fixed use_after_free in semanage_direct_write_langext()
+
+-------------------------------------------------------------------
 Mon Aug 16 13:13:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Call "make -j8 pywrap" instead of "make -j8 all pywrap" to fix random
