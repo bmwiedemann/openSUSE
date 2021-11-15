@@ -17,7 +17,7 @@
 
 
 Name:           mcstrans
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            https://github.com/SELinuxProject/selinux/wiki
 Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-writepid.patch
 Patch1:         add_includes.patch
-Patch2:	harden_mcstrans.service.patch
+Patch2:         harden_mcstrans.service.patch
 BuildRequires:  aaa_base
 BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel >= 1.30.3
