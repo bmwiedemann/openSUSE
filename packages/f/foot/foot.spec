@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -28,7 +28,7 @@ BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fcft) < 3.0.0
-BuildRequires:  pkgconfig(fcft) >= 2.4.0
+BuildRequires:  pkgconfig(fcft) >= 2.5.0
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)

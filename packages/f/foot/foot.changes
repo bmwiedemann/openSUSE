@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 14 20:04:50 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.0:
+  * foot.ini options:
+    * Added notify-focus-inhibit boolean option to control whether
+      desktop notifications should be inhibited when the terminal
+      has keyboard focus.
+    * Added colors.scrollback-indicator color-pair option to specify foreground
+      and background colors for the scrollback indicator.
+    * Added csd.border-width and csd.border-color to configure the width and
+      color of the CSD border.
+    * Added colors.dim0-7 options to configure custom "dim" colors.
+    * Changed tweak.grapheme-shaping to be enabled by default.
+    * Changed tweak.grapheme-width-method to be "wcswidth" by default.
+    * All boolean options are now limited to "yes|true|on|1|no|false|off|0".
+      Previously any numbers greater than 0 were treated as true, and anything
+      else that wasn't "yes|true|on" was treated as false.
+    * scrollback.multiplier is no longer applied when the alternate screen
+      is in use.
+    * Removed deprecated bell option. bell section (introduced in 1.8.0) should
+      be used instead.
+    * Removed deprecated url-launch, jump-label-letters and
+      osc8-underline-options options. url section (introduced in 1.8.0) should
+      be used instead.
+  * Some pre-defined color themes are now available in /usr/share/foot/themes/
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.0 for more details.
+
+-------------------------------------------------------------------
 Thu Oct 14 21:01:16 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Fix default TERM to be "foot" and not "foot-extra" as was intended.
