@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Nov 14 15:42:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.0.0
+  * This is marked as a major revision because of the change to
+    pass connection information via environment variables.
+    BatchSystem launchers with a custom template will need to make
+    sure to set flags that inherit environment variables, such as
+    #PBS -V or #SBATCH --export=ALL.
+  * More convenient Cluster(engines="mpi") signature for setting
+    the engine (or controller) launcher class.
+  * The first (and usually only) engine set can be accessed as
+    .Cluster.engine_set, rather than digging through the
+    Cluster.engines dict.
+  * Add environment configuration to all Launchers.
+  * Support more configuration via environment variables, including
+    passing connection info to engines via $IPP_CONNECTION_INFO,
+    which is used by default, avoiding the need to send connection
+    files to engines in cases of non-shared filesystems.
+  * Launchers send connection info to engines via
+    $IPP_CONNECTION_INFO by default. This is governed by
+    Cluster.send_engines_connection_env, which is True by default.
+  * Support EngineLauncher.get_output via output files in batch
+    system launchers
+  * Capture output in Batch launchers by setting output file
+    options in the default templates.
+  * LoadBalancedView.imap returns a LazyMapIterator which has a
+    .cancel() method, for stopping consumption of the map input.
+  * Support for return_when argument in .AsyncResult.wait and
+    ~.AsyncResult.wait_interactive, to allow returning on the first
+    error, first completed, or (default) all completed.
+  * LoadBalancedView.imap(max_outstanding=n) limits the number of
+    tasks submitted to the cluster, instead of limiting the number
+    not-yet-consumed. Prior to this, the cluster could be idle if
+    several results were waiting to be consumed.
+  * output streamed by %%px includes errors and results, for
+    immediate feedback when only one engine fails.
+  * Various bugs preventing use of non-default Controller launchers
+  * Fixed crash in jupyterlab extension when IPython directory does
+    not exist
+  * ViewExecutor.shutdown() waits for imap results, like Executors
+    in the standard library
+  * Removed spurious jupyterlab plugin options that had no effect.
+  * %autopx streams output just like %%px
+  * Add BroadcastView benchmark code
+  * Tag releases with tbump
+
+-------------------------------------------------------------------
 Sun Oct 17 18:51:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.1.0

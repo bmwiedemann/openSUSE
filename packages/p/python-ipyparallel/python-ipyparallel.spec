@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipyparallel
-Version:        7.1.0
+Version:        8.0.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
