@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-wlr
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        An xdg-desktop-portal backend for wlroots
 License:        MIT
@@ -41,9 +41,8 @@ Requires:       xdg-desktop-portal
 %description
 xdg-desktop-portal backend for wlroots.
 
-Make sure `XDG_CURRENT_DESKTOP=sway` is set.
-
-When correctly installed, xdg-desktop-portal should automatically invoke xdg-desktop-portal-wlr when needed.
+Make sure the `XDG_CURRENT_DESKTOP` env var is set in the D-Bus user session
+to one of the UseIn values in wlr.portal
 
 %prep
 %setup -q

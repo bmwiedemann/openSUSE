@@ -63,4 +63,13 @@
   * screenshot: implement PickColor method</comment>
     <requestid>896762</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b22b269b443c9ea3545f7dd07d5584e0</srcmd5>
+    <version>0.5.0</version>
+    <time>1636986387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0
+  * Bugfixes and minor internal improvements</comment>
+    <requestid>931294</requestid>
+  </revision>
 </revisionlist>
