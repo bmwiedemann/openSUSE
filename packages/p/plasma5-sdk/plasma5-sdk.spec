@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           plasma5-sdk
-Version:        5.23.2
+Version:        5.23.3
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
