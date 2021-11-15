@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:43:04 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Adap clients to changes in Y2Users API (related to jsc#SLE-20592)
+- 4.4.6
+
+-------------------------------------------------------------------
 Tue Sep 22 14:07:55 UTC 2021 - Scott Bradnick <sbradnick@suse.com>
 
 - Adding check for WSL so that 'systemd start syslog.socket' isn't run
