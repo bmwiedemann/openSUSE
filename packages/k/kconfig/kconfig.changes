@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Exclude new enum-overload from python bindings build
+  * Enforce KAuthorized enums being not 0
+  * Create enum to to authorize common keys
+  * Do not try to generate python bindings for KConfigGroup::moveValuesTo
+  * Create utility method for moving entries from one group to another
+  * Add FreeBSD CI
+  * Add Android CI
+- Rebase kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
