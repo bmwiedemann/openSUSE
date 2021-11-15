@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,15 +25,15 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5ModemManagerQt
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/modemmanager-qt-%{version}.tar.xz
+Source:         modemmanager-qt-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/modemmanager-qt-%{version}.tar.xz.sig
+Source1:        modemmanager-qt-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  cmake
