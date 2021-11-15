@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 07 00:16:30 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1733:
+  * Update translations (2021-11-01) (#5886)
+  * Fix build on powerpc64le (#5884)
+  * CI/MacOS: Install SDL2 and FFMPEG from externals
+
+-------------------------------------------------------------------
 Sun Oct 24 00:14:27 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version nightly1730:
