@@ -513,4 +513,16 @@
  * Make default file mask consistent</comment>
     <requestid>925730</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>efef61713c7c26b0124b6edbd4f3b383</srcmd5>
+    <version>0.20.26</version>
+    <time>1636986381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.26:
+ * Support os.PathLike arguments to Repo.stage()
+ * Drop support for Python 3.5
+ * Add ``dulwich.porcelain._reset_file``
+ * Add ``Repo.unstage``</comment>
+    <requestid>931288</requestid>
+  </revision>
 </revisionlist>

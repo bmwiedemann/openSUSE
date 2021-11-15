@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:25:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.26:
+ * Support os.PathLike arguments to Repo.stage()
+ * Drop support for Python 3.5
+ * Add ``dulwich.porcelain._reset_file``
+ * Add ``Repo.unstage``
+
+-------------------------------------------------------------------
 Sat Oct 16 19:05:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.25:
