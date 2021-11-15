@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 14 08:03:44 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1636709514.73f6020e3:
+  * doc: Consider `nftables` being used in modern systems
+  * doc: Make it clear that SuSEfirewall2 is only used on older setups
+
+-------------------------------------------------------------------
 Fri Nov 12 00:03:50 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1636630679.707ec60a3:
