@@ -1,4 +1,418 @@
 -------------------------------------------------------------------
+Sun Nov 07 00:39:23 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.3~git20211106:
+  * GLES: Explicitly enable ARB_cull_distance.
+  * Update (id_ID.ini) translation
+  * Update CMakeLists.txt
+  * Update CMakeLists.txt & zh_CN.ini
+  * softgpu: Fix depth cull in softgpu.
+  * softgpu: Clip full weighted Z without truncating.
+  * Remove the vertex cache from the OpenGL backend.
+  * softgpu: Improve accuracy of line drawing.
+  * Headless: Indicate HAS_DISPLAY=0.
+  * GE Debugger: Record until some drawing.
+  * Fix zimtool compilation.
+  * GPU: Sort line verts to correct bias.
+  * New update translation id_ID.ini
+  * Update id_ID.ini
+  * Build: Add missing bundle identifier to macOS builds
+  * Lang: Fix some Indonesian strings.
+  * Lang: Fix CRC value formatting in id_ID and pt_BR.
+  * Lang: Indonesian translation.
+  * GPU: Keep diagonal lines the same width.
+  * Vulkan: Remove wide line handling.
+  * GPU: Expand lines to triangles.
+  * GPU: Correct point width/height.
+  * Vulkan: Disable large points feature.
+  * GPU: Expand points into triangles for higher res.
+  * GPU: Refactor out rectangle expansion.
+  * GPU: Skip cull for lines and points.
+  * vmulq_laneq_f32 not supported on ARM32
+  * GPU: Cleanup comments on swtranform cull.
+  * Optimize the rotation a bit (limit to VK/D3D11, mat2 instead of mat4)
+  * NEON/SSE-optimize some matrix multiplications used by software transform
+  * Sneak in a gradle bump
+  * Don't forget to check for bufferedRendering before enabling screen rotation in the shader.
+  * GPU: Implement cull behavior in sw transform.
+  * GPU: Rename pos/uv w for clarity.
+  * GPU: Correct w on immediate prim.
+  * GPU: Remove buggy rectangle culling.
+  * D3D11: Fix fog in software transform.
+  * GPU: Correct software transform projection.
+  * GPU: Add fog separately for swtransform verts.
+  * GPU: Restore rotation handling in sw transform.
+  * GPU: Process proj matrix in sw transform.
+  * GPU: Set projection matrix per backend.
+  * GPU: Update viewport params before sw transform.
+  * GPU: Move swtransform flippedY to params.
+
+-------------------------------------------------------------------
+Sun Oct 31 00:32:20 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.3~git20211029:
+  * Build: allow using system zstd library
+  * GPU: Fix missing newline in shader.
+  * Make sure to not leave cull distance uninitialized in other paths, if we do write to it in some path.
+  * GLES: Skip assert if no buffer.
+  * Fix analog resize
+  * Replacement: Allow starting a texture at budget.
+  * Replacement: Correct budget on later frames.
+  * Replacement: Add ini setting to disable pop-in.
+  * Replacement: Tweak some thread safety.
+  * Replacement: Ensurely orderly stop on reset.
+  * Replacement: Use a thread to load tex replacements.
+  * Replacement: Avoid rebuild until ready.
+  * Replacement: Avoid clash with X define.
+  * Replacement: Centralize lookup logic.
+  * Replacement: Delay load texture data.
+  * Replacement: Purge old cached decoded textures.
+  * Replacement: Add structure for delayed loading.
+
+-------------------------------------------------------------------
+Sun Oct 24 10:57:52 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.3~git20211024:
+  * Debugger: Add reason to cpu.stepping event.
+  * Debugger: Track reason for entering stepping.
+
+-------------------------------------------------------------------
+Sun Oct 24 00:34:05 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.3~git20211023:
+  * GPU: Allow range cull on Mali/etc.
+  * Core: Fix unused variable warning.
+  * Update ffmpeg submodule with new linux arm64 build compiled with -pic
+  * GPU: Enable new guardband culling again.
+  * Compat: Ignore DisableRangeCulling with clip/cull.
+  * Path: Avoid adding a double slash from root.
+  * Adhoc: Drop useless pointer check
+  * Update Italian (it_IT) translation, thanks Vecna
+  * macOS: Correct open memstick with space.
+  * UI: Correct filtering message without keyboard.
+  * UI: Add more keyboard sysprop checks.
+  * libretro: Expose bool system properties.
+  * UI: Add a sysprop for if the device has a keyboard.
+  * UI: Add search filtering to settings.
+  * UI: Add a way to disable tabs in tab strips.
+  * UI: Add game settings tabs in a consistent way.
+  * Debugger: Add APIs for GPU stats.
+  * Core: Allow forcing debug statistics collection.
+  * Display: Allow threadsafe listeners.
+  * Debugger: Add initial GPU stats shell.
+  * UI: Add button to show memstick folder.
+  * Windows: Switch to preferred file selection method.
+  * macOS: Allow opening game folder.
+  * Qt: Allow opening game folder.
+  * We don't use primitiveRestart for anything, let's not enable it. It has costs on some hardware.
+  * More best-practices adjustments
+  * Ran the "Vulkan best practices" layer, fixed some stuff.
+
+-------------------------------------------------------------------
+Tue Oct 19 12:34:26 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.3~git20211019:
+  * Update version to 1.12.3
+  * Update README.md for 1.12.3
+  * CwCheat: Remove assert on TempAR type codes. Seems weird that we had this.
+  * HLE: Add a few syscall names.
+  * Update Turkish translation (tr_TR), thanks Kishira Darken.
+  * compat.ini: Add Valkyrie Profile: Lenneth to [MpegAvcWarmUp], works around ending crash.
+  * GPU: Blit framebuf depth on create too.
+  * GPU: Refactor framebuffer depth blit for reuse.
+  * GPU: Fix matrix uvgen in software transform.
+  * Windows: Pause from menu shouldn't affect Break.
+  * GLES: Re-enable vertex cache.
+  * Io: Remove setting to disable I/O on thread.
+  * Reporting: Require I/O on thread to be on.
+  * UI: Remove I/O on thread setting.
+  * lang: Cleanup outdated translation key.
+  * Display: Remove frameskip fast-forward mode.
+  * GLES: Support GL_APPLE_clip_distance too.
+  * GPU: Support clip and cull distances separately.
+  * GPU: Move Z/W equal hack to bugs from supports.
+  * GPU: Split clip and cull caps.
+  * iOS: Buildfix bad GLES headers.
+  * D3D11: Support vertex clip/cull planes.
+  * D3D11: Correct clearing samplers.
+  * Vulkan: Cull verts fully outside depth.
+  * UI: Clear textures on Begin.
+  * GLES: Enable/disable clip distance 0.
+  * GLES: Check clip/cull distance support.
+  * Vulkan: Use clip distance only if supported.
+  * Vulkan: Add negative Z clipping.
+  * GPU: Correct depth handling for guardband.
+  * GPU: Verify throughmode for clears/rects.
+  * GPU: Cull rectangles more when depth clamp off.
+  * GPU: Cull rectangles outside valid Z.
+  * Update target Android version from 11 to 12. (API 30 to 31).
+
+-------------------------------------------------------------------
+Fri Oct 15 09:29:23 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.2~git20211013:
+  * Common: Remove MakeUnique.h.
+  * Retraducción
+  * Clear legacy flags
+  * Fix macOS 10.8~10.15 run compatibility
+  * Audio: Correct protection against time skew.
+  * Update version to 1.12.2
+  * Update README.md for 1.12.2
+  * Add input device debug info to touchscreen test screen
+  * compat.ini: Add DBZ Tenkaichi Tag Team to [ClearToRam], see issue #14283
+  * Android: Prioritize PAD devices.
+
+-------------------------------------------------------------------
+Sun Oct 10 00:56:26 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12.1~git20211009:
+  * Audio: Protect against time skew.
+  * Audio: Cleanup buffer wrap code.
+  * Update version for 1.12.1
+  * Update README.md for 1.12.1
+
+-------------------------------------------------------------------
+Fri Oct 08 21:46:57 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12~git20211008:
+  * Consistent sampler modes in UI to make Mali happy
+  * Fix an assortment of minor VK barrier bugs in mostly texture upload
+  * Mip generation: Transition the correct mipmap after blit.
+  * More checks in ParamSFO reader. Only problem left is that the strings are null terminated and can walk off the buffer.
+  * Replaced textures: Don't leak handles on failure, check allocation success
+  * UI: Disable focus movement on game start.
+  * compat.ini: Add Street Riders to [DisableRangeCulling].
+  * compat.ini: Add NOVA to [DisableRangeCulling].
+  * Debugger: Keep pop up menus to ContextMenu only.
+  * Debugger: Centralize context menu handling.
+  * UI: Delay between successive mapping in controls.
+  * Draw: Atomically release objects.
+  * Set texture clamp mode for UI drawing. Fixes #14977, hopefully without breaking anything else..
+  * Add link to Chinese multiplayer wiki page.
+  * Paper over a race condition slightly better. Really need to redo sync here.
+  * Add sanity check to DirectoryFileHandle::Read
+  * Avoid throwing exceptions on bad post shader float parameters
+  * Sanity check string lengths in save state code
+  * Add some basic sanity checks to ParamSFO reader (could add more)
+  * Android: Catch some exceptions
+
+-------------------------------------------------------------------
+Thu Oct 07 20:46:30 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.12~git20211007:
+  * Debugger: Fix submenu offsets from removing unused.
+  * Vulkan: Handle desc set allocation failure better.
+  * Update AndroidManifest.xml for 1.12
+  * Fix brackets
+  * Add missing link
+  * More tweaks
+  * Force texture scaling away from the old Auto setting. Some Swedish translation.
+  * KAGE-008's Spanish update
+  * UI: Keep buttons at bottom for savedata.
+  * UI: Add scroll to savedata viewer for long descs.
+  * README: Cleanup duplicates and improve tense.
+  * Windows: Remove UI for auto texture scaling.
+  * Qt: Remove auto texture scaling option.
+  * libretro: Remove auto texture scaling option.
+  * Vulkan: Rework mipmap generation and its image barrier/layout handling.
+  * Fix a couple of typo
+  * Update script to remove old link
+  * Remove the "Auto" texture scale factor. It's a performance trap and not really useful.
+  * Move some old news to history.md
+  * Update script to be more flexible
+  * README.md updates, reorg
+  * Update README.md for 1.12
+  * Workaround to prevent some games from not retrying to connect on non-Windows system. This will also make a more cross-platform behavior on Windows/Linux/BSD
+  * Minor changes
+  * Remove deprecated jcenter() from build.gradle, replace with mavenCentral()
+  * Hide "What's This"? button on Android TV - no browser anyway
+  * Config: Correct cardboard setting ini load.
+  * Fix bug in deleting of directories in memory stick move. Also improve progress reporting.
+  * Fix small mistake in Choice layout with image
+  * Show text on the Browse button
+  * Minor warning fix
+  * Force off the VSync setting on Android (it wasn't actually used right).
+  * Add 4k support to uwp version on xbox
+  * Display: Avoid skipping flips at 60 FPS.
+  * Update zh_CN.ini
+  * Windows: Update copyright year.
+  * Debugger: Implement goto in disasm for memory view.
+  * Windows: Remove some unused constants.
+  * Windows: Remove some old and outdated files.
+  * An attempt to implement AdhocDiscover (can only Cancel the progress for now)
+
+-------------------------------------------------------------------
+Sun Oct 03 00:27:58 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20211002:
+  * compat.ini: Add Field Commander to MpegAvcWarmUp.
+
+-------------------------------------------------------------------
+Fri Oct 01 13:38:26 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20211001:
+  * compat.ini: Add Digimon World Re:Digitize to DisableRangeCulling
+  * softgpu: Allow end coordinate at bounds.
+  * softgpu: Avoid fast path for clamp/wrap cases.
+  * compat.ini: Add Megaman Maverick Hunter X to IntraVRAM... and RequireBlockTransfer.
+  * Set compat.ini option DisableFirstFrameReadback for Socom Fireteam Bravo 3. See #11814
+  * Add a crude way to blacklist post/texture shaders from certain vendors.
+  * Increase few column width for long translation, make control binding a bit taller
+  * Updated translation
+  * UI: Fix Game ID with insets on left side.
+  * oops need to typecast metasocket
+  * Changing most frequently used global vars to atomic to avoid possible multi-threading issue on friendFinder thread which communicates with AdhocServer in background. PS: There are more global vars being used here (too many actually), so we should find a better approach in the future (ie. using PSPThread instead).
+  * Fix threading issue when exiting PPSSPP due to unjoined AdhocServer thread when AdhocServer failed to bind the socket and exited the thread early.
+  * Prevent some games (ie. DBZ SB2) from repeatedly trying to Disconnect Adhocctl when not connected to AdhocServer.
+  * UI: Remove scroll to top on size change.
+  * UI: Keep scroll position on async load.
+  * UI: Have scroll views directly remember their pos.
+  * UI: Cleanup another header misuse.
+  * UI: Use a proper view for touch control borders.
+  * UI: Allow touch control editor buttons to grow.
+  * Remove .s suffix from vwbn disassembly
+  * UI: Allow cancel mapped to a letter in chat.
+  * Debugger: Add web debugger to build packaging.
+  * Debugger: Add web debugger in assets.
+  * Debugger: Serve local web debugger from assets.
+  * UI: Fix game installer extension check.
+  * UI: Fix measuring width constrained choices.
+  * http: Fix timeout mid request.
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * Instance: add missing include after 1bace5558340
+
+-------------------------------------------------------------------
+Sun Sep 26 14:27:29 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210926:
+  * Android: Create default folders in custom path.
+  * UI: Handle newlines after ellipsis.
+  * UI: Cleanup ellipsis more.
+  * UI: Correct text wrap with shy or Unicode spaces.
+  * UI: Add unit tests for text wrapping.
+  * UI: Cleanup more ellipsis cases, refactor.
+  * Fix disassembly of vcst
+  * UI: Cleanup double ellipsis issues.
+  * Windows: Improve rect measurement precision.
+  * UI: Avoid math on calculated value width.
+  * Android: Improve precision on text measure.
+  * Fix disassembly of vmfvc and vmtvc
+  * Fix text wrap edge case
+  * UI: Grow chat button based on text width.
+  * UI: Shrink value for all choice variants.
+  * UI: Shrink value display if needed.
+  * UI: Measure width of choice with values properly.
+  * UI: Asynchronously update size and dates on sort.
+  * UI: Cache save size on save buttons.
+  * UI: Reduce IO in savedata manager sorting.
+  * More ForceMax60FPS tweaks..
+  * Fix possible race condition issue when sending AdhocMatching data
+  * Temporary fix to avoid a crash that happened due to trying to logs a syscall's argument when being Logged from another thread (AdhocMatchingInput thread)
+  * Fix possible crash issue
+  * Update zh_CN.ini
+  * Don't need these strings anymore. Sorry those who spent time translating them :)
+  * Use the structopt crate to add some nice subcommands to langtool.
+  * Add vscode settings file for langtool (format-on-save, etc).
+  * Split langtool into multiple source file.
+  * Remove unused string and update en_US translation
+  * Use icon rather than string for combo key setup
+  * Also add the strings to the other languages.
+  * Add some strings from th_TH to en_US that were missing in the latter
+  * Update th_TH.ini
+  * Fix Translation to Japanese.
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * And another one
+  * Fix another couple of translation mistakes from the big fixup
+  * Fix another couple of translation screwups
+  * lang: Remove outdated string
+  * Use langtool to sync missing strings from en_US to all the other language files.
+  * langtool: have functions both to delete and comment out unused lines.
+  * Fix mistakes in en_US.ini
+  * More fixes to langtool
+  * Add permission to shm_open
+  * Do not resolve Pro Adhoc Server address when WLAN is turned off
+  * Update zh_CN.ini
+  * Update zh_CN.ini
+  * Fix dpad analog overlap interaction
+  * Fix race condition issue on AdhocMatching
+  * Add a bunch more missing strings to en_US.ini
+  * Remove outdated string
+  * Add a LOT of missing strings to en_US.ini, auto-found by checking thai against English. Thanks Saramagrean. Part 1/2
+  * langtool: Automatically comment out lines that are not present in en_US.ini.
+  * Use langtool to automatically add missing MemStick section to lots of language inis.
+  * langtool: Fix clippy warnings
+  * langtool: Ignore comments when syncing lines
+  * Remove unused string
+  * Remove misplaced left-to-right-mark character in ar_AE.ini.
+  * compat.ini ForceMax60Fps updates, thanks Gamemulatorer
+  * Update zh_CN.ini
+  * Compat: Remove duplicate entries.
+  * Don't process the README.md
+  * Handle BOM
+  * Add little langtool for copying missing language ini strings
+  * Remove superfluous line from ja_JP.ini
+  * Fix another translation key string
+  * Fix and add some translation strings
+  * Update th_TH.ini
+  * Add italian translation
+  * Move the What's this? translation to the Memstick section
+  * UI: Add a bit of reporting in failure cases.
+  * UI: Use OK instead of Confirm.
+  * Fix typo
+  * Revert a wrong change to Thai
+  * Add Swedish translation of Memstick screen
+  * Remove (GB) suffix from "Memory Stick size", it's now shown as a unit.
+  * Preparations for translating MemStickScreen and related strings.
+  * Browse -> OK. Align buttons.
+  * More tweaks (spacing)
+  * Style fix
+  * Tweaks
+  * Show the path to access PSP data through USB in the settings screen.
+  * Remove "Change" from "Change Memory Stick Folder". Easier to read.
+  * SEO optimization
+  * Undo debug hack
+  * Add image support to UI::Choice.
+  * Show the explanation below each point.
+  * Implement the new MemStick screen experience (rough cut)
+  * New settings icon for later. Derived from the Material Design one.
+  * Radio button assets
+  * Make a little info icon for later. Not in atlas yet.
+  * Always show Help button on memstick screen
+  * Use the new icons
+  * Shrink the folder icons slightly. Not updating atlas right now.
+  * Fix the look of buttons with images. Use one.
+  * Didn't mean to push this
+  * Move the memstick options higher on the System tab. Other minor tweaks
+  * Show the logo screen before the memstick screen on first boot with scoped storage
+  * Some file move process tweaks
+  * Add Help button to MemstickScreen, pointing at a guide on the website.
+  * MemstickScreen: Shrink the right column to leave more space
+  * HLE: Detect video buffer copies.
+  * TexCache: Avoid hashing videos at all in lazy mode.
+  * TexCache: Prevent lazy cache on video textures.
+  * Fix garbled log output in Xcode terminal
+  * Handle Xcode-specific debug arguments on startup
+  * Remove accidental duplicate file
+  * Keep tracks of the sender/source port on GameMode for further communication, in case it was remapped by router or ISP for some reason.
+  * Shows a warning when detecting a different sender/source port on GameMode.
+  * Minor change to AdhocMatching's senderport type
+  * vertexjit: Correct morph flag alpha check assert.
+  * Replacement: Fix a mistake in ZIM texture loading.
+  * Square shape for combo button. Additional shapes (folder_open, warning) too.
+  * Common: Use 0 as unknown size in GetFileSize().
+  * Fix atlas tool on linux
+  * Keeping track the source port of received data on AdhocMatching to be used for further communication, in the case the port was re-mapped for some reason.
+  * Show a warning if other players detected to have their port being re-mapped, where communication with them might have an issue.
+  * Don't ignores unknown sender/source port, due to a possibility of port re-mapping done by router or ISP the source port might be different.
+  * Minor change to AdhocMatching logging
+  * Little fix to logo screen
+
+-------------------------------------------------------------------
 Fri Sep 17 11:46:44 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version 1.11.3~git20210917:
