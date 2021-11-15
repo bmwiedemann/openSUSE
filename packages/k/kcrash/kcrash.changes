@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Move more Linux-specific functions under #ifdef Q_OS_LINUX
+  * Add CMake option to build without X11
+  * Use imported target for X11
+  * Fix build without X11
+  * Add FreeBSD CI
+  * Add Android CI
+  * Enable CI deps on all platfoprms
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
