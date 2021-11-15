@@ -17,22 +17,22 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ki18n
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE fallbackLang.diff -- look for translations in locale/kf5 also
@@ -41,6 +41,7 @@ BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  python3
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
@@ -61,12 +62,19 @@ Obsoletes:      libKF5I18n4
 %if %{with lang}
 Recommends:     %{lname}-lang = %{version}
 %endif
+Requires:       iso-codes
 
 %description -n %{lname}
 KI18n provides functionality for internationalizing user interface text
 in applications, based on the GNU Gettext translation system.
 It wraps the standard Gettext functionality, so that the programmers
 and translators can use the familiar Gettext tools and workflows.
+
+%package imports
+Summary:        QML components for ki18n Framework
+
+%description imports
+This package contains QML imports for the ki18n framework.
 
 %package devel
 Summary:        KDE Gettext-based UI text internationalization
@@ -122,12 +130,17 @@ done
 %{_kf5_debugdir}/ki18n.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5I18n.so.*
+%{_kf5_libdir}/libKF5I18nLocaleData.so.*
 %{_kf5_plugindir}/
+
+%files imports
+%{_kf5_qmldir}/
 
 %files devel
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5I18n/
 %{_kf5_libdir}/libKF5I18n.so
+%{_kf5_libdir}/libKF5I18nLocaleData.so
 %{_kf5_mkspecsdir}/qt_KI18n.pri
 
 %changelog

@@ -1,7 +1,7 @@
-Index: ki18n-5.62.0git.20210303T212906~f04cdec/src/kcatalog.cpp
+Index: ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp
 ===================================================================
---- ki18n-5.62.0git.20210303T212906~f04cdec.orig/src/kcatalog.cpp	2021-03-05 06:49:14.921095959 +0100
-+++ ki18n-5.62.0git.20210303T212906~f04cdec/src/kcatalog.cpp	2021-03-05 06:53:45.726852961 +0100
+--- ki18n-5.62.0git.20210303T212906~f04cdec.orig/src/i18n/kcatalog.cpp	2021-03-05 06:49:14.921095959 +0100
++++ ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp	2021-03-05 06:53:45.726852961 +0100
 @@ -138,7 +138,19 @@
  
  QString KCatalog::catalogLocaleDir(const QByteArray &domain, const QString &language)
