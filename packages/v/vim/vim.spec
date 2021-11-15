@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3582
+%define patchlevel 3587
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -324,13 +324,19 @@ done
 install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 install -m 0644 %{SOURCE24} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/gvim.svg
 
-# the last installed binary is gvim. preserve it and
-# fix its symlinks. e* was added here as it doesnt make much sense in
-# console
+# the last installed binary is gvim. preserve it
 mv %{buildroot}%{_bindir}/vim %{buildroot}%{_bindir}/gvim
+%if %{with libalternatives}
+for f in vimdiff ex view rview rvim; do
+    rm %{buildroot}%{_bindir}/$f
+done
+%else
+# fix gvim symlinks. e* was added here as it doesnt make much sense in
+# console
 for f in egvim egview eview evim gex gvi gview gvimdiff rgview rgvim ; do
     ln -s -vf gvim %{buildroot}%{_bindir}/$f
 done
+%endif
 
 # install vim
 install -D -m 0755 vim-small %{buildroot}%{_bindir}/vim-small
@@ -340,40 +346,31 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/vim %{buildroot}%{_bindir}/vim
 ln -s -f %{_sysconfdir}/alternatives/vi %{buildroot}%{_bindir}/vi
 %else
-ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/vi
-ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/vim
-mkdir -p %{buildroot}%{_datadir}/libalternatives/vi
-cat > %{buildroot}%{_datadir}/libalternatives/vi/20.conf <<EOF
+for f in vi vim rvim evim eview egview view rview vimdiff edit ex egvim gex gvi gview gvimdiff rgview rgvim ; do
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/$f
+mkdir -p %{buildroot}%{_datadir}/libalternatives/$f
+done
+for f in vi vim rvim view rview vimdiff edit ex; do
+cat > %{buildroot}%{_datadir}/libalternatives/$f/20.conf <<EOF
 binary=%{_bindir}/vim-nox11
-group=vim, vi
+group=vim,vi
 options=KeepArgv0
 EOF
-cat > %{buildroot}%{_datadir}/libalternatives/vi/30.conf <<EOF
+done
+for f in vi vim evim rvim egview eview view rview vimdiff edit ex egvim gex gvi gview gvimdiff rgview rgvim ; do
+cat > %{buildroot}%{_datadir}/libalternatives/$f/30.conf <<EOF
 binary=%{_bindir}/gvim
-group=vim, vi
+group=vi,vim
 options=KeepArgv0
 EOF
-cat > %{buildroot}%{_datadir}/libalternatives/vi/19.conf <<EOF
+done
+for f in vim vi ; do
+cat > %{buildroot}%{_datadir}/libalternatives/$f/19.conf <<EOF
 binary=%{_bindir}/vim-small
-group=vim, vi
+group=vim,vi
 options=KeepArgv0
 EOF
-mkdir -p %{buildroot}%{_datadir}/libalternatives/vim
-cat > %{buildroot}%{_datadir}/libalternatives/vim/20.conf <<EOF
-binary=%{_bindir}/vim-nox11
-group=vim, vi
-options=KeepArgv0
-EOF
-cat > %{buildroot}%{_datadir}/libalternatives/vim/30.conf <<EOF
-binary=%{_bindir}/gvim
-group=vim, vi
-options=KeepArgv0
-EOF
-cat > %{buildroot}%{_datadir}/libalternatives/vim/19.conf <<EOF
-binary=%{_bindir}/vim-small
-group=vim, vi
-options=KeepArgv0
-EOF
+done
 %endif
 
 # compat symlinks
@@ -560,6 +557,18 @@ fi
 %{_datadir}/libalternatives/vi/20.conf
 %dir %{_datadir}/libalternatives/vim
 %{_datadir}/libalternatives/vim/20.conf
+%dir %{_datadir}/libalternatives/rvim
+%{_datadir}/libalternatives/rvim/20.conf
+%dir %{_datadir}/libalternatives/view
+%{_datadir}/libalternatives/view/20.conf
+%dir %{_datadir}/libalternatives/rview
+%{_datadir}/libalternatives/rview/20.conf
+%dir %{_datadir}/libalternatives/ex
+%{_datadir}/libalternatives/ex/20.conf
+%dir %{_datadir}/libalternatives/edit
+%{_datadir}/libalternatives/edit/20.conf
+%dir %{_datadir}/libalternatives/vimdiff
+%{_datadir}/libalternatives/vimdiff/20.conf
 %endif
 %{_bindir}/vim-nox11
 %{_bindir}/vim
@@ -701,6 +710,38 @@ fi
 %{_datadir}/libalternatives/vi/30.conf
 %dir %{_datadir}/libalternatives/vim
 %{_datadir}/libalternatives/vim/30.conf
+%dir %{_datadir}/libalternatives/rvim
+%{_datadir}/libalternatives/rvim/30.conf
+%dir %{_datadir}/libalternatives/view
+%{_datadir}/libalternatives/view/30.conf
+%dir %{_datadir}/libalternatives/rview
+%{_datadir}/libalternatives/rview/30.conf
+%dir %{_datadir}/libalternatives/eview
+%{_datadir}/libalternatives/eview/30.conf
+%dir %{_datadir}/libalternatives/ex
+%{_datadir}/libalternatives/ex/30.conf
+%dir %{_datadir}/libalternatives/edit
+%{_datadir}/libalternatives/edit/30.conf
+%dir %{_datadir}/libalternatives/vimdiff
+%{_datadir}/libalternatives/vimdiff/30.conf
+%dir %{_datadir}/libalternatives/egvim
+%{_datadir}/libalternatives/egvim/30.conf
+%dir %{_datadir}/libalternatives/egview
+%{_datadir}/libalternatives/egview/30.conf
+%dir %{_datadir}/libalternatives/evim
+%{_datadir}/libalternatives/evim/30.conf
+%dir %{_datadir}/libalternatives/gex
+%{_datadir}/libalternatives/gex/30.conf
+%dir %{_datadir}/libalternatives/gvi
+%{_datadir}/libalternatives/gvi/30.conf
+%dir %{_datadir}/libalternatives/gview
+%{_datadir}/libalternatives/gview/30.conf
+%dir %{_datadir}/libalternatives/gvimdiff
+%{_datadir}/libalternatives/gvimdiff/30.conf
+%dir %{_datadir}/libalternatives/rgvim
+%{_datadir}/libalternatives/rgvim/30.conf
+%dir %{_datadir}/libalternatives/rgview
+%{_datadir}/libalternatives/rgview/30.conf
 %endif
 %{_bindir}/vi
 %{_bindir}/vim

@@ -5384,4 +5384,21 @@ always built-in because vim has direct perl dependencies anyway.
   * Test_very_large_count fails on 32bit systems.</comment>
     <requestid>929735</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>dc755466fb6dcece86742816a00a916f</srcmd5>
+    <version>8.2.3587</version>
+    <time>1636986372</time>
+    <user>dimstar_suse</user>
+    <comment>- fixes boo#1192631
+-  Updated to version 8.2.3587, fixes the following problems
+  * Reading uninitialized memory when giving spell suggestions.
+  * The &quot;gd&quot; and &quot;gD&quot; commands do not update search stats. (Gary Johnson)
+  * &quot;verbose set efm&quot; reports the location of the :compiler command. (Gary
+  Johnson)
+  * Crash when passing float to &quot;term_rows&quot; in the options argument of
+  term_start(). (Virginia Senioria)
+  * Command completion test fails.
+  * Compiler test fails with backslash file separator.</comment>
+    <requestid>931243</requestid>
+  </revision>
 </revisionlist>

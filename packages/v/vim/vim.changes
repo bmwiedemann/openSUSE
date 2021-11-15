@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 12 18:45:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fixes boo#1192631
+-  Updated to version 8.2.3587, fixes the following problems
+  * Reading uninitialized memory when giving spell suggestions.
+  * The "gd" and "gD" commands do not update search stats. (Gary Johnson)
+  * "verbose set efm" reports the location of the :compiler command. (Gary
+  Johnson)
+  * Crash when passing float to "term_rows" in the options argument of
+  term_start(). (Virginia Senioria)
+  * Command completion test fails.
+  * Compiler test fails with backslash file separator.
+
+
+-------------------------------------------------------------------
 Fri Nov  5 17:51:31 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.3582, fixes the following problems
