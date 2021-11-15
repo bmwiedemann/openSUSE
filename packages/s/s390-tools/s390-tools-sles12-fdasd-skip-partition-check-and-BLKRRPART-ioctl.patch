@@ -27,7 +27,7 @@ index 4503d3e..f04dc3d 100644
  	if (!anc->silent)
  		printf("rereading partition table...\n");
  
--	if (dasd_reread_partition_table(options.device, 1) != 0) {
+-	if (dasd_reread_partition_table(options.device, 5) != 0) {
 +	rc = dasd_reread_partition_table(options.device, 1);
 +	if (rc == EINVAL && !anc->force_virtual) {
  		fdasd_error(anc, unable_to_ioctl, "Error while rereading "

@@ -23,7 +23,7 @@ diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 index e1877ac..f03cbad 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -619,7 +619,7 @@
+@@ -621,7 +621,7 @@
   */
  static void check_disk(void)
  {
@@ -32,7 +32,7 @@ index e1877ac..f03cbad 100644
  	bool ro;
  
  	err = dasd_is_ro(g.dev_node, &ro);
-@@ -629,6 +629,23 @@
+@@ -631,6 +631,23 @@
  	if (ro)
  		error("Disk %s is read only!", g.dev_path);
  	if (!g.force) {

@@ -60,7 +60,18 @@ index 6dd28fa..5b6023a 100644
  	UTIL_OPT_SECTION("MISC"),
  	{
  		.option = { "check_host_count", no_argument, NULL, 'C' },
-@@ -392,7 +397,7 @@ static void evaluate_format_error(format
+@@ -318,7 +323,9 @@ static void draw_progress(int cyl, unsig
+ 	}
+ 
+ 	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
+-		printf("%d|", g.procnum);
++		if (g.yast_mode)
++			printf("%d|", g.procnum);
++		else printf("#");
+ 		fflush(stdout);
+ 		hashcount++;
+ 	}
+@@ -392,7 +399,7 @@ static void evaluate_format_error(format
  	unsigned int kl = 0;
  	int blksize = cdata->expect.blksize;
  
@@ -69,7 +80,7 @@ index 6dd28fa..5b6023a 100644
  		printf("\n");
  
  	/*
-@@ -780,8 +785,9 @@ static void check_hashmarks(void)
+@@ -780,8 +787,9 @@ static void check_hashmarks(void)
  			g.hashstep = 10;
  		}
 
@@ -81,7 +92,7 @@ index 6dd28fa..5b6023a 100644
  	}
  }
  
-@@ -1462,17 +1468,19 @@ static void do_format_dasd(volume_label_
+@@ -1462,17 +1470,19 @@ static void do_format_dasd(volume_label_
  			break;
  		}
  
@@ -104,18 +115,45 @@ index 6dd28fa..5b6023a 100644
  			printf("ok\n");
  		}
  	}
-@@ -1548,6 +1556,10 @@
+@@ -1548,6 +1558,7 @@ void process_dasd(volume_label_t *orig_v
  		error("%s", str);
  
  	set_geo(&cylinders, &heads);
-+	if (g.yast_mode) {
-+		printf("%d\n", cylinders);
-+		fflush(stdout);
-+	}
++
  	set_label(&vlabel, &format_params, cylinders);
  
  	if (g.check)
-@@ -1693,6 +1703,10 @@ int main(int argc, char *argv[])
+@@ -1557,6 +1568,29 @@ void process_dasd(volume_label_t *orig_v
+ 
+ }
+ 
++static void yast_print_cylinfo(const char *dev_filename)
++{
++	unsigned int cylinders = -1u;
++	int fd;
++	dasd_information2_t dasd_info;
++	struct dasd_eckd_characteristics *characteristics;
++
++	fd = open(dev_filename, O_RDONLY);
++	if ((fd != -1) && ( ! ioctl(fd, BIODASDINFO2, &dasd_info))) {
++
++		characteristics = (struct dasd_eckd_characteristics *) &dasd_info.characteristics;
++		if (characteristics->no_cyl == LV_COMPAT_CYL && characteristics->long_no_cyl)
++			cylinders = characteristics->long_no_cyl;
++		else
++			cylinders = characteristics->no_cyl;
++	}
++
++	if (fd != -1)
++		close(fd);
++	printf("%u\n", cylinders);
++	fflush(stdout);
++}
++
+ int main(int argc, char *argv[])
+ {
+ 	volume_label_t vlabel;
+@@ -1693,6 +1727,10 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -126,6 +164,41 @@ index 6dd28fa..5b6023a 100644
  		case 'P':
  			max_parallel = atoi(optarg);
  			break;
+@@ -1728,6 +1766,21 @@ int main(int argc, char *argv[])
+ 		reqsize = DEFAULT_REQUESTSIZE;
+ 	}
+ 
++/* If -Y (YaST mode) was specified by the caller, then we need to suppress
++ * most of all the other output that might be generated. But, we _do_ want
++ * hashmarks printed so that YaST can track what's going on. If it wasn't
++ * specified on the command line, set it to a default of 10 cylinders.
++ */
++	if (g.yast_mode) {
++		g.verbosity = 0;
++		g.print_progressbar = 0;
++		g.print_percentage = 0;
++		if (! g.print_hashmarks) {
++			g.print_hashmarks = 1;
++			hashstep_str = "10";
++		}
++	}
++
+ 	if (g.print_hashmarks)
+ 		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
+ 
+@@ -1747,6 +1800,12 @@ int main(int argc, char *argv[])
+ 	if (numdev > 1 && g.labelspec)
+ 		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
+ 
++	if (g.yast_mode) {
++		for (numproc = 0; numproc < numdev; numproc++)
++			yast_print_cylinfo(g.dev_path_array[numproc]);
++
++	}
++
+ 	for (numproc = 0; numproc < numdev; numproc++) {
+ 		chpid = fork();
+ 		if (chpid == -1 )
 -- 
 1.7.12.4
 

@@ -23,7 +23,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.15.1
+Version:        2.19.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -87,20 +87,6 @@ Source98:       zfcp_disk_configure.8
 Source99:       zfcp_host_configure.8
 ###
 
-Patch1:         s390-tools-sles15sp3-dasdfmt-Fix-segfault-when-an-incorrect-option-is-spe.patch
-Patch2:         s390-tools-sles15sp3-libutil-Compare-proc-entries-to-vfstype.patch
-Patch3:         s390-tools-sles15sp3-01-zdev-Add-FC-Endpoint-Security-information-for-DASD-d.patch
-Patch4:         s390-tools-sles15sp3-02-lsdasd-Add-FC-Endpoint-Security-information.patch
-Patch5:         s390-tools-sles15sp3-hsci-Add-new-tool-to-control-HiperSockets-Converged-.patch
-Patch6:         s390-tools-sles15sp3-zcryptstats-Fix-handling-of-partial-results-with-man.patch
-Patch7:         s390-tools-sles15sp3-01-genprotimg-abort-if-one-of-the-recursive-targets-is-.patch
-Patch8:         s390-tools-sles15sp3-02-genprotimg-fix-two-memory-leaks.patch
-Patch9:         s390-tools-sles15sp3-03-genprotimg-require-argument-for-ramdisk-and-parmfile.patch
-Patch10:        s390-tools-sles15sp3-04-genprotimg-add-host-key-document-verification-suppor.patch
-Patch11:        s390-tools-sles15sp3-zkey-Fix-APQN-property-names.patch
-Patch12:        s390-tools-sles15sp3-zipl-fix-4k-scsi-ipl.patch
-Patch13:        s390-tools-sles15sp3-dasd-change-DASD-udev-rule-to-set-none-scheduler.patch
-
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
@@ -113,8 +99,7 @@ Patch907:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
 Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
 Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch911:       s390-tools-sles15sp3-check-return-code-from-util_file_read_l.patch
-Patch912:       s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
+Patch911:       s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
@@ -127,8 +112,10 @@ BuildRequires:  kernel-zfcpdump
 BuildRequires:  libcryptsetup-devel > 2.0.3
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpfm-devel
+BuildRequires:  libxml2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
+BuildRequires:  openssl-devel >= 1.1.1l
 BuildRequires:  pesign-obs-integration
 BuildRequires:  qclib-devel-static
 BuildRequires:  tcpd-devel
@@ -211,13 +198,61 @@ on IBM Z servers.
 Summary:        IBM Enterprise Key Management Foundation - Web Edition client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Requires:       libekmfweb1
+Requires:       libekmfweb1 = %{version}
 
 %description -n libekmfweb1-devel
 libekmfweb1 is a client library that provides access to IBM' Enterprise Key
 Management Foundation – Web Edition.0 EKMF Web provides efficient and
 security-rich centralized key management for IBM z/OS data set encryption
 on IBM Z servers.
+
+%package -n libkmipclient1
+Summary:        IBM Key Management Interoperability Protocol (KMIP) client library
+License:        MIT
+Group:          System/Libraries
+
+%description -n libkmipclient1
+Key Management Interoperability Protocol (KMIP) is a client/server
+communication protocol for the storage and maintenance of key,
+certificate, and secret objects. This client library enables secure
+creation and storage of cryptographic objects on the IBM Security Key
+Lifecycle Manager server. You must configure client devices to connect
+to the server for key management operations.
+
+%package -n libkmipclient1-devel
+Summary:        Header files for the IBM Z KMIP client library
+License:        MIT
+Group:          Development/Libraries/C and C++
+Requires:       libkmipclient1 = %{version}
+
+%description -n libkmipclient1-devel
+This package provides the header files and symbolic link to the
+shared library for the IBM Z KMIP client library.
+
+%package chreipl-fcp-mpath
+Summary:        Use multipath information for re-IPL path failover
+License:        MIT
+Group:          System/Boot
+BuildRequires:  bash
+BuildRequires:  coreutils
+## Required for build+install with ENABLE_DOC=1
+#BuildRequires:  pandoc
+BuildRequires:  sed
+#BuildRequires:  gawk
+#BuildRequires:  gzip
+Requires:       bash
+# Required for use with HAVE_DRACUT=1
+Requires:       dracut
+Requires:       multipath-tools
+Requires:       udev
+Requires(post): udev
+
+%description chreipl-fcp-mpath
+The chreipl-fcp-mpath toolset monitors udev events about paths to the
+re-IPL volume. If the currently configured FCP re-IPL path becomes
+unavailable, the toolset checks for operational paths to the same
+volume. If available, it reconfigures the FCP re-IPL settings to use an
+operational path.
 
 %prep
 %autosetup -p1
@@ -234,7 +269,9 @@ export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 %make_build \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
-     DISTRELEASE=%{release}
+     DISTRELEASE=%{release} \
+     UDEVRUNDIR=/run/udev \
+     HAVE_DRACUT=1
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
@@ -244,6 +281,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
+     UDEVRUNDIR=/run/udev \
      HAVE_DRACUT=1
 
 # The make install command puts things in /etc/sysconfig and not the
@@ -258,8 +296,13 @@ popd
 install -m 755 read_values %{buildroot}/%{_bindir}/
 install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE87}
 
-export ROOT_BUILD_DIR="%{_builddir}/%{name}-%{version}/zfcpdump/kernel"
+# The "usrmerge" has happened in openSUSE:Factory, but not yet in SLES.
+# Make sure we look for the zfcpdump kernel image in the right place.
+%if 0%{?usrmerged}
 install -D -m600 %{_prefix}/lib/modules/*-zfcpdump/image %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
+%else
+install -D -m600 /boot/image-*-zfcpdump %{buildroot}%{_prefix}/lib/s390-tools/zfcpdump/zfcpdump-image
+%endif
 
 install -D -m644 etc/cpuplugd.conf %{buildroot}%{_sysconfdir}/cpuplugd.conf
 install -D -m644 etc/udev/rules.d/40-z90crypt.rules %{buildroot}%{_prefix}/lib/udev/rules.d/40-z90crypt.rules
@@ -343,7 +386,7 @@ rm -fv %{buildroot}/%{_sbindir}/chmem
 
 find . ! -type d |
     sed 's/^.//;\-/man/-s/^.*$/%doc &.gz/' > %{_builddir}/%{name}-filelist
-grep -v -E 'osasnmp|*\.conf$|ekmfweb.so|ekmfweb.h' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
+grep -v -E 'osasnmp|*\.conf$|ekmfweb.so|ekmfweb.h|kmipclient|kmip/profiles/*\.profile|chreipl-fcp-mpath' %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.list
 grep    osasnmp[^-] %{_builddir}/%{name}-filelist >%{_builddir}/%{name}.osasnmp
 
 touch boot/zipl/active_devices.txt
@@ -435,6 +478,12 @@ grep -q '^%{_bindir}/ts-shell$' %{_sysconfdir}/shells \
 %post -n libekmfweb1
 ldconfig
 
+%post -n libkmipclient1
+ldconfig
+
+%post chreipl-fcp-mpath
+%udev_rules_update
+
 %preun
 %service_del_preun appldata.service
 %service_del_preun cio_ignore.service
@@ -464,6 +513,9 @@ ldconfig
 %service_del_postun xpram.service
 
 %postun -n libekmfweb1
+ldconfig
+
+%postun -n libkmipclient1
 ldconfig
 
 # Even though SLES15+ is systemd based, the build service doesn't
@@ -496,7 +548,7 @@ fi
 %{stop_on_removal osasnmpd}
 
 %files -f %{_builddir}/%{name}.list
-%defattr(-,root,root)
+
 %doc README.md
 %doc README.SUSE
 
@@ -509,7 +561,10 @@ fi
 %config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/ts-shell.conf
 %config %attr(0640,root,ts-shell) %{_sysconfdir}/iucvterm/unrestricted.conf
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey
+%dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip
+%dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/kmip/profiles
 %dir %attr(0770,root,zkeyadm) %{_sysconfdir}/zkey/repository
+%config %{_sysconfdir}/zkey/kmip/profiles/*
 %config %{_sysconfdir}/modprobe.d/90-s390-tools.conf
 %config %{_sysconfdir}/cpuplugd.conf
 %config %{_sysconfdir}/zkey/kms-plugins.conf
@@ -540,29 +595,49 @@ fi
 %exclude %{_mandir}/man8/lshmc.8.gz
 
 %files -n osasnmpd -f %{_builddir}/%{name}.osasnmp
-%defattr(-,root,root)
 %{_libexecdir}/net-snmp/agents/osasnmpd
 
 %files zdsfs
-%defattr(-,root,root)
 %doc CAUTION
 %{_bindir}/zdsfs
 %{_mandir}/man1/zdsfs.1%{?ext_man}
 
 %files hmcdrvfs
-%defattr(-,root,root)
 %{_bindir}/hmcdrvfs
 %{_sbindir}/lshmc
 %{_mandir}/man1/hmcdrvfs.1%{?ext_man}
 %{_mandir}/man8/lshmc.8%{?ext_man}
 
 %files -n libekmfweb1
-%defattr(-,root,root)
 %{_libdir}/libekmfweb.so.*
 
 %files -n libekmfweb1-devel
 %{_libdir}/libekmfweb.so
 %dir %attr(755,root,root) %{_includedir}/ekmfweb
 %attr(644,root,root) %{_includedir}/ekmfweb/ekmfweb.h
+
+%files -n libkmipclient1
+%{_libdir}/libkmipclient.so.*
+
+%files -n libkmipclient1-devel
+%{_libdir}/libkmipclient.so
+%dir %attr(755,root,root) %{_includedir}/kmipclient
+%attr(644,root,root) %{_includedir}/kmipclient/kmipclient.h
+
+%files chreipl-fcp-mpath
+%doc chreipl-fcp-mpath/README.md
+## Requires build+install with ENABLE_DOC=1
+#doc chreipl-fcp-mpath/README.html
+%dir %{_prefix}/lib/chreipl-fcp-mpath/
+%{_prefix}/lib/chreipl-fcp-mpath/*
+%{_prefix}/lib/dracut/dracut.conf.d/70-chreipl-fcp-mpath.conf
+%{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-tgt
+%{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-vol
+%{_prefix}/lib/udev/chreipl-fcp-mpath-is-reipl-zfcp
+%{_prefix}/lib/udev/chreipl-fcp-mpath-record-volume-identifier
+%{_prefix}/lib/udev/chreipl-fcp-mpath-try-change-ipl-path
+%{_udevrulesdir}/70-chreipl-fcp-mpath.rules
+## Requires build+install with ENABLE_DOC=1
+#{_mandir}/man7/chreipl-fcp-mpath.7.gz
 
 %changelog

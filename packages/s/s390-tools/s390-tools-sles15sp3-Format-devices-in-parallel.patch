@@ -63,7 +63,7 @@ index e7fc501..07c674b 100644
  
  #include "lib/dasd_base.h"
  #include "lib/dasd_sys.h"
-@@ -81,6 +82,7 @@
+@@ -81,6 +82,7 @@ static struct dasdfmt_globals {
  	int   mode_specified;
  	int   ese;
  	int   no_discard;
@@ -71,7 +71,7 @@ index e7fc501..07c674b 100644
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -105,6 +107,11 @@
+@@ -105,6 +107,11 @@ static struct util_opt opt_vec[] = {
  		.desc = "Perform complete format check on device",
  		.flags = UTIL_OPT_FLAG_NOSHORT,
  	},
@@ -83,7 +83,7 @@ index e7fc501..07c674b 100644
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -162,7 +170,7 @@
+@@ -162,7 +169,7 @@ static struct util_opt opt_vec[] = {
  		.desc = "Show a progressbar",
  	},
  	{
@@ -92,16 +92,7 @@ index e7fc501..07c674b 100644
  		.desc = "Show progress in percent",
  	},
  	UTIL_OPT_SECTION("MISC"),
-@@ -297,7 +305,7 @@
- 			p_old = p_new;
- 			barlength = cyl * 33 / cylinders;
- 			for (i = 1; i <= barlength; i++)
--				printf("#");
-+				printf("%d|", g.procnum);
- 			for (i = barlength + 1; i <= 33; i++)
- 				printf("-");
- 			printf("|%3d%%", p_new);
-@@ -311,7 +318,7 @@
+@@ -311,7 +318,7 @@ static void draw_progress(int cyl, unsig
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -110,7 +101,7 @@ index e7fc501..07c674b 100644
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -1560,7 +1568,11 @@
+@@ -1560,7 +1567,11 @@ int main(int argc, char *argv[])
  	char *reqsize_param_str = NULL;
  	char *hashstep_str      = NULL;
  
@@ -123,7 +114,7 @@ index e7fc501..07c674b 100644
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1623,7 +1635,7 @@
+@@ -1623,7 +1634,7 @@ int main(int argc, char *argv[])
  				g.print_hashmarks = 1;
  			}
  			break;
@@ -132,7 +123,7 @@ index e7fc501..07c674b 100644
  			if (!(g.print_hashmarks || g.print_progressbar))
  				g.print_percentage = 1;
  			break;
-@@ -1682,6 +1694,9 @@
+@@ -1682,6 +1693,9 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -142,7 +133,7 @@ index e7fc501..07c674b 100644
  		case OPT_CHECK:
  			g.check = 1;
  			break;
-@@ -1733,15 +1748,35 @@
+@@ -1733,15 +1747,35 @@ int main(int argc, char *argv[])
  	if (numdev > 1 && g.labelspec)
  		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
  
