@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 11 14:22:24 UTC 2021 - schubi@suse.com
+
+- Update to version libeconf-0.4.2+git20211111.c7a2c52:
+  * CMake fixes regarding document installation.
+  * Fixed different issues while writing string values to file.
+  * Writing comments to file too.
+  * Fixed memory leaks.
+  * Fixed crash while merging values.
+
+-------------------------------------------------------------------
 Fri Jul  9 07:16:22 UTC 2021 - schubi <schubi@localhost>
 
 - Update to version 0.4.1+git20210709.cf671f2:
