@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Too many changes since 5.87.0, only listing bugfixes:
+  * Expand katepart metadata (kde#444714)
+  * TextFolding::importFoldingRanges: get rid of UB (kde#444726)
+
+-------------------------------------------------------------------
 Sun Oct  3 20:34:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
