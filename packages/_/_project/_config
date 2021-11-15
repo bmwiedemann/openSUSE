@@ -438,6 +438,9 @@ Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernete
 # have choice for html2text
 Prefer: -python36-html2text -python38-html2text -python39-html2text
 
+# have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
+Prefer: -budgie-desktop
+
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python36-tornado -python36-tornado5 
 Prefer: python38-tornado -python38-tornado5
