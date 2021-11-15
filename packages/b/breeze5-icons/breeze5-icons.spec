@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -24,15 +24,15 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           breeze5-icons
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/breeze-icons-%{version}.tar.xz
+Source:         breeze-icons-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/breeze-icons-%{version}.tar.xz.sig
+Source1:        breeze-icons-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
@@ -70,7 +70,9 @@ This contains the Breeze (non-dark) icons in a QResource file, used by Kexi.
 
 # yast2-theme uses these, but it got renamed in 5.55.0
 ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze/preferences/32/yast-software.svg
-ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze-dark/preferences/32/yast-software.svg
+# FIXME: No longer there, but should be present anyway due to breeze-dark inheriting breeze
+# Remove after testing
+# ln -s yast-software-group.svg %%{buildroot}%%{_kf5_iconsdir}/breeze-dark/preferences/32/yast-software.svg
 
 %fdupes %{buildroot}%{_kf5_iconsdir}
 

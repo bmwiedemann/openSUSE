@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Too many changes since 5.87.0, only listing bugfixes:
+  * BUG: 395569 places icon use ColorScheme colors (kde#395569)
+  * BUG: 174203 add mail-download-now and mail-download-later icon (kde#174203)
+  * BUG: 436931 update anacondainstaller icon to respect fedora logo (kde#436931)
+  * Fix the dark install directory for installing colored icons (kde#444095)
+  * Install colored icons sizes into breeze-dark them as well (kde#444095)
+  * Fix color of 16px im-user-offline icon (kde#443658)
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
