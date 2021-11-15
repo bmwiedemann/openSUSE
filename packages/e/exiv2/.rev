@@ -606,4 +606,17 @@
     <comment></comment>
     <requestid>901277</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>455ccc00f9990a3c35d0d159baf53a78</srcmd5>
+    <version>0.27.5</version>
+    <time>1636986378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.27.5:
+  * BMFF bug fixes including CR3 previews
+  * Security fixes
+  * libFuzzer target
+  * Exiv2 monitored by oss-fuzz
+  * Minor bugs and fixes</comment>
+    <requestid>931277</requestid>
+  </revision>
 </revisionlist>

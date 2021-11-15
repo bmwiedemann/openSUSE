@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.27.5:
+  * BMFF bug fixes including CR3 previews
+  * Security fixes
+  * libFuzzer target
+  * Exiv2 monitored by oss-fuzz
+  * Minor bugs and fixes 
+
+-------------------------------------------------------------------
 Fri Jun 18 15:15:56 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable bmff format

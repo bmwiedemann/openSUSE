@@ -19,7 +19,7 @@
 %{bcond_with docs}
 
 Name:           exiv2
-Version:        0.27.4
+Version:        0.27.5
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 # Todo: graph generation fails with missing fonts
 %else
-Obsoletes:      libexiv2-doc < %{version}-%{release} 
+Obsoletes:      libexiv2-doc < %{version}-%{release}
 %endif
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
