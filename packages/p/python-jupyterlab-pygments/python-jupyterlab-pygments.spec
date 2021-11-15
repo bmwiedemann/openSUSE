@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-pygments
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab-pygments
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Pygments theme for jupyterlab
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_pygments/jupyterlab_pygments-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/jupyterlab/jupyterlab_pygments/%{version}/notebooks/Example.ipynb
+BuildRequires:  %{python_module nbval}
+BuildRequires:  %{python_module pygments >= 2.4.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,10 +51,13 @@ of the JupyterLab CSS variables.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest --nbval-lax %{SOURCE1}
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/jupyterlab_pygments
-%{python_sitelib}/jupyterlab_pygments-%{version}-py*.egg-info
+%{python_sitelib}/jupyterlab_pygments-%{version}*-info
 
 %changelog

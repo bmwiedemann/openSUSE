@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 14 18:02:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.1.2
+  * fix license metadata in setuptools
+- check for errors in Example.ipynb with nbval
+
+-------------------------------------------------------------------
 Sat Apr 25 16:48:39 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

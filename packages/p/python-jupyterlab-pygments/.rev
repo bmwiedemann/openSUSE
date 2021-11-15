@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>797793</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3efbd7612bde88ddb4368fdc473fbf29</srcmd5>
+    <version>0.1.2</version>
+    <time>1636986405</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.2
+  * fix license metadata in setuptools
+- check for errors in Example.ipynb with nbval (forwarded request 931415 from bnavigator)</comment>
+    <requestid>931416</requestid>
+  </revision>
 </revisionlist>
