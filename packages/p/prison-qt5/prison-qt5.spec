@@ -19,7 +19,7 @@
 %define sonum   5
 %define rname prison
 %define _libname KF5Prison
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,15 +27,15 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           prison-qt5
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(ZXing) >= 1.2.0
 BuildRequires:  pkgconfig(libdmtx)
 BuildRequires:  pkgconfig(libqrencode)
 
