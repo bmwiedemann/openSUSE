@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Fix the compiler warning by casting int to unsigned.
+  * Link privately against XCB when building statically (kde#441266)
+  * Add FreeBSD CI
+  * Add Android CI
+  * Enable CI deps on all platfoprms
+  * Update .kde-ci.yml: add FreeBSD
+
+-------------------------------------------------------------------
 Sun Oct  3 20:34:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
