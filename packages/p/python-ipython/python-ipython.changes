@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 12 21:30:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.29.0
+  * IPython 7.29 brings a couple of new functionalities to IPython
+    and a number of bugfixes. It is one of the largest recent
+    release, relatively speaking, with close to 15 Pull Requests.
+  * fix an issue where base64 was returned instead of bytes when
+    showing figures
+  * fix compatibility with PyQt6, PySide 6. This
+    may be of interest if you are running on Apple Silicon as only
+    qt6.2+ is natively compatible.
+  * fix matplotlib qtagg eventloop
+  * Multiple docs fixes, typos, ... etc.
+  * Debugger will now exit by default on SigInt
+    this will be useful in notebook/lab if you forgot to exit the
+    debugger. "Interrupt Kernel" will now exist the debugger.
+  * It give Pdb the ability to skip code in decorators. If
+    functions contain a special value names __debuggerskip__ =
+    True|False, the function will not be stepped into, and Pdb will
+    step into lower frames only if the value is set to False. The
+    exact behavior is still likely to have corner cases and will be
+    refined in subsequent releases. Feedback welcome. See the
+    debugger module documentation for more info. Thanks to the D.
+    E. Shaw group for funding this feature.
+
+-------------------------------------------------------------------
 Sun Oct 10 19:39:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.28.0:

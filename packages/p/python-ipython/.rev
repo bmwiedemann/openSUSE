@@ -1023,4 +1023,12 @@
   * enable autoplay in embed YouTube player PR #13133 (forwarded request 924563 from bnavigator)</comment>
     <requestid>924564</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2eb751d867cac6133821edc1b4ee1bc3</srcmd5>
+    <version>7.29.0</version>
+    <time>1636986370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931191</requestid>
+  </revision>
 </revisionlist>
