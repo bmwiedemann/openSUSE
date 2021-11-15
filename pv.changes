@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  5 19:58:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.20
+  * Starting pv in the background no longer immediately stops
+    unless the transfer is to/from the terminal.
+  * Using -B, -A, or -T now switches on -C implicitly.
+
+-------------------------------------------------------------------
 Tue Sep  8 08:48:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old specfile constructs.

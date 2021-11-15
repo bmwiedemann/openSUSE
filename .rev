@@ -135,4 +135,12 @@
     <comment>- Trim old specfile constructs.</comment>
     <requestid>832933</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9066b9eec163e459426292563b0f43a4</srcmd5>
+    <version>1.6.20</version>
+    <time>1636986369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931177</requestid>
+  </revision>
 </revisionlist>
