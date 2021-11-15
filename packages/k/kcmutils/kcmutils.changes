@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * KPluginSelector: Make sure to check if metaData/moduleInfo is valid before accessing it
+  * KPluginSelector: Allow KCMs to be loaded using X-KDE-ConfigModule keyword
+  * Remove unused internal method in KPluginSelector
+  * Deprecate KCModuleInfo in favor of KPluginMetaData API
+  * KCMultiDialog: Use deprecation macros to wrap internal KCModuleInfo API usage
+  * KCModuleLoader: Deprecate overloads using KCModuleInfo
+  * KPluginSelector: Port internally deprecated KCModuleInfo usage
+  * KCModuleProxy: Deprecate KService/KCModuleInfo overloads for constructor
+  * Add FreeBSD CI
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
