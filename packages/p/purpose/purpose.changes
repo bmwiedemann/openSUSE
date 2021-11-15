@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * cmake: Use custom command instead of custom target for copy
+  * Set a title for JobDialog (kde#444205)
+  * Improve job window buttons (kde#444145)
+  * Fix whitespace punctuation in a warning
+  * email: Ensure we don't crash when there's no mailto preferredService (kde#443788)
+  * Make sharing via Telegram work again
+  * Add FreeBSD CI
+
+-------------------------------------------------------------------
 Sun Oct  3 20:34:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0
