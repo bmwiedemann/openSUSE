@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 14 14:46:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.2.0
+  * Enhancement: KGeoTag now checks if the timezone data files
+    could actually be loaded and displays a warning about timezone
+    detection not working if not.
+  * Bugfix: Made selecting all entries of an image list work again
+    via the standard shortcut CTRL+A. This one was assigned to
+    "Assign images to GPS data", which can now be  accessed via
+    CTRL+M.  (kde#445023)
+  * Bugfix: QMimeDatabase::mimeTypeForFile now returns
+    application/xml+gpx as a GPX file's MIME type instead of
+    application/x-gpx+xml - at least here on my stable Gentoo
+    machine. This made KGeoTag refuse to load any GPX file. Now,
+    both MIME types are accepted.
+  * Change: Suppressed a warning by bumping cmake_minimum_required
+    to 3.16.0.
+
+-------------------------------------------------------------------
 Mon Oct 25 14:14:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.1.0
