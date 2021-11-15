@@ -25,19 +25,21 @@ Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-lsp-server-pr102-unpin-flake8.patch -- gh#python-lsp/python-lsp-server#102
+Patch0:         python-lsp-server-pr102-unpin-flake8.patch
 BuildRequires:  %{python_module setuptools >= 39.0.0}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module PyQt5}
-BuildRequires:  %{python_module autopep8}
-BuildRequires:  %{python_module flake8 >= 3.8.0 with %python-flake8 < 4}
+BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
+BuildRequires:  %{python_module flake8 >= 4.0.0 with %python-flake8 < 4.1.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pycodestyle >= 2.7.0}
+BuildRequires:  %{python_module pycodestyle >= 2.8.0 with %python-pycodestyle < 2.9.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
-BuildRequires:  %{python_module pyflakes >= 2.3.0}
+BuildRequires:  %{python_module pyflakes >= 2.4.0 with %python-pyflakes < 2.5.0}
 BuildRequires:  %{python_module pylint >= 2.5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
@@ -54,12 +56,12 @@ Requires:       python-pluggy
 Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
-Suggests:       python-autopep8
-Suggests:       (python-flake8 >= 3.8.0 with python-flake8 < 4)
+Suggests:       python-autopep8 >= 1.6.0
+Suggests:       python-flake8 >= 4.0.0
 Suggests:       python-mccabe >= 0.6.0
-Suggests:       python-pycodestyle >= 2.7.0
+Suggests:       python-pycodestyle >= 2.8.0
 Suggests:       python-pydocstyle >= 2.0.0
-Suggests:       python-pyflakes >= 2.3.0
+Suggests:       python-pyflakes >= 2.4.0
 Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
@@ -86,7 +88,7 @@ will be enabled:
 - YAPF for code formatting (preferred over autopep8)
 
 %prep
-%setup -q -n python-lsp-server-%{version}
+%autosetup -p1 -n python-lsp-server-%{version}
 # the only relevant changes from https://github.com/python-lsp/python-lsp-server/pull/94
 sed -i 's/pylint>=2.5.0,<2.10.0/pylint>=2.5.0/' setup.py
 sed -i "s/open(document.path, 'w')/open(document.path, 'w', encoding='utf-8')/" test/plugins/test_pylint_lint.py

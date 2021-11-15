@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>927855</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>46833db99d2ec625b1c759db3e774e41</srcmd5>
+    <version>1.2.4</version>
+    <time>1636986405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-lsp-server-pr102-unpin-flake8.patch with excessive
+  BR pinning of other optional dependencies (forwarded request 931425 from bnavigator)</comment>
+    <requestid>931426</requestid>
+  </revision>
 </revisionlist>
