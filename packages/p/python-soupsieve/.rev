@@ -157,4 +157,14 @@
   * Some small corner cases discovered with static typing.</comment>
     <requestid>929908</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>12b093ed8991bf71df0fb5b068651944</srcmd5>
+    <version>2.3.1</version>
+    <time>1636986384</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Ensure attribute selectors match tags that have new lines characters in
+    attributes</comment>
+    <requestid>931293</requestid>
+  </revision>
 </revisionlist>

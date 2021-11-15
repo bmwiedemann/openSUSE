@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:46:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Ensure attribute selectors match tags that have new lines characters in
+    attributes 
+
+-------------------------------------------------------------------
 Sat Nov  6 18:00:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3:
