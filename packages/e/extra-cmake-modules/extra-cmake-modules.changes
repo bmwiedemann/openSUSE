@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  7 09:13:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Fix Wayland_DATADIR when cross-compiling
+  * [android] Extend NDK workaround to version 22
+  * msvc: Fix __cplusplus value
+  * Fix ECM on systems without PyQt5 on Python 2
+  * ECMFindQMLModule: Use QT_HOST_BINS to find qmlplugindump
+  * FindQtWaylandScanner: Use QT_HOST_BINS to find qtwaylandscanner
+  * ecm_add_test: add -DQT_FORCE_ASSERTS to compile flags by default
+
+-------------------------------------------------------------------
 Sun Oct  3 20:33:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.87.0

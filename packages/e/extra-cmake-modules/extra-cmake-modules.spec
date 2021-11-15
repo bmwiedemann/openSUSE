@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,15 +25,15 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           extra-cmake-modules
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
+Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE
