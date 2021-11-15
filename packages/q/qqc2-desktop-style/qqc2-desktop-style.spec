@@ -16,19 +16,19 @@
 #
 
 
-%define _tar_path 5.87
+%define _tar_path 5.88
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.87.0
+Version:        5.88.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-desktop-style-%{version}.tar.xz
+Source:         qqc2-desktop-style-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/qqc2-desktop-style-%{version}.tar.xz.sig
+Source1:        qqc2-desktop-style-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules
