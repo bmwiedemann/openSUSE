@@ -1428,6 +1428,7 @@ unsorted:
   - broadvoice16-32bit: [x86_64] 
   - broadvoice16-devel 
   - broadvoice32 
+  - broadvoice32-32bit: [x86_64] 
   - broadvoice32-devel 
   - brotli 
   - browserpass-native 
@@ -7916,6 +7917,7 @@ unsorted:
   - khtml-devel 
   - khunphan 
   - ki18n-devel 
+  - ki18n-imports 
   - kicad 
   - kicad-doc 
   - kicad-doc-ca 
@@ -8069,6 +8071,7 @@ unsorted:
   - knot 
   - knot-devel 
   - knotifications-devel 
+  - knotifications-imports 
   - knotifyconfig-devel 
   - koan 
   - kochmorse 
@@ -22739,6 +22742,7 @@ unsorted:
   - python36-humanhash3 
   - python36-humanize 
   - python36-humanreadable 
+  - python36-hunter 
   - python36-hupper 
   - python36-husl 
   - python36-hvac 
@@ -25577,6 +25581,7 @@ unsorted:
   - python38-humanhash3 
   - python38-humanize 
   - python38-humanreadable 
+  - python38-hunter 
   - python38-hupper 
   - python38-husl 
   - python38-hvac 
@@ -28607,6 +28612,7 @@ unsorted:
   - python39-humanhash3 
   - python39-humanize 
   - python39-humanreadable 
+  - python39-hunter 
   - python39-hupper 
   - python39-husl 
   - python39-hvac 
