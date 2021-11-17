@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:43:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- Changes since 5.23.2:
+  * kstyle: Add QFocusFrame to non-view/delegate interactive widget (kde#443469)
+
+-------------------------------------------------------------------
 Tue Oct 26 14:55:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.2
