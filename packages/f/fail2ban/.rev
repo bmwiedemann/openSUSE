@@ -628,4 +628,12 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
     <comment></comment>
     <requestid>920602</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>8c475990a26ef486581d42d7ffe180f4</srcmd5>
+    <version>0.11.2</version>
+    <time>1637108026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931605</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 12 10:49:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added fail2ban-0.11.2-upstream-patch-python-3.9.patch to allow 
+  fail2ban run under under python 3.9+
+
+- Shifted the order of the patches
+
+-------------------------------------------------------------------
 Tue Sep 14 07:47:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

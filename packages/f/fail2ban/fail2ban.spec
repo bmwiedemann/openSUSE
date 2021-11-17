@@ -49,9 +49,12 @@ Patch200:       %{name}-disable-iptables-w-option.patch
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 # PATCH-FEATURE-OPENSUSE fail2ban-opensuse-service-sfw.patch jweberhofer@weberhofer.at -- start after SuSEfirewall2 only for older distributions
 Patch300:       fail2ban-opensuse-service-sfw.patch
+# PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
+Patch301:       harden_fail2ban.service.patch
 # PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch jweberhofer@weberhofer.at -- fixes CVE-2021-32749
 Patch400:       fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch
-Patch401:       harden_fail2ban.service.patch
+# PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-python-3.9.patch jweberhofer@weberhofer.at -- allow running under python 3.9+
+Patch401:       fail2ban-0.11.2-upstream-patch-python-3.9.patch
 
 BuildRequires:  fdupes
 BuildRequires:  logrotate
@@ -137,6 +140,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %if !0%{?suse_version} > 1500
 %patch300 -p1
 %endif
+%patch301 -p1
 %patch400 -p1
 %patch401 -p1
 
