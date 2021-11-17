@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:43:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- Changes since 5.23.2:
+  * wayland: Check workspace position when preferred deco mode changes
+  * DecorationItem: Prevent crash
+  * fixup! [wayland] fix ignored keyboard RepeatRate (kde#443721)
+  * RenderLoop: restrict repaint scheduling with fullscreen windows (kde#443872)
+  * wayland: Fix wayland windows growing after toggling decorations (kde#444119)
+  * Use QScopedPointer to store decoration object
+  * scripts/minimizeall: Try to preserve last active window
+  * screencasting: Do not crash when the platform cannot provide textures (kde#442711)
+  * effects/slidingpopups: Reload slide data after restarting compositing
+  * effects/slidingpopups: Schedule workspace repaints (kde#444502)
+  * platforms/drm: only use glDrawBuffer with desktop GL
+  * [keyboard kcm] fix lost Locks state on keymap reconfigure (kde#443739)
+- Drop patches, now upstream:
+  * 0001-platforms-drm-only-use-glDrawBuffer-with-desktop-GL.patch
+
+-------------------------------------------------------------------
 Mon Nov  8 09:27:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix kwin_wayland on GLES:
