@@ -18,7 +18,7 @@
 
 %define luv_min_ver 1.30.0
 # Luajit not available on all platforms
-%ifarch %{arm} %{ix86} x86_64
+%ifarch %{arm} %{ix86} x86_64 aarch64
 %bcond_without luajit
 %else
 %bcond_with luajit
@@ -42,8 +42,6 @@ Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
 Group:          Productivity/Text/Editors
 URL:            https://neovim.io/
-# Temporary measure before we can figure out what to do
-ExcludeArch:    aarch64
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysinit.vim
 Source2:        spec-template

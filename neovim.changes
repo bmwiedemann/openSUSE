@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 14:28:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable builds on aarch64
+- Use luaJIT on aarch64
+
+-------------------------------------------------------------------
 Mon Sep 27 06:23:49 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Temporarily switch off failing builds on aarch64
