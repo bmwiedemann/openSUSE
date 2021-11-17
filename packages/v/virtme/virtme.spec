@@ -1,7 +1,7 @@
 #
-# spec file for package virtme
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,26 @@ Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            https://git.kernel.org/cgit/utils/kernel/virtme/virtme.git
+URL:            https://git.kernel.org/cgit/utils/kernel/virtme/virtme.git
 Source0:        https://git.kernel.org/pub/scm/utils/kernel/virtme/virtme.git/snapshot/%{name}-%{version}.tar.gz
-Patch1:         0001-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+Patch1:         0001-Add-save-initramfs-to-save-the-actual-generated-init.patch
+Patch2:         0002-Make-save-initramfs-show-command-output-more-useful.patch
+Patch3:         0003-Fix-the-error-message-for-mods-misuse.patch
+Patch4:         0004-Fix-the-mods-error-even-better.patch
+Patch5:         0005-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+Patch6:         0006-mkinitramfs-Improve-the-find_busybox-algorithm.patch
+Patch7:         0007-Add-util.find_binary-to-find-binaries.patch
+Patch8:         0008-modfinder-Use-find_binary_or_raise-to-find-modprobe.patch
+Patch9:         0009-Enable-the-Xen-console-when-using-xen.patch
+Patch10:        0001-configkernel-Add-CONFIG_INOTIFY_USER-y.patch
+Patch11:        0002-Use-fsdev-multidevs-remap-on-QEMU-4.2.patch
+Patch12:        0003-Add-more-typing-annotations.patch
+Patch13:        0004-run.py-Extract-path-file-sanitizing-into-a-new-funct.patch
+Patch14:        0005-run.py-Introduce-blk-disk-argument.patch
+Patch15:        0006-Minor-sanitize_disk_args-cleanup.patch
+Patch16:        aarch64-Fix-aarch64-support.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
+#BuildRequires:  python-rpm-macros
 Requires:       busybox-static
 Requires:       qemu
 BuildArch:      noarch
@@ -52,8 +67,7 @@ sort of sandbox.
 find . -name __pycache__ -type d -exec rm -fr {} +
 
 %install
-export PYTHONDONTWRITEBYTECODE=1
-%py3_install
+export PYTHONDONTWRITEBYTECODE=1 %py3_install
 
 %files
 %{_bindir}/virtme-configkernel

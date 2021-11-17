@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:24:10 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Update patch for aarch64 support. Does not break full emulation case.
+
+-------------------------------------------------------------------
+Fri Oct 30 11:09:02 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Add patch to fix aarch64 native support.
+  * aarch64-Fix-aarch64-support.patch
+
+-------------------------------------------------------------------
+Wed Jul 22 01:14:28 UTC 2020 - Marcos de Souza <mpdesouza@suse.com>
+
+- Add patches to include some fixes and the new --blk-disk feature
+  * 0001-Add-save-initramfs-to-save-the-actual-generated-init.patch
+  * 0002-Make-save-initramfs-show-command-output-more-useful.patch
+  * 0003-Fix-the-error-message-for-mods-misuse.patch
+  * 0004-Fix-the-mods-error-even-better.patch
+  * 0005-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+  * 0006-mkinitramfs-Improve-the-find_busybox-algorithm.patch
+  * 0007-Add-util.find_binary-to-find-binaries.patch
+  * 0008-modfinder-Use-find_binary_or_raise-to-find-modprobe.patch
+  * 0009-Enable-the-Xen-console-when-using-xen.patch
+  * 0001-configkernel-Add-CONFIG_INOTIFY_USER-y.patch
+  * 0002-Use-fsdev-multidevs-remap-on-QEMU-4.2.patch
+  * 0003-Add-more-typing-annotations.patch
+  * 0004-run.py-Extract-path-file-sanitizing-into-a-new-funct.patch
+  * 0005-run.py-Introduce-blk-disk-argument.patch
+  * 0006-Minor-sanitize_disk_args-cleanup.patch
+- Drop outdated patch:
+  * 0001-mkinitramfs.py-Search-for-busybox-.-static-first.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 02:06:33 UTC 2019 - Marcos de Souza <mpdesouza@suse.com>
 
 - Current Tumbleweed's busybox does not work with virtme. For now require
