@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 12 13:20:09 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Rebase binutils-2.37-branch.diff: fixes PR28494.
+
+-------------------------------------------------------------------
+Fri Nov  5 16:54:36 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Add binutils-revert-hlasm-insns.diff for compatibility on old
+  code stream that expect 'brcl 0,label' to not be disassembled
+  as 'jgnop label' on s390x.  [bsc#1192267]
+
+-------------------------------------------------------------------
 Wed Nov  3 08:23:52 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Rebase binutils-2.37-branch.diff: fixes PR28523 aka boo#1188941.
@@ -116,8 +128,11 @@ Thu Jul 22 15:01:27 UTC 2021 - Martin Liška <mliska@suse.cz>
 - Includes fixes for these CVEs:
   bnc#1181452 aka CVE-2021-20197 aka PR26945
   bnc#1183511 aka CVE-2021-20284 aka PR26931
+  bnc#1184519 aka CVE-2021-20294 aka PR26929
   bnc#1184620 aka CVE-2021-3487 aka PR26946
   bnc#1184794 aka CVE-2020-35448 aka PR26574
+- Also fixes:
+  bsc#1183909 - slow performance of stripping some binaries
 - Rebased patches: binutils-build-as-needed.diff, binutils-fix-abierrormsg.diff,
   binutils-fix-invalid-op-errata.diff, binutils-fix-relax.diff,
   binutils-revert-nm-symversion.diff, binutils-revert-plt32-in-branches.diff

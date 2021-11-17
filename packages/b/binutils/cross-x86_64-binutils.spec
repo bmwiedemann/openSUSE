@@ -114,6 +114,7 @@ Patch39:        binutils-revert-nm-symversion.diff
 Patch40:        binutils-fix-abierrormsg.diff
 Patch41:        binutils-fix-relax.diff
 Patch42:        binutils-compat-old-behaviour.diff
+Patch43:        binutils-revert-hlasm-insns.diff
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -215,6 +216,7 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch41 -p1
 %if %{suse_version} < 1550
 %patch42 -p1
+%patch43 -p1
 %endif
 %patch100 -p1
 %if "%{TARGET}" == "avr"
