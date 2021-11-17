@@ -18,18 +18,13 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://assimp.org/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         do-not-install-irrXML.patch
-# PATCH-FIX-UPSTREAM -- Don't hardcode the library and binary location
-Patch1:         0001-use-GNUInstallDirs-where-possible.patch
-# PATCH-FIX-UPSTREAM -- GCC 11 build fixes backported to the 5.0.1 version
-Patch2:         0001-Fix-build-with-GCC-11.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

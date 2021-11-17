@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 13 16:29:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.0
+  * Check https://github.com/assimp/assimp/releases/tag/v5.1.0
+    for the full list of changes
+- Drop do-not-install-irrXML.patch. No longer needed.
+- Drop obsolete patches:
+  * 0001-Fix-build-with-GCC-11.patch
+  * 0001-use-GNUInstallDirs-where-possible.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 10:45:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC11:
