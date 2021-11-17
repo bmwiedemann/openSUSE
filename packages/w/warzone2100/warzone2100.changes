@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Nov 13 18:04:39 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.1
+  * General:
+    * Add: Replay v2 format: Embed downloaded maps, store
+      "end of game" info block
+    * Fix: Improve replay saving performance / behavior
+    * Fix: Handle frontend.img / intfac.img load failure explicitly
+    * Fix: updateChallenge() crash
+    * Fix: loadGame() crash if map load failed
+    * Fix: Various additional bounds checks & error logging
+    * Fix: cursors_sdl: Null checks, cleanup order fixes
+    * Fix: showUNITCOUNT should only apply to player slots
+    * Fix: Further OpenGL init tweaks
+  * Campaign:
+    * Change: Alpha 09 tweaks
+    * Change: Alpha 06 NP reinforcement tweak
+    * Change: Update a Nexus Resistance Circuit research item name
+    * Fix: Account for the transporter in campaign unit limit
+  * Scripting:
+    * Add: Provide a native fractal value noise generator for use
+      in map scripts
+  * Multiplayer:
+    * Add: Add specstats button
+    * Change: Host: Remember number of spectator slots in MP games
+    * Fix: Improve spectator lag / fast-forward behavior
+    * Fix: Do not reset ready status of players on spectator leave
+    * Fix: NetworkTextMessage::receive() crash
+    * Fix: ActivityManager: updateMultiplayGameData on MP replay
+     load
+    * Fix: Revamp WZFiles cleanup
+  * MP-Balance:
+    * Change: Rollback "ALL ROUNDER" damage value against "Legged",
+      Increase the accuracy at long range of all MGs from 50 to 55
+    * Change: Increase the weight of HVC, add 0.5 tiles range to
+      HVC cyborg, and reduce ROF of these weapons
+    * Change: Increase the research time "High Temperature Flamer
+      Gel Mk3" so it is no longer included in "Advanced Base"
+    * Change: Faster Bombard and Pepperpot production, weaken
+      Incendiary Mortar burn radius and damage, and earlier access
+      to mortar accuracy research
+    * Change: Required research for Howitzer: APFSDS Cannon Rounds
+      Mk2 -> Heavy Mortar - Bombard
+
+-------------------------------------------------------------------
 Mon Nov  1 21:36:15 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 - Updated to 4.2.0
   * General:
