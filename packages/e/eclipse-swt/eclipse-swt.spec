@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ Patch4:         eclipse-secondary-arches.patch
 Patch5:         eclipse-swt-optflags.patch
 Patch33:        eclipse-ppc64.patch
 Patch35:        eclipse-arm32.patch
+Patch37:        eclipse-is64.patch
 Patch39:        eclipse-gcc10.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  gcc
@@ -94,6 +95,7 @@ cp %{SOURCE10} build.xml
 %patch5
 %patch33 -p1
 %patch35 -p1
+%patch37 -p1
 %patch39 -p1
 
 # This part generates secondary fragments using primary fragments

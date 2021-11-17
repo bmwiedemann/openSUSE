@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 16 17:14:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * eclipse-is64.patch
+    + do not let is64 undefined when it is false
+
+-------------------------------------------------------------------
 Thu Apr  9 14:11:07 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Build eclipse-swt for architectures where eclipse itself is not
