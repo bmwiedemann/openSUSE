@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Nov 16 13:00:38 UTC 2021 - ecsos  <ecsos@opensuse.org>
+
+- Update to 15.0.1
+  - Bug fix: Restore :class:`.StandardErrorHandler` functionality
+  - The :class:`.StandardErrorHandler` class is responsible for dynamically
+    resolving (looking up the value of) sys.stderr for each logged message instead
+    of once when :func:`coloredlogs.install()` is called.
+  - This was unintentionally broken by changes in `release 14.1`_.
+  - _Release 15.0.1: https://github.com/xolox/python-coloredlogs/compare/15.0...15.0.1
+- Update to 15.0
+  - Don't enable system logging on MacOS and Windows anymore.
+  - This is backwards incompatible (which is why I'm bumping the major version
+    number) however the old behavior has been reported to be rather problematic
+    (see :func:`~coloredlogs.syslog.is_syslog_supported()` for details) so this
+    seems like the best choice.
+  - _Release 15.0: https://github.com/xolox/python-coloredlogs/compare/14.2...15.0
+- Update to 14.3
+  * Merged pull request `#89`_ which enhances :func:`coloredlogs.install()` to
+    preserve the filters on handlers that are replaced by :pypi:`coloredlogs`.
+  * _Release 14.3: https://github.com/xolox/python-coloredlogs/compare/14.2...14.3
+  * _#89: https://github.com/xolox/python-coloredlogs/pull/89
+- Update to 14.2
+  * Honor the ``$NO_COLOR`` environment variable as suggested in issue `#88`_.
+  * _Release 14.2: https://github.com/xolox/python-coloredlogs/compare/14.1...14.2
+  * _#88: https://github.com/xolox/python-coloredlogs/issues/88
+- Update to 14.1
+  **Bug fixes:**
+  - Don't allow interactive terminal detection to disable colored text when
+    colored text is being forced by the caller (reported in issue `#84`_).
+  - Automatically disable colored text when logging output is being redirected to
+    a file in such a way that it actually works 😬 (reported in issue `#100`_).
+  **Other changes:**
+  - Start testing on PyPy 3 (because why not?)
+  - _Release 14.1: https://github.com/xolox/python-coloredlogs/compare/14.0...14.1
+  - _#84: https://github.com/xolox/python-coloredlogs/issues/84
+  - _#100: https://github.com/xolox/python-coloredlogs/issues/100
+
+-------------------------------------------------------------------
 Sat Aug  1 07:23:57 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix minimum dependency version of python-humanfriendly
@@ -74,4 +112,3 @@ Wed Sep  6 18:00:41 UTC 2017 - toddrme2178@gmail.com
 Mon Oct 10 20:41:08 UTC 2016 - mardnh@gmx.de
 
 - initial package, version 5.1.1
-

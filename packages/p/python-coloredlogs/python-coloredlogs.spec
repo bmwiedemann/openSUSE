@@ -1,7 +1,7 @@
 #
 # spec file for package python-coloredlogs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-coloredlogs
-Version:        14.0
+Version:        15.0.1
 Release:        0
 Summary:        Colored terminal output for Python's logging module
 License:        MIT
