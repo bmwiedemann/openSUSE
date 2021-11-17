@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov  8 07:13:06 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.1
+
+- Update to 4.3.1:
+  * Feature: Reply to a message
+  * When removing all entries : delete all history and call logs
+  * Protect config from using contact if it doesn't exist while checking authentication
+  * Allow qml to have access to the Application Name
+  * Add a settings to change URL of version check
+
+-------------------------------------------------------------------
+Tue Nov  2 23:37:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.0
+
+- Update to 4.3.0:
+  * Chat groups with administrator mode, participants management and devices display
+  * Secure chat rooms for 1-1 and group chat using LIME end-to-end encryption
+  * Ephemerals Chat rooms
+  * LDAP integration: settings allow remote LDAP servers to be configured
+  * Show subject in notifications for group chats
+  * Chat area is no more fixed but adapts to content
+  * Allow to hide or show the timeline panel
+  * Allow to hide or show empty chat rooms in settings
+  * Messages font can now be changed in settings
+  * Echo calibration in settings view
+  * Options to audio codec can be used and stored
+  * A silence file have been added : `silence.mkv` and can be used to switch off some musics
+
+-------------------------------------------------------------------
 Tue Oct 19 23:57:57 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
 
 - allow to build linphone-desktop-4.2.5 with liblinphone 5.0.x

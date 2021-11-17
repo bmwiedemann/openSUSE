@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.2.5
+Version:        4.3.1
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -84,6 +84,7 @@ echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/
 echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
+sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/lib/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
 %cmake \
   -DCMAKE_CXX_FLAGS="-fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
@@ -91,9 +92,6 @@ echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.
   -DENABLE_UPDATE_CHECK=OFF \
   -DENABLE_STRICT=OFF       \
   -DENABLE_STATIC=OFF
-#the next two lines are necessary to compile linphone-desktop-4.2.5 with liblinphone 5.0.x
-sed -i '/Video is not yet fully supported/s@enableVideo@setVideoEnabled@' ../linphone-app/src/app/cli/Cli.cpp
-sed -i '/Video is not yet fully supported/s@enableVideo@setVideoEnabled@' ../linphone-app/src/components/conference/ConferenceAddModel.cpp
 %cmake_build
 
 %install
@@ -102,15 +100,18 @@ install -Dpm 0644 linphone.appdata.xml \
   %{buildroot}%{_datadir}/metainfo/org.linphone.appdata.xml
 
 rm %{buildroot}%{_bindir}/qt.conf
+chmod a-x %{buildroot}%{_datadir}/applications/linphone.desktop
 
 %files -n %{_name}
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{_bindir}/linphone
+%{_libdir}/libapp-plugin.so
 %{_datadir}/linphone/
 %{_datadir}/applications/linphone.desktop
 %{_datadir}/icons/hicolor/*/apps/linphone.*
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.linphone.appdata.xml
+%{_includedir}/LinphoneApp/
 
 %changelog

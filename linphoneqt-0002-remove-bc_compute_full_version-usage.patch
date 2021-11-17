@@ -30,8 +30,8 @@ index 3bc9420a..27b418ee 100644
 -
 -project(linphoneqt VERSION "${version_major}.${version_minor}.${version_patch}")
  
+
  if(ENABLE_BUILD_VERBOSE)
- 	#message("CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH}")
 diff --git a/linphone-app/build/CMakeLists.txt b/linphone-app/build/CMakeLists.txt
 index 8ef03faa..97d94bd6 100644
 --- a/linphone-app/build/CMakeLists.txt

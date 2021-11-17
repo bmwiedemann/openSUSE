@@ -7,7 +7,7 @@
 +set(APPLICATION_VERSION "${PROJECT_VERSION}")
  set(APPLICATION_URL "https://www.linphone.org")
  set(APPLICATION_VENDOR "Belledonne Communications")
- 
+ set(APPLICATION_LICENCE "GNU General Public License V3")
 --- a/linphone-app/src/app/AppController.cpp
 +++ b/linphone-app/src/app/AppController.cpp
 @@ -26,6 +26,10 @@
@@ -39,4 +39,4 @@
 +#cmakedefine APPLICATION_VERSION "${APPLICATION_VERSION}"
  #cmakedefine APPLICATION_VENDOR "${APPLICATION_VENDOR}"
  #cmakedefine APPLICATION_URL "${APPLICATION_URL}"
- #cmakedefine ENABLE_UPDATE_CHECK 1
+ #cmakedefine APPLICATION_LICENCE "${APPLICATION_LICENCE}"
