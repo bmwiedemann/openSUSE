@@ -80,7 +80,7 @@ cp %{buildroot}%{python3_sitelib}/jupyterlab_templates-%{version}.dist-info/LICE
 
 %files -n jupyter-jupyterlab-templates
 %license LICENSE
-%config %{_jupyter_server_confdir}/jupyterlab_templates.json
+%{?!_jupyter_distconfig:%config} %{_jupyter_server_confdir}/jupyterlab_templates.json
 %dir %{_jupyter_prefix}/labextensions
 %{_jupyter_prefix}/labextensions/jupyterlab_templates
 
