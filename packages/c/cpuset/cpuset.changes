@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 14:37:33 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Add cpuset-1.6-Fix_invalid_parentheses.patch to fix 
+  a semantic error. (bsc#1191418)
+
+-------------------------------------------------------------------
 Tue Dec 11 10:59:55 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

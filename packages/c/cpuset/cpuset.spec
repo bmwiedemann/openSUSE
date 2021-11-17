@@ -1,7 +1,7 @@
 #
 # spec file for package cpuset
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008-2011 Novell, Inc. Waltham, MA, USA
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,8 +33,9 @@ Release:        0
 Summary:        Cpuset manipulation tool
 License:        GPL-2.0-only
 Group:          System/Management
-Url:            https://github.com/lpechacek/cpuset
+URL:            https://github.com/lpechacek/cpuset
 Source:         https://github.com/lpechacek/cpuset/archive/v%{version}.tar.gz
+Patch0:         cpuset-1.6-Fix_invalid_parentheses.patch
 BuildRequires:  %{pyver}-setuptools
 Requires:       %{pyver}-future
 
@@ -47,6 +48,7 @@ shielding setup.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %{pyver} setup.py build
