@@ -28,6 +28,7 @@ URL:            https://pypi.org/project/smpplib/
 #Git-Clone:     https://github.com/python-smpplib/python-smpplib.git
 Source:         https://github.com/python-smpplib/python-smpplib/archive/%{version}.tar.gz#/smpplib-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
