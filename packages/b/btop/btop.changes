@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 16 16:47:50 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.1
+
+- Update to upstream release 1.1.1:
+  * Added: Partial static build (libgcc, libstdc++) for macos
+  * Changed: Continuous build macos switched to OSX 11.6 (Big Sur) and partial static build
+  * Changed: Release binaries for macos switched to OSX 12 (Monterey) and partial static build
+
+-------------------------------------------------------------------
+Mon Nov 15 21:11:28 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.0
+
+- Update to upstream release 1.1.0:
+  * Added: Support for OSX, by @joske and @aristocratos
+
+-------------------------------------------------------------------
 Tue Nov  9 14:57:37 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.0.24
 
 - Update to upstream release 1.0.24:
