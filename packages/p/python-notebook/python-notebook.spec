@@ -17,8 +17,7 @@
 
 
 #
-%bcond_with libalternatives_issue_11_fixed
-%if 0%{?suse_version} > 1500 && %{with libalternatives_issue_11_fixed}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -63,8 +62,6 @@ Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Recommends:     python-ipywidgets
 Suggests:       %{name}-latex
 Provides:       python-jupyter_notebook = %{version}
@@ -235,6 +232,8 @@ sed -E '
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
+# required when testing with jupyter_core 4.9.1
+export PYTHONNOUSERSITE=1
 # test_launch_socket_collision: fails because there are still servers listening
 pythonall_donttest="test_launch_socket_collision"
 %{python_expand # these tests call the wrong interpreter somewhere deep in the stack

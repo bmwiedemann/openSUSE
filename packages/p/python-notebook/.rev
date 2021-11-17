@@ -120,4 +120,14 @@
   gh#openSUSE/libalternatives#11</comment>
     <requestid>928024</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>6a10402173fa02e61ebc4ad4d12385a3</srcmd5>
+    <version>6.4.5</version>
+    <time>1637108028</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable libalternatives
+- Export PYTHONNOUSERSITE when testing for jupyter-core 4.9.1
+</comment>
+    <requestid>931610</requestid>
+  </revision>
 </revisionlist>

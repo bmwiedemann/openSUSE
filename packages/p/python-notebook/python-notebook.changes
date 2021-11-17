@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 23:02:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Reenable libalternatives
+- Export PYTHONNOUSERSITE when testing for jupyter-core 4.9.1
+
+-------------------------------------------------------------------
 Thu Oct 28 19:10:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Revert the usage of libalternatives due to
