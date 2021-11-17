@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        5.0.36
+Version:        5.0.49
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -71,9 +71,9 @@ develop programs using the oRTP library.
 %install
 %cmake_install
 
-mkdir -p %{buildroot}%{_docdir}
+mkdir -p %{buildroot}%{_docdir}/%{name}
 # manually keeping the version here because upstream doesn't (usually) update the patch version
-mv %{buildroot}%{_datadir}/doc/%{name}-5.0.0 %{buildroot}%{_docdir}/%{name}
+mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0 %{buildroot}%{_docdir}/%{name}
 
 # for some reason, pkgconfig file contains wrong libdir
 sed -i "s,-L/usr/lib,-L%{_libdir}," %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc
