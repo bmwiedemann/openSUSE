@@ -192,4 +192,12 @@
   * Pass version spec as an input #11322 (@jtpio) (forwarded request 931198 from bnavigator)</comment>
     <requestid>931199</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b105d1479de986d64f04ef4dbeabc283</srcmd5>
+    <version>3.2.3</version>
+    <time>1637108033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931630</requestid>
+  </revision>
 </revisionlist>

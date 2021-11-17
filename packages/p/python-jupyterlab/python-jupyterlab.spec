@@ -146,8 +146,8 @@ donttest+=" or test_load_extension"
 %{_bindir}/jupyter-lab
 %{_bindir}/jupyter-labextension
 %{_bindir}/jupyter-labhub
-%config %{_jupyter_servextension_confdir}/jupyterlab.json
-%config %{_jupyter_server_confdir}/jupyterlab.json
+%{?!_jupyter_distconfig:%config} %{_jupyter_servextension_confdir}/jupyterlab.json
+%{?!_jupyter_distconfig:%config} %{_jupyter_server_confdir}/jupyterlab.json
 %{_jupyter_lab_dir}
 
 %changelog
