@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 16 06:50:12 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.1+20211116.6bb085f (v1.5.1):
+- configure: validate configure options for paths (bsc#1185182)
+- man: refer to the modern run state directory `/run` if appropriate (bsc#1185182)
+- configure: add --with-runstatedir option (bsc#1185182)
+
+-------------------------------------------------------------------
+Tue Oct 19 13:23:13 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.0+20211005.5ed9fd2:
+- sbd-md: properly destroy io-context
+- sbd-md: properly free one-time-allocations of sector-buffers
+- avoid using deprecated valloc & frequent aligned alloc
+
+-------------------------------------------------------------------
 Thu Aug 12 15:48:03 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.0+20210720.f4ca41f:
