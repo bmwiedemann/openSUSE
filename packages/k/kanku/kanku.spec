@@ -29,6 +29,7 @@ Summary:        Development and continuous integration
 URL:            https://github.com/M0ses/kanku
 Group:          Productivity/Networking/Web/Utilities
 Source:         %{name}-%{version}.tar.xz
+Patch0:         0001_dancer-config.patch
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
@@ -41,10 +42,12 @@ BuildRequires:  perl(DBIx::Class)
 BuildRequires:  perl(DBIx::Class::Fixtures)
 BuildRequires:  perl(DBIx::Class::Migration)
 BuildRequires:  perl(Dancer2)
+BuildRequires:  perl(Dancer2::Plugin)
 BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible)
 BuildRequires:  perl(Dancer2::Plugin::Auth::Extensible::Provider::DBIC)
 BuildRequires:  perl(Dancer2::Plugin::DBIC)
 BuildRequires:  perl(Dancer2::Plugin::REST)
+BuildRequires:  perl(Dancer2::Plugin::WebSocket)
 BuildRequires:  perl(Expect)
 BuildRequires:  perl(File::HomeDir)
 BuildRequires:  perl(File::LibMagic)
