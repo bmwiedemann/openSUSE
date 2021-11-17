@@ -25,9 +25,11 @@ URL:            https://secure.phabricator.com/diffusion/ARC/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-arc-upgrade.patch -- Remove workflow/ArcanistUpgradeWorkflow.php
 Patch0:         remove-arc-upgrade.patch
+BuildRequires:  ca-certificates
 BuildRequires:  php7-curl
 BuildRequires:  php7-json
 BuildRequires:  xz
+Requires:       ca-certificates
 Requires:       php7
 Requires:       php7-curl
 Requires:       php7-json
@@ -51,7 +53,7 @@ For more information, visit http://www.phabricator.com/docs/arcanist/
 %patch0 -p1
 
 rm -f scripts/breakout.py
-# Remove 'arg upgrade'
+# Remove 'arc upgrade'
 rm -f src/workflow/ArcanistUpgradeWorkflow.php
 
 # Remove tests
@@ -78,7 +80,11 @@ find %{buildroot}%{_datadir}/phabricator/%{name}/bin -type f | \
 install -d -m 0755 %{buildroot}%{_bindir}
 ln -sf %{_datadir}/phabricator/%{name}/bin/arc %{buildroot}%{_bindir}/arc
 
-# bash completition
+# Replace bundled ca-bundle with symlink to system bundle.
+rm %{buildroot}%{_datadir}/phabricator/arcanist/resources/ssl/default.pem
+ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}%{_datadir}/phabricator/arcanist/resources/ssl/default.pem
+
+# bash completion
 
 install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions
 install -m 0644 support/shell/rules/bash-rules.sh %{buildroot}%{_datadir}/bash-completion/completions/arc

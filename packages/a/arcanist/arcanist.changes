@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 14 16:48:24 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Replace bundled certificates with symlink to the system
+  certificate bundle.
+- Some typo fixes.
+
+-------------------------------------------------------------------
 Tue Jan  5 14:50:54 UTC 2021 - pgajdos@suse.com
 
 - remove php7-devel from build dependencies
