@@ -160,4 +160,24 @@
   gh#openSUSE/libalternatives#11</comment>
     <requestid>928027</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4000c0b787357b7f162b8504be87603f</srcmd5>
+    <version>1.11.2</version>
+    <time>1637108029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.2
+  * Fix \s deprecation warning #600 (@Zsailer)
+  * Remove requests-unixsocket dependency #599 (@kevin-bates)
+  * bugfix: dir_exists is never awaited #597 (@stdll00)
+  * Fix missing await when call 'async_replace_file' #595
+    (@Wh1isper)
+  * add a pytest fixture for capturing logging stream #588
+    (@Zsailer)
+  * Maintenance and upkeep improvements
+  * Avoid dependency on NBConvert versions for REST API test #601
+    (@Zsailer)
+- Re-enable libalternatives
+</comment>
+    <requestid>931611</requestid>
+  </revision>
 </revisionlist>

@@ -17,8 +17,7 @@
 
 
 #
-%bcond_with libalternatives_issue_11_fixed
-%if 0%{?suse_version} > 1500 && %{with libalternatives_issue_11_fixed}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -27,7 +26,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -47,7 +46,6 @@ BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pyzmq >= 17}
-BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module terminado >= 0.8.3}
 BuildRequires:  %{python_module tornado >= 6.1}
@@ -68,7 +66,6 @@ Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
-Requires:       python-requests-unixsocket
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
