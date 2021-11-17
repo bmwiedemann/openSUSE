@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 17 06:58:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.10.3
+  * autoreconf.fiv; manpage & docs w/ 5.10.3
+  * Replace NDEBUG with MLR_DSL_NDEBUG ifdef to avoid name clash
+    with conda build
+  * precompute lemon artifacts
+
+-------------------------------------------------------------------
 Wed Mar 24 11:40:14 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.10.2
