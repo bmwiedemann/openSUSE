@@ -187,9 +187,21 @@ different kinds of data sources (databases, information servers,
 mail spools, etc). It is a complete architecture that provides
 everything needed to access data.
 
+%package report
+Summary:        GNU Data Access (GDA) Library
+Group:          System/Libraries
+Requires:       %{_name}-report-6_0-6_0_0 = %{version}
+
+%description report
+GNU Data Access (GDA) is an attempt to provide uniform access to
+different kinds of data sources (databases, information servers,
+mail spools, etc). It is a complete architecture that provides
+everything needed to access data.
+
 %package -n libgda-report-6_0-6_0_0
 Summary:        GNU Data Access (GDA) Library
 Group:          System/Libraries
+Requires:       %{_name}-report = %{version}
 
 %description -n libgda-report-6_0-6_0_0
 GNU Data Access (GDA) is an attempt to provide uniform access to
@@ -212,6 +224,8 @@ Summary:        GNU Data Access (GDA) Library -- Development Files
 Group:          Development/Libraries/C and C++
 Requires:       %{_name}-6_0-6_0_0 = %{version}
 Requires:       %{_name}-ui-6_0-6_0_0 = %{version}
+Requires:       %{_name}-report-6_0-6_0_0 = %{version}
+Requires:       %{_name}-xslt-6_0-6_0_0 = %{version}
 Requires:       typelib-1_0-Gda-6_0 = %{version}
 Requires:       typelib-1_0-Gdaui-6_0 = %{version}
 # named libgda-devel on 10.3
@@ -385,9 +399,10 @@ export NO_BRP_CHECK_BYTECODE_VERSION=true
 %meson_install
 # X-SuSE-Design is just to make the brp check happy...
 %suse_update_desktop_file org.gnome.gda.Browser X-SuSE-Design
-mv %{buildroot}%{_mandir}/man1/gda-sql.1* %{buildroot}%{_mandir}/man1/gda-sql-6.0.1*
+mv %{buildroot}%{_mandir}/man1/gda-sql.1 %{buildroot}%{_mandir}/man1/gda-sql-6.0.1
 sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/t*
-%find_lang libgda-6.0 %{?no_lang_C}
+chmod 755 %{buildroot}%{_bindir}/*
+%find_lang %{_name}-6.0 %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 
 %post -n libgda-6_0-6_0_0 -p /sbin/ldconfig
@@ -399,7 +414,7 @@ sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}
 %post -n libgda-xslt-6_0-6_0_0 -p /sbin/ldconfig
 %postun -n libgda-xslt-6_0-6_0_0 -p /sbin/ldconfig
 
-%files -n libgda-6_0-6_0_0-lang -f libgda-6.0.lang
+%files -n %{_name}-6_0-6_0_0-lang -f %{_name}-6.0.lang
 
 %files -n glade-catalog-libgda
 %{_datadir}/glade/catalogs/*
@@ -415,7 +430,7 @@ sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}
 %{_bindir}/gda-list-config-6.0
 %{_bindir}/gda-list-server-op-6.0
 %{_bindir}/gda-sql-6.0
-%{_mandir}/man1/gda-sql-6.0.1*
+%{_mandir}/man1/gda-sql-6.0.1%{?ext_man}
 # in report-5_0-4
 %exclude %{_datadir}/libgda-6.0/gda_trml2html
 %exclude %{_datadir}/libgda-6.0/gda_trml2pdf
@@ -457,12 +472,14 @@ sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}
 %files -n libgda-ui-6_0-plugins
 %{_libdir}/libgda-6.0/plugins/libgda-ui-plugins-libgda-6.0.so
 
+%files report
+%{_bindir}/trml2html.py
+%{_bindir}/trml2pdf.py
+
 %files -n libgda-report-6_0-6_0_0
 # NOTE: This library has the same versioning policy, but depends on libgda-sqlite.
 %{_datadir}/libgda-6.0/gda_trml2html
 %{_datadir}/libgda-6.0/gda_trml2pdf
-%{_bindir}/trml2html.py
-%{_bindir}/trml2pdf.py
 %{_libdir}/libgda-report-6.0.so.*
 
 %files -n libgda-xslt-6_0-6_0_0
