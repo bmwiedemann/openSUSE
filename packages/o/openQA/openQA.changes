@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 16 16:03:49 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1637075542.066802195:
+  * Fix conflicting attr names in collapse class of the investigation tab
+  * Increase time limit for 25-cache-service.t a little
+  * Construct the data attribute of the gitrepodir on investigation
+  * Extend test coverage and apply review feedback
+  * Update dependencies.yaml with Config::Tiny
+  * Add self-deduced git repo construction
+  * Provide the git stats hash with links
+  * Change how the investigation tab displays the git log output
+  * Fix enabling systemd unit `openqa-reload-worker-auto-restart@.path`
+  * Explicitly fail when no jobs to label are found
+  * Remove deprecated openqa-client calls
+  * Improve logging for openqa-label-all script
+
+-------------------------------------------------------------------
 Sun Nov 14 08:03:44 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1636709514.73f6020e3:
