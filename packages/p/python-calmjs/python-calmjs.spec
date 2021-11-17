@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-calmjs
 Version:        3.4.2
 Release:        0
@@ -60,15 +61,13 @@ export LANG=en_US.UTF-8
 %python_clone -a %{buildroot}%{_bindir}/calmjs
 # %%python_expand rm -r %%{buildroot}%%{$python_sitelib}/calmjs/testing
 # %%python_expand rm -r %%{buildroot}%%{$python_sitelib}/calmjs/tests
-%{python_expand touch %{buildroot}%{$python_sitelib}/calmjs/__init__.py
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
 # gh#calmjs/calmjs#61
-%python_expand rm -v %{buildroot}%{$python_sitelib}/calmjs/tests/test_argparse.py
-%pyunittest discover -v -s %{buildroot}%{$python_sitelib}/calmjs/
+# %%python_expand rm -v %%{buildroot}%%{$python_sitelib}/calmjs/tests/test_argparse.py
+%pyunittest -v calmjs.tests.make_suite
 
 %post
 %python_install_alternative calmjs

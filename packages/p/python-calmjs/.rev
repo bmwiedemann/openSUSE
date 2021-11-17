@@ -40,4 +40,14 @@
 </comment>
     <requestid>930992</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>06d3b92dc5540ecaf09fee4294f0d822</srcmd5>
+    <version>3.4.2</version>
+    <time>1637108058</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove creation of the unnecessary __init__py, which breaks the test
+  suite (gh#calmjs/calmjs#61). 
+</comment>
+    <requestid>931788</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 14:18:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove creation of the unnecessary __init__py, which breaks the test
+  suite (gh#calmjs/calmjs#61). 
+
+-------------------------------------------------------------------
 Thu Nov 11 22:29:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.4.2:
