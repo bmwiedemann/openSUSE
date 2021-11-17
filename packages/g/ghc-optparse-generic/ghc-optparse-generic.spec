@@ -18,7 +18,7 @@
 
 %global pkg_name optparse-generic
 Name:           ghc-%{pkg_name}
-Version:        1.4.5
+Version:        1.4.7
 Release:        0
 Summary:        Auto-generate a command-line parser for your datatype
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-system-filepath-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-void-devel
 ExcludeArch:    %{ix86}

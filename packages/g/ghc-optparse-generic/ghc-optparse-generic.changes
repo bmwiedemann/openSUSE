@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  9 08:00:41 UTC 2021 - psimons@suse.com
+
+- Update optparse-generic to version 1.4.7.
+  1.4.7
+
+  * [Derive `Data` instances for exported types](https://github.com/Gabriel439/Haskell-Optparse-Generic-Library/pull/89)
+
+-------------------------------------------------------------------
+Sun Oct 10 14:50:34 UTC 2021 - psimons@suse.com
+
+- Update optparse-generic to version 1.4.6.
+  1.4.6
+
+  * Use `readField` in default implementation of `parseField`
+
+-------------------------------------------------------------------
 Thu Sep  2 08:33:00 UTC 2021 - psimons@suse.com
 
 - Update optparse-generic to version 1.4.5.
