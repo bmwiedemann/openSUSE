@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 07:45:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable inline to fix build on armv6/7
+  https://trac.osgeo.org/geos/ticket/993
+
+-------------------------------------------------------------------
 Tue Feb 23 19:07:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.1:

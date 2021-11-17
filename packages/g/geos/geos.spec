@@ -79,7 +79,12 @@ use GEOS.
 %setup -q
 
 %build
-%configure --disable-static
+# Disable inline for armv6/7 - https://trac.osgeo.org/geos/ticket/993
+%configure \
+%ifarch %{arm}
+  --disable-inline \
+%endif
+  --disable-static
 make %{?_smp_mflags}
 
 # tests fail with older releases and non-intel architectures
