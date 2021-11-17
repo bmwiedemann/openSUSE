@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-schedule
 Version:        1.1.0
 Release:        0

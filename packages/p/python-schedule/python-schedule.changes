@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 12:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 2.7 build 
+
+-------------------------------------------------------------------
 Thu Sep  9 11:43:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use %autosetup macro instead
