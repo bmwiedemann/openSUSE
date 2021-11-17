@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 13 19:39:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.11:
+  * Updated Unicode tables to version 14.
+  * Skip isolates in fribidi_get_par_direction().
+  * Various fuzzing fixes.
+  * Various build fixes.
+
+-------------------------------------------------------------------
 Sun Aug  9 20:02:12 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.0.10:
