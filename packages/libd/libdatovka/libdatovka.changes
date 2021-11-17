@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 15 07:56:22 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.2.1
+  * Added function isds_DTInfo() which implements the DTInfo ISDS operation
+    and corresponding data structures.
+
+-------------------------------------------------------------------
 Mon Aug 30 06:37:40 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.2.0

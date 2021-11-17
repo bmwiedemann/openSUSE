@@ -25,4 +25,15 @@
     <comment></comment>
     <requestid>915766</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>694aef4cfad31ad91619ed74eef30e58</srcmd5>
+    <version>0.2.1</version>
+    <time>1637108004</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.1
+  * Added function isds_DTInfo() which implements the DTInfo ISDS operation
+    and corresponding data structures.
+</comment>
+    <requestid>931484</requestid>
+  </revision>
 </revisionlist>
