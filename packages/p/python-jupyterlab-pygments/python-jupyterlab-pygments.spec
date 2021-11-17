@@ -1,5 +1,5 @@
 #
-# spec file for package python-jupyterlab-pygments
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-Name:           python-jupyterlab-pygments
+Name:           python-jupyterlab-pygments%{psuffix}
 Version:        0.1.2
 Release:        0
 Summary:        Pygments theme for jupyterlab
@@ -27,14 +36,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab_pygments
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_pygments/jupyterlab_pygments-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyterlab/jupyterlab_pygments/%{version}/notebooks/Example.ipynb
-BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module pygments >= 2.4.1}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pygments >= 2.4.1
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module jupyterlab-pygments = %{version}}
+BuildRequires:  %{python_module nbval}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -44,20 +55,26 @@ of the JupyterLab CSS variables.
 %prep
 %setup -q -n jupyterlab_pygments-%{version}
 
+%if !%{with test}
 %build
 %python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest --nbval-lax %{SOURCE1}
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/jupyterlab_pygments
 %{python_sitelib}/jupyterlab_pygments-%{version}*-info
+%endif
 
 %changelog
