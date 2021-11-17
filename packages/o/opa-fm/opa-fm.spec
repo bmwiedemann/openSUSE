@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.6133b2fe5b39
+%define git_ver .0.5d1f7ee32920
 
 %define pseudo_opt %{_prefix}/lib/opa-fm
 %define opasysconfdir %{_sysconfdir}/opa-fm/
 %define opavarlibdir %{_localstatedir}/usr/lib/opa-fm/
 Name:           opa-fm
-Version:        10.11.0.0.574
+Version:        10.11.0.2.1
 Release:        0
 Summary:        Intel Omni-Path Fabric Management Software
 License:        BSD-3-Clause
@@ -32,8 +32,7 @@ Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch1:         opa-fm-Fallback-to-custom-vendor-if-os_vendor-fails.patch
 Patch2:         opa-fm-use-RPM_OPT_FLAGS.patch
-Patch3:         opa-fm-force-code-symbols-to-be-loaded.patch
-Patch4:         opa-fm-fix-multiple-definitions.patch
+Patch5:         opa-fm-harden-systemd-service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -57,8 +56,7 @@ Fabric Executive, and some fabric management tools.
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
 %patch2
-%patch3
-%patch4
+%patch5
 
 %build
 export RPM_OPT_FLAGS

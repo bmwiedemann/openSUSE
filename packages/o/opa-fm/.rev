@@ -128,4 +128,12 @@ Fix build with rdma-core (vs previous OFED)</comment>
     <comment></comment>
     <requestid>894020</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb7d8753567b5b0d88369bd9f02e854f</srcmd5>
+    <version>10.11.0.2.1</version>
+    <time>1637108032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931618</requestid>
+  </revision>
 </revisionlist>

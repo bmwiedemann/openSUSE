@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 15 19:07:26 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 10.11.0.2.1 (jsc#SLE-20578)
+  - gcc11 fixes
+- Drop patches merged upstream:
+  - opa-fm-force-code-symbols-to-be-loaded.patch
+  - opa-fm-fix-multiple-definitions.patch
+
+
+-------------------------------------------------------------------
+Fri Oct 15 07:25:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * opa-fm-harden-systemd-service.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 10:30:16 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v10.11.0.0.574
