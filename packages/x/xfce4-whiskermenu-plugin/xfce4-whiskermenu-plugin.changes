@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 14 16:24:34 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.6.2
+  * Fix background shifting when showing menu.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#41)
+  * Fix menu not toggling after pressing escape.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#65)
+  * Properly prevent interactive search in treeview.
+
+-------------------------------------------------------------------
 Thu Oct 14 08:50:47 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.6.1
