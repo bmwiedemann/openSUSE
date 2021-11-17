@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2013 Richard Hughes <richard@hughsie.com> -->
+<application>
+  <id type="codec">gstreamer-plugins-rs</id>
+  <metadata_license>CC0</metadata_license>
+  <name>GStreamer Plugins rust</name>
+  <summary>Multimedia plugins written in rust</summary>
+  <description>
+    <p>
+      This addon includes several plugins that are written in Rust.
+    </p>
+    <p>
+      The plugins build upon the GStreamer Rust bindings.
+    </p>
+  </description>
+</application>

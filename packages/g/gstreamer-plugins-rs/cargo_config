@@ -1,0 +1,14 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."https://github.com/fengalin/tokio"]
+git = "https://github.com/fengalin/tokio"
+tag = "tokio-0.2.13-throttling"
+replace-with = "vendored-sources"
+
+[source."https://github.com/rust-av/flavors"]
+git = "https://github.com/rust-av/flavors"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
