@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- Changes since 5.23.2.1:
+  * keyboardlayout: Fix missing Esperanto flag icon in the menu (kde#445077)
+  * kickoff: Do not accept stylus in TapHandler (kde#445111)
+  * DRAFT: Fix issues with LayoutManager.insertAtCoordinates (kde#444071)
+  * Revert "taskmanager: Show highlight before ToolTipInstance starts loading for grouped tooltips" (kde#444633)
+  * Do not unnecessarily reset panel opacity when starting an animation (kde#437093)
+  * foldermodel: Drop overlay(s) to icons in plasma folder view (kde#444514)
+  * plasma-desktop runner: Fix showing interactive plasma/kwin console (kde#444366)
+
+-------------------------------------------------------------------
 Wed Oct 27 11:10:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.2.1

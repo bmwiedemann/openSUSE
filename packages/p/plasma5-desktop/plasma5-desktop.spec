@@ -28,8 +28,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.23.2.1
-%global _plasma5_bugfix 5.23.2
+Version:        5.23.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
