@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 14 12:15:27 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 63.0.0
+  New features and enhancements:
+  * mkvmerge: AC-3 parser: E-AC-3 with BSID values > 10 and ≤ 15
+    are recognized now, too.
+  * mkvmerge: when using language codes for track selection
+    (e.g. `-a und,en`) all tracks that do not have a language
+    property (due to their container not providing one, e.g.
+    AVIs) will be treated as if they did have one set to `und`
+    ("undetermined") as that is the language the track will have
+    in the Matroska file anyway. Before this change it wasn't
+    possible to match such tracks via language codes.
+  * MKVToolNix GUI: the spinner in the bottom right corner will
+    now be hidden when no jobs are currently running.
+  * MKVToolNix GUI: header editor: a new column has been added
+    to the tree view showing the status of the "track enabled"
+    flag. The information is also shown on the track overview
+    page on the right.
+  * MKVToolNix GUI: header editor: users can now reorder tracks
+    by dragging & dropping.
+  Bug fixes:
+  * mkvmerge: AVI reader: fixed reading AVI files that contain
+    `vprp` video properties header chunks; reading aborted too
+    early.
+
+-------------------------------------------------------------------
 Sun Oct 10 11:34:13 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 62.0.0
