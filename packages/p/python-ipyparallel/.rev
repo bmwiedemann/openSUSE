@@ -221,4 +221,13 @@
     tasks submitted to the cluster, instead of limiting the number (forwarded request 931406 from bnavigator)</comment>
     <requestid>931407</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>35207d7b83673cb8711534fd5853ed23</srcmd5>
+    <version>8.0.0</version>
+    <time>1637108030</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky imap_infinite test
+</comment>
+    <requestid>931614</requestid>
+  </revision>
 </revisionlist>
