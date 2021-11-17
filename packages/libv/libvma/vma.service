@@ -9,6 +9,19 @@ After=rdma-load-modules@rdma.service
 After=rdma-hw.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=simple
 Restart=on-failure
 ExecStart=/usr/sbin/vmad
