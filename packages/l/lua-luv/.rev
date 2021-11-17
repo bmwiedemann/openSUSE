@@ -91,4 +91,20 @@
 </comment>
     <requestid>888232</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cc76718ff0cadd6236fed2880898ece0</srcmd5>
+    <version>MACRO</version>
+    <time>1637108075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.42.0-1:
+  * Use uv_handle_size/uv_req_size instead of sizeof
+  * LuaJIT: add missing LJ_ENDIAN and LJ_NO_UNWIND checks for DASM
+    [this fixes building on aarch64]
+- Fix shared library build
+- Clean spec file
+- Add lua-link.patch: must link with -llua
+- Add luv-module-install.patch: fix module install path
+</comment>
+    <requestid>931865</requestid>
+  </revision>
 </revisionlist>

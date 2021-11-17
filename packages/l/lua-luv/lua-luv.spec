@@ -16,57 +16,39 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%ifluadefault
+%define lua_default 1
+%endif
 %define mod_name luv
-%define upver 1.41.0-0
+%define upver 1.42.0-1
+%define fixver %(echo %{upver}|sed 's|-|~|g')
 %define libluv_sover 1
-%if 0%{?suse_version}
-%define flavor @BUILD_FLAVOR@
-%else
-%define flavor lua
-%endif
-%if 0%{?rhel}
-%define __cmake cmake3
-BuildRequires:  cmake3
-%else
-BuildRequires:  cmake
-%endif
-%if 0%{?fedora} || 0%{?rhel}
-%define flavor lua
-%endif
-%bcond_with public_lib
-%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
+%define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        1.41.0
+Version:        %{fixver}
 Release:        0
 Summary:        Bare libuv bindings for lua
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/luvit/%{mod_name}
-Source:         https://github.com/luvit/%{mod_name}/archive/%{upver}/%{mod_name}-%{upver}.tar.gz
+Source0:        https://github.com/luvit/%{mod_name}/releases/download/%{upver}/%{mod_name}-%{upver}.tar.gz
+Patch0:         lua-link.patch
+Patch1:         luv-module-install.patch
+BuildRequires:  cmake
 BuildRequires:  libuv-devel
 BuildRequires:  lua-macros
-%lua_provides
-%if 0%{?suse_version} && "%{flavor}" == "lua"
-ExclusiveArch:  do_not_build
-%endif
-%if 0%{?suse_version}
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
-Requires:       %{flavor}
 BuildRequires:  %{flavor}-compat-5.3
-# not SUSE
-%else
-BuildRequires:  lua-devel
-BuildRequires:  lua-filesystem
-%endif
-%if 0%{?rhel}
-BuildRequires:  lua-compat53
+Requires:       %{flavor}
+%lua_provides
+%if "%{flavor}" == "lua"
+ExclusiveArch:  do_not_build
 %endif
 
 %description
@@ -82,86 +64,58 @@ handles between states/loops.
 The best docs currently are the libuv docs themselves. Hopfully
 soon we'll have a copy locally tailored for lua.
 
-%package devel
+%ifluadefault
+%package -n libluv-devel
 Summary:        Header files for %{flavor}-%{mod_name}
 Group:          Development/Languages/Other
-Requires:       %{flavor}-%{mod_name} = %{version}
-%if %{with public_lib}
-Requires:       %{flavor}-libluv%{libluv_sover}
-%endif
+Requires:       libluv%{libluv_sover} = %{version}
 
-%description devel
+%description -n libluv-devel
 This subpackage contains header files for developing applications that
 want to make use of %{flavor}-%{mod_name}.
 
-%if %{with public_lib}
-%package -n %{flavor}-libluv%{libluv_sover}
+%package -n libluv%{libluv_sover}
 Summary:        Lua bindings for libluv as a library
 Group:          System/Libraries
 
-%description -n %{flavor}-libluv%{libluv_sover}
+%description -n libluv%{libluv_sover}
 This library makes libuv available to lua scripts. It was made
 for the luvit project but should usable from nearly any lua
 project.
 
-%post -n %{flavor}-libluv%{libluv_sover} -p /sbin/ldconfig
-%postun -n %{flavor}-libluv%{libluv_sover} -p /sbin/ldconfig
+%post -n libluv%{libluv_sover} -p /sbin/ldconfig
+%postun -n libluv%{libluv_sover} -p /sbin/ldconfig
 %endif
 
 %prep
 echo "Name is %{name}, Flavor is %{flavor}"
-%autosetup -n %{mod_name}-%{upver}
+%autosetup -p1 -n %{mod_name}-%{upver}
 
 %build
-%if %{with public_lib}
-# Build libluv.so shared library
-%{__cmake} -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
-    -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
-    -DBUILD_MODULE=OFF -DBUILD_SHARED_LIBS=ON \
-    -DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
-    -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}" \
-    -DLUA_BUILD_TYPE=System -DLUA_COMPAT53_DIR="%{lua_incdir}/"
-( cd build ; make )
-%endif
-
-# Build luv.so module
-%{__cmake} -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
-    -DBUILD_STATIC_LIBS=OFF -DCMAKE_INSTALL_DO_STRIP=OFF \
-    -DBUILD_MODULE=ON -DBUILD_SHARED_LIBS=ON \
-    -DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
-    -DLUA_INCLUDE_DIR:PATH="%{lua_incdir}" \
-    -DLUA_BUILD_TYPE=System -DLUA_COMPAT53_DIR="%{lua_incdir}/"
-( cd build ; make )
-
-find build -name \*.so\*
+%cmake \
+-DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
+-DLUA_BUILD_TYPE=System -DMODULE_INSTALL_LIB_DIR=%{lua_archdir} \
+-DSHAREDLIBS_INSTALL_LIB_DIR=%{_libdir} -DBUILD_SHARED_LIBS=OFF \
+%{?lua_default:-DBUILD_SHARED_LIBS=ON}
+%cmake_build
 
 %install
-install -v -D -m 0755 -p build/luv.so %{buildroot}%{lua_archdir}/luv.so
-%if %{with public_lib}
-mkdir -p %{buildroot}%{lua_archdir}/
-install -v -m 0755 -p build/libluv* %{buildroot}%{lua_archdir}/
-%endif
-mkdir -p %{buildroot}%{lua_incdir}/%{mod_name}
-install -v -m 0644 -p src/*.h %{buildroot}%{lua_incdir}/%{mod_name}/
+%cmake_install
 
 %files
 %license LICENSE.txt
 %doc *.md
 %{lua_archdir}/luv.so
 
-%files devel
+%ifluadefault
+%files -n libluv-devel
 %license LICENSE.txt
-%dir %{lua_incdir}/%{mod_name}
-%{lua_incdir}/%{mod_name}/*
-%if %{with public_lib}
-%{lua_archdir}/libluv.so
+%{_includedir}/%{mod_name}
+%{_libdir}/libluv.so
+%{_libdir}/pkgconfig/*.pc
 
-%files -n %{flavor}-libluv%{libluv_sover}
-%{lua_archdir}/libluv.so.*
+%files -n libluv%{libluv_sover}
+%{_libdir}/libluv.so.*
 %endif
 
 %changelog
