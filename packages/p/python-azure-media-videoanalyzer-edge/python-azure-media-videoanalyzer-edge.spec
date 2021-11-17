@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-media-videoanalyzer-edge
-Version:        1.0.0b2
+Version:        1.0.0b3
 Release:        0
 Summary:        Microsoft Azure Video Analyzer Edge SDK Library for Python
 License:        MIT
