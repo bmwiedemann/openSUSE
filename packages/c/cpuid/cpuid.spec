@@ -1,7 +1,7 @@
 #
 # spec file for package cpuid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cpuid
-Version:        20201006
+Version:        20211114
 Release:        0
 Summary:        x86 CPU identification tool
 License:        GPL-2.0-or-later
@@ -51,7 +51,7 @@ install -pm0644 cpuid.man "%buildroot/%_mandir/man1/cpuid.1"
 %files
 %doc ChangeLog
 %license LICENSE
-%_bindir/cpu*
-%_mandir/man1/cpuid.1*
+%_bindir/*
+%_mandir/man1/*.1%{?ext_man}
 
 %changelog

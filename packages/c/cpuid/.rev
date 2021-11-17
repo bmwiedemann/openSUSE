@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>840201</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5636cc18a62d61dd3989617d6aca9f1d</srcmd5>
+    <version>20211114</version>
+    <time>1637108036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20211114:</comment>
+    <requestid>931635</requestid>
+  </revision>
 </revisionlist>
