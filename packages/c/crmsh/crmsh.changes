@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 16 14:58:36 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211116.ef2bce26:
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: testcase: Remove node standby/online test case
+  * Dev: behave: Rename features/steps/step_implenment.py as features/steps/step_implementation.py
+  * Dev: behave: Add functional test for previous changes
+  * Dev: doc: Consolidate help info for those using argparse
+  * Dev: ui_cluster: Make sure node is online when stop service
+  * Dev: ui_cluster: Graceful shutdown dlm
+  * Dev: ui_cluster: Support multi sub-commands with --all option or specific node
+
+-------------------------------------------------------------------
 Mon Nov 01 02:01:47 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211101.7cafcfec:
