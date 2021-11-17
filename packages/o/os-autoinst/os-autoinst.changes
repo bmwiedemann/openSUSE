@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 15 10:31:56 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1636972309.195774f7:
+  * dist: Also disable i586 build for -test flavor
+  * Extend all backend API function signatures with optional slurpy @
+  * Use proper perl "signatures" in backend
+
+-------------------------------------------------------------------
 Fri Nov 12 01:18:11 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1636551041.85fc82ce:
