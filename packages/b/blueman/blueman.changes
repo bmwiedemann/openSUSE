@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 13 08:24:25 UTC 2021 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 2.2.3
+  * Recent connections disabled after suspend and resume
+  * Service authorization notifications did not respond
+  * Passkeys did not get displayed 
+- Updates from version 2.2.2
+  * Issues with power level bars
+  * Error message in blueman-mechanism
+
+-------------------------------------------------------------------
 Wed Jun  2 21:55:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.2.1

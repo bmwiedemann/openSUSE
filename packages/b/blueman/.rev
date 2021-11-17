@@ -106,4 +106,12 @@
 - Add subpackages for caja, nautilus, and nemo sendto extensions (forwarded request 897020 from susnux)</comment>
     <requestid>905251</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22943c8baad0c223f962145d61ce120e</srcmd5>
+    <version>2.2.3</version>
+    <time>1637108042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931642</requestid>
+  </revision>
 </revisionlist>

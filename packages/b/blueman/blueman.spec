@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?is_opensuse}
 %bcond_without caja
 %bcond_without nautilus
@@ -25,16 +26,16 @@
 %bcond_with nemo
 %endif
 Name:           blueman
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        GTK+ Bluetooth Manager
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://github.com/blueman-project/blueman
 Source:         https://github.com/%{name}-project/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  adwaita-icon-theme
 BuildRequires:  automake
 BuildRequires:  dbus-1-python3-devel
-BuildRequires:  adwaita-icon-theme
 BuildRequires:  fdupes
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
