@@ -1,0 +1,83 @@
+Author: Rhonda D'Vine <rhonda@debian.org>	vim:ft=diff:
+Description: Fixes small errors in the manpage
+
+Index: VCS/rungetty.8
+===================================================================
+--- VCS.orig/rungetty.8	2016-01-04 23:57:47.472794432 +0100
++++ VCS/rungetty.8	2016-01-04 23:57:58.424848740 +0100
+@@ -16,7 +16,7 @@
+ [\-\-autologin
+ .IR username ]
+ .I tty
+-[--] [command] [arguments]
++[\-\-] [command] [arguments]
+ .PP
+ .SH DESCRIPTION
+ .B rungetty
+@@ -74,7 +74,7 @@
+ Working directory of specified program.
+ .TP
+ .B \-d n
+-Specifying -d will make rungetty wait
++Specifying \-d will make rungetty wait
+ .I n
+ seconds before running the specified program.
+ .TP
+@@ -113,7 +113,7 @@
+ will revert to performing normal interactive logins for all subsequent
+ login requests.
+ .TP
+-.B --
++.B \-\-
+ Tells
+ .B rungetty
+ that there are no more options to parse, useful for passing arguments with
+@@ -141,7 +141,7 @@
+ .PP
+ .SH "ISSUE ESCAPES"
+ .B rungetty 
+-recognizes the following escapes sequences which might be embedded in the 
++recognizes the following escape sequences which might be embedded in the 
+ .I /etc/issue
+ file:
+ .IP \fB\ed\fP
+@@ -151,22 +151,22 @@
+ .B rungetty 
+ is running,
+ .IP \fB\em\fP
+-inserts machine architecture (uname -m),
++inserts machine architecture (uname \-m),
+ .IP \fB\en\fP
+-inserts machine's network node hostname (uname -n),
++inserts machine's network node hostname (uname \-n),
+ .IP \fB\eo\fP
+ inserts domain name,
+ .IP \fB\er\fP
+-inserts operating system release (uname -r),
++inserts operating system release (uname \-r),
+ .IP \fB\et\fP
+ insert current time (localtime),
+ .IP \fB\es\fP
+ inserts operating system name,
+-.IP \fB\eu\fP resp. \fB\eU\fP
++.IP \fB\eu\fP\ resp.\ \fB\eU\fP
+ the current number of users which are currently logged in.
+ \\U inserts "\fIn\fP users", where as \\u only inserts "\fIn\fP".
+ .IP \fB\ev\fP
+-inserts operating system version (uname -v).
++inserts operating system version (uname \-v).
+ .PP
+ .SH EXAMPLE
+ In
+@@ -178,9 +178,9 @@
+ .br
+ .B r2:2345:respawn:/sbin/rungetty tty2 telnet mail.foo.com
+ .br
+-.B r3:2345:respawn:/sbin/rungetty tty3 -u support top
++.B r3:2345:respawn:/sbin/rungetty tty3 \-u support top
+ .br
+-.B r4:2345:respawn:/sbin/rungetty tty4 -n 20 -w /etc rc5des
++.B r4:2345:respawn:/sbin/rungetty tty4 \-n 20 \-w /etc rc5des
+ .br
+ Would run a local login on 
+ .BR /dev/tty1 , a 

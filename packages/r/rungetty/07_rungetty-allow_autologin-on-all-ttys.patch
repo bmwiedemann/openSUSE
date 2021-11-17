@@ -1,0 +1,13 @@
+Index: rungetty-1.2/rungetty.c
+===================================================================
+--- rungetty-1.2.orig/rungetty.c
++++ rungetty-1.2/rungetty.c
+@@ -105,7 +105,7 @@ static int delay = 0;
+ #define AUTO_LAST "/var/log/autologin"
+ /* AUTO_TTY is the tty on which autologins will be accepted.  If set
+    to an empty string, autologins will be accepted on any tty. */
+-#define AUTO_TTY "tty1"
++#define AUTO_TTY ""
+ /* If supplied, attempt an automatic login with this username. */
+ static char *autologin_name = NULL;
+ 

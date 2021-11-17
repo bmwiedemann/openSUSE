@@ -1,0 +1,13 @@
+Index: rungetty-1.2/rungetty.c
+===================================================================
+--- rungetty-1.2.orig/rungetty.c
++++ rungetty-1.2/rungetty.c
+@@ -275,7 +275,7 @@ static void
+ do_prompt (void)
+ {
+   FILE *fd;
+-  char c;
++  signed int c;
+ 
+   write (1, "\n", 1);		/* start a new line */
+   if ((fd = fopen (ISSUE, "r")))
