@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.14.13
+Version:        2.15.0
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
@@ -82,7 +82,10 @@ Recommends:     gdouros-symbola-fonts
 Recommends:     python3-PyAudio
 # To play a sound on error:
 Recommends:     python3-simpleaudio
-
+# To make the setup tool look nicer and the search for dictionaries and imes better:
+Recommends: python3-langtable
+# Better regexpressions (optional):
+Recommends: python3-regex
 
 %description
 Ibus-typing-booster is a context sensitive completion

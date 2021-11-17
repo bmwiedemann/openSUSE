@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 16 16:11:03 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.15.0
+- Make matching in the database case insensitive
+  (https://github.com/mike-fabian/ibus-typing-booster/issues/251)
+- Remove accents for “input_phrase” when learning from a text file
+  (https://github.com/mike-fabian/ibus-typing-booster/issues/252)
+- Make matching in dictionaries case insensitive
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/251)
+- Cleanup user database when Typing Booster starts
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/239)
+  Also use the sqlite3 “VACUUM” command to rebuild the database
+  file, repacking it into a minimal amount of disk space
+- Add tabstatistics.py, command line tool to display some information
+  about the database contents
+- Use python3-pycountry as a fallback to langtable
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/250)
+- Add “Recommends: python3-langtable” to make the setup tool look nicer
+  and the search for dictionaries and imes better
+- Add “Recommends: python3-regex” to use better regexpressions if available
+
+-------------------------------------------------------------------
 Wed Sep 29 18:52:37 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.14.13
