@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  8 07:20:55 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.49
+
+- Update to 5.0.49:
+  * no changes
+
+-------------------------------------------------------------------
+Tue Nov  2 23:10:01 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.46
+
+- Update to 5.0.46:
+  * no changes
+
+-------------------------------------------------------------------
 Tue Oct 19 23:21:46 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
 
 - Update to 5.0.36:
   * no changes
-  * removed workaround for building with GCC11
+- removed workaround for building with GCC11
 
 -------------------------------------------------------------------
 Fri Oct 15 05:40:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
