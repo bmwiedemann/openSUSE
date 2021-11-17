@@ -56,7 +56,8 @@ sed -i '1{\@^#!/usr/bin/env python@d}' avro/*.py avro/tether/*.py avro/test/*.py
 
 %check
 # test_server_with_path: tries to connect to apache.org
-%pytest -k "not test_server_with_path"
+# test_minimum_speed is not stable in OBS
+%pytest -k "not test_server_with_path and not test_minimum_speed"
 
 %post
 %python_install_alternative avro
