@@ -23,4 +23,26 @@
     <comment></comment>
     <requestid>789692</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f363e67dfd62105d3aa0acfee30d37ef</srcmd5>
+    <version>1.3.0</version>
+    <time>1637108061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  - Introduce the extractor unparser - an unparser that will
+    unparse a valid AST into a dict.
+  - Correct the JoinAttr ruletype such that the intended empty
+    definition value is passed to walk if it was defined as such
+    to avoid an unintended infinite recursion.
+  - Will now import Iterable from the Python 3.3+ location as the
+    previous location is marked for removal in Python 3.9. The import
+    will still have a fallback to the previous location in order to
+    maintain support for Python 2.7.
+  - Provide a test case helper to ensure that the generic Program repr
+    signature is provided to assist with test case portability.
+  - In the calmjs.parse.vlq module, implemented the decode_vlq helper
+    for completeness/symmetry to the encode_vlq helper.
+</comment>
+    <requestid>931812</requestid>
+  </revision>
 </revisionlist>

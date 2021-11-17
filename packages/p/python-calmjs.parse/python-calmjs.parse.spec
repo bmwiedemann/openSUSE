@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs.parse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-calmjs.parse
-Version:        1.2.4
+Version:        1.3.0
 Release:        0
 Summary:        Various parsers for ECMA standards
 License:        MIT
 URL:            https://github.com/calmjs/calmjs.parse
 Source:         https://github.com/calmjs/calmjs.parse/archive/%{version}.tar.gz
 BuildRequires:  %{python_module ply >= 3.6}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,13 +46,13 @@ export LANG=en_US.UTF-8
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/calmjs/parse/testing
-%python_expand rm -r %{buildroot}%{$python_sitelib}/calmjs/parse/tests
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m calmjs.parse.parsers.optimize
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+%pyunittest -v calmjs.parse.tests.make_suite
 
 %files %{python_files}
 %doc README.rst CHANGES.rst
