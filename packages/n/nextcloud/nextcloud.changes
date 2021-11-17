@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 16 08:19:48 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 22.2.3
+  - Bump moment-timezone from 0.5.33 to 0.5.34 (server#29658)
+  - Don't flash external storage mountpoints during the status check (server#29706)
+  - Bump doctrine/dbal to 3.1.4 (server#29717)
+  - Add composer patch (3rdparty#890)
+  - Bump doctrine/dbal to 3.1.4 (3rdparty#895)
+
+-------------------------------------------------------------------
 Sat Nov 13 08:41:04 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 22.2.2
