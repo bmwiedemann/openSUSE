@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">0.2.0</param>
+    <param name="url">https://github.com/refi64/mrkd.git</param>
+    <param name="filename">python-mrkd</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="revision">a609ad8</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">python-mrkd*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="file">python-mrkd.spec</param>
+  </service>
+  <service name="format_spec_file" mode="disabled">
+    <param name="specfile">python-mrkd.spec</param>
+  </service>
+</services>

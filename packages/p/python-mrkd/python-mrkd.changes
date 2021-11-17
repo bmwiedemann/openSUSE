@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Nov 16 12:01:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Sat Nov 13 16:39:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make %check section which actually checks something.
+
+-------------------------------------------------------------------
+Sun Oct 24 16:10:33 UTC 2021 - marec@detebe.org
+
+- Update to version 0.2.0:
+  * Version 0.2.0
+  * Update packaging files
+  * Reformat setup.py
+  * Remove dependency on mistune_contrib
+  * Replace plac with plain argparse usage
+  * Move mrkd into its own package
+  * Make sure nested lists have enclosing line breaks
+  * Remove an unused import
+  * Auto-format with yapf
+  * Support custom CSS in the default template
+
+-------------------------------------------------------------------
+Sun Oct 24 16:04:21 UTC 2021 - marec <marec@detebe.org>
+
+- initial package build

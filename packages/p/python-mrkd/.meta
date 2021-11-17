@@ -1,0 +1,5 @@
+<package name="python-mrkd" project="openSUSE:Factory">
+  <title>Mrkd</title>
+  <description>Write man pages using Markdown, and convert them to Roff or HTML.</description>
+  <devel project="devel:languages:python" package="python-mrkd"/>
+</package>
