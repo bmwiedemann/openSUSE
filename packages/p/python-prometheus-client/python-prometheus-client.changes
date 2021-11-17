@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 13 22:50:42 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.12.0 release
+  * [FEATURE] Exemplar support (excludes multiprocess) #669
+  * [ENHANCEMENT] Add support for Python 3.10 #706
+  * [ENHANCEMENT] Restricted Registry will handle metrics added after restricting #675, #680
+  * [ENHANCEMENT] Raise a more helpful error if a metric is not observable #666
+  * [BUGFIX] Fix instance_ip_grouping_key not working on MacOS #687
+  * [BUGFIX] Fix assertion error from favicion.ico with Python 2.7 #715
+
+-------------------------------------------------------------------
 Fri Aug 27 18:40:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Rename back to the correct package name (with dashes;
