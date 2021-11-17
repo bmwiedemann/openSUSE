@@ -1811,9 +1811,6 @@ unsorted:
   - ccls 
   - ccrtp-devel 
   - ccrtp-doc 
-  - ccrypt 
-  - ccrypt-emacs 
-  - ccrypt-lang 
   - ccze 
   - ccze-devel 
   - cd-paranoia 
@@ -6252,6 +6249,7 @@ unsorted:
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
   - gstreamer-plugins-libcamera 
+  - gstreamer-plugins-rs-devel 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
@@ -10731,6 +10729,7 @@ unsorted:
   - libgda-6_0-sqlcipher 
   - libgda-6_0-sqlite 
   - libgda-6_0-tools 
+  - libgda-report 
   - libgda-report-6_0-6_0_0 
   - libgda-ui-6_0-6_0_0 
   - libgda-ui-6_0-plugins 
@@ -11754,6 +11753,8 @@ unsorted:
   - libluksde-tools 
   - libluksde1 
   - liblur3 
+  - libluv-devel 
+  - libluv1 
   - liblxc-devel 
   - liblxc1 
   - liblxpanel0 
@@ -15121,7 +15122,6 @@ unsorted:
   - lua51-luaterm 
   - lua51-luaunbound 
   - lua51-luv 
-  - lua51-luv-devel 
   - lua51-markdown 
   - lua51-mediator_lua 
   - lua51-messagepack 
@@ -15174,7 +15174,6 @@ unsorted:
   - lua53-luaterm 
   - lua53-luaunbound 
   - lua53-luv 
-  - lua53-luv-devel 
   - lua53-markdown 
   - lua53-mediator_lua 
   - lua53-messagepack 
@@ -15228,7 +15227,6 @@ unsorted:
   - lua54-luaterm 
   - lua54-luaunbound 
   - lua54-luv 
-  - lua54-luv-devel 
   - lua54-markdown 
   - lua54-mediator_lua 
   - lua54-messagepack 
@@ -20606,8 +20604,6 @@ unsorted:
   - postgresql14-server-devel 
   - postgresql14-test 
   - postgrey 
-  - postorius-web 
-  - postorius-web-uwsgi 
   - postsrsd 
   - potrace 
   - potrace-devel 
@@ -21372,7 +21368,6 @@ unsorted:
   - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
-  - python3-postorius 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -22033,6 +22028,7 @@ unsorted:
   - python36-azure-mgmt-videoanalyzer 
   - python36-azure-mgmt-vmwarecloudsimple 
   - python36-azure-mgmt-web 
+  - python36-azure-mixedreality-nspkg 
   - python36-azure-monitor 
   - python36-azure-monitor-nspkg 
   - python36-azure-monitor-query 
@@ -23022,6 +23018,7 @@ unsorted:
   - python36-moto-all 
   - python36-moto-server 
   - python36-mpmath 
+  - python36-mrkd 
   - python36-msal 
   - python36-msal-extensions 
   - python36-msgpack 
@@ -24841,6 +24838,7 @@ unsorted:
   - python38-azure-mgmt-videoanalyzer 
   - python38-azure-mgmt-vmwarecloudsimple 
   - python38-azure-mgmt-web 
+  - python38-azure-mixedreality-nspkg 
   - python38-azure-monitor 
   - python38-azure-monitor-nspkg 
   - python38-azure-monitor-query 
@@ -25901,6 +25899,7 @@ unsorted:
   - python38-mpld3 
   - python38-mpmath 
   - python38-mrcz 
+  - python38-mrkd 
   - python38-msal 
   - python38-msal-extensions 
   - python38-msgpack-numpy 
@@ -27825,6 +27824,7 @@ unsorted:
   - python39-azure-mgmt-videoanalyzer 
   - python39-azure-mgmt-vmwarecloudsimple 
   - python39-azure-mgmt-web 
+  - python39-azure-mixedreality-nspkg 
   - python39-azure-monitor 
   - python39-azure-monitor-nspkg 
   - python39-azure-monitor-query 
@@ -28957,6 +28957,7 @@ unsorted:
   - python39-mpld3 
   - python39-mpmath 
   - python39-mrcz 
+  - python39-mrkd 
   - python39-msal 
   - python39-msal-extensions 
   - python39-msgpack 
@@ -30171,6 +30172,7 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
+  - python39-ucsmsdk 
   - python39-ufoLib2 
   - python39-ufoProcessor 
   - python39-ufonormalizer 
@@ -30506,8 +30508,6 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
-  - qt-fsarchiver 
-  - qt-fsarchiver-lang 
   - qt5ct 
   - qt5integration 
   - qt6-3d-devel 
@@ -41541,6 +41541,7 @@ unsorted:
   - unknown-horizons-lang 
   - unmass 
   - unoconv 
+  - unpack-install-jammer 
   - unpaper 
   - unshield 
   - unshield-devel 
@@ -42190,6 +42191,7 @@ unsorted:
   - xdiskusage 
   - xditview 
   - xdmsc 
+  - xdo 
   - xdotool 
   - xdotool-devel 
   - xdriinfo 

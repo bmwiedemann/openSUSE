@@ -787,6 +787,7 @@
     <package name="gstreamer-plugins-good-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-good-qtqml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gstreamer-plugins-libav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-plugins-rs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gstreamer-plugins-ugly" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-plugins-ugly-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-transcoder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
