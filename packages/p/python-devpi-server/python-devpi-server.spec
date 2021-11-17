@@ -20,7 +20,7 @@
 %define commands export fsck gen-config import init passwd server gen-secret
 %define skip_python2 1
 Name:           python-devpi-server
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT

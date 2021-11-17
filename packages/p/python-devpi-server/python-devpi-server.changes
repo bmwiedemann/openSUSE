@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  8 11:58:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Optimized some database access patterns. A new index is added to the
+    database on first startup. For large databases that can take a while.
+  * Improved performance of loads from database.
+  * Optimized memory and cache use for database access.
+  * Use frozenset for project name cache of mirror indexes. This mitigates
+    memory fragmentation on some Linux distributions.
+
+-------------------------------------------------------------------
 Tue Aug  3 09:11:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.1.0
