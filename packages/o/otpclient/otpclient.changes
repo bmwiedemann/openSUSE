@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 15 13:46:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.6:
+  * Use secure_strdup when trimming the account key.
+  * Use g_memdup2 when available.
+  * Fix account/issuer when importing andOTP db.
+  * Check for NULL when comparing account and issuer.
+
+-------------------------------------------------------------------
 Tue Mar 30 13:24:42 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.4

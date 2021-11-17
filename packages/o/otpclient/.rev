@@ -86,4 +86,12 @@
     GtkColumnView will replace GtkTreeView (forwarded request 882178 from polslinux)</comment>
     <requestid>884641</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe119216227aa26f29d8f3b1ba246018</srcmd5>
+    <version>2.4.6</version>
+    <time>1637108027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931612</requestid>
+  </revision>
 </revisionlist>
