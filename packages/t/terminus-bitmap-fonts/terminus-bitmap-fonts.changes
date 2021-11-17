@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 15:38:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add note to package description about pango not supporting
+  pcf bitmap fonts.
+
+-------------------------------------------------------------------
 Mon Dec 28 19:44:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.49.1

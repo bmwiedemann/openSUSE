@@ -1,7 +1,7 @@
 #
 # spec file for package terminus-bitmap-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,10 +46,17 @@ the vt100 and xterm pseudographic characters.
 The sizes and styles present are 8x14-normal, 8x14-bold,
 8x14-EGA/VGA-bold, 8x16-normal, 8x16-bold, 8x16-EGA/VGA-bold,
 10x20-normal, 10x20-bold, 12x24-normal, 12x24-bold and 14x28-normal
-(which's weight is actually between normal and bold).
+(whose weight is actually between normal and bold).
+
+This package installs the font(s) in psf format (Linux console)
+and pcf (usable with e.g. libXft/xterm).
+%if 0%{?suse_version} >= 1550
+Pango (used by e.g. libvte/gnome-terminal/etc.) does not support pcf
+(anymore). Use the consoleet-terminus-fonts package in this case.
+%endif
 
 %prep
-%setup -q -n %{fontname}-%{version}
+%autosetup -n %{fontname}-%{version}
 dos2unix OFL.TXT
 %define psfdir %{_datadir}/kbd/consolefonts
 
@@ -60,7 +67,7 @@ chmod +x ./configure
 make -e x11dir=%{_miscfontsdir} psfdir=%{psfdir}
 
 %install
-make -e DESTDIR=%{buildroot}  x11dir=%{_miscfontsdir} psfdir=%{psfdir} install
+%make_install -e x11dir=%{_miscfontsdir} psfdir=%{psfdir}
 rm -f %{buildroot}%{_miscfontsdir}/fonts.dir
 pushd %{buildroot}%{psfdir}
     rename .psf.gz .psfu.gz *.psf.gz
