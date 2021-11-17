@@ -153,6 +153,10 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} >= 1550
+# The provider for python(abi) is in rpm-build-python
+BuildRequires:  rpm-build-python
+%endif
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
