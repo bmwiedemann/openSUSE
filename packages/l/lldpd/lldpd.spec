@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lldpd
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on
@@ -38,7 +38,7 @@ Source0:        https://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz
 Source1:        lldpd.sysconfig
 Source2:        https://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz.gpg#/%{name}-%{version}.tar.gz.asc
 Source3:        http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x95A42FE8353525F9#/%{name}.keyring
-Patch0:	harden_lldpd.service.patch
+Patch0:         harden_lldpd.service.patch
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
