@@ -18,14 +18,14 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.5.1555+0
+%define version_unconverted 1.5.1582+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.5.1555+0
+Version:        1.5.1582+0
 Release:        0
 Summary:        Jabber client using Qt
-License:        GPL-2.0-or-later AND Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          Productivity/Networking/Talk/Clients
 Source0:        psi+-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

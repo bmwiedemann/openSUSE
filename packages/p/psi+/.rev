@@ -689,4 +689,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>924645</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ff528586a82c2b0b94992fa142aa90c2</srcmd5>
+    <version>1.5.1582+0</version>
+    <time>1637108005</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1582+0
+  * JEP -&gt; XEP (#649)
+  * The page has been moved a long time ago (#646)
+  * It is XMPP instead of Jabber (#642)
+  * https instead of http (#643)
+  * Harmonization of the description (#638)
+  * More URI types to parse in text widgets  (#641)
+  * Minor fixes
+  * Don't insert stupid empty line before quote
+  * Fixed broken quote in groupchats
+  * Fix a few static analyzer warnings
+  * Put some reasonable defaults for groupchat size
+  * Defaults for bundles usrsctp same way like qca
+  * iris relinked
+  * Updated ContactManagerDlg: added doubleClick action to select similar
+    items. small code refactoring. Removed sound record button from widgets in
+    options.</comment>
+    <requestid>931486</requestid>
+  </revision>
 </revisionlist>
