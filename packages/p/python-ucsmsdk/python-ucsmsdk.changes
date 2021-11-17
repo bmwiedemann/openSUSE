@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 16 03:38:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.9.12:
+  * Fixes for python 3.9 compatibility
+  * Fixes issue in earlier release
+  * Support for UCSM release 4.2(1a)
+- Re-enable Python 3.9 build. 
+- Add patch remove-nose.patch:
+  * Switch to using unittest, dropping use of nose.
+
+-------------------------------------------------------------------
 Mon May 17 09:09:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop execute bits for files under utils, stop a spurious requirement. 

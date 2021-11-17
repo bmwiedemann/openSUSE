@@ -17,18 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# https://github.com/CiscoUcs/ucsmsdk/issues/204
-%define skip_python39 1
 Name:           python-ucsmsdk
-Version:        0.9.10
+Version:        0.9.12
 Release:        0
 Summary:        Python SDK for Cisco UCS Manager
 License:        Apache-2.0
 URL:            https://github.com/CiscoUcs/ucsmsdk
 Source:         https://github.com/CiscoUcs/ucsmsdk/archive/v%{version}.tar.gz#/ucsmsdk-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyparsing}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
@@ -46,6 +45,7 @@ Python Software Developer Kit for Cisco Unified Computing System (UCS) Manager.
 %prep
 %setup -q -n ucsmsdk-%{version}
 chmod -x ucsmsdk/utils/*.py
+%autopatch -p1
 
 %build
 %python_build
@@ -56,7 +56,7 @@ chmod -x ucsmsdk/utils/*.py
 
 %check
 # skip tests that do string comparison on xml https://github.com/CiscoUcs/ucsmsdk/issues/188
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} -v -e '(test_001_mo_to_xml|test_001_mo_heirarchy_to_xml|test_001_knownmo_unknownprop|test_002_create_gmo_using_param_dict|test_003_create_gmo_using_param_dict|test_004_create_gmo_using_parent_mo)'
+%pytest -k 'not (TestUCStoXML or TestUnknownProps or create_gmo_using)'
 
 %files %{python_files}
 %doc README.md

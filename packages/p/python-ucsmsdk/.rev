@@ -62,4 +62,18 @@
     <comment>- Drop execute bits for files under utils, stop a spurious requirement.</comment>
     <requestid>893651</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>613b0d295dd0a7b7abc4712bbe71a40e</srcmd5>
+    <version>0.9.12</version>
+    <time>1637108044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.12:
+  * Fixes for python 3.9 compatibility
+  * Fixes issue in earlier release
+  * Support for UCSM release 4.2(1a)
+- Re-enable Python 3.9 build. 
+- Add patch remove-nose.patch:
+  * Switch to using unittest, dropping use of nose.</comment>
+    <requestid>931646</requestid>
+  </revision>
 </revisionlist>

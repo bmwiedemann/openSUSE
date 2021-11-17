@@ -1,0 +1,3593 @@
+Index: ucsmsdk-0.9.12/tests/vlan/tests_vlan.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/vlan/tests_vlan.py
++++ ucsmsdk-0.9.12/tests/vlan/tests_vlan.py
+@@ -11,49 +11,31 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import with_setup
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
++from tests.base import BaseTest
+ 
+-handle = None
+ 
++class TestVLan(BaseTest):
++    def create_vlan_global(self, vlan_id):
++        from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
++
++        mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none",
++                        name=vlan_id, id=vlan_id, mcast_policy_name="",
++                        policy_owner="local", default_net="no",
++                        pub_nw_name="", compression_type="included")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++    def delete_vlan_global(self, vlan_id):
++        obj = self.handle.query_dn("fabric/lan/net-" + vlan_id)
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++    def test_001_create_modify_vlan(self):
++        self.create_vlan_global("100")
++
++        obj = self.handle.query_dn("fabric/lan/net-100")
++        obj.id = "101"
++        self.handle.set_mo(obj)
++        self.handle.commit()
+ 
+-def setup():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-
+-def teardown():
+-    custom_teardown(handle)
+-
+-
+-def create_vlan_global(vlan_id):
+-    from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+-
+-    mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none", name=vlan_id,
+-                    id=vlan_id, mcast_policy_name="", policy_owner="local",
+-                    default_net="no", pub_nw_name="",
+-                    compression_type="included")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-
+-def delete_vlan_global(vlan_id):
+-    obj = handle.query_dn("fabric/lan/net-" + vlan_id)
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-
+-@with_setup(setup, teardown)
+-def test_001_create_modify_vlan():
+-    create_vlan_global("100")
+-
+-    obj = handle.query_dn("fabric/lan/net-100")
+-    obj.id = "101"
+-    handle.set_mo(obj)
+-    handle.commit()
+-
+-    delete_vlan_global("100")
++        self.delete_vlan_global("100")
+Index: ucsmsdk-0.9.12/tests/utils/test_eventhandler.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/utils/test_eventhandler.py
++++ ucsmsdk-0.9.12/tests/utils/test_eventhandler.py
+@@ -12,216 +12,184 @@
+ # limitations under the License.
+ 
+ import time
+-
+-from nose import SkipTest
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
+ import threading
+ 
+-handle = None
+-sp = None
+-dn = "org-root/ls-eventhandle-test"
+-finished = False
+-
+-
+-def setup_module():
+-    from ucsmsdk.ucseventhandler import UcsEventHandle
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    global handle, sp, ueh
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-    ueh = UcsEventHandle(handle)
+-    org = handle.query_dn("org-root")
+-
+-    sp = LsServer(org, name="eventhandle-test", descr="")
+-    handle.add_mo(sp, True)
+-    handle.commit()
+-
+-
+-def teardown_module():
+-    if sp is not None:
+-        handle.remove_mo(sp)
+-        handle.commit()
+-    custom_teardown(handle)
+-
+-
+-def user_callback(mce):
+-    global finished
+-    finished = True
+-
+-
+-def wait_method(poll_sec=None):
+-    # Always clear the label
+-    sp.usr_lbl = ""
+-    handle.add_mo(sp, modify_present=True)
+-    handle.commit()
+-
+-    handle.wait_for_event(
+-        mo=sp,
+-        prop="usr_lbl",
+-        value="trigger",
+-        cb=user_callback,
+-        timeout=20,
+-        poll_sec=poll_sec
+-    )
+-
+-
+-def wait_method_for_multiple_values(poll_sec=None):
+-    handle.wait_for_event(
+-        mo=sp,
+-        prop="usr_lbl",
+-        value=["trigger", "another_trigger"],
+-        cb=user_callback,
+-        timeout=20,
+-        poll_sec=poll_sec
+-    )
+-
+-
+-def trigger_method(label=None):
+-    sp.usr_lbl = label
+-    handle.set_mo(sp)
+-    handle.commit()
+-
+-
+-def test_wait_for_event_mo():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method)
+-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    assert_equal(finished, True)
+-
+-
+-def test_wait_for_poll_mo():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method, args=(5,))
+-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    assert_equal(finished, True)
+-
+-
+-def test_wait_for_event_timeout():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method)
+-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("invalid_trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    assert_equal(finished, False)
+-
+-
+-def test_wait_for_poll_timeout():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method, args=(2,))
+-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("invalid_trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    assert_equal(finished, False)
+-
+-
+-@raises(Exception)
+-def test_wait_for_event_invalid_mo():
+-
+-    other_mo = handle.query_dn("capabilities")
+-
+-    handle.wait_for_event(
+-        mo=other_mo,
+-        prop="usr_lbl",
+-        value="trigger",
+-        cb=user_callback,
+-        timeout=20
+-    )
+-
+-
+-@raises(Exception)
+-def test_wait_for_poll_invalid_mo():
+-    other_mo = handle.query_dn("capabilities")
+-
+-    handle.wait_for_event(
+-        mo=other_mo,
+-        prop="usr_lbl",
+-        value="trigger",
+-        cb=user_callback,
+-        timeout=20,
+-        poll_sec=5
+-    )
+-
+-
+-def test_wait_for_event_multiple():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method_for_multiple_values)
+-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    assert_equal(finished, True)
+-
+-
+-def test_wait_for_poll_multiple():
+-    global finished
+-    finished = False
+-
+-    t1 = threading.Thread(name="wait", target=wait_method_for_multiple_values, args=(2,))
+-    t3 = threading.Thread(name="another_trigger", target=trigger_method, args=("another_trigger",))
+-
+-    t1.start()
+-    time.sleep(1)
+-    t3.start()
+-
+-    t1.join()
+-    t3.join()
+-
+-    assert_equal(finished, True)
++from tests.base import BaseTest
+ 
+-def test_wait_for_event_timeout_noenqueue():
+ 
+-    handle.wait_for_event(
+-        mo=sp,
+-        prop="usr_lbl",
+-        value="trigger",
+-        cb=user_callback,
+-        timeout=5
+-    )
++class TestEventHandler(BaseTest):
++    def setUp(self):
++        super().setUp()
++        from ucsmsdk.ucseventhandler import UcsEventHandle
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        self.ueh = UcsEventHandle(self.handle)
++        self.org = self.handle.query_dn("org-root")
++
++        self.sp = LsServer(org, name="eventhandle-test", descr="")
++        self.handle.add_mo(sp, True)
++        self.handle.commit()
++        self.finished = False
++
++    def tearDown(self):
++        if self.sp is not None:
++            self.handle.remove_mo(self.sp)
++            self.handle.commit()
++        super().tearDown()
++
++    def user_callback(self, mce):
++        self.finished = True
++
++    def wait_method(self, poll_sec=None):
++        # Always clear the label
++        self.sp.usr_lbl = ""
++        self.handle.add_mo(self.sp, modify_present=True)
++        self.handle.commit()
++
++        self.handle.wait_for_event(
++            mo=self.sp,
++            prop="usr_lbl",
++            value="trigger",
++            cb=self.user_callback,
++            timeout=20,
++            poll_sec=poll_sec
++        )
++
++    def wait_method_for_multiple_values(self, poll_sec=None):
++        self.handle.wait_for_event(
++            mo=self.sp,
++            prop="usr_lbl",
++            value=["trigger", "another_trigger"],
++            cb=self.user_callback,
++            timeout=20,
++            poll_sec=poll_sec
++        )
++
++    def trigger_method(self, label=None):
++        self.sp.usr_lbl = label
++        self.handle.set_mo(self.sp)
++        self.handle.commit()
++
++    def test_wait_for_event_mo(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method)
++        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t2.start()
++
++        t1.join()
++        t2.join()
++
++        self.assertTrue(self.finished)
++
++    def test_wait_for_poll_mo(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method, args=(5,))
++        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t2.start()
++
++        t1.join()
++        t2.join()
++
++        self.assertTrue(self.finished)
++
++    def test_wait_for_event_timeout(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method)
++        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("invalid_trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t2.start()
++
++        t1.join()
++        t2.join()
++
++        self.assertFalse(self.finished)
++
++    def test_wait_for_poll_timeout(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method, args=(2,))
++        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("invalid_trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t2.start()
++
++        t1.join()
++        t2.join()
++
++        self.assertFalse(self.finished)
++
++    def test_wait_for_event_invalid_mo(self):
++        other_mo = self.handle.query_dn("capabilities")
++        with self.assertRaises(Exception):
++            self.handle.wait_for_event(
++                mo=other_mo,
++                prop="usr_lbl",
++                value="trigger",
++                cb=self.user_callback,
++                timeout=20
++            )
++
++    def test_wait_for_poll_invalid_mo(self):
++        other_mo = self.handle.query_dn("capabilities")
++
++        with self.assertRaises(Exception):
++            handle.wait_for_event(
++                mo=other_mo,
++                prop="usr_lbl",
++                value="trigger",
++                cb=self.user_callback,
++                timeout=20,
++                poll_sec=5
++            )
++
++    def test_wait_for_event_multiple(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method_for_multiple_values)
++        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t2.start()
++
++        t1.join()
++        t2.join()
++
++        self.assertTrue(self.finished)
++
++    def test_wait_for_poll_multiple(self):
++        self.finished = False
++
++        t1 = threading.Thread(name="wait", target=self.wait_method_for_multiple_values, args=(2,))
++        t3 = threading.Thread(name="another_trigger", target=self.trigger_method, args=("another_trigger",))
++
++        t1.start()
++        time.sleep(1)
++        t3.start()
++
++        t1.join()
++        t3.join()
++
++        self.assertTrue(self.finished)
++
++    def test_wait_for_event_timeout_noenqueue(self):
++        self.handle.wait_for_event(
++            mo=sp,
++            prop="usr_lbl",
++            value="trigger",
++            cb=self.user_callback,
++            timeout=5
++        )
+ 
+Index: ucsmsdk-0.9.12/tests/utils/test_comparesync.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/utils/test_comparesync.py
++++ ucsmsdk-0.9.12/tests/utils/test_comparesync.py
+@@ -11,204 +11,181 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown
++import unittest
+ 
+ from ucsmsdk.utils.comparesyncmo import compare_ucs_mo, write_mo_diff
+ 
+-ref_handle = None
+-diff_handle = None
+ 
+-
+-def static_setup():
+-    from ucsmsdk.ucshandle import UcsHandle
+-    from ucsmsdk.ucscoremeta import UcsVersion
+-
+-    global ref_handle
+-    global diff_handle
+-
+-    ref_handle = UcsHandle("192.168.1.1", "admin", "password")
+-    diff_handle = UcsHandle("192.168.1.2", "admin", "password")
+-
+-    ref_handle.__dict__['_UcsSession__version'] = "2.2(5a)"
+-    diff_handle.__dict__['_UcsSession__version'] = "2.2(2c)"
+-
+-
+-def test_compare_same_obj_with_diff_props():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="")
+-    ref_mo.__dict__['config_state'] = "applied"
+-    ref_mo._handle = ref_handle
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="xxx")
+-    diff_mo.__dict__['config_state'] = "applying"
+-    diff_mo._handle = diff_handle
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-    assert_equal(len(difference[0].diff_property), 1)
+-
+-
+-def test_compare_same_obj_with_diff_props_include_operational():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="")
+-    ref_mo.__dict__['config_state'] = "applied"
+-    ref_mo._handle = ref_handle
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="xxx")
+-    diff_mo.__dict__['config_state'] = "applying"
+-    diff_mo._handle = diff_handle
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos, include_operational=True)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-    assert_equal(len(difference[0].diff_property), 2)
+-
+-
+-def test_compare_add_obj_to_ref_exist_only_in_diff():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mos = []
+-
+-    diff_mo = LsServer(parent_mo_or_dn="org-root", name="add_to_ref",
+-                       usr_lbl="xxx")
+-    diff_mo._handle = diff_handle
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-
+-
+-def test_compare_remove_obj_from_ref_exist_only_in_ref():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mo = LsServer(parent_mo_or_dn="org-root", name="remove_from_ref",
+-                      usr_lbl="")
+-    ref_mo._handle = ref_handle
+-    ref_mos = [ref_mo]
+-
+-    diff_mos = []
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-
+-
+-def test_compare_org_hierarchy():
+-    from ucsmsdk.mometa.org.OrgOrg import OrgOrg
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_org = OrgOrg(parent_mo_or_dn="org-root", name="org_same", descr="")
+-    ref_org._handle = ref_handle
+-    ref_same_sp = LsServer(ref_org, name="same")
+-    ref_same_sp._handle = ref_handle
+-    ref_remove = LsServer(ref_org, name="remove_from_ref")
+-    ref_remove._handle = ref_handle
+-    ref_mos = [ref_org, ref_same_sp, ref_remove]
+-
+-    diff_org = OrgOrg(parent_mo_or_dn="org-root", name="org_same",
+-                      descr="diff")
+-    diff_org._handle = diff_handle
+-    diff_same_sp = LsServer(diff_org, name="same", usr_lbl="diff")
+-    diff_same_sp._handle = diff_handle
+-    diff_add = LsServer(diff_org, name="add_to_ref")
+-    diff_add._handle = diff_handle
+-    diff_mos = [diff_org, diff_same_sp, diff_add]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 4)
+-
+-
+-def test_unknown_property():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref", usr_lbl="")
+-    ref_mo._handle = ref_handle
+-    ref_mo.unknown = ""
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref",
+-                       usr_lbl="xxx")
+-    diff_mo._handle = diff_handle
+-    diff_mo.unknown = "yyy"
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-    assert_equal(len(difference[0].diff_property), 1)
+-
+-
+-def test_unknown_property_noversionfilter():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    static_setup()
+-
+-    ref_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref", usr_lbl="")
+-    ref_mo._handle = ref_handle
+-    ref_mo.unknown = ""
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref",
+-                       usr_lbl="xxx")
+-    diff_mo._handle = diff_handle
+-    diff_mo.unknown = "yyy"
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-    assert_equal(len(difference[0].diff_property), 2)
+-
+-
+-def test_unknown_mo():
+-    from ucsmsdk.ucsmo import GenericMo
+-    static_setup()
+-
+-    ref_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
+-                       dn="sys/unknown", unknown="")
+-    ref_mo._handle = ref_handle
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
+-                        dn="sys/unknown", unknown="yyy")
+-    diff_mo._handle = diff_handle
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 0)
+-
+-
+-def test_unknown_mo_noversionfilter():
+-    from ucsmsdk.ucsmo import GenericMo
+-    static_setup()
+-
+-    ref_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
+-                       dn="sys/unknown", unknown="")
+-    ref_mo._handle = ref_handle
+-    ref_mos = [ref_mo]
+-
+-    diff_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
+-                        dn="sys/unknown", unknown="yyy")
+-    diff_mo._handle = diff_handle
+-    diff_mos = [diff_mo]
+-
+-    difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
+-    write_mo_diff(difference)
+-    assert_equal(len(difference), 1)
+-    assert_equal(len(difference[0].diff_property), 1)
++class TestCompareSync(unittest.TestCase):
++    def setUp(self):
++        super().setUp()
++        from ucsmsdk.ucshandle import UcsHandle
++        from ucsmsdk.ucscoremeta import UcsVersion
++
++        self.ref_handle = UcsHandle("192.168.1.1", "admin", "password")
++        self.diff_handle = UcsHandle("192.168.1.2", "admin", "password")
++
++        self.ref_handle.__dict__['_UcsSession__version'] = "2.2(5a)"
++        self.diff_handle.__dict__['_UcsSession__version'] = "2.2(2c)"
++
++    def test_compare_same_obj_with_diff_props(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="")
++        ref_mo.__dict__['config_state'] = "applied"
++        ref_mo._handle = self.ref_handle
++        ref_mos = [ref_mo]
++
++        diff_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="xxx")
++        diff_mo.__dict__['config_state'] = "applying"
++        diff_mo._handle = self.diff_handle
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++        self.assertEqual(len(difference[0].diff_property), 1)
++
++    def test_compare_same_obj_with_diff_props_include_operational(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="")
++        ref_mo.__dict__['config_state'] = "applied"
++        ref_mo._handle = self.ref_handle
++        ref_mos = [ref_mo]
++
++        diff_mo = LsServer(parent_mo_or_dn="org-root", name="same", usr_lbl="xxx")
++        diff_mo.__dict__['config_state'] = "applying"
++        diff_mo._handle = self.diff_handle
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos, include_operational=True)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++        self.assertEqual(len(difference[0].diff_property), 2)
++
++    def test_compare_add_obj_to_ref_exist_only_in_diff(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mos = []
++
++        diff_mo = LsServer(parent_mo_or_dn="org-root", name="add_to_ref",
++                           usr_lbl="xxx")
++        diff_mo._handle = self.diff_handle
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++
++    def test_compare_remove_obj_from_ref_exist_only_in_ref(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mo = LsServer(parent_mo_or_dn="org-root", name="remove_from_ref",
++                          usr_lbl="")
++        ref_mo._handle = self.ref_handle
++        ref_mos = [ref_mo]
++
++        diff_mos = []
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++
++    def test_compare_org_hierarchy(self):
++        from ucsmsdk.mometa.org.OrgOrg import OrgOrg
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_org = OrgOrg(parent_mo_or_dn="org-root", name="org_same", descr="")
++        ref_org._handle = self.ref_handle
++        ref_same_sp = LsServer(ref_org, name="same")
++        ref_same_sp._handle = self.ref_handle
++        ref_remove = LsServer(ref_org, name="remove_from_ref")
++        ref_remove._handle = self.ref_handle
++        ref_mos = [ref_org, ref_same_sp, ref_remove]
++
++        diff_org = OrgOrg(parent_mo_or_dn="org-root", name="org_same",
++                          descr="diff")
++        diff_org._handle = self.diff_handle
++        diff_same_sp = LsServer(diff_org, name="same", usr_lbl="diff")
++        diff_same_sp._handle = self.diff_handle
++        diff_add = LsServer(diff_org, name="add_to_ref")
++        diff_add._handle = self.diff_handle
++        diff_mos = [diff_org, diff_same_sp, diff_add]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 4)
++
++    def test_unknown_property(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref", usr_lbl="")
++        ref_mo._handle = self.ref_handle
++        ref_mo.unknown = ""
++        ref_mos = [ref_mo]
++
++        diff_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref",
++                           usr_lbl="xxx")
++        diff_mo._handle = self.diff_handle
++        diff_mo.unknown = "yyy"
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++        self.assertEqual(len(difference[0].diff_property), 1)
++
++    def test_unknown_property_noversionfilter(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        ref_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref", usr_lbl="")
++        ref_mo._handle = self.ref_handle
++        ref_mo.unknown = ""
++        ref_mos = [ref_mo]
++
++        diff_mo = LsServer(parent_mo_or_dn="org-root", name="ra_ref",
++                           usr_lbl="xxx")
++        diff_mo._handle = self.diff_handle
++        diff_mo.unknown = "yyy"
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++        self.assertEqual(len(difference[0].diff_property), 2)
++
++    def test_unknown_mo(self):
++        from ucsmsdk.ucsmo import GenericMo
++
++        ref_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
++                           dn="sys/unknown", unknown="")
++        ref_mo._handle = self.ref_handle
++        ref_mos = [ref_mo]
++
++        diff_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
++                            dn="sys/unknown", unknown="yyy")
++        diff_mo._handle = self.diff_handle
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 0)
++
++    def test_unknown_mo_noversionfilter(self):
++        from ucsmsdk.ucsmo import GenericMo
++
++        ref_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
++                           dn="sys/unknown", unknown="")
++        ref_mo._handle = self.ref_handle
++        ref_mos = [ref_mo]
++
++        diff_mo = GenericMo(class_id="unknown", parent_mo_or_dn="parent_dn",
++                            dn="sys/unknown", unknown="yyy")
++        diff_mo._handle = self.diff_handle
++        diff_mos = [diff_mo]
++
++        difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
++        write_mo_diff(difference)
++        self.assertEqual(len(difference), 1)
++        self.assertEqual(len(difference[0].diff_property), 1)
+Index: ucsmsdk-0.9.12/tests/utils/test_backupucs.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/utils/test_backupucs.py
++++ ucsmsdk-0.9.12/tests/utils/test_backupucs.py
+@@ -11,52 +11,33 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import with_setup
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
++from tests.base import BaseTest
+ from ucsmsdk.utils.ucsbackup import backup_ucs
+ from ucsmsdk.ucshandle import UcsHandle
+ 
+-handle = None
+ 
+-
+-def setup_module():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-
+-def teardown_module():
+-    custom_teardown(handle)
+-
+-
+-def _test_ucs_backup(handle, file_dir, file_name, backup_type):
+-    backup_ucs(handle,
++class TestBackupUcs(BaseTest):
++    def _test_ucs_backup(self, handle, file_dir, file_name, backup_type):
++        backup_ucs(handle,
+                backup_type=backup_type,
+                file_dir=file_dir,
+                file_name=file_name)
+ 
++    def test_ucs_backup(self):
++        self._test_ucs_backup(self.handle, file_dir="/tmp/backup",
++                              file_name="config1.xml",
++                              backup_type="config-logical")
++
++    def test_ucs_backup_after_freeze_unfreeze(self):
++        # for this test to be more meaningful there needs to be proxy server
++        # configured
++        h1 = custom_setup()
++        frozen_handle = h1.freeze()
++        h2 = UcsHandle.unfreeze(frozen_handle)
++
++        # Try a download operation using new handle
++        self._test_ucs_backup(h2, file_dir="/tmp/backup",
++                         file_name="config2.xml",
++                         backup_type="config-logical")
+ 
+-@with_setup(setup_module, teardown_module)
+-def test_ucs_backup():
+-    _test_ucs_backup(handle, file_dir="/tmp/backup",
+-                     file_name="config1.xml",
+-                     backup_type="config-logical")
+-
+-
+-def test_ucs_backup_after_freeze_unfreeze():
+-    # for this test to be more meaningful there needs to be proxy server
+-    # configured
+-    h1 = custom_setup()
+-    frozen_handle = h1.freeze()
+-    h2 = UcsHandle.unfreeze(frozen_handle)
+-
+-
+-    # Try a download operation using new handle
+-    _test_ucs_backup(h2, file_dir="/tmp/backup",
+-                     file_name="config2.xml",
+-                     backup_type="config-logical")
+-
+-    custom_teardown(h2)
++        custom_teardown(h2)
+Index: ucsmsdk-0.9.12/tests/unit_tests/common/test_ucsversion.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/unit_tests/common/test_ucsversion.py
++++ ucsmsdk-0.9.12/tests/unit_tests/common/test_ucsversion.py
+@@ -11,113 +11,100 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import assert_equal
++import unittest
++
+ from ucsmsdk.ucsmeta import VersionMeta
+ from ucsmsdk.ucscoremeta import UcsVersion
+ 
+ 
+-def test_nightly_version1():
+-    version1 = UcsVersion("2.0(13aS6)")
+-    version2 = UcsVersion("3.0(1S10)")
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_nightly_version2():
+-    version1 = UcsVersion("2.0(13aS6)")
+-    version2 = UcsVersion("2.0(1S10)")
+-    assert_equal((version1 > version2), True)
+-
+-
+-def test_nightly_version3():
+-    # 2.0(2cS6) will be considered as 2.0(2d) internally
+-    version1 = UcsVersion("2.0(2cS6)")
+-    version2 = UcsVersion("2.0(2c)")
+-    assert_equal((version1 == version2), False)
+-
+-
+-def test_nightly_version4():
+-    version1 = UcsVersion("2.0(2cS6)")
+-    version2 = UcsVersion("2.0(3)")
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_spin_version1():
+-    # version interpreted as 4.0(2b)
+-    version1 = UcsVersion("4.0(2aS3)")
+-    version2 = UcsVersion("4.0(2b)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_spin_version2():
+-    # version interpreted as 4.0(234c)
+-    version1 = UcsVersion("4.0(234bS3)")
+-    version2 = UcsVersion("4.0(234c)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_spin_version3():
+-    # version interpreted as 4.0(2z)
+-    version1 = UcsVersion("4.0(2S3)")
+-    version2 = UcsVersion("4.0(2z)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_spin_version4():
+-    # version interpreted as 4.0(234z)
+-    version1 = UcsVersion("4.0(234S3)")
+-    version2 = UcsVersion("4.0(234z)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_patch_version1():
+-    # version interpreted as 4.0(235a)
+-    version1 = UcsVersion("4.0(234.5)")
+-    version2 = UcsVersion("4.0(235a)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_build_version1():
+-    # 4.2(0.175a) is an engineering build that will later become 4.2(1a)
+-    version1 = UcsVersion("4.2(0.175a)")
+-    version2 = UcsVersion("4.2(1a)")
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_build_version2():
+-    version1 = UcsVersion("4.2(0.175a)")
+-    version2 = UcsVersion("4.2(0.258a)")
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_spin_version5():
+-    # version interpreted as 4.2(2a)
+-    version1 = UcsVersion("4.2(1.2021052301)")
+-    version2 = UcsVersion("4.2(2a)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_spin_version6():
+-    # version interpreted as 4.2(1b)
+-    version1 = UcsVersion("4.2(1a.2021052301)")
+-    version2 = UcsVersion("4.2(1b)")
+-    assert_equal((version1 == version2), True)
+-
+-
+-def test_gt_same_major_version():
+-    version1 = VersionMeta.Version211a
+-    version2 = VersionMeta.Version211e
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_gt_different_major_version():
+-    version1 = VersionMeta.Version404a
+-    version2 = VersionMeta.Version412b
+-    assert_equal((version1 < version2), True)
+-
+-
+-def test_patch_versions():
+-    # when we don't see a patch version we use z
+-    # so 2.0(12) will be considered as 2.0(12z)
+-    version1 = UcsVersion("2.0(12b)")
+-    version2 = UcsVersion("2.0(12)")
+-    assert_equal((version1 > version2), False)
++class TestVersion(unittest.TestCase):
++    def test_nightly_version1(self):
++        version1 = UcsVersion("2.0(13aS6)")
++        version2 = UcsVersion("3.0(1S10)")
++        self.assertLess(version1, version2)
++
++    def test_nightly_version2(self):
++        version1 = UcsVersion("2.0(13aS6)")
++        version2 = UcsVersion("2.0(1S10)")
++        self.assertGreater(version1, version2)
++
++    def test_nightly_version3(self):
++        # 2.0(2cS6) will be considered as 2.0(2d) internally
++        version1 = UcsVersion("2.0(2cS6)")
++        version2 = UcsVersion("2.0(2c)")
++        self.assertNotEqual(version1, version2)
++
++    def test_nightly_version4(self):
++        version1 = UcsVersion("2.0(2cS6)")
++        version2 = UcsVersion("2.0(3)")
++        self.assertLess(version1, version2)
++
++    def test_spin_version1(self):
++        # version interpreted as 4.0(2b)
++        version1 = UcsVersion("4.0(2aS3)")
++        version2 = UcsVersion("4.0(2b)")
++        self.assertEqual(version1, version2)
++
++    def test_spin_version2(self):
++        # version interpreted as 4.0(234c)
++        version1 = UcsVersion("4.0(234bS3)")
++        version2 = UcsVersion("4.0(234c)")
++        self.assertEqual(version1, version2)
++
++    def test_spin_version3(self):
++        # version interpreted as 4.0(2z)
++        version1 = UcsVersion("4.0(2S3)")
++        version2 = UcsVersion("4.0(2z)")
++        self.assertEqual(version1, version2)
++
++    def test_spin_version4(self):
++        # version interpreted as 4.0(234z)
++        version1 = UcsVersion("4.0(234S3)")
++        version2 = UcsVersion("4.0(234z)")
++        self.assertEqual(version1, version2)
++
++    def test_patch_version1(self):
++        # version interpreted as 4.0(235a)
++        version1 = UcsVersion("4.0(234.5)")
++        version2 = UcsVersion("4.0(235a)")
++        self.assertEqual(version1, version2)
++
++    def test_build_version1(self):
++        # 4.2(0.175a) is an engineering build that will later become 4.2(1a)
++        version1 = UcsVersion("4.2(0.175a)")
++        version2 = UcsVersion("4.2(1a)")
++        self.assertLess(version1, version2)
++
++    def test_build_version2(self):
++        version1 = UcsVersion("4.2(0.175a)")
++        version2 = UcsVersion("4.2(0.258a)")
++        self.assertLess(version1, version2)
++
++    def test_spin_version5(self):
++        # version interpreted as 4.2(2a)
++        version1 = UcsVersion("4.2(1.2021052301)")
++        version2 = UcsVersion("4.2(2a)")
++        self.assertEqual(version1, version2)
++
++    def test_spin_version6(self):
++        # version interpreted as 4.2(1b)
++        version1 = UcsVersion("4.2(1a.2021052301)")
++        version2 = UcsVersion("4.2(1b)")
++        self.assertEqual(version1, version2)
++
++    def test_gt_same_major_version(self):
++        version1 = VersionMeta.Version211a
++        version2 = VersionMeta.Version211e
++        self.assertLess(version1, version2)
++
++    def test_gt_different_major_version(self):
++        version1 = VersionMeta.Version404a
++        version2 = VersionMeta.Version412b
++        self.assertLess(version1, version2)
++
++    def test_patch_versions(self):
++        # when we don't see a patch version we use z
++        # so 2.0(12) will be considered as 2.0(12z)
++        version1 = UcsVersion("2.0(12b)")
++        version2 = UcsVersion("2.0(12)")
++        self.assertLessEqual(version1, version2)
+Index: ucsmsdk-0.9.12/tests/unit_tests/test_import.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/unit_tests/test_import.py
++++ ucsmsdk-0.9.12/tests/unit_tests/test_import.py
+@@ -11,8 +11,6 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-
+ 
+ def test_import_ucsmsdk():
+     import ucsmsdk
+Index: ucsmsdk-0.9.12/tests/sp/test_sp.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/sp/test_sp.py
++++ ucsmsdk-0.9.12/tests/sp/test_sp.py
+@@ -11,142 +11,126 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import with_setup
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
+-
+-handle = None
+-
+-
+-def setup():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-
+-def teardown():
+-    custom_teardown(handle)
+-
+-
+-@with_setup(setup, teardown)
+-def test_001_sp_minimal():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    mo = LsServer(parent_mo_or_dn="org-root", vmedia_policy_name="",
+-                  ext_ip_state="none", bios_profile_name="",
+-                  mgmt_fw_policy_name="", agent_policy_name="",
+-                  mgmt_access_policy_name="", dynamic_con_policy_name="",
+-                  kvm_mgmt_policy_name="", sol_policy_name="", uuid="0",
+-                  descr="", stats_policy_name="default", policy_owner="local",
+-                  ext_ip_pool_name="ext-mgmt", boot_policy_name="", usr_lbl="",
+-                  host_fw_policy_name="", vcon_profile_name="",
+-                  ident_pool_name="default", src_templ_name="",
+-                  local_disk_policy_name="", scrub_policy_name="",
+-                  power_policy_name="default", maint_policy_name="",
+-                  name="test_sp", resolve_remote="yes")
+-
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    ##########################################################
+-    # Modify a single property in the Sp created above
+-    # and genertate XML with DIRTY option set
+-    ##########################################################
+-    import ucsmsdk.ucsxmlcodec as xc
+-    from ucsmsdk.ucscoremeta import WriteXmlOption
+-    obj = handle.query_dn("org-root/ls-test_sp")
+-    obj.usr_lbl = "new_label"
+-    print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.DIRTY)))
+-    print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.ALL_CONFIG)))
+-    print(xc.to_xml_str(obj.to_xml()))
+-
+-    ##########################################################
+-    # Delete the SP
+-    ##########################################################
+-    obj = handle.query_dn("org-root/ls-test_sp")
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-
+-@with_setup(setup, teardown)
+-def test_002_sp_expert():
+-    '''
+-        This case is generated based on SP expert mode creation wizard.
+-    '''
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    from ucsmsdk.mometa.ls.LsVConAssign import LsVConAssign
+-    from ucsmsdk.mometa.vnic.VnicEther import VnicEther
+-    from ucsmsdk.mometa.vnic.VnicEtherIf import VnicEtherIf
+-    from ucsmsdk.mometa.vnic.VnicFc import VnicFc
+-    from ucsmsdk.mometa.vnic.VnicFcIf import VnicFcIf
+-    from ucsmsdk.mometa.vnic.VnicFcNode import VnicFcNode
+-    from ucsmsdk.mometa.storage.StorageIniGroup import StorageIniGroup
+-    from ucsmsdk.mometa.vnic.VnicFcGroupDef import VnicFcGroupDef
+-    from ucsmsdk.mometa.storage.StorageInitiator import StorageInitiator
+-    from ucsmsdk.mometa.ls.LsPower import LsPower
+-    from ucsmsdk.mometa.fabric.FabricVCon import FabricVCon
+-
+-    mo = LsServer(parent_mo_or_dn="org-root", vmedia_policy_name="",
+-                  ext_ip_state="none", bios_profile_name="SRIOV",
+-                  mgmt_fw_policy_name="", agent_policy_name="",
+-                  mgmt_access_policy_name="", dynamic_con_policy_name="",
+-                  kvm_mgmt_policy_name="", sol_policy_name="",
+-                  uuid="00000000-0000-0000-0000-0000000000bb", descr="",
+-                  stats_policy_name="default", policy_owner="local",
+-                  ext_ip_pool_name="ext-mgmt", boot_policy_name="default",
+-                  usr_lbl="", host_fw_policy_name="", vcon_profile_name="",
+-                  ident_pool_name="", src_templ_name="",
+-                  local_disk_policy_name="default", scrub_policy_name="",
+-                  power_policy_name="default", maint_policy_name="",
+-                  name="test_sp", resolve_remote="yes")
+-    mo_1 = LsVConAssign(parent_mo_or_dn=mo, admin_vcon="any", order="1",
+-                        transport="ethernet", vnic_name="eth0")
+-    mo_2 = LsVConAssign(parent_mo_or_dn=mo, admin_vcon="any", order="2",
+-                        transport="fc", vnic_name="fc0")
+-    mo_3 = VnicEther(parent_mo_or_dn=mo, nw_ctrl_policy_name="", name="eth0",
+-                     admin_host_port="ANY", admin_vcon="any",
+-                     stats_policy_name="default", admin_cdn_name="",
+-                     switch_id="A", pin_to_group_name="", mtu="1500",
+-                     qos_policy_name="", adaptor_profile_name="",
+-                     ident_pool_name="default", order="1", nw_templ_name="",
+-                     addr="derived")
+-    mo_3_1 = VnicEtherIf(parent_mo_or_dn=mo_3, default_net="yes",
+-                         name="default")
+-    mo_4 = VnicFc(parent_mo_or_dn=mo, addr="derived", name="fc0",
+-                  admin_host_port="ANY", admin_vcon="any",
+-                  stats_policy_name="default", admin_cdn_name="", switch_id="A",
+-                  pin_to_group_name="", pers_bind="disabled",
+-                  pers_bind_clear="no", qos_policy_name="",
+-                  adaptor_profile_name="", ident_pool_name="", order="2",
+-                  nw_templ_name="", max_data_field_size="2048")
+-    mo_4_1 = VnicFcIf(parent_mo_or_dn=mo_4, name="default")
+-    mo_5 = VnicFcNode(parent_mo_or_dn=mo, ident_pool_name="",
+-                      addr="20:00:00:25:B5:00:00:00")
+-    mo_6 = StorageIniGroup(parent_mo_or_dn=mo, name="test", descr="",
+-                           group_policy_name="", policy_name="",
+-                           policy_owner="local", rmt_disk_cfg_name="")
+-    mo_6_1 = VnicFcGroupDef(parent_mo_or_dn=mo_6, storage_conn_policy_name="",
+-                            policy_owner="local", name="", descr="",
+-                            stats_policy_name="default")
+-    mo_6_2 = StorageInitiator(parent_mo_or_dn=mo_6, policy_owner="local",
+-                              name="fc0", descr="")
+-    mo_7 = LsPower(parent_mo_or_dn=mo, state="admin-up")
+-    mo_8 = FabricVCon(parent_mo_or_dn=mo, placement="physical", fabric="NONE",
+-                      share="shared", select="all", transport="ethernet,fc",
+-                      id="1", inst_type="auto")
+-    mo_9 = FabricVCon(parent_mo_or_dn=mo, placement="physical", fabric="NONE",
+-                      share="shared", select="all", transport="ethernet,fc",
+-                      id="2", inst_type="auto")
+-    mo_10 = FabricVCon(parent_mo_or_dn=mo, placement="physical", fabric="NONE",
+-                       share="shared", select="all", transport="ethernet,fc",
+-                       id="3", inst_type="auto")
+-    mo_11 = FabricVCon(parent_mo_or_dn=mo, placement="physical", fabric="NONE",
+-                       share="shared", select="all", transport="ethernet,fc",
+-                       id="4", inst_type="auto")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    obj = handle.query_dn("org-root/ls-test_sp")
+-    handle.remove_mo(obj)
+-    handle.commit()
++from tests.base import BaseTest
++
++
++class TestSp(BaseTest):
++    def test_001_sp_minimal(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        mo = LsServer(parent_mo_or_dn="org-root", vmedia_policy_name="",
++                      ext_ip_state="none", bios_profile_name="",
++                      mgmt_fw_policy_name="", agent_policy_name="",
++                      mgmt_access_policy_name="", dynamic_con_policy_name="",
++                      kvm_mgmt_policy_name="", sol_policy_name="", uuid="0",
++                      descr="", stats_policy_name="default",
++                      policy_owner="local", ext_ip_pool_name="ext-mgmt",
++                      boot_policy_name="", usr_lbl="", host_fw_policy_name="",
++                      vcon_profile_name="", ident_pool_name="default",
++                      src_templ_name="", local_disk_policy_name="",
++                      scrub_policy_name="", power_policy_name="default",
++                      maint_policy_name="", name="test_sp",
++                      resolve_remote="yes")
++
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        ##########################################################
++        # Modify a single property in the Sp created above
++        # and genertate XML with DIRTY option set
++        ##########################################################
++        import ucsmsdk.ucsxmlcodec as xc
++        from ucsmsdk.ucscoremeta import WriteXmlOption
++        obj = handle.query_dn("org-root/ls-test_sp")
++        obj.usr_lbl = "new_label"
++        print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.DIRTY)))
++        print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.ALL_CONFIG)))
++        print(xc.to_xml_str(obj.to_xml()))
++
++        ##########################################################
++        # Delete the SP
++        ##########################################################
++        obj = self.handle.query_dn("org-root/ls-test_sp")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++    def test_002_sp_expert(self):
++        '''
++            This case is generated based on SP expert mode creation wizard.
++        '''
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        from ucsmsdk.mometa.ls.LsVConAssign import LsVConAssign
++        from ucsmsdk.mometa.vnic.VnicEther import VnicEther
++        from ucsmsdk.mometa.vnic.VnicEtherIf import VnicEtherIf
++        from ucsmsdk.mometa.vnic.VnicFc import VnicFc
++        from ucsmsdk.mometa.vnic.VnicFcIf import VnicFcIf
++        from ucsmsdk.mometa.vnic.VnicFcNode import VnicFcNode
++        from ucsmsdk.mometa.storage.StorageIniGroup import StorageIniGroup
++        from ucsmsdk.mometa.vnic.VnicFcGroupDef import VnicFcGroupDef
++        from ucsmsdk.mometa.storage.StorageInitiator import StorageInitiator
++        from ucsmsdk.mometa.ls.LsPower import LsPower
++        from ucsmsdk.mometa.fabric.FabricVCon import FabricVCon
++
++        mo = LsServer(parent_mo_or_dn="org-root", vmedia_policy_name="",
++                      ext_ip_state="none", bios_profile_name="SRIOV",
++                      mgmt_fw_policy_name="", agent_policy_name="",
++                      mgmt_access_policy_name="", dynamic_con_policy_name="",
++                      kvm_mgmt_policy_name="", sol_policy_name="",
++                      uuid="00000000-0000-0000-0000-0000000000bb", descr="",
++                      stats_policy_name="default", policy_owner="local",
++                      ext_ip_pool_name="ext-mgmt", boot_policy_name="default",
++                      usr_lbl="", host_fw_policy_name="", vcon_profile_name="",
++                      ident_pool_name="", src_templ_name="",
++                      local_disk_policy_name="default", scrub_policy_name="",
++                      power_policy_name="default", maint_policy_name="",
++                      name="test_sp", resolve_remote="yes")
++        mo_1 = LsVConAssign(parent_mo_or_dn=mo, admin_vcon="any", order="1",
++                            transport="ethernet", vnic_name="eth0")
++        mo_2 = LsVConAssign(parent_mo_or_dn=mo, admin_vcon="any", order="2",
++                            transport="fc", vnic_name="fc0")
++        mo_3 = VnicEther(parent_mo_or_dn=mo, nw_ctrl_policy_name="",
++                         name="eth0", admin_host_port="ANY", admin_vcon="any",
++                         stats_policy_name="default", admin_cdn_name="",
++                         switch_id="A", pin_to_group_name="", mtu="1500",
++                         qos_policy_name="", adaptor_profile_name="",
++                         ident_pool_name="default", order="1",
++                         nw_templ_name="", addr="derived")
++        mo_3_1 = VnicEtherIf(parent_mo_or_dn=mo_3, default_net="yes",
++                             name="default")
++        mo_4 = VnicFc(parent_mo_or_dn=mo, addr="derived", name="fc0",
++                      admin_host_port="ANY", admin_vcon="any",
++                      stats_policy_name="default", admin_cdn_name="",
++                      switch_id="A", pin_to_group_name="", pers_bind="disabled",
++                      pers_bind_clear="no", qos_policy_name="",
++                      adaptor_profile_name="", ident_pool_name="", order="2",
++                      nw_templ_name="", max_data_field_size="2048")
++        mo_4_1 = VnicFcIf(parent_mo_or_dn=mo_4, name="default")
++        mo_5 = VnicFcNode(parent_mo_or_dn=mo, ident_pool_name="",
++                          addr="20:00:00:25:B5:00:00:00")
++        mo_6 = StorageIniGroup(parent_mo_or_dn=mo, name="test", descr="",
++                               group_policy_name="", policy_name="",
++                               policy_owner="local", rmt_disk_cfg_name="")
++        mo_6_1 = VnicFcGroupDef(parent_mo_or_dn=mo_6,
++                                storage_conn_policy_name="",
++                                policy_owner="local", name="", descr="",
++                                stats_policy_name="default")
++        mo_6_2 = StorageInitiator(parent_mo_or_dn=mo_6, policy_owner="local",
++                                  name="fc0", descr="")
++        mo_7 = LsPower(parent_mo_or_dn=mo, state="admin-up")
++        mo_8 = FabricVCon(parent_mo_or_dn=mo, placement="physical",
++                          fabric="NONE", share="shared", select="all",
++                          transport="ethernet,fc", id="1", inst_type="auto")
++        mo_9 = FabricVCon(parent_mo_or_dn=mo, placement="physical",
++                          fabric="NONE", share="shared", select="all",
++                          transport="ethernet,fc", id="2", inst_type="auto")
++        mo_10 = FabricVCon(parent_mo_or_dn=mo, placement="physical",
++                           fabric="NONE", share="shared", select="all",
++                           transport="ethernet,fc", id="3", inst_type="auto")
++        mo_11 = FabricVCon(parent_mo_or_dn=mo, placement="physical",
++                           fabric="NONE", share="shared", select="all",
++                           transport="ethernet,fc", id="4", inst_type="auto")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        obj = self.handle.query_dn("org-root/ls-test_sp")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
+Index: ucsmsdk-0.9.12/tests/session/test_ucssession.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/session/test_ucssession.py
++++ ucsmsdk-0.9.12/tests/session/test_ucssession.py
+@@ -11,41 +11,43 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import assert_equal
++import unittest
++
+ from ucsmsdk.ucshandle import UcsHandle
+ 
+ 
+-def test_001_create_uri():
+-    # Create an object of type LsServer with parent dn specified
+-    # check if the object has the right values populated
+-    handle = UcsHandle("192.168.1.1", "admin", "password")
+-
+-    assert_equal(
+-        handle._UcsSession__create_uri(
+-            port=None,
+-            secure=None),
+-        'https://192.168.1.1:443')
+-
+-    assert_equal(
+-        handle._UcsSession__create_uri(
+-            port=8080,
+-            secure=None),
+-        'https://192.168.1.1:8080')
+-
+-    assert_equal(
+-        handle._UcsSession__create_uri(
+-            port=None,
+-            secure=True),
+-        'https://192.168.1.1:443')
+-
+-    assert_equal(
+-        handle._UcsSession__create_uri(
+-            port=None,
+-            secure=False),
+-        'http://192.168.1.1:80')
+-
+-    assert_equal(
+-        handle._UcsSession__create_uri(
+-            port=444,
+-            secure=False),
+-        'http://192.168.1.1:444')
++class TestSession(unittest.TestCase):
++    def test_001_create_uri(self):
++        # Create an object of type LsServer with parent dn specified
++        # check if the object has the right values populated
++        handle = UcsHandle("192.168.1.1", "admin", "password")
++
++        self.assertEqual(
++            handle._UcsSession__create_uri(
++                port=None,
++                secure=None),
++            'https://192.168.1.1:443')
++
++        self.assertEqual(
++            handle._UcsSession__create_uri(
++                port=8080,
++                secure=None),
++            'https://192.168.1.1:8080')
++
++        self.assertEqual(
++            handle._UcsSession__create_uri(
++                port=None,
++                secure=True),
++            'https://192.168.1.1:443')
++
++        self.assertEqual(
++            handle._UcsSession__create_uri(
++                port=None,
++                secure=False),
++            'http://192.168.1.1:80')
++
++        self.assertEqual(
++            handle._UcsSession__create_uri(
++                port=444,
++                secure=False),
++            'http://192.168.1.1:444')
+Index: ucsmsdk-0.9.12/tests/policy/test_policy.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/policy/test_policy.py
++++ ucsmsdk-0.9.12/tests/policy/test_policy.py
+@@ -11,137 +11,121 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import with_setup
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
+-
+-handle = None
+-
+-
+-def setup():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-
+-def teardown():
+-    custom_teardown(handle)
+-
+-
+-@with_setup(setup, teardown)
+-def test_001_policy():
+-    from ucsmsdk.mometa.flowctrl.FlowctrlItem import FlowctrlItem
+-
+-    # #####################################
+-    # Create a Flow Control Policy
+-    # #####################################
+-    mo = FlowctrlItem(parent_mo_or_dn="fabric/lan/flowctrl", snd="off",
+-                      rcv="off", name="test", prio="on")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    # #####################################
+-    # Delete Flow Control Policy
+-    # #####################################
+-    obj = handle.query_dn("fabric/lan/flowctrl/policy-test")
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-    # #####################################
+-    # Create Dynamic vNIC Connection Policy
+-    # #####################################
+-    from ucsmsdk.mometa.vnic.VnicDynamicConPolicy import VnicDynamicConPolicy
+-
+-    mo = VnicDynamicConPolicy(parent_mo_or_dn="org-root", name="test",
+-                              descr="test", adaptor_profile_name="Linux",
+-                              policy_owner="local",
+-                              protection="protected-pref-b", dynamic_eth="54")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    # #####################################
+-    # Delete Dynamic vNIC Connection Policy
+-    # #####################################
+-    obj = handle.query_dn("org-root/dynamic-con-test")
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-    # #####################################
+-    # Create LACP Policy
+-    # #####################################
+-    from ucsmsdk.mometa.fabric.FabricLacpPolicy import FabricLacpPolicy
+-
+-    mo = FabricLacpPolicy(parent_mo_or_dn="org-root", fast_timer="fast",
+-                          policy_owner="local", suspend_individual="true",
+-                          name="test", descr="")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    # #####################################
+-    # Modify LACP Policy
+-    # #####################################
+-    obj = handle.query_dn("org-root/lacp-test")
+-    obj.fast_timer = "normal"
+-    obj.suspend_individual = "false"
+-    obj.policy_owner = "local"
+-    obj.descr = ""
+-    handle.set_mo(obj)
+-    handle.commit()
+-
+-    # #####################################
+-    # Delete LACP Policy
+-    # #####################################
+-    obj = handle.query_dn("org-root/lacp-test")
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-    # #####################################
+-    # Create LAN Connectivity Policy
+-    # #####################################
+-    from ucsmsdk.mometa.vnic.VnicLanConnPolicy import VnicLanConnPolicy
+-    from ucsmsdk.mometa.vnic.VnicEther import VnicEther
+-    from ucsmsdk.mometa.vnic.VnicEtherIf import VnicEtherIf
+-
+-    mo = VnicLanConnPolicy(parent_mo_or_dn="org-root", policy_owner="local",
+-                           name="test", descr="test_policy")
+-    mo_1 = VnicEther(parent_mo_or_dn=mo, nw_ctrl_policy_name="default",
+-                     name="test", admin_host_port="ANY", admin_vcon="any",
+-                     stats_policy_name="default", admin_cdn_name="",
+-                     switch_id="A", pin_to_group_name="", mtu="1500",
+-                     qos_policy_name="qos-1", adaptor_profile_name="Linux",
+-                     ident_pool_name="mac-pool-1", order="1", nw_templ_name="",
+-                     addr="derived")
+-    mo_1_1 = VnicEtherIf(parent_mo_or_dn=mo_1, default_net="yes",
+-                         name="default")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    # #####################################
+-    # Delete LAN Connectivity Policy
+-    # #####################################
+-    obj = handle.query_dn("org-root/lan-conn-pol-test")
+-    handle.remove_mo(obj)
+-    handle.commit()
+-
+-    # #####################################
+-    # Create QoS Policy
+-    # #####################################
+-    from ucsmsdk.mometa.epqos.EpqosDefinition import EpqosDefinition
+-    from ucsmsdk.mometa.epqos.EpqosEgress import EpqosEgress
+-
+-    mo = EpqosDefinition(parent_mo_or_dn="org-root", policy_owner="local",
+-                         name="test", descr="")
+-    mo_1 = EpqosEgress(parent_mo_or_dn=mo, rate="line-rate",
+-                       host_control="none", name="", prio="best-effort",
+-                       burst="10240")
+-    handle.add_mo(mo)
+-    handle.commit()
+-
+-    # #####################################
+-    # Delete QoS Policy
+-    # #####################################
+-    obj = handle.query_dn("org-root/ep-qos-test")
+-    handle.remove_mo(obj)
+-    handle.commit()
++from tests.base import BaseTest
++
++
++class TestPolicy(BaseTest):
++    def test_001_policy(self):
++        from ucsmsdk.mometa.flowctrl.FlowctrlItem import FlowctrlItem
++
++        # #####################################
++        # Create a Flow Control Policy
++        # #####################################
++        mo = FlowctrlItem(parent_mo_or_dn="fabric/lan/flowctrl", snd="off",
++                          rcv="off", name="test", prio="on")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        # #####################################
++        # Delete Flow Control Policy
++        # #####################################
++        obj = handle.query_dn("fabric/lan/flowctrl/policy-test")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++        # #####################################
++        # Create Dynamic vNIC Connection Policy
++        # #####################################
++        from ucsmsdk.mometa.vnic.VnicDynamicConPolicy import VnicDynamicConPolicy
++
++        mo = VnicDynamicConPolicy(parent_mo_or_dn="org-root", name="test",
++                                  descr="test", adaptor_profile_name="Linux",
++                                  policy_owner="local",
++                                  protection="protected-pref-b", dynamic_eth="54")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        # #####################################
++        # Delete Dynamic vNIC Connection Policy
++        # #####################################
++        obj = handle.query_dn("org-root/dynamic-con-test")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++        # #####################################
++        # Create LACP Policy
++        # #####################################
++        from ucsmsdk.mometa.fabric.FabricLacpPolicy import FabricLacpPolicy
++
++        mo = FabricLacpPolicy(parent_mo_or_dn="org-root", fast_timer="fast",
++                              policy_owner="local", suspend_individual="true",
++                              name="test", descr="")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        # #####################################
++        # Modify LACP Policy
++        # #####################################
++        obj = handle.query_dn("org-root/lacp-test")
++        obj.fast_timer = "normal"
++        obj.suspend_individual = "false"
++        obj.policy_owner = "local"
++        obj.descr = ""
++        self.handle.set_mo(obj)
++        self.handle.commit()
++
++        # #####################################
++        # Delete LACP Policy
++        # #####################################
++        obj = handle.query_dn("org-root/lacp-test")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++        # #####################################
++        # Create LAN Connectivity Policy
++        # #####################################
++        from ucsmsdk.mometa.vnic.VnicLanConnPolicy import VnicLanConnPolicy
++        from ucsmsdk.mometa.vnic.VnicEther import VnicEther
++        from ucsmsdk.mometa.vnic.VnicEtherIf import VnicEtherIf
++
++        mo = VnicLanConnPolicy(parent_mo_or_dn="org-root", policy_owner="local",
++                               name="test", descr="test_policy")
++        mo_1 = VnicEther(parent_mo_or_dn=mo, nw_ctrl_policy_name="default",
++                         name="test", admin_host_port="ANY", admin_vcon="any",
++                         stats_policy_name="default", admin_cdn_name="",
++                         switch_id="A", pin_to_group_name="", mtu="1500",
++                         qos_policy_name="qos-1", adaptor_profile_name="Linux",
++                         ident_pool_name="mac-pool-1", order="1", nw_templ_name="",
++                         addr="derived")
++        mo_1_1 = VnicEtherIf(parent_mo_or_dn=mo_1, default_net="yes",
++                             name="default")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        # #####################################
++        # Delete LAN Connectivity Policy
++        # #####################################
++        obj = handle.query_dn("org-root/lan-conn-pol-test")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
++
++        # #####################################
++        # Create QoS Policy
++        # #####################################
++        from ucsmsdk.mometa.epqos.EpqosDefinition import EpqosDefinition
++        from ucsmsdk.mometa.epqos.EpqosEgress import EpqosEgress
++
++        mo = EpqosDefinition(parent_mo_or_dn="org-root", policy_owner="local",
++                             name="test", descr="")
++        mo_1 = EpqosEgress(parent_mo_or_dn=mo, rate="line-rate",
++                           host_control="none", name="", prio="best-effort",
++                           burst="10240")
++        self.handle.add_mo(mo)
++        self.handle.commit()
++
++        # #####################################
++        # Delete QoS Policy
++        # #####################################
++        obj = handle.query_dn("org-root/ep-qos-test")
++        self.handle.remove_mo(obj)
++        self.handle.commit()
+Index: ucsmsdk-0.9.12/tests/generic_mo/test_ucsgmo.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/generic_mo/test_ucsgmo.py
++++ ucsmsdk-0.9.12/tests/generic_mo/test_ucsgmo.py
+@@ -11,99 +11,77 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown
++import unittest
+ 
+ import ucsmsdk.ucsxmlcodec as xc
+ import ucsmsdk.ucsmo as ucsmo
+ 
+-handle = None
+-
+-fault_inst_xml_str='''
+-<faultInst descr="TCA: etherTxStats totalBytesDelta = 6480,
+-raised above 0" dn="sys/switch-A/slot-1/switch-ether/port-3/fault-F35275"
+-status="modified"/>
+-'''
+-
+-def setup():
+-    pass
+-    # global handle
+-    # handle = custom_setup()
+-
+-
+-def teardown():
+-    pass
+-    # custom_teardown(handle)
+-
+-
+-def test_001_create_gmo_from_xml():
+-    xml = '''
+-    <testLsA a="1" b="2" c="3" dn="org-root/" rn="">
+-     <testLsB a="1" b="2" c="3" dn="org-root/" rn="" />
+-     <testLsC a="1" b="2" c="3" dn="org-root/" rn="" >
+-      <testLsD a="1" b="2" c="3" dn="org-root/" rn="" />
+-     </testLsC>
+-    </testLsA>'''
+-    obj = xc.from_xml_str(xml)
+-    assert_equal(obj.__class__.__name__, 'GenericMo')
+-
+-
+-def test_002_create_gmo_using_param_dict():
+-    args = {"a": 1, "b": 2, "c":3}
+-    obj = ucsmo.GenericMo("testLsA", "org-root", **args)
+-    obj1 = ucsmo.GenericMo("testLsB", "org-root", **args)
+-    obj.child_add(obj1)
+-    elem = obj.to_xml()
+-    xml_str = xc.to_xml_str(elem)
+-
+-    expected = b'<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
+-
+-    assert_equal(xml_str, expected)
+-
+-def test_003_create_gmo_using_param_dict():
+-    args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
+-    obj = ucsmo.GenericMo("testLsA", "org-root", **args)
+-    obj1 = ucsmo.GenericMo("testLsB", obj.dn, rn="child")
+-    obj.child_add(obj1)
+-    elem = obj.to_xml()
+-    xml_str = xc.to_xml_str(elem)
+-
+-    expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
+-
+-    assert_equal(xml_str, expected)
+-
+-def test_004_create_gmo_using_parent_mo():
+-    args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
+-    obj = ucsmo.GenericMo("testLsA", "org-root", **args)
+-    obj1 = ucsmo.GenericMo("testLsB", obj, rn="child")
+-    elem = obj.to_xml()
+-    xml_str = xc.to_xml_str(elem)
+-
+-    expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
+-
+-    assert_equal(xml_str, expected)
+-
+-def test_005_create_gmo_from_xml():
+-    xml_str = '''
+-    <faultInst descr="TCA: etherTxStats totalBytesDelta = 1005,
+-    raised above 0" dn="sys/chassis-1/slot-1/host/port-2/fault-F35275"
+-    status="modified"/>
+-    '''
+-    gmo = ucsmo.generic_mo_from_xml(xml_str)
+-    xml_element = gmo.to_xml()
+-    to_xml_str = xc.to_xml_str(xml_element)
+-
+-def test_006_gmo_to_mo():
+-    xml_str = '''
+-    <faultInst descr="TCA: etherTxStats totalBytesDelta = 1005,
+-    raised above 0" dn="sys/chassis-1/slot-1/host/port-2/fault-F35275"
+-    status="modified"/>
+-    '''
+-
+-    gmo = ucsmo.generic_mo_from_xml(xml_str)
+-    mo = gmo.to_mo()
+-    assert_equal(mo.code, "F35275")
+-
+-
+ 
++class TestUcsgMo(unittest.TestCase):
++    def test_001_create_gmo_from_xml(self):
++        xml = '''
++        <testLsA a="1" b="2" c="3" dn="org-root/" rn="">
++         <testLsB a="1" b="2" c="3" dn="org-root/" rn="" />
++         <testLsC a="1" b="2" c="3" dn="org-root/" rn="" >
++          <testLsD a="1" b="2" c="3" dn="org-root/" rn="" />
++         </testLsC>
++        </testLsA>'''
++        obj = xc.from_xml_str(xml)
++        self.assertEqual(obj.__class__.__name__, 'GenericMo')
++
++    def test_002_create_gmo_using_param_dict(self):
++        args = {"a": 1, "b": 2, "c":3}
++        obj = ucsmo.GenericMo("testLsA", "org-root", **args)
++        obj1 = ucsmo.GenericMo("testLsB", "org-root", **args)
++        obj.child_add(obj1)
++        elem = obj.to_xml()
++        xml_str = xc.to_xml_str(elem)
++
++        expected = b'<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
++
++        self.assertEqual(xml_str, expected)
++
++    def test_003_create_gmo_using_param_dict(self):
++        args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
++        obj = ucsmo.GenericMo("testLsA", "org-root", **args)
++        obj1 = ucsmo.GenericMo("testLsB", obj.dn, rn="child")
++        obj.child_add(obj1)
++        elem = obj.to_xml()
++        xml_str = xc.to_xml_str(elem)
++
++        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
++
++        self.assertEqual(xml_str, expected)
++
++    def test_004_create_gmo_using_parent_mo(self):
++        args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
++        obj = ucsmo.GenericMo("testLsA", "org-root", **args)
++        obj1 = ucsmo.GenericMo("testLsB", obj, rn="child")
++        elem = obj.to_xml()
++        xml_str = xc.to_xml_str(elem)
++
++        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
++
++        self.assertEqual(xml_str, expected)
++
++    def test_005_create_gmo_from_xml(self):
++        xml_str = '''
++        <faultInst descr="TCA: etherTxStats totalBytesDelta = 1005,
++        raised above 0" dn="sys/chassis-1/slot-1/host/port-2/fault-F35275"
++        status="modified"/>
++        '''
++        gmo = ucsmo.generic_mo_from_xml(xml_str)
++        xml_element = gmo.to_xml()
++        to_xml_str = xc.to_xml_str(xml_element)
++
++    def test_006_gmo_to_mo(self):
++        xml_str = '''
++        <faultInst descr="TCA: etherTxStats totalBytesDelta = 1005,
++        raised above 0" dn="sys/chassis-1/slot-1/host/port-2/fault-F35275"
++        status="modified"/>
++        '''
++
++        gmo = ucsmo.generic_mo_from_xml(xml_str)
++        mo = gmo.to_mo()
++        self.assertEqual(mo.code, "F35275")
+ 
+Index: ucsmsdk-0.9.12/tests/coreutils/test_get_meta_info.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/coreutils/test_get_meta_info.py
++++ ucsmsdk-0.9.12/tests/coreutils/test_get_meta_info.py
+@@ -11,34 +11,33 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-from ucsmsdk.ucscoreutils import get_meta_info
+-
+-
+-def test_known_class():
+-    meta = get_meta_info(class_id="OrGoRg")
+-    xml_attribute = meta.xml_attribute
+-    assert_equal(xml_attribute, "orgOrg")
+-
+-
+-def test_unknown_class():
+-    meta = get_meta_info(class_id="unknown")
+-    assert_equal(meta, None)
+-
+-
+-def test_known_class_props():
+-    meta = get_meta_info(class_id="OrGoRg")
+-    properties = len(meta.props)
+-    assert_not_equal(properties, 0)
++import unittest
+ 
++from ucsmsdk.ucscoreutils import get_meta_info
+ 
+-def test_known_class_props_meta():
+-    meta = get_meta_info(class_id="OrGoRg")
+-    xml_attribute = meta.props['name'].xml_attribute
+-    assert_equal(xml_attribute, 'name')
+ 
++class TestGetMetaInfo(unittest.TestCase):
++    def test_known_class(self):
++        meta = get_meta_info(class_id="OrGoRg")
++        xml_attribute = meta.xml_attribute
++        self.assertEqual(xml_attribute, "orgOrg")
++
++    def test_unknown_class(self):
++        meta = get_meta_info(class_id="unknown")
++        self.assertIsNone(meta)
++
++    def test_known_class_props(self):
++        meta = get_meta_info(class_id="OrGoRg")
++        properties = len(meta.props)
++        self.assertNotEqual(properties, 0)
++
++    def test_known_class_props_meta(self):
++        meta = get_meta_info(class_id="OrGoRg")
++        xml_attribute = meta.props['name'].xml_attribute
++        self.assertEqual(xml_attribute, 'name')
++
++    def test_include_prop_false(self):
++        meta = get_meta_info(class_id="OrGoRg", include_prop=False)
++        properties = len(meta.props)
++        self.assertEqual(properties, 0)
+ 
+-def test_include_prop_false():
+-    meta = get_meta_info(class_id="OrGoRg", include_prop=False)
+-    properties = len(meta.props)
+-    assert_equal(properties, 0)
+Index: ucsmsdk-0.9.12/tests/base.py
+===================================================================
+--- /dev/null
++++ ucsmsdk-0.9.12/tests/base.py
+@@ -0,0 +1,30 @@
++# Copyright 2021 SUSE LLC
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++# http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++import unittest
++
++from tests.connection.info import custom_setup, custom_teardown, get_skip_msg
++
++
++class BaseTest(unittest.TestCase):
++    def setUp(self):
++        super().setUp()
++        self.handle = custom_setup()
++        if not self.handle:
++            msg = get_skip_msg()
++            raise unittest.SkipTest(msg)
++
++    def tearDown(self):
++        super().tearDown()
++        custom_teardown(handle)
++
+Index: ucsmsdk-0.9.12/tests/common/test_request_xml.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_request_xml.py
++++ ucsmsdk-0.9.12/tests/common/test_request_xml.py
+@@ -11,151 +11,128 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from __future__ import print_function
++from tests.base import BaseTest
+ 
+-from nose import SkipTest
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
+-
+-handle = None
+-
+-
+-def setup():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-
+-def teardown():
+-    custom_teardown(handle)
+-
+-to_commit = {}
+-
+-def commit():
+-    from ucsmsdk.ucsbasetype import ConfigMap, Dn, DnSet, Pair
+-    import ucsmsdk.ucsmethodfactory as mf
+-    import ucsmsdk.ucsxmlcodec as xc
+-
+-    global to_commit
+-
+-    refresh_dict = {}
+-    mo_dict = to_commit
+-    if not mo_dict:
+-        print("No Mo to be Committed")
+-        return None
+-
+-    config_map = ConfigMap()
+-    for mo_dn in mo_dict:
+-        mo = mo_dict[mo_dn]
+-        child_list = mo.child
+-        while len(child_list) > 0:
+-            current_child_list = child_list
+-            child_list = []
+-            for child_mo in current_child_list:
+-                if child_mo.is_dirty():
+-                    refresh_dict[child_mo.dn] = child_mo
+-                child_list.extend(child_mo.child)
+-
+-        pair = Pair()
+-        pair.key = mo_dn
+-        pair.child_add(mo_dict[mo_dn])
+-        config_map.child_add(pair)
+-
+-    xml_element = mf.config_conf_mos("cookie", config_map, False)
+-    xml_str = xc.to_xml_str(xml_element)
+-    to_commit = {}
+-    return xml_str
+-
+-def add_mo(mo, modify_present=False):
+-    import ucsmsdk.ucsgenutils as ucsgenutils
+-    global to_commit
+-
+-    if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
+-        mo.status = "created,modified"
+-    else:
+-        mo.status = "created"
+-
+-    to_commit[mo.dn] = mo
+-
+-def set_mo(mo):
+-    global to_commit
+-
+-    if mo.is_dirty():
+-        mo.status = "modified"
+-        to_commit[mo.dn] = mo
+-    else:
+-        print("Nothing Modified")
+-
+-
+-def test_001_add_sp():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
+-    add_mo(mo=sp)
+-    xml_str = commit()
+-    print(xml_str)
+-
+-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+-    assert_equal(xml_str, expected)
+-
+-def test_002_add_hierarchy():
+-    from ucsmsdk.mometa.org.OrgOrg import OrgOrg
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    org = OrgOrg(parent_mo_or_dn="org-root", name="test_org")
+-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
+-    add_mo(mo=org)
+-    xml_str = commit()
+-    print(xml_str)
+-
+-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+-    assert_equal(xml_str, expected)
+-
+-@with_setup(setup, teardown)
+-def test_003_get_then_set_sp():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
+-    handle.add_mo(sp)
+-    handle.commit()
+-
+-    test_sp = handle.query_dn("org-root/ls-test_sp")
+-    test_sp.descr = "change"
+-    set_mo(test_sp)
+-    xml_str = commit()
+-    print(xml_str)
+-
+-    handle.remove_mo(sp)
+-    handle.commit()
+-
+-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
+-    assert_equal(xml_str, expected)
+-
+-@with_setup(setup, teardown)
+-def test_004_get_org_and_add_sp_add_mo_sp():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    org = handle.query_dn("org-root")
+-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
+-
+-    add_mo(sp)
+-    xml_str = commit()
+-    print(xml_str)
+-
+-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+-    assert_equal(xml_str, expected)
+-
+-@with_setup(setup, teardown)
+-def test_005_get_org_and_add_sp_set_mo_org():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    org = handle.query_dn("org-root")
+-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
+-
+-    set_mo(org)
+-    xml_str = commit()
+-    print(xml_str)
+ 
+-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+-    assert_equal(xml_str, expected)
++class TestRequestXML(BaseTest):
++    def setUp(self):
++        super().setUp()
++        self.to_commit = {}
++
++    def commit(self):
++        from ucsmsdk.ucsbasetype import ConfigMap, Dn, DnSet, Pair
++        import ucsmsdk.ucsmethodfactory as mf
++        import ucsmsdk.ucsxmlcodec as xc
++
++        refresh_dict = {}
++        mo_dict = self.to_commit
++        if not mo_dict:
++            print("No Mo to be Committed")
++            return None
++
++        config_map = ConfigMap()
++        for mo_dn in mo_dict:
++            mo = mo_dict[mo_dn]
++            child_list = mo.child
++            while len(child_list) > 0:
++                current_child_list = child_list
++                child_list = []
++                for child_mo in current_child_list:
++                    if child_mo.is_dirty():
++                        refresh_dict[child_mo.dn] = child_mo
++                    child_list.extend(child_mo.child)
++
++            pair = Pair()
++            pair.key = mo_dn
++            pair.child_add(mo_dict[mo_dn])
++            config_map.child_add(pair)
++
++        xml_element = mf.config_conf_mos("cookie", config_map, False)
++        xml_str = xc.to_xml_str(xml_element)
++        self.to_commit = {}
++        return xml_str
++
++    def add_mo(self, mo, modify_present=False):
++        import ucsmsdk.ucsgenutils as ucsgenutils
++
++        if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
++            mo.status = "created,modified"
++        else:
++            mo.status = "created"
++
++        self.to_commit[mo.dn] = mo
++
++    def set_mo(self, mo):
++        if mo.is_dirty():
++            mo.status = "modified"
++            self.to_commit[mo.dn] = mo
++        else:
++            print("Nothing Modified")
++
++    def test_001_add_sp(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
++        self.add_mo(mo=sp)
++        xml_str = self.commit()
++        print(xml_str)
++
++        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
++        self.assertEqual(xml_str, expected)
++
++    def test_002_add_hierarchy(self):
++        from ucsmsdk.mometa.org.OrgOrg import OrgOrg
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        org = OrgOrg(parent_mo_or_dn="org-root", name="test_org")
++        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
++        self.add_mo(mo=org)
++        xml_str = self.commit()
++        print(xml_str)
++
++        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
++        self.assertEqual(xml_str, expected)
++
++    def test_003_get_then_set_sp(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
++        self.handle.add_mo(sp)
++        self.handle.commit()
++
++        test_sp = self.handle.query_dn("org-root/ls-test_sp")
++        test_sp.descr = "change"
++        self.set_mo(test_sp)
++        xml_str = self.commit()
++        print(xml_str)
++
++        self.handle.remove_mo(sp)
++        self.handle.commit()
++
++        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
++        self.assertEqual(xml_str, expected)
++
++    def test_004_get_org_and_add_sp_add_mo_sp(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        org = self.handle.query_dn("org-root")
++        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
++
++        self.add_mo(sp)
++        xml_str = self.commit()
++        print(xml_str)
++
++        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
++        self.assertEqual(xml_str, expected)
++
++    def test_005_get_org_and_add_sp_set_mo_org(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++
++        org = self.handle.query_dn("org-root")
++        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
++
++        self.set_mo(org)
++        xml_str = self.commit()
++        print(xml_str)
++
++        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
++        self.assertEqual(xml_str, expected)
+Index: ucsmsdk-0.9.12/tests/common/test_unknown_props.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_unknown_props.py
++++ ucsmsdk-0.9.12/tests/common/test_unknown_props.py
+@@ -11,40 +11,39 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from __future__ import print_function
++import unittest
+ 
+-from nose.tools import assert_equal 
+ import ucsmsdk.ucsxmlcodec as xc
+ from ucsmsdk.ucscoremeta import WriteXmlOption
+ 
+ 
+-def test_001_knownmo_unknownprop():
+-    xml_str = '''
+-    <lsServer agentPolicyName=""
+-    name="ra11"
+-    type="instance"
+-    usrLbl="b"
+-    rn = "ls-ra11"
+-    unknownProps="unknown"/>'''
+-
+-    obj = xc.from_xml_str(xml_str)
+-    obj.unknownProps = "known"
+-    xml_element = obj.to_xml()
+-    expected = b'<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
+-    result_str = xc.to_xml_str(xml_element)
+-    assert_equal(result_str, expected)
+-
+-
+-def test_002_knownmo_unknownprop():
+-    xml_str = '''
+-    <lsServer agentPolicyName=""
+-    name="ra11"
+-    type="instance"
+-    usrLbl="b"
+-    rn = "ls-ra11"
+-    unknownProps="unknown"/>'''
+-
+-    obj = xc.from_xml_str(xml_str)
+-    obj.unknownProps = "known"
+-    xml_element = obj.to_xml(option=WriteXmlOption.DIRTY)
+-    print(xc.to_xml_str(xml_element))
++class TestUnknownProps(unittest.TestCase):
++    def test_001_knownmo_unknownprop(self):
++        xml_str = '''
++        <lsServer agentPolicyName=""
++        name="ra11"
++        type="instance"
++        usrLbl="b"
++        rn = "ls-ra11"
++        unknownProps="unknown"/>'''
++
++        obj = xc.from_xml_str(xml_str)
++        obj.unknownProps = "known"
++        xml_element = obj.to_xml()
++        expected = b'<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
++        result_str = xc.to_xml_str(xml_element)
++        self.assertEqual(result_str, expected)
++
++    def test_002_knownmo_unknownprop(self):
++        xml_str = '''
++        <lsServer agentPolicyName=""
++        name="ra11"
++        type="instance"
++        usrLbl="b"
++        rn = "ls-ra11"
++        unknownProps="unknown"/>'''
++    
++        obj = xc.from_xml_str(xml_str)
++        obj.unknownProps = "known"
++        xml_element = obj.to_xml(option=WriteXmlOption.DIRTY)
++        print(xc.to_xml_str(xml_element))
+Index: ucsmsdk-0.9.12/tests/common/test_ucsvalidatemethod.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucsvalidatemethod.py
++++ ucsmsdk-0.9.12/tests/common/test_ucsvalidatemethod.py
+@@ -11,47 +11,45 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
+ 
+ 
+-def test_001_fabricvlan_id_100():
+-    # type: uint
+-    # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
+-    from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
++class TestUCSValidateMethod(unittest.TestCase):
++    def test_001_fabricvlan_id_100(self):
++        # type: uint
++        # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
++        from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+ 
+-    vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
+-    vlan.id = 100
++        vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
++        vlan.id = 100
+ 
++    def test_002_fabricvlan_id_4000(self):
++        # type: uint
++        # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
++        from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+ 
+-def test_002_fabricvlan_id_4000():
+-    # type: uint
+-    # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
+-    from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
++        vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
++        vlan.id = 4000
+ 
+-    vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
+-    vlan.id = 4000
++    def test_003_fabricvlan_id_5000(self):
++        # type: uint
++        # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
++        from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+ 
++        with self.assertRaises(Exception):
++            vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
++            vlan.id = 5000
+ 
+-@raises(Exception)
+-def test_003_fabricvlan_id_5000():
+-    # type: uint
+-    # range: ["1-3967", "1-4029", "4048-4091", "4048-4093"]
+-    from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
++    def test_004_equipmentPOST_globalid(self):
++        import ucsmsdk.ucsxmlcodec as xc
+ 
+-    vlan = FabricVlan(parent_mo_or_dn="parent_dn", name="my_vlan")
+-    vlan.id = 5000
++        xml_str = '''
++        <equipmentPOST childAction="deleteNonPresent" code="POST-2298"
+ 
++        created="2015-10-27T08:13:03.068" descr="No Errors" globalId="2298"
++        localId="No Errors" method="POST" name="" recoverable="recoverable"
++        recoveryAction="none" rn="code-2298" severity="info"
++        type="adaptor: Cisco Systems Inc N20-AC0002" value="0"/>
++        '''
+ 
+-def test_004_equipmentPOST_globalid():
+-    import ucsmsdk.ucsxmlcodec as xc
+-
+-    xml_str = '''
+-    <equipmentPOST childAction="deleteNonPresent" code="POST-2298"
+-
+-    created="2015-10-27T08:13:03.068" descr="No Errors" globalId="2298"
+-    localId="No Errors" method="POST" name="" recoverable="recoverable"
+-    recoveryAction="none" rn="code-2298" severity="info"
+-    type="adaptor: Cisco Systems Inc N20-AC0002" value="0"/>
+-    '''
+-
+-    xc.from_xml_str(xml_str)
++        xc.from_xml_str(xml_str)
+Index: ucsmsdk-0.9.12/tests/common/test_ucstoxml.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucstoxml.py
++++ ucsmsdk-0.9.12/tests/common/test_ucstoxml.py
+@@ -11,62 +11,60 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-import ucsmsdk.ucsxmlcodec as xc
+-
+-
+-def test_001_mo_to_xml():
+-    from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
+-
+-    expected = b'<fabricVsan dn="org-root/net-test" name="test" status="modified" />'
+-
+-    mo = FabricVsan("org-root", "test")
+-    mo.status = "modified"
+-
+-    elem = mo.to_xml()
+-    xml_str = xc.to_xml_str(elem)
+-    assert_equal(xml_str, expected)
+-
+-
+-def test_001_mo_heirarchy_to_xml():
+-    # first form the object from xml
+-    # and then convert it back to xml
+-    response_str = '''
+-        <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
+-        <outConfigs>
+-
+-        <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
+-        dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
+-        operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
+-        set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
+-        width="64">
+-
+-        <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
+-        temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
+-        thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
+-
+-        <memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-
+-        <memoryUnitEnvStatsHist2 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-        </memoryUnitEnvStatsHist2>
+-
+-        </memoryUnitEnvStatsHist1>
+-
+-        </memoryUnitEnvStats>
+-        </memoryUnit>
+-        </outConfigs>
+-        </configResolveClasses>
+-    '''
+-
+-    response = xc.from_xml_str(response_str)
+-
+-    expected = b'<memoryUnitEnvStatsHist1 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262"><memoryUnitEnvStatsHist2 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" /></memoryUnitEnvStatsHist1>'
+-    obj = response.out_configs.child[0].child[0].child[0]
+-    assert_equal(xc.to_xml_str(obj.to_xml()), expected)
++import unittest
+ 
++import ucsmsdk.ucsxmlcodec as xc
+ 
+ 
++class TestUCStoXML(unittest.TestCase):
++    def test_001_mo_to_xml(self):
++        from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
++
++        expected = b'<fabricVsan dn="org-root/net-test" name="test" status="modified" />'
++
++        mo = FabricVsan("org-root", "test")
++        mo.status = "modified"
++
++        elem = mo.to_xml()
++        xml_str = xc.to_xml_str(elem)
++        self.assertEqual(xml_str, expected)
++
++    def test_001_mo_heirarchy_to_xml(self):
++        # first form the object from xml
++        # and then convert it back to xml
++        response_str = '''
++            <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
++            <outConfigs>
++
++            <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
++            dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
++            operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
++            set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
++            width="64">
++
++            <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
++            temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
++            thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
++
++            <memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++
++            <memoryUnitEnvStatsHist2 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++            </memoryUnitEnvStatsHist2>
++
++            </memoryUnitEnvStatsHist1>
++
++            </memoryUnitEnvStats>
++            </memoryUnit>
++            </outConfigs>
++            </configResolveClasses>
++        '''
++
++        response = xc.from_xml_str(response_str)
++
++        expected = b'<memoryUnitEnvStatsHist1 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262"><memoryUnitEnvStatsHist2 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" /></memoryUnitEnvStatsHist1>'
++        obj = response.out_configs.child[0].child[0].child[0]
++        self.assertEqual(xc.to_xml_str(obj.to_xml()), expected)
+Index: ucsmsdk-0.9.12/tests/common/test_ucspropval.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucspropval.py
++++ ucsmsdk-0.9.12/tests/common/test_ucspropval.py
+@@ -11,77 +11,57 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
++from tests.base import BaseTest
+ 
+-handle = None
+-obj = None
+ 
+-
+-def setup_module():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    global obj
+-    global handle
+-
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
+-
+-    obj = LsServer("org-root", "test", usr_lbl="sample")
+-
+-    handle.add_mo(obj, True)
+-    handle.commit()
+-
+-
+-def teardown_module():
+-    if handle:
+-        handle.remove_mo(obj)
+-        handle.commit()
+-    custom_teardown(handle)
+-
+-
+-@raises(Exception)
+-def test_001_set_ro_property():
+-    # This is a read only property
+-    # Should fail with an exception
+-    obj.oper_state = "up"
+-
+-
+-def test_002_set_rw_property():
+-    # This is a read write property.
+-    # Should happen without any issues
+-    obj.descr = "test_description"
+-
+-
+-@raises(Exception)
+-def test_003_set_naming_property():
+-    # This is a naming property. so, it is create only
+-    # Should fail with an exception
+-    obj.name = "test1"
+-
+-
+-def test_004_check_existing_prop_match():
+-    # Checking property aginst existing property
+-    bool_var = obj.check_prop_match(usr_lbl="sample")
+-    assert_equal(bool_var, True)
+-
+-
+-@raises(Exception)
+-def test_005_check_nonexisting_prop_match():
+-    # Checking property aginst non-existing property
+-    bool_var = obj.check_prop_match(usr_lbl="new_label")
+-    assert_equal(bool_var, True)
+-
+-
+-def test_006_set_prop_multiple():
+-    # Setting multiple property of object
+-    obj.set_prop_multiple(usr_lbl="new_label",
+-                          vmedia_policy_name="test_vmedia_pol")
+-    handle.set_mo(obj)
+-    handle.commit()
+-
+-    new_obj = handle.query_dn(obj.dn)
+-    assert_equal(new_obj.usr_lbl, "new_label")
+-    assert_equal(new_obj.vmedia_policy_name, "test_vmedia_pol")
++class TestUCSProposal(BaseTest):
++    def setUp(self):
++        super().setUp()
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        self.obj = LsServer("org-root", "test", usr_lbl="sample")
++
++        self.handle.add_mo(obj, True)
++        self.handle.commit()
++
++    def tearDown(self):
++        if self.handle:
++            self.handle.remove_mo(self.obj)
++            self.handle.commit()
++        super().tearDown()
++
++    def test_001_set_ro_property(self):
++        # This is a read only property
++        # Should fail with an exception
++        with self.assertRaises(Exception):
++            self.obj.oper_state = "up"
++
++    def test_002_set_rw_property(self):
++        # This is a read write property.
++        # Should happen without any issues
++        self.obj.descr = "test_description"
++
++    def test_003_set_naming_property(self):
++        # This is a naming property. so, it is create only
++        # Should fail with an exception
++        with self.assertRaises(Exception):
++            self.obj.name = "test1"
++
++    def test_004_check_existing_prop_match(self):
++        # Checking property aginst existing property
++        self.assertTrue(self.obj.check_prop_match(usr_lbl="sample"))
++
++    def test_005_check_nonexisting_prop_match(self):
++        # Checking property aginst non-existing property
++        with self.assertRaises(Exception):
++            self.assertTrue(self.obj.check_prop_match(usr_lbl="new_label"))
++
++    def test_006_set_prop_multiple(self):
++        # Setting multiple property of object
++        self.obj.set_prop_multiple(usr_lbl="new_label",
++                              vmedia_policy_name="test_vmedia_pol")
++        self.handle.set_mo(obj)
++        self.handle.commit()
++
++        new_obj = self.handle.query_dn(obj.dn)
++        self.assertEqual(new_obj.usr_lbl, "new_label")
++        self.assertEqual(new_obj.vmedia_policy_name, "test_vmedia_pol")
+Index: ucsmsdk-0.9.12/tests/common/test_ucsmo.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucsmo.py
++++ ucsmsdk-0.9.12/tests/common/test_ucsmo.py
+@@ -11,23 +11,24 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-from ucsmsdk.ucsmo import ManagedObject
++import unittest
+ 
++from ucsmsdk.ucsmo import ManagedObject
+ 
+-@raises(Exception)
+-def test_001_create_mo_directly():
+-    # Create a Managed Object by specifying the classId and parent dn
+-    # this should raise an exception as the associated Meta's will not
+-    # be initialised.
+-    ManagedObject("LsServer", "org-root")
+ 
++class TestUCSMo(unittest.TestCase):
++    def test_001_create_mo_directly(self):
++        # Create a Managed Object by specifying the classId and parent dn
++        # this should raise an exception as the associated Meta's will not
++        # be initialised.
++        with self.assertRaises(Exception):
++            ManagedObject("LsServer", "org-root")
+ 
+-def test_002_create_specific_obj():
+-    # Create an object of type LsServer with parent dn specified
+-    # check if the object has the right values populated
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    obj = LsServer("org-root", "temp_sp")
+-    assert_equal(obj.name, "temp_sp")
+-    assert_equal(obj.rn, "ls-temp_sp")
+-    assert_equal(obj.dn, "org-root/ls-temp_sp")
++    def test_002_create_specific_obj(self):
++        # Create an object of type LsServer with parent dn specified
++        # check if the object has the right values populated
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        obj = LsServer("org-root", "temp_sp")
++        self.assertEqual(obj.name, "temp_sp")
++        self.assertEqual(obj.rn, "ls-temp_sp")
++        self.assertEqual(obj.dn, "org-root/ls-temp_sp")
+Index: ucsmsdk-0.9.12/tests/common/test_ucshandle.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucshandle.py
++++ ucsmsdk-0.9.12/tests/common/test_ucshandle.py
+@@ -11,12 +11,14 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
++
+ from ucsmsdk.ucshandle import UcsHandle
+ 
+ 
+-def test_001_create_handle():
+-    handle = UcsHandle("192.168.1.1", "admin", "my_extra_secure_password")
+-    assert_equal(handle.username, "admin")
+-    assert_equal(handle.ip, "192.168.1.1")
++class TestUCSHandle(unittest.TestCase):
++    def test_001_create_handle(self):
++        handle = UcsHandle("192.168.1.1", "admin", "my_extra_secure_password")
++        self.assertEqual(handle.username, "admin")
++        self.assertEqual(handle.ip, "192.168.1.1")
+ 
+Index: ucsmsdk-0.9.12/tests/common/test_ucsfromxml.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucsfromxml.py
++++ ucsmsdk-0.9.12/tests/common/test_ucsfromxml.py
+@@ -11,87 +11,87 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
+ 
+ 
+-def test_001_mo_from_xml():
+-    import ucsmsdk.ucsxmlcodec as xc
+-
+-    response_str = '''
+-        <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
+-        <outConfigs>
+-
+-        <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
+-        dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
+-        operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
+-        set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
+-        width="64">
+-
+-        <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
+-        temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
+-        thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
+-
+-        <memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-
+-        <memoryUnitEnvStatsHist2 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-        </memoryUnitEnvStatsHist2>
+-
+-        </memoryUnitEnvStatsHist1>
+-
+-        </memoryUnitEnvStats>
+-        </memoryUnit>
+-        </outConfigs>
+-        </configResolveClasses>
+-    '''
+-
+-    response = xc.from_xml_str(response_str)
+-    assert_equal(response.out_configs.child[0].__class__.__name__, 'MemoryUnit')
+-    assert_equal(response.out_configs.child[0].child[0].__class__.__name__, 'MemoryUnitEnvStats')
+-    assert_equal(response.out_configs.child[0].child[0].child[0].__class__.__name__, 'GenericMo')
+-    assert_equal(response.out_configs.child[0].child[0].child[0].child[0].__class__.__name__, 'GenericMo')
+-
+-
+-def test_002_mo_from_broken_xml():
+-    import ucsmsdk.ucsxmlcodec as xc
+-
+-    response_str = '''
+-        <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
+-        <outConfigs>
+-
+-        <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
+-        dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
+-        operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
+-        set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
+-        width="64">
+-
+-        <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
+-        temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
+-        thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
+-
+-        <memoryUnitEnvStatsHist childAction="deleteNonPresent" id="<BAD INDEX>" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-
+-        <memoryUnitEnvStatsHist childAction="deleteNonPresent" id="<BAD& INDEX>" mostRecent="no" rn="1" suspect="no"
+-        temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
+-        thresholded="" timeCollected="2015-09-07T09:43:53.262">
+-        </memoryUnitEnvStatsHist>
+-
+-        </memoryUnitEnvStatsHist>
+-
+-        </memoryUnitEnvStats>
+-        </memoryUnit>
+-        </outConfigs>
+-        </configResolveClasses>
+-    '''
+-
+-    response = xc.from_xml_str(response_str)
+-    assert_equal(response.out_configs.child[0].__class__.__name__, 'MemoryUnit')
+-    assert_equal(response.out_configs.child[0].child[0].__class__.__name__, 'MemoryUnitEnvStats')
+-    assert_equal(response.out_configs.child[0].child[0].child[0].__class__.__name__, 'MemoryUnitEnvStatsHist')
+-    assert_equal(response.out_configs.child[0].child[0].child[0].child[0].__class__.__name__, 'MemoryUnitEnvStatsHist')
++class TestUCSFromXML(unittest.TestCase):
++    def test_001_mo_from_xml(self):
++        import ucsmsdk.ucsxmlcodec as xc
++
++        response_str = '''
++            <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
++            <outConfigs>
++
++            <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
++            dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
++            operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
++            set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
++            width="64">
++
++            <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
++            temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
++            thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
++
++            <memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++
++            <memoryUnitEnvStatsHist2 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++            </memoryUnitEnvStatsHist2>
++
++            </memoryUnitEnvStatsHist1>
++
++            </memoryUnitEnvStats>
++            </memoryUnit>
++            </outConfigs>
++            </configResolveClasses>
++        '''
++
++        response = xc.from_xml_str(response_str)
++        self.assertEqual(response.out_configs.child[0].__class__.__name__, 'MemoryUnit')
++        self.assertEqual(response.out_configs.child[0].child[0].__class__.__name__, 'MemoryUnitEnvStats')
++        self.assertEqual(response.out_configs.child[0].child[0].child[0].__class__.__name__, 'GenericMo')
++        self.assertEqual(response.out_configs.child[0].child[0].child[0].child[0].__class__.__name__, 'GenericMo')
++
++    def test_002_mo_from_broken_xml(self):
++        import ucsmsdk.ucsxmlcodec as xc
++
++        response_str = '''
++            <configResolveClasses cookie="1441601790/263349a7-1897-4df0-aff3-bc27c7316862" response="yes" classId="memoryUnit">
++            <outConfigs>
++
++            <memoryUnit adminState="policy" array="1" bank="1" capacity="4096" childAction="deleteNonPresent" clock="1333"
++            dn="sys/chassis-1/blade-2/board/memarray-1/mem-9" formFactor="DIMM" id="9" latency="0.800000" location="DIMM_E1" locationDn="" model="M393B5170FH0-YH9" operQualifier="" operQualifierReason="N/A" operState="operable"
++            operability="operable" perf="unknown" power="not-supported" presence="equipped" revision="0" serial="0x835CE6DB"
++            set="0" speed="unspecified" thermal="ok" type="Other" vendor="0x80CE" visibility="yes" voltage="not-supported"
++            width="64">
++
++            <memoryUnitEnvStats childAction="deleteNonPresent" intervals="58982460" rn="dimm-env-stats" suspect="no"
++            temperature="20.000000" temperatureAvg="20.000000" temperatureMax="20.000000" temperatureMin="20.000000"
++            thresholded="" timeCollected="2015-09-07T10:31:06.608" update="262146">
++
++            <memoryUnitEnvStatsHist childAction="deleteNonPresent" id="<BAD INDEX>" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++
++            <memoryUnitEnvStatsHist childAction="deleteNonPresent" id="<BAD& INDEX>" mostRecent="no" rn="1" suspect="no"
++            temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000"
++            thresholded="" timeCollected="2015-09-07T09:43:53.262">
++            </memoryUnitEnvStatsHist>
++
++            </memoryUnitEnvStatsHist>
++
++            </memoryUnitEnvStats>
++            </memoryUnit>
++            </outConfigs>
++            </configResolveClasses>
++        '''
++
++        response = xc.from_xml_str(response_str)
++        self.assertEqual(response.out_configs.child[0].__class__.__name__, 'MemoryUnit')
++        self.assertEqual(response.out_configs.child[0].child[0].__class__.__name__, 'MemoryUnitEnvStats')
++        self.assertEqual(response.out_configs.child[0].child[0].child[0].__class__.__name__, 'MemoryUnitEnvStatsHist')
++        self.assertEqual(response.out_configs.child[0].child[0].child[0].child[0].__class__.__name__, 'MemoryUnitEnvStatsHist')
+ 
+Index: ucsmsdk-0.9.12/tests/common/test_ucscoreutils.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_ucscoreutils.py
++++ ucsmsdk-0.9.12/tests/common/test_ucscoreutils.py
+@@ -11,41 +11,31 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
+ 
+ import ucsmsdk.ucscoreutils as cutil
+ 
+-def setup_func():
+-    pass
+-
+-def teardown_func():
+-    pass
+-
+-@with_setup(setup_func, teardown_func)
+-def test_001_get_naming_props():
+-    rn_pattern = "fault-[code]-[name]-[type]-xyz-[state]"
+-    rn_str = "fault-F35275-fault-c2-xyz-on"
+-    np = cutil.get_naming_props(rn_str, rn_pattern)
+-    assert_equal(np['code'], 'F35275')
+-    assert_equal(np['name'], 'fault')
+-    assert_equal(np['type'], 'c2')
+-    assert_equal(np['state'], 'on')
+-
+-@with_setup(setup_func, teardown_func)
+-def test_002_get_naming_props():
+-    rn_pattern = "[suport_type][card_param_type]"
+-    rn_str = "11"
+-    np = cutil.get_naming_props(rn_str, rn_pattern)
+-    assert_equal(np['suport_type'], '1')
+-    assert_equal(np['card_param_type'], '1')
+-
+-@with_setup(setup_func, teardown_func)
+-def test_003_get_naming_props():
+-    rn_pattern = "[suport_type][card_param_type]"
+-    rn_str = "1122"
+-    np = cutil.get_naming_props(rn_str, rn_pattern)
+-    #assert_equal(np['suport_type'], '11')
+-    #assert_equal(np['card_param_type'], '22')
+-
+-
++class TestUCSCoreUtils(unittest.TestCase):
++    def test_001_get_naming_props(self):
++        rn_pattern = "fault-[code]-[name]-[type]-xyz-[state]"
++        rn_str = "fault-F35275-fault-c2-xyz-on"
++        np = cutil.get_naming_props(rn_str, rn_pattern)
++        self.assertEqual(np['code'], 'F35275')
++        self.assertEqual(np['name'], 'fault')
++        self.assertEqual(np['type'], 'c2')
++        self.assertEqual(np['state'], 'on')
++
++    def test_002_get_naming_props(self):
++        rn_pattern = "[suport_type][card_param_type]"
++        rn_str = "11"
++        np = cutil.get_naming_props(rn_str, rn_pattern)
++        self.assertEqual(np['suport_type'], '1')
++        self.assertEqual(np['card_param_type'], '1')
++
++    def test_003_get_naming_props(self):
++        rn_pattern = "[suport_type][card_param_type]"
++        rn_str = "1122"
++        np = cutil.get_naming_props(rn_str, rn_pattern)
++        #self.assertEqual(np['suport_type'], '11')
++        #self.assertEqual(np['card_param_type'], '22')
+ 
+Index: ucsmsdk-0.9.12/tests/common/test_threadedmode.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_threadedmode.py
++++ ucsmsdk-0.9.12/tests/common/test_threadedmode.py
+@@ -11,61 +11,44 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from nose.tools import with_setup, assert_equal
+ import threading
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
+ 
+-handle = None
++from tests.base import BaseTest
+ 
+ 
+-def setup_module():
+-    global handle
+-    handle = custom_setup()
+-    if not handle:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
++class TestThreading(BaseTest):
++    def t1_func(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        obj = LsServer("org-root", "temp_sp1")
++        self.handle.add_mo(obj)
+ 
++    def t2_func(self):
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        obj1 = LsServer("org-root", "temp_sp2")
++        obj2 = LsServer("org-root", "temp_sp3")
++        self.handle.add_mo(obj1)
++        self.handle.add_mo(obj2)
+ 
+-def teardown_module():
+-    custom_teardown(handle)
++    def test_test_threading_mode():
++        self.handle.set_mode_threading()
+ 
++        t1 = threading.Thread(name="t1", target=self.t1_func)
++        t2 = threading.Thread(name="t2", target=self.t2_func)
+ 
+-def t1_func():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    obj = LsServer("org-root", "temp_sp1")
+-    handle.add_mo(obj)
++        t1.start()
++        t2.start()
+ 
++        t1.join()
++        t2.join()
+ 
+-def t2_func():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-    obj1 = LsServer("org-root", "temp_sp2")
+-    obj2 = LsServer("org-root", "temp_sp3")
+-    handle.add_mo(obj1)
+-    handle.add_mo(obj2)
++        # commit buffers should be in different contexts
++        buf1 = self.handle._get_commit_buf(tag="t1")
++        buf2 = self.handle._get_commit_buf(tag="t2")
+ 
++        assert_equal(len(buf1), 1)
++        assert_equal(len(buf2), 2)
+ 
+-@with_setup(setup_module, teardown_module)
+-def test_test_threading_mode():
+-    handle.set_mode_threading()
++        self.handle.commit_buffer_discard(tag="t1")
++        self.handle.commit_buffer_discard(tag="t2")
+ 
+-    t1 = threading.Thread(name="t1", target=t1_func)
+-    t2 = threading.Thread(name="t2", target=t2_func)
+-
+-    t1.start()
+-    t2.start()
+-
+-    t1.join()
+-    t2.join()
+-
+-    # commit buffers should be in different contexts
+-    buf1 = handle._get_commit_buf(tag="t1")
+-    buf2 = handle._get_commit_buf(tag="t2")
+-
+-    assert_equal(len(buf1), 1)
+-    assert_equal(len(buf2), 2)
+-
+-    handle.commit_buffer_discard(tag="t1")
+-    handle.commit_buffer_discard(tag="t2")
+-
+-    handle.unset_mode_threading()
++        self.handle.unset_mode_threading()
+Index: ucsmsdk-0.9.12/tests/common/test_special_rn.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_special_rn.py
++++ ucsmsdk-0.9.12/tests/common/test_special_rn.py
+@@ -11,33 +11,35 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
++
+ import ucsmsdk.ucsxmlcodec as xc
+ 
+ 
+-def test_001_StorageLocalDiskPartition():
+-    xml_str = '''
+-    <storageLocalDiskPartition childAction="deleteNonPresent" descr=""
+-    dn="org-root/local-disk-config-default/partition" intId="29002" name=""
+-    order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/>
+-    '''
+-
+-    obj = xc.from_xml_str(xml_str)
+-    xml_element = obj.to_xml()
+-    xc.to_xml_str(xml_element)
+-
+-def test_002_StorageLocalDiskPartition():
+-    xml_str = '''<configResolveClass cookie="1447403324/24f7c591-2b3e-4bf4-8cee-716d3b4297b1" response="yes" classId="storageLocalDiskPartition"> <outConfigs>  <storageLocalDiskPartition childAction="deleteNonPresent" descr="" dn="org-root/local-disk-config-default/partition" intId="29002" name="" order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/>  <storageLocalDiskPartition childAction="deleteNonPresent" descr="" dn="sys/chassis-1/blade-2/board/storage-SAS-1/local-disk-config/partition" intId="none" name="" order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/> </outConfigs> </configResolveClass>
+-    '''
+-
+-    obj = xc.from_xml_str(xml_str)
+-    xml_element = obj.to_xml()
+-    xc.to_xml_str(xml_element)
+-
+-def test_003_StorageLocalDiskPartition():
+-    xml_str = '''<storageController childAction="deleteNonPresent" controllerStatus="unknown" deviceRaidSupport="yes" faultMonitoring="supported" hwRevision="1064E(B3)" id="1" lc="allocated" locationDn="" model="SAS1064E PCI-Express Fusion-MPT SAS" oobControllerId="not-applicable" oobInterfaceSupported="no" operQualifierReason="N/A" operState="unknown" operability="unknown" pciAddr="01:00.0" pciSlot="" perf="unknown" power="unknown" presence="equipped" raidSupport="RAID0, RAID1" rebuildRate="unknown" revision="0" rn="storage-SAS-1" serial="" thermal="unknown" type="SAS" vendor="LSI Logic   Symbios Logic" voltage="unknown"> <storageLocalDiskConfigDef childAction="deleteNonPresent" descr="" flexFlashRAIDReportingState="disable" flexFlashState="disable" intId="none" mode="any-configuration" name="" policyLevel="0" policyOwner="local" protectConfig="no" rn="local-disk-config"> <storageLocalDiskPartition childAction="deleteNonPresent" descr="" intId="none" name="" order="1" policyLevel="0" policyOwner="local" rn="partition" size="unknown" type="none"/></storageLocalDiskConfigDef></storageController>
+-    '''
+-
+-    obj = xc.from_xml_str(xml_str)
+-    xml_element = obj.to_xml()
+-    xc.to_xml_str(xml_element)
++class TestSpecialRN(unittest.TestCase):
++    def test_001_StorageLocalDiskPartition(self):
++        xml_str = '''
++        <storageLocalDiskPartition childAction="deleteNonPresent" descr=""
++        dn="org-root/local-disk-config-default/partition" intId="29002" name=""
++        order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/>
++        '''
++
++        obj = xc.from_xml_str(xml_str)
++        xml_element = obj.to_xml()
++        xc.to_xml_str(xml_element)
++
++    def test_002_StorageLocalDiskPartition(self):
++        xml_str = '''<configResolveClass cookie="1447403324/24f7c591-2b3e-4bf4-8cee-716d3b4297b1" response="yes" classId="storageLocalDiskPartition"> <outConfigs>  <storageLocalDiskPartition childAction="deleteNonPresent" descr="" dn="org-root/local-disk-config-default/partition" intId="29002" name="" order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/>  <storageLocalDiskPartition childAction="deleteNonPresent" descr="" dn="sys/chassis-1/blade-2/board/storage-SAS-1/local-disk-config/partition" intId="none" name="" order="1" policyLevel="0" policyOwner="local" size="unknown" type="none"/> </outConfigs> </configResolveClass>
++        '''
++
++        obj = xc.from_xml_str(xml_str)
++        xml_element = obj.to_xml()
++        xc.to_xml_str(xml_element)
++
++    def test_003_StorageLocalDiskPartition(self):
++        xml_str = '''<storageController childAction="deleteNonPresent" controllerStatus="unknown" deviceRaidSupport="yes" faultMonitoring="supported" hwRevision="1064E(B3)" id="1" lc="allocated" locationDn="" model="SAS1064E PCI-Express Fusion-MPT SAS" oobControllerId="not-applicable" oobInterfaceSupported="no" operQualifierReason="N/A" operState="unknown" operability="unknown" pciAddr="01:00.0" pciSlot="" perf="unknown" power="unknown" presence="equipped" raidSupport="RAID0, RAID1" rebuildRate="unknown" revision="0" rn="storage-SAS-1" serial="" thermal="unknown" type="SAS" vendor="LSI Logic   Symbios Logic" voltage="unknown"> <storageLocalDiskConfigDef childAction="deleteNonPresent" descr="" flexFlashRAIDReportingState="disable" flexFlashState="disable" intId="none" mode="any-configuration" name="" policyLevel="0" policyOwner="local" protectConfig="no" rn="local-disk-config"> <storageLocalDiskPartition childAction="deleteNonPresent" descr="" intId="none" name="" order="1" policyLevel="0" policyOwner="local" rn="partition" size="unknown" type="none"/></storageLocalDiskConfigDef></storageController>
++        '''
++
++        obj = xc.from_xml_str(xml_str)
++        xml_element = obj.to_xml()
++        xc.to_xml_str(xml_element)
+Index: ucsmsdk-0.9.12/tests/common/test_serialization.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_serialization.py
++++ ucsmsdk-0.9.12/tests/common/test_serialization.py
+@@ -11,17 +11,12 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose import SkipTest
+-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
++from tests.base import BaseTest
+ from ucsmsdk.ucshandle import UcsHandle
+ 
+ 
+-def test_serialize_handle():
+-    handle1 = custom_setup()
+-    if not handle1:
+-        msg = get_skip_msg()
+-        raise SkipTest(msg)
++class TestSerialization(BaseTest):
++    def test_serialize_handle(self):
++        frozen_handle = self.handle.freeze()
++        self.handle = UcsHandle.unfreeze(frozen_handle)
+ 
+-    frozen_handle = handle1.freeze()
+-    handle2 = UcsHandle.unfreeze(frozen_handle)
+-    custom_teardown(handle2)
+Index: ucsmsdk-0.9.12/tests/common/test_query_children.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_query_children.py
++++ ucsmsdk-0.9.12/tests/common/test_query_children.py
+@@ -11,71 +11,62 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
+-from ..connection.info import custom_setup, custom_teardown
++from tests.base import BaseTest
+ 
+-handle = None
+-sp_list = []
+ 
+-
+-def setup_module():
+-    from ucsmsdk.mometa.ls.LsServer import LsServer
+-
+-    global handle
+-    handle = custom_setup()
+-    org = handle.query_dn("org-root")
+-
+-    sp_TEST = LsServer(org, name="TEST", usr_lbl="TEST")
+-    handle.add_mo(sp_TEST, True)
+-    sp_list.append(sp_TEST)
+-
+-    sp_test = LsServer(org, name="test", usr_lbl="test", descr="test")
+-    handle.add_mo(sp_test, True)
+-    sp_list.append(sp_test)
+-
+-    sp_test11 = LsServer(org, name="test11", usr_lbl="test11")
+-    handle.add_mo(sp_test11, True)
+-    sp_list.append(sp_test11)
+-
+-    sp_test12 = LsServer(org, name="test12", usr_lbl="test12")
+-    handle.add_mo(sp_test12, True)
+-    sp_list.append(sp_test12)
+-
+-    handle.commit()
+-
+-
+-def teardown_module():
+-    for sp in sp_list:
+-        handle.remove_mo(sp)
+-    handle.commit()
+-    custom_teardown(handle)
+-
+-
+-def test_default_filter():
+-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+-                                filter_str="(usr_lbl, 'test')")
+-    assert_equal(len(mos), 3)
+-
+-
+-def test_default_case_insensitive():
+-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+-                                filter_str="(usr_lbl, 'test', flag='I')")
+-    assert_equal(len(mos), 4)
+-
+-
+-def test_type_eq():
+-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+-                                filter_str="(usr_lbl, 'test', type='eq')")
+-    assert_equal(len(mos), 1)
+-
+-
+-def test_type_eq_prop_without_underscore():
+-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+-                                filter_str="(descr, 'test', type='eq')")
+-    assert_equal(len(mos), 1)
+-
+-
+-def test_type_re():
+-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+-                                filter_str="(usr_lbl, 'test.*1.*', type='re')")
+-    assert_equal(len(mos), 2)
++class TestQueryChildren(BaseTest):
++    def setUp(self):
++        super().setUp()
++        self.sp_list = []
++        from ucsmsdk.mometa.ls.LsServer import LsServer
++        org = handle.query_dn("org-root")
++
++        sp_TEST = LsServer(org, name="TEST", usr_lbl="TEST")
++        self.handle.add_mo(sp_TEST, True)
++        self.sp_list.append(sp_TEST)
++
++        sp_test = LsServer(org, name="test", usr_lbl="test", descr="test")
++        self.handle.add_mo(sp_test, True)
++        self.sp_list.append(sp_test)
++
++        sp_test11 = LsServer(org, name="test11", usr_lbl="test11")
++        self.handle.add_mo(sp_test11, True)
++        self.sp_list.append(sp_test11)
++
++        sp_test12 = LsServer(org, name="test12", usr_lbl="test12")
++        self.handle.add_mo(sp_test12, True)
++        self.sp_list.append(sp_test12)
++
++        self.handle.commit()
++
++    def tearDown(self):
++        for sp in self.sp_list:
++            self.handle.remove_mo(sp)
++        self.handle.commit()
++        super().tearDown()
++
++    def test_default_filter(self):
++        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
++                                    filter_str="(usr_lbl, 'test')")
++        self.assertEqual(len(mos), 3)
++
++    def test_default_case_insensitive(self):
++        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
++                                    filter_str="(usr_lbl, 'test', flag='I')")
++        self.assertEqual(len(mos), 4)
++
++    def test_type_eq(self):
++        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
++                                    filter_str="(usr_lbl, 'test', type='eq')")
++        self.assertEqual(len(mos), 1)
++
++    def test_type_eq_prop_without_underscore(self):
++        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
++                                    filter_str="(descr, 'test', type='eq')")
++        self.assertEqual(len(mos), 1)
++
++    def test_type_re(self):
++        filter_ = "(usr_lbl, 'test.*1.*', type='re')"
++        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
++                                    filter_str=filter_)
++        self.assertEqual(len(mos), 2)
+Index: ucsmsdk-0.9.12/tests/common/test_get_naming_props.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_get_naming_props.py
++++ ucsmsdk-0.9.12/tests/common/test_get_naming_props.py
+@@ -11,11 +11,13 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
++
+ import ucsmsdk.ucscoreutils
+ 
+ 
+-def test_001_rn_pattern():
+-    rn_pattern = "compute-ep-ven-[vendor]-mod-[model]-ser-[serial]"
+-    rn_str = "compute-ep-ven-Cisco Systems Inc-mod-UCSB-B200-M4-ser-3403"
+-    ucsmsdk.ucscoreutils.get_naming_props(rn_str, rn_pattern)
++class TestNamingPattern(unittest.TestCase):
++    def test_001_rn_pattern(self):
++        rn_pattern = "compute-ep-ven-[vendor]-mod-[model]-ser-[serial]"
++        rn_str = "compute-ep-ven-Cisco Systems Inc-mod-UCSB-B200-M4-ser-3403"
++        ucsmsdk.ucscoreutils.get_naming_props(rn_str, rn_pattern)
+Index: ucsmsdk-0.9.12/tests/common/test_generate_filter.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/tests/common/test_generate_filter.py
++++ ucsmsdk-0.9.12/tests/common/test_generate_filter.py
+@@ -11,93 +11,90 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-from nose.tools import *
++import unittest
++
+ from ucsmsdk.ucsfilter import generate_infilter
+ from ucsmsdk.ucsxmlcodec import to_xml_str
+ 
+-success = True
+-
+ 
+-def ls_filter():
+-    global success
+-    filter_ = generate_infilter(class_id="lsServer",
+-                                filter_str='(type, "instance", type="eq")',
+-                                is_meta_class_id=True)
+-    expected = b'<filter><eq class="lsServer" property="type" ' \
+-               b'value="instance" /></filter>'
+-    if to_xml_str(filter_.to_xml()) != expected:
+-        success = False
+-
+-
+-def org_filter():
+-    global success
+-    filter_ = generate_infilter(class_id="orgOrg",
+-                                filter_str='(descr, "oroorg", type="eq")',
+-                                is_meta_class_id=True)
+-    expected = b'<filter><eq class="orgOrg" property="descr" ' \
+-               b'value="oroorg" /></filter>'
+-    if to_xml_str(filter_.to_xml()) != expected:
+-        success = False
+-
+-
+-def test_001_not_filter():
+-
+-    expected = b'<filter><not><eq class="lsServer" property="dn" ' \
+-               b'value="org-root/ls-C1_B1" /></not></filter>'
+-
+-    filter_str = 'not (dn,"org-root/ls-C1_B1", type="eq")'
+-    filter_xml = generate_infilter(class_id="LsServer",
+-                                   filter_str=filter_str,
+-                                   is_meta_class_id=True)
+-
+-    xml_str = to_xml_str(filter_xml.to_xml())
+-
+-    assert_equal(xml_str, expected)
+-
+-
+-def test_002_multi_thread_filter():
+-    import threading
+-    import time
+-
+-    for i in range(1, 50):
+-        if i % 2 != 0:
+-            target = ls_filter
+-        else:
+-            target = org_filter
+-
+-        thread = threading.Thread(name=i, target=target)
+-        thread.start()
+-
+-    while len(threading.enumerate()) > 1:
+-        time.sleep(1)
+-
+-    assert success
+-
+-def test_003_mixed_filter():
+-
+-    expected = b'<filter>' \
+-               b'<not>' \
+-               b'<or>' \
+-               b'<eq class="lsServer" property="type" value="instance" />' \
+-               b'<and><eq class="lsServer" property="usrLbl" ' \
+-               b'value="lsserver" />' \
+-               b'<not><wcard class="lsServer" property="descr" ' \
+-               b'value="description" />' \
+-               b'</not>' \
+-               b'</and>' \
+-               b'</or>' \
+-               b'</not>' \
+-               b'</filter>'
+-
+-    filter_str = 'not(' \
+-                 '(type, "instance", type="eq") or ' \
+-                 '(usr_lbl, "lsserver", type="eq") and ' \
+-                 'not(descr, "description", type="re"))'
+-    filter_xml = generate_infilter(class_id="LsServer",
+-                                   filter_str=filter_str,
+-                                   is_meta_class_id=True)
++class TestGenerateFilter(unittest.TestCase):
++    def setUp(self):
++        super().setUp()
++        self.success = True
++
++    def ls_filter(self):
++        filter_ = generate_infilter(class_id="lsServer",
++                                    filter_str='(type, "instance", type="eq")',
++                                    is_meta_class_id=True)
++        expected = b'<filter><eq class="lsServer" property="type" ' \
++                   b'value="instance" /></filter>'
++        if to_xml_str(filter_.to_xml()) != expected:
++            self.success = False
++
++    def org_filter(self):
++        filter_ = generate_infilter(class_id="orgOrg",
++                                    filter_str='(descr, "oroorg", type="eq")',
++                                    is_meta_class_id=True)
++        expected = b'<filter><eq class="orgOrg" property="descr" ' \
++                   b'value="oroorg" /></filter>'
++        if to_xml_str(filter_.to_xml()) != expected:
++            self.success = False
++
++    def test_001_not_filter(self):
++        expected = b'<filter><not><eq class="lsServer" property="dn" ' \
++                    b'value="org-root/ls-C1_B1" /></not></filter>'
++
++        filter_str = 'not (dn,"org-root/ls-C1_B1", type="eq")'
++        filter_xml = generate_infilter(class_id="LsServer",
++                                       filter_str=filter_str,
++                                       is_meta_class_id=True)
++
++        xml_str = to_xml_str(filter_xml.to_xml())
++
++        self.assertEqual(xml_str, expected)
++
++    def test_002_multi_thread_filter(self):
++        import threading
++        import time
++
++        for i in range(1, 50):
++            if i % 2 != 0:
++                target = self.ls_filter
++            else:
++                target = self.org_filter
++
++            thread = threading.Thread(name=i, target=target)
++            thread.start()
++
++        while len(threading.enumerate()) > 1:
++            time.sleep(1)
++
++        self.assertTrue(self.success)
++
++    def test_003_mixed_filter(self):
++        expected = b'<filter>' \
++                   b'<not>' \
++                   b'<or>' \
++                   b'<eq class="lsServer" property="type" value="instance" />' \
++                   b'<and><eq class="lsServer" property="usrLbl" ' \
++                   b'value="lsserver" />' \
++                   b'<not><wcard class="lsServer" property="descr" ' \
++                   b'value="description" />' \
++                   b'</not>' \
++                   b'</and>' \
++                   b'</or>' \
++                   b'</not>' \
++                   b'</filter>'
++
++        filter_str = 'not(' \
++                     '(type, "instance", type="eq") or ' \
++                     '(usr_lbl, "lsserver", type="eq") and ' \
++                     'not(descr, "description", type="re"))'
++        filter_xml = generate_infilter(class_id="LsServer",
++                                       filter_str=filter_str,
++                                       is_meta_class_id=True)
+ 
+-    xml_str = to_xml_str(filter_xml.to_xml())
++        xml_str = to_xml_str(filter_xml.to_xml())
+ 
+-    assert_equal(xml_str, expected)
++        self.assertEqual(xml_str, expected)
+ 
+Index: ucsmsdk-0.9.12/setup.py
+===================================================================
+--- ucsmsdk-0.9.12.orig/setup.py
++++ ucsmsdk-0.9.12/setup.py
+@@ -47,8 +47,6 @@ setup(
+         'Programming Language :: Python :: 3.3',
+         'Programming Language :: Python :: 3.4',
+     ],
+-    tests_require=test_requirements,
+-    test_suite='nose.collector',
+     extras_require={
+         'ssl': ['pyOpenSSL'],
+         'docs': ['sphinx<1.3', 'sphinxcontrib-napoleon', 'sphinx_rtd_theme'],
+Index: ucsmsdk-0.9.12/test-requirements.txt
+===================================================================
+--- ucsmsdk-0.9.12.orig/test-requirements.txt
++++ ucsmsdk-0.9.12/test-requirements.txt
+@@ -1 +1 @@
+-nose
++pytest
