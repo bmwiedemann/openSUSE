@@ -44,6 +44,7 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
     <arch>armv7l</arch>
     <arch>aarch64</arch>
     <arch>s390x</arch>
+    <arch>riscv64</arch>
   </repository>
   <repository name="images">
     <releasetarget project="openSUSE:Factory:ToTest" repository="images" trigger="manual"/>
