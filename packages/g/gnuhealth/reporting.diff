@@ -1,0 +1,20 @@
+diff -U 3 -dHrN a/health_reporting/health_reporting_report.xml b/health_reporting/health_reporting_report.xml
+--- a/health_reporting/health_reporting_report.xml	2021-01-29 00:16:22.747730075 +0100
++++ b/health_reporting/health_reporting_report.xml	2021-11-15 18:31:40.803718094 +0100
+@@ -5,14 +5,14 @@
+         <record model="ir.action.report" id="report_summary_information">
+             <field name="name">Summary Report</field>
+             <field name="report_name">gnuhealth.summary.report</field>
+-            <field name="report">health_reporting/report/summary_report.odt</field>
++            <field name="report">health_reporting/report/summary_report.fodt</field>
+             <field name="extension">pdf</field>
+         </record>
+ 
+         <record model="ir.action.report" id="report_epidemics_information">
+             <field name="name">Epidemiological Surveillance</field>
+             <field name="report_name">gnuhealth.epidemics.report</field>
+-            <field name="report">health_reporting/report/epidemics_report.odt</field>
++            <field name="report">health_reporting/report/epidemics_report.fodt</field>
+             <field name="extension">pdf</field>
+         </record>
+ 

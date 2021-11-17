@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 08:37:25 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- harden_gnuhealth.service.patch removed - we are not using the service from GH
+  reporting.diff added to catch change from .odt to .fodt
+
+-------------------------------------------------------------------
 Mon Sep 20 14:02:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
