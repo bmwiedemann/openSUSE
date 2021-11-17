@@ -33,7 +33,7 @@ Patch1:         fix-authorized-keys-location.patch
 Patch2:         set-default-user.patch
 Patch3:         no-network-args.patch
 
-ExcludeArch:    %ix86 s390x ppc64le armhfp armv7hl
+ExcludeArch:    %ix86 s390x ppc64le
 
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.44.0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 16 10:04:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- No reason to exclude armv7, since it builds properly
+
+-------------------------------------------------------------------
 Tue Nov  2 03:43:28 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo_audit service
