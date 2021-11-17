@@ -1,7 +1,7 @@
 #
 # spec file for package barrier
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Christian Mauderer <oss@c-mauderer.de>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,18 @@
 
 
 Name:           barrier
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Mouse, keyboard and clipboard sharing utility
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND MIT
 URL:            https://github.com/debauchee/barrier
 Source0:        https://github.com/debauchee/barrier/archive/v%{version}/%{name}-%{version}.tar.gz
+# Gulrak filesystem https://github.com/gulrak/filesystem
+Source1:        filesystem-1.5.10.tar.gz
 Source2:        barriers.socket
 Source3:        barriers.service
-#PATCH-FIX-OPENSUSE barrier-use-system-includes.patch malcolmlewis@opensuse.org -- Use the system gtest and gmock files for testing.
-Patch0:         barrier-use-system-includes.patch
+# https://github.com/debauchee/barrier/issues/1366
+Patch0:         fix-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -35,6 +37,7 @@ BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(avahi-compat-libdns_sd)
@@ -68,12 +71,23 @@ unlock them all.
 %autosetup -p1
 # not enough categories in the desktop file
 sed -i -e 's:Utility;:Utility;DesktopUtility;:g' res/barrier.desktop
+mkdir -p %{name}-%{version}/ext/gulrak-filesystem/
+tar -xf %{S:1}
+cp -r filesystem-1.5.10/include/ ext/gulrak-filesystem/
 
 %build
 export BARRIER_VERSION_STAGE="release"
 %cmake \
-  -DBARRIER_BUILD_INSTALLER=OFF
+  -DBARRIER_BUILD_INSTALLER=OFF \
+  -DBARRIER_USE_EXTERNAL_GTEST=ON
 %cmake_build
+
+%check
+# Taken from https://sources.debian.org/src/barrier/2.4.0+dfsg-1/debian/rules/#L25
+# Barrier doesn't autofind tests when builddir is used
+build/bin/guiunittests
+xvfb-run -a build/bin/integtests
+build/bin/unittests
 
 %install
 %cmake_install

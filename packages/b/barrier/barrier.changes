@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Nov 16 23:44:25 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Updated to version 2.4.0:
+  * Barrier now supports client identity verification (fixes CVE-2021-42072,
+    CVE-2021-42073).
+
+    Previously a malicious client could connect to Barrier server without any
+    authentication and send application-level messages. This made the attack
+    surface of Barrier significantly larger. Additionally, in case the malicious
+    client got possession of a valid screen name by brute forcing or other means
+    it could modify the clipboard contents of the server.
+
+    To support seamless upgrades from older versions of Barrier this is
+    currently disabled by default. The feature can be enabled in the settings
+    dialog. If enabled, older clients of Barrier will be rejected.
+
+    Barrier now uses SHA256 fingerprints for establishing security of encrypted
+    SSL connections. After upgrading client to new version the existing server
+    fingerprint will need to be approved again. Client and server will show both
+    SHA1 and SHA256 server fingerprints to allow interoperability with older
+    versions of Barrier.
+Bugfixes:
+  * Fixed build failure on mips*el and riscv64 architecture.
+  * Barrier no longer uses openssl CLI tool for any operations and hooks into
+    the openssl library directly.
+  * More X11 clipboard MIME types have been mapped to corresponding converters
+    (#344).
+  * Fixed setup of multiple actions associated with a hotkey.
+  * Fixed setup of hotkeys with special characters such as comma and semicolon
+    (#778).
+  * Fixed transfer of non-ASCII characters coming from a Windows server in
+    certain cases (#527).
+  * Barrier will now regenerate server certificate if it's invalid instead of
+    failing to launch (#802)
+  * Added support for additional keys on Sun Microsystems USB keyboards (#784).
+  * Updated Chinese translation.
+  * Updated Slovak translation.
+  * Theme icons are now preferred to icons distributed together with Barrier
+    (#471).
+Features:
+  * Added --drop-target option that improves drag and drop support on Windows
+    when Barrier is being run as a portable app.
+  * The --enable-crypto command line option has been made the default to reduce
+    chances of accidental security mishaps when configuring Barrier from command
+    line. A new --disable-crypto command line option has been added to
+    explicitly disable encryption.
+  * Added support for randomart images for easier comparison of SSL certificate
+    fingerprints. The algorithm is identical to what OpenSSH uses.
+  * Implemented a configuration option for Server GUI auto-start.
+  * Made it possible to use keyboard instead of mouse to modify screen layout.
+  * Added support for keyboard backlight media keys
+  * Added support for Eisu_toggle and Muhenkan keys
+  * Added --profile-dir option that allows to select custom profile directory.
+- Bundle Gulrak Filesystem Headers (New Dependency)
+- Enable Tests
+- Add fix-build.patch
+
+-------------------------------------------------------------------
+Tue Nov  2 23:21:30 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Drop use of barrier-use-system-includes.patch use commandline
+  flag instead
+
+-------------------------------------------------------------------
 Mon Nov 16 23:15:52 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Fix url for Source
@@ -82,7 +146,7 @@ Tue Jun 12 15:22:04 UTC 2018 - oholecek@suse.com
 Sat Feb 24 21:23:39 UTC 2018 - robert.munteanu@gmail.com
 
 - Add add-support-for-latin-s-and-t-with-comma-below.patch,
-  submitted upstream at https://github.com/symless/synergy-core/pull/6261 
+  submitted upstream at https://github.com/symless/synergy-core/pull/6261
 
 -------------------------------------------------------------------
 Tue Feb 20 22:18:29 UTC 2018 - aloisio@gmx.com
@@ -235,17 +299,17 @@ Thu Sep  3 12:30:24 UTC 2015 - mpluskal@suse.com
   * Bug #4721 - High CPU usage for Windows service
   * Bug #4750 - SSL connect error 'passive ssl error limit'
   * Bug #4584 - Drag and drop with SSL causes crash
-  * Bug #4749 - Clipboard thread race condition causes assertion 
+  * Bug #4749 - Clipboard thread race condition causes assertion
     failure
-  * Bug #4720 - Plugin download shows 'Could not get Linux package 
+  * Bug #4720 - Plugin download shows 'Could not get Linux package
     type' error
-  * Bug #4712 - Unable to send clipboard with size above 1KB when 
+  * Bug #4712 - Unable to send clipboard with size above 1KB when
     using SSL
   * Bug #4642 - Connecting causes SSL23_GET_SERVER_HELLO error
-  * Bug #4690 - Log line 'activeDesktop' does not use logging 
+  * Bug #4690 - Log line 'activeDesktop' does not use logging
     system
   * Bug #4866 - Wrong ns plugin version can be loaded
-  * Enhancement #4901 - Auto restart when running from GUI in 
+  * Enhancement #4901 - Auto restart when running from GUI in
     desktop mode
   * Enhancement #4845 - Add timestamp to log output
 - Enable building for SLE-12
@@ -262,35 +326,35 @@ Mon Aug 10 15:04:27 UTC 2015 - mpluskal@suse.com
   * Bug #4565 - Incorrect plugin downloads on Debian and Mint
   * Bug #4677 - Windows service log file grows to very large size
   * Bug #4651 - High logging rate causes Windows service to crash
-  * Bug #4650 - SSL error log message repeats excessively and 
+  * Bug #4650 - SSL error log message repeats excessively and
     freezes cursor
   * Bug #4624 - Runaway logging causes GUI to freeze
   * Bug #4617 - Windows service randomly stops after 'ssl
     handshake failure' error
-  * Bug #4601 - Large clipboard data with SSL causes 'protocol is 
+  * Bug #4601 - Large clipboard data with SSL causes 'protocol is
     shutdown' error
-  * Bug #4593 - Locking Windows server causes SSL_ERROR_SSL to 
+  * Bug #4593 - Locking Windows server causes SSL_ERROR_SSL to
     repeat
   * Bug #4577 - Memory leak in GUI on Windows caused by logging
-  * Bug #4538 - Windows service crashes intermittently with no 
+  * Bug #4538 - Windows service crashes intermittently with no
     error
   * Bug #4341 - GUI freezes on first load when reading log
-  * Bug #4566 - Client or server crashes with 'ssl handshake 
+  * Bug #4566 - Client or server crashes with 'ssl handshake
     failure' error
-  * Bug #4706 - Installer is not output to build config dir 
+  * Bug #4706 - Installer is not output to build config dir
     on Windows
-  * Bug #4704 - Plugin 'ns' release build is overwritten with 
+  * Bug #4704 - Plugin 'ns' release build is overwritten with
     debug version on Linux
   * Bug #4703 - Plugins are not built to config directory on Mac
-  * Bug #4697 - Timing can allow an SSL socket to be used after 
+  * Bug #4697 - Timing can allow an SSL socket to be used after
     cleanup call
-  * Enhancement #4661 - Log error but do not crash when failing 
+  * Enhancement #4661 - Log error but do not crash when failing
     to load plugins
-  * Enhancement #4708 - Download ns plugin for specific Mac 
+  * Enhancement #4708 - Download ns plugin for specific Mac
     versions
-  * Enhancement #4587 - Include OpenSSL binaries in source for 
+  * Enhancement #4587 - Include OpenSSL binaries in source for
     easier building
-  * Enhancement #4695 - Automatically upload plugins as 
+  * Enhancement #4695 - Automatically upload plugins as
     Buildbot step
   * See attached Changelog for detailed list of changes
 - Drop no longer needed synergy-1.5.0-crytopp.patch
@@ -468,7 +532,7 @@ Fri Sep 13 13:28:25 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Sep 13 13:10:26 UTC 2013 - tchvatal@suse.com
 
-- Merge back qsynergy to have just one spec file. 
+- Merge back qsynergy to have just one spec file.
 
 -------------------------------------------------------------------
 Fri Sep 13 09:22:44 UTC 2013 - tchvatal@suse.com
@@ -505,7 +569,7 @@ Mon Jun 17 09:12:52 UTC 2013 - boris@steki.net
   * Bug #2855 - Mouse cursor remains hidden on Mac client (intermittently/randomly)
   * Bug #3281 - server start on OS X defaults to 'interactive'
   * Bug #3310 - Port in settings screen
- 
+
 
 -------------------------------------------------------------------
 Tue Oct  9 13:53:29 UTC 2012 - sleep_walker@suse.cz
@@ -547,7 +611,7 @@ Mon Nov 16 15:45:41 UTC 2009 - hmuelle@novell.com
 - Fixed issue with "perror was not declared in this scope" by
   "stdio.h" to two files:
 	lib/arch/CArchNetworkBSD.cpp
-	lib/arch/CArchDaemonUnix.cpp 
+	lib/arch/CArchDaemonUnix.cpp
 
 -------------------------------------------------------------------
 Wed May 13 13:55:28 CEST 2009 - sbrabec@suse.cz
@@ -642,4 +706,3 @@ Mon Aug 11 15:18:57 CEST 2003 - sbrabec@suse.cz
 Thu May 15 14:16:21 CEST 2003 - sbrabec@suse.cz
 
 - Added new SuSE package.
-
