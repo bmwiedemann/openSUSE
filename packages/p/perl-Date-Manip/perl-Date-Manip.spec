@@ -18,7 +18,7 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.85
+Version:        6.86
 Release:        0
 Summary:        Date manipulation routines
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,6 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67_01
 BuildRequires:  perl(Test::Inter) >= 1.09
 %{perl_requires}
 

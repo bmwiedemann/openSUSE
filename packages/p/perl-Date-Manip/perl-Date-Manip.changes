@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 16 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.86
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.86  2021-11-15
+    -  Change warn to carp
+           All warnings are now issued with the carp command rather than warn.
+           Requested in GitHup pull request #18, but that request was not used
+           because it only changed the uses in the Date::Manip::Date module.
+    -  Bug fixes
+           Fixed a bug where the next/prev Date::Manip::Recur methods gave
+           incorrect results when there are no dates that match the criteria.
+           (GitHub #36)
+    -  Time zone fixes
+           There were no new timezone fixes on 2021-06-01 or 2021-09-01, so no
+           releases made then.
+           Newest zoneinfo data (tzdata 2021e). (GitHub #37)
+
+-------------------------------------------------------------------
 Tue Mar  2 03:09:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.85
