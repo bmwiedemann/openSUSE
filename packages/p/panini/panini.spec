@@ -30,6 +30,8 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(zlib)
+# Disable on Arm, since build fails
+ExcludeArch:    aarch64 %{arm}
 
 %description
 Visual tool for creating perspective views from panoramic and wide angle photographs.
