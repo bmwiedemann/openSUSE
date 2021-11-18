@@ -1,0 +1,32 @@
+From 0571b8a6d0f4728e604bab9a8ef6f2123546671b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 15 Oct 2021 13:08:53 +0100
+Subject: [PATCH] Fix ip6_interface grain to not leak secondary IPv4
+ addrs
+
+---
+ salt/grains/core.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index f79110124f..88f1d2c053 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2537,7 +2537,11 @@ def ip6_interfaces():
+                 iface_ips.append(inet["address"])
+         for secondary in ifaces[face].get("secondary", []):
+             if "address" in secondary:
+-                iface_ips.append(secondary["address"])
++                try:
++                    socket.inet_pton(socket.AF_INET6, secondary["address"])
++                    iface_ips.append(secondary["address"])
++                except OSError:
++                    pass
+         ret[face] = iface_ips
+     return {"ip6_interfaces": ret}
+ 
+-- 
+2.33.0
+
+

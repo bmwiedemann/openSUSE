@@ -1860,4 +1860,35 @@ let build start it or we will get libvirt errors.
   * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch</comment>
     <requestid>925143</requestid>
   </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>5b0171703c3da36236cc47eb2dad83cb</srcmd5>
+    <version>3003.3</version>
+    <time>1637227985</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify &quot;transactional_update&quot; module to not use SSH wrapper and allow more flexible execution
+- Add &quot;--no-return-event&quot; option to salt-call to prevent sending return event back to master.
+- Make &quot;state.highstate&quot; to acts on concurrent flag.
+- Fix print regression for yumnotify plugin
+- Added:
+  * refactor-and-improvements-for-transactional-updates-.patch
+  * fix-the-regression-for-yumnotify-plugin-456.patch
+
+- Use dnfnotify instead yumnotify for relevant distros
+- dnfnotify pkgset plugin implementation
+- Add rpm_vercmp python library support for version comparison
+- Prevent pkg plugins errors on missing cookie path (bsc#1186738)
+- Added:
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+  * dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+
+- Fix ip6_interface grain to not leak secondary IPv4 aliases (bsc#1191412)
+- Make &quot;salt-api&quot; package to require python3-cherrypy on RHEL systems
+- Make &quot;tar&quot; as required for &quot;salt-transactional-update&quot; package
+- Added:
+  * fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch</comment>
+    <requestid>931742</requestid>
+  </revision>
 </revisionlist>

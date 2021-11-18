@@ -1,0 +1,36 @@
+From fba844fbaeb6203350944241a4ad0d7127a79bd5 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
+Date: Mon, 8 Nov 2021 17:43:02 +0300
+Subject: [PATCH] Fix traceback.print_exc calls for test_pip_state (#432)
+
+---
+ tests/unit/states/test_pip_state.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/unit/states/test_pip_state.py b/tests/unit/states/test_pip_state.py
+index 914f62ff23..9e827dbf8a 100644
+--- a/tests/unit/states/test_pip_state.py
++++ b/tests/unit/states/test_pip_state.py
+@@ -439,15 +439,15 @@ class PipStateInstallationErrorTest(TestCase):
+             import salt.states.pip_state
+             salt.states.pip_state.InstallationError
+         except ImportError as exc:
+-            traceback.print_exc(exc, file=sys.stdout)
++            traceback.print_exc(file=sys.stdout)
+             sys.stdout.flush()
+             sys.exit(1)
+         except AttributeError as exc:
+-            traceback.print_exc(exc, file=sys.stdout)
++            traceback.print_exc(file=sys.stdout)
+             sys.stdout.flush()
+             sys.exit(2)
+         except Exception as exc:
+-            traceback.print_exc(exc, file=sys.stdout)
++            traceback.print_exc(file=sys.stdout)
+             sys.stdout.flush()
+             sys.exit(3)
+         sys.exit(0)
+-- 
+2.33.1
+
+

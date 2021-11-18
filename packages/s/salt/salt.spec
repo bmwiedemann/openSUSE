@@ -293,6 +293,22 @@ Patch71:        3003.3-do-not-consider-skipped-targets-as-failed-for.patch
 Patch72:        fix-crash-when-calling-manage.not_alive-runners.patch
 # PATCH-FIX_UPSTREAM https://github.com/saltstack/salt/pull/61014
 Patch73:        fix-issues-with-salt-ssh-s-extra-filerefs.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61061
+Patch74:        fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch
+# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/432 (missing upstream PR)
+Patch75:        fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/415 (missing upstream PR)
+Patch76:        prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/60815
+Patch77:        add-rpm_vercmp-python-library-for-version-comparison.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61180
+Patch78:        dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/60324
+Patch79:        mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+# PATCH-FIX_OPENSUSE https://github.com/openSUSE/salt/pull/456 (missing upstream PR)
+Patch80:        fix-the-regression-for-yumnotify-plugin-456.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61188
+Patch81:        refactor-and-improvements-for-transactional-updates-.patch
 
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -483,7 +499,11 @@ Summary:        The api for Salt a parallel remote execution system
 Group:          System/Management
 Requires:       %{name} = %{version}-%{release}
 Requires:       %{name}-master = %{version}-%{release}
+%if 0%{?suse_version}
 Requires:       python3-CherryPy >= 3.2.2
+%else
+Requires:       python3-cherrypy >= 3.2.2
+%endif
 
 %description api
 salt-api is a modular interface on top of Salt that can provide a variety of entry points into a running Salt system.
@@ -696,6 +716,7 @@ Summary:        Transactional update executor configuration
 Group:          System/Management
 Requires:       %{name} = %{version}-%{release}
 Requires:       %{name}-minion = %{version}-%{release}
+Requires:       tar
 
 %description transactional-update
 For transactional systems, like MicroOS, Salt can operate
@@ -781,6 +802,14 @@ cp %{S:6} .
 %patch71 -p1
 %patch72 -p1
 %patch73 -p1
+%patch74 -p1
+%patch75 -p1
+%patch76 -p1
+%patch77 -p1
+%patch78 -p1
+%patch79 -p1
+%patch80 -p1
+%patch81 -p1
 
 %build
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this
@@ -864,10 +893,22 @@ sed -i '1s=^#!/usr/bin/\(python\|env python\)[0-9.]*=#!/usr/bin/python3=' %{buil
 
 # Install Yum plugins only on RH machines
 %if 0%{?fedora} || 0%{?rhel}
+%if 0%{?fedora} >= 22 || 0%{?rhel} >= 8
+install -Dd %{buildroot}%{python3_sitelib}/dnf-plugins
+install -Dd %{buildroot}%{python3_sitelib}/dnf-plugins/__pycache__
+install -Dd %{buildroot}%{_sysconfdir}/dnf/plugins
+%{__install} scripts/suse/dnf/plugins/dnfnotify.py %{buildroot}%{python3_sitelib}/dnf-plugins
+%{__install} scripts/suse/dnf/plugins/dnfnotify.conf %{buildroot}%{_sysconfdir}/dnf/plugins
+%{__python3} -m compileall -d %{python3_sitelib}/dnf-plugins %{buildroot}%{python3_sitelib}/dnf-plugins/dnfnotify.py
+%{__python3} -O -m compileall -d %{python3_sitelib}/dnf-plugins %{buildroot}%{python3_sitelib}/dnf-plugins/dnfnotify.py
+%else
 install -Dd %{buildroot}%{_prefix}/share/yum-plugins
-install -Dd %{buildroot}/etc/yum/pluginconf.d
+install -Dd %{buildroot}%{_sysconfdir}/yum/pluginconf.d
 %{__install} scripts/suse/yum/plugins/yumnotify.py %{buildroot}%{_prefix}/share/yum-plugins
-%{__install} scripts/suse/yum/plugins/yumnotify.conf %{buildroot}/etc/yum/pluginconf.d
+%{__install} scripts/suse/yum/plugins/yumnotify.conf %{buildroot}%{_sysconfdir}/yum/pluginconf.d
+%{__python} -m compileall -d %{_prefix}/share/yum-plugins %{buildroot}%{_prefix}/share/yum-plugins/yumnotify.py
+%{__python} -O -m compileall -d %{_prefix}/share/yum-plugins %{buildroot}%{_prefix}/share/yum-plugins/yumnotify.py
+%endif
 %endif
 
 ## install init and systemd scripts
@@ -1323,8 +1364,14 @@ rm -f %{_localstatedir}/cache/salt/minion/thin/version
 
 # Install Yum plugins only on RH machines
 %if 0%{?fedora} || 0%{?rhel}
-%{_prefix}/share/yum-plugins/
-/etc/yum/pluginconf.d/yumnotify.conf
+%if 0%{?fedora} >= 22 || 0%{?rhel} >= 8
+%{python3_sitelib}/dnf-plugins/dnfnotify.py
+%{python3_sitelib}/dnf-plugins/__pycache__/dnfnotify.*
+%{_sysconfdir}/dnf/plugins/dnfnotify.conf
+%else
+%{_prefix}/share/yum-plugins/yumnotify.*
+%{_sysconfdir}/yum/pluginconf.d/yumnotify.conf
+%endif
 %endif
 
 %if %{with systemd}

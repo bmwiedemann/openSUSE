@@ -1,0 +1,56 @@
+From 2ea56dd17378fe2f41de04a9c1786d27fec9a266 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <mail@agraul.de>
+Date: Mon, 25 Oct 2021 10:31:10 +0200
+Subject: [PATCH] Mock ip_addrs() in utils/minions.py unit test (#443)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previously the test used `salt.utils.network.ip_addrs()' in the same way
+that the tested code did. This worked well as long as at least one IP
+address was returned by `salt.utils.network.ip_addrs()'.
+
+Since this is a unit test, it should not depend on the environment,
+it should just work™, even if there are no real IP addresses assigned to
+the system (or container) that runs the test.
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+---
+ tests/pytests/unit/utils/test_minions.py | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/tests/pytests/unit/utils/test_minions.py b/tests/pytests/unit/utils/test_minions.py
+index 0b7a7d3928..5b0cd77216 100644
+--- a/tests/pytests/unit/utils/test_minions.py
++++ b/tests/pytests/unit/utils/test_minions.py
+@@ -8,15 +8,16 @@ def test_connected_ids():
+     test ckminion connected_ids when
+     local_port_tcp returns 127.0.0.1
+     """
+-    opts = {"publish_port": 4505}
++    opts = {"publish_port": 4505, "minion_data_cache": True}
+     minion = "minion"
+-    ip = salt.utils.network.ip_addrs()
+-    mdata = {"grains": {"ipv4": ip, "ipv6": []}}
+-    ckminions = salt.utils.minions.CkMinions({"minion_data_cache": True})
++    ips = {"203.0.113.1", "203.0.113.2"}
++    mdata = {"grains": {"ipv4": ips, "ipv6": []}}
++    patch_ip_addrs = patch("salt.utils.network.local_port_tcp", return_value=ips)
+     patch_net = patch("salt.utils.network.local_port_tcp", return_value={"127.0.0.1"})
+     patch_list = patch("salt.cache.Cache.list", return_value=[minion])
+     patch_fetch = patch("salt.cache.Cache.fetch", return_value=mdata)
+-    with patch.dict(ckminions.opts, opts):
+-        with patch_net, patch_list, patch_fetch:
+-            ret = ckminions.connected_ids()
+-            assert ret == {minion}
++
++    ckminions = salt.utils.minions.CkMinions(opts)
++    with patch_net, patch_ip_addrs, patch_list, patch_fetch:
++        ret = ckminions.connected_ids()
++        assert ret == {minion}
+-- 
+2.33.1
+
+

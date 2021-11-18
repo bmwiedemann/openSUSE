@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 15 15:14:54 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Simplify "transactional_update" module to not use SSH wrapper and allow more flexible execution
+- Add "--no-return-event" option to salt-call to prevent sending return event back to master.
+- Make "state.highstate" to acts on concurrent flag.
+- Fix print regression for yumnotify plugin
+
+- Added:
+  * refactor-and-improvements-for-transactional-updates-.patch
+  * fix-the-regression-for-yumnotify-plugin-456.patch
+
+-------------------------------------------------------------------
+Tue Nov  9 08:07:14 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Use dnfnotify instead yumnotify for relevant distros
+- dnfnotify pkgset plugin implementation
+- Add rpm_vercmp python library support for version comparison
+- Prevent pkg plugins errors on missing cookie path (bsc#1186738)
+
+- Added:
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+  * dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+
+-------------------------------------------------------------------
+Fri Oct 15 15:06:25 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix ip6_interface grain to not leak secondary IPv4 aliases (bsc#1191412)
+- Make "salt-api" package to require python3-cherrypy on RHEL systems
+- Make "tar" as required for "salt-transactional-update" package
+
+- Added:
+  * fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch
+
+-------------------------------------------------------------------
 Fri Oct  8 15:48:09 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix issues with salt-ssh's extra-filerefs
