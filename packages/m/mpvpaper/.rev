@@ -31,4 +31,16 @@
     <comment></comment>
     <requestid>909390</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>012d2e00dca837d61bfed5f37b3a4634</srcmd5>
+    <version>1.2</version>
+    <time>1637228041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2:
+  * New man page
+  * New &quot;--slideshow/-n&quot; option
+  * Improve usage text
+  * Various fixes 2ebddae d8e5f23 275410e</comment>
+    <requestid>931992</requestid>
+  </revision>
 </revisionlist>

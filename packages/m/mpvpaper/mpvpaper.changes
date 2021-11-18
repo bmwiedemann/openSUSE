@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 17 15:53:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2:
+  * New man page
+  * New "--slideshow/-n" option
+  * Improve usage text
+  * Various fixes 2ebddae d8e5f23 275410e
+
+-------------------------------------------------------------------
 Thu Jul 29 08:52:40 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - Added missing dependency: wayland-protocols-devel

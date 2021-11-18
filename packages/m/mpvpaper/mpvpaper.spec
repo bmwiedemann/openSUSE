@@ -17,7 +17,7 @@
 
 
 Name:           mpvpaper
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        A video wallpaper program for wlroots based wayland compositors
 License:        GPL-3.0-or-later
@@ -44,11 +44,13 @@ A video wallpaper program for wlroots based wayland compositors.
 
 %install
 %meson_install
+install -Dm644 %{name}.man "%{buildroot}%{_mandir}/man1/%{name}.1"
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/mpvpaper
 %{_bindir}/mpvpaper-holder
+%{_mandir}/man1/mpvpaper.1%{?ext_man}
 
 %changelog
