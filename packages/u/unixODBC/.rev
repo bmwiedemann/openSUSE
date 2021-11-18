@@ -344,4 +344,15 @@
     <comment></comment>
     <requestid>869575</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>cd21f6b68febd22c8d2d6ce7ed16aafd</srcmd5>
+    <version>2.3.9</version>
+    <time>1637227992</time>
+    <user>dimstar_suse</user>
+    <comment>- SLE-20556 Expand documentation:
+  Add:
+  * unixODBC-doc-website.patch
+  * unixODBC-doc-drivers.patch</comment>
+    <requestid>931801</requestid>
+  </revision>
 </revisionlist>

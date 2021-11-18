@@ -31,6 +31,10 @@ Patch2:         unixODBC-gccwarnings.patch
 # https://github.com/lurcher/unixODBC/issues/8
 Patch3:         unixODBC-2.3.1-libodbcinst-exports.patch
 Patch4:         unixODBC-2.3.6-declarations.patch 
+# SLE-20556 -  https://github.com/lurcher/unixODBC/pull/85
+Patch5:         unixODBC-doc-drivers.patch
+# SLE-20556 - https://github.com/lurcher/unixODBC/pull/84
+Patch6:         unixODBC-doc-website.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -69,8 +73,10 @@ Includes for ODBC development (based on unixODBC).
 %patch2
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
-chmod -x NEWS README doc/*.html doc/*.gif
+chmod -x NEWS README doc/*.html doc/*.gif Drivers/README
 
 %build
 perl -i -pe 's{^ACLOCAL_AMFLAGS.*}{}' Makefile.am
@@ -96,6 +102,9 @@ autoreconf -fvi
 %install
 install -d -m 755 "%{buildroot}/%{_sysconfdir}/%{name}"
 install -d -m 755 "%{buildroot}/%{_libdir}/%{name}"
+mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}/Drivers
+cp Drivers/README %{buildroot}/%{_defaultdocdir}/%{name}/Drivers/README
+
 %make_install
 rm -rf "%{buildroot}/%{_datadir}/libtool"
 # packaged in gui-gtk
@@ -111,6 +120,7 @@ rm -f "%{buildroot}/%{_libdir}"/unixODBC/libodbcpsql.*
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README doc/*.html doc/*.gif
+%doc %{_defaultdocdir}/%{name}
 %docdir %{_mandir}
 %{_mandir}/man1/dltest.1%{?ext_man}
 %{_mandir}/man1/isql.1%{?ext_man}
