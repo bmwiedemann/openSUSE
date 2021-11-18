@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 16:22:11 UTC 2021 - schubi <schubi@localhost>
+
+- Reenable libalternatives because gh#openSUSE/libalternatives#11
+  is solved.
+
+-------------------------------------------------------------------
 Thu Oct 28 19:12:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - revert the usage of libalternatives due to

@@ -16,8 +16,7 @@
 #
 
 
-%bcond_with libalternatives_issue_11_fixed
-%if 0%{?suse_version} > 1500 && %{with libalternatives_issue_11_fixed}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
