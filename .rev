@@ -977,4 +977,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 5.14</comment>
     <requestid>915512</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>c55e60cbff4dc5b0027b19e5a901fb66</srcmd5>
+    <version>5.15</version>
+    <time>1637227976</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.15:</comment>
+    <requestid>931302</requestid>
+  </revision>
 </revisionlist>
