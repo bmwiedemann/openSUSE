@@ -51,7 +51,7 @@ Source9:        vnc.pam
 Source10:       with-vnc-key.sh
 Source11:       index.vnc
 Source12:       x11vnc
-Source13:       xvnc@.service
+Source13:       xvnc@.service.in
 Source14:       xvnc.socket
 Source16:       xvnc-novnc.socket
 Source17:       tigervnc.firewalld
@@ -285,6 +285,7 @@ popd
 %sysusers_generate_pre %{SOURCE22} xorg-x11-Xvnc vnc.conf
 export CXXFLAGS="%optflags"
 export CFLAGS="%optflags"
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE13} > xvnc@.service
 sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
 # Build all tigervnc
 cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo .
@@ -369,7 +370,7 @@ install -D -m 755 %{SOURCE10} %{buildroot}%{_libexecdir}/vnc
 
 install -D -m 755 %{SOURCE12} %{buildroot}%{_bindir}/x11vnc
 
-install -D %{SOURCE13} -m 0444 %{buildroot}%{_unitdir}/xvnc@.service
+install -D xvnc@.service -m 0444 %{buildroot}%{_unitdir}/xvnc@.service
 install -D %{SOURCE14} -m 0444 %{buildroot}%{_unitdir}/xvnc.socket
 install -D %{SOURCE16} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
 install -D %{SOURCE19} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
