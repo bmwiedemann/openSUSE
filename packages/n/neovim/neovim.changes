@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 17 11:47:44 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Neovim only supports Lua 5.1 or LuaJIT
+- Adapt to changes in lua-luv
+- No need to specify library paths to cmake
+
+-------------------------------------------------------------------
 Mon Nov 15 14:28:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable builds on aarch64

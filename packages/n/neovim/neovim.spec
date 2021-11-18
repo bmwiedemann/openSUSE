@@ -23,18 +23,8 @@
 %else
 %bcond_with luajit
 %endif
-%if %{with luajit}
 %define luaver 5.1
 %define luaver_nopoint 51
-%else
-%if 0%{?suse_version} > 1500
-%define luaver 5.4
-%define luaver_nopoint 54
-%else
-%define luaver 5.3
-%define luaver_nopoint 53
-%endif
-%endif
 Name:           neovim
 Version:        0.5.1
 Release:        0
@@ -85,29 +75,20 @@ Requires(postun):desktop-file-utils
 # XSel provides access to the system clipboard
 Recommends:     xsel
 %if %{with luajit}
+BuildRequires:  luajit-devel
+%else
+BuildRequires:  lua51-devel
+%endif
 # luajit implements version 5.1 of the lua language spec, so it needs the
 # compat versions of libs.
 BuildRequires:  lua51-LPeg
 BuildRequires:  lua51-bit32
 BuildRequires:  lua51-luarocks
-BuildRequires:  lua51-luv-devel >= %{luv_min_ver}
+BuildRequires:  libluv-devel >= %{luv_min_ver}
+BuildRequires:  lua51-luv >= %{luv_min_ver}
 BuildRequires:  lua51-mpack
-BuildRequires:  luajit-devel
 Requires:       lua51-bit32
 Requires:       lua51-luv >= %{luv_min_ver}
-%else
-BuildRequires:  lua%{luaver_nopoint}-devel
-BuildRequires:  lua%{luaver_nopoint}-lpeg
-BuildRequires:  lua%{luaver_nopoint}-luarocks
-BuildRequires:  lua%{luaver_nopoint}-luv-devel >= %{luv_min_ver}
-BuildRequires:  lua%{luaver_nopoint}-mpack
-Requires:       lua%{luaver_nopoint}-luv >= %{luv_min_ver}
-# built-in bit32 removed in Lua 5.4
-%if %{luaver_nopoint} > 53
-BuildRequires:  lua%{luaver_nopoint}-compat-5.3
-Requires:       lua%{luaver_nopoint}-compat-5.3
-%endif
-%endif
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
@@ -153,14 +134,11 @@ export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
-       -DLIBLUV_INCLUDE_DIR=%{_includedir}/lua%{luaver} \
-       -DLIBLUV_LIBRARY=%{_libdir}/lua/%{luaver}/luv.so \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
        -DCMAKE_COLOR_MAKEFILE=OFF \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-       -DLUA_LIBRARY=%{lua_archdir}/luv.so \
        -DLUA_INCLUDE_DIR:PATH=%{lua_incdir}
 %make_build
 
