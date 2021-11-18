@@ -843,4 +843,25 @@
     <comment>Scripted push from GNOME:Next (forwarded request 920914 from dimstar)</comment>
     <requestid>921598</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>36080c7a8ddd652754e7b90c858d50af</srcmd5>
+    <version>41.1</version>
+    <time>1637227988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.1:
+  + meson: avoid positional arguments in merge_file.
+  + tests: Compile gsettings schemas for use in build tests.
+  + Update DOAP with Gitlab account information.
+  + introspection: Pin the API version for now.
+  + Updated translations.
+- Rename typelib-1_0-Cheese-41_0 subpackage to
+  typelib-1_0-Cheese-3_0 again, following upstreams revert. Do this
+  via 2 new defines, typelib_major 3 and typelib_minor 0.
+- Use ldconfig_scriptlets for post(un) handling.
+- Drop removal of la files, not needed with meson buildsystem.
+- Drop libcheese-gtk18 Obsoletes, it was added 10 years ago, we can
+  probably expect everyone to have updated by now.
+- Stop packaging help files as docs, silence rpmlint. (forwarded request 931591 from iznogood)</comment>
+    <requestid>931782</requestid>
+  </revision>
 </revisionlist>

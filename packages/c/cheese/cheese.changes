@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 15 15:12:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + meson: avoid positional arguments in merge_file.
+  + tests: Compile gsettings schemas for use in build tests.
+  + Update DOAP with Gitlab account information.
+  + introspection: Pin the API version for now.
+  + Updated translations.
+- Rename typelib-1_0-Cheese-41_0 subpackage to
+  typelib-1_0-Cheese-3_0 again, following upstreams revert. Do this
+  via 2 new defines, typelib_major 3 and typelib_minor 0.
+- Use ldconfig_scriptlets for post(un) handling.
+- Drop removal of la files, not needed with meson buildsystem.
+- Drop libcheese-gtk18 Obsoletes, it was added 10 years ago, we can
+  probably expect everyone to have updated by now.
+- Stop packaging help files as docs, silence rpmlint.
+
+-------------------------------------------------------------------
 Mon Sep 20 10:57:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 41.0:
