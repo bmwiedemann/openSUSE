@@ -1,6 +1,6 @@
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2021-09-30 10:21:48.967391937 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipadd.desktop	2021-09-30 10:21:48.967391937 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -15,9 +15,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazi
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2021-09-30 10:21:51.743403456 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipext.desktop	2021-09-30 10:21:51.743403456 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -34,9 +34,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazi
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2021-09-30 10:21:53.783411921 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipextfolder.desktop	2021-09-30 10:21:53.783411921 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -53,9 +53,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazi
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2021-09-30 10:21:55.807420319 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipexthere.desktop	2021-09-30 10:21:55.807420319 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -72,9 +72,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazi
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2021-09-30 10:21:58.735432468 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazipopen.desktop	2021-09-30 10:21:58.735432468 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip
@@ -89,9 +89,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE4-dolphin/peazi
  Name[en_US]=peazipopen
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2021-09-30 10:21:39.779353810 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipadd.desktop	2021-09-30 10:21:39.779353810 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -106,9 +106,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazi
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2021-09-30 10:21:37.023342374 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipext.desktop	2021-09-30 10:21:37.023342374 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -125,9 +125,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazi
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2021-09-30 10:21:34.319331153 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipextfolder.desktop	2021-09-30 10:21:34.319331153 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -144,9 +144,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazi
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2021-09-30 10:21:26.175297353 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipexthere.desktop	2021-09-30 10:21:26.175297353 +0200
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -163,9 +163,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazi
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
---- a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
-+++ b/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2021-09-30 10:21:21.987279972 +0200
+diff -ru a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop
+--- a/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2010-04-29 01:11:38.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazipopen.desktop	2021-09-30 10:21:21.987279972 +0200
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip
@@ -180,9 +180,9 @@ diff -ru a/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/peazi
  Name[en_US]=peazipopen
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-diff -ru a/res/batch/freedesktop_integration/peazip.desktop b/res/batch/freedesktop_integration/peazip.desktop
---- a/res/batch/freedesktop_integration/peazip.desktop	2021-09-08 19:51:52.000000000 +0200
-+++ b/res/batch/freedesktop_integration/peazip.desktop	2021-09-30 10:18:31.958574357 +0200
+diff -ru a/res/share/batch/freedesktop_integration/peazip.desktop b/res/share/batch/freedesktop_integration/peazip.desktop
+--- a/res/share/batch/freedesktop_integration/peazip.desktop	2021-09-08 19:51:52.000000000 +0200
++++ b/res/share/batch/freedesktop_integration/peazip.desktop	2021-09-30 10:18:31.958574357 +0200
 @@ -1,14 +1,21 @@
  [Desktop Entry]
  Name=PeaZip

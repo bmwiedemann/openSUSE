@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.2.0
+%define         _helpver 8.3.0
 Name:           peazip
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -91,8 +91,9 @@ This subpackage contains the KF5 integration.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}.src
-chmod +w res/lang
-dos2unix readme
+chmod +w res/share/lang
+dos2unix readme.txt
+mv res/share/copying/copying.txt .
 cp %{SOURCE2} peazip_help.pdf
 
 %build
@@ -131,13 +132,13 @@ install -m755 pea %{buildroot}%{_peazipinstalldir}/res
 ln -s %{_peazipinstalldir}/res/pea %{buildroot}%{_bindir}/pea
 
 mkdir -p  %{buildroot}%{_datadir}/applications/
-cp %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.desktop %{buildroot}%{_datadir}/applications/
-rm %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.desktop
+cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.desktop %{buildroot}%{_datadir}/applications/
+rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.desktop
 mkdir -p %{buildroot}%{_datadir}/pixmaps/
-cp %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
-rm %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/peazip.png
+cp %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png %{buildroot}%{_datadir}/pixmaps/
+rm %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/peazip.png
 
-pushd %{buildroot}%{_peazipinstalldir}/res/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
+pushd %{buildroot}%{_peazipinstalldir}/res/share/batch/freedesktop_integration/KDE-servicemenus/KDE5-dolphin/
 mkdir -p %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 install -m644 *.desktop %{buildroot}%{_kf5_servicesdir}/ServiceMenus
 popd
@@ -154,7 +155,7 @@ popd
 
 %files
 %license copying.txt
-%doc readme  peazip_help.pdf
+%doc readme.txt peazip_help.pdf
 %{_bindir}/pea
 %{_bindir}/peazip
 %{_peazipinstalldir}

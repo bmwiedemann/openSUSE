@@ -1,21 +1,19 @@
-Index: peazip-6.8.1.src/peach.pas
-===================================================================
---- peazip-6.8.1.src.orig/peach.pas
-+++ peazip-6.8.1.src/peach.pas
-@@ -35728,7 +35728,7 @@ end;
+--- peazip-8.3.0.src/peach.pas.orig	2021-11-17 08:05:28.276986802 +0100
++++ peazip-8.3.0.src/peach.pas	2021-11-17 08:05:58.097106865 +0100
+@@ -41412,7 +41412,7 @@
  
  procedure TForm_peach.baboutlocalhelpClick(Sender: TObject);
  begin
--cp_open(executable_path+'peazip_help.pdf',desk_env);
+-cp_open(sharepath+'peazip_help.pdf',desk_env);
 +cp_open('/usr/share/doc/packages/peazip/peazip_help.pdf',desk_env);
  end;
  
  procedure TForm_peach.baboutremoveadditionalClick(Sender: TObject);
-@@ -54841,7 +54841,7 @@ end;
+@@ -63622,7 +63622,7 @@
  
  procedure TForm_peach.mpeahelpofflineClick(Sender: TObject);
  begin
--cp_open(executable_path+'peazip_help.pdf',desk_env);
+-cp_open(sharepath+'peazip_help.pdf',desk_env);
 +cp_open('/usr/share/doc/packages/peazip/peazip_help.pdf',desk_env);
  end;
  
