@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 16 08:42:20 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20211112.a2691b9 (v2.0.4):
+- poll: Don't log in a signal handler (gh#ClusterLabs/libqb##447)
+- Fix pthread returns (gh#ClusterLabs/libqb#444)
+- doxygen2man: print structure descriptions (gh#ClusterLabs/libqb#443)
+- Implement heap based timer list (gh#ClusterLabs/libqb#439)
+
+-------------------------------------------------------------------
 Thu Oct 07 11:39:16 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20210303.404adbc (v2.0.3):

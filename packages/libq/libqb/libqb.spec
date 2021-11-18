@@ -21,7 +21,7 @@
 %bcond_without doxygen2man
 
 Name:           libqb
-Version:        2.0.3+20210303.404adbc
+Version:        2.0.4+20211112.a2691b9
 Release:        0
 Summary:        An IPC library for high performance servers
 License:        LGPL-2.1-or-later
