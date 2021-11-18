@@ -1,7 +1,7 @@
 #
 # spec file for package HepMC
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 Name:           HepMC
 %define lname	libHepMC3-1
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # Python bindings are BSD-3-Clause, packaged separately
@@ -53,6 +53,7 @@ HEPEVT, the Fortran HEP standard, are supported.
 Summary:        An event record for High Energy Physics Monte Carlo Generators
 License:        GPL-3.0-or-later
 Group:          System/Libraries
+Provides:       %{name}3 = %{version}
 
 %description -n %{lname}
 The HepMC package is an object oriented event record written in C++
@@ -73,6 +74,7 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Recommends:     %{name}-doc = %{version}
+Provides:       %{name}3-devel = %{version}
 
 %description devel
 The HepMC package is an object oriented event record written in C++
@@ -95,6 +97,7 @@ Summary:        Python bindings for HepMC
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       python3
+Provides:       python3-HepMC3 = %{version}
 
 %description -n python3-HepMC
 The HepMC package is an object oriented event record written in C++
@@ -109,20 +112,20 @@ This package provides the python module for coding with HepMC.
 %build
 %cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=%{?with_rootio:ON}%{!?with_rootio:OFF} \
        -DHEPMC3_BUILD_DOCS:BOOL=ON \
-       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}3 \
        -DHEPMC3_BUILD_STATIC_LIBS:BOOL=OFF \
        -DHEPMC3_PYTHON_VERSIONS:STRING="%{py3_ver}" \
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
        -DHEPMC3_BUILD_EXAMPLES:BOOL=ON \
-       -DHEPMC3_ENABLE_TEST:BOOL=ON        
+       -DHEPMC3_ENABLE_TEST:BOOL=ON
 
 %cmake_build
 
 %install
 %cmake_install
 
-%fdupes %{buildroot}%{_docdir}/%{name}/
+%fdupes %{buildroot}%{_docdir}/%{name}3/
 
 %check
 %ctest
@@ -144,7 +147,7 @@ This package provides the python module for coding with HepMC.
 %{_datadir}/%{name}3/
 
 %files doc
-%doc %{_docdir}/%{name}/
+%doc %{_docdir}/%{name}3/
 
 %files -n python3-HepMC
 %license python/include/LICENSE
