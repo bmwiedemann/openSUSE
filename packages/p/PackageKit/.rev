@@ -1910,4 +1910,19 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   (gh#hughsie/PackageKit/commit/1a6bb6ae6, bsc#1192349).</comment>
     <requestid>930858</requestid>
   </revision>
+  <revision rev="224" vrev="3">
+    <srcmd5>f33dd8a134d36a8d53abc5b5849dd60e</srcmd5>
+    <version>1.2.4</version>
+    <time>1637227987</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply all patches unconditonally: PackageKit-zypp-c++17.patch is
+  merged in upstream git and thus does not justify to be
+  conditionally applied.
+- Switching back to autosetup, as this works without conditional
+  patches.
+
+- Rewrite prep phase to not use autopatch -M: SLE15/Leap15's RPM
+  version does not support that syntax yet.</comment>
+    <requestid>931779</requestid>
+  </revision>
 </revisionlist>

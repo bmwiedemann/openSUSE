@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 16 14:24:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Apply all patches unconditonally: PackageKit-zypp-c++17.patch is
+  merged in upstream git and thus does not justify to be
+  conditionally applied.
+- Switching back to autosetup, as this works without conditional
+  patches.
+
+-------------------------------------------------------------------
+Tue Nov 16 08:00:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rewrite prep phase to not use autopatch -M: SLE15/Leap15's RPM
+  version does not support that syntax yet.
+
+-------------------------------------------------------------------
 Fri Nov  5 12:07:00 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-c++17.patch: Fix build failure when building
