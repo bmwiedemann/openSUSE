@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 11 07:45:11 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix arm64 kernel image not aligned on 64k boundary (bsc#1192522)
+  * 0001-arm64-Fix-EFI-loader-kernel-image-allocation.patch
+  * 0002-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
+
+-------------------------------------------------------------------
 Thu Oct 21 12:51:46 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Remove openSUSE Tumbleweed specific handling for default grub
