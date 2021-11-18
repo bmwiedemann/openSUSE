@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifluadefault
+%if %{lua_version_nodots} == 51
 %define lua_default 1
 %endif
 %define mod_name luv
@@ -64,7 +64,7 @@ handles between states/loops.
 The best docs currently are the libuv docs themselves. Hopfully
 soon we'll have a copy locally tailored for lua.
 
-%ifluadefault
+%if 0%{?lua_default}
 %package -n libluv-devel
 Summary:        Header files for %{flavor}-%{mod_name}
 Group:          Development/Languages/Other
@@ -96,6 +96,7 @@ echo "Name is %{name}, Flavor is %{flavor}"
 -DWITH_SHARED_LIBUV=ON -DWITH_LUA_ENGINE=Lua \
 -DLUA_BUILD_TYPE=System -DMODULE_INSTALL_LIB_DIR=%{lua_archdir} \
 -DSHAREDLIBS_INSTALL_LIB_DIR=%{_libdir} -DBUILD_SHARED_LIBS=OFF \
+-DLUA_COMPAT53_DIR="%{lua_incdir}" \
 %{?lua_default:-DBUILD_SHARED_LIBS=ON}
 %cmake_build
 
@@ -107,7 +108,7 @@ echo "Name is %{name}, Flavor is %{flavor}"
 %doc *.md
 %{lua_archdir}/luv.so
 
-%ifluadefault
+%if 0%{?lua_default}
 %files -n libluv-devel
 %license LICENSE.txt
 %{_includedir}/%{mod_name}

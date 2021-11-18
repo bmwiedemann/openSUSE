@@ -107,4 +107,14 @@
 </comment>
     <requestid>931865</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>df10d4232462f913d63f1f191c3d2932</srcmd5>
+    <version>MACRO</version>
+    <time>1637228013</time>
+    <user>dimstar_suse</user>
+    <comment>- Use system compat53 again
+- Change default version to Lua 5.1
+</comment>
+    <requestid>932019</requestid>
+  </revision>
 </revisionlist>
