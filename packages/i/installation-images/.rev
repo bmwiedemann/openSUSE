@@ -1170,4 +1170,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>929050</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>84464ad6bb96d13f6e7ae2dbf9d797eb</srcmd5>
+    <version>17.19</version>
+    <time>1637227986</time>
+    <user>dimstar_suse</user>
+    <comment>submit the websockify fix; unblock that submission; jenkins refuses to submit, as it does not fail in devel prj</comment>
+    <requestid>931748</requestid>
+  </revision>
 </revisionlist>
