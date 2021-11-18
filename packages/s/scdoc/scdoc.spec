@@ -1,7 +1,7 @@
 #
 # spec file for package scdoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scdoc
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        A man page generator written in C99
 License:        MIT
@@ -42,7 +42,7 @@ scdoc is a man page generator written for POSIX systems written in C99.
 %make_build PREFIX=%{_prefix}
 
 %install
-%make_install PREFIX=%{_prefix} PCDIR=%{buildroot}%{_datadir}/pkgconfig %{?_smp_mflags}
+%make_install PREFIX=%{_prefix} PCDIR=%{_datadir}/pkgconfig %{?_smp_mflags}
 
 %files
 %{_bindir}/scdoc

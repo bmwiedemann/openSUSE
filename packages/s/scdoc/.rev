@@ -165,4 +165,18 @@
   * Suppress sentence spacing after end-of-sentence characters.</comment>
     <requestid>853527</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>01f00c237de4dcb59c782a402456383c</srcmd5>
+    <version>1.11.2</version>
+    <time>1637228041</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.2:
+  * Add uninstall target
+  * Escape ' at the beginning of lines
+  * Clean up the installation process
+  * Check for and abort on failed memory allocations
+  * Disallows differing row lengths in table
+- Refresh scdoc-1.6.1-makefile.patch</comment>
+    <requestid>931995</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 17 16:07:11 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.2:
+  * Add uninstall target
+  * Escape ' at the beginning of lines
+  * Clean up the installation process
+  * Check for and abort on failed memory allocations
+  * Disallows differing row lengths in table
+- Refresh scdoc-1.6.1-makefile.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 08:44:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1:
