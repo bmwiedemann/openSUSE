@@ -16,6 +16,7 @@
 #
 
 
+%define plainpython python
 Name:           jupyter
 Version:        1.0.0
 Release:        0
@@ -46,6 +47,7 @@ Requires:       python-jupyter_console
 Requires:       python-nbconvert
 Requires:       python-notebook
 Requires:       python-qtconsole
+Requires:       %plainpython(abi) = %{python_version}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter = %{version}-%{release}
 Obsoletes:      jupyter < %{version}-%{release}

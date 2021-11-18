@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           jupyter-filesystem
 URL:            https://jupyter.org/
-Version:        20190823
+Version:        20211114
 Release:        0
 %define tar_ver 1.0.0
 Summary:        Common directories shared by Jupyter packages
@@ -30,9 +30,10 @@ Source10:       macros.jupyter_core
 Source11:       macros.jupyter_notebook
 Source12:       macros.jupyterlab
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 
 %description
-This package provides common directories and macros used by many 
+This package provides common directories and macros used by many
 jupyter packages.
 
 %package     -n jupyter-jupyter_core-filesystem
@@ -43,7 +44,7 @@ Provides:       %{python_module jupyter_core-macros-devel = %{version}}
 Provides:       jupyter-jupyter_core-macros-devel = %{version}
 
 %description -n jupyter-jupyter_core-filesystem
-This package provides common directories and macros used by many 
+This package provides common directories and macros used by many
 packages that depend on jupyter_core.
 
 It also provides macros for building packages that depend on
@@ -51,7 +52,7 @@ jupyter_core.
 
 %define _jupyter_prefix          %{_datadir}/jupyter/
 %define _jupyter_kernel_dir      %{_jupyter_prefix}/kernels/
-%define _jupyter_confdir         %{_sysconfdir}/jupyter/
+%define _jupyter_confdir         %{_distconfdir}/jupyter/
 
 %package     -n jupyter-notebook-filesystem
 Summary:        Common directories shared by Jupyter notebook packages
@@ -63,7 +64,7 @@ Provides:       %{python_module notebook-macros-devel = %{version}}
 Provides:       jupyter-notebook-macros-devel = %{version}
 
 %description -n jupyter-notebook-filesystem
-This package provides common directories and macros used by many 
+This package provides common directories and macros used by many
 packages that depend on the Jupyter notebook.
 
 It also provides macros for building packages that depend on
@@ -98,7 +99,7 @@ Provides:       jupyter-jupyterlab-widgets = 0.7
 Obsoletes:      jupyter-jupyterlab-widgets < 0.7
 
 %description -n jupyter-jupyterlab-filesystem
-This package provides common directories and macros used by many 
+This package provides common directories and macros used by many
 packages that depend on JupyterLab.
 
 It also provides macros for building packages that depend on
@@ -106,6 +107,7 @@ JupyterLab.
 
 %define _jupyter_lab_dir            %{_jupyter_prefix}/lab/
 %define _jupyter_labextensions_dir  %{_jupyter_lab_dir}/extensions/
+%define _jupyter_labextensions_dir3  %{_jupyter_prefix}/labextensions/
 
 %prep
 %setup -q -n jupyter-%{tar_ver}
@@ -145,6 +147,7 @@ mkdir -p %{buildroot}%{_jupyter_nb_tree_confdir}
 # jupyterlab directories
 mkdir -p %{buildroot}%{_jupyter_lab_dir}
 mkdir -p %{buildroot}%{_jupyter_labextensions_dir}
+mkdir -p %{buildroot}%{_jupyter_labextensions_dir3}
 
 %files -n jupyter-jupyter_core-filesystem
 %license LICENSE
@@ -177,5 +180,6 @@ mkdir -p %{buildroot}%{_jupyter_labextensions_dir}
 %{_rpmmacrodir}/macros.jupyterlab
 %dir %{_jupyter_lab_dir}
 %dir %{_jupyter_labextensions_dir}
+%dir %{_jupyter_labextensions_dir3}
 
 %changelog

@@ -1,11 +1,13 @@
 %_jupyter_prefix          %{_datadir}/jupyter/
 %_jupyter_kernel_dir      %{_jupyter_prefix}/kernels/
-%_jupyter_confdir         %{_sysconfdir}/jupyter/
+%_jupyter_confdir         %{_distconfdir}/jupyter/
+
+%_jupyter_distconfig 1
 
 %jupyter_move_config \
-    %if "$(dirname %{_prefix}/etc/jupyter)" != "$(dirname %{_jupyter_confdir})" \
-    mkdir -p %{buildroot}%{_sysconfdir} \
+  if [ "$(dirname %{_prefix}/etc/jupyter/)" != "$(dirname %{_jupyter_confdir})" ]; then \
+    mkdir -p %{buildroot}%{_distconfdir} \
     mv %{buildroot}%{_prefix}/etc/jupyter %{buildroot}%{_jupyter_confdir} \
     rm -d %{buildroot}%{_prefix}/etc \
-    %endif \
+  fi \
 %{nil}
