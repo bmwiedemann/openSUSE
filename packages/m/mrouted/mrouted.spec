@@ -18,7 +18,7 @@
 
 
 Name:           mrouted
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        An implementation of the DVMRP multicast routing protocol
 License:        BSD-3-Clause AND BSD-4-Clause
@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Routing
 URL:            https://github.com/troglobit/mrouted
 #Git-Clone:     https://github.com/troglobit/mrouted.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_mrouted.service.patch
+Patch0:         harden_mrouted.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

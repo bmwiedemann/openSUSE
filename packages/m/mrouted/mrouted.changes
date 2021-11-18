@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  4 19:33:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4
+  Changes
+  * Rename tunnel vifs, from base interface, to use the Linux
+    kernel naming; dvmrpN, where N is the VIF number. Other
+    kernels may handle this differently.
+  * Logging to stdout now always prefixes messages with the daemon
+    ident.
+  * If adding a tunnel VIF and Linux does not have ipip.ko loaded,
+    mrouted logs this as a warning message.
+  * Add test for IPIP tunnels.
+  * Refactored linked-list handling in unicast route engine
+    (internal).
+  * Drop experimental RSRR feature. It is very likely unused these
+    days, seeing as the draft memo never made it into widespread
+    use. It is also not working properly with multiple instances of
+    mrouted.
+  Fixes
+  * Issue #52: IP-IP tunnels don't work anymore. Somewhere in the
+    big refactor for the mrouted v4.x series, the tunnel directive
+    in the .conf parser was never adapted to the new internals.
+  * Fix a 10 year old regression after a linked-list refactor,
+    causing off-by-one (loss of one) in unicast route distribution
+    Which in turn cause VIF tunnels to malfunction.
+
+-------------------------------------------------------------------
 Wed Oct  6 15:23:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
