@@ -1,3 +1,19 @@
+gpxsee (9.12) stable; urgency=low
+
+  * Added support for QCT maps.
+  * Fixed broken app icons install in "make install" on linux.
+  * Minor IMG maps fixes and enhancements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 17 Nov 2021 08:50:19 +0100
+
+gpxsee (9.11) stable; urgency=low
+
+  * Switched to core5compat in Qt6 builds to support East Asian
+    encodings where possible.
+  * Fixed IMG map labels handling.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 31 Oct 2021 16:13:53 +0100
+
 gpxsee (9.10) stable; urgency=low
 
   * Added waypoint icons highlighting.
