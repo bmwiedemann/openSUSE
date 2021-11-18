@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:25:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.2
+  - Rebuild wheels against libqpdf 10.3.2.
+  - Enabled building Linux PyPy x86_64 wheels.
+  - Fixed a minor issue where the inline images would have their
+    abbreviations expanded when unparsed. While unlikely to be
+    problematic, inline images usually use abbreviations in their
+    metadata and should be kept that way.
+  - Added notes to documentation about loading PDFs through Python
+    file streams and cases that can lead to poor performance.
+- Fix build error for Leap and Tumblweed.
+
+-------------------------------------------------------------------
 Sat Jun  5 20:02:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.1
