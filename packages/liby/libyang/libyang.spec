@@ -18,10 +18,10 @@
 
 
 %define sover 2
-%define commit 320f34305dd9c7d14af5f13bec18e477b37f5db8
+%define commit a81b3304695ad94fe0b34697f3e24d7f25a6bd05
 
 Name:           libyang
-Version:        2.0.97
+Version:        2.0.112
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause

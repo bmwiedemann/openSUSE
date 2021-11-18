@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 17 05:23:08 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Update to version 2.0.112
+  * Support for XPath variables
+  * Bugfixes:
+    * Performance issues related to LYB format
+    * Memory leaks and double-free in XPath and LYB
+    * Opaque node handling in lists and at top-level
+
+-------------------------------------------------------------------
 Sat Oct  9 01:47:12 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
 
 - Upgrade to Release 2.0.97
