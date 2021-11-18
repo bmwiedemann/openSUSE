@@ -17,8 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# depends on openstack package mox3: only for primary python3 provider
-%define pythons python3
+%global skip_python2 1
 Name:           python-websockify
 Version:        0.10.0
 Release:        0
@@ -28,15 +27,16 @@ URL:            https://github.com/novnc/websockify
 Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jwcrypto}
-BuildRequires:  %{python_module mox3}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+%if %{python_version_nodots} > 36
 Requires:       python-numpy
+%endif
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
