@@ -18,7 +18,7 @@
 
 %define octpkg  nan
 Name:           octave-forge-%{octpkg}
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        A statistics and machine learning toolbox
 License:        GPL-3.0-or-later
