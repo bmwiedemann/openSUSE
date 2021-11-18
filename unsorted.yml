@@ -3027,6 +3027,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -8120,6 +8121,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -15892,7 +15894,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -16395,7 +16397,6 @@ unsorted:
   - muffin 
   - muffin-devel 
   - muffin-lang 
-  - mugshot 
   - mujs 
   - mujs-devel 
   - multimon-ng 
@@ -17836,11 +17837,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -20029,7 +20033,6 @@ unsorted:
   - pgadmin4-doc 
   - pgadmin4-web 
   - pgadmin4-web-uwsgi 
-  - pgloader 
   - pgn-extract 
   - phetsarath-fonts 
   - phobos-devel 
@@ -20964,8 +20967,6 @@ unsorted:
   - python-efl-doc 
   - python-efl-examples 
   - python-fastcluster-doc 
-  - python-fedmsg-base 
-  - python-fedmsg-doc 
   - python-flake8-doc 
   - python-flup-doc 
   - python-freezerclient-doc 
@@ -21105,7 +21106,7 @@ unsorted:
   - python3-MapProxy 
   - python3-OpenColorIO 
   - python3-OpenImageIO 
-  - python3-PyCBC 
+  - python3-PyCBC: [x86_64] 
   - python3-Rivet 
   - python3-SHERPA-MC 
   - python3-SoapySDR 
@@ -21436,7 +21437,6 @@ unsorted:
   - python3-vtk-openmpi2 
   - python3-vtk-openmpi3 
   - python3-watchman 
-  - python3-websockify 
   - python3-xcb-proto-devel 
   - python3-xrootd 
   - python3-yaql 
@@ -22540,8 +22540,6 @@ unsorted:
   - python36-fastimport 
   - python36-fastnumbers 
   - python36-fb-re2 
-  - python36-fedmsg 
-  - python36-fedmsg-tests 
   - python36-fedora-messaging 
   - python36-feedgen 
   - python36-feedgenerator 
@@ -24167,6 +24165,7 @@ unsorted:
   - python36-weblib 
   - python36-webruntime 
   - python36-websocket-client 
+  - python36-websockify 
   - python36-wfuzz 
   - python36-whatever 
   - python36-whatthepatch 
@@ -25374,8 +25373,6 @@ unsorted:
   - python38-fastnumbers 
   - python38-fastremap 
   - python38-fb-re2 
-  - python38-fedmsg 
-  - python38-fedmsg-tests 
   - python38-fedora-messaging 
   - python38-feedgen 
   - python38-feedgenerator 
@@ -27115,6 +27112,7 @@ unsorted:
   - python38-webruntime 
   - python38-websocket-client 
   - python38-websockets 
+  - python38-websockify 
   - python38-wfuzz 
   - python38-whatever 
   - python38-whatthepatch 
@@ -30264,6 +30262,7 @@ unsorted:
   - python39-webruntime 
   - python39-websocket-client 
   - python39-websockets 
+  - python39-websockify 
   - python39-wfuzz 
   - python39-whatever 
   - python39-whatthepatch 
@@ -40917,6 +40916,7 @@ unsorted:
   - thessalonica-tempora-lgc-otf-fonts 
   - thessalonica-tempora-lgc-ttf-fonts 
   - thessalonica-theano-ttf-fonts 
+  - thinkfan 
   - thonny 
   - thonny-lang 
   - threadweaver-devel 
@@ -41253,7 +41253,6 @@ unsorted:
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
-  - typelib-1_0-Cheese-41_0 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-CloudProviders-0_3_0 
@@ -41740,7 +41739,7 @@ unsorted:
   - vfontas 
   - vgrabbj 
   - vgrep 
-  - vhba-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - vhba-kmp-default 
   - vhba-kmp-pae: [i586] 
   - vhostmd 
   - vidcutter 

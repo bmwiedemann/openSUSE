@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20211117" schemaversion="4.1">
+<image name="OBS__openSUSE___20211118" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211117</productvar>
+      <productvar name="VERSION">20211118</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211117,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211118,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211117/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211118/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -421,7 +421,6 @@
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -1333,7 +1332,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -3283,7 +3282,6 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -3373,6 +3371,7 @@
       <repopackage name="mtdev-devel" arch="x86_64"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
+      <repopackage name="mugshot"/>
       <repopackage name="multipath-tools"/>
       <repopackage name="mutt"/>
       <repopackage name="mutt-doc"/>
@@ -3484,9 +3483,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -5056,6 +5052,7 @@
       <repopackage name="typelib-1_0-Atk-1_0"/>
       <repopackage name="typelib-1_0-Atspi-2_0"/>
       <repopackage name="typelib-1_0-Champlain-0_12"/>
+      <repopackage name="typelib-1_0-Cheese-3_0"/>
       <repopackage name="typelib-1_0-Clutter-1_0"/>
       <repopackage name="typelib-1_0-Cogl-1_0"/>
       <repopackage name="typelib-1_0-CoglPango-1_0"/>
@@ -5172,7 +5169,6 @@
       <repopackage name="vacation"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vendor-reset-kmp-default" arch="x86_64"/>
-      <repopackage name="vhba-kmp-default" arch="x86_64"/>
       <repopackage name="vim"/>
       <repopackage name="vim-data"/>
       <repopackage name="vim-data-common"/>
