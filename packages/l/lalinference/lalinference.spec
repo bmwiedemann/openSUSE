@@ -84,6 +84,7 @@ Requires:       python-lalinspiral
 Requires:       python-lalmetaio
 Requires:       python-lalpulsar
 Requires:       python-lalsimulation
+ExcludeArch:    %{ix86}
 
 %python_subpackages
 
@@ -148,7 +149,7 @@ This package provides the necessary files for using LAL Inference with octave.
 %{python_expand # Necessary to run %%configure with all python flavors
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
-cp -pr ./ ../$python  
+cp -pr ./ ../$python
 pushd ../$python
 %configure \
   %{?with_octave:--enable-swig-octave} \
