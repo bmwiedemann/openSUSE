@@ -5706,4 +5706,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1192714</comment>
   </revision>
+  <revision rev="619" vrev="1">
+    <srcmd5>a2dda9037eed42b5d97ccda67ebd69b2</srcmd5>
+    <version>5.15.2</version>
+    <time>1637227977</time>
+    <user>dimstar_suse</user>
+    <comment>5.15.2 &amp; some config changes &amp; zstd again</comment>
+    <requestid>931322</requestid>
+  </revision>
 </revisionlist>

@@ -17,11 +17,11 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.14
-%define patchversion 5.14.14
+%define srcversion 5.15
+%define patchversion 5.15.2
 %define variant %{nil}
 %define vanilla_only 0
-%define compress_modules xz
+%define compress_modules zstd
 %define compress_vmlinux xz
 %define livepatch livepatch%{nil}
 
@@ -107,9 +107,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.14
+Version:        5.15.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2b5383f
+Release:        <RELEASE>.g26a203b
 %else
 Release:        0
 %endif
@@ -135,7 +135,7 @@ BuildRequires:  modutils
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
 # pahole for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
-BuildRequires:  dwarves >= 1.21
+BuildRequires:  dwarves >= 1.22
 # for objtool
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-2b5383fe758239ef81e1e716e6d695475849520b
-Provides:       kernel-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       kernel-%build_flavor-base-srchash-26a203b53de5bda52f512344a49e138964e43912
+Provides:       kernel-srchash-26a203b53de5bda52f512344a49e138964e43912
 # END COMMON DEPS
-Provides:       %name-srchash-2b5383fe758239ef81e1e716e6d695475849520b
+Provides:       %name-srchash-26a203b53de5bda52f512344a49e138964e43912
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -1443,7 +1443,7 @@ Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
 %endif
 %if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
-Requires:       dwarves >= 1.21
+Requires:       dwarves >= 1.22
 %endif
 %ifarch %ix86
 Provides:       kernel-trace-devel = 3.13
