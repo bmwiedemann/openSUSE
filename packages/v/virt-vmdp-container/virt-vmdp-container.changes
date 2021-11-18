@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:40:29 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add workaround for the problem with dependencies
+  https://github.com/openSUSE/obs-build/issues/487
+
+-------------------------------------------------------------------
 Tue Oct  5 16:59:06 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Align the image with officially supported version 2.5.2-200205

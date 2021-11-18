@@ -3,6 +3,10 @@
 #!BuildTag: %%TAGPREFIX%%/vmdp:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/vmdp:%%PKG_VERSION%%.%RELEASE%
 
+# Hack: workaround for https://github.com/openSUSE/obs-build/issues/487
+ARG KUBEVIRTFROM
+FROM $KUBEVIRTFROM
+
 FROM scratch
 
 # labelprefix=%%LABELPREFIX%%
