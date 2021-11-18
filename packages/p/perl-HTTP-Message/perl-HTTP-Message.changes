@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 12 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.35
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.35      2021-11-11 22:10:31Z
+      - Clarify documentation for decoded_content (GH#166) (Eric Wastl)
+
+-------------------------------------------------------------------
 Tue Nov  9 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.34

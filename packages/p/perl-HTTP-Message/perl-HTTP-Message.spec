@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.34
+Version:        6.35
 Release:        0
 Summary:        HTTP style message (base class)
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -156,10 +156,14 @@ details about how charset is determined.
 
 * $mess->decoded_content( %options )
 
-Returns the content with any 'Content-Encoding' undone and for textual
-content the raw content encoded to Perl's Unicode strings. If the
-'Content-Encoding' or 'charset' of the message is unknown this method will
-fail by returning 'undef'.
+Returns the content with any 'Content-Encoding' undone and, for textual
+content ('Content-Type' values starting with 'text/', exactly matching
+'application/xml', or ending with '+xml'), the raw content's character set
+decoded into Perl's Unicode string format. Note that this at
+https://github.com/libwww-perl/HTTP-Message/pull/99 attempt to decode
+declared character sets for any other content types like 'application/json'
+or 'application/javascript'. If the 'Content-Encoding' or 'charset' of the
+message is unknown, this method will fail by returning 'undef'.
 
 The following options can be specified.
 
