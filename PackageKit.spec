@@ -272,11 +272,7 @@ This package provides the upstream default configuration for PackageKit.
 %lang_package
 
 %prep
-%autosetup -N
-%autopatch -p1 -M 1000
-%if 0%{?sle_version} > 150300 && 0%{?sle_version} < 160000
-%patch1000 -p1
-%endif
+%autosetup -p1
 
 %build
 %meson \
