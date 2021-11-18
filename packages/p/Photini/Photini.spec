@@ -17,7 +17,7 @@
 
 
 Name:           Photini
-Version:        2021.11.0
+Version:        2021.11.1
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later

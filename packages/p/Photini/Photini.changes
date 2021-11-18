@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 17 16:48:31 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.11.1
+  * Fix problems regenerating thumbnails if Pillow & FFmpeg are
+    not available.
+  * Improved reading of Exif.Photo.UserComment values.
+  * Minimum version of python-exiv2 is now 0.8.1
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Wed Nov  3 09:15:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.11.0

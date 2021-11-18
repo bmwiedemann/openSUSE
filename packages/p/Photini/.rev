@@ -203,4 +203,12 @@ Also see sr#741039 for missing runtime dependency.</comment>
     <comment></comment>
     <requestid>928972</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e7355e20b5948f6ac839c584c808c248</srcmd5>
+    <version>2021.11.1</version>
+    <time>1637228081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932006</requestid>
+  </revision>
 </revisionlist>
