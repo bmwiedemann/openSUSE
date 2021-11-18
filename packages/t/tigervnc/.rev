@@ -794,4 +794,14 @@
   * fixes build against xorg-server 21.1 sources</comment>
     <requestid>928186</requestid>
   </revision>
+  <revision rev="85" vrev="20">
+    <srcmd5>78e2f8dbab0abe5c7336e8ea528b4a5b</srcmd5>
+    <version>1.10.1</version>
+    <time>1637227981</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a template xvnc@.service.in to dynamically adjust xvnc@.service
+  during installation to cater for the correct libexecdir value. This
+  fixes wrong path for with-vnc-key.sh on sle15-sp4 (bsc#1192713)</comment>
+    <requestid>931607</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 15 17:22:13 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Use a template xvnc@.service.in to dynamically adjust xvnc@.service
+  during installation to cater for the correct libexecdir value. This
+  fixes wrong path for with-vnc-key.sh on sle15-sp4 (bsc#1192713)
+
+-------------------------------------------------------------------
 Fri Oct 29 16:57:10 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildrequire xorg-x11-server-sdk/xorg-x11-server-source >= 21.1.0
