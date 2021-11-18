@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  8 21:56:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Markdown: Add colons to align the rendered output 
+  * Add rows attribute to prettytable
+  * Add Jupyter repr and default interpreter repr methods
+  * Add custom format support 
+  * Add method to generate LaTex formatted string
+  * Add support for Python 3.10
+  * Update issue templates
+  * Add support for positional junction characters and add "double_border" table style
+  * Access properties instead of protected fields in _get_options()
+  * Use declarative metadata and support PyPy3
+  * Add auto index column 
+  * Support formatting options in get_json_string()
+  * Add tbody and thead tags
+  * Add add_rows to add several rows at once 
+  * Add setuptools as a dependency
+  * Fix string comparison and deprecation warning
+- skip python2
+
+-------------------------------------------------------------------
 Fri Oct 15 10:39:59 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

@@ -18,21 +18,21 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%global skip_python2 1
 Name:           python-PrettyTable
-Version:        0.7.2
+Version:        2.4.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
 URL:            https://github.com/jazzband/prettytable
 Source0:        https://files.pythonhosted.org/packages/source/p/prettytable/prettytable-%{version}.tar.gz
+BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module pytest-lazy-fixture}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-prettytable = 0.7.2
-Obsoletes:      %{oldpython}-prettytable < 0.7.2
-%endif
 %python_subpackages
 
 %description
@@ -44,7 +44,6 @@ centred) and printing of "sub-tables" by specifying a row range.
 
 %prep
 %setup -q -n prettytable-%{version}
-sed -i '1s/^#!.*//' prettytable.py
 
 %build
 %python_build
@@ -54,11 +53,11 @@ sed -i '1s/^#!.*//' prettytable.py
 
 %check
 export LANG=en_US.UTF-8
-%pyunittest prettytable_test.py
+%pytest
 
 %files %{python_files}
 %license COPYING
-%doc CHANGELOG README
+%doc CHANGELOG.md README.md
 %{python_sitelib}/*
 
 %changelog
