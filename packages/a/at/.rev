@@ -631,4 +631,12 @@ I already created a maintenance request for 12.2 - #142949 (forwarded request 14
     <comment></comment>
     <requestid>925655</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>1ae80f4d30cc4497aeb37e305e871fc1</srcmd5>
+    <version>3.2.2</version>
+    <time>1637239835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932230</requestid>
+  </revision>
 </revisionlist>

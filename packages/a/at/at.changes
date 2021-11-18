@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 18 11:23:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Tumbleweed is not affected by the following SLE issues:
+  * jsc#SLE-17611
+  * bsc#1181576
+
+-------------------------------------------------------------------
 Wed Aug 11 08:25:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
