@@ -754,4 +754,41 @@
     <comment></comment>
     <requestid>926998</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bb32f402b5bfc8c0704ba51f1bce0d14</srcmd5>
+    <version>7.5.11</version>
+    <time>1637228088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.5.11:
+  * Fix certs issue (#40002)
+  * Release v7.5.11 (#124)
+  * Fix static path matching issue in macaron
+  * OAuth: add docs for disableAutoLogin param (#38752) (#38894)
+  * Fix #747; remove 'other variables'. (#37866) (#37878)
+  * Update alert docs (#33658) (#33659)
+  * [7.5.x] Docs: added documentation for the &quot;prepare time series&quot;-transformation. (#36836)
+  * cherry picked dc5778c303ca555b70e8ca8c28e95997e26ecfc1 (#36813)
+  * &quot;Release: Updated versions in package to 7.5.10&quot; (#36792)
+  * [v7.5.x] Transformations: add 'prepare time series' transformer (#36749)
+  * Remove verify-drone from windows (#36775)
+  * Update queries.md (#31941) (#36764)
+  * Updated content to specify method to use to get keyboard shortcuts wh… (#36084) (#36087)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.9 (#36057) (#36077)
+  * &quot;Release: Updated versions in package to 7.5.9&quot; (#36056)
+  * Login: Fixes Unauthorized message showing when on login page or snapshot page (#35311) (#35880)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.8 (#35703) (#35822)
+  * CI: Upgrade pipeline tool to use main (#35804)
+  * CI: try to force v7.5.x instead of master (#35799)
+  * CI: supports move from master to main in 7.5.x release branch (#35747)
+  * &quot;Release: Updated versions in package to 7.5.8&quot; (#35701)
+  * Chore: Bump acorn and lodash-es (#35650)
+  * Snapshots: Remove dashboard links from snapshots (#35567) (#35585)
+  * [v7.5.x] Datasource: Allow configuring `MaxConnsPerHost` (#35519)
+  * Remove docs sync from v7.5.x (#35443)
+  * &quot;Release: Updated versions in package to 7.5.7&quot; (#35412)
+  * Add max_idle_connections_per_host to config (#35365)
+  * Update go.sum to fix failing enterprise pipeline (#35353)
+  * [v7.5.x] HTTP Client: Introduce `go-conntrack`  (#35321) (forwarded request 932046 from oertel)</comment>
+    <requestid>932047</requestid>
+  </revision>
 </revisionlist>

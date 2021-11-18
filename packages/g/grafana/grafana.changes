@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov 17 23:32:21 UTC 2021 - ro@suse.de
+
+- Update to version 7.5.11:
+  * Fix certs issue (#40002)
+  * Release v7.5.11 (#124)
+  * Fix static path matching issue in macaron
+  * OAuth: add docs for disableAutoLogin param (#38752) (#38894)
+  * Fix #747; remove 'other variables'. (#37866) (#37878)
+  * Update alert docs (#33658) (#33659)
+  * [7.5.x] Docs: added documentation for the "prepare time series"-transformation. (#36836)
+  * cherry picked dc5778c303ca555b70e8ca8c28e95997e26ecfc1 (#36813)
+  * "Release: Updated versions in package to 7.5.10" (#36792)
+  * [v7.5.x] Transformations: add 'prepare time series' transformer (#36749)
+  * Remove verify-drone from windows (#36775)
+  * Update queries.md (#31941) (#36764)
+  * Updated content to specify method to use to get keyboard shortcuts wh… (#36084) (#36087)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.9 (#36057) (#36077)
+  * "Release: Updated versions in package to 7.5.9" (#36056)
+  * Login: Fixes Unauthorized message showing when on login page or snapshot page (#35311) (#35880)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.8 (#35703) (#35822)
+  * CI: Upgrade pipeline tool to use main (#35804)
+  * CI: try to force v7.5.x instead of master (#35799)
+  * CI: supports move from master to main in 7.5.x release branch (#35747)
+  * "Release: Updated versions in package to 7.5.8" (#35701)
+  * Chore: Bump acorn and lodash-es (#35650)
+  * Snapshots: Remove dashboard links from snapshots (#35567) (#35585)
+  * [v7.5.x] Datasource: Allow configuring `MaxConnsPerHost` (#35519)
+  * Remove docs sync from v7.5.x (#35443)
+  * "Release: Updated versions in package to 7.5.7" (#35412)
+  * Add max_idle_connections_per_host to config (#35365)
+  * Update go.sum to fix failing enterprise pipeline (#35353)
+  * [v7.5.x] HTTP Client: Introduce `go-conntrack`  (#35321)
+  * Fix Markdown syntax in enterprise/license/_index.md (#34683) (#35210)
+  * Update annotations.md (#33218) (#35138)
+  * Docs: Add query caching to enterprise docs page (#34751) (#35025)
+  * [7.5.x] Admin: hide per role counts for licensed users (#34994)
+  * cleanup shortcodes, image paths (#34827)
+  * Security: Upgrade Thrift dependency (#34698) (#34702)
+  * Docs: Fix Quick Start link on Geting Started Influx page (#34549) (#34603)
+  * Add link to release notes v7.5.7 (#34460) (#34474)
+  * Update 7.5.x landing page (#34447)
+  * ReleaseNotes: Updated changelog and release notes for 7.5.7 (#34383) (#34428)
+- update to 7.5.10
+  * [v7.5.x] Transformations: add "prepare time series" transformer. [#36749]
+- update to 7.5.9
+  * Login: Fix Unauthorized message that is displayed on sign-in or snapshot page. [#35880]
+- drop drop-grafana-aws-sdk-0.3.0-module.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Sep 21 07:27:09 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add patch 0001-Add-source-code-reference.patch

@@ -22,7 +22,7 @@
 %endif
 
 Name:           grafana
-Version:        7.5.7
+Version:        7.5.11
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        Apache-2.0
@@ -36,7 +36,6 @@ Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
 Source5:        0001-Add-source-code-reference.patch
-Patch1:         drop-grafana-aws-sdk-0.3.0-module.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
@@ -64,7 +63,6 @@ dashboards and data with teams.
 %prep
 %setup -q -n grafana-%{version}
 %setup -q -T -D -a 1 -n grafana-%{version}
-%patch1 -p1
 
 %build
 %goprep github.com/grafana/grafana
