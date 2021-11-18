@@ -5144,7 +5144,6 @@
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.14.14-3-default needed by openafs-kmp-default-1.8.8_k5.14.14_3-2.8.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5428,7 +5427,6 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.14.14-3-default needed by openafs-kmp-default-1.8.8_k5.14.14_3-2.8.x86_64-->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
