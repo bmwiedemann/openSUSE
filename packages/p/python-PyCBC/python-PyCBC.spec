@@ -50,7 +50,7 @@ Requires:       python3-scipy
 Requires:       python3-tqdm
 Recommends:     python3-gwdatafind
 Recommends:     python3-ligo-segments
-ExclusiveArch:  %{ix86} x86_64
+ExclusiveArch:  x86_64
 %if %{with tests}
 # SECTION Test Requirements
 BuildRequires:  python3-Mako
