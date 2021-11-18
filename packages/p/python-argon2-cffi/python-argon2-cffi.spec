@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
+
 Name:           python-argon2-cffi
-Version:        20.1.0
+Version:        21.1.0
 Release:        0
 Summary:        The Argon2 password hashing algorithm for Python
 License:        MIT

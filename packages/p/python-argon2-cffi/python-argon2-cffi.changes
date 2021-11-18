@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 14 23:14:06 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 21.1.0
+- skip building for Python 2 because not supported anymore
+
+-------------------------------------------------------------------
 Tue Jul 28 06:32:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.1.0:

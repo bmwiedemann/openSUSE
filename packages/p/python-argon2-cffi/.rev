@@ -65,4 +65,12 @@
     the ``ARGON2_CFFI_USE_SSE2`` environment variable.</comment>
     <requestid>823068</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33216ace72b16feda77b02d3677364ad</srcmd5>
+    <version>21.1.0</version>
+    <time>1637227994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931816</requestid>
+  </revision>
 </revisionlist>
