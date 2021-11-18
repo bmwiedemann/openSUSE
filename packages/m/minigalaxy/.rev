@@ -140,4 +140,31 @@
   * Use the system's icon theme for icons used</comment>
     <requestid>863253</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>70f24bab902bf637e8b7e2ed62744ed8</srcmd5>
+    <version>1.1.0</version>
+    <time>1637228046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Improve integrity check after downloading
+  * Show an error showing Windows games cannot be enabled
+  * Add properties menu for games where game specific actions can be made like setting launch options and opening the store page
+  * Add a disk space check before downloading
+  * Use a different color for the play button for installed games
+  * Put installed games at the top of the list
+  * Store saved installers in ~/GOG Games/installer by default again
+  * Remember if the user had the installed filter enabled
+  * Extract Windows games in the background if Innoextract is available
+  * Extract Windows games in the background
+  * Fix installing DLC for Windows games
+  * Fix an error showing if the user has no games
+  * Add option to hide games
+  * Ask user if they are sure when logging out
+  * Add a dark theme
+  * Run post install script after installation. This fixes Full Throttle Remastered
+  * Fix games being shown twice
+  * Fix crash when GOG is down
+  * Make the language configurable</comment>
+    <requestid>931993</requestid>
+  </revision>
 </revisionlist>

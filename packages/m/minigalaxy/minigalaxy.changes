@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 17 16:03:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.0:
+  * Improve integrity check after downloading
+  * Show an error showing Windows games cannot be enabled
+  * Add properties menu for games where game specific actions can be made like setting launch options and opening the store page
+  * Add a disk space check before downloading
+  * Use a different color for the play button for installed games
+  * Put installed games at the top of the list
+  * Store saved installers in ~/GOG Games/installer by default again
+  * Remember if the user had the installed filter enabled
+  * Extract Windows games in the background if Innoextract is available
+  * Extract Windows games in the background
+  * Fix installing DLC for Windows games
+  * Fix an error showing if the user has no games
+  * Add option to hide games
+  * Ask user if they are sure when logging out
+  * Add a dark theme
+  * Run post install script after installation. This fixes Full Throttle Remastered
+  * Fix games being shown twice
+  * Fix crash when GOG is down
+  * Make the language configurable
+
+-------------------------------------------------------------------
 Fri Jan 15 08:46:25 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.2:
