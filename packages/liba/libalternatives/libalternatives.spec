@@ -21,7 +21,7 @@
 Name:           libalternatives
 Version:        1.2+3.b848aad
 Release:        0
-Summary:        Executes preferred application based on user preferences
+Summary:        Helper for executing preferred application based on user preferences
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 URL:            https://github.com/AdamMajer/libalternative.git
 Source0:        libalternatives-v%{version}.tar
@@ -30,23 +30,21 @@ BuildRequires:  cunit-devel
 BuildRequires:  gcc
 
 %description
-libalternatives is a helper that executes an application based on preferences
-of an user, system admin or package maintainer, in this order of preference.
-This is accomplished with only a help of config files without the need to
-maintain system symlinks states.
-
+libalternatives is a helper that executes an application based on
+preferences of a user, system admin or package maintainer, in this
+order of preference. This is accomplished with only the help of
+config files and without the need to maintain system symlinks states.
 
 %package -n alts
-Summary:        Executes preferred application based on user preferences
+Summary:        Helper for executing preferred application based on user preferences
 License:        GPL-3.0-or-later
 
 %description -n alts
 This package contains a default helper and configuration application utility
 for libalternatives. libalternatives is a helper that executes an application
-based on preferences of an user, system admin or package maintainer, in this
-order of preference.  This is accomplished with only a help of config files
-without the need to maintain system symlinks states.
-
+based on preferences of a user, system admin or package maintainer, in this
+order of preference. This is accomplished with only the help of config files
+and without the need to maintain system symlinks states.
 
 %package devel
 Summary:        Development headers for libalternatives
@@ -62,10 +60,10 @@ License:        LGPL-3.0-or-later
 
 %description -n libalternatives%sover
 This package contains the core logic and the runtime library for
-libalternatives.  libalternatives is a helper that executes an application based
-on preferences of an user, system admin or package maintainer, in this order of
-preference.  This is accomplished with only a help of config files without the
-need to maintain system symlinks states.
+libalternatives. libalternatives is a helper that executes an application based
+on preferences of a user, system admin or package maintainer, in this order of
+preference. This is accomplished with only the help of config files and
+without the need to maintain system symlinks states.
 
 %package unit-test-helper
 Summary:        Verification helper for libalternatives
@@ -76,7 +74,7 @@ This is a testing-only installation that may be used to verify that successful
 integration with manual pages.
 
 %prep
-%setup -q -n libalternatives-v%version
+%autosetup -n libalternatives-v%version
 
 %build
 %cmake
@@ -96,7 +94,7 @@ EOF
 cat > %buildroot/%_bindir/libalternatives-unit-test-helper.sh <<EOF
 #!/bin/bash
 
-(diff <(man libalternatives-unit-test-helper 2> /dev/null) <(man true) >> /dev/null && echo "Everything seems OK && exit") 
+(diff <(man libalternatives-unit-test-helper 2> /dev/null) <(man true) >> /dev/null && echo "Everything seems OK && exit")
 echo "It seems `man` doesn't display the proper manpage for libalternatives system."
 echo "You should see the manpage for true(1) when running"
 echo "   man libalternatives-unit-test-helper"

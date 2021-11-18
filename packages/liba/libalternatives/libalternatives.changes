@@ -5,6 +5,11 @@ Tue Sep 14 09:12:40 UTC 2021 - adam.majer@suse.de
   * tests: fix array overrun in unit tests
 
 -------------------------------------------------------------------
+Tue Sep 14 08:35:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for the summary; fix grammar in description.
+
+-------------------------------------------------------------------
 Mon Sep 13 21:29:01 UTC 2021 - adam.majer@suse.de
 
 - Update to version v1.2:
