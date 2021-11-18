@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 14 14:59:31 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.0.3
+  * Fix traceback rewriting internals for Python 3.10 and 3.11. (#1535)
+  * Fix how the native environment treats leading and trailing spaces
+    when parsing values on Python 3.10. (PR#1537)
+  * Improve async performance by avoiding checks for common types. (#1514)
+  * Revert change to ``hash(Node)`` behavior. Nodes are hashed by id again (#1521)
+  * ``PackageLoader`` works when the package is a single module file. (#1512)
+
+-------------------------------------------------------------------
 Sun Oct 10 00:16:28 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - dropped obsolete no-warnings-as-errors.patch

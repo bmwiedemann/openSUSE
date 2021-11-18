@@ -24,7 +24,7 @@
 %bcond_without test
 %endif
 Name:           python-Jinja2
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
