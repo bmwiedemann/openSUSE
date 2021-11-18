@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Dolly</short>
+  <description>Enables TCP ports for Dolly</description>
+  <port protocol="tcp" port="9997-9998"/>
+</service>

@@ -15,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define vers 0.63.4
+%define _fwdefdir %{_prefix}/lib/firewalld/services
+%define vers 0.63.6
 
 Name:           dolly
-Summary:        Tool for cloning the installation of one machine to other machines
+Summary:        Tool for cloning data of one machine to other machines
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
 Version:        %vers
 Release:        0
 URL:            http://www.cs.inf.ethz.ch/stricker/CoPs/patagonia/dolly.html
-Source0:        https://github.com/openSUSE/dolly/archive/%{version}.tar.gz#/dolly-%{version}.tar.gz
+Source0:        https://github.com/openSUSE/dolly/archive/%{version}.tar.gz#/dolly-%{version}.tar.bz2
 Source1:        dolly.conf
 Source2:        dolly.md
+Source3:        dolly_firewall.xml
 
 #SLE15* does not contain pandoc packages
 %if 0%{?is_opensuse}
@@ -38,17 +39,14 @@ Requires:       gzip
 %endif
 
 %description
-Dolly is used to clone the installation of one machine to
-(possibly many) other machines. It can distribute image files
-(even gnu-zipped), partitions or whole hard disk drives to
-other partitions or hard disk drives. As it forms a "virtual TCP
-ring" to distribute data, it works best with fast switched
-networks (a 2 GB Windows NT partition clone
-to 15 machines over Gigabit Ethernet was originally measured
-to be less than 4 minutes).
+Dolly is used to clone data of one machine to (possibly many)
+other machines. It can distribute image files (even gnu-zipped),
+partitions or whole hard disk drives to other partitions or
+hard disk drives. As it forms a "virtual TCP ring" to distribute
+data, it works best with fast switched networks.
 
-As dolly clones whole partitions block-wise, it works for most
-filesystems, including the types for Linux, Windows NT, Oberon,
+As dolly can clone whole partitions block-wise, it works for 
+most filesystems, including the types for Linux, Windows, Oberon,
 Solaris.
 
 %prep
@@ -68,6 +66,10 @@ gzip dolly.1
 %install
 install -D -m 755 $RPM_BUILD_DIR/%{name}-%{version}/dolly %{buildroot}%{_sbindir}/dolly
 install -D -m 644  %{SOURCE1} %{buildroot}%{_sysconfdir}/%{name}.conf
+# install firewall conf
+mkdir -p %{buildroot}/%{_fwdefdir}
+install -m 644 %{S:3} %{buildroot}/%{_fwdefdir}/dolly.xml
+
 %if 0%{?is_opensuse}
 %ifnarch i586
 install -D -m 644 dolly.1.gz %{buildroot}%{_mandir}/man1/dolly.1.gz
@@ -76,8 +78,12 @@ install -D -m 644 dolly.1.gz %{buildroot}%{_mandir}/man1/dolly.1.gz
 
 %files
 %doc README.md dolly.example
+%defattr(-,root,root,-)
+%dir %{_prefix}/lib/firewalld
+%dir %{_fwdefdir}
 %attr(755,root,root) %{_sbindir}/dolly
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/%{name}.conf
+%attr(644,root,root) %config(noreplace) %{_fwdefdir}/dolly.xml
 %if 0%{?is_opensuse}
 %ifnarch i586
 %{_mandir}/man1/dolly.1.gz

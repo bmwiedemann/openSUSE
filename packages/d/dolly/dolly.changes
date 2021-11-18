@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 17 13:21:52 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- add dolly firewall config (JSC#SLE-22730)
+
+-------------------------------------------------------------------
+Tue Nov  9 11:03:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Minor grammar fix in description.
+
+-------------------------------------------------------------------
+Wed Oct 13 13:27:56 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- fix hostname resolution is not done in case of usage
+  of an external configuration file (bsc#1191613)
+- fix -Werror=format-security
+- update to version 0.63.6
+
+-------------------------------------------------------------------
+Thu Oct  7 08:36:31 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- update to version 0.63.5 (improve help usage information) (JSC#SLE-22050)
+- tarball is now bzip2 compressed
+
+-------------------------------------------------------------------
 Mon Jun  7 09:18:36 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to v0.63.4 which builds with gcc-11

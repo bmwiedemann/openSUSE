@@ -15,4 +15,12 @@
     <comment>- updated to v0.63.4 which builds with gcc-11</comment>
     <requestid>898117</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2dc5f610c922ec1234c4cc3d822b30d1</srcmd5>
+    <version>0.63.6</version>
+    <time>1637228040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931987</requestid>
+  </revision>
 </revisionlist>
