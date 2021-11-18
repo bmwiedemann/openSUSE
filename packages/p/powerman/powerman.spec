@@ -24,6 +24,7 @@
 %if 0%{?suse_version} >= 1500
 %define powerman_g %name
 %define powerman_u %name
+%define have_sysuser 1
 %else
 %define powerman_g daemon
 %define powerman_u root
@@ -46,6 +47,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libcurl)
+%{?have_sysuser:BuildRequires:  sysuser-tools}
 %if 0%{?_with_snmppower}
 BuildRequires:  net-snmp-devel
 %endif
@@ -101,18 +103,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{__mkdir} -p %{buildroot}%{_tmpfilesdir}
 cat > %{buildroot}%{_tmpfilesdir}/%{name}.conf <<EOF
-d /run/powerman 0755 %{powerman_u} %{powerman_g} -
+d %_rundir/powerman 0755 %{powerman_u} %{powerman_g} -
 EOF
 mv %{buildroot}%{_sysconfdir}/powerman/powerman.conf.example %{buildroot}%{_sysconfdir}/powerman/powerman.conf
 rm -r %{buildroot}%{_libdir}/stonith
+%if 0%{?have_sysuser}
+echo "u %{powerman_u} - \"Power Manager service\" %_rundir/powerman" > system-user-%{name}.conf
+%sysusers_generate_pre system-user-%{name}.conf powerman system-user-%{name}.conf
+install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+%endif
+
 %fdupes -s  %{buildroot}
 
-%pre
+%pre %{?have_sysuser:-f %{name}.pre}
 %service_add_pre %{name}.service
-%define powerman_descr "Power Manager service"
-getent group %powerman_g >/dev/null || groupadd -r %powerman_g
-getent passwd %powerman_u >/dev/null || useradd -r -g %powerman_g -M -s /bin/false -c %powerman_descr %powerman_u
-exit 0
 
 %post
 systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
@@ -138,6 +142,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
 %config %{_sysconfdir}/powerman/
 %attr(0644,root,root) %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/powerman.conf
+%{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %files devel
 %defattr(-,root,root)

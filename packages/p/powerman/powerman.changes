@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 15 14:20:41 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Utilize sysuser infrastructure to set user/group powerman. 
+
+-------------------------------------------------------------------
 Tue Oct 19 13:06:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
