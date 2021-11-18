@@ -28,12 +28,16 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
+# Needed for use of gtk apps outside of gnome
+BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= 1.5
 # Requires the xdg-desktop-portal service to be available
 Requires:       xdg-desktop-portal
+# Needed for use of gtk apps outside of gnome
+Requires:       gsettings-desktop-schemas
 # Users of GTK+ 3.0 and flatpak would enjoy this integration
 Supplements:    (gtk3 and (flatpak or snapd))
 %if 0%{?suse_version} >= 1330
@@ -55,11 +59,11 @@ or org.gnome.SessionManager D-Bus interfaces.
 # xdg-desktop-portal-gnome, to keep this package free of GNOME dependencies.
 %configure \
 	--disable-silent-rules \
-	--disable-appchooser \
+	--enable-appchooser \
 	--disable-background \
 	--disable-screencast \
 	--disable-screenshot \
-	--disable-settings \
+	--enable-settings \
 	--disable-wallpaper \
 	%{nil}
 %make_build

@@ -148,4 +148,12 @@
   + Updated translations. (forwarded request 922073 from iznogood)</comment>
     <requestid>922110</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5b997663b16093370ceef7f80137667b</srcmd5>
+    <version>1.10.0</version>
+    <time>1637227988</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a bug for non gnome users (forwarded request 931169 from iznogood)</comment>
+    <requestid>931780</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 12 17:34:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(gsettings-desktop-schemas) BuildRequires and
+  gsettings-desktop-schemas Requires and pass enable-appchooser and
+  enable-settings to meson. This is needed for flatpak gtk apps
+  running outside of gnome. See upstream issue/pull
+  https://github.com/flatpak/xdg-desktop-portal-gtk/pull/362 and
+  rh#2012315 for more info.
+
+-------------------------------------------------------------------
 Fri Sep 24 11:51:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pass --disable-silent-rules, --disable-appchooser,
