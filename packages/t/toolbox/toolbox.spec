@@ -24,7 +24,6 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/thkukuk/microos-toolbox
 Source:         microos-toolbox-%{version}.tar.xz
-Source1:        toolboxrc.sle-micro
 Requires:       podman
 BuildArch:      noarch
 
@@ -38,23 +37,25 @@ such a system. The root filesystem can be found at /media/root.
 
 %prep
 %setup -q -n microos-toolbox-%{version}
+%if 0%{?sle_version}
+%if !0%{?is_opensuse}
+sed -i -e 's,registry.opensuse.org,registry.suse.com,' toolbox
+sed -i -e 's,opensuse/toolbox,suse/sle-micro/5.1/toolbox,' toolbox
+%else
+sed -i -e 's,opensuse/toolbox,opensuse/leap-micro/5.1/toolbox,' toolbox
+%endif
+%endif
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 install -m 755 toolbox %{buildroot}%{_bindir}/toolbox
-%if !0%{?is_opensuse}
-mkdir -p %{buildroot}%{_sysconfdir}
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/toolboxrc
-%endif
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/toolbox
-%if !0%{?is_opensuse}
-%config %{_sysconfdir}/toolboxrc
-%endif
+%ghost %config %{_sysconfdir}/toolboxrc
 
 %changelog
