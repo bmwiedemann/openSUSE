@@ -16,17 +16,20 @@
 #
 
 
+%define upstream_name Fr
+%define upstream_version v8r41p5
+%define ver %(echo %{upstream_version} | tr -d 'v' | sed 's/[p-r]/./g')
 %define skip_python2 1
 # Disable py 3.6: no numpy
 %define skip_python36 1
 %global shlib lib%{name}8
 Name:           framel
-Version:        8.40.1
+Version:        %{ver}
 Release:        0
 Summary:        Library to manipulate Gravitational Wave Detector data in frame format
 License:        LGPL-2.1-or-later
 URL:            https://lappweb.in2p3.fr/virgo/FrameL/
-Source:         http://software.igwn.org/lscsoft/source/%{name}-%{version}.tar.xz
+Source:         https://git.ligo.org/virgo/virgoapp/Fr/-/archive/%{upstream_version}/Fr-%{upstream_version}.tar.gz
 # PATCH-FIX-UPSTREAM framel-fix-pkgconfig.patch badshah400@gmail.com -- Fix include and lib dir paths in pkgconfig file
 Patch0:         framel-fix-pkgconfig.patch
 BuildRequires:  %{python_module numpy-devel}
@@ -34,6 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+
 %python_subpackages
 
 %description
@@ -63,27 +67,27 @@ This package property the headers and sources needed to develop applications
 against the frame library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{upstream_name}-%{upstream_version}
 
 %build
 %{python_expand #for supported py3 flavours
-export PYTHON=$python
-mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build
-pushd ../${PYTHON}_build
-sed -i 's/find_package(Python3 /find_package(Python3 %{$python_version} EXACT /' Python/CMakeLists.txt
+export PYTHON=%{_bindir}/$python
+mkdir ../{$python}_build
+cp -pr ./ ../{$python}_build
+pushd ../{$python}_build
 %cmake \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
-  -DENABLE_PYTHON=yes
+  -DENABLE_PYTHON=yes \
+  -DPython3_EXECUTABLE=${PYTHON}
 %cmake_build
 popd
 }
 
 %install
 %{python_expand #for supported py3 flavours
-export PYTHON=$python
-pushd ../${PYTHON}_build
+export PYTHON=%{_bindir}/$python
+pushd ../{$python}_build
 %cmake_install
 popd
 }

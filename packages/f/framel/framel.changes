@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 12 16:39:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.41.5.
+- Upstream tarball and versioning scheme changed.
+- Fix python packaging issues: Replace sed-ing changes into the
+  CMakeLists.txt file with explicit Python3_EXECUTABLE option to
+  cmake command.
+
+-------------------------------------------------------------------
 Sun Apr 18 19:51:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the overeager python-rpm-macros error for main and devel
