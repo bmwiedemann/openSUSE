@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 17 05:48:12 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Update to version 8.1
+  * Graceful Restart for OSPFv2 and OSPFv3
+  * OSPFv3 NSSA and NSSA-TSA support
+  * OSPFv3 ASBR Summarisation Support
+  * BGP SRv6 and Prefix-SID Type 5 improvements
+  * BGP EVPN type-5 gateway IP overlay Index
+  * Lua hook support
+  * See: https://frrouting.org/release/8.1/
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:50 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

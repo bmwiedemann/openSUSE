@@ -32,7 +32,7 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        8.0.1
+Version:        8.1
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
