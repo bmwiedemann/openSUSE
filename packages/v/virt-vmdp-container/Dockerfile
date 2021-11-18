@@ -14,6 +14,8 @@ PREFIXEDLABEL org.opencontainers.image.title="VMDP container"
 PREFIXEDLABEL org.opencontainers.image.description="Container for Virtual Machine Driver Pack (VMDP) ISO"
 PREFIXEDLABEL org.opencontainers.image.created="%BUILDTIME%"
 PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
+PREFIXEDLABEL org.opencontainers.image.vendor="openSUSE Project"
+PREFIXEDLABEL org.opencontainers.image.url="https://www.opensuse.org/"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/vmdp:%%PKG_VERSION%%.%RELEASE%"
 

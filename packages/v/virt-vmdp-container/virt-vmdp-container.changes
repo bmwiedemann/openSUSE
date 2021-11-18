@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:27:46 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add 'vendor' and 'url' image labels
+
+-------------------------------------------------------------------
 Wed Nov 17 09:40:29 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add workaround for the problem with dependencies
