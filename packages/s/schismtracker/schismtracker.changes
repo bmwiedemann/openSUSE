@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:43:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20211116
+  * Reset filter when previewing different instrments
+  * Fix ST3 GUS/SB detection on big-endian platforms
+
+-------------------------------------------------------------------
+Mon Nov 15 22:45:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20211115
+  * Add warning for lost patterns when saving MOD files
+  * Fix S3M tracker identification bug
+  * Add support for reading OPL instruments from MPTM files
+  * Allow loading ModPlug volume column panning in S3M files
+  * Reset mixing volume to 48 for S3Ms made with GUS
+  * Strip zero-param commands that only have memory in IT from
+    MOD/XM files when loading
+  * Fix depth of instrument pitch-pan separation
+  * Fix incorrect position calculation after reaching end of
+    ping-pong loops
+  * Add rudimentary detection for SoundTracker MODs in file browser
+  * Apply pitch/pan separation as part of instrument panning
+
+-------------------------------------------------------------------
 Sat Jun 26 09:43:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210525
