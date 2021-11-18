@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 13 20:03:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.15:
+  * lib: bpf_legacy: fix bpffs mount when /sys/fs/bpf exists
+  * man: devlink-port: fix the devlink port add synopsis
+  * man: devlink-port: fix pfnum for devlink port add
+  * iptuntap: fix multi-queue flag display
+  * mptcp: unbreak JSON endpoint list
+  * ipneigh: add support to print brief output of neigh cache in
+    tabular format
+  * ip/bond: add LACP active support
+  * ip/tunnel: always print all known attributes
+  * Add, show, link, remove IOAM namespaces and schemas
+  * New IOAM6 encap type for routes
+  * tc/skbmod: Introduce SKBMOD_F_ECN option
+  * tc/f_flower: fix port range parsing
+
+-------------------------------------------------------------------
 Wed Sep  1 11:49:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.14
