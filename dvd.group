@@ -20,8 +20,6 @@
     <package name="MozillaFirefox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="MozillaThunderbird" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="MozillaThunderbird-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="NetworkManager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="NetworkManager-applet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="NetworkManager-applet-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2395,7 +2393,7 @@
     <package name="libostree" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libostree-1-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libotf1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libotr5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libotr5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libp11-3" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="libp11-kit0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpackagekit-glib2-18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5144,6 +5142,7 @@
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.14.14-3-default needed by openafs-kmp-default-1.8.8_k5.14.14_3-2.8.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5427,6 +5426,7 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.14.14-3-default needed by openafs-kmp-default-1.8.8_k5.14.14_3-2.8.x86_64-->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
