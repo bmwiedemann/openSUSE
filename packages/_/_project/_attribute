@@ -84,7 +84,7 @@
   poo#101752: '20211113'
   poo#101984: '20211107'
   poo#101990: '20211117'
-  poo#102278: '20211117'
+  poo#102278: '20211118'
   poo#102557: '20211117'
   poo#57731: '20210601'
   poo#65633: '20210602'
@@ -388,6 +388,9 @@ products:
     - x86_64
   - virt-operator-container:
     - x86_64
+  - virt-vmdp-container:
+    - i586
+    - x86_64
   ftp:
   - 000product:openSUSE-ftp-ftp-i586_x86_64
   - 000product:openSUSE-Addon-NonOss-ftp-ftp-i586_x86_64
@@ -512,7 +515,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20211117'
 publishing: '20211117'
-testing: '20211117'
+testing: '20211118'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
