@@ -320,6 +320,9 @@ dvd:
   - python38-QtPy: [locked]
   - python38-numba: [locked]
 
+  # DVD over size by > 40MB (kernel change to zstd); need space - dleuenberger, 20211119
+  - MozillaThunderbird: [locked]
+
   # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
   - noto-sans-sc-bold-fonts: [locked]
   - noto-sans-sc-fonts: [locked]
@@ -341,7 +344,7 @@ dvd:
   - icewm-lite
   - lifecycle-data-openSUSE
   - mokutil: [x86_64,aarch64]
-  # - openafs-client
+  - openafs-client
   - pcsc-acr38
   - pcsc-asedriveiiie-usb
   - pcsc-asekey
