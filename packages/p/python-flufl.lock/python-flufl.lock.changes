@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:13:16 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 6.0
+  * Added a default_timeout argument to the Lock constructor,
+    which can be used in the context manager syntax as well.
+  * When a Lock uses a lock file that already exists and does
+    not appear to be a lock file (i.e. because its contents are
+    ill-formatted), do a better job of not clobbering that file.
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * Added a py.typed file to satisfy type checkers.
+
+-------------------------------------------------------------------
+Tue May 25 16:11:12 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 5.0.5
+  * Blued code.
+
+-------------------------------------------------------------------
 Fri Feb 12 07:54:17 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - The package Requires python-typing_extensions

@@ -15,4 +15,23 @@
     <comment></comment>
     <requestid>871409</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d16e72f11c56628c611e12cfb75d8f20</srcmd5>
+    <version>6.0</version>
+    <time>1637372365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0
+  * Added a default_timeout argument to the Lock constructor,
+    which can be used in the context manager syntax as well.
+  * When a Lock uses a lock file that already exists and does
+    not appear to be a lock file (i.e. because its contents are
+    ill-formatted), do a better job of not clobbering that file.
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * Added a py.typed file to satisfy type checkers.
+- Update to version 5.0.5
+  * Blued code.
+</comment>
+    <requestid>932548</requestid>
+  </revision>
 </revisionlist>

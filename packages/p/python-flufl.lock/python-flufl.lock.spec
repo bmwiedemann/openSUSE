@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flufl.lock
-Version:        5.0.4
+Version:        6.0
 Release:        0
 Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
@@ -35,8 +35,10 @@ Requires:       python-psutil
 Requires:       python-typing_extensions
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sybil}
 # /SECTION
 BuildArch:      noarch
