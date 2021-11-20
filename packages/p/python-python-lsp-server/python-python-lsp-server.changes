@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:57:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix pyflakes python-lsp-server-pr102-unpin-flake8.patch
+
+-------------------------------------------------------------------
 Sun Nov 14 18:43:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add python-lsp-server-pr102-unpin-flake8.patch with excessive

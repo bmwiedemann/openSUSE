@@ -48,4 +48,12 @@
   BR pinning of other optional dependencies (forwarded request 931425 from bnavigator)</comment>
     <requestid>931426</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>17919896815068f6b545e05162235f60</srcmd5>
+    <version>1.2.4</version>
+    <time>1637444884</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix pyflakes python-lsp-server-pr102-unpin-flake8.patch</comment>
+    <requestid>932680</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@ Index: python-lsp-server-1.2.4/setup.py
 +            'pycodestyle>=2.8.0,<2.9.0',
              'pydocstyle>=2.0.0',
 -            'pyflakes>=2.3.0,<2.4.0',
-+            'pyflakes>=2.5.0,<2.5.0',
++            'pyflakes>=2.4.0,<2.5.0',
              'pylint>=2.5.0,<2.10.0',
              'rope>=0.10.5',
              'yapf',
