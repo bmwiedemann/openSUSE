@@ -31,7 +31,6 @@ BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rebulk >= 3.1.0}
 BuildRequires:  %{python_module setuptools}
@@ -65,6 +64,8 @@ done
 for i in {'api','data/__init__','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
   sed -i -e "1d" "guessit/$i.py"
 done
+# https://pypi.org/project/pytest-runner/
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build

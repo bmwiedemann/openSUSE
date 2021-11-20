@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 19 11:14:16 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner, it is not needed
+
+-------------------------------------------------------------------
 Mon Nov  8 17:20:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.4.2
