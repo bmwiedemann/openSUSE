@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 15 09:35:08 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 61c79e68381801428c0bc00a56b9e2e9cfa68373 (merge of 249.6)
+
+  bcdeee7b4c virt: Support detection for ARM64 Hyper-V guests (bsc#1186071)
+  [...]
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/8521f8d22fd44400289fcea03493ebd7f8b1487d...61c79e68381801428c0bc00a56b9e2e9cfa68373
+
+- Drop 0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch
+
+  It's part of v249.6.
+
+-------------------------------------------------------------------
 Tue Nov  2 10:26:58 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Add 0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch

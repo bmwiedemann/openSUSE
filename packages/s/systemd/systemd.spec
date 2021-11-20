@@ -32,7 +32,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.47.g8521f8d22f
+%define suse_version +suse.50.g61c79e6838
 %define _testsuitedir /usr/lib/systemd/tests
 
 %if 0%{?bootstrap}
@@ -69,7 +69,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.5
+Version:        249.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -209,7 +209,6 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
-Patch100:       0001-Revert-core-Check-unit-start-rate-limiting-earlier.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -898,6 +897,8 @@ rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if %{with testsuite}
 cp -a test %{buildroot}%{_testsuitedir}/
+# kbd-model-map became a dangling symlink, drop it.
+rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
 find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %endif
 
