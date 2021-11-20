@@ -353,4 +353,12 @@
     <comment>fix</comment>
     <requestid>931043</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>210aa6eb540f40206db0acf7b5bd14c3</srcmd5>
+    <version>10.5.3+12</version>
+    <time>1637444882</time>
+    <user>dimstar_suse</user>
+    <comment>gnome-settings-daemon</comment>
+    <requestid>932655</requestid>
+  </revision>
 </revisionlist>

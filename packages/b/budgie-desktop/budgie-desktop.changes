@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 20 14:57:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Specify gnome-settings-daemon required version
+
+-------------------------------------------------------------------
 Fri Nov 12 11:19:19 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Require xdg-user-dirs-gtk to fix Desktop issues
