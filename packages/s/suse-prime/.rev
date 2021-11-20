@@ -586,4 +586,13 @@ Latest changes:
     (issue#72)</comment>
     <requestid>927295</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0293cf29c7cb97080a803b61c1340c6c</srcmd5>
+    <version>0.8.5</version>
+    <time>1637372372</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.5
+  * Fixed AMD's &quot;offload&quot; mode (issue#73)</comment>
+    <requestid>932591</requestid>
+  </revision>
 </revisionlist>

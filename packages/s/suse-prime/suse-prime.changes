@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 21:12:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.5
+  * Fixed AMD's "offload" mode (issue#73) 
+
+-------------------------------------------------------------------
 Mon Oct 25 10:41:40 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.4
