@@ -1,7 +1,5 @@
-Index: rabbitmq-server-3.9.8/deps/rabbit/docs/rabbitmq-server.service.example
-===================================================================
---- rabbitmq-server-3.9.8.orig/deps/rabbit/docs/rabbitmq-server.service.example
-+++ rabbitmq-server-3.9.8/deps/rabbit/docs/rabbitmq-server.service.example
+--- a/deps/rabbit/docs/rabbitmq-server.service.example
++++ b/deps/rabbit/docs/rabbitmq-server.service.example
 @@ -5,6 +5,19 @@ After=network.target epmd@0.0.0.0.socket
  Wants=network.target epmd@0.0.0.0.socket
  

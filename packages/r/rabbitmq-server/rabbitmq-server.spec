@@ -33,15 +33,13 @@
 
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_exec_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MANDIR="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
-%define _rabbit_server_ocf scripts/rabbitmq-server.ocf
 %define _plugins_state_dir %{_localstatedir}/lib/rabbitmq/plugins
-%define _rabbit_server_ha_ocf scripts/rabbitmq-server-ha.ocf
 %define _rabbitmqctl_autocomplete scripts/bash_autocomplete.sh
 %define _rabbitmq_user rabbitmq
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.9.8
+Version:        3.9.9
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -54,7 +52,7 @@ Source4:        rabbitmq-env.conf
 Source6:        rabbitmq-server.service
 Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
-Patch0:	harden_rabbitmq-server.service.patch
+Patch0:         harden_rabbitmq-server.service.patch
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 23.2
@@ -162,9 +160,6 @@ for script in rabbitmq-server rabbitmq-plugins rabbitmq-diagnostics rabbitmq-que
   cp -a %{buildroot}%{_sbindir}/rabbitmqctl %{buildroot}%{_sbindir}/$script
 done
 
-install -p -D -m 0755 %{_rabbit_server_ocf} %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server
-install -p -D -m 0755 %{_rabbit_server_ha_ocf} %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server-ha
-
 # install config files
 install -p -D -m 0644 deps/rabbit/docs/rabbitmq.conf.example %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq.conf
 install -p -D -m 0644 deps/rabbit/docs/advanced.config.example %{buildroot}/%{_sysconfdir}/rabbitmq/advanced.config.example
@@ -244,10 +239,6 @@ done
 %{_sbindir}/rabbitmq-diagnostics
 %{_sbindir}/rabbitmq-streams
 
-#
-%dir /usr/lib/ocf/
-%dir /usr/lib/ocf/resource.d/
-/usr/lib/ocf/resource.d/rabbitmq/
 #
 %license LICENSE*
 %doc README* CODE_OF_CONDUCT.md CONTRIBUTING.md deps/rabbit/docs/set_rabbitmq_policy.sh.example

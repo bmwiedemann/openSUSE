@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 19 02:39:00 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.9:
+  * Core Server Bug Fixes
+    - Fixed an issue where node monitor could produce a false network
+      partition when one of the cluster members was restarted.
+    - Message store resiliency improvements.
+    - Reduced log noise in certain scenarios where a new queue leader
+      is elected.
+    - Queue leader rebalancing now logs less.
+  * Prometheus Plugin Bug Fixes
+    - TLS-enabled Prometheus endpoint listener port was not correctly
+      stored internally.
+  * Management Plugin Bug Fixes
+    - Persistent message count is now displayed correctly on
+      individual queue pages.
+    - Restore compatibility with IE 11.
+  * Consistent Hashing Exchange Plugin Bug Fixes
+    - Corrected deletion of duplicate bindings between an exchange
+      and a queue.
+  * Enhancements
+    - Core Server: cluster_formation.target_cluster_size_hint is a
+      new configuration setting that can be used to specify expected
+      initial cluster size.
+    - Prometheus Plugin: Metric rendering efficiency improvements
+      (mostly latency).
+- Don't install the (now gone) OCF script.
+- Refreshed patch:
+  * harden_rabbitmq-server.service.patch
+
+-------------------------------------------------------------------
 Thu Oct 21 08:16:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
