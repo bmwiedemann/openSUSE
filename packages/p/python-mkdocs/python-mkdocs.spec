@@ -16,19 +16,27 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mkdocs
-Version:        1.1.2
+Version:        1.2.3
 Release:        0
 Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://www.mkdocs.org
-Source:         https://github.com/mkdocs/mkdocs/archive/%{version}.tar.gz
+Source:         https://github.com/mkdocs/mkdocs/archive/%{version}.tar.gz#/mkdocs-%{version}.tar.gz
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Markdown}
+BuildRequires:  %{python_module MarkupSafe}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module ghp-import}
+BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module mergedeep}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pyyaml_env_tag}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
+BuildRequires:  %{python_module watchdog}
 BuildRequires:  fdupes
 BuildRequires:  fontawesome-fonts
 BuildRequires:  fontawesome-fonts-web
@@ -37,13 +45,18 @@ Requires:       fontawesome-fonts
 Requires:       fontawesome-fonts-web
 Requires:       python-Jinja2
 Requires:       python-Markdown
+Requires:       python-MarkupSafe
 Requires:       python-PyYAML
 Requires:       python-click
 Requires:       python-ghp-import
-Requires:       python-livereload
-Requires:       python-tornado
+Requires:       python-importlib_metadata
+Requires:       python-mergedeep
+Requires:       python-packaging
+Requires:       python-pyyaml_env_tag
+Requires:       python-watchdog
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Suggests:       python-babel
 BuildArch:      noarch
 %python_subpackages
 
@@ -82,7 +95,7 @@ ln -sf %{_datadir}/fonts/truetype/fontawesome-webfont.ttf %{buildroot}%{python_s
 find "%{buildroot}" -type f "(" -name "*.eot" -o -name "*.ttf" -o \
 	-name "*.woff" ")" -exec chmod a-x {} +
 
-%python_expand %fdupes -s %{buildroot}/%{$python_sitelib}
+%python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 
 %check
 # tries to download stuff at runtime
@@ -98,7 +111,6 @@ find "%{buildroot}" -type f "(" -name "*.eot" -o -name "*.ttf" -o \
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/mkdocs
-%{python_sitelib}/mkdocs/
-%{python_sitelib}/mkdocs-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/*
 
 %changelog
