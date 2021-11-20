@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 16 15:35:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * sendmail-client.service
+  * sendmail.service
+
+-------------------------------------------------------------------
 Tue Jul  6 14:47:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Require libopenssl-1_1-devel on older SLE-11 
