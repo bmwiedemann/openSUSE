@@ -19,8 +19,8 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
-%define         pyver 0.12.25
-%define         jupver 0.5.26
+%define         pyver 0.12.31
+%define         jupver 0.5.32
 Name:           python-bqplot
 Version:        %{pyver}
 Release:        0
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-jupyterlab-filesystem >= 20211114
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-bqplot-notebook = %{jupver}
@@ -100,8 +101,10 @@ rm bqplot/install.py
 
 %install
 %python_install
-cp -r etc/ %{buildroot}%{_sysconfdir}
+mkdir -p %{buildroot}%{_jupyter_confdir}
+cp -r etc/jupyter/* %{buildroot}%{_jupyter_confdir}/
 cp -r share/ %{buildroot}%{_datadir}
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %fdupes %{buildroot}%{_jupyter_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -118,12 +121,11 @@ cp -r share/ %{buildroot}%{_datadir}
 
 %files -n jupyter-bqplot-notebook
 %license LICENSE
-%config %{_jupyter_nb_notebook_confdir}/bqplot.json
+%{!?_jupyter_distconfig:%config} %{_jupyter_nb_notebook_confdir}/bqplot.json
 %{_jupyter_nbextension_dir}/bqplot/
 
 %files -n jupyter-bqplot-jupyterlab
 %license LICENSE
-%dir %{_jupyter_prefix}/labextensions
-%{_jupyter_prefix}/labextensions/bqplot/
+%{_jupyter_labextensions_dir3}/bqplot/
 
 %changelog
