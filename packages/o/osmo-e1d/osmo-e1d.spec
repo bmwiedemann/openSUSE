@@ -2,7 +2,7 @@
 # spec file for package osmo-e1d
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-e1d
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Osmocom E1 Daemon
 License:        GPL-2.0-or-later
@@ -29,10 +29,9 @@ BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkg-config >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
-BuildRequires:  pkgconfig(libosmousb) >= 1.5.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.21
+BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
+BuildRequires:  pkgconfig(libosmousb) >= 1.6.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 
 %description
@@ -100,6 +99,7 @@ rm -Rf "%buildroot/%_sysconfdir/osmocom"
 
 %files
 %license COPYING COPYING.gpl2 COPYING.lgpl3
+%doc README.md
 %_bindir/osmo-e1d
 %_bindir/osmo-e1d-pipe
 %dir %_docdir/%name
