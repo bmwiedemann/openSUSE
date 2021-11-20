@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov 17 15:16:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add raspberrypi-firmware-config-camera flavor - boo#1192047
+
+-------------------------------------------------------------------
+Wed Nov 17 15:08:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 12bc6e3677 (2021-11-16):
+  * firmware: dtoverlay: Rebase aliases in overlays like labels
+  * firmware: isp: Set core/vpu min clock to 320Mhz during ISP operation
+  * firmware: arm_loader: Enable watchdog early if wanted
+    See: #1651
+  * firmware: hello_fft: Update outdated link to V3D spec
+  * firmware: hello_fft: Remove unused function declaration
+    See: #1645
+    See: raspberrypi/userland#710
+  * firmware: platform: Declare CM4's SIO_1V8_SEL and SD_PWR_ON
+    See: raspberrypi/Raspberry-Pi-OS-64bit#188
+  * firmware: platform: Fix incorrect turbo voltage scaling on Pi0
+    See: raspberrypi/documentation#2255
+  * firmware: ISP: Fix magenta colour in right hand image of stereo pair
+    See: https://forums.raspberrypi.com/viewtopic.php?t=321089
+  * firmware: platform: Remove licence on VP6, VP8, Theora, and FLAC
+    See: raspberrypi/linux#4661
+  * firmware: arm_loader: Allow VEC clock to be controlled by arm
+  * firmware: userland: Reduce debug_sym error messages
+    See: https://forums.raspberrypi.com/viewtopic.php?f=98&t=322238
+  * firmware: arm_dt: Increase maximum line length to 98
+    See: raspberrypi/linux#4638
+  * firmware: video_decode: i/p port enable/disable without o/p active could stall
+    See: RPi-Distro/vlc#48
+    See: Hexxeh/rpi-firmware#272
+    See: #1637
+  * firmware: clock-2711: Limit PLLB VCO frequency to the high range
+  * firmware: arm_dt: Export the boot-mode, partition and usb state via device-tree
+    See: #1621
+
+-------------------------------------------------------------------
 Tue Oct  5 13:09:15 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to b5257da58c (2021-09-30):

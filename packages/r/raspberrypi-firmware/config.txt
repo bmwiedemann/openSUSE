@@ -1,5 +1,5 @@
 # Get more options/information on http://elinux.org/RPiconfig
-# or on https://www.raspberrypi.org/documentation/configuration/config-txt.md
+# or on https://www.raspberrypi.com/documentation/computers/configuration.html
 #
 # !!!!! This file will get overwritten by updates. Please use !!!!!
 # !!!!! extraconfig.txt if you want to set additional         !!!!!
@@ -8,10 +8,17 @@
 # Our kernels are located on a Linux partition. Chainload U-Boot to load them.
 kernel=u-boot.bin
 
-# Use 32 MB for GPU for all RPis (Min 16 - Max 192 MB)
+# Default gpu_mem value is 76 for 1GB (or greater) and 64 for less. Min 16 - Max 512 MB
+# See: https://www.raspberrypi.com/documentation/computers/config_txt.html#gpu_mem
 # We don't need that much memory reserved for it, because we drive most hardware
 # from Linux, not the VPU OS
 gpu_mem=32
+
+# start_x is used to enable the camera module (and must be set here - boo#1192047) 
+# and requires to install raspberrypi-firmware-extra or raspberrypi-firmware-extra-pi4
+# start_x=1
+# gpu_mem needs to be increased when start_x is used, 128 is the minimum there
+# gpu_mem=128
 
 # Turbo mode: 0 = enable dynamic freq/voltage - 1 = always max
 force_turbo=0

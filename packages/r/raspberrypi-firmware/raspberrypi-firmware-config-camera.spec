@@ -1,5 +1,5 @@
 #
-# spec file for package raspberrypi-firmware-config
+# spec file for package raspberrypi-firmware-config-camera
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-Name:           raspberrypi-firmware-config
+Name:           raspberrypi-firmware-config-camera
 Version:        2021.11.16
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
