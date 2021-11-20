@@ -17,14 +17,13 @@
 
 
 Name:           gnome-screenshot
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Utility to take pictures of your screen
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-#Source0:       https://download.gnome.org/sources/gnome-screenshot/3.33/%%{name}-%%{version}.tar.xz
-Source:         https://download.gnome.org/sources/gnome-screenshot/40/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-screenshot/41/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gnome-screenshot-onlyshowin.patch dimstar@opensuse.org -- OnlyShowIn=GNOME: fix brp build check, allowing to use the icon from the gnome theme.
 Patch0:         gnome-screenshot-onlyshowin.patch
 

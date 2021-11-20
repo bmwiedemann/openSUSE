@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 14 12:49:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Drop support for non-unique mode in headless instance.
+  + metainfo: Align app name with .desktop name
+  + Updated translations.
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:40:25 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
