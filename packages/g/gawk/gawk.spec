@@ -27,6 +27,7 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
+Patch0:         gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch
 Provides:       awk
 
 %description

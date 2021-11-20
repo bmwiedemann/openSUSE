@@ -1,0 +1,55 @@
+From 0ed67a4f4f043acc08e3982a2648e3082e1f245a Mon Sep 17 00:00:00 2001
+From: "Arnold D. Robbins" <arnold@skeeve.com>
+Date: Sun, 14 Nov 2021 09:33:44 +0200
+Subject: [PATCH] Disable racy test in test/iolint.awk.
+
+---
+ test/iolint.awk | 13 ++++++++-----
+ test/iolint.ok  |  6 +-----
+ 3 files changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/test/iolint.awk b/test/iolint.awk
+index 257678ed..58fd746f 100644
+--- a/test/iolint.awk
++++ b/test/iolint.awk
+@@ -55,12 +55,15 @@ BEGIN {
+ 	print close("cat")
+ 	fflush()
+ 
++	# 11/2021: Disable this test since it's a race condition
++	# and fails intermittently on some systems.
++	#
+ 	# `%.*s' used for input pipe and output pipe
+-	"echo hello" | getline junk
+-	print "hello" | "echo hello"
+-	print close("echo hello")
+-	print close("echo hello")
+-	fflush()
++	# "echo hello" | getline junk
++	# print "hello" | "echo hello"
++	# print close("echo hello")
++	# print close("echo hello")
++	# fflush()
+ 
+ 	# `%.*s' used for output file and output pipe"
+ 	BINMODE = 2
+diff --git a/test/iolint.ok b/test/iolint.ok
+index fbf514c2..620a70f3 100644
+--- a/test/iolint.ok
++++ b/test/iolint.ok
+@@ -23,11 +23,7 @@ gawk: iolint.awk:53: warning: `cat' used for output file and output pipe
+ 0
+ hello
+ 0
+-gawk: iolint.awk:60: warning: `echo hello' used for input pipe and output pipe
+-hello
+-0
+-0
+-gawk: iolint.awk:68: warning: `cksum' used for output file and output pipe
++gawk: iolint.awk:71: warning: `cksum' used for output file and output pipe
+ 3015617425 6
+ 0
+ 0
+-- 
+2.33.1
+

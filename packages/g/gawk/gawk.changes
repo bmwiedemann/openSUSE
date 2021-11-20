@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 14 17:10:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable racy iolint tests boo#1192521
+  add gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch
+
+-------------------------------------------------------------------
 Sun Oct 31 11:36:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU awk 5.1.1
