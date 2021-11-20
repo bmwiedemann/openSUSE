@@ -13,6 +13,15 @@ Mon Oct 11 13:26:52 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
   are still useful.
 
 -------------------------------------------------------------------
+Tue Sep 21 12:15:06 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_haveged.service.patch
+  Modified:
+  * haveged-switch-root.service
+  * haveged.service
+
+-------------------------------------------------------------------
 Mon Jan  4 08:28:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.14:

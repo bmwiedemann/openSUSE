@@ -564,4 +564,12 @@ Updated sample spec file and other documentation changes. (forwarded request 174
 --------------------------------------------------------------------</comment>
     <requestid>928677</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>7612cfdbdc73a39a71769a17c6e635e1</srcmd5>
+    <version>1.9.14</version>
+    <time>1637372302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930759</requestid>
+  </revision>
 </revisionlist>

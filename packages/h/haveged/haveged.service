@@ -12,6 +12,19 @@ Before=sysinit.target shutdown.target systemd-journald.service
 ExecStart=/usr/sbin/haveged -w 1024 -v 0 -F
 CapabilityBoundingSet=CAP_SYS_ADMIN CAP_SYS_CHROOT
 PrivateNetwork=yes
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Restart=always
 SuccessExitStatus=137 143
 
