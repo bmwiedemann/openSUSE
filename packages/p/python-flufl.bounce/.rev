@@ -15,4 +15,25 @@
     <comment></comment>
     <requestid>766874</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5edfee2a244211dbb604bbc9fe9d8b2</srcmd5>
+    <version>4.0</version>
+    <time>1637372347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0
+  - Added another string to the stop looking strings in the yahoo
+    detector.
+  - Detectors are now run in a defined order and stop on the
+    first detection.
+  - Fixed microsoft.py which has been broken forever.
+  - Added recognition for yet another non-complaint Yahoo DSN.
+  - Added recognition for a non-compliant DSN from an unknown
+    MTA.
+  - Added recognition for a non-compliant opensmtpd DSN with
+    Action: error.
+  - Fixed simplmatch.py to not return results that don't resemble
+    email addresses. (LP: #1859011)
+</comment>
+    <requestid>932383</requestid>
+  </revision>
 </revisionlist>

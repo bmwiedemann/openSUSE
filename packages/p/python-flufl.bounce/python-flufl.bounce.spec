@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.bounce
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define pythons python3
 Name:           python-flufl.bounce
-Version:        3.0
+Version:        4.0
 Release:        0
 Summary:        Email bounce detectors
 License:        Apache-2.0
@@ -28,16 +28,17 @@ URL:            https://fluflbounce.readthedocs.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/f/flufl.bounce/flufl.bounce-%{version}.tar.gz
 Source1:        https://gitlab.com/warsaw/flufl.bounce/raw/master/LICENSE
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
 Requires:       python-zope.interface
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module zope.interface}
 # /SECTION
+BuildRequires:  fdupes
+BuildArch:      noarch
 %python_subpackages
 
 %description
