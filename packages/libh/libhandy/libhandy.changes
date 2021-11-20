@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 12 12:29:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.0:
+  + Introduce HdyStyleManager for managing color schemes
+    (light/dark) and high contrast mode.
+    - Support the cross-platform color scheme preference in the
+      settings portal.
+  + HdyPreferencesPage: Remove adaptive margins to fix default
+    window sizes.
+  + HdyTabBar: Handle middle click on button release rather than
+    press.
+  + Various memory leak fixes.
+  + Updated translations.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Thu Nov  4 12:46:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop passing the no longer user nor recognized option
