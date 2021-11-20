@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 09:08:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add phonon4qt5-rpmlintrc to work around future build checks (boo#1191779)
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.
