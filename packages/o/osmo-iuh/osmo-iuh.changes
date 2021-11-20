@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 19 10:09:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.1.0
+  * Provide libosmo-hnbap and libosmo-rua as a public shared
+    library
+
+-------------------------------------------------------------------
 Wed Oct 13 13:53:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

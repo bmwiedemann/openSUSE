@@ -17,8 +17,7 @@
 
 
 Name:           osmo-iuh
-%define lname	libosmo-ranap3
-Version:        0.7.0
+Version:        1.1.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -26,7 +25,7 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmohnbgw/wiki
 
 Source:         https://github.com/osmocom/osmo-iuh/archive/%version.tar.gz
-Patch0:	harden_osmo-hnbgw.service.patch
+Patch0:         harden_osmo-hnbgw.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  lksctp-tools-devel
@@ -38,42 +37,79 @@ BuildRequires:  pkgconfig(libosmo-netif) >= 1.1.0
 BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.4.0
 BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
 BuildRequires:  pkgconfig(libosmoctrl) >= 1.5.0
-BuildRequires:  pkgconfig(libosmogb)
+BuildRequires:  pkgconfig(libosmogb) >= 1.5.0
 BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
 BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 
-%package -n %lname
-Summary:        Shared Library part of libosmo-ranap
+%package -n libosmo-hnbap0
+Summary:        Home Node B Application Part library
 Group:          System/Libraries
 
-%description -n %lname
-Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
+%description -n libosmo-hnbap0
+Osmocom code for the Home Node B Application Part. HNBAP is a control protocol
+found in Home Node B networks on the Iu-h interface.
+
+%package -n libosmo-hnbap-devel
+Summary:        Development files for Osmocom HNBAP library
+Group:          Development/Libraries/C and C++
+Requires:       libosmo-hnbap0 = %version
+
+%description -n libosmo-hnbap-devel
+This subpackage contains libraries and header files for developing
+applications that want to make use of libosmo-hnbap.
+
+%package -n libosmo-ranap5
+Summary:        Radio Access Network Application Part library
+Group:          System/Libraries
+
+%description -n libosmo-ranap5
+Osmocom code for the Radio Access Network Application Part of the Iu-h
+interface.
 
 %package -n libosmo-ranap-devel
-Summary:        Development files for Osmocom RANAP library
+Summary:        Header files for the Osmocom RANAP library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       libosmo-ranap5 = %version
 
 %description -n libosmo-ranap-devel
-Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
+Osmocom code for the Radio Access Network Application Part of the Iu-h
+interface.
 
 This subpackage contains libraries and header files for developing
-applications that want to make use of libosmoranap.
+applications that want to make use of libosmo-ranap.
 
-%package -n libosmo-sabp0
+%package -n libosmo-rua0
+Summary:        RANAP User Adaption signalling library
+Group:          System/Libraries
+
+%description -n libosmo-rua0
+Osmocom code for the RANAP User Adaption signalling.
+
+%package -n libosmo-rua-devel
+Summary:        Header files for the Osmocom RUA library
+Group:          Development/Libraries/C and C++
+Requires:       libosmo-rua0 = %version
+
+%description -n libosmo-rua-devel
+Osmocom code for the RANAP User Adaption signalling.
+
+This subpackage contains libraries and header files for developing
+applications that want to make use of libosmo-rua.
+
+%package -n libosmo-sabp1
 Summary:        Osmocom Service Area Broadcast Protocol library
 Group:          System/Libraries
 
-%description -n libosmo-sabp0
+%description -n libosmo-sabp1
 Osmocom code for the Service Area Broadcast Protocol interface.
 
 %package -n libosmo-sabp-devel
-Summary:        Development files for Osmocom SABP library
+Summary:        Header files for the Osmocom SABP library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-sabp0 = %version
+Requires:       libosmo-sabp1 = %version
 
 %description -n libosmo-sabp-devel
 Osmocom code for the Service Area Broadcast Protocol interface.
@@ -91,7 +127,7 @@ autoreconf -fi
     --disable-static \
     --docdir="%_docdir/%name" \
     --with-systemdsystemunitdir="%_unitdir"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -100,17 +136,21 @@ install -d %buildroot/%_sbindir
 ln -s %_sbindir/service %buildroot/%_sbindir/rcosmo-hnbgw
 
 %check
-if ! make %{?_smp_mflags} check; then
+if ! %make_build check; then
 	find . -type f -name testsuite.log -exec cat "{}" "+"
 %ifnarch ppc ppc64
 	exit 1
 %endif
 fi
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
-%post   -n libosmo-sabp0 -p /sbin/ldconfig
-%postun -n libosmo-sabp0 -p /sbin/ldconfig
+%post   -n libosmo-hnbap0 -p /sbin/ldconfig
+%postun -n libosmo-hnbap0 -p /sbin/ldconfig
+%post   -n libosmo-ranap5 -p /sbin/ldconfig
+%postun -n libosmo-ranap5 -p /sbin/ldconfig
+%post   -n libosmo-rua0 -p /sbin/ldconfig
+%postun -n libosmo-rua0 -p /sbin/ldconfig
+%post   -n libosmo-sabp1 -p /sbin/ldconfig
+%postun -n libosmo-sabp1 -p /sbin/ldconfig
 
 %pre
 %service_add_pre    osmo-hnbgw.service
@@ -128,28 +168,47 @@ fi
 %license COPYING
 %doc README.md
 %dir %_sysconfdir/osmocom
-%config %_sysconfdir/osmocom/osmo-hnbgw.cfg
+%config(noreplace) %_sysconfdir/osmocom/osmo-hnbgw.cfg
 %dir %_docdir/%name/examples
 %_docdir/%name/examples/osmo-hnbgw.cfg
 %_bindir/osmo-hnbgw
 %_unitdir/osmo-hnbgw.service
 %_sbindir/rcosmo-hnbgw
 
-%files -n %lname
-%_libdir/libosmo-ranap.so.3*
+%files -n libosmo-hnbap0
+%_libdir/libosmo-hnbap.so.0*
+
+%files -n libosmo-hnbap-devel
+%dir %_includedir/osmocom/
+%dir %_includedir/osmocom/hnbap/
+%_includedir/osmocom/hnbap/*
+%_libdir/libosmo-hnbap.so
+%_libdir/pkgconfig/libosmo-hnbap.pc
+
+%files -n libosmo-ranap5
+%_libdir/libosmo-ranap.so.5*
 
 %files -n libosmo-ranap-devel
-%dir %{_includedir}/osmocom
-%_includedir/osmocom/ranap
+%dir %_includedir/osmocom/
+%_includedir/osmocom/ranap/
 %_libdir/libosmo-ranap.so
 %_libdir/pkgconfig/libosmo-ranap.pc
 
-%files -n libosmo-sabp0
-%_libdir/libosmo-sabp.so.0*
+%files -n libosmo-rua0
+%_libdir/libosmo-rua.so.0*
+
+%files -n libosmo-rua-devel
+%dir %_includedir/osmocom/
+%_includedir/osmocom/rua/
+%_libdir/libosmo-rua.so
+%_libdir/pkgconfig/libosmo-rua.pc
+
+%files -n libosmo-sabp1
+%_libdir/libosmo-sabp.so.1*
 
 %files -n libosmo-sabp-devel
-%dir %{_includedir}/osmocom
-%_includedir/osmocom/sabp
+%dir %_includedir/osmocom/
+%_includedir/osmocom/sabp/
 %_libdir/libosmo-sabp.so
 %_libdir/pkgconfig/libosmo-sabp.pc
 

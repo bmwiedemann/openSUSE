@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>925283</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a45084d1d7c54c60e41218171a050dad</srcmd5>
+    <version>1.1.0</version>
+    <time>1637372369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.1.0</comment>
+    <requestid>932577</requestid>
+  </revision>
 </revisionlist>
