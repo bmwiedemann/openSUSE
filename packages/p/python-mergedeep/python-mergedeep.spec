@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mergedeep
 Version:        1.3.4
@@ -24,9 +25,9 @@ Summary:        A deep merge function for Python
 License:        MIT
 URL:            https://github.com/clarketm/mergedeep
 Source:         https://files.pythonhosted.org/packages/source/m/mergedeep/mergedeep-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
