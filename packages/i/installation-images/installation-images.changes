@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Nov 19 14:24:14 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#543
+- clean up Xorg config (bsc#1192678)
+- 17.22
+
+--------------------------------------------------------------------
+Thu Nov 18 15:03:26 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#542
+- fix spec file
+- 17.21
+
+--------------------------------------------------------------------
+Thu Nov 18 13:09:50 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#541
+- Leap Micro support
+- 17.20
+
+--------------------------------------------------------------------
 Wed Nov 10 16:58:24 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#535

@@ -103,6 +103,10 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
+%if "%flavor" == "LeapMicro"
+%define theme LeapMicro
+%endif
+
 %if "%flavor" == "MicroOS"
 # don't build on Leap for now
 %if 0%{?is_opensuse} && !0%{?sle_version}
@@ -187,16 +191,23 @@ BuildRequires:  distribution-logos-openSUSE-Kubic
 %global product_name openSUSE-Kubic
 %endif
 
-%if "%theme" == "SMO"
+%if "%theme" == "SMO" || "%theme" == "LeapMicro"
 %define with_storage_ng 1
 %define with_ssl_hmac 0
 %define branding_skelcd   SMO
 %define branding_systemd  SMO
+%if "%theme" == "LeapMicro"
+BuildRequires:  Leap-Micro-release Leap-Micro-release-dvd
+%define branding_plymouth openSUSE
+%define branding_grub2    openSUSE
+%define branding_gfxboot  openSUSE
+%else
+BuildRequires:  SUSE-MicroOS-release
 %define branding_plymouth SLE
 %define branding_grub2    SLE
 %define branding_gfxboot  SLE
+%endif
 %define config_bootmenu_no_upgrade 1
-BuildRequires:  SUSE-MicroOS-release
 # system-group-kvm needed for 15-SP2 based MicroOS
 BuildRequires:  system-group-kvm 
 %endif
@@ -674,7 +685,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.19
+Version:        17.22
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
