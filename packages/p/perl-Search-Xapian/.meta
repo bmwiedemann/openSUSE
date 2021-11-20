@@ -1,0 +1,5 @@
+<package name="perl-Search-Xapian" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Search-Xapian"/>
+</package>
