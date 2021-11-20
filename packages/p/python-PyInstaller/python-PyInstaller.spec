@@ -21,12 +21,12 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        4.5.1
+Version:        4.7
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
 URL:            https://www.pyinstaller.org
-Source:         https://github.com/pyinstaller/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v%{version}.tar.gz#/pyinstaller-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

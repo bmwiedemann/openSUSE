@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Nov 18 15:23:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.7:
+  - Fix a bug since v4.6 where certain Unix system directories
+    were incorrectly assumed to exist and resulted in a
+    FileNotFoundError.
+  - Update sphinx hook for compatibility with latest version
+    (4.2.0).
+  - Replace use of PyRun_SimpleString with
+    PyRun_SimpleStringFlags.
+  - Add support for Python 3.10.
+  - Implement basic resource reader for accessing on-filesystem
+    resources (data files) via importlib.resources (python >=
+    3.9) or importlib_resources (python <= 3.8).
+  - Ship precompiled wheels for musl-based Linux distributions
+    (such as Alpine or OpenWRT) on x86_64 and aarch64.
+  - Fix sys.executable pointing to the external package file
+    instead of the executable when in package side-load mode
+    (pkg_append=False).
+  - Fix a runaway glob which caused
+    ctypes.util.find_library("libfoo") to non-deterministically
+    pick any library matching libfoo* to bundle instead of
+    libfoo.so.
+  - Fix compatibility with with MIPS and loongarch64
+    architectures.
+  - Fix the FrozenImporter.get_source() to correctly handle the
+    packages’ __init__.py source files. This in turn fixes
+    missing-source-file errors for packages that use pytorch JIT
+    when the source .py files are collected and available (for
+    example, kornia).
+  - Fix the location of the generated stand-alone pkg file when
+    using the side-load mode (pkg_append=False) in combination
+    with onefile mode. The package file is now placed next to the
+    executable instead of next to the .spec file.
+  - When generating spec files, avoid hard-coding the spec
+    file’s location as the pathex argument to the Analysis.
+  - Add a hook for pandas.plotting to restore compatibility with pandas 1.3.0 and later.
+  - Add a hook for QtOpenGLWidgets for PyQt6 and PySide6 to
+    collect the new QtOpenGLWidgets module introduced in Qt6
+  - Add hooks for QtPositioning and QtLocation modules of the
+    Qt5-based packages (PySide2 and PyQt5) to ensure that
+    corresponding plugins are collected.
+  - Fix compatibility with PyQt5 5.9.2 from conda’s main channel.
+  - Prevent potential error in hooks for Qt-based packages that
+    could be triggered by a partial PyQt6 installation.
+  - Update QtNetwork hook for PyQt6 and PySide6 to collect the
+    new tls plugins that were introduced in Qt 6.2.
+  - Update the gi.repository.GtkSource hook to accept a
+    module-versions hooksconfig dict in order to allow the hook
+    to be used with GtkSource versions greater than 3.0.
+  - Update the Linux bootloader cross compiler Dockerfile to
+    allow using the official PyPA base images in place of the
+    dockcross ones.
+
+-------------------------------------------------------------------
 Thu Sep 16 11:25:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.5.1: large number of changes, see packaged CHANGES.rst for
