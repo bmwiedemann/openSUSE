@@ -61,4 +61,13 @@
   as well as check if all used programs are found.</comment>
     <requestid>925405</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>50dc3b37ce69977b766310ff1eba8985</srcmd5>
+    <version>0.1</version>
+    <time>1637372364</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bugs introduced by last change
+  which was ad646933d3b9ec6d767842535414b4af1020c2f7 (boo#1191683)</comment>
+    <requestid>932546</requestid>
+  </revision>
 </revisionlist>

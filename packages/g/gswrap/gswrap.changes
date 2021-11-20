@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 14:11:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix bugs introduced by last change
+  which was ad646933d3b9ec6d767842535414b4af1020c2f7 (boo#1191683)
+
+-------------------------------------------------------------------
 Fri Oct 15 10:34:50 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Quote all variable which might include space 

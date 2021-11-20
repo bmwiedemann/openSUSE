@@ -43,7 +43,7 @@ lock=$(mktemp "${TMPDIR:-/tmp}/.gswrap-XXXXXXXXXX") || exit 1
 unlock ()
 {
     test -e "$lock" || return
-    fuser -TERM "$loc"
+    fuser -TERM "$lock"
     rm -f "$lock"
 }
 
@@ -87,8 +87,8 @@ do
     opts[o++]="$dir"
     opts[o++]="$dir"
 done
-typeset -i c=0 argc=${#argv[@]}
 typeset -a argv=("$@")
+typeset -i c=0 argc=${#argv[@]}
 for ((c=0; c < argc; c++))
 do
     arg="${argv[c]}"
@@ -133,13 +133,13 @@ do
 	    elif test -n "$dir" -a -d "$dir"
 	    then
 		tmp=$(mktemp -d "$dir/.gswrap-XXXXXXXXXX") || exit 1
-		trap "finish '$dir' '$tmp'" ERR EXIT SIGINT SIGHUP
+		trap "finish '$dir' '$tmp'" EXIT SIGINT SIGHUP
 		opts[o++]=--bind
 		opts[o++]="${tmp+"$tmp"}"
 		opts[o++]="$home/out"
 	    else
 		tmp=$(mktemp -d "$PWD/.gswrap-XXXXXXXXXX") || exit 1
-		trap "finish '$PWD' '$tmp'" ERR EXIT SIGINT SIGHUP
+		trap "finish '$PWD' '$tmp'" EXIT SIGINT SIGHUP
 		opts[o++]=--bind
 		opts[o++]="${tmp+"$tmp"}"
 		opts[o++]="$home/out"
