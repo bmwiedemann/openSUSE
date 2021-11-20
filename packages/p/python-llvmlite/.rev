@@ -196,4 +196,12 @@ This version works with llvm 4.</comment>
     <comment></comment>
     <requestid>880622</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dcc0dfe579cd9ca6e8fedcf43f3dd46f</srcmd5>
+    <version>0.37.0</version>
+    <time>1637372338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932314</requestid>
+  </revision>
 </revisionlist>

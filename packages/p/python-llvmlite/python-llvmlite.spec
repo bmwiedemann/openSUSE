@@ -17,11 +17,12 @@
 
 
 %define modname llvmlite
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         llvm_major 10
-%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+%define         llvm_major 11
+%define         skip_python2 1
+%define         skip_python36 1
 Name:           python-llvmlite
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
@@ -59,7 +60,7 @@ following approach:
 %setup -q -n %{modname}-%{version}
 
 %build
-export CPPFLAGS="-fPIC"
+export CPPFLAGS="%{optflags} -fPIC"
 export LLVM_CONFIG=%{_bindir}/llvm-config
 %python_build
 

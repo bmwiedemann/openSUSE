@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 30 09:38:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.37.0
+  * The biggest new feature in this release is LLVM 11
+    support for all platforms! This is important, because
+    the aarch64 platform had been ‘stuck’ on LLVM 9 for
+    several releases. A special thanks to David Spickett
+    from Linaro for supplying the relevant patch.
+
+-------------------------------------------------------------------
 Tue Mar 16 19:59:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 0.36.0
