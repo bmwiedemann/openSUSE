@@ -2,7 +2,7 @@
 # spec file for package XyGrib
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2018 Dr. Axel Braun
+# Copyright (c) 2018-2021 Dr. Axel Braun <DocB@opensuse.org>
 # Copyright (c) 2018 Dominig ar Foll (Intel Open Source)
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,8 +28,10 @@ URL:            https://opengribs.org/en/
 Source0:        https://github.com/opengribs/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
-Patch0:         QPainter.patch 
+Patch0:         QPainter.patch
 Patch1:         libjpeg24.diff
+Patch2:         proj8.diff
+Patch3:         projection.diff
 BuildRequires:  cmake
 BuildRequires:  libnova-devel
 BuildRequires:  libpng-devel
@@ -49,7 +51,7 @@ BuildRequires:  pkgconfig(proj)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 %endif
 
 %description
@@ -65,6 +67,9 @@ found on OpenSkiron.org.
 %patch0 -p1
 %patch1 -p1
 cp %{S:1} %{S:2} .
+
+%patch2 -p1
+%patch3 -p1
 
 %build
 # -DNO_UPDATE=1 deactivates XyGrib internal SW update
