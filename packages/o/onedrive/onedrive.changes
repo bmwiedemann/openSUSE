@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 17 18:58:00 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Weaken systemd service hardening to make services start again.
+
+-------------------------------------------------------------------
 Wed Oct 13 06:50:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

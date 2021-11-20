@@ -35,8 +35,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://github.com/abraunegg/onedrive/
 Source0:        %{name}-%{version}.tar
-Patch0:	harden_onedrive.service.patch
-Patch1:	harden_onedrive@.service.patch
+Patch0:         harden_onedrive.service.patch
+Patch1:         harden_onedrive@.service.patch
 %if %{with dcompiler_dmd}
 BuildRequires:  dmd
 BuildRequires:  phobos-devel-static

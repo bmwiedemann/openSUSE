@@ -9,12 +9,12 @@ Index: onedrive-2.4.13/contrib/systemd/onedrive.service.in
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
-+PrivateDevices=true
++#PrivateDevices=true
 +ProtectHostname=true
-+ProtectClock=true
++#ProtectClock=true
 +ProtectKernelTunables=true
-+ProtectKernelModules=true
-+ProtectKernelLogs=true
++#ProtectKernelModules=true
++#ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
