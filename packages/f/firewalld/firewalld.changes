@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:04:38 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Update to 1.0.2:
+  * fix(firewalld): check capng_apply() return code
+  * fix(nftables): do not log icmp block if inversion
+  * fix(nftables): rich: source address with netmask
+  * fix(fw_config): zone: on rename remove then add
+  * fix(io/functions): check_config against on disk conf
+  * fix(zone): detect same source/interface in zones
+  * docs(policy): fix typos
+  * docs(policies): fix typos
+
+-------------------------------------------------------------------
 Sat Sep 25 20:24:33 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.0.1:

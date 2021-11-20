@@ -1095,4 +1095,20 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>924225</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>57a422e98e819a57693267b6e28e3d06</srcmd5>
+    <version>1.0.2</version>
+    <time>1637444868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * fix(firewalld): check capng_apply() return code
+  * fix(nftables): do not log icmp block if inversion
+  * fix(nftables): rich: source address with netmask
+  * fix(fw_config): zone: on rename remove then add
+  * fix(io/functions): check_config against on disk conf
+  * fix(zone): detect same source/interface in zones
+  * docs(policy): fix typos
+  * docs(policies): fix typos (forwarded request 932169 from mrostecki)</comment>
+    <requestid>932170</requestid>
+  </revision>
 </revisionlist>
