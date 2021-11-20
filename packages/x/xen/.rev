@@ -2622,4 +2622,12 @@
     <comment>Update to Xen version 4.16.0. For Tumbleweed, requires rebuilt qemu and libvirt packages against this new Xen version to go in at the same time.</comment>
     <requestid>930561</requestid>
   </revision>
+  <revision rev="306" vrev="2">
+    <srcmd5>586bd002b39320d563a185bc63bf1e11</srcmd5>
+    <version>4.16.0_01</version>
+    <time>1637372308</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.16.0 RC3 with additional spec file cleanups.</comment>
+    <requestid>932003</requestid>
+  </revision>
 </revisionlist>

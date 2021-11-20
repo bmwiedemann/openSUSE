@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 17 07:25:37 MST 2021 - carnold@suse.com
+
+- Update to Xen 4.16.0 RC3 release
+  xen-4.16.0-testing-src.tar.bz2
+- Drop iPXE sources and patches. iPXE is only used by QEMU
+  traditional which has never shipped with SLE15.
+  ipxe.tar.bz2
+  ipxe-enable-nics.patch
+  ipxe-no-error-logical-not-parentheses.patch
+  ipxe-use-rpm-opt-flags.patch
+- Drop building ocaml xenstored in the spec file. There are no
+  plans or need to support this version.
+
+-------------------------------------------------------------------
 Mon Nov  8 09:09:58 MST 2021 - carnold@suse.com
 
 - Update to Xen 4.16.0 RC2 release

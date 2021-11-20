@@ -33,7 +33,6 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
-%bcond_with    xen_oxenstored
 %ifarch x86_64
 %bcond_without xen_debug
 %bcond_without xen_stubdom
@@ -97,17 +96,8 @@ BuildRequires:  texinfo
 BuildRequires:  makeinfo
 %endif
 %endif
-BuildRequires:  ncurses-devel
-%if %{?with_dom0_support}0
-%if %{with xen_oxenstored}
-BuildRequires:  ocaml
-BuildRequires:  ocaml-compiler-libs
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-runtime
-%endif
-%endif
 BuildRequires:  acpica
+BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
 BuildRequires:  xz-devel
@@ -137,9 +127,8 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 Source0:        xen-4.16.0-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
-Source2:        ipxe.tar.bz2
-Source3:        mini-os.tar.bz2
-Source4:        xen-utils-0.1.tar.bz2
+Source2:        mini-os.tar.bz2
+Source3:        xen-utils-0.1.tar.bz2
 Source9:        xen.changes
 Source10:       README.SUSE
 Source11:       boot.xen
@@ -218,11 +207,10 @@ Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
 Patch453:       stdvga-cache.patch
-Patch454:       ipxe-enable-nics.patch
-Patch455:       xl-save-pc.patch
-Patch456:       pygrub-boot-legacy-sles.patch
-Patch457:       pygrub-handle-one-line-menu-entries.patch
-Patch458:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
+Patch454:       xl-save-pc.patch
+Patch455:       pygrub-boot-legacy-sles.patch
+Patch456:       pygrub-handle-one-line-menu-entries.patch
+Patch457:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
 Patch461:       libxl.max_event_channels.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       libxl.pvscsi.patch
@@ -239,8 +227,6 @@ Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
 Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
-Patch623:       ipxe-no-error-logical-not-parentheses.patch
-Patch624:       ipxe-use-rpm-opt-flags.patch
 # Build patches
 Patch99996:     xen.stubdom.newlib.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
@@ -416,7 +402,7 @@ Authors:
 %endif
 
 %prep
-%setup -q -n %xen_build_dir -a 1 -a 2 -a 3 -a 4
+%setup -q -n %xen_build_dir -a 1 -a 2 -a 3
 %autosetup -D -T -n %xen_build_dir -p1
 
 %build
@@ -497,7 +483,6 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         --disable-xen \
         --enable-tools \
         --enable-docs \
-        --disable-rombios \
         --prefix=/usr \
         --exec_prefix=/usr \
         --bindir=%{_bindir} \
@@ -511,11 +496,6 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
         --docdir=%{_defaultdocdir}/xen \
 	--with-initddir=%{_initddir} \
 	--with-rundir=%{_rundir} \
-%if %{?with_dom0_support}0
-%if %{with xen_oxenstored}
-	--with-xenstored=oxenstored \
-%endif
-%endif
 	--enable-systemd \
 	--with-systemd=%{_unitdir} \
 	--with-systemd-modules-load=%{with_systemd_modules_load} \
@@ -952,7 +932,6 @@ rm -rf %{buildroot}/%{_datadir}/doc
 rm -rf %{buildroot}/%{_datadir}/man
 rm -rf %{buildroot}/%{_libexecdir}/%{name}
 rm -rf %{buildroot}/%{_libdir}/python*
-rm -rf %{buildroot}/%{_libdir}/ocaml*
 rm -rf %{buildroot}/%{_unitdir}
 rm -rf %{buildroot}/%{_fillupdir}
 rm -rf %{buildroot}/%{with_systemd_modules_load}
@@ -1111,48 +1090,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %{_defaultdocdir}/xen/boot.xen
 %{_mandir}/man*/*
 
-%if %{with xen_oxenstored}
-/usr/sbin/oxenstored
-/etc/xen/oxenstored.conf
-%dir %{_libdir}/ocaml
-%dir %{_libdir}/ocaml/xenbus
-%dir %{_libdir}/ocaml/xenctrl
-%dir %{_libdir}/ocaml/xeneventchn
-%dir %{_libdir}/ocaml/xenlight
-%dir %{_libdir}/ocaml/xenmmap
-%dir %{_libdir}/ocaml/xenstore
-%dir %{_libdir}/ocaml/xentoollog
-%{_libdir}/ocaml/xenbus/META
-%{_libdir}/ocaml/xenbus/*.so
-%{_libdir}/ocaml/xenbus/*.cma
-%{_libdir}/ocaml/xenbus/*.cmi
-%{_libdir}/ocaml/xenbus/*.cmo
-%{_libdir}/ocaml/xenctrl/META
-%{_libdir}/ocaml/xenctrl/*.so
-%{_libdir}/ocaml/xenctrl/*.cma
-%{_libdir}/ocaml/xenctrl/*.cmi
-%{_libdir}/ocaml/xeneventchn/META
-%{_libdir}/ocaml/xeneventchn/*.so
-%{_libdir}/ocaml/xeneventchn/*.cma
-%{_libdir}/ocaml/xeneventchn/*.cmi
-%{_libdir}/ocaml/xenlight/META
-%{_libdir}/ocaml/xenlight/*.so
-%{_libdir}/ocaml/xenlight/*.cma
-%{_libdir}/ocaml/xenlight/*.cmi
-%{_libdir}/ocaml/xenmmap/META
-%{_libdir}/ocaml/xenmmap/*.so
-%{_libdir}/ocaml/xenmmap/*.cma
-%{_libdir}/ocaml/xenmmap/*.cmi
-%{_libdir}/ocaml/xenstore/META
-%{_libdir}/ocaml/xenstore/*.cma
-%{_libdir}/ocaml/xenstore/*.cmi
-%{_libdir}/ocaml/xenstore/*.cmo
-%{_libdir}/ocaml/xentoollog/META
-%{_libdir}/ocaml/xentoollog/*.so
-%{_libdir}/ocaml/xentoollog/*.cma
-%{_libdir}/ocaml/xentoollog/*.cmi
-%endif
-
 %ifarch x86_64
 %files tools-xendomains-wait-disk
 %license xendomains-wait-disk/LICENSE
@@ -1184,24 +1121,6 @@ rm -f  %{buildroot}/usr/libexec/qemu-bridge-helper
 %defattr(-,root,root)
 %{_libdir}/*.a
 %{_libdir}/*.so
-%if %{?with_dom0_support}0
-%if %{with xen_oxenstored}
-%{_libdir}/ocaml/xenbus/*.a
-%{_libdir}/ocaml/xenbus/*.cmx*
-%{_libdir}/ocaml/xenctrl/*.a
-%{_libdir}/ocaml/xenctrl/*.cmx*
-%{_libdir}/ocaml/xeneventchn/*.a
-%{_libdir}/ocaml/xeneventchn/*.cmx*
-%{_libdir}/ocaml/xenlight/*.a
-%{_libdir}/ocaml/xenlight/*.cmx*
-%{_libdir}/ocaml/xenmmap/*.a
-%{_libdir}/ocaml/xenmmap/*.cmx*
-%{_libdir}/ocaml/xenstore/*.a
-%{_libdir}/ocaml/xenstore/*.cmx*
-%{_libdir}/ocaml/xentoollog/*.a
-%{_libdir}/ocaml/xentoollog/*.cmx*
-%endif
-%endif
 /usr/include/*
 %{_libdir}/pkgconfig/xenlight.pc
 %{_libdir}/pkgconfig/xlutil.pc
