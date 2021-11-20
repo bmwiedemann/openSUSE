@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov 18 08:02:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Wireshark 3.4.10 (bsc#1192830):
+  * CVE-2021-39929: Bluetooth DHT dissector crash.
+  * CVE-2021-39926: Bluetooth HCI_ISO dissector crash.
+  * CVE-2021-39925: Bluetooth SDP dissector crash.
+  * CVE-2021-39924: Bluetooth DHT dissector large loop.
+  * CVE-2021-39922: C12.22 dissector crash.
+  * CVE-2021-39928: IEEE 802.11 dissector crash.
+  * CVE-2021-39921: Modbus dissector crash.
+  * CVE-2021-39920: IPPUSB dissector crash.
+  * PNRP dissector large loop.
+  * Fix forward compatibility issue with the I/O Graphs preferences.
+  * OSS-Fuzz: Heap-use-after-free in ROS.
+  * Allow for '\0' (NULL) character as filter instead of requiring 0x00 for the character match.
+  * Dumpcap with threads reports double received count vs captured.
+  * HTTP2 dissector reports an assertion error on large data frames.
+  * Shark stops capturing when capturing with multiple files and packet printing enabled.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.4.10.html
+
+-------------------------------------------------------------------
 Thu Oct  7 07:14:32 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.4.9:
@@ -9,7 +31,6 @@ Thu Oct  7 07:14:32 UTC 2021 - Robert Frohl <rfrohl@suse.com>
   * Wireshark ignored some character in filename when exporting SMB objects.
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-3.4.9.html
-
 
 -------------------------------------------------------------------
 Thu Aug 26 07:31:47 UTC 2021 - Robert Frohl <rfrohl@suse.com>
