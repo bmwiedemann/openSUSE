@@ -3188,4 +3188,22 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * support -auto-orient option in the identify utlity. (forwarded request 925727 from dirkmueller)</comment>
     <requestid>925971</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>cd135e3e6111d32b062938642a962e36</srcmd5>
+    <version>7.1.0.14</version>
+    <time>1637372286</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.14
+  * Support '#' modifier to aspect ratio geometry (e.g., 3:2#).
+  * The profile of a PSD file will no longer be copied to all the images, only
+    the first returned image will contain the profile. To re-enable the old
+    behavior add -define psd:replicate-profile=true.
+
+- update to 7.1.0.13:
+  * Fix stack overflow when parsing malicious ps image file
+  * Fix connected component abort trap
+  * Fix possible unitialized values
+  * Fix stack overflow when parsing malicious tiff image file</comment>
+    <requestid>931502</requestid>
+  </revision>
 </revisionlist>
