@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 17 11:11:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert last change and BuildIgnore user(pulse) instead.
+
+-------------------------------------------------------------------
+Tue Nov 16 23:13:49 CET 2021 - tiwai@suse.de
+
+- Use system-user-pulse instead of user(pulse) for PreReq;
+  otherwise a new project can't resolve
+
+-------------------------------------------------------------------
 Fri Oct  8 10:56:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Make system-user-pulse noarch

@@ -97,6 +97,7 @@ BuildRequires:  pkgconfig(xtst)
 
 Requires:       rtkit
 Requires:       udev >= 146
+#!BuildIgnore:  user(pulse)
 Requires(pre):  user(pulse)
 ## needs the same liborc version which was used to build against
 %requires_eq    liborc-0_4-0
