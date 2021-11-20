@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  8 08:11:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Allow gcc11
+- Add tbb-pr609-32bit-mwaitpkg.patch gh#oneapi-src/oneTBB#609
+  * fixes 32-bit build with gcc11
+- Only run ctest when --with test is given
+
+-------------------------------------------------------------------
+Tue Oct  5 09:41:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.4
+  * Large release notes since 2020.3:
+    https://software.intel.com/content/www/us/en/develop/articles/intel-oneapi-threading-building-blocks-release-notes.html
+- Drop python2 package
+- Drop patches:
+  * disable-irml.patch -- install the library
+  * optflags.patch -- build system change
+  * reproducible.patch -- build system change
+- Refresh cmake-remove-include-path.patch
+- Add libirml subpackage for python module
+- Add libtbbbind library package for NUMA support
+
+-------------------------------------------------------------------
 Fri Dec 25 11:10:11 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Rework the building of python bindings
