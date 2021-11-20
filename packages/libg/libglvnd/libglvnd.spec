@@ -69,6 +69,11 @@ sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/generate/*.py
 %if 0%{?suse_version} < 1330
     --libdir=%{_prefix}/X11R6/%{_lib} \
 %endif
+%if 0%{?suse_version} > 1500
+%ifarch aarch64
+    --disable-asm \
+%endif
+%endif
     --disable-static \
     --disable-headers \
     --disable-silent-rules
