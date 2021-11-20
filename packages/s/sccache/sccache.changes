@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 16 15:21:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * sccache-dist-builder.service
+  * sccache-dist-scheduler.service
+
+-------------------------------------------------------------------
 Wed Nov  3 00:07:45 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update license string in rpm
