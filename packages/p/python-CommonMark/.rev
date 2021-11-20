@@ -113,4 +113,12 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment></comment>
     <requestid>915780</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d86bc7872a875832dafca69e01f4a509</srcmd5>
+    <version>0.9.1</version>
+    <time>1637372285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931495</requestid>
+  </revision>
 </revisionlist>

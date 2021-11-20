@@ -65,9 +65,11 @@ CommonMark specification, using only native modules.
 
 %check
 export LANG=en_US.UTF-8
+%if "%{python_flavor}" == "python3"
 %pyunittest commonmark/tests/*.py
 # On python2 we error out on unicode issues
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 commonmark/tests/run_spec_tests.py
+%endif
 
 %post
 %python_install_alternative cmark
