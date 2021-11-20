@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:52:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.5.9
+  * Remove jupyter-run, keep jupyter-execute #180 (@davidbrochart)
+- Switch to libalternatives
+
+-------------------------------------------------------------------
 Sun Nov 14 13:28:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.5.8

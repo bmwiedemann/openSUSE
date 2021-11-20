@@ -129,4 +129,14 @@
   jupyter_client (forwarded request 931394 from bnavigator)</comment>
     <requestid>931395</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>24f989dde3a3800549bd4913ce0826d8</srcmd5>
+    <version>0.5.9</version>
+    <time>1637372358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.9
+  * Remove jupyter-run, keep jupyter-execute #180 (@davidbrochart)
+- Switch to libalternatives (forwarded request 932511 from bnavigator)</comment>
+    <requestid>932512</requestid>
+  </revision>
 </revisionlist>
