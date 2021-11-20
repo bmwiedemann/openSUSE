@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 13 03:06:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.0.6
+   see /usr/share/doc/packages/perl-Minion-Backend-SQLite/Changes
+
+  v5.0.6    2021-11-12 19:39:19 EST
+    - Improve efficiency of stats query (#19, Sebastian Riedel)
+
+-------------------------------------------------------------------
 Wed Jun 16 03:06:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.5
