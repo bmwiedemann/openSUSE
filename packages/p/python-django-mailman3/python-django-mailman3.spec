@@ -20,7 +20,7 @@
 # mailman is built only for primary python3 flavor
 %define pythons python3
 Name:           python-django-mailman3
-Version:        1.3.5
+Version:        1.3.7
 Release:        0
 Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only

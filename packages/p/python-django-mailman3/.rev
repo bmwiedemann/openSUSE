@@ -41,4 +41,14 @@
     <comment>- restrict to primary python3 flavor due to mailman (forwarded request 890327 from bnavigator)</comment>
     <requestid>890488</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52d0f3fabab924cc1bd7f5197d63567b</srcmd5>
+    <version>1.3.7</version>
+    <time>1637372336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.7
+  * Set the minimum required version of mailmanclient in setup.py.
+</comment>
+    <requestid>932306</requestid>
+  </revision>
 </revisionlist>
