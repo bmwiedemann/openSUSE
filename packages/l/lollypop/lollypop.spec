@@ -17,7 +17,7 @@
 
 
 Name:           lollypop
-Version:        1.4.23
+Version:        1.4.24
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
@@ -34,8 +34,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
-# Can't migrate to GDBus, the server-side support is not implemented yet:
-#     https://bugzilla.gnome.org/show_bug.cgi?id=656330
 Requires:       dbus-1-python3
 Requires:       gstreamer-plugins-base
 Requires:       python3-Pillow
@@ -64,7 +62,6 @@ features:
 * Context artist view
 * MTP sync
 * Fullscreen view
-* Radios support
 * Last.fm support
 * Auto install codecs
 * HiDPI support
@@ -105,7 +102,6 @@ sed -i 's;/usr/bin/env python3;/usr/bin/python3;' lollypop.in search-provider/lo
 %doc AUTHORS README.md
 %license LICENSE
 %{_bindir}/%{name}
-%exclude %{_libexecdir}/lollypop-sp
 %{_datadir}/%{name}
 %{_datadir}/metainfo/org.gnome.Lollypop.appdata.xml
 %{_datadir}/applications/org.gnome.Lollypop.desktop

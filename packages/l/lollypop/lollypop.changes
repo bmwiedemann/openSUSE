@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 19 20:26:18 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.24:
+  * Fix playback stop while in miniplayer
+    (glgo#World/lollypop#2849).
+  * Fix albums being incorrectly split (glgo#World/lollypop#2806).
+  * Allow to lower volume when using equalizer
+    (glgo#World/lollypop#2836).
+  * Fix tracks not being displayed for artists with one album
+    (glgo#World/lollypop#2837).
+
+-------------------------------------------------------------------
+Tue Sep  7 20:56:38 UTC 2021 - antoine.belvire@opensuse.org
+
+- Remove useless %exclude from main package file list.
+- Remove old non-relevant comments.
+
+-------------------------------------------------------------------
+Sat Sep  4 14:00:01 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update description: Radio support has been removed for a few
+  versions now.
+
+-------------------------------------------------------------------
 Tue Aug 24 18:11:40 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.23:

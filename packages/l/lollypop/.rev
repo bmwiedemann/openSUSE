@@ -1684,4 +1684,25 @@
     (glgo#World/lollypop#2815).</comment>
     <requestid>914082</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>184557c77671803a82b7ded85196a94a</srcmd5>
+    <version>1.4.24</version>
+    <time>1637372373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.24:
+  * Fix playback stop while in miniplayer
+    (glgo#World/lollypop#2849).
+  * Fix albums being incorrectly split (glgo#World/lollypop#2806).
+  * Allow to lower volume when using equalizer
+    (glgo#World/lollypop#2836).
+  * Fix tracks not being displayed for artists with one album
+    (glgo#World/lollypop#2837).
+
+- Remove useless %exclude from main package file list.
+- Remove old non-relevant comments.
+
+- Update description: Radio support has been removed for a few
+  versions now.</comment>
+    <requestid>932592</requestid>
+  </revision>
 </revisionlist>
