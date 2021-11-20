@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 19 08:02:18 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211118.5f3b629b:
+  * Skip empty cache files
+  * Fix handling missing log files
+
+-------------------------------------------------------------------
 Sun Nov 07 13:56:21 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211107.bab90ef3:
