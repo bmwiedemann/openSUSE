@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov 17 13:55:21 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.9
+  * Sets Autofield
+  * Fix RemovedInDjango41Warning
+  * Create codeql-analysis.yml
+  * Codecov_fixes. Got coverage again
+  * Feature/improves multiple databases support
+  * Fix for SSL errors in #422
+  * Fixes #314 - Convert func to its import path str so that
+    resubmitting failed task works
+  * Add "qmemory" command
+  * Allow tasks to be scheduled on a specific cluster
+  * Fixes #225 - Successful tasks grow beyond SAVE_LIMIT
+  * Update documentation for new retry time default
+  * Fixes deprecated count method
+  * Adds long polling support
+  * Use 'timezone.localtime()' when calculating the next run time
+  * Add a warning for misconfiguration.
+  * Add broker name in Schedule and enhanced Queued Tasks list
+    display admin
+  * Add example of http health check
+  * Added german translation
+  * Try to get SQS queue before creating it
+  * Empty dictionary as configuration value for SQS
+  * Model.unicode() has no effect in Python 3.X
+  * Fix deprecation warning RemovedInDjango40Warning
+  * Fix for #424 TypeError: can't pickle _thread.lock objects
+  * [WIP]Change Django documentation links and URLs to a
+    supported version (v1.8 -> v2.2)
+  * Add attempt_count to limit the number of times a filed task
+    will be re-attempted
+  * Updates to Django 3.1
+  * Resource limits: max rss memory limit for workers
+
+-------------------------------------------------------------------
 Tue Jul  7 09:09:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.3.1

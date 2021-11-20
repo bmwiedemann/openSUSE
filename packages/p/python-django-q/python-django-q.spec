@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-q
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define pythons python3
 Name:           python-django-q
-Version:        1.3.1
+Version:        1.3.9
 Release:        0
 Summary:        Multiprocessing Distributed Task Queue for Django
 License:        MIT
 URL:            https://django-q.readthedocs.org
-Source:         https://github.com/Koed00/django-q/archive/v%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-q/django-q-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,7 +48,7 @@ BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
-BuildRequires:  redis
+BuildRequires:  dos2unix
 # /SECTION
 %python_subpackages
 
@@ -56,7 +56,14 @@ BuildRequires:  redis
 This package provides a multiprocessing distributed task queue for Django.
 
 %prep
-%setup -q -n django-q-%{version}
+%autosetup -n django-q-%{version} -p1
+
+# Fix permissions
+find -name "*.po" | xargs chmod a-x
+chmod a-x README.rst CHANGELOG.md LICENSE
+
+# Fix encoding
+dos2unix README.rst
 
 %build
 %python_build
@@ -66,17 +73,8 @@ This package provides a multiprocessing distributed task queue for Django.
 %python_expand rm -r %{buildroot}%{$python_sitelib}/django_q/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-# start redis server
-%{_sbindir}/redis-server&
-sleep 1
-# test_qcluster: hangs
-# test_mongo:    do not install mongodb
-# test_disque:   do not have disque at all
-PYTHONPATH=$PWD
-%pytest -k 'not (test_qcluster or test_mongo or test_disque)'
-# shutdown redis server
-redis-cli shutdown
+#%%check
+# Tests require a docker container to run
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst
