@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 19:26:11 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix builds for Kernel 5.16. File "fixes-for-5.16.patch" is added.
+  Reorder some of the patch numbers.
+
+-------------------------------------------------------------------
 Wed Oct 20 05:48:42 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.28 (released October 19 2021 by Oracle)
