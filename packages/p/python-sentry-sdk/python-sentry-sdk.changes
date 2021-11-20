@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 19 08:41:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.5.0
+  - Also record client outcomes for before send #1211
+  - Add support for implicitly sized envelope items #1229
+  - Fix integration with Apache Beam 2.32, 2.33 #1233
+  - Remove Python 2.7 support for AWS Lambda layers in craft config #1241
+  - Refactor Sanic integration for v21.9 support #1212
+  - AWS Lambda Python 3.9 runtime support #1239
+  - Fix "shutdown_timeout" typing #1256
+- Disable of python36 build, because out of support at 2021-12-23.
+
+-------------------------------------------------------------------
 Mon Oct 25 20:39:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.4.3

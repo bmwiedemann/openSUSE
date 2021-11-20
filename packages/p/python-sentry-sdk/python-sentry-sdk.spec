@@ -19,8 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-sentry-sdk
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -37,10 +38,11 @@ BuildRequires:  %{python_module celery >= 3}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module executing}
 BuildRequires:  %{python_module falcon >= 1.4}
+BuildRequires:  %{python_module httpx >= 0.16.0}
 BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5}
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 >= 1.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -50,7 +52,7 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
-BuildRequires:  %{python_module pyrsistent}
+BuildRequires:  %{python_module pyrsistent >= 0.16.0}
 BuildRequires:  %{python_module pytest-cov >= 2.8.1}
 BuildRequires:  %{python_module pytest-forked >= 1.1.3}
 BuildRequires:  %{python_module pytest-localserver >= 0.5.0}
@@ -75,10 +77,11 @@ Requires:       python-celery >= 3
 Requires:       python-certifi
 Requires:       python-executing
 Requires:       python-falcon >= 1.4
+Requires:       python-httpx >= 0.16.0
 Requires:       python-jsonschema
 Requires:       python-rq >= 0.6
 Requires:       python-tornado >= 5
-Requires:       python-urllib3
+Requires:       python-urllib3 >= 1.10.0
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #Requires:       python-Django >= 1.8
 #Requires:       python-sanic >= 0.8
