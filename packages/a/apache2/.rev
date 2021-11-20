@@ -1969,4 +1969,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
      unused AP_NORMALIZE_DROP_PARAMETERS flag. (forwarded request 924064 from stroeder)</comment>
     <requestid>924154</requestid>
   </revision>
+  <revision rev="187" vrev="2">
+    <srcmd5>1726ff1fdb96273dc7b3ce82118daed7</srcmd5>
+    <version>2.4.51</version>
+    <time>1637372283</time>
+    <user>dimstar_suse</user>
+    <comment>- add section for the 'event' MPM to apache2-server-tuning.conf (forwarded request 931327 from adkorte)</comment>
+    <requestid>931489</requestid>
+  </revision>
 </revisionlist>
