@@ -109,4 +109,12 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>928388</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a12d967f8a1bb069b19722bbe11f7a8</srcmd5>
+    <version>0.5.0+0</version>
+    <time>1637444867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930408</requestid>
+  </revision>
 </revisionlist>

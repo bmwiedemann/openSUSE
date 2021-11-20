@@ -18,14 +18,14 @@
 
 
 Name:           rav1e
-Version:        0.5.0
+Version:        0.5.0+0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/xiph/rav1e
 #
-Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source98:       README.suse-maint
