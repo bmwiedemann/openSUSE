@@ -791,4 +791,12 @@
   * [v7.5.x] HTTP Client: Introduce `go-conntrack`  (#35321) (forwarded request 932046 from oertel)</comment>
     <requestid>932047</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c7aea05271f10ffd63f5b0c554a56964</srcmd5>
+    <version>7.5.11</version>
+    <time>1637372331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932265</requestid>
+  </revision>
 </revisionlist>

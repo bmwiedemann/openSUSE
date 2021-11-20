@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 18 14:13:39 CET 2021 - ro@suse.de
+
+- recreate tarballs using the makefile to update the
+  npm and go modules required 
+
+-------------------------------------------------------------------
 Wed Nov 17 23:32:21 UTC 2021 - ro@suse.de
 
 - Update to version 7.5.11:
