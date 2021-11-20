@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.i18n
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,35 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define pythons python3
 Name:           python-flufl.i18n
-Version:        2.0.2
+Version:        3.2
 Release:        0
-Summary:        A high level API for Python internationalization
+Summary:        High level API for internationalizing Python libraries and applications
 License:        Apache-2.0
 URL:            https://flufli18n.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl.i18n-%{version}.tar.gz
+Patch0:         python-flufl.i18n-fix-setup.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-atpublic
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module sybil}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
+BuildRequires:  fdupes
+Requires:       python-atpublic
+Suggests:       python-typing_extensions
+BuildArch:      noarch
 %python_subpackages
 
 %description
-A high level API for Python internationalization.
+High level API for internationalizing Python libraries and applications.
 
 %prep
-%setup -q -n flufl.i18n-%{version}
+%autosetup -n flufl.i18n-%{version} -p1
 
 %build
 %python_build

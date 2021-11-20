@@ -7,4 +7,24 @@
     <comment> </comment>
     <requestid>752938</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b46cac492c96cbe0677005eae692953e</srcmd5>
+    <version>3.2</version>
+    <time>1637372346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2
+  * Add a py.typed file to satisfy type checkers.
+  * Improve some QA by re-adding diff-cover, Gitlab SAST during
+    CI, and testing on Python 3.10 beta (except for Windows)
+  * Fix pytest 6.0.0 compatibility
+  * Drop support for Python 3.4 and 3.5.  Add support for Python 3.9.
+  * Translator.catalog property is now exposed.
+  * New abstract classes for defining the types in this library:
+  * TranslationContextManager, RuntimeTranslator, TranslationStrategy
+  * When expand() gets an exception, the original exception is re-raised.
+  * Add type annotations and API reference documentation.
+- Added python-flufl.i18n-fix-setup.patch
+</comment>
+    <requestid>932382</requestid>
+  </revision>
 </revisionlist>
