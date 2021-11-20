@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 18 16:22:04 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed calculation of partitions needed for booting when AutoYaST
+  specifies an alternative crypt_method, like pervasive_luks2
+  (related to jsc#SLE-7376 and jsc#SLE-21308).
+- 4.4.14
+
+-------------------------------------------------------------------
+Thu Nov 18 10:22:49 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Fix duplicate PV error detection with disabled multipath
+  (related to bsc#1170216).
+
+-------------------------------------------------------------------
+Wed Nov 17 13:31:47 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Partitioner: initial support for regular LUKS2 encryption, if env
+  variable YAST_LUKS2_AVAILABLE is set (part of jsc#SLE-21308).
+
+-------------------------------------------------------------------
 Thu Nov  4 12:54:16 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Dropped support for legacy format of the proposal settings
