@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 19 13:16:11 CEST 2021 - aschnell@suse.com
+
+- fixed name of shared library package and split off
+  libparted-fs-resize (bsc#1191778)
+
+-------------------------------------------------------------------
 Tue Oct 19 09:48:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-base: Fix execution of test suite. Otherwise

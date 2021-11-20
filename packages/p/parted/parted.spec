@@ -101,11 +101,20 @@ Obsoletes:      parted-64bit
 GNU Parted is a program for creating, destroying, resizing, checking,
 and copying partitions, and the file systems on them.
 
-%package -n libparted0
+%package -n libparted2
+Summary:        Library for manipulating partitions
+Group:          System/Libraries
+Obsoletes:      libparted0
+
+%description -n libparted2
+Libparted is a library for creating, destroying, resizing, checking
+and copying partitions and the file systems on them.
+
+%package -n libparted-fs-resize0
 Summary:        Library for manipulating partitions
 Group:          System/Libraries
 
-%description -n libparted0
+%description -n libparted-fs-resize0
 Libparted is a library for creating, destroying, resizing, checking
 and copying partitions and the file systems on them.
 
@@ -113,7 +122,8 @@ and copying partitions and the file systems on them.
 Summary:        Parted Include Files and Libraries necessary for Development
 Group:          Development/Libraries/C and C++
 Requires:       device-mapper-devel >= 1.02.33
-Requires:       libparted0 = %version
+Requires:       libparted-fs-resize0 = %version
+Requires:       libparted2 = %version
 # bug437293
 %ifarch ppc64
 Obsoletes:      parted-devel-64bit
@@ -187,8 +197,11 @@ rm %{buildroot}%{_libdir}/*.la
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
-%post -n libparted0 -p /sbin/ldconfig
-%postun -n libparted0 -p /sbin/ldconfig
+%post -n libparted2 -p /sbin/ldconfig
+%postun -n libparted2 -p /sbin/ldconfig
+
+%post -n libparted-fs-resize0 -p /sbin/ldconfig
+%postun -n libparted-fs-resize0 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
@@ -205,9 +218,13 @@ rm %{buildroot}%{_libdir}/*.la
 %{_libdir}/pkgconfig/libparted*.pc
 %{_libdir}/*.so
 
-%files -n libparted0
+%files -n libparted2
 %defattr(-,root,root)
-%{_libdir}/*.so.*
+%{_libdir}/libparted.so.*
+
+%files -n libparted-fs-resize0
+%defattr(-,root,root)
+%{_libdir}/libparted-fs-resize.so.*
 
 %files lang -f %{name}.lang
 
