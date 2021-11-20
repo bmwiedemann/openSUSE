@@ -24,6 +24,8 @@ advansys: pci:v000010CDd00002500sv*sd*bc*sc*i*
 advansys: pci:v000010CDd00002700sv*sd*bc*sc*i*
 ambassador: pci:v000010B6d00001001sv*sd*bc*sc*i*
 ambassador: pci:v000010B6d00001002sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d*sv*sd*bc03sc00i00*
+amdgpu: pci:v00001002d*sv*sd*bc03sc80i00*
 amdgpu: pci:v00001002d00001304sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00001305sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00001306sv*sd*bc*sc*i*
@@ -1518,6 +1520,7 @@ i915: pci:v00008086d00004682sv*sd*bc03sc*i*
 i915: pci:v00008086d00004683sv*sd*bc03sc*i*
 i915: pci:v00008086d00004688sv*sd*bc03sc*i*
 i915: pci:v00008086d00004689sv*sd*bc03sc*i*
+i915: pci:v00008086d0000468Asv*sd*bc03sc*i*
 i915: pci:v00008086d00004690sv*sd*bc03sc*i*
 i915: pci:v00008086d00004691sv*sd*bc03sc*i*
 i915: pci:v00008086d00004692sv*sd*bc03sc*i*
@@ -1537,6 +1540,11 @@ i915: pci:v00008086d000046C0sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C1sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C2sv*sd*bc03sc*i*
 i915: pci:v00008086d000046C3sv*sd*bc03sc*i*
+i915: pci:v00008086d00004905sv*sd*bc03sc*i*
+i915: pci:v00008086d00004906sv*sd*bc03sc*i*
+i915: pci:v00008086d00004907sv*sd*bc03sc*i*
+i915: pci:v00008086d00004908sv*sd*bc03sc*i*
+i915: pci:v00008086d00004909sv*sd*bc03sc*i*
 i915: pci:v00008086d00004C80sv*sd*bc03sc*i*
 i915: pci:v00008086d00004C8Asv*sd*bc03sc*i*
 i915: pci:v00008086d00004C8Bsv*sd*bc03sc*i*
@@ -2557,6 +2565,7 @@ iwlwifi: pci:v00008086d00007AF0sv*sd00000510bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*
 iwlwifi: pci:v00008086d00007E40sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007E80sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d00007F70sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00009DF0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00009DF0sv*sd00000000bc*sc*i*
 iwlwifi: pci:v00008086d00009DF0sv*sd00000010bc*sc*i*
@@ -2851,6 +2860,7 @@ mt76x2u: usb:v0E8Dp7612d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0E8Dp7632d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*
+mt7921e: pci:v000014C3d00007922sv*sd*bc*sc*i*
 mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mtk_scp: of:N*T*Cmediatek,mt8183-scp
 mtk_scp: of:N*T*Cmediatek,mt8183-scpC*
@@ -3291,6 +3301,7 @@ r8169: pci:v000010ECd00008125sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008129sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008136sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008161sv*sd*bc*sc*i*
+r8169: pci:v000010ECd00008162sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008167sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008168sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008169sv*sd*bc*sc*i*

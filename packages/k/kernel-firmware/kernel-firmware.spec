@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20211027
+%define version_unconverted 20211115
 
 Name:           kernel-firmware
-Version:        20211027
+Version:        20211115
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -484,6 +484,8 @@ Supplements:    modalias(pci:v00001002d00009875sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009876sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009877sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000098E4sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 
 %description amdgpu
 This package contains compressed kernel firmware files for
@@ -1539,6 +1541,7 @@ Supplements:    modalias(pci:v00008086d00004682sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004683sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004688sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004689sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000468Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004690sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004691sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004692sv*sd*bc03sc*i*)
@@ -1558,6 +1561,11 @@ Supplements:    modalias(pci:v00008086d000046C0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000046C1sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000046C2sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000046C3sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004905sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004906sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004907sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004908sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004909sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C80sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C8Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C8Bsv*sd*bc03sc*i*)
@@ -2530,6 +2538,7 @@ Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E40sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E80sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007F70sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000010bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000030bc*sc*i*)
@@ -2930,6 +2939,7 @@ Supplements:    modalias(pci:v000014C3d00007630sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007650sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007662sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
@@ -4940,6 +4950,8 @@ Supplements:    modalias(pci:v00001002d0000999Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000099A4sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc00i00*)
+Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc80i00*)
 
 %description radeon
 This package contains compressed kernel firmware files for
@@ -4967,6 +4979,7 @@ Supplements:    modalias(pci:v000010ECd00008125sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008129sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008136sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008161sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000010ECd00008162sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008167sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008168sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008169sv*sd*bc*sc*i*)

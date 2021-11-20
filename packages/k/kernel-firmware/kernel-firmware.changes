@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 16 21:26:46 UTC 2021 - tiwai@suse.com
+
+- Update to version 20211115 (git commit f5d519563ac9):
+  * linux-firmware: Update AMD cpu microcode
+  * amdgpu: update raven2 firmware from 21.40
+  * amdgpu: update navi14 firmware from 21.40
+  * amdgpu: update raven firmware from 21.40
+  * amdgpu: update navi12 firmware from 21.40
+  * amdgpu: update navi10 firmware from 21.40
+  * amdgpu: update vega20 firmware from 21.40
+  * amdgpu: update vega12 firmware from 21.40
+  * amdgpu: update vega10 firmware from 21.40
+  * amdgpu: update picasso firmware from 21.40
+  * amdgpu: update vangogh firmware from 21.40
+  * amdgpu: update beige goby firmware from 21.40
+  * amdgpu: add cyan skillfish firmware from 21.40
+  * amdgpu: update dimgrey cavefish firmware from 21.40
+  * amdgpu: update green sardine firmware from 21.40
+  * amdgpu: update navy flounder firmware from 21.40
+  * amdgpu: update renoir firmware from 21.40
+  * amdgpu: update arcturus firmware from 21.40
+  * amdgpu: update sienna cichlid firmware from 21.40
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDBA9_6937
+  * iwlwifi: add new FWs from core64-96 release
+  * iwlwifi: update 9000-family firmwares to core64-96
+  * amdgpu: update VCN firmware for green sardine
+  * linux-firmware: update frimware for mediatek bluetooth chip (MT7921)
+- Update aliases
+
+-------------------------------------------------------------------
 Wed Oct 27 13:37:10 UTC 2021 - tiwai@suse.com
 
 - Update to version 20211027 (git commit 1d00989a6596):
