@@ -1,0 +1,74 @@
+diff --git a/src/flake8/formatting/base.py b/src/flake8/formatting/base.py
+index 7919f92..ea351ca 100644
+--- a/src/flake8/formatting/base.py
++++ b/src/flake8/formatting/base.py
+@@ -179,12 +179,26 @@ class BaseFormatter:
+         # one
+         return f"{error.physical_line}{indent}^"
+ 
++    def _stdout_write_hook(self, value: str) -> None:
++        """sys.stdout.write() with fallbacks."""
++        try:
++            sys.stdout.write(value)
++        except UnicodeEncodeError:
++            byte_value = value.encode(sys.stdout.encoding, "backslashreplace")
++            if hasattr(sys.stdout, "buffer"):
++                sys.stdout.buffer.write(byte_value)
++            else:
++                sys.stdout.write(
++                    byte_value.decode(sys.stdout.encoding, "strict")
++                )
++
+     def _write(self, output: str) -> None:
+         """Handle logic of whether to use an output file or print()."""
+         if self.output_fd is not None:
+             self.output_fd.write(output + self.newline)
+         if self.output_fd is None or self.options.tee:
+-            sys.stdout.buffer.write(output.encode() + self.newline.encode())
++            self._stdout_write_hook(output)
++            self._stdout_write_hook(self.newline)
+ 
+     def write(self, line: Optional[str], source: Optional[str]) -> None:
+         """Write the line either to the output file or stdout.
+diff --git a/tests/unit/test_base_formatter.py b/tests/unit/test_base_formatter.py
+index 8958903..5959636 100644
+--- a/tests/unit/test_base_formatter.py
++++ b/tests/unit/test_base_formatter.py
+@@ -136,6 +136,37 @@ def test_write_produces_stdout(capsys):
+     assert capsys.readouterr().out == f"{line}\n{source}\n"
+ 
+ 
++@pytest.mark.parametrize("buffered_stdout", [True, False])
++def test_write_hook_fallbacks(buffered_stdout):
++    """Varify stdout.write() fallbacks."""
++    mock_line = mock.Mock(name="Mock Line")
++
++    stdout_spec = ["write", "encoding"]
++    if buffered_stdout:
++        stdout_spec.append("buffer")
++
++    with mock.patch("sys.stdout", spec=stdout_spec) as mock_stdout:
++
++        def _stdout_write_effect(value):
++            if value is mock_line:
++                raise UnicodeEncodeError("unittest-codec", "", 42, 43, "NOPE")
++            return None
++
++        mock_stdout.write.side_effect = _stdout_write_effect
++        mock_stdout.encoding = "ascii"
++
++        formatter = base.BaseFormatter(options())
++        formatter.write(mock_line, None)
++
++    mock_line.encode.assert_called_once_with("ascii", "backslashreplace")
++    byte_mock_line = mock_line.encode.return_value
++    if buffered_stdout:
++        mock_stdout.buffer.write.assert_any_call(byte_mock_line)
++    else:
++        byte_mock_line.decode.assert_called_once_with("ascii", "strict")
++        mock_stdout.write.assert_any_call(byte_mock_line.decode.return_value)
++
++
+ class AfterInitFormatter(base.BaseFormatter):
+     """Subclass for testing after_init."""
+ 
