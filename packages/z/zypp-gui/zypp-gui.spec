@@ -1,5 +1,7 @@
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# spec file for package zypp-gui
+#
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -10,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,20 +22,20 @@ Release:        0%{?dist}
 Summary:        Update the system, search, install and remove the package, configure the repos.
 License:        GPL-2.0-or-later
 Group:          System/GUI
-Url:            https://github.com/sunwxg/zypp-gui
+URL:            https://github.com/sunwxg/zypp-gui
 Source0:        https://github.com/sunwxg/zypp-gui/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        additional.json
 
-BuildRequires:  meson
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.40
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  rust >= 1.40
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 Requires:       PackageKit
@@ -71,4 +73,3 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/share/%{name}/additional.jso
 %{_datadir}/metainfo/zypp.gui.metainfo.xml
 
 %changelog
-
