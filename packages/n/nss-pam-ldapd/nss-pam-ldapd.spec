@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 
 Name:           nss-pam-ldapd
-Version:        0.9.11
+Version:        0.9.12
 Release:        0
 Summary:        NSS module and daemon for using LDAP as a naming service
 License:        LGPL-2.1-or-later

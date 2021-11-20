@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 20 18:27:13 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.9.12
+  * allow explicitly configuring an empty search base (for LDAP servers that support that)
+  * support LDAP attributes with minus characters in attribute mapping expressions
+  * add tls_reqsan, tls_crlfile and tls_crlcheck options
+  * support generating ldaps:// URIs from DNS SRV records for port 389 by using DNSLDAPS in the uri option
+  * prefer the first URI listed in nslcd.conf after reconnecting after idle_timelimit
+  * fix handling of pam_authc_ppolicy no
+  * fix debug logging of ldap timeout values
+  * documentation improvements
+  * add pam_authc_ppolicy support to pynslcd
+  * fix Python 3 compatibility in chsh.ldap
+  * fix for running pynslcd without the uid option
+  * partial support for running tests with slapd 2.5
+  * miscellaneous test suite improvements
+  * test suite fixes for Solaris
+
+-------------------------------------------------------------------
 Mon Oct 18 13:13:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Define macro _pam_moduledir if not set to fix builds for Leap and SLE
