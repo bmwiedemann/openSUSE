@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:21:16 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.5.0
+  * ipa: Use VTY-configured default network indicator
+  * Constrain connection ID allocation to 24 bits
+  * m3ua/sua: Add quirk for allowing inbound DAUD from SG in ASP
+    role
+  * ipa_asp_fsm: Support server starting handshake with ID_GET or
+    ID_ACK
+  * sccp: Add minimalistic support for XUDT / XUDTS
+  * stp: Add basic RX/TX rate counters on AS and ASP level
+
+-------------------------------------------------------------------
 Tue Oct  5 06:18:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
