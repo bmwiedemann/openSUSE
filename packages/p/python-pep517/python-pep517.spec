@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep517%{psuffix}
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT
