@@ -2,10 +2,10 @@
     <service name="tar_scm" mode="localonly">
         <param name="url">https://github.com/Napsty/check_smart.git</param>
         <param name="scm">git</param>
-        <param name="revision">6.9.1</param>
+        <param name="revision">6.11.0</param>
         <param name="exclude">.git</param>
-        <param name="versionformat">6.9.1</param>
-        <param name="revision">6.9.1</param>
+        <param name="versionformat">6.11.0</param>
+        <param name="revision">6.11.0</param>
         <param name="filename">check_smart</param>
     </service>
     <service name="set_version" mode="localonly">

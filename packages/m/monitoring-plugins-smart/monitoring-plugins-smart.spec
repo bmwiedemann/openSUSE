@@ -17,7 +17,7 @@
 
 
 Name:           monitoring-plugins-smart
-Version:        6.9.1
+Version:        6.11.0
 Release:        0
 Summary:        Check SMART status of a given disk
 License:        SUSE-Public-Domain
@@ -26,6 +26,7 @@ URL:            https://www.claudiokuenzler.com/nagios-plugins/check_smart.php
 Source0:        check_smart-%{version}.tar.xz
 Source1:        usr.lib.nagios.plugins.check_smart
 Source3:        monitoring-plugins-smart-README.SUSE
+Source4:        monitoring-plugins-smart-rpmlintrc
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  sudo
 Requires:       monitoring-plugins-common
@@ -65,8 +66,8 @@ install -D -m644 %{SOURCE1}  %{buildroot}/%{_sysconfdir}/apparmor.d/usr.lib.nagi
 %if 0%{?suse_version} > 1130
 mkdir -p %{buildroot}/%{_sysconfdir}/sudoers.d
 cat >> %{buildroot}/%{_sysconfdir}/sudoers.d/%{name} << EOF
-# the next line is needed for %%{name} to allow the correct use of smartctl
-nagios        ALL=(root) NOPASSWD: %{_sbindir}/smartctl
+# the next line is needed for %{name} to allow the correct use of smartctl
+nagios        ALL=(root) NOPASSWD: %{nagios_plugindir}/check_smart
 EOF
 %endif
 

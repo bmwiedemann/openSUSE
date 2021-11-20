@@ -75,4 +75,21 @@
     'Current_Pending_Sector,Reallocated_Sector_Ct,Program_Fail_Cnt_Total,</comment>
     <requestid>892023</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42c6a0ccd45718b03e1c8447c715d4a4</srcmd5>
+    <version>6.11.0</version>
+    <time>1637372371</time>
+    <user>dimstar_suse</user>
+    <comment>- reduce the sudoers rights for nagios user from using smartctl to 
+  only call the plugin itself. As the plugin is called with sudo 
+  rights, the included sudo calls in the plugin will also be executed
+  as root and don't cause any problem. As the plugin is only writable 
+  by root, this forbits the nagios user to execute smartctl with 
+  arbitrary options (boo#1191671)
+- update to 6.11.0
+  + Handle dots in NVMe attributes, prioritize (order) alerts
+  + Add aacraid devices (6.10.0)
+- add rpmlintrc</comment>
+    <requestid>932589</requestid>
+  </revision>
 </revisionlist>

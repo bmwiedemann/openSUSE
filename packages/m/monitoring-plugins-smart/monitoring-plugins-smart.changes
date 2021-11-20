@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 19 20:32:24 UTC 2021 - lars@linux-schulserver.de - 6.11.0
+
+- reduce the sudoers rights for nagios user from using smartctl to 
+  only call the plugin itself. As the plugin is called with sudo 
+  rights, the included sudo calls in the plugin will also be executed
+  as root and don't cause any problem. As the plugin is only writable 
+  by root, this forbits the nagios user to execute smartctl with 
+  arbitrary options (boo#1191671)
+- update to 6.11.0
+  + Handle dots in NVMe attributes, prioritize (order) alerts
+  + Add aacraid devices (6.10.0)
+- add rpmlintrc
+
+-------------------------------------------------------------------
 Mon May 10 10:54:49 UTC 2021 - lars@linux-schulserver.de - 6.9.1
 
 - Update to 6.9.1:
