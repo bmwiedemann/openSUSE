@@ -452,4 +452,12 @@
     <comment>- disable nistbeacon support</comment>
     <requestid>923504</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>414e9b4f478f8c8fcd2785b87233ea95</srcmd5>
+    <version>6.14</version>
+    <time>1637372351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932436</requestid>
+  </revision>
 </revisionlist>
