@@ -724,4 +724,13 @@
   * Allow to override date (#45)</comment>
     <requestid>892275</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9f569fc07c03a7f03801f16c47675c67</srcmd5>
+    <version>20211115</version>
+    <time>1637372285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211115:
+  * Sync license identifiers from SPDX (#50)</comment>
+    <requestid>931492</requestid>
+  </revision>
 </revisionlist>
