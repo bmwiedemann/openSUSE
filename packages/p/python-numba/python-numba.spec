@@ -1,5 +1,5 @@
 #
-# spec file for package python-numba-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-# NEP 29: python36-numpy and -scipy no longer in TW
 %define skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -29,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.53.0
+Version:        0.54.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -37,22 +36,20 @@ URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
 Patch0:         fix-max-name-size.patch
-# PATCH-FIX-UPSTREAM packaging-ignore-setuptools-deprecation.patch -- gh#numba/numba#6837
-Patch1:         https://github.com/numba/numba/pull/6837.patch#/packaging-ignore-setuptools-deprecation.patch
-# PATCH-FIX-USPTREAM ignore empty system time column on llvm timings --  gh#numba/numba#6851
-Patch2:         numba-pr6851-llvm-timings.patch
+# PATCH-FIX-UPSTREAM support numpy 1.21 -- gh#numba/numba#7176, gh#numba/numba#7483
+Patch1:         numba-pr7483-numpy1_21.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.15}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-BuildRequires:  tbb-devel
-Requires:       python-llvmlite < 0.37
-Requires:       python-llvmlite >= 0.36
-Requires:       python-numpy >= 1.15
+BuildRequires:  tbb-devel >= 2021
+Requires:       python-llvmlite < 0.38
+Requires:       python-llvmlite >= 0.37
+Requires:       python-numpy >= 1.18
 Requires:       python-scipy >= 0.16
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
@@ -106,24 +103,20 @@ This package contains files for developing applications using numba.
 %setup -q -n numba-%{version}
 %autopatch -p1
 
-# Incompatilbe numpy versions (?)
-# Check these with every version update! (Last check 0.53)
-# https://github.com/numba/numba/issues/5251
-# https://numba.discourse.group/t/helping-test-numba-0-53-0-rc/519/34
-rm numba/tests/test_np_functions.py
-rm numba/tests/test_array_reductions.py
 # timeouts randomly in OBS
 rm numba/tests/test_typedlist.py
 # if we reduced the amount of tests too much:
-#sed -i -e '/check_testsuite_size/ s/5000/3000/' numba/tests/test_runtests.py
+# sed -i -e '/check_testsuite_size/ s/5000/3000/' numba/tests/test_runtests.py
 # our setup imports distutils. Not sure why, but should not be a problem.
 sed -i -e "/def test_laziness/,/def/ {/'distutils',/ d}" numba/tests/test_import.py
 
 sed -i -e '1{/env python/ d}' numba/misc/appdirs.py
 
 %build
+%if !%{with test}
 export CFLAGS="%{optflags} -fPIC"
 %python_build
+%endif
 
 %install
 %if !%{with test}
@@ -154,7 +147,7 @@ mv numba_temp numba
 %post
 %{python_install_alternative numba pycc}
 
-%preun
+%postun
 %python_uninstall_alternative numba
 
 %files %{python_files} -f devel-files-exclude-%{python_bin_suffix}.files

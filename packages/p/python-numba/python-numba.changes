@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Nov 18 18:42:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.54.1
+  * This is a bugfix release for 0.54.0. It fixes a regression in
+    structured array type handling, a potential leak on
+    initialization failure in the CUDA target, a regression caused
+    by Numba’s vendored cloudpickle module resetting dynamic
+    classes and a few minor testing/infrastructure related
+    problems.
+- Release summary for 0.54.0
+  * This release includes a significant number of new features,
+    important refactoring, critical bug fixes and a number of
+    dependency upgrades.
+  * Python language support enhancements:
+    - Basic support for f-strings.
+    - dict comprehensions are now supported.
+    - The sum built-in function is implemented.
+  * NumPy features/enhancements, The following functions are now
+    supported:
+    - np.clip
+    - np.iscomplex
+    - np.iscomplexobj
+    - np.isneginf
+    - np.isposinf
+    - np.isreal
+    - np.isrealobj
+    - np.isscalar
+    - np.random.dirichlet
+    - np.rot90
+    - np.swapaxes
+  * Also np.argmax has gained support for the axis keyword argument
+    and it’s now possible to use 0d NumPy arrays as scalars in
+    __setitem__ calls.
+
+  Internal changes:
+  * Debugging support through DWARF has been fixed and enhanced.
+  * Numba now optimises the way in which locals are emitted to help
+    reduce time spend in LLVM’s SROA passes.
+
+  CUDA target changes:
+  * Support for emitting lineinfo to be consumed by profiling tools
+    such as Nsight Compute
+  * Improved fastmath code generation for various trig, division,
+    and other functions
+  * Faster compilation using lazy addition of libdevice to compiled
+    units
+  * Support for IPC on Windows
+  * Support for passing tuples to CUDA ufuncs
+  * Performance warnings:
+    - When making implicit copies by calling a kernel on arrays in
+      host memory
+    - When occupancy is poor due to kernel or ufunc/gufunc
+      configuration
+  * Support for implementing warp-aggregated intrinsics:
+    - Using support for more CUDA functions: activemask(),
+      lanemask_lt()
+    - The ffs() function now works correctly!
+  * Support for @overload in the CUDA target
+
+  Intel kindly sponsored research and development that lead to a
+  number of new features and internal support changes:
+  * Dispatchers can now be retargetted to a new target via a user
+    defined context manager.
+  * Support for custom NumPy array subclasses has been added
+    (including an overloadable memory allocator).
+  * An inheritance based model for targets that permits targets to
+    share @overload implementations.
+  * Per function compiler flags with inheritance behaviours.
+  * The extension API now has support for overloading class methods
+    via the @overload_classmethod decorator.
+  
+  Deprecations:
+  * The ROCm target (for AMD ROC GPUs) has been moved to an
+    “unmaintained” status and a seperate repository stub has been
+    created for it at: https://github.com/numba/numba-rocm
+ 
+  CUDA target deprecations and breaking changes:
+  * Relaxed strides checking is now the default when computing the
+    contiguity of device arrays.
+  * The inspect_ptx() method is deprecated. For use cases that
+    obtain PTX for further compilation outside of Numba, use
+    compile_ptx() instead.
+  * Eager compilation of device functions (the case when
+    device=True and a signature is provided) is deprecated.
+ 
+  Version support/dependency changes:
+  * LLVM 11 is now supported on all platforms via llvmlite.
+  * The minimum supported Python version is raised to 3.7.
+  * NumPy version 1.20 is supported.
+  * The minimum supported NumPy version is raised to 1.17 for
+    runtime (compilation however remains compatible with NumPy
+    1.11).
+  * Vendor cloudpickle v1.6.0 – now used for all pickle operations.
+  * TBB >= 2021 is now supported and all prior versions are
+    unsupported (not easily possible to maintain the ABI breaking
+    changes).
+- Full release notes;
+  https://numba.readthedocs.io/en/0.54.1/release-notes.html
+- Drop patches merged upstream:
+  * packaging-ignore-setuptools-deprecation.patch
+  * numba-pr6851-llvm-timings.patch
+- Refresh skip-failing-tests.patch, fix-max-name-size.patch
+- Add numba-pr7483-numpy1_21.patch gh#numba/numba#7176,
+  gh#numba/numba#7483
+
+-------------------------------------------------------------------
 Wed Mar 17 16:51:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.53.0
