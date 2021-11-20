@@ -535,4 +535,13 @@ discover that breaks ...
 - do not break SLE 12 build when applying spec-cleaner</comment>
     <requestid>887008</requestid>
   </revision>
+  <revision rev="59" vrev="4">
+    <srcmd5>6aa65256eedb4d7f92edb78af165aa5e</srcmd5>
+    <version>6.2.1</version>
+    <time>1637444865</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gmp-6.2.1-CVE-2021-43618.patch to fix buffer overflow on
+  malformed input to mpz_inp_raw.  [bsc#1192717, CVE-2021-43618]</comment>
+    <requestid>931707</requestid>
+  </revision>
 </revisionlist>

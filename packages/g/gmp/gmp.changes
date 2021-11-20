@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 07:33:41 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add gmp-6.2.1-CVE-2021-43618.patch to fix buffer overflow on
+  malformed input to mpz_inp_raw.  [bsc#1192717, CVE-2021-43618]
+
+-------------------------------------------------------------------
 Tue Apr 20 12:59:35 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Compute FIPS hmac for libgmp.so.10 [bsc#1184555]

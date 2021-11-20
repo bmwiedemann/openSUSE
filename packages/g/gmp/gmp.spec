@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 # revert change causing bsc#1179751
 Patch1:         gmp-6.2.1-arm64-invert_limb.patch
+Patch2:         gmp-6.2.1-CVE-2021-43618.patch
 BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 BuildRequires:  m4
@@ -78,6 +79,7 @@ huge numbers (integer and floating point).
 %prep
 %setup -q
 %patch1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fexceptions"
