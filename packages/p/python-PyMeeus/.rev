@@ -34,4 +34,12 @@
   * Fixed undefined variable in `Epoch.tt2ut`.</comment>
     <requestid>879556</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b12cf57d215d5875b45e2c44e2d2614</srcmd5>
+    <version>0.5.11</version>
+    <time>1637444876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932312</requestid>
+  </revision>
 </revisionlist>
