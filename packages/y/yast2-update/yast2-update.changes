@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 13:10:22 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt to the ProductSpec API (bsc#1192626).
+- 4.4.4
+
+-------------------------------------------------------------------
 Mon Sep  6 14:08:12 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed crash during system upgrade (synchronize the YaST and
