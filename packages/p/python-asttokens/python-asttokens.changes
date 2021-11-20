@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 10:21:46 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap outside repo d:l:p.
+- Disable build of python2 and python36.
+  End of support since: python2 (2020-01-01), python36 (2021-12-23)
+- Insert reuired versions for required python-modules.
+
+-------------------------------------------------------------------
 Sun Sep  5 22:20:08 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 2.0.5:

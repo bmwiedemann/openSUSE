@@ -18,6 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-asttokens
 Version:        2.0.5
 Release:        0
@@ -29,7 +31,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/asttokens/astto
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 44}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
