@@ -634,4 +634,14 @@ Lets break everything :)
   * Revert &quot;brp-25-symlink: Follow deeper symlinks to avoid false positives&quot;</comment>
     <requestid>904422</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>5fb8a810755ffdb3e091a3094595d43d</srcmd5>
+    <version>84.87+git20211116.6c5fe09</version>
+    <time>1637444865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20211116.6c5fe09:
+  * brp-25-symlink: don't fail if the symlink target starts with a dash
+  * Revert &quot;Let symlinks from /lib/modules to /usr/src be absolute&quot;</comment>
+    <requestid>931714</requestid>
+  </revision>
 </revisionlist>

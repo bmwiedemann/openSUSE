@@ -23,7 +23,7 @@ Summary:        Build root policy check scripts
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 Requires:       perl
-Version:        84.87+git20210706.41c04c1
+Version:        84.87+git20211116.6c5fe09
 Release:        0
 URL:            https://github.com/openSUSE/brp-check-suse
 BuildRequires:  gcc-c++
