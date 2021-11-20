@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov  7 18:22:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.3:
+  * Removed splituser() function which wasn't used and is deprecated.
+  * Handle version comparisons correctly in environment markers.
+  * Handle a single trailing comma following a version. 
+  * Fix incorrect handling of epochs.
+  * Reverted handling of tags for Python >= 3.10
+    (use 310 rather than 3_10). This is because PEP 641 was rejected.
+  * removed unused regular expression
+  * allowed "Obsoletes" in more scenarios, to better handle faulty metadata
+    already on PyPI.
+  * added entry for SourcelessFileLoader to the finder registry.
+  * allowed a trailing comma in constraints, to better handle faulty metadata
+   already on PyPI
+- drop python-distlib-2048-bit-key.patch (obsolete) 
+
+-------------------------------------------------------------------
 Wed Feb 10 19:44:20 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update the test self-signed certificate to use 2048-bit key.

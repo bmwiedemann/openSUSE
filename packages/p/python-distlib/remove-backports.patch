@@ -1,7 +1,7 @@
-Index: distlib-0.3.1/distlib/_backport/shutil.py
+Index: distlib-0.3.3/distlib/_backport/shutil.py
 ===================================================================
---- distlib-0.3.1.orig/distlib/_backport/shutil.py
-+++ distlib-0.3.1/distlib/_backport/shutil.py
+--- distlib-0.3.3.orig/distlib/_backport/shutil.py
++++ distlib-0.3.3/distlib/_backport/shutil.py
 @@ -19,7 +19,7 @@ try:
  except ImportError:
      from collections import Callable
@@ -11,11 +11,11 @@ Index: distlib-0.3.1/distlib/_backport/shutil.py
  
  try:
      import bz2
-Index: distlib-0.3.1/distlib/compat.py
+Index: distlib-0.3.3/distlib/compat.py
 ===================================================================
---- distlib-0.3.1.orig/distlib/compat.py
-+++ distlib-0.3.1/distlib/compat.py
-@@ -311,10 +311,7 @@ except ImportError: # pragma: no cover
+--- distlib-0.3.3.orig/distlib/compat.py
++++ distlib-0.3.3/distlib/compat.py
+@@ -313,10 +313,7 @@ except ImportError: # pragma: no cover
              return 'IronPython'
          return 'CPython'
  
@@ -27,30 +27,22 @@ Index: distlib-0.3.1/distlib/compat.py
  
  try:
      callable = callable
-Index: distlib-0.3.1/setup.py
+Index: distlib-0.3.3/setup.py
 ===================================================================
---- distlib-0.3.1.orig/setup.py
-+++ distlib-0.3.1/setup.py
-@@ -6,7 +6,6 @@
- #
- 
- import distutils.core
--from distutils.sysconfig import get_python_lib
- from os.path import join, dirname, abspath
- import re
- import sys
-@@ -69,7 +68,6 @@ distutils.core.setup(
+--- distlib-0.3.3.orig/setup.py
++++ distlib-0.3.3/setup.py
+@@ -63,7 +63,6 @@ distutils.core.setup(
          'distlib._backport',
      ],
      package_data={
 -        'distlib._backport': ['sysconfig.cfg'],
-         'distlib': ['t32.exe', 't64.exe', 'w32.exe', 'w64.exe'],
+         'distlib': ['t32.exe', 't64.exe', 'w32.exe', 'w64.exe',
+                     't64-arm.exe', 'w64-arm.exe'],
      },
-     cmdclass={
-Index: distlib-0.3.1/tests/distlib_tests.py
+Index: distlib-0.3.3/tests/distlib_tests.py
 ===================================================================
---- distlib-0.3.1.orig/tests/distlib_tests.py
-+++ distlib-0.3.1/tests/distlib_tests.py
+--- distlib-0.3.3.orig/tests/distlib_tests.py
++++ distlib-0.3.3/tests/distlib_tests.py
 @@ -10,7 +10,6 @@ _ver = sys.version_info[:2]
  from test_database import (DataFilesTestCase, TestDatabase, TestDistribution,
                             TestEggInfoDistribution, DepGraphTestCase)
@@ -66,13 +58,13 @@ Index: distlib-0.3.1/tests/distlib_tests.py
 -    from test_sysconfig import TestSysConfig, MakefileTests
  from test_util import (UtilTestCase, ProgressTestCase, FileOpsTestCase,
                         GlobTestCase)
-Index: distlib-0.3.1/tests/test_shutil.py
+Index: distlib-0.3.3/tests/test_shutil.py
 ===================================================================
---- distlib-0.3.1.orig/tests/test_shutil.py
-+++ distlib-0.3.1/tests/test_shutil.py
-@@ -20,7 +20,7 @@ import tempfile
- from compat import unittest
- 
+--- distlib-0.3.3.orig/tests/test_shutil.py
++++ distlib-0.3.3/tests/test_shutil.py
+@@ -19,7 +19,7 @@ import tempfile
+ from compat import unittest, find_executable, spawn
+ from support import DistlibTestCase
  
 -from distlib._backport import shutil, tarfile
 +from distlib._backport import shutil; import tarfile

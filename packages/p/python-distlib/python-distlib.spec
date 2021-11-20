@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distlib
-Version:        0.3.1
+Version:        0.3.3
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0
 URL:            https://bitbucket.org/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
 Patch0:         remove-backports.patch
-#PATCH-FIX-UPSTREAM Update self-signed certificate to use 2048-bit key.
-Patch1:         python-distlib-2048-bit-key.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
