@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-calmjs.parse
 Version:        1.3.0
 Release:        0
@@ -43,12 +44,11 @@ ECMAScript; a near feature complete fork of slimit.
 %build
 export LANG=en_US.UTF-8
 %python_build
+%python_expand PYTHONPATH=build/lib $python -m calmjs.parse.parsers.optimize
 
 %install
 %python_install
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m calmjs.parse.parsers.optimize
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
@@ -57,6 +57,6 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/calmjs*
 
 %changelog

@@ -45,4 +45,15 @@
 </comment>
     <requestid>931812</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fc85eded7b093c91161d0b6c06e37616</srcmd5>
+    <version>1.3.0</version>
+    <time>1637372341</time>
+    <user>dimstar_suse</user>
+    <comment>- Generated tables should get correct *.pyc files
+- And no, this won't work with Python 2 modules. Just don't even
+  try.
+</comment>
+    <requestid>932332</requestid>
+  </revision>
 </revisionlist>
