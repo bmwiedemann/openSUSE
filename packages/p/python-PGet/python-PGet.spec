@@ -1,7 +1,7 @@
 #
 # spec file for package python-PGet
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PGet
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 License:        Apache-2.0
 Summary:        Download tool using chunks
-Url:            https://github.com/halilozercan/pget
+URL:            https://github.com/halilozercan/pget
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/P/PGet/PGet-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.20.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-requests
+Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
