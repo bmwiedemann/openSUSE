@@ -144,4 +144,41 @@
 - nodejs16.spec: Reference it.</comment>
     <requestid>928966</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>28933a5c83961a1298ec2fbdde6bc03d</srcmd5>
+    <version>16.13.0</version>
+    <time>1637372297</time>
+    <user>dimstar_suse</user>
+    <comment>- BR python 3.6+
+
+- Update to 16.13.0:
+  * Experimental ESM Loader Hooks API
+    https://github.com/nodejs/node/pull/37468
+  * deps: upgrade npm to 8.1.0 (npm team)
+  * vm: add support for import assertions in dynamic imports
+- Changes in 16.11.1:
+  * deps: update llhttp to 6.0.4
+    - HTTP Request Smuggling due to spaced in headers
+     (bsc#1191601, CVE-2021-22959)
+    - HTTP Request Smuggling when parsing the body
+     (bsc#1191602, CVE-2021-22960)
+- Changes in 16.11.0:
+  * deps: update nghttp2 to v1.45.1
+- Changes in 16.10.0:
+  * crypto: add rsa-pss keygen parameters
+  * fs: make open and close stream override optional when unused
+  * http: limit requests per connection
+    The maximum number of requests a socket can handle before closing
+    keep alive connection can be set with server.maxRequestsPerSocket.
+  * src: add --no-global-search-paths cli option
+  * stream: add signal support to pipeline generators
+- Changes in 16.9.0:
+  * Added support for corepack
+  * crypto: add RSA-PSS params to asymmetricKeyDetails
+  * module: support pattern trailers
+  * stream: add stream.compose
+- Changes in 16.8.0:
+  * doc: deprecate type coercion for dns.lookup options</comment>
+    <requestid>930406</requestid>
+  </revision>
 </revisionlist>

@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v16.5.0/Makefile
+Index: node-v16.13.0/Makefile
 ===================================================================
---- node-v16.5.0.orig/Makefile
-+++ node-v16.5.0/Makefile
+--- node-v16.13.0.orig/Makefile
++++ node-v16.13.0/Makefile
 @@ -52,7 +52,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,55 +21,44 @@ Index: node-v16.5.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v16.5.0/tools/install.py
+Index: node-v16.13.0/tools/install.py
 ===================================================================
---- node-v16.5.0.orig/tools/install.py
-+++ node-v16.5.0/tools/install.py
-@@ -81,34 +81,34 @@ def uninstall(paths, dst):
+--- node-v16.13.0.orig/tools/install.py
++++ node-v16.13.0/tools/install.py
+@@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
- def npm_files(action):
--  target_path = sysconfig.get_config_var("LIB") + '/node_modules/npm/'
-+  target_path = sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/'
+ def package_files(action, name, bins):
+-  target_path = libdir() + '/node_modules/' + name + '/'
++  target_path = libdir() + '/node_modules/' + name + '16/'
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
--  if os.path.islink(abspath(install_path, target_path)): return
-+  if os.path.islink(abspath(install_path, '..', target_path)): return
+@@ -106,19 +106,19 @@ def package_files(action, name, bins):
+     if action == uninstall:
+       action([link_path], 'bin/' + bin_name)
+     elif action == install:
+-      try_symlink('../' + libdir() + '/node_modules/' + name + '/' + bin_target, link_path)
++      try_symlink('../' + libdir() + '/node_modules/' + name + '16/' + bin_target, link_path)
+     else:
+       assert 0  # unhandled action type
  
-   # npm has a *lot* of files and it'd be a pain to maintain a fixed list here
-   # so we walk its source directory instead...
-   for dirname, subdirs, basenames in os.walk('deps/npm', topdown=True):
-     subdirs[:] = [subdir for subdir in subdirs if subdir != 'test']
-     paths = [os.path.join(dirname, basename) for basename in basenames]
--    action(paths, target_path + dirname[9:] + '/')
-+    action(paths, install_path + '/..' + target_path + dirname[9:] + '/')
+ def npm_files(action):
+   package_files(action, 'npm', {
+-    'npm': 'bin/npm-cli.js',
+-    'npx': 'bin/npx-cli.js',
++    'npm16': 'bin/npm-cli.js',
++    'npx16': 'bin/npx-cli.js',
+   })
  
-   # create/remove symlink
--  link_path = abspath(install_path, 'bin/npm')
-+  link_path = abspath(install_path, 'bin/npm16')
-   if action == uninstall:
--    action([link_path], 'bin/npm')
-+    action([link_path], 'bin/npm16')
-   elif action == install:
--    try_symlink("../" + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npm-cli.js',link_path)
-+    try_symlink("../../" + sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/bin/npm-cli.js',link_path)
-   else:
-     assert 0  # unhandled action type
- 
-   # create/remove symlink
--  link_path = abspath(install_path, 'bin/npx')
-+  link_path = abspath(install_path, 'bin/npx16')
-   if action == uninstall:
--    action([link_path], 'bin/npx')
-+    action([link_path], 'bin/npx16')
-   elif action == install:
--    try_symlink('../' + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npx-cli.js', link_path)
-+    try_symlink('../../' + sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/bin/npx-cli.js', link_path)
-   else:
-     assert 0 # unhandled action type
- 
-@@ -122,7 +122,7 @@ def subdir_files(path, dest, action):
+ def corepack_files(action):
+   package_files(action, 'corepack', {
+-    'corepack': 'dist/corepack.js',
++    'corepack16': 'dist/corepack.js',
+ #   Not the default just yet:
+ #   'yarn': 'dist/yarn.js',
+ #   'yarnpkg': 'dist/yarn.js',
+@@ -136,7 +136,7 @@ def subdir_files(path, dest, action):
  
  def files(action):
    is_windows = sys.platform == 'win32'
@@ -78,12 +67,8 @@ Index: node-v16.5.0/tools/install.py
    output_prefix = 'out/Release/'
  
    if 'false' == variables.get('node_shared'):
-@@ -140,10 +140,10 @@ def files(action):
-     action([output_prefix + output_file], 'lib/' + output_file)
- 
-   if 'true' == variables.get('node_use_dtrace'):
--    action(['out/Release/node.d'], sysconfig.get_config_var("LIB") + '/dtrace/node.d')
-+    action(['out/Release/node.d'], ".." + sysconfig.get_config_var("LIBDIR") + '/dtrace/node.d')
+@@ -157,7 +157,7 @@ def files(action):
+     action(['out/Release/node.d'], libdir() + '/dtrace/node.d')
  
    # behave similarly for systemtap
 -  action(['src/node.stp'], 'share/systemtap/tapset/')
@@ -91,16 +76,16 @@ Index: node-v16.5.0/tools/install.py
  
    action(['deps/v8/tools/gdbinit'], 'share/doc/node/')
    action(['deps/v8/tools/lldb_commands.py'], 'share/doc/node/')
-@@ -151,7 +151,7 @@ def files(action):
+@@ -165,7 +165,7 @@ def files(action):
    if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
      action(['doc/node.1'], 'man/man1/')
    else:
 -    action(['doc/node.1'], 'share/man/man1/')
 +    action(['doc/node.1'], 'share/man/man1/node16.1')
  
-   if 'true' == variables.get('node_install_npm'): npm_files(action)
- 
-@@ -185,28 +185,28 @@ def headers(action):
+   if 'true' == variables.get('node_install_npm'):
+     npm_files(action)
+@@ -201,28 +201,28 @@ def headers(action):
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -137,10 +122,10 @@ Index: node-v16.5.0/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v16.5.0/doc/node.1
+Index: node-v16.13.0/doc/node.1
 ===================================================================
---- node-v16.5.0.orig/doc/node.1
-+++ node-v16.5.0/doc/node.1
+--- node-v16.13.0.orig/doc/node.1
++++ node-v16.13.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +155,10 @@ Index: node-v16.5.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v16.5.0/src/node.stp
+Index: node-v16.13.0/src/node.stp
 ===================================================================
---- node-v16.5.0.orig/src/node.stp
-+++ node-v16.5.0/src/node.stp
+--- node-v16.13.0.orig/src/node.stp
++++ node-v16.13.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +231,12 @@ Index: node-v16.5.0/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v16.5.0/deps/npm/man/man1/npm.1
+Index: node-v16.13.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v16.5.0.orig/deps/npm/man/man1/npm.1
-+++ node-v16.5.0/deps/npm/man/man1/npm.1
+--- node-v16.13.0.orig/deps/npm/man/man1/npm.1
++++ node-v16.13.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "July 2021" "" ""
+ .TH "NPM" "1" "October 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
@@ -321,10 +306,10 @@ Index: node-v16.5.0/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-v16.5.0/src/node_main.cc
+Index: node-v16.13.0/src/node_main.cc
 ===================================================================
---- node-v16.5.0.orig/src/node_main.cc
-+++ node-v16.5.0/src/node_main.cc
+--- node-v16.13.0.orig/src/node_main.cc
++++ node-v16.13.0/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -333,10 +318,10 @@ Index: node-v16.5.0/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v16.5.0/tools/test.py
+Index: node-v16.13.0/tools/test.py
 ===================================================================
---- node-v16.5.0.orig/tools/test.py
-+++ node-v16.5.0/tools/test.py
+--- node-v16.13.0.orig/tools/test.py
++++ node-v16.13.0/tools/test.py
 @@ -935,7 +935,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
@@ -346,10 +331,10 @@ Index: node-v16.5.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v16.5.0/node.gyp
+Index: node-v16.13.0/node.gyp
 ===================================================================
---- node-v16.5.0.orig/node.gyp
-+++ node-v16.5.0/node.gyp
+--- node-v16.13.0.orig/node.gyp
++++ node-v16.13.0/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -361,10 +346,10 @@ Index: node-v16.5.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v16.5.0/deps/npm/man/man1/npx.1
+Index: node-v16.13.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v16.5.0.orig/deps/npm/man/man1/npx.1
-+++ node-v16.5.0/deps/npm/man/man1/npx.1
+--- node-v16.13.0.orig/deps/npm/man/man1/npx.1
++++ node-v16.13.0/deps/npm/man/man1/npx.1
 @@ -5,15 +5,15 @@
  .P
  .RS 2

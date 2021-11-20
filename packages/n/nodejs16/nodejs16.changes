@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Nov  9 10:43:16 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- BR python 3.6+
+
+-------------------------------------------------------------------
+Sat Nov  6 14:13:02 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 16.13.0:
+  * Experimental ESM Loader Hooks API
+    https://github.com/nodejs/node/pull/37468
+  * deps: upgrade npm to 8.1.0 (npm team)
+  * vm: add support for import assertions in dynamic imports
+
+- Changes in 16.11.1:
+  * deps: update llhttp to 6.0.4
+    - HTTP Request Smuggling due to spaced in headers
+     (bsc#1191601, CVE-2021-22959)
+    - HTTP Request Smuggling when parsing the body
+     (bsc#1191602, CVE-2021-22960)
+
+- Changes in 16.11.0:
+  * deps: update nghttp2 to v1.45.1
+
+- Changes in 16.10.0:
+  * crypto: add rsa-pss keygen parameters
+  * fs: make open and close stream override optional when unused
+  * http: limit requests per connection
+    The maximum number of requests a socket can handle before closing
+    keep alive connection can be set with server.maxRequestsPerSocket.
+  * src: add --no-global-search-paths cli option
+  * stream: add signal support to pipeline generators
+
+- Changes in 16.9.0:
+  * Added support for corepack
+  * crypto: add RSA-PSS params to asymmetricKeyDetails
+  * module: support pattern trailers
+  * stream: add stream.compose
+
+- Changes in 16.8.0:
+  * doc: deprecate type coercion for dns.lookup options
+  * stream: add stream.Duplex.from utility and isDisturbed helper
+  * util: expose toUSVString
+
+- Changes in 16.7.0:
+  * fs: experimental: add recursive cp method
+
+- refreshed: fix_ci_tests.patch, flaky_test_rerun.patch,
+  nodejs-libpath.patch, sle12_python3_compat.patch,
+  versioned.patch, node_modules.tar.xz
+
+-------------------------------------------------------------------
 Tue Nov  2 14:40:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 40670.patch: test: fix test-datetime-change-notify after

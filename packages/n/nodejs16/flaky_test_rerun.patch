@@ -1,8 +1,8 @@
-Index: node-git.b4f0a18b5a/tools/test.py
+Index: node-v16.13.0/tools/test.py
 ===================================================================
---- node-git.b4f0a18b5a.orig/tools/test.py
-+++ node-git.b4f0a18b5a/tools/test.py
-@@ -537,6 +537,16 @@ class TestCase(object):
+--- node-v16.13.0.orig/tools/test.py
++++ node-v16.13.0/tools/test.py
+@@ -586,6 +586,16 @@ class TestCase(object):
                        self.context.store_unexpected_output)
  
    def Run(self):
