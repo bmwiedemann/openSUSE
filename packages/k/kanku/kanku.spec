@@ -22,15 +22,17 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
 URL:            https://github.com/M0ses/kanku
 Group:          Productivity/Networking/Web/Utilities
 Source:         %{name}-%{version}.tar.xz
-Patch0:         0001_dancer-config.patch
 BuildArch:      noarch
+# Thanks to pallavides@gmail.com
+# Cannot build s390x as it cannot find 'etc/templates/default-vm.tt2.s390x'
+ExcludeArch:    s390x
 BuildRequires:  fdupes
 BuildRequires:  perl-macros
 BuildRequires:  systemd-rpm-macros
@@ -176,6 +178,11 @@ Requires:       perl(Archive::Cpio)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(Mail::Sendmail)
 Requires:       perl(UUID)
+%if 0%{?suse_version}
+Requires:       openssl(cli)
+%else
+Requires:       openssl
+%endif
 
 Conflicts:      perl-DBD-SQLite-Amalgamation
 
@@ -186,7 +193,7 @@ common config and lib files used in kanku
 %tmpfiles_create %_tmpfilesdir/kanku.conf
 
 %files common
-%doc README.md
+%doc README.md RELEASE-NOTES-0.11.0.md
 
 %dir /usr/lib/kanku
 %dir /usr/lib/kanku/lib

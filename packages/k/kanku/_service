@@ -10,9 +10,7 @@
     <param name="extract">dist/debian.control</param>
     <param name="extract">dist/debian.dsc</param>
     <param name="extract">dist/debian.rules</param>
-    <param name="revision">master</param>
-    <param name="latest-signed-tag">true</param>
-    <param name="maintainers-asc">_maintainers.asc</param>
+    <param name="revision">0.11.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>

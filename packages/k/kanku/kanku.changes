@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 18 09:26:27 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.11.0:
+  * see RELEASE-NOTES-0.11.0.md in the doc dir of your packages
+  * PATCH removed 0001_dancer-config.patch - included in new 
+    release
+
+-------------------------------------------------------------------
 Sun Oct 24 12:55:08 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - fix dancer config template - removed duplicate session key
