@@ -17,10 +17,10 @@
 
 
 Name:           libosmocore
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
-License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 Source:         https://github.com/osmocom/libosmocore/archive/%version.tar.gz
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig(gnutls) >= 2.12.0
 BuildRequires:  pkgconfig(libmnl)
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(talloc) >= 2.0.1
+BuildRequires:  pkgconfig(talloc) >= 2.1.0
 
 %description
 libosmocore is a package with various utility functions that were
@@ -47,7 +47,7 @@ between OsmocomBB and OpenBSC to avoid code duplication.
 
 %package tools
 Summary:        GSM utilities from the osmocore project
-License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-3.0-or-later AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 Provides:       %name-utils = %version-%release
 
@@ -112,13 +112,13 @@ transcoding routines.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmocoding.
 
-%package -n libosmocore17
+%package -n libosmocore18
 Summary:        Osmocom core library
 # crc16.c has GPL2-only clauses, the rest (*.c) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmocore17
+%description -n libosmocore18
 libosmocore is a library with various utility functions shared
 between OpenBSC and OsmocomBB.
 
@@ -127,7 +127,7 @@ Summary:        Development files for the Osmocom core library
 # crc16.h has GPL2-only clauses, the rest (*.h) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmocore17 = %version
+Requires:       libosmocore18 = %version
 Requires:       libtalloc-devel
 
 %description -n libosmocore-devel
@@ -189,12 +189,12 @@ The libosmogb library contains a GPRS BSSGP protocol implementation.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmogb.
 
-%package -n libosmogsm16
+%package -n libosmogsm17
 Summary:        Osmocom GSM utility library
-License:        GPL-2.0-or-later AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmogsm16
+%description -n libosmogsm17
 libosmocore is a package with various utility functions that were
 originally developed as part of the OpenBSC project.
 
@@ -206,10 +206,10 @@ protocol definitions for a series of protocols.
 
 %package -n libosmogsm-devel
 Summary:        Development files for the Osmocom GSM utility library
-License:        GPL-2.0-or-later AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       libosmocore-devel = %version
-Requires:       libosmogsm16 = %version
+Requires:       libosmogsm17 = %version
 
 %description -n libosmogsm-devel
 The libosmogsm library in particular is a collection of common code
@@ -323,14 +323,14 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %postun -n libosmocodec0 -p /sbin/ldconfig
 %post   -n libosmocoding0 -p /sbin/ldconfig
 %postun -n libosmocoding0 -p /sbin/ldconfig
-%post   -n libosmocore17 -p /sbin/ldconfig
-%postun -n libosmocore17 -p /sbin/ldconfig
+%post   -n libosmocore18 -p /sbin/ldconfig
+%postun -n libosmocore18 -p /sbin/ldconfig
 %post   -n libosmoctrl0 -p /sbin/ldconfig
 %postun -n libosmoctrl0 -p /sbin/ldconfig
 %post   -n libosmogb12 -p /sbin/ldconfig
 %postun -n libosmogb12 -p /sbin/ldconfig
-%post   -n libosmogsm16 -p /sbin/ldconfig
-%postun -n libosmogsm16 -p /sbin/ldconfig
+%post   -n libosmogsm17 -p /sbin/ldconfig
+%postun -n libosmogsm17 -p /sbin/ldconfig
 %post   -n libosmosim2 -p /sbin/ldconfig
 %postun -n libosmosim2 -p /sbin/ldconfig
 %post   -n libosmousb0 -p /sbin/ldconfig
@@ -361,8 +361,8 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmocoding.so
 %_libdir/pkgconfig/libosmocoding.pc
 
-%files -n libosmocore17
-%_libdir/libosmocore.so.17*
+%files -n libosmocore18
+%_libdir/libosmocore.so.18*
 
 %files -n libosmocore-devel
 %dir %_includedir/%name/
@@ -393,8 +393,8 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmogb.so
 %_libdir/pkgconfig/libosmogb.pc
 
-%files -n libosmogsm16
-%_libdir/libosmogsm.so.16*
+%files -n libosmogsm17
+%_libdir/libosmogsm.so.17*
 
 %files -n libosmogsm-devel
 %dir %_includedir/%name/

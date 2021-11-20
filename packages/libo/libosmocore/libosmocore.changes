@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 08:49:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.6.0
+  * gprs_bssgp: add support for SGSN oriented RESET
+  * gprs_ns2_sns: Support for SGSN-side IP-SNS
+  * RR: add VAMOS channel modes
+
+-------------------------------------------------------------------
 Sun Mar 14 20:14:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.1
