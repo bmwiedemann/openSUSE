@@ -1,7 +1,7 @@
 #
 # spec file for package compiz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch0:         %{name}-suse-defaults.patch
 Patch1:         %{name}-java-config-notify.diff
 # PATCH-FIX-UPSTREAM bsc#474862 dreveman@novell.com -- Allow moving focus to fs window.
 Patch2:         bug-474862-allow-moving-focus-to-fs-window.diff
+# PATCH-FIX-UPSTREAM compiz-0.8.18-fix-librsvg-2.51.patch -- Fix building against librsvg 2.51+.
+Patch3:         %{name}-0.8.18-fix-librsvg-2.51.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
