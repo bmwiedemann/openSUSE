@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 18 13:58:21 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211116.00
+  * GCE supports up to 24 NVMe local SSDs, but the regex in the PROGRAM field
+    only looks for the last digit of the given string causing issues when there
+    are >= 10 local SSDs. Changed REGEX to get the last number of the string
+    instead to support the up to 24 local SSDs. (#30)
+  * chmod+x google_nvme_id on EL (#31)
+- Fix duplicate installation of google_optimize_local_ssd and google_set_multiqueue
+- Install google_nvme_id into /usr/lib/udev (bsc#1192652, bsc#1192653)
+
+-------------------------------------------------------------------
 Fri Oct 22 13:07:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210916.00

@@ -60,4 +60,12 @@
   * update OWNERS (forwarded request 926984 from glaubitz)</comment>
     <requestid>927010</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a49ec3a45624588abfbde583e76ffae0</srcmd5>
+    <version>20211116.00</version>
+    <time>1637372363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932542</requestid>
+  </revision>
 </revisionlist>

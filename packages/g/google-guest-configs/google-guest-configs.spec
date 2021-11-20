@@ -20,8 +20,9 @@
 # systemd-rpm-macros(or kmod) is wrong in 15.2
 %define _modprobedir /lib/modprobe.d
 %endif
+%define _udevdir %(pkg-config --variable udev_dir udev)
 Name:           google-guest-configs
-Version:        20210916.00
+Version:        20211116.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
@@ -29,6 +30,7 @@ Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
 BuildRequires:  pkgconfig(udev)
 %endif
@@ -52,6 +54,7 @@ mkdir -p %{buildroot}%{_sysctldir}
 cp -av src/etc/sysctl.d/* %{buildroot}%{_sysctldir}
 mkdir -p %{buildroot}%{_udevrulesdir}
 cp -av src/lib/udev/rules.d/* %{buildroot}%{_udevrulesdir}/
+cp -av src/lib/udev/google_nvme_id %{buildroot}/%{_udevdir}/
 mkdir -p %{buildroot}%{_bindir}
 cp -av src/usr/bin/* %{buildroot}%{_bindir}/
 
@@ -69,7 +72,7 @@ cp -av src/usr/bin/* %{buildroot}%{_bindir}/
 %{_modprobedir}/gce-blacklist.conf
 %config %{_sysconfdir}/rsyslog.d/*
 %{_sysctldir}/*
-%{_bindir}/*
+%attr(0755,root,root) %{_udevdir}/google_nvme_id
 %{_udevrulesdir}/*
 
 %changelog
