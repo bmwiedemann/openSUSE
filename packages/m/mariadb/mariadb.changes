@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 16 13:28:35 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix rpmlint errors
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 15 16:59:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Enable LZ4 compression for INNODB and ROCKSDB, fixes bsc#1186031
+
+-------------------------------------------------------------------
+Mon Nov 15 11:02:55 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Revert systemd hardening
+  * Remove harden_mariadb.service.patch
+
+-------------------------------------------------------------------
+Fri Nov 12 21:44:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
 Tue Nov  9 08:34:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.6.5

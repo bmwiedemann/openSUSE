@@ -63,17 +63,6 @@ ProtectSystem=full
 
 # Prevent accessing /home, /root and /run/user
 ProtectHome=true
-# added automatically, for details please see
-# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-PrivateDevices=true
-ProtectHostname=true
-ProtectClock=true
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectKernelLogs=true
-ProtectControlGroups=true
-RestrictRealtime=true
-# end of automatic additions 
 
 # Execute pre and post scripts as root, otherwise it does it as User=
 PermissionsStartOnly=true

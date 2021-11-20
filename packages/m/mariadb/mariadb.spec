@@ -78,7 +78,6 @@ Patch3:         mariadb-10.0.15-logrotate-su.patch
 Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
-Patch8:	harden_mariadb.service.patch
 Patch9:         func_math_tests_MDEV-26645.diff
 Patch10:        fix-pamdir.patch
 # needed for bison SQL parser and wsrep API
@@ -97,6 +96,7 @@ BuildRequires:  libbz2-devel
 # commands history feature
 BuildRequires:  libedit-devel
 BuildRequires:  libevent-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 # CLI graphic and wsrep API
@@ -113,7 +113,6 @@ BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
 BuildRequires:  python3
 BuildRequires:  sqlite
-BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
 # Tests requires time and ps and some perl modules
@@ -365,7 +364,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch4
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 %if 0%{?suse_version} > 1500
 %ifarch s390x ppc64 ppc64le
 %patch9
@@ -396,8 +394,8 @@ sed -i 's|@localstatedir@|%{_localstatedir}/log|' support-files/mysql-log-rotate
 rm -f mysql-test/t/file_contents.test mysql-test/r/file_contents.result
 
 # Specify perl path on shebangs
-for i in `grep -Rl '^#!@PERL@$' .`; do
-	sed -i 's|@PERL@|%{_bindir}/perl|' $i
+for i in `grep -Rl '^#!%{_bindir}/env perl$' .`; do
+	sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|' $i
 done
 
 # Add our list of tests that fail (correctly or temporarily) to the list of such
@@ -474,7 +472,7 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
 %make_build
 nm --numeric-sort sql/mysqld > sql/mysqld.sym
 cd ..
-%sysusers_generate_pre %{SOURCE12} mysql
+%sysusers_generate_pre %{SOURCE12} mysql mysql-user.conf
 
 %install
 # Helper function to generate filelist for binaries and their manpages
@@ -770,10 +768,10 @@ cd mysql-test
 # client does not require server and needs the user too
 %pre client -f mysql.pre
 %pre
-%service_add_pre mariadb.service
+%service_add_pre mariadb.service mariadb.socket mariadb-extra.socket mariadb.target
 
 %post
-%service_add_post mariadb.service
+%service_add_post mariadb.service mariadb@.service mariadb.socket mariadb-extra.socket mariadb.target
 %tmpfiles_create %{_tmpfilesdir}/mariadb.conf
 
 %set_permissions %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
@@ -846,10 +844,10 @@ exit 0
 %verify_permissions %{_libdir}/mysql/plugin/auth_pam_tool_dir/auth_pam_tool
 
 %preun
-%service_del_preun mariadb.service
+%service_del_preun mariadb.service mariadb.socket mariadb-extra.socket mariadb.target
 
 %postun
-%service_del_postun mariadb.service
+%service_del_postun mariadb.service mariadb.socket mariadb-extra.socket mariadb.target
 
 %post -n libmariadbd%{soname} -p /sbin/ldconfig
 %postun -n libmariadbd%{soname} -p /sbin/ldconfig
