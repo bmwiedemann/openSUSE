@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 12 16:21:06 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Update to version 2.171.0
+  * Define kubernetes_file_t as a config_type
+  * Allow containers to be socket activated by user domains and by systemd.
+  * Allow iptables to use fifo files of a container runtime
+  * Allow container_runtime create all tmpfs content as container_runtime_tmpfs_t
+  * Allow containers to create lnk_file on tmpfs_t directories.
+
+-------------------------------------------------------------------
 Mon Aug  9 07:44:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.164.2
