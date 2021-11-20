@@ -28,6 +28,7 @@ Source1:        %{name}.service
 Source2:        %{name}.sysconfig
 Source3:        samplicator.8
 Source4:        samplicator.conf.example
+Patch0:	harden_samplicator.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 
@@ -40,6 +41,7 @@ Optional spoofing is also supported.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv

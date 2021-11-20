@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 16 12:33:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_samplicator.service.patch
+  Modified:
+  * samplicator.service
+
+-------------------------------------------------------------------
 Wed Jan  9 00:42:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.
