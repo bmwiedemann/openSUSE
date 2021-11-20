@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 16 18:54:58 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 1.94.2
+  * Highlights:
+    + goodixmoc: Fix protocol error with certain username lengths
+    + elanmoc: New PID 0x0c7d
+    + goodixmoc: New PID 0x63cc
+- Changes from version 1.94.1
+  * Highlights:
+    + Ship a simple script to create new CI tests using tshark
+    + Added CI tests for elan, uru4000, aes2501
+    + goodixmoc: Remove duplicate checking during enroll and let fprintd handle it
+    + uru4000: Fix USB transfer type
+    + synaptics: Support for new PIDs
+    + goodixmoc: Support for new PIDs
+- Changes from version 1.94.0
+  * Highlights:
+    + Implement suspend/resume handling including USB wakeup configuration.
+    + This requires writing the "persist" and "wakeup" sysfs attributes.
+    + Add simple temperature module to prevent devices from becoming too hot
+    + Add feature for continuous scanning
+    + New internal "critical section" API to simplify driver development
+    + elan: new PID 0x0c58
+    + elanmoc: Fixes for multi-user handling and FW changes
+    + virtual-device: Do not time out for SCAN command
+
+-------------------------------------------------------------------
 Sat Aug 14 22:20:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions, replace historic goals.

@@ -29,13 +29,13 @@
 %endif
 
 Name:           libfprint
-Version:        1.92.1
+Version:        1.94.2
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/fprint
-Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v%{version}/libfprint-v%{version}.tar.gz
+Source0:        https://gitlab.freedesktop.org/libfprint/libfprint/-/archive/v%{version}/libfprint-v%{version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
