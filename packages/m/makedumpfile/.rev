@@ -1081,4 +1081,17 @@ See README.static for an explanation why static linking is preferred for some li
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>907436</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>00b744b7b04969572d82f9b25f1d397d</srcmd5>
+    <version>1.7.0</version>
+    <time>1637444877</time>
+    <user>dimstar_suse</user>
+    <comment>- Turn on zstd.
+- Update to 1.7.0
+  * Zstandard (zstd) compression support
+  * New -L option to limit output file size
+  * Support of kernels up to v5.15 (x86_64)
+</comment>
+    <requestid>932486</requestid>
+  </revision>
 </revisionlist>

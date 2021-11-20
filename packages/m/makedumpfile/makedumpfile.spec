@@ -24,6 +24,14 @@
 %endif
 %endif
 
+%if 0%{!?have_zstd:1}
+%if 0%{?sle_version} >= 150200
+%define have_zstd 1
+%else
+%define have_zstd 0
+%endif
+%endif
+
 # Compatibility cruft
 # there is no separate -ltinfo until openSUSE 13.1 / SLE 12
 %if 0%{?suse_version} < 1310 && 0%{?sles_version} < 12
@@ -32,7 +40,7 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.6.9
+Version:        1.7.0
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -43,6 +51,7 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
+BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
@@ -52,13 +61,11 @@ BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ia64 ppc ppc64 ppc64le s390x %{arm} aarch64
-%if 0%{?suse_version} >= 1140 || 0%{?sles_version} >= 11
-BuildRequires:  libbz2-devel
-%else
-BuildRequires:  bzip2
-%endif
 %if %{have_snappy}
 BuildRequires:  snappy-devel
+%endif
+%if %{have_zstd}
+BuildRequires:  libzstd-devel
 %endif
 
 %description
@@ -77,6 +84,9 @@ via gdb or crash utility.
 export CFLAGS="%{optflags} -fcommon"
 %if %{have_snappy}
 export USESNAPPY=on
+%endif
+%if %{have_zstd}
+export USEZSTD=on
 %endif
 export USELZO=on
 export LINKTYPE=dynamic
