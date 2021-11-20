@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-guessit
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-only

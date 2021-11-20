@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 20 11:52:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.4.3
+  Fix:
+  * setuptools: Drop usage of test_requires and setup_requires 
+
+-------------------------------------------------------------------
 Fri Nov 19 11:14:16 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner, it is not needed
