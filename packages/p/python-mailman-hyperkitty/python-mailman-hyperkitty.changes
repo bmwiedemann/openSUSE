@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 17 08:25:00 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.0
+  * Update the authentication to call Hyperkitty using the API key as a part of
+    Authorization HTTP header instead of url parameter.
+- Removed obsolete python-mailman-hyperkitty-reflect-changes-in-mailman-core.patch
+
+-------------------------------------------------------------------
 Tue May  4 09:36:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - restrict to primary python3 flavor due to mailman 

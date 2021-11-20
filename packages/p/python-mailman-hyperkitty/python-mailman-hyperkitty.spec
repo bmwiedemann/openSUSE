@@ -20,14 +20,12 @@
 # mailman is built only for primary python3 flavor
 %define pythons python3
 Name:           python-mailman-hyperkitty
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Mailman archiver plugin for HyperKitty
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/mailman-hyperkitty/
 Source:         https://files.pythonhosted.org/packages/source/m/mailman-hyperkitty/mailman-hyperkitty-%{version}.tar.gz
-# https://gitlab.com/mailman/mailman-hyperkitty/commit/84e05811fb71aa105fd85fd14399bff813ed744d
-Patch0:         python-mailman-hyperkitty-reflect-changes-in-mailman-core.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,8 +53,7 @@ Obsoletes:      python38-mailman-hyperkitty < %{version}-%{release}
 Mailman archiver plugin for HyperKitty
 
 %prep
-%setup -q -n mailman-hyperkitty-%{version}
-%patch0 -p1
+%autosetup -n mailman-hyperkitty-%{version} -p1
 
 %build
 %python_build
