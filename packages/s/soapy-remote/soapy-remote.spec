@@ -29,6 +29,7 @@ Group:          Productivity/Hamradio/Other
 Url:            https://github.com/pothosware/SoapyRemote/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyRemote.git
 Source:         https://github.com/pothosware/SoapyRemote/archive/%{name}-%{version}.tar.gz
+Patch0:	harden_SoapySDRServer.service.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -62,6 +63,7 @@ connected to.
 
 %prep
 %setup -q -n SoapyRemote-%{name}-%{version}
+%patch0 -p1
 
 %build
 %cmake

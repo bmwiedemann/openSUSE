@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 10:38:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_SoapySDRServer.service.patch
+
+-------------------------------------------------------------------
 Wed Oct 13 11:30:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Also make sure soapy-remote-server replaces
