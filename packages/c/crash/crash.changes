@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Nov 10 12:52:42 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to 7.3.0 (jsc#SLE-17360).
+  - Refresh
+    * eppic-switch-to-system-lib.patch
+  - Remove upstreamed patches
+    - crash-xen-increase-__physical_mask_shift_xen-to-52.patch
+    - crash-arm64-update-mapping-symbol-filter-in-arm64_verify_s.patch
+    - crash-Fix-segmentation-fault-when-ikconfig-passed-nonstand.patch
+    - crash-printk-add-support-for-lockless-ringbuffer.patch
+    - crash-printk-use-committed-finalized-state-values.patch
+    - crash-x86_64-VC-exception-stack-support.patch
+  - Refresh to upstream version
+    * crash-xen-pvops.patch
+    * crash-handle-by-kernel-task_struct-state-member-changes.patch
+      => 0006-Handle-task_struct-state-member-changes-for-kernels-.patch
+  - Removed trace extension moved to different project upstream.
+- Enable Linux 5.14 and pull fixes since 7.3.0
+  + 0001-Fix-for-kmem-s-S-option-on-Linux-5.7-and-later-kerne.patch
+  + 0002-memory-Add-support-for-SECTION_TAINT_ZONE_DEVICE-fla.patch
+  + 0003-memory-Fix-for-kmem-n-option-to-display-NID-correctl.patch
+  + 0004-defs.h-Fix-the-value-of-TIF_SIGPENDING-macro.patch
+  + 0005-Fix-waitq-command-for-Linux-4.13-and-later-kernels.patch
+  + 0007-arm64-rename-ARM64_PAGE_OFFSET_ACTUAL-to-ARM64_FLIP_.patch
+  + 0008-arm64-assign-page_offset-with-VA_BITS-kernel-configu.patch
+  + 0009-arm64-use-dedicated-bits-to-record-the-VA-space-layo.patch
+  + 0010-arm64-implement-switchable-PTOV-VTOP-for-kernels-5.1.patch
+  + 0011-diskdump-Fail-readmem-early-if-dump-is-incomplete.patch
+  + 0012-netdump-Permit-zero_excluded-for-incomplete-ELF-dump.patch
+  + 0013-diskdump-Print-total-number-of-dumpable-pages.patch
+  + 0014-diskdump-Introduce-read_pd.patch
+  + 0015-x86_64-Fix-check-for-__per_cpu_offset-initialization.patch
+  + 0016-arm64-Get-CPU-registers-from-ELF-notes-even-without-.patch
+  + 0017-ppc64-Add-MMU-type-info-in-machdep-command.patch
+  + 0018-diskdump-Add-support-for-reading-dumpfiles-compresse.patch
+  + 0019-Add-kernel-version-dependent-check-for-getting-lengt.patch
+  + 0020-arm64-Use-VA_BITS-for-page_offset-calculation.patch
+
+-------------------------------------------------------------------
+Wed Nov 10 11:32:29 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- enable zstd support
+  + add crash-enable-zstd-support.patch
+
+-------------------------------------------------------------------
 Mon Oct  4 19:32:38 UTC 2021 - David Mair <dmair@suse.com>
 
 - Fix crash view of task_struct_state changes for kernel 5.14

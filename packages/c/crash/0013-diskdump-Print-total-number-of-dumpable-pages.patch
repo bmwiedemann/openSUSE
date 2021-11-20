@@ -1,0 +1,52 @@
+From 1425b0504b1e79d88a2d188d7e4c0e7fceba4501 Mon Sep 17 00:00:00 2001
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+Date: Thu, 17 Jun 2021 02:27:34 +0300
+Subject: [PATCH] diskdump: Print total number of dumpable pages
+
+It's not clear how broken an incomplete dump from the existing debugging
+prints. Aggregate number of valid pages helps to figure out approximate
+size of the dump. Size of a complete dump is roughly:
+
+  EXPECTED_CORE_SIZE = a few pages (kdump headers + bitmaps + descriptors) +
+                       (total_valid_pages * block_size) * compression rate
+
+An incomplete core would be significantly smaller than:
+
+	total_valid_pages * block_size
+
+Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+---
+ diskdump.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/diskdump.c b/diskdump.c
+index 59b79e1..0f94022 100644
+--- a/diskdump.c
++++ b/diskdump.c
+@@ -74,6 +74,7 @@ struct diskdump_data {
+ 	ulong	evictions;		/* total evictions done */
+ 	ulong	cached_reads;
+ 	ulong  *valid_pages;
++	int     max_sect_len;           /* highest bucket of valid_pages */
+ 	ulong   accesses;
+ 	ulong	snapshot_task;
+ };
+@@ -877,6 +878,7 @@ restart:
+ 	}
+ 
+ 	dd->valid_pages = calloc(sizeof(ulong), max_sect_len + 1);
++	dd->max_sect_len = max_sect_len;
+ 	for (i = 1; i < max_sect_len + 1; i++) {
+ 		dd->valid_pages[i] = dd->valid_pages[i - 1];
+ 		for (j = 0; j < BITMAP_SECT_LEN; j++, pfn++)
+@@ -2089,6 +2091,7 @@ __diskdump_memory_dump(FILE *fp)
+ 	else
+ 		fprintf(fp, "\n");
+ 	fprintf(fp, "       valid_pages: %lx\n", (ulong)dd->valid_pages);
++	fprintf(fp, " total_valid_pages: %ld\n", dd->valid_pages[dd->max_sect_len]);
+ 
+ 	return 0;
+ }
+-- 
+2.33.1
+

@@ -1,0 +1,58 @@
+From 647a5c33e1c94054d7b63168cd6c12901591cb77 Mon Sep 17 00:00:00 2001
+From: Lianbo Jiang <lijiang@redhat.com>
+Date: Thu, 27 May 2021 18:02:11 +0800
+Subject: [PATCH] Fix for "kmem -s|-S" option on Linux 5.7 and later kernels
+
+Linux 5.7 and later kernels that contain kernel commit 1ad53d9fa3f6
+("slub: improve bit diffusion for freelist ptr obfuscation") changed
+the calculation formula in the freelist_ptr(), which added a swab()
+call to mix bits a little more.  When kernel is configured with the
+"CONFIG_SLAB_FREELIST_HARDENED=y", without the patch, the "kmem -s|-S"
+options display wrong statistics and state whether slab objects are
+in use or free and can print the following errors:
+
+  crash> kmem -s
+  CACHE             OBJSIZE  ALLOCATED     TOTAL  SLABS  SSIZE  NAME
+  87201e00              528          0         0      0     8k  xfs_dqtrx
+  87201f00              496          0         0      0     8k  xfs_dquot
+  kmem: xfs_buf: slab: 37202e6e900 invalid freepointer: b844bab900001d70
+  kmem: xfs_buf: slab: 3720250fd80 invalid freepointer: b8603f9400001370
+  ...
+
+Signed-off-by: Lianbo Jiang <lijiang@redhat.com>
+---
+ memory.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/memory.c b/memory.c
+index 8c6bbe4..a3cf8a8 100644
+--- a/memory.c
++++ b/memory.c
+@@ -20,6 +20,7 @@
+ #include <sys/mman.h>
+ #include <ctype.h>
+ #include <netinet/in.h>
++#include <byteswap.h>
+ 
+ struct meminfo {           /* general purpose memory information structure */
+         ulong cache;       /* used by the various memory searching/dumping */
+@@ -19336,10 +19337,14 @@ count_free_objects(struct meminfo *si, ulong freelist)
+ static ulong
+ freelist_ptr(struct meminfo *si, ulong ptr, ulong ptr_addr)
+ {
+-	if (VALID_MEMBER(kmem_cache_random))
++	if (VALID_MEMBER(kmem_cache_random)) {
+ 		/* CONFIG_SLAB_FREELIST_HARDENED */
++
++		if (THIS_KERNEL_VERSION >= LINUX(5,7,0))
++			ptr_addr = (sizeof(long) == 8) ? bswap_64(ptr_addr)
++						       : bswap_32(ptr_addr);
+ 		return (ptr ^ si->random ^ ptr_addr);
+-	else
++	} else
+ 		return ptr;
+ }
+ 
+-- 
+2.33.1
+

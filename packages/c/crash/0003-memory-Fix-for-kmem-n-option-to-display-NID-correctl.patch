@@ -1,0 +1,48 @@
+From ec44b902d3467e7b86ee39e2d7d472b9cb202148 Mon Sep 17 00:00:00 2001
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Mon, 31 May 2021 14:08:28 +0900
+Subject: [PATCH] memory: Fix for "kmem -n" option to display NID correctly
+
+The nid member of struct memory_block is a 4-byte integer, but read
+and printed as a 8-byte integer on 64-bit machines.  Without the
+patch, the option displays wrong NIDs.
+
+  crash> kmem -n
+  ...
+     MEM_BLOCK        NAME          PHYSICAL RANGE       NODE  STATE   START_SECTION_NO
+   ffff9edeff2b9400   memory0             0 -   7fffffff 14195095130662240256  ONLINE  0
+   ffff9edeff2bb400   memory2     100000000 -  17fffffff 14195094718345379840  ONLINE  32
+
+The issue seems to appear on Linux 5.12 and later kernels that contain
+commit e9a2e48e8704c ("drivers/base/memory: don't store phys_device
+in memory blocks"), which changed the arrangement of the members of
+struct memory_block.
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ memory.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/memory.c b/memory.c
+index 2c4f979..cbe90ee 100644
+--- a/memory.c
++++ b/memory.c
+@@ -17568,13 +17568,13 @@ print_memory_block(ulong memory_block)
+ 
+ 	if (MEMBER_EXISTS("memory_block", "nid")) {
+ 		readmem(memory_block + OFFSET(memory_block_nid), KVADDR, &nid,
+-			sizeof(void *), "memory_block nid", FAULT_ON_ERROR);
++			sizeof(int), "memory_block nid", FAULT_ON_ERROR);
+ 		fprintf(fp, " %s %s %s %s  %s %s\n",
+ 			mkstring(buf1, VADDR_PRLEN, LJUST|LONG_HEX,
+ 			MKSTR(memory_block)),
+ 			mkstring(buf2, 12, CENTER, name),
+ 			parangebuf,
+-			mkstring(buf5, strlen("NODE"), CENTER|LONG_DEC,
++			mkstring(buf5, strlen("NODE"), CENTER|INT_DEC,
+ 			MKSTR(nid)),
+ 			mkstring(buf6, strlen("OFFLINE"), LJUST,
+ 			statebuf),
+-- 
+2.33.1
+

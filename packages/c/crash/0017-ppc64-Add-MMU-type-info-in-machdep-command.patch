@@ -1,0 +1,28 @@
+From 15765867c0f1d937db5ec06f51adb6bfd13354ea Mon Sep 17 00:00:00 2001
+From: Ritesh Harjani <riteshh@linux.ibm.com>
+Date: Thu, 26 Aug 2021 02:31:10 +0530
+Subject: [PATCH] ppc64: Add MMU type info in machdep command
+
+This adds MMU type info in "machdep" command.
+
+Signed-off-by: Ritesh Harjani <riteshh@linux.ibm.com>
+---
+ ppc64.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ppc64.c b/ppc64.c
+index f368bf8..975caa5 100644
+--- a/ppc64.c
++++ b/ppc64.c
+@@ -3027,6 +3027,8 @@ ppc64_display_machine_stats(void)
+         else
+                 fprintf(fp, "(unknown)\n");
+         fprintf(fp, "                 HZ: %d\n", machdep->hz);
++	fprintf(fp, "                MMU: %s\n", machdep->flags & RADIX_MMU
++							? "RADIX" : "HASH");
+         fprintf(fp, "          PAGE SIZE: %d\n", PAGESIZE());
+ //      fprintf(fp, "      L1 CACHE SIZE: %d\n", l1_cache_size());
+         fprintf(fp, "KERNEL VIRTUAL BASE: %lx\n", machdep->kvbase);
+-- 
+2.33.1
+

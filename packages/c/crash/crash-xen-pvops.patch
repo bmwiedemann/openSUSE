@@ -1,5 +1,28 @@
-Index: b/kernel.c
-===================================================================
+From 4badc6229c69f5cd9da7eb7bdf400a53ec6db01a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Tesa=C5=99=C3=ADk?= <ptesarik@suse.cz>
+Date: Fri, 25 Jun 2021 17:21:18 +0200
+Subject: [PATCH] Fix pvops Xen detection for kernels >= v4.20
+
+Upstream: accepted - expected crash 7.3.1
+Git-commit: 4badc6229c69f5cd9da7eb7bdf400a53ec6db01a
+
+Kernel commit 5c83511bdb9832c86be20fb86b783356e2f58062 removed
+pv_init_ops, and later commit 054ac8ad5ebe4a69e1f0e842483821ddbe560121
+removed the Xen-specific paravirt patch function. As a result, pvops Xen
+dumps are no longer recognized as Xen dumps, and virtual-to-physical
+translation fails.
+
+Use the value of xen_start_info to determine whether the kernel is
+running in Xen PV mode. This pointer is set during the initialization of
+a PV domain. Kudos to Juergen Gross, who suggested this check.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ kernel.c | 34 ++++++++++++++++++++++++++++------
+ 1 file changed, 28 insertions(+), 6 deletions(-)
+
+diff --git a/kernel.c b/kernel.c
+index e123f76..36fdea2 100644
 --- a/kernel.c
 +++ b/kernel.c
 @@ -95,6 +95,7 @@ static ulong __dump_audit(char *);
@@ -25,13 +48,13 @@ Index: b/kernel.c
 -	if (PVOPS() && symbol_exists("pv_init_ops") &&
 -	    readmem(symbol_value("pv_init_ops"), KVADDR, &pv_init_ops,
 -	    sizeof(void *), "pv_init_ops", RETURN_ON_ERROR) &&
--	    (p1 = value_symbol(pv_init_ops)) && 
--	    STREQ(p1, "xen_patch")) {
+-	    ((p1 = value_symbol(pv_init_ops)) &&
+-	    (STREQ(p1, "xen_patch") || STREQ(p1, "paravirt_patch_default")))) {
 +	if (is_pvops_xen()) {
  		kt->flags |= ARCH_XEN | ARCH_PVOPS_XEN;
  		kt->xen_flags |= WRITABLE_PAGE_TABLES;
  		if (machine_type("X86"))
-@@ -10690,6 +10686,32 @@ paravirt_init(void)
+@@ -10709,6 +10705,32 @@ paravirt_init(void)
  	}
  }
  
@@ -64,3 +87,6 @@ Index: b/kernel.c
  /*
   *  Get the kernel's xtime timespec from its relevant location.
   */
+-- 
+2.33.1
+

@@ -1,0 +1,265 @@
+From 7f38d1baf794823355ee100b3a1914155d4190f2 Mon Sep 17 00:00:00 2001
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Mon, 27 Sep 2021 09:45:42 +0900
+Subject: [PATCH] diskdump: Add support for reading dumpfiles compressed by
+ Zstandard
+
+Add support for reading dumpfiles compressed by Zstandard (zstd)
+using makedumpfile.
+
+To build crash with zstd support, type "make zstd".
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ Makefile    |  4 ++++
+ README      |  4 ++--
+ configure.c | 24 +++++++++++++++++++++---
+ defs.h      |  4 ++++
+ diskdump.c  | 37 +++++++++++++++++++++++++++++++++++++
+ diskdump.h  |  1 +
+ help.c      |  4 ++--
+ 7 files changed, 71 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ece1306..eae023c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -333,6 +333,10 @@ snappy: make_configure
+ 	@./configure -x snappy ${CONF_TARGET_FLAG} -w -b
+ 	@make --no-print-directory gdb_merge
+ 
++zstd: make_configure
++	@./configure -x zstd ${CONF_TARGET_FLAG} -w -b
++	@make --no-print-directory gdb_merge
++
+ valgrind: make_configure
+ 	@./configure -x valgrind ${CONF_TARGET_FLAG} -w -b
+ 	@make --no-print-directory gdb_merge
+diff --git a/README b/README
+index 5017974..4962f27 100644
+--- a/README
++++ b/README
+@@ -102,8 +102,8 @@
+   Traditionally when vmcores are compressed via the makedumpfile(8) facility
+   the libz compression library is used, and by default the crash utility
+   only supports libz.  Recently makedumpfile has been enhanced to optionally
+-  use either the LZO or snappy compression libraries.  To build crash with
+-  either or both of those libraries, type "make lzo" or "make snappy".
++  use the LZO, snappy or zstd compression libraries.  To build crash with any
++  or all of those libraries, type "make lzo", "make snappy" or "make zstd".
+ 
+   crash supports valgrind Memcheck tool on the crash's custom memory allocator.
+   To build crash with this feature enabled, type "make valgrind" and then run
+diff --git a/configure.c b/configure.c
+index e8f619a..b691a13 100644
+--- a/configure.c
++++ b/configure.c
+@@ -1738,6 +1738,10 @@ get_extra_flags(char *filename, char *initial)
+  *    - enter -DSNAPPY in the CFLAGS.extra file
+  *    - enter -lsnappy in the LDFLAGS.extra file
+  *
++ *  For zstd:
++ *    - enter -DZSTD in the CFLAGS.extra file
++ *    - enter -lzstd in the LDFLAGS.extra file
++ *
+  *  For valgrind:
+  *    - enter -DVALGRIND in the CFLAGS.extra file
+  */
+@@ -1746,6 +1750,7 @@ add_extra_lib(char *option)
+ {
+ 	int lzo, add_DLZO, add_llzo2; 
+ 	int snappy, add_DSNAPPY, add_lsnappy;
++	int zstd, add_DZSTD, add_lzstd;
+ 	int valgrind, add_DVALGRIND;
+ 	char *cflags, *ldflags;
+ 	FILE *fp_cflags, *fp_ldflags;
+@@ -1754,6 +1759,7 @@ add_extra_lib(char *option)
+ 
+ 	lzo = add_DLZO = add_llzo2 = 0;
+ 	snappy = add_DSNAPPY = add_lsnappy = 0;
++	zstd = add_DZSTD = add_lzstd = 0;
+ 	valgrind = add_DVALGRIND = 0;
+ 
+ 	ldflags = get_extra_flags("LDFLAGS.extra", NULL);
+@@ -1775,13 +1781,21 @@ add_extra_lib(char *option)
+ 			add_lsnappy++;
+ 	}
+ 
++	if (strcmp(option, "zstd") == 0) {
++		zstd++;
++		if (!cflags || !strstr(cflags, "-DZSTD"))
++			add_DZSTD++;
++		if (!ldflags || !strstr(ldflags, "-lzstd"))
++			add_lzstd++;
++	}
++
+ 	if (strcmp(option, "valgrind") == 0) {
+ 		valgrind++;
+ 		if (!cflags || !strstr(cflags, "-DVALGRIND"))
+ 			add_DVALGRIND++;
+ 	}
+ 
+-	if ((lzo || snappy) &&
++	if ((lzo || snappy || zstd) &&
+ 	    file_exists("diskdump.o") && (unlink("diskdump.o") < 0)) {
+ 		perror("diskdump.o");
+ 		return;
+@@ -1806,24 +1820,28 @@ add_extra_lib(char *option)
+ 		return;
+ 	}
+ 
+-	if (add_DLZO || add_DSNAPPY || add_DVALGRIND) {
++	if (add_DLZO || add_DSNAPPY || add_DZSTD || add_DVALGRIND) {
+ 		while (fgets(inbuf, 512, fp_cflags))
+ 			;
+ 		if (add_DLZO)
+ 			fputs("-DLZO\n", fp_cflags);
+ 		if (add_DSNAPPY)
+ 			fputs("-DSNAPPY\n", fp_cflags);
++		if (add_DZSTD)
++			fputs("-DZSTD\n", fp_cflags);
+ 		if (add_DVALGRIND)
+ 			fputs("-DVALGRIND\n", fp_cflags);
+ 	}
+ 
+-	if (add_llzo2 || add_lsnappy) {
++	if (add_llzo2 || add_lsnappy || add_lzstd) {
+ 		while (fgets(inbuf, 512, fp_ldflags))
+ 			;
+ 		if (add_llzo2)
+ 			fputs("-llzo2\n", fp_ldflags);
+ 		if (add_lsnappy)
+ 			fputs("-lsnappy\n", fp_ldflags);
++		if (add_lzstd)
++			fputs("-lzstd\n", fp_ldflags);
+ 	}
+ 
+ 	fclose(fp_cflags);
+diff --git a/defs.h b/defs.h
+index eb1c71b..b2e9472 100644
+--- a/defs.h
++++ b/defs.h
+@@ -54,6 +54,9 @@
+ #ifdef SNAPPY
+ #include <snappy-c.h>
+ #endif
++#ifdef ZSTD
++#include <zstd.h>
++#endif
+ 
+ #ifndef ATTRIBUTE_UNUSED
+ #define ATTRIBUTE_UNUSED __attribute__ ((__unused__))
+@@ -327,6 +330,7 @@ struct number_option {
+ #define NO_ELF_NOTES        (0x20)
+ #define LZO_SUPPORTED       (0x40)
+ #define SNAPPY_SUPPORTED    (0x80)
++#define ZSTD_SUPPORTED      (0x100)
+ #define DISKDUMP_VALID()    (dd->flags & DISKDUMP_LOCAL)
+ #define KDUMP_CMPRS_VALID() (dd->flags & KDUMP_CMPRS_LOCAL)
+ #define KDUMP_SPLIT()       (dd->flags & DUMPFILE_SPLIT)
+diff --git a/diskdump.c b/diskdump.c
+index de3eeb2..112f769 100644
+--- a/diskdump.c
++++ b/diskdump.c
+@@ -1001,6 +1001,9 @@ is_diskdump(char *file)
+ #ifdef SNAPPY
+ 	dd->flags |= SNAPPY_SUPPORTED;
+ #endif
++#ifdef ZSTD
++	dd->flags |= ZSTD_SUPPORTED;
++#endif
+ 
+ 	pc->read_vmcoreinfo = vmcoreinfo_read_string;
+ 
+@@ -1124,6 +1127,9 @@ cache_page(physaddr_t paddr)
+ 	const int block_size = dd->block_size;
+ 	const off_t failed = (off_t)-1;
+ 	ulong retlen;
++#ifdef ZSTD
++	static ZSTD_DCtx *dctx = NULL;
++#endif
+ 
+ 	for (i = found = 0; i < DISKDUMP_CACHED_PAGES; i++) {
+ 		if (DISKDUMP_VALID_PAGE(dd->page_cache_hdr[i].pg_flags))
+@@ -1251,6 +1257,33 @@ cache_page(physaddr_t paddr)
+ 			      ret);
+ 			return READ_ERROR;
+ 		}
++#endif
++	} else if (pd.flags & DUMP_DH_COMPRESSED_ZSTD) {
++
++		if (!(dd->flags & ZSTD_SUPPORTED)) {
++			error(INFO, "%s: uncompess failed: no zstd compression support\n",
++				DISKDUMP_VALID() ? "diskdump" : "compressed kdump");
++			return READ_ERROR;
++		}
++#ifdef ZSTD
++		if (!dctx) {
++			dctx = ZSTD_createDCtx();
++			if (!dctx) {
++				error(INFO, "%s: uncompess failed: cannot create ZSTD_DCtx\n",
++					DISKDUMP_VALID() ? "diskdump" : "compressed kdump");
++				return READ_ERROR;
++			}
++		}
++
++		retlen = ZSTD_decompressDCtx(dctx,
++				dd->page_cache_hdr[i].pg_bufptr, block_size,
++				dd->compressed_page, pd.size);
++		if (ZSTD_isError(retlen) || (retlen != block_size)) {
++			error(INFO, "%s: uncompress failed: %d (%s)\n",
++				DISKDUMP_VALID() ? "diskdump" : "compressed kdump",
++				retlen, ZSTD_getErrorName(retlen));
++			return READ_ERROR;
++		}
+ #endif
+ 	} else
+ 		memcpy(dd->page_cache_hdr[i].pg_bufptr,
+@@ -1806,6 +1839,8 @@ __diskdump_memory_dump(FILE *fp)
+ 		fprintf(fp, "%sLZO_SUPPORTED", others++ ? "|" : "");
+ 	if (dd->flags & SNAPPY_SUPPORTED)
+ 		fprintf(fp, "%sSNAPPY_SUPPORTED", others++ ? "|" : "");
++	if (dd->flags & ZSTD_SUPPORTED)
++		fprintf(fp, "%sZSTD_SUPPORTED", others++ ? "|" : "");
+         fprintf(fp, ") %s\n", FLAT_FORMAT() ? "[FLAT]" : "");
+         fprintf(fp, "               dfd: %d\n", dd->dfd);
+         fprintf(fp, "               ofp: %lx\n", (ulong)dd->ofp);
+@@ -1872,6 +1907,8 @@ __diskdump_memory_dump(FILE *fp)
+ 			fprintf(fp, "DUMP_DH_COMPRESSED_LZO");
+ 		if (dh->status & DUMP_DH_COMPRESSED_SNAPPY)
+ 			fprintf(fp, "DUMP_DH_COMPRESSED_SNAPPY");
++		if (dh->status & DUMP_DH_COMPRESSED_ZSTD)
++			fprintf(fp, "DUMP_DH_COMPRESSED_ZSTD");
+ 		if (dh->status & DUMP_DH_COMPRESSED_INCOMPLETE)
+ 			fprintf(fp, "DUMP_DH_COMPRESSED_INCOMPLETE");
+ 		if (dh->status & DUMP_DH_EXCLUDED_VMEMMAP)
+diff --git a/diskdump.h b/diskdump.h
+index 2871340..c152c7b 100644
+--- a/diskdump.h
++++ b/diskdump.h
+@@ -86,6 +86,7 @@ struct kdump_sub_header {
+ #define DUMP_DH_COMPRESSED_SNAPPY  0x4   /* page is compressed with snappy */
+ #define DUMP_DH_COMPRESSED_INCOMPLETE  0x8   /* dumpfile is incomplete */
+ #define DUMP_DH_EXCLUDED_VMEMMAP   0x10  /* unused vmemmap pages are excluded */
++#define DUMP_DH_COMPRESSED_ZSTD    0x20  /* page is compressed with zstd */
+ 
+ /* descriptor of each page for vmcore */
+ typedef struct page_desc {
+diff --git a/help.c b/help.c
+index 6c262a3..f34838d 100644
+--- a/help.c
++++ b/help.c
+@@ -9420,8 +9420,8 @@ README_ENTER_DIRECTORY,
+ "  Traditionally when vmcores are compressed via the makedumpfile(8) facility",
+ "  the libz compression library is used, and by default the crash utility",
+ "  only supports libz.  Recently makedumpfile has been enhanced to optionally",
+-"  use either the LZO or snappy compression libraries.  To build crash with",
+-"  either or both of those libraries, type \"make lzo\" or \"make snappy\".",
++"  use the LZO, snappy or zstd compression libraries.  To build crash with any",
++"  or all of those libraries, type \"make lzo\", \"make snappy\" or \"make zstd\".",
+ "",
+ "  crash supports valgrind Memcheck tool on the crash's custom memory allocator.",
+ "  To build crash with this feature enabled, type \"make valgrind\" and then run",
+-- 
+2.33.1
+

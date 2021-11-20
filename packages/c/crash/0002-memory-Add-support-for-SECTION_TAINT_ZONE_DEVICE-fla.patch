@@ -1,0 +1,101 @@
+From 0b5435e10161345cf713ed447a155a611a1b408b Mon Sep 17 00:00:00 2001
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Wed, 26 May 2021 17:33:13 +0900
+Subject: [PATCH] memory: Add support for SECTION_TAINT_ZONE_DEVICE flag
+
+Fix for "kmem -n|-p" options on Linux 5.12-rc1 and later kernels
+that contain commit 1f90a3477df3f ("mm: teach pfn_to_online_page()
+about ZONE_DEVICE section collisions").  Without the patch, the
+"kmem -n" option incorrectly shows mem_map addresses containing the
+flag in bit 5 as part of the virtual address, and also the "kmem -p"
+option shows page structures at wrong position.  With the patch,
+the "kmem -n" option displays the new "D" state flag.
+
+Without the patch:
+  crash> kmem -n
+  ...
+  NR      SECTION        CODED_MEM_MAP        MEM_MAP       STATE PFN
+  1040  ffff9edf3ffd4100  ffffe2bcc0000010  ffffe2bd42000010  PMOE  34078720
+                                        ^                 ^
+  crash> kmem -p
+      PAGE         PHYSICAL      MAPPING       INDEX CNT FLAGS
+  ffffe2bd42000010 2080000000           400040 1ffffffff 9961471 dead000000000122 referenced,active,error
+  ffffe2bd42000050 2080001000           800080 1ffffffff 9961471 dead000000000122 referenced,active,error
+  ffffe2bd42000090 2080002000                0 1ffffffff 9961471 dead000000000122 referenced,active,error
+                ^^
+With the patch:
+  crash> kmem -n
+  ...
+  NR      SECTION        CODED_MEM_MAP        MEM_MAP       STATE PFN
+  1040  ffff9edf3ffd4100  ffffe2bcc0000000  ffffe2bd42000000  PMOED 34078720
+
+  crash> kmem -p
+      PAGE         PHYSICAL      MAPPING       INDEX CNT FLAGS
+  ffffe2bd42000000 2080000000 ffff9ebfc0044100        0  1 97ffffc0000200 slab
+  ffffe2bd42000040 2080001000 ffff9ebfc0044400        0  1 97ffffc0000200 slab
+  ffffe2bd42000080 2080002000                0        0  1 97ffffc0000000
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ help.c   | 11 +++++++----
+ memory.c | 15 +++++++++------
+ 2 files changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/help.c b/help.c
+index e0c8408..9649cc8 100644
+--- a/help.c
++++ b/help.c
+@@ -6584,10 +6584,13 @@ char *help_kmem[] = {
+ "            kernels, the vm_zone_stat, vm_node_stat and vm_numa_stat tables,",
+ "            the cumulative page_states counter values if they exist, and/or ",
+ "            the cumulative, vm_event_states counter values if they exist.",
+-"        -n  display memory node, memory section, and memory block data",
+-"            and state; the state of each memory section state is encoded",
+-"            as \"P\", \"M\", \"O\" and/or \"E\", meaning SECTION_MARKED_PRESENT,",
+-"            SECTION_HAS_MEM_MAP, SECTION_IS_ONLINE and SECTION_IS_EARLY.",
++"        -n  display memory node, memory section, memory block data and state;",
++"            the state of each memory section is shown as the following flags:",
++"              \"P\": SECTION_MARKED_PRESENT",
++"              \"M\": SECTION_HAS_MEM_MAP",
++"              \"O\": SECTION_IS_ONLINE",
++"              \"E\": SECTION_IS_EARLY",
++"              \"D\": SECTION_TAINT_ZONE_DEVICE",
+ "        -z  displays per-zone memory statistics.",
+ "        -o  displays each cpu's offset value that is added to per-cpu symbol",
+ "            values to translate them into kernel virtual addresses.",
+diff --git a/memory.c b/memory.c
+index a3cf8a8..2c4f979 100644
+--- a/memory.c
++++ b/memory.c
+@@ -17270,12 +17270,13 @@ nr_to_section(ulong nr)
+  *      which results in PFN_SECTION_SHIFT equal 6.
+  * To sum it up, at least 6 bits are available.
+  */
+-#define SECTION_MARKED_PRESENT	(1UL<<0)
+-#define SECTION_HAS_MEM_MAP	(1UL<<1)
+-#define SECTION_IS_ONLINE	(1UL<<2)
+-#define SECTION_IS_EARLY	(1UL<<3)
+-#define SECTION_MAP_LAST_BIT	(1UL<<4)
+-#define SECTION_MAP_MASK	(~(SECTION_MAP_LAST_BIT-1))
++#define SECTION_MARKED_PRESENT		(1UL<<0)
++#define SECTION_HAS_MEM_MAP		(1UL<<1)
++#define SECTION_IS_ONLINE		(1UL<<2)
++#define SECTION_IS_EARLY		(1UL<<3)
++#define SECTION_TAINT_ZONE_DEVICE	(1UL<<4)
++#define SECTION_MAP_LAST_BIT		(1UL<<5)
++#define SECTION_MAP_MASK		(~(SECTION_MAP_LAST_BIT-1))
+ 
+ 
+ int 
+@@ -17373,6 +17374,8 @@ fill_mem_section_state(ulong state, char *buf)
+ 		bufidx += sprintf(buf + bufidx, "%s", "O");
+ 	if (state & SECTION_IS_EARLY)
+ 		bufidx += sprintf(buf + bufidx, "%s", "E");
++	if (state & SECTION_TAINT_ZONE_DEVICE)
++		bufidx += sprintf(buf + bufidx, "%s", "D");
+ }
+ 
+ void 
+-- 
+2.33.1
+

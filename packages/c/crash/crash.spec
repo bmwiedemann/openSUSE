@@ -29,6 +29,15 @@
 %endif
 %endif
 
+%if 0%{!?have_zstd:1}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+# the zstd patch depends on the snappy patch
+%define have_zstd %{have_snappy}
+%else
+%define have_zstd 0
+%endif
+%endif
+
 Name:           crash
 %ifarch ppc
 %define build_sial 0
@@ -53,21 +62,23 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        7.2.9
+Version:        7.3.0
 Release:        0
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/crash-utility/crash/archive/7.3.0.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz
 Source2:        crash_whitepaper-%{whitepaper_version}.tar.bz2
 Source3:        README.SUSE
 Source4:        sial-scripts-%{scripts_version}.tar.bz2
 Source5:        gcore-%{gcore_version}.tar.bz2
 Source6:        Module.supported
+Source7:        http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz.sig
+Source8:        gnu.keyring
 Source95:       get-kernel-flavors.sh
 Source96:       depmod.sh
 Source97:       mkinitrd.sh
 Source98:       %{name}-kmp-preamble
 Source99:       crash-rpmlintrc
 Source100:      %{name}-gdb-7.6.series
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Patch1:         %{name}-make-emacs-default.diff
 Patch2:         %{name}-sles9-quirk.patch
 Patch4:         %{name}-sles9-time.patch
@@ -85,23 +96,31 @@ Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/fdb41f0b6fa42a692e5fa39da3801f6ca18e8a6b.patch
-Patch34:        %{name}-xen-increase-__physical_mask_shift_xen-to-52.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9080711bd1c0645c272e74c25724ad2969d64674.patch
-Patch41:        %{name}-arm64-update-mapping-symbol-filter-in-arm64_verify_s.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/5a0488049917ba2790d59108f3def16825528974.patch
-Patch42:        %{name}-Fix-segmentation-fault-when-ikconfig-passed-nonstand.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/a5531b24750e7949c35640d996ea14c0587938bc.patch
-Patch43:        %{name}-printk-add-support-for-lockless-ringbuffer.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/71e159c64000467e94e08aefc144f5e1cdaa4aa0.patch
-Patch44:        %{name}-printk-use-committed-finalized-state-values.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9c881ab372010b46655dfed0a3c5cd78b3ff8fa0.patch
-Patch45:        %{name}-x86_64-VC-exception-stack-support.patch
+Patch30:        %{name}-enable-zstd-support.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/4badc6229c69f5cd9da7eb7bdf400a53ec6db01a.patch
 Patch46:        %{name}-xen-pvops.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/cf0c8d10e1870d89b39f40382634db51aa8fcf2c.patch
 Patch47:        %{name}-mod-fix-module-object-file-lookup.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/d6b4f36d6b22b70fb14e692f36d20910ef5563c1.patch
-Patch48:        %{name}-handle-by-kernel-task_struct-state-member-changes.patch
+Patch48:        0001-Fix-for-kmem-s-S-option-on-Linux-5.7-and-later-kerne.patch
+Patch49:        0002-memory-Add-support-for-SECTION_TAINT_ZONE_DEVICE-fla.patch
+Patch50:        0003-memory-Fix-for-kmem-n-option-to-display-NID-correctl.patch
+Patch51:        0004-defs.h-Fix-the-value-of-TIF_SIGPENDING-macro.patch
+Patch52:        0005-Fix-waitq-command-for-Linux-4.13-and-later-kernels.patch
+Patch53:        0006-Handle-task_struct-state-member-changes-for-kernels-.patch
+Patch54:        0007-arm64-rename-ARM64_PAGE_OFFSET_ACTUAL-to-ARM64_FLIP_.patch
+Patch55:        0008-arm64-assign-page_offset-with-VA_BITS-kernel-configu.patch
+Patch56:        0009-arm64-use-dedicated-bits-to-record-the-VA-space-layo.patch
+Patch57:        0010-arm64-implement-switchable-PTOV-VTOP-for-kernels-5.1.patch
+Patch58:        0011-diskdump-Fail-readmem-early-if-dump-is-incomplete.patch
+Patch59:        0012-netdump-Permit-zero_excluded-for-incomplete-ELF-dump.patch
+Patch60:        0013-diskdump-Print-total-number-of-dumpable-pages.patch
+Patch61:        0014-diskdump-Introduce-read_pd.patch
+Patch62:        0015-x86_64-Fix-check-for-__per_cpu_offset-initialization.patch
+Patch63:        0016-arm64-Get-CPU-registers-from-ELF-notes-even-without-.patch
+Patch64:        0017-ppc64-Add-MMU-type-info-in-machdep-command.patch
+Patch65:        0018-diskdump-Add-support-for-reading-dumpfiles-compresse.patch
+Patch66:        0019-Add-kernel-version-dependent-check-for-getting-lengt.patch
+Patch67:        0020-arm64-Use-VA_BITS-for-page_offset-calculation.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -110,6 +129,9 @@ BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 %if %{have_snappy}
 BuildRequires:  snappy-devel
+%endif
+%if %{have_zstd}
+BuildRequires:  libzstd-devel
 %endif
 BuildRequires:  libelf-devel
 BuildRequires:  zlib-devel
@@ -281,6 +303,7 @@ Authors:
 
 %prep
 %setup -q -a 2 -a 4
+ln -s %{SOURCE1} .
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
@@ -298,17 +321,33 @@ Authors:
 %patch24 -p1
 %endif
 %patch27 -p1
-%patch34 -p1
-%patch41 -p1
-%patch42 -p1
-%patch43 -p1
-%patch44 -p1
-%patch45 -p1
 %patch46 -p1
 %patch47 -p1
 %patch48 -p1
+%patch49 -p1
+%patch50 -p1
+%patch51 -p1
+%patch52 -p1
+%patch53 -p1
+%patch54 -p1
+%patch55 -p1
+%patch56 -p1
+%patch57 -p1
+%patch58 -p1
+%patch59 -p1
+%patch60 -p1
+%patch61 -p1
+%patch62 -p1
+%patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
+%patch67 -p1
 %if %{have_snappy}
 %patch15 -p1
+%endif
+%if %{have_zstd}
+%patch30 -p1
 %endif
 ## GDB patches
 #for f in %{S:XXX} ; do
@@ -364,7 +403,7 @@ install -m 0644 defs.h $RPM_BUILD_ROOT/%{_includedir}/crash
 chmod 644 COPYING3
 # extensions
 mkdir -p $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
-install -m 0644 extensions/dminfo.so extensions/snap.so extensions/trace.so \
+install -m 0644 extensions/dminfo.so extensions/snap.so \
     $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %if %build_gcore
 install -m 0644 extensions/gcore.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
@@ -404,7 +443,6 @@ rm -rf %{buildroot}
 %dir %{_libdir}/crash/extensions
 %{_libdir}/crash/extensions/dminfo.so
 %{_libdir}/crash/extensions/snap.so
-%{_libdir}/crash/extensions/trace.so
 
 %files devel
 %defattr(-,root,root)

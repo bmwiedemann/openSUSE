@@ -19,23 +19,23 @@ Signed-off-by: Alexander Egorenkov <egorenar@linux.ibm.com>
  task.c    | 10 +++++++++-
  3 files changed, 11 insertions(+), 1 deletion(-)
 
-Index: b/defs.h
-===================================================================
+diff --git a/defs.h b/defs.h
+index 6bb00e2..5d32954 100644
 --- a/defs.h
 +++ b/defs.h
-@@ -2265,6 +2265,7 @@ struct size_table {         /* stash of
- 	long printk_info;
+@@ -2304,6 +2304,7 @@ struct size_table {         /* stash of commonly-used sizes */
  	long printk_ringbuffer;
  	long prb_desc;
+ 	long wait_queue_entry;
 +	long task_struct_state;
  };
-
+ 
  struct array_table {
-Index: b/symbols.c
-===================================================================
+diff --git a/symbols.c b/symbols.c
+index 67c135f..bf6d94d 100644
 --- a/symbols.c
 +++ b/symbols.c
-@@ -10655,6 +10655,7 @@ dump_offset_table(char *spec, ulong make
+@@ -10678,6 +10678,7 @@ dump_offset_table(char *spec, ulong makestruct)
  		SIZE(page_cache_bucket));
          fprintf(fp, "                       pt_regs: %ld\n", SIZE(pt_regs));
          fprintf(fp, "                   task_struct: %ld\n", SIZE(task_struct));
@@ -43,8 +43,8 @@ Index: b/symbols.c
          fprintf(fp, "             task_struct_flags: %ld\n", SIZE(task_struct_flags));
          fprintf(fp, "            task_struct_policy: %ld\n", SIZE(task_struct_policy));
          fprintf(fp, "                   thread_info: %ld\n", SIZE(thread_info));
-Index: b/task.c
-===================================================================
+diff --git a/task.c b/task.c
+index 36cf259..672b416 100644
 --- a/task.c
 +++ b/task.c
 @@ -297,6 +297,11 @@ task_init(void)
@@ -59,7 +59,7 @@ Index: b/task.c
          MEMBER_OFFSET_INIT(task_struct_exit_state, "task_struct", "exit_state");
          MEMBER_OFFSET_INIT(task_struct_pid, "task_struct", "pid");
          MEMBER_OFFSET_INIT(task_struct_comm, "task_struct", "comm");
-@@ -5913,7 +5918,10 @@ task_state(ulong task)
+@@ -5926,7 +5931,10 @@ task_state(ulong task)
  	if (!tt->last_task_read)
  		return 0;
  
@@ -71,3 +71,6 @@ Index: b/task.c
  	exit_state = VALID_MEMBER(task_struct_exit_state) ?
  		ULONG(tt->task_struct + OFFSET(task_struct_exit_state)) : 0;
  
+-- 
+2.33.1
+

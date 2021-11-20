@@ -3,9 +3,11 @@
  extensions/eppic/applications/crash/eppic.c | 1110 ++++++++++++++++++++++++++++
  2 files changed, 1112 insertions(+), 24 deletions(-)
 
---- a/extensions/eppic.mk
-+++ b/extensions/eppic.mk
-@@ -31,29 +31,7 @@ all:
+Index: crash-7.3.0/extensions/eppic.mk
+===================================================================
+--- crash-7.3.0.orig/extensions/eppic.mk
++++ crash-7.3.0/extensions/eppic.mk
+@@ -30,29 +30,7 @@ all:
  	@if [ -f /usr/bin/flex ] && [ -f /usr/bin/bison ]; then \
  	  if [ -f ../$(GDB)/crash.target ]; \
          then \
@@ -16,7 +18,7 @@
 -             if [ -n "$(EPPIC_GIT_URL)" ]; then \
 -               git clone "$(EPPIC_GIT_URL)" eppic; \
 -             else \
--	          if [ -n "$(GITHUB)" ] ; then \
+-	          if ping -c 1 -W 5 github.com >/dev/null ; then \
 -		    git clone https://github.com/lucchouina/eppic.git eppic; \
 -	          fi; \
 -             fi; \
@@ -35,7 +37,7 @@
        else \
  	    echo "eppic.so: build failed: requires the crash $(GDB) module"; \
        fi ;\
-@@ -64,8 +42,8 @@ all:
+@@ -63,8 +41,8 @@ all:
  lib-eppic: 
  	cd eppic/libeppic && make
              
@@ -46,8 +48,10 @@
  
  clean:
  	if  [ -d eppic/libeppic ]; \
+Index: crash-7.3.0/extensions/eppic/applications/crash/eppic.c
+===================================================================
 --- /dev/null
-+++ b/extensions/eppic/applications/crash/eppic.c
++++ crash-7.3.0/extensions/eppic/applications/crash/eppic.c
 @@ -0,0 +1,1110 @@
 +/*
 + * $Id: eppic.c,v 1.15 2012/01/04 14:46:57 anderson Exp $

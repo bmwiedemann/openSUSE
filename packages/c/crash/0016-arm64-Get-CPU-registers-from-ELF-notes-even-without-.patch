@@ -1,0 +1,77 @@
+From 4b34197508578bb43639e6d169fb91fb0489fa2b Mon Sep 17 00:00:00 2001
+From: James Hsu <james.hsu@mediatek.com>
+Date: Wed, 18 Aug 2021 15:45:47 +0800
+Subject: [PATCH] arm64: Get CPU registers from ELF notes even without
+ crash_notes symbol
+
+Currently arm64 crash retrieves the CPU registers from crash_notes symbol
+or ELF notes only when the symbol exists, but there are dumpfiles which
+have the registers in ELF notes without the symbol.
+
+With the patch, crash can retrieve the registers from ELF notes without
+the crash_notes symbol.
+
+Signed-off-by: James Hsu <james.hsu@mediatek.com>
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ arm64.c | 38 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
+
+diff --git a/arm64.c b/arm64.c
+index d73d5c5..7069312 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -3698,14 +3698,48 @@ arm64_get_crash_notes(void)
+ {
+ 	struct machine_specific *ms = machdep->machspec;
+ 	ulong crash_notes;
+-	Elf64_Nhdr *note;
++	Elf64_Nhdr *note = NULL;
+ 	ulong offset;
+ 	char *buf, *p;
+ 	ulong *notes_ptrs;
+ 	ulong i, found;
+ 
+-	if (!symbol_exists("crash_notes"))
++	if (!symbol_exists("crash_notes")) {
++		if (DISKDUMP_DUMPFILE() || KDUMP_DUMPFILE()) {
++			if (!(ms->panic_task_regs = calloc((size_t)kt->cpus, sizeof(struct arm64_pt_regs))))
++				error(FATAL, "cannot calloc panic_task_regs space\n");
++
++			for  (i = found = 0; i < kt->cpus; i++) {
++				if (DISKDUMP_DUMPFILE())
++					note = diskdump_get_prstatus_percpu(i);
++				else if (KDUMP_DUMPFILE())
++					note = netdump_get_prstatus_percpu(i);
++
++				if (!note) {
++					error(WARNING, "cpu %d: cannot find NT_PRSTATUS note\n", i);
++					continue;
++				}
++
++				/*
++				 * Find correct location of note data. This contains elf_prstatus
++				 * structure which has registers etc. for the crashed task.
++				 */
++				offset = sizeof(Elf64_Nhdr);
++				offset = roundup(offset + note->n_namesz, 4);
++				p = (char *)note + offset; /* start of elf_prstatus */
++
++				BCOPY(p + OFFSET(elf_prstatus_pr_reg), &ms->panic_task_regs[i],
++				      sizeof(struct arm64_pt_regs));
++
++				found++;
++			}
++			if (!found) {
++				free(ms->panic_task_regs);
++				ms->panic_task_regs = NULL;
++			}
++		}
+ 		return;
++	}
+ 
+ 	crash_notes = symbol_value("crash_notes");
+ 
+-- 
+2.33.1
+

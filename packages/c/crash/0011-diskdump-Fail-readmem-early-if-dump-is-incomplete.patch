@@ -1,0 +1,125 @@
+From 4631320e96f8a63c897fbbce4e87e3c47af40bc9 Mon Sep 17 00:00:00 2001
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+Date: Thu, 17 Jun 2021 02:27:32 +0300
+Subject: [PATCH] diskdump: Fail readmem() early if dump is incomplete
+
+kdump format description [1] says:
+
+   [...] zero page has its own offset not equal 0. So when reading page
+   from incomplete core, only the page lost by ENOSPACE errors has 0 in its
+   corresponding page descriptor's member offset.
+
+crash has special treatment for page descriptors with zero offset only if
+DUMP_DH_COMPRESSED_INCOMPLETE is set in dump header. However,
+makedumpfile places the flag after ENOSPC is hit and only if dump header
+modification went without errors.
+
+In case if crashkernel environment was terminated early (e.g. by BMC) or
+some other reason, DUMP_DH_COMPRESSED_INCOMPLETE won't be set on the
+dump header. Then cache_page() would be performed on pages with
+pd.offset == 0 and due to pd.size == 0 it'll skip read into
+compressed_page and then non related pre-existing contents of
+compressed_page will copied into page cache for the non-present page.
+
+Ultimately, it'll lead to a cryptic failure, like:
+
+  crash: invalid kernel virtual address: 72288cacacf427f8 [...]
+
+The failure would be a bit cleaner if crash explicitly fails on the page
+that is an outcome of incomplete dump:
+
+  crash: page incomplete: kernel virtual address: c000003fff9d17e8 [...]
+
+Debugging level 8 would also produce exact offset from data_offset to
+print descriptor value with ease:
+
+  read_diskdump/cache_page: descriptor with zero offset found at paddr/pfn/pos: 3fff9d0000/3fff9d/743dd
+
+That helps in inspecting broken descriptor with hexdump or similar tools:
+
+  hexdump -s (data_offset + pos * 0x18) -n 0x18
+
+[1] https://github.com/makedumpfile/makedumpfile/blob/master/IMPLEMENTATION
+
+Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+---
+ defs.h     |  1 +
+ diskdump.c | 16 +++++++++++-----
+ memory.c   |  7 +++++++
+ 3 files changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index c91177a..eb1c71b 100644
+--- a/defs.h
++++ b/defs.h
+@@ -361,6 +361,7 @@ struct number_option {
+ #define READ_ERROR       (-2)
+ #define WRITE_ERROR      (-3)
+ #define PAGE_EXCLUDED    (-4)
++#define PAGE_INCOMPLETE  (-5)
+ 
+ #define RESTART()         (longjmp(pc->main_loop_env, 1))
+ #define RESUME_FOREACH()  (longjmp(pc->foreach_loop_env, 1))
+diff --git a/diskdump.c b/diskdump.c
+index 6680695..59b79e1 100644
+--- a/diskdump.c
++++ b/diskdump.c
+@@ -1146,10 +1146,9 @@ cache_page(physaddr_t paddr)
+ 	if (FLAT_FORMAT()) {
+ 		if (!read_flattened_format(dd->dfd, pd.offset, dd->compressed_page, pd.size))
+ 			return READ_ERROR;
+-	} else if (is_incomplete_dump() && (0 == pd.offset)) {
++	} else if (0 == pd.offset) {
+ 		/*
+-		 *  If the incomplete flag has been set in the header, 
+-		 *  first check whether zero_excluded has been set.
++		 *  First check whether zero_excluded has been set.
+ 		 */
+ 		if (*diskdump_flags & ZERO_EXCLUDED) {
+ 			if (CRASHDEBUG(8))
+@@ -1158,8 +1157,15 @@ cache_page(physaddr_t paddr)
+ 				    "paddr/pfn: %llx/%lx\n", 
+ 					(ulonglong)paddr, pfn);
+ 			memset(dd->compressed_page, 0, dd->block_size);
+-		} else
+-			return READ_ERROR;
++		} else {
++			if (CRASHDEBUG(8))
++				fprintf(fp,
++					"read_diskdump/cache_page: "
++					"descriptor with zero offset found at "
++					"paddr/pfn/pos: %llx/%lx/%lx\n",
++					(ulonglong)paddr, pfn, desc_pos);
++			return PAGE_INCOMPLETE;
++		}
+ 	} else {
+ 		if (lseek(dd->dfd, pd.offset, SEEK_SET) == failed)
+ 			return SEEK_ERROR;
+diff --git a/memory.c b/memory.c
+index ca4c633..86c02c1 100644
+--- a/memory.c
++++ b/memory.c
+@@ -2213,6 +2213,7 @@ accessible(ulong kva)
+ #define READ_ERRMSG      "read error: %s address: %llx  type: \"%s\"\n"
+ #define WRITE_ERRMSG     "write error: %s address: %llx  type: \"%s\"\n"
+ #define PAGE_EXCLUDED_ERRMSG  "page excluded: %s address: %llx  type: \"%s\"\n"
++#define PAGE_INCOMPLETE_ERRMSG  "page incomplete: %s address: %llx  type: \"%s\"\n"
+ 
+ #define RETURN_ON_PARTIAL_READ() \
+ 	if ((error_handle & RETURN_PARTIAL) && (size < orig_size)) {		\
+@@ -2378,6 +2379,12 @@ readmem(ulonglong addr, int memtype, void *buffer, long size,
+                         	error(INFO, PAGE_EXCLUDED_ERRMSG, memtype_string(memtype, 0), addr, type);
+                         goto readmem_error;
+ 
++		case PAGE_INCOMPLETE:
++			RETURN_ON_PARTIAL_READ();
++			if (PRINT_ERROR_MESSAGE)
++				error(INFO, PAGE_INCOMPLETE_ERRMSG, memtype_string(memtype, 0), addr, type);
++			goto readmem_error;
++
+ 		default:
+ 			break;
+ 		}
+-- 
+2.33.1
+

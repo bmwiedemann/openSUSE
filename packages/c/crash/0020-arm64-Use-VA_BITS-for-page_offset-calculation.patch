@@ -1,0 +1,66 @@
+From c180a63f2cb370da6097ad97eb07333c07aa988b Mon Sep 17 00:00:00 2001
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Mon, 25 Oct 2021 16:53:26 +0900
+Subject: [PATCH] arm64: Use VA_BITS for page_offset calculation
+
+Commit 167d37e347fe ("arm64: assign page_offset with VA_BITS kernel
+configuration value") changed the page_offset calculation from
+using VA_BITS_ACTUAL to CONFIG_ARM64_VA_BITS.  This caused an error
+for ramdumps without vmcoreinfo like this:
+
+  crash: vmlinux and /var/tmp/ramdump_elf_XUtCMT do not match!
+
+Set the vmcoreinfo value to VA_BITS if available, and use VA_BITS
+for page_offset calculation instead.
+
+Also remove ARM64_FLIP_PAGE_OFFSET_ACTUAL because it's not used
+actually.
+
+Reported-by: Ankur Bansal <er.ankurbansal@gmail.com>
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+---
+ arm64.c | 5 ++++-
+ defs.h  | 4 +---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/arm64.c b/arm64.c
+index 7069312..3dcbcc6 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -404,7 +404,7 @@ arm64_init(int when)
+ 				fprintf(fp, "CONFIG_ARM64_VA_BITS: %ld\n", ms->CONFIG_ARM64_VA_BITS);
+ 				fprintf(fp, "      VA_BITS_ACTUAL: %ld\n", ms->VA_BITS_ACTUAL);
+ 				fprintf(fp, "(calculated) VA_BITS: %ld\n", ms->VA_BITS);
+-				fprintf(fp, " PAGE_OFFSET: %lx\n", ARM64_FLIP_PAGE_OFFSET_ACTUAL);
++				fprintf(fp, " PAGE_OFFSET: %lx\n", ARM64_FLIP_PAGE_OFFSET);
+ 				fprintf(fp, "    VA_START: %lx\n", ms->VA_START);
+ 				fprintf(fp, "     modules: %lx - %lx\n", ms->modules_vaddr, ms->modules_end);
+ 				fprintf(fp, "     vmalloc: %lx - %lx\n", ms->vmalloc_start_addr, ms->vmalloc_end);
+@@ -4031,6 +4031,9 @@ arm64_calc_VA_BITS(void)
+ 				error(FATAL, "cannot determine VA_BITS_ACTUAL\n");
+ 		}
+ 
++		if (machdep->machspec->CONFIG_ARM64_VA_BITS)
++			machdep->machspec->VA_BITS = machdep->machspec->CONFIG_ARM64_VA_BITS;
++
+ 		/*
+ 		 * The mm flip commit is introduced before 52-bits VA, which is before the
+ 		 * commit to export NUMBER(TCR_EL1_T1SZ)
+diff --git a/defs.h b/defs.h
+index 8b356d5..9710055 100644
+--- a/defs.h
++++ b/defs.h
+@@ -3238,9 +3238,7 @@ typedef signed int s32;
+ #define ARM64_PAGE_OFFSET    ((0xffffffffffffffffUL) \
+ 					<< (machdep->machspec->VA_BITS - 1))
+ /* kernels >= v5.4 the kernel VA space is flipped */
+-#define ARM64_FLIP_PAGE_OFFSET (-(1UL) << machdep->machspec->CONFIG_ARM64_VA_BITS)
+-#define ARM64_FLIP_PAGE_OFFSET_ACTUAL ((0xffffffffffffffffUL) \
+-					- ((1UL) << machdep->machspec->VA_BITS_ACTUAL) + 1)
++#define ARM64_FLIP_PAGE_OFFSET (-(1UL) << machdep->machspec->VA_BITS)
+ 
+ #define ARM64_USERSPACE_TOP  ((1UL) << machdep->machspec->VA_BITS)
+ #define ARM64_USERSPACE_TOP_ACTUAL  ((1UL) << machdep->machspec->VA_BITS_ACTUAL)
+-- 
+2.33.1
+

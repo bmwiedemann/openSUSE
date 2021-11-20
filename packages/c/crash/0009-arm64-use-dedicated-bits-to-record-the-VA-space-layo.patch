@@ -1,0 +1,83 @@
+From bf1379a8b6ff8d6a8fa12978f7194f15f85c4380 Mon Sep 17 00:00:00 2001
+From: Pingfan Liu <piliu@redhat.com>
+Date: Fri, 2 Jul 2021 10:14:23 +0800
+Subject: [PATCH] arm64: use dedicated bits to record the VA space layout
+ changes
+
+arm64 memory layout experiences big changes due to the following kernel
+commits in date descending order:
+  5. 7bc1a0f9e176 arm64: mm: use single quantity to represent the PA to VA translation
+  4. b6d00d47e81a arm64: mm: Introduce 52-bit Kernel VAs
+  3. 5383cc6efed1 arm64: mm: Introduce vabits_actual
+  2. 14c127c957c1 arm64: mm: Flip kernel VA space
+  1. f80fb3a3d508 arm64: add support for kernel ASLR
+
+For 1, crash has already used NEW_VMEMMAP to trace it.
+For 2, crash lacks a flag to tag it and handle it differently.
+For 3, two important kernel variables vabits_actual and physvirt_offset
+are introduced.
+For 4, since it comes immediately after 3, crash-utility does not need
+to distinguish it.
+For 5, kernel variable phyvirt_offset is removed
+
+These changes have effects on PTOV()/VTOP() formula. So introducing
+two bits HAS_PHYSVIRT_OFFSET and FLIPPED_VM as hint to apply different
+formula.
+
+Signed-off-by: Pingfan Liu <piliu@redhat.com>
+---
+ arm64.c | 10 ++++++++++
+ defs.h  |  2 ++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/arm64.c b/arm64.c
+index 149db36..b04369f 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -563,6 +563,10 @@ arm64_dump_machdep_table(ulong arg)
+ 		fprintf(fp, "%sMACHDEP_BT_TEXT", others++ ? "|" : "");
+ 	if (machdep->flags & NEW_VMEMMAP)
+ 		fprintf(fp, "%sNEW_VMEMMAP", others++ ? "|" : "");
++	if (machdep->flags & FLIPPED_VM)
++		fprintf(fp, "%sFLIPPED_VM", others++ ? "|" : "");
++	if (machdep->flags & HAS_PHYSVIRT_OFFSET)
++		fprintf(fp, "%sHAS_PHYSVIRT_OFFSET", others++ ? "|" : "");
+ 	fprintf(fp, ")\n");
+ 
+ 	fprintf(fp, "              kvbase: %lx\n", machdep->kvbase);
+@@ -997,6 +1001,7 @@ arm64_calc_physvirt_offset(void)
+ 		if (READMEM(pc->mfd, &physvirt_offset, sizeof(physvirt_offset),
+ 			sp->value, sp->value -
+ 			machdep->machspec->kimage_voffset) > 0) {
++				machdep->flags |= HAS_PHYSVIRT_OFFSET;
+ 				ms->physvirt_offset = physvirt_offset;
+ 		}
+ 	}
+@@ -3963,6 +3968,11 @@ arm64_calc_VA_BITS(void)
+ 				error(FATAL, "cannot determine VA_BITS_ACTUAL\n");
+ 		}
+ 
++		/*
++		 * The mm flip commit is introduced before 52-bits VA, which is before the
++		 * commit to export NUMBER(TCR_EL1_T1SZ)
++		 */
++		machdep->flags |= FLIPPED_VM;
+ 		return;
+ 	}
+ 
+diff --git a/defs.h b/defs.h
+index b7b20af..eca145c 100644
+--- a/defs.h
++++ b/defs.h
+@@ -3214,6 +3214,8 @@ typedef signed int s32;
+ #define NEW_VMEMMAP   (0x80)
+ #define VM_L4_4K      (0x100)
+ #define UNW_4_14      (0x200)
++#define FLIPPED_VM    (0x400)
++#define HAS_PHYSVIRT_OFFSET (0x800)
+ 
+ /*
+  * Get kimage_voffset from /dev/crash
+-- 
+2.33.1
+

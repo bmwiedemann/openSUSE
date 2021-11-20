@@ -1,0 +1,164 @@
+From f53b73e8380bca054cebd2b61ff118c46609429b Mon Sep 17 00:00:00 2001
+From: Pingfan Liu <piliu@redhat.com>
+Date: Fri, 2 Jul 2021 10:14:24 +0800
+Subject: [PATCH] arm64: implement switchable PTOV()/VTOP() for kernels >= 5.10
+
+Crash encounters a bug like the following:
+    ...
+    SECTION_SIZE_BITS: 30
+    CONFIG_ARM64_VA_BITS: 52
+          VA_BITS_ACTUAL: 48
+    (calculated) VA_BITS: 48
+     PAGE_OFFSET: ffff000000000000
+        VA_START: ffff800000000000
+         modules: ffff800008000000 - ffff80000fffffff
+         vmalloc: ffff800010000000 - ffffffdfdffeffff
+    kernel image: ffff800010000000 - ffff800012750000
+         vmemmap: ffffffdfffe00000 - ffffffffffffffff
+
+    <readmem: ffff800011c53bc8, KVADDR, "nr_irqs", 4, (FOE), b47bdc>
+    <read_kdump: addr: ffff800011c53bc8 paddr: eb453bc8 cnt: 4>
+    read_netdump: addr: ffff800011c53bc8 paddr: eb453bc8 cnt: 4 offset: 1c73bc8
+    irq_stack_ptr:
+      type: 1, TYPE_CODE_PTR
+      target_typecode: 8, TYPE_CODE_INT
+      target_length: 8
+      length: 8
+    GNU_GET_DATATYPE[thread_union]: returned via gdb_error_hook
+    <readmem: ffff000b779c0050, KVADDR, "IRQ stack pointer", 8, (ROE), 3a37bea0>
+    <read_kdump: addr: ffff000b779c0050 paddr: fff1000bf79c0050 cnt: 8>
+    read_netdump: READ_ERROR: offset not found for paddr: fff1000bf79c0050
+    crash: read error: kernel virtual address: ffff000b779c0050  type: "IRQ stack pointer"
+    ...
+
+Apparently, for a normal system, the 'paddr: fff1000bf79c0050' is
+unreasonable.
+
+This bug connects with kernel commit 7bc1a0f9e176 ("arm64: mm: use
+single quantity to represent the PA to VA translation"), which removed
+physvirt_offset kernel variable and changed the PTOV()/VTOP() formulas.
+
+Implement switchable PTOV()/VTOP() to cope with different kernel
+version.
+
+Signed-off-by: Pingfan Liu <piliu@redhat.com>
+---
+ arm64.c | 37 +++++++++++++++++++++++++++++++++----
+ defs.h  |  9 ++++-----
+ 2 files changed, 37 insertions(+), 9 deletions(-)
+
+diff --git a/arm64.c b/arm64.c
+index b04369f..d73d5c5 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -994,8 +994,6 @@ arm64_calc_physvirt_offset(void)
+ 	ulong physvirt_offset;
+ 	struct syment *sp;
+ 
+-	ms->physvirt_offset = ms->phys_offset - ms->page_offset;
+-
+ 	if ((sp = kernel_symbol_search("physvirt_offset")) &&
+ 			machdep->machspec->kimage_voffset) {
+ 		if (READMEM(pc->mfd, &physvirt_offset, sizeof(physvirt_offset),
+@@ -1003,8 +1001,13 @@ arm64_calc_physvirt_offset(void)
+ 			machdep->machspec->kimage_voffset) > 0) {
+ 				machdep->flags |= HAS_PHYSVIRT_OFFSET;
+ 				ms->physvirt_offset = physvirt_offset;
++				return;
+ 		}
+ 	}
++
++	/* Useless if no symbol 'physvirt_offset', just keep semantics */
++	ms->physvirt_offset = ms->phys_offset - ms->page_offset;
++
+ }
+ 
+ static void
+@@ -1051,6 +1054,7 @@ arm64_calc_phys_offset(void)
+ 			if (READMEM(pc->mfd, &phys_offset, sizeof(phys_offset),
+ 			    vaddr, paddr) > 0) {
+ 				ms->phys_offset = phys_offset;
++
+ 				return;
+ 			}
+ 		}
+@@ -1178,6 +1182,21 @@ arm64_init_kernel_pgd(void)
+                 vt->kernel_pgd[i] = value;
+ }
+ 
++ulong arm64_PTOV(ulong paddr)
++{
++	struct machine_specific *ms = machdep->machspec;
++
++	/*
++	 * Either older kernel before kernel has 'physvirt_offset' or newer
++	 * kernel which removes 'physvirt_offset' has the same formula:
++	 * #define __phys_to_virt(x)   ((unsigned long)((x) - PHYS_OFFSET) | PAGE_OFFSET)
++	 */
++	if (!(machdep->flags & HAS_PHYSVIRT_OFFSET))
++		return (paddr - ms->phys_offset) | PAGE_OFFSET;
++	else
++		return paddr - ms->physvirt_offset;
++}
++
+ ulong
+ arm64_VTOP(ulong addr)
+ {
+@@ -1188,8 +1207,18 @@ arm64_VTOP(ulong addr)
+ 			return addr - machdep->machspec->kimage_voffset;
+ 		}
+ 
+-		if (addr >= machdep->machspec->page_offset)
+-			return addr + machdep->machspec->physvirt_offset;
++		if (addr >= machdep->machspec->page_offset) {
++			if (machdep->flags & HAS_PHYSVIRT_OFFSET) {
++				return addr + machdep->machspec->physvirt_offset;
++			} else {
++				/*
++				 * Either older kernel before kernel has 'physvirt_offset' or newer
++				 * kernel which removes 'physvirt_offset' has the same formula:
++				 * #define __lm_to_phys(addr)	(((addr) & ~PAGE_OFFSET) + PHYS_OFFSET)
++				 */
++				return (addr & ~PAGE_OFFSET) + machdep->machspec->phys_offset;
++			}
++		}
+ 		else if (machdep->machspec->kimage_voffset)
+ 			return addr - machdep->machspec->kimage_voffset;
+ 		else /* no randomness */
+diff --git a/defs.h b/defs.h
+index eca145c..c91177a 100644
+--- a/defs.h
++++ b/defs.h
+@@ -3092,11 +3092,6 @@ typedef u64 pte_t;
+ #define _64BIT_
+ #define MACHINE_TYPE       "ARM64"    
+ 
+-#define PTOV(X) \
+-	((unsigned long)(X) - (machdep->machspec->physvirt_offset))
+-
+-#define VTOP(X)               arm64_VTOP((ulong)(X))
+-
+ #define USERSPACE_TOP   (machdep->machspec->userspace_top)
+ #define PAGE_OFFSET     (machdep->machspec->page_offset)
+ #define VMALLOC_START   (machdep->machspec->vmalloc_start_addr)
+@@ -3106,6 +3101,9 @@ typedef u64 pte_t;
+ #define MODULES_VADDR   (machdep->machspec->modules_vaddr)
+ #define MODULES_END     (machdep->machspec->modules_end)
+ 
++#define PTOV(X)	arm64_PTOV((ulong)(X))
++#define VTOP(X)	arm64_VTOP((ulong)(X))
++
+ #define IS_VMALLOC_ADDR(X)    arm64_IS_VMALLOC_ADDR((ulong)(X))
+ 
+ #define PAGEBASE(X)     (((ulong)(X)) & (ulong)machdep->pagemask)
+@@ -5910,6 +5908,7 @@ void unwind_backtrace(struct bt_info *);
+ void arm64_init(int);
+ void arm64_dump_machdep_table(ulong);
+ ulong arm64_VTOP(ulong);
++ulong arm64_PTOV(ulong);
+ int arm64_IS_VMALLOC_ADDR(ulong);
+ ulong arm64_swp_type(ulong);
+ ulong arm64_swp_offset(ulong);
+-- 
+2.33.1
+

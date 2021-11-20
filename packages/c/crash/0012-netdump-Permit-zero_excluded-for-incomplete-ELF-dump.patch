@@ -1,0 +1,35 @@
+From 41cda195c6421fbde72ed67b32b8c1ab3eb0c56f Mon Sep 17 00:00:00 2001
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+Date: Thu, 17 Jun 2021 02:27:33 +0300
+Subject: [PATCH] netdump: Permit --zero_excluded for incomplete ELF dumps
+
+DUMP_ELF_INCOMPLETE is set very late after ENOSPC error is hit by
+makedumpfile. Any following error that prevents modification of ELF
+header would result in effectively incomplete core that doesn't have the
+flag. zero_excluded flag doesn't work for such kind of incomplete core.
+
+Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+---
+ netdump.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/netdump.c b/netdump.c
+index aaea945..e8721d8 100644
+--- a/netdump.c
++++ b/netdump.c
+@@ -819,10 +819,9 @@ read_netdump(int fd, void *bufptr, int cnt, ulong addr, physaddr_t paddr)
+ 		read_ret = read(nd->ndfd, bufptr, cnt);
+ 		if (read_ret != cnt) {
+ 			/*
+-	 		 *  If the incomplete flag has been set in the header, 
+-			 *  first check whether zero_excluded has been set.
++			 *  First check whether zero_excluded has been set.
+ 			 */
+-			if (is_incomplete_dump() && (read_ret >= 0) &&
++			if ((read_ret >= 0) &&
+ 			    (*diskdump_flags & ZERO_EXCLUDED)) {
+ 				if (CRASHDEBUG(8))
+ 					fprintf(fp, "read_netdump: zero-fill: "
+-- 
+2.33.1
+

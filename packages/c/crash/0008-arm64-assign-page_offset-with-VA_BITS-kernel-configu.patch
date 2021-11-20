@@ -1,0 +1,56 @@
+From 167d37e347fe35c6f7db826e8539e192c4375564 Mon Sep 17 00:00:00 2001
+From: Pingfan Liu <piliu@redhat.com>
+Date: Fri, 2 Jul 2021 10:14:22 +0800
+Subject: [PATCH] arm64: assign page_offset with VA_BITS kernel configuration
+ value
+
+On RHEL9, crash hits a bug when executing "crash /proc/kcore":
+seek error: kernel virtual address: ffff6a0f3fff0000 type: "pmd page"
+
+The kernel virtual address does not vary with vabits_actual, instead,
+is determined by configuration value. But crash does not observe this
+fact.
+
+Since vabits_actual related kernel commit is introduced after arm64
+mm layout flip commit, so changes are safe under the condition if
+(ms->VA_BITS_ACTUAL), and keep the else branch untouched.
+
+Signed-off-by: Pingfan Liu <piliu@redhat.com>
+---
+ arm64.c | 7 ++++---
+ defs.h  | 1 +
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/arm64.c b/arm64.c
+index 9fe1a4a..149db36 100644
+--- a/arm64.c
++++ b/arm64.c
+@@ -220,9 +220,10 @@ arm64_init(int when)
+ 
+ 		/* vabits_actual introduced after mm flip, so it should be flipped layout */
+ 		if (ms->VA_BITS_ACTUAL) {
+-			ms->page_offset = ARM64_FLIP_PAGE_OFFSET_ACTUAL;
+-			machdep->identity_map_base = ARM64_FLIP_PAGE_OFFSET_ACTUAL;
+-			machdep->kvbase = ARM64_FLIP_PAGE_OFFSET_ACTUAL;
++			ms->page_offset = ARM64_FLIP_PAGE_OFFSET;
++			/* useless on arm64 */
++			machdep->identity_map_base = ARM64_FLIP_PAGE_OFFSET;
++			machdep->kvbase = ARM64_FLIP_PAGE_OFFSET;
+ 			ms->userspace_top = ARM64_USERSPACE_TOP_ACTUAL;
+ 		} else {
+ 			ms->page_offset = ARM64_PAGE_OFFSET;
+diff --git a/defs.h b/defs.h
+index eb7ce6a..b7b20af 100644
+--- a/defs.h
++++ b/defs.h
+@@ -3234,6 +3234,7 @@ typedef signed int s32;
+ #define ARM64_PAGE_OFFSET    ((0xffffffffffffffffUL) \
+ 					<< (machdep->machspec->VA_BITS - 1))
+ /* kernels >= v5.4 the kernel VA space is flipped */
++#define ARM64_FLIP_PAGE_OFFSET (-(1UL) << machdep->machspec->CONFIG_ARM64_VA_BITS)
+ #define ARM64_FLIP_PAGE_OFFSET_ACTUAL ((0xffffffffffffffffUL) \
+ 					- ((1UL) << machdep->machspec->VA_BITS_ACTUAL) + 1)
+ 
+-- 
+2.33.1
+
