@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 19 13:51:48 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211119.caa0b2aa:
+  * Dev: behave: Add functional test for previous changes
+  * Fix: ui_resource: Parse node and lifetime correctly (bsc#1192618)
+
+-------------------------------------------------------------------
 Tue Nov 16 14:58:36 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211116.ef2bce26:
