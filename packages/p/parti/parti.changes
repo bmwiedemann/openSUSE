@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Nov 18 12:58:47 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#13
+- report also empty mbr partition tables
+- 2.2
+
+--------------------------------------------------------------------
 Wed Nov 3 16:58:54 UTC 2021 - wfeldt@opensuse.org
 
 - add spec file
