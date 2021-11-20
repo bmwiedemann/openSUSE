@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 14 16:20:46 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
+
+- Update to version 2.26:
+  + Fixes:
+    - Deprecated glib function call;
+    - Build with LLVM/clang;
+    - Many memory leaks;
+    - Many tests.
+- Fix dbus.h being wrongly packaged in libbd_lvm-dbus-devl instead
+  of libbd_utils-devel (boo#1189787).
+
+-------------------------------------------------------------------
 Fri Mar 26 08:34:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add -Wno-deprecated-declarations to cflags: dealing with

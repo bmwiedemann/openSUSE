@@ -22,7 +22,7 @@
 %bcond_with     python2
 
 Name:           libblockdev
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        A library for low-level manipulation with block devices
 License:        LGPL-2.1-only
@@ -629,8 +629,6 @@ find %{buildroot} -name "*.la" -print -type f -delete
 
 %files -n libbd_lvm-dbus-devel
 %{_libdir}/libbd_lvm-dbus.so
-%dir %{_includedir}/blockdev
-%{_includedir}/blockdev/dbus.h
 
 %files -n libbd_mdraid%{somajor}
 %{_libdir}/libbd_mdraid.so.%{somajor}*
@@ -673,12 +671,13 @@ find %{buildroot} -name "*.la" -print -type f -delete
 %{_libdir}/libbd_part_err.so
 %{_libdir}/pkgconfig/blockdev-utils.pc
 %dir %{_includedir}/blockdev
-%{_includedir}/blockdev/utils.h
-%{_includedir}/blockdev/sizes.h
+%{_includedir}/blockdev/dbus.h
+%{_includedir}/blockdev/dev_utils.h
 %{_includedir}/blockdev/exec.h
 %{_includedir}/blockdev/extra_arg.h
-%{_includedir}/blockdev/dev_utils.h
 %{_includedir}/blockdev/module.h
+%{_includedir}/blockdev/sizes.h
+%{_includedir}/blockdev/utils.h
 
 %files -n libbd_vdo%{somajor}
 %{_libdir}/libbd_vdo.so.%{somajor}*
