@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.5.5
+Version:        3.5.6
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -103,7 +103,7 @@ rm %{buildroot}%{_kf5_libdir}/libhtmesh.a
 %fdupes -s %{buildroot}
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/GPL-2.0-or-later.txt LICENSES/GPL-3.0-or-later.txt
 %doc AUTHORS ChangeLog README.md README.customize README.ephemerides README.images
 %doc %{_kf5_htmldir}/en/kstars/
 %{_datadir}/sounds/*.ogg
@@ -117,7 +117,7 @@ rm %{buildroot}%{_kf5_libdir}/libhtmesh.a
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING COPYING.DOC
+%license LICENSES/GPL-2.0-or-later.txt LICENSES/GPL-3.0-or-later.txt
 %endif
 
 %changelog
