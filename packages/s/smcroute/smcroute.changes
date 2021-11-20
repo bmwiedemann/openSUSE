@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 10:19:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_smcroute.service.patch
+
+-------------------------------------------------------------------
 Thu Sep 23 20:32:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.3

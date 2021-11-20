@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Routing
 URL:            https://troglobit.com/projects/smcroute/
 #Git-Clone:     https://github.com/troglobit/smcroute.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_smcroute.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -47,6 +48,7 @@ using different multicast routing tables.
 %prep
 %setup -q
 sed -i 's|@DOCDIR@|%{_docdir}/smcroute/|g' smcroute.service.in
+%patch0 -p1
 
 # remove file not used by Linux with incompatible Apple license
 rm src/ip_mroute.h
