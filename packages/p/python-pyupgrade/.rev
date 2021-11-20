@@ -344,4 +344,16 @@
  - don't rewrite old-super for staticmethods</comment>
     <requestid>928868</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b52b635f84beaef1188a90b624bc5bbd</srcmd5>
+    <version>2.29.1</version>
+    <time>1637372333</time>
+    <user>dimstar_suse</user>
+    <comment>- - update to version 2.29.1:
+ - prevent rewriting union types with forward annotations
+ - replace exit(main()) with raise SystemExit(main())
+   Committed via https://github.com/asottile/all-repos
+</comment>
+    <requestid>932268</requestid>
+  </revision>
 </revisionlist>

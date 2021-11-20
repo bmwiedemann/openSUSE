@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 16 07:44:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 2.29.1:
+ - prevent rewriting union types with forward annotations
+ - replace exit(main()) with raise SystemExit(main())
+   Committed via https://github.com/asottile/all-repos
+
+-------------------------------------------------------------------
 Tue Nov  2 19:39:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.29.0:
