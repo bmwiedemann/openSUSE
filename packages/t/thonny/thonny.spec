@@ -1,5 +1,5 @@
 #
-# spec file for package thonny.spec
+# spec file for package thonny
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
@@ -11,16 +11,17 @@
 # license for the pristine package is not an Open Source License, in which
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiativ
+# published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define pythons python3
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        3.3.3
+Version:        3.3.14
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
@@ -29,31 +30,31 @@ Source0:        https://github.com/thonny/%{name}/archive/v%{version}.tar.gz#/th
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mypy
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Send2Trash
-BuildRequires:  python3-asttokens
 BuildRequires:  python3-astroid
+BuildRequires:  python3-asttokens
 BuildRequires:  python3-docutils
 BuildRequires:  python3-jedi
-BuildRequires:  python3-pyserial
 BuildRequires:  python3-pylint
+BuildRequires:  python3-pyserial
 BuildRequires:  python3-pytest-black
-BuildRequires:  python3-tk
 BuildRequires:  python3-setuptools
-BuildRequires:  python-rpm-macros
+BuildRequires:  python3-tk
 BuildRequires:  update-desktop-files
 ## MANUAL BEGIN
 Requires:       mypy
 Requires:       python3-Send2Trash
-Requires:       python3-asttokens
 Requires:       python3-astroid
+Requires:       python3-asttokens
 Requires:       python3-docutils
 Requires:       python3-jedi
-Requires:       python3-pyserial
 Requires:       python3-pylint
+Requires:       python3-pyserial
 Requires:       python3-tk
 ## MANUAL END
-Requires(post):   desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(post): desktop-file-utils
+Requires(postun):desktop-file-utils
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
@@ -80,8 +81,7 @@ export LC_ALL=en_US.utf8
 export LC_ALL=en_US.utf8
 %python_install
 # FIXME Fix permissions
-%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/thonny/plugins/circuitpython/update_firmware_mapping.py
-%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/thonny/plugins/micropython/micropip.py
+%python_expand chmod 0755 %{buildroot}%{$python_sitelib}/thonny/plugins/micropython/minipip.py
 # Install desktop file
 mkdir -p %{buildroot}%{_datadir}/applications/
 cp packaging/linux/org.thonny.Thonny.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop

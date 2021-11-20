@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Nov 10 11:02:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.3.14:
+  * Fix problems in org.thonny.Thonny.appdata.xml
+  * Allow assigning Python coloring for Python-like files, #1927
+  * Increase the initial top coordinate of Thonny's main window. 
+  Fixes problem of Thonny's title bar being hidden by the system
+  menubar, #1925
+- Changelog from previous releases:
+  * Restore syncing to localtime for RPi Pico (fixed regression
+  introduced in 3.3.11), #1886
+  * Fix installing from requirements.txt in MicroPython, #1879
+  * Allow specifying different colors for method and function
+  calls, by Jonathan Campbell, #1884
+  * Extend editor API for plug-ins (close event and content
+  load/save hooks), by Nicolas Despres, #1891
+  * Fix technical errors in some translations, by Karolina Surma, #1895
+  * Warn when inputting non-ascii chars in MicroPython, #1911
+  * Fix installing for all users in Windows installer, #1119
+  and #1909. See https://github.com/thonny/thonny/wiki/DeploymentOptions#all-users-vs-current-user-install for more info.
+  * Prepare Thonny for Flatpak, by Jordan Williams, #1900 and #1912
+  * Update minipip to 0.1b5 in order to skip installing Blinka
+  when installing libraries for CircuitPython
+  * Update Polish translation
+  * Update org.thonny.Thonny.appdata.xml
+  * Fix MicroPython management errors when user code shadows
+  built-in names, #1856
+  * Fix package manager getting frozen when installing packages, #1871
+  * Fix problem of MicroPython package manager taking module names
+  for distribution names, #1833
+  * Fix ugly error in ESP flasher dialog when esptool is not found, #1837
+  * Fix Tkinter error when using venv created from bundled Python, #1835
+  * Use 0..6 for weekday when synchronizing RTC via machine, #1868
+  * Make esptool auto-detect chip type, #1838
+  * Fix Unix MicroPython time validation (misdiagnosed time offset)
+  * Update dependencies in Thonny+Python bundles
+  * Update Spanish, Polish, Chinese (TW) translations
+  * Support installing regular pip-compatible packages to MicroPython
+  or CircuitPython (so far only upip-compatible packages were supported), #1541
+  * Fix "error 403" problems when installing MicroPython packages
+  from PyPI, #1822
+  * Fix error when Object inspector is open and a MicroPython objec
+  t can't be found by id, #1796
+  * Reduce memory usage by Thonny's MicroPython helper (store last
+  REPL value in global _ instead of storing N last values in a list), #1797, #1798
+  * Upgraded several dependencies in binary bundles
+  * Fix missing libffi6 error in Linux builds, #767
+  * Make confugration dialog larger to fit French strings, by sourceperl, #1694
+  * Fix "_prepare_after_soft_reboot" error in Unix MicroPython mode, #1715
+  * Support interactive programs with Unix MicroPython, #1725
+  * Fix read-only filesystem error for CircuitPython in non-English
+  variants of CircuitPython, #1662
+  * Fix error on right clicking in local file explorer with Italian
+  translation, #1713
+  * Fix back-end switcher menu position and theme, #1719, #1720
+  * Fix "pop from empty list" error when MicroPython is having
+  problems, #1586
+  * Fix MYPYPATH / MyPy not working, #1124
+  * Highlight unclosed strings even inside unclosed parens, #1770
+  * Fix problem running code via WebREPL, #1762
+  * Make Outline show also async, defs #1787
+  * Don't show full error info when ManagementError doesn't seem to be
+  Thonny's fault, #1788
+  * Don't show error dialog when querying globals fails (error is
+  shown on the variables table instead), #1789
+  * Recover from corrupted rpc.sock ("invalid literal for int()
+  with base 10" error), #1745
+  * Add 3 translated Help files for Spanish, by José Carlos García, #1759
+  * Add Korean translations of Help files, by Hyungseok Choi, #1758
+  * Add first version of Finnish translation by Lrasinen
+  * Update translations for Albanian, French, Korean
+  * Add newer MyPy (0.812) to binary bundles
+  * Fix crash in Shell when negative int-s are evaluated in
+  MicroPython (regression introduced in 3.3.4), #1670
+  * Fix problems with wm_overrideredirect on macOS with Tk 8.6.11, #1659
+  * Fix crash in Plotter when more than 10 numbers are plotted, #1648
+  * Hide unsuitable PYTHONPATH environment variable in macOS, #1651
+  * Fix too short reprs at MicroPython REPL (regression introduced in 3.3.4), #1627
+  * Fix incorrect presentation of long output lines, #1628
+  * Fix error in nicer debugger when stepping in generators, #1631
+  * Fix infinite recursion error when evaluating globals() in MicroPython
+  REPL while object inspector is open, #1641
+  * Update Greek translation
+  * CHANGED: MicroPython time synchronization now sets RTC to local
+  time instead of UTC. This can be changed via a hidden configuration
+  option (https://github.com/thonny/thonny/wiki/MicroPython#advanced-configuration), #1603
+  * Add time synchronization for RaspberryPi Pico, #1563, #1592
+  * Skip loading obsolete thonny-pico plug-in, which is now built in, #1575
+  * Get rid of misleading SSL warning in micropip.py and show a warning
+  about non-MicroPython packages, #1621
+  * Fix WebREPL connection for MicroPython 1.14 by using regular paste
+  mode instead of the new raw-paste mode, #1613
+  * Delay importing jedi and asttokens for improved performance, #1556
+  * Don't assume "dialout" group is required when MicroPython
+  connection fails with permission error, #1286
+  * Reduce the memory usage of showing global variables by capping
+  object representations to 50 first characters in MicroPython, #1582
+  * Add Hungarian translation (by Laszlo Kocsis)
+  * Updated translations for German, Korean, Italian, Dutch (by various authors)
+
+-------------------------------------------------------------------
 Tue Feb  2 13:37:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop python singlespec since thonny is an app, not a lib.
