@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 16 13:07:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Install AppArmor pattern and audit
+
+-------------------------------------------------------------------
+Fri Nov 12 08:29:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Support new location of the snapper config templates
+
+-------------------------------------------------------------------
 Mon Oct 18 11:20:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Don't delete /etc/machine-id (see gh#OSInside/kiwi#1650)

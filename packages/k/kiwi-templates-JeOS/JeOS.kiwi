@@ -248,6 +248,8 @@
     </repository>
     <packages type="image">
         <package name="patterns-base-base"/>
+        <package name="patterns-base-apparmor"/> <!-- Installs tools and profiles -->
+        <package name="audit"/> <!-- On SLE it's only recommended by the apparmor pattern -->
         <package name="aaa_base-extras"/> <!-- wouldn't be SUSE without that ;-) -->
         <package name="acl"/>
         <package name="chrony"/>
