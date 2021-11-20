@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 19 00:03:47 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1637233070.75fb859c3:
+  * Render the test_log value correctly when config has http url
+  * fullstack: Log worker-log.txt on test bail
+  * Allow some special characters in tag labels
+  * Speed up 25-cache-service.t with a shorter worker timeout
+  * Add test for progress bar link on parent group level
+  * Add test for progress bar link on parent group level
+  * commit message checker: Allow tags with dashes and white-spaces
+  * clone-job: Fix accidentally skipping asset downloads
+  * Fix parent progress bar links
+
+-------------------------------------------------------------------
 Tue Nov 16 16:03:49 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1637075542.066802195:
