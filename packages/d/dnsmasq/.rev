@@ -814,4 +814,15 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
   * When --dhcp-hostsfile --dhcp-optsfile and --addn-hosts are</comment>
     <requestid>921143</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>f93616d47ff851ae53e80cf5299a4659</srcmd5>
+    <version>2.86</version>
+    <time>1637444873</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1192529, dnsmasq-resolv-conf.patch:
+  Fix a segfault when re-reading an empty resolv.conf
+- Remove &quot;nogroup&quot; membership from the dnsmasq user.
+- Use systemd-sysusers from 15.3 onwards</comment>
+    <requestid>932271</requestid>
+  </revision>
 </revisionlist>

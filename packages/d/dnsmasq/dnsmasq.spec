@@ -16,10 +16,10 @@
 #
 
 
-%if 0%{?suse_version} < 1550
-%bcond_with tftp_user_package
-%else
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 %bcond_without tftp_user_package
+%else
+%bcond_with tftp_user_package
 %endif
 Name:           dnsmasq
 Version:        2.86
@@ -37,6 +37,7 @@ Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
+Patch1:         dnsmasq-resolv-conf.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel
@@ -75,6 +76,7 @@ server's leases.
 %prep
 %setup -q
 %patch0
+%patch1
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies
@@ -143,6 +145,7 @@ if ! %{_bindir}/getent passwd dnsmasq >/dev/null; then
     %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "dnsmasq" -g nogroup -G tftp dnsmasq
 fi
 %else
+
 %pre -f dnsmasq.pre
 %endif
 %service_add_pre %{name}.service

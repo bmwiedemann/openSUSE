@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 18 13:59:55 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1192529, dnsmasq-resolv-conf.patch:
+  Fix a segfault when re-reading an empty resolv.conf
+- Remove "nogroup" membership from the dnsmasq user.
+  
+-------------------------------------------------------------------
+Wed Oct 20 17:08:15 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use systemd-sysusers from 15.3 onwards
+
+-------------------------------------------------------------------
 Thu Sep 23 08:48:12 UTC 2021 - Reinhard Max <max@suse.com>
 
 - jsc#SLE-17936: Sync this state from Factory to SLE-15-SP1.
