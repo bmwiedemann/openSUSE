@@ -443,4 +443,24 @@
 - Drop fix_include_path.patch</comment>
     <requestid>919246</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b53d6a7926ccbc26f3b6d2eb8c9a2ef9</srcmd5>
+    <version>1.9.3</version>
+    <time>1637372351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.3:
+  * Fast Exposure support. Capture next frame in camera immediately
+    to avoid any delays.
+  * Support for DC focusers in Pegasus DMFC driver.
+  * Updates and cleanup for the OpenWeatherMap driver 
+  * V42L driver supports detecting camera and renaming the driver
+  * LX200 SiteName Fix V2
+  * Improve lynx sync and homing behavior
+  * Fix FocusLynx GetConfig for focusers without HomeOnStart
+  * Force using hour angle when mount is slewing
+  * Correction the amplification values to spec.
+  * Fixes to PlaneWave EFA driver
+  * Add setting of home position for Rigel/Pulsar dome </comment>
+    <requestid>932448</requestid>
+  </revision>
 </revisionlist>
