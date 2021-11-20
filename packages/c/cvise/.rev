@@ -641,4 +641,23 @@
     <comment>- Add colordiff to Requires.</comment>
     <requestid>928572</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a7db0d674025dfe175bf15a4f63738e0</srcmd5>
+    <version>2.4.0+git.20211119.7ad9ac5</version>
+    <time>1637372362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20211119.7ad9ac5:
+  * Enable -Werror also for release configurations.
+  * Enable privilage mode again.
+  * Mention colordiff in INSTALL.
+  * Fix detection of colordiff.
+  * Stop using codecov.
+  * Run in privilage mode.
+  * Add build target: LLVM 13.
+  * Port to the new codecod uploader.
+  * Fix thinko in warning option: -Wall to -Wdefault.
+  * Report all warnings from pytest.
+  * Fix resource leaks in tests.</comment>
+    <requestid>932531</requestid>
+  </revision>
 </revisionlist>
