@@ -26,4 +26,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906962</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c966df08afbc811b93cd55b992c44ee</srcmd5>
+    <version>1.1.1</version>
+    <time>1637444885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+ - Fix memory corruption crash with very high aspect ratio, e.g. 3000:1 (#9).
+</comment>
+    <requestid>932683</requestid>
+  </revision>
 </revisionlist>
