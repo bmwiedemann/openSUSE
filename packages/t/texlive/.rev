@@ -893,4 +893,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>898103</requestid>
   </revision>
+  <revision rev="74" vrev="77">
+    <srcmd5>24f34c63d480ecd4992aae30f4b368e9</srcmd5>
+    <version>unknown</version>
+    <time>1637372288</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix wrong library paths in pkgconfig files (boo#1192662)</comment>
+    <requestid>931525</requestid>
+  </revision>
 </revisionlist>

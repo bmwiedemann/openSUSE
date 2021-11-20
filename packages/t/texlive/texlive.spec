@@ -19,7 +19,7 @@
 %define texlive_version  2021
 %define texlive_previous 2020
 %define texlive_release  20210325
-%define texlive_noarch   185
+%define texlive_noarch   188
 %define texlive_source   texlive-20210325-source
 
 %define __perl_requires		%{nil}
@@ -3921,7 +3921,7 @@ popd
     for rp in $(find -name libtool.m4 -or -name configure) ; do
 	sed -ri 's/(-rpath)/\1-link/g' $rp
     done
-    LD_LIBRARY_PATH=${prefix}/lib:${world}/texk/kpathsea/.libs:${world}/texk/ptexenc/.libs
+    LD_LIBRARY_PATH=${prefix}/%{_lib}:${world}/texk/kpathsea/.libs:${world}/texk/ptexenc/.libs
     export LD_LIBRARY_PATH
 
     # We have an other autoconf/automake version and some patch changing ac files
@@ -3968,7 +3968,7 @@ popd
 	    --datarootdir=$prefix		\
 	    --exec-prefix=$prefix		\
 	    --bindir=$prefix/bin		\
-	    --libdir=$prefix/lib		\
+	    --libdir=$prefix/%{_lib}		\
 	    --infodir=$prefix/share/info	\
 	    --mandir=$prefix/share/man		\
 	    --sysconfdir=$prefix/etc		\
@@ -4217,7 +4217,7 @@ popd
 	rm -vf %{buildroot}%{_bindir}/installfont-tl
 	rm -vf %{buildroot}%{_bindir}/tlcockpit
     popd
-    pushd ${prefix}/lib/
+    pushd ${prefix}/%{_lib}/
 	tar -cpSf - *.so* | tar -xvspSf - -C %{buildroot}%{_libdir}/
     popd
     pushd %{libexecdir}/
@@ -4433,7 +4433,7 @@ popd
 	%{buildroot}/var/adm/update-scripts/%{name}-%{version}-%{release}-zypper
 %endif
 
-    pushd ${prefix}/lib/pkgconfig/
+    pushd ${prefix}/%{_lib}/pkgconfig/
     for pc in kpathsea ptexenc texlua texlua53 texluajit synctex
     do
 	test -e "$pc.pc" || continue

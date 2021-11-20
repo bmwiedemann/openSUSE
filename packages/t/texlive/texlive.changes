@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 15 10:40:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix wrong library paths in pkgconfig files (boo#1192662) 
+
+-------------------------------------------------------------------
 Sun May 30 16:43:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers
