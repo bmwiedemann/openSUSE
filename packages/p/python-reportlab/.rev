@@ -268,4 +268,41 @@
     <comment></comment>
     <requestid>871445</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a56bc299aac2a2386bcea7b215471e52</srcmd5>
+    <version>3.6.2</version>
+    <time>1637372302</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase verbosity of running the test suite.
+
+- Update to 3.6.2
+  * add mock for urlopen calls so tests can run off line. Contribution by Antonio Trande sagitter at fedoraproject dot org
+- Update to 3.6.1
+  * create py-2-3 branch
+  * Cease support for Python-2.7
+- Update to 3.6.0
+  * graphics improve some error messages for renderPM
+  * changed lib.urilt.recursiveImport after errors in python3.10, reflect changes in readJPEGInfo
+  * pdfutils readJPEGInfo extracts dpi if present defaults to (72, 72)
+  * Image flowable allows a useDPI argument
+  * paraparser annotate some errors
+- Update to 3.5.68
+  * Allow unicode PDFString to use encoding directly; fixes bug where colorspace indexes are broken
+  * Ensure PIL images can be size checked
+- Update to 3.5.67
+  * fix obvious bug in renderPS.py cut'n'paste bah :(
+  * fix bug saving to SpooledtemporaryFile's reported by Robert Schroll &lt;rschroll at gmail.com&gt;
+  * fix bug in justified RTL paragraphs example &amp; bugfix contributed by Moshe Uminer &lt;mosheduminer at gmail.com&gt;
+  * fix regex deprecation reported by Jürgen Gmach &lt;juergen.gmach at apis.de&gt;
+- Update to 3.5.66
+  * add yieldNoneSplits utility function
+  * fix BarChart so it lines can have markers and Nones in their data
+- Update to 3.5.65
+  * add ability to have lineplots in barcharts; no support yet for line markers
+  * added checkAttr method to TypedPropertyCollection
+- Update to 3.5.64
+  * ensure setup.py works from sdist; bug reported by Antonio P. Sagitter (sagitter at fedoraproject.org)
+  * restore broken MANIFEST.in somehow overwritten by Robin :(</comment>
+    <requestid>931859</requestid>
+  </revision>
 </revisionlist>

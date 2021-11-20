@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%define skip_python2 1
+
 Name:           python-reportlab
-Version:        3.5.59
+Version:        3.6.2
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
@@ -72,7 +74,7 @@ cp %{SOURCE1} .
 sed -i 's@http://www.reportlab.com/rsrc/@@' test_*.py
 ###
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python runAll.py
+$python runAll.py --verbosity=2
 }
 
 %files %{python_files}
