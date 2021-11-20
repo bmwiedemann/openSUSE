@@ -18,7 +18,7 @@
 
 %define libname libfltk1_3
 Name:           fltk
-Version:        1.3.5
+Version:        1.3.7
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
 License:        LGPL-2.1-or-later
