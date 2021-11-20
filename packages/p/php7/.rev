@@ -1162,4 +1162,15 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     <comment></comment>
     <requestid>927032</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>633667279ccd9e24289bbb3ccea81f36</srcmd5>
+    <version>7.4.26</version>
+    <time>1637444874</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.26: This is a security release (CVE-2021-21707)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-7.php#7.4.26
+</comment>
+    <requestid>932279</requestid>
+  </revision>
 </revisionlist>
