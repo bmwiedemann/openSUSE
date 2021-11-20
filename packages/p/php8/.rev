@@ -140,4 +140,15 @@
   See https://www.php.net/ChangeLog-8.php#8.0.12</comment>
     <requestid>926820</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9b747bbb688e1f599bc8c307512a1839</srcmd5>
+    <version>8.0.13</version>
+    <time>1637372348</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.13: This is a security release (CVE-2021-21707)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-8.php#8.0.13
+</comment>
+    <requestid>932418</requestid>
+  </revision>
 </revisionlist>
