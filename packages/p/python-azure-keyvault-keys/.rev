@@ -118,4 +118,16 @@
 - Remove temporary version override (forwarded request 930129 from glaubitz)</comment>
     <requestid>930169</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c388b1e52bed9d18ed24a5ef0cd8eaa8</srcmd5>
+    <version>4.5.0b5</version>
+    <time>1637372315</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.5.0b5
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>931554</requestid>
+  </revision>
 </revisionlist>
