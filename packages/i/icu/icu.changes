@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  9 15:39:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to release 70.1:
+  * Unicode 14 (new characters, scripts, emoji, and API constants)
+  * CLDR 40 (many additions and corrections)
+  * Fixes for measurement unit formatting
+  * Can now be built with up to C++20 compilers
+- Rebased icu-error-reporting.diff
+
+-------------------------------------------------------------------
 Wed May 12 08:23:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - nan-undefined-conversion.patch: ICU-21613 Fix undefined behaviour in

@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu69
-%define amajor   69
-%define aversion 69
+%define lname	libicu70
+%define amajor   70
+%define aversion 70
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,7 +26,7 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        69.1
+Version:        70.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
@@ -34,10 +34,10 @@ Group:          Development/Libraries/C and C++
 URL:            http://icu-project.org/
 
 #Git-Clone:	https://github.com/unicode-org/icu.git
-Source:         https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-70-1/icu4c-70_1-docs.zip.asc
 Source99:       icu.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
@@ -50,7 +50,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2021a
+Provides:       bundled(timezone) = 2021b
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -226,6 +226,7 @@ ICU_DATA="%buildroot/%_datadir/icu/%version" make check %{?_smp_mflags} VERBOSE=
 %_bindir/makeconv
 %_bindir/pkgdata
 %_bindir/uconv
+%_bindir/icuexportdata
 %_sbindir/*
 %_mandir/man*/*
 %dir %_datadir/icu

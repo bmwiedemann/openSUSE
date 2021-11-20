@@ -52,7 +52,7 @@ Index: icu/source/tools/toolutil/writesrc.cpp
  #include "unicode/utypes.h"
  #include "unicode/putil.h"
 @@ -65,8 +67,8 @@ usrc_createWithHeader(const char *path,
-     } else {
+     if (f==NULL) {
          fprintf(
              stderr,
 -            "usrc_create(%s, %s): unable to create file\n",
