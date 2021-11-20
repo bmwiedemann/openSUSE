@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# Only compatible with OpenEXR <= 2.5.x
+%bcond_with openexr
 
 %define _libname libpfs2
 Name:           pfstools
@@ -34,8 +36,6 @@ Patch5:         pfstools-fix-libpfs-linkage.patch
 # patch derived from https://github.com/pld-linux/pfstools/commit/67bd2304e516545f2b203f975ac5dd30d2b479b3
 # I guess it could go upstream as is; sent email to mantiuk at gmail
 Patch7:         pfstools-ImageMagick7.patch
-BuildRequires:  Mesa
-BuildRequires:  blas
 # previous versions of cmake don't support ImageMagick 7
 BuildRequires:  cmake >= 3.9.0
 BuildRequires:  doxygen
@@ -43,21 +43,27 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  hdf5-devel
-BuildRequires:  lapack
 BuildRequires:  libnetpbm-devel
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(Magick++)
-BuildRequires:  pkgconfig(OpenEXR)
+%if %{with openexr}
+BuildRequires:  pkgconfig(OpenEXR) < 3.0
+%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(octave)
+BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(opencv4)
+%else
 BuildRequires:  pkgconfig(opencv)
+%endif
 Requires:       dcraw
 
 %description
@@ -79,12 +85,13 @@ for reading, writing, manipulating and viewing high-dynamic range
 data using the pfs file format for HDR data. The concept of pfstools
 is similar to netpbm for low-dynamic range images.
 
-%package -n pfscalign
+%package -n pfsalign
 Summary:        Align image stack
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
+Obsoletes:      pfscalign < %{version}-%{release}
 
-%description -n pfscalign
+%description -n pfsalign
 Align multiple exposures using homographic transformation. The command
 uses a similar feature-point based method as most panorama stitching software.
 
@@ -129,16 +136,15 @@ Group:          Productivity/Multimedia/Other
 %description -n pfsglview
 pfsglview is a viewer program based on OpenGL for viewing HDR graphic files.
 
-#%%package exr
-#Summary:        EXR file import and export for PFS tools
-#License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-#Group:          Productivity/Multimedia/Other
+%package exr
+Summary:        EXR file import and export for PFS tools
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Productivity/Multimedia/Other
 
+%description exr
+This package contains two-way conversion filters between the EXR file
+format and pfstools's HDR graphics file format.
 
-
-#%%description exr
-#This package contains two-way conversion filters between the EXR file
-#format and pfstools's HDR graphics file format.
 %package imgmagick
 Summary:        ImageMagick file import for PFS tools
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -181,10 +187,8 @@ chmod -x ChangeLog
 %cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
 find %{buildroot} -type f -name "*.la" -delete -print
-grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %fdupes -s %{buildroot}%{_mandir}
 
 %post -n %{_libname} -p /sbin/ldconfig
@@ -275,7 +279,7 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/libpfs.so
 
-%files -n pfscalign
+%files -n pfsalign
 %{_bindir}/pfsalign
 %{_mandir}/man1/pfsalign.1%{ext_man}
 
@@ -324,11 +328,13 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_bindir}/pfsglview
 %{_mandir}/man1/pfsglview.1%{?ext_man}
 
-#%%files exr
-#%%{_bindir}/pfsinexr
-#%%{_bindir}/pfsoutexr
-#%%{_mandir}/man1/pfsinexr.1%%{?ext_man}
-#%%{_mandir}/man1/pfsoutexr.1%%{?ext_man}
+%if %{with openexr}
+%files exr
+%{_bindir}/pfsinexr
+%{_bindir}/pfsoutexr
+%{_mandir}/man1/pfsinexr.1%%{?ext_man}
+%{_mandir}/man1/pfsoutexr.1%%{?ext_man}
+%endif
 
 %files imgmagick
 %{_bindir}/pfsinimgmagick

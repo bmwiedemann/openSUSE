@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 18 13:05:49 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use OpenCV 4 on Tumbleweed
+- Guard OpenEXR build dependency (needs OpenEXR < 3)
+- Adjust pfscalign package name to pfsalign, match contained tool
+- Cleanup spec file, remove old dependencies:
+  + lapack, blas (uses GSL instead)
+  + doxygen, libtool (unused)
+- Correct GL build dependency (pkgconfig(gl) instead of Mesa)
+
+-------------------------------------------------------------------
 Tue Sep 14 09:32:54 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 2.2.0
