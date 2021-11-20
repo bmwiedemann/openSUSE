@@ -17,7 +17,7 @@
 
 
 Name:           hourglass
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        Clock gadget for Elementary OS
 License:        GPL-3.0-only
@@ -32,9 +32,10 @@ BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(granite)
+BuildRequires:  pkgconfig(granite) >= 6.0.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libnotify)
 Recommends:     %{name}-lang
 
