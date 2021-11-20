@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 18 11:10:28 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add support for detecting EFI boot during autoinstallation
+  (jsc#SLE-18819)
+- 4.4.21
+
+-------------------------------------------------------------------
+Fri Nov 12 13:21:54 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- bsc#1192626:
+  - Registration takes place always at the same point, no matter
+    which installation medium is being used.
+  - Adapt to the product specification API.
+- Stop AutoYaST installation when registration failed on online
+  medium (bsc#1188211, Josef Reidinger <jreidinger@suse.com>).
+- 4.4.20
+
+-------------------------------------------------------------------
 Tue Oct 26 12:25:01 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Avoid internal error when checking signature (bsc#1192022).

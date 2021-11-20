@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.4.19
+Version:        4.4.21
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -42,16 +42,18 @@ BuildRequires:  libxml2-tools
 BuildRequires:  libxslt
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # GPG symmetric methods and Password dialog
-BuildRequires:  yast2 >= 4.3.25
+# ProductSpec API
+BuildRequires:  yast2 >= 4.4.21
 # FileSystems.read_default_subvol_from_target
+BuildRequires:  yast2-services-manager
+BuildRequires:  yast2-transfer
+BuildRequires:  yast2-xml
+# ProductSpec API
 BuildRequires:  yast2-country
 BuildRequires:  yast2-network >= 3.1.145
-BuildRequires:  yast2-packager
-BuildRequires:  yast2-services-manager
+BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-slp
-BuildRequires:  yast2-transfer
 BuildRequires:  yast2-update >= 3.3.0
-BuildRequires:  yast2-xml
 # Required for test suite testing one time sync
 BuildRequires:  yast2-ntp-client >= 4.0.1
 # New API for Y2Storage::PackageHandler and storage features
@@ -66,8 +68,8 @@ BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 Requires:       autoyast2-installation = %{version}
 Requires:       libxslt
-# GPG symmetric methods and Password dialog
-Requires:       yast2 >= 4.3.25
+# ProductSpec API
+Requires:       yast2 >= 4.4.21
 Requires:       yast2-core
 Requires:       yast2-country >= 3.1.13
 # Moving security module to first installation stage
@@ -120,8 +122,8 @@ Requires:       yast2-bootloader
 Requires:       yast2-core
 Requires:       yast2-country
 Requires:       yast2-ncurses
-# Y2Packager::MediumType
-Requires:       yast2-packager >= 4.2.25
+# ProductSpec API
+Requires:       yast2-packager >= 4.4.13
 # ServicesManagerTargetClass::BaseTargets
 Requires:       yast2-services-manager >= 3.1.10
 # Required for one time sync before installation
