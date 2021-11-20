@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Nov 18 17:14:15 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#40
+- decode extended nop instructions
+- 3.5
+
+--------------------------------------------------------------------
 Wed Oct 20 12:13:20 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/libx86emu#39
