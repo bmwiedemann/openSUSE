@@ -18,20 +18,21 @@
 
 # No longer build for python2
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        3.3.1
+Version:        3.4.1
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
-Group:          Development/Languages/Python 
+Group:          Development/Languages/Python
 URL:            https://libcloud.apache.org
-Source0:        https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-%{version}.tar.gz
+Source0:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.bz2
+Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.bz2.asc
+# https://libcloud.apache.org/downloads.html#package-verification-guide
+Source2:        https://www.apache.org/dist/libcloud/KEYS#/%{name}.keyring
 Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
 Patch3:         skip-some-tests-for-older-paramiko-versions.patch
-
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module lxml}
@@ -86,7 +87,7 @@ find %{buildroot} -name '*.pem' -size 0 -delete
 # Skip ShellOutSSHClientTests tests which attempt to ssh to localhost
 # Skip test_key_file_non_pem_format_error since OpenSSH support is backported for SLE python-paramiko < 2.7.0
 # Note these four extra py3 failures are undesirable and should be fixed: fail in s390 and ppc64
-%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_non_utf8_character and not test_consume_stderr_chunk_contains_non_utf8_character and not test_key_file_non_pem_format_error and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase and not test_list_nodes_invalid_region)'
+%pytest -k '(not test_consume_stderr_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_part_of_multi_byte_utf8_character and not test_consume_stdout_chunk_contains_non_utf8_character and not test_consume_stderr_chunk_contains_non_utf8_character and not test_key_file_non_pem_format_error and not ShellOutSSHClientTests and not ElasticContainerDriverTestCase and not test_list_nodes_invalid_region and not test_connection_timeout_raised and not test_retry_on_all_default_retry_exception_classes)'
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 15 20:38:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.1:
+  * fix a regresion preventing installation under Python 3.5
+  * revert requests minimum version required
+
+-------------------------------------------------------------------
+Sun Nov 14 09:55:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.0:
+  * Improvements and more flexibility in the failed HTTP requests
+    retrying code
+  * Various improvements to the Equinix Metal compute driver
+  * Improvements and updates to the Outscale, Vultr, CloudSigma and
+    OpenStack compute drivers
+  * Support for authenticating via API tokens to the CloudFlare DNS
+    driver
+  * Support for using external cache for OpenStack auth tokens
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Mon Feb  1 09:05:36 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Skip "OvhTests::test_list_nodes_invalid_region" compute test when building
