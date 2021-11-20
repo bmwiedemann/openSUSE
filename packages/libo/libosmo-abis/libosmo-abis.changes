@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:14:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.2.0
+  * ipa: Introduce support for user-specific DSCP and priority
+  * e1_input: Allow (vty) configuration of IP DSCP and socket
+    priority
+- Update patch:
+  * osmo-talloc.diff
+
+-------------------------------------------------------------------
 Sun Mar 14 20:35:36 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.1

@@ -17,7 +17,7 @@
 
 
 Name:           libosmo-abis
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Osmocom library for A-bis interface between BTS and BSC
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
