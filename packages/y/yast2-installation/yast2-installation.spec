@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.21
+Version:        4.4.22
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -28,8 +28,8 @@ Source1:        YaST2-Second-Stage.service
 Source2:        YaST2-Firstboot.service
 
 BuildRequires:  update-desktop-files
-# Yast2::FsSnapshotStore::IOError
-BuildRequires:  yast2 >= 4.3.53
+# ProductSpec API
+BuildRequires:  yast2 >= 4.4.21
 # CIOIgnore
 BuildRequires:  yast2-bootloader
 # storage-ng based version
@@ -39,8 +39,8 @@ BuildRequires:  yast2-devtools >= 3.1.10
 BuildRequires:  yast2-firewall
 # Y2Network::ProposalSettings #modify_defaults and #apply_defaults (forwarding configurable)
 BuildRequires:  yast2-network >= 4.4.12
-# Y2Packager::InstallationData
-BuildRequires:  yast2-packager >= 4.4.2
+# ProductSpec API
+BuildRequires:  yast2-packager >= 4.4.13
 # for AbortException and handle direct abort
 BuildRequires:  yast2-ruby-bindings >= 4.0.6
 # For selinux classes
@@ -70,8 +70,8 @@ Requires:       iproute2
 Requires:       pciutils
 # tar-gzip some system files and untar-ungzip them after the installation (FATE #300421, #120103)
 Requires:       tar
-# Installation::InstallationInfo
-Requires:       yast2 >= 4.4.4
+# ProductSpec API
+Requires:       yast2 >= 4.4.21
 # CIOIgnore
 Requires:       yast2-bootloader
 Requires:       yast2-country >= 3.3.1
@@ -80,8 +80,8 @@ Requires:       yast2-country >= 3.3.1
 Requires:       yast2-country-data >= 2.16.11
 # Y2Network::ProposalSettings #modify_defaults and #apply_defaults (forwarding configurable)
 Requires:       yast2-network >= 4.4.12
-# Y2Packager::InstallationData
-Requires:       yast2-packager >= 4.4.2
+# ProductSpec API
+Requires:       yast2-packager >= 4.4.13
 # Pkg::ProvidePackage
 Requires:       yast2-pkg-bindings >= 3.1.33
 # Proxy settings for 2nd stage (bnc#764951)
