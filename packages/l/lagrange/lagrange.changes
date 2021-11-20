@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 18 20:41:47 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.2
+  - Fixed encoding of + characters in URLs as per RFC 3986.
+  - Fixed crash when fontpack.ini specifies a file that cannot be found.
+  - Fixed incorrect title of some error messages (was showing response meta
+    info).
+  - Fixed ambiguous font dropdown menu items if some fonts have the same name.
+    Now the unique font ID will be included in these cases.
+  - Made it possible to manually trust a certificate whose subject doesn't match
+    domain name.
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Sat Nov  6 19:57:17 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.8.1
