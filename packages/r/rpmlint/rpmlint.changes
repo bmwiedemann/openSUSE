@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 15 13:55:00 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211113.372a30e:
+  * Misplaced spaces causes regex to not match.
+  * Add debuginfod user and update message.
+
+-------------------------------------------------------------------
 Wed Nov 10 10:38:16 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211110.8430dc4:

@@ -3393,4 +3393,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * Prevent duplicate files in lint input</comment>
     <requestid>930630</requestid>
   </revision>
+  <revision rev="368" vrev="1">
+    <srcmd5>0c7e13d06db16499697d7be073a02bcf</srcmd5>
+    <version>2.1+git20211113.372a30e</version>
+    <time>1637372291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211113.372a30e:
+  * Misplaced spaces causes regex to not match.
+  * Add debuginfod user and update message.</comment>
+    <requestid>931560</requestid>
+  </revision>
 </revisionlist>
