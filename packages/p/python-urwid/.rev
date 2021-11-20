@@ -170,4 +170,12 @@ Should fix problem with non-downloadable source file.</comment>
     <comment></comment>
     <requestid>925632</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>8664a86dc64b3a33bd3a2a040d2fde5c</srcmd5>
+    <version>2.1.2</version>
+    <time>1637372287</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931523</requestid>
+  </revision>
 </revisionlist>

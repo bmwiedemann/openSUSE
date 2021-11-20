@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-urwid
 Version:        2.1.2
 Release:        0
@@ -27,6 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/u/urwid/urwid-%{v
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 BuildRequires:  python-rpm-macros
 Requires:       python-curses
 %python_subpackages

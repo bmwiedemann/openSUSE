@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  8 12:13:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add dependency for python 2 builds 
+
+-------------------------------------------------------------------
 Tue Oct 12 10:28:44 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
