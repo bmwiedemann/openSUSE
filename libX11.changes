@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 15 14:03:27 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_no-longer-crash-in-XVisualIDFromVisual.patch
+  * no longer crash in XVisualIDFromVisual() [boo#1191517] 
+
+-------------------------------------------------------------------
 Sun Jun  6 18:54:32 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.2
