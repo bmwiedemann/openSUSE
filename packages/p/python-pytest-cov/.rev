@@ -199,4 +199,12 @@
     <comment>- Inject multibuild to avoid build cycles.</comment>
     <requestid>918856</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5502bfcf7173c517d9ba717438978be3</srcmd5>
+    <version>3.0.0</version>
+    <time>1637372305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931974</requestid>
+  </revision>
 </revisionlist>

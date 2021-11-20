@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 10 13:05:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop pytest-cov-pr453-coverage54.patch
+- update to 3.0.0
+ * drop support for py2 and python-3.5
+
+-------------------------------------------------------------------
 Tue Sep 14 08:45:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to avoid build cycles. 
