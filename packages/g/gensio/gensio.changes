@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 18 20:59:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.4
+  * Bugfix release
+- Update to version 2.3.3
+  * The major feature part of this is gensiot is rewritten to
+    support a server mode, which allows it to continue to accept
+    connections after a connection comes in. As part of this, it
+    supports multiple threads, pidfiles, and output to syslog.
+    This is useful as a stripped down ser2net, and also for
+    creating a forwarding application, letting you convert a
+    non-ssl connection to an ssl on, or receive ssl connections
+    and forward them to a local application that doesn't support
+    ssl.
+  * The oomtests are getting better.
+
+-------------------------------------------------------------------
 Sun Nov  7 11:52:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2
