@@ -1074,4 +1074,31 @@ This references bsc#1186798</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>928884</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>279078c8cd3bc901e4c7ab6ef480d204</srcmd5>
+    <version>2.7.0</version>
+    <time>1637372356</time>
+    <user>dimstar_suse</user>
+    <comment>PubCloud:
+- Update the way allowed paths are checked
+  SUMA requested a new feature where it is possible to validate
+  all versions of the same product and arch (that are allowed to that system)
+
+PubCloud:
+- De-register BYOS systems using RMT as a proxy from SCC
+- De-activate a single product from a BYOS proxy system
+
+PubCloud:
+- Add the handling of the BYOS systems that use RMT as a SCC proxy
+  In order to do that:
+- New boolean column in systems table in db: proxy_byos
+- Skip the sync with SCC (using that column)
+- Registration of the system to SCC (announce system call and
+  then use SCC credentials)
+- Activation of products
+- Check subscription is active/valid for a product/repo to be accessed
+
+- Re-fix broken symlinks: This version fixes the bug-fix</comment>
+    <requestid>932561</requestid>
+  </revision>
 </revisionlist>
