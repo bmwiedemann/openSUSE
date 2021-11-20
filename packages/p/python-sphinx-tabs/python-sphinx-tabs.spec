@@ -17,6 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+%define pythons python3
+%endif
 # TODO: use github tarball because upstrean dont distribute tests via pypi
 %bcond_with      test
 Name:           python-sphinx-tabs
