@@ -56,7 +56,18 @@ BuildRequires:  user(nobody)
 %python_subpackages
 
 %description
-SMTP server based on asyncio.
+The Python standard library includes a basic SMTP server in the smtpd module,
+based on the old asynchronous libraries asyncore and asynchat. These modules
+are quite old and are definitely showing their age; asyncore and asynchat are
+difficult APIs to work with, understand, extend, and fix.
+
+With the introduction of the asyncio module in Python 3.4, a much better way of
+doing asynchronous I/O is now available. It seems obvious that an asyncio-based
+version of the SMTP and related protocols are needed for Python 3. This project
+brings together several highly experienced Python developers collaborating on
+this reimplementation.
+
+This package provides such an implementation of both the SMTP and LMTP protocols.
 
 %prep
 %setup -q -n aiosmtpd-%{version}
@@ -70,10 +81,10 @@ cp %{SOURCE1} .
 %python_clone -a %{buildroot}%{_bindir}/aiosmtpd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%if 0%{?sle_version} && 0%{?sle_version} >= 150400
 %check
-# https://github.com/aio-libs/aiosmtpd/issues/268
-donttest="(test_byclient and login and False)"
-%pytest -k "not ($donttest)"
+%pytest
+%endif
 
 %post
 %python_install_alternative aiosmtpd
