@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:01:08 UTC 2021 - Elisei Roca <eroca@mailbox.org>
+
+- Skip building for python2, it was never supported
+
+-------------------------------------------------------------------
 Fri Aug 13 10:36:54 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Initial package

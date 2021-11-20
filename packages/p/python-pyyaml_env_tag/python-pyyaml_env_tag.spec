@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyyaml_env_tag
 Version:        0.1
