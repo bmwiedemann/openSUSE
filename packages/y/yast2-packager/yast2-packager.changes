@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 12 13:02:17 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Introduce the product specification API (bsc#1192626):
+  - Add a ProductSpec and derived classes.
+  - Drop ProductLocation and ProductLocationDetails.
+  - Add a specific client to initialize the workflow of the
+    selected product.
+- 4.4.13
+
+-------------------------------------------------------------------
 Thu Nov  4 15:18:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed missing license translations after going back in the

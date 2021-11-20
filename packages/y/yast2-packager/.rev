@@ -3080,4 +3080,12 @@
     <comment>submit new version 4.4.12</comment>
     <requestid>929203</requestid>
   </revision>
+  <revision rev="414" vrev="1">
+    <srcmd5>d6e53c312ba607341590fc91d4b13a0d</srcmd5>
+    <version>4.4.13</version>
+    <time>1637372292</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.13</comment>
+    <requestid>931576</requestid>
+  </revision>
 </revisionlist>
