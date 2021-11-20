@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 15:43:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.7:
+  * do not use strlen in for loop
+  * do not use strlen to check for empty string
+  * update CMakeLists.txt with the correct version
+
+-------------------------------------------------------------------
 Mon Nov 15 13:46:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.6:
