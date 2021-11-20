@@ -17,7 +17,7 @@
 
 
 Name:           dippi
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Tool for calculating display info like DPI and aspect ratio
 License:        GPL-3.0-or-later
