@@ -16,18 +16,16 @@
 #
 
 
-%define _lto_cflags %nil
-
 Name:           openbsc
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Base station controller for a GSM stack
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://osmocom.org/projects/openbsc/wiki/OpenBSC
 Source:         https://github.com/osmocom/openbsc/archive/%version.tar.gz
-Patch0:	harden_osmo-bsc-mgcp.service.patch
-Patch1:	harden_osmo-nitb.service.patch
+Patch0:         harden_osmo-bsc-mgcp.service.patch
+Patch1:         harden_osmo-nitb.service.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libdbi-drivers-dbd-sqlite3
@@ -116,7 +114,7 @@ rm -rf %buildroot/%_includedir/%name
 
 %check
 pushd openbsc/
-make %{?_smp_mflags} check || find . -name testsuite.log -exec cat {} +
+%make_build check || find . -name testsuite.log -exec cat {} +
 popd
 
 %pre
@@ -149,7 +147,7 @@ popd
 %_docdir/openbsc
 %_bindir/osmo-nitb
 %dir %_sysconfdir/osmocom
-%config %_sysconfdir/osmocom/osmo-nitb.cfg
+%config(noreplace) %_sysconfdir/osmocom/osmo-nitb.cfg
 %_unitdir/osmo-nitb.service
 %_sbindir/rcosmo-nitb
 %dir %_localstatedir/lib/osmocom
@@ -161,7 +159,7 @@ popd
 %files bsc-sccplite
 %_bindir/osmo-bsc_mgcp
 %dir %_sysconfdir/osmocom
-%config %_sysconfdir/osmocom/osmo-bsc-mgcp.cfg
+%config(noreplace) %_sysconfdir/osmocom/osmo-bsc-mgcp.cfg
 %_unitdir/osmo-bsc-mgcp.service
 %_sbindir/rcosmo-bsc-mgcp
 
