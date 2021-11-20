@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Nov 18 12:14:27 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#843
+- added convenience function get_blk_devices() for Multipath and
+  DmRaid
+- added macro LIBSTORAGE_NG_VERSION_AT_LEAST
+- 4.4.57
+
+--------------------------------------------------------------------
 Fri Nov 12 12:53:45 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#842
