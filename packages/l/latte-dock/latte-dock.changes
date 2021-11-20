@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 18 14:31:09 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.4
+  * Feature Indicators: extend Indicators API in order for
+    indicators to be able to animate their parent icon including
+    when a task launcher is activated
+  * Feature Indicators: expose more Icon properties to indicators
+  * Important: Fix 25secs startup freezes from QDBusInterface
+    desktop geometry calls (kde#444739)
+  * Important: Fix startup delays because KWin was reconfiguring
+    even though it was needed when BorderlessMaximized windows were
+    activated
+  * Important: Remove plasma workarounds that were hiding plasma
+    desktop bug #445495
+  * Wayland: hide black line in the dock/panel center for
+    AlwaysVisible visibility mode (kde#444419)
+  * LastActiveWindow: update last activated window properties when
+    changed
+  * Initialize VirtualDesktopsWrappingAround property in a proper
+    way (kde#444572)
+  * Plasmoid: decouple bouncing launcher animation for task real
+    removal animation
+  * Fix binding loops for Indexer qml ability
+  * Respect applets maximumLength when equals zero
+
+-------------------------------------------------------------------
 Tue Oct 26 09:02:25 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.3
