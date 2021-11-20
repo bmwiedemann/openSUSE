@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 18 21:02:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.14
+  Broker:
+  * Fix bridge not respecting receive-maximum when reconnecting
+    with MQTT v5.
+  Client library:
+  * Fix mosquitto_topic_matches_sub2() not using the length
+    parameters.
+  * Fix incorrect subscribe_callback in mosquittopp.h.
+
+-------------------------------------------------------------------
 Thu Oct 28 18:35:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.13
