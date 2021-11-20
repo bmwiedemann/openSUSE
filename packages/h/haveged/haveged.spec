@@ -32,7 +32,6 @@ Source5:        %{name}-switch-root.service
 Patch0:         ppc64le.patch
 # PATCH-FIX-UPSTREAM: don't write to syslog at startup to avoid deadlocks psimons@suse.com bnc#959237
 Patch2:         haveged-no-syslog.patch
-Patch3:	harden_haveged.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
