@@ -364,4 +364,13 @@ additions, including new UTF-8 compose sequences for:
 - supersedes U_Check-for-NULL-strings-before-getting-their-lengths.patch</comment>
     <requestid>897894</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7ec69022092fa8520b7ebaba359be6cb</srcmd5>
+    <version>1.7.2</version>
+    <time>1637372291</time>
+    <user>dimstar_suse</user>
+    <comment>- u_no-longer-crash-in-XVisualIDFromVisual.patch
+  * no longer crash in XVisualIDFromVisual() [boo#1191517]</comment>
+    <requestid>931562</requestid>
+  </revision>
 </revisionlist>
