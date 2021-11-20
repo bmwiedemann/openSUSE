@@ -2284,6 +2284,7 @@ unsorted:
   - coredns-for-k8s1.21-extras 
   - coredns-for-k8s1.22 
   - coredns-for-k8s1.22-extras 
+  - corepack16 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -11414,6 +11415,7 @@ unsorted:
   - libircclient1 
   - libirman-devel 
   - libirman0 
+  - libirml1 
   - libirrecord0 
   - libiscsi-devel 
   - libiscsi-test 
@@ -12460,24 +12462,28 @@ unsorted:
   - libosmo-fl2k0 
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
+  - libosmo-hnbap-devel 
+  - libosmo-hnbap0 
   - libosmo-mgcp-client-devel 
   - libosmo-mgcp-client6 
   - libosmo-mgcp-devel 
-  - libosmo-mtp-1_4_0 
+  - libosmo-mtp-1_5_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
-  - libosmo-ranap3 
+  - libosmo-ranap5 
   - libosmo-rspro-devel 
   - libosmo-rspro1 
+  - libosmo-rua-devel 
+  - libosmo-rua0 
   - libosmo-sabp-devel 
-  - libosmo-sabp0 
-  - libosmo-sccp-1_4_0 
+  - libosmo-sabp1 
+  - libosmo-sccp-1_5_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
-  - libosmo-sigtran5 
+  - libosmo-sigtran7 
   - libosmo-simtrace2-0 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_4_0 
+  - libosmo-xua-1_5_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis10 
@@ -12487,14 +12493,14 @@ unsorted:
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore17 
+  - libosmocore18 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
   - libosmogb-devel 
   - libosmogb12 
   - libosmogsm-devel 
-  - libosmogsm16 
+  - libosmogsm17 
   - libosmonetif-devel 
   - libosmonetif8 
   - libosmosdr0 
@@ -12577,7 +12583,8 @@ unsorted:
   - libparpack2-openmpi4-32bit: [x86_64] 
   - libparserutils-devel 
   - libparserutils0 
-  - libparted0-32bit: [x86_64] 
+  - libparted-fs-resize0-32bit: [x86_64] 
+  - libparted2-32bit: [x86_64] 
   - libpartio1 
   - libpasswdqc0 
   - libpasswdqc0-32bit: [x86_64] 
@@ -13855,7 +13862,8 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtasn1-tools 
-  - libtbb2 
+  - libtbb12 
+  - libtbbbind_2_5-3 
   - libtbbmalloc2 
   - libtcmalloc4 
   - libtcmalloc_and_profiler4 
@@ -15794,6 +15802,7 @@ unsorted:
   - mdbtools-devel 
   - mdds-1_4-devel 
   - mdds-1_5-devel 
+  - mdds-2_0-devel 
   - meabo 
   - meanwhile-devel 
   - meanwhile-doc 
@@ -19548,6 +19557,7 @@ unsorted:
   - perl-Plack-Middleware-FixMissingBodyInRedirect 
   - perl-Plack-Middleware-LogErrors 
   - perl-Plack-Middleware-RemoveRedundantBody 
+  - perl-Plack-Middleware-ReverseProxy 
   - perl-Plack-Middleware-Session 
   - perl-Plack-Test-Agent 
   - perl-Pod-AsciiDoctor 
@@ -19615,6 +19625,7 @@ unsorted:
   - perl-Scope-Guard 
   - perl-Scope-Upper 
   - perl-Search-Elasticsearch 
+  - perl-Search-Xapian 
   - perl-Selenium-Remote-Driver 
   - perl-Sereal 
   - perl-Sereal-Decoder 
@@ -19865,6 +19876,7 @@ unsorted:
   - perl-TryCatch 
   - perl-Twiggy 
   - perl-Type-Tiny 
+  - perl-Types-Path-Tiny 
   - perl-UNIVERSAL-can 
   - perl-UNIVERSAL-isa 
   - perl-UNIVERSAL-moniker 
@@ -20022,7 +20034,7 @@ unsorted:
   - petsc_3_14_5-gnu-openmpi3-hpc-saws 
   - petsc_3_14_5-gnu-openmpi4-hpc-devel 
   - petsc_3_14_5-gnu-openmpi4-hpc-saws 
-  - pfscalign 
+  - pfsalign 
   - pfsglview 
   - pfstools 
   - pfstools-devel 
@@ -21165,6 +21177,7 @@ unsorted:
   - python3-designateclient 
   - python3-dfVFS 
   - python3-django-mailman3 
+  - python3-django-q 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
@@ -21590,7 +21603,6 @@ unsorted:
   - python36-PyOpenAL 
   - python36-PyPDF2 
   - python36-PyPrind 
-  - python36-PyPrint 
   - python36-PyQRCode 
   - python36-PyQt6 
   - python36-PyQt6-3D 
@@ -21764,7 +21776,6 @@ unsorted:
   - python36-astor 
   - python36-astral 
   - python36-astroid 
-  - python36-asttokens 
   - python36-astunparse 
   - python36-asv 
   - python36-async_generator 
@@ -22001,6 +22012,7 @@ unsorted:
   - python36-azure-mgmt-relay 
   - python36-azure-mgmt-reservations 
   - python36-azure-mgmt-resource 
+  - python36-azure-mgmt-resourceconnector 
   - python36-azure-mgmt-resourcegraph 
   - python36-azure-mgmt-resourcehealth 
   - python36-azure-mgmt-resourcemover 
@@ -22419,7 +22431,6 @@ unsorted:
   - python36-django-polymorphic 
   - python36-django-push-notifications 
   - python36-django-pyscss 
-  - python36-django-q 
   - python36-django-qsessions 
   - python36-django-redis 
   - python36-django-registration 
@@ -22587,8 +22598,6 @@ unsorted:
   - python36-flit-core 
   - python36-flower 
   - python36-fluent 
-  - python36-flufl.bounce 
-  - python36-flufl.i18n 
   - python36-flufl.lock 
   - python36-flufl.testing 
   - python36-fluidity-sm 
@@ -22944,7 +22953,6 @@ unsorted:
   - python36-lit 
   - python36-livereload 
   - python36-llfuse 
-  - python36-llvmlite 
   - python36-lmdb 
   - python36-lml 
   - python36-localzone 
@@ -23834,7 +23842,6 @@ unsorted:
   - python36-semanage 
   - python36-semantic_version 
   - python36-semver 
-  - python36-sentry-sdk 
   - python36-seqdiag 
   - python36-serpent 
   - python36-serpy 
@@ -24393,7 +24400,6 @@ unsorted:
   - python38-PyOpenAL 
   - python38-PyPDF2 
   - python38-PyPrind 
-  - python38-PyPrint 
   - python38-PyQRCode 
   - python38-PyQt6 
   - python38-PyQt6-3D 
@@ -24810,6 +24816,7 @@ unsorted:
   - python38-azure-mgmt-relay 
   - python38-azure-mgmt-reservations 
   - python38-azure-mgmt-resource 
+  - python38-azure-mgmt-resourceconnector 
   - python38-azure-mgmt-resourcegraph 
   - python38-azure-mgmt-resourcehealth 
   - python38-azure-mgmt-resourcemover 
@@ -25251,7 +25258,6 @@ unsorted:
   - python38-django-polymorphic 
   - python38-django-push-notifications 
   - python38-django-pyscss 
-  - python38-django-q 
   - python38-django-qsessions 
   - python38-django-redis 
   - python38-django-registration 
@@ -27356,7 +27362,6 @@ unsorted:
   - python39-PyOpenAL 
   - python39-PyPDF2 
   - python39-PyPrind 
-  - python39-PyPrint 
   - python39-PyQRCode 
   - python39-PyQt6 
   - python39-PyQt6-3D 
@@ -27795,6 +27800,7 @@ unsorted:
   - python39-azure-mgmt-relay 
   - python39-azure-mgmt-reservations 
   - python39-azure-mgmt-resource 
+  - python39-azure-mgmt-resourceconnector 
   - python39-azure-mgmt-resourcegraph 
   - python39-azure-mgmt-resourcehealth 
   - python39-azure-mgmt-resourcemover 
@@ -28259,7 +28265,6 @@ unsorted:
   - python39-django-polymorphic 
   - python39-django-push-notifications 
   - python39-django-pyscss 
-  - python39-django-q 
   - python39-django-qsessions 
   - python39-django-redis 
   - python39-django-registration 
@@ -28437,8 +28442,6 @@ unsorted:
   - python39-flit-core 
   - python39-flower 
   - python39-fluent 
-  - python39-flufl.bounce 
-  - python39-flufl.i18n 
   - python39-flufl.lock 
   - python39-flufl.testing 
   - python39-fluidity-sm 
@@ -30945,6 +30948,7 @@ unsorted:
   - raspberrypi-eeprom-firmware 
   - raspberrypi-firmware 
   - raspberrypi-firmware-config 
+  - raspberrypi-firmware-config-camera 
   - raspberrypi-firmware-dt 
   - raspberrypi-firmware-eeprom 
   - raspberrypi-firmware-extra 
