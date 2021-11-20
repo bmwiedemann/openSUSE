@@ -55,4 +55,12 @@
     <comment>- Update to release 1.7.1</comment>
     <requestid>878994</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bc1cc4d9d59b59c365bd51c73ae93a28</srcmd5>
+    <version>1.8.0</version>
+    <time>1637444878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0</comment>
+    <requestid>932599</requestid>
+  </revision>
 </revisionlist>

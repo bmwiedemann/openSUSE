@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 19 10:50:35 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * Fix vty PDP lookups by IMSI
+  * apn_start: avoid segfault if missing tun-device
+  * Add --vty-ref-mode option
+  * ggsn: Reject PDP CTX ACT for static IP addresses
+  * gtp: Support tx/rx RAN Information Relay message
+  * ggsn: Fix heap-use-after-free during Recovery without
+    associated PDP
+
+-------------------------------------------------------------------
 Sun Mar 14 20:59:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.1

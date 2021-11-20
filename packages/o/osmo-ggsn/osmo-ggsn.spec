@@ -16,11 +16,9 @@
 #
 
 
-%define _lto_cflags %nil
-
 Name:           osmo-ggsn
 %define lname   libgtp6
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        GPRS Support Node
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -65,15 +63,26 @@ libgtp implements the GPRS Tunneling Protocol between SGSN and GGSN.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libgtp.
 
+%package -n gtp-echo-responder
+Summary:        Small program answering GTP ECHO Request with GTP ECHO Response
+License:        MIT
+Group:          Productivity/Telephony/Utilities
+
+%description -n gtp-echo-responder
+Small program answering GTP ECHO Request with GTP ECHO Response for both GTPCv1
+and GTPCv2.
+
 %prep
 %autosetup -p1
-sed -i 's|/usr/bin/osmo-ggsn|/usr/sbin/osmo-ggsn|g' contrib/systemd/osmo-ggsn.service
+sed -i 's|%_bindir/osmo-ggsn|%_sbindir/osmo-ggsn|g' contrib/systemd/osmo-ggsn.service
 
 %build
 echo "%version" >.tarball-version
 autoreconf -fi
 # bugzilla.opensuse.org/795968 for rationale
-%configure --includedir="%_includedir/%name" \
+%configure \
+	--enable-gtp-linux \
+	--includedir="%_includedir/%name" \
 	--disable-static --docdir="%_docdir/%name" \
 	--with-systemdsystemunitdir="%_unitdir"
 %make_build
@@ -113,7 +122,9 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %_unitdir/%name.service
 %_sbindir/rc%name
 %dir %_docdir/%name/examples
+%_docdir/%name/examples/osmo-ggsn-kernel-gtp.cfg
 %_docdir/%name/examples/osmo-ggsn.cfg
+%_docdir/%name/examples/sgsnemu.conf
 %dir %_sysconfdir/osmocom
 %config(noreplace) %_sysconfdir/osmocom/osmo-ggsn.cfg
 %config(noreplace) %_sysconfdir/osmocom/sgsnemu.conf
@@ -125,5 +136,8 @@ install -m 0644 doc/examples/sgsnemu.conf "$b/%_sysconfdir/osmocom/sgsnemu.conf"
 %_includedir/%name/
 %_libdir/libgtp.so
 %_libdir/pkgconfig/libgtp.pc
+
+%files -n gtp-echo-responder
+%_bindir/gtp-echo-responder
 
 %changelog
