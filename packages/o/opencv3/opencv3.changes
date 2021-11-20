@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  1 10:46:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.16
+  * For details see
+    https://github.com/opencv/opencv/wiki/ChangeLog#version3416
+  * Bug fixes, optimizations and other enhancements are propagated
+    into OpenCV 4.x
+- Add opencv3-pr19384-tbb2021.patch for support of TBB 2021
+  * gh#opencv/opencv#19384
+
+-------------------------------------------------------------------
 Tue Apr 13 08:29:37 UTC 2021 - pgajdos@suse.com
 
 - do not require pkgconfig(IlmBase), the correct dependency

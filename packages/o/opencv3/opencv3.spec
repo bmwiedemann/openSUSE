@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv3
-Version:        3.4.10
+Version:        3.4.16
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -45,6 +45,8 @@ URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # This is the FACE module from the opencv_contrib package. Packaged separately to prevent too much unstable modules
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM opencv3-pr19384-tbb2021.patch -- backport tbb 2021 support to opencv3,  https://github.com/opencv/opencv/pull/19384
+Patch0:         opencv3-pr19384-tbb2021.patch
 # PATCH-FIX-OPENSUSE opencv-build-compare.patch -- avoid republish if some random external version number changes
 Patch1:         opencv-build-compare.patch
 BuildRequires:  cmake
