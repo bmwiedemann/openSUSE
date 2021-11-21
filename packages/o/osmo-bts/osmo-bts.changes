@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 11:06:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.4.0
+  * https://git.osmocom.org/osmo-bts/plain/debian/changelog?h=1.4.0
+- Drop patch:
+  * 0001-fix-compilation-with-gcc-10.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 18:31:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch to fix gcc10 compilation errors (boo#1160244)
