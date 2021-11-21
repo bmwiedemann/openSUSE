@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-mgw
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-mgw
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -26,32 +26,35 @@ Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/osmo-mgw
 Source:         %{name}-%{version}.tar.xz
 Patch0:         fix-build.patch
-Patch1:	harden_osmo-mgw.service.patch
+Patch1:         harden_osmo-mgw.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmo-netif) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocodec) >= 1.1.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.1.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.1.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.1.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.1.0
+BuildRequires:  pkgconfig(libosmoabis) >= 1.2.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.6.0
+BuildRequires:  pkgconfig(libosmotrau) >= 1.2.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 %{?systemd_requires}
 
 %description
 OsmoMGW is Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks.
 
-%package -n libosmo-mgcp-client6
+%package -n libosmo-mgcp-client9
 Summary:        Osmocom's Media Gateway Control Protocol client library
 Group:          System/Libraries
 
-%description -n libosmo-mgcp-client6
+%description -n libosmo-mgcp-client9
 Osmocom's Media Gateway Control Protocol client library.
 
 %package -n libosmo-mgcp-client-devel
 Summary:        Development files for Osmocom's Media Gateway Control Protocol client library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-mgcp-client6 = %{version}
+Requires:       libosmo-mgcp-client9 = %{version}
 
 %description -n libosmo-mgcp-client-devel
 Osmocom's Media Gateway Control Protocol client librarary.
@@ -94,8 +97,9 @@ ln -s service "%{buildroot}/%{_sbindir}/rcosmo-mgw"
 %check
 make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 
-%post   -n libosmo-mgcp-client6 -p /sbin/ldconfig
-%postun -n libosmo-mgcp-client6 -p /sbin/ldconfig
+%post   -n libosmo-mgcp-client9 -p /sbin/ldconfig
+%postun -n libosmo-mgcp-client9 -p /sbin/ldconfig
+
 %preun
 %service_del_preun osmo-mgw.service
 
@@ -114,14 +118,15 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %dir %{_docdir}/%{name}/examples
 %dir %{_docdir}/%{name}/examples/osmo-mgw
 %{_docdir}/%{name}/examples/osmo-mgw/osmo-mgw.cfg
+%{_docdir}/%{name}/examples/osmo-mgw/osmo-mgw-abis_e1.cfg
 %{_bindir}/osmo-mgw
 %{_unitdir}/osmo-mgw.service
 %{_sbindir}/rcosmo-mgw
 %dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-mgw.cfg
+%config(noreplace) %{_sysconfdir}/osmocom/osmo-mgw.cfg
 
-%files -n libosmo-mgcp-client6
-%{_libdir}/libosmo-mgcp-client.so.6*
+%files -n libosmo-mgcp-client9
+%{_libdir}/libosmo-mgcp-client.so.9*
 
 %files -n libosmo-mgcp-client-devel
 %{_libdir}/libosmo-mgcp-client.so
