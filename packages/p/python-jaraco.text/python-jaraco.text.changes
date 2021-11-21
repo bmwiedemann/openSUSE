@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 16 08:37:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.6.0:
+  * Fixed DeprecationWarning in importlib.resources.read_text.
+  * #5: Fixed warning in docs builds.
+
+-------------------------------------------------------------------
 Sat May 15 17:25:42 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:

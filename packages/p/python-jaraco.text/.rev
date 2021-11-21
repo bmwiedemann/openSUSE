@@ -67,4 +67,14 @@
     <comment></comment>
     <requestid>893337</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>efe3c74d67d91f8f06765f60db811998</srcmd5>
+    <version>3.6.0</version>
+    <time>1637535100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  * Fixed DeprecationWarning in importlib.resources.read_text.
+  * #5: Fixed warning in docs builds.</comment>
+    <requestid>931668</requestid>
+  </revision>
 </revisionlist>
