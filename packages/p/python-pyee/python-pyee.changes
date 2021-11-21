@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 19 11:43:43 UTC 2021 - pgajdos@suse.com
+
+- version update to 8.2.2
+  2021/8/14 Version 8.2.1
+  -----------
+  - Add .readthedocs.yaml file
+  - Remove vcversioner dependency from docs build
+  2021/8/14 Version 8.2.0
+  -----------------------
+  - Remove test_requires and setup_requires directives from setup.py (closing #82)
+  - Remove vcversioner from dependencies
+  - Streamline requirements.txt and environment.yml files
+  - Update and extend CONTRIBUTING.rst
+  - CI with GitHub Actions instead of Travis (closing #56)
+  - Format all code with black
+  - Switch default branch to ``main``
+  - Add the CHANGELOG to Sphinx docs (closing #51)
+  - Updated copyright information
+
+-------------------------------------------------------------------
 Wed Mar 31 14:14:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - make build requirement specification fit for python39 flavor

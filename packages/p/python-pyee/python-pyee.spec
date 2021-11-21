@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyee
-Version:        8.1.0
+Version:        8.2.2
 Release:        0
 Summary:        A port of node.js's EventEmitter to python
 License:        MIT
@@ -46,7 +46,6 @@ from Node.js.
 
 %prep
 %setup -q -n pyee-%{version}
-sed -i '/pytest-runner/ d' setup.py
 sed -i 's/^from mock import/from unittest.mock import/' tests/test_*.py
 
 %build
