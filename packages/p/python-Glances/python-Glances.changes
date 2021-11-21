@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov 20 11:17:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.2.4
+  - Bugs corrected:
+      * Failure to start on Apple M1 Max #1939
+      * Influxdb2 via SSL #1934
+      * Update WebUI (security patch). Thanks to @notFloran.
+      * Swith from black <> white theme with the '9' hotkey - Related to issue #976
+      * Fix: Docker plugin - Invalid IO stats with Arch Linux #1945
+      * Bug Fix: Docker plugin - Network stats not being displayed #1944
+      * Fix Grafana CPU temperature panel #1954
+      * is_disabled name fix #1949
+      * Fix tipo in documentation #1932
+      * distutils is deprecated in Python 3.10 #1923
+      * Separate battery percentages #1920
+      * Update docs and correct make docs-server target in Makefile
+  - Enhancement requests:
+      * Improve --issue by displaying the second update iteration and not the first one. More relevant
+      * Improve --issue option with Python version and paths
+      * Correct an issue on idle display
+      * Refactor Mem + MemSwap Curse
+      * Refactor CPU Curses code
+
+-------------------------------------------------------------------
 Wed Oct 20 14:58:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
