@@ -31,4 +31,12 @@
     <comment>Staging:I</comment>
     <requestid>784211</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>297488eca6d61258d6b006010124e4a0</srcmd5>
+    <version>8.1.0</version>
+    <time>1637535098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931518</requestid>
+  </revision>
 </revisionlist>
