@@ -26,10 +26,10 @@ License:        BSD-3-Clause
 Group:          System/Management
 URL:            http://ipmiutil.sourceforge.net
 Source:         https://sourceforge.net/projects/ipmiutil/files/%{name}-%{version}.tar.gz
-Patch0:	harden_ipmi_port.service.patch
-Patch1:	harden_ipmiutil_asy.service.patch
-Patch2:	harden_ipmiutil_evt.service.patch
-Patch3:	harden_ipmiutil_wdt.service.patch
+Patch0:         harden_ipmi_port.service.patch
+Patch1:         harden_ipmiutil_asy.service.patch
+Patch2:         harden_ipmiutil_evt.service.patch
+Patch3:         harden_ipmiutil_wdt.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -178,6 +178,7 @@ autoreconf -fiv
 
 %post devel -p /sbin/ldconfig
 %postun devel -p /sbin/ldconfig
+
 %pre
 %service_add_pre ipmi_port.service ipmiutil_evt.service ipmiutil_asy.service ipmiutil_wdt.service
 
@@ -196,8 +197,10 @@ then
    IPMIret=1
    which dmidecode >/dev/null 2>&1 && IPMIret=0
    if [ $IPMIret -eq 0 ]; then
+    IPMIret=1
     %{_sbindir}/dmidecode |grep -q IPMI && IPMIret=0
     if [ $IPMIret -eq 0 ]; then
+     IPMIret=1
      # Run some ipmiutil command to see if any IPMI interface works.
      # Some may not have IPMI on the motherboard, so need to check, but
      # some kernels may have IPMI driver partially loaded, which breaks this
@@ -239,6 +242,7 @@ else
    IPMIret=1
    which dmidecode >/dev/null 2>&1 && IPMIret=0
    if [ $IPMIret -eq 0 ]; then
+    IPMIret=1
     %{_sbindir}/dmidecode |grep -q IPMI && IPMIret=0
     if [ $IPMIret -eq 0 ]; then
       if [ -d %{_sysconfdir}/cron.daily ]; then
