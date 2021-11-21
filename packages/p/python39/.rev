@@ -352,4 +352,41 @@
     <comment></comment>
     <requestid>925076</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>70d931c2188d8448e3a3d0c8b7d96a07</srcmd5>
+    <version>3.9.9</version>
+    <time>1637535102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.9:
+  * Core and Builtins
+    + bpo-30570: Fixed a crash in issubclass() from infinite recursion when searching pathological __bases__ tuples.
+    + bpo-45494: Fix parser crash when reporting errors involving invalid continuation characters. Patch by Pablo Galindo.
+    + bpo-45385: Fix reference leak from descr_check. Patch by Dong-hee Na.
+    + bpo-45167: Fix deepcopying of types.GenericAlias objects.
+    + bpo-44219: Release the GIL while performing isatty system calls on arbitrary file descriptors. In particular, this affects os.isatty(), os.device_encoding() and io.TextIOWrapper. By extension, io.open() in text mode is also affected. This change solves a deadlock in os.isatty(). Patch by Vincent Michel in bpo-44219.
+    + bpo-44959: Added fallback to extension modules with ‘.sl’ suffix on HP-UX
+    + bpo-44050: Extensions that indicate they use global state (by setting m_size to -1) can again be used in multiple interpreters. This reverts to behavior of Python 3.8.
+    + bpo-45121: Fix issue where Protocol.__init__ raises RecursionError when it’s called directly or via super(). Patch provided by Yurii Karabas.
+    + bpo-45083: When the interpreter renders an exception, its name now has a complete qualname. Previously only the class name was concatenated to the module name, which sometimes resulted in an incorrect full name being displayed.
+    + bpo-45738: Fix computation of error location for invalid continuation characters in the parser. Patch by Pablo Galindo.
+    + Library
+    + bpo-45678: Fix bug in Python 3.9 that meant functools.singledispatchmethod failed to properly wrap the attributes of the target method. Patch by Alex Waygood.
+    + bpo-45679: Fix caching of multi-value typing.Literal. Literal[True, 2] is no longer equal to Literal[1, 2].
+    + bpo-45438: Fix typing.Signature string representation for generic builtin types.
+    + bpo-45581: sqlite3.connect() now correctly raises MemoryError if the underlying SQLite API signals memory error. Patch by Erlend E. Aasland.
+    + bpo-39679: Fix bug in functools.singledispatchmethod that caused it to fail when attempting to register a classmethod() or staticmethod() using type annotations. Patch contributed by Alex Waygood.
+    + bpo-45515: Add references to zoneinfo in the datetime documentation, mostly replacing outdated references to dateutil.tz. Change by Paul Ganssle.
+    + bpo-45467: Fix incremental decoder and stream reader in the “raw-unicode-escape” codec. Previously they failed if the escape sequence was split.
+    + bpo-45461: Fix incremental decoder and stream reader in the “unicode-escape” codec. Previously they failed if the escape sequence was split.
+    + bpo-45239: Fixed email.utils.parsedate_tz() crashing with UnboundLocalError on certain invalid input instead of returning None. Patch by Ben Hoyt.
+    + bpo-44904: Fix bug in the doctest module that caused it to fail if a docstring included an example with a classmethod property. Patch by Alex Waygood.
+    + bpo-45406: Make inspect.getmodule() catch FileNotFoundError raised by :’func:inspect.getabsfile, and return None to indicate that the module could not be determined.
+    + bpo-45262: Prevent use-after-free in asyncio. Make sure the cached running loop holder gets cleared on dealloc to prevent use-after-free in get_running_loop
+    + bpo-45386: Make xmlrpc.client more robust to C runtimes where the underlying C strftime function results in a ValueError when testing for year formatting options.
+    + bpo-45371: Fix clang rpath issue in distutils. The UnixCCompiler now uses correct clang option to add a runtime library directory (rpath) to a shared library.
+    + bpo-20028: Improve error message of csv.Dialect when initializing. Patch by Vajrasky Kok and Dong-hee Na.
+    + bpo-45343: Update bundled pip to 21.2.4 and setuptools to 58.1.0
+    + bpo-41710: On Unix, if the sem_clockwait() function is available in the C library (glibc 2.30 and newer), the threading.Lock.acquire() method now uses the monotonic clock (time.CLOCK_MONOTONIC) for the timeout, rather than using the system clock (time.CLOCK_REALTIME), to not be affected by system clock changes. Patch by Victor Stinner.</comment>
+    <requestid>931924</requestid>
+  </revision>
 </revisionlist>

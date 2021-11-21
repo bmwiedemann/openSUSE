@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:49:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.9.9:
+  * Core and Builtins
+    + bpo-30570: Fixed a crash in issubclass() from infinite recursion when searching pathological __bases__ tuples.
+    + bpo-45494: Fix parser crash when reporting errors involving invalid continuation characters. Patch by Pablo Galindo.
+    + bpo-45385: Fix reference leak from descr_check. Patch by Dong-hee Na.
+    + bpo-45167: Fix deepcopying of types.GenericAlias objects.
+    + bpo-44219: Release the GIL while performing isatty system calls on arbitrary file descriptors. In particular, this affects os.isatty(), os.device_encoding() and io.TextIOWrapper. By extension, io.open() in text mode is also affected. This change solves a deadlock in os.isatty(). Patch by Vincent Michel in bpo-44219.
+    + bpo-44959: Added fallback to extension modules with ‘.sl’ suffix on HP-UX
+    + bpo-44050: Extensions that indicate they use global state (by setting m_size to -1) can again be used in multiple interpreters. This reverts to behavior of Python 3.8.
+    + bpo-45121: Fix issue where Protocol.__init__ raises RecursionError when it’s called directly or via super(). Patch provided by Yurii Karabas.
+    + bpo-45083: When the interpreter renders an exception, its name now has a complete qualname. Previously only the class name was concatenated to the module name, which sometimes resulted in an incorrect full name being displayed.
+    + bpo-45738: Fix computation of error location for invalid continuation characters in the parser. Patch by Pablo Galindo.
+    + Library
+    + bpo-45678: Fix bug in Python 3.9 that meant functools.singledispatchmethod failed to properly wrap the attributes of the target method. Patch by Alex Waygood.
+    + bpo-45679: Fix caching of multi-value typing.Literal. Literal[True, 2] is no longer equal to Literal[1, 2].
+    + bpo-45438: Fix typing.Signature string representation for generic builtin types.
+    + bpo-45581: sqlite3.connect() now correctly raises MemoryError if the underlying SQLite API signals memory error. Patch by Erlend E. Aasland.
+    + bpo-39679: Fix bug in functools.singledispatchmethod that caused it to fail when attempting to register a classmethod() or staticmethod() using type annotations. Patch contributed by Alex Waygood.
+    + bpo-45515: Add references to zoneinfo in the datetime documentation, mostly replacing outdated references to dateutil.tz. Change by Paul Ganssle.
+    + bpo-45467: Fix incremental decoder and stream reader in the “raw-unicode-escape” codec. Previously they failed if the escape sequence was split.
+    + bpo-45461: Fix incremental decoder and stream reader in the “unicode-escape” codec. Previously they failed if the escape sequence was split.
+    + bpo-45239: Fixed email.utils.parsedate_tz() crashing with UnboundLocalError on certain invalid input instead of returning None. Patch by Ben Hoyt.
+    + bpo-44904: Fix bug in the doctest module that caused it to fail if a docstring included an example with a classmethod property. Patch by Alex Waygood.
+    + bpo-45406: Make inspect.getmodule() catch FileNotFoundError raised by :’func:inspect.getabsfile, and return None to indicate that the module could not be determined.
+    + bpo-45262: Prevent use-after-free in asyncio. Make sure the cached running loop holder gets cleared on dealloc to prevent use-after-free in get_running_loop
+    + bpo-45386: Make xmlrpc.client more robust to C runtimes where the underlying C strftime function results in a ValueError when testing for year formatting options.
+    + bpo-45371: Fix clang rpath issue in distutils. The UnixCCompiler now uses correct clang option to add a runtime library directory (rpath) to a shared library.
+    + bpo-20028: Improve error message of csv.Dialect when initializing. Patch by Vajrasky Kok and Dong-hee Na.
+    + bpo-45343: Update bundled pip to 21.2.4 and setuptools to 58.1.0
+    + bpo-41710: On Unix, if the sem_clockwait() function is available in the C library (glibc 2.30 and newer), the threading.Lock.acquire() method now uses the monotonic clock (time.CLOCK_MONOTONIC) for the timeout, rather than using the system clock (time.CLOCK_REALTIME), to not be affected by system clock changes. Patch by Victor Stinner.
+    + bpo-45328: Fixed http.client.HTTPConnection to work properly in OSs that don’t support the TCP_NODELAY socket option.
+    + bpo-1596321: Fix the threading._shutdown() function when the threading module was imported first from a thread different than the main thread: no longer log an error at Python exit.
+    + bpo-45274: Fix a race condition in the Thread.join() method of the threading module. If the function is interrupted by a signal and the signal handler raises an exception, make sure that the thread remains in a consistent state to prevent a deadlock. Patch by Victor Stinner.
+    + bpo-45238: Fix unittest.IsolatedAsyncioTestCase.debug(): it runs now asynchronous methods and callbacks.
+    + bpo-36674: unittest.TestCase.debug() raises now a unittest.SkipTest if the class or the test method are decorated with the skipping decorator.
+    + bpo-45235: Fix an issue where argparse would not preserve values in a provided namespace when using a subparser with defaults.
+    + bpo-45234: Fixed a regression in copyfile(), copy(), copy2() raising FileNotFoundError when source is a directory, which should raise IsADirectoryError
+    + bpo-45228: Fix stack buffer overflow in parsing J1939 network address.
+    + bpo-45192: Fix the tempfile._infer_return_type function so that the dir argument of the tempfile functions accepts an object implementing the os.PathLike protocol.
+    + bpo-45160: When tracing a tkinter variable used by a ttk OptionMenu, callbacks are no longer made twice.
+    + bpo-35474: Calling mimetypes.guess_all_extensions() with strict=False no longer affects the result of the following call with strict=True. Also, mutating the returned list no longer affects the global state.
+    + bpo-45166: typing.get_type_hints() now works with Final wrapped in ForwardRef.
+    + bpo-45097: Remove deprecation warnings about the loop argument in asyncio incorrectly emitted in cases when the user does not pass the loop argument.
+    + bpo-45081: Fix issue when dataclasses that inherit from typing.Protocol subclasses have wrong __init__. Patch provided by Yurii Karabas.
+    + bpo-24444: Fixed an error raised in argparse help display when help for an option is set to 1+ blank spaces or when choices arg is an empty container.
+    + bpo-45021: Fix a potential deadlock at shutdown of forked children when using concurrent.futures module
+    + bpo-45030: Fix integer overflow in pickling and copying the range iterator.
+    + bpo-39039: tarfile.open raises ReadError when a zlib error occurs during file extraction.
+    + bpo-44594: Fix an edge case of ExitStack and AsyncExitStack exception chaining. They will now match with block behavior when __context__ is explicitly set to None when the exception is in flight.
+  * Documentation
+    + bpo-45726: Improve documentation for functools.singledispatch() and functools.singledispatchmethod.
+    + bpo-45680: Amend the docs on GenericAlias objects to clarify that non-container classes can also implement __class_getitem__. Patch contributed by Alex Waygood.
+    + bpo-45655: Add a new “relevant PEPs” section to the top of the documentation for the typing module. Patch by Alex Waygood.
+    + bpo-45604: Add level argument to multiprocessing.log_to_stderr function docs.
+    + bpo-45464: Mention in the documentation of Built-in Exceptions that inheriting from multiple exception types in a single subclass is not recommended due to possible memory layout incompatibility.
+    + bpo-45449: Add note about PEP 585 in collections.abc.
+    + bpo-45516: Add protocol description to the importlib.abc.Traversable documentation.
+    + bpo-20692: Add Programming FAQ entry explaining that int literal attribute access requires either a space after or parentheses around the literal.
+    + bpo-45216: Remove extra documentation listing methods in difflib. It was rendering twice in pydoc and was outdated in some places.
+    + bpo-45772: socket.socket documentation is corrected to a class from a function.
+    + bpo-45392: Update the docstring of the type built-in to remove a redundant line and to mention keyword arguments for the constructor.
+  * Tests
+    + bpo-45578: Add tests for dis.distb()
+    + bpo-45577: Add subtests for all pickle protocols in test_zoneinfo.
+    + bpo-43592: test.libregrtest now raises the soft resource limit for the maximum number of file descriptors when the default is too low for our test suite as was often the case on macOS.
+    + bpo-40173: Fix test.support.import_helper.import_fresh_module().
+    + bpo-45280: Add a test case for empty typing.NamedTuple.
+    + bpo-45269: Cover case when invalid markers type is supplied to c_make_encoder.
+    + bpo-45209: Fix UserWarning: resource_tracker warning in _test_multiprocessing._TestSharedMemory.test_shared_memory_cleaned_after_process_termination
+    + bpo-45195: Fix test_readline.test_nonascii(): sometimes, the newline character is not written at the end, so don’t expect it in the output. Patch by Victor Stinner.
+    + bpo-45156: Fixes infinite loop on unittest.mock.seal() of mocks created by create_autospec().
+    + bpo-45042: Fixes that test classes decorated with @hashlib_helper.requires_hashdigest were skipped all the time.
+    + bpo-45235: Reverted an argparse bugfix that caused regression in the handling of default arguments for subparsers. This prevented leaf level arguments from taking precedence over root level arguments.
+    + bpo-45765: In importlib.metadata, fix distribution discovery for an empty path.
+    + bpo-45644: In-place JSON file formatting using python3 -m json.tool infile infile now works correctly, previously it left the file empty. Patch by Chris Wesseling.
+  * Build
+    + bpo-43158: setup.py now uses values from configure script to build the _uuid extension module. Configure now detects util-linux’s libuuid, too.
+    + bpo-45571: Modules/Setup now use PY_CFLAGS_NODIST instead of PY_CFLAGS to compile shared modules.
+    + bpo-45532: Update sys.version to use main as fallback information. Patch by Jeong YunWon.
+    + bpo-45405: Prevent internal configure error when running configure with recent versions of non-Apple clang. Patch by David Bohman.
+    + bpo-45220: Avoid building with the Windows 11 SDK previews automatically. This may be overridden by setting the DefaultWindowsSDKVersion environment variable before building.
+  * C API
+    + bpo-44687: BufferedReader.peek() no longer raises ValueError when the entire file has already been buffered.
+    + bpo-44751: Remove crypt.h include from the public Python.h header.
+- Drop patch incorrect-deprecation-warn-asyncio.patch, fix included.
+
+-------------------------------------------------------------------
+Sat Oct 30 12:37:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add incorrect-deprecation-warn-asyncio.patch to fix bpo#45097
+  (from gh#python/cpython#28153) to remove incorrect deprecation
+  warnings in asyncio.
+
+-------------------------------------------------------------------
 Wed Oct 13 08:51:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rpm-build-python: The provider to inject python(abi)
