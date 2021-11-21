@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-relaxed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module decorator >= 4}
 # gh#bitprophet/pytest-relaxed#12
 BuildRequires:  %{python_module pytest < 6.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4

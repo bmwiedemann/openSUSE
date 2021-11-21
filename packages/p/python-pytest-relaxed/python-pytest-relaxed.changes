@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 17 03:44:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on six. 
+
+-------------------------------------------------------------------
 Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12

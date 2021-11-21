@@ -51,4 +51,12 @@
     <comment></comment>
     <requestid>842099</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ea772afaae3fe893b876af94d6e07576</srcmd5>
+    <version>1.1.5</version>
+    <time>1637535102</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on six.</comment>
+    <requestid>931875</requestid>
+  </revision>
 </revisionlist>
