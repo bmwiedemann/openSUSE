@@ -1109,6 +1109,10 @@ Provides: weakremover(yast2-sap-scp-prodlist)
 # 15.3:update
 %ifarch x86_64
 Provides: weakremover(openSUSE-release-usb-xfce)
+Provides: weakremover(rtw89-firmware)
+Provides: weakremover(rtw89-kmp-default)
+Provides: weakremover(rtw89-kmp-preempt)
+Provides: weakremover(rtw89-ueficert)
 %endif
 # 42.1
 Provides: weakremover(arista)
