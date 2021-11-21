@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 21 17:25:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.61:
+  * mod_dirlisting: sort "../" to top
+  * fix HTTP/2 upload > 64k w/ max-request-size
+  * code level and developer visible bug fixes
+
+-------------------------------------------------------------------
 Sun Oct 24 15:02:25 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.60:
