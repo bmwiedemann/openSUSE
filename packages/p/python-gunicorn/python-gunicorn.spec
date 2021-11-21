@@ -34,6 +34,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
+Patch0:         support-eventlet-30-3.patch
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -79,6 +80,7 @@ sed -i 's/==.*//' requirements_test.txt
 sed -i -e '/cover/d' requirements_test.txt
 # do not check coverage
 sed -i -e 's/--cov[^ ]*//' -e 's/--cov-report[^ ]*//' setup.cfg
+%autopatch -p1
 
 %if %{with test}
 %check

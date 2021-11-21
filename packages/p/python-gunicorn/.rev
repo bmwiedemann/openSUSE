@@ -233,4 +233,13 @@
     <comment></comment>
     <requestid>904554</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3bde60aad357c19a361532d96bc73629</srcmd5>
+    <version>20.1.0</version>
+    <time>1637535106</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-eventlet-30-3.patch:
+  * Upstream patch to support eventlet &gt;= 0.30.3</comment>
+    <requestid>932372</requestid>
+  </revision>
 </revisionlist>
