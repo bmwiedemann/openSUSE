@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-trx
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 
 Name:           osmo-trx
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        SDR transceiver that implements Layer 1 of a GSM BTS
 License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmotrx/wiki/OsmoTRX
 Source:         %{name}-%{version}.tar.xz
-Patch0:	harden_osmo-trx-lms.service.patch
-Patch1:	harden_osmo-trx-uhd.service.patch
-Patch2:	harden_osmo-trx-usrp1.service.patch
+Patch0:         harden_osmo-trx-lms.service.patch
+Patch1:         harden_osmo-trx-uhd.service.patch
+Patch2:         harden_osmo-trx-usrp1.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -36,10 +36,12 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  pkgconfig(LimeSuite)
 BuildRequires:  pkgconfig(fftw3f)
-BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
+BuildRequires:  pkgconfig(libosmocodec) >= 1.6.0
+BuildRequires:  pkgconfig(libosmocoding) >= 1.6.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.6.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(uhd)
 BuildRequires:  pkgconfig(usrp) >= 3.3
@@ -159,28 +161,37 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 
 %pre lms
 %service_add_pre osmo-trx-lms.service
+
 %post lms
 %service_add_post osmo-trx-lms.service
+
 %preun lms
 %service_del_preun osmo-trx-lms.service
+
 %postun lms
 %service_del_postun osmo-trx-lms.service
 
 %pre uhd
 %service_add_pre osmo-trx-uhd.service
+
 %post uhd
 %service_add_post osmo-trx-uhd.service
+
 %preun uhd
 %service_del_preun osmo-trx-uhd.service
+
 %postun uhd
 %service_del_postun osmo-trx-uhd.service
 
 %pre usrp1
 %service_add_pre osmo-trx-usrp1.service
+
 %post usrp1
 %service_add_post osmo-trx-usrp1.service
+
 %preun usrp1
 %service_del_preun osmo-trx-usrp1.service
+
 %postun usrp1
 %service_del_postun osmo-trx-usrp1.service
 
@@ -193,14 +204,14 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %{_bindir}/osmo-trx-lms
 %{_sbindir}/rcosmo-trx-lms
 %dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-trx-lms.cfg
+%config(noreplace) %{_sysconfdir}/osmocom/osmo-trx-lms.cfg
 %{_unitdir}/osmo-trx-lms.service
 
 %files uhd
 %{_bindir}/osmo-trx-uhd
 %{_sbindir}/rcosmo-trx-uhd
 %dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-trx-uhd.cfg
+%config(noreplace) %{_sysconfdir}/osmocom/osmo-trx-uhd.cfg
 %{_unitdir}/osmo-trx-uhd.service
 
 %files usrp1
