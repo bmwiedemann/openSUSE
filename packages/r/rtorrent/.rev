@@ -70,4 +70,12 @@
     <comment>- Drop old specfile constructs.</comment>
     <requestid>832211</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>14e3eb3ba6af4070ac2cb0db6be21506</srcmd5>
+    <version>0.9.8</version>
+    <time>1637535143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932825</requestid>
+  </revision>
 </revisionlist>

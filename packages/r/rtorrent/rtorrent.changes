@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 12:09:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * rtorrent.service
+
+-------------------------------------------------------------------
 Fri Sep  4 14:21:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop old specfile constructs.
