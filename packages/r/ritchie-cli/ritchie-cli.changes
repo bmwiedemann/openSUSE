@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 15 16:49:48 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Unpack tarball only once
+
+-------------------------------------------------------------------
 Sat Nov  6 01:40:31 UTC 2021 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Fix bug with formula's outputs #934
