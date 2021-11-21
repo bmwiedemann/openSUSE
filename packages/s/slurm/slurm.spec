@@ -1,5 +1,5 @@
 #
-# spec file for package slurm
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 37
-%define ver 21.08.2
+%define ver 21.08.4
 %define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable

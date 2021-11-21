@@ -840,4 +840,12 @@
 - Limit firewalld service definitions to SUSE versions &amp;gt;= 15. (forwarded request 928191 from eeich)</comment>
     <requestid>928192</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>0dd1fe5d53dea726cb5e1fedce6f7fa3</srcmd5>
+    <version>21.08.4</version>
+    <time>1637535110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932162</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 17 08:33:13 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to 21.08.4 which fixes (CVE-2021-43337) which is only present
+  in 21.08 tree.
+  * CVE-2021-43337:
+    For sites using the new AccountingStoreFlags=job_script and/or job_env
+    options, an issue was reported with the access control rules in SlurmDBD
+    that will permit users to request job scripts and environment files that
+    they should not have access to. (Scripts/environments are meant to only be
+    accessible by user accounts with administrator privileges, by account
+    coordinators for jobs submitted under their account, and by the user
+    themselves.)
+- changes from 21.08.3:
+  * This includes a number of fixes since the last release a month ago,
+    including one critical fix to prevent a communication issue between
+    slurmctld and slurmdbd for sites that have started using the new
+    AccountingStoreFlags=job_script functionality.
+
+-------------------------------------------------------------------
 Fri Oct 29 15:54:53 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Utilize sysuser infrastructure to set user/group slurm.
@@ -9,7 +28,7 @@ Fri Oct 29 15:54:53 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Mon Oct 18 13:36:14 UTC 2021 - Christian Goll <cgoll@suse.com>
 
-- added service definitions for firewalld 
+- added service definitions for firewalld (JSC#SLE-22741)
 
 -------------------------------------------------------------------
 Wed Oct  6 07:12:52 UTC 2021 - Christian Goll <cgoll@suse.com>
