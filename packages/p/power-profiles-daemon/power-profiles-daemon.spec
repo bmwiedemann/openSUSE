@@ -25,6 +25,8 @@ URL:            https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE hold-profile-hardening.patch boo#1189900 -- Hardening of HoldProfile D-Bus method
 Patch0:         hold-profile-hardening.patch
+# PATCH-FIX-UPSTREAM fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch -- main: Error out on D-Bus communication errors
+Patch1:         https://gitlab.freedesktop.org/hadess/power-profiles-daemon/-/commit/fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  gtk-doc
@@ -33,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(polkit-gobject-1)
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(umockdev-1.0)

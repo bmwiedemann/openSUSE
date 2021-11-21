@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 15:29:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fd1664dfe26f13f8c8cd7b44483cd872dfdede36.patch: main: Error
+  out on D-Bus communication errors (rh#2019536).
+- Bump pkgconfig(polkit-gobject-1) BuildRequires version to 0.114.
+  It's required for the g_autoptr() support we use.
+
+-------------------------------------------------------------------
 Fri Nov  5 18:35:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.10.1:
