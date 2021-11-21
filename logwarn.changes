@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 21 21:34:12 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Fix bug with spec file - source shouldn't be using URL 
+
+-------------------------------------------------------------------
+Sun Nov 21 21:11:11 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.0.16 
+  + Store repeated timestamps more efficiently in state file
+  + Fixed infinite loop in Nagios plugin '-C' flag (issue #29)
+  + Fixed crash when "-T X/Y" flag was the last command line argument
+
+-------------------------------------------------------------------
+Sun Nov 21 21:06:44 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Replace source tarball with _service file pulling from github
+
+-------------------------------------------------------------------
 Wed Oct 27 16:21:28 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Run spec-cleaner on spec file

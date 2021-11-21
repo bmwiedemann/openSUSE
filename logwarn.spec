@@ -18,13 +18,14 @@
 
 
 Name:           logwarn
-Version:        1.0.15
+Version:        1.0.16
 Release:        0
 Summary:        Utility for finding interesting messages in log files
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            https://github.com/archiecobbs/%{name}/
-Source:         https://s3.amazonaws.com/archie-public/%{name}/%{name}-%{version}.tar.gz
+Source:         %{name}/%{name}-%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  nagios-rpm-macros
@@ -47,11 +48,15 @@ tion.
 %{name} also includes support for log messages that span multiple lines.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+./autogen.sh
 %configure
 %make_build
+
+%check
+%make_build tests
 
 %install
 %make_install
