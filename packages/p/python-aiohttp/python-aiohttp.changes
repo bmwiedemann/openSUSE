@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 17 09:52:49 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update python39-failures.patch to only fire with Python 3.9.7. 
+
+-------------------------------------------------------------------
 Fri Sep 10 14:22:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Restore python39-failures.patch, which is actually still needed.

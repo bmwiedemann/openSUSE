@@ -14,7 +14,7 @@
  
  from aiohttp import web
  
-+py39 = sys.version_info[:3] >= (3, 9, 7)
++py39 = sys.version_info[:3] == (3, 9, 7)
  
  async def test_middleware_modifies_response(loop, aiohttp_client) -> None:
      async def handler(request):
