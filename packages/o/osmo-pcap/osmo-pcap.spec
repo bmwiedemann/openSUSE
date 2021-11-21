@@ -1,7 +1,8 @@
 #
 # spec file for package osmo-pcap
 #
-# Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2015-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +13,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           osmo-pcap
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Osmocom's PCAP client and server
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://openbsc.osmocom.org
 Source:         %{name}-%{version}.tar.xz
-Patch0:	harden_osmo-pcap-client.service.patch
-Patch1:	harden_osmo-pcap-server.service.patch
+Patch0:         harden_osmo-pcap-client.service.patch
+Patch1:         harden_osmo-pcap-server.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.6
 BuildRequires:  libpcap-devel
