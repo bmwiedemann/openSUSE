@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 18 11:47:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.0
+  * Add support for Python 3.10 new encoding of line number. This support is
+    minimal in the sense that we still systematically assign a line number
+    while the new format allow bytecode with absolutely no line number. PR #72
+  * Fix handling of RERAISE (introduced in 3.9) when creating a ControlFlowGraph,
+    previously it was not considered final. PR #72
+  * Fix line table assembly in Python 3.10. PR #85
+
+-------------------------------------------------------------------
 Tue Aug 31 11:04:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.0
