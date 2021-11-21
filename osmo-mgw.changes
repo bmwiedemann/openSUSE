@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:56:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.9.0:
+  * https://git.osmocom.org/osmo-mgw/plain/debian/changelog?h=1.9.1
+- Update to new upstream release 1.8.1:
+  * https://git.osmocom.org/osmo-mgw/plain/debian/changelog?h=1.8.1
+- Update to new upstream release 1.8.0:
+  * https://git.osmocom.org/osmo-mgw/plain/debian/changelog?h=1.8.0
+
+-------------------------------------------------------------------
 Wed Oct 13 13:54:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
