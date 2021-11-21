@@ -1,8 +1,8 @@
 #
 # spec file for package libusrp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 #
 
 
-%define sover   -3_4_4+git_20190808-0
+%define sover   1
 %define libname libusrp%{sover}
 Name:           libusrp
-Version:        3.4.4+git.20190808
+Version:        3.4.6
 Release:        0
 Summary:        Stand-alone libusrp for USRP1 from old gnuradio.git
 License:        GPL-3.0-or-later
@@ -33,12 +33,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  sdcc
-%if 0%{?suse_version} < 1320
-BuildRequires:  python
-%else
-BuildRequires:  python2
-%endif
 BuildRequires:  pkgconfig(libusb-1.0)
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_date_time-devel
