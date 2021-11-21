@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 16 17:22:28 UTC 2021 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add ExtraBuildFlags for build flags that cannot be passed to configure.
+- Add support for livepatches (JSC #SLE-20049).
+- Generate ipa-clones tarball artifact when livepatching is enabled.
+
+-------------------------------------------------------------------
+Wed Nov 10 13:39:26 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- glibc.rpmlintrc: Update for rpmlint2
+
+-------------------------------------------------------------------
 Tue Oct  5 10:58:00 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - ld-show-auxv-colon.patch: elf: Fix missing colon in LD_SHOW_AUXV output
