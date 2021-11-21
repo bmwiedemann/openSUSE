@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 11:13:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.0.0
+  * https://git.osmocom.org/osmo-pcu/plain/debian/changelog?h=1.0.0
+
+-------------------------------------------------------------------
 Wed Oct 13 13:54:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

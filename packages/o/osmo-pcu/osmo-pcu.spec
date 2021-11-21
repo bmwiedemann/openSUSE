@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-pcu
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 
 Name:           osmo-pcu
-Version:        0.8.0
+Version:        1.0.0
 Release:        0
 Summary:        Osmocom GPRS Packet Control Unit (PCU)
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://osmocom.org/projects/osmopcu/wiki/OsmoPCU
 Source:         %{name}-%{version}.tar.xz
-Patch0:	harden_osmo-pcu.service.patch
+Patch0:         harden_osmo-pcu.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogb) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.6.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 %{?systemd_ordering}
 
 %description
