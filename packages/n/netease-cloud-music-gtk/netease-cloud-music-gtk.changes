@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 03:42:50 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Fri Feb 26 02:51:00 UTC 2021 - gmg 137 <gmg137@live.com>
 
 - Updata to version 1.2.1:

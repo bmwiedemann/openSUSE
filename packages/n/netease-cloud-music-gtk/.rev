@@ -67,4 +67,12 @@
  + Fix bug.</comment>
     <requestid>875254</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c9e8355c0ff0d5466a870b1e69522952</srcmd5>
+    <version>1.2.1</version>
+    <time>1637535135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932767</requestid>
+  </revision>
 </revisionlist>
