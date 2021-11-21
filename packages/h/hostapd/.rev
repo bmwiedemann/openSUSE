@@ -409,4 +409,12 @@ ChangeLog for hostapd since 2.4:
     <comment></comment>
     <requestid>907127</requestid>
   </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>c1563c3045fc4a59f2b4b69357b7f263</srcmd5>
+    <version>2.9</version>
+    <time>1637535135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932776</requestid>
+  </revision>
 </revisionlist>
