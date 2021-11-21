@@ -559,4 +559,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908926</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>15168d43e74571b932ac6b8d11c36e17</srcmd5>
+    <version>21.1.2</version>
+    <time>1637535107</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test__threading_monkey_in_thread as it breaks with Python 3.9.9.</comment>
+    <requestid>932425</requestid>
+  </revision>
 </revisionlist>

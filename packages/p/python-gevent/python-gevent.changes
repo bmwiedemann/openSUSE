@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 19 07:48:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip test__threading_monkey_in_thread as it breaks with Python 3.9.9.
+
+-------------------------------------------------------------------
 Thu Jul  8 05:50:58 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Skip two tests that fail in SLE/Leap:

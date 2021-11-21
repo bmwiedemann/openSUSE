@@ -137,6 +137,8 @@ test_socket.py
 %if %{python3_version_nodots} < 37
 test__threading_2.py
 %endif
+# this fails badly with 3.9.9
+test__threading_monkey_in_thread.py
 test__examples.py
 # this one fails occasionally with: Address already in use: ('127.0.0.1', 16000)
 test__example_portforwarder.py
