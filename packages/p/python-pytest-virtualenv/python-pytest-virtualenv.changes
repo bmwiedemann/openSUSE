@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 15 07:23:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to break up a build loop. 
+
+-------------------------------------------------------------------
 Sun Dec 13 21:55:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We don't need to break Python 2.7

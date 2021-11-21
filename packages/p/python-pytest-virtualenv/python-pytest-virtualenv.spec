@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest-virtualenv
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,19 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-pytest-virtualenv
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pytest-virtualenv%{psuffix}
 Version:        1.7.0
 Release:        0
 Summary:        Virtualenv fixture for pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/manahl/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-virtualenv/pytest-virtualenv-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM remove_mock.patch gh#man-group/pytest-plugins#168 mcepl@suse.com
@@ -32,10 +39,13 @@ Patch0:         remove_mock.patch
 # and while at it, we can remove dependency on the external module
 # virtualenv as well
 Patch1:         remove_virtualenv.patch
+%if %{with test}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-shutil}
+BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
 %if 0%{?suse_version} <= 1500
@@ -63,16 +73,22 @@ what's installed.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 # Requires network access
 %pytest -k 'not test_installed_packages'
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGES.md README.md
 %license LICENSE
 %{python_sitelib}/*
+%endif
 
 %changelog
