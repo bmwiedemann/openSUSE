@@ -27,7 +27,7 @@
 %bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanfriendly%{psuffix}
-Version:        9.2
+Version:        10.0
 Release:        0
 Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
