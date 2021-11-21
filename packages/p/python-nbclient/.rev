@@ -139,4 +139,12 @@
 - Switch to libalternatives (forwarded request 932511 from bnavigator)</comment>
     <requestid>932512</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>742ab343050d82ce0607241f9c94f8cc</srcmd5>
+    <version>0.5.9</version>
+    <time>1637535142</time>
+    <user>dimstar_suse</user>
+    <comment>- Deselect all 4 flaky parallel_notebooks tests</comment>
+    <requestid>932813</requestid>
+  </revision>
 </revisionlist>

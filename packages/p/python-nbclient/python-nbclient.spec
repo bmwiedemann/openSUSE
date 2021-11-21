@@ -95,8 +95,8 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 %if %{with test}
 %check
 export IPYKERNEL_CELL_NAME="<IPY-INPUT>"
-# tests on parallel notebooks randomly fail - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
-%pytest -k 'not (test_many_parallel_notebooks or test_async_parallel_notebooks)'
+# tests on parallel notebooks randomly fail (4 tests) - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
+%pytest -k 'not parallel_notebooks'
 %endif
 
 %if ! %{with test}
