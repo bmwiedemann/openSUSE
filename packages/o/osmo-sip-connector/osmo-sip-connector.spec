@@ -2,7 +2,7 @@
 # spec file for package osmo-sip-connector
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2016-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           osmo-sip-connector
-Version:        1.4.0
+Version:        1.6.0
 Release:        0
 Summary:        MNCC to SIP bridge for osmo-nitb
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -31,9 +31,9 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmocore) >= 1.0.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.0.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.0.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 BuildRequires:  pkgconfig(sofia-sip-ua-glib) >= 1.12.0
 %{?systemd_requires}
 
