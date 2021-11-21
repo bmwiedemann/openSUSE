@@ -1,0 +1,22 @@
+Index: shairport-sync-3.3.8/scripts/shairport-sync.service.in
+===================================================================
+--- shairport-sync-3.3.8.orig/scripts/shairport-sync.service.in
++++ shairport-sync-3.3.8/scripts/shairport-sync.service.in
+@@ -7,6 +7,17 @@ Wants=network-online.target
+ After=network.target network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@prefix@/bin/shairport-sync
+ User=shairport-sync
+ Group=shairport-sync

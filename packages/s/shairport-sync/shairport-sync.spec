@@ -29,6 +29,7 @@ Source2:        README.SUSE
 # PATCH-FIX-OPENSUSE drop-user-config.patch hillwood@opensuse.org -- Move configuring user account to rpm spec.
 # Move configuring user account to rpm spec.
 Patch0:         drop-user-config.patch
+Patch1:	harden_shairport-sync.service.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
@@ -66,6 +67,7 @@ video or photo streaming.
 %setup -q
 %patch0 -p1
 cp %{SOURCE2} .
+%patch1 -p1
 
 %build
 autoreconf -i -f
