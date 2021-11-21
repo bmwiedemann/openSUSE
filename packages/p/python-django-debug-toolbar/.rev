@@ -166,4 +166,32 @@ Too many small improvements and cleanups to list them all.
 </comment>
     <requestid>891926</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f07320db26fefa6a24cc4e34be576204</srcmd5>
+    <version>3.2.2</version>
+    <time>1637535122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2
+  * Use current_thread instead of currentThread method that was deprecated in
+    Python 3.10 by @tirkarthi in #1465
+  * Drop support for Django 3.0. by @hramezani in #1461
+  * Support JS events when loading a panel. by @tim-schilling in #1441
+  * Use twine to check generated package and readme by @francoisfreitag in
+    #1468
+  * Use default app config discovery by @francoisfreitag in #1467
+  * Show template context on included templates by @gilmrjc in #1436
+  * Keep the toolbar handle in bounds by @matthiask in #1472
+  * Fixes #1239 by @saemideluxe in #1475
+  * Extract common base cursor wrapper class by @jayaddison in #1479
+  * updated Slovak translation by @eriktelepovsky in #1480
+  * Fixes and improvements to history views by @ashwch in #1484
+  * Add test coverage to ensure that SQL tracker wrappers are applied only once
+    to database cursors by @jayaddison in #1478
+  * Correct RENDER_PANELS functionality and when enabled disable HistoryPanel
+    by @tim-schilling in #1440
+  * Add: response status to HistoryPanel by @psacawa in #1490
+  * Support for request-level urlconf overrides by @NielkS in #1488
+  * Version 3.2.2 by @tim-schilling in #1492</comment>
+    <requestid>932692</requestid>
+  </revision>
 </revisionlist>
