@@ -66,7 +66,7 @@ Requires(post): permissions
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
-Recommends:     login_defs-support-for-pam >= 1.3.1
+Recommends:     login_defs-support-for-pam >= 1.5.2
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
 %endif

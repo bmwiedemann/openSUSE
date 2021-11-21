@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 17 04:14:18 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update pam-login_defs-check.sh regexp and
+  login_defs-support-for-pam symbol to version 1.5.2
+  (new variable HMAC_CRYPTO_ALGO).
+
+-------------------------------------------------------------------
 Tue Nov  2 20:32:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add /run/pam_timestamp to pam.tmpfiles
