@@ -968,4 +968,13 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>930811</requestid>
   </revision>
+  <revision rev="106" vrev="4">
+    <srcmd5>c6472995187a49638ba36dbbf8d86a30</srcmd5>
+    <version>1.21.2</version>
+    <time>1637535107</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch bpo-45167-fixes.patch:
+  * Support Python &gt;= 3.9.8 changes.</comment>
+    <requestid>932378</requestid>
+  </revision>
 </revisionlist>

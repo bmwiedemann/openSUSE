@@ -84,6 +84,8 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
+# PATCH-FIX-UPSTREAM -- gh#numpy/numpy/commit/8871c7285fc097fd1bf713aa184cba7e2804f625
+Patch2:         bpo-45167-fixes.patch
 BuildConflicts: gcc11 < 11.2
 BuildRequires:  %{python_module Cython >= 0.29.24}
 BuildRequires:  %{python_module base >= 3.7}
