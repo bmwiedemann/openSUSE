@@ -40,4 +40,32 @@
   gh#openSUSE/libalternatives#11</comment>
     <requestid>928026</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4eccb7f54496dcc01e0a00007b19694b</srcmd5>
+    <version>0.3.4</version>
+    <time>1637535124</time>
+    <user>dimstar_suse</user>
+    <comment>- Accomodate moved config to distconfig
+
+- Update to 0.3.4
+  * Monkeypatch IPythonHandler to find nbclassic's jinja templates
+    #77 (@Zsailer)
+  * Run JupyterLab browser tests as downstream tests #76 (@Zsailer)
+  * add check-release workflow #75 (@Zsailer)
+- Release 0.3.3
+  * Use Jupyter Packaging and other cleanup #68 (@Zsailer)
+  * add missing lines to manifest #72 (@Zsailer)
+  * add changelog comments for jupyter-releaser #70 (@Zsailer)
+  * add setup.py back to enable jupyter_releaser #69 (@Zsailer)
+  * Add workflow to test JupyterLab #67 (@Zsailer)
+  * Expose classic notebook's static assets from their original
+    endpoints #63 (@Zsailer)
+- Release 0.32.2
+  * ExtensionManager's link_extension changed call signature #64
+    (@athornton)
+  * Fix link to the Jupyter Notebook repo in README #62
+    (@saiwing-yeung)
+- Reenable libalternatives</comment>
+    <requestid>932754</requestid>
+  </revision>
 </revisionlist>

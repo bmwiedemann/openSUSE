@@ -16,8 +16,7 @@
 #
 
 
-%bcond_with libalternatives_issue_11_fixed
-%if 0%{?suse_version} > 1500 && %{with libalternatives_issue_11_fixed}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -26,21 +25,21 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-nbclassic
-Version:        0.3.1
+Version:        0.3.4
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
 # The github archive has the tests
-Source:         https://github.com/jupyterlab/nbclassic/archive/%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
-BuildRequires:  %{python_module jupyter_server >= 1.8}
-BuildRequires:  %{python_module notebook}
+Source:         https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
+BuildRequires:  %{python_module jupyter_server >= 1.8 with %python-jupyter_server < 2}
+BuildRequires:  %{python_module notebook < 7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-nbclassic = %{version}
-Requires:       python-jupyter_server >= 1.8
-Requires:       python-notebook
+Requires:       python-notebook < 7
+Requires:       (python-jupyter_server >= 1.8 with python-jupyter_server < 2)
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -85,9 +84,9 @@ This package contains the jupyterlab server configuration file
 
 %install
 %python_install
-install -m 644 -D -t %{buildroot}%{_jupyter_server_confdir} jupyter_server_config.d/*
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%jupyter_move_config
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
@@ -100,18 +99,17 @@ install -m 644 -D -t %{buildroot}%{_jupyter_server_confdir} jupyter_server_confi
 %python_uninstall_alternative jupyter-nbclassic
 
 %check
-# suppress color output
-rm setup.cfg
-%pytest -s
+%pytest nbclassic
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/jupyter-nbclassic
-%{python_sitelib}/
+%{python_sitelib}/nbclassic
+%{python_sitelib}/nbclassic-%{version}*-info
 
 %files -n jupyter-nbclassic
 %license LICENSE
-%config %{_jupyter_server_confdir}/nbclassic.json
+%{!?_jupyter_distconfig:%config} %{_jupyter_server_confdir}/nbclassic.json
 
 %changelog

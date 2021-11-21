@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 21 09:15:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Accomodate moved config to distconfig
+
+-------------------------------------------------------------------
+Sun Nov 14 15:53:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.3.4
+  * Monkeypatch IPythonHandler to find nbclassic's jinja templates
+    #77 (@Zsailer)
+  * Run JupyterLab browser tests as downstream tests #76 (@Zsailer)
+  * add check-release workflow #75 (@Zsailer)
+- Release 0.3.3
+  * Use Jupyter Packaging and other cleanup #68 (@Zsailer)
+  * add missing lines to manifest #72 (@Zsailer)
+  * add changelog comments for jupyter-releaser #70 (@Zsailer)
+  * add setup.py back to enable jupyter_releaser #69 (@Zsailer)
+  * Add workflow to test JupyterLab #67 (@Zsailer)
+  * Expose classic notebook's static assets from their original
+    endpoints #63 (@Zsailer)
+- Release 0.32.2
+  * ExtensionManager's link_extension changed call signature #64
+    (@athornton)
+  * Fix link to the Jupyter Notebook repo in README #62
+    (@saiwing-yeung)
+- Reenable libalternatives
+
+-------------------------------------------------------------------
 Thu Oct 28 19:14:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - revert the usage of libalternatives due to
