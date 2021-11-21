@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-hlr
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 
 Name:           osmo-hlr
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        Osmocom Home Location Register for GSUP protocol towards OsmoSGSN and OsmoCSCN
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Telephony/Servers
 URL:            https://projects.osmocom.org/projects/osmo-hlr
 Source:         %{name}-%{version}.tar.xz
-Patch0:	harden_osmo-hlr.service.patch
+Patch0:         harden_osmo-hlr.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -33,11 +33,11 @@ BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  python3
 BuildRequires:  sqlite3
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
+BuildRequires:  pkgconfig(libosmoabis) >= 1.1.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.5.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.5.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.5.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(talloc) >= 2.0.1
 # only needed for populate_hlr_db.pl
@@ -78,6 +78,36 @@ and External USSD Entities (EUSEs) using this library to implement clients.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmo-gsup-client.
 
+%package -n libosmo-mslookup0
+Summary:        Osmocom MS lookup library
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n libosmo-mslookup0
+This shared library contains routines for looking up mobile subscribers.
+
+%package -n libosmo-mslookup-devel
+Summary:        Development files for the Osmocom MS lookup library
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       libosmo-mslookup0 = %{version}
+
+%description -n libosmo-mslookup-devel
+This shared library contains routines for looking up mobile subscribers.
+
+This subpackage contains libraries and header files for developing
+applications that want to make use of libosmo-mslookup.
+
+%package -n osmo-mslookup-client
+Summary:        Standalone program using libosmo-mslookup
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+
+%description -n osmo-mslookup-client
+Standalone program using libosmo-mslookup to easily integrate with programs
+that want to connect services (SIP, SMS,...) to the current location of a
+subscriber.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -116,12 +146,15 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 
 %post   -n libosmo-gsup-client0 -p /sbin/ldconfig
 %postun -n libosmo-gsup-client0 -p /sbin/ldconfig
+%post   -n libosmo-mslookup0 -p /sbin/ldconfig
+%postun -n libosmo-mslookup0 -p /sbin/ldconfig
 
 %files
 %license COPYING
 %dir %{_docdir}/%{name}
 %dir %{_docdir}/%{name}/examples
 %{_docdir}/%{name}/examples/osmo-hlr.cfg
+%{_docdir}/%{name}/examples/osmo-hlr-dgsm.cfg
 %dir %{_docdir}/%{name}/sql
 %{_docdir}/%{name}/sql/hlr.sql
 %{_docdir}/%{name}/sql//hlr_data.sql
@@ -130,9 +163,11 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %{_bindir}/osmo-hlr
 %{_bindir}/osmo-hlr-db-tool
 %dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-hlr.cfg
+%config(noreplace) %{_sysconfdir}/osmocom/osmo-hlr.cfg
 %{_unitdir}/osmo-hlr.service
 %{_sbindir}/rcosmo-hlr
+%dir %{_datadir}/osmocom
+%{_datadir}/osmocom/osmo-hlr-post-upgrade.sh
 
 %files -n libosmo-gsup-client0
 %{_libdir}/libosmo-gsup-client.so.0*
@@ -141,8 +176,21 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %{_bindir}/osmo-euse-demo
 %dir %{_includedir}/osmocom
 %dir %{_includedir}/osmocom/gsupclient
-%{_includedir}/osmocom/gsupclient/gsup_client.h
+%{_includedir}/osmocom/gsupclient/*.h
 %{_libdir}/libosmo-gsup-client.so
 %{_libdir}/pkgconfig/libosmo-gsup-client.pc
+
+%files -n libosmo-mslookup0
+%{_libdir}/libosmo-mslookup.so.0*
+
+%files -n libosmo-mslookup-devel
+%dir %{_includedir}/osmocom
+%dir %{_includedir}/osmocom/mslookup
+%{_includedir}/osmocom/mslookup/*.h
+%{_libdir}/libosmo-mslookup.so
+%{_libdir}/pkgconfig/libosmo-mslookup.pc
+
+%files -n osmo-mslookup-client
+%{_bindir}/osmo-mslookup-client
 
 %changelog
