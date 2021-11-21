@@ -20,7 +20,18 @@ which osc >/dev/null
 # Extract list of referenced variables.
 if ! test -f openSUSE:Factory/util-linux/BUILD/*/configure.ac ; then
 	echo "Checking out util-linux..."
-	osc co openSUSE:Factory util-linux
+	if test -d ../util-linux ; then
+		echo -n "../util-linux found. Are you preparing new version? (y/N) "
+		read
+		if test "${REPLY:0:1}" = "y" ; then
+		mkdir -p openSUSE:Factory
+			cp -a ../util-linux openSUSE:Factory/
+		else
+			osc co openSUSE:Factory util-linux
+		fi
+	else
+		osc co openSUSE:Factory util-linux
+	fi
 	cd openSUSE:Factory/util-linux
 	quilt setup -d BUILD util-linux.spec
 	cd BUILD/*
@@ -43,7 +54,18 @@ cd ../../../..
 # Extract list of referenced variables.
 if ! test -f openSUSE:Factory/pam/BUILD/*/configure.ac ; then
 	echo "Checking out pam..."
-	osc co openSUSE:Factory pam
+	if test -d ../pam ; then
+		echo -n "../pam found. Are you preparing new version? (y/N) "
+		read
+		if test "${REPLY:0:1}" = "y" ; then
+		mkdir -p openSUSE:Factory
+			cp -a ../pam openSUSE:Factory/
+		else
+			osc co openSUSE:Factory pam
+		fi
+	else
+		osc co openSUSE:Factory pam
+	fi
 	cd openSUSE:Factory/pam
 	quilt setup -d BUILD pam.spec
 	cd BUILD/*
@@ -54,7 +76,7 @@ fi
 echo "Extracting variables from pam..."
 cd openSUSE:Factory/pam/BUILD/*
 grep -rh LOGIN_DEFS . |
-	sed -n 's/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
+	sed -n 's/CRYPTO_KEY/\"HMAC_CRYPTO_ALGO\"/g;s/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
 	LC_ALL=C sort -u >../../../../shadow-login_defs-check-pam.lst
 cd ../../../..
 
@@ -66,12 +88,24 @@ if ! test -f shadow-login_defs-check-build/stamp ; then
 # In case of shadow, variables extraction is more complicated. The list
 # depends on configure options, so we have to perform a fake build and
 # extract variables from prepreocessed sources.
-        sed -i '/^%make_build/i\_smp_mpflags="%{?_smp_mpflags} -k CPPFLAGS=\\"-E\\""' shadow.spec
+#		sed -i '/^%make_build/i\_smp_mpflags="%{?_smp_mpflags} -k CPPFLAGS=\\"-E\\""' shadow.spec
+		sed -i 's/^%make_build/%make_build -k CPPFLAGS=\\"-E\\"/' shadow.spec
+		if cmp -s shadow.spec shadow.spec.shadow-login_defs-check-save ; then
+			echo "$0: Please fix sed expression modifying shadow.spec."
+			mv shadow.spec.shadow-login_defs-check-save shadow.spec
+			exit 1
+		fi
 	fi
 
-	osc build "$@" || :
-	echo "This build command was expected to fail."
-	echo ""
+	if osc build "$@" ; then
+		echo "This build command was expected to fail, but it succeeded."
+		echo "$0: Please fix sed expression modifying shadow.spec."
+		mv shadow.spec.shadow-login_defs-check-save shadow.spec
+		exit 1
+	else
+		echo "This build command was expected to fail."
+		echo ""
+	fi
 	mv shadow.spec.shadow-login_defs-check-save shadow.spec
 
 	BUILD_ROOT=$(osc lbl | sed -n 's/^.*Using BUILD_ROOT=//p')
@@ -167,6 +201,8 @@ function falsematch() {
 	FTMP_FILE ) return 0 ;;
 # ISSUE_FILE used by library call login_prompt() used only by login.c that is deleted in the spec.
 	ISSUE_FILE ) return 0 ;;
+# PREVENT_NO_AUTH us used only by login.c and su.c that are deleted in the spec.
+	PREVENT_NO_AUTH ) return 0 ;;
 	* ) return 1 ;;
 	esac
 }
@@ -242,7 +278,7 @@ echo "Change in shadow.spec:"
 sed -n 's/^Version:[[:space:]]*/Provides:       login_defs-support-for-util-linux = /p' <openSUSE\:Factory/util-linux/util-linux.spec
 
 echo "
-If you ported encryption_method_nis.patch to the new pam version,
+If you ported shadow-login_defs-unused-by-pam.patch to the new pam version,
 please submit these updates:
 Change in pam.spec:"
 sed -n 's/^Version:[[:space:]]*/Requires:       login_defs-support-for-pam >= /p' <openSUSE\:Factory/pam/pam.spec

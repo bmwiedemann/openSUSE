@@ -639,4 +639,41 @@
   * selinux fixes</comment>
     <requestid>920286</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>893a5e3f4bb7cc391f09a46e2d7d7900</srcmd5>
+    <version>4.9</version>
+    <time>1637535088</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix segfaults in newgrp and pwck
+  * Add shadow-4.9-newgrp-segfault.patch 
+    https://github.com/shadow-maint/shadow/pull/437
+  * Add shadow-4.9-pwck-segfault.patch
+    https://github.com/shadow-maint/shadow/pull/445
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * shadow.service
+
+- shadow-util-linux.patch:
+  * Remove the section patching lib/getdef.c in favor of the
+    upstream FOREIGNDEFS.
+  * Add LOGIN_KEEP_USERNAME to login.defs.
+  * Remove PREVENT_NO_AUTH from login.defs. Only used by the
+    unpackaged login and su.
+- shadow-login_defs-unused-by-pam.patch:
+  * Remove variables BCRYPT_MIN_ROUNDS, BCRYPT_MAX_ROUNDS,
+    YESCRYPT_COST_FACTOR, not supported by the current
+    configuratiton.
+- Update login_defs-support-for-pam symbol to version 1.5.2
+  (support for new variable HMAC_CRYPTO_ALGO).
+- Update login_defs-support-for-util-linux to version 2.37
+  (support for new variable LOGIN_KEEP_USERNAME).
+- Refresh shadow-login_defs-comments.patch and
+  shadow-login_defs-suse.patch.
+- Improve shadow-login_defs-check.sh:
+  * Add helper to import local new version in the parent dir.
+  * Fix spec editing sed expression.
+  * Add PREVENT_NO_AUTH to known unused variables.
+  * Update pam sed expression to find HMAC_CRYPTO_ALGO.</comment>
+    <requestid>932263</requestid>
+  </revision>
 </revisionlist>

@@ -67,7 +67,7 @@ Index: etc/login.defs
  
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
-@@ -125,7 +128,7 @@
+@@ -133,7 +136,7 @@ UMASK		022
  # HOME_MODE is used by useradd(8) and newusers(8) to set the mode for new
  # home directories.
  # If HOME_MODE is not set, the value of UMASK is used to create the mode.
@@ -106,8 +106,8 @@ Index: etc/login.defs
 +LOGIN_RETRIES		3
  
  #
- # Max time in seconds for login(1)
-@@ -201,18 +204,9 @@ LOGIN_TIMEOUT		60
+ # Tell login to only re-prompt for the password if authentication
+@@ -207,18 +210,9 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
@@ -128,7 +128,7 @@ Index: etc/login.defs
  
  #
  # If set to MD5, MD5-based algorithm will be used for encrypting password
-@@ -227,7 +221,7 @@ CHFN_RESTRICT		rwh
+@@ -233,7 +227,7 @@ CHFN_RESTRICT		rwh
  # Note: If you use PAM, it is recommended to use a value consistent with
  # the PAM modules configuration.
  #
@@ -137,7 +137,7 @@ Index: etc/login.defs
  
  #
  # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
-@@ -325,7 +319,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
+@@ -303,7 +297,7 @@ USERDEL_POSTCMD         /usr/sbin/userde
  #
  # This also enables userdel(8) to remove user groups if no members exist.
  #
@@ -146,7 +146,7 @@ Index: etc/login.defs
  
  #
  # If set to a non-zero number, the shadow utilities will make sure that
-@@ -344,7 +338,7 @@ USERGROUPS_ENAB yes
+@@ -322,7 +316,7 @@ USERGROUPS_ENAB yes
  # This option is overridden with the -M or -m flags on the useradd(8)
  # command-line.
  #
@@ -155,4 +155,3 @@ Index: etc/login.defs
  
  #
  # Force use shadow, even if shadow passwd & shadow group files are
-

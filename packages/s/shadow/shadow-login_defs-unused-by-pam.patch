@@ -1,6 +1,9 @@
 Remove variables that are present in login.defs, but shadow with the
 current configuration (e. g. with PAM) does not use them.
 
+It also includes variables used by the current configuration, but deleted
+in the spec file.
+
 shadow-login_defs-unused-check.sh makes possible to verify that it is
 still up to date.
 
@@ -221,10 +224,38 @@ Index: etc/login.defs
  # Only works if compiled with MD5_CRYPT defined:
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
-@@ -382,17 +252,6 @@ CHFN_RESTRICT		rwh
- #YESCRYPT_COST_FACTOR 5
+@@ -354,45 +224,6 @@ CHFN_RESTRICT		rwh
+ #SHA_CRYPT_MAX_ROUNDS 5000
  
  #
+-# Only works if ENCRYPT_METHOD is set to BCRYPT.
+-#
+-# Define the number of BCRYPT rounds.
+-# With a lot of rounds, it is more difficult to brute-force the password.
+-# However, more CPU resources will be needed to authenticate users if
+-# this value is increased.
+-#
+-# If not specified, 13 rounds will be attempted.
+-# If only one of the MIN or MAX values is set, then this value will be used.
+-# If MIN > MAX, the highest value will be used.
+-#
+-#BCRYPT_MIN_ROUNDS 13
+-#BCRYPT_MAX_ROUNDS 13
+-
+-#
+-# Only works if ENCRYPT_METHOD is set to YESCRYPT.
+-#
+-# Define the YESCRYPT cost factor.
+-# With a higher cost factor, it is more difficult to brute-force the password.
+-# However, more CPU time and more memory will be needed to authenticate users
+-# if this value is increased.
+-#
+-# If not specified, a cost factor of 5 will be used.
+-# The value must be within the 1-11 range.
+-#
+-#YESCRYPT_COST_FACTOR 5
+-
+-#
 -# List of groups to add to the user's supplementary group set
 -# when logging in from the console (as determined by the CONSOLE
 -# setting).  Default is none.
@@ -239,7 +270,7 @@ Index: etc/login.defs
  # Should login be allowed if we can't cd to the home directory?
  # Default is no.
  #
-@@ -407,12 +266,6 @@ DEFAULT_HOME	yes
+@@ -407,12 +238,6 @@ DEFAULT_HOME	yes
  NONEXISTENT	/nonexistent
  
  #

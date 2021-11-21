@@ -13,38 +13,6 @@ Index: etc/login.defs
  
  #
  # Delay in seconds before being allowed another attempt after a login failure
-@@ -23,15 +21,6 @@ LOG_UNKFAIL_ENAB	no
- #
- 
- #
--# Limit the highest user ID number for which the lastlog entries should
--# be updated.
--#
--# No LASTLOG_UID_MAX means that there is no user ID limit for writing
--# lastlog entries.
--#
--#LASTLOG_UID_MAX
--
--#
- # Enable "syslog" logging of newgrp(1) and sg(1) activity - in addition
- # to sulog file logging.
- #
-@@ -46,6 +35,15 @@ CONSOLE		/etc/securetty
- #CONSOLE	console:tty01:tty02:tty03:tty04
- 
- #
-+# Limit the highest user ID number for which the lastlog entries should
-+# be updated.
-+#
-+# No LASTLOG_UID_MAX means that there is no user ID limit for writing
-+# lastlog entries.
-+#
-+#LASTLOG_UID_MAX
-+
-+#
- # If defined, all su(1) activity is logged to this file.
- #
- #SULOG_FILE	/var/log/sulog
 @@ -99,11 +97,14 @@ ENV_PATH	/bin:/usr/bin
  ENV_ROOTPATH	/sbin:/bin:/usr/sbin:/usr/bin
  #ENV_SUPATH	/sbin:/bin:/usr/sbin:/usr/bin
@@ -86,7 +54,7 @@ Index: etc/login.defs
  GID_MIN			 1000
  GID_MAX			60000
  # System accounts
-@@ -190,7 +201,6 @@ LOGIN_TIMEOUT		60
+@@ -196,7 +207,6 @@ LOGIN_TIMEOUT		60
  CHFN_RESTRICT		rwh
  
  #
@@ -94,7 +62,7 @@ Index: etc/login.defs
  # If set to "yes", new passwords will be encrypted using the MD5-based
  # algorithm compatible with the one used by recent releases of FreeBSD.
  # It supports passwords of unlimited length and longer salt strings.
-@@ -205,7 +215,6 @@ CHFN_RESTRICT		rwh
+@@ -211,7 +221,6 @@ CHFN_RESTRICT		rwh
  #MD5_CRYPT_ENAB	no
  
  #

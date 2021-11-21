@@ -71,6 +71,10 @@ Patch13:        shadow-passwd-handle-null.patch
 Patch14:        shadow-4.9-sgent-free.patch
 # PATCH-FIX-UPSTREAM shadow-4.9-useradd-subuid.patch mvetter@suse.de -- Fix generating empty subid range and undeclared subid_count (boo#1190146)
 Patch15:        shadow-4.9-useradd-subuid.patch
+# PATCH-FIX-UPSTREAM shadow-4.9-newgrp-segfault.patch mvetter@suse.de -- Fix segfault in newgrp (gh#437)
+Patch16:        shadow-4.9-newgrp-segfault.patch
+# PATCH-FIX-UPSTREAM shadow-4.9-pwck-segfault.patch mvetter@suse.de -- Fix segfault in pwck (gh#445)
+Patch17:        shadow-4.9-pwck-segfault.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -107,8 +111,8 @@ Summary:        The login.defs configuration file
 # encryption_method_nis.patch has to be ported!
 # Call shadow-login_defs-check.sh before!
 Group:          System/Base
-Provides:       login_defs-support-for-pam = 1.3.1
-Provides:       login_defs-support-for-util-linux = 2.36
+Provides:       login_defs-support-for-pam = 1.5.2
+Provides:       login_defs-support-for-util-linux = 2.37
 BuildArch:      noarch
 
 %description -n login_defs
@@ -150,6 +154,8 @@ Development files for libsubid3.
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
+%patch17 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

@@ -109,39 +109,32 @@ Index: etc/login.defs
  # Default initial "umask" value used by login(1) on non-PAM enabled systems.
  # Default "umask" value for pam_umask(8) on PAM enabled systems.
  # UMASK is also used by useradd(8) and newusers(8) to set the mode for new
-Index: lib/getdef.c
-===================================================================
---- lib/getdef.c.orig
-+++ lib/getdef.c
-@@ -67,6 +67,7 @@ struct itemdef {
- 	{"LOGIN_STRING", NULL},			\
- 	{"MAIL_CHECK_ENAB", NULL},		\
- 	{"MOTD_FILE", NULL},			\
-+	{"MOTD_FIRSTONLY", NULL},		\
- 	{"NOLOGINS_FILE", NULL},		\
- 	{"OBSCURE_CHECKS_ENAB", NULL},		\
- 	{"PASS_ALWAYS_WARN", NULL},		\
-@@ -91,6 +92,7 @@ struct itemdef {
+@@ -163,6 +177,12 @@ SUB_GID_COUNT		    65536
+ LOGIN_RETRIES		5
  
- #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
- static struct itemdef def_table[] = {
-+	{"ALWAYS_SET_PATH", NULL},
- 	{"CHARACTER_CLASS", NULL},
- 	{"CHFN_RESTRICT", NULL},
- 	{"CONSOLE_GROUPS", NULL},
-@@ -99,6 +101,7 @@ static struct itemdef def_table[] = {
- 	{"DEFAULT_HOME", NULL},
- 	{"ENCRYPT_METHOD", NULL},
- 	{"ENV_PATH", NULL},
-+	{"ENV_ROOTPATH", NULL},
- 	{"ENV_SUPATH", NULL},
- 	{"ERASECHAR", NULL},
- 	{"FAIL_DELAY", NULL},
-@@ -110,6 +113,7 @@ static struct itemdef def_table[] = {
- 	{"KILLCHAR", NULL},
- 	{"LASTLOG_UID_MAX", NULL},
- 	{"LOGIN_RETRIES", NULL},
-+	{"LOGIN_PLAIN_PROMPT", NULL},
- 	{"LOGIN_TIMEOUT", NULL},
- 	{"LOG_OK_LOGINS", NULL},
- 	{"LOG_UNKFAIL_ENAB", NULL},
+ #
++# Tell login to only re-prompt for the password if authentication
++# failed, but the username is valid. The default value is no.
++#
++LOGIN_KEEP_USERNAME	no
++
++#
+ # Max time in seconds for login(1)
+ #
+ LOGIN_TIMEOUT		60
+@@ -315,15 +335,6 @@ CHARACTER_CLASS         [ABCDEFGHIJKLMNO
+ #GRANT_AUX_GROUP_SUBIDS yes
+ 
+ #
+-# Prevents an empty password field to be interpreted as "no authentication
+-# required".
+-# Set to "yes" to prevent for all accounts
+-# Set to "superuser" to prevent for UID 0 / root (default)
+-# Set to "no" to not prevent for any account (dangerous, historical default)
+-
+-PREVENT_NO_AUTH superuser
+-
+-#
+ # Select the HMAC cryptography algorithm.
+ # Used in pam_timestamp module to calculate the keyed-hash message
+ # authentication code.
