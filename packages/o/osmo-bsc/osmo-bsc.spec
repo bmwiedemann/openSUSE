@@ -1,8 +1,8 @@
 #
 # spec file for package osmo-bsc
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,31 @@
 #
 
 
-%define _lto_cflags %{nil}
-
 Name:           osmo-bsc
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        OsmoBSC: Osmocom's Base Station Controller for 2G CS mobile networks
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
 Group:          Hardware/Mobile
 URL:            https://osmocom.org/projects/openbsc/wiki/Osmo-bsc
 Source:         %{name}-%{version}.tar.xz
-Patch0:         0001-handorer.h-Fix-compilation-with-gcc-10.patch
-Patch1:	harden_osmo-bsc.service.patch
+#Patch0:         0001-handorer.h-Fix-compilation-with-gcc-10.patch
+Patch1:         harden_osmo-bsc.service.patch
 BuildRequires:  automake >= 1.9
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig >= 0.20
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libcrypto) >= 0.9.5
-BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.6.0
+BuildRequires:  pkgconfig(libosmo-mgcp-client) >= 1.9.0
 BuildRequires:  pkgconfig(libosmo-netif) >= 0.6.0
 BuildRequires:  pkgconfig(libosmo-sccp) >= 0.10.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 0.10.0
-BuildRequires:  pkgconfig(libosmoabis) >= 0.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.3.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.3.0
-BuildRequires:  pkgconfig(libosmogb)
-BuildRequires:  pkgconfig(libosmogsm) >= 1.3.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.3.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.5.0
+BuildRequires:  pkgconfig(libosmoabis) >= 1.2.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.6.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.6.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.6.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.6.0
 BuildRequires:  pkgconfig(talloc)
 %{?systemd_requires}
 
@@ -90,7 +88,7 @@ This package contains utilities for handling OsmoBSC's measurement reports
 
 %prep
 %setup -q
-%patch0 -p1
+#%%patch0 -p1
 %patch1 -p1
 
 %build
@@ -127,11 +125,9 @@ make %{?_smp_mflags} check || (find . -name testsuite.log -exec cat {} +)
 %{_bindir}/osmo-bsc
 %dir %{_docdir}/%{name}/examples
 %dir %{_docdir}/%{name}/examples/osmo-bsc
-%{_docdir}/%{name}/examples/osmo-bsc/osmo-bsc.cfg
-%{_docdir}/%{name}/examples/osmo-bsc/osmo-bsc_custom-sccp.cfg
-%{_docdir}/%{name}/examples/osmo-bsc/osmo-bsc-minimal.cfg
+%{_docdir}/%{name}/examples/osmo-bsc/
 %dir %{_sysconfdir}/osmocom
-%config %{_sysconfdir}/osmocom/osmo-bsc.cfg
+%config(noreplace) %{_sysconfdir}/osmocom/osmo-bsc.cfg
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:39:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.8.0
+  * https://git.osmocom.org/osmo-bsc/plain/debian/changelog?h=1.8.0
+- Drop patch:
+  * 0001-handorer.h-Fix-compilation-with-gcc-10.patch
+
+-------------------------------------------------------------------
 Wed Oct 13 13:45:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
