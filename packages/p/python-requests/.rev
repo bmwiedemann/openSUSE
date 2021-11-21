@@ -740,4 +740,27 @@
     <comment>- Skip test_pyopenssl_redirect due to gh#psf/requests#5846</comment>
     <requestid>903344</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>23e727acebadf0a1489873ce2ca0e250</srcmd5>
+    <version>2.26.0</version>
+    <time>1637535094</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct {Build,}Requires for charset_normalizer.
+- Add trustme to BuildRequires for the test suite.
+
+- update to 2.26.0:
+  - `Session.send` now correctly resolves proxy configurations from both
+    the Session and Request. Behavior now matches `Session.request`. (#5681)
+  - Fixed a race condition in zip extraction when using Requests in parallel
+    from zip archive. (#5707)
+  - Instead of `chardet`, use the MIT-licensed `charset_normalizer` for Python3
+    to remove license ambiguity for projects bundling requests.
+  - Requests now supports `idna` 3.x on Python 3. `idna` 2.x will continue to
+    be used on Python 2 installations. (#5711)
+  - The `requests[security]` extra has been converted to a no-op install.
+    PyOpenSSL is no longer the recommended secure option for Requests. (#5867)
+  - Requests has officially dropped support for Python 3.5. (#5867)
+- drop 5711.patch: upstream</comment>
+    <requestid>928315</requestid>
+  </revision>
 </revisionlist>

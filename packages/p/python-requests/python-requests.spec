@@ -26,7 +26,7 @@
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests%{psuffix}
-Version:        2.25.1
+Version:        2.26.0
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
@@ -35,15 +35,13 @@ URL:            http://python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
-# PATCH-FIX-UPSTREAM: gh#psf/requests#5711
-Patch1:         https://patch-diff.githubusercontent.com/raw/psf/requests/pull/5711.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python
 Requires:       python-certifi >= 2017.4.17
-Requires:       python-chardet >= 3.0.2
+Requires:       python-charset-normalizer >= 2.0.0
 Requires:       python-idna >= 2.5
 Requires:       python-py
 Requires:       python-urllib3 >= 1.21.1
@@ -62,12 +60,13 @@ Recommends:     python-pyOpenSSL >= 0.14
 %if %{with test}
 BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module brotlipy}
-BuildRequires:  %{python_module chardet >= 3.0.2}
+BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module pytest-httpbin >= 0.0.7}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= %{version}}
+BuildRequires:  %{python_module trustme}
 %endif
 %python_subpackages
 
