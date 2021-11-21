@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -6414,6 +6414,7 @@ unsorted:
   - gtkwave 
   - gtkwave-doc 
   - gtkwave-examples 
+  - gtp-echo-responder 
   - gtranslator 
   - gtranslator-doc 
   - gtranslator-lang 
@@ -11320,8 +11321,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit: [x86_64] 
   - libicu-doc 
-  - libicu69-32bit: [x86_64] 
-  - libicu69-bedata 
+  - libicu70-32bit: [x86_64] 
+  - libicu70-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libid3tag0-32bit: [x86_64] 
@@ -18197,6 +18198,7 @@ unsorted:
   - osmo-remsim-server 
   - osmo-sgsn 
   - osmo-sip-connector 
+  - osmo-smlc 
   - osmo-stp 
   - osmo-trx 
   - osmo-trx-lms 
@@ -21015,7 +21017,6 @@ unsorted:
   - python-masakariclient-doc 
   - python-md2workflow-common 
   - python-mistralclient-doc 
-  - python-mox3-doc 
   - python-mpi4py-common-devel 
   - python-mpi4py-doc 
   - python-mpld3-doc 
@@ -21325,7 +21326,6 @@ unsorted:
   - python3-mlt 
   - python3-monascaclient 
   - python3-morecvutils 
-  - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
   - python3-nemo 

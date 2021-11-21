@@ -2124,8 +2124,8 @@
     <package name="libibverbs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libicu69" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libicu69-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libicu70" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libicu70-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
