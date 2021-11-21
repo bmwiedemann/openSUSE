@@ -19,11 +19,18 @@ mypath=/usr/lib64/mpi/gcc/openmpi2/bin:${mypath}
 mypath=/usr/lib64/mpi/gcc/openmpi1/bin:${mypath}
 mypath=/usr/lib64/mpi/gcc/mvapich2/bin:${mypath}
 mypath=/usr/lib64/mpi/gcc/mpich/bin:${mypath}
+mypath=/usr/lib/hpc/gnu?/mpi/openmpi/4.*/bin:${mypath}
+mypath=/usr/lib/hpc/gnu?/mpi/openmpi/3.*/bin:${mypath}
+mypath=/usr/lib/hpc/gnu?/mpi/openmpi/2.*/bin:${mypath}
+mypath=/usr/lib/hpc/gnu?/mpi/mpich/3.*/bin:${mypath}
+mypath=/usr/lib/hpc/gnu?/mpi/mvapich2/2.*/bin:${mypath}
+
+
 # test if we can run as nobody
 getent passwd nobody &> /dev/null
 if [ "x$?" == "x0" ] ; then
 # drop all root rights, when calling external find
-  sudo -u nobody PATH=${mypath}:${PATH} spack external find --scope user --exclude 'installdbgsymbols' 
+  sudo -u nobody PATH=${mypath}:${PATH} spack external find --scope user #--exclude 'installdbgsymbols' 
   if [ -e /var/lib/nobody/.spack/packages.yaml ] ; then
     mv -v /var/lib/nobody/.spack/packages.yaml /etc/spack/packages.yaml
     chown root:root /etc/spack/packages.yaml
@@ -31,5 +38,5 @@ if [ "x$?" == "x0" ] ; then
   fi
 else
   # May run in a container...
-  PATH=${mypath}:${PATH} spack external find --scope system --exclude 'installdbgsymbols' 
+  PATH=${mypath}:${PATH} spack external find --scope system #--exclude 'installdbgsymbols' 
 fi

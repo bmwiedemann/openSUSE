@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.16.3
+Version:        0.17.0
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -46,16 +46,14 @@ Source1:        README.SUSE
 Source2:        spack-rpmlintrc
 Source3:        run-find-external.sh
 Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
-Patch0:         Make-spack-paths-compliant-to-distro-installation.patch
+Source5:        https://docs.python.org/3/objects.inv
 Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
-Patch3:         added-dockerfile-for-opensuse-leap-15.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch
-Patch5:         Fix-documentation-so-that-parser-doesn-t-stumble.patch
+Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
-Patch7:         basic-exclude-pattern-for-external-find.patch
-# upstream patch removes also problemtatic binaries
-#Patch4:         spack-test-15702.patch
+Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
+Patch8:         Set-modules-default-to-lmod.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
@@ -66,6 +64,7 @@ BuildRequires:  sudo
 BuildRequires:  sysuser-tools
 Requires:       %{name}-recipes = %{version}
 Requires:       bzip2
+Requires:       coreutils
 Requires:       curl
 Requires:       gcc-c++
 Requires:       gcc-fortran
@@ -75,16 +74,18 @@ Requires:       lua-lmod
 Requires:       make
 Requires:       patch
 Requires:       polkit
+Requires:       python3-clingo
 Requires:       sudo
 Requires:       tar
 Requires:       xz
 Recommends:     %spack_trigger_recommended
 Recommends:     spack-recipes = %version
 %else
-BuildRequires:  %{python_module Sphinx >= 1.8}
-BuildRequires:  %{python_module sphinxcontrib-programoutput}
 BuildRequires:  git
 BuildRequires:  makeinfo
+# Hardcode this - there is no python2 version of this around any more.
+BuildRequires:  python3-Sphinx >= 3.4
+BuildRequires:  python3-sphinxcontrib-programoutput
 BuildRequires:  spack
 # html
 BuildRequires:  graphviz
@@ -164,12 +165,48 @@ This package contains the info page.
 for i in share/spack/setup-env.*; do
     sed -i -e "s;@@_prefix@@;%_prefix;g" $i
 done
+%else
+cp %{S:5} lib/spack/docs/
 %endif
+
+for file in $(find . -type f); do
+    sed -e 's@$spack/opt@/opt@g' \
+	-e 's@$spack/share/spack/modules@/opt/spack/modules@g' \
+	-e 's@$spack/share/spack/lmod@/opt/spack/modules@g' \
+	-e 's@$spack/var@/var/lib@g' \
+	-i $file
+done
 
 %build
 # Nothing to build
 %if %{with doc}
+mkdir -p ${HOME}/.spack
+cat > ${HOME}/.spack/config.yaml <<EOF
+config:
+  install_tree:
+    root: /tmp/spack
+    projections:
+      all: "${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}"
+EOF
+# Don't really run spack when building documentation!
+tmpdir=$(mktemp -d %{_sourcedir}/tmpd-XXXXXXXXX)
+echo -e '#! /bin/sh
+args=${1+"$@"}
+while [ -n "$1" ]; do
+  case $1 in
+    --*) shift ;;
+    graph|spec) exit 0 ;;
+    *) exec /usr/bin/spack ${args} ;;
+  esac;
+done
+exit 0' > $tmpdir/spack
+chmod 0755 $tmpdir/spack
+PATH=$tmpdir:${PATH}
+export PATH
+mkdir -p /tmp/spack
 cd lib/spack/docs
+# fix Makefile of sphinx and ignore warnings due to offline build
+sed -i 's/\(^SPHINXOPTS\).*/\1 = --keep-going /' Makefile
 # Causes issues building texinfo as a suitable image cannot be found
 grep -rl ":target:" | xargs sed  -i -e "/:target:/s/^/#/" -e "/figure::/s/^/#/"
 # Fix path to var - we install this to the 'real' /var
@@ -194,7 +231,9 @@ compilers:
       unset: []
     extra_rpaths: []
 EOF
-make man info #text dirhtml
+source /usr/share/spack/setup-env.sh
+make man info || { cat /tmp/sphinx-err-*.log; exit 1; } #text dirhtml
+rm -rf $tmpdir
 gzip _build/texinfo/Spack.info _build/man/spack.1
 %endif
 
@@ -393,6 +432,9 @@ fi
 sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 # find installed programms
 /usr/lib/spack/run-find-external.sh
+mkdir -p /opt/spack
+chgrp spack /opt/spack
+chmod 0775 /opt/spack
 
 %triggerin -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
 /usr/lib/spack/run-find-external.sh

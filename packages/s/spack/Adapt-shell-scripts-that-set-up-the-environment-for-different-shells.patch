@@ -1,18 +1,20 @@
-From fbbddf93f0715830a6ae9842c91f89ae40973619 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Sat, 21 Nov 2020 21:46:02 +0100
-Subject: [PATCH 4/4] Adapt shell scripts that set up the environment for
- different shells
+Date: Wed Nov 10 13:01:17 2021 +0100
+Subject: Adapt shell scripts that set up the environment for different shells
+Patch-mainline: Not yet
+Git-repo: https://github.com/spack/spack
+Git-commit: 565c91f4e3a40495fc470a8887df7dee9ced8c09
+References: 
 
 Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  share/spack/setup-env.csh  |  5 +++-
- share/spack/setup-env.fish | 15 +---------
- share/spack/setup-env.sh   | 57 +++-----------------------------------
- 3 files changed, 9 insertions(+), 68 deletions(-)
-
+ share/spack/setup-env.fish | 15 +-----------
+ share/spack/setup-env.sh   | 61 ++--------------------------------------------
+ 3 files changed, 7 insertions(+), 74 deletions(-)
 diff --git a/share/spack/setup-env.csh b/share/spack/setup-env.csh
-index b70036456..ab3d941ef 100755
+index 4ac0503947..67fad7516c 100755
 --- a/share/spack/setup-env.csh
 +++ b/share/spack/setup-env.csh
 @@ -12,6 +12,10 @@
@@ -26,8 +28,8 @@ index b70036456..ab3d941ef 100755
  if ($?_sp_initializing) then
      exit 0
  endif
-@@ -59,7 +63,6 @@ alias spacktivate    'spack env activate'
- alias _spack_pathadd 'set _pa_args = (\!*) && source $_spack_share_dir/csh/pathadd.csh'
+@@ -71,7 +75,6 @@ foreach cmd ("$SPACK_PYTHON" python3 python python2)
+ end
  
  # Set variables needed by this script
 -_spack_pathadd PATH "$SPACK_ROOT/bin"
@@ -35,10 +37,10 @@ index b70036456..ab3d941ef 100755
  
  # Set up module search paths in the user environment
 diff --git a/share/spack/setup-env.fish b/share/spack/setup-env.fish
-index b74eae34d..decb718e1 100755
+index d16ee617df..84e3a9e044 100755
 --- a/share/spack/setup-env.fish
 +++ b/share/spack/setup-env.fish
-@@ -660,20 +660,7 @@ end
+@@ -671,12 +671,6 @@ end
  
  
  
@@ -48,7 +50,13 @@ index b74eae34d..decb718e1 100755
 -set -l sp_source_file (status -f)  # name of current file
 -
 -
--
+ 
+ #
+ # Identify and lock the python interpreter
+@@ -691,14 +685,7 @@ end
+ 
+ 
+ 
 -#
 -# Find root directory and add bin to path.
 -#
@@ -56,15 +64,16 @@ index b74eae34d..decb718e1 100755
 -set -l sp_prefix (realpath (dirname (dirname $sp_share_dir)))
 -spack_pathadd PATH "$sp_prefix/bin"
 -set -xg SPACK_ROOT $sp_prefix
+-
 +set -xg SPACK_ROOT @@_prefix@@
  
  
- 
+ #
 diff --git a/share/spack/setup-env.sh b/share/spack/setup-env.sh
-index 5761d1636..768866abe 100755
+index 5136e8a58a..6aef191129 100755
 --- a/share/spack/setup-env.sh
 +++ b/share/spack/setup-env.sh
-@@ -246,58 +246,6 @@ _sp_shell=$(_spack_determine_shell)
+@@ -249,64 +249,6 @@ _sp_shell=$(_spack_determine_shell)
  
  alias spacktivate="spack env activate"
  
@@ -98,8 +107,13 @@ index 5761d1636..768866abe 100755
 -#
 -# We send cd output to /dev/null to avoid because a lot of users set up
 -# their shell so that cd prints things out to the tty.
--_sp_share_dir="$(cd "$(dirname $_sp_source_file)" > /dev/null && pwd)"
--_sp_prefix="$(cd "$(dirname $(dirname $_sp_share_dir))" > /dev/null && pwd)"
+-if [ "$_sp_shell" = zsh ]; then
+-    _sp_share_dir="${_sp_source_file:A:h}"
+-    _sp_prefix="${_sp_share_dir:h:h}"
+-else
+-    _sp_share_dir="$(cd "$(dirname $_sp_source_file)" > /dev/null && pwd)"
+-    _sp_prefix="$(cd "$(dirname $(dirname $_sp_share_dir))" > /dev/null && pwd)"
+-fi
 -if [ -x "$_sp_prefix/bin/spack" ]; then
 -    export SPACK_ROOT="${_sp_prefix}"
 -else
@@ -120,24 +134,21 @@ index 5761d1636..768866abe 100755
 -    fi
 -fi
 -_spack_pathadd PATH "${_sp_prefix%/}/bin"
- 
+-
  #
  # Check whether a function of the given name is defined
-@@ -369,10 +317,13 @@ _sp_multi_pathadd() {
- }
- _sp_multi_pathadd MODULEPATH "$_sp_tcl_roots"
- 
+ #
+@@ -387,11 +329,12 @@ if [ -z "${SPACK_SKIP_MODULES+x}" ]; then
+     }
+     _sp_multi_pathadd MODULEPATH "$_sp_tcl_roots"
+ fi
 +export SPACK_ROOT=@@_prefix@@
-+
-+
+ 
  # Add programmable tab completion for Bash
  #
- if [ "$_sp_shell" = bash ]; then
+ if test "$_sp_shell" = bash || test -n "${ZSH_VERSION:-}"; then
 -    source $_sp_share_dir/spack-completion.bash
-+  source $SPACK_ROOT/share/spack/spack-completion.bash
++    source $SPACK_ROOT/share/spack/spack-completion.bash
  fi
  
  # done: unset sentinel variable as we're no longer initializing
--- 
-2.26.2
-
