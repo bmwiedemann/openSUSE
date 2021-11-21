@@ -112,4 +112,12 @@
 - Drop pandoc BuildRequires. (forwarded request 891234 from dimstar)</comment>
     <requestid>891240</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>5126332fef1fc7aa4245158266e85b3b</srcmd5>
+    <version>1.6.2</version>
+    <time>1637535128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932774</requestid>
+  </revision>
 </revisionlist>
