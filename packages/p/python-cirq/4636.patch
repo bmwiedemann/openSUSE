@@ -1,0 +1,25 @@
+From 8a8e858b96210927de74d3a532c15487bcd4bd24 Mon Sep 17 00:00:00 2001
+From: Dave Bacon <dabacon@gmail.com>
+Date: Mon, 8 Nov 2021 01:01:36 +0000
+Subject: [PATCH] Fix operator spaces test which fails due to precision on some
+ architectures
+
+---
+ cirq-core/cirq/linalg/operator_spaces_test.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cirq-core/cirq/linalg/operator_spaces_test.py b/cirq-core/cirq/linalg/operator_spaces_test.py
+index fe1f41757eb..fc2a0c719f9 100644
+--- a/cirq-core/cirq/linalg/operator_spaces_test.py
++++ b/cirq-core/cirq/linalg/operator_spaces_test.py
+@@ -175,7 +175,9 @@ def test_hilbert_schmidt_inner_product_is_linear(a, m1, b, m2):
+ @pytest.mark.parametrize('m', (I, X, Y, Z, H, SQRT_X, SQRT_Y, SQRT_Z))
+ def test_hilbert_schmidt_inner_product_is_positive_definite(m):
+     v = cirq.hilbert_schmidt_inner_product(m, m)
+-    assert np.isreal(v)
++    # Cannot check using np.is_real due to bug in aarch64.
++    # See https://github.com/quantumlib/Cirq/issues/4379
++    assert np.isclose(np.imag(v), 1e-16)
+     assert v.real > 0
+ 
+ 

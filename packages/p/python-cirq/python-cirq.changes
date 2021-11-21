@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 13:25:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix test on aarch64:
+  * 4636.patch
+
+-------------------------------------------------------------------
 Wed Feb  3 13:03:35 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36: There are NEP 29 packages in the dependencies.

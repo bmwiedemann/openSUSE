@@ -1,7 +1,7 @@
 #
 # spec file for package python-cirq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Summary:        Library for writing quantum circuits
 License:        Apache-2.0
 URL:            https://github.com/quantumlib/Cirq
 Source:         https://github.com/quantumlib/Cirq/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/quantumlib/Cirq/issues/4379
+Patch1:         4636.patch
 BuildRequires:  %{python_module PyLaTeX}
 BuildRequires:  %{python_module freezegun >= 0.3.15}
 BuildRequires:  %{python_module google-api-core >= 1.14.0}
@@ -77,6 +79,7 @@ simulators.
 
 %prep
 %setup -q -n %{packagename}-%{version}
+%patch1 -p2
 
 %build
 %python_build
