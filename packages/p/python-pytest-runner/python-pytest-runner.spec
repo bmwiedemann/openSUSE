@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-runner
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        MIT
 URL:            https://github.com/pytest-dev/pytest-runner
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-runner/pytest-runner-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 3}
-BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module setuptools >= 30.4}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  fdupes
