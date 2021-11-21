@@ -2271,4 +2271,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Remove the raw utility / get glibc-2.34 going</comment>
     <requestid>917831</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>6afc352110aef5c14f329f6340c4f6e0</srcmd5>
+    <version>2.37.2</version>
+    <time>1637535077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932032</requestid>
+  </revision>
 </revisionlist>

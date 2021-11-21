@@ -8,14 +8,14 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  sys-utils/mount.8 | 26 ++++++++++++++++++++++++++
  1 file changed, 26 insertions(+)
 
-Index: util-linux-2.36/sys-utils/mount.8
+Index: util-linux-2.37.2/sys-utils/mount.8
 ===================================================================
---- util-linux-2.36.orig/sys-utils/mount.8
-+++ util-linux-2.36/sys-utils/mount.8
-@@ -400,6 +400,32 @@ The
- option is similar, with the restriction that the user must be a
- member of the group of the special file.
- 
+--- util-linux-2.37.2.orig/sys-utils/mount.8
++++ util-linux-2.37.2/sys-utils/mount.8
+@@ -203,6 +203,32 @@ Note that \fBmount\fP is very strict abo
+ Since util\-linux 2.35, \fBmount\fP does not exit when user permissions are inadequate according to libmount\(cqs internal security rules. Instead, it drops suid permissions and continues as regular non\-root user. This behavior supports use\-cases where root permissions are not necessary (e.g., fuse filesystems, user namespaces, etc).
+ .sp
+ For more details, see \fBfstab\fP(5). Only the user that mounted a filesystem can unmount it again. If any user should be able to unmount it, then use \fBusers\fP instead of \fBuser\fP in the \fIfstab\fP line. The \fBowner\fP option is similar to the \fBuser\fP option, with the restriction that the user must be the owner of the special file. This may be useful e.g. for \fI/dev/fd\fP if a login script makes the console user owner of this device. The \fBgroup\fP option is similar, with the restriction that the user must be a member of the group of the special file.
 +.SS Blacklisted file systems
 +In the Linux kernel, file system types are implemented as kernel
 +modules. While many of these file systems are well maintained,
@@ -42,6 +42,13 @@ Index: util-linux-2.36/sys-utils/mount.8
 +.I /etc/modprobe.d
 +directory.
 +
- .SS Bind mount operation
- Remount part of the file hierarchy somewhere else.  The call is:
- 
+ .SS "Bind mount operation"
+ .sp
+ Remount part of the file hierarchy somewhere else. The call is:
+@@ -2396,4 +2422,4 @@ For bug reports, use the issue tracker a
+ .SH "AVAILABILITY"
+ .sp
+ The \fBmount\fP command is part of the util\-linux package which can be downloaded from \c
+-.URL "https://www.kernel.org/pub/linux/utils/util\-linux/" "Linux Kernel Archive" "."
+\ No newline at end of file
++.URL "https://www.kernel.org/pub/linux/utils/util\-linux/" "Linux Kernel Archive" "."

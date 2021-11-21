@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Nov 17 22:20:44 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.37.2:
+  * No longer uses Groff to maintain man-pages.
+  * New implementation of hardlink.
+  * lscpu reimplemented.
+  * uclampset: new util to manipulate the utilization clamping
+    attributes of the system or a process.
+  * hexdump automatically uses -C when called as "hd".
+  * dmesg supports new command-line options --since and --until.
+  * findmnt supports new command-line options --shadowed to print
+    only filesystems over-mounted by another filesystem.
+  * mount supports --read-only command-line option for non-root
+    users too.
+  * umount(8) can umount also all over-mounted filesystems (more
+    filesystems on the the same mount point) when executed with
+    --recursive.
+  * libfdisk (and fdisk, sfdisk, cfdisk) supports partition type
+    names on input, ignoring the case of the characters and all
+    non-alphanumeric and non-digit characters in the name
+    (e.g. type="Linux /usr x86" is the same as type="linux usr-x86"
+    for sfdisk).
+  * libmount no longer contains a workaround to detect inconsistent
+    /proc/self/mountinfo reads.
+  * libblkid supports "probing hints" now. The hints are the
+    optional way how to force probing functions to check for
+    example another location -- for example specific session on
+    multi-session UDF. The command blkid(8) supports this
+    functionality with a new --hint option. The library has been
+    also extended to support others ISO9660 and UDF identifiers.
+  * blkzone provides a new "capacity" command.
+  * cfdisk is possible to start in read-only mode by a new
+    command-line option --read-only
+  * lsblk provides new columns FSROOTS, and MOUNTPOINTS. The column
+    MOUNTPOINTS is used in the default output now and this new
+    column prints all mount points where the device is used (btrfs
+    subvolumes, bind mounts, etc).
+  * losetup uses LOOP_CONFIG ioctl now.
+  * column supports a new command-line option --table-columns-limit
+    to specify a maximal number of the input columns. The last
+    column will contain all remaining line data if the limit is
+    smaller than the number of the columns in the input data.
+  * Many other new features and fixes. For the complete list see
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.37/v2.37-ReleaseNotes
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.37/v2.37.1-ReleaseNotes
+    https://www.kernel.org/pub/linux/utils/util-linux/v2.37/v2.37.2-ReleaseNotes
+- Update util-linux-login_defs-check.sh and
+  login_defs-support-for-util-linux to version 2.37
+  (new variable LOGIN_KEEP_USERNAME).
+
+-------------------------------------------------------------------
+Thu Oct  7 00:54:24 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add bc to BuildRequires to run more complete testsuite
+  (bsc#1178236#c19).
+
+-------------------------------------------------------------------
 Thu Sep  9 20:52:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove the raw utility altogether, as it is not even built any

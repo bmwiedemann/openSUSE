@@ -15,7 +15,7 @@ echo -n "Checking login.defs variables in util-linux... " >&2
 		sed -n 's/^.*logindefs_setenv*("[A-Z0-9_]*", "\([A-Z0-9_]*\)".*$/\1/p'
 ) | LC_ALL=C sort -u >util-linux-login_defs-vars.lst
 
-if test $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//') != bdea2548d823e727ddf2cc3318dfce4aa6a9b48f ; then
+if test $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//') != 8516ca34e059b2dee1d4421a3ab07e88331b1674 ; then
 
 	echo "does not match!" >&2
 	echo "Checksum is: $(sha1sum util-linux-login_defs-vars.lst | sed 's/ .*$//')" >&2

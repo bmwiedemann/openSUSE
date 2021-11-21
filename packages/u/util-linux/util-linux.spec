@@ -81,6 +81,7 @@ Summary:        %main_summary
 License:        GPL-2.0-or-later
 Group:          %main_group
 BuildRequires:  audit-devel
+BuildRequires:  bc
 BuildRequires:  binutils-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -126,10 +127,10 @@ BuildRequires:  libmount-devel
 %endif
 %endif
 #END SECOND STAGE DEPENDENCIES
-Version:        2.36.2
+Version:        2.37.2
 Release:        0
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.xz
 Source1:        util-linux-rpmlintrc
 Source2:        util-linux-login_defs-check.sh
 Source6:        etc_filesystems
@@ -138,7 +139,7 @@ Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -184,7 +185,10 @@ Obsoletes:      uuid-runtime <= 2.19.1
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
 # Verify by shadow-login_defs-check.sh from shadow source package.
-Requires:       login_defs-support-for-util-linux >= 2.36
+Recommends:     login_defs-support-for-util-linux >= 2.37
+# The problem with inconsistent /proc/self/mountinfo read is fixed in kernel 5.8.
+# util-linux >= 2.37 no more contain work-around.
+Conflicts:      kernel < 5.8
 #
 # Using "Requires" here would lend itself to help upgrading, but since
 # util-linux is in the initial bootstrap, that is not a good thing to do:
@@ -415,6 +419,8 @@ library.
 %setup -q -n %{_name}-%{version}
 cp -a %{S:2} .
 %autopatch -p1
+# This test keeps hanging task inside build chroot
+rm tests/ts/lsns/ioctl_ns
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -478,7 +484,7 @@ sed -i '/^if BUILD_LIBMOUNT/d
 if BUILD_LIBMOUNT
 ' libmount/Makemodule.am
 # Do not install terminal-colors.d.5
-sed -i '/dist_man_MANS/d' lib/Makemodule.am
+sed -i '/MANPAGES/d' lib/Makemodule.am
 %endif
 # disable all make modules except wanted ones
 sed -i '/^if BUILD_/{
@@ -502,7 +508,7 @@ endif\
 if TRUE
 ' sys-utils/Makemodule.am
 # Do not install terminal-colors.d.5
-sed -i '/dist_man_MANS/d' lib/Makemodule.am
+sed -i '/MANPAGES/d' lib/Makemodule.am
 %endif
 # Use installed first stage libraries
 sed -i '
@@ -666,11 +672,6 @@ rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
-# upstream moved getopt examples from datadir to docdir but we keep
-# the old location because we would need to fix the manpage first
-mv %{buildroot}%{_docdir}/%{_name}/getopt %{buildroot}%{_datadir}/
-# Stupid hack so we don't have a tcsh dependency
-chmod 644 %{buildroot}%{_datadir}/getopt/getopt*.tcsh
 %if !0%{?usrmerged}
 # login is always and only in /bin
 mv %{buildroot}%{_bindir}/login %{buildroot}/bin/
@@ -874,6 +875,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %doc Documentation/modems-with-agetty.txt
 %doc Documentation/mount.txt
 %doc Documentation/pg.txt
+%{_docdir}/%{name}/getopt-example.*
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 %if %{defined no_config}
@@ -988,6 +990,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_bindir}/setpriv
 %{_bindir}/setsid
 %{_bindir}/taskset
+%{_bindir}/uclampset
 %{_bindir}/ul
 %verify(not mode) %{_bindir}/umount
 %{_bindir}/unshare
@@ -1094,8 +1097,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man1/write.1.gz
 %{_mandir}/man1/ipcmk.1.gz
 %{_mandir}/man1/mountpoint.1.gz
-%{_mandir}/man1/utmpdump.1.gz
 %{_mandir}/man1/runuser.1.gz
+%{_mandir}/man1/uclampset.1.gz
+%{_mandir}/man1/utmpdump.1.gz
 %{_mandir}/man1/uuidgen.1.gz
 %{_mandir}/man1/uuidparse.1.gz
 %{_mandir}/man5/adjtime_config.5.gz
@@ -1141,7 +1145,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/swapoff.8.gz
 %{_mandir}/man8/swapon.8.gz
 %{_mandir}/man8/umount.8.gz
-%{_mandir}/man8/uname26.8.gz
 %{_mandir}/man8/wipefs.8.gz
 %{_mandir}/man8/zramctl.8.gz
 %{_mandir}/man8/fstrim.8.gz
@@ -1150,9 +1153,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/wdctl.8.gz
 %{_sbindir}/flushb
 %{_sbindir}/readprofile
-%dir %{_datadir}/getopt
-%attr (755,root,root) %{_datadir}/getopt/getopt-parse.bash
-%attr (755,root,root) %{_datadir}/getopt/getopt-parse.tcsh
 # These directories should be owned by bash-completion. But we don't want to
 # install them on build, so own these two directories:
 %dir %{_datadir}/bash-completion

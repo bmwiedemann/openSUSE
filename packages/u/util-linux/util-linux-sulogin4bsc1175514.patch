@@ -10,10 +10,10 @@ messages to the appropiate console device.
  login-utils/sulogin.c          | 97 +++++++++++++++++++++++++++++++++++-------
  2 files changed, 82 insertions(+), 16 deletions(-)
 
-diff --git a/login-utils/sulogin-consoles.h b/login-utils/sulogin-consoles.h
-index 0bfbc3871..12032c997 100644
---- a/login-utils/sulogin-consoles.h
-+++ b/login-utils/sulogin-consoles.h
+Index: util-linux-2.37.2/login-utils/sulogin-consoles.h
+===================================================================
+--- util-linux-2.37.2.orig/login-utils/sulogin-consoles.h
++++ util-linux-2.37.2/login-utils/sulogin-consoles.h
 @@ -40,6 +40,7 @@ struct console {
  	int fd, id;
  #define	CON_SERIAL	0x0001
@@ -22,10 +22,10 @@ index 0bfbc3871..12032c997 100644
  	pid_t pid;
  	struct chardata cp;
  	struct termios tio;
-diff --git a/login-utils/sulogin.c b/login-utils/sulogin.c
-index 9091caf14..c833796e7 100644
---- a/login-utils/sulogin.c
-+++ b/login-utils/sulogin.c
+Index: util-linux-2.37.2/login-utils/sulogin.c
+===================================================================
+--- util-linux-2.37.2.orig/login-utils/sulogin.c
++++ util-linux-2.37.2/login-utils/sulogin.c
 @@ -52,6 +52,7 @@
  #ifdef __linux__
  # include <sys/kd.h>
@@ -34,7 +34,7 @@ index 9091caf14..c833796e7 100644
  #endif
  
  #include "c.h"
-@@ -104,6 +105,9 @@ static void tcinit(struct console *con)
+@@ -106,6 +107,9 @@ static void tcinit(struct console *con)
  	int flags = 0, mode = 0;
  	struct termios *tio = &con->tio;
  	const int fd = con->fd;
@@ -44,7 +44,7 @@ index 9091caf14..c833796e7 100644
  #ifdef USE_PLYMOUTH_SUPPORT
  	struct termios lock;
  	int i = (plymouth_command(MAGIC_PING)) ? PLYMOUTH_TERMIOS_FLAGS_DELAY : 0;
-@@ -123,27 +127,72 @@ static void tcinit(struct console *con)
+@@ -125,27 +129,72 @@ static void tcinit(struct console *con)
  	}
  	memset(&lock, 0, sizeof(struct termios));
  	ioctl(fd, TIOCSLCKTRMIOS, &lock);
@@ -125,7 +125,7 @@ index 9091caf14..c833796e7 100644
  		/* Flush input and output queues on modem lines */
  		tcflush(fd, TCIOFLUSH);
  
-@@ -220,6 +269,8 @@ static void tcfinal(struct console *con)
+@@ -222,6 +271,8 @@ static void tcfinal(struct console *con)
  	struct termios *tio = &con->tio;
  	const int fd = con->fd;
  
@@ -134,7 +134,7 @@ index 9091caf14..c833796e7 100644
  	if ((con->flags & CON_SERIAL) == 0) {
  		xsetenv("TERM", "linux", 1);
  		return;
-@@ -557,12 +608,16 @@ err:
+@@ -559,12 +610,16 @@ err:
  static void setup(struct console *con)
  {
  	int fd = con->fd;
@@ -153,7 +153,7 @@ index 9091caf14..c833796e7 100644
  	/*
  	 * Only go through this trouble if the new
  	 * tty doesn't fall in this process group.
-@@ -585,6 +640,7 @@ static void setup(struct console *con)
+@@ -587,6 +642,7 @@ static void setup(struct console *con)
  		ioctl(fd, TIOCSCTTY, (char *)1);
  		tcsetpgrp(fd, ppgrp);
  	}
@@ -161,26 +161,20 @@ index 9091caf14..c833796e7 100644
  	dup2(fd, STDIN_FILENO);
  	dup2(fd, STDOUT_FILENO);
  	dup2(fd, STDERR_FILENO);
-@@ -608,20 +664,25 @@ static const char *getpasswd(struct console *con)
- 	struct termios tty;
- 	static char pass[128], *ptr;
- 	struct chardata *cp;
--	const char *ret = pass;
-+	const char *ret = NULL;
- 	unsigned char tc;
- 	char c, ascval;
+@@ -616,15 +672,20 @@ static char *getpasswd(struct console *c
  	int eightbit;
  	const int fd = con->fd;
  
 -	if (con->flags & CON_NOTTY)
 +	if (con->flags & CON_EIO)
  		goto out;
-+
  	cp = &con->cp;
  	tty = con->tio;
+ 
 +	tc = 0;
 +	ret = pass;
- 
++
+ 	ret = pass;
  	tty.c_iflag &= ~(IUCLC|IXON|IXOFF|IXANY);
  	tty.c_lflag &= ~(ECHO|ECHOE|ECHOK|ECHONL|TOSTOP|ISIG);
 -	tc = (tcsetattr(fd, TCSAFLUSH, &tty) == 0);
@@ -190,7 +184,7 @@ index 9091caf14..c833796e7 100644
  
  	sigemptyset(&sa.sa_mask);
  	sa.sa_handler = alrm_handler;
-@@ -647,11 +708,12 @@ static const char *getpasswd(struct console *con)
+@@ -650,11 +711,12 @@ static char *getpasswd(struct console *c
  			}
  			ret = NULL;
  			switch (errno) {
@@ -204,16 +198,7 @@ index 9091caf14..c833796e7 100644
  				break;
  			default:
  				warn(_("cannot read %s"), con->tty);
-@@ -775,7 +837,7 @@ static void sushell(struct passwd *pwd)
- 
- #ifdef HAVE_LIBSELINUX
- 	if (is_selinux_enabled() > 0) {
--		security_context_t scon=NULL;
-+		char *scon=NULL;
- 		char *seuser=NULL;
- 		char *level=NULL;
- 		if (getseuserbyname("root", &seuser, &level) == 0) {
-@@ -968,10 +1030,13 @@ int main(int argc, char **argv)
+@@ -976,10 +1038,13 @@ int main(int argc, char **argv)
  		con = list_entry(ptr, struct console, entry);
  		if (con->id >= CONMAX)
  			break;
@@ -227,7 +212,7 @@ index 9091caf14..c833796e7 100644
  		nofork:
  			setup(con);
  			while (1) {
-@@ -1026,7 +1091,7 @@ int main(int argc, char **argv)
+@@ -1040,7 +1105,7 @@ int main(int argc, char **argv)
  		default:
  			break;
  		}
