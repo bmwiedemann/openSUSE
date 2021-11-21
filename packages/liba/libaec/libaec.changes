@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 27 08:29:34 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.0.6:
+  * Improved cmake for mingw and MSVC by Milos Komarcevic
+
+-------------------------------------------------------------------
+Tue Sep  7 10:04:12 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove doc/patent.txt and patent comment in spec file, as the new
+    standard 121.0-B-3 declares:
+    "At time of publication, the specifications of this Recommended
+     Standard are not known to be the subject of patent rights." 
+
+-------------------------------------------------------------------
 Wed Jun 16 12:50:52 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - add license file also to libsz2 package

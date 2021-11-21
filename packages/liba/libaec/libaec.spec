@@ -17,11 +17,9 @@
 
 
 Name:           libaec
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Adaptive Entropy Coding library
-#---License is BSD, however there is a non-enforced NASA patent on the
-#---algorithm, see patent.txt
 License:        BSD-2-Clause
 Group:          Productivity/Archiving/Compression
 URL:            https://gitlab.dkrz.de/k202009/libaec
@@ -107,7 +105,7 @@ rmdir %{buildroot}/usr/cmake
 
 %files -n libaec0
 %license LICENSE.txt
-%doc README.md CHANGELOG.md doc/patent.txt
+%doc README.md CHANGELOG.md
 %{_bindir}/aec
 %{_libdir}/libaec.so.0*
 %{_mandir}/man1/aec.*

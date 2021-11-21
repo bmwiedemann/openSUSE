@@ -70,4 +70,12 @@
     <comment></comment>
     <requestid>900725</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3542e39ecb18ac13f642fd01a2b5145</srcmd5>
+    <version>1.0.6</version>
+    <time>1637535143</time>
+    <user>dimstar_suse</user>
+    <comment>libaec 1.0.6</comment>
+    <requestid>932820</requestid>
+  </revision>
 </revisionlist>
