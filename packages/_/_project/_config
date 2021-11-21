@@ -389,6 +389,8 @@ Ignore: sed:info
 Ignore: tar:info
 Ignore: util-linux:info
 
+Ignore: polkit-default-privs:polkit
+
 # Let's speed up things: We don't need Mesa-dri and Mesa-gallium in the build system
 Ignore: Mesa:Mesa-dri
 Ignore: Mesa:Mesa-gallium
