@@ -98,4 +98,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>929069</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b71ca1f9011392b2d959a312a029fe4c</srcmd5>
+    <version>1.0.16</version>
+    <time>1637535144</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bug with spec file - source shouldn't be using URL 
+
+- Upgrade to release 1.0.16 
+  + Store repeated timestamps more efficiently in state file
+  + Fixed infinite loop in Nagios plugin '-C' flag (issue #29)
+  + Fixed crash when &quot;-T X/Y&quot; flag was the last command line argument
+
+- Replace source tarball with _service file pulling from github</comment>
+    <requestid>932830</requestid>
+  </revision>
 </revisionlist>
