@@ -1,8 +1,8 @@
-Index: eventlet-0.29.1/eventlet/support/greendns.py
+Index: eventlet-0.32.0/eventlet/support/greendns.py
 ===================================================================
---- eventlet-0.29.1.orig/eventlet/support/greendns.py
-+++ eventlet-0.29.1/eventlet/support/greendns.py
-@@ -313,7 +313,7 @@ class ResolverProxy(object):
+--- eventlet-0.32.0.orig/eventlet/support/greendns.py
++++ eventlet-0.32.0/eventlet/support/greendns.py
+@@ -325,7 +325,7 @@ class ResolverProxy(object):
          self.clear()
  
      def clear(self):
@@ -11,10 +11,10 @@ Index: eventlet-0.29.1/eventlet/support/greendns.py
          self._resolver.cache = dns.resolver.LRUCache()
  
      def query(self, qname, rdtype=dns.rdatatype.A, rdclass=dns.rdataclass.IN,
-Index: eventlet-0.29.1/tests/greendns_test.py
+Index: eventlet-0.32.0/tests/greendns_test.py
 ===================================================================
---- eventlet-0.29.1.orig/tests/greendns_test.py
-+++ eventlet-0.29.1/tests/greendns_test.py
+--- eventlet-0.32.0.orig/tests/greendns_test.py
++++ eventlet-0.32.0/tests/greendns_test.py
 @@ -885,7 +885,7 @@ class TinyDNSTests(tests.LimitedTestCase
          # https://github.com/eventlet/eventlet/issues/499
          # None means we don't want the server to find the IP
@@ -33,16 +33,3 @@ Index: eventlet-0.29.1/tests/greendns_test.py
              resolver.nameservers = [dnsaddr[0]]
              resolver.nameserver_ports[dnsaddr[0]] = dnsaddr[1]
              response = resolver.query('host.example.com', 'a', tcp=True)
-Index: eventlet-0.29.1/setup.py
-===================================================================
---- eventlet-0.29.1.orig/setup.py
-+++ eventlet-0.29.1/setup.py
-@@ -15,7 +15,7 @@ setuptools.setup(
-     url='http://eventlet.net',
-     packages=setuptools.find_packages(exclude=['benchmarks', 'tests', 'tests.*']),
-     install_requires=(
--        'dnspython >= 1.15.0, < 2.0.0',
-+        'dnspython >= 1.15.0',
-         'greenlet >= 0.3',
-         'monotonic >= 1.4;python_version<"3.5"',
-         'six >= 1.10.0',

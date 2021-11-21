@@ -1,5 +1,7 @@
---- a/setup.py
-+++ b/setup.py
+Index: eventlet-0.32.0/setup.py
+===================================================================
+--- eventlet-0.32.0.orig/setup.py
++++ eventlet-0.32.0/setup.py
 @@ -27,7 +27,7 @@ setuptools.setup(
              'README.rst'
          )
@@ -9,8 +11,10 @@
      classifiers=[
          "Development Status :: 4 - Beta",
          "Intended Audience :: Developers",
---- a/eventlet.egg-info/SOURCES.txt
-+++ b/eventlet.egg-info/SOURCES.txt
+Index: eventlet-0.32.0/eventlet.egg-info/SOURCES.txt
+===================================================================
+--- eventlet-0.32.0.orig/eventlet.egg-info/SOURCES.txt
++++ eventlet-0.32.0/eventlet.egg-info/SOURCES.txt
 @@ -174,7 +174,6 @@ tests/greenthread_test.py
  tests/hub_test.py
  tests/mock.py
@@ -19,15 +23,17 @@
  tests/openssl_test.py
  tests/os_test.py
  tests/parse_results.py
-@@ -270,4 +269,4 @@ tests/stdlib/test_threading_local.py
+@@ -273,4 +272,4 @@ tests/stdlib/test_threading_local.py
  tests/stdlib/test_timeout.py
  tests/stdlib/test_urllib.py
  tests/stdlib/test_urllib2.py
 -tests/stdlib/test_urllib2_localnet.py
 \ No newline at end of file
 +tests/stdlib/test_urllib2_localnet.py
---- a/tests/greenio_test.py
-+++ b/tests/greenio_test.py
+Index: eventlet-0.32.0/tests/greenio_test.py
+===================================================================
+--- eventlet-0.32.0.orig/tests/greenio_test.py
++++ eventlet-0.32.0/tests/greenio_test.py
 @@ -9,8 +9,6 @@ import socket as _orig_sock
  import sys
  import tempfile
@@ -57,8 +63,10 @@
  
  
  def test_get_fileno_of_a_socket_works():
---- a/tests/nosewrapper.py
-+++ b/tests/nosewrapper.py
+Index: eventlet-0.32.0/tests/nosewrapper.py
+===================================================================
+--- eventlet-0.32.0.orig/tests/nosewrapper.py
++++ eventlet-0.32.0/tests/nosewrapper.py
 @@ -1,20 +1,13 @@
  """ This script simply gets the paths correct for testing eventlet with the
  hub extension for Nose."""
@@ -83,8 +91,10 @@
 -launch(argv=sys.argv)
 +if __name__ == '__main__':
 +    unittest.main()
---- a/tests/__init__.py
-+++ b/tests/__init__.py
+Index: eventlet-0.32.0/tests/__init__.py
+===================================================================
+--- eventlet-0.32.0.orig/tests/__init__.py
++++ eventlet-0.32.0/tests/__init__.py
 @@ -20,7 +20,7 @@ import sys
  import unittest
  import warnings
@@ -102,8 +112,10 @@
          raise SkipTest('CPU usage testing not supported (`import resource` failed)')
  
      r1 = resource.getrusage(resource.RUSAGE_SELF)
---- a/tests/dagpool_test.py
-+++ b/tests/dagpool_test.py
+Index: eventlet-0.32.0/tests/dagpool_test.py
+===================================================================
+--- eventlet-0.32.0.orig/tests/dagpool_test.py
++++ eventlet-0.32.0/tests/dagpool_test.py
 @@ -5,7 +5,6 @@
  @brief  Test DAGPool class
  """

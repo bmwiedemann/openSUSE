@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  7 21:12:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.0:
+  * greendns: compatibility with dnspython v2
+  * green.ssl: wrap_socket now accepts argument `ciphers`
+  * websocket: control frames are now always uncompressed per RFC 7692
+  * ssl: py3.6 using client certificates raised ValueError: check_hostname needs server_hostname argument
+  * IMPORTANT: websocket: Limit maximum uncompressed frame length to 8MiB
+  * wsgi: websocket ALREADY_HANDLED flag on corolocal
+  * green.ssl: Set suppress_ragged_eofs default based on SSLSocket defaults
+  * greenio: socket.connect_ex returned None instead of 0 on success
+  * Use _imp instead of deprecated imp
+- drop pr_639.patch, merged upstream
+
+-------------------------------------------------------------------
 Sun Mar 21 21:19:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.30.2

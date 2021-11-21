@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-eventlet
-Version:        0.30.2
+Version:        0.32.0
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
@@ -30,8 +30,6 @@ Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventl
 Patch0:         remove_nose.patch
 # PATCH-FIX-UPSTREAM newdnspython.patch mcepl@suse.com -- patch is from gh#rthalley/dnspython#519, discussion in gh#eventlet/eventlet#638
 Patch1:         newdnspython.patch
-# PATCH-FEATURE-UPSTREAM pr_639.patch gh#eventlet/eventlet#639 jayvdb@gmail.com
-Patch2:         pr_639.patch
 # Really remove the dependency on nose
 Patch3:         remove_nose_part_2.patch
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +44,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  sysconfig-netconfig
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module greenlet >= 0.3}
+%if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module pyOpenSSL}
+%endif
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module six >= 1.10.0}
