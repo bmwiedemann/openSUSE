@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 17 03:39:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add required BuildRequires on six. 
+
+-------------------------------------------------------------------
 Mon Jun  3 09:18:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.7.0:

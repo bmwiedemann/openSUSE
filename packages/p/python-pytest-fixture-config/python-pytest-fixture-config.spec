@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-fixture-config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-fixture-
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
