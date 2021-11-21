@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 18 11:55:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.0
+  **Noteworthy changes:**
+  * Merged pull request `#45`_ to resolve the issue caused by the conditional
+    :pypi:`pyreadline` requirement on Windows not supporting Python 3.9+.
+  * Updated the readme to use Python 3 in the example (reported in issue `#56`_).
+    Also added a mention of the ``humanfriendly --demo`` command.
+  * Removed the ``humanfriendly.compat.unittest`` alias that presumably no-one is
+    using at this point; it had been rendered useless quite a long time ago
+    (requested in issue `#53`_).
+  **Internal changes:**
+  * Merged pull request `#54`_ which migrates the :pypi:`humanfriendly` project
+    from Travis CI to GitHub Actions and from Coveralls.io to Codecov.
+  * Fixed a deprecation warning concerning ``setup.cfg`` and some Sphinx
+    documentation errors.
+
+-------------------------------------------------------------------
 Tue Aug 17 10:58:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 9.2
