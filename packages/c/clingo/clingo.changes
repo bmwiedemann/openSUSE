@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Nov 18 14:59:52 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- create a sub lib package
+
+-------------------------------------------------------------------
+Wed Sep 29 12:41:20 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- fix some build errors, remove unwanted files
+- update to version 5.5.0
+- clingo is used by default for spack version >= 0.17 (JSC#SLE-22137)
+
+-------------------------------------------------------------------
+Wed Sep 29 10:11:31 UTC 2021 - Antoine Ginies <aginies@suse.com>
+
+- first release for SUSE (from fedora spec)

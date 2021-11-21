@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54a1c4e97f2b3a555db26d7f6c48bcbd</srcmd5>
+    <version>5.5.0</version>
+    <time>1637535111</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new package 'clingo' to openSUSE:Factory.
+  needed for spack (jsc#SLE-2267)</comment>
+    <requestid>932302</requestid>
+  </revision>
+</revisionlist>
