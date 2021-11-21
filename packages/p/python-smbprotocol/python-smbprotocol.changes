@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 18 21:49:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.3
+  * Set additional_information field in SMB2SetInfoRequest to a
+    flags field rather than a single enum as per protocol docs.
+
+-------------------------------------------------------------------
 Tue Nov  2 20:52:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.2
