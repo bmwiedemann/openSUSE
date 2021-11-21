@@ -140,6 +140,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
