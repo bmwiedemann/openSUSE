@@ -198,4 +198,12 @@
     <comment></comment>
     <requestid>900727</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aed0e5f4b500deb90e6d54aa05f12350</srcmd5>
+    <version>21.2</version>
+    <time>1637535096</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931435</requestid>
+  </revision>
 </revisionlist>

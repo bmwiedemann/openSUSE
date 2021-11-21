@@ -27,8 +27,9 @@
 %endif
 # in order to avoid rewriting for subpackage generator
 %define mypython python
+%global skip_python2 1
 Name:           python-packaging%{psuffix}
-Version:        20.9
+Version:        21.2
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0
@@ -36,12 +37,11 @@ URL:            https://github.com/pypa/packaging
 Source:         https://files.pythonhosted.org/packages/source/p/packaging/packaging-%{version}.tar.gz
 # Restore compatibility with 20.4 for setuptools
 Patch1:         no-legacyversion-warning.patch
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module devel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #!BuildIgnore:  post-build-checks-malwarescan
 Requires:       python-pyparsing >= 2.0.2
-Requires:       python-six
 BuildArch:      noarch
 # do not add setuptools dependency, this is now a dependency
 # of setuptools. Ensure that all dependencies also don't depend
@@ -63,8 +63,7 @@ Provides:       %{mypython}3dist(packaging) = %{version}-%{release}
 Core utilities for Python packages
 
 %prep
-%setup -q -n packaging-%{version}
-%patch1 -p1
+%autosetup -p1 -n packaging-%{version}
 # sdist must provide a packaging.egg-info, used below in install phase
 test -d packaging.egg-info
 
