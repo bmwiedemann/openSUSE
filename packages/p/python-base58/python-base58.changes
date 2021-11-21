@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  3 10:05:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.1
+  * Use github actions (@keis)
+  * Escape illegal special characters in error message (@hukkin)
+
+-------------------------------------------------------------------
 Mon Aug 30 14:10:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.1.0

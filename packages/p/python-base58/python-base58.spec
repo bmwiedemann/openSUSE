@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-base58
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Base58 and Base58Check implementation
 License:        MIT
