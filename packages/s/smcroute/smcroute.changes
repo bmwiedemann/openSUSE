@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 21 08:48:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.5
+  Fixes
+  * Parse error in /etc/smcroute.conf. SMCRoute fails to start on
+    interfaces with mrdisc disabled, when built with mrdisc
+    support and -N passed on command line.
+- Update to version 2.5.4
+  Fixes
+  * Avoid trying to delete inactive VIFs. Fixing an annoying bogus
+    error: "Failed deleting VIF for iface lo: Resource temporarily
+    unavailable".
+  * Too small string buffer for IPv6 address causing garbled output
+    in periodic expiry callback.
+  * Fix too small buffer for IPv6 address in mroute display
+    functions.
+
+-------------------------------------------------------------------
 Wed Nov 17 10:19:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

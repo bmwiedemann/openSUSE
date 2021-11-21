@@ -18,15 +18,15 @@
 
 
 Name:           smcroute
-Version:        2.5.3
+Version:        2.5.5
 Release:        0
 Summary:        Static multicast routing for UNIX
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Routing
 URL:            https://troglobit.com/projects/smcroute/
 #Git-Clone:     https://github.com/troglobit/smcroute.git
-Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_smcroute.service.patch
+Source:         https://github.com/troglobit/smcroute/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         harden_smcroute.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
