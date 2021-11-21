@@ -26,6 +26,7 @@
 # should be preferred unless the package is intended to be portable
 # across multiple distributions based on RPM.
 
+%_systemd_util_dir /usr/lib/systemd
 %_unitdir /usr/lib/systemd/system
 %_userunitdir /usr/lib/systemd/user
 %_presetdir /usr/lib/systemd/system-preset

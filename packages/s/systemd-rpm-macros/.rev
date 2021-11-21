@@ -589,4 +589,15 @@
     <comment></comment>
     <requestid>922188</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5822984f1f6e94d1fabc780aa4057694</srcmd5>
+    <version>14</version>
+    <time>1637535075</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version to 14
+
+- Introduce %_systemd_util_dir
+  It's a backport of upstream commit 3bc66bfa0136e370a8f7b06c3b69a52f5636ef82.</comment>
+    <requestid>931955</requestid>
+  </revision>
 </revisionlist>
