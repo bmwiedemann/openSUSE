@@ -165,4 +165,13 @@
   * Recommend ast on Python 3.8+</comment>
     <requestid>931291</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f0ad96d7b7c8ad9f195504942b09de02</srcmd5>
+    <version>1.5.0</version>
+    <time>1637535105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-PyUnicode_DecodeUnicodeEscape.patch:
+  * Use PyUnicode_DecodeUnicodeEscape directly, rather than wrapping it.</comment>
+    <requestid>932053</requestid>
+  </revision>
 </revisionlist>

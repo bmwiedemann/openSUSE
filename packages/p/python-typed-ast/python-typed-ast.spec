@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python/typed_ast
 Source0:        https://files.pythonhosted.org/packages/source/t/typed_ast/typed_ast-%{version}.tar.gz
+Patch0:         use-PyUnicode_DecodeUnicodeEscape.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -45,6 +46,7 @@ based on the CPython 2.7 and 3.6 parsers.
 
 %prep
 %setup -q -n typed_ast-%{version}
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags}"
