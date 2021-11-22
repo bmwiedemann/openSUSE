@@ -19,15 +19,13 @@
 %define pyenv_dir      %{_libexecdir}/pyenv
 #
 Name:           pyenv
-Version:        2.0.0
+Version:        2.2.1
 Release:        0
 Summary:        Python Version Management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pyenv/pyenv
 Source0:        https://github.com/pyenv/pyenv/archive/refs/tags/v%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
-Source2:        %{name}.rst
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
@@ -73,7 +71,6 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
-install -D %{SOURCE2} docs/%{name}.rst
 sed -i -e '1s,^#!%{_bindir}/env bash,#!/bin/bash,' libexec/* pyenv.d/exec/pip-rehash/* plugins/python-build/bin/*
 
 %build
@@ -82,31 +79,6 @@ pushd src
 %configure
 make %{?_smp_mflags}
 popd
-
-##
-cat << EOF > docs/conf.py
-# The master toctree document.
-master_doc = '%{name}'
-
-project = '%{name}'
-copyright = '2017, Yuu Yamashita'
-author = 'Yuu Yamashita'
-# The short X.Y version.
-version = '%{version}'
-# The full version, including alpha/beta/rc tags.
-release = version
-
-# Usually you set "language" from the command line for these cases.
-language = 'en'
-
-man_pages = [
-    (master_doc, 'pyenv', 'Simple Python Version Management',
-     [author], 1)
-]
-man_show_urls=True
-EOF
-
-sphinx-build -b man -v docs man/
 
 %install
 mkdir -p %{buildroot}%{pyenv_dir} \
@@ -126,7 +98,7 @@ install -D -m0644 completions/pyenv.fish %{buildroot}%{_datadir}/fish/vendor_com
 install -D -m0644 completions/pyenv.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/pyenv
 
 ## Install manpage
-install -D -m0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -D -m0644 man/man1/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 pushd %{buildroot}%{_mandir}/man1/
  ln -s %{name}.1 python-build.1
 popd

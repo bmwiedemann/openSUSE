@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 22 17:27:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove *rpmlintrc, it is not necessary anymore.
+- Remove our own manpage, it is now included in the tarball.
+
+-------------------------------------------------------------------
+Mon Nov 22 11:39:59 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Update to 2.2.1:
+  - Added documentation for commands
+  - Added Python versions (inlcuding 3.10.0)
+  - Full changelog at https://github.com/pyenv/pyenv/blob/master/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri May 28 11:13:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Install fish completion to vendor_completions.d (https://github.com/pyenv/pyenv/issues/1944)
