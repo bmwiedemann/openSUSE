@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov 22 19:35:22 UTC 2021 - michael@stroeder.com
+
+- Update to version 3.0.0rc48:
+  * Fix small syntax problems in interoperability docs
+  * Bump lewagon/wait-on-check-action from 1.0.0 to 1.1.1
+  * Make one-shot Prometheus emit prog label and metric timestamp flags
+  * Bump codecov/codecov-action from 2.0.3 to 2.1.0
+  * Change the flag to -one_shot_format
+  * Add -prometheus_output to -one_shot
+  * Exit with 0 code when --one_shot is set
+  * Bump codecov/codecov-action from 2.0.2 to 2.0.3
+  * Bump lewagon/wait-on-check-action from 0.2 to 1.0.0
+  * Bump actions/github-script from 4.0.2 to 4.1
+  * Comment out permissions in automerge as they're incorrect.
+  * examples/apache_metrics.mtail: fix http_request_duration_seconds division
+  * Fix permissions for the publish action.
+  * Fix a typo.
+  * Update last workflows with minimum permissions.
+  * Add permissions to more workflows.
+  * Make a yaml-valid version of no permissions on the token.
+  * Set minimum permissions for benchmarking and uploading benchmark and CI resulrts.
+  * Set minimum permissions on auto-review.
+  * Remove unnecessary comment.
+  * Set minimum required permissions on automerge action.
+  * Run security scan on pull requests, not pushes.
+  * Bump github.com/prometheus/common from 0.29.0 to 0.30.0
+  * Remove uninclusive language.
+  * Bump codecov/codecov-action from 2.0.1 to 2.0.2
+  * Bump codecov/codecov-action from 1 to 2.0.1
+  * doc fix
+
+-------------------------------------------------------------------
+Fri Oct  8 16:08:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- some more spec-cleanup
+
+-------------------------------------------------------------------
+Fri Oct  8 15:40:04 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- use %go_nostrip macro
+
+-------------------------------------------------------------------
 Fri Oct  8 10:52:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim %setup repetition

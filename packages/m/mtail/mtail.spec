@@ -17,15 +17,14 @@
 # nodebuginfo
 
 
-# Remove stripping of Go binaries.
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+%{go_nostrip}
 # Project name when using go tooling.
 %define project github.com/google/mtail
 
 %bcond_without  apparmor
 
 Name:           mtail
-Version:        3.0.0rc47
+Version:        3.0.0rc48
 Release:        0
 Summary:        Tool for extracting metrics from application logs
 License:        Apache-2.0
@@ -37,9 +36,9 @@ Source2:        %{name}.service
 Source3:        %{name}.sysconfig
 Source4:        apparmor-usr.sbin.%{name}
 BuildRequires:  golang-packaging
-BuildRequires:  pkg-config
-BuildRequires:  golang(API) >= 1.16
-Requires(pre):  %fillup_prereq
+BuildRequires:  golang(API)
+Requires(post): %fillup_prereq
+Requires(pre):  shadow
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -47,8 +46,8 @@ Recommends:     apparmor-abstractions
 %endif
 
 %description
-mtail is a tool for extracting metrics from application logs to be exported 
-into a timeseries database or timeseries calculator for alerting and 
+mtail is a tool for extracting metrics from application logs to be exported
+into a timeseries database or timeseries calculator for alerting and
 dashboarding.
 
 %prep
