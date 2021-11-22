@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 22 07:22:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.8.3
+  - Fixed clicking on UI elements that are over the page top banner. The banner
+    would always get clicked instead.
+  - Titan upload identity is remembered as a site-specific setting. It is no
+    longer affected by selections in the Identities sidebar.
+
+-------------------------------------------------------------------
 Thu Nov 18 20:41:47 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.8.2
