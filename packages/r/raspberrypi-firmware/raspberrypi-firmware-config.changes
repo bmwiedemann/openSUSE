@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 22 08:34:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix deps for raspberrypi-firmware-config and raspberrypi-firmware-config-camera
+
+-------------------------------------------------------------------
 Wed Nov 17 15:16:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add raspberrypi-firmware-config-camera flavor - boo#1192047

@@ -30,9 +30,9 @@ Supplements:    modalias(of:NfirmwareT*Craspberrypi%2Cbcm2835-firmwareC*)
 Conflicts:      kernel < 4.12.14
 %if "%{name}" == "raspberrypi-firmware-config-camera"
 Conflicts:      raspberrypi-firmware-config
+Requires:       (raspberrypi-firmware-extra or raspberrypi-firmware-extra-pi4)
 %else
 Conflicts:      raspberrypi-firmware-config-camera
-Requires:       (raspberrypi-firmware-extra or raspberrypi-firmware-extra-pi4)
 %endif
 Provides:       raspberrypi-firmware-branding-openSUSE = %{version}
 Obsoletes:      raspberrypi-firmware-branding-openSUSE < %{version}
