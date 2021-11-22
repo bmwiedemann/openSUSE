@@ -454,4 +454,23 @@
     <comment>New stable release (forwarded request 921100 from iznogood)</comment>
     <requestid>921668</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f8844ff7c2c6aae0c017e24c8327ece9</srcmd5>
+    <version>41.2</version>
+    <time>1637618661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.2:
+  + Fix an issue with comparing global search results.
+  + Use multiple Flatpak transactions if runtimes are found on
+    different installations.
+  + Fix running applications when Flatpak private installation is
+    needed.
+  + Improve language detection with meson.
+  + Improve styling of overview map.
+  + Improve search results.
+  + Updated project templates.
+  + GVls updates.
+  + Updated translations. (forwarded request 931958 from iznogood)</comment>
+    <requestid>933064</requestid>
+  </revision>
 </revisionlist>
