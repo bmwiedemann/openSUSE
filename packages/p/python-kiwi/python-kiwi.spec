@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.1
+Version:        9.24.6
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -119,6 +119,7 @@ Requires:       kiwi-tools
 Requires:       mtools
 Requires:       rsync
 Requires:       tar >= 1.2.7
+Requires:       lsof
 Requires:       openssl
 
 %description -n kiwi-systemdeps-core

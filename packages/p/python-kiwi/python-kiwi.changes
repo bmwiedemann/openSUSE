@@ -1,4 +1,343 @@
 -------------------------------------------------------------------
+Fri Nov 12 23:11:19 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.5 → 9.24.6
+
+-------------------------------------------------------------------
+Fri Nov 12 22:53:02 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Followup fix for debootstrap called only once
+
+  A recent change skipped calling debootstrap if the allow-existing-root
+  flag was passed in combination with apt as the package manager.
+  However this is not enough. If you say allow-existing-root but
+  the existing root is empty or not valid to continue with chroot
+  and apt the debootstrap phase should not be skipped. This commit
+  checks if apt works in the chroot such that we can assume
+  debootstrap has done its job and can be skipped
+
+-------------------------------------------------------------------
+Fri Nov 12 14:45:03 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.4 → 9.24.5
+
+-------------------------------------------------------------------
+Fri Nov 12 12:07:40 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed include processing
+
+  This commit fixes several issue connected with the use of
+  the <include> directive:
+
+  First and foremost the XSLT chain was broken in a way that
+  the include XSLT in combination with the PrettyPrinter XSLT
+  were called not in the chain of stylesheets but together.
+  This results in XML descriptions which duplicated the content
+  and went invalid
+
+  Another change is, when the include XSLT is called in the chain.
+  This commit moves it to become the very first processing
+  instruction such that the included data is part of all subsequent
+  XSLT stylesheets. This also allows to use older schema versions
+  in included XML data and they get automatically converted through
+  the chain of XSLT stylesheets.
+
+  Last change is the evaluation of the from= attribute value. This
+  value is now interpreted as an URI. Currently only local URIs are
+  supported. The reason to do this is because XSLT when processing
+  a document resolves relative paths according to the file path
+  of the master document. As kiwi does not change the original
+  content that path with will be a /var/tmp location if one of
+  the XSLT stylesheets were used. The documentation for this change
+  was updated as well
+
+-------------------------------------------------------------------
+Thu Nov 11 15:11:20 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.3 → 9.24.4
+
+-------------------------------------------------------------------
+Thu Nov 11 10:35:23 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added type hints and annotations for iso_tools
+
+-------------------------------------------------------------------
+Thu Nov 11 10:18:59 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop support for cdrtools
+
+  Tools like mkisofs, genisoimage and friends are all unmaintained
+  and have found their substitute in xorriso for quite some time.
+  This commit deletes the code from kiwi which supported creation
+  of ISO images using the obsolete cdrtools collection. In addition
+  all hack code associated with these tools like mbr insertion via
+  isohybrid and things like that got dropped as well.
+  This Fixes #1908
+
+-------------------------------------------------------------------
+Thu Nov 11 09:23:46 CET 2021 - kyr <kshtsk@users.noreply.github.com>
+
+- Drop usage of `factor` from coreutils
+
+  utils/checksum: drop factor calls
+
+  For portability we don't need to call linux coreutils' factor,
+  instead we use pure python prime number generation implementation.
+
+  Signed-off-by: Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+-------------------------------------------------------------------
+Tue Nov 09 14:35:59 CET 2021 - Dan Čermák <dcermak@suse.com>
+
+- Only trigger functions workflow on certain paths
+
+-------------------------------------------------------------------
+Tue Nov 09 14:35:43 CET 2021 - Dan Čermák <dcermak@suse.com>
+
+- Re-enable functions integration tests once again
+
+-------------------------------------------------------------------
+Tue Nov 09 13:20:17 CET 2021 - Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+- config/functions: make baseQuoteFile use extended regex
+
+  It is more universal to use extended regex, because they can
+  be used on wider range of platforms, for example, same
+  regex works equally on bsd sed and linux distributions.
+
+  Signed-off-by: Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+-------------------------------------------------------------------
+Mon Nov 08 14:53:15 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added python 3.9, 3.10 to test workflow
+
+-------------------------------------------------------------------
+Mon Nov 08 14:28:23 CET 2021 - Kyr Shatskyy <kyrylo.shatskyy@suse.com>
+
+- utils/temporary: rename dir parameter to path
+
+  To avoid conflicts with python standard `dir` function
+  and for better matching purpose, the Temporary class
+  constructor parameter it is the best to rename from dir
+  to path.
+
+  Signed-off-by: Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+-------------------------------------------------------------------
+Sun Nov 07 23:41:39 CET 2021 - Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+- utils/temporary: the --temp-dir does not work
+
+  Using of --temp-dir argument does not make an effect,
+  because optional 'dir' parameter defaults to the
+  global TEMP_DIR value before it's changed.
+
+  This patch address this issue.
+
+  Signed-off-by: Kyr Shatskyy <kyrylo.shatskyy@gmail.com>
+
+-------------------------------------------------------------------
+Wed Nov 03 17:40:51 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.2 → 9.24.3
+
+-------------------------------------------------------------------
+Wed Nov 03 17:37:35 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed s390 SLE15 integration test
+
+  added blog package to solve packages added by
+  file provides which are not resolved by obs
+
+-------------------------------------------------------------------
+Wed Nov 03 16:22:06 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed s390 integration test using extra boot part
+
+  Due to changes in the distribution the tests needs some
+  adaptions. The kernel as provided now by TW uses symlinks
+  from boot to /usr/lib/modules/... to point to the kernel
+  binary. Of course this breaks for any system that uses
+  /boot on another partition. Those image tests which were
+  testing this aspect needs fixing.
+
+-------------------------------------------------------------------
+Wed Nov 03 13:28:52 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added partition sizes to disk size math
+
+  Make sure partition sizes are used for the calculation
+  of the entire disk size to fit the size constraints of
+  the image disk
+
+-------------------------------------------------------------------
+Tue Nov 02 12:22:42 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Cleanup xattr requirement"
+
+  This reverts commit 6754b3f9e270a6cb710355605c46b0bade4de29c.
+  It has turned out that SLE15 still uses the other xattr
+  module :/
+
+-------------------------------------------------------------------
+Tue Nov 02 11:12:04 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added integration test
+
+  Test the combination of custom partitions and volumes
+
+-------------------------------------------------------------------
+Fri Oct 29 10:45:15 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure fedora-release is installed
+
+  Fedora based integration tests should install the fedora-release
+  package. If no release package is specified the generic-release
+  package is choosen which is unexpected. This Fixes #1957
+
+-------------------------------------------------------------------
+Wed Oct 27 15:57:39 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure debootstrap is called only once
+
+  When building debian based images the bootstrap phase
+  is done by calling debootstrap. If kiwi is called on
+  an already existing root tree via --allow-existing-root
+  this will make debootstrap to fail in any case. This
+  is because for debootstrap it's an error condition if
+  there is already data in the root. However, for kiwi
+  and the explicitly requested re-use of the root tree
+  this is not an error. Thus this commit skips the
+  bootstrap by debootstrap and directly continues with
+  the image phase.
+
+-------------------------------------------------------------------
+Wed Oct 27 15:30:13 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup xattr requirement
+
+  There is no version of suse we support that provides
+  the old xattr module. Thus the requirement can be set
+  in a clean way to pyxattr and the setup.py trickery
+  can be deleted
+
+-------------------------------------------------------------------
+Mon Oct 25 14:29:42 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Disable config functions testing
+
+  It happens too often that the failure on running the
+  container causes failed results which are not actually
+  failures. I have hope that #1944 stabilize this
+
+-------------------------------------------------------------------
+Fri Oct 22 17:41:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.24.1 → 9.24.2
+
+-------------------------------------------------------------------
+Fri Oct 22 17:38:27 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed nasty bug in ramdisk generator
+
+  The ramdisk unit generator reads the config.bootoptions
+  file and extracts the root_uuid from it. This is done
+  with a very simple shell read using a space as separator.
+  However the last element is never read by that code.
+  As long as there was yet another kernel cmdline option
+  after the root= option this bug was not an issue. But
+  as soon as the root= option is last in the list it will
+  not be read and the generator exits prior creating the
+  sysroot.mount target. This commit fixes it in a way
+  that it makes sure there is always a space at the end
+  of the config.bootoptions file
+
+-------------------------------------------------------------------
+Thu Oct 21 23:33:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Support custom partitions
+
+  In addition to the volume volume management settings also
+  allow to setup low level table entries like in the following
+  example:
+
+  <partitions>
+  <partition name="var" size="100" mountpoint="/var" filesystem="ext3"/>
+  </partitions>
+
+-------------------------------------------------------------------
+Thu Oct 21 08:45:34 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added integration build test for bundle_format
+
+-------------------------------------------------------------------
+Wed Oct 20 22:53:36 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added lsof to kiwi-systemdeps-core
+
+-------------------------------------------------------------------
+Tue Oct 19 17:42:19 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add support for custom result bundle naming
+
+  Allow to specify a bundle_format per <type> which is used
+  at the time of the result bundle creation to create image
+  output names matching the provided pattern.
+  This Fixes #1943
+
+-------------------------------------------------------------------
+Tue Oct 19 15:24:44 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added missing python-simplejson to pkgbuild
+
+  Added missing python-simplejson requirement to the
+  archlinux pkgbuild package template
+
+-------------------------------------------------------------------
+Tue Oct 19 13:08:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Raise exception on umount issue
+
+  Up to now kiwi tried to umount a resource it has mounted for some
+  time and if it was not possible due to a busy state the process
+  continued. In any of these situations it was not possible to free
+  up the nested resources and it could also happen that the image
+  build result got corrupted because there is still data that can
+  be consumed but shouldn't be there anymore. The change here makes
+  kiwi to stop the process and raise with an error also including
+  the information that there are now resources still active but
+  busy on the host and a manual cleanup is unfortunately needed.
+  This Fixes #1914
+
+-------------------------------------------------------------------
+Mon Oct 18 11:29:39 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added SystemOverlayRoot profile
+
+  Test kiwi's overlayroot mode without initrd
+
+-------------------------------------------------------------------
+Mon Oct 18 09:39:14 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update test for image without initrd and loader
+
+  The systemd-remount-fs.service expects devices to be present
+  in their UUID representation. When booting without an initrd
+  there is no udev and the root= device must be provided with
+  the kernel exposed unix device name. In addition there is no
+  UUID device representation for virtio devices which are used
+  together with the small kvmsmall kernel of this example.
+  Since booting of this appliance is done via:
+
+  $ kvm --kernel (kernel-kvmsmall) \
+  -drive file=kiwi-test-image-embedded.raw,if=virtio \
+  -append "root=/dev/vda1 console=ttyS0 rw"
+
+  The kernel rootfs is mounted in rw mode anyway. Thus the systemd
+  remount service is not useful in this case and switched off
+
+-------------------------------------------------------------------
 Fri Oct 15 10:02:06 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.24.0 → 9.24.1
