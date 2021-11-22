@@ -44,4 +44,21 @@
   (jsc#SLE-21105). (forwarded request 920401 from sbrabec)</comment>
     <requestid>920546</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3eff4144532302850e863ada29f6274b</srcmd5>
+    <version>1.12.3.1</version>
+    <time>1637618662</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.3.1:
+  + Bug fixes: Fixed issue: Make check fails on s390x.
+  + Updated translations.
+- Move some docs to doc subpackage.
+
+- Update to version 1.12.3:
+  + Bug fixes:
+    - Fixed issue: Crash after right click on file
+    - File-roller plugin: Add run error handling
+  + Updated translations. (forwarded request 932816 from iznogood)</comment>
+    <requestid>933077</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 21 17:15:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.3.1:
+  + Bug fixes: Fixed issue: Make check fails on s390x.
+  + Updated translations.
+- Move some docs to doc subpackage.
+
+-------------------------------------------------------------------
+Sat Nov 20 17:19:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.3:
+  + Bug fixes:
+    - Fixed issue: Crash after right click on file
+    - File-roller plugin: Add run error handling
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:36:03 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

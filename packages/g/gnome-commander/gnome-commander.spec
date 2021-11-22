@@ -17,7 +17,7 @@
 
 
 Name:           gnome-commander
-Version:        1.12.2
+Version:        1.12.3.1
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
@@ -84,7 +84,7 @@ find %{buildroot}%{_datadir} -size 0 -delete
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc NEWS README
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
@@ -96,7 +96,8 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %{_mandir}/man1/gnome-commander.1%{ext_man}
 
 %files doc
-%doc %{_datadir}/help/C/%{name}
+%doc AUTHORS ChangeLog TODO
+%{_datadir}/help/C/%{name}
 
 %files lang -f %{name}.lang
 
