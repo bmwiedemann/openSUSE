@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 15 14:46:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.20.1:
+ - This is a bugfix release to fix :issue:`5930`.:
+ - Bug fixes:
+  - Fix a regression in the detection of the backend entrypoints (:issue:`5930`, :pull:`5931`)
+    By `Justus Magin <https://github.com/keewis>`_.
+ - Documentation:
+  - Significant improvements to  :ref:`api`. By `Deepak Cherian <https://github.com/dcherian>`_.
+
+-------------------------------------------------------------------
 Tue Nov  2 19:44:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.20.0:
