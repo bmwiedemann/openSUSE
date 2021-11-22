@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 00:01:23 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.4.12 for Docker 20.10.11-ce.
+  bsc#1192814 CVE-2021-41190
+
+-------------------------------------------------------------------
 Wed Oct  6 02:54:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.4.11, to fix CVE-2021-41103. bsc#1191355

@@ -378,4 +378,13 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>926019</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3e4583db409fe04d1bdfea68286f93db</srcmd5>
+    <version>1.4.12</version>
+    <time>1637618624</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to containerd v1.4.12 for Docker 20.10.11-ce.
+  bsc#1192814 CVE-2021-41190</comment>
+    <requestid>932376</requestid>
+  </revision>
 </revisionlist>
