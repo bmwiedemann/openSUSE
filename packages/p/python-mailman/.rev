@@ -144,4 +144,38 @@
   * Support running with SQLAlchemy 1.4</comment>
     <requestid>909272</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c3b164909d8cade2a8e5fccbd5ff12b</srcmd5>
+    <version>3.3.5</version>
+    <time>1637618639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.5, which provides many bug fixes and also these new features:
+  - There is a new bounce_notify_admin_on_bounce_increment list
+    setting and a corresponding list:admin:notice:increment
+    template for the notice. This setting, if True, will cause a
+    notice to be sent to the list admins when a member's bounce
+    score is incremented, but doesn't disable delivery.
+  - There is a new moderator_request_life setting in the
+    [mailman] section of mailman.cfg that controls the lifetime
+    of pending moderator requests as opposed to pending user
+    confirmations.  Default is 180 days.
+  - There is a new task runner to do periodic tasks.  The current
+    implementation evicts expired pendings and cache entries
+    and removes orphaned workflows and orphaned message store
+    messages.  It does these tasks at intervals defined by the
+    new run_tasks_every setting in the [mailman] section of
+    mailman.cfg. Default is 1 hour.
+  - There is a new list:admin:notice:pending template for the
+    notice from the mailman notify command.
+  - The nntp runner will now run the gatenews subcommand at
+    intervals defined by a new gatenews_every setting in the
+    [nntp] section of mailman.cfg. Default is 5 every minutes.
+  - Check the REST API password in a way that is resistant to
+    timing attacks. (CVE-2021-34337)
+- Added support-alembic-1-7.patch
+- Removed obsolete support-click-8-0.patch
+- Added rpmlintrc
+</comment>
+    <requestid>932595</requestid>
+  </revision>
 </revisionlist>

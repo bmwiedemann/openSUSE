@@ -37,9 +37,10 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 Name:           python-mailman%{psuffix}
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 Summary:        A mailing list manager
+Group:          Productivity/Networking/Email/Mailinglists
 License:        GPL-3.0-only
 URL:            https://www.list.org
 Source0:        https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
@@ -55,15 +56,17 @@ Source22:       mailman-notify.service
 Source23:       mailman-notify.timer
 #
 Source30:       README.SUSE.md
+Source31:       python-mailman.rpmlintrc
 #
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 # whitespace fix
 Patch0:         python-mailman-test_interact_default_banner.patch
-# Based on https://gitlab.com/mailman/mailman/-/commit/5d27492403f80c4b4ea1820b3d6f821bd8401ca8
-Patch1:         support-click-8-0.patch
 # Support SQLAlchemy 1.4 ... maybe backward compatible
-Patch2:         support-sqlalchemy-1-4.patch
+Patch1:         support-sqlalchemy-1-4.patch
+# Suppprt Alembic 1.7.x
+Patch2:         support-alembic-1-7.patch
+#
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -76,12 +79,12 @@ Requires:       python-authheaders >= 0.9.2
 Requires:       python-authres >= 1.0.1
 Requires:       python-click >= 7.0
 Requires:       python-dnspython >= 1.14.0
-Requires:       python-falcon > 1.0.0
-Requires:       python-flufl.bounce
-Requires:       python-flufl.i18n >= 2.0
-Requires:       python-flufl.lock >= 3.1
+Requires:       python-falcon > 3.0.0
+Requires:       python-flufl.bounce >= 4.0
+Requires:       python-flufl.i18n >= 3.2
+Requires:       python-flufl.lock >= 5.1
 Requires:       python-gunicorn
-Requires:       python-importlib_resources >= 1.1.0
+Requires:       python-importlib-resources >= 1.1.0
 Requires:       python-lazr.config
 Requires:       python-passlib
 Requires:       python-python-dateutil >= 2.0
@@ -104,13 +107,13 @@ BuildRequires:  %{python_module authheaders >= 0.9.2}
 BuildRequires:  %{python_module authres >= 1.0.1}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module dnspython >= 1.14.0}
-BuildRequires:  %{python_module falcon > 1.0.0}
-BuildRequires:  %{python_module flufl.bounce}
-BuildRequires:  %{python_module flufl.i18n >= 2.0}
-BuildRequires:  %{python_module flufl.lock >= 3.1}
+BuildRequires:  %{python_module falcon > 3.0.0}
+BuildRequires:  %{python_module flufl.bounce >= 4.0}
+BuildRequires:  %{python_module flufl.i18n >= 3.2}
+BuildRequires:  %{python_module flufl.lock >= 5.1}
 BuildRequires:  %{python_module flufl.testing}
 BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module importlib_resources >= 1.1.0}
+BuildRequires:  %{python_module importlib-resources >= 1.1.0}
 BuildRequires:  %{python_module lazr.config}
 BuildRequires:  %{python_module mailman >= %{version}}
 BuildRequires:  %{python_module nose2}
@@ -189,6 +192,7 @@ install -m 0644 %{SOURCE23} %{buildroot}%{_unitdir}/%{mailman_name}-notify.timer
 ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}
 ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}-digests
 ln -s /sbin/service %{buildroot}%{_sbindir}/rc%{mailman_name}-notify
+
 %endif
 
 %check

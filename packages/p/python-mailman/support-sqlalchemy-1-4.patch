@@ -88,3 +88,4 @@ Index: mailman-3.3.4/src/mailman/commands/tests/test_cli_delmembers.py
          members = list(self._mlist.members.members)
          self.assertEqual(len(members), 1)
          self.assertEqual(str(members[0].address),
+
