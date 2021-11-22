@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(xproto)
 Supplements:    xorg-x11-server
 # This was part of the xorg-x11-driver-input package up to version 7.6
 Conflicts:      xorg-x11-driver-input <= 7.6
-ExcludeArch:    s390 s390x
 %{x11_abi_xinput_req}
 
 %description
