@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 19 21:22:27 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- virt-create-rootfs: Fix repository URLs
+  Updated virt-create-rootfs.patch
+  boo#1192318
+
+-------------------------------------------------------------------
+Wed Nov 17 16:27:39 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Weaken apparmor-abstractions dependency to Recommends
+  bsc#1192119
+
+-------------------------------------------------------------------
 Thu Nov  4 16:29:03 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 7.9.0

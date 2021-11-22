@@ -2,7 +2,7 @@ Index: libvirt-7.9.0/tools/virt-create-rootfs
 ===================================================================
 --- /dev/null
 +++ libvirt-7.9.0/tools/virt-create-rootfs
-@@ -0,0 +1,231 @@
+@@ -0,0 +1,236 @@
 +#!/bin/sh
 +set -e
 +
@@ -222,10 +222,15 @@ Index: libvirt-7.9.0/tools/virt-create-rootfs
 +
 +    openSUSE-*)
 +        TARGET_VERSION=${DISTRO:9}
-+        REPO="http://download.opensuse.org/distribution/$TARGET_VERSION/repo/oss/"
-+        UPDATE_REPO="http://download.opensuse.org/update/$TARGET_VERSION/"
-+        call_zypper ar "$REPO" "openSUSE"
-+        call_zypper ar "$UPDATE_REPO" "openSUSE udpate"
++        if test $TARGET_VERSION = "tumbleweed"; then
++            REPO="http://download.opensuse.org/tumbleweed/repo/oss/"
++            call_zypper ar "$REPO" "openSUSE"
++        else
++            REPO="http://download.opensuse.org/distribution/leap/$TARGET_VERSION/repo/oss/"
++            UPDATE_REPO="http://download.opensuse.org/update/leap/$TARGET_VERSION/oss/"
++            call_zypper ar "$REPO" "openSUSE"
++            call_zypper ar "$UPDATE_REPO" "openSUSE-udpate"
++        fi
 +        call_zypper in --no-recommends -t pattern base
 +        ;;
 +esac
@@ -285,9 +290,9 @@ Index: libvirt-7.9.0/docs/manpages/virt-create-rootfs.rst
 +
 +Set the name of distribution to use for the root file system.
 +
-+As of now, only SLED-I<XXX>, SLES-I<XXX> and openSUSE-I<XXX> are implemented
-+where I<XXX> is the version number. Note that SUSEConnect is required to
-+handle SLE distributions.
++As of now, only SLED-<XXX>, SLES-<XXX> and openSUSE-<XXX> are implemented
++where <XXX> is the version number. Examples are openSUSE-15.3, openSUSE-tumbleweed,
++and SLES-15.3. Note that SUSEConnect is required to handle SLE distributions.
 +
 +``-a``, ``--arch``
 +

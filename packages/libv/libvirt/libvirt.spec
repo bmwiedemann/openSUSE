@@ -367,7 +367,7 @@ Requires:       qemu-ovmf-x86_64
 Requires:       qemu-uefi-aarch64
 %endif
 %if %{with_apparmor}
-Requires:       apparmor-abstractions
+Recommends:     apparmor-abstractions
 %endif
 
 # Ensure smooth upgrades
