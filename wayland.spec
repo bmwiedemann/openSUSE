@@ -37,9 +37,10 @@ Source:         http://wayland.freedesktop.org/releases/%name-%version.tar.xz
 Source2:        http://wayland.freedesktop.org/releases/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
-#git#BuildRequires:  autoconf >= 2.64
-#git#BuildRequires:  automake >= 1.11
-#git#BuildRequires:  libtool >= 2.2
+
+BuildRequires:  c_compiler
+BuildRequires:  c++_compiler
+BuildRequires:  meson
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  pkg-config
@@ -53,7 +54,6 @@ BuildRequires:  doxygen
 BuildRequires:  graphviz-gnome
 BuildRequires:  xmlto
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Wayland is a protocol for a compositor to talk to its clients as well
@@ -144,36 +144,32 @@ BuildArch:      noarch
 This subpackage contains the documentation to Wayland.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fi
-fi
-%configure --disable-static --includedir="%_includedir/%name" \
+# includedir intentional, cf. bugzilla.opensuse.org/795968
+%meson \
+	--includedir="%_includedir/%name" \
 %if %with_doc
 	--docdir="%_defaultdocdir/%name"
 %else
-	--disable-documentation
+	-D documentation=false
 %endif
-make %{?_smp_mflags}
+%meson_build
 
 %install
-%make_install %{?_smp_mflags}
-find "%buildroot" -type f -name "*.la" -delete -print
+%meson_install
 
 %check
-%if !0%{?qemu_user_space_build}
-mkdir -p xdg/wayland-tests
-chmod a+x xdg xdg/wayland-tests
-export XDG_RUNTIME_DIR="$PWD/xdg"
-if ! make check V=1; then
-	cat test-suite.log
-	exit 1
-fi
-%endif
+%meson_test
 
+%if 0%{?suse_version} >= 1550
+%ldconfig_scriptlets -n libwayland-client0
+%ldconfig_scriptlets -n libwayland-cursor0
+%ldconfig_scriptlets -n libwayland-egl1
+%ldconfig_scriptlets -n libwayland-server0
+%else
 %post   -n libwayland-client0 -p /sbin/ldconfig
 %postun -n libwayland-client0 -p /sbin/ldconfig
 %post   -n libwayland-cursor0 -p /sbin/ldconfig
@@ -182,6 +178,7 @@ fi
 %postun -n libwayland-egl1 -p /sbin/ldconfig
 %post   -n libwayland-server0 -p /sbin/ldconfig
 %postun -n libwayland-server0 -p /sbin/ldconfig
+%endif
 
 %files -n libwayland-client0
 %_libdir/libwayland-client.so.0*
