@@ -1,7 +1,7 @@
 #
 # spec file for package python-filetype
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-filetype
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Infer file type and MIME type of any file/buffer. No external dependencies
 License:        MIT
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/f/filetype/filety
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,16 +47,22 @@ This is a Python port from `filetype`_ Go package.
 
 %install
 %python_install
-# do not install examples in generic folder
-%python_expand rm -r %{buildroot}%{$python_sitelib}/examples/
+%python_clone -a %{buildroot}%{_bindir}/filetype
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m unittest discover -v
 
+%post
+%python_install_alternative filetype
+
+%postun
+%python_uninstall_alternative filetype
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/filetype*
+%python_alternative %{_bindir}/filetype
 
 %changelog
