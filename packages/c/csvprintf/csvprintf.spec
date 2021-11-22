@@ -17,13 +17,14 @@
 
 
 Name:           csvprintf
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Simple CSV file parser for the UNIX command line
 License:        Apache-2.0
 Group:          Productivity/File utilities
 URL:            https://github.com/archiecobbs/csvprintf
-Source:         https://archie-public.s3.amazonaws.com/%{name}/%{name}-%{version}.tar.gz
+Source:         %{name}/%{name}-%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  xsltproc
@@ -42,11 +43,15 @@ specify which CSV column to format.
 command converts XML documents so generated back into CSV files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+./autogen.sh
 %configure
 %make_build
+
+%check
+%make_build test
 
 %install
 %make_install

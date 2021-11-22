@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 22 19:24:36 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Update to release 1.2.0
+  + Added "-j" flag for JSON text sequence document output.
+  + Stopped escaping double quote as "&quot;" in plain XML text.
+
+-------------------------------------------------------------------
+Mon Nov 22 19:17:03 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Replace source tarball with _service file pulling from github 
+
+-------------------------------------------------------------------
 Wed Oct 27 16:21:59 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Run spec-cleaner on spec file

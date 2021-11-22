@@ -50,4 +50,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>929070</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ac8b85fb703b8a7869af3f4995d125a</srcmd5>
+    <version>1.2.0</version>
+    <time>1637618680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0
+  + Added &quot;-j&quot; flag for JSON text sequence document output.
+  + Stopped escaping double quote as &quot;&amp;quot;&quot; in plain XML text.
+
+- Replace source tarball with _service file pulling from github</comment>
+    <requestid>933155</requestid>
+  </revision>
 </revisionlist>
