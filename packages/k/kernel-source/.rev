@@ -5714,4 +5714,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.15.2 &amp; some config changes &amp; zstd again</comment>
     <requestid>931322</requestid>
   </revision>
+  <revision rev="620" vrev="1">
+    <srcmd5>2c53102fe30fa5d6a4b67d0e88c2c795</srcmd5>
+    <version>5.15.3</version>
+    <time>1637618636</time>
+    <user>dimstar_suse</user>
+    <comment>5.15.3 &amp; other random fixes</comment>
+    <requestid>932460</requestid>
+  </revision>
 </revisionlist>
