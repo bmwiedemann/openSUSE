@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 22 09:35:04 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Deprecate the lftp_wrapper script. It is still available as an
+  "update-alternative" for "ftp", but it is no longer used by
+  default. The default implementation of "ftp" now is the "lftp"
+  executable. [jsc#SLE-19631]
+
+  Lftp_wrapper is an internal creation of SUSE, dating back to
+  2005. It was developed to help some customers transition from
+  lukemftp, which disappeared from SLE between versions 11 and 12,
+  to lftp. To make the transition as smooth as possible, the
+  wrapper was made the default FTP client.
+
+  However, the code was never upstreamed and it was never properly
+  reviewed. From a security perspective (and FTP clients are
+  definitely a target for attackers), this is rather worrying.
+
+  There are many issues with lftp_wrapper, in addition to the low
+  code quality and the fact that it has no real upstream:
+
+  * Customers are reporting bugs: bsc#974874, bsc#1178363.
+  * It has no manual page ("man ftp" displays the lftp manual page,
+    despite both having different command line options).
+  * Some command line options are not actually implemented, or only
+    work in specific cases.
+  * It was only designed for non-interactive use, but this is only
+    mentioned in the source code. As a result, customers are not
+    aware of that limitation, and use the wrapper also
+    interactively, or pseudo-interactively, and complain when it
+    doesn't work.
+
+  The newly added "add-deprecation-warning-to-lftp-wrapper.patch"
+  introduces a deprecation warning for users who might still rely
+  on the script to make them aware that this wrapper script is
+  going to be removed from the distribution.
+
+-------------------------------------------------------------------
 Mon Aug 24 15:40:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.9.2:

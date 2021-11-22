@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,7 @@ Patch2:         0002-Add-content-of-lftp-compat-addfiles.patch.patch
 Patch3:         0003-Add-content-of-lftp-completion.patch.patch
 Patch4:         0004-Include-config.h-to-detect-gnulib-macros.patch
 Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
+Patch6:         add-deprecation-warning-to-lftp-wrapper.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -109,11 +110,14 @@ ln -sf %{_sysconfdir}/alternatives/ftp.1.gz %{buildroot}%{_mandir}/man1/ftp.1.gz
 /sbin/ldconfig
 update-alternatives --install %{_bindir}/ftp ftp %{_bindir}/%{name}_wrapper 5 \
   --slave %{_mandir}/man1/ftp.1.gz ftp.1 %{_mandir}/man1/%{name}.1.gz
+update-alternatives --install %{_bindir}/ftp ftp %{_bindir}/%{name} 10 \
+  --slave %{_mandir}/man1/ftp.1.gz ftp.1 %{_mandir}/man1/%{name}.1.gz
 
 %postun
 /sbin/ldconfig
 if [ "$1" = 0 ] ; then
   update-alternatives --remove ftp %{_bindir}/%{name}_wrapper
+  update-alternatives --remove ftp %{_bindir}/%{name}
 fi
 
 %files -f "lftp.lang"

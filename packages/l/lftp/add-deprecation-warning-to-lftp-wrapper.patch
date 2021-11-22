@@ -1,0 +1,20 @@
+Index: lftp-4.9.2/src/lftp-wrapper.c
+===================================================================
+--- lftp-4.9.2.orig/src/lftp-wrapper.c	2021-11-22 10:32:32.203651686 +0100
++++ lftp-4.9.2/src/lftp-wrapper.c	2021-11-22 10:32:54.527219865 +0100
+@@ -372,7 +372,14 @@ int main(int argc, char *argv[])
+ 
+     if (compat_mode_warning && (verbose != -1))
+ 	fprintf(stderr,
+-		"Wrapper for lftp to simulate compatibility with lukemftp\n");
++		"Wrapper for lftp to simulate compatibility with lukemftp\n" \
++		"\n" \
++		"********************************************************************\n" \
++		"*** Please note that this wrapper script has been deprecated and ***\n" \
++		"*** and will be removed in the near future. Please adapt your    ***\n" \
++		"*** code to call lftp directly instead.                          ***\n" \
++		"********************************************************************\n" \
++		"\n");
+ 
+     if (getenv("FTPPROMPT"))
+ 	not_implemented_ignoring("enviroment variable FTPPROMPT");
