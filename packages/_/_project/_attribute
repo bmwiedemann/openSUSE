@@ -5,7 +5,7 @@
   <attribute namespace="OSRT" name="IgnoredIssues">
     <value>last_seen:
   boo#1172073: '20211013'
-  boo#1176553: '20211119'
+  boo#1176553: '20211120'
   boo#1177461: '20210626'
   boo#1180358: '20210829'
   boo#1183082: '20210826'
@@ -55,7 +55,7 @@
   boo#1190925: '20210926'
   boo#1190933: '20210927'
   boo#1191141: '20211005'
-  boo#1191225: '20211119'
+  boo#1191225: '20211120'
   boo#1191532: '20211021'
   boo#1191603: '20211120'
   boo#1191616: '20211019'
@@ -515,9 +515,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20211119'
-publishing: '20211119'
-testing: '20211120'
+published: '20211120'
+publishing: '20211120'
+testing: '20211121'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
