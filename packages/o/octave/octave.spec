@@ -18,7 +18,7 @@
 
 %define apiver  v56
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 6.3.0
+%define pkg_ver 6.4.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -224,9 +224,6 @@ This package contains documentation for Octave.
 %patch2 -p1
 %patch3 -p1
 
-# define octave_blas macros
-sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
-
 %build
 
 # rebuild makefiles after Patch0
@@ -272,6 +269,9 @@ rm -rf %{buildroot}/%{_datadir}/applications/
 %endif
 # rpm macros
 install -Dm 644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.octave
+# substitute correct values for octave_blas macros
+sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{buildroot}%{_rpmmacrodir}/macros.octave
+
 # increase stack size set by the JVM, affects the whole octave process
 echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 

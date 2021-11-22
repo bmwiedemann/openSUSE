@@ -20,11 +20,11 @@ below "libqhull_r/".
  m4/acinclude.m4                   | 104 +++++++++++-------------------
  6 files changed, 115 insertions(+), 161 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index 5a07285..4a40ec9 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1336,15 +1336,15 @@ AC_CHECK_DECLS([sys_siglist], [], [],
+Index: octave-6.4.0/configure.ac
+===================================================================
+--- octave-6.4.0.orig/configure.ac
++++ octave-6.4.0/configure.ac
+@@ -1337,15 +1337,15 @@ AC_CHECK_DECLS([sys_siglist], [], [],
  
  ### Check for the Qhull library.
  
@@ -44,7 +44,7 @@ index 5a07285..4a40ec9 100644
  
  ### Check for PCRE regex library.
  
-@@ -3109,9 +3109,9 @@ Octave is now configured for $canonical_host_type
+@@ -3120,9 +3120,9 @@ Octave is now configured for $canonical_
    PortAudio libraries:           $PORTAUDIO_LIBS
    PTHREAD flags:                 $PTHREAD_CFLAGS
    PTHREAD libraries:             $PTHREAD_LIBS
@@ -57,10 +57,10 @@ index 5a07285..4a40ec9 100644
    QRUPDATE CPPFLAGS:             $QRUPDATE_CPPFLAGS
    QRUPDATE LDFLAGS:              $QRUPDATE_LDFLAGS
    QRUPDATE libraries:            $QRUPDATE_LIBS
-diff --git a/libinterp/dldfcn/__delaunayn__.cc b/libinterp/dldfcn/__delaunayn__.cc
-index 853eb97..8257db4 100644
---- a/libinterp/dldfcn/__delaunayn__.cc
-+++ b/libinterp/dldfcn/__delaunayn__.cc
+Index: octave-6.4.0/libinterp/dldfcn/__delaunayn__.cc
+===================================================================
+--- octave-6.4.0.orig/libinterp/dldfcn/__delaunayn__.cc
++++ octave-6.4.0/libinterp/dldfcn/__delaunayn__.cc
 @@ -65,7 +65,7 @@
  
  #  include "oct-qhull.h"
@@ -131,10 +131,10 @@ index 853eb97..8257db4 100644
                  }
                i++;
              }
-diff --git a/libinterp/dldfcn/__voronoi__.cc b/libinterp/dldfcn/__voronoi__.cc
-index 950f46d..14633e2 100644
---- a/libinterp/dldfcn/__voronoi__.cc
-+++ b/libinterp/dldfcn/__voronoi__.cc
+Index: octave-6.4.0/libinterp/dldfcn/__voronoi__.cc
+===================================================================
+--- octave-6.4.0.orig/libinterp/dldfcn/__voronoi__.cc
++++ octave-6.4.0/libinterp/dldfcn/__voronoi__.cc
 @@ -60,7 +60,7 @@ qhull command
  
  #  include "oct-qhull.h"
@@ -233,10 +233,10 @@ index 950f46d..14633e2 100644
  
        octave_idx_type num_vertices = ni[k++];
  
-diff --git a/libinterp/dldfcn/convhulln.cc b/libinterp/dldfcn/convhulln.cc
-index 724cf36..c6caa57 100644
---- a/libinterp/dldfcn/convhulln.cc
-+++ b/libinterp/dldfcn/convhulln.cc
+Index: octave-6.4.0/libinterp/dldfcn/convhulln.cc
+===================================================================
+--- octave-6.4.0.orig/libinterp/dldfcn/convhulln.cc
++++ octave-6.4.0/libinterp/dldfcn/convhulln.cc
 @@ -53,7 +53,7 @@
  
  #  include "oct-qhull.h"
@@ -374,10 +374,10 @@ index 724cf36..c6caa57 100644
      }
  
    retval(0) = idx;
-diff --git a/libinterp/dldfcn/oct-qhull.h b/libinterp/dldfcn/oct-qhull.h
-index d28ba87..2f6323f 100644
---- a/libinterp/dldfcn/oct-qhull.h
-+++ b/libinterp/dldfcn/oct-qhull.h
+Index: octave-6.4.0/libinterp/dldfcn/oct-qhull.h
+===================================================================
+--- octave-6.4.0.orig/libinterp/dldfcn/oct-qhull.h
++++ octave-6.4.0/libinterp/dldfcn/oct-qhull.h
 @@ -32,32 +32,18 @@
  
  extern "C" {
@@ -423,10 +423,10 @@ index d28ba87..2f6323f 100644
  #endif
  
  }
-diff --git a/m4/acinclude.m4 b/m4/acinclude.m4
-index a6b8c61..40b4284 100644
---- a/m4/acinclude.m4
-+++ b/m4/acinclude.m4
+Index: octave-6.4.0/m4/acinclude.m4
+===================================================================
+--- octave-6.4.0.orig/m4/acinclude.m4
++++ octave-6.4.0/m4/acinclude.m4
 @@ -1793,38 +1793,24 @@ dnl
  dnl Check whether Qhull works (does not crash).
  dnl
@@ -564,25 +564,11 @@ index a6b8c61..40b4284 100644
        [Define to 1 if the Qhull library needs a qh_version variable defined.])
    fi
  ])
--- 
-2.30.2
-
-From d34451766b4f8ed2a60733c7fe902bb5f51a2f4f Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
-Date: Fri, 2 Apr 2021 19:54:00 +0200
-Subject: [PATCH 2/2] Use reentrant libqhull_r - update generated files
-
----
- Makefile.in |  24 ++---
- config.in.h |  19 ++--
- configure   | 252 +++++++++++++++++++++++-----------------------------
- 3 files changed, 130 insertions(+), 165 deletions(-)
-
-diff --git a/Makefile.in b/Makefile.in
-index 59d9d5e..e7023b4 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -5278,9 +5278,9 @@ QCOLLECTIONGENERATOR_QTVER = @QCOLLECTIONGENERATOR_QTVER@
+Index: octave-6.4.0/Makefile.in
+===================================================================
+--- octave-6.4.0.orig/Makefile.in
++++ octave-6.4.0/Makefile.in
+@@ -5282,9 +5282,9 @@ QCOLLECTIONGENERATOR_QTVER = @QCOLLECTIO
  QHELPGENERATOR = @QHELPGENERATOR@
  QHELPGENERATORFLAGS = @QHELPGENERATORFLAGS@
  QHELPGENERATOR_QTVER = @QHELPGENERATOR_QTVER@
@@ -595,7 +581,7 @@ index 59d9d5e..e7023b4 100644
  QRUPDATE_CPPFLAGS = @QRUPDATE_CPPFLAGS@
  QRUPDATE_LDFLAGS = @QRUPDATE_LDFLAGS@
  QRUPDATE_LIBS = @QRUPDATE_LIBS@
-@@ -8337,9 +8337,9 @@ DLDFCN_SRC = \
+@@ -8343,9 +8343,9 @@ DLDFCN_SRC = \
  
  DLDFCN_LIBS = $(DLDFCN_SRC:.cc=.la)
  libinterp_dldfcn___delaunayn___la_SOURCES = libinterp/dldfcn/__delaunayn__.cc
@@ -608,7 +594,7 @@ index 59d9d5e..e7023b4 100644
  libinterp_dldfcn___delaunayn___la_DEPENDENCIES = $(OCT_LINK_DEPS)
  libinterp_dldfcn___fltk_uigetfile___la_SOURCES = libinterp/dldfcn/__fltk_uigetfile__.cc
  libinterp_dldfcn___fltk_uigetfile___la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(FLTK_CPPFLAGS) $(FT2_CPPFLAGS)
-@@ -8367,9 +8367,9 @@ libinterp_dldfcn___ode15___la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LD
+@@ -8373,9 +8373,9 @@ libinterp_dldfcn___ode15___la_LDFLAGS =
  libinterp_dldfcn___ode15___la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(SUNDIALS_XLIBS)
  libinterp_dldfcn___ode15___la_DEPENDENCIES = $(OCT_LINK_DEPS)
  libinterp_dldfcn___voronoi___la_SOURCES = libinterp/dldfcn/__voronoi__.cc
@@ -621,7 +607,7 @@ index 59d9d5e..e7023b4 100644
  libinterp_dldfcn___voronoi___la_DEPENDENCIES = $(OCT_LINK_DEPS)
  libinterp_dldfcn_audiodevinfo_la_SOURCES = libinterp/dldfcn/audiodevinfo.cc
  libinterp_dldfcn_audiodevinfo_la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(PORTAUDIO_CPPFLAGS)
-@@ -8382,9 +8382,9 @@ libinterp_dldfcn_audioread_la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LD
+@@ -8388,9 +8388,9 @@ libinterp_dldfcn_audioread_la_LDFLAGS =
  libinterp_dldfcn_audioread_la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(SNDFILE_LIBS)
  libinterp_dldfcn_audioread_la_DEPENDENCIES = $(OCT_LINK_DEPS)
  libinterp_dldfcn_convhulln_la_SOURCES = libinterp/dldfcn/convhulln.cc
@@ -634,10 +620,10 @@ index 59d9d5e..e7023b4 100644
  libinterp_dldfcn_convhulln_la_DEPENDENCIES = $(OCT_LINK_DEPS)
  libinterp_dldfcn_fftw_la_SOURCES = libinterp/dldfcn/fftw.cc
  libinterp_dldfcn_fftw_la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(FFTW_XCPPFLAGS)
-diff --git a/config.in.h b/config.in.h
-index 068af98..c4d9d64 100644
---- a/config.in.h
-+++ b/config.in.h
+Index: octave-6.4.0/config.in.h
+===================================================================
+--- octave-6.4.0.orig/config.in.h
++++ octave-6.4.0/config.in.h
 @@ -1153,11 +1153,11 @@
  /* Define to 1 if you have the `m' library (-lm). */
  #undef HAVE_LIBM
@@ -670,7 +656,7 @@ index 068af98..c4d9d64 100644
  /* Define to 1 if you have the `qInstallMessageHandler' function. */
  #undef HAVE_QINSTALLMESSAGEHANDLER
  
-@@ -2246,7 +2237,7 @@
+@@ -2252,7 +2243,7 @@
  #undef NEED_MKTIME_WORKING
  
  /* Define to 1 if the Qhull library needs a qh_version variable defined. */
@@ -679,11 +665,11 @@ index 068af98..c4d9d64 100644
  
  /* Define to 1 to enable general improvements of setlocale. */
  #undef NEED_SETLOCALE_IMPROVED
-diff --git a/configure b/configure
-index d3bf4af..b8b7305 100755
---- a/configure
-+++ b/configure
-@@ -850,9 +850,9 @@ TERM_LIBS
+Index: octave-6.4.0/configure
+===================================================================
+--- octave-6.4.0.orig/configure
++++ octave-6.4.0/configure
+@@ -851,9 +851,9 @@ TERM_LIBS
  PCRE_LIBS
  PCRE_LDFLAGS
  PCRE_CPPFLAGS
@@ -696,7 +682,7 @@ index d3bf4af..b8b7305 100755
  gltests_WITNESS
  REPLACE_TOWLOWER
  REPLACE_ISWCNTRL
-@@ -2451,9 +2451,9 @@ with_linux_crypto
+@@ -2452,9 +2452,9 @@ with_linux_crypto
  with_openssl
  enable_rpath
  with_libiconv_prefix
@@ -709,7 +695,7 @@ index d3bf4af..b8b7305 100755
  with_pcre_includedir
  with_pcre_libdir
  with_pcre
-@@ -3313,10 +3313,10 @@ Optional Packages:
+@@ -3318,10 +3318,10 @@ Optional Packages:
    --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
    --with-libiconv-prefix[=DIR]  search for libiconv in DIR/include and DIR/lib
    --without-libiconv-prefix     don't search for libiconv in includedir and libdir
@@ -723,7 +709,7 @@ index d3bf4af..b8b7305 100755
    --with-pcre-includedir=DIR
                            look for PCRE include files in DIR
    --with-pcre-libdir=DIR  look for PCRE libraries in DIR
-@@ -70826,79 +70826,79 @@ _ACEOF
+@@ -70844,79 +70844,79 @@ _ACEOF
  
  
  
@@ -837,7 +823,7 @@ index d3bf4af..b8b7305 100755
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
  ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
-@@ -70906,15 +70906,15 @@ if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+@@ -70924,15 +70924,15 @@ if eval test \"x\$"$as_ac_Header"\" = x"
    cat >>confdefs.h <<_ACEOF
  #define `$as_echo "HAVE_$ac_header" | $as_tr_cpp` 1
  _ACEOF
@@ -858,7 +844,7 @@ index d3bf4af..b8b7305 100755
    $as_echo_n "(cached) " >&6
  else
    cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-@@ -70944,54 +70944,40 @@ return qh_qhull ();
+@@ -70962,54 +70962,40 @@ return qh_qhull ();
  }
  _ACEOF
  if ac_fn_c_try_link "$LINENO"; then :
@@ -934,7 +920,7 @@ index d3bf4af..b8b7305 100755
          #endif
  
  #ifdef F77_DUMMY_MAIN
-@@ -71013,63 +70999,49 @@ main ()
+@@ -71031,63 +71017,49 @@ main ()
  }
  _ACEOF
  if ac_fn_c_try_link "$LINENO"; then :
@@ -1020,7 +1006,7 @@ index d3bf4af..b8b7305 100755
            char *qh_version = "version";
          #endif
  
-@@ -71089,16 +71061,18 @@ main ()
+@@ -71107,16 +71079,18 @@ main ()
          int n = 4;
          coordT points[8] = { -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5 };
          boolT ismalloc = 0;
@@ -1042,7 +1028,7 @@ index d3bf4af..b8b7305 100755
  fi
  rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
    conftest.$ac_objext conftest.beam conftest.$ac_ext
-@@ -71106,39 +71080,39 @@ fi
+@@ -71124,39 +71098,39 @@ fi
  
  
  fi
@@ -1093,7 +1079,7 @@ index d3bf4af..b8b7305 100755
  
  
    fi
-@@ -88392,9 +88366,9 @@ Octave is now configured for $canonical_host_type
+@@ -88423,9 +88397,9 @@ Octave is now configured for $canonical_
    PortAudio libraries:           $PORTAUDIO_LIBS
    PTHREAD flags:                 $PTHREAD_CFLAGS
    PTHREAD libraries:             $PTHREAD_LIBS
@@ -1106,7 +1092,7 @@ index d3bf4af..b8b7305 100755
    QRUPDATE CPPFLAGS:             $QRUPDATE_CPPFLAGS
    QRUPDATE LDFLAGS:              $QRUPDATE_LDFLAGS
    QRUPDATE libraries:            $QRUPDATE_LIBS
-@@ -88685,9 +88659,9 @@ $as_echo "$as_me: WARNING: $warn_64_bit" >&2;}
+@@ -88716,9 +88690,9 @@ $as_echo "$as_me: WARNING: $warn_64_bit"
  $as_echo "$as_me: WARNING: $warn_bounds_check" >&2;}
        warn_msg_printed=true
      fi
@@ -1119,6 +1105,3 @@ index d3bf4af..b8b7305 100755
        warn_msg_printed=true
      fi
      if test -n "$warn_pcre"; then
--- 
-2.30.2
-

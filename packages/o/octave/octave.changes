@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov  5 23:23:45 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.0:
+  * Improvements and fixes:
+    - Reduce memory usage in BISTs for copyobj, hgsave (bug
+      #57591).
+    - hgsave.m, copyobj.m: Use 'qt' graphics toolkit in BISTs.
+    - main.cc: Use getopt to parse command line arguments (bug
+      #60886).
+    - main.cc: Remove invalid case (bug #60886).
+    - Disable getopt error reporting in wrapper program (bug
+      #60886).
+    - interp1.m: Don’t interpret later numeric input as xi (bug
+      #60967).
+    - pkg: Improve similar package name suggestion (bug #61067).
+    - Store parent name in function object when caching parents in
+      scope (bug #61105).
+    - Avoid internal error and segfault with eval and scripts (bug
+      #61191).
+    - rmpath: Prevent removing the current directory from the load
+      path (bug #61216).
+  * GUI:
+    - Fix missing interpreter event in octave-scintilla.
+    - Fix opening a file in a custom editor (bug #60990).
+  * Documentation:
+    - Improve docstring for disable_diagonal_matrix,
+      disable_diagonal_matrix, and disable_range (patch #10089).
+    - cbrt: Clarify that function errors for non-real input.
+    - dsearchn.m: Added optional distance output description (bug
+      #61156).
+    - Add Hungarian translation for project description files.
+    - Document fsolve output “info” -2 (bug #61310).
+  * Build system: Correct error message for incompatible CXSparse
+    (bug #61385).
+- Refresh 0001-Use-reentrant-libqhull_r.patch for version 6.4.0
+  (line offset changes only).
+- Substitute OCTAVE_BLAS_LIBRARY_NAME value in installed macros
+  file rather than modifying the source file itself.
+
+-------------------------------------------------------------------
 Mon Jul 28 23:58:20 UTC 2021 - Andre C. Barros <andre.cbarros@yahoo.com>
 
 - Upgrade to octave 6.3.0:
