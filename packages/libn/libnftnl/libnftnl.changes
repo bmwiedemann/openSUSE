@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 18 21:30:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1
+  * expr: add last match time support
+  * expr: missing netlink attribute in last expression
+
+-------------------------------------------------------------------
 Tue May 25 12:42:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
