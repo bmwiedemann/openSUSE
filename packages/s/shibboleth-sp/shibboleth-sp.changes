@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 17 08:21:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * shibd.service
+
+-------------------------------------------------------------------
 Tue Jul 13 16:07:01 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.2.3:
