@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:22:22 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix running the tests
+  * Added mailmanclient-skip-httpx-tests.patch
+- Set missing Group
+
+-------------------------------------------------------------------
+Thu Nov 18 18:14:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+- Update to 3.3.3:
+  - Add pre_confirmed and pre_approved parameters to
+    MailingList.unsubscribe.
+  - Add support to fetch pending unsubscription requests.
+  - Add member_id as a property of Member object.
+  - Return pending token when a Member is unsubscribed.
+  - Allow specifying a reason when handling subscription requests
+  - Add support to specify fields when fetching a roster.
+  - Add a mechanism to hook into the request parameters.
+  - Add basic support for async client for Mailman API.
+  - Allow specifying delivery_mode and delivery_status when
+    subscribing a Member.
+  - Add a new Client.find_users API which allows searching for
+    the users.
+
+-------------------------------------------------------------------
 Tue May  4 09:30:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Restrict to python3 build 

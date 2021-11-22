@@ -20,12 +20,16 @@
 # mailman is built only for primary python3 flavor
 %define pythons python3
 Name:           python-mailmanclient
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Python bindings for the Mailman REST API
+Group:          Productivity/Networking/Email/Mailinglists
 License:        LGPL-3.0-only
 URL:            https://www.list.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mailmanclient/mailmanclient-%{version}.tar.gz
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+Patch0:         mailmanclient-skip-httpx-tests.patch
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +37,11 @@ Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module falcon}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+BuildRequires:  %{python_module httpx}
+%endif
 BuildRequires:  %{python_module mailman}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-services}
 BuildRequires:  %{python_module pytest-vcr}
 BuildRequires:  %{python_module pytest}
@@ -50,7 +58,7 @@ Obsoletes:      python38-mailmanclient < %{version}-%{release}
 Python bindings for Mailman REST API.
 
 %prep
-%autosetup -n mailmanclient-%{version}
+%autosetup -n mailmanclient-%{version} -p1
 
 %build
 export LC_ALL=C.UTF-8
