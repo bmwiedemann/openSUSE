@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch1:         web-gui.patch
 Patch2:         rbh-config.patch
 Patch3:         avoid-version.patch
 Patch4:         make-test_confparam-depend-on-lustre.patch
+Patch5:         harden_robinhood.service.patch
+Patch6:         harden_robinhood@.service.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -100,7 +102,6 @@ Group:          System/Monitoring
 Tests and examples for the robinhood policy engine.
 
 %prep
-
 %setup -q -n %{name}-%{githash}
 %patch1
 # the macro {installdir_www} is not known in the patch
@@ -108,6 +109,8 @@ sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
 %patch2
 %patch3
 %patch4 -p1 
+%patch5 -p1
+%patch6 -p1
 # remove spurious executeable bits
 find ./doc/templates -type f -executable -exec chmod 644 {} +
 

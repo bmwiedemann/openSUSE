@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 15 16:09:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_robinhood.service.patch
+  * harden_robinhood@.service.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 09:22:22 UTC 2020 - Christian Goll <cgoll@suse.com>
 
 - fixed license files 
