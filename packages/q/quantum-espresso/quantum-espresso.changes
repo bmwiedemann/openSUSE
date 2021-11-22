@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Nov 21 13:31:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.8:
+  * See release notes here:
+    <https://gitlab.com/QEF/q-e/-/tags/qe-6.8>.
+- Drop backports-6.4.1.git-diff: incorporated upstream.
+- Add quantum-espresso-devxlib-no-download.patch: Patch to avoid
+  downloading devxlib from the web; we supply it as an additional
+  source instead.
+- Add devxlib as an additional source and copy it to dir where
+  quantum-espresso build expects.
+- Add openmpi4 as multibuild flavor.
+- Drop mvapich2 multibuild flavor, not well supported and builds
+  fail.
+- Hack-ish work-arounds to prevent build failures all around
+  (locally checked that tests work; but they need further
+  downloads and hacks, and is best avoided within the build system
+  itself):
+  * Turn off errors on return-type warnings in %optflags.
+  * Allow compilation to proceed despite minor rank mis-matches by
+    passing -fallow-argument-mismatch as an additional flag to
+    fortran compiler (for GCC >= 10 only).
+  * Explicitly pass blas, lapack, and fftw3 library flags to
+    configure; otherwise the build tried to build each of these
+    internally; for fftw3 use parallel or serial library depending
+    on mulbuild flavor.
+- Link against scalapack for parallel build flavors.
+
+-------------------------------------------------------------------
 Mon Feb 10 00:17:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add missing Provides/Obsoletes for renamed openmpi1 package.

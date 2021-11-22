@@ -1,7 +1,7 @@
 #
-# spec file for package quantum-espresso
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,12 @@ ExclusiveArch:  x86_64
 %{?DisOMPI3}
 %endif
 
+%if "%{flavor}" == "openmpi4"
+%global mpi_flavor openmpi
+%define mpi_vers 4
+%{?DisOMPI4}
+%endif
+
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
@@ -76,6 +82,7 @@ ExclusiveArch:  x86_64
 %else
  %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
  %define my_bindir %{my_prefix}/bin
+ %define my_libdir %{my_prefix}/%{_lib}
  %define my_suffix -%{mpi_flavor}%{?mpi_ext}
 %endif
 
@@ -83,23 +90,35 @@ ExclusiveArch:  x86_64
  %define package_name   %pname%{?my_suffix}
 %endif
 
+%global devlibx_version 0.1.0
+# Unimportant rank mismatch issues that otherwise cause builds to fail for GCC >= 10
+%if 0%{?suse_version} > 1500
+%global extra_gfortran_flags -fallow-argument-mismatch
+%else
+%global extra_gfortran_flags %{nil}
+%endif
+# We need to turn off "-Werror=return-type" in optflags to avoid build failures
+%global optflags %(echo "%{optflags}" | sed "s/ -Werror=return-type//")
 Name:           %{package_name}
-Version:        6.4.1
+Version:        6.8
 Release:        0
 Summary:        A suite for electronic-structure calculations and materials modeling
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            http://www.quantum-espresso.org
 Source0:        https://gitlab.com/QEF/q-e/-/archive/qe-%{version}/q-e-qe-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM backports-6.4.1.git-diff badshah400@gmail.com -- Backported fixes for version 6.4.1 from upstream
-Patch0:         https://gitlab.com/QEF/q-e/wikis/uploads/3e4b6d3844989c02d0ebb03a935e1976/backports-6.4.1.git-diff
+Source1:        https://gitlab.com/max-centre/components/devicexlib/-/archive/%{devlibx_version}/devicexlib-%{devlibx_version}.tar.gz
+# PATCH-FEATURE-OPENSUSE quantum-espresso-devxlib-no-download.patch badshah400@gmail.com -- Do not try to download devxlib, use SOURCE1 instead.
+Patch1:         quantum-espresso-devxlib-no-download.patch
+BuildRequires:  blas-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-devel
 BuildRequires:  fftw3-mpi-devel
-%if 0%{?suse_version} >= 1550 && %{mpi_flavor} == "openmpi"
+BuildRequires:  libscalapack2-%{mpi_flavor}%{?mpi_ext}-devel
+%if 0%{?suse_version} >= 1550 && "%{mpi_flavor}" == "openmpi"
 # hackish workaround for multiple openmpiX-config all providing openmpi-runtime-config
 BuildRequires:  %{mpi_flavor}%{?mpi_ext}-config
 %endif
@@ -129,18 +148,36 @@ It is based on density-functional theory, plane waves, and pseudopotentials.
 
 %prep
 %autosetup -p1 -n q-e-qe-%{version}
+cp %{SOURCE1} ./external/devxlib/devxlib.tar.gz
+# Need to pass -D__FFTW, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=980677
+# Error: Symbol 'cft_2xy' at (1) has no IMPLICIT type
+sed -i 's|MANUAL_DFLAGS  =|MANUAL_DFLAGS  = -D__FFTW %{extra_gfortran_flags}|' install/make.inc.in
 
 %build
+# Note: optflags should not be passed to fortran flags as they cause build failures
 %if %{with mpi}
 export CC="%{my_bindir}/mpicc"
+export CFLAGS='%{extra_gfortran_flags} %{optflags}'
 export FC="%{my_bindir}/mpif90"
+export FCFLAGS='%{extra_gfortran_flags}'
+export FFLAGS='%{extra_gfortran_flags}'
+export BLAS_LIBS="-L%{_libdir} -lblas"
+export LAPACK_LIBS="-L%{_libdir} -llapack"
+export FFT_LIBS="-L%{_libdir} -lfftw3_mpi"
+export SCALAPACK_LIBS="-L%{my_libdir} -lscalapack"
 %configure --enable-parallel
 %else
 export CC=gcc
+export CFLAGS='%{extra_gfortran_flags} %{optflags}'
 export FC=gfortran
+export FCFLAGS='%{extra_gfortran_flags}'
+export FFLAGS='%{extra_gfortran_flags}'
+export BLAS_LIBS="-L%{_libdir} -lblas"
+export LAPACK_LIBS="-L%{_libdir} -llapack"
+export FFT_LIBS="-lfftw3"
 %configure --disable-parallel
 %endif
-make %{?_smp_mflags} all
+%make_build all
 
 %install
 mkdir -p %{buildroot}%{my_bindir}
@@ -153,14 +190,12 @@ popd
 %fdupes -s Doc/
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license License
 %{my_bindir}/*.x
 
 %if %{without mpi}
 %files doc
-%defattr(-,root,root)
 %doc Doc/*
 %endif
 
