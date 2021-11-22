@@ -35,17 +35,11 @@ OSD Lyrics is released under GPL v3. See COPYING for more detail.
   <url type="homepage">https://github.com/osdlyrics/osdlyrics</url>
   <url type="bugtracker">https://github.com/osdlyrics/osdlyrics/issues</url>
   <releases>
-    <release version="0.5.5-RC2" date="2020-04-20">
+    <release version="0.5.7" date="2021-05-25">
       <description>
         <p>
-          Fix python logging
-        </p>
-      </description>
-    </release>
-    <release version="0.5.5-RC1" date="2019-03-30">
-      <description>
-        <p>
-          Fixes autoreconf with "foreign" flag
+          Netease: Show more results
+          Add Megalobiz
         </p>
       </description>
     </release>
