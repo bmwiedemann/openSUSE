@@ -417,4 +417,11 @@ ChangeLog for hostapd since 2.4:
     <comment></comment>
     <requestid>932776</requestid>
   </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>d24a8a01bce95aad5ae1478c94f950bb</srcmd5>
+    <version>2.9</version>
+    <time>1637618823</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1192959</comment>
+  </revision>
 </revisionlist>
