@@ -17,7 +17,7 @@
 
 
 Name:           cni-plugin-dnsname
-Version:        1.1.1
+Version:        1.3.0
 Release:        0
 Summary:        CNI plugin to provide name resolution for containers
 License:        Apache-2.0
@@ -43,7 +43,7 @@ The dnsname plugin was specifically designed for the Podman container engine.
 %make_build GO_BUILD="GO111MODULE=on go build -mod=vendor -buildmode=pie" binaries
 
 %install
-PREFIX=/usr %make_install
+PREFIX=/usr LIBEXECDIR=%{_libexecdir}/cni %make_install
 
 %files
 %license LICENSE
