@@ -2018,6 +2018,8 @@ unsorted:
   - clementine 
   - cli11-devel 
   - clinfo 
+  - clingo 
+  - clingo-devel 
   - clipgrab 
   - clipit 
   - clipman 
@@ -9976,6 +9978,7 @@ unsorted:
   - libcld2-0 
   - libcli-devel 
   - libcli1_9 
+  - libclingo4 
   - libcliquer1 
   - libclocale-devel 
   - libclocale1 
@@ -12466,8 +12469,10 @@ unsorted:
   - libosmo-hnbap-devel 
   - libosmo-hnbap0 
   - libosmo-mgcp-client-devel 
-  - libosmo-mgcp-client6 
+  - libosmo-mgcp-client9 
   - libosmo-mgcp-devel 
+  - libosmo-mslookup-devel 
+  - libosmo-mslookup0 
   - libosmo-mtp-1_5_0 
   - libosmo-mtp-devel 
   - libosmo-ranap-devel 
@@ -14141,8 +14146,8 @@ unsorted:
   - libusbmuxd-2_0-6-32bit: [x86_64] 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
-  - libusrp-3_4_4+git_20190808-0 
   - libusrp-devel 
+  - libusrp1 
   - libusrsctp2 
   - libustr-1_0-1 
   - libustr-1_0-1-32bit: [x86_64] 
@@ -15082,6 +15087,7 @@ unsorted:
   - lttoolbox 
   - lttoolbox-devel 
   - lua-Hamliblua 
+  - lua-clingo 
   - lua-fennel 
   - lua-genders 
   - lua-language-server 
@@ -18184,13 +18190,13 @@ unsorted:
   - osmo-fl2k 
   - osmo-fl2k-devel 
   - osmo-fl2k-udev 
-  - osmo-gbproxy 
   - osmo-ggsn 
   - osmo-gtphub 
   - osmo-hlr 
   - osmo-iuh 
   - osmo-mgw 
   - osmo-msc 
+  - osmo-mslookup-client 
   - osmo-pcap 
   - osmo-pcu 
   - osmo-remsim-bankd 
@@ -21167,6 +21173,7 @@ unsorted:
   - python3-cinderclient 
   - python3-clang 
   - python3-cliff 
+  - python3-clingo 
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
@@ -23007,6 +23014,7 @@ unsorted:
   - python36-misaka 
   - python36-mistune 
   - python36-mkdocs 
+  - python36-mkdocs-bootstrap 
   - python36-moban 
   - python36-moban-ansible 
   - python36-mobi 
@@ -23377,6 +23385,7 @@ unsorted:
   - python36-pydotplus 
   - python36-pydrive2 
   - python36-pydub 
+  - python36-pydyf 
   - python36-pyeapi 
   - python36-pyee 
   - python36-pyelftools 
@@ -23454,6 +23463,7 @@ unsorted:
   - python36-pyparsing 
   - python36-pyperclip 
   - python36-pyperf 
+  - python36-pypi-search 
   - python36-pypiserver 
   - python36-pypng 
   - python36-pyprimes 
@@ -24370,7 +24380,6 @@ unsorted:
   - python38-Pebble 
   - python38-Pillow-tk 
   - python38-Pint 
-  - python38-PrettyTable: [i586] 
   - python38-Protego 
   - python38-PsyLab 
   - python38-PubChemPy 
@@ -24997,7 +25006,6 @@ unsorted:
   - python38-cftime 
   - python38-chai 
   - python38-chainmap 
-  - python38-charset-normalizer 
   - python38-chart-studio 
   - python38-chartify 
   - python38-check-manifest 
@@ -25308,7 +25316,6 @@ unsorted:
   - python38-dparse 
   - python38-dpcontracts 
   - python38-dpkt 
-  - python38-dragonmapper 
   - python38-drms 
   - python38-dropbox 
   - python38-dtaidistance 
@@ -25540,7 +25547,6 @@ unsorted:
   - python38-h5py-openmpi4 
   - python38-hammett 
   - python38-hankel 
-  - python38-hanzidentifier 
   - python38-happybase 
   - python38-haproxyctl 
   - python38-hashids 
@@ -25820,7 +25826,6 @@ unsorted:
   - python38-locket 
   - python38-lockfile 
   - python38-logilab-common 
-  - python38-loguru 
   - python38-logutils 
   - python38-logzero 
   - python38-lscsoft-glue 
@@ -25879,6 +25884,7 @@ unsorted:
   - python38-mitmproxy 
   - python38-mizani 
   - python38-mkdocs 
+  - python38-mkdocs-bootstrap 
   - python38-moban 
   - python38-moban-ansible 
   - python38-mobi 
@@ -26271,6 +26277,7 @@ unsorted:
   - python38-pydotplus 
   - python38-pydrive2 
   - python38-pydub 
+  - python38-pydyf 
   - python38-pyeapi 
   - python38-pyee 
   - python38-pyelftools 
@@ -26350,6 +26357,7 @@ unsorted:
   - python38-pyperclip 
   - python38-pyperf 
   - python38-pypet 
+  - python38-pypi-search 
   - python38-pypipegraph 
   - python38-pypiserver 
   - python38-pypng 
@@ -27039,7 +27047,6 @@ unsorted:
   - python38-uncertainties 
   - python38-uncompyle6 
   - python38-unicodecsv 
-  - python38-unicodedata2 
   - python38-unidiff 
   - python38-unify 
   - python38-uniseg 
@@ -27193,7 +27200,6 @@ unsorted:
   - python38-zeep 
   - python38-zeroconf 
   - python38-zetup 
-  - python38-zhon 
   - python38-zict 
   - python38-zignal 
   - python38-zipstream 
@@ -28935,6 +28941,7 @@ unsorted:
   - python39-mitmproxy 
   - python39-mizani 
   - python39-mkdocs 
+  - python39-mkdocs-bootstrap 
   - python39-moban 
   - python39-moban-ansible 
   - python39-mobi 
@@ -29364,6 +29371,7 @@ unsorted:
   - python39-pydotplus 
   - python39-pydrive2 
   - python39-pydub 
+  - python39-pydyf 
   - python39-pyeapi 
   - python39-pyee 
   - python39-pyelftools 
@@ -29449,6 +29457,7 @@ unsorted:
   - python39-pyperclip 
   - python39-pyperf 
   - python39-pypet 
+  - python39-pypi-search 
   - python39-pypipegraph 
   - python39-pypiserver 
   - python39-pypng 
