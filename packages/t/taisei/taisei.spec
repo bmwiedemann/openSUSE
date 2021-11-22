@@ -56,6 +56,7 @@ BuildRequires:  pkgconfig(spirv-cross-c-shared)
 %endif
 Requires:       %{name}-data
 Suggests:       gamemoded
+ExcludeArch:    %{ix86}
 
 %description
 Taisei is an open clone of the Touhou Project series. Touhou is a one-man project
