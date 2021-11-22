@@ -28,15 +28,11 @@
 %define build_suid_wrapper 1
 
 %if 0%{?build_suid_wrapper:1}
-  %ifarch s390 s390x
-    %define build_suid_wrapper 0
-  %else
     %if 0%{?suse_version} >= 1550
       %define suid_wrapper_dir %{_bindir}
     %else
       %define build_suid_wrapper 0
     %endif
-  %endif
 %endif
 
 Name:           xorg-x11-server
@@ -144,16 +140,12 @@ BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(libudev) >= 143
 %endif
 
-%ifnarch s390 s390x
 Requires(pre):  %fillup_prereq
-%endif
 Requires:       pkgconfig
 Requires:       xkbcomp
 Recommends:     xorg-x11-fonts-core
-%ifnarch s390 s390x
 Requires:       libpixman-1-0 >= 0.24
 %(cat %{SOURCE91})
-%endif
 Requires:       Mesa
 %if 0%{?suse_version} >= 1315
 Requires(post): update-alternatives
@@ -432,14 +424,9 @@ export PCI_TXT_IDS_DIR=%{pci_ids_dir}
             --with-sha1=libcrypto \
             --disable-linux-acpi \
             --disable-linux-apm \
-%ifarch s390 s390x
-            --disable-xorg \
-            --disable-aiglx \
-%else
             --enable-xorg \
 %if 0%{?suse_version} > 1120
             --enable-config-udev \
-%endif
 %endif
 %if 0%{?have_wayland} == 1
             --enable-xwayland \
@@ -472,7 +459,6 @@ make -C hw/kdrive %{?_smp_mflags}
 %install
 %make_install
 make -C hw/kdrive install DESTDIR=%{buildroot}
-%ifnarch s390 s390x
 # remove .la files
 find %{buildroot}%{_libdir}/xorg/modules/ -name "*.la" | \
   xargs rm
@@ -498,36 +484,23 @@ ln -snf Xorg %{buildroot}%{_bindir}/X
 mkdir -p %{buildroot}%{_libdir}/xorg/modules/updates/{fonts,input,linux,drivers,multimedia,extensions}
 install -m 644 $RPM_SOURCE_DIR/README.updates %{buildroot}%{_libdir}/xorg/modules/updates
 %endif
-%else
-rm -f %{buildroot}%{_datadir}/aclocal/*.m4
-%endif
 # FATE#325524
 mkdir -p %{buildroot}%{_datadir}/factory/%{_localstatedir}/lib/xkb/compiled
 mv %{buildroot}%{_localstatedir}/lib/xkb/compiled/README.compiled %{buildroot}%{_datadir}/factory/%{_localstatedir}/lib/xkb/compiled/
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{S:7} %{buildroot}%{_tmpfilesdir}/xkb.conf
-%ifarch s390 s390x
-rm -f %{buildroot}%{_datadir}/X11/10-quirks.conf
-mkdir -p %{buildroot}%{_includedir}/xorg
-install -m 644 include/list.h \
-         %{buildroot}%{_includedir}/xorg
-%endif
-%ifnarch s390 s390x
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %_sourcedir/sysconfig.displaymanager.template \
   %{buildroot}%{_fillupdir}/sysconfig.displaymanager-%{name}
-%endif
 install -m 755 $RPM_SOURCE_DIR/xorg-backtrace %{buildroot}%{_bindir}/xorg-backtrace
 cp %{S:90} .
 ./config.status --file xorg-x11-server.macros
 install -D xorg-x11-server.macros %{buildroot}/usr/lib/rpm/macros.d/macros.xorg-server
-%ifnarch s390 s390x
 %if 0%{?suse_version} >= 1315
 mkdir -p %{buildroot}%{_libdir}/xorg/modules/extensions/xorg
 mv  %{buildroot}%{_libdir}/xorg/modules/extensions/libglx.so \
     %{buildroot}%{_libdir}/xorg/modules/extensions/xorg/xorg-libglx.so
 ln -snf %{_sysconfdir}/alternatives/libglx.so %{buildroot}%{_libdir}/xorg/modules/extensions/libglx.so
-%endif
 %endif
 
 mkdir -p %{buildroot}/usr/src/xserver
@@ -537,7 +510,6 @@ rm -f %{buildroot}/usr/src/xserver/config/fdi2iclass.py
 
 %post
 %tmpfiles_create xkb.conf
-%ifnarch s390 s390x
 %{fillup_only -an displaymanager}
 # Move SaX2 generated xorg.conf file to xorg.conf.sle11
 #
@@ -565,16 +537,13 @@ fi
 %_sbindir/update-alternatives \
     --force --install %{_libdir}/xorg/modules/extensions/libglx.so libglx.so %{_libdir}/xorg/modules/extensions/xorg/xorg-libglx.so 50
 %endif
-%endif
 exit 0
 
-%ifnarch s390 s390x
 %if 0%{?suse_version} >= 1315
 %postun
 if [ "$1" = 0 ] ; then
    "%_sbindir/update-alternatives" --remove libglx.so %{_libdir}/xorg/modules/extensions/xorg/xorg-libglx.so
 fi
-%endif
 %endif
 
 %if 0%{?build_suid_wrapper} == 1
@@ -587,7 +556,6 @@ fi
 
 %files
 %defattr(-,root,root)
-%ifnarch s390 s390x
 %if 0%{?suse_version} > 1120
 %if 0%{?pci_ids_dir:1}
 %dir %{pci_ids_dir}
@@ -595,7 +563,6 @@ fi
 %endif
 %dir %{_datadir}/X11/xorg.conf.d
 %{_datadir}/X11/xorg.conf.d/*.conf
-%endif
 %endif
 %{_tmpfilesdir}/xkb.conf
 %dir %{_localstatedir}/lib/xkb
@@ -611,7 +578,6 @@ fi
 %dir %{_datadir}/factory/var/lib/xkb
 %dir %{_datadir}/factory/var/lib/xkb/compiled
 %{_datadir}/factory/%{_localstatedir}/lib/xkb/compiled/README.compiled
-%ifnarch s390 s390x
 %{_bindir}/Xorg
 %if 0%{?build_suid_wrapper} == 1
 %{_bindir}/Xorg.bin
@@ -625,7 +591,6 @@ fi
 %{_fillupdir}/sysconfig.displaymanager-%{name}
 %if 0%{?suse_version} >= 1315
 %ghost %{_sysconfdir}/alternatives/libglx.so
-%endif
 %endif
 %{_bindir}/xorg-backtrace
 
@@ -654,10 +619,8 @@ fi
 %files sdk
 %defattr(-,root,root)
 %{_includedir}/xorg/
-%ifnarch s390 s390x
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/*.m4
-%endif
 /usr/lib/rpm/macros.d/macros.xorg-server
 
 %files source

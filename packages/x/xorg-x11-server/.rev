@@ -3659,4 +3659,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
 - cvt binary moved to libxcvt0 package</comment>
     <requestid>930821</requestid>
   </revision>
+  <revision rev="398" vrev="2">
+    <srcmd5>d089e914043bfaee458312c6801358fa</srcmd5>
+    <version>21.1.1</version>
+    <time>1637618630</time>
+    <user>dimstar_suse</user>
+    <comment>- enable build of Xorg on s390x (jira#SLE-18632)</comment>
+    <requestid>932564</requestid>
+  </revision>
 </revisionlist>

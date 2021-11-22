@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 19 15:49:28 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable build of Xorg on s390x (jira#SLE-18632) 
+
+-------------------------------------------------------------------
 Thu Nov 11 08:35:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_hw-xfree86-Propagate-physical-dimensions-from-DRM-co.patch
