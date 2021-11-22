@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 19 16:58:21 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.6.2
+  - Bind mount root file system snapshot on itself, this makes the
+    temporary directory in /tmp unnecessary; also fixes [boo#1188110]
+    to return the correct snapshot's working directory via API call.
+  - Use separate mount namespace for transactional-update; this should
+    fix several applications that fail to run if a mount point has the
+    'unbindable' mount flag set
+
+-------------------------------------------------------------------
 Wed Nov 10 14:55:06 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.6.1
@@ -113,7 +124,7 @@ Thu Mar 25 22:13:59 UTC 2021 - Ignaz Forster <iforster@suse.com>
   - Add support for more package managers by bind mounting their directories
   - Support snapshots without dedicated overlay [boo#1183539], [bsc#1183539]
   - Link RPM database correctly with older zypper versions [boo#1183521]
-  - Don't discard manual changes in fstab [boo#1183856]
+  - Don't discard manual changes in fstab [boo#1183856], [bsc#1192302]
 
 -------------------------------------------------------------------
 Fri Mar 12 13:45:09 UTC 2021 - Ignaz Forster <iforster@suse.com>
@@ -341,7 +352,7 @@ Tue Jun 23 15:39:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
 - Version 2.22
   - Use pkgconf to determine installation paths
   - Enable SSL connections in update shell
-    [boo#1149131] & [boo#1133891]
+    [boo#1149131] & [boo#1133891] & [boo#1192078]
 
 -------------------------------------------------------------------
 Mon Apr  6 08:02:55 UTC 2020 - Ignaz Forster <iforster@suse.com>

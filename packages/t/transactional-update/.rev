@@ -832,4 +832,19 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>930705</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e24c82629e6263472e968218c64d8695</srcmd5>
+    <version>3.6.2</version>
+    <time>1637618633</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.6.2
+  - Bind mount root file system snapshot on itself, this makes the
+    temporary directory in /tmp unnecessary; also fixes [boo#1188110]
+    to return the correct snapshot's working directory via API call.
+  - Use separate mount namespace for transactional-update; this should
+    fix several applications that fail to run if a mount point has the
+    'unbindable' mount flag set
+- Add some bug references to older releases</comment>
+    <requestid>932569</requestid>
+  </revision>
 </revisionlist>
