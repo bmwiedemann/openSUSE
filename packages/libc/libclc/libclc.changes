@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 15 09:30:31 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted previous change (boo#1192675) 
+
+-------------------------------------------------------------------
+Sun Nov 14 19:56:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- create /usr/lib64/clc compatibility symlink (boo#1192675)
+- due to above no longer noarch package
+
+-------------------------------------------------------------------
 Sat Oct  2 20:13:04 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.2.0+llvm13.0.0.
