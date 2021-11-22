@@ -17,7 +17,7 @@
 
 
 Name:           gparted
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Gnome Partition Editor
 License:        GPL-2.0-only
@@ -82,6 +82,7 @@ translation-update-upstream
 %build
 export GKSUPROG="pkexec"
 %configure \
+        --enable-libparted-dmraid \
 	--enable-xhost-root
 %make_build
 
