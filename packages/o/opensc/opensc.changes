@@ -98,7 +98,8 @@ Fri Nov 27 19:27:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   * CVE-2019-15946: out-of-bounds access of an ASN.1 Octet string (boo#1149747)
   * CVE-2019-15945: out-of-bounds access of an ASN.1 Bitstring (boo#1149746)
   * CVE-2019-19479: incorrect read operation during parsing of a SETCOS file attribute (boo#1158256)
-  * CVE-2019-19480: improper free operation in sc_pkcs15_decode_prkdf_entry (boo#1158307) 
+  * CVE-2019-19480: improper free operation in sc_pkcs15_decode_prkdf_entry (boo#1158307)
+  * CVE-2019-20792: double free in coolkey_free_private_dat (bsc#1170809)
   * Support RSA-PSS signature mechanisms using RSA-RAW
   * Added memory locking for secrets
   * added support for terminal colors
@@ -191,6 +192,7 @@ Thu Sep 13 13:46:43 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 
 - Update to version 0.19.0
   * Fixed multiple security problems (out of bound writes/reads):
+    * bsc#1104812
     * CVE-2018-16391 (bsc#1106998)
     * CVE-2018-16392 (bsc#1106999)
     * CVE-2018-16393 (bsc#1108318)
