@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 18 20:57:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.39
+  * host: ipv6 address is a valid host
+  * util: one char is not always empty line
+  * test and fuzz improvements
+
+-------------------------------------------------------------------
 Sun Jul  4 11:53:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.38
