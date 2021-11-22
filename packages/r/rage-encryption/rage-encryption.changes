@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Nov 19 01:08:01 UTC 2021 - william.brown@suse.com
+
+- Update to version 0.7.0~git0.c93b914:
+  * v0.7.0
+  * cargo update fuzz*
+  * Update lockfiles for fuzzers
+  * rage: Pin clap to 3.0.0-beta.2
+  * CI: Add bitrot check to ensure examples and benchmarks still compile
+  * console 0.15
+  * age: Re-export `secrecy` crate
+  * age-core: Improve crate documentation
+  * age-core: Re-export `secrecy` crate
+  * age-core: Add `plugin::Error` enum
+
+-------------------------------------------------------------------
+Tue Nov 16 02:26:14 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Initial commit of rage
