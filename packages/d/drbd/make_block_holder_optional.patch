@@ -1,0 +1,31 @@
+/* {"version":"v5.15-rc1~161", "commit": "c66fd019713e9cf7d6f1243c378cd177d01fe18a", "comment": "block: make the block holder code optional"} */
+
+diff -Naur drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_bd_claim_by_disk.c drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_bd_claim_by_disk.c
+--- drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_bd_claim_by_disk.c	2021-11-18 11:27:38.503118180 +0800
++++ drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_bd_claim_by_disk.c	2021-11-18 11:28:30.370889421 +0800
+@@ -1,6 +1,6 @@
+ #include <linux/fs.h>
+ 
+-#ifdef CONFIG_SYSFS
++#if defined(CONFIG_SYSFS) || defined(CONFIG_BLOCK_HOLDER_DEPRECATED)
+ void dummy(struct block_device *bdev, void *holder, struct gendisk *disk)
+ {
+ 	bd_claim_by_disk(bdev, holder, disk);
+diff -Naur drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c
+--- drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c	2021-11-18 11:27:38.503118180 +0800
++++ drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c	2021-11-18 13:15:26.943553840 +0800
+@@ -2,12 +2,12 @@
+ #include <linux/fs.h>
+ #include <linux/blkdev.h>
+ 
+-#ifdef CONFIG_SYSFS
++#if defined(CONFIG_SYSFS) || defined(CONFIG_BLOCK_HOLDER_DEPRECATED)
+ void dummy(struct block_device *bdev, struct gendisk *disk)
+ {
+ 	/* also check that we are not between 49731ba and e09b457,
+ 	 * where there was a singular bd_holder_disk for a short time */
+-	if (!list_empty(&bdev->bd_holder_disks))
++	/* if (!list_empty(&bdev->bd_holder_disks)) */
+ 		bd_unlink_disk_holder(bdev, disk);
+ }
+ #endif

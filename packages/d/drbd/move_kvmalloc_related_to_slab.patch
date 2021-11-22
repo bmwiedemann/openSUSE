@@ -1,0 +1,11 @@
+/* {"version":"v5.16-rc1~106", "commit": "8587ca6f34152ea650bad4b2db68456601159024", "comment": "mm: move kvmalloc-related functions to slab.h"} */
+
+diff -Naur drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_kvfree.c drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_kvfree.c
+--- drbd-9.0.30~1+git.8e9c0812/drbd/drbd-kernel-compat/tests/have_kvfree.c	2021-11-09 22:43:17.000000000 +0800
++++ drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd-kernel-compat/tests/have_kvfree.c	2021-11-18 13:32:39.783138887 +0800
+@@ -1,4 +1,5 @@
+ #include <linux/mm.h>
++#include <linux/slab.h>
+ 
+ void foo(void) {
+ 	kvfree(NULL);

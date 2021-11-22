@@ -1,0 +1,17 @@
+/* {"version":"v5.15-rc1~161", "commit": "14cf1dbb55bb07427babee425fd2a8a9300737cc", "comment": "block: remove bdgrab"} */
+
+diff -Naur drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd_nl.c drbd-9.0.30~1+git.8e9c0812/drbd/drbd_nl.c
+--- drbd-9.0.30~1+git.8e9c0812.orig/drbd/drbd_nl.c	2021-11-22 12:32:17.202848720 +0800
++++ drbd-9.0.30~1+git.8e9c0812/drbd/drbd_nl.c	2021-11-22 12:32:57.719098447 +0800
+@@ -1038,10 +1038,7 @@
+ 	} else /* (role == R_SECONDARY) */ {
+ 		down(&resource->state_sem);
+ 		idr_for_each_entry(&resource->devices, device, vnr) {
+-			bdev = bdgrab(device->vdisk->part0);
+-			if (bdev)
+-				fsync_bdev(bdev);
+-			bdput(bdev);
++			fsync_bdev(bdev);
+ 			flush_workqueue(device->submit.wq);
+ 		}
+ 

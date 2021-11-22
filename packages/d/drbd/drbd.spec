@@ -24,7 +24,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.30~1+git.10bee2d5
+Version:        9.0.30~1+git.8e9c0812
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -35,7 +35,15 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
-Patch2:         convert_to_blk_alloc_disk.patch
+Patch2:         make_block_holder_optional.patch
+Patch3:         move_kvmalloc_related_to_slab.patch
+Patch4:         polling_to_bio_base.patch
+Patch5:         pass_gend_to_blk_queue_update_readahead.patch
+Patch6:         move_bdi_from_request_queue_to_gendisk.patch
+Patch7:         dax_support.patch
+Patch8:         add_disk_error_handle.patch
+Patch9:         have_void_drbd_submit_bio.patch
+Patch10:        remove_bdgrab.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -71,6 +79,14 @@ installed kernel.
 %setup -q -n drbd-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 %patch99 -p1
 
 mkdir source

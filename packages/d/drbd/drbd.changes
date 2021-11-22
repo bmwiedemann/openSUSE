@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 22 04:38:30 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1192929, compat to kernel v5.15
+- Remove patch convert_to_blk_alloc_disk.patch (upstream)
+- Add patch make_block_holder_optional.patch
+  Add patch move_kvmalloc_related_to_slab.patch
+  Add patch polling_to_bio_base.patch
+  Add patch pass_gend_to_blk_queue_update_readahead.patch
+  Add patch move_bdi_from_request_queue_to_gendisk.patch
+  Add patch dax_support.patch
+  Add patch add_disk_error_handle.patch
+  Add patch have_void_drbd_submit_bio.patch
+  Add patch remove_bdgrab.patch
+
+-------------------------------------------------------------------
 Wed Jul 21 06:23:09 UTC 2021 - nick wang <nwang@suse.com>
 
 - Update to 9.0.30~1
