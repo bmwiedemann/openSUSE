@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 18 21:20:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.2
+  * nlmsg: Add NFULA_CT and NFULA_CT_INFO attributes support
+
+-------------------------------------------------------------------
 Wed Oct 14 00:20:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.

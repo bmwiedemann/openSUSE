@@ -1,7 +1,7 @@
 #
 # spec file for package libnetfilter_log
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libnetfilter_log
 %define lname	%{name}1
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Userspace library for accessing logged packets
 License:        GPL-2.0-only
@@ -26,12 +26,13 @@ Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libnetfilter_log/
 
 #Git-Clone:	git://git.netfilter.org/libnetfilter_log
-Source:         ftp://ftp.netfilter.org/pub/libnetfilter_log/%name-%version.tar.bz2
-Source2:        ftp://ftp.netfilter.org/pub/libnetfilter_log/%name-%version.tar.bz2.sig
+Source:         https://www.netfilter.org/projects/%name/files/%name-%version.tar.bz2
+Source2:        https://www.netfilter.org/projects/%name/files/%name-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
 #BuildRequires:  autoconf, automake >= 1.6, libtool
 BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnfnetlink) >= 0.0.41
 
 %description
@@ -85,6 +86,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %_includedir/%name/
 %_libdir/libnetfilter_log.so
 %_libdir/libnetfilter_log_libipulog.so
-%_libdir/pkgconfig/libnetfilter_log.pc
+%_libdir/pkgconfig/*.pc
 
 %changelog
