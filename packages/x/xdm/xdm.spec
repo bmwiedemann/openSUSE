@@ -176,6 +176,16 @@ ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/
 touch %{buildroot}%{_prefix}/lib/X11/displaymanagers/console
 
 %post
+# enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050) on installation (but not upgrade)
+if [ $1 -eq 1 ] ; then
+  if [ "$(arch)" == "s390x" ]; then
+    if [ -d /dev/dri ]; then
+      sed -i -e "s+DISPLAYMANAGER_REMOTE_ACCESS=.*+DISPLAYMANAGER_REMOTE_ACCESS=\"no\"+g" \
+             -e "s+DISPLAYMANAGER_STARTS_XSERVER=.*+DISPLAYMANAGER_STARTS_XSERVER=\"yes\"+g" \
+          %{_fillupdir}//sysconfig.displaymanager
+    fi
+  fi
+fi
 %service_add_post display-manager.service
 %{fillup_only -n displaymanager}
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \

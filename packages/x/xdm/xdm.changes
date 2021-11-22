@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 19 16:12:35 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- %post: enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050)
+  via /etc/sysconfig/displaymanager on installation (but not upgrade)
+  by checking for existence of /dev/dri [JIRA#SLE-18632]
+
+-------------------------------------------------------------------
 Mon May 17 07:35:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own /usr/share/xsessions: this directory is owned by the

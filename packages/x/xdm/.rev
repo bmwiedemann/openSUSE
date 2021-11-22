@@ -930,4 +930,14 @@
     <comment></comment>
     <requestid>893579</requestid>
   </revision>
+  <revision rev="91" vrev="17">
+    <srcmd5>ba6274376817cd308a0f1c13d0a8640e</srcmd5>
+    <version>1.1.12</version>
+    <time>1637618632</time>
+    <user>dimstar_suse</user>
+    <comment>- %post: enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050)
+  via /etc/sysconfig/displaymanager on installation (but not upgrade)
+  by checking for existence of /dev/dri [JIRA#SLE-18632]</comment>
+    <requestid>932566</requestid>
+  </revision>
 </revisionlist>
