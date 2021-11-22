@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 19 17:04:27 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.14.0:
+  - xfsprogs: introduce liburcu support
+  - xfsprogs: convert atomic to uatomic
+  - xfsprogs: convert utilities to use "fallthrough;"
+  - libxfs: port xfs_set_inode_alloc from kernel
+  - mkfs: warn about V4 deprecation
+  - xfs_db: convert agresv to use for_each_perag
+  - libxfs changes merged from kernel 5.14
+
+-------------------------------------------------------------------
 Thu Sep 30 16:43:35 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
 
 - move fsck.xfs, mkfs.xfs and xfs_repair from /sbin to /usr/sbin
