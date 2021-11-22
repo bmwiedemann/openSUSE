@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 19 12:36:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.4:
+  * Add DEL to standard set of space characters for word
+    operations.
+  * Add CARETSTYLE_CURSES to draw more than 1 caret on curses
+    terminal.
+  * On GTK, fix primary selection paste within same instance. Bug
+    #2287.
+  * On GTK, fix potential crash when closing Scintilla instances
+    due to releasing global settings object.
+  * GetLineEndTypesSupported returns LineEndType, not int. 
+
+-------------------------------------------------------------------
 Thu Oct 21 12:53:03 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.3:

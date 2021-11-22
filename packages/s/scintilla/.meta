@@ -12,5 +12,5 @@ contain markers like those used in debuggers to indicate breakpoints
 and the current line. Styling choices are more open than with many
 editors, allowing the use of proportional fonts, bold and italics,
 multiple foreground and background colours and multiple fonts.</description>
-  <devel project="server:database" package="scintilla"/>
+  <devel project="editors" package="scintilla"/>
 </package>
