@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:26:38 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- bnc#1092950
+  - improved invalid input handling for custom boot partition
+  - added support for defining custom boot partition by UUID and/or 
+    LABEL
+- 4.4.8
+
+-------------------------------------------------------------------
 Fri Sep 10 08:11:16 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix calling dracut to regenerate all initrds (bsc#1189915)
