@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 20 08:21:51 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211118.f21c64f:
+  * duplicate postfix entry for postfix-bdb, whitelistings are tied to pacakges in rpmlint2 and need to be there for every package
+  * Allow multiple spaces between paren
+
+-------------------------------------------------------------------
 Mon Nov 15 13:55:00 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211113.372a30e:

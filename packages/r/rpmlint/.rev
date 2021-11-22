@@ -3403,4 +3403,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add debuginfod user and update message.</comment>
     <requestid>931560</requestid>
   </revision>
+  <revision rev="369" vrev="1">
+    <srcmd5>5a1a553d6645b8da9d78da221489f10b</srcmd5>
+    <version>2.1+git20211118.f21c64f</version>
+    <time>1637618637</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211118.f21c64f:
+  * duplicate postfix entry for postfix-bdb, whitelistings are tied to pacakges in rpmlint2 and need to be there for every package
+  * Allow multiple spaces between paren</comment>
+    <requestid>932621</requestid>
+  </revision>
 </revisionlist>
