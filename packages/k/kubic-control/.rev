@@ -232,4 +232,13 @@
   - Fix cluster upgrade</comment>
     <requestid>918852</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c1bcc673079c35cf71f62a051e0e606f</srcmd5>
+    <version>0.12.2</version>
+    <time>1637618628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.2
+  - Disable transactional-update executor [bsc#1192619]</comment>
+    <requestid>932544</requestid>
+  </revision>
 </revisionlist>
