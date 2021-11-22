@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 19 13:27:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  * Allow overriding the quirks directory at runtime
+  * Fix a regression in flashing the Dell dock
+  * Fix probing the Dell TPM
+  * Show HSiLevel=0 attributes in JSON security output
+  * Abort on invalid SREC files early to avoid a fuzzing timeout
+  * This release adds support for the following hardware:
+    + AVer ATLAS CAM/CAM520 Pro2
+    + Cayenne/Spyder Synaptics MST
+    + VL819 USB devices
+- Changes from version 1.6.3:
+  * This release adds the following features: Fall back to the
+    parent if the child does not have a battery level set
+  * This release fixes the following bugs:
+    + Disable the uefi_capsule plugin if Redfish coldplug succeeded
+    + Fix an elantp crash when starting the daemon
+    + Fix compiling with old versions of libxmlb
+    + Fix detection of 8Bitdo wireless usb adapter
+    + Fix the 8bitdo N30 Pro 2 install duration
+    + Fix the modem-manager report that failed to get device after
+      update
+    + Fix writing large redfish firmware files
+  * This release adds support for the following hardware:
+    + Poly Studio P21
+    + Realtek RTD2141B
+- Switch service to obs_scm, and recompress to buildtime.
+- Drop automatic changesgenerate, upstream have perfectly fine and
+  human understandable release notes at
+  https://github.com/fwupd/fwupd/releases that should be copied
+  into .changes.
+
+-------------------------------------------------------------------
+Wed Nov 17 15:38:21 UTC 2021 - jlee@suse.com
+
+- Add requires to udisks2 for dbxtool update. (bnc#1192344)
+
+-------------------------------------------------------------------
 Fri Nov  5 14:02:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - If the machine we install onto has shim installed, it is likely

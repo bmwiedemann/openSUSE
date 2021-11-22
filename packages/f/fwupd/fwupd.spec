@@ -37,7 +37,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -117,6 +117,7 @@ Obsoletes:      fwupdate <= 12
 Provides:       dbxtool
 %ifarch x86_64 aarch64
 Requires:       shim >= 11
+Requires:       udisks2
 %endif
 %endif
 Requires:       (fwupd-efi if shim)
