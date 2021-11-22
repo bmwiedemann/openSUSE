@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 21 18:47:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.4.2
+  * Migrate Source from C to C++
+  * Prevent overlap of tachometer titles
+  * Improved standalone app layout
+  * Fix crash in hddtemp codepath with a SATA SSD drive
+  * Increase default temperature ranges of HDDs and NVIDIA GPUs by 10℃
+  * Remove default values from RC configuration files
+  * Suppress title after the user adds the 1st sensor
+  * Remove hard-coded limits restricting the maximum number of sensors
+  * Test all possible build configurations using brute-force search
+  * Use xfce4::connect instead of the less safe g_signal_connect
+  * Enable lm_sensors in GitLab distcheck
+  * Fix memory leaks
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jul 31 22:56:09 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.4.1

@@ -1,5 +1,5 @@
 #
-# spec file for package xfce4-sensors-plugin
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -20,7 +20,7 @@
 %define plugin sensors
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Hardware Sensor Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.4/%{name}-%
 # PATCH-FIX-UPSTREANM libxfce4ui.patch maurizio.galli@gmail.com -- require libxfce4ui-2 for devel package
 Patch0:         libxfce4ui.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
