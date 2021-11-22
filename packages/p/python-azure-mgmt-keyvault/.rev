@@ -122,4 +122,15 @@
     CHANGELOG.md file provided with this package (forwarded request 927501 from glaubitz)</comment>
     <requestid>927503</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8fcf37452ec08c1385cde1de6a68f627</srcmd5>
+    <version>9.3.0</version>
+    <time>1637618670</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 933087 from glaubitz)</comment>
+    <requestid>933101</requestid>
+  </revision>
 </revisionlist>
