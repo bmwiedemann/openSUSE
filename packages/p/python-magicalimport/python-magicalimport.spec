@@ -1,7 +1,7 @@
 #
 # spec file for package python-magicalimport
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,14 +46,16 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/examples
+ %fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst examples/
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/magicalimport*
 
 %changelog
