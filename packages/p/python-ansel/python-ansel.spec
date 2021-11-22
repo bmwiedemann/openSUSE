@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ansel
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Codecs for reading/writing documents in the ANSEL character set
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/haney/python-ansel
 Source:         https://files.pythonhosted.org/packages/source/a/ansel/ansel-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +42,8 @@ Codecs for reading/writing documents in the ANSEL character set.
 
 %prep
 %setup -q -n ansel-%{version}
+# https://github.com/haney/python-ansel/issues/109
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build

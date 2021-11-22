@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 19 12:29:38 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.2.0
+  * Improve encoding (~50%) and decoding (~25%) performance.
+  * Fix handling of combining characters that occur at the end of a file or before
+    a control character. In those cases an implicit space (`U+0020`) is
+    introduced.
+- do not require pytest-runner, it is not needed
+
+-------------------------------------------------------------------
 Mon May 17 06:14:44 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro
