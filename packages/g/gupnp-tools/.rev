@@ -304,4 +304,16 @@
     <comment> (forwarded request 901416 from dimstar)</comment>
     <requestid>902737</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>323709166ccbe95361c63edb49339a20</srcmd5>
+    <version>0.10.2</version>
+    <time>1637618660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.2:
+  + Universal CP: Fix format message error.
+  + Bugs fixed: glgo#GNOME/gupnp-tools!20,
+    glgo#GNOME/gupnp-tools!21.
+  + Updated translations. (forwarded request 931848 from iznogood)</comment>
+    <requestid>933063</requestid>
+  </revision>
 </revisionlist>

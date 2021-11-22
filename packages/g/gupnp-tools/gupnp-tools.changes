@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:05:01 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.2:
+  + Universal CP: Fix format message error.
+  + Bugs fixed: glgo#GNOME/gupnp-tools!20,
+    glgo#GNOME/gupnp-tools!21.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jun 22 13:57:27 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.1:
