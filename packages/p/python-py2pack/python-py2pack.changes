@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 20 09:46:31 UTC 2021 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Update to 0.8.7:
+  * Templates: collect generator output to list before adding to another list
+  * Add two dependencies for tests
+  * License is UNKNOWN if nothing determined
+  * Fix issue with pypi_search
+  * Do not crash when setup.py could not be run
+  * Use package name from PyPI for tarball name
+
+-------------------------------------------------------------------
 Thu Dec 10 12:17:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add missing python-requests to the runtime requirements

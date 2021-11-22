@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py2pack
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        Script for generating distribution packages from Python packages on PyPI
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/py2pack/py2pack
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module metaextract}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pypi-search}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 # SECTION doc requirements
@@ -39,6 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-metaextract
 Requires:       python-pbr
+Requires:       python-pypi-search
 Requires:       python-requests
 Requires:       python-setuptools
 Requires:       python-six
