@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-networktraversal
-Version:        1.0.0b1
+Version:        1.0.0b2
 Release:        0
 Summary:        Microsoft Azure Communication Network Traversal Service Client Library for Python
 License:        MIT
@@ -36,9 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.2.2
+Requires:       python-azure-core >= 1.19.1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.5.0
+Requires:       python-msrest >= 0.6.21
 BuildArch:      noarch
 %python_subpackages
 
