@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 16 16:05:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * shadowsocks-libev-client.service
+  * shadowsocks-libev-client@.service
+  * shadowsocks-libev-manager.service
+  * shadowsocks-libev-nat.service
+  * shadowsocks-libev-nat@.service
+  * shadowsocks-libev-redir.service
+  * shadowsocks-libev-redir@.service
+  * shadowsocks-libev-server.service
+  * shadowsocks-libev-server@.service
+  * shadowsocks-libev-tunnel.service
+  * shadowsocks-libev-tunnel@.service
+
+-------------------------------------------------------------------
 Sat Sep 19 10:47:47 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 3.3.5
