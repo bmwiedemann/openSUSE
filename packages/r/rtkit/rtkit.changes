@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 10:49:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_rtkit-daemon.service.patch
+
+-------------------------------------------------------------------
 Fri May 28 21:00:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace systemd-devel BuildRequires with pkgconfig(libsystemd):
