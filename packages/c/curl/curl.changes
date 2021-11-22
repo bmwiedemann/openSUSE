@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Nov 16 16:16:49 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.80.0:
+  * Changes:
+    - CURLOPT_MAXLIFETIME_CONN: maximum allowed lifetime for conn reuse
+    - CURLOPT_PREREQFUNCTION: add new callback
+    - libssh2: add SHA256 fingerprint support
+    - urlapi: add curl_url_strerror()
+  * Bugfixes:
+    - aws-sigv4: make signature work when post data is binary
+    - c-hyper: don't abort CONNECT responses early when auth-in-progress
+    - c-hyper: make CURLOPT_SUPPRESS_CONNECT_HEADERS work
+    - cmake: add CURL_ENABLE_SSL option
+    - cmake: with OpenSSL, define OPENSSL_SUPPRESS_DEPRECATED
+    - configure.ac: replace krb5-config with pkg-config
+    - configure: when hyper is selected, deselect nghttp2
+    - curl-confopts.m4: remove --enable/disable-hidden-symbols
+    - curl-openssl.m4: modify library order for openssl linking
+    - curl_ntlm_core: use OpenSSL only if DES is available
+    - Curl_updateconninfo: store addresses for QUIC connections too
+    - ftp: make the MKD retry to retry once per directory
+    - http: fix Basic auth with empty name field in URL
+    - http: reject HTTP response codes < 100
+    - http: remove assert that breaks hyper
+    - http: set content length earlier
+    - imap: display quota information
+    - libssh2: Get the version at runtime if possible
+    - md5: fix compilation with OpenSSL 3.0 API
+    - ngtcp2: advertise h3 as well as h3-29
+    - ngtcp2: compile with the latest nghttp3
+    - ngtcp2: use latest QUIC TLS RFC9001
+    - NTLM: use DES_set_key_unchecked with OpenSSL
+    - openssl: if verifypeer is not requested, skip the CA loading
+    - openssl: with OpenSSL 1.1.0+ a failed RAND_status means goaway
+    - schannel: fix memory leak due to failed SSL connection
+    - sendf: accept zero-length data in Curl_client_write()
+    - sha256: use high-level EVP interface for OpenSSL
+    - sws: fix memory leak on exit
+    - tool_operate: a failed etag save now only fails that transfer
+    - url: check the return value of curl_url()
+    - url: set "k->size" -1 at start of request
+    - urlapi: skip a strlen(), pass in zero
+    - urlapi: URL decode percent-encoded host names
+    - vtls: Fix a memory leak if an SSL session cannot be added to the cache
+    - wolfssl: use for SHA256, MD4, MD5, and setting DES odd parity
+* Use --with-openssl configure option, --with-ssl is now deprecated
+
+-------------------------------------------------------------------
 Wed Sep 22 11:17:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.79.1:
