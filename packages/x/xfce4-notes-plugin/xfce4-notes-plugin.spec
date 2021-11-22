@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfconf-0)
-BuildRequires:  pkgconfig(unique-1.0)
 BuildRequires:  pkgconfig(xfce4-vala)
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
