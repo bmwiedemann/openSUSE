@@ -42,8 +42,8 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 79ea9d308018
-%define git_commit_epoch 1632421578
+%define git_version 847da184ad50
+%define git_commit_epoch 1637194919
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
@@ -56,10 +56,10 @@
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.9_ce
+Version:        20.10.11_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.9-ce
+%define nice_version 20.10.11-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -94,8 +94,6 @@ Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
 Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42273. bsc#1183855 bsc#1175081
 Patch301:       0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
-# SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42836. bsc#1190670
-Patch302:       0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -121,7 +119,7 @@ Provides:       docker-libnetwork%{name_suffix} = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
 Requires:       runc >= 1.0.2
-Requires:       containerd >= 1.4.11
+Requires:       containerd >= 1.4.12
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -264,8 +262,6 @@ docker container runtime configuration for kubeadm
 %patch300 -p1
 # bsc#1183855 bsc#1175081
 %patch301 -p1
-# bsc#1190670
-%patch302 -p1
 
 # README_SUSE.md for documentation.
 cp %{SOURCE103} .

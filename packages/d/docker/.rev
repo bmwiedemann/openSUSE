@@ -1128,4 +1128,21 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>925301</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>f5dd9af4bb7f1d71641066a0c45b65c0</srcmd5>
+    <version>20.10.11_ce</version>
+    <time>1637618623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 20.10.11-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1192814 CVE-2021-41190
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+- Remove upstreamed patches:
+  - 0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch</comment>
+    <requestid>932375</requestid>
+  </revision>
 </revisionlist>

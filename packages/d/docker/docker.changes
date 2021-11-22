@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 18 08:35:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.11-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1192814 CVE-2021-41190
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+- Remove upstreamed patches:
+  - 0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch
+
+-------------------------------------------------------------------
 Wed Oct  6 02:51:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.9-ce. See upstream changelog in the packaged
