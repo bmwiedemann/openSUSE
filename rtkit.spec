@@ -26,6 +26,7 @@ License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          System/Base
 URL:            https://github.com/heftig/rtkit
 Source:         https://github.com/heftig/rtkit/releases/download/v%{version}/rtkit-%{version}.tar.xz
+Patch0:	harden_rtkit-daemon.service.patch
 BuildRequires:  automake
 BuildRequires:  libcap-devel
 BuildRequires:  pkg-config
@@ -47,6 +48,7 @@ scheduling to be used by normal user processes.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
