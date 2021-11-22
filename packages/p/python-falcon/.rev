@@ -118,4 +118,26 @@
     <comment>- No longer build for Python 2 given not all dependencies build for it.</comment>
     <requestid>785772</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ee69614aa4d0bc76b5cb9ce1064aea80</srcmd5>
+    <version>3.0.1</version>
+    <time>1637618640</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't create %%{python_sitelib}/examples directory, that' just
+  evil.
+
+- Update to version 3.0.1
+  This is a minor point release to take care of a couple of bugs
+  that we did not catch for 3.0.0.
+  - The api_helpers module was re-added, since it was renamed
+    to app_helpers (and effectively removed) without announcing
+    a corresponding breaking change. This module is now
+    considered deprecated, and will be removed in a future Falcon
+    version.
+  - ASGI HTTP headers were treated as UTF-8 encoded, not
+    taking the incompatibility with WSGI and porting of WSGI
+    applications into consideration. This was fixed, and ASGI
+    headers are now decoded and encoded as ISO-8859-1.</comment>
+    <requestid>933137</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-falcon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%define pythons python3
 Name:           python-falcon
-Version:        2.0.0
+Version:        3.0.1
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
@@ -31,34 +31,46 @@ Source:         https://github.com/falconry/falcon/archive/%{version}.tar.gz#./f
 # github pygments style is not available
 Patch0:         python-falcon-sphinx-pygments-style.patch
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module python-mimeparse >= 1.5.2}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six >= 1.4.0}
+BuildRequires:  %{python_module sphinx-tabs}
 # TODO: Cython support
 #BuildRequires:  %%{python_module Cython}
+%if 0%{?suse_version} >= 1550
+# SECTION test requirements
+BuildRequires:  %{python_module aiofiles}
+BuildRequires:  %{python_module aioredis}
+BuildRequires:  %{python_module cbor2}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module fixtures >= 1.3.0}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module msgpack-python}
 BuildRequires:  %{python_module pecan}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-httpx}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-mimeparse >= 1.5.2}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module ujson}
+BuildRequires:  %{python_module uvicorn}
+BuildRequires:  %{python_module websockets}
+# /SECTION
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pygments-style-railscasts
 #Requires:       python-Cython
 Requires:       python-python-mimeparse
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
+Requires(postun):update-alternatives
 Suggests:       %{name}-doc
-%endif
+BuildArch:      noarch
 %python_subpackages
 
 %package -n %{name}-doc
@@ -78,41 +90,53 @@ HTML documentation including API documentation and changelog for %{name}.
 %setup -q -n falcon-%{version}
 %patch0 -p1
 # remove unwanted shebang
-sed -i '1s/^#!.*//' falcon/bench/bench.py falcon/cmd/print_routes.py falcon/bench/dj/manage.py
+sed -i '1s/^#!.*//' falcon/bench/bench.py falcon/cmd/inspect_app.py falcon/bench/dj/manage.py
 chmod a-x falcon/bench/dj/manage.py
 # we don't want to require rapidjson just for testing
 rm tests/test_media_handlers.py
+# Hidden files are evil
+rm examples/asgilook/.coveragerc
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
+export PYTHONPATH="$(pwd)"
 pushd docs
-PYTHONPATH=$PATH:.. make html
+make html
 rm _build/html/.buildinfo
 popd
 
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/falcon-bench
+%python_clone -a %{buildroot}%{_bindir}/falcon-inspect-app
 %python_clone -a %{buildroot}%{_bindir}/falcon-print-routes
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
+ %fdupes %{buildroot}%{$python_sitelib}
+}
 
+%if 0%{?suse_version} >= 1550
+# We do not have the following package on Leap 15.3
+#   python-httpx
+#   python-pytest-trio
 %check
 export LANG=en_US.UTF8
-%pytest
+%pytest tests
+%endif
 
 %post
-%{python_install_alternative falcon-bench falcon-print-routes}
+%{python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes}
 
 %postun
-%{python_uninstall_alternative falcon-bench falcon-print-routes}
+%{python_uninstall_alternative falcon-bench falocn-inspect-app falcon-print-routes}
 
 %files %{python_files}
-%doc README.rst CHANGES.rst
+%doc README.rst CHANGES.rst examples/
 %license LICENSE
 %python_alternative %{_bindir}/falcon-bench
+%python_alternative %{_bindir}/falcon-inspect-app
 %python_alternative %{_bindir}/falcon-print-routes
-%{python_sitelib}/*
+%{python_sitelib}/falcon*
 
 %files -n %{name}-doc
 %doc docs/_build/html

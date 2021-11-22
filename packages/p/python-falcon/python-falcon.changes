@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 22 16:25:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't create %%{python_sitelib}/examples directory, that' just
+  evil.
+
+-------------------------------------------------------------------
+Wed Nov 17 12:09:52 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.0.1
+  This is a minor point release to take care of a couple of bugs
+  that we did not catch for 3.0.0.
+  - The api_helpers module was re-added, since it was renamed
+    to app_helpers (and effectively removed) without announcing
+    a corresponding breaking change. This module is now
+    considered deprecated, and will be removed in a future Falcon
+    version.
+  - ASGI HTTP headers were treated as UTF-8 encoded, not
+    taking the incompatibility with WSGI and porting of WSGI
+    applications into consideration. This was fixed, and ASGI
+    headers are now decoded and encoded as ISO-8859-1.
+
+-------------------------------------------------------------------
 Tue Mar 17 04:47:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - No longer build for Python 2 given not all dependencies build for it.
