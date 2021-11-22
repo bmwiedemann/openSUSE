@@ -1905,4 +1905,16 @@ for 12.3</comment>
   * cleanup: remove polkit-rules-whitelist.json</comment>
     <requestid>924174</requestid>
   </revision>
+  <revision rev="206" vrev="2">
+    <srcmd5>80795b7640ffde01328c6a00b98f339b</srcmd5>
+    <version>1550+20211008.9751669</version>
+    <time>1637618628</time>
+    <user>dimstar_suse</user>
+    <comment>- Change Requires: polkit to Requires(pre): we need to be sure
+  polkit is instaled first, as we could otherwise end up with wrong
+  permissions on /etc/polkit-1/rules.d.
+
+- remove traces of old polkit-whitelisting sub-package</comment>
+    <requestid>932545</requestid>
+  </revision>
 </revisionlist>

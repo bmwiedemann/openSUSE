@@ -30,10 +30,10 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Source:         polkit-default-privs-%version.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  polkit
-Requires:       polkit
 Supplements:    PolicyKit
 Supplements:    libpolkit0
+BuildRequires:  polkit
+Requires(pre):  polkit
 Supplements:    polkit
 BuildArch:      noarch
 # please open bugreports at bugzilla.suse.com
@@ -44,18 +44,6 @@ PreReq:         %fillup_prereq
 Predefined polkit profiles for different usage scenarios like desktop and
 server. These profiles define the kind of authentication required for various
 polkit actions used across applications.
-
-# use a separate package for the static whitelist (i.e. the one that isn't
-# part of the different profiles selectable during runtime). This whitelist is
-# of no use for users and only needed during rpmlint time.
-%package -n polkit-whitelisting
-Summary:        Static polkit whitelists for processing by rpmlint-checks
-Group:          Productivity/Security
-
-%description -n polkit-whitelisting
-This package contains static polkit whitelistings for polkit Java Script rule
-files. The whitelistings will be processed by rpmlint-checks to determine
-valid rule file installations by other packages.
 
 %prep
 %setup -q
@@ -74,8 +62,9 @@ mkdir -p $RPM_BUILD_ROOT/etc/polkit-1/rules.d/
 %files
 %define basedir %{_distconfdir}/polkit-default-privs
 %define profiledir %{basedir}/profiles
+%define confdir /etc/polkit-1
 %doc README.md
-%ghost %attr(0644,root,root) /etc/polkit-1/rules.d/90-default-privs.rules
+%ghost %attr(0644,root,root) %{confdir}/rules.d/90-default-privs.rules
 %dir %{basedir}
 %dir %{profiledir}
 %{profiledir}/easy
