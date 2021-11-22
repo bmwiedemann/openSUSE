@@ -4193,4 +4193,19 @@
 - wine-fix-faudio.patch: removed, fixed upstream</comment>
     <requestid>930000</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>b63008de8bdfecc6a0fcc4c1db4a1637</srcmd5>
+    <version>6.22</version>
+    <time>1637618659</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.22 development release
+  - Mono engine updated to version 7.0.0.
+  - Exception unwinding on ARM.
+  - More improvements to HID joystick support.
+  - WoW64 thunks in a number of Unix libraries.
+  - Beginnings of moving USER32 to Win32u.
+  - Various bug fixes.
+- update staging to 6.22 release</comment>
+    <requestid>933006</requestid>
+  </revision>
 </revisionlist>

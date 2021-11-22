@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.21
-Version:        6.21
+%define realver 6.22
+Version:        6.22
 Release:        0
 
 %if "%{flavor}" != ""
@@ -161,7 +161,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.21
+%define staging_version 6.22
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -488,7 +488,6 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wrc
 %dir %{_libdir}/wine/*-unix
 %{_libdir}/wine/*-unix/*.a
-%{_libdir}/wine/*-unix/*.def
 %if 0%{?suse_version} >= 1550
 %ifarch %{ix86} x86_64
 # only generated with mingw
