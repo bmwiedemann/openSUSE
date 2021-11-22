@@ -1606,4 +1606,20 @@
   ibus daemon is up and running</comment>
     <requestid>917589</requestid>
   </revision>
+  <revision rev="160" vrev="7">
+    <srcmd5>4f7209f20c55a970775a08945d50c455</srcmd5>
+    <version>27.2</version>
+    <time>1637618629</time>
+    <user>dimstar_suse</user>
+    <comment>- Get rid of the old dbus shell code in the emacs shell script
+  nowadays this should be not needed anymore
+
+- Make dbus code in emacs shell script failsafe
+
+- Enable the NO_AT_BRIDGE code 
+
+- Again disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1191517) 
+- Correct quoting of anonymous function calls</comment>
+    <requestid>932549</requestid>
+  </revision>
 </revisionlist>

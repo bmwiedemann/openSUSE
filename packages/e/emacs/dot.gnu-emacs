@@ -153,6 +153,14 @@
       ;; (A few changes on ispell)
       (setq ispell-highlight-face 'underline);)
   ;;
+  ;; Geomtry and layout
+  ;;
+; (setq initial-frame-alist 
+;   '((vertical-scroll-bars . right) (height . 34) (width . 80)))
+; (setq default-frame-alist
+;   '((vertical-scroll-bars . right) (height . 34) (width . 80)))
+
+  ;;
   ;; Some fonts
   ;; -----------------------
   (if (> emacs-major-version 20) (require 'xfonts))
@@ -200,7 +208,7 @@
          (setq font-lock-support-mode '((latex-mode . fast-lock-mode) (t . jit-lock-mode))))
         ((and (boundp 'lazy-lock-mode) (symbol-value 'lazy-lock-mode))
          (setq font-lock-support-mode '((latex-mode . fast-lock-mode) (t . lazy-lock-mode)))))
-  (add-hook 'after-init-hook '(lambda () (global-font-lock-mode 1)))
+  (add-hook 'after-init-hook #'(lambda () (global-font-lock-mode 1)))
 
   ;;
   ;; Some dialog
@@ -233,8 +241,8 @@
 ;	   (sit-for 0)
 ;	   (make-frame-visible foo))
 ;       (accept-process-output))))
-;(add-hook 'server-switch-hook '(lambda () (server-make-window-visible)))
-;(add-hook 'server-visit-hook  '(lambda () (server-make-window-visible)))
+;(add-hook 'server-switch-hook #'(lambda () (server-make-window-visible)))
+;(add-hook 'server-visit-hook  #'(lambda () (server-make-window-visible)))
 ;; Start it for popup
 ;(server-start)
 ;;
@@ -256,7 +264,7 @@
 (if (or (and (= emacs-major-version 19) (> emacs-minor-version 29))
 	(> emacs-major-version 19))
      (add-hook 'gnus-select-group-hook
-	'(lambda ()
+	#'(lambda ()
 	  (setq-default gnus-auto-select-first nil)
 	  (setq-default gnus-auto-center-summary nil)
 	  (setq gnus-thread-sort-functions
@@ -265,7 +273,7 @@
 	     gnus-thread-sort-by-date
 	     gnus-thread-sort-by-score))))
    (add-hook 'gnus-select-group-hook
-	'(lambda ()
+	#'(lambda ()
 	  (setq-default gnus-auto-select-first nil)
 	  (setq-default gnus-auto-center-summary nil)
 	  ;; First of all, sort by date.
@@ -287,9 +295,9 @@
 )
 ;; highlighting, menus, and subscribing in GNUS
 (add-hook 'gnus-startup-hook
-     '(lambda ()
+     #'(lambda ()
 	(setq gnus-subscribe-newsgroup-method
-	'(lambda (newsgroup)
+	#'(lambda (newsgroup)
 	   (gnus-subscribe-newsgroup newsgroup)
 	   (gnus-kill-newsgroup newsgroup)))
 	(setq gnus-use-generic-from t)
@@ -318,8 +326,9 @@
 ;;
 ;; Common to all C modes
 ;; ---------------------
+;(autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
 ;(add-hook 'c-mode-common-hook
-;   '(lambda () (c-set-style "linux")
+;   #'(lambda () (c-set-style "linux")
 ;	(c-set-offset 'case-label 4)
 ;	(setq c-basic-offset 4)))
 
@@ -332,7 +341,7 @@
 ;; -----------
 ;;    Fill-column ist hier auf 78 Charakter gesetzt, nach Wunsch "andern!
 (setq-default fill-column 78)
-(add-hook 'TeX-mode-hook '(lambda () (setq fill-column 78)))
+(add-hook 'TeX-mode-hook #'(lambda () (setq fill-column 78)))
 ;;
 ;; AUC-TeX
 ;; ----------------------------
@@ -357,7 +366,7 @@
 	  (progn
 	    (add-hook 'LaTeX-mode-hook 'turn-on-font-lock)
 	    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-	    (add-hook 'after-init-hook '(lambda () (load "auctex/font-latex" nil t)))))))
+	    (add-hook 'after-init-hook #'(lambda () (load "auctex/font-latex" nil t)))))))
 ))
 
 ;;
@@ -375,7 +384,7 @@
 (defun TeX-dollarm () (interactive "*") (TeX-Inserting ?\\ "$"  "$$"))
 (defun TeX-REVbbox () (interactive "*") (TeX-Inserting ?\\ "bbox{"  "\\bbox{}"))
 (add-hook 'LaTeX-mode-hook
-      '(lambda ()
+      #'(lambda ()
 	 ;; Uncomment this for automatic bracket closing
 	 ;; Begin bracket closing
 ;	 (local-set-key  "{" 'TeX-schweif)

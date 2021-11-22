@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 19 14:16:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Get rid of the old dbus shell code in the emacs shell script
+  nowadays this should be not needed anymore
+
+-------------------------------------------------------------------
+Fri Nov 19 11:56:17 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make dbus code in emacs shell script failsafe
+
+-------------------------------------------------------------------
+Fri Nov 19 10:54:09 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enable the NO_AT_BRIDGE code 
+
+-------------------------------------------------------------------
+Mon Nov 15 13:07:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Again disable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1191517) 
+- Correct quoting of anonymous function calls
+
+-------------------------------------------------------------------
 Wed Sep  8 09:05:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Work for boo#1183497: make sure that if ibus is the input method
