@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 11:17:27 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix libalternatives configuration for ebtables and arptables
+  by keeping argv0, fixes bsc#1192799.
+
+-------------------------------------------------------------------
 Wed Oct 20 11:15:19 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Added alts requirements for iptables-backend-nft package.

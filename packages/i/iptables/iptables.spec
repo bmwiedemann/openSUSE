@@ -229,6 +229,7 @@ mkdir -pv $b/%_datadir/libalternatives/arptables
 cat >"$b/%_datadir/libalternatives/arptables/2.conf" <<-EOF
 	binary=%_sbindir/xtables-nft-multi
 	group=arptables, arptables-restore, arptables-save
+	options=KeepArgv0
 EOF
 for i in arptables-restore arptables-save; do
 	mkdir -pv "$b/%_datadir/libalternatives/$i"
@@ -239,6 +240,7 @@ mkdir -p "$b/%_datadir/libalternatives/ebtables"
 cat >"$b/%_datadir/libalternatives/ebtables/2.conf" <<-EOF
 	binary=%_sbindir/xtables-nft-multi
 	group=ebtables, ebtables-restore, ebtables-save
+	options=KeepArgv0
 EOF
 for i in ebtables-restore ebtables-save; do
 	mkdir -pv "$b/%_datadir/libalternatives/$i"
