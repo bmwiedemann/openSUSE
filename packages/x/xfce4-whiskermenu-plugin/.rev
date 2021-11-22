@@ -484,4 +484,32 @@
     <comment></comment>
     <requestid>931513</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e96f4bb5d16617673710e2c9f630520</srcmd5>
+    <version>2.7.0</version>
+    <time>1637618650</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0
+  * Add showing categories as icons on top or bottom.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#62)
+  * Add hiding username.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#36)
+  * Add rounded profile picture.
+  * Add optional AccountsService support.
+  * Add catfish search action.
+  * Add CSS classes for theming.
+  * Improve search result relevance.
+  * Make stripping release builds optional.
+  * Rearrange settings dialog.
+  * Remove sliding out search results.
+  * Remove useless grab check.
+  * Rename icon to follow reverse DNS scheme.
+  * Replace size grip with resizing from edges.
+  * Replace slots with lambdas.
+  * Use original menu layout.
+  * Use dm-tool for switching users.
+  * Translation updates
+</comment>
+    <requestid>932924</requestid>
+  </revision>
 </revisionlist>

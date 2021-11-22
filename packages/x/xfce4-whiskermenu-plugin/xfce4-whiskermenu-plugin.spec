@@ -19,13 +19,13 @@
 %define panel_version 4.12.0
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.6.2
+Version:        2.7.0
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.6/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.7/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -83,7 +83,7 @@ make %{?_smp_mflags} VERBOSE=1
 %license COPYING
 %{_bindir}/xfce4-popup-whiskermenu
 %{_libdir}/xfce4/panel/plugins/libwhiskermenu.so
-%{_datadir}/icons/hicolor/*/*/xfce4-whiskermenu.*
+%{_datadir}/icons/hicolor/*/apps/org.xfce.panel.whiskermenu.*
 %{_datadir}/xfce4/panel/plugins/whiskermenu.desktop
 %{_mandir}/man?/xfce4-popup-whiskermenu.*
 

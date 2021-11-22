@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 21 18:44:29 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.7.0
+  * Add showing categories as icons on top or bottom.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#62)
+  * Add hiding username.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#36)
+  * Add rounded profile picture.
+  * Add optional AccountsService support.
+  * Add catfish search action.
+  * Add CSS classes for theming.
+  * Improve search result relevance.
+  * Make stripping release builds optional.
+  * Rearrange settings dialog.
+  * Remove sliding out search results.
+  * Remove useless grab check.
+  * Rename icon to follow reverse DNS scheme.
+  * Replace size grip with resizing from edges.
+  * Replace slots with lambdas.
+  * Use original menu layout.
+  * Use dm-tool for switching users.
+  * Translation updates
+
+-------------------------------------------------------------------
 Sun Nov 14 16:24:34 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.6.2
