@@ -1,7 +1,7 @@
 #
 # spec file for package barrel
 #
-# Copyright (c) 2021 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,37 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           barrel
-Version:        0.0.5
+Version:        0.0.7
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         barrel-%{version}.tar.xz
 
 %if 0%{?fedora_version}
 BuildRequires:  boost-devel
-BuildRequires:  json-c-devel
 BuildRequires:  docbook-style-xsl
+BuildRequires:  json-c-devel
 %else
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  docbook-xsl-stylesheets
 %endif
-BuildRequires:  libstorage-ng-devel >= 4.4.44
+BuildRequires:  fdupes
+BuildRequires:  libstorage-ng-devel >= 4.4.57
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  readline-devel
 
-Requires:       libstorage-ng1 >= 4.4.50
+Requires:       libstorage-ng1 >= 4.4.57
+Recommends:     %{name}-lang
 
 Summary:        Tool for storage management
-Url:            http://github.com/aschnell/barrel
+URL:            http://github.com/aschnell/barrel
 License:        GPL-2.0-only
 Group:          System/Packages
 
@@ -64,6 +67,10 @@ make %{?_smp_mflags} check VERBOSE=1
 %install
 %make_install
 
+%fdupes -s %{buildroot}
+
+%find_lang barrel
+
 %files
 %defattr(-,root,root)
 %{_sbindir}/barrel
@@ -72,5 +79,18 @@ make %{?_smp_mflags} check VERBOSE=1
 %doc %{_docdir}/%{name}/AUTHORS
 %doc %{_mandir}/*/barrel.8*
 %license %{_docdir}/%{name}/LICENSE
+
+%package lang
+Summary:        Languages for package %{name}
+Group:          System/Localization
+Supplements:    %{name}
+Provides:       %{name}-lang-all = %{version}
+BuildArch:      noarch
+
+%description lang
+Provides translations to the package %{name}
+
+%files lang -f barrel.lang
+%defattr(-,root,root)
 
 %changelog
