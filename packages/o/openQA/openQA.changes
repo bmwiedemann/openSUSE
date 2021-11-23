@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 23 16:14:02 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1637672074.afbb8ee35:
+  * use printf (shellcheck SC2028)
+  * Add option of using git-lfs to fetchneedles
+  * Improve fetchneedles --help output
+  * Fail on unexpected Javascript console errors
+  * Prevent confusion about "priority"
+
+-------------------------------------------------------------------
 Sun Nov 21 08:03:53 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1637407518.4c2ce7ada:
