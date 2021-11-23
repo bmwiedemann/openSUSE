@@ -614,4 +614,13 @@
     <comment></comment>
     <requestid>927397</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>74978700609805904772c885471ec886</srcmd5>
+    <version>1.56.1</version>
+    <time>1637701781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.56.1
+- See also sr 930569</comment>
+    <requestid>930570</requestid>
+  </revision>
 </revisionlist>

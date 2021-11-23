@@ -17,10 +17,11 @@
 #
 
 
-%global version_suffix 1.55
-%global version_current 1.55.0
+%global version_suffix 1.56
+%global version_current 1.56.1
 
 %define obsolete_rust_versioned() \
+Obsoletes:      %{1}1.55%{?2:-%{2}} \
 Obsoletes:      %{1}1.54%{?2:-%{2}} \
 Obsoletes:      %{1}1.53%{?2:-%{2}} \
 Obsoletes:      %{1}1.52%{?2:-%{2}} \
