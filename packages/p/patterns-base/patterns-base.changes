@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 16:41:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- x11 pattern: Require xf86-input-libinput also on s390x 
+  (JIRA#SLE-18632)
+
+-------------------------------------------------------------------
 Tue Nov  9 10:44:13 UTC 2021 - Guilherme Moro <gmoro@suse.com>
 
 - Add filesystem tools to base for SLE  (bsc#1095916)

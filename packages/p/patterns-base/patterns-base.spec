@@ -798,6 +798,7 @@ Recommends:     pattern() = x11_enhanced
 Requires:       pattern() = basic_desktop
 %endif
 
+Requires:       xf86-input-libinput
 Requires:       xorg-x11-fonts-core
 Requires:       xorg-x11-server
 Recommends:     dejavu-fonts
@@ -821,7 +822,6 @@ Recommends:     yast2-control-center
 
 # bsc#1071953
 %ifnarch s390 s390x
-Requires:       xf86-input-libinput
 Recommends:     xf86-input-vmmouse
 Recommends:     xf86-input-wacom
 %endif
