@@ -72,7 +72,7 @@ BuildRequires:  python3
 %else
 BuildRequires:  python2
 %endif
-%ifnarch ppc64 ppc64le armv7l
+%ifnarch ppc64 ppc64le armv7l s390x
 BuildRequires:  pkgconfig(xenstat)
 %endif
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500

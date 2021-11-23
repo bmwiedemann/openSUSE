@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 23 07:37:53 UTC 2021 - Wolfgang Engel <wolfgang.engel@suse.com>
+
+- Fix build on s390x
+  (Adding s390x to ifnarch statement for xenstat in spec file)
+
+-------------------------------------------------------------------
 Wed Jun 23 18:19:51 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.31.0 (go.d.plugin 0.29.0)
