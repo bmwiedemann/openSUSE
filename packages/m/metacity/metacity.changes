@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.42.0:
+  * Enable XPresent compositor.
+  * Fix regression in opacity handling.
+  * Fix tooltip style.
+  * Update translations.
+- Add metacity-glib-2.62.patch: Restore GLib 2.62 support.
+
+-------------------------------------------------------------------
 Sun Aug 22 11:18:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim em dash grammar from summaries. Trim filler wording

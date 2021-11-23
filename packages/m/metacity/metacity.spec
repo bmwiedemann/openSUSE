@@ -18,14 +18,17 @@
 
 %define soname  libmetacity
 %define sover   3
-%define _version 3.40
+%define _version 3.42
 Name:           metacity
-Version:        3.40.0
+Version:        3.42.0
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://wiki.gnome.org/Projects/Metacity
 Source:         https://download.gnome.org/sources/metacity/%{_version}/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-OPENSUSE metacity-glib-2.62.patch -- Restore GLib 2.62 support.
+Patch0:         %{name}-glib-2.62.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext
@@ -103,7 +106,7 @@ This package contains all necessary include files and libraries
 needed to develop applications that require libmetacity.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -118,7 +121,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
