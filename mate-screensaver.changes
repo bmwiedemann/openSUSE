@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * gs-theme-manager: Reload on menu_tree changed.
+  * Prompt-driven auth. helper.
+  * Update translations.
+
+-------------------------------------------------------------------
 Fri Aug 13 11:49:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
