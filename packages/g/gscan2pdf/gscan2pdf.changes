@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 21 01:50:04 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.4:
+  * Fixed writing text layer to DjVu where tesseract used text type
+    "header".
+  * Dropped support for ocropus.
+  * Translation updates.
+
+-------------------------------------------------------------------
 Sun Sep 19 14:18:58 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 2.12.3:
