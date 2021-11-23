@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aedbf5db3cacc898c022216def5d810d</srcmd5>
+    <version>0.9</version>
+    <time>1637701821</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging required by libwacom (bsc#1192852).</comment>
+    <requestid>932834</requestid>
+  </revision>
+</revisionlist>
