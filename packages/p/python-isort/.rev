@@ -443,4 +443,12 @@ Let's see which package is missing in ringX for test flavor</comment>
   health checks (forwarded request 928402 from bnavigator)</comment>
     <requestid>928403</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a93fdeb6907a422739f03ac05b7883c1</srcmd5>
+    <version>5.10.1</version>
+    <time>1637701820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>932831</requestid>
+  </revision>
 </revisionlist>
