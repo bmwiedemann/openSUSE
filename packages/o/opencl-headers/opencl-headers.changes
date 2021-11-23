@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 23 08:13:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2+git.20211122:
+  * update headers for cl_intel_unified_shared_memory (#184)
+  * Add provisional command-buffer extension (#182)
+  * Rename cl_intel_thread_local_exec to cl_intel_exec_by_local_thread (#183)
+  * Fix API suffix version macros for semaphore extensions command definitions (#181)
+  * If change the include path destination when run cmake configure with `DCMAKE_INSTALL_INCLUDEDIR`, the .cmake generated still point to hardcoded path `include`. this fix it (#178)
+  * add external memory, external semaphore, and semaphore provisional extensions (#180)
+  * Fix condition for warning 4201 pop (#179)
+  * update extension headers for cl_intel_device_attribute_query (#172)
+  * update extension headers for cl_intel_sharing_format_query (#171)
+  * Add support for cl_khr_integer_dot_product v2 (#174)
+  * update headers for cl_khr_integer_dot_product (#170)
+
+-------------------------------------------------------------------
 Mon May 17 08:02:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2+git.20210426:

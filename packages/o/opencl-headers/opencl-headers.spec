@@ -17,7 +17,7 @@
 
 
 Name:           opencl-headers
-Version:        2.2+git.20210426
+Version:        2.2+git.20211122
 Release:        0
 Summary:        OpenCL (Open Computing Language) headers
 License:        MIT
