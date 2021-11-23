@@ -16,7 +16,7 @@
 #
 
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define module_api %(qore --latest-module-api 2>/dev/null)
 %define src_name module-json-release-%{qore_version}
 Name:           qore-json-module
@@ -33,7 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  openssl-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9.5
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
