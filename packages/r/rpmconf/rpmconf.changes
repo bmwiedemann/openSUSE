@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.1.4 (changes since 1.0.19):
+  * Better handle message after merging.
+  * Add sdiff support (gh#xsuchy/rpmconf#51).
+  * rpmconf.sgml: Improve readability.
+  * Drop the deprecated no-op "U" mode for open() for Python 3.9+.
+  * Fix short version of --version.
+  * Implement --root option.
+  * initialise rpm transaction faster.
+  * Do not traceback when Ctrl+C.
+  * Do not go over all packages if neither -a or -o is set.
+  * Implement --exclude.
+  * Implement unattended mode.
+  * Move init section after sleep() so it can be interrupted by ^C.
+- Fix version in the released RPM.
+- BuildRequire make.
+
+-------------------------------------------------------------------
 Tue May  9 16:45:47 UTC 2017 - sor.alexei@meowr.ru
 
 - Update to version 1.0.19:
