@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 22 22:44:13 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.1:
+  * Fixed bugs in parsing foot.ini for letter-spacing, pipe-* key bindings, etc
+    that were introduced in 1.10.0.
+  * Added XDG desktop file for footclient.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.1 for more details.
+
+-------------------------------------------------------------------
+Sun Nov 21 01:44:45 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Rename foot-direct-extra terminfo file to foot-extra-direct, to match
+  upstream's wishes.
+
+-------------------------------------------------------------------
 Sun Nov 14 20:04:50 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.10.0:

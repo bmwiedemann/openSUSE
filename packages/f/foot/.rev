@@ -136,4 +136,19 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.10.0 for more details.</comment>
     <requestid>931434</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>33d7e30a49abbde68282828d38a57672</srcmd5>
+    <version>1.10.1</version>
+    <time>1637701831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.1:
+  * Fixed bugs in parsing foot.ini for letter-spacing, pipe-* key bindings, etc
+    that were introduced in 1.10.0.
+  * Added XDG desktop file for footclient.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.1 for more details.
+
+- Rename foot-direct-extra terminfo file to foot-extra-direct, to match
+  upstream's wishes.</comment>
+    <requestid>933175</requestid>
+  </revision>
 </revisionlist>

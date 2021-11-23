@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -50,7 +50,7 @@ Summary:        Extra terminfo files for the foot terminal emulator
 %description extra-terminfo
 This package contains extra terminfo files for the foot terminal emulator
 that provide more features than the files in the terminfo-base package.
-Set term=foot-extra or term=foot-direct-extra in foot.ini to
+Set term=foot-extra or term=foot-extra-direct in foot.ini to
 take advantage of the files in this package.
 
 %prep
@@ -63,7 +63,7 @@ take advantage of the files in this package.
 %install
 %meson_install
 mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-extra
-mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-extra
+mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-extra-direct
 
 %files
 %license LICENSE
@@ -71,6 +71,7 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_bindir}/foot
 %{_bindir}/footclient
 %{_datadir}/applications/foot.desktop
+%{_datadir}/applications/footclient.desktop
 %{_datadir}/applications/foot-server.desktop
 %{_datadir}/bash-completion/
 %{_datadir}/doc/%{name}/
@@ -85,6 +86,6 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 
 %files extra-terminfo
 %{_datadir}/terminfo/f/foot-extra
-%{_datadir}/terminfo/f/foot-direct-extra
+%{_datadir}/terminfo/f/foot-extra-direct
 
 %changelog
