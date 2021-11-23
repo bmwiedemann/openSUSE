@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 23 17:38:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.1.7:
+  - pylsp-rope now work on unsaved buffers. This support is
+    currently experimental.
+  - New Refactoring:
+    - Implement local to field refactoring
+    - Implement organize import code action
+
+-------------------------------------------------------------------
 Tue Oct 12 05:16:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.1.6:

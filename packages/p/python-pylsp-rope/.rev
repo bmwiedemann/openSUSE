@@ -32,4 +32,18 @@
 </comment>
     <requestid>924932</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4ad65c0d2da4084f5d1feeb020fcb98</srcmd5>
+    <version>0.1.7</version>
+    <time>1637701848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.7:
+  - pylsp-rope now work on unsaved buffers. This support is
+    currently experimental.
+  - New Refactoring:
+    - Implement local to field refactoring
+    - Implement organize import code action
+</comment>
+    <requestid>933307</requestid>
+  </revision>
 </revisionlist>
