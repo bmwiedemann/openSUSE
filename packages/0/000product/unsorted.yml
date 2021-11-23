@@ -3032,7 +3032,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -16720,6 +16719,7 @@ unsorted:
   - myspell-zu_ZA 
   - mysql-connector-java 
   - mysql-workbench: [x86_64] 
+  - mysql-xml-to-csv 
   - mythes-devel 
   - mytop 
   - naev 
@@ -21676,7 +21676,6 @@ unsorted:
   - python36-WTForms 
   - python36-WTForms-lang 
   - python36-Wand 
-  - python36-WeasyPrint 
   - python36-WebOb 
   - python36-WebTest 
   - python36-Werkzeug 
@@ -21932,6 +21931,7 @@ unsorted:
   - python36-azure-mgmt-communication 
   - python36-azure-mgmt-compute 
   - python36-azure-mgmt-confluent 
+  - python36-azure-mgmt-connectedvmware 
   - python36-azure-mgmt-consumption 
   - python36-azure-mgmt-containerinstance 
   - python36-azure-mgmt-containerregistry 
@@ -22038,6 +22038,7 @@ unsorted:
   - python36-azure-mgmt-storage 
   - python36-azure-mgmt-storagecache 
   - python36-azure-mgmt-storageimportexport 
+  - python36-azure-mgmt-storagepool 
   - python36-azure-mgmt-storagesync 
   - python36-azure-mgmt-streamanalytics 
   - python36-azure-mgmt-subscription 
@@ -22049,6 +22050,8 @@ unsorted:
   - python36-azure-mgmt-videoanalyzer 
   - python36-azure-mgmt-vmwarecloudsimple 
   - python36-azure-mgmt-web 
+  - python36-azure-mgmt-webpubsub 
+  - python36-azure-mixedreality-authentication 
   - python36-azure-mixedreality-nspkg 
   - python36-azure-monitor 
   - python36-azure-monitor-nspkg 
@@ -22064,6 +22067,7 @@ unsorted:
   - python36-azure-sdk 
   - python36-azure-search-documents 
   - python36-azure-search-nspkg 
+  - python36-azure-security-attestation 
   - python36-azure-security-nspkg 
   - python36-azure-servicebus 
   - python36-azure-servicefabric 
@@ -22553,7 +22557,6 @@ unsorted:
   - python36-factory_boy 
   - python36-fake-useragent 
   - python36-fakeredis 
-  - python36-falcon 
   - python36-fanficfare 
   - python36-fann2 
   - python36-fasteners 
@@ -23814,7 +23817,6 @@ unsorted:
   - python36-rt 
   - python36-rtslib-fb 
   - python36-ruamel.base 
-  - python36-ruamel.std.argparse 
   - python36-ruamel.std.pathlib 
   - python36-ruamel.yaml 
   - python36-ruamel.yaml.clib 
@@ -24174,6 +24176,7 @@ unsorted:
   - python36-watchgod 
   - python36-watermark 
   - python36-wcwidth 
+  - python36-weasyprint 
   - python36-web.py 
   - python36-web_cache 
   - python36-webassets 
@@ -24480,7 +24483,6 @@ unsorted:
   - python38-WTForms 
   - python38-WTForms-lang 
   - python38-Wand 
-  - python38-WeasyPrint 
   - python38-WebOb 
   - python38-WebTest 
   - python38-Werkzeug 
@@ -24738,6 +24740,7 @@ unsorted:
   - python38-azure-mgmt-communication 
   - python38-azure-mgmt-compute 
   - python38-azure-mgmt-confluent 
+  - python38-azure-mgmt-connectedvmware 
   - python38-azure-mgmt-consumption 
   - python38-azure-mgmt-containerinstance 
   - python38-azure-mgmt-containerregistry 
@@ -24844,6 +24847,7 @@ unsorted:
   - python38-azure-mgmt-storage 
   - python38-azure-mgmt-storagecache 
   - python38-azure-mgmt-storageimportexport 
+  - python38-azure-mgmt-storagepool 
   - python38-azure-mgmt-storagesync 
   - python38-azure-mgmt-streamanalytics 
   - python38-azure-mgmt-subscription 
@@ -24855,6 +24859,8 @@ unsorted:
   - python38-azure-mgmt-videoanalyzer 
   - python38-azure-mgmt-vmwarecloudsimple 
   - python38-azure-mgmt-web 
+  - python38-azure-mgmt-webpubsub 
+  - python38-azure-mixedreality-authentication 
   - python38-azure-mixedreality-nspkg 
   - python38-azure-monitor 
   - python38-azure-monitor-nspkg 
@@ -24870,6 +24876,7 @@ unsorted:
   - python38-azure-sdk 
   - python38-azure-search-documents 
   - python38-azure-search-nspkg 
+  - python38-azure-security-attestation 
   - python38-azure-security-nspkg 
   - python38-azure-servicebus 
   - python38-azure-servicefabric 
@@ -26721,7 +26728,6 @@ unsorted:
   - python38-rt 
   - python38-rtslib-fb 
   - python38-ruamel.base 
-  - python38-ruamel.std.argparse 
   - python38-ruamel.std.pathlib 
   - python38-ruamel.yaml 
   - python38-ruamel.yaml.clib 
@@ -27117,6 +27123,7 @@ unsorted:
   - python38-watchdog-doc 
   - python38-watchgod 
   - python38-watermark 
+  - python38-weasyprint 
   - python38-web.py 
   - python38-web_cache 
   - python38-webassets 
@@ -27444,7 +27451,6 @@ unsorted:
   - python39-WTForms 
   - python39-WTForms-lang 
   - python39-Wand 
-  - python39-WeasyPrint 
   - python39-WebOb 
   - python39-WebTest 
   - python39-Werkzeug 
@@ -27719,6 +27725,7 @@ unsorted:
   - python39-azure-mgmt-communication 
   - python39-azure-mgmt-compute 
   - python39-azure-mgmt-confluent 
+  - python39-azure-mgmt-connectedvmware 
   - python39-azure-mgmt-consumption 
   - python39-azure-mgmt-containerinstance 
   - python39-azure-mgmt-containerregistry 
@@ -27825,6 +27832,7 @@ unsorted:
   - python39-azure-mgmt-storage 
   - python39-azure-mgmt-storagecache 
   - python39-azure-mgmt-storageimportexport 
+  - python39-azure-mgmt-storagepool 
   - python39-azure-mgmt-storagesync 
   - python39-azure-mgmt-streamanalytics 
   - python39-azure-mgmt-subscription 
@@ -27836,6 +27844,8 @@ unsorted:
   - python39-azure-mgmt-videoanalyzer 
   - python39-azure-mgmt-vmwarecloudsimple 
   - python39-azure-mgmt-web 
+  - python39-azure-mgmt-webpubsub 
+  - python39-azure-mixedreality-authentication 
   - python39-azure-mixedreality-nspkg 
   - python39-azure-monitor 
   - python39-azure-monitor-nspkg 
@@ -27851,6 +27861,7 @@ unsorted:
   - python39-azure-sdk 
   - python39-azure-search-documents 
   - python39-azure-search-nspkg 
+  - python39-azure-security-attestation 
   - python39-azure-security-nspkg 
   - python39-azure-servicebus 
   - python39-azure-servicefabric 
@@ -28391,7 +28402,6 @@ unsorted:
   - python39-factory_boy 
   - python39-fake-useragent 
   - python39-fakeredis 
-  - python39-falcon 
   - python39-fanficfare 
   - python39-fann2 
   - python39-fastcluster 
@@ -29839,7 +29849,6 @@ unsorted:
   - python39-rt 
   - python39-rtslib-fb 
   - python39-ruamel.base 
-  - python39-ruamel.std.argparse 
   - python39-ruamel.std.pathlib 
   - python39-ruamel.yaml 
   - python39-ruamel.yaml.clib 
@@ -30265,6 +30274,7 @@ unsorted:
   - python39-watchgod 
   - python39-watermark 
   - python39-wcwidth 
+  - python39-weasyprint 
   - python39-web.py 
   - python39-web_cache 
   - python39-webassets 
@@ -30882,7 +30892,6 @@ unsorted:
   - quakespasm 
   - quantum-espresso: [x86_64] 
   - quantum-espresso-doc: [x86_64] 
-  - quantum-espresso-mvapich2: [x86_64] 
   - quantum-espresso-openmpi1: [x86_64] 
   - quantum-espresso-openmpi2: [x86_64] 
   - quantum-espresso-openmpi3: [x86_64] 
@@ -30937,6 +30946,7 @@ unsorted:
   - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
+  - rage-encryption: [x86_64] 
   - ragel 
   - rainbow 
   - rainbow-bash-completion 
@@ -31031,6 +31041,7 @@ unsorted:
   - reflectasm 
   - reflectasm-javadoc 
   - regexp 
+  - regexploit 
   - rehex 
   - reiser4progs 
   - reiser4progs-devel 
@@ -32639,8 +32650,8 @@ unsorted:
   - tagsoup-javadoc 
   - tai-heritage-pro-fonts 
   - taigo 
-  - taisei 
-  - taisei-data 
+  - taisei: [x86_64] 
+  - taisei-data: [x86_64] 
   - tali 
   - tali-lang 
   - talk 
@@ -41198,6 +41209,8 @@ unsorted:
   - tuned-profiles-spectrumscale 
   - tuned-utils 
   - tuned-utils-systemtap 
+  - tuner 
+  - tuner-lang 
   - tup 
   - tup-doc 
   - tupitube 
