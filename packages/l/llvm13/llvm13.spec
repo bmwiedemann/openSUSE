@@ -853,6 +853,9 @@ cd ..
 %install
 %cmake_install
 
+# Install FileCheck needed for testing Rust boo#1192629
+install -m 0755 build/bin/FileCheck %{buildroot}%{_bindir}/FileCheck
+
 # Remove files that won't be needed anymore.
 # This reduces the total amount of disk space used during build. (bnc#1074625)
 find ./build \( -name '*.o' -or -name '*.a' \)  -delete
@@ -938,7 +941,7 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
 mv %{buildroot}%{_datadir}/clang/bash-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/clang
 
 rm %{buildroot}%{_mandir}/man1/{,clang-,lldb-,mlir-}tblgen.1
-rm %{buildroot}%{_mandir}/man1/{FileCheck,llvm-locstats}.1
+rm %{buildroot}%{_mandir}/man1/llvm-locstats.1
 chmod -x %{buildroot}%{_mandir}/man1/scan-build.1
 
 %if %{with lldb_python}
@@ -1923,6 +1926,7 @@ fi
 
 %files devel
 %license CREDITS.TXT LICENSE.TXT
+%{_bindir}/FileCheck
 %{_bindir}/llvm-config
 %{_libdir}/libLLVM.so
 %{_libdir}/libLLVMTableGen.so
@@ -1930,6 +1934,7 @@ fi
 %{_includedir}/llvm/
 %{_includedir}/llvm-c/
 %{_libdir}/cmake/llvm
+%{_mandir}/man1/FileCheck.1%{ext_man}
 %{_mandir}/man1/llvm-config.1%{ext_man}
 %{_rpmconfigdir}/macros.d/macros.llvm
 

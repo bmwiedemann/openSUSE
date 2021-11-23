@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 12 13:30:15 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add FileCheck into the devel package, as is required for testing
+  Rust (boo#1192629)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:18:57 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Let clang recommend gcc and glibc-devel as we need both for

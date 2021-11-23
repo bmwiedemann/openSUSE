@@ -42,4 +42,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>930567</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1dc31be822c61aa5ba1fa1eabf5f637c</srcmd5>
+    <version>13.0.0</version>
+    <time>1637701783</time>
+    <user>dimstar_suse</user>
+    <comment>- Add FileCheck into the devel package, as is required for testing
+  Rust (boo#1192629)
+</comment>
+    <requestid>932977</requestid>
+  </revision>
 </revisionlist>
