@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 22 08:22:46 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Use consistent names for the Full medium repositories
+  (bsc#1191652)
+- 4.4.14
+  
+-------------------------------------------------------------------
 Fri Nov 12 13:02:17 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Introduce the product specification API (bsc#1192626):
