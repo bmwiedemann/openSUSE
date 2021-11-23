@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later

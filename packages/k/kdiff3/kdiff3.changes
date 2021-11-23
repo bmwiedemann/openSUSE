@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 08:16:03 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9.4
+  * Fix windows style cr/lf line ending handling (kde#442199)
+  * Fix race on exit if qt sends QApplication::focusChanged during
+    teardown (kde#444654)
+
+-------------------------------------------------------------------
 Fri Aug 20 12:58:46 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.9.3
