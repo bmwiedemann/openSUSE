@@ -53,6 +53,8 @@ BuildRequires:  pkgconfig(libudev) >= 216
 BuildRequires:  pkgconfig(mount) >= 2.23.0
 BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       %{libname} >= %{version}
+### lvm-cache-stats binary needs LVM's plugin to work (boo#1183948) ###
+Requires:       libblockdev-lvm >= %{version}
 
 %description
 The LibBlockDev is a C library with GObject introspection support that can be

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 18 23:58:04 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
+
+- Fix lack of dependency on libblockdev-lvm needed by libblockdev
+  package. The lvm-cache-stats binary needs the logical volume
+  plugin to work (boo#1183948).
+
+-------------------------------------------------------------------
 Sun Nov 14 16:20:46 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
 
 - Update to version 2.26:
@@ -30,10 +37,13 @@ Wed Jan 20 08:14:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * exec: Fix setting locale for util calls
   * fs: Do not report error when errors were fixed by e2fsck
   * README: Use CI status image for 2.x-branch on 2.x
-  * fs: Fix compile error in ext_repair caused by cherry pick from master
+  * fs: Fix compile error in ext_repair caused by cherry pick from
+    master
   * Mark all GIR file constants as guint64
-  * lvm: Set thin metadata limits to match limits LVM uses in lvcreate
-  * lvm: Do not use thin_metadata_size to recommend thin metadata size
+  * lvm: Set thin metadata limits to match limits LVM uses in
+    lvcreate
+  * lvm: Do not use thin_metadata_size to recommend thin metadata
+    size
   * lvm: Use the UNUSED macro instead of __attribute__((unused))
   * Fix max size limit for LVM thinpool metadata
   * loop: Retry LOOP_SET_STATUS64 on EAGAIN
@@ -42,11 +52,14 @@ Wed Jan 20 08:14:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Thu Aug 20 22:11:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 2.24:
-  * VDO plugin has been deprecated in this release (functionality replaced by LVM VDO) 
+  * VDO plugin has been deprecated in this release (functionality
+    replaced by LVM VDO) 
   * support for creating and managing LVM VDO volumes added
-  * support for unlocking of BitLocker-compatible format BITLK added
+  * support for unlocking of BitLocker-compatible format BITLK
+    added
   * new functions for (un)freezing filesystems added
-  * test suite can now be run against installed version of libblockdev
+  * test suite can now be run against installed version of
+    libblockdev
 
 -------------------------------------------------------------------
 Tue Feb  4 09:35:28 UTC 2020 - Thomas Blume <thomas.blume@suse.com>
