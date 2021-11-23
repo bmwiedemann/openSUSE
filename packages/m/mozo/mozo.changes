@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * mozo-ui: Fix a typo in the button label.
+  * Make the collection menu item removeable.
+  * Fix adding and removing seperator item.
+  * Update translations.
+
+-------------------------------------------------------------------
 Thu Aug 12 06:41:56 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
