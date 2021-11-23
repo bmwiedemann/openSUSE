@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 18 15:41:32 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- git 2.34.0:
+  * Release notes:
+    https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.34.0.txt
+
+-------------------------------------------------------------------
 Wed Oct 20 16:32:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add CONFIG parameter to %sysusers_generate_pre
