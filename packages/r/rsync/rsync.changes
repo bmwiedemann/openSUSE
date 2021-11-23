@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 08:59:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * rsyncd.service
+
+-------------------------------------------------------------------
 Fri Sep  4 10:25:17 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1176160, CVE-2020-14387]
