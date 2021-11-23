@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 20 18:57:39 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.3.2
+  * Date selection in Calendar print settings widget changed to use
+    mini calendar widget
+  * Bugfixes as outlined in release notes
+    https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/
+
+-------------------------------------------------------------------
+Sat Nov 13 11:52:30 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.3.1
+  * OpenPGP public keys will no longer count as an attachment in
+    the message list
+  * Adding a search engine via URL now supported
+  * FileLink messages' template updated; Thunderbird advertisement
+    removed
+  * After an update, Thunderbird will now check installed addons
+    for updates
+  * Bugfixes as outlined in release notes
+    https://www.thunderbird.net/en-US/thunderbird/91.3.1/releasenotes/
+
+-------------------------------------------------------------------
 Sun Oct 31 17:49:23 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.3.0

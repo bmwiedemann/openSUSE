@@ -3891,4 +3891,27 @@ I cannot test locally unfortunately.
 - Drop unused pkgconfig(gdk-x11-2.0) BuildRequires</comment>
     <requestid>929062</requestid>
   </revision>
+  <revision rev="267" vrev="1">
+    <srcmd5>f62096b10afe22641953f10b3dcf2ff6</srcmd5>
+    <version>91.3.2</version>
+    <time>1637701798</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.3.2
+  * Date selection in Calendar print settings widget changed to use
+    mini calendar widget
+  * Bugfixes as outlined in release notes
+    https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/
+
+- Mozilla Thunderbird 91.3.1
+  * OpenPGP public keys will no longer count as an attachment in
+    the message list
+  * Adding a search engine via URL now supported
+  * FileLink messages' template updated; Thunderbird advertisement
+    removed
+  * After an update, Thunderbird will now check installed addons
+    for updates
+  * Bugfixes as outlined in release notes
+    https://www.thunderbird.net/en-US/thunderbird/91.3.1/releasenotes/</comment>
+    <requestid>932690</requestid>
+  </revision>
 </revisionlist>
