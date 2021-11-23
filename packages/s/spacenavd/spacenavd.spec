@@ -30,6 +30,7 @@ Source2:        spnavrc
 Source3:        xinitrc-%{name}
 Source4:        %{name}.service
 Patch1:         %{name}-fix-pidfile.patch
+Patch2:         harden_spacenavd.service.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(x11)
@@ -64,6 +65,7 @@ any program that was written for the 3Dconnexion driver.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure

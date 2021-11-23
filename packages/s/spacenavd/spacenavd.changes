@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 17 10:49:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_spacenavd.service.patch
+  Modified:
+  * spacenavd.service
+
+-------------------------------------------------------------------
 Tue Mar 16 18:56:16 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to version 0.8

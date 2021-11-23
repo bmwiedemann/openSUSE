@@ -1,0 +1,22 @@
+Index: spacenavd-0.8/contrib/systemd/spacenavd.service
+===================================================================
+--- spacenavd-0.8.orig/contrib/systemd/spacenavd.service
++++ spacenavd-0.8/contrib/systemd/spacenavd.service
+@@ -3,6 +3,17 @@ Description=3Dconnexion Input Devices Us
+ After=syslog.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ PIDFile=/run/spnavd.pid
+ ExecStart=/usr/local/bin/spacenavd
