@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 31 14:21:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1.0 for Qore 1.0.10
+  * fixed a bug retrieving numeric data from multiple
+    SQLStatement::fetchRow() calls
+  * Use supported APIs for string operations
+
+-------------------------------------------------------------------
 Sat Jun 12 14:00:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.1.0 for qore version 0.9.15

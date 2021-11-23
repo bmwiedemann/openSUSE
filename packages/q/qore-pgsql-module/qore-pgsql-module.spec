@@ -16,7 +16,7 @@
 #
 
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define module_api   %(qore --latest-module-api 2>/dev/null)
 %define src_name     module-pgsql-release-%{qore_version}
 Name:           qore-pgsql-module
@@ -39,8 +39,7 @@ BuildRequires:  postgresql10-devel
 BuildRequires:  postgresql-devel
 %endif
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9
-Requires:       %{_bindir}/env
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
@@ -62,8 +61,7 @@ This package provides API documentation, test and example programs
 
 %build
 %cmake -Denable-scu=OFF
-%cmake_build
-make %{?_smp_mflags} docs
+%make_build docs
 
 %install
 %cmake_install
