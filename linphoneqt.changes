@@ -1,12 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 22 15:31:13 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Require liblinphone-data (bsc#1181746)
+
+-------------------------------------------------------------------
+Sun Nov 21 01:45:50 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.2
+
+- Update to version 4.3.2:
+  * ALSA volumes can be view/changed while being in call.
+  * Remove constraints on actions (call/chat) that were based on friends capabilities.
+  * Unblock secure group chat activation.
+  * Unselect current contact if history call view is displayed.
+  * Show chat actions in history view
+
+-------------------------------------------------------------------
 Mon Nov  8 07:13:06 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.1
 
 - Update to 4.3.1:
-  * Feature: Reply to a message
-  * When removing all entries : delete all history and call logs
-  * Protect config from using contact if it doesn't exist while checking authentication
-  * Allow qml to have access to the Application Name
-  * Add a settings to change URL of version check
+  * A banner is shown when copying text.
+  * Options to enable standard and secure chats.
+  * Add tunnel support if build.
+  * Overhaul of color managment and use monochrome images.
+  * Change Contact Edit and SIP Addresses selections to start a standard chat or a secure one.
+  * Call history button in the timeline panel.
+  * Timeout of incoming call notification is now based on `inc_timeout`
+  * More actions in contact edit panel (call/video call).
+  * Allow to make a readonly variable in configuration (only for enabling chats yet).
 
 -------------------------------------------------------------------
 Tue Nov  2 23:37:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.3.0

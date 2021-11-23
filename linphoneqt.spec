@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -61,6 +61,7 @@ with high speed connections as well as 28k modems.
 %package -n %{_name}
 Summary:        Web Phone
 Group:          Productivity/Telephony/SIP/Clients
+Requires:       liblinphone-data
 Recommends:     %{_name}-cli
 Obsoletes:      %{_name}-lang < %{version}
 
@@ -85,6 +86,10 @@ echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.
 
 %build
 sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/lib/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
+#fix install error for 4.3.2
+if [[ %version = 4.3.2 ]]; then
+    sed -i '/install(DIRECTORY.*linphone/d' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+fi
 %cmake \
   -DCMAKE_CXX_FLAGS="-fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
