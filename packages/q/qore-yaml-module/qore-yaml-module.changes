@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 28 09:42:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.7.0 for Qore 1.0.10
+  * Fixed module namespace paths
+  * Fixed deserializing string values
+  * Fixed handling serialization errors in YAML-RPC responses
+
+-------------------------------------------------------------------
 Tue Jun  8 19:24:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Revert last changes, version is not the git tag!

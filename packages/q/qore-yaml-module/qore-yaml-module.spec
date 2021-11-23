@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define src_name module-yaml-release-%{qore_version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-yaml-module
@@ -36,7 +36,7 @@ BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  libyaml-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9.0
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
 
@@ -61,7 +61,7 @@ find examples -type f|xargs chmod 644
 %build
 autoreconf -fi
 %configure \
-%ifarch x86_64 ppc64 ppc64le s390x
+%ifarch x86_64 ppc64 ppc64le s390x aarch64
   --enable-64bit \
 %endif
   --disable-debug
