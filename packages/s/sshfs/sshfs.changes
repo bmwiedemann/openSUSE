@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 31 08:27:15 UTC 2021 - munix9@googlemail.com
+
+- Add fix-typo-in-ssh_opts.patch (boo#1191886)
+  Required for kdeconnect-kde + openssh >= 8.8
+
+-------------------------------------------------------------------
 Mon Oct 25 09:25:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - sshfs 3.7.2:
