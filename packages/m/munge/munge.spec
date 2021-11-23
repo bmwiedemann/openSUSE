@@ -73,6 +73,7 @@ BuildRequires:  pkgconfig(systemd)
 %endif
 Requires(post):     coreutils
 Requires(postun):   coreutils
+ExcludeArch:    s390 s390x
 
 %description
 MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for

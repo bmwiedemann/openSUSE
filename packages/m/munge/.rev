@@ -154,4 +154,12 @@ as well.</comment>
     <comment></comment>
     <requestid>926029</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>37452409ca02ed3d3a96c08cc16c5b90</srcmd5>
+    <version>0.5.14</version>
+    <time>1637701838</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable s390*-builds. On s390x the test suite fails.</comment>
+    <requestid>933240</requestid>
+  </revision>
 </revisionlist>
