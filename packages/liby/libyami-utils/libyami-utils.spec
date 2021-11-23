@@ -1,7 +1,7 @@
 #
 # spec file for package libyami-utils
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,15 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/intel/libyami-utils
 Source0:        %{url}/archive/%{version}.tar.gz#/%name-%{version}.tar.gz
-Source99:       libyami-utils-rpmlintrc
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
-BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libva-x11)
 BuildRequires:  pkgconfig(libyami) >= 0.6.1
@@ -65,22 +62,23 @@ Kaby Lake
 Intel Baytrail, Braswell, Apollo Lake
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# We do not care that something is deprecated
+export CXXFLAGS="-Wno-error=deprecated-declarations"
 autoreconf -fiv
 %configure \
         --disable-static \
-        --enable-avformat \
-        --enable-dmabuf \
+        --enable-avformat="yes" \
+        --enable-dmabuf="yes" \
         %{nil}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc README.md
 %{_bindir}/*

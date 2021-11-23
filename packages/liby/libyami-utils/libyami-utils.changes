@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 23 08:56:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add export CXXFLAGS="-Wno-error=deprecated-declarations", failing
+  to build just because we get a warning that something is
+  deprecated is not what we want nor need.
+- Add explicit yes to enable-avformat and enable-dmabuf, upstream
+  defaults to no, and we expected that support to be built.
+- Drop currently unused pkgconfig(egl), pkgconfig(glesv2) and
+  pkgconfig(libv4l2), we need to pass explicit options to configure
+  to build that support.
+- Replace gcc-c++ with generic c++_compiler BuildRequires, also add
+  explict c_compiler BuildRequires. Modernize spec.
+- Drop libyami-utils-rpmlintrc, no longer needed for Tumbleweed,
+  nor next version of Leap.
+
+-------------------------------------------------------------------
 Mon Dec 23 23:33:28 UTC 2019 - Sean Kelley <seanvk@posteo.de>
 
 - Update for release 1.3.2 and removed export CXXFLAGS="-Wno-error"
