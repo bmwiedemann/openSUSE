@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Markdown
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-xml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

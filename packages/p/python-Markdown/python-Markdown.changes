@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 16 19:19:38 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3.5: bug-fix release
+  * Make the slugify_unicode function not remove diacritical marks
+    (#1118).
+  * Fix [toc] detection when used with nl2br extension (#1160).
+  * Re-use compiled regex for block level checks (#1169).
+  * Don't process shebangs in fenced code blocks when using
+    CodeHilite (#1156).
+  * Improve email address validation for Automatic Links (#1165).
+  * Ensure <summary> tags are parsed correctly (#1079).
+  * Support Python 3.10 (#1124).
+
+-------------------------------------------------------------------
 Thu Feb 25 21:02:24 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.3.4: bug-fix release
