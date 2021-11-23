@@ -16,7 +16,7 @@
 #
 
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define src_name module-linenoise-release-%{qore_version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-linenoise-module
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9.0
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 Suggests:       %{name}-doc = %{version}
 
