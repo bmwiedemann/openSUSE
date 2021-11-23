@@ -1,0 +1,19 @@
+From b386959aca1fd25431b8f58b96ddefa556a4bd27 Mon Sep 17 00:00:00 2001
+From: Ximin Luo <infinity0@pwned.gg>
+Date: Wed, 6 Oct 2021 10:22:03 +0100
+Subject: [PATCH] fix: alloc-optimisation is only for rust llvm
+
+---
+ src/test/codegen/alloc-optimisation.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/test/codegen/alloc-optimisation.rs b/src/test/codegen/alloc-optimisation.rs
+index 5b27f3f45457d..aee93b93e3737 100644
+--- a/src/test/codegen/alloc-optimisation.rs
++++ b/src/test/codegen/alloc-optimisation.rs
+@@ -1,4 +1,5 @@
+ //
++// no-system-llvm
+ // min-llvm-version: 10.0.1
+ // compile-flags: -O
+ #![crate_type="lib"]

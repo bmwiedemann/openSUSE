@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Tue Nov 16 09:05:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update documentation to explain how to run the tests
+- Add %check section to test the compiler
+- Remove `disable-option-checking` parameter, to make errors explicit
+- Remove duplicated host / build entries
+- Use new debug parameters for ./configure
+- Add fix_bootstrap_vendor.patch to keep the current .cargo/config file
+- Drop sed replacement for Python3.
+- Add fix_function-names_test_for_gdb_10_1.patch to fix debuginfo tests
+- Add fix_alloc-optimisation_is_only_for_rust_llvm.patch to fix codegen test
+
+-------------------------------------------------------------------
+Fri Nov 12 00:12:46 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add conflict on 1.55 in cargo to resolve obs issue.
+
+-------------------------------------------------------------------
+Tue Nov  2 01:24:47 UTC 2021 - William Brown <william.brown@suse.com>
+
+Version 1.56.1 (2021-11-01)
+===========================
+
+- New lints to detect the presence of bidirectional-override Unicode
+  codepoints in the compiled source code ([CVE-2021-42574])
+
+[CVE-2021-42574]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-42574
+
+Version 1.56.0 (2021-10-21)
+========================
+
+Language
+--------
+
+- [The 2021 Edition is now stable.][rust#88100]
+  See [the edition guide][rust-2021-edition-guide] for more details.
+- [The pattern in `binding @ pattern` can now also introduce new bindings.][rust#85305]
+- [Union field access is permitted in `const fn`.][rust#85769]
+
+[rust-2021-edition-guide]: https://doc.rust-lang.org/nightly/edition-guide/rust-2021/index.html
+
+Compiler
+--------
+
+- [Upgrade to LLVM 13.][rust#87570]
+- [Support memory, address, and thread sanitizers on aarch64-unknown-freebsd.][rust#88023]
+- [Allow specifying a deployment target version for all iOS targets][rust#87699]
+- [Warnings can be forced on with `--force-warn`.][rust#87472]
+  This feature is primarily intended for usage by `cargo fix`, rather than end users.
+- [Promote `aarch64-apple-ios-sim` to Tier 2\*.][rust#87760]
+- [Add `powerpc-unknown-freebsd` at Tier 3\*.][rust#87370]
+- [Add `riscv32imc-esp-espidf` at Tier 3\*.][rust#87666]
+
+\* Refer to Rust's [platform support page][platform-support-doc] for more
+information on Rust's tiered platform support.
+
+Libraries
+---------
+
+- [Allow writing of incomplete UTF-8 sequences via stdout/stderr on Windows.][rust#83342]
+  The Windows console still requires valid Unicode, but this change allows
+  splitting a UTF-8 character across multiple write calls. This allows, for
+  instance, programs that just read and write data buffers (e.g. copying a file
+  to stdout) without regard for Unicode or character boundaries.
+- [Prefer `AtomicU{64,128}` over Mutex for Instant backsliding protection.][rust#83093]
+  For this use case, atomics scale much better under contention.
+- [Implement `Extend<(A, B)>` for `(Extend<A>, Extend<B>)`][rust#85835]
+- [impl Default, Copy, Clone for std::io::Sink and std::io::Empty][rust#86744]
+- [`impl From<[(K, V); N]>` for all collections.][rust#84111]
+- [Remove `P: Unpin` bound on impl Future for Pin.][rust#81363]
+- [Treat invalid environment variable names as non-existent.][rust#86183]
+  Previously, the environment functions would panic if given a variable name
+  with an internal null character or equal sign (`=`). Now, these functions will
+  just treat such names as non-existent variables, since the OS cannot represent
+  the existence of a variable with such a name.
+
+Stabilised APIs
+---------------
+
+- [`std::os::unix::fs::chroot`]
+- [`UnsafeCell::raw_get`]
+- [`BufWriter::into_parts`]
+- [`core::panic::{UnwindSafe, RefUnwindSafe, AssertUnwindSafe}`]
+  These APIs were previously stable in `std`, but are now also available in `core`.
+- [`Vec::shrink_to`]
+- [`String::shrink_to`]
+- [`OsString::shrink_to`]
+- [`PathBuf::shrink_to`]
+- [`BinaryHeap::shrink_to`]
+- [`VecDeque::shrink_to`]
+- [`HashMap::shrink_to`]
+- [`HashSet::shrink_to`]
+
+These APIs are now usable in const contexts:
+
+- [`std::mem::transmute`]
+- [`[T]::first`][`slice::first`]
+- [`[T]::split_first`][`slice::split_first`]
+- [`[T]::last`][`slice::last`]
+- [`[T]::split_last`][`slice::split_last`]
+
+Cargo
+-----
+
+- [Cargo supports specifying a minimum supported Rust version in Cargo.toml.][`rust-version`]
+  This has no effect at present on dependency version selection.
+  We encourage crates to specify their minimum supported Rust version, and we encourage CI systems
+  that support Rust code to include a crate's specified minimum version in the test matrix for that
+  crate by default.
+
+Compatibility notes
+-------------------
+
+- [Update to new argument parsing rules on Windows.][rust#87580]
+  This adjusts Rust's standard library to match the behavior of the standard
+  libraries for C/C++. The rules have changed slightly over time, and this PR
+  brings us to the latest set of rules (changed in 2008).
+- [Disallow the aapcs calling convention on aarch64][rust#88399]
+  This was already not supported by LLVM; this change surfaces this lack of
+  support with a better error message.
+- [Make `SEMICOLON_IN_EXPRESSIONS_FROM_MACROS` warn by default][rust#87385]
+- [Warn when an escaped newline skips multiple lines.][rust#87671]
+- [Calls to `libc::getpid` / `std::process::id` from `Command::pre_exec`
+   may return different values on glibc <= 2.24.][rust#81825]
+   Rust now invokes the `clone3` system call directly, when available, to use new functionality
+   available via that system call. Older versions of glibc cache the result of `getpid`, and only
+   update that cache when calling glibc's clone/fork functions, so a direct system call bypasses
+   that cache update. glibc 2.25 and newer no longer cache `getpid` for exactly this reason.
+
+Internal changes
+----------------
+These changes provide no direct user facing benefits, but represent significant
+improvements to the internals and overall performance of rustc
+and related tools.
+
+- [LLVM is compiled with PGO in published x86_64-unknown-linux-gnu artifacts.][rust#88069]
+  This improves the performance of most Rust builds.
+- [Unify representation of macros in internal data structures.][rust#88019]
+  This change fixes a host of bugs with the handling of macros by the compiler,
+  as well as rustdoc.
+
