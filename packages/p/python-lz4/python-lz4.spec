@@ -30,7 +30,6 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

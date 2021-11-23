@@ -86,4 +86,12 @@
   * fixups to the tests to reduce execution time</comment>
     <requestid>867593</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a89353eb099358d4157ecdd72beec438</srcmd5>
+    <version>3.1.3</version>
+    <time>1637701799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932693</requestid>
+  </revision>
 </revisionlist>

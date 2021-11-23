@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 19 10:45:28 UTC 2021 - pgajdos@suse.com
+
+- remove pytest-runner from BuildRequires, it is not needed
+
+-------------------------------------------------------------------
 Thu Jan 28 22:59:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.3:
