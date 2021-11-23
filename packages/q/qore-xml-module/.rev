@@ -50,4 +50,12 @@ with more fixes requested by Doninique</comment>
 Requires SR#908927</comment>
     <requestid>908931</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f4af064d1b4f6267d23bcdf0b115dd3</srcmd5>
+    <version>1.5.1+qore1.0.10</version>
+    <time>1637701829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931996</requestid>
+  </revision>
 </revisionlist>
