@@ -62,9 +62,9 @@ Source58:       nrpe-check_zombie_procs
 Source59:       nrpe-check_mysql
 Source60:       nrpe-check_ups
 # PATCH-FIX-UPSTREAM Quote the options comming in from users (path names might contain whitespaces)
-Patch1:         %{name}-2.1.1-check_logfile.patch
-# PATCH-FIX-UPSTREAM Allow to ping IPv4 with check_ping again for dual stack hosts: https://github.com/monitoring-plugins/monitoring-plugins/issues/1550
-Patch6:         %{name}-1.4.6-no_chown.patch
+Patch1:         %{name}-2.1.1-check_log_-_quoting.patch
+# PATH-FIX-openSUSE - do not use/run chown in Makefile: we use RPM for this
+Patch6:         %{name}-1.4.6-Makefile_-_no_chown.patch
 # PATCH-FIX-UPSTREAM Use correct pointer
 Patch11:        %{name}.check_snmp.arrayaddress.patch
 # PATCH-FIX-UPSTREAM print out all arguments out a Group if in verbose mode
@@ -75,7 +75,19 @@ Patch118:       %{name}.check_hpjd.c-64bit-portability-issue.patch
 Patch119:       monitoring-plugins-2.2-mariadb_102_build_fix.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
 Patch121:       %{name}-wrong_return_in_check_swap.patch
+# PATCH-FIX-UPSTREAM - return ntp offset absolute (as positive value) in performance data since warn and crit are also positive values 
 Patch122:       monitoring-plugins-2.3-check_ntp_perf_absolute.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1589
+Patch123:       monitoring-plugins-2.3.1-check_snmp_segfaults.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1459
+Patch124:       monitoring-plugins-2.3.1-fixing-shellcheck.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/pull/1322
+Patch125:       monitoring-plugins-2.3.1-check_ssh.patch
+Patch126:       monitoring-plugins-2.3.1-check_ssh.t_-_improve_testing.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1375
+Patch127:       monitoring-plugins-2.3.1-check_dhcp_-_detect_rogue_dhcp_servers.patch
+# PATCH-FIX-UPSTREAM - see https://github.com/monitoring-plugins/monitoring-plugins/issues/1706
+Patch128:       monitoring-plugins-2.3.1-check_snmp_hang_on_STDERR_workaround.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -683,6 +695,7 @@ Group:          System/Monitoring
 Requires:       %{name}-common = %{version}
 Provides:       nagios-plugins-log = %{version}
 Obsoletes:      nagios-plugins-log <= 1.5
+Recommends:     syslog
 
 %description log
 This plugin provides a log file pattern detector - excluding old
@@ -1122,6 +1135,13 @@ done
 %patch119 -p1
 %patch121 -p1
 %patch122 -p1
+# Github patches
+%patch123 -p1
+%patch124 -p1
+%patch125 -p1
+%patch126 -p1
+%patch127 -p1
+%patch128 -p1
 find -type f -exec chmod 644 {} +
 
 %build
