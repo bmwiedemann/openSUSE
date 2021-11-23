@@ -579,4 +579,12 @@ Updated sample spec file and other documentation changes. (forwarded request 174
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1192921</comment>
   </revision>
+  <revision rev="62" vrev="6">
+    <srcmd5>d714707a6ac1e8d9838d80d3a480a75a</srcmd5>
+    <version>1.9.14</version>
+    <time>1637701823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932923</requestid>
+  </revision>
 </revisionlist>

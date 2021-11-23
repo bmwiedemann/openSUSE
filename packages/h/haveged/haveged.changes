@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 22 08:14:39 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove ProtectKernelTunables hardening, causes the service to fail
+  (boo#1192921)
+
+-------------------------------------------------------------------
 Tue Nov  2 08:18:49 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - revert last change, e.g. for VMs where we are not being fed entropy
@@ -11,6 +17,15 @@ Mon Oct 11 13:26:52 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
   the haveged service/daemon obsolete, remove the service files,
   initrd modules and udev rules, the other components
   are still useful.
+
+-------------------------------------------------------------------
+Tue Sep 21 12:15:06 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_haveged.service.patch
+  Modified:
+  * haveged-switch-root.service
+  * haveged.service
 
 -------------------------------------------------------------------
 Mon Jan  4 08:28:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
