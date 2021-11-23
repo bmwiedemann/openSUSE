@@ -48,4 +48,12 @@
 Requires SR#908927</comment>
     <requestid>908928</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb16601e18435ef55a16a33458772101</srcmd5>
+    <version>2.0.2.1+qore1.0.10</version>
+    <time>1637701825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928310</requestid>
+  </revision>
 </revisionlist>

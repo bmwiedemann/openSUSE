@@ -16,7 +16,7 @@
 #
 
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define src_name module-mysql-release-%{qore_version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-mysql-module
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       %{_bindir}/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
@@ -57,8 +57,7 @@ This package provides API documentation, and example programs
 
 %build
 %cmake
-%cmake_build
-make %{?_smp_mflags} docs
+%make_build docs
 
 %install
 %cmake_install
