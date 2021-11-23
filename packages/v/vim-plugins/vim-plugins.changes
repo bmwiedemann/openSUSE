@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 16 11:41:06 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update
+  * NERDcommenter_version  2.5.2
+  * NERDtree_version       6.10.16
+  * supertab_version       2.1
+  * zoomwin_tag            24@1
+- add
+  * vim-markdown           2.0.0+20200714
+- clean up the spec, esp. the post/postup part using macro.
+
+-------------------------------------------------------------------
 Thu Sep 30 06:04:37 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update

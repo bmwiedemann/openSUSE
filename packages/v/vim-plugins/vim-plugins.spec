@@ -24,7 +24,8 @@
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
-%define diffchanges_version	0.6.346dae2
+%define diffchanges_tag		346dae2
+%define diffchanges_version	0.6~346dae2
 %define editorconfig_version	0.3.3
 %define file_line_version	1.0+20161020
 %define fugitive_version	3.4
@@ -32,12 +33,13 @@
 %define gnupg_version		2.7.1
 %define latex_version		1.10.0+20210323
 %define locateopen_version	1.3
+%define markdown_version	2.0.0+20200714
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
 %define neomutt_version		20180104
-%define NERDcommenter_version	2.3.0
-%define NERDtree_version	4.2.0
+%define NERDcommenter_version	2.5.2
+%define NERDtree_version	6.10.16
 %define project_version		1.4.1
 %define quilt_version		0.9.7
 %define rails_version		4.4
@@ -45,7 +47,7 @@
 %define searchcomplete_version	1.1
 %define showmarks_version	2.3
 %define snipmate_version	0.83
-%define supertab_version	1.0
+%define supertab_version	2.1
 %define taglist_version		4.6
 %define tlib_version		1.27
 %define tregisters_version	0.2
@@ -53,7 +55,8 @@
 %define tselectfiles_version	0.11
 %define utl_version		2.0
 %define vimwiki_version		2.1
-%define zoomwin_version		24
+%define zoomwin_tag		24@1
+%define zoomwin_version		24.1
 
 Name:           vim-plugins
 Version:        7.3.0
@@ -68,24 +71,24 @@ Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/v%{
 Source3:        https://github.com/vim-scripts/calendar.vim--Matsumoto/archive/refs/tags/%{calendar_version}.tar.gz#/calendar.vim--Matsumoto-%{calendar_version}.tar.gz
 Source4:        https://github.com/vim-scripts/colorsel.vim/archive/refs/tags/%{colorsel_version}.tar.gz#/vimplugin-colorsel-%{colorsel_version}.tar.gz
 Source5:        vimplugin-colorschemes-%{colorschemes_version}.tar.bz2
-Source6:        vimplugin-diffchanges-%{diffchanges_version}.tar.bz2
+Source6:        https://github.com/vim-scripts/diffchanges.vim/archive/refs/tags/%{diffchanges_tag}.tar.gz#/vimplugin-diffchanges-%{diffchanges_version}.tar.gz
 Source7:        https://github.com/vim-scripts/LocateOpen/archive/refs/tags/%{locateopen_version}.tar.gz#/vimplugin-locateopen-%{locateopen_version}.tar.gz
 Source9:        https://github.com/vim-scripts/matrix.vim--Yang/archive/refs/tags/%{matrix_version}.tar.gz#/vimplugin-matrix-%{matrix_version}.tar.gz
 Source10:       https://github.com/vim-scripts/minibufexpl.vim/archive/refs/tags/%{minibufexpl_version}.tar.gz#/vimplugin-minibufexpl-%{minibufexpl_version}.tar.gz
-Source11:       vimplugin-multiplesearch-%{multiplesearch_version}.tar.bz2
-Source12:       vimplugin-NERDcommenter-%{NERDcommenter_version}.tar.bz2
-Source13:       vimplugin-NERDtree-%{NERDtree_version}.tar.bz2
-Source14:       vimplugin-project-%{project_version}.tar.bz2
-Source15:       vimplugin-searchcomplete-%{searchcomplete_version}.tar.bz2
+Source11:       https://github.com/vim-scripts/MultipleSearch/archive/refs/tags/%{multiplesearch_version}.tar.gz#/vimplugin-multiplesearch-%{multiplesearch_version}.tar.gz
+Source12:       https://github.com/preservim/nerdcommenter/archive/refs/tags/%{NERDcommenter_version}.tar.gz#/vimplugin-NERDcommenter-%{NERDcommenter_version}.tar.gz
+Source13:       https://github.com/preservim/nerdtree/archive/refs/tags/%{NERDtree_version}.tar.gz#/vimplugin-NERDtree-%{NERDtree_version}.tar.gz
+Source14:       https://github.com/vim-scripts/project.tar.gz/archive/refs/tags/%{project_version}.tar.gz#/vimplugin-project-%{project_version}.tar.gz
+Source15:       https://github.com/vim-scripts/SearchComplete/archive/refs/tags/%{searchcomplete_version}.tar.gz#/vimplugin-searchcomplete-%{searchcomplete_version}.tar.gz
 Source16:       https://github.com/vim-scripts/ShowMarks7/archive/refs/tags/%{showmarks_version}.tar.gz#/vimplugin-showmarks-%{showmarks_version}.tar.gz
-Source17:       vimplugin-supertab-%{supertab_version}.tar.bz2
+Source17:       https://github.com/vim-scripts/SuperTab--Van-Dewoestine/archive/refs/tags/%{supertab_version}.tar.gz#/vimplugin-supertab-%{supertab_version}.tar.gz
 Source18:       vimplugin-taglist-%{taglist_version}.tar.bz2
 Source19:       https://github.com/tomtom/tlib_vim/archive/refs/tags/%{tlib_version}.tar.gz#/vimplugin-tlib-%{tlib_version}.tar.gz
 Source20:       https://github.com/vim-scripts/tregisters/archive/refs/tags/%{tregisters_version}.tar.gz#/vimplugin-tregisters-%{tregisters_version}.tar.gz
 Source21:       https://github.com/vim-scripts/tselectbuffer/archive/refs/tags/%{tselectbuffer_version}.tar.gz#/vimplugin-tselectbuffer-%{tselectbuffer_version}.tar.gz
 Source22:       https://github.com/vim-scripts/tselectfiles/archive/refs/tags/%{tselectfiles_version}.tar.gz#/vimplugin-tselectfiles-%{tselectfiles_version}.tar.gz
-Source23:       vimplugin-utl-%{utl_version}.tar.bz2
-Source24:       vimplugin-zoomwin-%{zoomwin_version}.tar.bz2
+Source23:       https://github.com/vim-scripts/utl.vim/archive/refs/tags/%{utl_version}.tar.gz#/vimplugin-utl-%{utl_version}.tar.gz
+Source24:       https://github.com/vim-scripts/ZoomWin/archive/refs/tags/%{zoomwin_tag}.tar.gz#/vimplugin-zoomwin-%{zoomwin_version}.tar.gz
 Source26:       vimplugin-quilt-%{quilt_version}.tar.bz2
 Source27:       vimplugin-vimwiki-%{vimwiki_version}.tar.bz2
 Source28:       https://github.com/jamessan/vim-gnupg/releases/download/v%{gnupg_version}/vim-gnupg-v%{gnupg_version}.tar.gz#/vimplugin-gnupg-%{gnupg_version}.tar.gz
@@ -101,6 +104,7 @@ Source37:       vimplugin-salt-%{salt_version}.tar.bz2
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-latex-%{latex_version}.tar.xz
+Source102:      vim-markdown-%{markdown_version}.tar.xz
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
@@ -334,6 +338,18 @@ Usage:
   :LocateSplit somefile.txt
   :LocateSource somefile.vim
   :LocateRead somefile.txt
+
+%package -n vim-plugin-markdown
+Version:        %markdown_version
+Release:        0
+Summary:        Markdown support for vim
+License:        MIT
+Group:          Productivity/Text/Editors
+Requires:       vim
+
+%description -n vim-plugin-markdown
+Syntax highlighting, matching rules and mappings for the original Markdown and
+extensions.
 
 %package -n vim-plugin-matrix
 Version:        %matrix_version
@@ -631,7 +647,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a100 -a101 -a102
 # ------- patch locateopen ------
 pushd LocateOpen-%locateopen_version
 %patch1
@@ -643,6 +659,9 @@ pushd file-line-%file_line_version
 %patch3 -p1
 popd
 
+find tlib_vim-%{tlib_version} -type f \( -name '*.vim' -o -name '*.txt' \) -exec chmod -v 644 {} +
+chmod -v 644 vimplugin-taglist-%{taglist_version}/doc/taglist.txt
+
 %build
 
 %install
@@ -651,17 +670,28 @@ rm -rf plugin/editorconfig-core-py/ tests/
 rm mkzip.sh
 popd
 
+pushd nerdcommenter-%{NERDcommenter_version}
+rm -f Rakefile
+popd
+
+pushd nerdtree-%{NERDtree_version}
+rm -f _config.yml screenshot.png
+popd
+
 pushd tlib_vim-%{tlib_version}
 rm -r addon-info.json doc/tags etc samples scripts test
 popd
 
 install -d %buildroot/%vimplugin_dir
 for i in vimplugin-* a.vim-* ack.vim-* Align-* calendar.vim--Matsumoto-* \
-	colorsel.vim-* bufexplorer-* editorconfig-vim-* file-line-* \
+	bufexplorer-* colorsel.vim-* diffchanges.vim-* \
+	editorconfig-vim-* file-line-* \
 	gitdiff.vim-* LocateOpen-* matrix.vim--Yang-* minibufexpl.vim-* \
-	ShowMarks7-* \
-	tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* vim-fugitive-* \
-	vim-gnupg-*; do
+	MultipleSearch-* nerdcommenter-* nerdtree-* project.tar.gz-* \
+	SearchComplete-* ShowMarks7-* SuperTab--Van-Dewoestine-* \
+	tlib_vim-* tregisters-* tselectbuffer-* tselectfiles-* utl.vim-* \
+	vim-fugitive-* \
+	vim-gnupg-* ZoomWin-*; do
     pushd $i
     cp -av * %buildroot/%vimplugin_dir/
     popd
@@ -677,278 +707,60 @@ install -d %{buildroot}%{_datadir}/appdata
 install -m 644 vim-latex.metainfo.xml %{buildroot}%{_datadir}/appdata/
 popd
 
+pushd vim-markdown-%{markdown_version}
+chmod 644 indent/markdown.vim
+%{makeinstall} 'ADDONS=${VIMDIR}/site'
+popd
+
 install -m 644 %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
 # delete unneeded files
-rm -rf %{buildroot}/%vimplugin_dir/CHANGES*
-rm -rf %{buildroot}/%vimplugin_dir/CONTRIBUTORS*
-rm -rf %{buildroot}/%vimplugin_dir/LICENSE*
+rm -rf %{buildroot}/%vimplugin_dir/CHANGE*
+rm -rf %{buildroot}/%vimplugin_dir/CONTRIBUT*
+rm -rf %{buildroot}/%vimplugin_dir/LICEN?E*
 rm -rf %{buildroot}/%vimplugin_dir/README*
 rm -rf %{buildroot}/%vimplugin_dir/doc/Makefile*
 rm -rf %{buildroot}/%vimplugin_dir/doc/README*
 rm -rf %{buildroot}/%vimplugin_dir/doc/*.{xml,xsl,css}
 
 # For every plugin providing documentation, we have to call the post and postun
-# scriptlets Unfortunatelly, there is no easy way how to achieve that except
-# listing them manually :(
-
-# documentation: vim-plugin-ack
-
-%post -n vim-plugin-ack
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-ack
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-align
-
-%post -n vim-plugin-align
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-align
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-bufexplorer
-
-%post -n vim-plugin-bufexplorer
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-bufexplorer
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-colorsel
-
-%post -n vim-plugin-colorsel
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-colorsel
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-diffchanges
-
-%post -n vim-plugin-diffchanges
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-diffchanges
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-editorconfig
-
-%post -n vim-plugin-editorconfig
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-editorconfig
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-fugitive
-
-%post -n vim-plugin-fugitive
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-fugitive
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-gnupg
-
-%post -n vim-plugin-gnupg
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-gnupg
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-latex
-
-%post -n vim-plugin-latex
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-latex
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-multiplesearch
-
-%post -n vim-plugin-multiplesearch
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-multiplesearch
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-neomutt
-
-%post -n vim-plugin-neomutt
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-neomutt
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-NERDcommenter
-
-%post -n vim-plugin-NERDcommenter
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-NERDcommenter
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-NERDtree
-
-%post -n vim-plugin-NERDtree
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-NERDtree
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-project
-
-%post -n vim-plugin-project
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-project
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-quilt
-
-%post -n vim-plugin-quilt
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-quilt
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-rails
-
-%post -n vim-plugin-rails
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-rails
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-snipmate
-
-%post -n vim-plugin-snipmate
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-snipmate
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-supertab
-
-%post -n vim-plugin-supertab
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-supertab
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-taglist
-
-%post -n vim-plugin-taglist
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-taglist
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-tlib
-
-%post -n vim-plugin-tlib
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-tlib
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-tselectbuffer
-
-%post -n vim-plugin-tselectbuffer
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-tselectbuffer
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-tselectfiles
-
-%post -n vim-plugin-tselectfiles
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-tselectfiles
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-utl
-
-%post -n vim-plugin-utl
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-utl
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-vimwiki
-
-%post -n vim-plugin-vimwiki
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-vimwiki
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-# documentation: vim-plugin-zoomwin
-
-%post -n vim-plugin-zoomwin
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun -n vim-plugin-zoomwin
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
-
-%post
-vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-
-%postun
-if [ $1 == 0 ]; then
-  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null
-fi
+# scriptlets.
+
+%define vim_doc_post(n:) \
+%%post %{-n:-n %{-n*}} \
+vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null \
+%%postun %{-n:-n %{-n*}} \
+if [ $1 == 0 ]; then \
+  vim -u NONE -U NONE -X -n '+set nobackup nomore' '+helptags %vimplugin_dir/doc/' '+qa!' < /dev/null &> /dev/null \
+fi \
+%{nil}
+
+%vim_doc_post -n vim-plugin-ack
+%vim_doc_post -n vim-plugin-align
+%vim_doc_post -n vim-plugin-bufexplorer
+%vim_doc_post -n vim-plugin-colorsel
+%vim_doc_post -n vim-plugin-diffchanges
+%vim_doc_post -n vim-plugin-editorconfig
+%vim_doc_post -n vim-plugin-fugitive
+%vim_doc_post -n vim-plugin-gnupg
+%vim_doc_post -n vim-plugin-latex
+%vim_doc_post -n vim-plugin-multiplesearch
+%vim_doc_post -n vim-plugin-neomutt
+%vim_doc_post -n vim-plugin-NERDcommenter
+%vim_doc_post -n vim-plugin-NERDtree
+%vim_doc_post -n vim-plugin-project
+%vim_doc_post -n vim-plugin-quilt
+%vim_doc_post -n vim-plugin-rails
+%vim_doc_post -n vim-plugin-snipmate
+%vim_doc_post -n vim-plugin-supertab
+%vim_doc_post -n vim-plugin-taglist
+%vim_doc_post -n vim-plugin-tlib
+%vim_doc_post -n vim-plugin-tselectbuffer
+%vim_doc_post -n vim-plugin-tselectfiles
+%vim_doc_post -n vim-plugin-utl
+%vim_doc_post -n vim-plugin-vimwiki
+%vim_doc_post -n vim-plugin-zoomwin
+%vim_doc_post
 
 %files -n vim-plugin-a
 %doc a.vim-%{a_version}/README
@@ -1016,7 +828,7 @@ fi
 %vimplugin_dir/doc/fugitive.txt
 %vimplugin_dir/autoload/fugitive.vim
 %vimplugin_dir/ftdetect/fugitive.vim
-%dir %vimplugin_dir/ftplugin
+%dir %vimplugin_dir/ftplugin/
 %vimplugin_dir/ftplugin/fugitiveblame.vim
 %vimplugin_dir/syntax/fugitive.vim
 %vimplugin_dir/syntax/fugitiveblame.vim
@@ -1042,11 +854,11 @@ fi
 %vimplugin_dir/plugin/remoteOpen.vim
 %vimplugin_dir/plugin/filebrowser.vim
 %vimplugin_dir/plugin/SyntaxFolds.vim
+%dir %vimplugin_dir/compiler/
 %vimplugin_dir/compiler/tex.vim
-%dir %vimplugin_dir/compiler
+%dir %vimplugin_dir/indent/
 %vimplugin_dir/indent/tex.vim
-%dir %vimplugin_dir/indent
-%dir %vimplugin_dir/ftplugin
+%dir %vimplugin_dir/ftplugin/
 %vimplugin_dir/ftplugin/latex-suite
 %vimplugin_dir/ftplugin/tex_latexSuite.vim
 %vimplugin_dir/ftplugin/bib_latexSuite.vim
@@ -1056,6 +868,23 @@ fi
 %files -n vim-plugin-locateopen
 %defattr(-,root,root,0755)
 %vimplugin_dir/plugin/locateopen.vim
+
+%files -n vim-plugin-markdown
+%doc vim-markdown-%{markdown_version}/README.md vim-markdown-%{markdown_version}/CONTRIBUTING.md
+%dir %vimplugin_dir/after/
+%dir %vimplugin_dir/after/ftplugin/
+%vimplugin_dir/after/ftplugin/markdown.vim
+%dir %vimplugin_dir/ftdetect/
+%vimplugin_dir/ftdetect/markdown.vim
+%dir %vimplugin_dir/ftplugin/
+%vimplugin_dir/ftplugin/markdown.vim
+%dir %vimplugin_dir/indent/
+%vimplugin_dir/indent/markdown.vim
+%dir %{_datadir}/vim/registry/
+%{_datadir}/vim/registry/markdown.yaml
+%dir %vimplugin_dir/syntax/
+%vimplugin_dir/syntax/markdown.vim
+%vimplugin_dir/doc/vim-markdown.txt
 
 %files -n vim-plugin-matrix
 %defattr(-,root,root,0755)
@@ -1081,12 +910,20 @@ fi
 
 %files -n vim-plugin-NERDcommenter
 %defattr(-,root,root,0755)
+%doc nerdcommenter-%{NERDcommenter_version}/README.md
 %vimplugin_dir/doc/NERD_commenter.txt
 %vimplugin_dir/plugin/NERD_commenter.vim
 
 %files -n vim-plugin-NERDtree
 %defattr(-,root,root,0755)
-%vimplugin_dir/doc/NERD_tree.txt
+%license nerdtree-%{NERDtree_version}/LICENCE
+%doc nerdtree-%{NERDtree_version}/README.markdown
+%vimplugin_dir/doc/NERDTree.txt
+%vimplugin_dir/autoload/nerdtree.vim
+%dir %vimplugin_dir/autoload/nerdtree/
+%vimplugin_dir/autoload/nerdtree/ui_glue.vim
+%dir %vimplugin_dir/lib/
+%vimplugin_dir/lib/nerdtree/
 %vimplugin_dir/plugin/NERD_tree.vim
 %vimplugin_dir/syntax/nerdtree.vim
 %doc %{_defaultdocdir}/vimplugin-NERDtree
@@ -1127,7 +964,9 @@ fi
 %vimplugin_dir/syntax/snippet.vim
 %vimplugin_dir/plugin/snipMate.vim
 %vimplugin_dir/ftplugin/html_snip_helper.vim
-%vimplugin_dir/after
+%dir %vimplugin_dir/after/
+%dir %vimplugin_dir/after/plugin/
+%vimplugin_dir/after/plugin/snipMate.vim
 %vimplugin_dir/autoload/snipMate.vim
 %vimplugin_dir/doc/snipMate.txt
 
@@ -1172,6 +1011,7 @@ fi
 
 %files -n vim-plugin-utl
 %defattr(-,root,root,0755)
+%doc utl.vim-%{utl_version}/README
 %vimplugin_dir/doc/utl_ref.txt
 %vimplugin_dir/doc/utl_usr.txt
 %vimplugin_dir/plugin/utl_scm.vim
@@ -1186,7 +1026,6 @@ fi
 %vimplugin_dir/plugin/vimwiki.vim
 %dir %vimplugin_dir/ftplugin
 %vimplugin_dir/ftplugin/vimwiki.vim
-%dir %vimplugin_dir/indent
 %vimplugin_dir/autoload/vimwiki
 %vimplugin_dir/syntax/vimwiki*.vim
 

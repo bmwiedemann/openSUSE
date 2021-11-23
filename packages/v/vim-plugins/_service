@@ -12,6 +12,16 @@
   </service>
 
   <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/plasticboy/vim-markdown</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="revision">8e5d86f7b85234d3d1b4207dceebc43a768ed5d4</param>
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="obsinfo">vim-markdown.obsinfo</param>
+  </service>
+
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/vim-latex/vim-latex</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+%cd</param>
