@@ -18,7 +18,7 @@
 
 %define _name   ubuntu-mate
 Name:           ubuntu-mate-artwork
-Version:        20.04.0
+Version:        22.04.0
 Release:        0
 Summary:        Ubuntu MATE themes and artwork
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later
@@ -27,12 +27,22 @@ URL:            https://github.com/ubuntu-mate/ubuntu-mate-artwork
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildArch:      noarch
 
 %description
 This package contains Ubuntu MATE themes and artwork.
+
+%package -n metatheme-yaru-mate-common
+Summary:        Common files for the Yaru-MATE Gtk Themes
+Group:          System/GUI/Other
+Recommends:     %{_name}-icon-theme
+Suggests:       gtk2-metatheme-yaru-mate
+Suggests:       gtk3-metatheme-yaru-mate
+
+%description -n metatheme-yaru-mate-common
+Includes the Yaru-MATE themes.
+
+Introduced as the default theme in Ubuntu MATE 21.04.
 
 %package -n metatheme-ambiant-mate-common
 Summary:        Common files for the Ambiant-MATE Gtk Theme
@@ -59,6 +69,18 @@ Includes an Radiant-MATE dark-on-light theme.
 
 Introduced as one of the defaults in Ubuntu MATE 15.04.
 
+%package -n gtk2-metatheme-yaru-mate
+Summary:        GTK+ 2 support for the Yaru-MATE Gtk Themes
+Group:          System/GUI/Other
+Requires:       gtk2-engine-murrine >= 0.90.3
+Requires:       metatheme-yaru-mate-common = %{version}
+Supplements:    (metatheme-yaru-mate-common and gtk2)
+
+%description -n gtk2-metatheme-yaru-mate
+Includes the Yaru-MATE themes.
+
+Introduced as the default theme in Ubuntu MATE 21.04.
+
 %package -n gtk2-metatheme-ambiant-mate
 Summary:        GTK+ 2 support for the Ambiant-MATE Gtk Theme
 Group:          System/GUI/Other
@@ -83,6 +105,17 @@ Includes an Radiant-MATE dark-on-light theme.
 
 Introduced as one of the defaults in Ubuntu MATE 15.04.
 
+%package -n gtk3-metatheme-yaru-mate
+Summary:        GTK+ 3 support for the Yaru-MATE Gtk Themes
+Group:          System/GUI/Other
+Requires:       metatheme-yaru-mate-common = %{version}
+Supplements:    (metatheme-yaru-mate-common and gtk3)
+
+%description -n gtk3-metatheme-yaru-mate
+Includes the Yaru-MATE themes.
+
+Introduced as the default theme in Ubuntu MATE 21.04.
+
 %package -n gtk3-metatheme-ambiant-mate
 Summary:        GTK+ 3 support for the Ambiant-MATE Gtk Theme
 Group:          System/GUI/Other
@@ -104,6 +137,17 @@ Supplements:    (metatheme-radiant-mate-common and gtk3)
 Includes an Radiant-MATE dark-on-light theme.
 
 Introduced as one of the defaults in Ubuntu MATE 15.04.
+
+%package -n gtk4-metatheme-yaru-mate
+Summary:        GTK+ 4 support for the Yaru-MATE Gtk Themes
+Group:          System/GUI/Other
+Requires:       metatheme-yaru-mate-common = %{version}
+Supplements:    (metatheme-yaru-mate-common and gtk4)
+
+%description -n gtk4-metatheme-yaru-mate
+Includes the Yaru-MATE themes.
+
+Introduced as the default theme in Ubuntu MATE 21.04.
 
 %package -n %{_name}-icon-theme
 Summary:        Icon themes from Ubuntu MATE
@@ -133,27 +177,48 @@ rm link-battery.sh
 %install
 cp -a --no-preserve=mode * %{buildroot}/
 rm %{buildroot}/COPYING
-for icons in Ambiant-MATE Radiant-MATE; do
+for icons in Yaru-MATE-dark Yaru-MATE-light Ambiant-MATE Radiant-MATE; do
     # %%icon_theme_cache_create_ghost fails to work.
     touch %{buildroot}%{_datadir}/icons/$icons/icon-theme.cache
 done
 %fdupes %{buildroot}/%{_prefix}
 
+%files -n metatheme-yaru-mate-common
+%license COPYING
+%{_datadir}/themes/Yaru-MATE-dark/
+%exclude %{_datadir}/themes/Yaru-MATE-dark/gtk-2.*/
+%exclude %{_datadir}/themes/Yaru-MATE-dark/gtk-3.*/
+%exclude %{_datadir}/themes/Yaru-MATE-dark/gtk-4.*/
+%{_datadir}/themes/Yaru-MATE-light/
+%exclude %{_datadir}/themes/Yaru-MATE-light/gtk-2.*/
+%exclude %{_datadir}/themes/Yaru-MATE-light/gtk-3.*/
+%exclude %{_datadir}/themes/Yaru-MATE-light/gtk-4.*/
+%dir %{_datadir}/gtksourceview-*/
+%dir %{_datadir}/gtksourceview-*/styles/
+%{_datadir}/gtksourceview-*/styles/Yaru-MATE-dark*.xml
+%{_datadir}/gtksourceview-*/styles/Yaru-MATE-light*.xml
+
 %files -n metatheme-ambiant-mate-common
 %license COPYING
 %{_datadir}/themes/Ambiant-MATE*/
-%exclude %{_datadir}/themes/Ambiant-MATE*/gtk-?.*/
-%dir %{_datadir}/gtksourceview-?.0/
-%dir %{_datadir}/gtksourceview-?.0/styles/
-%{_datadir}/gtksourceview-?.0/styles/Ambiant-MATE*.xml
+%exclude %{_datadir}/themes/Ambiant-MATE*/gtk-2.*/
+%exclude %{_datadir}/themes/Ambiant-MATE*/gtk-3.*/
+%dir %{_datadir}/gtksourceview-*/
+%dir %{_datadir}/gtksourceview-*/styles/
+%{_datadir}/gtksourceview-*/styles/Ambiant-MATE*.xml
 
 %files -n metatheme-radiant-mate-common
 %license COPYING
 %{_datadir}/themes/Radiant-MATE/
-%exclude %{_datadir}/themes/Radiant-MATE/gtk-?.*/
-%dir %{_datadir}/gtksourceview-?.0/
-%dir %{_datadir}/gtksourceview-?.0/styles/
-%{_datadir}/gtksourceview-?.0/styles/Radiant-MATE.xml
+%exclude %{_datadir}/themes/Radiant-MATE/gtk-2.*/
+%exclude %{_datadir}/themes/Radiant-MATE/gtk-3.*/
+%dir %{_datadir}/gtksourceview-*/
+%dir %{_datadir}/gtksourceview-*/styles/
+%{_datadir}/gtksourceview-*/styles/Radiant-MATE.xml
+
+%files -n gtk2-metatheme-yaru-mate
+%{_datadir}/themes/Yaru-MATE-dark/gtk-2.*/
+%{_datadir}/themes/Yaru-MATE-light/gtk-2.*/
 
 %files -n gtk2-metatheme-ambiant-mate
 %{_datadir}/themes/Ambiant-MATE*/gtk-2.*/
@@ -161,11 +226,19 @@ done
 %files -n gtk2-metatheme-radiant-mate
 %{_datadir}/themes/Radiant-MATE/gtk-2.*/
 
+%files -n gtk3-metatheme-yaru-mate
+%{_datadir}/themes/Yaru-MATE-dark/gtk-3.*/
+%{_datadir}/themes/Yaru-MATE-light/gtk-3.*/
+
 %files -n gtk3-metatheme-ambiant-mate
 %{_datadir}/themes/Ambiant-MATE*/gtk-3.*/
 
 %files -n gtk3-metatheme-radiant-mate
 %{_datadir}/themes/Radiant-MATE/gtk-3.*/
+
+%files -n gtk4-metatheme-yaru-mate
+%{_datadir}/themes/Yaru-MATE-dark/gtk-4.*/
+%{_datadir}/themes/Yaru-MATE-light/gtk-4.*/
 
 %files -n %{_name}-icon-theme
 %license COPYING

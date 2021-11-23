@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 21.10.0 (changes since 20.04.0):
+  * Add Focal Fossa mascot.
+  * Add Green/Grey wallpaper (with logo) for Focal.
+  * Themes: Fix highlight colour for toolbar menu items.
+  * Themes: Fix unfocused label on Caja desktop (lp#1868369).
+  * Correct the Ubuntu MATE hex colour in icons.
+  * Add Ayatana Notifications symlinked icons.
+  * Add Groovy wallpapers.
+  * Add "Circle of Hippos" wallpaper.
+  * Add Yaru-MATE-light theme.
+  * Add Yaru-MATE-dark theme.
+  * Add Yaru-MATE-light icons.
+  * Add Yaru-MATE-dark icons.
+  * Add Yaru-MATE GtkSourceView styles.
+  * Add version 4 GtkSourceView styles.
+  * Add GTK 4.0 support.
+  * Update GTK 3.20 support.
+  * Optimise symbolic icons.
+  * Add/update full colour icons.
+  * Add Yaru-MATE wallpapers.
+  * Add contest winning Hippo photo wallpapers.
+  * Add Hirsute Hippo mascot wallpapers (lp#1921139).
+  * Fix trimmed Application menu logo (lp#1915905).
+  * Add Impish Indri mascot wallpapers (lp#1942437).
+  * Add Jammy Jellyfish wallpaper.
+- Add separate Yaru-MATE packages.
+
+-------------------------------------------------------------------
 Sun Aug 22 11:16:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim em dash grammar from summaries.

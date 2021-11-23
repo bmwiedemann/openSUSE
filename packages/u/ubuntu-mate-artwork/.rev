@@ -191,4 +191,12 @@
     <comment>- Trim em dash grammar from summaries. (forwarded request 913559 from jengelh)</comment>
     <requestid>913580</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8f2da7971d476dac7d14b0ab30326cdf</srcmd5>
+    <version>22.04.0</version>
+    <time>1637701849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.10.0.</comment>
+    <requestid>933312</requestid>
+  </revision>
 </revisionlist>
