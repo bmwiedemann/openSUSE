@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Tue Nov 23 14:45:19 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.47.1 (boo#1193005)
+  This release fixes a security issue in the media store, affecting
+  all prior releases of Synapse. Server administrators are
+  encouraged to update Synapse as soon as possible. We are not
+  aware of these vulnerabilities being exploited in the wild.
+  Server administrators who are unable to update Synapse may use
+  the workarounds described in the linked GitHub Security Advisory
+  below.
+
+  - Security Advisory:
+    GHSA-3hfw-x7gx-437c / CVE-2021-41281: Path traversal when
+    downloading remote media.
+    Synapse instances with the media repository enabled can be
+    tricked into downloading a file from a remote server into an
+    arbitrary directory, potentially outside the media store
+    directory.  The last two directories and file name of the path
+    are chosen randomly by Synapse and cannot be controlled by an
+    attacker, which limits the impact.  Homeservers with the media
+    repository disabled are unaffected. Homeservers configured with
+    a federation whitelist are also unaffected.  Fixed by
+    91f2bd090. 
+
+-------------------------------------------------------------------
+Wed Nov 17 14:19:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.47.0
+  - Deprecations and Removals
+    - The user_may_create_room_with_invites module callback is now
+      deprecated. Please refer to the upgrade notes for more
+      information. (#11206)
+    - Remove deprecated admin API to delete rooms (POST
+      /_synapse/admin/v1/rooms/<room_id>/delete). (#11213)
+  - Features
+    - Advertise support for Client-Server API r0.6.1. (#11097)
+    - Add search by room ID and room alias to the List Room admin
+      API. (#11099)
+    - Add an on_new_event third-party rules callback to allow
+      Synapse modules to act after an event has been sent into a
+      room. (#11126)
+    - Add a module API method to update a user's membership in a
+      room. (#11147)
+    - Add metrics for thread pool usage. (#11178)
+    - Support the stable room type field for MSC3288. (#11187)
+    - Add a module API method to retrieve the current state of a
+      room. (#11204)
+    - Calculate a default value for public_baseurl based on
+      server_name. (#11210)
+    - Add support for serving /.well-known/matrix/server files, to
+      redirect federation traffic to port 443. (#11211)
+    - Add admin APIs to pause, start and check the status of
+      background updates. (#11263)
+  - Bugfixes
+    - Fix a bug introduced in 1.47.0rc1 which caused worker
+      processes to not halt startup in the presence of outstanding
+      database migrations. (#11346)
+    - Fix a bug introduced in 1.47.0rc1 which prevented the 'remove
+      deleted devices from device_inbox column' background process
+      from running when updating from a recent Synapse version.
+      (#11303, #11353)
+    - Fix a long-standing bug which allowed hidden devices to
+      receive to-device messages, resulting in unnecessary database
+      bloat. (#10097)
+    - Fix a long-standing bug where messages in the device_inbox
+      table for deleted devices would persist indefinitely.
+      Contributed by @dklimpel and @JohannesKleine. (#10969,
+      #11212)
+    - Do not accept events if a third-party rule
+      check_event_allowed callback raises an exception. (#11033)
+    - Fix long-standing bug where verification requests could fail
+      in certain cases if a federation whitelist was in place but
+      did not include your own homeserver. (#11129)
+    - Allow an empty list of state_events_at_start to be sent when
+      using the MSC2716 /batch_send endpoint and the author of the
+      historical messages is already part of the current room state
+      at the given ?prev_event_id. (#11188)
+    - Fix a bug introduced in Synapse 1.45.0 which prevented the
+      synapse_review_recent_signups script from running.
+      Contributed by @samuel-p. (#11191)
+    - Delete to_device messages for hidden devices that will never
+      be read, reducing database size. (#11199)
+    - Fix a long-standing bug wherein a missing Content-Type header
+      when downloading remote media would cause Synapse to throw an
+      error. (#11200)
+    - Fix a long-standing bug which could result in serialization
+      errors and potentially duplicate transaction data when
+      sending ephemeral events to application services. Contributed
+      by @Fizzadar at Beeper. (#11207)
+    - Fix a bug introduced in Synapse 1.35.0 which made it
+      impossible to join rooms that return a send_join response
+      containing floats. (#11217)
+    - Fix long-standing bug where cross signing keys were not
+      included in the response to /r0/keys/query the first time a
+      remote user was queried. (#11234)
+    - Fix a long-standing bug where all requests that read events
+      from the database could get stuck as a result of losing the
+      database connection. (#11240)
+    - Fix a bug preventing Synapse from being rolled back to an
+      earlier version when using workers. (#11255, #11276)
+    - Fix a bug introduced in Synapse 1.37.1 which caused a remote
+      event being processed by a worker to not get processed on
+      restart if the worker was killed. (#11262)
+    - Only allow old Element/Riot Android clients to send read
+      receipts without a request body. All other clients must
+      include a request body as required by the specification.
+      Contributed by @rogersheu. (#11157)
+  - Updates to the Docker image
+    - Avoid changing user ID when started as a non-root user, and
+      no explicit UID is set. (#11209)
+  - Improved Documentation
+    - Improve example HAProxy config in the docs to properly handle
+      HTTP Host headers with port information. This is required for
+      federation over port 443 to work correctly. (#11128)
+    - Add documentation for using Authentik as an OpenID Connect
+      Identity Provider. Contributed by @samip5. (#11151)
+    - Clarify lack of support for Windows. (#11198)
+    - Improve code formatting and fix a few typos in docs.
+      Contributed by @sumnerevans at Beeper. (#11221)
+    - Add documentation for using LemonLDAP as an OpenID Connect
+      Identity Provider. Contributed by @l00ptr. (#11257)
+  - Internal Changes
+    - Add type annotations for the log_function decorator. (#10943)
+    - Add type hints to synapse.events. (#11098)
+    - Remove and document unnecessary RoomStreamToken checks in
+      application service ephemeral event code. (#11137)
+    - Add type hints so that synapse.http passes mypy checks.
+      (#11164)
+    - Update scripts to pass Shellcheck lints. (#11166)
+    - Add knock information in admin export. Contributed by Rafael
+      Gonçalves. (#11171)
+    - Add tests to check that
+      ClientIpStore.get_last_client_ip_by_device and
+      get_user_ip_and_agents combine database and in-memory data
+      correctly. (#11179)
+    - Refactor Filter to check different fields depending on the
+      data type. (#11194)
+    - Improve type hints for the relations datastore. (#11205)
+    - Replace outdated links in the pull request checklist with
+      links to the rendered documentation. (#11225)
+    - Fix a bug in unit test test_block_room_and_not_purge.
+      (#11226)
+    - In ObservableDeferred, run observers in the order they were
+      registered. (#11229)
+    - Minor speed up to start up times and getting updates for
+      groups by adding missing index to
+      local_group_updates.stream_id. (#11231)
+    - Add twine and towncrier as dev dependencies, as they're used
+      by the release script. (#11233)
+    - Allow stream_writers.typing config to be a list of one
+      worker. (#11237)
+    - Remove debugging statement in tests. (#11239)
+    - Fix MSC2716 historical messages backfilling in random order
+      on remote homeservers. (#11244)
+    - Add an additional test for the cachedList method decorator.
+      (#11246)
+    - Make minor correction to the type of auth_checkers callbacks.
+      (#11253)
+    - Clean up trivial aspects of the Debian package build tooling.
+      (#11269, #11273)
+    - Blacklist new SyTest that checks that key uploads are valid
+      pending the validation being implemented in Synapse. (#11270)
+
+-------------------------------------------------------------------
 Tue Nov  2 19:25:21 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.46.0
