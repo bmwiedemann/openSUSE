@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 16 13:42:27 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.15.5
+  * Make Authlib compatible with latest httpx
+  * Make Authlib compatible with latest werkzeug
+  * Allow customize RFC7523 alg value
+
+-------------------------------------------------------------------
 Fri Aug 13 11:16:21 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.15.4
