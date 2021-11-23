@@ -107,4 +107,12 @@ changes related to request: 238211
 - Split -doc package, building the documentation requires the yaml module, so this would create a dependency circle</comment>
     <requestid>908927</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1174a0bda601bebde7a9e63ccf2e8bcc</srcmd5>
+    <version>1.0.10</version>
+    <time>1637701827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928377</requestid>
+  </revision>
 </revisionlist>

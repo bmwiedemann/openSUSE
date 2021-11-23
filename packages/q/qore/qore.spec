@@ -18,9 +18,10 @@
 #
 
 
+%define so_ver 7
 %define module_dir %{_libdir}/qore-modules
 Name:           qore
-Version:        0.9.15
+Version:        1.0.10
 Release:        0
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -31,6 +32,8 @@ Source0:        https://github.com/qorelanguage/qore/archive/refs/tags/release-%
 Source99:       qore-module.prov
 # PATCH-FIX-OPENSUSE bmwiedemann boo#1084909
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM fix-module-linker-flags.patch -- gh#4335
+Patch1:         fix-module-linker-flags.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -53,13 +56,13 @@ Qore is a scripting language supporting threading and embedded logic.
 It applies a scripting-based approach to interface development and
 can also be used as a general purpose language.
 
-%package -n libqore6
+%package -n libqore%{so_ver}
 Summary:        Libraries for the qore runtime and qore clients
 License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
 Group:          Development/Languages/Other
 %(awk 'NF { gsub(/ /,""); print "Provides: qore-module(abi)%{?_isa} = "$abi  }' %{SOURCE99})
 
-%description -n libqore6
+%description -n libqore%{so_ver}
 Qore is a scripting language supporting threading and embedded logic.
 It applies a scripting-based approach to interface development and
 can also be used as a general purpose language.
@@ -67,18 +70,11 @@ can also be used as a general purpose language.
 This package provides the qore library required for all clients using qore
 functionality.
 
-%files -n libqore6
-%license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
-%{_libdir}/libqore.so.6*
-
-%post -n libqore6 -p /sbin/ldconfig
-%postun -n libqore6 -p /sbin/ldconfig
-
 %package devel
 Summary:        Header files needed to compile programs using the qore library
 License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
 Group:          Development/Languages/C and C++
-Requires:       libqore6 = %{version}-%{release}
+Requires:       libqore%{so_ver} = %{version}-%{release}
 
 %description devel
 Qore is a scripting language supporting threading and embedded logic.
@@ -87,16 +83,6 @@ can also be used as a general purpose language.
 
 This package provides header files needed to compile client programs using the
 Qore library.
-
-%files devel
-%{_bindir}/qpp
-%{_bindir}/qdx
-%{_libdir}/libqore.so
-%{_libdir}/pkgconfig/qore.pc
-%dir %{_libdir}/cmake
-%{_libdir}/cmake/Qore
-%{_includedir}/*
-%{_datadir}/qore
 
 %package misc-tools
 Summary:        Miscellaneous user tools writen in Qore Programming Language
@@ -108,15 +94,6 @@ Requires:       qore = %{version}-%{release}
 This package contains tool for working with:
  - REST APIs
  - SQL Databases
-
-%files misc-tools
-%{_bindir}/qdp
-%{_bindir}/qget
-%{_bindir}/rest
-%{_bindir}/sfrest
-%{_bindir}/saprest
-%{_bindir}/sqlutil
-%{_bindir}/schema-reverse
 
 %prep
 %autosetup -p1 -n %{name}-release-%{version}
@@ -132,12 +109,20 @@ autoreconf -fi
 %make_install
 rm %{buildroot}/%{_libdir}/libqore.la
 
+# Fix scripts
+for script in qdp qget rest saprest schema-reverse sfrest sqlutil qdx qjar qdbg{,-remote,-server,-vsc-adapter}; do
+  sed -i '1 s/env qore/qore/' "%{buildroot}%{_bindir}/$script"
+done
+
 # Check if we have all the provides for libqore - to ensure we provide all the qore-module ABI's the code supports
 ./qore --module-apis | awk -F',[[:blank:]]' '{i = 1; while (i < NF) { print $i; i++  } }' > /tmp/qore-modules.prov
 diff -ur %{SOURCE99} /tmp/qore-modules.prov
 
 %check
 make test
+
+%post -n libqore%{so_ver} -p /sbin/ldconfig
+%postun -n libqore%{so_ver} -p /sbin/ldconfig
 
 %files
 %{_bindir}/qore
@@ -146,5 +131,29 @@ make test
 %dir %{_datadir}/qore-modules
 %{_datadir}/qore-modules/%{version}
 %{_mandir}/man1/qore.1%{?ext_man}
+
+%files -n libqore%{so_ver}
+%license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
+%{_libdir}/libqore.so.%{so_ver}*
+
+%files devel
+%{_bindir}/qpp
+%{_bindir}/qdx
+%{_bindir}/qjar
+%{_libdir}/libqore.so
+%{_libdir}/pkgconfig/qore.pc
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/Qore
+%{_includedir}/*
+%{_datadir}/qore
+
+%files misc-tools
+%{_bindir}/qdp
+%{_bindir}/qget
+%{_bindir}/rest
+%{_bindir}/sfrest
+%{_bindir}/saprest
+%{_bindir}/sqlutil
+%{_bindir}/schema-reverse
 
 %changelog

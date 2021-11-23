@@ -17,7 +17,7 @@
 
 
 Name:           qore-doc
-Version:        0.9.15
+Version:        1.0.10
 Release:        0
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 28 09:18:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.0.10:
+  * Might break backwards compatibility:
+    * Some server-side APIs have changed (integration of the Logger
+      module in the HttpServer and the HttpServerUtil modules).
+    * Implemented the invalid-catch warning when types are required
+      by parse options and added to the default warning mask for modules
+  * Added support for thread-local global variables
+  * Type errors with function and method resolution will report the full
+    namespace paths of class and hashdecl types
+  * ConnectionProvider module:
+    * updated the AbstractConnection::getInfo() method
+    * added the AbstractConnection::getExtendedInfo() method
+  * DataProvider module:
+    * added the limit search option to the DefaultRecordIterator class
+  * HttpServer module:
+    * allow dynamic handlers to be disabled before being removed
+    * integrated the Logger module
+    * removed deprecated APIs
+  * HttpServerUtil module:
+    * integrated the Logger module
+  * Logger module:
+    * added support for the %h and %P patterns for hostname and PID
+    * allow file appenders to be reopened
+    * enable serialization for LoggerEvent objects as well as for
+      them to be submitted directly to Logger objects
+  * Added qjar tool for exporting javadoc
+  * Many bug fixes
+  * Full release notes:
+    https://docs.qore.org/qore-1.0.10/lang/html/release_notes.html
+- Add fix-module-linker-flags.patch fixing gh#4335
+
+-------------------------------------------------------------------
 Sat Jun 12 08:48:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim marketing wording from description.
