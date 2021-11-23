@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * Fix show window thumbnails check button.
+  * Revert "window-list.c: use g_settings_* functions directly
+    instead of using stored values"
+  * Update installation instructions.
+  * Fix the mate-desktop-item-edit executable.
+  * Update translations.
+
+-------------------------------------------------------------------
 Sun Aug 22 11:27:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim em dash grammar from summaries.

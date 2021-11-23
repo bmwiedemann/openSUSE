@@ -20,12 +20,10 @@
 %define sover   1
 %define typelib typelib-1_0-MatePanelApplet-4_0
 %define _version 1.26
-
 Name:           mate-panel
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE Desktop Panel
-Group:          System/GUI/Other
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
@@ -54,9 +52,9 @@ BuildRequires:  pkgconfig(mateweather) >= %{_version}
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr) >= 1.3
-Recommends:     %{name}-branding >= %{_version}
 Requires:       gsettings-backend-dconf
 Requires:       gvfs-backends
+Recommends:     %{name}-branding >= %{_version}
 Recommends:     %{name}-lang
 # Remove old packages.
 Obsoletes:      mate-panel-matecomponent-support
@@ -89,7 +87,6 @@ This package contains the upstream default layout for MATE Panel.
 
 %package -n %{soname}-%{sover}
 Summary:        matecomponent-based library for the MATE Panel Applet
-Group:          System/Libraries
 License:        LGPL-2.1-or-later
 
 %description -n %{soname}-%{sover}
@@ -99,7 +96,6 @@ access to data.
 
 %package -n %{typelib}
 Summary:        Introspection bindings for the MATE panel applet library
-Group:          System/Libraries
 License:        GPL-2.0-or-later
 
 %description -n %{typelib}
@@ -110,7 +106,6 @@ access to data.
 %package devel
 Summary:        Development files for the MATE panel applet library
 License:        GPL-2.0-or-later
-Group:          Development/Libraries/X11
 Requires:       %{soname}-%{sover} = %{version}
 Requires:       %{typelib} = %{version}
 
