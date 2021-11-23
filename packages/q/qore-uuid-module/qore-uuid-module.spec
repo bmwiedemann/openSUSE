@@ -16,7 +16,7 @@
 #
 
 
-%define qore_version 0.9.15
+%define qore_version 1.0.10
 %define module_api   %(qore --latest-module-api 2>/dev/null)
 %define src_name     module-uuid-release-%{qore_version}
 Name:           qore-uuid-module
@@ -34,8 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libuuid-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.9
-Requires:       %{_bindir}/env
+BuildRequires:  qore-devel >= %{qore_version}
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
@@ -56,8 +55,7 @@ uuid module.
 
 %build
 %cmake
-%cmake_build
-make %{?_smp_mflags} docs
+%make_build docs
 
 %install
 %cmake_install

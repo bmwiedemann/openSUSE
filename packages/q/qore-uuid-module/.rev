@@ -35,4 +35,12 @@ Requires SR#908927
 </comment>
     <requestid>908930</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c5c3521b8eabd9a327cdf20251489cf2</srcmd5>
+    <version>1.4.0+qore1.0.10</version>
+    <time>1637701829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930756</requestid>
+  </revision>
 </revisionlist>
