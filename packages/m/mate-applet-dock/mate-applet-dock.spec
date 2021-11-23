@@ -1,7 +1,7 @@
 #
 # spec file for package mate-applet-dock
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,11 @@
 
 %define _name   mate-dock-applet
 Name:           mate-applet-dock
-Version:        20.04.0
+Version:        21.10.0
 Release:        0
 Summary:        Dock applet for the MATE panel
 License:        GPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/ubuntu-mate/mate-dock-applet
 Source:         https://github.com/ubuntu-mate/%{_name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -38,7 +39,7 @@ Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Requires:       python3-python-xlib
-Requires:       python3-xdg
+Requires:       python3-pyxdg
 Recommends:     libunity
 %glib2_gsettings_schema_requires
 
@@ -64,6 +65,8 @@ The applet allows you to:
 %prep
 %setup -q -n %{_name}-%{version}
 
+%lang_package
+
 %build
 autoreconf -fi
 %configure \
@@ -73,6 +76,7 @@ autoreconf -fi
 %install
 %make_install
 %fdupes %{buildroot}%{_libdir}/
+%find_lang %{_name}
 
 pushd %{buildroot}%{_libdir}/mate-applets/mate-dock-applet/
 # Do not use env for python scripts.
@@ -95,5 +99,7 @@ popd
 %dir %{_datadir}/mate-panel/
 %dir %{_datadir}/mate-panel/applets/
 %{_datadir}/mate-panel/applets/org.mate.panel.*.mate-panel-applet
+
+%files lang -f %{_name}.lang
 
 %changelog

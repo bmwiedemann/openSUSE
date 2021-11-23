@@ -143,4 +143,12 @@
     <comment>- Update to version 20.04.0.</comment>
     <requestid>780256</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9a761de3a0ac33d6cd0ff654dfbe165b</srcmd5>
+    <version>21.10.0</version>
+    <time>1637701847</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.10.0.</comment>
+    <requestid>933304</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 21.10.0:
+  * Only activate the topmost window for Unity-style window
+    switching behaviour.
+  * Add i18n support along with French and Spanish translations.
+  * Fix AttributeError in start_app().
+- Change the requirement from python3-xdg to python3-pyxdg.
+- Add the mate-applet-dock-lang package.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 20.04.0 (changes since 0.88):
