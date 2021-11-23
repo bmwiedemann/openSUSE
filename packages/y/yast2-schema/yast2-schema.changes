@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 19 12:20:02 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add 'efi' element to the rules schema (jsc#SLE-18819)
+- 4.4.6
+
+-------------------------------------------------------------------
 Thu Nov  4 16:05:56 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add 'description' to the interfaces in the networking section
