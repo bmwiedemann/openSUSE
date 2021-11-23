@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 22 05:39:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch switch-to-pytest.patch:
+  * Use pytest to run tests, rather than nose. 
+
+-------------------------------------------------------------------
 Sun Nov 29 16:15:12 UTC 2020 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.26.
