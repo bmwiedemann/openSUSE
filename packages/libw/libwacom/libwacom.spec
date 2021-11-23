@@ -1,7 +1,7 @@
 #
 # spec file for package libwacom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ Summary:        Library to identify wacom tablets
 License:        MIT
 Group:          System/Libraries
 URL:            https://linuxwacom.github.io/
-Source:         https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Source2:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
-Source3:        %{name}.keyring
+Source0:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source1:        https://github.com/linuxwacom/libwacom/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
+Source2:        %{name}.keyring
 Source99:       baselibs.conf
 %if %{with meson}
 BuildRequires:  meson >= 0.51.0
@@ -67,6 +67,8 @@ built-in on-screen tablet", "what is the size of this model", etc.
 %package tools
 Summary:        Library to identify wacom tablets -- Tools
 Group:          Hardware/Other
+Requires:       python3-libevdev
+Requires:       python3-pyudev
 
 %description tools
 libwacom is a library to identify wacom tablets and their model-specific
@@ -104,6 +106,7 @@ make %{?_smp_mflags}
 %make_install
 %endif
 
+sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}/*
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with meson}
