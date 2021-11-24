@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 15 12:57:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * redis-sentinel@.service
+  * redis@.service
+
+-------------------------------------------------------------------
 Mon Oct  4 20:23:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - redis 6.2.6 with security fixes for
