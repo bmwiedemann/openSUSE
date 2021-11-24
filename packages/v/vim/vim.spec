@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3587
+%define patchlevel 3640
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -649,6 +649,7 @@ fi
 %files data
 # exclude common files
 %exclude %{_datadir}/vim/%{VIM_SUBDIR}/autoload/dist/ft.vim
+%exclude %{_datadir}/vim/%{VIM_SUBDIR}/colors/lists/default.vim
 %exclude %{_datadir}/vim/%{VIM_SUBDIR}/syntax/nosyntax.vim
 %exclude %{_datadir}/vim/%{VIM_SUBDIR}/syntax/resolv.vim
 %exclude %{_datadir}/vim/%{VIM_SUBDIR}/syntax/sh.vim
@@ -689,6 +690,7 @@ fi
 %dir %{_datadir}/vim/%{VIM_SUBDIR}/syntax/
 %{_datadir}/vim/%{VIM_SUBDIR}/suse.vimrc
 %{_datadir}/vim/%{VIM_SUBDIR}/autoload/dist/ft.vim
+%{_datadir}/vim/%{VIM_SUBDIR}/colors/lists/default.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/nosyntax.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/resolv.vim
 %{_datadir}/vim/%{VIM_SUBDIR}/syntax/sh.vim

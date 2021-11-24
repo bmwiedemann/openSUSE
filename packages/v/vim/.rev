@@ -5401,4 +5401,40 @@ always built-in because vim has direct perl dependencies anyway.
   * Compiler test fails with backslash file separator.</comment>
     <requestid>931243</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>03bae09feb4547fd63b36aec1d9f2911</srcmd5>
+    <version>8.2.3640</version>
+    <time>1637794449</time>
+    <user>dimstar_suse</user>
+    <comment>- fix boo#1192871
+- Updated to version 8.2.3640, fixes the following problems
+  * Arglist test does not clear the argument list consistently.
+  * &quot;:verbose pwd&quot; does not mention 'autochdir' was applied.
+  * getcwd() is unclear about how 'autochdir' is used.
+  * Cannot use a lambda for 'operatorfunc'.
+  * Memory leak reported in libtlib.
+  * Build failure.
+  * &quot;verbose pwd&quot; shows confusing info when :lcd does not change directory.
+  * &quot;$*&quot; is expanded to &quot;nonomatch&quot;.
+  * When renaming a terminal buffer the status text is not updated.
+  * Illegal memory access when C-indenting.
+  * &quot;au!&quot; and &quot;au! event&quot; cannot be followed by another command as documented.
+  * difficult to know where the text starts in a window. (Sergey Vlasov)
+  * Looking up terminal colors is a bit slow.
+  * Command completion in cmdline window uses global user commands, not
+  local commands for the window where it was opened from.
+  * Printf() with %S does not handle multi-byte correctly.
+  * &quot;syntax enable&quot; does not work properly in Vim9 context.
+  * GTK3: undercurl does not get removed properly.
+  * Vim9: line number of lambda is off by one.
+  * Error for already defined function uses wrong line number.
+  * GTK: composing underline does not show.
+  * Coverity warns for unreachable code.
+  * Typos in test files.
+  * getcompletion() always passes zero as position to custom completion
+  function.
+  * Line commented out accidentally.
+  * Freeze when calling term_wait() in a close callback.</comment>
+    <requestid>932951</requestid>
+  </revision>
 </revisionlist>

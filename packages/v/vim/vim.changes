@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Nov 22 09:04:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fix boo#1192871
+- Updated to version 8.2.3640, fixes the following problems
+  * Arglist test does not clear the argument list consistently.
+  * ":verbose pwd" does not mention 'autochdir' was applied.
+  * getcwd() is unclear about how 'autochdir' is used.
+  * Cannot use a lambda for 'operatorfunc'.
+  * Memory leak reported in libtlib.
+  * Build failure.
+  * "verbose pwd" shows confusing info when :lcd does not change directory.
+  * "$*" is expanded to "nonomatch".
+  * When renaming a terminal buffer the status text is not updated.
+  * Illegal memory access when C-indenting.
+  * "au!" and "au! event" cannot be followed by another command as documented.
+  * difficult to know where the text starts in a window. (Sergey Vlasov)
+  * Looking up terminal colors is a bit slow.
+  * Command completion in cmdline window uses global user commands, not
+  local commands for the window where it was opened from.
+  * Printf() with %S does not handle multi-byte correctly.
+  * "syntax enable" does not work properly in Vim9 context.
+  * GTK3: undercurl does not get removed properly.
+  * Vim9: line number of lambda is off by one.
+  * Error for already defined function uses wrong line number.
+  * GTK: composing underline does not show.
+  * Coverity warns for unreachable code.
+  * Typos in test files.
+  * getcompletion() always passes zero as position to custom completion
+  function.
+  * Line commented out accidentally.
+  * Freeze when calling term_wait() in a close callback.
+
+-------------------------------------------------------------------
+Thu Nov 18 18:28:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3616, fixes the following problems
+  * Compiler test fails with backslash file separator.
+  * Break statement is never reached.
+  * Failure when the "term_rows" argument of term_start() is an unusual value.
+  * Test for v:colornames sometimes fails. (Dominique Pellé)
+  * No event is triggered when closing a window.
+  * Test_hlset fails when terminal has many columns.
+  * Directory is wrong after executing "lcd" with win_execute().
+  * Xxd code is a bit difficult to understand.
+  * Check for signed overflow might not work everywhere.
+  * Crash when using :pedit in Vim9 script.
+  * Vim seems to hang when writing a very long text to a terminal window.
+  * RouterOS filetype is not recognized.
+  * Not all gdbinit files are recognized.
+  * Filetype test fails.
+  * Check for overflow in put count does not work well.
+  * Python3 test fails with Python 3.10 on MS-Windows.
+  * Fish filetype not recognized.
+  * Not all sudoers files are recognized.
+  * Cannot clear and unlinke a highlight group with hlset() in a single call.
+  * File missing from list of distributed files.
+  * GTK3 screen updating is slow.
+  * Users who type "q:" instead of ":q" are confused.
+  * Internal error when ModeChanged is triggered when v:event is already
+  in use.
+  * Crash when ModeChanged triggered too early.
+  * Crash when using CTRL-W f without finding a file name.
+  * Using freed memory with regexp using a mark.
+  * :find test fails.
+  * zindex of popup windows not used when redrawing popup menu.
+  * When re-formatting with an indent expression the first line of a paragraph
+  may get the wrong indent. (Martin F. Krafft)
+  * Arglist test does not clear the argument list consistently.
+
+-------------------------------------------------------------------
 Fri Nov 12 18:45:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fixes boo#1192631
