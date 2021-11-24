@@ -1,7 +1,7 @@
 #
 # spec file for package muparserx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,15 @@
 #
 
 
-%define libbase 4_0_8
+%define libbase 4_0_11
 Name:           muparserx
-Version:        4.0.8
+Version:        4.0.11
 Release:        0
 Summary:        A C++ Library for Parsing Expressions
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://muparserx.beltoforion.de
-Source0:        https://github.com/beltoforion/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            http://muparserx.beltoforion.de
+Source:         https://github.com/beltoforion/muparserx/archive/v%version.tar.gz
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
@@ -34,7 +34,6 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz-gnome
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A C++ Library for Parsing Expressions with Strings, Complex Numbers,
@@ -58,19 +57,19 @@ The muparserx shared library. A C++ Library for Parsing Expressions with
 Strings, Complex Numbers, Vectors, Matrices and more.
 
 %prep
-%setup -q
+%autosetup -p0
 
 %build
 %cmake  \
   -DBUILD_SHARED_LIBS:BOOL=ON \
   -DBUILD_SAMPLES:BOOL=OFF \
   -DCMAKE_BUILD_TYPE:STRING=Release
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 mv %{buildroot}/usr/share/cmake %{buildroot}%{_libdir}
-dos2unix License.txt Readme.txt sample/*
+dos2unix sample/*
 pushd doc
 doxygen doxyfile.dox
 mkdir -p %{buildroot}%{_docdir}/%{name}-devel
@@ -84,12 +83,11 @@ popd
 %postun -n lib%{name}%{libbase} -p /sbin/ldconfig
 
 %files -n lib%{name}%{libbase}
-%license License.txt
+%license LICENSE
 %{_libdir}/libmuparserx.so.*
 
 %files devel
-%doc Readme.txt sample html
-%license License.txt
+%doc Readme.md sample html
 %{_libdir}/libmuparserx.so
 %{_includedir}/*
 %{_libdir}/pkgconfig/%{name}.pc

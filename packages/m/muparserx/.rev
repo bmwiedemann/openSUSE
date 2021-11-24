@@ -7,4 +7,12 @@
     <comment>Replace the request form Application:Geo, needed for qgis</comment>
     <requestid>728277</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>83d6931ad0465ed78488f8670f86cdfe</srcmd5>
+    <version>4.0.11</version>
+    <time>1637794462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.11</comment>
+    <requestid>933344</requestid>
+  </revision>
 </revisionlist>
