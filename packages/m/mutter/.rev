@@ -1499,4 +1499,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>New stable release (forwarded request 929557 from iznogood)</comment>
     <requestid>929606</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>e7b69e78f28079abdede6a829ae8001a</srcmd5>
+    <version>41.1</version>
+    <time>1637794460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933218</requestid>
+  </revision>
 </revisionlist>

@@ -84,9 +84,7 @@ BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.3
 %endif
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
-%if !0%{?sle_version}
 BuildRequires:  pkgconfig(wayland-eglstream)
-%endif
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.21
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:  pkgconfig(x11)
@@ -153,9 +151,7 @@ applications that want to make use of the mutter library.
 %build
 %meson \
 	-Degl_device=true \
-%if !0%{?sle_version}
 	-Dwayland_eglstream=true \
-%endif
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
 	-Dtests=true \
