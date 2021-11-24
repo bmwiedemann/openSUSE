@@ -66,6 +66,7 @@ BuildRequires:  zlib-devel
 Requires:       dejavu
 %if 0%{?suse_version} >= 1500
 Patch13:        python3.patch
+Patch14:	harden_rrdcached.service.patch
 %endif
 %if %{with python}
 BuildRequires:  %{python}-devel
@@ -218,6 +219,7 @@ daemon was written to alleviate these problems.
 %if 0%{?suse_version} >= 1500
 %patch13 -p1
 %endif
+%patch14 -p1
 
 # rrd_tool/rrd_cgi: use the date of the last change
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
