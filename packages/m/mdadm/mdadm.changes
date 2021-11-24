@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 23 08:42:24 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
+
+- Use %{_sbindir} for prerequisite of mkinitrd to work with
+  usrmerge of dracut-mkinitrd-deprecated
+
+-------------------------------------------------------------------
 Wed Oct  6 04:15:49 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Install mdadm in _sbindir rather than /sbin.  This is more

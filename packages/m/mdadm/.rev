@@ -1378,4 +1378,13 @@ which haven't landed upstream yet
   (bsc#1191076)</comment>
     <requestid>923384</requestid>
   </revision>
+  <revision rev="131" vrev="16">
+    <srcmd5>71a2d1b0347603c035e4f8901130c10a</srcmd5>
+    <version>4.1</version>
+    <time>1637794460</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %{_sbindir} for prerequisite of mkinitrd to work with
+  usrmerge of dracut-mkinitrd-deprecated (forwarded request 933221 from suntorytimed)</comment>
+    <requestid>933225</requestid>
+  </revision>
 </revisionlist>

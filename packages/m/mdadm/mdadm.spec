@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 PreReq:         %fillup_prereq
-PreReq:         /sbin/mkinitrd
+PreReq:         %{_sbindir}/mkinitrd
 PreReq:         coreutils
 Recommends:     smtp_daemon
 URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
