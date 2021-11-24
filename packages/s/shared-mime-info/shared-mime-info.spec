@@ -27,8 +27,12 @@ Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
 Source0:        %{url}/uploads/%{commitid}/%{name}-%{version}.tar.xz
 Source1:        macros.shared-mime-info
+# PATCH-FIX-UPSTREAM fix-build-meson-0_60.patch -- Fix build with meson 0.60 and newer
+Patch0:         fix-build-meson-0_60.patch
+# PATCH-FIX-UPSTREAM drop-itstool-dep.patch -- Drop itstool as it is no longer needed
+Patch1:         drop-itstool-dep.patch
+
 BuildRequires:  glib2-devel
-BuildRequires:  itstool
 BuildRequires:  libxml2-devel
 # needed for xmllint
 BuildRequires:  libxml2-tools

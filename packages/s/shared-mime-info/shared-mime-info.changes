@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 18 19:55:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-build-meson-0_60.patch: Fix build with meson 0.60 and
+  newer.
+- Add drop-itstool-dep.patch: Drop itstool as it is no longer
+  needed, upstream was missing this in the patch. Following this:
+  drop itstool BuildRequires.
+
+-------------------------------------------------------------------
 Thu Sep 16 02:05:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
