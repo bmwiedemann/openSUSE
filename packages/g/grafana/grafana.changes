@@ -8,6 +8,7 @@ Thu Nov 18 14:13:39 CET 2021 - ro@suse.de
 Wed Nov 17 23:32:21 UTC 2021 - ro@suse.de
 
 - Update to version 7.5.11:
+  * Fix Snapshot authentication bypass (bsc#1191454, CVE-2021-39226)
   * Fix certs issue (#40002)
   * Release v7.5.11 (#124)
   * Fix static path matching issue in macaron
