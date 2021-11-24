@@ -1450,4 +1450,12 @@
   * osc: update chapter marker positions when duration changes</comment>
     <requestid>903355</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d1d53214be999face57eb0635c1d0c8a</srcmd5>
+    <version>0.34.0+git.20211101T154439.9ca9066d05</version>
+    <time>1637794466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933395</requestid>
+  </revision>
 </revisionlist>

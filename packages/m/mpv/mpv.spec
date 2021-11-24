@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.20
 %define lname   libmpv1
 Name:           mpv
-Version:        0.33.1+git.20210630T163736.f2afae55e9
+Version:        0.34.0+git.20211101T154439.9ca9066d05
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -43,44 +43,46 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(alsa) >= 1.0.18
 BuildRequires:  pkgconfig(caca) >= 0.99.beta18
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
-BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(egl) >= 1.4
 BuildRequires:  pkgconfig(ffnvcodec) >= 8.2.15.7
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
-BuildRequires:  pkgconfig(libass) >= 0.12.1
-BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
+BuildRequires:  pkgconfig(libass) >= 0.12.2
+BuildRequires:  pkgconfig(libavcodec) >= 58.16.100
 BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
-BuildRequires:  pkgconfig(libavfilter) >= 7.0.101
-BuildRequires:  pkgconfig(libavformat) >= 58.0.102
-BuildRequires:  pkgconfig(libavutil) >= 56.6.100
+BuildRequires:  pkgconfig(libavfilter) >= 7.14.100
+BuildRequires:  pkgconfig(libavformat) >= 58.9.100
+BuildRequires:  pkgconfig(libavutil) >= 56.12.100
 BuildRequires:  pkgconfig(libbluray) >= 0.3.0
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_cdda)
 BuildRequires:  pkgconfig(libcdio_paranoia)
-BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libdrm) >= 2.4.75
 BuildRequires:  pkgconfig(libiso9660)
 BuildRequires:  pkgconfig(libkms)
-BuildRequires:  pkgconfig(libplacebo) >= 2.72.0
+BuildRequires:  pkgconfig(libplacebo) >= 3.104.0
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
 BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(libv4l2)
-BuildRequires:  pkgconfig(libva) >= 0.36.0
-BuildRequires:  pkgconfig(libva-x11) >= 0.36.0
+BuildRequires:  pkgconfig(libva) >= 1.1.0
+BuildRequires:  pkgconfig(libva-x11) >= 1.1.0
+# Testing framework: disabled for now as it runs just 1 test
+# BuildRequires:  pkgconfig(cmocka) >= 0.4.1
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(rubberband)
+BuildRequires:  pkgconfig(rubberband) >= 1.8.0
 BuildRequires:  pkgconfig(uchardet)
-BuildRequires:  pkgconfig(vapoursynth)
-BuildRequires:  pkgconfig(vapoursynth-script)
-BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vapoursynth) >= 24
+BuildRequires:  pkgconfig(vapoursynth-script) >= 23
+BuildRequires:  pkgconfig(vdpau) >= 0.2
 BuildRequires:  pkgconfig(xext) >= 1.0.0
 BuildRequires:  pkgconfig(xinerama) >= 1.0.0
 BuildRequires:  pkgconfig(xkbcommon) >= 0.3.0
@@ -93,10 +95,10 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun):hicolor-icon-theme
-Requires(postun):update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 # Used via LUA scripts
-Recommends:     youtube-dl
+Recommends:     yt-dlp
 Conflicts:      mpv-plugin-mpris < 0.4
 # Obsoletion of mplayer2 that is dead for 2 years now
 Provides:       mplayer2 = 20140101
@@ -110,10 +112,10 @@ BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(lua)
 %endif
 %if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(libva-wayland) >= 0.36.0
+BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
 BuildRequires:  pkgconfig(vulkan) >= 1.0.61
-BuildRequires:  pkgconfig(wayland-client) >= 1.6.0
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.6.0
+BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.15.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-scanner)
@@ -129,8 +131,6 @@ BuildRequires:  pkgconfig(lua5.1)
 %else
 BuildRequires:  pkgconfig(lua)
 %endif
-# Testing framework: disabled for now as it runs just 1 test
-# BuildRequires:  pkgconfig(cmocka) >= 0.4.1
 
 %description
 mpv is a movie player based on MPlayer and mplayer2. It supports a wide variety

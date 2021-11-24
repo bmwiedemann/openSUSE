@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 21 09:41:06 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 0.34.0+git.20211101T154439.9ca9066d05:
+  * input.conf syntax: support custom quotes in `XstringX` form & single quotes
+  * ao_oss: readd OSSv4 audio output, default on *BSD
+  * osc: seekbar hover/drag: display target chapter at the OSC title
+  * stats.lua: add page 4 with a list of active key bindings
+  * sub: add --sub-filter-jsre (JS regex)
+  * vo_rpi: restore fullscreen handling
+  * vo_tct: add resize capability
+  * ytdl_hook.lua: search for yt-dlp by default (preferred over youtube-dl)
+  * vo_sixel: many fixes and improvements
+  * filters: switch from scaletempo to scaletempo2, used for speed option
+  * audio/vo_pulse: fix various edge cases and issues
+  * stats.lua: move internal performance info from page 4 to page 0
+  * command: don't hardcode command lists to be repeatable
+  * vo_gpu: drop support for libplacebo older than v3.104.0
+
+  * See https://github.com/mpv-player/mpv/compare/bc9d556f3a..9ca9066d05
+    or https://git.srsfckn.biz/mpv/log/?qt=range&q=bc9d556f3a..9ca9066d05
+    for the complete changelog.
+
+-------------------------------------------------------------------
 Thu Jul 01 08:03:22 UTC 2021 - ismail@i10z.com
 
 - Update to version 0.33.1+git.20210630T163736.f2afae55e9:
