@@ -1693,6 +1693,7 @@
     <package name="libbd_crypto2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_fs2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_loop2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libbd_lvm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_mdraid2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_part2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_swap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1881,7 +1882,7 @@
     <package name="liberation-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libesmtp6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libespeak-ng1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="libestr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libetonyek-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libev4" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libevdev-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1901,7 +1902,7 @@
     <package name="libf2fs8" supportstatus="unsupported"/> <!-- reason: dvd:f2fs-tools -->
     <package name="libfakekey0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libfarstream-0_2-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="libfastjson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfaxutil7_0_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-4_2_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2246,8 +2247,8 @@
     <package name="liblmdb-0_9_29" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
-    <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblouis20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblpsolve55-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2259,7 +2260,7 @@
     <package name="libluajit-5_1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblunar-calendar-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblunar-date-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="liblvm2cmd2_03" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblz4-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="liblzo2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2537,7 +2538,7 @@
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libraw20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="librdkafka1" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="librdkafka1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="librdmacm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libre2-9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libreadline8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2945,7 +2946,7 @@
     <package name="lunar-date" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lunar-date-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lv" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="lvm2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="lvm2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="lynx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lzfse" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lzip" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3958,7 +3959,7 @@
     <package name="rsibreak-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rsvg-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="rsync" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="rsyslog" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="rsyslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->
     <package name="rtkit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="rtl-sdr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4534,7 +4535,7 @@
     <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
+    <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="system-config-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-config-printer-applet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-config-printer-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
