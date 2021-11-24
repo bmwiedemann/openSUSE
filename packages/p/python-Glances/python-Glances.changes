@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 22 11:48:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.2.4.2
+  * Added support for Python 3.10
+  *  KeyError: 'syscalls' and terminal layout broken #1956 
+
+-------------------------------------------------------------------
+Sun Nov 21 11:50:41 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.2.4.1
+  * Missing packaging dependency when using pip install #1955
+
+-------------------------------------------------------------------
 Sat Nov 20 11:17:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.2.4
