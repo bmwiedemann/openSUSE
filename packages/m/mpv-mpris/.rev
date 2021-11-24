@@ -7,4 +7,12 @@
     <comment>This package contains a plugin for mpv which allows control of the player using the MPRIS D-Bus interface, which enables control with multimedia keys in desktop environments such as GNOME and KDE as well as through tools like playerctl.</comment>
     <requestid>806784</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5509374c70c8259e80ae95980cdce7e4</srcmd5>
+    <version>0.6</version>
+    <time>1637794467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933396</requestid>
+  </revision>
 </revisionlist>

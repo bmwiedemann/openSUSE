@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 21 11:43:51 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.6:
+  * Fix YouTube regex including 0 to the numeric range
+  * Fix LoopStatus property change signal
+  * Fix loop-file change handler in mpv 0.33.0
+  * Fix LoopStatus when numeric argument given to loop-file or loop-playlist
+
+  * Full changelog: https://github.com/hoyon/mpv-mpris/compare/0.5...0.6
+
+-------------------------------------------------------------------
 Mon May 18 07:30:32 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to mpv-mpris 0.5:
