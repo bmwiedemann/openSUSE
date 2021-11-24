@@ -45,6 +45,7 @@ Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         nan-undefined-conversion.patch
+Patch10:        fix-ucptrietest-golden-diff.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

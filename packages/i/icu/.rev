@@ -662,4 +662,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>- Update to release 70.1:</comment>
     <requestid>930522</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>b7b2641a101df88fd448eac2b49ec19c</srcmd5>
+    <version>70.1</version>
+    <time>1637794453</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-ucptrietest-golden-diff.patch: ICU-21793 Fix ucptrietest golden diff [boo#1192935]</comment>
+    <requestid>933062</requestid>
+  </revision>
 </revisionlist>

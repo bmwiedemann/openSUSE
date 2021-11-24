@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 22 10:22:02 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add fix-ucptrietest-golden-diff.patch: ICU-21793 Fix
+  ucptrietest golden diff [boo#1192935]
+
+-------------------------------------------------------------------
 Tue Nov  9 15:39:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to release 70.1:
