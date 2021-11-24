@@ -5644,4 +5644,21 @@ handle manual pages that consist only of a .so directive such as
   It's part of v249.6.</comment>
     <requestid>931727</requestid>
   </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>1c1f45be655ff58c4ab26bbbc39c0d63</srcmd5>
+    <version>249.7</version>
+    <time>1637794457</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 523f32df573d459551760b072cb62906f4a2cf23 (merge of 249.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c34c98712600bc206919ec6ed136195f75ac1967...523f32df573d459551760b072cb62906f4a2cf23
+- Import commit c34c98712600bc206919ec6ed136195f75ac1967
+  f99aa40c6e TEST-12: make sure 'adm' group exist
+  6c7194ff99 TEST-08: don't force ext4 for /
+  dd1814b8f9 test: use kbd-mode-map we ship in one more test case
+  94c5febf2a test: fix TEST-10-ISSUE-2467
+
+- Update the dependencies of the systemd-testsuite sub-package.</comment>
+    <requestid>933100</requestid>
+  </revision>
 </revisionlist>

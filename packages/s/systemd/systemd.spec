@@ -32,7 +32,7 @@
 %endif
 
 %define min_kernel_version 4.5
-%define suse_version +suse.50.g61c79e6838
+%define suse_version +suse.57.g523f32df57
 %define _testsuitedir /usr/lib/systemd/tests
 
 %if 0%{?bootstrap}
@@ -69,7 +69,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        249.6
+Version:        249.7
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -518,6 +518,7 @@ Requires:       cryptsetup
 Requires:       dosfstools
 Requires:       libcap-progs
 Requires:       lz4
+Requires:       make
 Requires:       netcat
 Requires:       qemu-kvm
 Requires:       quota
@@ -536,6 +537,9 @@ Requires:       systemd-experimental
 %endif
 %if %{with journal_remote}
 Requires:       systemd-journal-remote
+%endif
+%if %{with networkd}
+Requires:       systemd-network
 %endif
 %if %{with portabled}
 Requires:       systemd-portable
@@ -897,6 +901,10 @@ rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if %{with testsuite}
 cp -a test %{buildroot}%{_testsuitedir}/
+# When the tests are installed, the effective testdata directory is in
+# %{_testsuitedir}, the other one, which is actually a symlink, is
+# only useful when the tests are run directly from the source.
+rm %{buildroot}%{_testsuitedir}/test/testdata
 # kbd-model-map became a dangling symlink, drop it.
 rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
 find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
