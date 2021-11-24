@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 22 16:58:45 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not process the <add-on/> section during the 2nd stage
+  (bsc#1192185).
+- 4.4.22
+
+-------------------------------------------------------------------
 Thu Nov 18 11:10:28 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Add support for detecting EFI boot during autoinstallation
