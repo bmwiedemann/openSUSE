@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kovidgoyal/dukpy
 Source:         https://github.com/kovidgoyal/dukpy/archive/v%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +40,7 @@ embeddable JavaScript engine. With dukpy, you can run JavaScript in
 Python.
 
 %prep
-%setup -q -n dukpy-%{version}
+%autosetup -p1 -n dukpy-%{version}
 
 %build
 export CFLAGS="%{optflags}"
