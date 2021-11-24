@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 16 15:44:52 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_fancontrol.service.patch
+  * harden_lm_sensors.service.patch
+  * harden_sensord.service.patch
+
+-------------------------------------------------------------------
 Fri Aug 20 09:40:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim ExcludeArch, package build is successful.

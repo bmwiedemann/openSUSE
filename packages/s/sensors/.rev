@@ -882,4 +882,12 @@
     <comment></comment>
     <requestid>913593</requestid>
   </revision>
+  <revision rev="108" vrev="6">
+    <srcmd5>e8617895a71872da1cbf7f89a6a948af</srcmd5>
+    <version>3.6.0</version>
+    <time>1637794452</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 932179 from jsegitz)</comment>
+    <requestid>932990</requestid>
+  </revision>
 </revisionlist>

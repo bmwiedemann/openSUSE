@@ -52,6 +52,9 @@ Patch11:        pwmconfig-raise-fan-threshold.patch
 #PATCH-FIX-UPSTREAM Change PIDFile path from /var/run to /run
 Patch12:        change-pidfile-path-from-var-run-to-run.patch
 Patch13:        var-run-deprecated.patch
+Patch14:        harden_fancontrol.service.patch
+Patch15:        harden_lm_sensors.service.patch
+Patch16:        harden_sensord.service.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  rrdtool-devel
@@ -124,6 +127,9 @@ sense to the user.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
 
 %build
 RPM_OPT_FLAGS="%{optflags}"
