@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 24 16:23:38 UTC 2021 - varkoly@suse.com
+
+- Update to version 3.4.1+git.87.c0ea1bc4:
+  * libgfs2: Remove new_rgrps from struct gfs2_sbd
+  * tests: Increase the size of the sparse file used by tests
+  * gfs2/edit: always use "%s"-style format for printf()-style functions
+  * tunegfs2: Use O_EXCL when opening the device rw
+  * Make sure i_bh is set after lgfs2_gfs_inode_get()
+  * libgfs2: Avoid potential gfs/gfs2 superblock update clash
+  * gfs2_edit: Fix segfault in hexdump()
+  * libgfs2: Add NULL-checking for ip->i_bh in inode_put()
+  * fsck.gfs2: Fix remaining endianness sparse warnings
+  * gfs2_edit: Fix remaining endianness sparse warnings
+
+-------------------------------------------------------------------
 Wed Aug  3 03:27:36 UTC 2016 - zren@suse.com
 
 - Update to version 3.1.9 

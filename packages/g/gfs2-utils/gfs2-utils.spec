@@ -1,7 +1,7 @@
 #
 # spec file for package gfs2-utils
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gfs2-utils
-Version:        3.1.9
+Version:        3.4.1
 Release:        0
 Summary:        Utilities for managing the global file system (GFS2)
-License:        GPL-2.0+ and LGPL-2.0+
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Filesystems
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
-BuildRequires:  check-devel
+BuildRequires:  bzip2
+BuildRequires:  check
 BuildRequires:  flex
-BuildRequires:  gettext-devel
-BuildRequires:  kernel-headers
+BuildRequires:  gettext
 BuildRequires:  libblkid-devel
+BuildRequires:  libblkid1
+BuildRequires:  libbz2-devel
 BuildRequires:  libtool
+BuildRequires:  libuuid-devel
+BuildRequires:  libuuid1
+BuildRequires:  make
 BuildRequires:  ncurses-devel
-BuildRequires:  perl
-BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
-Url:            https://fedorahosted.org/cluster/wiki/HomePage
+URL:            https://pagure.io/gfs2-utils
 
 # The source for this package was pulled from the upstream git tree.
 # Use the following commands to generate the tarball:
@@ -42,8 +46,7 @@ Url:            https://fedorahosted.org/cluster/wiki/HomePage
 # cd gfs2-utils
 # ./make-tarball.sh
 #
-Source0:        https://fedorahosted.org/released/gfs2-utils/%{name}-%{version}.tar.xz
-#Source0:        gfs2-utils-%{version}.tar.gz
+Source0:        gfs2-utils-%{version}.tar.bz2
 
 %description
 The gfs2-utils package contains a number of utilities for creating,
@@ -54,7 +57,8 @@ file systems.
 %setup -q 
 
 %build
-NOCONFIGURE=1 ./autogen.sh
+#NOCONFIGURE=1
+./autogen.sh
 %configure
 make %{_smp_mflags}
 
@@ -80,6 +84,7 @@ rm -f %{buildroot}%{_mandir}/man8/gfs2_lockcapture.8
 %{_sbindir}/mkfs.gfs2
 %{_sbindir}/tunegfs2
 %{_sbindir}/gfs2_*
+%{_libexecdir}/gfs2_withdraw_helper
 /usr/lib/udev/rules.d/82-gfs2-withdraw.rules
 %{_mandir}/man8/*gfs2*
 %{_mandir}/man5/*
