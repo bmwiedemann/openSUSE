@@ -1774,7 +1774,7 @@ unsorted:
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
   - cargo1.55 
-  - cargo1.56: [x86_64] 
+  - cargo1.56 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -31666,7 +31666,7 @@ unsorted:
   - rust1.54-gdb 
   - rust1.54-src 
   - rust1.55 
-  - rust1.56: [x86_64] 
+  - rust1.56 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
