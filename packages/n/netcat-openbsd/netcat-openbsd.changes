@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 22 10:16:15 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Fix download URL. Debian has purged older versions from their
+  servers.
+
+-------------------------------------------------------------------
 Tue Dec 15 13:15:37 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Build with hidden visibility since no symbols should be exported 

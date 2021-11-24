@@ -1,7 +1,7 @@
 #
 # spec file for package netcat-openbsd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        TCP/IP swiss army knife
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
 URL:            https://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
-Source0:        http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}.orig.tar.gz
+Source0:        http://old.kali.org/kali/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}.orig.tar.gz
 #Patches from: http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_%{version}-2.debian.tar.xz
 Patch0:         port-to-linux-with-libsd.patch
 Patch1:         build-without-TLS-support.patch

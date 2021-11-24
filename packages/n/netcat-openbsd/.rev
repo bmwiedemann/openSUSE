@@ -221,4 +221,12 @@
     <comment></comment>
     <requestid>856314</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>b8bab34c32ac35e9a811ac8d63952a8e</srcmd5>
+    <version>1.203</version>
+    <time>1637794450</time>
+    <user>dimstar_suse</user>
+    <comment>Fix download URL.</comment>
+    <requestid>932984</requestid>
+  </revision>
 </revisionlist>
