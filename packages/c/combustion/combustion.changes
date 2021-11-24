@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 24 13:10:37 UTC 2021 - Dimitar Zahariev <mitko@tuionui.com>
+
+- Look for filesystems with uppercase labels as well
+
+-------------------------------------------------------------------
 Tue Jul 27 06:37:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Drop explicit dependency on sysroot.mount. Instead, handle starting and

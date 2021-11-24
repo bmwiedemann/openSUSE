@@ -24,8 +24,8 @@ if [ "${1-}" = "--prepare" ]; then
 		config_drive_found=1
 	fi
 
-	# Try disks next
-	for label in combustion ignition; do
+	# Try disks next - both lower and upper case
+	for label in combustion COMBUSTION ignition IGNITION; do
 		[ "${config_drive_found}" = "1" ] && break
 		[ -e "/dev/disk/by-label/${label}" ] || continue
 

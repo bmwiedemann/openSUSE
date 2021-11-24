@@ -94,4 +94,12 @@
     <comment></comment>
     <requestid>908901</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>aa5be0340a98ceea5b9917d7cb404e3f</srcmd5>
+    <version>0.2</version>
+    <time>1637794470</time>
+    <user>dimstar_suse</user>
+    <comment>- Look for filesystems with uppercase labels as well</comment>
+    <requestid>933441</requestid>
+  </revision>
 </revisionlist>
