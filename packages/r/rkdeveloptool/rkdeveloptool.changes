@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 12:50:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Use LTO on platforms that do not use it by default to workaround a build error.
+  See https://github.com/rockchip-linux/rkdeveloptool/pull/57
+
+-------------------------------------------------------------------
 Fri Oct 15 10:47:01 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Enable build also for all PPC and S390x.
