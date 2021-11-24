@@ -17,10 +17,10 @@
 #
 
 
-%define libname libopenvdb8_1
+%define libname libopenvdb9_0
 
 Name:           openvdb
-Version:        8.1.0
+Version:        9.0.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -31,12 +31,13 @@ BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_regex-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_atomic-devel >= 1.70
+BuildRequires:  libboost_iostreams-devel >= 1.70
+BuildRequires:  libboost_regex-devel >= 1.70
+BuildRequires:  libboost_system-devel >= 1.70
+BuildRequires:  libboost_thread-devel >= 1.70
 BuildRequires:  libglfw-devel
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  xorg-x11-devel
@@ -80,6 +81,7 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 %setup -q
 
 %build
+%limit_build -m 3072
 # -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE is needed,
 # will bail out with: stdlib.h not found otherwise
 %cmake \
@@ -89,6 +91,7 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
     -DOPENVDB_BUILD_VDB_PRINT=ON \
     -DOPENVDB_BUILD_VDB_LOD=ON \
     -DOPENVDB_BUILD_VDB_VIEW=ON \
+    -DOPENVDB_BUILD_VDB_RENDER=ON \
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \
     -DOPENVDB_ENABLE_RPATH=OFF
 
@@ -118,5 +121,6 @@ rm %{buildroot}%{_libdir}/libopenvdb.a
 %{_bindir}/vdb_lod
 %{_bindir}/vdb_print
 %{_bindir}/vdb_view
+%{_bindir}/vdb_render
 
 %changelog
