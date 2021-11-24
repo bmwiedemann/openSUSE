@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 11:21:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make compatible with TBB 2021
+  * add FindTBB.cmake -- gh#prusa3d/PrusaSlicer#7332
+  * add PrusaSlicer-pr6590-updateTBB.patch
+    gh#prusa3d/PrusaSlicer#6590
+
+-------------------------------------------------------------------
 Fri Sep 24 07:53:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add PrusaSlicer-catch2upd.patch

@@ -150,4 +150,16 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>921412</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>824a744f1e4a6c2f0743f1389ffedd35</srcmd5>
+    <version>2.3.3</version>
+    <time>1637794478</time>
+    <user>dimstar_suse</user>
+    <comment>- Make compatible with TBB 2021
+  * add FindTBB.cmake -- gh#prusa3d/PrusaSlicer#7332
+  * add PrusaSlicer-pr6590-updateTBB.patch
+    gh#prusa3d/PrusaSlicer#6590
+</comment>
+    <requestid>933584</requestid>
+  </revision>
 </revisionlist>

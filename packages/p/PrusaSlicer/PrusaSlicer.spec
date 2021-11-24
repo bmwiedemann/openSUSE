@@ -28,6 +28,10 @@ Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version
 Patch0:         https://github.com/prusa3d/PrusaSlicer/commit/e6507594fb6893156056c2123822a2b37f7f179d.patch#/PrusaSlicer-issue6681-openvdb.patch
 # PATCH-FIX-UPSTREAM PrusaSlicer-catch2upd.patch -- gh#prusa3d/PrusaSlicer#6518
 Patch1:         https://github.com/prusa3d/PrusaSlicer/commit/60768d32486cf05635cc355cbdea906aa60b17a8.patch#/PrusaSlicer-catch2upd.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-pr6590-updateTBB.patch - gh#prusa3d/PrusaSlicer#6590
+Patch2:         PrusaSlicer-pr6590-updateTBB.patch
+#  gh#prusa3d/PrusaSlicer#7332
+Source1:        https://raw.githubusercontent.com/theofficialgman/PrusaSlicer/TBB-Fix/cmake/modules/FindTBB.cmake
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
@@ -73,6 +77,7 @@ It also works with Mach3, LinuxCNC and Machinekit controllers.
 sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.inc
 %endif
 rm -r resources/data/flatpak
+cp %{SOURCE1} cmake/modules/FindTBB.cmake
 
 %build
 # The build process really acquires that much memory per job. We are
