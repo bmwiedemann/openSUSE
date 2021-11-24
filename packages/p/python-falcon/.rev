@@ -140,4 +140,12 @@
     headers are now decoded and encoded as ISO-8859-1.</comment>
     <requestid>933137</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>3725909e294f262447937066e7780aaf</srcmd5>
+    <version>3.0.1</version>
+    <time>1637794463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933386</requestid>
+  </revision>
 </revisionlist>

@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pythons python3
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-falcon
 Version:        3.0.1
 Release:        0
@@ -33,40 +33,30 @@ Patch0:         python-falcon-sphinx-pygments-style.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt}
-BuildRequires:  %{python_module python-mimeparse >= 1.5.2}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module sphinx-tabs}
 # TODO: Cython support
 #BuildRequires:  %%{python_module Cython}
-%if 0%{?suse_version} >= 1550
 # SECTION test requirements
 BuildRequires:  %{python_module aiofiles}
-BuildRequires:  %{python_module aioredis}
 BuildRequires:  %{python_module cbor2}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module fakeredis}
-BuildRequires:  %{python_module fixtures >= 1.3.0}
-BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module msgpack-python}
-BuildRequires:  %{python_module pecan}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-httpx}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module ujson}
-BuildRequires:  %{python_module uvicorn}
-BuildRequires:  %{python_module websockets}
-# /SECTION
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module httpx if (%python-base without python36-base)}
+BuildRequires:  %{python_module uvicorn if (%python-base without python36-base)}
+BuildRequires:  %{python_module websockets if (%python-base without python36-base)}
 %endif
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pygments-style-railscasts
 #Requires:       python-Cython
-Requires:       python-python-mimeparse
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       %{name}-doc
@@ -115,20 +105,20 @@ popd
  %fdupes %{buildroot}%{$python_sitelib}
 }
 
-%if 0%{?suse_version} >= 1550
-# We do not have the following package on Leap 15.3
-#   python-httpx
-#   python-pytest-trio
 %check
 export LANG=en_US.UTF8
-%pytest tests
-%endif
+# there are no websockets and httpx for python 3.6
+python36_donttest=("--ignore" "tests/asgi")
+if [ %{python3_version_nodots} -eq 36 ]; then
+  python3_donttest=("--ignore" "tests/asgi")
+fi
+%pytest "${$python_donttest[@]}" tests
 
 %post
 %{python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes}
 
 %postun
-%{python_uninstall_alternative falcon-bench falocn-inspect-app falcon-print-routes}
+%python_uninstall_alternative falcon-bench
 
 %files %{python_files}
 %doc README.rst CHANGES.rst examples/
@@ -136,7 +126,8 @@ export LANG=en_US.UTF8
 %python_alternative %{_bindir}/falcon-bench
 %python_alternative %{_bindir}/falcon-inspect-app
 %python_alternative %{_bindir}/falcon-print-routes
-%{python_sitelib}/falcon*
+%{python_sitelib}/falcon
+%{python_sitelib}/falcon-%{version}*-info
 
 %files -n %{name}-doc
 %doc docs/_build/html

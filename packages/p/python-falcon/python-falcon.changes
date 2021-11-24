@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 23 19:28:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't restrict to primary python3 flavor. Other packages depend
+  on this.
+- Update requirements
+  * The only runtime deps have been removed in version 2.0
+  * Test requirements from examples are obsolete
+- Implement some python packaging best practises:
+  * Check for version in dist metadata
+  * uninstall alternative only takes master (there was even a typo)
+
+-------------------------------------------------------------------
 Mon Nov 22 16:25:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't create %%{python_sitelib}/examples directory, that' just
