@@ -351,4 +351,18 @@
 </comment>
     <requestid>924904</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3020124badab3460dcd75270686242cf</srcmd5>
+    <version>3.42.2</version>
+    <time>1637794479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.42.2:
+  + Fix gnome-shell extension when the daemon restarts.
+  + Updated translations.
+- Changes from version 3.42.1:
+  + Fix keybindings on wayland.
+  + Updated translations.
+</comment>
+    <requestid>933590</requestid>
+  </revision>
 </revisionlist>

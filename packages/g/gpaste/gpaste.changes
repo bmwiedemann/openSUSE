@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 24 20:40:49 UTC 2021 - Andrey Gankov <gav@qsolution.ru>
+
+- Update to version 3.42.2:
+  + Fix gnome-shell extension when the daemon restarts.
+  + Updated translations.
+- Changes from version 3.42.1:
+  + Fix keybindings on wayland.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Oct 12 10:03:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split zsh-completion support out into it's own package.
