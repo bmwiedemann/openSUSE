@@ -662,4 +662,17 @@
     <comment></comment>
     <requestid>917792</requestid>
   </revision>
+  <revision rev="87" vrev="72">
+    <srcmd5>5b43307720939bf7d122ee07f81cb4ee</srcmd5>
+    <version>unknown</version>
+    <time>1637794459</time>
+    <user>dimstar_suse</user>
+    <comment>- Set ProtectHome=false for spampd.service, as this breaks loading
+  and storing data files in /home/vscan.
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * spamd.service
+  * spampd.service
+</comment>
+    <requestid>933217</requestid>
+  </revision>
 </revisionlist>

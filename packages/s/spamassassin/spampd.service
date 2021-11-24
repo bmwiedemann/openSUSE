@@ -20,6 +20,19 @@ After=remote-fs.target
 Before=mail-transfer-agent.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=false
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=forking
 PIDFile=/run/spampd.pid
 EnvironmentFile=-/etc/sysconfig/spampd
