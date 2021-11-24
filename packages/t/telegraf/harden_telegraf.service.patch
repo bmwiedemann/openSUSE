@@ -1,0 +1,24 @@
+Index: telegraf-1.19.0/scripts/telegraf.service
+===================================================================
+--- telegraf-1.19.0.orig/scripts/telegraf.service
++++ telegraf-1.19.0/scripts/telegraf.service
+@@ -4,6 +4,19 @@ Documentation=https://github.com/influxd
+ After=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ EnvironmentFile=-/etc/default/telegraf
+ User=telegraf
+ ExecStart=/usr/bin/telegraf -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d $TELEGRAF_OPTS

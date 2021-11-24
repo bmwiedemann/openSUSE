@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 14:18:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_telegraf.service.patch
+
+-------------------------------------------------------------------
 Thu Jul 01 13:26:54 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.19.0:

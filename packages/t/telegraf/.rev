@@ -95,4 +95,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>Update to version 1.19.0 (forwarded request 903443 from susnux)</comment>
     <requestid>903554</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7faf7f4cd412a228066951a58750645b</srcmd5>
+    <version>1.19.0</version>
+    <time>1637794477</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 933468 from jsegitz)</comment>
+    <requestid>933573</requestid>
+  </revision>
 </revisionlist>

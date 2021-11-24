@@ -26,6 +26,7 @@ Group:          System/Monitoring
 URL:            https://github.com/influxdata/telegraf
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Patch0:	harden_telegraf.service.patch
 BuildRequires:  git-core
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -41,6 +42,7 @@ easily add support for collecting metrics from local or remote services.
 %prep
 %setup -q
 %setup -q -T -D -a 1
+%patch0 -p1
 
 %build
 # Build the binary.
