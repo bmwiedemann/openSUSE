@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 20 10:03:25 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop the following patches which removes useful code and brings
+  hard time for future rebase:
+  + 0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch
+  + 0002-Revert-coresong-Add-static-type-annotations.patch
+  + 0003-gnome-music-use-python36.patch
+- Rewrite the patches only disabling the python3.7 specific
+  feature:
+  + 0001-gnome-music-use-python36.patch
+  + 0002-gnome-music-revert-from-future-import-annotations.patch
+
+-------------------------------------------------------------------
 Wed Sep 29 12:08:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add missing typelib (GstTag) Requires: the gi-dep-scanner does

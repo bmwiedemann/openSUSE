@@ -531,4 +531,20 @@
     <comment></comment>
     <requestid>922177</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>edb9222bcde55e79b00f908433f23399</srcmd5>
+    <version>41.0</version>
+    <time>1637794456</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the following patches which removes useful code and brings
+  hard time for future rebase:
+  + 0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch
+  + 0002-Revert-coresong-Add-static-type-annotations.patch
+  + 0003-gnome-music-use-python36.patch
+- Rewrite the patches only disabling the python3.7 specific
+  feature:
+  + 0001-gnome-music-use-python36.patch
+  + 0002-gnome-music-revert-from-future-import-annotations.patch (forwarded request 932630 from yfjiang)</comment>
+    <requestid>933068</requestid>
+  </revision>
 </revisionlist>
