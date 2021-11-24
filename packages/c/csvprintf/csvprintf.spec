@@ -17,7 +17,7 @@
 
 
 Name:           csvprintf
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Simple CSV file parser for the UNIX command line
 License:        Apache-2.0

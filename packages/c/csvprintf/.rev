@@ -62,4 +62,13 @@
 - Replace source tarball with _service file pulling from github</comment>
     <requestid>933155</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>33b9010da1fd92e5d5c66f96b03b049b</srcmd5>
+    <version>1.2.1</version>
+    <time>1637794476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.1
+  + Fixed bug where &quot;-x&quot; flag was behaving like &quot;-X&quot; flag</comment>
+    <requestid>933571</requestid>
+  </revision>
 </revisionlist>
