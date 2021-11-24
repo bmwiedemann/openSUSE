@@ -1137,6 +1137,7 @@ unsorted:
   - baresip 
   - baresip-video 
   - barrel 
+  - barrel-lang 
   - barrier 
   - barvinok 
   - barvinok-devel 
@@ -1773,6 +1774,7 @@ unsorted:
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
   - cargo1.55 
+  - cargo1.56: [x86_64] 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -6332,6 +6334,7 @@ unsorted:
   - gtk2-metatheme-radiant-mate 
   - gtk2-metatheme-vertex 
   - gtk2-metatheme-yaru 
+  - gtk2-metatheme-yaru-mate 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
   - gtk3-branding-upstream 
@@ -6366,6 +6369,7 @@ unsorted:
   - gtk3-metatheme-radiant-mate 
   - gtk3-metatheme-vertex 
   - gtk3-metatheme-yaru 
+  - gtk3-metatheme-yaru-mate 
   - gtk3-metatheme-yuyo 
   - gtk3-tools-32bit: [x86_64] 
   - gtk4-branding-upstream 
@@ -6374,6 +6378,7 @@ unsorted:
   - gtk4-metatheme-adapta 
   - gtk4-metatheme-matcha 
   - gtk4-metatheme-plata 
+  - gtk4-metatheme-yaru-mate 
   - gtk4-tools 
   - gtkam 
   - gtkam-doc 
@@ -9571,7 +9576,6 @@ unsorted:
   - libbd_lvm-dbus-devel 
   - libbd_lvm-dbus2 
   - libbd_lvm-devel 
-  - libbd_lvm2 
   - libbd_mdraid-devel 
   - libbd_mpath-devel 
   - libbd_mpath2 
@@ -12900,7 +12904,7 @@ unsorted:
   - libqoauth2 
   - libqobs-devel 
   - libqobs2 
-  - libqore6 
+  - libqore7 
   - libqpid-proton-cpp12 
   - libqpid-proton-proactor1 
   - libqpid-proton10 
@@ -15451,6 +15455,7 @@ unsorted:
   - markdownpart-lang 
   - mate-applet-appmenu 
   - mate-applet-dock 
+  - mate-applet-dock-lang 
   - mate-applet-indicator 
   - mate-applet-indicator-lang 
   - mate-applet-sensors 
@@ -15882,6 +15887,7 @@ unsorted:
   - metatheme-radiant-mate-common 
   - metatheme-vertex-common 
   - metatheme-yaru-common 
+  - metatheme-yaru-mate-common 
   - metatheme-yuyo-common 
   - meteo 
   - meteo-lang 
@@ -22940,6 +22946,7 @@ unsorted:
   - python36-libarchive 
   - python36-libarchive-c 
   - python36-libcst 
+  - python36-libevdev 
   - python36-libkdumpfile 
   - python36-liblarch 
   - python36-liblarch-gtk 
@@ -25804,6 +25811,7 @@ unsorted:
   - python38-libarchive 
   - python38-libarchive-c 
   - python38-libcst 
+  - python38-libevdev 
   - python38-libkdumpfile 
   - python38-libmsym 
   - python38-libnacl 
@@ -28852,6 +28860,7 @@ unsorted:
   - python39-libarchive 
   - python39-libarchive-c 
   - python39-libcst 
+  - python39-libevdev 
   - python39-libkdumpfile 
   - python39-liblarch 
   - python39-liblarch-gtk 
@@ -30492,6 +30501,7 @@ unsorted:
   - qore-uuid-module-doc 
   - qore-xml-module 
   - qore-xml-module-doc 
+  - qore-xml-module-tools 
   - qore-yaml-module 
   - qore-yaml-module-doc 
   - qos 
@@ -31656,6 +31666,7 @@ unsorted:
   - rust1.54-gdb 
   - rust1.54-src 
   - rust1.55 
+  - rust1.56: [x86_64] 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -41801,6 +41812,7 @@ unsorted:
   - vim-plugin-gnupg 
   - vim-plugin-latex 
   - vim-plugin-locateopen 
+  - vim-plugin-markdown 
   - vim-plugin-matrix 
   - vim-plugin-minibufexpl 
   - vim-plugin-multiplesearch 
