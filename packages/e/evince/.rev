@@ -1213,4 +1213,15 @@
   + 0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch (forwarded request 927261 from yfjiang)</comment>
     <requestid>927473</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>1667cf4f8522980b7230ce923f62a368</srcmd5>
+    <version>41.3</version>
+    <time>1637794456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 41.3:
+  + data: Fix metadata.
+  + shell: Remove &quot;Quit&quot; from shortcuts page.
+  + Updated translations. (forwarded request 932810 from iznogood)</comment>
+    <requestid>933069</requestid>
+  </revision>
 </revisionlist>
