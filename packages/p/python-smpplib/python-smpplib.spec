@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smpplib
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        SMPP library for Python
 License:        LGPL-2.0-only
