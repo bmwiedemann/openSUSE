@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 19 08:19:00 UTC 2021 - antonio.feijoo@suse.com
+
+- Update to version 055+suse.142.g7d8c3ce3:
+  * style(dracut.sh): remove redundant script header
+  * fix(dracut.sh): change misspelled variable name
+  * fix(dracut.sh): remove wrong $ in loop sequence
+  * chore(suse): update spec (jsc#SLE-20248)
+  * fix(90kernel-modules): add isp1760 USB controller
+  * fix(iscsi): add support for the new iscsiadm "no-wait" (-W) command (bsc#1187190)
+  * ci(suse.conf.example): optimal compression parameters for zstd (jsc#SLE-20248)
+  * feat(dracut.sh): check if target kernel has zstd support compiled in (jsc#SLE-20248)
+  * ci(suse.conf.example): change default compression option for SUSE (jsc#SLE-20248)
+
+-------------------------------------------------------------------
 Wed Oct 06 08:28:14 UTC 2021 - antonio.feijoo@suse.com
 
 - Update to version 055+suse.129.g7d8c3ce3:

@@ -19,7 +19,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           dracut
-Version:        055+suse.129.g7d8c3ce3
+Version:        055+suse.142.g7d8c3ce3
 Release:        0
 Summary:        Initramfs generator using udev
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -54,7 +54,8 @@ Requires:       systemd >= 219
 Requires:       systemd-sysvinit
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
-Requires:       xz
+Recommends:     xz
+Requires:       zstd
 # We use 'btrfs fi usage' that was not present before
 Conflicts:      btrfsprogs < 3.18
 # suse-module-tools >= 16.0.3 is prepared for the removal of mkinitrd-suse.sh
