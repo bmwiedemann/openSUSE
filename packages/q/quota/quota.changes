@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 21 08:09:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * quotad.service
+
+-------------------------------------------------------------------
 Mon Mar  8 23:43:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.06:
