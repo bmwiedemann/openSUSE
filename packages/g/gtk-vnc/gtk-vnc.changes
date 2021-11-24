@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 17 11:39:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.3.0:
+  + Add API to request screen rotation.
+  + Automatically pick gthread coroutine if ucontext is not
+    available.
+  + Fix meson logic bug when disabling vala.
+  + Honour choice of python when generating keymaps.
+  + Fix error reporting and memory leaks encrypting auth data.
+  + Fix missing includes for GDK quartz and broadway backends.
+  + Switch to GNUTLS for VNC auth challenge to fix empty password
+    handling.
+  + Fix handling of auth subtypes in gvnccapture program.
+
+-------------------------------------------------------------------
 Sat Apr 17 09:20:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.0:

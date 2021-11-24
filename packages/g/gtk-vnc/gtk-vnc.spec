@@ -21,13 +21,13 @@
 %define _sonamepkg 2_0
 
 Name:           gtk-vnc
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A GTK widget for VNC clients
 License:        LGPL-2.1-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://wiki.gnome.org/Projects/gtk-vnc
-Source0:        https://download.gnome.org/sources/gtk-vnc/1.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtk-vnc/1.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4
