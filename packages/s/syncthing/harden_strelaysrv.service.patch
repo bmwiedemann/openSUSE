@@ -1,0 +1,20 @@
+Index: syncthing/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+===================================================================
+--- syncthing.orig/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
++++ syncthing/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+@@ -17,6 +17,15 @@ NoNewPrivileges=true
+ PrivateTmp=true
+ PrivateDevices=true
+ ProtectHome=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ SystemCallArchitectures=native
+ MemoryDenyWriteExecute=true
+ 

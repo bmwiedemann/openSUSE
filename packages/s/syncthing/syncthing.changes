@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 10:16:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_strelaysrv.service.patch
+  * harden_syncthing-resume.service.patch
+  * harden_syncthing@.service.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 20:13:46 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.4

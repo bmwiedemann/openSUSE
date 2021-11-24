@@ -26,6 +26,9 @@ URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch0:	harden_strelaysrv.service.patch
+Patch1:	harden_syncthing-resume.service.patch
+Patch2:	harden_syncthing@.service.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang(API) >= 1.14
 BuildRequires:  pkgconfig(systemd)
@@ -49,6 +52,9 @@ joined to the syncthing relay pool or private.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 # move source archive which is extracted as "syncthing" to be "src/github.com/syncthing/syncthing"

@@ -1,0 +1,22 @@
+Index: syncthing/etc/linux-systemd/system/syncthing-resume.service
+===================================================================
+--- syncthing.orig/etc/linux-systemd/system/syncthing-resume.service
++++ syncthing/etc/linux-systemd/system/syncthing-resume.service
+@@ -4,6 +4,17 @@ Documentation=man:syncthing(1)
+ After=sleep.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ ExecStart=-/usr/bin/pkill -HUP -x syncthing
+ 
