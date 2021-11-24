@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source0:        https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz
 Source1:        %{name}.conf
 Source2:        %{name}.service
 Source1000:     baselibs.conf
-Patch0:	harden_fluidsynth.service.patch
+Patch0:         harden_fluidsynth.service.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel

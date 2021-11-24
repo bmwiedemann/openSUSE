@@ -498,4 +498,16 @@
     <comment></comment>
     <requestid>925514</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>9fc76ae96dabb4f63e1c4994223d1b8e</srcmd5>
+    <version>2.2.4</version>
+    <time>1637794448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.4:
+  * Per-channel `ALL_SOUND_OFF` when seeking/stopping player
+  * Fix windows related encoding problems
+  * Rewind playlist when calling `fluid_player_play` after all loops are complete
+  * Fix MinGW related static linking issues</comment>
+    <requestid>932926</requestid>
+  </revision>
 </revisionlist>

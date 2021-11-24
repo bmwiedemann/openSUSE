@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 22 09:58:54 CET 2021 - tiwai@suse.de
+
+- Update to 2.2.4:
+  * Per-channel `ALL_SOUND_OFF` when seeking/stopping player
+  * Fix windows related encoding problems
+  * Rewind playlist when calling `fluid_player_play` after all loops are complete
+  * Fix MinGW related static linking issues
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed
