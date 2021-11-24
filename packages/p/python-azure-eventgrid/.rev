@@ -128,4 +128,15 @@
     CHANGELOG.md file provided with this package (forwarded request 930633 from glaubitz)</comment>
     <requestid>930650</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c1eab9ae2af8ef19df1ee9eeec9c4fc6</srcmd5>
+    <version>4.7.1</version>
+    <time>1637794474</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.7.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 933133 from glaubitz)</comment>
+    <requestid>933498</requestid>
+  </revision>
 </revisionlist>
