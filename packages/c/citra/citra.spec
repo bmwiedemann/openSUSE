@@ -1,7 +1,7 @@
 #
 # spec file for package citra
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017–2019 Markus S. <kamikazow@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           citra
-Version:        nightly1733
+Version:        nightly1734
 Release:        0
 Summary:        Nintendo 3DS emulator
 License:        GPL-2.0-or-later
@@ -28,10 +28,17 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         gcc-enablement.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  hicolor-icon-theme
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+BuildRequires:  libboost_date_time1_75_0-devel
+BuildRequires:  libboost_regex1_75_0-devel
+BuildRequires:  libboost_serialization1_75_0-devel
+BuildRequires:  libboost_system1_75_0-devel
+%else
 BuildRequires:  libboost_date_time-devel >= 1.70.0
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
+%endif
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
