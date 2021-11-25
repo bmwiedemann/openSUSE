@@ -1,7 +1,7 @@
 #
 # spec file for package cli11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%define         git_ver .0.5cb3efabce00
+%define upstream_name CLI11
+
 Name:           cli11
-Version:        1.9.1
+Version:        2.1.2
 Release:        0
 Summary:        Command line parser for C++11
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 
 URL:            https://github.com/CLIUtils/CLI11
-Source:         %{name}-%{version}%{git_ver}.tar.gz
+Source:         %{upstream_name}-%{version}.tar.gz
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  python3-devel
-
 
 %description
 CLI11 is a command line parser for C++11 and beyond that provides a
@@ -49,11 +49,26 @@ limits by choice:
    if it were unambiguous)
  * No wide strings/Unicode
 
+%package      doc
+Summary:        Documentation for CLI11
+Group:          Documentation/Other
+
+%description  doc
+This package contains documentation for CLI11
+
+CLI11 is a command line parser for C++11 and beyond that provides a
+rich feature set. It is header only, and has a number of design
+limits by choice:
+
+ * No completion of partial options (like --ve for --version,
+   if it were unambiguous)
+ * No wide strings/Unicode
+
 %prep
-%autosetup -p1 -n %{name}-%{version}%{git_ver}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
-%cmake -DCLI11_BUILD_TESTS:BOOL=FALSE -DCLI11_BUILD_DOCS:BOOL=TRUE
+%cmake -DCLI11_BUILD_TESTS:BOOL=FALSE -DCLI11_BUILD_DOCS:BOOL=TRUE -DCLI11_BUILD_EXAMPLES:BOOL=FALSE
 %cmake_build all docs
 
 %install
@@ -64,7 +79,11 @@ limits by choice:
 %doc CHANGELOG.md
 %dir %{_includedir}/CLI
 %{_includedir}/CLI/*.hpp
-%dir %{_libdir}/cmake/CLI11/
-%{_libdir}/cmake/CLI11/*.cmake
+%dir %{_datadir}/cmake/CLI11/
+%{_datadir}/cmake/CLI11/*.cmake
+%{_datadir}/pkgconfig/CLI11.pc
+
+%files doc
+%doc build/docs/html/
 
 %changelog

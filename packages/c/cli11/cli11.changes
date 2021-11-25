@@ -1,3 +1,18 @@
+Mon Nov 22 15:00:24 UTC 2021 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- Build doc package
+- Include pkgconfig file
+- Disable the build of examples 
+- Change the directory of cmake files to %{_datadir}/cmake
+- Use the upstream name for source and building, and keep the
+  package name lowercase
+- Update to version 2.1.2
+  * Use main for the main branch of the repository
+  * Bugfix(cmake): Enforce at least C++11 when using CMake target
+  * Build: Don't run doxygen and CTest includes if a submodule
+  * Build: Avoid a warning on CMake 3.22
+  * Build: Support compiling the tests with an external copy of Catch2
+
 -------------------------------------------------------------------
 Thu Oct  8 13:17:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
