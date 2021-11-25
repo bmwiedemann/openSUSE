@@ -1524,6 +1524,7 @@ unsorted:
   - build-mkbaselibs 
   - build-mkdrpms 
   - buildah 
+  - buildkit 
   - buildnumber-maven-plugin 
   - buildnumber-maven-plugin-javadoc 
   - buildstream 
@@ -12060,7 +12061,7 @@ unsorted:
   - libmunit0suse0 
   - libmuparser2_3_2 
   - libmuparser2_3_2-32bit: [x86_64] 
-  - libmuparserx4_0_8 
+  - libmuparserx4_0_11 
   - libmusicbrainz-devel 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmwaw-devel 
@@ -12429,7 +12430,7 @@ unsorted:
   - libopenvas_wincmd1 
   - libopenvas_wmiclient-devel 
   - libopenvas_wmiclient1 
-  - libopenvdb8_1 
+  - libopenvdb9_0 
   - libopenvswitch-2_14-0 
   - liboping-devel 
   - liboping-devel-32bit: [x86_64] 
@@ -22006,6 +22007,7 @@ unsorted:
   - python36-azure-mgmt-network 
   - python36-azure-mgmt-notificationhubs 
   - python36-azure-mgmt-nspkg 
+  - python36-azure-mgmt-orbital 
   - python36-azure-mgmt-peering 
   - python36-azure-mgmt-policyinsights 
   - python36-azure-mgmt-portal 
@@ -22563,6 +22565,7 @@ unsorted:
   - python36-factory_boy 
   - python36-fake-useragent 
   - python36-fakeredis 
+  - python36-falcon 
   - python36-fanficfare 
   - python36-fann2 
   - python36-fasteners 
@@ -24816,6 +24819,7 @@ unsorted:
   - python38-azure-mgmt-network 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
+  - python38-azure-mgmt-orbital 
   - python38-azure-mgmt-peering 
   - python38-azure-mgmt-policyinsights 
   - python38-azure-mgmt-portal 
@@ -27802,6 +27806,7 @@ unsorted:
   - python39-azure-mgmt-network 
   - python39-azure-mgmt-notificationhubs 
   - python39-azure-mgmt-nspkg 
+  - python39-azure-mgmt-orbital 
   - python39-azure-mgmt-peering 
   - python39-azure-mgmt-policyinsights 
   - python39-azure-mgmt-portal 
@@ -28410,6 +28415,7 @@ unsorted:
   - python39-factory_boy 
   - python39-fake-useragent 
   - python39-fakeredis 
+  - python39-falcon 
   - python39-fanficfare 
   - python39-fann2 
   - python39-fastcluster 
@@ -30905,6 +30911,7 @@ unsorted:
   - quantum-espresso-openmpi1: [x86_64] 
   - quantum-espresso-openmpi2: [x86_64] 
   - quantum-espresso-openmpi3: [x86_64] 
+  - quantum-espresso-openmpi4: [x86_64] 
   - quasiquotes 
   - quassel-base 
   - quassel-client 
@@ -42820,7 +42827,6 @@ unsorted:
   - zp 
   - zpaq 
   - zsh-htmldoc 
-  - zstd 
   - zsync 
   - zutils 
   - zvbi 

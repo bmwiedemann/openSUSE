@@ -3628,7 +3628,6 @@
     <package name="python3-cepces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python3-createrepo_c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python3-cupshelpers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python3-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python3-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3718,6 +3717,7 @@
     <package name="python38-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-et_xmlfile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-extras" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="python38-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-fastparquet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-filetype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-fixtures" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -3816,7 +3816,7 @@
     <package name="python38-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-python-lzo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-python-memcached" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python38-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-python-mimeparse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="python38-pytz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="python38-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-pyxdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5140,6 +5140,7 @@
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-lifecycle-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-log" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
