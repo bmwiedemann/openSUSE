@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/rhinstaller/pesign
 Source:         https://github.com/rhinstaller/pesign/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Source1:        pesign.sysusers
 # PATCH-FIX-SUSE pesign-suse-build.patch glin@suse.com -- Adjust Makefile for the build service
 Patch1:         pesign-suse-build.patch
 # PATCH-FIX-UPSTREAM pesign-privkey_unneeded.diff glin@suse.com -- Don't check the private key when importing the raw signature
@@ -46,10 +47,11 @@ BuildRequires:  libuuid-devel
 BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkg-config
 BuildRequires:  popt-devel
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
-Requires(pre):  shadow
+%sysusers_requires
 %{?systemd_requires}
-ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm
+ExclusiveArch:  ia64 %ix86 x86_64 aarch64 %arm riscv64
 
 %description
 Signing tool for PE-COFF binaries. It is vaguely compliant
@@ -68,6 +70,7 @@ with the PE and Authenticode specifications.
 %patch9 -p1
 
 %build
+%sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 make %{?_smp_mflags} CFLAGS="%{optflags}" LDFLAGS="${LDFLAGS} -pie"
 
 %install
@@ -86,9 +89,9 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 rm -rf %{buildroot}/boot %{buildroot}%{_prefix}/include
 rm -rf %{buildroot}%{_libdir}/libdpe*
 
-%pre
-getent group pesign >/dev/null || groupadd -r pesign
-getent passwd pesign >/dev/null || useradd -r -g pesign -d %{_localstatedir}/lib/pesign -s /bin/false -c "PE-COFF signing daemon" pesign
+install -Dm0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/%{name}.conf
+
+%pre -f %{name}.pre
 %service_add_pre pesign.service
 
 %preun
@@ -120,6 +123,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %{_mandir}/man?/*
 %{_localstatedir}/lib/pesign
 %{_unitdir}/pesign.service
+%{_sysusersdir}/pesign.conf
 %{_tmpfilesdir}/pesign.conf
 %dir %{_libexecdir}/pesign
 %{_libexecdir}/pesign/pesign-authorize

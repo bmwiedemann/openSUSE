@@ -329,4 +329,14 @@ issuer's certificate is not available (forwarded request 183593 from gary_lin)</
     <comment></comment>
     <requestid>928124</requestid>
   </revision>
+  <revision rev="40" vrev="10">
+    <srcmd5>f59202d6ac17b6db38de05412f7d3eb4</srcmd5>
+    <version>113</version>
+    <time>1637877926</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build on riscv64 
+
+- Change to systemd-sysusers</comment>
+    <requestid>932763</requestid>
+  </revision>
 </revisionlist>
