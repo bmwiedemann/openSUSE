@@ -751,4 +751,12 @@
     <comment>Plasma 5.23.3(.1)</comment>
     <requestid>931334</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>aa7130e3e22c08fe8a89880abba0587f</srcmd5>
+    <version>5.23.3</version>
+    <time>1637877944</time>
+    <user>dimstar_suse</user>
+    <comment>- Make check for TW a bit more flexible (forwarded request 933752 from Vogtinator)</comment>
+    <requestid>933753</requestid>
+  </revision>
 </revisionlist>

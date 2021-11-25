@@ -27,7 +27,7 @@
 %if 0%{?suse_version} == 1315 || 0%{?suse_version} == 1500
 %define _distro_version Leap
 %else
-%if 0%{?suse_version} == 1550
+%if 0%{?is_opensuse} && !0%{?sle_version}
 %define _distro_version Tumbleweed
 %else
 BuildRequires:  fix-version-checks-in-here
