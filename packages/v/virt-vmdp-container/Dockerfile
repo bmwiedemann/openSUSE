@@ -19,4 +19,4 @@ PREFIXEDLABEL org.opencontainers.image.url="https://www.opensuse.org/"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/vmdp:%%PKG_VERSION%%.%RELEASE%"
 
-ADD --chown=107:107 vmdp-att-%%PKG_VERSION%%.iso /disk/
+ADD --chown=107:107 VMDP-WIN-%%PKG_VERSION%%-Community.iso /disk/
