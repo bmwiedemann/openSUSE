@@ -16,13 +16,22 @@
 #
 
 
-%define with_fcitx 1
+%define with_fcitx4 1
+%define with_fcitx5 0
+%define install_mozc 1
 
-%if %{with_fcitx}
+%if %{with_fcitx4}
 %define fcitx_icon_dir %{_datadir}/fcitx/mozc/icon/
 %define fcitx_addon_dir %{_datadir}/fcitx/addon/
 %define fcitx_inputmethod_dir %{_datadir}/fcitx/inputmethod/
 %define fcitx_lib_dir %{_libdir}/fcitx/
+%endif
+
+%if %{with_fcitx5}
+%define fcitx5_icon_dir %{_datadir}/pixmaps/
+%define fcitx5_addon_dir %{_datadir}/fcitx5/addon/
+%define fcitx5_inputmethod_dir %{_datadir}/fcitx5/inputmethod/
+%define fcitx5_lib_dir %{_libdir}/fcitx5/
 %endif
 
 %define server_dir %{_libdir}/mozc
@@ -72,13 +81,11 @@ Source7:        abseil-cpp-20200923.3.zip
 Source10:       jigyosyo.zip
 Source11:       ken_all.zip
 #
-%if %{with_fcitx}
 # add fcitx as mozc module
 # License: BSD-3-Clause
 # https://github.com/fcitx/mozc/tree/fcitx/src/unix/fcitx{,5}
 Source20:       fcitx-mozc.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
-%endif
 # A script for making a source tar.xz archive
 Source99:       make_archive.sh
 
@@ -95,12 +102,15 @@ Patch6:         ibus-qt5-hide_preedit_text-workaround.patch
 Patch7:         mozc-build-gcc.patch
 # PATCH-FIX-OPENSUSE build-with-libstdc++.patch ftake@geeko.jp -- Use libstdc++ instead of libc++
 Patch8:         build-with-libstdc++.patch
+# PATCH-FIX-OPENSUSE fcitx5-mozc-fix.patch tiwai@suse.de -- Fix config of fcitx5-mozc
+Patch9:         fcitx5-mozc-fix.patch
 
 BuildRequires:  ninja >= 1.4
 %if %{use_libprotobuf}
 BuildRequires:  protobuf-devel
 %endif
 BuildRequires:  python3
+BuildRequires:  python3-six
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
@@ -136,7 +146,7 @@ Provides:       locale(ibus:ja)
 This package provides an advanced candidate window for IBus. The
 window shows examples of selected words.
 
-%if %{with_fcitx}
+%if %{with_fcitx4}
 %package -n fcitx-mozc
 Summary:        The Mozc backend for Fcitx
 Group:          System/I18n/Japanese
@@ -148,6 +158,20 @@ Provides:       locale(fcitx:ja)
 
 %description -n fcitx-mozc
 The Mozc backend for Fcitx provides a Japanese input method.
+%endif
+
+%if %{with_fcitx5}
+%package -n fcitx5-mozc
+Summary:        The Mozc backend for Fcitx 5
+Group:          System/I18n/Japanese
+BuildRequires:  fcitx5-devel
+Requires:       fcitx5
+Requires:       mozc = %{version}
+Requires:       mozc-gui-tools = %{version}
+Provides:       locale(fcitx5:ja)
+
+%description -n fcitx5-mozc
+The Mozc backend for Fcitx 5 provides a Japanese input method.
 %endif
 
 %package gui-tools
@@ -166,8 +190,14 @@ character-palette tools.
 %setup -q
 
 # extract fcitx-mozc
-%if %{with_fcitx}
+%if %{with_fcitx4} || %{with_fcitx5}
 tar xvf %{SOURCE20}
+%if !%{with_fcitx4}
+rm -rf src/unix/fcitx
+%endif
+%if !%{with_fcitx5}
+rm -rf src/unix/fcitx5
+%endif
 %endif
 
 %patch1 -p1
@@ -197,6 +227,9 @@ cd src
 cd ..
 
 %patch8 -p1
+%if %{with_fcitx5}
+%patch9 -p1
+%endif
 
 # fix installation path
 sed -e 's|@libdir@|%{_libdir}|g' %{SOURCE4} > ibus-setup-mozc-jp.desktop
@@ -220,15 +253,17 @@ export QTDIR=%{_libdir}/qt5
 # gyp inserts -Wall to the head of release_extra_flags.
 flags=${RPM_OPT_FLAGS/-Wall/}
 
-# disable Fcitx5 for now
-export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} document_dir=%{document_dir} release_extra_cflags="'$flags'" use_fcitx5=0'
+export GYP_DEFINES='ibus_mozc_path=%{ibus_mozc_path} ibus_mozc_icon_path=%{ibus_mozc_icon_path} use_libprotobuf=%{use_libprotobuf} document_dir=%{document_dir} release_extra_cflags="'$flags'"'
 
 cd src
 python3 build_mozc.py gyp --server_dir=%{server_dir}
 python3 build_mozc.py build -c %{target} \
 	unix/ibus/ibus.gyp:ibus_mozc \
-%if %{with_fcitx}
+%if %{with_fcitx4}
 	unix/fcitx/fcitx.gyp:fcitx-mozc \
+%endif
+%if %{with_fcitx5}
+	unix/fcitx5/fcitx5.gyp:fcitx5-mozc \
 %endif
 	server/server.gyp:mozc_server \
 	unix/emacs/emacs.gyp:mozc_emacs_helper \
@@ -239,6 +274,7 @@ python3 build_mozc.py build -c %{target} \
 
 %install
 
+%if %{install_mozc}
 install -m755 -d %{buildroot}%{_libdir}/ibus-mozc
 install -m755 %{output_dir}/ibus_mozc %{buildroot}%{_libdir}/ibus-mozc/ibus-engine-mozc
 install -m755 -d %{buildroot}%{_datadir}/ibus/component
@@ -266,8 +302,9 @@ ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup
 %suse_update_desktop_file ibus-setup-mozc-us System X-SuSE-Core-System
 ln -s ibus-setup-mozc-jp.desktop %{buildroot}%{_datadir}/applications/ibus-setup-mozc-dv.desktop
 %suse_update_desktop_file ibus-setup-mozc-dv System X-SuSE-Core-System
+%endif
 
-%if %{with_fcitx}
+%if %{with_fcitx4}
 # Install Fcitx module
 for mofile in %{output_dir}/gen/unix/fcitx/po/*.mo
 do
@@ -299,9 +336,43 @@ tar -xzf fcitx-mozc-icons.tar.gz
 cp -r fcitx-mozc-icons/* %{buildroot}%{fcitx_icon_dir}/
 rm -rf fcitx-mozc-icons
 rm -rf fcitx-mozc-icons.tar.gz
-
 %endif
 
+%if %{with_fcitx5}
+# Install Fcitx5 module
+# for mofile in %{output_dir}/gen/unix/fcitx5/po/*.mo
+# do
+# 	filename=`basename $mofile`
+# 	lang=${filename/.mo/}
+# 	install -D -m 644 "$mofile" "%{buildroot}%{_datadir}/locale/$lang/LC_MESSAGES/fcitx5-mozc.mo"
+# done
+install -m755 -d %{buildroot}%{fcitx5_addon_dir}
+install -m755 -d %{buildroot}%{fcitx5_inputmethod_dir}
+install -m755 -d %{buildroot}%{fcitx5_icon_dir}
+install -m755 -d %{buildroot}%{fcitx5_lib_dir}
+install -m 755 %{output_dir}/fcitx5-mozc.so %{buildroot}%{fcitx5_lib_dir}/mozc.so
+install -m 644 src/unix/fcitx5/mozc-addon.conf %{buildroot}%{fcitx5_addon_dir}/mozc.conf
+install -m 644 src/unix/fcitx5/mozc.conf %{buildroot}%{fcitx5_inputmethod_dir}
+install -m 644 src/data/images/product_icon_32bpp-128.png %{buildroot}%{fcitx5_icon_dir}/mozc.png
+install -m 644 src/data/images/unix/ui-alpha_full.png %{buildroot}%{fcitx5_icon_dir}/mozc-alpha_full.png
+install -m 644 src/data/images/unix/ui-alpha_half.png %{buildroot}%{fcitx5_icon_dir}/mozc-alpha_half.png
+install -m 644 src/data/images/unix/ui-direct.png %{buildroot}%{fcitx5_icon_dir}/mozc-direct.png
+install -m 644 src/data/images/unix/ui-hiragana.png %{buildroot}%{fcitx5_icon_dir}/mozc-hiragana.png
+install -m 644 src/data/images/unix/ui-katakana_full.png %{buildroot}%{fcitx5_icon_dir}/mozc-katakana_full.png
+install -m 644 src/data/images/unix/ui-katakana_half.png %{buildroot}%{fcitx5_icon_dir}/mozc-katakana_half.png
+install -m 644 src/data/images/unix/ui-dictionary.png %{buildroot}%{fcitx5_icon_dir}/mozc-dictionary.png
+install -m 644 src/data/images/unix/ui-properties.png %{buildroot}%{fcitx5_icon_dir}/mozc-properties.png
+install -m 644 src/data/images/unix/ui-tool.png %{buildroot}%{fcitx5_icon_dir}/mozc-tool.png
+
+# fix mozc icons. they're too ugly that even lose face for openSUSE.
+cp -r %{SOURCE21} ./
+tar -xzf fcitx-mozc-icons.tar.gz
+cp -r fcitx-mozc-icons/* %{buildroot}%{fcitx5_icon_dir}/
+rm -rf fcitx-mozc-icons
+rm -rf fcitx-mozc-icons.tar.gz
+%endif
+
+%if %{install_mozc}
 install -m755 -d %{buildroot}%{server_dir}
 install -m755 %{output_dir}/mozc_server %{buildroot}%{server_dir}
 install -m755 %{output_dir}/mozc_tool %{buildroot}%{server_dir}
@@ -314,11 +385,13 @@ install -m755 -d %{buildroot}%{_datadir}/emacs/site-lisp
 install -m644 src/unix/emacs/mozc.el %{buildroot}%{_datadir}/emacs/site-lisp/
 
 chmod 644 src/data/installer/credits_*.html
+%endif
 
-%if %{with_fcitx}
+%if %{with_fcitx4}
 %find_lang fcitx-mozc %no_lang_C
 %endif
 
+%if %{install_mozc}
 %files
 %defattr(-, root, root)
 %doc src/data/installer/credits_en.html
@@ -358,8 +431,9 @@ chmod 644 src/data/installer/credits_*.html
 %files -n ibus-mozc-candidate-window
 %defattr(-, root, root)
 %{_libdir}/mozc/mozc_renderer
+%endif
 
-%if %{with_fcitx}
+%if %{with_fcitx4}
 %files -n fcitx-mozc -f fcitx-mozc.lang
 %defattr(-,root,root)
 
@@ -379,6 +453,27 @@ chmod 644 src/data/installer/credits_*.html
 %{fcitx_icon_dir}/mozc-dictionary.png
 %{fcitx_icon_dir}/mozc-properties.png
 %{fcitx_icon_dir}/mozc-tool.png
+%endif
+
+%if %{with_fcitx5}
+%files -n fcitx5-mozc
+%defattr(-,root,root)
+
+%{fcitx5_lib_dir}/mozc.so
+%{fcitx5_addon_dir}/mozc.conf
+%dir %{fcitx5_inputmethod_dir}
+%{fcitx5_inputmethod_dir}/mozc.conf
+%dir %{fcitx5_icon_dir}
+%{fcitx5_icon_dir}/mozc.png
+%{fcitx5_icon_dir}/mozc-alpha_full.png
+%{fcitx5_icon_dir}/mozc-alpha_half.png
+%{fcitx5_icon_dir}/mozc-direct.png
+%{fcitx5_icon_dir}/mozc-hiragana.png
+%{fcitx5_icon_dir}/mozc-katakana_full.png
+%{fcitx5_icon_dir}/mozc-katakana_half.png
+%{fcitx5_icon_dir}/mozc-dictionary.png
+%{fcitx5_icon_dir}/mozc-properties.png
+%{fcitx5_icon_dir}/mozc-tool.png
 %endif
 
 %changelog
