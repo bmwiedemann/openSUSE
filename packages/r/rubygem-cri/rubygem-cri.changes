@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 12:54:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- TW is not hard set on version 1550 - comparision to 1550 should
+  only ever by done >= 1550, as it means TW and future CODE
+  branches thereof.
+
+-------------------------------------------------------------------
 Wed Jan 20 12:29:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.15.11

@@ -29,7 +29,7 @@ Release:        0
 %define mod_name cri
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%if 0%{?suse_version} == 1550
+%if 0%{?suse_version} >= 1550
 %define rb_build_versions     ruby27
 %define rb_build_ruby_abis    ruby:2.7.0
 %endif
