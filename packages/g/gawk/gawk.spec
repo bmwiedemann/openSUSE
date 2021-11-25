@@ -29,6 +29,8 @@ Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.k
 Source4:        gawk.rpmlintrc
 Patch0:         gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch
 Provides:       awk
+BuildRequires:  mpfr-devel
+BuildRequires:  readline-devel
 
 %description
 AWK is a domain-specific language designed for text processing and

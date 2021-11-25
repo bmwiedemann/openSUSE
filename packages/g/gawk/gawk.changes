@@ -5,6 +5,12 @@ Sun Nov 14 17:10:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   add gawk-5.1.1-Disable-racy-test-in-test-iolint.awk.patch
 
 -------------------------------------------------------------------
+Sat Nov  6 22:03:11 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add readline-devel to enable readline support in the debugger
+- Add mpfr-devel to enable support for MPFR mode
+
+-------------------------------------------------------------------
 Sun Oct 31 11:36:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU awk 5.1.1
