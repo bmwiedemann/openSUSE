@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,20 @@
 #
 
 
-%define pkgver 3_4_3
+%define pkgver 3_4_4
 %define libname libosdCPU%{pkgver}
 
 Name:           OpenSubdiv
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        Subdivision surface evaluation library
 License:        Apache-2.0
 Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
 Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
-Patch:          remove-rpath-fiddling.diff
+Patch0:         remove-rpath-fiddling.diff
+# PATCH-FIX-UPSTREAM OpenSubdiv-pr1234-tbb2021.patch -- support oneTBB 2021 gh#PixarAnimationStudios/OpenSubdiv#1234
+Patch1:         https://github.com/PixarAnimationStudios/OpenSubdiv/pull/1234.patch#/OpenSubdiv-pr1234-tbb2021.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -73,7 +75,8 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q -n %{name}-%{pkgver}
-%autopatch -p0
+%patch0 -p0
+%patch1 -p1
 # work around linking glitch
 sed -i 's/${PLATFORM_GPU_LIBRARIES}/${PLATFORM_GPU_LIBRARIES} ${CMAKE_DL_LIBS}/' opensubdiv/CMakeLists.txt
 
@@ -99,7 +102,7 @@ sseflags='-msse -msse2'
     -DGLFW_LOCATION=/usr \
     -DOpenGL_GL_PREFERENCE=GLVND
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
