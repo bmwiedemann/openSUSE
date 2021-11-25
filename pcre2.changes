@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  5 19:01:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pcre2 10.39:
+  * Fix incorrect detection of alternatives in first character
+    search in JIT
+  * Update to Unicode 14.0.0
+
+-------------------------------------------------------------------
 Sun Oct 24 14:41:00 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - pcre2 10.38:
