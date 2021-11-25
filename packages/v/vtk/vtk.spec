@@ -21,13 +21,6 @@
 %bcond_with examples
 %bcond_with documentation
 
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
-
 %ifarch %arm aarch64
 %bcond_without gles
 %else
@@ -45,15 +38,8 @@
 %bcond_without gl2ps
 %endif
 
-# pegtl in Leap 15.1 is too old (< 2.0.0)
-# JAVA bindings fail to build
-%if 0%{?sle_version} == 150100
-%bcond_with    java
-%bcond_with    pegtl
-%else
 %bcond_without java
 %bcond_without pegtl
-%endif
 
 # Need patched version with HPDF_SHADING
 %bcond_with    haru
@@ -67,18 +53,6 @@
 %define my_datadir %_datadir
 %endif
 
-%if "%{flavor}" == "openmpi"
-%{?DisOMPI1}
-%if 0%{?suse_version} >= 1550
-%define my_suffix  -openmpi1
-%define mpi_flavor  openmpi1
-%else
-%define my_suffix  -openmpi
-%define mpi_flavor  openmpi
-%endif
-%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
-%endif
-
 %if "%{flavor}" == "openmpi2"
 %define my_suffix  -openmpi2
 %define mpi_flavor  openmpi2
@@ -89,6 +63,13 @@
 %{?DisOMPI3}
 %define my_suffix  -openmpi3
 %define mpi_flavor  openmpi3
+%define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+%endif
+
+%if "%{flavor}" == "openmpi4"
+%{?DisOMPI4}
+%define my_suffix  -openmpi4
+%define mpi_flavor  openmpi4
 %define mpiprefix %{_libdir}/mpi/gcc/%{mpi_flavor}
 %endif
 
@@ -106,9 +87,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.0.1
+Version:        9.1.0
 Release:        0
-%define series  9.0
+%define series  9.1
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -122,16 +103,6 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 Source99:       vtk-rpmlintrc
 # PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (gh#libharu/libharu#213)
 Patch1:         bundled_libharu_add_missing_libm.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-clean-up-some-old-opengl-es-stuff.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-expose-1d-texture-options.patch
-# PATCH-FIX-UPSTREAM -- prep for GLES patch, VTK issue #17113 stefan.bruens@rwth-aachen.de
-Patch4:         0001-Remove-duplicate-check-for-QOpenGLFunctions_3_2_Core.patch
-# PATCH-FIX-UPSTREAM 0001-Allow-compilation-on-GLES-platforms.patch VTK issue #17113 stefan.bruens@rwth-aachen.de -- Fix building with Qt GLES builds
-Patch5:         0001-Allow-compilation-on-GLES-platforms.patch
-# PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
-Patch6:         0001-Replace-last-glDrawBuffer-call-with-glDrawBuffers-1.patch
 # PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
 Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
@@ -140,23 +111,15 @@ Patch8:         0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
 Patch9:         0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
-# PATCH-FIX-OPENSUSE -- GLES - Does no longer apply to upstream code
-Patch11:        0002-Guard-GL_LINE_SMOOTH-for-GLES.patch
+# PATCH-FIX-UPSTREAM -- Always create python package metadata (egg-info)
+Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
+# PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
+Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
 # PATCH-FIX-UPSTREAM
-Patch12:        0001-Guard-glPointSize-with-GL_ES_VERSION_3_0.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7098
-Patch13:        0001-Fix-PyVTKAddFile_-function-signature-mismatch.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7115
-Patch14:        0001-Replace-invalid-GL_LINE-with-GL_LINES-for-glDrawArra.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/issues/18033
-Patch15:        vtk-freetype-2.10.3-replace-FT_CALLBACK_DEF.patch
-# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/issues/18194
-Patch16:        vtk-std_numeric_limits.patch
-# PATCH-FIX-OPENSUSE -- create python package metadata (egg-info) despite not building a wheel
-Patch17:        vtk-opensuse-python-metadata.patch
-BuildRequires:  R-base-devel
+Patch19:        0001-Add-missing-libm-link-library-to-kissfft-module.patch
+BuildRequires:  cgns-devel
 BuildRequires:  chrpath
-BuildRequires:  cmake >= 3.4
+BuildRequires:  cmake >= 3.12
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -177,9 +140,9 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5OpenGLExtensions)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(eigen3) >= 2.91.0
+BuildRequires:  pkgconfig(eigen3) >= 3.3.9
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(freetype2) >= 2.11.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(jsoncpp)
@@ -188,7 +151,7 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libiodbc)
-BuildRequires:  pkgconfig(liblz4) >= 1.7.3
+BuildRequires:  pkgconfig(liblz4) >= 1.8.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -255,7 +218,7 @@ Group:          Development/Libraries/C and C++
 %{?with_java:Requires:       %{name}-java = %{version}}
 Requires:       %{name}-qt = %{version}
 Requires:       %{shlib} = %{version}
-Requires:       R-core-devel
+Requires:       cgns-devel
 Requires:       cmake >= 3.4
 Requires:       double-conversion-devel
 Requires:       gcc-c++
@@ -398,24 +361,15 @@ languages.
 %prep
 %setup -n VTK-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %if %{with gles}
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
-%patch12 -p1
 %endif
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
@@ -436,13 +390,12 @@ export CXXFLAGS="%{optflags}"
 
 # The %%cmake macro sets CMAKE_SKIP_RPATH=ON for Leap 15.x which causes build failures
 # https://discourse.vtk.org/t/building-fails-generating-wrap-hierarchy-for-vtk-commoncore-unable-to-open-libvtkwrappingtools-so-1
-# -DOpenGL_GL_PREFERENCE:STRING='LEGACY' - see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6946#note_767329
+# Disable ioss module for MPI flavors, fails to build with 9.1.0, see MR 8565.
 %cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{series} \
-    -DVTK_INSTALL_LIBRARY_DIR:PATH=%{_lib} \
-    -DVTK_INSTALL_PACKAGE_DIR:PATH=%{_lib}/cmake/%{pkgname} \
+    -DCMAKE_INSTALL_QMLDIR:PATH=%{my_libdir}/qt5/qml \
     -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
     -DVTK_BUILD_TESTING:BOOL=ON \
     -DVTK_BUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
@@ -469,20 +422,21 @@ export CXXFLAGS="%{optflags}"
     -DVTK_GROUP_ENABLE_StandAlone=WANT \
     -DVTK_GROUP_ENABLE_Views=WANT \
     -DVTK_PYTHON_VERSION=3 \
-    -DVTK_OPENSUSE_PYTHON_BUILD:BOOL=ON \
-    -DVTK_USE_OGGTHEORA_ENCODER:BOOL=ON \
-    -DJava_JAVAH_EXECUTABLE=%{_bindir}/true \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
     -DVTK_WRAP_PYTHON:BOOL=ON \
-    -DVTK_USE_EXTERNAL:BOOL=ON \
     -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
+    -DVTK_USE_EXTERNAL:BOOL=ON \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
-    -DVTK_MODULE_ENABLE_VTK_pegtl=%{?with_pegtl:YES}%{!?with_pegtl:NO}
-
-    #-DVTK_EXTERNAL_LIBHARU_IS_SHARED:BOOL=OFF \
+    -DVTK_MODULE_ENABLE_VTK_ioss:BOOL=%{!?with_mpi:WANT}%{?with_mpi:NO} \
+    -DVTK_MODULE_ENABLE_VTK_pegtl=%{?with_pegtl:YES}%{!?with_pegtl:NO} \
+    -DVTK_MODULE_ENABLE_VTK_zfp:BOOL=NO \
+    %{nil}
 
 %cmake_build
 
@@ -551,16 +505,13 @@ mkdir -p %{buildroot}%{_licensedir}
 mv %{buildroot}%{my_datadir}/licenses/VTK %{buildroot}%{_licensedir}/%{name}
 
 %if ! %{with mpi}
-# install python distribution metadata despite not building a wheel
-buildsitearch=%{python3_sitearch}
-buildsitearch=${buildsitearch/\/usr/build}
-cp build/{setup.py,README.md,MANIFEST.in,requirements.txt,vtk_features.py} ${buildsitearch}/
-pushd ${buildsitearch}
+# Generate and install python distribution metadata
+pushd build/%{_lib}/python%{python3_version}/site-packages/
 python3 setup.py install_egg_info -d %{buildroot}%{python3_sitearch}
 popd
 %endif
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %check
 # Make sure the python library is at least importable
@@ -572,7 +523,7 @@ export PYTHONPATH=$_PYTHON_MPI_PREFIX:$PYTHONPATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{my_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 python3 -c "import vtk"
-find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-based .pyc file
+find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducible time-based .pyc file
 
 %post   -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -641,6 +592,12 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -delete # drop unreproducible time-
 %files qt
 %license Copyright.txt
 %{my_libdir}/libvtk*Qt*.so.*
+%if %{with mpi}
+%dir %{my_libdir}/qt5
+%{my_libdir}/qt5/qml
+%else
+%{_libqt5_archdatadir}/qml
+%endif
 
 %if %{with examples}
 %if "%{flavor}" == ""

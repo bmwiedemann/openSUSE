@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 18 04:03:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.1.0, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.1.md
+- Drop upstream patches:
+  + 0001-clean-up-some-old-opengl-es-stuff.patch
+  + 0001-expose-1d-texture-options.patch
+  + 0001-Remove-duplicate-check-for-QOpenGLFunctions_3_2_Core.patch
+  + 0001-Allow-compilation-on-GLES-platforms.patch
+  + 0001-Replace-last-glDrawBuffer-call-with-glDrawBuffers-1.patch
+  + 0001-Guard-glPointSize-with-GL_ES_VERSION_3_0.patch
+  + 0002-Guard-GL_LINE_SMOOTH-for-GLES.patch
+  + 0001-Fix-PyVTKAddFile_-function-signature-mismatch.patch
+  + 0001-Replace-invalid-GL_LINE-with-GL_LINES-for-glDrawArra.patch
+  + vtk-freetype-2.10.3-replace-FT_CALLBACK_DEF.patch
+  + vtk-std_numeric_limits.patch
+- Rebase:
+  + 0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
+  + 0001-Correct-GL_BACK-GL_BACK_LEFT-mapping-on-GLES.patch
+  + 0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
+- Replace openSUSE python hack with upstreamable solution:
+  + vtk-opensuse-python-metadata.patch ->
+    0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch,
+    0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
+- Add:
+  + 0001-Add-missing-libm-link-library-to-kissfft-module.patch
+- Remove Leap 15.1 support from specfile
+- Remove openmpi1 flavor, add openmpi4
+- Drop GNU R dependency (removed with VTK 8.1.0)
+
+-------------------------------------------------------------------
 Sat Jun 19 21:04:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add vtk-opensuse-python-metadata.patch:

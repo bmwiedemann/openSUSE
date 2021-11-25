@@ -1,18 +1,18 @@
-From 6b675d1fbb130480725ae5ed3f3bdd995e9b336a Mon Sep 17 00:00:00 2001
+From f65cf376980777639ac5ef52364678c87f1a721f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
-Date: Fri, 17 Jul 2020 05:00:04 +0200
-Subject: [PATCH 1/2] GL_POINT_SPRITE is only available for Compatibility
- Profiles and GLES 1.0
+Date: Sun, 21 Nov 2021 22:55:13 +0100
+Subject: [PATCH] GL_POINT_SPRITE is only available for Compatibility Profiles
+ and GLES 1.0
 
 ---
  Rendering/ContextOpenGL2/vtkOpenGLContextDevice2D.cxx | 6 ++++++
  1 file changed, 6 insertions(+)
 
 diff --git a/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2D.cxx b/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2D.cxx
-index 6cd90e0306..7b834fa6e5 100644
+index d30d61af5e..5a942bfda3 100644
 --- a/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2D.cxx
 +++ b/Rendering/ContextOpenGL2/vtkOpenGLContextDevice2D.cxx
-@@ -1126,22 +1126,28 @@ void vtkOpenGLContextDevice2D::DrawPointSprites(
+@@ -1123,20 +1123,26 @@ void vtkOpenGLContextDevice2D::DrawPointSprites(
      }
  
      // We can actually use point sprites here
@@ -29,8 +29,6 @@ index 6cd90e0306..7b834fa6e5 100644
  
      glDrawArrays(GL_POINTS, 0, n);
  
-     // free everything
-     cbo->ReleaseGraphicsResources(this->RenderWindow);
 +#ifdef GL_POINT_SPRITE
      if (this->RenderWindow->IsPointSpriteBugPresent())
      {
@@ -42,5 +40,5 @@ index 6cd90e0306..7b834fa6e5 100644
      if (sprite)
      {
 -- 
-2.27.0
+2.33.1
 

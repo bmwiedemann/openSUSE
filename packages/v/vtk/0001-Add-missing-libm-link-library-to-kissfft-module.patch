@@ -1,0 +1,25 @@
+From 2e1ac7f5d5045286cbcce8e1787e1e98281e4b9f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 20 Nov 2021 19:28:57 +0100
+Subject: [PATCH] Add missing libm link library to kissfft module
+
+Fixes #18390.
+---
+ ThirdParty/kissfft/vtkkissfft/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/ThirdParty/kissfft/vtkkissfft/CMakeLists.txt b/ThirdParty/kissfft/vtkkissfft/CMakeLists.txt
+index 6cb26cd44f..3e583cffc7 100644
+--- a/ThirdParty/kissfft/vtkkissfft/CMakeLists.txt
++++ b/ThirdParty/kissfft/vtkkissfft/CMakeLists.txt
+@@ -40,3 +40,7 @@ endif ()
+ target_include_directories(kissfft
+   PRIVATE
+     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
++
++if(UNIX)
++	vtk_module_link(VTK::kissfft PRIVATE m)
++endif()
+-- 
+2.33.1
+
