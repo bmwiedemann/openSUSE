@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.8.5
+Version:        2.9.5
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
@@ -34,7 +34,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %if 0%{?fedora} || 0%{?rhel} || 0%{?amzn}
 %if 0%{?rhel} == 7
-%define php_scl         rh-php71
+%define php_scl         rh-php73
 %endif
 %if 0%{?rhel} == 6
 %define php_scl         rh-php70
@@ -68,7 +68,7 @@ Requires:       %{php}-pgsql
 %endif
 
 # minimum required PHP version
-%define php_version 5.6.0
+%define php_version 7.3.0
 
 %if 0%{?suse_version}
 %define wwwconfigdir    %{_sysconfdir}/apache2/conf.d
@@ -107,6 +107,8 @@ Requires:       %{name}-vendor-JShrink = %{version}-%{release}
 Requires:       %{name}-vendor-Parsedown = %{version}-%{release}
 Requires:       %{name}-vendor-dompdf = %{version}-%{release}
 Requires:       %{name}-vendor-lessphp = %{version}-%{release}
+Requires:       icinga-php-library >= 0.6.1
+Requires:       icinga-php-thirdparty >= 0.10.0
 Requires:       icingacli = %{version}-%{release}
 Requires:       php-Icinga = %{version}-%{release}
 
@@ -151,7 +153,7 @@ Requires:       %{php}-gd %{php}-intl %{php}-mbstring
 Requires:       %{name}-vendor-zf1 = %{version}-%{release}
 %{?amzn:Requires:           %{php}-pecl-imagick}
 %{?fedora:Requires:         php-pecl-imagick}
-%{?suse_version:Requires:   %{php}-gettext %{php}-json %{php}-openssl %{php}-posix %{php}-ctype %{php}-pdo %{php}-xml %{php}-imagick %{php}-curl}
+%{?suse_version:Requires:   %{php}-gettext %{php}-json %{php}-openssl %{php}-posix %{php}-ctype %{php}-pdo %{php}-xml %{php}-imagick %{php}-curl %{php}-fileinfo %{php}-dom}
 
 %description -n php-Icinga
 Icinga Web 2 PHP library.
@@ -164,6 +166,8 @@ Group:          System/Monitoring
 Requires:       %{name}-common = %{version}-%{release}
 Requires:       %{php_cli} >= %{php_version}
 Requires:       bash-completion
+Requires:       icinga-php-library >= 0.6.1
+Requires:       icinga-php-thirdparty >= 0.10.0
 Requires:       php-Icinga = %{version}-%{release}
 %if 0%{?suse_version}
 # conflict with older PHP on SLES and openSUSE
@@ -308,6 +312,7 @@ cp -pv packages/files/bin/icingacli %{buildroot}/%{bindir}
 %if 0%{?php_bin:1}
 sed -i '1 s~#!.*~#!%{php_bin}~' %{buildroot}/%{bindir}/icingacli
 %endif
+sed -i 's|\/usr\/bin\/env php|\/usr\/bin\/php|g' %{buildroot}/%{basedir}/library/vendor/lessphp/bin/lessc
 cp -pv packages/files/public/index.php %{buildroot}/%{basedir}/public
 cp -prv etc/schema %{buildroot}/%{docsdir}
 cp -prv packages/files/config/modules/{setup,translation} %{buildroot}/%{configdir}/modules
