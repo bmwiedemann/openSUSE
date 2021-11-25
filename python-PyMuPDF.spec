@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.18.11
+Version:        1.19.2
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
@@ -33,14 +33,13 @@ BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  jbig2dec-devel
-BuildRequires:  mupdf-devel-static < 1.19.0
-BuildRequires:  mupdf-devel-static >= 1.18.0
+BuildRequires:  mupdf-devel-static < 1.20.0
+BuildRequires:  mupdf-devel-static >= 1.19.0
 BuildRequires:  openSUSE-release
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  swig
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gumbo)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -61,7 +60,6 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 dos2unix README.md changes.rst
 
 %build
-export CFLAGS="%{optflags} -I/usr/include/freetype2"
 %python_build
 
 %install
