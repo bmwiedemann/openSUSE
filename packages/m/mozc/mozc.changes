@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 23 12:02:32 CET 2021 - tiwai@suse.de
+
+- Move mozc-fcitx5.spec to a dedicated linked package (for now)
+
+-------------------------------------------------------------------
+Mon Nov 22 16:20:16 CET 2021 - tiwai@suse.de
+
+- Add python3-six to BuildReq explicitly, as the implicit
+  dependency chain was broken on TW
+
+-------------------------------------------------------------------
+Wed Nov 10 16:07:59 CET 2021 - tiwai@suse.de
+
+- Add fcitx5-mozc support: fcitx5-mozc-fix.patch
+  It could be done with multibuild once when fcitx5 landed in
+  FACTORY, but as of now, it's built in a separate spec file.
+
+-------------------------------------------------------------------
 Mon Feb  8 15:35:55 UTC 2021 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Upstream update to 2.26.4276.102

@@ -296,4 +296,12 @@ I will review and accept later; your review is welcome. (forwarded request 18401
     <comment></comment>
     <requestid>871313</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>4ae4ef15f0b59dbc44688e320b60a05f</srcmd5>
+    <version>2.26.4276.102</version>
+    <time>1637877942</time>
+    <user>dimstar_suse</user>
+    <comment>- Move mozc-fcitx5.spec to a dedicated linked package (for now) (forwarded request 933246 from tiwai)</comment>
+    <requestid>933247</requestid>
+  </revision>
 </revisionlist>
