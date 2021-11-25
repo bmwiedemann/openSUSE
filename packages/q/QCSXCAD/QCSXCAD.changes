@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 19:24:20 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add patch to fix compilation with VTK 9.1:
+  * 0001-Fixup-includes-for-VTK-9.1-compatibility.patch
+
+-------------------------------------------------------------------
 Thu Oct 15 11:40:53 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add some patches to fix compilation with VTK 9.x:
