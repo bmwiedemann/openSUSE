@@ -18,4 +18,15 @@
       </disk>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <package>lilypond-doc</package>
+    </conditions>
+    <hardware>
+      <cpu>
+      <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
 </constraints>

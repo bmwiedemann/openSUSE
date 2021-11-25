@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 16:03:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build lilypond-doc package powerful workers for aarch64 to avoid
+  hanging jobs
+
+-------------------------------------------------------------------
 Thu Sep 30 05:08:42 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Exclude all builds except Factory/Tumbleweed 64 bit.

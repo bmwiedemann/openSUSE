@@ -370,4 +370,12 @@
 - Exclude all 32 bit builds.</comment>
     <requestid>922378</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>8e5f602801d8096d73f38d0bb9adfc7c</srcmd5>
+    <version>2.23.3</version>
+    <time>1637877939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933618</requestid>
+  </revision>
 </revisionlist>
