@@ -449,4 +449,12 @@
     <user>dimstar_suse</user>
     <comment>- Support new location of the snapper config templates</comment>
   </revision>
+  <revision rev="46" vrev="46">
+    <srcmd5>efbd476d77dd7b69ae969931bba4675b</srcmd5>
+    <version>16.0.0</version>
+    <time>1637877947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933799</requestid>
+  </revision>
 </revisionlist>

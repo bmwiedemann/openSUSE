@@ -149,6 +149,51 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
 #======================================
+# Add default kernel boot options
+#--------------------------------------
+serialconsole='console=ttyS0,115200'
+[[ "$kiwi_profiles" == *"RaspberryPi2" ]] && serialconsole='console=ttyAMA0,115200'
+
+grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0' 'net.ifnames=0')
+
+ignition_platform='metal'
+case "${kiwi_profiles}" in
+	*kvm*|*SelfInstall*) ignition_platform='qemu' ;;
+	*DigitalOcean*) ignition_platform='digitalocean' ;;
+	*VMware*) ignition_platform='vmware' ;;
+	*OpenStack*) ignition_platform='openstack' ;;
+	*VirtualBox*) ignition_platform='virtualbox' ;;
+	*HyperV*) ignition_platform='metal'
+	          grub_cmdline+=('rootdelay=300') ;;
+	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*) ignition_platform='metal' ;;
+	*) echo "Unhandled profile?"
+	   exit 1
+	   ;;
+esac
+
+# One '\' for sed, one '\' for grub2-mkconfig
+grub_cmdline+=('\\$ignition_firstboot' "ignition.platform.id=${ignition_platform}")
+
+sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${grub_cmdline[*]}\"#" /etc/default/grub
+
+#======================================
+# If SELinux is installed, configure it like transactional-update setup-selinux
+#--------------------------------------
+if [[ -e /etc/selinux/config ]]; then
+	# Check if we don't have selinux already enabled.
+	grep ^GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub | grep -q security=selinux || \
+	    sed -i -e 's|\(^GRUB_CMDLINE_LINUX_DEFAULT=.*\)"|\1 security=selinux selinux=1"|g' "/etc/default/grub"
+
+	# Adjust selinux config
+	sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
+	    -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \
+	    "/etc/selinux/config"
+
+	# Move an /.autorelabel file from initial installation to writeable location
+	test -f /.autorelabel && mv /.autorelabel /etc/selinux/.autorelabel
+fi
+
+#======================================
 # Workaround: Force network-legacy, network-wicked is not usable (boo#1182227)
 #--------------------------------------
 if rpm -q ignition-dracut-grub2; then
