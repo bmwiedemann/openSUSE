@@ -26,7 +26,7 @@
 %define githash 1ca39f131bb35f120f458faf4e70779d5621e8cd
 
 Name:           robinhood
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Policy engine and reporting tool for large filesystems
 License:        CECILL-C
@@ -91,7 +91,7 @@ Group:          System/Monitoring
 
 %description tools
 The commanline tools for extracting the information out of the
-robinhood database. Commands work like du or df and find. Be careful 
+robinhood database. Commands work like du or df and find. Be careful
 as robinhood_find does not always honor the file permissions.
 
 %package tests
@@ -108,7 +108,7 @@ Tests and examples for the robinhood policy engine.
 sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
 %patch2
 %patch3
-%patch4 -p1 
+%patch4 -p1
 %patch5 -p1
 %patch6 -p1
 # remove spurious executeable bits
@@ -131,7 +131,7 @@ make %{?_smp_mflags}
 find %{buildroot} -regex '.*\.[la]*' -print -delete
 # move architecture dependend test file library location to trick rpmlint
 mv %{buildroot}%{_datadir}/robinhood/tests/create-random %{buildroot}%{_libdir}/robinhood/
-ln -s %{_libdir}/robinhood/create-random %{buildroot}%{_datadir}/robinhood/tests/create-random 
+ln -s %{_libdir}/robinhood/create-random %{buildroot}%{_datadir}/robinhood/tests/create-random
 # get the web config
 mkdir -p %{buildroot}/%{installdir_www}/robinhood
 mkdir -p %{buildroot}/%{_sysconfdir}/apache2/conf.d/
@@ -144,18 +144,19 @@ install -m 644 web_gui/robinhood.conf %{buildroot}/%{_sysconfdir}/apache2/conf.d
 mkdir -p  %{buildroot}/%{_unitdir}
 install -m 644 scripts/robinhood.service %{buildroot}/%{_unitdir}/robinhood.service
 install -m 644 scripts/robinhood@.service %{buildroot}/%{_unitdir}/robinhood@.service
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcrobinhood 
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcrobinhood
 mkdir -p %{buildroot}/%{_fillupdir}/
 install -m 644 scripts/sysconfig_robinhood %{buildroot}/%{_fillupdir}/sysconfig.%{name}
 # remove duplicates in tests
 %fdupes -s  %{buildroot}/%{_datadir}/robinhood/tests
 # Ugly fix to add right shebang line
-for file in $(find %{buildroot}%{_datadir}/robinhood/tests/ -name \*.sh) ; do grep '#!/bin/bash' $file || sed -i '1s,^,#!/bin/bash\n,' $file ;done  
+for file in $(find %{buildroot}%{_datadir}/robinhood/tests/ -name \*.sh) ; do grep '#!/bin/bash' $file || sed -i '1s,^,#!/bin/bash\n,' $file ;done
 # created config dir
 mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
+
 #service files for systemd
 %pre
-%service_add_pre robinhood.service robinhood@.service 
+%service_add_pre robinhood.service robinhood@.service
 
 %post
 %{fillup_only}
@@ -165,7 +166,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
 %service_del_preun robinhood.service robinhood@.service
 
 %postun
-%service_del_postun robinhood.service robinhood@.service 
+%service_del_postun robinhood.service robinhood@.service
 
 %files
 %defattr(-,root,root)
@@ -210,7 +211,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
 %files tests
 %defattr(-,root,root,-)
 %{_datadir}/robinhood/tests/
-%{_libdir}/robinhood/create-random 
+%{_libdir}/robinhood/create-random
 %dir %{_datadir}/robinhood
 
 %changelog

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 22 09:31:54 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- update to 3.1.7 with following minor fixes:
+  * fix optimization for policy runs per OST
+  * fix pool_usage trigger
+  * fix pool parsing
+
+-------------------------------------------------------------------
 Mon Nov 15 16:09:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
