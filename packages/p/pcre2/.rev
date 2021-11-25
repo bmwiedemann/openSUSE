@@ -188,4 +188,12 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment></comment>
     <requestid>927219</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>73b7b1b96bef5f5971492e9cfe3cca65</srcmd5>
+    <version>10.39</version>
+    <time>1637877927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932765</requestid>
+  </revision>
 </revisionlist>
