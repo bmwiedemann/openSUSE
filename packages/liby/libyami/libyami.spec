@@ -1,7 +1,7 @@
 #
 # spec file for package libyami
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@
 Name:           libyami
 Version:        1.3.2
 Release:        0
-### FIXME ### On next version bump, please remove export CXXFLAGS="-Wno-error" -- WIP progress upstream to fix gcc9 buildfail
 Summary:        Media Library with support for Intel hardware acceleration
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
@@ -31,22 +30,19 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
-BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva) >= 0.39.3
+BuildRequires:  pkgconfig(libva-wayland)
 BuildRequires:  pkgconfig(libva-x11)
-
 # Intel graphics hardware only available on these platforms
 ExclusiveArch:  %{ix86} x86_64
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(libva-wayland)
-%endif
 
 %description
 Intel VA-API Media Library with support for hardware acceleration.
@@ -71,15 +67,12 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-export CXXFLAGS="-Wno-error"
 autoreconf -fiv
 %configure \
   --disable-static \
-  --with-package-name="Libyami Media Infrastructure (openSUSE)" \
-  --with-package-origin="http://www.opensuse.org/" \
   --enable-h265dec \
   --enable-vc1dec \
   --enable-h264dec \
@@ -91,11 +84,11 @@ autoreconf -fiv
   --enable-h264enc \
   --enable-jpegenc \
   --enable-vp8enc \
-%if 0%{?suse_version} >= 1500
   --enable-wayland="yes" \
-%endif
+  --enable-dmabuf="yes" \
+  --enable-egl="yes" \
   %{nil}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
