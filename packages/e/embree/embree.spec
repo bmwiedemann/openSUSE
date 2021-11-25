@@ -18,7 +18,7 @@
 
 
 Name:           embree
-Version:        3.13.0
+Version:        3.13.2
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
@@ -28,7 +28,8 @@ Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel
+# can't build static with TBB 2021
+#BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(glfw3)
 # SSE2 is required: https://github.com/embree/embree#supported-platforms
 ExclusiveArch:  x86_64 aarch64
@@ -62,9 +63,11 @@ specifically compiled for Blender Cycles needs.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CXXFLAGS="%{optflags}"
 # blender insists in using static embree
+# Tasking system: can't build static with TBB 2021 gh#embree#embree#348
 %cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DEMBREE_STATIC_LIB=ON \
+    -DEMBREE_TASKING_SYSTEM=INTERNAL \
     -DEMBREE_LIB_INSTALL_DIR=%{_libdir} \
     -DEMBREE_ISPC_SUPPORT=OFF \
     -DEMBREE_RAY_MASK=ON \
@@ -75,7 +78,7 @@ export CXXFLAGS="%{optflags}"
 %endif
     -DEMBREE_TUTORIALS=OFF
 
-%make_build
+%cmake_build
 
 %install
 %cmake_install

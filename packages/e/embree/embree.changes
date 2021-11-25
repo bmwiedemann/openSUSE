@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 23 21:59:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.13.2
+  * Avoiding spatial split positions that are slightly out of
+    geometry bounds.
+  * Introduced rtcGetGeometryThreadSafe function, which is a thread
+    safe version of rtcGetGeometry.
+  * Using more accurate rcp implementation.
+  * Bugfix to rare corner case of high quality BVH builder.
+- Embree 3.13.1
+  * Added support for ISPC+ARM.
+  * Releases upgrade to TBB 2021.3.0 and ISPC 1.16.1
+- Use internal tasking instead of TBB
+  * gh#embree/embree#348
+  * boo#1192994
+
+-------------------------------------------------------------------
 Tue May 25 22:46:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.13.0

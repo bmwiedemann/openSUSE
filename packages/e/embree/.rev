@@ -80,4 +80,12 @@ openSUSE:Factory:Staging:adi:14 ).</comment>
     <comment></comment>
     <requestid>895479</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ba90344bbb83a556379306a1bd413bd1</srcmd5>
+    <version>3.13.2</version>
+    <time>1637877944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933735</requestid>
+  </revision>
 </revisionlist>
