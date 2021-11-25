@@ -521,4 +521,24 @@
 - skip info files generation which was enabled in 5.15</comment>
     <requestid>928994</requestid>
   </revision>
+  <revision rev="63" vrev="72">
+    <srcmd5>c779072a504c2a272db8a1749e9051ab</srcmd5>
+    <version>MACRO</version>
+    <time>1637877935</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build error due to stale conditional around %files devel
+- Split gtk portion into separate package (pulls in about 40
+  packages for graphic systems that are not desired on text
+  shells).
+- Downgrade Requires: kernel to Recommends:. We are long past
+  2.6.31 (its existence is pretty much guaranteed), and it forces
+  installation of a distro kernel on systems that compile their own.
+- Cleanup for &lt; 5.14
+  * Remove:
+    perf-5.14-don-t-install-headers-with-x-permissions.patch
+    perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
+  * -devel is always built
+</comment>
+    <requestid>933728</requestid>
+  </revision>
 </revisionlist>

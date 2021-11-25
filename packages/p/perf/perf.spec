@@ -24,9 +24,6 @@
 %define _lto_cflags %{nil}
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define version_pure %(echo %{version}|sed 's@\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1\\2@')
-%if %{version_pure} >= 514
-%bcond_without devel
-%endif
 %ifarch s390x s390
 %define         _perf_unwind NO_LIBUNWIND=1
 %else
@@ -41,8 +38,6 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
 Patch0:         perf-5.15-don-t-install-headers-with-x-permissions.patch
-Patch1:         perf-5.14-don-t-install-headers-with-x-permissions.patch
-Patch2:         perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -65,12 +60,13 @@ BuildRequires:  python3-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
-Requires:       kernel >= 2.6.31
-%{perl_requires}
-%{?libperl_requires}
 %ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
 BuildRequires:  libnuma-devel
 %endif
+Recommends:     kernel >= 2.6.31
+Recommends:     perf-gtk
+%{perl_requires}
+%{?libperl_requires}
 
 %description
 This package provides a userspace tool 'perf', which monitors performance for
@@ -79,7 +75,14 @@ which includes the Performance Counters for Linux (PCL) subsystem (>= 2.6.31).
 This subsystem utilizes the Performance Monitoring Unit (PMU) / hardware
 counters of the underlying cpu architecture (if supported).
 
-%if %{with devel}
+%package gtk
+Summary:        Gtk browser for perf-report
+Group:          Development/Tools/Other
+Requires:       %{name} = %{version}
+
+%description gtk
+A GTK2 frontend for perf-report. (Use `perf report --gtk`.)
+
 %package devel
 Summary:        Development headers for perf
 Group:          Development/Libraries/Other
@@ -87,7 +90,6 @@ Requires:       %{name} = %{version}
 
 %description devel
 Development headers for perf. This is currently only dlfilter header.
-%endif
 
 %prep
 # copy necessary files from kernel-source since we need to modify them
@@ -100,14 +102,7 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 # skip info-from-txt generation (it's the same as man anyway)
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
-%if %{version_pure} >= 514
-%if %{version_pure} >= 515
 %patch0 -p1
-%else
-%patch1 -p1
-%endif
-%patch2 -p1
-%endif
 
 %build
 cd tools/perf
@@ -158,7 +153,6 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %endif
 %{_bindir}/perf
 %{_bindir}/trace
-%{_libdir}/libperf-gtk.so
 %{_prefix}/lib/%{name}-core
 %{_datadir}/bash-completion/completions/perf
 %{_datadir}/%{name}-core
@@ -167,10 +161,11 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %dir %{_docdir}/perf/examples/bpf
 %{_docdir}/perf/examples/bpf/*
 
-%if %{with devel}
+%files gtk
+%{_libdir}/libperf-gtk.so
+
 %files devel
 %dir %{_includedir}/perf/
 %{_includedir}/perf/*.h
-%endif
 
 %changelog
