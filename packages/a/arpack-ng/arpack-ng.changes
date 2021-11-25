@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:48:52 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable pyarpack on armv6/7 to fix build
+
+-------------------------------------------------------------------
 Thu Sep 30 13:11:51 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reduce memory requirements/constraints:

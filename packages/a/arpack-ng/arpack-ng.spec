@@ -1,5 +1,5 @@
 #
-# spec file for package arpack-ng
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -85,8 +85,8 @@ ExclusiveArch:  do_not_build
 %global my_incdir %{_includedir}
 %endif
 
-# 3. OOM on i586: https://github.com/opencollab/arpack-ng/issues/289
-%ifarch i586
+# 3. OOM on i586 and 32-bit Arm: https://github.com/opencollab/arpack-ng/issues/289
+%ifarch i586 %{arm}
 %bcond_with pyarpack
 %else
 # 2. Boost too old for 15.2 and earlier
