@@ -145,6 +145,7 @@
     <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="xz" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="zstd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
   </packagelist>
 </group>
 <group name="opensuse_microos.i586">
