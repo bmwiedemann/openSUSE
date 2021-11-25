@@ -1,0 +1,5 @@
+<package name="icinga-php-library" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="icinga-php-library"/>
+</package>
