@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Nov 21 17:58:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  New features
+  * Added a smooth scrolling and movement mode. When this is
+    enabled, the game is taking full advantage of the display
+    framerate (60 FPS or higher) by interpolating object and
+    camera movement during rendering (internal game logic is
+    still running at 15 FPS). This is currently still work in
+    progress, see known issues.
+  * The engine has a built-in screenshot function now. Press F12
+    to take a screenshot. It will be saved as PNG in either your
+    Duke Nukem II game files directory, or in the user profile
+    directory if the former is not writable.
+  * It's now possible to skip the bonus screen after finishing a
+    level by pressing Enter or Esc (or controller button A or B).
+  * Added an option to the Enhancements tab to skip the intro
+    when RigelEngine starts (same as the -s command line option).
+  * Added information about currently active gamepads to the
+    options menu
+  Improvements
+  * In widescreen mode, out of bounds areas are now drawn in
+    black instead of showing the background.
+  * Replacement backgrounds (mods) can now be wider than the
+    original art they are replacing, and will be displayed
+    correctly (without distortion)
+  * For auto-scrolling backgrounds, the scroll position is now
+    saved/restored when quick saving/loading.
+  * The game will now run even if the intro movie files
+    (NUKEM2.F1, .F2 etc.) are missing. The movies will be
+    skipped instead of exiting the game.
+  * Game physics are more correct now w.r.t. the original code
+    when it comes to items falling down.
+  Bug fixes
+  * Fixed the "wall dance" glitch. This glitch allows Duke to move
+    through walls using a specific sequence of moves.
+  * Fixed spiders sometimes not latching on to Duke when touching
+    him.
+  * Fixed items getting stuck in the ceiling when the box was shot
+    while hidden behind a rock that would later fall down (e.g. in
+    N2).
+  * Fixed missing animation for the Computer merchandise pickup.
+  * Fixed a glitch when starting a level while having high
+    resolution mods enabled, where the graphics would briefly show
+    as low resolution.
+  * Fixed in-game messages not being affected by screen shake when
+    in widescreen mode.
+- Remove patches:
+  * 749.patch
+
+-------------------------------------------------------------------
 Sun Sep 26 09:30:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add patches:

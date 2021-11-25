@@ -18,15 +18,13 @@
 
 
 Name:           RigelEngine
-Version:        0.8.1beta
+Version:        0.8.2beta
 Release:        0
 Summary:        A modern reimplementation of the game Duke Nukem II
 License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/lethal-guitar/RigelEngine
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM: 749.patch - Fix "threads" not found on Tumbleweed
-Patch0:         https://patch-diff.githubusercontent.com/raw/lethal-guitar/RigelEngine/pull/749.patch
 # PATCH-FIX-OPENSUSE: fix-find-boost-program_options
 Patch1:         fix-find-boost-program_options.patch
 BuildRequires:  boost-devel
@@ -51,7 +49,6 @@ available shareware version.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 %build
@@ -59,7 +56,8 @@ available shareware version.
 export CC="gcc-9"
 export CXX="g++-9"
 %endif
-%cmake \
+%cmake -DBUILD_TESTS=ON \
+ -DBUILD_MODDING_TOOLS=ON \
 %ifarch %arm aarch64
  -DUSE_GL_ES=1 \
 %endif
