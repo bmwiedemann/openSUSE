@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 14 12:13:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 20211023
+  * Changes to handle sparse data runs of bitmap attributes
+  * Added check for total data runs size
+
+-------------------------------------------------------------------
 Thu May 13 23:42:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210503 (8803365c)

@@ -18,13 +18,15 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20210503
+Version:        20211023
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfsntfs
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfsntfs/releases/download/%version/libfsntfs-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfsntfs/releases/download/%version/libfsntfs-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -41,7 +43,7 @@ BuildRequires:  pkgconfig(libcpath) >= 20200623
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfusn) >= 20180726
@@ -99,7 +101,7 @@ Python 3 binding for libfsntfs, which can access the NTFS filesystem.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
