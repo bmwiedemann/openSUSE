@@ -21,7 +21,7 @@
 %define __requires_exclude typelib\\((Vte))\ =
 %define _version 5.0.0
 Name:           nemo-extensions
-Version:        5.0.0
+Version:        5.2.0
 Release:        0
 Summary:        Set of extensions for Nemo, the Cinnamon file manager
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
