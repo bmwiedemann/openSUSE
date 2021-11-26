@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        5.0.5
+Version:        5.2.0
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
@@ -172,7 +172,9 @@ mkdir -p %{buildroot}%{_libdir}/nemo/extensions-3.0/
 %{_datadir}/dbus-1/services/nemo.service
 %{_datadir}/dbus-1/services/nemo.FileManager1.service
 %{_datadir}/glib-2.0/schemas/org.nemo.gschema.xml
-%{_datadir}/gtksourceview-?.0/language-specs/%{name}_action.lang
+%dir %{_datadir}/gtksourceview-*
+%dir %{_datadir}/gtksourceview-*/language-specs
+%{_datadir}/gtksourceview-*/language-specs/%{name}_*.lang
 %{_datadir}/polkit-1/actions/org.nemo.root.policy
 
 %files -n %{typelib}

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Nov 18 20:27:44 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.2.0.
+  * nemo-desktop-overlay.glade: Fix label marked untranslatable.
+  * makepot: Add shortcuts ui file.
+  * nemo-view.c: Follow the same invocation rules for bulk renaming
+    as we do for normal renaming.
+  * Install language definitions to gtksourceview-4.
+  * nemo-file.h: Use the correct icon names for read-only and
+    unreadable emblems.
+  * mount-archive.nemo_action: Use gnome-disk-image-mounter
+    instead of gvfsd-archive.
+  * debian/control: Add gnome-disk-utility to recommends
+    (for image mount action).
+  * Add a manpage for nemo-desktop and clean up nemo's a bit.
+  * nemo-toolbar.c: Use flat button style
+  * extension gir: Export 'libnemo-extension' to the gir
+  * actions: Refactor to remove unnecessary methods.
+  * actions: Add new conversion token for a file's parent uri
+    (with selection_count > 0) and location uri
+    (selection_count == 0).
+  * actions: Add UriScheme specifier in the action definition.
+  * nemo-window-manager-views.c: When removing a folder, don't
+    close the entire window if that folder is open on another tab.
+  * nemo-window.c: Don't ignore tab events when renaming.
+  * nemo-directory-async.c: Don't write the entire buffer into
+    the pixbuf loader all at once.
+  * copy/paste: Make the clipboard contents persist after the
+    process ends.
+  * nemo-search-engine-advanced.c: Ensure a path before using it
+    as a key in the skip table - g_str_hash cannot be NULL.
+  * search: Update tooltip text (#2810)
+  * file operations: Add duplicate button (#2841)
+  * file-operations: Rename button label in previous commit
+  * l10n: Generate files
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Fri Nov  5 09:17:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.0.5
