@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 18 22:05:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable testsuite for now, let upstream figure out the issue with
+  harfbuzz 3.1.1.
+
+-------------------------------------------------------------------
+Sat Nov 13 16:52:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.52.4:
+  + New features:
+    - Support the isolation property from the Compositing and
+      Blending Level 1 specification.
+    - Support Visual Studio 2022.
+  + Bug fixes:
+    - The opacity and mix-blend-mode properties were not being
+      applied when an element has a mask.
+    - Fix panic when an empty group has a pattern fill and filters.
+    - Fix the tests on Windows; the still only work when Fontconfig
+      is present.
+    - Work around a bug in the cairo-rs bindings in the test suite,
+      that only manifests itself in s/390x due to its calling
+      convention. See
+      https://github.com/gtk-rs/gtk-rs-core/issues/335
+
+-------------------------------------------------------------------
 Tue Nov  2 04:12:22 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit obs service
