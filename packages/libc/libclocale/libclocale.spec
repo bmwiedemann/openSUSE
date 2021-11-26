@@ -25,6 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libclocale
 Source:         https://github.com/libyal/libclocale/releases/download/%version/libclocale-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libclocale/releases/download/%version/libclocale-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -57,7 +59,7 @@ applications that want to make use of libclocale.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type
 %make_build
 
