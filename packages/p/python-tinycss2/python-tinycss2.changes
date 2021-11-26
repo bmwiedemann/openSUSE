@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 23 17:41:46 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.1.1
+  * build system switched to flit/toml
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Fix ResourceWarning in tests.
+  * Use Python standard librarie’s HSL to RGB converter.
+  * Use GitHub Actions for tests.
+  * New code structure, new packaging, new documentation.
+  
+-------------------------------------------------------------------
 Sat Jul 11 10:50:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - switch of isort in testing. isort5 is out and breaks everything 

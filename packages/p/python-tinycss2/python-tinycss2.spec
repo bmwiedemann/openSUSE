@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinycss2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tinycss2
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
 Summary:        Low-level CSS parser for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/tinycss2
 Source:         https://files.pythonhosted.org/packages/source/t/tinycss2/tinycss2-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-flake8}
+BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  %{python_module webencodings >= 0.4}
 # /SECTION
 Requires:       python-webencodings >= 0.4
@@ -46,22 +50,19 @@ more recent CSS Syntax Level 3 specification.
 %setup -q -n tinycss2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-# remove pytest default args --flake8 and --isort
-rm setup.cfg
 %pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/tinycss2
-%{python_sitelib}/tinycss2-%{version}-*.egg-info
+%{python_sitelib}/tinycss*
 
 %changelog
