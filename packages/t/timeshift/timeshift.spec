@@ -2,7 +2,7 @@
 # spec file for package timeshift
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2017-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           timeshift
-Version:        20.11.1
+Version:        21.09.1
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only

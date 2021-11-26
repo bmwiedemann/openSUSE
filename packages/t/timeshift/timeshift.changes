@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 25 22:48:01 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 21.09.1:
+  * Fix build fails with xapp 2.0.0, update references to
+    GLib.Object, (gh#teejee2008/timeshift#676).
+  * Fix timeshift will only start in "Live USB Mode",
+    (gh#teejee2008/timeshift#425, gh#teejee2008/timeshift#753
+    and gh#teejee2008/timeshift#755).
+  * Fix not enough disk space, (gh#teejee2008/timeshift#589).
+  * Fix browse Files is starting Audacious, not file browser,
+    (gh#teejee2008/timeshift#186).
+  * Fix compiler warnings.
+  * Update README.
+  * Translation updates.
+- Changes from version 21.09:
+  * Translation updates.
+
+-------------------------------------------------------------------
 Wed May 12 21:53:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.11.1:
