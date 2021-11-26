@@ -1,7 +1,7 @@
 #
 # spec file for package python-recommonmark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+# Package is not able to build with Python 2 on Leap 15.3 because of "nothing provides python2-charset-normalizer >= 2.0.0 needed by python2-requests"
+%define skip_python2 1
 Name:           python-recommonmark
 Version:        0.7.1
 Release:        0
@@ -35,7 +35,7 @@ Requires:       python-CommonMark >= 0.7.3
 Requires:       python-Sphinx >= 1.3.1
 Requires:       python-docutils >= 0.11
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       python-reCommonMark = %{version}
 Obsoletes:      python-reCommonMark < %{version}
 BuildArch:      noarch
@@ -46,10 +46,6 @@ BuildRequires:  %{python_module docutils >= 0.11}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
 # /SECTION tests
-%ifpython2
-Obsoletes:      %{oldpython}-reCommonMark < %{version}
-Provides:       %{oldpython}-reCommonMark = %{version}
-%endif
 %python_subpackages
 
 %description
