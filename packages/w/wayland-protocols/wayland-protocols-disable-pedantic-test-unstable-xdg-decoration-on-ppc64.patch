@@ -1,8 +1,8 @@
-Index: wayland-protocols-1.23/tests/meson.build
-===================================================================
---- wayland-protocols-1.23.orig/tests/meson.build
-+++ wayland-protocols-1.23/tests/meson.build
-@@ -6,6 +6,8 @@ libwayland = [
+diff --git a/tests/meson.build b/tests/meson.build
+index 5439239..cbb147c 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -7,6 +7,8 @@ libwayland = [
  	dependency('wayland-server'),
  ]
  
@@ -11,9 +11,9 @@ Index: wayland-protocols-1.23/tests/meson.build
  # Check that each protocol passes through the scanner
  foreach protocol_file : protocol_files
  	protocol_path = join_paths(wayland_protocols_srcdir, protocol_file)
-@@ -111,7 +113,12 @@ foreach protocol_file : protocol_files
+@@ -113,7 +115,12 @@ foreach protocol_file : protocol_files
+ 			'-Werror' ],
  		install: false,
- 		native: true,
  	)
 -	test(test_name, pedantic_test_executable)
 +

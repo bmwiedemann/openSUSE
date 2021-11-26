@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:29:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.24
+  * This release adds feedback to the DMA buffer protocol
+  * tests: allow cross-compiling the tests
+  * tests: check whether -Wl,--unresolved-symbols=ignore-all is
+    supported
+  * meson.build: wayland-scanner is only needed for tests
+  * Improve tiled_* enum summary
+- Rebase wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch
+
+-------------------------------------------------------------------
 Thu Nov  4 07:19:04 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add wayland-protocols-disable-pedantic-test-unstable-xdg-decoration-on-ppc64.patch:
