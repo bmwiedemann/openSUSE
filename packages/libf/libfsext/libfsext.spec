@@ -18,13 +18,15 @@
 
 %define lname	libfsext1
 Name:           libfsext
-Version:        20210522
+Version:        20210721
 Release:        0
 Summary:        Library and tools to access the Extended File System
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfsext
 Source:         https://github.com/libyal/libfsext/releases/download/%version/libfsext-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfsext/releases/download/%version/libfsext-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -128,7 +130,7 @@ This package contains Python 3 bindings for libfsext.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
