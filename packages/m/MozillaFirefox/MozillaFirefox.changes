@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 23 22:00:38 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 94.0.2:
+  * Update preference design for Firefox Suggest for improved clarity
+  * Resolved general instability/crashes on Linux caused by a file
+    descriptor leak when backgrounding tabs using WebGL
+    (bmo#1741997)
+
+-------------------------------------------------------------------
 Fri Nov  5 18:02:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 94.0.1:
