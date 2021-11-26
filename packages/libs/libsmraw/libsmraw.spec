@@ -18,13 +18,15 @@
 
 Name:           libsmraw
 %define lname	libsmraw1
-Version:        20210418
+Version:        20210807
 Release:        0
 Summary:        Library and tools to access the (split) RAW image format
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libsmraw
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libsmraw/releases/download/%version/libsmraw-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libsmraw/releases/download/%version/libsmraw-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -44,9 +46,8 @@ BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(openssl) >= 1.0
-BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -94,7 +95,7 @@ with (split) RAW files.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 

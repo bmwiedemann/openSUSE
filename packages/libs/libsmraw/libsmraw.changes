@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 14 12:33:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210817
+  * Python binding updates
+
+-------------------------------------------------------------------
+Sat Jun 26 10:06:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused BuildRequire on python2.
+
+-------------------------------------------------------------------
 Fri May 14 00:41:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210418 (ad75680d)
