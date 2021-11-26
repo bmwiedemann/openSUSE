@@ -3206,4 +3206,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Fix stack overflow when parsing malicious tiff image file</comment>
     <requestid>931502</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>946641322bdddacd19b2f78e0e67fe0f</srcmd5>
+    <version>7.1.0.16</version>
+    <time>1637970641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.16:
+  * Fixed an OpenCL build problem.
+  * Added support for reading extra channels in a PSD file (reference
+  * Fix alpha channel calculation of arithmetic divide compose operator. (forwarded request 933410 from dirkmueller)</comment>
+    <requestid>933416</requestid>
+  </revision>
 </revisionlist>

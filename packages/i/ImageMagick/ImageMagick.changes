@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:53:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.16:
+  * Fixed an OpenCL build problem.
+  * Added support for reading extra channels in a PSD file (reference
+  * Fix alpha channel calculation of arithmetic divide compose operator.
+
+-------------------------------------------------------------------
 Mon Nov 15 09:14:27 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.1.0.14
