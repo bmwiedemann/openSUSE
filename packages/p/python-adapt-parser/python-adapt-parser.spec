@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-adapt-parser
-Version:        0.6.1
+Version:        1.0.0
 Release:        0
 Summary:        A text-to-intent parsing framework
 License:        Apache-2.0
@@ -53,7 +53,7 @@ sed -i -s "s/==/>=/" requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest test/*.py
 
 %files %{python_files}
 %license LICENSE.md
