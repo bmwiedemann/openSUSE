@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 23 16:17:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.0:
+  + Fix icon size in launcher properties window
+  + Resize input field with launcher dialog
+  + Support Python 3.10+
+  + Updated translations.
+- Drop alacarte-trans.patch: No longer needed as we do not use
+  translation-update-upstream any more.
+- Modernize spec, fixup fdupes call, build as noarch.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:20:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

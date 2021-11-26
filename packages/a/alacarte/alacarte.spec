@@ -17,15 +17,14 @@
 
 
 Name:           alacarte
-Version:        3.36.0
+Version:        3.42.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
-Source:         https://download.gnome.org/sources/alacarte/3.36/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE alacarte-trans.patch bnc#947793 qzhao@suse.org -- Fix untranslated messages
-Patch0:         alacarte-trans.patch
+Source:         https://download.gnome.org/sources/alacarte/3.42/%{name}-%{version}.tar.xz
+
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 # Needed for the typelib() dependency parser
@@ -40,6 +39,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(pygobject-3.0)
 Requires:       python3-gobject-Gdk
+BuildArch:      noarch
 
 %description
 Alacarte is a simple freedesktop.org compliant menu editor for GNOME
@@ -49,18 +49,17 @@ type to edit, add, and delete any menu entry.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 %suse_update_desktop_file -r alacarte GNOME Utility DesktopUtility X-GNOME-PersonalSettings
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %files
 %license COPYING
