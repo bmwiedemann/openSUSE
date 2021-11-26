@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 25 20:59:30 UTC 2021 - Fabrice BAUZAC-STEHLY <noon@mykolab.com>
+
+- Add support for SLE-12:
+  * When building for SLE-12, switch to openssl instead of gnutls.
+
+-------------------------------------------------------------------
 Fri Sep 24 13:46:31 CEST 2021 - noon@mykolab.com
 
 - Update to 1.1.14.
