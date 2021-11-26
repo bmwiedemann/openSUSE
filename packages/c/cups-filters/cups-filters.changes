@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 15 07:30:49 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_cups-browsed.service.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 11:28:42 CEST 2021 - jsmeix@suse.de
 
 - The cups-brf backend needs to run as root

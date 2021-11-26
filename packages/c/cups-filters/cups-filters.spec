@@ -40,6 +40,7 @@ Name:           cups-filters
 Version:        1.28.8
 Release:        0
 Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%{version}.tar.gz
+Patch0:	harden_cups-browsed.service.patch
 # Upstream fix for https://bugs.linuxfoundation.org/show_bug.cgi?id=1421
 # in https://github.com/OpenPrinting/cups-filters/commit/6db3b08d3b20332b1525b8dd1a47950381b8f637
 # dowloaded via
@@ -216,6 +217,7 @@ This package contains the development files for cups-filters.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # Just do what is described in the upstream INSTALL file
