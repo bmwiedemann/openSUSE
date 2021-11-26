@@ -18,13 +18,15 @@
 
 %define lname   libvslvm1
 Name:           libvslvm
-Version:        20210524
+Version:        20210807
 Release:        0
 Summary:        Library to access the Linux Logical Volume Manager (LVM) volume system
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libvslvm/
 Source:         https://github.com/libyal/libvslvm/releases/download/%{version}/libvslvm-experimental-%{version}.tar.gz
+Source2:        https://github.com/libyal/libvslvm/releases/download/%{version}/libvslvm-experimental-%{version}.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -43,7 +45,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libfcache) >= 20200708
 BuildRequires:  pkgconfig(libfdata) >= 20201129
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 
@@ -94,7 +96,7 @@ This packinge provides Python 3 bindings for libvslvm
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
