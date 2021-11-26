@@ -918,4 +918,13 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>925674</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>522440737365b17ba14c260d97cc6fe9</srcmd5>
+    <version>3.0.5</version>
+    <time>1637970693</time>
+    <user>dimstar_suse</user>
+    <comment>- Conflict pipewire-libjack-0_3 to prevent boo#1191585 and remove unused build script
+</comment>
+    <requestid>934019</requestid>
+  </revision>
 </revisionlist>

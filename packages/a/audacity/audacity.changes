@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 26 07:39:33 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Conflict pipewire-libjack-0_3 to prevent boo#1191585
+
+-------------------------------------------------------------------
 Sat Oct 16 10:37:47 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to release 3.0.5.

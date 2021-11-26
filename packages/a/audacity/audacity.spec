@@ -84,6 +84,9 @@ Requires:       ffmpeg
 Requires:       libmp3lame0
 Provides:       %{name}-plugins = %{version}
 Obsoletes:      %{name}-plugins <= 2.4.2
+# pipewire-libjack-0_3 replaces jack and when audacity loads it
+# causes a sigsev See https://bugzilla.suse.com/show_bug.cgi?id=1191585
+Conflicts:      pipewire-libjack-0_3
 #Doesn't build for 32 bit anymore
 ExcludeArch:    i586
 
