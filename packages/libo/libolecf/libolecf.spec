@@ -24,8 +24,10 @@ Summary:        Library and tools to access the OLE 2 Compound File (OLECF) form
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libolecf
-Source:         %name-%version.tar.xz
-Source2:        OLE_Compound_File_format.pdf
+Source:         https://github.com/libyal/libolecf/releases/download/%version/libolecf-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libolecf/releases/download/%version/libolecf-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source11:       OLE_Compound_File_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -91,10 +93,10 @@ Python bindings for libolecf, which can read MS IE cache files.
 
 %prep
 %autosetup -p1
-cp "%SOURCE2" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-wide-character-type \

@@ -126,4 +126,12 @@
     <comment></comment>
     <requestid>902518</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>27903c1ce5e7022e539d35c96428e6ff</srcmd5>
+    <version>20210512</version>
+    <time>1637970678</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to curated tarballs</comment>
+    <requestid>933963</requestid>
+  </revision>
 </revisionlist>
