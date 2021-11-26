@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 22 17:13:13 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.5.8.
+  * Add missing teal/yellow links
+- Update to version 1.5.7
+  * Add org.xfce.Dictionary
+- Update to version 1.5.6
+  * Add more Xfce 4.16 icons
+  * Add missing files to git tree
+- Update to version 1.5.5
+  * Add more Xfce 4.16 icons
+- Update to version 1.5.4
+  * create-links: automate extension matching
+  * Add icon name for Xfce 4.16
+- Update to version 1.5.3
+  * Xfce: Add xfsm icons
+- Update to version 1.5.2
+  * Add sticky
+- Update to version 1.5.1
+  * Add new battery icons (increments of 10)
+  * Add caps and num-lock symbolic indicator icons.
+  * Make caps-lock and num-lock symbolic icons cinnamon-specific.
+  * Icon for Joplin (#280)
+
+-------------------------------------------------------------------
 Sat Apr 24 20:19:39 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Fix dark icon theme. Fix bsc#1184691, patch from
