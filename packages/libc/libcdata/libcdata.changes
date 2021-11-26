@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 25 18:45:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add keyring
+
+-------------------------------------------------------------------
 Mon Jul  5 17:51:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable implicit library-side locking during operations;

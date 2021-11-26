@@ -25,6 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcdata
 Source:         https://github.com/libyal/libcdata/releases/download/%version/libcdata-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libcdata/releases/download/%version/libcdata-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
