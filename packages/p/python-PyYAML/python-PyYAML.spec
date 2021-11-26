@@ -18,23 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
+%define skip_python2 1
 Name:           python-PyYAML
-Version:        5.4.1
+Version:        6.0
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
 Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
+Patch0:         setuptools.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
 BuildRequires:  python-rpm-macros
-%ifpython2
-# python-yaml was last used in openSUSE 12.1.
-Provides:       %{oldpython}-yaml = %{version}
-Obsoletes:      %{oldpython}-yaml < %{version}
-%endif
 
 %description
 YAML is a data serialization format designed for human readability
@@ -53,6 +50,7 @@ configuration files to object serialization and persistance.
 
 %prep
 %setup -q -n PyYAML-%{version}
+%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -74,7 +72,7 @@ ulimit -Sn 2048
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES README examples/
+%doc CHANGES README.md examples/
 %{python_sitearch}/yaml
 %{python_sitearch}/_yaml
 %{python_sitearch}/PyYAML-%{version}-py%{python_version}.egg-info

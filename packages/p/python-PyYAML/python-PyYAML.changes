@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  1 20:36:13 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add patch setuptools.patch
+- update to 6.0
+  * drop Python 2.7
+  * always require `Loader` arg to `yaml.load()`
+  * fix float resolver to ignore `.` and `._`
+  * fix representation of Enum subclasses
+  * fix libyaml extension compiler warnings
+  * fix ResourceWarning on leaked file descriptors
+  * remove remaining direct distutils usage
+
+-------------------------------------------------------------------
 Sun Jan 24 18:21:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.1 (bsc#1174514, CVE-2020-14343):

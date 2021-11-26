@@ -218,4 +218,20 @@
   * Fix compatibility with Jython</comment>
     <requestid>866403</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0cde88cf397bfd53baf50afd8bb97d7f</srcmd5>
+    <version>6.0</version>
+    <time>1637970635</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch setuptools.patch
+- update to 6.0
+  * drop Python 2.7
+  * always require `Loader` arg to `yaml.load()`
+  * fix float resolver to ignore `.` and `._`
+  * fix representation of Enum subclasses
+  * fix libyaml extension compiler warnings
+  * fix ResourceWarning on leaked file descriptors
+  * remove remaining direct distutils usage</comment>
+    <requestid>933317</requestid>
+  </revision>
 </revisionlist>
