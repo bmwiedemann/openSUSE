@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 26 12:23:29 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 5.2.0.
+  * Don't allow fullscreen windows to also become decorated.
+  * window.c: Fix de-tiling using keyboard shortcuts.
+  * compositor.c: Skip offscreen windows when unredirecting.
+  * Fix regression caused by 610d60d953cb1 - it was affecting programs that started in fullscreen mode.
+  * window.c: Properly update gtK_edge_constraints
+  * window.c: Update a wrong value in our edge constraints
+  * debian/control: Update build dep, remove transitional package.
+  * meta-shadow-factory: Tweak window shadows
+  * build: improve check ACLOCAL_AMFLAGS
+
+-------------------------------------------------------------------
+Tue Nov  2 03:49:45 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 5.0.2.
+  * Don't allow fullscreen windows to also become decorated.
+  * window.c: Fix de-tiling using keyboard shortcuts.
+  * compositor.c: Skip offscreen windows when unredirecting.
+  * window.c: Properly update gtK_edge_constraints
+  * window.c: Update a wrong value in our edge constraints
+
+-------------------------------------------------------------------
 Wed Jul 28 10:58:44 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.1.

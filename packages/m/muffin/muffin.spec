@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-Muffin-0_0
 %define _lto_cflags %{nil}
 Name:           muffin
-Version:        5.0.1
+Version:        5.2.0
 Release:        0
 Summary:        Cinnamon Desktop default window manager
 License:        GPL-2.0-or-later AND MIT
@@ -104,6 +104,7 @@ NOCONFIGURE=1 ./autogen.sh
 
 %build
 %configure --disable-static \
+           --enable-startup-notification=yes \
            --enable-compile-warnings=minimum \
            --disable-wayland-egl-platform \
            --disable-wayland-egl-server \
