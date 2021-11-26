@@ -18,14 +18,16 @@
 
 %define lname	libfwnt1
 Name:           libfwnt
-Version:        20210717
+Version:        20210906
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwnt
-Source:         https://github.com/libyal/libfwnt/archive/refs/tags/%version.tar.gz
-Source2:        Locale_identifier_LCID.pdf
+Source:         https://github.com/libyal/libfwnt/releases/download/%version/libfwnt-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libfwnt/releases/download/%version/libfwnt-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source11:       Locale_identifier_LCID.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -75,10 +77,10 @@ This packinge provides Python 3 bindings for ${name}
 
 %prep
 %autosetup -p1
-cp "%{S:2}" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-python3
 %make_build
 

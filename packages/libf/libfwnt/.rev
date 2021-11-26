@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>907611</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>511fa905c17fc1cbe036322e6530cae6</srcmd5>
+    <version>20210906</version>
+    <time>1637970677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210906</comment>
+    <requestid>933961</requestid>
+  </revision>
 </revisionlist>
