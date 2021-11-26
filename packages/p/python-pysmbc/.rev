@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>863124</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>42d7058f11002bd1c188dcf2f4a5fff3</srcmd5>
+    <version>1.0.23</version>
+    <time>1637970628</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python2 guard so we always Provide/Obsolete the old name.</comment>
+    <requestid>933208</requestid>
+  </revision>
 </revisionlist>

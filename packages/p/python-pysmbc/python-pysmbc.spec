@@ -37,10 +37,8 @@ BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 %endif
-%ifpython2
 Obsoletes:      %{oldpython}-smbc < %{version}
 Provides:       %{oldpython}-smbc = %{version}
-%endif
 Obsoletes:      python-smbc < %{version}-%{release}
 Provides:       python-smbc = %{version}-%{release}
 %python_subpackages

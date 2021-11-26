@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 23 06:59:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove python2 guard so we always Provide/Obsolete the old name. 
+
+-------------------------------------------------------------------
 Thu Jan 14 12:05:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.0.23
