@@ -186,4 +186,12 @@
     <comment>- Update to 0.9.2k4 (0.9.2.96)</comment>
     <requestid>808477</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>717014f25b7c1af045983054f9f13773</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1637970686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.9.2.165 (edcb4b4b1f1f)</comment>
+    <requestid>933957</requestid>
+  </revision>
 </revisionlist>

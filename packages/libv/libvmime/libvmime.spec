@@ -17,17 +17,18 @@
 
 
 Name:           libvmime
-%define lname	libvmime-kopano3
+%define lname	libvmime-suse4
+Version:        0.9.2.165
+Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        0.9.2.96
-Release:        0
 URL:            http://vmime.org/
 
 #Source:         https://github.com/kisli/vmime/archive/v%%version.tar.gz
 Source:         vmime-%version.tar.xz
 Patch1:         libvmime-nodatetime.diff
+Patch2:         libvmime-soname.diff
 BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  doxygen
@@ -90,7 +91,6 @@ make book_pdf
 popd
 %endif
 
-cf="%optflags -DVMIME_ALWAYS_GENERATE_7BIT_PARAMETER=1"
 %cmake \
         -DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
         -DINCLUDE_INSTALL_DIR:PATH="%_includedir" \
@@ -110,7 +110,7 @@ cf="%optflags -DVMIME_ALWAYS_GENERATE_7BIT_PARAMETER=1"
 	-DCMAKE_CXX_FLAGS:STRING=" " \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$cf" \
 	-DCMAKE_C_FLAGS:STRING=" "
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %install
 b="%buildroot"
@@ -121,21 +121,21 @@ cp -a doc/book/book.pdf "$b/%_docdir/%name/"
 %cmake_install
 find "$b" -type f -name "*.la" -delete
 mkdir -p "$b/%_datadir"
-mv "$b/%_prefix/cmake" "$b/%_datadir/"
+#mv "$b/%_prefix/cmake" "$b/%_datadir/"
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
 %license COPYING
-%_libdir/libvmime-kopano.so.3*
+%_libdir/libvmime-suse.so.4*
 
 %files devel
 %_includedir/vmime
 %_libdir/libvmime.so
-%_libdir/libvmime-kopano.so
+%_libdir/libvmime-suse.so
 %_libdir/pkgconfig/*.pc
-%_datadir/cmake/
+%_libdir/cmake/
 %if 0%{?with_pdf}
 %_docdir/%name
 %endif
