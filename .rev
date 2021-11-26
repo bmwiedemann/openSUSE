@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>902510</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9cdca70a84ed160ac5832396013ec615</srcmd5>
+    <version>20210605</version>
+    <time>1637970671</time>
+    <user>dimstar_suse</user>
+    <comment>- Add keyring</comment>
+    <requestid>933943</requestid>
+  </revision>
 </revisionlist>

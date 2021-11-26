@@ -25,7 +25,9 @@ License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libbde
 Source:         https://github.com/libyal/libbde/releases/download/%version/libbde-alpha-%version.tar.gz
-Source2:        BitLocker_Drive_Encryption_BDE_format.pdf
+Source2:        https://github.com/libyal/libbde/releases/download/%version/libbde-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source10:       BitLocker_Drive_Encryption_BDE_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -114,10 +116,10 @@ Python 3 bindings for libbde, which can access Bitlocker Drive Encrypted volumes
 
 %prep
 %autosetup -p1
-cp "%{SOURCE2}" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
