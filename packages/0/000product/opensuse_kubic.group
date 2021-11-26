@@ -150,7 +150,9 @@
 </group>
 <group name="opensuse_kubic.i586">
   <conditional name="only_i586"/>
-  <packagelist relationship="recommends"/>
+  <packagelist relationship="recommends">
+    <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+  </packagelist>
 </group>
 <group name="opensuse_kubic.x86_64">
   <conditional name="only_x86_64"/>
