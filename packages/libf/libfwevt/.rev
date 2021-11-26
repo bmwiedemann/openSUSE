@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>902514</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52b92cfdee63c4ae6a6948415bd81bc8</srcmd5>
+    <version>20211121</version>
+    <time>1637970676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20211121</comment>
+    <requestid>933960</requestid>
+  </revision>
 </revisionlist>

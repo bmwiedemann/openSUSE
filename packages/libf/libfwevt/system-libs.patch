@@ -9,10 +9,10 @@ them as system libs.
  configure.ac |    8 --------
  2 files changed, 24 deletions(-)
 
-Index: libfwevt/Makefile.am
+Index: libfwevt-20211121/Makefile.am
 ===================================================================
---- libfwevt.orig/Makefile.am
-+++ libfwevt/Makefile.am
+--- libfwevt-20211121.orig/Makefile.am
++++ libfwevt-20211121/Makefile.am
 @@ -3,14 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = \
  	include \
@@ -26,9 +26,9 @@ Index: libfwevt/Makefile.am
 -	libfguid \
 -	libfvalue \
  	libfwevt \
- 	po \
- 	manuals \
-@@ -61,14 +53,6 @@ lib: library
+ 	pyfwevt \
+ 	pyfwevt-python2 \
+@@ -70,14 +62,6 @@ lib: library
  
  library:
  	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
@@ -43,11 +43,11 @@ Index: libfwevt/Makefile.am
  	(cd $(srcdir)/libfwevt && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
  
-Index: libfwevt/configure.ac
+Index: libfwevt-20211121/configure.ac
 ===================================================================
---- libfwevt.orig/configure.ac
-+++ libfwevt/configure.ac
-@@ -120,14 +120,6 @@ dnl Generate Makefiles
+--- libfwevt-20211121.orig/configure.ac
++++ libfwevt-20211121/configure.ac
+@@ -136,14 +136,6 @@ dnl Generate Makefiles
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([include/Makefile])
  AC_CONFIG_FILES([common/Makefile])
@@ -60,5 +60,5 @@ Index: libfwevt/configure.ac
 -AC_CONFIG_FILES([libfguid/Makefile])
 -AC_CONFIG_FILES([libfvalue/Makefile])
  AC_CONFIG_FILES([libfwevt/Makefile])
- AC_CONFIG_FILES([po/Makefile.in])
- AC_CONFIG_FILES([po/Makevars])
+ AC_CONFIG_FILES([pyfwevt/Makefile])
+ AC_CONFIG_FILES([pyfwevt-python2/Makefile])
