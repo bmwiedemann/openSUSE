@@ -3437,4 +3437,21 @@
     none of the directories known to pkg-config exist, adapted from</comment>
     <requestid>931670</requestid>
   </revision>
+  <revision rev="201" vrev="5">
+    <srcmd5>23483e1eb6bd08f87667f36094c48cd2</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1637970625</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20211120
+  + add dim, ecma+strikeout to st-0.6 -TD
+  + deallocate the tparm cache when del_curterm is called for the last
+    allocated TERMINAL structure (report/testcase by Bram Moolenaar,
+    cf: 20200531).
+  + modify test-package to more closely conform to Debian multi-arch.
+  + if the --with-pkg-config-libdir option is not given, use
+    ${libdir}/pkgconfig as a default (prompted by discussion with Ross
+    Burton).
+- Correct offsets of patch ncurses-6.3.dif</comment>
+    <requestid>933003</requestid>
+  </revision>
 </revisionlist>

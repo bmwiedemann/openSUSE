@@ -18,7 +18,7 @@
  16 files changed, 190 insertions(+), 64 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2021-06-07 07:18:38.416598899 +0000
++++ aclocal.m4	2021-11-22 07:20:23.621974109 +0000
 @@ -658,7 +658,7 @@ AC_CHECK_SIZEOF(bool,,[
  AC_CACHE_CHECK(for type of bool, cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -28,7 +28,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5834,12 +5834,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5835,12 +5835,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -46,7 +46,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -5849,7 +5852,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5850,7 +5853,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -55,7 +55,7 @@
  CF_EOF
  fi
  
-@@ -5889,7 +5892,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5890,7 +5893,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -64,7 +64,7 @@
  CF_EOF
  fi
  
-@@ -5898,23 +5901,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5899,23 +5902,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -94,7 +94,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -5923,7 +5926,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5924,7 +5927,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -103,7 +103,7 @@
  							then
  								continue
  							fi
-@@ -5933,18 +5936,18 @@ CF_EOF
+@@ -5934,18 +5937,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -125,7 +125,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5964,9 +5967,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5965,9 +5968,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -138,7 +138,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -5986,6 +5989,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5987,6 +5990,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -147,8 +147,8 @@
  esac
  done
 --- configure
-+++ configure	2021-06-07 07:18:38.420598827 +0000
-@@ -5939,7 +5939,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2021-11-22 07:20:23.625974038 +0000
+@@ -5958,7 +5958,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -157,7 +157,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -7552,7 +7552,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -7571,7 +7571,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -166,7 +166,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -14832,12 +14832,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14851,12 +14851,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -184,7 +184,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14847,7 +14850,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14866,7 +14869,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -193,7 +193,7 @@
  CF_EOF
  fi
  
-@@ -14887,7 +14890,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14906,7 +14909,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -202,7 +202,7 @@
  CF_EOF
  fi
  
-@@ -14896,23 +14899,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14915,23 +14918,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -232,7 +232,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -14921,7 +14924,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14940,7 +14943,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -241,7 +241,7 @@
  							then
  								continue
  							fi
-@@ -14931,18 +14934,18 @@ CF_EOF
+@@ -14950,18 +14953,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -263,7 +263,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14962,9 +14965,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14981,9 +14984,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -276,7 +276,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -14984,6 +14987,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15003,6 +15006,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -285,7 +285,7 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2021-06-07 07:18:38.420598827 +0000
++++ include/curses.h.in	2021-11-22 07:20:23.625974038 +0000
 @@ -97,7 +97,7 @@
  
  #ifdef __cplusplus
@@ -306,7 +306,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2021-06-07 07:18:38.420598827 +0000
++++ include/termcap.h.in	2021-11-22 07:20:23.625974038 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -317,7 +317,7 @@
  
  #undef  NCURSES_OSPEED
 --- include/tic.h
-+++ include/tic.h	2021-06-07 07:18:38.420598827 +0000
++++ include/tic.h	2021-11-22 07:20:23.625974038 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
   */
  
@@ -334,7 +334,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2021-06-07 07:18:38.420598827 +0000
++++ man/man_db.renames	2021-11-22 07:20:23.625974038 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -352,7 +352,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2021-06-07 07:18:38.420598827 +0000
++++ man/ncurses.3x	2021-11-22 07:20:23.625974038 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
@@ -365,7 +365,7 @@
  called \fIwindows\fR, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2021-06-07 07:18:38.420598827 +0000
++++ misc/gen-pkgconfig.in	2021-11-22 07:20:23.625974038 +0000
 @@ -92,6 +92,9 @@ do
  	-specs*) # ignore linker specs-files which were used to build library
  		continue
@@ -406,7 +406,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2021-06-07 07:18:38.424598755 +0000
++++ misc/terminfo.src	2021-11-22 07:20:23.629973966 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -655,7 +655,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2021-06-07 07:18:38.424598755 +0000
++++ ncurses/Makefile.in	2021-11-22 07:20:23.629973966 +0000
 @@ -242,7 +242,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -666,7 +666,7 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2021-06-07 07:18:38.424598755 +0000
++++ ncurses/run_cmd.sh	2021-11-22 07:20:23.629973966 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -680,7 +680,7 @@
 +
 +exec /bin/sh -e ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2021-06-07 07:18:38.424598755 +0000
++++ ncurses/tinfo/MKfallback.sh	2021-11-22 07:20:23.629973966 +0000
 @@ -66,14 +66,22 @@ if test $# != 0 ; then
  	TERMINFO=`pwd`/$tmp_info
  	export TERMINFO
@@ -724,7 +724,7 @@
  	done
  
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2021-06-07 07:18:38.424598755 +0000
++++ ncurses/tinfo/lib_setup.c	2021-11-22 07:20:23.629973966 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
@@ -736,7 +736,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- progs/Makefile.in
-+++ progs/Makefile.in	2021-06-07 07:18:38.424598755 +0000
++++ progs/Makefile.in	2021-11-22 07:20:23.629973966 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
@@ -756,7 +756,7 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2021-06-07 07:18:38.424598755 +0000
++++ test/test.priv.h	2021-11-22 07:20:23.629973966 +0000
 @@ -1037,12 +1037,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
@@ -773,7 +773,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- test/tracemunch
-+++ test/tracemunch	2021-06-07 07:18:38.428598683 +0000
++++ test/tracemunch	2021-11-22 07:20:23.629973966 +0000
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env perl
 +#!/usr/bin/perl

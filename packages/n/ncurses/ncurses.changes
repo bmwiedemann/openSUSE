@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 22 07:19:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20211120
+  + add dim, ecma+strikeout to st-0.6 -TD
+  + deallocate the tparm cache when del_curterm is called for the last
+    allocated TERMINAL structure (report/testcase by Bram Moolenaar,
+    cf: 20200531).
+  + modify test-package to more closely conform to Debian multi-arch.
+  + if the --with-pkg-config-libdir option is not given, use
+    ${libdir}/pkgconfig as a default (prompted by discussion with Ross
+    Burton).
+- Correct offsets of patch ncurses-6.3.dif
+
+-------------------------------------------------------------------
 Tue Nov 16 08:48:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20211115
