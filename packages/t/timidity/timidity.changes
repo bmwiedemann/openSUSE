@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 25 07:30:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * timidity.service
+
+-------------------------------------------------------------------
 Mon Aug  9 13:42:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix install conflict between timidity and filesystem (boo#1189226)
