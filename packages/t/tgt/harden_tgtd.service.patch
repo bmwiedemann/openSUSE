@@ -1,0 +1,20 @@
+Index: tgt-1.0.74/scripts/tgtd.service
+===================================================================
+--- tgt-1.0.74.orig/scripts/tgtd.service
++++ tgt-1.0.74/scripts/tgtd.service
+@@ -9,6 +9,15 @@ After=network.target
+ ConditionPathExists=/etc/tgt/targets.conf
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelLogs=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ Environment=TGTD_CONFIG=/etc/tgt/targets.conf
+ 

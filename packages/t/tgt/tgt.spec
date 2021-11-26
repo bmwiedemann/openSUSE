@@ -35,6 +35,7 @@ Patch1:         %{name}-fix-build
 Patch2:         setup-tgt-conf-d.patch
 Patch3:         %{name}-include-sys-macros-for-major.patch
 Patch4:         %{name}-Fix-gcc7-string-truncation-warnings.patch
+Patch5:	harden_tgtd.service.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libaio-devel
 BuildRequires:  libxslt
@@ -59,6 +60,7 @@ user-space daemon and tools (i.e. they completely runs in user space).
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 %ifarch ppc ppc64 ppc64le
