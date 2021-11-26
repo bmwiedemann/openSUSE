@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.3
+Version:        5.9.4
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -558,6 +558,7 @@ fi
 %endif
 %{_bindir}/pki
 %{_bindir}/pt-tls-client
+%{_bindir}/tpm_extendpcr
 %{_sbindir}/ipsec
 %{_sbindir}/swanctl
 %{_mandir}/man1/pki*.1*
