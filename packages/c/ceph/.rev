@@ -597,4 +597,12 @@
     <comment></comment>
     <requestid>929714</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a3079bdd010f697fd3224dbfe4f9f3d4</srcmd5>
+    <version>16.2.6.463+g22e7612f9ad</version>
+    <time>1637970629</time>
+    <user>dimstar_suse</user>
+    <comment>Restore missing bsc# and CVE citations (forwarded request 933267 from smithfarm)</comment>
+    <requestid>933268</requestid>
+  </revision>
 </revisionlist>

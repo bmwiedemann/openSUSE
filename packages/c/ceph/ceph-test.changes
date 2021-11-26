@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Nov 22 12:57:53 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.6-463-g22e7612f9ad:
+  + (bsc#1178073) mgr/dashboard: fix downstream NFS doc links
+
+-------------------------------------------------------------------
+Wed Nov 10 10:37:50 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Preservation of Bugzilla, Jira and CVE citations from earlier incarnations of
+  this changes file after double-checking that none of these fixes got lost in
+  the pacific rebase:
+  + bsc#1163764 (--container-init feature cherry-picked to octopus)
+  + bsc#1170200 (mgr/dashboard: Fix for CrushMap viewer items getting compressed vertically)
+  + bsc#1172926 (mgr/orchestrator: Sort 'ceph orch device ls' by host)
+  + bsc#1173079 (mgr/devicehealth: device_health_metrics pool gets created even without any OSDs in the cluster)
+  + bsc#1174466 (mon: have 'mon stat' output json as well)
+  + bsc#1174526 (mgr/dashboard: allow getting fresh inventory data from the orchestrator)
+  + bsc#1174529 (rpm: on SUSE, podman is required for cephadm to work)
+  + bsc#1174644 (cephadm: log to file)
+  + bsc#1175120 (downstream branding)
+  + bsc#1175161 (downstream branding)
+  + bsc#1175169 (downstream branding)
+  + bsc#1176390 (mgr/dashboard: enable different URL for users of browser to Grafana)
+  + bsc#1176451 (Drop patch "rpm: on SUSE, podman is required for cephadm to work")
+  + bsc#1176489 (mgr/cephadm: lock multithreaded access to OSDRemovalQueue)
+  + bsc#1176499 (mgr/cephadm: fix RemoveUtil.load_from_store())
+  + bsc#1176638 (ceph-volume: batch: call the right prepare method)
+  + bsc#1176679 (mgr/dashboard: enable different URL for users of browser to Grafana)
+  + bsc#1176828 (cephadm: command_unit: call systemctl with verbose=True)
+  + bsc#1177078 (mgr/dashboard: Fix bugs in a unit test and i18n translation)
+  + bsc#1177151 (python-common: do not skip unavailable devices)
+  + bsc#1177319 (--container-init feature cherry-picked to octopus)
+  + bsc#1177344 (mgr/dashboard: support Orchestrator and user-defined Ganesha cluster)
+  + bsc#1177360 (cephadm: silence "Failed to evict container" log msg)
+  + bsc#1177450 (ceph-volume: don't exit before empty report can be printed)
+  + bsc#1177643 (Revert "spec: Podman (temporarily) requires apparmor-abstractions on suse")
+  + bsc#1177676 (cephadm: allow uid/gid == 0 in copy_tree, copy_files, move_files)
+  + bsc#1177843 (CVE-2020-25660)
+  + bsc#1177857 (mgr/cephadm: upgrade: fail gracefully, if daemon redeploy fails)
+  + bsc#1177933 (cephadm: configure journald as the logdriver)
+  + bsc#1178531 (cephadm: set default container_image to registry.suse.com/ses/7/ceph/ceph)
+  + bsc#1178837 (rgw: cls/user: set from_index for reset stats calls)
+  + bsc#1178860 (mgr/dashboard: Disable TLS 1.0 and 1.1)
+  + bsc#1178905 (CVE-2020-25678)
+  + bsc#1178932 (cephadm: reference the last local image by digest)
+  + bsc#1179016 (rpm: require smartmontools on SUSE)
+  + bsc#1179452 (mgr/insights: Test environment requires 'six')
+  + bsc#1179526 (rgw: during GC defer, prevent new GC enqueue)
+  + bsc#1179569 (cephadm: reference the last local image by digest)
+  + bsc#1179802 (CVE-2020-27781)
+  + bsc#1179997 (CVE-2020-27839)
+  + bsc#1180107 (ceph-volume: pass --filter-for-batch from drive-group subcommand)
+  + bsc#1180155 (CVE-2020-27781)
+  + bsc#1181291 (mgr/cephadm: alias rgw-nfs -> nfs)
+  + bsc#1182766 (cephadm: fix 'inspect' and 'pull')
+  + bsc#1183074 (CVE-2021-20288)
+  + bsc#1183561 (mgr/cephadm: on ssh connection error, advice chmod 0600)
+  + bsc#1183899 (bluestore: fix huge reads/writes at BlueFS)
+  + bsc#1184231 (cephadm: Allow to use paths in all <_devices> drivegroup sections)
+  + bsc#1184517 (cls/rgw: look for plane entries in non-ascii plain namespace too)
+  + bsc#1185246 (rgw: check object locks in multi-object delete)
+  + bsc#1185619 (CVE-2021-3524)
+  + bsc#1185619 (CVE-2021-3524)
+  + bsc#1186020 (CVE-2021-3531)
+  + bsc#1186021 (CVE-2021-3509)
+  + bsc#1186348 (mgr/zabbix: adapt zabbix_sender default path)
+  + bsc#1188979 ("mgr/cephadm: pass --container-init to "cephadm deploy" if specified" and "Revert "cephadm: default container_init to False")
+  + bsc#1189173 (downstream branding)
+  + jsc#SES-1071 (ceph-volume: major batch refactor - upstream PR#34740)
+  + jsc#SES-185 (SES support with cache software)
+  + jsc#SES-704 (mgr/snap_schedule)
+
+-------------------------------------------------------------------
 Fri Nov  5 16:39:28 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.6-462-g5fefbbf8888:
