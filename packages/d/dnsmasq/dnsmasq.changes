@@ -22,7 +22,7 @@ Thu Sep 23 08:48:12 UTC 2021 - Reinhard Max <max@suse.com>
   * bsc#1076958: CVE-2017-15107, dnsmasq-CVE-2017-15107.patch 
   * bsc#1180914: Open inotify socket only when used.
   * removed dnsmasq-dnspooq.patch
-- bsc#1173646: Set --local-service by default.
+- bsc#1173646, CVE-2020-14312: Set --local-service by default.
 
 -------------------------------------------------------------------
 Fri Sep 17 11:10:17 UTC 2021 - Reinhard Max <max@suse.com>

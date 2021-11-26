@@ -825,4 +825,12 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
 - Use systemd-sysusers from 15.3 onwards</comment>
     <requestid>932271</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>810b540ccb96782a1fab190c1f364503</srcmd5>
+    <version>2.86</version>
+    <time>1637970656</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933804</requestid>
+  </revision>
 </revisionlist>
