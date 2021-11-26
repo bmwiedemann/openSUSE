@@ -32,10 +32,13 @@ URL:            http://www.lirc.org/
 Source0:        https://downloads.sourceforge.net/project/lirc/LIRC/%{version}/lirc-%{version}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         reproducible.patch
-Patch1:	harden_irexec.service.patch
-Patch2:	harden_lircd-uinput.service.patch
-Patch3:	harden_lircd.service.patch
-Patch4:	harden_lircmd.service.patch
+Patch1:         harden_irexec.service.patch
+Patch2:         harden_lircd-uinput.service.patch
+Patch3:         harden_lircd.service.patch
+Patch4:         harden_lircmd.service.patch
+# PATCH-FIX-UPSTREAM pyyaml-60-compatibility.patch sht#lirc#365 mcepl@suse.com
+# Makes the package compatible with PyYAML 6.0+
+Patch5:         pyyaml-60-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
@@ -195,15 +198,11 @@ Requires:       xorg-x11-fonts-core
 Some seldom used X11-based tools for debugging lirc configurations.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # Don't provide or require anything from _docdir, per policy.
 %global __provides_exclude_from ^%{_docdir}/.*$
 %global __requires_exclude_from ^%{_docdir}/.*$
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 sed -i -e 's|/usr/local/etc/|%{_sysconfdir}/|' contrib/irman2lirc
 sed -i -e 's/#effective-user/effective-user /' lirc_options.conf
