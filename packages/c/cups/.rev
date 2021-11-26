@@ -1195,4 +1195,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Fixed &quot;ppdc: Unable to find include file ... Bad driver information file /usr/share/cups/drv/sample.drv&quot; (bsc#1186843) (forwarded request 898072 from jsmeix)</comment>
     <requestid>898073</requestid>
   </revision>
+  <revision rev="158" vrev="5">
+    <srcmd5>b22f316054d9ca9c71f6e799862995c4</srcmd5>
+    <version>2.3.3op2</version>
+    <time>1637970644</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933432</requestid>
+  </revision>
 </revisionlist>
