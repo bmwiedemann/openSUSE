@@ -25,6 +25,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcaes
 Source:         https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -68,7 +70,7 @@ AES encryption.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-python3
 %make_build
 
