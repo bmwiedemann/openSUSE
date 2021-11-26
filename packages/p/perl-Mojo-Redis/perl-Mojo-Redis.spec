@@ -18,7 +18,7 @@
 
 %define cpan_name Mojo-Redis
 Name:           perl-Mojo-Redis
-Version:        3.26
+Version:        3.27
 Release:        0
 Summary:        Redis driver based on Mojo::IOLoop
 License:        Artistic-2.0
@@ -42,9 +42,9 @@ integrate easily with the Mojolicious framework.
 It tries to mimic the same interface as Mojo::Pg, Mojo::mysql and
 Mojo::SQLite, but the methods for talking to the database vary.
 
-This module is in no way compatible with the 1.xx version of Mojo::Redis
+This module is in no way compatible with the 1.xx version of 'Mojo::Redis'
 and this version also tries to fix a lot of the confusing methods in
-Mojo::Redis2 related to pubsub.
+'Mojo::Redis2' related to pubsub.
 
 This module is currently EXPERIMENTAL, and bad design decisions will be
 fixed without warning. Please report at

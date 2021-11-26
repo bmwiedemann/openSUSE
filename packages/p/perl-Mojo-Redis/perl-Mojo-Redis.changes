@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 20 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.27
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.27 2021-11-20T10:51:49+0900
+   - Add experimental "subscribe" and "psubscribe" events to Mojo::Redis::PubSub
+   - Fix examples for set and expire #62
+   - Fix handling "psubscribe" response from Redis #63
+   - Fix sending database requests after connecting to sentinel server #64
+   - Fix only passing on (p)message messages to listen handlers #67
+   - Remove experimental write_q() method, and replaced it with write()
+   - Remove the ->multi_p(@promises) syntax #68 #70
+     Contributor: Jan "Yenya" Kasprzak
+
+-------------------------------------------------------------------
 Mon Mar  1 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.26
