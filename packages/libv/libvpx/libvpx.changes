@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:55:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Rename libvpx-configure-add-s390.patch to
+  libvpx-configure-add-arch.patch: add support for RISC-V
+
+-------------------------------------------------------------------
 Fri Oct  8 10:54:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 1.11.0:

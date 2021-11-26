@@ -26,7 +26,7 @@ Group:          Productivity/Multimedia/Other
 URL:            https://www.webmproject.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
-Patch2:         libvpx-configure-add-s390.patch
+Patch2:         libvpx-configure-add-arch.patch
 # Needed to be able to create pkgconfig() provides.
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
