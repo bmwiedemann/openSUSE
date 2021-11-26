@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Tue Oct 12 19:20:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.3.3:
+  * agent: Fix segv in GET_PASSPHRASE (regression)
+  * dirmngr: Fix Let's Encrypt certificate chain validation
+  * gpg: Change default and maximum AEAD chunk size to 4 MiB
+  * gpg: Print a warning when importing a bad cv25519 secret key
+  * gpg: Fix --list-packets for undecryptable AEAD packets
+  * gpg: Verify backsigs for v5 keys correctly
+  * keyboxd: Fix checksum computation for no UBID entry on disk
+  * keyboxd: Fix "invalid object" error with cv448 keys
+  * dirmngr: New option --ignore-cert
+  * agent: Fix calibrate_get_time use of clock_gettime
+  * Support a gpgconf.ctl file under Unix and use this for the
+    regression tests
+
+-------------------------------------------------------------------
+Wed Aug 25 10:01:38 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- GnuPG 2.3.2:
+  * gpg: Allow fingerprint based lookup with --locate-external-key.
+  * gpg: Allow decryption w/o public key but with correct card inserted.
+  * gpg: Auto import keys specified with --trusted-keys.
+  * gpg: Do not use import-clean for LDAP keyserver imports.
+  * gpg: Fix mailbox based search via AKL keyserver method.
+  * gpg: Fix memory corruption with --clearsign introduced with 2.3.1.
+  * gpg: Use a more descriptive prompt for symmetric decryption.
+  * gpg: Improve speed of secret key listing.
+  * gpg: Support keygrip search with traditional keyring.
+  * gpg: Let --fetch-key return an exit code on failure.
+  * gpg: Emit the NO_SECKEY status again for decryption.
+  * gpgsm: Support decryption of password based encryption (pwri).
+  * gpgsm: Support AES-GCM decryption.
+  * gpgsm: Let --dump-cert --show-cert also print an OpenPGP fingerprint.
+  * gpgsm: Fix finding of issuer in use-keyboxd mode.
+  * gpgsm: New option --ldapserver as an alias for --keyserver.
+  * agent: Use SHA-256 for SSH fingerprint by default.
+  * agent: Fix calling handle_pincache_put.
+  * agent: Fix importing protected secret key.
+  * agent: Fix a regression in agent_get_shadow_info_type.
+  * agent: Add translatable text for Caps Lock hint.
+  * agent: New option --pinentry-formatted-passphrase.
+  * agent: Add checkpin inquiry for pinentry.
+  * agent: New option --check-sym-passphrase-pattern.
+  * agent: Use the sysconfdir for a pattern file.
+  * agent: Make QT_QPA_PLATFORMTHEME=qt5ct work for the pinentry.
+  * dirmngr: LDAP search by a mailbox now ignores revoked keys.
+  * dirmngr: For KS_SEARCH return the fingerprint also with LDAP.
+  * dirmngr: Allow for non-URL specified ldap keyservers.
+  * dirmngr: New option --ldapserver.
+  * dirmngr: Fix regression in KS_GET for mail address pattern.
+  * card: New option --shadow for the list command.
+  * tests: Make sure the built keyboxd is used.
+  * scd: Fix computing shared secrets for 512 bit curves.
+  * scd: Fix unblock PIN by a Reset Code with KDF.
+  * scd: Fix PC/SC removed card problem.
+  * scd: Recover the partial match for PORTSTR for PC/SC.
+  * scd: Make sure to release the PC/SC context.
+  * scd: Fix zero-byte handling in ECC.
+  * scd: Fix serial number detection for Yubikey 5.
+  * scd: Add basic support for AET JCOP cards.
+  * scd: Detect external interference when --pcsc-shared is in use.
+  * scd: Fix access to the list of cards.
+  * gpgconf: Do not list a disabled tpm2d.
+  * gpgconf: Make runtime changes with different homedir work.
+  * keyboxd: Fix searching for exact mail adddress.
+  * keyboxd: Fix searching with multiple patterns.
+  * tools: Extend gpg-check-pattern.
+  * wkd: Fix client issue with leading or trailing spaces in user-ids.
+  * Pass XDG_SESSION_TYPE and QT_QPA_PLATFORM envvars to Pinentry.
+  * Change the default keyserver to keyserver.ubuntu.com. This is a
+    temporary change due to the shutdown of the SKS keyserver pools.
+
+-------------------------------------------------------------------
+Fri Jun 11 12:19:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- GnuPG 2.3.1:
+  * The new configuration file common.conf is now used to enable
+    the use of the key database daemon with "use-keyboxd". Using
+    this option in gpg.conf and gpgsm.conf is supported for a
+    transitional period. See doc/example/common.conf for more.
+  * gpg: Force version 5 key creation for ed448 and cv448 algorithms.
+  * gpg: By default do not use the self-sigs-only option when
+    importing from an LDAP keyserver.
+  * gpg: Lookup a missing public key of the active card via LDAP.
+  * gpgsm: New command --show-certs.
+  * scd: Fix CCID driver for SCM SPR332/SPR532.
+  * scd: Further improvements for PKCS#15 cards.
+  * New configure option --with-tss to allow the selection of the
+    TSS library.
+- Rebase patches:
+  * gnupg-add_legacy_FIPS_mode_option.patch
+  * gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
+  * gnupg-dont-fail-with-seahorse-agent.patch
+  * gnupg-set_umask_before_open_outfile.patch
+
+-------------------------------------------------------------------
+Fri Jun 11 12:15:37 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GnuPG 2.3.0:
+  * A new experimental key database daemon is provided.  To enable
+    it put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
+    in a SQLite database and make key lookup much faster.
+  * New tool gpg-card as a flexible frontend for all types of
+    supported smartcards.
+  * New option --chuid for gpg, gpgsm, gpgconf, gpg-card, and
+    gpg-connect-agent.
+  * The gpg-wks-client tool is now installed under bin; a wrapper for
+    its old location at libexec is also installed.
+  * tpm2d: New daemon to physically bind keys to the local machine.
+  * gpg: Switch to ed25519/cv25519 as default public key algorithms.
+  * gpg: Verification results now depend on the --sender option and
+    the signer's UID subpacket.
+  * gpg: Do not use any 64-bit block size cipher algorithm for
+    encryption.  Use AES as last resort cipher preference instead of
+    3DES.  This can be reverted using --allow-old-cipher-algos.
+  * gpg: Support AEAD encryption mode using OCB or EAX.
+  * gpg: Support v5 keys and signatures.
+  * gpg: Support curve X448 (ed448, cv448).
+  * gpg: Allow use of group names in key listings.
+  * gpg: New option --full-timestrings to print date and time.
+  * gpg: New option --force-sign-key.
+  * gpg: New option --no-auto-trust-new-key.
+  * gpg: The legacy key discovery method PKA is no longer supported.
+    The command --print-pka-records and the PKA related import and
+    export options have been removed.
+  * gpg: Support export of Ed448 Secure Shell keys.
+  * gpgsm: Add basic ECC support.
+  * gpgsm: Support creation of EdDSA certificates.  [#4888]
+  * agent: Allow the use of "Label:" in a key file to customize the
+    pinentry prompt.
+  * agent: Support ssh-agent extensions for environment variables.
+    With a patched version of OpenSSH this avoids the need for the
+    "updatestartuptty" kludge.
+  * scd: Improve support for multiple card readers and tokens.
+  * scd: Support PIV cards.
+  * scd: Support for Rohde&Schwarz Cybersecurity cards.
+  * scd: Support Telesec Signature Cards v2.0
+  * scd: Support multiple application on certain smartcard.
+  * scd: New option --application-priority.
+  * scd: New option --pcsc-shared; see man page for important notes.
+  * dirmngr: Support a gpgNtds parameter in LDAP keyserver URLs.
+  * The symcryptrun tool, a wrapper for the now obsolete external
+    Chiasmus tool, has been removed.
+  * Full Unicode support for the command line.
+- dropped legacy commands: gpg-zip
+
+-------------------------------------------------------------------
 Wed Apr  7 20:56:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Remove the "files-are-digests" option from the openSUSE package.
