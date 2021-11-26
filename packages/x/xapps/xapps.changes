@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 22 16:54:03 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.2.5.
+  * xapp-favorites: Fix introspection notation for _get_favorites().
+  * Fix a couple of build warnings.
+- Updates for version 2.2.4.
+  * meson gir: Export 'xapp' as a package
+  * xapp-gtk3-module.c: Apply window icon override to all windows
+    for an app.
+
+-------------------------------------------------------------------
 Wed Jul 28 10:42:51 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.2.3.
