@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:34:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.2.1
+  * Fix error when deleting CallTipWidget.
+  * Another fix for the 'Erase in Line' ANSI code.
+- Enable libalternatives as with the rest of the jupyter commands
+
+-------------------------------------------------------------------
 Sun Nov 14 14:14:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.2.0

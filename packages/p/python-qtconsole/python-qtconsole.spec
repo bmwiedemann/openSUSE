@@ -16,10 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -46,8 +52,13 @@ Requires:       python-jupyter-core
 Requires:       python-traitlets
 # QtPy does note require or depend on one of the frameworks itself
 Requires:       (python-qt5 or python-pyside2)
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+%endif
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
 BuildArch:      noarch
@@ -121,6 +132,9 @@ export QT_QPA_PLATFORM="offscreen"
 # test skips: https://github.com/jupyter/qtconsole/issues/443
 # now with test_input too. But does not seem to happen on the build server, only locally.
 %pytest -ra -k "not (test_00 and (test_scroll or test_debug or test_input))"
+
+%pre
+%python_libalternatives_reset_alternative jupyter-qtconsole
 
 %post
 %python_install_alternative jupyter-qtconsole

@@ -167,4 +167,15 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Fix ANSI code for erase line. (forwarded request 931396 from bnavigator)</comment>
     <requestid>931397</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1f701e14ff7f724f05ad01cde46318b3</srcmd5>
+    <version>5.2.1</version>
+    <time>1637970707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.1
+  * Fix error when deleting CallTipWidget.
+  * Another fix for the 'Erase in Line' ANSI code.
+- Enable libalternatives as with the rest of the jupyter commands</comment>
+    <requestid>934144</requestid>
+  </revision>
 </revisionlist>
