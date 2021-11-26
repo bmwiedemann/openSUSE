@@ -1,5 +1,0 @@
-<package name="python-PrettyTable" project="openSUSE:Factory">
-  <title></title>
-  <description>PrettyTable is a simple Python library designed to make it quick and easy to represent tabular data in visually appealing ASCII tables. It was inspired by the ASCII tables used in the PostgreSQL shell psql. PrettyTable allows for selection of which columns are to be printed, independent alignment of columns (left or right justified or centred) and printing of &quot;sub-tables&quot; by specifying a row range.</description>
-  <devel project="devel:languages:python" package="python-PrettyTable"/>
-</package>
