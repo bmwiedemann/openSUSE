@@ -334,4 +334,13 @@
     <comment></comment>
     <requestid>932786</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ad8947e93b017eb028fd4afa3e3a5d79</srcmd5>
+    <version>3.3.6</version>
+    <time>1637970656</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.6:
+  * Fix a dependency issue</comment>
+    <requestid>933589</requestid>
+  </revision>
 </revisionlist>

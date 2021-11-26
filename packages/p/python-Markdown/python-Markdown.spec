@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Markdown
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -29,12 +29,12 @@ URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-metadata >= 4.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
+Requires:       python-importlib-metadata >= 4.4
 Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
