@@ -25,7 +25,9 @@ License:        GFDL-1.3-only AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libevtx
 Source:         https://github.com/libyal/libevtx/releases/download/%version/libevtx-alpha-%version.tar.gz
-Source2:        Windows_XML_Event_Log_EVTX.pdf
+Source2:        https://github.com/libyal/libevtx/releases/download/%version/libevtx-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source10:       Windows_XML_Event_Log_EVTX.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -97,10 +99,10 @@ Python bindings for libevtx, which can read Windows XML Event files.
 
 %prep
 %autosetup -p1
-cp "%SOURCE2" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
