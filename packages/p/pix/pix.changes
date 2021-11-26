@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:19:59 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.8.0.
+  * Add support for dark mode
+  * l10n: Update POT
+  * Extensions: Remove obsolete link
+  * Dark mode: Disable option in Xfce
+  * Fix crash with "Enhance Focus" (#136)
+  * Fix crash with Darktable jpg (#141)
+
+-------------------------------------------------------------------
 Fri Jul  9 19:25:44 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.6.5.
