@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 23 15:22:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_ssdpd.service.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 11:06:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Package systemd service file

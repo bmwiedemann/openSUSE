@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/troglobit/ssdp-responder
 #Git-Clone:     https://github.com/troglobit/ssdp-responder.git
 Source:         https://github.com/troglobit/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:	harden_ssdpd.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %{?systemd_requires}
@@ -40,6 +41,7 @@ announced.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fiv
