@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>931161</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>34f6a94bdd5c276225d0c8da2b64b98e</srcmd5>
+    <version>1.41.0</version>
+    <time>1637970687</time>
+    <user>dimstar_suse</user>
+    <comment>- Detect SLE15 SP4 build environment</comment>
+    <requestid>933993</requestid>
+  </revision>
 </revisionlist>
