@@ -1,7 +1,7 @@
 #
 # spec file for package numatop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 
 
 Name:           numatop
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        A top-like tool for runtime memory locality monitoring on NUMA systems
 License:        BSD-3-Clause
 Group:          System/Monitoring
-Url:            https://01.org/numatop
-Source0:        https://github.com/intel/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.xz
+URL:            https://01.org/numatop
+Source0:        https://github.com/intel/%{name}/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  check-devel
 BuildRequires:  libnuma-devel
+BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64 ppc64le
@@ -41,9 +44,10 @@ E5-16xx/24xx/26xx/46xx-series should be updated to latest CPU microcode
 (microcode must be 0x618+ or 0x70c+). Kernel 3.9 or higher is required.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q -n %{name}-%{version}
 
 %build
+autoreconf -i
 %configure
 # there seems to be wrong order of libnumatop.la and $(NCURSES_LIBS) in Makefile.am
 make %{?_smp_mflags} LDFLAGS="-lncursesw -lncurses"

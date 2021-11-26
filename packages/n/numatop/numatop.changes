@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 11:30:17 UTC 2021 - Vlastimil Babka <vbabka@suse.com>
+
+- update to version 2.2
+  * Sources downloaded from git tag, no proper upstream release.
+  * Needs autoreconf.
+
+-------------------------------------------------------------------
 Mon Dec  3 11:35:49 UTC 2018 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.1
