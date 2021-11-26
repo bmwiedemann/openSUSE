@@ -47,7 +47,7 @@ Provides:       pattern-visible()
 Requires:       pattern() = x11
 Requires:       pattern() = x11_yast
 Requires:       budgie-desktop
-Recommends:     gdm
+Requires:       lightdm
 Recommends:     gnome-terminal
 Recommends:     gnome-backgrounds
 Recommends:     gnome-software

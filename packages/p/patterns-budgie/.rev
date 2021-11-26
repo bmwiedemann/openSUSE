@@ -34,4 +34,13 @@
 </comment>
     <requestid>931254</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>890f53f79cb526a70cddfbe731b5e9a4</srcmd5>
+    <version>20200903</version>
+    <time>1637970696</time>
+    <user>dimstar_suse</user>
+    <comment>- Lightdm not GDM it breaks locking
+</comment>
+    <requestid>934022</requestid>
+  </revision>
 </revisionlist>
