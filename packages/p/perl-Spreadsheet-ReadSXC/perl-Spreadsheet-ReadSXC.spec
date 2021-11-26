@@ -18,7 +18,7 @@
 
 %define cpan_name Spreadsheet-ReadSXC
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.35
+Version:        0.37
 Release:        0
 Summary:        Extract OpenOffice 1.x spreadsheet data
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  perl(Archive::Zip) >= 1.34
 BuildRequires:  perl(Moo) >= 2
 BuildRequires:  perl(PerlIO::gzip)
 BuildRequires:  perl(PerlX::Maybe)
-BuildRequires:  perl(XML::Twig)
+BuildRequires:  perl(XML::Twig) >= 3.50
 BuildRequires:  perl(XML::Twig::XPath)
 BuildRequires:  perl(XML::XPath)
 BuildRequires:  perl(XML::XPathEngine)
@@ -44,7 +44,7 @@ Requires:       perl(Archive::Zip) >= 1.34
 Requires:       perl(Moo) >= 2
 Requires:       perl(PerlIO::gzip)
 Requires:       perl(PerlX::Maybe)
-Requires:       perl(XML::Twig)
+Requires:       perl(XML::Twig) >= 3.50
 Requires:       perl(XML::Twig::XPath)
 Requires:       perl(XML::XPath)
 Requires:       perl(XML::XPathEngine)

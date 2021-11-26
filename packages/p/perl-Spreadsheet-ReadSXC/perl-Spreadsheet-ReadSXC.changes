@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 22 18:02:43 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Update patch remove_filter_signatures.diff
+
+-------------------------------------------------------------------
+Mon Nov 22 03:06:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.37  2021-11-21
+      * Really require XML::Twig 3.50, since that adds the no_xxe option
+
+  0.36  2021-11-21
+      * Require XML::Twig 3.50, since that adds the no_xxe option
+
+-------------------------------------------------------------------
 Wed Oct 20 15:55:40 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Update remove_filter_signatures.diff
