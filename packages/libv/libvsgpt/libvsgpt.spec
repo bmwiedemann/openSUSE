@@ -18,13 +18,15 @@
 
 Name:           libvsgpt
 %define lname	libvsgpt1
-Version:        20210508
+Version:        20211115
 Release:        0
 Summary:        Library and tools to access the GUID Partition Table (GPT) volume system format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libvsgpt
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libvsgpt/releases/download/%version/libvsgpt-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libvsgpt/releases/download/%version/libvsgpt-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -38,11 +40,11 @@ BuildRequires:  pkgconfig(libclocale) >= 20200913
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 BuildRequires:  pkgconfig(libcpath) >= 20200913
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
+BuildRequires:  pkgconfig(libcthreads) >= 20211115
 BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -92,7 +94,7 @@ Python 3 bindings for libvsgpt.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
