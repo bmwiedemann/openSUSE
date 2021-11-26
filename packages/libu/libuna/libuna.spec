@@ -25,13 +25,15 @@
 %define lname libuna1
 
 Name:           libuna%psuffix
-Version:        20210418
+Version:        20210801
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libuna/
-Source:         libuna-%version.tar.xz
+Source:         https://github.com/libyal/libuna/releases/download/%version/libuna-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libuna/releases/download/%version/libuna-alpha-%version.tar.gz.asc
+Source3:        libuna.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -88,7 +90,7 @@ applications that want to make use of libuna.
 %autosetup -p1 -n libuna-%version
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure \
 %if "@BUILD_FLAVOR@" == "mini"
 	--disable-tools \

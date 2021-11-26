@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 25 19:17:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Unconditionally run autoreconf because of patches
+
+-------------------------------------------------------------------
+Sun Nov 14 13:05:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210801
+  * No changelog was provided
+
+-------------------------------------------------------------------
 Wed May 12 17:47:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210418 (2939fe8f)

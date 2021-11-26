@@ -104,4 +104,13 @@ Summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184991 from greg
 - Update to snapshot 20210418 (2939fe8f)</comment>
     <requestid>898008</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a6f742735cbacc49a28f2bff47da517c</srcmd5>
+    <version>20210801</version>
+    <time>1637970680</time>
+    <user>dimstar_suse</user>
+    <comment>- Unconditionally run autoreconf because of patches
+- Update to release 20210801</comment>
+    <requestid>933970</requestid>
+  </revision>
 </revisionlist>
