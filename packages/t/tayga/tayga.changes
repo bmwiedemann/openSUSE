@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 14:02:56 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * tayga.service
+
+-------------------------------------------------------------------
 Sat Sep 24 11:30:54 UTC 2016 - mardnh@gmx.de
 
 - specfile cleanup
