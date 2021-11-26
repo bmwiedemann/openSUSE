@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 23 10:10:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop no longer needed rpmlintrc.
+- Also add a protobuf-c =< version Obsoletes to devel sub-package.
+
+-------------------------------------------------------------------
+Fri Nov 19 17:38:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fold main package into devel package, as it needed its own
+  devel-package, add a protobuf-c = version Provides to devel
+  sub-package.
+
+-------------------------------------------------------------------
 Wed May 19 07:24:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0

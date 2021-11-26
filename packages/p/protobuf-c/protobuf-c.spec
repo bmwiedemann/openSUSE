@@ -26,7 +26,6 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/protobuf-c/protobuf-c
 Source:         https://github.com/protobuf-c/protobuf-c/releases/download/v%version/%name-%version.tar.gz
-Source99:       protobuf-c-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -35,7 +34,6 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel >= 2.6.0
-Requires:       libprotobuf-c-devel = %version
 
 %description
 This package provides a code generator and runtime libraries to use Protocol
@@ -55,6 +53,8 @@ Buffers from pure C (not C++).
 Summary:        C bindings for Google's Protocol Buffers
 Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-c%sover = %version
+Provides:       %name = %version
+Obsoletes:      %name <= %version
 
 %description -n libprotobuf-c-devel
 This package provides a code generator and runtime libraries to use Protocol
@@ -76,17 +76,15 @@ rm "%buildroot/%_libdir"/*.a "%buildroot/%_libdir"/*.la
 %post   -n libprotobuf-c%sover -p /sbin/ldconfig
 %postun -n libprotobuf-c%sover -p /sbin/ldconfig
 
-%files
-%doc ChangeLog TODO
-%_bindir/protoc-c
-%_bindir/protoc-gen-c
-
 %files -n libprotobuf-c%sover
 %license LICENSE
 %_libdir/libprotobuf-c.so.%sover
 %_libdir/libprotobuf-c.so.%sover.*
 
 %files -n libprotobuf-c-devel
+%doc ChangeLog TODO
+%_bindir/protoc-c
+%_bindir/protoc-gen-c
 %_includedir/*/
 %_libdir/libprotobuf-c.so
 %_libdir/pkgconfig/libprotobuf-c.pc
