@@ -172,4 +172,13 @@
     <comment></comment>
     <requestid>931744</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d9aaccb357505da4674f07f40e268bd8</srcmd5>
+    <version>2.2+git20211124.09791b1</version>
+    <time>1637970649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git20211124.09791b1:
+  * Introduce -n/--nostop switch so mutiple sessions can be run inside an existing toolbox</comment>
+    <requestid>933488</requestid>
+  </revision>
 </revisionlist>

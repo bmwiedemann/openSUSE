@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 14:43:54 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.2+git20211124.09791b1:
+  * Introduce -n/--nostop switch so mutiple sessions can be run inside an existing toolbox
+
+-------------------------------------------------------------------
 Mon Nov  8 15:46:47 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Don't install config file in /etc in favor of a built-in default. Avoids
