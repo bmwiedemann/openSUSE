@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 26 09:58:16 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.4.0+git.20211126.bd7809f:
+  * Disable maybe-uninitialized from Werror.
+  * Fix workflow.
+  * Use extra-flags.
+  * Remove definition of PACKAGE macro (#68).
+  * Discourage -Werror in README.md
+
+-------------------------------------------------------------------
 Fri Nov 19 12:35:00 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.4.0+git.20211119.7ad9ac5:

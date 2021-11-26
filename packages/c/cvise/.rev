@@ -660,4 +660,17 @@
   * Fix resource leaks in tests.</comment>
     <requestid>932531</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e050b2744c9221f4c2cbe3634a0a7049</srcmd5>
+    <version>2.4.0+git.20211126.bd7809f</version>
+    <time>1637970694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git.20211126.bd7809f:
+  * Disable maybe-uninitialized from Werror.
+  * Fix workflow.
+  * Use extra-flags.
+  * Remove definition of PACKAGE macro (#68).
+  * Discourage -Werror in README.md</comment>
+    <requestid>934014</requestid>
+  </revision>
 </revisionlist>
