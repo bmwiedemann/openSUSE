@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 25 14:41:32 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1637851285.25850081:
+  * Fix collecting coverage when invoking `run_all` in `t/08-autotest.t`
+  * Avoid redundant code in `t/08-autotest.t`
+  * Add test for early stop due to `TESTDEBUG`
+  * Improve coding style and simplify `t/08-autotest.t`
+  * Log reason for stopping the test execution early
+  * Avoid running into TBB's soft limit for the max. number of threads
+  * docs: Clearly mention devel:openQA in README
+  * Fix working directory for generating HTML coverage report
+  * Add unit test for basetest::get_new_serial_output
+  * osutils: Do not hide errors of exec call in run() and run_diag()
+  * qemu: Don't call chattr with timeout and remove -f arg
+  * baseclass: Fix errors in some tests by increasing _CHKSEL_RATE_HITS
+  * testapi: Add die_on_timeout option to testapi::script::run()
+  * ipmi: Make persistent SOL console enabled by default
+  * Ignore the previous tests fail hook output in the search for issues
+
+-------------------------------------------------------------------
 Mon Nov 15 10:31:56 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1636972309.195774f7:
