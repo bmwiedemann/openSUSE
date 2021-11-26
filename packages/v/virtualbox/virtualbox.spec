@@ -63,7 +63,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.28
+Version:        6.1.30
 Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
@@ -174,10 +174,6 @@ Patch135:       fix-missing-includes-with-qt-5.15.patch
 Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
-# Fixes for kernel 5.14
-Patch138:       fixes_for_5.14.patch
-Patch139:       fixes-for-5.15.patch
-Patch140:       fixes-for-5.16.patch
 # Fix for struct file_operations backport in 15.3
 Patch142:       fixes_for_leap15.3.patch
 Patch143:       vb-6.1.16-modal-dialog-parent.patch
@@ -320,8 +316,11 @@ the terms of the GNU Public License (GPL).
 
 
 
-##########################################
 
+
+
+
+##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -354,8 +353,11 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-#########################################
 
+
+
+
+#########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -382,8 +384,11 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 
-#########################################
 
+
+
+
+#########################################
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
 Group:          System/X11/Servers/XF86_4
@@ -412,8 +417,11 @@ This package contains X11 guest utilities and X11 guest mouse and video drivers
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -447,8 +455,11 @@ VirtualBox guest addition tools.
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -482,8 +493,11 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -512,8 +526,11 @@ Development file for %{name}
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -560,8 +577,11 @@ sudo /usr/sbin/vboxguestconfig
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
 Group:          System/Emulators/PC
@@ -589,8 +609,11 @@ This package contains icons for guest desktop files that were created on the des
 
 
 
-###########################################
 
+
+
+
+###########################################
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -657,9 +680,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch135 -p1
 %patch136 -p1
 %patch137 -p1
-%patch138 -p1
-%patch139 -p1
-%patch140 -p1
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
 # Patch for Leap 15.3
 %patch142 -p1

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 22 20:13:41 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.30 (released November 22 2021 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fixed 6.1.28 regression preventing VMs starting when using Hyper-V mode on Windows 10
+  GUI: Fixed inability to complete First Run wizard after browsing for an external image
+  GUI: Fixed crash on macOS Big Sur while browsing for an external image from First Run wizard
+  GUI: Fixed bug on Windows with inability to save taken screenshot under a folder with native name (bug #15561)
+  GUI: Fixed bug on X11 with drag and drop initiated on single mouse click in VM storage settings
+  GUI: Fixed settings check on machines not supporting hardware virtualization
+  GUI: Non critical media related errors should not cause modal pop-up error messages
+  Host-only networking: Fixed crash parsing /etc/vbox/networks.conf
+  DVD: Fixed drive lock handling across VM reset
+  VBoxHeadless: Fixed crash when running on macOS Monterey (bug #20636)
+  VBoxManage: Fixed incorrect help text for "hostonlyif"
+  vboximg-mount: Error message if no image is specified
+  Linux host: For all distribution specific packages (deb/rpm format) fix the packaging so that the feature for unattended installation of guest OSes works
+  Linux host and guest: Introduced initial support for kernel 5.16
+  Shared Clipboard: Improved communication between guest and host when guest has no clipboard data to report
+  Linux Guest Additions: Allow running only one VBoxDRMClient instance (bug #19373)
+
+  File "fixes_for_5.14.patch" deleted - fixed upstream.
+  File "fixes-for-5.15.patch" deleted - fixed upstream.
+  File "fixes-for-5.16.patch" deleted - fixed upstream.
+
+-------------------------------------------------------------------
 Wed Nov 17 19:26:11 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix builds for Kernel 5.16. File "fixes-for-5.16.patch" is added.
