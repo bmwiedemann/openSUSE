@@ -18,16 +18,18 @@
 
 %define lname	libvshadow1
 Name:           libvshadow
-Version:        20210507
+Version:        20211114
 Release:        0
 Summary:        Library to access the Volume Shadow Snapshot (VSS) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/libyal/libvshadow
-Source:         %{name}-%{version}.tar.xz
-Source1:        Paper_-_Windowless_Shadow_Snapshots.pdf
-Source2:        Slides_-_Windowless_Shadow_Snapshots.pdf
-Source3:        Volume_Shadow_Snapshot_VSS_format.pdf
+Source:         https://github.com/libyal/libvshadow/releases/download/%version/libvshadow-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libvshadow/releases/download/%version/libvshadow-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source11:       Paper_-_Windowless_Shadow_Snapshots.pdf
+Source12:       Slides_-_Windowless_Shadow_Snapshots.pdf
+Source13:       Volume_Shadow_Snapshot_VSS_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -45,7 +47,7 @@ BuildRequires:  pkgconfig(libcsplit) >= 20200703
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -99,12 +101,10 @@ Python 3 binding for libvshadow.  libvshadow can read windows event files
 %prep
 %autosetup -p1
 mkdir doc
-cp %SOURCE1 .
-cp %SOURCE2 .
-cp "%SOURCE3" .
+cp -av %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
 %configure --disable-static --enable-wide-character-type --enable-python3
