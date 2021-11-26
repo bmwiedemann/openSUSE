@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 10:22:12 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * klog.service
+  * klogd.service
+  * syslogd.service
+
+-------------------------------------------------------------------
 Tue Nov 24 17:03:30 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
