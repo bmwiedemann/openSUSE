@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  7 15:24:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make sip6 also the default on Leap -- boo#1192300
+
+-------------------------------------------------------------------
 Mon Sep 13 16:04:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't create non-devel -sip metapackage for sip6 -- boo#1190441

@@ -16,12 +16,9 @@
 #
 
 
-%if 0%{?suse_version} <= 1500
-%define sipN sip4
-%else
+# Default is sip6 for all distributions. Be sure to branch both python-sip6 and python-sip into
+# any project using this metapackge.
 %define sipN sip6
-%endif
-
 # query the default provider and assume that all installed python flavors have the same version
 %define Nversion %(rpm -q --qf '%%{version}' --whatprovides python3-%{sipN}-devel)
 %{?!python_module:%define python_module() python3-%{**}}

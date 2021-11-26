@@ -950,4 +950,12 @@ I need to make a separate request for the py2 version.
     <comment>remove non-devel metapackage</comment>
     <requestid>918863</requestid>
   </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>48319010971ee3d8d008da203737f336</srcmd5>
+    <version>MACRO</version>
+    <time>1637970631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933291</requestid>
+  </revision>
 </revisionlist>
