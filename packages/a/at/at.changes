@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 23 12:32:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectSystem and ProtectHome hardening. Unfortunately they're 
+  breaking at jobs (boo#1192294)
+
+-------------------------------------------------------------------
 Thu Nov 18 11:23:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Tumbleweed is not affected by the following SLE issues:
