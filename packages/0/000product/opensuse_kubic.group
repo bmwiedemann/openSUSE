@@ -79,6 +79,7 @@
     <package name="liblzo2-2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
+    <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libncurses6" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnghttp2-14" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: opensuse_kubic:patterns-containers-kubeadm -->
@@ -150,9 +151,7 @@
 </group>
 <group name="opensuse_kubic.i586">
   <conditional name="only_i586"/>
-  <packagelist relationship="recommends">
-    <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-  </packagelist>
+  <packagelist relationship="recommends"/>
 </group>
 <group name="opensuse_kubic.x86_64">
   <conditional name="only_x86_64"/>
