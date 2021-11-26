@@ -2020,6 +2020,7 @@ unsorted:
   - cldr-emoji-annotation-devel 
   - clementine 
   - cli11-devel 
+  - cli11-doc 
   - clinfo 
   - clingo 
   - clingo-devel 
@@ -6885,6 +6886,9 @@ unsorted:
   - ices 
   - icewm-theme-yast-installation 
   - icewm-themes 
+  - icinga-php-common 
+  - icinga-php-library 
+  - icinga-php-thirdparty 
   - icinga2 
   - icinga2-bin 
   - icinga2-common 
@@ -12451,7 +12455,7 @@ unsorted:
   - liborigin3 
   - libortp15 
   - libortp15-32bit: [x86_64] 
-  - libosdCPU3_4_3 
+  - libosdCPU3_4_4 
   - libosinfo-devel 
   - libosip2-12 
   - libosip2-devel 
@@ -14331,9 +14335,9 @@ unsorted:
   - libvterm-tools 
   - libvterm0 
   - libvtk1 
-  - libvtk1-openmpi1 
   - libvtk1-openmpi2 
   - libvtk1-openmpi3 
+  - libvtk1-openmpi4 
   - libvulkan1-32bit: [x86_64] 
   - libvulkan_intel-32bit: [x86_64] 
   - libvulkan_lvp 
@@ -16856,6 +16860,7 @@ unsorted:
   - neovim 
   - neovim-gtk 
   - neovim-lang 
+  - nerdctl 
   - nestopia 
   - net-snmp-devel 
   - net-snmp-devel-32bit: [x86_64] 
@@ -18731,6 +18736,7 @@ unsorted:
   - percona-toolkit 
   - perf 
   - perf-devel 
+  - perf-gtk 
   - perftest 
   - perl-32bit: [x86_64] 
   - perl-Acme-Damn 
@@ -21462,9 +21468,9 @@ unsorted:
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
   - python3-vtk 
-  - python3-vtk-openmpi1 
   - python3-vtk-openmpi2 
   - python3-vtk-openmpi3 
+  - python3-vtk-openmpi4 
   - python3-watchman 
   - python3-xcb-proto-devel 
   - python3-xrootd 
@@ -23745,6 +23751,7 @@ unsorted:
   - python36-quicktions 
   - python36-radexreader 
   - python36-radon 
+  - python36-railroad-diagrams 
   - python36-random2 
   - python36-rarfile 
   - python36-rarfile-doc 
@@ -26662,6 +26669,7 @@ unsorted:
   - python38-quimb: [x86_64] 
   - python38-radexreader 
   - python38-radon 
+  - python38-railroad-diagrams 
   - python38-random2 
   - python38-rarfile 
   - python38-rarfile-doc 
@@ -29779,6 +29787,7 @@ unsorted:
   - python39-quimb: [x86_64] 
   - python39-radexreader 
   - python39-radon 
+  - python39-railroad-diagrams 
   - python39-random2 
   - python39-rarfile 
   - python39-rarfile-doc 
@@ -31200,6 +31209,7 @@ unsorted:
   - rook-integration: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
+  - rootlesskit 
   - rosegarden: [x86_64] 
   - rott 
   - roundcubemail 
@@ -41928,15 +41938,15 @@ unsorted:
   - vte-tools 
   - vtk-devel 
   - vtk-java 
-  - vtk-openmpi1-devel 
-  - vtk-openmpi1-java 
-  - vtk-openmpi1-qt 
   - vtk-openmpi2-devel 
   - vtk-openmpi2-java 
   - vtk-openmpi2-qt 
   - vtk-openmpi3-devel 
   - vtk-openmpi3-java 
   - vtk-openmpi3-qt 
+  - vtk-openmpi4-devel 
+  - vtk-openmpi4-java 
+  - vtk-openmpi4-qt 
   - vtk-qt 
   - vtkdata 
   - vulkan-devel 
