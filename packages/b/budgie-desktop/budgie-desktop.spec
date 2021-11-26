@@ -66,6 +66,9 @@ Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
 Requires:       NetworkManager-applet
+# https://discuss.getsol.us/d/6970-cant-lock-my-screen/3
+Conflicts:      gnome-shell
+#
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 

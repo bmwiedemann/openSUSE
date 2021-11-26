@@ -361,4 +361,12 @@
     <comment>gnome-settings-daemon</comment>
     <requestid>932655</requestid>
   </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>a3d0ddd8eb994ad9e80c74bede49ff43</srcmd5>
+    <version>10.5.3+12</version>
+    <time>1637970698</time>
+    <user>dimstar_suse</user>
+    <comment>Conflict gnome-shell it's existence breaks locking</comment>
+    <requestid>934027</requestid>
+  </revision>
 </revisionlist>
