@@ -18,13 +18,15 @@
 
 %define lname	libfshfs1
 Name:           libfshfs
-Version:        20210602
+Version:        20210722
 Release:        0
 Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfshfs
 Source:         https://github.com/libyal/libfshfs/releases/download/%version/libfshfs-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libfshfs/releases/download/%version/libfshfs-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -144,7 +146,7 @@ This package contains Python 3 bindings for libfshfs.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static --enable-wide-character-type --enable-python3
 %make_build
 
