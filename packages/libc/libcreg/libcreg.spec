@@ -18,13 +18,15 @@
 
 Name:           libcreg
 %define lname	libcreg1
-Version:        20210505
+Version:        20210625
 Release:        0
 Summary:        Library to access Windows 9x/Me REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcreg
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -95,7 +97,7 @@ This subpackage contains the Python3 bindings for libcreg.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
