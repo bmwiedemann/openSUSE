@@ -1,4 +1,40 @@
 --------------------------------------------------------------------
+Fri Nov 26 15:35:34 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#550
+- always include bash -> sh link
+- 17.27
+
+--------------------------------------------------------------------
+Fri Nov 26 15:00:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#549
+- use xz with threading to compress the initrd
+- 17.26
+
+--------------------------------------------------------------------
+Thu Nov 25 09:01:24 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#546
+- linuxrc handles LIBSTORAGE_* and YAST_* boot options
+  (jsc#SLE-21308)
+- 17.25
+
+--------------------------------------------------------------------
+Tue Nov 23 14:12:30 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#540
+- add kernel modules for MPS3 USB (jsc#SLE-20148)
+- 17.24
+
+--------------------------------------------------------------------
+Tue Nov 23 10:24:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#544
+- xf86-input-libinput now exists on s390x
+- 17.23
+
+--------------------------------------------------------------------
 Fri Nov 19 14:24:14 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#543

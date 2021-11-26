@@ -310,9 +310,7 @@ ExcludeArch:    %ix86
 %if %with_reiserfs_kmp
 BuildRequires:  reiserfs-kmp-default
 %endif
-%ifnarch s390x
 BuildRequires:  xf86-input-libinput
-%endif
 BuildRequires:  google-roboto-fonts
 BuildRequires:  noto-sans-fonts
 %ifarch ia64 %ix86 x86_64
@@ -685,7 +683,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.22
+Version:        17.27
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
