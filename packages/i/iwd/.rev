@@ -215,4 +215,16 @@
   * Add support for extended key IDs. </comment>
     <requestid>930077</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5de9cc5c19e7566a84ea37817d1003a3</srcmd5>
+    <version>1.20</version>
+    <time>1637970689</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.20
+  * Fix issue with handling Hotspot 2.0 requirements.
+  * Add support for evict_nocarrier setting during roaming.
+  * Add support for experimental NetworkConfigurationAgent API.
+</comment>
+    <requestid>933999</requestid>
+  </revision>
 </revisionlist>

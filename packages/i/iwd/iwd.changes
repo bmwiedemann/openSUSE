@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 26 07:34:37 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
+
+- update to v1.20
+  * Fix issue with handling Hotspot 2.0 requirements.
+  * Add support for evict_nocarrier setting during roaming.
+  * Add support for experimental NetworkConfigurationAgent API.
+
+-------------------------------------------------------------------
 Mon Nov  8 08:34:50 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
 
 - update to v1.19
