@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:40:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.1
+  * Fix tests for Jedi 0.18.1
+  * Option `jedi_completion.resolve_at_most_labels` was renamed to
+    `jedi_completion.resolve_at_most` because now it controls how
+    many labels and snippets will be resolved per request.
+  * Option `jedi_completion.cache_labels_for` was renamed to
+    `jedi_completion.cache_for` because now it controls the modules
+    for which labels and snippets should be cached.
+  * Update requirements on Pylint, flake8, pycodestyle, pyflakes
+    and autopep8.
+- Drop python-lsp-server-pr102-unpin-flake8.patch
+
+-------------------------------------------------------------------
 Sat Nov 20 19:57:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix pyflakes python-lsp-server-pr102-unpin-flake8.patch

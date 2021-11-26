@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.2.4
+Version:        1.3.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-lsp-server-pr102-unpin-flake8.patch -- gh#python-lsp/python-lsp-server#102
-Patch0:         python-lsp-server-pr102-unpin-flake8.patch
 BuildRequires:  %{python_module setuptools >= 39.0.0}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
@@ -57,11 +55,15 @@ Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
 Requires:       python-ujson >= 3.0.0
 Suggests:       python-autopep8 >= 1.6.0
+Conflicts:      python-autopep8 >= 1.7.0
 Suggests:       python-flake8 >= 4.0.0
+Conflicts:      python-flake8 >= 4.1.0
 Suggests:       python-mccabe >= 0.6.0
 Suggests:       python-pycodestyle >= 2.8.0
+Conflicts:      python-pycodestyle >= 2.9.0
 Suggests:       python-pydocstyle >= 2.0.0
 Suggests:       python-pyflakes >= 2.4.0
+Conflicts:      python-pyflakes >= 2.5.0
 Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
@@ -89,9 +91,6 @@ will be enabled:
 
 %prep
 %autosetup -p1 -n python-lsp-server-%{version}
-# the only relevant changes from https://github.com/python-lsp/python-lsp-server/pull/94
-sed -i 's/pylint>=2.5.0,<2.10.0/pylint>=2.5.0/' setup.py
-sed -i "s/open(document.path, 'w')/open(document.path, 'w', encoding='utf-8')/" test/plugins/test_pylint_lint.py
 
 %build
 %python_build
