@@ -25,6 +25,7 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/Spotifyd/spotifyd
 Source0:        https://github.com/Spotifyd/spotifyd/archive/refs/tags/v%{version}.tar.gz#/spotifyd-%{version}.tar.gz
 Source1:        vendor.tar.bz2
+Patch0:	harden_spotifyd.service.patch
 BuildRequires:  cargo
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(alsa)
@@ -41,6 +42,7 @@ the official clients.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 mkdir .cargo
 cat >.cargo/config <<EOF
