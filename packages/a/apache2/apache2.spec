@@ -18,7 +18,7 @@
 
 %global upstream_name   httpd
 %global testsuite_name  %{upstream_name}-framework
-%global tversion        svn1878849
+%global tversion        svn1894461
 %global flavor          @BUILD_FLAVOR@%{nil}
 %define mpm             %{nil}
 %if "%{flavor}" == "prefork" || "%{flavor}" == "test_prefork"
@@ -198,6 +198,8 @@ Patch100:       apache-test-application-xml-type.patch
 # even if in live system I do not experience this inconsistency, let's turn off
 # these variables from the test
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
+# PATCH:    reverted logic, DirectorySlash NotFound is available in trunk onlyyet
+Patch102:       apache-test-DirectorySlash-NotFound-logic.patch
 BuildRequires:  apache-rpm-macros-control
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
 BuildRequires:  apr-devel >= 1.5.0
@@ -243,7 +245,6 @@ BuildRequires:  apache2-worker
 BuildRequires:  apache2-event
 %endif
 %if %{unittest}
-BuildRequires:  mod_php_any
 # perl-doc is assumed by t/filter/case.t (/usr/lib/perl5/*/pod/perlsub.pod)
 BuildRequires:  perl-doc
 BuildRequires:  perl(Crypt::SSLeay)
@@ -327,6 +328,7 @@ provides HTTP services in sync with the current HTTP standards.
 %patch4 -p1
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 
 #
 # BUILD
@@ -795,7 +797,6 @@ dep "lbmethod_byrequests" "proxy"
 dep "lbmethod_bytraffic"  "proxy"
 dep "lbmethod_heartbeat"  "proxy"
 for m in $modules; do
-  echo "$m" | grep -q 'php' && [ "%{mpm}" == 'worker' -o "%{mpm}" == 'event' ] && continue
   path=$(find %{_libdir}/apache2-%{mpm}/ %{_libdir}/apache2/ -name mod_$m.so | head -n 1)
   if ! grep -q "mod_$m.c" $PWD/load-all-modules.conf; then
     echo "<IfModule !mod_$m.c>"           >> $PWD/load-all-modules.conf

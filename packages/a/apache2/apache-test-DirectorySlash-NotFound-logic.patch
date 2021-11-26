@@ -1,0 +1,19 @@
+--- a/httpd-framework/t/modules/dir.t.orig	2021-11-24 10:37:58.688525957 +0000
++++ b/httpd-framework/t/modules/dir.t	2021-11-24 10:38:15.568621991 +0000
+@@ -98,12 +98,12 @@ $res = GET "/modules/dir/htaccess", redi
+ ok ($res->code == 403);
+ 
+ if (have_min_apache_version('2.5.1')) { 
+-    skip("missing DirectorySlash NotFound");
+-}
+-else { 
+     $res = GET "/modules/dir/htaccess/sub1", redirect_ok => 0;
+     ok ($res->code == 404);
+ }
++else { 
++    skip("missing DirectorySlash NotFound");
++}
+ 
+ 
+ sub write_htaccess {
+

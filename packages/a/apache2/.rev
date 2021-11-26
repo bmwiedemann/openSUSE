@@ -1977,4 +1977,16 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- add section for the 'event' MPM to apache2-server-tuning.conf (forwarded request 931327 from adkorte)</comment>
     <requestid>931489</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>af1a547b2ded1220d3ec3d769af61162</srcmd5>
+    <version>2.4.51</version>
+    <time>1637970647</time>
+    <user>dimstar_suse</user>
+    <comment>- httpd-framework updated to svn1894461
+- added patches
+  fix reverted logic, DirectorySlash NotFound is available in trunk only
+  + apache-test-DirectorySlash-NotFound-logic.patch
+- do not consider php tests, they do not run anyway</comment>
+    <requestid>933435</requestid>
+  </revision>
 </revisionlist>
