@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 25 04:05:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update skip-obs.patch to also skip TestProcess.test_ionice_linux
+
+-------------------------------------------------------------------
 Wed May 12 20:14:46 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - remove the dependency on net-tools, since it conflicts with

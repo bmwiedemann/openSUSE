@@ -589,4 +589,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
   busybox-hostnmame which is default on MicroOS. boo#1184753</comment>
     <requestid>892577</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>8c33fa79a995646deeb8ffaa624b92e4</srcmd5>
+    <version>5.8.0</version>
+    <time>1637970626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update skip-obs.patch to also skip TestProcess.test_ionice_linux</comment>
+    <requestid>933615</requestid>
+  </revision>
 </revisionlist>
