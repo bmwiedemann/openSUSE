@@ -297,6 +297,11 @@ sent to the application, rather than to brltty.
 Summary:        System user for brltty
 Group:          System/Base
 Requires(pre):  group(pulse-access)
+Requires(pre):  group(root)
+Requires(pre):  group(tty)
+Requires(pre):  group(dialout)
+Requires(pre):  group(audio)
+Requires(pre):  group(input)
 BuildArch:      noarch
 %sysusers_requires
 
