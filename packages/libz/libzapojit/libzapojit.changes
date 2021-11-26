@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 20:07:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream patch, fixes: CVE-2021-39360:
+  libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch:
+  skydrive: Guard against invalid SSL certificates.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:36:53 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

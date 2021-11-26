@@ -1,7 +1,7 @@
 #
 # spec file for package libzapojit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,6 +24,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://download.gnome.org/sources/libzapojit
 Source:         http://download.gnome.org/sources/libzapojit/0.0/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch -- skydrive: Guard against invalid SSL certificates Fixes: CVE-2021-39360
+Patch:          libzapojit-skydrive-Guard-against-invalid-SSL-certificates.patch
+
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
@@ -68,7 +71,7 @@ This package provides the files necessary for developing applications
 using libzapojit.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static
