@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 23 16:00:00 UTC 2021 - Stefan Knorr <sknorr@suse.com>
+
+- Fixed typo in message about encryption (part of jsc#SLE-21308)
+- 4.4.15
+
+-------------------------------------------------------------------
 Thu Nov 18 16:22:04 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed calculation of partitions needed for booting when AutoYaST
