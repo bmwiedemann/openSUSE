@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 23 19:21:24 UTC 2021 - varkoly@suse.com
+
+Update from 4.8.0 to 4.10.0 contains fix of following issues:
+  bsc#1151833 bsc#1154465 bsc#1170270 bsc#1172734 bsc#1180668
+  bsc#1184382 bsc#1186652
+
+- Update to version 4.10.0+git13.7263a78d:
+  * rabbitmq-server-ha: Revert "OCF RA: Do not start rabbitmq if notification of start is not about us" (#1713)
+  * asterisk: fix sipsak check during start-action (#1715)
+  * rabbitmq-server-ha: Avoid forget_cluster_node without node name
+  * gcp-ilb: only check if log_cmd binary is available if log_enable is true
+  * rabbitmq-server-ha: use "s"-suffix for timeouts/intervals
+  * rabbitmq-server-ha: rename and add to Makefiles
+  * nvmet-subsystem: fix allowed_initiators for to avoid only running once (found by shellcheck)
+  * gcp-ilb/Squid: fix issues detected by CI
+  * configure: only run ci/build.sh when shellcheck is present
+  * RabbitMQ OCF RA M/S HA cluster agent migration (#1698)
+  * build: update ChangeLog for 4.10.0
+  * build: update ChangeLog for 4.10.0-rc1
+
+-------------------------------------------------------------------
 Mon Oct 25 14:12:30 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.9.0+git25.278c776d:
