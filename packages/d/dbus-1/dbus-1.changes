@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  8 16:42:10 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
+Thu Sep 23 15:41:27 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires alts for libalternatives.
+
+-------------------------------------------------------------------
+Thu Sep 16 12:51:27 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Fixed spec file regarding removing old update-alternatives
+  entries.
+
+-------------------------------------------------------------------
+Wed Aug  4 10:03:46 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Wed Apr  7 22:35:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - avoid listing cmake directory - owned by cmake package 

@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define with_systemd 1
 %define _name   dbus
 %define _libname libdbus-1-3
@@ -43,15 +49,19 @@ BuildRequires:  libcap-ng-devel
 BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  permissions
 BuildRequires:  pkgconfig
-BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(libsystemd) >= 209
 Requires(post): %{_libname} = %{version}
-Requires(post): update-alternatives
 Requires(post): diffutils
 Requires(pre):  permissions
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
 Provides:       dbus-launch
 %sysusers_requires
 %if %{with selinux}
@@ -124,7 +134,7 @@ export V=1
 # The original dbus sysusers config does not create our account,
 # overwrite it with our user definition
 cp %{SOURCE5} bus/sysusers.d/dbus.conf
-%sysusers_generate_pre %{SOURCE5} messagebus
+%sysusers_generate_pre %{SOURCE5} messagebus dbus.conf
 
 %check
 %make_build check
@@ -161,8 +171,19 @@ ln -sf /%{_bindir}/dbus-update-activation-environment %{buildroot}/bin/dbus-upda
 ln -sf /%{_bindir}/dbus-uuidgen %{buildroot}/bin/dbus-uuidgen
 %endif
 
+%if ! %{with libalternatives}
+# create symlinks for update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-launch
+%else
+# create entries for libalternatives
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/dbus-launch
+mkdir -p %{buildroot}%{_datadir}/libalternatives/dbus-launch
+cat > %{buildroot}%{_datadir}/libalternatives/dbus-launch/10.conf <<EOF
+binary=%{_bindir}/dbus-launch.nox11
+group=dbus-launch
+EOF
+%endif
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -176,6 +197,12 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 
 %pre -f messagebus.pre
 %service_add_pre dbus.service dbus.socket
+%if %{with libalternatives}
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+    %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
+fi
+%endif
 
 %post
 if [ -e %{_localstatedir}/lib/dbus/machine-id -a -e %{_sysconfdir}/machine-id ]; then
@@ -191,14 +218,18 @@ fi
 
 /sbin/ldconfig
 %set_permissions %{_libexecdir}/dbus-1/dbus-daemon-launch-helper
+%if ! %{with libalternatives}
 %{_sbindir}/update-alternatives --install %{_bindir}/dbus-launch dbus-launch %{_bindir}/dbus-launch.nox11 10
+%endif
 %service_add_post dbus.service dbus.socket
 %tmpfiles_create %{_prefix}/lib/tmpfiles.d/dbus.conf
 
 %preun
+%if ! %{with libalternatives}
 if [ "$1" = 0 ] ; then
   %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.nox11
 fi
+%endif
 %service_del_preun dbus.service dbus.socket
 
 %postun
@@ -259,7 +290,13 @@ fi
 %{_userunitdir}/dbus.socket
 %dir %{_userunitdir}/sockets.target.wants
 %{_userunitdir}/sockets.target.wants/dbus.socket
+%if ! %{with libalternatives}
 %ghost %{_sysconfdir}/alternatives/dbus-launch
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/dbus-launch
+%{_datadir}/libalternatives/dbus-launch/10.conf
+%endif
 %{_bindir}/dbus-launch.nox11
 %{_bindir}/dbus-launch
 

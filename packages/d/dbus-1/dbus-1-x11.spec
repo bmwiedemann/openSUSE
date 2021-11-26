@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %define _name   dbus
 %define _libname libdbus-1-3
 %if 0%{?suse_version} <= 1320
@@ -45,8 +51,13 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(x11)
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
 Supplements:    (dbus-1 and libX11-6)
 Provides:       dbus-launch
 %if %{with selinux}
@@ -94,8 +105,27 @@ tdir=$(mktemp -d)
 make DESTDIR=$tdir install
 mkdir -p %{buildroot}/%{_bindir}
 mv $tdir/%{_bindir}/dbus-launch %{buildroot}/%{_bindir}/dbus-launch.x11
+%if ! %{with libalternatives}
+# create symlinks for update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-launch
+%else
+# create entries for libalternatives
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/dbus-launch
+mkdir -p %{buildroot}%{_datadir}/libalternatives/dbus-launch
+cat > %{buildroot}%{_datadir}/libalternatives/dbus-launch/20.conf <<EOF
+binary=%{_bindir}/dbus-launch.x11
+group=dbus-launch
+EOF
+%endif
+
+%if %{with libalternatives}
+%pre
+# removing old update-alternatives entries
+if [ "$1" -gt 0 ] && [ -f %{_sbindir}/update-alternatives ] ; then
+    %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.x11
+fi
+%else
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/dbus-launch dbus-launch %{_bindir}/dbus-launch.x11 20
@@ -104,9 +134,16 @@ ln -s -f %{_sysconfdir}/alternatives/dbus-launch %{buildroot}%{_bindir}/dbus-lau
 if [ "$1" = 0 ] ; then
   %{_sbindir}/update-alternatives --remove dbus-launch %{_bindir}/dbus-launch.x11
 fi
+%endif
 
 %files
+%if ! %{with libalternatives}
 %ghost %{_sysconfdir}/alternatives/dbus-launch
+%else
+%dir %{_datadir}/libalternatives
+%dir %{_datadir}/libalternatives/dbus-launch
+%{_datadir}/libalternatives/dbus-launch/20.conf
+%endif
 %{_bindir}/dbus-launch
 %{_bindir}/dbus-launch.x11
 
