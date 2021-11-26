@@ -18,13 +18,15 @@
 
 Name:           libfdata
 %define lname	libfdata1
-Version:        20210414
+Version:        20211023
 Release:        0
 Summary:        Library to provide generic file data functions
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfdata
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -61,7 +63,7 @@ applications that want to make use of libfdata.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure --disable-static
 %make_build
 
