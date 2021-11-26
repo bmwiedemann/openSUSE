@@ -48,6 +48,9 @@ Bison is a parser generator similar to yacc(1).
   --docdir=%{_docdir}/%{name} \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes
+%ifarch armv6hl
+%define do_profiling 0
+%endif
 %if 0%{?do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   %make_build CFLAGS="%{optflags}" check
@@ -58,7 +61,9 @@ Bison is a parser generator similar to yacc(1).
 %endif
 
 %check
+%ifnarch armv6hl
 %make_build check
+%endif
 
 %install
 %make_install

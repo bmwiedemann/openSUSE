@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 17 12:07:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable tests and profiling using tests on armv6l (boo#1192737)
+
+-------------------------------------------------------------------
 Sat Oct  2 07:23:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.8.2
