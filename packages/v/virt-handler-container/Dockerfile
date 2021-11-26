@@ -18,6 +18,7 @@ PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%"
 
 RUN zypper -n install \
+              curl \
               dbus-1 \
               iproute2 \
               iptables \
