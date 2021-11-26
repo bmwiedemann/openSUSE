@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 19 09:32:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Ensure newer libs and LLVM is used on Leap (boo#1192310)
+
+-------------------------------------------------------------------
 Wed Nov 17 10:08:55 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequire python3-six. 

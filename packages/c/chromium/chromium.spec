@@ -260,10 +260,19 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 BuildRequires:  pkgconfig(freetype2)
 %endif
 %if %{with clang}
+%if %{?suse_version} < 1550
+BuildRequires:  clang12
+BuildRequires:  gcc10
+BuildRequires:  libstdc++6-devel-gcc10
+BuildRequires:  lld12
+BuildRequires:  llvm12
+%else
 BuildRequires:  clang
 BuildRequires:  lld
 BuildRequires:  llvm
-%else
+%endif
+%endif
+%if %{without clang}
 BuildRequires:  binutils-gold
 %if %{?suse_version} > 1500
 BuildRequires:  gcc >= 10
