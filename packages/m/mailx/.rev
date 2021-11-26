@@ -373,4 +373,14 @@ See COPYING. Fedora also uses this license designation (forwarded request 178463
 - prepare usrmerge (boo#1029961) (forwarded request 867514 from lnussel)</comment>
     <requestid>867651</requestid>
   </revision>
+  <revision rev="44" vrev="32">
+    <srcmd5>25176fdcf4f154e7e606ade9f222a45c</srcmd5>
+    <version>12.5</version>
+    <time>1637970629</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch mailx-12.5-systemd.patch to add description how to avoid
+  bugs like bsc#1192916 -- mailx does not send mails unless run via
+  strace or in verbose mode</comment>
+    <requestid>933261</requestid>
+  </revision>
 </revisionlist>

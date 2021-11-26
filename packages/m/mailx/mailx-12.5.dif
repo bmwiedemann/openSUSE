@@ -265,7 +265,7 @@
  This option should be activated for
  .I mailx
  scripts that are invoked on more than one machine,
-@@ -3111,7 +3111,7 @@ in the user's home directory.
+@@ -3113,7 +3113,7 @@ in the user's home directory.
  The name of an optional startup file
  to be read after ~/.mailrc.
  This variable is ignored if it is imported from the environment;
@@ -274,7 +274,7 @@
  to allow bypassing the configuration with e. g. `MAILRC=/dev/null'.
  Use this file for commands
  that are not understood by other mailx implementations.
-@@ -3688,7 +3688,7 @@ Used as directory for temporary files in
+@@ -3696,7 +3696,7 @@ Used as directory for temporary files in
  ~/.mailrc
  File giving initial commands.
  .TP

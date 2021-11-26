@@ -26,7 +26,7 @@ BuildRequires:  postfix
 BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(openssl)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 URL:            http://heirloom.sourceforge.net/mailx.html
 Provides:       mail
 Recommends:     smtp_daemon
@@ -59,6 +59,8 @@ Patch12:        0004-globname-Invoke-wordexp-with-WRDE_NOCMD-CVE-2004-277.patch
 Patch13:        mailx-12.5-openssl-1.1.0f.patch
 #PATCH-FIX-SUSE: bsc#1180355 -- mailx calls sendmail with wrong name
 Patch14:        fix-sendmail-name.patch
+#PATCH-FIX-SUSE: bsc#1192916 - mailx does not send mails unless run via strace or in verbose mode
+Patch15:        mailx-12.5-systemd.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -84,6 +86,7 @@ minor enhancements like the ability to set a "From:" address.
 %patch12 -p1 -b .0004
 %patch13 -p0 -b .ssl11f
 %patch14 -p1 -b .sendmail
+%patch15 -p0 -b .systemd
 %patch -p1 -b .0
 
 %build

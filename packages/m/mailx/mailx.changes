@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 23 12:41:51 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch mailx-12.5-systemd.patch to add description how to avoid
+  bugs like bsc#1192916 -- mailx does not send mails unless run via
+  strace or in verbose mode
+
+-------------------------------------------------------------------
 Wed Jan 27 12:27:13 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - update-alternatives call needs to be in postun rather than preun
