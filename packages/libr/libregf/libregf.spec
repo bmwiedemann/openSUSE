@@ -18,14 +18,16 @@
 
 %define lname	libregf1
 Name:           libregf
-Version:        20210615
+Version:        20210809
 Release:        0
 Summary:        Library to access Windows REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libregf
 Source:         https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz
-Source2:        Windows_NT_Registry_File_REGF_format.pdf
+Source2:        https://github.com/libyal/libregf/releases/download/%version/libregf-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source11:       Windows_NT_Registry_File_REGF_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
@@ -47,7 +49,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfwnt) >= 20210421
 BuildRequires:  pkgconfig(libfwsi) >= 20210419
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -98,10 +100,10 @@ This subpackage contains the Python3 bindings for libregf.
 
 %prep
 %autosetup -p1
-cp "%{SOURCE2}" .
+cp %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-wide-character-type \
