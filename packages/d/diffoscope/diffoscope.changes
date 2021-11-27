@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Nov 20 13:01:25 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - update to version 193:
+ - Don't duplicate file lists at each directory level.
+   (Closes: #989192, reproducible-builds/diffoscope#263)
+ - When pretty-printing JSON, mark the difference as such, additionally
+   avoiding including the full path.
+   (Closes: reproducible-builds/diffoscope#205)
+ - Codebase improvements:
+   - Update a bunch of %-style string interpolations into f-strings or
+     str.format.
+   - Import itertools top-level directly.
+   - Drop some unused imports.
+   - Use isinstance(...) over type(...) ==
+   - Avoid aliasing variables if we aren't going to use them.
+ - Fix missing diff output on large diffs.
+ - Ignore a Python warning coming from a dependent library (triggered by
+   supporting Python 3.10)
+ - Document that support both Python 3.9 and 3.10.
+
+-------------------------------------------------------------------
+Sun Nov 14 21:14:04 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 192:
+ - Update .epub test methodology after improving XML file parsing.
+- update to version 191:
+ - Detect XML files as XML files if either file(1) claims if they are XML
+   files, or if they are named .xml.
+   (Closes: #999438, reproducible-builds/diffoscope#287)
+ - Don't reject Debian .changes files if they contain non-printable
+   characters. (Closes: reproducible-builds/diffoscope#286)
+ - Continue loading a .changes file even if the referenced files inside it do
+   not exist, but include a comment in the diff as a result.
+ - Log the reason if we cannot load a Debian .changes file.
+ - Fix inverted logic in the assert_diff_startswith() utility.
+- update to version 190:
+ - Don't raise a traceback if we cannot de-marshal Python bytecode to support
+   Python 3.7 loading newer .pyc files.
+   (Closes: reproducible-builds/diffoscope#284)
+ - Fix Python tests under Python 3.7 with file 5.39+.
+ - Skip Python bytecode testing when "file" is older than 5.39.
+ - Detect whether the GNU_BUILD_ID field has been modified.
+
+-------------------------------------------------------------------
 Tue Nov  2 19:29:18 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 189:
