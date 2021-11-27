@@ -85,7 +85,6 @@ Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 Patch104:       cups-config-libs.patch
 # Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
 Patch106:       fix-negotiate-authentication-between-CGIs-and-scheduler.patch
-Patch107:	harden_cups.service.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -310,7 +309,6 @@ printer drivers for CUPS.
 %patch104 -b cups-config-libs.orig
 # Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
 %patch106 -p1
-%patch107 -p1
 
 %build
 # Remove ".SILENT" rule for verbose build output
