@@ -18,18 +18,20 @@
 
 Name:           libpff
 %define lname	libpff1
-Version:        20210508
+Version:        20211114
 Release:        0
 Summary:        Library and tools to access Microsoft PFF and OFF format files
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libpff
-Source:         %name-%version.tar.xz
-Source2:        PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
-Source3:        PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
-Source4:        Personal_Folder_File_PFF_format.pdf
-Source5:        MAPI_definitions.pdf
-Source6:        libpff-libfdata.pdf
+Source:         https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libpff/releases/download/%version/libpff-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source12:       PFF_Forensics_-_analyzing_the_horrible_reference_file_format.pdf
+Source13:       PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
+Source14:       Personal_Folder_File_PFF_format.pdf
+Source15:       MAPI_definitions.pdf
+Source16:       libpff-libfdata.pdf
 Patch1:         system-libs.patch
 Patch2:         pkgconfig.diff
 BuildRequires:  c_compiler
@@ -46,13 +48,13 @@ BuildRequires:  pkgconfig(libcpath) >= 20200623
 BuildRequires:  pkgconfig(libcsplit) >= 20200703
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
 BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
+BuildRequires:  pkgconfig(libfdata) >= 20211023
 BuildRequires:  pkgconfig(libfdatetime) >= 20180910
 BuildRequires:  pkgconfig(libfguid) >= 20180724
 BuildRequires:  pkgconfig(libfmapi) >= 20180714
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libfwnt) >= 20210906
+BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 
@@ -113,10 +115,10 @@ and Offline Folder File (OFF) formats.
 
 %prep
 %autosetup -p1
-cp "%{S:2}" "%{S:3}" "%{S:4}" "%{S:5}" "%{S:6}" .
+cp -av %_sourcedir/*.pdf .
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
+autoreconf -fi
 # Package has a history of not bumping on ABI breaks (e.g. 59bcd7a46e)
 echo "V_%version { global: *; };" >sym.ver
 %configure --disable-static --enable-wide-character-type --enable-python3
