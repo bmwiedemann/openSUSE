@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:19:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.7.4:
+  This is primarily a bugfix release that resolves issues with
+  VTK-9.0.3 and VTK-9.1.x compatibility. CI now uses GitHub Actions
+  and a few other minor bugs have been fixed. `mlab` imports may be
+  a little faster thanks to some cleanup.
+- Release note for 4.7.3:
+  This is a small bug fix release mainly concerned with
+  compatability with Traits 6.2.0 and soon to be release TraitsUI
+  7.2.0.
+- Streamline python cache compilation and deduplication
+
+-------------------------------------------------------------------
+Thu Nov 11 03:42:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python3-nose. 
+
+-------------------------------------------------------------------
 Wed Sep 23 12:46:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.7.2:
