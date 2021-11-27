@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-qdatamatrix
-Version:        0.1.29
+Version:        0.1.31
 Release:        0
 Summary:        A PyQt4/PyQt5 widget for viewing and editing a DataMatrix object
 License:        GPL-3.0-or-later
@@ -28,20 +28,20 @@ URL:            https://github.com/open-cogsci/python-qdatamatrix
 Source:         https://files.pythonhosted.org/packages/source/p/python-qdatamatrix/python-qdatamatrix-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/open-cogsci/python-qdatamatrix/master/copyright
 Source2:        https://raw.githubusercontent.com/open-cogsci/python-qdatamatrix/master/example.py
-BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module QtPy}
-BuildRequires:  %{python_module fastnumbers}
 BuildRequires:  %{python_module python-datamatrix}
 # QtPy has a number of possible backends, none of them mandatory, use PyQt5 for the build
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION TEST REQUIREMENTS (recommendations by datamatrix)
 BuildRequires:  xvfb-run
-Requires:       python-PrettyTable
+BuildRequires:  %{python_module fastnumbers}
+BuildRequires:  %{python_module prettytable}
+#/SECTION
 Requires:       python-QtPy
 Requires:       python-python-datamatrix
-Recommends:     python-fastnumbers
 BuildArch:      noarch
 
 %python_subpackages

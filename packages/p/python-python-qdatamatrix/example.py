@@ -24,14 +24,22 @@ import sys
 from qtpy import QtWidgets
 import qtpy
 
-dm = DataMatrix(length=3)
-dm.col1 = 1, 2, 3
-dm.col2 = 'a', 'b', 'c'
-print(dm)
 
+def show():
+	print(qdm._dm)
+	for n, c in qdm._dm.columns:
+		print(n, repr(c._rowid))
+
+
+dm = DataMatrix(length=4)
+dm.sorted = False
+dm.col1 = range(4)
+dm.col3 = ['a', 'b', 'c', 'd']
+dm.col2 = ['e', 'f', 'g', 'h']
+print(dm)
 app = QtWidgets.QApplication(sys.argv)
-qdm = QDataMatrix(dm)
-qdm.resize(600,400)
-# qdm.refresh()
+qdm = QDataMatrix(dm, read_only=False)
+qdm.resize(600, 400)
+qdm.changed.connect(show)
 qdm.show()
 sys.exit(app.exec_())

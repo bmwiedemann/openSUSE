@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 25 20:52:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.1.31
+ * Fix order of columns after undo
+ * Fix pasting of data with existing column names
+ * Avoid empty trailing row after pasting
+
+-------------------------------------------------------------------
 Fri Feb 19 19:04:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.1.29
