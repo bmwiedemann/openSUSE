@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Nov 27 12:26:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.5:
+  * Fix some aes compile warnings on gcc about fall-throughs.
+  * No longer include sys/sysctl.h on other platforms than OSX. Fixes compile
+    errors in COSOperator on newer Linux systems.
+  * Update script to generate tutorial.html's in example folders.
+  * Update libpng to 1.6.37 (from 1.6.23)
+  * Fix CIrrDeviceSDL::getVideoModeList which didn't return video modes before.
+  * CIrrDeviceMacOSX now sets the SEvent.MouseInput Shift and Control values on
+    mouse events like the other devices.
+  * isWindowFocused in IrrDeviceSDL device now returns the input focus like the
+    other devices. Before it was returning a mouse-over-window state.
+  * Prevent SDL device from dropping OpenGL resources on Win32 when
+    setResizable was called with OpenGL driver.
+  * Fix isWindowActive when using SDL device. Before it was only active when
+    the mouse was over the window.
+  * Fix SViewFrustum::clipLine. Was before clipping at wrong points
+  * Fix compilation on OSX and prevent capturing mouse cursor when Window is not on top
+  * Fix serialization of OverrideTextColorEnabled flag in CGUITab.
+  * CFileSystem::getAbsolutePath no longer wrongly converts an empty filename
+    to "/" on unix platforms.
+  * Fix bug in cursor positions when compiled with newer Windows SDK's (v110 in
+    VS2012) and running on Systems >= Windows Vista in windowed mode.
+  * IOSOperator::getSysteMemory() no longer returns incorrect values with >2GB.
+  * Increase KEY_KEY_CODES_COUNT to fix problem with laptop keyboards which
+    return the keycode 0xff for the function key.
+  * Fix bug when calling activateJoysticks on windows several times. It had
+    appened joystick information instead of replacing it, thereby increasing
+    joystick number on each call.
+  * Fix bug in fast_atof when reading floating point numbers with more than 16
+    digits past the dot. Those produced completely wrong results
+  * Accuracy of fast_atof is back to older Irrlicht versions (fixes test
+    warnings, usually not a noticable problem).
+  * Fix crash in eventhandling when calling remove() on a contextmenu while it
+    has focus.
+  * CImageLoaderJPG::isALoadableFileFormat uses a test which allows to load
+    more jpg formats (for example uncompressed jpg's). Thx @Yaron Cohen-Tal for
+    report, test-image and his help with the patch. 
+- drop irrlicht-1.8.4-remove-sys-sysctl.h.patch (merged upstream)
+
+-------------------------------------------------------------------
 Fri Feb 19 09:57:22 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build (irrlicht-1.8.4-remove-sys-sysctl.h.patch)

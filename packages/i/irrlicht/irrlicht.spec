@@ -19,21 +19,18 @@
 #
 %define  sover 1_8
 %define  libver 1.8
-%define  libfullver %{libver}.4
 Name:           irrlicht
-Version:        %{libfullver}
+Version:        1.8.5
 Release:        0
 Summary:        A realtime 3D engine
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            http://irrlicht.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/irrlicht/%{name}-%{version}.zip
+URL:            https://irrlicht.sourceforge.io/
+Source0:        https://downloads.sourceforge.net/irrlicht/%{name}-%{version}.zip
 # PATCH-FIX-OPENSUSE irrlicht-1.7.9.3629-config.patch -- use system libraries http://irrlicht.sourceforge.net/phpBB2/viewtopic.php?t=24076
 Patch0:         irrlicht-1.7.9.3629-config.patch
 # PATCH-FIX-UPSTREAM irrlicht-1.8-directionlight.patch
 Patch1:         irrlicht-1.8-directionlight.patch
-# PATCH-FIX-UPSTREAM fixes build
-Patch2:         irrlicht-1.8.4-remove-sys-sysctl.h.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -100,7 +97,6 @@ commercial 3D engines.
 %setup -q
 %patch0
 %patch1 -p1
-%patch2 -p1
 
 sed -i 's/\r//' readme.txt
 iconv -o readme.txt.iso88591 -f iso88591 -t utf8 readme.txt
@@ -132,7 +128,7 @@ make -C source/Irrlicht INSTALL_DIR=%{buildroot}%{_libdir} install \
      ZLIBOBJ= JPEGLIBOBJ= LIBPNGOBJ=
 # Cleaning up after the really bad installer...
 pushd %{buildroot}%{_libdir}
-ln -s -f libIrrlicht.so.%{libfullver} libIrrlicht.so.%{libver}
+ln -s -f libIrrlicht.so.%{version} libIrrlicht.so.%{libver}
 ln -s -f libIrrlicht.so.%{libver} libIrrlicht.so
 popd
 # End Makefile mess cleanup
