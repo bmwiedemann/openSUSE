@@ -17,22 +17,16 @@
 
 
 %bcond_with faad
-%bcond_with libmpeg2
+%bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.2.0
+Version:        2.5.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
 URL:            https://www.scummvm.org/
 Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
-Patch0:         0001-FLUIDSYNTH-Make-FluidSynth-logging-less-noisy-by-default.patch
-Patch1:         0002-FLUIDSYNTH-Swapped-debug-levels-for-FLUID_WARN-and-FLUID_INFO.patch
-Patch2:         0003-FLUIDSYNTH-Fix-build.patch
-Patch3:         0004-AUDIO-Fix-compilation-with-Fluidsynth2.patch
-Patch4:         0005-FLUIDSYNTH-Simplify-FluidSynth-version-check.patch
-Patch5:         0006-FLUIDSYNTH-Fix-compilation-with-Fluidsynth-2.2.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
@@ -64,6 +58,14 @@ BuildRequires:  pkgconfig(libmpeg2) >= 0.4.0
 %ifarch %{ix86}
 BuildRequires:  nasm
 %endif
+BuildRequires:  fdupes
+BuildRequires:  fribidi-devel
+BuildRequires:  giflib-devel
+BuildRequires:  glew-devel
+BuildRequires:  libSDL2_net-devel
+BuildRequires:  liba52-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libspeechd-devel
 
 %description
 ScummVM is an interpreter that will play graphic adventure games written for
@@ -86,16 +88,13 @@ These engines are in a worse state, but allow to play extra games.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
+#allow to use liba52 from svn
+sed -i '/a52_init/s@(0)@()@' configure
+sed -i '/a52_init/s@(0)@()@' audio/decoders/ac3.cpp
 
 %build
 # scummvm relies on -gsplit-dwarf which is incompatible with -flto
@@ -119,6 +118,8 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+rm %{buildroot}%{_docdir}/%{name}/COPYING*
+%fdupes %{buildroot}%{_datadir}/scummvm
 
 %files
 %defattr(0644,root,root,0755)
