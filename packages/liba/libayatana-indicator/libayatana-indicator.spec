@@ -1,7 +1,7 @@
 #
 # spec file for package libayatana-indicator
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,125 +16,90 @@
 #
 
 
-%define soname  libayatana-indicator3
-%define soname_gtk2 libayatana-indicator
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "gtk2"
+%global gtkver 2
+%endif
+%if "%{flavor}" == "gtk3"
+%global psuffix 3
+%global gtkver 3
+%endif
 %define sover   7
 Name:           libayatana-indicator
-Version:        0.6.2
+Version:        0.9.0
 Release:        0
 Summary:        Ayatana panel indicator applet libraries
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/libayatana-indicator
 Source:         https://github.com/AyatanaIndicators/libayatana-indicator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix G_ADD_PRIVATE error
-Patch0:         libayatana-indicator-glib-2.58.patch
-# PATCH-FIX-UPSTREAM libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
-Patch1:         libayatana-indicator-Wno-error-deprecated-declarations-for-tests.patch
-# PATCH-FIX-UPSTREAM libayatana-indicator-Wno-error-deprecated-declarations.patch
-Patch2:         libayatana-indicator-Wno-error-deprecated-declarations.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+%if "%{flavor}" == ""
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gtk2"
 BuildRequires:  pkgconfig(gtk+-2.0)
+%else
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libayatana-ido3-0.4)
+BuildRequires:  pkgconfig(libayatana-ido3-0.4) >= 0.8.2
+%endif
 
 %description
 This library contains information to build indicators to go into
 the indicator applet.
 
-%package -n %{soname}-%{sover}
+%package -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover}
 Summary:        Ayatana panel indicator applet library
 Group:          System/Libraries
 
-%description -n %{soname}-%{sover}
+%description -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover}
 This package provides the libraries required to build indicators
 and to go into the indicator applet.
 
-%package -n %{soname_gtk2}%{sover}
-Summary:        Ayatana panel indicator applet library for GTK+2
-Group:          System/Libraries
-
-%description -n %{soname_gtk2}%{sover}
-This package provides the libraries required to build indicators
-and to go into the indicator applet.
-
-%package -n %{soname}-devel
+%package -n libayatana-indicator%{?psuffix}-devel
 Summary:        Development files for the Ayatana panel indicator applet library
 Group:          Development/Libraries/Other
-Requires:       %{soname}-%{sover} = %{version}
+Requires:       libayatana-indicator%{?psuffix:%{psuffix}-}%{sover} = %{version}
 
-%description -n %{soname}-devel
-This package provides the development files required to build
-indicators and to go into the indicator applet.
-
-%package -n %{soname_gtk2}-devel
-Summary:        Development files for the Ayatana panel indicator applet (GTK+2 variant)
-Group:          Development/Libraries/Other
-Requires:       %{soname_gtk2}%{sover} = %{version}
-
-%description -n %{soname_gtk2}-devel
+%description -n libayatana-indicator%{?psuffix}-devel
 This package provides the development files required to build
 indicators and to go into the indicator applet.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
-%global _configure ../configure
-autoreconf -fi
-for ver in 2 3; do
-    mkdir build-gtk$ver
-    pushd build-gtk$ver
-    %configure --disable-static --with-gtk=$ver
-    make %{?_smp_mflags} V=1
-    popd
-done
+%cmake \
+%if "%{flavor}" == "gtk2"
+  -DFLAVOUR_GTK2=ON
+%else
+  -DFLAVOUR_GTK3=ON
+%endif
+%cmake_build
 
 %install
-for ver in 2 3; do
-    pushd build-gtk$ver
-    %make_install
-    popd
-done
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
 
-# This dummy indicator is fairly useless, it is not shipped in Ubuntu.
-rm %{buildroot}%{_libdir}/libdummy-indicator*.so
+%post -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover} -p /sbin/ldconfig
 
-%post -n %{soname}-%{sover} -p /sbin/ldconfig
+%postun -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover} -p /sbin/ldconfig
 
-%postun -n %{soname}-%{sover} -p /sbin/ldconfig
-
-%post -n %{soname_gtk2}%{sover} -p /sbin/ldconfig
-
-%postun -n %{soname_gtk2}%{sover} -p /sbin/ldconfig
-
-%files -n %{soname}-%{sover}
+%files -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover}
 %license COPYING
 %doc AUTHORS ChangeLog
-%{_libdir}/%{soname}.so.%{sover}*
+%{_libdir}/libayatana-indicator%{?psuffix}.so.%{sover}*
 
-%files -n %{soname_gtk2}%{sover}
-%license COPYING
-%doc AUTHORS ChangeLog
-%{_libdir}/%{soname_gtk2}.so.%{sover}*
-
-%files -n %{soname}-devel
-%{_includedir}/%{soname}-0.4/
-%{_libexecdir}/ayatana-indicator-loader3
-%{_libdir}/%{soname}.so
-%{_datadir}/%{name}/
-%{_libdir}/pkgconfig/ayatana-indicator3-0.4.pc
-
-%files -n %{soname_gtk2}-devel
-%{_includedir}/%{soname_gtk2}-0.4/
-%{_libdir}/%{soname_gtk2}.so
-%{_libdir}/pkgconfig/ayatana-indicator-0.4.pc
+%files -n libayatana-indicator%{?psuffix}-devel
+%{_includedir}/libayatana-indicator%{?psuffix}-0.4/
+%{_libdir}/libayatana-indicator%{?psuffix}.so
+%{_libdir}/pkgconfig/ayatana-indicator%{?psuffix}-0.4.pc
+%if "%{flavor}" != "gtk2"
+%{_libexecdir}/libayatana-indicator/
+%{_datadir}/libayatana-indicator/
+%endif
 
 %changelog
