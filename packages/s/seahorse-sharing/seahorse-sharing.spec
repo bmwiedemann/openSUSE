@@ -44,7 +44,7 @@ This package adds sharing of PGP public keys via DNS-SD and HKP.
 
 %prep
 %setup -q
-sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2:" configure
+sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3:" configure
 
 %build
 %configure
