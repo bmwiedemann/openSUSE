@@ -34,8 +34,8 @@ BuildRequires:  python3-testtools
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PrettyTable
 Requires:       python-ldap >= 3.0.0
+Requires:       python-prettytable
 BuildArch:      noarch
 %python_subpackages
 

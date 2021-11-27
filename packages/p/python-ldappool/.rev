@@ -52,4 +52,12 @@
   * Drop py35 jobs</comment>
     <requestid>927593</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>59b43d4170a4171a956b06e16fe1e340</srcmd5>
+    <version>3.0.0</version>
+    <time>1638052947</time>
+    <user>dimstar_suse</user>
+    <comment>- fix requires on renamed prettytable</comment>
+    <requestid>934035</requestid>
+  </revision>
 </revisionlist>
