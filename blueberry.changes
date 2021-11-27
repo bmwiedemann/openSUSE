@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 27 14:57:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4.5:
+  * Add Turn bluetooth on/off option in tray menu.
+  * blueberry-tray.py: Remove menu positioning code.
+  * blueberry-tray.py: Silence a runtime warning.
+  * rfkillMagic: Rewrite safechild in shell script to reduce
+    memory usage.
+  * Added build & install steps to readme file.
+  * l10n: Update POT.
+- Restore Group.
+
+
+-------------------------------------------------------------------
 Tue Jun 29 10:44:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.4.4

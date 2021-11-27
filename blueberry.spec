@@ -18,10 +18,11 @@
 
 %define __requires_exclude typelib\\((St)\\)
 Name:           blueberry
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        A configuration tool for Bluetooth
 License:        GPL-3.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/blueberry
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        blueberry-rfkill.rules
@@ -34,15 +35,15 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3
 Requires:       bluez-tools
 Requires:       gnome-bluetooth >= 3.14
-Requires:       wmctrl
-Recommends:     %{name}-lang
-BuildArch:      noarch
-%glib2_gsettings_schema_requires
 Requires:       python3-dbus-python
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-setproctitle
 Requires:       util-linux
+Requires:       wmctrl
+Recommends:     %{name}-lang
+BuildArch:      noarch
+%glib2_gsettings_schema_requires
 
 %description
 Utility for Bluetooth devices graphical configuration.
