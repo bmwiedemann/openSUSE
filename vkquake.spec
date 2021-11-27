@@ -18,13 +18,13 @@
 
 
 Name:           vkquake
-Version:        1.11.1
+Version:        1.12.1
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/Novum/vkQuake
-Source:         https://github.com/Novum/vkQuake/archive/%{version}/vkQuake-%{version}.tar.gz
+Source:         https://github.com/Novum/vkQuake/archive/refs/tags/%{version}.tar.gz#/vkQuake-%{version}.tar.gz
 Source99:       %{name}.changes
 Source100:      appdata.xml
 Source101:      %{name}.desktop
