@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Nov 16 18:45:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 1.94.1
+  * Highlights:
+    + Fix systemd unit so that udev hotplug events are processed
+    + Report back the selected finger if there is only one
+    + Change PolicyKit strings for clarity
+    + Various fixes to the testsuite
+    + Plenty of translation updates
+- Changes from 1.94.0
+  * Highlights:
+    + Implement suspend/resume handling.
+    + This requires writing "power/persist" and "power/wakeup" in sysfs.
+    + Support libfprint overheat protections
+    + Delete host prints when device prints disappeared
+    + pam: Immediately return success information
+    + Plenty of updated translations thanks to move to Fedora Weblate
+    + Fix possible race when retrieving session information
+    + Fix possible race when a client disconnects
+    + GLib 2.56 compatibility fixes
+- Changes from 1.92.0
+  * Highlights:
+    + fprintd now prevents the same finger to be enrolled twice
+    + Support clearing storage of match-on-chip devices
+    + pam: Cancel authentication on SIGINT (e.g. ctrl+c with sudo)
+    + pam: Always return PAM_AUTHINFO_UNAVAIL for devices without prints
+    + Expose finger status on DBus
+    + Add method to delete only a specific print of a user
+    + Improved error reporting for deletion
+    + Wait for finger removal before cancelling operations
+    + Prefer older prints when garbage collecting
+    + Major improvements to test coverage
+- Remove README.SUSE because rh#1693356 and upstream classified it as not a problem
+
+-------------------------------------------------------------------
 Sat Mar 20 11:19:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix pyton dbus-python build dependency for Leap 15.3 boo#1183818

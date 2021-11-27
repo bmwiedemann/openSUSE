@@ -16,18 +16,16 @@
 #
 
 
-%define gitlabhash da60bddb3e5be024c6c1958437cb13e0ce0ffac8
-
 Name:           fprintd
-Version:        1.90.9
+Version:        1.94.1
 Release:        0
 Summary:        D-Bus service for Fingerprint reader access
 License:        GPL-2.0-or-later
+Group:          Productivity/Security
 URL:            https://fprint.freedesktop.org/
-#Git-Clone:     https://gitlab.freedesktop.org/libfprint/fprintd.git
-Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://gitlab.freedesktop.org/libfprint/fprintd/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Source1:        baselibs.conf
-Source2:        README.SUSE
+BuildRequires:  cmake
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk-doc >= 1.3
 BuildRequires:  intltool
@@ -35,14 +33,14 @@ BuildRequires:  meson >= 0.46.1
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-cairo
-BuildRequires:  python3-dbusmock
 BuildRequires:  python3-dbus-python
+BuildRequires:  python3-dbusmock
 BuildRequires:  python3-libpamtest
 BuildRequires:  python3-pydbus
 BuildRequires:  typelib-1_0-FPrint-2_0
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libfprint-2) >= 1.90.1
+BuildRequires:  pkgconfig(libfprint-2) >= 1.94.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam_wrapper)
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -52,11 +50,13 @@ ExcludeArch:    s390 s390x
 %{?systemd_requires}
 
 %description
-D-Bus service to access fingerprint readers.
+The fprint project provides a central system
+to support consumer fingerprint reader devices.
 
 %package pam
 Summary:        PAM module for fingerprint authentication
 License:        GPL-2.0-or-later
+Group:          Productivity/Security
 Requires:       %{name} = %{version}
 Requires(postun): coreutils
 Requires(postun): pam
@@ -89,6 +89,7 @@ authentication.
 %package devel
 Summary:        Development files for %{name}
 License:        GFDL-1.1-or-later
+Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Requires:       gtk-doc
 BuildArch:      noarch
@@ -100,6 +101,7 @@ fingerprint readers access.
 %package doc
 Summary:        Development documents of fprintd
 License:        GPL-2.0-or-later
+Group:          Productivity/Security
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -109,13 +111,10 @@ This package contains Development documents for fprintd
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version}-%{gitlabhash}
-cp %{SOURCE2} .
+%setup -q -n %{name}-v%{version}
 
 %build
-%meson \
-  -Dgtk_doc=true \
-  %{nil}
+%meson -Dgtk_doc=true -Dpam=true -Dpam_modules_dir=%{_pam_moduledir}
 %meson_build
 
 %install
@@ -126,9 +125,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_localstatedir}/lib/fprint
 %find_lang %{name} %{?no_lang_C}
-
-%check
-%meson_test
 
 %pre
 %service_add_pre fprintd.service
@@ -150,7 +146,6 @@ fi
 %files
 %license COPYING
 %doc README AUTHORS TODO
-%doc README.SUSE
 %{_sbindir}/rc%{name}
 %{_bindir}/fprintd-*
 %{_libexecdir}/fprintd
@@ -166,7 +161,7 @@ fi
 
 %files pam
 %doc pam/README
-/%{_lib}/security/pam_fprintd.so
+%{_pam_moduledir}/pam_fprintd.so
 %{_mandir}/man8/pam_fprintd.8%{?ext_man}
 
 %files doc
