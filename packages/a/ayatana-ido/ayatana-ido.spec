@@ -16,27 +16,27 @@
 #
 
 
-%define lname   libayatana-ido3-0_4
+%define lname   libayatana-ido3-0_4-0
 %define soname  libayatana-ido3-0.4
 %define sover   0
 %define typelib typelib-1_0-AyatanaIdo3-0_4
 Name:           ayatana-ido
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Ayatana Indicator Display Objects
 License:        GPL-3.0-only AND LGPL-3.0-only AND LGPL-2.1-only
+Group:          System/GUI/Other
 URL:            https://github.com/AyatanaIndicators/ayatana-ido
-Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/AyatanaIndicators/ayatana-ido/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM pkgconfig-requires.patch -- https://github.com/AyatanaIndicators/ayatana-ido/issues/37
-Patch0:         pkgconfig-requires.patch
+# PATCH-FIX-UPSTREAM ayatana-ido-0.9.0-libm.patch -- Link with libm to fix build.
+Patch0:         ayatana-ido-0.9.0-libm.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
-BuildRequires:  mate-common
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.16
-BuildRequires:  pkgconfig(gio-2.0) >= 2.37.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.37.0
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(xorg-macros)
@@ -44,20 +44,22 @@ BuildRequires:  pkgconfig(xorg-macros)
 %description
 Widgets and other objects used for indicators.
 
-%package -n %{lname}-%{sover}
-Summary:        Shared library providing extra GTK+ menu items in system indicators
+%package -n %{lname}
+Summary:        Shared library providing extra GTK menu items in system indicators
+Group:          System/Libraries
 
-%description -n %{lname}-%{sover}
-Shared library providing extra GTK+ menu items for display in
+%description -n %{lname}
+Shared library providing extra GTK menu items for display in
 system indicators.
 
 This package contains shared libraries.
 
 %package -n %{typelib}
 Summary:        Ayatana Indicator Display Objects typelib
+Group:          System/Libraries
 
 %description -n %{typelib}
-Shared library providing extra GTK+ menu items for display in
+Shared library providing extra GTK menu items for display in
 system indicators.
 
 This package provides the GObject Introspection bindings for
@@ -65,12 +67,13 @@ Ayatana Ido.
 
 %package devel
 Summary:        Development files for Ayatana Indicator Display Objects
-Requires:       %{lname}-%{sover} = %{version}
+Group:          Development/Libraries/C and C++
+Requires:       %{lname} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(gobject-introspection-1.0)
 
 %description devel
-Shared library providing extra GTK+ menu items for display in
+Shared library providing extra GTK menu items for display in
 system indicators.
 
 This package contains the development files for Ido.
@@ -79,18 +82,17 @@ This package contains the development files for Ido.
 %autosetup -p1
 
 %build
-NOCONFIGURE=1 mate-autogen
-%configure
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
 
-%post -n %{lname}-%{sover} -p /sbin/ldconfig
-%postun -n %{lname}-%{sover} -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
 
-%files -n %{lname}-%{sover}
+%postun -n %{lname} -p /sbin/ldconfig
+
+%files -n %{lname}
 %license COPYING*
 %{_libdir}/%{soname}.so.%{sover}*
 

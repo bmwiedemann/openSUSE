@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 24 20:55:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.9.0:
+  * Switch to CMake from autotools.
+  * Add better documentation.
+  * data/libayatana-ido3-0.4.pc.in: Add glib-2.0 dependency.
+  * src/idoappointmentmenuitem.c: Construct the basic menu item
+    using the pixbuf property.
+  * src/basicmenuitem.c: Add GdkPixbuf source support for the
+    icon.
+  * src/idoremovablemenuitem.c: Replace grid with box to fix
+    a11y.
+  * src/idolocationmenuitem.c: Fix deprecated g_time_zone_new
+    warning.
+  * Fix a unit test failure on Ubuntu 20.04.
+  * Use consistent Ayatana IDO names. This version of Ayatana IDO
+    breaks NG system indicators before 0.9.x.
+- Drop pkgconfig-requires.patch: merged upstream.
+- Add ayatana-ido-0.9.0-libm.patch: Link with libm to fix build.
+- Restore Group.
+
+-------------------------------------------------------------------
 Thu Jun  3 16:48:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.8.2
