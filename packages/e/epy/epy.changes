@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 27 10:19:32 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 2021.10.23+git.1636702550.2ab1584:
+  * Fixed reset to beginning of row when resizing term and Seamless==True
+  * Implement SeamlessBetweenChapters Squashed commit of the following:
+  * Minor annotation & prevent next page animation on edge of book
+  * Removed Board class
+  * Added TextStructure dataclass
+  * Give styling to images
+  * Better image opening scheme
+  * Refactor parser.get_lines(width) to get_lines(textwidth)
+  * Fixed image cursor on double spread and progress pctg in double spread
+  * Refactor variables
+
+-------------------------------------------------------------------
 Wed Jul 28 23:20:26 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Simplify spec, remove differing python versions from initial package generation

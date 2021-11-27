@@ -1,5 +1,5 @@
 #
-# spec file for package python-epy-reader
+# spec file for package epy
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,16 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           epy
-Version:        2021.7.16
+Version:        2021.10.23+git.1636702550.2ab1584
 Release:        0
 Summary:        CLI ebook reader
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/wustho/epy
-Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%{version}.tar.gz#/epy-%{version}.tar.gz
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-mobi
+# Source:         https://files.pythonhosted.org/packages/source/e/epy-reader/epy-reader-%%{version}.tar.gz#/epy-%%{version}.tar.gz
+Source:         epy-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python3-mobi
+BuildRequires:  python3-setuptools
 Requires:       python3-mobi
 Suggests:       sdcv
 Suggests:       dictd
@@ -47,7 +49,7 @@ CLI Ebook reader. Fork of epr with these extra features:
     Double Spread
 
 %prep
-%setup -q -n epy-reader-%{version}
+%autosetup -p1 -n epy-%{version}
 
 %build
 python3 setup.py build

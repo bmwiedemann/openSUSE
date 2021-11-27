@@ -7,4 +7,22 @@
     <comment>This is a very useful package for reading ebooks on an openSUSE system, with lightweight requirements</comment>
     <requestid>924945</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4c04d4624c6a9298a2d46bc93b39a47</srcmd5>
+    <version>2021.10.23+git.1636702550.2ab1584</version>
+    <time>1638052953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2021.10.23+git.1636702550.2ab1584:
+  * Fixed reset to beginning of row when resizing term and Seamless==True
+  * Implement SeamlessBetweenChapters Squashed commit of the following:
+  * Minor annotation &amp; prevent next page animation on edge of book
+  * Removed Board class
+  * Added TextStructure dataclass
+  * Give styling to images
+  * Better image opening scheme
+  * Refactor parser.get_lines(width) to get_lines(textwidth)
+  * Fixed image cursor on double spread and progress pctg in double spread
+  * Refactor variables</comment>
+    <requestid>934246</requestid>
+  </revision>
 </revisionlist>
