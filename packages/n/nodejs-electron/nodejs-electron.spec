@@ -50,7 +50,7 @@ ExcludeArch:    %{ix86}
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.6.1
+Version:        13.6.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -292,6 +292,10 @@ ln -sf %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 # Fix shim header generation
 sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
+
+%if %{with systemicu}
+find third_party/icu -type f ! -name "*.gn" -a ! -name "*.gni" -delete
+%endif
 
 %build
 # GN sets lto on its own and we need just ldflag options, not cflags

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 23 17:01:09 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.6.2
+  https://github.com/electron/electron/releases/tag/v13.6.2
+- Fix for CVE-2021-37998
+- Fix for CVE-2021-38001
+- Fix for CVE-2021-38002
+- Fix for CVE-2021-38003
+- Fixed building on Tumbleweed
+
+-------------------------------------------------------------------
 Wed Nov 10 06:53:45 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Do not build with H264

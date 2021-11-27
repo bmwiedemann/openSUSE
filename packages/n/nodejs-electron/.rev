@@ -93,4 +93,19 @@
 </comment>
     <requestid>930713</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>17083df8c598b2be74d0a3041d048aed</srcmd5>
+    <version>13.6.2</version>
+    <time>1638052952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.6.2
+  https://github.com/electron/electron/releases/tag/v13.6.2
+- Fix for CVE-2021-37998
+- Fix for CVE-2021-38001
+- Fix for CVE-2021-38002
+- Fix for CVE-2021-38003
+- Fixed building on Tumbleweed
+</comment>
+    <requestid>934173</requestid>
+  </revision>
 </revisionlist>
