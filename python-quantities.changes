@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 27 20:40:23 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 0.12.5:
+  * Added preferred units support for .rescale
+  * Added dimensionless unit 'lsb' (least significant bit)
+  * Added SI multiples for Kelvin
+  * Fixed invalid escape sequence
+
+-------------------------------------------------------------------
 Fri Apr 23 08:06:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't build for Python 3.6, due to no NumPy.
