@@ -76,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1637672074.afbb8ee35
+Version:        4.6.1637913492.4e7a64436
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -607,6 +607,8 @@ fi
 # apparmor profile
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.share.openqa.script.worker
+%dir %{_sysconfdir}/apparmor.d/local
+%config %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.worker
 # init
 %dir %{_unitdir}
 %{_systemdgeneratordir}

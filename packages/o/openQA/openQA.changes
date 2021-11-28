@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 26 07:58:20 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1637913492.4e7a64436:
+  * apparmor: Allow local additions to the worker profile
+  * Handle chown in build_autoinst.sh
+  * ci: Manual fullstack tests via GHA
+
+-------------------------------------------------------------------
 Tue Nov 23 16:14:02 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1637672074.afbb8ee35:
