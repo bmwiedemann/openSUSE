@@ -24,7 +24,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
@@ -43,7 +43,6 @@ Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
 Patch6:         %{name}-fips140-2.3.2.patch
 Patch9:         0001-preform-deferred-authentication-in-the-background.patch
-BuildRequires:  iproute2
 BuildRequires:  libselinux-devel
 BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
@@ -54,7 +53,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
 Requires:       sysvinit-tools
 %systemd_ordering
@@ -146,7 +144,6 @@ export LDFLAGS
 export IPROUTE="%{_sbindir}/ip"
 %endif
 %configure \
-	--enable-iproute2		\
 	--enable-x509-alt-username	\
 	--enable-pkcs11			\
 	--enable-systemd		\
@@ -238,6 +235,7 @@ rm -f %{_sysconfdir}/sysconfig/openvpn || :
 %doc sample/sample-keys
 %doc sample/sample-scripts
 %doc doc/management-notes.txt
+%{_mandir}/man5/openvpn-examples.5%{?ext_man}
 %{_mandir}/man8/openvpn.8%{?ext_man}
 %config(noreplace) %{_sysconfdir}/openvpn/
 %dir %{_tmpfilesdir}
