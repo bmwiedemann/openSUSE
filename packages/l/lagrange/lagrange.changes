@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov 27 13:43:18 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.9.0
+  - New features:
+    - Added a toolbar button for toggling the left sidebar.
+    - Added an unsplit button in the toolbar when in split view mode.
+    - Choose parent folder when creating or editing a bookmark.
+    - Support for 24-bit RGB ANSI color sequences.
+    - Support for ANSI background color escapes (disabled by default).
+    - UI language for Turkish.
+  - Changes and enhancements:
+    - Adjusted font styles of heading levels 2 and 3.
+    - Sidebar context menus also appear when clicking over the sidebar
+      background. In this case the menu contains general functions not related
+      to any item.
+    - Feeds tab in the sidebar has a redesigned action toolbar with "Mark All as
+      Read", and dropdown menu and keyboard shortcuts for changing the filter
+      mode.
+    - Feeds tab remembers the unread/all filter mode persistently.
+    - ANSI foreground colors are modified to match colored theme backgrounds
+      (e.g., Sepia).
+    - Navigating back and forward in history will skip input query prompts
+      (status 1x), showing only the query results.
+    - Ctrl+A now selects all text in input fields.
+    - The resource bundle (resources.lgr) is now a regular ZIP archive. This
+      allows it to do double duty as a fontpack containing the built-in fonts.
+      The archive contains a version number to avoid use of obsolete resources.
+  - Fixes:
+    - Fixed layout issues related to footer action buttons. Sometimes the
+      buttons would overlap page content.
+    - Fixed handling duplicate feed entries: if multiple entries in a feed have
+      the same URL, only use the first one.
+
+-------------------------------------------------------------------
 Mon Nov 22 07:22:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.8.3
