@@ -86,4 +86,17 @@
   * CVE-2021-31799: A command injection vulnerability in RDoc</comment>
     <requestid>930726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c0a4291198e8085dacf5e44def6c8cff</srcmd5>
+    <version>2.7.5</version>
+    <time>1638131396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.5 (boo#1193081 boo#1193080 boo#1193035)
+  https://www.ruby-lang.org/en/news/2021/11/24/ruby-2-7-5-released/
+  - CVE-2021-41817: Regular Expression Denial of Service
+    Vulnerability of Date Parsing Methods
+  - CVE-2021-41816: Buffer Overrun in CGI.escape_html
+  - CVE-2021-41819: Cookie Prefix Spoofing in CGI::Cookie.parse</comment>
+    <requestid>933750</requestid>
+  </revision>
 </revisionlist>
