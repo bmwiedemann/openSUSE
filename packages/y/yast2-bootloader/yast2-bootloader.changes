@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 08:29:34 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- bnc#1193016
+  - fixed crash due to missing require
+- 4.4.9 
+
+-------------------------------------------------------------------
 Thu Nov 18 10:26:38 UTC 2021 - Michal Filka <mfilka@suse.com>
 
 - bnc#1092950
