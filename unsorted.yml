@@ -1090,6 +1090,10 @@ unsorted:
   - axel 
   - axis 
   - axis-manual 
+  - ayatana-appindicator-sharp 
+  - ayatana-appindicator-sharp-devel 
+  - ayatana-appindicator3-sharp 
+  - ayatana-appindicator3-sharp-devel 
   - ayatana-ido-devel 
   - aytests-tests 
   - azote 
@@ -9537,6 +9541,10 @@ unsorted:
   - libax25-common 
   - libax25-devel 
   - libax25io0 
+  - libayatana-appindicator-devel 
+  - libayatana-appindicator1 
+  - libayatana-appindicator3-1 
+  - libayatana-appindicator3-devel 
   - libayatana-ido3-0_4-0 
   - libayatana-ido3-0_4-0-32bit: [x86_64] 
   - libayatana-indicator-devel 
@@ -41288,6 +41296,8 @@ unsorted:
   - typelib-1_0-AtrilDocument-1_5_0 
   - typelib-1_0-AtrilView-1_5_0 
   - typelib-1_0-Avahi-0_6 
+  - typelib-1_0-AyatanaAppIndicator-0_1 
+  - typelib-1_0-AyatanaAppIndicator3-0_1 
   - typelib-1_0-AyatanaIdo3-0_4 
   - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
