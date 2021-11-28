@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  7 03:16:37 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.57.0
+  * See https://rclone.org/changelog/#v1-57-0-2021-11-01 for the
+    complete changelog.
+  * Major new features
+    - Use go1.17 for building and make go1.14 the minimum supported.
+    - fs: Move with --ignore-existing will not delete skipped files.
+    - touch: Add support for touching files in directory, with
+      recursive option, filtering and --dry-run/-i.
+
+-------------------------------------------------------------------
 Wed Sep  1 06:56:08 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 1.56.1
