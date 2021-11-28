@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 12:56:23 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- During autoupgrade merge the selected product workflow in order
+  to execute 2nd stage modules (bsc#1192437)
+- 4.4.23
+
+-------------------------------------------------------------------
 Mon Nov 22 16:58:45 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not process the <add-on/> section during the 2nd stage
