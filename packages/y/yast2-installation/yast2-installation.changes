@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:13:23 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Remove no longer used extra warning about destructive actions
+  before starting the installation process (related to bsc#1057437).
+- 4.4.23
+
+-------------------------------------------------------------------
 Fri Nov 12 14:08:02 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - bsc#1192626:
