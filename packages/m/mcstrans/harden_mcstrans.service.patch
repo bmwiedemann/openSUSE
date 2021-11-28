@@ -1,11 +1,12 @@
-Index: mcstrans-3.2/src/mcstrans.service
+Index: mcstrans-3.3/src/mcstrans.service
 ===================================================================
---- mcstrans-3.2.orig/src/mcstrans.service
-+++ mcstrans-3.2/src/mcstrans.service
-@@ -7,6 +7,16 @@ Before=shutdown.target sysinit.target
+--- mcstrans-3.3.orig/src/mcstrans.service
++++ mcstrans-3.3/src/mcstrans.service
+@@ -7,7 +7,17 @@ Before=shutdown.target sysinit.target
  Conflicts=shutdown.target
  
  [Service]
+-ExecStart=/sbin/mcstransd -f
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectHostname=true
@@ -16,6 +17,7 @@ Index: mcstrans-3.2/src/mcstrans.service
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- ExecStart=/sbin/mcstransd -f
++ExecStart=/usr/sbin/mcstransd -f
  RuntimeDirectory=setrans
  
+ [Install]

@@ -74,6 +74,7 @@ mkdir -p %{buildroot}%{_datadir}/doc/packages/%{name}
 cp -r share/examples %{buildroot}%{_datadir}/doc/packages/%{name}
 mkdir -p %{buildroot}%{_sbindir}
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+mv %{buildroot}/sbin/mcstransd %{buildroot}/usr/sbin/mcstransd
 
 %post
 %service_add_post mcstrans.service
@@ -89,7 +90,7 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %files
 %{_unitdir}/mcstrans*.service
-/sbin/mcstransd
+/usr/sbin/mcstransd
 %{_sbindir}/rcmcstrans
 %{_mandir}/man5/*.5%{?ext_man}
 %{_mandir}/ru/man5/*.5%{?ext_man}
