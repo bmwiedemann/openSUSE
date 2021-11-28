@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 26 12:31:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * sshuttle.service
+
+-------------------------------------------------------------------
 Fri Jun 18 10:08:51 UTC 2021 - Loic Devulder <ldevulder@suse.com>
 
 - Sshuttle service should be started after firewalld 
