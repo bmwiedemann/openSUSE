@@ -80,12 +80,14 @@ Includes IBM's TPM 2.0 TSS C header files
 autoreconf -i
 %configure --enable-hwtpm --enable-debug --disable-static
 cd utils
+sed -i -e "s|/gsa/yktgsa/home/k/g/kgold/tpm2/utils|$PWD|" certificates/rootcerts.txt
 %{_libexecdir}/%{name}/tpm_server & tpm_server="$!"
 CCFLAGS="%{optflags}" make LNAFLAGS="-Wl,-rpath,%{_libdir}" %{?_smp_mflags}
 testfailed=0
-TPM_INTERFACE_TYPE=socsim LD_LIBRARY_PATH=.libs ./reg.sh || testfailed=$?
+TPM_INTERFACE_TYPE=socsim LD_LIBRARY_PATH=.libs ./reg.sh -a || testfailed=$?
 kill "$tpm_server" || :
 [ "$testfailed" -eq 0 ]
+sed -i -e "s|$PWD|%{_datadir}/%{name}|" certificates/rootcerts.txt
 
 %install
 install -m 644 -D -t %{buildroot}%{_prefix}/lib/udev/rules.d/ %{SOURCE1}
