@@ -138,7 +138,7 @@ This package add sendto integration for Nemo.
 %prep
 %setup -q
 sed -i '1s/python.*/python3/' apps/%{name}-*
-echo -e 'NotShowIn=KDE;GNOME;' >> data/%{name}.desktop.in
+echo -e 'NotShowIn=KDE;GNOME;Pantheon;' >> data/%{name}.desktop.in
 
 %build
 %configure \
