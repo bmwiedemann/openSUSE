@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Nov 28 06:06:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.2
+  * General:
+    * Add: Multiplay Options menu
+    * Add: Hotkey to "Select all land combat units, with
+      health >50%, not assigned to any group"
+    * Fix: Reject certain crashy OpenGL drivers, and fallback to
+      other backends
+    * Fix: Handle exceptions creating Vulkan device
+    * Fix: Repairs & Builders: Don't move needlessly
+    * Fix: Re-ordering construction units to build something
+      shouldn't cancel it
+    * Fix: Don't reset attack range under commander
+    * Fix: Ignore rearm order when already rearming
+    * Fix: Don't show green overlay when impossible to build
+      next module
+    * Fix: Don't show modules in build list when unable to build
+      more buildings of that type
+    * Fix: Don't retreat repair turrets (RT) to other RT
+    * Fix: Improve resource cleanup on shutdown
+    * Fix: Prevent DIVIDE_BY_ZERO in displayBigSlider
+    * Fix: Various savegame / autosave issues
+    * Fix: Remove Command Relay structure requirement for Command
+      Turret research
+    * Fix: Partial UI soft-lock with certain in-game menus
+    * Fix: Preserve ordering of sync msgs in MP; fixes Factory
+      set Hold Position bug
+    * Fix: Toggling debug mode in skirmish as spectator
+    * Fix: Ultimate Scavengers building an absurd amount of
+      factories
+  * Graphics:
+    * Fix: Missing parts on the Nexus Link turret
+  * AI:
+    * Fix: Rip out mobile repair tactics from Cobra AI
+  * Scripting:
+    * Fix: Use constants instead of plain numbers
+  * Multiplayer:
+    * Add: Add 7-player map "Thales"
+  * MP-Balance:
+    * Change: Adjust Heavy Plasma Launcher:
+      Reduce damage 250 -> 225, increase firePause 300 -> 350,
+      reduce periodical Damage Radius 128 -> 64
+    * Change: Adjust Incendiary Mortar: "researchPoints":
+      3600 -> 4800, "researchPower": 112 -> 150
+  * Other:
+    * Fix: pie_import to handle filepaths properly in
+      Blender 2.9x .PIE plugin
+
+-------------------------------------------------------------------
 Sat Nov 13 18:04:39 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.1
