@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 25 13:59:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- finish UsrMerge (bsc#1191089)
+
+-------------------------------------------------------------------
+Wed Nov 24 16:27:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Add run_init.pamd.patch to adjust to SUSE pam setup. Removed
+  run_init_use_pam_keyinit.patch and included it in the new patch
+  (bsc#1190098)
+
+-------------------------------------------------------------------
 Thu Nov 11 14:15:29 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.3

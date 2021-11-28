@@ -39,8 +39,8 @@ Source7:        selinux-polgengui.console
 Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz
 Source9:        newrole.pam
 Patch0:         make_targets.patch
-Patch1:         run_init_use_pam_keyinit.patch
 Patch2:         get_os_version.patch
+Patch3:         run_init.pamd.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -163,8 +163,8 @@ system-config-selinux is a utility for managing the SELinux environment.
 setools_python_pwd="$PWD/selinux-python-%{version}"
 semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
@@ -211,6 +211,7 @@ rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
    %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 %endif
 cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
+mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 
 %post newrole
 %set_permissions %{_bindir}/newrole
@@ -219,13 +220,13 @@ cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
 %verify_permissions -e %{_bindir}/newrole
 
 %files
-/sbin/restorecon
-/sbin/setfiles
-/sbin/restorecon_xattr
 %{_bindir}/semodule_expand
 %{_bindir}/semodule_link
 %{_bindir}/semodule_package
 %{_bindir}/semodule_unpackage
+%{_sbindir}/restorecon
+%{_sbindir}/setfiles
+%{_sbindir}/restorecon_xattr
 %{_sbindir}/fixfiles
 %{_sbindir}/load_policy
 %dir %{_libexecdir}/selinux
