@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 17 10:18:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_smartd.service.patch
+  Modified:
+  * smartd_generate_opts.service
+
+-------------------------------------------------------------------
 Tue Aug 24 14:32:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - smartmontools-drivedb_h-update.sh: Fix update needed logic.
