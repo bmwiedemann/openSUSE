@@ -20,7 +20,7 @@
 
 %define sover   10
 Name:           linphone
-Version:        5.0.49
+Version:        5.0.53
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-or-later
