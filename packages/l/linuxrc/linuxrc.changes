@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Nov 25 09:01:16 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#278
+- allow option matching based on patterns (jsc#SLE-21308)
+- 8.6
+
+--------------------------------------------------------------------
 Mon Sep 13 07:16:12 UTC 2021 - mvidner@suse.cz
 
 - merge gh#openSUSE/linuxrc#275
