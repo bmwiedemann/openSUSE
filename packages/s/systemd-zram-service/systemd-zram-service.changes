@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 12:39:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * zramswap.service
+
+-------------------------------------------------------------------
 Mon Dec 17 22:59:00 UTC 2018 - malcolmlewis@opensuse.org
 
 - Improve package description.
