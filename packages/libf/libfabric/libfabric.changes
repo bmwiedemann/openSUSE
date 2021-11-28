@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 22 07:57:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.14.0
+  - Add time stamps to log messages
+  - Fix gdrcopy calculation of memory region size when aligned
+  - Allow user to disable use of p2p transfers
+  - Update fi_tostr print FI_SHARED_CONTEXT text instead of value
+  - Update fi_tostr to output field names matching header file names
+  - Fix narrow race condition in ofi_init
+  - Add new fi_log_sparse API to rate limit repeated log output
+  - Define memory registration for buffers used for collective operations
+  - EFA, SHM, TCP, RXM, and verbs fixes
+
+-------------------------------------------------------------------
 Wed Nov  3 07:53:20 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable PSM3 provider (jsc#SLE-18754)
