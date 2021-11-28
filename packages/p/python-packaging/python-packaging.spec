@@ -29,7 +29,7 @@
 %define mypython python
 %global skip_python2 1
 Name:           python-packaging%{psuffix}
-Version:        21.2
+Version:        21.3
 Release:        0
 Summary:        Core utilities for Python packages
 License:        Apache-2.0

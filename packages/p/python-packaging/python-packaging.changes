@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:16:45 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 21.3:
+  * Add a pp3-none-any tag (gh#pypa/packaging#311)
+  * Replace the blank pyparsing 3 exclusion with a 3.0.5 exclusion
+    (gh#pypa/packaging#481), (gh#pypa/packaging#486)
+  * Fix a spelling mistake (gh#pypa/packaging#479)
+
+-------------------------------------------------------------------
 Sat Nov  6 18:30:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.2:
