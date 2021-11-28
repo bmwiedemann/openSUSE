@@ -21,7 +21,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-fastparquet
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
