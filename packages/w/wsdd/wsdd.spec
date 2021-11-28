@@ -17,7 +17,7 @@
 
 
 Name:           wsdd
-Version:        0.6.4
+Version:        0.7.0
 Release:        0
 Summary:        A Web Service Discovery host daemon
 License:        MIT
