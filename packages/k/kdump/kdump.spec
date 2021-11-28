@@ -41,6 +41,7 @@ Patch13:        %{name}-do-not-iterate-past-end-of-string.patch
 Patch14:        %{name}-fix-incorrect-exit-code-checking.patch
 Patch15:        %{name}-avoid-endless-loop-on-EAI_AGAIN.patch
 Patch16:        %{name}-install-real-resolv.conf.patch
+Patch17:        %{name}-Store-kdump-initrd-in-kernel-image-path.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -63,7 +64,9 @@ Requires:       makedumpfile
 Requires:       openssh
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
-PreReq:         /usr/bin/mkdir /usr/bin/rm /usr/bin/touch
+PreReq:         /usr/bin/mkdir
+PreReq:         /usr/bin/rm
+PreReq:         /usr/bin/touch
 Recommends:     cifs-utils
 Recommends:     nfs-client
 # update should detect the split-off from kexec-tools
@@ -101,6 +104,7 @@ after a crash dump has occured.
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"
