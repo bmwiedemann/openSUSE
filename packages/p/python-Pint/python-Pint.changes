@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Nov 27 20:37:27 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * added version requirement to numpy
+
+- update to version 0.18:
+  * Implement use of Quantity in the Quantity constructor (convert to
+    specified units).  (Issue #1231)
+  * Rename .readthedocs.yml to .readthedocs.yaml, update MANIFEST.in
+    (Issue #1311)
+  * Fix a few small typos.  (Issue #1308)
+  * Fix babel format for `Unit`.  (Issue #1085)
+  * Fix handling of positional max/min arguments in clip function.
+    (Issue #1244)
+  * Fix string formatting of numpy array scalars.
+  * Fix default format for Measurement class (Issue #1300)
+  * Fix parsing of pretty units with same exponents but different
+    sign. (Issue #1360)
+  * Convert the application registry to a wrapper object (Issue #1365)
+  * Add documentation for the string format options.  (Issue #1357,
+    #1375, thanks keewis)
+  * Support custom units formats.  (Issue #1371, thanks keewis)
+  * Autoupdate pre-commit hooks.
+  * Improved the application registry.  (Issue #1366, thanks keewis)
+  * Improved testing isolation using pytest fixtures.
+  * Breaking Changes
+    + pint no longer supports Python 3.6
+    + Minimum Numpy version supported is 1.17+
+    + Add supports for type hints for Quantity class. Quantity is now
+      a Generic (PEP560).
+    + Add support for
+      [PEP561](https://www.python.org/dev/peps/pep-0561/) (Package
+      Type information)
+
+-------------------------------------------------------------------
 Mon Apr 19 04:13:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.17:

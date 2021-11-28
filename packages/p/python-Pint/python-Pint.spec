@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-Pint
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
@@ -36,10 +36,10 @@ Requires:       python-importlib-metadata
 Requires:       python-importlib-resources
 Requires:       python-packaging
 Requires:       python-uncertainties >= 3.0
-Recommends:     python-numpy
+Recommends:     python-numpy >= 1.17
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-subtests}

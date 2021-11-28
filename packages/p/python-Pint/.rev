@@ -203,4 +203,12 @@
 - No longer build for Python 3.6, due to no NumPy.</comment>
     <requestid>886518</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4b74e66d5d74faac25fd6c2ba3283dad</srcmd5>
+    <version>0.18</version>
+    <time>1638131423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934421</requestid>
+  </revision>
 </revisionlist>
