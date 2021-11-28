@@ -218,4 +218,17 @@
 </comment>
     <requestid>932807</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ab41ca45c93816960a179d60e4a7e566</srcmd5>
+    <version>11.1.1</version>
+    <time>1638131415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.1.1
+  * Changes of version 11.1.1
+    = Fix broken geometry of SECTION SIGN (U+00A7)
+      under extra-wide widths (#1252).
+    = Fix broken geometry of K under extra-wide widths (#1253).
+</comment>
+    <requestid>934366</requestid>
+  </revision>
 </revisionlist>
