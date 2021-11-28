@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python36 1
 Name:           python-quantities
-Version:        0.12.4
+Version:        0.12.5
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
@@ -58,6 +58,8 @@ rm quantities/tests/test_umath.py
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license doc/user/license.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/quantities
+%{python_sitelib}/quantities/*
+%{python_sitelib}/quantities-%{version}-py*.egg-info
 
 %changelog
