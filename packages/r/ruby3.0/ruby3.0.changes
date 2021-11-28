@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 25 11:23:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.0.3 (boo#1193081 boo#1193080 boo#1193035)
+  https://www.ruby-lang.org/en/news/2021/11/24/ruby-3-0-3-released/
+  - CVE-2021-41817: Regular Expression Denial of Service
+    Vulnerability of Date Parsing Methods
+  - CVE-2021-41816: Buffer Overrun in CGI.escape_html
+  - CVE-2021-41819: Cookie Prefix Spoofing in CGI::Cookie.parse
+
+-------------------------------------------------------------------
 Wed Nov 10 17:02:48 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - provide the correct rubygems version 

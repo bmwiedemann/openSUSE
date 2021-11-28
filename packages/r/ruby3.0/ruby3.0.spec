@@ -25,7 +25,7 @@ Name:           ruby3.0
 ####
 
 %define patch_level p0
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 %define pkg_version %{version}
 # make the exported API version explicit
