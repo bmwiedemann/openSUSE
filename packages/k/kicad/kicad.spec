@@ -26,7 +26,7 @@
 # symbol libraries from version 5.0.0
 %define compatversion 5.0.0
 Name:           kicad
-Version:        5.1.11
+Version:        5.1.12
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
