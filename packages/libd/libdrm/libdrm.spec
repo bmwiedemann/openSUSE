@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.107
+Version:        2.4.109
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -308,6 +308,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{_bindir}/exynos_fimg2d_event
 %{_bindir}/exynos_fimg2d_perf
 %endif
+%{_bindir}/amdgpu_stress
 %{_bindir}/kms-steal-crtc
 %{_bindir}/kms-universal-planes
 %{_bindir}/kmstest

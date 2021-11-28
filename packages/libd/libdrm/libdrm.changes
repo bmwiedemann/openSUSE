@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:18:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.109:
+  * amdgpu: add new function to get fd
+  * radeon: remove duplicate struct declaration
+  * xf86drm: fix compiler warnings
+  * ci fixes 
+
+-------------------------------------------------------------------
+Wed Nov 24 20:50:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.108:
+  * amdgpu: add amdgpu_stress utility v2
+  * amdgpu: add marketing names from 21.30
+  * amdgpu: add new marketing name
+  * amdgpu: Make marketing names consistent
+  * amdgpu: use drmCloseBufferHandle
+  * build: bump version to 2.4.108
+  * drm_fourcc: sync drm_fourcc with latest drm-next kernel
+  * etnaviv: use drmCloseBufferHandle
+  * exynos: use drmCloseBufferHandle
+  * Fix -Werror=format build errors on FreeBSD
+  * freedreno: use drmCloseBufferHandle
+  * headers: drm: Sync with drm-next
+  * intel: Do not assert on unknown chips in drm_intel_decode_context_alloc
+  * intel: Drop legacy execbuffer support
+  * intel: sync ADL-S PCI IDs with kernel
+  * intel: Sync pci ids
+  * intel: use drmCloseBufferHandle
+  * man: refer to drmCloseBufferHandle instead of DRM_IOCTL_GEM_CLOSE
+  * meson: Build libdrm.so as an unversioned lib on Android.
+  * meson: Don't build libkms for Android.
+  * nouveau: print bo address in the GPU/CPU vm and its size
+  * nouveau: use drmCloseBufferHandle
+  * omap: use drmCloseBufferHandle
+  * radeon: use drmCloseBufferHandle
+  * tegra: use drmCloseBufferHandle
+  * test/amdgpu: Bob to Alice copy should be TMZ in secure bounce test
+  * tests/amdgpu: Fix TMZ secure bounce test
+  * xf86drm: add GEM_CLOSE ioctl wrapper
+  * xf86drm: add iterator API for DRM/KMS IN_FORMATS blobs
+  * xf86drm: fix mem leak in drm_usb_dev_path()
+  * xf86drmMode: make drm_property_type_is arg const
+  * xf86drmMode: simplify drm_property_type_is
+  * xf86drmMode: switch to standard inline qualifier
+  * xf86drm: Update drmGetFormatModifierNameFromArm to handle AFRC
+
+-------------------------------------------------------------------
 Mon Sep 27 13:39:28 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - covers jira#SLE/SLE-18743
