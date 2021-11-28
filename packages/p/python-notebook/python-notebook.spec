@@ -36,7 +36,7 @@ BuildArch:      noarch
 %define         skip_python2 1
 %define         plainpython python
 Name:           python-notebook%{psuffix}
-Version:        6.4.5
+Version:        6.4.6
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause

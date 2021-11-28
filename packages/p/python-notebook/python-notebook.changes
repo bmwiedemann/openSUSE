@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 27 20:06:28 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.4.6:
+  * Bugs fixed
+    + Fix asyncio error when opening notebooks #6221 (@dleen)
+    + Change to use a universal Chinese translation on certain words
+      #6218 (@jackexu)
+    + Fix Chinese translation typo #6211 (@maliubiao
+    + Fix send2trash tests failing on Windows #6127 (@dolfinus)
+  * Maintenance and upkeep improvements
+    + TST: don't look in user site for serverextensions #6233
+      (@bnavigator)
+    + Enable terminal tests as pywinpty is ported for python 3.9 #6228
+      (@nsait-linaro)
+
+-------------------------------------------------------------------
 Fri Nov 12 23:02:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Reenable libalternatives
