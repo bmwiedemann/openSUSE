@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.2.4 (changes since 0.2.1):
+  * Fix building with GCC 10+.
+  * Fix for Prosody servers, which don't have services on
+    subdomains.
+
+-------------------------------------------------------------------
+Wed May 13 18:11:46 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.2.1 (changes since 0.0+git20171231):
+  * Always seek to prefer latest spec.
+  * Some plumbing and header injection.
+  * Add OOB Data to im messages.
+  * Fix some memory leaks and premature transfer closure.
+  * Makefile fixes.
+- Drop support for openSUSE older than Leap 15.x.
+
+-------------------------------------------------------------------
+Thu Mar 15 16:19:49 UTC 2018 - sor.alexei@meowr.ru
+
+- Initial package.
