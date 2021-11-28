@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1637851285.25850081
+Version:        4.6.1638007345.ae6eed2a
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -142,6 +142,15 @@ Requires:       qemu-x86 >= 4.0.0
 %description qemu-x86
 Convenience package providing os-autoinst and qemu-x86 dependencies.
 %endif
+
+%package swtpm
+Summary:        Convenience package providing os-autoinst+swtpm
+Group:          Development/Tools/Other
+Requires:       os-autoinst
+Requires:       swtpm
+
+%description swtpm
+Convenience package providing os-autoinst and swtpm dependencies.
 
 %package s390-deps
 Summary:        Convenience package providing os-autoinst + s390 worker jumphost deps
