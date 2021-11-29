@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 20:07:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.3:
+  + Fix various HTTP/2 issues.
+  + Error when libsoup2 has been loaded before libsoup3.
+  + Fix memory leak when using TLS.
+
+-------------------------------------------------------------------
 Fri Nov  5 11:40:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require libsoup-3_0-0 instead of libsoup by in the devel package:

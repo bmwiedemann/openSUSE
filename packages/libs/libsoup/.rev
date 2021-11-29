@@ -1049,4 +1049,15 @@
   but more explicit and clearer. (forwarded request 929647 from dimstar)</comment>
     <requestid>929705</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>ea67844b15348443af02890b1050b1c1</srcmd5>
+    <version>3.0.3</version>
+    <time>1638203297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3:
+  + Fix various HTTP/2 issues.
+  + Error when libsoup2 has been loaded before libsoup3.
+  + Fix memory leak when using TLS. (forwarded request 933576 from iznogood)</comment>
+    <requestid>934067</requestid>
+  </revision>
 </revisionlist>
