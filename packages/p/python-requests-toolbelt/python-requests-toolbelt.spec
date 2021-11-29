@@ -25,6 +25,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/requests/toolbelt
 Source:         https://files.pythonhosted.org/packages/source/r/requests-toolbelt/requests-toolbelt-%{version}.tar.gz
+# Replace expired test certificate
+Source1:        test_cert.p12
 Patch0:         fix-tests.patch
 # PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
 # remove dependency on the external mock package
@@ -54,6 +56,7 @@ some idiosyncracies prevent effective or sane testing on that version.
 
 %prep
 %autosetup -p1 -n requests-toolbelt-%{version}
+cp %{SOURCE1} tests/certs
 
 rm -rf requests_toolbelt.egg-info
 # requires network access

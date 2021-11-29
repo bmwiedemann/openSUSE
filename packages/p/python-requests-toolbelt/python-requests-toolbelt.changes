@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 29 04:35:08 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Regenerate test_certs.p12 due to the upstream certificate expiring
+
+-------------------------------------------------------------------
 Thu Feb 11 16:08:10 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the crypto policies for the test-suite
