@@ -7685,7 +7685,6 @@ unsorted:
   - jupyter-jupyterlab-ipyscales 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-templates 
-  - jupyter-jupyterlab_github 
   - jupyter-jupytext 
   - jupyter-jupytext-jupyterlab 
   - jupyter-lineup-widget 
@@ -15092,6 +15091,9 @@ unsorted:
   - lsyncd 
   - ltrace 
   - ltrace-32bit: [x86_64] 
+  - lttng-modules 
+  - lttng-modules-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - lttng-modules-kmp-pae: [i586] 
   - lttng-tools 
   - lttng-tools-devel 
   - lttng-ust-devel 
@@ -23883,6 +23885,7 @@ unsorted:
   - python36-setuptools 
   - python36-setuptools-declarative-requirements 
   - python36-setuptools-git 
+  - python36-setuptools-rust 
   - python36-setuptools-version-command 
   - python36-setuptools-wheel 
   - python36-setuptools_scm 
@@ -26800,6 +26803,7 @@ unsorted:
   - python38-setupmeta 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
+  - python38-setuptools-rust 
   - python38-setuptools-version-command 
   - python38-setuptools-wheel 
   - python38-setuptools_scm 
@@ -29934,6 +29938,7 @@ unsorted:
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
+  - python39-setuptools-rust 
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
   - python39-setuptools_scm 
