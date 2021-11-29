@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 26 11:10:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Revert last change, turns out this is what breaks locking
+  in Budgie desktop
+
+-------------------------------------------------------------------
 Fri Nov  5 09:08:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using a boolean dependency Requires for gnome-session

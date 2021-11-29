@@ -1871,4 +1871,13 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   to allow Budgie-only installation (forwarded request 930487 from gmbr3)</comment>
     <requestid>930498</requestid>
   </revision>
+  <revision rev="211" vrev="3">
+    <srcmd5>6af03209f4893a1751ade074303acf1a</srcmd5>
+    <version>41.1</version>
+    <time>1638203300</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert last change, turns out this is what breaks locking
+  in Budgie desktop (forwarded request 934028 from gmbr3)</comment>
+    <requestid>934073</requestid>
+  </revision>
 </revisionlist>
