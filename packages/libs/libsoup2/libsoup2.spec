@@ -18,7 +18,7 @@
 
 Name:           libsoup2
 %define _name libsoup
-Version:        2.74.1
+Version:        2.74.2
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later

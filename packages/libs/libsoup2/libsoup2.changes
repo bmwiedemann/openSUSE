@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 21:45:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.2:
+  + Error when libsoup3 is already loaded before libsoup2.
+
+-------------------------------------------------------------------
 Sun Oct 24 17:56:29 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.1:
