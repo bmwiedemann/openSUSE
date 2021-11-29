@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 25 21:11:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.0:
+  + Added API to obtain the wl_resource for SHM exported buffers.
+  + Added unstable DMA-BUF pool API for buffer management.
+  + Fixed UI process getting stuck when navigating across different
+    security origins.
+  + Fixed invalid usage of Wayland client connections in the nested
+    compositor which caused crashes in some situations.
+  + Made it easier to override where Meson looks for
+    wayland-scanner during cross-compilation, using a native
+    machine file.
+
+-------------------------------------------------------------------
 Fri Sep 17 19:04:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.0:
