@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 21:09:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.0:
+  + New API to handle requests initiated by web content to
+    (un)fullscreen web views.
+
+-------------------------------------------------------------------
 Sat Jul 17 06:56:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.1:
