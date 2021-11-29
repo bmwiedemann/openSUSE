@@ -730,4 +730,30 @@
   * ISO 15924 translations (forwarded request 925723 from dirkmueller)</comment>
     <requestid>926171</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>c0f3b7b079a50ef55780f506d259f17e</srcmd5>
+    <version>4.8.0</version>
+    <time>1638203297</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.0:
+  * ISO 3166-1: Add flag emoji to countries. Thanks to Pander
+    for the suggestion. Fixes #19
+  * ISO 639-5: New translation for Chinese (Simplified)
+  * ISO 3166-2: Major update of data.
+    Thanks to the script of Kevin Kaiser, which enables
+    the download of ISO pages and parses the data.
+    Fixes #15, #16, #27
+  * Rename ChangeLog.md to CHANGELOG.md and follow the suggestions
+    from [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+  * Move all CHANGELOG entries from versions before 4.0 to an
+    archive file (CHANGELOG-PRE-4.0.md) in order to reduce the
+    massive size of this CHANGELOG.
+  * Translation updates for ISO 3166-1
+  * Translation updates for ISO 3166-2
+  * Translation updates for ISO 639-2
+  * Translation updates for ISO 639-3
+  * Translation updates for ISO 639-5
+  * Translation updates for ISO 15924 (forwarded request 933585 from dirkmueller)</comment>
+    <requestid>934068</requestid>
+  </revision>
 </revisionlist>
