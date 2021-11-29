@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 26 02:50:36 UTC 2021 - douglarek@gmail.com
+
+- Update to version 0.25.6:
+  - Bug fixes
+    * Log level not showing in k9s
+    * Namespace filter automatically applied after viewing a deployment
+  See more: https://github.com/derailed/k9s/releases/tag/v0.25.6
+
+-------------------------------------------------------------------
 Fri Aug 13 13:03:36 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.24.15:
