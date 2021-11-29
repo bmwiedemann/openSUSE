@@ -2496,6 +2496,7 @@
     <package name="libpurple-plugin-skypeweb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpurple-plugin-telegram" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpurple-plugin-telegram-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libpurple-plugin-xmpp-http-upload" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpurple-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpurple0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5428,6 +5429,7 @@
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="lttng-modules-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mcelog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mokutil" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="monitoring-plugins-cups" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
