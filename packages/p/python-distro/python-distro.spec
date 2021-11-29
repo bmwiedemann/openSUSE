@@ -58,6 +58,7 @@ It is a renewed alternative implementation for Python's original platform.linux_
 
 %if %{with test}
 %check
+export LANG=C.UTF-8
 %pytest
 %endif
 
