@@ -1015,6 +1015,8 @@ unsorted:
   - awf-gtk4 
   - awkward-devel 
   - aws-efs-utils 
+  - aws-nitro-enclaves-binaryblobs-upstream: [x86_64] 
+  - aws-nitro-enclaves-cli: [x86_64] 
   - aws-sdk-java 
   - aws-sdk-java-acm 
   - aws-sdk-java-api-gateway 
@@ -1113,6 +1115,7 @@ unsorted:
   - babelstone-ogham-fonts 
   - babelstone-phags-pa-fonts 
   - babelstone-runic-fonts 
+  - babeltrace: [i586] 
   - babeltrace-devel 
   - babeltrace2 
   - babeltrace2-devel 
@@ -1313,6 +1316,7 @@ unsorted:
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
+  - bluez-obexd 
   - bluez-qt-devel 
   - bluez-test 
   - bmake 
@@ -2558,7 +2562,6 @@ unsorted:
   - csvprintf 
   - csync 
   - csync2 
-  - ctags 
   - ctdb 
   - ctdb-pcp-pmda 
   - ctris 
@@ -2686,7 +2689,6 @@ unsorted:
   - dbus-1-glib-devel 
   - dbus-1-glib-devel-32bit: [x86_64] 
   - dbus-1-glib-doc 
-  - dbus-1-mono 
   - dbus-broker 
   - dbus-sharp 
   - dbus-sharp-devel 
@@ -8138,7 +8140,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -9433,17 +9434,17 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute24: [x86_64] 
-  - libarm_compute_core24: [x86_64] 
-  - libarm_compute_graph24: [x86_64] 
+  - libarm_compute25: [x86_64] 
+  - libarm_compute_core25: [x86_64] 
+  - libarm_compute_graph25: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
-  - libarmnn25: [x86_64] 
-  - libarmnn25-opencl: [x86_64] 
-  - libarmnnBasePipeServer25: [x86_64] 
-  - libarmnnBasePipeServer25-opencl: [x86_64] 
-  - libarmnnSerializer25: [x86_64] 
-  - libarmnnSerializer25-opencl: [x86_64] 
+  - libarmnn27: [x86_64] 
+  - libarmnn27-opencl: [x86_64] 
+  - libarmnnBasePipeServer27: [x86_64] 
+  - libarmnnBasePipeServer27-opencl: [x86_64] 
+  - libarmnnSerializer27: [x86_64] 
+  - libarmnnSerializer27-opencl: [x86_64] 
   - libarmnnTfLiteParser24: [x86_64] 
   - libarmnnTfLiteParser24-opencl: [x86_64] 
   - libarpack2 
@@ -11378,6 +11379,7 @@ unsorted:
   - libindi-plugins 
   - libindiAlignmentDriver1 
   - libindicator-devel 
+  - libindicator3-7 
   - libindicator3-devel 
   - libindicator7 
   - libindidriver1 
@@ -11500,7 +11502,7 @@ unsorted:
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
-  - libjsoncpp24 
+  - libjsoncpp25 
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
@@ -13651,7 +13653,6 @@ unsorted:
   - libsoup2-devel 
   - libsoup2-devel-32bit: [x86_64] 
   - libsource-highlight-devel 
-  - libsource-highlight4 
   - libsource-highlight4-32bit: [x86_64] 
   - libsoxr-lsr0 
   - libsoxr-lsr0-32bit: [x86_64] 
@@ -13948,10 +13949,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
-  - libtimelineDecoder25: [x86_64] 
-  - libtimelineDecoder25-opencl: [x86_64] 
-  - libtimelineDecoderJson25: [x86_64] 
-  - libtimelineDecoderJson25-opencl: [x86_64] 
+  - libtimelineDecoder27: [x86_64] 
+  - libtimelineDecoder27-opencl: [x86_64] 
+  - libtimelineDecoderJson27: [x86_64] 
+  - libtimelineDecoderJson27-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -14119,8 +14120,6 @@ unsorted:
   - libunicap2-32bit: [x86_64] 
   - libuninameslist-devel 
   - libuninameslist1 
-  - libunique-1_0-0 
-  - libunique1-devel 
   - libunistring-devel 
   - libunistring-devel-32bit: [x86_64] 
   - libunshield0 
@@ -17873,14 +17872,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -21128,7 +21124,6 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-appindicator 
   - python2-pip 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
@@ -23491,6 +23486,7 @@ unsorted:
   - python36-pypng 
   - python36-pyprimes 
   - python36-pypsexec 
+  - python36-pypubsub 
   - python36-pypuppetdb 
   - python36-pyqt-builder 
   - python36-pyquery 
@@ -26396,6 +26392,7 @@ unsorted:
   - python38-pyprimes 
   - python38-pyproj 
   - python38-pypsexec 
+  - python38-pypubsub 
   - python38-pypuppetdb 
   - python38-pyqt-builder 
   - python38-pyqtgraph 
@@ -29504,6 +29501,7 @@ unsorted:
   - python39-pyprimes 
   - python39-pyproj 
   - python39-pypsexec 
+  - python39-pypubsub 
   - python39-pypuppetdb 
   - python39-pyqt-builder 
   - python39-pyqtgraph 
@@ -31285,7 +31283,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -31995,6 +31993,11 @@ unsorted:
   - sethdlc 
   - setools-console 
   - setools-gui 
+  - setroubleshoot 
+  - setroubleshoot-doc 
+  - setroubleshoot-plugins 
+  - setroubleshoot-plugins-lang 
+  - setroubleshoot-server 
   - sev-tool 
   - sfftobmp 
   - sffview 
@@ -32637,6 +32640,7 @@ unsorted:
   - sysprof-ui-devel 
   - sysstat 
   - sysstat-isag 
+  - system-group-ne: [x86_64] 
   - system-group-obsolete 
   - system-user-grafana 
   - system-user-libvirt-dbus 
@@ -41295,7 +41299,6 @@ unsorted:
   - typelib-1_0-Adw-1 
   - typelib-1_0-Amtk-5 
   - typelib-1_0-Anjuta-3_0 
-  - typelib-1_0-AppIndicator-0_1 
   - typelib-1_0-AppStream-1.0 
   - typelib-1_0-AppStreamGlib-1_0 
   - typelib-1_0-AtrilDocument-1_5_0 
@@ -41479,7 +41482,6 @@ unsorted:
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-UMockdev-1_0 
   - typelib-1_0-Uhm-0_0 
-  - typelib-1_0-Unique-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_10 
   - typelib-1_0-Vte-2.91 
@@ -42335,6 +42337,8 @@ unsorted:
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
+  - xfce4-panel-plugin-indicator 
+  - xfce4-panel-plugin-indicator-lang 
   - xfce4-places-plugin 
   - xfce4-places-plugin-lang 
   - xfce4-power-manager-branding-upstream 
