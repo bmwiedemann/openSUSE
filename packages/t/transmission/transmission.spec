@@ -27,6 +27,7 @@ URL:            https://www.transmissionbt.com/
 Source0:        https://github.com/%{name}/%{name}-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        transmission-qt.desktop
 Source3:        README.openSUSE
+Patch0:	harden_transmission-daemon.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -121,6 +122,7 @@ Discovery, DHT, µTP, PEX and magnet links.
 %prep
 %setup
 cp %{SOURCE3} .
+%patch0 -p1
 
 %build
 autoreconf -fi
