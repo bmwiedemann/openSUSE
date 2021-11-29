@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 18 19:55:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 4.5.0:
+ - Support for mobile country code (MCC) and mobile network codes (MNC) was
+   added for the GeoIP2 ISP and Enterprise databases as well as the GeoIP2
+   City and Insights web services. ``mobile_country_code`` and
+   ``mobile_network_code`` attributes were added to ``geoip2.model.ISP``
+   for the GeoIP2 ISP database and ``geoip2.record.Traits`` for the
+   Enterprise database and the GeoIP2 City and Insights web services.
+   We expect this data to be available by late January, 2022.
+
+-------------------------------------------------------------------
 Fri Sep 24 19:10:31 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 4.4.0:
