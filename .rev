@@ -631,4 +631,16 @@
   * Adding pre-commit</comment>
     <requestid>894160</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>dfbd903252f24bc12c9ad4244a609538</srcmd5>
+    <version>5.7.0</version>
+    <time>1638203301</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.7.0:
+  * Add a PEP517 interface
+  * PBR package testing improvements
+  * Run python3.9 test jobs
+  * Correct comment for 'D1\_D2\_SETUP\_ARGS'</comment>
+    <requestid>934075</requestid>
+  </revision>
 </revisionlist>
