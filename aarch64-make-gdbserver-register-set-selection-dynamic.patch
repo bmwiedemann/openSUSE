@@ -1,11 +1,53 @@
-@@ -, +, @@ 
+[AArch64] Make gdbserver register set selection dynamic
+
+The current register set selection mechanism for AArch64 is static, based
+on a pre-populated array of register sets.
+
+This means that we might potentially probe register sets that are not
+available. This is OK if the kernel errors out during ptrace, but probing the
+tag_ctl register, for example, does not result in a ptrace error if the kernel
+supports the tagged address ABI but not MTE (PR 28355).
+
+Making the register set selection dynamic, based on feature checks, solves
+this and simplifies the code a bit. It allows us to list all of the register
+sets only once, and pick and choose based on HWCAP/HWCAP2 or other properties.
+
+gdb/ChangeLog:
+
+2021-11-03  Luis Machado  <luis.machado@linaro.org>
+
+	PR gdb/28355
+
+	* arch/aarch64.h (struct aarch64_features): New struct.
+
+gdbserver/ChangeLog:
+
+2021-11-03  Luis Machado  <luis.machado@linaro.org>
+
+	PR gdb/28355
+
+	* linux-aarch64-low.cc (is_sve_tdesc): Remove.
+	(aarch64_target::low_arch_setup): Rework to adjust the register sets.
+	(aarch64_regsets): Update to list all register sets.
+	(aarch64_regsets_info, regs_info_aarch64): Replace NULL with nullptr.
+	(aarch64_sve_regsets, aarch64_sve_regsets_info)
+	(regs_info_aarch64_sve): Remove.
+	(aarch64_adjust_register_sets): New.
+	(aarch64_target::get_regs_info): Remove references to removed structs.
+	(initialize_low_arch): Likewise.
+
 ---
+ gdb/ChangeLog                  |   6 ++
  gdb/arch/aarch64.h             |   9 ++
- gdbserver/linux-aarch64-low.cc | 185 ++++++++++++++++++---------------
- 2 files changed, 110 insertions(+), 84 deletions(-)
---- a/gdb/arch/aarch64.h	
-+++ a/gdb/arch/aarch64.h	
-@@ -22,6 +22,15 @@ 
+ gdbserver/ChangeLog            |  14 ++++
+ gdbserver/linux-aarch64-low.cc | 186 ++++++++++++++++++++++-------------------
+ 4 files changed, 130 insertions(+), 85 deletions(-)
+
+diff --git a/gdb/arch/aarch64.h b/gdb/arch/aarch64.h
+index 0eb702c5b5e..95edb664b55 100644
+--- a/gdb/arch/aarch64.h
++++ b/gdb/arch/aarch64.h
+@@ -22,6 +22,15 @@
  
  #include "gdbsupport/tdesc.h"
  
@@ -21,8 +63,10 @@
  /* Create the aarch64 target description.  A non zero VQ value indicates both
     the presence of SVE and the Vector Quotient - the number of 128bit chunks in
     an SVE Z register.  HAS_PAUTH_P indicates the presence of the PAUTH
---- a/gdbserver/linux-aarch64-low.cc	
-+++ a/gdbserver/linux-aarch64-low.cc	
+diff --git a/gdbserver/linux-aarch64-low.cc b/gdbserver/linux-aarch64-low.cc
+index daccfef746e..9a8cb4169a7 100644
+--- a/gdbserver/linux-aarch64-low.cc
++++ b/gdbserver/linux-aarch64-low.cc
 @@ -196,16 +196,6 @@ is_64bit_tdesc (void)
    return register_size (regcache->tdesc, 0) == 8;
  }
@@ -81,7 +125,7 @@
  /* Wrapper for aarch64_sve_regs_copy_to_reg_buf.  */
  
  static void
-@@ -730,20 +686,36 @@ aarch64_sve_regs_copy_from_regcache (struct regcache *regcache, void *buf)
+@@ -730,21 +686,36 @@ aarch64_sve_regs_copy_from_regcache (struct regcache *regcache, void *buf)
    return aarch64_sve_regs_copy_from_reg_buf (regcache, buf);
  }
  
@@ -91,7 +135,6 @@
 +
 +   Their sizes are set to 0 here, but they will be adjusted later depending
 +   on whether each register set is available or not.  */
-+
  static struct regset_info aarch64_regsets[] =
  {
 +  /* GPR registers.  */
@@ -119,11 +162,13 @@
 +  /* Tagged address control / MTE registers.  */
    { PTRACE_GETREGSET, PTRACE_SETREGSET, NT_ARM_TAGGED_ADDR_CTRL,
 -    AARCH64_LINUX_SIZEOF_MTE, OPTIONAL_REGS, aarch64_fill_mteregset,
-+    0, OPTIONAL_REGS, aarch64_fill_mteregset,
-     aarch64_store_mteregset },
+-    aarch64_store_mteregset },
++    0, OPTIONAL_REGS,
++    aarch64_fill_mteregset, aarch64_store_mteregset },
    NULL_REGSET
  };
-@@ -752,47 +724,95 @@ static struct regsets_info aarch64_regsets_info =
+ 
+@@ -752,47 +723,95 @@ static struct regsets_info aarch64_regsets_info =
    {
      aarch64_regsets, /* regsets */
      0, /* num_regsets */
@@ -232,7 +277,7 @@
 +      features.sve = (vq > 0);
 +      /* A-profile PAC is 64-bit only.  */
 +      features.pauth = linux_get_hwcap (8) & AARCH64_HWCAP_PACA;
-+      /* A-profile MTE is AArch64-only.  */
++      /* A-profile MTE is 64-bit only.  */
 +      features.mte = linux_get_hwcap2 (8) & HWCAP2_MTE;
 +
 +      current_process ()->tdesc
@@ -250,7 +295,7 @@
  
  /* Implementation of linux target ops method "get_regs_info".  */
  
-@@ -802,9 +822,7 @@ aarch64_target::get_regs_info ()
+@@ -802,9 +821,7 @@ aarch64_target::get_regs_info ()
    if (!is_64bit_tdesc ())
      return &regs_info_aarch32;
  
@@ -261,10 +306,9 @@
    return &regs_info_aarch64;
  }
  
-@@ -3294,5 +3312,4 @@ initialize_low_arch (void)
+@@ -3294,5 +3311,4 @@ initialize_low_arch (void)
    initialize_low_arch_aarch32 ();
  
    initialize_regsets_info (&aarch64_regsets_info);
 -  initialize_regsets_info (&aarch64_sve_regsets_info);
  }
--- 

@@ -3,6 +3,11 @@
 # Invoke as:
 # $ ./import-patches.sh [ --dry-run ] <n> <dir>/00*.patch
 
+usage ()
+{
+    echo "./import-patches.sh [ --dry-run ] <n> <files>+"
+}
+
 dryrun=false
 case "$1" in
     -dryrun|-dry-run|--dryrun|--dry-run)
@@ -13,6 +18,27 @@ esac
 
 n="$1"
 shift
+
+case $n in
+    "")
+	echo "Missing <n> argument"
+	usage
+	exit 1
+	;;
+    [0-9][0-9]*)
+	;;
+    *) 
+	echo "Need numeric <n> argument"
+	usage
+	exit 1
+	;;
+esac
+
+if [ "$n" = "" ]; then
+    echo "Missing <n> argument"
+    usage
+    exit 1
+fi
 
 files="$*"
 
@@ -40,6 +66,10 @@ for f in $files; do
     # Copy.
     cp "$dir"/"$orig_f" tmp.patches/"$f"
 
+    # Filter out ChangeLog entries.
+    filterdiff -x "*/ChangeLog" tmp.patches/"$f" > tmp.patches/tmp."$f"
+    mv tmp.patches/tmp."$f" tmp.patches/"$f"
+    
     tmp="$tmp $f"
 done
 files="$tmp"

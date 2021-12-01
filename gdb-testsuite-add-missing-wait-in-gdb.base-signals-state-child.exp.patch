@@ -1,0 +1,59 @@
+[gdb/testsuite] Add missing wait in gdb.base/signals-state-child.exp
+
+On OBS I ran into:
+...
+(gdb) shell diff -s outputs/gdb.base/signals-state-child/standalone.txt \
+  outputs/gdb.base/signals-state-child/gdb.txt^M
+diff: outputs/gdb.base/signals-state-child/standalone.txt: \
+  No such file or directory^M
+(gdb) FAIL: gdb.base/signals-state-child.exp: signals states are identical
+...
+
+I managed to reproduce this by adding "sleep (5)" at the start of main in
+signals-state-child.c.
+
+Fix this by waiting on the result of the spawned command.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/signals-state-child.exp | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/signals-state-child.exp b/gdb/testsuite/gdb.base/signals-state-child.exp
+index 0984033811b..81589375f22 100644
+--- a/gdb/testsuite/gdb.base/signals-state-child.exp
++++ b/gdb/testsuite/gdb.base/signals-state-child.exp
+@@ -69,9 +69,11 @@ set res [remote_spawn target "$binfile-standalone"]
+ if { $res < 0 || $res == "" } {
+     untested "spawning $binfile-standalone failed"
+     return 1
+-} else {
+-    pass "collect standalone signals state"
+ }
++
++set wait_status [remote_wait target 60]
++set have_standalone [expr [lindex $wait_status 0] == 0]
++gdb_assert { $have_standalone } "collect standalone signals state"
+ remote_close target
+ 
+ # Now run the program through gdb, and dump its initial signal actions
+@@ -86,6 +88,12 @@ if { ! [ runto_main ] } then {
+ 
+ gdb_continue_to_end "collect signals state under gdb"
+ 
++set test "signals states are identical"
++if { ! $have_standalone } {
++    untested $test
++    return -1
++}
++
+ if {!$purely_local} {
+     # Copy file from target to host through build.
+     remote_download host [remote_upload target gdb.txt] gdb.txt
+@@ -95,4 +103,4 @@ if {!$purely_local} {
+ # Diff the .txt files.  They should be identical.
+ gdb_test "shell diff -s $standalone_txt $gdb_txt" \
+     "Files .* are identical.*" \
+-    "signals states are identical"
++    $test

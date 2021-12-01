@@ -1,0 +1,245 @@
+[gdb/testsuite] Fix data alignment in gdb.arch/i386-{avx,sse}.exp
+
+When running test-case gdb.arch/i386-avx.exp with clang I ran into:
+...
+(gdb) PASS: gdb.arch/i386-avx.exp: set first breakpoint in main
+continue^M
+Continuing.^M
+^M
+Program received signal SIGSEGV, Segmentation fault.^M
+0x000000000040052b in main (argc=1, argv=0x7fffffffd3c8) at i386-avx.c:54^M
+54        asm ("vmovaps 0(%0), %%ymm0\n\t"^M
+(gdb) FAIL: gdb.arch/i386-avx.exp: continue to breakpoint: \
+  continue to first breakpoint in main
+...
+
+The problem is that the vmovaps insn requires an 256-bit (or 32-byte aligned
+address), and it's only 16-byte aligned:
+...
+(gdb) p /x $rax
+$1 = 0x601030
+...
+
+Fix this by copying to a sufficiently aligned address.
+
+Likewise in gdb.arch/i386-sse.exp.
+
+Tested on x86_64-linux, with both gcc and clang.
+
+---
+ gdb/testsuite/gdb.arch/i386-avx.c         |   9 +-
+ gdb/testsuite/gdb.arch/i386-sse.c         |  10 ++-
+ gdb/testsuite/lib/precise-aligned-alloc.c | 131 ++++++++++++++++++++++++++++++
+ 3 files changed, 148 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/i386-avx.c b/gdb/testsuite/gdb.arch/i386-avx.c
+index 4e938399a24..255ff5ee6f5 100644
+--- a/gdb/testsuite/gdb.arch/i386-avx.c
++++ b/gdb/testsuite/gdb.arch/i386-avx.c
+@@ -25,7 +25,7 @@ typedef struct {
+ } v8sf_t;
+ 
+ 
+-v8sf_t data[] =
++v8sf_t data_orig[] =
+   {
+     { {  0.0,  0.125,  0.25,  0.375,  0.50,  0.625,  0.75,  0.875 } },
+     { {  1.0,  1.125,  1.25,  1.375,  1.50,  1.625,  1.75,  1.875 } },
+@@ -47,10 +47,15 @@ v8sf_t data[] =
+ #endif
+   };
+ 
++#include "../lib/precise-aligned-alloc.c"
+ 
+ int
+ main (int argc, char **argv)
+ {
++  void *allocated_ptr;
++  v8sf_t *data
++    = precise_aligned_dup (32, sizeof (data_orig), &allocated_ptr, data_orig);
++
+   asm ("vmovaps 0(%0), %%ymm0\n\t"
+        "vmovaps 32(%0), %%ymm1\n\t"
+        "vmovaps 64(%0), %%ymm2\n\t"
+@@ -107,5 +112,7 @@ main (int argc, char **argv)
+ 
+   puts ("Bye!"); /* second breakpoint here */
+ 
++  free (allocated_ptr);
++
+   return 0;
+ }
+diff --git a/gdb/testsuite/gdb.arch/i386-sse.c b/gdb/testsuite/gdb.arch/i386-sse.c
+index a5941a4071e..c78a510c1a7 100644
+--- a/gdb/testsuite/gdb.arch/i386-sse.c
++++ b/gdb/testsuite/gdb.arch/i386-sse.c
+@@ -25,7 +25,7 @@ typedef struct {
+ } v4sf_t;
+ 
+ 
+-v4sf_t data[] =
++v4sf_t data_orig[] =
+   {
+     { {  0.0,  0.25,  0.50,  0.75 } },
+     { {  1.0,  1.25,  1.50,  1.75 } },
+@@ -62,9 +62,15 @@ have_sse (void)
+     return 0;
+ }
+ 
++#include "../lib/precise-aligned-alloc.c"
++
+ int
+ main (int argc, char **argv)
+ {
++  void *allocated_ptr;
++  v4sf_t *data
++    = precise_aligned_dup (16, sizeof (data_orig), &allocated_ptr, data_orig);
++
+   if (have_sse ())
+     {
+       asm ("movaps 0(%0), %%xmm0\n\t"
+@@ -124,5 +130,7 @@ main (int argc, char **argv)
+       puts ("Bye!"); /* second breakpoint here */
+     }
+ 
++  free (allocated_ptr);
++
+   return 0;
+ }
+diff --git a/gdb/testsuite/lib/precise-aligned-alloc.c b/gdb/testsuite/lib/precise-aligned-alloc.c
+new file mode 100644
+index 00000000000..88a2e445b59
+--- /dev/null
++++ b/gdb/testsuite/lib/precise-aligned-alloc.c
+@@ -0,0 +1,131 @@
++/* This test file is part of GDB, the GNU debugger.
++
++   Copyright 2021 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#include <stdlib.h>
++#include <assert.h>
++#include <string.h>
++#include <stdint.h>
++
++/* Local version of C11's aligned_alloc, but with free_pointer PARAMETER since
++   possibly we cannot free the returned value.
++   We're not using aligned_alloc here, to allow pre-C11 usage.  */
++
++static void *
++my_aligned_alloc (size_t alignment, size_t size, void **free_pointer)
++{
++  void *p;
++  void *p_orig;
++  void *p_end;
++  size_t mask;
++
++#if 0
++  /* Use C11's aligned_alloc to do the allocation.  */
++  p = aligned_alloc (alignment, size);
++  assert (p != NULL);
++  p_orig = p;
++  p_end = p + size;
++#else
++  /* Allocate extra to ensure alignment.  */
++  size_t alloc_size = size + alignment;
++
++  /* Use malloc to do the allocation.  */
++  p = malloc (alloc_size);
++  assert (p != NULL);
++  p_orig = p;
++  p_end = p + alloc_size;
++
++  /* Align p.  */
++  mask = (alignment - 1);
++  if (((uintptr_t)p & mask) == 0)
++    ;
++  else
++    {
++      p = (void*)((uintptr_t)p & ~mask);
++      p += alignment;
++    }
++#endif
++
++  /* Verify p is within bounds, and points to large enough area.  */
++  assert (p >= p_orig);
++  assert (p + size <= p_end);
++
++  /* Verify required alignment.  */
++  mask = (alignment - 1);
++  assert (((uintptr_t)p & mask) == 0);
++
++  if (free_pointer != NULL)
++    *free_pointer = p_orig;
++
++  return p;
++}
++
++/* Allocate SIZE memory with ALIGNMENT, and return it.  If FREE_POINTER,
++   return in it the corresponding pointer to be passed to free.
++
++   Do the alignment precisely, in other words, if an alignment of 4 is
++   requested, make sure the pointer is 4-byte aligned, but not 8-byte
++   aligned.  In other words, make sure the pointer is not overaligned.
++
++   The benefit of using precise alignment is that accidentally specifying
++   a too low alignment will not be compensated by accidental
++   overalignment.  */
++
++static void *
++precise_aligned_alloc (size_t alignment, size_t size, void **free_pointer)
++{
++  /* Allocate extra to compenate for "p += alignment". */
++  size_t alloc_size = size + alignment;
++  /* Align extra, to be able to do precise align.  */
++  void *p = my_aligned_alloc (alignment * 2, alloc_size, free_pointer);
++  assert (p != NULL);
++  void *p_orig = p;
++  void *p_end = p + alloc_size;
++
++  p += alignment;
++
++  /* Verify p is without bounds, and points to large enough area.  */
++  assert (p >= p_orig);
++  assert (p + size <= p_end);
++
++  /* Verify required alignment.  */
++  size_t mask = (alignment - 1);
++  assert (((uintptr_t)p & mask) == 0);
++
++  /* Verify required alignment is precise.  */
++  mask = ((2 * alignment) - 1);
++  assert (((uintptr_t)p & mask) != 0);
++
++  if (free_pointer != NULL)
++    *free_pointer = p_orig;
++
++  return p;
++}
++
++/* Duplicate data SRC of size SIZE to a newly allocated, precisely aligned
++   location with alignment ALIGNMENT.  */
++
++static void *
++precise_aligned_dup (size_t alignment, size_t size, void **free_pointer,
++		     void *src)
++{
++  void *p = precise_aligned_alloc (alignment, size, free_pointer);
++
++  memcpy (p, src, size);
++
++  return p;
++}

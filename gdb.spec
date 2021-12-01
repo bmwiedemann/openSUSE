@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gdb
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 RedHat
@@ -29,6 +29,10 @@ ExclusiveArch:  do_not_build
 # In a qemu_user_space_build ptrace is not supported, so we can't test gdb.
 ExclusiveArch:  do_not_build
 %endif
+
+# Disable big-endian ppc testing.
+ExcludeArch:    ppc ppc64
+
 %define build_main 0
 %define build_testsuite 1
 %else
@@ -54,7 +58,7 @@ ExclusiveArch:  do_not_build
 
 %if %{build_main}
 Summary:        A GNU source-level debugger for C, C++, Fortran and other languages
-License:        GPL-3.0-only WITH GCC-exception-3.1 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+License:        SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 %endif
 %if %{build_testsuite}
@@ -273,6 +277,8 @@ Patch1101:      gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
 # It would be nice to upstream this, but in order to do that I'd like to have
 # an explanation of why this happens, so for now, park this here.
 Patch1102:      gdb-testsuite-fix-gdb-server-ext-run-exp-for-obs.patch
+# Tests the zypper install hints.
+Patch1103:      gdb-testsuite-add-gdb.suse-zypper-hint.exp.patch
 
 # Patches to upstream
 
@@ -299,6 +305,7 @@ Patch1506:      gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
 
 Patch1900:      gdb-build-add-cxx_dialect-to-cxx.patch
 Patch1901:      gdb-tui-fix-breakpoint-display-functionality.patch
+Patch1902:      aarch64-make-gdbserver-register-set-selection-dynamic.patch
 
 # Backports from master, available in next release.
 
@@ -325,6 +332,18 @@ Patch2019:      gdb-testsuite-update-test-gdb.base-step-over-syscall.exp.patch
 Patch2020:      gdb-testsuite-fix-gdb.threads-linux-dp.exp.patch
 Patch2021:      gdb-testsuite-add-gdb.testsuite-dump-system-info.exp.patch
 Patch2022:      gdb-testsuite-factor-out-dump_info-in-gdb.testsuite-dump-system-info.exp.patch
+Patch2023:      gdb-testsuite-add-gdb.opt-break-on-_exit.exp.patch
+Patch2024:      gdb-tdep-rs6000-don-t-skip-system-call-in-skip_prologue.patch
+Patch2025:      gdb-testsuite-fix-stepi-test-cases-with-unix-m32-fpie-pie.patch
+Patch2026:      gdb-testsuite-fix-assembly-comments-in-gdb.dwarf2-clang-debug-names.exp.tcl.patch
+Patch2027:      gdb-doc-fix-print-inferior-events-default.patch
+Patch2028:      gdb-testsuite-fix-gdb.guile-scm-type.exp-with-gcc-4.8.patch
+Patch2029:      gdb-testsuite-add-gdb.arch-ppc64-break-on-_exit.exp.patch
+Patch2030:      gdb-testsuite-don-t-error-when-trying-to-unset-last_spawn_tty_name.patch
+Patch2031:      gdb-exp-improve-error-reading-variable-message.patch
+Patch2032:      fix-gdb.base-sigstep.exp-test-for-ppc.patch
+Patch2033:      gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
+Patch2034:      gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
 
 # Backports from master, not yet available in next release.
 
@@ -350,18 +369,26 @@ Patch2106:      gdb-testsuite-fix-fail-in-gdb.threads-fork-and-threads.exp.patch
 Patch2107:      gdb-testsuite-add-kfail-in-gdb.threads-fork-plus-threads.exp.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182855.html
 Patch2108:      gdb-testsuite-fix-port-detection-in-gdb.debuginfod-fetch_src_and_symbols.exp.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-October/182857.html
-Patch2109:      gdb-testsuite-add-checks-to-gdb.arch-i386-sse.exp.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-October/182868.html
-Patch2110:      gdb-testsuite-Fix-gdb.threads-thread-specific-bp.exp.patch
-#https://sourceware.org/pipermail/gdb-patches/2021-October/182919.html
+Patch2110:      gdb-testsuite-fix-gdb.threads-thread-specific-bp.exp.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-October/182919.html
 Patch2111:      gdb-testsuite-work-around-skip_prologue-problems-in-gdb.threads-process-dies-while-detaching.exp.patch
-#https://sourceware.org/pipermail/gdb-patches/2021-October/182921.html
+# https://sourceware.org/pipermail/gdb-patches/2021-October/182921.html
 Patch2112:      gdb-testsuite-handle-sigill-in-two-gdb.arch-powerpc-test-cases.patch
-# https://sourceware.org/pipermail/gdb-patches/2021-November/182985.html
-Patch2113:      gdb-tdep-aarch64-make-gdbserver-register-set-selection-dynamic.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-May/178990.html
 Patch2114:      gdb-cli-add-ignore-errors-command.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/183183.html
+Patch2115:      gdb-testsuite-fix-data-alignment-in-gdb.arch-i386-avx-sse-.exp.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-October/182887.html
+Patch2116:      gdb-testsuite-fix-fail-in-gdb.tui-basic.exp.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/date.html
+Patch2117:      gdb-testsuite-disable-inferior-output-in-gdb.base-foll-vfork.exp.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/183363.html
+Patch2118:      gdb-symtab-fix-segfault-in-search_one_symtab.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/183939.html
+Patch2119:      gdb-testsuite-fix-gdb.arch-i386-pkru.exp-on-linux.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-November/183960.html
+Patch2120:      gdb-tdep-fix-avx512-m32-support-in-gdbserver.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -426,26 +453,21 @@ BuildRequires:  cmake
 ExclusiveArch:  noarch i386 x86_64 ppc ppc64 ia64 s390 s390x
 %endif # 0%{?el5:1}
 
-# Disable big-endian ppc.
-ExcludeArch:    ppc ppc64
-
 %ifarch s390x
 %if %{suse_version} > 1500
 BuildRequires:  babeltrace-devel
 %endif
 %endif
-%ifarch ppc64
+
+%ifarch i386 x86_64 ppc64 ppc64le aarch64 riscv64
 %if %{suse_version} >= 1500
 BuildRequires:  babeltrace-devel
 %endif
 %endif
-%ifarch %{ix86} x86_64
-%if %{suse_version} >= 1200
-BuildRequires:  babeltrace-devel
-%endif
-%endif
-%ifarch aarch64 riscv64
-BuildRequires:  babeltrace-devel
+
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libboost_regex-devel
+BuildRequires:  libsource-highlight-devel
 %endif
 
 %if %{build_testsuite}
@@ -484,9 +506,6 @@ BuildRequires:  dejagnu
 BuildRequires:  sharutils
 # gcc-objc++ is not covered by the GDB testsuite.
 BuildRequires:  %{gcc}-fortran
-%if 0%{?gcc_version} < 7 && 0%{suse_version} > 1110
-BuildRequires:  %{gcc}-java
-%endif
 BuildRequires:  %{gcc}-objc
 %ifarch %ada_arch
 BuildRequires:  %{gcc}-ada
@@ -728,6 +747,7 @@ find -name "*.info*"|xargs rm -f
 %patch1100 -p1
 %patch1101 -p1
 %patch1102 -p1
+%patch1103 -p1
 
 %patch1500 -p1
 %patch1501 -p1
@@ -738,6 +758,7 @@ find -name "*.info*"|xargs rm -f
 
 %patch1900 -p1
 %patch1901 -p1
+%patch1902 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -762,6 +783,18 @@ find -name "*.info*"|xargs rm -f
 %patch2020 -p1
 %patch2021 -p1
 %patch2022 -p1
+%patch2023 -p1
+%patch2024 -p1
+%patch2025 -p1
+%patch2026 -p1
+%patch2027 -p1
+%patch2028 -p1
+%patch2029 -p1
+%patch2030 -p1
+%patch2031 -p1
+%patch2032 -p1
+%patch2033 -p1
+%patch2034 -p1
 
 %patch2100 -p1
 %patch2101 -p1
@@ -772,12 +805,16 @@ find -name "*.info*"|xargs rm -f
 %patch2106 -p1
 %patch2107 -p1
 %patch2108 -p1
-%patch2109 -p1
 %patch2110 -p1
 %patch2111 -p1
 %patch2112 -p1
-%patch2113 -p1
 %patch2114 -p1
+%patch2115 -p1
+%patch2116 -p1
+%patch2117 -p1
+%patch2118 -p1
+%patch2119 -p1
+%patch2120 -p1
 
 #unpack libipt
 %if 0%{have_libipt}
@@ -875,11 +912,24 @@ fi
 %else
 %define build_multitarget 0
 %endif
-%define target_list i686 powerpc powerpc64 powerpc64le s390 s390x x86_64 arm aarch64 m68k ia64 riscv64
+
+%define extra_target_list_common i686 powerpc64le s390x x86_64 aarch64
+%if 0%{?is_opensuse}
+%define extra_target_list %{extra_target_list_common} powerpc powerpc64 s390 arm m68k ia64 riscv64
+%define have_elf_extra_target_list 1
+%define elf_extra_target_list avr pru spu
+%else
+%define extra_target_list %{extra_target_list_common}
+%define have_elf_extra_target_list 0
+%endif
+
 %define DIST %(echo '%distribution' | sed 's, /.*,,')
+
 %if %build_multitarget
-EXTRA_TARGETS="%(printf ,%%s-suse-linux %target_list)"
-EXTRA_TARGETS="$EXTRA_TARGETS,spu-elf"
+EXTRA_TARGETS="%(printf ,%%s-suse-linux %{extra_target_list})"
+%if %{have_elf_extra_target_list}
+EXTRA_TARGETS="$EXTRA_TARGETS%(printf ,%%s-elf %{elf_extra_target_list})"
+%endif
 %else
 EXTRA_TARGETS=
 %endif
@@ -1011,74 +1061,6 @@ then
   ./gdb -nx -readnow -ex q ./gdb-withindex
   cd ..
 fi
-
-# This is a build-time test, but still a test.  So, skip if we don't do tests.
-# This is relevant for %%qemu_user_space_build == 1 builds, which atm is
-# the case for riscv64.
-%if %{build_testsuite}
-if [ "$LIBRPM" != "no" ]; then
-    cd gdb
-    cat \
-	> hello.c \
-	<<EOF
-#include <stdio.h>
-int
-main (void)
-{
-  printf ("hello\n");
-  return 0;
-}
-EOF
-    $CC hello.c
-    libc=$(ldd a.out \
-	       | grep libc.so \
-	       | awk '{print $3}')
-    if readelf -SW $libc \
-	    | grep -q "\.gnu_debuglink"; then
-	cat \
-	    > test.exp \
-	    <<EOF
-expect {
-  "(gdb) " {
-    puts "\nPASS: first prompt"
-    send "start\n"
-  }
-  default {
-    puts "\nFAIL: first prompt (eof or timeout)"
-    exit 1
-  }
-}
-expect {
-  -re {Missing separate debuginfos, use: zypper install glibc-debuginfo-.*\(gdb\) } {
-    puts "\nPASS: zypper install message"
-    send "quit\n"
-    exit 0
-  }
-  "(gdb) " {
-    puts "\nFAIL: zypper install message"
-    send "quit\n"
-    exit 1
-  }
-  default {
-    puts "\nFAIL: zypper install message (eof or timeout)"
-    exit 1
-  }
-}
-EOF
-	gdb="./gdb -q -nw -nx -data-directory $(pwd -P)/data-directory"
-        # Due to bsc#1146899 "gdb's zypper install message disappears with
-	# -batch", we need to use an expect test.
-	expect -c "spawn $gdb ./a.out" -f test.exp
-	rm ./test.exp
-    else
-	# If packages are not build with debuginfo, we cannot expect a zypper
-	# install message.
-	echo "UNSUPPORTED: zypper install message"
-    fi
-    rm ./hello.c ./a.out
-    cd ..
-fi
-%endif
 
 cd ..
 

@@ -29,10 +29,10 @@ Tested on x86_64-linux.
  1 file changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/gdb/testsuite/gdb.threads/thread-specific-bp.exp b/gdb/testsuite/gdb.threads/thread-specific-bp.exp
-index 331f9470c22..ceb2c25b066 100644
+index c59a65b3150..50f90edea55 100644
 --- a/gdb/testsuite/gdb.threads/thread-specific-bp.exp
 +++ b/gdb/testsuite/gdb.threads/thread-specific-bp.exp
-@@ -87,9 +87,24 @@ proc check_thread_specific_breakpoint {mode} {
+@@ -88,9 +88,24 @@ proc check_thread_specific_breakpoint {mode} {
  	    set cmd "continue"
  	}
  	set test "continue to end"
@@ -42,7 +42,7 @@ index 331f9470c22..ceb2c25b066 100644
 +	set thread_exited 0
 +	set prompt 0
 +	gdb_test_multiple "$cmd" $test -lbl {
-+	    -re "\\\[Thread \[^\r\n\]* exited](?=\r\n)" {
++	    -re "(^|\r\n)\\\[Thread \[^\r\n\]* exited](?=\r\n)" {
 +		if { $prompt } {
 +		    pass $gdb_test_name
 +		} else {
@@ -50,7 +50,7 @@ index 331f9470c22..ceb2c25b066 100644
 +		    exp_continue
 +		}
 +	    }
-+	    -re -wrap "" {
++	    -re "\r\n$gdb_prompt " {
 +		if { $thread_exited } {
 +		    pass $gdb_test_name
 +		} else {

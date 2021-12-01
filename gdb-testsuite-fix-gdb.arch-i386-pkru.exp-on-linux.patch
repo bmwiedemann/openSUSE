@@ -1,0 +1,57 @@
+[gdb/testsuite] Fix gdb.arch/i386-pkru.exp on linux
+
+When running test-case gdb.arch/i386-pkru.exp on a machine with "Memory
+Protection Keys for Userspace" support, we run into:
+...
+(gdb) PASS: gdb.arch/i386-pkru.exp: probe PKRU support
+print $pkru^M
+$2 = 1431655764^M
+(gdb) FAIL: gdb.arch/i386-pkru.exp: pkru register
+...
+
+The test-case expects the $pkru register to have the default value 0, matching
+the "init state" of 0 defined by the XSAVE hardware.
+
+Since linux kernel version v4.9 containing commit acd547b29880 ("x86/pkeys:
+Default to a restrictive init PKRU"), the register is set to 0x55555554 by
+default (which matches the printed decimal value above).
+
+Fix the FAIL by accepting this value for linux.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.arch/i386-pkru.exp | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/i386-pkru.exp b/gdb/testsuite/gdb.arch/i386-pkru.exp
+index 5732bba6e97..2ee8ee72fa3 100644
+--- a/gdb/testsuite/gdb.arch/i386-pkru.exp
++++ b/gdb/testsuite/gdb.arch/i386-pkru.exp
+@@ -20,6 +20,15 @@ if { ![istarget i?86-*-*] && ![istarget x86_64-*-* ] } {
+     return
+ }
+ 
++set default_pkru_re 0x0
++if { [istarget *-*-linux*] } {
++    # Starting with v4.9, the linux kernel contains commit acd547b29880
++    # ("x86/pkeys: Default to a restrictive init PKRU"), which sets the
++    # pkru register to 0x55555554 by default.
++    set default_pkru_re (0x0|0x55555554)
++}
++
++
+ set comp_flags "-I${srcdir}/../nat/"
+ 
+ if { [prepare_for_testing "failed to prepare" ${testfile} ${srcfile} \
+@@ -51,9 +60,7 @@ if { !$supports_pkru } {
+ }
+ 
+ # Test pkru register at startup
+-# set test_string "0"
+-
+-gdb_test "print \$pkru" "= 0" "pkru register"
++gdb_test "print /x \$pkru" "= $default_pkru_re" "pkru register"
+ 
+ # Read values from pseudo registers.
+ gdb_breakpoint [ gdb_get_line_number "break here 1" ]
