@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.2.0.orig/requirements.txt oci-cli-3.2.0/requirements.txt
---- oci-cli-3.2.0.orig/requirements.txt	2021-10-19 22:21:53.000000000 +0200
-+++ oci-cli-3.2.0/requirements.txt	2021-10-27 15:32:18.956888833 +0200
+diff -Nru oci-cli-3.3.1.orig/requirements.txt oci-cli-3.3.1/requirements.txt
+--- oci-cli-3.3.1.orig/requirements.txt	2021-11-17 23:22:58.000000000 +0100
++++ oci-cli-3.3.1/requirements.txt	2021-11-29 15:19:49.655600660 +0100
 @@ -2,40 +2,40 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.2.0.orig/requirements.txt oci-cli-3.2.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.48.0
+-oci==2.51.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -31,18 +31,18 @@ diff -Nru oci-cli-3.2.0.orig/requirements.txt oci-cli-3.2.0/requirements.txt
 -python-dateutil>=2.5.3,<3.0.0
 +click>=7.1.2
 +coverage>=4.5.2
-+cryptography>=3.3.2
++cryptography
 +httpsig-cffi>=15.0.0
 +Jinja2>=2.11.3
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.48.0
++oci>=2.51.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
 +pyasn1>=0.2.3
-+pyOpenSSL>=19.1.0
++pyOpenSSL>=17.5.0
 +pycparser>=2.20
 +pyparsing>=2.2.0
 +pytest>=3.2.3
@@ -61,6 +61,8 @@ diff -Nru oci-cli-3.2.0.orig/requirements.txt oci-cli-3.2.0/requirements.txt
 -virtualenv==16.7.10
 -pytest-xdist==1.22.2
 -pytest-forked==1.0.2
+-PyYAML>=5.4,<6
+-docutils==0.15.2
 +sphinx>=2.2.1
 +sphinx-rtd-theme>=0.4.3
 +terminaltables>=3.1.0
@@ -69,18 +71,17 @@ diff -Nru oci-cli-3.2.0.orig/requirements.txt oci-cli-3.2.0/requirements.txt
 +virtualenv>=16.7.10
 +pytest-xdist>=1.22.2
 +pytest-forked>=1.0.2
- PyYAML>=5.4,<6
--docutils==0.15.2
++PyYAML>=5.4
 +docutils>=0.15.2
-diff -Nru oci-cli-3.2.0.orig/setup.py oci-cli-3.2.0/setup.py
---- oci-cli-3.2.0.orig/setup.py	2021-10-19 22:21:53.000000000 +0200
-+++ oci-cli-3.2.0/setup.py	2021-10-27 15:32:46.953176808 +0200
+diff -Nru oci-cli-3.3.1.orig/setup.py oci-cli-3.3.1/setup.py
+--- oci-cli-3.3.1.orig/setup.py	2021-11-17 23:22:58.000000000 +0100
++++ oci-cli-3.3.1/setup.py	2021-11-29 15:18:29.531047653 +0100
 @@ -29,22 +29,22 @@
      readme = f.read()
  
  requires = [
--    'oci==2.48.0',
-+    'oci>=2.48.0',
+-    'oci==2.51.0',
++    'oci>=2.51.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==7.1.2',
@@ -88,16 +89,17 @@ diff -Nru oci-cli-3.2.0.orig/setup.py oci-cli-3.2.0/setup.py
 -    'jmespath==0.10.0',
 -    'python-dateutil>=2.5.3,<3.0.0',
 +    'click>=7.1.2',
-+    'cryptography>=3.2.1',
++    'cryptography',
 +    'jmespath>=0.10.0',
 +    'python-dateutil>=2.5.3',
      'pytz>=2016.10',
      'six>=1.15.0',
 -    'terminaltables==3.1.0',
 -    'pyOpenSSL==19.1.0',
+-    'PyYAML>=5.4,<6'
 +    'terminaltables>=3.1.0',
-+    'pyOpenSSL>=19.1.0',
-     'PyYAML>=5.4,<6'
++    'pyOpenSSL>=17.5.0',
++    'PyYAML>=5.4'
  ]
  
  extras = {
