@@ -463,4 +463,41 @@ FIXES (LSP):
     <comment></comment>
     <requestid>932014</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1ec1e8beb9f64255134c363293060ab6</srcmd5>
+    <version>0.6.0</version>
+    <time>1638388028</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0 (details on
+  - Diagnostics and LSP changes
+    Initially, diagnostic module is part of vim.lsp module. In
+    order to support external plugins such as null-ls.nvim, the
+    nvim team has refactor the diagnostic module to its module
+    vim.diagnostic. So we need to change our config accordingly.
+    vim.lsp.diagnostic.show_line_diagnostics() has been changed
+    to vim.diagnostic.open_float(). Previously, there is no easy
+    to show diagnostic source unless with some hack, you can now
+    show source in diagnostics in open_float() easily:
+    vim.diagnostic.open_float(nil, {
+        source = 'always'
+    })
+    vim.lsp.diagnostic.goto_prev() and
+    vim.lsp.diagnostic.goto_next() has been renamed to
+    vim.diagnostic.goto_prev() and vim.diagnostic.goto_next()
+    respectively.
+    vim.lsp.diagnostic.set_loclist() and
+    vim.lsp.diagnostic.set_qflist() has been renamed to
+    vim.diagnostic.setloclist() and vim.diagnostic.setqflist()
+    instead.
+    Diagnostics signs has been renamed, for example (old –&gt; new):
+        LspDiagnosticsSignError –&gt; DiagnosticSignError (Lsp is
+            removed, Diagnostics is changed to singular from
+            Diagnostic)
+        LspDiagnosticsSignWarning –&gt; DiagnosticSignWarn
+        LspDiagnosticsSignInformation –&gt; DiagnosticSignInfo
+        LspDiagnosticsSignHint –&gt; DiagnosticSignHint
+    Also, related highlight has been renamed too:
+        DiagnosticsDefaultError –&gt; DiagnosticSignError</comment>
+    <requestid>935013</requestid>
+  </revision>
 </revisionlist>
