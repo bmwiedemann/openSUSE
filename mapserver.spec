@@ -17,6 +17,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with ruby
 
 #
@@ -30,12 +31,12 @@
 %endif
 
 Name:           mapserver
-Version:        7.6.3
+Version:        7.6.4
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
 Group:          Productivity/Networking/Web/Servers
-Url:            https://www.mapserver.org/
+URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM mapserver-7.6.1-fix_python_install_path.patch fixing python installation path badly defaulting to arch independent location
@@ -72,8 +73,8 @@ BuildRequires:  postgresql-devel >= 9.1
 %if 0%{?suse_version} >= 1500
 BuildRequires:  postgresql-server-devel >= 9.1
 %endif
-BuildRequires:  proj
 BuildRequires:  libprotobuf-c-devel
+BuildRequires:  proj
 BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
 BuildRequires:  rpm
@@ -99,9 +100,9 @@ Group:          System/Libraries
 Mapserver library for mapserver or mapscript module. you need this lib to run mapserver
 or any of the mapscript module (php, java, python, ruby)
 
-# We don't require apache2_mod-php5 users could have php5 running 
-# with other modes (cgi, php-fpm etc)
 
+# We don't require apache2_mod-php5 users could have php5 running
+# with other modes (cgi, php-fpm etc)
 %package -n php-mapscript
 Summary:        PHP/Mapscript map making extensions to PHP
 Group:          Development/Libraries/Other
@@ -284,7 +285,7 @@ mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}%{python_sitearch}/
 mkdir -p %{buildroot}/%{_includedir}/%{name}
 #Comment this look a bit wired to be useful sub-dir should also needed
-# agg, etc 
+# agg, etc
 cp *.h %{buildroot}/%{_includedir}/%{name}/
 
 # fix some exec bits essentially on examples to make rpmlint happy
