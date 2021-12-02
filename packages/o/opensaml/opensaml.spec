@@ -19,12 +19,12 @@
 %define libvers 12
 %define pkgdocdir %{_docdir}/%{name}
 Name:           opensaml
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Security Assertion Markup Language library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://www.opensaml.org/
+URL:            https://wiki.shibboleth.net/confluence/display/OpenSAML/
 Source0:        https://shibboleth.net/downloads/c++-opensaml/%{version}/%{name}-%{version}.tar.bz2
 Source1:        https://shibboleth.net/downloads/c++-opensaml/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
