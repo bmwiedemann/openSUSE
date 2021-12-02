@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  1 09:32:43 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.3.0:
+  * This is a minor update that contains a small number of fixes,
+    one small feature addition, and a number of additional deprecation
+    warnings for at risk features.
+
+-------------------------------------------------------------------
 Wed Nov 17 08:21:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

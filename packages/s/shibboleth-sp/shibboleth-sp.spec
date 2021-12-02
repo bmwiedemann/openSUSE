@@ -22,7 +22,7 @@
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.2.3
+Version:        3.3.0
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
