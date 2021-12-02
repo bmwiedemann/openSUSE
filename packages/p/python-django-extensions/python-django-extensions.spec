@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%global skip_python36 1
 Name:           python-django-extensions
 Version:        3.1.3
 Release:        0
