@@ -1,7 +1,7 @@
 #
 # spec file for package sssd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.5.2
+Version:        2.6.1
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -29,25 +29,8 @@ Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%v
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff
-
-%define servicename	sssd
-%define sssdstatedir	%_localstatedir/lib/sss
-%define dbpath		%sssdstatedir/db
-%define pipepath	%sssdstatedir/pipes
-%define pubconfpath	%sssdstatedir/pubconf
-%define gpocachepath	%sssdstatedir/gpo_cache
-
-# Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
-# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
-# * cifs-utils one is the default (priority 20)
-# * installing SSSD should NOT switch to SSSD plugin (priority 10)
-%define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
-%define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
-%define cifs_idmap_name         cifs-idmap-plugin
-%define cifs_idmap_priority     10
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-
+Patch2:	harden_sssd-ifp.service.patch
+Patch3:	harden_sssd-kcm.service.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -59,6 +42,7 @@ BuildRequires:  krb5-devel >= 1.12
 BuildRequires:  libcmocka-devel
 BuildRequires:  libsmbclient-devel
 BuildRequires:  libtool
+BuildRequires:  libunistring-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
 BuildRequires:  nscd
@@ -81,7 +65,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
 BuildRequires:  pkgconfig(libnl-route-3.0) >= 3.0
-BuildRequires:  pkgconfig(libpcre) >= 7
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(ndr_krb5pac)
 BuildRequires:  pkgconfig(ndr_nbt)
@@ -98,6 +82,24 @@ Requires(postun): pam-config
 Provides:       libsss_sudo = %version-%release
 Provides:       sssd-client = %version-%release
 Obsoletes:      libsss_sudo < %version-%release
+
+%define servicename	sssd
+%define sssdstatedir	%_localstatedir/lib/sss
+%define dbpath		%sssdstatedir/db
+%define pipepath	%sssdstatedir/pipes
+%define pubconfpath	%sssdstatedir/pubconf
+%define gpocachepath	%sssdstatedir/gpo_cache
+
+# Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
+# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
+# * cifs-utils one is the default (priority 20)
+# * installing SSSD should NOT switch to SSSD plugin (priority 10)
+%define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
+%define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
+%define cifs_idmap_name         cifs-idmap-plugin
+%define cifs_idmap_priority     10
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description
 Provides a set of daemons to manage access to remote directories and
@@ -363,15 +365,11 @@ Security Services Daemon (sssd).
 
 %build
 export LDB_DIR="$(pkg-config ldb --variable=modulesdir)"
-
 # help configure find nscd
 export PATH="$PATH:/usr/sbin"
 
 autoreconf -fiv
-export CFLAGS="%optflags -fPIE"
-export LDFLAGS="-pie"
 %configure \
-    --with-crypto=libcrypto \
     --with-db-path="%dbpath" \
     --with-pipe-path="%pipepath" \
     --with-pubconf-path="%pubconfpath" \
@@ -394,16 +392,12 @@ export LDFLAGS="-pie"
 
 %install
 # sss_obfuscate is compatible with both python 2 and 3
-sed -i -e 's:%_bindir/python:%_bindir/python3:' src/tools/sss_obfuscate
-
+perl -i -lpe 's{%_bindir/python\b}{%_bindir/python3}' src/tools/sss_obfuscate
 %make_install
 b="%buildroot"
 
-#for i in cs cs/man8 nl nl/man8 pt pt/man8 uk uk/man1 uk/man5 uk/man8; do
-#	mkdir -p "$b/%_mandir/$i"
-#done
 # Copy some defaults
-mkdir -p "$b/%_sysconfdir/sssd" "$b/%_sysconfdir/sssd/conf.d"
+mkdir -pv "$b/%_sysconfdir/sssd" "$b/%_sysconfdir/sssd/conf.d"
 install -m600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
 install -d "$b/%_unitdir"
 install -d "$b/%_sysconfdir/logrotate.d"
@@ -415,7 +409,7 @@ find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
 
 # dummy target for cifs-idmap-plugin
-mkdir -p %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
+mkdir -pv %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
 ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
 
 %check
@@ -513,7 +507,6 @@ fi
 %_mandir/??/man5/sssd-ad.5*
 %_mandir/??/man5/sssd-files.5*
 %_mandir/??/man5/sssd-ldap-attributes.5*
-%_mandir/??/man5/sssd-secrets.5*
 %_mandir/??/man5/sssd-session-recording.5*
 %_mandir/??/man5/sssd-simple.5*
 %_mandir/??/man5/sssd-sudo.5*
@@ -578,7 +571,6 @@ fi
 %_datadir/%name/cfg_rules.ini
 %_datadir/%name/sssd.api.conf
 %dir %_datadir/%name/sssd.api.d/
-%_datadir/%name/sssd.api.d/sssd-local.conf
 %_datadir/%name/sssd.api.d/sssd-simple.conf
 %_datadir/%name/sssd.api.d/sssd-files.conf
 #
@@ -591,6 +583,7 @@ fi
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
 %_mandir/??/man8/pam_sss.8*
+%_mandir/??/man8/pam_sss_gss.8*
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
@@ -642,7 +635,6 @@ fi
 %dir %_libexecdir/sssd/
 %_libexecdir/sssd/sssd_kcm
 %dir %_libdir/sssd/
-%_libdir/sssd/libsss_secrets.so
 %_mandir/man8/sssd-kcm.8*
 %_mandir/??/man8/sssd-kcm.8*
 %_datadir/sssd-kcm/
@@ -698,6 +690,7 @@ fi
 %_mandir/??/man8/sss_*.8*
 %_mandir/man8/sssctl.8*
 %_mandir/man8/sss_*.8*
+%python3_sitelib/sssd/
 
 %files winbind-idmap
 %_libdir/samba/

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 23 16:11:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sssd-ifp.service.patch
+  * harden_sssd-kcm.service.patch
+
+-------------------------------------------------------------------
+Tue Nov  9 15:35:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * New infopipe method FindByValidCertificate().
+  * The default value of the "ssh_hash_known_hosts" setting was
+    changed to false for the sake of consistency with OpenSSH
+    that does not hash host names by default.
+
+-------------------------------------------------------------------
+Fri Oct 15 13:41:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Support of legacy json format for ccaches was dropped.
+  * Support of long time deprecated secrets responder was dropped.
+  * Support of long time deprecated local provider was dropped.
+  * The sssctl command was vulnerable to shell command injection
+    via the logs-fetch and cache-expire subcommands,
+    which was fixed.
+  * Basic support of user's 'subuid and subgid ranges' for IPA
+    provider and corresponding plugin for shadow-utils were added.
+
+-------------------------------------------------------------------
 Mon Jul 12 19:45:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.2
