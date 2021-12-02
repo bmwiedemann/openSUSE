@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * kickoff: Do not reset action for KickoffItemDelegate in Places tab (kde#446269)
+  * applets/taskmanager: Always show album art for single non-browser windows
+  * kcms/touchpad: make applet read-only
+  * Revert "Delete the Touchpad applet" (kde#445095)
+
+-------------------------------------------------------------------
 Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3
