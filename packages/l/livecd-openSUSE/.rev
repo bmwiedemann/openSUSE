@@ -1335,4 +1335,14 @@
     <user>dimstar_suse</user>
     <comment>Drop no longer supported X drivers</comment>
   </revision>
+  <revision rev="166" vrev="166">
+    <srcmd5>2f84f80999338beb03b8de971985d2e1</srcmd5>
+    <version>unknown</version>
+    <time>1638480624</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /lib/modules without /usr to be compatible with Leap
+
+- Drop no longer maintained X video drivers: glint, mach64 and tga.</comment>
+    <requestid>935223</requestid>
+  </revision>
 </revisionlist>

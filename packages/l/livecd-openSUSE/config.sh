@@ -101,12 +101,12 @@ rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bn
 
 # Not needed, boo#1166406
 rm -f /boot/vmlinux*.[gx]z
-rm -f /usr/lib/modules/*/vmlinux*.[gx]z
+rm -f /lib/modules/*/vmlinux*.[gx]z
 
 # Decompress kernel modules, better for squashfs (boo#1192457)
-find /usr/lib/modules/*/kernel -name '*.ko.xz' -exec xz -d {} +
-find /usr/lib/modules/*/kernel -name '*.ko.zst' -exec zstd --rm -d {} +
-depmod $(basename /usr/lib/modules/*)
+find /lib/modules/*/kernel -name '*.ko.xz' -exec xz -d {} +
+find /lib/modules/*/kernel -name '*.ko.zst' -exec zstd --rm -d {} +
+depmod $(basename /lib/modules/*)
 
 # Add repos from /etc/YaST2/control.xml
 add-yast-repos
