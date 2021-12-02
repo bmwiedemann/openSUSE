@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 16 12:43:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.5:
+  - PYTHON_PREFIX and PYTHON_EXEC_PREFIX are now set according to
+    Python's sys.* values only if the new configure option
+    --with-python-sys-prefix is specified. Otherwise, GNU default values
+    are used, as in the past. (The change in 1.16.3 was too incompatible.)
+  - consistently depend on install-libLTLIBRARIES.
+  - use const for yyerror declaration in bison/yacc tests.
+  - Common top-level files can be provided as .md; the non-md version is
+    used if both are present:
+      AUTHORS ChangeLog INSTALL NEWS README README-alpha THANKS
+  - CTAGS, ETAGS, SCOPE variables can be set via configure.
+  - Silent make output for custom link commands.
+  - New option "no-dist-built-sources" skips generating $(BUILT_SOURCES)
+    before building the tarball as part of "make dist", that is,
+    omits the dependency of $(distdir): $(BUILT_SOURCES).
+  - automake output more reproducible.
+  - test-driver less likely to clash with tests writing to the same file.
+  - DejaGnu tests always use the directory name, testsuite/, for
+    compatibility with the newer dejagnu-1.6.3 and with prior versions.
+  - config.sub and config.guess updates include restoration of `...`
+    for maximum portability.
+- refresh automake-suse-vendor.patch
+- drop fix-testsuite-failures-with-autoconf270.patch (upstream)
+- drop automake-reproducible.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Mar 12 22:02:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - move license to licensedir 

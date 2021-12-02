@@ -1,5 +1,5 @@
 #
-# spec file for package automake
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,23 +26,19 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.16.3
+Version:        1.16.5
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
-License:        GPL-2.0-or-later AND GFDL-1.3-or-later AND SUSE-Public-Domain AND MIT
+License:        GFDL-1.3-or-later AND GPL-2.0-or-later AND SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/automake
 Source0:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=automake&download=1#/automake.keyring
 Source3:        automake-rpmlintrc
-#Source4:        http://git.savannah.gnu.org/cgit/config.git/plain/config.sub
-#Source5:        http://git.savannah.gnu.org/cgit/config.git/plain/config.guess
-Patch1:         https://git.savannah.gnu.org/cgit/automake.git/patch/?id=ccb57553e3433df3e52e534e6f87915db23ff9a5#/fix-testsuite-failures-with-autoconf270.patch
 Patch2:         automake-require_file.patch
 Patch3:         automake-1.13.4-fix-primary-prefix-invalid-couples-test.patch
-Patch4:         automake-reproducible.patch
 Patch5:         0001-correct-parameter-parsing-in-test-driver-script.patch
 Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
@@ -55,7 +51,7 @@ BuildRequires:  perl(threads)
 Requires:       autoconf >= 2.69
 Requires:       perl
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 BuildArch:      noarch
 %if "%{flavor}" == "testsuite"
 BuildRequires:  cscope
@@ -104,6 +100,7 @@ sh bootstrap
 
 %install
 %else
+
 %install
 %make_install
 mkdir %{buildroot}%{_sysconfdir}
