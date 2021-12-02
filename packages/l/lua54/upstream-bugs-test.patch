@@ -172,3 +172,118 @@ index a50f78304..97834e380 100644
      else if EQ("type") {
        lua_pushstring(L1, luaL_typename(L1, getnum));
      }
+diff --git a/testes/cstack.lua b/testes/cstack.lua
+index 213d15d47..ca76c8729 100644
+--- a/cstack.lua
++++ b/cstack.lua
+@@ -103,6 +103,20 @@ do
+ end
+ 
+ 
++do    -- bug in 5.4.2
++  print("nesting coroutines running after recoverable errors")
++  local count = 0
++  local function foo()
++    count = count + 1
++    pcall(1)   -- create an error
++    -- running now inside 'precover' ("protected recover")
++    coroutine.wrap(foo)()   -- call another coroutine
++  end
++  checkerror("C stack overflow", foo)
++  print("final count: ", count)
++end
++
++
+ if T then
+   print("testing stack recovery")
+   local N = 0      -- trace number of calls
+diff --git a/testes/coroutine.lua b/testes/coroutine.lua
+index 461e03770..76c9d6e63 100644
+--- a/coroutine.lua
++++ b/coroutine.lua
+@@ -136,6 +136,10 @@ do
+   assert(coroutine.status(co) == "dead")
+   local st, msg = coroutine.close(co)
+   assert(st and msg == nil)
++  -- also ok to close it again
++  st, msg = coroutine.close(co)
++  assert(st and msg == nil)
++
+ 
+   -- cannot close the running coroutine
+   local st, msg = pcall(coroutine.close, coroutine.running())
+@@ -149,6 +153,22 @@ do
+     assert(not st and string.find(msg, "normal"))
+   end))()
+ 
++  -- cannot close a coroutine while closing it
++  do
++    local co
++    co = coroutine.create(
++      function()
++        local x <close> = func2close(function()
++            coroutine.close(co)   -- try to close it again
++         end)
++        coroutine.yield(20)
++      end)
++    local st, msg = coroutine.resume(co)
++    assert(st and msg == 20)
++    st, msg = coroutine.close(co)
++    assert(not st and string.find(msg, "running coroutine"))
++  end
++
+   -- to-be-closed variables in coroutines
+   local X
+ 
+@@ -158,6 +178,9 @@ do
+   assert(not st and msg == 100)
+   st, msg = coroutine.close(co)
+   assert(not st and msg == 100)
++  -- after closing, no more errors
++  st, msg = coroutine.close(co)
++  assert(st and msg == nil)
+ 
+   co = coroutine.create(function ()
+     local x <close> = func2close(function (self, err)
+@@ -189,6 +212,9 @@ do
+   local st, msg = coroutine.close(co)
+   assert(st == false and coroutine.status(co) == "dead" and msg == 200)
+   assert(x == 200)
++  -- after closing, no more errors
++  st, msg = coroutine.close(co)
++  assert(st and msg == nil)
+ end
+ 
+ do
+@@ -419,7 +445,7 @@ do
+ 
+   local X = false
+   A = coroutine.wrap(function()
+-    local _ <close> = setmetatable({}, {__close = function () X = true end})
++    local _ <close> = func2close(function () X = true end)
+     return pcall(A, 1)
+   end)
+   st, res = A()
+@@ -427,6 +453,22 @@ do
+ end
+ 
+ 
++-- bug in 5.4.1
++do
++  -- coroutine ran close metamethods with invalid status during a
++  -- reset.
++  local co
++  co = coroutine.wrap(function()
++    local x <close> = func2close(function() return pcall(co) end)
++    error(111)
++  end)
++  local st, errobj = pcall(co)
++  assert(not st and errobj == 111)
++  st, errobj = pcall(co)
++  assert(not st and string.find(errobj, "dead coroutine"))
++end
++
++
+ -- attempt to resume 'normal' coroutine
+ local co1, co2
+ co1 = coroutine.create(function () return co2() end)

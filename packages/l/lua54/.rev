@@ -120,4 +120,14 @@
 </comment>
     <requestid>909226</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>e0427eea146f683d3fb8ce8c8ca2a587</srcmd5>
+    <version>5.4.3</version>
+    <time>1638480601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 7,8 for build and tests respectively.
+</comment>
+    <requestid>934303</requestid>
+  </revision>
 </revisionlist>
