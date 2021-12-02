@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 18 13:33:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211116.00 (bsc#1193257, bsc#1193258)
+  * dont duplicate logs (#146)
+  * Add WantedBy network dependencies to google-guest-agent service (#136)
+  * dont try dhcpv6 when not needed (#145)
+  * Integration tests: instance setup (#143)
+  * Integration test: test create and remove google user (#128)
+  * handle comm errors in script runner (#140)
+  * enforce script ordering (#138)
+  * enable ipv6 on secondary interfaces (#133)
+- from version 20211103.00
+  * Integration tests: instance setup (#143)
+- from version 20211027.00
+  * Integration test: test create and remove google user (#128)
+
+-------------------------------------------------------------------
 Fri Oct 22 09:38:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20211019.00

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 22 08:32:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.0-rc1:
+  * This new version makes it possible to attempt an astrometric
+    resolution on only part of the image.
+    Still for wide field images (FOV > 5°), the astrometric
+    resolution is now done by default on the central part
+    of the image only.
+  * Keeping WCS information in geometric operations
+  * Keeping WCS information in Undo/Redo
+  * Better annotation
+  * Add of GAIA EDR3 catalogue
+  * Improve star detection in image registration
+  * For global registration, it is now possible to choose the number
+    of degrees of freedom of the transformation that sends the image
+    to be registered to the reference image. By default, the
+    transformation is a homography, which admits a certain number
+    of distortions between the 2 images.
+  * New tool: Evaluate sensor tilt
+  * New button for quick photometry
+  * Pixel Math : implementation of a first version
+  * Refactoring of command help
+- For more details, see https://siril.org/download/2021-11-20-siril-1.0.0-rc1
+
+-------------------------------------------------------------------
 Fri Nov 12 06:39:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix incorrect/missing licenses

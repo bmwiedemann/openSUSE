@@ -155,4 +155,47 @@
 - covers jira#SLE/SLE-19361</comment>
     <requestid>923062</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b6aa3e2e36aff8f01fdbd46fbbffe12</srcmd5>
+    <version>21.3.5</version>
+    <time>1638387982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.3.5:
+  * single change: Updates release notes for 21.3.4 release
+    * New features:
+      + VP9 Encode: Added WebRTC mode.
+      + Samples:
+        . Added &quot;VuiTC&quot; option to set VUI TransferCharacteristics in
+          sample_multi_transcode.
+        . Added the verification of input params before used in Init
+          for sample_encode
+      + Misc:
+        . Added support of DRM_FORMAT_NV12 for console mode
+          rendering.
+        . Added runtimes support matrix for Media SDK and oneVPL GPU
+          Runtime.
+      + Software requirements:
+        . Libdrm 2.4.84 or later
+        . Kernel 4.14 or later (5.4 recommended, consult kernel
+          support matrix wiki page for details)
+      + Known issues: Kernel 5.0 have known issue with endurance on
+        Skylake see
+        https://bugs.freedesktop.org/show_bug.cgi?id=110285 for
+        details.
+    * Limited support on certain platforms:
+      + MPEG-2 encode is not supported on Apollo Lake
+      + H.264 Flexible Encode Infrastructure only supported on
+        Broadwell and Skylake
+      + Multi Frame Encode (MFE), HEVC Flexible Encode Infrastructure
+        only supported on Skylake
+      + VP9 decoder is supported starting from Kabylake platform
+      + VP9 encoder is supported starting from Icelake platform
+      + SW fallback is unsupported for all components but MJPEG
+      + Keem Bay requires a VPU runtime library
+      + The following features are supported by Keem Bay runtime and
+        are not supported by Gen graphics runtime:
+        . mfxExtInsertHeaders
+        . mfxExtEncoderIPCMArea</comment>
+    <requestid>934705</requestid>
+  </revision>
 </revisionlist>

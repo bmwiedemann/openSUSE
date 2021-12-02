@@ -17,13 +17,15 @@
 
 
 Name:           xonsh
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-3-Clause AND BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            https://xonsh.org
+URL:            https://xon.sh/
 Source0:        https://github.com/xonsh/xonsh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-4550.patch -- fix doc build error, from https://github.com/xonsh/xonsh/issues/4550#issue-1056650555-permalink
+Patch0:         https://github.com/xonsh/xonsh/pull/4559.patch#/fix-4550.patch
 # SECTION docs
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-cloud-sptheme
@@ -56,10 +58,12 @@ HTML documentation on the API and examples for %name.
 
 %prep
 %setup -q -n xonsh-%{version}
+%autopatch -p1
 sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py
 
 %build
 python3 setup.py build
+# Temporarily disabled building docs because of error https://github.com/xonsh/xonsh/issues/4551
 pushd docs
 LANG=C.UTF-8 PYTHONPATH=.. make html
 # work around a rpmlint error file-contains-buildroot
@@ -70,6 +74,7 @@ popd
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %fdupes %{buildroot}
+%fdupes -s docs/
 %fdupes -s docs/_build/html/
 
 %files
@@ -82,6 +87,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %license license
 
 %files -n %{name}-doc
+%doc docs
 %doc docs/_build/html
 
 %changelog

@@ -80,6 +80,7 @@ Patch2:         %{name}_ipsec_service.patch
 Patch3:         %{name}_fipscheck.patch
 %endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
+Patch6:	harden_strongswan.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  curl-devel
@@ -267,6 +268,7 @@ sed -e 's|@IPSEC_DIR@|%{_libexecdir}/ipsec|g' \
      < %{_sourcedir}/fipscheck.sh.in        \
      > _fipscheck
 %endif
+%patch6 -p1
 
 %build
 CFLAGS="%{optflags} -W -Wall -Wno-pointer-sign -Wno-strict-aliasing -Wno-unused-parameter"

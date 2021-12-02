@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Nov 29 14:22:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.1
+  * Support for Object Storage integration with the Big Data service
+    * ``oci bds bds-api-key``
+  * Support for the GetSubnetTopology API in the Networking Topology Service
+    * ``oci network subnet-topology get``
+  * Support for Cloud Advisor V2 features as a part of the Cloud Advisor Service
+    * ``oci optimizer profile-level-summary list-profile-levels``
+    * ``oci optimizer queryable-field-summary list-resource-action-queryable-fields``
+    * ``oci optimizer resource-action-summary filter-resource-actions``
+  * FastConnect Service
+    * Support for MACSEC in the below commands
+      * ``oci network cross-connect create --macsec-properties``
+      * ``oci network cross-connect update --macsec-properties``
+      * ``oci network cross-connect-group create --macsec-properties``
+      * ``oci network cross-connect-group update --macsec-properties``
+    * Support for MTU in the below commands
+      * ``oci network virtual-circuit create --ip-mtu``
+      * ``oci network virtual-circuit update --ip-mtu``
+  * Support for Service Manager Proxy aimed at having SaaS environments that
+    implement Service Manager API contract.
+    * ``oci service-manager-proxy service-environment``
+  * Database service
+    * The required parameter --backup-tde-password is now optional
+      in the below commands
+      * ``oci db database create-from-backup``
+      * ``oci db database create-from-database``
+    * The parameter --backup-tde-password is now optional in the below commands
+      * ``oci db system launch-from-backup ``
+      * ``oci db database launch-from-database``
+    * The parameters --pdb-admin-password, --tde-wallet-password and
+      --target-tde-wallet-password are now optional and a new parameter
+      --is-pdb-admin-acc-locked is introduced in the below commands
+      * ``oci db pluggable-database create``
+      * ``oci db pluggable-database local-clone``
+      * ``oci db pluggable-database remote-clone ``
+- from version 3.3.0
+  * Support for Drilldown configuration in the Management Dashboard service
+    * ``oci management-dashboard dashboard create | update --drilldown-config``
+    * ``oci management-dashboard saved-search create | update --drilldown-config``
+  * Support for Autonomous Database Dedicated on Cloud at Customer
+    Infrastructure in the Operator Access Control Service
+    * ``oci opctl access-request approve --time-of-user-creation``
+    * ``oci opctl access-request list --resource-type, --time-end, --time-start``
+    * ``oci opctl access-request review``
+    * ``oci opctl operator-action list --resource-type``
+    * ``oci opctl operator-control create --resource-type``
+    * ``oci opctl operator-control list  --resource-type``
+    * ``oci opctl operator-control-assignment create --is-auto-approve-during-maintenance
+      --is-log-forwarded --remote-syslog-server-address --remote-syslog-server-ca-cert
+      --remote-syslog-server-port``
+    * ``oci opctl operator-control-assignment list  --resource-type``
+    * ``oci opctl operator-control-assignment update --resource-type
+      --is-auto-approve-during-maintenance --is-log-forwarded
+      --remote-syslog-server-address --remote-syslog-server-ca-cert
+      --remote-syslog-server-port``
+    * [Breaking] Fields ``--approver-groups-list``, ``--is-fully-pre-approved``
+      are now required for ``oci opctl operator-control create``
+    * [Breaking] Field ``--is-enforced-always`` is now required for
+      ``oci opctl operator-control-assignment update``
+    * [Breaking] Fields ``--approver-groups-list``, ``--is-fully-pre-approved``,
+      ``--operator-control-name`` are now required for
+      ``oci opctl operator-control update``
+    * [Breaking] Fields ``--is-enforced-always``, ``--resource-type`` are now
+      required for ``oci opctl operator-control-assignment create``
+  * Support for verifying the checksum for the python installer script from
+    within the shell and powershell installer scripts
+- from version 3.2.2
+  * Support for Domains in the Identity Service 
+    * ``oci iam domain`` 
+  * Support for redeemable user and support rewards in the Usage Service
+    * ``oci usage monthly-reward-summary list-rewards``
+    * ``oci usage product-summary list-products``
+    * ``oci usage redeemable-user create``
+    * ``oci usage redeemable-user delete``
+    * ``oci usage redeemable-user-summary list-redeemable-users``
+  * Support for the Database Tools service
+    * ``oci dbtools``
+  * Support for scan listener port TCP and TCP SSL on cloud VM
+    clusters in the Database service
+    * ``oci db cloud-vm-cluster create --scan-listener-port-tcp
+      --scan-listener-port-tcp-ssl`` 
+  * Support for user-defined functions and libraries, as well as
+    scheduling and orchestration, in the Data Integration service
+    * ``oci data-integration user-defined-function``
+    * ``oci data-integration user-defined-function-validation``
+    * ``oci data-integration schedule create-custom-frequency |
+      create-monthly-rule-frequency | create-weekly-frequency``
+    * ``oci data-integration schedule update-custom-frequency |
+      update-monthly-rule-frequency | update-weekly-frequency``
+    * ``oci data-integration function-library``
+    * ``oci data-integration data-entity create-entity-shape-from-sql`` 
+  * Support for calling Oracle Cloud Infrastructure services in the
+    Singapore (``--region ap-singapore-1``) and Marseille
+    (``--region eu-marseille-1``) regions
+  * Endpoint for Identity service changed to include ".oci" subdomain
+  * Handle merge case when empty contexts/clusters/users is null and
+    not empty string in the Container Engine commands
+  * Version checks in install.sh and install.py 
+- from version 3.2.1
+  * Support for OCI Certificates service
+    * ``oci certs-mgmt``
+    * ``oci certificates``
+  * Support for the following features in Devops service
+    * Support for build services
+      * ``oci devops build-pipeline``
+      * ``oci devops build-run``
+      * ``oci devops connection``
+    * Support for creating and managing repositories and triggers
+      * ``oci devops repository``
+      * ``oci devops trigger``
+  * Support for creating child tenancies and managing subscription
+    in Organizations service
+    * ``oci organizations organization``
+    * ``oci organizations organization-tenancy``
+    * ``oci organizations child-tenancy``
+    * ``oci organizations assigned-subscription``
+    * ``oci organizations subscription-mapping``
+    * ``oci organizations subscription``
+  * Support for the following features in Operations Insights service
+    * Support for resource lifecycle operations on Enterprise
+      Manager-based Exadata targets and capacity analytics
+      * ``oci opsi exadata-insights``
+    * Support for creating Enterprise Manager-based Host targets
+      * ``oci opsi host-insights create-em-external-host``
+  * Support for creating esxi-hosts outside of the same AD in
+    Oracle Cloud VMWare Solution service
+    * ``oci ocvs esxi-host create --compute-availability-domain``
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Oct 27 13:35:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.0

@@ -301,4 +301,12 @@
     <comment>- Update to release SDK-1.2.189.0</comment>
     <requestid>917061</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b15937182fff550ccc95960f85be81d5</srcmd5>
+    <version>1.2.198.0</version>
+    <time>1638387997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934184</requestid>
+  </revision>
 </revisionlist>

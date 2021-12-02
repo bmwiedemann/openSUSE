@@ -352,19 +352,8 @@ make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=/dev/null || {
 
 %if %{with guile}
 %files guile
-%if 0%{?suse_version} > 1550
-%{_libdir}/guile/3.0/guile-gnutls*.so*
-%{_libdir}/guile/3.0/site-ccache
-%{_libdir}/guile/3.0/site-ccache/gnutls
-%{_libdir}/guile/3.0/site-ccache/gnutls.go
-%{_libdir}/guile/3.0/site-ccache/gnutls/extra.go
-%{_datadir}/guile/gnutls
-%{_datadir}/guile/gnutls.scm
-%{_datadir}/guile/gnutls/extra.scm
-%else
 %{_libdir}/guile/*
 %{_datadir}/guile/gnutls*
-%endif
 %endif
 
 %changelog

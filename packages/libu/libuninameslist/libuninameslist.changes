@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 27 12:45:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211114:
+  * Version 1.10, Unicode 14.0 and French version 1.5 now is at 14.0.
+  * Gentoo Bug 781716 & Debian Bug 989173, -O0 patch by Naohiro Aota.
+
+-------------------------------------------------------------------
 Sat Nov 13 12:00:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20210917:

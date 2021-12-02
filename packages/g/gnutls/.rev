@@ -1477,4 +1477,15 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>896687</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>34dd9dec335b730db444886dd025814c</srcmd5>
+    <version>3.7.2</version>
+    <time>1638387995</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop bogus condition &quot;&gt; 1550&quot;: that would mean 'more recent than
+  Tumbleweed' which is technically impossible, as Tumbleweed is the
+  leading project (and the condition causes issues as Tumbleweed
+  needs to move away from 1550 due to CODE 15 SP5 plans).</comment>
+    <requestid>934095</requestid>
+  </revision>
 </revisionlist>

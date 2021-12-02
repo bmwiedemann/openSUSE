@@ -185,6 +185,10 @@ Contains the Julia manual, the reference documentation of the standard library.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%ifarch aarch64 %{arm}
+# https://github.com/JuliaLang/julia/issues/41613#issuecomment-976535193
+sed -i 's#$(eval $(call symlink_system_library,CSL,libquadmath,0))##' base/Makefile
+%endif
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;

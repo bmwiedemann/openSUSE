@@ -17,13 +17,13 @@
 
 
 Name:           solaar
-Version:        1.0.7
+Version:        1.1.0
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://pwr-solaar.github.io/Solaar
-Source0:        https://github.com/pwr/Solaar/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        Solaar-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE solaar-fix-desktop-categories.patch malcolmlewis@opensuse.org -- Fix desktop categories as per openSUSE desktop file specification.
 Patch0:         solaar-fix-desktop-categories.patch
 #
@@ -37,7 +37,8 @@ BuildRequires:  python3-gobject
 Requires:       python3-gobject
 BuildRequires:  python3-gobject-Gdk
 Requires:       python3-gobject-Gdk
-BuildRequires:  python3-pyudev
+BuildRequires:  python3-PyYAML
+Requires:       python3-PyYAML
 Requires:       python3-pyudev
 BuildRequires:  typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Gtk-3_0
@@ -105,7 +106,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 /usr/bin/udevadm trigger --subsystem-match=hidraw --action=add
 
 %files
-%doc ChangeLog COPYRIGHT docs/index.md
+%doc ChangeLog COPYRIGHT
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli

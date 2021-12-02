@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:50:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Match inkscape version number only
+  * Fix CairSVGConverter::convert for usage on Windows 
+
+-------------------------------------------------------------------
 Sat Jul 17 13:34:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

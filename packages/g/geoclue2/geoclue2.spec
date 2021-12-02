@@ -1,7 +1,7 @@
 #
 # spec file for package geoclue2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,8 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
-
-# PATCH-FIX-UPSTREAM geoclue2-revert-2-faulty.patch -- Revert two broken commits
-Patch0:         geoclue2-revert-2-faulty.patch
-
+# PATCH-FIX-UPSTREAM geoclue2-geoip-when-wifi-unavailable.patch glfo#geoclue/geoclue#142 badshah400@gmail.com -- gclue-wifi: Use GeoIP when a WiFi device isn't available
+Patch0:         geoclue2-geoip-when-wifi-unavailable.patch
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
@@ -92,8 +90,7 @@ awareness in applications. GeoClue uses the D-Bus inter-process
 communication mechanism to provide location information
 
 %prep
-%autosetup -n %{_name}-%{version} -N
-%patch0 -p1 -R
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson \

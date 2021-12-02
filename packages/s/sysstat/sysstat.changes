@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 12:33:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sysstat.service.patch
+
+-------------------------------------------------------------------
 Sun Oct  3 15:11:09 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - drop sysstat-disable-test-failures.patch - tests are fine on s390x

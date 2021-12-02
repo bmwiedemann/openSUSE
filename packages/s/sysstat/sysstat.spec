@@ -33,6 +33,7 @@ Patch0:         sysstat-8.1.6-sa1sa2lock.diff
 Patch2:         sysstat-8.0.4-pagesize.diff
 # PATCH-FIX-OPENSUSE bsc#1151453
 Patch3:         sysstat-service.patch
+Patch4:         harden_sysstat.service.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  pkgconfig
@@ -75,6 +76,7 @@ from a sysstat package.
 cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
+%patch4 -p1
 
 %build
 export conf_dir="%{_sysconfdir}/sysstat"

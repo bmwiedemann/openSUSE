@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 30 16:03:56 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1638286681.f004793c0:
+  * container: Persist images directory
+  * container: Add upgradedb mode in run script
+  * t: Fix regression that we fail on too many js errors (48664aa)
+  * t: Add more details to wait_for_result_panel log message
+  * t: Also look for worker-log in resultdir
+  * t: Provide autoinst-log.txt in full-stack.t also before uploading
+  * t: Provide stack trace for better context on Selenium related bails
+  * AMQP: allow and handle some TLS-related query parameters
+  * Amend description of tag usage in the documentation
+  * Improve investigation tests so every check has a description
+  * Fix checking investigation response
+  * Fix displaying investigation fields like `diff_to_last_good`
+  * doc: Add section about performance testing under troubleshooting
+  * doc: Fix minor details in installation documentation
+
+-------------------------------------------------------------------
 Fri Nov 26 07:58:20 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1637913492.4e7a64436:

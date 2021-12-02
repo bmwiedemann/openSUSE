@@ -68,4 +68,31 @@
     <comment></comment>
     <requestid>867491</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bebfcf30a85fab9c30453f52dff40a8d</srcmd5>
+    <version>2.1.0</version>
+    <time>1638203314</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Update IRC network to OFTC
+  * Fix doc job
+  * Switch testing to Xena testing runtime
+  * [CI] Make bashate-devstack job voting and gating
+  * setup.cfg: Replace dashes with underscores
+  * Add ensure-tox role to test job
+  * Changed minversion in tox to 3.18.0
+  * remove unicode from code
+  * Add Python3 wallaby unit tests
+  * Create tox environment to build pdf documentation
+  * Remove obsolete files
+  * drop mock from lower-constraints and requirements
+  * Stop to use the \_\_future\_\_ module
+  * Switch to newer openstackdocstheme and reno versions
+  * Fix hacking min version to 3.0.1
+  * Switch testing to Victoria testing runtime
+  * [ussuri][goal] Update contributor documentation
+  * Cleanup py27 support
+  * Update hacking for Python3</comment>
+    <requestid>934508</requestid>
+  </revision>
 </revisionlist>

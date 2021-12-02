@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 22 15:57:07 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Removed libalternatives machanism. Using direct link from
+  /usr/bin/busybox to /usr/bin/sh. The package is conflicting with
+  the new packages bash-sh which has a link for /usr/bin/sh too.
+
+-------------------------------------------------------------------
+Wed Aug 18 14:00:55 UTC 2021 - Stefan Schubert <schubi@suse.com>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
 Mon Aug  2 13:51:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add shadow as BuildRequires

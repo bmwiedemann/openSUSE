@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Nov 30 18:22:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.6.0 (details on
+  - Diagnostics and LSP changes
+    Initially, diagnostic module is part of vim.lsp module. In
+    order to support external plugins such as null-ls.nvim, the
+    nvim team has refactor the diagnostic module to its module
+    vim.diagnostic. So we need to change our config accordingly.
+
+    vim.lsp.diagnostic.show_line_diagnostics() has been changed
+    to vim.diagnostic.open_float(). Previously, there is no easy
+    to show diagnostic source unless with some hack, you can now
+    show source in diagnostics in open_float() easily:
+
+    vim.diagnostic.open_float(nil, {
+        source = 'always'
+    })
+
+    vim.lsp.diagnostic.goto_prev() and
+    vim.lsp.diagnostic.goto_next() has been renamed to
+    vim.diagnostic.goto_prev() and vim.diagnostic.goto_next()
+    respectively.
+
+    vim.lsp.diagnostic.set_loclist() and
+    vim.lsp.diagnostic.set_qflist() has been renamed to
+    vim.diagnostic.setloclist() and vim.diagnostic.setqflist()
+    instead.
+
+    Diagnostics signs has been renamed, for example (old –> new):
+        LspDiagnosticsSignError –> DiagnosticSignError (Lsp is
+            removed, Diagnostics is changed to singular from
+            Diagnostic)
+        LspDiagnosticsSignWarning –> DiagnosticSignWarn
+        LspDiagnosticsSignInformation –> DiagnosticSignInfo
+        LspDiagnosticsSignHint –> DiagnosticSignHint
+
+    Also, related highlight has been renamed too:
+        DiagnosticsDefaultError –> DiagnosticSignError
+        DiagnosticsDefaultWarning –> DiagnosticSignWarn
+        DiagnosticsDefaultInformation –> DiagnosticSignInfo
+        DiagnosticsDefaultHint –> DiagnosticSignHint
+
+    Now, we can use the following lua snippet to change diagnostic signs:
+
+    vim.fn.sign_define("DiagnosticSignError",
+        { text = "✗", texthl = "DiagnosticSignError" })
+    vim.fn.sign_define("DiagnosticSignWarn",
+        { text = "!", texthl = "DiagnosticSignWarn" })
+    vim.fn.sign_define("DiagnosticSignInformation",
+        { text = "", texthl = "DiagnosticSignInfo" })
+    vim.fn.sign_define("DiagnosticSignHint",
+        { text = "", texthl = "DiagnosticSignHint" })
+
+  - Changes to the default
+    There are also changes to options and mappings that you might
+    be interested.
+
+    Option default value changes:
+    - backupdir can now be created automatically and double
+      backslash is used, see this commit.
+    - option inccommand is set to nosplit
+    - set nojoinspaces by default
+    
+    Mapping changes:
+     - <C-L> now defaults to nohlsearch and diffupdate
+     - In normal mode, Y is mapped to y$, see this commit, no
+       need for nnoremap Y y$ anymore.
+- Remove upstreamed patch vim7188-fix-netrw-command.patch.
+
+-------------------------------------------------------------------
 Wed Nov 17 11:47:44 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Neovim only supports Lua 5.1 or LuaJIT

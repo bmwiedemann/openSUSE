@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 27 12:32:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.5:
+  * Minor bug-fixes (including for cmake)
+  * Support for Bazel
+  * Dropped compile-time deprecation warnings 
+
+-------------------------------------------------------------------
 Mon Sep 28 18:11:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.9.4:

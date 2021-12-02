@@ -97,4 +97,24 @@
   * dont_overwrite_ifcfg.patch (forwarded request 926905 from glaubitz)</comment>
     <requestid>926943</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c357b71d772020616850be7c6dc47c8b</srcmd5>
+    <version>20211116.00</version>
+    <time>1638388036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211116.00 (bsc#1193257, bsc#1193258)
+  * dont duplicate logs (#146)
+  * Add WantedBy network dependencies to google-guest-agent service (#136)
+  * dont try dhcpv6 when not needed (#145)
+  * Integration tests: instance setup (#143)
+  * Integration test: test create and remove google user (#128)
+  * handle comm errors in script runner (#140)
+  * enforce script ordering (#138)
+  * enable ipv6 on secondary interfaces (#133)
+- from version 20211103.00
+  * Integration tests: instance setup (#143)
+- from version 20211027.00
+  * Integration test: test create and remove google user (#128) (forwarded request 934858 from glaubitz)</comment>
+    <requestid>934874</requestid>
+  </revision>
 </revisionlist>

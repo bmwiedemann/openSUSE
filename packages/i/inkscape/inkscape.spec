@@ -24,10 +24,17 @@ Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
-Source:         https://inkscape.org/gallery/item/29255/inkscape-%{_version}.tar.xz
+
+Source:         https://inkscape.org/gallery/item/29255/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
+Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
+
+# PATCH-FIX-UPSTREAM ebc4de4bfe34d6c5f2e27da47f5d62e4de0394fd.patch -- Fix build with poppler 21.11.0
+Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/ebc4de4bfe34d6c5f2e27da47f5d62e4de0394fd.patch
+
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes

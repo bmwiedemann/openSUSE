@@ -1,7 +1,7 @@
 #
 # spec file for package tvheadend
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,6 +39,7 @@ Source4:        dvb-scan-git20190112.tar.gz
 Patch2:         %{name}-fix-service-dependency.patch
 # PATCH-FIX-UPSTREAM -- fix unsufficient configure checks when using LTO (check optimized away)
 Patch3:         fix_configure_checks_with_LTO.patch
+Patch4:         harden_tvheadend.service.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -69,6 +70,7 @@ day-to-day operations, such as searching the electronic program guide
 %setup -q
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 sed -e "s/-u \([^ ]*\) -g \([^ ]*\)/-u %{htsuser} -g %{htsgroup}/" -i rpm/%{name}.sysconfig
 sed -e '/^TVH_ARGS/cTVH_ARGS="-C"' -i debian/%{name}.default

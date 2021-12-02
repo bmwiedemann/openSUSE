@@ -22,13 +22,12 @@
 %bcond_with systemd
 %endif
 Name:           vnstat
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Network Traffic Monitor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            http://humdi.net/vnstat
-#Git-Clone:     https://github.com/vergoh/vnstat.git
 Source:         http://humdi.net/vnstat/vnstat-%{version}.tar.gz
 Source98:       http://humdi.net/vnstat/vnstat-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
 Source99:       %{name}.keyring

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
+Sat Nov 27 09:58:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- build against openssl 1.1 as it is incompatible with openssl 3.0+  (bsc#1190566)
+
+-------------------------------------------------------------------
+Wed Nov  3 09:50:39 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- 0001-allow-for-reproducible-builds-of-python-packages.patch: ignore
+  permission error when changing the mtime of the source file in presence
+  of SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Wed Oct 27 19:38:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - The previous construct works only on the current Factory, not

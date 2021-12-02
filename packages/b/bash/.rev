@@ -1684,4 +1684,31 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>- Install bash_builtins manpage under the correct name (forwarded request 922382 from Andreas_Schwab)</comment>
     <requestid>922406</requestid>
   </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>1f89e1f2af6b015985717b5176446869</srcmd5>
+    <version>5.1.MACRO</version>
+    <time>1638387992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update bash 5.1 to patch level 12
+  * Add official patch bash51-009
+    The bash malloc implementation of malloc_usable_size() does not follow the
+    specification. This can cause library functions that use it to overwrite
+    memory bounds checking.
+  * Add official patch bash51-010
+    If `wait -n' is interrupted by a trapped signal other than SIGINT, it does
+    not completely clean up state, and that can prevent subsequent calls to
+    `wait -n' from working correctly.
+  * Add official patch bash51-011
+    When reading a compound assignment, and running it through the parser to
+    split it into words, we need to save and restore any alias we're currently
+    expanding.
+  * Add official patch bash51-012
+    There is a possible race condition that arises when a child process receives
+    a signal trapped by the parent before it can reset the signal dispositions.
+    The child process is not supposed to trap the signal in this circumstance.
+
+- Using package bash-sh instead of the update-alternative
+  mechanism.</comment>
+    <requestid>932216</requestid>
+  </revision>
 </revisionlist>

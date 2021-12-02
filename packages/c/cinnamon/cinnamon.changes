@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 29 20:20:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Remove libcroco from BuildRequires: it is now bundled internally.
+
+-------------------------------------------------------------------
 Wed Jul 28 10:37:18 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.5.

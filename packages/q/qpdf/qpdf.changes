@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 26 21:59:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.4.0:
+  * From the qpdf CLI, the --allow-weak-crypto is now required to suppress a
+    warning when explicitly creating PDF files using RC4 encryption. While qpdf
+    will always retain the ability to read and write such files, doing so will
+    require explicit acknowledgment moving forward. For qpdf 10.4, this change
+    only affects the command-line tool. Starting in qpdf 11, there will be
+    small API changes to require explicit acknowledgment in those cases as
+    well. For additional information, see Chapter 6, Weak Cryptography.
+  * Fix potential bounds error when handling shell completion that could occur
+    when given bogus input.
+  * Properly handle overlay/underlay on completely empty pages
+  * Fix crash that could occur under certain conditions when using --pages with
+    files that had form fields.
+  * Make QPDF::findPage functions public.
+  * Add methods to Pl_Flate to be able to receive warnings on certain recoverable
+    conditions.
+  * Add an extra check to the library to detect when foreign objects are inserted
+    directly (instead of using QPDF::copyForeignObject) at the time of insertion
+    rather than when the file is written. Catching the error sooner makes it much
+    easier to locate the incorrect code.
+  * Improve diagnostics around parsing --pages command-line options 
+
+-------------------------------------------------------------------
 Mon May 10 19:11:53 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 10.3.2

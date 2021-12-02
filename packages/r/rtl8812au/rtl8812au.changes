@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 15 11:25:06 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on Tumbleweed - use kernel_module_directory
+- Fix build on Linux 5.15
+  + Drop-ipx-support-on-Linux-5.15.patch
+
+-------------------------------------------------------------------
 Fri Oct  1 18:29:22 UTC 2021 - Rashmi Lengade <rashmi.lengade@gmail.com>
 
 - Exclude the s390x Architecture
- 
+
 -------------------------------------------------------------------
 Wed May 12 06:21:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 

@@ -17,7 +17,7 @@ profile hostapd /usr/sbin/hostapd {
 
   # grant read access to config files
   /etc/hostapd.* r,
-
+  /etc/ssl/openssl.cnf r,
   /etc/libnl/classid r,
 
   @{PROC}/sys/net/ipv*/conf/*/arp_accept w,

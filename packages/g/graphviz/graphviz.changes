@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 24 21:32:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.49.3:
+  - gvpr "split", "tokens", and "index" functions produce incorrect results
+    This was a regression that occurred between 2.47.1 and 2.47.2.
+  - Lefty is disabled by default in the Autotools build system. To re-enable it,
+    pass `--enable-lefty` to `./configure`. In a future release, Lefty will be
+    removed.
+  - remove PHP5 support in SWIG bindings
+  - Msys experimental packages are included in release artifacts
+  - CMake build system incorrectly aliases gv2gml to gml2gv
+  - Gv2gml Doesn't escape quotes in attributes
+  - GVPR incorrectly understands color schemes
+- reenable lefty to fix addons build 
+
+-------------------------------------------------------------------
 Wed Oct 27 17:45:57 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Split libgraphviz into tlibcdt, libcgraph, libgvc, libgvpr, libpathplan,
@@ -1558,4 +1574,3 @@ Tue Sep  5 20:46:59 CEST 2000 - garloff@suse.de
 
 - Creation of package graphviz-1.6
 - Fix lneato Makefile to install into $DESTDIR
-

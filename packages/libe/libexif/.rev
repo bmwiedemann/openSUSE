@@ -389,4 +389,18 @@
       by OSS-Fuzz</comment>
     <requestid>918663</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>35c0ab11fb3a440ede9ef7c45c51038e</srcmd5>
+    <version>0.6.24</version>
+    <time>1638388010</time>
+    <user>dimstar_suse</user>
+    <comment>- libexif-0.6.24 (2021-11-25):
+  * Translation updates: sr, vi, pl, uk, french
+  * fixed regression in exif_data_load_data which could not load EXIF in JPEG data anymore
+  * Decode lots of Canon tag names
+  * removed empty strings from translation (empty string would translate to the PO info header)
+  * various warning removals and code improvements
+  * added sample &quot;persistent&quot; afl fuzzer (100x faster than normal afl fuzzer)</comment>
+    <requestid>934523</requestid>
+  </revision>
 </revisionlist>

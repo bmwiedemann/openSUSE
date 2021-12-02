@@ -1,0 +1,11 @@
+<package name="setroubleshoot-plugins" project="openSUSE:Factory">
+  <title>Helps troubleshoot SELinux problems</title>
+  <description>This package provides a set of analysis plugins for use with
+setroubleshoot. Each plugin has the capacity to analyze SELinux AVC
+data and system data to provide user friendly reports describing how
+to interpret SELinux AVC denials.
+
+</description>
+  <devel project="security:SELinux" package="setroubleshoot-plugins"/>
+  <url>https://fedorahosted.org/setroubleshoot</url>
+</package>

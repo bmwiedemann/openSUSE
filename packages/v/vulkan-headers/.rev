@@ -255,4 +255,12 @@
     <comment>- Update to release SDK-1.2.189</comment>
     <requestid>917060</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6845fc047ff38a7460de34b887ba4542</srcmd5>
+    <version>1.2.198.0</version>
+    <time>1638387999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release SDK-1.2.198.0</comment>
+    <requestid>934249</requestid>
+  </revision>
 </revisionlist>

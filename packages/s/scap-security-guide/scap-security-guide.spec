@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.58
+Version:        0.1.59
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -245,6 +245,7 @@ make install DESTDIR=%buildroot
 %dir %{_datadir}/doc/scap-security-guide/
 %dir %{_datadir}/scap-security-guide/
 %dir %{_datadir}/scap-security-guide/ansible/
+%dir %{_datadir}/scap-security-guide/tailoring/
 %dir %{_datadir}/scap-security-guide/bash/
 %dir %{_datadir}/scap-security-guide/kickstart/
 %{_datadir}/scap-security-guide/*/*fedora*

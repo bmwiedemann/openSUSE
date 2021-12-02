@@ -29,7 +29,6 @@ URL:            http://omniorb.sourceforge.net
 Source0:        https://downloads.sourceforge.net/project/omniorb/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source1:        omniORB-rpmlintrc
 BuildRequires:  gcc-c++
-BuildRequires:  libidl
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
@@ -87,6 +86,7 @@ chmod +x %{buildroot}%{python3_sitelib}/omniidl/main.py
 %license COPYING*
 %doc CREDITS README* ReleaseNotes* src/examples/ziop/README.txt
 %doc doc/*
+%dir %{_datadir}/idl
 %dir %{_datadir}/idl/%{name}
 %dir %{_datadir}/idl/%{name}/COS
 %dir %{_var}/log/omninames

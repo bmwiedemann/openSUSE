@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 29 09:45:08 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.8
+  * Revert "Chain-up to parent in `mousepad_window_scroll_event()`"
+    (gxo#apps/mousepad#150)
+  * Search: Fix a memory leak
+  * Search: Remove obsolete workaround for the document finalization
+  * Drop restrictions on URI scheme
+  * Update `POTFILES.in`
+  * Printing: Remove the "Page Setup" dialog (gxo#apps/mousepad#148)
+  * Flatpak: Complete scripts
+  * Flatpak: Access remote locations with GVfs
+  * Search: Fix the history cleanup
+  * Search: Prevent GTask warnings when replacing text
+  * Search: Ensure settings synchronization before searching
+  * Fix translation domain in Appdata file
+  * flatpak: Update README
+  * flatpak: Add generic manifest and basic scripts
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Sep 23 13:48:21 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.7

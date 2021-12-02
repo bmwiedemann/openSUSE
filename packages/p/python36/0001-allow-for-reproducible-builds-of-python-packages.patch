@@ -21,21 +21,21 @@ The software will still work, but it will not use the .pyc file as it should.
  Lib/py_compile.py | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/Lib/py_compile.py b/Lib/py_compile.py
-index 11c5b50..62dcdc7 100644
---- a/Lib/py_compile.py
-+++ b/Lib/py_compile.py
-@@ -137,6 +137,10 @@ def compile(file, cfile=None, dfile=None, doraise=False, optimize=-1):
+Index: Python-3.6.15/Lib/py_compile.py
+===================================================================
+--- Python-3.6.15.orig/Lib/py_compile.py
++++ Python-3.6.15/Lib/py_compile.py
+@@ -137,6 +137,13 @@ def compile(file, cfile=None, dfile=None
      except FileExistsError:
          pass
      source_stats = loader.path_stats(file)
 +    sde = os.environ.get('SOURCE_DATE_EPOCH')
 +    if sde and source_stats['mtime'] > int(sde):
 +        source_stats['mtime'] = int(sde)
-+        os.utime(file, (source_stats['mtime'], source_stats['mtime']))
++        try:
++            os.utime(file, (source_stats['mtime'], source_stats['mtime']))
++        except PermissionError:
++            pass
      bytecode = importlib._bootstrap_external._code_to_bytecode(
              code, source_stats['mtime'], source_stats['size'])
      mode = importlib._bootstrap_external._calc_mode(file)
--- 
-2.10.2
-

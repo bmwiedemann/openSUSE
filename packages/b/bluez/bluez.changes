@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 23 09:52:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop nuking the obex service, we support user systemd services
+  just fine now. Following this, no longer hack the dbus service,
+  leave it as a systemd service as upstream intended.
+- Split out obex in own package with it's needed enabledment as a
+  systemd user service.
+- Add 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch:
+  obex: Use GLib helper function to manipulate paths. Instead of
+  trying to do it by hand. This also makes sure that relative paths
+  aren't used by the agent. Patch from fedora.
+
+-------------------------------------------------------------------
 Sun Oct 17 07:39:24 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 5.62:

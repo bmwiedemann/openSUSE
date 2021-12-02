@@ -1,7 +1,7 @@
 #
 # spec file for package motion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define spooldir /var/spool/motion
 
 Name:           motion
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        A motion detection system
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ URL:            https://motion-project.github.io/
 Source0:        https://github.com/Motion-Project/motion/archive/release-%{version}.tar.gz
 Source1:        motion-service
 Source2:        motion-sysconfig
-Patch0:	harden_motion.service.patch
+Patch0:         harden_motion.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libjpeg-devel
@@ -43,9 +43,9 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(sqlite3)
 %{?systemd_requires}
 BuildRequires:  group(video)
-Requires(pre): group(video)
-Requires(pre): pwdutils
-Requires(pre): %fillup_prereq
+Requires(pre):  group(video)
+Requires(pre):  pwdutils
+Requires(pre):  %fillup_prereq
 
 %description
 Motion is a software motion detector. It grabs images from video4linux devices
@@ -118,7 +118,7 @@ getent passwd motion || useradd -g motion -G video -c "Motion capture daemon" -d
 
 %files
 %doc doc/CHANGELOG doc/CREDITS README.md doc/*.png doc/*.html doc/*.jpg
-%license doc/COPYING
+%license LICENSE
 %dir %{_sysconfdir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/examples

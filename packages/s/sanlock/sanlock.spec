@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package sanlock
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -62,6 +62,8 @@ Patch100:       sanlock-SCHED_RESET_ON_FORK-undefined.patch
 Patch101:       sanlock-python-prefix.patch
 Patch102:       suse-systemd.patch
 Patch103:       suse-no-date-time.patch
+Patch104:       harden_fence_sanlockd.service.patch
+Patch105:       harden_sanlk-resetd.service.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
@@ -141,6 +143,8 @@ common sanlock lockspace.
 %patch101
 %patch102 -p1
 %patch103 -p1
+%patch104 -p1
+%patch105 -p1
 
 %build
 %if ! %{with python}

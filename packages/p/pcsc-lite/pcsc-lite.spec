@@ -39,21 +39,23 @@ Source4:        baselibs.conf
 Source6:        pcsc-lite-reader-conf
 Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2.asc
 Source8:        %{name}.keyring
+Source9:        %{name}.sysusers
 Patch0:         systemd-service.patch
 Patch1:         harden_pcscd.service.patch
 BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  sysuser-tools
 Requires:       libpcsclite1 = %{version}
 Requires(post): %fillup_prereq
-Requires(pre):  shadow
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  polkit-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libudev)
 %{?systemd_requires}
+%sysusers_requires
 
 %description
 PC/SC Lite provides a Windows SCard interface in a small form factor
@@ -113,6 +115,7 @@ cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 %patch1 -p1
 
 %build
+%sysusers_generate_pre %{SOURCE9} %{PKG_USER} %{PKG_USER}.conf
 %configure \
 	--disable-silent-rules \
 	--docdir=%{_docdir}/%{name} \
@@ -135,10 +138,9 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -a AUTHORS ChangeLog COPYING HELP NEWS README README.SUSE SECURITY TODO %{buildroot}%{_docdir}/%{name}
 # Remove useless la files
 find %{buildroot} -type f -name "*.la" -delete -print
+install -Dm0644 %{SOURCE9} %{buildroot}%{_sysusersdir}/%{PKG_USER}.conf
 
-%pre
-getent group %{PKG_GROUP} >/dev/null || groupadd -r %{PKG_GROUP}
-getent passwd %{PKG_USER} >/dev/null || useradd -r -g %{PKG_GROUP} -s %{_sbindir}/nologin -c "Smart Card Reader" -d /run/pcscd %{PKG_USER}
+%pre -f %{PKG_USER}.pre
 %service_add_pre pcscd.service pcscd.socket
 
 %post
@@ -178,6 +180,7 @@ getent passwd %{PKG_USER} >/dev/null || useradd -r -g %{PKG_GROUP} -s %{_sbindir
 %config(noreplace) %{_sysconfdir}/reader.conf.d/reader.conf
 %{ifddir}
 %{_unitdir}/*
+%{_sysusersdir}/%{PKG_USER}.conf
 %{_fillupdir}/sysconfig.pcscd
 # libpcsclite.so should stay in the main package (#732911). Third party packages may need it for dlopen().
 %{_libdir}/libpcsclite.so

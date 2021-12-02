@@ -379,4 +379,21 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.47.1 (boo#1193005)</comment>
     <requestid>933297</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>65ddefb26638186e99ae46dce4ac417f</srcmd5>
+    <version>1.47.1</version>
+    <time>1638203310</time>
+    <user>dimstar_suse</user>
+    <comment>- bump ijson to make it clear that we really need 3.1
+  https://github.com/matrix-org/synapse/pull/11439</comment>
+    <requestid>934407</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>50c4e2013bde9135e899b16621fdb400</srcmd5>
+    <version>1.48.0</version>
+    <time>1638310567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.48.0</comment>
+    <requestid>934737</requestid>
+  </revision>
 </revisionlist>

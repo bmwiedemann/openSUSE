@@ -1,0 +1,53 @@
+[gdb/tdep, rs6000] Don't skip system call in skip_prologue
+
+I ran into a case where a breakpoint on _exit never triggered, because it was
+set past the end of the _exit prologue, past the end of the exit_group system
+call (which does not return).
+
+More concretely, the breakpoint was set at the last insn show here:
+...
+Dump of assembler code for function _exit:
+   0x00007ffff7e42ea0 <+0>:     12 00 4c 3c     addis   r2,r12,18
+   0x00007ffff7e42ea4 <+4>:     60 43 42 38     addi    r2,r2,17248
+   0x00007ffff7e42ea8 <+8>:     00 00 00 60     nop
+   0x00007ffff7e42eac <+12>:    f8 ff e1 fb     std     r31,-8(r1)
+   0x00007ffff7e42eb0 <+16>:    78 1b 7f 7c     mr      r31,r3
+   0x00007ffff7e42eb4 <+20>:    f0 ff c1 fb     std     r30,-16(r1)
+   0x00007ffff7e42eb8 <+24>:    ea 00 00 38     li      r0,234
+   0x00007ffff7e42ebc <+28>:    a0 8b 22 e9     ld      r9,-29792(r2)
+   0x00007ffff7e42ec0 <+32>:    78 fb e3 7f     mr      r3,r31
+   0x00007ffff7e42ec4 <+36>:    14 6a c9 7f     add     r30,r9,r13
+   0x00007ffff7e42ec8 <+40>:    02 00 00 44     sc
+   0x00007ffff7e42ecc <+44>:    26 00 00 7c     mfcr    r0
+   0x00007ffff7e42ed0 <+48>:    00 10 09 74     andis.  r9,r0,4096
+...
+
+Fix this by treating system calls the same as branches in skip_prologue:
+by default, don't skip, such that the breakpoint is set at 0x00007ffff7e42eb8
+instead.
+
+Tested on ppc64le-linux, on a power 8 machine.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28527
+
+---
+ gdb/rs6000-tdep.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gdb/rs6000-tdep.c b/gdb/rs6000-tdep.c
+index 826f0266ed8..9ac5db57898 100644
+--- a/gdb/rs6000-tdep.c
++++ b/gdb/rs6000-tdep.c
+@@ -2137,6 +2137,12 @@ skip_prologue (struct gdbarch *gdbarch, CORE_ADDR pc, CORE_ADDR lim_pc,
+ 	    /* Never skip branches.  */
+ 	    break;
+ 
++	  /* Test based on opcode and mask values of
++	     powerpc_opcodes[svc..svcla] in opcodes/ppc-opc.c.  */
++	  if ((op & 0xffff0000) == 0x44000000)
++	    /* Never skip system calls.  */
++	    break;
++
+ 	  if (num_skip_non_prologue_insns++ > max_skip_non_prologue_insns)
+ 	    /* Do not scan too many insns, scanning insns is expensive with
+ 	       remote targets.  */

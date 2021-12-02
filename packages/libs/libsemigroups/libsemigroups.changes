@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 30 11:46:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.2
+  * New implementations of the linear time algorithm by Kambites
+    for equality checking and the algorithm by Mitchell and
+    Tsalakou for finding normal forms in small overlap monoids in
+    the class `Kambites`.
+  * A performance improvement in the implementation of Konieczny
+    algorithm, for determining the structure of a finite
+    semigroup or monoid.
+  * An implementation of the linear time algorithm by Radoszewski
+    and Rytter for checking equality of words in free bands in
+    the function.
+  * A major revision, expansion of the settings, and improvement
+    in the performance of the implementation of the Todd-Coxeter
+    algorithm in the class `ToddCoxeter`.
+
+-------------------------------------------------------------------
 Thu Nov 11 11:33:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.3

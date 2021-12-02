@@ -35,6 +35,9 @@ Provides:       nagios-plugins-nwc_health = %{version}-%{release}
 Obsoletes:      nagios-plugins-nwc_health < %{version}-%{release}
 Requires:       perl-Nagios-Plugin
 Requires:       perl-Net-SNMP
+Requires:       perl(File::Slurp)
+Requires:       perl(JSON)
+Requires:       perl(JSON::XS)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

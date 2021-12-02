@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          System/Management
 URL:            https://github.com/coreos/ignition
 Source:         %{name}-%{version}.tar.xz
 Source1:        ignition-mount-initrd-fstab.service
-Source2:        ignition-rpmlintrc
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        02_ignition_firstboot

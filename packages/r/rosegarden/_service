@@ -1,0 +1,18 @@
+<!-- Downloads revision vx.x and removes proprietary data/windows -->
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://git.code.sf.net/p/rosegarden/git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="match-tag">21.06.1</param>
+    <param name="versionformat">21.06.1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">rosegarden</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+  </service>
+</services>

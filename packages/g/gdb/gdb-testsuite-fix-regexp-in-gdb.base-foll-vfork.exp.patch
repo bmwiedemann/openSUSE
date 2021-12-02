@@ -1,0 +1,45 @@
+[gdb/testsuite] Fix regexp in gdb.base/foll-vfork.exp
+
+On OBS I ran into:
+...
+(gdb) PASS: gdb.base/foll-vfork.exp: exit: \
+  vfork relations in info inferiors: continue to child exit
+info inferiors^M
+  Num  Description       Connection           Executable        ^M
+  1    <null>                                 foll-vfork-exit ^M
+* 2    <null>                                 foll-vfork-exit ^M
+(gdb) I'm the proud parent of child #5044!^M
+FAIL: gdb.base/foll-vfork.exp: exit: vfork relations in info inferiors: \
+  vfork relation no longer appears in info inferiors (timeout)
+...
+
+Fix this by removing the '$' anchor in the corresponding '$gdb_prompt $'
+regexps.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/foll-vfork.exp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/foll-vfork.exp b/gdb/testsuite/gdb.base/foll-vfork.exp
+index 577bd4d573b..a781a5c2087 100644
+--- a/gdb/testsuite/gdb.base/foll-vfork.exp
++++ b/gdb/testsuite/gdb.base/foll-vfork.exp
+@@ -374,13 +374,13 @@ proc vfork_relations_in_info_inferiors { variant } {
+ 
+    set test "vfork relation no longer appears in info inferiors"
+    gdb_test_multiple "info inferiors" $test {
+-       -re "is vfork child of inferior 1.*$gdb_prompt $" {
++       -re "is vfork child of inferior 1.*$gdb_prompt " {
+ 	   fail $test
+        }
+-       -re "is vfork parent of inferior 2.*$gdb_prompt $" {
++       -re "is vfork parent of inferior 2.*$gdb_prompt " {
+ 	   fail $test
+        }
+-       -re "$gdb_prompt $" {
++       -re "$gdb_prompt " {
+ 	   pass $test
+        }
+    }

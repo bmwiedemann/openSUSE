@@ -34,7 +34,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 BuildRequires:  wxWidgets-devel >= 2.8
 %endif
 Name:           grass
-Version:        7.8.5
+Version:        7.8.6
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
@@ -42,8 +42,6 @@ Group:          Productivity/Scientific/Other
 URL:            https://grass.osgeo.org/
 Source:         https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.tar.gz
 Source1:        https://grass.osgeo.org/grass%{shortver}/source/%{name}-%{version}.md5sum
-# UPSTREAM-PATCH fix compilation with GDAL 3.3.0
-Patch0:         https://github.com/OSGeo/grass/commit/b86314c7.patch
 BuildRequires:  -post-build-checks
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -123,7 +121,6 @@ This package contains the HTML documentation files for GRASS GIS
 
 %prep
 %setup -q -n grass-%{version}
-%patch0 -p1
 
 %define grasver -@GRASS_VERSION_MAJOR@.@GRASS_VERSION_MINOR@.@GRASS_VERSION_RELEASE@
 %define grasver2 '-${GRASS_VERSION_MAJOR}.${GRASS_VERSION_MINOR}.${GRASS_VERSION_RELEASE}'

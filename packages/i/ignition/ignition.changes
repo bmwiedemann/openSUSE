@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Dec 01 09:36:14 UTC 2021 - iforster@suse.com
+
+- Update to version 2.13.0:
+  * news: add notes for 2.13.0
+  * config/v3_4_exp: noProxy entries cannot be null
+  * config/v3_4_exp: mark ignition.version as required
+  * docs/supported-platforms: add some description about Nutanix
+  * providers/nutanix: add Nutanix platform
+  * tests: use umountPath as a thin wrapper around umountPartition
+  * internal/providers: refactor handling of unmounting the mount path
+  * tests: address gostatic-check warning
+  * tests: Add base64 decoding test
+  * Dockerfile.validate: build with Fedora 35
+  * go.mod: update dataurl to 1.0.0
+  * ci: give blackbox tests two hours to run
+  * tests/filesystem: fix umountPartition retry loop
+  * templates: skip vendoring the new version in favor of dependabot
+  * go.mod: update vcontext
+  * providers/virtualbox: read config from /Ignition/Config guest property
+  * stages/filesystems: use mkfs.fat instead of mkfs.vfat
+  * docs/supported-platforms: switch to Afterburn docs URL
+  * docs/supported-platforms: drop reference to platform-specific agents
+  * test: ensure all platforms are documented
+  * docs/supported-platforms: add missing platforms
+  * stages/files: rename `relabelDirsForFile` and add docstring
+  * stages/files: make variable name follow Go convention
+  * docs/supported-platforms: update platform names and URLs
+  * docs/supported-platforms: sort by platform ID
+  * docs/supported-platforms: add platform IDs
+  * docs: Remove default layout from front matter
+  * docs: Do not convert -- & --- to en/em-dash
+  * internal/*: change the location of Ignition report
+  * internal/exec/util: rename FindFirstMissingDirForFile and tweak docs
+  * providers/qemu: start reporting progress reading fw_cfg after 10 s
+  * providers/qemu: optimize fw_cfg read size
+  * ci: use coreos-ci-lib helper for kola testiso
+  * *: gofmt 1.17
+  * workflows: bump Go and golangci-lint
+  * config: update versions in comments
+- Removed obsolete ignition-rpmlintrc
+
+-------------------------------------------------------------------
 Mon Aug 23 14:22:10 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Make sure to create /boot/writable (may not be present in some

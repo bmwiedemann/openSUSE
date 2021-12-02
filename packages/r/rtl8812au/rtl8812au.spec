@@ -16,6 +16,8 @@
 #
 
 
+%{?!kernel_module_directory:%define kernel_module_directory /lib/modules}
+
 Name:           rtl8812au
 Version:        5.9.3.2+git20210427.6ef5d8f
 Release:        0
@@ -31,6 +33,8 @@ Source2:        LICENSE
 Patch0:         fix-backported-ndo_select_queue.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
+# PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
+Patch2:         Drop-ipx-support-on-Linux-5.15.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  binutils
@@ -72,6 +76,8 @@ https://github.com/maurossi/rtl8812au/ .
 %patch1 -p1
 %endif
 
+%patch2 -p1
+
 set -- *
 mkdir source
 mv "$@" source/
@@ -96,7 +102,7 @@ for flavor in %{flavors_to_build} ; do
 	cp -a source obj/$flavor
         pushd obj/$flavor
         sed -i -e "s,^KSRC := /lib/modules/\$(KVER)/build$,KSRC := %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor," Makefile
-        make %{?_smp_mflags}
+        make -O V=1 %{?_smp_mflags}
         popd
 done
 
@@ -108,8 +114,8 @@ kernel_version=`uname -r | sed -e "s/-[^-]*$//"`
 echo ${kernel_version}
 for flavor in %{flavors_to_build} ; do
         pushd obj/$flavor
-        install -d %{buildroot}/lib/modules/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
-        install -p -m 644 8812au.ko %{buildroot}/lib/modules/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
+        install -d %{buildroot}%{kernel_module_directory}/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
+        install -p -m 644 8812au.ko %{buildroot}%{kernel_module_directory}/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
         popd
 done
 

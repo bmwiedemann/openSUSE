@@ -1,7 +1,7 @@
-Index: haproxy-1.6.0/examples/acl-content-sw.cfg
+Index: haproxy-2.5/examples/acl-content-sw.cfg
 ===================================================================
---- haproxy-1.6.0.orig/examples/acl-content-sw.cfg
-+++ haproxy-1.6.0/examples/acl-content-sw.cfg
+--- haproxy-2.5.orig/examples/acl-content-sw.cfg
++++ haproxy-2.5/examples/acl-content-sw.cfg
 @@ -5,9 +5,9 @@ global
  	log	   loghost   local0
  	log	   localhost local0 err
@@ -15,11 +15,10 @@ Index: haproxy-1.6.0/examples/acl-content-sw.cfg
  	pidfile	   /var/run/haproxy.pid
  	daemon
  	quiet
- 
-Index: haproxy-1.6.0/examples/content-sw-sample.cfg
+Index: haproxy-2.5/examples/content-sw-sample.cfg
 ===================================================================
---- haproxy-1.6.0.orig/examples/content-sw-sample.cfg
-+++ haproxy-1.6.0/examples/content-sw-sample.cfg
+--- haproxy-2.5.orig/examples/content-sw-sample.cfg
++++ haproxy-2.5/examples/content-sw-sample.cfg
 @@ -11,9 +11,9 @@ global
          maxconn         10000
          stats socket    /var/run/haproxy.stat mode 600 level admin
@@ -33,27 +32,24 @@ Index: haproxy-1.6.0/examples/content-sw-sample.cfg
          daemon
  
  # The public 'www' address in the DMZ
-Index: haproxy-1.6.0/examples/option-http_proxy.cfg
+Index: haproxy-2.5/examples/option-http_proxy.cfg
 ===================================================================
---- haproxy-1.6.0.orig/examples/option-http_proxy.cfg
-+++ haproxy-1.6.0/examples/option-http_proxy.cfg
-@@ -6,9 +6,9 @@ global
-         maxconn         20000
- 	ulimit-n	16384
-         log             127.0.0.1 local0
--        uid             200
--        gid             200
--        chroot          /var/empty
-+	chroot /var/lib/haproxy
-+	user haproxy
-+	group haproxy
- 	nbproc		4
+--- haproxy-2.5.orig/examples/option-http_proxy.cfg
++++ haproxy-2.5/examples/option-http_proxy.cfg
+@@ -9,6 +9,9 @@ global
+         uid             200
+         gid             200
+         chroot          /var/empty
++        chroot /var/lib/haproxy
++        user haproxy
++        group haproxy
          daemon
  
-Index: haproxy-1.6.0/examples/transparent_proxy.cfg
+ frontend test-proxy
+Index: haproxy-2.5/examples/transparent_proxy.cfg
 ===================================================================
---- haproxy-1.6.0.orig/examples/transparent_proxy.cfg
-+++ haproxy-1.6.0/examples/transparent_proxy.cfg
+--- haproxy-2.5.orig/examples/transparent_proxy.cfg
++++ haproxy-2.5/examples/transparent_proxy.cfg
 @@ -6,6 +6,10 @@
  #
  

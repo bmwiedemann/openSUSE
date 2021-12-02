@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 25 15:00:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * tcsd.service
+
+-------------------------------------------------------------------
 Tue Oct  5 09:41:43 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - move libraries to /usr/lib (bsc#1191102)

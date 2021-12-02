@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 04:22:40 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.13.0 implemented time stretch utility functions
+  and made it available in gsequencer wave form editor.
+- extended developer manual.
+
+-------------------------------------------------------------------
 Fri Oct 29 09:15:11 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.12.6 improved AgsAnimationWindow to obtain stride

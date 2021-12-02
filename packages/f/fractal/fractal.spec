@@ -1,7 +1,7 @@
 #
 # spec file for package fractal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,21 @@
 #
 
 
+%define commitid 46141d42ea313ecce83c8843f96d2c42
+
 Name:           fractal
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://wiki.gnome.org/Apps/Fractal
-Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/d4168ac40fd681240964705e000dd353/%{name}-%{version}.tar.xz
+Source0:        https://gitlab.gnome.org/GNOME/fractal/uploads/%{commitid}/%{name}-%{version}.tar.xz
+
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  cargo
+BuildRequires:  cmake
 BuildRequires:  gmp-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -48,7 +54,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)  >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0
-BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.5
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango) >= 1.34
@@ -90,6 +96,8 @@ fi
 %license LICENSE.txt
 %doc README.md
 %{_bindir}/%{name}
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/resources.gresource
 %{_datadir}/metainfo/org.gnome.Fractal.metainfo.xml
 %{_datadir}/applications/org.gnome.Fractal.desktop
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Fractal*.*

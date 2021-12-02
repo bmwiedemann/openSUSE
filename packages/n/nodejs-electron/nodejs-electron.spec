@@ -48,7 +48,11 @@ ExcludeArch:    %{ix86}
 %endif
 # vaapi still requires bundled libvpx
 %bcond_with system_vpx
+%ifarch aarch64
+%bcond_without clang
+%else
 %bcond_with clang
+%endif
 Name:           nodejs-electron
 Version:        13.6.2
 Release:        0
@@ -74,6 +78,7 @@ Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
 Patch7:         chromium-91-java-only-allowed-in-android-builds.patch
 Patch8:         chromium-91-system-icu.patch
+Patch9:         chromium-glibc-2.34.patch
 Patch10:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 Patch11:        chromium-vaapi.patch
 Patch12:        chromium-86-fix-vaapi-on-intel.patch
@@ -495,6 +500,8 @@ rsync -av --exclude '*.pak.info' locales %{buildroot}%{_libdir}/electron/
 %if %{with swiftshader}
 rsync -av --exclude '*.so.TOC' swiftshader %{buildroot}%{_libdir}/electron/
 install -m 0644 vk_swiftshader_icd.json %{buildroot}%{_libdir}/electron/vk_swiftshader_icd.json
+%else
+rm -f  %{buildroot}/%{_libdir}/electron/libvk_swiftshader.so
 %endif
 
 install -m 0755 electron %{buildroot}%{_libdir}/electron/electron

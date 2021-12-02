@@ -294,4 +294,12 @@ etc.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908096</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7937b3dfcb49eaf0f6f81d0299f620d0</srcmd5>
+    <version>2.4.0</version>
+    <time>1638387981</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 933795 from jsegitz)</comment>
+    <requestid>934685</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Dec  1 14:42:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.1.11
+  * minor incompatible change: *COMPILE-PRINT* now defaults to NIL.  T gives
+    the old behavior of echoing top level forms. Users who want to see a
+    report of the phases of compilation can use *COMPILE-PROGRESS* and the
+    corresponding COMPILE-FILE :PROGRESS argument.
+  * optimization: The compiler assignment-converts functions much more
+    aggressively; local or non-entry block-compiled functions
+    which always return to the same place are automatically converted into the
+    equivalent loop or goto control structures.
+  * enhancement: on x86-64 and ppc64 platforms, the system uses inline
+    instructions rather than page protection to implement a store barrier for
+    the garbage collector.
+  * enhancement: improved reporting of code deletion notes.
+  * platform support:
+    ** unbound-variable restarts for amd64 are now supported.
+    ** bug fix: single-floats to foreign functions on 32-bit ARMel.
+       (lp#1950080, reported by Sebastien Villemot)
+    ** bug fix: opening files with names containing non-ASCII characters on
+       Windows works better.  (reported by Nikolay)
+    ** bug fix: use fp_xsave to access the floating point flags and control
+       word in Haiku signal contexts.  (Thanks to Al Hoang)
+    ** bug fix: complex single-float support on riscv64.
+    ** optimization: support for accessing elements of &rest args directly on
+       ppc64, mips, riscv.
+    ** optimization: parse a /proc file rather than executing uname for
+       SOFTWARE-VERSION on Linux
+  * bug fix: fix crash from SB-COVER:RESET-COVERAGE.  (lp#1950059, reported by
+    Gregory Czerniak)
+
+-------------------------------------------------------------------
 Mon Nov  1 07:56:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.1.10

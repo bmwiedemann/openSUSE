@@ -54,7 +54,7 @@
  signal_is_trapped (s)
 --- jobs.c
 +++ jobs.c	2020-10-12 16:00:37.267184666 +0000
-@@ -2221,6 +2221,15 @@ make_child (command, flags)
+@@ -2223,6 +2223,15 @@ make_child (command, flags)
  	 child process, go back and change callers who free `command' in
  	 the child process when this returns. */
        mypid = getpid ();
@@ -72,7 +72,7 @@
  	 0 because that's the file descriptor used when redirecting input,
 --- sig.c
 +++ sig.c	2020-10-12 16:00:37.267184666 +0000
-@@ -83,10 +83,10 @@ sigset_t top_level_mask;
+@@ -84,10 +84,10 @@ sigset_t top_level_mask;
  #endif /* JOB_CONTROL */
  
  /* When non-zero, we throw_to_top_level (). */

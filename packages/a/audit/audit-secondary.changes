@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 29 13:13:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use %autosetup
+- Don't include sample rules as %doc, they're already installed
+  as normal files
+- Fix create-augenrules-service.patch:
+  * auditd.service needs to require augenrules.service,
+    not the other way around
+- Fix documentation for enable-stop-rules.patch
+
+-------------------------------------------------------------------
 Sun Nov  7 13:34:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 3.0.6:

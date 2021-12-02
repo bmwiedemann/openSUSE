@@ -1390,4 +1390,25 @@ pbuild:
 - Bugfixes</comment>
     <requestid>927270</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>fe91f130163d08554c35fadfa21d7009</srcmd5>
+    <version>20211125</version>
+    <time>1638387994</time>
+    <user>dimstar_suse</user>
+    <comment>- renamed tumbleweed config to tumbleweed
+- synced tumbleweed config changes
+- initial config for Leap 15.4
+- docker build environment
+  * Use /.dockerenv as marker for docker environment
+  * support privileged docker/nspawn mode
+  *  move --cap-add=SYS_ADMIN --cap-add=MKNOD to privileged mode
+  * initvm: do not attempt to mount /proc and binfmt_misc handler if present
+- pbuild
+  * rename --hide-timestamps to --no-timestamps
+  * reuse options from older builds
+  * revised --single build mode
+  * support ccache
+- Unify ccache and sccache handling</comment>
+    <requestid>933759</requestid>
+  </revision>
 </revisionlist>

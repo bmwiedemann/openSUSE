@@ -903,4 +903,16 @@
     <comment></comment>
     <requestid>921324</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>568a814451eb61ab3cbea48e5b26455b</srcmd5>
+    <version>1.1.1</version>
+    <time>1638387988</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure we download the same tarball every time. Also add sig and
+  keyring as sources and verify that we have the right one.
+- Add ebc4de4bfe34d6c5f2e27da47f5d62e4de0394fd.patch: Fix build
+  with poppler 21.11.0, patch from upstream git.
+</comment>
+    <requestid>934862</requestid>
+  </revision>
 </revisionlist>

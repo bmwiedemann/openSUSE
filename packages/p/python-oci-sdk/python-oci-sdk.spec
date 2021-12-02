@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.48.0
+Version:        2.51.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -35,9 +35,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT
 Requires:       python-certifi
 Requires:       python-circuitbreaker >= 1.3.1
-Requires:       python-cryptography >= 3.2.1
+Requires:       python-cryptography
 Requires:       python-httpsig_cffi
-Requires:       python-pyOpenSSL >= 19.1.0
+Requires:       python-pyOpenSSL >= 17.5.0
 Requires:       python-python-dateutil < 3.0.0
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-pytz >= 2016.10
@@ -48,9 +48,9 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module circuitbreaker >= 1.3.1}
-BuildRequires:  %{python_module cryptography >= 3.2.1}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module httpsig_cffi}
-BuildRequires:  %{python_module pyOpenSSL >= 19.1.0}
+BuildRequires:  %{python_module pyOpenSSL >= 17.5.0}
 BuildRequires:  %{python_module pytest > 4.1.0}
 BuildRequires:  %{python_module python-dateutil < 3.0.0}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
@@ -59,11 +59,11 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vcrpy >= 2.0.1}
 %if %{with python2}
-BuildRequires:  python-configparser >= 4.0.2
+BuildRequires:  python-configparser
 %endif
 # /SECTION
 %ifpython2
-Requires:       python-configparser >= 4.0.2
+Requires:       python-configparser
 %endif
 %python_subpackages
 

@@ -1538,4 +1538,20 @@
     <comment></comment>
     <requestid>928439</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>c74755fdb4846530700feea979be386b</srcmd5>
+    <version>2021.11.10.1</version>
+    <time>1638310565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.11.10.1</comment>
+    <requestid>934730</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>2fb892b32df52770187eaed25285062e</srcmd5>
+    <version>2021.12.01</version>
+    <time>1638388040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.12.01</comment>
+    <requestid>934893</requestid>
+  </revision>
 </revisionlist>

@@ -72,4 +72,21 @@
    ``TLSStream`` is receiving data with ``standard_compatible=False`` set</comment>
     <requestid>927591</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ffd87bb359bb54ead0ef1c9a57584d3d</srcmd5>
+    <version>3.4.0</version>
+    <time>1638203320</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0:
+  * Added context propagation to/from worker threads in ``to_thread.run_sync()``,
+  ``from_thread.run()`` and ``from_thread.run_sync()``
+  * Fixed race condition in ``Lock`` and ``Semaphore`` classes when a task waiting on ``acquire()``
+  is cancelled while another task is waiting to acquire the same primitive
+  * Fixed async context manager's ``__aexit__()`` method not being called in
+  ``BlockingPortal.wrap_async_context_manager()`` if the host task is cancelled
+  * Fixed worker threads being marked as being event loop threads in sniffio
+  * Fixed task parent ID not getting set to the correct value on asyncio
+  * Enabled the test suite to run without IPv6 support, trio or pytest plugin autoloading</comment>
+    <requestid>934534</requestid>
+  </revision>
 </revisionlist>

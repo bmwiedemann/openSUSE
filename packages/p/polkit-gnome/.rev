@@ -221,4 +221,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767213 from dimstar)</comment>
     <requestid>767473</requestid>
   </revision>
+  <revision rev="30" vrev="13">
+    <srcmd5>a22b8755612a8b75e798d7d07fa0cd6a</srcmd5>
+    <version>0.105</version>
+    <time>1638388012</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable agent startup on Pantheon desktop (forwarded request 934367 from awissu)</comment>
+    <requestid>934576</requestid>
+  </revision>
 </revisionlist>

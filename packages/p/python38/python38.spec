@@ -123,13 +123,13 @@ Patch02:        F00251-change-user-install-location.patch
 # PATCH-FEATURE-UPSTREAM SUSE-FEDORA-multilib.patch bsc#[0-9]+ mcepl@suse.com
 # Add support for platlib variable
 Patch03:        SUSE-FEDORA-multilib.patch
-# PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
-# Improve reproduceability
-Patch06:        distutils-reproducible-compile.patch
 # PATCH-FEATURE-UPSTREAM decimal-3.8.patch bsc#1189356 mcepl@suse.com
 # fix building with mpdecimal
 # https://www.bytereef.org/contrib/decimal-3.8.diff
 Patch05:        decimal-3.8.patch
+# PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
+# Improve reproduceability
+Patch06:        distutils-reproducible-compile.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
@@ -426,6 +426,7 @@ other applications.
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 
+%if %{primary_interpreter}
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
 for dir in Lib Tools; do
     # find *.py, filter to files that contain bad shebangs
@@ -434,6 +435,13 @@ for dir in Lib Tools; do
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
         | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
 done
+%else
+# For non-primary Python, just don't bother (bsc#1193179) and remove all
+# those shebangs
+for dir in Lib Tools; do
+    find $dir -name '*.py' -type f -exec sed -i '1{/^#!.*python/ d}' '{}' \;
+done
+%endif
 
 # drop in-tree libffi and expat
 rm -r Modules/_ctypes/libffi* Modules/_ctypes/darwin

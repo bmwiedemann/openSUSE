@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 08:11:01 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * v2ray.service
+  * v2ray@.service
+
+-------------------------------------------------------------------
 Thu Nov 11 02:55:40 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.43.0

@@ -371,4 +371,13 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
     <comment></comment>
     <requestid>930071</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>e04daa88af3d1f3af7829525435d72fc</srcmd5>
+    <version>3.5.2</version>
+    <time>1638388007</time>
+    <user>dimstar_suse</user>
+    <comment>- fix permission settings on following symlinks (fix-following-symlinks.patch)
+  this fixes also wrong permissions of /var/tmp in factory systems</comment>
+    <requestid>934501</requestid>
+  </revision>
 </revisionlist>

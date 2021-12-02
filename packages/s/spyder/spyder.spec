@@ -19,7 +19,7 @@
 # boo#1190482
 %bcond_with     test
 Name:           spyder
-Version:        5.1.5
+Version:        5.2.0
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -27,10 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-# PATCH-FIX-UPSTREAM spyder-pr16565-unpin-pylint.patch -- gh#spyder-ide/spyder#16565
-Patch0:         spyder-pr16565-unpin-pylint.patch
-# PATCH-FIX-OPENSUSE spyder-jupyter_client7.patch -- Don't override old jupyter_client private method _kill_kernel code@bnavigator.de
-Patch1:         spyder-jupyter_client7.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 49.6.0
@@ -52,6 +48,7 @@ Requires:       python3-flake8 >= 3.8.0
 Requires:       python3-intervaltree
 Requires:       python3-ipython >= 7.6.0
 Requires:       python3-jedi >= 0.17.2
+Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
 Requires:       python3-mccabe >= 0.6.0
@@ -67,16 +64,16 @@ Requires:       python3-pyflakes >= 2.2.0
 Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.0.0
-Requires:       python3-python-lsp-server >= 1.2.2
+Requires:       python3-python-lsp-server >= 1.3.1
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
 Requires:       python3-qt5 >= 5.5
-Requires:       python3-qtconsole >= 5.1.0
+Requires:       python3-qtconsole >= 5.2.1
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.1.1
+Requires:       python3-spyder-kernels >= 2.2.0
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -129,6 +126,7 @@ BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-ipython >= 7.6.0
 BuildRequires:  python3-jedi >= 0.17.2
+BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
 BuildRequires:  python3-matplotlib >= 2.0.0
@@ -156,16 +154,16 @@ BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-lsp-black >= 1.0.0
-BuildRequires:  python3-python-lsp-server >= 1.2.2
+BuildRequires:  python3-python-lsp-server >= 1.3.1
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10
 BuildRequires:  python3-qt5 >= 5.5
-BuildRequires:  python3-qtconsole >= 5.1.0
+BuildRequires:  python3-qtconsole >= 5.2.1
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 2.1.1
+BuildRequires:  python3-spyder-kernels >= 2.2.0
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1

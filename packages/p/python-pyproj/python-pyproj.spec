@@ -20,22 +20,22 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.23.5}
+BuildRequires:  %{python_module Cython >= 0.28.4}
 BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module aenum}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  proj
-BuildRequires:  proj-devel >= 7.2.0
+BuildRequires:  proj-devel >= 8
 BuildRequires:  python-rpm-macros
 Requires:       python-aenum
 Requires:       python-numpy

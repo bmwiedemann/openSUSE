@@ -1,0 +1,13 @@
+Index: setroubleshoot-3.3.26/setroubleshoot.desktop.in
+===================================================================
+--- setroubleshoot-3.3.26.orig/setroubleshoot.desktop.in
++++ setroubleshoot-3.3.26/setroubleshoot.desktop.in
+@@ -2,7 +2,7 @@
+ _Name=SELinux Troubleshooter
+ _GenericName=SELinux Troubleshooter
+ _Comment=Troubleshoot SELinux access denials
+-Categories=System;
++Categories=System;Security;
+ Exec=/usr/bin/sealert -b
+ Terminal=false
+ Type=Application

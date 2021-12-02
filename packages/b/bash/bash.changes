@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:28:52 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update bash 5.1 to patch level 12
+  * Add official patch bash51-009
+    The bash malloc implementation of malloc_usable_size() does not follow the
+    specification. This can cause library functions that use it to overwrite
+    memory bounds checking.
+  * Add official patch bash51-010
+    If `wait -n' is interrupted by a trapped signal other than SIGINT, it does
+    not completely clean up state, and that can prevent subsequent calls to
+    `wait -n' from working correctly.
+  * Add official patch bash51-011
+    When reading a compound assignment, and running it through the parser to
+    split it into words, we need to save and restore any alias we're currently
+    expanding.
+  * Add official patch bash51-012
+    There is a possible race condition that arises when a child process receives
+    a signal trapped by the parent before it can reset the signal dispositions.
+    The child process is not supposed to trap the signal in this circumstance.
+
+-------------------------------------------------------------------
+Fri Oct 22 09:28:06 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Using package bash-sh instead of the update-alternative
+  mechanism.
+
+-------------------------------------------------------------------
 Thu Sep 30 13:42:48 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Install bash_builtins manpage under the correct name

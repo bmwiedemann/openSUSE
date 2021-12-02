@@ -1122,4 +1122,12 @@
     <comment>- Update to version 2.4.8+git0.d1f8d41e0:</comment>
     <requestid>929060</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>baae50ab6f13aec37396a05944245406</srcmd5>
+    <version>2.5.0+git0.f2e0833f1</version>
+    <time>1638387986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934760</requestid>
+  </revision>
 </revisionlist>

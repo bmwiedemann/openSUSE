@@ -63,6 +63,8 @@ Obsoletes:      libKF5I18n4
 Recommends:     %{lname}-lang = %{version}
 %endif
 Requires:       iso-codes
+# The lang package is not optional
+Requires:       iso-codes-lang
 
 %description -n %{lname}
 KI18n provides functionality for internationalizing user interface text

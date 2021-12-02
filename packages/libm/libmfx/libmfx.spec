@@ -19,13 +19,13 @@
 %global sover 1
 Name:           libmfx
 %define lname   libmfx%{sover}
-Version:        21.3.4
+Version:        21.3.5
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
-Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
+Source0:        %{url}/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1500
@@ -74,7 +74,7 @@ This package contains example applications for the Intel Media SDK.
 %autosetup -p1 -n MediaSDK-intel-mediasdk-%{version}
 
 %build
-mkdir -p build 
+mkdir -p build
 pushd build
 # libITT and cm compiler not available on openSUSE
 cmake \
@@ -114,7 +114,7 @@ rmdir %{buildroot}/%{_datadir}/mfx/samples
 %{_bindir}/mfx-tracer-config
 
 %files -n %lname
-%license LICENSE 
+%license LICENSE
 %{_libdir}/libmfx.so.%{sover}
 %{_libdir}/libmfx.so.%{sover}.*
 %{_libdir}/libmfxhw64.so.%{sover}

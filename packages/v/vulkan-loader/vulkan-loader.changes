@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 20 03:07:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.198.0
+  * Fix loader not knowing about extensions enabled in layers
+  * Only return pre-instance functions when instance is NULL
+  * Fix vkGetInstanceProcAddr not handling null instance
+  * loader: Add aarch64 unknown ext chain implementation
+
+-------------------------------------------------------------------
 Sun Sep  5 11:06:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.189.0

@@ -196,4 +196,12 @@ versions of libva(2)</comment>
 - Fix 32bit build (dependency for Steam in-home streaming hardware decode)</comment>
     <requestid>927930</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5286024c9ef1e7d62fdae3e3a2dfb18e</srcmd5>
+    <version>21.3.5</version>
+    <time>1638310556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934604</requestid>
+  </revision>
 </revisionlist>

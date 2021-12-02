@@ -60,7 +60,6 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcinnamon-menu-3.0)
-BuildRequires:  pkgconfig(libcroco-0.6)
 BuildRequires:  pkgconfig(libmuffin) >= %{_version}
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)

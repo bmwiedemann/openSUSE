@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuninameslist
-Version:        20210917
+Version:        20211114
 Release:        0
 Summary:        A library providing Unicode character names and annotations
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files devel
 %{_libdir}/libuninameslist.so
 %{_libdir}/pkgconfig/libuninameslist.pc
-%{_mandir}/man3/libuninameslist.3*
+%{_mandir}/man3/libuninameslist.3%{?ext_man}
 %{_includedir}/uninameslist.h
 
 %changelog

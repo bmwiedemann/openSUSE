@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:30:23 UTC 2021 - cloud-devel@suse.de
+
+- update to version 7.6.0
+  - Fix lower constraints
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Ussuri+ is python3 only and update python to python3
+  - Replace getargspec with getfullargspec
+  - setup.cfg: Replace dashes with underscores
+  - Support passing mTLS certificate/key to HTTPClient
+  - Changed minversion in tox to 3.18.0
+  - Set ML2/OVS backend explicitly for functional job
+  - Skip metering functional tests when metering extension is not enabled
+  - Use yaml.safe_load instead of yaml.load
+  - Add a release note on deprecation for removal of neutron CLI
+  - tests: change safe_hasattr to hasattr
+  - Set when deprecated neutron client CLI will be removed
+
+-------------------------------------------------------------------
 Sun May  2 17:16:03 UTC 2021 - cloud-devel@suse.de
 
 - update to version 7.3.0

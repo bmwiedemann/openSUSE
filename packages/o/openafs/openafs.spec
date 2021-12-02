@@ -105,6 +105,8 @@ Source99:       openafs.changes
 Patch3:         dir_layout.patch
 # PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
 Patch4:         openafs-1.8.x.ncurses6.patch
+# PATCH-FIX-UPSTREAM make KMP bild on Factory
+Patch5:         linux-kmp.patch
 
 #
 #	GENERAL BuildRequires and Requires
@@ -321,6 +323,7 @@ done
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 ./regen.sh
 

@@ -1,0 +1,71 @@
+[gdb/testsuite] Fix gdb.guile/scm-type.exp with gcc 4.8
+
+With gcc 7.5.0, I get:
+...
+(gdb) guile (print (type-range (field-type (type-field (value-type \
+  (value-dereference f)) "items"))))^M
+= (0 0)^M
+(gdb) PASS: gdb.guile/scm-type.exp: lang_cpp: test_range: \
+  on flexible array member: $cmd
+...
+but with gcc 4.8.5, I get instead:
+...
+(gdb) guile (print (type-range (field-type (type-field (value-type \
+  (value-dereference f)) "items"))))^M
+= (0 -1)^M
+(gdb) FAIL: gdb.guile/scm-type.exp: lang_cpp: test_range: \
+  on flexible array member: $cmd
+...
+
+There's a difference in debug info.  With gcc 4.8.5, we have:
+...
+ <2><224>: Abbrev Number: 15 (DW_TAG_member)
+    <225>   DW_AT_name        : items
+    <22b>   DW_AT_type        : <0x231>
+ <1><231>: Abbrev Number: 4 (DW_TAG_array_type)
+    <232>   DW_AT_type        : <0x105>
+ <2><23a>: Abbrev Number: 16 (DW_TAG_subrange_type)
+    <23b>   DW_AT_type        : <0x11a>
+    <23f>   DW_AT_upper_bound : 0xffffffffffffffff
+...
+and with gcc 7.5.0, we have instead:
+...
+ <2><89f>: Abbrev Number: 12 (DW_TAG_member)
+    <8a0>   DW_AT_name        : items
+    <8a6>   DW_AT_type        : <0x8ac>
+ <1><8ac>: Abbrev Number: 17 (DW_TAG_array_type)
+    <8ad>   DW_AT_type        : <0x29d>
+ <2><8b5>: Abbrev Number: 41 (DW_TAG_subrange_type)
+ <2><8b6>: Abbrev Number: 0
+...
+
+As mentioned in commit 858c8f2c1b9 "gdb/testsuite: adjust
+gdb.python/flexible-array-member.exp expected pattern":
+...
+Ideally, GDB would present a consistent and documented value for an
+array member declared with size 0, regardless of how the debug info
+looks like.
+...
+
+As in gdb.python/flexible-array-member.exp, change the test to accept the two
+values.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.guile/scm-type.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.guile/scm-type.exp b/gdb/testsuite/gdb.guile/scm-type.exp
+index ccde98ca224..e5eaab365cc 100644
+--- a/gdb/testsuite/gdb.guile/scm-type.exp
++++ b/gdb/testsuite/gdb.guile/scm-type.exp
+@@ -267,7 +267,7 @@ proc test_range {} {
+ 	    gdb_scm_test_silent_cmd "guile (define f (history-ref 0))" \
+ 		"get value (f) from history"
+ 	    gdb_test "guile (print (type-range (field-type (type-field (value-type (value-dereference f)) \"items\"))))" \
+-		"= \\(0 0\\)"
++		"= \\(0 (0|-1)\\)"
+ 	    gdb_test "guile (print (value-subscript (value-field (value-dereference f) \"items\") 0))" \
+ 		"= 111"
+ 	    gdb_test "guile (print (value-subscript (value-field (value-dereference f) \"items\") 1))" \

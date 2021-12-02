@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 09:59:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * svnserve.service
+
+-------------------------------------------------------------------
 Fri Nov 12 11:23:14 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The following issues have already been fixed in this package

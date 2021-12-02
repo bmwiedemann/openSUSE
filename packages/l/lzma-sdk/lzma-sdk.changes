@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:37:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 21.06
+  * Bug in LZMA encoder in file LzmaEnc.c was fixed:
+    LzmaEnc_MemEncode(), LzmaEncode() and LzmaCompress() could
+    work incorrectly, if size value for output buffer is smaller
+    than size required for all compressed data. LzmaEnc_Encode()
+    could work incorrectly, if callback ISeqOutStream::Write()
+    doesn't write all compressed data.
+    NCompress::NLzma::CEncoder::Code() could work incorrectly,
+    if callback ISequentialOutStream::Write() returns error
+    code.
+  * Bug in versions 21.00-21.05 was fixed:
+    7-Zip didn't set attributes of directories during archive
+    extracting.
+  version 21.04 beta:
+  * 7-Zip now reduces the number of working CPU threads for
+    compression, if RAM size is not enough for compression with
+    big LZMA2 dictionary.
+  * 7-Zip now can create and check "file.sha256" text files that
+    contain the list of file names and SHA-256 checksums in
+    format compatible with sha256sum program.
+  version 21.03 beta:
+  * The maximum dictionary size for LZMA/LZMA2 compressing was
+    increased to 4 GB (3840 MiB).
+  * Minor speed optimizations in LZMA/LZMA2 compressing.
+  version 21.02 alpha:
+  * The speed for LZMA and LZMA2 decompression in arm64 versions
+    was increased by 20%-60%.
+  version 21.01 alpha:
+  * The improvements for speed of ARM64 version using hardware
+    CPU instructions  for AES, CRC-32, SHA-1 and SHA-256.
+  * Some bugs were fixed.
+  version 20.02 alpha:
+  * The default number of LZMA2 chunks per solid block in 7z
+    archive was increased to 64. It allows to increase the
+    compression speed for big 7z archives, if there is a big
+    number  of CPU cores and threads.
+  * The speed of PPMd compressing/decompressing was increased
+    for 7z archives.
+  * The new -ssp switch. If the switch -ssp is specified, 7-Zip
+    doesn't allow the system  to modify "Last Access Time"
+    property of source files for archiving and hashing operations. 
+  * Some bugs were fixed.
+  version 20.00 alpha;
+  * 7-Zip now supports new optional match finders for LZMA/LZMA2
+    compression: bt5 and hc5,  that can work faster than bt4 and
+    hc4 match finders for the data with big redundancy.
+  * The compression ratio was improved for Fast and Fastest
+    compression levels with the following default settings:
+    + Fastest level (-mx1) : hc5 match finder with 256 KB
+      dictionary.
+    + Fast level (-mx3) : hc5 match finder with 4 MB
+      dictionary.
+  * Minor speed optimizations in multithreaded LZMA/LZMA2
+    compression for Normal/Maximum/Ultra compression levels.
+
+-------------------------------------------------------------------
 Fri Feb 22 11:22:49 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 19.00

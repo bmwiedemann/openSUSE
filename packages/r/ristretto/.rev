@@ -537,4 +537,12 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:ristretto revision:46</comment>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>78a4b9e051e1f7413211f697f74e6596</srcmd5>
+    <version>0.12.1</version>
+    <time>1638203313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934498</requestid>
+  </revision>
 </revisionlist>

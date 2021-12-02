@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 26 23:06:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.1:
+  + No upstream changes available. Please see upstream commitlog at
+    https://gitlab.gnome.org/GNOME/fractal/-/commits/release-4.4.1/
+- Replace pkgconfig(libhandy-0.0) with pkgconfig(libhandy-1)
+  BuildRequires following upstream changes.
+- Add c_compiler, c++_compiler and cmake BuildRequires, new
+  dependencies.
+
+-------------------------------------------------------------------
 Mon Dec  7 21:02:36 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.0:

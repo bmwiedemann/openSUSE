@@ -1,0 +1,12 @@
+<services>
+ <service name="download_url" mode="disabled">
+   <param name="protocol">https</param>
+   <param name="host">github.com</param>
+   <param name="path">schollii/pypubsub/archive/refs/tags/v4.0.3.tar.gz</param>
+ </service>
+ <service name="verify_file" mode="disabled">
+   <param name="file">_service:download_url:v4.0.3.tar.gz</param>
+   <param name="verifier">sha256</param>
+   <param name="checksum">0df83daa1cb0021bab858ff6812d836c9712dea59a5172be1888bb554c3a89a2</param>
+ </service>
+</services>

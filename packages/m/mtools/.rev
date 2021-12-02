@@ -489,4 +489,18 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     <comment>mtools 4.0.35 (forwarded request 910582 from AndreasStieger)</comment>
     <requestid>910792</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5746c9a10edcd5ccdccb0a47c0d156ae</srcmd5>
+    <version>4.0.36</version>
+    <time>1638388006</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.36:
+  * Fix error status of recursive listing of empty root directory
+  * If recursive listing, also show matched files at level one
+  * Use &quot;seekless&quot; reads &amp; write internally, where possible
+  * Text mode conversion refactoring
+  * Misc refactoring
+- remove mtools-aliasing.diff (obsolete) (forwarded request 934243 from dirkmueller)</comment>
+    <requestid>934480</requestid>
+  </revision>
 </revisionlist>

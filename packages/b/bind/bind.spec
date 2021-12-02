@@ -17,6 +17,7 @@
 
 
 %define _buildshell /bin/bash
+
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
 %define with_systemd 1
@@ -51,21 +52,22 @@ Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.isc.org/bind/
-Source0:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
+Source:         https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
 Source1:        https://downloads.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
 Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
-Source4:        %{name}.keyring
+Source3:        %{name}.keyring
 Source9:        ftp://ftp.internic.net/domain/named.root
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
-# configuation file for systemd-tmpfiles
+# configuration file for systemd-tmpfiles
 Source70:       bind.conf
 # configuation file for systemd-sysusers
 Source72:       named.conf
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
 Patch68:        bind-fix-build-with-older-sphinx.patch
+Patch69:        bind-CVE-2021-25219.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libopenssl-devel
@@ -121,19 +123,22 @@ System implementation of the Domain Name System (DNS) protocols.  This
 includes also the BIND Administrator Reference Manual (ARM).
 
 %package utils
-Summary:        Utilities to query and test DNS
+Summary:        Libraries for "bind" and utilities to query and test DNS
 # Needed for dnssec parts
 Group:          Productivity/Networking/DNS/Utilities
 Requires:       python3-bind = %{version}
 Provides:       bind9-utils
 Provides:       bindutil
 Provides:       dns_utils
+Obsoletes:      bind-devel < %{version}
 Obsoletes:      bind9-utils < %{version}
 Obsoletes:      bindutil < %{version}
+Obsoletes:      libirs-devel < %{version}
 
 %description utils
 This package includes the utilities "host", "dig", and "nslookup" used to
-test and query the Domain Name System (DNS).  The Berkeley Internet
+test and query the Domain Name System (DNS) and also the libraries rquired
+for the base "bind" package. The Berkeley Internet
 Name Domain (BIND) DNS server is found in the package named bind.
 
 %package -n python3-bind
@@ -169,7 +174,7 @@ for file in docu/README* config/{README,named.conf} sysconfig/named-named; do
 done
 popd
 
-%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150300
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150400
 # the Administration Reference Manual doesn't build with Leap/SLES due to an way too old Sphinx package
 # that is missing sphinx.util.docutils.ReferenceRole.
 # patch68 disables this extension, and here, we're removing the :gl: tags in the notes
@@ -197,7 +202,7 @@ export LDFLAGS="-pie"
 	--with-pic \
 	--disable-openssl-version-check \
 	--with-tuning=large \
-	--with-geoip \
+	--with-maxminddb \
 	--with-dlopen \
 	--with-gssapi=yes \
 	--disable-isc-spnego \
@@ -218,7 +223,7 @@ for d in arm; do
 	make -C doc/${d} SPHINXBUILD=sphinx-build doc
 done
 %if %{with_systemd}
-%sysusers_generate_pre %{SOURCE72} named named.conf
+%sysusers_generate_pre %{SOURCE72} named
 %endif
 
 %install
@@ -254,8 +259,8 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 %if %{with_systemd}
 	for file in named; do
         	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
-		sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" -i %{buildroot}%{_unitdir}/${file}.service
-                install -m 0755 vendor-files/system/${file}.prep %{buildroot}%{_libexecdir}/bind/${file}.prep
+                sed -e "s,@LIBEXECDIR@,%{_libexecdir},g" -i %{buildroot}%{_unitdir}/${file}.service
+		install -m 0755 vendor-files/system/${file}.prep %{buildroot}%{_libexecdir}/bind/${file}.prep
 		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
 	done
 	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
@@ -290,7 +295,6 @@ for file in vendor-files/docu/README*; do
 	basename=$( basename ${file})
 	cp -a ${file} %{buildroot}/%{_defaultdocdir}/bind/${basename}.%{VENDOR}
 done
-
 mkdir -p vendor-files/config/ISC-examples
 cp -a bin/tests/*.conf* vendor-files/config/ISC-examples
 for d in arm; do
@@ -315,7 +319,6 @@ install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
 %pre -f named.pre
 %service_add_pre named.service
 %else
-
 %pre
 %{GROUPADD_NAMED}
 %{USERADD_NAMED}
@@ -338,7 +341,7 @@ install -m 644 %{SOURCE72} %{buildroot}%{_sysusersdir}/
 %else
 %{fillup_and_insserv -nf named}
 if [ -x %{_bindir}/systemctl ]; then
-# make sure systemctl knows about the service even though it's not a systemd service
+# make sure systemctl knows about the service
 # Without this, systemctl status named would return
 #     Unit named.service could not be found.
 # until systemctl daemon-reload has been executed

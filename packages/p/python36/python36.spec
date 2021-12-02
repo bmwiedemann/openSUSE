@@ -176,20 +176,20 @@ Patch41:        22198.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  lzma-devel
 BuildRequires:  netcfg
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1550
-# The provider for python(abi) is in rpm-build-python
-BuildRequires:  rpm-build-python
-%endif
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
+%if 0%{?suse_version} >= 1550
+# The provider for python(abi) is in rpm-build-python
+BuildRequires:  rpm-build-python
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
@@ -450,6 +450,7 @@ other applications.
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 
+%if %{primary_interpreter}
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
 for dir in Lib Tools; do
     # find *.py, filter to files that contain bad shebangs
@@ -458,6 +459,13 @@ for dir in Lib Tools; do
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
         | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
 done
+%else
+# For non-primary Python, just don't bother (bsc#1193179) and remove all
+# those shebangs
+for dir in Lib Tools; do
+    find $dir -name '*.py' -type f -exec sed -i '1{/^#!.*python/ d}' '{}' \;
+done
+%endif
 
 # drop in-tree libffi and expat
 rm -r Modules/_ctypes/libffi* Modules/_ctypes/darwin

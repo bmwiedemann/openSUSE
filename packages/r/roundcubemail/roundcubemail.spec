@@ -20,10 +20,10 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 %define php_name      %(php -r "print 'php' . PHP_MAJOR_VERSION;")
 Name:           roundcubemail
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A browser-based multilingual IMAP client
-License:        GPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.roundcube.net/
 Source0:        https://github.com/roundcube/%{name}/releases/download/%{version}/%{name}-%{version}-complete.tar.gz
@@ -60,11 +60,11 @@ Requires:       php-pear-Net_SMTP >= 1.8.1
 Requires:       php-pear-Net_Sieve >= 1.4.3
 Requires:       php-pear-Net_Socket >= 1.0.12
 Requires:       (%{php_name}-mysql or %{php_name}-pgsql)
-Recommends:     logrotate
 Recommends:     %{php_name}-fileinfo
 Recommends:     %{php_name}-imagick
-Recommends:     php-pear-Crypt_GPG >= 1.6.3
 Recommends:     %{php_name}-zip
+Recommends:     logrotate
+Recommends:     php-pear-Crypt_GPG >= 1.6.3
 Suggests:       %{php_name}-mysql
 Conflicts:      roundcube-framework
 Provides:       roundcube_framework = %{version}

@@ -1,7 +1,7 @@
 #
 # spec file for package triggerhappy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,12 @@ Name:           triggerhappy
 Version:        0.5.0
 Release:        0
 Summary:        Lightweight hotkey daemon
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/Base
-Url:            https://github.com/wertarbyte/triggerhappy
+URL:            https://github.com/wertarbyte/triggerhappy
 Source:         https://github.com/wertarbyte/triggerhappy/archive/release/0.5.0.tar.gz
-Patch:          0001-Fix-systemd-service.patch
+Patch0:         0001-Fix-systemd-service.patch
+Patch1:         harden_triggerhappy.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -41,7 +42,8 @@ configuration.
 
 %prep
 %setup -q -n %{name}-release-%{version}
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 make %{?_smp_mflags}

@@ -17,7 +17,7 @@
 
 
 Name:           xauth
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        Utility to edit and display the X authorization information
 License:        MIT

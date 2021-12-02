@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 27 21:12:17 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.62.3:
+  * fix minor typo (#1246)
+  * minor example fix (#1246)
+  * misc tidying & refactoring
+  * misc build/dev framework updates
+    + update dependencies
+    + update linters
+    + update docs deployment branches
+  * misc test/ci updates
+    + test forks
+    + tidy OS & Python version tests
+    + bump primary python version 3.7 => 3.8
+    + beta py3.10 testing
+    + fix py2.7 tests
+    + better timeout handling
+
+-------------------------------------------------------------------
 Sun Aug 29 17:36:37 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.62.2:

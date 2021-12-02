@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 27 15:39:12 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.59 release (jsc#ECO-3319)
+  - Support for Debian 11
+  - NERC CIP profiles for OCP4 and RHCOS
+  - HIPAA profile for SLE15
+  - Delta Tailoring Files for STIG profiles
+
+-------------------------------------------------------------------
 Wed Oct  6 09:00:15 UTC 2021 - Alexander Bergmann <abergmann@suse.com>
 
 - Fix SLE-12 build issue caused by '\xb0' character (bsc#1191431).

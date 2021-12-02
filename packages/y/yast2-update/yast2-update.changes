@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 26 15:02:03 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Remove obsolete code for treating /var differently when mounting
+  partitions, avoiding calling old storage code and crashing
+  (related to bsc#1186268).
+- 4.4.5
+
+-------------------------------------------------------------------
 Mon Nov 15 13:10:22 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Adapt to the ProductSpec API (bsc#1192626).

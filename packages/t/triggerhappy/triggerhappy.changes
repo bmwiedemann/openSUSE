@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 25 13:49:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_triggerhappy.service.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 07:31:08 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Clean up filelist (bsc#1174075).

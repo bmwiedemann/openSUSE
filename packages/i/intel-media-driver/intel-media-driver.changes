@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 29 15:49:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 21.3.5:
+  * Enabled vaCopy by GPU HW
+  * Added 0YUV decode output format support
+
+-------------------------------------------------------------------
 Thu Oct 28 10:38:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - mention baselibs.conf as source in specfile 

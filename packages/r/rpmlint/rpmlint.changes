@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 26 11:07:39 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211126.ebc84d5:
+  * allow rpmdiff for installed packages
+  * Add diff.py wrapper script.
+
+-------------------------------------------------------------------
+Fri Nov 26 08:26:01 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211125.fcbf5ab:
+  * Make missing-PT_GNU_STACK-section more sensitive.
+
+-------------------------------------------------------------------
 Tue Nov 23 07:15:40 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211122.36cebbc:

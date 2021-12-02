@@ -430,4 +430,12 @@
   task.c build failure using GCC 11.</comment>
     <requestid>927334</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>2e805274f89cae27f42625cb9cef68df</srcmd5>
+    <version>1.6.3</version>
+    <time>1638310559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934615</requestid>
+  </revision>
 </revisionlist>

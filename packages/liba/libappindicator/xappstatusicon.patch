@@ -1,20 +1,18 @@
-diff -rub a/configure.ac b/configure.ac
---- a/configure.ac	2017-02-15 22:15:21.000000000 +0800
-+++ b/configure.ac	2020-02-13 00:42:12.928497295 +0800
-@@ -58,7 +58,8 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,7 +61,8 @@ AS_IF([test "x$with_gtk" = x3],
                                       glib-2.0 >= $GLIB_REQUIRED_VERSION
+                                      gio-unix-2.0
                                       gio-2.0 >= $GIO_REQUIRED_VERSION
-                                      indicator3-0.4 >= $INDICATOR_REQUIRED_VERSION
 -                                     dbusmenu-gtk3-0.4 >= $DBUSMENUGTK_REQUIRED_VERSION)
 +                                     dbusmenu-gtk3-0.4 >= $DBUSMENUGTK_REQUIRED_VERSION
 +                                     xapp >= 1.5.0)
           AC_DEFINE(HAVE_GTK3, 1, [whether gtk3 is available])
          ],
        [test "x$with_gtk" = x2],
-diff -rub a/src/appindicator3-0.1.pc.in b/src/appindicator3-0.1.pc.in
---- a/src/appindicator3-0.1.pc.in	2017-02-15 22:15:21.000000000 +0800
-+++ b/src/appindicator3-0.1.pc.in	2020-02-12 23:39:49.768066612 +0800
-@@ -5,7 +5,7 @@
+--- a/src/appindicator3-0.1.pc.in
++++ b/src/appindicator3-0.1.pc.in
+@@ -5,7 +5,7 @@ bindir=@bindir@
  includedir=@includedir@
  
  Cflags: -I${includedir}/libappindicator3-0.1
@@ -23,10 +21,9 @@ diff -rub a/src/appindicator3-0.1.pc.in b/src/appindicator3-0.1.pc.in
  Libs: -L${libdir} -lappindicator3
  
  Name: appindicator3-0.1
-diff -rub a/src/app-indicator.c b/src/app-indicator.c
---- a/src/app-indicator.c	2017-02-15 22:15:36.000000000 +0800
-+++ b/src/app-indicator.c	2020-02-13 01:07:11.066450662 +0800
-@@ -31,6 +31,8 @@
+--- a/src/app-indicator.c
++++ b/src/app-indicator.c
+@@ -31,6 +31,8 @@ License version 3 and version 2.1 along
  #include "config.h"
  #endif
  
@@ -35,7 +32,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  #include <libdbusmenu-glib/menuitem.h>
  #include <libdbusmenu-glib/server.h>
  #include <libdbusmenu-gtk/client.h>
-@@ -52,6 +54,8 @@
+@@ -52,6 +54,8 @@ License version 3 and version 2.1 along
  
  #define PANEL_ICON_SUFFIX  "panel"
  
@@ -44,7 +41,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  /**
   * AppIndicatorPrivate:
   * All of the private data in an instance of an application indicator.
-@@ -90,7 +94,7 @@
+@@ -90,7 +94,7 @@ struct _AppIndicatorPrivate {
  	gchar *               att_accessible_desc;
  	guint                 label_change_idle;
  
@@ -53,7 +50,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  	gint                  fallback_timer;
  
  	/* Fun stuff */
-@@ -186,14 +190,11 @@
+@@ -186,14 +190,11 @@ static void check_connect (AppIndicator
  static void register_service_cb (GObject * obj, GAsyncResult * res, gpointer user_data);
  static void start_fallback_timer (AppIndicator * self, gboolean disable_timeout);
  static gboolean fallback_timer_expire (gpointer data);
@@ -71,7 +68,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  static gchar * append_panel_icon_suffix (const gchar * icon_name);
  static gchar * get_real_theme_path (AppIndicator * self);
  static gchar * append_snap_prefix (const gchar * path);
-@@ -952,6 +953,9 @@
+@@ -988,6 +989,9 @@ app_indicator_set_property (GObject * ob
  
  		  if (g_strcmp0(oldlabel, priv->label) != 0) {
  		    signal_label_change(APP_INDICATOR(object));
@@ -81,7 +78,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  		  }
  
  		  if (oldlabel != NULL) {
-@@ -983,15 +987,16 @@
+@@ -1019,15 +1023,16 @@ app_indicator_set_property (GObject * ob
  				g_warning("Unable to send signal for NewTitle: %s", error->message);
  				g_error_free(error);
  			}
@@ -101,7 +98,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  		  break;
  		}
  		case PROP_LABEL_GUIDE: {
-@@ -1521,19 +1526,60 @@
+@@ -1557,19 +1562,60 @@ theme_changed_cb (GtkIconTheme * theme,
  	return;
  }
  
@@ -166,7 +163,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  	g_signal_connect(G_OBJECT(self), APP_INDICATOR_SIGNAL_NEW_STATUS,
  		G_CALLBACK(status_icon_status_wrapper), icon);
  	g_signal_connect(G_OBJECT(self), APP_INDICATOR_SIGNAL_NEW_ICON,
-@@ -1541,12 +1587,11 @@
+@@ -1577,12 +1623,11 @@ fallback (AppIndicator * self)
  	g_signal_connect(G_OBJECT(self), APP_INDICATOR_SIGNAL_NEW_ATTENTION_ICON,
  		G_CALLBACK(status_icon_changes), icon);
  
@@ -182,7 +179,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  
  	return icon;
  }
-@@ -1561,49 +1606,22 @@
+@@ -1597,49 +1642,22 @@ status_icon_status_wrapper (AppIndicator
  
  /* A wrapper for redirecting the scroll events to the app-indicator from status
     icon widget. */
@@ -192,6 +189,9 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 -	g_return_val_if_fail(IS_APP_INDICATOR(data), FALSE);
 -	AppIndicator * app = APP_INDICATOR(data);
 -	g_signal_emit(app, signals[SCROLL_EVENT], 0, 1, event->direction);
+-
+-	return TRUE;
+-}
 +// static gboolean
 +// scroll_event_wrapper (GtkWidget *status_icon, GdkEventScroll *event, gpointer data)
 +// {
@@ -199,9 +199,6 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 +// 	AppIndicator * app = APP_INDICATOR(data);
 +// 	g_signal_emit(app, signals[SCROLL_EVENT], 0, 1, event->direction);
  
--	return TRUE;
--}
--
 -static gboolean
 -middle_click_wrapper (GtkWidget *status_icon, GdkEventButton *event, gpointer data)
 -{
@@ -241,7 +238,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  
  	/* add the icon_theme_path once if needed */
  	GtkIconTheme *icon_theme = gtk_icon_theme_get_default();
-@@ -1632,17 +1650,17 @@
+@@ -1668,17 +1686,17 @@ status_icon_changes (AppIndicator * self
  	switch (app_indicator_get_status(self)) {
  	case APP_INDICATOR_STATUS_PASSIVE:
  		/* hide first to avoid that the change is visible to the user */
@@ -262,7 +259,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  		break;
  	};
  
-@@ -1650,65 +1668,66 @@
+@@ -1686,16 +1704,45 @@ status_icon_changes (AppIndicator * self
  		gchar *snapped_icon = append_snap_prefix(icon_name);
  
  		if (g_file_test(icon_name, G_FILE_TEST_EXISTS)) {
@@ -279,14 +276,12 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 +				xapp_status_icon_set_icon_name(icon, longname);
  			} else {
 -				gtk_status_icon_set_from_icon_name(icon, icon_name);
--			}
 +                if (gtk_icon_theme_has_icon (icon_theme, icon_name)) {
 +                    xapp_status_icon_set_icon_name(icon, icon_name);
 +                } else {
 +                    gint i;
 +                    gchar *icon_path;
- 
--			g_free(longname);
++
 +                    const gchar *extensions[] = {
 +                        "png",
 +                        "svg",
@@ -297,14 +292,11 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 +
 +                        if (g_file_test (icon_path, G_FILE_TEST_EXISTS)) {
 +                            break;
- 		}
- 
--		g_free(snapped_icon);
++		}
++
 +                        g_clear_pointer (&icon_path, g_free);
- 	}
- 
--	return;
--}
++	}
++
 +                    if (icon_path) {
 +                        xapp_status_icon_set_icon_name (icon, icon_path);
 +                        g_free (icon_path);
@@ -314,7 +306,12 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 +                        xapp_status_icon_set_icon_name (icon, FALLBACK_ICON);
 +                    }
 +                }
-+			}
+ 			}
+ 
+ 			g_free(longname);
+@@ -1707,44 +1754,16 @@ status_icon_changes (AppIndicator * self
+ 	return;
+ }
  
 -/* Handles the activate action by the status icon by showing
 -   the menu in a popup. */
@@ -324,9 +321,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 -	GtkMenu * menu = app_indicator_get_menu(APP_INDICATOR(data));
 -	if (menu == NULL)
 -		return;
-+			g_free(longname);
-+		}
- 
+-
 -	gtk_menu_popup(menu,
 -	               NULL, /* Parent Menu */
 -	               NULL, /* Parent item */
@@ -334,12 +329,10 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
 -	               icon,
 -	               1, /* Button */
 -	               gtk_get_current_event_time());
-+		g_free(snapped_icon);
-+	}
- 
- 	return;
- }
- 
+-
+-	return;
+-}
+-
 -/* Handles the right-click action by the status icon by showing
 -   the menu in a popup. */
 -static void
@@ -365,7 +358,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  	g_object_unref(G_OBJECT(status_icon));
  	return;
  }
-@@ -1760,6 +1779,8 @@
+@@ -1796,6 +1815,8 @@ sec_activate_target_parent_changed(GtkWi
  	g_return_if_fail(IS_APP_INDICATOR(data));
  	AppIndicator *self = data;
  	self->priv->sec_activate_enabled = widget_is_menu_child(self, menuitem);
@@ -374,7 +367,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  }
  
  
-@@ -2053,6 +2074,7 @@
+@@ -2089,6 +2110,7 @@ app_indicator_set_label (AppIndicator *s
  	             PROP_LABEL_GUIDE_S, guide == NULL ? "" : guide,
  	             NULL);
  
@@ -382,7 +375,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  	return;
  }
  
-@@ -2224,9 +2246,14 @@
+@@ -2260,9 +2282,14 @@ app_indicator_set_menu (AppIndicator *se
    priv->menu = GTK_WIDGET (menu);
    g_object_ref_sink (priv->menu);
  
@@ -397,7 +390,7 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  
    check_connect (self);
  
-@@ -2280,6 +2307,7 @@
+@@ -2316,6 +2343,7 @@ app_indicator_set_secondary_activate_tar
  		                                      self);
  		g_object_unref(G_OBJECT(priv->sec_activate_target));
  		priv->sec_activate_target = NULL;
@@ -405,21 +398,17 @@ diff -rub a/src/app-indicator.c b/src/app-indicator.c
  	}
  
  	if (menuitem == NULL) {
-@@ -2288,8 +2316,9 @@
+@@ -2326,6 +2354,7 @@ app_indicator_set_secondary_activate_tar
  
- 	g_return_if_fail (GTK_IS_WIDGET (menuitem));
- 
--	priv->sec_activate_target = g_object_ref(G_OBJECT(menuitem));
-+	priv->sec_activate_target = g_object_ref(menuitem);
+ 	priv->sec_activate_target = g_object_ref(menuitem);
  	priv->sec_activate_enabled = widget_is_menu_child(self, menuitem);
 +	status_icon_set_has_secondary_activate (priv->status_icon, priv->sec_activate_enabled);
  	g_signal_connect(menuitem, "parent-set", G_CALLBACK(sec_activate_target_parent_changed), self);
  }
  
-diff -rub a/src/app-indicator.h b/src/app-indicator.h
---- a/src/app-indicator.h	2017-02-15 22:15:21.000000000 +0800
-+++ b/src/app-indicator.h	2020-02-13 01:04:06.226176973 +0800
-@@ -32,6 +32,14 @@
+--- a/src/app-indicator.h
++++ b/src/app-indicator.h
+@@ -32,6 +32,14 @@ License version 3 and version 2.1 along
  
  #include <gtk/gtk.h>
  
@@ -434,7 +423,7 @@ diff -rub a/src/app-indicator.h b/src/app-indicator.h
  G_BEGIN_DECLS
  
  /**
-@@ -218,10 +226,18 @@
+@@ -218,10 +226,18 @@ struct _AppIndicatorClass {
  	void (*app_indicator_reserved_ats)(void);
  
  	/* Overridable Functions */
@@ -453,10 +442,9 @@ diff -rub a/src/app-indicator.h b/src/app-indicator.h
  	/* Reserved */
  	void (*app_indicator_reserved_1)(void);
  	void (*app_indicator_reserved_2)(void);
-diff -rub a/src/Makefile.am b/src/Makefile.am
---- a/src/Makefile.am	2017-02-15 22:15:21.000000000 +0800
-+++ b/src/Makefile.am	2020-02-13 00:11:49.889693111 +0800
-@@ -57,7 +57,6 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -57,7 +57,6 @@ libappindicatorinclude_HEADERS = \
  libappindicator_la_SOURCES = \
  	$(libappindicator_headers) \
  	app-indicator-enum-types.c \
@@ -464,7 +452,7 @@ diff -rub a/src/Makefile.am b/src/Makefile.am
  	application-service-marshal.c \
  	dbus-shared.h \
  	generate-id.h \
-@@ -67,6 +66,14 @@
+@@ -69,6 +68,14 @@ libappindicator_la_SOURCES = \
  	gen-notification-watcher.xml.h \
  	gen-notification-watcher.xml.c
  
@@ -479,7 +467,7 @@ diff -rub a/src/Makefile.am b/src/Makefile.am
  libappindicator_la_LDFLAGS = \
  	$(COVERAGE_LDFLAGS) \
  	-version-info 1:0:0 \
-@@ -149,9 +156,15 @@
+@@ -151,9 +158,15 @@ INTROSPECTION_COMPILER_ARGS = --included
  
  if HAVE_INTROSPECTION
  
@@ -493,12 +481,11 @@ diff -rub a/src/Makefile.am b/src/Makefile.am
 +	$(addprefix $(srcdir)/,$(libappindicator_headers))
 +endif
  
- AppIndicator$(VER)-0.1.gir: libappindicator$(VER).la
+ AppIndicator3-0.1.gir: libappindicator3.la
  
-diff -rub a/tests/test-libappindicator-fallback-item.c b/tests/test-libappindicator-fallback-item.c
---- a/tests/test-libappindicator-fallback-item.c	2017-02-15 22:15:21.000000000 +0800
-+++ b/tests/test-libappindicator-fallback-item.c	2020-02-13 01:06:01.518347682 +0800
-@@ -31,8 +31,14 @@
+--- a/tests/test-libappindicator-fallback-item.c
++++ b/tests/test-libappindicator-fallback-item.c
+@@ -31,8 +31,14 @@ GType test_libappindicator_fallback_item
  
  static void test_libappindicator_fallback_item_class_init (TestLibappindicatorFallbackItemClass *klass);
  static void test_libappindicator_fallback_item_init       (TestLibappindicatorFallbackItem *self);
@@ -513,7 +500,7 @@ diff -rub a/tests/test-libappindicator-fallback-item.c b/tests/test-libappindica
  
  G_DEFINE_TYPE (TestLibappindicatorFallbackItem, test_libappindicator_fallback_item, APP_INDICATOR_TYPE);
  
-@@ -63,6 +69,39 @@
+@@ -63,6 +69,39 @@ enum {
  
  gint state = STATE_INIT;
  
@@ -553,7 +540,7 @@ diff -rub a/tests/test-libappindicator-fallback-item.c b/tests/test-libappindica
  static GtkStatusIcon *
  fallback (AppIndicator * indicator)
  {
-@@ -94,6 +133,7 @@
+@@ -94,6 +133,7 @@ unfallback (AppIndicator * indicator, Gt
  	}
  	return;
  }

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 12.10.1~bzr20200706.298 (chages since
+  12.10.1~bzr20170215.282):
+  * Fix build failures.
+  * Vendorise indicator-desktop-shortcuts (convenience wrapper
+    around gdesktopappinfo) from the libindicator project, to drop
+    the dependency on libindicator as none of the rest of it is
+    used.
+  * Don't build with -Werror.
+  * Drop Python 2 bindings and GObject Introspection for GTK 2
+    (lp#1740637).
+  * app-indicator: Don't pass unexpected parameter to signal
+    emissions (lp#1867996).
+  * app-indicator: Only check for item numbers when iterating
+    array (lp#1867996).
+  * Fall back to tray icon when StatusNotifierHost is not
+    available.
+- Drop libappindicator-no-Werror.patch: fixed upstream.
+- Drop only_require_python_for_gtk2.patch: no longer needed.
+- Rebase xappstatusicon.patch.
+
+-------------------------------------------------------------------
 Sun Dec 20 16:34:27 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Provide RH used libappindicator symbol, so third party rpms

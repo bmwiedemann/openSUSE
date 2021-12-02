@@ -1,7 +1,7 @@
 #
 # spec file for package gnulib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %global module1 git-merge-changelog
 
 Name:           gnulib
-Version:        git.20200809.d6dabe8ee
+Version:        git.20211127.db493d1ce
 Release:        0
 Summary:        GNU Portability Library
-License:        SUSE-Public-Domain AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Public-Domain AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.gnu.org/software/gnulib
 Source:         %{name}-%{version}.tar.xz
@@ -44,7 +44,7 @@ It can be used to improve portability and other functionality in your programs.
 
 %package devel
 Summary:        Devel files of %{name}
-License:        SUSE-Public-Domain AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Public-Domain AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 Requires:       bison
 Requires:       coreutils
@@ -71,7 +71,7 @@ License:        GFDL-1.3-only
 Group:          Development/Languages/C and C++
 Requires:       %{name}-devel = %{version}-%{release}
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 BuildArch:      noarch
 
 %description docs

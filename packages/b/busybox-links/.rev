@@ -157,4 +157,12 @@
     <comment>- Add shadow as BuildRequires (forwarded request 909802 from kukuk)</comment>
     <requestid>909803</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>3923419f8a8805756b903e0ec6878d8f</srcmd5>
+    <version>MACRO</version>
+    <time>1638387992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928281</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Oct 18 09:57:26 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to gnu-efi 3.0.14
+  * Add Device Path Utilities Protocol support
+  * Add EFI_SHELL_PROTOCOL definitions
+  * Move EFI_SHELL_PARAMETERS_PROTOCOL related definitions to efishell.h
+  * Add EFI_SHELL_DYNAMIC_COMMAND_PROTOCOL definitions
+  * Undefined Status in LibGetVariableAndSize()
+  * Initial support for RISCV64
+  * lisb/str.c: simplify xtoi()
+  * lib/hand: missing va_end
+  * Fix dummy relocation block alignment
+  * Add EFI_LOADED_IMAGE_DEVICE_PATH_PROTOCOL_GUID.
+  * ARM: hide 'hidden' pragma for hosted build
+  * lib/hand: missing va_end() in LibReinstallProtocolInterfaces()
+  * lib/misc: avoid NULL dereference in LibInsertToTailOfBootOrder
+  * lib/str: simplify Atoi()
+  * efiapi.h: add RISC-V machine type definitions
+  * apps: simplify logical constraints
+  * riscv64: missing EFI_FUNCTION
+  * riscv64: provide efisetjmp_arch.h
+  * apps: define FrameBufferAddr for riscv64
+  * apps: memory leak in draw_boxes()
+  * Add definitions for the EFI device tree table
+  * Fix VS2019 Code Analysis warnings
+  * Set NumberOfSymbols to zero
+  * riscv64: finalize efibind.h
+- gnu-efi-bsc1182057-support-sbat-section.patch: Update context
+- Enable build on riscv64
+  
+-------------------------------------------------------------------
 Fri Mar 12 08:34:48 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to gnu-efi 3.0.13

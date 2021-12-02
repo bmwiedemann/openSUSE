@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 29 12:01:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Added context propagation to/from worker threads in ``to_thread.run_sync()``,
+  ``from_thread.run()`` and ``from_thread.run_sync()``
+  * Fixed race condition in ``Lock`` and ``Semaphore`` classes when a task waiting on ``acquire()``
+  is cancelled while another task is waiting to acquire the same primitive
+  * Fixed async context manager's ``__aexit__()`` method not being called in
+  ``BlockingPortal.wrap_async_context_manager()`` if the host task is cancelled
+  * Fixed worker threads being marked as being event loop threads in sniffio
+  * Fixed task parent ID not getting set to the correct value on asyncio
+  * Enabled the test suite to run without IPv6 support, trio or pytest plugin autoloading
+
+-------------------------------------------------------------------
 Tue Oct 26 20:18:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.4:

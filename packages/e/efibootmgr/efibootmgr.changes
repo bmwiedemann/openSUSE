@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  3 10:03:52 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v17:
+  * use efivar's logging facility more (more info in -v2 , -v3, etc)
+  * Various bug fixes
+  * Better -e parsing
+  * fix pkg-config invocation for ldflags
+  * Make efibootmgr use EFIDIR / efibootmgr.efidir like fwupdate does
+  * make --loader default build-time configurable
+  * sanitize set_mirror()/get_mirror()
+  * Add support for parsing loader options as UCS2
+  * GCC 7 fixes
+  * Don't use -fshort-wchar since we don't run on EFI machines.
+- Drop 0001-Don-t-use-fshort-wchar-when-building-63.patch (upstreamed)
+- Drop 0002-Remove-extra-const-keywords-gcc-7-gripes-about.patch
+  (upstreamed)
+- Drop 0003-Add-support-for-parsing-optional-data-as-ucs2.patch
+  (upstreamed)
+- Drop MARM-sanitize-set_mirror.diff (upstreamed)
+- Drop efibootmgr-derhat.diff (upstreamed)
+- Rebase efibootmgr-delete-multiple.diff
+
+-------------------------------------------------------------------
 Tue Apr  3 13:50:11 CEST 2018 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]

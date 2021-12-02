@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 30 19:50:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211117.00 (bsc#1193257, bsc#1193258)
+  * Add retry logic for RegisterAgent (#404)
+- from version 20211111.01
+  * e2e_test: drop ubuntu 1604 image as its EOL (#403)
+- from version 20211111.00
+  * e2e_test: move to V1 api for OSPolicies (#397)
+- from version 20211102.00
+  * Fix context logging and fix label names (#400)
+- from version 20211028.00
+  * Add cloudops example for gcloud (#399)
+
+-------------------------------------------------------------------
 Fri Oct 22 11:45:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20211021.00

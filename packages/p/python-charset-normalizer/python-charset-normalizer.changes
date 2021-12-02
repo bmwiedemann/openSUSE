@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:14:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.8:
+  * Improvement over Vietnamese detection
+  * MD improvement on trailing data and long foreign (non-pure latin)
+  * Efficiency improvements in cd/alphabet_languages
+  * call sum() without an intermediary list following PEP 289 recommendations
+  * Code style as refactored by Sourcery-AI
+  * Minor adjustment on the MD around european words
+  * Remove and replace SRTs from assets / tests
+  * Initialize the library logger with a `NullHandler` by default
+  * Setting kwarg `explain` to True will add provisionally
+  * Fix large (misleading) sequence giving UnicodeDecodeError
+  * Avoid using too insignificant chunk
+  * Add and expose function `set_logging_handler` to configure a specific
+    StreamHandler
+
+-------------------------------------------------------------------
+Fri Nov 26 11:35:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- require lower-case name instead of breaking build 
+
+-------------------------------------------------------------------
+Thu Nov 25 22:26:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use lower-case name of prettytable package
+
+-------------------------------------------------------------------
 Sun Oct 17 14:01:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.7

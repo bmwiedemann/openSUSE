@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Wed Dec 1 11:38:48 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#846
+- make function is_efibootmgr() public (for bsc#937067)
+- 4.4.61
+
+--------------------------------------------------------------------
+Wed Dec 1 10:04:37 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#845
+- prefer file system over empty MS-DOS partition table (bsc#1186823)
+- fixed testcase
+- 4.4.60
+
+--------------------------------------------------------------------
+Tue Nov 30 19:26:57 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#844
+- extended Holder::set_source for multipath devices
+- documentation and coding style
+- 4.4.59
+
+--------------------------------------------------------------------
 Tue Nov 23 10:25:08 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Catalan) (bsc#1149754)

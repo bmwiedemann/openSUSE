@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 30 06:17:14 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Remove pipewire-libjack-0_3 conflict. pipewire-libjack-0_3's 
+  latest version is fixed.
+
+-------------------------------------------------------------------
 Fri Nov 26 07:39:33 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Conflict pipewire-libjack-0_3 to prevent boo#1191585

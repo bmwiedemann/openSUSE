@@ -856,4 +856,12 @@ Fix bz#1160384</comment>
     <comment></comment>
     <requestid>930227</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>16aaf9ff189b22f2cc14405fb22f983c</srcmd5>
+    <version>3.0.6</version>
+    <time>1638387968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934645</requestid>
+  </revision>
 </revisionlist>

@@ -29,6 +29,8 @@ URL:            https://www.digikam.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         Fix-compile-for-newer-Akonadi-Build-Versions.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -152,6 +154,7 @@ Additional program to browse and view photos
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
+# DNN ABI is not stable and not using symbol versioning (boo#1185700)
 %requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
 Recommends:     %{name}-plugins
 
@@ -166,6 +169,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON

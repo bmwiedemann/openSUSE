@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 27 12:55:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * Do not build as unversioned DSO
+  * use float as in SSE
+  * Initialize rows using heap to handle large images
+  * Free rows after remapping
+  * Disable SSE on arm64 
+
+-------------------------------------------------------------------
 Sun Jun  6 13:00:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.1:

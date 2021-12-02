@@ -18,7 +18,7 @@
 
 
 Name:           sngrep
-Version:        1.4.9
+Version:        1.4.10
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-build-with-recent-ncurses-versions.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpcap-devel
@@ -46,7 +45,6 @@ delivered in one packet).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 autoreconf -fi

@@ -1,7 +1,7 @@
 #
 # spec file for package libmpdclient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define so_name 2
 %define vala_version %(rpm -q --queryformat='%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 Name:           libmpdclient
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-3-Clause

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 30 19:02:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Ensure we download the same tarball every time. Also add sig and
+  keyring as sources and verify that we have the right one.
+
+-------------------------------------------------------------------
+Tue Nov 23 17:14:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ebc4de4bfe34d6c5f2e27da47f5d62e4de0394fd.patch: Fix build
+  with poppler 21.11.0, patch from upstream git.
+
+-------------------------------------------------------------------
 Fri Sep 24 07:55:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.1.1:

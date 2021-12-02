@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/jstasiak/python-zeroconf</param>
     <param name="scm">git</param>
-    <param name="revision">0.36.12</param>
-    <param name="version">0.36.12</param>
+    <param name="revision">0.37.0</param>
+    <param name="version">0.37.0</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service mode="buildtime" name="tar" />

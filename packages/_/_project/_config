@@ -121,6 +121,8 @@ Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 # Since not all packages care, we only add it where needed (instead of preinstall)
 Substitute: netcfg netcfg libnss_usrfiles2
 
+%ifnarch armv6l
+# Not enabled for armv6l, due to https://bugzilla.opensuse.org/show_bug.cgi?id=1193317
 # Enable ccache for a selection of packages:
 BuildFlags: useccache:NetworkManager
 BuildFlags: useccache:bitcoin
@@ -141,6 +143,7 @@ buildflags: useccache:tensorflow:lite
 buildflags: useccache:tensorflow:standard
 # ccache 4.x breaks webkit2gtk3
 #BuildFlags: useccache:webkit2gtk3
+%endif
 
 # switch to kiwi v8
 Prefer: python3-kiwi

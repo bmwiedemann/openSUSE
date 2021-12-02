@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:08:30 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Use py3 as the default runtime for tox
+  - Move flake8 as a pre-commit local target.
+  - Remove lower-constraints remnants
+  - Replace deprecated inspect.getargspec
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Use TOX_CONSTRAINTS_FILE
+  - Dropping lower constraints testing
+  - remove unicode from code
+  - Remove runtime dependency on pbr
+  - setup.cfg: Replace dashes with underscores
+  - Update master for stable/victoria
+  - ignore reno generated artifacts
+
+-------------------------------------------------------------------
 Fri Oct  9 19:13:17 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.0

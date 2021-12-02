@@ -107,4 +107,29 @@
     mess detection.</comment>
     <requestid>927599</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>77291d42265282cc654a6cfd452e53ed</srcmd5>
+    <version>2.0.8</version>
+    <time>1638388009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.8:
+  * Improvement over Vietnamese detection
+  * MD improvement on trailing data and long foreign (non-pure latin)
+  * Efficiency improvements in cd/alphabet_languages
+  * call sum() without an intermediary list following PEP 289 recommendations
+  * Code style as refactored by Sourcery-AI
+  * Minor adjustment on the MD around european words
+  * Remove and replace SRTs from assets / tests
+  * Initialize the library logger with a `NullHandler` by default
+  * Setting kwarg `explain` to True will add provisionally
+  * Fix large (misleading) sequence giving UnicodeDecodeError
+  * Avoid using too insignificant chunk
+  * Add and expose function `set_logging_handler` to configure a specific
+    StreamHandler
+
+- require lower-case name instead of breaking build 
+
+- Use lower-case name of prettytable package</comment>
+    <requestid>934519</requestid>
+  </revision>
 </revisionlist>

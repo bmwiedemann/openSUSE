@@ -25,6 +25,7 @@ RUN zypper -n install \
               kubevirt-container-disk \
               kubevirt-virt-handler \
               libvirt-client \
+              lsscsi \
               qemu-tools \
               system-user-qemu \
               util-linux-systemd && \

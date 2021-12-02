@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 30 20:19:59 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.3.2
+  - Changes:
+    - Links where the endpoint is left of the start point and on the same height
+      now have a slight vertical component in their curve so they don't appear
+      as a single line
+    - Links now use a gray instead of black color for better constrast
+  - Fixes:
+    - Build scripts now use bash instead of sh, as they were already using bash
+      features before, which could lead to problems where sh is not a symlink to
+      bash
+  - Also, from now on, releases will have a source tarball with vendored cargo
+    dependencies attached, so that releases can be built offline easier.
+
+-------------------------------------------------------------------
 Fri Oct 01 18:45:37 UTC 2021 - adam@mizerski.pl
 
 - Update to version 0.3.1:

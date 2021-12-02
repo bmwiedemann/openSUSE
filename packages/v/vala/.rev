@@ -1124,4 +1124,12 @@
   ldconfig_scriptlets macro. (forwarded request 928260 from iznogood)</comment>
     <requestid>929583</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>55f35b203784b7ad1bcabe422c2ef3cd</srcmd5>
+    <version>0.54.4</version>
+    <time>1638387987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934861</requestid>
+  </revision>
 </revisionlist>

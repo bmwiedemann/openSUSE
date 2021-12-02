@@ -27,17 +27,11 @@ Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Version:        10.0
+Version:        11.0
 Release:        0
 URL:            http://www.virt-manager.org
 Source:         https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz
 Source1:        https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz.asc
-Patch1:         0001-src-initialize-keymaps-variable.patch
-Patch2:         0002-rpm-explicitly-tell-meson-to-disable-spice-ovirt.patch
-Patch3:         0003-config.h-avoid-extra-hyphen-in-build-ID-value.patch
-Patch4:         0004-config.h-conditionally-define-REMOTE_VIEWER_OS_ID.patch
-Patch5:         0005-Fix-creation-of-window-when-using-single-QXL-card-with-2-heads.patch
-Patch6:         0006-src-avoid-warnings-from-use-of-G_GNUC_FALLTHROUGH.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch

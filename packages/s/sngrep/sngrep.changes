@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 25 23:07:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.10
+  * fix compilation errors when using -Werror=format-security
+  * capture: properly set transport as TCP for assembled TCP
+    messages
+  * config: alias keyword now supports IP:PORT format.
+  * filter: increased size of src and dst fields for IPv6 addresses
+- Drop patch:
+  * fix-build-with-recent-ncurses-versions.patch
+
+-------------------------------------------------------------------
 Sat May 22 14:06:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.9

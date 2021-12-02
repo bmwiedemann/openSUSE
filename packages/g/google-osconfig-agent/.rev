@@ -146,4 +146,21 @@
   * Update Terraform scripts for multi-project deployments tutorial. (#378) (forwarded request 926957 from glaubitz)</comment>
     <requestid>926958</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2b809bd7c59963fc223d7a3c978e511e</srcmd5>
+    <version>20211117.00</version>
+    <time>1638388036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211117.00 (bsc#1193257, bsc#1193258)
+  * Add retry logic for RegisterAgent (#404)
+- from version 20211111.01
+  * e2e_test: drop ubuntu 1604 image as its EOL (#403)
+- from version 20211111.00
+  * e2e_test: move to V1 api for OSPolicies (#397)
+- from version 20211102.00
+  * Fix context logging and fix label names (#400)
+- from version 20211028.00
+  * Add cloudops example for gcloud (#399)</comment>
+    <requestid>934875</requestid>
+  </revision>
 </revisionlist>

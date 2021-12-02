@@ -156,4 +156,12 @@
     <comment></comment>
     <requestid>857771</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d08bcb4dc73cc3bccf792c4d6a4eea2d</srcmd5>
+    <version>12.10.1~bzr20200706.298</version>
+    <time>1638387998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.10.1~bzr20200706.298.</comment>
+    <requestid>934235</requestid>
+  </revision>
 </revisionlist>

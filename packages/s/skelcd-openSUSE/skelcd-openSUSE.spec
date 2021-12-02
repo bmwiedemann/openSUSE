@@ -16,7 +16,7 @@
 #
 
 
-%define version_unconverted 84.87.20210413.ec9aed1
+%define version_unconverted 84.87.20211130.ef8d1a6
 # changed by pre_checkin
 %define is_non_oss 0
 #
@@ -28,7 +28,7 @@
 %bcond_without  java
 #
 Name:           skelcd-openSUSE
-Version:        84.87.20210413.ec9aed1
+Version:        84.87.20211130.ef8d1a6
 Release:        0
 Summary:        Skeleton for openSUSE OSS Media Sets
 License:        MIT

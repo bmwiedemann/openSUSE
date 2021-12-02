@@ -311,4 +311,12 @@
     Harbor registry.</comment>
     <requestid>930817</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0c0b9c7541a8a835c29071549e962ece</srcmd5>
+    <version>3.8.5</version>
+    <time>1638310565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934731</requestid>
+  </revision>
 </revisionlist>

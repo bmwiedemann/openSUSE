@@ -19,13 +19,13 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libimagequant
-Version:        2.15.1
+Version:        2.17.0
 Release:        0
 Summary:        Palette quantization library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://pngquant.org/lib/
-Source:         https://github.com/ImageOptim/libimagequant/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/ImageOptim/libimagequant/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(lcms2)
 

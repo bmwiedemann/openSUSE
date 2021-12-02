@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 10:52:47 CET 2021 - tiwai@suse.de
+
+- Improving the handling with pipewire (bsc#1188516):
+  * Split the setup script to a sub-package pulseaudio-setup to be
+    shared with pipewire-pulseaudio package
+  * Modified setup script to adapt pipewire-pulse
+
+-------------------------------------------------------------------
 Wed Nov 17 11:11:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Revert last change and BuildIgnore user(pulse) instead.

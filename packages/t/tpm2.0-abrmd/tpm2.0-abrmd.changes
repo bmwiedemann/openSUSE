@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 25 09:16:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_tpm2-abrmd.service.patch
+
+-------------------------------------------------------------------
 Sat Jul 17 21:04:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move selinux devel file to devel subpackage

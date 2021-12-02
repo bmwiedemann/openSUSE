@@ -1,0 +1,29 @@
+[gdb/doc] Fix print inferior-events default
+
+In the docs about print inferior-events we read:
+...
+By default, these messages will not be printed.
+...
+
+That used to be the case, but is no longer so since commit f67c0c91715 "Enable
+'set print inferior-events' and improve detach/fork/kill/exit messages".
+
+Fix this by updating the docs.
+
+---
+ gdb/doc/gdb.texinfo | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+index 1700b0305c5..d53c9a03704 100644
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -3395,7 +3395,7 @@ control use @w{@code{set print inferior-events}}:
+ The @code{set print inferior-events} command allows you to enable or
+ disable printing of messages when @value{GDBN} notices that new
+ inferiors have started or that inferiors have exited or have been
+-detached.  By default, these messages will not be printed.
++detached.  By default, these messages will be printed.
+ 
+ @kindex show print inferior-events
+ @item show print inferior-events

@@ -1,5 +1,5 @@
 #
-# spec file for package python-libevdev
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,7 +19,6 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %global modname libevdev
-%define libevdev_sover 2
 %define libevdev_reqver 1.6.0
 Name:           python-%{modname}
 Version:        0.9
@@ -29,13 +28,14 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://python-libevdev.readthedocs.io/
 Source0:        https://gitlab.freedesktop.org/libevdev/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-BuildArch:      noarch
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  libevdev%{libevdev_sover} >= %{libevdev_reqver}
-Requires:       libevdev%{libevdev_sover} >= %{libevdev_reqver}
+BuildRequires:  libevdev-devel >= %{libevdev_reqver}
+BuildRequires:  python-rpm-macros
+%define libmodule %(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libevdev.so))
+Requires:       %{libmodule} >= %{libevdev_reqver}
+BuildArch:      noarch
 %python_subpackages
 
 %description

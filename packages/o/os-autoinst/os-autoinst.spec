@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1638007345.ae6eed2a
+Version:        4.6.1638289529.0a3f5b98
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -171,8 +171,7 @@ sed  -i 's/ my $thisversion = qx{git.*rev-parse HEAD}.*;/ my $thisversion = "%{v
 # and exclude known flaky tests in OBS check
 # https://progress.opensuse.org/issues/52652
 # 07-commands: https://progress.opensuse.org/issues/60755
-# 10-virtio_terminal: https://progress.opensuse.org/issues/94991
-for i in 07-commands 10-virtio_terminal 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
+for i in 07-commands 13-osutils 14-isotovideo 18-qemu-options 18-backend-qemu 99-full-stack; do
     rm t/$i.t
 done
 

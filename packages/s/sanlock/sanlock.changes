@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 16 14:08:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_fence_sanlockd.service.patch
+  * harden_sanlk-resetd.service.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 19:58:35 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to sanlock 3.8.4

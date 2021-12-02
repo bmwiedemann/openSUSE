@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 26 17:58:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.2.0
+  * Add the ability to capture segfaults and flush standard streams
+    from Spyder.
+  * Add support for jupyter_client 7.
+- Drop upstreamed spyder-kernels-pr328-unpin_jupyter-client.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 19:15:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Unpin jupyter_client<7

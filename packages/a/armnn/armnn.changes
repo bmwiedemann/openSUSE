@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Dec  1 10:03:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.11
+  * Main changes:
+    - New capabilities and improve performance
+    - ABI/API Changes
+      The following front-end API changes have occurred during the
+      implementation of 21.11 that users should be aware of before
+      upgrading. Due to these changes we have bumped our ARMNN_VERSION
+      to 27.0.0, the Delegate to 25.0.0 and also bumping
+      our Parsers to 24.3.0 following Semantic Versioning guidelines.
+- Drop upstream patches:
+  * 96beb97.diff
+  * febc20f.diff
+  * e118e04.diff
+  * 0011-update-doctest-for-glibc2.34.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 07:21:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix stringop-overread error:

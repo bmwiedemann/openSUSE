@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  1 00:47:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.12.01
+  * Add option --wait-for-video to wait for scheduled streams
+  * Clarify video/audio-only formats in -F
+
+-------------------------------------------------------------------
+Mon Nov 29 16:10:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.11.10.1
+  * Fix youtube throttling by decrypting n-sig
+  * Separate --check-all-formats from --check-formats
+  * Add negative option --no-batch-file
+  * Allow duration strings in --match-filter
+- Drop ceskatelevize_fix_POST_request.patch (inapplicable)
+
+-------------------------------------------------------------------
 Sun Oct 31 22:27:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add ceskatelevize_fix_POST_request.patch to fix

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 29 10:08:48 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-vulkan-instance-initialization.patch to prevent an initialization error of QMPlay2's submodule QmVk when Tumbleweed updates vulkan to version 1.2.199 or higher
+
+-------------------------------------------------------------------
 Wed Oct 13 08:50:32 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-switch-to-yt-dlp.patch to fix several youtube-dl related issues such as buffering being unreliable

@@ -3905,4 +3905,23 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
 </comment>
     <requestid>927865</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>f446addd469519846ef8d59c6d3adc06</srcmd5>
+    <version>3.6.15</version>
+    <time>1638388020</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+- build against openssl 1.1 as it is incompatible with openssl 3.0+  (bsc#1190566)
+
+- 0001-allow-for-reproducible-builds-of-python-packages.patch: ignore
+  permission error when changing the mtime of the source file in presence
+  of SOURCE_DATE_EPOCH</comment>
+    <requestid>934644</requestid>
+  </revision>
 </revisionlist>

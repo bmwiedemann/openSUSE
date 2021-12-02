@@ -417,4 +417,18 @@
     <comment></comment>
     <requestid>924942</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>50bbbcad474710115eaaf3c4a15c0c4a</srcmd5>
+    <version>3.8.12</version>
+    <time>1638387968</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+</comment>
+    <requestid>934639</requestid>
+  </revision>
 </revisionlist>

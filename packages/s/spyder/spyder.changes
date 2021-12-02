@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:01:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.2.0
+  * Add new entry in preferences to turn off plugins
+  * Add experimental support for PySide2
+  * Show standard streams when running code in the IPython Console
+  * Speed up search in the Find plugin
+  * Migrate the IPython Console to the new API
+  * Add new mechanism for plugin teardowm
+  * Add a way to create stacked widgets connected to the IPython
+    Console like Plots and the Variable explorer
+- Drop spyder-pr16565-unpin-pylint.patch fixed upstream
+- Drop spyder-jupyter_client7.patch  fixed upstream
+
+-------------------------------------------------------------------
 Wed Oct 27 13:55:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add patches required for newer distro packages

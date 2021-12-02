@@ -1,7 +1,7 @@
 #
-# spec file for package pam_chroot (Version 0.9.2)
+# spec file for package pam_chroot
 #
-# Copyright (c) 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
+%define _buildshell /bin/bash
 
 Name:           pam_chroot
-Url:            http://sourceforge.net/projects/pam-chroot/
+URL:            http://sourceforge.net/projects/pam-chroot/
 BuildRequires:  pam-devel
-License:        GPL-2.0+
-Group:          System/Libraries
 Requires:       pam
 Provides:       pam-modules:/etc/security/chroot.conf
-AutoReqProv:    on
 Version:        0.9.2
-Release:        42
+Release:        0
 Summary:        Linux-PAM Module that Allows a User to Be Chrooted
+License:        GPL-2.0-or-later
+Group:          System/Libraries
 Source0:        pam_chroot-0.9.2.tar.bz2
 Source1:        baselibs.conf
 Source50:       dlopen.sh
@@ -63,31 +62,17 @@ EXTRA_CFLAGS=""
 make CFLAGS="$RPM_OPT_FLAGS $EXTRA_CFLAGS -fPIC -DHAVE_SHADOW -DLINUX_PAM"
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_lib}/security
-make DESTDIR=$RPM_BUILD_ROOT install
-rm -rf $RPM_BUILD_ROOT/usr/{include,lib}
-rm -rf $RPM_BUILD_ROOT/%{_lib}/security/*.la
-#
-# On 64bit archs, we need to move same libraries ourself:
-#
-if [ %_lib = lib64 ]; then
-  mv $RPM_BUILD_ROOT/lib/security/* $RPM_BUILD_ROOT/%{_lib}/security/
-fi
-# Check for module problems.  Specifically, check that every module we just
-# installed can actually be loaded by a minimal PAM-aware application.
-for module in $RPM_BUILD_ROOT/%{_lib}/security/pam*.so ; do
-   if ! sh $RPM_SOURCE_DIR/dlopen.sh -lpam -ldl ${module} ; then
-      exit 1
-   fi
-done
+mkdir -p %{buildroot}%{_pam_moduledir}
+make DESTDIR=%{buildroot} install
+[[ X"%{_pam_moduledir}" =~ X/lib.*/security/* ]] || mv %{buildroot}/lib/security/* %{buildroot}%{_pam_moduledir}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files 
 %defattr(-,root,root,755)
 %doc CREDITS LICENSE README TROUBLESHOOTING 
 %attr(644,root,root) %config(noreplace) /etc/security/chroot.conf
-%attr(755,root,root) /%{_lib}/security/pam_*.so
+%attr(755,root,root) /%{_pam_moduledir}/pam_*.so
 
 %changelog

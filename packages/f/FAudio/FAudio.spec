@@ -17,7 +17,7 @@
 
 
 Name:           FAudio
-Version:        21.10
+Version:        21.11
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -31,8 +31,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  cmake(sdl2)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 
 %description
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
@@ -60,8 +58,7 @@ FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries
 
 %build
 %cmake \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DGSTREAMER=ON
+  -DCMAKE_BUILD_TYPE=Release
 %cmake_build
 
 %install

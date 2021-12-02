@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_with alternatives
+%else
+%bcond_without alternatives
+%endif
+
 %define         bextend %{nil}
 %define         bversion 5.1
 %define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
@@ -81,17 +87,26 @@ BuildRequires:  patchutils
 BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  sed
+%if %{with alternatives}
 BuildRequires:  update-alternatives
+%endif
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(ncurses)
 # This has to be always the same version as included in the bash its self
 BuildRequires:  pkgconfig(readline) = 8.1
+%if %{with alternatives}
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+%endif
 Suggests:       bash-doc = %{version}
 Suggests:       command-not-found
 Provides:       /bin/bash
+%if %{with alternatives}
 Provides:       /bin/sh
+%else
+Requires:       /usr/bin/sh
+Suggests:       bash-sh
+%endif
 
 %description
 Bash is an sh-compatible command interpreter that executes commands
@@ -112,6 +127,18 @@ This package contains the documentation for using the bourne shell
 interpreter Bash.
 
 %lang_package
+
+%if %{without alternatives}
+%package sh
+Summary:        Handle behaviour of /bin/sh
+Group:          System/Shells
+Provides:       alternative(sh)
+Conflicts:      alternative(sh)
+Requires:       bash = %{version}
+
+%description sh
+Use bash as /bin/sh implementation.
+%endif
 
 %package devel
 Summary:        Include Files mandatory for Development of bash loadable builtins
@@ -444,7 +471,9 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   mv -vf %{buildroot}%{_ldldir}/*.inc %{buildroot}%{_datadir}/bash
   rm -rf %{buildroot}/%{_lib}/pkgconfig
   sed -ri '/CC = gcc/s@(CC = gcc).*@\1@' %{buildroot}%{_libdir}/pkgconfig/bash.pc
+%if %{with alternatives}
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%endif
 #
 # It should be noted that the move of /bin/bash to /usr/bin/bash
 # had NOT done by me at 2019/02/08. Now only a symbolic link
@@ -455,7 +484,11 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   ln -sf %{_bindir}/bash %{buildroot}/bin/bash
   ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
   ln -sf bash            %{buildroot}%{_bindir}/rbash
+%if %{with alternatives}
   ln -sf %{_sysconfdir}/alternatives/sh %{buildroot}%{_bindir}/sh
+%else
+  ln -sf %{_bindir}/bash %{buildroot}%{_bindir}/sh
+%endif
   install -m 644 COMPAT NEWS    %{buildroot}%{_docdir}/%{name}
   install -m 644 COPYING        %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/FAQ        %{buildroot}%{_docdir}/%{name}
@@ -493,6 +526,7 @@ EOF
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
 
+%if %{with alternatives}
 %post -p %{_bindir}/bash
 %{_sbindir}/update-alternatives --quiet --force \
 	--install %{_bindir}/sh sh %{_bindir}/bash 10100
@@ -501,22 +535,29 @@ EOF
 if test "$1" = 0; then
         %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/bash
 fi
+%endif
 
 %files
 %license COPYING
 %config %attr(600,root,root) %{_sysconfdir}/skel/.bash_history
 %config %attr(644,root,root) %{_sysconfdir}/skel/.bashrc
 %config %attr(644,root,root) %{_sysconfdir}/skel/.profile
+%if %{with alternatives}
 %ghost %config %{_sysconfdir}/alternatives/sh
+%endif
 %dir %{_sysconfdir}/bash_completion.d
 %if !0%{?usrmerged}
 /bin/bash
+%if %{with alternatives}
 /bin/sh
+%endif
 %endif
 %{_bindir}/bash
 %{_bindir}/bashbug
 %{_bindir}/rbash
+%if %{with alternatives}
 %{_bindir}/sh
+%endif
 %dir %{_datadir}/bash
 %dir %{_datadir}/bash/helpfiles
 %{_datadir}/bash/helpfiles/*
@@ -524,6 +565,14 @@ fi
 %{_mandir}/man1/bash_builtins.1%{?ext_man}
 %{_mandir}/man1/bashbug.1%{?ext_man}
 %{_mandir}/man1/rbash.1%{?ext_man}
+
+%if %{without alternatives}
+%files sh
+%if !0%{?usrmerged}
+/bin/sh
+%endif
+%{_bindir}/sh
+%endif
 
 %files lang -f bash.lang
 

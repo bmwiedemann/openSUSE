@@ -24,7 +24,7 @@ Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
-URL:            https://www.openttd.org
+URL:            https://openttd.org/
 Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
 Source2:        openttd.appdata.xml
@@ -36,6 +36,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
+BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)

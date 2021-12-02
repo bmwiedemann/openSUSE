@@ -1,7 +1,7 @@
 #
 # spec file for package libinstpatch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ libInstPatch is a library for processing digital sample based MIDI
 instrument "patch" files.
 
 %package -n libinstpatch-1_0-%{sover}
-Summary:        Libinstpatch library
+Summary:        MIDI instrument patch library
 Group:          System/Libraries
 
 %description -n libinstpatch-1_0-%{sover}
@@ -60,11 +60,11 @@ Requires:       libinstpatch-1_0-%{sover} = %{version}
 This package includes the header files for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -73,12 +73,10 @@ make %{?_smp_mflags}
 %postun -n libinstpatch-1_0-%{sover} -p /sbin/ldconfig
 
 %files -n libinstpatch-1_0-%{sover}
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/%{name}*.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README.md
 %doc examples/create_sf2.c
 %{_includedir}/%{name}*

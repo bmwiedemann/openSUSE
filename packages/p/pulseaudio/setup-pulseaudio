@@ -66,6 +66,20 @@ setup_gconf_vendor() {
     fi
 }
 
+has_user_pulseaudio() {
+    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket && return 0
+    test -f /etc/systemd/user/sockets.target.wants/pipewire-pulse.socket && return 0
+    return 1
+}
+
+pulseaudio_bin_name() {
+    if [ -x /usr/bin/pulseaudio ]; then
+	echo "pulseaudio"
+    else
+	echo "pipewire-pulse"
+    fi
+}
+
 enable_phonon() {
     echo "Enabling PulseAudio for Phonon..."
     delete_variable PHONON_PULSEAUDIO_DISABLE
@@ -213,7 +227,8 @@ enable_qemu () {
 }
 
 enable_autospawn() {
-    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket && return
+    has_user_pulseaudio && return
+    test -x /usr/bin/pulseaudio || return
     echo "Enabling PulseAudio autospawn..."
     if grep -q ^autospawn $pulse_client_conf >/dev/null 2>&1; then
 	sed -i -e "s|^autospawn.*|autospawn = yes|g" $pulse_client_conf
@@ -223,10 +238,11 @@ enable_autospawn() {
 }
 
 enable_systemd() {
-    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket || return
+    has_user_pulseaudio || return
     echo "Enabling systemd user socket..."
-    systemctl --global unmask pulseaudio.socket
-    systemctl --global unmask pulseaudio.service
+    s=$(pulseaudio_bin_name)
+    systemctl --global unmask $s.socket
+    systemctl --global unmask $s.service
 }
 
 disable_alsa() {
@@ -329,7 +345,8 @@ disable_qemu () {
 }
 
 disable_autospawn() {
-    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket && return
+    has_user_pulseaudio && return
+    test -x /usr/bin/pulseaudio || return
     echo "Disabling PulseAudio autospawn..."
     if grep -q ^autospawn $pulse_client_conf >/dev/null 2>&1; then
 	sed -i -e "s|^autospawn.*|autospawn = no|g" $pulse_client_conf
@@ -341,12 +358,13 @@ disable_autospawn() {
 }
 
 disable_systemd() {
-    test -f /etc/systemd/user/sockets.target.wants/pulseaudio.socket || return
+    has_user_pulseaudio || return
     echo "Disabling systemd user socket..."
-    systemctl --global mask pulseaudio.socket
-    systemctl --global mask pulseaudio.service
+    s=$(pulseaudio_bin_name)
+    systemctl --global mask $s.socket
+    systemctl --global mask $s.service
     # kill leftover PA processes
-    killall pulseaudio > /dev/null 2>&1
+    killall $s > /dev/null 2>&1
 }
 
 enable_all() {

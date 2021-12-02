@@ -7,4 +7,13 @@
     <comment>Submit 1.56 update</comment>
     <requestid>932842</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7176458484477736c0eae3db464f23cd</srcmd5>
+    <version>1.56.1</version>
+    <time>1638388001</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ccache on armv6, since it fails with signal 7
+</comment>
+    <requestid>934273</requestid>
+  </revision>
 </revisionlist>

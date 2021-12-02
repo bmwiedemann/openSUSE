@@ -277,4 +277,13 @@
   * Add files for samba</comment>
     <requestid>891252</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>545c965cfbb6253bf247a6aafbc8a4c1</srcmd5>
+    <version>0.0+git20211129.1b144ae</version>
+    <time>1638387975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20211129.1b144ae:
+  * Add roundcube files</comment>
+    <requestid>934610</requestid>
+  </revision>
 </revisionlist>

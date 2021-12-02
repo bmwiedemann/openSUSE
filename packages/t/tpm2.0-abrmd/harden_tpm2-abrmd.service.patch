@@ -1,0 +1,22 @@
+Index: tpm2-abrmd-2.4.0/dist/tpm2-abrmd.service.in
+===================================================================
+--- tpm2-abrmd-2.4.0.orig/dist/tpm2-abrmd.service.in
++++ tpm2-abrmd-2.4.0/dist/tpm2-abrmd.service.in
+@@ -6,6 +6,17 @@ After=dev-tpm0.device
+ Requires=dev-tpm0.device
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=read-only
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=dbus
+ BusName=com.intel.tss2.Tabrmd
+ ExecStart=@SBINDIR@/tpm2-abrmd

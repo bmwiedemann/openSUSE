@@ -125,4 +125,12 @@
     <comment>New stable rel (forwarded request 853752 from iznogood)</comment>
     <requestid>853786</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a847448650452c27086ed4c9777b5868</srcmd5>
+    <version>4.4.1</version>
+    <time>1638310552</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 934222 from iznogood)</comment>
+    <requestid>934575</requestid>
+  </revision>
 </revisionlist>

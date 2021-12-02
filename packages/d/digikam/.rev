@@ -1684,4 +1684,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
     <comment>- Fix the libdigikamcore runtime dependency (boo#1189905)</comment>
     <requestid>914734</requestid>
   </revision>
+  <revision rev="200" vrev="4">
+    <srcmd5>a298777a3b58f8b61a5901fb124754ad</srcmd5>
+    <version>7.3.0</version>
+    <time>1638388048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934981</requestid>
+  </revision>
 </revisionlist>

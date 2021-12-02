@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 30 13:36:54 UTC 2021 - Phil Regier <phil.regier@suse.com>
+
+- updated to release version 3.8.5 which fixes CVE-2021-41190
+  * Building Singularity from source requires go >=1.16. We now aim
+    to support the two most recent stable versions of Go. This
+    corresponds to the Go Release Maintenance Policy
+ 
+- Bug fixes
+  * Sourcing a script based on PATH is now permitted, fixing a
+    regression introduced in 3.6.0.
+  * Environment variables in container definition files are
+    properly scoped, fixing a regression introduced in 3.8.0.
+
+-------------------------------------------------------------------
 Thu Nov 11 08:41:37 UTC 2021 - Christian Goll <cgoll@suse.com>
 
-- updated to bug fix relase 3.8.4 with following fix:
+- updated to bug fix release 3.8.4 with following fix:
   * Fix the oras contexts to avoid hangs upon failed pushes to 
     Harbor registry.
 

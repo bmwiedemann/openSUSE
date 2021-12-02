@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global selinuxtype targeted
 %global modulename tabrmd
 Name:           tpm2.0-abrmd
@@ -26,6 +27,7 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-abrmd
 Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz
 Source1:        tpm2.0-abrmd.rpmlintrc
+Patch0:         harden_tpm2-abrmd.service.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  checkpolicy
@@ -33,11 +35,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  policycoreutils
+BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(tss2-sys)
-BuildRequires:  selinux-policy-devel
 # due to %%selinux_requires
 BuildRequires:  pkgconfig(systemd)
 #
@@ -90,7 +92,7 @@ use with the SAPI library (libtss2-sys) like any other TCTI.
 %postun -n libtss2-tcti-tabrmd0 -p /sbin/ldconfig
 
 %prep
-%autosetup -n tpm2-abrmd-%{version}
+%autosetup -n tpm2-abrmd-%{version} -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE"

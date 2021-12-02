@@ -19,14 +19,12 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define app_id org.freedesktop.ryuukyu.Helvum
 Name:           helvum
-Version:        0.3.1~git0.958fa15
+Version:        0.3.2
 Release:        0
 Summary:        A GTK patchbay for pipewire
 License:        (Apache-2.0 OR BSL-1.0) AND GPL-3.0-only AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
 URL:            https://gitlab.freedesktop.org/ryuukyu/helvum
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
-Source2:        cargo_config
+Source:         https://gitlab.freedesktop.org/ryuukyu/helvum/uploads/e20c0a2ade61f00e01eaa28d83b644ec/%{name}-%{version}.tar.xz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  gtk4-devel
@@ -37,9 +35,7 @@ ExcludeArch:    s390 s390x ppc ppc64 ppc64le %{ix86}
 Helvum is a GTK-based patchbay for pipewire, inspired by the JACK tool catia.
 
 %prep
-%setup -qa1
-mkdir .cargo
-cp %{SOURCE2} .cargo/config
+%setup -q
 
 %build
 RUSTFLAGS=%{rustflags} cargo build --release

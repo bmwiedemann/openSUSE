@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 25 20:42:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused libidl BuildRequires, just own the dir in filelist.
+
+-------------------------------------------------------------------
 Thu Jun 11 23:04:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.2.4:

@@ -234,4 +234,12 @@
     <comment>- Update to release 11.6.0</comment>
     <requestid>917059</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>18ea9c026011796205c7bff125a6f6d2</srcmd5>
+    <version>11.7.1</version>
+    <time>1638388000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.7.1</comment>
+    <requestid>934255</requestid>
+  </revision>
 </revisionlist>

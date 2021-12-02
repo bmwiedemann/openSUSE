@@ -1,9 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct 10 07:26:11 UTC 2021 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.2:
+  * Racket CS improved the performance of large-integer arithmetic.
+  * Racket has improved support for layered and tethered installation.
+  * Racket CS supports nonatomic allocation via ffi/unsafe.
+  * Cross-compilation works fully with the raco cross tool, which
+    is distributed separately as the “raco-cross” package.
+  * DrRacket has performance improvements when editing files with
+    picts containing large bitmaps.
+  * Typed Racket more consistently refines field types of
+    non-polymorphic structs.
+  * Printing of values is unified across the teaching language
+    implementations and the stepper.
+- Rebase racket-doc.patch
+
+-------------------------------------------------------------------
 Wed Jun 16 07:26:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Fix for bug boo#1187288
   * Do not remove pre-compiled and compresse object files (*.zo) as
-    with 8.1 those are mandatory for a functional racket installation 
+    with 8.1 those are mandatory for a functional racket installation
 - Enforce the usage of the system libraries libz and liblz4
 
 -------------------------------------------------------------------
@@ -100,7 +116,7 @@ Tue Jul 16 07:38:56 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
   * The Racket web library has improved support for 307 redirects.
   * The Racket web server provides better response messages by default
     for common status codes.
-  * The `pict` library includes a `shear` function.  
+  * The `pict` library includes a `shear` function.
 - remove patches:
   * extflvector-length-inlined.patch: included in release
 - clean up spec file
@@ -133,7 +149,7 @@ Fri Mar 29 12:55:43 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 Wed Mar 27 18:12:23 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Require some missed libraries and certificates for build
-  as well as for installation even if rmplint cries 
+  as well as for installation even if rmplint cries
 - Update to racket 7.2
   * The contract system supports collapsible contracts, which avoid
     repeated wrappers in certain pathological situations. Thanks to Daniel
@@ -183,7 +199,7 @@ Wed Dec 27 08:46:28 UTC 2017 - kgronlund@suse.com
   * DrRacket’s Program Contour is significantly more efficient
   * The web-server/formlets library produces formlets that are serializable
   * The db library supports the Cassandra database
-- Ensure more system resources when building package 
+- Ensure more system resources when building package
 
 -------------------------------------------------------------------
 Sun Sep 24 21:10:21 UTC 2017 - olszewst@gmail.com
@@ -218,7 +234,7 @@ Fri Jul 29 09:00:45 UTC 2016 - jengelh@inai.de
 -------------------------------------------------------------------
 Mon Jul 25 00:10:49 UTC 2016 - kgronlund@suse.com
 
-- Update to Racket 6.6 
+- Update to Racket 6.6
 
 -------------------------------------------------------------------
 Sun Aug 11 20:59:59 UTC 2013 - schwab@suse.de
@@ -246,12 +262,12 @@ Sat Aug 10 13:58:09 UTC 2013 - toganm@opensuse.org
 Tue Jun 18 12:13:38 UTC 2013 - toganm@opensuse.org
 
 - Update to Racket v5.3.5
- 
+
   * This is a special-purpose release to match the arrival of "Realm of
     Racket" in bookstores.  Racket v.5.3.5 adds a single `realm'
     collection to the v5.3.4 release.  The new collection contains the
     source code that readers of Realm may wish to use for experiments.
- 
+
 - Add racket to the requires of webserver subpackage
 
 -------------------------------------------------------------------
@@ -259,7 +275,7 @@ Fri May 17 06:16:25 UTC 2013 - toganm@opensuse.org
 
 - Added backported patches libpn16.patch and libpng16-adjustment.patch
   correcting libpn16
-- Fix randomly generated mode 666 documentation files 
+- Fix randomly generated mode 666 documentation files
 
 -------------------------------------------------------------------
 Tue May 14 14:33:37 UTC 2013 - toganm@opensuse.org
@@ -303,7 +319,7 @@ Sat Feb 16 09:07:11 UTC 2013 - toganm@opensuse.org
   * This is a bug-fix release to address a flaw in DrRacket v5.3.2
     concerning interactions between the contour window and the syntax
     coloring.
- 
+
 
 -------------------------------------------------------------------
 Fri Feb  1 11:16:05 UTC 2013 - toganm@opensuse.org
@@ -336,8 +352,8 @@ Fri Feb  1 11:16:05 UTC 2013 - toganm@opensuse.org
   * file/untgz: added
   * file/unzip: added
   * compiler/zo-structs: generalize flonum? field to type
-    field in localref, let-one, and fun 
-  * compiler/zo-structs: added a constantness field to module-variable 
+    field in localref, let-one, and fun
+  * compiler/zo-structs: added a constantness field to module-variable
 
 -------------------------------------------------------------------
 Thu Nov  8 09:28:40 UTC 2012 - toganm@opensuse.org

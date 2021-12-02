@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 29 17:00:43 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 2.20
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.20/NEWS
+  * support MPD protocol 0.23:
+    * getvol
+    * position argument for searchadd, findadd, load and playlistadd
+    * whence argument for addid and add
+    * range argument for playlistdelete
+  * support MPD protocol 0.22.4: binarylimit
+  * support MPD protocol 0.22.0: readpicture
+  * support MPD protocol 0.21.0: albumart
+  * support tags: "ComposerSort", "Ensemble", "Movement", "MovementNumber", "Location"
+  * queue: make "priority" parameter unsigned
+
+-------------------------------------------------------------------
 Mon Dec 14 14:29:40 UTC 2020 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Add patch libmpdclient-doxygen_nodatetime.patch.

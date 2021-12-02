@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Nov 28 18:58:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  - Using a combination of --live and --json wasn't flushing stdout after
+    each line resulting in buffered output if the output was being piped
+  - Image output would fail to show the last line bar graph in list outputs
+    if EstimateStyle was 0, BarColumnShowsRate was 1 and the last line had a
+    higher traffic rate than other lines
+  - Image output didn't correctly horizontally align the "no data available"
+    message in 5 minute graph depending on the width of the image
+  - Image output related configuration warnings could get shown when image
+    output wasn't being used
+  - Warnings of mismatches between image output and data retention
+    configuration didn't provide relevant details for solving the issues
+  - BandwidthDetection was being used for tun interfaces even when the
+    Linux kernel had the information hardcoded to 10 Mbit regardless of the
+    used real interface, interface specific MaxBW will now be used instead
+    or MaxBandwidth as fallback
+  - Configured interface specific MaxBW values were getting overridden by
+    BandwidthDetection when something could be detected
+  - Image output horizontal rx/tx bars often had one pixel too much width in
+    the tx section resulting in slightly wrong ratio getting shown
+  - Top days list wasn't always sorting entries with exactly the same traffic
+    sum using ascending date
+  - 64bitInterfaceCounters with value -2 always assumed 32-bit on Linux
+    systems until a 64-bit value was seen if kernel headers weren't available
+    when binaries were built
+  - Add the possibility of specifying an interface without using the
+    -i / --iface options (vnstat and vnstati)
+  - The daemon can discover added interfaces from the database without
+    requiring a restart, configurable with option RescanDatabaseOnSave
+  - Add configuration option UseUTC for using UTC as timezone for database
+    entries instead of following the system timezone configuration
+  - --iflist uses user configured interface specific MaxBW values in the
+    output when available instead of showing only the kernel provided
+    information when detected
+  - Add configuration option AlwaysAddNewInterfaces to expose the daemon
+    --alwaysadd command line option which gains an optional mode parameter
+  - Image output uses LibGD filled arc bug workaround only for LibGD
+    versions that are known to be broken
+  - Image output example cgi (examples/vnstat.cgi) improvements
+    - Automatically lists all monitored interfaces instead of requiring the
+      list to be filled manually, server name in page title comes from
+      hostname command by default
+    - Provides links for most available images to more detailed or longer
+      versions of each image
+    - Allows direct interface specific page access with /interfacename suffix
+      for the cgi if the used httpd supports PATH_INFO
+    - Page auto refresh can be enabled with configurable interval 
+
+-------------------------------------------------------------------
 Sun Jun  6 10:45:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Install examples/systemd/simple/vnstat.service

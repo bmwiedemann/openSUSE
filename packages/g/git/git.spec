@@ -36,12 +36,12 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.34.0
+Version:        2.34.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
-URL:            http://git-scm.com
+URL:            https://git-scm.com/
 Source0:        https://www.kernel.org/pub/software/scm/git/%{name}-%{version}.tar.xz
 Source1:        apache2-gitweb.conf
 Source2:        sysconfig.git-daemon
@@ -88,6 +88,7 @@ Recommends:     gitk
 Suggests:       git-daemon
 Suggests:       git-web
 %if 0%{?suse_version} >= 1500
+BuildRequires:  openssh-clients
 BuildRequires:  sysuser-tools
 %endif
 %if %{with docs}

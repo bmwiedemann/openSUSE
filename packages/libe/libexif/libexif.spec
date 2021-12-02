@@ -17,7 +17,7 @@
 
 
 Name:           libexif
-Version:        0.6.23
+Version:        0.6.24
 Release:        0
 URL:            http://libexif.sourceforge.net
 Summary:        An EXIF Tag Parsing Library for Digital Cameras

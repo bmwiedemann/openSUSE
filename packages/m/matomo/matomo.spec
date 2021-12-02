@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        4.5.0
+Version:        4.6.1
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -118,12 +118,12 @@ sed -i '/enable_auto_update/s/1$/0/' config/global.ini.php
 #
 # Fix integrity check triggered from fix of rpmlint errors.
 # Drop moved files
-for i in CHANGELOG.md CONTRIBUTING.md PRIVACY.md README.md SECURITY.md LEGALNOTICE LICENSE 'misc\/cron\/.htaccess' 'misc\/How to install Matomo.html' 'vendor\/tecnickcom\/tcpdf\/tools\/.htaccess' 'vendor\/twig\/twig\/ext\/twig\/php_twig.h' 'vendor\/twig\/twig\/ext\/twig\/twig.c' 'js\/piwik.js.orig'
+for i in CHANGELOG.md CONTRIBUTING.md PRIVACY.md README.md SECURITY.md LEGALNOTICE LICENSE 'misc\/cron\/.htaccess' 'misc\/How to install Matomo.html' 'vendor\/tecnickcom\/tcpdf\/tools\/.htaccess' 'vendor\/twig\/twig\/ext\/twig\/php_twig.h' 'vendor\/twig\/twig\/ext\/twig\/twig.c' 'js\/piwik.js.orig' '.eslintignore' '.eslintrc.js' '.browserslistrc' 'vendor\/lox\/xhprof\/extension\/php_xhprof.h' 'vendor\/lox\/xhprof\/extension\/xhprof.c'
 do
   sed -i "/\W\"${i}\"\W/d" config/manifest.inc.php
 done
 # Insert new hashes for chanded files
-for file in console 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php' 'plugins/CoreUpdater/Commands/Update.php' 'vendor/matomo/matomo-php-tracker/run_tests.sh' 'vendor/wikimedia/less.php/bin/lessc' 'misc/log-analytics/import_logs.py'
+for file in console 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php' 'plugins/CoreUpdater/Commands/Update.php' 'vendor/matomo/matomo-php-tracker/run_tests.sh' 'vendor/wikimedia/less.php/bin/lessc' 'vendor/lox/xhprof/scripts/xhprofile.php' 'misc/log-analytics/import_logs.py' 'core/CliMulti.php'
 do
   size=$(ls -l $file | awk '{ print $5 }')
   checksum=$(md5sum $file  | awk '{ print $1 }')
@@ -235,12 +235,10 @@ fi
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/console
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/cron/archive.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/log-analytics/import_logs.py
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/composer/clean-xhprof.sh
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/composer/build-xhprof.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/twig/twig/drupal_test.sh
+%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/lox/xhprof/scripts/xhprofile.php
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/matomo/matomo-php-tracker/run_tests.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/wikimedia/less.php/bin/lessc
 %{apache_serverroot}/%{name}/*

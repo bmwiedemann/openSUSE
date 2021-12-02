@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 29 23:43:53 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update smartmontools-drivedb.h to the latest version from the
+  upstream branch RELEASE_7_2_DRIVEDB.
+
+-------------------------------------------------------------------
 Wed Nov 17 10:18:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

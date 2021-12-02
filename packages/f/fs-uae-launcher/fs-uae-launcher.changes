@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 22 08:53:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.63
+  * Removed cacert.pem (should be handled by certifi package now).
+  * Launcher settings plugins page did not respect new FS-UAE/System directory.
+  * Remove empty "Directories" settings page.
+  * Fix disappearing configs when base_dir is specified with a trailing slash.
+  * Prefer $HOME/FS-UAE if it exists, otherwise use $DOCUMENTS/FS-UAE.
+  * Added lots of game controller configs.
+  * Support ~/ when  overriding base_dir in config file + create dir if needed.
+  * Fix layout issues caused by floats not being acceptedby pyqt5 any more.
+  * Fix loading WHDLoad .lha archives on Windows.
+  * Some changes to how/where plugins are found.
+  * Build system update.
+  * Official builds created with pyinstaller.
+  * Better support for High-DPI displays in Windows.
+
+-------------------------------------------------------------------
+Thu Nov 11 12:28:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.42
+  * Remove embedded copy of PyOpenGL
+- Add python3-opengl to Requires
+- Switch source tarball format to xz
+
+-------------------------------------------------------------------
 Sat Apr 25 05:58:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.0.5

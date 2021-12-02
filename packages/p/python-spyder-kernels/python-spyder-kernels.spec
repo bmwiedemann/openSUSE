@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-spyder-kernels
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -28,8 +28,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
 Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM spyder-kernels-pr328-unpin_jupyter-client.patch -- gh#spyder-ide/spyder-kernels#328
-Patch0:         https://github.com/spyder-ide/spyder-kernels/pull/328.patch#/spyder-kernels-pr328-unpin_jupyter-client.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

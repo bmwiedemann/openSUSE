@@ -110,6 +110,7 @@ Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-4-rpmlintrc
 Source4:        enable_decoders
 Source5:        enable_encoders
+Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-4.keyring
 Source99:       baselibs.conf
 Patch1:         ffmpeg-arm6l.diff
 Patch2:         ffmpeg-new-coder-errors.diff

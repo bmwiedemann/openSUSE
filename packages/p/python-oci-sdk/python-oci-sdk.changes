@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Nov 29 12:50:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.51.0
+  * Support for getting subnet topology in the Networking service
+  * Support for encrypted FastConnect resources in the Networking service
+  * Support for performance and high availability, as well as recommendation
+    metrics, in the Optimizer service
+  * Support for optional TDE wallet passwords in the Database service
+  * Support for Object Storage service integration in the Big Data service
+  * Support for circuit breakers enabled by default in all services except
+    Streaming and Compute
+  * Support for retries enabled by default in all operations of the Functions
+    and Roving Edge services, and in some operations of the Streaming service.
+- from version 2.50.0
+  * Support for drill down metadata in the Management Dashboard service
+  * Support for operator access control on dedicated autonomous databases
+    in the Operator Access Control service
+  * Property `resource_type` and `is_enforced_always` from model
+    `CreateOperatorControlAssignmentDetails` changed from optional
+    to required in the Operator Access Control service
+  * Property `operator_control_name`, `approver_groups_list` and
+    `is_fully_pre_approved` from model `UpdateOperatorControlDetails`
+    changed from optional to required in the Operator Access Control
+    service
+  * Property `is_enforced_always` from model `UpdateOperatorControlAssignmentDetails`
+    changed from optional to required in the Operator Access Control service
+  * Property `approver_groups_list` and `is_fully_pre_approved` from model
+    `CreateOperatorControlDetails` changed from optional to required in the
+    Operator Access Control service
+  * Data type for response of operation `create_operator_control_assignment`
+    changed to `oci.operator_access_control.models.OperatorControlAssignment`
+    in the Operator Access Control service
+- from version 2.49.1
+  * Support for the Database Tools service
+  * Support for scan listener port TCP and TCP SSL on cloud VM clusters
+    in the Database service
+  * Support for domains in the Identity service
+  * Support for redeemable users and support rewards in the Usage service
+  * Support for calling Oracle Cloud Infrastructure services in the
+    ap-singapore-1 and eu-marseille-1 regions
+  * Endpoint for Identity service changed to include `.oci` subdomain
+- from version 2.49.0
+  * Support for the Source Code Management service
+  * Support for the Build service
+  * Support for the Certificates service
+  * Support to create child tenancies in an organization and manage
+    subscriptions in the Organizations service
+  * Support for Certificates service integration in the Load Balancing service
+  * Support for creating hosts in specific availability domains in the
+    VMWare Solution service
+  * Support for user-defined functions and libraries, as well as scheduling
+    and orchestration, in the Data Integration service
+  * Support for EM-managed Exadatas and EM-managed hosts in the Operations
+    Insights service
+  * Models `ComputeInstanceGroupBlueGreenDeployStageExecutionProgress`,
+    `ComputeInstanceGroupBlueGreenTrafficShiftDeployStageExecutionProgress`,
+    `ComputeInstanceGroupCanaryApprovalDeployStageExecutionProgress`,
+    `ComputeInstanceGroupCanaryDeployStageExecutionProgress`,
+    `ComputeInstanceGroupCanaryTrafficShiftDeployStageExecutionProgress`,
+    `RunPipelineDeployStageExecutionProgress`and
+    `RunValidationTestOnComputeInstanceDeployStageExecutionProgress`
+    were removed from the DevOps service.
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+- Relax version requirements in BuildRequires and Requires for
+  python-crypography, python-pyOpenSSL and python-configparser
+
+-------------------------------------------------------------------
 Tue Oct 26 09:41:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.48.0

@@ -17,16 +17,13 @@
 
 
 Name:           youtube-dl
-Version:        2021.10.22
+Version:        2021.12.01
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
-# PATCH-FIX-UPSTREAM ceskatelevize_fix_POST_request.patch gh#ytdl-org/youtube-dl#30154 mcepl@suse.com
-# fix POST request url to avoid redirection
-Patch0:         ceskatelevize_fix_POST_request.patch
 BuildRequires:  make >= 4
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml

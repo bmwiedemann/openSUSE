@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 29 15:46:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Removed
+  * PrivateDevices=true
+  * ProtectClock=true
+  * RestrictRealtime=true
+  from munin-node.service (bsc#1193118)
+
+-------------------------------------------------------------------
 Thu Oct  7 10:26:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

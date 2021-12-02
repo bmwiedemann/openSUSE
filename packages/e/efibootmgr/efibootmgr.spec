@@ -1,7 +1,7 @@
 #
 # spec file for package efibootmgr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           efibootmgr
-Version:        14
+Version:        17
 Release:        0
 Summary:        EFI Boot Manager
 License:        GPL-2.0-or-later
 Group:          System/Boot
-Url:            https://github.com/rhinstaller/efibootmgr
-Source:         https://github.com/rhinstaller/efibootmgr/releases/download/14/efibootmgr-14.tar.bz2
-Patch1:         0001-Don-t-use-fshort-wchar-when-building-63.patch
-Patch2:         0002-Remove-extra-const-keywords-gcc-7-gripes-about.patch
-Patch3:         0003-Add-support-for-parsing-optional-data-as-ucs2.patch
-Patch4:         %{name}-derhat.diff
-Patch5:         MARM-sanitize-set_mirror.diff
-Patch6:         %{name}-delete-multiple.diff
-BuildRequires:  efivar-devel >= 31
-BuildRequires:  pciutils-devel
-BuildRequires:  pkg-config
-BuildRequires:  popt-devel
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/rhinstaller/efibootmgr
+Source:         https://github.com/rhboot/efibootmgr/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         %{name}-delete-multiple.diff
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(efiboot) >= 31
+BuildRequires:  pkgconfig(efivar) >= 31
+BuildRequires:  pkgconfig(libpci)
+BuildRequires:  pkgconfig(popt)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The EFI Boot Manager allows the user to edit the Intel Extensible
@@ -44,15 +39,13 @@ information about the EFI can be found at
 <http://developer.intel.com/technology/efi/efi.htm>.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 
 %build
+# removing hotfix function declaration:
+# https://github.com/rhboot/efibootmgr/issues/128
+sed -e '/extern int efi_set_verbose/d' -i "src/efibootmgr.c"
+
 LOADER="grub.efi"  # default loader
 [ "$RPM_ARCH" != ia64 ] || LOADER="elilo.efi"  # except Itanium
 
@@ -62,14 +55,19 @@ case "%{_repository}" in
 (SUSE*|SLE*)  VENDOR="SUSE";;
 (*)           VENDOR="linux";;
 esac
-make %{?_smp_mflags} CFLAGS="%{optflags} -flto -fPIE -pie" \
-	OS_VENDOR="$VENDOR" EFI_LOADER="$LOADER"
+%make_build CFLAGS="%{optflags} -flto -fPIE -pie" \
+	OS_VENDOR="$VENDOR" EFI_LOADER="$LOADER" EFIDIR="$VENDOR"
 
 %install
-make DESTDIR=%{buildroot} sbindir=%{_sbindir} install
+case "%{_repository}" in
+(openSUSE*)   VENDOR="openSUSE";;
+(SLE_11_SP*)  VENDOR="SuSE"     LOADER="elilo.efi";;
+(SUSE*|SLE*)  VENDOR="SUSE";;
+(*)           VENDOR="linux";;
+esac
+make DESTDIR=%{buildroot} sbindir=%{_sbindir} EFIDIR="$VENDOR" install
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc README
 %{_sbindir}/efiboot*

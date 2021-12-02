@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 27 14:11:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.7.1
+  * Accept gl_ViewportMask in version 430 and later
+  * Remove support for double trig, pow, exp and log
+  * Add the GL_EXT_shader_integer_mix Preamble for glsl
+  * Add support for targeting Vulkan 1.2 in the C API
+
+-------------------------------------------------------------------
 Sun Sep  5 11:09:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.6.0

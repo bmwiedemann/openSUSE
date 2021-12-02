@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 18 10:44:14 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 3.3.0
+  * WHL: Wheels contain PROJ 8.2.0
+  * DEP: Minimum supported Python version 3.8 (issue #930)
+  * DEP: Minimum PROJ version 8.0 (issue #940)
+  * BUG: Prepend "Derived" to CRS type name if CRS is derived
+    (issue #932)
+  * BUG: Improved handling of inf values in
+    pyproj.transformer.Transformer.transform_bounds (pull #961)
+  * BUG: CRS CF conversions mismatch of PROJ parameters in
+    rotated pole (issue #948)
+  * ENH: Add support for transforming bounds at the poles in
+    pyproj.transformer.Transformer.transform_bounds (pull #962)
+  * ENH: Added pyproj.transformer.Transformer.source_crs &
+    pyproj.transformer.Transformer.target_crs (pull #976)
+  * ENH: Added
+    pyproj.crs.coordinate_operation.PoleRotationNetCDFCFConversion
+    (issue #948)
+  * ENH: Added pyproj.database.get_database_metadata (issue #990)
+  * ENH: Added PROJ database metadata to pyproj.show_versions
+    (issue #990)
+- Packaging: update build requirements
+
+-------------------------------------------------------------------
 Mon Sep 20 12:13:05 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to 3.2.1

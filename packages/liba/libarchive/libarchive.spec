@@ -42,6 +42,8 @@ Source2:        libarchive.keyring
 Source1000:     baselibs.conf
 Patch1:         lib-suffix.patch
 Patch2:         fix-soversion.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         fix-following-symlinks.patch
 BuildRequires:  cmake
 BuildRequires:  libacl-devel
 BuildRequires:  libbz2-devel

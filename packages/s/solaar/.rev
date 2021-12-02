@@ -191,4 +191,15 @@
 </comment>
     <requestid>927872</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>76a00e86d8f0c38a138c7d7eb23de159</srcmd5>
+    <version>1.1.0</version>
+    <time>1638203323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * https://github.com/pwr-Solaar/Solaar/blob/1.1.0/ChangeLog
+- Add missing dependency to python3-PyYAML - bso#1193123
+</comment>
+    <requestid>934539</requestid>
+  </revision>
 </revisionlist>

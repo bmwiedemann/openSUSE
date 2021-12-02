@@ -64,8 +64,8 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 21
-%define version_minor 08
-%define version_lib 25
+%define version_minor 11
+%define version_lib 27
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
 Name:           armnn%{?package_suffix}
@@ -77,14 +77,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
-Patch1:         96beb97.diff
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/548
-Patch2:         febc20f.diff
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/548
-Patch3:         e118e04.diff
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/581
-Patch4:         0011-update-doctest-for-glibc2.34.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -176,6 +168,7 @@ Requires:       %{name} = %{version}
 Requires:       libarmnn%{version_lib}%{?package_suffix} = %{version}
 Requires:       libarmnnBasePipeServer%{version_lib}%{?package_suffix} = %{version}
 Requires:       libtimelineDecoder%{version_lib}%{?package_suffix} = %{version}
+Requires:       libtimelineDecoderJson%{version_lib}%{?package_suffix} = %{version}
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 %if "%{target}" == "opencl"
 Conflicts:      armnn-devel
@@ -354,15 +347,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
-%if %{with armnn_flatbuffers}
-%if %{pkg_vcmp tensorflow2-lite-devel >= 2.4}
-# This patch breaks build on TF < 2.4
-%patch1 -p1
-%endif
-%endif
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -396,6 +380,7 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
   -DFLATC_DIR=%{_bindir} \
   -DFLATBUFFERS_INCLUDE_PATH=%{_includedir} \
   -DBUILD_TF_LITE_PARSER=ON \
+  -DTfLite_Schema_INCLUDE_PATH=%{_includedir}/tensorflow/lite/schema/ \
   -DTF_LITE_SCHEMA_INCLUDE_PATH=%{_includedir}/tensorflow/lite/schema/ \
 %else
   -DBUILD_ARMNN_SERIALIZER=OFF \

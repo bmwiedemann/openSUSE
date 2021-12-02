@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 29 03:29:00 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211129.a8e22584:
+  * Fix: crm: To avoid the potential "permission denied" error under other users (boo#1192754)
+
+-------------------------------------------------------------------
 Fri Nov 19 13:51:48 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211119.caa0b2aa:

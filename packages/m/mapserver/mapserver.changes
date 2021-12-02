@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 11 16:38:03 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+
+- update to release 7.6.4
+  * PostGIS: fix ST_Intersects() with collections with PostGIS < 2.5. 
+    Fixes https://github.com/MapServer/MapServer/pull/6355#issuecomment-877290417 (Even Rouault) : 3e42e35
+  * Check if sizeunits is not set to pixels (Patrik Sylve) : 3688004
+  * Change legend symbol scale factor when SIZEUNITS is set to METERS (Patrik Sylve) : 39a4ead
+  * spatialindex for sqlite sources in filter (Wouter Visscher) : 955d14e
+  * Make sure requested class with mode=legendicon is not negative. ( #6357 ) (Steve Lime) : 0901b57
+  * Updates to CONTRIBUTING.md (Jeff McKenna) : ee6297a
+  * PostGIS: fix ST_Intersects() with bounding box that is a point (follow-up of fixes #6181 , fixes #6230 ) 
+    (fixes https://github.com/MapServer/MapServer/pull/6347#issuecomment-870002856) (Even Rouault) : 44d5d9c
+  * WMS: make attribute color binding work with FILTER vendor parameter (fixes #6200 ) (Even Rouault) : 1a98ac7
+  * msQueryByFeatures(): avoid potential segfault when reslut set is empty (Even Rouault) : 98ad83a
+  * PostGIS: use ST_Intersects instead of && for bounding box (fixes #6181 , fixes #6230 ) (Even Rouault) : e2ef155
+  * check_single_font(): use quotation mark when msGetGlyphIndex() fails to retrieve the glyph (Even Rouault) : 53ee29e
+  * msGetGlyphByIndex() / msGetGlyphOutline(): tweak debug/error messages (Even Rouault) : 0bbf943
+  * When a font is missing a glyph we try to fallback to using a question mark (Krister Wicksell) : cf4756e
+  * WFS: fix paging with GPKG/Spatialite datasources and non-point geometries (fixes #6325 ) (Even Rouault) : ce8dc4d
+  * Fix querymap failure for polygon layers with labels only (no styles) ( #6262 ) (Tamas Szekeres) : 782ee8b
+  * mapxbase: validate nHeadLen (Max Kellermann) : ee5d5de
+  * mapshape, mapxbase: fix several memory leaks in error code paths (Max Kellermann) : 5e4c504
+  * mapshape: validate numshapes (Max Kellermann) : b5c0e29
+  * mapshape: remove useless null terminator (Max Kellermann) : 9755395
+
+-------------------------------------------------------------------
 Mon May 31 18:33:59 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 7.6.3

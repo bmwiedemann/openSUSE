@@ -604,4 +604,12 @@
   * 0002-Fix-build-with-newer-Gwenhywfar-versions.patch</comment>
     <requestid>923010</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>9040590fb4f5cf3c7b2cd75378bb74d5</srcmd5>
+    <version>5.1.2</version>
+    <time>1638388028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934835</requestid>
+  </revision>
 </revisionlist>

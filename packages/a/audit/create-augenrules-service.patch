@@ -1,10 +1,11 @@
+Index: audit-3.0.6/init.d/augenrules.service
+===================================================================
 --- /dev/null
-+++ b/init.d/augenrules.service
-@@ -0,0 +1,33 @@
++++ audit-3.0.6/init.d/augenrules.service
+@@ -0,0 +1,29 @@
 +[Unit]
 +Description=auditd rules generation
 +After=auditd.service
-+PartOf=auditd.service
 +Documentation=man:augenrules(8)
 +
 +[Service]
@@ -31,12 +32,19 @@
 +ProtectKernelTunables=true
 +ProtectKernelLogs=true
 +ReadWritePaths=/etc/audit
-+
-+[Install]
-+WantedBy=multi-user.target
---- a/init.d/auditd.service
-+++ b/init.d/auditd.service
-@@ -18,10 +18,8 @@ Documentation=man:auditd(8) https://gith
+Index: audit-3.0.6/init.d/auditd.service
+===================================================================
+--- audit-3.0.6.orig/init.d/auditd.service
++++ audit-3.0.6/init.d/auditd.service
+@@ -13,15 +13,16 @@ Before=sysinit.target shutdown.target
+ Conflicts=shutdown.target
+ ConditionKernelCommandLine=!audit=0
+ Documentation=man:auditd(8) https://github.com/linux-audit/audit-documentation
++Requires=augenrules.service
++# This unit clears rules on stop, so make sure that augenrules runs again
++PropagatesStopTo=augenrules.service
+ 
+ [Service]
  Type=forking
  PIDFile=/run/auditd.pid
  ExecStart=/sbin/auditd
@@ -45,11 +53,11 @@
 -## NOTE: augenrules expect any rules to be added to /etc/audit/rules.d/
 -ExecStartPost=-/sbin/augenrules --load
 +## To not use augenrules: copy this file to /etc/systemd/system/auditd.service,
-+## uncomment the next line, and run "systemctl disable --now augenrules.service".
++## uncomment the next line, and comment the Requires=augenrules.service above.
  #ExecStartPost=-/sbin/auditctl -R /etc/audit/audit.rules
- # By default we don't clear the rules on exit. To enable this, uncomment
+ # By default we clear the rules on exit. To disable this, comment
  # the next line after copying the file to /etc/systemd/system/auditd.service
-@@ -42,7 +40,6 @@ ProtectClock=true
+@@ -45,7 +46,6 @@ ProtectClock=true
  ProtectKernelTunables=true
  ProtectKernelLogs=true
  # end of automatic additions 
@@ -57,8 +65,10 @@
  
  [Install]
  WantedBy=multi-user.target
---- a/init.d/Makefile.am
-+++ b/init.d/Makefile.am
+Index: audit-3.0.6/init.d/Makefile.am
+===================================================================
+--- audit-3.0.6.orig/init.d/Makefile.am
++++ audit-3.0.6/init.d/Makefile.am
 @@ -26,7 +26,7 @@ EXTRA_DIST = auditd.init auditd.service
  	auditd.cron libaudit.conf auditd.condrestart \
  	auditd.reload auditd.restart auditd.resume \

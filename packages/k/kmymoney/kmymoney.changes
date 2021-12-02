@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 30 16:34:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-compile-for-Newer-Akonadi-Builds.patch to fix build with
+  Akonadi 21.12
+
+-------------------------------------------------------------------
 Mon Oct  4 11:45:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to fix build with newer gwenhywfar versions:

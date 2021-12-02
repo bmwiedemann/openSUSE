@@ -17,7 +17,7 @@
 
 
 Name:           gnu-efi
-Version:        3.0.13
+Version:        3.0.14
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,7 +27,7 @@ Source:         https://download.sourceforge.net/project/gnu-efi/gnu-efi-%{versi
 Source1:        %{name}-rpmlintrc
 Patch1:         gnu-efi-bsc1182057-support-sbat-section.patch
 BuildRequires:  kernel-source
-ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm}
+ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm} riscv64
 
 %description
 Library to develop EFI applications for IA-64 (IPF), IA-32 (x86), x86_64,

@@ -19,13 +19,13 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        21.3.4
+Version:        21.3.5
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT
 Group:          System/Libraries
 URL:            https://github.com/intel/media-driver
-Source:         https://github.com/intel/media-driver/archive/intel-media-%{version}.tar.gz
+Source:         %{url}/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Source2:        supplements.inc
 Source3:        baselibs.conf

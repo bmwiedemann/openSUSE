@@ -1,0 +1,131 @@
+[gdb/testsuite] Add gdb.opt/break-on-_exit.exp
+
+Add a test-case to excercise the problem scenario reported in PR28527 and
+fixed in commit a50bdb99afe "[gdb/tdep, rs6000] Don't skip system call in
+skip_prologue":
+- set a breakpoint on _exit, and
+- verify that it triggers.
+
+Note that this is not a regression test for that commit.  Since the actual
+code in _exit may vary across os instances, we cannot guarantee that the
+problem will always trigger with this test-case.
+
+Rather, this test-case is a version of the original test-case
+(gdb.threads/process-dies-while-detaching.exp) that is minimal while still
+reproducing the problem reported in PR28527, in that same setting.
+
+The benefit of this test-case is that it exercise real-life code and may
+expose similar problems in other settings.  Also, it provides a much easier
+test-case to investigate in case a similar problem occurs.
+
+Tested on x86_64-linux and ppc64le-linux.
+
+---
+ gdb/testsuite/gdb.opt/break-on-_exit.c   | 26 +++++++++++++
+ gdb/testsuite/gdb.opt/break-on-_exit.exp | 66 ++++++++++++++++++++++++++++++++
+ 2 files changed, 92 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.opt/break-on-_exit.c b/gdb/testsuite/gdb.opt/break-on-_exit.c
+new file mode 100644
+index 00000000000..d8da66193a8
+--- /dev/null
++++ b/gdb/testsuite/gdb.opt/break-on-_exit.c
+@@ -0,0 +1,26 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2021 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++
++int
++main (void)
++{
++  _exit (0);
++
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.opt/break-on-_exit.exp b/gdb/testsuite/gdb.opt/break-on-_exit.exp
+new file mode 100644
+index 00000000000..38476412862
+--- /dev/null
++++ b/gdb/testsuite/gdb.opt/break-on-_exit.exp
+@@ -0,0 +1,66 @@
++# Copyright 2021 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++# Set a breakpoint on libc's _exit, and verify that it triggers.  The function
++# tends to do a syscall immediately after the prologue, and if the breakpoint is
++# set past the syscall due to faulty prologue skipping, the breakpoint will not
++# trigger.
++#
++# In particular, we're trying to excercise the instruction analysis
++# functionality of prologue skipping.  If the non-minimal symbols are
++# read for libc, then that functionality might not be used because f.i.
++# line-info is used instead.  Also, if the minimal symbols are not read
++# for libc, then the breakpoint is set on the exec-local _exit@plt instead,
++# and that functionality will also not be used.
++#
++# We may get the required setup in case of a libc with misssing separate
++# debuginfo, but we want the same effect if that debuginfo is installed.
++#
++# So, we use -readnever to read minimal symbols, but not non-miminal symbols.
++#
++# Because the code at _exit may be and usually is optimized, the test is in
++# the gdb.opt directory.
++
++standard_testfile
++
++# See if we have target board readnow.exp or similar.
++if { [lsearch -exact $GDBFLAGS -readnow] != -1 \
++	 || [lsearch -exact $GDBFLAGS --readnow] != -1 } {
++    untested "--readnever not allowed in combination with --readnow"
++    return -1
++}
++
++save_vars { GDBFLAGS } {
++    append GDBFLAGS " -readnever"
++
++    if {[prepare_for_testing "failed to prepare" $testfile $srcfile nodebug]} {
++	return -1
++    }
++}
++
++if ![runto_main] then {
++    return 0
++}
++
++gdb_breakpoint "_exit"
++
++# Give some background information about the breakpoint(s) and corresponding
++# the shared lib(s).
++gdb_test "info breakpoints"
++gdb_test "info shared"
++
++# If the skip_prologue analysis of _exit is too eager, we may not hit the
++# breakpoint.
++gdb_continue_to_breakpoint "_exit" "_exit \\(\\) .*"

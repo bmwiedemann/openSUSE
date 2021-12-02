@@ -17,7 +17,7 @@
 
 
 Name:           pngquant
-Version:        2.15.1
+Version:        2.17.0
 Release:        0
 Summary:        Tool for lossy compression of PNG images
 License:        GPL-3.0-or-later

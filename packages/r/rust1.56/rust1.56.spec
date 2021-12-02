@@ -22,6 +22,7 @@
 # even tho, the tests will require more compilation.  If we do not
 # agree on this model we can drop the _multibuild option and do the
 # %check as a part of the main spec.
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,7 +31,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 
 %global version_suffix 1.56
 %global version_current 1.56.1
@@ -227,8 +227,8 @@ BuildRequires:  ninja
 Recommends:     cargo
 
 %if %{with test}
-BuildRequires:  rust%{version_suffix} = %{version}
 BuildRequires:  cargo%{version_suffix} = %{version}
+BuildRequires:  rust%{version_suffix} = %{version}
 # Required because FileCheck
 BuildRequires:  llvm13-devel
 %endif
@@ -366,7 +366,9 @@ chmod +x library/core/src/unicode/printable.py
   %{?with_bundled_llvm: --disable-llvm-link-shared --set llvm.link-jobs=4} \
   --enable-optimize \
   %{?with_sccache: --enable-sccache} \
+%ifnarch armv6l armv6hl
   %{!?with_sccache: --enable-ccache} \
+%endif
   --disable-docs \
   --disable-compiler-docs \
   --enable-verbose-tests \

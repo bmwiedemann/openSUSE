@@ -26,7 +26,7 @@
 %define luaver 5.1
 %define luaver_nopoint 51
 Name:           neovim
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -41,9 +41,6 @@ Source99:       neovim-rpmlintrc
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
-# PATCH-FIX-UPSTREAM vim7188-fix-netrw-command.patch gh#vim/vim#4738 mcepl@suse.com
-# make gx in netrw working again
-Patch2:         vim7188-fix-netrw-command.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -82,9 +79,9 @@ BuildRequires:  lua51-devel
 # luajit implements version 5.1 of the lua language spec, so it needs the
 # compat versions of libs.
 BuildRequires:  lua51-LPeg
+BuildRequires:  libluv-devel >= %{luv_min_ver}
 BuildRequires:  lua51-bit32
 BuildRequires:  lua51-luarocks
-BuildRequires:  libluv-devel >= %{luv_min_ver}
 BuildRequires:  lua51-luv >= %{luv_min_ver}
 BuildRequires:  lua51-mpack
 Requires:       lua51-bit32
@@ -115,7 +112,6 @@ parts of Vim, without compromise, and more.
 # %%if %%{without luajit}
 %patch1 -p1
 # %%endif
-%patch2 -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')

@@ -1,7 +1,7 @@
 #
 # spec file for package jsoncpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define sover   24
+%define sover   25
 Name:           jsoncpp
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        C++ library that allows manipulating with JSON
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/open-source-parsers/jsoncpp
-Source0:        https://github.com/open-source-parsers/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/open-source-parsers/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig

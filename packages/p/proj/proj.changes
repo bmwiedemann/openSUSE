@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov 26 18:32:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update 8.2.0:
+  * Added the S2 projection (#2749)
+  * Added support for Degree Sign on input (#2791)
+  * ESRI WKT: add support for import/export of (non interrupted)
+    Goode Homolosine (#2827)
+  * Make filemanager aware of UWP Win32 API (#2831)
+  * Add proj_create_conversion_pole_rotation_netcdf_cf_convention() to
+    address netCDF datasets using a pole rotation method (#2835)
+  * Emit better debug message when a grid isn't found (#2838)
+  * Add support for GeodeticCRS using a Spherical planetocentric
+    coordinate system 
+  * PROJJSON: support additional properties allowed in id object (version,
+   authority_citation, uri) for parity with WKT2:2019 (#2850)
+  * Database layout modified to include "anchor" field to geodetic_datum and
+   vertical_datum tables, consequently database layout version is increased
+  * proj_factors(): accept P to be a projected CRS (#2868)
+  * Add IAU_2015 CRS definitions (#2876)
+  * CRS::extractGeodeticCRS(): implement for DerivedProjectedCRS (#2877)
+  * Added proj_trans_bounds() (#2882)
+  * Add fallback strategy for tinshift transform to use closest triangle for
+    points not in any (#2907)
+  * Database: update to EPSG v10.038 (#2910)
+  * Fix O(n^2) performance patterns where n is the number of steps of
+    a pipeline (#2820)
+  * Detect ESRI WKT better in certain circumstances (#2823)
+  * Fix performance issue on pipeline instanciation of huge (broken)
+    pipelines (#2824)
+
+-------------------------------------------------------------------
 Sun Oct 24 17:31:24 UTC 2021 - D. Berge <opensuse@navlost.eu>
 
 - Update to version 8.1.1 (data version: 1.7)

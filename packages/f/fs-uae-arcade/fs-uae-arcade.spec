@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae-arcade
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           fs-uae-arcade
-Version:        3.0.5
+Version:        3.1.63
 Release:        0
 Summary:        Fullscreen game browser for FS-UAE
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
-Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://fs-uae.net/stable/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       fs-uae
+Requires:       python3-opengl
 Requires:       python3-qt5
 Requires:       python3-requests
 Recommends:     python3-lhafile

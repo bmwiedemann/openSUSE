@@ -1200,4 +1200,12 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
   - Fix: Don't use 'server address' string in server list when displaying an invite code (#9615)</comment>
     <requestid>931136</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>1bfc4fdfa615b40d81d0a81a5c943d83</srcmd5>
+    <version>12.1</version>
+    <time>1638310554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934601</requestid>
+  </revision>
 </revisionlist>

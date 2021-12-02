@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  1 10:52:26 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Create _service download file due to the spec file's download
+  link becoming unreliable.
+
+-------------------------------------------------------------------
+Tue Nov 30 07:36:40 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Only recommend jack to allow pipewire jack to be installed.
+
+-------------------------------------------------------------------
 Wed Nov  3 14:16:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build for i586: one of the main dependencies, lilypond, is

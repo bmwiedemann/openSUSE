@@ -503,4 +503,14 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>913855</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>46edccd3fb9a4c89ef76676ee2080065</srcmd5>
+    <version>2.13.0</version>
+    <time>1638388046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13.0
+- Removed obsolete ignition-rpmlintrc
+</comment>
+    <requestid>934938</requestid>
+  </revision>
 </revisionlist>

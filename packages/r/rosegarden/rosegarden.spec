@@ -15,15 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define major_ver 21.06
+
 Name:           rosegarden
-Version:        %{major_ver}.1
+Version:        21.06.1
 Release:        0
-Summary:        Midi, Audio And Notation Editor
 License:        GPL-2.0-or-later
+Summary:        Midi, Audio And Notation Editor
+URL:            http://www.rosegardenmusic.com/
 Group:          Productivity/Multimedia/Sound/Midi
-URL:            https://www.rosegardenmusic.com/
-Source0:        https://sourceforge.net/projects/rosegarden/files/%{name}/%{major_ver}/%{name}-%{version}.tar.bz2
+#               https://downloads.sourceforge.net/project/rosegarden/rosegarden/21.06/rosegarden-21.06.1.tar.bz2
+Source0:        rosegarden-21.06.1.tar.xz
 Source1:        %{name}.xpm
 Source2:        %{name}.1
 # PATCH-FIX-OPENSUSE davejplater@gmail.com This patch fixes the file search paths for examples, templates and midi driver libraries.
@@ -47,10 +48,7 @@ BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  lilypond-fonts-common >= 2.20
 BuildRequires:  lirc-devel
-BuildRequires:  pkgconfig
-#BuildRequires:  pkgconfig(libxml++-2.6)
-BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
+BuildRequires:  pkg-config
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -59,17 +57,21 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+#BuildRequires:  pkgconfig(libxml++-2.6)
+BuildRequires:  shared-mime-info
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       dssi
-Requires:       jack
 Requires:       ladspa
 Requires:       ladspa-swh-plugins
 Requires:       lilypond-fonts-common >= 2.20
 Requires:       xsynth-dssi
 Recommends:     fluidsynth-dssi
+Recommends:     jack
 Recommends:     qsynth
-#Unsatisfied dependency for Factory i586
-ExcludeArch:    i586
+Icon:           rosegarden.xpm
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    i586 i686
 
 %description
 Rosegarden is a well-rounded audio and MIDI sequencer,
@@ -85,8 +87,8 @@ home recording environments.
 
 # When we build svn we need to execute bootstrap.sh
 #sh bootstrap.sh
-for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
-for i in `grep -rl "%{_bindir}/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "/usr/bin/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
 #export DEBUG_LADSPA
@@ -100,7 +102,7 @@ export CXXFLAGS="$CFLAGS"
        -DCMAKE_INSTALL_LOCALEDIR:PATH=%{_datadir}/locale/
 
 #make svnheader
-%make_build
+make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{name}/scripts
@@ -120,6 +122,9 @@ chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/README
 chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/color-list
 #chmod 644 %%{buildroot}%%{_datadir}/%%{name}/scripts/simple-makefile
 rm -f %{buildroot}%{_datadir}/%{name}/scripts/svn-to-hg-and-git.sh
+pushd %{buildroot}%{_datadir}/%{name}/scripts
+sed -i '1s/^#!.*/#!\/usr\/bin\/python/' sf2rg.py
+popd
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/pixmaps/%{name}.xpm"
 %suse_update_desktop_file %{buildroot}/%{_datadir}/applications/com.rosegardenmusic.%{name}.desktop
 #This is a man page made by help2man to satisfy factories hunger for one /usr/bin/ one man page.
@@ -128,6 +133,7 @@ install -D -m 0644 "%{SOURCE2}" "%{buildroot}%{_mandir}/man1/"
 %fdupes -s %{buildroot}%{_datadir}/
 
 %files
+%defattr(-,root,root)
 %doc AUTHORS README
 %license COPYING
 %dir %{_datadir}/metainfo

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 28 13:21:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop geoclue2-revert-2-faulty.patch: Replaced by upstream fix
+  in geoclue2-geoip-when-wifi-unavailable.patch:.
+- Add geoclue2-geoip-when-wifi-unavailable.patch: [gclue-wifi] Use
+  GeoIP when a WiFi device isn't available
+  [glfo#geoclue/geoclue#142].
+
+-------------------------------------------------------------------
 Thu Dec 31 13:10:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.5.7:

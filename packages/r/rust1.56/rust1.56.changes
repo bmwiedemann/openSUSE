@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 26 12:38:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable ccache on armv6, since it fails with signal 7
+
+-------------------------------------------------------------------
 Tue Nov 16 09:05:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update documentation to explain how to run the tests

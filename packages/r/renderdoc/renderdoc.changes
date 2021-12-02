@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 30 16:04:14 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.17
+  * Support for the new Vulkan extension VK_KHR_dynamic_rendering.
+  * The resource inspector has some sorting options now.
+  * Compute shader debugging can now be launched either by split
+    workgroup & thread ID, or by global thread ID. 
+  * The mesh viewer now allows you to select the axis convention of
+    input vertex data for e.g. Z-up instead of Y-up or
+    left/right-handed.
+
+-------------------------------------------------------------------
 Mon Oct 11 18:14:53 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.16

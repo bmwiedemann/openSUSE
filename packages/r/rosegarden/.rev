@@ -350,4 +350,15 @@ Fixes bnc#745619 (forwarded request 108469 from plater)</comment>
     <comment></comment>
     <requestid>929560</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>b49311b68e1f2f327fa603be415be5a0</srcmd5>
+    <version>21.06.1</version>
+    <time>1638388048</time>
+    <user>dimstar_suse</user>
+    <comment>Create _service download file due to the spec file's download
+  link becoming unreliable.
+Only recommend jack to allow pipewire jack to be installed.
+</comment>
+    <requestid>934968</requestid>
+  </revision>
 </revisionlist>

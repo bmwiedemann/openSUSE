@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Nov 29 21:47:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.54.4:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Use CCodeConstant for member access of constant symbol
+      . Emit constants without initializer list in defines section
+      . Add and use CCodeConstantIdentifier for accessing constants
+      . Check required length of enum type name for GType support
+      . Add missing check while overriding virtual async interface
+        methods
+      . Drop inconsistent space for ObjectType parameters
+      . Accept CCode.type attribute on parameters
+      . Fix CCodeUnaryExpression.write() for
+        PREFIX_INCREMENT/PREFIX_DECREMENT
+    - vala:
+      . Improve error message for invalid handler of dynamic signal
+      . Using SignalHandler.disconnect() is required for dynamic
+        signals
+      . Check for unavailable value-type of variable initializer
+      . Add [Profile] as known attribute for methods
+      . Report error on missing gio-2.0 package for async
+        constructors
+      . Fix signals with generic return
+      . parser: Split out Parser.parse_switch_section_statement()
+      . parser: Better handling of misplaced switch sections
+    - genie:
+      . Amend text of indent and dedent for error messages
+      . Accept INTERR token before type arguments when parsing type
+      . Properly handle plain "get" or "set" property accessors
+      . "exception" is the expected string for
+        TokenType.ERRORDOMAIN
+      . Accept accessibility/async modifiers on "construct"
+        creation methods
+    - girparser: Accept "sealed" for transformed records and
+      compact classes
+    - gtkmodule: Improve error message for invalid signal element
+      in ui-file
+    - build: Add "test-update" which passed UPDATE_EXPECTED=1 to
+      refresh c-expected
+    - tests: Rename colliding test cases to avoid conflicts
+  + Bindings:
+    - alsa: Add more API and fix a few things
+    - gnome-desktop-3.0: Some parameter fixes
+    - gstreamer: Cherry-pick bindings fixes from 0.56
+    - gstreamer-base-1.0: Some parameter fixes
+    - gtk4: Update to 4.5.0~cd9b7307
+    - pango: Cherry-pick bindings fixes from 0.56
+
+-------------------------------------------------------------------
 Sat Oct 30 10:45:12 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.54.3:

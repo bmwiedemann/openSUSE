@@ -235,4 +235,21 @@
   * Continued work on the experimental Wine/Win32 platform backend (forwarded request 925821 from ukbeast89)</comment>
     <requestid>925850</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2db02946e86ae7299a8f7df3311945ca</srcmd5>
+    <version>21.11</version>
+    <time>1638203321</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.11:
+  * GStreamer support is now deprecated.
+    Wine users should migrate to 6.20 and newer, and everyone else should move to 
+    codecs that are not patent-encumbered.
+    GStreamer support will be fully removed in the first release after Wine 7.0.
+  * Removed the C++ wrapper. Use the headers/PE binaries found in Wine 6.20 and newer.
+  * Minor fixes and cleanups found by Coverity
+  * Dont assert on WMA buffer and FAUDIO_FORMAT_EXTENSIBLE type
+  * FACT: Send FACTNOTIFICATIONTYPE_CUESTOP Notification on Cue Stop
+  * Continued work on the experimental Wine/Win32 platform backend (forwarded request 934439 from ukbeast89)</comment>
+    <requestid>934538</requestid>
+  </revision>
 </revisionlist>

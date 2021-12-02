@@ -30,6 +30,8 @@ Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/
 Patch1:         0001-add-opensuse-customizations.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-switch-to-yt-dlp.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-fix-vulkan-instance-initialization.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+

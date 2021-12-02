@@ -531,4 +531,26 @@
     <comment></comment>
     <requestid>889979</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0f7786710ef8bef51e90a595b1986e9c</srcmd5>
+    <version>7.6.0</version>
+    <time>1638388057</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.6.0
+  - Fix lower constraints
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Ussuri+ is python3 only and update python to python3
+  - Replace getargspec with getfullargspec
+  - setup.cfg: Replace dashes with underscores
+  - Support passing mTLS certificate/key to HTTPClient
+  - Changed minversion in tox to 3.18.0
+  - Set ML2/OVS backend explicitly for functional job
+  - Skip metering functional tests when metering extension is not enabled
+  - Use yaml.safe_load instead of yaml.load
+  - Add a release note on deprecation for removal of neutron CLI
+  - tests: change safe_hasattr to hasattr
+  - Set when deprecated neutron client CLI will be removed</comment>
+    <requestid>935034</requestid>
+  </revision>
 </revisionlist>

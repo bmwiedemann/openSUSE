@@ -26,10 +26,8 @@ URL:            https://github.com/OpenTTD/OpenMSX
 Source0:        https://cdn.openttd.org/openmsx-releases/%{version}/openmsx-%{version}-source.tar.xz
 BuildRequires:  python
 Requires:       openttd-data >= 1.2
+Recommends:     fluid-soundfont-gm
 BuildArch:      noarch
-%if 0%{?suse_version} || 0%{?mdkversion}
-Recommends:     timidity
-%endif
 
 %description
 OpenMSX is a base music set for OpenTTD.

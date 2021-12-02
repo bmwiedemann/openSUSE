@@ -291,4 +291,12 @@
   * Fix an HTTP/2.0 request smuggling vulnerability. [bnc#1188470]</comment>
     <requestid>910486</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>49d01b38385f117d5863e26a091c300c</srcmd5>
+    <version>6.6.1</version>
+    <time>1638388052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935002</requestid>
+  </revision>
 </revisionlist>

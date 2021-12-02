@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 27 18:07:31 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Recommend fluid-soundfont-gm instead of timidity: works more
+  natively with FluidSynth support in OpenTTD.
+
+-------------------------------------------------------------------
 Thu Oct 21 13:08:58 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - upstream update 0.4.2

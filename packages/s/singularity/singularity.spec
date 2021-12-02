@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://github.com/hpcng/singularity
@@ -37,7 +37,7 @@ BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  git
-BuildRequires:  go1.13
+BuildRequires:  go1.16
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel

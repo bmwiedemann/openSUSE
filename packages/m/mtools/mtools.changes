@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 27 13:11:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.36:
+  * Fix error status of recursive listing of empty root directory
+  * If recursive listing, also show matched files at level one
+  * Use "seekless" reads & write internally, where possible
+  * Text mode conversion refactoring
+  * Misc refactoring
+- remove mtools-aliasing.diff (obsolete)
+ 
+-------------------------------------------------------------------
 Sat Aug  7 08:06:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.35:

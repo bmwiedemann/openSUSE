@@ -16,25 +16,27 @@
 #
 
 
+%define rcver_upstream     1.0.0-rc1
+
 Name:           siril
-Version:        0.99.10.1
+Version:        1.0.0~rc1
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
-Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
+Source:         https://gitlab.com/free-astro/siril/-/archive/%{rcver_upstream}/siril-%{rcver_upstream}.tar.bz2#/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  meson
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
-BuildRequires:  pkgconfig(exiv2)
+BuildRequires:  pkgconfig(exiv2) >= 0.25
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.17.0
-BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.6
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil) >= 55.20
@@ -46,14 +48,10 @@ BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(opencv4) >= 4.4.0
 BuildRequires:  pkgconfig(rtprocess)
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(wcslib)
-%if 0%{?suse_version} < 1550
-BuildRequires:  pkgconfig(opencv)
-%else
-BuildRequires:  pkgconfig(opencv4)
-%endif
 
 %description
 Siril is meant to be Iris for Linux (sirI-L). It is an astronomical image
@@ -61,7 +59,7 @@ processing tool, able to convert, pre-process images, help aligning them
 automatically or manually, stack them and enhance final images.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{rcver_upstream}
 
 %build
 # override build directory, the default "build" is a regular source directory

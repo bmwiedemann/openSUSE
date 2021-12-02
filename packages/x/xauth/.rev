@@ -106,4 +106,14 @@
     <comment></comment>
     <requestid>879245</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de4caa4237e9a4021c019ee37d5394c0</srcmd5>
+    <version>1.1.1</version>
+    <time>1638388016</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.1
+  * This is a minor bugfix release, including fixes for reported
+    crashes.</comment>
+    <requestid>934583</requestid>
+  </revision>
 </revisionlist>

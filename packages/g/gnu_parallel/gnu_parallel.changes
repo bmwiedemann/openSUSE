@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 27 12:51:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211122:
+  * Bug fixes and man page updates.
+  * Don't postpone output until $jobslots jobs have been started.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Fri Oct  8 11:06:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210922

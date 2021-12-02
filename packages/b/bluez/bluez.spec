@@ -53,6 +53,9 @@ Patch6:         0002-Use-g_memdup2-everywhere.patch
 #
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688
 Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
+#
+# PATCH-FIX-UPSTREAM 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch -- obex: Use GLib helper function to manipulate paths
+Patch11:        https://src.fedoraproject.org/rpms/bluez/raw/rawhide/f/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
@@ -184,15 +187,20 @@ Note that this package will go away before end of 2020, change your code
 to use the modern tools instead.
 %endif
 
+%package obexd
+Summary:        Object Exchange daemon for sharing content
+License:        GPL-2.0-or-later
+Group:          Hardware/Mobile
+Requires:       bluez = %{version}
+
+%description obexd
+Object Exchange daemon for sharing content.
+
 %prep
 %setup -q
 %autopatch -p1
 mkdir dbus-apis
 cp -a doc/*.txt dbus-apis/
-# FIXME: Change the dbus service to be a real service, not systemd launched
-sed -i "s:Exec=/bin/false:Exec=%{_libexecdir}/bluetooth/obexd:g" obexd/src/org.bluez.obex.service
-sed -i "/SystemdService=.*/d" obexd/src/org.bluez.obex.service
-# END FIXME
 
 # for auto-enable subpackage
 sed -i '/^#AutoEnable=false/aAutoEnable=true' src/main.conf
@@ -241,10 +249,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 install --mode=0644 -D %{SOURCE7} %{buildroot}/%{_sysconfdir}/modprobe.d/50-bluetooth.conf
 # no idea why this is suddenly necessary...
 install --mode 0755 -d %{buildroot}%{_localstatedir}/lib/bluetooth
-
-# FIXME: Do not delete the systemd service once we support systemd user/session services
-rm %{buildroot}%{_userunitdir}/obex.service
-# end FIXME
 
 ## same as in fedora...
 # "make install" fails to install gatttool, used with Bluetooth Low Energy
@@ -318,6 +322,18 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %post -n libbluetooth3 -p /sbin/ldconfig
 %postun -n libbluetooth3 -p /sbin/ldconfig
 
+%pre obexd
+%systemd_user_pre obex.service
+
+%post obexd
+%systemd_user_post obex.service
+
+%preun obexd
+%systemd_user_preun obex.service
+
+%postun obexd
+%systemd_user_postun obex.service
+
 %files
 %doc AUTHORS ChangeLog README dbus-apis src/main.conf
 %if %{with mesh}
@@ -339,7 +355,6 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %{_bindir}/mesh-cfgtest
 %{_mandir}/man8/bluetooth-meshd.8%{?ext_man}
 %endif
-%{_libexecdir}/bluetooth/obexd
 %{_bindir}/bluetoothctl
 %{_bindir}/btmon
 %if %{with mesh}
@@ -364,10 +379,14 @@ touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %{_unitdir}/bluetooth-mesh.service
 %endif
 %{_datadir}/dbus-1/system-services/org.bluez.service
-%{_datadir}/dbus-1/services/org.bluez.obex.service
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system-services/org.bluez.mesh.service
 %{_datadir}/zsh/site-functions/_bluetoothctl
+
+%files obexd
+%{_libexecdir}/bluetooth/obexd
+%{_datadir}/dbus-1/services/org.bluez.obex.service
+%{_userunitdir}/obex.service
 
 %if %{with bluez_deprecated}
 %files deprecated

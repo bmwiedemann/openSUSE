@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Wed Dec  1 06:21:11 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.1
+  - In this release there is no code change but a change to the
+    "Manifest File integrity list" to prevent a warning in the
+    System check for some users.
+
+-------------------------------------------------------------------
+Tue Nov 30 08:42:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.0
+  * matomo-org/matomo
+    - #6784 Dashboard shows proportional evolution comparison for incomplete periods (rather than absolute values)
+    - #3883 Row Evolution, Support Per-Goals and Ecommerce metrics: conversions, conversion rate, revenue and total revenue
+    - #6032 Transitions reports: export full data as XML/JSON
+    - #10291 Show difference in graphs for data of “unfinished periods” and “complete periods”
+    - #14370 Remember “Rows to display” user preference for Evolution graphs
+    - #17976 Scheduled tasks should not launch archiving
+    - #8444 Ensure that the archive algorithm cannot be triggered multiple times for a same site/period/segment
+    - #11627 JavaScript Tracker: Add possibility to set URL parameters to ignore
+    - #18186 Improve in-app feedback mechanism to gain insight from users about pain points
+    - #18036 Optimise ecommerce life time metric query
+    - #18079 Make error messages not leak potentially sensitive information when tracker db connection fails
+    - #18244 Ensure DNS records are only requested for IP allowlist when needed
+    - #18232 Remove “refer us” feature
+    - #18250 Remove review popup
+    - #18251 Collect feedback about what features people are using?
+    - #3513 Column names could stick to the top of screen when scrolling down report tables
+    - #16607 More verbose error message when login nonce check fails
+    - #18164 Install routine: Fix text contrast for accessibility
+    - #17589 Add config option to disable http requests in System Checks to prevent server crashes with mod_security
+    - #17856 [database_tests] section no longer generated when executing php tests
+    - #18133 JSONp API request (with callback) strips first and last character from result
+    - #18178 Fix segment creation fails when enable_create_realtime_segments = 0
+    - #18313 Newsletter Signup in personal settings, mention Matomo privacy policy applies
+    - #17815 Improve UI of report info icon to show report generation time and help message
+    - #18058 Add system check for 32 bit PHP / OS
+    - #18070 New console command “marketplace:add-license-key” which adds a marketplace license key
+    - #18107 Add more granular access control for segment creation
+    - #18162 Close Tooltip when redirecting to another page
+    - #18152 Improve performance of Process::isSupported by caching it
+    - #18157 Make cli archiving faster if only one concurrent request per website is configured
+    - #18172 Fix initial export option values so checkbox shows correct value
+    - #18211 Updates davaxi/sparkline to 2.0 to PHP8.1 compatible version
+    - #18215 Fix CSP issue when viewing marketplace plugin details
+    - #15429 Mention guides for Wix, WordPress, SquareSpace, Sharepoint in the “No data” email and in the “Tracking code” pag
+    - #17602 Fix 2-lines label overflows the input
+    - #17786 Install routine: language changer line height improvements
+    - #11175 Improve help text on ‘Users’ report when no data
+    - #17010 When “average generation time” is zero, hide the sparkline and “Avg generation time” graphs metric from picker
+    - #17890 Remove “add new segment” selector in segment editor
+    - #17996 Manage Users: When user is admin, mention other users might exist
+    - #17973 Remove Provider and CustomVariables plugin from our core release
+    - #18011 Update list of no longer supported browsers (IE11)
+    - #17923 Make SecurityPolicy methods a public API and fully enable the CSP
+    - #16153 Tracking request may trigger a warning when providing an invalid regex
+    - #14695 Special character apostrophe is not getting printed properly in visits log (campaign url)
+    - #16067 Fix dashboard showing incorrect percentage on increases bigger than 1000%
+    - #17939 Include lox/xhprof in the Matomo build release so Profiling works
+    - #18019 Make the opt out work when a PHP 32 bit is used
+    - #18130 Fixed in place sorting order bug for PHP8+
+    - #18231 Fix annotations for “Behaviour > Performance” StackedBarEvolution charts
+    - #18267 Decode goal top dimension values
+    - #10550 Add field lastSeen in the API for the UsersManager
+    - #17916 Introduce new config setting to set a contact email address
+    - #17940 [Vue] Introduce Vue + Workflow commands
+    - #18071 Provide console command for adding a marketplace license key (#18070)
+    - #18074 Update container factory to allow for sorting plugins
+    - #18110 Use detachEvent when removeEventListener isn’t available
+    - #18123 Don’t browser archive when segment is set to be pre-processed
+    - #18137 Make the Twig cache template path more configurable with a DI entry
+    - #18149 Fix error cannot read property “replace” of undefined in quick search
+    - #18156 Small optimisations to Archiving performance
+    - #18166 [Vue] Migrate content-block, enriched-headline, rate-feature + related
+    - #18187 Fix possible problem with CSP in overlay feature
+    - #18193 [Vue] migrate comparisons service + component
+    - #18204 Always remove hash part from URL when detecting the script name
+    - #18213 [Vue] migrate date-picker and other period-selector related components
+    - #18214 [Vue] migrate dropdown and related directives
+    - #18225 [Vue] migrate notifications directive & service + UI.Notifications
+    - #18235 Changes to keep sorting order consistent across all PHP versions for Live.getLastVisitsDetails API
+    - #18241 Take archive TTL time into consideration for today when browser archiving is enabled
+    - #18255 Fix archiving too many segments that aren’t needed and showing 0 conversions for new visits/returning visitors
+    - #18263 Support downloading system tests from plugins
+    - #18278 Remove cache clearing from forget invalidations loop.
+    - #18300 Corrected paths mentioning “piwik/” to “/path/to/matomo/”.
+    - #18309 Couple of fixes in QuickForm2 for PHP8.1 compatibility
+  * matomo-org/tag-manager
+    - #217 Enable Debugging mode without URL parameter
+    - #375 Right clicks trigger twice for “All Links Click” and “All Elements Click” in Firefox
+    - #378 Fix deprecation warning on PHP 8.1
+  * matomo-org/device-detector
+    - #5773 Add detection for Google Podcasts
+    - #6793 Improvements for the OS parser a second level of regular expressions has been added
+    - #6870 Detect devices for existing brands: Xiaomi, Samsung, Realme, Tecno Mobile, Mobicel, Vivo, Lenovo, ZTE,
+      OPPO, Oukitel, CUBOT, UMIDIGI, OnePlus, Ulefone, Doogee, TCL, Vivo, Vertex, Infinix, Krüger&Matz, Wiko, DEXP, BQ
+    - #6872 Detect new brand Nubia
+    - #6873 Detect new brands: Bluebird, Mara and Detect devices for existing brands: Krüger&Matz, iHunt, Sony, Teclast,
+      Tanix, Logicom, Nubia, Xiaomi, QMobile, DIXON, Zuum, Vodacom, Mobicel, Oukitel, Motorola, Stylo, Tecno Mobile,
+      Chuwi, OnePlus, Vivo, iTel, Doogee, Cat, Homtom, CUBOT, MLS, Blu, Casper, Unonu
+    - #6874 Detect new brands: BMAX, Geotex and Detect devices for existing brands: Telefunken, Asus, Huawei, Lenovo,
+      Tecno Mobile, Nomi, Coolpad, Blu, Navitel, Winnovo, Digiland, DEXP, Sony, Inoi, OPPO, Samsung, Xiaomi, LG, Vivo,
+      UMIDIGI, Mobicel, Teclast, Zuum
+    - #6877 Detect new brand: Rakuten and Detect devices for existing brands: Beelink, Sony, Blackview, Samsung,
+      NUU Mobile, Oukitel, Coolpad, LG, DEXP, Acer, ZTE, TCL, Mobicel, Contixo, BQ, ONYX BOOX, Mecer, Digma, Lenovo,
+      RCA Tablets, Intex, Huawei, Santin, Vivo, NOA, iTel, Sharp, Prestigio, HTC, OnePlus, Wiko, Fly, Meizu, Lava, Gionee
+    - #6878 detect the device type for other browsers (Huawei, Quark, MQQBrowser)
+    - #6879 Detect devices for existing brands: Vivo, Huawei, ZTE, Smartisan, Samsung, OPPO, HTC, Xiaolajiao, POCO, Xiaomi, Blu
+    - #6880 Adds detection for Apple iPhone 13 models
+    - #6881 Detect device type for chrome forks
+    - #6883 Detect devices for existing brands: Vivo, HTC, Hisense, Gionee, Huawei, Samsung, Realme, Blu, NOA
+    - #6885 Detect oss: Java ME, REX
+    - #6886 Detect new brand: DING DING and Detect devices for existing brands: Zopo, F2 Mobile, iBall, Krüger&Matz,
+      Hotwav, Orange, Tecno Mobile, Runbo, Vonino, M4tel, Kempler & Strauss, Rokit, Stylo, DEXP, Prestigio, Mobicel, Santin
+    - #6888 Detect devices for existing brands: X-TIGI, Prestigio, Micromax, LG, DEXP, Oukitel, Hurricane, Alcatel,
+      M4tel, Blackview, S-TELL, Coolpad, HTC, Teclast, Mecer, Huawei, Reeder, Orange, Mobicel, Realme, NUU Mobile,
+      Xiaomi, Huawei, Hisense, Zuum, Krüger&Matz, Motorola
+    - #6889 Adds detection for GitHub Desktop and Logi Options+ apps
+    - #6890 Adds detection for Bonsai, Peeps dBrowser, Flash, Harman, Lagatos, LT, PSI, Spectre and Sushi Browsers
+    - #6891 Adds detection for Roku OS 
+    - #6892 Adds detection for OpenWrt OS and uclient-fetch library
+    - #6894 Adds detection for multiples apps and improves iOS, Windows, iPhone, iPod detection
+    - #6895 Detect devices for existing brands: Nubia, F150, Vivo, Huawei, Realme, Google, Oukitel, TCL, Packard Bell,
+      Xiaomi, Cube, Lenovo, OnePlus, iHunt, Proline, Reeder, Stylo, Hurricane, OPPO, Mobicel, Ugoos, Beeline, 4Good,
+      Teclast, K-Touch, Prestigio, Tecno Mobile, AllDocube, Ravoz, T-Mobile, DIXON, Motorola, Asus
+    - #6897 Detect new brands: Trident, SUNWIND, OKSI, Taiga System and Detect devices for existing brands: TechPad, 
+      Santin, Realme, Meizu, Alcatel, Xiaomi, ONN, UMIDIGI, DEXP, Premio, Oukitel, Coolpad, Sky, Huawei, Stylo, Mobicel,
+      Casper, Infinix, TCL, Qumo
+    - #6899 Adds detection for Apple Watch Series 7
+    - #6900 Improves detection for Apple devices
+    - #6901 Improves detection for Hisense, Samsung and TCL devices
+    - #6902 Improves Android, iPadOS, iOS, macOS version detection
+    - #6903 Improves detection for iOS, iPadOS, macOS, Android, Windows, Apple, Motorola, Samsung and Sony brands,
+      and adds detection for Telco brand and various apps
+    - #6904 Adds detection for Cellution, Juniper Systems, Kazuna, Oculus, STRONG, Topelotek brands and improves detection for 
+      Alcatel, Amazon, ANS, Kocaso, LG, Motorola, Sony, UMIDIGI brands
+    - #6905 Adds detection for various apps
+    - #6906 Detect new brands: Glofiish, Polar, MyGica and Detect devices for existing brands: Cavion, Stylo, Mobicel,
+      Hurricane, Proline, bq, Hisense, Archos, NOA, GOCLEVER, Blackview, Blu
+    - #6907 Adds detection for KRIP brand, improves detection for Alcatel, Blu, BMobile, Epik One, Gateway, Huawei, Hyundai, 
+      IKU Mobile, MobiWire, MicroMax, Positivo, Safaricom, TCL, UMIDIGI, Vivo brands and improves detection for Opera GX,
+      Windows, x86, x64 platforms
+* matomo-org/matomo-php-tracker
+    - #97 Fix for double newline issue when a redirect is used
+    - #98 Couple of fixes for PHP 8.1
+
+-------------------------------------------------------------------
 Thu Oct  7 08:43:05 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.5.0

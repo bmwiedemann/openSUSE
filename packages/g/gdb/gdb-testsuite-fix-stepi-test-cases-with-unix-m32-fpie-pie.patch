@@ -1,0 +1,176 @@
+[gdb/testsuite] Fix stepi test-cases with unix/-m32/-fPIE/-pie
+
+When running test-case gdb.base/step-indirect-call-thunk.exp with target board
+unix/-m32/-fPIE/-pie, I run into:
+...
+(gdb) stepi^M
+0x5655552e      22      {                /* inc.1 */^M
+(gdb) stepi^M
+0x56555530      22      {                /* inc.1 */^M
+(gdb) stepi^M
+0x565555f7 in __x86.get_pc_thunk.ax ()^M
+(gdb) FAIL: gdb.base/step-indirect-call-thunk.exp: stepi into return thunk
+...
+
+In contrast, with unix/-m32 we have instead:
+...
+(gdb) stepi^M
+0x08048407      22      {                /* inc.1 */^M
+(gdb) stepi^M
+23        return x + 1;  /* inc.2 */^M
+(gdb) stepi^M
+0x0804840c      23        return x + 1;  /* inc.2 */^M
+(gdb) stepi^M
+24      }                /* inc.3 */^M
+(gdb) stepi^M
+0x08048410      24      }                /* inc.3 */^M
+(gdb) stepi^M
+0x0804848f in __x86_return_thunk ()^M
+(gdb) PASS: gdb.base/step-indirect-call-thunk.exp: stepi into return thunk
+...
+
+The test-case doesn't expect to run into __x86.get_pc_thunk.ax, which is a
+PIC helper function for x86_64-linux.
+
+Fix this by insn-stepping through it.
+
+Likewise in a few other test-cases.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/step-indirect-call-thunk.exp    |  5 ++++-
+ gdb/testsuite/gdb.base/step-test.exp                   |  4 +++-
+ gdb/testsuite/gdb.reverse/step-indirect-call-thunk.exp |  6 ++++--
+ gdb/testsuite/gdb.reverse/step-precsave.exp            | 10 ++++++++++
+ gdb/testsuite/gdb.reverse/step-reverse.exp             | 10 ++++++++++
+ 5 files changed, 31 insertions(+), 4 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/step-indirect-call-thunk.exp b/gdb/testsuite/gdb.base/step-indirect-call-thunk.exp
+index d84a0232265..18f5bdcbe9a 100644
+--- a/gdb/testsuite/gdb.base/step-indirect-call-thunk.exp
++++ b/gdb/testsuite/gdb.base/step-indirect-call-thunk.exp
+@@ -65,9 +65,12 @@ gdb_test "step" "inc\.2.*" "step through call thunk into inc"
+ gdb_test "step" "inc\.3.*" "step inside inc"
+ gdb_test "step" "thrice\.4.*" "step through return thunk back into thrice"
+ 
++set alphanum_re "\[a-zA-Z0-9\]"
++set pic_thunk_re  "__$alphanum_re*\\.get_pc_thunk\\.$alphanum_re* \\(\\)"
++
+ # We can use instruction stepping to step into thunks.
+ stepi_until "thrice" "indirect_thunk" "stepi into call thunk"
+ stepi_until "indirect_thunk" "inc." "stepi out of call thunk into inc"
+-stepi_until "inc" "return_thunk" "stepi into return thunk"
++stepi_until "(inc|$pic_thunk_re)" "return_thunk" "stepi into return thunk"
+ stepi_until "return_thunk" "thrice" \
+     "stepi out of return thunk back into thrice"
+diff --git a/gdb/testsuite/gdb.base/step-test.exp b/gdb/testsuite/gdb.base/step-test.exp
+index 8664b3eda22..5f480e07edd 100644
+--- a/gdb/testsuite/gdb.base/step-test.exp
++++ b/gdb/testsuite/gdb.base/step-test.exp
+@@ -128,8 +128,10 @@ test_i "stepi into function" "stepi" \
+ # Continue to step until we reach the function's body.  This makes it
+ # more likely that we've actually completed the prologue, so "finish"
+ # will work.
++set alphanum_re "\[a-zA-Z0-9\]"
++set pic_thunk_re  "__$alphanum_re*\\.get_pc_thunk\\.$alphanum_re* \\(\\)"
+ test_i "stepi into function's first source line" "stepi" \
+-	".*${decimal}.*int callee" \
++	"(${decimal}.*int callee|$pic_thunk_re)" \
+ 	".*${decimal}.*myglob.*; return 0;"
+ 
+ # Have to be careful here, if the finish does not work, 
+diff --git a/gdb/testsuite/gdb.reverse/step-indirect-call-thunk.exp b/gdb/testsuite/gdb.reverse/step-indirect-call-thunk.exp
+index dad43d78e6b..1f43206074f 100644
+--- a/gdb/testsuite/gdb.reverse/step-indirect-call-thunk.exp
++++ b/gdb/testsuite/gdb.reverse/step-indirect-call-thunk.exp
+@@ -86,7 +86,9 @@ gdb_test "reverse-next" "apply\.2.*" \
+ step_until "stepi" "apply\.2" "indirect_thunk" "stepi into call thunk"
+ step_until "stepi" "indirect_thunk" "inc" \
+     "stepi out of call thunk into inc"
+-step_until "stepi" "inc" "return_thunk" "stepi into return thunk"
++set alphanum_re "\[a-zA-Z0-9\]"
++set pic_thunk_re  "__$alphanum_re*\\.get_pc_thunk\\.$alphanum_re* \\(\\)"
++step_until "stepi" "(inc|$pic_thunk_re)" "return_thunk" "stepi into return thunk"
+ step_until "stepi" "return_thunk" "apply" \
+     "stepi out of return thunk back into apply"
+ 
+@@ -94,7 +96,7 @@ step_until "reverse-stepi" "apply" "return_thunk" \
+     "reverse-stepi into return thunk"
+ step_until "reverse-stepi" "return_thunk" "inc" \
+     "reverse-stepi out of return thunk into inc"
+-step_until "reverse-stepi" "inc" "indirect_thunk" \
++step_until "reverse-stepi" "(inc|$pic_thunk_re)" "indirect_thunk" \
+     "reverse-stepi into call thunk"
+ step_until "reverse-stepi" "indirect_thunk" "apply" \
+     "reverse-stepi out of call thunk into apply"
+diff --git a/gdb/testsuite/gdb.reverse/step-precsave.exp b/gdb/testsuite/gdb.reverse/step-precsave.exp
+index 43f6ab3a11a..e85cdabfb73 100644
+--- a/gdb/testsuite/gdb.reverse/step-precsave.exp
++++ b/gdb/testsuite/gdb.reverse/step-precsave.exp
+@@ -124,6 +124,8 @@ gdb_test_multiple "stepi" "$test_message" {
+ 
+ # stepi into a function call
+ 
++set alphanum_re "\[a-zA-Z0-9\]"
++set pic_thunk_re  "__$alphanum_re*\\.get_pc_thunk\\.$alphanum_re* \\(\\)"
+ set test_message "stepi into function call"
+ gdb_test_multiple "stepi" "$test_message" {
+     -re "ARRIVED IN CALLEE.*$gdb_prompt $" {
+@@ -143,6 +145,10 @@ gdb_test_multiple "stepi" "$test_message" {
+ 	send_gdb "stepi\n"
+ 	exp_continue
+     }
++    -re "$pic_thunk_re.*$gdb_prompt $" {
++	send_gdb "stepi\n"
++	exp_continue
++    }
+ }
+ 
+ # stepi thru return of a function call
+@@ -216,6 +222,10 @@ gdb_test_multiple "stepi" "$test_message" {
+ 	send_gdb "stepi\n" 
+ 	exp_continue
+     }
++    -re "$pic_thunk_re.*$gdb_prompt $" {
++	send_gdb "stepi\n"
++	exp_continue
++    }
+     -re "${hex} in main .*:$stepi_location.*STEPI TEST.*$gdb_prompt $" {
+ 	send_gdb "stepi\n"
+ 	exp_continue
+diff --git a/gdb/testsuite/gdb.reverse/step-reverse.exp b/gdb/testsuite/gdb.reverse/step-reverse.exp
+index 335ccfbd399..32c18faaaa6 100644
+--- a/gdb/testsuite/gdb.reverse/step-reverse.exp
++++ b/gdb/testsuite/gdb.reverse/step-reverse.exp
+@@ -87,6 +87,8 @@ gdb_test_multiple "stepi" "$test_message" {
+ 
+ # stepi into a function call
+ 
++set alphanum_re "\[a-zA-Z0-9\]"
++set pic_thunk_re  "__$alphanum_re*\\.get_pc_thunk\\.$alphanum_re* \\(\\)"
+ set test_message "stepi into function call"
+ gdb_test_multiple "stepi" "$test_message" {
+     -re "ARRIVED IN CALLEE.*$gdb_prompt $" {
+@@ -106,6 +108,10 @@ gdb_test_multiple "stepi" "$test_message" {
+ 	send_gdb "stepi\n"
+ 	exp_continue
+     }
++    -re "$pic_thunk_re.*$gdb_prompt $" {
++	send_gdb "stepi\n"
++	exp_continue
++    }
+ }
+ 
+ # stepi thru return of a function call
+@@ -179,6 +185,10 @@ gdb_test_multiple "stepi" "$test_message" {
+ 	send_gdb "stepi\n" 
+ 	exp_continue
+     }
++    -re "$pic_thunk_re.*$gdb_prompt $" {
++	send_gdb "stepi\n"
++	exp_continue
++    }
+     -re "${hex} in main .*:$stepi_location.*STEPI TEST.*$gdb_prompt $" {
+ 	send_gdb "stepi\n"
+ 	exp_continue

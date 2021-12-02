@@ -18,12 +18,12 @@
 
 %define so_version 28
 Name:           qpdf
-Version:        10.3.2
+Version:        10.4.0
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            http://qpdf.sourceforge.net/
+URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
@@ -82,10 +82,10 @@ export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
            --disable-implicit-crypto \
            --docdir='${datarootdir}'/doc/packages/%{name} \
            --enable-show-failed-test-output
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 rm -rf qpdf/qtest # Unicode data can't be redistributed freely
 
 %install

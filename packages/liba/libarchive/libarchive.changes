@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 29 09:00:26 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- fix permission settings on following symlinks (fix-following-symlinks.patch)
+  this fixes also wrong permissions of /var/tmp in factory systems
+
+-------------------------------------------------------------------
 Sun Nov  7 19:13:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.5.2:

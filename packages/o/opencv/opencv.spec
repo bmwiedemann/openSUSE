@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.5.2
+Version:        4.5.4
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build

@@ -2365,4 +2365,25 @@ git 2.12.3
     <comment></comment>
     <requestid>932757</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>275ca2ecf533a60cebc3a7ec2a79c38f</srcmd5>
+    <version>2.34.1</version>
+    <time>1638387996</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.34.1:
+  * &quot;git grep&quot; looking in a blob that has non-UTF8 payload was
+    completely broken when linked with certain versions of PCREv2
+    library in the latest release.
+  * &quot;git pull&quot; with any strategy when the other side is behind us
+    should succeed as it is a no-op, but doesn't.
+  * An earlier change in 2.34.0 caused JGit application (that abused
+    GIT_EDITOR mechanism when invoking &quot;git config&quot;) to get stuck with
+    a SIGTTOU signal; it has been reverted.
+  * An earlier change that broke .gitignore matching has been reverted.
+  * SubmittingPatches document gained a syntactically incorrect mark-up,
+    which has been corrected.
+
+- fix url</comment>
+    <requestid>934174</requestid>
+  </revision>
 </revisionlist>

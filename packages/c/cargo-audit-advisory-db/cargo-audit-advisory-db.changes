@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 30 02:12:58 UTC 2021 - wbrown@suse.de
+
+- Update to version 20211130:
+  * Assigned RUSTSEC-2021-0126 to rust-embed (#1113)
+  * Add advisory for rust-embed path traversal (#1112)
+  * Adds maintained alternative to slice_deque (#1109)
+  * Assigned RUSTSEC-2021-0125 to simple_asn1 (#1108)
+  * Security advisory on simple_asn1 version 0.6.0 (#1103)
+  * Assigned RUSTSEC-2021-0124 to tokio (#1107)
+  * Add advisory for tokio-rs/tokio#4225 (#1106)
+  * Add CVE for RUSTSEC-2021-0123 (#1105)
+  * Assigned RUSTSEC-2021-0123 to fruity (#1104)
+  * Add fruity advisory for nvzqz/fruity#14 (#1102)
+
+-------------------------------------------------------------------
 Fri Nov 12 00:17:17 UTC 2021 - wbrown@suse.de
 
 - Update to version 20211112:

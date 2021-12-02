@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:19:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not try to link to libquadmath for aarch64 and armv6/7
+
+-------------------------------------------------------------------
 Sat Oct 23 13:50:11 UTC 2021 - Domenico Panella <pandom79@gmail.com>
 
 - Version bump to 1.6.3.

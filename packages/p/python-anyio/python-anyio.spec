@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-anyio
-Version:        3.3.4
+Version:        3.4.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
+BuildRequires:  %{python_module contextlib2 if %python-base < 3.7}
 BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module idna >= 2.8}
 BuildRequires:  %{python_module setuptools_scm}
@@ -49,6 +50,7 @@ Requires:       python-sniffio >= 1.1
 Requires:       python-typing_extensions
 %endif
 %if 0%{?python_version_nodots} < 37
+Requires:       python-contextvars
 Requires:       python-dataclasses
 %endif
 Suggests:       python-trio >= 0.16

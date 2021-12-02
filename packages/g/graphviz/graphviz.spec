@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,7 +53,7 @@
 %define sle12 0
 %endif
 Name:           graphviz%{psuffix}
-Version:        2.49.1
+Version:        2.49.3
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -394,11 +394,6 @@ Requires:       %{mname} = %{version}
 The graphviz-devel package contains all that's necessary for developing
 programs that use the graphviz libraries including man3 pages.
 
-
-
-
-
-
 #autosetup breaks graphviz-addons
 %prep
 %setup -q -n %{mname}-%{version}
@@ -449,6 +444,7 @@ export LDFLAGS="-pie"
       --without-visio \
 %if "%{flavor}" == "addons"
       --with-x \
+      --enable-lefty \
       --with-qt \
       --with-smyrna \
       RUBY_VER=%{ruby_version} \
@@ -461,9 +457,9 @@ make %{?_smp_mflags}
 
 %install
 make install \
-	DESTDIR=%{buildroot} \
-	docdir=%{buildroot}%{_docdir}/%{mname} \
-	pkgconfigdir=%{_libdir}/pkgconfig
+      DESTDIR=%{buildroot} \
+      docdir=%{buildroot}%{_docdir}/%{mname} \
+      pkgconfigdir=%{_libdir}/pkgconfig
 
 find %{buildroot} -type f -name "*.la" -delete -print
 

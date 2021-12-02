@@ -225,4 +225,25 @@
     <comment>switch to victoria</comment>
     <requestid>841175</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>471671db7dc704596f87bbbba9e8220e</srcmd5>
+    <version>2.3.0</version>
+    <time>1638203315</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.0
+  - Use py3 as the default runtime for tox
+  - Move flake8 as a pre-commit local target.
+  - Remove lower-constraints remnants
+  - Replace deprecated inspect.getargspec
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Use TOX_CONSTRAINTS_FILE
+  - Dropping lower constraints testing
+  - remove unicode from code
+  - Remove runtime dependency on pbr
+  - setup.cfg: Replace dashes with underscores
+  - Update master for stable/victoria
+  - ignore reno generated artifacts</comment>
+    <requestid>934516</requestid>
+  </revision>
 </revisionlist>

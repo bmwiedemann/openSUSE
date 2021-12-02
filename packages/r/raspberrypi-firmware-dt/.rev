@@ -305,4 +305,22 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>923453</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>daecbc0fdda626ad63fd8e4eb8226f93</srcmd5>
+    <version>2021.11.19</version>
+    <time>1638387983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14c1845ff9 (2021-11-19):
+  * Add DTS:
+    - bcm2710-rpi-zero-2-w.dts
+    - bcm2710-rpi-zero-2.dts
+  * Add overlays:
+    - adafruit-st7735r-overlay.dts
+    - fbtft-overlay.dts
+    - imx519-overlay.dts
+    - mcp2515-overlay.dts
+    - mlx90640-overlay.dts
+</comment>
+    <requestid>934729</requestid>
+  </revision>
 </revisionlist>

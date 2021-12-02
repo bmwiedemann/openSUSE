@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 28 12:48:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require iso-codes-lang. The -lang package is not optional.
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions

@@ -101,7 +101,7 @@ Requires:       udev >= 146
 Requires(pre):  user(pulse)
 ## needs the same liborc version which was used to build against
 %requires_eq    liborc-0_4-0
-Requires(post): %fillup_prereq
+Requires(post): pulseaudio-setup
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
 Conflicts:      kernel < 2.6.31
@@ -117,6 +117,15 @@ Conflicts:      pulseaudio-daemon
 pulseaudio is a networked sound server for Linux, other Unix like
 operating systems and Microsoft Windows. It is intended to be an
 improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
+
+%package setup
+Summary:        Set-up script for PulseAudio
+Group:          System/Sound Daemons
+Requires(post): %fillup_prereq
+
+%description setup
+This package contains a setup script for making PulseAudio working with
+various applications.
 
 %package module-lirc
 Summary:        LIRC module for PulseAudio
@@ -407,7 +416,6 @@ install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
 %post
 /sbin/ldconfig
 %tmpfiles_create pulseaudio.conf
-%{fillup_only -an sound}
 if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
   echo "Switching PulseAudio activation using systemd user socket."
   echo "Please log out from all sessions once to make it effective."
@@ -451,6 +459,9 @@ exit 0
 %service_del_postun pulseaudio.service
 exit 0
 
+%post setup
+%{fillup_only -an sound}
+
 %post gdm-hooks
 %tmpfiles_create pulseaudio-gdm-hooks.conf
 
@@ -458,11 +469,9 @@ exit 0
 %doc README
 %license LICENSE GPL LGPL
 %{_bindir}/pulseaudio
-%{_bindir}/setup-pulseaudio
 %{_bindir}/qpaeq
 %dir %{_datadir}/pulseaudio
 %{_datadir}/pulseaudio/alsa-mixer
-%{_fillupdir}/sysconfig.sound-pulseaudio
 %dir %{_libdir}/pulseaudio
 %{_libdir}/pulseaudio/libpulsecore-%{drvver}.so
 %dir %{_libdir}/pulse-%{drvver}/
@@ -564,12 +573,15 @@ exit 0
 %{_prefix}/lib/tmpfiles.d/pulseaudio.conf
 %ghost %dir %{_localstatedir}/lib/pulseaudio
 
+# xwayland integration
+%{_userunitdir}/pulseaudio-x11.service
+
+%files setup
+%{_bindir}/setup-pulseaudio
+%{_fillupdir}/sysconfig.sound-pulseaudio
 # created by setup-pulseaudio script
 %ghost %{_sysconfdir}/profile.d/pulseaudio.sh
 %ghost %{_sysconfdir}/profile.d/pulseaudio.csh
-
-# xwayland integration
-%{_userunitdir}/pulseaudio-x11.service
 
 %files gdm-hooks
 %attr(0750, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm

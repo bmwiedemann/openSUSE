@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Tue Nov 30 10:45:32 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (swo#27028, swo#27257):
+  * gdb-testsuite-fix-gdb.arch-i386-pkru.exp-on-linux.patch
+  * gdb-tdep-fix-avx512-m32-support-in-gdbserver.patch
+
+-------------------------------------------------------------------
+Fri Nov 26 14:04:38 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patch added (swo#28539, bsc#1192285):
+  * gdb-symtab-fix-segfault-in-search_one_symtab.patch
+
+-------------------------------------------------------------------
+Mon Nov 22 19:40:55 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches removed:
+  * gdb-testsuite-debug-gdb.arch-i386-sse.exp.patch
+
+-------------------------------------------------------------------
+Mon Nov 22 17:47:57 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  - Drop openSUSE Leap 15.1.
+  - Add KFAILs for PR28617.
+
+-------------------------------------------------------------------
+Mon Nov 22 09:25:32 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix SLE-12 x86_64 unresolvable by removing BuildRequire gcc-java.
+
+-------------------------------------------------------------------
+Mon Nov 22 09:00:45 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix openSUSE_Factory_ARM armv7l unresolvable by not doing
+  BuildRequire babeltrace-devel.
+
+-------------------------------------------------------------------
+
+Mon Nov 22 08:24:21 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix SLE-12 x86_64 unresolvable by not doing BuildRequire
+  babeltrace-devel.
+
+-------------------------------------------------------------------
+Fri Nov 19 15:31:46 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (backport from master):
+  * gdb-testsuite-add-missing-wait-in-gdb.base-signals-state-child.exp.patch
+- Add BuildRequire libsource-highlight.
+
+-------------------------------------------------------------------
+Thu Nov 18 14:01:30 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  - Add KFAIL.
+- Patches updated (increase sleep time):
+  * gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
+- Patches added (debug hard to reproduce failure):
+  * gdb-testsuite-debug-gdb.arch-i386-sse.exp.patch
+
+-------------------------------------------------------------------
+Thu Nov 18 11:45:00 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  - Add internal-error KFAILs.
+  - Rewrite gdb.suse check to distinguish between:
+    "zypper hint printed (librpm)" and
+    "zypper hint printed (no librpm)".
+
+-------------------------------------------------------------------
+Tue Nov 16 15:50:08 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patch updated (zypper hint doesn't use librpm on SLE-11):
+  * gdb-testsuite-add-gdb.suse-zypper-hint.exp.patch
+
+-------------------------------------------------------------------
+Thu Nov 11 10:36:08 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (backports from trunk):
+  * gdb-testsuite-add-gdb.opt-break-on-_exit.exp.patch
+  * gdb-tdep-rs6000-don-t-skip-system-call-in-skip_prologue.patch
+  * gdb-testsuite-fix-stepi-test-cases-with-unix-m32-fpie-pie.patch
+  * gdb-testsuite-fix-assembly-comments-in-gdb.dwarf2-clang-debug-names.exp.tcl.patch
+  * gdb-doc-fix-print-inferior-events-default.patch
+  * gdb-testsuite-fix-gdb.guile-scm-type.exp-with-gcc-4.8.patch
+  * gdb-testsuite-add-gdb.arch-ppc64-break-on-_exit.exp.patch
+  * gdb-testsuite-don-t-error-when-trying-to-unset-last_spawn_tty_name.patch
+  * gdb-exp-improve-error-reading-variable-message.patch
+  * fix-gdb.base-sigstep.exp-test-for-ppc.patch
+  * gdb-testsuite-fix-regexp-in-gdb.base-foll-vfork.exp.patch
+- Patches added (backports from ml):
+  * gdb-testsuite-disable-inferior-output-in-gdb.base-foll-vfork.exp.patch
+- Maintenance script qa.sh:
+  - Add -m32/-pie to known clean configs.
+  - Add kfail for PR28467.
+
+-------------------------------------------------------------------
+Tue Nov  9 15:54:58 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Fix empty patch:
+  * gdb-testsuite-fix-fail-in-gdb.tui-basic.exp.patch
+
+-------------------------------------------------------------------
+Tue Nov  9 08:05:16 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Limit SLE extra targets to SLE targets.
+- Add avr-elf and pru-elf to openSUSE extra targets.
+
+-------------------------------------------------------------------
+Mon Nov  8 14:53:20 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add note.
+  * Add KFAIL, improve KFAIL patterns.
+- Patch updated:
+  * gdb-testsuite-fix-data-alignment-in-gdb.arch-i386-avx-sse-.exp.patch
+  * gdb-testsuite-fix-race-in-gdb.threads-detach-step-over.exp.patch
+
+-------------------------------------------------------------------
+Sat Nov  6 09:25:28 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Replace patch (patch from mailing list, fix SLE-11 apply failure):
+  * gdb-tdep-aarch64-make-gdbserver-register-set-selection-dynamic.patch
+  with (now backported from release branch):
+  * aarch64-make-gdbserver-register-set-selection-dynamic.patch
+- Patches added:
+  * gdb-testsuite-fix-data-alignment-in-gdb.arch-i386-avx-sse-.exp.patch
+  * gdb-testsuite-fix-fail-in-gdb.tui-basic.exp.patch
+- Patches dropped:
+  * gdb-testsuite-add-checks-to-gdb.arch-i386-sse.exp.patch
+- Replace patch:
+  * gdb-testsuite-Fix-gdb.threads-thread-specific-bp.exp.patch
+  with (updated version, and patchname now generated by
+  import-patches.sh):
+  * gdb-testsuite-fix-gdb.threads-thread-specific-bp.exp.patch  
+- Maintenance script import-patches.sh:
+  * Improve argument checking.
+  * Add usage.
+  * Use filterdiff to filter out ChangeLog entries.
+- Maintenance script qa.sh:
+  * Fix usage.
+  * Document todo.
+
+-------------------------------------------------------------------
+Fri Nov  5 23:04:35 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Re-enable big endian powerpc, but keep testing disabled.
+- Add KFAIL for PR28553.
+
+-------------------------------------------------------------------
+Fri Nov  5 19:15:43 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patch added (move zypper hint test to testsuite):
+  * gdb-testsuite-add-gdb.suse-zypper-hint.exp.patch
+
+-------------------------------------------------------------------
+Fri Nov  5 15:21:03 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR28551 KFAIL.
+  * Add missing quotes for some KFAILs.
+  * Remove PR28355 KFAIL.
+
+-------------------------------------------------------------------
 Tue Nov  2 13:03:51 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (add back ignore-errors command, dropped in

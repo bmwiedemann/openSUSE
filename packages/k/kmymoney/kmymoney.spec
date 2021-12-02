@@ -34,6 +34,8 @@ Source0:        https://download.kde.org/stable/kmymoney/%{version}/src/%{name}-
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Remove-unused-variable-definition.patch
 Patch1:         0002-Fix-build-with-newer-Gwenhywfar-versions.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Fix-compile-for-Newer-Akonadi-Builds.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes

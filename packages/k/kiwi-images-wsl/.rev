@@ -103,4 +103,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>901227</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fefaf039bb4a818c4bd75008b386dc81</srcmd5>
+    <version>1.0.0</version>
+    <time>1638388038</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove new 150400 version prefix in SLE-15 SP4 during OBS source
+  service replace_using_env modifying template AppxManifest.xml.
+  Fixes boo#1192584.
+  * replace_using_env parses RELEASE as source ${BUILD_DIST/.dist/.data}
+  * SLE-15 SP4 prereleases add label 150400 to version number in
+    RELEASE, resulting in invalid AppxManifest.xml version number
+    e.g. 154.150400.1.60.0
+  * Add a replace_using_env eval clause to strip 150400 if present.</comment>
+    <requestid>934890</requestid>
+  </revision>
 </revisionlist>

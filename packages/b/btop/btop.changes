@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 28 21:25:30 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.2
+
+- Update to upstream release 1.1.2:
+  * Fixed: SISEGV on macos Mojave, by @mgradowski
+  * Fixed: Small optimizations and fixes to Mem::collect() and Input::get()
+  * Fixed: Wrong unit for net_upload and net_download in config menu
+  * Fixed: UTF-8 detection on macos
+  * Fixed: coretemp iteration due to missing tempX_input, by @KFilipek
+  * Fixed: coretemp ordering
+
+-------------------------------------------------------------------
 Tue Nov 16 16:47:50 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.1
 
 - Update to upstream release 1.1.1:

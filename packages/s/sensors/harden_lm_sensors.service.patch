@@ -2,7 +2,7 @@ Index: lm-sensors-3-6-0/prog/init/lm_sensors.service
 ===================================================================
 --- lm-sensors-3-6-0.orig/prog/init/lm_sensors.service
 +++ lm-sensors-3-6-0/prog/init/lm_sensors.service
-@@ -2,6 +2,16 @@
+@@ -2,6 +2,15 @@
  Description=Initialize hardware monitoring sensors
  
  [Service]
@@ -11,7 +11,6 @@ Index: lm-sensors-3-6-0/prog/init/lm_sensors.service
 +ProtectSystem=full
 +ProtectHome=true
 +ProtectHostname=true
-+ProtectKernelTunables=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true

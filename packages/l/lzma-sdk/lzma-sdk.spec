@@ -1,7 +1,7 @@
 #
 # spec file for package lzma-sdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define _sver   1900
-%define _maver  19
-%define _miver  00
+%define _sver   2106
+%define _maver  21
+%define _miver  06
 Name:           lzma-sdk
-Version:        19.00
+Version:        21.06
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.
 License:        LGPL-2.1-only
 Group:          Productivity/Archiving/Compression
-URL:            http://www.7-zip.org/sdk.html
-Source0:        http://www.7-zip.org/a/lzma%{_sver}.7z
+URL:            https://www.7-zip.org/sdk.html
+Source0:        https://www.7-zip.org/a/lzma%{_sver}.7z
 Source1:        lzma-sdk-LICENSE.fedora
 Patch1:         lzma-sdk-shlib.patch
 BuildRequires:  automake

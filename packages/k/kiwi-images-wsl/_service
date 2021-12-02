@@ -5,6 +5,7 @@
                 <param name="file">/usr/share/wsl-appx/AppxManifest.xml</param>
                 <param name="var">RELEASE</param>
                 <param name="eval">source ${BUILD_DIST/.dist/.data}</param>
+                <param name="eval">if [ $(echo $RELEASE | sed 's/[[:digit:]]//g' | awk '{ print length }') -gt 1 ]; then RELEASE=${RELEASE:7} ; else RELEASE=$RELEASE ; fi</param>
                 <param name="eval">sed -i -e 's# Version="\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)\.\([^\.]*\)"# Version="\1.%%RELEASE%%.\4"#' /usr/share/wsl-appx/AppxManifest.xml</param>
                 <param name="verbose">1</param>
         </service>

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Nov 23 15:10:26 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.9 → 9.24.10
+
+-------------------------------------------------------------------
+Tue Nov 23 10:43:10 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added documentation about sharing backends
+
+  The kiwi boxbuild plugin supports several sharing
+  backends. Details about them and eventual pre-setup
+  steps prior use are mentioned in this document
+
+-------------------------------------------------------------------
+Tue Nov 23 10:11:07 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed MicroOS build test
+
+  snapper default config has moved from /etc to /usr/share
+
+-------------------------------------------------------------------
+Mon Nov 22 22:27:44 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.8 → 9.24.9
+
+-------------------------------------------------------------------
+Mon Nov 22 17:18:07 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.7 → 9.24.8
+
+-------------------------------------------------------------------
+Mon Nov 22 17:15:47 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added support for reading metalink in info module
+
+  For resolver operations through libsolv the 'kiwi image info'
+  module exists. So far it could not read the repos from
+  metalink repo definitions. This Fixes #1890
+
+-------------------------------------------------------------------
+Fri Nov 19 13:29:52 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Force key attribute from signing element to be treated as a URI
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Thu Nov 18 16:52:52 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Pass signing keys from the XML to the repositories
+
+  This commits makes sure signing keys are passed to
+  repositories setup in build task.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Thu Nov 18 09:23:46 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move static sle15 integration test to git
+
+-------------------------------------------------------------------
+Tue Nov 16 16:29:49 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.6 → 9.24.7
+
+-------------------------------------------------------------------
+Mon Nov 15 16:40:37 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed raid integration test using extra boot part
+
+  Due to changes in the distribution the tests needs some
+  adaptions. The kernel as provided now by TW uses symlinks
+  from boot to /usr/lib/modules/... to point to the kernel
+  binary. Of course this breaks for any system that uses
+  /boot on another partition. Those image tests which were
+  testing this aspect needs fixing.
+
+-------------------------------------------------------------------
+Mon Nov 15 14:25:23 CET 2021 - Dan Čermák <dcermak@suse.com>
+
+- Make sure fedora-release is installed on Rawhide
+
+  Follow up to #1957 and #1962:
+  The Fedora build tests were using the generic release package and not
+  fedora-release. This issue has been partially fixed in #1962, but we forgot to
+  port the fix to the rawhide images as well. This commit adds the missing package
+  to the Rawhide images as well.
+
+-------------------------------------------------------------------
 Fri Nov 12 23:11:19 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.5 → 9.24.6
@@ -15,6 +105,27 @@ Fri Nov 12 22:53:02 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
   and apt the debootstrap phase should not be skipped. This commit
   checks if apt works in the chroot such that we can assume
   debootstrap has done its job and can be skipped
+
+-------------------------------------------------------------------
+Fri Nov 12 16:57:17 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to set sign keyfile in repository elements
+
+  This commit adds a new and optional child element <signing>
+  to the repository/source element as shown in the following
+  example:
+
+  <repository>
+  <source path="...">
+  <signing key="keyfile"/>
+  </source>
+  </repository>
+
+  The collection of all keyfiles from all repositories will be
+  added to the keyring as used by the selected package manager.
+  Signing keys specified on the commandline and signing keys
+  specified in the image description will be combined.
+  This Fixes #1883
 
 -------------------------------------------------------------------
 Fri Nov 12 14:45:03 CET 2021 - Marcus Schäfer <marcus.schaefer@gmail.com>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 30 10:59:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 14c1845ff9 (2021-11-19):
+  * Add DTS:
+    - bcm2710-rpi-zero-2-w.dts
+    - bcm2710-rpi-zero-2.dts
+  * Add overlays:
+    - adafruit-st7735r-overlay.dts
+    - fbtft-overlay.dts
+    - imx519-overlay.dts
+    - mcp2515-overlay.dts
+    - mlx90640-overlay.dts
+
+-------------------------------------------------------------------
 Fri Sep 17 10:11:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2425833c7ff5 (2021-09-17)

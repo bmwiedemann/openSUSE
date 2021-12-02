@@ -53,7 +53,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.4.8+git0.d1f8d41e0
+Version:        2.5.0+git0.f2e0833f1
 Release:        0
 #
 #
@@ -147,7 +147,6 @@ make %{?_smp_mflags} \
     %if %{with pcre_jit}
     USE_PCRE_JIT=1 \
     %endif
-    USE_PTHREAD_PSHARED=1 \
     %ifarch %ix86
     USE_REGPARM=1 \
     %endif

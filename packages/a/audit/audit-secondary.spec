@@ -125,18 +125,7 @@ audit dispatcher (audispd).
 rm -rf audisp/plugins/zos-remote/policy
 # we don't build prelude
 rm -rf audisp/plugins/prelude
-%setup -q -n %{_name}-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.
@@ -252,7 +241,7 @@ fi
 
 %files -n audit
 %license COPYING
-%doc README ChangeLog rules init.d/auditd.cron
+%doc README ChangeLog init.d/auditd.cron
 %attr(644,root,root) %{_mandir}/man8/auditctl.8.gz
 %attr(644,root,root) %{_mandir}/man8/auditd.8.gz
 %attr(644,root,root) %{_mandir}/man8/aureport.8.gz

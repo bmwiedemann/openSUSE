@@ -19,13 +19,13 @@
 %global somajor 11
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        21.2.2
+Version:        21.3.3
 Release:        0
 Summary:        Intel Graphics Memory Management Library Package
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/gmmlib
-Source0:        https://github.com/intel/gmmlib/archive/intel-gmmlib-%{version}.tar.gz
+Source0:        %{url}/archive/intel-gmmlib-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

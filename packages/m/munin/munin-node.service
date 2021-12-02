@@ -7,14 +7,11 @@ Requires=network.target
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
 ProtectHome=true
-PrivateDevices=true
 ProtectHostname=true
-ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
-RestrictRealtime=true
 # end of automatic additions 
 Type=forking
 ExecStart=/usr/sbin/munin-node

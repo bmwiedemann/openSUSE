@@ -343,4 +343,17 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>925643</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>098b24da86965890d0636907526a3642</srcmd5>
+    <version>2.9.2</version>
+    <time>1638203314</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.2:
+  * Raise `ValueError` for dates &gt;= Y10k (:ticket:`#1307`).
+  * `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to
+    PostgreSQL 14.
+  * Add preliminary support for Python 3.11 (:tickets:`#1376, #1386`).
+  *  Wheel package compiled against OpenSSL 1.1.1l and PostgreSQL 14.1</comment>
+    <requestid>934511</requestid>
+  </revision>
 </revisionlist>

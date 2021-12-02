@@ -1,0 +1,153 @@
+[gdb/testsuite] Disable inferior output in gdb.base/foll-vfork.exp
+
+Test-case gdb.base/foll-vfork.exp has inferior output that is not needed, but
+which makes the regexp matching more difficult (see commit 1f28b70def1
+"[gdb/testsuite] Fix regexp in gdb.base/foll-vfork.exp").
+
+Disable the inferior output using '#if DEBUG'.
+
+Tested on x86_64-linux.
+
+---
+ gdb/testsuite/gdb.base/foll-vfork-exit.c | 14 ++++++++++++--
+ gdb/testsuite/gdb.base/foll-vfork.c      |  9 ++++++++-
+ gdb/testsuite/gdb.base/foll-vfork.exp    | 17 +++++++++++------
+ gdb/testsuite/gdb.base/vforked-prog.c    |  7 ++++++-
+ 4 files changed, 37 insertions(+), 10 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/foll-vfork-exit.c b/gdb/testsuite/gdb.base/foll-vfork-exit.c
+index 6c263cdc057..15e272afe82 100644
+--- a/gdb/testsuite/gdb.base/foll-vfork-exit.c
++++ b/gdb/testsuite/gdb.base/foll-vfork-exit.c
+@@ -29,12 +29,22 @@ main ()
+   pid = vfork (); /* VFORK */
+   if (pid == 0)
+     {
+-      printf ("I'm the child!\n");
++      const char *s = "I'm the child!";
++#if DEBUG
++      printf ("%s\n", s);
++#else
++    const char *volatile v = s;
++#endif
+       _exit (0);
+     }
+   else
+     {
+-      printf ("I'm the proud parent of child #%d!\n", pid);
++      const char *s = "I'm the proud parent of child";
++#if DEBUG
++      printf ("%s #%d!\n", s, pid);
++#else
++    const char *volatile v = s;
++#endif
+     }
+ 
+   return 0;
+diff --git a/gdb/testsuite/gdb.base/foll-vfork.c b/gdb/testsuite/gdb.base/foll-vfork.c
+index 2f6661d1a0b..b7e332e146b 100644
+--- a/gdb/testsuite/gdb.base/foll-vfork.c
++++ b/gdb/testsuite/gdb.base/foll-vfork.c
+@@ -40,12 +40,19 @@ main (int argc, char ** argv)
+     memcpy (prog + len - 10, "vforked-prog", 12);
+     prog[len + 2] = 0;
+ 
++#if DEBUG
+     printf ("I'm the child!\n");
++#endif
+     execlp (prog, prog, (char *) 0);
+     perror ("exec failed");
+     _exit (1);
+   }
+   else {
+-    printf ("I'm the proud parent of child #%d!\n", pid);
++    const char *s = "I'm the proud parent of child";
++#if DEBUG
++    printf ("%s #%d!\n", s, pid);
++#else
++    const char *volatile v = s;
++#endif
+   }
+ }
+diff --git a/gdb/testsuite/gdb.base/foll-vfork.exp b/gdb/testsuite/gdb.base/foll-vfork.exp
+index a781a5c2087..fc710167f7d 100644
+--- a/gdb/testsuite/gdb.base/foll-vfork.exp
++++ b/gdb/testsuite/gdb.base/foll-vfork.exp
+@@ -32,9 +32,14 @@ if [gdb_debug_enabled] {
+     return 0
+ }
+ 
++# Set DEBUG to 0 or 1 in sources.
++set debug 0
++
+ standard_testfile
+ 
+-set compile_options debug
++set compile_options {}
++lappend compile_options debug
++lappend compile_options additional_flags=-DDEBUG=$debug
+ 
+ if {[build_executable $testfile.exp $testfile $srcfile $compile_options] == -1} {
+     untested "failed to compile main testcase"
+@@ -126,7 +131,7 @@ proc vfork_parent_follow_to_bp {} {
+ 
+    gdb_test_no_output "set follow-fork parent"
+ 
+-   set bp_location [gdb_get_line_number "printf (\"I'm the proud parent of child"]
++   set bp_location [gdb_get_line_number "I'm the proud parent of child"]
+    gdb_test "break ${srcfile}:${bp_location}" ".*" "break, vfork to bp"
+ 
+    set test "continue to bp"
+@@ -176,7 +181,7 @@ proc vfork_and_exec_child_follow_to_main_bp {} {
+ 
+    gdb_test_no_output "set follow-fork child"
+ 
+-   set linenum [gdb_get_line_number "printf(\"Hello from vforked-prog" ${srcfile2}]
++   set linenum [gdb_get_line_number "Hello from vforked-prog" ${srcfile2}]
+ 
+    set test "continue to bp"
+    gdb_test_multiple "continue" $test {
+@@ -278,7 +283,7 @@ proc tcatch_vfork_then_child_follow_exec {} {
+    continue_to_vfork
+ 
+    set linenum1 [gdb_get_line_number "pid = vfork ();"]
+-   set linenum2 [gdb_get_line_number "printf(\"Hello from vforked-prog" ${srcfile2}]
++   set linenum2 [gdb_get_line_number "Hello from vforked-prog" ${srcfile2}]
+ 
+    set test "finish"
+    gdb_test_multiple "finish" $test {
+@@ -356,7 +361,7 @@ proc vfork_relations_in_info_inferiors { variant } {
+    if { $variant == "exec" } {
+        global srcfile2
+ 
+-       set linenum [gdb_get_line_number "printf(\"Hello from vforked-prog" ${srcfile2}]
++       set linenum [gdb_get_line_number "Hello from vforked-prog" ${srcfile2}]
+        set test "continue to bp"
+        gdb_test_multiple "continue" $test {
+ 	   -re ".*xecuting new program.*Breakpoint.*vforked-prog.c:${linenum}.*$gdb_prompt " {
+@@ -487,7 +492,7 @@ set testfile "foll-vfork-exit"
+ set srcfile ${testfile}.c
+ set binfile [standard_output_file ${testfile}]
+ 
+-if {[build_executable $testfile.exp $testfile $srcfile] == -1} {
++if {[build_executable $testfile.exp $testfile $srcfile $compile_options] == -1} {
+     untested "failed to build $testfile"
+     return
+ }
+diff --git a/gdb/testsuite/gdb.base/vforked-prog.c b/gdb/testsuite/gdb.base/vforked-prog.c
+index 936c6e6032d..999efa8ce0d 100644
+--- a/gdb/testsuite/gdb.base/vforked-prog.c
++++ b/gdb/testsuite/gdb.base/vforked-prog.c
+@@ -19,6 +19,11 @@
+ 
+ int main (void)
+ {
+-  printf("Hello from vforked-prog...\n");
++  const char *s = "Hello from vforked-prog";
++#if DEBUG
++  printf ("%s...\n", s);
++#else
++  const char *volatile v = s;
++#endif
+   return 0;
+ }
