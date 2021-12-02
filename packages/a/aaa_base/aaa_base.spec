@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20211102.80d7177
+Version:        84.87+git20211124.5486aad
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -193,8 +193,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /usr/etc/profile.d/lang.sh
 /usr/etc/profile.d/profile.csh
 /usr/etc/profile.d/profile.sh
-/usr/etc/profile.d/term.csh
-/usr/etc/profile.d/term.sh
 /usr/etc/profile.d/xdg-environment.csh
 /usr/etc/profile.d/xdg-environment.sh
 /usr/etc/profile.d/complete.bash

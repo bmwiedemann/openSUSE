@@ -3949,4 +3949,16 @@
   * Avoid tcsh undefined LANG variable (boo#1190142)</comment>
     <requestid>928785</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>02c7aed28af95f9fa86f345f0088607f</srcmd5>
+    <version>84.87+git20211124.5486aad</version>
+    <time>1638480599</time>
+    <user>dimstar_suse</user>
+    <comment>- Clear term.sh and term.csh also from file list
+
+- Update to version 84.87+git20211124.5486aad:
+  * Remove term.sh and term.csh: no COLORTERM anymore
+    Avoid changing COLORTERM variable in urxvt (boo#1190833)</comment>
+    <requestid>933654</requestid>
+  </revision>
 </revisionlist>

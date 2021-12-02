@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 25 07:16:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Clear term.sh and term.csh also from file list
+
+-------------------------------------------------------------------
+Wed Nov 24 14:14:18 UTC 2021 - werner@suse.de
+
+- Update to version 84.87+git20211124.5486aad:
+  * Remove term.sh and term.csh: no COLORTERM anymore
+    Avoid changing COLORTERM variable in urxvt (boo#1190833)
+
+-------------------------------------------------------------------
 Tue Nov 02 13:29:56 UTC 2021 - ro@suse.de
 
 - Update to version 84.87+git20211102.80d7177:
