@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:05:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.2. Changes since 5.1.0:
+  * Fixed an incorrect indeiciesType in the glTF2 sparse accessor.
+  * Prevent out-of-range memory writes by sparse accessors
+  * Delete test/models/3DS/UVTransformTest directory
+  * Do not build ziplib when 3MF exporter is disabled.
+  * Collada: Read value, not attribute
+  * Redefine deprecated glTF-specific PBR material macros
+- Fix assimp-devel dependencies. minizip is required.
+
+-------------------------------------------------------------------
 Sat Nov 13 16:29:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.0

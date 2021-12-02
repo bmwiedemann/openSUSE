@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.1.0
+Version:        5.1.2
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
@@ -40,11 +40,11 @@ materials, bone animations and potential texture data. The library is not design
 it is primarily useful for importing assets from various sources once and storing it in a
 engine-specific format for easy and fast every-day-loading.
 
-%package -n lib%{name}%{sover}
+%package -n libassimp%{sover}
 Summary:        Library to load and process 3D scenes from various data formats
 Group:          System/Libraries
 
-%description -n lib%{name}%{sover}
+%description -n libassimp%{sover}
 Assimp is a library to load and process geometric scenes from various data formats.
 It is tailored at typical game scenarios by supporting a node hierarchy, static or skinned meshes,
 materials, bone animations and potential texture data. The library is not designed for speed,
@@ -52,11 +52,12 @@ it is primarily useful for importing assets from various sources once and storin
 engine-specific format for easy and fast every-day-loading.
 
 %package devel
-Summary:        Headers, docs and command-line utility for %{name}
+Summary:        Headers, docs and command-line utility for assimp
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       lib%{name}%{sover} = %{version}
+Requires:       libassimp%{sover} = %{version}
 Requires:       libstdc++-devel
+Requires:       pkgconfig(minizip)
 
 %description devel
 Assimp is a library to load and process geometric scenes from various data formats.
