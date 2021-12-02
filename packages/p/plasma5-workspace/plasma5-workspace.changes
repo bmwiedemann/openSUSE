@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Lock & login screens: Use RTL-friendly arrows when in RTL mode
+  * [logout-greeter] Set window class name (kde#444898,kde#444899)
+  * systemtray: Connect to StatusNotifierWatcher before initializing QDBusPendingReply
+  * systemtray: Check if a service is already added before processing QDBusReply (kde#443961)
+  * baloosearchruner: Emit DBus error when baloo is disabled (kde#445342)
+
+-------------------------------------------------------------------
 Tue Nov  9 15:43:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3
