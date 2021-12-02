@@ -1111,4 +1111,12 @@
     <comment>Plasma 5.23.3(.1)</comment>
     <requestid>931332</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>853a698bba5b68db6cf2e422294071a4</srcmd5>
+    <version>5.23.4</version>
+    <time>1638480574</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.23.4</comment>
+    <requestid>934784</requestid>
+  </revision>
 </revisionlist>
