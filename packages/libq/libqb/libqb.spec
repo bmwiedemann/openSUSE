@@ -29,7 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/ClusterLabs/libqb
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         libqb-configure-package-version.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  autoconf
@@ -76,9 +75,11 @@ features. It provides logging, tracing, IPC, and polling.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch1 -p1
 
 %build
+if [ ! -f .tarball-version ]; then
+  echo %{VERSION} > .tarball-version
+fi
 ./autogen.sh
 %configure \
 %if %{with testsrpm}

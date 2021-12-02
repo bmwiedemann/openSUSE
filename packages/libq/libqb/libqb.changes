@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 25 15:05:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Inject package version differently into the build system
+  (boo#1193087):
+  + Drop libqb-configure-package-version.patch
+  + copy the package version into .tarball-version (if it does not
+    exist and we would happen to use a tarball to build).
+
+-------------------------------------------------------------------
 Tue Nov 16 08:42:20 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.4+20211112.a2691b9 (v2.0.4):

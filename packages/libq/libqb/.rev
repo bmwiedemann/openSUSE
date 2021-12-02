@@ -298,4 +298,12 @@
 - Implement heap based timer list (gh#ClusterLabs/libqb#439) (forwarded request 931806 from yan_gao)</comment>
     <requestid>931807</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>e769c5b32a81edaa54ceec4d5d223b1e</srcmd5>
+    <version>2.0.4+20211112.a2691b9</version>
+    <time>1638480604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934505</requestid>
+  </revision>
 </revisionlist>
