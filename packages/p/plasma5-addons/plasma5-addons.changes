@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * applets/weather: Make cursor a pointing hand when hovering over source link
+  * [mediaframe] Make files added from paths into URLs. (kde#445071)
+
+-------------------------------------------------------------------
 Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3

@@ -1016,4 +1016,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.23.3(.1)</comment>
     <requestid>931361</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>5299c62db7afee567d4abf07e75f1e3a</srcmd5>
+    <version>5.23.4</version>
+    <time>1638480592</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.23.4</comment>
+    <requestid>934815</requestid>
+  </revision>
 </revisionlist>
