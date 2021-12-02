@@ -19,19 +19,17 @@
 
 %define _name   breeze
 Name:           breeze-gtk
-Version:        5.23.3
+Version:        5.23.4
 Release:        0
 Summary:        GTK+ theme matching KDE's Breeze
 License:        LGPL-2.1-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/breeze-gtk
-Source:         breeze-gtk-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz
 %if %{with lang}
-Source1:        breeze-gtk-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-gtk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Revert-gtk3-gtk4-update-button-style.patch
 BuildRequires:  breeze5-style
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules

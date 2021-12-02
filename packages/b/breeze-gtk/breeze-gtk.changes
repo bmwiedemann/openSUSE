@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * gtk3, gtk4: refactor buttons heavily, make look near-identical to breeze qstyle (kde#426557,kde#438185)
+  * gtk3, gtk4: format with prettier
+  * gtk3, gtk4: improve build times
+  * Fixed toolbar buttons style, removing unneeded outline (kde#443626)
+- Drop patches, fixed upstream:
+  * 0001-Revert-gtk3-gtk4-update-button-style.patch
+
+-------------------------------------------------------------------
 Tue Nov  9 15:43:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3
