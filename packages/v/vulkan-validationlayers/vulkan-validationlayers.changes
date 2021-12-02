@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 27 13:51:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.198.0
+  * layers: Avoid crash without vertex shader
+  * layers: Add validation for primitive topology list restart
+  * layers: Add VK_EXT_rgba10x6_formats
+  * layers: Add generated SPIR-V grammar helper
+  * syncval: Add syncop recording and replay interface
+  * gpu: Preserve interfaces in dead code elimination pass
+  * layers: Add Blocked Image helper
+  * layers: Avoid crashing if VK_KHR_dynamic_rendering is enabled
+
+-------------------------------------------------------------------
 Sun Sep  5 11:12:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.189.0
