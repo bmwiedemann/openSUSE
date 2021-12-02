@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-google-api-python-client
-Version:        2.20.0
+Version:        2.31.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
 URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
-# https://github.com/googleapis/google-api-python-client/pull/929
-Patch0:         python-google-api-python-client-no-unittest2.patch
 BuildRequires:  %{python_module google-api-core >= 1.21.0}
 BuildRequires:  %{python_module google-auth >= 1.16.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.1.0}
 BuildRequires:  %{python_module httplib2 >= 0.15.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauth2client}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -58,7 +58,6 @@ Google APIs Client Library for Python
 
 %prep
 %setup -q -n google-api-python-client-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -71,7 +70,7 @@ Google APIs Client Library for Python
 # DiscoveryFromDocument::test_api_endpoint_override_from_client_options and
 # DiscoveryFromDocument::test_api_endpoint_override_from_client_options_dict fail with "server unavailable"
 # DiscoveryErrors::test_credentials_and_credentials_file_mutually_exclusive fails with "socket.gaierror: [Errno -3] Temporary failure in name resolution"
-%pytest -k "not (test_api_endpoint_override_from_client_options and Document) and not test_credentials_and_credentials_file_mutually_exclusive"
+%pytest --ignore=samples -k "not (test_api_endpoint_override_from_client_options and Document) and not test_credentials_and_credentials_file_mutually_exclusive"
 
 %files %{python_files}
 %doc README.md
