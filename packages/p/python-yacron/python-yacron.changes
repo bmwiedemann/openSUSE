@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:44:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip python 3.6 since python-sentry-sdk dropped it
+
+-------------------------------------------------------------------
 Tue Aug 10 06:58:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.13.0:
