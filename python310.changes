@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Dec  2 13:51:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add pdb_adjust_breakpoints.patch fixing expectd results in
+  test_pdb_breakpoints_preserved_across_interactive_sessions
+  (bpo#45964).
+
+-------------------------------------------------------------------
+Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
 Tue Nov 16 16:03:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Move rpm-build-python construct to correct place.

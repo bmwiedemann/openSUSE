@@ -111,6 +111,7 @@ Source20:       idle3.appdata.xml
 # 3. mkdir Vendor && mv usr/include/* Vendor/
 # 4. tar cJf bluez-devel-vendor.tar.xz Vendor/
 Source21:       bluez-devel-vendor.tar.xz
+Source98:       python310-rpmlintrc
 # Tarball is signed by the GPG key of Pablo Galindo Salgado (0x64E628F8D684696D)
 # https://keybase.io/pablogsal/pgp_keys.asc?fingerprint=a035c8c19219ba821ecea86b64e628f8d684696d
 Source99:       python.keyring
@@ -145,6 +146,9 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
+# PATCH-FIX-UPSTREAM pdb_adjust_breakpoints.patch bugno mcepl@suse.com
+# adjust results of a doctest
+Patch35:        pdb_adjust_breakpoints.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -153,10 +157,6 @@ BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} >= 1550
-# The provider for python(abi) is in rpm-build-python
-BuildRequires:  rpm-build-python
-%endif
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(expat)
@@ -164,6 +164,10 @@ BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
+%if 0%{?suse_version} >= 1550
+# The provider for python(abi) is in rpm-build-python
+BuildRequires:  rpm-build-python
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
@@ -398,10 +402,12 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %patch34 -p1
 %endif
+%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 
+%if %{primary_interpreter}
 # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
 for dir in Lib Tools; do
     # find *.py, filter to files that contain bad shebangs
@@ -410,6 +416,13 @@ for dir in Lib Tools; do
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
         | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
 done
+%else
+# For non-primary Python, just don't bother (bsc#1193179) and remove all
+# those shebangs
+for dir in Lib Tools; do
+    find $dir -name '*.py' -type f -exec sed -i '1{/^#!.*python/ d}' '{}' \;
+done
+%endif
 
 # drop in-tree libffi and expat
 rm -r Modules/_ctypes/libffi* Modules/_ctypes/darwin
