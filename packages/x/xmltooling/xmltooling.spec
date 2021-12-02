@@ -17,10 +17,10 @@
 
 
 %define libvers 10
-%define opensaml_version 3.2.0
+%define opensaml_version 3.2.1
 %define pkgdocdir %{_docdir}/%{name}
 Name:           xmltooling
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        OpenSAML XML Processing library
 License:        Apache-2.0
