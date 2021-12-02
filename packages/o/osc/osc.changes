@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  2 08:18:20 UTC 2021 - Marco Strigl <marco.strigl@suse.com>
+
+- 0.175.0:
+  * do not crash when running "osc search --binary --verbose foo"
+  * don't run source services when building outside of an OSC package working copy
+  * fix XDG_CONFIG_HOME
+  * offer a force ("f") choice in metafile.edit's error handling code path
+  * fix XPath used in search requests
+  * add support for creating a workflow token via "osc token"
+  * handle missing os.sysconf more gracefully
+  * detachbranch: remove _link when link target got removed
+  * improve error message in case of an URLError
+  * fix downloading from mirrors
+  * avoid sending entire projects on "osc mr"
+  * fix hdmrd5 check of local cached files
+  * improve logic for conffile mode handling
+ 
+
+-------------------------------------------------------------------
 Wed Jul 21 08:51:23 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
 
 - 0.174.0:

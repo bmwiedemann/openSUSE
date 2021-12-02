@@ -1506,4 +1506,25 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
   * print a meaningful message when trying to a commit a non-existent package</comment>
     <requestid>907452</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>b964ad903db75b60ccfa82ec05e18717</srcmd5>
+    <version>0.175.0</version>
+    <time>1638480618</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.175.0 (jsc#obs-167):
+  * do not crash when running &quot;osc search --binary --verbose foo&quot;
+  * don't run source services when building outside of an OSC package working copy
+  * fix XDG_CONFIG_HOME
+  * offer a force (&quot;f&quot;) choice in metafile.edit's error handling code path
+  * fix XPath used in search requests
+  * add support for creating a workflow token via &quot;osc token&quot;
+  * handle missing os.sysconf more gracefully
+  * detachbranch: remove _link when link target got removed
+  * improve error message in case of an URLError
+  * fix downloading from mirrors
+  * avoid sending entire projects on &quot;osc mr&quot;
+  * fix hdmrd5 check of local cached files
+  * improve logic for conffile mode handling</comment>
+    <requestid>935127</requestid>
+  </revision>
 </revisionlist>
