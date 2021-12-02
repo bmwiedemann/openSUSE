@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 01 23:58:29 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.4.2:
+  * Update the samplebuilder to avoid a crash when a single frame is so
+    large that it overflows the buffer.
+  * Various other changes that improve the quality of disk recordings.
+  * Update dependencies.
+
+-------------------------------------------------------------------
 Fri Nov  5 16:50:04 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - adapted AppArmor profile to new config files in 0.4.1
