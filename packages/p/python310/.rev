@@ -76,4 +76,21 @@
     <comment>- Move rpm-build-python construct to correct place.</comment>
     <requestid>931817</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fae1c7e625804d16943cf40eb07a64b1</srcmd5>
+    <version>3.10.0</version>
+    <time>1638480624</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pdb_adjust_breakpoints.patch fixing expectd results in
+  test_pdb_breakpoints_preserved_across_interactive_sessions
+  (bpo#45964).
+- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+</comment>
+    <requestid>935211</requestid>
+  </revision>
 </revisionlist>
