@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * homescreen: Fix silly type name error
+  * Fix broken reset homescreen position signal, and minor refactor
+  * Rework app drawer layout and open/close behaviour logic
+
+-------------------------------------------------------------------
 Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3
