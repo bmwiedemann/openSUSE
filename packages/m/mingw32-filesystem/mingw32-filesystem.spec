@@ -17,7 +17,7 @@
 
 
 # Tumbleweed
-%if %suse_version == 1550
+%if %suse_version >= 1550
 %define _rpmlintdir /opt/testing/share/rpmlint
 %else
 %define _rpmlintdir /opt/testing/share/rpmlint/mini
@@ -52,7 +52,7 @@ Source11:       languages.man
 Source12:       mingw32-cmake.prov
 Source13:       mingw32-cmake.attr
 Source14:       macros.mingw32-cmake
-Source15:       mingw32-filesystem-rpmlintrc 
+Source15:       mingw32-filesystem-rpmlintrc
 Provides:       mingw32(bcrypt.dll)
 Provides:       mingw32(dbghelp.dll)
 Provides:       mingw32(mpr.dll)
@@ -116,7 +116,7 @@ install -m 644 %{SOURCE14} %{buildroot}%{_rpmmacrodir}/$(basename %{SOURCE14})
 
 mkdir -p %{buildroot}%_rpmlintdir
 # tumbleweed
-%if %suse_version == 1550
+%if %suse_version >= 1550
 # convert to toml file format, which seems to be required
 sed "s,addFilter *(\",     ',g;s#\")#',#g" %{SOURCE7} | gawk 'BEGIN { print "Filters = ["} { print $0 } END { print "]"}' > %{SOURCE7}.toml
 install -m 644 %{SOURCE7}.toml %{buildroot}%_rpmlintdir/mingw32.toml
@@ -198,7 +198,7 @@ done < %{SOURCE11}
 %else
 %{_distconfdir}/profile.d/mingw32.sh
 %endif
-%if %suse_version == 1550
+%if %suse_version >= 1550
 %_rpmlintdir/mingw32.toml
 %else
 %_rpmlintdir/mingw32-rpmlint.config
