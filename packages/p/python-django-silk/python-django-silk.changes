@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:41:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip python 3.6 since python-networkx does not support it
+
+-------------------------------------------------------------------
 Mon May  3 03:53:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Python 3.9 due to incompatibilities fixed in upcoming release

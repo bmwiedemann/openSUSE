@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%define skip_python36 1
 # Python 3.9 is supported by next release
 %define skip_python39 1
 Name:           python-django-silk
