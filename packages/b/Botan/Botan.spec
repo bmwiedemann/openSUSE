@@ -20,7 +20,7 @@
 %define version_suffix 2-18
 %define short_version 2
 Name:           Botan
-Version:        2.18.1
+Version:        2.18.2
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause

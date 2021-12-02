@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 24 20:02:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.2:
+  * Avoid using short exponents when encrypting in ElGamal, as some PGP
+    implementations generate keys with parameters that are weak when
+    short exponents are used CVE-2021-40529 boo#1190244
+  * Fix a low risk OAEP decryption side channel
+  * Work around a miscompilation of SHA-3 caused by a bug in Clang 12
+    and XCode 13
+  * Remove support in OpenSSL provider for algorithms which are
+    disabled by default in OpenSSL 3.0
+  * Add CI based on GitHub actions to replace Travis CI
+  * Fix the online OCSP test, as the certificate involved had expired.
+  * Fix some test failures induced by the expiration of the trust root
+    "DST Root CA X3"
+
+-------------------------------------------------------------------
 Mon May 10 11:05:35 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Botan 2.18.1:
