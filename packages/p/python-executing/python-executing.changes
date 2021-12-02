@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:42:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip python 3.6 since python-asttokens dropped it
+
+-------------------------------------------------------------------
 Tue Nov  2 13:47:37 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.8.2
