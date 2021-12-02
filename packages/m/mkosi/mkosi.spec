@@ -17,7 +17,7 @@
 
 
 Name:           mkosi
-Version:        10
+Version:        11
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
