@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux.git
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         harden_restorecond.service.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 Requires:       libselinux1 >= %{libselinux_ver}
@@ -35,6 +36,7 @@ Daemon that watches for file creation and then sets the default SELinux file con
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export CFLAGS="%optflags"
@@ -58,6 +60,7 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcrestorecond
 %service_del_postun restorecond.service
 
 %files
+%dir %{_sysconfdir}/selinux
 %config %{_sysconfdir}/selinux/restorecond.conf
 %config(noreplace) %{_sysconfdir}/selinux/restorecond_user.conf
 %{_sysconfdir}/xdg/autostart/restorecond.desktop
