@@ -64,7 +64,6 @@ BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
 BuildRequires:  pkgconfig(py3cairo)
-BuildRequires:  pkgconfig(pygtk-2.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
 BuildRequires:  pkgconfig(xcomposite)
@@ -207,17 +206,21 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 getent group xpra >/dev/null || groupadd -r xpra
 mkdir -p %{_rundir}/%{name} || exit 1
 %service_add_pre %{name}.service
+%service_add_pre %{name}.socket
 
 %post
 %service_add_post %{name}.service
+%service_add_post %{name}.socket
 %fillup_only %{name}
 %tmpfiles_create %{_tmpfilesdir}/xpra.conf
 
 %preun
 %service_del_preun %{name}.service
+%service_del_preun %{name}.socket
 
 %postun
 %service_del_postun %{name}.service
+%service_del_postun %{name}.socket
 
 %files
 %doc docs/README.md docs/CHANGELOG.md

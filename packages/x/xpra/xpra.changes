@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 21:50:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused pkgconfig(pygtk-2.0) BuildRequires: Not used since
+  version 4.0, when python 2 support was dropped.
+- Add pre, post, preun and postun handling of xpra.socket.
+
+-------------------------------------------------------------------
 Mon Oct  4 15:04:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2.3
