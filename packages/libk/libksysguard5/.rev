@@ -1072,4 +1072,12 @@
     <comment>Plasma 5.23.3(.1)</comment>
     <requestid>931357</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>eb1fcb0c9c45e7b1563e17d5cd29f341</srcmd5>
+    <version>5.23.4</version>
+    <time>1638480589</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.23.4</comment>
+    <requestid>934808</requestid>
+  </revision>
 </revisionlist>

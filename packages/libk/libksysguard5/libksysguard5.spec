@@ -19,7 +19,7 @@
 %bcond_without lang
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.23.3
+Version:        5.23.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,11 +29,12 @@ Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         libksysguard-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        libksysguard-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+Source3:        %{name}-rpmlintrc
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
@@ -169,8 +170,6 @@ QML applications.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}/kpackage/
-%dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_debugdir}/*.categories
 %{_kf5_libdir}/libKSysGuardFormatter.so.*
 %{_kf5_libdir}/libKSysGuardSensorFaces.so.*
@@ -182,6 +181,8 @@ QML applications.
 %{_kf5_libdir}/libprocessui.so.*
 %{_kf5_knsrcfilesdir}/systemmonitor-faces.knsrc
 %{_kf5_knsrcfilesdir}/systemmonitor-presets.knsrc
+%dir %{_kf5_plugindir}/kpackage/
+%dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_plugindir}/kpackage/packagestructure/sensorface_packagestructure.so
 %{_kf5_sharedir}/ksysguard/
 
