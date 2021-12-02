@@ -158,6 +158,10 @@ Prefer: -moonjit-devel
 Preinstall: liblua5_4-5
 
 FileProvides: /bin/bash bash
+%if "%{_repository}" == "standard"
+FileProvides: /bin/sh bash-sh busybox-sh
+%endif
+Prefer: bash-sh
 FileProvides: /bin/csh tcsh
 FileProvides: /bin/hostname hostname busybox-hostname
 FileProvides: /usr/bin/hostname hostname busybox-hostname
@@ -206,6 +210,9 @@ FileProvides: /sbin/pidof sysvinit-tools
 FileProvides: /sbin/ifup wicked-service
 
 Preinstall: aaa_base attr bash coreutils diffutils
+%if "%{_repository}" == "standard"
+Preinstall: bash-sh
+%endif
 Preinstall: filesystem fillup glibc grep
 Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
 Prefer: -pam_unix-nis
@@ -1556,12 +1563,12 @@ Runscripts: cputype-armv7
 Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type %%{?_lto_cflags}
 
 # 15.5 does not exist !
-%define suse_version 1550
+%define suse_version 1599
 %define is_opensuse 1
 %define skelcd_compat 0
 
 Macros:
-%suse_version 1550
+%suse_version 1599
 %is_opensuse 1
 %skelcd_compat 0
 
