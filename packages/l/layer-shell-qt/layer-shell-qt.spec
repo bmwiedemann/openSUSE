@@ -24,15 +24,15 @@
 
 %bcond_without lang
 Name:           layer-shell-qt
-Version:        5.23.3
+Version:        5.23.4
 Release:        0
 Summary:        wlr-layer-shell integration for Qt
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         layer-shell-qt-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz
 %if %{with lang}
-Source1:        layer-shell-qt-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/layer-shell-qt-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
