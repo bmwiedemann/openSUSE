@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 25 10:12:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't define doc/manpages packages in main build
+
+-------------------------------------------------------------------
+Wed Nov 24 13:45:22 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing recommends and split provides
+
+-------------------------------------------------------------------
+Wed Nov 24 13:39:45 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use multibuild to build docu with correct paths and available
+  features.
+
+-------------------------------------------------------------------
+Mon Nov 22 13:12:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- common-session: move pam_systemd to first position as if the
+  file would have been generated with pam-config
+- Add vendordir fixes and enhancements from upstream:
+  - pam_xauth_data.3.xml.patch
+  - 0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
+  - 0002-Only-include-vendordir-in-manual-page-if-set-401.patch
+  - 0003-Use-vendor-specific-limits.conf-as-fallback-402.patch
+- For buggy bot: Makefile-pam_unix-nis.diff belonged to the other 
+  spec file.
+
+-------------------------------------------------------------------
 Wed Nov 17 04:14:18 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update pam-login_defs-check.sh regexp and

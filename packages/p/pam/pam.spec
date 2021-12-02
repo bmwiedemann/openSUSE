@@ -17,6 +17,18 @@
 
 %bcond_with debug
 
+%define flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "full"
+%define build_main 0
+%define build_doc 1
+%define name_suffix -%{flavor}-src
+%else
+%define build_main 1
+%define build_doc 0
+%define name_suffix %{nil}
+%endif
+
 #
 %define enable_selinux 1
 %define libpam_so_version 0.85.1
@@ -29,7 +41,7 @@
 #
 %{load:%{_sourcedir}/macros.pam}
 #
-Name:           pam
+Name:           pam%{name_suffix}
 #
 Version:        1.5.2
 Release:        0
@@ -52,11 +64,15 @@ Source12:       pam-login_defs-check.sh
 Source13:       pam.tmpfiles
 Source14:       Linux-PAM-%{version}-docs.tar.xz.asc
 Source15:       Linux-PAM-%{version}.tar.xz.asc
-Patch2:         pam-limit-nproc.patch
-Patch4:         pam-hostnames-in-access_conf.patch
-Patch5:         pam-xauth_ownership.patch
-Patch8:         pam-bsc1177858-dont-free-environment-string.patch
-Patch12:        pam_umask-usergroups-login_defs.patch
+Patch1:         pam-limit-nproc.patch
+Patch2:         pam-hostnames-in-access_conf.patch
+Patch3:         pam-xauth_ownership.patch
+Patch4:         pam-bsc1177858-dont-free-environment-string.patch
+Patch5:         pam_umask-usergroups-login_defs.patch
+Patch10:        pam_xauth_data.3.xml.patch
+Patch11:        0001-Include-pam_xauth_data.3.xml-in-source-archive-400.patch
+Patch12:        0002-Only-include-vendordir-in-manual-page-if-set-401.patch
+Patch13:        0003-Use-vendor-specific-limits.conf-as-fallback-402.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -75,6 +91,7 @@ BuildRequires:  libselinux-devel
 %endif
 Requires:       pam_unix.so
 Suggests:       pam_unix
+Recommends:     pam-manpages
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(shadow)
 Requires(pre):  user(root)
@@ -88,6 +105,7 @@ having to recompile programs that do authentication.
 %package -n pam_unix
 Summary:        PAM module for standard UNIX authentication
 Group:          System/Libraries
+Provides:       pam:/%{_lib}/security/pam_unix.so
 Provides:       pam_unix.so
 Conflicts:      pam_unix-nis
 
@@ -111,17 +129,37 @@ This package contains useful extra modules eg pam_userdb which is
 used to verify a username/password pair against values stored in
 a Berkeley DB database.
 
-%package doc
+%if %{build_doc}
+
+%package -n pam-doc
 Summary:        Documentation for Pluggable Authentication Modules
 Group:          Documentation/HTML
 BuildArch:      noarch
 
-%description doc
+%description -n pam-doc
 PAM (Pluggable Authentication Modules) is a system security tool that
 allows system administrators to set authentication policies without
 having to recompile programs that do authentication.
 
 This package contains the documentation.
+
+%package -n pam-manpages
+Summary:        Manualpages for Pluggable Authentication Modules
+Group:          Documentation/HTML
+Provides:       pam:/%{_mandir}/man8/PAM.8.gz
+BuildArch:      noarch
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  elinks
+BuildRequires:  xmlgraphics-fop
+
+%description -n pam-manpages
+PAM (Pluggable Authentication Modules) is a system security tool that
+allows system administrators to set authentication policies without
+having to recompile programs that do authentication.
+
+This package contains the manual pages.
+
+%endif
 
 %package devel
 Summary:        Include Files and Libraries for PAM Development
@@ -140,11 +178,15 @@ building both PAM-aware applications and modules for use with PAM.
 %prep
 %setup -q -n Linux-PAM-%{version} -b 1
 cp -a %{SOURCE12} .
+%patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch8 -p1
+%patch10 -p1
+%patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -167,8 +209,10 @@ CFLAGS="$CFLAGS -DNDEBUG"
 %make_build
 gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/libpam/.libs -lpam
 
+%if %{build_main}
 %check
 %make_build check
+%endif
 
 %install
 mkdir -p %{buildroot}%{_pam_confdir}
@@ -209,15 +253,38 @@ done
 popd
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{_sbindir}
-install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
-# bsc#1188724
-echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
+
 # rpm macros
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
+
+mkdir %{buildroot}%{_distconfdir}/security
+mv %{buildroot}%{_sysconfdir}/security/limits.conf %{buildroot}%{_distconfdir}/security/limits.conf
+
+# Remove manual pages for main package
+%if !%{build_doc}
+rm -rf %{buildroot}%{_mandir}/man[58]/*
+install -m 644 modules/pam_userdb/pam_userdb.8 %{buildroot}/%{_mandir}/man8/
+%else
+install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
+# bsc#1188724
+echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
+%endif
+%if !%{build_main}
+rm -rf %{buildroot}{%{_sysconfdir},%{_distconfdir},%{_sbindir},%{_pam_secconfdir},%{_pam_confdir},%{_datadir}/locale}
+rm -rf %{buildroot}{%{_includedir},%{_libdir},%{_prefix}/lib}
+rm -rf %{buildroot}%{_mandir}/man3/*
+rm -rf %{buildroot}%{_mandir}/man8/pam_userdb.8*
+
+%else
+
 # Create filelist with translations
 %find_lang Linux-PAM
+
+%endif
+
+%if %{build_main}
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/unix_chkpwd
@@ -242,11 +309,17 @@ for i in securetty pam.d/other pam.d/common-account pam.d/common-auth pam.d/comm
 done
 
 %files -f Linux-PAM.lang
-%exclude %{_defaultdocdir}/pam
+%doc NEWS
+%license COPYING
+%exclude %{_defaultdocdir}/pam/html
+%exclude %{_defaultdocdir}/pam/modules
+%exclude %{_defaultdocdir}/pam/pdf
+%exclude %{_defaultdocdir}/pam/*.txt
 %dir %{_pam_confdir}
 %dir %{_pam_vendordir}
 %dir %{_pam_secconfdir}
 %dir %{_pam_secconfdir}/limits.d
+%dir %{_distconfdir}/security
 %dir %{_prefix}/lib/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_pam_confdir}/other
@@ -259,7 +332,7 @@ done
 %config(noreplace) %{_pam_secconfdir}/access.conf
 %config(noreplace) %{_pam_secconfdir}/group.conf
 %config(noreplace) %{_pam_secconfdir}/faillock.conf
-%config(noreplace) %{_pam_secconfdir}/limits.conf
+%{_distconfdir}/security/limits.conf
 %config(noreplace) %{_pam_secconfdir}/pam_env.conf
 %if %{enable_selinux}
 %config(noreplace) %{_pam_secconfdir}/sepermit.conf
@@ -268,65 +341,6 @@ done
 %config(noreplace) %{_pam_secconfdir}/namespace.conf
 %config(noreplace) %{_pam_secconfdir}/namespace.init
 %dir %{_pam_secconfdir}/namespace.d
-%doc NEWS
-%license COPYING
-%{_mandir}/man5/environment.5%{?ext_man}
-%{_mandir}/man5/*.conf.5%{?ext_man}
-%{_mandir}/man5/pam.d.5%{?ext_man}
-%{_mandir}/man5/motd.5%{?ext_man}
-%{_mandir}/man8/PAM.8%{?ext_man}
-%{_mandir}/man8/faillock.8%{?ext_man}
-%{_mandir}/man8/mkhomedir_helper.8%{?ext_man}
-%{_mandir}/man8/pam.8%{?ext_man}
-%{_mandir}/man8/pam_access.8%{?ext_man}
-%{_mandir}/man8/pam_debug.8%{?ext_man}
-%{_mandir}/man8/pam_deny.8%{?ext_man}
-%{_mandir}/man8/pam_echo.8%{?ext_man}
-%{_mandir}/man8/pam_env.8%{?ext_man}
-%{_mandir}/man8/pam_exec.8%{?ext_man}
-%{_mandir}/man8/pam_faildelay.8%{?ext_man}
-%{_mandir}/man8/pam_faillock.8%{?ext_man}
-%{_mandir}/man8/pam_filter.8%{?ext_man}
-%{_mandir}/man8/pam_ftp.8%{?ext_man}
-%{_mandir}/man8/pam_group.8%{?ext_man}
-%{_mandir}/man8/pam_issue.8%{?ext_man}
-%{_mandir}/man8/pam_keyinit.8%{?ext_man}
-%{_mandir}/man8/pam_lastlog.8%{?ext_man}
-%{_mandir}/man8/pam_limits.8%{?ext_man}
-%{_mandir}/man8/pam_listfile.8%{?ext_man}
-%{_mandir}/man8/pam_localuser.8%{?ext_man}
-%{_mandir}/man8/pam_loginuid.8%{?ext_man}
-%{_mandir}/man8/pam_mail.8%{?ext_man}
-%{_mandir}/man8/pam_mkhomedir.8%{?ext_man}
-%{_mandir}/man8/pam_motd.8%{?ext_man}
-%{_mandir}/man8/pam_namespace.8%{?ext_man}
-%{_mandir}/man8/pam_namespace_helper.8%{?ext_man}
-%{_mandir}/man8/pam_nologin.8%{?ext_man}
-%{_mandir}/man8/pam_permit.8%{?ext_man}
-%{_mandir}/man8/pam_pwhistory.8%{?ext_man}
-%{_mandir}/man8/pam_rhosts.8%{?ext_man}
-%{_mandir}/man8/pam_rootok.8%{?ext_man}
-%{_mandir}/man8/pam_securetty.8%{?ext_man}
-%{_mandir}/man8/pam_selinux.8%{?ext_man}
-%{_mandir}/man8/pam_sepermit.8%{?ext_man}
-%{_mandir}/man8/pam_setquota.8%{?ext_man}
-%{_mandir}/man8/pam_shells.8%{?ext_man}
-%{_mandir}/man8/pam_stress.8%{?ext_man}
-%{_mandir}/man8/pam_succeed_if.8%{?ext_man}
-%{_mandir}/man8/pam_time.8%{?ext_man}
-%{_mandir}/man8/pam_timestamp.8%{?ext_man}
-%{_mandir}/man8/pam_timestamp_check.8%{?ext_man}
-%{_mandir}/man8/pam_tty_audit.8%{?ext_man}
-%{_mandir}/man8/pam_umask.8%{?ext_man}
-%{_mandir}/man8/pam_unix.8%{?ext_man}
-%{_mandir}/man8/pam_usertype.8%{?ext_man}
-%{_mandir}/man8/pam_warn.8%{?ext_man}
-%{_mandir}/man8/pam_wheel.8%{?ext_man}
-%{_mandir}/man8/pam_xauth.8%{?ext_man}
-%{_mandir}/man8/pwhistory_helper.8%{?ext_man}
-%{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
-%{_mandir}/man8/unix_chkpwd.8%{?ext_man}
-%{_mandir}/man8/unix_update.8%{?ext_man}
 %{_libdir}/libpam.so.0
 %{_libdir}/libpam.so.%{libpam_so_version}
 %{_libdir}/libpamc.so.0
@@ -404,14 +418,6 @@ done
 %{_pam_moduledir}/pam_userdb.so
 %{_mandir}/man8/pam_userdb.8%{?ext_man}
 
-%files doc
-%defattr(644,root,root,755)
-%dir %{_defaultdocdir}/pam
-%doc %{_defaultdocdir}/pam/html
-%doc %{_defaultdocdir}/pam/modules
-%doc %{_defaultdocdir}/pam/pdf
-%doc %{_defaultdocdir}/pam/*.txt
-
 %files devel
 %defattr(644,root,root,755)
 %dir %{_includedir}/security
@@ -423,5 +429,78 @@ done
 %{_libdir}/libpam_misc.so
 %{_rpmmacrodir}/macros.pam
 %{_libdir}/pkgconfig/pam*.pc
+
+%endif
+
+%if %{build_doc}
+
+%files -n pam-doc
+%defattr(644,root,root,755)
+%dir %{_defaultdocdir}/pam
+%doc %{_defaultdocdir}/pam/html
+%doc %{_defaultdocdir}/pam/modules
+%doc %{_defaultdocdir}/pam/pdf
+%doc %{_defaultdocdir}/pam/*.txt
+
+%files -n pam-manpages
+%{_mandir}/man5/environment.5%{?ext_man}
+%{_mandir}/man5/*.conf.5%{?ext_man}
+%{_mandir}/man5/pam.d.5%{?ext_man}
+%{_mandir}/man5/motd.5%{?ext_man}
+%{_mandir}/man8/PAM.8%{?ext_man}
+%{_mandir}/man8/faillock.8%{?ext_man}
+%{_mandir}/man8/mkhomedir_helper.8%{?ext_man}
+%{_mandir}/man8/pam.8%{?ext_man}
+%{_mandir}/man8/pam_access.8%{?ext_man}
+%{_mandir}/man8/pam_debug.8%{?ext_man}
+%{_mandir}/man8/pam_deny.8%{?ext_man}
+%{_mandir}/man8/pam_echo.8%{?ext_man}
+%{_mandir}/man8/pam_env.8%{?ext_man}
+%{_mandir}/man8/pam_exec.8%{?ext_man}
+%{_mandir}/man8/pam_faildelay.8%{?ext_man}
+%{_mandir}/man8/pam_faillock.8%{?ext_man}
+%{_mandir}/man8/pam_filter.8%{?ext_man}
+%{_mandir}/man8/pam_ftp.8%{?ext_man}
+%{_mandir}/man8/pam_group.8%{?ext_man}
+%{_mandir}/man8/pam_issue.8%{?ext_man}
+%{_mandir}/man8/pam_keyinit.8%{?ext_man}
+%{_mandir}/man8/pam_lastlog.8%{?ext_man}
+%{_mandir}/man8/pam_limits.8%{?ext_man}
+%{_mandir}/man8/pam_listfile.8%{?ext_man}
+%{_mandir}/man8/pam_localuser.8%{?ext_man}
+%{_mandir}/man8/pam_loginuid.8%{?ext_man}
+%{_mandir}/man8/pam_mail.8%{?ext_man}
+%{_mandir}/man8/pam_mkhomedir.8%{?ext_man}
+%{_mandir}/man8/pam_motd.8%{?ext_man}
+%{_mandir}/man8/pam_namespace.8%{?ext_man}
+%{_mandir}/man8/pam_namespace_helper.8%{?ext_man}
+%{_mandir}/man8/pam_nologin.8%{?ext_man}
+%{_mandir}/man8/pam_permit.8%{?ext_man}
+%{_mandir}/man8/pam_pwhistory.8%{?ext_man}
+%{_mandir}/man8/pam_rhosts.8%{?ext_man}
+%{_mandir}/man8/pam_rootok.8%{?ext_man}
+%{_mandir}/man8/pam_securetty.8%{?ext_man}
+%{_mandir}/man8/pam_selinux.8%{?ext_man}
+%{_mandir}/man8/pam_sepermit.8%{?ext_man}
+%{_mandir}/man8/pam_setquota.8%{?ext_man}
+%{_mandir}/man8/pam_shells.8%{?ext_man}
+%{_mandir}/man8/pam_stress.8%{?ext_man}
+%{_mandir}/man8/pam_succeed_if.8%{?ext_man}
+%{_mandir}/man8/pam_time.8%{?ext_man}
+%{_mandir}/man8/pam_timestamp.8%{?ext_man}
+%{_mandir}/man8/pam_timestamp_check.8%{?ext_man}
+%{_mandir}/man8/pam_tty_audit.8%{?ext_man}
+%{_mandir}/man8/pam_umask.8%{?ext_man}
+%{_mandir}/man8/pam_unix.8%{?ext_man}
+%{_mandir}/man8/pam_usertype.8%{?ext_man}
+%{_mandir}/man8/pam_warn.8%{?ext_man}
+%{_mandir}/man8/pam_wheel.8%{?ext_man}
+%{_mandir}/man8/pam_xauth.8%{?ext_man}
+%{_mandir}/man8/pwhistory_helper.8%{?ext_man}
+%{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
+%{_mandir}/man8/unix_chkpwd.8%{?ext_man}
+%{_mandir}/man8/unix_update.8%{?ext_man}
+
+%endif
 
 %changelog
