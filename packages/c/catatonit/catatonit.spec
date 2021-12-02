@@ -27,6 +27,7 @@ Source0:        https://github.com/openSUSE/catatonit/releases/download/v%{versi
 Source1:        https://github.com/openSUSE/catatonit/releases/download/v%{version}/%{name}.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
+Patch0:         https://github.com/openSUSE/catatonit/commit/99bb9048f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  file
@@ -45,7 +46,7 @@ This is a reimplementation of other container init programs (such as
 signalfd(2)) and has no additional features.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
