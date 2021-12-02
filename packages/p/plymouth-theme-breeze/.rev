@@ -759,4 +759,12 @@
     <comment>- Make check for TW a bit more flexible (forwarded request 933752 from Vogtinator)</comment>
     <requestid>933753</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>82da3ed67c4e4895b5a57a6704898762</srcmd5>
+    <version>5.23.4</version>
+    <time>1638480612</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.23.4</comment>
+    <requestid>934829</requestid>
+  </revision>
 </revisionlist>
