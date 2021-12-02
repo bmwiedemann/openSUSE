@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 27 13:49:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.198.0
+  * vulkaninf: Support 64 bit flags
+  * vkcube: Reorder setting of pipeline stage flags
+  * vulkaninfo: Prevent drivers from writing out of bounds
+
+-------------------------------------------------------------------
 Sun Sep  5 11:08:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.189.0
