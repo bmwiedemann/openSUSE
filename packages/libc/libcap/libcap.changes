@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov 21 19:20:22 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libcap 2.61:
+  * Better error handling of the numerical arguments for capsh and
+    setcap
+  * Fix executable mode for all of the .so files. There were two
+    situations where this was failing (with a hard to debug SIGSEGV
+    inside libc)
+  * Added an example of a shared library object with its own file
+    capability
+  * Fix the top-level include for Make.Rules in the contrib/sucap
+    example application
+  * Add support for running constructors at libcap.so start up time
+    when running as stand alone binary.
+- includes changes from 2.60:
+  * Some build, code linting fixes, the addition of the
+    cap_fill_flag() API and a memory latency optimization
+  * General improvement in thread safety for libcap and cap package
+  * Minor API change replacing libcap:cap_launch_*() void returning
+    functions with int + errno status returns.
+  * Added a cap_iab_dup(), and (*cap.IAB).Dup() to API
+  * New features for capsh: --quiet, -+ and =+ arguments
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Tue Sep 28 12:05:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 2.59:
