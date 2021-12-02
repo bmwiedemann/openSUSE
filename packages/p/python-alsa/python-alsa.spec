@@ -27,12 +27,14 @@ URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2
 Source1:        COPYING
 Source2:        COPYING.LIB
+Patch1:         0001-alsaseq-fix-constant-objects-in-Python-3.patch
+Patch2:         0002-Fix-PyTuple_SET_ITEM-usage-no-return-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  alsa-devel
 BuildRequires:  python-rpm-macros
 Provides:       pyalsa = %{version}
-Obsoletes:      pyalsa
+Obsoletes:      pyalsa < %{version}
 %python_subpackages
 
 %description
@@ -40,6 +42,8 @@ This package provides the Python binding to ALSA.
 
 %prep
 %setup -q -n pyalsa-%{version}
+%patch1 -p1
+%patch2 -p1
 cp %{SOURCE1} %{SOURCE2} .
 
 %build

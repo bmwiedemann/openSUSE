@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:31:11 CET 2021 - tiwai@suse.de
+
+- Fix Obsoletes with version comparison
+- Backport upstream fixes for python3:
+  0001-alsaseq-fix-constant-objects-in-Python-3.patch
+  0002-Fix-PyTuple_SET_ITEM-usage-no-return-value.patch
+
+-------------------------------------------------------------------
 Mon May 31 17:23:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use https for URL and SourceURL
