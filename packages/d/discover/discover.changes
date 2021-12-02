@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 30 14:59:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Reverse screenshots arrows when in RTL mode
+  * flatpak: Do not discard remotes with different installations as duplicates (kde#443745)
+  * flatpak: Do not call flatpak function with a nullptr (kde#445819)
+  * flatpak: Check for errors before using the value
+  * flatpak: Do not include the resource type in the FlatpakResource::Id
+
+-------------------------------------------------------------------
 Sat Nov 13 14:38:17 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.23.3.1
