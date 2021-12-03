@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.4.8
+Version:        4.4.9
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
