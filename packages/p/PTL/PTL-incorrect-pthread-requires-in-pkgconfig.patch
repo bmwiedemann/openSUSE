@@ -1,0 +1,12 @@
+Index: PTL-2.2.0/cmake/Templates/ptl.pc.in
+===================================================================
+--- PTL-2.2.0.orig/cmake/Templates/ptl.pc.in
++++ PTL-2.2.0/cmake/Templates/ptl.pc.in
+@@ -6,6 +6,6 @@ Name: PTL
+ Description: Parallel Tasking Library for C++
+ Version: @PTL_VERSION_STRING@
+ Requires: @PTL_PC_TBB_REQUIREMENT@
+-Requires.private: -pthread
+ Libs: -L${libdir} -lptl
++Libs.private: -pthread
+ CFlags: -std=c++@CMAKE_CXX_STANDARD@ -pthread -I${includedir}
