@@ -161,9 +161,7 @@ Prefer: -moonjit-devel
 Preinstall: liblua5_4-5
 
 FileProvides: /bin/bash bash
-%if "%{_repository}" == "standard"
 FileProvides: /bin/sh bash-sh busybox-sh
-%endif
 Prefer: bash-sh
 FileProvides: /bin/csh tcsh
 FileProvides: /bin/hostname hostname busybox-hostname
@@ -213,9 +211,7 @@ FileProvides: /sbin/pidof sysvinit-tools
 FileProvides: /sbin/ifup wicked-service
 
 Preinstall: aaa_base attr bash coreutils diffutils
-%if "%{_repository}" == "standard"
 Preinstall: bash-sh
-%endif
 Preinstall: filesystem fillup glibc grep
 Preinstall: libbz2-1 libgcc_s1 libncurses6 pam
 Prefer: -pam_unix-nis
