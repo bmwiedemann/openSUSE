@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 29 20:38:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Make webrick dependency just optional to avoid another build
+  dependency on ruby3 (bsc#1193192)
+- 0.2.43
+
+-------------------------------------------------------------------
 Wed Oct  6 13:42:23 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed running the GitHub Actions locally ("rake actions:run"),
