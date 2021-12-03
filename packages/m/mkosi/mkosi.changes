@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  3 14:55:35 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
+Fri Dec  3 06:59:38 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 12:
+  - Fix handling of baselayout in Gentoo installations.
+
+-------------------------------------------------------------------
 Thu Nov 25 20:29:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 11:

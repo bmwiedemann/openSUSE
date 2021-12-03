@@ -17,7 +17,7 @@
 
 
 Name:           mkosi
-Version:        11
+Version:        12
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
@@ -43,7 +43,7 @@ Recommends:     pacman >= 6.0.1
 Recommends:     veritysetup
 Recommends:     zstd
 BuildArch:      noarch
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 A fancy wrapper around dnf --installroot, debootstrap, pacstrap and zypper that
