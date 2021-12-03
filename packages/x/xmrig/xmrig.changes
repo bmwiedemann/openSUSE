@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Dec  3 06:57:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.2:
+  * v6.16.2
+  * Update CHANGELOG.md
+  * #2771 Fixed environment variables support in EthStratumClient.
+  * Compilationn fixes
+  * GhostRider benchmark: added 20 more possible rounds
+  * Updated changelog and GhostRider readme
+  * Compiler fix
+  * Refactored Chrono::highResolutionMSecs()
+  * Explicitly use QueryPerformanceCounter() on Windows
+  * VAES crash fixes
+  * v6.16.2-dev
+  * v6.16.1
+  * Fixed Clang build.
+  * Check compiler support for VAES
+  * Disable VAES in 32-bit builds
+  * Fix compile for VAES support with GCC<10
+  * v6.16.1-dev
+  * Added VAES support for Cryptonight variants
+  * More GhostRider fixes
+  * Slash and burn EOL whitespace everywhere
+  * GhostRider hotfixes
+  * v6.16.0
+  * Update CHANGELOG.md
+  * Added GhostRider release notes
+  * Add GhostRider support for AutoClient.
+  * Only initGhostRider() when job is in the family
+  * Benchmark support for GhostRider (offline only)
+  * v6.16.0-dev
+  * GhostRider: fixed invalid hashes on ARMv8
+  * Optimized quad hash for Ryzens
+  * Faster quad hash for GhostRider algos (Ryzen CPUs)
+  * Fixed broken difficulty adjustment on some Raptoreum pools
+  * Fixed compilation error
+  * GhostRider algorithm (Raptoreum) support
+  * MSR mod: fix for error 183
+  * Fix: use cn-heavy optimization only for Vermeer CPUs
+  * v6.15.4-dev
+
+-------------------------------------------------------------------
 Thu Nov 11 14:08:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.15.3:
