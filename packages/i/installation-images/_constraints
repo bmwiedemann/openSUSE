@@ -3,5 +3,8 @@
     <disk>
       <size unit="G">24</size>
     </disk>
+    <physicalmemory>
+      <size unit="M">2000</size>
+    </physicalmemory>
   </hardware>
 </constraints>

@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Dec 1 09:48:34 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#551
+- Update _constraint to avoid to swap in order to speed up the
+  builds
+- 17.28
+
+--------------------------------------------------------------------
 Fri Nov 26 15:35:34 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#550
