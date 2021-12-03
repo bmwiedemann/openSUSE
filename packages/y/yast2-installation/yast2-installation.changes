@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Dec  3 06:53:52 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display the product's license when only 1 product is available
+  in the online medium (bsc#1193223).
+- Do not display the product's selector during upgrade
+  (kanderssen@suse.com, bsc#1192230).
+- 4.4.26
+
+-------------------------------------------------------------------
+Thu Dec  2 16:56:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Drop support for subscription-tools, that package is not present
+  in SLE15 anymore (bsc#1193339)
+- 4.4.25
+
+-------------------------------------------------------------------
+Tue Nov 30 14:45:45 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when it is not possible to fetch the package
+  containing the release notes (bsc#1193148).
+- 4.4.24
+
+-------------------------------------------------------------------
 Wed Nov 24 15:13:23 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Remove no longer used extra warning about destructive actions
