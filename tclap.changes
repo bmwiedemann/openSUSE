@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 28 19:54:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Fixes compilation issue with GCC 11 and later
+  * Improvements to test framework
+
+-------------------------------------------------------------------
 Sat Apr 17 02:42:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.2.4
