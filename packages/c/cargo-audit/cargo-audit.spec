@@ -20,10 +20,10 @@
 %global workspace_name rustsec
 
 Name:           cargo-audit
-Version:        0.15.2~git0.fe0b327
+Version:        0.16.0~git0.625c965
 Release:        0
 Summary:        Audit rust sources for known security vulnerabilities
-License:        License: ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND MIT AND MPL-2.0 AND MPL-2.0+
+License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND MIT AND MPL-2.0 AND MPL-2.0+
 Group:          Development/Languages/Rust
 URL:            https://github.com/RustSec/cargo-audit
 Source0:        %{workspace_name}-%{version}.tar.xz

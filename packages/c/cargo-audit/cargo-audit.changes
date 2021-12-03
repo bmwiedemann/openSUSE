@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec  3 01:09:15 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Fix incorrect license string
+
+-------------------------------------------------------------------
+Mon Nov 15 23:19:01 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.16.0~git0.625c965:
+  * cargo-audit v0.16.0 (#487)
+  * rustsec v0.25.1 (#486)
+  * platforms v2.0.0 (#485)
+  * platforms: make `Platform::ALL` an inherent constant (#484)
+  * platforms: make tier modules non-`pub` (#483)
+  * rustsec-admin v0.6.0 (#482)
+  * Update atom_syndication to 0.11 (#481)
+  * rustsec v0.25.0 (#480)
+  * Cargo.lock: bump dependencies (#479)
+  * rustsec: flatten API (#478)
+
+-------------------------------------------------------------------
 Wed Oct 06 01:20:31 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.15.2~git0.fe0b327:
