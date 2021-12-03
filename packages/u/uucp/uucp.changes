@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 30 09:24:38 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * suucp.service
+
+-------------------------------------------------------------------
 Mon Mar 26 12:24:17 UTC 2018 - dimstar@opensuse.org
 
 - Own %{_sysconfdir}/xinetd.d: filesystem won't own this directory
