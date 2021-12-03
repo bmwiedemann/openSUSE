@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  3 07:17:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.11.00:
+  * lib: fwts_version.h - update to V21.11.00
+  * debian: update changelog
+  * auto-packager:mkpackage.sh: add jammy
+  * fwts-test: sync up the adding sleep type for s2idle testing
+  * s3: add sleep type setting for testing with s3 or s2idle
+  * acpi: madt: De-initialise ACPICA core engine in case of error.
+  * lib: fwts_smbios: fix loading SMBIOS table from uefi
+  * acpi: uniqueid: skip comparison of _HID and _CID of the same device
+  * ACPICA: Update to version 20210930
+
+-------------------------------------------------------------------
 Wed Sep 29 08:13:11 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 21.09.00:
