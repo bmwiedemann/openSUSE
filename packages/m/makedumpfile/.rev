@@ -1094,4 +1094,18 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>932486</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>3dc54f76db251c8f46f63459456092d4</srcmd5>
+    <version>1.7.0</version>
+    <time>1638560124</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge SLE15 SP3 changelog.
+- Patches that were never actually applied to Factory:
+  * makedumpfile-Retrieve-MAX_PHYSMEM_BITS-from-vmcoreinfo.patch
+    (included in 1.6.8)
+  * makedumpfile-arm64-Add-support-for-ARMv8.2-LPA-52-bit-PA-su.patch
+    (included in 1.6.8)
+</comment>
+    <requestid>935387</requestid>
+  </revision>
 </revisionlist>
