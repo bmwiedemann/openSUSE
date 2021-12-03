@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Dec  3 12:21:14 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Fix regression for unit tests: mock the generation of Bcache
+  issues to avoid setting the architecture for every test (related
+  to jsc#SLE-18430).
+- 4.4.20
+
+-------------------------------------------------------------------
+Thu Dec  2 16:36:41 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Refined the criteria used to check whether a certain mount point
+  needs the _netdev mount option (jsc#SLE-20535).
+- Now _netdev is only added if needed at the end of the Guided
+  Proposal, is not longer suggested as part of the default mount
+  options for new mount points.
+- 4.4.19
+
+-------------------------------------------------------------------
+Thu Dec  2 15:16:17 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Improve probing errors handling: when there are several errors,
+  only one popup is shown, and Details button shows all the errors
+  (jsc#SLE-18430).
+- Partitioner: add menu option View/System Issues.
+- 4.4.18
+
+-------------------------------------------------------------------
+Thu Dec  2 14:44:24 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify the Yes/No popup button IDs (bsc#1193326)
+- 4.4.17
+
+-------------------------------------------------------------------
+Wed Dec  1 14:00:02 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Prepare code for ruby3 (bsc#1193192)
+- 4.4.16
+
+-------------------------------------------------------------------
+Tue Nov 30 13:12:33 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Changed the HWInfoReader API: now it always returns objects of
+  a new Y2Storage::HWInfoDisk class (backwards compatible with
+  OpenStruct).
+
+-------------------------------------------------------------------
 Thu Nov 23 16:00:00 UTC 2021 - Stefan Knorr <sknorr@suse.com>
 
 - Fixed typo in message about encryption (part of jsc#SLE-21308)
