@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 26 12:56:12 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build also on armv6
+
+-------------------------------------------------------------------
 Tue Nov 16 15:21:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
