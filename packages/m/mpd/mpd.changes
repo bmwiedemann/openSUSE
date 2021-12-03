@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Dec  2 18:29:33 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Updated to 0.23.5
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.5/NEWS
+  * protocol:
+    * support relative offsets for "searchadd"
+    * fix "searchaddpl" bug (bogus error "Bad position")
+  * database: upnp: fix crash bug
+  * tags: fix MixRamp support
+  * migrate to PCRE2
+  * GCC 12 build fixes
+
+-------------------------------------------------------------------
 Fri Nov 12 23:12:23 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.23.4

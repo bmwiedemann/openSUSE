@@ -555,4 +555,20 @@
     * ignore the &quot;pid_file&quot; setting if started as systemd service</comment>
     <requestid>931211</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4b6aa10981c802523e2e86917d054889</srcmd5>
+    <version>0.23.5</version>
+    <time>1638560139</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.5
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.5/NEWS
+  * protocol:
+    * support relative offsets for &quot;searchadd&quot;
+    * fix &quot;searchaddpl&quot; bug (bogus error &quot;Bad position&quot;)
+  * database: upnp: fix crash bug
+  * tags: fix MixRamp support
+  * migrate to PCRE2
+  * GCC 12 build fixes</comment>
+    <requestid>935317</requestid>
+  </revision>
 </revisionlist>
