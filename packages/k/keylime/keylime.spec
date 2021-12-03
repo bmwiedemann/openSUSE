@@ -118,6 +118,9 @@ Subpackage of %{name} for verifier service.
 
 %prep
 %autosetup -p1
+%if !0%{?is_opensuse}
+sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
+%endif
 
 %build
 %python_build
