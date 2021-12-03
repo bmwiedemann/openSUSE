@@ -9172,7 +9172,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
-  - libVkLayer_utils-1_2_189_0 
+  - libVkLayer_utils-1_2_198_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -18352,8 +18352,6 @@ unsorted:
   - pam_ssh_agent_auth 
   - pam_u2f 
   - pam_unix-32bit: [x86_64] 
-  - pam_unix-nis 
-  - pam_unix-nis-32bit: [x86_64] 
   - pam_userpass 
   - pam_userpass-32bit: [x86_64] 
   - pam_wrapper 
@@ -22418,7 +22416,6 @@ unsorted:
   - python36-django-dj-inmemorystorage 
   - python36-django-environ 
   - python36-django-eremaea2 
-  - python36-django-extensions 
   - python36-django-extra-views 
   - python36-django-filter 
   - python36-django-formtools 
@@ -22468,7 +22465,6 @@ unsorted:
   - python36-django-seed 
   - python36-django-sekizai 
   - python36-django-settings-toml 
-  - python36-django-silk 
   - python36-django-sortedm2m 
   - python36-django-storages 
   - python36-django-tagging 
@@ -22557,7 +22553,6 @@ unsorted:
   - python36-evtx 
   - python36-exam 
   - python36-execnet 
-  - python36-executing 
   - python36-exiv2 
   - python36-expects 
   - python36-expiringdict 
@@ -22684,7 +22679,6 @@ unsorted:
   - python36-gobject-devel 
   - python36-goobook 
   - python36-google-api-core 
-  - python36-google-api-python-client 
   - python36-google-auth 
   - python36-google-auth-httplib2 
   - python36-google-auth-oauthlib 
@@ -24250,7 +24244,6 @@ unsorted:
   - python36-xpybutil 
   - python36-xvfbwrapper 
   - python36-xxhash 
-  - python36-yacron 
   - python36-yamldoc 
   - python36-yamllint 
   - python36-yamlloader 

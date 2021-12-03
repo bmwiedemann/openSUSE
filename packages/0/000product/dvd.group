@@ -3215,6 +3215,7 @@
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pam-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="pam_apparmor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
