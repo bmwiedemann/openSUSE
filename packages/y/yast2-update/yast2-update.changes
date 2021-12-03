@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 07:50:46 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash after selecting the system to upgrade when using
+  the full medium (bsc#1193212).
+- 4.4.6
+
+-------------------------------------------------------------------
 Fri Nov 26 15:02:03 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Remove obsolete code for treating /var differently when mounting
