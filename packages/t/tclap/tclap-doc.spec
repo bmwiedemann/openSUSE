@@ -17,13 +17,13 @@
 
 
 Name:           tclap-doc
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        API Documentation for %{name}
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://tclap.sf.net
-Source0:        http://prdownloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
+URL:            http://tclap.sourceforge.net/
+Source0:        http://downloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

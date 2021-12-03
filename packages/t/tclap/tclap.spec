@@ -17,13 +17,13 @@
 
 
 Name:           tclap
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Templatized C++ Command Line Parser
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://tclap.sf.net
-Source0:        http://prdownloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
+URL:            http://tclap.sourceforge.net
+Source0:        https://downloads.sourceforge.net/tclap/tclap-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
