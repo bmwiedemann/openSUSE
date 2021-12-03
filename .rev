@@ -929,4 +929,12 @@
     <comment>submit new version 4.4.4</comment>
     <requestid>912918</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>d852141cd31ccbd7f71c3f3f7de79079</srcmd5>
+    <version>4.4.6</version>
+    <time>1638560117</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.6</comment>
+    <requestid>934628</requestid>
+  </revision>
 </revisionlist>

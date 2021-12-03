@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 29 20:21:23 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Avoid timing issue in integration tests ( bsc#1193192 )
+- 4.4.6
+
+-------------------------------------------------------------------
+Mon Nov 29 15:34:14 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Avoid warning in ruby3.0 ( bsc#1193192 )
+- 4.4.5
+
+-------------------------------------------------------------------
 Wed Aug 18 14:32:24 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix dependency on s390 (revealed by previous fix for bsc#972548)
