@@ -1,7 +1,7 @@
 #
-# spec file for package groff
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -89,7 +89,7 @@ Obsoletes:      groff-devx <= 1.21
 # alternatives
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %endif
 
 %description
@@ -166,6 +166,7 @@ rm -f %{buildroot}%{_bindir}/soelim
 rm -f %{buildroot}%{_bindir}/tbl
 rm -f %{buildroot}%{_bindir}/troff
 rm -f %{buildroot}%{_libexecdir}/groff/grog/subs.pl
+rm -f %{buildroot}%{_datadir}/groff/current
 rm -f %{buildroot}%{_datadir}/groff/1.22.4/eign
 rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devascii
 rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devlatin1
@@ -298,8 +299,10 @@ fi
 %dir %{_libexecdir}/groff
 %dir %{_libexecdir}/groff/grog
 %{_libexecdir}/groff/grog/subs.pl
+%{_datadir}/groff/current
 
 %else #groff_base_only
+
 %files -n groff-full
 %dir %{_datadir}/groff/%{version}
 %dir %{_libexecdir}/groff
@@ -326,7 +329,6 @@ fi
 %dir %{_datadir}/groff
 %{_datadir}/groff/%{version}/font
 %{_datadir}/groff/%{version}/oldfont
-%{_datadir}/groff/current
 %{_libexecdir}/groff/groffer
 
 %files -n groff-doc
