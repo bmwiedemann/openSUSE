@@ -48,4 +48,12 @@
   * Add -version option to print program version</comment>
     <requestid>593757</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7f5a370fe4341a58e15fc555a1680730</srcmd5>
+    <version>1.0.5</version>
+    <time>1638560148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935491</requestid>
+  </revision>
 </revisionlist>
