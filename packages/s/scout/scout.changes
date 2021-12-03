@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 30 12:07:46 UTC 2021 - aplanas@suse.com
+
+- Update to version 0.2.6+20211130.022a45c:
+  * Fix finding packages from repo with / in name
+  * Translated using Weblate (French, Slovak, Spanish)
+
+-------------------------------------------------------------------
 Sat Apr 24 03:51:49 UTC 2021 - bwiedemann@suse.com
 
 - Update to version 0.2.5+20210424.3bff388:

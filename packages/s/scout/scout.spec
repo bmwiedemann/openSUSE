@@ -1,7 +1,7 @@
 #
 # spec file for package scout
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cnfrepo zypp
 Name:           scout
-Version:        0.2.5+20210424.3bff388
+Version:        0.2.6+20211130.022a45c
 Release:        0
 Summary:        Indexing Package Properties
 License:        MIT
 Group:          System/Packages
-Url:            https://github.com/openSUSE/scout/
+URL:            https://github.com/openSUSE/scout/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gettext
 BuildRequires:  python3
