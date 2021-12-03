@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Fri Dec 3 12:31:37 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#848
+- properly quote partition label
+- coding style
+- 4.4.63
+
+--------------------------------------------------------------------
+Thu Dec 2 12:46:34 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#847
+- support to set partition label
+- updated pot and po files
+- extended documentation
+- 4.4.62
+
+--------------------------------------------------------------------
 Wed Dec 1 11:38:48 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#846
