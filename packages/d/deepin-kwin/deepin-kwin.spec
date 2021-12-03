@@ -18,17 +18,17 @@
 
 %define   _name           dde-kwin
 %define   sover           0
+%define   kwin_version    %(rpm -q --queryformat '%%{VERSION}' kwin5)
+%define   kwin_max        5.21.5
 
 Name:           deepin-kwin
-Version:        5.3.9
+Version:        5.4.12
 Release:        0
 Summary:        KWin configures/plugins on the DDE
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin/dde-kwin
 Source0:        https://github.com/linuxdeepin/dde-kwin/archive/%{version}/%{_name}-%{version}.tar.gz
-# Source0:        https://github.com/ukui/dde-kwin/archive/%{commit}/%{_name}-%{shortcommit}.tar.gz
-# Patch1:         deepin-kwin-unload-blur.patch
 Patch0:         deepin-kwin-tabbox-chameleon-rename.patch
 %if 0%{suse_version} > 1500
 Patch1:         deepin-kwin-crash.patch
@@ -65,12 +65,15 @@ Requires:       deepin-wallpapers
 Requires:       dbus-1
 Requires:       kwin5
 Provides:       deepin-kwin5
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if "%{kwin_version}" > "%{kwin_max}"
+BuildArch:      noarch
+%endif
 
 %description
 KWin configures/plugins on the DDE
 Let kwin work well in the Deepin Desktop Environment.
 
+%if "%{kwin_version}" <= "%{kwin_max}"
 %package -n libkwin-xcb%{sover}
 Summary:        Deepin Kwin libraries
 Group:          System/Libraries
@@ -89,6 +92,7 @@ The deepin-plugin-kwin-devel package contains the header files and developer
 docs for deepin-plugin-kwin.
 
 %lang_package
+%endif
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
@@ -101,42 +105,51 @@ mkdir build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DCMAKE_INSTALL_LIBDIR=%{_libdir}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-chmod 0644 %{buildroot}%{_datadir}/kwin/tabbox/chameleon/contents/ui/main.qml \
+%if "%{kwin_version}" <= "%{kwin_max}"
+chmod -x %{buildroot}%{_datadir}/kwin/tabbox/chameleon/contents/ui/main.qml \
            %{buildroot}%{_datadir}/kwin/tabbox/chameleon/metadata.desktop
-           
+%endif
+
 chmod +x %{buildroot}%{_bindir}/kwin_no_scale 
 rm -rf %{buildroot}%{_datadir}/kwin/*/*/LICENSE
 
-rm -rf %{buildroot}%{_datadir}/kwin/tabbox/thumbnail_grid/metadata.desktop \
-%{buildroot}%{_datadir}/kwin/tabbox/thumbnail_grid/contents/ui/main.qml \
-%{buildroot}%{_sysconfdir}/xdg/kwinrc \
-%{buildroot}%{_sysconfdir}/xdg/kdeglobals
+rm -rf \
+%if "%{kwin_version}" <= "%{kwin_max}"
+    %{buildroot}%{_datadir}/kwin/tabbox/thumbnail_grid/metadata.desktop \
+    %{buildroot}%{_datadir}/kwin/tabbox/thumbnail_grid/contents/ui/main.qml \
+%endif
+    %{buildroot}%{_sysconfdir}/xdg/kwinrc \
+    %{buildroot}%{_sysconfdir}/xdg/kdeglobals
+
            
 %fdupes %{buildroot}
 
+%if "%{kwin_version}" <= "%{kwin_max}"
 %post -n libkwin-xcb%{sover} -p /sbin/ldconfig
 
 %postun -n libkwin-xcb%{sover} -p /sbin/ldconfig
+%endif
 
 %files
 %defattr(-,root,root,-)
 %doc CHANGELOG.md
 %license LICENSE
 %config %{_sysconfdir}/xdg/*
-%{_bindir}/deepin-wm-dbus
 %{_bindir}/kwin_no_scale
-%{_datadir}/dbus-1/interfaces/*.xml
-%{_datadir}/dbus-1/services/com.deepin.wm.service
+%if 0%{?suse_version} <= 1500
 %dir %{_datadir}/kwin
 %dir %{_datadir}/kwin/scripts
 %dir %{_datadir}/kwin/tabbox
 %{_datadir}/kwin/scripts/*
 %{_datadir}/kwin/tabbox/*
+%{_bindir}/deepin-wm-dbus
+%{_datadir}/dbus-1/interfaces/*.xml
+%{_datadir}/dbus-1/services/com.deepin.wm.service
 %{_kf5_plugindir}/platforms/libdde-kwin-xcb.so
 %{_kf5_plugindir}/org.kde.kdecoration2/libdeepin-chameleon.so
 %dir %{_kf5_plugindir}/kwin/effects/plugins/
@@ -158,6 +171,7 @@ rm -rf %{buildroot}%{_datadir}/kwin/tabbox/thumbnail_grid/metadata.desktop \
 %{_libdir}/libkwin-xcb.so
 %{_includedir}/%{_name}
 %{_libdir}/pkgconfig/dde-kwin.pc
+%endif
 
 %changelog
 

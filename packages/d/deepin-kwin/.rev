@@ -39,4 +39,22 @@
     <comment>- Add fix-library-links.patch, fix build on Tumbleweed (forwarded request 920721 from hillwood)</comment>
     <requestid>920722</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1590742964d1c199d5f16eb3a0ea6a7a</srcmd5>
+    <version>5.4.12</version>
+    <time>1638560139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.12
+  * Split screen mode is always grayed out in the working area
+  * add split screen menu
+  * support lightWeight config for shadow
+  * optimize work thumbnail
+  * Fix bugs
+  * Workaround: builds are not performed under Kwin greater than 5.21
+
+- Update version to 5.3.14
+  * Fix bugs
+  * Update translations</comment>
+    <requestid>935393</requestid>
+  </revision>
 </revisionlist>

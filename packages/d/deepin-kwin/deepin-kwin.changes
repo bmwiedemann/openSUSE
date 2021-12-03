@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 30 01:42:15 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.12
+  * Split screen mode is always grayed out in the working area
+  * add split screen menu
+  * support lightWeight config for shadow
+  * optimize work thumbnail
+  * Fix bugs
+  * Workaround: builds are not performed under Kwin greater than 5.21
+
+-------------------------------------------------------------------
+Tue Nov  9 03:39:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.14
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
 Wed Sep 22 04:09:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-library-links.patch, fix build on Tumbleweed
