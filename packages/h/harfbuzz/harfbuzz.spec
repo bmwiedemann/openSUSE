@@ -17,13 +17,14 @@
 
 
 Name:           harfbuzz
-Version:        2.9.1
+Version:        3.1.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28

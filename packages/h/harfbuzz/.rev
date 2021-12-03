@@ -770,4 +770,19 @@
     <comment>harfbuzz 2.9.1 (forwarded request 918533 from AndreasStieger)</comment>
     <requestid>918656</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>fcce5ad2204252471ee53e3b0ba1ffe8</srcmd5>
+    <version>3.1.1</version>
+    <time>1638560123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1
+
+ABI incompat, but upstream is not willing to understand the issue.
+SLE15SP4 and Leap 15.4 are going with this harfbuzz version, so we should
+try to at least align TW there too.
+
+# trigger rebuild of everything behind harfbuzz on accept
+https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
+    <requestid>934983</requestid>
+  </revision>
 </revisionlist>
