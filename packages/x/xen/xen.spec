@@ -28,7 +28,6 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define changeset 41121
 %define xen_build_dir xen-4.16.0-testing
 #
 %define with_gdbsx 0
@@ -120,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.16.0_01
+Version:        4.16.0_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -452,7 +451,6 @@ XEN_EXTRAVERSION=$XEN_EXTRAVERSION
 XEN_FULLVERSION=$XEN_FULLVERSION
 _EOV_
 source ./.our_xenversion
-echo "%{changeset}" > xen/.scmversion
 sed -i~ "
 s/XEN_VERSION[[:blank:]]*=.*/XEN_VERSION = $XEN_VERSION/
 s/XEN_SUBVERSION[[:blank:]]*=.*/XEN_SUBVERSION = $XEN_SUBVERSION/

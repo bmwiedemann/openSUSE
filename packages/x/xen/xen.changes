@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Dec  1 09:45:10 MST 2021 - carnold@suse.com
+
+- Update to Xen 4.16.0 FCS release
+  xen-4.16.0-testing-src.tar.bz2
+  * Miscellaneous fixes to the TPM manager software in preparation
+    for TPM 2.0 support.
+  * Increased reliance on the PV shim as 32-bit PV guests will only
+    be supported in shim mode going forward. This change reduces
+    the attack surface in the hypervisor.
+  * Increased hardware support by allowing Xen to boot on Intel
+    devices that lack a Programmable Interval Timer.
+  * Cleanup of legacy components by no longer building QEMU
+    Traditional or PV-Grub by default. Note both projects have
+    upstream Xen support merged now, so it is no longer recommended
+    to use the Xen specific forks.
+  * Initial support for guest virtualized Performance Monitor
+    Counters on Arm.
+  * Improved support for dom0less mode by allowing the usage on
+    Arm 64bit hardware with EFI firmware.
+  * Improved support for Arm 64-bit heterogeneous systems by
+    leveling the CPU features across all to improve big.LITTLE
+    support.
+
+-------------------------------------------------------------------
 Wed Nov 17 07:25:37 MST 2021 - carnold@suse.com
 
 - Update to Xen 4.16.0 RC3 release

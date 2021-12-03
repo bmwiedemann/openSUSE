@@ -2630,4 +2630,12 @@
     <comment>Update to Xen version 4.16.0 RC3 with additional spec file cleanups.</comment>
     <requestid>932003</requestid>
   </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>86eaa2a184df730bd307f2aaf8ec16e4</srcmd5>
+    <version>4.16.0_02</version>
+    <time>1638560125</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.16.0 FCS</comment>
+    <requestid>935029</requestid>
+  </revision>
 </revisionlist>
