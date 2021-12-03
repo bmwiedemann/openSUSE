@@ -57,4 +57,12 @@
   * Change xmore DocBook XML file extension from .sgml to .xml</comment>
     <requestid>681498</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>547a2bfdad6e771d1fecac7de53de69f</srcmd5>
+    <version>1.0.3</version>
+    <time>1638560146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935487</requestid>
+  </revision>
 </revisionlist>
