@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 03 00:04:00 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1638461619.b7ce2240e:
+  * t: Prevent non-deterministic test step calculation using wait_for_ajax
+  * t: Fix timeout calculation in wait_for_developer_console_like
+  * t: Prevent trying to wait longer for dev console than overall timeout
+  * t: Simplify OpenQA::Test::FullstackUtils
+  * t: Use signatures in OpenQA::Test::FullstackUtils
+  * t: Add timeout to developer console waiting status log message
+  * docs: Make os-autoinst doc reference more prominent
+  * docs: Add additional hint for SCHEDULE
+
+-------------------------------------------------------------------
 Tue Nov 30 16:03:56 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1638286681.f004793c0:
