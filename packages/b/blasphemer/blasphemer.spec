@@ -1,7 +1,7 @@
 #
 # spec file for package blasphemer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           blasphemer
-Version:        0.1.5
+Version:        0.1.7
 Release:        0
 Summary:        Replacement game files for Heretic game engines
 License:        BSD-3-Clause
 Group:          Amusements/Games/3D/Shoot
-Url:            https://github.com/Blasphemer/blasphemer/tree/experimental
+URL:            https://github.com/Blasphemer
 #Old Url:       https://code.google.com/archive/p/blasphemer/
-Source:         https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/blasphemer/%{name}-%{version}.zip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://github.com/Blasphemer/blasphemer/releases/download/v%{version}/blasphem-%{version}.zip
 BuildArch:      noarch
 BuildRequires:  unzip
 
@@ -40,11 +39,10 @@ with a theme of metal-inspired dark fantasy.
 # Game data files. Nothing to build!
 
 %install
-install -Dpm0644 BLASPHEM.WAD %{buildroot}%{_datadir}/doom/blasphem.wad
+install -Dpm0644 blasphem-%{version}.wad %{buildroot}%{_datadir}/doom/blasphem.wad
 
 %files
-%defattr(-,root,root)
-%doc copying credits story.txt wadinfo.txt
-%{_datadir}/doom/
+%dir %{_datadir}/doom/
+%{_datadir}/doom/blasphem.wad
 
 %changelog
