@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  2 08:47:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  Changes
+  * Header files have moved from `lite/*.h` to `libite/*.h` to
+    prevent clashing with DirectFB LiTE library.
+  * Include guards in header files have been renamed, much in the
+    same fashion as the move (above), from `LITE_foo_H_` to
+    `LIBITE_FOO_H_`.
+  * Add configure option to disable compatibility symlink, for
+    systems that do not want name clashes with DirectFB/LiTE, or
+    do not need to be backwards compatible; use `configure
+    --without-symlink`
+  Fixes
+  * Minor, use defensive coding in `strnlen()` replacement.  Only
+    used on systems that do not have a native implementation.
+
+-------------------------------------------------------------------
 Sun Oct 17 13:27:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.1

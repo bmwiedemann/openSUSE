@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           libite
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        BSD function library
 License:        MIT AND X11
@@ -83,6 +83,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 
 %files devel
 %{_includedir}/lite
+%{_includedir}/libite
 %{_libdir}/libite.so
 %{_libdir}/pkgconfig/libite.pc
 
