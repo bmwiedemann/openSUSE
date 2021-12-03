@@ -1,0 +1,10 @@
+--- dde-calendar-5.8.16/tests/third-party_stub/stub.h.orig	2021-12-02 13:58:03.101133673 +0100
++++ dde-calendar-5.8.16/tests/third-party_stub/stub.h	2021-12-02 13:58:13.681237428 +0100
+@@ -16,6 +16,7 @@
+ #include <cstring>
+ //c++
+ #include <map>
++#include <cstdint>
+ 
+ 
+ #define ADDR(CLASS_NAME,MEMBER_NAME) (&CLASS_NAME::MEMBER_NAME)

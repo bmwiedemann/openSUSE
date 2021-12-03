@@ -35,6 +35,8 @@ Source0:        https://github.com/linuxdeepin/dde-calendar/archive/%{version}/%
 # PATCH-FIX-UPSTREAM fix-hardcode-path.patch hillwood@opensuse.org
 # https://github.com/linuxdeepin/dde-calendar/pull/49
 Patch0:         fix-hardcode-path.patch
+# PATCH-FIX-UPSTREAM - https://github.com/linuxdeepin/dde-calendar/issues/50#issuecomment-979196208
+Patch1:         fix-stub.h.patch
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  desktop-file-utils
 %ifarch ppc ppc64 ppc64le s390 s390x

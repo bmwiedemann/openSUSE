@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:59:42 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on aarch64:
+  * fix-stub.h.patch
+
+-------------------------------------------------------------------
 Thu Oct 28 03:34:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.16
