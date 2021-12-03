@@ -1,10 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec  2 14:39:19 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Unify the Yes/No popup button IDs (bsc#1193326)
+- 4.4.17
+
+-------------------------------------------------------------------
+Thu Dec  2 12:58:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Properly set the custom repository name (#1191491)
+- 4.4.16
+
+-------------------------------------------------------------------
+Wed Dec  1 12:52:52 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the register_target property to ProductSpec so it is
+  available in all the derived classes (bsc#1193212).
+- 4.4.15
+
+-------------------------------------------------------------------
 Mon Nov 22 08:22:46 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Use consistent names for the Full medium repositories
   (bsc#1191652)
 - 4.4.14
-  
+
 -------------------------------------------------------------------
 Fri Nov 12 13:02:17 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
