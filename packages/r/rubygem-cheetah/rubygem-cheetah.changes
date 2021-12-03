@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Dec  1 12:19:01 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- updated to version 1.0.0
+  see installed CHANGELOG
+
+  1.0.0 (2021-11-30)
+  ------------------
+
+  * Add support for ruby 3.0
+    As side effect now Recorder#record_status receive additional parameter
+
+-------------------------------------------------------------------
 Mon Jan  6 12:32:16 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - updated to version 0.5.2
@@ -10,8 +22,6 @@ Mon Jan  6 12:32:16 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
   * If listed in allowed_exitstatus, log exit code as Info, not as Error
     (bsc#1153749)
   * Added support for ruby 2.7
-
-
 
 -------------------------------------------------------------------
 Thu Oct 17 08:07:34 UTC 2019 - Josef Reidinger <jreidinger@suse.com>
