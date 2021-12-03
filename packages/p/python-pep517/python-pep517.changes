@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  1 16:18:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix SLE/Leap python2 build
+
+-------------------------------------------------------------------
 Sun Nov  7 18:14:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:

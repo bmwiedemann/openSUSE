@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-pep517%{psuffix}
 Version:        0.12.0
 Release:        0
@@ -46,6 +47,13 @@ BuildRequires:  %{python_module setuptools >= 30}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module wheel}
 %endif
+%if %{with python2}
+# for pip
+BuildRequires:  python-xml
+%endif
+%ifpython2
+Requires:       python-xml
+%endif
 %if 0%{?python_version_nodots} < 36
 Requires:       python-toml
 %else
@@ -62,7 +70,7 @@ Wrappers to build Python packages using PEP 517 hooks.
 
 %prep
 %setup -q -n pep517-%{version}
-sed -i 's/--flake8//' pytest.ini
+sed -i -e '/--flake8/d' -e '/--strict/d' pytest.ini
 
 # Remove what appears to be overly cautious flag
 # that causes tests to require internet, both here
@@ -92,7 +100,9 @@ python3 -m pip wheel \
 
 %if %{with test}
 %check
-%pytest
+#
+python2_params=("-k" "not test_meta")
+%pytest "${$python_params[@]}"
 %endif
 
 %if ! %{with test}
