@@ -23,4 +23,21 @@
     <comment></comment>
     <requestid>874330</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6df469292db57b76aef1d6b336830345</srcmd5>
+    <version>3.1.1</version>
+    <time>1638560138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Considerable code and CI/CD cleanup
+  * Per-field configuration of Whoosh
+  * Whoosh faceting and other improvements
+  * ElasticSearch 7 support
+  * ElasticSearch 5 .models() support
+  * Minutes granularity for update_index management command
+  * update_index fix
+- Switch from using nose to pytest-django
+- Drop {Build,}Requires on six</comment>
+    <requestid>935318</requestid>
+  </revision>
 </revisionlist>

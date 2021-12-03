@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-haystack
-Version:        3.0
+Version:        3.1.1
 Release:        0
 Summary:        Pluggable search for Django
 License:        BSD-3-Clause
@@ -29,25 +29,22 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
-Requires:       python-six >= 1.12.0
+Requires:       python-Django >= 2.2
 Suggests:       python-elasticsearch
 Suggests:       python-pysolr >= 3.7.0
 Suggests:       python-Whoosh >= 2.5.4
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module Whoosh >= 2.5.4}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module elasticsearch}
-BuildRequires:  %{python_module geopy >= 0.95.1}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module geopy >= 2.0.0}
 BuildRequires:  %{python_module pysolr >= 3.7.0}
+BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six >= 1.12.0}
 BuildRequires:  python3-GDAL
 # /SECTION
 %python_subpackages
@@ -67,7 +64,9 @@ sed -i 's:==:>=:' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec test_haystack/run_tests.py
+# elasticsearch and solr tests require running services
+# test_ensure_wgs84 is broken with some GDAL issues
+%pytest -k 'not (elasticsearch or solr or test_ensure_wgs84)'
 
 %files %{python_files}
 %doc AUTHORS README.rst

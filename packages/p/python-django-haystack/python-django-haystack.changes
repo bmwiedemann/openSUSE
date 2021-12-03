@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Dec  3 04:17:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.1:
+  * Considerable code and CI/CD cleanup
+  * Per-field configuration of Whoosh
+  * Whoosh faceting and other improvements
+  * ElasticSearch 7 support
+  * ElasticSearch 5 .models() support
+  * Minutes granularity for update_index management command
+  * update_index fix
+- Switch from using nose to pytest-django
+- Drop {Build,}Requires on six
+
+-------------------------------------------------------------------
 Mon Feb 22 03:32:42 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Suggests for backends pysolr and elasticsearch
