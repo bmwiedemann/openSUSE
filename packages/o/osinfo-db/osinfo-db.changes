@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 10:11:44 MST 2021 - carnold@suse.com
+
+- jsc#SLE-17764 - Dev: Support Oracle Linux as a guest VM. See also
+  bsc#1192238 [Build58.2][KVM] The latest supported OracleLinux as
+  guest versions are not included anywhere
+  add-missing-oracle-linux-versions.patch
+
+-------------------------------------------------------------------
 Wed Oct 20 09:01:36 MDT 2021 - carnold@suse.com
 
 - Update to database version 20211013

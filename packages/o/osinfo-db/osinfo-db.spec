@@ -33,6 +33,7 @@ Patch25:        add-opensuse-leap-15.4-support.patch
 Patch26:        add-sle15sp4-support.patch
 Patch27:        add-slem5.1-support.patch
 Patch28:        opensuse-autoyast-desktop.patch
+Patch29:        add-missing-oracle-linux-versions.patch
 
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
@@ -52,6 +53,7 @@ provisioning of new virtual machines
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch29 -p1
 
 %build
 cd %{_builddir}
