@@ -68,4 +68,12 @@
     /etc/X11/xsm/system.xsm (boo#1173059)</comment>
     <requestid>818560</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ee5d30f03aaadecccd79c5d608066d3d</srcmd5>
+    <version>1.0.4</version>
+    <time>1638560147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935490</requestid>
+  </revision>
 </revisionlist>

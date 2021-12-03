@@ -1,7 +1,7 @@
 #
 # spec file for package xsm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 %if 0%{?suse_version} < 1550
-%define _distconfdir /usr/etc
+%define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
-
 Name:           xsm
 Version:        1.0.4
 Release:        0
 Summary:        X Session Manager
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Patch0:         n_UsrEtc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
@@ -42,7 +41,6 @@ BuildRequires:  pkgconfig(xt) > 1.0.99
 Requires:       openssh
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 xsm is a session manager. A session is a group of applications, each
@@ -61,14 +59,14 @@ delete sessions you no longer want to keep.
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README
+%license COPYING
+%doc ChangeLog README
 %dir %{_distconfdir}
 %dir %{_distconfdir}/X11
 %{_distconfdir}/X11/xsm/
