@@ -1780,8 +1780,6 @@ unsorted:
   - cargo-audit-advisory-db 
   - cargo-c 
   - cargo-packaging 
-  - cargo1.54 
-  - cargo1.54-doc: [x86_64] 
   - cargo1.55 
   - cargo1.56 
   - caribou 
@@ -2782,8 +2780,6 @@ unsorted:
   - deepin-image-viewer 
   - deepin-image-viewer-lang 
   - deepin-kwin 
-  - deepin-kwin-devel 
-  - deepin-kwin-lang 
   - deepin-launcher 
   - deepin-launcher-branding-openSUSE 
   - deepin-launcher-branding-upstream 
@@ -11609,7 +11605,6 @@ unsorted:
   - libktoblzcheck1 
   - libktorrent-devel 
   - libktpaccountskcminternal9 
-  - libkwin-xcb0 
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
@@ -12843,7 +12838,7 @@ unsorted:
   - libpt2_10_11-plugins-avc 
   - libpt2_10_11-plugins-pulse 
   - libptexenc1 
-  - libptl1 
+  - libptl2 
   - libptscotch-gnu-mpich-hpc 
   - libptscotch-gnu-mvapich2-hpc 
   - libptscotch-gnu-openmpi1-hpc 
@@ -26472,6 +26467,7 @@ unsorted:
   - python38-pytest-localserver 
   - python38-pytest-metadata 
   - python38-pytest-mock 
+  - python38-pytest-mockito 
   - python38-pytest-mpi 
   - python38-pytest-mpl 
   - python38-pytest-mypy 
@@ -29583,6 +29579,7 @@ unsorted:
   - python39-pytest-localserver 
   - python39-pytest-metadata 
   - python39-pytest-mock 
+  - python39-pytest-mockito 
   - python39-pytest-mpi 
   - python39-pytest-mpl 
   - python39-pytest-mypy 
@@ -31173,7 +31170,6 @@ unsorted:
   - rke2 
   - rkhunter 
   - rkward 
-  - rls1.54: [x86_64] 
   - rlwrap 
   - rmail 
   - rmedigicontrol 
@@ -31675,11 +31671,6 @@ unsorted:
   - rust-cbindgen 
   - rust-packaging 
   - rust-srpm-macros 
-  - rust1.54 
-  - rust1.54-analysis: [x86_64] 
-  - rust1.54-doc: [x86_64] 
-  - rust1.54-gdb 
-  - rust1.54-src 
   - rust1.55 
   - rust1.56 
   - rustscan 
