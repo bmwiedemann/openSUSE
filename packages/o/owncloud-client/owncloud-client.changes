@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  4 09:57:18 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 2.9.2 
+  * Upstream bugfix release
+- Add upstream patch to fix install directory of libcloudproviders
+  config file: fix-cloudproviders-install.patch 
+
+-------------------------------------------------------------------
 Thu Oct 14 07:44:16 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 2.9.1

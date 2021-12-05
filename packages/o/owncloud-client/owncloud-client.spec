@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.9.1
+Version:        2.9.2
 Release:        0
 
 Summary:        The ownCloud synchronization client
@@ -34,6 +34,8 @@ Source4:        ownCloud.conf
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
 
+# PATCH-FIX-UPSTREAM fix the installation of the libcloudproviders conf file
+Patch1:         fix-cloudproviders-install.patch
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
 # Build the dolphin overlays for 42.2 ongoing, SLE and Tumbleweed
@@ -55,7 +57,11 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  qtkeychain-qt5-devel >= %{keychain_version}
 
+# openSUSE Leap 15.4 and higher
+%if 0%{?sle_version} > 150300 || %{?suse_version} > 1500
 BuildRequires:  libcloudproviders-devel
+BuildRequires:  pkgconfig(gio-2.0)
+%endif
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -200,6 +206,7 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 
@@ -277,6 +284,9 @@ done
 %{_datadir}/applications/owncloud.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/mime/packages/owncloud.xml
+%if 0%{?sle_version} > 150300 || %{?suse_version} > 1500
+%{_datadir}/cloud-providers
+%endif
 %{_libdir}/qt5/plugins/owncloudsync_vfs_suffix.so
 %doc CONTRIBUTING.md README.md
 %license COPYING COPYING.documentation
@@ -284,7 +294,6 @@ done
 %config /etc/ownCloud
 # https://github.com/owncloud/client/issues/4107
 %config /etc/sysctl.d/69-sync-inotify.conf
-%config /etc/ownCloud/ownCloud.conf
 
 %files -n libowncloudsync0
 %defattr(-,root,root,-)
