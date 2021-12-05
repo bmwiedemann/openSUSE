@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zc.buildout
-Version:        3.0.0b3
+Version:        2.13.6
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
