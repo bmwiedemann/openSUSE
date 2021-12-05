@@ -157,4 +157,39 @@
   * Fixed usepushurl to work when a read-only mirror being used as origin does not contain refs/changes from gerrit.</comment>
     <requestid>700471</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bd406d4cfd4c86a32e5a5b3980421226</srcmd5>
+    <version>2.1.0</version>
+    <time>1638740781</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Add support for –no-thin which is passed to git push
+  * A new gitreview.branchauthor option allows configuring the change author
+    (owner) name part of the autocreated branch name when downloading changes.
+  * A new gitreview.notopic configuration setting makes git-review always
+    behave as if the --notopic command line option was supplied.
+  * Added the --notify option, which can be used to ensure specified receivers
+    receives email notifications
+  * The Change-Id generating commit hook is now installed into any detected Git
+    submodules, so that it will take effect when creating changes within a
+    submodule and not just in the parent repository.
+  * Encoding was corrected for Git credentials, which was previously causing HTTP
+    authentication to fail under some Python 3 versions.
+  * Change download functions now preserve any unapplied local edits on the
+    branch when attempting to reset the worktree.
+  * The --no-follow-tags option to git push is now used for all pushes, so that
+    git-review won’t error when encountering a local tag which is absent from
+    Gerrit.
+  * For safety, attempts to push a commit with unstaged or uncommitted changes in
+    the worktree will be caught and an error reported, rather than leaving it up to
+    git rebase to spot them. This addresses a situation where users enabling
+    rebase.autostash would otherwise experience data loss when the test rebase is
+    subsequently reset.
+- add 7182166ec00ad3645821435d72c5424b4629165f.patch:
+  * With Git 2.18.0 and later, the --rebase-merges (-r) option will be used in
+    place of the deprecated --preserve-merges (-p) option. This fixes a
+    critical error when git-review is used with Git versions 2.34.0 onward,
+    where the old option is no longer available.</comment>
+    <requestid>935776</requestid>
+  </revision>
 </revisionlist>

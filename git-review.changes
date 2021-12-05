@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Dec  5 10:29:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add support for –no-thin which is passed to git push
+  * A new gitreview.branchauthor option allows configuring the change author
+    (owner) name part of the autocreated branch name when downloading changes.
+  * A new gitreview.notopic configuration setting makes git-review always
+    behave as if the --notopic command line option was supplied.
+  * Added the --notify option, which can be used to ensure specified receivers
+    receives email notifications
+  * The Change-Id generating commit hook is now installed into any detected Git
+    submodules, so that it will take effect when creating changes within a
+    submodule and not just in the parent repository.
+  * Encoding was corrected for Git credentials, which was previously causing HTTP
+    authentication to fail under some Python 3 versions.
+  * Change download functions now preserve any unapplied local edits on the
+    branch when attempting to reset the worktree.
+  * The --no-follow-tags option to git push is now used for all pushes, so that
+    git-review won’t error when encountering a local tag which is absent from
+    Gerrit.
+  * For safety, attempts to push a commit with unstaged or uncommitted changes in
+    the worktree will be caught and an error reported, rather than leaving it up to
+    git rebase to spot them. This addresses a situation where users enabling
+    rebase.autostash would otherwise experience data loss when the test rebase is
+    subsequently reset.
+- add 7182166ec00ad3645821435d72c5424b4629165f.patch:
+  * With Git 2.18.0 and later, the --rebase-merges (-r) option will be used in
+    place of the deprecated --preserve-merges (-p) option. This fixes a
+    critical error when git-review is used with Git versions 2.34.0 onward,
+    where the old option is no longer available.
+
+-------------------------------------------------------------------
 Fri May  3 18:08:45 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - revert switch to singlespec. This is an insane complexification
