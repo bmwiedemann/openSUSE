@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:04:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4
+  * Operating with arrays now much faster
+  * Some of the compiler diagnostics have been made more readable
+    and helpful
+  * Limitations in the values of the odepth, oindent and oacutoff
+    have been removed
+- includes changes from 1.3:
+  * The `dump' command now remembers and re-uses the last used
+    offset per IO space
+  * The text accompanying constraint violation exceptions now
+    indicate the type and the field whose constraint failed.
+- update licence to GPL-3.0-or-later
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Thu May 13 08:30:21 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 1.2

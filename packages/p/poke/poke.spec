@@ -18,12 +18,14 @@
 
 %define sover   0
 Name:           poke
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        An interactive, extensible editor for binary data
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/poke/
 Source:         https://ftp.gnu.org/gnu/poke/%{name}-%{version}.tar.gz
+Source2:        https://ftp.gnu.org/gnu/poke/%{name}-%{version}.tar.gz.sig
+Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=829#/%{name}.keyring
 BuildRequires:  autoconf >= 2.62
 BuildRequires:  automake >= 1.16
 BuildRequires:  bison >= 3.6
@@ -37,6 +39,8 @@ BuildRequires:  lua53
 BuildRequires:  makeinfo >= 6.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bdw-gc)
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libnbd)
 # /SECTION
 %if 0%{?suse_version} > 1500
 BuildRequires:  libtextstyle-devel
@@ -68,7 +72,10 @@ Contains support library for %{name}.
 %autosetup
 
 %build
-%configure --disable-static
+%configure \
+	--disable-static \
+	--enable-mi
+
 %make_build
 
 %install
@@ -92,10 +99,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files devel
+%license COPYING
 %{_includedir}/libpoke.h
 %{_libdir}/lib%{name}.so
 
 %files -n lib%{name}%{sover}
+%license COPYING
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %changelog
