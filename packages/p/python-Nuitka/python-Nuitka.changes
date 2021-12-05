@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec  4 23:10:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate testing of PySide6 using tests-ignore-qt6-dirs.patch
+  to avoid unnecessary test failure
+- Update to v0.6.18
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
 Mon Oct 25 10:12:49 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.6.17.4

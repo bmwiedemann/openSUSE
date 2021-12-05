@@ -25,6 +25,13 @@
 %define psuffix -%{flavor}
 %endif
 
+# QT is not available on several arch
+%ifarch %{arm} aarch64 x86_64 %{ix86} ppc64le
+%bcond_without  test_qt6
+%else
+%bcond_with     test_qt6
+%endif
+
 # Can't test for substrings server-side, so spell everything out.
 # Keep this in sync with the multi-python build set!
 %if 0%{suse_version} < 1550
@@ -105,7 +112,7 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        0.6.17.4
+Version:        0.6.18
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -113,6 +120,8 @@ Group:          Development/Languages/Python
 URL:            https://nuitka.net
 Source:         https://files.pythonhosted.org/packages/source/N/Nuitka/Nuitka-%{version}.tar.gz
 Source1:        nuitka-rpmlintrc
+# This is upstreamed to https://github.com/Nuitka/Nuitka/pull/1300
+Patch0:         tests-ignore-qt6-dirs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -132,6 +141,7 @@ Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
 Recommends:     python-tqdm
+Recommends:     patchelf
 Recommends:     strace
 Suggests:       execstack
 Suggests:       gdb
@@ -157,9 +167,10 @@ BuildRequires:  %{python_module gtk if (%python-base with python-base)}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pendulum}
@@ -176,12 +187,17 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  %{python_module zstd}
 BuildRequires:  ccache
 BuildRequires:  chrpath
-BuildRequires:  openSUSE-release
 BuildRequires:  gdb
+BuildRequires:  openSUSE-release
+BuildRequires:  patchelf
 BuildRequires:  strace
 BuildRequires:  tk
-# pyside2 has working tests, however it exists on few arch
-#BuildRequires:  python3-pyside2
+%if %{with test_qt6}
+%if 0%{?suse_version} > 1500
+# Leap doesnt have PySide6, and it has old naming on Tumbleweed
+BuildRequires:  python3-pyside6
+%endif
+%endif
 # AppImageKit not available in Factory yet
 # https://github.com/Nuitka/Nuitka/issues/992
 #BuildRequires:  appimagetool
@@ -200,10 +216,12 @@ used in the same way as pure Python objects.
 
 %prep
 %setup -q -n Nuitka-%{version}
+%autopatch -p1
 # De-vendor
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/atomicwrites/
 rm -r nuitka/build/inline_copy/jinja2/
+rm -r nuitka/build/inline_copy/jinja2_35/
 rm -r nuitka/build/inline_copy/markupsafe/  # dep of Jinja2
 rm -r nuitka/build/inline_copy/yaml
 rm -r nuitka/build/inline_copy/yaml_27/
@@ -237,8 +255,13 @@ sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_r
 # https://github.com/Nuitka/Nuitka/issues/965
 sed -Ei 's/(NumpyUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
 
-# - NumpyUsing fails
-#rm tests/standalone/NumpyUsing.py
+# These two are fixed in the next patch release
+
+# GlfwUsing failure https://github.com/Nuitka/Nuitka/issues/1297
+rm tests/standalone/GlfwUsing.py
+
+# MatplotlibUsing failure https://github.com/Nuitka/Nuitka/issues/1298
+rm tests/standalone/MatplotlibUsing.py
 
 # adjust mtime so that deduplicating the cache files after install does not make them inconsistent
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
@@ -254,16 +277,19 @@ find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
 mv %{buildroot}%{_bindir}/nuitka3 %{buildroot}%{_bindir}/nuitka
 mv %{buildroot}%{_bindir}/nuitka3-run %{buildroot}%{_bindir}/nuitka-run
 
+rm -f %{buildroot}%{_bindir}/nuitka2
+rm -f %{buildroot}%{_bindir}/nuitka2-run
+
 %python_clone -a %{buildroot}%{_bindir}/nuitka
 %python_clone -a %{buildroot}%{_bindir}/nuitka-run
 
 %fdupes %{buildroot}%{_bindir}
 
 # Allow building from source repo tarball
-if [ -f doc/nuitka.1 ]; then
+if [ -f doc/nuitka3.1 ]; then
   mkdir -p %{buildroot}%{_mandir}/man1
-  gzip -c doc/nuitka.1 > %{buildroot}%{_mandir}/man1/nuitka.1.gz
-  gzip -c doc/nuitka-run.1 > %{buildroot}%{_mandir}/man1/nuitka-run.1.gz
+  gzip -c doc/nuitka3.1 > %{buildroot}%{_mandir}/man1/nuitka.1.gz
+  gzip -c doc/nuitka3-run.1 > %{buildroot}%{_mandir}/man1/nuitka-run.1.gz
 
   %python_clone -a %{buildroot}%{_mandir}/man1/nuitka.1.gz
   %python_clone -a %{buildroot}%{_mandir}/man1/nuitka-run.1.gz
@@ -278,7 +304,13 @@ export TK_LIBRARY=%{_libdir}/tcl/tk8.6
 
 # scons is primary python3 only, but used in the tests it needs to find the modules in its "own" flavor. Luckily it is pure...
 mkdir my-scons
+%if 0%{?sle_version} == 150100
+# Leap 15.1 placed scons here
+cp -rp %{_libexecdir}/scons-*/ my-scons/
+%else
 cp -r %{python3_sitelib}/SCons my-scons/
+%endif
+
 %{python_expand #
 mkdir build/testbin
 cp -r %{_bindir}/scons* build/testbin/
@@ -304,6 +336,7 @@ if [[ "$python" != "python2" ]]; then
   mv tests/standalone/OpenGLUsing.py /tmp
   mv tests/standalone/PandasUsing.py /tmp
   mv tests/standalone/PendulumUsing.py /tmp
+  # NumpyUsing.py can OOM on ppc64 & ppc64le
 fi
 
 export NUITKA_EXTRA_OPTIONS="--debug"
@@ -353,6 +386,10 @@ rm -r /tmp/* ||:
 # gcc without debug
 # Please add/remove --debug periodically as many bugs
 # have been found with/without this flag.
+
+# A patchelf failure in Pandasusing on gcc Leap 15.2 py36 has occurred once
+# It may be the same problem as https://github.com/Nuitka/Nuitka/issues/1298
+# which will be fixed in the next patch release
 
 export NUITKA_EXTRA_OPTIONS=""
 
