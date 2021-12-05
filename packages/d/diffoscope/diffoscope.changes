@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 28 07:31:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 194:
+ - Don't traceback when comparing nested directories with non-directories.
+   (Closes: reproducible-builds/diffoscope#288)
+- update to version 193:
+ - Don't duplicate file lists at each directory level.
+   (Closes: #989192, reproducible-builds/diffoscope#263)
+ - When pretty-printing JSON, mark the difference as such, additionally
+   avoiding including the full path.
+   (Closes: reproducible-builds/diffoscope#205)
+ - Codebase improvements:
+   - Update a bunch of %-style string interpolations into f-strings or
+     str.format.
+   - Import itertools top-level directly.
+   - Drop some unused imports.
+   - Use isinstance(...) over type(...) ==
+   - Avoid aliasing variables if we aren't going to use them.
+ - Fix missing diff output on large diffs.
+ - Ignore a Python warning coming from a dependent library (triggered by
+   supporting Python 3.10)
+ - Document that support both Python 3.9 and 3.10.
+
+-------------------------------------------------------------------
 Sat Nov 20 13:01:25 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 193:
