@@ -253,4 +253,12 @@
     <comment></comment>
     <requestid>911955</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>7b6d3ca375ab2a3dd55d5c4ca8e49799</srcmd5>
+    <version>1.7.3</version>
+    <time>1638740784</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable logging with google-glog library (forwarded request 935733 from nuklly)</comment>
+    <requestid>935796</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,7 @@ Patch2:         librime-1.7.3-ensure_std_exp_can_be_found_after_including_cmath.
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
+BuildRequires:  glog-devel
 BuildRequires:  googletest-devel
 BuildRequires:  leveldb-devel
 BuildRequires:  libboost_filesystem-devel
@@ -105,7 +106,7 @@ This package provides private headers of Rime to build plugins.
   -DINSTALL_PRIVATE_HEADERS=On \
   -DENABLE_EXTERNAL_PLUGINS=On \
   -DBUILD_MERGED_PLUGINS=On \
-  -DENABLE_LOGGING=Off
+  -DENABLE_LOGGING=On
 %cmake_build
 
 %install
