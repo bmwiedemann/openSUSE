@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 05 08:22:50 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1638540755.a348c6d8:
+  * ci: Fix OpenQA::Test::CheckGitStatus exit status
+  * ci: Fix exit code of OpenQA::Test::CheckGitStatus
+  * basetest.pm: Add signatures for new method
+  * Add execution time for failed test modules
+
+-------------------------------------------------------------------
 Fri Dec 03 00:22:45 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1638454781.7b07525b:
