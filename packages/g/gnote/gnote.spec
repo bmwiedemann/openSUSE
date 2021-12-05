@@ -78,7 +78,12 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
+%if %suse_version >= 1550
 %ldconfig_scriptlets
+%else
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+%endif
 
 %files
 %license COPYING

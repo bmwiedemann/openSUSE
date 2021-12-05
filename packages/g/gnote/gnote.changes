@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  1 20:55:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add conditional for ldconfig_scriptlets and reinstate post(un)
+  handling for older versions of openSUSE.
+
+-------------------------------------------------------------------
 Sun Oct 31 16:40:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
