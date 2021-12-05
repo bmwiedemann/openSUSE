@@ -252,4 +252,15 @@
   * Fix flickering issues on some terminals such as the linux console</comment>
     <requestid>928955</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>21d3f3ba81c826df69cfc9a4f86d1d9c</srcmd5>
+    <version>2021.11.08</version>
+    <time>1638740749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.11.08:
+  * Support for curly and separately colored underlines
+  * Fixes for terminal flickering
+  * Fixes for command and response fifo corner cases</comment>
+    <requestid>935566</requestid>
+  </revision>
 </revisionlist>

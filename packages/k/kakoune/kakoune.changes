@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:25:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2021.11.08:
+  * Support for curly and separately colored underlines
+  * Fixes for terminal flickering
+  * Fixes for command and response fifo corner cases
+
+-------------------------------------------------------------------
 Wed Nov  3 08:06:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2021.10.28:
