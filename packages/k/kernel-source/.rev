@@ -5730,4 +5730,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.15.5 &amp; 5.15.4</comment>
     <requestid>933998</requestid>
   </revision>
+  <revision rev="622" vrev="1">
+    <srcmd5>f6d45dfd75637caad5d0aeab3881d14d</srcmd5>
+    <version>5.15.6</version>
+    <time>1638740746</time>
+    <user>dimstar_suse</user>
+    <comment>5.15.5 &amp; mwifiex CVE fix</comment>
+    <requestid>934932</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.15.5
+%define patchversion 5.15.6
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-83fc97405ba5d567d7fddb76fd1813ceabf1be87
+BuildRequires:  kernel%kernel_flavor-srchash-c2ce213fb7e14c0924ce1cc6f068b77a1eb8ae4c
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.15.5
+Version:        5.15.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g83fc974
+Release:        <RELEASE>.gc2ce213
 %else
 Release:        0
 %endif
