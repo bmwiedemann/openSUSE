@@ -138,6 +138,7 @@ class FWTopics(object):
             for p in files:
                 ko = os.path.join(root, p)
                 name = re.sub(r'\.xz$', '', p)
+                name = re.sub(r'\.zst$', '', p)
                 if not fnmatch.fnmatch(name, '*.ko'):
                     continue
                 name = re.sub(r'\.ko$', '', name)

@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20211115
+%define version_unconverted 20211123
 
 Name:           kernel-firmware
-Version:        20211115
+Version:        20211123
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -3448,6 +3448,8 @@ Supplements:    modalias(of:N*T*Cfsl,imx53-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx53-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl,imx6q-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx6q-sdmaC*)
+Supplements:    modalias(of:N*T*Cfsl,imx6ul-sdma)
+Supplements:    modalias(of:N*T*Cfsl,imx6ul-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl,imx7d-sdma)
 Supplements:    modalias(of:N*T*Cfsl,imx7d-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl,imx8mq-sdma)
@@ -3977,6 +3979,8 @@ Supplements:    modalias(of:N*T*Cqcom,sc8180x-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sdm660-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pas)

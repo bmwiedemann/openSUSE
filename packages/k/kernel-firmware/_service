@@ -5,6 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">kernel-firmware</param>
     <param name="versionformat">%cd</param>
+    <param name="revision">main</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

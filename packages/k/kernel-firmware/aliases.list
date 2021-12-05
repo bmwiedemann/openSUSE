@@ -1685,6 +1685,8 @@ imx_sdma: of:N*T*Cfsl,imx53-sdma
 imx_sdma: of:N*T*Cfsl,imx53-sdmaC*
 imx_sdma: of:N*T*Cfsl,imx6q-sdma
 imx_sdma: of:N*T*Cfsl,imx6q-sdmaC*
+imx_sdma: of:N*T*Cfsl,imx6ul-sdma
+imx_sdma: of:N*T*Cfsl,imx6ul-sdmaC*
 imx_sdma: of:N*T*Cfsl,imx7d-sdma
 imx_sdma: of:N*T*Cfsl,imx7d-sdmaC*
 imx_sdma: of:N*T*Cfsl,imx8mq-sdma
@@ -3181,6 +3183,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sc8180x-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sdm660-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sdm660-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pas

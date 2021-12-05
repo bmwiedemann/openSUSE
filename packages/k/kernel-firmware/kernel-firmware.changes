@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Dec 01 08:39:46 UTC 2021 - tiwai@suse.com
+
+- Update to version 20211123:
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * amdgpu: update yellow carp dmcub firmware
+  * amdgpu: update vangogh DMCUB firmware
+  * Update ath10k/QCA6174/hw3.0/board-2.bin
+  * mrvl: prestera: Update Marvell Prestera Switchdev v4.0
+  * QCA: Add Bluetooth firmware for WCN685x
+- Fix the script to adapt ZSTD compressed modules (jsc#SLE-21256)
+- Update _service to follow branch main instead
+- Update aliases
+
+-------------------------------------------------------------------
 Tue Nov 16 21:26:46 UTC 2021 - tiwai@suse.com
 
 - Update to version 20211115 (git commit f5d519563ac9):
