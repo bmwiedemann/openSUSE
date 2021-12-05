@@ -17,7 +17,7 @@
 
 
 Name:           domination
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
@@ -74,7 +74,7 @@ done
 cp -a maps %{buildroot}%{_datadir}/%{name}/
 
 # install files
-for f in *.jar *.htm *.txt *.ini ; do
+for f in *.jar *.txt *.ini ; do
     install -Dm 0644 "$f" %{buildroot}%{_datadir}/%{name}
 done
 # install icon
