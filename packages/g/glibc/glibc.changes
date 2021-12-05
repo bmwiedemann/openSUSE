@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 26 13:38:02 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Enable building the cross packages in rings.
+
+-------------------------------------------------------------------
 Wed Nov 16 17:22:28 UTC 2021 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add ExtraBuildFlags for build flags that cannot be passed to configure.

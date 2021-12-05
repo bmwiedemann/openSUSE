@@ -97,9 +97,6 @@ ExclusiveArch:  do_not_build
 %define build_cross 1
 %undefine _build_create_debug
 ExcludeArch:    %{cross_arch}
-%if %{with ringdisabled}
-ExclusiveArch:  do_not_build
-%endif
 %endif
 %define host_arch %{?cross_arch}%{!?cross_arch:%{_target_cpu}}
 
