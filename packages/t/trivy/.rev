@@ -173,4 +173,29 @@
   * feat(debian): support the versions that reached EOL (#1237)</comment>
     <requestid>930653</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45d908ae577b9744050e032c73afb5d2</srcmd5>
+    <version>0.21.1</version>
+    <time>1638740780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.1:
+  * chore(mod): tidy (#1415)
+  * fix(rpc): fix nil layer transmit (#1410)
+  * Lang advisory order (#1409)
+  * chore: add support for s390x arch (#1304)
+  * fix(chart): ingress helm manifest-update trivy image (#1323)
+  * docs: Add comparison for cfsec (#1388)
+  * remove: delete unused functions in utils package (#1379)
+  * fix(sarif): fix validation errors (#1376)
+  * docs: add Bitbucket Pipelines (#1374)
+  * docs: add community integrations (#1361)
+  * Use a stable SARIF identifier (#1230)
+  * fix(python): fix parsing of requirements.txt with hash checking mode available in pip since version 8.0
+  * feat(iac): Add line information (#1366)
+  * feat(cloudformation): Adding support for cfsec IaC scanning (#1360)
+  * chore: send debug and info logs to stdout in install.sh, not stderr. (#1264)
+  * Update containerd to v1.5.7 and docker-cli to v20.10.9 (#1356)
+  * chore: update SBOM generation (#1349)</comment>
+    <requestid>935778</requestid>
+  </revision>
 </revisionlist>
