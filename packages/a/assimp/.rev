@@ -55,4 +55,17 @@
     <comment>Update to 5.1.2 (forwarded request 935163 from cgiboudeaux)</comment>
     <requestid>935164</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eadfc06404016da6f80caa489c3bc906</srcmd5>
+    <version>5.1.3</version>
+    <time>1638740782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.3
+  * Update blender importer to work with Blender 2.8+ files
+  * Added checks for out of bounds data access/writing
+  * Interpolate euler rotations for quaternion animations
+  * Fix file-extension check for X3D-files
+  * Update CMakeLists.txt</comment>
+    <requestid>935785</requestid>
+  </revision>
 </revisionlist>
