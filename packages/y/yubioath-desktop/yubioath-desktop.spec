@@ -18,10 +18,10 @@
 
 %define binname yubioath
 Name:           yubioath-desktop
-Version:        5.0.5
+Version:        5.1.0
 Release:        0
 Summary:        Graphical interface for displaying OATH codes with a Yubikey
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later and Apache-2.0
 Group:          Productivity/Security
 URL:            https://developers.yubico.com/yubioath-desktop/
 Source0:        https://developers.yubico.com/yubioath-desktop/Releases/%{name}-%{version}.tar.gz
@@ -31,13 +31,14 @@ BuildRequires:  libQt5QuickControls2-devel
 BuildRequires:  libqt5-qtbase-devel => 5.12
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(python3)
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       pyotherside
-Requires:       yubikey-manager >= 4.0.2
+Requires:       yubikey-manager >= 4.0.7
 
 %description
 The Yubico Authenticator is a graphical desktop tool for generating
@@ -48,9 +49,11 @@ the shared secrets.
 %prep
 %setup -q -n %{name}
 sed -i 's|yubikey-manager==|yubikey-manager>=|' requirements.txt
+# workaround for the binary-file installation path
+sed -i 's|target.path = $$PREFIX/lib|target.path = $$PREFIX/bin|' QZXing/QZXing-components.pri
 
 %build
-%qmake5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true";
+%qmake5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true"
 %make_build
 
 %install
@@ -59,14 +62,15 @@ mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -p -m 0644 resources/icons/com.yubico.yubioath.svg %{buildroot}%{_datadir}/pixmaps/
 mkdir -p %{buildroot}%{_datadir}/applications
 install -p -m 0644 resources/com.yubico.yubioath.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/%{name}.desktop System Security 
+%suse_update_desktop_file -r %{buildroot}%{_datadir}/applications/%{name}.desktop System Security
 %fdupes %{buildroot}
 
 %files
-%license COPYING
+%license COPYING QZXing/LICENSE
 %doc NEWS README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/com.yubico.yubioath.svg
+%exclude %{_includedir}/*.h
 
 %changelog

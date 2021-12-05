@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  2 18:58:26 UTC 2021 - Torsten Gruner <t.gruner@katodev.de>
+
+- Update to version 5.1.0
+  * Support and manage FIDO-enabled YubiKeys.
+  * Toggle applications over USB and NFC.
+  * Major UI improvements.
+
+-------------------------------------------------------------------
 Thu May  6 11:58:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 5.0.5
