@@ -53,6 +53,8 @@ Recommends:     python3-Weasyprint
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         Adapt-to-new-Akonadi-includes.patch
 %if %{with akonadi}
 BuildRequires:  cmake(KF5AkonadiContact)
 %endif
@@ -71,6 +73,7 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 

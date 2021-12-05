@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  1 11:18:22 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Adapt-to-new-Akonadi-includes.patch to fix build with Akonadi
+  21.12
+
+-------------------------------------------------------------------
 Sun Aug 15 10:21:03 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 0.97.
