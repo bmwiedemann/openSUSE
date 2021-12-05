@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  2 20:10:15 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.2:
+  * foot.ini options:
+    * tweak.grapheme-width-method can now be set to max, which means to use
+      the width of the largest codepoint in the grapheme cluster.
+  * Added initial support for Kitty keyboard protocol, currently with support
+    for only the "Disambiguate escape codes" mode. See Kitty keyboard protocol
+    docs for more details.
+  * Right-clicking the CSD title bar now informs the Wayland compositor to show
+    a window context menu, if the compositor supports such a thing in general.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.2 for more details.
+
+-------------------------------------------------------------------
 Mon Nov 22 22:44:13 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.10.1:
