@@ -170,4 +170,17 @@
     <comment></comment>
     <requestid>925249</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a33d2c41f0ce04577851a19a5aa468c3</srcmd5>
+    <version>1.2.0</version>
+    <time>1638740747</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  * Fix Spear of Destiny secret level warps
+  * Fix Spear of Destiny missing wall definition
+  * Editor: Fix setting key required for doors
+- Add fix-source-file-directory.patch
+</comment>
+    <requestid>935561</requestid>
+  </revision>
 </revisionlist>
