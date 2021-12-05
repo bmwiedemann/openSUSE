@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:37:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.6
+  * C++23: integer literal suffix support (z, uz)
+  * C++23: operator[] support for zero-or-more arguments
+
+-------------------------------------------------------------------
 Thu Nov 11 16:00:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.5

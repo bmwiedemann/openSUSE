@@ -378,4 +378,12 @@
     <comment>- Update to release 11.5</comment>
     <requestid>930948</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>12c5ea3522876e6bcb2188c8530bc792</srcmd5>
+    <version>11.6</version>
+    <time>1638740754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.6</comment>
+    <requestid>935584</requestid>
+  </revision>
 </revisionlist>
