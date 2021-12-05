@@ -46,20 +46,20 @@
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
-%define _version %(echo %{version} | cut -b 1-4)
+%define _version %(echo %{version} | cut -b 1-3)
 %define _suffix %(echo %{_version} | tr -d '.')
 %bcond_without alembic
 %bcond_without collada
-%bcond_without opencl
 %bcond_without opensubdiv
 %bcond_without openvdb
 %bcond_without osl
 %bcond_with    system_audaspace
+%bcond_without system_glew
 # TBD
 %bcond_with usd
 %bcond_with openxr
 Name:           blender
-Version:        2.93.5
+Version:        3.0.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -110,6 +110,7 @@ BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_wave-devel
+BuildRequires:  libharu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libpulse-devel
@@ -129,6 +130,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  cmake(pugixml)
+BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
@@ -142,6 +144,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(python-3.9)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
@@ -200,9 +203,6 @@ BuildRequires:  embree-devel-static
 %endif
 %if %{with oidn}
 BuildRequires:  OpenImageDenoise-devel
-%endif
-%if %{with opencl}
-BuildRequires:  opencl-headers
 %endif
 %if %{with opensubdiv}
 BuildRequires:  OpenSubdiv-devel
@@ -277,13 +277,15 @@ popd
 %setup -q
 %autopatch -p1
 
-#rm -rf extern/glew
 rm -rf extern/libopenjpeg
+%if %{with system_glew}
+rm -rf extern/glew
 # silence warning about missing includedir
-#mkdir -p extern/glew/include
-for i in `grep -rl "%{_bindir}/env python3"`;do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i} ;done
+mkdir -p extern/glew/include
+sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
+%endif
 
-#sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
+for i in `grep -rl "%{_bindir}/env python3"`;do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i} ;done
 
 %build
 export SUSE_ASNEEDED=0
@@ -319,6 +321,7 @@ cmake ../ \
       -DWITH_ASSERT_ABORT:BOOL=OFF \
 %endif
       -DCMAKE_CXX_STANDARD=17 \
+      -DWITH_CLANG:BOOL=ON \
       -DWITH_LLVM:BOOL=ON \
       -DLLVM_LIBRARY:FILE=%{_libdir}/libLLVM.so \
       -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -358,11 +361,12 @@ cmake ../ \
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
 %endif
 %endif
+      -DWITH_HARU:BOOL=ON \
       -DWITH_DRACO:BOOL=ON \
       -DWITH_FFTW3:BOOL=ON \
       -DWITH_FREESTYLE:BOOL=ON \
       -DWITH_GMP:BOOL=ON \
-      -DWITH_HARU:BOOL=OFF \
+      -DWITH_HARU:BOOL=ON \
       -DWITH_IK_ITASC:BOOL=ON \
       -DWITH_IK_SOLVER:BOOL=ON \
       -DWITH_IMAGE_CINEON:BOOL=ON \
@@ -377,6 +381,7 @@ cmake ../ \
       -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
       -DWITH_LZMA:BOOL=ON \
       -DWITH_LZO:BOOL=ON \
+      -DWITH_SYSTEM_EIGEN3:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
       -DWITH_MOD_FLUID:BOOL=ON \
 %ifnarch x86_64
@@ -430,12 +435,13 @@ cmake ../ \
       -DWITH_GHOST_XDND:BOOL=ON \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
+%if %{with system_glew}
+      -DWITH_SYSTEM_GLEW:BOOL=ON \
+%else
       -DWITH_SYSTEM_GLEW:BOOL=OFF \
+%endif
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
-%endif
-%if %{with opencl}
-      -DWITH_CYCLES_DEVICE_OPENCL:BOOL=ON \
 %endif
       -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
       -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix \
@@ -470,8 +476,6 @@ install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
 install -D -m 0644 %{SOURCE9} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_docdir}/%{name}/
 
-chmod -f 0644 %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/modules/console_python.py
-
 %fdupes %{buildroot}%{_datadir}/%{name}/%{_version}/
 %find_lang %{name} %{?no_lang_C}
 rm -rf %{buildroot}%{_datadir}/locale/languages
@@ -484,7 +488,7 @@ find %{buildroot}%{_datadir}/%{name}/%{_version}/scripts/ -name "*.h" -print -de
 sed -i 's/^Name=Blender$/Name=Blender %{_version}/g' %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 # don't package thumbnailer
-rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py
+# rm %{buildroot}%{_bindir}/%{name}-thumbnailer.py
 
 %if 0%{?sles_version}
 %suse_update_desktop_file -i -n %{name}
