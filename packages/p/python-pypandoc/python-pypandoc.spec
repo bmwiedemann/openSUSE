@@ -18,22 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pypandoc
-Version:        1.5
+Version:        1.6.4
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bebraw/pypandoc
-Source:         https://pypi.org/packages/source/p/pypandoc/pypandoc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-test.patch -- ATX-style headings are default for
-# markdown, see https://pandoc.org/MANUAL#option--markdown-headings
-Patch1:         fix-test.patch
+Source:         https://github.com/NicklasTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/NicklasTegner/pypandoc/master/tests.py
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  ghc-citeproc
 BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
@@ -49,9 +46,8 @@ pypandoc provides a thin wrapper for pandoc, a universal document converter.
 
 %prep
 %setup -q -n pypandoc-%{version}
-%autopatch -p1
-# Disable test that requires internet
-sed -i 's/\(test_basic_conversion_from_http_url\)/_\1/' tests.py
+
+cp %{SOURCE1} tests.py
 
 %build
 %python_build
@@ -61,9 +57,8 @@ sed -i 's/\(test_basic_conversion_from_http_url\)/_\1/' tests.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_conversion_with_citeproc_filter depends on ghc-pandoc-citeproc
-# which was removed from factory
-%pytest tests.py -k 'not test_conversion_with_citeproc_filter'
+# test_basic_conversion_from_http_url needs network
+%pytest tests.py -k 'not test_basic_conversion_from_http_url'
 
 %files %{python_files}
 %license LICENSE

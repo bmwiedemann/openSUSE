@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  4 23:33:35 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.6.4
+- Remove no longer needed fix-test.patch
+- Add tests.py from upstream master to workaround failures
+
+-------------------------------------------------------------------
 Sun Dec 27 03:51:58 UTC 2020 - Jason Craig <os-dev@jacraig.com>
 
 - Add fix-test.patch to fix test: according to Pandoc documentation,
