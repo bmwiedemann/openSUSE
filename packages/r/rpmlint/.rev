@@ -3435,4 +3435,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * Make missing-PT_GNU_STACK-section more sensitive.</comment>
     <requestid>934025</requestid>
   </revision>
+  <revision rev="372" vrev="1">
+    <srcmd5>7e92bf50b0012f185a899e4621290ed3</srcmd5>
+    <version>2.1+git20211130.83af44b</version>
+    <time>1638740746</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1+git20211130.83af44b:
+  * Add SUSE licenses generation script.
+  * Sort input .rpm files so that the output is stable. (boo#1193189).</comment>
+    <requestid>934726</requestid>
+  </revision>
 </revisionlist>

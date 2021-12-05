@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 30 13:21:49 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.1+git20211130.83af44b:
+  * Add SUSE licenses generation script.
+  * Sort input .rpm files so that the output is stable. (boo#1193189).
+
+-------------------------------------------------------------------
 Fri Nov 26 11:07:39 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.1+git20211126.ebc84d5:
