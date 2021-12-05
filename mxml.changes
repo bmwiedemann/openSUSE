@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 28 19:44:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3:
+  * Cleaned up usage of `free` throughout the library
+  * Added more error handling to the library
+  * Fixed potential memory leak in `mxmlLoad*` functions
+  * Fixed `mxmlSaveString` with a buffer size of 0
+  * Fixed `MXML_MINOR_VERSION` value in "mxml.h"
+  * Fixed POSIX threading support for MingW
+  * Fixed some minor memory leaks found by Coverity 
+
+-------------------------------------------------------------------
 Wed Jan  6 17:56:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2:
