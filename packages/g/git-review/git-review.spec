@@ -1,7 +1,7 @@
 #
 # spec file for package git-review
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           git-review
-Version:        1.28.0
+Version:        2.1.0
 Release:        0
 Summary:        Tool to submit code to Gerrit
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack-infra/git-review
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
+Patch1:         https://opendev.org/opendev/git-review/commit/7182166ec00ad3645821435d72c5424b4629165f.patch
 BuildRequires:  fdupes
 # Note that this package is intentionally not using singlespec because
 # it is not a library but a plain CLI tool, and it doesn't make sense to
@@ -34,12 +35,9 @@ BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-requests >= 1.1
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
 BuildRequires:  python3-stestr
-BuildRequires:  python3-testtools >= 0.9.34
 Requires:       python3-requests >= 1.1
 Requires:       python3-setuptools
-Requires:       python3-six
 Provides:       python3-git-review = %version
 Obsoletes:      python3-git-review < %version
 BuildArch:      noarch
@@ -51,7 +49,7 @@ git-review is a tool that helps submitting git branches to gerrit for
 review.
 
 %prep
-%setup -q -n git-review-%{version}
+%autosetup -p1 -n git-review-%{version}
 
 %build
 %python3_build
