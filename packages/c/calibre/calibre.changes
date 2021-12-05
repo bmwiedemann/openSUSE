@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Dec  4 10:32:11 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.33.2
+  - Fixes a couple of regressions that broke the toolbar in the
+    popup comments editor dialog and rendering of the download
+    metadata button in the edit metadata dialog on Windows,
+    as well as reading files from MTP devices on Windows
+
+-------------------------------------------------------------------
+Sat Dec  4 08:26:43 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.33.1
+  - Fixes a couple of regressions that broke the toolbar in the
+    popup comments editor dialog and rendering of the download
+    metadata button in the edit metadata dialog on windows
+
+-------------------------------------------------------------------
 Fri Dec  3 06:24:44 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.33.0
