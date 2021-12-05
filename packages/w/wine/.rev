@@ -4208,4 +4208,18 @@
 - update staging to 6.22 release</comment>
     <requestid>933006</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>72977b79bdd300fb733412305a08a3ec</srcmd5>
+    <version>6.23</version>
+    <time>1638740785</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.23 development release
+  - Mount manager and CoreAudio driver converted to PE.
+  - Support for exception handling in Wow64 mode.
+  - Optional support for using the distribution's PE libraries.
+  - A number of UI improvements in WineDbg.
+  - Various bug fixes.
+- update staging to 6.23 release</comment>
+    <requestid>935805</requestid>
+  </revision>
 </revisionlist>

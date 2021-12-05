@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  5 13:30:20 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.23 development release
+  - Mount manager and CoreAudio driver converted to PE.
+  - Support for exception handling in Wow64 mode.
+  - Optional support for using the distribution's PE libraries.
+  - A number of UI improvements in WineDbg.
+  - Various bug fixes.
+- update staging to 6.23 release
+
+-------------------------------------------------------------------
 Sat Nov 20 10:27:44 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.22 development release
