@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global pythons python3
 Name:           python-dogpile.cache
 Version:        1.1.4
@@ -30,13 +30,11 @@ Source:         https://github.com/sqlalchemy/%{modname}/archive/rel_%{modver}.t
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module decorator >= 4.0.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python3-stevedore
+BuildRequires:  %{python_module stevedore > 3.0.0}
 Requires:       python-decorator >= 4.0.0
-BuildRequires:  %{python_module six}
-Requires:       python-six
+Requires:       python-stevedore >= 3.0.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-dogpile.core = %{version}
