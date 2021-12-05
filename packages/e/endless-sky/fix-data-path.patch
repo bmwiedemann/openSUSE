@@ -1,6 +1,6 @@
-diff -Nur endless-sky-0.8.7/endless-sky.6 endless-sky-0.8.7-new/endless-sky.6
---- endless-sky-0.8.7/endless-sky.6	2015-11-12 05:09:37.000000000 +0100
-+++ endless-sky-0.8.7-new/endless-sky.6	2015-12-06 13:47:29.705465040 +0100
+diff -Nur endless-sky-0.9.14/endless-sky.6 new/endless-sky.6
+--- endless-sky-0.9.14/endless-sky.6	2021-07-11 22:56:35.000000000 +0200
++++ new/endless-sky.6	2021-12-04 14:40:42.589146795 +0100
 @@ -17,7 +17,7 @@
  
  For a manual and other information, visit https://endless\-sky.github.io
@@ -10,11 +10,11 @@ diff -Nur endless-sky-0.8.7/endless-sky.6 endless-sky-0.8.7-new/endless-sky.6
  
  .SH OPTIONS
  .IP \fB\-h,\ \-\-help
-diff -Nur endless-sky-0.8.7/SConstruct endless-sky-0.8.7-new/SConstruct
---- endless-sky-0.8.7/SConstruct	2015-11-12 05:09:37.000000000 +0100
-+++ endless-sky-0.8.7-new/SConstruct	2015-12-06 13:47:29.704465040 +0100
-@@ -81,11 +81,11 @@
- 			RecursiveInstall(env, os.path.join(target, name), node.abspath)
+diff -Nur endless-sky-0.9.14/SConstruct new/SConstruct
+--- endless-sky-0.9.14/SConstruct	2021-07-11 22:56:35.000000000 +0200
++++ new/SConstruct	2021-12-04 14:40:42.589146795 +0100
+@@ -198,11 +198,11 @@
+ 			RecursiveInstall(env, pathjoin(target, name), node.abspath)
  		else:
  			env.Install(target, node)
 -RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/data", "data")
@@ -30,10 +30,10 @@ diff -Nur endless-sky-0.8.7/SConstruct endless-sky-0.8.7-new/SConstruct
  
  # Make the word "install" in the command line do an installation.
  env.Alias("install", "$DESTDIR$PREFIX")
-diff -Nur endless-sky-0.8.7/source/Files.cpp endless-sky-0.8.7-new/source/Files.cpp
---- endless-sky-0.8.7/source/Files.cpp	2015-11-12 05:09:37.000000000 +0100
-+++ endless-sky-0.8.7-new/source/Files.cpp	2015-12-06 13:47:27.656465101 +0100
-@@ -108,7 +108,7 @@
+diff -Nur endless-sky-0.9.14/source/Files.cpp new/source/Files.cpp
+--- endless-sky-0.9.14/source/Files.cpp	2021-07-11 22:56:35.000000000 +0200
++++ new/source/Files.cpp	2021-12-04 14:40:42.589146795 +0100
+@@ -119,7 +119,7 @@
  	// the executable, but are under the same prefix (/usr or /usr/local).
  	static const string LOCAL_PATH = "/usr/local/";
  	static const string STANDARD_PATH = "/usr/";

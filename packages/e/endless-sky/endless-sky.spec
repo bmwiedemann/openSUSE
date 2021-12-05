@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,16 @@
 
 
 Name:           endless-sky
-Version:        0.9.12
+Version:        0.9.14
 Release:        0
 Summary:        Space exploration, trading, and combat game
-License:        GPL-3.0-only AND CC-BY-SA-4.0 AND CC-BY-SA-3.0 AND CC-BY-3.0
+License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            https://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE fix-data-path.patch -- Fix installation path of data
 Patch0:         fix-data-path.patch
-# PATCH-FIX-UPSTREAM https://github.com/endless-sky/endless-sky/commit/bc3cab5992694547f9c6c067b5579ef06224781b#diff-b7ed3e337d47b8f4fe8af4f35db75efd
-Patch1:         string-include.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-build-fix-compilation-on-gcc11.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

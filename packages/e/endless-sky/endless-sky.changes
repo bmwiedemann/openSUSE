@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec  3 15:47:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Drop upstream fixed patches:
+  * string-include.patch
+  * 0001-build-fix-compilation-on-gcc11.patch
+- Rebase fix-data-path.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 08:37:50 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to 0.9.14:
+  * Numerous typo fixes
+  * Fixes to how several missions are offered to the player
+  * Better suggestions of possibly incomplete conditions in some missions
+    "visit" dialogues
+  * Differentiation between two Remnant engines' reversing capabilities
+  * Certain Navy shipyards now stock the Dropship
+  * Ships that have no specified "drag" attribute default to 100,
+    rather than causing crashes
+  * Weaponry that alters the ship's status conditions (e.g. ionization)
+    now respects the required minimum value of 0
+  * The "interrupt fast-forward" preference defaults to off
+
+-------------------------------------------------------------------
 Mon May 31 17:03:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 build fix:
