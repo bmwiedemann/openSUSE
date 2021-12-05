@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  4 06:28:49 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add warzone2100-fix-building-with-vk-1.2.198.patch, fix for
+  building with vk-1.2.198, gh#Warzone2100/warzone2100#2477
+  
+-------------------------------------------------------------------
+Sat Dec  4 05:58:05 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.2.3
+  * General:
+    * Fix: Unable to demolish structures at full health
+    * Fix: Properly remove old QuickSave data when quick-saving
+    * Fix: Drop pending structures on first click
+    * Fix: Play buzz sound once per interval
+    * Fix: Ultimate Scavengers freeze on certain maps
+    * Fix: Improve OpenGL context cleanup on init failure
+    * Fix: Various crashes
+  * Multiplayer:
+    * Fix: Game doesn't end when autohosting if all players leave
+      simultaneously
+
+-------------------------------------------------------------------
 Sun Nov 28 06:06:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.2.2
