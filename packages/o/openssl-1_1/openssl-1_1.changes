@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 11 18:50:47 UTC 2021 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add support for livepatches (jsc#SLE-20049).
+- Generate ipa-clones tarball artifact when livepatching is enabled.
+
+-------------------------------------------------------------------
 Tue Nov  2 11:34:56 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing libopenssl1_1-hmac 32bit package
+
+-------------------------------------------------------------------
+Mon Nov  1 08:51:22 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Drop openssl-no-date.patch
+
+  Upstream added support for reproducible builds via SOURCE_DATE_EPOCH in
+  https://github.com/openssl/openssl/commit/8a8d9e190533ee41e8b231b18c7837f98f1ae231
+  thereby making this patch obsolete as builds *should* still be reproducible.
 
 -------------------------------------------------------------------
 Tue Aug 24 19:32:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
