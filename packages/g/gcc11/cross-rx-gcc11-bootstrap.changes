@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 26 15:01:01 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Enable the cross compilers also on i586
+- Enable some cross compilers also in rings
+- Remove cross compilers for i386 target
+
+-------------------------------------------------------------------
+Wed Nov 24 10:41:45 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (7510c23c1ec53aa4a62705f03), git1018
+  * fixes issue with debug dumping together with -o /dev/null
+  * fixes libgccjit issue showing up in emacs build  [boo#1192951]
+- Package mwaitintrin.h
+
+-------------------------------------------------------------------
+Wed Oct 20 13:59:09 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Remove spurious exit from change_spec.
+
+-------------------------------------------------------------------
+Mon Sep 20 17:15:19 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Enable the full cross compiler, cross-aarch64-gcc11 and
+  cross-riscv64-gcc11 now provide a fully hosted C (and C++)
+  cross compiler, not just a freestanding one.  I.e. with a cross
+  glibc.  They don't yet support the sanitizer libraries.
+  Part of [jsc#OBS-124].
+
+-------------------------------------------------------------------
 Wed Aug 18 15:07:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Require libgccjit%{libgccjit_sover}%{libgccjit_suffix} from

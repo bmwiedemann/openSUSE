@@ -165,4 +165,27 @@ The compiler is NOT used by default.</comment>
   libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}. (forwarded request 913043 from Andreas_Schwab)</comment>
     <requestid>913101</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6004a36448ef609063916f2c36388f78</srcmd5>
+    <version>11.2.1+git1018</version>
+    <time>1638740741</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable the cross compilers also on i586
+- Enable some cross compilers also in rings
+- Remove cross compilers for i386 target
+
+- Update to gcc-11 branch head (7510c23c1ec53aa4a62705f03), git1018
+  * fixes issue with debug dumping together with -o /dev/null
+  * fixes libgccjit issue showing up in emacs build  [boo#1192951]
+- Package mwaitintrin.h
+
+- Remove spurious exit from change_spec.
+
+- Enable the full cross compiler, cross-aarch64-gcc11 and
+  cross-riscv64-gcc11 now provide a fully hosted C (and C++)
+  cross compiler, not just a freestanding one.  I.e. with a cross
+  glibc.  They don't yet support the sanitizer libraries.
+  Part of [jsc#OBS-124].</comment>
+    <requestid>934094</requestid>
+  </revision>
 </revisionlist>

@@ -186,7 +186,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git610
+Version:        11.2.1+git1018
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2076,6 +2076,13 @@ cp -a /usr/bin/g++%{hostsuffix} host-tools/bin/g++
 ln -sf /usr/%{_lib} host-tools/%{_lib}
 export PATH="`pwd`/host-tools/bin:$PATH"
 %endif
+
+# libsanitizer needs <crypt.h> and since the glibc/libxcrypt split
+# we don't have that yet in a pure cross environment
+%if 0%{?gcc_target_arch:1}
+	CONFARGS="$CONFARGS --disable-libsanitizer"
+%endif
+
 CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" XCFLAGS="$RPM_OPT_FLAGS" \
 TCFLAGS="$RPM_OPT_FLAGS" \
 ../configure \
@@ -2338,8 +2345,16 @@ amdgcn-amdhsa,\
 %ifarch riscv64
 	--enable-link-mutex \
 %endif
+	$CONFARGS \
 	--build=%{GCCDIST} \
-	--host=%{GCCDIST}
+	--host=%{GCCDIST} || \
+  {
+    rc=$?;
+    echo "------- BEGIN config.log ------";
+    %{__cat} config.log;
+    echo "------- END config.log ------";
+    exit $rc;
+  }
 
 STAGE1_FLAGS="-g -O2"
 %if 0%{?do_profiling} && !0%{?building_testsuite:1}
@@ -2915,6 +2930,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc11-locale.lang
 %{libsubdir}/include/uintrintrin.h
 %{libsubdir}/include/keylockerintrin.h
 %{libsubdir}/include/avxvnniintrin.h
+%{libsubdir}/include/mwaitintrin.h
 %endif
 %ifarch m68k
 %{libsubdir}/include/math-68881.h

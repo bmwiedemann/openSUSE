@@ -26,7 +26,7 @@
 #  cross-* packages, but by default, we do:
 %bcond_with ringdisabled
 
-%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && %{with ringdisabled}
+%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && "%{cross_arch}" != "aarch64" && "%{cross_arch}" != "riscv64" && %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif
 
@@ -109,7 +109,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.2.1+git610
+Version:        11.2.1+git1018
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -251,8 +251,8 @@ ExclusiveArch:  do-not-build
 %define amdgcn_newlib 1
 %endif
 %endif
-%if 0%{?gcc_icecream:1}
-ExclusiveArch:  ppc64le ppc64 x86_64 s390x  riscv64
+%if 0%{?gcc_icecream:1}%{?gcc_target_glibc:1}%{?gcc_libc_bootstrap:1}
+ExclusiveArch:  i586 ppc64le ppc64 x86_64 s390x  riscv64
 %endif
 %define _binary_payload w.ufdio
 # Obsolete cross-ppc-gcc49 from cross-ppc64-gcc49 which has
@@ -429,6 +429,13 @@ cp -a /usr/bin/g++%{hostsuffix} host-tools/bin/g++
 ln -sf /usr/%{_lib} host-tools/%{_lib}
 export PATH="`pwd`/host-tools/bin:$PATH"
 %endif
+
+# libsanitizer needs <crypt.h> and since the glibc/libxcrypt split
+# we don't have that yet in a pure cross environment
+%if 0%{?gcc_target_arch:1}
+	CONFARGS="$CONFARGS --disable-libsanitizer"
+%endif
+
 CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" XCFLAGS="$RPM_OPT_FLAGS" \
 TCFLAGS="$RPM_OPT_FLAGS" \
 ../configure \
@@ -691,8 +698,16 @@ amdgcn-amdhsa,\
 %ifarch riscv64
 	--enable-link-mutex \
 %endif
+	$CONFARGS \
 	--build=%{GCCDIST} \
-	--host=%{GCCDIST}
+	--host=%{GCCDIST} || \
+  {
+    rc=$?;
+    echo "------- BEGIN config.log ------";
+    %{__cat} config.log;
+    echo "------- END config.log ------";
+    exit $rc;
+  }
 
 %if 0%{!?gcc_icecream:1}
 make %{?_smp_mflags}
