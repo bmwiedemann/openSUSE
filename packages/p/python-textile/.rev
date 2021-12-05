@@ -86,4 +86,12 @@
 - install license</comment>
     <requestid>806974</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e95015ff13db007cfc441d6fccbcaebd</srcmd5>
+    <version>4.0.2</version>
+    <time>1638740761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>935653</requestid>
+  </revision>
 </revisionlist>

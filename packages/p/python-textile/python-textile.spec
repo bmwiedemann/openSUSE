@@ -1,7 +1,7 @@
 #
 # spec file for package python-textile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-textile
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Textile processing for python
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Requires:       python-Pillow
 Requires:       python-html5lib >= 1.0.1
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-regex
 %python_subpackages
 
