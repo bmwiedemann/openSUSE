@@ -19,7 +19,7 @@
 %define library_name libmxml1
 
 Name:           mxml
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Small XML Parsing Library
 # The Mini-XML library is licensed under the Apache License Version 2.0 with an
