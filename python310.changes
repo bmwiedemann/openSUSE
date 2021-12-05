@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  4 18:40:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove pdb_adjust_breakpoints.patch and instead just adjust location
+  of the test breakpoint in Lib/test/test_pdb.py via sed, because we
+  have shortened Lib/pdb.py by removing the shebang (bpo#45964).
+
+-------------------------------------------------------------------
 Thu Dec  2 13:51:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add pdb_adjust_breakpoints.patch fixing expectd results in

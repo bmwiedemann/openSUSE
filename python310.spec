@@ -146,9 +146,6 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-UPSTREAM pdb_adjust_breakpoints.patch bugno mcepl@suse.com
-# adjust results of a doctest
-Patch35:        pdb_adjust_breakpoints.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -402,7 +399,6 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %patch34 -p1
 %endif
-%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -422,6 +418,8 @@ done
 for dir in Lib Tools; do
     find $dir -name '*.py' -type f -exec sed -i '1{/^#!.*python/ d}' '{}' \;
 done
+# We shortened the file Lib/pdb.py so we have to move the test breakpoint location
+sed -i -e '/Breakpoint 3 at ...pdb.py:94/s/94/93/' Lib/test/test_pdb.py
 %endif
 
 # drop in-tree libffi and expat

@@ -93,4 +93,14 @@
 </comment>
     <requestid>935211</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>15c4a4e2af0db9aebfa80920127bc0bd</srcmd5>
+    <version>3.10.0</version>
+    <time>1638740766</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pdb_adjust_breakpoints.patch and instead just adjust location
+  of the test breakpoint in Lib/test/test_pdb.py via sed, because we
+  have shortened Lib/pdb.py by removing the shebang (bpo#45964).</comment>
+    <requestid>935695</requestid>
+  </revision>
 </revisionlist>
