@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec  2 21:57:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * Fixed entry_size field for result entries.
+  * The actual compression level is now once again stored in the cache entry
+  header. 
+  * Corrected error handling for unconstructible secondary storage backends. For
+  instance, this avoids a crash when a Redis server can't be reached.
+  * Made various improvements to the cache entry format. Among other things, the
+    header now contains a creation timestamp and a note of the ccache version used
+    to create the entry. The cache entry checksum has also been upgraded to use
+    128-bit XXH3 instead 64-bit XXH3.
+  * Made HTTP keep-alive configurable, defaulting to off for now.
+  * Added support for rewriting absolute path to Clang option `--gcc-toolchain`.
+  * Fixed a problem with special characters in the user info part of URLs for HTTP
+  storage.
+  * The hard link and file clone features are now disabled when secondary storage
+  is used since they only work for the local primary cache.
+
+-------------------------------------------------------------------
+Thu Dec  2 10:44:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not hide test failures in %check
+
+-------------------------------------------------------------------
 Thu Oct 14 11:16:28 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.4.2:

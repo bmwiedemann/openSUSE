@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        4.4.2
+Version:        4.5.1
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -66,10 +66,7 @@ ln -sf ../../bin/%{name} c++
 ln -sf ../../bin/%{name} nvcc
 
 %check
-# Following failure needs to be adressed:
-# The following tests FAILED:
-#        29 - test.upgrade (Failed)
-%ctest ||:
+%ctest
 
 %files
 %license LICENSE.* GPL-3.0.txt
