@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cognitiveservices-vision-face
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Face Client Library
 License:        MIT
