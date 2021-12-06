@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Dec  3 02:15:02 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.11 (released 2021-12-02) includes fixes to the compiler,
+  runtime, and the net/http, net/http/httptest, and time packages.
+  Refs boo#1182345 go1.16 release tracking
+  * go#49910 x/net/http2: frequent failures in TestClientConnCloseAtBody
+  * go#49908 x/net/ipv6: TestPacketConnReadWriteMulticast{UDP,ICMP} failing with "i/o timeout" on OpenBSD 6.8 and 7.0
+  * go#49904 x/net/http2: Client doesn't send body until ExpectContinueTimeout expires
+  * go#49867 syscall: ntdll.dll errors in rtlGetNtVersionNumbers via os.StartProcess
+  * go#49851 net/http/httptest: Close does not wait for the underlying Server's ConnState callbacks to complete
+  * go#49728 runtime: "fatal error: unexpected signal during runtime execution" in cmd/go tests on darwin-amd64-race running macOS 12.0
+  * go#49661 x/net/http2: TestUnreadFlowControlReturned_Server failures with stream error "NO_ERROR" since 2021-10-05
+  * go#49623 net/http: Possible HTTP/2 busy loop regression in Go 1.17.3
+  * go#49567 net/http: server responds with Transfer-Encoding: identity
+  * go#49560 x/net/http2: setting Request.Close doesn't close TCP connections
+  * go#49558 net/http: HTTP/2 response body Close method sometimes returns spurious context cancelation error (1.17.3 regression)
+  * go#49406 time: ParseInLocation error
+  * go#49391 cmd/compile: internal compiler error: Expand calls interface data problem
+
+-------------------------------------------------------------------
 Thu Nov  4 21:23:39 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.10 (released 2021-11-04) includes security fixes to the
