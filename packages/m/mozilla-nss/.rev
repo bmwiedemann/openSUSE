@@ -2453,4 +2453,26 @@
 - required for Firefox 94</comment>
     <requestid>928802</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>1a9ed6754b22781a68d89dcdb6bd8866</srcmd5>
+    <version>3.73</version>
+    <time>1638831558</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.73
+  * bmo#1735028 - check for missing signedData field.
+  * bmo#1737470 - Ensure DER encoded signatures are within size limits.
+  * bmo#1729550 - NSS needs FiPS 140-3 version indicators.
+  * bmo#1692132 - pkix_CacheCert_Lookup doesn't return cached certs
+  * bmo#1738600 - sunset Coverity from NSS
+  MFSA 2021-51 (bsc#1193170)
+  * CVE-2021-43527 (bmo#1737470)
+    Memory corruption via DER-encoded DSA and RSA-PSS signatures
+
+- update to NSS 3.72
+  * Remove newline at the end of coreconf.dep
+  * bmo#1731911 - Fix nsinstall parallel failure.
+  * bmo#1729930 - Increase KDF cache size to mitigate perf
+                  regression in about:logins</comment>
+    <requestid>935043</requestid>
+  </revision>
 </revisionlist>
