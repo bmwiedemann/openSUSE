@@ -351,4 +351,14 @@ No LGPL-2.1 &quot;only&quot; licenses found. Fedora also uses LGPL-2.1 &quot;or 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>863292</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>0b48a8ecb13f834040f2c1d3556ed55c</srcmd5>
+    <version>8.10</version>
+    <time>1638831560</time>
+    <user>dimstar_suse</user>
+    <comment>- Import the latest version of the vpnc-script, revision
+  1d35a8527e5422967514dd1d47350ff2ede55903 (boo#1140772)
+  * This brings a lot of improvements for non-trivial network setups, IPv6 etc</comment>
+    <requestid>935128</requestid>
+  </revision>
 </revisionlist>

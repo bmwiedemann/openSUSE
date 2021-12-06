@@ -1,7 +1,7 @@
 #
 # spec file for package openconnect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ This package provides a client for Cisco's "AnyConnect" VPN, which uses
 HTTPS and DTLS protocols.  AnyConnect is supported by the ASA5500 Series,
 by IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800,
 7200 Series and Cisco 7301 Routers, and probably others.
-
 
 %package -n %{libname}
 Summary:        Libraries for %{name}

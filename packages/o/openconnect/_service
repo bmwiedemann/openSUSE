@@ -1,0 +1,8 @@
+<services>
+  <service name="download_url" mode="disabled">
+    <param name="protocol">https</param>
+    <param name="host">gitlab.com</param>
+    <param name="path">openconnect/vpnc-scripts/-/raw/master/vpnc-script</param>
+    <param name="filename">vpnc-script</param>
+  </service>
+</services>
