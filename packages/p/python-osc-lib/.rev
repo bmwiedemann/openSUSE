@@ -223,4 +223,19 @@
     <comment></comment>
     <requestid>889988</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8144092c2959c4da5d15992bd2682bb7</srcmd5>
+    <version>2.4.2</version>
+    <time>1638831622</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.2
+  - Add check for sdk_connection
+  - Add support for SDK auth caching
+  - Add Python3 xena unit tests
+  - Correct the tox option for skipping sdist generation
+  - Moving IRC network reference to OFTC
+  - Update master for stable/wallaby
+  - Close session at clean_up if available</comment>
+    <requestid>936090</requestid>
+  </revision>
 </revisionlist>
