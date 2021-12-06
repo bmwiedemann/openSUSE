@@ -517,4 +517,12 @@
     <comment></comment>
     <requestid>927822</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ede0f600e92ef9c10369a6ea4ea68fd2</srcmd5>
+    <version>5.0.42</version>
+    <time>1638831628</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936101</requestid>
+  </revision>
 </revisionlist>
