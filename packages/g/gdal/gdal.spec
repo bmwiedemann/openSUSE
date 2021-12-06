@@ -250,6 +250,7 @@ ln -s %{_includedir} $ECW_INC_PATH
         --with-freexl           \
         --without-qhull         \
         --with-xerces=yes       \
+        --with-xerces-inc=%{_includedir} \
         --with-xerces-lib="-lxerces-c" \
 %if %{with ecw5_support}
         --with-ecw=../ECW/     \

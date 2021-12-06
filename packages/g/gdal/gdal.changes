@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 29 17:26:20 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Fix xerces detection by adding --with-xerces-inc parameter
+
+-------------------------------------------------------------------
 Mon Nov  1 08:16:50 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.3.3 bugfix release
