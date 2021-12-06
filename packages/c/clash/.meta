@@ -1,0 +1,12 @@
+<package name="clash" project="openSUSE:Factory">
+  <title>Clash</title>
+  <description>A rule-based tunnel in Go.
+
+Features:
+  - Local HTTP/HTTPS/SOCKS server with authentication support
+  - VMess, Shadowsocks, Trojan, Snell protocol support for remote connections
+  - Built-in DNS server that aims to minimize DNS pollution attack impact, supports DoH/DoT upstream and fake IP.
+  - Rules based off domains, GEOIP, IPCIDR or Process to forward packets to different nodes</description>
+  <devel project="server:proxy" package="clash"/>
+  <url>https://github.com/Dreamacro/clash</url>
+</package>
