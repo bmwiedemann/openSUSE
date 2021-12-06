@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 26 08:42:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_upmpdcli.service.patch
+
+-------------------------------------------------------------------
 Thu Apr 15 07:57:18 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.11:

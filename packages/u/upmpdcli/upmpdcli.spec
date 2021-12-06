@@ -23,6 +23,7 @@ Summary:        UPnP Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/updmpdcli
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-%{version}.tar.gz
+Patch0:	harden_upmpdcli.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
@@ -42,7 +43,7 @@ usable with most UPnP Control Point applications, such as those which run
 on Android tablets or phones.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
