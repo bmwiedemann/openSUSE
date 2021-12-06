@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 25 11:02:15 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Add a llvmjit-devel subpackage to pull in the right versions
+  of clang and llvm for building extensions. 
+- Fix some mistakes in the interdependencies between the
+  implementation packages and their noarch counterpart.
+- Update the BuildIgnore section.
+
+-------------------------------------------------------------------
 Wed Nov 10 18:04:28 UTC 2021 - Reinhard Max <max@suse.com>
 
 - bsc#1192516: Upgrade to 13.5:

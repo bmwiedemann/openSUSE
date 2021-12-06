@@ -173,4 +173,16 @@
   * https://www.postgresql.org/docs/13/release-13-4.html</comment>
     <requestid>930950</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>166b07a8c3b2f9d262b9a3ae5b30586a</srcmd5>
+    <version>13.5</version>
+    <time>1638831564</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a llvmjit-devel subpackage to pull in the right versions
+  of clang and llvm for building extensions. 
+- Fix some mistakes in the interdependencies between the
+  implementation packages and their noarch counterpart.
+- Update the BuildIgnore section.</comment>
+    <requestid>935205</requestid>
+  </revision>
 </revisionlist>
