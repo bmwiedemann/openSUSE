@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:59:01 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Allow rpm to find all runtime dependancies by removing the line
+  %global __requires_exclude_from ^%{_libdir}/lmms/.*\\.so$
+  from the spec file. Reverses "Require libgig and libstk"
+
+-------------------------------------------------------------------
+Mon Nov  8 07:37:24 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Require libgig and libstk devel packages at runtime to fix
+  boo#1192237
+
+-------------------------------------------------------------------
+Mon Nov  8 06:44:00 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Reenable VST build, issue boo#1192413 is fixed.
+
+-------------------------------------------------------------------
 Sat Nov  6 12:02:56 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Disable VST build until lmms issue boo#1192413 is fixed

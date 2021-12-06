@@ -370,4 +370,15 @@ Require: filesystem</comment>
     <comment></comment>
     <requestid>929977</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>a2142d49e55b6af320bd23e852e4bf96</srcmd5>
+    <version>1.2.2</version>
+    <time>1638831577</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow rpm to find all runtime dependancies by removing the line
+  %global __requires_exclude_from ^%{_libdir}/lmms/.*\\.so$
+  from the spec file. Reverses &quot;Require libgig and libstk&quot;
+</comment>
+    <requestid>935992</requestid>
+  </revision>
 </revisionlist>

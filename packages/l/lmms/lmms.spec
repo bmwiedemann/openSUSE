@@ -17,7 +17,8 @@
 
 
 # Since 42.2 RPM creates a hard requirement on a build time library (libvstbase), the requirement is unnecessary and bad
-%global __requires_exclude_from ^%{_libdir}/lmms/.*\\.so$
+#%%global __requires_exclude_from ^%%{_libdir}/lmms/.*\\.so$
+
 # The revision numbers for rpmalloc and qt5-x11embed come from accessing them via
 # https://github.com/LMMS/lmms/tree/v%%{version}/src/3rdparty/qt5-x11embed and
 # https://github.com/LMMS/lmms/tree/v1.2.1/src/3rdparty/rpmalloc/rpmalloc (two directories not a mistake)
@@ -26,7 +27,10 @@
 
 %bcond_without  carla
 %bcond_without  crippled_stk
-%bcond_with  wine
+%bcond_without  wine
+%if 0%{?suse_version} <= 1500
+%bcond_with     wine
+%endif
 %if %{with carla}
 %define carlavers %(carla --version|grep Carla | cut -b 21,22,23,24,25,26)
 %endif
@@ -114,6 +118,9 @@ BuildRequires:  wine-devel
 BuildRequires:  wine-devel-32bit
 Suggests:       %{name}-vst = %{version}
 %endif
+#Requires:       libstk-devel
+#Requires:       pkgconfig(gig)
+
 ExclusiveArch:  x86_64
 %if %{with carla}
 # also needed (contains libcarla_standalone2 library)
