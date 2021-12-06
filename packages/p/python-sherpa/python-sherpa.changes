@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec  3 13:21:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 4.14.0:
+  * enhancements:
+    - filtering and grouping area for binned (1D) spectral data has been improved
+    with changes to the default behavior and many bug fixes resulting in changes
+    to the statistics, degrees-of-freedom and energy flux in comparison to the
+    previous version for the same data with the same filter.
+    - updates to allow users to change the hard limits of XSPEC model parameters
+    - the sample_flux routine now returns correct information for the clip column
+  * documentation changes:
+    - improved PHA simulation documentation
+    - improved Filtering and grouping of PHA data documentation
+    - added sherpa.image module documentation
+    - added section on running tests to developer docs
+  * Infrastructure Changes:
+    - updates to support Apple ARM
+    - update to support Xspec version 12.12
+    - update fftw from version 3.3.8 to 3.3.9
+    - clean up of compiler and sphinx warnings
+    - changes to support gcc 9.3.0 in conda defaults
+    - updates to support python 3.9 including readline 8.1 upgrade, numpy minimum
+    1.19 (numpy 1.18 minimum for python 3.7/8)
+    - test infrastructure clean up and updates
+  * bug fixes:
+    - updates to fix several 'unable to parse region string: None' errors
+    - fix issue where save_all() of a loaded image with no region filter would fail
+    on reload
+    - fixed issue with plot_model() being called before notice or ignore could
+    lead to filters not getting applied
+    - fix to error out instead of crash when grouping data using an unsupported
+    method
+- Drop upstream patch:
+  * sherpa-pr1227-astropy43.patch
+- Refresh patch:
+  * reproducible.patch
+
+-------------------------------------------------------------------
 Thu Aug  5 19:36:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add sherpa-pr1227-astropy43.patch in order to fix test failure

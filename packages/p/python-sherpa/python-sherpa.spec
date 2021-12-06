@@ -20,15 +20,13 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-sherpa
-Version:        4.13.1
+Version:        4.14.0
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Patch1:         reproducible.patch
-# PATCH-FIX-UPSTREAM sherpa-pr1227-astropy43.patch -- gh#sherpa/sherpa#1227
-Patch2:         https://github.com/sherpa/sherpa/pull/1227.patch#/sherpa-pr1227-astropy43.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
@@ -39,7 +37,8 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+# 4.14.0 requires numpy minimum 1.19 (numpy 1.18 minimum for python 3.7/8)
+Requires:       python-numpy >= 1.18
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 ExcludeArch:    %{ix86}
