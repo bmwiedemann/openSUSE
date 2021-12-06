@@ -194,4 +194,13 @@
     <comment>- Update to snapshot 0.9.2.165 (edcb4b4b1f1f)</comment>
     <requestid>933957</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f297843fa523f20df91844aedf551c19</srcmd5>
+    <version>0.9.2.165</version>
+    <time>1638831621</time>
+    <user>dimstar_suse</user>
+    <comment>- Wrap a number of build dependencies into %{?with_pdf}
+(Add DEB recipe for own uses)</comment>
+    <requestid>936075</requestid>
+  </revision>
 </revisionlist>
