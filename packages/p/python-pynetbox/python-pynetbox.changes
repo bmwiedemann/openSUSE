@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Dec  5 14:59:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.3.0
+  * Handle list results in DetailEndpoint.create().
+  * Define Permissions.constraints as JSON field to fix #398.
+  * Fixes manual pagination (#412) and argless filter.
+  * Makes .filter() with no args equivalent to .all(), 7.0 will
+    remove the latter.
+  * Add Api.create_token() (for NetBox 3.0+)
+  * Add custom model name lookup to fix.
+
+-------------------------------------------------------------------
 Sun Oct 31 10:10:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.2.0
