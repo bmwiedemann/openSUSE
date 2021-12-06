@@ -18,6 +18,10 @@
 %define pgmajor 14
 %define defaultpackage postgresql%pgmajor
 
+%if ! %{defined _rpmmacrodir}
+%define _rpmmacrodir %{_rpmconfigdir}/macros.d
+%endif
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
@@ -29,7 +33,8 @@
 %bcond_with     systemd
 %endif
 
-%if 0%{?suse_version} >= 1500 && %pgmajor >= 11 && %pgmajor < 90
+# We do not need the pgmajor comparison here as it is irrelevant which version this package has
+%if 0%{?suse_version} >= 1500
 %bcond_without  llvm
 %else
 %bcond_with     llvm
@@ -69,6 +74,7 @@ Source4:        postgresql.service
 Source5:        postgresql-bashprofile
 Source6:        postgresql-script
 Source7:        postgresql-install-alternatives
+Source8:        postgresql-extensions-macros
 
 %if 0%{?suse_version} > 1100
     %define fwdir /etc/sysconfig/SuSEfirewall2.d/services
@@ -156,6 +162,24 @@ This package contains support for just-in-time compiling parts of
 PostgreSQL queries. Using LLVM it compiles e.g. expressions and tuple
 deforming into native code, with the goal of accelerating analytics
 queries.
+
+%package llvmjit-devel
+Summary:        Helper package to pull all dependencies to build with llvm support
+Group:          Productivity/Databases/Servers
+Provides:       postgresql-llvmjit-devel-noarch = %version-%release
+Requires:       postgresql-server-devel-noarch
+Requires:       postgresql-llvmjit-devel-implementation
+
+%description llvmjit-devel
+PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, sub-queries, triggers, and user-defined
+types and functions.
+
+This package will pull all the dependencies to build extensions with llvm
+support if the base distro has llvm enabled.
+
+Otherwise it will just pull the postgresqlXY-server-devel package
 
 %package test
 Summary:        The test suite for PostgreSQL
@@ -277,7 +301,7 @@ that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
 types and functions.
 
-This package contains the PL/Tcl procedural language for PostgreSQL. 
+This package contains the PL/Tcl procedural language for PostgreSQL.
 With thie module one can use Tcl to write stored procedures, functions,
 and triggers.
 
@@ -318,6 +342,9 @@ install -m755 -d %buildroot/etc/init.d
 install -m755 %{S:0} %buildroot/etc/init.d/postgresql
 ln -sf /etc/init.d/postgresql %buildroot/usr/sbin/rcpostgresql
 %endif
+
+install -D -m 0644 %{SOURCE8} %{buildroot}%{_rpmmacrodir}/macros.%{name}
+
 
 %define eflag /run/postgresql-was-enabled
 %define aflag /run/postgresql-was-running
@@ -445,9 +472,14 @@ fi
 %files server-devel
 %defattr(-,root,root,-)
 %doc README
+%{_rpmmacrodir}/macros.%{name}
 
 %if %{with llvm}
 %files llvmjit
+%defattr(-,root,root,-)
+%doc README
+
+%files llvmjit-devel
 %defattr(-,root,root,-)
 %doc README
 %endif

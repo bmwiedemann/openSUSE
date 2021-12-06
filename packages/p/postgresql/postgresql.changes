@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec  2 14:08:12 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Move the dependency of llvmjit-devel on clang and llvm to the
+  implementation packages where we can depend on the correct
+  versions.
+
+-------------------------------------------------------------------
+Thu Dec  2 11:45:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix postgresql_has_llvm usage
+
+-------------------------------------------------------------------
+Mon Nov 15 12:09:10 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- First round of changes to make it easier to build extensions for
+  - add postgresql-llvmjit-devel subpackage:
+    This package will pull in clang and llvm if the distro has a
+    recent enough version, otherwise it will just pull
+    postgresql-server-devel.
+  - add postgresql macros to the postgresql-server-devel package
+    those cover all the variables from pg_config and some macros
+    to remove repitition from the spec files
+
+-------------------------------------------------------------------
 Tue Oct  5 14:03:55 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Bump version and default to 14.

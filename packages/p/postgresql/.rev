@@ -491,4 +491,25 @@
     <comment>- Bump version and default to 14.</comment>
     <requestid>923703</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>b20f4dca2f767f99763e81c2bf270d04</srcmd5>
+    <version>14</version>
+    <time>1638831563</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the dependency of llvmjit-devel on clang and llvm to the
+  implementation packages where we can depend on the correct
+  versions.
+
+- fix postgresql_has_llvm usage
+
+- First round of changes to make it easier to build extensions for
+  - add postgresql-llvmjit-devel subpackage:
+    This package will pull in clang and llvm if the distro has a
+    recent enough version, otherwise it will just pull
+    postgresql-server-devel.
+  - add postgresql macros to the postgresql-server-devel package
+    those cover all the variables from pg_config and some macros
+    to remove repitition from the spec files</comment>
+    <requestid>935203</requestid>
+  </revision>
 </revisionlist>
