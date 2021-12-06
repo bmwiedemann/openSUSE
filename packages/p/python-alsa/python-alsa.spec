@@ -18,17 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alsa
-Version:        1.1.6
+Version:        1.2.6
 Release:        0
 Summary:        Python ALSA binding
 License:        LGPL-2.1-or-later AND GPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2
-Source1:        COPYING
-Source2:        COPYING.LIB
-Patch1:         0001-alsaseq-fix-constant-objects-in-Python-3.patch
-Patch2:         0002-Fix-PyTuple_SET_ITEM-usage-no-return-value.patch
+Source1:        %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2.sig
+Source2:        COPYING
+Source3:        COPYING.LIB
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  alsa-devel
@@ -42,9 +41,7 @@ This package provides the Python binding to ALSA.
 
 %prep
 %setup -q -n pyalsa-%{version}
-%patch1 -p1
-%patch2 -p1
-cp %{SOURCE1} %{SOURCE2} .
+cp %{SOURCE2} %{SOURCE3} .
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
