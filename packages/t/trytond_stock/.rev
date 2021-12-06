@@ -204,4 +204,12 @@
     <comment>bugfix release</comment>
     <requestid>900896</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>107fbc51b1add855dc8c52ac1e9b9a6d</srcmd5>
+    <version>5.0.16</version>
+    <time>1638831623</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936094</requestid>
+  </revision>
 </revisionlist>
