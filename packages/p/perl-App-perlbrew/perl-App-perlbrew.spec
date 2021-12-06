@@ -18,7 +18,7 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.92
+Version:        0.94
 Release:        0
 Summary:        Manage perl installations in your C<$HOME>
 License:        MIT
@@ -28,8 +28,8 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20210320
-BuildRequires:  perl(Capture::Tiny) >= 0.36
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20210620
+BuildRequires:  perl(Capture::Tiny) >= 0.48
 BuildRequires:  perl(Devel::PatchPerl) >= 2.08
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
 BuildRequires:  perl(File::Temp) >= 0.2304
@@ -48,8 +48,8 @@ BuildRequires:  perl(Test::Simple) >= 1.001002
 BuildRequires:  perl(Test::Spec) >= 0.49
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20210320
-Requires:       perl(Capture::Tiny) >= 0.36
+Requires:       perl(CPAN::Perl::Releases) >= 5.20210620
+Requires:       perl(Capture::Tiny) >= 0.48
 Requires:       perl(Devel::PatchPerl) >= 2.08
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
 Requires:       perl(File::Temp) >= 0.2304

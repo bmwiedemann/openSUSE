@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Dec  5 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.94
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.94
+  	- Released at 2021-12-05T08:39:16+0900
+  	- Let `self-upgrade` print version numbers when doing upgrades. Github issue #678.
+
+  0.93
+  	- Released at 2021-11-22T23:09:25+0900
+  	- Let `clone-modules` takes just one arguments and mean 'cloning modules from that perl'.
+  	- Let `list-modules` and `clone-modules` map certain output to their representative module name. Github issue #722
+  	- `exec` command now takes aliases explicitly specified in `--with` args and run commands with those aliases -- even if that would run the same thing twice. Github issue #725
+
+-------------------------------------------------------------------
 Fri Apr 16 03:06:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.92
