@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Dec  4 16:31:35 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.0:
+  * ThreadPool::Config [gh#jrmadsen/PTL#23].
+  * Formatting updates [gh#jrmadsen/PTL#24].
+
+-------------------------------------------------------------------
+Fri Dec  3 22:03:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.1:
+  * ThreadPool.h: fix typo by @stephanlachnit
+    [gh#jrmadsen/PTL#20].
+  * pkgconfig: Use Libs.private for "-pthread" flag by @badshah400
+    [gh#jrmadsen/PTL#22].
+- Drop PTL-incorrect-pthread-requires-in-pkgconfig.patch:
+  incorporated upstream.
+
+-------------------------------------------------------------------
 Thu Dec  2 13:37:16 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.0:

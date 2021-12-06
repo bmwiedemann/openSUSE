@@ -19,14 +19,12 @@
 %define sover 2
 %define libname libptl%{sover}
 Name:           PTL
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        C++11 mutilthreading tasking system
 License:        MIT
 URL:            https://github.com/jrmadsen/PTL
 Source:         https://github.com/jrmadsen/PTL/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PTL-incorrect-pthread-requires-in-pkgconfig.patch gh#jrmadsen/PTL#21 badshah400@gmail.com  -- Add PTL-incorrect-pthread-requires-in-pkgconfig.patch to drop an incorrect Requires on pthread in the pkgconfig file that causes pkgconfig to automatically add unresolvable Requires to the devel rpm package.
-Patch0:         PTL-incorrect-pthread-requires-in-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
