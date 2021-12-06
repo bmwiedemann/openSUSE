@@ -103,4 +103,12 @@
   * seatd: Implement ping request to wake up later</comment>
     <requestid>926487</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>90f2f3d0c587f2c3dedbd3e599eebb92</srcmd5>
+    <version>0.6.3</version>
+    <time>1638831590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935932</requestid>
+  </revision>
 </revisionlist>

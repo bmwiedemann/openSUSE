@@ -30,11 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(systemd)
 Requires:       libseat1 = %{version}
-%if 0%{?suse_version} > 1520
-#15.2 don't have needed API
-#https://github.com/systemd/systemd/commit/b423e4fb73866e529869b348efb7169ee91f00c9
 BuildRequires:  pkgconfig(libsystemd) >= 237
-%endif
 
 %description
 Seat management takes care of mediating access to shared devices (graphics, input), without requiring the applications needing access to be root.
@@ -59,12 +55,7 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} > 1520
-#15.2 don't have needed API
 %meson -Dlibseat-logind=systemd
-%else
-%meson
-%endif
 
 %meson_build
 
