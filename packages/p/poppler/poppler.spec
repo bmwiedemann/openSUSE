@@ -1,5 +1,5 @@
 #
-# spec file for package poppler
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -23,8 +23,8 @@
 %global psuffix -%{flavor}
 %endif
 # Actual version of poppler-data:
-%define poppler_data_version 0.4.10
-%define poppler_sover 114
+%define poppler_data_version 0.4.11
+%define poppler_sover 116
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.10.0
+Version:        21.12.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -75,14 +75,14 @@ BuildRequires:  extra-cmake-modules
 ExclusiveArch:  do_not_build
 %endif
 %if "%{flavor}" == "qt5"
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 %endif
 %if "%{flavor}" == "qt6"
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core) >= 6.1
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
@@ -285,6 +285,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %{_libdir}/pkgconfig/poppler-qt6.pc
 
 %else
+
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
 %doc NEWS README.md README-XPDF
