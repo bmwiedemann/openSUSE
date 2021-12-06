@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:20:49 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - remove unicode from code
+  - Use TOX_CONSTRAINTS_FILE
+  - setup.cfg: Replace dashes with underscores
+  - trivial: Bump hacking to 4.x
+  - Move flake8 as a pre-commit local target.
+  - pre-commit: Lower flake8 version
+  - Use py3 as the default runtime for tox
+  - Update master for stable/victoria
+  - Uncap PrettyTable
+  - Remove lower-constraints remnants
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Dropping lower constraints testing
+  - ignore reno generated artifacts
+
+-------------------------------------------------------------------
 Fri Oct  9 19:13:32 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.3.0
