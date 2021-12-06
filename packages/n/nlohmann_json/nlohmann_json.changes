@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  5 06:38:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.10.2
+  - Annoying -Wundef on new JSON_DIAGNOSTICS macro #2975
+  - += issue with multiple redirection. #2970
+  - incomplete type nlohmann::detail::wide_string_input_helper 
+    compilation error #2969
+  - Fix -Wunused warnings on JSON_DIAGNOSTICS #2976 (gcerretani)
+- Changes from 3.10.1 and 3.10.0 see:
+  https://github.com/nlohmann/json/blob/develop/ChangeLog.md
+
+-------------------------------------------------------------------
 Thu Dec 17 17:58:44 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - update to version 3.9.1
