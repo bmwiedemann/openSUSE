@@ -15,9 +15,19 @@ else
 	TARGET_DIR="$2"
 fi
 
+# $3 path mapping <src>:<dest>
+if [ -z "$3" ];
+then
+	PATH_MAP=""
+else
+	regex=`echo $3 | sed 's#:#,#g'`
+	PATH_MAP=" | sed 's,$regex,g'"
+fi
+
+
 FILE=`basename $1`
 SYMFILE="$FILE.sym"
-i686-w64-mingw32-dump_syms $1 > $SYMFILE
+i686-w64-mingw32-dump_syms $1 $PATH_MAP > $SYMFILE
 
 BUILDID=`head -n1 $SYMFILE | cut -f4 -d ' '`
 if [ "$BUILDID" == "000000000000000000000000000000000" ];
