@@ -40,6 +40,8 @@
 %define pgcontribdir %pgdatadir/contrib
 %define pgmandir %_mandir
 
+%define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
+
 Name:           %pgname
 %if "@BUILD_FLAVOR@" == "mini"
 %define devel devel-mini
@@ -125,10 +127,11 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 %endif
-#!BuildIgnore:  %pgname
-#!BuildIgnore:  %pgname-server
 #!BuildIgnore:  postgresql-implementation
 #!BuildIgnore:  postgresql-server-implementation
+#!BuildIgnore:  postgresql-devel-noarch
+#!BuildIgnore:  postgresql-llvmjit-devel-noarch
+#!BuildIgnore:  postgresql-server-devel-noarch
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
@@ -228,6 +231,7 @@ Conflicts:      %pgname-devel
 %else
 Requires:       %libecpg >= %version
 Requires:       %libpq >= %version
+Requires:       postgresql-devel-noarch >= %pgmajor
 %endif
 # Installation of postgresql??-devel is exclusive
 Provides:       postgresql-devel-exclusive = %pgmajor
@@ -242,17 +246,13 @@ Provides:       %pgname-server-devel = %version-%release
 %endif
 Provides:       postgresql-server-devel = %version-%release
 Provides:       postgresql-server-devel-implementation = %version-%release
-Requires(post): postgresql-server-noarch >= %pgmajor
-Requires(postun):postgresql-server-noarch >= %pgmajor
+Requires(post): postgresql-server-devel-noarch >= %pgmajor
+Requires(postun):postgresql-server-devel-noarch >= %pgmajor
 Requires:       %pgname-devel = %version
 Requires:       %pgname-server = %version-%release
 # Installation of postgresql??-devel is exclusive
 Provides:       postgresql-server-devel-exclusive = %pgmajor
 Conflicts:      postgresql-server-devel-exclusive < %pgmajor
-%if %{with llvm}
-Recommends:     clang
-Recommends:     llvm
-%endif
 Requires:       libxslt-devel
 Requires:       openssl-devel
 Requires:       pam-devel
@@ -261,6 +261,9 @@ Requires:       zlib-devel
 Requires:       pkgconfig(krb5)
 %if %{with selinux}
 Requires:       libselinux-devel
+%endif
+%if %{with llvm}
+Recommends:     %pgname-llvmjit-devel = %version-%release
 %endif
 
 %if %{with server_devel}
@@ -334,6 +337,31 @@ This package contains support for just-in-time compiling parts of
 PostgreSQL queries. Using LLVM it compiles e.g. expressions and tuple
 deforming into native code, with the goal of accelerating analytics
 queries.
+
+%package llvmjit-devel
+Summary:        PostgreSQL development files for extensions with LLVM support
+Group:          Development/Libraries/C and C++
+Provides:       postgresql-llvmjit-devel = %version-%release
+Provides:       postgresql-llvmjit-devel-implementation = %version-%release
+Requires:       %pgname-server-devel = %version
+%if %{with llvm}
+Requires:       %pgname-llvmjit = %version
+Requires(post): postgresql-llvmjit-devel-noarch >= %pgmajor
+Requires(postun):postgresql-llvmjit-devel-noarch >= %pgmajor
+%requires_file	%_bindir/llc
+%requires_file	%_bindir/clang
+%endif
+
+%description llvmjit-devel
+PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, sub-queries, triggers, and user-defined
+types and functions.
+
+This package pulls in the right versions of llvm and clang to compile
+PostgreSQL extensions that support just-in-time compilation with LLVM,
+if llvm is supported. Otherwise it will just pull the
+%{pgname}-server-devel package.
 
 %package test
 Summary:        The test suite for PostgreSQL
@@ -866,18 +894,20 @@ fi
 %pglibdir/*_and_*.so
 %pglibdir/euc2004_sjis2004.so
 %pglibdir/libpqwalreceiver.so
-%if %{with llvm}
-%dir %pglibdir/bitcode
-%endif
 %pgextensiondir/plpgsql*
 %attr(750,postgres,postgres) %dir /var/lib/pgsql
 
 %if %{with llvm}
+%dir %pglibdir/bitcode
+
 %files llvmjit
 %defattr(-,root,root)
 %pglibdir/llvm*
 %pglibdir/bitcode/*
 %endif
+
+%files llvmjit-devel
+%doc README
 
 %files pltcl -f pltcl.lang
 %defattr(-,root,root)
