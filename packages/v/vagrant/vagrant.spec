@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.18
+Version:        2.2.19
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,7 +57,6 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-Patch10:        0010-Bump-listen-version-to-3.6.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
@@ -244,7 +243,7 @@ This package contains the documentation for vagrant.
 %package        vim
 Summary:        Vagrantfile syntax files for the vim editor
 Group:          Development/Languages/Ruby
-Supplements:    packageand(vagrant:vim)
+Supplements:    (vagrant and vim)
 BuildRequires:  vim
 Requires:       vagrant = %{version}
 Requires:       vim
@@ -256,7 +255,7 @@ Optional dependency offering vim syntax files for Vagrantfile
 %package        emacs
 Summary:        Vagrantfile syntax files for the emacs editor
 Group:          Development/Languages/Ruby
-Supplements:    packageand(vagrant:emacs_program)
+Supplements:    (vagrant and emacs_program)
 BuildRequires:  emacs-nox
 Requires:       emacs_program
 Requires:       vagrant = %{version}
@@ -268,7 +267,7 @@ Optional dependency offering emacs syntax files for Vagrantfile
 %package bash-completion
 Summary:        Vagrant bash autocompletion
 Group:          Development/Languages/Ruby
-Supplements:    packageand(vagrant:bash)
+Supplements:    (vagrant and bash)
 BuildRequires:  bash
 BuildRequires:  bash-completion
 Requires:       bash

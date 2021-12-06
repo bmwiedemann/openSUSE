@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec  2 10:51:16 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.2.19
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+  Removed patches:
+  * 0010-Bump-listen-version-to-3.6.patch
+
+## 2.2.19 (November 5, 2021)
+
+IMPROVEMENTS:
+
+- guest/suse: Add fallback shutdown for versions without systemd [GH-12489]
+- provider/virtualbox: Validate VirtualBox hostonly network range [GH-12564]
+
+BUG FIXES
+
+- guest/atomic: Update detection to prevent matching on non-atomic guests [GH-12575]
+- guest/coreos: Fix configure network capability [GH-12575]
+- guest/windows: Fix directory creation with rsync [GH-11880]
+- host/windows: Properly handle spaces in path to SSH key [GH-12398]
+- provisioner/chef: Update install checks [GH-12555]
+
+
+-------------------------------------------------------------------
 Thu Oct 14 08:32:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use unconditional load: the %{?load…} construct does not work
