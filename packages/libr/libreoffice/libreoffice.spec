@@ -105,6 +105,8 @@ Patch3:         mediawiki-no-broken-help.diff
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
 Patch7:         pld-skia-patches.patch
+# PATCH-FIX-UPSTREAM https://bugs.documentfoundation.org/show_bug.cgi?id=137924 Use proper DPI without requiring window handle
+Patch8:         fix-wayland-scaling-in-plasma.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -984,6 +986,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %if 0%{?suse_version} < 1500
 %patch101 -p1
 %endif

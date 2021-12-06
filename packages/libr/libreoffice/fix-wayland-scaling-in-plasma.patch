@@ -1,0 +1,79 @@
+From dc0016bc8d7e6c4456f4442c7ccf287bfc0c2e9b Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Thu, 18 Nov 2021 21:15:10 +0100
+Subject: [PATCH] tdf#137924 qt (>=5.14): Use proper DPI without requiring
+ window handle
+
+For Qt >= 5.14, don't require a window handle to retrieve
+the screen and then the associated DPI value from that one,
+but directly use 'QWidget::screen' (introduced in QT 5.14)
+to retrieve the screen.
+
+Previously, no DPI values would be set in case there was
+no window handle.
+
+This makes UI scaling work without having to manually set
+'SAL_FORCEDPI' on Wayland.
+
+While various UI elements (like e.g. the "Help" -> "About LibreOffice"
+still look quite broken with the qt5 and kf5 VCL plugins
+in a Plasma Wayland session (at least on my Debian testing with
+Qt 5.15.2 and Plasma 5.23), they look OK
+when using the qt6 VCL plugin with a custom build of qtbase
+and qtwayland from Qt's "dev" git branches.
+
+Change-Id: I5feae46ed86a8b7d3cf92d4a973f7a0f9a9f95de
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/125507
+Tested-by: Jenkins
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
+---
+ vcl/qt5/QtGraphics_GDI.cxx | 9 ++++++++-
+ vcl/qt5/QtSvpGraphics.cxx  | 9 ++++++++-
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/vcl/qt5/Qt5Graphics_GDI.cxx b/vcl/qt5/QtGraphics_GDI.cxx
+index 0f9faa022d0b5..f87de50827dfc 100644
+--- a/vcl/qt5/Qt5Graphics_GDI.cxx
++++ b/vcl/qt5/Qt5Graphics_GDI.cxx
+@@ -746,10 +746,17 @@ void QtGraphics::GetResolution(sal_Int32& rDPIX, sal_Int32& rDPIY)
+         return;
+     }
+ 
+-    if (!m_pFrame || !m_pFrame->GetQWidget()->window()->windowHandle())
++    if (!m_pFrame)
++        return;
++
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QScreen* pScreen = m_pFrame->GetQWidget()->screen();
++#else
++    if (!m_pFrame->GetQWidget()->window()->windowHandle())
+         return;
+ 
+     QScreen* pScreen = m_pFrame->GetQWidget()->window()->windowHandle()->screen();
++#endif
+     rDPIX = pScreen->logicalDotsPerInchX() * pScreen->devicePixelRatio() + 0.5;
+     rDPIY = pScreen->logicalDotsPerInchY() * pScreen->devicePixelRatio() + 0.5;
+ }
+diff --git a/vcl/qt5/Qt5SvpGraphics.cxx b/vcl/qt5/QtSvpGraphics.cxx
+index b6018a95e2997..3632c8990706c 100644
+--- a/vcl/qt5/Qt5SvpGraphics.cxx
++++ b/vcl/qt5/Qt5SvpGraphics.cxx
+@@ -102,10 +102,17 @@ void QtSvpGraphics::GetResolution(sal_Int32& rDPIX, sal_Int32& rDPIY)
+         return;
+     }
+ 
+-    if (!m_pFrame || !m_pFrame->GetQWidget()->window()->windowHandle())
++    if (!m_pFrame)
++        return;
++
++#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
++    QScreen* pScreen = m_pFrame->GetQWidget()->screen();
++#else
++    if (!m_pFrame->GetQWidget()->window()->windowHandle())
+         return;
+ 
+     QScreen* pScreen = m_pFrame->GetQWidget()->window()->windowHandle()->screen();
++#endif
+     rDPIX = pScreen->logicalDotsPerInchX() * pScreen->devicePixelRatio() + 0.5;
+     rDPIY = pScreen->logicalDotsPerInchY() * pScreen->devicePixelRatio() + 0.5;
+ }
