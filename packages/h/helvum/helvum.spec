@@ -44,12 +44,12 @@ RUSTFLAGS=%{rustflags} cargo build --release
 RUSTFLAGS=%{rustflags} cargo install --no-track --root=%{buildroot}%{_prefix} --path .
 sed 's/@icon@/%{app_id}/g' data/%{app_id}.desktop.in > data/%{app_id}.desktop
 install -D -m0644 -t %{buildroot}%{_datadir}/applications/ data/%{app_id}.desktop
-install -D -m0644 -t %{buildroot}%{_datadir}/hicolor/scalable/apps data/icons/%{app_id}.svg
-install -D -m0644 -t %{buildroot}%{_datadir}/hicolor/symbolic/apps data/icons/%{app_id}-symbolic.svg
+install -D -m0644 -t %{buildroot}%{_datadir}/icons/hicolor/scalable/apps data/icons/%{app_id}.svg
+install -D -m0644 -t %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps data/icons/%{app_id}-symbolic.svg
 
 %files
 %{_bindir}/helvum
 %{_datadir}/applications/%{app_id}.desktop
-%{_datadir}/hicolor/
+%{_datadir}/icons/hicolor/
 
 %changelog
