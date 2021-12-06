@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  2 22:07:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.1:
+  * Some  fields  in  the  `CID_FaceDictRec`, `CID_FaceInfoRec`, and
+    `FT_Data` structures  have been changed  from signed to unsigned
+    type,  which  better reflects  the actual usage.  It is also  an
+    additional means to protect against malformed input.
+  * Cmake support  has been  further improved.   To do  that various
+    backward-incompatible  changes were  necessary; please  see file
+    `CMakeLists.txt` for more details.
+  * The experimental  'COLR' v1 API  has been updated to  the latest
+    OpenType standard 1.9.
+
+-------------------------------------------------------------------
 Fri Jul 23 07:10:11 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 2.11.0

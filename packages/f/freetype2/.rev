@@ -910,4 +910,12 @@
     on win32 and x11.</comment>
     <requestid>907876</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>ca4c7d3dafec686238db76454ea2e89c</srcmd5>
+    <version>2.11.1</version>
+    <time>1638831550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935430</requestid>
+  </revision>
 </revisionlist>
