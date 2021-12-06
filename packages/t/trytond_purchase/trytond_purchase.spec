@@ -17,7 +17,7 @@
 
 %define majorver 5.0
 Name:           trytond_purchase
-Version:        %{majorver}.7
+Version:        %{majorver}.9
 Release:        0
 Summary:        The "purchase" module for the Tryton ERP system
 License:        GPL-3.0

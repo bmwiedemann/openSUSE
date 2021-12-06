@@ -177,4 +177,12 @@
     <comment>bugfix release</comment>
     <requestid>900898</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f9b8ddeab0675c315dbb782f2a12fa43</srcmd5>
+    <version>5.0.9</version>
+    <time>1638831624</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936095</requestid>
+  </revision>
 </revisionlist>
