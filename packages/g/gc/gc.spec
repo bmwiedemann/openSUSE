@@ -17,7 +17,7 @@
 
 
 Name:           gc
-Version:        8.0.6
+Version:        8.2.0
 Release:        0
 Summary:        A garbage collector for C and C++
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ URL:            http://www.hboehm.info/gc/
 
 #Git-Clone:	https://github.com/ivmai/bdwgc
 Source:         https://github.com/ivmai/bdwgc/releases/download/v%version/%name-%version.tar.gz
+Patch1:         0001-Distribute-gc_gcj.h-and-some-other-headers-in-single.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -73,14 +74,14 @@ automatically recycles memory when it determines that it can no longer
 be otherwise accessed.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 %build
 autoreconf -fi
 
 # see bugzilla.redhat.com/689877
 export CPPFLAGS="-DUSE_GET_STACKBASE_FOR_MAIN"
-export CXXFLAGS="%optflags -std=gnu++98"
+export CXXFLAGS="%optflags"
 %configure --disable-static --docdir="%_docdir/%name" \
     --with-gnu-ld	    \
     --enable-cplusplus	    \
@@ -90,7 +91,7 @@ export CXXFLAGS="%optflags -std=gnu++98"
     --with-libatomic-ops=yes
 # --with-libatomic-ops=yes means to use the system library
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -101,7 +102,7 @@ done
 
 %check
 %if !0%{?qemu_user_space_build}
-make check
+make check -j1
 %endif
 
 %post -n libgc1 -p /sbin/ldconfig

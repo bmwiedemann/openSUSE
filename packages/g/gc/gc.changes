@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec  2 17:28:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Distribute-gc_gcj.h-and-some-other-headers-in-single.patch
+  to repair `make install` forgetting to install gc_pthread.h.
+- Drop C++98 build mode; just use what g++ uses.
+
+-------------------------------------------------------------------
+Wed Sep 29 22:03:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.0
+  * Add API for accessing incremental GC time limit with
+    nanosecond precision
+  * Add API function to force start of incremental collection
+  * Add GC_get/set_disable_automatic_collection API
+  * New API (GC_set_markers_count) to control number of parallel
+    markers
+  * New API function to clear GC exclusion table
+  * New API function to get size of object debug header
+  * New API standalone functions to acquire and release the
+    allocator lock
+  * Always abort on failure to access /proc/self/maps
+  * Avoid initial 3ms pause on world stop/start with GC_retry_signals
+  * Enable mprotect-based incremental GC for Linux/arm and
+    Linux/aarch64
+  * Enable true incremental collection even if parallel marker is on
+  * Fix mmap(PROT_NONE) failure if RLIMIT_AS value is low (Linux)
+  * Report memory region bounds and errno on GC_unmap/remap failure
+  * Use mprotect-based VDB on PowerPC and S390 (Linux)
+  * Use soft dirty bits on Linux (i386, powerpc, s390, x86_64)
+  * Fix copyright message in de_win.rc, gc_cpp.cc, ec.h and
+    specific.h
+
+-------------------------------------------------------------------
 Tue Sep 28 22:27:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.0.6

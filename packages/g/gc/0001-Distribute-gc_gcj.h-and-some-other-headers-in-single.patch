@@ -1,0 +1,64 @@
+From c876dc2b12fcfd65466b9aa42349cfb621064971 Mon Sep 17 00:00:00 2001
+From: Jakub Wojciech <jakub-w@riseup.net>
+Date: Fri, 5 Nov 2021 08:36:32 +0100
+Subject: [PATCH] Distribute gc_gcj.h and some other headers in
+ single-obj-compilation
+
+Issue #389 (bdwgc).
+
+This fixes installation of gc_pthread_redirects.h, gc_gcj.h and
+gc_disclaim.h if --single-obj-compilation is passed to configure.
+
+* Makefile.am [PTHREADS] (pkginclude_HEADERS): Move outside the
+SINGLE_GC_OBJ conditional.
+* Makefile.am [ENABLE_GCJ_SUPPORT] (pkginclude_HEADERS): Likewise.
+* Makefile.am [ENABLE_DISCLAIM] (pkginclude_HEADERS): Likewise.
+---
+ Makefile.am | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git Makefile.am Makefile.am
+index e3230c1d..f557fe12 100644
+--- Makefile.am
++++ Makefile.am
+@@ -83,7 +83,6 @@ else
+ if PTHREADS
+ # Not Cygwin or MinGW.
+ libgc_la_SOURCES += pthread_start.c pthread_support.c
+-pkginclude_HEADERS += include/gc_pthread_redirects.h
+ if DARWIN_THREADS
+ libgc_la_SOURCES += darwin_stop_world.c
+ else
+@@ -106,17 +105,27 @@ endif
+ 
+ if ENABLE_GCJ_SUPPORT
+ libgc_la_SOURCES += gcj_mlc.c
+-pkginclude_HEADERS += include/gc_gcj.h
+ endif
+ 
+ if ENABLE_DISCLAIM
+ libgc_la_SOURCES += fnlz_mlc.c
+-pkginclude_HEADERS += include/gc_disclaim.h
+ endif
+ 
+ ## End of !SINGLE_GC_OBJ
+ endif
+ 
++if PTHREADS
++pkginclude_HEADERS += include/gc_pthread_redirects.h
++endif
++
++if ENABLE_GCJ_SUPPORT
++pkginclude_HEADERS += include/gc_gcj.h
++endif
++
++if ENABLE_DISCLAIM
++pkginclude_HEADERS += include/gc_disclaim.h
++endif
++
+ if USE_INTERNAL_LIBATOMIC_OPS
+ nodist_libgc_la_SOURCES = libatomic_ops/src/atomic_ops.c
+ endif
+-- 
+2.34.0
+
