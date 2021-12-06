@@ -156,4 +156,22 @@
   * Hidden files (dot files) are now ignored in bemenu-run</comment>
     <requestid>907620</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>525f685224fcbcd0d247088c37664eb9</srcmd5>
+    <version>0.6.4</version>
+    <time>1638831605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.4:
+  * fix scaling caused issue on window redimension on wayland #197
+  * add -c center mode on wayland #198
+  * Add option to configure cursor height #201
+  * Add -s to disable title spacing on entries #203
+  * Fix incorrect line height #207
+  * lib/renderers/curses/curses.c: always use &quot;%s&quot;-style
+    format for printf()-style functions #211
+  * Add horizontal alignment and improve center alignment #209
+  * Add paste functionality #210
+  * Instruction for installing dependencies #214</comment>
+    <requestid>935980</requestid>
+  </revision>
 </revisionlist>

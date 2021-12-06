@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:49:27 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.4:
+  * fix scaling caused issue on window redimension on wayland #197
+  * add -c center mode on wayland #198
+  * Add option to configure cursor height #201
+  * Add -s to disable title spacing on entries #203
+  * Fix incorrect line height #207
+  * lib/renderers/curses/curses.c: always use "%s"-style
+    format for printf()-style functions #211
+  * Add horizontal alignment and improve center alignment #209
+  * Add paste functionality #210
+  * Instruction for installing dependencies #214
+
+-------------------------------------------------------------------
 Thu Jul 22 04:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.3:
