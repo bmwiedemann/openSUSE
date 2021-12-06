@@ -25,11 +25,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  hw/xfree86/common/xf86platformBus.c | 29 +++++++++++++++++++++++++++++
  1 file changed, 29 insertions(+)
 
-Index: xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
+Index: xorg-server-21.1.1/hw/xfree86/common/xf86platformBus.c
 ===================================================================
---- xorg-server-1.20.5.orig/hw/xfree86/common/xf86platformBus.c
-+++ xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
-@@ -744,6 +744,35 @@ void xf86platformPrimary(void)
+--- xorg-server-21.1.1.orig/hw/xfree86/common/xf86platformBus.c
++++ xorg-server-21.1.1/hw/xfree86/common/xf86platformBus.c
+@@ -766,6 +766,35 @@ void xf86platformPrimary(void)
  
              xf86Msg(X_NONE, "\tfalling back to %s\n", primaryBus.id.plat->attribs->syspath);
          }
@@ -46,7 +46,7 @@ Index: xorg-server-1.20.5/hw/xfree86/common/xf86platformBus.c
 +            int domain, bus, dev, func;
 +            int ret;
 +
-+            if (strncmp(busid, "pci:", 4) != 0)
++            if (!busid || (strncmp(busid, "pci:", 4) != 0))
 +                continue;
 +
 +            ret = sscanf(busid, "pci:%04x:%02x:%02x.%u",

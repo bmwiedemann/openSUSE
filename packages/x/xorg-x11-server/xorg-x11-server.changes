@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec  3 14:41:55 UTC 2021 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- u_pci-primary-Fix-up-primary-PCI-device-detection-for-the-platfrom-bus.patch
+  * Fix SEGFAULT when parsing bus IDs of NULL
+- u_Support-configuration-files-under-run-X11-xorg.conf..patch
+  * Support configuration files under /run. Required for generating
+    configuration files via udev.
+- u_Add-udev-scripts-for-configuration-of-platform-devic.patch
+  * Generate configuration files for platform devices
+- u_Revert-xf86-Accept-devices-with-the-simpledrm-driver.patch
+  * Code has been obsoleted by udev patchset
+- u_Add-udev-rule-for-HyperV-devices.patch
+  * Same as for platform devices, but on HyperV
+
+-------------------------------------------------------------------
 Fri Nov 19 15:49:28 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - enable build of Xorg on s390x (jira#SLE-18632) 

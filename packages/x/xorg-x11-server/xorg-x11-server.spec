@@ -239,6 +239,11 @@ Patch1900:      u_no-lto-for-tests.patch
 
 Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
+Patch1920:      u_Support-configuration-files-under-run-X11-xorg.conf..patch
+Patch1921:      u_Add-udev-scripts-for-configuration-of-platform-devic.patch
+Patch1922:      u_Revert-xf86-Accept-devices-with-the-simpledrm-driver.patch
+Patch1923:      u_Add-udev-rule-for-HyperV-devices.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -375,7 +380,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 ### not applicable anymore
 #%patch210 -p1
 %patch215 -p1
-### apparently supersed by upstream 
+### apparently supersed by upstream
 ###  commit 078277e4d92f05a90c4715d61b89b9d9d38d68ea
 ###  Author: Dave Airlie <airlied@redhat.com>
 ###  Date:   Fri Aug 17 09:49:24 2012 +1000
@@ -393,6 +398,10 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1503 -p1
 %patch1900 -p1
 %patch1910 -p1
+%patch1920 -p1
+%patch1921 -p1
+%patch1922 -p1
+%patch1923 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -593,6 +602,12 @@ fi
 %ghost %{_sysconfdir}/alternatives/libglx.so
 %endif
 %{_bindir}/xorg-backtrace
+
+# sysfb support
+%{_sbindir}/x11sysfsconf
+%dir %{_sysconfdir}/udev
+%dir %{_sysconfdir}/udev/rules.d
+%{_sysconfdir}/udev/rules.d/99-xorg-sysfs.rules
 
 %if 0%{?have_wayland} == 1
 %files wayland

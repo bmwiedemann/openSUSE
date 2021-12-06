@@ -3667,4 +3667,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment>- enable build of Xorg on s390x (jira#SLE-18632)</comment>
     <requestid>932564</requestid>
   </revision>
+  <revision rev="399" vrev="3">
+    <srcmd5>6c29a13641f2276b451e03d736b26163</srcmd5>
+    <version>21.1.1</version>
+    <time>1638831554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935539</requestid>
+  </revision>
 </revisionlist>
