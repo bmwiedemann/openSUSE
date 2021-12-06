@@ -36,4 +36,15 @@
 </comment>
     <requestid>932683</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1a65706d0d0cf54e66c5ec4b31e787d2</srcmd5>
+    <version>1.1.1</version>
+    <time>1638831585</time>
+    <user>dimstar_suse</user>
+    <comment>- change recommendations to supplements for bash completion sub-package
+- Split bash-completions scripts into separate package.
+- Changed Source URL from stale https://github.com/cslarsen/jp2a to active fork https://github.com/Talinx/jp2a
+</comment>
+    <requestid>936121</requestid>
+  </revision>
 </revisionlist>

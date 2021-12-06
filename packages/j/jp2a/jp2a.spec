@@ -32,8 +32,16 @@ BuildRequires:  libjpeg8-devel
 BuildRequires:  libpng-devel
 BuildRequires:  unzip
 
+%package bash-completion
+Summary:        Bash completions scripts for jp2a
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
 %description
 jp2a is a JPEG to ASCII converter.
+
+%description bash-completion
+This package contains the bash completions scripts for jp2a.
 
 %prep
 %setup -q
@@ -58,6 +66,8 @@ popd
 %license COPYING
 %{_bindir}/jp2a
 %{_mandir}/man1/jp2a.1%{?ext_man}
+
+%files bash-completion
 %{_datadir}/bash-completion/completions/jp2a
 
 %changelog
