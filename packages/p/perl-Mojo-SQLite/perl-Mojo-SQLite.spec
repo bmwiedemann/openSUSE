@@ -18,7 +18,7 @@
 
 %define cpan_name Mojo-SQLite
 Name:           perl-Mojo-SQLite
-Version:        3.007
+Version:        3.008
 Release:        0
 Summary:        Tiny Mojolicious wrapper for SQLite
 License:        Artistic-2.0

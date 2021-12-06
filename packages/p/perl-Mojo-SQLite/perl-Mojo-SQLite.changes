@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 29 03:07:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.008
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  3.008     2021-11-28 11:10:24 EST
+    - Update documentation to indicate that upsert operations are now supported via SQL::Abstract::Pg.
+
+-------------------------------------------------------------------
 Mon Aug  2 03:08:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.007
