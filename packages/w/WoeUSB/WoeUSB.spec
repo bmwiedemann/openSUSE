@@ -1,7 +1,7 @@
 #
 # spec file for package WoeUSB
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,28 @@
 
 
 Name:           WoeUSB
-Version:        3.3.1
+Version:        5.2.4
 Release:        0
 Summary:        Windows USB installation media creator
 License:        GPL-3.0-or-later
-URL:            https://github.com/slacka/WoeUSB
-Source:         https://github.com/slacka/WoeUSB/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+URL:            https://github.com/WoeUSB/WoeUSB
+Source:         https://github.com/WoeUSB/WoeUSB/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  libtool
-BuildRequires:  update-desktop-files
-BuildRequires:  wxGTK3-devel
+Requires:       bash >= 4.3
 Requires:       dosfstools
+Requires:       findutils
+Requires:       gawk
+Requires:       grep
 Requires:       grub2
 Requires:       ntfsprogs
 Requires:       parted
 Requires:       util-linux
+Requires:       wget
+Requires:       wimtools
+Recommends:     p7zip
+BuildArch:      noarch
 
 %description
 WoeUSB is a utility for creating a bootable Windows installation
@@ -44,44 +47,23 @@ USB storage device from an existing Windows installation disc or disk image.
 %prep
 %setup -q
 %autosetup
+find . -type f -exec sed -i "s/@@WOEUSB_VERSION@@/%{version}/" {} \+
+sed -i '1 s/env //' sbin/woeusb
 
 %build
-find . -type f -exec sed -i "s/@@WOEUSB_VERSION@@/%{version}/" {} \+
-autoreconf -fiv
-%configure
-make %{?_smp_mflags}
 
 %install
-%make_install
-sed -i '1!b;s@/usr/bin/env bash@/bin/bash@' %{buildroot}%{_bindir}/woeusb %{buildroot}%{_datadir}/woeusb/data/listDvdDrive %{buildroot}%{_datadir}/woeusb/data/listUsb
-rm %{buildroot}%{_datadir}/applications/woeusbgui.desktop
-cp src/linux-menu/woeusbgui.desktop .
-%suse_update_desktop_file -i -G "WoeUSB" -r woeusbgui System HardwareSettings
-%fdupes %buildroot%{_datadir}
+install -Dm 755 sbin/woeusb %{buildroot}%{_sbindir}/woeusb
+install -Dm 644 share/man/man1/woeusb.1 %{buildroot}%{_mandir}/man1/woeusb.1
+install -Dm 644 share/woeusb/woeusb.svg %{buildroot}%{_datadir}/woeusb/woeusb.svg
+%fdupes %{buildroot}
 
 %files
-%doc ChangeLog README.md README.upstream
-%license COPYING
-%{_bindir}/woeusb
+%doc README.md
+%license LICENSES/
+%{_sbindir}/woeusb
 %{_mandir}/man1/woeusb.1%{?ext_man}
-%{_mandir}/man1/woeusbgui.1%{?ext_man}
-%{_bindir}/woeusbgui
-%{_datadir}/applications/woeusbgui.desktop
-%{_datadir}/pixmaps/woeusbgui-icon.png
 %dir %{_datadir}/woeusb
-%dir %{_datadir}/woeusb/data
-%{_datadir}/woeusb/data/c501-logo.png
-%{_datadir}/woeusb/data/icon.png
-%{_datadir}/woeusb/data/listDvdDrive
-%{_datadir}/woeusb/data/listUsb
-%{_datadir}/woeusb/data/woeusb-logo.png
-%dir %{_datadir}/woeusb/locale
-%dir %{_datadir}/woeusb/locale/fr
-%dir %{_datadir}/woeusb/locale/fr/LC_MESSAGES
-%dir %{_datadir}/woeusb/locale/zh_TW
-%dir %{_datadir}/woeusb/locale/zh_TW/LC_MESSAGES
-%lang(fr) %{_datadir}/woeusb/locale/fr/LC_MESSAGES/woeusb.mo
-%lang(fr) %{_datadir}/woeusb/locale/fr/LC_MESSAGES/wxstd.mo
-%lang(zh) %{_datadir}/woeusb/locale/zh_TW/LC_MESSAGES/woeusb.mo
+%{_datadir}/woeusb/woeusb.svg
 
 %changelog
