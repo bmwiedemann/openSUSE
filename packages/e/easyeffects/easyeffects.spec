@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.1.3+0~git.a593cbd3
+Version:        6.1.5+0~git.e13f757d
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zita-convolver-devel
 BuildRequires:  pkgconfig(glibmm-2.68)

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Dec  4 14:29:10 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- Updated to latest release 6.1.5
+- Added
+  + It is now possible to combine impulse responses in the Convolver interface.
+    A new impulse file is generated and it should be visible in the impulse list.
+  + Improved x axis drawings in our plots. Now the number of labels is adjusted
+    dynamically depending on our window width.
+  + The documentation has been updated reflecting the new EasyEffects features.
+    Old references about PulseEffects have been removed. The documentation button has been added in the menu section.
+  + The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.
+  + The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.
+  + The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.
+  + Optional Cubic Volume can be enabled in General Settings.
+- Fixed
+  + When a spinbutton is filled with an out of range value, now it is updated with the
+    lowest/highest value rather than resetting to the previous one.
+  + The application window now remembers the maximized state and restores it on the next opening event.
+  + The Spectrum plugin was supposed to enter passthrough whenever it was not visible,
+    but this was happening only when our window was closed.
+  + Improved support for Assistive Technology.
+  + The probes used in some filters like the Compressor and the Limiter were not being relinked
+    after changing the order of the plugins in the pipeline. It should be working now.
+- dependency
+  + The tbb library is a new dependency https://www.threadingbuildingblocks.org
+   
+
+-------------------------------------------------------------------
 Sun Oct  3 23:07:07 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 6.1.3
