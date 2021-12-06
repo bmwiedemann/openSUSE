@@ -7,4 +7,13 @@
     <comment>Required dependency of python-checkdmarc</comment>
     <requestid>908473</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47e1ae157cd238cb0db0dd66e8e33683</srcmd5>
+    <version>1.2.1</version>
+    <time>1638831587</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Use generic assert methods rather than nose methods.</comment>
+    <requestid>935878</requestid>
+  </revision>
 </revisionlist>

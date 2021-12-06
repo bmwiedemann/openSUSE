@@ -1,6 +1,7 @@
 #
 # spec file for package python-expiringdict
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,6 +25,7 @@ Summary:        Dictionary with auto-expiring values for caching purposes
 License:        Apache-2.0
 URL:            https://www.mailgun.com/
 Source:         https://github.com/mailgun/expiringdict/archive/refs/tags/v%{version}.tar.gz#/expiringdict-%{version}.tar.gz
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -35,7 +37,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module coveralls}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -49,6 +50,7 @@ max_len elements - the oldest will be deleted.
 
 %prep
 %setup -q -n expiringdict-%{version}
+%autopatch -p1
 
 %build
 %python_build
