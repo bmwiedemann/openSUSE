@@ -21,7 +21,7 @@
 %bcond_without  x11_backend
 %bcond_without  xwayland
 %bcond_without  xcb_errors
-%bcond_without  seatd
+
 Name:           wlroots
 Version:        0.14.1
 Release:        0
@@ -52,9 +52,6 @@ BuildRequires:  pkgconfig(wayland-server) >= 1.16
 BuildRequires:  pkgconfig(xkbcommon)
 %if %{with libcap}
 BuildRequires:  pkgconfig(libcap)
-%endif
-%if %{with seatd}
-BuildRequires:  pkgconfig(libseat)
 %endif
 %if %{with x11_backend} || %{with xwayland}
 BuildRequires:  xorg-x11-server-wayland
@@ -99,7 +96,6 @@ export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls"
   %{?with_libcap:-Dlibcap=enabled} \
   %{?with_x11_backend:-Dx11_backend=enabled} \
   %{?with_xwayland:-Dxwayland=enabled} \
-  %{?with_xcb_errors:-Dlibseat=enabled} \
   %{?with_xcb_errors:-Dxcb-errors=enabled}
 %meson_build
 
