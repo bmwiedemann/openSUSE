@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  3 08:20:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.26
+  * On s390/x and PPC64 gcc misses unused arg0
+- Remove patch fcb9e0c2.patch as now part of tar ball 
+
+-------------------------------------------------------------------
+Thu Dec  2 15:02:35 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch fcb9e0c2.patch
+  * On s390/x and PPC64 gcc misses unused arg0
+
+-------------------------------------------------------------------
+Thu Dec  2 13:11:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.24
+  * Avoid install errror due missed directory
+
+-------------------------------------------------------------------
+Thu Dec  2 11:36:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.22
+  * Avoid KillMode=none for newer systemd version as well as rework
+    the systemd unit files of blog (boo#1186506)
+
+-------------------------------------------------------------------
 Thu Sep 30 10:01:29 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Move to /usr for UsrMerge (boo#1191057) 

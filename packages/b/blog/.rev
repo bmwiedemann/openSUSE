@@ -144,4 +144,24 @@ use private glib API but implement a share memory mkstemp</comment>
   * Silent new gcc compiler</comment>
     <requestid>922331</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2f8c19c0562231a87f657f72f99ba797</srcmd5>
+    <version>2.26</version>
+    <time>1638831549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.26
+  * On s390/x and PPC64 gcc misses unused arg0
+- Remove patch fcb9e0c2.patch as now part of tar ball 
+
+- Add upstream patch fcb9e0c2.patch
+  * On s390/x and PPC64 gcc misses unused arg0
+
+- Update to version 2.24
+  * Avoid install errror due missed directory
+
+- Update to version 2.22
+  * Avoid KillMode=none for newer systemd version as well as rework
+    the systemd unit files of blog (boo#1186506)</comment>
+    <requestid>935416</requestid>
+  </revision>
 </revisionlist>

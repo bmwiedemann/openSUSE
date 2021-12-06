@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.21
+Version:        2.26
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -30,6 +30,7 @@ BuildRequires:  suse-module-tools
 Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       sysvinit-tools:/sbin/blogd
+Suggests:       blog-plymouth = %{version}
 
 %description
 The blogd daemon determines the real underlying character device of
@@ -52,7 +53,7 @@ The libaray for the FIFO interface used by the LSB startproc command.
 %package	plymouth
 Summary:        Replaces plymouth by blogd
 Group:          System/Base
-Requires:       blog
+Requires:       blog = %{version}
 Requires:       systemd
 Conflicts:      plymouth
 Conflicts:      plymouth-dracut
@@ -100,17 +101,20 @@ make %{?_smp_mflags} CC="%__cc" \
     BOOT_LOGFILE=%{_localstatedir}/log/boot.log \
     BOOT_OLDLOGFILE=%{_localstatedir}/log/boot.old
 
-%post
-%{?regenerate_initrd_post}
-test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-
-%postun
-test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
+rm -vf %{buildroot}%{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 
 %post   -n libblogger%{sonum} -p /sbin/ldconfig
 %postun -n libblogger%{sonum} -p /sbin/ldconfig
 
-%posttrans
+%post   plymouth
+ln -sf ../systemd-vconsole-setup.service %{_unitdir}/systemd-ask-password-blog.service.wants/
+test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
+%{?regenerate_initrd_post}
+
+%postun plymouth
+test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
+
+%posttrans plymouth
 %{?regenerate_initrd_posttrans}
 
 %files
@@ -149,21 +153,18 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
 %files plymouth
 %defattr(-,root,root)
-%dir %{_prefix}/lib/dracut
-%dir %{_prefix}/lib/dracut/modules.d
-%dir %{_prefix}/lib/dracut/modules.d/99blog
-%dir %{_unitdir}/basic.target.wants
-%dir %{_unitdir}/default.target.wants
-%dir %{_unitdir}/emergency.target.wants
-%dir %{_unitdir}/halt.target.wants
-%dir %{_unitdir}/initrd-switch-root.target.wants
-%dir %{_unitdir}/kexec.target.wants
-%dir %{_unitdir}/multi-user.target.wants
-%dir %{_unitdir}/poweroff.target.wants
-%dir %{_unitdir}/reboot.target.wants
-%dir %{_unitdir}/rescue.target.wants
-%dir %{_unitdir}/sysinit.target.wants
-%dir %{_unitdir}/systemd-ask-password-blog.service.wants
+%dir %{_prefix}/lib/dracut/
+%dir %{_prefix}/lib/dracut/modules.d/
+%dir %{_prefix}/lib/dracut/modules.d/99blog/
+%dir %{_unitdir}/basic.target.wants/
+%dir %{_unitdir}/default.target.wants/
+%dir %{_unitdir}/emergency.target.wants/
+%dir %{_unitdir}/initrd-switch-root.target.wants/
+%dir %{_unitdir}/rescue.target.wants/
+%dir %{_unitdir}/sysinit.target.wants/
+%dir %{_unitdir}/shutdown.target.wants/
+%dir %{_unitdir}/local-fs-pre.target.wants/
+%dir %{_unitdir}/systemd-ask-password-blog.service.wants/
 %{_prefix}/lib/dracut/modules.d/99blog/module-setup.sh
 %{_unitdir}/blog-final.service
 %{_unitdir}/blog-quit.service
@@ -176,18 +177,13 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %{_unitdir}/basic.target.wants/blog.service
 %{_unitdir}/default.target.wants/blog-quit.service
 %{_unitdir}/emergency.target.wants/blog-quit.service
-%{_unitdir}/halt.target.wants/blog-final.service
-%{_unitdir}/halt.target.wants/blog-umount.service
 %{_unitdir}/initrd-switch-root.target.wants/blog-switch-root.service
 %{_unitdir}/initrd-switch-root.target.wants/blog.service
-%{_unitdir}/kexec.target.wants/blog-final.service
-%{_unitdir}/kexec.target.wants/blog-umount.service
-%{_unitdir}/poweroff.target.wants/blog-final.service
-%{_unitdir}/poweroff.target.wants/blog-umount.service
-%{_unitdir}/reboot.target.wants/blog-final.service
-%{_unitdir}/reboot.target.wants/blog-umount.service
 %{_unitdir}/rescue.target.wants/blog-quit.service
 %{_unitdir}/sysinit.target.wants/blog-store-messages.service
 %{_unitdir}/sysinit.target.wants/systemd-ask-password-blog.path
+%{_unitdir}/shutdown.target.wants/blog-final.service
+%{_unitdir}/local-fs-pre.target.wants/blog-umount.service
+%ghost %{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 
 %changelog
