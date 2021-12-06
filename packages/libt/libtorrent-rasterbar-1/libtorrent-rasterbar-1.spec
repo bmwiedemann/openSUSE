@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           %{_oname}-%{_legacy}
-Version:        1.2.14
+Version:        1.2.15
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause

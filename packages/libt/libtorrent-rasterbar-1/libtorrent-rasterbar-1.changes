@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  5 07:21:28 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.15
+  * cache DNS lookups for SOCKS5 proxy
+  * fix stalled pieces on disk-full errors
+  * make UTF-8 sanitization a bit stricter. This will re-write
+    invalid UTF-8 code points encoding surrogate pairs
+  * fix restoring last_seen_complete from resume data
+  * fix issue on MacOS where the DHT was not restarted on a
+    network-up notification
+  * make remove_torrent flags be treated as flags (instead of an
+    enum)
+
+-------------------------------------------------------------------
 Mon Jun  7 08:48:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.14
