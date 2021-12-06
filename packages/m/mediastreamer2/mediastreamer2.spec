@@ -22,7 +22,7 @@ Name:           mediastreamer2
 Version:        5.0.53
 Release:        0
 Summary:        Audio/Video real-time streaming
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://linphone.org/technical-corner/mediastreamer2
 Source:         https://gitlab.linphone.org/BC/public/mediastreamer2/-/archive/%{version}/%{name}-%{version}.tar.bz2
