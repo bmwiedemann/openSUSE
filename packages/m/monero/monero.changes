@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Mon Dec  6 08:54:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.3.0:
+  * Fix Android OpenSSL build
+  * cmake: set 3.5 as minimum version
+  * blocks: update checkpoints.dat
+  * Add python method
+  * Add calcpow RPC
+  * Update RandomX
+  * hidapi: bump hidapi to 0.11.0
+  * Update RandomX to v1.1.10
+  * device: fix ledger error strings, add human friendly messages
+  * device: Ledger - update status codes
+  * depends: openssl 1.1.1k -> 1.1.1l
+  * slow_hash: don't blow out Mac stack on ARM64
+  * build: prepare v0.17.3.0
+  * crypto: fix typo in ifdef
+  * rpc: fix DoS vector in get_output_distribution
+  * protocol: fix spurious rejection of downloaded blocks
+  * socks: ignore any exceptions in shutdown/close
+  * wallet_api: enable set_strict_default_file_permissions
+  * epee: add missing header
+  * depends: update zeromq package to 4.3.4
+  * cmake: use CMAKE_CURRENT_LIST_DIR for git version
+  * epee: avoid ADL selecting C++14 std::quoted
+  * wallet2: fix key encryption when changing ask-password from 0/1 to 2
+  * cmake: set cpp14 standard
+  * Add README to release archives
+  * README v12 fork occurred on 2019-11-30 as expected
+  * fix median overflow bug
+  * LMDB: fix deadlock in resized detection
+  * blockchain: fix pedantic assert
+  * ARMv8: detect AES support dynamically
+  * Increase timeout for the mining test 4 times (to 240s)
+  * Wallet2: Update 'approximate_testnet_rolled_back_blocks'
+  * cmake: set required C/C++ standard to 11
+  * Fix parallel make of OpenSSL
+  * add singapore.node.xmr.pm to seed nodes
+  * net_node: add seed node
+  * depends: update unwind, fix build with ubuntu 21.04
+  * Only INFO log for short seed words with ALLOW_SHORT_WORDS active
+  * epee: don't log raw packet data
+  * Mac: Enable on ARM, by not enforcing x86_64
+  * daemon: allow proxy configuration
+  * bootstrap_daemon: proxy configuration support
+  * wallet2: chunk get_outs.bin calls to avoid sanity limits
+  * Decrease the "recent spend window" in gamma re-select to 15 blocks
+  * workflows: add missing dependency, fix mac build
+  * Add simple script for running gitian-build
+  * gitian: cleanup more unused packages
+  * gitian: omit ccache from gitian builds
+  * Quicker resource cleanup on p2p socks timeout
+  * easylogging++: fix missing logs
+  * RPC and ZeroMQ APIs to support p2pool
+  * rpc: Fix get_transactions failing when not found
+  * node_server: fix race condition
+  * node_server: add race condition demo
+  * support cors wildcard
+  * Fix precision of average_output_time
+  * simplewallet: don't truncate integ. address in export_transfers
+  * LMDB: protection against UB, by not calling virtual methods from destructor - v0.17
+  * UB: virtual methods in destructor at Trezor
+  * UB: virtual method in destructor of WalletImpl v0.17
+  * miniupnp: set submodule to upstream, disable install
+  * v0.17: Fix Boost-1.77: Add missing algorithm header to i18n.cpp
+  * Wallet2: fix optimize-coinbase for p2pool payouts
+  * python-rpc: add missing python api for new freeze/thaw/frozen RPC
+  * Protect client from divide by 0 caused by integer truncation
+  * Apply gamma distr from chain tip when selecting decoys
+  * epee: link with Boost_SYSTEM_LIBRARY
+  * wallet_api: add make_uri
+  * build: prepare v0.17.2.3
+  * support freeze, thaw, and frozen in wallet rpc
+  * cmake: test is a reserved keyword
+  * cmake: fix ccache detection
+  * Daemon: Update average block size table
+  * Make sure node returns to wallet that real output is unlocked
+  * provide key images of spent outputs in wallet rpc
+  * wallet2: Don't auto lock device on process parsed blocks
+  * ledger: don't lock for software device
+  * ledger: use software device if we have view key
+  * wallet_api: getPassword
+  * p2p: remove blocked addresses/hosts from peerlist
+  * depends, docker: fix bintray links
+  * blocks: fix cmake syntax
+  * Stop adding more outputs than bulletproof allows
+  * unit_tests: fix wipeable_string parse_hexstr test with latest gtest
+  * cmake: use CMAKE_CURRENT_LIST_DIR in FindLibUSB
+  * epee: include public openssl header in cmake
+  * cmake: treat warnings as error in compiler flag tests
+  * wallet_api: fix typo in exportKeyImages
+  * depends: add getmonero package mirror
+  * cmake: fix non portable code
+  * unit_tests: fix broken tests
+  * cmake: don't forbid undefined symbols on openbsd
+  * Fixed json serialization of rct::RCTTypeNull
+  * fix #7784 - deinit wallet in wallet dtor
+  * wallet: rephrase error message on invalid device address
+  * device: set correct ledger min version
+  * cmake: export all symbols
+  * cmake: fix undefined symbols and multiple definitions
+  * cmake: forbid undefined symbols
+  * device_trezor_base: fix typo
+  * Fix boost 1.76.0 compatibility
+  * randomx: bump submodule to v1.1.9
+  * workflows: fix windows build
+  * add -framework AppKit for Apple
+  * wallet2: Fix rescan_bc keep_ki option
+  * wallet_api: import / export output function
+  * expose set_offline to wallet api
+  * wallet_api: add isDeterministic()
+  * wallet_api: add seed_offset param to seed()
+  * wallet_api: store fee for incoming txs in history
+  * wallet api: allow wallet to fetch all key images via api
+  * Allow tx note edits via TransactionHistory object in wallet/api
+  * wallet_api: TransactionHistory - fill unconfirmed out payments dests
+  * Extend TransactionInfo with coinbase and description attributes in wallet/api
+  * Allow AddressBook description edits via wallet/api interface
+  * ITS#9496 fix mdb_env_open bug from #8704
+  * gitian: remove osslsigncode
+  * unit_tests: fix boost 1.58 compatibility
+
+-------------------------------------------------------------------
 Tue Apr 20 07:03:50 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.2.0:

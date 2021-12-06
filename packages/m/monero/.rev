@@ -71,4 +71,41 @@
   * docs: Remove outdated bits about anonymity network seed nodes</comment>
     <requestid>886889</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>375513fe38dbc5512954d96b3acaf60c</srcmd5>
+    <version>0.17.3.0</version>
+    <time>1638831599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.3.0:
+  * Fix Android OpenSSL build
+  * cmake: set 3.5 as minimum version
+  * blocks: update checkpoints.dat
+  * Add python method
+  * Add calcpow RPC
+  * Update RandomX
+  * hidapi: bump hidapi to 0.11.0
+  * Update RandomX to v1.1.10
+  * device: fix ledger error strings, add human friendly messages
+  * device: Ledger - update status codes
+  * depends: openssl 1.1.1k -&gt; 1.1.1l
+  * slow_hash: don't blow out Mac stack on ARM64
+  * build: prepare v0.17.3.0
+  * crypto: fix typo in ifdef
+  * rpc: fix DoS vector in get_output_distribution
+  * protocol: fix spurious rejection of downloaded blocks
+  * socks: ignore any exceptions in shutdown/close
+  * wallet_api: enable set_strict_default_file_permissions
+  * epee: add missing header
+  * depends: update zeromq package to 4.3.4
+  * cmake: use CMAKE_CURRENT_LIST_DIR for git version
+  * epee: avoid ADL selecting C++14 std::quoted
+  * wallet2: fix key encryption when changing ask-password from 0/1 to 2
+  * cmake: set cpp14 standard
+  * Add README to release archives
+  * README v12 fork occurred on 2019-11-30 as expected
+  * fix median overflow bug
+  * LMDB: fix deadlock in resized detection
+  * blockchain: fix pedantic assert</comment>
+    <requestid>935954</requestid>
+  </revision>
 </revisionlist>
