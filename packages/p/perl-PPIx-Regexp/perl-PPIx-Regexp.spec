@@ -18,7 +18,7 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.081
+Version:        0.082
 Release:        0
 Summary:        Represent a regular expression of some sort
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -87,6 +87,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes CONTRIBUTING README
 
 %changelog
