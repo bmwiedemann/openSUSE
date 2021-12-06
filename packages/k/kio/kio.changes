@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  2 13:38:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix KRun on Wayland (kde#446272,
+  gh#openSUSE/kmozillahelper#33):
+  * 0001-Fix-KRun-runApplication-when-xdg-activation-is-invol.patch
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
