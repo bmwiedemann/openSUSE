@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  3 09:51:07 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to upstream version 0.25
+  - New interaction options for openqa-mon
+  - openqa-revtui received the "reviewed" keyword
+
+-------------------------------------------------------------------
 Fri Aug 13 09:58:50 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Add useragent

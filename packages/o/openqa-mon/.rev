@@ -23,4 +23,12 @@
     <comment>Include useragent in http requests (forwarded request 911982 from ph03nix)</comment>
     <requestid>912013</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4fd498939f4623bca752f4a5c8dfe7b</srcmd5>
+    <version>0.25</version>
+    <time>1638831632</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.25 (forwarded request 935429 from ph03nix)</comment>
+    <requestid>936125</requestid>
+  </revision>
 </revisionlist>
