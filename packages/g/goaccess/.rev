@@ -542,4 +542,19 @@
     <comment></comment>
     <requestid>930863</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5aa23bdc6d3e7e308690d43e2d1e363b</srcmd5>
+    <version>1.5.3</version>
+    <time>1638831607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3:
+  * Added additional crawlers to the default list.
+  * Added Italian translation (i18n).
+  * Added 'macOS 12' to the list of OS.
+  * Fixed buffer overflow caused by an excessive number of invalid
+    requests with multiple logs.
+  * Fixed visualization issue on the HTML report for panels with
+    disabled chart.</comment>
+    <requestid>935981</requestid>
+  </revision>
 </revisionlist>

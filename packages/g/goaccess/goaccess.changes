@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:52:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.3:
+  * Added additional crawlers to the default list.
+  * Added Italian translation (i18n).
+  * Added 'macOS 12' to the list of OS.
+  * Fixed buffer overflow caused by an excessive number of invalid
+    requests with multiple logs.
+  * Fixed visualization issue on the HTML report for panels with
+    disabled chart.
+
+-------------------------------------------------------------------
 Thu Nov 11 10:21:38 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix systemd target for the timer which ends up with cylces otherwise
