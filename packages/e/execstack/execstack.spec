@@ -1,7 +1,7 @@
 #
 # spec file for package execstack
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #               2014 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           execstack
 Version:        0.5.0
@@ -27,26 +28,31 @@ Summary:        Utility to set/clear/query executable stack bit
 # do not use dynamic shortcommit, Source0 with git format and autosetup
 # because "osc service localrun source_validator" would report error
 
-License: GPL-2.0+
-Url:	 https://github.com/keszybz/prelink/archive
-Source0: prelink-%{shortcommit}.tar.gz
+License:        GPL-2.0-or-later
+URL:            https://github.com/keszybz/prelink/archive
+Source0:        prelink-%{shortcommit}.tar.gz
 #ource0: https://github.com/keszybz/prelink/archive/%%{commit}.tar.gz#/prelink-%%{shortcommit}.tar.gz
 
-Patch0:  Add-PL_ARCH-for-AArch64.patch
-Patch1:  prelink_update_fsf_address.patch
+Patch0:         Add-PL_ARCH-for-AArch64.patch
+Patch1:         prelink_update_fsf_address.patch
 # bypass where gcc linker do not add the GNU_STACK default header in elf file
-Patch2:  prelink_add_no_execstack_for_ppc64.patch
+Patch2:         prelink_add_no_execstack_for_ppc64.patch
 
-BuildRequires: libelf-devel
-BuildRequires: libselinux-devel, selinux-tools
-BuildRequires: git
-Requires: glibc >= 2.2.4-18, coreutils, findutils
-Requires: util-linux, gawk, grep
-Conflicts: prelink <= %{version}
+BuildRequires:  git
+BuildRequires:  libelf-devel
+BuildRequires:  libselinux-devel
+BuildRequires:  selinux-tools
+Requires:       coreutils
+Requires:       findutils
+Requires:       gawk
+Requires:       glibc >= 2.2.4-18
+Requires:       grep
+Requires:       util-linux
+Conflicts:      prelink <= %{version}
 
 %description
 This package is built from prelink sources but contains just the
-execstack binary. It can be used manipulate ELF binaries to run
+execstack binary. It can be used to manipulate ELF binaries to run
 with or without executable stack.
 
 %prep
@@ -85,4 +91,3 @@ install -Dm0644 doc/execstack.8 %{buildroot}%{_mandir}/man8/execstack.8
 %doc ChangeLog NEWS README TODO THANKS COPYING
 
 %changelog
-

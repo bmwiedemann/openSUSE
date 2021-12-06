@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec  3 07:34:40 UTC 2021 - Dominik Gedon <dominik.gedon@suse.com>
+
+- fix package description
+- update copyright
+- cleanup regarding recommendations from spec-cleaner
+
+-------------------------------------------------------------------
 Tue Dec  8 08:48:00 UTC 2015 - normand@linux.vnet.ibm.com
 
 - add Conflicts with prelink package
