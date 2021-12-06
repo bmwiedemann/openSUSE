@@ -23,7 +23,7 @@ Release:        0
 %define uversion %{version}
 %define sover   4
 Summary:        Molecular Dynamics Package
-License:        Apache-2.0 AND GPL-2.0-or-later
+License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
