@@ -1,7 +1,7 @@
 #
 # spec file for package xfishtank
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xfishtank
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        An aquarium in the root window
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
 URL:            https://jim.rees.org/computers/xfishtank.html
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(imlib2)
