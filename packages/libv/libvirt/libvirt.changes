@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  2 22:36:06 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Fix libvirtd deadlocks and segfaults
+  23b51d7b-libxl-disable-death-event.patch,
+  a4e6fba0-libxl-rename-threadinfo-struct.patch,
+  e4f7589a-libxl-shutdown-thread-name.patch,
+  b9a5faea-libxl-handle-death-thread.patch,
+  5c5df531-libxl-search-domid-in-thread.patch,
+  a7a03324-libxl-protect-logger-access.patch
+  bsc#1191668, bsc#1192017
+
+-------------------------------------------------------------------
+Thu Dec  2 15:12:31 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.10.0
+  - jsc#SLE-18260, jsc#SLE-19264
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v7-10-0-2021-12-01
+
+-------------------------------------------------------------------
 Fri Nov 19 21:22:27 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - virt-create-rootfs: Fix repository URLs

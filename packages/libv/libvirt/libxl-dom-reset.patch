@@ -8,11 +8,11 @@ Date:   Mon Jun 23 15:51:20 2014 -0600
     option, but domainReset can be implemented in the libxl driver by
     forcibly destroying the domain and starting it again.
 
-Index: libvirt-7.9.0/src/libxl/libxl_driver.c
+Index: libvirt-7.10.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-7.9.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-7.9.0/src/libxl/libxl_driver.c
-@@ -1343,6 +1343,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
+--- libvirt-7.10.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.10.0/src/libxl/libxl_driver.c
+@@ -1340,6 +1340,63 @@ libxlDomainReboot(virDomainPtr dom, unsi
  }
  
  static int
@@ -76,7 +76,7 @@ Index: libvirt-7.9.0/src/libxl/libxl_driver.c
  libxlDomainDestroyFlags(virDomainPtr dom,
                          unsigned int flags)
  {
-@@ -6441,6 +6498,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6430,6 +6487,7 @@ static virHypervisorDriver libxlHypervis
      .domainShutdown = libxlDomainShutdown, /* 0.9.0 */
      .domainShutdownFlags = libxlDomainShutdownFlags, /* 0.9.10 */
      .domainReboot = libxlDomainReboot, /* 0.9.0 */

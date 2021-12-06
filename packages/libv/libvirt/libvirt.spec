@@ -128,6 +128,10 @@
 %define qemu_user          qemu
 %define qemu_group         qemu
 
+# Locations for QEMU data
+%define qemu_moddir        %{_libdir}/qemu
+%define qemu_datadir       %{_datadir}/qemu
+
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 %if %{with_wireshark}
@@ -136,7 +140,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.9.0
+Version:        7.10.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -282,6 +286,12 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         23b51d7b-libxl-disable-death-event.patch
+Patch1:         a4e6fba0-libxl-rename-threadinfo-struct.patch
+Patch2:         e4f7589a-libxl-shutdown-thread-name.patch
+Patch3:         b9a5faea-libxl-handle-death-thread.patch
+Patch4:         5c5df531-libxl-search-domid-in-thread.patch
+Patch5:         a7a03324-libxl-protect-logger-access.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -989,6 +999,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dnss=enabled \
            -Dqemu_user=%{qemu_user} \
            -Dqemu_group=%{qemu_group} \
+           -Dqemu_moddir=%{qemu_moddir} \
+           -Dqemu_datadir=%{qemu_datadir} \
            %{?arg_loader_nvram} \
            -Dlogin_shell=disabled \
            -Dinit_script=systemd \
@@ -1025,7 +1037,6 @@ done
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
 mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/hooks
 %find_lang %{name}
-install -d -m 0755 %{buildroot}/%{_localstatedir}/lib/%{name}/dnsmasq/
 install -d -m 0755 %{buildroot}/%{_datadir}/%{name}/networks/
 cp %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml \
    %{buildroot}/%{_datadir}/%{name}/networks/default.xml
@@ -1737,6 +1748,7 @@ fi
 %doc %{_mandir}/man1/virt-pki-validate.1*
 %{_bindir}/virsh
 %{_bindir}/virt-xml-validate
+%{_bindir}/virt-pki-query-dn
 %{_bindir}/virt-pki-validate
 %{_datadir}/bash-completion/completions/virsh
 %dir %{_libdir}/%{name}
