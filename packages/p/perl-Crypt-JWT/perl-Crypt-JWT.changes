@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 29 03:07:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.034
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.034   2021-11-28
+          - fix #32 ensure payload is serialized consistently (canonical)
+
+-------------------------------------------------------------------
 Sun May  2 03:06:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.033
