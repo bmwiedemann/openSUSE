@@ -18,7 +18,7 @@
 
 %define cpan_name MCE
 Name:           perl-MCE
-Version:        1.875
+Version:        1.876
 Release:        0
 Summary:        Many-Core Engine for Perl providing parallel processing capabilities
 License:        Artistic-1.0 OR GPL-1.0-or-later

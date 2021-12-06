@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  3 03:07:14 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.876
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.876 Thu Dec 02 18:00:00 EST 2021
+
+    * Allow percentage above 100% for max_workers in MCE.
+
+    * MCE::Child update.
+      Improved _ordhash.
+      Renamed JOINED to REAPED in code for better clarity.
+      Specify a percentage for max_workers.
+      Added t/05_mce_child_max_workers.t
+
+-------------------------------------------------------------------
 Wed Nov 17 03:06:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.875
