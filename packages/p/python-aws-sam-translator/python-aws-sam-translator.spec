@@ -28,7 +28,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.36.0
+Version:        1.42.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -83,9 +83,7 @@ sed -i -e 's:~=:>=:g' requirements/base.txt
 
 %install
 %python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/integration/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_exec %fdupes %{buildroot}%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_bindir}
 install -D -m 755 bin/sam-translate.py %{buildroot}%{_bindir}/sam-translate

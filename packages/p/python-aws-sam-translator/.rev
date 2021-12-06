@@ -98,4 +98,21 @@
   * Resource level attributes support</comment>
     <requestid>898980</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a86981f9e0b93212f5bf6f534cd0140</srcmd5>
+    <version>1.42.0</version>
+    <time>1638831634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.42.0:
+  * Increase PageSize of ListPolicies Paginator
+  * Support VIRTUAL_HOST as Type for SourceAccessConfiguration for MQ events
+  * Add modes support for RestApi
+  * ARM support
+  * Add ValidateBody/ValidateParameters attribute to API models
+  * Adding support for metric publishing
+  * Self Managed Kafka as event source support
+  * adding OwnershipVerificationCertificateArn and DisableExecuteApiEndpoint to APIs
+  * event source filtering</comment>
+    <requestid>936130</requestid>
+  </revision>
 </revisionlist>

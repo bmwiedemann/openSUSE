@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  6 21:25:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.42.0:
+  * Increase PageSize of ListPolicies Paginator
+  * Support VIRTUAL_HOST as Type for SourceAccessConfiguration for MQ events
+  * Add modes support for RestApi
+  * ARM support
+  * Add ValidateBody/ValidateParameters attribute to API models
+  * Adding support for metric publishing
+  * Self Managed Kafka as event source support
+  * adding OwnershipVerificationCertificateArn and DisableExecuteApiEndpoint to APIs
+  * event source filtering
+
+-------------------------------------------------------------------
 Thu Jun 10 08:57:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.36.0:
