@@ -379,4 +379,64 @@
     <comment></comment>
     <requestid>821841</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>3b3af3612a0cad2cce061fb6086d5d37</srcmd5>
+    <version>0.112</version>
+    <time>1638831559</time>
+    <user>dimstar_suse</user>
+    <comment>- Add signature and keyring as sources, verify tarball with gpg.
+- Update to version 0.112:
+  + Dependencies: 
+    - dbus 1.8 was already required, but is more strongly required
+      now: the workarounds that were used to run continuous
+      integration with dbus 1.6 on Ubuntu 14.04 'trusty' have been
+      removed. (Note that dbus 1.8 has already reached end-of-life
+      for security support, and newer dbus stable branches are
+      strongly recommended.)
+    - pkg-config 0.28 is required when building from git.
+  + Enhancements:
+    - Rewrite CONTRIBUTING.md document, based on Wayland's
+      equivalent.
+    - A generated ChangeLog file, which made up a significant
+      proportion of the size of source tarball releases, is no
+      longer included.
+    - Improve man page.
+    - Add test coverage for fdo#80557
+    - Use more modern GLib assertions in unit tests.
+    - Improve continuous integration to be run by GitLab in
+      addition to Travis-CI.
+    - Add clearer license information using
+      SPDX-License-Identifier.
+  + Fixes:
+    - Allow glib-genmarshal to be overridden with
+      `./configure GLIB_GENMARSHAL=/path/to/glib-genmarshal`, for
+      cross-compilation.
+    - Avoid a double-free in dbus-binding-tool for certain inputs,
+      possibly involving nested introspection data structures.
+    - Report a better error for excessive recursion depth or
+      unsupported data types.
+    - Map the 15 most-recently-added DBusGError members to their
+      corresponding D-Bus error names.
+    - Mark all documented symbols as deprecated.
+    - Fix unit test failures during distcheck by enabling
+      assertions.
+    - Fix a core dump during installed-tests by not attempting to
+      close a shared DBusConnection.
+- Package COPYING as license, CONTRIBUTING.md and NEWS as docs.
+- Add explicit pkgconfig BuildRequires.
+- Replace dbus-1-devel and glib2-devel with pkgconfig variants that
+  configure checks for: pkgconfig(dbus-1), pkgconfig(glib-2.0),
+  pkgconfig(gobject-2.0) and pkgconfig(gio-2.0) BuildRequires.
+- Drop hard Requires and BuildRequires that are not needed as they
+  are added automatically.
+- Split out bash-completion sub-package.
+- Split out shared library into own sub-package, and Require it
+  from the devel package, and add to the baselibs.conf. Following
+  the SLPP standard. Add Provides and Obsoletes for the no longer
+  existing main package.
+- Use ldconfig_scriptlets for post(un) handling.
+- Add soname define, ease future updates.
+</comment>
+    <requestid>935057</requestid>
+  </revision>
 </revisionlist>
