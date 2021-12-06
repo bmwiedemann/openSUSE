@@ -1,7 +1,7 @@
-diff -urEbw rofi-1.6.0/config/config.c rofi-1.6.0.new/config/config.c
---- rofi-1.6.0/config/config.c	2020-09-06 20:37:58.000000000 +0200
-+++ rofi-1.6.0.new/config/config.c	2020-09-07 10:00:29.866488658 +0200
-@@ -55,16 +55,16 @@
+diff -urEbw rofi-1.7.2/config/config.c rofi-1.7.2.patch/config/config.c
+--- rofi-1.7.2/config/config.c	2021-09-02 21:02:03.000000000 +0200
++++ rofi-1.7.2.patch/config/config.c	2021-12-06 11:26:20.147107427 +0100
+@@ -47,16 +47,16 @@
      .show_icons                = FALSE,
  
      /** Terminal to use. (for ssh and open in terminal) */

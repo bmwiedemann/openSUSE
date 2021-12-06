@@ -1,7 +1,7 @@
 #
 # spec file for package rofi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        1.6.1
+Version:        1.7.2
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -25,8 +25,6 @@ Group:          System/GUI/Other
 URL:            https://davedavenport.github.io/rofi/
 Source:         https://github.com/DaveDavenport/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         xdg-terminal.patch
-# PATCH-FIX-SUSE
-Patch1:         fix-shebangs.patch
 # Required version 0.11 is not yet in TW BuildRequires:  check-devel
 BuildRequires:  bison
 BuildRequires:  cairo-devel
@@ -39,6 +37,7 @@ BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  make
 BuildRequires:  pango-devel
 BuildRequires:  startup-notification-devel
+BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xcb-util-xrm-devel
@@ -61,9 +60,10 @@ Development files and headers for rofi
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
+sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-sensible-terminal
+sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
 %configure --disable-check
 %make_build
 
