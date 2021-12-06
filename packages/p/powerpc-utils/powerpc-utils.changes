@@ -7,7 +7,7 @@ Fri Oct 29 07:38:02 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 -------------------------------------------------------------------
 Fri Sep  3 18:04:46 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
-- Optimize lsdevinfo filtering to prevent LPM timeouts (bsc#1189571 LTC#193419).
+- Optimize lsdevinfo filtering to prevent LPM timeouts (bsc#1189571 ltc#193419).
   + lsdevinfo-optimize-criteria-filtering.patch
 
 -------------------------------------------------------------------
@@ -120,7 +120,8 @@ Wed Dec 30 20:25:47 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 -------------------------------------------------------------------
 Fri Sep 11 18:34:22 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
-- Update to upstream version 1.3.8 (jsc#SLE-13291, jsc#SLE-13292)
+- Update to upstream version 1.3.8 (jsc#SLE-13291, jsc#SLE-13292,
+        bsc#1180854 ltc#170517, bsc#1186487 ltc#177613)
     - Drop version suffix hack
     - Fix --with-systemd argument
     - Drop unneeded patch

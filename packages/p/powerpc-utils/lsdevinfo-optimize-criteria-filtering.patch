@@ -1,7 +1,11 @@
-From 51b50ec77451fb9164d6379bfe3ab9ade8a672c5 Mon Sep 17 00:00:00 2001
+From 4c6dc50d8de1a8b171675ee6b742c9f0250c28a1 Mon Sep 17 00:00:00 2001
 From: Scott Cheloha <cheloha@linux.ibm.com>
 Date: Tue, 27 Jul 2021 11:30:58 -0500
 Subject: [PATCH] lsdevinfo: optimize criteria filtering
+
+References: bsc#1189571 ltc#193419
+Upstream: merged, expected 1.3.10
+Git-commit: 4c6dc50d8de1a8b171675ee6b742c9f0250c28a1
 
 lsdevinfo is significantly slower when a criteria filter is set with the
 -q flag.
@@ -52,6 +56,7 @@ This patch eliminates nearly all of the criteria-checking overhead in
 the current code.
 
 Signed-off-by: Scott Cheloha <cheloha@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
 ---
  scripts/lsdevinfo | 197 ++++++++++++++++++++++++++++++----------------
  1 file changed, 129 insertions(+), 68 deletions(-)
