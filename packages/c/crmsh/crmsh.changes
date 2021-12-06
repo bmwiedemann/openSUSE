@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Dec 06 07:54:42 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211206.894f84bb:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: ui_cluster: check if qdevice service started when starting cluster if qdevice configured
+  * Dev: ui_cluster: Remove node from node list if node is unreachable
+
+-------------------------------------------------------------------
+Fri Dec 03 13:00:31 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211203.5b4e12b3:
+  * Dev: idmgmt: Avoid leading with number for ID
+  * Dev: ui_node: Improve node standby/online methods
+
+-------------------------------------------------------------------
+Fri Dec 03 07:48:26 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211203.9b8a9910:
+  * Dev: ui_cluster: Check service is available before enable/disable qdevice
+
+-------------------------------------------------------------------
+Fri Dec 03 07:24:09 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211203.9786bf28:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: Give warning when no-quorum-policy not set as freeze while using DLM
+
+-------------------------------------------------------------------
 Mon Nov 29 03:29:00 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211129.a8e22584:
