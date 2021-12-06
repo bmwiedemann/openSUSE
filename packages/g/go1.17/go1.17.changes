@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec  3 02:15:02 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.4 (released 2021-12-02) includes fixes to the compiler,
+  linker, runtime, and the go/types, net/http, and time packages.
+  Refs boo#1190649 go1.17 release tracking
+  * go#49911 x/net/http2: frequent failures in TestClientConnCloseAtBody
+  * go#49909 x/net/ipv6: TestPacketConnReadWriteMulticast{UDP,ICMP} failing with "i/o timeout" on OpenBSD 6.8 and 7.0
+  * go#49905 x/net/http2: Client doesn't send body until ExpectContinueTimeout expires
+  * go#49868 syscall: ntdll.dll errors in rtlGetNtVersionNumbers via os.StartProcess
+  * go#49729 runtime: "fatal error: unexpected signal during runtime execution" in cmd/go tests on darwin-amd64-race running macOS 12.0
+  * go#49662 x/net/http2: TestUnreadFlowControlReturned_Server failures with stream error "NO_ERROR" since 2021-10-05
+  * go#49624 net/http: Possible HTTP/2 busy loop regression in Go 1.17.3
+  * go#49568 net/http: server responds with Transfer-Encoding: identity
+  * go#49561 x/net/http2: setting Request.Close doesn't close TCP connections
+  * go#49559 net/http: HTTP/2 response body Close method sometimes returns spurious context cancelation error (1.17.3 regression)
+  * go#49511 cmd/compile: init info of OAS node in a select case is being dropped
+  * go#49479 runtime: "morestack on g0" in x/perf/storage/app on windows/arm64
+  * go#49407 time: ParseInLocation error
+  * go#49392 cmd/compile: internal compiler error: Expand calls interface data problem
+  * go#49369 runtime: time goes backwards on windows-arm64 (frequent TestGcLastTime failures)
+  * go#49129 cmd/compile: internal compiler error: can't find source for b12->b4: v31 = MOVBload <bool> v14 v1 : DX
+  * go#48825 go/types, types2: stack overflow in hasVarSize for invalid type
+
+-------------------------------------------------------------------
 Thu Nov  4 21:23:39 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.3 (released 2021-11-04) includes security fixes to the
