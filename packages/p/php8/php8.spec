@@ -1209,12 +1209,16 @@ ln -s %{_bindir}/php-cgi %{buildroot}%{apache_serverroot}/cgi-bin/php
 %if "%{flavor}" == "fpm"
 make install-binaries INSTALL_ROOT=%{buildroot}
 install -dm 755 %{buildroot}%{php_sysconf}/fpm
+sed "s=@extdir@=%{extension_dir}=" php.ini-production > %{buildroot}%{php_sysconf}/fpm/php.ini
 #install fpm init script.
 install -D -m 0644 sapi/fpm/php-fpm.service %{buildroot}%{_unitdir}/php-fpm.service
 ln -s service %{buildroot}%{_sbindir}/rcphp-fpm
 # bug 1173786
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/php-fpm.conf
+# bug 1192414
+mv %{buildroot}%{php_sysconf}/fpm/php-fpm.conf{.default,}
+mv %{buildroot}%{php_sysconf}/fpm/php-fpm.d/www.conf{.default,}
 %endif
 
 %if "%{flavor}" == ""
@@ -1300,7 +1304,7 @@ fi
 %if 0%{?suse_version} > 1500
 %service_del_postun_without_restart php-fpm.service
 %else
-%service_del_postun -n php-fpm.service
+%service_del_postun php-fpm.service
 %endif
 
 %posttrans
@@ -1368,11 +1372,12 @@ fi
 %if "%{flavor}" == "fpm"
 %files
 %defattr(-, root, root)
-%config %{php_sysconf}/fpm/php-fpm.conf.default
-%config %{php_sysconf}/fpm/php-fpm.d/www.conf.default
-%dir %{_datadir}/%{php_name}/fpm
 %dir %{php_sysconf}/fpm
 %dir %{php_sysconf}/fpm/php-fpm.d
+%config(noreplace) %{php_sysconf}/fpm/php.ini
+%config(noreplace) %{php_sysconf}/fpm/php-fpm.conf
+%config(noreplace) %{php_sysconf}/fpm/php-fpm.d/www.conf
+%dir %{_datadir}/%{php_name}/fpm
 %{_datadir}/%{php_name}/fpm/status.html
 %{_sbindir}/php-fpm
 %{_sbindir}/rcphp-fpm

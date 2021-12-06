@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  1 21:44:34 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- provide configuration for PHP-FPM out of the box (boo#1192414)
+- package missing php.ini for PHP-FPM (boo#1192672)
+
+-------------------------------------------------------------------
 Fri Nov 19 06:27:37 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.13: This is a security release (CVE-2021-21707)

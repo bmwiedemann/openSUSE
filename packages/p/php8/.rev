@@ -151,4 +151,13 @@
 </comment>
     <requestid>932418</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5961c2d6cd602b66e671ab9afcd0739c</srcmd5>
+    <version>8.0.13</version>
+    <time>1638831547</time>
+    <user>dimstar_suse</user>
+    <comment>- provide configuration for PHP-FPM out of the box (boo#1192414)
+- package missing php.ini for PHP-FPM (boo#1192672) (forwarded request 935073 from adkorte)</comment>
+    <requestid>935380</requestid>
+  </revision>
 </revisionlist>
