@@ -278,4 +278,12 @@
     <comment>bugfix release</comment>
     <requestid>900907</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0cad2e84a723eb6ba7260a12d2b94750</srcmd5>
+    <version>5.0.19</version>
+    <time>1638831627</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936099</requestid>
+  </revision>
 </revisionlist>
