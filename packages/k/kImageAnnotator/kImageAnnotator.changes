@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 25 23:10:08 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.3
+  * Fixed: Crash while typing text on wayland.
+  * Changed: Show scrollbar when not all tools visible.
+
+-------------------------------------------------------------------
 Sun Sep 19 10:02:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.2
