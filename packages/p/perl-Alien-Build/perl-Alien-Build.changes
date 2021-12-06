@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  1 03:06:11 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.46
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.46      2021-11-30 15:17:58 -0700
+    - Fix bug where the Build::Copy plugin could fail when spaces are in
+      the target path (gh#290, gh#292 kiwiroy++)
+
+-------------------------------------------------------------------
 Fri Oct 29 03:06:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.45
