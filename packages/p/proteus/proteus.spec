@@ -19,7 +19,7 @@
 
 %define majorver 5.0
 Name:           proteus
-Version:        %{majorver}.9
+Version:        %{majorver}.10
 Release:        0
 Summary:        A library to access Tryton's modules like a client
 License:        GPL-3.0-or-later
@@ -59,6 +59,6 @@ python3 setup.py install --prefix=%_prefix --root=%buildroot
 %defattr(-,root,root)
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%{python3_sitelib}/*
 
 %changelog

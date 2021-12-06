@@ -158,4 +158,12 @@
     <comment>bugfix version</comment>
     <requestid>903627</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c58e9a190c6ad5e848777cac5973571d</srcmd5>
+    <version>5.0.10</version>
+    <time>1638831582</time>
+    <user>dimstar_suse</user>
+    <comment>Bugfix Release</comment>
+    <requestid>936102</requestid>
+  </revision>
 </revisionlist>
