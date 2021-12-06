@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 27 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.80
+   see /usr/share/doc/packages/perl-Code-TidyAll/Changes
+
+  0.80     2021-11-26
+  - Don't run the PodSpell plugin test unless `ispell` is installed. Reported by
+    Slaven Rezić. GH #108.
+  0.79     2021-11-26
+  - Run `git stash pop` with `--quiet` flag again, as long as Git is not
+    2.24.x. See notes in 0.75 for why we stopped passing `--quiet` in the first
+    place.
+  - Fixed a bug where the class in the `--tidyall-class` option was not
+    loaded. Fixed by Shlomi Fish. PR #107. Fixed GH #43.
+
+-------------------------------------------------------------------
 Thu Oct 22 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.78
