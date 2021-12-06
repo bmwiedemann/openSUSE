@@ -17,7 +17,7 @@
 
 
 Name:           wyrmgus
-Version:        5.2.3
+Version:        5.2.4
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
@@ -25,11 +25,14 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM missing include file - https://github.com/Andrettin/Wyrmgus/issues/179
-Patch1:         Wyrmgus-5.2.3_missing_include.patch
+Patch0:         Wyrmgus-5.2.3_missing_include.patch
+# PATCH-FIX-UPSTREAM Wyrmgus-5.2.4_non_void_return.patch -- https://github.com/Andrettin/Wyrmgus/issues/181
+Patch1:         Wyrmgus-5.2.4_non_void_return.patch
 BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-qtlocation-private-headers-devel
+BuildRequires:  libtolua++-5_1-devel
 BuildRequires:  lua51-devel
 BuildRequires:  oaml-devel
 BuildRequires:  pkgconfig
@@ -45,11 +48,6 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
-%if 0%{?suse_version} <= 1320
-BuildRequires:  pkgconfig(tolua++)
-%else
-BuildRequires:  libtolua++-5_1-devel
-%endif
 
 %description
 Modified Stratagus engine for Wyrmsun
@@ -63,8 +61,7 @@ Requires:       %{name} = %{version}
 These are the development files for Wyrmsun which is based on the Stratagus engine.
 
 %prep
-%setup -q -n Wyrmgus-%{version}
-%patch1 -p1
+%autosetup -p1 -n Wyrmgus-%{version}
 
 %build
 %cmake \
