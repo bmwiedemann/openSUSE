@@ -343,10 +343,6 @@
       <repopackage name="dar"/>
       <repopackage name="dar-doc"/>
       <repopackage name="dar-lang"/>
-      <repopackage name="dasher"/>
-      <repopackage name="dasher-data-extras"/>
-      <repopackage name="dasher-data-recommended"/>
-      <repopackage name="dasher-lang"/>
       <repopackage name="db48-utils"/>
       <repopackage name="dbus-1"/>
       <repopackage name="dbus-1-glib"/>
@@ -414,9 +410,6 @@
       <repopackage name="edict2"/>
       <repopackage name="eekboard"/>
       <repopackage name="efont-unicode-bitmap-fonts"/>
-      <repopackage name="ekiga"/>
-      <repopackage name="ekiga-lang"/>
-      <repopackage name="ekiga-plugins-evolution"/>
       <repopackage name="elfutils"/>
       <repopackage name="elfutils-lang"/>
       <repopackage name="elilo"/>
@@ -535,8 +528,6 @@
       <repopackage name="freerdp"/>
       <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
-      <repopackage name="frogr"/>
-      <repopackage name="frogr-lang"/>
       <repopackage name="fuse"/>
       <repopackage name="fuse3"/>
       <repopackage name="fwupd"/>
@@ -555,9 +546,6 @@
       <repopackage name="gcin-gtk2"/>
       <repopackage name="gcin-gtk3"/>
       <repopackage name="gcin-qt5"/>
-      <repopackage name="gconf-polkit"/>
-      <repopackage name="gconf2"/>
-      <repopackage name="gconf2-lang"/>
       <repopackage name="gcr-data"/>
       <repopackage name="gcr-lang"/>
       <repopackage name="gcr-prompter"/>
@@ -608,8 +596,6 @@
       <repopackage name="git-web"/>
       <repopackage name="gitk"/>
       <repopackage name="gjs"/>
-      <repopackage name="glabels"/>
-      <repopackage name="glabels-lang"/>
       <repopackage name="glib-networking"/>
       <repopackage name="glib-networking-lang"/>
       <repopackage name="glib2-lang"/>
@@ -792,8 +778,6 @@
       <repopackage name="gstreamer-plugins-ugly-lang"/>
       <repopackage name="gstreamer-transcoder"/>
       <repopackage name="gstreamer-utils"/>
-      <repopackage name="gtg"/>
-      <repopackage name="gtg-lang"/>
       <repopackage name="gthumb"/>
       <repopackage name="gthumb-lang"/>
       <repopackage name="gtk-vnc-lang"/>
@@ -2291,7 +2275,6 @@
       <repopackage name="libokteta-lang"/>
       <repopackage name="libOkteta3"/>
       <repopackage name="libonig5"/>
-      <repopackage name="libopal3_10_10"/>
       <repopackage name="libopenal1"/>
       <repopackage name="libopenblas_pthreads0"/>
       <repopackage name="libopencc1_1"/>
@@ -2390,7 +2373,6 @@
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
       <repopackage name="libpst4"/>
-      <repopackage name="libpt2_10_11"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
       <repopackage name="libpurple"/>
@@ -3796,8 +3778,6 @@
       <repopackage name="python38-kiwisolver"/>
       <repopackage name="python38-lazr.config"/>
       <repopackage name="python38-lazr.delegates"/>
-      <repopackage name="python38-liblarch"/>
-      <repopackage name="python38-liblarch-gtk"/>
       <repopackage name="python38-libvirt-python"/>
       <repopackage name="python38-libxml2"/>
       <repopackage name="python38-linecache2"/>

@@ -2657,6 +2657,10 @@ unsorted:
   - darktable-tools-noise: [x86_64] 
   - darts 
   - dash 
+  - dasher 
+  - dasher-data-extras 
+  - dasher-data-recommended 
+  - dasher-lang 
   - data-partition-service 
   - datamash 
   - dataquay-devel 
@@ -3212,6 +3216,9 @@ unsorted:
   - eiskaltdcpp-daemon 
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
+  - ekiga 
+  - ekiga-lang 
+  - ekiga-plugins-evolution 
   - elektra 
   - elektra-qt-gui 
   - element-desktop: [x86_64] 
@@ -3864,6 +3871,8 @@ unsorted:
   - frink 
   - fritzing 
   - fritzing-parts 
+  - frogr 
+  - frogr-lang 
   - frozen-bubble 
   - frozen-bubble-lang 
   - frozen-bubble-server 
@@ -4052,8 +4061,11 @@ unsorted:
   - gcompris-qt-activities 
   - gcompris-qt-lang 
   - gcompris-qt-voices 
+  - gconf-polkit 
+  - gconf2 
   - gconf2-32bit: [x86_64] 
   - gconf2-devel 
+  - gconf2-lang 
   - gcovr 
   - gcovr-doc 
   - gcstar 
@@ -5577,7 +5589,9 @@ unsorted:
   - gkrellm-lang 
   - gkrellmd 
   - gl2ps-devel 
+  - glabels 
   - glabels-devel 
+  - glabels-lang 
   - glade 
   - glade-catalog-anjuta 
   - glade-catalog-evolution 
@@ -6267,6 +6281,8 @@ unsorted:
   - gstreamermm-doc 
   - gswrap 
   - gtest 
+  - gtg 
+  - gtg-lang 
   - gthumb-devel 
   - gti 
   - gtick 
@@ -12342,6 +12358,7 @@ unsorted:
   - libopagent1 
   - libopagent1-32bit: [x86_64] 
   - libopal-devel 
+  - libopal3_10_10 
   - libopamgt-devel: [x86_64] 
   - libopamgt0: [x86_64] 
   - libopasadb1_0_0: [x86_64] 
@@ -12833,6 +12850,7 @@ unsorted:
   - libpsx2 
   - libpsx2-32bit: [x86_64] 
   - libpt-devel 
+  - libpt2_10_11 
   - libpt2_10_11-plugins-avc 
   - libpt2_10_11-plugins-pulse 
   - libptexenc1 
@@ -25814,6 +25832,8 @@ unsorted:
   - python38-libcst 
   - python38-libevdev 
   - python38-libkdumpfile 
+  - python38-liblarch 
+  - python38-liblarch-gtk 
   - python38-libmsym 
   - python38-libnacl 
   - python38-libpfm 
