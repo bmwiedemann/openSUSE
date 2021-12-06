@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec  4 16:08:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Wrap a number of build dependencies into %{?with_pdf}
+
+-------------------------------------------------------------------
 Wed Nov 24 09:49:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.9.2.165 (edcb4b4b1f1f)

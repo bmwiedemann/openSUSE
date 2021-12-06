@@ -29,23 +29,25 @@ URL:            http://vmime.org/
 Source:         vmime-%version.tar.xz
 Patch1:         libvmime-nodatetime.diff
 Patch2:         libvmime-soname.diff
-BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 2.8.3
-BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  inkscape
 BuildRequires:  libgnutls-devel
 %if !0%{?sle_version}
 BuildRequires:  libgsasl-devel
 %endif
 BuildRequires:  pkg-config
+BuildRequires:  xz
+%if 0%{?with_pdf}
+BuildRequires:  ImageMagick
+BuildRequires:  doxygen
+BuildRequires:  inkscape
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-collection-fontsrecommended
 BuildRequires:  tex(courier.sty)
 BuildRequires:  tex(fancyheadings.sty)
 BuildRequires:  tex(pcrr7t.tfm)
 BuildRequires:  tex(ucs.sty)
-BuildRequires:  xz
+%endif
 
 %description
 VMime is a C++ class library for working with RFC5322 and
@@ -94,7 +96,6 @@ popd
 %cmake \
         -DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
         -DINCLUDE_INSTALL_DIR:PATH="%_includedir" \
-        -DLIB_INSTALL_DIR:PATH="%_libdir" \
         -DSYSCONF_INSTALL_DIR:PATH="%_sysconfdir" \
         -DSHARE_INSTALL_PREFIX:PATH="%_datadir" \
         -DCMAKE_INSTALL_LIBDIR:PATH="%_libdir" \
