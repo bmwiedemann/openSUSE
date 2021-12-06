@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>824454</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55502d37a14f9f37bd2ed716da86c579</srcmd5>
+    <version>5.0.2</version>
+    <time>1638831630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.2:
+  * Drop support for python 2.7, 3.5 &amp; tox, clean up
+  * Add support for Py 3.9</comment>
+    <requestid>936112</requestid>
+  </revision>
 </revisionlist>

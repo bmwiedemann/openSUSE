@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-slugify
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-python-slugify
-Version:        4.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Slugify application that handles Unicode
 License:        MIT
@@ -32,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-text-unidecode >= 1.3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-Unidecode >= 1.1.1
 Conflicts:      python-awesome-slugify
 BuildArch:      noarch
