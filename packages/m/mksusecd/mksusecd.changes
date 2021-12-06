@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Mon Dec 6 13:11:46 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#60
+- update documentation
+- 2.6
+
+--------------------------------------------------------------------
+Mon Dec 6 10:02:49 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#59
+- support tftpboot-installation-<PRODUCT> RPMs as source
+  (jsc#SLE-22669)
+- 2.5
+
+--------------------------------------------------------------------
 Thu Nov 11 16:13:05 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#58
