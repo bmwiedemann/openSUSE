@@ -1173,4 +1173,13 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
 </comment>
     <requestid>932279</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>a7819fae8aa5f8218d35318b90858837</srcmd5>
+    <version>7.4.26</version>
+    <time>1638831547</time>
+    <user>dimstar_suse</user>
+    <comment>- provide configuration for PHP-FPM out of the box (boo#1192414)
+- package missing php.ini for PHP-FPM (boo#1192672) (forwarded request 935072 from adkorte)</comment>
+    <requestid>935379</requestid>
+  </revision>
 </revisionlist>
