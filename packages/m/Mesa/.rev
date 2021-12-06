@@ -4656,4 +4656,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * EGL_EXT_present_opaque on wayland</comment>
     <requestid>932062</requestid>
   </revision>
+  <revision rev="423" vrev="295">
+    <srcmd5>f1e7a8d301a7008eaeed932def461138</srcmd5>
+    <version>unknown</version>
+    <time>1638831561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.1
+  * mostly AMD, Intel &amp; Zink fixes.</comment>
+    <requestid>935153</requestid>
+  </revision>
 </revisionlist>

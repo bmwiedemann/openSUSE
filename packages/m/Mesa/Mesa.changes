@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  1 23:15:13 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.3.1
+  * mostly AMD, Intel & Zink fixes.
+
+-------------------------------------------------------------------
 Thu Nov 18 03:13:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_buildfix-21.3.0.patch
