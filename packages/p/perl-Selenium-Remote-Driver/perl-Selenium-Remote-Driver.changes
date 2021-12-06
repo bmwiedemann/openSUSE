@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec  5 03:08:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Selenium-Remote-Driver/Changes
+
+  1.46 2021-12-04 TEODESIAN
+      - Document the keys of WDKEYS hash in POD. Contribution by Yuki Kimoto.
+
+-------------------------------------------------------------------
 Fri Oct 22 03:10:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.45
