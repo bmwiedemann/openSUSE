@@ -1,19 +1,41 @@
 -------------------------------------------------------------------
-Thu Sep 17 13:32:02 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+Thu Dec  2 18:49:22 UTC 2021 - Stefen Allen <stefen.allen@suse.com>
 
-- Update to 3.4+1600349408.g516d37d
+- Update to 3.5+1638408991.g5341b5d
+  + rbd unmap image when deleting target (bsc#1190772)
+  + gwcli: add error handling path for config api request (#231)
+  + rbd-target-api: misc fixing for disk API (#229)
+  + iscsi: raise if the 'gateway.conf' config file doesn't exist (#228)
+  + iscsi: write cert/key to temp files in mode 'w' to handle strings (#227)
+  + Fix the default value for gateway_conf (#226)
+  + Add a strip to ListSetting.Normalize (#220, bsc#1177100)
+  + Make settings mon config key store aware (#217)
+  + Rename blacklist to blocklist (#216)
   + Fix gateway creation crash in python3 (#196)
   + Report tcmu-runner device status (#210)
-  + Fix list access violiation when load config (#200)
-  + Fix delete disk error when disk owner is not specified (#206)
+  + Fix list access violiation when load config (#200, bsc#1183028)
+  + fix delete disk error when disk owner is not specified (#206)
   + Support specified gateway config name (#207)
-  + Added dependency on ceph-common package (#201)
+  + spec: added dependency on ceph-common package (#201)
 
 -------------------------------------------------------------------
-Tue Sep 15 12:14:23 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+Wed Feb 24 11:15:15 UTC 2021 - Ricardo Marques <rimarques@suse.com>
 
-- Update to 3.4+1600172042.g4d04457 
-  + Rename blacklist to blocklist (#216)
+- Update to 3.4+1614165221.g78e33bb
+  + Gateway fails to start when using SSL (bsc#1182611)
+
+-------------------------------------------------------------------
+Fri Oct 16 12:18:01 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1602850653.g9af452e
+  + Support spaces on 'trusted_ip_list' (#220, bsc#1177100)
+
+-------------------------------------------------------------------
+Wed Oct 14 09:49:59 UTC 2020 - Ricardo Marques <rimarques@suse.com>
+
+- Update to 3.4+1602668899.ga7b4d38
+  + Update RBD supported features for SLE15-SP2 kernel (bsc#1177202)
+  + Make settings mon config key store aware (#217)
 
 -------------------------------------------------------------------
 Thu May 14 15:12:32 UTC 2020 - Ricardo Marques <rimarques@suse.com>
@@ -54,21 +76,27 @@ Fri Nov 15 15:55:16 UTC 2019 - Ricardo Marques <rimarques@suse.com>
   + Fix crash when CephCluster fails to get Rados object
 
 -------------------------------------------------------------------
-Tue Oct  8 11:05:09 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+Tue Oct  8 11:42:55 UTC 2019 - Nathan Cutler <ncutler@suse.com>
 
-- Update to 3.3+1570532654.g93940a4:
+- Update to 3.3+1570534953.g93940a4: 
   + spec/checkin.sh:
     * reinstate "BuildArch: noarch" for all distros except openSUSE (i.e.,
       including SLE, which does not allow arch change in a maintenance update)
     * "ExclusiveArch" on openSUSE only
 
 -------------------------------------------------------------------
-Fri Sep 27 09:17:57 UTC 2019 - Ricardo Marques <rimarques@suse.com>
+Fri Sep 27 09:28:51 UTC 2019 - Ricardo Marques <rimarques@suse.com>
 
-- Update to 3.3+1569575733.g93940a4:
+- Update to 3.3+1569576525.g93940a4:
   + Validate kernel LIO controls type and value (bsc#1140491)
   + TPG lun_id persistence (bsc#1145618)
   + Target level CHAP authentication (bsc#1145617)
+
+-------------------------------------------------------------------
+Thu Sep 26 11:33:58 UTC 2019 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 3.2+1569497618.ga2b17e1:
+  + incremental pre-Milestone1 build
 
 -------------------------------------------------------------------
 Tue Sep 10 06:54:56 UTC 2019 - Nathan Cutler <ncutler@suse.com>

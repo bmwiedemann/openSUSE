@@ -167,4 +167,12 @@
     <comment>Factory to v3.4 (forwarded request 835250 from smithfarm)</comment>
     <requestid>835251</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7beafda4026350c8c51423a7f5fa1f73</srcmd5>
+    <version>3.5+1638408991.g5341b5d</version>
+    <time>1638831544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935281</requestid>
+  </revision>
 </revisionlist>
