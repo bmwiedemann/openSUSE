@@ -490,7 +490,6 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   ln -sf %{_bindir}/bash %{buildroot}%{_bindir}/sh
 %endif
   install -m 644 COMPAT NEWS    %{buildroot}%{_docdir}/%{name}
-  install -m 644 COPYING        %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/FAQ        %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/INTRO      %{buildroot}%{_docdir}/%{name}
   install -m 644 doc/*.html     %{buildroot}%{_docdir}/%{name}

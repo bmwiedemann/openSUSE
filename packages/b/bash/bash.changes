@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec  3 13:59:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- avoid duplicating COPYING file in bash-doc (already in main package in
+  licensedir)
+
+-------------------------------------------------------------------
 Thu Nov 18 10:28:52 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update bash 5.1 to patch level 12

@@ -1711,4 +1711,13 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
   mechanism.</comment>
     <requestid>932216</requestid>
   </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>7237465d235c87fcddec79c530762dde</srcmd5>
+    <version>5.1.MACRO</version>
+    <time>1638831556</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid duplicating COPYING file in bash-doc (already in main package in
+  licensedir)</comment>
+    <requestid>935465</requestid>
+  </revision>
 </revisionlist>
