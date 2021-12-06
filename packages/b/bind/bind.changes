@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Dec  3 07:52:38 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.23
+  Security issues fixed:
+  The "lame-ttl" option is now forcibly set to 0. This
+  effectively disables the lame server cache, as it could
+  previously be abused by an attacker to significantly
+  degrade resolver performance. (CVE-2021-25219)
+
+  Bugs fixed:
+  In 9.16.21:
+  * When a dynamic zone was made available in another view
+    using the "in-view" statement, running "rndc freeze"
+    always reported an "already frozen" error even though
+    the zone was successfully frozen.
+  * Stale data in the cache could cause named to send
+    non-minimized queries despite QNAME minimization being
+    enabled.
+  * When a DNSSEC-signed zone which only has a single
+    signing key available is migrated to use KASP, that key
+    is now treated as a Combined Signing Key (CSK).
+  * When a member zone was removed from a catalog zone,
+    journal files for the former were not deleted.
+  * named-checkconf failed to detect syntactically invalid
+    values of the "key" and "tls" parameters used to define
+    members of remote server lists.
+  * Fixed a regression which caused the EDNS TCP Keepalive option to be
+    ignored inadvertently in client requests. It has now
+    been fixed and this option is handled properly again.
+  * Fixed a regression which altered the internal memory structure of
+    zone databases, but neglected to update the MAPAPI value
+    for zone files in "map" format. This caused named to
+    attempt to load incompatible map files, triggering an
+    assertion failure on startup. The MAPAPI value has now
+    been updated, so named rejects outdated files when
+    encountering them.
+  * The thread-local isc_tid_v variable was not properly
+    initialized when running BIND 9 as a Windows Service,
+    leading to a crash on startup.
+  * "map" files exceeding 2GB in size failed to load due to
+    a size comparison that incorrectly treated the file size
+    as a signed integer.
+  In 9.16.22:
+  * Remove the "adjust interface" mechanism which was
+    responsible for setting up listeners on interfaces when
+    the "*-source(-v6)" address and port were the same as
+    the "listen-on(-v6)" address and port. Such a
+    configuration is no longer supported; under certain
+    timing conditions, that mechanism could prevent named
+    from listening on some TCP ports. This has been fixed.
+  * Multiple library names were mistakenly passed to the
+    krb5-config utility when ./configure was invoked with
+    the --with-gssapi=[/path/to/]krb5-config option. This
+    has been fixed by invoking krb5-config separately for
+    each required library.
+  * Fixed a regression which broke backward compatibility for the 
+    "check-names master ..." and "check-names slave ..."
+    options. This has been fixed.
+  * Address a potential deadlock when checking zone content
+    consistency.
+  In 9.16.23:
+  * Address Coverity warning in lib/dns/dnssec.c.
+  * Fix a bug when comparing two RSA keys. There was a typo
+    which caused the "p" prime factors to not being
+    compared.
+  * Fix an assertion failure caused by missing member zones
+    during a reload of a catalog zone.
+  This obsoletes bind-CVE-2021-25219.patch and
+  bind-fix-build-with-older-sphinx.patch
+  Other issues:
+  A compile time waring about fall through in a switch statement
+  has been averted by marking the cases as FALLTHROUGH.
+  [bind-9.16.23.tar.xz, bind-9.16.23.tar.xz.sha512.asc,
+  bind-CVE-2021-25219.patch, bind-fix-build-with-older-sphinx.patch,
+  bind-avoid-fallthrough-warning-error.patch]
+
+-------------------------------------------------------------------
 Mon Nov  8 09:01:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Aligned SLE15-SP4 and Factory spec files.

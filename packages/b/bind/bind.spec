@@ -46,7 +46,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.20
+Version:        9.16.23
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -66,8 +66,7 @@ Source70:       bind.conf
 Source72:       named.conf
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
-Patch68:        bind-fix-build-with-older-sphinx.patch
-Patch69:        bind-CVE-2021-25219.patch
+Patch57:        bind-avoid-fallthrough-warning-error.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libopenssl-devel
