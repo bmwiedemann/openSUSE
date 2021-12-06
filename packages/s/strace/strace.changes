@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Dec  1 20:53:44 UTC 2021 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.15
+  * Improvements
+    * Implemented --strings-in-hex=non-ascii-chars option for using hexadecimal
+      numbers instead of octal ones in escape sequences in the output strings.
+    * Implemented --decode-pids=comm option (and its alias -Y) for printing
+      command names for PIDs.
+    * Implemented --decode-pids=pidns as an alias to --pidns-translation option.
+    * Implemented printing of current working directory when AT_FDCWD constant
+      is used with --decode-fds=path option enabled.
+    * Improved printing of syscall names in places where the associated
+      AUDIT_ARCH_* value is present (ptrace PTRACE_GET_SYSCALL_INFO request,
+      SIGSYS siginfo_t).
+    * Implemented decoding of process_mrelease syscall, introduced in Linux 5.15.
+    * Implemented decoding of SECCOMP_GET_NOTIF_SIZES operation of seccomp
+      syscall.
+    * Implemented decoding of HDIO_*, KD*, and SECCOMP_* ioctl commands.
+    * Implemented decoding of RTM_NEWCACHEREPORT, RTM_{NEW,DEL,GET}NEXTHOP,
+      and RTM_{NEW,GET}STATS NETLINK_ROUTE netlink messages.
+    * Implemented decoding of AF_ALG, AF_IEEE802154, AF_MCTP, AF_NFC, AF_QIPCRTR,
+      AF_RRPC, AF_VSOCK, and AF_XDP socket addresses.
+    * Implemented decoding of AF_BRIDGE and AF_MCTP protocols for IFLA_AF_SPEC
+      netlink attribute.
+    * Implemented decoding of IFLA_BR_MCAST_QUERIER_STATE, IFLA_BR_MULTI_BOOLOPT,
+      IFLA_INET6_RA_MTU, IFLA_INFO_SLAVE_DATA, and IFLA_VFINFO_LIST netlink
+      attributes.
+    * Enhanced decoding of io_uring_register and times syscalls.
+    * Enhanced IFLA_BR_FORWARD_DELAY, IFLA_BR_MAX_AGE, IFLA_EXT_MASK,
+      IFLA_PROTINFO, *_INTVL, and *_TIMER netlink attribute decoding.
+    * Enhanced decoding of AF_IPX and AF_NETLINK socket addresses.
+    * Updated lists o AF_*, ARPHRD_*, BTRFS_*, DEVCONF_*, DM_*, ETH_P_*,
+      FAN_REPORT_*, IORING_*, MOVE_MOUNT_*, MPOL_*, PACKET_*, RTM_*, SO_*,
+      and XFRM_MSG_* constants.
+    * Updated lists of ioctl commands from Linux 5.15.
+  * Bug fixes
+    * Fixed printing of struct bpf_prog_info.map_ids array.
+    * Fixed behaviour of "dev", "pidfd", and "socket" arguments of the --print-fds
+      option to no longer imply the "path" argument.
+    * Fixed insufficient buffer size used for network interface name printing,
+      that previously led to assertions on attempts of printing interface names
+      that require quoting, for example, names longer than 4 characters in -xx
+      mode (addresses RHBZ bug #2028146).
+
+-------------------------------------------------------------------
 Thu Sep  2 12:18:58 UTC 2021 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.14

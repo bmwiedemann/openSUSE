@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        5.14
+Version:        5.15
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
