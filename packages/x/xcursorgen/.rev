@@ -66,4 +66,12 @@
   * Fix null pointer dereference on very large images.</comment>
     <requestid>663359</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>db6eb6e35c7b23d5eaf6516dd5e9b149</srcmd5>
+    <version>1.0.7</version>
+    <time>1638831553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935492</requestid>
+  </revision>
 </revisionlist>
