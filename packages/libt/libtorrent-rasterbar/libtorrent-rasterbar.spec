@@ -26,15 +26,13 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         https://github.com/arvidn/%{_name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libtorrent-rasterbar-2.0.4-handler-buffer.patch -- Bump handler allocation sizes for boost-1.77 (commit 8ed34b67d)
-Patch0:         libtorrent-rasterbar-2.0.4-handler-buffer.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
