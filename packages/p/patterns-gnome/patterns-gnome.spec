@@ -367,8 +367,6 @@ Requires:       pattern() = x11_enhanced
 Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
-# bsc#1065945
-Recommends:     brasero
 Recommends:     evince
 # bsc#1069699
 Recommends:     file-roller
@@ -481,21 +479,15 @@ Provides:       pattern-order() = 2060
 Obsoletes:      patterns-openSUSE-gnome_ide < %{version}
 # from data/GNOME-IDE
 Recommends:     devhelp
-Recommends:     gitg
 Recommends:     glade
 Recommends:     gnome-builder
 # from devel_ide
 Suggests:       accerciser
-Suggests:       anjuta
-Suggests:       anjuta-extras
 Suggests:       gedit
 Suggests:       gedit-plugins
 Suggests:       ghex
 Suggests:       giggle
 Suggests:       gnome-devel-docs
-Suggests:       jhbuild
-Suggests:       meld
-Suggests:       nemiver
 
 %description gnome_ide
 Development under GNOME
@@ -574,13 +566,8 @@ Recommends:     transmission-gtk
 # Official upstream
 #
 # bnc#366894
-Suggests:       ekiga
 Suggests:       epiphany
 Suggests:       evolution-plugin-rss
-#
-# Packages that can make sense
-#
-Suggests:       frogr
 
 %description gnome_internet
 GNOME Internet Applications
@@ -661,8 +648,6 @@ Recommends:     evolution
 Recommends:     libreoffice-gnome
 Recommends:     libreoffice-icon-theme-tango
 Suggests:       evolution-ews
-Suggests:       glabels
-Suggests:       planner
 Supplements:    packageand(patterns-gnome-gnome:patterns-office-office)
 
 %description gnome_office
@@ -713,13 +698,8 @@ Recommends:     seahorse
 #
 # Official upstream
 #
-Suggests:       dasher
 Suggests:       eog-plugins
 Suggests:       gedit-plugins
-#
-# Packages that can make sense
-#
-Suggests:       gtg
 # #388570
 Suggests:       nautilus-share
 
