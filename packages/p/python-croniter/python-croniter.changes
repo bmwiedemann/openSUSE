@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 20:11:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Enforce validation for month=1. Before this release we used to support
+    month=0 and it was silently glided to month=1 to support having both day in
+    month in 4th field when it came to have 6fields cron forms
+
+-------------------------------------------------------------------
 Sat Oct 16 21:06:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.15:

@@ -181,4 +181,15 @@
   * better type checks</comment>
     <requestid>925755</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7d99dbc98c208b18f9dcd4d48463a19</srcmd5>
+    <version>1.1.0</version>
+    <time>1638831632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Enforce validation for month=1. Before this release we used to support
+    month=0 and it was silently glided to month=1 to support having both day in
+    month in 4th field when it came to have 6fields cron forms</comment>
+    <requestid>936119</requestid>
+  </revision>
 </revisionlist>
