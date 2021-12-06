@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  3 03:09:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.59
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.59      2021-12-02 21:16:04Z
+      - Use American English aspell master dictionary for POD spelling tests (GH#394) (Ville Skyttä)
+      - Remove unnecessary string concatenations in mirror error messages (GH#391) (Ville Skyttä)
+      - Spelling and grammar fixes (GH#390) (Ville Skyttä)
+
+-------------------------------------------------------------------
 Tue Oct 26 03:08:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.58
