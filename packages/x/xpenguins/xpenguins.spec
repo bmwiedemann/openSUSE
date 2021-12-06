@@ -17,24 +17,21 @@
 
 
 Name:           xpenguins
-Version:        2.2
+Version:        3.2.1
 Release:        0
 Summary:        Cute little penguins that walk along the tops of your windows
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Background
 URL:            http://xpenguins.seul.org/
-Source:         xpenguins-%{version}.tar.bz2
+Source:         https://sourceforge.net/projects/xpenguins/files/xpenguins-%{version}.tar.gz
 Source1:        README.openSUSE
-Source2:        %{name}.desktop
-Source3:        %{name}-stop.desktop
-Source4:        %{name}.png
-Source5:        %{name}-stop.png
-Patch0:         xpenguins-%{version}-typo.diff
-Patch1:         xpenguins-%{version}-automake-1.13.diff
-BuildRequires:  automake
+Source2:        %{name}-stop.desktop
+Source3:        %{name}-stop.png
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xpm)
@@ -48,20 +45,16 @@ and sometimes even levitate with their genetically-modified
 go-go-gadget 'copter ability.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
-aclocal
-autoreconf -fiv
 %configure
 %make_build
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_datadir}/pixmaps
-cp %{SOURCE4} %{SOURCE5} %{buildroot}%{_datadir}/pixmaps
-cp %{SOURCE4} .
-%suse_update_desktop_file -i %{name} Amusement
+cp %{SOURCE3} %{buildroot}%{_datadir}/pixmaps
+%suse_update_desktop_file    %{name} Amusement
 %suse_update_desktop_file -i %{name}-stop Amusement
 %fdupes %{buildroot}
 
@@ -71,7 +64,8 @@ cp %{SOURCE4} .
 %attr(755,root,root) %{_bindir}/xpenguins
 %{_mandir}/man1/xpenguins.1%{?ext_man}
 %{_datadir}/xpenguins
-%{_datadir}/pixmaps/*.png
+%{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/pixmaps/%{name}-stop.png
 %{_datadir}/applications/*.desktop
 
 %changelog

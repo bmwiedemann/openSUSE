@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:49:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.2.1
+  * add ui
+  * before erasing: if drawing in a transparent window,
+    first set background
+  * Changed velocity and acceleration related entities from int to float
+  * Bring some randomness in start velocities and terminal velocities
+  * Add flag --lift
+  * Many changes to make it run on KDE etc in a click-through
+    transparent window
+  * max number of items to 512
+- Drop xpenguins.{png,desktop} and use upstream provided ones
+- Drop upstream fixed xpenguins-2.2-typo.diff
+- Drop unneeded xpenguins-2.2-automake-1.13.diff
+
+-------------------------------------------------------------------
 Mon Feb  8 11:24:20 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
