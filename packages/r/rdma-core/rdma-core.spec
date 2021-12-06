@@ -25,9 +25,9 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.02d96eb72943
+%define         git_ver .0.02361e3b8659
 Name:           rdma-core
-Version:        37.1
+Version:        38.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -97,6 +97,7 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       kmod
 Requires:       systemd
 Requires:       udev
+Recommends:     rdma-ndd
 
 # SUSE previously shipped rdma as a stand-alone
 # package which we're supplanting here.
@@ -229,6 +230,7 @@ Device-specific plug-in ibverbs userspace drivers are included:
 - libhns: HiSilicon Hip06 SoC
 - libi40iw: Intel Ethernet Connection X722 RDMA
 - libipathverbs: QLogic InfiniPath HCA
+- libirdma: Intel Ethernet Connection RDMA
 - libmlx4: Mellanox ConnectX-3 InfiniBand HCA
 - libmlx5: Mellanox Connect-IB/X-4+ InfiniBand HCA
 - libmthca: Mellanox InfiniBand HCA

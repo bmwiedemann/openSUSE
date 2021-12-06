@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  2 15:13:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v38.0 (jsc#SLE-18383)
+  - Bugfixes on all providers
+  - New provider for irdma support
+
+-------------------------------------------------------------------
+Thu Dec  2 14:48:56 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add rdma-ndd to recommended depencies of rdma-core
+
+-------------------------------------------------------------------
 Fri Oct 15 08:44:00 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to rdma-core v37.1 (jsc#SLE-18381, jsc#SLE-19249)
