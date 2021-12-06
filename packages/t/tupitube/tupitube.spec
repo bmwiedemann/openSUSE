@@ -22,7 +22,7 @@
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
 Name:           tupitube
-Version:        0.2.17
+Version:        0.2.18
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -31,8 +31,6 @@ URL:            https://maefloresta.com
 Source0:        https://sourceforge.net/projects/tupi2d/files/Source%20Code/tupitube.desk-%{version}.tar.gz
 Source99:       tupitube-rpmlintrc
 Patch0:         tupitube.quazip5.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Qt-5.15.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -159,6 +157,8 @@ rm -f %{buildroot}%{_tupilib}/raster/*.so
 %dir %{_tupilib}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/tupitube.appdata.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/pixmaps/%{name}.png

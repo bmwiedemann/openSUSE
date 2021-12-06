@@ -7,8 +7,8 @@ diff -Nur tupitube.desk/configure.tests/quazip/main.cpp new/configure.tests/quaz
  
 -#include "quazip/quazip.h"
 -#include "quazip/quazipfile.h"
-+#include "QuaZip-Qt5-1.1/quazip/quazip.h"
-+#include "QuaZip-Qt5-1.1/quazip/quazipfile.h"
++#include "QuaZip-Qt5-1.2/quazip/quazip.h"
++#include "QuaZip-Qt5-1.2/quazip/quazipfile.h"
  #include <QFile>
  
  int main()
@@ -47,9 +47,9 @@ diff -Nur tupitube.desk/src/libtupi/tuppackagehandler.cpp new/src/libtupi/tuppac
 -#include "quazip/quazip.h"
 -#include "quazip/quazipfile.h"
 -#include "quazip/JlCompress.h"
-+#include "QuaZip-Qt5-1.1/quazip/quazip.h"
-+#include "QuaZip-Qt5-1.1/quazip/quazipfile.h"
-+#include "QuaZip-Qt5-1.1/quazip/JlCompress.h"
++#include "QuaZip-Qt5-1.2/quazip/quazip.h"
++#include "QuaZip-Qt5-1.2/quazip/quazipfile.h"
++#include "QuaZip-Qt5-1.2/quazip/JlCompress.h"
  
  TupPackageHandler::TupPackageHandler()
  {
