@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-atom
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause

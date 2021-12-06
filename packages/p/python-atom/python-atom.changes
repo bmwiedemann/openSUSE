@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Dec  6 15:03:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0:
+  * allow to use any subscribed type in Typed and Instance. Optional and Union are
+    analyzed to extract the tuple of types to validate. The presence of NoneType in
+    the tuple will make the member optional. For container types (list, dict, set, etc)
+    the content types is not used beyond static type validation. PR #136 #140
+    Note however that this usage of Optional and Union breaks static analyzer currently,
+    while things deriving from an actual type will work as expected (List[int], list[int],
+    Iterable[int])
+  * make the factory argument of Typed, Instance and their forwarded version
+    keyword only. PR #123
+  * add a keyword-only argument to Typed, Instance and their forwarded
+    version: ``optional``. When set to False, this will cause those members to
+    reject None as a valid value. The default value, None, will resolve to True
+    if there is no provided way to build a default value. PR #123 # 131
+    This is backward incompatible since previously None was always a valid value.
+  * the Instance and Typed variants of the Validate enum have been renamed to
+    OptionalInstance, OptionalTyped and new Instance and Typed variant describing
+    the validation behavior for the member with optional=False have been added. PR #123
+  * consistently use Instance to wrap types passed to containers. PR #123
+    For containers, Instance members used for validation are created with
+    optional=False by default. This is backward incompatible since None was always
+    a valid value previously.
+  * add strict argument to FloatRange. PR #124
+  * allow to specify the type of ReadOnly and Constant. PR #128
+    The validation is done using the Instance validator. The change for ReadOnly
+    is backward incompatible since the type or tuple of type is the first argument
+    in place of the default value. Specifying the default value by keyword is both
+    forward and backward compatible.
+  * use python stdlib IntEnum instead of the custom one in atom  PR #122
+  * remove the custom atom.IntEnum  PR #122
+  * add and distribute type hints PR #122 #132
+    This allows static type checkers to resolve the values behind a member.
+  * drop official support for Python 3.6 and add support for Python 3.10
+- Stop building on Python 3.6 which is no longer supported
+
+-------------------------------------------------------------------
 Tue Jan  5 04:57:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.0:
