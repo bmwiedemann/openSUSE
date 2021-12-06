@@ -35,7 +35,6 @@ ProtectHostname=true
 ProtectClock=true
 ProtectKernelTunables=true
 ProtectKernelModules=true
-ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 

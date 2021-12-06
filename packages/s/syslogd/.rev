@@ -780,4 +780,14 @@
     <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 933461 from jsegitz)</comment>
     <requestid>933491</requestid>
   </revision>
+  <revision rev="96" vrev="795">
+    <srcmd5>1410db67e03796ba38405dcbec630ab8</srcmd5>
+    <version>unknown</version>
+    <time>1638831552</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove PrivateDevices, ProtectClock and ProtectKernelLogs=true
+  from klog.service and ProtectKernelLogs from klogd.service
+  (bsc#1193172) (forwarded request 934727 from jsegitz)</comment>
+    <requestid>935468</requestid>
+  </revision>
 </revisionlist>

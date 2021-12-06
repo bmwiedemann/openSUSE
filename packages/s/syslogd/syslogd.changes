@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 30 13:20:31 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove PrivateDevices, ProtectClock and ProtectKernelLogs=true
+  from klog.service and ProtectKernelLogs from klogd.service
+  (bsc#1193172)
+
+-------------------------------------------------------------------
 Wed Nov 24 10:22:12 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
