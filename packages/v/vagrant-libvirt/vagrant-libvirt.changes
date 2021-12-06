@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Fri Dec  3 08:04:57 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.7.0
+
+  Rebase patch:
+  * 0001-Remove-simplecov-from-tests.patch
+
+  Added patches:
+  * 0002-Double-the-UDPSocket-in-cases-where-there-s-no-netwo.patch (https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1414)
+  * 0003-Allow-the-connection.client.libversion-call-1416.patch (https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1416)
+
+# Changelog
+
+## [0.7.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.7.0) (2021-11-08)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.6.3...0.7.0)
+
+**Closed issues:**
+
+- Network 192.168.33.10 is not available [\#1389](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1389)
+- Podman example in README.md returns error [\#1373](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1373)
+- VM creation fails 2nd time [\#1342](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1342)
+
+**Merged pull requests:**
+
+- Derive system URI from default URI [\#1398](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1398) ([electrofelix](https://github.com/electrofelix))
+- Switch back to read-only system connection [\#1397](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1397) ([electrofelix](https://github.com/electrofelix))
+- Reorder qemu agent usage for use with sessions [\#1396](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1396) ([electrofelix](https://github.com/electrofelix))
+- Add gem version badge [\#1395](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1395) ([electrofelix](https://github.com/electrofelix))
+- Update the source code URI [\#1394](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1394) ([electrofelix](https://github.com/electrofelix))
+- Regression unit test for frozen string literal fix [\#1393](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1393) ([electrofelix](https://github.com/electrofelix))
+- Fix a FrozenError in prepare\_nfs\_settings.rb [\#1392](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1392) ([rledisez](https://github.com/rledisez))
+- Update issue templates [\#1391](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1391) ([electrofelix](https://github.com/electrofelix))
+- Update podman instructions to mount tmp [\#1388](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1388) ([electrofelix](https://github.com/electrofelix))
+- Replace Travis references in README [\#1387](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1387) ([swalkinshaw](https://github.com/swalkinshaw))
+- Add options for 3d acceleration [\#1386](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1386) ([amezin](https://github.com/amezin))
+- Add basic support to control serial console settings [\#1385](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1385) ([Itxaka](https://github.com/Itxaka))
+- Add a :libvirt\_\_always\_destroy flag to network definitions [\#1381](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1381) ([jamie01](https://github.com/jamie01))
+
+
+## [0.6.3](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.6.3) (2021-10-16)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.6.2...0.6.3)
+
+**Fixed bugs:**
+
+- The behavior of "vagrant box add -f" is confusing with libvirt [\#1351](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1351)
+
+**Closed issues:**
+
+- Wrong nameserver in /etc/resolv.conf [\#1380](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1380)
+- Question: Is it it supported on windows 10? [\#1368](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1368)
+
+**Merged pull requests:**
+
+- Re-upload un-versioned boxes based on modified time [\#1382](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1382) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.6.2](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.6.2) (2021-10-12)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.6.1...0.6.2)
+
+**Merged pull requests:**
+
+- Ensure ssh\_run and ssh actions match vagrant [\#1378](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1378) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.6.1](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.6.1) (2021-10-11)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.6.0...0.6.1)
+
+**Closed issues:**
+
+- Running `vagrant reload && vagrant ssh -c '..'` has unexpected results with vagrant-libvirt 0.6.0 [\#1376](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1376)
+- Question: Passthrough of blockdevice? [\#1350](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1350)
+
+**Merged pull requests:**
+
+- Rework shutdown domain to avoid trailing action [\#1377](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1377) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.6.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.6.0) (2021-10-08)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.5.3...0.6.0)
+
+**Closed issues:**
+
+- Vagrant up times out after a provisioner reboots the VM [\#1366](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1366)
+- Configuring provider uri per vm definition is not thread-safe [\#1358](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1358)
+- support podman in addition to docker [\#1357](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1357)
+- Not sure if this is a vagrant-libvirt issue but SD card is not correctly read. blk\_update\_request: I/O error. [\#1346](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1346)
+- Error connecting to graphical console at virt-manager. Unable to read from monitor. [\#1340](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1340)
+- ERROR warden: Error occurred: Call to virStorageVolCreateXML failed: storage volume 'xxx\_box.img' exists already [\#1338](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1338)
+- MacOS can't specify accellerator as hvf [\#1336](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1336)
+- bus pci.0 not found for q35 [\#1327](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1327)
+- Unable to install this plugin [\#1326](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1326)
+- machine\_virtual\_size has not real effect [\#1325](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1325)
+- Dep ruby-libvirt broken with Vagrant 2.2.17 and Ruby \>=3.0 [\#1322](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1322)
+- vagrant-libvirt wont work with centos8  [\#1317](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1317)
+- Error installing vagrant-libvirt on Debian buster [\#1314](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1314)
+- Creating a VM with numa fails -  Parameter -numa node,mem is not supported [\#1312](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1312)
+- GPT PMBR size mismatch with second disk [\#1308](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1308)
+- Export/Import Box as Original VM with `virsh dumpxml` and `virsh define`? [\#1256](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1256)
+- hangs on Waiting for domain to get an IP address only on remote libvirt [\#1252](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1252)
+- Error during install on Debian 10 [\#1216](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1216)
+- Unable to install another plugin into  Docker based Installation [\#1198](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1198)
+- Docker based Installation does not work [\#1191](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1191)
+- Support frozen string literals [\#1177](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1177)
+
+**Merged pull requests:**
+
+- Add aliases for devices [\#1374](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1374) ([electrofelix](https://github.com/electrofelix))
+- Handle VM not accessible during reboot [\#1367](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1367) ([electrofelix](https://github.com/electrofelix))
+- Refactor create domain tests [\#1364](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1364) ([electrofelix](https://github.com/electrofelix))
+- Support provider URI per machine definition [\#1363](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1363) ([electrofelix](https://github.com/electrofelix))
+- Ensure sensible default USB controller model used [\#1362](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1362) ([electrofelix](https://github.com/electrofelix))
+- \#1341 fix condition check on @qemu\_use\_agent [\#1361](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1361) ([abbbi](https://github.com/abbbi))
+- Provide support for packaging into v2 format [\#1360](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1360) ([electrofelix](https://github.com/electrofelix))
+- Document running using Podman [\#1359](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1359) ([ghost](https://github.com/ghost))
+- Update to vagrant 2.2.18 for docker image [\#1354](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1354) ([electrofelix](https://github.com/electrofelix))
+- Avoid blanking username if set by user [\#1352](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1352) ([electrofelix](https://github.com/electrofelix))
+- Fix variable in entrypoint.sh when determining user based on Vagrantfile ownership [\#1349](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1349) ([mmguero](https://github.com/mmguero))
+- Output XML elements to debug logs [\#1345](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1345) ([electrofelix](https://github.com/electrofelix))
+- Support dev setting vagrant-spec version from env [\#1344](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1344) ([electrofelix](https://github.com/electrofelix))
+- Retrieve IP Address of management interface using qemu-guest-agent commands \#1341 [\#1343](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1343) ([abbbi](https://github.com/abbbi))
+- Improve handling of cpu model and initrd settings [\#1333](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1333) ([electrofelix](https://github.com/electrofelix))
+- Fixed handling of nil volumes [\#1332](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1332) ([guss77](https://github.com/guss77))
+- fix\(action\): fix typo in change domain disk\_bus [\#1331](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1331) ([gmmephisto](https://github.com/gmmephisto))
+- Unrestrict rspec-\* version to \>= 3.5 to sync with vagrant [\#1330](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1330) ([dcermak](https://github.com/dcermak))
+- Bump vagrant version and update README [\#1321](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1321) ([electrofelix](https://github.com/electrofelix))
+- Use working directory for user/group resolution [\#1320](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1320) ([electrofelix](https://github.com/electrofelix))
+- Enable frozen string across project [\#1319](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1319) ([electrofelix](https://github.com/electrofelix))
+- Remove debug statement accidentally left behind [\#1318](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1318) ([electrofelix](https://github.com/electrofelix))
+- Allow rspec to float on minor releases [\#1316](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1316) ([electrofelix](https://github.com/electrofelix))
+- Disable removal of host keys by default [\#1315](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1315) ([electrofelix](https://github.com/electrofelix))
+- Use GracefulHalt builtin action [\#1310](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1310) ([chrisroberts](https://github.com/chrisroberts))
+- Basic packaging tests and restructure action [\#1307](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1307) ([electrofelix](https://github.com/electrofelix))
+- Default to build and publish extendible image [\#1246](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1246) ([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
 Wed Nov  3 10:52:34 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Fix ruby macro usage

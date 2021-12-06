@@ -119,4 +119,12 @@
     <comment>Fix ruby macro usage</comment>
     <requestid>929003</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5060d73e2de56d6490cb049a2b0df7ea</srcmd5>
+    <version>0.7.0</version>
+    <time>1638831612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936031</requestid>
+  </revision>
 </revisionlist>

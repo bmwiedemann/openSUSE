@@ -27,7 +27,7 @@
 %endif
 
 Name:           vagrant-libvirt
-Version:        0.5.3
+Version:        0.7.0
 Release:        0
 %define mod_name vagrant-libvirt
 %define mod_full_name %{mod_name}-%{version}
@@ -84,10 +84,14 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem childprocess > 3}
 
 BuildRequires:  fdupes
+BuildRequires:  procps
+BuildRequires:  kmod
 
 URL:            https://github.com/vagrant-libvirt/vagrant-libvirt
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Patch0:         0001-Remove-simplecov-from-tests.patch
+Patch1:         0002-Double-the-UDPSocket-in-cases-where-there-s-no-netwo.patch
+Patch2:         0003-Allow-the-connection.client.libversion-call-1416.patch
 
 Summary:        Vagrant provider for libvirt
 License:        MIT
