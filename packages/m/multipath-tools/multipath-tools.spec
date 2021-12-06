@@ -29,7 +29,7 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.8.7+14+suse.5a09bfa
+Version:        0.8.8+38+suse.2bdd3a14
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -66,7 +66,6 @@ BuildRequires:  suse-module-tools
 Requires(post): suse-module-tools
 Requires:       device-mapper >= 1.2.78
 Requires:       kpartx
-Requires:       libmpath0 = %{version}
 Requires:       sg3_utils
 Obsoletes:      multipath-tools-rbd <= %{version}
 PreReq:         coreutils
@@ -79,6 +78,10 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
+
+
+
 
 
 

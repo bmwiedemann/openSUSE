@@ -1518,4 +1518,41 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   (bsc#1190622)</comment>
     <requestid>920633</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>8ced269693be0b63862def1cb4141d10</srcmd5>
+    <version>0.8.8+38+suse.2bdd3a14</version>
+    <time>1638831555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.8+38+suse.2bdd3a14.obscpio
+  * upstream version bump. Code-wise identical to 0.8.7+138+suse.7c9afe31
+------------------------------------------------------------------
+- Drop versioned dependency on libmpath0 again (bsc#1190622)
+  * Since 0.8.6, libmultipath and libmpathpersist have got proper ABI 
+    versioning, and rpmbuild auto-generates dependencies on 
+    libmultipath.so.0(LIBMULTIPATH_13.0.0) etc.
+
+- Update to version 0.8.7+138+suse.7c9afe31:
+  New upstream version (pre-0.8.8)
+  
+  * deprecate &quot;config_dir&quot; and &quot;multipath_dir&quot; config options
+    (will be removed in future version)
+  * remove dependency on systemd-udevd-settle.service (boo#1193336)
+  * fix crash in remove_map (boo#1193334)
+  * CLI: add path wildcard &quot;%I&quot; for init state
+  * CLI: add &quot;reconfigure all&quot; command
+  * allow multiple pending &quot;reconfigure&quot; commands (bsc#1189551)
+  * speed up &quot;reconfigure&quot; by avoiding unnecessary map reloads
+    (bsc#1189551)
+  * rework of CLI command handler (unix socket handler) to avoid
+    hanging CLI commands (bsc#1189551)
+  * fix multipathd startup after stop during reconfigure (boo#1193338)
+  * improve error detection and warning messages in config file parser
+  * fix exit status of multipath -T (bsc#1191900)
+  * fix defects reported by coverity (boo#1193342)
+    - avoid sleeping with locks held
+    - exit if bindings file is broken
+    - set umask before mkstemp
+    - add bounds and consistency checks in SCSI VPD parsing code</comment>
+    <requestid>936067</requestid>
+  </revision>
 </revisionlist>
