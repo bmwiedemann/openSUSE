@@ -49,6 +49,8 @@ Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/Fr
 Source1:        freerdp-rpmlintrc
 # PATCH-FIX-UPSTREAM freerdp-channels-off-link-fix.diff -- based on https://github.com/FreeRDP/FreeRDP/pull/7235
 Patch0:         freerdp-builtin-channels-off-link-fix.diff
+# PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
+Patch1:         0001-Make-H.264-codec-optional-during-runtime.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -195,8 +197,7 @@ This package contains header files for developing applications that
 use the uwac library.
 
 %prep
-%setup -q -n FreeRDP-%{version}
-%autopatch -p1
+%autosetup -p1 -n FreeRDP-%{version}
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then

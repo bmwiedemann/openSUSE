@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  2 15:02:32 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix connecting without H.264-enabled FFmpeg (boo#1190823):
+  * 0001-Make-H.264-codec-optional-during-runtime.patch
+- Use %autosetup
+
+-------------------------------------------------------------------
 Thu Oct 21 10:15:38 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgraded to freerdp 2.4.1
