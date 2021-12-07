@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools >= 38.3.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module pytz >= 2018.9}
 BuildRequires:  %{python_module tcolorpy}
