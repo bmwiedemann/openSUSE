@@ -428,4 +428,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
 - Tweak fdupes macro call. (forwarded request 921363 from iznogood)</comment>
     <requestid>921592</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6f64934467ffc18c23dc46f27ae9adca</srcmd5>
+    <version>3.41.1</version>
+    <time>1638917996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936191</requestid>
+  </revision>
 </revisionlist>

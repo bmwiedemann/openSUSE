@@ -17,7 +17,7 @@
 
 
 Name:           ghex
-Version:        3.41.0
+Version:        3.41.1
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
