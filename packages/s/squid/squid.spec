@@ -46,6 +46,7 @@ Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch2:         old_nettle_compat.patch
+Patch3:	harden_squid.service.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
 BuildRequires:  fdupes
@@ -98,6 +99,7 @@ accelerator.
 %prep
 %setup -q
 cp %{SOURCE10} .
+%patch3 -p1
 
 # upstream patches after RELEASE
 perl -p -i -e 's|%{_prefix}/local/bin/perl|%{_bindir}/perl|' `find -name "*.pl"`

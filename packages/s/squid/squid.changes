@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 23 15:20:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_squid.service.patch
+  Modified:
+  * squid.service
+
+-------------------------------------------------------------------
 Mon Oct  4 13:19:48 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - transition to squid 5.x. This is a major release and for changes
