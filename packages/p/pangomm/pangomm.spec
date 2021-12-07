@@ -21,13 +21,15 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.48.1
+Version:        2.48.2
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org
-Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
+# Source0 disabled, we are using source service
+#Source0:        https://download.gnome.org/sources/%%{name}/%%{base_ver}/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM pangomm-docs-without-timestamp.patch -- Do not add timestamp to generated doc files.
 Patch0:         pangomm-docs-without-timestamp.patch
@@ -37,8 +39,12 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
 BuildRequires:  meson
+# m4, mm-common and perl(XML::Parser) only needed due to git-checkout
+BuildRequires:  m4
+BuildRequires:  mm-common
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
+BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glibmm-2.68)
@@ -80,6 +86,7 @@ chmod -x NEWS
 
 %build
 %meson \
+	-Dmaintainer-mode=true \
 	-Dbuild-documentation=true \
 	%{nil}
 %meson_build

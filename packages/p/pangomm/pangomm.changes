@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec 05 17:44:57 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 2.48.2:
+  * NMake Makefiles: Correct VS2019 toolset number
+  * build: Support Visual Studio 2022 builds
+  * Don't include individual pango headers, part 2
+  * Don't include individual pango headers
+  * Use pango from the main branch
+- Switch to using a gitcheckout via source service. Pass
+  maintainer-mode=true to meson and add m4, mm-common and
+  perl(XML::Parser) BuildRequires, as this is needed with a
+  git-checkout.
+
+-------------------------------------------------------------------
 Tue Sep 28 15:06:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.1:
