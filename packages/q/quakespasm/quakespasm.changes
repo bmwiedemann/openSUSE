@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  6 21:37:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.3
+  * Handle sky textures with non-standard sizes and warn about
+    them (e.g.  ad_tears).
+  * Allow loading textures not aligned to 16 pixels and warn about
+    them (eg.  the horde2 map of Dimension of the Machine from
+    2021 rerelease update/2.)
+
+-------------------------------------------------------------------
 Sat Oct 16 11:16:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.2
