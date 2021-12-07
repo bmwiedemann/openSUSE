@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  7 12:46:36 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.5
+  * Bugfixes:
+    #7715: Deleted encrypted files don't show up as locally changed in web UI
+
+  * Enhancements:
+    #7115: Use CRLF instead of LF in config.xml and .stignore on Windows
+    #8014: Send TLS SNI to relay server
+    #8021: Provide a way to preset GUI credentials with password hashing
+
+-------------------------------------------------------------------
 Wed Nov 24 10:16:04 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
