@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  7 15:49:57 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Mon Nov 22 11:24:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip two tests which fail (gh#Kozea/WeasyPrint#1503)

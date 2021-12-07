@@ -61,7 +61,7 @@ BuildRequires:  %{python_module pydyf}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-flake8}
 BuildRequires:  %{python_module pytest-isort}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tinycss2 >= 1.0.0}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
