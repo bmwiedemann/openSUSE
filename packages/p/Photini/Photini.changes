@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Dec  7 19:54:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.12.0
+  * Installing with pip should install dependencies if needed.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Wed Nov 17 16:48:31 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.11.1
