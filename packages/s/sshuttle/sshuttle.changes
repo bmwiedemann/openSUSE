@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  7 16:43:23 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Fri Nov 26 12:31:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

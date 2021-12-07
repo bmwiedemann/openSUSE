@@ -35,7 +35,7 @@ Patch0:         fix-pytest.patch
 Patch1:         fix-shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-mock
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildArch:      noarch
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
