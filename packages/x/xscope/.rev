@@ -53,4 +53,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>778221163487af376624e43a2c9aa1d4</srcmd5>
+    <version>1.4.2</version>
+    <time>1638918003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * This version adds support for printing the process IDs and 
+    names of local clients and servers on systems supporting /proc
+    and either SO_PEERCRED or getpeerucred().</comment>
+    <requestid>936254</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xscope
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xscope
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Utility to monitor X11/Client conversations
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
@@ -48,7 +48,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%doc AUTHORS ChangeLog COPYING NEWS README.md
 %{_bindir}/xscope
 %{_mandir}/man1/xscope.1%{?ext_man}
 
