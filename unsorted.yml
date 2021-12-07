@@ -1302,7 +1302,6 @@ unsorted:
   - blockout 
   - blockzone-fonts 
   - blog-devel 
-  - blog-plymouth 
   - blogbench 
   - blogc 
   - blosc-devel 
@@ -2017,6 +2016,7 @@ unsorted:
   - clanlib-devel 
   - clanlib-doc 
   - clanlib-examples 
+  - clash 
   - clatd 
   - claws-mail 
   - claws-mail-devel 
@@ -2271,7 +2271,6 @@ unsorted:
   - containerized-data-importer-uploadproxy: [x86_64] 
   - containerized-data-importer-uploadserver: [x86_64] 
   - containers-systemd: [i586] 
-  - containment-rpm-docker 
   - contractor 
   - converseen 
   - converseen-lang 
@@ -2685,10 +2684,11 @@ unsorted:
   - dbus-1-devel 
   - dbus-1-devel-32bit: [x86_64] 
   - dbus-1-devel-doc 
-  - dbus-1-glib-32bit: [x86_64] 
+  - dbus-1-glib-bash-completion 
   - dbus-1-glib-devel 
   - dbus-1-glib-devel-32bit: [x86_64] 
   - dbus-1-glib-doc 
+  - dbus-1-glib-tool 
   - dbus-broker 
   - dbus-sharp 
   - dbus-sharp-devel 
@@ -7596,6 +7596,7 @@ unsorted:
   - jopt-simple-javadoc 
   - jp 
   - jp2a 
+  - jp2a-bash-completion 
   - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
@@ -9182,6 +9183,8 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
+  - libVSyntaxHighlighting1 
+  - libVTextEdit1 
   - libVkLayer_utils-1_2_198_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
@@ -10213,6 +10216,7 @@ unsorted:
   - libdbus-c++-devel 
   - libdbus-c++-glib-1-1 
   - libdbus-c++-glib-devel 
+  - libdbus-glib-1-2-32bit: [x86_64] 
   - libdbusextended-qt5-1 
   - libdbusmenu-glib-devel 
   - libdbusmenu-glib-doc 
@@ -10516,6 +10520,8 @@ unsorted:
   - libfdisk-devel-32bit: [x86_64] 
   - libfdisk-devel-static 
   - libfdisk1-32bit: [x86_64] 
+  - libfdk-aac-devel 
+  - libfdk-aac2 
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
@@ -12779,7 +12785,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler114-32bit: [x86_64] 
+  - libpoppler116-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -15026,6 +15032,7 @@ unsorted:
   - lmdb-devel 
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
+  - lmms-vst: [x86_64] 
   - lnav 
   - lndir 
   - loadlin: [i586] 
@@ -16146,8 +16153,6 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
-  - monero-devel-static: [i586] 
-  - monero-doc: [i586] 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -20542,6 +20547,7 @@ unsorted:
   - pommed 
   - pongix 
   - poppler-data 
+  - poppler-data-devel 
   - popt-devel 
   - popt-devel-32bit: [x86_64] 
   - portaudio-devel 
@@ -20564,6 +20570,7 @@ unsorted:
   - postgresql-devel 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
   - postgresql-pltcl 
@@ -20573,6 +20580,7 @@ unsorted:
   - postgresql10-contrib 
   - postgresql10-devel 
   - postgresql10-docs 
+  - postgresql10-llvmjit-devel 
   - postgresql10-pg_cron 
   - postgresql10-pgagent 
   - postgresql10-pgaudit 
@@ -20590,6 +20598,7 @@ unsorted:
   - postgresql11-devel 
   - postgresql11-docs 
   - postgresql11-llvmjit 
+  - postgresql11-llvmjit-devel 
   - postgresql11-pg_cron 
   - postgresql11-pg_cron-llvmjit 
   - postgresql11-pgagent 
@@ -20611,6 +20620,7 @@ unsorted:
   - postgresql12-devel 
   - postgresql12-docs 
   - postgresql12-llvmjit 
+  - postgresql12-llvmjit-devel 
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
   - postgresql12-pgagent 
@@ -20632,6 +20642,7 @@ unsorted:
   - postgresql13-devel 
   - postgresql13-docs 
   - postgresql13-llvmjit 
+  - postgresql13-llvmjit-devel 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
   - postgresql13-pgagent 
@@ -20647,6 +20658,7 @@ unsorted:
   - postgresql13-test 
   - postgresql14-devel 
   - postgresql14-devel-mini 
+  - postgresql14-llvmjit-devel 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
@@ -21069,6 +21081,7 @@ unsorted:
   - python-oslo.context-doc 
   - python-oslo.i18n-doc 
   - python-oslo.log-doc 
+  - python-oslo.metrics-doc 
   - python-oslo.policy-doc 
   - python-oslo.privsep-doc 
   - python-oslo.reports-doc 
@@ -21356,7 +21369,6 @@ unsorted:
   - python3-monascaclient 
   - python3-morecvutils 
   - python3-mraa 
-  - python3-murano-pkg-check 
   - python3-nemo 
   - python3-netgen: [x86_64] 
   - python3-neutronclient 
@@ -21391,6 +21403,7 @@ unsorted:
   - python3-oslo.log 
   - python3-oslo.messaging 
   - python3-oslo.messaging-doc 
+  - python3-oslo.metrics 
   - python3-oslo.middleware 
   - python3-oslo.middleware-doc 
   - python3-oslo.policy 
@@ -21810,7 +21823,6 @@ unsorted:
   - python36-asyncpg 
   - python36-asynctest 
   - python36-atlassian-python-api 
-  - python36-atom 
   - python36-atomicwrites 
   - python36-atpublic 
   - python36-atspi 
@@ -31042,7 +31054,6 @@ unsorted:
   - rdiff-backup 
   - rdma-core-devel 
   - rdma-core-devel-32bit: [x86_64] 
-  - rdma-ndd 
   - rds-tools 
   - rds-tools-devel 
   - re-devel 

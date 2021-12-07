@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20211205" schemaversion="4.1">
+<image name="OBS__openSUSE___20211206" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211205</productvar>
+      <productvar name="VERSION">20211206</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211205,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211206,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211205/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211206/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -199,6 +199,7 @@
       <repopackage name="blinken"/>
       <repopackage name="blinken-lang"/>
       <repopackage name="blog"/>
+      <repopackage name="blog-plymouth"/>
       <repopackage name="blueberry"/>
       <repopackage name="blueberry-lang"/>
       <repopackage name="bluedevil5"/>
@@ -345,8 +346,6 @@
       <repopackage name="dar-lang"/>
       <repopackage name="db48-utils"/>
       <repopackage name="dbus-1"/>
-      <repopackage name="dbus-1-glib"/>
-      <repopackage name="dbus-1-glib-tool"/>
       <repopackage name="dbus-1-x11"/>
       <repopackage name="dconf"/>
       <repopackage name="dconf-editor"/>
@@ -1537,6 +1536,7 @@
       <repopackage name="libdazzle-lang"/>
       <repopackage name="libdb-4_8"/>
       <repopackage name="libdbus-1-3"/>
+      <repopackage name="libdbus-glib-1-2"/>
       <repopackage name="libdbusmenu-glib4"/>
       <repopackage name="libdbusmenu-gtk3-4"/>
       <repopackage name="libdbusmenu-qt5-2"/>
@@ -2352,7 +2352,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler114"/>
+      <repopackage name="libpoppler116"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal0"/>
       <repopackage name="libportaudio2"/>
@@ -3972,6 +3972,7 @@
       <repopackage name="rarpd"/>
       <repopackage name="rdesktop"/>
       <repopackage name="rdma-core"/>
+      <repopackage name="rdma-ndd"/>
       <repopackage name="re2c"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="readcd"/>

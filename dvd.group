@@ -198,6 +198,7 @@
     <package name="blinken" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="blinken-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="blog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="blog-plymouth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="blueberry" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="blueberry-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="bluedevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -345,8 +346,6 @@
     <package name="dar-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="db48-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="dbus-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="dbus-1-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dbus-1-glib-tool" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dbus-1-x11" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="dconf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="dconf-editor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1806,6 +1805,7 @@
     <package name="libdazzle-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libdbus-1-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libdbus-glib-1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdbusmenu-glib4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdbusmenu-gtk3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdbusmenu-qt5-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2433,7 +2433,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler114" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler116" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3923,6 +3923,7 @@
     <package name="rarpd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdesktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdma-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="rdma-ndd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="re2c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="read-only-root-fs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="readcd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
