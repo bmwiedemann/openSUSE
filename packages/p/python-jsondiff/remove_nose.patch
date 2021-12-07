@@ -1,44 +1,10 @@
---- /dev/null
-+++ b/tests/_random.py
-@@ -0,0 +1,33 @@
-+import sys
-+from random import Random
-+
-+PY3 = (sys.version_info[0] == 3)
-+
-+
-+def _generate_tag(n, rng):
-+    return ''.join(rng.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
-+                   for _ in range(n))
-+
-+
-+def randomize(n, scenario_generator, seed=12038728732):
-+    def decorator(test):
-+        def randomized_test(self):
-+            rng_seed = Random(seed)
-+            nseeds = n
-+            # (rng_seed.getrandbits(32) for i in range(n))
-+            seeds = (_generate_tag(12, rng_seed) for i in range(n))
-+            for i, rseed in enumerate(seeds):
-+                rng = Random(rseed)
-+                scenario = scenario_generator(self, rng)
-+                try:
-+                    test(self, scenario)
-+                except Exception as e:
-+                    import sys
-+                    if PY3:
-+                        raise type(e).with_traceback(type(e)('%s with scenario %s (%i of %i)' %
-+                                                             (e.message, rseed, i+1, nseeds)), sys.exc_info()[2])
-+                    else:
-+                        raise (type(e), type(e)('%s with scenario %s (%i of %i)'
-+                               % (e.message, rseed, i+1, nseeds)), sys.exc_info()[2])
-+        return randomized_test
-+    return decorator
---- a/tests/__init__.py
-+++ b/tests/__init__.py
-@@ -1,115 +0,0 @@
+diff -Nru jsondiff-1.3.0.orig/tests/__init__.py jsondiff-1.3.0/tests/__init__.py
+--- jsondiff-1.3.0.orig/tests/__init__.py	2021-04-19 21:51:14.000000000 +0200
++++ jsondiff-1.3.0/tests/__init__.py	2021-12-07 10:25:30.252455974 +0100
+@@ -1,130 +1,15 @@
+ import sys
 -import unittest
--
+ 
 -from jsondiff import diff, replace, add, discard, insert, delete, update, JsonDiffer
 -
 -from .utils import generate_random_json, perturbate_json
@@ -152,8 +118,73 @@
 -        self.assertEqual(a, differ.unpatch(b, d))
 -        dm = differ.marshal(d)
 -        self.assertEqual(d, differ.unmarshal(dm))
---- /dev/null
-+++ b/tests/test_jsondiff.py
+-
+-    def test_long_arrays(self):
+-        size = 100
+-        a = [{'a': i, 'b': 2 * i} for i in range(1, size)]
+-        b = [{'a': i, 'b': 3 * i} for i in range(1, size)]
+-        r = sys.getrecursionlimit()
+-        sys.setrecursionlimit(size - 1)
+-
+-        try:
+-            diff(a, b)
+-        except RecursionError:
+-            self.fail('cannot diff long arrays')
+-        finally:
+-            sys.setrecursionlimit(r)
++def test_long_arrays(self):
++    size = 100
++    a = [{'a': i, 'b': 2 * i} for i in range(1, size)]
++    b = [{'a': i, 'b': 3 * i} for i in range(1, size)]
++    r = sys.getrecursionlimit()
++    sys.setrecursionlimit(size - 1)
++
++    try:
++        diff(a, b)
++    except RecursionError:
++        self.fail('cannot diff long arrays')
++    finally:
++        sys.setrecursionlimit(r)
+diff -Nru jsondiff-1.3.0.orig/tests/_random.py jsondiff-1.3.0/tests/_random.py
+--- jsondiff-1.3.0.orig/tests/_random.py	1970-01-01 01:00:00.000000000 +0100
++++ jsondiff-1.3.0/tests/_random.py	2021-12-07 10:21:59.457195559 +0100
+@@ -0,0 +1,33 @@
++import sys
++from random import Random
++
++PY3 = (sys.version_info[0] == 3)
++
++
++def _generate_tag(n, rng):
++    return ''.join(rng.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
++                   for _ in range(n))
++
++
++def randomize(n, scenario_generator, seed=12038728732):
++    def decorator(test):
++        def randomized_test(self):
++            rng_seed = Random(seed)
++            nseeds = n
++            # (rng_seed.getrandbits(32) for i in range(n))
++            seeds = (_generate_tag(12, rng_seed) for i in range(n))
++            for i, rseed in enumerate(seeds):
++                rng = Random(rseed)
++                scenario = scenario_generator(self, rng)
++                try:
++                    test(self, scenario)
++                except Exception as e:
++                    import sys
++                    if PY3:
++                        raise type(e).with_traceback(type(e)('%s with scenario %s (%i of %i)' %
++                                                             (e.message, rseed, i+1, nseeds)), sys.exc_info()[2])
++                    else:
++                        raise (type(e), type(e)('%s with scenario %s (%i of %i)'
++                               % (e.message, rseed, i+1, nseeds)), sys.exc_info()[2])
++        return randomized_test
++    return decorator
+diff -Nru jsondiff-1.3.0.orig/tests/test_jsondiff.py jsondiff-1.3.0/tests/test_jsondiff.py
+--- jsondiff-1.3.0.orig/tests/test_jsondiff.py	1970-01-01 01:00:00.000000000 +0100
++++ jsondiff-1.3.0/tests/test_jsondiff.py	2021-12-07 10:21:59.457195559 +0100
 @@ -0,0 +1,112 @@
 +import unittest
 +

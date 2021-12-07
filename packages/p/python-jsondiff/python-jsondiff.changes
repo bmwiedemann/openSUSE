@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  7 09:32:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.3.0
+  *  Update README.rst
+  *  Add license to setup.py
+  *  Upating travis config to explicitly set ubuntu versions to use
+     for each python version.
+  *  Fix long list diffing bug by converting recursive code to iterative.
+  *  Add failing test for list-diff recursion error bug
+- Refresh patches for new version
+  * remove_nose.patch
+- Switch Source field to point to Github tarball URL
+  * The tarball from PyPi does not contain the tests
+
+-------------------------------------------------------------------
 Sun Sep 13 17:39:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch to remove requirement for nose.
