@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec 1 12:26:11 UTC 2021 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.3:
+  * Racket removes syntax arming and disarming in favor of a simpler system of
+    protected syntax operations, along with other updates to the syntax system.
+  * DrRacket has improved support for custom #lang languages.
+  * Typed Racket improves precision for type-checking of non-polymorphic
+    structures, existential types, and certain binding forms.
+  * Scribble HTML output gains a button to show / hide the table of contents on
+    mobile platforms.
+  * Redex’s stepper’s GUI shows IO-judgment form rule names.
+  * Many bug fixes!
+- Remove dont-strip.patch, since --disable-strip has been repaired or improved
+  in 8.3.
+
+-------------------------------------------------------------------
 Sun Oct 10 07:26:11 UTC 2021 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.2:
   * Racket CS improved the performance of large-integer arithmetic.
