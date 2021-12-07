@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>663802</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe1269b46b45ff5d3c97c0267db51f54</srcmd5>
+    <version>1.13.0.1</version>
+    <time>1638917989</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0.1:
+  * sync with jquery-ui 1.13.0.1 release
+  * no changelog provided by upstream</comment>
+    <requestid>936088</requestid>
+  </revision>
 </revisionlist>

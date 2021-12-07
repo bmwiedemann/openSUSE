@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-jquery-ui
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic-jquery-ui
-Version:        1.12.1.1
+Version:        1.13.0.1
 Release:        0
 Summary:        jQuery UI repackaged for the XStatic standard
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://jqueryui.com/
-# https://pypi.python.org/pypi/XStatic-jquery-ui/1.12.0.1
-Source:         XStatic-jquery-ui-%{version}.tar.gz
+URL:            http://jqueryui.com/
+Source:         https://files.pythonhosted.org/packages/source/X/XStatic-jquery-ui/XStatic-jquery-ui-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jquery/jquery-ui/master/LICENSE.txt
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
