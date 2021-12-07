@@ -40,6 +40,7 @@ Source5:        oscap-scan.service
 Source6:        oscap-scan.sh
 Patch1:         openscap-opensuse-cpe.patch
 Patch2:         openscap-suse-cpe.patch
+Patch3:         openscap-docker-add-suse.patch
 URL:            https://www.open-scap.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
@@ -177,6 +178,7 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %if 0%{?with_bindings}

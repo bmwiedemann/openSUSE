@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  7 10:58:50 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- openscap-docker-add-suse.patch: add SLES support oscap-docker
+  (bsc#1179314)
+
+-------------------------------------------------------------------
 Mon Oct  4 15:33:23 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - ship python3 docker module always

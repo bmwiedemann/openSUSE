@@ -1126,4 +1126,13 @@
     <comment>- ship python3 docker module always</comment>
     <requestid>924193</requestid>
   </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>4149085c1cd321c8f5ef75bb5fc52ce0</srcmd5>
+    <version>1.3.5</version>
+    <time>1638918003</time>
+    <user>dimstar_suse</user>
+    <comment>- openscap-docker-add-suse.patch: add SLES support oscap-docker
+  (bsc#1179314) (forwarded request 936258 from msmeissn)</comment>
+    <requestid>936259</requestid>
+  </revision>
 </revisionlist>
