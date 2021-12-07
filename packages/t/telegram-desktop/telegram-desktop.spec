@@ -34,7 +34,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        3.1.11
+Version:        3.2.8
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -206,6 +206,7 @@ cd %{_builddir}/tdesktop-%{version}-full
 %cmake \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_BUILD_TYPE=Release \
+      -DDESKTOP_APP_QT6=OFF \
       -DTDESKTOP_API_ID=611335 \
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
       -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \

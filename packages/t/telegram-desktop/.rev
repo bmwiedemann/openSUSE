@@ -723,4 +723,17 @@
 - Update tg_owt (forwarded request 928212 from tux93)</comment>
     <requestid>928835</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a48c74439d9514a0bc0dd4d21d453447</srcmd5>
+    <version>3.2.8</version>
+    <time>1638918001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.8
+  * Fix crash in opening shared media with another user.
+  * Try out the new audio player with playlist shuffle and repeat.
+  * Give a custom name to your desktop session to distinguish it
+    in the sessions list.
+- Update tg_owt (forwarded request 936151 from nuklly)</comment>
+    <requestid>936242</requestid>
+  </revision>
 </revisionlist>

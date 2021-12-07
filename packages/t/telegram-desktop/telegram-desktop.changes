@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  7 05:28:18 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 3.2.8
+  * Fix crash in opening shared media with another user.
+  * Try out the new audio player with playlist shuffle and repeat.
+  * Give a custom name to your desktop session to distinguish it
+    in the sessions list.
+- Update tg_owt
+
+-------------------------------------------------------------------
 Fri Oct 29 18:01:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.1.11
