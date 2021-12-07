@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Dec  7 19:54:08 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.2.1
+  Added:
+  * core: implement Device.__eq__() (#147)
+  Changed:
+  * libusb0: implement is_kernel_driver_active() for FreeBSD and DragonFly BSD (#365)
+  * libusb0: implement is_kernel_driver_active() for Mac OS (#374)
+  Fixed:
+  * core: make Device hashable again (PR #376)
+  * setup: prevent installation on unsupported Python versions (PR #364)
+  * control: fix undefined USBError (#372)
+  * tests: fix legacy/hardware tests for Python 3.9 (#373)
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Sun May  9 16:47:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

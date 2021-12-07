@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-pyusb
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        USB access on the Python language
 # URL is incorrect on PyPI, gh#pyusb/pyusb#211
@@ -27,7 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyusb/pyusb
 Source:         https://files.pythonhosted.org/packages/source/p/pyusb/pyusb-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
@@ -57,7 +57,7 @@ find .  -name "*.rst" -exec dos2unix {} +
 %check
 # Testing mostly requires a device, which is not mocked or emulated
 # See https://github.com/pyusb/pyusb/issues/235
-%python_exec setup.py pytest --addopts="tests/test_find.py tests/test_util.py -k 'not FindDescriptorTest'"
+%pytest tests/test_find.py tests/test_util.py -k 'not FindDescriptorTest'
 
 %files %{python_files}
 %license LICENSE
