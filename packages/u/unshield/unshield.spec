@@ -1,7 +1,7 @@
 #
 # spec file for package unshield
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   0
 %define libname lib%{name}%{sover}
 Name:           unshield
-Version:        1.4.3
+Version:        1.5.1
 Release:        0
 Summary:        A Program to Extract InstallShield Cabinet Files
 License:        MIT
@@ -59,7 +59,7 @@ you will need to install %{name}-devel.
 
 %prep
 %setup -q
-%patch1
+%patch1 -p0
 
 %build
 %cmake
