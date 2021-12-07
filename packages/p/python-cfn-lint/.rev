@@ -118,4 +118,23 @@
     <comment></comment>
     <requestid>912693</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2968da7ef82addf8733d71e27565b563</srcmd5>
+    <version>0.54.4</version>
+    <time>1638917991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.54.4:
+  * Update CloudFormation specs to `45.0.0`
+  * Add `AWS::DynamoDB::GlobalTable` to `AWS::Lambda::EventSourceMapping.EventSourceArn`
+  * Expand stateful resource types to include `AWS::SecretsManager::Secret`
+  * Add exceptions to rule [E3031]
+  * Update `aws-sam-translator` to `1.39.0`
+  * Update `Serverless/ManagedPolicies.json` and create automation to keep it up to date
+  * Update default configuration on rule [E3012]
+  * Add rule [E3043]
+  * Add `AWS::KMS::ReplicaKey` as a `Ref`/`GetAtt` for `AWS::KMS::Alias.TargetKeyId`
+  * `AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute` `AllowedValues` expansion
+  * Fix rule message string formatting for [E3013]</comment>
+    <requestid>936131</requestid>
+  </revision>
 </revisionlist>

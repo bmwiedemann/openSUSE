@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Dec  6 21:34:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.54.4:
+  * Update CloudFormation specs to `45.0.0`
+  * Add `AWS::DynamoDB::GlobalTable` to `AWS::Lambda::EventSourceMapping.EventSourceArn`
+  * Expand stateful resource types to include `AWS::SecretsManager::Secret`
+  * Add exceptions to rule [E3031]
+  * Update `aws-sam-translator` to `1.39.0`
+  * Update `Serverless/ManagedPolicies.json` and create automation to keep it up to date
+  * Update default configuration on rule [E3012]
+  * Add rule [E3043]
+  * Add `AWS::KMS::ReplicaKey` as a `Ref`/`GetAtt` for `AWS::KMS::Alias.TargetKeyId`
+  * `AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute` `AllowedValues` expansion
+  * Fix rule message string formatting for [E3013]
+
+-------------------------------------------------------------------
 Tue Aug 17 00:38:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 0.53.0:
