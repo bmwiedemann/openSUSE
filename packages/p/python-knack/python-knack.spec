@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-knack
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        A Command-Line Interface framework
 License:        MIT
@@ -28,7 +28,6 @@ URL:            https://github.com/microsoft/knack
 Source:         https://files.pythonhosted.org/packages/source/k/knack/knack-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module argcomplete}
-BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module jmespath}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pygments}
@@ -40,7 +39,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-argcomplete
-Requires:       python-colorama
 Requires:       python-jmespath
 Requires:       python-pygments
 Requires:       python-tabulate

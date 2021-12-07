@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Dec  7 08:24:18 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.0
+  * Support Python 3.10 (#250)
+  * Only install colorama on Windows (#249)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon May 10 08:39:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.2
