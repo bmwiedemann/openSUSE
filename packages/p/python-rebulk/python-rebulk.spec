@@ -24,7 +24,6 @@ Summary:        Library for defining bulk search patterns to perform advanced st
 License:        MIT
 URL:            https://github.com/Toilal/rebulk
 Source0:        https://files.pythonhosted.org/packages/source/r/rebulk/rebulk-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,6 +42,8 @@ allow building a custom and complex string matcher.
 
 %prep
 %autosetup -n rebulk-%{version}
+# https://github.com/Toilal/rebulk/issues/26
+sed -i 's:.pytest-runner.::' setup.py
 
 # Remove shebang from non-executable files
 for i in {'builder','chain','debug','formatters','__init__','introspector','loose','match','pattern','processors','rebulk','remodule','rules','toposort','utils','validators','__version__'}; do
