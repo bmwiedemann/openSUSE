@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 25 23:12:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.2
+  New
+  * Set image save location on command line.
+  * Add debug logging.
+  * Add FTP upload.
+  * Upload image via command line without opening editor.
+  * Add multi-language comment option to desktop file.
+  * Add MimeType of Images to desktop file.
+  * Add .jpeg to open file dialog filter (File > Open).
+  * Escape closes window (and exits when not using tray).
+  Fixed
+  * Opens a new window for each capture.
+  * First cli invocation won't copy image to clipboard.
+  Changed
+  * Improve translation experience by using full sentences.
+
+-------------------------------------------------------------------
 Sun Sep 19 10:04:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.9.1
