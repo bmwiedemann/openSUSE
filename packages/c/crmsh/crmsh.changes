@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec 06 14:44:54 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211206.e34e2fff:
+  * Dev: unittest: Add unit test for previous changes
+  * Dev: behave: Add functional test for previous changes and cases
+  * Dev: sbd: Adjust timeout related values
+
+-------------------------------------------------------------------
 Mon Dec 06 07:54:42 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211206.894f84bb:
