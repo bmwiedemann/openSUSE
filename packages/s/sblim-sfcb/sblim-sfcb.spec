@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-sfcb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -81,6 +81,7 @@ Patch26:        0026-fix-build-dependencies-for-sfcbinst2mof.patch
 Patch27:        0027-Makefile.am-add-autoconfiscate.sh-to-dist.patch
 Patch28:        0028-allow-requests-with-Content-Type-set-to-text-xml.patch
 Patch29:        no_tlsv1_config.patch
+Patch30:        harden_sblim-sfcb.service.patch
 
 Provides:       cim-server
 Provides:       cimserver
@@ -176,6 +177,7 @@ cp %{S:7} .
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
+%patch30 -p1
 
 export PATCH_GET=0
 

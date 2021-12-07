@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 16 15:09:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sblim-sfcb.service.patch
+
+-------------------------------------------------------------------
 Thu Nov 26 10:43:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - no_tlsv1_config.patch: add support for disabling TLSv1_1
