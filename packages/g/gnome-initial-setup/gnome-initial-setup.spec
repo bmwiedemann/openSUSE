@@ -17,7 +17,7 @@
 
 
 Name:           gnome-initial-setup
-Version:        41.0
+Version:        41.2
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
