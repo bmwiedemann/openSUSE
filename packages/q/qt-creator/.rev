@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7af6438f2c61c785b583118ff3dc1b1</srcmd5>
+    <version>6.0.0</version>
+    <time>1638917994</time>
+    <user>dimstar_suse</user>
+    <comment>Qt Creator 6.0.0.
+The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator.</comment>
+    <requestid>936173</requestid>
+  </revision>
+</revisionlist>
