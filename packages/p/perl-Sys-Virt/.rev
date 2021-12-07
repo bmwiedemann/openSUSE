@@ -866,4 +866,16 @@ new request.</comment>
   - jsc#SLE-19264</comment>
     <requestid>929473</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>963df425e8f46a77b283db1cec452d14</srcmd5>
+    <version>7.10.0</version>
+    <time>1638917988</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 7.10.0.
+
+- Update to 7.10.0
+  - Add all new APIs and constants in libvirt 7.10.0
+  - jsc#SLE-18260, jsc#SLE-19264</comment>
+    <requestid>935261</requestid>
+  </revision>
 </revisionlist>
