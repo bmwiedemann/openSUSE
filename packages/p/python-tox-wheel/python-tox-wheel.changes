@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Dec  7 17:37:36 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.6.0
+  * Fixed unnecessary build directory cleanup and removed dead code.
+  * The ``isolated_build`` tox option is now an alias for ``wheel_pep517``.
+  * Added more configuration examples.
+  * Added support for PEP 517/518.
+- do not require pytest-runner for build, it would not be needed
+  even if the testsuite run
+
+-------------------------------------------------------------------
 Tue Apr 28 08:26:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable testing for now as it needs python2 and old virtualenv

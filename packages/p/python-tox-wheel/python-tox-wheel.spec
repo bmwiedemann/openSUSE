@@ -1,7 +1,7 @@
 #
 # spec file for package python-tox-wheel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tox-wheel
-Version:        0.4.2
+Version:        0.6.0
 Release:        0
 Summary:        A Tox plugin that builds and installs wheels instead of sdist
 License:        BSD-2-Clause
@@ -32,7 +32,7 @@ Requires:       python-tox >= 3.9
 Requires:       python-wheel >= 0.31
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox >= 3.9}
 BuildRequires:  %{python_module tox-no-internet}
 BuildRequires:  %{python_module wheel >= 0.31}
