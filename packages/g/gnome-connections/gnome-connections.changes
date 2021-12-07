@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:07:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + rdp-connection: Call show () when opening an already
+    established connection
+  + preferences: Remove activatable_widget property for the host
+    address
+  + build: Don't use internet for appstream validation test
+  + vnc-connection: Only paste clipboard content that is text
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 27 13:05:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
