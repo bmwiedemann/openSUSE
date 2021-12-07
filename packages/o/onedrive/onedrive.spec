@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.4.13
+Version:        2.4.14
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -46,7 +46,9 @@ BuildRequires:  ldc-phobos-devel
 %endif
 BuildRequires:  help2man
 BuildRequires:  libcurl-devel
+BuildRequires:  libnotify-devel
 BuildRequires:  sqlite3-devel
+Requires:       libnotify4
 Recommends:     logrotate
 Suggests:       onedrive-completition-bash
 Suggests:       onedrive-completition-zsh

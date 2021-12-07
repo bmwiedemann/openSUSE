@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 24 08:58:31 UTC 2021 - egotthold@suse.com
+
+- Update to version 2.4.14
+  https://github.com/abraunegg/onedrive/releases/tag/v2.4.14
+- When using --logout there is no reauth performed as before, to login
+  again just use the same command as on first run
+- Enable notifications
+
+-------------------------------------------------------------------
 Wed Nov 17 18:58:00 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
 
 - Weaken systemd service hardening to make services start again.
