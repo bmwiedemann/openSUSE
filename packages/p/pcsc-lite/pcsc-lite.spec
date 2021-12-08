@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.4
+Version:        1.9.5
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -46,8 +46,8 @@ BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       libpcsclite1 = %{version}
 Requires(post): %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
