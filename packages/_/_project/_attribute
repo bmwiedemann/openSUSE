@@ -75,6 +75,7 @@
   boo#1193134: '20211126'
   boo#1193344: '20211202'
   boo#1193345: '20211206'
+  boo#1193502: '20211206'
   bsc#1161276: '20211206'
   gh#OSInside/kiwi#1867: '20210716'
   gh#containers/podman#10685: '20210628'
@@ -91,7 +92,7 @@
   poo#101109: '20211102'
   poo#101121: '20211016'
   poo#101608: '20211128'
-  poo#101620: '20211128'
+  poo#101620: '20211206'
   poo#101752: '20211113'
   poo#101984: '20211107'
   poo#101990: '20211127'
@@ -150,7 +151,7 @@
   poo#98646: '20210921'
   poo#98739: '20210927'
   poo#99039: '20211110'
-  poo#99057: '20211203'
+  poo#99057: '20211206'
   poo#99102: '20210921'
   poo#99312: '20211206'
   poo#99435: '20210928'
@@ -528,9 +529,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20211206'
-published: '20211205'
-publishing: '20211205'
+    <value>failed: ''
+published: '20211206'
+publishing: '20211206'
 testing: '20211206'
 </value>
   </attribute>
