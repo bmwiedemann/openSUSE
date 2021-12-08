@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtnetworkauth
 %define tar_name qtnetworkauth-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-networkauth%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Set of APIs to obtain limited access to online accounts and HTTP services
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -60,6 +60,7 @@ The Qt 6 NetworkAuth library.
 %package devel
 Summary:        Qt 6 NetworkAuth library - Development files
 Requires:       libQt6NetworkAuth6 = %{version}
+Requires:       cmake(Qt6Network)
 
 %description devel
 Development files for the Qt 6 NetworkAuth library.
