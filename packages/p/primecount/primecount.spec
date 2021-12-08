@@ -17,7 +17,7 @@
 
 
 Name:           primecount
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Count the number of primes
 License:        BSD-2-Clause
@@ -85,5 +85,6 @@ files for developing applications that use the primecount library.
 %{_libdir}/libprimecount.so
 %{_includedir}/primecount.h
 %{_includedir}/primecount.hpp
+%{_libdir}/pkgconfig/primecount.pc
 
 %changelog
