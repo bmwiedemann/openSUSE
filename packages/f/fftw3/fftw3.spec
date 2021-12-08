@@ -1,5 +1,5 @@
 #
-# spec file for package fftw3
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -21,8 +21,7 @@
 %define bname fftw
 %define BNAME FFTW
 %define pname fftw3
-%define vers 3.3.9
-%define _ver 3_3_9
+%define _ver 3_3_10
 
 %bcond_with ringdisabled
 
@@ -368,7 +367,7 @@ ExclusiveArch:  do_not_build
 Name:           %package_name
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-Version:        %vers
+Version:        3.3.10
 Release:        0
 Summary:        Discrete Fourier Transform (DFT) C Subroutine Library
 License:        GPL-2.0-or-later
@@ -497,7 +496,6 @@ data, and of arbitrary input size.
 %endif
 
 %ifnarch s390 s390x
-
 %package -n libfftw3_mpi3
 Summary:        Discrete Fourier Transform (DFT) C subroutine library
 Group:          Productivity/Scientific/Math
@@ -701,7 +699,6 @@ EOF
 %postun -n libfftw3_omp3 -p /sbin/ldconfig
 
 %ifnarch s390 s390x
-
 %post -n libfftw3_mpi3 -p /sbin/ldconfig
 
 %postun -n libfftw3_mpi3 -p /sbin/ldconfig
@@ -709,14 +706,12 @@ EOF
 %endif
 
 %files -n %package_libname
-%defattr(-,root,root)
 %{package_libdir}/libfftw3.so.3*
 %{package_libdir}/libfftw3f.so.3*
 %{package_libdir}/libfftw3l.so.3*
 
 %if %{without hpc}
 %files -n libfftw3_threads3
-%defattr(-,root,root)
 %endif
 # ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_threads.so.3*
@@ -725,7 +720,6 @@ EOF
 
 %if %{without hpc}
 %files -n libfftw3_omp3
-%defattr(-,root,root)
 %else
 %hpc_modules_files
 %endif
@@ -738,7 +732,6 @@ EOF
 %if %{with mpi}
 %if %{without hpc}
 %files -n libfftw3_mpi3
-%defattr(-,root,root)
 %endif
 # ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_mpi.so.3*
@@ -750,7 +743,6 @@ EOF
 # ENDIF FOR ARCH s390 s390x
 
 %files devel
-%defattr(-,root,root)
 %if %{with hpc}
 %{package_infodir}/
 %hpc_dirs
@@ -762,7 +754,8 @@ EOF
 %dir %package_bindir
 %dir %package_datadir
 %endif
-%doc AUTHORS CONVENTIONS COPYING COPYRIGHT ChangeLog NEWS README TODO
+%license COPYING
+%doc AUTHORS CONVENTIONS COPYRIGHT ChangeLog NEWS README TODO
 %doc doc/*
 %doc %{package_mandir}/man?/*
 %dir %package_libdir/cmake
@@ -782,7 +775,6 @@ EOF
 
 %if %{without hpc}
 %files threads-devel
-%defattr(-,root,root)
 %endif
 # ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_threads.so
@@ -791,7 +783,6 @@ EOF
 
 %if %{without hpc}
 %files openmp-devel
-%defattr(-,root,root)
 %endif
 # ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_omp.so
@@ -802,7 +793,6 @@ EOF
 %if %{with mpi}
 %if %{without hpc}
 %files mpi-devel
-%defattr(-,root,root)
 %endif
 # ENDIF FOR {without hpc}
 %{package_libdir}/libfftw3_mpi.so
@@ -816,8 +806,7 @@ EOF
 # ENDIF FOR arch s390 s390x
 
 %if %{with hpc}
-%files  devel-static
-%defattr(-,root,root)
+%files devel-static
 %{package_libdir}/*.*a
 %endif
 

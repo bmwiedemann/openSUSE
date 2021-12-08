@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec  5 20:52:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.10:
+  * Fix bug that would cause 2-way SIMD (notably SSE2 in double precision)
+    to attempt unaligned accesses in certain obscure cases, causing
+    segfaults.
+  * This test computes a pair of length-4 real->complex transforms where
+    the second input is 5 real numbers away from the first input.  That
+    is, there is a gap of one real number between the first and second
+    input array.  The -oexhaustive level allow FFTW to attempt to
+    compute this transform by reducing it to a pair of complex
+    transforms of length 2, but now the second input is not aligned to a
+    complex-number boundary.  The fact that 5 is odd is the problem.
+  * The bug cannot occur in complex->complex transforms because the
+    complex interface accepts strides in units of complex numbers, so
+    strides are aligned by construction.
+
+-------------------------------------------------------------------
 Fri Apr 30 11:40:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Follow the distro default openmpi implementation:
