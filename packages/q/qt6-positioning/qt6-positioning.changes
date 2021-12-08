@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Dec  1 15:14:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+
+-------------------------------------------------------------------
+Mon Nov 15 09:05:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- QtPositioning and QtLocation are no longer grouped.
