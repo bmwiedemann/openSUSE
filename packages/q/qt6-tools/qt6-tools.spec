@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -117,6 +117,10 @@ This package contains the Qt 6 Designer Library.
 %package -n qt6-designer-devel
 Summary:        Qt 6 Designer libraries - Development files
 Requires:       libQt6Designer6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpenGLWidgets)
+Requires:       cmake(Qt6Widgets)
+Requires:       cmake(Qt6Xml)
 
 %description -n qt6-designer-devel
 Development files for the Qt6 Designer libraries.
@@ -141,6 +145,10 @@ This package contains the Qt 6 Help library.
 %package -n qt6-help-devel
 Summary:        Qt 6 Help library - Development files
 Requires:       libQt6Help6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Sql)
+Requires:       cmake(Qt6Widgets)
 
 %description -n qt6-help-devel
 Development files for the Qt6 Help library.
@@ -163,10 +171,13 @@ This package contains the Qt 6 UiTools library.
 %package -n qt6-uitools-devel
 Summary:        Qt 6 UiTools library - Development files
 Requires:       libQt6UiTools6 = %{version}
-# Qt6UiToolsDependencies.cmake has explicit dependencies on these libraries
 Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpenGL)
 Requires:       cmake(Qt6OpenGLWidgets)
+Requires:       cmake(Qt6UiPlugin)
 Requires:       cmake(Qt6Widgets)
+# qt6uitools_*_metatypes.json location fixed
+Conflicts:      qt6-designer-devel < 6.2.2
 
 %description -n qt6-uitools-devel
 Development files for the Qt6 UiTools library.
@@ -244,7 +255,11 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-designercomponents-private-devel
 Summary:        Development files for the Qt 6 DesignerComponents library
 Requires:       libQt6DesignerComponents6 = %{version}
-Requires:       qt6-designer-private-devel = %{real_version}
+Requires:       qt6-designer-private-devel = %{version}
+Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Xml)
+%requires_eq    qt6-gui-private-devel
+%requires_eq    qt6-widgets-private-devel
 
 %description -n qt6-designercomponents-private-devel
 Development files for the Qt 6 DesignerComponents library.
@@ -334,7 +349,6 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_libdir}/libQt6Designer.prl
 %{_qt6_libdir}/libQt6Designer.so
 %{_qt6_metatypesdir}/qt6designer_*_metatypes.json
-%{_qt6_metatypesdir}/qt6uitools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_designer.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_uiplugin.pri
 %exclude %{_qt6_includedir}/QtDesigner/%{real_version}
@@ -369,6 +383,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_includedir}/QtUiTools/
 %{_qt6_libdir}/libQt6UiTools.prl
 %{_qt6_libdir}/libQt6UiTools.so
+%{_qt6_metatypesdir}/qt6uitools_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_uitools.pri
 %exclude %{_qt6_includedir}/QtUiTools/%{real_version}
 
