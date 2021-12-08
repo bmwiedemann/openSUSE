@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Nov 28 20:00:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  - The logic behind new-uuid verbosity option changed. New-uuid now overrides
+    new-id if set and will cause Taskwarrior to display UUIDs instead of IDs
+    for new tasks (machine friendly).
+  - If ~/.taskrc is not found, Taskwarrior will look for its configuration in
+    $XDG_CONFIG_HOME/task/taskrc (defaulting to ~/.config/task/taskrc). This
+    allows users to setup their Taskwarrior to follow XDG standard without
+    using config overrides.
+  - Newer Unicode characters, such as emojis are correctly handled and displayed.
+    Taskwarrior now supports all Unicode characters up to Unicode 12.
+  - Datetime values until year 9999 are now supported.
+    Duration values of up to 1 000 000 years are now supported.
+  - 64-bit numeric values (up to 9,223,372,036,854,775,807) are now supported.
+  - Later/someday named datetime values now resolve to 9999-12-30 (instead of
+    2038-01-18).
+  - Calendar now supports displaying due dates until year 9999.
+  - Calendar now displays waiting tasks with due dates on the calendar.
+  - Calendar supports highlighting days with scheduled tasks.
+  - Multi-day holidays are now supported.
+  - Holiday data files for fr-CA, hu-HU, pt-BR, sk-SK and sv-FI locales are now
+    generated and shipped with Taskwarrior.
+  - The task edit command can now handle multi-line annotations and UDAs in a
+    user friendly way, withouth having to handle with JSON escaping of special
+    chars.
+  - A large portion of currently known parser-related issues was fixed.
+  - The taskrc file now supports relative paths, which are evaluated with
+    respect to (a) current directory, (b) taskrc directory and (c) now also the
+    installation directory of configuration files.
+  - The currently selected context is now applied for "task add" and "task log"
+    commands. Section on contexts in the manpage was updated to describe this
+    functionality.
+  - Users can specify per-context specific overrides of configuration variables.
+  - The `task import` command can now accept annotations with missing entry
+    values. Current time will be assumed.
+  - The new 'by' filter attribute modifier compares using '<=' rather than '<'
+    as 'before' uses.  This allows the last second of the day to match with
+    'due.by:eod', which it would not otherwise.  It also works with
+    whole units like days, e.g. 'add test due:2021-07-17' would not match
+    'due.before:tomorrow' (on the 16th), but would match 'due.by:tomorrow'.
+  - Waiting is now an entirely "virtual" concept, based on a task's
+    'wait' property and the current time. Task is considered "waiting" if its
+    wait attribute is in the future. TaskWarrior no longer explicitly
+    "unwaits" a task (the wait attribute is not removed once its value is in
+    the past), so the "unwait' verbosity token is no longer available.
+    This allows for filtering for tasks that were waiting in the past
+    intervals, but are not waiting anymore.
+  - The configuration file now supports environment variables.
+  - Taskwarrior can now handle displaying tasks in windows with limited width,
+    even if columns contain long strings (like URLs).
+  - The nag message is emitted at most once per task command, even with bulk
+    operations. Additionally, the urgency of the task considered is taken
+    before the completion, not after.
+  - The export command now takes an optional argument that references an
+    existing report. As such, "task export <report>" command will export
+    the same tasks that "task <report>" prints, and in the same order.
+  - The burndown command now supports non-cumulative display, where tasks only
+    get plotted within the interval segment when they got completed.
+
+-------------------------------------------------------------------
 Mon Jan 25 01:43:13 UTC 2021 - Michael Bryant <shadow53@shadow53.com> - 2.5.3
 
 - Update to 2.5.3 upstream release 2.5.3, skipping 2.5.2

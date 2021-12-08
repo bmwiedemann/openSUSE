@@ -17,29 +17,27 @@
 
 
 Name:           taskwarrior
-Version:        2.5.3
+Version:        2.6.1
 Release:        0
 Summary:        Command-line todo list manager
 License:        MIT
 Group:          Productivity/Office/Organizers
-URL:            http://taskwarrior.org
-#Source0:        http://www.taskwarrior.org/download/task-#{version}.tar.gz
-Source0:        https://github.com/GothenburgBitFactory/taskwarrior/releases/download/v%{version}/task-%{version}.tar.gz
+URL:            https://taskwarrior.org/
+Source0:        https://taskwarrior.org/download/task-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE: skip the INSTALL and LICENSE from files intended for the installation
 Patch0:         task-skip-INSTALL.patch
 BuildRequires:  awk
+# for completion
+BuildRequires:  bash
 BuildRequires:  cmake >= 2.8
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel
-BuildRequires:  libuuid-devel
-# for completion
-BuildRequires:  bash
-BuildRequires:  vim-base
-BuildRequires:  zsh
 # for sync
 BuildRequires:  libgnutls-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  libuuid-devel
+BuildRequires:  vim-base
+BuildRequires:  zsh
 # use the name as other distributions, so
 # zypper in task will work as well
 Provides:       task = %{version}-%{release}
@@ -67,10 +65,10 @@ sed -i src/commands/CmdDiagnostics.cpp \
 %build
 %cmake -DENABLE_SYNC:BOOL=ON \
     -DTASK_DOCDIR:PATH=%{_docdir}/task \
-    -DTASK_MAN1DIR:PATH=%{_datadir}/man/man1/ \
+    -DTASK_MAN1DIR:PATH=%{_mandir}/man1/ \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DBUILD_STATIC_LIBS:BOOL=OFF \
-    -DTASK_MAN5DIR:PATH=%{_datadir}/man/man5/
+    -DTASK_MAN5DIR:PATH=%{_mandir}/man5/
 %cmake_build
 
 %install
@@ -83,8 +81,6 @@ install -m 0755 -d %{buildroot}%{_datadir}/bash_completion.d/
 mv %{scriptsdir}bash/task.sh %{buildroot}%{_datadir}/bash_completion.d/
 
 install -m 0755 -d %{buildroot}%{_datadir}/zsh/site-functions/
-mv %{scriptsdir}zsh/_task %{buildroot}%{_datadir}/zsh/site-functions/
-rmdir %{scriptsdir}zsh
 
 install -m 0755 -d %{buildroot}%{_datadir}/fish/completions/
 mv %{scriptsdir}fish/task.fish %{buildroot}%{_datadir}/fish/completions/
@@ -100,11 +96,10 @@ rm -rf %{scriptsdir}vim
 find %{buildroot}/%{_docdir}/task -type f -exec chmod a-x {} +
 
 %files
-%defattr(-,root,root)
 %doc %{_docdir}/task
 %{_bindir}/task*
-%{_datadir}/man/man1/task*
-%{_datadir}/man/man5/task*
+%{_mandir}/man1/task*
+%{_mandir}/man5/task*
 %{_datadir}/bash_completion.d/
 %{_datadir}/zsh/site-functions/
 %dir %{_datadir}/fish/
