@@ -23,4 +23,12 @@
     <comment>Add bundle manifest to make usable from eclipse</comment>
     <requestid>786883</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8bb08748980d57092735e858d50434d3</srcmd5>
+    <version>1.2.17</version>
+    <time>1638997701</time>
+    <user>dimstar_suse</user>
+    <comment>Put GUI tools into separate packages</comment>
+    <requestid>935698</requestid>
+  </revision>
 </revisionlist>

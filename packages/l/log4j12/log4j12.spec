@@ -1,7 +1,7 @@
 #
-# spec file for package log4j12
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@
 Version:        1.2.17
 Release:        0
 Summary:        Java logging tool
+Group:          Development/Libraries/Java
 License:        Apache-2.0
 URL:            https://logging.apache.org/log4j/
 Source0:        http://www.apache.org/dist/logging/log4j/%{version}/log4j-%{version}.tar.gz
@@ -96,6 +97,21 @@ Summary:        Java logging tool (Documentation)
 
 %description    javadoc
 Documentation javadoc for Java logging tool log4j.
+
+%package      -n chainsaw
+Group:          Development/Tools/Navigators
+URL:            https://logging.apache.org/chainsaw/
+Summary:        Log Viewer GUI
+
+%description -n chainsaw
+A GUI-based Log viewer mainly for use with log4j.
+
+%package      -n logfactor5
+Group:          Development/Tools/Navigators
+Summary:        Log Viewer GUI
+
+%description -n logfactor5
+LogFactor5 is a Swing based GUI to view log4j logs.
 %endif
 
 %prep
@@ -148,13 +164,14 @@ install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{real}/log4j.pom
 %add_maven_depmap %{real}/log4j.pom %{real}/log4j.jar -v "1.2.17,1.2.16,1.2.15,1.2.14,1.2.13,1.2.12,12"
 
 %if %{without bootstrap}
+
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
 cp -a docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 rm -rf docs/api
 ln -s %{_javadocdir}/%{name} docs/api
-%endif
+
 # scripts
 mkdir -p %{buildroot}%{_bindir}
 install -p -m 755 %{SOURCE2} %{buildroot}%{_bindir}/logfactor5
@@ -169,17 +186,20 @@ cp -a %{SOURCE4} \
   %{buildroot}%{_datadir}/pixmaps/chainsaw.png
 cp -a %{SOURCE6} \
   %{buildroot}%{_datadir}/applications/jpackage-chainsaw.desktop
+# fix perl location
+perl -p -i -e 's|/opt/perl5/bin/perl|perl|' \
+contribs/KitchingSimon/udpserver.pl
+%suse_update_desktop_file jpackage-chainsaw Development Debugger
+%suse_update_desktop_file jpackage-logfactor5 Development Debugger
+
+%endif
+
 # DTD and the SGML catalog (XML catalog handled in scriptlets)
 mkdir -p %{buildroot}%{_datadir}/sgml/%{name}
 cp -a src/main/resources/org/apache/log4j/xml/log4j.dtd \
   %{buildroot}%{_datadir}/sgml/%{name}
 cp -a %{SOURCE7} \
   %{buildroot}%{_datadir}/sgml/%{name}/catalog
-# fix perl location
-perl -p -i -e 's|/opt/perl5/bin/perl|perl|' \
-contribs/KitchingSimon/udpserver.pl
-%suse_update_desktop_file jpackage-chainsaw Development Debugger
-%suse_update_desktop_file jpackage-logfactor5 Development Debugger
 
 %post
 # Note that we're using versioned catalog, so this is always ok.
@@ -213,10 +233,8 @@ fi
 %files -f .mfiles
 %license LICENSE
 %doc NOTICE
-%{_bindir}/*
 %{_javadir}/*
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+
 %{_datadir}/sgml/%{name}
 
 %if %{without bootstrap}
@@ -226,6 +244,16 @@ fi
 %files javadoc
 %dir %{_javadocdir}/%{name}
 %{_javadocdir}/%{name}/*
+
+%files -n chainsaw
+%{_bindir}/chainsaw
+%{_datadir}/applications/jpackage-chainsaw.desktop
+%{_datadir}/pixmaps/chainsaw.png
+
+%files -n logfactor5
+%{_bindir}/logfactor5
+%{_datadir}/applications/jpackage-logfactor5.desktop
+%{_datadir}/pixmaps/logfactor5.png
 %endif
 
 %changelog
