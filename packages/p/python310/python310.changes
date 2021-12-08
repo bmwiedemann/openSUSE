@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  8 13:07:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 3.10.1:
+  - PEP 623 – Deprecate and prepare for the removal of the wstr
+    member in PyUnicodeObject.
+  - PEP 604 – Allow writing union types as X | Y
+  - PEP 612 – Parameter Specification Variables
+  - PEP 626 – Precise line numbers for debugging and other tools.
+  - PEP 618 – Add Optional Length-Checking To zip.
+  - bpo-12782: Parenthesized context managers are now officially
+    allowed.
+  - PEP 632 – Deprecate distutils module.
+  - PEP 613 – Explicit Type Aliases
+  - PEP 634 – Structural Pattern Matching: Specification
+  - PEP 635 – Structural Pattern Matching: Motivation and
+    Rationale
+  - PEP 636 – Structural Pattern Matching: Tutorial
+  - PEP 644 – Require OpenSSL 1.1.1 or newer
+  - PEP 624 – Remove Py_UNICODE encoder APIs
+  - PEP 597 – Add optional EncodingWarning
+- Patches readjusted:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
 Sat Dec  4 18:40:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove pdb_adjust_breakpoints.patch and instead just adjust location
