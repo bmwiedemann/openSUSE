@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec  7 08:28:16 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.31.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Remove bogus python-PyYAML dependency from Requires (bsc#1193394)
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Nov  8 09:23:42 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
