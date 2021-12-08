@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  6 01:21:07 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix extent not found when initramfs contains shared extents (bsc#1190982)
+  * 0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch 
+
+-------------------------------------------------------------------
 Thu Nov 11 07:45:11 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix arm64 kernel image not aligned on 64k boundary (bsc#1192522)

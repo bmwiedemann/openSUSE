@@ -314,6 +314,7 @@ Patch796:       0001-disk-diskfilter-Use-nodes-in-logical-volume-s-segmen.patch
 Patch797:       0001-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
 Patch798:       0001-arm64-Fix-EFI-loader-kernel-image-allocation.patch
 Patch799:       0002-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
+Patch800:       0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
