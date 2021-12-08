@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec  3 14:30:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.5.0
+  * Added 'UIntEnum' as a value of the /BaseType/ enum annotation
+    to support enum.IntEnum types with unsigned values.
+  * The latest version of ABI v13 is v13.2.0.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Fri Oct 29 14:54:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.4.0
