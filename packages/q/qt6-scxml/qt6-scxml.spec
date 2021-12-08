@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -73,6 +73,7 @@ Summary:        Qt 6 Scxml library - Development files
 Requires:       libQt6Scxml6 = %{version}
 # ScxmlTools requires the scxmlc executable
 Requires:       %{name} = %{version}
+Requires:       cmake(Qt6Core)
 
 %description devel
 Development files for the Qt 6 Scxml library.
@@ -95,6 +96,8 @@ The Qt6 ScxmlQml library.
 %package -n qt6-scxmlqml-devel
 Summary:        Qt 6 ScxmlQml library - Development files
 Requires:       libQt6ScxmlQml6 = %{version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Scxml) = %{real_version}
 
 %description -n qt6-scxmlqml-devel
 Development files for the Qt 6 ScxmlQml library.
@@ -116,6 +119,7 @@ The Qt 6 StateMachine library.
 %package -n qt6-statemachine-devel
 Summary:        Qt 6 StateMachine library - Development files
 Requires:       libQt6StateMachine6 = %{version}
+Requires:       cmake(Qt6Gui)
 
 %description -n qt6-statemachine-devel
 Development files for the Qt 6 StateMachine library.
@@ -139,6 +143,8 @@ The Qt 6 StateMachineQml library.
 %package -n qt6-statemachineqml-devel
 Summary:        Qt 6 StateMachineQml library - Development files
 Requires:       libQt6StateMachineQml6 = %{version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6StateMachine)
 
 %description -n qt6-statemachineqml-devel
 Development files for the Qt 6 StateMachineQml library.
