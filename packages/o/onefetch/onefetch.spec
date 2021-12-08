@@ -20,7 +20,7 @@ Name:           onefetch
 Version:        2.10.2
 Release:        0
 Summary:        Git repository summary on your terminal
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 Group:          System/X11/Terminals
 URL:            https://github.com/o2sh/onefetch
 Source0:        https://github.com/o2sh/onefetch/archive/v%{version}.tar.gz

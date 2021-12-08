@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 04:02:48 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Mon Jul  5 07:34:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.10.2:
