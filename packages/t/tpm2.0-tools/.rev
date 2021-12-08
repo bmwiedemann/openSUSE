@@ -634,4 +634,12 @@ fix the offset of the read buffer (forwarded request 909201 from aplanas)</comme
   + 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch (forwarded request 926512 from aplanas)</comment>
     <requestid>926522</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ee0e76df27efcc85179cc94cb4b2af10</srcmd5>
+    <version>5.2</version>
+    <time>1638997729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936758</requestid>
+  </revision>
 </revisionlist>

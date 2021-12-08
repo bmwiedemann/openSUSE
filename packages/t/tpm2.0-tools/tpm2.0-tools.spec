@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with test
 Name:           tpm2.0-tools
 Version:        5.2
 Release:        0
@@ -33,7 +34,11 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
+BuildRequires:  pkgconfig
+BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  tpm2.0-abrmd-devel
 BuildRequires:  pkgconfig(efivar)
+Recommends:     tpm2.0-abrmd
 # Pandoc is used for generating the man pages, but since 3.0.4 prebuilt man
 # pages are shipped with the distribution tarball and we don't need to generate
 # them any more. Pandoc is only available on openSUSE (not 32-bit x86) and not
@@ -45,18 +50,16 @@ BuildRequires:  pandoc
 %endif
 %endif
 %endif
-BuildRequires:  pkgconfig
-BuildRequires:  tpm2-0-tss-devel
-BuildRequires:  tpm2.0-abrmd-devel
+%if %{with test}
 # requirements for unit test suite (configure --enable-unit)
 BuildRequires:  expect
 BuildRequires:  ibmswtpm2
 BuildRequires:  libcmocka-devel
-BuildRequires:  python38-pyaml
+BuildRequires:  python3-PyYAML
 BuildRequires:  tpm2.0-abrmd
 # for xxd, which is also required by the tests
 BuildRequires:  vim
-Recommends:     tpm2.0-abrmd
+%endif
 
 %description
 Trusted Computing is a set of specifications published by the Trusted
@@ -71,28 +74,30 @@ associated interfaces.
 %build
 # help configure find required executables for testing
 export PATH=$PATH:/usr/sbin:/usr/libexec/ibmtss
-%configure --disable-static --enable-unit
-make %{?_smp_mflags}
+%configure --disable-static \
+	   %{?with_test: --enable-unit}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%defattr(-,root,root)
 %doc doc/README.md doc/CHANGELOG.md
 %license doc/LICENSE
-/usr/bin/tpm2*
-/usr/bin/tss2*
+%{_bindir}/tpm2*
+%{_bindir}/tss2*
 %{_mandir}/man1/tpm2*
 %{_mandir}/man1/tss2*
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
 
+%if %{with test}
 # the test suite does not currently work, because it conflicts with our LTO
 # linking (see bsc#1188085).
-#%%check
-#make check
+%check
+%make_build check
+%endif
 
 %changelog
