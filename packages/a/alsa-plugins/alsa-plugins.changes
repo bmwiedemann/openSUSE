@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 15:02:33 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6:
+  Fixes for a52 plugin, jack, rate-lav.  For details, see URL:
+    https://alsa-project.org/wiki/Changes_v1.2.5.1_v1.2.6#alsa-plugins
+- Add *.sig file for the source tarball
+
+-------------------------------------------------------------------
 Mon May 31 11:48:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.2.5

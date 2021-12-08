@@ -23,14 +23,15 @@
 %endif
 
 Name:           alsa-plugins
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Extra Plug-Ins for ALSA Library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            https://www.alsa-project.org
+URL:            https://www.alsa-project.org
 Source:         https://www.alsa-project.org/files/pub/plugins/alsa-plugins-%{version}.tar.bz2
-Source1:        baselibs.conf
+Source1:        https://www.alsa-project.org/files/pub/plugins/alsa-plugins-%{version}.tar.bz2.sig
+Source2:        baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(alsa) >= 1.2.5
 %if %{build_aaf}
