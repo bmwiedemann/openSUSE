@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  8 08:15:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Add pkg-config/pkgconf support (primecount.pc).
+- Improved cache size detection on big.LITTLE CPUs.
+- Improved C/C++ API documentation (libprimecount.md).
+
+-------------------------------------------------------------------
 Mon Aug 16 03:20:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.1 (API & ABI are backwards compatible).
