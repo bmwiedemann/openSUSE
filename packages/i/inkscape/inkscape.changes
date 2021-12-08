@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec  3 09:25:34 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Enable RPATH in cmake (bsc#1193183, bsc#1193261).
+
+-------------------------------------------------------------------
 Tue Nov 30 19:02:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Ensure we download the same tarball every time. Also add sig and

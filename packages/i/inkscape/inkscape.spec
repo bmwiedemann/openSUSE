@@ -160,6 +160,7 @@ export CXX=g++-10
 %cmake \
   -GNinja \
   -DINKSCAPE_INSTALL_LIBDIR=%{_libdir} \
+  -DCMAKE_SKIP_RPATH:BOOL=OFF \
   -DWITH_MANPAGE_COMPRESSION=OFF \
   -DWITH_DBUS=ON \
   %{nil}
