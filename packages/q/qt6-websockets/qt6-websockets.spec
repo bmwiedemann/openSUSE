@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtwebsockets-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-websockets%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 WebSockets library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -35,6 +35,7 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-websockets-rpmlintrc
 BuildRequires:  qt6-core-private-devel
+BuildRequires:  qt6-network-private-devel
 BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -72,7 +73,6 @@ or both.
 %package devel
 Summary:        Qt 6 WebSockets library - Development files
 Requires:       libQt6WebSockets6 = %{version}
-Requires:       cmake(Qt6Core)
 Requires:       cmake(Qt6Network)
 
 %description devel
