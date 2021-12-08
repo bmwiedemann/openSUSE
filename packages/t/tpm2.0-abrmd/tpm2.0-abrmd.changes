@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:50:13 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Version 2.4.0
+  + remover syslog deprecation warning (bsc#1185154)
+  + cover update to 2.3.3 (jsc#SLE-17366)
+  + contains reload fix (bsc#1166936~
+  + fix tcti loading using short / long names (bsc#1159176)
+
+-------------------------------------------------------------------
+Mon Nov 29 12:54:02 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Warp selinux into a bcond
+
+-------------------------------------------------------------------
 Thu Nov 25 09:16:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
