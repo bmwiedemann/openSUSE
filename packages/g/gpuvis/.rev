@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31dcdf89a4c7461aec683eb68e77cbc4</srcmd5>
+    <version>20211124</version>
+    <time>1638997730</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain gpuvis in Factory. Gpuvis is a Linux GPU
+profiler. It is designed to work with trace-cmd captures
+and help track down Linux gpu and application performance
+issues. Gpuvis doesn't have releases but gets updated
+periodically from top of git tree.</comment>
+    <requestid>935236</requestid>
+  </revision>
+</revisionlist>
