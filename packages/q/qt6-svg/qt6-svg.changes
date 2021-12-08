@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  1 10:06:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+
+-------------------------------------------------------------------
 Tue Oct 26 11:22:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.1

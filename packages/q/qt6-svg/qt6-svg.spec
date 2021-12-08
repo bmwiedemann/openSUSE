@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -72,8 +72,6 @@ The Qt 6 SvgWidgets library.
 Summary:        Qt 6 SVG libraries - Development files
 Requires:       libQt6Svg6 = %{version}
 Requires:       libQt6SvgWidgets6 = %{version}
-# Dependencies are not detected
-Requires:       cmake(Qt6Core)
 Requires:       cmake(Qt6Gui)
 Requires:       cmake(Qt6Widgets)
 
