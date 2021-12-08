@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Try-Tiny
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Try-Tiny
-Version:        0.30
-Release:        0
 %define cpan_name Try-Tiny
+Name:           perl-Try-Tiny
+Version:        0.31
+Release:        0
 Summary:        Minimal try/catch with proper preservation of $@
 License:        MIT
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Try-Tiny/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -78,18 +76,18 @@ Note that adding a 'finally' block without a preceding 'catch' block
 suppresses any errors. This behaviour is consistent with using a standalone
 'eval', but it is not consistent with 'try'/'finally' patterns found in
 other programming languages, such as Java, Python, Javascript or C#. If you
-learnt the 'try'/'finally' pattern from one of these languages, watch out
+learned the 'try'/'finally' pattern from one of these languages, watch out
 for this.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -97,7 +95,7 @@ for this.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENCE README
+%doc Changes CONTRIBUTING README
+%license LICENCE
 
 %changelog

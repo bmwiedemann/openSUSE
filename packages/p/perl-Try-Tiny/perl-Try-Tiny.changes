@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 24 03:09:38 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Try-Tiny/Changes
+
+  0.31      2021-11-23 20:29:12Z
+    - plug Syntax::Keyword::Try and Feature::Compat::Try in the docs
+
+-------------------------------------------------------------------
 Tue Jan 23 07:18:07 UTC 2018 - coolo@suse.com
 
 - updated to 0.30
