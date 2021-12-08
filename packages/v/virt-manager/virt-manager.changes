@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 23 10:11:44 MST 2021 - carnold@suse.com
+
+- jsc#SLE-17735 - Support Oracle Linux as a guest VM. See also
+  bsc#1192238 [Build58.2][KVM] The latest supported OracleLinux as
+  guest versions are not included anywhere
+  virtinst-add-oracle-linux-support.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 16:09:36 MDT 2021 - carnold@suse.com
+
+- bsc#1188223 - L3: Sles12sp3 DomU won't boot after adding phys
+  hard drive
+  virtinst-xenbus-disk-index-fix.patch
+
+-------------------------------------------------------------------
+Tue Oct 26 07:20:07 MDT 2021 - carnold@suse.com
+
+- jsc#SLE-21540 Dev: Prefer UEFI when creating new virtual machines.
+  Add a preferences option to allow users to default to UEFI when
+  creating a new VM. Libvirt decides which firmware file to use.
+  virtman-add-firmware-preferences.patch
+- Renamed patch virtinst-modify-gui-defaults.patch to
+  virtman-modify-gui-defaults.patch
+
+-------------------------------------------------------------------
 Fri Oct 22 10:09:51 MDT 2021 - carnold@suse.com
 
 - Add dependency in spec file for python3-gobject-Gdk (bsc#1191705)

@@ -28,7 +28,7 @@ Index: virt-manager-3.2.0/virtinst/devices/disk.py
          skip_targets = [t for t in skip_targets if t and t.startswith(prefix)]
          skip_targets.sort()
  
-@@ -903,7 +914,12 @@ class DeviceDisk(Device):
+@@ -903,11 +914,18 @@ class DeviceDisk(Device):
              first_found = None
  
              for i in range(maxnode):
@@ -42,3 +42,9 @@ Index: virt-manager-3.2.0/virtinst/devices/disk.py
                  if gen_t in skip_targets:
                      skip_targets.remove(gen_t)
                      continue
+                 if not skip_targets:
++                    if first_found:
++                        return first_found
+                     return gen_t
+                 elif not first_found:
+                     first_found = gen_t

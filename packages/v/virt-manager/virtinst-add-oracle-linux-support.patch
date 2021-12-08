@@ -1,0 +1,37 @@
+References: bsc#1192238, jsc#SLE-17764
+
+--- virt-manager-3.2.0/virtinst/install/urldetect.py.orig	2021-11-23 15:06:47.451081946 -0700
++++ virt-manager-3.2.0/virtinst/install/urldetect.py	2021-11-23 15:07:43.539083283 -0700
+@@ -723,6 +723,24 @@ class _OESDistro(_SuseDistro):
+     famregex = ".*Open Enterprise Server.*"
+ 
+ 
++class _OLDistro(_DistroTree):
++    PRETTY_NAME = "Oracle Linux"
++    matching_distros = ["ol"]
++    _variant_prefix = "ol"
++
++    @classmethod
++    def is_valid(cls, cache):
++        famregex = ".*Oracle Linux.*"
++        if cache.treeinfo_family_regex(famregex):
++            return True
++
++    def _detect_version(self):
++        if self.cache.treeinfo_version:  # pragma: no cover
++            olname = self._variant_prefix + self.cache.treeinfo_version
++            if OSDB.lookup_os(olname):
++                return olname
++
++
+ class _DebianDistro(_DistroTree):
+     # ex. http://ftp.egr.msu.edu/debian/dists/sarge/main/installer-i386/
+     # daily builds: https://d-i.debian.org/daily-images/amd64/
+@@ -949,6 +967,7 @@ def _build_distro_list(osobj):
+         _FedoraDistro,
+         _RHELDistro,
+         _CentOSDistro,
++        _OLDistro,
+         _SLEDistro,
+         _SLESDistro,
+         _SLEHPCDistro,

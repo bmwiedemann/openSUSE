@@ -51,17 +51,18 @@ Patch76:        virtinst-set-qemu-emulator.patch
 # Features or Enhancements
 Patch103:       virtman-load-stored-uris.patch
 Patch104:       virtman-add-tooltip-to-firmware.patch
+Patch105:       virtman-modify-gui-defaults.patch
+Patch106:       virtman-add-firmware-preferences.patch
 Patch120:       virtinst-default-xen-to-qcow2-format.patch
 Patch121:       virtinst-detect-oes-distros.patch
-Patch122:       virtinst-modify-gui-defaults.patch
-Patch123:       virtinst-vol-default-nocow.patch
-Patch124:       virtinst-set-cache-mode-unsafe-for-install.patch
-Patch125:       virtinst-s390x-disable-graphics.patch
-Patch126:       virtinst-add-caasp-support.patch
-Patch127:       virtinst-add-sle15-detection-support.patch
-Patch128:       virtinst-add-pvh-support.patch
-Patch129:       virtinst-media-detection.patch
-Patch130:       virtinst-graphics-add-check-for-qemu-modules-in-spice-graphic.patch
+Patch122:       virtinst-vol-default-nocow.patch
+Patch123:       virtinst-set-cache-mode-unsafe-for-install.patch
+Patch124:       virtinst-s390x-disable-graphics.patch
+Patch125:       virtinst-add-caasp-support.patch
+Patch126:       virtinst-add-sle15-detection-support.patch
+Patch127:       virtinst-add-pvh-support.patch
+Patch128:       virtinst-media-detection.patch
+Patch129:       virtinst-graphics-add-check-for-qemu-modules-in-spice-graphic.patch
 # Bug Fixes
 Patch151:       virtman-increase-setKeepAlive-count.patch
 Patch152:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
@@ -88,6 +89,7 @@ Patch179:       virtinst-smbios-unsupported-for-xenpv.patch
 Patch180:       virtinst-keep-iso-for-xenpv.patch
 Patch181:       virtinst-add-slem-detection-support.patch
 Patch182:       virtinst-add-sle-hpc-support.patch
+Patch183:       virtinst-add-oracle-linux-support.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -185,6 +187,8 @@ machine).
 # Enhancements
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
+%patch106 -p1
 %patch120 -p1
 %patch121 -p1
 %patch122 -p1
@@ -195,7 +199,6 @@ machine).
 %patch127 -p1
 %patch128 -p1
 %patch129 -p1
-%patch130 -p1
 # Bug Fixes
 %patch151 -p1
 %patch152 -p1
@@ -222,6 +225,7 @@ machine).
 %patch180 -p1
 %patch181 -p1
 %patch182 -p1
+%patch183 -p1
 
 %build
 %if %{default_hvs}

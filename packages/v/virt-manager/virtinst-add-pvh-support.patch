@@ -5,7 +5,7 @@ Index: virt-manager-3.2.0/virtManager/createvm.py
 ===================================================================
 --- virt-manager-3.2.0.orig/virtManager/createvm.py
 +++ virt-manager-3.2.0/virtManager/createvm.py
-@@ -836,6 +836,9 @@ class vmmCreateVM(vmmGObjectUI):
+@@ -839,6 +839,9 @@ class vmmCreateVM(vmmGObjectUI):
                      break
              if label is None:
                  continue

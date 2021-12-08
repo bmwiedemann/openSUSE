@@ -1790,4 +1790,12 @@
     <comment>Fix for bsc#1191358 viewer disconnect problem and spec file dependency</comment>
     <requestid>927021</requestid>
   </revision>
+  <revision rev="227" vrev="13">
+    <srcmd5>9da6203ba006399e2336be5ba9686f36</srcmd5>
+    <version>3.2.0</version>
+    <time>1638997724</time>
+    <user>dimstar_suse</user>
+    <comment>A couple features and a fix for virt-manager</comment>
+    <requestid>936082</requestid>
+  </revision>
 </revisionlist>
