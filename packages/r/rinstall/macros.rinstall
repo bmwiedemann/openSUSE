@@ -1,0 +1,14 @@
+%rinstall() \
+%{shrink:\
+      %{_bindir}/rinstall \
+      --disable-uninstall \
+      --system \
+      --destdir=%{buildroot} \
+      --prefix=%{_prefix} \
+      --libdir=%{_libdir} \
+      --libexecdir=%{_libexecdir} \
+      --includedir=%{_includedir} \
+      --mandir=%{_mandir} \
+      --systemd-unitsdir=%{_unitdir} \
+      --yes
+}
