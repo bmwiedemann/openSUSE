@@ -17,7 +17,7 @@
 
 
 Name:           yast2-journal
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 URL:            https://github.com/yast/yast-journal
 Summary:        YaST2 - Reading of systemd journal
