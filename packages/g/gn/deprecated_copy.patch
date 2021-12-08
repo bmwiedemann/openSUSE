@@ -1,0 +1,74 @@
+GCC: fix deprecated copy warnings
+
+As of C++11, implicit generation of the copy assignment operator
+is declared as deprecated. This creates a lot of warnings with
+GCC.
+
+Change-Id: I9ed294924bba697e85df334d93b534713fb61c4a
+Reviewed-on: https://gn-review.googlesource.com/c/gn/+/12360
+Reviewed-by: Brett Wilson <brettw@chromium.org>
+Commit-Queue: Brett Wilson <brettw@chromium.org>
+diff --git a/AUTHORS b/AUTHORS
+index 2e9eb5a..755bfd4 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -40,6 +40,7 @@
+ Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+ Riku Voipio <riku.voipio@linaro.org>
+ Saikrishna Arcot <saiarcot895@gmail.com>
++Stephan Hartmann <stha09@googlemail.com>
+ Tim Niederhausen <tim@rnc-ag.de>
+ Tomas Popela <tomas.popela@gmail.com>
+ Tripta Gupta <tripta.g@samsung.com>
+diff --git a/src/gn/err.h b/src/gn/err.h
+index 6bd2f02..f9a7d76 100644
+--- a/src/gn/err.h
++++ b/src/gn/err.h
+@@ -59,6 +59,8 @@
+ 
+   ~Err();
+ 
++  Err& operator=(const Err&) = default;
++
+   bool has_error() const { return has_error_; }
+   const Location& location() const { return location_; }
+   const std::string& message() const { return message_; }
+diff --git a/src/gn/label_pattern.h b/src/gn/label_pattern.h
+index fbb11fa..7444ae2 100644
+--- a/src/gn/label_pattern.h
++++ b/src/gn/label_pattern.h
+@@ -35,6 +35,8 @@
+   LabelPattern(const LabelPattern& other);
+   ~LabelPattern();
+ 
++  LabelPattern& operator=(const LabelPattern&) = default;
++
+   // Converts the given input string to a pattern. This does special stuff
+   // to treat the pattern as a label. Sets the error on failure.
+   static LabelPattern GetPattern(const SourceDir& current_dir,
+diff --git a/src/gn/substitution_list.h b/src/gn/substitution_list.h
+index c1985bb..559b25d 100644
+--- a/src/gn/substitution_list.h
++++ b/src/gn/substitution_list.h
+@@ -17,6 +17,8 @@
+   SubstitutionList(const SubstitutionList& other);
+   ~SubstitutionList();
+ 
++  SubstitutionList& operator=(const SubstitutionList&) = default;
++
+   bool Parse(const Value& value, Err* err);
+   bool Parse(const std::vector<std::string>& values,
+              const ParseNode* origin,
+diff --git a/src/gn/substitution_pattern.h b/src/gn/substitution_pattern.h
+index f6ad22e..48f4eb7 100644
+--- a/src/gn/substitution_pattern.h
++++ b/src/gn/substitution_pattern.h
+@@ -37,6 +37,8 @@
+   SubstitutionPattern(const SubstitutionPattern& other);
+   ~SubstitutionPattern();
+ 
++  SubstitutionPattern& operator=(const SubstitutionPattern&) = default;
++
+   // Parses the given string and fills in the pattern. The pattern must only
+   // be initialized once. On failure, returns false and sets the error.
+   bool Parse(const Value& value, Err* err);

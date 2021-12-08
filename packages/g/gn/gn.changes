@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  5 15:41:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add deprecated_copy.patch: fix deprecated copy GCC warnings
+- Go back to GCC
+- Use newer libs and GCC on Leap 15.3 & 15.4
+
+-------------------------------------------------------------------
 Fri Sep 10 10:18:06 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix build with riscv64

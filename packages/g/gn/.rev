@@ -125,4 +125,12 @@
     <comment>riscv</comment>
     <requestid>917929</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e5fedd085fb5dff898981628339814ec</srcmd5>
+    <version>0.20210811</version>
+    <time>1638997705</time>
+    <user>dimstar_suse</user>
+    <comment>leap</comment>
+    <requestid>935807</requestid>
+  </revision>
 </revisionlist>

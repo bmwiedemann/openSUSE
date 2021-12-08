@@ -15,9 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%ifnarch riscv64
-%define with_lto 1
-%endif
 Name:           gn
 Version:        0.20210811
 Release:        0
@@ -25,12 +22,12 @@ Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  clang
-BuildRequires:  libstdc++-devel
-%ifnarch riscv64
-BuildRequires:  lld
+Patch0:         deprecated_copy.patch
+%if %{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
 %endif
-BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  python3-base
 
@@ -38,21 +35,22 @@ BuildRequires:  python3-base
 GN is a meta-build system that generates build files for Ninja.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
-export CXX=clang++
-export AR=llvm-ar
-export CXXFLAGS="${ARCH_FLAGS} -fPIE"
-export LDFLAGS="%{?with_lto:-fuse-ld=lld} -Wl,--build-id=sha1 -pie"
+%if 0%{?suse_version} < 1550
+export CXX=g++-10
+%else
+export CXX=g++
+%endif
+export AR=ar
+export CXXFLAGS="${ARCH_FLAGS}"
 # bootstrap
 python3 build/gen.py \
   --no-strip \
   --no-last-commit-position \
-  --no-static-libstdc++ \
-  %{?with_lto:--use-lto}
+  --no-static-libstdc++
 PV=%{version}
 cat >out/last_commit_position.h <<-EOF
 	#ifndef OUT_LAST_COMMIT_POSITION_H_
