@@ -17,14 +17,13 @@
 
 
 Name:           git-review
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Tool to submit code to Gerrit
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack-infra/git-review
 Source:         https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-Patch1:         https://opendev.org/opendev/git-review/commit/7182166ec00ad3645821435d72c5424b4629165f.patch
 BuildRequires:  fdupes
 # Note that this package is intentionally not using singlespec because
 # it is not a library but a plain CLI tool, and it doesn't make sense to
@@ -56,6 +55,7 @@ review.
 
 %install
 %python3_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
 # Can't be executed because it fetches java from web and launches own gerrit
