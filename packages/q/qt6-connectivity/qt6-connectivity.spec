@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -73,6 +73,8 @@ Requires:       libQt6Bluetooth6 = %{version}
 Requires:       libQt6Nfc6 = %{version}
 # sdoscanner in required by Qt6BluetoothToolsTargets.cmake
 Requires:       qt6-connectivity = %{version}
+Requires:       cmake(Qt6DBus)
+Requires:       cmake(Qt6Network)
 
 %description devel
 Development files for the Qt6 connectivity libraries.
