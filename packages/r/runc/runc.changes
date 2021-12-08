@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Dec  6 04:38:25 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.3. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.3. CVE-2021-43784
+
+  * A potential vulnerability was discovered in runc (related to an internal
+    usage of netlink), however upon further investigation we discovered that
+    while this bug was exploitable on the master branch of runc, no released
+    version of runc could be exploited using this bug. The exploit required
+    being able to create a netlink attribute with a length that would overflow a
+    uint16 but this was not possible in any released version of runc. For more
+    information see GHSA-v95c-p5hm-xq8f and CVE-2021-43784.
+
+    Due to an abundance of caution we decided to do an emergency release with
+    this fix, but to reiterate we do not believe this vulnerability was
+    possible to exploit. Thanks to Felix Wilhelm from Google Project Zero for
+    discovering and reporting this vulnerability so quickly.
+  * Fixed inability to start a container with read-write bind mount of a
+    read-only fuse host mount.
+  * Fixed inability to start when read-only /dev in set in spec.
+  * Fixed not removing sub-cgroups upon container delete, when rootless cgroup
+    v2 is used with older systemd.
+  * Fixed returning error from GetStats when hugetlb is unsupported (which
+    causes excessive logging for kubernetes).
+
+-------------------------------------------------------------------
 Mon Aug 23 09:35:05 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.2. Upstream changelog is available from
