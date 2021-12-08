@@ -96,4 +96,12 @@
   * 0001-qscrollarea-performance-fix.patch (forwarded request 929782 from cgiboudeaux)</comment>
     <requestid>929783</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2b0d2a36f81a25297b721c98ffc5d4b9</srcmd5>
+    <version>6.2.2</version>
+    <time>1638997737</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
+    <requestid>936301</requestid>
+  </revision>
 </revisionlist>

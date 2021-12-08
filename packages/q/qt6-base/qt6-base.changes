@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  1 10:05:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+- Drop 0001-qscrollarea-performance-fix.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Thu Nov  4 20:59:52 UTC 2021 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add patch for critical performance regression in qscrollarea
@@ -210,7 +219,7 @@ Tue Oct  6 19:41:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 - Add patches:
   * 0001-cmake-Fix-doc-installation.patch
   * 0001-cmake-Don-t-hardcode-the-library-directory-name.patch
-  
+
 -------------------------------------------------------------------
 Sun Sep 20 08:25:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 

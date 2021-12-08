@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -44,7 +44,6 @@ Patch100:       0001-Tell-the-truth-about-private-API.patch
 %if 0%{?suse_version} == 1500
 Patch101:       0001-Require-GCC-10.patch
 %endif
-Patch102:       0001-qscrollarea-performance-fix.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -292,6 +291,7 @@ the enablers found in the Qt GUI module.
 Summary:        Development files for the Qt 6 GUI libraries
 Requires:       libQt6Gui6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6DBus) = %{real_version}
 Requires:       pkgconfig(atspi-2)
 Requires:       pkgconfig(egl)
 Requires:       pkgconfig(libdrm)
@@ -312,6 +312,13 @@ Development files for the Qt 6 GUI libraries.
 Summary:        Non-ABI stable API for the Qt 6 GUI libraries
 Requires:       libQt6Gui6 = %{version}
 Requires:       qt6-core-private-devel = %{version}
+Requires:       qt6-kmssupport-private-devel = %{version}
+Requires:       qt6-opengl-private-devel = %{version}
+Requires:       cmake(Qt6DeviceDiscoverySupportPrivate) = %{real_version}
+Requires:       cmake(Qt6EglFSDeviceIntegrationPrivate) = %{real_version}
+Requires:       cmake(Qt6EglFsKmsSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6FbSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6InputSupportPrivate) = %{real_version}
 Requires:       pkgconfig(xkbcommon)
 
 %description -n qt6-gui-private-devel
@@ -398,8 +405,6 @@ buffer where the OpenGL API can be used to render the contents.
 %package -n qt6-openglwidgets-devel
 Summary:        Development files for the Qt 6 OpenGLWidgets library
 Requires:       libQt6OpenGLWidgets6 = %{version}
-Requires:       cmake(Qt6Core) = %{real_version}
-Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 %if 0%{?with_gles}
@@ -541,7 +546,6 @@ standards for XML.
 %package -n qt6-xml-devel
 Summary:        Development files for the Qt 6 XML library
 Requires:       libQt6Xml6 = %{version}
-Requires:       qt6-core-private-devel
 Requires:       cmake(Qt6Core) = %{real_version}
 
 %description -n qt6-xml-devel
@@ -572,8 +576,6 @@ This package contains common files used for building Qt documentation.
 Summary:        Qt KMSSupport module
 Requires:       qt6-core-private-devel = %{version}
 Requires:       qt6-gui-private-devel = %{version}
-Requires:       cmake(Qt6Core) = %{real_version}
-Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-kmssupport-devel-static
 Qt module to support Kernel Mode Setting.
@@ -588,9 +590,8 @@ ABI or API guarantees.
 
 %package -n qt6-platformsupport-devel-static
 Summary:        Qt PlatformSupport module
-Requires:       cmake(Qt6Core) = %{real_version}
-Requires:       cmake(Qt6DBus) = %{real_version}
-Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       qt6-core-private-devel = %{version}
+Requires:       qt6-gui-private-devel = %{version}
 Requires:       pkgconfig(atspi-2)
 Requires:       pkgconfig(egl)
 Requires:       pkgconfig(fontconfig)
@@ -612,8 +613,6 @@ Qt PlatformSupport module.
 
 %package -n qt6-platformsupport-private-devel
 Summary:        Non-ABI stable API for the  Qt6 PlatformSupport library
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
 Requires:       qt6-platformsupport-devel-static = %{version}
 
 %description -n qt6-platformsupport-private-devel
@@ -623,7 +622,7 @@ any ABI or API guarantees.
 ### Plugins ###
 
 %package -n qt6-networkinformation-nm
-Summary:        Network information  for QNetworkInformation
+Summary:        Network information for QNetworkInformation
 # Renamed in Qt 6.2
 Provides:       qt6-network-informationbackends = 6.2.0
 Obsoletes:      qt6-network-informationbackends < 6.2.0
@@ -748,6 +747,7 @@ EOF
     -DFEATURE_reduce_relocations:BOOL=OFF \
     -DFEATURE_relocatable:BOOL=OFF \
     -DFEATURE_system_sqlite:BOOL=ON \
+    -DFEATURE_system_xcb_xinput:BOOL=ON \
     -DINPUT_openssl:STRING=linked \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \
@@ -857,6 +857,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersion.cmake
+%{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersionImpl.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtBuildInternalsExtra.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake
