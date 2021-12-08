@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
@@ -87,6 +87,8 @@ The Qt 6 Multimedia library.
 %package devel
 Summary:        Qt 6 Multimedia library - Development files
 Requires:       libQt6Multimedia6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
 
 %description devel
 Development files for the Qt 6 Multimedia library.
@@ -108,6 +110,8 @@ The Qt 6 MultimediaWidgets library.
 %package -n qt6-multimediawidgets-devel
 Summary:        Qt 6 MultimediaWidgets library - Development files
 Requires:       libQt6MultimediaWidgets6 = %{version}
+Requires:       cmake(Qt6Multimedia) = %{real_version}
+Requires:       cmake(Qt6Widgets)
 
 %description -n qt6-multimediawidgets-devel
 Development files for the Qt 6 MultimediaWidgets library.
@@ -133,6 +137,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-multimediaquick-private-devel
 Summary:        Qt 6 MultimediaQuick library - Development files
 Requires:       libQt6MultimediaQuick6 = %{version}
+Requires:       qt6-multimedia-private-devel = %{version}
+Requires:       cmake(Qt6Quick)
 
 %description -n qt6-multimediaquick-private-devel
 Development files for the Qt 6 Multimedia private library.
