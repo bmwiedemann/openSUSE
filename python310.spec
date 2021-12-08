@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.10.0
+%define         folderversion 3.10.1
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -89,7 +89,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0

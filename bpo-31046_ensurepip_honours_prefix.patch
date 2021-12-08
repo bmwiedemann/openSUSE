@@ -139,7 +139,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1279,7 +1279,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+@@ -1278,7 +1278,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +148,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  altinstall: commoninstall
-@@ -1289,7 +1289,7 @@ altinstall: commoninstall
+@@ -1288,7 +1288,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
