@@ -38,7 +38,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack-python}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module scipy}
@@ -57,6 +56,8 @@ All Matlab functions and objects can be accessed from Python.
 %prep
 %setup -q -n Transplant-%{version}
 cp %{SOURCE99} .
+# https://github.com/bastibe/transplant/issues/97
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build

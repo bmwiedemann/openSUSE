@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  7 17:05:30 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it would not be needed
+  even if the testsuite run
+
+-------------------------------------------------------------------
 Wed Apr 21 02:56:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
