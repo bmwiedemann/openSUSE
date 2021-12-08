@@ -28,7 +28,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
+%if %{?suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig
 
 %description
@@ -75,6 +79,9 @@ you will need to install %{name}-devel.
 %autosetup -n %{name}-%{longver}
 
 %build
+%if 0%{?suse_version} < 1550
+export CXX=g++-10
+%endif
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2/-O3/g'`"
 export CXXFLAGS="${ARCH_FLAGS}"
 %make_build
@@ -86,6 +93,9 @@ export CXXFLAGS="${ARCH_FLAGS}"
 find %{buildroot} -name '*.a' -delete -print
 
 %check
+%if 0%{?suse_version} < 1550
+export CXX=g++-10
+%endif
 %make_build shared-testinstall DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
 
 %post -n %{libname} -p /sbin/ldconfig

@@ -353,4 +353,12 @@
     <comment>2021-11-01</comment>
     <requestid>929624</requestid>
   </revision>
+  <revision rev="42" vrev="43">
+    <srcmd5>b6bc22ae7cdec87c012efc6fcd2fdb82</srcmd5>
+    <version>MACRO</version>
+    <time>1638997704</time>
+    <user>dimstar_suse</user>
+    <comment>leap</comment>
+    <requestid>935804</requestid>
+  </revision>
 </revisionlist>
