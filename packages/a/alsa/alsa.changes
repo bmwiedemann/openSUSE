@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Dec  6 14:58:54 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6:
+  lots of changes, including UCM and config updates and rawmidi
+  framing mode support: for details, see below
+   https://www.alsa-project.org/wiki/Changes_v1.2.5.1_v1.2.6#alsa-lib
+- Add *.sig file for the source tarball
+
+-------------------------------------------------------------------
 Mon Jun 14 14:58:05 CEST 2021 - tiwai@suse.de
 
 - Update to version 1.2.5.1:

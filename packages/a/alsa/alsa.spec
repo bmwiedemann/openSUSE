@@ -32,13 +32,14 @@
 %endif
 
 Name:           alsa
-Version:        1.2.5.1
+Version:        1.2.6
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.alsa-project.org
 Source:         https://www.alsa-project.org/files/pub/lib/alsa-lib-%{version}.tar.bz2
+Source1:        https://www.alsa-project.org/files/pub/lib/alsa-lib-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 Source8:        40-alsa.rules
 Source11:       alsasound
