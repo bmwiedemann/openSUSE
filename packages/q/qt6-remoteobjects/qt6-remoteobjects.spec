@@ -16,13 +16,13 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-remoteobjects
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -56,6 +56,7 @@ The Qt 6 RemoteObjects library.
 Summary:        Qt 6 RemoteObjects library - Development files
 Requires:       libQt6RemoteObjects6 = %{version}
 Requires:       qt6-remoteobjects-tools = %{version}
+Requires:       cmake(Qt6Network)
 
 %description devel
 Development files for the Qt 6 RemoteObjects library.
@@ -77,6 +78,9 @@ The Qt 6 RemoteObjectsQml library.
 %package -n qt6-remoteobjectsqml-devel
 Summary:        Qt 6 RemoteObjectsQml library - Development files
 Requires:       libQt6RemoteObjectsQml6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6RemoteObjects) = %{real_version}
 
 %description -n qt6-remoteobjectsqml-devel
 Development files for the Qt 6 RemoteObjectsQml library.
