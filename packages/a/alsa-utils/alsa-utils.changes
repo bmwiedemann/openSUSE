@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  6 15:09:27 CET 2021 - tiwai@suse.de
+
+- Update to alsa-utils 1.2.6:
+  various updates / fixes for alsactl, amidi, alsaloop, alsamixer,
+  alsatplg, amixer, aplay and aseqnet.  Details are found in
+    https://alsa-project.org/wiki/Changes_v1.2.5.1_v1.2.6#alsa-utils
+- Update the download URL
+- Add *.sig file for the tarball
+
+-------------------------------------------------------------------
 Fri Oct 15 12:11:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

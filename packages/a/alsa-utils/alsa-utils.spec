@@ -19,15 +19,16 @@
 %define do_autoreconf 1
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
-Version:        1.2.5.1
+Version:        1.2.6
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://www.alsa-project.org/
-Source:         ftp://ftp.alsa-project.org/pub/utils/alsa-utils-%{version}.tar.bz2
-Source1:        01beep.conf
-Source2:        sound-extra.service
+Source:         https://www.alsa-project.org/files/pub/utils/alsa-utils-%{version}.tar.bz2
+Source1:        https://www.alsa-project.org/files/pub/utils/alsa-utils-%{version}.tar.bz2.sig
+Source2:        01beep.conf
+Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
@@ -108,7 +109,7 @@ rmdir --ignore-fail-on-non-empty -p %{buildroot}%{_mandir}/*/man* %{buildroot}%{
 ln -s alsa-restore.service %{buildroot}%{_unitdir}/alsasound.service
 mkdir -p %{buildroot}%{_localstatedir}/lib/alsa
 # systemd unit files
-install -c -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
+install -c -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}
 ln -s ../sound-extra.service %{buildroot}%{_unitdir}/sound.target.wants
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/scripts
 install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
