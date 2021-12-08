@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 12:06:30 UTC 2021 - peter czanik <peter@czanik.hu>
+
+- update to 3.35.1 
+- remove "news" user creation, as it is no more referenced
+  from the configuration file
+- packaging fixes to remove a few warnings
+
+-------------------------------------------------------------------
 Wed Jul 28 08:13:57 UTC 2021 - peter czanik <peter@czanik.hu>
 
 - update to 3.33.2 

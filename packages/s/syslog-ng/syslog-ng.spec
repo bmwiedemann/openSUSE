@@ -52,7 +52,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        3.33.2
+Version:        3.35.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -80,7 +80,6 @@ BuildRequires:  python3
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
 #!BuildIgnore:  rsyslog
-Requires:       libevtlog-3_33-0
 Requires(pre):  %fillup_prereq
 Requires(pre):  syslog-service >= 2.0
 Conflicts:      syslog
@@ -113,10 +112,6 @@ BuildRequires:  java-devel < 1.11
 %if %{with python}
 BuildRequires:  python3-devel
 %endif
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(news)
-Requires(pre):  user(news)
-%endif
 
 %description
 syslog-ng is an enhanced log daemon, supporting a wide range of input and
@@ -134,11 +129,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_33-0
+%package -n libevtlog-3_35-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_33-0
+%description -n libevtlog-3_35-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -216,6 +211,12 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Provides:       libevtlog-devel = 0.2.13
 Obsoletes:      libevtlog-devel <= 0.2.13
+Requires:       glib2-devel
+Requires:       glibc-devel
+Requires:       libcap-devel
+Requires:       libopenssl-1_1-devel
+Requires:       pcre-devel
+Requires:       systemd-devel
 
 %description devel
 This package provides files necessary for syslog-ng development.
@@ -453,8 +454,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_33-0 -p /sbin/ldconfig
-%postun -n libevtlog-3_33-0 -p /sbin/ldconfig
+%post -n libevtlog-3_35-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_35-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -585,6 +586,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_socket_plugin.so
 %attr(755,root,root) %{_libdir}/syslog-ng/loggen/libloggen_ssl_plugin.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libazure-auth-header.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libregexp-parser.so
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/README
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/nodejs/plugin.conf
@@ -626,7 +628,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/fortigate/fortigate.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_33-0
+%files -n libevtlog-3_35-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -669,10 +671,10 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_includedir}/syslog-ng
 %attr(-,root,root) %{_includedir}/syslog-ng/*
 %dir %{_datadir}/syslog-ng/tools
-%attr(755,root,root) %{_datadir}/syslog-ng/tools/merge-grammar.py
+%attr(644,root,root) %{_datadir}/syslog-ng/tools/merge-grammar.py
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/cfg-grammar.y
 %attr(644,root,root) %{_datadir}/syslog-ng/tools/lex-rules.am
-%attr(755,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
+%attr(644,root,root) %{_datadir}/syslog-ng/tools/system-expand.sh
 
 %if %{with python}
 %files python
