@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -71,6 +71,7 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-bodymovin-private-devel
 Summary:        Development files for the Qt 6 Bodymovin library
 Requires:       cmake(Qt6BodymovinPrivate) = %{real_version}
+Requires:       cmake(Qt6Gui)
 # Renamed in 6.2.0
 Provides:       qt6-bodymovin-devel = 6.2.0
 Obsoletes:      qt6-bodymovin-devel < 6.2.0
