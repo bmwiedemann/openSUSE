@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 3D Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -135,6 +135,9 @@ The Qt 6 3DCore library.
 %package -n qt6-3dcore-devel
 Summary:        Development files for the Qt 6 3DCore library
 Requires:       libQt63DCore6 = %{version}
+Requires:       cmake(Qt6Concurrent)
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
 
 %description -n qt6-3dcore-devel
 Development files for the Qt 6 3DCore library.
@@ -156,9 +159,10 @@ The Qt 6 3DExtras library.
 %package -n qt6-3dextras-devel
 Summary:        Development files for the Qt 6 3DExtras library
 Requires:       libQt63DExtras6 = %{version}
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DInput) = %{real_version}
+Requires:       cmake(Qt63DLogic) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
 
 %description -n qt6-3dextras-devel
 Development files for the Qt 6 3DExtras library.
@@ -180,6 +184,7 @@ The Qt 6 3DInput library.
 %package -n qt6-3dinput-devel
 Summary:        Development files for the Qt 6 3DInput library
 Requires:       libQt63DInput6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
 
 %description -n qt6-3dinput-devel
 Development files for the Qt 6 3DInput library.
@@ -201,6 +206,7 @@ The Qt 6 3DLogic library.
 %package -n qt6-3dlogic-devel
 Summary:        Development files for the Qt 6 3DLogic library
 Requires:       libQt63DLogic6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
 
 %description -n qt6-3dlogic-devel
 Development files for the Qt 6 3DLogic library.
@@ -222,6 +228,9 @@ The Qt 6 3DQuick library.
 %package -n qt6-3dquick-devel
 Summary:        Development files for the Qt 6 3DQuick library
 Requires:       libQt63DQuick6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Quick)
 
 %description -n qt6-3dquick-devel
 Development files for the Qt 6 3DQuick library.
@@ -243,6 +252,12 @@ The Qt 6 3DQuickAnimation library.
 %package -n qt6-3dquickanimation-devel
 Summary:        Development files for the Qt 6 3DQuickAnimation library
 Requires:       libQt63DQuickAnimation6 = %{version}
+Requires:       cmake(Qt63DAnimation) = %{real_version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
 
 %description -n qt6-3dquickanimation-devel
 Development files for the Qt 6 3DQuickAnimation library.
@@ -264,6 +279,13 @@ The Qt 6 3DQuickExtras library.
 %package -n qt6-3dquickextras-devel
 Summary:        Development files for the Qt 6 3DQuickExtras library
 Requires:       libQt63DQuickExtras6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DExtras) = %{real_version}
+Requires:       cmake(Qt63DInput) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
 
 %description -n qt6-3dquickextras-devel
 Development files for the Qt 6 3DQuickExtras library.
@@ -285,6 +307,10 @@ The Qt 6 3DQuickInput library.
 %package -n qt6-3dquickinput-devel
 Summary:        Development files for the Qt 6 3DQuickInput library
 Requires:       libQt63DQuickInput6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DInput) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
 
 %description -n qt6-3dquickinput-devel
 Development files for the Qt 6 3DQuickInput library.
@@ -306,6 +332,11 @@ The Qt 6 3DQuickRender library.
 %package -n qt6-3dquickrender-devel
 Summary:        Development files for the Qt 6 3DQuickRender library
 Requires:       libQt63DQuickRender6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
 
 %description -n qt6-3dquickrender-devel
 Development files for the Qt 6 3DQuickRender library.
@@ -327,6 +358,11 @@ The Qt 6 3DQuickScene2D library.
 %package -n qt6-3dquickscene2d-devel
 Summary:        Development files for the Qt 6 3DQuickScene2D library
 Requires:       libQt63DQuickScene2D6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DQuick) = %{real_version}
+Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
 
 %description -n qt6-3dquickscene2d-devel
 Development files for the Qt 6 3DQuickScene2D library.
@@ -348,6 +384,9 @@ The Qt 6 3DRender library.
 %package -n qt6-3drender-devel
 Summary:        Development files for the Qt 6 3DRender library
 Requires:       libQt63DRender6 = %{version}
+Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Concurrent)
+Requires:       cmake(Qt6OpenGL)
 
 %description -n qt6-3drender-devel
 Development files for the Qt 6 3DRender library.
