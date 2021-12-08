@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  python3-Sphinx
 %python_subpackages

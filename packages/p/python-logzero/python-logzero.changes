@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:05:45 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Wed Mar 17 12:43:09 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 1.6.5:
