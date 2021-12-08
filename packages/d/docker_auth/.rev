@@ -63,4 +63,23 @@
   * Add a Redis-based token storage implementation (#220)</comment>
     <requestid>906476</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0b7d474961ee191316d6627b0388f2d4</srcmd5>
+    <version>1.9.0+git20211128.636c09a</version>
+    <time>1638997770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0+git20211128.636c09a:
+  * Support Unix Domain Sockets (#328)
+  * Remove httpdown (#325)
+  * bugfix: Added sign-in link under gitlab page template (#323)
+  * Update helm to v1.8.0 of auth_server (#321)
+  * Added OpenID Connect support (#307)
+  * feat: Added Gitlab Authentication method (#319)
+  * update to golang 1.17
+  * Fix regexp parsing IPv6 without port indication in remote_addr (#318)
+  * Updated mongodb driver (#316)
+  * Add codeql scanning (#314)
+  * Update README.md (#312)</comment>
+    <requestid>936507</requestid>
+  </revision>
 </revisionlist>

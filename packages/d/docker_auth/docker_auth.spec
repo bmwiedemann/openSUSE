@@ -17,7 +17,7 @@
 
 
 Name:           docker_auth
-Version:        1.7.1+git20210707.946490c
+Version:        1.9.0+git20211128.636c09a
 Release:        0
 Summary:        Authenticaton for container registry with tokens
 License:        Apache-2.0

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec 08 12:35:09 UTC 2021 - kukuk@suse.com
+
+- Update to version 1.9.0+git20211128.636c09a:
+  * Support Unix Domain Sockets (#328)
+  * Remove httpdown (#325)
+  * bugfix: Added sign-in link under gitlab page template (#323)
+  * Update helm to v1.8.0 of auth_server (#321)
+  * Added OpenID Connect support (#307)
+  * feat: Added Gitlab Authentication method (#319)
+  * update to golang 1.17
+  * Fix regexp parsing IPv6 without port indication in remote_addr (#318)
+  * Updated mongodb driver (#316)
+  * Add codeql scanning (#314)
+  * Update README.md (#312)
+
+-------------------------------------------------------------------
 Thu Jul 15 07:27:02 UTC 2021 - kukuk@suse.com
 
 - Update to version 1.7.1+git20210707.946490c:
