@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:55:18 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add missing runtime requires for grimshot and the python tools in
+  sway-contrib
+
+-------------------------------------------------------------------
+Wed Dec  8 14:41:38 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- according to the changes entry ffmpeg and ImageMagick were only
+  needed for swaygrab and this no longer seems to be part of this
+  package. drop the unused requires as well.
+
+-------------------------------------------------------------------
 Fri Sep 24 04:26:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Change shebang of two Python scripts to /usr/bin/python3 

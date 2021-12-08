@@ -50,9 +50,8 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  python3-i3ipc
 Requires:       %{name}-branding
-Requires:       ImageMagick
-Requires:       ffmpeg
 %if 0%{?suse_version}
 # I definitely recommend Xwayland
 Recommends:     xorg-x11-server-wayland
@@ -78,8 +77,15 @@ This package provides the upstream look and feel for sway.
 %package contrib
 Summary:        Contributed scripts for %{name}
 Group:          System/GUI/Other
-BuildRequires:  python3-i3ipc
-
+# autoname-workspaces & inactive-windows-transparency
+Requires:       python3-i3ipc
+# for grimshot
+Requires:       grim
+Requires:       slurp
+Requires:       sway
+Requires:       wl-clipboard
+Requires:       jq
+Requires:       libnotify-tools
 %description contrib
 Contributed scripts from %{name} package.
 
