@@ -274,4 +274,29 @@
 </comment>
     <requestid>868784</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a50f1fcea2fd89b0855eb3bca8d63323</srcmd5>
+    <version>4.20.1</version>
+    <time>1638997760</time>
+    <user>dimstar_suse</user>
+    <comment>- i3 v4.20
+  * You can now use an “include” directive in your i3 config:
+    https://i3wm.org/docs/userguide.html#include
+  * You can now enable showing window icons in window titlebars:
+    https://i3wm.org/docs/userguide.html#title_window_icon
+- includes 4.20.1:
+  * i3bar: fix crash with multiple monitors
+  * xmlto: fix broken .TH line by extending title length
+  * i3-msg: fix --raw short form (-r) in manpage
+  * libi3: add missing sys/stat.h header
+  * use getcwd(NULL, 0) instead of GNU extension get_current_dir_name()
+- includes 4.19.2:
+  * fix release tarball version number and debug log settings
+- includes 4.19.1:
+  * fix workspaces not moving to assigned output after output becomes available
+  * fix duplicate bindcode after i3-config-wizard
+  * fix commented-out rofi call in default i3 config
+</comment>
+    <requestid>936385</requestid>
+  </revision>
 </revisionlist>
