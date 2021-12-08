@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec  4 03:12:56 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add 0002-susepaste-add-image-paste-info.patch: Add info on
+  posting an image to susepaste in the man page, (boo#1193400). 
+
+-------------------------------------------------------------------
 Tue Mar 31 17:24:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0001-susepaste-Fix-parsing-of-returned-Location-header.patch:
