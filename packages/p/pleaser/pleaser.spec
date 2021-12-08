@@ -21,8 +21,8 @@
 %global crate pleaser
 
 Name:           pleaser
-Version:        0.4.1~git0.11a9aa8
-Release:        1%{?dist}
+Version:        0.5.1~git0.ce9627c
+Release:        0%{?dist}
 Group:          Productivity/Security
 Summary:        Alternative to sudo (root command execution) with regex support
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND Apache-2.0 AND MIT AND GPL-3.0-or-later
@@ -30,6 +30,7 @@ URL:            https://gitlab.com/edneville/please/-/archive/v%{version}/please
 Source0:        please-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+Patch0:         please-0.5.1_fix_syslog.patch
 ExclusiveArch:  %{rust_arches}
 
 %if %{__cargo_skip_build}
@@ -55,7 +56,8 @@ elevation.
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 %prep
-%setup -qn please-%{version}
+%setup -qa1 -n please-%{version}
+%patch0 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
@@ -80,6 +82,9 @@ install -Dpm4755 -t %{buildroot}%{_bindir} target/release/please
 install -Dpm4755 -t %{buildroot}%{_bindir} target/release/pleaseedit
 install -Dpm0644 -t %{buildroot}%{_mandir}/man1 man/please.1
 install -Dpm0644 -t %{buildroot}%{_mandir}/man5 man/please.ini.5
+install -Dpm0600 -t %{buildroot}%{_sysconfdir}/ examples/please.ini
+
+mkdir -m 700 -p %{buildroot}%{_sysconfdir}/please.d
 
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 cat > %{buildroot}%{_sysconfdir}/pam.d/please << EOF
@@ -108,5 +113,7 @@ EOF
 %{_mandir}/man5/please.ini.5*
 %config(noreplace) %{_sysconfdir}/pam.d/please
 %config(noreplace) %{_sysconfdir}/pam.d/pleaseedit
+%config(noreplace) %{_sysconfdir}/please.ini
+%config(noreplace) %{_sysconfdir}/please.d
 
 %changelog

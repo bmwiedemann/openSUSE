@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 06 22:14:58 UTC 2021 - ed@s5h.net
+
+- Update to version 0.5.1~git0.ce9627c:
+  * please-0.5.1_fix_syslog.patch for syslog 6.0
+  * Documentation tidy
+  * Default edit mode of keep
+  * changelog note
+  * pleaseedit examples
+  * exact options
+  * Adding editmode=keep
+  * check should fail if handed a non-regular file
+  * Document control characters
+
+-------------------------------------------------------------------
 Fri Nov  5 02:56:27 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Enable cargo_audit
