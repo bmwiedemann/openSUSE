@@ -22556,7 +22556,6 @@ unsorted:
   - python36-email_validator 
   - python36-emoji 
   - python36-empy 
-  - python36-enaml 
   - python36-encore 
   - python36-entrypoint2 
   - python36-entrypoints 
@@ -30585,6 +30584,8 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
+  - qt5-creator 
+  - qt5-creator-plugin-devel 
   - qt5ct 
   - qt5integration 
   - qt6-3d-devel 
@@ -30646,6 +30647,8 @@ unsorted:
   - qt6-connectivity-private-devel 
   - qt6-core-devel 
   - qt6-core-private-devel 
+  - qt6-creator 
+  - qt6-creator-plugin-devel 
   - qt6-datavis3d-docs-html 
   - qt6-datavis3d-docs-qch 
   - qt6-datavis3d-examples 
