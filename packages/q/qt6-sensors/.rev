@@ -15,4 +15,12 @@
     <comment>Qt 6.2.1</comment>
     <requestid>928715</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>118487aa6f544e312803826d7d6ebcea</srcmd5>
+    <version>6.2.2</version>
+    <time>1638997748</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
+    <requestid>936317</requestid>
+  </revision>
 </revisionlist>

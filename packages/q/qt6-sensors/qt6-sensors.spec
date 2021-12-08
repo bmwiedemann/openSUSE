@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -75,6 +75,7 @@ The Qt 6 Sensors library.
 %package devel
 Summary:        Qt 6 Sensors library - Development files
 Requires:       libQt6Sensors6 = %{version}
+Requires:       cmake(Qt6Core)
 
 %description devel
 Development files for the Qt 6 Sensors library.
@@ -97,6 +98,8 @@ The Qt6 SensorsQuick library.
 %package -n qt6-sensorsquick-devel
 Summary:        Qt 6 SensorsQuick library - Development files
 Requires:       libQt6SensorsQuick6 = %{version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Sensors) = %{real_version}
 
 %description -n qt6-sensorsquick-devel
 Development files for the Qt 6 SensorsQuick library.
