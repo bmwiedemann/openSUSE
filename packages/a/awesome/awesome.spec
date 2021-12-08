@@ -1,7 +1,7 @@
 #
 # spec file for package awesome
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Configurable tiling and floating Window Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            https://awesomewm.org/
+URL:            https://awesomewm.org/
 Source:         https://github.com/awesomeWM/awesome-releases/raw/master/%{name}-%{version}.tar.xz
 Source1:        https://github.com/awesomeWM/awesome-releases/raw/master/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
@@ -71,6 +71,8 @@ Requires:       typelib(Pango)
 Requires:       typelib(PangoCairo)
 Requires:       typelib(cairo)
 Provides:       windowmanager
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 awesome is a dynamic window manager.
@@ -83,8 +85,8 @@ for the application in use and the task performed.
 Summary:        Upstream Branding for awesome
 Group:          System/GUI/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 
@@ -115,6 +117,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+rm %{buildroot}%{_docdir}/%{name}/LICENSE
+
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/awesome.desktop 20
@@ -136,6 +140,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %{_mandir}/man?/%{name}*.?%{?ext_man}
 %{_mandir}/*/man?/%{name}*.?%{?ext_man}
+%ghost %{_sysconfdir}/alternatives/default.desktop
 
 %files branding-upstream
 %license LICENSE

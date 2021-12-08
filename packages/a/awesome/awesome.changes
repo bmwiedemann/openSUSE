@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  8 12:34:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update awesome-branding-upstream metadata:
+  + do not use otherproviders() conflicts: the syntax is
+    deprecated.
+  + UUse booleandeps for supplements instead of packageand().
+- Add requires(post|postun): upate-alternatives. The scriplets call
+  u-a unconditionally, thus we need to ensure presence of
+  update-alternatives.
+- Properly %ghost-own /etc/alternatives/default.desktop.
+- Drop duplicate LICENSE in docdir: we have it in licensedir.
+
+-------------------------------------------------------------------
 Sat Jul 18 21:23:16 UTC 2020 - Brice DEKANY <brice.dekany@suse.com>
 
 - Added 001-extern-vars-declaration-fix-gcc10.patch: Move variable
