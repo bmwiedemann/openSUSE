@@ -56,6 +56,8 @@ documents.
 Summary:        Development files for cmark library
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}-%{release}
+# The CMake config files define a target for the executable.
+Requires:       %{name} = %{version}
 
 %description devel
 This package provides the development files for cmark.
