@@ -1,7 +1,7 @@
 #
 # spec file for package libserf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,17 @@ Summary:        High-Performance Asynchronous HTTP Client Library
 License:        Apache-2.0
 Group:          System/Libraries
 URL:            https://serf.apache.org/
-Source:         https://dist.apache.org/repos/dist/dev/serf/serf-%{version}.tar.bz2
-Source2:        https://dist.apache.org/repos/dist/dev/serf/serf-%{version}.tar.bz2.asc
-Source3:        https://people.apache.org/keys/group/serf.asc#/%{name}.keyring
+Source:         https://archive.apache.org/dist/serf/serf-%{version}.tar.bz2
+Source2:        https://archive.apache.org/dist/serf/serf-%{version}.tar.bz2.asc
+Source3:        %{name}.keyring
 # PATCH-FIX-UPSTREAM libserf-python3.patch
 # https://github.com/apache/serf/commit/d4de5a672d8c03b82ba70c1b737926bcf078f761
 Patch0:         libserf-python3.patch
 # PATCH-FIX-UPSTREAM libserf-python3-2.patch
 # http://svn.apache.org/viewvc?view=revision&revision=1814604
 Patch1:         libserf-python3-2.patch
+# PATCH-FIX-OPENSUSE: avoid removed macros
+Patch2:         openssl3.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  libapr-util1-devel >= %{minimum_apr_version}
@@ -89,9 +91,7 @@ read/write communication asynchronously. Memory copies and transformations are
 kept to a minimum to provide high performance operation.
 
 %prep
-%setup -q -n "serf-%{version}"
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n "serf-%{version}"
 
 %build
 scons \

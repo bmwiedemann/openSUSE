@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  6 15:53:16 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update Source links
+
+-------------------------------------------------------------------
+Mon Dec  6 14:15:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add openssl3.patch to avoid using removed functionality in an
+  irrelvant place 
+
+-------------------------------------------------------------------
 Mon Jun 15 11:48:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Autodetect krb5/mit prefix using krb5-config: prepare for future
