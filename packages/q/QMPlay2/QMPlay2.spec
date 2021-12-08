@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        21.06.07
+Version:        21.12.07
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -28,10 +28,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-switch-to-yt-dlp.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-fix-vulkan-instance-initialization.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
@@ -40,6 +36,7 @@ BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  shaderc
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
@@ -60,14 +57,18 @@ BuildRequires:  pkgconfig(libgme)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 BuildRequires:  pkgconfig(libpipewire-0.3)
 %endif
+BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libswresample) >= 3.1.100
 BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
+BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xv)
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
@@ -75,7 +76,7 @@ Requires(post): update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
-Recommends:     youtube-dl
+Recommends:     yt-dlp
 Requires:       python3
 
 %description
@@ -108,7 +109,8 @@ It's a development package for %{name}.
   -DUSE_GIT_VERSION=OFF \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
-  -DUSE_GLSLC=OFF \
+  -DUSE_GLSLC=ON \
+  -DUSE_PORTAUDIO=ON \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
   -DUSE_PIPEWIRE=ON \
 %else

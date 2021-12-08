@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Dec  7 21:41:49 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed Added 0001-fix-vulkan-instance-initialization.patch as it is merged upstream
+- Removed 0001-switch-to-yt-dlp.patch as it is merged upstream
+- Changed 0001-add-opensuse-customizations.patch to patch the new python command detection in QMPlay2 21.12.07 and higher
+- Enabled GLSLC and PortAudio features
+- Update to version 21.12.07
+   * fix possible crash on Windows when system audio settings was changed during playback,
+   * add option to set negative amplify if replay gain is not stored,
+   * insert URL from clipboard into add address dialog,
+   * add option to show YouTube related videos (ivbauer),
+   * fix some Vulkan problems and crashes,
+   * set VP9 YouTube codec as preferred,
+   * update zh_CN translation (zo-shin),
+   * add Slovak translation (jose1711),
+   * add Dutch translation (Vistaus),
+   * add zh_TW translation (lks-wu),
+   * replace youtube-dl by yt-dlp,
+   * minor PipeWire fixes.
+
+-------------------------------------------------------------------
 Mon Nov 29 10:08:48 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-vulkan-instance-initialization.patch to prevent an initialization error of QMPlay2's submodule QmVk when Tumbleweed updates vulkan to version 1.2.199 or higher
