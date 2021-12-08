@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:16:38 UTC 2021 - pgajdos@suse.com
+
+- version update to 202107.1047
+ - Fix type annotations with list arguments
+ - Fix type annotations with attribute access
+
+-------------------------------------------------------------------
 Wed Apr 28 11:25:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 202101.1045

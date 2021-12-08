@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lib3to6
-Version:        202101.1045
+Version:        202107.1047
 Release:        0
 Summary:        Module to compile Python 3.6+ code to Python 2.7+
 License:        MIT
