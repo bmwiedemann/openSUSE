@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  1 10:06:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+- Rebase rtc-dont-use-h264.patch
+
+-------------------------------------------------------------------
 Tue Oct 26 11:23:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.1

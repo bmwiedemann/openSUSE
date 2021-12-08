@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -94,6 +94,7 @@ BuildRequires:  qt6-quickwidgets-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  snappy-devel
 BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Designer)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6GuiTools)
 BuildRequires:  cmake(Qt6Network)
@@ -105,8 +106,11 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6QmlModels)
 BuildRequires:  cmake(Qt6QmlTools)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickTest)
+BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6WebChannel)
+BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6WidgetsTools)
 BuildRequires:  pkgconfig(alsa)
@@ -196,6 +200,8 @@ QML files and plugins from the Qt 6 Pdf module
 %package -n qt6-pdf-devel
 Summary:        Development files for the Qt 6 Pdf library
 Requires:       libQt6Pdf6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
 
 %description -n qt6-pdf-devel
 Development files for the Qt 6 Pdf library.
@@ -217,6 +223,10 @@ The Qt6 PdfQuick library.
 %package -n qt6-pdfquick-devel
 Summary:        Development files for the Qt 6 PdfQuick library
 Requires:       libQt6PdfQuick6 = %{version}
+Requires:       qt6-pdf-private-devel = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
+%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-pdfquick-devel
 Development files for the Qt 6 PdfQuick library.
@@ -238,6 +248,9 @@ The Qt6 PdfWidgets library.
 %package -n qt6-pdfwidgets-devel
 Summary:        Development files for the Qt 6 PdfWidgets library
 Requires:       libQt6PdfWidgets6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Pdf) = %{real_version}
+Requires:       cmake(Qt6Widgets)
 
 %description -n qt6-pdfwidgets-devel
 Development files for the Qt 6 PdfWidgets library.
@@ -260,6 +273,11 @@ The Qt6 WebEngineCore library.
 %package -n qt6-webenginecore-devel
 Summary:        Development files for the Qt 6 WebEngineCore library
 Requires:       libQt6WebEngineCore6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6WebChannel)
+Requires:       cmake(Qt6Positioning)
 
 %description -n qt6-webenginecore-devel
 Development files for the Qt 6 WebEngineCore library.
@@ -282,6 +300,8 @@ The Qt6 WebEngineQuick library.
 %package -n qt6-webenginequick-devel
 Summary:        Development files for the Qt 6 WebEngineQuick library
 Requires:       libQt6WebEngineQuick6 = %{version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6WebEngineCore) = %{real_version}
 
 %description -n qt6-webenginequick-devel
 Development files for the Qt 6 WebEngineQuick library.
@@ -303,6 +323,11 @@ The Qt6 WebEngineWidgets library.
 %package -n qt6-webenginewidgets-devel
 Summary:        Development files for the Qt 6 WebEngineWidgets library
 Requires:       libQt6WebEngineWidgets6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6PrintSupport)
+Requires:       cmake(Qt6QuickWidgets)
+Requires:       cmake(Qt6WebEngineCore)
+%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-webenginewidgets-devel
 Development files for the Qt 6 WebEngineWidgets library.
@@ -361,6 +386,7 @@ export NINJAFLAGS="%{?_smp_mflags}"
 %if %{no_flavor}
 
 # CMake files are not needed for plugins
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Designer/
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Gui/
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
@@ -381,9 +407,11 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %postun -n libQt6WebEngineWidgets6 -p /sbin/ldconfig
 
 %files
+%dir %{_qt6_pluginsdir}/designer
 %{_qt6_datadir}/resources/
 %{_qt6_translationsdir}/qtwebengine_locales/
 %{_qt6_libexecdir}/QtWebEngineProcess
+%{_qt6_pluginsdir}/designer/libqwebengineview.so
 
 %files imports
 %{_qt6_qmldir}/QtWebEngine/

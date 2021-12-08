@@ -15,18 +15,3 @@ index ca8acdbf259..36897a72aa8 100644
  
    # Enable this flag to make webrtc::Mutex be implemented by absl::Mutex.
    rtc_use_absl_mutex = false
-
-diff --git a/src/core/config/common.pri b/src/core/config/common.pri
-index d9d64e76..cd0fd120 100644
---- a/src/core/config/common.pri
-+++ b/src/core/config/common.pri
-@@ -26,9 +26,6 @@ qtConfig(webengine-webrtc) {
- 
- qtConfig(webengine-proprietary-codecs) {
-     gn_args += proprietary_codecs=true ffmpeg_branding=\"Chrome\"
--    qtConfig(webengine-webrtc) {
--        gn_args += rtc_use_h264=true
--    }
- } else {
-     gn_args += proprietary_codecs=false
- }
