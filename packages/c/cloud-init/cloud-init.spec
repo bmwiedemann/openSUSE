@@ -54,7 +54,6 @@ BuildRequires:  python3-configobj >= 5.0.2
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
 BuildRequires:  python3-mock
-BuildRequires:  python3-nose
 BuildRequires:  python3-oauthlib
 BuildRequires:  python3-pytest
 BuildRequires:  python3-requests
