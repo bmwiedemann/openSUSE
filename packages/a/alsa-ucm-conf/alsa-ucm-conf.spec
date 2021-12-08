@@ -17,14 +17,16 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.5.1
+Version:        1.2.6
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
+Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 BuildRequires:  fdupes
 BuildArch:      noarch
+Requires:       libasound2 >= %{version}
 
 %description
 This package contains the profiles files for ALSA UCM (Use Case Manager).

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  6 15:13:22 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6:
+  various profile updates.  See URL below for details:
+    https://alsa-project.org/wiki/Changes_v1.2.5.1_v1.2.6#alsa-ucm-conf
+- Add *.sig file for the tarball
+- Explicit Requires for the libasound2 with the same or newer
+  version
+
+-------------------------------------------------------------------
 Mon Jun 14 15:00:36 CEST 2021 - tiwai@suse.de
 
 - Update to version 1.2.5.1:
