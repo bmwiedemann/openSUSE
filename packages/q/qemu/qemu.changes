@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Dec  7 18:17:14 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+* Patches added (bsc#1186256):
+  qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+
+-------------------------------------------------------------------
+Mon Dec  6 14:22:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- cross-i386-binutils and cross-i386-gcc are not needed and were
+  dropped from Factory - boo#1193424
+
+-------------------------------------------------------------------
 Tue Oct 26 20:53:59 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - qemu: virtio-net: heap use-after-free in virtio_net_receive_rcu

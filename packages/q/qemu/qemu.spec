@@ -196,6 +196,7 @@ Patch00060:     virtio-mem-pci-Fix-memory-leak-when-crea.patch
 Patch00061:     vhost-vsock-fix-migration-issue-when-seq.patch
 Patch00062:     block-introduce-max_hw_iov-for-use-in-sc.patch
 Patch00063:     uas-add-stream-number-sanity-checks.patch
+Patch00064:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -256,8 +257,6 @@ BuildRequires:  brlapi-devel
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
-BuildRequires:  cross-i386-binutils
-BuildRequires:  cross-i386-gcc%gcc_version
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
@@ -1150,6 +1149,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch00061 -p1
 %patch00062 -p1
 %patch00063 -p1
+%patch00064 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

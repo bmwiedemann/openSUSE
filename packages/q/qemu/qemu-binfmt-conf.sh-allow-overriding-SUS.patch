@@ -1,0 +1,65 @@
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 19 May 2021 17:24:45 +0200
+Subject: qemu-binfmt-conf.sh: allow overriding SUSE-specific argv[0] handling
+
+Git-commit: 0000000000000000000000000000000000000000
+References: bsc#1186256
+
+Since abbc0ce ("qemu-binfmt-conf: use qemu-ARCH-binfmt"),
+qemu-binfmt-conf.sh automatically replaces the default qemu binfmt wrapper
+qemu-$ARCH with qemu-$ARCH-binfmt in order to ensure that argv[0] is
+preserved; qemu-$ARCH-binfmt is a link to qemu-binfmt, which is just a
+simple wrapper that mangles argv to achieve the desired result.
+
+This is inconvenient in some situations. In particular for running
+foreign-arch containers, it's useful to use the binfmt_misc "F" ("fix
+binary") flag to pre-load the qemu wrapper in the kernel. That way,
+foreign-arch containers can be run just like native containers, without
+having to bind-mount interpreters into the container. But that's impossible
+with the SUSE binfmt wrapper that needs to exec() a different (native)
+executable.
+
+As the qemu-binfmt-conf script supports the --qemu-suffix option anyway,
+use it to set the "-binfmt" suffix, thus allowing admins to override the
+SUSE default with the option "--qemu-suffix ''".
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+Acked-by: Jose R Ziviani <jose.ziviani@suse.com>
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ scripts/qemu-binfmt-conf.sh | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/qemu-binfmt-conf.sh b/scripts/qemu-binfmt-conf.sh
+index a73232edfd7f9dedb3a7c32218fb..93e2c7c83fded06c598b8e844464 100755
+--- a/scripts/qemu-binfmt-conf.sh
++++ b/scripts/qemu-binfmt-conf.sh
+@@ -185,6 +185,7 @@ Usage: qemu-binfmt-conf.sh [--qemu-path PATH][--debian][--systemd CPU]
+        --help:          display this usage
+        --qemu-path:     set path to qemu interpreter ($QEMU_PATH)
+        --qemu-suffix:   add a suffix to the default interpreter name
++                        (default: "-binfmt")
+        --debian:        don't write into /proc,
+                         instead generate update-binfmts templates
+        --systemd:       don't write into /proc,
+@@ -316,9 +317,9 @@ qemu_set_binfmts() {
+             continue
+         fi
+ 
+-        qemu="$QEMU_PATH/qemu-$cpu-binfmt"
++        qemu="$QEMU_PATH/qemu-$cpu"
+         if [ "$cpu" = "i486" ] ; then
+-            qemu="$QEMU_PATH/qemu-i386-binfmt"
++            qemu="$QEMU_PATH/qemu-i386"
+         fi
+ 
+         qemu="$qemu$QEMU_SUFFIX"
+@@ -338,7 +339,7 @@ QEMU_PATH=/usr/bin
+ CREDENTIAL=no
+ PERSISTENT=no
+ PRESERVE_ARG0=no
+-QEMU_SUFFIX=""
++QEMU_SUFFIX="-binfmt"
+ 
+ options=$(getopt -o ds:Q:S:e:hc:p:g:F: -l debian,systemd:,qemu-path:,qemu-suffix:,exportdir:,help,credential:,persistent:,preserve-argv0: -- "$@")
+ eval set -- "$options"

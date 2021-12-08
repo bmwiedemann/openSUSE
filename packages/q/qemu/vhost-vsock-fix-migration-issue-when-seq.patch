@@ -56,10 +56,7 @@ index 1b1a5c70eded006acf3cd142b6e6..dade0da03147705ede0180dc3039 100644
  {
      VHostVSockCommon *vvc = VHOST_VSOCK_COMMON(vdev);
 +    VHostVSock *vsock = VHOST_VSOCK(vdev);
- 
--    virtio_add_feature(&requested_features, VIRTIO_VSOCK_F_SEQPACKET);
--    return vhost_get_features(&vvc->vhost_dev, feature_bits,
--                                requested_features);
++
 +    if (vsock->seqpacket != ON_OFF_AUTO_OFF) {
 +        virtio_add_feature(&requested_features, VIRTIO_VSOCK_F_SEQPACKET);
 +    }
@@ -71,7 +68,10 @@ index 1b1a5c70eded006acf3cd142b6e6..dade0da03147705ede0180dc3039 100644
 +        !virtio_has_feature(requested_features, VIRTIO_VSOCK_F_SEQPACKET)) {
 +        error_setg(errp, "vhost-vsock backend doesn't support seqpacket");
 +    }
-+
+ 
+-    virtio_add_feature(&requested_features, VIRTIO_VSOCK_F_SEQPACKET);
+-    return vhost_get_features(&vvc->vhost_dev, feature_bits,
+-                                requested_features);
 +    return requested_features;
  }
  

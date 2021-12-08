@@ -172,8 +172,6 @@ BuildRequires:  brlapi-devel
 %if %{build_x86_firmware_from_source}
 %ifnarch %{ix86} x86_64
 # We must cross-compile on non-x86*
-BuildRequires:  cross-i386-binutils
-BuildRequires:  cross-i386-gcc%gcc_version
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
 %endif
