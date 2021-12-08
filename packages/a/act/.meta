@@ -1,0 +1,6 @@
+<package name="act" project="openSUSE:Factory">
+  <title></title>
+  <description>Run your GitHub Actions locally 🚀</description>
+  <devel project="devel:tools:scm" package="act"/>
+  <url>https://github.com/nektos/act</url>
+</package>

@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/nektos/act.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.2.25</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="filename">act</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="disabled" />
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

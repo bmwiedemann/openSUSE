@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sun Dec 05 10:41:36 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 0.2.25:
+  * feat: add option for docker image rebuild (#878)
+  * Don't interpolate joboutputs, before job is done (#894)
+  * Fix regex for GITHUB_ENV parsing (#893)
+  * Revert "feat: allow existing logger from context (#859)" (#890)
+  * docs: add brew installation from HEAD (#886)
+  * build(deps): bump github.com/go-ini/ini from 1.63.2 to 1.64.0 (#882)
+  * fix: fromJSON should work with any JSON (#883)
+  * fix: correctly unmarshal entrypoint (#876)
+  * fix: use docker lib for image ref parsing (#877)
+  * Fix github SSH regex for missing .git extension (#871)
+
+-------------------------------------------------------------------
+Sat Dec  4 02:05:55 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init act Package.
+
+Run your GitHub Actions locally. 🚀
+
+Current Release: v0.2.25
+Commit Hash: 8ad6c07083c7cd7f45ea9e0808e3297bf2370ab5
