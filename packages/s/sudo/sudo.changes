@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:27:51 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- update to 1.9.8p2
+  * Fixed a potential out-of-bounds read with "sudo -i" when the
+    target user's shell is bash.  This is a regression introduced
+    in sudo 1.9.8.  Bug #998.
+  * sudo_logsrvd now only sends a log ID for first command of a session.
+    There is no need to send the log ID for each sub-command.
+  * Fixed a few minor memory leaks in intercept mode.
+  * Fixed a problem with sudo_logsrvd in relay mode if "store_first"
+    was enabled when handling sub-commands.  A new zero-length journal
+    file was created for each sub-command instead of simply using
+    the existing journal file.
+
+- update to 1.9.8p1
+  * Fixed support for passing a prompt (sudo -p) or a login class
+    (sudo -l) on the command line.  This is a regression introduced
+    in sudo 1.9.8.  Bug #993.
+  * Fixed a crash with "sudo ALL" rules in the LDAP and SSSD back-ends.
+    This is a regression introduced in sudo 1.9.8.  Bug #994.
+  * Fixed a compilation error when the --enable-static-sudoers configure
+    option was specified.  This is a regression introduced in sudo
+    1.9.8 caused by a symbol clash with the intercept and log server
+    protobuf functions.
+  * It is now possible to transparently intercepting sub-commands
+    executed by the original command run via sudo.  Intercept support
+    is implemented using LD_PRELOAD (or the equivalent supported by
+    the system) and so has some limitations.  The two main limitations
+    are that only dynamic executables are supported and only the
+    execl, execle, execlp, execv, execve, execvp, and execvpe library
+    functions are currently intercepted. Its main use case is to
+    support restricting privileged shells run via sudo.
+    To support this, there is a new "intercept" Defaults setting and
+    an INTERCEPT command tag that can be used in sudoers.  For example:
+      Cmnd_Alias SHELLS=/bin/bash, /bin/sh, /bin/csh, /bin/ksh, /bin/zsh
+      Defaults!SHELLS intercept
+    would cause sudo to run the listed shells in intercept mode.
+    This can also be set on a per-rule basis.  For example:
+      Cmnd_Alias SHELLS=/bin/bash, /bin/sh, /bin/csh, /bin/ksh, /bin/zsh
+      chuck ALL = INTERCEPT: SHELLS
+    would only apply intercept mode to user "chuck" when running one
+    of the listed shells.
+    In intercept mode, sudo will not prompt for a password before
+    running a sub-command and will not allow a set-user-ID or
+    set-group-ID program to be run by default.  The new
+    intercept_authenticate and intercept_allow_setid sudoers settings
+    can be used to change this behavior.
+  * The new "log_subcmds" sudoers setting can be used to log additional
+    commands run in a privileged shell.  It uses the same mechanism as
+    the intercept support described above and has the same limitations.
+  * The new "log_exit_status" sudoers setting can be used to log
+    the exit status commands run via sudo.  This is also a corresponding
+    "log_exit" setting in the sudo_logsrvd.conf eventlog stanza.
+  * Support for logging sudo_logsrvd errors via syslog or to a file.
+    Previously, most sudo_logsrvd errors were only visible in the
+    debug log.
+  * Better diagnostics when there is a TLS certificate validation error.
+  * Using the "+=" or "-=" operators in a Defaults setting that takes
+    a string, not a list, now produces a warning from sudo and a
+    syntax error from inside visudo.
+  * Fixed a bug where the "iolog_mode" setting in sudoers and sudo_logsrvd
+    had no effect when creating I/O log parent directories if the I/O log
+    file name ended with the string "XXXXXX".
+  * Fixed a bug in the sudoers custom prompt code where the size
+    parameter that was passed to the strlcpy() function was incorrect.
+    No overflow was possible since the correct amount of memory was
+    already pre-allocated.
+  * The mksigname and mksiglist helper programs are now built with
+    the host compiler, not the target compiler, when cross-compiling.
+    Bug #989.
+  * Fixed compilation error when the --enable-static-sudoers configure
+    option was specified.  This was due to a typo introduced in sudo
+    1.9.7.  GitHub PR #113.
+
+- pack /usr/libexec/sudo/sudo/sudo_intercept.so
+
+-------------------------------------------------------------------
 Fri Jul 30 07:35:39 UTC 2021 - peter czanik <peter@czanik.hu>
 
 - update to 1.9.7p2 
@@ -46,6 +123,11 @@ Fri Jul 30 07:35:39 UTC 2021 - peter czanik <peter@czanik.hu>
    include/compat/nss_dbdefs.h and what HP-UX uses internally.  On
    HP-UX we now just cycle through groups the slow way using
    getgrent().  Bug #978.
+
+-------------------------------------------------------------------
+Mon Jul 12 16:39:24 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
+
+- Fix commented out "Defaults env_keep" in sudo-sudoers.patch
 
 -------------------------------------------------------------------
 Mon Jul 12 16:29:32 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>

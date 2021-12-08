@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.7p2
+Version:        1.9.8p2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -231,6 +231,7 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_libexecdir}/%{name}/%{name}/system_group.so
 %{_libexecdir}/%{name}/%{name}/audit_json.so
 %{_libexecdir}/%{name}/%{name}/sample_approval.so
+%{_libexecdir}/%{name}/%{name}/sudo_intercept.so
 %{_libexecdir}/%{name}/libsudo_util.so.*
 %attr(0711,root,root) %dir %ghost %{_localstatedir}/lib/%{name}
 %attr(0700,root,root) %dir %ghost %{_localstatedir}/lib/%{name}/ts

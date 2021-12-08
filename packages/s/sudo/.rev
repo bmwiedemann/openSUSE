@@ -1224,4 +1224,41 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
     <comment></comment>
     <requestid>912793</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>7f55aa65a258fb79c42711cae4a1ae16</srcmd5>
+    <version>1.9.8p2</version>
+    <time>1638997706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.8p2
+  * Fixed a potential out-of-bounds read with &quot;sudo -i&quot; when the
+    target user's shell is bash.  This is a regression introduced
+    in sudo 1.9.8.  Bug #998.
+  * sudo_logsrvd now only sends a log ID for first command of a session.
+    There is no need to send the log ID for each sub-command.
+  * Fixed a few minor memory leaks in intercept mode.
+  * Fixed a problem with sudo_logsrvd in relay mode if &quot;store_first&quot;
+    was enabled when handling sub-commands.  A new zero-length journal
+    file was created for each sub-command instead of simply using
+    the existing journal file.
+- update to 1.9.8p1
+  * Fixed support for passing a prompt (sudo -p) or a login class
+    (sudo -l) on the command line.  This is a regression introduced
+    in sudo 1.9.8.  Bug #993.
+  * Fixed a crash with &quot;sudo ALL&quot; rules in the LDAP and SSSD back-ends.
+    This is a regression introduced in sudo 1.9.8.  Bug #994.
+  * Fixed a compilation error when the --enable-static-sudoers configure
+    option was specified.  This is a regression introduced in sudo
+    1.9.8 caused by a symbol clash with the intercept and log server
+    protobuf functions.
+  * It is now possible to transparently intercepting sub-commands
+    executed by the original command run via sudo.  Intercept support
+    is implemented using LD_PRELOAD (or the equivalent supported by
+    the system) and so has some limitations.  The two main limitations
+    are that only dynamic executables are supported and only the
+    execl, execle, execlp, execv, execve, execvp, and execvpe library
+    functions are currently intercepted. Its main use case is to
+    support restricting privileged shells run via sudo.
+    To support this, there is a new &quot;intercept&quot; Defaults setting and</comment>
+    <requestid>935849</requestid>
+  </revision>
 </revisionlist>
