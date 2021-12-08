@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-twitter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,11 @@ Release:        0
 Summary:        A Python wrapper around the Twitter API
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/bear/python-twitter
+URL:            https://github.com/bear/python-twitter
 Source:         https://github.com/bear/python-twitter/archive/v%{version}.tar.gz
 # https://github.com/bear/python-twitter/commit/f7eb83d9dca3ba0ee93e629ba5322732f99a3a30
 # fix test for PostDirectMessage endpoint with new data
 Patch0:         python-python-twitter-fix-test.patch
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -67,6 +66,8 @@ which can be used using this library.
 %patch0 -p1
 sed -i -e '/^#!\/usr\/bin\/env/d' twitter/*.py
 echo %skip
+# https://github.com/bear/python-twitter/issues/703
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build
