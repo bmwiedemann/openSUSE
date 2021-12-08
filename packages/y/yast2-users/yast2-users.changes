@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  6 13:43:07 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Prepare code for ruby3 (bsc#1193192)
+- 4.4.10
+
+-------------------------------------------------------------------
 Tue Nov 30 20:40:58 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - AutoYaST: do not warning about deprecated <group_password>
