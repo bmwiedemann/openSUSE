@@ -508,4 +508,20 @@ source service setup which messed up my spec file.
     <comment>Use _udevrulesdir, fix log msg (forwarded request 930464 from mwilck)</comment>
     <requestid>930465</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>ac2450788d9f5e07493d0ad1cbea4bb7</srcmd5>
+    <version>16.0.16</version>
+    <time>1638997710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.16:
+  * modprobe.d: split conf files (jsc#SLE-21626, boo#1193059)
+    - Rather than shipping two large files with modprobe.d options
+      (00-system.conf and 50-blacklist.conf), ship multiple small
+      per-module files. This makes it easier for users to override
+      distribution defaults.
+  * blacklist isst_if_mbox_msr (bsc#1187196)
+  * boot-sysctl: make sure file exists (fix for containers)
+  * remove blacklist entry for snd_bt87x (bsc#1192974, bsc#51718) (forwarded request 935937 from mwilck)</comment>
+    <requestid>935939</requestid>
+  </revision>
 </revisionlist>

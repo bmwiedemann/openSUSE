@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:04:55 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.16:
+  * modprobe.d: split conf files (jsc#SLE-21626, boo#1193059)
+    - Rather than shipping two large files with modprobe.d options
+      (00-system.conf and 50-blacklist.conf), ship multiple small
+      per-module files. This makes it easier for users to override
+      distribution defaults.
+  * blacklist isst_if_mbox_msr (bsc#1187196)
+  * boot-sysctl: make sure file exists (fix for containers)
+  * remove blacklist entry for snd_bt87x (bsc#1192974, bsc#51718)
+
+-------------------------------------------------------------------
 Mon Nov 08 22:05:58 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.14:
