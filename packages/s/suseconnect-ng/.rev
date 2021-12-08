@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>916791</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c048f469a22a40a8b52af9c77139cb3</srcmd5>
+    <version>0.0.4~git0.64b80e9</version>
+    <time>1638997729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.4~git0.64b80e9, it now includes a library and ruby gem that can be used by yast-registration</comment>
+    <requestid>935011</requestid>
+  </revision>
 </revisionlist>

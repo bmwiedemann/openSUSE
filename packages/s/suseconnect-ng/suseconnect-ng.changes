@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Wed Dec 01 14:31:18 UTC 2021 - jan.suse@zerebecki.de
+
+- Update to version 0.0.4~git0.64b80e9:
+  * Makefile: also run tests under ./suseconnect
+  * Switch yast-test to upstream
+  * Removed examples leftover from the POC phase
+  * Add HA repo to get rubygem(ffi) before it's in the baseproduct
+  * Add versions and lib deps
+  * Post-review cleanup
+  * Package libsuseconnect and shim
+  * Align with yast-registration tests
+  * Fix SSLCertificate mixins
+  * Fix logger crash and restore mixin
+  * Removed TODO item handled separately
+  * Enable debug early
+  * Add package search for YaST's "Online Search"
+  * Clarify Repo fields
+  * Export UpdateSystem()
+  * Export SystemActivations()
+  * Add migration functions
+  * Fix handling of IsBase attribute
+  * Add missing JSONError
+  * Add list_installer_updates
+  * Add "update certificates"
+  * Add more specific errors
+  * Improved SSL error handling
+  * Init defaults for get_config()
+  * Improved debug logging
+  * Fix error scopes
+  * Fix ApiError interface
+  * Added DEFAULT_CREDENTIALS_DIR const
+  * get proxy credentials from curlrc
+  * Forward logs from Connect to YaST
+  * Separate Info logger
+  * Added more TODO items
+  * Simplify Config object init
+  * Map Repo and Config fields to JSON
+  * Add remaining fields listed in addon.rb
+  * Add product_type field to product
+  * First working yast part
+  * Add relative path support to credentials
+  * Add steps to test from yast
+  * Add yast create_credentials_file
+  * Add CreateCredentials() method
+  * Add yast credentials()
+  * Add yast announce_system - WIP
+  * Add MergeJSON method for Config
+  * Add readme for YaST integration
+  * Fix usage text
+  * Add missing -g argument
+  * Fix OBS CI, it now requires target
+  * Add manpage placeholder
+  * Simplify packageWanted()
+  * Add sorting and grouping options
+  * Add local repo search and duplicate removal
+  * Add basic online package search
+  * Update rpm spec for zypper-search-packages-plugin
+  * Add CLI for zypper search-packages plugin
+  * Optional base product in package search
+  * Use DefaultTransport defaults + client timeout
+  * Extract ReleaseType from zypper output
+  * Print failed command on zypper error like the Ruby
+  * Add package_search API wrapper
+  * Allow de-register/de-activate a single product
+  * Improve docstring for the Status struct
+  * Always show subscription information if available
+  * Refactor getStatuses() to ease testing
+  * Add SUMA/Uyuni check
+  * Fix status output order to follow zypper product xml
+  * Change GetExtensionsList() to reduce calls
+  * Add the subscription name to status output
+  * allow --instance-data together with --regcode
+  * Post-review cleanups
+  * Add selfupdate functionality
+  * Handle Leap -> SLES migration scenario
+  * Add offline migrations support
+  * Change parse error string and add block comment
+  * Add disabling of obsolete repos
+  * Add zypper repos listing
+  * Add interactive migration selection
+  * Allow loading Config from any path
+  * Remove dummy flag
+  * Add snapper support
+  * Add zypper backup/restore functions
+  * Use connect.StringSet
+  * Add --query option
+  * Add product and break-my-system options
+  * Add note on conflicting flags
+  * Check for flag contradictions
+  * Add echoing output of executed commands to console
+  * Move product printing out of checkProducts()
+  * Split --debug and --verbose
+  * Add zypper dist-upgrade part
+  * Split migration code
+  * Extract migration sorting
+  * Expose migration(Add|Remove)Service() functions
+  * Trap SIGINT/SIGTERM
+  * Add zypper.RefreshRepos()
+  * Expose client.upgradeProduct()
+  * Add --root parameter
+  * Add --migration N parameter
+  * Prepare available migrations
+  * Add API call to get online migration paths
+  * Add system products checking
+  * Add quiet logger for easier --quiet handling
+  * Add zypper migration plugin implementation.
+  * Export toTriplet and installReleasePackage
+  * Add basic string set implementation
+  * Remove quiet param from execute() and zypperRun()
+  * Simplify mocking of external commands
+
+-------------------------------------------------------------------
 Fri Aug 27 22:46:39 UTC 2021 - jzerebecki@suse.com
 
 - Update to version 0.0.3~git9.19e761b:

@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           suseconnect-ng
-Version:        0.0.3~git9.19e761b
+Version:        0.0.4~git0.64b80e9
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -30,11 +30,14 @@ Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
 BuildRequires:  go >= 1.16
 BuildRequires:  golang-packaging
+BuildRequires:  ruby-devel
 BuildRequires:  zypper
-Obsoletes:      SUSEConnect
-Provides:       SUSEConnect
-Obsoletes:      zypper-migration-plugin
-Provides:       zypper-migration-plugin
+Obsoletes:      SUSEConnect < 0.3.99
+Provides:       SUSEConnect = 0.3.99
+Obsoletes:      zypper-migration-plugin < 0.99
+Provides:       zypper-migration-plugin = 0.99
+Obsoletes:      zypper-search-packages-plugin < 0.99
+Provides:       zypper-search-packages-plugin = 0.99
 %if 0%{?fedora} || 0%{?rhel} || 0%{?centos_version}
 Requires:       ca-certificates
 %else
@@ -67,6 +70,25 @@ replaced SUSEConnect.
 %{go_nostrip}
 %{go_provides}
 
+%package -n libsuseconnect
+Summary:        C interface to suseconnect-ng.
+Group:          System/Management
+# the CLI is not used by libsuseconnect but it has the same dependencies and it's easier to keep one list above
+Requires:       suseconnect-ng
+
+%description -n libsuseconnect
+This package contains library which provides C interface to selected
+suseconnect-ng functions.
+
+%package -n suseconnect-ruby-bindings
+Summary:        Ruby bindings for libsuseconnect library.
+Group:          System/Management
+Requires:       libsuseconnect
+Requires:       rubygem(ffi)
+
+%description -n suseconnect-ruby-bindings
+This package provides bindings needed to use libsuseconnect from Ruby scripts.
+
 %prep
 %setup -q -n connect-ng-%{version}
 
@@ -77,30 +99,34 @@ echo %{version} > internal/connect/version.txt
 find %_builddir/..
 go list all
 %gobuild suseconnect
-# only to test that it compiles, nothing from it is installed for now
-make -C %_builddir/go/src/github.com/SUSE/connect-ng build-so-example
+mkdir -p %_builddir/go/lib
+go build -v -buildmode=c-shared -o %_builddir/go/lib/libsuseconnect.so %import_path/libsuseconnect
 find %_builddir/..
 
 %install
 %goinstall
 ln -s suseconnect %buildroot/%_bindir/SUSEConnect
-mkdir -p %buildroot/%_sbindir %buildroot/usr/lib/zypper/commands
-ln -s ../bin/suseconnect %buildroot/%_sbindir/SUSEConnect
+install -d -m0755 %buildroot/%_sbindir %buildroot/usr/lib/zypper/commands
+ln -s %_bindir/suseconnect %buildroot/%_sbindir/SUSEConnect
 ln -s %_bindir/suseconnect %buildroot/usr/lib/zypper/commands/zypper-migration
-#TODO package ruby module
-#cp /home/abuild/rpmbuild/BUILD/go/src/github.com/SUSE/connect-ng/ext/libsuseconnect.so %_libdir/libsuseconnect.so
+ln -s %_bindir/suseconnect %buildroot/usr/lib/zypper/commands/zypper-search-packages
+install -D -m0755 %_builddir/go/lib/libsuseconnect.so %buildroot/%_libdir/libsuseconnect.so
+install -d -m0755 %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
+cp -r %_builddir/go/src/%import_path/yast/lib/* %buildroot/%_libdir/ruby/vendor_ruby/%rb_ver
 #TODO man pages not yet available in source, these are the names frome the ruby version
 #/usr/share/man/man5/SUSEConnect.5.gz
 #/usr/share/man/man8/SUSEConnect.8.gz
 #/usr/share/man/man8/zypper-migration.8.gz
+#/usr/share/man/man8/zypper-search-packages.8.gz
 
 find %_builddir/..
 # we currently do not ship the source for any go module
 rm -rf %buildroot/usr/share/go
 
 %check
-%gotest github.com/SUSE/connect-ng/internal/connect
-make -C %_builddir/go/src/github.com/SUSE/connect-ng gofmt
+%gotest -v %import_path/internal/connect
+%gotest -v %import_path/suseconnect
+make -C %_builddir/go/src/%import_path gofmt
 
 %files
 %license LICENSE LICENSE.LGPL
@@ -109,5 +135,13 @@ make -C %_builddir/go/src/github.com/SUSE/connect-ng gofmt
 %_bindir/SUSEConnect
 %_sbindir/SUSEConnect
 /usr/lib/zypper/commands
+
+%files -n libsuseconnect
+%license LICENSE LICENSE.LGPL
+%_libdir/libsuseconnect.so
+
+%files -n suseconnect-ruby-bindings
+%doc yast/README.md
+%_libdir/ruby/vendor_ruby/%rb_ver/suse
 
 %changelog
