@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -28,8 +28,8 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(glib-2.0)
 Requires:       jpegoptim
 Requires:       libwebp-tools
 Requires:       optipng
