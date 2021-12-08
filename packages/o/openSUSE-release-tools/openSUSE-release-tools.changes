@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 08 13:34:02 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20211208.fda88d31:
+  * metrics: telegraf: Fix URL for openqa.opensuse.org after machines were moved to openSUSE internal network
+
+-------------------------------------------------------------------
 Wed Dec 01 07:17:16 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20211201.2f3a762b:
