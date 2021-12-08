@@ -107,4 +107,12 @@
     client to work.</comment>
     <requestid>892438</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2183a3e257ec7ff142766ad7fd1f555c</srcmd5>
+    <version>6.0.0</version>
+    <time>1638997719</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>936492</requestid>
+  </revision>
 </revisionlist>

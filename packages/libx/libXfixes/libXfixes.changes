@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 12:51:06 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 6.0 is needed for GNOME41, particularly the 
+  gnome-settings-daemon's new feature to disconnect from Xwayland
+  (JIRA #SLE-22829)
+
+-------------------------------------------------------------------
 Wed May 12 09:30:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 6.0.0
