@@ -18,14 +18,14 @@
 
 %define libname libfltk1_3
 Name:           fltk
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        C++ GUI Toolkit for the X Window System, OpenGL, and WIN32
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.fltk.org/
-Source:         https://fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.gz
-Source2:        baselibs.conf
+Source0:        https://www.fltk.org/pub/fltk/%{version}/fltk-%{version}-source.tar.bz2
+Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM fltk-1.3.4-fltk_config.patch tchvatal@suse.com -- obey libdir and other options in fltk-config taken from Fedora
 Patch0:         fltk-1.3.4-fltk_config.patch
 # PATCH-FIX-OPENSUSE fltk-1.3.2-verbose_build.patch reddwarf@opensuse.org -- Make the build verbose so the post build checks can verify the CFLAGS
