@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-or-later
@@ -69,6 +69,8 @@ The Qt 6 QuickTimeline library.
 %package devel
 Summary:        Qt 6 QuickTimeline library - Development files
 Requires:       libQt6QuickTimeline6 = %{version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Quick)
 
 %description devel
 Development files for the Qt 6 QuickTimeline library.
