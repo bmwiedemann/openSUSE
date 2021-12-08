@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -108,6 +108,7 @@ Summary:        Development files for the Qt 6 WaylandClient library
 Requires:       libQt6WaylandClient6 = %{version}
 # qtwaylandscanner is required
 Requires:       qt6-wayland = %{version}
+Requires:       cmake(Qt6Gui)
 
 %description -n qt6-waylandclient-devel
 Development files for the Qt6 WaylandClient library.
@@ -129,6 +130,10 @@ The Qt 6 WaylandCompositor library.
 %package -n qt6-waylandcompositor-devel
 Summary:        Development files for the Qt6 WaylandCompositor library
 Requires:       libQt6WaylandCompositor6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpenGL)
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Quick)
 
 %description -n qt6-waylandcompositor-devel
 Development files for the Qt6 WaylandCompositor library.
@@ -153,6 +158,9 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-waylandeglclienthwintegration-private-devel
 Summary:        Qt 6 WaylandEglClientHwIntegration library - Development files
 Requires:       libQt6WaylandEglClientHwIntegration6 = %{version}
+Requires:       qt6-waylandclient-private-devel = %{version}
+Requires:       cmake(Qt6Gui)
+%requires_eq    qt6-opengl-private-devel
 
 %description -n qt6-waylandeglclienthwintegration-private-devel
 Development files for the Qt 6 WaylandEglClientHwIntegration library.
@@ -168,6 +176,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-waylandeglcompositorhwintegration-private-devel
 Summary:        Qt 6 WaylandEglCompositorHwIntegration library - Development files
 Requires:       libQt6WaylandEglCompositorHwIntegration6 = %{version}
+Requires:       qt6-waylandcompositor-private-devel = %{version}
+Requires:       cmake(Qt6Gui)
 
 %description -n qt6-waylandeglcompositorhwintegration-private-devel
 Development files for the Qt 6 WaylandEglCompositorHwIntegration library.
@@ -183,6 +193,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-wlshellintegration-private-devel
 Summary:        Qt 6 WlShellIntegration library - Development files
 Requires:       libQt6WlShellIntegration6 = %{version}
+Requires:       qt6-waylandclient-private-devel = %{version}
+%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-wlshellintegration-private-devel
 Development files for the Qt 6 WlShellIntegration library.
