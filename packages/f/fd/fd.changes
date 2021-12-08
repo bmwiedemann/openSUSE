@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 29 08:09:38 UTC 2021 - sebix+novell.com@sebix.at
+
+- Update to version 8.3.0:
+  * Update usage section
+  * Bump version
+  * Update CHANGELOG for v8.3
+  * Update dependencies
+  * Use non-sync channel
+  * squash! Add buffering to stdout when it's not a terminal
+  * Add entry for buffering to CHANGELOG
+  * Add buffering to stdout when it's not a terminal
+  * Modify example to a realistic use case
+  * Add an example of the -X option using rg
+
+-------------------------------------------------------------------
 Tue Sep 28 01:46:53 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Replace rust-packaging with cargo-packaging
