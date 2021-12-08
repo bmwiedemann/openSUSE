@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.30.0
+Version:        2.31.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -76,7 +76,7 @@ Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 0.3.0
 Requires:       python3-azure-mgmt-cdn >= 11.0.0
-Requires:       python3-azure-mgmt-cognitiveservices >= 12.0.0
+Requires:       python3-azure-mgmt-cognitiveservices >= 13.0.0
 Requires:       python3-azure-mgmt-compute >= 23.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
@@ -98,7 +98,7 @@ Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
 Requires:       python3-azure-mgmt-iotcentral >= 9.0.0b1
 Requires:       python3-azure-mgmt-iothub >= 2.1.0
 Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.3.0
-Requires:       python3-azure-mgmt-keyvault >= 9.2.0
+Requires:       python3-azure-mgmt-keyvault >= 9.3.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
 Requires:       python3-azure-mgmt-loganalytics >= 11.0.0
 Requires:       python3-azure-mgmt-managedservices >= 1.0
@@ -109,7 +109,7 @@ Requires:       python3-azure-mgmt-media >= 7.0.0
 Requires:       python3-azure-mgmt-monitor >= 2.0.0
 Requires:       python3-azure-mgmt-msi >= 0.2
 Requires:       python3-azure-mgmt-netapp >= 4.0.0
-Requires:       python3-azure-mgmt-network >= 19.1.0
+Requires:       python3-azure-mgmt-network >= 19.3.0
 Requires:       python3-azure-mgmt-policyinsights >= 1.0.0
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.0.0
@@ -119,7 +119,7 @@ Requires:       python3-azure-mgmt-redhatopenshift >= 1.0.0
 Requires:       python3-azure-mgmt-redis >= 13.0.0
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 0.6.0
-Requires:       python3-azure-mgmt-resource >= 19.0.0
+Requires:       python3-azure-mgmt-resource >= 20.0.0
 Requires:       python3-azure-mgmt-search >= 8.0
 Requires:       python3-azure-mgmt-security >= 2.0.0b1
 Requires:       python3-azure-mgmt-servicebus >= 6.0.0
@@ -136,20 +136,21 @@ Requires:       python3-azure-mgmt-web >= 4.0.0
 Requires:       python3-azure-multiapi-storage >= 0.7.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.8.0
+Requires:       python3-azure-synapse-artifacts >= 0.9.0
 Requires:       python3-azure-synapse-managedprivateendpoints >= 0.3.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
 Requires:       python3-chardet >= 3.0.4
+Requires:       python3-colorama >= 0.4.4
 Requires:       python3-javaproperties >= 0.5.1
-Requires:       python3-jsondiff >= 1.2.0
+Requires:       python3-jsondiff >= 1.3.0
 Requires:       python3-packaging >= 20.9
 Requires:       python3-pydocumentdb >= 2.0.1
 Requires:       python3-pygments >= 2.4
-Requires:       python3-pytz >= 2019.1
 Requires:       python3-scp >= 0.13.2
 Requires:       python3-semver >= 2.13.0
 Requires:       python3-six >= 1.10.0
 Requires:       python3-sshtunnel >= 0.1.4
+Requires:       python3-urllib3
 Requires:       python3-websocket-client >= 0.56.0
 Requires:       python3-xmltodict >= 0.12
 Provides:       azure-cli-acr = 2.2.9
