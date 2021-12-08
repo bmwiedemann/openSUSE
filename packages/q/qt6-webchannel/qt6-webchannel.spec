@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
@@ -27,13 +27,14 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webchannel-rpmlintrc
+BuildRequires:  fdupes
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
@@ -43,7 +44,6 @@ BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  fdupes
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -71,8 +71,7 @@ The Qt 6 WebChannel library.
 %package devel
 Summary:        Qt 6 WebChannel library - Development files
 Requires:       libQt6WebChannel6 = %{version}
-Requires:       cmake(Qt6Core)
-Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6Qml)
 
 %description devel
 Development files for the Qt 6 WebChannel library
