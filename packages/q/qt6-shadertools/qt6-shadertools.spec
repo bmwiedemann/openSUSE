@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-or-later
@@ -59,6 +59,7 @@ Summary:        Qt 6 ShaderTools library - Development files
 Requires:       libQt6ShaderTools6 = %{version}
 # qsb is required
 Requires:       qt6-shadertools = %{version}
+Requires:       cmake(Qt6Gui)
 
 %description devel
 Development files for the Qt 6 ShaderTools library
