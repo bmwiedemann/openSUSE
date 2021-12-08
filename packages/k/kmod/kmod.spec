@@ -59,6 +59,10 @@ BuildRequires:  pkgconfig(zlib)
 Requires(post): coreutils
 Obsoletes:      kmod-compat < %version-%release
 Provides:       kmod-compat = %version-%release
+# kmod and libkmod have no dependency but we want to provide
+# same features across kmod provided tools and tools linking to libkmod
+Conflicts:      %lname < %version-%release
+Conflicts:      %lname > %version-%release
 Requires:       suse-module-tools
 Obsoletes:      module-init-tools < 3.16
 Provides:       module-init-tools = 3.16

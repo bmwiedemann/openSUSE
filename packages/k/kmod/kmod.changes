@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  6 11:00:57 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Ensure that kmod and packages linking to libkmod provide same features
+  (bsc#1193430).
+
+-------------------------------------------------------------------
 Thu Oct 28 07:38:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Enable ZSTD on 15.3 as well (boo#1192104).
