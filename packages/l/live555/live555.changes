@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:04:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.11.23:
+  * Updated the "RTSPServer::setTLSState()" function to take an optional
+    parameter "weServeSRTP".  For now, the default value of this parameter is
+    False, but it will get changed to True later, when we implement server-side
+    SRTP.
+  * Updated the RTSP server implementation to (optionally) support connections via TLS.
+  * Updated the "TLSState" interface and implementation to (1) reduce the
+    amount of stuff that the compiler gets to see if you're compiling with
+    NO_OPENSSL defined, and (2) add a new subclass "ServerTLSState" that
+    will eventually be used to implement optional TLS connections to our RTSP server. 
+  * Split the "TLSState" class into two classes: "TLSState" (an abstract base
+    class), and "ClientTLSState" (a subclass).  This is in preparation for later defining
+    second subclass "ServerTLSState" that will eventually be used to implement TLS connections
+    in our RTSP server.
+  * Updated the implementation of AES encryption/decryption (used by our client SRTP
+    implementation) to use the new OpenSSL EVP interface.  This makes it possible to
+    use hardware acceleration (e.g., AES-NI), when it is available.
+  * Updated the "RTSPClient"s implementation of receiving RTP/RTCP-over-TCP so
+    that it will also work over a RTSP-over-TLS (including RTSPS) connection.
+  * Fixed a bug in "MatroskaFileParser" that could cause delivery of data to a downstream object
+    that wasn't expecting it (potentially causing an invalid memory access).
+  * The final (I hope!) update to eliminate a "depends on uninitialised value"
+    report from 'valgrind'.
+
+-------------------------------------------------------------------
 Mon Aug 23 14:46:03 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2021.08.23:
