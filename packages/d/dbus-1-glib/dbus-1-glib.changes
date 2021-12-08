@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 08:11:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add relevant dbus-1-glib-<targettype> provides/obsoletes also in
+  baselibs.conf (boo#1193502).
+
+-------------------------------------------------------------------
 Wed Dec  1 19:47:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add signature and keyring as sources, verify tarball with gpg.
@@ -7,7 +13,7 @@ Wed Dec  1 19:47:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 Wed Nov 24 11:18:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.112:
-  + Dependencies: 
+  + Dependencies:
     - dbus 1.8 was already required, but is more strongly required
       now: the workarounds that were used to run continuous
       integration with dbus 1.6 on Ubuntu 14.04 'trusty' have been
