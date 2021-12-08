@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -68,6 +68,7 @@ Qt 6 OpcUa Client Library.
 %package devel
 Summary:        Qt 6 OpcUa library - Development files
 Requires:       libQt6OpcUa6 = %{version}
+Requires:       cmake(Qt6Network)
 
 %description devel
 Development files for the Qt 6 OpcUa library.
@@ -111,7 +112,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %postun -n libQt6OpcUa6 -p /sbin/ldconfig
 
 %files
-%{_qt6_pluginsdir}/opcua/
+%dir %{_qt6_pluginsdir}/opcua
+%{_qt6_pluginsdir}/opcua/libopen62541_backend.so
 
 %files -n libQt6OpcUa6
 %license LICENSE.*
