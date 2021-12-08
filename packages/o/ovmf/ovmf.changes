@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Dec  6 16:24:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- cross-i386-binutils and cross-i386-gcc have been dropped from
+  Factory, so use only cross-x86_64-* - boo#1193424
+
+-------------------------------------------------------------------
+Fri Dec  3 09:07:56 UTC 2021 - jlee@suse.com
+
+- Merge the difference from SLE for pushing back to SLE15-SP4
+    - Add/Update 50-xen-hvm-x86_64.json in descriptors.tar.xz
+	- Add the json descriptor for xen-hvm (bsc#1180050)
+	- Add "nvram-template" and change the firmware file to
+	  ovmf-x86_64-ms-4m.bin (bsc#1180050, bsc#1181264)
+    - The following patches in SLE are already in edk2-edk2-stable202108
+      in factory, so they will be removed from 15-SP4
+	- ovmf-bsc1177789-cryptopkg-fix-null-dereference.patch to fix
+          the potential NULL dereference in AuthenticodeVerify()
+          (bsc#1177789, CVE-2019-14584)
+		- 26442d11e620a9	edk2-stable202011~124
+	- ovmf-bsc1180079-amd-sev-es-mitigation.patch to mitigate the
+  	  potential AMD SEV-ES security issues
+	  (bsc#1180079)
+		- a91b700e385e74	edk2-stable202102~181
+	- ovmf-jscSLE-16075-SEV-ES-use-physical-address.patch as the
+  	  follow-up patch for SEV-ES to fix the flash writing
+  	  (jsc#SLE-16075)
+		- 3a3501862f7309	edk2-stable202102~105
+	- ovmf-bsc1183578-lzma-catch-4GB.patch to fix the possible
+  	  heap corruption
+	  (bsc#1183578, CVE-2021-28211)
+		- e7bd0dd26db7e5	edk2-stable202011~7
+	- ovmf-bsc1183579-fix-fv-recursion.patch to fix unlimited FV
+  	  recursion
+	  (bsc#1183579, CVE-2021-28210)
+		- b9bdfc72853fe9	edk2-stable202011~9
+	- Add ovmf-bsc1186151-fix-iscsi-overflows.patch to fix the possible
+	  overflows in IScsiDxe
+	  (bsc#1186151)
+		- 83761337ec91fb	edk2-stable202108-rc0~171
+
+-------------------------------------------------------------------
 Mon Nov  8 10:09:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update rpmlintrc (fixes aarch64 build)

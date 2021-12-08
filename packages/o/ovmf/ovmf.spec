@@ -77,8 +77,6 @@ BuildRequires:  cross-aarch64-binutils
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 %ifarch aarch64
-BuildRequires:  cross-i386-binutils
-BuildRequires:  cross-i386-gcc%{gcc_version}
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
@@ -271,7 +269,7 @@ source ./edksetup.sh
 ### Build x86 UEFI Images ###
 %ifnarch %{ix86} x86_64
 # Assign the cross-compiler prefix
-export ${TOOL_CHAIN}_BIN="i586-suse-linux-"
+export ${TOOL_CHAIN}_BIN="x86_64-suse-linux-"
 %endif
 build $BUILD_OPTIONS_X86
 
