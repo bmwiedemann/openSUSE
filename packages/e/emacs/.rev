@@ -1622,4 +1622,12 @@
 - Correct quoting of anonymous function calls</comment>
     <requestid>932549</requestid>
   </revision>
+  <revision rev="161" vrev="8">
+    <srcmd5>09b29bfa8dcc4c93bce2dd2c210762b9</srcmd5>
+    <version>27.2</version>
+    <time>1638997702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935770</requestid>
+  </revision>
 </revisionlist>

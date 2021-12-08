@@ -486,7 +486,7 @@ ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
 CFLAGS="$CFLAGS $SMALL -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
-make bootstrap V=1
+%make_build bootstrap
 make -C lisp/ updates compile V=1
 for i in $(find site-lisp/ -name '*.el'); do
     EMACSLOADPATH='' src/emacs -batch -q --no-site -f batch-byte-compile $i
@@ -496,13 +496,13 @@ cp src/emacs.pdmp emacs-nox.pdmp
 make distclean
 #
 CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
-make %{?_smp_mflags}
+%make_build
 cp src/emacs emacs-gtk
 cp src/emacs.pdmp emacs-gtk.pdmp
 make distclean
 #
 CFLAGS="$CFLAGS $LARGE -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
-make %{?_smp_mflags}
+%make_build
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
 

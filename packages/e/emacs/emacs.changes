@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 22 15:02:29 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build macro.
+
+-------------------------------------------------------------------
 Fri Nov 19 14:16:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Get rid of the old dbus shell code in the emacs shell script
