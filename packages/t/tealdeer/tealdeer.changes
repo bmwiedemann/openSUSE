@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  5 04:03:54 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
 Sat May  1 18:38:48 UTC 2021 - Jonathan Papineau <jonathan@jpapineau.ca>
 
 - Version 1.4.1
