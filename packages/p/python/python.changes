@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  6 13:48:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- build against openssl 1.1.x (incompatible with openssl 3.0x) for now 
+
+-------------------------------------------------------------------
 Fri Oct 15 08:17:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rpm-build-python: The provider to inject python(abi)

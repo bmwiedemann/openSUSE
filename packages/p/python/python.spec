@@ -131,7 +131,7 @@ BuildRequires:  libbz2-devel
 %if %{suse_version} >= 1500
 BuildRequires:  libnsl-devel
 %endif
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite-devel
