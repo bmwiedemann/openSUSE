@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  4 03:08:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000144
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000144  2021-12-03 13:17:19-08:00 America/Los_Angeles
+      - Add void context warning for dies and lives
+  0.000143  2021-12-01 11:20:03-08:00 America/Los_Angeles
+      - Add stringification option for custom compare checks
+
+-------------------------------------------------------------------
 Tue Nov 16 03:07:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000142
