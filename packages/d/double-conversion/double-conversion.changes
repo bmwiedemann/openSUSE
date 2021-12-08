@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec  5 18:57:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  * Features some code cleanups.
+  * Adds the following new architectures: loongarch, xtensa, nios2, e2k. 
+
+-------------------------------------------------------------------
 Thu Feb  6 16:01:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use proper cmake calls

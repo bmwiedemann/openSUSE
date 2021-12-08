@@ -85,4 +85,14 @@
     <comment>- extend changelog entry</comment>
     <requestid>776248</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6da7633e98a1ea8ec5f0539b3979a949</srcmd5>
+    <version>3.1.6</version>
+    <time>1638997711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * Features some code cleanups.
+  * Adds the following new architectures: loongarch, xtensa, nios2, e2k. (forwarded request 935845 from dirkmueller)</comment>
+    <requestid>935947</requestid>
+  </revision>
 </revisionlist>

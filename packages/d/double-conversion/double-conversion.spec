@@ -1,7 +1,7 @@
 #
 # spec file for package double-conversion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lib_ver 3
 %define libname libdouble-conversion3
 Name:           double-conversion
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Binary-decimal and decimal-binary routines for IEEE doubles
 License:        BSD-3-Clause
