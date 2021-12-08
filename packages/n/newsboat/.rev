@@ -797,4 +797,12 @@ run -osc service localrun format_spec_file to fix copyright
   * A crash when `next-unread` is invoked while viewing a tag with no</comment>
     <requestid>920840</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>183b1fd195668bb1a4164460a1bb7857</srcmd5>
+    <version>2.25</version>
+    <time>1638997761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936386</requestid>
+  </revision>
 </revisionlist>
