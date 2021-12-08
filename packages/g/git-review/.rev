@@ -192,4 +192,28 @@
     where the old option is no longer available.</comment>
     <requestid>935776</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0935f465262725cc4091c9feb8970412</srcmd5>
+    <version>2.2.0</version>
+    <time>1638997769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  - When checking for unstaged or uncommitted changes to avoid
+    performing a test rebase, unstaged and uncommitted changes in
+    Git submodules are now ignored since those won’t be rebased
+    anyway.
+  - git-review now handles the Git core.hooksPath configuration
+    option correctly. Thus, it installs the commit-msg hook
+    into the core.hooksPath directory, if that option is
+    set. Otherwise, it continues to install the hook into
+    .git/hooks, relative to the root of the checkout.
+  - With Git 2.18.0 and later, the --rebase-merges (-r) option
+    will be used in place of the deprecated --preserve-merges
+    (-p) option. This fixes a critical error when git-review is
+    used with Git versions 2.34.0 onward, where the old option is
+    no longer available.
+- Remove unnecessary
+  7182166ec00ad3645821435d72c5424b4629165f.patch</comment>
+    <requestid>936498</requestid>
+  </revision>
 </revisionlist>
