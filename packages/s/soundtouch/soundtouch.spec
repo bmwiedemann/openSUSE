@@ -18,13 +18,13 @@
 
 %define sover 1
 Name:           soundtouch
-Version:        2.2
+Version:        2.3.1
 Release:        0
 Summary:        Audio Processing Library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://www.surina.net/soundtouch
-Source:         https://gitlab.com/soundtouch/soundtouch/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://codeberg.org/soundtouch/soundtouch/archive/%{version}.tar.gz
 Source1:        https://salsa.debian.org/multimedia-team/soundtouch/raw/master/debian/soundstretch.1
 Source99:       baselibs.conf
 BuildRequires:  autoconf
@@ -70,7 +70,7 @@ This subpackage contains the header files for building programs with
 SoundTouch.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 dos2unix README.html
 
 %build

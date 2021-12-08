@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Dec  5 19:18:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Adjusted cmake build settings and header files that cmake installs
+  * Disable setting "SOUNDTOUCH_ALLOW_NONEXACT_SIMD_OPTIMIZATION" by default. The
+    original purpose of this setting was to avoid performance penalty due to
+    unaligned SIMD memory accesses in old CPUs, but that is not any more issue in
+    concurrent CPU SIMD implementations and having this setting enabled can cause
+    slight compromise in result quality.
+  * soundtouch.clear() to really clear whole processing pipeline state. Earlier
+    individual variables were left uncleared, which caused slightly different
+    result if the same audio stream were processed again after calling clear().
+  * TDstretch to align initial offset position to be in middle of correlation
+    search window. This ensures that with zero tempo change the output will be
+    same as input.
+  * Fix a bug in TDstrectch with too small initial skipFract value that
+    occurred with certain processing parameter settings: Replace assert with
+    assignment that corrects the situation.
+  * Remove OpenMP "_init_threading" workaround from Android build as it's not
+    needed with concurrent Android SDKs any more.
+
+-------------------------------------------------------------------
 Sun Jan 24 19:32:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
