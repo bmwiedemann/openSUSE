@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec 05 10:43:07 UTC 2021 - dmueller@suse.com
+
+- Update to version 0.25.8:
+  * release v0.25.8 (#1354)
+  * add logFile flag to change the default log file path (#1336)
+  * Support colors on Windows (#1312)
+
+-------------------------------------------------------------------
 Sun Nov 28 13:49:57 UTC 2021 - Lingchao Xin <douglarek@gmail.com>
 
 - Update to version 0.25.7:
