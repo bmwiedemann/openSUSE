@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sun Dec 05 11:42:32 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.21.1:
+  * fix debian packaging installer location
+  * auth login use OverridableDefault
+  * Login using default hostname string
+  * Move glinstance to pkg
+  * {go.mod,go.sum}: update dependencies
+  * api: fix wrong comment
+  * fix: error 404 when creating release
+  * Handle paginated response in pipeline.GetPipelineJobs
+  * Update ssh-key.go
+  * feat(cmdutils): Add group milestones to the prompt
+
+-------------------------------------------------------------------
+Sat Dec  4 16:39:53 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init glab Package
+
+An open-source GitLab command line tool bringing GitLab's cool features to your command line.
+
+Current Version: v1.21.1
+Commit Hash: 5cb2858d1fb7a5317e89259fc4ac135414e99be2
