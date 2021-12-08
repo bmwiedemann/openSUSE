@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
@@ -70,7 +70,10 @@ The Qt 6 Charts library.
 %package devel
 Summary:        Qt 6 Charts library - Development files
 Requires:       libQt6Charts6 = %{version}
-%requires_eq     qt6-core-private-devel
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6OpenGL)
+Requires:       cmake(Qt6OpenGLWidgets)
+Requires:       cmake(Qt6Widgets)
 
 %description devel
 Development files for the Qt 6 Charts library.
@@ -92,6 +95,9 @@ The Qt 6 ChartsQml library.
 %package -n qt6-chartsqml-devel
 Summary:        Qt 6 ChartsQml library - Development files
 Requires:       libQt6ChartsQml6 = %{version}
+Requires:       cmake(Qt6Charts) = %{real_version}
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Quick)
 
 %description -n qt6-chartsqml-devel
 Development files for the Qt 6 ChartsQml library.
