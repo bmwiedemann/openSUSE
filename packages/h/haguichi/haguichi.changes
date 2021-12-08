@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:37:45 UTC 2021 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.4.5
+  * Notifications are now send using GNotification instead of libnotify (fixes issue #47).
+  * Removed support for upstart to control the Hamachi service.
+  * Switch to show indicator is now disabled if there is no connection to a watcher.
+  * Now using the RDNN com.github.ztefn.haguichi as prefix for the indicator icons.
+  * Ported wingpanel indicator to version 3.
+  * Updated elementary stylesheet to target version 6.
+  * Updated Japanese and Russian translations.
+  * Other minor fixes and improvements.
+
+-------------------------------------------------------------------
 Wed Jun  9 13:07:34 UTC 2021 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.4.4

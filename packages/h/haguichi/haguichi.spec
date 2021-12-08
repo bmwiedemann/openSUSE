@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.30
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
-BuildRequires:  pkgconfig(libnotify) >= 0.7.6
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
