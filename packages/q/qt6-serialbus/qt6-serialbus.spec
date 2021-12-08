@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -63,6 +63,8 @@ and others.
 Summary:        Qt 6 SerialBus library - Development files
 Requires:       libQt6SerialBus6 = %{version}
 Requires:       %{name} = %{version}
+Requires:       cmake(Qt6Network)
+Requires:       cmake(Qt6SerialPort)
 
 %description devel
 Development files for the Qt 6 SerialBus library.
@@ -70,6 +72,7 @@ Development files for the Qt 6 SerialBus library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 SerialBus library
 Requires:       cmake(Qt6SerialBus) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6SerialBus that do not have any
