@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.2.1
+%define real_version 6.2.2
 %define short_version 6.2
 %define tar_name qtvirtualkeyboard-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-virtualkeyboard%{?pkg_suffix}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Framework for writing or integrating input methods and engines for Qt 6
 License:        GPL-3.0-only
@@ -73,14 +73,17 @@ as a widget, and to create SVG files using drawing commands.
 %package -n qt6-virtualkeyboard-devel
 Summary:        Qt 6 VirtualKeyboard library - Development files
 Requires:       libQt6VirtualKeyboard6 = %{version}
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Qml)
+Requires:       cmake(Qt6Quick)
 
 %description -n qt6-virtualkeyboard-devel
 Development files for the Qt 6 VirtualKeyboard library.
 
 %package -n qt6-virtualkeyboard-private-devel
 Summary:        Non-ABI stable API for the Qt 6 VirtualKeyboard library
-Requires:       qt6-core-private-devel
-Requires:       qt6-gui-private-devel
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 
 %description -n qt6-virtualkeyboard-private-devel
@@ -99,6 +102,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-hunspellinputmethod-private-devel
 Summary:        Development files for the Qt 6 HunspellInputMethod library
 Requires:       libQt6HunspellInputMethod6 = %{version}
+Requires:       qt6-virtualkeyboard-private-devel = %{version}
+Requires:       cmake(Qt6Gui)
 # Renamed in 6.2.0
 Provides:       qt6-hunspellinputmethod-devel = 6.2.0
 Obsoletes:      qt6-hunspellinputmethod-devel < 6.2.0
