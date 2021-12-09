@@ -324,6 +324,7 @@ unsorted:
   - acct 
   - ack 
   - acpi 
+  - act 
   - actkbd 
   - adaptx 
   - adaptx-doc 
@@ -1906,6 +1907,7 @@ unsorted:
   - chafa 
   - chafa-devel 
   - chafa-doc 
+  - chainsaw 
   - changelog-generator-data 
   - charliecloud 
   - charliecloud-doc 
@@ -3611,20 +3613,20 @@ unsorted:
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
-  - fftw3_3_3_9-gnu-hpc-devel 
-  - fftw3_3_3_9-gnu-hpc-devel-static 
-  - fftw3_3_3_9-gnu-mpich-hpc-devel 
-  - fftw3_3_3_9-gnu-mpich-hpc-devel-static 
-  - fftw3_3_3_9-gnu-mvapich2-hpc-devel 
-  - fftw3_3_3_9-gnu-mvapich2-hpc-devel-static 
-  - fftw3_3_3_9-gnu-openmpi1-hpc-devel 
-  - fftw3_3_3_9-gnu-openmpi1-hpc-devel-static 
-  - fftw3_3_3_9-gnu-openmpi2-hpc-devel 
-  - fftw3_3_3_9-gnu-openmpi2-hpc-devel-static 
-  - fftw3_3_3_9-gnu-openmpi3-hpc-devel 
-  - fftw3_3_3_9-gnu-openmpi3-hpc-devel-static 
-  - fftw3_3_3_9-gnu-openmpi4-hpc-devel 
-  - fftw3_3_3_9-gnu-openmpi4-hpc-devel-static 
+  - fftw3_3_3_10-gnu-hpc-devel 
+  - fftw3_3_3_10-gnu-hpc-devel-static 
+  - fftw3_3_3_10-gnu-mpich-hpc-devel 
+  - fftw3_3_3_10-gnu-mpich-hpc-devel-static 
+  - fftw3_3_3_10-gnu-mvapich2-hpc-devel 
+  - fftw3_3_3_10-gnu-mvapich2-hpc-devel-static 
+  - fftw3_3_3_10-gnu-openmpi1-hpc-devel 
+  - fftw3_3_3_10-gnu-openmpi1-hpc-devel-static 
+  - fftw3_3_3_10-gnu-openmpi2-hpc-devel 
+  - fftw3_3_3_10-gnu-openmpi2-hpc-devel-static 
+  - fftw3_3_3_10-gnu-openmpi3-hpc-devel 
+  - fftw3_3_3_10-gnu-openmpi3-hpc-devel-static 
+  - fftw3_3_3_10-gnu-openmpi4-hpc-devel 
+  - fftw3_3_3_10-gnu-openmpi4-hpc-devel-static 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -5589,6 +5591,11 @@ unsorted:
   - gkrellm-lang 
   - gkrellmd 
   - gl2ps-devel 
+  - glab 
+  - glab-bash-completion 
+  - glab-doc 
+  - glab-fish-completion 
+  - glab-zsh-completion 
   - glabels 
   - glabels-devel 
   - glabels-lang 
@@ -6101,6 +6108,7 @@ unsorted:
   - gptfdisk-fixparts 
   - gputils 
   - gputils-doc 
+  - gpuvis 
   - gpxsee 
   - gq 
   - gr-fcdproplus 
@@ -10451,7 +10459,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_33-0 
+  - libevtlog-3_35-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -10546,13 +10554,13 @@ unsorted:
   - libfftw3-gnu-openmpi2-hpc 
   - libfftw3-gnu-openmpi3-hpc 
   - libfftw3-gnu-openmpi4-hpc 
-  - libfftw3_3_3_9-gnu-hpc 
-  - libfftw3_3_3_9-gnu-mpich-hpc 
-  - libfftw3_3_3_9-gnu-mvapich2-hpc 
-  - libfftw3_3_3_9-gnu-openmpi1-hpc 
-  - libfftw3_3_3_9-gnu-openmpi2-hpc 
-  - libfftw3_3_3_9-gnu-openmpi3-hpc 
-  - libfftw3_3_3_9-gnu-openmpi4-hpc 
+  - libfftw3_3_3_10-gnu-hpc 
+  - libfftw3_3_3_10-gnu-mpich-hpc 
+  - libfftw3_3_3_10-gnu-mvapich2-hpc 
+  - libfftw3_3_3_10-gnu-openmpi1-hpc 
+  - libfftw3_3_3_10-gnu-openmpi2-hpc 
+  - libfftw3_3_3_10-gnu-openmpi3-hpc 
+  - libfftw3_3_3_10-gnu-openmpi4-hpc 
   - libfftw3_mpi3 
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
@@ -13847,6 +13855,7 @@ unsorted:
   - libsuperlu5-32bit: [x86_64] 
   - libsuperlu_5_3_0-gnu-hpc 
   - libsurgescript0_5_5 
+  - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
@@ -15057,6 +15066,7 @@ unsorted:
   - logback-examples 
   - logback-javadoc 
   - logdigest 
+  - logfactor5 
   - logstalgia 
   - logtail 
   - logtop 
@@ -23633,6 +23643,7 @@ unsorted:
   - python36-pytest5 
   - python36-python-afl 
   - python36-python-aiml 
+  - python36-python-akismet 
   - python36-python-args 
   - python36-python-barcode 
   - python36-python-bidi 
@@ -26554,6 +26565,7 @@ unsorted:
   - python38-pytest5 
   - python38-python-afl 
   - python38-python-aiml 
+  - python38-python-akismet 
   - python38-python-args 
   - python38-python-barcode 
   - python38-python-bidi 
@@ -29667,6 +29679,7 @@ unsorted:
   - python39-pytest5 
   - python39-python-afl 
   - python39-python-aiml 
+  - python39-python-akismet 
   - python39-python-args 
   - python39-python-barcode 
   - python39-python-bidi 
@@ -30746,7 +30759,12 @@ unsorted:
   - qt6-platformsupport-private-devel 
   - qt6-platformtheme-gtk3 
   - qt6-platformtheme-xdgdesktopportal 
+  - qt6-positioning 
   - qt6-positioning-devel 
+  - qt6-positioning-docs-html 
+  - qt6-positioning-docs-qch 
+  - qt6-positioning-examples 
+  - qt6-positioning-imports 
   - qt6-positioning-private-devel 
   - qt6-positioningquick-devel 
   - qt6-positioningquick-private-devel 
@@ -31194,6 +31212,7 @@ unsorted:
   - rime-schema-wubi 
   - rime-schema-wugniu 
   - rinetd 
+  - rinstall 
   - rinutils-devel 
   - ripgrep 
   - ripgrep-bash-completion 
@@ -32572,6 +32591,7 @@ unsorted:
   - suse-prime 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
+  - suseconnect-ruby-bindings 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 
