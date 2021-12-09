@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,21 @@
 
 
 %define libffi_sover 8
-
 Name:           libffi
-Version:        3.3.git30
+Version:        3.4.2
 Release:        0
 Summary:        Foreign Function Interface Library
 License:        MIT
 Group:          Development/Languages/C and C++
-URL:            https://github.com/libffi/
-Source:         %name-%version.tar.xz
+URL:            https://sourceware.org/libffi/
+Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
-# Workaround from https://github.com/libffi/libffi/issues/498
-Patch3:         aarch64.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc-c++
-BuildRequires:  libtool
-BuildRequires:  makeinfo
-BuildRequires:  pkg-config
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
+BuildRequires:  gcc-c++
+BuildRequires:  makeinfo
+BuildRequires:  pkgconfig
 
 %description
 The libffi library provides a portable, high level programming
@@ -46,24 +39,16 @@ interface to various calling conventions.  This allows a programmer to
 call any function specified by a call interface description at run
 time.
 
-
 %package devel
 Summary:        Include files for development with libffi
 Group:          Development/Languages/C and C++
 Requires:       libffi%{libffi_sover} = %{version}
-PreReq:         %{install_info_prereq}
 
 %description devel
 The libffi library provides a portable, high level programming
 interface to various calling conventions.  This allows a programmer to
 call any function specified by a call interface description at run
 time.
-
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/libffi.info.gz
-
-%preun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libffi.info.gz
 
 %package -n libffi%{libffi_sover}
 Summary:        Foreign Function Interface Library
@@ -80,37 +65,34 @@ time.
 
 %prep
 %setup -q
-%patch3 -p1
 
 %build
-./autogen.sh
-%configure
-make %{?_smp_mflags}
+# https://github.com/libffi/libffi/pull/647
+%configure --disable-exec-static-tramp
+%make_build
 
 %check
 # do not disable "make check", FIX THE BUGS!
-make %{?_smp_mflags} check
+%make_build check
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 # do not package the static library
 rm %{buildroot}%{_libdir}/libffi.a
 rm %{buildroot}%{_libdir}/libffi.la
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libffi.so
-%{_prefix}/include/ffi.h
-%{_prefix}/include/ffitarget.h
+%{_includedir}/ffi.h
+%{_includedir}/ffitarget.h
 %{_libdir}/pkgconfig/libffi.pc
-%doc %{_mandir}/man3/ffi.3.gz
-%doc %{_mandir}/man3/ffi_call.3.gz
-%doc %{_mandir}/man3/ffi_prep_cif.3.gz
-%doc %{_mandir}/man3/ffi_prep_cif_var.3.gz
-%doc %{_infodir}/libffi.info.gz
+%{_mandir}/man3/ffi.3%{?ext_man}
+%{_mandir}/man3/ffi_call.3%{?ext_man}
+%{_mandir}/man3/ffi_prep_cif.3%{?ext_man}
+%{_mandir}/man3/ffi_prep_cif_var.3%{?ext_man}
+%{_infodir}/libffi.info%{?ext_info}
 
 %files -n libffi%{libffi_sover}
-%defattr(-,root,root)
 %license LICENSE
 %{_libdir}/libffi.so.%{libffi_sover}*
 

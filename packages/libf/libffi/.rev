@@ -95,4 +95,12 @@
   GCC 9.3</comment>
     <requestid>783284</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e98e5386eebc17525dbeb399914c927</srcmd5>
+    <version>3.4.2</version>
+    <time>1639075491</time>
+    <user>dimstar_suse</user>
+    <comment>- disable static trampolines (bsc#1193272) (forwarded request 935016 from dirkmueller)</comment>
+    <requestid>935125</requestid>
+  </revision>
 </revisionlist>

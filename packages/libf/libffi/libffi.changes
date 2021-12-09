@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  1 15:44:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- disable static trampolines (bsc#1193272) 
+
+-------------------------------------------------------------------
+Fri Nov 26 21:41:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.2:
+  * Add static trampoline support for Linux on x86_64 and ARM64.
+  * Add support for Alibaba's CSKY architecture.
+  * Add support for Kalray's KVX architecture.
+  * Add support for Intel Control-flow Enforcement Technology (CET).
+  * Add support for ARM Pointer Authentication (PA).
+  * Fix 32-bit PPC regression.
+  * Fix MIPS soft-float problem.
+  * Enable tmpdir override with the $LIBFFI_TMPDIR environment variable.
+  * Enable compatibility with MSVC runtime stack checking.
+  * Reject float and small integer argument in ffi_prep_cif_var().
+  * Callers must promote these types themselves. 
+- drop aarch64.patch: fixed upstream differently
+- drop info dependency, uses file triggers now
+
+-------------------------------------------------------------------
 Tue Mar 10 09:57:24 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to commit b844a9c7f1ca based on libffi 3.3 with the
