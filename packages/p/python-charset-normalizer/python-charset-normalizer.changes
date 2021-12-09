@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 20:08:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * Moderating the logging impact (since 2.0.8) for specific
+    environments
+  * Wrong logging level applied when setting kwarg `explain` to True 
+
+-------------------------------------------------------------------
 Mon Nov 29 11:14:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.8:

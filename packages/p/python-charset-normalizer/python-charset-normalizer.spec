@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
