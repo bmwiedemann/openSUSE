@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:49:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.5.1
+  0.5.1
+  -----
+  * Cleanup tox.ini, make pytest-runner req optional
+  0.5.0
+  -----
+  * Add new method: find\_element
+  * Improve messages for MissingRequiredItem exception
+  * Fix git URLs for review.rdoproject.org
+  0.4.0
+  -----
+  * Add function to compare attributes between commits
+  * Fix integration tests
+  * Update project contact
+  * Fix CI jobs
+
+-------------------------------------------------------------------
 Thu May 28 03:28:14 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.3.2:
