@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 29 00:17:07 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+-------------------------------------------------------------------
 Wed Nov 17 09:49:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.9.9:
@@ -86,6 +96,12 @@ Wed Nov 17 09:49:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
     + bpo-44687: BufferedReader.peek() no longer raises ValueError when the entire file has already been buffered.
     + bpo-44751: Remove crypt.h include from the public Python.h header.
 - Drop patch incorrect-deprecation-warn-asyncio.patch, fix included.
+
+-------------------------------------------------------------------
+Sat Nov  6 13:45:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- rpm-build-python dependency is available on the current
+  Factory, not with SLE.
 
 -------------------------------------------------------------------
 Sat Oct 30 12:37:34 UTC 2021 - Matej Cepl <mcepl@suse.com>

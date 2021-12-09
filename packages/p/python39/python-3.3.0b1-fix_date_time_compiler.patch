@@ -4,7 +4,7 @@
 
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -782,11 +782,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+@@ -781,11 +781,18 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
  		$(DTRACE_OBJS) \
  		$(srcdir)/Modules/getbuildinfo.c
  	$(CC) -c $(PY_CORE_CFLAGS) \

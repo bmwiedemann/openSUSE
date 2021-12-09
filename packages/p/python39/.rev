@@ -389,4 +389,20 @@
     + bpo-41710: On Unix, if the sem_clockwait() function is available in the C library (glibc 2.30 and newer), the threading.Lock.acquire() method now uses the monotonic clock (time.CLOCK_MONOTONIC) for the timeout, rather than using the system clock (time.CLOCK_REALTIME), to not be affected by system clock changes. Patch by Victor Stinner.</comment>
     <requestid>931924</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>201b1f1cf111e6b890cc634ddde6b3dc</srcmd5>
+    <version>3.9.9</version>
+    <time>1639075504</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove shebangs from from python-base libraries in _libdir
+  (bsc#1193179).
+- Readjust patches:
+  - bpo-31046_ensurepip_honours_prefix.patch
+  - decimal.patch
+  - python-3.3.0b1-fix_date_time_compiler.patch
+
+- rpm-build-python dependency is available on the current
+  Factory, not with SLE.</comment>
+    <requestid>934643</requestid>
+  </revision>
 </revisionlist>
