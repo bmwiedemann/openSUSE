@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 29 15:44:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21:
+  - Much improved support for C11 (multiple PRs)
+  - Support for parehthesized compount statements (#423)
+  - Support for modern Python versions (3.9 and 3.10)
+  - Fix support for structs with nested enums (#387)
+  - Multiple small bug fixes
+ 
+-------------------------------------------------------------------
 Mon Mar  9 20:59:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.20:

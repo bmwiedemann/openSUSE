@@ -121,4 +121,17 @@
     - #363: Fix incorrect AST when parsing offsetof.</comment>
     <requestid>783100</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>56adc8e32ba9721c259fe30f0ad60654</srcmd5>
+    <version>2.21</version>
+    <time>1639075503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.21:
+  - Much improved support for C11 (multiple PRs)
+  - Support for parehthesized compount statements (#423)
+  - Support for modern Python versions (3.9 and 3.10)
+  - Fix support for structs with nested enums (#387)
+  - Multiple small bug fixes</comment>
+    <requestid>934588</requestid>
+  </revision>
 </revisionlist>

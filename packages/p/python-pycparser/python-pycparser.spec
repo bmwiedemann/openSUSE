@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pycparser
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        C parser in Python
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ URL:            https://github.com/eliben/pycparser
 Source0:        https://files.pythonhosted.org/packages/source/p/pycparser/pycparser-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch1:         fix-lexer-build.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +54,7 @@ sed -i 's/\r//' LICENSE
 %{python_expand %fdupes %{buildroot}%{$python_sitelib}}
 
 %check
-%python_exec tests/all_tests.py
+%pytest
 
 %files %{python_files}
 %doc README.rst

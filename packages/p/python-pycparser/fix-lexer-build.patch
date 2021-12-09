@@ -1,7 +1,7 @@
-Index: pycparser-release_v2.14/setup.py
+Index: pycparser-2.21/setup.py
 ===================================================================
---- pycparser-release_v2.14.orig/setup.py
-+++ pycparser-release_v2.14/setup.py
+--- pycparser-2.21.orig/setup.py
++++ pycparser-2.21/setup.py
 @@ -1,11 +1,11 @@
  import os, sys
  try:
@@ -30,8 +30,8 @@ Index: pycparser-release_v2.14/setup.py
                       msg="Build the lexing/parsing tables")
  
  
-@@ -60,7 +60,7 @@ setup(
-         'Programming Language :: Python :: 3.6',
+@@ -64,7 +64,7 @@ setup(
+         'Programming Language :: Python :: 3.10',
      ],
      python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*",
 -    packages=['pycparser', 'pycparser.ply'],
