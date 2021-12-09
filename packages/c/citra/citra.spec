@@ -22,13 +22,14 @@ Version:        nightly1734
 Release:        0
 Summary:        Nintendo 3DS emulator
 License:        GPL-2.0-or-later
+Group:          System/Emulators/Other
 URL:            https://citra-emu.org/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM https://github.com/neobrain/nihstro/pull/62
 Patch0:         gcc-enablement.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  hicolor-icon-theme
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+%if ( 0%{?sle_version} == 150300 || 0%{?sle_version} == 150400 ) && 0%{?is_opensuse}
 BuildRequires:  libboost_date_time1_75_0-devel
 BuildRequires:  libboost_regex1_75_0-devel
 BuildRequires:  libboost_serialization1_75_0-devel

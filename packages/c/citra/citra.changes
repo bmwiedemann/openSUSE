@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 22:54:14 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - nightly1733
+
+- fix build for Leap 15.4
+- fix some rpmlint warnings
+
+-------------------------------------------------------------------
 Wed Nov 24 17:09:48 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix build for Leap 15.3
