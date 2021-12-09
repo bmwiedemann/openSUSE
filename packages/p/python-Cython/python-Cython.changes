@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Dec  6 20:16:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.25:
+  * Several incompatibilities with CPython 3.11 were resolved.
+  * Some C compiler warnings were resolved.
+  * C++ ``std::move()`` should only be used automatically in MSVC versions that support it.
+  * The ``Py_hash_t`` type failed to accept arbitrary "index" values.
+  * Avoid copying unaligned 16-bit values since some platforms require them to be aligned.
+    Use memcpy() instead to let the C compiler decide how to do it.
+  * Cython crashed on invalid truthiness tests on C++ types without ``operator bool``.
+  * The declaration of ``PyUnicode_CompareWithASCIIString()`` in ``cpython.unicode`` was incorrect.
+
+-------------------------------------------------------------------
 Wed Jul 14 08:28:08 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.29.24:

@@ -668,4 +668,20 @@
     <comment></comment>
     <requestid>906304</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>43e2e69c03527d259649a72660a2f8cf</srcmd5>
+    <version>0.29.25</version>
+    <time>1639075519</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.25:
+  * Several incompatibilities with CPython 3.11 were resolved.
+  * Some C compiler warnings were resolved.
+  * C++ ``std::move()`` should only be used automatically in MSVC versions that support it.
+  * The ``Py_hash_t`` type failed to accept arbitrary &quot;index&quot; values.
+  * Avoid copying unaligned 16-bit values since some platforms require them to be aligned.
+    Use memcpy() instead to let the C compiler decide how to do it.
+  * Cython crashed on invalid truthiness tests on C++ types without ``operator bool``.
+  * The declaration of ``PyUnicode_CompareWithASCIIString()`` in ``cpython.unicode`` was incorrect.</comment>
+    <requestid>936122</requestid>
+  </revision>
 </revisionlist>
