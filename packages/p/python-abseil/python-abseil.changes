@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Dec  9 14:06:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.0.0 
+  * absl-py no longer supports Python 2.7, 3.4, 3.5. All versions
+    have reached end-of-life for more than a year now.
+  * New releases will be tagged as vX.Y.Z instead of pypi-vX.Y.Z in
+    the git repo going forward.
+- Release notes for 0.15.0
+  * (testing) #128: When running bazel with its --test_filter=
+    flag, it now treats the filters as unittest's -k flag in Python
+    3.7+.
+- Release notes for 0.14.1
+  * Top-level LICENSE file is now exported in bazel.
+- Release notes for 0.14.0
+  * #171: Creating argparse_flags.ArgumentParser with
+    argument_default= no longer raises an exception when other
+    absl.flags flags are defined.
+  * #173: absltest now correctly sets up test filtering and fail
+    fast flags when an explicit argv= parameter is passed to
+    absltest.main.
+- Release notes for 0.13.0
+  * (app) Type annotations for public app interfaces.
+  * (testing) Added new decorator @absltest.skipThisClass to
+    indicate a class contains shared functionality to be used as a
+    base class for other TestCases, and therefore should be
+    skipped.
+  * (app) Annotated the flag_parser paramteter of run as
+    keyword-only. This keyword-only constraint will be enforced at
+    runtime in a future release.
+  * (app, flags) Flag validations now include all errors from
+    disjoint flag sets, instead of fail fast upon first error from
+    all validators. Multiple validators on the same flag still
+    fails fast.
+- Release notes for 0.12.0
+  * (flags) Made EnumClassSerializer and EnumClassListSerializer
+    public.
+  * (flags) Added a required: Optional[bool] = False parameter to
+    DEFINE_* functions.
+  * (testing) flagsaver overrides can now be specified in terms of
+    FlagHolder.
+  * (testing) parameterized.product: Allows testing a method over
+    cartesian product of parameters values, specified as a
+    sequences of values for each parameter or as kwargs-like dicts
+    of parameter values.
+  * (testing) Added public flag holders for --test_srcdir and
+    --test_tmpdir. Users should use absltest.TEST_SRCDIR.value and
+    absltest.TEST_TMPDIR.value instead of FLAGS.test_srcdir and
+    FLAGS.test_tmpdir.
+  * (flags) Made CsvListSerializer respect its delimiter argument.
+
+-------------------------------------------------------------------
 Mon Nov 16 11:35:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add Provides python-absl-py
