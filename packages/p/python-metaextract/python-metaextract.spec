@@ -1,7 +1,7 @@
 #
 # spec file for package python-metaextract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needed even though no tests are present
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 Requires:       python-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(preun):  update-alternatives
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 %python_subpackages
 
 %description
@@ -48,6 +47,8 @@ The tool was first developed in py2pack but is now its own module.
 
 %prep
 %setup -q -n metaextract-%{version}
+# https://github.com/toabctl/metaextract/issues/13
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build

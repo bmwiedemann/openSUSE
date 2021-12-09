@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 12:34:45 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Sun Mar 29 05:33:31 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - update to 1.0.7:
