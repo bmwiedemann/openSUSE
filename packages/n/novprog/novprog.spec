@@ -1,7 +1,7 @@
 #
 # spec file for package novprog
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           novprog
-Version:        3.1.7
+Version:        3.2.0
 Release:        0
 Summary:        Wordcount graphing program
 License:        GPL-3.0-or-later
@@ -65,7 +65,6 @@ graph will show a tooltip with that day's wordcount.
 %{_datadir}/metainfo/novprog.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*
-%{_datadir}/pixmaps/%{name}.xpm
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang

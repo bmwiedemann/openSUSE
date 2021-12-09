@@ -70,4 +70,17 @@
   * Replaced deprecated code</comment>
     <requestid>796896</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>255d047d5d19d175ab332881094868e7</srcmd5>
+    <version>3.2.0</version>
+    <time>1639075544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.0:
+  * Added setting words written for current day
+  * Added support for Qt 6
+  * Refactored code
+  * Removed XPM icon
+  * Translation updates: Dutch, Lithuanian</comment>
+    <requestid>937753</requestid>
+  </revision>
 </revisionlist>
