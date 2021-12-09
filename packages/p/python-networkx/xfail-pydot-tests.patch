@@ -1,0 +1,21 @@
+From 2b032ed3eb33d82729b0f05f04357e89a125bfd1 Mon Sep 17 00:00:00 2001
+From: Ross Barnowski <rossbar@berkeley.edu>
+Date: Thu, 18 Nov 2021 11:25:01 -0800
+Subject: [PATCH] xfail pydot tests. (#5187)
+
+---
+ networkx/drawing/tests/test_pydot.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/networkx/drawing/tests/test_pydot.py b/networkx/drawing/tests/test_pydot.py
+index ba1e973374..e1433ff582 100644
+--- a/networkx/drawing/tests/test_pydot.py
++++ b/networkx/drawing/tests/test_pydot.py
+@@ -10,6 +10,7 @@
+ pydot = pytest.importorskip("pydot")
+ 
+ 
++@pytest.mark.xfail
+ class TestPydot:
+     def pydot_checks(self, G, prog):
+         """

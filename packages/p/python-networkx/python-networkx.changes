@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  7 08:06:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch xfail-pydot-tests.patch:
+  * From upstream, survive pydot test failures.
+
+-------------------------------------------------------------------
 Wed Oct 13 22:37:10 CEST 2021 - Fabrice Bauzac <noon@mykolab.com>
 
 - update to 2.6.3:

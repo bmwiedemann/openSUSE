@@ -26,6 +26,8 @@ Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
+# gh#networkx/networkx#commit/2b032ed3eb33d82729b0f05f04357e89a125bfd1
+Patch0:         xfail-pydot-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
