@@ -313,4 +313,18 @@
   - adds make-python-build.patch (forwarded request 935165 from darix)</comment>
     <requestid>935188</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>a78c5ce210b36544779216746a183c8d</srcmd5>
+    <version>2.5.3</version>
+    <time>1639080934</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libseccomp revision:34, using expand</comment>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>cb1cbc79f45826cdcf2e621231a2566d</srcmd5>
+    <version>2.5.3</version>
+    <time>1639081025</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:libseccomp revision:33, using expand</comment>
+  </revision>
 </revisionlist>
