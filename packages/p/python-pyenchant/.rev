@@ -163,4 +163,14 @@
     <comment></comment>
     <requestid>865657</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dbedcf3a419275c693a5dd68703b7ea7</srcmd5>
+    <version>3.2.2</version>
+    <time>1639075505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.2:
+  * Add support for Python 3.10
+  * Fix ``Dict.__del__`` sometimes raising `TypeError` upon exit.</comment>
+    <requestid>934924</requestid>
+  </revision>
 </revisionlist>

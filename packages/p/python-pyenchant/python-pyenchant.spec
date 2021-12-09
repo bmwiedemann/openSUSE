@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyenchant
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Python bindings for the Enchant spellchecking system
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/Python
 URL:            https://pyenchant.github.io/pyenchant
 Source:         https://github.com/pyenchant/pyenchant/archive/v%{version}.tar.gz#/pyenchant-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}

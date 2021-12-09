@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  1 07:59:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.2:
+  * Add support for Python 3.10
+  * Fix ``Dict.__del__`` sometimes raising `TypeError` upon exit.
+
+-------------------------------------------------------------------
 Fri Jan 22 04:08:10 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.2.0
