@@ -29,7 +29,6 @@ Patch0:         datrie-bigendian.patch
 BuildRequires:  %{python_module Cython >= 0.26.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,6 +41,8 @@ A trie data structure for Python (2.x and 3.x). Uses libdatrie.
 %prep
 %setup -q -n datrie-%{version}
 %patch0 -p1
+# https://github.com/pytries/datrie/pull/89
+sed -i 's:pytest-runner::' setup.py
 
 %build
 pushd src

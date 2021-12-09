@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:43:20 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Mon May 17 09:07:53 UTC 2021 - pgajdos@suse.com
 
 - use %pytest_arch macro
