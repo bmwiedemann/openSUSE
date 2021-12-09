@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:07:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 2.8.1:
+  * The simple namespace creation shortcut added in 2.8.0 was deprecated due to
+    usage of CPython internal API, and will be removed soon.
+  * Add C++ Exception type to throw and catch ``AttributeError``.
+  * Fixed the potential for dangling references when using properties with
+  ``std::optional`` types.
+  * Modernize usage of ``PyCodeObject`` on Python 3.9+ (moving toward support for
+    Python 3.11a1)
+  * A long-standing bug in ``eigen.h`` was fixed (originally PR #3343). The bug
+    was unmasked by newly added ``static_assert``'s in the Eigen 3.4.0 release.
+  * Support multiple raw inclusion of CMake helper files
+  * Fix harmless warning on upcoming CMake 3.22.
+  * Fix 2.8.0 regression with MSVC 2017 + C++17 mode + Python 3.
+  * Fix 2.8.0 regression that caused undefined behavior (typically
+    segfaults) in ``make_key_iterator``/``make_value_iterator`` if dereferencing
+    the iterator returned a temporary value instead of a reference.
+
+-------------------------------------------------------------------
 Sat Oct 16 20:47:43 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

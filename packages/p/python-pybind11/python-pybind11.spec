@@ -24,7 +24,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pybind11
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
