@@ -117,4 +117,12 @@
     variable. (#208)</comment>
     <requestid>887871</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>96a7c7e71dd132821f38f59cd9573cbb</srcmd5>
+    <version>1.4.2</version>
+    <time>1639075519</time>
+    <user>dimstar_suse</user>
+    <comment>- skip failing tests</comment>
+    <requestid>936166</requestid>
+  </revision>
 </revisionlist>
