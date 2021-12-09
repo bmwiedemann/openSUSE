@@ -189,4 +189,27 @@
     instead of a dictionary (issue #242)</comment>
     <requestid>900664</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f191b7458938e08c23e3af7bd6f6513f</srcmd5>
+    <version>1.8.2</version>
+    <time>1639075503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.2:
+  * Fix type annotation of XMLSchema source argument  
+  * Near compliance with strict type annotations
+  * Removed ModelGroup class, merged with XsdGroup
+  * Some optimizations and fixes from static analysis
+
+- update to 1.8.0:
+  * Refactor XMLSchemaMeta deprecating BUILDER attribute
+  * Extend type annotations to package API
+  * Add static typing tests with checked mypy runs
+  * Activate mypy checks for package
+  * Fix for issues #257 and #259
+  * Make XSD annotation parsing lazy
+  * Add lazy annotations to schema instances
+  * Add get_annotation() method to multiple-facets classes (issue #255)
+- drop remove_shebang.patch (upstream)</comment>
+    <requestid>934627</requestid>
+  </revision>
 </revisionlist>

@@ -19,15 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.6.4
+Version:        1.8.2
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/sissaschool/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_shebang.patch gh#sissaschool/xmlschema#210 mcepl@suse.com
-# Remove superfluous shebang
-Patch0:         remove_shebang.patch
 BuildRequires:  %{python_module elementpath >= 2.2.1}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 29 20:24:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * Fix type annotation of XMLSchema source argument  
+  * Near compliance with strict type annotations
+  * Removed ModelGroup class, merged with XsdGroup
+  * Some optimizations and fixes from static analysis
+
+-------------------------------------------------------------------
+Sat Oct 16 19:22:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Refactor XMLSchemaMeta deprecating BUILDER attribute
+  * Extend type annotations to package API
+  * Add static typing tests with checked mypy runs
+  * Activate mypy checks for package
+  * Fix for issues #257 and #259
+  * Make XSD annotation parsing lazy
+  * Add lazy annotations to schema instances
+  * Add get_annotation() method to multiple-facets classes (issue #255)
+- drop remove_shebang.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun 17 21:22:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.4:
