@@ -24,9 +24,10 @@ Summary:        MQTT version 3.11 client class
 License:        EPL-1.0
 Group:          Development/Languages/Python
 URL:            http://eclipse.org/paho
-Source:         https://files.pythonhosted.org/packages/source/p/paho-mqtt/paho-mqtt-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
+Source:         https://github.com/eclipse/paho.mqtt.python/archive/refs/tags/v%{version}.tar.gz#/paho-mqtt-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -46,7 +47,7 @@ a small code footprint is required and/or network bandwidth is at a premium.
 Paho is an Eclipse Foundation project.
 
 %prep
-%setup -q -n paho-mqtt-%{version}
+%setup -q -n paho.mqtt.python-%{version}
 
 %build
 %python_build
@@ -54,6 +55,9 @@ Paho is an Eclipse Foundation project.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
