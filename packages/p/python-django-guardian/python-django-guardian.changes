@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:00:31 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.4.0
+  * Add support for Python 3.9
+  * Add support for Django 3.1, Django 3.2
+  * Add parameter `any_perm` to `PermissionRequiredMixin`
+  * Switch from Travis CI to `GitHub Actions`_
+- deleted patches
+  - django32.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri May 14 14:29:48 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add django32.patch to fix build

@@ -1,5 +1,5 @@
 #
-# spec file for package python-django-guardian
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,18 +19,16 @@
 %define pypi_package_name django-guardian
 %define skip_python2 1
 Name:           python-%{pypi_package_name}
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Implementation of per object permissions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/lukaszb/django-guardian
 Source:         https://files.pythonhosted.org/packages/source/d/django-guardian/django-guardian-%{version}.tar.gz
-Patch0:         django32.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-environ}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
