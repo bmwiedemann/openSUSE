@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Dec  8 23:16:06 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2:
+  * [gh#bokeh/bokeh#11422] [component: bokehjs] [BUG]
+    `DeserializationError` when trying to change a `DataTable`'s
+    columns with `CustomJS`
+  * [gh#bokeh/bokeh#11800] [BUG] DeserializationError when
+    plotting graphs
+  * [gh#bokeh/bokeh#11801] [component: bokehjs] [BUG] Log axis
+    figures don't render if they're not visible at start
+  * [gh#bokeh/bokeh#11807] [component: bokehjs] Work around issues
+    with initialization-time change discovery
+  * [gh#bokeh/bokeh#11808] Don't unnecessarily update node/edge
+    renderers in graphs
+  * [gh#bokeh/bokeh#11613] [component: docs] Cache-bust custom.css
+    for docs
+  * [gh#bokeh/bokeh#11791] [component: docs] Update issue template
+    to use new GH forms
+  * [gh#bokeh/bokeh#11761] [component: docs] Clarify use of color
+    in first steps guide
+  * [gh#bokeh/bokeh#11762] [component: docs] Replace slash with
+    backslash for PS commands
+  * [gh#bokeh/bokeh#11767] [component: bokehjs] Upgrade jquery-ui
+    to resolve security concerns
+  * [gh#bokeh/bokeh#11781] [component: examples] fix transform
+    jitter example
+  * [gh#bokeh/bokeh#11786] bokeh 2.4.2 backports
+  * [gh#bokeh/bokeh#11790] [component: build] Bryanv/pin sphinx 42
+  * [gh#bokeh/bokeh#11797] Add OS to bokeh info
+  * [gh#bokeh/bokeh#11805] More 3.0 -> 2.4.2 backports
+  * [gh#bokeh/bokeh#11810] [component: docs] Update docs for new
+    issue forms
+
+-------------------------------------------------------------------
 Wed Oct 13 21:33:34 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.1:
