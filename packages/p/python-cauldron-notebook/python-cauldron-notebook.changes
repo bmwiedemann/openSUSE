@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:15:32 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.0.7
+  * Improves handling of module reloading in shared libraries to avoid inter-dependencies from causing reload-order errors.
+  * Adds version display to the web UI home screen for all three components for clarity with style alerting when key versions mismatch.
+  * Also added hooks for APM to support API tuning and some backwards-compatible changes to the API for additional debugging clarity.
+  * Refactored build configuration into yaml files for greater extensibility.
+  * Updated web UI dependencies.
+  * Drop support for Python 3.5 now that is has passed its end-of-life date.
+  * Adds official support for Python 3.9 now that the DS stack libraries have released with 3.9 support as well.
+  * Adds handling of decimal.Decimal types in a number notebook rendering cases.
+  * Improved step test file matching for partial matches in cases where similar file names are found within the same project.
+  * Improved notebook loading within the UI application.
+
+-------------------------------------------------------------------
+Thu Dec  9 08:10:04 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Wed Jan 27 22:48:12 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Disable python36 build, because SciPy dropped support for

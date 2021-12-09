@@ -1,7 +1,7 @@
 #
 # spec file for package python-cauldron-notebook
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,12 @@
 # requires NumPy, seaborn (<-- SciPy), which are dropping Python 3.6 support.
 %define         skip_python36 1
 Name:           python-cauldron-notebook
-Version:        1.0.3
+Version:        1.0.7
 Release:        0
 Summary:        Scientific Analysis Environment
 License:        MIT
 URL:            https://github.com/sernst/cauldron
 Source:         https://github.com/sernst/cauldron/archive/v%{version}.tar.gz#/cauldron-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +39,7 @@ Requires:       python-pandas
 Requires:       python-pygments
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-bokeh
 Recommends:     python-matplotlib
 Recommends:     python-plotly
@@ -70,6 +69,8 @@ modeling and analysis in Python.
 
 %prep
 %setup -q -n cauldron-%{version}
+# https://github.com/sernst/cauldron/issues/80
+sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build
