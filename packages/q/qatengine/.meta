@@ -1,0 +1,6 @@
+<package name="qatengine" project="openSUSE:Factory">
+  <title>QAT Engine</title>
+  <description>An OpenSSL engine module built upon QAT (intel Quick Assist).</description>
+  <devel project="security" package="qatengine"/>
+  <url>https://github.com/intel/QAT_Engine</url>
+</package>
