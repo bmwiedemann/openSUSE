@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  9 04:46:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pyparsing.patch:
+  * Use -c 'import foo' to check for module existance.
+
+-------------------------------------------------------------------
 Wed Dec  2 16:32:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.39. Issues addressed:
