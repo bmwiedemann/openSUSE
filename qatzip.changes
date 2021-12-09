@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Dec  9 14:01:41 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- fix devel dependency that was missed at the shared library
+  policy enforcement.
+- submit for jira feature SLE-20906
+
+-------------------------------------------------------------------
+Thu Dec  2 17:14:17 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- apply shared library naming policy
+- submit for jira feature SLE-20906
+
+-------------------------------------------------------------------
+Thu Nov 25 13:05:04 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- copy from home:zm627 and polish
