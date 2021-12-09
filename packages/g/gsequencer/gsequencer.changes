@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:37:33 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.13.3 fixed SIGABRT during termination of
+  GSequencer.
+- implemented AgsAlsaDevout, AgsAlsaDevin and AgsAlsaMidiin
+- implemented AgsOssDevout, AgsOssDevin and AgsOssMidiin
+- deprecated AgsDevout, AgsDevin and AgsMidiin
+- fixed wave form editor clipboard
+
+-------------------------------------------------------------------
 Wed Dec  1 04:22:40 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.13.0 implemented time stretch utility functions
