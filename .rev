@@ -643,4 +643,15 @@
   * Correct comment for 'D1\_D2\_SETUP\_ARGS'</comment>
     <requestid>934075</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8756502774746e369cd35551e59df17e</srcmd5>
+    <version>5.8.0</version>
+    <time>1639075513</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.0:
+  * Add python2 testing back to PBR
+  * Allow PEP517 without setup\_requires
+  * Clarify the need for setup.py with PEP517</comment>
+    <requestid>935964</requestid>
+  </revision>
 </revisionlist>

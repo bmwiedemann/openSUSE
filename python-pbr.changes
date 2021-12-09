@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:23:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Add python2 testing back to PBR
+  * Allow PEP517 without setup\_requires
+  * Clarify the need for setup.py with PEP517
+
+-------------------------------------------------------------------
 Sat Nov  6 18:03:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.7.0:
