@@ -1408,4 +1408,14 @@
     <comment></comment>
     <requestid>930005</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0ef82aae429c7af903b647c84a8b23f3</srcmd5>
+    <version>1.7.5</version>
+    <time>1639075516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.5:
+  * Adjustments to the test suite to accommodate for error message change 
+    in newer SQLAlchemy</comment>
+    <requestid>936089</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-alembic
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
@@ -27,10 +27,10 @@ URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.0}
-BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.9}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
@@ -40,8 +40,8 @@ Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 1.3.0
 Requires:       python-python-dateutil
 %if 0%{?python_version_nodots} < 39
-Requires:       python-importlib-resources
 Requires:       python-importlib-metadata
+Requires:       python-importlib-resources
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  6 17:51:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Adjustments to the test suite to accommodate for error message change 
+    in newer SQLAlchemy
+
+-------------------------------------------------------------------
 Sat Nov  6 11:28:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update requirements
