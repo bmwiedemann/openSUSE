@@ -430,4 +430,15 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>927135</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>df1caf050a76b1b4817eae7d4dd92d00</srcmd5>
+    <version>1.1.6</version>
+    <time>1639075515</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.6:
+  * Fixed issue where control statements on multi lines with a backslash would
+    not parse correctly if the template itself contained CR/LF pairs as on
+    Windows.</comment>
+    <requestid>936087</requestid>
+  </revision>
 </revisionlist>

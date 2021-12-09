@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:47:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * Fixed issue where control statements on multi lines with a backslash would
+    not parse correctly if the template itself contained CR/LF pairs as on
+    Windows.
+
+-------------------------------------------------------------------
 Sat Oct 16 19:02:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.5:
