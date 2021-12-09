@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  2 13:45:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip fluent from testing, we don't depend on it anyway (it is optional) 
+
+-------------------------------------------------------------------
+Mon Nov 29 20:54:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * Added support for stringsdict and Fluent formats
+  * Minor fixes in JSON and PO formats
+  * Bug fixes in RC, Fluent and HTML formats
+  * Improvements in the XLIFF and RC formats
+  * Fixes in the RC format
+
+-------------------------------------------------------------------
 Mon May  3 09:38:36 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.3.6
