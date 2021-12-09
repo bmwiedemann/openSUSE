@@ -132,4 +132,15 @@
   * Apply __slots__ to TDOP and regex classes</comment>
     <requestid>925762</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>35e4b773423ec3f4387c764a6521e244</srcmd5>
+    <version>2.4.0</version>
+    <time>1639075500</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.0:
+  * Fix type annotations and going strict on parsers and other public classes
+  * Add XPathConstructor token class (subclass of XPathFunction)
+  * Last release for Python 3.6</comment>
+    <requestid>934521</requestid>
+  </revision>
 </revisionlist>

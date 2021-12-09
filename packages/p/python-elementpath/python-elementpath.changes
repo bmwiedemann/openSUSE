@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:24:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Fix type annotations and going strict on parsers and other public classes
+  * Add XPathConstructor token class (subclass of XPathFunction)
+  * Last release for Python 3.6
+
+-------------------------------------------------------------------
 Sat Oct 16 21:51:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
