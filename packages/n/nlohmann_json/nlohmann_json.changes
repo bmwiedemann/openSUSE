@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Dec  7 09:14:52 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.10.4
+  - Compiler error in output serializer due to 'incompatible initializer' #3081
+  - Strange behaviour when using std::sort on std::vector<json> #3080
+  - Unhandled exception: nlohmann::detail::parse_error #3078
+  - explicit constructor with default does not compile #3077
+  - Parse an object but get an array using GCC #3076
+  - Version 3.10.3 breaks backward-compatibility with 3.10.2 #3070
+  - Feature request, Add to_json/from_json to align with other to/from binary api. #3067
+  - vcpkg is out of date #3066
+  - Revert invalid fix #3082 (nlohmann)
+  - Allow to use get with explicit constructor #3079 (nlohmann)
+  - fix std::filesystem::path regression #3073 (theodelrieu)
+  - Fix Clang version #3040 (nlohmann)
+  - Fix assertion failure for JSON_DIAGNOSTICS #3037 (carlsmedstad)
+  - meta: fix is_compatible/constructible traits #3020 (theodelrieu)
+  - Set parent pointers for values inserted via update() (fixes #3007). #3008 (AnthonyVH)
+  - Allow allocators for output_vector_adapter #2989 (nlohmann)
+  - Re-add Clang 12 #2986 (nlohmann)
+  - Use new Docker image #2981 (nlohmann)
+  - Fix -Wunused warnings on JSON_DIAGNOSTICS #2976 (gcerretani)
+  - Update docset generation script #2967 (nlohmann)
+  Full Changelog: https://github.com/nlohmann/json/compare/v3.10.3...3.10.4
+- Changes from 3.10.3
+  - Parsing an emtpy string returns a string with size 1 instead of expected 0 #3057
+  - Linking error duplicate symbol: std::type_info::operator== on static build with MinGW #3042
+  - Yet another assertion failure when inserting into arrays with JSON_DIAGNOSTICS set #3032
+  - accept and parse function not work well with a pure number string #3029
+  - push_back doesn't work for serializing containers #3027
+  - Strange behaviour when creating array with single element #3025
+  - Input ordered_json doesn't work #3023
+  - Issue iterating through 'items' #3021
+  - Cannot spell the namespace right #3015
+  - JSON Parse error when reading json object from file #3011
+  - Parent pointer not properly set when using update() #3007
+  - Overwriting terminated null character #3001
+  - 'operator =' is ambiguous on VS2017 #2997
+  - JSON Patch for Array Elements #2994
+  - JSON Parse throwing error #2983
+  - to_{binary format} does not provide a mechanism for specifying a custom allocator for the returned type. #2982
+  - 3.10.1 zip json.hpp has version number 3.10.0 instead of 3.10.1 #2973
+  - Assertion failure when serializing array with JSON_DIAGNOSTICS set #2926
+  Full Changelog: https://github.com/nlohmann/json/compare/v3.10.2...v3.10.3
+
+-------------------------------------------------------------------
 Tue Oct  5 06:38:22 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.10.2

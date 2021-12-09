@@ -18,7 +18,7 @@
 
 
 Name:           nlohmann_json
-Version:        3.10.2
+Version:        3.10.4
 Release:        0
 Summary:        JSON for Modern C++
 License:        MIT
