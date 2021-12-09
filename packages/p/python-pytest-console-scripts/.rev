@@ -49,4 +49,12 @@
     <comment>- Do not pull in pytest twice</comment>
     <requestid>805767</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58bbf7d574e119576f5a4d5445ed162a</srcmd5>
+    <version>1.2.1</version>
+    <time>1639075536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937342</requestid>
+  </revision>
 </revisionlist>

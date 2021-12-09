@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Dec  8 08:33:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.2.1
+  * no upstream changelog
+- deleted patches
+  - virtualenv-20.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Dec  8 07:33:48 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Fri May 15 08:53:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in pytest twice
