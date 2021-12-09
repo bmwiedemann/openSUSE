@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 11:22:56 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build
+
+-------------------------------------------------------------------
 Fri Apr 30 18:38:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.2

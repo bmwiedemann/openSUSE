@@ -42,7 +42,7 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 %python_subpackages
