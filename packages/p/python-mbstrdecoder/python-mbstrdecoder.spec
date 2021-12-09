@@ -28,7 +28,7 @@ URL:            https://github.com/thombashi/mbstrdecoder
 Source:         https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-%{version}.tar.gz
 BuildRequires:  %{python_module Faker >= 1.0.2}
 BuildRequires:  %{python_module chardet >= 3.0.4}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
