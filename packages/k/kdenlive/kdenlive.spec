@@ -17,12 +17,11 @@
 
 
 %define mlt_version 7.0.0
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -121,7 +120,7 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %defattr(0644,root,root,0755)
 %attr(0755,-,-) %{_bindir}/%{name}
 %attr(0755,-,-) %{_bindir}/%{name}_render
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS README.md
 %{_kf5_knsrcfilesdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/kdenlive/

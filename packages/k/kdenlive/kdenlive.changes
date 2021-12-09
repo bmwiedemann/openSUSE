@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Don't allow typewriter effect on clip other than text (caused a freeze)
+  * After extract operation, seek cursor to in point
+  * Fix possible crash on rotoscoping edit
+  * Fix crash on misconfigured wipe composition. (kde#446203)
+  * keyframe import fixes: crash importing to effect rect without opacity,
+    fix motion tracker exporting with opacity=0, fix limiting keyframes
+    messing import
+  * Fix crash importing empty keyframes
+  * Update 21.12 splashscreen
+  * Fix keyframe selection on add
+  * Fix add keyframe does not selected
+  * Fix extract frame using monitor preview resolution
+  * Fix pasting items in timeline to use mouse / cursor position depending
+    on how it is called menu / shortcut
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Too many changes since 21.11.80, only listing bugfixes:
+  * Fix crash using spacer tool on grouped clips with a clip in
+    the group positioned before spacer start operation. (kde#443324)
+  * Track name edit: fix focus issue, enable F2 shortcut (kde#440185)
+  * "Go to clip start/end" should use clip under cursor if none is selected (kde#440024)
+  * Typewriter effect should not be blacklisted! (kde#445232)
+  * Fix "Select Transition" should select mixes too (kde#440023)
+  * Fix default project path ignored on creating new project (kde#444595)
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Make it possible to copy and import rotoscoping keyframes (kde#442372)
+  * Remove broken "duplicate bin clip with timeremap" stuff that caused crash
+    dropping playlists in timeline (kde#441777)
+  * Crop effect: use project resolution by default(solves proxy issue). (kde#408235)
+  * Add a tooltip to the track effects toggle button in the track header (kde#440218)
+  * Fix build with -DCRASH_AUTO_TEST=ON (kde#440414)
+- Drop obsolete patch:
+  * 0001-Handle-the-melt-package-rename-nicely.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
