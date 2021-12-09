@@ -46,4 +46,12 @@ Required by python-scikit-image</comment>
   * renew certs expiring 2019-09-03</comment>
     <requestid>727688</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6b33a9d39030a7d06addf988bbcdd96d</srcmd5>
+    <version>1.0.2</version>
+    <time>1639075537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937344</requestid>
+  </revision>
 </revisionlist>

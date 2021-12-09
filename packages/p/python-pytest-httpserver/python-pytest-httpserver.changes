@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Dec  8 09:16:17 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.0.2
+  **Breaking change**: The scope of ``httpserver_listen_address`` fixture changed from **function**
+  to **session**. This is a requirement to implement the other features listed
+  in this release. See the `upgrade guide
+  <https://pytest-httpserver.readthedocs.io/en/latest/upgrade.html>`_ for the
+  details.
+  * many other changes, see CHANGES.rst
+
+-------------------------------------------------------------------
 Thu Aug 29 04:48:45 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.3.4
