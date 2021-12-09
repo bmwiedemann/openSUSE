@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec  3 14:36:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.2
+  * Added the missing QBluetoothUuid constructors.
+  * Added the missing QMediaPlayer loop-related methods.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Wed Nov  3 14:26:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't require python-sip-devel for python-PyQt6-devel.

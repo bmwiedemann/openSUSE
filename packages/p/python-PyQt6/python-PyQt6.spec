@@ -17,11 +17,12 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
+%define plainpython python
 %define skip_python2 1
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -36,7 +37,7 @@ BuildRequires:  %{python_module PyQt6-sip}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.11}
-BuildRequires:  %{python_module sip-devel >= 6.4}
+BuildRequires:  %{python_module sip-devel >= 6.5}
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -97,6 +98,7 @@ Requires:       cmake(Qt6SerialPort)
 Requires:       cmake(Qt6Svg)
 Requires:       cmake(Qt6WebChannel)
 Requires:       cmake(Qt6WebSockets)
+Requires:       %plainpython(abi) = %{python_version}
 # SECTION not packaged for 6.2 yet
 # Requires:       cmake(Qt6Quick3D)
 # Requires:       cmake(Qt6Quick3DRuntimeRender)

@@ -48,4 +48,12 @@
 in order to avoid conflicts like boo#1192300</comment>
     <requestid>929037</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>738c036f51dcac4194d7d50002cd0105</srcmd5>
+    <version>6.2.2</version>
+    <time>1639075526</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>935719</requestid>
+  </revision>
 </revisionlist>
