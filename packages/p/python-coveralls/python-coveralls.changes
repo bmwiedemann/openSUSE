@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:31:42 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Wed Jul 29 04:37:06 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1.1:

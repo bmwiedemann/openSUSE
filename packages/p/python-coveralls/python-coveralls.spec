@@ -1,7 +1,7 @@
 #
 # spec file for package python-coveralls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module coverage >= 4.1}
 BuildRequires:  %{python_module docopt >= 0.6.1}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
@@ -46,8 +45,8 @@ BuildArch:      noarch
 %ifpython2
 Recommends:     python-urllib3
 %endif
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
