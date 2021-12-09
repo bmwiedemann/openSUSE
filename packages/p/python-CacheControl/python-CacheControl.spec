@@ -1,7 +1,7 @@
 #
 # spec file for package python-CacheControl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-CacheControl
-Version:        0.12.6
+Version:        0.12.10
 Release:        0
 Summary:        Caching library for Python requests
 License:        Apache-2.0
@@ -28,22 +29,21 @@ Source:         https://github.com/ionrock/cachecontrol/archive/v%{version}.tar.
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-msgpack
+Requires:       python-msgpack >= 0.5.2
 Requires:       python-requests
+Provides:       python-cachecontrol = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-lockfile >= 0.9
 Suggests:       python-redis >= 2.10.5
 BuildArch:      noarch
 # SECTION test requirements
-## cherrypy is python3 only from 18.x series
-BuildRequires:  python3-CherryPy
-BuildRequires:  python3-lockfile >= 0.9
-BuildRequires:  python3-mock
-BuildRequires:  python3-msgpack
-BuildRequires:  python3-pytest
-BuildRequires:  python3-redis >= 2.10.5
-BuildRequires:  python3-requests
+BuildRequires:  %{python_module CherryPy}
+BuildRequires:  %{python_module lockfile >= 0.9}
+BuildRequires:  %{python_module msgpack >= 0.5.2}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module redis >= 2.10.5}
+BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
 
@@ -53,6 +53,7 @@ requests session object.
 
 %prep
 %setup -q -n cachecontrol-%{version}
+sed -i -e 's/^from mock/from unittest.mock/' -e 's/^import mock/from unittest import mock/' tests/*.py
 
 %build
 %python_build
@@ -64,7 +65,7 @@ requests session object.
 
 %check
 # test_file_cache_recognizes_consumed_file_handle uses httpbin.org directly
-PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_bin_suffix} -v -k 'not test_file_cache_recognizes_consumed_file_handle'
+%pytest -v -k 'not test_file_cache_recognizes_consumed_file_handle'
 
 %post
 %python_install_alternative doesitcache
@@ -76,6 +77,7 @@ PYTHONPATH=%{buildroot}%{python3_sitelib} py.test-%{python3_bin_suffix} -v -k 'n
 %license LICENSE.txt
 %doc README.rst
 %python_alternative %{_bindir}/doesitcache
-%{python_sitelib}/*
+%{python_sitelib}/cachecontrol
+%{python_sitelib}/CacheControl-%{version}*-info
 
 %changelog

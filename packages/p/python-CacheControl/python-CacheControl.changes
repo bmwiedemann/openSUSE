@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec  4 21:10:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.12.10
+  * Dropped support for Python 2.7, 3.4, 3.5.
+  * Reduced memory usage when caching large files.
+
+-------------------------------------------------------------------
 Wed May 27 09:36:33 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
