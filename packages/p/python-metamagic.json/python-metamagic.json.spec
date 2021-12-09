@@ -1,7 +1,7 @@
 #
 # spec file for package python-metamagic.json
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            http://github.com/sprymix/metamagic.json
 Source:         https://files.pythonhosted.org/packages/source/m/metamagic.json/metamagic.json-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

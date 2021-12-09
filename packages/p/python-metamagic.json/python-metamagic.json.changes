@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 13:48:30 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Mon Jun  3 17:55:01 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
