@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:15:50 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Thu Sep 17 06:53:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 10.4.1:

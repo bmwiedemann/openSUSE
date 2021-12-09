@@ -1,7 +1,7 @@
 #
 # spec file for package python-dropbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dropbox/dropbox-sdk-python
 Source:         https://files.pythonhosted.org/packages/source/d/dropbox/dropbox-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -45,6 +44,8 @@ Official Dropbox API Client
 
 %prep
 %setup -q -n dropbox-%{version}
+# https://github.com/dropbox/dropbox-sdk-python/issues/401
+sed -i 's:pytest-runner::' setup.py
 
 %build
 %python_build
