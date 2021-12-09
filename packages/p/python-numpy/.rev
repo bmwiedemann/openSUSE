@@ -977,4 +977,12 @@ All packages broken by this update should be fixed now</comment>
   * Support Python &gt;= 3.9.8 changes.</comment>
     <requestid>932378</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>76b62e9ffb87d8f9409e3c0000016287</srcmd5>
+    <version>1.21.4</version>
+    <time>1639075510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935927</requestid>
+  </revision>
 </revisionlist>

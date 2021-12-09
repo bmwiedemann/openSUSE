@@ -1,0 +1,29 @@
+From 2113cad8cbb4c4bc9469e0c94025bd7cbbe6f2d6 Mon Sep 17 00:00:00 2001
+From: Thomas Green <tomgreen66@hotmail.com>
+Date: Tue, 16 Nov 2021 22:36:18 +0000
+Subject: [PATCH] Update cpu_asimdfhm.c
+
+Updated `vfmlal_low_u32` and `vfmlslq_high_u32` to their `f16` new names.  Described here:
+
+https://www.mail-archive.com/gcc-bugs@gcc.gnu.org/msg664008.html
+
+Many of the intrinsics had names updated.  Supposedly previous specifications were not published so old names not required.
+---
+ numpy/distutils/checks/cpu_asimdfhm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/numpy/distutils/checks/cpu_asimdfhm.c b/numpy/distutils/checks/cpu_asimdfhm.c
+index bb437aa4035..cb49751c4c2 100644
+--- a/numpy/distutils/checks/cpu_asimdfhm.c
++++ b/numpy/distutils/checks/cpu_asimdfhm.c
+@@ -10,8 +10,8 @@ int main(void)
+     float32x4_t vf   = vdupq_n_f32(1.0f);
+     float32x2_t vlf  = vdup_n_f32(1.0f);
+ 
+-    int ret  = (int)vget_lane_f32(vfmlal_low_u32(vlf, vlhp, vlhp), 0);
+-        ret += (int)vgetq_lane_f32(vfmlslq_high_u32(vf, vhp, vhp), 0);
++    int ret  = (int)vget_lane_f32(vfmlal_low_f16(vlf, vlhp, vlhp), 0);
++        ret += (int)vgetq_lane_f32(vfmlslq_high_f16(vf, vhp, vhp), 0);
+ 
+     return ret;
+ }

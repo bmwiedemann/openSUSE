@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Dec  5 07:26:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix abbreviated references
+
+-------------------------------------------------------------------
+Fri Dec  3 10:54:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.21.4:
+  * #20278: BUG: Fix shadowed reference of dtype in type stub
+  * #20293: BUG: Fix headers for universal2 builds
+  * #20294: BUG: VOID_nonzero could sometimes mutate alignment flag
+  * #20295: BUG: Do not use nonzero fastpath on unaligned arrays
+  * #20296: BUG: Distutils patch to allow for 2 as a minor version (!)
+  * #20297: BUG, SIMD: Fix 64-bit/8-bit integer division by a scalar
+  * #20298: BUG, SIMD: Workaround broadcasting SIMD 64-bit integers on MSVC...
+  * #20300: REL: Prepare for the NumPy 1.21.4 release.
+  * #20302: TST: Fix a Arrayterator typing test failure
+- Release to 1.21.3:
+  * #19745: ENH: Add dtype-support to 3 `generic/ndarray methods
+  * #19955: BUG: Resolve Divide by Zero on Apple silicon + test failures...
+  * #19958: MAINT: Mark type-check-only ufunc subclasses as ufunc aliases...
+  * #19994: BUG: np.tan(np.inf) test failure
+  * #20080: BUG: Correct incorrect advance in PCG with emulated int128
+  * #20081: BUG: Fix NaT handling in the PyArray_CompareFunc for datetime...
+  * #20082: DOC: Ensure that we add documentation also as to the dict for...
+  * #20106: BUG: core: result_type(0, np.timedelta64(4)) would seg. fault.
+- Add patch to fix aarch64 support:
+  * numpy-fix-cpu_asimdfhm.patch
+
+-------------------------------------------------------------------
 Fri Nov 19 00:33:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch bpo-45167-fixes.patch:

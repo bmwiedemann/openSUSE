@@ -24,8 +24,8 @@
 %endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.21.2
-%define _ver 1_21_2
+%define ver 1.21.4
+%define _ver 1_21_4
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -84,8 +84,10 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM -- gh#numpy/numpy/commit/8871c7285fc097fd1bf713aa184cba7e2804f625
+# PATCH-FIX-UPSTREAM -- gh#numpy/numpy#20347
 Patch2:         bpo-45167-fixes.patch
+# PATCH-FIX-UPSTREAM -- gh#numpy/numpy#20388
+Patch3:         numpy-fix-cpu_asimdfhm.patch
 BuildConflicts: gcc11 < 11.2
 BuildRequires:  %{python_module Cython >= 0.29.24}
 BuildRequires:  %{python_module base >= 3.7}
@@ -178,7 +180,7 @@ sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 
 # force cythonization
-rm PKG-INFO
+rm -f PKG-INFO
 
 %build
 %define _lto_cflags %{nil}
