@@ -18,15 +18,15 @@
 
 
 Name:           votca-xtp
-Version:        2021.2
+Version:        2022~rc1
 Release:        0
-%define         uversion %version
-%define         sover 2021
+%define         uversion 2022-rc.1
+%define         sover 2022
 Summary:        VOTCA excitation and charge properties module
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
-Source0:        https://github.com/votca/xtp/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
+Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/votca-%{uversion}.tar.gz
 
 BuildRequires:  cmake >= 2.8.4
 BuildRequires:  fdupes
@@ -40,6 +40,7 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_timer-devel >= 1.48.0
 BuildRequires:  libxc-devel
 BuildRequires:  libint-devel
+BuildRequires:  libecpint-devel
 BuildRequires:  pkg-config
 BuildRequires:  votca-csg-devel = %{version}
 # for hdf5
@@ -104,14 +105,14 @@ coarse-graining of various systems. The core is written in C++.
 This package contains the architecture-independent data files for VOTCA XTP.
 
 %prep
-%setup -n xtp-%{uversion} -q
+%setup -n votca-%{uversion} -q
 
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
-sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/libxtp/version.cc
+sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" xtp/src/libxtp/version.cc
 
 %build
-%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_MANPAGES=ON -DENABLE_TESTING=ON
+%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_MANPAGES=ON -DENABLE_TESTING=ON ../xtp
 # save some memory
 %define _smp_mflags -j1
 %cmake_build
@@ -129,12 +130,12 @@ sed -i -e '1s@env @@'  %{buildroot}/%{_bindir}/xtp_* %{buildroot}/%{_datadir}/vo
 %postun -n libvotca_xtp%sover -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.rst NOTICE.rst README.rst
+%doc CHANGELOG.rst xtp/NOTICE.rst README.rst
 %{_bindir}/xtp_*
 %{_mandir}/man1/xtp_*
 
 %files common
-%license LICENSE.rst
+%license xtp/LICENSE.rst
 %{_datadir}/votca
 
 %files -n libvotca_xtp%sover
