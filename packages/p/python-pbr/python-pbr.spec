@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pbr%{psuffix}
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
