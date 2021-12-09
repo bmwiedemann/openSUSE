@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Dec  8 21:07:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 7.0.4
+  * Compatibility with Python 3.10
+  * Supports proxying raw TCP connections
+  * Support TCP connections that start with a server-side greeting
+  * Support SMTP
+  * Accept HTTP/2 requests from the client and forward them to
+    an HTTP/1 server
+  * Displays WebSocket messages also in a dedicated UI tab
+  * Clients can now establish TLS with the proxy right from the
+    start, which can add a significant layer of defense in public
+    networks.
+  * Removed pathoc and pathod, see
+    https://github.com/mitmproxy/mitmproxy/issues/4273
+
+-------------------------------------------------------------------
 Wed Jan 27 14:37:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0.2

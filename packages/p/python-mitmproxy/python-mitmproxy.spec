@@ -20,13 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-mitmproxy
-Version:        6.0.2
+Version:        7.0.4
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
-Source:         https://github.com/mitmproxy/mitmproxy/archive/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
+Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli >= 1.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module asgiref >= 3.2.10}
@@ -84,13 +84,11 @@ Requires:       python-urwid >= 2.1.1
 Requires:       python-wsproto >= 1.0
 Requires:       python-zstandard >= 0.11
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
-This repository contains the **mitmproxy** and **pathod** projects.
-
 mitmproxy is an interactive, SSL/TLS-capable intercepting proxy with a console
 interface for HTTP/1, HTTP/2, and WebSockets.
 
@@ -98,14 +96,12 @@ mitmdump is the command-line version of mitmproxy. Think tcpdump for HTTP.
 
 mitmweb is a web-based interface for mitmproxy.
 
-pathoc and pathod are perverse HTTP client and server applications
-designed to let you craft almost any conceivable HTTP request, including ones
-that creatively violate the standards.
-
 %prep
 %setup -q -n mitmproxy-%{version}
 #remove shebang
+sed -i '1 {\@^#!/usr/bin/python@ d}' mitmproxy/contrib/urwid/raw_display.py
 sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/contrib/wbxml/*.py
+sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/utils/emoji.py
 # upstream likes to pin dependencies too aggressively
 sed -i 's/,\s*<.*"/"/g' setup.py
 rm mitmproxy/contrib/kaitaistruct/make.sh
@@ -119,8 +115,6 @@ rm mitmproxy/contrib/kaitaistruct/make.sh
 %python_clone -a %{buildroot}%{_bindir}/mitmdump
 %python_clone -a %{buildroot}%{_bindir}/mitmproxy
 %python_clone -a %{buildroot}%{_bindir}/mitmweb
-%python_clone -a %{buildroot}%{_bindir}/pathoc
-%python_clone -a %{buildroot}%{_bindir}/pathod
 
 %check
 # test_refresh fails on i586... wrong timestamp type, maybe?
@@ -132,24 +126,18 @@ rm mitmproxy/contrib/kaitaistruct/make.sh
 %python_install_alternative mitmdump
 %python_install_alternative mitmproxy
 %python_install_alternative mitmweb
-%python_install_alternative pathoc
-%python_install_alternative pathod
 
 %postun
 %python_uninstall_alternative mitmdump
 %python_uninstall_alternative mitmproxy
 %python_uninstall_alternative mitmweb
-%python_uninstall_alternative pathoc
-%python_uninstall_alternative pathod
 
 %files %{python_files}
-%doc README.rst CHANGELOG.rst
+%doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/*
 %python_alternative %{_bindir}/mitmdump
 %python_alternative %{_bindir}/mitmproxy
 %python_alternative %{_bindir}/mitmweb
-%python_alternative %{_bindir}/pathoc
-%python_alternative %{_bindir}/pathod
 
 %changelog
