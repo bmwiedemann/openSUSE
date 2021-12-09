@@ -18,13 +18,13 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.3.1
+Version:        4.4
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
 Group:          Productivity/Hamradio/Other
 URL:            https://hamlib.github.io/
-Source:         https://github.com/Hamlib/Hamlib/archive/refs/tags/%{version}.tar.gz#/Hamlib-%{version}.tar.gz
+Source:         https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hamlib-3.0-perl_install.patch -- patch from Fedora
 Patch0:         hamlib-3.0-perl_install.patch
 BuildRequires:  fdupes
@@ -126,7 +126,7 @@ Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
 %prep
-%setup -q -n Hamlib-%{version}
+%setup -q
 %patch0 -p1
 
 %build
@@ -181,7 +181,7 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_bindir}/ampctl
 %{_bindir}/ampctld
 %{_bindir}/rigctlcom
-%{_bindir}/testlibusb
+%{_bindir}/rigtestlibusb
 %{_mandir}/man1/rigctl.1%{?ext_man}
 %{_mandir}/man1/rigctld.1%{?ext_man}
 %{_mandir}/man1/rigmem.1%{?ext_man}
@@ -196,6 +196,8 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 %{_mandir}/man7/hamlib-utilities.7%{?ext_man}
 %{_mandir}/man7/hamlib.7%{?ext_man}
 %{_docdir}/hamlib
+%exclude %{_docdir}/hamlib/COPYING*
+%exclude %{_docdir}/hamlib/LICENSE
 
 %files devel
 %dir %{_includedir}/hamlib

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Dec  8 17:08:24 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed source URL and duplicate license files
+
+-------------------------------------------------------------------
+Sat Dec  4 21:42:49 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.4
+  * Icom rigs now default filter 2 when setting PKTUSB but user can
+    override 
+  * Fix FTDX9000 meter readings
+  * Add Android sensor as a rotator
+  * Added rig_get_vfo to some Icom rigs that have XCHG or 0x25
+    command capability
+  * Added ability to build hamlib with docker
+  * Added M0NKA mcHF URP rig
+  * Faster serial i/o noticeable on higher baud rates
+  * IC7300/9700/7800/785x set_clock/get_clock routines
+    added -- no auto set yet
+  * Yaesu FT1200/891/991/DX10/DX101/DX101MP set_clock/get_clock
+    routines added
+
+-------------------------------------------------------------------
 Sun Sep 19 21:52:15 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Fixed source URL
