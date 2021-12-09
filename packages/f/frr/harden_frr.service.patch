@@ -1,14 +1,15 @@
-Index: frr-frr-8.0.1/tools/frr.service.in
+Index: frr-frr-8.1/tools/frr.service.in
 ===================================================================
---- frr-frr-8.0.1.orig/tools/frr.service.in
-+++ frr-frr-8.0.1/tools/frr.service.in
-@@ -7,6 +7,15 @@ Before=network.target
+--- frr-frr-8.1.orig/tools/frr.service.in
++++ frr-frr-8.1/tools/frr.service.in
+@@ -7,6 +7,16 @@ Before=network.target
  OnFailure=heartbeat-failed@%n
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
++ReadWritePaths=/etc/frr
 +ProtectHome=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
@@ -18,17 +19,18 @@ Index: frr-frr-8.0.1/tools/frr.service.in
  Nice=-5
  Type=forking
  NotifyAccess=all
-Index: frr-frr-8.0.1/tools/frr@.service.in
+Index: frr-frr-8.1/tools/frr@.service.in
 ===================================================================
---- frr-frr-8.0.1.orig/tools/frr@.service.in
-+++ frr-frr-8.0.1/tools/frr@.service.in
-@@ -7,6 +7,15 @@ Before=network.target
+--- frr-frr-8.1.orig/tools/frr@.service.in
++++ frr-frr-8.1/tools/frr@.service.in
+@@ -7,6 +7,16 @@ Before=network.target
  OnFailure=heartbeat-failed@%n
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectSystem=full
++ReadWritePaths=/etc/frr
 +ProtectHome=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:40:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Add ReadWritePaths=/etc/frr to harden_frr.service.patch (bsc#1181400).
+
+-------------------------------------------------------------------
 Wed Nov 17 05:48:12 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
 
 - Update to version 8.1
