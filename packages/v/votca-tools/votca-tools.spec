@@ -17,15 +17,15 @@
 #
 
 Name:           votca-tools
-Version:        2021.2
+Version:        2022~rc1
 Release:        0
-%define         uversion %version
-%define         sover 2021
+%define         uversion 2022-rc.1
+%define         sover 2022
 Summary:        VOTCA tools library
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
-Source0:        https://github.com/votca/tools/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
+Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/votca-%{uversion}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -74,15 +74,15 @@ coarse-graining of various systems. The core is written in C++.
 This package contains development headers and libraries for votca-tools.
 
 %prep
-%setup -n tools-%{uversion} -q
+%setup -n votca-%{uversion} -q
 
 # Avoid unnecessary rebuilds of the package
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
-sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/libtools/version.cc
+sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" tools/src/libtools/version.cc
 
 %build
-%{cmake} -DINSTALL_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON
+%{cmake} -DINSTALL_RC_FILES=OFF -DCMAKE_SKIP_RPATH=OFF -DENABLE_TESTING=ON ../tools
 %cmake_build
 
 %install
@@ -101,8 +101,8 @@ sed -i '1s@env @@' %{buildroot}/%{_bindir}/votca_compare
 %postun -n libvotca_tools%sover -p /sbin/ldconfig
 
 %files -n libvotca_tools%sover
-%doc NOTICE README.rst CHANGELOG.rst
-%license LICENSE
+%doc tools/NOTICE README.rst CHANGELOG.rst
+%license tools/LICENSE
 %{_libdir}/libvotca_tools.so.%{sover}
 
 %files devel
