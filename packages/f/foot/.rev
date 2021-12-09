@@ -168,4 +168,15 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.10.2 for more details.</comment>
     <requestid>935730</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d36dea609bedfbedd862b4a42626f1c1</srcmd5>
+    <version>1.10.3</version>
+    <time>1639075541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.3:
+  * Implemented support for all other modes of the Kitty keyboard protocol.
+    See Kitty keyboard protocol docs for more details.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.3 for more details.</comment>
+    <requestid>937364</requestid>
+  </revision>
 </revisionlist>

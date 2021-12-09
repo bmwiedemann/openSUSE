@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  8 19:48:49 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.3:
+  * Implemented support for all other modes of the Kitty keyboard protocol.
+    See Kitty keyboard protocol docs for more details.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.3 for more details.
+
+-------------------------------------------------------------------
 Thu Dec  2 20:10:15 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.10.2:
