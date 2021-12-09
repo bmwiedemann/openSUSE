@@ -1,11 +1,25 @@
-diff -Nur gnome-boxes-40.2-old/data/recommended-downloads.xml gnome-boxes-40.2/data/recommended-downloads.xml
---- gnome-boxes-40.2-old/data/recommended-downloads.xml	2021-06-04 14:09:48.002527000 +0200
-+++ gnome-boxes-40.2/data/recommended-downloads.xml	2021-06-04 19:36:33.338344987 +0200
-@@ -14,6 +14,7 @@
-   <os_id>http://fedoraproject.org/silverblue/34</os_id>
-   <os_id>http://ubuntu.com/ubuntu/20.10</os_id>
+From 16edba43ce6be1f681db25a5a1b93a139ed1f862 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B8rn=20Lie?= <bjorn.lie@gmail.com>
+Date: Mon, 6 Dec 2021 19:21:28 +0000
+Subject: [PATCH] recommended-downloads: Add openSUSE Tumbleweed
+
+Add openSUSE Tumbleweed, the rolling release version of openSUSE, to list of recommended OS downloads.
+---
+ data/recommended-downloads.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/recommended-downloads.xml b/data/recommended-downloads.xml
+index 44bbb7ae..aca6aa3c 100644
+--- a/data/recommended-downloads.xml
++++ b/data/recommended-downloads.xml
+@@ -15,6 +15,7 @@
+   <os_id>http://fedoraproject.org/silverblue/35</os_id>
+   <os_id>http://ubuntu.com/ubuntu/21.10</os_id>
    <os_id>http://opensuse.org/opensuse/15.3</os_id>
 +  <os_id>http://opensuse.org/opensuse/tumbleweed</os_id>
-   <os_id>http://debian.org/debian/10</os_id>
-   <os_id>http://endlessos.com/eos/3.10</os_id>
+   <os_id>http://debian.org/debian/11</os_id>
+   <os_id>http://endlessos.com/eos/4.0</os_id>
    <os_id>http://gnome.org/gnome/nightly</os_id>
+-- 
+GitLab
+

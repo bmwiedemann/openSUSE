@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:05:24 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Update to the list of downloadable operating systems
+  + Fix an issue causing VMs to have no sound
+  + Fix an issue preventing users from configuring 3D acceleration
+  + Updated translations.
+- Rebase gnome-boxes-opensuse.patch, push it upstream, fix tag in
+  spec.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:35:49 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
