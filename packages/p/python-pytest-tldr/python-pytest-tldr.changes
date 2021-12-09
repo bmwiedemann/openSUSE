@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  8 09:32:17 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.2.4
+  * Restored compatibility with pytest < 6. (`#32 <https://github.com/freakboy3742/pytest-tldr/issues/32>`_)
+  * Corrected output stream flush handling. This prevented long-running test results
+    from being displayed until the end of the test suite. (`#28 <https://github.com/freakboy3742/pytest-tldr/issues/28>`_)
+
+-------------------------------------------------------------------
 Tue Aug 25 07:50:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.2.2

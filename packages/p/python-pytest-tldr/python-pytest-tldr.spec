@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tldr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-tldr
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        A pytest plugin that limits the output to just the things you need
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ URL:            https://github.com/freakboy3742/pytest-tldr
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-tldr/pytest-tldr-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 3.5.0}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,8 +48,7 @@ A pytest plugin that limits the output to just the things you need.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_coverage is failing
-%pytest -k 'not test_coverage'
+%pytest
 
 %files %{python_files}
 %doc README.rst
