@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Nov 24 15:23:15 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- requires jinja2 for testing
+
+-------------------------------------------------------------------
+Wed Nov 24 14:19:24 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- requires railroad-diagrams for testing
+
+-------------------------------------------------------------------
+Wed Nov 24 14:03:24 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 3.0.6:
+  * Added suppress_warning() method to individually suppress a warning
+    on a specific ParserElement. Used to refactor original_text_for
+    to preserve internal results names, which, while undocumented, had
+    been adopted by some projects.
+  * Fix bug when delimited_list was called with a str literal instead
+    of a parse expression.
+- changes from 3.0.5:
+  * Added return type annotations for col, line, and lineno.
+  * Fixed bug when warn_ungrouped_named_tokens_in_collection warning
+    was raised when assigning a results name to an original_text_for
+    expression. (Issue #110, would raise warning in packaging.)
+  * Fixed internal bug where ParserElement.streamline() would not
+    return self if already streamlined.
+  * Changed run_tests() output to default to not showing line and
+    column numbers. If line numbering is desired, call with
+    with_line_numbers=True. Also fixed minor bug where separating
+    line was not included after a test failure.
+- changes from 3.0.4:
+  * Fixed bug in which Dict classes did not correctly return tokens
+    as nested ParseResults
+  * Documented API-changing side-effect of converting ParseResults
+    to use __slots__ to pre-define instance attributes. 
+  * Fixed bug in railroad diagramming where the vertical limit would
+    count all expressions in a group, not just those that would
+    create visible railroad elements.
+- changes from 3.0.3:
+  * Fixed regex typo in one_of fix for as_keyword=True.
+  * Fixed a whitespace-skipping bug, Issue #319, introduced as part
+    of the revert of the LineStart changes.
+  * Added header column labeling > 100 in with_line_numbers - some
+    input lines are longer than others.
+- changes from 3.0.2:
+  * Reverted change in behavior with LineStart and StringStart, which
+    changed the interpretation of when and how LineStart and
+    StringStart should match when a line starts with spaces. In 3.0.0,
+    the xxxStart expressions were not really treated like expressions
+    in their own right, but as modifiers to the following expression
+    when used like LineStart() + expr, so that if there were whitespace
+    on the line before expr (which would match in versions prior to
+    3.0.0), the match would fail.
+    3.0.0 implemented this by automatically promoting LineStart() +
+    expr to AtLineStart(expr), which broke existing parsers that did
+    not expect expr to necessarily be right at the start of the line,
+    but only be the first token found on the line. This was reported
+    as a regression in Issue (gh#pyparsing/pyparsing/issues#317).
+    In 3.0.2, pyparsing reverts to the previous behavior, but will
+    retain the new AtLineStart and AtStringStart expression classes,
+    so that parsers can chose whichever behavior applies in their
+    specific instance.
+  * Performance enhancement to one_of to always generate an internal
+    Regex, even if caseless or as_keyword args are given as True
+    (unless explicitly disabled by passing use_regex=False).
+  * IndentedBlock class now works with recursive flag. By default,
+    the results parsed by an IndentedBlock are grouped. This can be
+    disabled by constructing the IndentedBlock with grouped=False.
+- changes from 3.0.1
+  * Fixed bug where Word(max=n) did not match word groups less than
+    length 'n'. Thanks to Joachim Metz for catching this!
+  * Fixed bug where ParseResults accidentally created recursive
+    contents. Joachim Metz on this one also!
+  * Fixed bug where warn_on_multiple_string_args_to_oneof warning
+    is raised even when not enabled.
+- changes from 3.0.0
+  * A consolidated list of all the changes in the 3.0.0 release
+    can be found in docs/whats_new_in_3_0_0.rst.
+    (https://github.com/pyparsing/pyparsing/blob/master/docs/whats_new_in_3_0_0.rst)
+- disable build for python2, not supported anymore
+
+-------------------------------------------------------------------
 Thu Jun 17 17:30:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add Provides: for python*dist(pyparsing): work around boo#1186870

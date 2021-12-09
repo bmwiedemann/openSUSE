@@ -28,9 +28,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
+%define skip_python2 1
 Name:           python-pyparsing%{psuffix}
-Version:        2.4.7
+Version:        3.0.6
 Release:        0
 Summary:        Grammar Parser Library for Python
 License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
@@ -41,7 +41,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module railroad-diagrams}
 %endif
 %ifpython2
 Provides:       %{mypython}-parsing = %{version}
@@ -88,8 +90,7 @@ cp -r pyparsing.egg-info %{buildroot}%{$python_sitelib}/pyparsing-%{version}-py%
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
-%{python_sitelib}/pyparsing.py*
-%pycache_only %{python_sitelib}/__pycache__/*
+%{python_sitelib}/pyparsing
 %{python_sitelib}/pyparsing-%{version}-py*.egg-info/
 %endif
 
