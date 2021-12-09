@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Dec 02 05:33:04 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.019:
+  * Optimize sql for selecting mirror misses (#232)
+  * Import hashes (#231)
+  * Fix mirrorlist for subsidiary when in the same db with headquarter (#230)
+
+-------------------------------------------------------------------
+Thu Nov 25 08:56:58 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.018:
+  * Fix occasional 404 on subtree mirrorlist
+  * Fix not selecting mirrors for unknown country
+  * Let Task MirrorProbe work without GeoIP database
+
+-------------------------------------------------------------------
 Thu Nov 11 09:49:34 UTC 2021 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.017:
