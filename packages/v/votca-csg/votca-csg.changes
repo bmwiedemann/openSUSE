@@ -1,4 +1,202 @@
 -------------------------------------------------------------------
+Fri Dec  3 05:50:19 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2022~rc1 
+  - create script to convert help to rst ([gh#votca/tools#312],
+    [gh#votca/tools#328])
+  - add rst pages to doc ([gh#votca/tools#330],
+    [gh#votca/tools#332])
+  - remove tex and man output from app class
+    ([gh#votca/tools#329])
+  - fix example rst section ([gh#votca/tools#327],
+    [gh#votca/tools#339])
+  - remove author and copyright from rst ([gh#votca/tools#331])
+  - fix rst warnings ([gh#votca/tools#334], [gh#votca/tools#346],
+    [gh#votca/tools#348])
+  - export PYTHONPATH in VOTCARC ([gh#votca/tools#340])
+  - drop csh support in VOTCARC ([gh#votca/tools#342])
+  - add missing cmath include ([gh#votca/tools#351])
+  - removed eigenvalue algorithm, now done by eigen
+    ([gh#votca/tools#352])
+  - Added N-DimVector ([gh#votca/tools#360])
+  - properties can be removed and string conversion much improved
+    ([gh#votca/tools#365])
+  - adapted tokenizer api ([gh#votca/tools#367])
+  - improve mkl linkage and threading backend selection
+    ([gh#votca/tools#371], [gh#votca/tools#383])
+  - removed tex option ([gh#votca/tools#372])
+  - made membervariable format consistent ([gh#votca/tools#373])
+  - added AddTree to property ([gh#votca/tools#374])
+  - added optionshandler ([gh#votca/tools#375])
+  - made bool conversion more restrictive ([gh#votca/tools#366])
+  - made factory more general ([gh#votca/tools#377])
+  - generate manpage & rst using votca_help2man
+    ([gh#votca/csg#637], [gh#votca/csg#638], [gh#votca/csg#640],
+    [gh#votca/csg#641])
+  - format csg_orientcorr help for rst conversion
+    ([gh#votca/csg#648])
+  - update help of functions_common for rst ([gh#votca/csg#650])
+  - switched topology map to using unique_ptr ([gh#votca/csg#651])
+  - switch to using unique_ptr for cgmoleculedef
+    ([gh#votca/csg#652])
+  - switch boundary conditions to unique_ptr ([gh#votca/csg#654])
+  - switch NBList to unique_ptr ([gh#votca/csg#659])
+  - switch csgapplication worker to unique_ptr
+    ([gh#votca/csg#660])
+  - remove use of new with splines in csg_fmatch
+    ([gh#votca/csg#662])
+  - update boost test floating point comparison header
+    ([gh#votca/csg#663])
+  - switch mutex to unique_ptr ([gh#votca/csg#664])
+  - standardize header formatting ([gh#votca/csg#661])
+  - clean up memory management in partial_rdf ([gh#votca/csg#665])
+  - deleted unused makefile ([gh#votca/csg#666])
+  - memory management of molecules fixed ([gh#votca/csg#657])
+  - switched memory management of residues using boost_deque
+    ([gh#votca/csg#655])
+  - store beads directly in boost deque ([gh#votca/csg#656])
+  - switched molecule stable_vector to boost deque
+    ([gh#votca/csg#667])
+  - convert maps to unique_ptrs ([gh#votca/csg#653])
+  - add iterative integral equation (iie) method
+    ([gh#votca/csg#675])
+  - fix issues with IHNC (newton-mod) Integral equation method
+    ([gh#votca/csg#683], [gh#votca/csg#700])
+  - fix links in documentation ([gh#votca/csg#686],
+    [gh#votca/csg#687], [gh#votca/csg#688])
+  - use ndim vector instead of std::vector ([gh#votca/csg#689])
+  - adapted tokenizer api ([gh#votca/csg#693])
+  - made membervariable format consistent ([gh#votca/csg#694])
+  - add ability to run ibi as a postupd method
+    ([gh#votca/csg#696])
+  - removed unused functions ([gh#votca/csg#702])
+  - reworked lammps molecule naming ([gh#votca/csg#703])
+  - Updated doxygen intro ([gh#votca/csg#712])
+  - Updated coordinate precision ([gh#votca/xtp#638])
+  - Refactored energy corrections in RPA outside QPs
+    ([gh#votca/xtp#577])
+  - Made SetupCptTable static ([gh#votca/xtp#650])
+  - using libecpint for pseudo potentials ([gh#votca/xtp#588])
+  - implement fchk writer ([gh#votca/xtp#649])
+  - Fixing BSE triplet storage ([gh#votca/xtp#653])
+    ([gh#votca/xtp#654])
+  - added transpose to CudaMatrix ([gh#votca/xtp#657])
+  - generate manpage using votca_help2man ([gh#votca/xtp#655],
+    [gh#votca/xtp#659])
+  - Fix script rst generation ([gh#votca/xtp#656])
+  - Clean scripts ([gh#votca/xtp#668])
+  - Read MO coefficients computed with orca from the molden file
+    instead of the .gbw binary ([gh#votca/xtp#589])
+  - fix lxml detection in cmake ([gh#votca/xtp#670])
+  - extend fchk writer with option to print single KS state
+    densities and densities relative to the ground state
+    ([gh#votca/xtp#662])
+  - added a more general constructor to cudamatrix
+    ([gh#votca/xtp#671])
+  - removed lapack routine for solving BSE and added GPU support
+    ([gh#votca/xtp#672])
+  - changed return value from reference to a copy
+    ([gh#votca/xtp#676])
+  - add CodeQL static analysis to GitHub Actions
+    ([gh#votca/xtp#677])
+  - redo openmp_cuda api, correct davidson for non symmetric
+    problems. ([gh#votca/xtp#684])
+  - changed molecule in csg topology container to actual object
+    instead of pointer ([gh#votca/xtp#683])
+  - remove codecov comments from inside code at PR
+    ([gh#votca/xtp#686])
+  - count the number of available CPUs for autogen_mapping script
+    ([gh#votca/xtp#688])
+  - added a checkpoint reader to jobtopology class
+    ([gh#votca/xtp#691])
+  - fixed issue with molden file path and orca executable path
+    ([gh#votca/xtp#692])
+  - Fixed bug in mapping ([gh#votca/xtp#690])
+  - added support for external fields in DFT ([gh#votca/xtp#698])
+  - allocate threecenter matrices in parallel ([gh#votca/xtp#701])
+  - use NDimVector instead of std::vector in vxcgrid.
+    ([gh#votca/xtp#703])
+  - Fixing the tutorial ([gh#votca/xtp#705])
+  - adapted tokenizer api ([gh#votca/xtp#707])
+  - move OpenMP detection to tools ([gh#votca/xtp#709])
+  - refactored applications ([gh#votca/xtp#710])
+  - add command line option for number of gpus
+    ([gh#votca/xtp#711])
+  - reworked iqm statefile reading ([gh#votca/xtp#712])
+  - made membervariable format consistent ([gh#votca/xtp#713])
+  - updated benchmark ([gh#votca/xtp#714])
+  - reworked commandline options ([gh#votca/xtp#715])
+  - renamed cmd line arguments in xtp_parallel
+    ([gh#votca/xtp#718])
+  - added incremental Fock matrix building ([gh#votca/xtp#716])
+  - disable codeql check in GitHub Actions ([gh#votca/xtp#720])
+  - replace std::vector by Eigen::Array<bool,..>
+    ([gh#votca/xtp#719])
+  - overhaul complete option handling ([gh#votca/xtp#704])
+  - Fixed exciton options checking ([gh#votca/xtp#726])
+  - added basis gpu runner and test to suite ([gh#votca/xtp#725])
+  - turned sigma choice into a factory ([gh#votca/xtp#731])
+  - use middleRows-Cols and refactor numerical integration
+    ([gh#votca/xtp#732])
+  - increase performance of numerical integration
+    ([gh#votca/xtp#733])
+  - upgrade xtp to cxx17 ([gh#votca/xtp#737], #880)
+  - Remove unused variables ([gh#votca/xtp#742])
+  - fix issue with writing strings to hdf5 files
+    ([gh#votca/xtp#743])
+  - Merge submodules in monorepo ([gh#votca/votca#763],
+    [gh#votca/votca#768], [gh#votca/votca#816],
+    [gh#votca/votca#822], [gh#votca/votca#849])
+  - xtp: Fix HDF5 issue on FreeBSD ([gh#votca/votca#760],
+    [gh#votca/votca#848])
+  - update documentation ([gh#votca/votca#852],
+    [gh#votca/votca#877])
+  - add vscode to gitignore ([gh#votca/votca#853])
+  - re-enable GPU build ([gh#votca/votca#854])
+  - disable test_random test on valgrind ([gh#votca/votca#855])
+  - introduce global changelog ([gh#votca/votca#858])
+  - clean up github actions and merge votca/actions
+    ([gh#votca/votca#859], [gh#votca/votca#867],
+    [gh#votca/votca#874], [gh#votca/votca#878],
+    [gh#votca/votca#883], [gh#votca/votca#894])
+  - fix warning on intel compiler ([gh#votca/votca#861])
+  - added gpu benchmark for xtp ([gh#votca/votca#857])
+  - Remove submodules from doc and actions ([gh#votca/votca#865])
+  - updated libint to 2.7 ([gh#votca/votca#864])
+  - added xtp_modify_jobfile to extract jobs from large jobfile
+    ([gh#votca/votca#840])
+  - rename auxiliary basissets to aux-<basisset_name>
+    ([gh#votca/votca#871])
+  - added documentation about architecture to votca and votca-xtp
+    ([gh#votca/votca#869])
+  - check for gmx-2019 in csg-tutorials ([gh#votca/votca#875])
+  - added the full basissets to the orb checkpoint file
+    ([gh#votca/votca#863])
+  - return default for empty strings in option file
+    ([gh#votca/votca#873])
+  - replaced removed std::bind2nd by lambda ([gh#votca/votca#881])
+  - change error to warning in reading lammps bonds
+    ([gh#votca/votca#884])
+  - add a citation.cff file ([gh#votca/votca#845])
+  - improve support for Intel compilers ([gh#votca/votca#882],
+    [gh#votca/votca#892])
+  - cmake: allow libint2 detections through cmake
+    ([gh#votca/votca#888])
+  - allow libxc detection through cmak ([gh#votca/votca#890])
+  - bump required cmake version to 3.13 to support -B option
+    ([gh#votca/votca#887], [gh#votca/votca#893])
+  - changed hard coded file to option value in eqm.cc
+    ([gh#votca/votca#900])
+  - inject march=native by default and add cmake option for
+    valgrind tests ([gh#votca/votca#896], [gh#votca/votca#903])
+  - add performance compilation info ([gh#votca/votca#895])
+  - Read number of alpha electrons from orca log, not from molden
+    ([gh#votca/votca#901])
+  - Refactor parsing of the tasks_string ([gh#votca/votca#902])
+  - set correct filename for initial guess from monomer orbitals
+    ([gh#votca/votca#904])
+
+-------------------------------------------------------------------
 Mon Sep 20 09:45:09 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2021.2

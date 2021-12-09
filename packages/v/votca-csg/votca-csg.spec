@@ -18,16 +18,15 @@
 
 
 Name:           votca-csg
-Version:        2021.2
+Version:        2022~rc1
 Release:        0
-%define         uversion %version
-%define         sover 2021
+%define         uversion 2022-rc.1
+%define         sover 2022
 Summary:        VOTCA coarse-graining engine
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
-Source0:        https://github.com/votca/csg/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
-Source1:        https://github.com/votca/csg-tutorials/archive/v%{uversion}.tar.gz#/%{name}-tutorials-%{uversion}.tar.gz
+Source0:        https://github.com/votca/votca/archive/v%{uversion}.tar.gz#/votca-%{uversion}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -143,15 +142,14 @@ methods are implemented using bash + perl.
 This package contains the bash completion support for votca-csg.
 
 %prep
-%setup -n csg-%{uversion} -q
+%setup -n votca-%{uversion} -q
 
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S')
-sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/libcsg/version.cc
-tar -xzf %{S:1}
+sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" csg/src/libcsg/version.cc
 
 %build
-%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_CSGAPPS=ON -DENABLE_TESTING=ON
+%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_CSGAPPS=ON -DENABLE_TESTING=ON ../csg
 #-DINTEGRATIONTEST_TOLERANCE="2.1e-5"
 %cmake_build
 
@@ -165,7 +163,8 @@ cp %{buildroot}%{_datadir}/votca/rc/csg-completion.bash %{buildroot}%{_datadir}/
 
 %define pkgdocdir %{_docdir}/%{name}
 mkdir -p %{buildroot}%{pkgdocdir}/examples
-cp -r csg-tutorials-%{uversion}/* %{buildroot}%{pkgdocdir}/examples
+pwd
+cp -r csg-tutorials/* %{buildroot}%{pkgdocdir}/examples
 sed -i '1s@env @@' %{buildroot}%{pkgdocdir}/examples/LJ1-LJ2/imc/svd.py
 
 %fdupes %{buildroot}%{_prefix}
@@ -177,8 +176,8 @@ sed -i '1s@env @@' %{buildroot}%{pkgdocdir}/examples/LJ1-LJ2/imc/svd.py
 %postun -n libvotca_csg%sover -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.rst NOTICE.rst README.rst 
-%license LICENSE.rst
+%doc CHANGELOG.rst csg/NOTICE.rst README.rst 
+%license csg/LICENSE.rst
 %{_bindir}/csg_*
 %exclude %{_bindir}/csg_{fluctuations,orientcorr,part_dist,partial_rdf,radii,sphericalorder,traj_force}
 %{_mandir}/man1/*
@@ -195,7 +194,7 @@ sed -i '1s@env @@' %{buildroot}%{pkgdocdir}/examples/LJ1-LJ2/imc/svd.py
 %{_datadir}/votca
 
 %files -n libvotca_csg%sover
-%license LICENSE.rst
+%license csg/LICENSE.rst
 %{_libdir}/libvotca_csg.so.%{sover}
 
 %files devel

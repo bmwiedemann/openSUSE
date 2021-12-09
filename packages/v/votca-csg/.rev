@@ -296,4 +296,12 @@
     <comment></comment>
     <requestid>920309</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>81a0e0afa13003735a2ae9434bb71181</srcmd5>
+    <version>2022~rc1</version>
+    <time>1639075539</time>
+    <user>dimstar_suse</user>
+    <comment>Version bump to v2022~rc1</comment>
+    <requestid>937373</requestid>
+  </revision>
 </revisionlist>
