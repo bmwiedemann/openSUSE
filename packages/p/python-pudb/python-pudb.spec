@@ -22,7 +22,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pudb
-Version:        2020.1
+Version:        2021.2.2
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
@@ -30,7 +30,6 @@ Group:          Development/Tools/Debuggers
 URL:            https://mathema.tician.de/software/pudb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urwid}
 BuildRequires:  fdupes
@@ -38,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
 Requires:       python-urwid
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
