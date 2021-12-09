@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>921782</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>91da926d7413a94c433406ad8b3999a9</srcmd5>
+    <version>0.8.0</version>
+    <time>1639075545</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix /run/parsec permission to 755. This is enough for all
+  users to access the service - boo#1193484 - CVE-2021-36781
+</comment>
+    <requestid>937794</requestid>
+  </revision>
 </revisionlist>

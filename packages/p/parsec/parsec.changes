@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  9 11:05:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix /run/parsec permission to 755. This is enough for all
+  users to access the service - boo#1193484 - CVE-2021-36781
+
+-------------------------------------------------------------------
 Mon Sep 27 10:18:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Allow access to /run/parsec to all users
