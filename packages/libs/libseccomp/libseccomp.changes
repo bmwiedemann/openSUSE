@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  2 12:09:38 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable python bindings at least for the distro default python3
+  package:
+  - adds make-python-build.patch
+
+-------------------------------------------------------------------
 Sun Nov  7 13:23:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.3

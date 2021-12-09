@@ -303,4 +303,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931392</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>5a3afcfbc692ea69615db136a55d0065</srcmd5>
+    <version>2.5.3</version>
+    <time>1639075492</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable python bindings at least for the distro default python3
+  package:
+  - adds make-python-build.patch (forwarded request 935165 from darix)</comment>
+    <requestid>935188</requestid>
+  </revision>
 </revisionlist>

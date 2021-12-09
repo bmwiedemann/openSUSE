@@ -28,11 +28,14 @@ Source:         https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source99:       baselibs.conf
+Source100:      series
+Patch1:         make-python-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Cython >= 0.29
 
 %description
 The libseccomp library provides an interface to the Linux Kernel's
@@ -73,6 +76,17 @@ syscall filtering mechanism, seccomp.
 
 This subpackage contains debug utilities for the seccomp interface.
 
+%package -n python3-seccomp
+Summary:        Python 3 bindings for seccomp
+Group:          Development/Tools/Debuggers
+Requires:       python3-Cython >= 0.29
+
+%description -n python3-seccomp
+The libseccomp library provides an interface to the Linux Kernel's
+syscall filtering mechanism, seccomp.
+
+This subpackage contains the python3 bindings for seccomp.
+
 %prep
 %autosetup -p1
 
@@ -90,6 +104,7 @@ fi
 autoreconf -fiv
 %configure \
     --includedir="%_includedir/%name" \
+    --enable-python \
     --disable-static \
     --disable-silent-rules \
     GPERF=/bin/true
@@ -99,8 +114,10 @@ make %{?_smp_mflags}
 %make_install
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %fdupes %buildroot/%_prefix
+rm %{buildroot}%{python3_sitearch}/install_files.txt
 
 %check
+export LD_LIBRARY_PATH="${PWD}/src/.libs"
 make check
 
 %post   -n %lname -p /sbin/ldconfig
@@ -119,5 +136,9 @@ make check
 %files tools
 %_bindir/scmp_sys_resolver
 %_mandir/man1/scmp_sys_resolver.1*
+
+%files -n python3-seccomp
+%{python3_sitearch}/seccomp-%{version}-py*.egg-info
+%{python3_sitearch}/seccomp.cpython*.so
 
 %changelog
