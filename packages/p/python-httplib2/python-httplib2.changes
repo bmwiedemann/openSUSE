@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 30 08:22:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add pyparsing dependency 
+
+-------------------------------------------------------------------
+Mon Nov 29 10:55:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.2:
+  auth: support pyparsing v3
+  proxy: correct extraction of errno from pysocks ProxyConnectionError
+  IMPORTANT cacerts: remove expired DST Root CA X3, add ISRG Root X1, X2
+
+-------------------------------------------------------------------
 Tue May 18 21:47:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.19.1:

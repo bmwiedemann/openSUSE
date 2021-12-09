@@ -20,7 +20,7 @@
 # Tests require network connection
 %bcond_with tests
 Name:           python-httplib2
-Version:        0.19.1
+Version:        0.20.2
 Release:        0
 Summary:        A Python HTTP client library
 License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later)
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
 Requires:       python-certifi
+Requires:       python-pyparsing >= 2.4.2
 BuildArch:      noarch
 %if %{with tests}
 # Test requirements (for ssl module):
