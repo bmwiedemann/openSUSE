@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -80,11 +80,11 @@ BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typed-ast}
 BuildRequires:  ImageMagick
 BuildRequires:  graphviz
-BuildRequires:  texlive-tex-gyre
 # For PNG format
 BuildRequires:  graphviz-gd
 # For PDF format (!?)
 BuildRequires:  graphviz-gnome
+BuildRequires:  texlive-tex-gyre
 %endif
 %python_subpackages
 
