@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:00:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.16:
+  + Print ProductName found even if subvendor/subdevice is unknown.
+  + Add New fields on PEL based on NVMe 2.0a.
+  + nvme-cli:
+    - Split media units written/read into hi/lo 64 bit fields.
+    - Add support for new SN650 device.
+    - Update WDC pluging version to 1.15.3.
+    - fix the [data|mdata]_len param (boo#1193547).
+    - Add support for C3/Latency Monitor Log page parsing.
+    - ctrl-loss-tmo should accept -1 as value.
+  + nvme: add spinup control feature (fid=0x1A).
+  + nvme: Add Identify for CNS 08h NVMe spec 2.0a based.
+  + nvme: add boot partition log support.
+  + nvme: add support for fid supported and effects log(lid =
+    0x12).
+  + add identify endurance group list (cns 0x19) support.
+  + add json support for zns report zones.
+  + fabrics: fix 'nvme discover' segfault if sysfs path is not
+    available.
+
+-------------------------------------------------------------------
 Fri Oct 15 12:12:46 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

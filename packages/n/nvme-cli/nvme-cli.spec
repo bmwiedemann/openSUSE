@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -27,7 +27,7 @@ Source:         https://github.com/linux-nvme/nvme-cli/archive/v%{version}.tar.g
 Source2:        nvme-cli-rpmlintrc
 # downstream patches:
 Patch102:       0102-nvme-cli-Add-script-to-determine-host-NQN.patch
-Patch103:	harden_nvmf-connect@.service.patch
+Patch103:       harden_nvmf-connect@.service.patch
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
