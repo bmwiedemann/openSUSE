@@ -1,5 +1,5 @@
 #
-# spec file for package python-PyQt6_sip
+# spec file for package python-PyQt6-sip
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,20 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-PyQt6-sip
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 URL:            https://www.riverbankcomputing.com/software/sip/
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/PyQt6_sip-%{version}.tar.gz
-Source1:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE
-Source2:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE-GPL2
-Source3:        https://www.riverbankcomputing.com/hg/sip/raw-file/tip/LICENSE-GPL3
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
@@ -47,7 +44,6 @@ without a library to be wrapped.
 
 %prep
 %setup -q -n PyQt6_sip-%{version}
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
 %build
 export CFLAGS="%{optflags}"
