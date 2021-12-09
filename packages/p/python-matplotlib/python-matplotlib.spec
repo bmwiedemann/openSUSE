@@ -288,6 +288,8 @@ skip_tests+=" or (test_correct_key and Qt4Agg)"
 skip_tests+=" or (test_fig_close and Qt4Agg)"
 # timing tests on obs can fail unpredictably
 skip_tests+=" or test_invisible_Line_rendering"
+# currently broken, revert with 3.5.0
+skip_tests+=" or test_mathtext_rendering or test_mathtext_exceptions"
 %{pytest_arch --pyargs matplotlib.tests \
               --pyargs mpl_toolkits.tests \
               -n auto \

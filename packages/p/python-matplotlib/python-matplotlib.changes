@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 04:42:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip some broken tests with new pyparsing. 
+
+-------------------------------------------------------------------
 Sat Oct 23 15:49:11 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.4.3
