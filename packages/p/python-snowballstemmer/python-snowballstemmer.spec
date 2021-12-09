@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-snowballstemmer
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        16 stemmer algorithms
 License:        BSD-3-Clause

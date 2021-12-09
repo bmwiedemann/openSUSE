@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:02:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Python 2 is no longer actively supported
+  * Fix code generated for division.
+  * C#: An `among` without functions is now generated as `static` and groupings
+    are now generated as constant.
+  * Constant numeric subexpressions and constant numeric tests are now
+    evaluated at Snowball compile time.
+  * german2: Fix handling of `qu` to match algorithm description.
+  * arabic: Handle exception cases in the among they're exceptions to.
+  * greek: Remove unused slice setting, handle exception cases in the among
+    they're exceptions to
+  * hindi: Eliminate the need for variable `p`.
+  * irish: Minor optimisation in setting `pV` and `p1`.
+
+-------------------------------------------------------------------
 Sat Jan 23 01:13:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
