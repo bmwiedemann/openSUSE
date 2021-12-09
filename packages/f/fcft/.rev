@@ -94,4 +94,17 @@
   * Improved handling of RTL scripts in fcft_text_run_rasterize</comment>
     <requestid>931251</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c69560a4c181dcaf14cf467748e2a5b5</srcmd5>
+    <version>2.5.1</version>
+    <time>1639075541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  * fcft_set_scaling_filter now applies to color bitmap fonts only,
+    ie emoji fonts.
+  * Fixed incorrect value of FCFT_SCALING_FILTER_CUBIC constant.
+  * Fixed pixman errors and program freezes when scaling bitmap fonts to
+    very small sizes.</comment>
+    <requestid>937363</requestid>
+  </revision>
 </revisionlist>

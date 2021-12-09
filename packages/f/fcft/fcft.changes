@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  8 19:43:55 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.5.1:
+  * fcft_set_scaling_filter now applies to color bitmap fonts only,
+    ie emoji fonts.
+  * Fixed incorrect value of FCFT_SCALING_FILTER_CUBIC constant.
+  * Fixed pixman errors and program freezes when scaling bitmap fonts to
+    very small sizes.
+
+-------------------------------------------------------------------
 Sat Nov 13 12:28:21 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.5.0:
