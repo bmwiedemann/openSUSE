@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:21:25 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Thu Aug  5 16:27:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.2.0:

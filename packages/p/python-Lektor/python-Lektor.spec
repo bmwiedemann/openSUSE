@@ -65,7 +65,6 @@ BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module pylint}
 BuildRequires:  %{python_module pytest-click}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-slugify}
 BuildRequires:  %{python_module requests}

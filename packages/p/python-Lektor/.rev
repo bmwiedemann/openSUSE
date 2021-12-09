@@ -75,4 +75,12 @@
     upscale=False can now prevent upscaling.</comment>
     <requestid>910494</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cbd71dd2f0aed5cecb40536789448b13</srcmd5>
+    <version>3.2.0</version>
+    <time>1639075534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937361</requestid>
+  </revision>
 </revisionlist>
