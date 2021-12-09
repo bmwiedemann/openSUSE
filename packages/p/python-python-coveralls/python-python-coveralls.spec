@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-coveralls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Requires:       python-coverage >= 4.4
 Requires:       python-requests
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      python-coveralls
 BuildArch:      noarch
 # SECTION test requirements
@@ -44,7 +44,6 @@ BuildRequires:  %{python_module coverage >= 4.4}
 BuildRequires:  %{python_module httpretty}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
