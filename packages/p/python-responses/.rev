@@ -197,4 +197,19 @@
   * Improve typing support</comment>
     <requestid>928317</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e2c8706c16602f8ef4d23252b93c71a9</srcmd5>
+    <version>0.16.0</version>
+    <time>1639075502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0:
+  * Fixed regression with `stream` parameter deprecation, requests.session() and cookie handling.
+  * Replaced adhoc URL parsing with `urllib.parse`.
+  * Added ``match`` parameter to ``add_callback`` method
+  * Added `responses.matchers.fragment_identifier_matcher`. This matcher allows you
+    to match request URL fragment identifier.
+  * Improved test coverage.
+  * Fixed failing test in python 2.7 when `python-future` is also installed.</comment>
+    <requestid>934531</requestid>
+  </revision>
 </revisionlist>
