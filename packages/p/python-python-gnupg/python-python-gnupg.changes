@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:57:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.8:
+  * Return gpg's return code in all result instances.
+  * Add check for invalid file objects.
+  * Provide more useful status message when a secret key is absent.
+  * Added a get_recipients() API to find the recipients of an encrypted
+    message without decrypting it.
+
+-------------------------------------------------------------------
 Sun Aug  1 09:24:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.7:
