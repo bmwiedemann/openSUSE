@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec  6 18:00:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2:
+  * Add method and add classmethod tag
+  * Add test for get_parts 
+
+-------------------------------------------------------------------
 Sun Aug 22 20:52:50 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Use libalternatives instead of update-alternatives.

@@ -24,7 +24,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpointer
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Module to identify specific nodes in a JSON document
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %endif
 BuildArch:      noarch
 %python_subpackages

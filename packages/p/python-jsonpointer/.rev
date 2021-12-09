@@ -131,4 +131,14 @@
     <comment></comment>
     <requestid>929840</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2ebc47f1b067496ccd9a09b25e670def</srcmd5>
+    <version>2.2</version>
+    <time>1639075516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2:
+  * Add method and add classmethod tag
+  * Add test for get_parts</comment>
+    <requestid>936092</requestid>
+  </revision>
 </revisionlist>
