@@ -1,7 +1,7 @@
 #
 # spec file for package python-semantic_version
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 Name:           python-semantic_version
 Version:        2.8.5
 Release:        0
@@ -25,12 +33,14 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/rbarrois/python-semanticversion
 Source:         https://files.pythonhosted.org/packages/source/s/semantic_version/semantic_version-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module pytest}
+%endif
 %python_subpackages
 
 %description
@@ -44,15 +54,21 @@ It follows strictly the 2.0.0 version of the SemVer scheme.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 %pytest
+
+%else
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
 %{python_sitelib}/*
+%endif
 
 %changelog
