@@ -111,4 +111,11 @@
     <comment></comment>
     <requestid>935940</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>a6e6e52f9792c1415b92a07878a90fda</srcmd5>
+    <version>0.28</version>
+    <time>1639053379</time>
+    <user>dimstar_suse</user>
+    <comment>https://progress.opensuse.org/issues/103605</comment>
+  </revision>
 </revisionlist>

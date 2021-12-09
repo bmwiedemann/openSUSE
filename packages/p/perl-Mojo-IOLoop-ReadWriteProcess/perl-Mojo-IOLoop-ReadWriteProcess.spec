@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-IOLoop-ReadWriteProcess
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,20 @@
 #
 
 
-%define cpan_name Mojo-IOLoop-ReadWriteProcess
+# Do not change this file manually, use cpanspec.yml instead
+
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.31
+Version:        0.28
 Release:        0
+%define cpan_name Mojo-IOLoop-ReadWriteProcess
 Summary:        Execute external programs or internal code blocks as separate process
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZARATE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::SharedMem)
@@ -40,7 +44,7 @@ Requires:       perl(Mojolicious) >= 7.24
 Mojo::IOLoop::ReadWriteProcess is yet another process manager.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%setup -q -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -50,7 +54,7 @@ perl Build.PL installdirs=vendor
 %check
 echo "ignoring unstable tests"
 echo "https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14"
-rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
+rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize,06_events}.t
 ./Build test
 
 %install
@@ -58,7 +62,8 @@ rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes codecov.yml minil.toml README.md
+%defattr(-,root,root,755)
+%doc Changes circle.yml codecov.yml minil.toml README.md
 %license LICENSE
 
 %changelog

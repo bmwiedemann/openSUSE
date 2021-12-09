@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Thu Dec  2 03:07:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
-
-- updated to 0.31
-   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
-
-  0.31 2021-12-01T15:51:06Z
-   - Fix bad release to cpan
-   - Enable GitHub Actions for the project
-   - Fix ReadWriteProcess::Queue as regression of 1e0addb6
-   - Fix race on `open3/fork` and `session->register($pid)` call -- second attempt
-   - Fix `args` processing
-   - Fix race of SIG{CHLD} handler setup
-   - Fix _getlines() to avoid extra newline (\n) in scalar context
-   - Session: Do not set SIG{CHLD} handler twice
-   - Match on 'armv7l' as well as 'arm' for prctl detection
-
--------------------------------------------------------------------
 Thu Apr 29 11:04:04 UTC 2021 - Oliver Kurz <okurz@suse.com>
 
 - Ignore more unstable tests (https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14)
