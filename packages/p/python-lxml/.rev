@@ -801,4 +801,12 @@ Send to Staging:E.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>898540</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a57a21a293c50a1733f96ac97e9baf19</srcmd5>
+    <version>4.6.4</version>
+    <time>1639075506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>935074</requestid>
+  </revision>
 </revisionlist>

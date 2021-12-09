@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 24 21:23:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.4:
+  * A new property ``system_url`` was added to DTD entities.
+  * The ``STATIC_*`` variables in ``setup.py`` can now be passed via env vars.
+- remove python-lxml-test_etree.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jun  1 19:15:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing dependency on python-base for the devel subpackage.
