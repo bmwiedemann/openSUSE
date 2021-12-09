@@ -57,4 +57,12 @@
   * Work correctly with GStreamer 1.18 and later (thanks to @ssssam)</comment>
     <requestid>877828</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4142523f13648b2f1a81f0ef5e74ecb6</srcmd5>
+    <version>2.1.9</version>
+    <time>1639075561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938245</requestid>
+  </revision>
 </revisionlist>

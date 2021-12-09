@@ -26,7 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sampsyo/audioread
 Source0:        https://github.com/beetbox/audioread/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg
@@ -51,6 +51,8 @@ currently supports:
 
 %prep
 %setup -q -n audioread-%{version}
+# https://github.com/beetbox/audioread/issues/118
+sed -i 's:pytest-runner::' setup.py
 
 %build
 %python_build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 12:39:52 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
 Mon Mar  8 22:34:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.9:
