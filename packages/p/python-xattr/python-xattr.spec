@@ -1,7 +1,7 @@
 #
 # spec file for package python-xattr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xattr
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Python wrapper for extended filesystem attributes
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.11
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %ifpython2
 Provides:       pyxattr = %{version}
 Obsoletes:      pyxattr < %{version}
