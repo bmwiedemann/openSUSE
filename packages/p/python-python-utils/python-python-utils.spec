@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-utils
-Version:        2.4.0
+Version:        2.5.6
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/WoLpH/python-utils
 Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,14 +52,9 @@ classes which make common patterns shorter and easier.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# default test settings enable some pytest backends we don't care about
-mv pytest.ini old_pytest.ini_old
-%{python_expand rm -rf _build.* build tests/__pycache__ tests/*.pyc tests/*.pyo
-export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-py.test-%{$python_bin_suffix} tests/*.py
-}
-mv old_pytest.ini_old pytest.ini
+mv pytest.ini{,.hide}
+%pytest
+mv pytest.ini{.hide,}
 
 %files %{python_files}
 %doc README.rst
