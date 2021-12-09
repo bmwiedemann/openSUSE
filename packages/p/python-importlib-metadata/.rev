@@ -95,4 +95,13 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment></comment>
     <requestid>920613</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10ea9b4f323f05ce804b8eb82b8875d9</srcmd5>
+    <version>4.8.2</version>
+    <time>1639075511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.8.2:
+  * #353: Fixed discovery of distributions when path is empty.</comment>
+    <requestid>935953</requestid>
+  </revision>
 </revisionlist>
