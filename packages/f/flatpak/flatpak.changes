@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Dec  9 04:29:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pyparsing.patch:
+  * Support pyparsing >= 3.0.4.
+
+-------------------------------------------------------------------
 Wed Oct 13 19:26:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.12.2:

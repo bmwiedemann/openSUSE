@@ -38,6 +38,9 @@ Group:          System/Packages
 URL:            https://flatpak.github.io/
 Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         polkit_rules_usability.patch
+# https://github.com/flatpak/flatpak/issues/4534
+# https://gitlab.gnome.org/alexl/variant-schema-compiler/-/issues/4
+Patch1:         support-new-pyparsing.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.4.1
 BuildRequires:  docbook-xsl-stylesheets

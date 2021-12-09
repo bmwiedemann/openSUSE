@@ -1,0 +1,21 @@
+Index: flatpak-1.12.2/subprojects/variant-schema-compiler/variant-schema-compiler
+===================================================================
+--- flatpak-1.12.2.orig/subprojects/variant-schema-compiler/variant-schema-compiler
++++ flatpak-1.12.2/subprojects/variant-schema-compiler/variant-schema-compiler
+@@ -4,6 +4,7 @@ import argparse
+ import sys
+ import os
+ from pyparsing import *
++pyparsing_version = tuple(int(x) for x in __version__.split('.'))
+ 
+ typename_prefix = ""
+ funcname_prefix = ""
+@@ -1741,6 +1742,8 @@ def handleNameableType(toks):
+     return type
+ 
+ nameableType = (Optional((Suppress("'") + ident).leaveWhitespace()) + (arrayType ^ maybeType ^ dictType ^ structType)).setParseAction(handleNameableType)
++if pyparsing_version >= (3, 0, 4):
++    nameableType = (Optional((Suppress("'") + ident)) + (arrayType ^ maybeType ^ dictType ^ structType)).setParseAction(handleNameableType)
+ 
+ typeSpec <<= basicType  ^ variantType ^ namedType ^ nameableType
+ 
