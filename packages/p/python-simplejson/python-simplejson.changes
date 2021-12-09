@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 29 11:53:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.6:
+  * Declare support for Python 3.10 and add wheels
+
+-------------------------------------------------------------------
 Tue Sep  7 06:55:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.5:

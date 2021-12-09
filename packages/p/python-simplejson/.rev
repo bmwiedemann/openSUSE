@@ -387,4 +387,13 @@
     interpreter with C asserts enabled (COPTS += -UNDEBUG).</comment>
     <requestid>917209</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>06ce0092e6c51a5ddb8c407c9fd264ce</srcmd5>
+    <version>3.17.6</version>
+    <time>1639075501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.17.6:
+  * Declare support for Python 3.10 and add wheels</comment>
+    <requestid>934530</requestid>
+  </revision>
 </revisionlist>
