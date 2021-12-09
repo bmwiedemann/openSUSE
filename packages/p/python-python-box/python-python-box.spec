@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-box
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,13 @@
 # python_requires='>=3.6'
 %define skip_python2 1
 Name:           python-python-box
-Version:        5.1.0
+Version:        5.4.1
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cdgriffith/Box
 Source:         https://github.com/cdgriffith/Box/archive/%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
