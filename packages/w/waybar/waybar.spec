@@ -28,7 +28,7 @@ URL:            https://github.com/Alexays/Waybar
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
 Source:         %{version}.tar.xz
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson
 BuildRequires:  ninja

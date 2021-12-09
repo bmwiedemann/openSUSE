@@ -460,4 +460,12 @@
   * network: Fix one case where default route is deleted without notification</comment>
     <requestid>912430</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5b47b093d02f4495e4451e799eac08d7</srcmd5>
+    <version>0.9.8</version>
+    <time>1639075554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938150</requestid>
+  </revision>
 </revisionlist>

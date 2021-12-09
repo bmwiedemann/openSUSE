@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:59:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Declare g++ >= 8 is needed for building.
+
+-------------------------------------------------------------------
 Mon Aug 16 14:25:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.8:
