@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-poetry-core
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
