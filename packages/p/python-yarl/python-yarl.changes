@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Dec  7 15:57:39 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.7.2
+ - Changed call in ``with_port()`` to stop reencoding parts of the URL
+   that were already encoded. (`#623 <https://github.com/aio-libs/yarl/issues/623>`_)
+ - Add `__bytes__()` magic method so that `bytes(url)` will work and use optimal
+   ASCII encoding. (`#582 <https://github.com/aio-libs/yarl/issues/582>`_)
+ - Started shipping platform-specific arm64 wheels for Apple Silicon.
+   (`#622 <https://github.com/aio-libs/yarl/issues/622>`_)
+ - Started shipping platform-specific wheels with the ``musl`` tag targeting typical
+   Alpine Linux runtimes. (`#622 <https://github.com/aio-libs/yarl/issues/622>`_)
+ - Added support for Python 3.10. (`#622 <https://github.com/aio-libs/yarl/issues/622>`_)
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
 Sat Mar 20 19:40:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Unset -Werror=return-type for python39

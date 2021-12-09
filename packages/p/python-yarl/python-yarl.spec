@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yarl
-Version:        1.6.3
+Version:        1.7.2
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
@@ -37,16 +37,12 @@ BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
 Requires:       python-multidict >= 4.0
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing_extensions >= 3.7.4
-%endif
 %python_subpackages
 
 %description
