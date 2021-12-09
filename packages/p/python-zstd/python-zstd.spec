@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstd
-Version:        1.5.0.2
+Version:        1.5.0.4
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause

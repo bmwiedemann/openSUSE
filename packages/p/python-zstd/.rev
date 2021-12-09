@@ -94,4 +94,13 @@
 - drop test-once.patch: not needed</comment>
     <requestid>907022</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d29df0edd63e6dfc05abd8815b9e6531</srcmd5>
+    <version>1.5.0.4</version>
+    <time>1639075521</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0.4:
+  * python 3.9/3.10 support</comment>
+    <requestid>936297</requestid>
+  </revision>
 </revisionlist>
