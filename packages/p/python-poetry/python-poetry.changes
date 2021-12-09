@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec  4 21:01:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.12
+  * Fixed broken caches on Windows due to Path starting with a
+    slash (#4549)
+  * Fixed JSONDecodeError when installing packages by updating
+    cachecontrol version (#4831)
+  * Fixed dropped markers in dependency walk (#4686)
+- Release notes for 1.1.11
+  * Fixed errors when installing packages on Python 3.10. (#4592)
+  * Fixed an issue where the wrong git executable could be used on
+    Windows. (python-poetry/poetry-core#213)
+  * Fixed an issue where the Python 3.10 classifier was not
+    automatically added. (python-poetry/poetry-core#215)
+- Refresh poetry-4749-1.1.patch
+
+-------------------------------------------------------------------
+Sat Dec  4 16:18:45 UTC 2021 - lucasiregistraaisiti@protonmail.ch
+
+- Add patch to fix compatibility with packaging >= 21.0:
+  * poetry-4749-1.1.patch gh#python-poetry/poetry#4749
+
+-------------------------------------------------------------------
 Wed Sep 22 09:42:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.10

@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-poetry
-Version:        1.1.10
+Version:        1.1.12
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -31,39 +31,42 @@ Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.g
 Patch0:         poetry-1645-1.1.patch
 # PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/commit/9591e88492508d4dba260952d53266a0032c04c7
 Patch1:         use-new-name-of-MockFixture.patch
-BuildRequires:  %{python_module CacheControl >= 0.12.4}
+# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/4749 -- make compatible with packaging >= 21
+Patch2:         poetry-4749-1.1.patch
+BuildRequires:  %{python_module CacheControl >= 0.12.9}
 BuildRequires:  %{python_module cachy >= 0.3.0}
 BuildRequires:  %{python_module cleo >= 0.8.1}
 BuildRequires:  %{python_module clikit >= 0.6.2}
 BuildRequires:  %{python_module html5lib >= 1.0}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.6}
 BuildRequires:  %{python_module keyring >= 21.2.0}
-BuildRequires:  %{python_module lockfile}
-BuildRequires:  %{python_module pexpect >= 4.7.0}
+# cachecontrol[filecache]
+BuildRequires:  %{python_module lockfile >= 0.9}
+BuildRequires:  %{python_module packaging >= 20.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkginfo >= 1.4}
-BuildRequires:  %{python_module poetry-core >= 1.0.6}
+BuildRequires:  %{python_module pkginfo >= 1.5}
+BuildRequires:  %{python_module poetry-core >= 1.0.7}
 BuildRequires:  %{python_module requests >= 2.18}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module shellingham >= 1.1}
 BuildRequires:  %{python_module tomlkit >= 0.7.0}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-CacheControl >= 0.12.4
+Requires:       python-CacheControl >= 0.12.9
 Requires:       python-cachy >= 0.3.0
 Requires:       python-cleo >= 0.8.0
 Requires:       python-clikit >= 0.6.2
 Requires:       python-html5lib >= 1.0
 Requires:       python-keyring >= 21.2.0
-Requires:       python-lockfile
+# cachecontrol[filecache]
+Requires:       python-lockfile >= 0.9
+Requires:       python-pkginfo >= 1.5
+Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.4
-Requires:       python-poetry-core >= 1.0.3
-Requires:       python-pyparsing >= 2.2
+Requires:       python-poetry-core >= 1.0.7
 Requires:       python-requests >= 2.18
 Requires:       python-requests-toolbelt >= 0.9.1
-Requires:       python-setuptools
 Requires:       python-shellingham >= 1.1
 Requires:       python-tomlkit >= 0.7.0
 Requires:       python-virtualenv >= 20.0.26

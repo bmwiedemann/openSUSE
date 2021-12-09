@@ -1,0 +1,108 @@
+Index poetry-1.1.10
+Index: poetry-1.1.12/pyproject.toml
+===================================================================
+--- poetry-1.1.12.orig/pyproject.toml
++++ poetry-1.1.12/pyproject.toml
+@@ -40,7 +40,8 @@ html5lib = "^1.0"
+ shellingham = "^1.1"
+ tomlkit = ">=0.7.0,<1.0.0"
+ pexpect = "^4.7.0"
+-packaging = "^20.4"
++# packaging uses calver, so version is unclamped
++packaging = ">=20.4"
+ virtualenv = { version = "^20.0.26" }
+ 
+ # The typing module is not in the stdlib in Python 2.7
+Index: poetry-1.1.12/poetry/utils/env.py
+===================================================================
+--- poetry-1.1.12.orig/poetry/utils/env.py
++++ poetry-1.1.12/poetry/utils/env.py
+@@ -7,7 +7,6 @@ import re
+ import shutil
+ import sys
+ import sysconfig
+-import textwrap
+ 
+ from contextlib import contextmanager
+ from copy import deepcopy
+@@ -44,6 +43,25 @@ from poetry.utils.helpers import is_dir_
+ from poetry.utils.helpers import paths_csv
+ 
+ 
++GET_SYS_TAGS = f"""
++import importlib.util
++import json
++import sys
++
++from pathlib import Path
++
++spec = importlib.util.spec_from_file_location("packaging", Path(r"{packaging.__file__}"))
++packaging = importlib.util.module_from_spec(spec)
++sys.modules[spec.name] = packaging
++
++spec = importlib.util.spec_from_file_location("packaging.tags", Path(r"{packaging.tags.__file__}"))
++packaging_tags = importlib.util.module_from_spec(spec)
++spec.loader.exec_module(packaging_tags)
++
++print(json.dumps([(t.interpreter, t.abi, t.platform) for t in packaging_tags.sys_tags()]))
++"""
++
++
+ GET_ENVIRONMENT_INFO = """\
+ import json
+ import os
+@@ -1382,32 +1400,7 @@ class VirtualEnv(Env):
+         return [self._bin(self._pip_executable)]
+ 
+     def get_supported_tags(self):  # type: () -> List[Tag]
+-        file_path = Path(packaging.tags.__file__)
+-        if file_path.suffix == ".pyc":
+-            # Python 2
+-            file_path = file_path.with_suffix(".py")
+-
+-        with file_path.open(encoding="utf-8") as f:
+-            script = decode(f.read())
+-
+-        script = script.replace(
+-            "from ._typing import TYPE_CHECKING, cast",
+-            "TYPE_CHECKING = False\ncast = lambda type_, value: value",
+-        )
+-        script = script.replace(
+-            "from ._typing import MYPY_CHECK_RUNNING, cast",
+-            "MYPY_CHECK_RUNNING = False\ncast = lambda type_, value: value",
+-        )
+-
+-        script += textwrap.dedent(
+-            """
+-            import json
+-
+-            print(json.dumps([(t.interpreter, t.abi, t.platform) for t in sys_tags()]))
+-            """
+-        )
+-
+-        output = self.run_python_script(script)
++        output = self.run(self._executable, "-", input_=GET_SYS_TAGS)
+ 
+         return [Tag(*t) for t in json.loads(output)]
+ 
+Index: poetry-1.1.12/tests/utils/test_env.py
+===================================================================
+--- poetry-1.1.12.orig/tests/utils/test_env.py
++++ poetry-1.1.12/tests/utils/test_env.py
+@@ -97,6 +97,16 @@ def test_env_shell_commands_with_stdinpu
+     )
+ 
+ 
++def test_env_get_supported_tags_matches_inside_virtualenv(tmp_dir, manager):
++    venv_path = Path(tmp_dir) / "Virtual Env"
++    manager.build_venv(str(venv_path))
++    venv = VirtualEnv(venv_path)
++
++    import packaging.tags
++
++    assert venv.get_supported_tags() == list(packaging.tags.sys_tags())
++
++
+ @pytest.fixture
+ def in_project_venv_dir(poetry):
+     os.environ.pop("VIRTUAL_ENV", None)
