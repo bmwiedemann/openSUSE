@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  7 15:34:12 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- added leap-container.patch which adds leap15 as os to the
+  spack containerize command. 
+
+-------------------------------------------------------------------
 Mon Nov  8 14:55:34 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to version 0.17.0

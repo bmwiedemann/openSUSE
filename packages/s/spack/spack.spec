@@ -54,6 +54,7 @@ Patch5:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
+Patch9:         leap-container.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
