@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  8 13:31:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.28.0
+  * Update to go 1.16
+  * tcsh: fix variable escaping
+  * docs: improve the documentation
+  * Fixed fish shell hook to work with eval
+  * Fixed layout anaconda <env_name_or_prefix>
+- Build with pie enabled if available
+- Add _service for vendor package
+
+-------------------------------------------------------------------
 Sat Nov 21 11:45:50 UTC 2020 - Julien Enselme <jujens@jujens.eu>
 
 - update to 2.24.0

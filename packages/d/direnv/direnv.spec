@@ -1,7 +1,7 @@
 #
 # spec file for package direnv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.24.0
+Version:        2.28.0
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
 Group:          Productivity/File utilities
 URL:            http://direnv.net/
-Source:         https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  go >= 1.5
+Source0:        https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  fish
+BuildRequires:  go >= 1.6
 BuildRequires:  make
 
 %description
@@ -35,18 +37,16 @@ This allows to have project-specific environment variables and not
 clutter the "~/.profile" file.
 
 %prep
-%setup -q
-mkdir -p "$HOME/go/src/$(dirname "%{gopackagepath}")"
-cd ..
-ln -sf `pwd`/%{name}-%{version} "$HOME/go/src/%{gopackagepath}"
+%setup -q -a 1
 
 %build
-cd "$HOME/go/src/%{gopackagepath}"
-make %{?_smp_mflags}
+%make_build PREFIX=%{_prefix} \
+%ifnarch ppc64
+  GO_BUILD_FLAGS="-buildmode=pie"
+%endif
 
 %install
-cd "$HOME/go/src/%{gopackagepath}"
-%make_install DESTDIR=%{buildroot}%{_prefix}
+%make_install PREFIX=%{_prefix}
 
 %files
 %{_bindir}/%{name}
@@ -54,5 +54,7 @@ cd "$HOME/go/src/%{gopackagepath}"
 %{_mandir}/man1/%{name}-stdlib.1%{ext_man}
 %{_mandir}/man1/%{name}.toml.1%{ext_man}
 %{_mandir}/man1/%{name}-fetchurl.1%{ext_man}
+# Fish environment config
+%{_datadir}/fish/vendor_conf.d/direnv.fish
 
 %changelog
