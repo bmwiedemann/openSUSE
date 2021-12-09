@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Deprecated
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Python @deprecated decorator
 License:        MIT
