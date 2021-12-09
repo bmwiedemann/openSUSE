@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyosf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ Requires:       python-requests
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
@@ -61,6 +60,8 @@ sync).
 %setup -q -n pyosf-%{version}
 cp %{SOURCE10} .
 cp "%{SOURCE11}" LICENSE.md
+# https://github.com/psychopy/pyosf/issues/8
+sed -Ei 's:.pytest-runner.,?::' setup.py
 
 %build
 %python_build
