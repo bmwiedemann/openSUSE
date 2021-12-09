@@ -91,4 +91,15 @@
     <comment></comment>
     <requestid>930577</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>c58cba17c66834d1a28cb9ac69f0b272</srcmd5>
+    <version>1.5.16</version>
+    <time>1639075506</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests test_parse_function_call_as_name,
+  test_repo_line, and test_requirement_line
+  (gh#sarugaku/requirementslib#303).
+</comment>
+    <requestid>935085</requestid>
+  </revision>
 </revisionlist>

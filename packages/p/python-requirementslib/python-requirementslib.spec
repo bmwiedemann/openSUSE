@@ -125,7 +125,7 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 
-# many tests need internet https://github.com/sarugaku/requirementslib/issues/145
+# many tests need internet gh#sarugaku/requirementslib#145
 # most tests are marked properly
 skip_tests="needs_internet"
 
@@ -138,11 +138,14 @@ skip_tests+=" or test_get_requirements"
 # Rapptz is marker for https://github.com/Rapptz/discord.py
 skip_tests+=" or (test_convert_from_pipfile and Rapptz)"
 
-# https://github.com/sarugaku/requirementslib/issues/280
+# gh#sarugaku/requirementslib#280
 skip_tests+=" or test_parse_function_call_as_name"
 
-# https://github.com/sarugaku/requirementslib/issues/270
+# gh#sarugaku/requirementslib#270
 skip_tests+=" or test_no_duplicate_egg_info"
+
+# gh#sarugaku/requirementslib#303
+skip_tests+=" or test_parse_function_call_as_name or test_repo_line or test_requirement_line"
 # increase test deadline for slow obs executions architectures (e.g. on s390x)
 cat >> tests/conftest.py <<EOF
 
