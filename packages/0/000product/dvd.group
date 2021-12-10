@@ -4210,8 +4210,6 @@
     <package name="ruby2.7-rubygem-puma_worker_killer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-pundit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-rack-1_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-rack-2.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-accept" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-oauth2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4328,7 +4326,6 @@
     <package name="ruby2.7-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webrick" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4365,7 +4362,6 @@
     <package name="ruby3.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4384,7 +4380,6 @@
     <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

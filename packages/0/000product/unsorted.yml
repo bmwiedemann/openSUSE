@@ -12911,6 +12911,7 @@ unsorted:
   - libpython3_9-1_0-32bit: [x86_64] 
   - libqaccessibilityclient-qt5-devel 
   - libqalculate-devel 
+  - libqatzip1: [x86_64] 
   - libqb-devel 
   - libqb-devel-32bit: [x86_64] 
   - libqb-tests 
@@ -14327,9 +14328,9 @@ unsorted:
   - libvorbis-doc 
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
-  - libvotca_csg2021 
-  - libvotca_tools2021 
-  - libvotca_xtp2021: [x86_64] 
+  - libvotca_csg2022 
+  - libvotca_tools2022 
+  - libvotca_xtp2022: [x86_64] 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
   - libvpd2 
@@ -22024,6 +22025,7 @@ unsorted:
   - python36-azure-mgmt-kubernetesconfiguration 
   - python36-azure-mgmt-kusto 
   - python36-azure-mgmt-labservices 
+  - python36-azure-mgmt-loadtestservice 
   - python36-azure-mgmt-loganalytics 
   - python36-azure-mgmt-logic 
   - python36-azure-mgmt-logz 
@@ -24836,6 +24838,7 @@ unsorted:
   - python38-azure-mgmt-kubernetesconfiguration 
   - python38-azure-mgmt-kusto 
   - python38-azure-mgmt-labservices 
+  - python38-azure-mgmt-loadtestservice 
   - python38-azure-mgmt-loganalytics 
   - python38-azure-mgmt-logic 
   - python38-azure-mgmt-logz 
@@ -26053,8 +26056,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_21_2-gnu-hpc 
-  - python38-numpy_1_21_2-gnu-hpc-devel 
+  - python38-numpy_1_21_4-gnu-hpc 
+  - python38-numpy_1_21_4-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -27830,6 +27833,7 @@ unsorted:
   - python39-azure-mgmt-kubernetesconfiguration 
   - python39-azure-mgmt-kusto 
   - python39-azure-mgmt-labservices 
+  - python39-azure-mgmt-loadtestservice 
   - python39-azure-mgmt-loganalytics 
   - python39-azure-mgmt-logic 
   - python39-azure-mgmt-logz 
@@ -29131,8 +29135,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_21_2-gnu-hpc 
-  - python39-numpy_1_21_2-gnu-hpc-devel 
+  - python39-numpy_1_21_4-gnu-hpc 
+  - python39-numpy_1_21_4-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -30470,8 +30474,11 @@ unsorted:
   - qalculate 
   - qalculate-gtk 
   - qalculate-gtk-lang 
+  - qatengine: [x86_64] 
   - qatlib: [x86_64] 
   - qatlib-devel: [x86_64] 
+  - qatzip: [x86_64] 
+  - qatzip-devel: [x86_64] 
   - qbittorrent 
   - qbittorrent-nox 
   - qbs 
@@ -31597,11 +31604,10 @@ unsorted:
   - ruby3.0-rubygem-puma-4 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
-  - ruby3.0-rubygem-rack-1_6 
-  - ruby3.0-rubygem-rack-2.0 
   - ruby3.0-rubygem-rack-accept 
   - ruby3.0-rubygem-rack-oauth2 
   - ruby3.0-rubygem-rack-protection 
+  - ruby3.0-rubygem-rack-proxy 
   - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
   - ruby3.0-rubygem-rails-i18n 
