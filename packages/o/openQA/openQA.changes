@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec 10 00:04:06 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639057582.07f0f29cd:
+  * t: Consistently use Test::Most everwhere
+  * t: Prevent warning about signatures in 35-script_clone_job.t
+  * t: Prevent warning about signatures in 24-worker-overall.t
+  * Dependency cron 2021-12-08
+  * Avoid Perl warning in `testcasedir` when no root directory is present
+  * Avoid unhandled log messages in `t/16-utils.t`
+  * Use unique check names in `t/16-utils`
+  * Turn signal handling functions for retrying Minion jobs into an object
+  * Retry Minion jobs for cleaning results on SIGTERM/SIGINT
+  * Remove unused package defined in `t/16-utils.t`
+  * CI: Prevent commit message check on master when it is too late
+
+-------------------------------------------------------------------
 Tue Dec 07 16:04:04 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1638808687.ea514e9d8:
