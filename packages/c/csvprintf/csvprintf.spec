@@ -17,7 +17,7 @@
 
 
 Name:           csvprintf
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Simple CSV file parser for the UNIX command line
 License:        Apache-2.0
@@ -39,8 +39,8 @@ is split into arguments and formatted accordingly. The format specifiers
 in the format string contain numeric or symbolic column accessors to
 specify which CSV column to format.
 
-%{name} can also convert CSV files into XML documents. The xml2csv
-command converts XML documents so generated back into CSV files.
+%{name} can also convert CSV files into XML and JSON documents
+and Bash variable assignments suitable for eval(1).
 
 %prep
 %autosetup -p1
@@ -51,7 +51,7 @@ command converts XML documents so generated back into CSV files.
 %make_build
 
 %check
-%make_build test
+%make_build tests
 
 %install
 %make_install
