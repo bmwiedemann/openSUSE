@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydicom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Summary:        Pure python package for DICOM medical file reading and writing
 License:        MIT
 URL:            https://github.com/darcymason/pydicom
 Source:         https://files.pythonhosted.org/packages/source/p/pydicom/pydicom-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
