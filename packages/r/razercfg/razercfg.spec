@@ -31,6 +31,7 @@ Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE razercfg-fix-install-in-libdir -- Install libraries in matching directories (e.g. lib64 for 64bit).
 # Reported upstream 21. July 2015
 Patch0:         razercfg-fix-install-in-libdir.patch
+Patch1:	harden_razerd.service.patch
 BuildRequires:  cmake
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
@@ -50,6 +51,7 @@ Including commandline tool (razercfg) and QT GUI qrazercfg.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
