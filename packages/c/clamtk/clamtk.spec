@@ -18,12 +18,12 @@
 
 
 Name:           clamtk
-Version:        6.13
+Version:        6.14
 Release:        0
 Summary:        GUI for the ClamAV Antivirus
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Productivity/Security
-URL:            https://github.com/dave-theunsub/clamtk
+URL:            https://gitlab.com/dave_m/clamtk/-/wikis/home
 Source:         https://github.com/dave-theunsub/clamtk/releases/download/v%{version}/clamtk-%{version}.tar.xz
 Source1:        https://github.com/dave-theunsub/clamtk/releases/download/v%{version}/clamtk-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
