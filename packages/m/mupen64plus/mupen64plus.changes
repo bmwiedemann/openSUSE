@@ -1,0 +1,198 @@
+-------------------------------------------------------------------
+Thu Dec  9 12:13:00 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Removed file mupen64plus-rpmlintrc (had no useful effect).
+  * Added patch mupen64plus-ppc64le-aarch64.patch.
+  * Fixed build on armv7, aarch64 and ppc64le.
+  * Removed Group tags.
+  * Used %autosetup, %license and %{name} macros wherever possible.
+
+-------------------------------------------------------------------
+Mon Nov 30 10:08:32 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Fix Tumbleweed build, add don-t-put-globals-in-include-files.patch
+
+-------------------------------------------------------------------
+Tue Nov 24 19:27:09 UTC 2020 - dliw@posteo.net
+
+- Fix undefined symbols
+
+-------------------------------------------------------------------
+Wed Apr 10 09:52:38 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.5.9
+  + See RELEASE file for each module for a
+    detailed changelog
+- Add nasm to BuildRequires
+- Add patch to override binutils version detection
+  + mupen64plus-binutils-2_29.patch
+- Refresh patches for new version
+  + mupen64plus-fix-cflags.patch
+  + mupen64plus-use-system-font.patch
+- Update README to README.md in plugin-input-sdl file list
+
+-------------------------------------------------------------------
+Sat Feb 17 18:30:39 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.5 (see RELEASE file for each module for a
+  detailed changelog)
+
+- Refreshed mupen64plus-fix-cflags.patch and
+  mupen64plus-use-system-font.patch
+
+- Dropped mupen64plus-fix-missing-includes.patch (merged upstream)
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Oct 31 17:40:28 UTC 2013 - gber@opensuse.org
+
+- add mupen64plus-fix-missing-includes.patch in order to fix
+  missing includes
+
+-------------------------------------------------------------------
+Tue Jul  9 15:41:12 UTC 2013 - gber@opensuse.org
+
+- update to version 2.0
+
+-------------------------------------------------------------------
+Wed Jun  5 13:13:49 UTC 2013 - gber@opensuse.org
+
+- disable SSE usage in Glide64mk2 plugin
+- enable SSE/MMX usage for x86_64 arch
+
+-------------------------------------------------------------------
+Wed Jun  5 09:23:43 UTC 2013 - gber@opensuse.org
+
+- build the new Glide64mk2 plugin
+
+-------------------------------------------------------------------
+Tue Jun  4 20:43:47 UTC 2013 - gber@opensuse.org
+
+- update to version 1.99.99.2 (2.0-rc2)
+  - see
+    https://groups.google.com/d/msg/mupen64plus/i6dkYjaAv2I/gQvRAzSVHYoJ
+- removed obsolete mupen64plus-fix-float-parsing.patch and
+  mupen64plus-fix-debugger-off-by-one-bug.patch
+- rebased and renamed mupen64plus-fix-makefiles.patch to
+  mupen64plus-fix-cflags.patch
+
+-------------------------------------------------------------------
+Wed May 16 11:31:26 UTC 2012 - gber@opensuse.org
+
+- added mupen64plus-fix-debugger-off-by-one-bug.patch which fixes
+  an off-by-one bug in the debugger (backported from upstream hg)
+
+-------------------------------------------------------------------
+Tue May 15 20:59:49 UTC 2012 - gber@opensuse.org
+
+- disable all asm code
+- always build PIC
+
+-------------------------------------------------------------------
+Sun May  6 20:52:21 UTC 2012 - gber@opensuse.org
+
+- sync macros between all and install targets
+- build debugger
+- added mupen64plus-fix-float-parsing.patch in order to use sscanf
+  for reading floating-point values in config file instead of
+  character parsing, so that other locales with commas instead of
+  periods for decimal separator can be supported (backported from
+  upstream git)
+
+-------------------------------------------------------------------
+Sat May  5 21:45:25 UTC 2012 - gber@opensuse.org
+
+- update to version 1.99.5
+  * Audio-SDL Plugin
+    + added version number to SDL-audio plugin config parameters,
+      to support future changes
+    + updated audio plugin for new Mupen64plus 2.0 API versioning
+      scheme
+    + makefile fixes and improvements
+  * Console-UI Front End Application
+    + new option to disable internal core speed limiter (for
+      benchmarking)
+    + updated Console-UI front-end for new Mupen64plus 2.0 API
+      versioning
+    + added config version number for UI-Console section
+    + makefile fixes and improvements
+  * Core Emulator Library
+    + new feature: support for N64 internal real-time clock
+    + use X-Scale's PIF-CIC algorithm instead of the hard-coded
+      challenge-response pairs
+    + new config parameter for path to save SRAM/EEPROM/MPK files,
+      so they can be separated from emulator snapshots
+    + updated core for new Mupen64plus 2.0 API versioning scheme
+    + split core configuration data into 2 sections: Core and
+      CoreEvents. Added version numbers and upgrade handling to
+      both
+    + accurately emulate the RSP DMA operation (from Bobby Smiles)
+    + many makefile fixes and improvements
+    + bugfixes
+  * Input-SDL Plugin
+    + improved input setup behavior (auto-config) to make some use
+      cases more friendly
+    + updated input plugin for new Mupen64plus 2.0 API versioning
+      scheme
+    + added version number to SDL Input plugin parameters
+    + add new parameter for mouse sensitivity, handle mouse
+      movement differently so mouse is easier to use as controller
+    + new auto-configuration for several controllers
+    + bugfixes
+    + makefile fixes and improvements
+  * Rice Video Plugin
+    + hires texture loading: support for 8-bit PNG images
+    + new config option for forcing vertical sync
+    + check OpenGL attributes after creating video window and
+      report any that failed to set
+    + updated video plugin for new Mupen64plus 2.0 API versioning
+      scheme
+    + update to Video API version 2.1.0.
+    + bugfixes
+    + makefile fixes, improvements, and code cleanups
+  * RSP-HLE Plugin
+    + handle JPEG decompression, used in Ogre Battle 64 and Pokemon
+      Stadium
+    + updated RSP plugin for new Mupen64plus 2.0 API versioning
+      scheme
+    + bugfixes
+    + many makefile fixes and improvements
+- adapted and renamed mupen64plus-1.99.4-fix-makefiles.patch to
+  mupen64plus-fix-makefiles.patch
+- renamed mupen64plus-1.99.3-use-system-font.patch to
+  mupen64plus-use-system-font.patch
+
+-------------------------------------------------------------------
+Sat Dec 25 15:38:45 UTC 2010 - guido+packman@berhoerster.name
+
+- update to version 1.99.4
+  * Console-UI Front End Application
+    + bugfixes
+  * Core Emulator Library
+    + bugfixes
+    + new re-entrant R4300 disassembler
+  * Audio-SDL Plugin
+    + bugfixes
+  * Input-SDL Plugin
+    + bugfixes
+    + many new joystick auto-configurations
+  * Rice Video Plugin
+    + anisotropic filtering
+    + trilinear filtering
+    + mipmaps
+    + support for anti-aliasing (GL_MULTISAMPLE)
+    + bugfixes
+  * RSP-HLE Plugin
+    + bugfixes
+
+-------------------------------------------------------------------
+Mon Jul 19 13:39:18 UTC 2010 - guido+packman@berhoerster.name
+
+- recompressed source tarball
+
+-------------------------------------------------------------------
+Mon Jul 19 13:11:12 UTC 2010 - guido+packman@berhoerster.name
+
+- inintial packaging of mupen64plus

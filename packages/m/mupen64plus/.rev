@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd013c73e441c2ca5c33b1e8fd0e8587</srcmd5>
+    <version>2.5.9</version>
+    <time>1639169544</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed spec-file via spec-cleaner and manual optimizations.
+  * Removed file mupen64plus-rpmlintrc (had no useful effect).
+  * Added patch mupen64plus-ppc64le-aarch64.patch.
+  * Fixed build on armv7, aarch64 and ppc64le.
+  * Removed Group tags.
+  * Used %autosetup, %license and %{name} macros wherever possible.</comment>
+    <requestid>937776</requestid>
+  </revision>
+</revisionlist>

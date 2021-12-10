@@ -1,0 +1,130 @@
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-core/projects/unix/Makefile	2019-02-10 21:25:29.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-core/projects/unix/Makefile	2021-12-09 14:57:39.027842063 +0300
+@@ -89,6 +89,13 @@ ifneq ("$(filter ppc64 powerpc64,$(HOST_
+   NO_ASM := 1
+   $(warning Architecture "$(HOST_CPU)" not officially supported.)
+ endif
++ifneq ("$(filter ppc64le,$(HOST_CPU))","")
++  CPU := PPC
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NO_ASM := 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
++endif
+ ifneq ("$(filter arm%,$(HOST_CPU))","")
+   ifeq ("$(filter arm%b,$(HOST_CPU))","")
+     CPU := ARM
+@@ -124,10 +131,14 @@ ifneq ("$(filter mips,$(HOST_CPU))","")
+   $(warning Architecture "$(HOST_CPU)" not officially supported.)
+ endif
+ ifneq ("$(filter aarch64,$(HOST_CPU))","")
+-    CPU := ARM
+-    ARCH_DETECTED := 64BITS
+-    PIC ?= 1
+-    NEW_DYNAREC := 1
++  CPU := AARCH
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NEW_DYNAREC := 1
++  ifeq ($(NEON), 1)
++    CFLAGS += -mfpu=neon -mfloat-abi=hard
++  endif
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
+ endif
+ ifeq ("$(CPU)","NONE")
+   $(error CPU type "$(HOST_CPU)" not supported.  Please file bug report at 'https://github.com/mupen64plus/mupen64plus-core/issues')
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-rsp-hle/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-rsp-hle/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-rsp-hle/projects/unix/Makefile	2019-02-10 21:25:32.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-rsp-hle/projects/unix/Makefile	2021-12-09 14:45:42.243817220 +0300
+@@ -102,6 +102,12 @@ ifneq ("$(filter ppc64 powerpc64,$(HOST_
+   PIC ?= 1
+   $(warning Architecture "$(HOST_CPU)" not officially supported.')
+ endif
++ifneq ("$(filter ppc64le,$(HOST_CPU))","")
++  CPU := PPC
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
++endif
+ ifneq ("$(filter arm%,$(HOST_CPU))","")
+   ifeq ("$(filter arm%b,$(HOST_CPU))","")
+     CPU := ARM
+@@ -120,8 +126,7 @@ ifneq ("$(filter aarch64,$(HOST_CPU))","
+     CPU := AARCH
+     ARCH_DETECTED := 64BITS
+     PIC ?= 1
+-    NEW_DYNAREC := 1
+-    NO_ASM := 1
++    $(warning Architecture "$(HOST_CPU)" not officially supported.')
+ endif
+ ifeq ("$(CPU)","NONE")
+   $(error CPU type "$(HOST_CPU)" not supported.  Please file bug report at 'https://github.com/mupen64plus/mupen64plus-core/issues')
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2019-02-10 21:25:35.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-glide64mk2/projects/unix/Makefile	2021-12-09 15:02:01.619945865 +0300
+@@ -108,6 +108,13 @@ ifneq ("$(filter ppc64 powerpc64,$(HOST_
+   NO_ASM := 1
+   $(warning Architecture "$(HOST_CPU)" not officially supported.')
+ endif
++ifneq ("$(filter ppc64le,$(HOST_CPU))","")
++  CPU := PPC
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NO_ASM := 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
++endif
+ ifneq ("$(filter arm%,$(HOST_CPU))","")
+   ifeq ("$(filter arm%b,$(HOST_CPU))","")
+     CPU := ARM
+@@ -119,14 +126,12 @@ ifneq ("$(filter arm%,$(HOST_CPU))","")
+   endif
+ endif
+ ifneq ("$(filter aarch64,$(HOST_CPU))","")
+-    CPU := AARCH
+-    ARCH_DETECTED := 64BITS
+-    PIC ?= 1
+-    NEW_DYNAREC := 1
+-    NO_ASM := 1
+-    NO_SSE := 1
++  CPU := AARCH
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NO_ASM := 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
+ endif
+-
+ ifeq ("$(CPU)","NONE")
+   $(error CPU type "$(HOST_CPU)" not supported.  Please file bug report at 'https://github.com/mupen64plus/mupen64plus-core/issues')
+ endif
+diff -Pdpru mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-rice/projects/unix/Makefile mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-rice/projects/unix/Makefile
+--- mupen64plus-bundle-src-2.5.9.orig/source/mupen64plus-video-rice/projects/unix/Makefile	2019-02-10 21:25:33.000000000 +0300
++++ mupen64plus-bundle-src-2.5.9/source/mupen64plus-video-rice/projects/unix/Makefile	2021-12-09 15:04:58.388020745 +0300
+@@ -104,6 +104,13 @@ ifneq ("$(filter ppc64 powerpc64,$(HOST_
+   NO_ASM := 1
+   $(warning Architecture "$(HOST_CPU)" not officially supported.')
+ endif
++ifneq ("$(filter ppc64le,$(HOST_CPU))","")
++  CPU := PPC
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NO_ASM := 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
++endif
+ ifneq ("$(filter arm%,$(HOST_CPU))","")
+   ifeq ("$(filter arm%b,$(HOST_CPU))","")
+     CPU := ARM
+@@ -113,6 +120,13 @@ ifneq ("$(filter arm%,$(HOST_CPU))","")
+     $(warning Architecture "$(HOST_CPU)" not officially supported.')
+   endif
+ endif
++ifneq ("$(filter aarch64,$(HOST_CPU))","")
++  CPU := AARCH
++  ARCH_DETECTED := 64BITS
++  PIC ?= 1
++  NO_ASM := 1
++  $(warning Architecture "$(HOST_CPU)" not officially supported.)
++endif
+ ifeq ("$(CPU)","NONE")
+   $(error CPU type "$(HOST_CPU)" not supported.  Please file bug report at 'https://github.com/mupen64plus/mupen64plus-core/issues')
+ endif
