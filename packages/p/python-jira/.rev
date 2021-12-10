@@ -97,4 +97,16 @@
     <comment></comment>
     <requestid>808781</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7048f4105e99b24f2e7ee6bdbde6b3fc</srcmd5>
+    <version>3.1.1</version>
+    <time>1639169584</time>
+    <user>dimstar_suse</user>
+    <comment>- Explain, we don't have test suite running.
+
+- version update to 3.1.1
+  * lot of changes, see
+    https://github.com/pycontribs/jira/releases</comment>
+    <requestid>939446</requestid>
+  </revision>
 </revisionlist>

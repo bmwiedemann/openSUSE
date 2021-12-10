@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:12:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Explain, we don't have test suite running.
+
+-------------------------------------------------------------------
+Fri Dec 10 08:34:26 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.1.1
+  * lot of changes, see
+    https://github.com/pycontribs/jira/releases
+
+-------------------------------------------------------------------
 Mon May 25 10:59:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
