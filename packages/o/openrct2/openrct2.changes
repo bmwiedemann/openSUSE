@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 22 06:40:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.5.1
+  * Improved: The Tile Inspector window’s layout has been tweaked
+    slightly.
+  * Change: Weird bonus for path 0 - likely intended as a queue
+    bonus (original bug).
+  * Fix: Sometimes small scenery stays when building through it.
+  * Fix: Placing track designs at locations blocked by anything
+    results in wrong error message.
+  * Fix: Tile Inspector can be resized too small.
+  * Fix: Tile Inspector has inconsistent text colours.
+  * Fix: Crash when opening a ride window for a corrupted vehicle.
+  * Fix: Crash when track elements have no ride assigned.
+  * Fix: Research status incorrectly considered for scenery when in
+    editor modes.
+  * Fix: Track designs of some ride types are incorrectly exported
+    to TD6.
+
+-------------------------------------------------------------------
 Sun Aug  1 06:43:14 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.3.4.1
