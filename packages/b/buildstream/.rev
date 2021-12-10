@@ -162,4 +162,12 @@
     <comment>Update to version 1.6.3 (forwarded request 926931 from susnux)</comment>
     <requestid>927477</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e42d9d45a24c301663b1a71a8ed466ce</srcmd5>
+    <version>1.6.3</version>
+    <time>1639169582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939437</requestid>
+  </revision>
 </revisionlist>

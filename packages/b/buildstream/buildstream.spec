@@ -29,14 +29,14 @@ BuildRequires:  bubblewrap
 BuildRequires:  fdupes
 BuildRequires:  python3-base >= 3.4
 BuildRequires:  python3-devel >= 3.4
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  typelib-1_0-OSTree-1_0
 Requires:       bubblewrap
 Requires:       python3-base >= 3.4
 Requires:       python3-click
-Requires:       python3-grpcio >= 1.34
 Requires:       python3-gobject
+Requires:       python3-grpcio >= 1.34
 Requires:       python3-psutil
 Requires:       python3-ruamel.yaml >= 0.16
 Requires:       typelib-1_0-OSTree-1_0
@@ -49,6 +49,8 @@ build and CI pipelines in a declarative YAML format, written in python.
 %setup -q
 # Fix the shebang
 find -type f -exec sed -i 's|/usr/bin/env python3|%{_bindir}/python3|' {} \;
+# https://github.com/apache/buildstream/commit/b27b592a64a7050a205fa17c807fac193990b2a7
+sed -i 's:pytest-runner::' setup.py
 
 %build
 %python3_build
