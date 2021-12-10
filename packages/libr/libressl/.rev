@@ -466,4 +466,12 @@
     <comment>- Update to release 3.3.4</comment>
     <requestid>914401</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0a7dab5e92cf0ba57c28a5711635e1ea</srcmd5>
+    <version>3.3.5</version>
+    <time>1639169548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938272</requestid>
+  </revision>
 </revisionlist>

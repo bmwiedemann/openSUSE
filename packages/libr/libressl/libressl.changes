@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  9 19:41:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to release 3.3.5
+  * Fixed: A stack overread could occur when checking X.509 name
+    constraints.
+  * Enable X509_V_FLAG_TRUSTED_FIRST by default in the legacy verifier.
+    This compensates for the expiry of the DST Root X3 certificate.
+
+-------------------------------------------------------------------
 Thu Aug 26 10:25:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.4
