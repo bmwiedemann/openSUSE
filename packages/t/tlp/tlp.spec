@@ -19,7 +19,7 @@
 %define _name   TLP
 %define _udevdir %(pkg-config --variable udev_dir udev)
 Name:           tlp
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -97,7 +97,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctlp
 
 %files
 %license COPYING LICENSE
-%doc AUTHORS changelog README.md
+%doc AUTHORS changelog README.rst
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}.d
 %config(noreplace) %{_sysconfdir}/%{name}.d/00-template.conf
