@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 Requires:       gpg
