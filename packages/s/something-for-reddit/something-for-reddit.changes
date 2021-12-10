@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Dec  9 18:03:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.2:
+  + The frontpage is now visible. You can see it by going to / in
+    the url bar.
+  + The app now supports Flatpak & NixOS installation
+  + Performance improvements in the comments view
+  + The codebase is now tested! I'm pretty sure this is one of the
+    only GTK+ apps which has proper UI tests - so this should stop
+    more regressions in the future!
+- Changes from version 0.2.1:
+  + Replaced the markdown engine, should now support more features
+  + The alignment in subreddit listings should now be more uniform
+  + Many size related bugs have been fixed
+  + The url bar is now less lenient on formatting. Previously,
+    going to /linux would take you to /r/linux. Due to the
+    frontpage changes, this no longer happens
+  + [PACKAGING] Moved icons from pixmaps to the hicolor directory
+  + [PACKAGING] Change SCSS compiler from ruby sass to sassc
+- Drop desktop.patch: Fixed upstream.
+- Replace ruby(sass) for sassc
+- Fix python env to be py3 via sed call
+- Modernize spec, drop no longer needed post(un) calls.
+
+-------------------------------------------------------------------
 Wed Sep 26 04:42:11 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop arch-specific Makefile (boo#1109534)
