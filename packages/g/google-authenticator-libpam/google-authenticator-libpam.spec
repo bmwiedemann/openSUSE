@@ -1,7 +1,7 @@
 #
 # spec file for package google-authenticator-libpam
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           google-authenticator-libpam
-Version:        1.06
+Version:        1.09
 Release:        0
 Summary:        Google Authenticator PAM module
 License:        Apache-2.0
 Group:          Productivity/Security
-Url:            https://github.com/google/google-authenticator-libpam
+URL:            https://github.com/google/google-authenticator-libpam
 Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  libtool
@@ -33,8 +33,8 @@ BuildRequires:  pam-devel
 Recommends:     libqrencode3
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-Provides:       pam-google-authenticator
-Obsoletes:      pam-google-authenticator
+Provides:       pam-google-authenticator = %{version}
+Obsoletes:      pam-google-authenticator < %{version}
 
 %description
 Integrate GOOGLE Authenticator into your login process for full 2FA.
