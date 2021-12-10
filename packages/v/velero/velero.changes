@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 10 02:04:03 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.7.1:
+  * Add change log for 1.7.1
+  * add 4358 changelog
+  * - fix buggy pager func fix paging items in to use list options passed by the paging function
+  * Fix CVE-2020-29652 and CVE-2020-26160 (#4315)
+  * Namespace validation now allows asterisks and empty string (#4316)
+  * Comment in Dockerfile to explain the digest of base image (#4224)
+
+-------------------------------------------------------------------
 Thu Sep 30 15:39:37 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.7.0:
