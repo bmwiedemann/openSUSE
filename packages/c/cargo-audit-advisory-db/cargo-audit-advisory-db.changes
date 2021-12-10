@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 10 04:08:52 UTC 2021 - wbrown@suse.de
+
+- Update to version 20211210:
+  * Assigned RUSTSEC-2021-0128 to rusqlite (#1120)
+  * Report `rusqlite` closure lifetime issue (#1117)
+  * correct formatting for lists in RUSTSEC-2021-0127 (#1116)
+  * Assigned RUSTSEC-2021-0127 to serde_cbor (#1115)
+  * serde_cbor is unmaintained (#1114)
+  * Assigned RUSTSEC-2021-0126 to rust-embed (#1113)
+  * Add advisory for rust-embed path traversal (#1112)
+  * Adds maintained alternative to slice_deque (#1109)
+  * Assigned RUSTSEC-2021-0125 to simple_asn1 (#1108)
+  * Security advisory on simple_asn1 version 0.6.0 (#1103)
+
+-------------------------------------------------------------------
 Tue Nov 30 02:12:58 UTC 2021 - wbrown@suse.de
 
 - Update to version 20211130:
