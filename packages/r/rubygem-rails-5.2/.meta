@@ -1,5 +1,0 @@
-<package name="rubygem-rails-5.2" project="openSUSE:Factory">
-  <title>Ruby on Rails 5.2.x</title>
-  <description>Ruby on Rails is a full-stack web framework optimized for programmer happiness and sustainable productivity. It encourages beautiful code by favoring convention over configuration.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-rails-5.2"/>
-</package>
