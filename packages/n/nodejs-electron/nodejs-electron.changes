@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  8 23:33:01 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Fix harfbuzz 3.0.0 related build fails
+  https://github.com/electron/electron/issues/31129
+  * Added skia_harfbuzz_roll.patch
+  * Added skia_harfbuzz_api.patch
+  * Added harfbuzz_roll.patch
+
+-------------------------------------------------------------------
 Mon Nov 29 13:21:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64:

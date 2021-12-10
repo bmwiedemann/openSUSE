@@ -116,4 +116,17 @@
     <comment></comment>
     <requestid>934747</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f56d0e1a26d1309fa8feae3b1a83c61f</srcmd5>
+    <version>13.6.2</version>
+    <time>1639169543</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix harfbuzz 3.0.0 related build fails
+  https://github.com/electron/electron/issues/31129
+  * Added skia_harfbuzz_roll.patch
+  * Added skia_harfbuzz_api.patch
+  * Added harfbuzz_roll.patch
+</comment>
+    <requestid>937741</requestid>
+  </revision>
 </revisionlist>

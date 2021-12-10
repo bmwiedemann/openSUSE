@@ -100,6 +100,10 @@ Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
 # Fix blink nodestructor
 Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
 Patch26:        a9831f1cbf93fb18dd951453635f488037454ce9.patch
+# Fix missing harfbuzz symbols
+Patch27:        skia_harfbuzz_roll.patch
+Patch28:        skia_harfbuzz_api.patch
+Patch29:        harfbuzz_roll.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
