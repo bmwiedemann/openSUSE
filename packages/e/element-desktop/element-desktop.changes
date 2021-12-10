@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec 08 18:00:11 UTC 2021 - Sunsheep <me@sunsheep.net>
+
+- Version 1.9.6
+  * UI fixes and improvements
+  * implement more meta-spaces
+  * Fix possible infinite loop on widget start 
+
+-------------------------------------------------------------------
 Mon Oct 18 08:25:11 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.9.2
