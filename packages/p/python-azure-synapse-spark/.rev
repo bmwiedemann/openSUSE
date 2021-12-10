@@ -52,4 +52,15 @@
     CHANGELOG.md file provided with this package (forwarded request 917463 from glaubitz)</comment>
     <requestid>917556</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3c499c9eded4cea99a8be2b9b6968ee</srcmd5>
+    <version>0.7.0</version>
+    <time>1639169549</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 936035 from glaubitz)</comment>
+    <requestid>938294</requestid>
+  </revision>
 </revisionlist>
