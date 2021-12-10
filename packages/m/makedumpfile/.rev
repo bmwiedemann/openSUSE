@@ -1108,4 +1108,16 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>935387</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>68494bd67b586cb137d6e7865c57f652</srcmd5>
+    <version>1.7.0</version>
+    <time>1639169573</time>
+    <user>dimstar_suse</user>
+    <comment>- Non-existent patches must be listed twice to appear as added in a
+  unified diff against a version that had them. Only that can make
+  factory-auto happy. Here we go:
+  * makedumpfile-Retrieve-MAX_PHYSMEM_BITS-from-vmcoreinfo.patch
+  * makedumpfile-arm64-Add-support-for-ARMv8.2-LPA-52-bit-PA-su.patch</comment>
+    <requestid>935972</requestid>
+  </revision>
 </revisionlist>
