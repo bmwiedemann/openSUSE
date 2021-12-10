@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Extended PHP debugger
 License:        PHP-3.0

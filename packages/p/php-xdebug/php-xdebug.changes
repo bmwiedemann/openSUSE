@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 10 09:32:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.1.2
+  * Fixed issue #2036: Segfault on fiber switch in finally block in
+    garbage collected fiber
+  * Fixed issue #2037: Crash when profile file can not be created
+  * Fixed issue #2041: __debugInfo is not used for var_dump output
+  * Fixed issue #2046: Segault on xdebug_get_function_stack inside a
+    Fiber
+
+-------------------------------------------------------------------
 Tue Nov  9 21:10:46 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.1.1
