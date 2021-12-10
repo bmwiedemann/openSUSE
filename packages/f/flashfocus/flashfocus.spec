@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  libffi-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  python3
-BuildRequires:  python3-pytest-runner
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-cffi

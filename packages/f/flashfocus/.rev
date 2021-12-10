@@ -179,4 +179,12 @@
   * Bump click dependency to v9</comment>
     <requestid>912363</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fdd258095d6b9454e638cb4246074c74</srcmd5>
+    <version>2.2.4</version>
+    <time>1639169579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939168</requestid>
+  </revision>
 </revisionlist>
