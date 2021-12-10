@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:30:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1.0:
+  * Add version command
+  * Fix parsing of ELF where the program header does not directly follow the file header
+  * Add install-ability via `cmake install`
+  * Incorporate slightly modified Win32 libusb find helpers
+  * Add ability to access device using stdio_usb
+  * Add -n option to load to avoid overwriting existing program
+  * Add -f/-F option to force reset a cooperative RP2040 board that isnt in BOOTSEL mode
+  * Add a sudo suggestion when can't connect on linux/macos
+- Drop upstreamed patches:
+  * picotool-ce76970.patch
+  * picotool-gh30.patch
+- Update SDK version to 1.3.0
+
+-------------------------------------------------------------------
 Wed Oct 20 14:56:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport patch to fix installation path:
