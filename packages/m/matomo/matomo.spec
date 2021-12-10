@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        4.6.1
+Version:        4.6.2
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -123,7 +123,7 @@ do
   sed -i "/\W\"${i}\"\W/d" config/manifest.inc.php
 done
 # Insert new hashes for chanded files
-for file in console 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php' 'plugins/CoreUpdater/Commands/Update.php' 'vendor/matomo/matomo-php-tracker/run_tests.sh' 'vendor/wikimedia/less.php/bin/lessc' 'vendor/lox/xhprof/scripts/xhprofile.php' 'misc/log-analytics/import_logs.py' 'core/CliMulti.php'
+for file in console 'vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php' 'config/global.ini.php' 'core/CliMulti/Output.php' 'plugins/CoreUpdater/Commands/Update.php' 'vendor/matomo/matomo-php-tracker/run_tests.sh' 'vendor/wikimedia/less.php/bin/lessc' 'misc/log-analytics/import_logs.py' 'core/CliMulti.php'
 do
   size=$(ls -l $file | awk '{ print $5 }')
   checksum=$(md5sum $file  | awk '{ print $1 }')
@@ -238,7 +238,6 @@ fi
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/szymach/c-pchart/coverage.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/tecnickcom/tcpdf/tools/tcpdf_addfont.php
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/lox/xhprof/scripts/xhprofile.php
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/matomo/matomo-php-tracker/run_tests.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/wikimedia/less.php/bin/lessc
 %{apache_serverroot}/%{name}/*

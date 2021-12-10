@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 10 06:30:33 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.6.2
+  * matomo-org/matomo
+    - #18444 Ensure UTF8mb4 conversion command always enables tracking again [by @sgiehl]
+    - #18455 Ignore segment errors in update script [by @sgiehl]
+    - #18473 Ensure update to 4.6.2 removes deleted files [by @sgiehl]
+    - #18421 Remove unneeded plugin.json from CoreVue plugin [by @diosmosis]
+
+-------------------------------------------------------------------
 Wed Dec  1 06:21:11 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.6.1
