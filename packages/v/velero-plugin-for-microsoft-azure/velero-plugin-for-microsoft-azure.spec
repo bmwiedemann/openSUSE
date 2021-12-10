@@ -19,7 +19,7 @@
 %define goipath github.com/vmware-tanzu/velero-plugin-for-microsoft-azure
 
 Name:           velero-plugin-for-microsoft-azure
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Velero plugin for Microsoft Azure
 License:        Apache-2.0

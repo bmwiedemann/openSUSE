@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 10 02:07:48 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.3.1:
+  * Add changelog for 1.3.1
+  * Update the doc to reference the latest version of azure plugin image
+  * Fix CVE-2020-26160 and CVE-2020-29652
+
+-------------------------------------------------------------------
 Thu Sep 30 15:43:02 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.3.0:
