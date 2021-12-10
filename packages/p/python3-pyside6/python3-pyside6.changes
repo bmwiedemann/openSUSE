@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  9 08:23:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  https://code.qt.io/cgit/pyside/pyside-setup.git/tree/doc/changelogs/changes-6.2.2
+- Rebase patches:
+  * 0001-Don-t-install-CMake-files-into-versioned-directories.patch
+  * 0001-Always-link-to-python-libraries.patch
+
+-------------------------------------------------------------------
 Sat Oct 30 09:41:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.1

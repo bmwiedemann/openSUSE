@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -133,6 +133,9 @@ _libsuffix=$(echo %{_lib} | cut -b4-)
 # The python script used to set paths before running tests
 # doesn't handle build dirs called 'build'
 %global __qt6_builddir %{pyside_flavor}
+
+# Fix installation dir
+sed -i 's#purelib#platlib#' sources/{pyside6/cmake/PySideSetup.cmake,shiboken6/cmake/ShibokenHelpers.cmake}
 
 pushd sources/%{pyside_flavor}
 

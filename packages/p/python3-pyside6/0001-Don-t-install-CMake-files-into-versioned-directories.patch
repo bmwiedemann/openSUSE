@@ -1,4 +1,4 @@
-From ba855a5ba8ae6c52f704e4004d749afd766aa834 Mon Sep 17 00:00:00 2001
+From 01b6cb4089b1ccc4617f2e4d2cce241e2c111069 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Sun, 25 Apr 2021 16:14:31 +0200
 Subject: [PATCH] Don't install CMake files into versioned directories
@@ -11,10 +11,10 @@ Experience shows this causes issues.
  3 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/sources/pyside6/libpyside/CMakeLists.txt b/sources/pyside6/libpyside/CMakeLists.txt
-index 90f333e..b42691d 100644
+index dca469e..e4802ec 100644
 --- a/sources/pyside6/libpyside/CMakeLists.txt
 +++ b/sources/pyside6/libpyside/CMakeLists.txt
-@@ -191,7 +191,7 @@ set(PYSIDE_GLUE "${CMAKE_INSTALL_PREFIX}/share/PySide6${pyside6_SUFFIX}/glue")
+@@ -157,7 +157,7 @@ set(PYSIDE_GLUE "${CMAKE_INSTALL_PREFIX}/share/PySide6${pyside6_SUFFIX}/glue")
  configure_package_config_file(
      "${CMAKE_CURRENT_SOURCE_DIR}/PySide6Config-spec.cmake.in"
      "${CMAKE_CURRENT_BINARY_DIR}/install/PySide6Config${SHIBOKEN_PYTHON_CONFIG_SUFFIX}.cmake"
@@ -23,7 +23,7 @@ index 90f333e..b42691d 100644
       PATH_VARS PYSIDE_PYTHONPATH PYSIDE_TYPESYSTEMS PYSIDE_GLUE
  )
  
-@@ -208,16 +208,16 @@ install(TARGETS pyside6 EXPORT PySide6Targets
+@@ -174,16 +174,16 @@ install(TARGETS pyside6 EXPORT PySide6Targets
                          ARCHIVE DESTINATION "${LIB_INSTALL_DIR}"
                          RUNTIME DESTINATION bin)
  install(EXPORT PySide6Targets NAMESPACE PySide6::
@@ -45,7 +45,7 @@ index 90f333e..b42691d 100644
 -        DESTINATION "${LIB_INSTALL_DIR}/cmake/PySide6-${BINDING_API_VERSION}")
 +        DESTINATION "${LIB_INSTALL_DIR}/cmake/PySide6")
 diff --git a/sources/shiboken6/data/CMakeLists.txt b/sources/shiboken6/data/CMakeLists.txt
-index 46bd1bf..18c34c2 100644
+index 6dedb13..4101f94 100644
 --- a/sources/shiboken6/data/CMakeLists.txt
 +++ b/sources/shiboken6/data/CMakeLists.txt
 @@ -33,7 +33,7 @@ endif()
@@ -72,22 +72,22 @@ index 46bd1bf..18c34c2 100644
 -        DESTINATION "${LIB_INSTALL_DIR}/cmake/Shiboken6-${shiboken6_VERSION}")
 +        DESTINATION "${LIB_INSTALL_DIR}/cmake/Shiboken6")
  
- install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/shiboken_helpers.cmake"
+ install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/ShibokenHelpers.cmake"
 -        DESTINATION "${LIB_INSTALL_DIR}/cmake/Shiboken6-${shiboken6_VERSION}")
 +        DESTINATION "${LIB_INSTALL_DIR}/cmake/Shiboken6")
  
  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/shiboken6${shiboken6_SUFFIX}.pc"
          DESTINATION "${LIB_INSTALL_DIR}/pkgconfig")
 diff --git a/sources/shiboken6/libshiboken/CMakeLists.txt b/sources/shiboken6/libshiboken/CMakeLists.txt
-index 2413181..d5a82b8 100644
+index da1b562..09a8e36 100644
 --- a/sources/shiboken6/libshiboken/CMakeLists.txt
 +++ b/sources/shiboken6/libshiboken/CMakeLists.txt
-@@ -151,4 +151,4 @@ install(TARGETS libshiboken EXPORT Shiboken6Targets
+@@ -159,4 +159,4 @@ install(TARGETS libshiboken EXPORT Shiboken6Targets
                              ARCHIVE DESTINATION "${LIB_INSTALL_DIR}"
                              RUNTIME DESTINATION bin)
  install(EXPORT Shiboken6Targets NAMESPACE Shiboken6::
 -        DESTINATION ${LIB_INSTALL_DIR}/cmake/Shiboken6-${shiboken6_VERSION})
 +        DESTINATION ${LIB_INSTALL_DIR}/cmake/Shiboken6)
 -- 
-2.31.1
+2.34.1
 

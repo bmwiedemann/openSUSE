@@ -26,4 +26,12 @@
     <comment>pyside 6.2.1 (forwarded request 928812 from cgiboudeaux)</comment>
     <requestid>928813</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c24a07410378ef8e3ab6678d0cc7fa2</srcmd5>
+    <version>6.2.2</version>
+    <time>1639169555</time>
+    <user>dimstar_suse</user>
+    <comment>PySide 6.2.2 (forwarded request 939021 from cgiboudeaux)</comment>
+    <requestid>939022</requestid>
+  </revision>
 </revisionlist>

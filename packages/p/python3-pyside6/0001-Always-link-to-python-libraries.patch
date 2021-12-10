@@ -1,18 +1,18 @@
-From c94527c95ffc68b3b161c8cd0a786ae179f30915 Mon Sep 17 00:00:00 2001
+From 3de1ff0464ccf0f5e88c62330e98cb816c42f7b2 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Tue, 27 Jul 2021 14:54:00 +0200
 Subject: [PATCH] Always link to python libraries.
 
 Change-Id: I687191431adaff55927de353db8f81dfa30ba1b1
 ---
- sources/shiboken6/data/shiboken_helpers.cmake | 18 +++---------------
+ sources/shiboken6/cmake/ShibokenHelpers.cmake | 18 +++---------------
  1 file changed, 3 insertions(+), 15 deletions(-)
 
-diff --git a/sources/shiboken6/data/shiboken_helpers.cmake b/sources/shiboken6/data/shiboken_helpers.cmake
-index 7e772c7fd..438f63480 100644
---- a/sources/shiboken6/data/shiboken_helpers.cmake
-+++ b/sources/shiboken6/data/shiboken_helpers.cmake
-@@ -300,21 +300,9 @@ macro(shiboken_compute_python_libraries)
+diff --git a/sources/shiboken6/cmake/ShibokenHelpers.cmake b/sources/shiboken6/cmake/ShibokenHelpers.cmake
+index 87a6762..189d7ab 100644
+--- a/sources/shiboken6/cmake/ShibokenHelpers.cmake
++++ b/sources/shiboken6/cmake/ShibokenHelpers.cmake
+@@ -310,21 +310,9 @@ macro(shiboken_compute_python_libraries)
          "SHIBOKEN_COMPUTE_LIBS" "shiboken_compute_python_libraries"
          "IS_CALLED_FROM_EXPORT" "" "" ${ARGN})
  
@@ -38,5 +38,5 @@ index 7e772c7fd..438f63480 100644
      # If the resulting variable
      # contains a "debug;X;optimized;Y" list like described in shiboken_check_if_limited_api,
 -- 
-2.33.0
+2.34.1
 
