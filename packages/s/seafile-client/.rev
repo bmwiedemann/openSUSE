@@ -78,4 +78,13 @@
 </comment>
     <requestid>918823</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a3aa77993b6c72352f5134802ba2932f</srcmd5>
+    <version>8.0.5</version>
+    <time>1639169574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.5. No changelog.
+</comment>
+    <requestid>939137</requestid>
+  </revision>
 </revisionlist>

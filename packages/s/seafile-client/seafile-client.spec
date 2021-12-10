@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        8.0.4
+Version:        8.0.5
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
