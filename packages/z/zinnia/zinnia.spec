@@ -1,7 +1,7 @@
 #
 # spec file for package zinnia
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,14 @@
 %endif
 
 Name:           zinnia
-Version:        0.06
+Version:        0.07
 Release:        0
 Summary:        Online hand recognition system with machine learning
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://taku910.github.io/zinnia
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://taku910.github.io/zinnia
+Source0:        https://github.com/silverhikari/zinnia/releases/download/%{version}/zinnia-%{version}.tar.gz
 Patch0:         optflags-fixes.diff
-Patch1:         zinnia-automake-1.13.patch
-# PATCH-FIX-UPSTREAM fix compile with gcc 6.0
-Patch2:         zinnia-gcc6.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -56,7 +53,7 @@ This package contains shared libraries used by zinnia.
 %package        devel
 Summary:        Development files for zinnia
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       libzinnia0 = %{version}
 
 %description    devel
 The zinnia-devel package contains libraries and header files for
@@ -74,17 +71,14 @@ This package contains python bindings for zinnia.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with_python}
@@ -98,16 +92,15 @@ python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %defattr(-, root, root)
-%doc README COPYING AUTHORS
+%doc README AUTHORS
 %doc doc
 %{_bindir}/zinnia
 %{_bindir}/zinnia_learn
 %{_bindir}/zinnia_convert
 
 %files -n libzinnia0
-%defattr(-,root,root)
-%{_libdir}/libzinnia.so.0
-%{_libdir}/libzinnia.so.0.0.0
+%license COPYING
+%{_libdir}/libzinnia.so.*
 
 %files devel
 %defattr(-,root,root)

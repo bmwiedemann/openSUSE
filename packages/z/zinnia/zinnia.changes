@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 10 12:32:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.07
+  * Minor bug fixes
+- Use source from fork, as source vanished from offical site
+- Drop obsoleted patches:
+  zinnia-automake-1.13.patch
+  zinnia-gcc6.patch
+
+-------------------------------------------------------------------
 Fri Jan 10 14:17:59 CET 2020 - tiwai@suse.de
 
 - Disable the build with python for Tumbleweed, as python 2 support

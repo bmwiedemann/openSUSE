@@ -53,4 +53,17 @@
     <comment></comment>
     <requestid>762953</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>85ba05bf2c82d202aab75ecdc725a656</srcmd5>
+    <version>0.07</version>
+    <time>1639169575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.07
+  * Minor bug fixes
+- Use source from fork, as source vanished from offical site
+- Drop obsoleted patches:
+  zinnia-automake-1.13.patch
+  zinnia-gcc6.patch</comment>
+    <requestid>939138</requestid>
+  </revision>
 </revisionlist>
