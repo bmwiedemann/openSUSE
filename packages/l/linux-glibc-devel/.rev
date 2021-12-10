@@ -652,4 +652,12 @@
     <comment>- Update to kernel headers 5.14 (forwarded request 915622 from Andreas_Schwab)</comment>
     <requestid>915625</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>def59d8edc5dd3b1f06a3b67e080fbac</srcmd5>
+    <version>5.15</version>
+    <time>1639169541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.15 (forwarded request 928799 from Andreas_Schwab)</comment>
+    <requestid>928801</requestid>
+  </revision>
 </revisionlist>
