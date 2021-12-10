@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  9 10:35:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.9.6
+  * UI fixes and improvements
+  * implement more meta-spaces
+  * Fix possible infinite loop on widget start 
+
+-------------------------------------------------------------------
 Mon Oct 18 08:22:01 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.9.2
