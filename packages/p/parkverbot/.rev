@@ -119,4 +119,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- Added hardening to systemd service(s) (bsc#1181400)</comment>
     <requestid>925880</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a5fee6687644e7c6c1616e5808179667</srcmd5>
+    <version>1.4</version>
+    <time>1639169571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935665</requestid>
+  </revision>
 </revisionlist>

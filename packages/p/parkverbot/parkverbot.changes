@@ -1,6 +1,8 @@
 -------------------------------------------------------------------
 Sun Oct 17 17:05:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
+- Update to release 1.4
+  * Hardened service files
 - Drop harden_parkverbot.service.patch (merged upstream)
 
 -------------------------------------------------------------------
