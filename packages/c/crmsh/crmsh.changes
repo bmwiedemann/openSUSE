@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Dec 10 02:48:29 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20211210.a149de51:
+  * Dev: unittest: adjust unit test based on previous changes
+  * Dev: behave: adjust functional test based on previous changes
+  * Dev: ui_cluster: Exit stop process when there is no DC
+  * Dev: ui_cluster: check dlm controld ra is running when stop cluster
+  * Dev: log: In status_long function, add a blank line when exception
+  * Revert "Dev: ui_cluster: Make sure node is online when stop service"
+
+-------------------------------------------------------------------
 Mon Dec 06 14:44:54 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20211206.e34e2fff:
