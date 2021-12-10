@@ -56,4 +56,12 @@ This package depend on mangohud, so I think mangohud should be accept first.</co
     <comment></comment>
     <requestid>928387</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c0cd0ae8ba34dfdb6242c880dff3db9</srcmd5>
+    <version>0.7</version>
+    <time>1639169548</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>938278</requestid>
+  </revision>
 </revisionlist>
