@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:41:06 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 20211204 (7f47419470687c7ecbdf086b81f5bafdb05d1bef) 
+  * Look at all buffers when calculating min_file_ts
+
+-------------------------------------------------------------------
+Fri Dec 10 09:48:27 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Only build with intel-gpu-tools-devel on suse_version > 1530
+- Only build with i915_perf=true on x86*
+
+-------------------------------------------------------------------
 Wed Nov 24 12:34:12 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Add a proper description 

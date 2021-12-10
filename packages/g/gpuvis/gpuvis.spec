@@ -1,5 +1,5 @@
 #
-# spec file for package renderdoc
+# spec file for package gpuvis
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define last_commit ff96f19529021991e6cbcc81f026bca658897bd8
+
+%define last_commit 7f47419470687c7ecbdf086b81f5bafdb05d1bef
 %define rapidjson_commit 1c2c8e085a8b2561dff17bedb689d2eb0609b689
 
 Name:           gpuvis
@@ -27,13 +28,17 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/mikesart/gpuvis
 Source0:        https://github.com/mikesart/gpuvis/archive/%{last_commit}/gpuvis.tar.gz
 Source1:        https://github.com/Tencent/rapidjson/archive/%{rapidjson_commit}/rapidjson.tar.gz
+BuildRequires:  freetype2-devel
+BuildRequires:  gcc-c++
+BuildRequires:  gtk3-devel
+BuildRequires:  libSDL2-devel
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  gcc-c++
-BuildRequires:  libSDL2-devel
-BuildRequires:  freetype2-devel
-BuildRequires:  gtk3-devel
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} > 1530
 BuildRequires:  intel-gpu-tools-devel
+%endif
+%endif
 
 %description
 Gpuvis is a Linux GPU profiler similar to GPUView on Windows. It is designed to work with trace-cmd captures and help track down Linux gpu and application performance issues.
@@ -45,7 +50,12 @@ tar -xf %{_sourcedir}/rapidjson.tar.gz --strip 1  -C lib/rapidjson
 
 %build
 %meson \
+%ifarch %{ix86} x86_64
+%if 0%{?suse_version} > 1530
   -Duse_i915_perf=true
+%endif
+%endif
+
 %meson_build
 
 %install

@@ -11,4 +11,12 @@ issues. Gpuvis doesn't have releases but gets updated
 periodically from top of git tree.</comment>
     <requestid>935236</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fedb69e13c196be5d9ef7c6eaead3d95</srcmd5>
+    <version>20211124</version>
+    <time>1639169576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939150</requestid>
+  </revision>
 </revisionlist>
