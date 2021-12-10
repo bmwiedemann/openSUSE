@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:46:16 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- new upstream release 1.10.11
+  * Fix PHP 8.1: strlen(): Passing null to parameter #1 ($string) of
+    type string is deprecated
+  * Fix encoding recipient names with @ character and no space between
+    name and address
+  * Fix the license label in composer.json
+
+-------------------------------------------------------------------
 Wed Jan 20 20:32:48 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - new upstream release 1.10.10
