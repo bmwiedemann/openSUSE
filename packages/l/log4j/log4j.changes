@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:03:24 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Apply "CVE-2021-44228.patch" to fix a remote code execution
+  vulnerability that existed in the LDAP JNDI parser. [bsc#1193611,
+  CVE-2021-44228]
+
+-------------------------------------------------------------------
 Mon Apr 27 14:57:36 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build the log4j-jpl artifact, as to avoid java-11-only
