@@ -23,7 +23,9 @@
 %else
 %define build_qt4 0
 %endif
+%bcond_with dahdi
 
+%define sover 6_4_0
 Name:           yate
 Version:        6.4.0
 Release:        0
@@ -36,6 +38,9 @@ Patch1:         dont-mess-with-cflags.patch
 Patch2:         add-arm64-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+%if %{with dahdi}
+BuildRequires:  dahdi-linux-devel >= 3.0.0
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libgsm-devel
@@ -63,12 +68,15 @@ Yate is a telephony engine. Its focus is on Voice over Internet
 Protocol (VoIP) and PSTN. It can be extended. Voice, video, data and
 instant messenging can be unified under Yate's routing engine.
 
-%package -n libyate6
+%package -n libyate%{sover}
 Summary:        Shared libraries for Yate
 License:        GPL-2.0-or-later
 Group:          System/Libraries
+# we wronlgy packaged libyate.so.6.4.0 in libyate6; as the lib is renamed,
+# obsolete the wrong name, so we can step in place
+Obsoletes:      libyate6 = 6.4.0
 
-%description -n libyate6
+%description -n libyate%{sover}
 Yate is a telephony engine. Its focus is on Voice over Internet
 Protocol (VoIP) and PSTN. It can be extended. Voice, video, data and
 instant messenging can be unified under Yate's routing engine.
@@ -122,6 +130,9 @@ Guarantees Yate with AMRNB codec support.
 autoreconf -fiv
 %configure \
   --docdir=%{_docdir} \
+%if %{with dahdi}
+  --enable-dahdi \
+%endif
   --enable-sctp
 make #%%{?_smp_mflags} # Parallel build causes side-effects (compile errors)
 
@@ -150,8 +161,8 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 
 %fdupes %{buildroot}/%{_prefix}
 
-%post   -n libyate6 -p /sbin/ldconfig
-%postun -n libyate6 -p /sbin/ldconfig
+%post   -n libyate%{sover} -p /sbin/ldconfig
+%postun -n libyate%{sover} -p /sbin/ldconfig
 %if %{build_qt4}
 %post qt4 -p /sbin/ldconfig
 %postun qt4 -p /sbin/ldconfig
@@ -296,7 +307,7 @@ rm %{buildroot}%{_sysconfdir}/%{name}/yate-qt4.conf
 %config(noreplace) %{_sysconfdir}/%{name}/zapcard.conf
 %config(noreplace) %{_sysconfdir}/%{name}/zlibcompress.conf
 
-%files -n libyate6
+%files -n libyate%{sover}
 %{_libdir}/libyate.so.6*
 %{_libdir}/libyateasn.so.6*
 %{_libdir}/libyatejabber.so.6*

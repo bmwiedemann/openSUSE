@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec 10 11:26:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Obsolete libayet6: the library package was wrongly named (already
+  then shipped libyate.so.6.4.0 with the corresponding soname).
+
+-------------------------------------------------------------------
+Mon Dec  6 14:47:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Conditionally build with support for DAHDI
+- Use correct library-suffix
+
+-------------------------------------------------------------------
 Fri Aug 20 19:08:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.4.0
