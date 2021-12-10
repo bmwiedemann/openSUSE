@@ -35,4 +35,13 @@
 </comment>
     <requestid>888927</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c085a56ddcfafbe6d68bc358f9f9e1c2</srcmd5>
+    <version>3.2.0.20211008</version>
+    <time>1639169573</time>
+    <user>dimstar_suse</user>
+    <comment>- New release, no changelog
+</comment>
+    <requestid>939133</requestid>
+  </revision>
 </revisionlist>
