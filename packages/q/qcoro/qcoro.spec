@@ -24,7 +24,10 @@ Summary:        Coroutines for Qt
 License:        MIT
 URL:            https://github.com/danvratil/qcoro
 Source:         https://github.com/danvratil/qcoro/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.19.0
+%if 0%{?suse_version} > 1500
+BuildRequires:  dbus-1
+%endif
 BuildRequires:  cmake(Qt5Concurrent) >= 5.12.0
 BuildRequires:  cmake(Qt5Core) >= 5.12.0
 BuildRequires:  cmake(Qt5DBus) >= 5.12.0

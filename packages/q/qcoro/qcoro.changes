@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 10 16:18:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Install the dbus-launch executable at build time to run tests.
+
+-------------------------------------------------------------------
 Sun Oct 10 07:31:47 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Initial package
