@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-IOLoop-ReadWriteProcess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,31 @@
 #
 
 
-# Do not change this file manually, use cpanspec.yml instead
-
-Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.28
-Release:        0
 %define cpan_name Mojo-IOLoop-ReadWriteProcess
+Name:           perl-Mojo-IOLoop-ReadWriteProcess
+Version:        0.32
+Release:        0
 Summary:        Execute external programs or internal code blocks as separate process
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZARATE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::SharedMem)
 BuildRequires:  perl(Module::Build) >= 0.400500
-BuildRequires:  perl(Mojolicious) >= 7.24
-BuildRequires:  perl(Test::More) >= 0.98
+BuildRequires:  perl(Mojolicious)
+BuildRequires:  perl(Test::Exception)
 Requires:       perl(IPC::SharedMem)
-Requires:       perl(Mojolicious) >= 7.24
+Requires:       perl(Mojolicious)
 %{perl_requires}
 
 %description
 Mojo::IOLoop::ReadWriteProcess is yet another process manager.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
@@ -54,7 +50,7 @@ perl Build.PL installdirs=vendor
 %check
 echo "ignoring unstable tests"
 echo "https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14"
-rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize,06_events}.t
+rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
 ./Build test
 
 %install
@@ -62,8 +58,7 @@ rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize,06_events}.t
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes circle.yml codecov.yml minil.toml README.md
+%doc Changes codecov.yml minil.toml README.md
 %license LICENSE
 
 %changelog
