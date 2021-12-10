@@ -17,7 +17,7 @@
 
 
 Name:           spi-tools
-Version:        0.8.7
+Version:        1.0.1
 Release:        0
 Summary:        A set of SPI tools for Linux
 License:        GPL-2.0-or-later
