@@ -28,6 +28,8 @@ URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-warnings.patch
+# PATCH-FIX-UPSTREAM will be included with 1.9.4
+Patch1:         ioptron_fixes.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gsl-devel

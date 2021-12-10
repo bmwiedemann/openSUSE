@@ -463,4 +463,17 @@
   * Add setting of home position for Rigel/Pulsar dome </comment>
     <requestid>932448</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>cad25d18ae316ddc297a28cba9962b67</srcmd5>
+    <version>1.9.3</version>
+    <time>1639169573</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ioptron_fixes.patch (bsc#1193622):
+  * Fix PEC being on by default, it should be OFF by default.
+  * Fix iOptronV3 parking bug by using a workaround, because the
+    firmware must be fixed by iOptron.
+  * Add meridian behavior action and limit.
+</comment>
+    <requestid>939128</requestid>
+  </revision>
 </revisionlist>

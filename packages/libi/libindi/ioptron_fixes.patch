@@ -1,0 +1,647 @@
+diff --git a/drivers.xml b/drivers.xml
+index 54fddfa47..fa4315de8 100644
+--- a/drivers.xml
++++ b/drivers.xml
+@@ -155,19 +155,19 @@
+         </device>
+         <device label="iOptron CEM26" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron GEM28" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron CEM40" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron GEM45" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron iEQ45 Pro" manufacturer="iOptron">
+             <driver name="iEQ">indi_ieq_telescope</driver>
+@@ -207,15 +207,15 @@
+         </device>
+         <device label="iOptron v3" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron CEM120" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="iOptron CEM70" manufacturer="iOptron">
+             <driver name="iOptronV3">indi_ioptronv3_telescope</driver>
+-            <version>1.4</version>
++            <version>1.5</version>
+         </device>
+         <device label="Pulsar2" manufacturer="GTD">
+             <driver name="Pulsar2">indi_lx200pulsar2</driver>
+diff --git a/drivers/telescope/ioptronv3.cpp b/drivers/telescope/ioptronv3.cpp
+index 37e74fc68..586704dbc 100644
+--- a/drivers/telescope/ioptronv3.cpp
++++ b/drivers/telescope/ioptronv3.cpp
+@@ -44,7 +44,7 @@ static std::unique_ptr<IOptronV3> scope(new IOptronV3());
+ /* Constructor */
+ IOptronV3::IOptronV3()
+ {
+-    setVersion(1, 4);
++    setVersion(1, 5);
+ 
+     driver.reset(new Driver(getDeviceName()));
+ 
+@@ -173,7 +173,18 @@ bool IOptronV3::initProperties()
+     IUFillSwitch(&CWStateS[IOP_CW_NORMAL], "Normal", "Normal", ISS_ON);
+     IUFillSwitch(&CWStateS[IOP_CW_UP], "Up", "Up", ISS_OFF);
+     IUFillSwitchVector(&CWStateSP, CWStateS, 2, getDeviceName(), "CWState", "Counter weights", MOTION_TAB, IP_RO, ISR_1OFMANY,
+-                       0,
++                       0, IPS_IDLE);
++
++    /* Meridian Behavior */
++    IUFillSwitch(&MeridianActionS[IOP_MB_STOP], "IOP_MB_STOP", "Stop", ISS_ON);
++    IUFillSwitch(&MeridianActionS[IOP_MB_FLIP], "IOP_MB_FLIP", "Flip", ISS_OFF);
++    IUFillSwitchVector(&MeridianActionSP, MeridianActionS, 2, getDeviceName(), "MERIDIAN_ACTION", "Action", MB_TAB, IP_RW,
++                       ISR_1OFMANY,
++                       0, IPS_IDLE);
++
++    /* Meridian Limit */
++    IUFillNumber(&MeridianLimitN[0], "VALUE", "Degrees", "%.f", 0, 10, 1, 0);
++    IUFillNumberVector(&MeridianLimitNP, MeridianLimitN, 1, getDeviceName(), "MERIDIAN_LIMIT", "Limit", MB_TAB, IP_RW, 60,
+                        IPS_IDLE);
+ 
+     // Baud rates.
+@@ -231,6 +242,9 @@ bool IOptronV3::updateProperties()
+         defineProperty(&DaylightSP);
+         defineProperty(&CWStateSP);
+ 
++        defineProperty(&MeridianActionSP);
++        defineProperty(&MeridianLimitNP);
++
+         getStartupData();
+     }
+     else
+@@ -253,6 +267,9 @@ bool IOptronV3::updateProperties()
+         deleteProperty(SlewModeSP.name);
+         deleteProperty(DaylightSP.name);
+         deleteProperty(CWStateSP.name);
++
++        deleteProperty(MeridianActionSP.name);
++        deleteProperty(MeridianLimitNP.name);
+     }
+ 
+     return true;
+@@ -347,6 +364,17 @@ void IOptronV3::getStartupData()
+         IDSetNumber(&LocationNP, nullptr);
+     }
+ 
++    IOP_MB_STATE action;
++    uint8_t degrees = 0;
++    if (driver->getMeridianBehavior(action, degrees))
++    {
++        IUResetSwitch(&MeridianActionSP);
++        MeridianActionS[action].s = ISS_ON;
++        MeridianActionSP.s = IPS_OK;
++
++        MeridianLimitN[0].value = degrees;
++    }
++
+     double parkAZ = LocationN[LOCATION_LATITUDE].value >= 0 ? 0 : 180;
+     double parkAL = LocationN[LOCATION_LATITUDE].value;
+     if (InitPark())
+@@ -392,7 +420,6 @@ void IOptronV3::getStartupData()
+         }
+         scopeInfo = newInfo;
+     }
+-    // End Mod */
+ 
+     if (isSimulation())
+     {
+@@ -422,6 +449,23 @@ bool IOptronV3::ISNewNumber(const char *dev, const char *name, double values[],
+             return true;
+         }
+ 
++        /****************************************
++         Meridian Flip Limit
++        *****************************************/
++        if (!strcmp(name, MeridianLimitNP.name))
++        {
++            IUUpdateNumber(&MeridianLimitNP, values, names, n);
++            MeridianLimitNP.s = driver->setMeridianBehavior(static_cast<IOP_MB_STATE>(IUFindOnSwitchIndex(&MeridianActionSP)),
++                                MeridianLimitN[0].value) ? IPS_OK : IPS_ALERT;
++            if (MeridianLimitNP.s == IPS_OK)
++            {
++                LOGF_INFO("Mount Meridian Behavior: When mount reaches %.f degrees past meridian, it will %s.",
++                          MeridianLimitN[0].value, MeridianActionS[IOP_MB_STOP].s == ISS_ON ? "stop" : "flip");
++            }
++            IDSetNumber(&MeridianLimitNP, nullptr);
++            return true;
++        }
++
+         if (!strcmp(name, GuideNSNP.name) || !strcmp(name, GuideWENP.name))
+         {
+             processGuiderProperties(name, values, names, n);
+@@ -527,98 +571,110 @@ bool IOptronV3::ISNewSwitch(const char *dev, const char *name, ISState *states,
+             IDSetSwitch(&DaylightSP, nullptr);
+             return true;
+         }
+-    }
+-
+-    /* v3.0 PEC add controls and calls to the driver */
+-    if (!strcmp(name, PECStateSP.name))
+-    {
+-        IUUpdateSwitch(&PECStateSP, states, names, n);
+ 
+-        if(IUFindOnSwitchIndex(&PECStateSP) == 0)
++        /*******************************************************
++         * Meridian Action Operations
++        *******************************************************/
++        if (!strcmp(name, MeridianActionSP.name))
+         {
+-            // PEC OFF
+-            if(isTraining)
++            IUUpdateSwitch(&MeridianActionSP, states, names, n);
++            MeridianActionSP.s = (driver->setMeridianBehavior(static_cast<IOP_MB_STATE>(IUFindOnSwitchIndex(&MeridianActionSP)),
++                                  MeridianLimitN[0].value)) ? IPS_OK : IPS_ALERT;
++            if (MeridianActionSP.s == IPS_OK)
+             {
+-                // Training check
+-                sprintf(PECText, "Mount PEC busy recording, %d s", PECTime);
+-                LOG_WARN(PECText);
+-            }
+-            else
+-            {
+-                driver->setPECEnabled(false);
+-                PECStateSP.s = IPS_OK;
+-                LOG_INFO("Disabling PEC Chip");
++                LOGF_INFO("Mount Meridian Behavior: When mount reaches %.f degrees past meridian, it will %s.",
++                          MeridianLimitN[0].value, MeridianActionS[IOP_MB_STOP].s == ISS_ON ? "stop" : "flip");
+             }
++            IDSetSwitch(&MeridianActionSP, nullptr);
++            return true;
+         }
+ 
+-        if(IUFindOnSwitchIndex(&PECStateSP) == 1)
++        /* v3.0 PEC add controls and calls to the driver */
++        if (!strcmp(name, PECStateSP.name))
+         {
+-            // PEC ON
+-            if (GetPECDataStatus(true))
+-            {
+-                // Data Check
+-                driver->setPECEnabled(true);
+-                PECStateSP.s = IPS_BUSY;
+-                LOG_INFO("Enabling PEC Chip");
+-            }
+-        }
+-        IDSetSwitch(&PECStateSP, nullptr);
+-        return true;
+-    }
+-    // End Mod */
++            IUUpdateSwitch(&PECStateSP, states, names, n);
+ 
+-    /* v3.0 PEC add Training Controls to the Driver */
+-    if (!strcmp(name, PECTrainingSP.name))
+-    {
+-        IUUpdateSwitch(&PECTrainingSP, states, names, n);
+-        if(isTraining)
+-        {
+-            // Check if already training
+-            if(IUFindOnSwitchIndex(&PECTrainingSP) == 1)
++            if(PECStateS[PEC_OFF].s == ISS_ON)
+             {
+-                // Train Check Status
+-                sprintf(PECText, "Mount PEC busy recording, %d s", PECTime);
+-                LOG_WARN(PECText);
++                // PEC OFF
++                if(isTraining)
++                {
++                    // Training check
++                    LOGF_WARN("Mount PEC busy recording, %d s", PECTime);
++                }
++                else
++                {
++                    driver->setPECEnabled(false);
++                    PECStateSP.s = IPS_OK;
++                    LOG_INFO("Disabling PEC Chip");
++                }
+             }
+-
+-            if(IUFindOnSwitchIndex(&PECTrainingSP) == 0)
++            else
+             {
+-                // Train Cancel
+-                driver->setPETEnabled(false);
+-                isTraining = false;
+-                PECTrainingSP.s = IPS_ALERT;
+-                LOG_WARN("PEC Training cancelled by user, chip disabled");
++                // PEC ON
++                if (GetPECDataStatus(true))
++                {
++                    // Data Check
++                    driver->setPECEnabled(true);
++                    PECStateSP.s = IPS_BUSY;
++                    LOG_INFO("Enabling PEC Chip");
++                }
+             }
++            IDSetSwitch(&PECStateSP, nullptr);
++            return true;
+         }
+-        else
++
++        /* v3.0 PEC add Training Controls to the Driver */
++        if (!strcmp(name, PECTrainingSP.name))
+         {
+-            if(IUFindOnSwitchIndex(&PECTrainingSP) == 0)
++            IUUpdateSwitch(&PECTrainingSP, states, names, n);
++            if(isTraining)
+             {
+-                if(TrackState == SCOPE_TRACKING)
++                // Check if already training
++                if(IUFindOnSwitchIndex(&PECTrainingSP) == 1)
+                 {
+-                    // Train if tracking /guiding
+-                    driver->setPETEnabled(true);
+-                    isTraining = true;
+-                    PECTime = 0;
+-                    PECTrainingSP.s = IPS_BUSY;
+-                    LOG_INFO("PEC recording started...");
++                    // Train Check Status
++                    LOGF_WARN("Mount PEC busy recording, %d s", PECTime);
+                 }
+-                else
++
++                if(IUFindOnSwitchIndex(&PECTrainingSP) == 0)
+                 {
+-                    LOG_WARN("PEC Training only possible while guiding");
+-                    PECTrainingSP.s = IPS_IDLE;
++                    // Train Cancel
++                    driver->setPETEnabled(false);
++                    isTraining = false;
++                    PECTrainingSP.s = IPS_ALERT;
++                    LOG_WARN("PEC Training cancelled by user, chip disabled");
+                 }
+             }
+-            if(IUFindOnSwitchIndex(&PECTrainingSP) == 1)
++            else
+             {
+-                // Train Status
+-                GetPECDataStatus(true);
++                if(IUFindOnSwitchIndex(&PECTrainingSP) == 0)
++                {
++                    if(TrackState == SCOPE_TRACKING)
++                    {
++                        // Train if tracking /guiding
++                        driver->setPETEnabled(true);
++                        isTraining = true;
++                        PECTime = 0;
++                        PECTrainingSP.s = IPS_BUSY;
++                        LOG_INFO("PEC recording started...");
++                    }
++                    else
++                    {
++                        LOG_WARN("PEC Training only possible while guiding");
++                        PECTrainingSP.s = IPS_IDLE;
++                    }
++                }
++                if(IUFindOnSwitchIndex(&PECTrainingSP) == 1)
++                {
++                    // Train Status
++                    GetPECDataStatus(true);
++                }
+             }
++            IDSetSwitch(&PECTrainingSP, nullptr);
++            return true;
+         }
+-        IDSetSwitch(&PECTrainingSP, nullptr);
+-        return true;
+     }
+-    // End Mod */
+ 
+     return INDI::Telescope::ISNewSwitch(dev, name, states, names, n);
+ }
+@@ -664,28 +720,6 @@ bool IOptronV3::ReadScopeStatus()
+             IDSetSwitch(&SlewRateSP, nullptr);
+         }
+ 
+-        /*
+-        TelescopeTrackMode trackMode = TRACK_SIDEREAL;
+-
+-        switch (newInfo.trackRate)
+-        {
+-            case TR_SIDEREAL:
+-                trackMode = TRACK_SIDEREAL;
+-                break;
+-            case TR_SOLAR:
+-                trackMode = TRACK_SOLAR;
+-                break;
+-            case TR_LUNAR:
+-                trackMode = TRACK_LUNAR;
+-                break;
+-            case TR_KING:
+-                trackMode = TRACK_SIDEREAL;
+-                break;
+-            case TR_CUSTOM:
+-                trackMode = TRACK_CUSTOM;
+-                break;
+-        }*/
+-
+         switch (newInfo.systemStatus)
+         {
+             case ST_STOPPED:
+@@ -738,15 +772,15 @@ bool IOptronV3::ReadScopeStatus()
+         {
+             if(GetPECDataStatus(false))
+             {
+-                sprintf(PECText, "%d second worm cycle recorded", PECTime);
+-                LOG_INFO(PECText);
++                LOGF_INFO("%d second worm cycle recorded", PECTime);
+                 PECTrainingSP.s = IPS_OK;
+                 isTraining = false;
+             }
+             else
+             {
+                 PECTime = PECTime + 1 * getCurrentPollingPeriod() / 1000;
+-                sprintf(PECText, "Recording: %d s", PECTime);
++                char PECText[MAXINDILABEL] = {0};
++                snprintf(PECText, MAXINDILABEL, "Recording: %d s", PECTime);
+                 IUSaveText(&PECInfoT[0], PECText);
+             }
+         }
+@@ -754,8 +788,7 @@ bool IOptronV3::ReadScopeStatus()
+         {
+             driver->setPETEnabled(false);
+             PECTrainingSP.s = IPS_ALERT;
+-            sprintf(PECText, "Tracking error, recording cancelled %d s", PECTime);
+-            LOG_ERROR(PECText);
++            LOGF_ERROR("Tracking error, recording cancelled %d s", PECTime);
+             IUSaveText(&PECInfoT[0], "Cancelled");
+         }
+         IDSetText(&PECInfoTP, nullptr);
+@@ -766,9 +799,27 @@ bool IOptronV3::ReadScopeStatus()
+     IOP_PIER_STATE pierState = IOP_PIER_UNKNOWN;
+     IOP_CW_STATE cwState = IOP_CW_NORMAL;
+ 
++    double previousRA = currentRA, previousDE = currentDEC;
+     rc = driver->getCoords(&currentRA, &currentDEC, &pierState, &cwState);
+     if (rc)
+     {
++        // 2021.11.30 JM: This is a hack to circumvent a bug in iOptorn firmware
++        // the "system status" bit is set to SLEWING even when parking is done (2), it never
++        // changes to (6) which indicates it has parked. So we use a counter to check if there
++        // is no longer any motion.
++        if (TrackState == SCOPE_PARKING)
++        {
++            if (std::abs(previousRA - currentRA) < 0.01 && std::abs(previousDE - currentDEC) < 0.01)
++            {
++                m_ParkingCounter++;
++                if (m_ParkingCounter >= MAX_PARK_COUNTER)
++                {
++                    m_ParkingCounter = 0;
++                    SetTrackEnabled(false);
++                    SetParked(true);
++                }
++            }
++        }
+         if (pierState == IOP_PIER_UNKNOWN)
+             setPierSide(PIER_UNKNOWN);
+         else
+@@ -861,6 +912,7 @@ bool IOptronV3::Park()
+     if (driver->park())
+     {
+         TrackState = SCOPE_PARKING;
++        m_ParkingCounter = 0;
+         LOG_INFO("Parking is in progress...");
+ 
+         return true;
+@@ -1051,6 +1103,9 @@ bool IOptronV3::saveConfigItems(FILE *fp)
+     IUSaveConfigSwitch(fp, &SlewModeSP);
+     IUSaveConfigSwitch(fp, &DaylightSP);
+ 
++    IUSaveConfigSwitch(fp, &MeridianActionSP);
++    IUSaveConfigNumber(fp, &MeridianLimitNP);
++
+     return true;
+ }
+ 
+diff --git a/drivers/telescope/ioptronv3.h b/drivers/telescope/ioptronv3.h
+index afb615164..1d234673d 100644
+--- a/drivers/telescope/ioptronv3.h
++++ b/drivers/telescope/ioptronv3.h
+@@ -16,7 +16,7 @@
+     You should have received a copy of the GNU Lesser General Public
+     License along with this library; if not, write to the Free Software
+     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+-    
++
+     Updated for PEC V3
+ */
+ 
+@@ -95,22 +95,23 @@ class IOptronV3 : public INDI::Telescope, public INDI::GuiderInterface
+             * @brief getStartupData Get initial mount info on startup.
+             */
+         void getStartupData();
+-        
++
+         /** Mod v3.0 PEC Data Status
+             * @brief get PEC data from the mount info.
+             * @param true  = Update log
+             * @param false = Don't update log
+             */
+         bool GetPECDataStatus(bool enabled);
+-        
++
+         /* Mod v3.0 Adding PEC Recording Switches  */
+-        ISwitch PECTrainingS[2]; 
+-        ISwitchVectorProperty PECTrainingSP; 
++        ISwitch PECTrainingS[2];
++        ISwitchVectorProperty PECTrainingSP;
++
+         ITextVectorProperty PECInfoTP;
+         IText PECInfoT[2] {};
+-        char PECText[128];
+-        int PECTime = 0;
+-        bool isTraining;
++
++        int PECTime {false};
++        bool isTraining {false};
+         // End Mod */
+ 
+         /* Firmware */
+@@ -149,6 +150,14 @@ class IOptronV3 : public INDI::Telescope, public INDI::GuiderInterface
+         ISwitch DaylightS[2];
+         ISwitchVectorProperty DaylightSP;
+ 
++        // Meridian Behavior
++        ISwitch MeridianActionS[2];
++        ISwitchVectorProperty MeridianActionSP;
++
++        // Meridian Limit
++        INumber MeridianLimitN[1];
++        INumberVectorProperty MeridianLimitNP;
++
+         uint32_t DBG_SCOPE;
+ 
+         double currentRA, currentDEC;
+@@ -157,5 +166,9 @@ class IOptronV3 : public INDI::Telescope, public INDI::GuiderInterface
+         IOPv3::IOPInfo scopeInfo;
+         IOPv3::FirmwareInfo firmwareInfo;
+ 
++        uint8_t m_ParkingCounter {0};
++        static constexpr const uint8_t MAX_PARK_COUNTER {2};
++        static constexpr const char *MB_TAB {"Meridian Behavior"};
++
+         std::unique_ptr<IOPv3::Driver> driver;
+ };
+diff --git a/drivers/telescope/ioptronv3driver.cpp b/drivers/telescope/ioptronv3driver.cpp
+index 4a28b4fd9..f9f1fc1b8 100644
+--- a/drivers/telescope/ioptronv3driver.cpp
++++ b/drivers/telescope/ioptronv3driver.cpp
+@@ -159,6 +159,8 @@ void Driver::setSimulation(bool enable)
+     simData.JD = ln_get_julian_from_sys();
+     simData.utc_offset_minutes = 3 * 60;
+     simData.day_light_saving = false;
++    simData.mb_state = IOP_MB_FLIP;
++    simData.mb_limit = 3;
+ 
+     simData.simInfo.gpsStatus = GPS_DATA_OK;
+     simData.simInfo.hemisphere = HEMI_NORTH;
+@@ -381,8 +383,8 @@ bool Driver::setCurrentHome()
+ }
+ 
+ /* v3.0 Added in control for PEC , Train and Data Integrity */
+-bool Driver::setPECEnabled(bool enabled)  
+-{ 
++bool Driver::setPECEnabled(bool enabled)
++{
+     return sendCommand(enabled ? ":SPP1#" : ":SPP0#");
+ }
+ 
+@@ -398,18 +400,24 @@ bool Driver::getPETEnabled(bool enabled)
+     //  If enabled false then check if training -> :GPR#
+     if(enabled)
+     {
+-        if (sendCommand(":GPE#",1,res))
+-         {
+-            if (res[0] == '1'){return true;}
+-         }
++        if (sendCommand(":GPE#", 1, res))
++        {
++            if (res[0] == '1')
++            {
++                return true;
++            }
++        }
+     }
+     else
+     {
+-         if (sendCommand(":GPR#",1,res))
+-         {
+-            if (res[0] == '1'){return true;}
+-         } 
+-    }      
++        if (sendCommand(":GPR#", 1, res))
++        {
++            if (res[0] == '1')
++            {
++                return true;
++            }
++        }
++    }
+     return false;
+ }
+ // End Mod */
+@@ -732,4 +740,35 @@ bool Driver::getUTCDateTime(double *JD, int *utcOffsetMinutes, bool *dayLightSav
+     return true;
+ }
+ 
++bool Driver::getMeridianBehavior(IOP_MB_STATE &action, uint8_t &degrees)
++{
++    char res[IOP_BUFFER] = {0};
++    if (m_Simulation)
++    {
++        snprintf(res, IOP_BUFFER, "%d%02d", simData.mb_state, simData.mb_limit);
++    }
++    else if (sendCommand(":GMT#", -1, res) == false)
++        return false;
++
++    action = static_cast<IOP_MB_STATE>(res[0] - '0');
++    degrees = std::stoi(res + 1);
++    return true;
++}
++
++bool Driver::setMeridianBehavior(IOP_MB_STATE action, uint8_t degrees)
++{
++    char cmd[IOP_BUFFER] = {0};
++    if (m_Simulation)
++    {
++        simData.mb_state = action;
++        simData.mb_limit = degrees;
++        return true;
++    }
++    else
++    {
++        snprintf(cmd, IOP_BUFFER, ":SMT%d%02d#", action, degrees);
++        return sendCommand(cmd);
++    }
++}
++
+ }
+diff --git a/drivers/telescope/ioptronv3driver.h b/drivers/telescope/ioptronv3driver.h
+index b105678d5..141a97fcc 100644
+--- a/drivers/telescope/ioptronv3driver.h
++++ b/drivers/telescope/ioptronv3driver.h
+@@ -54,6 +54,7 @@ typedef enum { IOP_N, IOP_S, IOP_W, IOP_E } IOP_DIRECTION;
+ typedef enum { IOP_FIND_HOME, IOP_SET_HOME, IOP_GOTO_HOME } IOP_HOME_OPERATION;
+ typedef enum { IOP_PIER_EAST, IOP_PIER_WEST, IOP_PIER_UNKNOWN } IOP_PIER_STATE;
+ typedef enum { IOP_CW_UP, IOP_CW_NORMAL} IOP_CW_STATE;
++typedef enum { IOP_MB_STOP, IOP_MB_FLIP} IOP_MB_STATE;
+ 
+ typedef struct
+ {
+@@ -152,6 +153,12 @@ class Driver
+         bool getGuideRate(double *RARate, double *DERate);
+         bool startGuide(IOP_DIRECTION dir, uint32_t ms);
+ 
++        /**************************************************************************
++         Meridian Behavior
++        **************************************************************************/
++        bool setMeridianBehavior(IOP_MB_STATE action, uint8_t degrees);
++        bool getMeridianBehavior(IOP_MB_STATE &action, uint8_t &degrees);
++
+         /**************************************************************************
+          Time & Location
+         **************************************************************************/
+@@ -202,8 +209,10 @@ class Driver
+             double JD;
+             int utc_offset_minutes;
+             bool day_light_saving;
++            uint8_t mb_limit;
+             IOP_PIER_STATE pier_state;
+             IOP_CW_STATE cw_state;
++            IOP_MB_STATE mb_state;
+ 
+             IOPInfo simInfo;
+         } simData;
+diff --git a/libs/indibase/inditelescope.cpp b/libs/indibase/inditelescope.cpp
+index ce7e10b69..9d69a823f 100644
+--- a/libs/indibase/inditelescope.cpp
++++ b/libs/indibase/inditelescope.cpp
+@@ -122,8 +122,8 @@ bool Telescope::initProperties()
+                        IP_RW, ISR_1OFMANY, 60, IPS_IDLE);
+ 
+     // PEC State
+-    IUFillSwitch(&PECStateS[PEC_OFF], "PEC OFF", "PEC OFF", ISS_OFF);
+-    IUFillSwitch(&PECStateS[PEC_ON], "PEC ON", "PEC ON", ISS_ON);
++    IUFillSwitch(&PECStateS[PEC_OFF], "PEC OFF", "PEC OFF", ISS_ON);
++    IUFillSwitch(&PECStateS[PEC_ON], "PEC ON", "PEC ON", ISS_OFF);
+     IUFillSwitchVector(&PECStateSP, PECStateS, 2, getDeviceName(), "PEC", "PEC Playback", MOTION_TAB, IP_RW, ISR_1OFMANY, 0,
+                        IPS_IDLE);
+ 

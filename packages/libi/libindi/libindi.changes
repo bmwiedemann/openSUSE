@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Dec 10 13:11:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add ioptron_fixes.patch (bsc#1193622):
+  * Fix PEC being on by default, it should be OFF by default.
+  * Fix iOptronV3 parking bug by using a workaround, because the
+    firmware must be fixed by iOptron.
+  * Add meridian behavior action and limit.
+
+-------------------------------------------------------------------
 Fri Nov 19 08:25:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.3:
