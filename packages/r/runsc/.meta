@@ -1,0 +1,10 @@
+<package name="runsc" project="openSUSE:Factory">
+  <title>gVisor</title>
+  <description>Application Kernel for Containers.
+
+Do aware this package:
+  - Only support x86_64 and aarch64.
+  - Do not have Podman support yet.</description>
+  <devel project="devel:kubic" package="runsc"/>
+  <url>https://github.com/google/gvisor</url>
+</package>

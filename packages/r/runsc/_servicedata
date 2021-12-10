@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/google/gvisor.git</param>
+              <param name="changesrevision">b3b0f8c3aeaeed887611a02c9bffd208c545a442</param></service></servicedata>

@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/google/gvisor.git</param>
+    <param name="scm">git</param>
+    <param name="revision">da01553a212da9aee0e93af3fb6b7032e4a95c0d</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">release-(.*)</param>
+    <param name="filename">runsc</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="disabled" />
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

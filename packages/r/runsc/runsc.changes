@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Wed Dec 08 01:08:07 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 20211129.0:
+  * Support NATing ICMPv4 Echo packets
+  * cgroup/cpuset: handle the offset argument of write methods properly
+  * Extract NAT types
+  * Increment spurious recovery metric only for RTO.
+  * Explicitly allow new connections to be created
+  * Handle empty values for XDG_RUNTIME_DIR properly.
+  * Internal change.
+  * Create a usage command that outputs the read wait times from the sentry.
+  * Check for support for xgetbv
+  * Add support for flexible filename limits for tmpfs.
+  * tools/install_containerd.sh: compare strings properly
+  * Add an empty line between header and package
+  * buildkite: CgroupDriver has to be cgroupfs
+  * Set native.cgroupdriver=cgroupfs for docker
+  * buildkite: set DEBIAN_FRONTEND=noninteractive
+  * buildkite: runsc tests on cgroupv2
+  * cgroupv2: fix CPUQuota parsing
+  * runsc: Add cgroup v2 implementation
+  * cgroupv2: skip tests on containerd < 1.4
+  * conntrack: account for window scaling
+  * Explicitly pass TCP payload size in conntrack
+  * Skip readonly controllers
+  * Modify udpPacket to hold a PacketBuffer reference instead of a VectorizedView.
+  * mark platforms as Linux-only
+
+-------------------------------------------------------------------
+Mon Dec 06 15:36:29 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 20211122.0:
+  * Add Checked methods to go_marshal.
+  * Skip header install if not available.
+  * buildkite: build Netstack on several platforms
+  * Support STAGED_BINARIES to run prebuilt binaries with the test pipeline.
+  * Automated rollback of changelist 407638912
+  * Drop connection on reply tuple conflict
+
+-------------------------------------------------------------------
+Mon Dec  6 15:13:29 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init gVisor Package.
+
+gVisor is an application kernel for containers that provides efficient defense-in-depth anywhere.
+
+  - Container-native Security
+  - Resource Efficiency
+  - Platform Portability
+
+Do aware that gVisor only support x86_64 and aarch64 platflom.
+
+Current Release: 20211122.0
+Commit Hash: 58e727e70e301525cdd17fabd6d3f92e664d5e72

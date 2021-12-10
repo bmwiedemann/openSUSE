@@ -1,0 +1,12 @@
+# This is an default configuration file for runsc and containerd.
+#
+# Please import this file in /etc/containerd/config.toml following
+# containerd-config.toml(5).
+#
+# If you are using docker, run runsc install instead.
+
+version = 0
+[plugins."io.containerd.runtime.v1.linux"]
+  shim_debug = true
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runsc]
+  runtime_type = "io.containerd.runsc.v1"
