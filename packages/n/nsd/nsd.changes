@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  9 18:23:11 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- New upstream release 4.3.9
+  * Fix #198: nsd-control reconfig core dump.
+  * Fix to remove git tracking and ci information from release tarballs.
+  * Fix unit tests for new answer-cookie default.
+  * Fix socket_partitioning unit test for FreeBSD.
+  * Fix SVCB test to work around older dig with drill.
+
+-------------------------------------------------------------------
 Sat Nov 13 18:17:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - adjusted SystemCallFilter= in nsd.service
