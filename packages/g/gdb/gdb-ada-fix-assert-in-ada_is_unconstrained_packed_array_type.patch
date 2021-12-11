@@ -1,0 +1,48 @@
+[gdb/ada] Fix assert in ada_is_unconstrained_packed_array_type
+
+On openSUSE Leap 42.3, with system compiler gcc 4.8.5 I run into:
+...
+(gdb) print u_one_two_three^M
+src/gdb/gdbtypes.h:1050: internal-error: field: \
+ Assertion `idx >= 0 && idx < num_fields ()' failed.^M
+...
+
+We run into trouble while doing this in
+ada_is_unconstrained_packed_array_type:
+...
+1953          return TYPE_FIELD_BITSIZE (type, 0) > 0;
+...
+which tries to get field 0 from a type without fields:
+...
+(gdb) p type->num_fields ()
+$6 = 0
+...
+which is the case because the type is a typedef:
+...
+(gdb) p type->code ()
+$7 = TYPE_CODE_TYPEDEF
+...
+
+Fix this by using the type referenced by the typedef instead.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=28323
+
+---
+ gdb/ada-lang.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gdb/ada-lang.c b/gdb/ada-lang.c
+index b098991612d..9341c7b3677 100644
+--- a/gdb/ada-lang.c
++++ b/gdb/ada-lang.c
+@@ -1927,6 +1927,8 @@ ada_is_unconstrained_packed_array_type (struct type *type)
+       /* The structure's first field is a pointer to an array, so this
+ 	 fetches the array type.  */
+       type = TYPE_TARGET_TYPE (type->field (0).type ());
++      if (type->code () == TYPE_CODE_TYPEDEF)
++	type = ada_typedef_target_type (type);
+       /* Now we can see if the array elements are packed.  */
+       return TYPE_FIELD_BITSIZE (type, 0) > 0;
+     }

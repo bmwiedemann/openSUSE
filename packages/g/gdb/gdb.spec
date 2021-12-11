@@ -389,6 +389,8 @@ Patch2118:      gdb-symtab-fix-segfault-in-search_one_symtab.patch
 Patch2119:      gdb-testsuite-fix-gdb.arch-i386-pkru.exp-on-linux.patch
 # https://sourceware.org/pipermail/gdb-patches/2021-November/183960.html
 Patch2120:      gdb-tdep-fix-avx512-m32-support-in-gdbserver.patch
+# https://sourceware.org/pipermail/gdb-patches/2021-December/184241.html
+Patch2121:      gdb-ada-fix-assert-in-ada_is_unconstrained_packed_array_type.patch
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -815,6 +817,7 @@ find -name "*.info*"|xargs rm -f
 %patch2118 -p1
 %patch2119 -p1
 %patch2120 -p1
+%patch2121 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

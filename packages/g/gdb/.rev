@@ -2237,4 +2237,14 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>934734</requestid>
   </revision>
+  <revision rev="158" vrev="4">
+    <srcmd5>c331204ef106b1704a5b83b30870918a</srcmd5>
+    <version>11.1</version>
+    <time>1639266966</time>
+    <user>dimstar_suse</user>
+    <comment>- Patches added (swo#28323):
+  gdb-ada-fix-assert-in-ada_is_unconstrained_packed_array_type.patch
+</comment>
+    <requestid>936257</requestid>
+  </revision>
 </revisionlist>
