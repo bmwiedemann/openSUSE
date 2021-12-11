@@ -400,4 +400,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>872519</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0899b5a9ffedc06a2af7bce831326443</srcmd5>
+    <version>2.9.4</version>
+    <time>1639266964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936226</requestid>
+  </revision>
 </revisionlist>

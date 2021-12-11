@@ -21,7 +21,7 @@
 %define libblockdev_version 2.19
 
 Name:           udisks2
-Version:        2.9.2
+Version:        2.9.4
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -242,6 +242,7 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %post -n %{name}
 %{?udev_rules_update:%udev_rules_update}
 %service_add_post udisks2.service
+%tmpfiles_create %{_tmpfilesdir}/udisks2.conf
 
 %preun -n %{name}
 %service_del_preun udisks2.service
@@ -265,7 +266,7 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 %doc AUTHORS NEWS
 %{_bindir}/udisksctl
 %config %{_datadir}/dbus-1/system.d/org.freedesktop.UDisks2.conf
-%{_prefix}/lib/tmpfiles.d/udisks2.conf
+%{_tmpfilesdir}/udisks2.conf
 %{_datadir}/bash-completion/completions/udisksctl
 %{_unitdir}/udisks2.service
 %dir %{_udevrulesdir}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 17 18:30:14 UTC 2021 - Luciano Santos <luc14n0@linuxmail.org>
+
+- Update to version 2.9.4:
+  + Many fixes, improvements, and additions to the code.
+  + Mount options:
+    - Always use errors=remount-ro for ext filesystems;
+    - Add ntfs3 kernel driver options.
+  + Build: Remove warnings unknown to clang.
+  + Tests: Adapt to clang differences when causing a segfault.
+
+- Changes from version 2.9.3:
+  + Many fixes, improvements, and additions to the code and test.
+- Add "%tmpfiles_create %{_tmpfilesdir}/udisks2.conf" call in %post
+  section to make sure /run/media will be created right after the
+  instalation of udisks2.
+
+-------------------------------------------------------------------
 Fri Feb 12 00:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.2:
@@ -7,18 +24,24 @@ Fri Feb 12 00:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * tests: Test modules that are actually enabled during build
   * build: Exclude VDO module from distcheck build
   * udisksfstabentry: Add udisks_fstab_entry_has_opt()
-  * udiskslinuxblock: Reflect fstab "noauto" mount option in HintAuto
+  * udiskslinuxblock: Reflect fstab "noauto" mount option in
+    HintAuto
   * udiskslinuxblock: Update hints after fstab change
   * tests: Add tests for Block hints
   * udiskslinuxfilesystemhelpers: Make TakeOwnership() race free
-  * tests: Extend filesystem test_take_ownership tests with symlinks
-  * mount options: Allow 'nosymfollow' mount option for unprivileged mounts
-  * udisksstate: Silence the block device busy messages on cleanup lock
+  * tests: Extend filesystem test_take_ownership tests with
+    symlinks
+  * mount options: Allow 'nosymfollow' mount option for
+    unprivileged mounts
+  * udisksstate: Silence the block device busy messages on cleanup
+    lock
   * udev: Distinguish mmcblk-class device types
   * udev: Propagate mmcblk disk attributes to mmcblk_boot devices
-  * udiskslinuxdrive: Tweak the 'removable'/'ejectable' hints for mmcblk-class devices
+  * udiskslinuxdrive: Tweak the 'removable'/'ejectable' hints for
+    mmcblk-class devices
   * udiskslinuxblock: Tweak the hints for mmcblk-class devices
-  * udisksdaemonutil: Refactor udisks_daemon_util_trigger_uevent() out of UDisksLinuxBlockObject
+  * udisksdaemonutil: Refactor udisks_daemon_util_trigger_uevent()
+    out of UDisksLinuxBlockObject
   * udiskslinuxmanager: Trigger uevent after loop device setup
   * tests: Remove scsi_debug serial number checks
   * tests: Skip zram tests if zram module is already loaded
@@ -27,7 +50,8 @@ Fri Feb 12 00:00:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * tests: Do not use nilfs2 as an example of non-resizable FS
   * Memory leak fixes
   * doc: Update config file path
-- drop udisks2-Fix-memory-leaks.patch, udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch (upstream)
+- Drop udisks2-Fix-memory-leaks.patch, and
+  udisks2-lvm2-Fix-leaking-BDLVMVDOPooldata.patch (upstream).
 
 -------------------------------------------------------------------
 Sat Dec 19 16:16:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
