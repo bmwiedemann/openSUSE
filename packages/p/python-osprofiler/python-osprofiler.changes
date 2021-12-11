@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:30:11 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.4.2
+  - Use py3 as the default runtime for tox
+  - Move flake8 as a pre-commit local target.
+  - Add Python3 wallaby unit tests
+  - ignore reno generated artifacts
+  - Dropping lower constraints testing
+  - Set manila config opts in devstack
+  - Update master for stable/victoria
+  - Uncap PrettyTable
+  - Adding pre-commit
+
+-------------------------------------------------------------------
 Fri Oct  9 19:18:37 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.4.0

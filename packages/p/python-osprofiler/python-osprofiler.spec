@@ -1,7 +1,7 @@
 #
 # spec file for package python-osprofiler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-osprofiler
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.0.tar.gz
+URL:            https://docs.openstack.org/osprofiler
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -39,7 +39,7 @@ BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-pymongo
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-redis
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -54,7 +54,6 @@ reasons (for example in isolating cross-project performance issues).
 
 %package -n python3-osprofiler
 Summary:        OpenStack Profiler Library
-Group:          Development/Languages/Python
 Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-importlib-metadata
@@ -62,7 +61,7 @@ Requires:       python3-oslo.concurrency >= 3.26.0
 Requires:       python3-oslo.config
 Requires:       python3-oslo.log
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-osprofiler < 3.0.0
 %endif
@@ -79,7 +78,6 @@ This package contains the Python 3.x module
 
 %package -n python-osprofiler-doc
 Summary:        Documentation for OSProfiler
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -87,7 +85,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-3.4.0
+%autosetup -p1 -n osprofiler-3.4.2
 %py_req_cleanup
 
 %build

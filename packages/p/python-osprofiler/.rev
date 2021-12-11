@@ -219,4 +219,21 @@
     <comment>switch to victoria</comment>
     <requestid>841223</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>542f99db522d74cf70277d2623d91baa</srcmd5>
+    <version>3.4.2</version>
+    <time>1639267060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.2
+  - Use py3 as the default runtime for tox
+  - Move flake8 as a pre-commit local target.
+  - Add Python3 wallaby unit tests
+  - ignore reno generated artifacts
+  - Dropping lower constraints testing
+  - Set manila config opts in devstack
+  - Update master for stable/victoria
+  - Uncap PrettyTable
+  - Adding pre-commit</comment>
+    <requestid>939547</requestid>
+  </revision>
 </revisionlist>
