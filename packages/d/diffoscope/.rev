@@ -259,4 +259,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>935760</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>902b84357b68f6ca9d8316b43456db95</srcmd5>
+    <version>196</version>
+    <time>1639267064</time>
+    <user>dimstar_suse</user>
+    <comment>- - update to version 196:
+ - Add a comment/annotation when the GNU_BUILD_ID field has been modified.
+ - Fix the &quot;Black&quot; version detection.
+ - Replace &quot;token&quot; with anonymous variable &quot;x&quot; in order to remove extra lines.
+- update to version 195:
+ - Don't use the runtime platform's native endianness when unpacking .pyc
+   files to fix test failures on big-endian machines.
+- - update to version 195:
+ - Don't use the runtime platform's native endianness when unpacking .pyc
+   files to fix test failures on big-endian machines.
+</comment>
+    <requestid>939576</requestid>
+  </revision>
 </revisionlist>
