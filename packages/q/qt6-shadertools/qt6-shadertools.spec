@@ -34,6 +34,10 @@ License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-shadertools-rpmlintrc
+# PATCH-FIX-UPSTREAM Fix endianness issues on big endian platforms
+Patch0:         0001-Fix-encoding-decoding-of-string-literals-for-big-end.patch
+Patch1:         0002-TIntermediate-promoteConstantUnion-fix-conversion-to.patch
+Patch2:         0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)

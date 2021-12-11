@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:52:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to fix endianness issues on big endian platforms:
+  * 0001-Fix-encoding-decoding-of-string-literals-for-big-end.patch
+  * 0002-TIntermediate-promoteConstantUnion-fix-conversion-to.patch
+  * 0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch
+
+-------------------------------------------------------------------
 Wed Dec  1 10:06:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.2.2

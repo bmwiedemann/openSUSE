@@ -1,0 +1,177 @@
+From 1c28979226b8bb5a61bcbfa9b2c1963072bc7df4 Mon Sep 17 00:00:00 2001
+From: Marius Hillenbrand <mhillen@linux.ibm.com>
+Date: Tue, 9 Nov 2021 16:31:22 +0100
+Subject: [PATCH 3/3] Use intermOut.cpp's IsNan and IsInfinity for parse-time
+ constant folding (updated)
+
+There were two implementations of isInf() and isNan(), in Constant.cpp
+and in intermOut.cpp. The former only works on little-endian systems,
+the latter is a wrapper for library functions and works regardless of
+endianness. Move the second version into Common.h and adopt it in both
+places. Thereby avoid the duplication and fix for big-endian systems.
+
+A previous commit with the same intent and purpose had missed a required
+header for builds on Windows.
+
+On s390x, this fixes the test case
+Glsl/CompileToAstTest.FromFile/constFold_frag.
+
+Fixes #2802
+---
+ src/3rdparty/glslang/glslang/Include/Common.h | 34 +++++++++++++++++++
+ .../glslang/MachineIndependent/Constant.cpp   | 33 ++----------------
+ .../glslang/MachineIndependent/intermOut.cpp  | 31 -----------------
+ 3 files changed, 36 insertions(+), 62 deletions(-)
+
+diff --git a/src/3rdparty/glslang/glslang/Include/Common.h b/src/3rdparty/glslang/glslang/Include/Common.h
+index 115f6f7..5b2dae6 100644
+--- a/src/3rdparty/glslang/glslang/Include/Common.h
++++ b/src/3rdparty/glslang/glslang/Include/Common.h
+@@ -39,6 +39,11 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#ifdef _MSC_VER
++#include <cfloat>
++#else
++#include <cmath>
++#endif
+ #include <cstdio>
+ #include <cstdlib>
+ #include <list>
+@@ -288,6 +293,35 @@ template <class T> bool IsMultipleOfPow2(T number, int powerOf2)
+     return ! (number & (powerOf2 - 1));
+ }
+ 
++inline bool IsInfinity(double x) {
++#ifdef _MSC_VER
++    switch (_fpclass(x)) {
++      case _FPCLASS_NINF:
++      case _FPCLASS_PINF:
++          return true;
++      default:
++          return false;
++      }
++#else
++      return std::isinf(x);
++#endif
++}
++
++inline bool IsNan(double x) {
++#ifdef _MSC_VER
++      switch (_fpclass(x)) {
++        case _FPCLASS_SNAN:
++        case _FPCLASS_QNAN:
++            return true;
++        default:
++            return false;
++        }
++#else
++      return std::isnan(x);
++#endif
++}
++
++
+ } // end namespace glslang
+ } // namespace QtShaderTools
+ 
+diff --git a/src/3rdparty/glslang/glslang/MachineIndependent/Constant.cpp b/src/3rdparty/glslang/glslang/MachineIndependent/Constant.cpp
+index 23c511e..1b23d68 100644
+--- a/src/3rdparty/glslang/glslang/MachineIndependent/Constant.cpp
++++ b/src/3rdparty/glslang/glslang/MachineIndependent/Constant.cpp
+@@ -46,35 +46,6 @@ namespace {
+ using namespace QtShaderTools;
+ using namespace glslang;
+ 
+-typedef union {
+-    double d;
+-    int i[2];
+-} DoubleIntUnion;
+-
+-// Some helper functions
+-
+-bool isNan(double x)
+-{
+-    DoubleIntUnion u;
+-    // tough to find a platform independent library function, do it directly
+-    u.d = x;
+-    int bitPatternL = u.i[0];
+-    int bitPatternH = u.i[1];
+-    return (bitPatternH & 0x7ff80000) == 0x7ff80000 &&
+-           ((bitPatternH & 0xFFFFF) != 0 || bitPatternL != 0);
+-}
+-
+-bool isInf(double x)
+-{
+-    DoubleIntUnion u;
+-    // tough to find a platform independent library function, do it directly
+-    u.d = x;
+-    int bitPatternL = u.i[0];
+-    int bitPatternH = u.i[1];
+-    return (bitPatternH & 0x7ff00000) == 0x7ff00000 &&
+-           (bitPatternH & 0xFFFFF) == 0 && bitPatternL == 0;
+-}
+-
+ const double pi = 3.1415926535897932384626433832795;
+ 
+ } // end anonymous namespace
+@@ -664,12 +635,12 @@ TIntermTyped* TIntermConstantUnion::fold(TOperator op, const TType& returnType)
+ 
+         case EOpIsNan:
+         {
+-            newConstArray[i].setBConst(isNan(unionArray[i].getDConst()));
++            newConstArray[i].setBConst(IsNan(unionArray[i].getDConst()));
+             break;
+         }
+         case EOpIsInf:
+         {
+-            newConstArray[i].setBConst(isInf(unionArray[i].getDConst()));
++            newConstArray[i].setBConst(IsInfinity(unionArray[i].getDConst()));
+             break;
+         }
+ 
+diff --git a/src/3rdparty/glslang/glslang/MachineIndependent/intermOut.cpp b/src/3rdparty/glslang/glslang/MachineIndependent/intermOut.cpp
+index e07cdfe..9478fd5 100644
+--- a/src/3rdparty/glslang/glslang/MachineIndependent/intermOut.cpp
++++ b/src/3rdparty/glslang/glslang/MachineIndependent/intermOut.cpp
+@@ -48,37 +48,6 @@
+ #endif
+ #include <cstdint>
+ 
+-namespace {
+-
+-bool IsInfinity(double x) {
+-#ifdef _MSC_VER
+-    switch (_fpclass(x)) {
+-    case _FPCLASS_NINF:
+-    case _FPCLASS_PINF:
+-        return true;
+-    default:
+-        return false;
+-    }
+-#else
+-    return std::isinf(x);
+-#endif
+-}
+-
+-bool IsNan(double x) {
+-#ifdef _MSC_VER
+-    switch (_fpclass(x)) {
+-    case _FPCLASS_SNAN:
+-    case _FPCLASS_QNAN:
+-        return true;
+-    default:
+-        return false;
+-    }
+-#else
+-  return std::isnan(x);
+-#endif
+-}
+-
+-}
+ 
+ namespace QtShaderTools {
+ 
+-- 
+2.34.1
+
