@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:10:36 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.5.0
+  - Add Python3 xena unit tests
+  - Use py3 as the default runtime for tox
+  - Replace deprecated inspect.getargspec
+  - Use TOX_CONSTRAINTS_FILE
+  - Dropping lower constraints testing
+  - Do not patch inspect.argspec directly
+  - Changed minversion in tox to 3.18.0
+  - Move flake8 as a pre-commit local target.
+  - Dropping lower constraints references
+  - Update master for stable/wallaby
+
+-------------------------------------------------------------------
 Sun May  2 17:41:31 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.4.0

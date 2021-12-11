@@ -172,4 +172,22 @@
     <comment></comment>
     <requestid>890000</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7726e9c38c0de32864a4c33d412e2c2f</srcmd5>
+    <version>2.5.0</version>
+    <time>1639267059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Add Python3 xena unit tests
+  - Use py3 as the default runtime for tox
+  - Replace deprecated inspect.getargspec
+  - Use TOX_CONSTRAINTS_FILE
+  - Dropping lower constraints testing
+  - Do not patch inspect.argspec directly
+  - Changed minversion in tox to 3.18.0
+  - Move flake8 as a pre-commit local target.
+  - Dropping lower constraints references
+  - Update master for stable/wallaby</comment>
+    <requestid>939543</requestid>
+  </revision>
 </revisionlist>
