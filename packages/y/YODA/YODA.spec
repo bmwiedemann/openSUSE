@@ -16,10 +16,11 @@
 #
 
 
-%define so_name lib%{name}-1_9_0
+%define ver 1.9.4
+%define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 
 Name:           YODA
-Version:        1.9.0
+Version:        %{ver}
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
@@ -111,7 +112,7 @@ This package provides the python binidings for %{name}.
 # USE PYTHON3 FOR HASHBANGS
 sed -Ei "1{s|/usr/bin/python|/usr/bin/python3|}" bin/*
 sed -Ei "1{s|/usr/bin/env python|/usr/bin/python3|}" bin/*
-sed -Ei "1{s|/usr/bin/env python|/usr/bin/python3|}" tests/pytest-*
+sed -Ei "1{s|/usr/bin/env python|/usr/bin/python3|}" tests/*.py
 
 # FIX env BASED HASHBANGS
 sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" bin/yoda-config*
