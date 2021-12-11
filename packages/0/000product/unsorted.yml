@@ -1283,10 +1283,10 @@ unsorted:
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
-  - blender 
+  - blender: [x86_64] 
   - blender-cycles-devel: [x86_64] 
-  - blender-demo 
-  - blender-lang 
+  - blender-demo: [x86_64] 
+  - blender-lang: [x86_64] 
   - bless 
   - bless-doc 
   - bliss 
@@ -12094,6 +12094,8 @@ unsorted:
   - libmuparser2_3_2 
   - libmuparser2_3_2-32bit: [x86_64] 
   - libmuparserx4_0_11 
+  - libmupen64plus-devel 
+  - libmupen64plus2 
   - libmusicbrainz-devel 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmwaw-devel 
@@ -14753,7 +14755,7 @@ unsorted:
   - libyang2 
   - libyara-devel 
   - libyara8 
-  - libyate6 
+  - libyate6_4_0 
   - libyaz-devel 
   - libyaz-devel-32bit: [x86_64] 
   - libyaz5 
@@ -16559,6 +16561,12 @@ unsorted:
   - muparserx-devel 
   - mupdf 
   - mupdf-devel-static 
+  - mupen64plus-plugin-audio-sdl 
+  - mupen64plus-plugin-input-sdl 
+  - mupen64plus-plugin-rsp-hle 
+  - mupen64plus-plugin-video-glide64mk2 
+  - mupen64plus-plugin-video-rice 
+  - mupen64plus-ui-console 
   - museic 
   - musepack 
   - musepack-devel 
@@ -21026,7 +21034,6 @@ unsorted:
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
   - python-demo 
-  - python-dephell-rpm-macros 
   - python-designateclient-doc 
   - python-devel 
   - python-djvulibre-doc 
@@ -22385,7 +22392,6 @@ unsorted:
   - python36-delegator.py 
   - python36-demjson 
   - python36-dennis 
-  - python36-dephell 
   - python36-dephell-archive 
   - python36-dephell-argparse 
   - python36-dephell-discover 
@@ -25218,7 +25224,6 @@ unsorted:
   - python38-delegator.py 
   - python38-demjson 
   - python38-dennis 
-  - python38-dephell 
   - python38-dephell-archive 
   - python38-dephell-argparse 
   - python38-dephell-discover 
@@ -28237,7 +28242,6 @@ unsorted:
   - python39-delegator.py 
   - python39-demjson 
   - python39-dennis 
-  - python39-dephell 
   - python39-dephell-archive 
   - python39-dephell-argparse 
   - python39-dephell-discover 
@@ -30712,11 +30716,6 @@ unsorted:
   - qt6-labswavefrontmesh-devel 
   - qt6-labswavefrontmesh-private-devel 
   - qt6-linguist-devel 
-  - qt6-location 
-  - qt6-location-docs-html 
-  - qt6-location-docs-qch 
-  - qt6-location-examples 
-  - qt6-location-imports 
   - qt6-lottie-docs-html 
   - qt6-lottie-docs-qch 
   - qt6-lottie-imports 
@@ -31608,7 +31607,6 @@ unsorted:
   - ruby3.0-rubygem-rack-oauth2 
   - ruby3.0-rubygem-rack-protection 
   - ruby3.0-rubygem-rack-proxy 
-  - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
   - ruby3.0-rubygem-rails-i18n 
   - ruby3.0-rubygem-railties-5.2 
@@ -31727,6 +31725,8 @@ unsorted:
   - runawk-examples 
   - runc: [i586] 
   - rungetty 
+  - runsc: [x86_64] 
+  - runsc-containerd: [x86_64] 
   - ruqola 
   - rust 
   - rust-cbindgen 
@@ -41246,6 +41246,7 @@ unsorted:
   - tripwire 
   - trivy 
   - trng-devel 
+  - trojan 
   - trousers-devel 
   - trustedgrub2 
   - trustedgrub2-i386-pc 
