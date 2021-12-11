@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec  4 19:45:45 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add NotShowIn for Budgie desktop, it has budgie-polkit
+
+-------------------------------------------------------------------
 Sun Nov 28 07:32:43 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Disable agent startup on Pantheon desktop

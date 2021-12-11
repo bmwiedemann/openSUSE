@@ -229,4 +229,12 @@
     <comment>- Disable agent startup on Pantheon desktop (forwarded request 934367 from awissu)</comment>
     <requestid>934576</requestid>
   </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>fbe7444a37f08e13aba9a4278718510f</srcmd5>
+    <version>0.105</version>
+    <time>1639266950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937834</requestid>
+  </revision>
 </revisionlist>

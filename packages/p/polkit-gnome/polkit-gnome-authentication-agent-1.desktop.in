@@ -84,5 +84,5 @@ Terminal=false
 Type=Application
 Categories=
 NoDisplay=true
-NotShowIn=KDE;Pantheon;
+NotShowIn=KDE;Pantheon;Budgie;
 AutostartCondition=GNOME3 unless-session gnome
