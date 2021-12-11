@@ -1456,4 +1456,17 @@
   * build: update ChangeLog for 4.10.0-rc1</comment>
     <requestid>933578</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>18764b9f1db01a037c110910dacb98cd</srcmd5>
+    <version>4.10.0+git22.a614b31c</version>
+    <time>1639266965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.0+git22.a614b31c:
+  * asterisk: Sipsak check fix (#1716)
+  * [rpm] fix Requires to allow install on opensuse (#1721) (jsc#SLE-21043)
+  * Filesystem: unmount bind mounts before unmount file system
+  * db2: use -l forever instead of -t nodes -l reboot, as they conflict with eachother
+  * nginx: replace error log messages with calls to ocf_exit_reason</comment>
+    <requestid>936227</requestid>
+  </revision>
 </revisionlist>
