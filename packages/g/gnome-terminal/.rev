@@ -2312,4 +2312,12 @@
 - Update Supplements to current standard. (forwarded request 928308 from iznogood)</comment>
     <requestid>929589</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>898f85dfca3950c3956c4c33d266a719</srcmd5>
+    <version>3.42.2</version>
+    <time>1639266962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936218</requestid>
+  </revision>
 </revisionlist>
