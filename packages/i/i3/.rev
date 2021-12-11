@@ -348,4 +348,23 @@ Please decide if this lasts to accept the sr. (forwarded request 138719 from sei
     <comment></comment>
     <requestid>888630</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2ea1b0684b6becae32542b4bf306889f</srcmd5>
+    <version>4.20.1</version>
+    <time>1639267049</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 4.20.1
+  * i3bar: fix crash with multiple monitors
+  * xmlto: fix broken .TH line by extending title length
+  * i3-msg: fix --raw short form (-r) in manpage
+  * libi3: add missing sys/stat.h header
+  * use getcwd(NULL, 0) instead of GNU extension get_current_dir_name()
+- includes 4.20:
+  * You can now use an “include” directive in your i3 config:
+    https://i3wm.org/docs/userguide.html#include
+  * You can now enable showing window icons in window titlebars:
+    https://i3wm.org/docs/userguide.html#title_window_icon
+</comment>
+    <requestid>939498</requestid>
+  </revision>
 </revisionlist>

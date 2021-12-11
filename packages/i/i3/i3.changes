@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 21 21:55:21 UTC 2021 - Martin Kincl <kinclm@gmail.com>
+
+- Updated to version 4.20.1
+  * i3bar: fix crash with multiple monitors
+  * xmlto: fix broken .TH line by extending title length
+  * i3-msg: fix --raw short form (-r) in manpage
+  * libi3: add missing sys/stat.h header
+  * use getcwd(NULL, 0) instead of GNU extension get_current_dir_name()
+- includes 4.20:
+  * You can now use an “include” directive in your i3 config:
+    https://i3wm.org/docs/userguide.html#include
+  * You can now enable showing window icons in window titlebars:
+    https://i3wm.org/docs/userguide.html#title_window_icon
+
+-------------------------------------------------------------------
 Fri Apr 23 12:46:35 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - Update to version 4.19.2:
