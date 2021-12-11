@@ -123,4 +123,41 @@
     <comment></comment>
     <requestid>890007</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0f502fb4f8437913b616104e6822fcef</srcmd5>
+    <version>3.11.0</version>
+    <time>1639267062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.11.0
+  - Update master for stable/wallaby
+  - EventService support
+  - Fix OEM required attribute parsing
+  - setup.cfg: Replace dashes with underscores
+  - Add Drive.volumes
+  - Automatically retry HTTP 5xx on GET requests
+  - Update min version of tox to use allowlist
+  - Update minversion of tox
+  - Update venv entry in tox.ini
+  - Fix incorrect formatting and a Python 3.10 failure
+  - Implement fallback method for virtual media
+  - Use TOX_CONSTRAINTS_FILE
+  - Fix TaskMonitor constructor calls in volume.py
+  - Ensure Content-Type header is set when required
+  - Fix Processor.sub_processors
+  - Follow up TaskMonitor refactor
+  - [trivial] add wallaby versions to release notes
+  - Add resource root property
+  - Fix deprecation on collections.MutableMapping
+  - Increase version of hacking and pycodestyle
+  - Add Python3 xena unit tests
+  - Protect Connector against empty auth object
+  - Add support for BIOS Attribute Registry
+  - Fix Context for EventDestination
+  - Fix ExtendedInfo error handling for non-list item
+  - Don't log ERROR if GET of /redfish/v1/SessionService fails
+  - [doc] Fix formating issue
+  - Initial support for secure boot databases
+  - Refactor TaskMonitor and update Volume methods</comment>
+    <requestid>939550</requestid>
+  </revision>
 </revisionlist>
