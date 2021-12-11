@@ -373,4 +373,21 @@ additions, including new UTF-8 compose sequences for:
   * no longer crash in XVisualIDFromVisual() [boo#1191517]</comment>
     <requestid>931562</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3f6c3c537d53cca06628878300fed712</srcmd5>
+    <version>1.7.3.1</version>
+    <time>1639266972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3.1
+  * This release of libX11 corrects a packaging problem in 1.7.3 
+    which caused the m4 files needed for autoreconf to not be 
+    included in the tarballs.
+  * As a bonus, this release also includes one tiny typo fix in the
+    XIM specs.
+
+- Update to version 1.7.3
+  * This release includes a number of bug fixes and adds support for
+    the _EVDEVK keysyms added in xorgproto 2021.2.</comment>
+    <requestid>939073</requestid>
+  </revision>
 </revisionlist>
