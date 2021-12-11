@@ -2105,4 +2105,12 @@ Recommended for 12.3</comment>
     <comment> (forwarded request 928204 from iznogood)</comment>
     <requestid>929578</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>9098075c48f6c2b09293e43da313f0d7</srcmd5>
+    <version>3.42.2</version>
+    <time>1639266957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936209</requestid>
+  </revision>
 </revisionlist>

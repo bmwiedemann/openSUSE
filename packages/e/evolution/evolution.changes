@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:24:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.2:
+  + Misc: Generate appdata <releases/> from the NEWS file
+  + news-to-appdata: Escape text exported to XML
+  + flatpak: Update build manifests
+  + Calendar:
+    - Cannot always remove custom reminder message
+    - Not all task lists included in the task panel 
+  + Composer: Don't show blockquote indicators on both sides for
+    6th+ level
+  + Load JavaScript plugins for message preview and WebKit editor
+  + icalendar-importer: Can show incorrect time in imported data
+    preview.
+  + Bugs fixed: glgo#GNOME/evolution#1679,
+    glgo#GNOME/evolution#1696, glgo#GNOME/evolution#1697,
+    glgo#GNOME/evolution#1708, glgo#GNOME/evolution#1712,
+    glgo#GNOME/evolution#1714, glgo#GNOME/evolution#1715,
+    glgo#GNOME/evolution#1717, glgo#GNOME/evolution#1721.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 29 18:13:45 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.1:
