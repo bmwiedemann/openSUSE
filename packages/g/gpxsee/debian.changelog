@@ -1,3 +1,11 @@
+gpxsee (10.0) stable; urgency=low
+
+  * Added support for (GPS) positioning.
+  * Added workaround for broken FIT files exported by Strava.
+  * Fixed Mapsforge maps crash when Qt-SVG is missing.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 08 Dec 2021 00:09:07 +0100
+
 gpxsee (9.12) stable; urgency=low
 
   * Added support for QCT maps.
