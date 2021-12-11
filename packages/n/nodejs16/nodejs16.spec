@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.13.0
+Version:        16.13.1
 Release:        0
 
 # Double DWZ memory limits
@@ -110,7 +110,7 @@ Release:        0
 %bcond_without intree_nghttp2
 %endif
 
-%ifarch aarch64 ppc ppc64 ppc64le s390 s390x
+%ifnarch x86_64 %{ix86}
 %bcond_with    gdb
 %else
 %bcond_without gdb
@@ -156,7 +156,6 @@ Patch110:       legacy_python.patch
 
 Patch120:       flaky_test_rerun.patch
 
-Patch131:       40670.patch
 Patch132:       test-skip-y2038-on-32bit-time_t.patch
 
 # Use versioned binaries and paths
@@ -263,7 +262,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.17.2
+Provides:       bundled(libcares2) = 1.18.1
 %endif
 
 %if ! 0%{with intree_icu}
@@ -327,7 +326,7 @@ ExclusiveArch:  not_buildable
 Provides:       bundled(brotli) = 1.0.9
 Provides:       bundled(libuv) = 1.42.0
 Provides:       bundled(uvwasi) = 0.0.11
-Provides:       bundled(v8) = 9.4.146.19
+Provides:       bundled(v8) = 9.4.146.24
 
 Provides:       bundled(llhttp) = 6.0.4
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
@@ -365,7 +364,7 @@ Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 8.1.0
+Provides:       npm(npm) = 8.1.2
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -475,7 +474,6 @@ Provides:       bundled(node-libnpmsearch) = 3.1.2
 Provides:       bundled(node-libnpmteam) = 2.0.4
 Provides:       bundled(node-libnpmversion) = 2.0.1
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-make-fetch-happen) = 8.0.14
 Provides:       bundled(node-make-fetch-happen) = 9.1.0
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.5
@@ -492,7 +490,7 @@ Provides:       bundled(node-ms) = 2.1.2
 Provides:       bundled(node-ms) = 2.1.3
 Provides:       bundled(node-mute-stream) = 0.0.8
 Provides:       bundled(node-negotiator) = 0.6.2
-Provides:       bundled(node-node-gyp) = 8.2.0
+Provides:       bundled(node-node-gyp) = 8.3.0
 Provides:       bundled(node-nopt) = 5.0.0
 Provides:       bundled(node-normalize-package-data) = 3.0.3
 Provides:       bundled(node-npm-audit-report) = 2.1.5
@@ -537,7 +535,6 @@ Provides:       bundled(node-set-blocking) = 2.0.0
 Provides:       bundled(node-signal-exit) = 3.0.3
 Provides:       bundled(node-smart-buffer) = 4.2.0
 Provides:       bundled(node-socks) = 2.6.1
-Provides:       bundled(node-socks-proxy-agent) = 5.0.1
 Provides:       bundled(node-socks-proxy-agent) = 6.1.0
 Provides:       bundled(node-spdx-correct) = 3.1.1
 Provides:       bundled(node-spdx-exceptions) = 2.3.0
@@ -632,7 +629,6 @@ tar Jxf %{SOURCE11}
 %patch106 -p1
 %patch110 -p1
 %patch120 -p1
-%patch131 -p1
 %patch132 -p1
 %patch200 -p1
 
@@ -680,7 +676,7 @@ export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags} -fno-st
 # -Wno-class-memaccess is not available in gcc < 8 (= system compiler on Leap until at least 15.3 is gcc7)
 export CXXFLAGS="%{?build_cxxflags:%build_cxxflags}%{?!build_cxxflags:%optflags} -Wno-error=return-type -fno-strict-aliasing"
 %if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
-export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
+export CXXFLAGS="\${CXXFLAGS} -Wno-class-memaccess"
 %endif
 export LDFLAGS="%{?build_ldflags}"
 

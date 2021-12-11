@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v16.13.0/test/parallel/test-module-loading-globalpaths.js
+Index: node-v16.13.1/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v16.13.0.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v16.13.0/test/parallel/test-module-loading-globalpaths.js
+--- node-v16.13.1.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v16.13.1/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v16.13.0/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v16.13.0/test/parallel/test-tls-passphrase.js
+Index: node-v16.13.1/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v16.13.0.orig/test/parallel/test-tls-passphrase.js
-+++ node-v16.13.0/test/parallel/test-tls-passphrase.js
+--- node-v16.13.1.orig/test/parallel/test-tls-passphrase.js
++++ node-v16.13.1/test/parallel/test-tls-passphrase.js
 @@ -224,7 +224,7 @@ server.listen(0, common.mustCall(functio
  })).unref();
  
@@ -38,10 +38,10 @@ Index: node-v16.13.0/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-v16.13.0/test/parallel/test-repl-envvars.js
+Index: node-v16.13.1/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v16.13.0.orig/test/parallel/test-repl-envvars.js
-+++ node-v16.13.0/test/parallel/test-repl-envvars.js
+--- node-v16.13.1.orig/test/parallel/test-repl-envvars.js
++++ node-v16.13.1/test/parallel/test-repl-envvars.js
 @@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
@@ -53,10 +53,10 @@ Index: node-v16.13.0/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const REPL = require('internal/repl');
  const assert = require('assert');
-Index: node-v16.13.0/test/common/index.mjs
+Index: node-v16.13.1/test/common/index.mjs
 ===================================================================
---- node-v16.13.0.orig/test/common/index.mjs
-+++ node-v16.13.0/test/common/index.mjs
+--- node-v16.13.1.orig/test/common/index.mjs
++++ node-v16.13.1/test/common/index.mjs
 @@ -42,6 +42,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
@@ -73,10 +73,10 @@ Index: node-v16.13.0/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    getTTYfd,
-Index: node-v16.13.0/Makefile
+Index: node-v16.13.1/Makefile
 ===================================================================
---- node-v16.13.0.orig/Makefile
-+++ node-v16.13.0/Makefile
+--- node-v16.13.1.orig/Makefile
++++ node-v16.13.1/Makefile
 @@ -508,7 +508,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
@@ -97,16 +97,16 @@ Index: node-v16.13.0/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v16.13.0/test/parallel/test-crypto-dh.js
+Index: node-v16.13.1/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v16.13.0.orig/test/parallel/test-crypto-dh.js
-+++ node-v16.13.0/test/parallel/test-crypto-dh.js
-@@ -189,7 +189,7 @@ assert.throws(() => {
+--- node-v16.13.1.orig/test/parallel/test-crypto-dh.js
++++ node-v16.13.1/test/parallel/test-crypto-dh.js
+@@ -167,7 +167,7 @@ assert.throws(() => {
    dh3.computeSecret('');
  }, { message: common.hasOpenSSL3 ?
    'error:02800080:Diffie-Hellman routines::invalid secret' :
 -  'Supplied key is too small' });
 +  /Supplied key is too small|error:05066066:Diffie-Hellman routines:compute_key:invalid public key/ });
  
- // Create a shared using a DH group.
- const alice = crypto.createDiffieHellmanGroup('modp5');
+ // Invalid test: curve argument is undefined
+ assert.throws(

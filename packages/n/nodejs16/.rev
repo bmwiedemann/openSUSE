@@ -181,4 +181,18 @@
   * doc: deprecate type coercion for dns.lookup options</comment>
     <requestid>930406</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5a76e42e4386f522910df7ce49dd2566</srcmd5>
+    <version>16.13.1</version>
+    <time>1639266944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.13.1:
+  * deps: upgrade npm to 8.1.2
+  * lib: fix regular expression to detect `/` and `\`
+- 40670.patch: upstreamed
+- fix_ci_tests.patch: refreshed
+- Fix CXXFLAGS in Tumbleweed - boo#1192824
+</comment>
+    <requestid>937792</requestid>
+  </revision>
 </revisionlist>
