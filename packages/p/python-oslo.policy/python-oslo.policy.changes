@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:46:46 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.8.2
+  - Adding tests on cache handler
+  - Improving documentation about target resources
+  - Fix a typo in the document
+  - Add Python3 xena unit tests
+  - Add debug log in pick_default_policy_file
+  - Changed minversion in tox to 3.18.0
+  - Replace getargspec with getfullargspec
+  - Correctly handle IO errors at policy file load
+  - Use py3 as the default runtime for tox
+  - Add unit tests on cache handler
+  - Reinstate double deprecation test logic
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Ussuri+ is python3 only and update python to python3
+  - Dropping lower constraints testing
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Sun May  2 17:41:14 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.7.0

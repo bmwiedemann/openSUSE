@@ -290,4 +290,28 @@
     <comment></comment>
     <requestid>889995</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0573ba5ba4586ca80c7d6fb128fec9f5</srcmd5>
+    <version>3.8.2</version>
+    <time>1639267054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.8.2
+  - Adding tests on cache handler
+  - Improving documentation about target resources
+  - Fix a typo in the document
+  - Add Python3 xena unit tests
+  - Add debug log in pick_default_policy_file
+  - Changed minversion in tox to 3.18.0
+  - Replace getargspec with getfullargspec
+  - Correctly handle IO errors at policy file load
+  - Use py3 as the default runtime for tox
+  - Add unit tests on cache handler
+  - Reinstate double deprecation test logic
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Ussuri+ is python3 only and update python to python3
+  - Dropping lower constraints testing
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>939535</requestid>
+  </revision>
 </revisionlist>
