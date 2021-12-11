@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2021.12.02
+Version:        2021.11.19
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
