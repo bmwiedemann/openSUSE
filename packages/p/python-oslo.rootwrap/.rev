@@ -171,4 +171,26 @@
     <comment>switch to victoria</comment>
     <requestid>841216</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>702a7d12019aff66df38665d2db97bfd</srcmd5>
+    <version>6.3.0</version>
+    <time>1639267056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.3.0
+  - Remove six
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/victoria
+  - Remove six.PY3
+  - Remove lower-constraints remnants
+  - Dropping lower constraints testing
+  - Adding pre-commit
+  - setup.cfg: Replace dashes with underscores
+  - ignore reno generated artifacts
+  - Move flake8 as a pre-commit local target.
+  - Use py3 as the default runtime for tox
+  - Add Python3 wallaby unit tests
+
+- switch to wallaby template</comment>
+    <requestid>939539</requestid>
+  </revision>
 </revisionlist>

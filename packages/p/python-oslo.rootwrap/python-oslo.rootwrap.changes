@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:34:30 UTC 2021 - cloud-devel@suse.de
+
+- update to version 6.3.0
+  - Remove six
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/victoria
+  - Remove six.PY3
+  - Remove lower-constraints remnants
+  - Dropping lower constraints testing
+  - Adding pre-commit
+  - setup.cfg: Replace dashes with underscores
+  - ignore reno generated artifacts
+  - Move flake8 as a pre-commit local target.
+  - Use py3 as the default runtime for tox
+  - Add Python3 wallaby unit tests
+
+-------------------------------------------------------------------
+Mon May  3 20:01:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- switch to wallaby template 
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:57 UTC 2020 - cloud-devel@suse.de
 
 - update to version 6.2.0
