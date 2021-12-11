@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  6 10:27:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.120:
+  * transition from Intltool to gettext
+  * several tarball, meson and pipeline fixups
+  * Portuguese translation
+  * Romanian translation
+  * meson build system added
+  * CVE-2021-3560 mitigation
+  * properties in text listener
+  * typos fixups
+  * Update Hungarian translation
+- drop CVE-2021-3560.patch  (upstream)
+
+-------------------------------------------------------------------
 Wed Oct 20 15:12:07 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - fork libpolkit0 package into libpolkit-agent-1-0 and libpolkit-gobject-1-0

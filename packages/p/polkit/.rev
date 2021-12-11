@@ -685,4 +685,22 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
     <comment></comment>
     <requestid>926578</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>ef628d497fd157547924f52539fd1806</srcmd5>
+    <version>0.120</version>
+    <time>1639266953</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.120:
+  * transition from Intltool to gettext
+  * several tarball, meson and pipeline fixups
+  * Portuguese translation
+  * Romanian translation
+  * meson build system added
+  * CVE-2021-3560 mitigation
+  * properties in text listener
+  * typos fixups
+  * Update Hungarian translation
+- drop CVE-2021-3560.patch  (upstream) (forwarded request 936022 from dirkmueller)</comment>
+    <requestid>936198</requestid>
+  </revision>
 </revisionlist>

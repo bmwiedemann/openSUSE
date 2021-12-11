@@ -17,7 +17,7 @@
 
 
 Name:           polkit
-Version:        0.118
+Version:        0.120
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source1:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{v
 Source2:        %{name}.keyring
 Source3:        system-user-polkitd.conf
 Source99:       baselibs.conf
-
 # PATCH-FIX-OPENSUSE polkit-no-wheel-group.patch vuntz@opensuse.org -- In openSUSE, there's no special meaning for the wheel group, so we shouldn't allow it to be admin
 Patch0:         polkit-no-wheel-group.patch
 # PATCH-FIX-OPENSUSE polkit-gettext.patch lnussel@suse.de -- allow fallback to gettext for polkit action translations
@@ -39,9 +38,6 @@ Patch2:         pkexec.patch
 Patch3:         polkit-keyinit.patch
 # adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-
-Patch5:         CVE-2021-3560.patch
-
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
@@ -49,6 +45,7 @@ BuildRequires:  libexpat-devel
 # needed for patch1 and 2
 BuildRequires:  libtool
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
@@ -62,10 +59,9 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       dbus-1
 Requires:       libpolkit-agent-1-0 = %{version}-%{release}
 Requires:       libpolkit-gobject-1-0 = %{version}-%{release}
-%sysusers_requires
 Requires(post): permissions
+%sysusers_requires
 %systemd_ordering
-
 # Upstream First - Policy:
 # Never add any patches to this package without the upstream commit id
 # in the patch. Any patches added here without a very good reason to make
@@ -102,7 +98,7 @@ Development documentation for PolicyKit Authorization Framework.
 Summary:        PolicyKit Authorization Framework -- Agent Library
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
-Obsoletes:      libpolkit0 < %version-%release
+Obsoletes:      libpolkit0 < %{version}-%{release}
 
 %description -n libpolkit-agent-1-0
 PolicyKit is a toolkit for defining and handling authorizations.
@@ -115,7 +111,7 @@ This package contains the agent library only.
 Summary:        PolicyKit Authorization Framework -- GObject Library
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
-Obsoletes:      libpolkit0 < %version-%release
+Obsoletes:      libpolkit0 < %{version}-%{release}
 
 %description -n libpolkit-gobject-1-0
 PolicyKit is a toolkit for defining and handling authorizations.
@@ -165,8 +161,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 %find_lang polkit-1
-mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
-mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/* %{buildroot}%{_datadir}/dbus-1/system.d/
 mkdir -p %{buildroot}%{_distconfdir}/pam.d
 mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_distconfdir}/pam.d/
 mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules %{buildroot}%{_datadir}/polkit-1/rules.d/50-default.rules
