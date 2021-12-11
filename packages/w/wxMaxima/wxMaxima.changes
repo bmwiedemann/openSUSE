@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Dec  7 22:52:13 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 21.11.0:
+  * Allow seeing all files in the file save dialog
+    (gh#wxMaxima-developers/wxmaxima#1557).
+  * Fix an error when using Alt up arrow (show previous command)
+    (gh#wxMaxima-developers/wxmaxima#1566).
+  * Rewrote a config dialogue.
+  * Improvements in the manual.
+  * Fix a warning, which occurred, when starting wxMaxima the
+    first time.
+  * ww898 unnecessarily limited the list of supported platforms.
+  * wxMaxima's properties to Maxima symbols can now no more be
+    killed.
+  * Allow single GroupCells to be converted to LaTeX.
+  * Enable reloading and changing images inserted via "Cell" ->
+    "Insert Image..." (gh#wxMaxima-developers/wxmaxima#1597).
+  * Correctly set the document saved state when the size of an
+    image is changed.
+  * Use the AUTHORS file for the Credits page in the "About"
+    dialogue.
+  * Handle power events (gh#wxMaxima-developers/wxmaxima#1607).
+  * Fix ugly buttons in the sidebars with recent wxWidgets.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon May 31 12:33:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 21.05.2
