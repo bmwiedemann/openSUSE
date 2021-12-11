@@ -161,7 +161,7 @@ automatically configured when plugged on the computer.
 
 %install
 %make_install udevrulesdir=%{_prefix}/lib/udev/rules.d udevhelperdir=%{_prefix}/lib/udev
-for size in 8x8 16x16 22x22 24x24 32x32 48x48 256x256; do
+for size in 16x16 22x22 24x24 32x32 48x48 512x512; do
 	if test -f %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png; then
 		mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/$size/apps
 		cp -a %{_datadir}/icons/%{_iconlocation}/$size/devices/printer.png %{buildroot}/%{_datadir}/icons/hicolor/$size/apps/%{name}.png
@@ -171,14 +171,6 @@ done
 %suse_update_desktop_file -r system-config-printer GTK System HardwareSettings
 %fdupes %{buildroot}/%{py_sitedir}
 %find_lang %{name} %{?no_lang_C}
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %license COPYING

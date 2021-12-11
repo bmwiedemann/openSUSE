@@ -789,4 +789,12 @@
   + system-config-printer-no-applet-in-gnome.patch</comment>
     <requestid>886873</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>8316f469a8553477d9f73e0a8b51c54d</srcmd5>
+    <version>1.5.15</version>
+    <time>1639266959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936212</requestid>
+  </revision>
 </revisionlist>
