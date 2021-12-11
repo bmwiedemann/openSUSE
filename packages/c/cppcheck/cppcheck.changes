@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  5 20:41:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.2:
+  * New checks in core cppcheck:
+    * missing return in function
+    * writing overlapping data, detect undefined behavior
+    * compared value is out of possible type range
+    * Copy elision optimization can't be applied for return std::move(local)
+    * file can not be opened for read and write access at the same
+      time on different streams
+  * Various improvements
+- drop 0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Sep 19 09:10:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add glibc 2.34 build fix:
