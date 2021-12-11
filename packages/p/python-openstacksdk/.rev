@@ -314,4 +314,41 @@
     <comment></comment>
     <requestid>889985</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ee7ebff32ce2e9a0f323531ab35e774</srcmd5>
+    <version>0.59.0</version>
+    <time>1639267051</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.59.0
+  - Add support for API Extensions
+  - Add support for project options
+  - Add pre-commit
+  - Update master for stable/wallaby
+  - Add compute microversion 2.77
+  - Add IPsecSiteConnection resource and proxy layer functionality for it
+  - Improve README to provide example of Resource usage
+  - Fix more import order in tests
+  - placement: Add support for resource providers
+  - Add support for Resource Filters
+  - tests: Remove final use of 'TestProxyBase._verify'
+  - Apply import order in some tests
+  - Don't send empty remote_address_group_id for security groups
+  - Drop jobs failing for too long
+  - tests: Remove dead code
+  - Temporarily disable nodepool job
+  - Allow unknown attributes to be included in request body
+  - Drop lower-constraints job
+  - Apply import order in more tests
+  - Fix import order in message and workflow unit tests
+  - Switch to openstack-python3-xena-jobs template
+  - Fix more import orders
+  - Revert tags query_params back to tag
+  - Fix import order in accelerator and config unit tests
+  - Extend has_version function to accept version parameter
+  - tox: Enable parallel docs build
+  - Add deploy_steps to baremetal node provisioning
+  - Add support for the GroupType resource
+  - Adding retype_volume to BlockStorageCloudMixin</comment>
+    <requestid>939531</requestid>
+  </revision>
 </revisionlist>

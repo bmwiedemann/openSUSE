@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:55:54 UTC 2021 - cloud-devel@suse.de
+
+- update to version 0.59.0
+  - Add support for API Extensions
+  - Add support for project options
+  - Add pre-commit
+  - Update master for stable/wallaby
+  - Add compute microversion 2.77
+  - Add IPsecSiteConnection resource and proxy layer functionality for it
+  - Improve README to provide example of Resource usage
+  - Fix more import order in tests
+  - placement: Add support for resource providers
+  - Add support for Resource Filters
+  - tests: Remove final use of 'TestProxyBase._verify'
+  - Apply import order in some tests
+  - Don't send empty remote_address_group_id for security groups
+  - Drop jobs failing for too long
+  - tests: Remove dead code
+  - Temporarily disable nodepool job
+  - Allow unknown attributes to be included in request body
+  - Drop lower-constraints job
+  - Apply import order in more tests
+  - Fix import order in message and workflow unit tests
+  - Switch to openstack-python3-xena-jobs template
+  - Fix more import orders
+  - Revert tags query_params back to tag
+  - Fix import order in accelerator and config unit tests
+  - Extend has_version function to accept version parameter
+  - tox: Enable parallel docs build
+  - Add deploy_steps to baremetal node provisioning
+  - Add support for the GroupType resource
+  - Adding retype_volume to BlockStorageCloudMixin
+  - Increase RAM for the Ironic CI jobs
+  - Cache auth token in keyring
+  - Move to OFTC
+  - Fix key generation for caching
+  - Add support for the Neutron L3 conntrack helper API
+  - Add min_count and max_count attributes to Server
+  - docs: Add intro doc to user guide
+  - placement: Add support for resource classes
+  - Added support for the Capabilities resource
+  - Prepare separate block_storage v3 documentation
+  - Adjust image _base_proxy condition
+  - Added support for the Limits resource
+  - Fix import order in compute unit tests
+  - Fix import order in load_balancer unit tests
+  - Fix MFA authorization
+  - Fix get_server_password method
+  - Remove references to 'sys.version_info'
+  - Add compute microversion 2.79
+  - Fix typo - _list lists, doesn't delete
+  - Apply pep8 import order style
+  - Add set_readonly_volume to BlockStorageCloudMixin
+  - Add compute microversion 2.57
+  - setup.cfg: Replace dashes with underscores
+  - Implement driver vendor passthrough
+  - tests: Rename 'TestProxyBase._verify2' to '_verify'
+  - Adds Node Vendor passthru
+  - Avoid prometheus metrics explosion
+  - Allow for override of statsd/influxdb settings per cloud
+  - Fixing more import orders
+  - Use py3 as the default runtime for tox
+  - statsd: use timedelta and pipeline
+  - tests: Sanity check 'test_proxy_base'
+  - Fix import order in network unit tests
+  - Extend functional test of image
+  - Add tags option to the image upload
+
+-------------------------------------------------------------------
 Sun May  2 17:15:23 UTC 2021 - cloud-devel@suse.de
 
 - update to version 0.55.0
