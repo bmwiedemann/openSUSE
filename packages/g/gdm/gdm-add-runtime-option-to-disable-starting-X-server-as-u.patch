@@ -104,7 +104,7 @@ Index: gdm-41.0/daemon/gdm-session.c
 ===================================================================
 --- gdm-41.0.orig/daemon/gdm-session.c
 +++ gdm-41.0/daemon/gdm-session.c
-@@ -3360,6 +3360,7 @@ gdm_session_get_display_mode (GdmSession
+@@ -3362,6 +3362,7 @@ gdm_session_get_display_mode (GdmSession
          }
  
  #ifdef ENABLE_USER_DISPLAY_SERVER
@@ -112,7 +112,7 @@ Index: gdm-41.0/daemon/gdm-session.c
          /* All other cases (wayland login screen, X login screen,
           * wayland user session, X user session) use the NEW_VT
           * display mode.  That display mode means that GDM allocates
-@@ -3382,7 +3383,8 @@ gdm_session_get_display_mode (GdmSession
+@@ -3384,7 +3385,8 @@ gdm_session_get_display_mode (GdmSession
           *   are paused when handed out.
           */
          return GDM_SESSION_DISPLAY_MODE_NEW_VT;
@@ -122,7 +122,7 @@ Index: gdm-41.0/daemon/gdm-session.c
  
  #ifdef ENABLE_WAYLAND_SUPPORT
          /* Wayland sessions are for now assumed to run in a
-@@ -3393,6 +3395,7 @@ gdm_session_get_display_mode (GdmSession
+@@ -3395,6 +3397,7 @@ gdm_session_get_display_mode (GdmSession
          }
  #endif
          return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
@@ -162,6 +162,18 @@ Index: gdm-41.0/daemon/gdm-server.c
 ===================================================================
 --- gdm-41.0.orig/daemon/gdm-server.c
 +++ gdm-41.0/daemon/gdm-server.c
+@@ -238,9 +238,9 @@ gdm_server_init_command (GdmServer *serv
+         /* For systemd, we don't have a log file but instead log to stdout,
+            so set it to the xserver's built-in default verbosity */
+         if (debug)
+-            verbosity = "7 -logfile /dev/null";
++            verbosity = "7";
+         else
+-            verbosity = "3 -logfile /dev/null";
++            verbosity = "3";
+ #endif
+ 
+         if (g_access (SYSTEMD_X_SERVER, X_OK) < 0) {
 @@ -752,7 +752,7 @@ gdm_server_start (GdmServer *server)
          GError **error = &local_error;
  

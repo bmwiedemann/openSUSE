@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Dec  8 03:36:08 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-restart-greeter-session-after-crash.patch: When active vt
+  is gdm initial vt, restart greeter session. Avoiding the blank
+  screen when greeter session crashed
+  (bsc#1190230 glgo#GNOME/gdm#735).
+
+-------------------------------------------------------------------
+Tue Nov 23 01:55:56 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch:
+  With GDM_DISABLE_USER_DISPLAY_SERVER=1 environment variable, make
+  X server logging to /var/log/Xorg.*.log and journal log
+  (bsc#1192177).
+
+-------------------------------------------------------------------
 Tue Oct 19 09:21:15 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Add gdm-daemon-Infer-session-type-from-desktop-file.patch

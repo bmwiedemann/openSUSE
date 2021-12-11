@@ -1,0 +1,17 @@
+Index: gdm-3.34.1/daemon/gdm-local-display-factory.c
+===================================================================
+--- gdm-3.34.1.orig/daemon/gdm-local-display-factory.c
++++ gdm-3.34.1/daemon/gdm-local-display-factory.c
+@@ -366,7 +366,11 @@ on_display_status_changed (GdmDisplay
+                  * ensures we get a new login screen when the user logs out,
+                  * if there isn't one.
+                  */
+-                if (is_local && g_strcmp0 (session_class, "greeter") != 0) {
++                g_debug ("GdmLocalDisplayFactory: session_class = %s active_vt = %u", session_class, factory->active_vt);
++                if (is_local &&
++                    (g_strcmp0 (session_class, "greeter") != 0 ||
++		     factory->active_vt == GDM_INITIAL_VT ||
++		     factory->active_vt == 0)) {
+                         /* reset num failures */
+                         factory->num_failures = 0;
+ 
