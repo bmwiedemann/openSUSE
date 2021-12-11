@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:13:43 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- skip Python 2 builds
+- set PATH when running tests
+- update to upstream release 3.4.0
+  * Security fixes:
+    - Fix inefficient regular expression which allows denial-of-service attacks
+    - when parsing specially-crafted LDAP schema.
+    - (GHSL-2021-117)
+  * Changes:
+    - On MacOS, remove option to make LDAP connections from a file descriptor
+    - when built with the system libldap (which lacks the underlying function,
+    - ldap_init_fd)
+    - Attribute values of the post read control are now bytes
+    - instead of ISO8859-1 decoded str
+    - LDAPUrl now treats urlscheme as case-insensitive
+    - Several OpenLDAP options are now supported:
+        - OPT_X_TLS_REQUIRE_SAN
+        - OPT_X_SASL_SSF_EXTERNAL
+        - OPT_X_TLS_PEERCERT
+  * Fixes:
+    - The copy() method of cidict was added back. It was unintentionally
+    - removed in 3.3.0
+    - Fixed getting/setting SASL options on big endian platforms
+    - Unknown LDAP result code are now converted to LDAPexception,
+    - rather than raising a SystemError.
+  * slapdtest:
+    - Show stderr of slapd -Ttest
+    - SlapdObject uses directory-based configuration of slapd
+    - SlapdObject startup is now faster
+
+-------------------------------------------------------------------
 Tue Sep 14 12:35:59 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest_arch rpm macro

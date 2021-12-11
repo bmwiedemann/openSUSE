@@ -17,8 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
+%define skip_python2 1
+
 Name:           python-ldap
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Python LDAP interface
 License:        Python-2.0
@@ -61,7 +64,7 @@ CFLAGS="%{optflags}" %python_build
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pyunittest_arch discover -v -s Tests -p 't_*'
+PATH=/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin %pyunittest_arch discover -v -s Tests -p 't_*'
 
 %files %{python_files}
 %license LICENCE
