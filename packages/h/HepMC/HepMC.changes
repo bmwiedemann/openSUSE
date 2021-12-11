@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Dec  7 14:36:46 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Temporarily disable tests for i586 until tolerance issues are
+  sorted out.
+
+-------------------------------------------------------------------
 Sat Nov 13 00:03:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.2.4:
