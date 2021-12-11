@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Dec  3 21:12:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fixed regression when opening documents with ghelp URIs
+  + Updated translations.
+- Refresh yelp-lang-bundle.patch with quilt.
+- Use autosetup macro.
+- Use ldconfig_scriptlets for post(un) handling.
+
+-------------------------------------------------------------------
 Sat Sep 25 20:31:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:

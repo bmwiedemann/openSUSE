@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        41.1
+Version:        41.2
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -74,8 +74,7 @@ This package provides Yelp's development files.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure \
@@ -89,8 +88,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libyelp0 -p /sbin/ldconfig
-%postun -n libyelp0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libyelp0
 
 %files
 %license COPYING
