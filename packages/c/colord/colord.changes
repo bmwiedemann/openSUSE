@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 20 15:53:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+
+-------------------------------------------------------------------
 Thu Jan 14 13:00:13 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - allow access to /usr/local/share/color in AppArmor profile (boo#1180898)

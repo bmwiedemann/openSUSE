@@ -30,6 +30,7 @@ Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{v
 Source2:        %{name}.keyring
 # Apparmor profile
 Source3:        usr.lib.colord
+Source4:        colord.sysusers
 Source99:       baselibs.conf
 
 BuildRequires:  argyllcms
@@ -37,6 +38,7 @@ BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(dbus-1)
@@ -57,7 +59,7 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(vapigen)
 Requires:       argyllcms
 Requires:       colord-color-profiles
-Requires(pre):  pwdutils
+%sysusers_requires
 %{?systemd_requires}
 
 %description
@@ -143,6 +145,7 @@ there are no users logged in.
 %autosetup -p1
 
 %build
+%sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
 # Set ~2 GiB limit so that colprof is forced to work in chunks when
 # generating the print profile rather than trying to allocate a 3.1 GiB
 # chunk of RAM to put the entire B-to-A tables in.
@@ -178,16 +181,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # Install Apparmor profile
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d/
 install -c -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/
+
+install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %find_lang %{name}
 
-%pre
-# Create colord user
-getent group colord >/dev/null || groupadd -r colord
-getent passwd colord >/dev/null || useradd -r -g colord -d %{_localstatedir}/lib/colord -s /sbin/nologin -c "user for colord" colord
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 # Fix ownership of /var/lib/colord from first packages (in 12.1)
 test ! -d %{_localstatedir}/lib/colord || chown -R colord:colord %{_localstatedir}/lib/colord
-exit 0
 
 %preun
 %service_del_preun %{name}.service
@@ -207,6 +208,7 @@ exit 0
 %license COPYING
 %doc AUTHORS NEWS
 %{_unitdir}/colord.service
+%{_sysusersdir}/%{name}.conf
 %{_udevrulesdir}/*.rules
 %attr(755,colord,colord) %dir %{_localstatedir}/lib/colord
 %{_datadir}/bash-completion/completions/colormgr

@@ -690,4 +690,12 @@ Note this warning (not new), should we care?
 Note: This was reported for Leap, therefore please consider to backport this profile update to Leap. (I'll leave the bugreport open.) (forwarded request 863083 from cboltz)</comment>
     <requestid>863169</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>b1feb4eeba1909093159b0e4865eca46</srcmd5>
+    <version>1.4.5</version>
+    <time>1639266954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936201</requestid>
+  </revision>
 </revisionlist>
