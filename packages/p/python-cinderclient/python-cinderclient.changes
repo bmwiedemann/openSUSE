@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:49:09 UTC 2021 - cloud-devel@suse.de
+
+- update to version 8.1.0
+  - Remove v2 support from the shell
+  - Add consumes quota field support
+  - client: Stop logging request-id twice in DEBUG
+  - Add Python3 xena unit tests
+  - Support Block Storage API mv 3.66
+  - Fix list resources when use limit and with-count
+  - Remove v2 classes
+  - setup.cfg: Replace dashes with underscores
+  - Prepare for Xena cinderclient release
+  - Remove skip_missing_interpreters
+  - Update master for stable/wallaby
+  - Increase default quotas for zuul jobs
+  - update some scripts
+  - Make instance_uuid optional in attachment create
+  - Add functional jobs to the gate
+  - Dropping lower constraints testing
+  - Unset tempest.lib timeout in functional tests
+  - Support passing client certificates for server version requests
+  - Run functional job on Ubuntu Focal
+
+-------------------------------------------------------------------
 Sun May  2 17:17:07 UTC 2021 - cloud-devel@suse.de
 
 - update to version 7.4.0

@@ -17,13 +17,13 @@
 
 
 Name:           python-cinderclient
-Version:        7.4.0
+Version:        8.1.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Cinder
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-cinderclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python-cinderclient-7.4.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-cinderclient/python-cinderclient-8.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-ddt
@@ -79,15 +79,15 @@ Each implements 100% of the OpenStack Cinder API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-cinderclient-7.4.0
+%autosetup -p1 -n python-cinderclient-8.1.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 export PYTHONPATH=.
-PBR_VERSION=7.4.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=7.4.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=8.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=8.1.0 %sphinx_build -b man doc/source doc/build/man
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
