@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.2.3.2
+Version:        7.2.4.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
