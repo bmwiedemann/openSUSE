@@ -533,4 +533,12 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>901379</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6a6cd00f5e51f58b0b1a586fe7ef8333</srcmd5>
+    <version>3.0.1</version>
+    <time>1639267048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939482</requestid>
+  </revision>
 </revisionlist>
