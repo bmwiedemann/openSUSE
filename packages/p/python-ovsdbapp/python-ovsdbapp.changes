@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:29:45 UTC 2021 - cloud-devel@suse.de
+
+- update to version 1.12.0
+  - Improve "OvsdbIdl.from_server" method
+  - Don't spam retries 100s of times a second
+  - Actually close the connection in Connection.stop()
+  - Fix docs job
+  - ovn: support allow-stateless ACL verb
+  - Make exceptions in the event logs easier to read
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Add an active wait in the "Backend.lookup"
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Sun May  2 17:15:48 UTC 2021 - cloud-devel@suse.de
 
 - update to version 1.9.0

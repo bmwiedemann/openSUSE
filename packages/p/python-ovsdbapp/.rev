@@ -132,4 +132,22 @@
     <comment></comment>
     <requestid>890002</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a4b7014d987bd75b42dbcc49dad0659</srcmd5>
+    <version>1.12.0</version>
+    <time>1639267061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.12.0
+  - Improve &quot;OvsdbIdl.from_server&quot; method
+  - Don't spam retries 100s of times a second
+  - Actually close the connection in Connection.stop()
+  - Fix docs job
+  - ovn: support allow-stateless ACL verb
+  - Make exceptions in the event logs easier to read
+  - Add Python3 xena unit tests
+  - Update master for stable/wallaby
+  - Add an active wait in the &quot;Backend.lookup&quot;
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>939548</requestid>
+  </revision>
 </revisionlist>
