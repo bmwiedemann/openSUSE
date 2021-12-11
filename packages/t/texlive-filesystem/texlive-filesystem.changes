@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  9 13:53:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+-  Modifiy texlive.cron
+   * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+     OK make them silent
+
+-------------------------------------------------------------------
 Sun May 30 16:43:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

@@ -499,4 +499,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>898104</requestid>
   </revision>
+  <revision rev="50" vrev="53">
+    <srcmd5>62af9494200b9e387723149b588d3f07</srcmd5>
+    <version>unknown</version>
+    <time>1639266944</time>
+    <user>dimstar_suse</user>
+    <comment>-  Modifiy texlive.cron
+   * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+     OK make them silent</comment>
+    <requestid>937801</requestid>
+  </revision>
 </revisionlist>

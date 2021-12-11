@@ -72,7 +72,7 @@ fi
 # Update the ls-R's
 # Note that this is done as user mktex
 #
-mktexlsr > /dev/null
+mktexlsr < /dev/null > /dev/null
 
 #
 exit 0
