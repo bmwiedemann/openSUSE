@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Dec  9 13:53:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+-  Extend patch texlive-scripts_scripts.dif
+   * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+     OK make them silent
+
+-------------------------------------------------------------------
+Wed Jul 14 14:50:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Do not touch shebang with patch latexdiff_p2top3.dif
+
+-------------------------------------------------------------------
+Thu Jul  8 07:36:39 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add the patches to convert python2 helper scripts to python3
+  * ejpecp_p2top3.dif
+  * enctex_p2top3.dif
+  * latexdiff_p2top3.dif
+  * newcommand_p2top3.dif
+  * punknova_p2top3.dif
+
+-------------------------------------------------------------------
 Wed Jun 30 12:59:13 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch seminar_latex20200202.dif and patch prosper_utf8.dif  

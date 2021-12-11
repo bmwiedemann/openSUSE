@@ -1,9 +1,10 @@
 ---
  texmf-dist/scripts/texlive/fmtutil-sys.sh |    1 +
  texmf-dist/scripts/texlive/fmtutil.pl     |   20 ++++++++++++++------
+ texmf-dist/scripts/texlive/mktexlsr.pl    |    2 +-
  texmf-dist/scripts/texlive/updmap-sys.sh  |    1 +
  texmf-dist/scripts/texlive/updmap.pl      |   16 ++++++++++------
- 4 files changed, 26 insertions(+), 12 deletions(-)
+ 5 files changed, 27 insertions(+), 13 deletions(-)
 
 --- texmf-dist/scripts/texlive/fmtutil-sys.sh
 +++ texmf-dist/scripts/texlive/fmtutil-sys.sh	2018-05-11 10:51:14.298775065 +0000
@@ -69,6 +70,17 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
+--- texmf-dist/scripts/texlive/mktexlsr.pl
++++ texmf-dist/scripts/texlive/mktexlsr.pl	2021-12-09 13:52:58.586622149 +0000
+@@ -636,7 +636,7 @@ sub main {
+         $lsr->write(sort => $opt_sort);
+       }
+     } else {
+-      warn "$prg: cannot read files, skipping: $t\n";
++      warn "$prg: cannot read files, skipping: $t\n" if $opt_verbose;
+     }
+   }
+   print "$prg: Done.\n" if $opt_verbose;
 --- texmf-dist/scripts/texlive/updmap-sys.sh
 +++ texmf-dist/scripts/texlive/updmap-sys.sh	2018-05-11 10:53:43.971984421 +0000
 @@ -22,4 +22,5 @@ PATH="$mydir:$PATH"; export PATH
