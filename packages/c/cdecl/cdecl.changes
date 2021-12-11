@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Dec 11 10:19:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.7
+  * When an unexpected name token is encountered, if said token
+    is a cdecl keyword, it's now mentioned in the error message.
+  * Zero-sized arrays are now correctly forbidden.
+
+-------------------------------------------------------------------
 Fri Dec  3 18:37:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.6
