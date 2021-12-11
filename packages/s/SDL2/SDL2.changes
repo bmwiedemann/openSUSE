@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 30 17:30:02 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.18
+  * Added SDL_RenderGeometry() and SDL_RenderGeometryRaw() to
+    allow rendering of arbitrary shapes using the SDL 2D render
+    API.
+  * Added SDL_SetTextureUserData() and SDL_GetTextureUserData()
+    to associate application data with an SDL texture.
+  * Added SDL_RenderWindowToLogical() and
+    SDL_RenderLogicalToWindow() to convert between window
+    coordinates and logical render coordinates.
+  * Added SDL_RenderSetVSync() to change whether a renderer
+    present is synchronized with vblank at runtime.
+  * Added SDL_PremultiplyAlpha() to premultiply alpha on a block
+    of SDL_PIXELFORMAT_ARGB8888 pixels.
+  * Added a window event SDL_WINDOWEVENT_DISPLAY_CHANGED which is
+    sent when a window changes what display it is centered on.
+  * Added SDL_GetWindowICCProfile() to query a window's ICC
+    profile, and a window event SDL_WINDOWEVENT_ICCPROF_CHANGED
+    that is sent when it changes.
+  * Added the hint SDL_HINT_VIDEO_EGL_ALLOW_TRANSPARENCY to allow
+    EGL windows to be transparent instead of opaque.
+  * Added SDL_SetWindowMouseRect() and SDL_GetWindowMouseRect()
+    to confine the mouse cursor to an area of a window.
+  * You can now read precise mouse wheel motion using 'preciseX'
+    and 'preciseY' event fields.
+  * Added SDL_GameControllerHasRumble() and
+    SDL_GameControllerHasRumbleTriggers() to query whether a game
+    controller supports rumble.
+  * Added SDL_JoystickHasRumble() and
+    SDL_JoystickHasRumbleTriggers() to query whether a joystick
+    supports rumble.
+  * SDL's hidapi implementation is now available as a public API
+    in SDL_hidapi.h.
+- Drop SDL2-endian.patch (inapplicable),
+  sdl2-fix-wayland-fullscreen.patch (merged),
+  audio-Support-pulse-as-an-alias-for-pulseaudio.patch (merged)
+
+-------------------------------------------------------------------
 Mon Nov  8 12:52:16 CET 2021 - tiwai@suse.de
 
 - Support "pulse" as an alias for pulseaudio (bsc#1191868,

@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.16
+Version:        2.0.18
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -31,10 +31,7 @@ Source2:        http://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
-Patch2:         SDL2-endian.patch
 Patch3:         sdl2-khronos.patch
-Patch4:         sdl2-fix-wayland-fullscreen.patch
-Patch5:         audio-Support-pulse-as-an-alias-for-pulseaudio.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
@@ -55,11 +52,9 @@ BuildRequires:  pkgconfig(ice)
 # KMS/DRM driver needs libdrm and libgbm
 BuildRequires:  pkgconfig(gbm) >= 9.0.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.46
-%if 0%{?suse_version} > 1220
-BuildRequires:  pkgconfig(tslib)
-%endif
 BuildRequires:  pkgconfig(libpulse-simple) >= 0.9
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
