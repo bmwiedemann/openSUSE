@@ -18,7 +18,7 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.70.0
+Version:        2.70.1
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
@@ -62,6 +62,9 @@ Currently, there is only a proxy module based on libproxy.
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %post
 %{glib2_gio_module_post}

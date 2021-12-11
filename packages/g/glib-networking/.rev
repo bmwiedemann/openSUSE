@@ -598,4 +598,12 @@ a newer version not fitting</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 920926 from dimstar)</comment>
     <requestid>921608</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>11b8000134812f417746a60a19ca05b1</srcmd5>
+    <version>2.70.1</version>
+    <time>1639266949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937833</requestid>
+  </revision>
 </revisionlist>
