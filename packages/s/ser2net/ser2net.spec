@@ -17,17 +17,14 @@
 
 
 Name:           ser2net
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
 Summary:        Serial port to network proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/cminyard/ser2net.git
-Source:         https://github.com/cminyard/ser2net/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/ser2net/files/ser2net/%{name}-%{version}.tar.gz
 Source2:        ser2net.service
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libgensio) >= 2.2.0
@@ -44,7 +41,6 @@ monitoring ports, and controlling ports.
 %setup -q
 
 %build
-autoreconf -fiv
 %configure --disable-static
 %make_build
 

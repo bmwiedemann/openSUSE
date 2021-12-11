@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 11 13:29:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ser2net 4.3.4:
+  * fix a few minor annoyances
+- switch up upstream bootstrapped tarball
+
+-------------------------------------------------------------------
 Tue Nov 16 15:53:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
