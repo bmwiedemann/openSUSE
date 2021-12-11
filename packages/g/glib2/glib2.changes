@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:48:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.70.2:
+  + Fix use of the default log writer with journald namespaces
+  + Fix hang in `dbus-daemon` under `GTestDBus` when
+    `G_MESSAGES_DEBUG=all` is set
+  + Speed up `g_canonicalize_filename()` to avoid pathogenic cases
+    with `..`
+  + Fix URI for pcre subproject as it’s moved upstream
+  + Fix storing GSettings dictionaries on macOS
+  + Speed up ‘remove dot segments’ algorithm in `GUri` to avoid
+    pathogenic cases with `..`
+  + Fix infinite loops in D-Bus message parsing for truncated
+    inputs
+  + Improve correctness of version information returned by
+    `g_get_os_info()` for Windows 10/Server 2019+
+  + Bugs fixed: glgo#GNOME/GLib#2400, glgo#GNOME/GLib#2426,
+    glgo#GNOME/GLib#2528, glgo#GNOME/GLib#2530,
+    glgo#GNOME/GLib#2537, glgo#GNOME/GLib#2541,
+    glgo#GNOME/GLib!2312, glgo#GNOME/GLib!2313,
+    glgo#GNOME/GLib!2314, glgo#GNOME/GLib!2316,
+    glgo#GNOME/GLib!2320, glgo#GNOME/GLib!2335,
+    glgo#GNOME/GLib!2337, glgo#GNOME/GLib!2340,
+    glgo#GNOME/GLib!2344, glgo#GNOME/GLib!2356,
+    glgo#GNOME/GLib!2359, glgo#GNOME/GLib!2361,
+    glgo#GNOME/GLib!2363, glgo#GNOME/GLib!2366,
+    glgo#GNOME/GLib!2375, glgo#GNOME/GLib!2383.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Nov 10 19:41:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing fam=true to meson and drop gamin-devel
+  BuildRequires, following upstream default. Following this, drop
+  libgio-fam sub-package.
+
+-------------------------------------------------------------------
 Thu Oct 28 14:20:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.70.1:
