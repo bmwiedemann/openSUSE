@@ -17,7 +17,7 @@
 
 
 Name:           gnome-desktop
-Version:        41.1
+Version:        41.2
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
