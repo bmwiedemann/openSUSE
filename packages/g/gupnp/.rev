@@ -565,4 +565,12 @@ Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comme
   packages had the mismatched version number.</comment>
     <requestid>930947</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>950a2301591a856d47f4cfbd2132394b</srcmd5>
+    <version>1.4.1</version>
+    <time>1639266948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937832</requestid>
+  </revision>
 </revisionlist>
