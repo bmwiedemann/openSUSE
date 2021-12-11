@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 11 14:46:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.2
+  * Fix formatting a log message
+- Add python-lsp-server-pr133-pylint-python310.patch
+
+-------------------------------------------------------------------
 Fri Nov 26 18:40:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.3.1
