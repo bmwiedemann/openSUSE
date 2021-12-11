@@ -379,4 +379,12 @@ spec file license should be in SPDX (compatible) format. GPL-2.0+ seems to be th
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>923345</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>05ae9c4f872dabfa4f3f54bc4dcc3bdb</srcmd5>
+    <version>20211204</version>
+    <time>1639267066</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>939928</requestid>
+  </revision>
 </revisionlist>
