@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Dec 07 10:18:38 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.10.0+git22.a614b31c:
+  * asterisk: Sipsak check fix (#1716)
+  * [rpm] fix Requires to allow install on opensuse (#1721) (jsc#SLE-21043)
+  * Filesystem: unmount bind mounts before unmount file system
+  * db2: use -l forever instead of -t nodes -l reboot, as they conflict with eachother
+  * nginx: replace error log messages with calls to ocf_exit_reason
+
+-------------------------------------------------------------------
 Tue Nov 23 19:21:24 UTC 2021 - varkoly@suse.com
 
 Update from 4.8.0 to 4.10.0 contains fix of following issues:
