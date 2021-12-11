@@ -1,7 +1,7 @@
 #
 # spec file for package nlopt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           nlopt
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://ab-initio.mit.edu/wiki/index.php/NLopt
-Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz 
+Source0:        https://github.com/stevengj/nlopt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
