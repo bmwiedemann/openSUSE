@@ -1,9 +1,9 @@
-Index: scummvm-tools-1.9.0/configure
+Index: scummvm-tools-2.5.0/configure
 ===================================================================
---- scummvm-tools-1.9.0.orig/configure
-+++ scummvm-tools-1.9.0/configure
-@@ -910,7 +910,7 @@ if test "$have_gcc" = yes ; then
- 			amigaos* | android | dreamcast | ds | gamecube | mingw* | n64 | psp | ps2 | wii | wince )
+--- scummvm-tools-2.5.0.orig/configure
++++ scummvm-tools-2.5.0/configure
+@@ -981,7 +981,7 @@ if test "$have_gcc" = yes ; then
+ 			amigaos* | android | dreamcast | ds | gamecube | mingw* | morphos* |n64 | psp | ps2 | wii | wince )
  				;;
  			*)
 -				CXXFLAGS="$CXXFLAGS -ansi"

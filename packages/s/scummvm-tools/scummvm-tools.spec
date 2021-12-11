@@ -17,7 +17,7 @@
 
 
 Name:           scummvm-tools
-Version:        2.2.0
+Version:        2.5.0
 Release:        0
 Summary:        ScummVM-related tools
 License:        GPL-2.0-or-later
