@@ -360,4 +360,27 @@
     <comment>switch to victoria</comment>
     <requestid>841210</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e0e1267b84544def276bfcbc93b09d7b</srcmd5>
+    <version>4.6.0</version>
+    <time>1639267052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.6.0
+  - Add Xena to versionutils
+  - Remove references to 'sys.version_info'
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/victoria
+  - setup.cfg: Replace dashes with underscores
+  - Drop lower-constraints
+  - Adding pre-commit
+  - Use py3 as the default runtime for tox
+  - Dropping lower constraints testing
+  - Move flake8 as a pre-commit local target.
+  - Imported Translations from Zanata
+  - Ussuri+ is python3 only
+  - remove unicode from code
+  - Add Python3 wallaby unit tests
+  - Fix log_rotate_interval help text formatting</comment>
+    <requestid>939532</requestid>
+  </revision>
 </revisionlist>

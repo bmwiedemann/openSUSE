@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.log
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.log
-Version:        4.4.0
+Version:        4.6.0
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslo.log
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.4.0.tar.gz
+URL:            https://docs.openstack.org/oslo.log
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-4.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-monotonic
@@ -48,7 +48,6 @@ support for context specific logging (like resource id's etc).
 
 %package -n python3-oslo.log
 Summary:        OpenStack log library
-Group:          Development/Languages/Python
 Requires:       python3-debtcollector >= 1.19.0
 Requires:       python3-monotonic
 Requires:       python3-oslo.config >= 5.2.0
@@ -73,7 +72,6 @@ This package contains the Python 3.x module.
 
 %package -n python-oslo.log-doc
 Summary:        Documentation for OpenStack log library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -81,14 +79,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the oslo.log library.
 
 %prep
-%autosetup -p1 -n oslo.log-4.4.0
+%autosetup -p1 -n oslo.log-4.6.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PYTHONPATH=. PBR_VERSION=4.4.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=4.6.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
