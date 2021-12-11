@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:31:13 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Support pagination for 'list' API calls
+  - Improve the client performance on large clouds
+  - Update master for stable/wallaby
+  - Fix some typos
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Sun May  2 17:25:27 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.3.0

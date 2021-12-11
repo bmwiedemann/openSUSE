@@ -111,4 +111,18 @@
     <comment></comment>
     <requestid>889981</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e77fc537dcb9f38172ff734b2ebc0924</srcmd5>
+    <version>2.4.0</version>
+    <time>1639267050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - Support pagination for 'list' API calls
+  - Improve the client performance on large clouds
+  - Update master for stable/wallaby
+  - Fix some typos
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>939530</requestid>
+  </revision>
 </revisionlist>
