@@ -20,13 +20,13 @@
 %global rdo 1
 %endif
 Name:           python-oslo.service
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.service
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-2.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.service/oslo.service-2.6.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  procps
 BuildRequires:  python3-Paste >= 2.0.2
@@ -93,7 +93,7 @@ performing periodic operations, interacting with systemd, etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.service-2.5.0
+%autosetup -p1 -n oslo.service-2.6.0
 %py_req_cleanup
 
 %build

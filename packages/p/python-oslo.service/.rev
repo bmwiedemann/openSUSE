@@ -331,4 +331,20 @@
     <comment></comment>
     <requestid>889998</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6389c52b8fd7a40da38c12a9adead67a</srcmd5>
+    <version>2.6.0</version>
+    <time>1639267057</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 xena unit tests
+  - remove unicode from code
+  - Remove references to 'sys.version_info'
+  - Remove lower-constraints remnants
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/wallaby
+  - Move flake8 as a pre-commit local target.</comment>
+    <requestid>939541</requestid>
+  </revision>
 </revisionlist>

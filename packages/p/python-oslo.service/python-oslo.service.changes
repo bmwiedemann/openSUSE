@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:40:13 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.6.0
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 xena unit tests
+  - remove unicode from code
+  - Remove references to 'sys.version_info'
+  - Remove lower-constraints remnants
+  - Use TOX_CONSTRAINTS_FILE
+  - Update master for stable/wallaby
+  - Move flake8 as a pre-commit local target.
+
+-------------------------------------------------------------------
 Sun May  2 16:35:02 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.5.0
