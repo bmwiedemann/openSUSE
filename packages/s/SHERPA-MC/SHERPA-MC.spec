@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 
 Name:           SHERPA-MC
-Version:        2.2.11
+Version:        2.2.12
 Release:        0
 Summary:        MC event generator for Simulation of High-Energy Reactions of PArticles
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -193,6 +193,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/make2scons
 %{_bindir}/plot_graphs.sh
 %{_bindir}/plot_stats.sh
+%{_bindir}/sconsloops
 %dir %{_docdir}/%{name}/
 %{_docdir}/%{name}/*.html
 %{_docdir}/%{name}/*.jpg

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Dec  7 22:29:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.12:
+  * Significant speed-up of (partially) unweighted event
+    generation with on-the-fly variations enabled, e.g. for many
+    PDF variations or implicitly when EWvirt associated
+    contributions are evaluated !410
+  * New option to perform (significantly faster) uncorrelated
+    mc@nlo matching after unweighting, enabled by flag
+    NLO_CSS_PSMODE: 2 !410
+  * Further performance improvements !410
+  * New MCFM interface (bd3e25ad, TODO: @shoeche to provide more
+    info) !409
+  * CSS improvements (efcffda4, TODO: @shoeche to provide more
+    info) !410
+  * New output options steered through BATCH_MODE !410 (see Manual
+    for additional information):
+    - 8 prints the current process name,
+    - 16 prints the time elapsed/left in unformatted seconds
+  * Runtime issues: Fix compatibility issue when using binary
+    relocation after installation !453
+  * Improve compatibility with autoconf 2.70 or later (in
+    particular when building process libraries without scons) !396
+  * Fix MadLoop 5 interface add-on installation
+  * Fix Recola interface add-on compilation !410
+
+-------------------------------------------------------------------
 Mon Feb 15 14:28:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.11:
