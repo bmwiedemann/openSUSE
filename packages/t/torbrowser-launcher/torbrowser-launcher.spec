@@ -17,15 +17,13 @@
 
 
 Name:           torbrowser-launcher
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/micahflee/torbrowser-launcher
 Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM torbrowser-launcher-pt_BR-po-file-end-string.patch gh#micahflee/torbrowser-launcher#579 badshah400@gmail.com -- Fix missing quotation marks at the end of str line in pt_BR translation file; patch taken from upstream merge request
-Patch0:         torbrowser-launcher-pt_BR-po-file-end-string.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
 BuildRequires:  hicolor-icon-theme
@@ -47,7 +45,6 @@ Requires:       python3-qt5
 Requires:       python3-requests
 Requires:       xmessage
 Recommends:     %{name}-lang = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -105,7 +102,6 @@ python3 setup.py install --skip-build --root %{buildroot}
 %endif
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/%{name}
@@ -120,8 +116,7 @@ python3 setup.py install --skip-build --root %{buildroot}
 %{python3_sitelib}/torbrowser_launcher/
 
 %files -n torbrowser-apparmor-profile
-%defattr(-,root,root)
-%doc apparmor/license.txt
+%license apparmor/license.txt
 %config %{_sysconfdir}/apparmor.d/torbrowser.*
 %config %{_sysconfdir}/apparmor.d/local/torbrowser.*
 %config %{_sysconfdir}/apparmor.d/tunables/torbrowser

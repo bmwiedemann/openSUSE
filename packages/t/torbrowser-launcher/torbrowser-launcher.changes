@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 11 19:04:44 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.3.5:
+  * fix refreshing Tor Browser signing key in Flatpak package
+- drop torbrowser-launcher-pt_BR-po-file-end-string.patch
+
+-------------------------------------------------------------------
 Sat Jun 19 19:12:38 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.3.4:
