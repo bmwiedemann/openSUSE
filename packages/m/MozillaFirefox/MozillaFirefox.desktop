@@ -8,7 +8,7 @@ Exec=%EXEC %u
 Icon=%ICON
 Terminal=false
 StartupNotify=true
-MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;application/x-xpinstall;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;application/x-xpinstall;x-scheme-handler/http;x-scheme-handler/https;
 Type=Application
 
 Actions=new-window;PrivateBrowsing;ProfileManager

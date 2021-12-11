@@ -1,37 +1,48 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  ed9681bd4359b83145247fb6b01a56a2c84879fd
+# Parent  066aba2f6d1fbc0fe31d1864d539714041404fe6
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -235,23 +235,23 @@ def lto(
-                 "configure."
-             )
+@@ -243,34 +243,34 @@ def lto(
+             "configure."
+         )
  
-         if c_compiler.type == "clang":
-             if len(value) and value[0].lower() == "full":
-                 cflags.append("-flto")
-                 ldflags.append("-flto")
-             else:
--                cflags.append("-flto=thin")
--                ldflags.append("-flto=thin")
-+                cflags.append("-flto")
-+                ldflags.append("-flto")
-         elif c_compiler.type == "clang-cl":
-             if len(value) and value[0].lower() == "full":
-                 cflags.append("-flto")
-             else:
--                cflags.append("-flto=thin")
-+                cflags.append("-flto")
-             # With clang-cl, -flto can only be used with -c or -fuse-ld=lld.
-             # AC_TRY_LINKs during configure don't have -c, so pass -fuse-ld=lld.
-             cflags.append("-fuse-ld=lld")
+     if c_compiler.type == "clang":
+         if value == "full":
+             cflags.append("-flto")
+             ldflags.append("-flto")
+         else:
+-            cflags.append("-flto=thin")
+-            ldflags.append("-flto=thin")
++            cflags.append("-flto")
++            ldflags.append("-flto")
  
-             # Explicitly set the CPU to optimize for so the linker doesn't
-             # choose a poor default.  Rust compilation by default uses the
-             # pentium4 CPU on x86:
-             #
+         if target.os == "Android" and value == "cross":
+             # Work around https://github.com/rust-lang/rust/issues/90088
+             # by enabling the highest level of SSE the rust targets default
+             # to.
+             # https://github.com/rust-lang/rust/blob/bdfcb88e8b6203ccb46a2fb6649979b773efc8ac/compiler/rustc_target/src/spec/i686_linux_android.rs#L13
+             # https://github.com/rust-lang/rust/blob/8d1083e319841624f64400e1524805a40d725439/compiler/rustc_target/src/spec/x86_64_linux_android.rs#L7
+             if target.cpu == "x86":
+                 ldflags.append("-Wl,-plugin-opt=-mattr=+ssse3")
+             elif target.cpu == "x86_64":
+                 ldflags.append("-Wl,-plugin-opt=-mattr=+sse4.2")
+     elif c_compiler.type == "clang-cl":
+         if value == "full":
+             cflags.append("-flto")
+         else:
+-            cflags.append("-flto=thin")
++            cflags.append("-flto")
+         # With clang-cl, -flto can only be used with -c or -fuse-ld=lld.
+         # AC_TRY_LINKs during configure don't have -c, so pass -fuse-ld=lld.
+         cflags.append("-fuse-ld=lld")
+ 
+         # Explicitly set the CPU to optimize for so the linker doesn't
+         # choose a poor default.  Rust compilation by default uses the
+         # pentium4 CPU on x86:
+         #
 diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
 --- a/build/pgo/profileserver.py
 +++ b/build/pgo/profileserver.py
@@ -155,7 +166,7 @@ diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
 --- a/toolkit/components/terminator/nsTerminator.cpp
 +++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -451,16 +451,21 @@ void nsTerminator::StartWatchdog() {
+@@ -461,16 +461,21 @@ void nsTerminator::StartWatchdog() {
        // Defend against overflow
        crashAfterMS = INT32_MAX;
      } else {

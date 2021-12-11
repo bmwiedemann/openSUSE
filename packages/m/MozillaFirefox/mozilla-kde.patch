@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  9eb4df0e07175ce38fc6699b2b8544b9eda7f0ad
+# Parent  d065e5213c971b1f80d4a13458c412a3a25f7c1c
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4634,16 +4635,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4635,16 +4636,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4708,17 +4720,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4709,17 +4721,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -346,7 +346,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -91,17 +91,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
+@@ -92,17 +92,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
          "../components/printingui",
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
@@ -360,12 +360,12 @@ diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 +        "nsKDEUtils.cpp",
          "nsNativeAppSupportUnix.cpp",
      ]
+     CXXFLAGS += CONFIG["MOZ_X11_SM_CFLAGS"]
  else:
      UNIFIED_SOURCES += [
          "nsNativeAppSupportDefault.cpp",
      ]
  
- if CONFIG["MOZ_HAS_REMOTE"]:
 diff --git a/toolkit/xre/nsKDEUtils.cpp b/toolkit/xre/nsKDEUtils.cpp
 new file mode 100644
 --- /dev/null

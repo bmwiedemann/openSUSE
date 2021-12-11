@@ -5264,4 +5264,41 @@
     <comment></comment>
     <requestid>933355</requestid>
   </revision>
+  <revision rev="351" vrev="1">
+    <srcmd5>9ddb587c0356f4650ca8760ef9da499b</srcmd5>
+    <version>95.0</version>
+    <time>1639266969</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 95.0
+  * You can now move the Picture-in-Picture toggle button to the
+    opposite side of the video. Simply look for the new context menu
+    option Move Picture-in-Picture Toggle to Left (Right) Side.
+  * To better protect Firefox users against side-channel attacks such
+    as Spectre, Site Isolation is now enabled for all Firefox 95 users.
+  * https://www.mozilla.org/en-US/firefox/95.0/releasenotes
+  MFSA 2021-52 (bsc#1193485)
+  * CVE-2021-43536 (bmo#1730120)
+    URL leakage when navigating while executing asynchronous
+    function
+  * CVE-2021-43537 (bmo#1738237)
+    Heap buffer overflow when using structured clone
+  * CVE-2021-43538 (bmo#1739091)
+    Missing fullscreen and pointer lock notification when
+    requesting both
+  * CVE-2021-43539 (bmo#1739683)
+    GC rooting failure when calling wasm instance methods
+  * MOZ-2021-0010 (bmo#1735852)
+    Use-after-free in fullscreen objects on MacOS
+  * CVE-2021-43540 (bmo#1636629)
+    WebExtensions could have installed persistent ServiceWorkers
+  * CVE-2021-43541 (bmo#1696685)
+    External protocol handler parameters were unescaped
+  * CVE-2021-43542 (bmo#1723281)
+    XMLHttpRequest error codes could have leaked the existence of
+    an external protocol handler
+  * CVE-2021-43543 (bmo#1738418)
+    Bypass of CSP sandbox directive when embedding
+  * CVE-2021-43544 (bmo#1739934)</comment>
+    <requestid>936364</requestid>
+  </revision>
 </revisionlist>
