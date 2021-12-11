@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec  4 17:30:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Bugs fixed:
+    - Accessibility: add proper mnemonic relations and labelling
+    - Remove incorrect arg for i18n.merge_file
+    - Saving image fails with GVFS SFTP backend
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 19 10:28:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.0:
