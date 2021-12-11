@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sat Dec  4 16:36:26 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.0
+  Regularly scheduled feature release.
+
+  This is the last release to support Python 2. Python 2 support will be 
+  dropped for all platforms in Mercurial 6.1.
+
+  + New Features
+    * `debugrebuildfncache` now has an option to rebuild only the index files
+    * a new `bookmarks.mode` path option have been introduced to control the 
+      bookmark update strategy during exchange with a peer. See `hg help paths` 
+      for details. 
+    * a new `bookmarks.mirror` option has been introduced. See 
+      `hg help bookmarks` for details. 
+    * more commands support detailed exit codes when config 
+      `ui.detailed-exit-codes` is enabled 
+  + New Experimental Features
+    * __Major feature__: version 2 of the dirstate is available (the first 
+      version is as old as Mercurial itself). It allows for much faster working 
+      copy inspection (status, diff, commit, update, etc.) and richer 
+      information (symlink and exec info on Windows, etc.). The format has been 
+      frozen with room for some future evolution and the current implementations 
+      (Python, Python + C, Python + Rust or pure Rust) should be compatible with 
+      any future change or optimization that the format allows. You can get more 
+      information in the internal documentation
+    * Added a new `web.full-garbage-collection-rate` to control performance. See
+      `de2e04fe4897a554b9ef433167f11ea4feb2e09c` for more information 
+    * Added a new `histedit.later-commits-first` option to affect the 
+      ordering of commits in `chistedit` to match the order in `hg log -G`. 
+      It will affect the text-based version before graduating 
+      from experimental. 
+  - Bug Fixes
+    * `hg fix --working-dir` now correctly works when in an uncommitted 
+      merge state
+    * Unintentional duplicated calls to `hg fix`'s internals were removed, 
+      making it potentially much faster
+    * `rhg cat` can be called without a revision
+    * `rhg cat` can be called with the `.` revision
+    * `rhg cat` is more robust than before with regards to edge cases. 
+      Some still remain like a tag or bookmark that is ambiguous with 
+      a `nodeid` prefix, only nodeids (prefixed or not) are supported 
+      as of now.
+    * `rhg cat` is even faster
+    * `rhg` (Rust fast-path for `hg`) now supports the full config list syntax
+    * `rhg` now parses some corner-cases for revsets correctly
+    * Fixed an `fsmonitor` on Python 3 during exception handling
+    * Lots of Windows fixes
+    * Lots of miscellaneous other fixes
+    * Removed a CPython-specific compatibility hack to improve support 
+      for alternative Python implementations
+    * Added a compatibility fix for Python 3.11 
+
+-------------------------------------------------------------------
 Sat Nov  6 07:59:14 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.9.3
