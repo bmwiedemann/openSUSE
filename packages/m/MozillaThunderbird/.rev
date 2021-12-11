@@ -3914,4 +3914,41 @@ I cannot test locally unfortunately.
     https://www.thunderbird.net/en-US/thunderbird/91.3.1/releasenotes/</comment>
     <requestid>932690</requestid>
   </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>77f49d84357ee959b64dabac7cff6399</srcmd5>
+    <version>91.4.0</version>
+    <time>1639266970</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.4.0
+  * several fixes as outlined here
+    https://www.thunderbird.net/en-US/thunderbird/91.4.0/releasenotes
+  MFSA 2021-54 (bsc#1193485)
+  * CVE-2021-43536 (bmo#1730120)
+    URL leakage when navigating while executing asynchronous
+    function
+  * CVE-2021-43537 (bmo#1738237)
+    Heap buffer overflow when using structured clone
+  * CVE-2021-43538 (bmo#1739091)
+    Missing fullscreen and pointer lock notification when
+    requesting both
+  * CVE-2021-43539 (bmo#1739683)
+    GC rooting failure when calling wasm instance methods
+  * CVE-2021-43541 (bmo#1696685)
+    External protocol handler parameters were unescaped
+  * CVE-2021-43542 (bmo#1723281)
+    XMLHttpRequest error codes could have leaked the existence of
+    an external protocol handler
+  * CVE-2021-43543 (bmo#1738418)
+    Bypass of CSP sandbox directive when embedding
+  * CVE-2021-43545 (bmo#1720926)
+    Denial of Service when using the Location API in a loop
+  * CVE-2021-43546 (bmo#1737751)
+    Cursor spoofing could overlay user interface when native
+    cursor is zoomed
+  * CVE-2021-43528 (bmo#1742579)
+    JavaScript unexpectedly enabled for the composition area
+  * MOZ-2021-0009 (bmo#1393362, bmo#1736046, bmo#1736751,
+    bmo#1737009, bmo#1739372, bmo#1739421)</comment>
+    <requestid>936365</requestid>
+  </revision>
 </revisionlist>
