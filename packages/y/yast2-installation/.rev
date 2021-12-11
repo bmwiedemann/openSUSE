@@ -3722,4 +3722,12 @@
     <comment>submit new version 4.4.26</comment>
     <requestid>935524</requestid>
   </revision>
+  <revision rev="485" vrev="1">
+    <srcmd5>60d60bdaa34cc06ce95bdbe11e67f9f2</srcmd5>
+    <version>4.4.28</version>
+    <time>1639266950</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.28</comment>
+    <requestid>939171</requestid>
+  </revision>
 </revisionlist>
