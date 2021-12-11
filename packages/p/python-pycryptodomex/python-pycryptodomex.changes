@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 11 13:50:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * ECC keys in the SEC1 format can be exported and imported.
+  * Add support for KMAC128, KMAC256, TupleHash128, and TupleHash256 (NIST SP-800 185).
+  * Add support for KangarooTwelve.
+  * GH#563: An asymmetric key could not be imported as a ``memoryview``.
+  * GH#566: cSHAKE128/256 generated a wrong output for customization strings
+  * GH#582: CBC decryption generated the wrong plaintext when the input and the output were the same buffer.
+
+-------------------------------------------------------------------
 Sat Oct 16 22:36:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.0:
