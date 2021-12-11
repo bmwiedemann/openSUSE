@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Dec  3 18:12:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.2:
+  + Fix a crash when processing age ratings
+  + Reload application details only when not installing/removing
+    the application
+  + Do not follow symlinks when calculating disk size usage
+  + Fix addons section, which could show addons for different
+    application
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Oct 28 17:57:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.1:
