@@ -311,4 +311,22 @@
     <comment></comment>
     <requestid>889994</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a0cc963afc2ca09ff5187f313509d9fd</srcmd5>
+    <version>4.4.0</version>
+    <time>1639267054</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.4.0
+  - Add Python3 xena unit tests
+  - ignore reno generated artifacts
+  - Add new basic auth middleware
+  - setup.cfg: Replace dashes with underscores
+  - Fix requirements issues
+  - Upgrade the pre-commit-hooks version
+  - Warning about /healthcheck
+  - remove unicode from code
+  - Use py3 as the default runtime for tox
+  - Update master for stable/wallaby</comment>
+    <requestid>939534</requestid>
+  </revision>
 </revisionlist>
