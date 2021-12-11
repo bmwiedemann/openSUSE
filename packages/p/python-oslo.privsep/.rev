@@ -210,4 +210,23 @@
     <comment></comment>
     <requestid>889996</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cbf2c7ef7fc0cecd273563014d05ea9</srcmd5>
+    <version>2.6.2</version>
+    <time>1639267055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.2
+  - Fix requirements issues.
+  - Allow finer grained log levels
+  - Changed minversion in tox to 3.18.0
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 xena unit tests
+  - Add except path with exception debug to send_recv
+  - Add timeout to PrivContext and entrypoint_with_timeout decorator
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Upgrade the pre-commit-hooks version
+  - Update master for stable/wallaby</comment>
+    <requestid>939537</requestid>
+  </revision>
 </revisionlist>

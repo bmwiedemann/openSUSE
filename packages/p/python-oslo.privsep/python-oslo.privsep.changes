@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:10:01 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.6.2
+  - Fix requirements issues.
+  - Allow finer grained log levels
+  - Changed minversion in tox to 3.18.0
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 xena unit tests
+  - Add except path with exception debug to send_recv
+  - Add timeout to PrivContext and entrypoint_with_timeout decorator
+  - Use py3 as the default runtime for tox
+  - setup.cfg: Replace dashes with underscores
+  - Upgrade the pre-commit-hooks version
+  - Update master for stable/wallaby
+
+-------------------------------------------------------------------
 Sun May  2 17:32:09 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.5.0
