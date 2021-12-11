@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 04 17:33:26 UTC 2021 - bjorn.lie@gmail.com
+
+- Update to version 0.66.2:
+  + parser: Fix some control codes
+  + emulation:
+    - ECMA modes should not be saved by DECSC
+    - Use correct range for DECRQCRA
+
+-------------------------------------------------------------------
 Sat Oct 30 18:42:01 UTC 2021 - bjorn.lie@gmail.com
 
 - Update to version 0.66.1:

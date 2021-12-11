@@ -1064,4 +1064,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
 - Drop vte-silence-COMMAND_PROMPT.patch: Fixed upstream. (forwarded request 928374 from iznogood)</comment>
     <requestid>929593</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>eeca6ea35ad25709cac1ae0696664002</srcmd5>
+    <version>0.66.2</version>
+    <time>1639266961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936214</requestid>
+  </revision>
 </revisionlist>
