@@ -17,9 +17,8 @@
 
 
 %define tarname gexiv2
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
-%bcond_without python3
+%define pythons python3
+
 Name:           libgexiv2
 Version:        0.14.0
 Release:        0
@@ -30,8 +29,8 @@ URL:            https://wiki.gnome.org/Projects/gexiv2
 Source0:        https://download.gnome.org/sources/gexiv2/0.14/%{tarname}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module gobject}
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  libtool
@@ -75,17 +74,6 @@ Requires:       libgexiv2-2 = %{version}
 %description devel
 gexiv2 is a GObject-based wrapper around the Exiv2 library. It makes the
 basic features of Exiv2 available to GNOME applications.
-
-%package -n python-gexiv2
-Summary:        A GObject-based Exiv2 wrapper
-Group:          Development/Libraries/Python
-Requires:       python-gobject
-
-%description -n python-gexiv2
-gexiv2 is a GObject-based wrapper around the Exiv2 library. It makes the
-basic features of Exiv2 available to GNOME applications.
-
-This package provides the Python 2 bindings for the libgexiv2 library.
 
 %package -n python3-gexiv2
 Summary:        A GObject-based Exiv2 wrapper
@@ -131,14 +119,7 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 %{_datadir}/vala/vapi/gexiv2.vapi
 %{_datadir}/vala/vapi/gexiv2.deps
 
-%if %{with python2}
-%files -n python-gexiv2
-%{python_sitearch}/*
-%endif
-
-%if %{with python3}
 %files -n python3-gexiv2
 %{python3_sitearch}/*
-%endif
 
 %changelog

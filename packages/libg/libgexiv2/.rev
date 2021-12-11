@@ -365,4 +365,12 @@
   + Changes in build configuration (forwarded request 920359 from iznogood)</comment>
     <requestid>920543</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>5db3ded9e29d90d5288a5612d2000047</srcmd5>
+    <version>0.14.0</version>
+    <time>1639266952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936192</requestid>
+  </revision>
 </revisionlist>

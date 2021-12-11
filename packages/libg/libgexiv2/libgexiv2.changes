@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  1 20:38:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set pythons python3 define, only build for python 3, following
+  this, drop conditional sub-package python-gexiv2 and
+  bcond_without macros. Use plain py3-*devel BuildRequires instead
+  of python modules.
+
+-------------------------------------------------------------------
 Mon Sep 20 17:06:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.14.0:
