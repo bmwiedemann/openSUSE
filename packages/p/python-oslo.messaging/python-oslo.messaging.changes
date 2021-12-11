@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:34:51 UTC 2021 - cloud-devel@suse.de
+
+- update to version 12.9.1
+  - bindep: Add 'librdkafka-dev' dependency
+  - setup.cfg: Replace dashes with underscores
+  - amqp1: re-organize TestFailover to be reused by TestSSL
+  - Remove the oslo_utils.fnmatch
+  - Changed minversion in tox to 3.18.0
+  - Revert "Disable AMQP 1.0 SSL unit tests"
+  - amqp1: Do not reuse _socket_connection on reconnect
+  - Add Python3 xena unit tests
+  - Upgrade the pre-commit-hooks version
+  - Update master for stable/wallaby
+  - Fix formatting of release list
+  - Remove references to 'sys.version_info'
+  - Remove lower constraints.
+  - Add Support For oslo.metrics
+  - Move flake8 as a pre-commit local target.
+
+-------------------------------------------------------------------
 Sun May  2 17:30:41 UTC 2021 - cloud-devel@suse.de
 
 - update to version 12.7.1

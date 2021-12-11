@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.messaging
-Version:        12.7.1
+Version:        12.9.1
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.7.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.9.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-WebOb >= 1.7.1
@@ -41,6 +41,7 @@ BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.log >= 3.36.0
+BuildRequires:  python3-oslo.metrics >= 0.2.1
 BuildRequires:  python3-oslo.middleware >= 3.31.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
 BuildRequires:  python3-oslo.service >= 1.24.0
@@ -72,6 +73,7 @@ Requires:       python3-kombu >= 4.6.6
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.i18n
 Requires:       python3-oslo.log >= 3.36.0
+Requires:       python3-oslo.metrics >= 0.2.1
 Requires:       python3-oslo.middleware >= 3.31.0
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.service >= 1.24.0
@@ -99,7 +101,7 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-12.7.1
+%autosetup -p1 -n oslo.messaging-12.9.1
 %py_req_cleanup
 
 %build
