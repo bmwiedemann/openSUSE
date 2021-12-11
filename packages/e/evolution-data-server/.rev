@@ -1990,4 +1990,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
 - Replace post(un) handling with new ldconfig_scriptlets macro. (forwarded request 928217 from iznogood)</comment>
     <requestid>929581</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>0a4eec9172086131b763b27166b0708c</srcmd5>
+    <version>3.42.2</version>
+    <time>1639266957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936208</requestid>
+  </revision>
 </revisionlist>
