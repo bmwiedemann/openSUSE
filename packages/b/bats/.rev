@@ -92,4 +92,46 @@
     <comment></comment>
     <requestid>886494</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ca1aae2624ae0b74c132d57f9abc83f</srcmd5>
+    <version>1.5.0</version>
+    <time>1639267067</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1193177: Fix build on Leap and SLE
+- update to 1.5.0:
+  * new command line flags
+    * `--verbose-run`: Make `run` print `$output` by default
+    * `-x`, `--trace`: Print test commands as they are executed (like `set -x`)`
+    * `--show-output-of-passing-tests`: Print output of passing tests
+    * `--print-output-on-failure`: Automatically print the value of  `$output` on
+      failed tests
+    * `--gather-test-outputs-in &lt;directory&gt;`: Gather the output of failing **and**
+      passing tests as files in directory
+  * Experimental: add return code checks to `run` via `!`/`-&lt;N&gt;`
+  * `install.sh` and `uninstall.sh` take an optional second parameter for the lib
+    folder name to allow for multilib install, e.g. into lib64
+  * add `run` flag `--keep-empty-lines` to retain empty lines in `${lines[@]}`
+  * add `run` flag `--separate-stderr` which also fills `$stderr` and
+    `$stderr_lines`
+  * don't glob `run`'s `$output` when splitting into `${lines[@]}`
+  * remove empty line after test with pretty formatter on some terminals
+  * don't run setup_file/teardown_file on files without tests, e.g. due to
+    filtering
+  * print final line without newline on Bash 3.2 for midtest (ERREXIT) failures
+  * abort with error on missing flock/shlock when running in parallel mode
+  * improved `set -u` test and fixed some unset variable accesses
+  * shorten suite/file/test temporary folder paths to leave enough space even on
+    restricted systems
+  * added BATS_TEST_TMPDIR, BATS_FILE_TMPDIR, BATS_SUITE_TMPDIR
+  * added checks and improved documentation for `$BATS_TMPDIR`
+  * the docker container now uses [tini](https://github.com/krallin/tini) as the
+    container entrypoint to improve signal forwarding
+  * script to uninstall bats from a given prefix
+  * replace preprocessed file path (e.g. `/tmp/bats-run-22908-NP0f9h/bats.23102.src`)
+    with original filename in stdout/err (but not FD3!)
+  * print aborted command on SIGINT/CTRL+C
+  * print error message when BATS_RUN_TMPDIR could not be created
+</comment>
+    <requestid>939931</requestid>
+  </revision>
 </revisionlist>

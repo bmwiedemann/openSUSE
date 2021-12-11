@@ -18,13 +18,13 @@
 
 %define pname %{name}-core
 Name:           bats
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/%{pname}/%{pname}/
-Source:         %{URL}/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
+Source:         https://github.com/%{pname}/%{pname}/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 BuildRequires:  ncurses-utils
 Requires:       gnu_parallel
 BuildArch:      noarch
@@ -46,7 +46,7 @@ to test any UNIX program.
 sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bats
 %if 0%{?suse_version} <= 1500
     mv -v libexec/%{pname}/* lib/%{pname}/
-    sed -i 's|libexec|lib|g' install.sh ./lib/%{pname}/* ./bin/bats
+    sed -i 's|libexec|lib|g' install.sh ./lib/%{pname}/* ./bin/bats ./test/*.bats
 %endif
 
 %build
