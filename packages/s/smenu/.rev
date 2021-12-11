@@ -120,4 +120,29 @@
   * Error messages are now more consistent.</comment>
     <requestid>898176</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>09ab0eb686b45954f5deb494f5a5ef3e</srcmd5>
+    <version>0.9.19</version>
+    <time>1639267073</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.9.19
+* Fixes:
+  * Prevent an attempt to free memory that has already been freed.
+  * Prevent memory leaks when requesting help.
+  * Correctly handle the order of invocation of -i/-e options.
+  * Apply a PR from h1z1 with a small correction.
+  * Fix the UTF-8 byte sequence generation from a given UCS-4 codepoint.
+  * Many small fixes.
+* Improvements:
+  * Improve the documentation.
+  * Improve compatibility with some older compilers.
+  * Added the ability to set a global inactivity timeout.
+  * Improve the reliability of the code.
+* Miscellaneous:
+  * Removed the generation of the SUSE specific specfile.
+  * Many typos have been corrected.
+  * Various code simplifications.
+</comment>
+    <requestid>939979</requestid>
+  </revision>
 </revisionlist>

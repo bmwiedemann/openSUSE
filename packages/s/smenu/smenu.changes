@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec 11 19:45:51 UTC 2021 - Pierre Gentile <p.gen.progs@gmail.com>
+
+- Version 0.9.19
+* Fixes:
+  * Prevent an attempt to free memory that has already been freed.
+  * Prevent memory leaks when requesting help.
+  * Correctly handle the order of invocation of -i/-e options.
+  * Apply a PR from h1z1 with a small correction.
+  * Fix the UTF-8 byte sequence generation from a given UCS-4 codepoint.
+  * Many small fixes.
+* Improvements:
+  * Improve the documentation.
+  * Improve compatibility with some older compilers.
+  * Added the ability to set a global inactivity timeout.
+  * Improve the reliability of the code.
+* Miscellaneous:
+  * Removed the generation of the SUSE specific specfile.
+  * Many typos have been corrected.
+  * Various code simplifications.
+
+-------------------------------------------------------------------
 Mon Jun  7 18:26:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.18:
