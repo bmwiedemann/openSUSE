@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:23:49 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.9.0
+  - Use py3 as the default runtime for tox
+  - Cap tenacity to unblock the gate
+  - Add Python3 wallaby unit tests
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Retry on redis connection errors
+  - Bump hacking and flake8 version to fix pep8 job
+
+-------------------------------------------------------------------
 Sun May  2 18:01:37 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.8.0

@@ -200,4 +200,19 @@
     <comment></comment>
     <requestid>890009</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>70a314ba5ff45c99ee17f299241b618c</srcmd5>
+    <version>2.9.0</version>
+    <time>1639267062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.0
+  - Use py3 as the default runtime for tox
+  - Cap tenacity to unblock the gate
+  - Add Python3 wallaby unit tests
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Retry on redis connection errors
+  - Bump hacking and flake8 version to fix pep8 job</comment>
+    <requestid>939549</requestid>
+  </revision>
 </revisionlist>
