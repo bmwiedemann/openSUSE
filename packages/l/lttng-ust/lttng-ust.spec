@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-ust
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover   0
-%define sover_ctl 4
+%define sover   1
+%define sover_ctl 5
 Name:           lttng-ust
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Linux Trace Toolkit Userspace Tracer library
 License:        GPL-2.0-only
@@ -30,11 +30,11 @@ Source1:        https://lttng.org/files/lttng-ust/lttng-ust-%{version}.tar.bz2.a
 Source2:        %{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libnuma-devel
-BuildRequires:  liburcu-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  pkgconfig(liburcu) >= 0.12
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %ix86 x86_64 aarch64 ppc64 ppc64le
+ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
 
 %description
 This library may be used by user space applications to generate
@@ -81,6 +81,7 @@ Group:          Development/Languages/C and C++
 Requires:       liblttng-ust%{sover} = %{version}
 Requires:       liblttng-ust-ctl%{sover_ctl} = %{version}
 Requires:       liblttng-ust-python-agent%{sover} = %{version}
+Requires:       pkgconfig(liburcu)
 # lttng-ust was last used in openSUSE Leap 42.3.
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
@@ -136,8 +137,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n liblttng-ust-python-agent%{sover} -p /sbin/ldconfig
 
 %files -n liblttng-ust%{sover}
-%license COPYING
+%license LICENSE LICENSES/
 %{_libdir}/liblttng-ust.so.%{sover}*
+%{_libdir}/liblttng-ust-common.so.%{sover}*
 %{_libdir}/liblttng-ust-cyg-profile*.so.%{sover}*
 %{_libdir}/liblttng-ust-dl.so.%{sover}*
 %{_libdir}/liblttng-ust-fd.so.%{sover}*
@@ -168,6 +170,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/lttng-ust.3%{?ext_man}
 %{_mandir}/man3/lttng-ust-cyg-profile.3%{?ext_man}
 %{_mandir}/man3/lttng-ust-dl.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_do_tracepoint.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_tracef.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_tracelog.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_tracepoint.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_tracepoint_enabled.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_vtracef.3%{?ext_man}
+%{_mandir}/man3/lttng_ust_vtracelog.3%{?ext_man}
 %{_mandir}/man3/do_tracepoint.3%{?ext_man}
 %{_mandir}/man3/tracef.3%{?ext_man}
 %{_mandir}/man3/tracelog.3%{?ext_man}
