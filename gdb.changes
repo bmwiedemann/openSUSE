@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec  6 17:19:44 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (swo#28323):
+  gdb-ada-fix-assert-in-ada_is_unconstrained_packed_array_type.patch
+
+-------------------------------------------------------------------
 Tue Nov 30 10:45:32 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (swo#27028, swo#27257):
