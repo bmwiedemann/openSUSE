@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>936504</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6fa0761c0c920eaa325bad58f4ddfbf9</srcmd5>
+    <version>6.2.2</version>
+    <time>1639266986</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable build on big endian platforms.</comment>
+    <requestid>939451</requestid>
+  </revision>
 </revisionlist>

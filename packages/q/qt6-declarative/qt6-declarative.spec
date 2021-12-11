@@ -50,8 +50,6 @@ BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
-# qtdeclarative >= 6.2 fails to build on big endian archs (QTBUG-93101)
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv} ppc64le
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %endif

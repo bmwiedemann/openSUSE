@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:54:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Reenable build on big endian platforms.
+
+-------------------------------------------------------------------
 Wed Dec  8 10:45:00 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update contraints for riscv64
