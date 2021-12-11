@@ -326,4 +326,22 @@
     <comment>switch to victoria</comment>
     <requestid>841222</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1ebf0792d7c193d35a22ecf87baa2cc1</srcmd5>
+    <version>4.5.0</version>
+    <time>1639267060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.0
+  - setup.cfg: Replace dashes with underscores
+  - Move flake8 as a pre-commit local target.
+  - Use TOX_CONSTRAINTS_FILE
+  - Document unit of measure for OS_TEST_TIMEOUT
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Dropping lower constraints testing
+  - Update master for stable/victoria
+  - Use py3 as the default runtime for tox
+  - Remove lower-constraints remnants</comment>
+    <requestid>939546</requestid>
+  </revision>
 </revisionlist>

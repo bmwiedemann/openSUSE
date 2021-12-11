@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:12:15 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.5.0
+  - setup.cfg: Replace dashes with underscores
+  - Move flake8 as a pre-commit local target.
+  - Use TOX_CONSTRAINTS_FILE
+  - Document unit of measure for OS_TEST_TIMEOUT
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Dropping lower constraints testing
+  - Update master for stable/victoria
+  - Use py3 as the default runtime for tox
+  - Remove lower-constraints remnants
+
+-------------------------------------------------------------------
 Fri Oct  9 19:05:54 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.4.1

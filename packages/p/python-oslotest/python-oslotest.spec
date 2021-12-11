@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslotest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-oslotest
-Version:        4.4.1
+Version:        4.5.0
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.4.1.tar.gz
+URL:            https://docs.openstack.org/oslotest
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.5.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector
 BuildRequires:  python3-fixtures >= 3.0.0
@@ -41,7 +41,6 @@ better support for mocking results.
 
 %package -n python3-oslotest
 Summary:        OpenStack test framework
-Group:          Development/Languages/Python
 Requires:       python3-debtcollector
 Requires:       python3-fixtures >= 3.0.0
 Requires:       python3-mock
