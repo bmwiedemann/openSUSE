@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:42:27 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Switch testing to Xena testing runtime
+  - Fix hacking min version to 3.0.1
+  - Remove all six usage
+  - Remove lower-constraints remnants
+  - Update master for stable/victoria
+  - Move flake8 as a pre-commit local target.
+  - Use py3 as the default runtime for tox
+  - Dropping lower constraints testing
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 wallaby unit tests
+  - Use TOX_CONSTRAINTS_FILE
+  - Adding pre-commit
+  - Replace concatenation with f-strings
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:50 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.0

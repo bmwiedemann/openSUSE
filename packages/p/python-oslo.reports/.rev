@@ -148,4 +148,25 @@
     <comment>switch to victoria</comment>
     <requestid>841215</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0137b28899be886a285125ce56e009fd</srcmd5>
+    <version>2.3.0</version>
+    <time>1639267056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.0
+  - Switch testing to Xena testing runtime
+  - Fix hacking min version to 3.0.1
+  - Remove all six usage
+  - Remove lower-constraints remnants
+  - Update master for stable/victoria
+  - Move flake8 as a pre-commit local target.
+  - Use py3 as the default runtime for tox
+  - Dropping lower constraints testing
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 wallaby unit tests
+  - Use TOX_CONSTRAINTS_FILE
+  - Adding pre-commit
+  - Replace concatenation with f-strings</comment>
+    <requestid>939538</requestid>
+  </revision>
 </revisionlist>
