@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.7.2
+Version:        1.7.3.1
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libX11
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libX11/
-Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM p_khmer-compose.diff fdo#48595 bnc#143348 -- required compose entries for Khmer
 Patch0:         p_khmer-compose.diff

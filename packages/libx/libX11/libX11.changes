@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:04:50 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.3.1
+  * This release of libX11 corrects a packaging problem in 1.7.3 
+    which caused the m4 files needed for autoreconf to not be 
+    included in the tarballs.
+  * As a bonus, this release also includes one tiny typo fix in the
+    XIM specs.
+
+-------------------------------------------------------------------
+Tue Dec  7 12:56:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.3
+  * This release includes a number of bug fixes and adds support for
+    the _EVDEVK keysyms added in xorgproto 2021.2.
+
+-------------------------------------------------------------------
 Mon Nov 15 14:03:27 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_no-longer-crash-in-XVisualIDFromVisual.patch
