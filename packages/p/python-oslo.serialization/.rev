@@ -255,4 +255,19 @@
     <comment></comment>
     <requestid>889997</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>85af497feac7e94a96cefb24b071306b</srcmd5>
+    <version>4.2.0</version>
+    <time>1639267057</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.2.0
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Remove lower-constraints remnants
+  - setup.cfg: Replace dashes with underscores
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 xena unit tests
+  - Drop use of deprecated collections classes</comment>
+    <requestid>939540</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:58:01 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.2.0
+  - Move flake8 as a pre-commit local target.
+  - Update master for stable/wallaby
+  - Remove lower-constraints remnants
+  - setup.cfg: Replace dashes with underscores
+  - Use TOX_CONSTRAINTS_FILE
+  - Add Python3 xena unit tests
+  - Drop use of deprecated collections classes
+
+-------------------------------------------------------------------
 Sun May  2 17:32:50 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.1.0
