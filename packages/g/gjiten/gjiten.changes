@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 11 20:14:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix broken configure-set-foreign.patch introduced on 2019-08-08.
+  (Can't have AM_INIT_AUTOMAKE twice!)
+
+-------------------------------------------------------------------
 Thu Jun 18 08:49:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer package /usr/share/application-registry: GNOME 1 is
