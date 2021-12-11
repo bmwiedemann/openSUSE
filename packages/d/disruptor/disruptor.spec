@@ -1,7 +1,7 @@
 #
 # spec file for package disruptor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           disruptor
-Version:        3.3.6
+Version:        3.4.4
 Release:        0
 Summary:        Concurrent Programming Framework
 License:        Apache-2.0
 URL:            https://lmax-exchange.github.io/disruptor/
 Source0:        https://github.com/LMAX-Exchange/disruptor/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        http://repo1.maven.org/maven2/com/lmax/%{name}/%{version}/%{name}-%{version}.pom
-# see http://www.jmock.org/threading-synchroniser.html
-Patch0:         disruptor-3.3.2-jmock.patch
-BuildRequires:  maven-local fdupes
+Source1:        https://repo1.maven.org/maven2/com/lmax/%{name}/%{version}/%{name}-%{version}.pom
+BuildRequires:  fdupes
+BuildRequires:  maven-local
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.hamcrest:hamcrest-library)
@@ -46,8 +45,6 @@ This package contains javadoc for %{name}.
 # Cleanup
 find . -name "*.class" -print -delete
 find . -name "*.jar" -type f -print -delete
-
-%patch0 -p1
 
 cp -p %{SOURCE1} pom.xml
 
@@ -76,7 +73,7 @@ cp -p %{SOURCE1} pom.xml
 
 %build
 
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8
+%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
 
 %install
 %mvn_install
