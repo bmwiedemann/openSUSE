@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Dec 11 09:05:54 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.10.0
+  - Add Python3 yoga unit tests
+  - Don't use 'requests.PreparedRequest'
+  - Update master for stable/xena
+  - Replace suds-jurko with suds-community
+
+-------------------------------------------------------------------
+Tue Oct 26 21:51:34 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.9.1
+  - Use TOX_CONSTRAINTS_FILE
+  - Use py3 as the default runtime for tox
+  - Ignore already deleted lease
+  - Remove lower-constraints remnants
+  - Update master for stable/wallaby
+  - Add serialize_object() helper function
+  - Add Python3 xena unit tests
+  - Move flake8 as a pre-commit local target.
+  - setup.cfg: Replace dashes with underscores
+
+-------------------------------------------------------------------
 Sun May  2 17:29:40 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.8.0
