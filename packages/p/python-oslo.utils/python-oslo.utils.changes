@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:03:39 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.10.0
+  - Switch to collections.abc.*
+  - Deprecate the fnmatch module.
+  - Ussuri+ is python3 only and update python to python3
+  - Remove references to 'sys.version_info'
+  - Dropping lower constraints testing
+  - QemuImgInfo: Skip deprecation warning when output is not passed
+  - Deprecate the human format on QemuImgInfo
+  - Add Python3 xena unit tests
+  - Move flake8 as a pre-commit local target.
+  - Drop lower-constraints
+  - Drop warnings enable filter
+  - Update master for stable/wallaby
+  - Address nits from six removal patch
+  - Modify UUID sentinel to support keystone-like UUIDs
+  - strutils: Stop masking encryption_key_id
+
+-------------------------------------------------------------------
 Sun May  2 17:33:34 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.8.0

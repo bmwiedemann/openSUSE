@@ -446,4 +446,27 @@
     <comment></comment>
     <requestid>889999</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6091df8c462a5c583bfd76b863d9e06c</srcmd5>
+    <version>4.10.0</version>
+    <time>1639267058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.10.0
+  - Switch to collections.abc.*
+  - Deprecate the fnmatch module.
+  - Ussuri+ is python3 only and update python to python3
+  - Remove references to 'sys.version_info'
+  - Dropping lower constraints testing
+  - QemuImgInfo: Skip deprecation warning when output is not passed
+  - Deprecate the human format on QemuImgInfo
+  - Add Python3 xena unit tests
+  - Move flake8 as a pre-commit local target.
+  - Drop lower-constraints
+  - Drop warnings enable filter
+  - Update master for stable/wallaby
+  - Address nits from six removal patch
+  - Modify UUID sentinel to support keystone-like UUIDs
+  - strutils: Stop masking encryption_key_id</comment>
+    <requestid>939542</requestid>
+  </revision>
 </revisionlist>
