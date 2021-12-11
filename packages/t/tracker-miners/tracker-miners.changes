@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  2 06:31:42 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Add tracker-miners-drop-syscalls-in-seccomp.patch: 
+  Revert upstream commit 595560c, 30b24e9 and 550ea1b since Leap 15.4
+  and SLE 15-SP4 do not have them (bsc#1192567).
+
+-------------------------------------------------------------------
 Tue Nov  9 08:31:20 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Drop 0001-Revert-tracker-Use-faster-query-in-tracker3-info.patch:

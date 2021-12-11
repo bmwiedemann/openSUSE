@@ -24,6 +24,9 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker-miners/3.2/%{name}-%{version}.tar.xz
+### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
+# PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
+Patch1000:      tracker-miners-drop-syscalls-in-seccomp.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
@@ -91,7 +94,12 @@ This package contains a miner to index files and applications.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+
+# SLE and Leap only patches start at 1000
+%if 0%{?sle_version}
+%patch1000 -p1
+%endif
 
 %build
 %meson \

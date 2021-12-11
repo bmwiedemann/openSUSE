@@ -1,0 +1,46 @@
+diff --git a/src/libtracker-miners-common/tracker-seccomp.c b/src/libtracker-miners-common/tracker-seccomp.c
+index 7d88395..63a6350 100644
+--- a/src/libtracker-miners-common/tracker-seccomp.c
++++ b/src/libtracker-miners-common/tracker-seccomp.c
+@@ -140,8 +140,6 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (lstat64);
+ 	ALLOW_RULE (statx);
+ 	ALLOW_RULE (access);
+-	ALLOW_RULE (faccessat);
+-	ALLOW_RULE (faccessat2);
+ 	ALLOW_RULE (getdents);
+ 	ALLOW_RULE (getdents64);
+ 	ALLOW_RULE (readlink);
+@@ -152,9 +150,7 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (umask);
+ 	/* Processes and threads */
+ 	ALLOW_RULE (clone);
+-	ALLOW_RULE (clone3);
+ 	ALLOW_RULE (futex);
+-	ALLOW_RULE (futex_time64);
+ 	ALLOW_RULE (set_robust_list);
+ 	ALLOW_RULE (rt_sigaction);
+ 	ALLOW_RULE (rt_sigprocmask);
+@@ -163,14 +159,12 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (sched_setattr);
+ 	ALLOW_RULE (nanosleep);
+ 	ALLOW_RULE (clock_nanosleep);
+-	ALLOW_RULE (clock_nanosleep_time64);
+ 	ALLOW_RULE (waitid);
+ 	ALLOW_RULE (waitpid);
+ 	ALLOW_RULE (wait4);
+ 	/* Main loops */
+ 	ALLOW_RULE (poll);
+ 	ALLOW_RULE (ppoll);
+-	ALLOW_RULE (ppoll_time64);
+ 	ALLOW_RULE (fcntl);
+ 	ALLOW_RULE (fcntl64);
+ 	ALLOW_RULE (eventfd);
+@@ -185,7 +179,6 @@ tracker_seccomp_init (void)
+ 	ALLOW_RULE (prctl);
+ 	ALLOW_RULE (getrandom);
+ 	ALLOW_RULE (clock_gettime);
+-	ALLOW_RULE (clock_gettime64);
+ 	ALLOW_RULE (clock_getres);
+ 	ALLOW_RULE (gettimeofday);
+ 	/* Descriptors */
