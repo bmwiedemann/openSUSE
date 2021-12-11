@@ -18,21 +18,19 @@
 
 
 Name:           yelp-xsl
-Version:        41.0
+Version:        41.1
 Release:        0
 Summary:        XSL stylesheets for the yelp help browser
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
 Source0:        https://download.gnome.org/sources/yelp-xsl/41/%{name}-%{version}.tar.xz
+Source99:       yelp-xsl-rpmlintrc
 
 BuildRequires:  itstool >= 1.2.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
-# The lang subpackage is obsoleted now that translationed are
-# merged inline in xml file, since 3.1.1.
-Obsoletes:      %{name}-lang < %{version}
 BuildArch:      noarch
 
 %description
@@ -52,9 +50,6 @@ This package contains XSL stylesheets that are used by the yelp help browser.
 %license COPYING
 %doc AUTHORS
 %{_datadir}/yelp-xsl/
-# This needs to be observed. As long as it does not Require: anything
-# we can probably leave it here without splitting a dummy -devel
-# package for it.
 %{_datadir}/pkgconfig/yelp-xsl.pc
 
 %changelog
