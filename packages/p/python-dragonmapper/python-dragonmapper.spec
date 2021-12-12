@@ -1,7 +1,7 @@
 #
 # spec file for package python-dragonmapper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,12 +22,12 @@ Version:        0.2.6
 Release:        0
 License:        MIT
 Summary:        Identification and conversion functions for Chinese text processing
-Url:            https://github.com/tsroten/dragonmapper
+URL:            https://github.com/tsroten/dragonmapper
 Group:          Development/Languages/Python
 Source:         https://github.com/tsroten/dragonmapper/archive/v%{version}.tar.gz#/dragonmapper-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module hanzidentifier >= 1.0.2}
 BuildRequires:  %{python_module zhon >= 1.1.3}
