@@ -1,0 +1,2 @@
+addFilter("pem-certificate .*test/fake_CAs/.*.pem")
+addFilter("pem-certificate .*doc/core/examples/.*.pem")

@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modname Twisted
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Twisted
 Version:        21.7.0
@@ -25,9 +24,9 @@ Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
 URL:            https://twistedmatrix.com/
-Source:         https://files.pythonhosted.org/packages/source/T/Twisted/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/T/Twisted/Twisted-%{version}.tar.gz
+Source99:       python-Twisted-rpmlintrc
 Patch0:         skip_MultiCast.patch
-Patch1:         true-binary.patch
 # PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
 # skip over the test test_successResultOfWithFailureHasTraceback
 Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
@@ -101,7 +100,8 @@ on event-based network programming and multiprotocol integration.
 This package contains the documentation for python-Twisted
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n Twisted-%{version}
+sed -i '1{/env python/d}' src/twisted/mail/test/pop3testserver.py src/twisted/trial/test/scripttest.py
 
 %build
 %python_build
@@ -127,10 +127,23 @@ rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
 # no manpage for twist yet:
 %python_clone -a %{buildroot}%{_bindir}/twist
 
+mkdir -p %{buildroot}%{_docdir}/%{name}-doc
+cp -r docs/* %{buildroot}%{_docdir}/%{name}-doc/
+# empty files
+rm %{buildroot}%{_docdir}/%{name}-doc/{fun/Twisted.Quotes,_static/.placeholder,_templates/.placeholder}
+%fdupes %{buildroot}%{_docdir}/%{name}-doc
+
 %check
 export LANG=en_US.UTF-8
-export PATH=%{buildroot}%{_bindir}:$PATH
 export PYTHONDONTWRITEBYTECODE=1
+
+%{python_expand # provide flavored commands for testing (=not yet available python_flavored_alternatives from gh#openSUSE/python-rpm-macros#120)
+mkdir -p build/bin/
+for f in %{buildroot}%{_bindir}/*-%{$python_bin_suffix}; do
+  ln -s $f build/bin/$(basename ${f%%%%-%{$python_bin_suffix}})
+done
+}
+export PATH=$PWD/build/bin/:$PATH
 
 # Relax the crypto policies for the test-suite
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
@@ -141,7 +154,7 @@ export OPENSSL_CONF=''
 %post
 # these were master alternatives until Dec 2020. Remove before the install as slave links
 for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
-  (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --remove-all $f
+  (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --quiet --remove-all $f
 done
 %{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist
                              twistd.1 cftp.1 ckeygen.1 conch.1 pyhtmlizer.1 tkconch.1 trial.1}
@@ -150,7 +163,7 @@ done
 %python_uninstall_alternative twistd
 
 %files -n %{name}-doc
-%doc docs/*
+%doc %{_docdir}/%{name}-doc
 
 %files %{python_files}
 %license LICENSE

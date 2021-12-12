@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Dec 10 17:04:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix Source tags
+
+-------------------------------------------------------------------
+Thu Dec  9 20:08:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Drop true-binary.patch which is not compatible with python310
+- Some rpmlint cleanup:
+  * Deduplicate docs
+  * Remove she-bangs in test files
+  * Remove empty doc files
+  * Filter test certificate warning
+
+-------------------------------------------------------------------
 Wed Sep  1 05:35:01 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Remove h2 < 4.0 and priority < 2.0 version restriction. (boo#1190036)
