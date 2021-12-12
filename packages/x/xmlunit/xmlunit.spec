@@ -1,7 +1,7 @@
 #
 # spec file for package xmlunit
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,14 @@
 
 
 Name:           xmlunit
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Provides classes to do asserts on XML
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            http://xmlunit.sourceforge.net/
-Source0:        http://download.sourceforge.net/%{name}/%{name}-%{version}-src.zip
-Source1:        http://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
+Source0:        https://download.sourceforge.net/%{name}/%{name}-%{version}-src.zip
+Source1:        https://repo1.maven.org/maven2/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
