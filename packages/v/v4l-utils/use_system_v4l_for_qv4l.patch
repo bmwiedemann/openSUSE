@@ -1,8 +1,8 @@
-diff --git a/utils/qv4l2/Makefile.am b/utils/qv4l2/Makefile.am
-index ccd1a2a..6978cf3 100644
---- a/utils/qv4l2/Makefile.am
-+++ b/utils/qv4l2/Makefile.am
-@@ -6,8 +6,8 @@ qv4l2_SOURCES = qv4l2.cpp general-tab.cpp ctrl-tab.cpp vbi-tab.cpp capture-win.c
+Index: v4l-utils-1.22.1/utils/qv4l2/Makefile.am
+===================================================================
+--- v4l-utils-1.22.1.orig/utils/qv4l2/Makefile.am
++++ v4l-utils-1.22.1/utils/qv4l2/Makefile.am
+@@ -6,8 +6,8 @@ qv4l2_SOURCES = qv4l2.cpp general-tab.cp
    raw2sliced.cpp qv4l2.h capture-win.h general-tab.h vbi-tab.h raw2sliced.h \
    v4l2-tpg-core.c v4l2-tpg-colors.c
  nodist_qv4l2_SOURCES = moc_qv4l2.cpp moc_general-tab.cpp moc_capture-win.cpp moc_vbi-tab.cpp qrc_qv4l2.cpp
@@ -13,8 +13,8 @@ index ccd1a2a..6978cf3 100644
  qv4l2_CPPFLAGS = -I$(top_srcdir)/utils/common
  
  if WITH_QTGL
-@@ -21,6 +20,8 @@ endif
- qv4l2_CPPFLAGS += $(ALSA_CFLAGS)
+@@ -21,6 +21,8 @@ endif
+ qv4l2_CPPFLAGS += $(ALSA_CFLAGS) -Wno-psabi
  qv4l2_LDFLAGS += $(ALSA_LIBS) -pthread
  
 +qv4l2_LDFLAGS += -lv4l2 -lv4lconvert

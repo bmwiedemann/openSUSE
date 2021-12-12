@@ -1,8 +1,8 @@
-Index: b/lib/libdvbv5/dvb-file.c
+Index: v4l-utils-1.22.1/lib/libdvbv5/dvb-file.c
 ===================================================================
---- a/lib/libdvbv5/dvb-file.c
-+++ b/lib/libdvbv5/dvb-file.c
-@@ -589,7 +589,8 @@ static int fill_entry(struct dvb_entry *
+--- v4l-utils-1.22.1.orig/lib/libdvbv5/dvb-file.c
++++ v4l-utils-1.22.1/lib/libdvbv5/dvb-file.c
+@@ -594,7 +594,8 @@ static int fill_entry(struct dvb_entry *
  		n_prop = entry->n_props;
  		entry->props[n_prop].cmd = i;
  		if (!attr_name || !*attr_name)
@@ -12,7 +12,7 @@ Index: b/lib/libdvbv5/dvb-file.c
  		else {
  			for (j = 0; attr_name[j]; j++)
  				if (!strcasecmp(value, attr_name[j]))
-@@ -708,7 +709,8 @@ static int fill_entry(struct dvb_entry *
+@@ -713,7 +714,8 @@ static int fill_entry(struct dvb_entry *
  		/* FIXME: this works only for integer values */
  		n_prop = entry->n_props;
  		entry->props[n_prop].cmd = cmd;

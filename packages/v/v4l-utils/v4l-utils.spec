@@ -1,5 +1,5 @@
 #
-# spec file for package v4l
+# spec file for package v4l-utils
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,18 +24,17 @@
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.20.0
+Version:        1.22.1
 Release:        0
 Summary:        Utilities for video4linux
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://linuxtv.org/downloads/v4l-utils/
 Source0:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2
 Source1:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2.asc
 Source2:        %{sname}.keyring
 Source100:      baselibs.conf
-Patch0:         sysmacros.patch
-Patch1:         use_system_v4l_for_qv4l.patch
-Patch2:         v4l-utils-32bitfix.patch
+Patch0:         use_system_v4l_for_qv4l.patch
+Patch1:         v4l-utils-32bitfix.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -68,7 +67,7 @@ v4l-utils is a collection of various video4linux (V4L) utilities.
 
 %package devel-tools
 Summary:        Utilities for v4l2 / DVB driver development and debugging
-License:        GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND GPL-2.0-or-later
 Requires:       libv4l = %{version}
 
 %description devel-tools
@@ -103,7 +102,7 @@ developing applications that use libdvbv5.
 
 %package -n libv4l
 Summary:        Collection of video4linux support libraries
-License:        LGPL-2.1-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-or-later
 
 %description -n libv4l
 libv4l is a collection of libraries which adds a thin abstraction layer on
@@ -181,19 +180,15 @@ Requires(postun): update-desktop-files
 qv4l2 is a test control and streaming test application for video4linux.
 
 %prep
-%setup -q -n %{sname}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n %{sname}-%{version}
 
 %build
-export CXXFLAGS="-std=c++14 %{optflags}"
 autoreconf -vfi
 %configure \
   --disable-static \
   --disable-silent-rules \
 %if "%{flavor}" == "qv4l2"
-  --disable-libdvb5 \
+  --disable-libdvbv5 \
 %else
   --disable-qv4l2 \
 %endif
@@ -216,6 +211,7 @@ export CXXFLAGS="-std=c++14 %{optflags}"
 %else
 %make_install
 %find_lang "%{name}"
+%find_lang libdvbv5
 
 # Not needed (links to plugins in libv4l subdir)
 rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
@@ -243,10 +239,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_sysconfdir}/rc_keymaps/
 %config(noreplace) %{_sysconfdir}/rc_maps.cfg
 %{_udevdir}/rc_keymaps
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200 && 0%{?is_opensuse}
-%dir %{_unitdir}/systemd-udevd.service.d
-%{_unitdir}/systemd-udevd.service.d/50-rc_keymap.conf
-%endif
 %{_udevrulesdir}/70-infrared.rules
 %{_bindir}/cx18-ctl
 %{_bindir}/cec-compliance
@@ -285,7 +277,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/dvb-*1%{?ext_man}
 %{_mandir}/man1/dvbv5-*1%{?ext_man}
 
-%files -n libdvbv5-%{so_ver}
+%files -n libdvbv5-%{so_ver} -f libdvbv5.lang
 %{_libdir}/libdvbv5.so.%{so_ver}*
 
 %files -n libdvbv5-devel
