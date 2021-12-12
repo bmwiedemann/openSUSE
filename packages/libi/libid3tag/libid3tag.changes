@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Dec  9 19:22:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.16.1 from maintained fork by the Tenacity Audio Editor
+  * Merge various outstanding patches
+  * Upstream pkg-config file
+  * Use cmake for build and install cmake files
+- Drop merged fixes
+  * fix-build-with-gperf-3.1.diff
+  * libid3tag-0.15.1b-mb.diff
+  * libid3tag-automake-fix.dif
+  * libid3tag-gperf.dif
+  * libid3tag-noweak.dif
+  * libid3tag-optflags.patch
+  * libid3tag-unknown-encoding.patch
+  * libid3tag-utf16.patch
+  * libid3tag-visibility.patch
+
+-------------------------------------------------------------------
 Wed Feb 21 10:59:28 UTC 2018 - kbabioch@suse.com
 
 - Added libid3tag-utf16.patch: Fixed id3_utf16_deserialize() in utf16.c,
