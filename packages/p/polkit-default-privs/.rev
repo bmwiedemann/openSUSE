@@ -1917,4 +1917,13 @@ for 12.3</comment>
 - remove traces of old polkit-whitelisting sub-package</comment>
     <requestid>932545</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>746e65a7bf7f957ec96d534875db0fa2</srcmd5>
+    <version>1550+20211209.8ce206c</version>
+    <time>1639340849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20211209.8ce206c:
+  * fwupd: whitelist new, more granular permissions (bsc#1193310)</comment>
+    <requestid>938268</requestid>
+  </revision>
 </revisionlist>
