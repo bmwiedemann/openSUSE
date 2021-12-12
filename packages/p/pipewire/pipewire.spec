@@ -35,7 +35,6 @@
 %define with_ldacBT 0
 %endif
 
-%bcond_with aac
 %bcond_with aptx
 %if 0%{?suse_version} >= 1550
 %bcond_without libcamera
@@ -43,8 +42,18 @@
 %bcond_with libcamera
 %endif
 
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
+%bcond_with aac
+%else
+%bcond_without aac
+%endif
+
+%if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
+%bcond_without pipewire_jack_devel
+%endif
+
 Name:           pipewire
-Version:        0.3.39
+Version:        0.3.40
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,9 +62,7 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-Patch0:         0001-cpu-fix-compilation-on-some-architectures.patch
-Patch1:         0001-map-make-_insert_at-fail-on-a-removed-item.patch
-Patch2:         0002-map-use-uintptr_t-for-the-next-pointer.patch
+
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -120,6 +127,9 @@ Requires:       %{name}-session-manager
 Requires:       %{name}-spa-plugins-%{spa_ver_str} = %{version}
 Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
+Suggests:       wireplumber
+# This tries to ensure the user either uses pulseaudio or wireplumber enables the audio in pipewire
+Requires:       ((wireplumber-audio or pulseaudio) if wireplumber)
 %{?systemd_ordering}
 
 %description
@@ -291,6 +301,10 @@ Group:          Development/Libraries/C and C++
 Recommends:     %{name} >= %{version}-%{release}
 Requires:       %{libpipewire} >= %{version}-%{release}
 Conflicts:      pulseaudio
+%if 0%{suse_version} >= 1550
+Requires(post): pulseaudio-setup
+%endif
+Recommends:     alsa-plugins-pulse
 
 # Virtual Provides to support swapping between PipeWire-PA and PA
 Provides:       pulseaudio-daemon
@@ -347,7 +361,7 @@ export CC=gcc-9
 %endif
     -Dpipewire-jack=enabled \
     -Djack=enabled \
-%if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
+%if %{with pipewire_jack_devel}
     -Djack-devel=true \
 %else
     -Djack-devel=false \
@@ -452,6 +466,10 @@ if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
 EOF
 fi
+%if 0%{suse_version} >= 1550
+# Update the /etc/profile.d/pulseaudio.* files
+setup-pulseaudio --auto > /dev/null
+%endif
 
 %preun pulseaudio
 %systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
@@ -477,12 +495,12 @@ fi
 %{_userunitdir}/pipewire.socket
 %{_mandir}/man1/pipewire.1%{ext_man}
 %{_mandir}/man5/pipewire.conf.5%{ext_man}
-%dir %{_datadir}/pipewire
+%dir %{_datadir}/pipewire/
 %{_datadir}/pipewire/pipewire.conf
 %{_datadir}/pipewire/client.conf
 %{_datadir}/pipewire/client-rt.conf
 %{_datadir}/pipewire/pipewire-pulse.conf
-%ghost %dir %{_localstatedir}/lib/pipewire
+%ghost %dir %{_localstatedir}/lib/pipewire/
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
 %files -n %{libpipewire}
@@ -509,8 +527,8 @@ fi
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so
 %{_libdir}/pipewire-%{apiver}/jack/libjacknet.so
 %{_libdir}/pipewire-%{apiver}/jack/libjackserver.so
-%if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
-%{_includedir}/jack
+%if %{with pipewire_jack_devel}
+%{_includedir}/jack/
 %{_libdir}/pkgconfig/jack.pc
 %endif
 
@@ -576,12 +594,12 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-pulse-tunnel.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-zeroconf-discover.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-rt.so
-%dir %{_libdir}/pipewire-%{apiver}/v4l2
+%dir %{_libdir}/pipewire-%{apiver}/v4l2/
 %{_libdir}/pipewire-%{apiver}/v4l2/libpw-v4l2.so
-%dir %{_datadir}/alsa-card-profile
-%dir %{_datadir}/alsa-card-profile/mixer
+%dir %{_datadir}/alsa-card-profile/
+%dir %{_datadir}/alsa-card-profile/mixer/
 %{_datadir}/alsa-card-profile/mixer/*
-%dir %{_datadir}/pipewire/filter-chain
+%dir %{_datadir}/pipewire/filter-chain/
 %{_datadir}/pipewire/filter-chain/demonic.conf
 %{_datadir}/pipewire/filter-chain/sink-dolby-surround.conf
 %{_datadir}/pipewire/filter-chain/sink-eq6.conf
@@ -625,30 +643,30 @@ fi
 %{_libdir}/spa-%{spa_ver}/videotestsrc/libspa-videotestsrc.so
 %{_libdir}/spa-%{spa_ver}/volume/libspa-volume.so
 
-%dir %{_libdir}/spa-%{spa_ver}
-%dir %{_libdir}/spa-%{spa_ver}/alsa
-%dir %{_libdir}/spa-%{spa_ver}/audioconvert
-%dir %{_libdir}/spa-%{spa_ver}/audiomixer
-%dir %{_libdir}/spa-%{spa_ver}/bluez5
-%dir %{_libdir}/spa-%{spa_ver}/control
-%dir %{_libdir}/spa-%{spa_ver}/volume
-%dir %{_libdir}/spa-%{spa_ver}/ffmpeg
-%dir %{_libdir}/spa-%{spa_ver}/jack
+%dir %{_libdir}/spa-%{spa_ver}/
+%dir %{_libdir}/spa-%{spa_ver}/alsa/
+%dir %{_libdir}/spa-%{spa_ver}/audioconvert/
+%dir %{_libdir}/spa-%{spa_ver}/audiomixer/
+%dir %{_libdir}/spa-%{spa_ver}/bluez5/
+%dir %{_libdir}/spa-%{spa_ver}/control/
+%dir %{_libdir}/spa-%{spa_ver}/volume/
+%dir %{_libdir}/spa-%{spa_ver}/ffmpeg/
+%dir %{_libdir}/spa-%{spa_ver}/jack/
 %if %{with libcamera}
-%dir %{_libdir}/spa-%{spa_ver}/libcamera
+%dir %{_libdir}/spa-%{spa_ver}/libcamera/
 %endif
-%dir %{_libdir}/spa-%{spa_ver}/support
-%dir %{_libdir}/spa-%{spa_ver}/v4l2
-%dir %{_libdir}/spa-%{spa_ver}/videoconvert
+%dir %{_libdir}/spa-%{spa_ver}/support/
+%dir %{_libdir}/spa-%{spa_ver}/v4l2/
+%dir %{_libdir}/spa-%{spa_ver}/videoconvert/
 %if %{with_vulkan}
-%dir %{_libdir}/spa-%{spa_ver}/vulkan
+%dir %{_libdir}/spa-%{spa_ver}/vulkan/
 %endif
-%dir %{_libdir}/spa-%{spa_ver}/audiotestsrc
-%dir %{_libdir}/spa-%{spa_ver}/videotestsrc
-%dir %{_libdir}/spa-%{spa_ver}/test
+%dir %{_libdir}/spa-%{spa_ver}/audiotestsrc/
+%dir %{_libdir}/spa-%{spa_ver}/videotestsrc/
+%dir %{_libdir}/spa-%{spa_ver}/test/
 
-%dir %{_datadir}/spa-%{spa_ver}
-%dir %{_datadir}/spa-%{spa_ver}/bluez5
+%dir %{_datadir}/spa-%{spa_ver}/
+%dir %{_datadir}/spa-%{spa_ver}/bluez5/
 %{_datadir}/spa-%{spa_ver}/bluez5/bluez-hardware.conf
 
 %files devel
@@ -659,11 +677,12 @@ fi
 %{_includedir}/spa-%{spa_ver}/
 
 %files doc
-%dir %{_datadir}/doc/pipewire
-%{_datadir}/doc/pipewire/html
+%dir %{_datadir}/doc/pipewire/
+%{_datadir}/doc/pipewire/html/
 
 %files pulseaudio
 %{_bindir}/pipewire-pulse
+%{_mandir}/man1/pipewire-pulse.1%{ext_man}
 %{_userunitdir}/pipewire-pulse.*
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
@@ -674,8 +693,8 @@ fi
 %dir %{_datadir}/alsa/alsa.conf.d
 %{_datadir}/alsa/alsa.conf.d/50-pipewire.conf
 %{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf
-%dir %{_sysconfdir}/alsa
-%dir %{_sysconfdir}/alsa/conf.d
+%dir %{_sysconfdir}/alsa/
+%dir %{_sysconfdir}/alsa/conf.d/
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
 

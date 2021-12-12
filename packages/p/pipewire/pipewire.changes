@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Sat Dec 11 16:21:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop server packages from baselibs.conf. Only the client parts
+  are needed in there.
+
+-------------------------------------------------------------------
+Fri Dec 10 09:31:47 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Minor aesthetic changes in the spec file 
+
+-------------------------------------------------------------------
+Thu Dec  9 12:14:23 UTC 2021 - Neal Gompa <ngompa@opensuse.org>
+
+- Enable AAC support for Leap 15.4+
+
+-------------------------------------------------------------------
+Thu Dec  9 11:33:29 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace the Recommends wireplumber to a Suggests since there's
+  already a Require dependency on a pipewire-session-manager and
+  when in doubt the Suggested package is selected.
+
+-------------------------------------------------------------------
+Thu Dec  9 10:34:27 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Unconditionally enable AAC support now that fdk-aac-free is in
+  Factory (adapted from SR 936225 by Neal Gompa
+  <ngompa@opensuse.org>)
+
+-------------------------------------------------------------------
+Fri Dec  3 09:06:42 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Makes sure if we're using wireplumber and pulseaudio that
+  we don't enable the audio devices in pipewire by requiring
+  wireplumber-audio or pulseaudio if wireplumber is installed
+
+- Better integration with PulseAudio (bsc#1188516) made by tiwai:
+  * Add Requires pulseaudio-setup package for the extra setups
+    in the %post section
+  * Add the missing Recommends alsa-plugins-pulse to
+    pipewire-pulseaudio package
+
+-------------------------------------------------------------------
+Fri Nov 12 12:47:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.40:
+  * Highlights:
+    - Producers and consumers can now incrementally negotiate a
+      format by narrowing down the options. This can be used to
+      select an optimal combination of format and modifiers.
+    - Driver nodes such as the consumer of a headless compositor
+      can now throttle the speed based on a new trigger_done event.
+    - Headless compositors can now signal a damage event to
+      consumers to start the processing of the graph.
+    - Compatibility improvements in JACK.
+    - Draining and resuming is now working correctly in pulse and
+      alsa.
+    - Many bugfixes and improvements.
+  * PipeWire:
+    - Many BSD fixes.
+    - clang compilation fixes.
+    - Fix map implementation on big-endian machines.
+    - Improve tracking of param changes in pw-stream.
+    - Add support for renegotiation. With this change, producer and
+      consumer can incrementally renegotiate a format until it is
+      fixed. This will be used to do complex negotiation of DRM
+      modifiers.
+    - Add a trigger-done event in the stream. This can be used to
+      know when processing of the complete graph has finished after
+      issuing a trigger_process() and it can be used to throttle
+      processing.
+    - Add a RequestProcess node event and command. This can be used
+      by non-driver nodes to suggest to a driver to start
+      processing. One case is where a compositor can emit this
+      event as a result of a screen update to let the headless
+      compositor start an update.
+    - Fix zeroconf sample format.
+    - pw-mon outputs to stderr now and has colors.
+  * SPA:
+    - Fix compilation on ppc and armv7.
+    - Fix port type check for ALSA seq midi ports so that they are
+      not falsely listed as hardware.
+    - Fix crash when running SSE code on unsupported HW.
+    - The libcamera plugin was rewritten. It now supports hotplug,
+      format enumeration and an easier to read codebase.
+    - Fix compatibility some more for cards with 64 channels.
+  * pulse-server:
+    - Flush data in pause in combine-sink to avoid stray audio
+      fragments.
+    - Fix a race where not all objects were removed correctly.
+    - The latency calculations and setup was improved to more
+      closely match pulseaudio behaviour. PULSE_LATENCY_MSEC should
+      now resemble pulseaudio more closely.
+    - The drained reply is now sent only once and new data will be
+      accepted once the drain completes.
+    - Fix a potential crasher bug where the stream started
+      processing before the setup was completed.
+    - The server will now drop the client connections when the
+      pipewire connection is lost.
+  * JACK:
+    - Rework the jack_port_get_buffer() method to return the same
+      memory when called multiple times during the process()
+      callback. This makes things work on a new Hydrogen.
+    - Add an option to disable showing the monitor ports.
+    - JACK ports are now sorted per node/client and port_id. This
+      should more closely match JACK behaviour and avoid random
+      port order.
+  * v4l2:
+    - Fix v4l2 LD_PRELOAD script.
+    - Make sure we destroy the proxy when the global is destroyed.
+  * ALSA:
+    - _prepare should exit the draining state.
+    - Fix the precision of the _delay function by taking into
+      account the amount of queued samples are the correct
+      samplerate.
+- Drop patches fixed upstream:
+  * 0001-cpu-fix-compilation-on-some-architectures.patch
+  * 0001-map-make-_insert_at-fail-on-a-removed-item.patch
+  * 0002-map-use-uintptr_t-for-the-next-pointer.patch
+
+-------------------------------------------------------------------
+Wed Nov  3 08:47:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Recommend wireplumber so it's preferred to pipewire-media-session
+
+-------------------------------------------------------------------
 Fri Oct 29 15:17:51 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from upstream to fix build in s390x:
