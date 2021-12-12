@@ -1,0 +1,29 @@
+From f1fa8afa25c99a550b3d80c516b7cfa3ac725de5 Mon Sep 17 00:00:00 2001
+From: Marius Hillenbrand <mhillen@linux.ibm.com>
+Date: Wed, 10 Nov 2021 18:10:58 +0100
+Subject: [PATCH] TIntermediate::promoteConstantUnion(): fix conversion to int8
+
+The signedness of type char is implementation-defined in C++. The
+conversion to (signed) int8 currently uses a cast to char, which is
+undefined for negative values when the type char is implemented as
+unsigned. Thus, fix to cast to "signed char", which has the intended
+semantic on all implementations.
+
+Fixes #2807
+---
+ glslang/MachineIndependent/Intermediate.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glslang/MachineIndependent/Intermediate.cpp b/glslang/MachineIndependent/Intermediate.cpp
+index 1283f4493..6aea5b3d7 100644
+--- a/glslang/MachineIndependent/Intermediate.cpp
++++ b/glslang/MachineIndependent/Intermediate.cpp
+@@ -3902,7 +3902,7 @@ TIntermTyped* TIntermediate::promoteConstantUnion(TBasicType promoteTo, TIntermC
+         case EbtFloat16: PROMOTE(setDConst, double, Get); break; \
+         case EbtFloat: PROMOTE(setDConst, double, Get); break; \
+         case EbtDouble: PROMOTE(setDConst, double, Get); break; \
+-        case EbtInt8: PROMOTE(setI8Const, char, Get); break; \
++        case EbtInt8: PROMOTE(setI8Const, signed char, Get); break; \
+         case EbtInt16: PROMOTE(setI16Const, short, Get); break; \
+         case EbtInt: PROMOTE(setIConst, int, Get); break; \
+         case EbtInt64: PROMOTE(setI64Const, long long, Get); break; \

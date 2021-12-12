@@ -28,7 +28,10 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
-Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
+Patch0:         0001-build-set-SOVERSION-on-all-libraries.patch
+Patch1:         glslang-big-endian_1.patch
+Patch2:         glslang-big-endian_2.patch
+Patch3:         glslang-big-endian_3.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes

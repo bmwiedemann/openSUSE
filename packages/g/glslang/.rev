@@ -242,4 +242,16 @@
     <comment>- Update to release 11.7.1</comment>
     <requestid>934255</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>5dfa457f1d764710d0d4a7b0d8b56d9b</srcmd5>
+    <version>11.7.1</version>
+    <time>1639340836</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix issues on big endian platforms
+  (Needed to fix https://bugreports.qt.io/browse/QTBUG-93101)
+  * glslang-big-endian_1.patch
+  * glslang-big-endian_2.patch
+  * glslang-big-endian_3.patch</comment>
+    <requestid>939075</requestid>
+  </revision>
 </revisionlist>

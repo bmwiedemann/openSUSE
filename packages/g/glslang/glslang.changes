@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  9 19:18:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to fix issues on big endian platforms
+  (Needed to fix https://bugreports.qt.io/browse/QTBUG-93101)
+  * glslang-big-endian_1.patch
+  * glslang-big-endian_2.patch
+  * glslang-big-endian_3.patch
+
+-------------------------------------------------------------------
 Sat Nov 27 14:11:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.7.1
