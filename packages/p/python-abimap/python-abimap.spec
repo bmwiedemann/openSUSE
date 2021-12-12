@@ -1,7 +1,7 @@
 #
 # spec file for package python-abimap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ansasaki/abimap
 Source:         https://files.pythonhosted.org/packages/source/a/abimap/abimap-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -57,6 +56,8 @@ Documentation for the symbol versioning helper %{name}
 
 %prep
 %setup -q -n abimap-%{version}
+# https://github.com/ansasaki/abimap/issues/87
+sed -i 's:pytest-runner::' setup.py
 
 %build
 %python_build
