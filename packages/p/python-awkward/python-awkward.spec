@@ -21,7 +21,7 @@
 %global skip_python2 1
 %global skip_python36 1
 Name:           python-awkward
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause

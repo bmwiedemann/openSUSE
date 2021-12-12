@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Dec  8 22:58:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.0:
+  * Fixed a division-by-zero bug: [gh#scikit-hep/awkward-1.0#1168,
+    gh#scikit-hep/awkward-1.0#1169].
+  * Applied the 1.7.0 deprecation (see Roadmap):
+    [gh#scikit-hep/awkward-1.0#1118].
+  * Enabled codecov: [gh#scikit-hep/awkward-1.0#1120].
+  * Updated Azure's Windows VM: [gh#scikit-hep/awkward-1.0#1129].
+  * Fixed order in RecordForm.contents property:
+    [gh#scikit-hep/awkward-1.0#1166].
+  * Fixed Parquet reading for files with zero RecordBatches:
+    [gh#scikit-hep/awkward-1.0#1170].
+
+-------------------------------------------------------------------
 Sat Sep 18 20:15:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.5.0:
