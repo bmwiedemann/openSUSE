@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 11 11:16:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * Add support for -o pasv_addr=ADDR command line argument to
+    override
+  * Add support for -p PIDFILE command line argument
+  * the address passed to the client in passive mode, useful for
+    some types of NAT setup
+
+-------------------------------------------------------------------
 Mon Oct  4 14:25:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Run testsuite only on x86_64
