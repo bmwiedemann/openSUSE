@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Dec  1 21:17:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - Help the user to spot issues (#166)
+   * Help to detect `register()` misusage.
+   * Bump version.
+   * Improve DeepSource scans.
+ - Newer `pipenv` and GIT hooks (#165)
+   * Newer GIT hooks.
+ - Remove implicit `object` from the base class (#164)
+   Co-authored-by: deepsource-autofix[bot] <62050782+deepsource-autofix[bot]@users.noreply.github.com>
+ - Change methods not using its bound instance to staticmethods (#163)
+   Co-authored-by: deepsource-autofix[bot] <62050782+deepsource-autofix[bot]@users.noreply.github.com>
+ - Add .deepsource.toml
+ - Replace `dict` call with comprehension (#162)
+   Co-authored-by: deepsource-autofix[bot] <62050782+deepsource-autofix[bot]@users.noreply.github.com>
+ - Refactor unnecessary `else` / `elif` when `if` block has a `return` statement (#161)
+   Co-authored-by: deepsource-autofix[bot] <62050782+deepsource-autofix[bot]@users.noreply.github.com>
+ - Remove unnecessary generator (#160)
+   Co-authored-by: deepsource-autofix[bot] <62050782+deepsource-autofix[bot]@users.noreply.github.com>
+ - Multi `register()` (#159)
+   * Add failing test.
+   * `Entry.collect` let us know if the response should be consumed or not.
+   * Bump version.
+ - Update README.rst
+ - Update main.yml
+ - In PYPI the package is old and broken
+
+-------------------------------------------------------------------
+Sat Nov 27 10:12:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - Multi `register()` (#159)
+   * Add failing test.
+   * `Entry.collect` let us know if the response should be consumed or not.
+   * Bump version.
+ - Update README.rst
+ - Update main.yml
+ - In PYPI the package is old and broken
+
+-------------------------------------------------------------------
 Fri Sep 24 19:50:05 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.10.0:
