@@ -1,5 +1,5 @@
 #
-# spec file for package python-pyOpenSSL
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-Name:           python-pyOpenSSL
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           python-pyOpenSSL%{psuffix}
 Version:        21.0.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
@@ -32,16 +40,19 @@ Patch0:         skip-networked-test.patch
 #  Check for invalid ALPN lists before calling OpenSSL
 Patch1:         check_inv_ALPN_lists.patch
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module cryptography >= 3.3}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pretend}
-BuildRequires:  %{python_module pytest >= 3.0.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
+%if %{with test}
+BuildRequires:  %{python_module cryptography >= 3.3}
+BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pytest >= 3.0.1}
+BuildRequires:  %{python_module six}
+BuildRequires:  ca-certificates-mozilla
+%endif
 Requires:       python-cffi
 Requires:       python-cryptography >= 3.3
 Requires:       python-six >= 1.5.2
@@ -70,21 +81,27 @@ other things) a cffi-based interface to OpenSSL.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 SKIPPED_TESTS="network"
 %if %{__isa_bits} == 32
 SKIPPED_TESTS="(network or test_verify_with_time)"
 %endif
 export LC_ALL=en_US.UTF-8
 %pytest -k "not $SKIPPED_TESTS"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc *.rst
 %{python_sitelib}/OpenSSL/
 %{python_sitelib}/pyOpenSSL-%{version}-py*.egg-info
+%endif
 
 %changelog

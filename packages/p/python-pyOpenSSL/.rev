@@ -416,4 +416,12 @@
 </comment>
     <requestid>928309</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>8ae336a35fb174ac7b7151196d062bd5</srcmd5>
+    <version>21.0.0</version>
+    <time>1639340853</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to avoid a build loop.</comment>
+    <requestid>937395</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 05:55:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to avoid a build loop. 
+
+-------------------------------------------------------------------
 Sat Oct 30 19:08:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add check_inv_ALPN_lists.patch checks for invalid ALPN lists
