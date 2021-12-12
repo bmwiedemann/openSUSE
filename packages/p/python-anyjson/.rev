@@ -150,4 +150,12 @@
     <comment>- Format with spec-cleaner</comment>
     <requestid>745408</requestid>
   </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>1541bbedb6a47137f056b4be6e8cd824</srcmd5>
+    <version>0.3.3</version>
+    <time>1639340829</time>
+    <user>dimstar_suse</user>
+    <comment>- Shorten the Summary to silence rpmlint.</comment>
+    <requestid>938984</requestid>
+  </revision>
 </revisionlist>
