@@ -9,7 +9,7 @@
   boo#1177461: '20210626'
   boo#1180358: '20210829'
   boo#1183082: '20210826'
-  boo#1183454: '20211210'
+  boo#1183454: '20211211'
   boo#1183786: '20210607'
   boo#1185143: '20210605'
   boo#1186083: '20210713'
@@ -65,7 +65,7 @@
   boo#1192420: '20211106'
   boo#1192667: '20211128'
   boo#1192701: '20211123'
-  boo#1192812: '20211210'
+  boo#1192812: '20211211'
   boo#1192921: '20211122'
   boo#1192940: '20211121'
   boo#1192959: '20211121'
@@ -74,10 +74,10 @@
   boo#1193133: '20211210'
   boo#1193134: '20211126'
   boo#1193344: '20211202'
-  boo#1193345: '20211210'
+  boo#1193345: '20211211'
   boo#1193502: '20211207'
   boo#1193547: '20211208'
-  bsc#1161276: '20211210'
+  bsc#1161276: '20211211'
   gh#OSInside/kiwi#1867: '20210716'
   gh#containers/podman#10685: '20210628'
   gh#os-autoinst/os-autoinst-distri-opensuse#12831: '20210710'
@@ -530,10 +530,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20211211'
 published: '20211210'
 publishing: '20211210'
-testing: '20211210'
+testing: '20211211'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
