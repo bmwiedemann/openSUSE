@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 11 22:17:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * recognize the ~ tilde character as home directory alias
+  * issues: add missing test resource files to PyPI package
+  * require PyOpenSSL >= v19.0.0 to avoid old OS packages
+  * split MANIFEST.in in several lines to properly include
+    in Python package all necessary resource files
+
+-------------------------------------------------------------------
 Fri Feb 21 13:42:43 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
 
 - Initial packaging (version 1.1.1)

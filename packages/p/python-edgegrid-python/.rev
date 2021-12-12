@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>777989</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49be3eaa8a955721a3380411e2b33d3f</srcmd5>
+    <version>1.2.1</version>
+    <time>1639340859</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * recognize the ~ tilde character as home directory alias
+  * issues: add missing test resource files to PyPI package
+  * require PyOpenSSL &gt;= v19.0.0 to avoid old OS packages
+  * split MANIFEST.in in several lines to properly include
+    in Python package all necessary resource files</comment>
+    <requestid>939989</requestid>
+  </revision>
 </revisionlist>
