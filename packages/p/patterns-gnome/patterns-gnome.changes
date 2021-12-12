@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Dec 11 12:04:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer suggest brasero: the suggests is mainly used to add
+  something onto the DVD (not installed by default). With Cd/DVD
+  burning declining, less users need this and it remains available
+  in the repositories.
+- Drop giggle suggests: NOP, as that package does not exist
+  anymore.
+
+-------------------------------------------------------------------
 Wed Sep 29 17:10:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gnome-power-manager Recommends: Package is dormant upstream

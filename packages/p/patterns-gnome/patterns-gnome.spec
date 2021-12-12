@@ -214,8 +214,6 @@ Recommends:     sushi
 Recommends:     system-config-printer
 Recommends:     totem-browser-plugin
 Recommends:     tracker-miner-evolution
-# #302492
-Suggests:       brasero
 # bnc#698250
 Suggests:       gnome-color-manager
 %else
@@ -486,7 +484,6 @@ Suggests:       accerciser
 Suggests:       gedit
 Suggests:       gedit-plugins
 Suggests:       ghex
-Suggests:       giggle
 Suggests:       gnome-devel-docs
 
 %description gnome_ide
