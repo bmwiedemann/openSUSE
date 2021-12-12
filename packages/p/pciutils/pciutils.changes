@@ -76,7 +76,7 @@ Sun Sep 16 17:35:15 UTC 2018 - Avindra Goolcharan <avindra@opensuse.org>
     avoids lots of special cases and makes ABI compatibility easier.
   * On systems with OpenFirmware, report corresponding device tree
     nodes as device properties.
-  * VPD decoder knows several non-standard extensions.
+  * VPD decoder knows several non-standard extensions [bsc#1098228] (bsc#1170554, ltc#185587).
   * When PCIe link speed is less than the maximum supported by the
     device, it is explicitly marked as "downgraded".
   * Several new capabilities are not decoded yet, but at least
@@ -131,7 +131,7 @@ Mon Feb 27 12:07:44 UTC 2017 - mpluskal@suse.com
 	  it tried to construct the path explicitly, which need not
 	  work on all systems.
 	* Improved formatting of memory and I/O ranges behind a bridge.
-	* PCIe link capabilities now display GEN4 speed (16GT/s).
+	* PCIe link capabilities now display GEN4 speed (16GT/s) [bsc#1098094].
 	* PCIe device capabilities now show bits related to atomic
     operations.
 - Changes for version 3.5.2:
@@ -154,7 +154,7 @@ Fri May 20 08:11:14 UTC 2016 - mpluskal@suse.com
     Precision Time Measurement. Thanks to Keith Busch and
     Jonathan Yong.
   * Domain numbers extended to 31 bits. This will be used by the
-    Linux kernel on some machines in near future.
+    Linux kernel on some machines in near future (bsc#1006827).
   * Enhanced allocation regions are now decoded on Linux.
   * The NetBSD back-end supports PCIe extended configuration space.
   * Updated pci.ids to the current snapshot of the database.
@@ -193,7 +193,7 @@ Sun Sep  6 07:41:51 UTC 2015 - mpluskal@suse.com
     to Felix Janda.
   * Display VirtIO vendor-specific capability. Patch by Gerd
     Hoffmann.
-  * Fixed memory leak in name cache.
+  * Fixed memory leak in name cache (bnc#837347).
   * Updated pci.ids to the current snapshot of the database.
 
 
@@ -218,7 +218,7 @@ Tue Nov 18 13:22:45 UTC 2014 - tchvatal@suse.com
    * Several typos have been fixed. Also, use of questionable
      constructs in man pages has been reduced.
    * PCIe link capabilities now include the ASPMOptComp bit.
-   * The "CRS Software Visibility" bit is now decoded properly.
+   * The "CRS Software Visibility" bit is now decoded properly (bsc#1001888).
    * Updated pci.ids to the current snapshot of the database.
 - Refresh patch:
   * pciutils-endianh.patch
