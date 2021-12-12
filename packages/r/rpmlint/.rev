@@ -3445,4 +3445,20 @@ oddjob-gpupdate isn't blocked)</comment>
   * Sort input .rpm files so that the output is stable. (boo#1193189).</comment>
     <requestid>934726</requestid>
   </revision>
+  <revision rev="373" vrev="1">
+    <srcmd5>1c684965b7b436e31a1c6785fe797293</srcmd5>
+    <version>2.2.0+git20211210.51d1bd9</version>
+    <time>1639340850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tarball naming to respect release version.
+
+- Update to version 2.2+git20211210.51d1bd9:
+  * dbus-services whitelist: add connman nm compatibility interface (bsc#1192827)
+
+- Update to version 2.2+git20211208.c7ec6c4:
+  * Fix typo in comment.
+  * Release 2.2.0
+  * configs/Fedora: Sync Fedora rpmlint policies back upstream</comment>
+    <requestid>939115</requestid>
+  </revision>
 </revisionlist>

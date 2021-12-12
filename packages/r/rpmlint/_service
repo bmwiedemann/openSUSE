@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">2.1+git%cd.%h</param>
+    <param name="versionformat">2.2.0+git%cd.%h</param>
     <param name="url">https://github.com/rpm-software-management/rpmlint.git</param>
     <param name="scm">git</param>
     <param name="revision">opensuse</param>
