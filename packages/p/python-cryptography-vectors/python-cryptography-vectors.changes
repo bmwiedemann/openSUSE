@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 27 09:50:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 36.0.0
+  * Updates test vectors to match python-cryptography 36.0.0
+
+-------------------------------------------------------------------
 Mon Nov  8 19:36:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - disable python2 build as python-cryptography also has it disabled,

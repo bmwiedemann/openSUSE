@@ -93,4 +93,13 @@
   this allows a python2-specific version to be injected</comment>
     <requestid>930229</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7a93a2588c290c1c3668811921c0ec11</srcmd5>
+    <version>36.0.0</version>
+    <time>1639340852</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 36.0.0
+  * Updates test vectors to match python-cryptography 36.0.0</comment>
+    <requestid>934528</requestid>
+  </revision>
 </revisionlist>

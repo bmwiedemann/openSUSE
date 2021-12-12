@@ -21,7 +21,7 @@
 %define skip_python2 1
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
-Version:        3.4.8
+Version:        36.0.0
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
