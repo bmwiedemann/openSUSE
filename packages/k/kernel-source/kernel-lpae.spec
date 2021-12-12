@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.15
-%define patchversion 5.15.6
+%define patchversion 5.15.7
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -107,9 +107,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.15.6
+Version:        5.15.7
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc2ce213
+Release:        <RELEASE>.gb92986a
 %else
 Release:        0
 %endif
@@ -231,10 +231,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-c2ce213fb7e14c0924ce1cc6f068b77a1eb8ae4c
-Provides:       kernel-srchash-c2ce213fb7e14c0924ce1cc6f068b77a1eb8ae4c
+Provides:       kernel-%build_flavor-base-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
+Provides:       kernel-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
 # END COMMON DEPS
-Provides:       %name-srchash-c2ce213fb7e14c0924ce1cc6f068b77a1eb8ae4c
+Provides:       %name-srchash-b92986ab568f1f8fa0baf7fb2aaf2c7478bd5615
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -653,7 +653,7 @@ ln -s usr/lib %{buildroot}/lib
 # get rid of /usr/lib/rpm/brp-strip-debug
 # strip removes too much from the vmlinux ELF binary
 export NO_BRP_STRIP_DEBUG=true
-export STRIP_KEEP_SYMTAB='*/vmlinux-*'
+export STRIP_KEEP_SYMTAB='*/vmlinux*'
 
 # /lib/modules/%kernelrelease-%build_flavor/source points to the source
 # directory installed by kernel-devel. The kernel-%build_flavor-devel package

@@ -5738,4 +5738,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.15.5 &amp; mwifiex CVE fix</comment>
     <requestid>934932</requestid>
   </revision>
+  <revision rev="623" vrev="1">
+    <srcmd5>e4aa4510a5c3a6251ca00dcedbab77fd</srcmd5>
+    <version>5.15.7</version>
+    <time>1639340848</time>
+    <user>dimstar_suse</user>
+    <comment>5.15.7 &amp; other fixes</comment>
+    <requestid>936483</requestid>
+  </revision>
 </revisionlist>
