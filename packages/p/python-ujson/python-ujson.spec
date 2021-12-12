@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-ujson
-Version:        4.0.2
+Version:        4.3.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -27,13 +27,10 @@ URL:            https://github.com/esnme/ultrajson
 Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{version}.tar.gz
 # unbundle double-conversion (https://github.com/ultrajson/ultrajson/issues/375)
 Patch0:         python-ujson-system-double-conversion.patch
-BuildRequires:  %{python_module blist}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -61,8 +58,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pytest_arch
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %{python_sitearch}/ujson.*
-%{python_sitearch}/ujson-%{version}-py*.egg-info
+%{python_sitearch}/ujson-%{version}*-info
 
 %changelog

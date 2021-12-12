@@ -117,4 +117,12 @@
   * Fix dealing with None types</comment>
     <requestid>868446</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0f893fdc1460269d98d31b0144803480</srcmd5>
+    <version>4.3.0</version>
+    <time>1639340864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940013</requestid>
+  </revision>
 </revisionlist>

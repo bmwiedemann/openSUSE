@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Dec 11 18:15:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 4.3.0
+  * Enable Windows on ARM64 target (#488) @nsait-linaro
+- Release 4.2.0
+  * Add a default keyword argument to dumps (#470) @garenchan
+  * Add support for Python 3.10 (#472) @hugovk
+  * Build 32-bit wheels for Windows (#481) @hugovk
+  * Build PyPy3 wheels for manylinux (#475) @hugovk
+  * Build wheels for musl aarch64 (aka ARM) Linux
+    (musllinux_1_1_aarch64) (#478) @bwoodsend
+  * Build wheels for musl Linux (musllinux_1_1_x86_64) (#476)
+    @bwoodsend
+  * Use declarative setup metadata (#477) @hugovk
+  * Wheel building updates (#473) @hugovk
+  * Rename master to main (#471) @hugovk
+  * Replace README.rst with Markdown (#479) @hugovk
+- Release 4.1.0
+  * Add gcov coverage testing for C code (#457) @bwoodsend
+  * Test Python 3.10-dev (#454) @hugovk
+  * Remove unused variable (#459) @hugovk
+  * Remove explicit handling of manylinux platform tag (#452)
+    @bwoodsend
+  * dconv no longer uses global instances of
+    StringToDoubleConverter and (#469) @das-intensity
+  * Switch shebang for the manylinux-wheels script (#465)
+    @bwoodsend
+  * Fix typos in error message (#449) @filipsalomonsson
+- refresh python-ujson-system-double-conversion.patch
+- Update requirements: removes unmaintained blist
+
+-------------------------------------------------------------------
 Mon Feb  1 18:19:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:

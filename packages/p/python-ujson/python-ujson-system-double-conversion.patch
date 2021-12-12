@@ -1,8 +1,8 @@
-Index: ujson-2.0.1/setup.py
+Index: ujson-4.3.0/setup.py
 ===================================================================
---- ujson-2.0.1.orig/setup.py	2020-03-08 09:02:52.000000000 +0100
-+++ ujson-2.0.1/setup.py	2020-03-10 15:01:45.077782242 +0100
-@@ -33,9 +33,9 @@ module1 = Extension(
+--- ujson-4.3.0.orig/setup.py
++++ ujson-4.3.0/setup.py
+@@ -15,9 +15,9 @@ module1 = Extension(
          "./lib/ultrajsonenc.c",
          "./lib/ultrajsondec.c",
      ],
@@ -13,4 +13,4 @@ Index: ujson-2.0.1/setup.py
 +    extra_link_args=["-lstdc++", "-lm", "-ldouble-conversion"],
  )
  
- 
+ with open("python/version_template.h") as f:
