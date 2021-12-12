@@ -507,4 +507,12 @@
     <comment>- Don't break compatibility with SLE-12</comment>
     <requestid>894931</requestid>
   </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>6c90c3e3ea0ccb1451b5592330d3d5e2</srcmd5>
+    <version>1.99.11</version>
+    <time>1639340834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939050</requestid>
+  </revision>
 </revisionlist>

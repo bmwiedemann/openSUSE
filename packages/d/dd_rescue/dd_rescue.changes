@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Dec  6 14:21:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- build against openssl 1.1 (bsc#1193438) 
+
+-------------------------------------------------------------------
 Sat May 22 11:08:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't break compatibility with SLE-12 

@@ -36,7 +36,8 @@ Source99:       %{name}.changes
 Patch0:         no-python2.patch
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
-BuildRequires:  libopenssl-devel
+# Workaround for bsc#1193438
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  lzo-devel
 BuildRequires:  lzop
 BuildRequires:  pkgconfig
