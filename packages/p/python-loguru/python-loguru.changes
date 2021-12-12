@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 18:04:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip two formatting tests -- gh#Delgan/loguru#550 
+
+-------------------------------------------------------------------
 Sun Apr 18 12:17:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add loguru-exception-formatting-py39.patch

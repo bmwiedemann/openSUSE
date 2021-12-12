@@ -62,13 +62,16 @@ which dispatches log messages to configured handlers.
 export LANG=en_US.UTF-8
 if [ $(getconf LONG_BIT) = 32 ]; then
   # Threads have different references on 32-bit
-  donttest="(test_log_formatters and thread and not thread.name)"
+  donttest=" or (test_log_formatters and thread and not thread.name)"
 fi
-%pytest ${donttest:+ -k "not ($donttest)"}
+# different line numbers -- https://github.com/Delgan/loguru/issues/550
+python310_donttest=" or (test_exceptions_formatting and formatting_with_context_manager)"
+%pytest -k "not (donttestexprprefixdummy $donttest ${$python_donttest})"
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/loguru*
+%{python_sitelib}/loguru
+%{python_sitelib}/loguru-%{version}*-info
 
 %changelog
