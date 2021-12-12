@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Dec 10 11:20:54 UTC 2021 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fix NPE in JNDIRealm, when userRoleAttribute is not set (bsc#1193569)
+- Added patch:
+  * tomcat-9.0-NPE-JNDIRealm.patch
+
+-------------------------------------------------------------------
 Wed Nov 10 06:51:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

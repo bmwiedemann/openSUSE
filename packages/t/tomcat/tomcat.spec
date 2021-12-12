@@ -86,6 +86,7 @@ Patch6:         tomcat-9.0.31-secretRequired-default.patch
 Patch7:         tomcat-9.0-CVE-2021-41079.patch
 Patch8:         tomcat-9.0-CVE-2021-33037.patch
 Patch9:         tomcat-9.0-CVE-2021-30640.patch
+Patch10:        tomcat-9.0-NPE-JNDIRealm.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -263,6 +264,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
