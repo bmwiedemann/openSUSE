@@ -1,7 +1,7 @@
 #
-# spec file for package python-Automat
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-Automat%{psuffix}
 Version:        20.2.0
 Release:        0
@@ -32,7 +34,6 @@ Summary:        Self-service finite-state machines for the programmer on the go
 License:        MIT
 URL:            https://github.com/glyph/automat
 Source:         https://files.pythonhosted.org/packages/source/A/Automat/Automat-%{version}.tar.gz
-BuildRequires:  %{python_module m2r}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +41,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 16.1.0
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Suggests:       python-Twisted >= 16.1.1
 Suggests:       python-graphviz > 0.5.1
 BuildArch:      noarch
@@ -49,6 +50,9 @@ BuildRequires:  %{python_module Twisted >= 16.1.1}
 BuildRequires:  %{python_module attrs >= 16.1.0}
 BuildRequires:  %{python_module graphviz >= 0.5.1}
 BuildRequires:  %{python_module pytest}
+%if %{with python2}
+BuildRequires:  python2-xml
+%endif
 %endif
 %python_subpackages
 
@@ -58,6 +62,8 @@ automata (particularly deterministic finite-state transducers).
 
 %prep
 %setup -q -n Automat-%{version}
+# we don't care about the long_description, avoid unmaintained m2r
+sed -i "/'m2r'/d" setup.py
 
 %build
 %python_build
@@ -85,7 +91,8 @@ automata (particularly deterministic finite-state transducers).
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/automat-visualize
-%{python_sitelib}/*
+%{python_sitelib}/automat
+%{python_sitelib}/Automat-%{version}*-info
 %endif
 
 %changelog

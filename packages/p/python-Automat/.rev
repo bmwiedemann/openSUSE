@@ -42,4 +42,12 @@
  * Fix attrs warnings</comment>
     <requestid>775301</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>18d81fb2ddb92fe069e55e573863f76b</srcmd5>
+    <version>20.2.0</version>
+    <time>1639340838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939176</requestid>
+  </revision>
 </revisionlist>
