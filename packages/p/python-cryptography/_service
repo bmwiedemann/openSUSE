@@ -1,0 +1,7 @@
+<services>
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">cryptography-36.0.0/src/rust</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+  </service>
+</services>

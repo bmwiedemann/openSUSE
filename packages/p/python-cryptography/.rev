@@ -564,4 +564,41 @@
     <comment></comment>
     <requestid>924991</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>725d44396d76e8e5d37a3d7e2e27348d</srcmd5>
+    <version>36.0.0</version>
+    <time>1639340851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 36.0.0:
+  * FINAL DEPRECATION Support for verifier and signer on our asymmetric key
+    classes was deprecated in version 2.1. These functions had an extended
+    deprecation due to usage, however the next version of cryptography will
+    drop support. Users should migrate to sign and verify.
+  * The entire X.509 layer is now written in Rust. This allows alternate
+    asymmetric key implementations that can support cloud key management
+    services or hardware security modules provided they implement the necessary
+    interface (for example: EllipticCurvePrivateKey).
+  * Deprecated the backend argument for all functions.
+  * Added support for AESOCB3.
+  * Added support for iterating over arbitrary request attributes.
+  * Deprecated the get_attribute_for_oid method on CertificateSigningRequest in
+    favor of get_attribute_for_oid() on the new Attributes object.
+  * Fixed handling of PEM files to allow loading when certificate and key are
+    in the same file.
+  * Fixed parsing of CertificatePolicies extensions containing legacy BMPString values in their explicitText.
+  * Allow parsing of negative serial numbers in certificates. Negative serial
+    numbers are prohibited by RFC 5280 so a deprecation warning will be raised
+    whenever they are encountered. A future version of cryptography will drop
+    support for parsing them.
+  * Added support for parsing PKCS12 files with friendly names for all
+    certificates with load_pkcs12(), which will return an object of type
+    PKCS12KeyAndCertificates.
+  * rfc4514_string() and related methods now have an optional
+    attr_name_overrides parameter to supply custom OID to name mappings, which
+    can be used to match vendor-specific extensions.
+  * BACKWARDS INCOMPATIBLE: Reverted the nonstandard formatting of email
+    address fields as E in rfc4514_string() methods from version 35.0.
+  * The previous behavior can be restored with:</comment>
+    <requestid>934527</requestid>
+  </revision>
 </revisionlist>

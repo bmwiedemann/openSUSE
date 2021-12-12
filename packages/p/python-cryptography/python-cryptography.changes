@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sat Nov 27 15:56:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 36.0.0:
+  * FINAL DEPRECATION Support for verifier and signer on our asymmetric key
+    classes was deprecated in version 2.1. These functions had an extended
+    deprecation due to usage, however the next version of cryptography will
+    drop support. Users should migrate to sign and verify.
+  * The entire X.509 layer is now written in Rust. This allows alternate
+    asymmetric key implementations that can support cloud key management
+    services or hardware security modules provided they implement the necessary
+    interface (for example: EllipticCurvePrivateKey).
+  * Deprecated the backend argument for all functions.
+  * Added support for AESOCB3.
+  * Added support for iterating over arbitrary request attributes.
+  * Deprecated the get_attribute_for_oid method on CertificateSigningRequest in
+    favor of get_attribute_for_oid() on the new Attributes object.
+  * Fixed handling of PEM files to allow loading when certificate and key are
+    in the same file.
+  * Fixed parsing of CertificatePolicies extensions containing legacy BMPString values in their explicitText.
+  * Allow parsing of negative serial numbers in certificates. Negative serial
+    numbers are prohibited by RFC 5280 so a deprecation warning will be raised
+    whenever they are encountered. A future version of cryptography will drop
+    support for parsing them.
+  * Added support for parsing PKCS12 files with friendly names for all
+    certificates with load_pkcs12(), which will return an object of type
+    PKCS12KeyAndCertificates.
+  * rfc4514_string() and related methods now have an optional
+    attr_name_overrides parameter to supply custom OID to name mappings, which
+    can be used to match vendor-specific extensions.
+  * BACKWARDS INCOMPATIBLE: Reverted the nonstandard formatting of email
+    address fields as E in rfc4514_string() methods from version 35.0.
+  * The previous behavior can be restored with:
+    name.rfc4514_string({NameOID.EMAIL_ADDRESS: "E"})
+  * Allow X25519PublicKey and X448PublicKey to be used as public keys when
+    parsing certificates or creating them with CertificateBuilder. These key
+    types must be signed with a different signing algorithm as X25519 and X448
+    do not support signing.
+  * Extension values can now be serialized to a DER byte string by calling public_bytes().
+  * Added experimental support for compiling against BoringSSL. As BoringSSL
+    does not commit to a stable API, cryptography tests against the latest
+    commit only. Please note that several features are not available when
+    building against BoringSSL.
+  * Parsing CertificateSigningRequest from DER and PEM now, for a limited time
+    period, allows the Extension critical field to be incorrectly encoded. See
+    the issue for complete details. This will be reverted in a future
+    cryptography release.
+  * When OCSPNonce are parsed and generated their value is now correctly
+    wrapped in an ASN.1 OCTET STRING. This conforms to RFC 6960 but conflicts
+    with the original behavior specified in RFC 2560. For a temporary period
+    for backwards compatibility, we will also parse values that are encoded as
+    specified in RFC 2560 but this behavior will be removed in a future
+    release.
+  * Changed the version scheme. This will result in us incrementing the major
+    version more frequently, but does not change our existing backwards
+    compatibility policy.
+  * BACKWARDS INCOMPATIBLE: The X.509 PEM parsers now require that the PEM
+    string passed have PEM delimiters of the correct type. For example, parsing
+    a private key PEM concatenated with a certificate PEM will no longer be
+    accepted by the PEM certificate parser.
+  * BACKWARDS INCOMPATIBLE: The X.509 certificate parser no longer allows
+    negative serial numbers. RFC 5280 has always prohibited these.
+  * BACKWARDS INCOMPATIBLE: Additional forms of invalid ASN.1 found during
+    X.509 parsing will raise an error on initial parse rather than when the
+    malformed field is accessed.
+  * Rust is now required for building cryptography, the
+    CRYPTOGRAPHY_DONT_BUILD_RUST environment variable is no longer respected.
+  * Parsers for X.509 no longer use OpenSSL and have been rewritten in Rust.
+    This should be backwards compatible (modulo the items listed above) and
+    improve both security and performance.
+  * Added support for OpenSSL 3.0.0 as a compilation target.
+  * Added support for SM3 and SM4, when using OpenSSL 1.1.1. These algorithms
+    are provided for compatibility in regions where they may be required, and
+    are not generally recommended.
+  * We now ship manylinux_2_24 and musllinux_1_1 wheels, in addition to our
+    manylinux2010 and manylinux2014 wheels. Users on distributions like Alpine
+    Linux should ensure they upgrade to the latest pip to correctly receive
+    wheels.
+  * Added rfc4514_attribute_name attribute to x509.NameAttribute.
+- drop disable-uneven-sizes-tests.patch (upstream)
+- drop disable-RustExtension.patch: building rust extension now 
+
+-------------------------------------------------------------------
 Tue Oct 12 18:54:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add disable-RustExtension.patch in order to avoid a build

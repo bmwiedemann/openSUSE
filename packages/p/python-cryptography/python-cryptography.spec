@@ -18,10 +18,9 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# disabled in order to avoid pulling dependencies -- adrian@suse.de
-%bcond_with rust
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           python-cryptography
-Version:        3.4.8
+Version:        36.0.0
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -29,22 +28,22 @@ Group:          Development/Languages/Python
 URL:            https://cryptography.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-# PATCH-FIX-SLE disable-uneven-sizes-tests.patch bnc#944204
-Patch1:         disable-uneven-sizes-tests.patch
+# use `osc service disabledrun` to regenerate
+Source2:        vendor.tar.xz
+# use `osc service disabledrun` to regenerate
+Source3:        cargo_config
+Source4:        %{name}.keyring
 Patch2:         skip_openssl_memleak_test.patch
-# PATCH-FEATURE-OPENSUSE disable-RustExtension.patch -- disable setuptools_rust requirement if not building with rust
-Patch3:         disable-RustExtension.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools}
-%if %{with rust}
-BuildRequires:  %{python_module setuptools_rust}
-%endif
+BuildRequires:  cargo >= 1.41.0
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  rust >= 1.41.0
 BuildRequires:  pkgconfig(libffi)
 %requires_eq    python-cffi
 # python-base is not enough, we need the _ssl module
@@ -73,23 +72,21 @@ symmetric ciphers, message digests and key derivation
 functions.
 
 %prep
-%autosetup -p1 -n cryptography-%{version}
+%autosetup -a2 -p1 -n cryptography-%{version}
+mkdir .cargo
+cp %{SOURCE3} .cargo/config
 
 %build
-%if ! %{with rust}
-export CRYPTOGRAPHY_DONT_BUILD_RUST=1
-%endif
+export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
 %install
+export RUSTFLAGS=%{rustflags}
 # Actually other *.c and *.h are appropriate
 # see https://github.com/pyca/cryptography/issues/1463
 find . -name .keep -print -delete
 
-%if ! %{with rust}
-export CRYPTOGRAPHY_DONT_BUILD_RUST=1
-%endif
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
