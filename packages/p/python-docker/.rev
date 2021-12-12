@@ -194,4 +194,18 @@
     <comment></comment>
     <requestid>878139</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c4165b556db32462f139ded792353fdd</srcmd5>
+    <version>5.0.3</version>
+    <time>1639340858</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.3:
+  * Add cap_add and cap_drop parameters to service create and ContainerSpec
+  * Add templating parameter to config create
+  * Bump urllib3 to 1.26.5
+  * Bump requests to 2.26.0
+  * Remove support for Python 2.7
+  * Make Python 3.6 the minimum version supported</comment>
+    <requestid>939988</requestid>
+  </revision>
 </revisionlist>

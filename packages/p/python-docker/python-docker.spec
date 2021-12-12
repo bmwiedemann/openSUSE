@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%global skip_python2 1
 Name:           python-docker
-Version:        4.4.4
+Version:        5.0.3
 Release:        0
 Summary:        Docker API Client
 License:        Apache-2.0
@@ -49,17 +49,8 @@ Obsoletes:      python-docker-py < %{version}
 Provides:       python-docker-py = %{version}
 BuildArch:      noarch
 %if 0%{?suse_version} < 1320
-BuildRequires:  %{oldpython}
 BuildRequires:  %{python_module backports.ssl_match_hostname >= 3.5}
 BuildRequires:  python3
-%endif
-%ifpython2
-Requires:       %{oldpython}-backports.ssl_match_hostname >= 3.5
-Requires:       %{oldpython}-ipaddress >= 1.0.16
-%endif
-%ifpython2
-Obsoletes:      %{oldpython}-docker-py < %{version}
-Provides:       %{oldpython}-docker-py = %{version}
 %endif
 %python_subpackages
 
