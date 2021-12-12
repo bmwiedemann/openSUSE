@@ -1,5 +1,5 @@
 #
-# spec file for package libical-glib
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with glib
 %endif
 Name:           libical%{name_ext}
-Version:        3.0.10
+Version:        3.0.11
 Release:        0
 URL:            https://github.com/libical/libical
 Source:         %{url}/releases/download/v%{version}/libical-%{version}.tar.gz

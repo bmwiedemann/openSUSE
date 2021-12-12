@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Dec  6 07:48:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.11:
+ * Fix icalrecur_iterator_set_start() for hourly, minutely, and secondly recurrences
+ * Fix build for Berkeley DB version greater than 5
+ * Fix vcal for some architectures (like aarch64, ppc64le and s390x)
+ * Fix memory leaks in vcal
+ * Prevent crash when looking for tzid in initialize_rscale
+ * Adjust libdir and includedir in generated pkgconfig files
+ * Built-in timezones updated to tzdata2021c
+
+-------------------------------------------------------------------
 Tue Apr 20 09:08:38 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.0.10: 
