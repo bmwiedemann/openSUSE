@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-travis-fold
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Requires:       python-pytest >= 2.6.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.6.0}
-BuildRequires:  %{python_module pytest-runner}
 # /SECTION
 %python_subpackages
 
