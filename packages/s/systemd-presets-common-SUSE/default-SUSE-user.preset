@@ -1,4 +1,4 @@
 enable pulseaudio.socket
 enable pipewire.socket
 enable pipewire-pulse.socket
-enable pipewire-media-session.service
+enable wireplumber.service
