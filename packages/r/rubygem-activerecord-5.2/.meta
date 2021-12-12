@@ -1,5 +1,0 @@
-<package name="rubygem-activerecord-5.2" project="openSUSE:Factory">
-  <title>rubygem-activerecord-5.2</title>
-  <description>Databases on Rails. Build a persistent domain model by mapping database tables to Ruby classes. Strong conventions for associations, validations, aggregations, migrations, and testing come baked-in.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-activerecord-5.2"/>
-</package>
