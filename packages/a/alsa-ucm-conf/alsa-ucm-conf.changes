@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:02:26 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6.2:
+  a minor fix release, just includnig ther previous fixes
+
+- Drop obsoleted patches
+  0001-sof-hda-dsp-fix-path-to-Hdmi.conf.patch
+  0002-bytcht-es8316-fix-Include-paths-in-HiFi.conf.patch
+
+-------------------------------------------------------------------
+Fri Dec 10 08:59:24 CET 2021 - tiwai@suse.de
+
+- Update to version 1.2.6.1:
+  a minor fix release:
+  * acp: fix linked configuration
+  * ucm2: Add support for SC7180 Trogdor Lazor Chromebooks
+  * USB-Audio: fix the wrong condition type for If.realtek-alc1220-vb 
+- More a couple of upstream fixes for forgotten conversions:
+  0001-sof-hda-dsp-fix-path-to-Hdmi.conf.patch
+  0002-bytcht-es8316-fix-Include-paths-in-HiFi.conf.patch
+
+-------------------------------------------------------------------
 Mon Dec  6 15:13:22 CET 2021 - tiwai@suse.de
 
 - Update to version 1.2.6:

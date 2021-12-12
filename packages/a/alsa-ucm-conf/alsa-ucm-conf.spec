@@ -17,7 +17,7 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.6
+Version:        1.2.6.2
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
@@ -26,13 +26,13 @@ Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 BuildRequires:  fdupes
 BuildArch:      noarch
-Requires:       libasound2 >= %{version}
+Requires:       libasound2 >= 1.2.6.1
 
 %description
 This package contains the profiles files for ALSA UCM (Use Case Manager).
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 find . -name ".gitignore" -delete
 
 %build
