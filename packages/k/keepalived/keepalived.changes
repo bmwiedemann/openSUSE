@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  9 18:58:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.2.4
+  * Bug fixes
+- Update to 2.2.3
+  * Added some new features and minor bug fixes
+  * genhash utility is now part of the mainline daemon
+  * https://www.keepalived.org/release-notes/Release-2.2.3.html
+- Drop 1915.patch, merged upstream
+- Drop outdated suse_version check
+
+-------------------------------------------------------------------
 Mon Sep 27 07:39:33 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

@@ -21,12 +21,6 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%if 0%{?suse_version} > 1210
-%bcond_without systemd
-%else
-%bcond_with    systemd
-%endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without dbus
 %bcond_without keepalived_nftables
@@ -41,9 +35,10 @@
 %bcond_with    keepalived_regex
 %endif
 %bcond_without json
+%bcond_without systemd
 
 Name:           keepalived
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -51,10 +46,8 @@ Group:          Productivity/Networking/Routing
 URL:            http://www.keepalived.org/
 Source:         http://www.keepalived.org/software/%{name}-%{version}.tar.gz
 Source2:        keepalive-rpmlintrc
-Patch1:         keepalive-init.patch
-# PATCH-FIX-UPSTREAM: https://github.com/acassen/keepalived/pull/1915
-Patch2:         1915.patch
-Patch3:	harden_keepalived.service.patch
+Patch0:         keepalive-init.patch
+Patch1:         harden_keepalived.service.patch
 BuildRequires:  file-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
@@ -102,10 +95,9 @@ resilient infrastructures.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
+%patch0 -p1
 chmod 644 doc/samples/*
-%patch3 -p1
+%patch1 -p1
 
 %build
 export STRIP=true

@@ -2,8 +2,8 @@ Index: keepalived-2.2.2/keepalived/keepalived.service.in
 ===================================================================
 --- keepalived-2.2.2.orig/keepalived/keepalived.service.in
 +++ keepalived-2.2.2/keepalived/keepalived.service.in
-@@ -4,6 +4,19 @@ After=network-online.target syslog.targe
- Wants=network-online.target @SNMP_SERVICE@
+@@ -8,6 +8,19 @@ After=network-online.target syslog.targe
+ Documentation=https://keepalived.org
  
  [Service]
 +# added automatically, for details please see
