@@ -1,5 +1,5 @@
 #
-# spec file for package python-semantic_version
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-Name:           python-semantic_version
+Name:           python-semantic_version%{psuffix}
 Version:        2.8.5
 Release:        0
 Summary:        A library implementing the 'SemVer' scheme

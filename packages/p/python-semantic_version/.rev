@@ -76,4 +76,12 @@
     <comment>- split tests into flavor to avoid build cycle with djang</comment>
     <requestid>935915</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0baf9ea479b410ba99f107143f00025e</srcmd5>
+    <version>2.8.5</version>
+    <time>1639340854</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the package suffix to Name to have multibuild work correctly.</comment>
+    <requestid>939014</requestid>
+  </revision>
 </revisionlist>
