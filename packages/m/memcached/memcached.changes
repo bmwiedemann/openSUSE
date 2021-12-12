@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov 28 17:22:19 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- update to 1.6.12:
+  * add queue.h in archive
+  * Expose number of currently active watchers in stats
+  * Configurable minimum supported TLS protocol version
+  * core: fix hang bug in extstore
+  * thread: use eventfd for worker notify if available
+  * thread: per-worker-thread connection event queues
+  * core: cache.c cleanups, use queue.h freelist
+  * core: add queue.h to replace handrolled queues.
+  * logger: simplify logging code
+  * logger: avoid polling without watchers
+  * Implement LOG_CONNEVENTS watcher flag for connection state transitions
+  * Report item sizes for fetch, mutation, and eviction watchers
+  * Fix typos in doc/code comments (tem->item, etc)
+  * "watch connevents" will show realtime log entries about client connect/
+    disconnect events.
+  * Fix minor severity heap buffer overflow reading --auth-file
+  * stats_prefix.c: Check for NDEBUG before using total_written variable
+  * Add settings stat for shutdown_command enabled
+  * [docker] Add user and expose the memcached port
+  * meta: remove EXPERIMENTAL mark + doc fixes
+  * meta: response code OK -> HD
+  * meta: fix metaset syntax
+  * meta: repairs to mset command
+  * hash: add XXH3 to list of hash algorithms.
+  * fix arm64 crc32 on old glibc/gcc.
+  * extstore: fix crash on 'stats extstore'
+  * seccomp: extend allowed rules for extended usage
+  * The total number of UDP datagrams required for the message is calculated 
+    incorrectly.
+  * meta: allow base64'ed binary keys with 'b' flag
+  * small improvements to readme
+  * Added debugtime command for test suite
+  * The meta protocol can now transmit binary encoded keys by encoding the 
+    key in base64 and sending a 'b' flag with the command
+
+-------------------------------------------------------------------
 Wed Oct  6 12:01:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

@@ -1,7 +1,7 @@
 #
 # spec file for package memcached
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           memcached
-Version:        1.6.9
+Version:        1.6.12
 Release:        0
 Summary:        A high-performance, distributed memory object caching system
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
 Source5:        system-user-memcached.conf
-Patch0:	harden_memcached.service.patch
+Patch0:         harden_memcached.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel

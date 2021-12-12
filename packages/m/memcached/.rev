@@ -450,4 +450,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
     <comment></comment>
     <requestid>928154</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d9a2c31a2c636d9577296fb71cbf739d</srcmd5>
+    <version>1.6.12</version>
+    <time>1639340817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935847</requestid>
+  </revision>
 </revisionlist>
