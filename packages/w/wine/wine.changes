@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec 11 18:36:04 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.0-rc1 release candidate
+  - Reimplementation of the WinMM joystick driver.
+  - All Unix libraries converted to the syscall-based interface.
+  - Various bug fixes.
+- update staging to 7.0-rc1 release
+
+-------------------------------------------------------------------
 Sun Dec  5 13:30:20 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.23 development release

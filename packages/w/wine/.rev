@@ -4222,4 +4222,16 @@
 - update staging to 6.23 release</comment>
     <requestid>935805</requestid>
   </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>c2b07ba9c10aed9c5902b1b143fdcf49</srcmd5>
+    <version>7.0~rc1</version>
+    <time>1639340871</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.0-rc1 release candidate
+  - Reimplementation of the WinMM joystick driver.
+  - All Unix libraries converted to the syscall-based interface.
+  - Various bug fixes.
+- update staging to 7.0-rc1 release</comment>
+    <requestid>940067</requestid>
+  </revision>
 </revisionlist>
