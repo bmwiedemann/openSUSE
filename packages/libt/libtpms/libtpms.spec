@@ -18,15 +18,13 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.8.4
+Version:        0.9.1
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/stefanberger/libtpms
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-# CVE-2021-3746 [bsc#1189935], out-of-bounds access via specially crafted TPM 2 command packets
-Patch0:         libtpms-CVE-2021-3746.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -63,10 +61,10 @@ Libtpms header files and documentation.
 
 %build
 autoreconf -fiv
-%configure \
-	--with-tpm2 \
-	--with-openssl	\
-        --disable-static
+%configure         \
+    --with-tpm2    \
+    --with-openssl \
+    --disable-static
 
 %make_build
 

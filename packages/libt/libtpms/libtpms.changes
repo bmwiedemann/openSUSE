@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  9 19:57:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.1
+  * Downgrade to previous versions is not possible, as the size of
+    the context gap has been adjusted to 0xffff from 0xff.
+  * Enabled Camellia symmetric key encryption algorithm
+  * tpm2: Update to TPM 2 spec rev 164
+  * tpm2: Added a cache for private exponent D and prime Q
+  * tpm2: bug fixes
+- Drop upstream fixed libtpms-CVE-2021-3746.patch
+
+-------------------------------------------------------------------
 Tue Aug 31 16:36:31 UTC 2021 - pgajdos@suse.com
 
 - security update
