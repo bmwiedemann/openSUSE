@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Dec 11 22:37:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 0.6.0:
+  * Bump spec versions to latest => v1.1.3
+  * Modernize python and CI tools, update docs/doctests
+  * Update unicode conversion test for py3-only
+  * Add pep8speaks cfg, cleanup warnings
+  * Remove superfluous setup test/unused imports
+  * Use correct wheel name in release workflow, limit wheels
+  * Add install check/test of downloaded wheel
+  * Update/add ci workflows and tox cfg, bump to next dev0 version
+  * fix document processing, update pandoc args and history
+  * add release.yml to CI, test env settings
+  * fix bogus commit message, update versions and tox cf
+  * add post-test steps for building pkgs with/without doc updates
+  * Bugfix: test_specloader.py: fix test_find__with_directory on other OSs
+  * Bugfix: pystache/loader.py: remove stray windows line-endings
+  * fix crufty (and insecure) http urls
+  * Bugfix: modernize python versions (keep py27)
+
+-------------------------------------------------------------------
 Thu Jul  2 14:07:09 UTC 2020 - pgajdos@suse.com
 
 - switch from nose to pytest
