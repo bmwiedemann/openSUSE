@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 12 14:50:39 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.25:
+  * Fix lyrics download (glgo#World/lollypop#2862).
+  * Fix relative URLs in playlists (glgo#World/lollypop#2785).
+
+-------------------------------------------------------------------
 Fri Nov 19 20:26:18 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.24:

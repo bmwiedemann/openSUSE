@@ -1705,4 +1705,14 @@
   versions now.</comment>
     <requestid>932592</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>5c957590738c390c8a2aeae327dd4d24</srcmd5>
+    <version>1.4.25</version>
+    <time>1639340873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.25:
+  * Fix lyrics download (glgo#World/lollypop#2862).
+  * Fix relative URLs in playlists (glgo#World/lollypop#2785).</comment>
+    <requestid>940090</requestid>
+  </revision>
 </revisionlist>
