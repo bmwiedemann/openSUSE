@@ -954,7 +954,7 @@ Prefer: -ruby2.7-rubygem-puma-4
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python38-pytest python36-pytest python39-pytest
+Prefer: python38-pytest python36-pytest python39-pytest python310-pytest
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
