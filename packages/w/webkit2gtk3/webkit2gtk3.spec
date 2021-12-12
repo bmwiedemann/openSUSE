@@ -321,7 +321,21 @@ Group:          Development/Tools/Other
 %description minibrowser
 A small test browswer from webkit, useful for testing features.
 
+# Expand %%lang_package to Obsoletes its older-name counterpart
+%if "%{flavor}" == "gtk3-soup2"
+%package -n WebKit2GTK-%{_apiver}-lang
+Summary:        Translations for package %{name}
+Group:          System/Localization
+Requires:       WebKit2GTK-%{_apiver} = %{version}
+Provides:       WebKit2GTK-%{_apiver}-lang-all = %{version}
+Obsoletes:      libwebkit2gtk3-lang
+BuildArch:      noarch
+
+%description -n WebKit2GTK-%{_apiver}-lang
+Provides translations for the "%{name}" package.
+%else
 %lang_package -n WebKit2GTK-%{_apiver}
+%endif
 
 %prep
 %autosetup -p1 -n webkitgtk-%{version}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  8 08:07:59 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add Obsoletes of the old-name -lang package to be ready for
+  updating from it. This change is necessary for the gtk3-soup2
+  flavor.
+
+-------------------------------------------------------------------
 Sat Nov 27 15:20:11 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.34.2:
