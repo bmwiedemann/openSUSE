@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Dec  7 15:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix duplicate src package name issue on multibuild 
+
+-------------------------------------------------------------------
+Sun Dec  5 09:42:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Improved pkg-config paths handling
+  * Use explicit math.h linkage
+  * BREAKING: Fixed handling of items that exceed the host size_t range
+  * cbor_decode explicitly checks size to avoid overflows (previously broken,
+    potentially resulting in erroneous decoding on affected systems)
+- split docs into multibuild flavor to avoid build cycle via openssh<->
+  python-pyOpenSSL <-> python-cryptography
+
+-------------------------------------------------------------------
 Tue Sep 22 11:42:03 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.8.0

@@ -1,7 +1,7 @@
 #
-# spec file for package libcbor
+# spec file for package libcbor-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,32 @@
 
 
 %define socurrent  0
-%define sorevision 8
+%define sorevision 9
 %define soage      0
-
 %define lname   libcbor%{socurrent}_%{sorevision}
-
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+Name:           libcbor-doc
+%else
 Name:           libcbor
-Version:        0.8.0
+%endif
+Version:        0.9.0
 Release:        0
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://libcbor.org
-Source0:        https://github.com/PJK/libcbor/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+URL:            https://github.com/PJK/libcbor
+Source0:        https://github.com/PJK/libcbor/archive/v%{version}.tar.gz
+%if "%{flavor}" == "doc"
 BuildRequires:  doxygen
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-breathe
+%else
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libcmocka-devel
 BuildRequires:  ninja
-BuildRequires:  python3-Sphinx
-BuildRequires:  python3-breathe
-BuildRequires:  valgrind
+%endif
 
 %description
 libcbor is a C99 library for parsing and generating CBOR (RFC 7049),
@@ -45,7 +50,7 @@ a general-purpose schema-less binary data format.
 
 It supports flexible memory management, UTF-8, streams & incremental
 processing, and has a layered architecture.
- 
+
 %package -n %{lname}
 Summary:        Library for parsing Concise Binary Object Representation (CBOR)
 Group:          System/Libraries
@@ -67,29 +72,40 @@ libcbor is a C library for parsing and generating CBOR.
 The libcbor-devel contains libraries and header files for libcbor.
 
 %prep
-%autosetup
+%autosetup -n libcbor-%{version}
 sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig|${CMAKE_INSTALL_LIBDIR}/pkgconfig|' src/CMakeLists.txt
 
 %build
-make %{?_smp_mflags} -C doc man
+%if "%{flavor}" == "doc"
+%make_build -C doc man
+%else
 
 %define __builder ninja
 %cmake .. -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=ON
 %cmake_build
+%endif
 
 %install
-%cmake_install
-
+%if "%{flavor}" == "doc"
 mkdir -p %{buildroot}%{_mandir}/man1
 cp doc/build/man/* %{buildroot}%{_mandir}/man1
+%else
+
+%cmake_install
+%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%files -n %{lname}
+%if "%{flavor}" == "doc"
+%files
 %doc CHANGELOG.md README.md
-%license LICENSE.md
 %{_mandir}/*/*
+
+%else
+
+%files -n %{lname}
+%license LICENSE.md
 %{_libdir}/libcbor.so.%{socurrent}.%{sorevision}
 %{_libdir}/libcbor.so.%{socurrent}.%{sorevision}.%{soage}
 
@@ -101,5 +117,6 @@ cp doc/build/man/* %{buildroot}%{_mandir}/man1
 %{_includedir}/cbor/internal/*.h
 %{_libdir}/libcbor.so
 %{_libdir}/pkgconfig/libcbor.pc
+%endif
 
 %changelog
