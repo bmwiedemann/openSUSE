@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  9 10:19:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary patches: pytest4.patch, pytest6.patch, and
+  python38.patch.
+
+-------------------------------------------------------------------
+Wed Dec  8 10:36:58 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.0.0
+  * no upstream changelog found
+
+-------------------------------------------------------------------
 Mon Feb 22 14:22:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Drop broken %ifpython3

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pygal
-Version:        2.4.0
+Version:        3.0.0
 Release:        0
 Summary:        A python svg graph plotting library
 License:        LGPL-3.0-or-later
@@ -26,11 +26,6 @@ Group:          Development/Languages/Python
 URL:            http://pygal.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pygal/pygal-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/Kozea/pygal/%{version}/COPYING
-Patch0:         python38.patch
-# PATCH-FIX-UPSTREAM pytest4.patch gh#Kozea/pygal#340 mcepl@suse.com
-# yes, THIS is what makes this test suite pytest4+ compatible!
-Patch1:         pytest4.patch
-Patch2:         pytest6.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pyquery}
@@ -40,11 +35,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-CairoSVG
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-CairoSVG
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -54,8 +48,10 @@ Pygal is a dynamic SVG charting library written in python.
 It supports various chart types and CSS styling.
 
 %prep
-%setup -q -n pygal-%{version}
-%autopatch -p1
+%autosetup -p1 -n pygal-%{version}
+
+# not sure where to report
+sed -Ei 's:.pytest-runner.,?::' setup.py
 
 cp %{SOURCE10} .
 
