@@ -1,5 +1,0 @@
-<package name="rubygem-actionpack-5.2" project="openSUSE:Factory">
-  <title>rubygem-actionpack-5.2</title>
-  <description>Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-actionpack-5.2"/>
-</package>
