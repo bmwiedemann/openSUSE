@@ -9311,7 +9311,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_9_0 
+  - libYODA-1_9_4 
   - libZXing1-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
@@ -9934,9 +9934,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10834,8 +10834,6 @@ unsorted:
   - libgimp-2_0-0-32bit: [x86_64] 
   - libgimpui-2_0-0-32bit: [x86_64] 
   - libginac11 
-  - libgio-fam 
-  - libgio-fam-32bit: [x86_64] 
   - libgio-qt0 
   - libgiomm-2_4-1-32bit: [x86_64] 
   - libgiomm-2_68-1 
@@ -11784,9 +11782,9 @@ unsorted:
   - libltc-devel 
   - libltc11 
   - liblttng-ctl0 
-  - liblttng-ust-ctl4 
-  - liblttng-ust-python-agent0 
-  - liblttng-ust0: [i586] 
+  - liblttng-ust-ctl5 
+  - liblttng-ust-python-agent1 
+  - liblttng-ust1: [i586] 
   - liblttoolbox3-3_5-1 
   - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
@@ -12953,8 +12951,6 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
-  - libqt5-creator 
-  - libqt5-creator-plugin-devel 
   - libqt5-dwaylandplugin 
   - libqt5-dxcbplugin 
   - libqt5-kwayland-shellplugin 
@@ -13145,8 +13141,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13169,7 +13165,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13396,7 +13392,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -22392,19 +22388,8 @@ unsorted:
   - python36-delegator.py 
   - python36-demjson 
   - python36-dennis 
-  - python36-dephell-archive 
-  - python36-dephell-argparse 
-  - python36-dephell-discover 
-  - python36-dephell-licenses 
-  - python36-dephell-links 
-  - python36-dephell-markers 
   - python36-dephell-pythons 
-  - python36-dephell-setuptools 
-  - python36-dephell-shells 
   - python36-dephell-specifier 
-  - python36-dephell-venvs 
-  - python36-dephell-versioning 
-  - python36-dephell_changelogs 
   - python36-deprecation 
   - python36-derpconf 
   - python36-devel 
@@ -25224,19 +25209,8 @@ unsorted:
   - python38-delegator.py 
   - python38-demjson 
   - python38-dennis 
-  - python38-dephell-archive 
-  - python38-dephell-argparse 
-  - python38-dephell-discover 
-  - python38-dephell-licenses 
-  - python38-dephell-links 
-  - python38-dephell-markers 
   - python38-dephell-pythons 
-  - python38-dephell-setuptools 
-  - python38-dephell-shells 
   - python38-dephell-specifier 
-  - python38-dephell-venvs 
-  - python38-dephell-versioning 
-  - python38-dephell_changelogs 
   - python38-derpconf 
   - python38-devel 
   - python38-devpi-client 
@@ -28242,19 +28216,8 @@ unsorted:
   - python39-delegator.py 
   - python39-demjson 
   - python39-dennis 
-  - python39-dephell-archive 
-  - python39-dephell-argparse 
-  - python39-dephell-discover 
-  - python39-dephell-licenses 
-  - python39-dephell-links 
-  - python39-dephell-markers 
   - python39-dephell-pythons 
-  - python39-dephell-setuptools 
-  - python39-dephell-shells 
   - python39-dephell-specifier 
-  - python39-dephell-venvs 
-  - python39-dephell-versioning 
-  - python39-dephell_changelogs 
   - python39-deprecation 
   - python39-derpconf 
   - python39-devel 
@@ -31025,7 +30988,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
@@ -31375,10 +31338,8 @@ unsorted:
   - ruby3.0-doc-ri 
   - ruby3.0-rubygem-Ascii85 
   - ruby3.0-rubygem-abstract_method 
-  - ruby3.0-rubygem-actioncable-5.2 
   - ruby3.0-rubygem-actioncable-6.0 
   - ruby3.0-rubygem-actionmailbox-6.0 
-  - ruby3.0-rubygem-actionmailer-5.2 
   - ruby3.0-rubygem-actionmailer-6.0 
   - ruby3.0-rubygem-actionpack-5.2 
   - ruby3.0-rubygem-actiontext-6.0 
@@ -31388,7 +31349,6 @@ unsorted:
   - ruby3.0-rubygem-activemodel-5.2 
   - ruby3.0-rubygem-activerecord-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
-  - ruby3.0-rubygem-activestorage-5.2 
   - ruby3.0-rubygem-activestorage-6.0 
   - ruby3.0-rubygem-activesupport-5.2 
   - ruby3.0-rubygem-addressable 
@@ -31609,7 +31569,6 @@ unsorted:
   - ruby3.0-rubygem-rack-proxy 
   - ruby3.0-rubygem-rails-6.0 
   - ruby3.0-rubygem-rails-i18n 
-  - ruby3.0-rubygem-railties-5.2 
   - ruby3.0-rubygem-rainbow 
   - ruby3.0-rubygem-raindrops 
   - ruby3.0-rubygem-rake-12_0 
