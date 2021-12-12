@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Dec 10 03:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip testGetMulti due to memcached throwing some errors. 
+
+-------------------------------------------------------------------
 Tue Sep  8 10:54:30 UTC 2020 - pgajdos@suse.com
 
 - added patches
