@@ -176,7 +176,11 @@ Patch41:        22198.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 120400
+BuildRequires:  libopenssl-devel
+%else
 BuildRequires:  libopenssl-1_1-devel
+%endif
 BuildRequires:  lzma-devel
 BuildRequires:  netcfg
 BuildRequires:  pkgconfig
