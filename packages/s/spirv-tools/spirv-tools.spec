@@ -31,6 +31,7 @@ Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/v%version.ta
 Source9:        baselibs.conf
 Patch1:         ver.diff
 Patch2:         gcc48.diff
+Patch3:         spirv-tools-big-endian.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++

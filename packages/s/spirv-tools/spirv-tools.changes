@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  9 19:09:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix issues on big endian platforms
+  (Needed to fix https://bugreports.qt.io/browse/QTBUG-93101)
+  * spirv-tools-big-endian.patch
+
+-------------------------------------------------------------------
 Thu Nov 11 19:40:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.4

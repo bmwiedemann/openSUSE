@@ -226,4 +226,14 @@ join Staging:E</comment>
     <comment>- Update to release 2021.4</comment>
     <requestid>930983</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f7a2b4e0ae98cbf6867354724da8b5b8</srcmd5>
+    <version>2021.4</version>
+    <time>1639340837</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to fix issues on big endian platforms
+  (Needed to fix https://bugreports.qt.io/browse/QTBUG-93101)
+  * spirv-tools-big-endian.patch</comment>
+    <requestid>939076</requestid>
+  </revision>
 </revisionlist>
