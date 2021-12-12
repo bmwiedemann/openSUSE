@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 24 10:43:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_sysprof2.service.patch
+  * harden_sysprof3.service.patch
+
+-------------------------------------------------------------------
 Fri Nov  5 08:21:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.42.1:

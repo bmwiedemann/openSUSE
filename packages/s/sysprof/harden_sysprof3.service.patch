@@ -1,0 +1,23 @@
+Index: sysprof-3.42.1/src/sysprofd/sysprof3.service.in
+===================================================================
+--- sysprof-3.42.1.orig/src/sysprofd/sysprof3.service.in
++++ sysprof-3.42.1/src/sysprofd/sysprof3.service.in
+@@ -2,6 +2,18 @@
+ Description=Sysprof Daemon
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=dbus
+ BusName=org.gnome.Sysprof3
+ ExecStart=@sysprofdprivdir@/sysprofd

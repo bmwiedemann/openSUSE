@@ -36,6 +36,8 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
 Source0:        https://download.gnome.org/sources/sysprof/3.42/sysprof-%{version}.tar.xz
+Patch0:         harden_sysprof2.service.patch
+Patch1:         harden_sysprof3.service.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  itstool
