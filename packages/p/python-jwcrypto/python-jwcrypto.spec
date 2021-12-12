@@ -29,7 +29,7 @@ URL:            https://github.com/latchset/jwcrypto
 Source:         https://files.pythonhosted.org/packages/source/j/jwcrypto/jwcrypto-%{version}.tar.gz
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module cryptography >= 2.3}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

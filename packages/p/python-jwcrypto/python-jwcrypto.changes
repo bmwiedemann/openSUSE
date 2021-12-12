@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:25:36 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, not required
+
+-------------------------------------------------------------------
 Thu Aug  5 19:05:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.0
