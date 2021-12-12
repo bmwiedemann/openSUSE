@@ -19,7 +19,7 @@
 %define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        1.2
+Version:        1.2.1
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
@@ -84,6 +84,7 @@ This package contains the development libraries and headers for libmysofa.
 %{_libdir}/%{name}.so.%{sover}*
 
 %files devel
+%license LICENSE
 %{_includedir}/mysofa.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc

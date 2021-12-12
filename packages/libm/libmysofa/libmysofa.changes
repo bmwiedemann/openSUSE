@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  9 20:36:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.1:
+  * CVE-2021-3756: heap-based buffer overflow in loudness(),
+    mysofa_check() and readOHDRHeaderMessageDataLayout()
+    boo#1192257
+
+-------------------------------------------------------------------
 Mon Mar  1 22:28:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2:
