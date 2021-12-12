@@ -85,7 +85,7 @@ instant messenging can be unified under Yate's routing engine.
 Summary:        Development package for Yate
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Requires:       libyate6 = %{version}
+Requires:       libyate%{sover} = %{version}
 
 %description devel
 This package contains all necessary include files and libraries needed
