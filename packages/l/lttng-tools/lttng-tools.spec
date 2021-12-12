@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _version 2.12.0
+%define _version 2.13.0
 %define soname_ctl liblttng-ctl
 %define sover_ctl 0
 Name:           lttng-tools
-Version:        2.12.2
+Version:        2.13.1
 Release:        0
 Summary:        Linux Trace Toolkit Next Generation userspace tools
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(lttng-ust) >= %{_version}
 BuildRequires:  pkgconfig(uuid)
 Requires:       babeltrace
 Recommends:     lttng-modules-kmp
-ExclusiveArch:  %ix86 x86_64 aarch64 ppc64 ppc64le
+ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
 
 %description
 This package provides the userspace tools for controlling the LTTng
@@ -92,6 +92,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/lttng-sessiond
 %{_mandir}/man1/*.1%{?ext_man}
 %{_mandir}/man3/*.3%{?ext_man}
+%{_mandir}/man7/*.7%{?ext_man}
 %{_mandir}/man8/*.8%{?ext_man}
 %dir %{_libdir}/lttng/
 %dir %{_libdir}/lttng/libexec/

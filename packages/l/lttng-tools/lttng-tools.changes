@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 27 18:07:31 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.1:
+  * See https://git.lttng.org/?p=lttng-tools.git;a=blob_plain;f=ChangeLog;hb=v2.13.1
+- Rebase lttng-tools-fix-pkgconfig.patch.
+- Add ARMv7 and RISC-V to supported architectures.
+
+-------------------------------------------------------------------
 Mon Nov  2 23:31:57 UTC 2020 - Tony Jones <tonyj@suse.com>
 
 - Update to version 2.12.2 (jsc#SLE-16189)
