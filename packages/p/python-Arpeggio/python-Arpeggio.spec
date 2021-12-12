@@ -24,7 +24,7 @@ Summary:        Packrat parser interpreter
 License:        MIT
 URL:            https://github.com/textX/Arpeggio/
 Source:         https://github.com/textX/Arpeggio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -43,6 +43,8 @@ Arpeggio) see textX
 %setup -q -n Arpeggio-%{version}
 # remove shebang
 sed -i '1d' arpeggio/tests/regressions/issue_16/test_issue_16.py
+# https://github.com/textX/Arpeggio/issues/94
+sed -i '/pytest-runner/d' setup.cfg
 
 %build
 %python_build
