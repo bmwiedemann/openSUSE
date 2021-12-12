@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec 11 16:24:22 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.63.0
+  * skip python2
+  * API Updates 
+  ** Add support for new resource ShippingRate 
+  ** Add support for expire method on resource Checkout.Session 
+  ** Add support for list_payment_methods method on resource Customer
+  * Stop sending raw exception message as part of Stripe user agent. 
+
+-------------------------------------------------------------------
 Fri Aug 13 08:34:39 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to v2.60.0
