@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Dec 12 16:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use %suse_version instead of %is_opensuse
+- Add signature file and keyring
+- Update URL, Summary and description
+- Make -lang package optional for git builds
+- Drop redundant recommendation of the -lang package
+
+-------------------------------------------------------------------
 Thu Nov 18 14:31:09 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.4

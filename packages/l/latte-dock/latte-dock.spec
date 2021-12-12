@@ -2,7 +2,7 @@
 # spec file for package latte-dock
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017  Smith AR <audoban@openmailbox.org>
+# Copyright (c) 2017 Smith AR <audoban@openmailbox.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,20 @@
 
 %global __requires_exclude qmlimport\\(org\\.kde\\.latte\\.private\\.app
 
+%bcond_without lang
 %define kf5_version 5.48.0
 Name:           latte-dock
 Version:        0.10.4
 Release:        0
-Summary:        Task manager
+Summary:        Replacement Dock for Plasma Desktops
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://phabricator.kde.org/source/latte-dock/
-Source:         https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
+URL:            https://invent.kde.org/plasma/latte-dock
+Source0:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/latte-dock/latte-dock-%{version}.tar.xz.sig
+Source2:        latte-dock.keyring
+%endif
 BuildRequires:  fdupes
 BuildRequires:  libSM-devel
 BuildRequires:  pkgconfig
@@ -59,14 +64,13 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.9.0
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
-%if 0%{?is_opensuse}
+%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
 
 %description
-Latte is a dock based on plasma frameworks that animating its
-contents by using parabolic zoom effect.
+Latte is an alternative application launcher and dock for Plasma.
+It animates its contents by using a parabolic zoom effect and tries to be there only when it is needed.
 
 %lang_package
 
@@ -75,14 +79,15 @@ contents by using parabolic zoom effect.
 
 %build
 %cmake_kf5 -d build
-
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
-%find_lang %{name} --all-name
-%if 0%{?is_opensuse}
+%if 0%{?suse_version}
 %suse_update_desktop_file -r org.kde.%{name} Utility DesktopUtility
+%endif
+%if %{with lang}
+%find_lang %{name} --all-name
 %endif
 
 %files
@@ -106,6 +111,8 @@ contents by using parabolic zoom effect.
 %{_kf5_knsrcfilesdir}/latte-indicators.knsrc
 %{_kf5_knsrcfilesdir}/latte-layouts.knsrc
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog
