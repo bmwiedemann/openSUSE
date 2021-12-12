@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Dec  9 09:24:06 UTC 2021 - pgajdos@suse.com
+
+- version update to 10.0.0
+  * deprecate positional `allowed_types`.
+  * Revert "deprecate positional `allowed_types`".
+  * deprecate positional `allowed_types` (#1573). Thanks @fcurella.
+  * Fix positional ``value_types``.
+  * Shorten IBANs for `pl_PL` to 28 chars. Fix #1568 (#1569). Thanks @fcurella.
+  * Relax ElementsType to admit e.g. Sets. Thanks @OJFord.
+  * Fix ``pydecimal`` with ``left_digits=0`` not setting the left digit to 0. Thanks @ndrwkim.
+  *  Add ``es_CO`` localized providers. Thank you @healarconr.
+  * Take into account area codes for French phone numbers. Thanks @nicarl.
+  * Add provider for French SSN. Thanks @nicarl.
+  * Add dynamic provider. Thanks @omri374.
+  *  Improve randomness of ``pydecimal`` for different scenarios. Thanks @antonioIrizar.
+  *  Limit ``typing_extensions`` dependency to Python < 3.8. Thanks @mgorny.
+  *  Add ``typing-extensions`` as dependency and pin ``mypy`` version. Thanks @nicarl.
+  * Add automotive provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Add Typing. Thanks @MarcelRobeer, @nicarl.
+  *  Change to secondary address format in ``en_AU`` locale to reflect the common usage. Thanks @deboraelkin2.
+  * Add ``currency``, ``automotive``, ``company`` and ``bank`` providers for ``el_GR``. Thanks @nikosmichas.
+  * Add ``color`` and ``date_time`` provider for ``el_GR``. Thanks @nikosmichas.
+  * Add currency provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Fix ``pydecimal`` returning ``min_value`` or ``max_value`` too frequently. Thanks @zivkovic.
+  * Change default email generator to use safe domain names. Thanks @errbufferoverfl.
+  * Add ``date_time`` provider for ``nl_NL``. Thanks @MarcelRobeer.
+  * Add ``bg_BG`` color provider. Thanks @iradonov.
+  * Fix bug in ``pydecimal`` when returning max/min. Thanks @wilbertom.
+  * Fix `pydecimal` precision. Thanks @joidegn.
+  * Add datetime provider for ``bn_BD``. Thanks @jabertuhin.
+  * Change ``fi_FI`` Provinces to Regions. Thanks @LKajan.
+  * ``uk_UA`` address provider - fix streets and cities names, added regions. Thanks @o-vasyliev.
+  * Fix missing underscores in ``mac_platform_token``. Thanks @iamkeyur.
+  *  Remove period/fullstop from ``en_GB`` prefixes. Thanks @stephengruppetta.
+  * Add missing diacritics in ``fr_FR`` ``person`` provider. Thanks @laowantong.
+
+-------------------------------------------------------------------
 Mon Aug 30 11:18:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.12.1
