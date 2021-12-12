@@ -255,4 +255,19 @@
   * go#49391 cmd/compile: internal compiler error: Expand calls interface data problem (forwarded request 935319 from jfkw)</comment>
     <requestid>935321</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>be0ab3530f5ef8c5c78285651ad4a17f</srcmd5>
+    <version>1.16.12</version>
+    <time>1639340826</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.16.12 (released 2021-12-09) includes security fixes to the
+  syscall and net/http packages.
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2021-44716 CVE-2021-44717 
+  * boo#1193598 go#50057 CVE-2021-44717
+  * go#50066 syscall: don’t close fd 0 on ForkExec error
+  * boo#1193597 go#50058 CVE-2021-44716
+  * go#50064 net/http: limit growth of header canonicalization cache (forwarded request 938740 from jfkw)</comment>
+    <requestid>938752</requestid>
+  </revision>
 </revisionlist>
