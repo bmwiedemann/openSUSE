@@ -1,0 +1,26 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Reduce the minimum required meson version
+
+With this, we can build wireplumber in SLE 15 SP3/Leap 15.3
+which only have meson 0.54
+
+Index: wireplumber/meson.build
+===================================================================
+--- wireplumber.orig/meson.build
++++ wireplumber/meson.build
+@@ -1,3 +1,3 @@
+   license : 'MIT',
+-  meson_version : '>= 0.56.0',
++  meson_version : '>= 0.54.0',
+   default_options : [
+@@ -123,8 +123,8 @@ endif
+ 
+ conf_uninstalled = configuration_data()
+ conf_uninstalled.set('MESON', '')
+-conf_uninstalled.set('MESON_SOURCE_ROOT', meson.project_source_root())
+-conf_uninstalled.set('MESON_BUILD_ROOT', meson.project_build_root())
++conf_uninstalled.set('MESON_SOURCE_ROOT', meson.source_root())
++conf_uninstalled.set('MESON_BUILD_ROOT', meson.build_root())
+ 
+ wp_uninstalled = configure_file(
+   input : 'wp-uninstalled.sh',

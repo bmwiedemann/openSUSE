@@ -1,0 +1,1020 @@
+-------------------------------------------------------------------
+Thu Dec  9 12:08:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Supplements: (pipewire-pulseaudio and wireplumber) so everyone
+  having those two packages already installed automatically get
+  wireplumber-audio pulled in.
+
+-------------------------------------------------------------------
+Thu Dec  9 10:08:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Quiet setup of sources, no need to see the package untared.
+- Disable tests for ppc64 for now like we do for i586.
+
+-------------------------------------------------------------------
+Fri Dec  3 18:12:42 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Split the configuration to separate the audio initialization
+  to a new wireplumber-audio subpackage. This way, if that package
+  is not installed, pipewire doesn't open the audio devices, thus
+  not entering a race-condition with pulseaudio but still allowing
+  to manage v4l2 devices and sharing the screen in wayland, for
+  example (boo#1188516).
+
+-------------------------------------------------------------------
+Wed Nov 24 16:09:52 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix wireplumber breaking when
+  udevadm trigger is run:
+  * 0001-m-reserve-device-replace-the-hash-table-key-on-new-insert.patch
+- And another patch to fix an issue where there is only 1 sink
+  available and the card profile is toggeled between pro and
+  stereo:
+  * 0002-policy-node-wait-for-nodes-when-we-become-unlinked.patch
+
+-------------------------------------------------------------------
+Thu Nov 11 13:25:33 UTC 2021 - alarrosa@suse.com
+
+- Update to version 0.4.5:
+  * Fixes:
+    - Fixed a crash that could happen after a node linking error
+      (glfo#pipewire/wireplumber#76)
+    - Fixed a bug that would cause capture streams to link to
+      monitor ports of loopback nodes instead of linking to their
+      capture ports
+    - Fixed a needless wait that would happen on applications using
+      the pipewire ALSA plugin (glfo#pipewire/wireplumber#92)
+    - Fixed an issue that would cause endless rescan loops in
+      policy-node and could potentially also cause other strange
+      behaviors in case pavucontrol or another monitoring utility
+      was open while the policy was rescanning
+      (glfo#pipewire/wireplumber#77)
+    - Fixed the endpoints-based policy that broke in recent
+      versions and improved its codebase to share more code and be
+      more in-line with policy-node
+    - The semicolon character is now escaped properly in state
+      files (glfo#pipewire/wireplumber#82)
+    - When a player requests encoded audio passthrough, the policy
+      now prefers linking to a device that supports that instead of
+      trying to link to the default device and potentially failing
+      (glfo#pipewire/wireplumber#75)
+    - Miscellaneous robustness fixes in policy-node
+  * API:
+    - Added WpFactory, a binding for pw_factory proxies. This
+      allows object managers to query factories that are loaded in
+      the pipewire daemon
+    - The file-monitor-api plugin can now watch files for changes
+      in addition to directories
+
+- Remove patches already included by upstream:
+  * 0001-si-standard-link-fix-crash-after-returning-a-link-error.patch
+  * 0002-policy-node-enforce-the-direction-of-the-target-when-linking-by-node-name.patch
+  * 0001-add-missing-break-in-best-route-selection-logic.patch
+
+-------------------------------------------------------------------
+Wed Nov  3 08:34:01 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a problem saving the default
+  route:
+  * 0001-add-missing-break-in-best-route-selection-logic.patch
+
+- Add patch to let wireplumber build in Leap 15.3/SLE-15-SP3
+  which only have meson 0.54:
+  * reduce-meson-required-version.patch
+
+-------------------------------------------------------------------
+Thu Oct 21 10:15:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %post/%pre/... sections to enable the user service
+  automatically
+
+-------------------------------------------------------------------
+Tue Oct 19 10:59:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix selection of capture ports instead
+  of monitor ports:
+  * 0002-policy-node-enforce-the-direction-of-the-target-when-linking-by-node-name.patch
+
+-------------------------------------------------------------------
+Tue Oct 19 07:25:22 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a crash when there's a link error
+  (glfo#pipewire/wireplumber#76):
+  * 0001-si-standard-link-fix-crash-after-returning-a-link-error.patch
+
+-------------------------------------------------------------------
+Fri Oct 15 15:55:46 UTC 2021 - alarrosa@suse.com
+
+- Update to version 0.4.4:
+  * Highlights:
+    - Implemented linking nodes in passthrough mode, which enables
+      encoded iec958 / dsd audio passthrough
+    - Streams are now sent an error if it was not possible to link
+      them to a target (#63)
+    - When linking nodes where at least one of them has an
+      unpositioned channel layout, the other one is not
+      reconfigured to match the channel layout; it is instead
+      linked with a best effort port matching logic
+    - Output route switches automatically to the latest one that
+      has become available (#69)
+    - Policy now respects the 'node.exclusive' and 'node.passive'
+      properties
+    - Many other minor policy fixes for a smoother desktop usage
+      experience
+  * API:
+    - Fixed an issue with the LocalModule() constructor not
+      accepting nil as well as the properties table properly
+    - Added WpClient.send_error(), WpSpaPod.fixate() and
+    - WpSpaPod.filter() (both in C and Lua)
+  * Misc:
+    - Bumped meson version requirement to 0.56 to be able to use
+      meson.project_{source,build}_root() and ease integration with
+      pipewire's build system as a subproject
+    - wireplumber.service is now an alias to
+      pipewire-session-manager.service
+    - Loading the logind module no longer fails if it was not found
+      on the system; there is only a message printed in the output
+    - The logind module can now be compiled with elogind (#71)
+    - Improvements in wp-uninstalled.sh, mostly to ease its
+      integration with pipewire's build system when wireplumber is
+      build as a subproject
+    - The format of audio nodes is now selected using the same
+      algorithm as in media-session
+    - Fixed a nasty segfault that appeared in 0.4.3 due to a typo
+      (#72)
+    - Fixed a re-entrancy issue in the wplua runtime (#73)
+
+- Update to version 0.4.3:
+  * Fixes:
+    - Implemented logind integration to start the bluez monitor
+      only on the WirePlumber instance that is running on the
+      active seat; this fixes a bunch of startup warnings and the
+      disappearance of HSP/HFP nodes after login (#54)
+    - WirePlumber is now launched with GIO_USE_VFS=local to avoid
+      strange D-Bus interference when the user session is
+      restarted, which previously resulted in WirePlumber being
+      terminated with SIGTERM and never recovering (#48)
+    - WirePlumber now survives a restart of the D-Bus service,
+      reconnecting to the bus and reclaiming the bus services that
+      it needs (#55)
+    - Implemented route-settings metadata, which fixes storing
+      volume for the "System Sounds" in GNOME (#51)
+    - Monitor sources can now be selected as the default source
+     (#60)
+    - Refactored some policy logic to allow linking to monitors;
+      the policy now also respects "stream.capture.sink" property
+      of streams which declares that the stream wants to be linked
+      to a monitor (#66)
+    - Policy now cleans up 'target.node' metadata so that streams
+      get to follow the default source/sink again after the default
+      was changed to match the stream's currently configured target
+      (#65)
+    - Fixed configuring virtual sources (#57)
+    - Device monitors now do not crash if a SPA plugin is missing;
+      instead, they print a warning to help users identify what
+      they need to install (!214)
+    - Fixed certain "proxy activation failed" warnings (#44)
+    - iec958 codec configuration is now saved and restored properly
+      (!228)
+    - Fixed some logging issues with the latest version of pipewire
+      (!227, !232)
+    - Policy now respects the "node.link-group" property, which
+      fixes issues with filter-chain and other virtual sources &
+      sinks (#47)
+    - Access policy now grants full permissions to flatpak
+      "Manager" apps (#59)
+  * Policy:
+    - Added support for 'no-dsp' mode, which allows streaming audio
+      using the format of the device instead of the standard float
+      32-bit planar format (!225)
+  * Library:
+    - WpImplMetadata is now implemented using pw_impl_metadata
+      instead of using its own implementation (#52)
+    - Added support for custom object property IDs in WpSpaPod
+      (#53)
+  * Misc:
+    - Added a script to load the libcamera monitor (!231)
+    - Added option to disable building unit tests (!209)
+    - WirePlumber will now fail to start with a warning if
+      pipewire-media-session is also running in the system (#56)
+    - The bluez monitor configuration was updated to match the
+      latest one in pipewire-media-session (!224)
+
+- Update to version 0.4.2:
+  * Highlights:
+    - Requires PipeWire 0.3.32 or later at runtime
+    - Configuration files are now installed in
+      $PREFIX/share/wireplumber, along with scripts, following the
+      paradigm of PipeWire
+    - State files are now stored in $XDG_STATE_HOME instead of
+      $XDG_CONFIG_HOME
+    - Added new file-monitor-api module, which allows Lua scripts
+      to watch the filesystem for changes, using inotify
+    - Added monitor for MIDI devices
+    - Added a system-lua-version meson option that allows
+      distributors to choose which Lua version to build against
+      (auto, 5.3 or 5.4)
+    - wpipc has been removed and split out to a separate project,
+      https://git.automotivelinux.org/src/pipewire-ic-ipc/
+  * Library:
+    - A new WpImplModule class has been added; this allows loading
+      a PipeWire module in the WirePlumber process space, keeping a
+      handle that can be used to unload that module later. This is
+      useful for loading filters, network sources/sinks, etc...
+    - State files can now store keys that contain certain
+      GKeyFile-reserved characters, such as [, ], = and space; this
+      fixes storing stream volume state for streams using
+      PipeWire's ALSA compatibility PCM plugin
+    - WpProperties now uses a boxed WpPropertiesItem type in its
+      iterators so that these iterators can be used with g-i
+      bindings
+    - Added API to lookup configuration and script files from
+      multiple places in the filesystem
+  * Lua:
+    - A LocalModule API has been added to reflect the functionality
+      offered by WpImplModule in C
+    - The Node API now has a complete set of methods to reflect the
+      methods of WpNode
+    - Added Port.get_direction()
+    - Added not-equals to the possible constraint verbs
+    - Debug.dump_table now sorts keys before printing the table
+  * Misc:
+    - Tests no longer accidentally create files in $HOME; all
+      transient files that are used for testing are now created
+      in the build directory, except for sockets which are created
+      in /tmp due to the 108-character limitation in socket paths
+    - Tests that require optional SPA plugins are now skipped if
+      those SPA plugins are not installed
+    - Added a nice summary output at the end of meson configuration
+    - Documented the Lua ObjectManager / Interest / Constraint APIs
+    - Fixed some memory leaks
+
+-------------------------------------------------------------------
+Wed Jul 14 14:57:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove the Conflicts: pipewire-session-manager. There's no
+  problem in having both installed at the same time, they just
+  can't run at the same time.
+
+-------------------------------------------------------------------
+Wed Jul 14 06:25:10 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add `Provides: pipewire-session-manager` so wireplumber is
+  recognized as a pipewire session manager implementation.
+- Add `Conflicts: pipewire-session-manager` so no other session
+  manager is installed at the same time.
+
+-------------------------------------------------------------------
+Tue Jul 13 06:23:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.4.1:
+  * Highlights:
+    + WirePlumber now supports Lua 5.4. You may compile it either
+      with Lua 5.3 or 5.4, without any changes in behavior. The
+      internal Lua subproject has also been upgraded to Lua 5.4, so
+      any builds with -Dsystem-lua=false will use Lua 5.4 by
+      default
+  * Fixes:
+    + Fixed filtering of pw_metadata objects, which broke with
+      PipeWire 0.3.31
+    + Fixed a potential livelock condition in
+      si-audio-adapter/endpoint where the code would wait forever
+      for a node's ports to appear in the graph
+    + Fixed granting access to camera device nodes in flatpak
+      clients connecting through the camera portal
+    + Fixed a lot of issues found by the coverity static analyzer
+    + Fixed certain race conditions in the wpipc library
+    + Fixed compilation with GCC older than v8.1
+  * Scripts:
+    + Added a policy script that matches nodes to specific devices
+      based on the "media.role" of the nodes and the
+      "device.intended-roles" of the devices
+  * Build system:
+    + Bumped GLib requirement to 2.62, as the code was already
+      using 2.62 API
+    + Added support for building WirePlumber as a PipeWire
+      subproject
+    + Doxygen version requirement has been relaxed to accept v1.8
+    + The CI now also verifies that the build works on
+      Ubuntu 20.04 LTS and tries multiple builds with different
+      build options
+
+-------------------------------------------------------------------
+Thu Jun 24 10:46:58 UTC 2021 - alarrosa@suse.com
+
+- Update to version 0.4.0:
+  * release 0.4.0
+  * create-item: handle all kinds of Audio/Video & Stream nodes
+  * si-standard-link: treat endpoints as devices when linking
+    stream<->endpoint
+  * config: document the duck.level policy property
+  * scripts: change debug level for some messages
+  * lua: improve the object:activate() callback to report errors
+  * wplua: add a wplua_checkclosure() helper function
+  * Revert "tests: enable G_SLICE=debug-blocks in all tests"
+  * meson: add '--keep-debuginfo=yes' to the valgrind command line
+  * pipewire-object: change params-changed signal to take a string
+    param name
+  * tests: enable G_SLICE=debug-blocks in all tests
+  * meson: use environment() objects to define env for tests
+  * meson: add a test setup to run tests under valgrind
+  * daemon/wpexec: standardize exit codes based on sysexits.h
+  * daemon: replace the exit_message with direct message printouts
+  * wpexec: force the log level to be at least 1 and use fprintf()
+    for local errors
+  * daemon: exit with 0 both in case of a signal and in case of
+    disconnection
+  * tests: si-standard-link: remove unneeded core syncs
+  * tests: common: make sure no events are pending before
+    destroying core
+  * lib: add struct paddings to be able to maintain ABI
+    compatibility
+  * docs: set breathe_default_members to get struct members to show
+    up in the docs
+  * docs: remove :project: annotations for breathe
+  * pw-object-mixin: ignore set param on already destroyed objects
+  * proxy: destroy pw_proxy if bind_error is called
+  * restore-stream: implement storing/restoring of target.node
+    metadata
+  * lua: implement metadata:set()
+  * lua: fix refcounting of metadata iterator
+  * wplua: fix memleak when converting GVariant to Lua
+  * m-default-nodes-api: free default nodes when disabling plugin
+  * m-default-nodes: free default nodes when disabling plugin
+  * global-proxy: fix leak when getting global properties
+  * spa-pod: check if pod is valid before _parser_can_collect
+  * lua: remove hack around WpObjectInterest since we can _ref()
+    it now
+  * object-interest: remove unused _copy() method
+  * default-routes: use a constraint to check if device.name is
+    present
+  * default-routes: fix storing dev_info
+  * scripts: initial restore-stream implementation
+  * object-manager: small doc fix
+  * object-manager: support declaring interest on all properties of
+    globals
+  * object-interest: enrich _matches_full() to be able to check all
+    constraints
+  * si-adapter: handle autoconnect property
+  * si-adapter: handle dont-remix streams
+  * tests: store temporary WpState files in the build directory
+  * state: remove support for groups and propagate save errors
+  * state: don't stat() before creating the dir or removing the
+    state file
+  * policy: don't crash if some node properties are not set
+  * pipewire-object: fix memory leaks when getting properties
+  * m-default-profiles: finalize parent when plugin is destroyed
+  * si-adapter: take ownership of format argument
+  * endpoint: free media_class when disposing WpImplEndpoint
+  * pipewire-object: take ownership of param argument
+  * monitors: sanitize device names like media-session does
+  * object: advance pending transitions if activation fails
+  * modules: remove the old m-default-routes
+  * m-device-activation: don't set device routes
+  * default-routes: re-implement the default-routes module in lua
+  * docs: Write gtk-doc comments for constant variables
+  * docs: include wp.h in gir sources
+  * docs: Add brief descriptions to all functions
+  * policy: destroy node if defined target was not found and
+    reconnect is false
+  * global-proxy: make sure registry is valid before requesting
+    destroy
+  * lua: don't crash if an iterator is NULL
+  * lua: allow the Log api to debug boxed objects (useful for pods)
+  * lua: fix PipewireObject api: s/set_params/set_param/ and
+    cleanup
+  * lua: add WpState bindings
+  * object: use weakref when advancing current transition
+  * object: use destroy notify to keep self alive while advancing
+    transitions
+  * docs: make progress on lua api documentation
+  * policy-{node,endpoint-client}: do not crash if media.class is
+    nil
+  * meson: add reference to bugfix
+  * config: disable role-based endpoints in the default
+    configuration
+  * tests: si-audio-adapter: test is.device property
+  * m-si-standard-link: fix number of links check
+  * tests: si-standard-link: fix racy test
+  * meson: force the gir target to depend on wp-gtkdoc.h
+  * docs: tidy up most documents and try to update the information
+    in them
+  * docs: use the default sidebar color to make the version easier
+    to read
+  * docs: show version number on the sidebar
+  * release 0.3.96
+  * Makefile: use wp-uninstalled.sh to implement the run target
+  * gitignore: remove obsolete entry
+  * editorconfig: remove obsolete entry and add python script rules
+  * LICENSE: update copyright years
+  * docs: convert NEWS to rst and add it in the generated docs
+  * docs: update installing-wireplumber page
+  * ci: bump distribution tag date to the actual branch merge day
+  * gir: fix generate_gir()
+  * docs: convert lua api docs to pure rst
+  * docs: fix gobject-introspection data generation
+  * ci: update fdo template, fedora image and dependencies for docs
+  * docs: improve the home page and toc; use README.rst as a base;
+    add badges
+  * docs: fix C API documentation to work nicely with doxygen &
+    sphinx
+  * docs: meson: rebuild docs when Doxyfile.in changes
+  * docs: setup sphinx to use the graphviz extension
+  * docs: improve the visual appearence of the generated html and
+    cleanup
+  * docs: reorganize .rst files and add tables of contents for the
+    APIs
+  * meson: refactor docs + gi build system
+  * docs: build gobject introspection from xml files generated by Doxygen
+  * ci: replace hotdoc with Doxygen, Sphinx and Breathe tools
+  * docs: Add Lua API documentation
+  * docs: api: Replace hotdoc specific commands with Doxygen
+    specific commands
+  * docs: Replace hotdoc with Doxygen & Sphinx to generate
+    documentation
+  * pipewire-object-mixin: fix memleak in GList
+  * policy-endpoint-device: wait until previous links are activated
+  * m-si-standard-link: remove unused manage.lifetime configuration
+    property
+  * tests: enable si-standard-link test and port it to new API
+  * wplua: ref closure before invalidating it
+  * wpctl: fix iterator cleanup
+  * endpoint: remove wp_endpoint_create_link()
+  * scripts: remove static-sessions
+  * wp: remove WpSession and WpEndpointLink
+  * policy: don't link endpoints on startup
+  * m-default-nodes: check if node is valid before returning bound
+    id
+  * policy: reevaluate all linkables if one linkable was removed
+  * m-default-routes: log error message when failed to get current
+    routes
+  * m-default-profile: log error message when failed to get current
+    profile
+  * m-mixer-api: make sure the enum param iterator is valid
+  * pipewire-object-mixin: make sure enum params task is only
+    triggered once
+  * modules: steal the format_task before returning it
+  * systemd: Add conflicts with pipewire-media-session
+  * proxy: don't accept NULL pw_proxy in set_pw_proxy API
+  * m-device-activation: use sync API to enum available profiles
+  * m-default-routes: use sync API to enum available routes
+  * m-default-profile: use sync API to enum available profiles
+  * global-proxy: delay object creation until bound feature is
+    requested
+  * alsa-monitor: activate BOUND feature in JACK device
+  * tests: proxy: add a test for enum_params errors
+  * proxy: relax proxy error warning messages
+  * pw-object-mixin: watch for proxy errors during enum_params
+  * proxy: add a "bind" watch, to watch for proxy errors while
+    binding/exporting
+  * proxy: add error signal
+  * policy: fix removing of item links when linkable is removed
+  * tests: spa-pod: fix int64 constant to work on all architectures
+  * global-proxy: destroy the global when proxy is destroyed
+  * global-proxy: inherit from WpProxy when declaring class
+  * spa-pod: respect the SPA size for long and int APIs
+  * si-standard-link: configure the format in WpSiAdapters before
+    linking
+  * modules: implement WpSiAdapter in si-audio-adapter and
+    si-audio-endpoint
+  * si-interfaces: add WpSiAdapter interface to set and get session
+    item fortmat
+  * session-item: add _get_property API
+  * si-audio-adapter: remove unneeded 'preferred.n.channels'
+    property
+  * si-standard-link: make sure create_links creates at least 1
+    link
+  * modules: remove role and priority properties from
+    si-audio-adapter and si-node
+  * si-interfaces: rename WpSiPortInfo to WpSiLinkable
+  * scripts: cleaned and improved policy scripts
+  * create-item.lua: always enable monitor ports by default
+  * modules: remove 'monitor' port context from si-audio-adapter
+    and si-node
+  * release 0.3.95
+  * meson: depend on pipewire 0.3.26
+  * config: bluez: update to match media-session's
+    bluez-monitor.conf
+  * lua: rename Plugin() to Plugin.find()
+  * session-item: remove undefined API
+  * wp: remove WpSessionBin
+  * wp: rename debug.{h,c} to log.{h,c}
+  * config: disable ipc module by default and move it to the main
+    instance
+  * wpipc: place sockets in the same runtime directory as pipewire
+  * m-ipc: cleanup server using g_clear_pointer() for consistency
+    and safety
+  * wpipc: remove socket files after shutdown of the server
+  * meson: generate and install pkg-config file for wpipc
+  * meson: find threads_dep early and also use it in the
+    wpipc-client
+  * wpipc: use proper api & so versions
+  * meson: replace join_paths() with operator /
+  * meson: remove audiofade pipewire branch check
+  * meson: make wpipc optional and disabled by default
+  * policy-node: accept node names or paths in a stream's
+    node.target property
+  * policy-endpoint-client-links.lua: consider 'suspend.playback'
+    metadata
+  * modules: add ipc module
+  * lib: add wpipc library
+  * config: unify config and config-split
+  * systemd: add templated systemd unit files
+  * policy-endpoint: implement volume ducking
+  * m-mixer-api: track monitorVolumes and allow modifying them
+  * access: add a more generic "default" access policy script
+  * config: add an example of split-instance configuration
+  * Add a wp-uninstalled.sh script for easily running programs
+    uninstalled
+  * lua: remove the ability to specify spa_libs in the lua config
+  * daemon: init export core in the daemon and share it with
+    modules
+  * lua: change the "wireplumber.interactive" property to
+    "wireplumber.daemon"
+  * daemon: Use a pipewire-style config file to load initial
+    configuration
+  * core: use log.level from the pw_context
+  * log: factor out the log level configuration into
+    wp_log_level_set()
+  * audio-endpoint: configure adapter for null sink with
+    monitor.channel-volumes
+  * impl-node: implement WpPipewireObject
+  * device: debug and enhance spa device event handling
+  * config: policy: improve the endpoints & roles example config
+  * policy-endpoint-client: remove handling of move & follow and
+    endpoint priorities
+  * meson: bump version to 0.3.70
+  * m-mixer-api: allow calling the action signals even when the
+    plugin is not enabled
+  * m-default-nodes-api: remove reduntant call to g_clear_object
+  * wplua: store closures only with a weak reference
+  * examples: add example script to get the default sink's volume
+  * scripts: add policy for links between clients and endpoints
+  * lua: add WpObject get_active/supported_features() bindings
+  * lua: add g_get_real/monotonic_time() bindings
+  * si-audio-endpoint: give better descriptions to endpoints and
+    their null sinks
+  * static-endpoints: avoid capturing session item reference in
+    the activate closure
+  * policy: export endpoints, do not export endpoint links
+  * wpctl: handle endpoints nicely and enable volume controls on
+    them
+  * tools: split wireplumber script execution mode to a separate
+    wpexec tool
+  * tools: move under the 'src' directory
+  * src: scripts: rename policy-endpoint.lua to
+    policy-endpoint-client.lua
+  * m-audio-endpoint: remove target property
+  * static-endpoints.lua: don't export endpoints, only activate
+    them
+  * m-mixer-api: add configurable support for the cubic volume
+    scale
+  * wpctl: use mixer & default-nodes API modules
+  * m-mixer-api: also add channel-independent volume for ease of
+    use
+  * wpctl: remove obsolete default node/endpoint key macros
+  * m-mixer-api: fix getting volume info from nodes that don't
+    have volumeBase & step
+  * lua: add a Debug.dump_table() utility function
+  * m-default-nodes-api: load all information before declaring the
+    plugin as "enabled"
+  * lua: add a Core.require_api() utility function
+  * modules: add module-mixer-api
+  * src: config: do not create endpoints by default
+  * src: scripts: add policy-endpoint.lua script
+  * policy-node.lua: do not handle items with media role if
+    endpoints exist
+  * policy-node.lua: clean up findTarget function
+  * src: scripts: add static-endpoints.lua script
+  * modules: remove unneeded si-audio-convert module
+  * src: config: rename session-item support to default-policy
+  * create-item.lua: only create items for client and device
+    nodes
+  * policy-item.lua: only handle si-audio-adapter and si-nodes
+    links
+  * src: scripts: remove unneeded policy-endpoint.lua
+  * m-lua-scripting: add object manager get_n_objects API
+  * si-audio-endpoint: deactivate node when disabling active
+    feature
+  * m-si-audio-endpoint: fix port configuration and target
+    linking
+  * m-si-audio-endpoint: make target property optional
+  * tests: si-standard-link: sync core before finishing
+  * si-standard-link: call parent class finalize once finalized
+  * m-si-standard-link: properly set in item port context when
+    configuring
+  * policy-node.lua: fix param name typo when finding target
+  * policy-node: properly remove links between apps and capture
+    devices
+  * endpoint: remove useless pw_proxy_destroyed handlers
+  * registry: fix issues with dangling WpGlobal objects causing
+    assertion failures
+  * modules: use dots instead of dashes for session item properties
+  * wpctl: status: print nodes, ports, links grouped more nicely
+  * registry: fix odd assertion failures that occured from time to
+    time
+  * policy-node.lua: support config.move and config.follow
+  * m-si-audio-adapter: abort activation if node feature ports is
+    no longer enabled
+  * m-si-standard-link: make sure in/out items are valid before
+    activating
+  * wpctl: fix setting default nodes
+  * m-default-nodes: restore configured values on the metadata at
+    startup
+  * policy-node: use default-nodes-api plugin
+  * modules: add new module-default-nodes-api
+  * m-default-nodes: move common code to a new header
+  * m-default-nodes: add properties to control storage method and
+    interval
+  * modules: rename default-metadata to default-nodes and enable it
+    always in the config
+  * m-default-metadata: remove default endpoints, follow upstream
+    logic
+  * policy-node.lua: fix type mismatch when comparing session item
+    Ids
+  * lua: s/Feature.Object.ALL/Features.ALL/
+  * bluez config: update based on the latest media-session config
+  * m-default-metadata: add support for default audio nodes
+  * wpctl: list nodes and allow setting default nodes
+  * modules: remove endpoint impl on si-node, si-audio-convert and
+    si-audio-adapter
+  * tests: si-standard-link: use new si-audio-endpoint
+  * modules: add si-audio-endpoint session item
+  * src: scripts: add policy-node.lua to link port info session
+    items
+  * src: config: rename endpoint-support to session-item-support
+  * modules: remove si-monitor module
+  * src: scripts: add create-item.lua and remove
+    create-endpoint.lua
+  * m-si-standard-link: set out-item-id and in-item-id properties
+  * session-item: add id property
+  * m-si-audio-adapter: ensure ports are available before enabling
+    active
+  * m-lua-scripting: add get_associated_proxy session item Lua API
+  * si-interfaces: make WpSiLink work with WpSiPortInfo instead of
+    WpSiEndpoint
+  * si-interfaces: rename WpSiEndpointAcquisition to
+    WpSiAcquisition
+  * m-si-standard-link: use a weak reference for in and out
+    endpoints
+  * m-si-standard-link: fix in-endpoint check when configuring
+  * wplua: sort properties after transfering them from lua
+  * properties: add wp_properties_sort()
+  * monitor-alsa: add api.alsa.card.* properties on nodes
+  * bluez5: autoconnect bluetooth stream nodes
+  * object: deactivate only the features that were previously
+    active
+  * bluez5: use api.bluez5.connection-info
+  * m-si-convert: rename to si-audio-convert
+  * m-si-adapter: rename to si-audio-adapter
+  * tests: session-item: add registration test
+  * object-interest: add support for session item properties
+  * session-item: add _register and _remove API
+  * session-item: refactor and inherit from WpObject
+  * session-bin: remove unused wp_session_bin_new API
+  * lib: make WpImplEndpoint and WpImplEndpointLink public
+  * m-si-adapter: rename algorithms to audio-utils
+  * m-si-monitor-endpoint: rename to si-monitor
+  * m-si-simple-node-endpoint: rename to si-node
+  * lib: remove WpEndpointStream API
+  * wp_init: set PIPEWIRE_DEBUG
+  * spa-device: do not assert if the activation transition fails
+  * m-default-routes: return if default routes for a device are
+    not found
+  * m-default-routes: relax some warning logs to debug
+  * m-lua-script: add object_deactivate API
+  * m-lua-script: add closure for object_activate API
+  * object: add wp_object_activate_closure API
+  * ci: use 'disabled' instead of 'false' when configuring pipewire
+  * m-lua-scripting: add WpSessionBin add API
+  * lib: remove WpConfiguration
+  * lib: documentation fixes
+  * lua/api: add Link() constructor
+  * module-default-routes: store/restore route properties
+  * module-device-activation: apply default route on each new
+    device
+  * modules: add module-default-routes for storing/restoring routes
+  * lua/api: default Constraint type always to pw-global
+  * object-interest: remove type checks
+  * lua/api: simplify & improve session_item_configure
+  * lua/api: make the type optional when declaring Interest as a
+    function argument
+  * lua/api: improve getting optional Interest arguments
+
+-------------------------------------------------------------------
+Tue Mar 02 12:34:35 UTC 2021 - alarrosa@suse.com
+
+- Update to version 0.3.60+git.20210301.6c2bfea:
+  * scripts: policy-endpoints: add move and follow options
+  * m-lua-scripting: add get_n_streams endpoint API
+  * m-lua-scripting: add lookup session API
+  * examples: add bt-profile-switch example
+  * lua/pod: don't crash on parsing objects with unknown keys,
+    just ignore them
+
+-------------------------------------------------------------------
+Fri Feb 26 16:12:01 UTC 2021 - alarrosa@suse.com
+
+- Update to version 0.3.60+git.20210225.9f50117:
+  * lib: remove module.{c,h}
+  * meson: fix glib version requirement checks
+  * systemd: use the older version of the systemd pkgconfig
+    variables
+  * systemd: remove RuntimeDirectory from the system service
+  * daemon: add systemd unit files
+  * m-lua-scripting/pod: retrieve Ids in Array & Choice as
+    strings, if possible
+  * m-lua-scripting/pod: s/id_type/object_id/ as commented on !125
+  * m-lua-scripting: add support for choices when creating object
+    pods
+  * m-lua-scripting: refactor array and choice pod constructors to
+    accept Id names
+  * m-lua-scripting: allow constructing pod Ids with the Id name
+  * m-lua-scripting: set id_type field when parsing pod objects
+  * m-lua-scripting: set pod_type and value_type fieds when parsing
+    non-primitive pods
+  * m-lua-scripting: start indices from 1 when parsing pods
+  * test-endpoint: fix failure with pipewire master
+  * config: split flatpak access configuration
+  * scripts/access: update access scripts to call
+    update_permissions() cleanly
+  * lua/api: fix client update_permissions()
+  * examples: interactive.lua: add a shebang and update running
+    instructions
+  * lua: enable loading scripts with a shebang
+  * lua/api: log using a debug category unique for the calling
+    script file
+  * lua/api: ensure the function name in the debug output is
+    non-null
+  * monitor-alsa: fix node description on strange embedded devices
+  * suspend-node: honor "session.suspend-timeout-seconds"
+  * monitors: sanitize node descriptions too
+  * wplua: table_to_properties: use luaL_tolstring to do string
+    conversions
+  * config: bluez-monitor: add hfp_hf in the supported roles
+    comment
+  * m-lua-scripting: add WpPipewireObject api
+  * config: move loading of all audio support modules in
+    90-enable-audio-all
+  * config: split configuration for endpoints support in
+    config.lua.d
+  * monitors: drop the monitor- prefix from the filenames and
+    s/bluez5/bluez/
+  * config: make the monitor properties & rules available in global
+    tables
+  * config: load reserve-device only if alsa.reserve is true
+  * monitor-bluez: fix source priority assignment
+  * monitors: sanitize node names to match media-session's behavior
+  * wplua: gvariant_to_lua: convert dictionary keys to integers if
+    possible
+  * monitor-alsa: sync logic, properties and configuration with
+    media-session
+  * wplua: improve GVariant array conversion
+  * wplua: improve gvariant <-> lua conversion functions
+  * wplua: remove VARDICT handling in gvariant->lua conversion
+  * config: mimick media-session's v4l2-monitor.conf
+  * monitor-v4l2: copy properties and rules logic from
+    media-session
+  * config: immitate media-session's bluez-monitor.conf
+  * monitor-bluez: copy all properties and the rules functionality
+    from media-session
+  * lua/config: load split config files in alphanumeric order
+  * tests/lua: test monitor configuration rules code
+  * lua/api: add wp_object_interest_matches() binding
+  * object-interest: allow matching against WpProperties objects
+  * scripts: add portal access script
+  * scripts: add flatpak access lua script
+  * wplua: handle more GVariant cases
+  * m-lua-scripting: add WpClient LUA api
+  * Revert "meson: relax meson version dependency when building
+    with system lua"
+  * meson: relax meson version dependency when building with system
+    lua
+  * lua/pod: optimize push_primitive_values()
+  * tests/wplua: set WIREPLUMBER_CONFIG_DIR to an invalid directory
+  * lua/pod: simplify spa_pod_object_new()
+  * lua/pod: optimize lookups in primitive_lua_type and fix some
+    mistakes
+  * lua/pod: lookup the object type and values table only once when
+    constructing objects
+  * lua/pod: convert Id object fields to strings, if possible
+  * rename all foo_iterate APIs to foo_new_iterator
+  * m-lua-scripting/pod: push pod constructors using luaL_newlib
+    instead of manually
+  * modules: remove m-node-suspension
+  * m-lua-scripting/api: fix om:lookup() to return nil when no
+    object was found
+  * scripts: add suspend-node.lua to replace m-node-suspension
+  * wplua: fix enum <-> lua conversion
+  * create-endpoint.lua: fix some issues
+  * create-endpoint.lua: fix indentation
+  * node: change send_command() to take a string
+  * tests: wplua: add pod.lua script to validate pod API
+  * tests: wplua: add a script tester to validate lua scripts
+  * m-lua-scripting: add WpSpaPod api
+  * wplua: fix vtables lookup in boxed __index function
+  * examples: add an example interactive lua script
+  * m-lua-scripting/api: add wp_object_manager_iterate_filtered()
+  * proxy: add a method to query the interface type
+  * daemon: add a mode to execute lua scripts from the command line
+  * m-lua-scripting/api: add WpCore bindings
+  * m-lua-scripting/api: fix access to core in session_item_new()
+  * meson: bump version
+  * meson: remove C++ support, there's no C++ code anymore
+  * monitor-alsa: simplify reserve-device connection logic
+  * monitor-alsa: receive script configuration from config.lua
+  * scripts: add static-sessions.lua
+  * m-lua-scripting/api: add WpImplSession bindings
+  * m-lua-scripting: pass component arguments to scripts
+  * wplua: pass SANDBOX_CONFIG as a script argument
+  * wplua: allow exchanging arguments and results with scripts
+  * m-lua-scripting: use wplua_table_to_asv() instead of custom
+    function
+  * wplua: add GVariant dictionary conversion functions
+  * wptoml: remove, it's not used anymore
+  * daemon: refactor
+  * m-lua-scripting: fixes
+  * wp: add wp_get_data_dir()
+  * src: move scripts to their own directory, install in
+    $prefix/share/
+  * object-interest: add a NOT_EQUALS verb
+  * m-lua-scripting: allow queuing-in scripts without the plugin
+    being activated
+  * m-lua-scripting: refactor as a WpComponentLoader
+  * wplua: allow loading relative paths from wplua_load_path()
+  * wplua: add g_autoptr support to lua_State
+  * wplua: add flags to modify the sandbox behavior
+  * wp: export functions to get the module & config dirs
+  * lib: introduce WpComponentLoader and remove WpModule
+  * plugin: inherit from WpObject
+  * modules: remove modules that are obsoleted by the lua scripts
+  * modules: actually delete module-dbus-reservation.c
+  * monitor-alsa: add device reservation logic
+  * spa-device: add an "object-removed" signal
+  * lua: add wp_plugin_find binding
+  * modules: delete the old dbus-reservation module
+  * modules: implement a new reserve-device module
+  * plugin: add a method to find plugins easily
+  * conf: create-endpoint.lua: make sure endpoints always have a
+    valid name
+  * conf: create-endpoint.lua: use node id as key in session_items
+    table
+  * meson: add 'system-lua' project option to toggle the bundled
+    lua
+  * conf: disable legacy endpoint creation module and replace it
+    with lua script
+  * m-lua-scripting: add session item lua API
+  * session-item: add export API with closure
+  * session-item: add activate API with closure
+  * docs: update daemon/running.md
+  * m-lua-scripting: fix reference count in object manager's lookup
+    API
+  * object-interest: add _ref and _unref APIs
+  * config: enable lua scripts, disable legacy modules
+  * lua: fix some nasty memory leaks
+  * meson: require pipewire 0.3.20
+  * spa-device: handle DeviceEvent and configure node props
+  * m-lua-scripting: do stop the lua engine on deactivate()
+  * main: drop WpConfiguration reference early
+  * plugin: debug activation & deactivation
+  * wplua: object: unset GValues used when calling action signals
+  * config: add lua-based device monitors
+  * m-lua-scripting: add bindings required for device monitors
+  * impl-node: derive from WpProxy
+  * spa-device: derive from WpProxy and manage child objects
+    internally
+  * m-default-metadata: handle default nodes
+  * config: rename desktop profile to desktop-ep
+  * spa-pod: add the ability to specify Id properties as strings
+  * spa-type: refactor
+  * m-lua-scripting: handle default endpoints from the metadata
+  * m-config-policy: handle default endpoints from the metadata
+  * modules: replace session-settings with default-metadata
+  * wpctl: implement set-default using the metadata API
+  * meson: fix lua dependency on Arch Linux
+  * metadata: refactor API to quickly find a specific value
+  * state: use GKeyFile API to keep state in disk
+  * wp: remove initialization of wireplumber types
+  * session: remove default-endpoint-changed signal
+  * spa-type: fix param profile's last Id
+  * config: implement the functionality of config-policy in Lua
+  * m-lua-scripting: expose session, endpoint, endpoint-link APIs
+  * wplua: expose table to/from properties conversion functions
+  * object, pw-obj-mixin: fix warnings
+  * config: disable audio sink "streams"; they fail on latest
+    pipewire
+  * Fix compiler warnings that appear with the warning flags
+    enabled
+  * meson: enable compiler flags for warnings, if supported
+  * modules: implement module-lua-scripting
+  * wplua: use only the basename of the files for debug/error
+    messages
+  * wplua: use the error handler also when loading chunks
+  * wplua: implement __tostring for GObject
+  * wplua: use the registry to store vtables & closures
+  * wplua: remove TypeClass, push constructors as ClassName_new
+  * wplua: allow checking for a specific GType with
+    isobject/isboxed
+  * configuration: convert file paths from relative to absolute if
+    necessary
+  * configuration: implement grouping files in subdirectories
+  * wplua: add proper GError domain & error codes
+  * wplua: implement sandboxing of scripts
+  * wplua: convert WpProperties to table and vice versa
+  * wplua: new simple engine to integrate GObject with Lua
+  * meson: add dependency on lua 5.3
+  * tools: port wpctl to the new APIs
+  * tests: endpoint: re-enable the params unit test
+  * lib: delete WpProps
+  * pw-object-mixin: refactor, implement param caching and features
+    for impl objects
+  * iterator: add version field in the methods struct
+  * meson: bump project & API versions
+  * spa-pod: make the wrap functions public, remove private.h and
+    sort out the rest
+  * private: further cleanup of private.h, sort out header includes
+  * session-item: move wp_session_item_set_parent() to the public
+    header
+  * defs: add a new WP_PRIVATE_API function annotation
+  * iterator: make private stuff public, cleanup private.h further
+  * lib: move WpImplEndpoint* header parts to
+    private/impl-endpoint.h
+  * m-metadata: add callback for wp_object_activate()
+  * src: port daemon to the new APIs
+  * modules: port modules and their tests to the new proxy APIs
+  * object-manager: recursively store requested features on
+    children
+  * impl-endpoint{,-stream}: disable FEATURE_PROPS temporarily
+  * tests: fix library unit tests
+  * lib: refactor WpProxy
+  * lib: add new proxy-interfaces: interfaces for the refactored
+    WpProxy class
+  * lib/private: move the registry & global APIs to a separate
+    header
+  * lib: add new WpObject base class
+
+-------------------------------------------------------------------
+Wed Dec 30 13:19:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable testrun for 32bit arches, upstream do not care for them,
+  so we can not expect fixed tests any time soon.
+
+-------------------------------------------------------------------
+Fri Dec 18 20:22:35 UTC 2020 - bjorn.lie@gmail.com
+
+- Update to version 0.3.0+37:
+  * m-endpoint-creation: remove undefined API
+  * m-endpoint-creation: remove unnused variable in Bluez5 endpoint
+    creation
+  * m-device-activation: use profile from default-profile module if
+    loaded
+  * modules: add module to store device profiles each time they
+    change
+  * lib: add new WpState API to save and load data from files
+  * m-monitor: add use-acp flag
+  * modules: refactor dbus reservation
+  * plugin: add name property
+  * wpctl: add set-profile option
+  * transition: stop and return error if cancelled by the
+    GCancellable
+
+-------------------------------------------------------------------
+Tue Oct 20 11:48:52 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.3.0+27:
+  * device: set parent type to GObject in WpSpaDevice structure
+
+-------------------------------------------------------------------
+Mon Oct 12 13:24:01 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.3.0+26:
+  * m-endpoint-creation: add bluez5 endpoint creation for bluetooth
+    devices
+  * m-config-endpoint: refactor and rename to endpoint-creation
+  * modules: add bluez5 endpoint session item
+  * modules: add fake stream session item
+  * m-si-adapter: use the adapter's name as stream name
+  * m-si-adapter: set the configured flag when configuration was
+    successful
+  * m-config-policy: set the stream name to the media role propery
+    by default
+
+-------------------------------------------------------------------
+Fri Sep 11 10:45:33 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 0.3.0+19:
+  * Implement PW_TYPE_INTERFACE_Metadata
+  * metadata: fix more coding style issues
+  * metadata: improve implementation
+  * metadata: remove WP_METADATA_FEATURES_STANDARD and fix
+    copyright years
+  * module-metadata: s/settings/plugin/
+  * modules: rename metadata module to just 'module-metadata'
+  * tests: fix permissions check failure with latest pipewire
+  * tests: implement a WpMetadata unit test
+- Drop use-system-cpptoml.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jul 20 12:27:44 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial version of wireplumber 0.3.0
