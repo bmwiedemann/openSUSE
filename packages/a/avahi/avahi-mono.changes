@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 02:57:51 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Disable monodoc on ppc64, ppc64le and s390x, because the mdoc.exe
+  is completely not shipped with monocore-doc on them (bsc#1192212).
+
+-------------------------------------------------------------------
 Mon Oct 25 13:20:49 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Change %python38_version_nodots to %suse_version which is

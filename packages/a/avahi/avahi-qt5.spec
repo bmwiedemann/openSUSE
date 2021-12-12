@@ -67,6 +67,7 @@ Source12:       https://raw.githubusercontent.com/lathiat/avahi/master/service-t
 Source100:      attributes
 Source101:      update_spec.pl
 Source102:      baselibs.conf
+Source103:      avahi-rpmlintrc
 # PATCH-FIX-OPENSUSE avahi-gacdir.patch -- Mono libs are in $prefix/lib on suse
 Patch0:         avahi-gacdir.patch
 # PATCH-FIX-UPSTREAM avahi-desktop.patch bnc254654 Avahi#365 -- sbrabec@suse.cz
@@ -592,6 +593,9 @@ export PYTHON=%{_bindir}/$python
 %else
 	--disable-qt5\
 %endif
+%ifarch ppc64 ppc64le s390x
+    --disable-monodoc\
+%endif
 	--with-avahi-priv-access-group=avahi\
 	--with-autoipd-user=avahi-autoipd\
 	--with-autoipd-group=avahi-autoipd
@@ -714,8 +718,10 @@ rmdir %{buildroot}/%{_datadir}/avahi/interfaces
 rmdir %{buildroot}/%{_datadir}/avahi
 %else
 %if %{build_mono}
+%ifnarch ppc64 ppc64le s390x
 %if 0%{?suse_version} >= 1330
 strip-nondeterminism %{buildroot}/%{_prefix}/lib/monodoc/sources/*.zip
+%endif
 %endif
 %endif
 %endif
@@ -993,7 +999,9 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/avahi-sharp.pc
 %{_libdir}/pkgconfig/avahi-ui-sharp.pc
+%ifnarch ppc64 ppc64le s390x
 %{_prefix}/lib/monodoc/sources/*.*
+%endif
 %{_prefix}/lib/mono/avahi-sharp
 %{_prefix}/lib/mono/gac/avahi-sharp
 %endif
