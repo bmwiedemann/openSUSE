@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 12 13:59:30 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.57.0
+  * Bugfixes and minor changes:
+    - Fixed incorrect default settings for file editing
+    - Fixed a crash looking up data in file lists
+    - Fixed a crash if a HTTPS connection gets canceled during the
+      TLS handshake
+    - Updated to libfilezilla 0.35.0
+
+-------------------------------------------------------------------
 Sat Nov  6 13:03:56 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.56.2
