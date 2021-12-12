@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# hypothesis, as a dependency of this, is not python2 compatible anymore
+%define skip_python2 1
 Name:           python-parver
 Version:        0.3.1
 Release:        0

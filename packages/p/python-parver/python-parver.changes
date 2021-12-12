@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Dec  8 22:33:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Skip build for python 2 to fix build on Leap
+  * hypothesis is not python 2 compatible anymore, so either no
+    tests or no build with python2.
+
+-------------------------------------------------------------------
 Fri Jan 22 09:28:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.3.1
