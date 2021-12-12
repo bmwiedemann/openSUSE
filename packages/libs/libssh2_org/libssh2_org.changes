@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Dec 10 14:41:20 UTC 2021 - David Anes <david.anes@suse.com>
+
+- Bump to version 1.10.0
+    Enhancements and bugfixes:
+      * support ECDSA certificate authentication
+      * fix detailed _libssh2_error being overwritten by generic errors
+      * unified error handling
+      * fix _libssh2_random() silently discarding errors
+      * don't error if using keys without RSA
+      * avoid OpenSSL latent error in FIPS mode
+      * fix EVP_Cipher interface change in openssl 3
+      * fix potential overwrite of buffer when reading stdout of command
+      * use string_buf in ecdh_sha2_nistp() to avoid attempting to parse malformed data
+      * correct a typo which may lead to stack overflow
+      * fix random big number generation to match openssl
+      * added key exchange group16-sha512 and group18-sha512.
+      * add support for an OSS Fuzzer fuzzing target
+      * adds support for ECDSA for both key exchange and host key algorithms
+      * clean up curve25519 code
+      * update the min, preferred and max DH group values based on RFC 8270.
+      * changed type of LIBSSH2_FX_* constants to unsigned long
+      * added diffie-hellman-group14-sha256 kex
+      * fix for use of uninitialized aes_ctr_cipher.key_len when using HAVE_OPAQUE_STRUCTS, regression
+      * fixes memory leaks and use after free AES EVP_CIPHER contexts when using OpenSSL 1.0.x.
+      * fixes crash with delayed compression option using Bitvise server.
+      * adds support for PKIX key reading
+      * use new API to parse data in packet_x11_open() for better bounds checking.
+      * double the static buffer size when reading and writing known hosts
+      * improved bounds checking in packet_queue_listener
+      * improve message parsing (CVE-2019-17498)
+      * improve bounds checking in kex_agree_methods() 
+      * adding SSH agent forwarding.
+      * fix agent forwarding message, updated example.
+      * added integration test code and cmake target. Added example to cmake list.
+      * don't call `libssh2_crypto_exit()` until `_libssh2_initialized` count is down to zero.
+      * add an EWOULDBLOCK check for better portability
+      * fix off by one error when loading public keys with no id
+      * fix use-after-free crash on reinitialization of openssl backend
+      * preserve error info from agent_list_identities()
+      * make sure the error code is set in _libssh2_channel_open()
+      * fixed misspellings
+      * fix potential typecast error for `_libssh2_ecdsa_key_get_curve_type`
+      * rename _libssh2_ecdsa_key_get_curve_type to _libssh2_ecdsa_get_curve_type
+
+- Rebased patch libssh2-ocloexec.path
+- Removed patch libssh2_org-CVE-2019-17498.patch: the security fix
+    is already included in the latest version. 
+
+-------------------------------------------------------------------
 Thu Aug 27 12:47:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop man and groff BuildRequires: both are no longer used in

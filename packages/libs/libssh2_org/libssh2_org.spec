@@ -1,7 +1,7 @@
 #
 # spec file for package libssh2_org
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pkg_name libssh2
 Name:           libssh2_org
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A library implementing the SSH2 protocol
 License:        BSD-3-Clause
@@ -29,8 +29,6 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
-# PATCH-FIX-UPSTREAM bsc#1154862 CVE-2019-17498
-Patch1:         libssh2_org-CVE-2019-17498.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -69,11 +67,9 @@ SECSH-PUBLICKEY.
 %prep
 %setup -q -n %{pkg_name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 sed -i -e 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g' configure.ac
-cp src/libssh2_config.h.in example/libssh2_config.h
 # remove m4 macro files for libtool as they should be picked up by
 rm -v m4/libtool.m4 m4/lt*
 autoreconf -fiv
