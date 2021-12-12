@@ -81,4 +81,19 @@
   * go#48825 go/types, types2: stack overflow in hasVarSize for invalid type (forwarded request 935320 from jfkw)</comment>
     <requestid>935322</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>249782657523205d6fc4799475690adb</srcmd5>
+    <version>1.17.5</version>
+    <time>1639340827</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.17.5 (released 2021-12-09) includes security fixes to the
+  syscall and net/http packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2021-44716 CVE-2021-44717
+  * boo#1193598 go#50057 CVE-2021-44717
+  * go#50067 syscall: don’t close fd 0 on ForkExec error
+  * boo#1193597 go#50058 CVE-2021-44716
+  * go#50065 net/http: limit growth of header canonicalization cache (forwarded request 938745 from jfkw)</comment>
+    <requestid>938755</requestid>
+  </revision>
 </revisionlist>

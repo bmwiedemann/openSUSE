@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  9 17:31:00 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.17.5 (released 2021-12-09) includes security fixes to the
+  syscall and net/http packages.
+  Refs boo#1190649 go1.17 release tracking
+  CVE-2021-44716 CVE-2021-44717
+  * boo#1193598 go#50057 CVE-2021-44717
+  * go#50067 syscall: don’t close fd 0 on ForkExec error
+  * boo#1193597 go#50058 CVE-2021-44716
+  * go#50065 net/http: limit growth of header canonicalization cache
+
+-------------------------------------------------------------------
 Fri Dec  3 02:15:02 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.17.4 (released 2021-12-02) includes fixes to the compiler,
