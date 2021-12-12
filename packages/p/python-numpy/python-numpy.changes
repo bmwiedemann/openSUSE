@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Dec  9 14:43:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Ignore Python 3.10 deprecation warnings
+
+-------------------------------------------------------------------
 Sun Dec  5 07:26:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix abbreviated references

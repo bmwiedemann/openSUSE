@@ -261,9 +261,16 @@ EOF
 %check
 %if %{without hpc}
 export PATH="%{buildroot}%{_bindir}:$PATH"
-mkdir testing
-cp numpy/conftest.py testing/
+
+mkdir -p testing
+cp pytest.ini testing/
 pushd testing
+
+# Python 3.10 deprecated distutils. This is going to be fixed in numpy 1.22 gh#numpy/numpy#20419
+echo '    ignore:.*distutils.*:DeprecationWarning' >> pytest.ini
+# Fixed in numpy 1.21.5 - gh#numpy/numpy#20467
+echo '    ignore:.*load_module.*:DeprecationWarning' >> pytest.ini
+
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
 test_failok+=" or test_structured_object_item_setting"
@@ -289,15 +296,21 @@ test_failok+=" or test_float_remainder_overflow"
 test_failok+=" or test_fpclass"
 test_failok+=" or test_float"
 %endif
+
+echo "
+import sys
+import numpy
+numpy.test(label='full', verbose=2,
+           extra_argv=['-v', '-n', 'auto', '-k'] + sys.argv[1:])
+" > runobstest.py
+
 %{python_expand # for all python3 flavors
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 export PYTHONDONTWRITEBYTECODE=1
-$python -c 'from numpy import _pytesttester as ptt; ptt._show_numpy_info()'
-testcall="pytest-%{$python_bin_suffix} -n auto -c ../pytest.ini %{buildroot}%{$python_sitearch}/numpy"
-[ -n "$test_failok" ] && ${testcall} -k "${test_failok:4}" || true
-${testcall} ${test_failok:+-k "not (${test_failok:4})"}
-rm -Rf %{buildroot}%{$python_sitearch}/numpy/.pytest_cache
+[ -n "$test_failok" ] && $python runobstest.py "${test_failok:4}" ||:
+$python runobstest.py "not (${test_failok:4})"
 }
+
 popd
 %endif
 
