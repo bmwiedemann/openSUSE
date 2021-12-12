@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sun Dec 12 00:57:20 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20211201
+* Added icons
+
+  * Added actions icons:
+    * cell_edit
+    * edit-delete-remove
+    * edit-entry
+    * editor
+    * edittext
+    * gnumeric-comment-edit
+    * gnumeric-link-edit
+    * languages
+    * output_win
+    * view-media-genre
+    * view-media-playcount
+  * Adwaita Demo
+  * Akira
+  * Android Studio Preview (Beta/Canary) #2891
+  * Apple Music
+  * Asunder #2880
+  * Beyond All Reason #2871
+  * Binance
+  * Birdfont
+  * Blockbench (Flathub) #2007
+  * Cambalache
+  * Carla (Flathub) #2007
+  * Compact Shutdown (Plasmoid)
+  * Crab Game #2869
+  * Daty
+  * DaVinci Resolve
+  * eqonomize (mimetypes icon) #2863
+  * Fasttracker II
+  * Give Me Lyrics
+  * GNOME Passbook
+  * GNOME Secrets
+  * Greenfoot (Flathub) #2007
+  * GTK4 Demo
+  * Hackgregator
+  * Hamster (Flathub) #2007
+  * Haruna
+  * Hively Tracker
+  * iCloud
+  * iCloud Drive
+  * iCloud Photos
+  * Input Method (Plasmoid)
+  * Inspektor
+  * Internxt Drive
+  * Jami
+  * Keyboard Layout (Plasmoid)
+  * KiCad Suite (Flathub)
+  * LunarVim #2882
+  * Manuskript (Flathub) #2007
+  * Mathematica (mimetypes icons)
+  * MenuLibre (Flathub) #2007
+  * Minimize All (Plasmoid)
+  * Mousai
+  * Mt
+  * Mu-editor
+  * Nostalgia
+  * Notejot
+  * osu! (Flathub) #2007
+  * Password
+  * Password Manager
+  * PCSX2 (AppImage)
+  * Pixel Piracy #2799
+  * Plots
+  * preferences-system-windows-behavior
+  * QDirStat #2877
+  * qimgv #2878
+  * Quick Lookup
+  * Rare (tray icon) #2844
+  * Rnote
+  * Sentinel dVPN
+  * SongRec
+  * Spotify QT
+  * Steam Rom Manager #2879
+  * Sums
+  * Synology Assistant/Drive/Note Station #2860
+  * Tandem
+  * TilEm
+  * Tomate
+  * Twitz
+  * VMware Workstation (actions, and mimetypes icons) #2855
+  * Wike
+  * Zenkit #2890
+  * Zettlr
+
+* Updated icons
+
+  * application-vnd.android.package-archive (*.apk) (mimetypes icon)
+  * application-x-sharedlib (mimetypes icon)
+  * bluetooth (tray, and symbolic icons)
+  * GNOME GTG
+  * GNOME Keysign
+  * GNOME Notes
+  * GTK4 Widget Factory
+  * media-playlist-play (actions icon)
+  * network-wired (tray, and symbolic icons)
+  * Portfolio
+  * preferences-activities
+  * radio (tray, and actions icons)
+  * Steam (tray icon)
+  * Transmission (apps, and tray icons) #2874
+  * unknown (mimetypes icon)
+  * user-desktop (monochrome places icon)
+  * view-media-lyrics (actions icon)
+  * window-pin, and window-unpin (actions icon)
+
+* Changes and fixes
+
+  * Changed color for Electron Mail tray icon to support color changing
+  * Removed CSS stylesheet from folder-applications 48px icons
+ 
+
+-------------------------------------------------------------------
 Mon Nov  1 23:19:17 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20211101
