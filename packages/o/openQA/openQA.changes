@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Dec 12 08:04:10 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1639150327.6dac4a283:
+  * Rename signal guard variable to make its effect more clear
+  * Retry Minion jobs for cleanup on SIGTERM/SIGINT (e.g. service restarts)
+
+-------------------------------------------------------------------
 Fri Dec 10 00:04:06 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1639057582.07f0f29cd:
