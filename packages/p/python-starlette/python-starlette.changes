@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Dec  8 15:53:03 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to version 0.17.1
+  * Fix IndexError in authentication requires when wrapped function
+     arguments are distributed between *args and **kwargs #1335.
+- version 17.0
+  * Added
+    - Response.delete_cookie now accepts the same parameters as
+      Response.set_cookie #1228.
+    - Update the Jinja2Templates constructor to allow PathLike #1292.
+  * Fixed
+    - Fix BadSignature exception handling in SessionMiddleware #1264.
+    - Change HTTPConnection.__getitem__ return type from str to
+      typing.Any #1118.
+    - Change ImmutableMultiDict.getlist return type from typing.List[str]
+      to typing.List[typing.Any] #1235.
+    - Handle OSError exceptions on StaticFiles #1220.
+    - Fix StaticFiles 404.html in HTML mode #1314.
+    - Prevent anyio.ExceptionGroup in error views under a
+      BaseHTTPMiddleware #1262.
+  *Removed
+    - Remove GraphQL support #1198.
+- Remove py39-ignore-loop-deprecation.patch
+
+-------------------------------------------------------------------
 Mon Sep 27 12:44:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add py39-ignore-loop-deprecation.patch to fix failing tests

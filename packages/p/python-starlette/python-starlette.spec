@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette
-Version:        0.16.0
+Version:        0.17.1
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM py39-ignore-loop-deprecation.patch gh#encode/starlette#1293 mcepl@suse.com
-# Ignore loop deprecation warnings originating inside asyncio; bpo#45097
-Patch0:         py39-ignore-loop-deprecation.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiofiles}
@@ -58,7 +55,7 @@ Starlette is a lightweight ASGI framework/toolkit, which is ideal for
 building high performance asyncio services.
 
 %prep
-%autosetup -p1 -n starlette-%{version}
+%autosetup -n starlette-%{version}
 
 %build
 %python_build
@@ -69,7 +66,7 @@ building high performance asyncio services.
 
 %check
 # Deprecate built-in GraphQL support gh#encode/starlette#1135
-rm tests/test_graphql.py
+# rm tests/test_graphql.py
 # Remove unrecognized arguments: --strict-config --strict-markers
 sed -i "s|--strict-config||" setup.cfg
 sed -i "s|--strict-markers||" setup.cfg
