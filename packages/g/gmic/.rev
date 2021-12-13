@@ -151,4 +151,12 @@
     <comment></comment>
     <requestid>930089</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>87f59bac67f5b90a0655f3f000bf0200</srcmd5>
+    <version>3.0.0</version>
+    <time>1639424683</time>
+    <user>dimstar_suse</user>
+    <comment>3.0.0 (forwarded request 940191 from cgiboudeaux)</comment>
+    <requestid>940192</requestid>
+  </revision>
 </revisionlist>

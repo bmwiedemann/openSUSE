@@ -18,7 +18,7 @@
 
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
 Name:           gmic
-Version:        2.9.9
+Version:        3.0.0
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -29,7 +29,6 @@ URL:            https://gmic.eu
 # Git URL:      https://github.com/dtschump/gmic
 Source0:        https://gmic.eu/files/source/gmic_%{version}.tar.gz
 Source1:        gmic_qt.png
-Patch0:         0001-cmake-Set-target-compile-flags-correctly.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  pkgconfig
