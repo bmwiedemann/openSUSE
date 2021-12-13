@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jedi
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -27,11 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM Support pytest completion for Python 3.9 -- gh#davidhalter/jedi#1699
-Patch0:         https://github.com/davidhalter/jedi/commit/85ec94cf.patch#/jedi-py39-pytest.patch
 BuildRequires:  %{python_module parso >= 0.8.0}
-# need pytest <6 https://github.com/davidhalter/jedi/issues/1660; pytest4 in Leap cannot work with pluggy 1.0 in :backports
-BuildRequires:  %{python_module pytest5}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
@@ -71,12 +68,9 @@ skiptests+=" or test_sqlite3_conversion"
 skiptests+=" or test_speed"
 # fails on some architectures
 skiptests+=" or test_init_extension_module"
-%if 0%{?suse_version} == 1500
-  # the python 2 pytest test discovery in Leap 15 and SLE15
-  # trips on purposely placed syntax errors in test/completion/imports.py
-  %define pytestignore --ignore test/__init__.py
-%endif
-%pytest -k "not ($skiptests)" %{?pytestignore}
+# https://github.com/davidhalter/jedi/issues/1824
+skiptests+=" or (test_completion and lambdas and 112)"
+%pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGELOG.rst README.rst
