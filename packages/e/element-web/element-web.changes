@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:13:35 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.9.7
+  * Security fix: buffer overflow in libolm and matrix-js-sdk
+    https://matrix.org/blog/2021/12/13/disclosure-buffer-overflow-in-libolm-and-matrix-js-sdk
+
+-------------------------------------------------------------------
 Thu Dec  9 10:35:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.9.6
