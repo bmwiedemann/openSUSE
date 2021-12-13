@@ -32,7 +32,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/Dreamacro/clash
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-vendor.tar.gz
+Source1:        %{name}-vendor.tar.xz
 Source2:        %{name}.yaml
 Source3:        %{name}-system.service
 Source4:        %{name}-user.service

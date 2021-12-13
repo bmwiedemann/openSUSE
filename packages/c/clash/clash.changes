@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Sun Dec 05 10:55:19 UTC 2021 - orville@anislet.dev
+Sun Dec 05 10:55:19 UTC 2021 - Orville Q. Song <orville@anislet.dev>
 
 - Update to version 1.8.0:
   * Fix: windows arm7 build
@@ -12,31 +12,6 @@ Sun Dec 05 10:55:19 UTC 2021 - orville@anislet.dev
   * Chore: use uber max procs
   * Fix: remove ResponseHeaderTimeout limitation (#1690)
   * Chore: use alpn http 1.1 only on trojan websocket by default
-
--------------------------------------------------------------------
-Sun Dec  5 02:01:13 UTC 2021 - Orville Q. Song <orville@anislet.dev>
-
-- Add system and user unit files
-- Update to version 1.8.0 (20211108)
-  * Features
-    - persistence fakeip
-    - support trojan over websocket
-    - all proxies support dial different NIC
-    - all proxies support set fwmark on linux
-  * Changes
-    - use bbolt as cache db
-    - doh request should with id 0
-    - use interface HardwareAddr for dhcp discovery
-    - unexpected proxy dial behavior on mapping mode (redir-host)
-  * Chore
-    - avoid bufConn twice
-    - use sharded bytes.Buffer pool
-    - remove deprecated ioutil
-    - adjust all udp alloc size
-  * Bugfixes
-    - http proxy should respond correct http version
-    - dhcp client should request special interface
-    - remove ResponseHeaderTimeout limitation
 
 -------------------------------------------------------------------
 Wed Aug 26 00:29:23 UTC 2020 - Xu Zhao <i@xuzhao.net>

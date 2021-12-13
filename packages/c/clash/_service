@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/Dreamacro/clash.git</param>
     <param name="scm">git</param>
     <param name="revision">v1.8.0</param>
@@ -8,8 +8,8 @@
     <param name="filename">clash</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="tar" mode="localonly" />
-  <service name="recompress" mode="localonly">
+  <service name="tar" mode="disabled" />
+  <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

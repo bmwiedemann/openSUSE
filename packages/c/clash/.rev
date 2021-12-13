@@ -9,4 +9,12 @@
 A rule-based tunnel in Go.</comment>
     <requestid>935784</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b15f224d6d0a1ed379de44f4a1b2e95</srcmd5>
+    <version>1.8.0</version>
+    <time>1639424709</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940274</requestid>
+  </revision>
 </revisionlist>
