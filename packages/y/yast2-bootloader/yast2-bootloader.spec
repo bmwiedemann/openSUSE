@@ -17,7 +17,7 @@
 
 
 Name:           yast2-bootloader
-Version:        4.4.9
+Version:        4.4.10
 Release:        0
 Summary:        YaST2 - Bootloader Configuration
 License:        GPL-2.0-or-later
@@ -45,8 +45,8 @@ Requires:       yast2 >= 4.3.41
 Requires:       yast2-core >= 2.18.7
 Requires:       yast2-packager >= 2.17.24
 Requires:       yast2-pkg-bindings >= 2.17.25
-# BlkDevice#preferred_name and Filesystems::BlkFilesystem#preferred_name
-Requires:       yast2-storage-ng >= 4.3.36
+# Y2Storage::Arch#efibootmgr?
+Requires:       yast2-storage-ng >= 4.4.22
 # Support for multiple values in GRUB_TERMINAL
 Requires:       rubygem(%rb_default_ruby_abi:cfa_grub2) >= 1.0.1
 # lenses are needed as cfa_grub2 depends only on augeas bindings, but also

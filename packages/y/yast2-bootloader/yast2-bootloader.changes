@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Dec 10 12:05:57 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- rely on yast-storage-ng to detect UEFI boot support status (bsc#937067)
+- 4.4.10
+
+-------------------------------------------------------------------
 Thu Nov 25 08:29:34 UTC 2021 - Michal Filka <mfilka@suse.com>
 
 - bnc#1193016
