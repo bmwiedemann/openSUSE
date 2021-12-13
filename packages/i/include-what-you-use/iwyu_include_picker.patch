@@ -42,8 +42,8 @@ index be318e2..089e911 100644
 +  { "std::wfstream", kPrivate, "<fstream>", kPublic },
  };
  
- // Private -> public include mappings for GNU libc
  const IncludeMapEntry libc_include_map[] = {
+   // Private -> public include mappings for GNU libc
 -  // ( cd /usr/include && grep '^ *# *include' {sys/,net/,}* | perl -nle 'm/^([^:]+).*<([^>]+)>/ && print qq@    { "<$2>", kPrivate, "<$1>", kPublic },@' | grep bits/ | sort )
 +  // ( cd /usr/include && grep '^ *# *include' {sys/,net/,}* | perl -nle 'm/^([^:]+).*<([^>]+)>/ && print qq@  { "<$2>", kPrivate, "<$1>", kPublic },@' | grep bits/ | sort )
    // When I saw more than one mapping for these, I typically picked

@@ -143,4 +143,20 @@
 - Rebase iwyu_include_picker.patch.</comment>
     <requestid>896785</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>64bf1e094c24c28b8dbbe5acdaf6fdc0</srcmd5>
+    <version>0.17</version>
+    <time>1639424668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17, update LLVM/Clang to version 13.
+  * Improve support for various C++ features (builtins, CTAD,
+    specializations, type aliases).
+  * Fix crash on invalid code.
+  * Remove hard dependency on x86 LLVM target.
+  * Improve mappings for GNU libc.
+  * More concise output for clang output format in iwyu_tool.
+- Rebase iwyu_include_picker.patch.
+- Drop obsolete remove-x86-specific-code.patch, fixed upstream.</comment>
+    <requestid>940114</requestid>
+  </revision>
 </revisionlist>

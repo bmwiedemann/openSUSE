@@ -18,7 +18,7 @@
 
 
 Name:           include-what-you-use
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -27,12 +27,11 @@ URL:            https://include-what-you-use.org/
 Source0:        https://include-what-you-use.org/downloads/%{name}-%{version}.src.tar.gz
 Patch1:         fix-shebang.patch
 Patch2:         iwyu_include_picker.patch
-Patch3:         remove-x86-specific-code.patch
 BuildRequires:  c++_compiler
-BuildRequires:  clang12-devel
+BuildRequires:  clang13-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
-BuildRequires:  llvm12-devel
+BuildRequires:  llvm13-devel
 BuildRequires:  python
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -63,7 +62,6 @@ refactoring tool.
 %setup -q -n %{name}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 sed -i s#lib/#lib\${LLVM_LIBDIR_SUFFIX}/#g CMakeLists.txt
 
 %build
