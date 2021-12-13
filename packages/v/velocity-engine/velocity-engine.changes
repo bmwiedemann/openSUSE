@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Mon Oct 25 11:34:21 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Version 2.2:
+  * see changes on https://velocity.apache.org/news.html
+- Added patches:
+  * velocity-2.2-CVE-2020-13936.patch
+  * build.patch
