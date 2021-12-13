@@ -17,7 +17,7 @@
 
 
 Name:           php-composer2
-Version:        2.1.12
+Version:        2.1.14
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
@@ -32,6 +32,8 @@ Requires:       php-openssl
 Requires:       php-phar
 Requires:       php-zip
 Requires:       php-zlib
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Provides:       composer = %{version}
 Provides:       php-composer = %{version}
 Provides:       php5-composer = %{version}
@@ -60,10 +62,24 @@ cp %{SOURCE1} .
 # Install compiled phar file
 install -d -m 0750 %{buildroot}%{_bindir}
 install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/composer2
+# Create a dummy target for /etc/alternatives/composer
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/composer %{buildroot}%{_bindir}/composer
+
+%post
+update-alternatives --install \
+   %{_bindir}/composer composer %{_bindir}/composer2 2
+
+%postun
+if [ ! -f %{_bindir}/composer2 ] ; then
+   update-alternatives --remove composer %{_bindir}/composer2
+fi
 
 %files
 %license LICENSE
 %defattr(-,root,root,0755)
+%{_bindir}/composer
 %{_bindir}/composer2
+%ghost %_sysconfdir/alternatives/composer
 
 %changelog
