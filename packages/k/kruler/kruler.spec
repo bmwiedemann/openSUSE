@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kruler
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
@@ -66,7 +65,7 @@ A screen ruler for the Plasma desktop environment
   %suse_update_desktop_file -r org.kde.kruler Utility DesktopUtility
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kruler/
 %{_kf5_applicationsdir}/org.kde.kruler.desktop
 %{_kf5_appstreamdir}/org.kde.kruler.appdata.xml
