@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Dec 12 21:34:49 UTC 2021 - rombert@apache.org
+
+- Update to version 0.16.0:
+  * Version 0.16.0
+  * replace troublesome indexing with pop function
+  * fix subsequent prompt modifications
+  * restrict KUBECONFIG value
+  * preserve xonshrc configuration
+  * add xonsh support
+  * Version 0.15.3
+  * Add proper support for overridden $ZDOTDIR (#92)
+  * Version 0.15.2
+  * Find ZSH dotfiles in $ZDOTDIR first, then $HOME
+  * Add fish completions
+  * README: add MacPorts install info (#86)
+  * Update dependencies
+  * Allow references to users and clusters outside the config file
+  * Version 0.15.1
+  * vuln: update dependencies to remove unsafe `generator` package (#80)
+  * Version 0.15.0
+  * Add linux arm static builds (#79)
+  * Do not try to read directories as YAML when configs are loaded.
+  * Fix autocomplete error (#75)
+  * Version 0.14.1
+  * Avoid using temporary file for state (#74)
+  * Version 0.14.0
+  * Convert to using --context-headers={Auto,Always,Never} flag style
+  * Lowercase settings for behavior.print_context_in_exec
+  * More idiomatic defaulting in settings
+  * Better config for behavior.print_context_in_exec, more explicit CLI flags
+  * Print context names when using kubie exec with wildcard
+  * Version 0.13.4
+  * Fix missing data dir bug + adjustements with paths (#70)
+  * Version 0.13.3
+  * Enhance state.json handling with parallel kubie processes (#67)
+  * Version 0.13.2
+  * Return error on no matching context
+  * Update deps
+
+-------------------------------------------------------------------
 Wed Feb 17 09:05:37 UTC 2021 - rombert@apache.org
 
 - Update to version 0.13.1:
