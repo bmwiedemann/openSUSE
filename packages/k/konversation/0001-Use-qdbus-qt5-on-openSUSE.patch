@@ -11,31 +11,31 @@ Subject: [PATCH] Use qdbus-qt5 on openSUSE
  data/scripts/uptime                                | 10 +++++-----
  5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/data/scripting_support/python/konversation/dbus.py b/data/scripting_support/python/konversation/dbus.py
-index 163cfc63..c0940453 100644
---- a/data/scripting_support/python/konversation/dbus.py
-+++ b/data/scripting_support/python/konversation/dbus.py
-@@ -83,4 +83,4 @@ except IndexError:
+Index: konversation-19.11.70git.20210805T200048~063aab07/data/scripting_support/python/konversation/dbus.py
+===================================================================
+--- konversation-19.11.70git.20210805T200048~063aab07.orig/data/scripting_support/python/konversation/dbus.py	2021-08-05 20:00:48.000000000 +0200
++++ konversation-19.11.70git.20210805T200048~063aab07/data/scripting_support/python/konversation/dbus.py	2021-08-07 16:26:04.303264685 +0200
+@@ -83,4 +83,4 @@
  
  default_message_prefix = ''
  
 -_dbus_command = ('qdbus', 'org.kde.konversation', '/irc')
 +_dbus_command = ('qdbus-qt5', 'org.kde.konversation', '/irc')
-diff --git a/data/scripts/fortune b/data/scripts/fortune
-index 71379cc0..e68b2a08 100755
---- a/data/scripts/fortune
-+++ b/data/scripts/fortune
-@@ -51,4 +51,4 @@ while (<FORTUNES>) {
+Index: konversation-19.11.70git.20210805T200048~063aab07/data/scripts/fortune
+===================================================================
+--- konversation-19.11.70git.20210805T200048~063aab07.orig/data/scripts/fortune	2021-08-05 20:00:48.000000000 +0200
++++ konversation-19.11.70git.20210805T200048~063aab07/data/scripts/fortune	2021-08-07 16:26:04.303264685 +0200
+@@ -51,4 +51,4 @@
      }
  }
  close(FORTUNES);
 -exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
 +exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
-diff --git a/data/scripts/media b/data/scripts/media
-index a0a7dbaf..708a11dd 100755
---- a/data/scripts/media
-+++ b/data/scripts/media
-@@ -62,7 +62,7 @@ preferred_media = {
+Index: konversation-19.11.70git.20210805T200048~063aab07/data/scripts/media
+===================================================================
+--- konversation-19.11.70git.20210805T200048~063aab07.orig/data/scripts/media	2021-08-05 20:00:48.000000000 +0200
++++ konversation-19.11.70git.20210805T200048~063aab07/data/scripts/media	2021-08-07 16:26:04.303264685 +0200
+@@ -62,7 +62,7 @@
  # 'qdbus' command installed by Qt. If you need to you can change this here,
  # but beware that the output format of the alternate command has to match that
  # of 'qdbus'.
@@ -44,11 +44,11 @@ index a0a7dbaf..708a11dd 100755
  
  # If one of the title, album or artist metadata fields contains a character
  # listed in FIXUP_CHARS, or if a string matching the regular expression given
-diff --git a/data/scripts/sayclip b/data/scripts/sayclip
-index 37cb550b..1ab29565 100755
---- a/data/scripts/sayclip
-+++ b/data/scripts/sayclip
-@@ -21,7 +21,7 @@ except ImportError:
+Index: konversation-19.11.70git.20210805T200048~063aab07/data/scripts/sayclip
+===================================================================
+--- konversation-19.11.70git.20210805T200048~063aab07.orig/data/scripts/sayclip	2021-08-05 20:00:48.000000000 +0200
++++ konversation-19.11.70git.20210805T200048~063aab07/data/scripts/sayclip	2021-08-07 16:26:04.303264685 +0200
+@@ -21,7 +21,7 @@
      sys.exit("This script is intended to be run from within Konversation.")
  
  try:
@@ -57,11 +57,11 @@ index 37cb550b..1ab29565 100755
  except subprocess.CalledProcessError:
      konversation.dbus.error(i18n("Unable to retrieve clipboard contents from Klipper."), exit=True)
  
-diff --git a/data/scripts/uptime b/data/scripts/uptime
-index 764239de..5ff30ac9 100755
---- a/data/scripts/uptime
-+++ b/data/scripts/uptime
-@@ -19,7 +19,7 @@ if($PLATFORM eq "FreeBSD") {
+Index: konversation-19.11.70git.20210805T200048~063aab07/data/scripts/uptime
+===================================================================
+--- konversation-19.11.70git.20210805T200048~063aab07.orig/data/scripts/uptime	2021-08-05 20:00:48.000000000 +0200
++++ konversation-19.11.70git.20210805T200048~063aab07/data/scripts/uptime	2021-08-07 16:26:04.303264685 +0200
+@@ -19,7 +19,7 @@
  } else {
  	$UPTIME = `cat /proc/uptime`;
  	if (not $UPTIME) {
@@ -70,8 +70,8 @@ index 764239de..5ff30ac9 100755
  	}
  	@uparray = split(/\./, $UPTIME);
      $seconds = $uparray[0];
-@@ -40,15 +40,15 @@ if($seconds > 60)
- 	$minutes = int($seconds/60);
+@@ -42,15 +42,15 @@
+ 	$minutes = 0
  }
  if( $days && $hours ) {
 -	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days, $hours hours and $minutes minutes";
@@ -90,6 +90,3 @@ index 764239de..5ff30ac9 100755
 +	exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $minutes minutes";
  }
  
--- 
-2.31.1
-
