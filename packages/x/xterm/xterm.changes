@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Dec  7 08:55:20 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Use separate subpackage for resize binary. It does not actually
+  depend on X so can be used in small systems.
+
+-------------------------------------------------------------------
+Fri Nov 26 21:16:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 370:
+  * add  -a,  -c  and -d options to query-status.pl to improve test for
+    DECRQSS.
+  * expanded  discussion  of  maximum  graphics  geometry in ctlseqs.ms
+  * corrected parameter symbol for DECCARA and DECRARA in ctlseqs.ms to
+    indicate  that  multiple  parameters  may be used
+  * add several test/demo scripts.
+  * improve DECCOLM, DECLRMM and DECALN referring to pseudo-code in DEC
+    070.
+  * amend a change in patch #348 which caused left/right margin mode to
+    be  reset  when  resizing  the terminal window
+  * fix a misnamed macro-parameter 
+  * fix spacing of wideFont when its width is not exactly twice as wide
+    as the normal font
+  * suppress loading of italic font in a few places when colorITmode is
+    enabled
+  * modify XTSMGRAPHICS to return failure status if the terminal is not
+    configured  to  support  the  corresponding  ReGIS or SIXEL feature
+  * modify  DECERA  and  DECFRA  to  erase  corresponding area in SIXEL
+    graphics
+  * equate  visuals  for  TrueColor  and  DirectColor
+  * correct  computation  for  pixel  value  of rgb when using depth 16
+  * correct   wrapping  of  VT100-style  double-sized  characters  when
+    configured  for  Unicode  wide-characters
+  * updated default value for sixelScrolling resource to match expected
+    behavior  versus  DECSDM  change  in  patch  #369
+
+-------------------------------------------------------------------
+Sat Oct 16 12:21:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 369:
+  * modify  run-tic.sh  to  work  around  bug in development version of
+    ncurses which was packaged in FreeBSD ports.
+  * remove ifdef's for OPT_COLOR_RES and OPT_COLOR_RES2.
+  * improve   performance  over  slow  connections
+  * update cursor if restoring mode for DECTCEM.
+  * modify  CharWidth  macro to ensure that the shortcut for Latin-1 is
+    only  applied  when  UTF-8 is not enabled, to fix a bug in handling
+    soft-hyphen from patch #334 changes (patch by Martijn van Duren).
+  * improve terminfo:
+      + fill-in   function-keys  in  terminfo  which  are  not  Sun/HP
+        keyboards using xterm+nopcfkeys building-block.
+      + add kbeg to xterm+keypad to accommodate termcap applications
+      + add  smglp and smgrp to vt420+lrmm, to provide useful data for
+        the "tabs" +m option
+  * support shift-tab in Sun, HP and SCO keyboards.
+  * document some legacy features in ctlseqs.ms (prompted by discussion
+    with Jimmy Aguilar Mena "Ergus").
+  * add “trim” option to cdXtraScroll and tiXtraScroll.
+  * remove support for non-fifo save-lines configuration.
+  * extend  cdXtraScroll to check if the cursor is at the upper-left of
+    the  scrolling  region when the erasure is for the remainder of the
+    screen  versus  the whole screen
+  * add workaround for broken pcre2 package in Debian 10.
+  * change  screen-refresh  call used for DECCARA and DECRARA to ensure
+    that  trailing blanks which are part of the rectangle are repainted
+    (report/analysis by Dennis Filder).
+  * when  resetting  the terminal, ensure that the cursor shape also is
+    reset,  e.g.,  if DECSCUSR has been used to modify the cursor shape
+    for  an  xterm  which was started with the underlined cursor option
+    (report/analysis by Luis Javier Merino).
+  * prevent  DECSCUSR  from  blinking  the  cursor  if  the cursorBlink
+    resource is “never” (report by Vladimir D Seleznev).
+  * invert  the sense of DECSDM, to correspond with VT382 manuals (lsix
+    #41).
+  * update tables in wcwidth.c based on Unicode 14.0.0
+
+-------------------------------------------------------------------
 Tue Aug 17 09:08:15 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - use TERM=xterm-256color by default (boo#1188864)

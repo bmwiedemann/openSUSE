@@ -19,7 +19,7 @@
 %define splitbin 0%{?suse_version} >= 1300
 
 Name:           xterm
-Version:        368
+Version:        370
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
@@ -78,10 +78,19 @@ This package contains the basic X.Org terminal program desktop launcher.
 %package bin
 Summary:        The basic X terminal program
 Group:          System/X11/Utilities
+Requires:       xterm-resize = %{version}-%{release}
 
 %description bin
 %endif
 This package contains the basic X.Org terminal program.
+
+%package resize
+Summary:        Set environment and terminal settings to current window size
+Group:          System/X11/Utilities
+
+%description resize
+Prints a shell command for setting the appropriate environment variables to
+indicate the current size of the window from which the command is run.
 
 %prep
 %autosetup -p1
@@ -151,13 +160,11 @@ install -m 644 *.pcf.gz %{buildroot}%{xfontsd}/misc/
 %doc README README.i18n README.SUSE
 %{_bindir}/luitx
 %attr(755,root,root) %{_bindir}/xterm
-%{_bindir}/resize
 %{_bindir}/uxterm
 %{_bindir}/koi8rxterm
 %{_bindir}/Backarrow2Delete
 %{_bindir}/Backarrow2BackSpace
 %{_mandir}/man1/xterm.1.gz
-%{_mandir}/man1/resize.1.gz
 %{_mandir}/man1/koi8rxterm.1.gz
 %{_mandir}/man1/uxterm.1.gz
 %dir %{xterminfo}
@@ -173,5 +180,9 @@ install -m 644 *.pcf.gz %{buildroot}%{xfontsd}/misc/
 %{xappdefs}/UXTerm-color
 %{xappdefs}/XTerm
 %{xappdefs}/XTerm-color
+
+%files resize
+%{_bindir}/resize
+%{_mandir}/man1/resize.1*
 
 %changelog
