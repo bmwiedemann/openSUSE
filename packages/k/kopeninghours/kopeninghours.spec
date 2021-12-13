@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kopeninghours
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
