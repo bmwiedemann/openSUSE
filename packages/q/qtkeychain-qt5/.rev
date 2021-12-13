@@ -86,4 +86,12 @@ Technically the -lang package needs to be called qtkeychain-qt5-lang for SLPP (o
 - Add the missing libsecret build dependency to qtkeychain-qt5.</comment>
     <requestid>862048</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0e2868062cc07eabed681f11ab0789ae</srcmd5>
+    <version>0.13.2</version>
+    <time>1639424500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939587</requestid>
+  </revision>
 </revisionlist>
