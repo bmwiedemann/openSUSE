@@ -133,6 +133,15 @@ Plasma shell and components targeted for phones.
 %{_kf5_appstreamdir}/org.kde.plasma.phoneshell.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.activities.appdata.xml
 %{_kf5_appstreamdir}/org.kde.phone.krunner.appdata.xml
+%{_kf5_servicesdir}/plasma-applet-org.kde.phone.activities.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.phone.homescreen.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.phone.krunner.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.phone.panel.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.phone.taskpanel.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.airplanemode.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.nightcolor.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
