@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-contact
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -103,10 +103,12 @@ Group:          Development/Libraries/KDE
 Requires:       akonadi-contact = %{version}
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
+Requires:       cmake(Grantlee5)
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5GrantleeTheme)
 Requires:       cmake(Qt5Widgets)
+
 Obsoletes:      akonadi-contacts-devel < %{version}
 Provides:       akonadi-contacts-devel = %{version}
 Obsoletes:      kdepim-apps-libs-devel <= 20.08.3
