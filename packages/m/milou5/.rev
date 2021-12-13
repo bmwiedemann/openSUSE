@@ -1041,4 +1041,12 @@
     <comment>KDE Plasma 5.23.4</comment>
     <requestid>934809</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>5b4cd3228550fc9c31b132e04a5e7a0c</srcmd5>
+    <version>5.23.4</version>
+    <time>1639424491</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build with plasma-framework 5.89.0.</comment>
+    <requestid>939455</requestid>
+  </revision>
 </revisionlist>

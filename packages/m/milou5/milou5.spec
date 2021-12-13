@@ -77,6 +77,7 @@ A dedicated search application built on top of Baloo
 %{_kf5_qmldir}/
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
+%{_kf5_servicesdir}/plasma-applet-org.kde.milou.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
