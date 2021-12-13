@@ -292,4 +292,22 @@
     <comment></comment>
     <requestid>889963</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>362fcf627e2e3ebd5263e8b29d3ae80d</srcmd5>
+    <version>4.3.0</version>
+    <time>1639424688</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - bump py37 to py38 in tox.ini
+  - Update master for stable/wallaby
+  - Fix lower-constrains job
+  - Add Python3 wallaby unit tests
+  - Update master for stable/victoria
+  - Add Python3 xena unit tests
+  - Remove six and update lower-constraints appdirs
+  - Remove install unnecessary packages
+  - Update readme.rst
+  - Fixed zone transfer accept list command</comment>
+    <requestid>940199</requestid>
+  </revision>
 </revisionlist>

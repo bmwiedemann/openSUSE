@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:33:45 UTC 2021 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - bump py37 to py38 in tox.ini
+  - Update master for stable/wallaby
+  - Fix lower-constrains job
+  - Add Python3 wallaby unit tests
+  - Update master for stable/victoria
+  - Add Python3 xena unit tests
+  - Remove six and update lower-constraints appdirs
+  - Remove install unnecessary packages
+  - Update readme.rst
+  - Fixed zone transfer accept list command
+
+-------------------------------------------------------------------
 Sun May  2 17:22:25 UTC 2021 - cloud-devel@suse.de
 
 - update to version 4.2.0
