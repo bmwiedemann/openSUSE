@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Dec  8 21:53:30 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.38.2:
+  + Fix a missing return value in the testsuite.
+  + Make Selection#clearSelection work.
+  + Fix attributeListToHash() in case there’s a colon in an attr
+    value.
+- Drop pyatspi-test-fixes.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Sep 27 21:45:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add pyatspi-test-fixes.patch: fix tests on s390x (bsc#1190051).
