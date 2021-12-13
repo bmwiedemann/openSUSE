@@ -1417,7 +1417,10 @@ unsorted:
   - bpftrace-tools: [x86_64] 
   - bpm-tools 
   - branding-upstream 
+  - brasero 
   - brasero-devel 
+  - brasero-lang 
+  - brasero-nautilus 
   - breeze5-icons-rcc 
   - breeze5-wallpapers: [i586] 
   - breezy 
@@ -1825,6 +1828,7 @@ unsorted:
   - ccze 
   - ccze-devel 
   - cd-paranoia 
+  - cdda2wav 
   - cddlib-devel 
   - cddlib-doc 
   - cddlib-tools 
@@ -9899,6 +9903,7 @@ unsorted:
   - libcasacore6-openmpi4: [x86_64] 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
+  - libcbor-doc 
   - libccrtp3 
   - libcdada-devel 
   - libcdada0 
@@ -10529,7 +10534,6 @@ unsorted:
   - libfdisk-devel-static 
   - libfdisk1-32bit: [x86_64] 
   - libfdk-aac-devel 
-  - libfdk-aac2 
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
@@ -10577,7 +10581,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla22 
+  - libfilezilla23 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11362,7 +11366,6 @@ unsorted:
   - libicu70-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
-  - libid3tag0-32bit: [x86_64] 
   - libidl-devel 
   - libidn-devel 
   - libidn-tools 
@@ -12612,6 +12615,7 @@ unsorted:
   - libpapi-32bit: [x86_64] 
   - libpapi-hpc 
   - libpapi_6_0_0_1-hpc 
+  - libparanoia1_0 
   - libparaview5_9 
   - libpari-gmp-tls7 
   - libparlatype-devel 
@@ -20305,8 +20309,6 @@ unsorted:
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
   - pipewire-libjack-0_3-devel 
-  - pipewire-modules-32bit: [x86_64] 
-  - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
   - pithos 
   - pix 
@@ -22388,7 +22390,6 @@ unsorted:
   - python36-delegator.py 
   - python36-demjson 
   - python36-dennis 
-  - python36-dephell-pythons 
   - python36-dephell-specifier 
   - python36-deprecation 
   - python36-derpconf 
@@ -25209,7 +25210,6 @@ unsorted:
   - python38-delegator.py 
   - python38-demjson 
   - python38-dennis 
-  - python38-dephell-pythons 
   - python38-dephell-specifier 
   - python38-derpconf 
   - python38-devel 
@@ -28216,7 +28216,6 @@ unsorted:
   - python39-delegator.py 
   - python39-demjson 
   - python39-dennis 
-  - python39-dephell-pythons 
   - python39-dephell-specifier 
   - python39-deprecation 
   - python39-derpconf 
@@ -31341,13 +31340,10 @@ unsorted:
   - ruby3.0-rubygem-actioncable-6.0 
   - ruby3.0-rubygem-actionmailbox-6.0 
   - ruby3.0-rubygem-actionmailer-6.0 
-  - ruby3.0-rubygem-actionpack-5.2 
   - ruby3.0-rubygem-actiontext-6.0 
   - ruby3.0-rubygem-actionview-5.2 
-  - ruby3.0-rubygem-activejob-5.2 
   - ruby3.0-rubygem-activejob-6.0 
   - ruby3.0-rubygem-activemodel-5.2 
-  - ruby3.0-rubygem-activerecord-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
   - ruby3.0-rubygem-activestorage-6.0 
   - ruby3.0-rubygem-activesupport-5.2 
@@ -41497,6 +41493,7 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-5_0 
   - typelib-1_0-Wnck-1_0 
   - typelib-1_0-Workrave-1_0 
+  - typelib-1_0-Wp-0_4 
   - typelib-1_0-Xkl-1_0 
   - typelib-1_0-Xmlb-1_0 
   - typelib-1_0-XplayerPlParser-1_0 
@@ -41798,6 +41795,7 @@ unsorted:
   - velocity-demo 
   - velocity-javadoc 
   - velocity-manual 
+  - velocity-master 
   - velum-branding 
   - vendor-reset-kmp 
   - vendor-reset-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -42096,6 +42094,7 @@ unsorted:
   - winrs 
   - wipe 
   - wireguard-tools 
+  - wireplumber-devel 
   - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 

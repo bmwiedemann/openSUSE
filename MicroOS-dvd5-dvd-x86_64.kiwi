@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20211211" schemaversion="4.1">
+<image name="OBS__MicroOS___20211212" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211211</productvar>
+      <productvar name="VERSION">20211212</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211211,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20211212,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211211/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20211212/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -486,7 +486,7 @@
       <repopackage name="libcap2"/>
       <repopackage name="libcares2" arch="x86_64"/>
       <repopackage name="libcblas3" arch="x86_64"/>
-      <repopackage name="libcbor0_8"/>
+      <repopackage name="libcbor0_9"/>
       <repopackage name="libcdda_interface0" arch="x86_64"/>
       <repopackage name="libcdda_paranoia0" arch="x86_64"/>
       <repopackage name="libcdio19" arch="x86_64"/>
@@ -575,6 +575,7 @@
       <repopackage name="libexslt0" arch="x86_64"/>
       <repopackage name="libext2fs2" arch="x86_64"/>
       <repopackage name="libfdisk1"/>
+      <repopackage name="libfdk-aac2" arch="x86_64"/>
       <repopackage name="libffi8"/>
       <repopackage name="libfftw3-3" arch="x86_64"/>
       <repopackage name="libfido2-1"/>
@@ -817,6 +818,7 @@
       <repopackage name="liblockdev1" arch="x86_64"/>
       <repopackage name="liblrdf2" arch="x86_64"/>
       <repopackage name="libltdl7" arch="x86_64"/>
+      <repopackage name="liblua5_3-5" arch="x86_64"/>
       <repopackage name="liblua5_4-5"/>
       <repopackage name="liblvm2cmd2_03" arch="x86_64"/>
       <repopackage name="liblz4-1"/>
@@ -1115,6 +1117,7 @@
       <repopackage name="libwebpdemux2" arch="x86_64"/>
       <repopackage name="libwebpmux3" arch="x86_64"/>
       <repopackage name="libwebrtc_audio_processing1" arch="x86_64"/>
+      <repopackage name="libwireplumber-0_4-0" arch="x86_64"/>
       <repopackage name="libwoff2common1_0_2" arch="x86_64"/>
       <repopackage name="libwoff2dec1_0_2" arch="x86_64"/>
       <repopackage name="libwpe-1_0-1" arch="x86_64"/>
@@ -1328,7 +1331,6 @@
       <repopackage name="pinentry-qt5" arch="x86_64"/>
       <repopackage name="pipewire" arch="x86_64"/>
       <repopackage name="pipewire-alsa" arch="x86_64"/>
-      <repopackage name="pipewire-media-session" arch="x86_64"/>
       <repopackage name="pipewire-modules" arch="x86_64"/>
       <repopackage name="pipewire-pulseaudio" arch="x86_64"/>
       <repopackage name="pipewire-spa-plugins-0_2" arch="x86_64"/>
@@ -1365,6 +1367,7 @@
       <repopackage name="prison-qt5-imports" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
+      <repopackage name="pulseaudio-setup" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
@@ -1598,6 +1601,8 @@
       <repopackage name="wicked" arch="x86_64"/>
       <repopackage name="wicked-service" arch="x86_64"/>
       <repopackage name="wireless-regdb" arch="x86_64"/>
+      <repopackage name="wireplumber" arch="x86_64"/>
+      <repopackage name="wireplumber-audio" arch="x86_64"/>
       <repopackage name="wpa_supplicant" arch="x86_64"/>
       <repopackage name="xauth" arch="x86_64"/>
       <repopackage name="xbitmaps" arch="x86_64"/>
