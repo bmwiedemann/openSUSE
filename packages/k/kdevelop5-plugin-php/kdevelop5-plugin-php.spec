@@ -17,14 +17,19 @@
 
 
 %define rname   kdev-php
+%bcond_without lang
 Name:           kdevelop5-plugin-php
-Version:        5.6.2
+Version:        21.12.0
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
-Source0:        https://download.kde.org/stable/kdevelop/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kcmutils-devel
 BuildRequires:  kdevelop5-pg-qt
@@ -63,6 +68,7 @@ Requires:       kdevelop5-plugin-php = %{version}
 This package contains the development files needed in order to use the
 kdevelop5-plugin-php API.
 
+%if %{with lang}
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -76,23 +82,27 @@ BuildArch:      noarch
 
 %description lang
 Provides translations to the package %{name}
+%endif
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
-  %cmake_kf5 -d build
-  %make_jobs
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %find_lang kdevphp %{name}.lang
+%kf5_makeinstall -C build
+
+%if %{with lang}
+%find_lang kdevphp %{name}.lang
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS HACKING TODO
 %{_kf5_appstreamdir}/org.kde.kdev-php.metainfo.xml
 %{_kf5_debugdir}/kdevphpsupport.categories
@@ -102,10 +112,11 @@ Provides translations to the package %{name}
 %{_kf5_sharedir}/kdev*/
 
 %files devel
-%license COPYING
 %{_includedir}/kdev-php/
 %{_kf5_cmakedir}/KDevPHP/
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog
