@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  9 15:08:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improve the self-update process, do not read the products from
+  the installation medium (bsc#1193536)
+- 4.4.6
+
+-------------------------------------------------------------------
 Fri Nov 12 14:51:45 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Adapt to the ProductSpec API (bsc#1192626).
