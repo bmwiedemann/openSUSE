@@ -19,16 +19,15 @@
 %define sover 0
 
 Name:           hidapi
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Simple library for communicating with USB and Bluetooth HID devices
-License:        GPL-3.0-or-later OR BSD-3-Clause
+License:        BSD-3-Clause OR GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://github.com/libusb/hidapi
 Source:         https://github.com/libusb/hidapi/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE do_not_install_docs.patch -- don't let make install put files into /usr/share/doc/packages
 Patch0:         do_not_install_docs.patch
-Patch1:         0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -73,9 +72,7 @@ HIDAPI is a library which allows an application to interface with USB and Blueto
 While it can be used to communicate with standard HID devices like keyboards, mice, and Joysticks, it is most useful when used with custom (Vendor-Defined) HID devices.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 ./bootstrap

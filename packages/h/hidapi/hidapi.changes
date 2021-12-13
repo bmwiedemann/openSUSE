@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Dec  5 19:02:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * hidraw: (explicit) workaround to allow build with kernels older than 2.6.39
+  * libusb: stabilize device path (uses same semantic as Linux kernel)
+  * libusb: add platform-specific hid_libusb_wrap_sys_device
+  * general: lots of documentation improvements
+  * general: (Windows) DDK build files are obsolete
+  * general: add CMake build system
+  * general: deprecated Autotools build scripts
+  * lots of other small fixes and improvements
+- remove 0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Jun  9 09:19:42 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add 0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch:
