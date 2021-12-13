@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Dec 10 04:35:54 UTC 2021 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.16.3
+  * Dont reduce selection in single click mode (gxo#xfce/exo#71)
+  * Add typecheck to prevent Gtk-CRITICAL (gxo#xfce/exo#63)
+  * exo_strdup_strftime: Support additional encoding (gxo#xfce/exo#66)
+  * Free hover_path in tree-view if not NULL
+  * Fix compilation warnings
+  * exo-icon-chooser-dialog: Focus filter entry by default
+  * exo-icon-chooser-dialog: Set default to show to all icons
+  * exo-icon-chooser-dialog: Speed up sorting the icon view model 
+
+-------------------------------------------------------------------
 Mon Apr 12 12:14:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.2

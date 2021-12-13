@@ -20,7 +20,7 @@
 %define libname_gtk3 libexo-2-0
 %bcond_with git
 Name:           exo
-Version:        4.16.2
+Version:        4.16.3
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -98,7 +98,6 @@ based on exo.
 
 %prep
 %setup -q -b1
-mkdir m4
 find . -name '*.pl' -o -name exo-compose-mail| \
     xargs sed -i 's|^#! */usr/bin/env *\perl|#!%{_bindir}/perl|'
 
