@@ -403,4 +403,12 @@ This should be handled together with sr#769061</comment>
     <comment>- Remove conflicting sysusers.d file (forwarded request 906490 from gmbr3)</comment>
     <requestid>906621</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>400b9fd643d3ae60f756605ba972250d</srcmd5>
+    <version>3.1.0</version>
+    <time>1639424529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937744</requestid>
+  </revision>
 </revisionlist>

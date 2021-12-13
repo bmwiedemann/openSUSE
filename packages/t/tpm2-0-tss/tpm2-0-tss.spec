@@ -25,16 +25,16 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tss
 Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz
 Source2:        baselibs.conf
-BuildRequires:  doxygen
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  libgcrypt-devel
-BuildRequires:  pkgconfig(json-c)
-BuildRequires:  pkgconfig(libopenssl)
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(udev)
 BuildRequires:  /usr/sbin/groupadd
 BuildRequires:  acl
+BuildRequires:  doxygen
+BuildRequires:  gcc-c++
+BuildRequires:  libgcrypt-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(udev)
 # The same user is employed by trousers (and was employed by the old
 # resourcemgr shipped with the tpm2-0-tss package):
 #
@@ -70,8 +70,8 @@ Requires:       libtss2-sys1 = %{version}
 Requires:       libtss2-tcti-cmd0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
-Requires:       libtss2-tcti-swtpm0 = %{version}
 Requires:       libtss2-tcti-pcap0 = %{version}
+Requires:       libtss2-tcti-swtpm0 = %{version}
 Requires:       libtss2-tctildr0 = %{version}
 Requires:       tpm2-0-tss = %{version}
 
@@ -192,7 +192,7 @@ export PATH="$PATH:%{_sbindir}"
     --with-runstatedir=%{_rundir} \
     --with-tmpfilesdir=%{_tmpfilesdir} \
     --with-sysusersdir=%{_sysusersdir}
-make %{?_smp_mflags} PTHREAD_LDFLAGS=-pthread
+%make_build PTHREAD_LDFLAGS=-pthread
 
 %install
 %make_install
@@ -202,9 +202,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{udev_rule_file}
 # Conflicts with system-users
 rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
+# Add version into the configuration tmpfiles.d configuration file
+mv %{buildroot}%{_tmpfilesdir}/tpm2-tss-fapi.conf %{buildroot}%{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
 
 %post
-%_bindir/udevadm trigger -s tpm -s tpmrm || :
+%{_bindir}/udevadm trigger -s tpm -s tpmrm || :
 
 %post -n libtss2-esys0 -p /sbin/ldconfig
 %postun -n libtss2-esys0 -p /sbin/ldconfig
@@ -220,9 +222,11 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-mu0 -p /sbin/ldconfig
 %post -n libtss2-rc0 -p /sbin/ldconfig
 %postun -n libtss2-rc0 -p /sbin/ldconfig
+
 %post -n libtss2-fapi1
 /sbin/ldconfig
-%tmpfiles_create %_tmpfilesdir/tpm2-tss-fapi.conf
+%tmpfiles_create %{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
+
 %postun -n libtss2-fapi1 -p /sbin/ldconfig
 %post -n libtss2-tcti-cmd0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-cmd0 -p /sbin/ldconfig
@@ -231,7 +235,6 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %post -n libtss2-tcti-pcap0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-pcap0 -p /sbin/ldconfig
 
-
 %files
 %doc *.md
 %license LICENSE
@@ -239,10 +242,10 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %{_mandir}/man5/*
 %{_mandir}/man7/tss2-*
 %{_udevrulesdir}/%{udev_rule_file}
-%dir /etc/tpm2-tss/
-%config /etc/tpm2-tss/fapi-config.json
-%dir /etc/tpm2-tss/fapi-profiles
-%config /etc/tpm2-tss/fapi-profiles/*.json
+%dir %{_sysconfdir}/tpm2-tss/
+%config %{_sysconfdir}/tpm2-tss/fapi-config.json
+%dir %{_sysconfdir}/tpm2-tss/fapi-profiles
+%config %{_sysconfdir}/tpm2-tss/fapi-profiles/*.json
 
 %files devel
 %{_includedir}/tss2
@@ -272,7 +275,7 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %files -n libtss2-fapi1
 %{_libdir}/libtss2-fapi.so.*
-%{_tmpfilesdir}/tpm2-tss-fapi.conf
+%{_tmpfilesdir}/tpm2-tss-fapi-%{version}.conf
 # this would fix "tmpfile-not-in-filelist" warnings but when adding these
 # entries then it complains about "directories not owned by a package:" for
 # /run/tpm2-0-tss & friends. When adding them as %%ghost, too, then Leap15.1

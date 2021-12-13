@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:57:58 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Version 3.1.0 includes:
+  + cover update to 2.4.5 (jsc#SLE-17366)
+  + cover update to 2.3.0 (jsc#SLE-9515)
+  + fix policy session for TPM2_PolicyAuthValue (bsc#1160736)
+- Add version the configuration file tpm2-tss-fapi.conf
+
+-------------------------------------------------------------------
 Thu Jul 15 15:51:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove conflicting sysusers.d file
