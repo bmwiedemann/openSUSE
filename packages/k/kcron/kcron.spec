@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcron
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -73,6 +72,11 @@ KCron allows you to change your cron jobs setup.
 %{_kf5_debugdir}/kcron.categories
 %{_kf5_plugindir}/kcm_cron.so
 %{_kf5_servicesdir}/kcm_cron.desktop
+%dir %{_kf5_libdir}/libexec/kauth
+%{_kf5_libdir}/libexec/kauth/kcron_helper
+%{_kf5_sharedir}/dbus-1/system-services/local.kcron.crontab.service
+%{_kf5_sharedir}/dbus-1/system.d/local.kcron.crontab.conf
+%{_kf5_sharedir}/polkit-1/actions/local.kcron.crontab.policy
 
 %if %{with lang}
 %files lang -f %{name}.lang
