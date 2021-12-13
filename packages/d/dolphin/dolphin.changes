@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Use new "edit-copy-path" icon for "Copy Location" menu item
+  * [Status Bar] Don't mess with status bar visibility in extensions (kde#443132)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix updating window and tab titles
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Port ViewModeSettings from macros to std::variant
+  * Remove duplicate include from .h/.cpp
+  * Add support for recentlyused: kio to view properties.
+  * Save size of config dialog in state config
+  * Utilize KXMLGUI API to store state config in separate file
+  * Install KCMs in dolphin/kcms namespace
+  * Fix typo: PascalCase in docs
+  * Change settings window title to "Configure" for consistency sake
+  * Rewrite filter algorithm to properly support filtering with expanded folders under Detail View mode. (kde#411878)
+  * Add kde-ci file
+  * Don't force icon for preferred search tool action if one is manually configured (kde#442815)
+  * Port to KTerminalLauncherJob (kde#441072)
+  * Tabs: ensure to have folder icons for remote folders
+  * [Split view] Reset splitter position on double click (kde#206525)
+  * Revert "Revert "Disable Hidden Files Last sort by default""
+  * Revert "Revert "Configurable Show hidden files and folders last toggle""
+  * Revert "Revert "Show hidden files and folders last""
+  * Use default icon size when resetting zoom level (kde#437349)
+  * DBus activation with filemanager iface
+  * Simplify KFileItemModel's sorting
+  * Avoid crash on start when help actions are restricted through the Kiosk system
+  * Remove unneeded KCM plugin keyword stuff
+  * Use KDirLister directly now that it emits a jobError() signal
+  * [DetailsView] Improve zooming
+  * [PlacesPanel] Remove horizontal scrollbar (kde#301758)
+  * Delete some items that were intended to be deleted. Avoid trying to delete items that don't exist
+  * Allow to have HiDpi previews (kde#401170)
+  * Don't exit immediately if DBus isn't running
+  * Avoid crashing on startup if DBus isn't running
+- Drop upstream patch:
+  * 0001-Port-to-KTerminalLauncherJob.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

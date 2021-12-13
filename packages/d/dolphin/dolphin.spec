@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Port-to-KTerminalLauncherJob.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
@@ -54,7 +52,7 @@ BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO) >= 5.83
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Parts)
@@ -162,7 +160,9 @@ Provides translations for the "%{name}" package.
 %{_kf5_debugdir}/dolphin.categories
 %{_kf5_knsrcfilesdir}/servicemenu.knsrc
 %{_kf5_libdir}/libdolphinprivate.so.*
-%{_kf5_plugindir}/kcm_dolphin*.so
+%dir %{_kf5_plugindir}/dolphin
+%dir %{_kf5_plugindir}/dolphin/kcms
+%{_kf5_plugindir}/dolphin/kcms/libkcm_dolphin*.so
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/dolphinpart.so
