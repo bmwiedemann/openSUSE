@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 26 22:11:53 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.8.1
+  - Add bug comment and fix nits
+  - Update master for stable/wallaby
+  - setup.cfg: Replace dashes with underscores
+  - Add Python3 xena unit tests
+  - Don't import module "etcd3gw" if etcd3gw backend is not used.
+  - Adding technical details about the memcache pool backend.
+  - Move flake8 as a pre-commit local target.
+  - Drop use of deprecated collections classes
+  - Dropping lower constraints testing.
+  - Use py3 as the default runtime for tox
+
+-------------------------------------------------------------------
 Sun May  2 17:29:53 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.7.0
