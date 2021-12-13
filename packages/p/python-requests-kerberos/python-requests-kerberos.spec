@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-kerberos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-kerberos
-Version:        0.12.0
+Version:        0.14.0
 Release:        0
 Summary:        A Kerberos authentication handler for python-requests
 License:        ISC
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/r/requests-kerber
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-Requires:       python-pykerberos >= 1.1.8
+Requires:       python-pyspnego
 Requires:       python-requests >= 1.1.0
 BuildArch:      noarch
 %python_subpackages
