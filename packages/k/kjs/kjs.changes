@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Don't call functions on pointers that may not point to objects (kde#444003)
+  * Remove unused variable
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
