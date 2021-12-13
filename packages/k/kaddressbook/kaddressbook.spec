@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -119,6 +118,7 @@ for KAddressbook.
 %files
 %license LICENSES/*
 %dir %{_kf5_plugindir}/kontact5/
+%dir %{_kf5_servicesdir}/kontact/
 %{_kf5_applicationsdir}/kaddressbook-importer.desktop
 %{_kf5_applicationsdir}/kaddressbook-view.desktop
 %{_kf5_applicationsdir}/org.kde.kaddressbook*.desktop
@@ -136,10 +136,8 @@ for KAddressbook.
 %{_kf5_plugindir}/kaddressbookpart.so
 %{_kf5_plugindir}/kontact5/kontact_kaddressbookplugin.so
 %{_kf5_servicesdir}/kaddressbook_config_plugins.desktop
-%{_kf5_servicesdir}/kontact/
+%{_kf5_servicesdir}/kontact/kaddressbookplugin.desktop
 %{_kf5_sharedir}/kaddressbook/
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kontact/
 
 %files -n libKPimAddressbookImportExport5
 %{_kf5_libdir}/libKPimAddressbookImportExport.so.5

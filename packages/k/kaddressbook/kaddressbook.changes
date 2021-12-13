@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Replace removed insertEmail with addEmail
+  * Remove unneeded dependencies
+  * Remove unused includes
+  * Rename slot for avoiding to use qOverload
+  * Remove some qOverload as we remove deprecated qt5.15 signal
+  * Add KDE CI file
+  * Add Stefan Taferner (original author) and David Bryant (documentation) to
+    "About Authors". Spell König correctly (we're using UTF-8 now).
+  * Use directly std::chrono_literals
+  * Port to KPluginMetaData::findPlugins
+  * USe std::chrono_literals
+  * We depend against 5.84
+  * Not used now
+  * X-KDE-ParentComponents is not use now.
+  * Now we don't use X-KDE-CfgDlgHierarchy
+  * Drop unused X-KDE-ParentApp entries from kcm desktop files
+  * Remove obsolete setdlg files
+  * Use new constructor
+  * Add parent to qmenu
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
