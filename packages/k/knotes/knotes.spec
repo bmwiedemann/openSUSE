@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotes
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -112,8 +111,6 @@ KNotes is a note taking application by KDE.
 %doc %lang(en) %{_kf5_htmldir}/en/akonadi_notes_agent/
 %doc %lang(en) %{_kf5_htmldir}/en/knotes/
 %{_datadir}/akonadi/agents/notesagent.desktop
-%{_datadir}/kconf_update/
-%{_datadir}/kontact/
 %{_kf5_applicationsdir}/org.kde.knotes.desktop
 %{_kf5_appstreamdir}/org.kde.knotes.appdata.xml
 %{_kf5_bindir}/akonadi_notes_agent
