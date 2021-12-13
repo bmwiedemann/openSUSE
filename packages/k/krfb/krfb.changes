@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix clean parallel build
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * pipewire: Support SPA_META_VideoDamage
+  * pipewire: Support cursors
+  * Let the framebuffer provide the cursor position
+  * Fix minor typo
+  * Introduce krfb-virtualmonitor
+  * Allow passing plugin backends some arguments
+  * Add missing includes
+  * Fix API deprecation warning
+  * Also set the IPv6 port when setting the port
+  * Enable rfb logging together with the debug category of the app
+  * PendingRfbClient: Include its own QSocketNotifier
+  * pipewire: Use C99
+  * Add Linux and FreeBSD CI
+  * Add .kde-ci.yml
+  * use nullptr
+  * Use std::chrono_literals
+  * We can use std::as_const
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -47,12 +46,15 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libsystemd)
@@ -93,8 +95,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/krfb/
 %{_kf5_applicationsdir}/org.kde.krfb.desktop
+%{_kf5_applicationsdir}/org.kde.krfb.virtualmonitor.desktop
 %{_kf5_appstreamdir}/org.kde.krfb.appdata.xml
 %{_kf5_bindir}/krfb
+%{_kf5_bindir}/krfb-virtualmonitor
 %{_kf5_debugdir}/krfb.categories
 %{_kf5_iconsdir}/hicolor/*/apps/krfb.*
 %{_kf5_libdir}/libkrfbprivate.so*
