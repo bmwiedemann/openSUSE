@@ -131,4 +131,41 @@
     <comment>- switch to wallaby template</comment>
     <requestid>890173</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a1f6c2f8f9fc4f71009a3a5a25189f5f</srcmd5>
+    <version>2.0.0</version>
+    <time>1639424691</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0b006f07226138ef26ab8296494f1dc1c09908e2.patch
+- update to version 2.0.0
+  - Fix hacking min version to 3.0.1
+  - Make the CLI YAQL engine entirely configurable
+  - OpenDev Migration Patch
+  - Use __slots__ for more yaqltypes
+  - Import docs building job
+  - Dropping the py35 testing
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - add python 3.7 unit test job
+  - Get rid of Babel dependency since it is not needed
+  - Add Python 3 Train unit tests
+  - Update the documention for doc migration
+  - Removed older version of python added 3.5/3.6
+  - add python 3.6 unit test job
+  - Replace assertItemsEqual with assertCountEqual
+  - import zuul job settings from project-config
+  - Update min tox version to 2.0
+  - tox: Set 'ignore_basepython_conflict'
+  - Make changes to groupBy() backward-compatible
+  - Update hacking for Python3
+  - Cleanup py27 support
+  - Fix docs gate
+  - Remove six
+  - Switch to newer openstackdocstheme and reno versions
+  - Stop to use the __future__ module.
+  - Switch to collections.abc.*
+  - fix tox python3 overrides
+  - Fix readme Pygments package not found
+  - Remove setting of version/release from releasenotes</comment>
+    <requestid>940202</requestid>
+  </revision>
 </revisionlist>

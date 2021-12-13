@@ -18,15 +18,13 @@
 
 %global oldpython python
 Name:           python-yaql
-Version:        1.1.3
+Version:        2.0.0
 Release:        0
 Summary:        YAQL - Yet Another Query Language
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/yaql
-Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-1.1.3.tar.gz
-# rebased from https://opendev.org/openstack/yaql/commit/0b006f07226138ef26ab8296494f1dc1c09908e2.patch
-Patch1:         0b006f07226138ef26ab8296494f1dc1c09908e2.patch
+Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-2.0.0.tar.gz
 BuildRequires:  openstack-macros
 # for testing
 BuildRequires:  python3-Sphinx
@@ -66,7 +64,7 @@ written in python and is distributed via PyPI.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n yaql-1.1.3
+%autosetup -p1 -n yaql-2.0.0
 %py_req_cleanup
 
 %build
