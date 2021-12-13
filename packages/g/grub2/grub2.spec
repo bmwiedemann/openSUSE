@@ -176,6 +176,7 @@ Patch1:         rename-grub-info-file-to-grub2.patch
 Patch2:         grub2-linux.patch
 Patch3:         use-grub2-as-a-package-name.patch
 Patch4:         info-dir-entry.patch
+Patch5:         grub2-simplefb.patch
 Patch6:         grub2-iterate-and-hook-for-extended-partition.patch
 Patch8:         grub2-ppc-terminfo.patch
 Patch9:         grub2-GRUB_CMDLINE_LINUX_RECOVERY-for-recovery-mode.patch

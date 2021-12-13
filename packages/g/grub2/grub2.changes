@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 14:16:58 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Add support for simplefb (boo#1193532).
+  + grub2-simplefb.patch
+
+-------------------------------------------------------------------
 Mon Dec  6 01:21:07 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix extent not found when initramfs contains shared extents (bsc#1190982)
