@@ -17,13 +17,13 @@
 
 
 Name:           btop
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
 Group:          System/Monitoring
-URL:            https://github.com/aristocratos/btop/archive
-Source:         %{url}/v%{version}.tar.gz#/v%{version}.tar.gz
+URL:            https://github.com/aristocratos/btop
+Source:         %{url}/archive/v%{version}.tar.gz#/v%{version}.tar.gz
 BuildRequires:  coreutils
 %if 0%{?suse_version} < 1550
 %define cxxopt CXX=g++-10

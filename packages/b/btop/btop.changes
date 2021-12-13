@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 13 15:14:51 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.3
+
+- Update to upstream release 1.1.3:
+  * Added: New theme ayu, by @AlphaNecron
+  * Added: New theme gruvbox_dark_v2, by @pietryszak
+  * Fixed: Macos cpu coretemp for Intel, by @joske
+  * Added: New theme OneDark, by @vtmx
+  * Fixed: Fixed network graph scale int rollover
+  * Fixed: Suspected possibility of very rare stall in Input::clear()
+
+-------------------------------------------------------------------
 Sun Nov 28 21:25:30 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com> - 1.1.2
 
 - Update to upstream release 1.1.2:
