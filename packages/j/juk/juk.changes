@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Remove bogus kitemmodels dependency
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Remove unused includes
+  * mimeData signature was changed in qt6 (scripted)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

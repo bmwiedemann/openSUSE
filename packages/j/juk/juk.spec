@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           juk
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
@@ -44,10 +43,6 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-%if 0%{?suse_version} == 1500
-# Needed when building with Qt < 5.13.0
-BuildRequires:  cmake(KF5ItemModels)
-%endif
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
@@ -85,12 +80,12 @@ Jukebox and music manager by KDE
 
 %files
 %license COPYING
+%doc %lang(en) %{_kf5_htmldir}/en/juk/
 %{_kf5_applicationsdir}/org.kde.juk.desktop
 %{_kf5_appsdir}/juk/
 %{_kf5_appstreamdir}/org.kde.juk.appdata.xml
 %{_kf5_bindir}/juk
 %{_kf5_dbusinterfacesdir}/org.kde.juk.*
-%{_kf5_htmldir}/en/juk/
 %{_kf5_iconsdir}/hicolor/*/apps/juk.*
 %{_kf5_kxmlguidir}/juk
 %{_kf5_notifydir}/juk.notifyrc
