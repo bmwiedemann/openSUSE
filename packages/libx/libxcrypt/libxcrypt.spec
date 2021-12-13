@@ -17,17 +17,16 @@
 
 
 Name:           libxcrypt
-Version:        4.4.25
+Version:        4.4.26
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/besser82/%{name}
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+URL:            https://github.com/besser82/libxcrypt
+Source0:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        https://github.com/besser82/libxcrypt/releases/download/v%{version}/libxcrypt-gpgkey.gpg#/%{name}.keyring
+Source3:        baselibs.conf
 BuildRequires:  pkgconfig
 
 %description
@@ -66,9 +65,9 @@ Summary:        Development files for %{name}
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 Requires:       libcrypt1 = %{version}
-Requires:       pkgconfig
-Provides:       glibc-devel:%{_libdir}/libcrypt.so
+Requires:       pkgconfig >= 0.9.0
 Conflicts:      glibc-devel < 2.28
+Provides:       glibc-devel:%{_libdir}/libcrypt.so
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -80,8 +79,8 @@ License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       glibc-devel-static
-Provides:       glibc-devel-static:%{_libdir}/libcrypt.a
 Conflicts:      glibc-devel-static < 2.28
+Provides:       glibc-devel-static:%{_libdir}/libcrypt.a
 
 %description devel-static
 This package contains the libxcrypt static libraries for -static
@@ -95,8 +94,6 @@ is highly discouraged.
 # Disable LTO due to symbol versioning (boo#1138833):
 # (https://en.opensuse.org/openSUSE:LTO#Symbol_versioning).
 %define _lto_cflags %{nil}
-
-autoreconf -fi
 %configure			\
   --disable-silent-rules	\
   --enable-shared		\
@@ -108,14 +105,14 @@ autoreconf -fi
 
 %install
 %make_install
-find %{buildroot}%{_libdir} -name '*.la' -print -delete
+rm -v %{buildroot}%{_libdir}/*.la
 
 %check
 %make_build check || \
   {
     rc=$?;
     echo "-----BEGIN TESTLOG-----";
-    %{__cat} test-suite.log;
+    cat test-suite.log;
     echo "-----END TESTLOG-----";
     exit $rc;
   }
@@ -125,33 +122,17 @@ find %{buildroot}%{_libdir} -name '*.la' -print -delete
 
 %files -n libcrypt1
 %license COPYING.LIB LICENSING
-%doc AUTHORS NEWS README README.md THANKS
-%{_libdir}/libcrypt.so.*
-%{_libdir}/libowcrypt.so.*
+%doc AUTHORS NEWS THANKS
+%{_libdir}/*.so.*
 
 %files devel
-%doc TODO TODO.md
-%{_libdir}/libcrypt.so
-%{_libdir}/libxcrypt.so
-%{_libdir}/libowcrypt.so
-%{_includedir}/crypt.h
-%{_includedir}/xcrypt.h
-%{_libdir}/pkgconfig/libcrypt.pc
-%{_libdir}/pkgconfig/%{name}.pc
-%{_mandir}/man3/crypt_rn.3.*
-%{_mandir}/man3/crypt_gensalt.3.*
-%{_mandir}/man3/crypt.3.*
-%{_mandir}/man3/crypt_checksalt.3.*
-%{_mandir}/man3/crypt_gensalt_ra.3.*
-%{_mandir}/man3/crypt_gensalt_rn.3.*
-%{_mandir}/man3/crypt_preferred_method.3.*
-%{_mandir}/man3/crypt_r.3.*
-%{_mandir}/man3/crypt_ra.3.*
-%{_mandir}/man5/crypt.5.*
+%doc TODO
+%{_libdir}/*.so
+%{_includedir}/*.h
+%{_libdir}/pkgconfig/*.pc
+%{_mandir}/man?/*%{?ext_man}
 
 %files devel-static
-%{_libdir}/libcrypt.a
-%{_libdir}/libxcrypt.a
-%{_libdir}/libowcrypt.a
+%{_libdir}/*.a
 
 %changelog

@@ -143,4 +143,16 @@
   * Stricter checking of invalid salt characters (issue #135). (forwarded request 912877 from Andreas_Schwab)</comment>
     <requestid>912878</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7d202aa34422c1a3304e20711467f2b7</srcmd5>
+    <version>4.4.26</version>
+    <time>1639424520</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.26:
+  * fix compilation on system with gcc &gt;= 10 that do not support
+    declarations with __attribute__((symver))
+- switch to bootstrapped tarball, add upstream signing key and
+  verify source signature</comment>
+    <requestid>936522</requestid>
+  </revision>
 </revisionlist>

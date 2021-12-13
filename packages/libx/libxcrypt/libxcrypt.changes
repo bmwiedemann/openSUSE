@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 28 19:44:05 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.4.26:
+  * fix compilation on system with gcc >= 10 that do not support
+    declarations with __attribute__((symver))
+- switch to bootstrapped tarball, add upstream signing key and
+  verify source signature
+
+-------------------------------------------------------------------
 Wed Aug 18 10:22:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Update to 4.4.25
