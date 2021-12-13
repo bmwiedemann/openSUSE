@@ -125,4 +125,18 @@
   * Omits unusued profiling function under certain defines to avoid compiler warnings</comment>
     <requestid>884895</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d33da4a4a2854f5a0831b79f3efaf92f</srcmd5>
+    <version>4.5.0</version>
+    <time>1639424699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.0:
+  * Updates baseline to upstream SQLite 3.36.0
+  * Changes the enhanced memory security feature to be DISABLED by default; once enabled by PRAGMA cipher_memory_security = ON, it can't be turned off for the lifetime of the process
+  * Changes PRAGMA cipher_migrate to permanently enter an error state if a migration fails
+  * Fixes memory locking/unlocking issue with realloc implementation on hardened runtimes when memory security is enabled
+  * Fixes cipher_migrate to cleanup the temporary database if a migration fails
+  * Removes logging of non-string pointers when compiling with trace level logging</comment>
+    <requestid>940228</requestid>
+  </revision>
 </revisionlist>

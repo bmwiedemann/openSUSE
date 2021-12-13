@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 13 12:23:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.0:
+  * Updates baseline to upstream SQLite 3.36.0
+  * Changes the enhanced memory security feature to be DISABLED by default; once enabled by PRAGMA cipher_memory_security = ON, it can't be turned off for the lifetime of the process
+  * Changes PRAGMA cipher_migrate to permanently enter an error state if a migration fails
+  * Fixes memory locking/unlocking issue with realloc implementation on hardened runtimes when memory security is enabled
+  * Fixes cipher_migrate to cleanup the temporary database if a migration fails
+  * Removes logging of non-string pointers when compiling with trace level logging
+
+-------------------------------------------------------------------
 Tue Apr 13 09:09:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.4.3:
