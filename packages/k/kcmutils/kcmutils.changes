@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Set initial page using initialPage property, rather than pushing
+  * Do not reset KPluginModel if there are no plugins
+  * Implement KPluginSelector replacement not based around KPluginInfo
+  * Do not try to unload static plugins
+  * Support static plugins for X-KDE-ConfigModule property
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
