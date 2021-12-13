@@ -48,7 +48,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  java-devel
-BuildRequires:  libcroco-devel
 BuildRequires:  libtextstyle-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel

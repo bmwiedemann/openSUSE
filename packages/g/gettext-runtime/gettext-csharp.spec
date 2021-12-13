@@ -50,7 +50,6 @@ Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
-BuildRequires:  libcroco-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  mono-devel

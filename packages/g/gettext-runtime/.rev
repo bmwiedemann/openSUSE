@@ -733,4 +733,12 @@ Using build service only atm, any additional work might take a while again... (f
 - Reintroduce autoreconf call</comment>
     <requestid>866400</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>3404a2357032fff03ed928ced8dc7ae9</srcmd5>
+    <version>0.21</version>
+    <time>1639424526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937737</requestid>
+  </revision>
 </revisionlist>

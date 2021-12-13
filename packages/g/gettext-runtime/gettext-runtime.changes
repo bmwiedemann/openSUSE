@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 29 20:32:32 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Remove libcroco from BuildRequires: it is now bundled internally.
+
+-------------------------------------------------------------------
 Fri Jan 22 21:45:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fixup libtextstyle autofoo with adding 
