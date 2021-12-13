@@ -18,7 +18,7 @@
 
 %define chroot %{_localstatedir}/lib/privoxy
 Name:           privoxy
-Version:        3.0.32
+Version:        3.0.33
 Release:        0
 Summary:        The Internet Junkbuster - HTTP Proxy Server
 License:        GPL-3.0-or-later
