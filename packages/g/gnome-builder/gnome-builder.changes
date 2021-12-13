@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Dec  7 08:34:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.3:
+  + Improvements to Flatpak runtime resolution on new system
+    installations.
+  + Improvements to overview map syling.
+  + The Glade designer will no longer try to open UI files it knows
+    are GTK 4 based to avoid confusion. This requires GTK 4
+    templates to be using appropriate <requires lib="gtk"
+    version="4.0"/> elements.
+  + The GTK 4 template has been updated.
+  + Application id's are more restrictive in the project wizard.
+  + Build pipelines are no properly unloaded when destroyed.
+  + Auxillary font loading was fixed on Nix.
+  + The editor can now insert matching single quotes (').
+  + Work arounds for breakage in IBus with regards to stealing the
+    search accelerator (ctrl+.).
+  + Improvements to the CMake plugin.
+  + Ensure diagnostics are properly formatted.
+  + Improve diagnostic styling.
+- Add 59be97f21e592a7b8e94128c368a87ca16cb2881.patch: Fix build for
+  i586.
+
+-------------------------------------------------------------------
 Wed Nov 17 09:04:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:

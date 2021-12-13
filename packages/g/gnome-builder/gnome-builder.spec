@@ -23,7 +23,7 @@
 %define basever 41
 
 Name:           gnome-builder
-Version:        41.2
+Version:        41.3
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -31,6 +31,8 @@ Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
 Source0:        https://download.gnome.org/sources/gnome-builder/41/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM 59be97f21e592a7b8e94128c368a87ca16cb2881.patch -- Fix build for i586
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-builder/-/commit/59be97f21e592a7b8e94128c368a87ca16cb2881.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
