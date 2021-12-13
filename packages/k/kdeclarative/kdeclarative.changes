@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * KeySequenceItem: Make sure we record on the correct window (kde#445277)
+  * Deprecate KRun KIO plugin
+  * Add missing override keyword
+  * Allow KCM kpackages to use metadata of C++ plugin
+  * add takeLast() slot to ConfigModule
+  * Fix overflowing text properly
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
