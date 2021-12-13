@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sweeper
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE Privacy Utility
 License:        LGPL-2.1-or-later
@@ -75,7 +74,7 @@ cp %{_kf5_iconsdir}/breeze/actions/24/trash-empty.svg %{buildroot}%{_kf5_iconsdi
 cp %{_kf5_iconsdir}/breeze/apps/48/sweeper.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
 
 %files
-%license COPYING.LIB
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/sweeper/
 %{_kf5_applicationsdir}/org.kde.sweeper.desktop
 %{_kf5_appstreamdir}/org.kde.sweeper.appdata.xml
