@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * KIconLoader: prefer icons from current theme before falling back to other themes (kde#445804)
+  * [KIconDialog] Add Ctrl+F shortcut for focussing search line
+  * [KIconButton] Pre-select current icon when opening dialog
+  * [KIconDialog] Add API for pre-selecting an icon
+  * Fix test
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
