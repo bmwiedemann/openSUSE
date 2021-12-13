@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalc
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
@@ -73,13 +72,12 @@ KCalc is the KDE calculator tool.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kcalc/
 %{_kf5_applicationsdir}/org.kde.kcalc.desktop
 %{_kf5_appstreamdir}/org.kde.kcalc.appdata.xml
 %{_kf5_bindir}/kcalc
 %{_kf5_configkcfgdir}/kcalc.kcfg
-%{_kf5_sharedir}/kcalc/
 %{_kf5_sharedir}/kconf_update/
 
 %if %{with lang}
