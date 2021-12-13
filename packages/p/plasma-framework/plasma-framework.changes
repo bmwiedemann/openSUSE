@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:57:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * wallpaperinterface: Don't double delete action
+  * Use `open-menu-symbolic` instead of `application-menu`
+  * Make Breeze plasma scrollbar/slider/progressbar color match application theme
+  * Heading: Deprecate headerPointSize(int level) method
+  * Don't reload renderers for empty paths
+  * PageStack: Replace == equality with === strict equality
+  * Reload shared renderers when a file changed on disk (kde#445516)
+  * PlasmoidHeading: Turn location into an alias for position property
+  * Replace variant property type with var and other appropriate types
+  * org.kde.plasma.extras: Follow Qt style of implicitWidth/implicitHeight declaration
+  * Fix links in generated doc
+  * ButtonColumn: Fix missing import
+  * Fix IconLabel
+  * Title: Replace implementation with Heading {}
+  * Title: Lower size (again)
+  * QQuickWindow::event after setupwaylandintegration
+  * Do updateTheme after QQuickWindow::event (kde#305247)
+  * Breeze slider.svg: Fix bad SVG code making shadow invisible
+  * set all roles that can be mapped from dialog types to plasma protocol role
+  * Forward declare deprecated Plasma::Package class
+  * smaller mask to hide glitches
+  * Remove dead code
+  * KF5PlasmaMacros: Actually install desktop files if they exist
+  * Doc: Reflow text
+  * make the OSD an actual wayland OSD
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
