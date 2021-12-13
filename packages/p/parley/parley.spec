@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           parley
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -83,7 +82,6 @@ Parley is a vocabulary trainer by KDE.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  chmod a+x %{buildroot}%{_kf5_appsdir}/parley/plugins/*.py
 
 %files
 %license LICENSES/*
