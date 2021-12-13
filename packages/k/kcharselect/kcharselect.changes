@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Add FreeBSD CI
+  * Add .kde-ci.yml
+  * Don't install .desktop file with executable bit
+  * Fix CMake code formatting
+  * Add git blame ignore revs file
+  * Add and make use of clang-format
+  * Convert license statements to SPDX
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
