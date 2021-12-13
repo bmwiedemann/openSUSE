@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -127,12 +126,14 @@ screenshot capture program by KDE.
 %{_kf5_debugdir}/spectacle.categories
 %{_kf5_iconsdir}/hicolor/*/*/spectacle*
 %{_kf5_libdir}/kconf_update_bin/spectacle-migrate-shortcuts
+%{_kf5_libdir}/kconf_update_bin/spectacle-migrate-rememberregion
 %{_kf5_notifydir}/spectacle.notifyrc
 %{_kf5_sharedir}/dbus-1/services/org.kde.Spectacle.service
 %{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
 %{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
 %{_kf5_sharedir}/kconf_update/50-clipboard_settings_change.py
 %{_kf5_sharedir}/kconf_update/spectacle_clipboard.upd
+%{_kf5_sharedir}/kconf_update/spectacle_rememberregion.upd
 %{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
 %{_userunitdir}/app-org.kde.spectacle.service
 

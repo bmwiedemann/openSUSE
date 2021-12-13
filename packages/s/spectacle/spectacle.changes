@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:23:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:12:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Use KIO::JobUiDelegate for opening other application (kde#445530)
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Annotation: set canvas background to transparent (kde#432753)
+  * Do not duplicate text when using -c (kde#433221)
+  * Add support for Active Window mode on Wayland (kde#386271)
+  * Keep screenshot preview within a reasonable size when drag and drop is initiated (kde#443564)
+  * Fix capturing from depth 30 screens (10bpc) (kde#422285)
+  * Prevent session manager from restoring the app on start up (kde#430411)
+  * Copy the correct file path to clipboard (kde#441047)
+  * ExportManager: delay copy to clipboard (kde#421974)
+  * Wayland: when screens have same dpr use NativeSize (kde#440226)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:35:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
