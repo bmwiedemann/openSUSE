@@ -24,7 +24,7 @@
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 
 Name:           %{origname}
-Version:        3.2.6
+Version:        3.2.8
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0

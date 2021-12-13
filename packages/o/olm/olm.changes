@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 13 17:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.2.8
+  * Improve handling of olm_session_describe when the buffer is too small.
+
+-------------------------------------------------------------------
+Mon Dec 13 11:26:15 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.7
+  * Fix installation with the Makefile.
+  * Fix exporting again, so we only export olm symbols.
+  * Fix WASM build.  Thanks to Benjamin Kampmann.
+  * Add more functions for fallback keys.
+
+-------------------------------------------------------------------
 Mon Sep 20 07:24:12 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.2.6

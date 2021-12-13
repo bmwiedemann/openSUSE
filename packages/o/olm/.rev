@@ -36,4 +36,17 @@ Python bindings first time inclusion.</comment>
     <comment>Update to 3.2.6</comment>
     <requestid>920341</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ecd061f31fe2f9262629f0e1d2ee27e</srcmd5>
+    <version>3.2.8</version>
+    <time>1639424725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.8
+
+according to
+https://matrix.org/blog/2021/12/13/disclosure-buffer-overflow-in-libolm-and-matrix-js-sdk
+without javascript bindings our package is not affected
+but better to push out soon</comment>
+    <requestid>940318</requestid>
+  </revision>
 </revisionlist>
