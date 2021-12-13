@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Do not crash when connecting to a faulty framebuffer
+  * Add FreeBSD CI
+  * Add .kde-ci.yml
+  * Bugfix: VNC: Restore m_dontSendClipboard to prior state after setting remote contents locally
+  * VncView: Use an ephemeral port for SSH forwarding (kde#442348)
+  * VncSshTunnelThread: Support specifying port 0 to get an ephemeral port
+  * revise VNC/RDP option selection
+  * we depend against 5.85
+  * Fix some clazy warning
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
