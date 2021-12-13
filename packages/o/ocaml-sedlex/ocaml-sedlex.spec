@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-sedlex
-Version:        2.4
+Version:        2.5
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
