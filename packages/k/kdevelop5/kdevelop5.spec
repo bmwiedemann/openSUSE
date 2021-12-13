@@ -17,15 +17,20 @@
 
 
 %define rname   kdevelop
-%define libkdev_major 56
+%define libkdev_major 57
+%bcond_without lang
 Name:           kdevelop5
-Version:        5.6.2
+Version:        21.12.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
-Source0:        https://download.kde.org/stable/%{rname}/%{version}/src/%{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kf5-filesystem
@@ -140,6 +145,7 @@ Conflicts:      libkdevplatform4-devel
 This package contains the development files for building integrated
 developments environments based on the KDevelop framework.
 
+%if %{with lang}
 %package lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
@@ -166,17 +172,19 @@ BuildArch:      noarch
 
 %description -n kdevplatform-lang
 Provides translations to the package kdevplatform
+%endif
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build
   %make_jobs
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 
+%if %{with lang}
   names="kdevandroid kdevappwizard kdevastyle kdevbazaar kdevclang kdevclassbrowser \
          kdevclangtidy kdevclazy kdevcmake kdevcmakebuilder kdevcodeutils kdevcompileanalyzercommon \
          kdevcontextbrowser kdevcppcheck kdevcustombuildsystem kdevcustomdefinesandincludes \
@@ -196,6 +204,8 @@ Provides translations to the package kdevplatform
   done
 
   %find_lang kdevplatform kdevplatform.lang
+  %{kf5_find_htmldocs}
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -205,12 +215,11 @@ Provides translations to the package kdevplatform
 %postun -n libkdevplatform%{libkdev_major} -p /sbin/ldconfig
 
 %files -n libkdevplatform%{libkdev_major}
-%license kdevplatform/COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKDevPlatform*.so.%{libkdev_major}
 %{_kf5_libdir}/libKDevPlatform*.so.5.*
 
 %files
-%license COPYING*
 %doc README.md
 %dir %{_kf5_iconsdir}/hicolor/1024x1024
 %dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
@@ -228,12 +237,6 @@ Provides translations to the package kdevplatform
 %{_kf5_bindir}/kdevelop*
 %{_kf5_debugdir}/kdevelop.categories
 %{_kf5_iconsdir}/*/*/*/*
-%if %{pkg_vcmp knewstuff-devel >= 5.57.0}
-# It installs .knsrc files when built with knewstuff-devel >= 5.57.0
-%{_kf5_knsrcfilesdir}/kdevappwizard.knsrc
-%{_kf5_knsrcfilesdir}/kdevelop-qthelp.knsrc
-%{_kf5_knsrcfilesdir}/kdevfiletemplates.knsrc
-%endif
 %{_kf5_libdir}/cmake/KDevelop/
 %{_kf5_libdir}/libKDevCMakeCommon.so.*
 %{_kf5_libdir}/libKDevClangPrivate.so.*
@@ -245,10 +248,6 @@ Provides translations to the package kdevplatform
 %{_kf5_plugindir}/kf5/krunner/krunner_kdevelopsessions.so
 %{_kf5_prefix}/include/kdevelop/
 %{_kf5_qmldir}/
-%if %{pkg_vcmp krunner-devel < 5.72.0}
-# Only installed when built with krunner < 5.72.0
-%{_kf5_servicesdir}/kdevelopsessions.desktop
-%endif
 %{_kf5_servicesdir}/plasma-applet-kdevelopsessions.desktop
 %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevclangsupport/
@@ -260,16 +259,14 @@ Provides translations to the package kdevplatform
 %{_kf5_sharedir}/kdevlldb/
 %{_kf5_sharedir}/kdevmanpage/
 %{_kf5_sharedir}/kdevqmljssupport/
+%{_kf5_sharedir}/knsrcfiles/kdevappwizard.knsrc
+%{_kf5_sharedir}/knsrcfiles/kdevelop-qthelp.knsrc
+%{_kf5_sharedir}/knsrcfiles/kdevfiletemplates.knsrc
 %{_kf5_sharedir}/mime/packages/kdevclang.xml
 %{_kf5_sharedir}/mime/packages/kdevelop.xml
 %{_kf5_sharedir}/mime/packages/kdevgit.xml
 
-%files lang -f %{name}.lang
-
-%files -n kdevplatform-lang -f kdevplatform.lang
-
 %files -n kdevplatform
-%license kdevplatform/COPYING*
 %doc kdevplatform/README.md
 %{_kf5_bindir}/kdev_dbus_socket_transformer
 %{_kf5_bindir}/kdev_format_source
@@ -281,9 +278,14 @@ Provides translations to the package kdevplatform
 %{_kf5_sharedir}/kdevplatform/
 
 %files -n kdevplatform-devel
-%license kdevplatform/COPYING*
 %{_kf5_libdir}/cmake/KDevPlatform/
 %{_kf5_libdir}/libKDevPlatform*.so
 %{_kf5_prefix}/include/kdevplatform/
+
+%if %{with lang}
+%files lang -f %{name}.lang
+
+%files -n kdevplatform-lang -f kdevplatform.lang
+%endif
 
 %changelog
