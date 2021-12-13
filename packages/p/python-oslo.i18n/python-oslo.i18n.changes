@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Dec  6 09:08:41 UTC 2021 - cloud-devel@suse.de
+
+- update to version 5.1.0
+  - Changed minversion in tox to 3.18.0
+  - Fix requirements issues
+  - Update master for stable/victoria
+  - Use py3 as the default runtime for tox
+  - Remove all usage of six library
+  - Use TOX_CONSTRAINTS_FILE
+  - Upgrade the pre-commit-hooks version
+  - Remove six.PY3
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Switch testing to Xena testing runtime
+  - Fix hacking min version to 3.0.1
+
+-------------------------------------------------------------------
 Fri Oct  9 19:17:01 UTC 2020 - cloud-devel@suse.de
 
 - update to version 5.0.1

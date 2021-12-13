@@ -263,4 +263,24 @@
     <comment>switch to victoria</comment>
     <requestid>841209</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a17c9486ac826354cbdf762810f8f25a</srcmd5>
+    <version>5.1.0</version>
+    <time>1639424691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.0
+  - Changed minversion in tox to 3.18.0
+  - Fix requirements issues
+  - Update master for stable/victoria
+  - Use py3 as the default runtime for tox
+  - Remove all usage of six library
+  - Use TOX_CONSTRAINTS_FILE
+  - Upgrade the pre-commit-hooks version
+  - Remove six.PY3
+  - Adding pre-commit
+  - Add Python3 wallaby unit tests
+  - Switch testing to Xena testing runtime
+  - Fix hacking min version to 3.0.1</comment>
+    <requestid>940201</requestid>
+  </revision>
 </revisionlist>
