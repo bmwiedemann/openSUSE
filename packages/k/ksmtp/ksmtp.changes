@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * CI: Remove reuse job on 21.12 branch
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Use unique_ptr
+  * Add missing dep
+  * It doesn't depend against it
+  * Remove unused restartSocketTimer method
+  * Not necessary to use qoverload here
+  * BUG 442884: Fix DSN support (kde#442884)
+  * Move STARTTLS setup from LoginJob to Session (kde#423423)
+  * Reset TLS protocol information when reconnecting
+  * Move establishing the TLS connection to Session
+  * Remove unused variable
+  * Port Q_FOREVER
+  * Move encryption settings from LoginJob to Session
+  * Consistently unify SessionPrivate members in their declaration
+  * Connect QSslSocket::encrypted only once
+  * Remove the unnecessary explicit SSL protocol selection
+  * Remove blocking session API
+  * Add KDE CI file
+  * Use qOverload directly (scripted)
+  * Fix version
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
