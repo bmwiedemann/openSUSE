@@ -19,6 +19,11 @@
 %global srcname keylime
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%if 0%{?suse_version} >= 1550
+%bcond_without cfssl
+%else
+%bcond_with cfssl
+%endif
 Name:           keylime
 Version:        6.2.0
 Release:        0
@@ -118,7 +123,7 @@ Subpackage of %{name} for verifier service.
 
 %prep
 %autosetup -p1
-%if !0%{?is_opensuse}
+%if %{with cfssl}
 sed -i "s/ca_implementation = cfssl/ca_implementation = openssl/g" keylime.conf
 %endif
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Dec  8 16:30:39 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Introduce a bcond for cfssl detection
+
+-------------------------------------------------------------------
 Wed Dec  1 10:07:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop cfssl if we are not in openSUSE
