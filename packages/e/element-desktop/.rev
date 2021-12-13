@@ -60,4 +60,16 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 </comment>
     <requestid>939081</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b89e80cc2b4ecff410bcbccb2f155c0b</srcmd5>
+    <version>1.9.7</version>
+    <time>1639424722</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/940304
+- Version 1.9.7
+  * Security fix: buffer overflow in libolm and matrix-js-sdk
+    https://matrix.org/blog/2021/12/13/disclosure-buffer-overflow-in-libolm-and-matrix-js-sdk
+</comment>
+    <requestid>940305</requestid>
+  </revision>
 </revisionlist>
