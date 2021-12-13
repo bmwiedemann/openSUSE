@@ -18,12 +18,11 @@
 
 
 %define rname print-manager
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-print-manager
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
@@ -111,7 +110,7 @@ kde-print-manager provides tools for managing print jobs and printers.
 %{_kf5_plugindir}/kf5/kded/printmanager.so
 %{_kf5_qmldir}/org/kde/plasma/printmanager/
 %{_kf5_servicesdir}/kcm_printer_manager.desktop
-%if %{pkg_vcmp plasma-framework-devel < 5.84}
+%if %{pkg_vcmp plasma-framework-devel > 5.89}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.printmanager.desktop
 %endif
 

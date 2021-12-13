@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec 10 19:58:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix package build with plasma-framework 5.89.0.
+
+-------------------------------------------------------------------
+Fri Dec  3 19:23:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:12:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * libkcups: Add debug context to some warnings
+  * Drop useless X-KDE-System-Settings-Parent-Category-V2 entry
+  * Add keywords to print manager to improve search
+  * Fix plugin name in .desktop file (kde#426834)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:35:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

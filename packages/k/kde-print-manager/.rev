@@ -641,4 +641,30 @@
     <comment>KDE Gear 21.08.3</comment>
     <requestid>929288</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>921716961d73c3b3278baa4f06fb3b58</srcmd5>
+    <version>21.12.0</version>
+    <time>1639424490</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build with plasma-framework 5.89.0.
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * libkcups: Add debug context to some warnings
+  * Drop useless X-KDE-System-Settings-Parent-Category-V2 entry
+  * Add keywords to print manager to improve search
+  * Fix plugin name in .desktop file (kde#426834)</comment>
+    <requestid>939454</requestid>
+  </revision>
 </revisionlist>
