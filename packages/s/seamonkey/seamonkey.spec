@@ -28,7 +28,6 @@ BuildRequires:  hunspell-devel
 # Using system AV1 decoder depends on pending patch from
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
 #BuildRequires:  dav1d5-devel
-BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
@@ -65,9 +64,9 @@ BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.10
+Version:        2.53.10.1
 Release:        0
-%define releasedate 20211116000000
+%define releasedate 20211213000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers

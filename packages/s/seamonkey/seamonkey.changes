@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
-Wed Nov 17 10:17:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+Mon Dec 13 10:38:44 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
-- Lower _constraints to match the actual needs
+- update to SeaMonkey 2.53.10.1
+  * Security fix for NSS code bug 1737470.
+  * Only use networks and servers in lower case in ChatZilla bug
+    1742502.
+  * Change classic form icon in SeaMonkey composer bug 1710915.
+  * Addition fixes for SeaMonkey 32x32 default icons on Windows and
+    macOS bug 1729153.
+  * SeaMonkey 2.53.10.1 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.10.1 shares most parts of the mail and news code
+    with Thunderbird. Please read the Thunderbird 60.0 release notes
+    for specific changes and security fixes in this release.
+  * Additional important security fixes up to Current Firefox 91.4 ESR
+    and a few enhancements have been backported. We will continue to
+    enhance SeaMonkey security in subsequent 2.53.x beta and release
+    versions as fast as we are able to.
+- Remove unused build dependency on libidl-devel.
+- requested inclusion in Leap 15.3:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1193668
 
 -------------------------------------------------------------------
 Tue Nov 16 08:40:32 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
