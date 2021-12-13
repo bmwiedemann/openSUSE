@@ -16,16 +16,15 @@
 #
 
 
-%define lname   libqt5keychain1
+%define sover 1
 Name:           qtkeychain-qt5
-Version:        0.12.0
+Version:        0.13.2
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/frankosterfeld/qtkeychain
 Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
@@ -36,25 +35,25 @@ BuildRequires:  pkgconfig(libsecret-1)
 %description
 qtkeychain can be used to store passwords.
 
-%package -n %{lname}
+%package -n libqt5keychain%{sover}
 Summary:        A password store library
 Group:          System/Libraries
-Recommends:     %{lname}-lang
+Recommends:     libqt5keychain%{sover}-lang
 
-%description -n %{lname}
+%description -n libqt5keychain%{sover}
 qtkeychain can be used to store passwords.
 
 %package devel
 Summary:        Development files for the qtkeychain library
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       libqt5keychain%{sover} = %{version}
 
 %description devel
 qtkeychain can be used to store passwords.
 
 This package contains development files for libqtkeychain.
 
-%lang_package -n %{lname}
+%lang_package -n libqt5keychain%{sover}
 
 %prep
 %autosetup -p1 -n qtkeychain-%{version}
@@ -67,12 +66,13 @@ This package contains development files for libqtkeychain.
 %cmake_install
 %find_lang qtkeychain --with-qt
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post -n libqt5keychain%{sover} -p /sbin/ldconfig
+%postun -n libqt5keychain%{sover} -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n libqt5keychain%{sover}
 %license COPYING
-%{_libdir}/libqt5keychain.so.*
+%{_libdir}/libqt5keychain.so.%{sover}
+%{_libdir}/libqt5keychain.so.%{version}
 
 %files devel
 %license COPYING
@@ -81,7 +81,7 @@ This package contains development files for libqtkeychain.
 %{_libdir}/libqt5keychain.so
 %{_libdir}/qt5/mkspecs/modules/qt_Qt5Keychain.pri
 
-%files -n %{lname}-lang -f qtkeychain.lang
+%files -n libqt5keychain%{sover}-lang -f qtkeychain.lang
 %license COPYING
 %dir %{_datadir}/qt5keychain
 %dir %{_datadir}/qt5keychain/translations
