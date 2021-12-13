@@ -18,7 +18,7 @@
 #
 
 
-%define          cmake_config_version 6.3
+%define          cmake_config_version 6.4
 %define          build_ofx 1
 %define          _name aqbanking
 %define          aq_plugindir   %{_libdir}/aqbanking/plugins/44
@@ -28,10 +28,10 @@
 %define          fronts_datadir %{_datadir}/%{_name}/frontends
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
-%define          releasever  386
-%define          ascreleasever 385
+%define          releasever  394
+%define          ascreleasever 393
 Name:           aqbanking
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
