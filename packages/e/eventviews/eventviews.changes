@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+  * Agenda view: fix misalignement of allday view & day headers \wo scrollbar (kde#405714)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Color the borders of items in the Agenda view
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * AgendaView: fix misaligned layout of header & footer columns
+  * Allow to show header in qtc6
+  * Show decoration elements without frame in all widget styles
+  * Drop support for EVENTVIEWS_NODECOS flag
+  * Make TodoModel accessible to QML
+  * Add changes ignored by the git merge
+  * Fix some cppcheck warning
+  * Add a Completed Date column to the To-Do List view
+  * Add a dependency for Gitlab CI
+  * Use theme colors for today's cell and the selected cell in the Month View
+  * Use const'ref
+  * Port for(...:...)
+  * Fix include
+  * Add KDE CI file
+  * Const'ify variable
+  * A new api was added => increase version
+  * Use qOverload directly (scripted)
+  * Use std::chrono_literals
+  * Use KPluginFactory to instantiate plugins
+  * USe std::chrono_literals
+  * CalendarDecoration::StoredElement: tag property getters with Q_REQUIRED_RESULT
+  * CalendarDecoration::Element: make property getters const
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
