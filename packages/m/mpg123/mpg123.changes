@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Dec 12 11:48:03 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.29.3
+  libmpg123:
+  * Catch more NULL pointer arguments in LFS wrappers
+    (most prominently: mpg123_feedseek(), bug 328).
+  mpg123:
+  * Fix regression that did _not_ enable --remote-err on -s
+    anymore.
+  * Fix typos in man page (thanks to Naglis Jonaitis).
+  * Drop mixed-up value limits on remote control SEQ command. It
+    is up to you if you want to distort your sound.
+  * Add note about equalizer frequency bands to man page.
+  build:
+  * add BUILD_PROGRAMS option to ports/cmake
+
+-------------------------------------------------------------------
 Sat Oct 23 12:07:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.29.2
