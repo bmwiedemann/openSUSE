@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-parso
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -55,7 +55,9 @@ tree.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# Python 3.10 has deviating exception messages -- gh#davidhalter/parso#192
+python310_args=("-k" "not test_python_exception_matches")
+%pytest "${$python_args[@]}"
 
 %files %{python_files}
 %license LICENSE.txt
