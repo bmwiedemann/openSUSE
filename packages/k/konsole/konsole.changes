@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Open bookmarks toolbar button on click; don't require press-and-hold (kde#446339)
+  * Use new "edit-copy-path" icon for "Copy Location" menu item
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix changing non-Breeze scrollbar colors at runtime
+  * Adapt scrollbar to terminal color scheme for Breeze widget style again
+  * Revert "Let the scrollbar follow the app color scheme"
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * EditProfileDialog: fix build with Clang and libc++ (kde#443420)
+  * Make "Find Next/Previous" icons in Edit menu consistent with those in the search bar (kde#443244)
+  * Use one option to control menubar visibility (kde#440328)
+  * Always save the window state and geometry (kde#442252)
+  * Move splitview toolbar buttons into a button menu (kde#437555)
+  * Update copyright year to 2021 (kde#442016)
+  * Fix missing new-tab menu when only one profile exists (kde#436264)
+  * Hide the Plugins menu if no plugins were loaded (kde#441199)
+  * Fix the maximum port number in the SSH Manager plugin (kde#441889)
+  * For the fallback profile change the menu text to "Create New Profile" (kde#440885)
+  * Don't resize window when switching virtual desktops in OpenBox (kde#441610)
+  * Only emit empty() in SessionFinished() when in TabbedNavigation mode (kde#441206)
+  * improve session closing behavior (kde#401898)
+  * Prevent window "flashing" when closing the last session (kde#432077)
+  * Fix crash when closing a tab using the close button (kde#411962)
+  * Fix KXmlGUI toolbars; and Konsole MainWindow size (kde#430036)
+  * Fix crash when setting blur effect (kde#439871)
+  * Don't create a new temp profile when --workdir is used to launch Konsole (kde#435537)
+  * Resize lines when clearing to end of line. (kde#432669)
+  * Fix one crash in the sshmanager plugin (kde#439551)
+- Drop upstream patch:
+  * 0002-Always-save-the-window-state-and-geometry.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

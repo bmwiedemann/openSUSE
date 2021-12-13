@@ -16,12 +16,11 @@
 #
 
 %global libsover 21
-%define kf5_version 5.71.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -40,8 +39,6 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
-# PATCH-FIX-UPSTREAM
-Patch1:         0002-Always-save-the-window-state-and-geometry.patch
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -143,7 +140,8 @@ Provides translations for the "%{name}" package.
 %files
 %license COPYING
 %doc README.md
-%dir %{_kf5_sharedir}/khotkeys/
+%dir %{_kf5_plugindir}/konsoleplugins
+%dir %{_kf5_sharedir}/khotkeys
 %doc %lang(en) %{_kf5_htmldir}/en/konsole/
 %{_kf5_applicationsdir}/konsolesu.desktop
 %{_kf5_applicationsdir}/org.kde.konsole.desktop
@@ -152,6 +150,7 @@ Provides translations for the "%{name}" package.
 %{_kf5_bindir}/konsoleprofile
 %{_kf5_iconsdir}/hicolor/*/apps/utilities-terminal_su.png
 %{_kf5_knsrcfilesdir}/konsole.knsrc
+%{_kf5_plugindir}/konsoleplugins/konsole_sshmanagerplugin.so
 %{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_sharedir}/khotkeys/konsole.khotkeys
 %{_kf5_libdir}/libkonsoleapp.so.*
