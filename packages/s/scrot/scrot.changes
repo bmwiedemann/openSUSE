@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec 11 13:13:42 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- scrot 1.7:
+  * Fixed: free memory image and font resources.
+  * Fixed: segfault if mouse cursor image was not obtained.
+  * Improvement option: --stack, add an optional join direction (v/h).
+  * New option: --file (-F), provide the filename as an option.
+  * New option: --ignorekeyboard (-i), Don't exit for keyboard input. ESC still exits.
+  * New option: --select=hole (-shole), hole selection area.
+  * New option: --select=hide (-shide), hide selection area, support image.
+  * New option: --select=blur (-sblur), blur selection area.
+  * New option: (-) add redirection to standard output (format PNG).
+
+-------------------------------------------------------------------
 Tue Jul 27 11:59:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.6:

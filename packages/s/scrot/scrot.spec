@@ -17,20 +17,18 @@
 
 
 Name:           scrot
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/resurrecting-open-source-projects/scrot
-Source:         https://github.com/resurrecting-open-source-projects/scrot/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
+Source:         https://github.com/resurrecting-open-source-projects/scrot/releases/download/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(giblib)
 BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(libbsd)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xext)
@@ -45,7 +43,6 @@ the dynamic loaders of imlib2.
 %autosetup -p1
 
 %build
-./autogen.sh
 %configure
 %make_build
 
@@ -55,7 +52,7 @@ mkdir -p %{buildroot}/%{_datadir}/pixmaps/
 rm -rf %{buildroot}/%{_datadir}/doc/scrot
 
 %files
-%doc AUTHORS ChangeLog README.md TODO CONTRIBUTING.md
+%doc AUTHORS ChangeLog README.md
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
