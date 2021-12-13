@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * PageRowGlobalToolBarUI: use open-menu-symbolic
+  * Heading: Deprecate headerPointSize(int level) method
+  * Let escape key close pushed dialog layers
+  * AboutItem: fix the view for narrow dialogs
+  * AboutItem: Report its implicit size so it can scroll
+  * removed unnecessary code
+  * Increase passive notification opacity (kde#440390)
+  * Bold labels for narrow FormLayout
+  * Add Dialog Components
+  * add columns on empty width
+  * DefaultCardBackground improvements
+  * Expose internal icon source in the Avatar component
+  * Preconfigure kconfig and kaboutdata on template
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
