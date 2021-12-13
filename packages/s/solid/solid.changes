@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:57:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Allow udisks2 and upower backends to be disabled with environment variables
+  * Add device description for storage medium without size
+  * Config.cmake: Lookup LibMount when building statically
+  * Add support for graphics tablet batteries
+  * [upower] Consider audio devices and generic bluetooth devices to be batteries (kde#445141)
+  * [upower] Add new device types
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
