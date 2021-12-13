@@ -1046,4 +1046,26 @@ Now with build cycle removed.</comment>
   * Remove elluciancrm domains (#1443)</comment>
     <requestid>930874</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>12cf4c7668159e27e9f136a2260e5074</srcmd5>
+    <version>20211207</version>
+    <time>1639424517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20211207:
+  * Add encoway domain: eu.encoway.cloud (#1430)
+  * feat: Add pro.typeform.com to PSL (#1457)
+  * added cloud.nospamproxy.com (#1455)
+  * Replace edugit.org with edugit.io and add s3.teckids.org for Teckids (#1463)
+  * Remove nodum domains (#1444)
+  * Please add koobin.events to the PSL (#1462)
+  * Add 9 BASE, Inc. domains to private section (#1420)
+  * Adding Hoplix domains (#1405)
+  * util: gTLD data autopull updates for 2021-12-04T15:13:28 UTC (#1484)
+  * Revert &quot;Add amsw.nl private domain to PSL (#929)&quot; (#1475)
+  * REMOVAL of virtueeldomein.nl (#1480)
+
+- Update to version 20211113:
+  * util: gTLD data autopull updates for 2021-11-13T15:12:42 UTC (#1469)</comment>
+    <requestid>936465</requestid>
+  </revision>
 </revisionlist>

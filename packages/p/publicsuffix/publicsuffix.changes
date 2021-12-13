@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Dec  8 10:37:15 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20211207:
+  * Add encoway domain: eu.encoway.cloud (#1430)
+  * feat: Add pro.typeform.com to PSL (#1457)
+  * added cloud.nospamproxy.com (#1455)
+  * Replace edugit.org with edugit.io and add s3.teckids.org for Teckids (#1463)
+  * Remove nodum domains (#1444)
+  * Please add koobin.events to the PSL (#1462)
+  * Add 9 BASE, Inc. domains to private section (#1420)
+  * Adding Hoplix domains (#1405)
+  * util: gTLD data autopull updates for 2021-12-04T15:13:28 UTC (#1484)
+  * Revert "Add amsw.nl private domain to PSL (#929)" (#1475)
+  * REMOVAL of virtueeldomein.nl (#1480)
+
+-------------------------------------------------------------------
+Tue Nov 23 08:12:30 UTC 2021 - mpluskal@suse.com
+
+- Update to version 20211113:
+  * util: gTLD data autopull updates for 2021-11-13T15:12:42 UTC (#1469)
+
+-------------------------------------------------------------------
 Thu Nov 11 14:04:42 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20211109:
