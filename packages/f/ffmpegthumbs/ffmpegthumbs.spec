@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ffmpegthumbs
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
@@ -49,8 +48,6 @@ BuildRequires:  pkgconfig(taglib)
 %description
 FFmpeg-based thumbnail creator for video files.
 
-%lang_package
-
 %prep
 %autosetup -p1
 
@@ -60,9 +57,6 @@ FFmpeg-based thumbnail creator for video files.
 
 %install
   %kf5_makeinstall -C build
-  %if %{with lang}
-   %find_lang %{name} --with-man --all-name
-  %endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -74,9 +68,5 @@ FFmpeg-based thumbnail creator for video files.
 %{_kf5_debugdir}/ffmpegthumbs.categories
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
-
-%if %{with lang}
-%files lang -f %{name}.lang
-%endif
 
 %changelog
