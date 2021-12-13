@@ -1,7 +1,7 @@
 #
 # spec file for package junit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           junit
-Version:        4.13
+Version:        4.13.2
 Release:        0
 Summary:        Java regression test package
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-URL:            https://www.junit.org/
-Source0:        https://github.com/junit-team/junit/archive/r%{version}.tar.gz
+URL:            https://junit.org/junit4/
+Source0:        https://github.com/junit-team/junit4/archive/r%{version}.tar.gz
 Source1:        build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes

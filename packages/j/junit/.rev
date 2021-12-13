@@ -192,4 +192,12 @@
     <comment>4.12 -&gt; 4.13</comment>
     <requestid>791983</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>51c769b6b33023f2f8671025c82088b2</srcmd5>
+    <version>4.13.2</version>
+    <time>1639424513</time>
+    <user>dimstar_suse</user>
+    <comment>4.13.2</comment>
+    <requestid>940091</requestid>
+  </revision>
 </revisionlist>

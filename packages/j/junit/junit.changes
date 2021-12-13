@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 12 12:57:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.2:
+  * Mark ThreadGroups created by FailOnTimeout as daemon groups
+  * Only create ThreadGroups if FailOnTimeout.lookForStuckThread is true.
+  * Fix NotSerializableException with AssumptionViolatedException
+  * Security fix: TemporaryFolder now limits access to temporary folders on
+    Java 1.7 or later (CVE-2020-1945, bsc#1171696)
+  * Make FrameworkField constructor public
+
+-------------------------------------------------------------------
 Tue Apr  7 12:20:17 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 4.13
