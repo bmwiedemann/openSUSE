@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-import-wizard
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -112,7 +112,6 @@ KDE PIM applications.
 %dir %{_kf5_plugindir}/importwizard
 %dir %{_kf5_sharedir}/importwizard
 %dir %{_kf5_sharedir}/importwizard/pics
-%dir %{_kf5_sharedir}/kconf_update/
 %doc %lang(en) %{_kf5_htmldir}/en/importwizard/
 %{_kf5_applicationsdir}/org.kde.akonadiimportwizard.desktop
 %{_kf5_bindir}/akonadiimportwizard
@@ -121,8 +120,6 @@ KDE PIM applications.
 %{_kf5_iconsdir}/hicolor/*/apps/kontact-import-wizard.png
 %{_kf5_plugindir}/importwizard/*.so
 %{_kf5_sharedir}/importwizard/pics/step1.png
-%{_kf5_sharedir}/kconf_update/importwizard-15.08-kickoff.sh
-%{_kf5_sharedir}/kconf_update/importwizard.upd
 
 %files -n %{lname}
 %{_kf5_libdir}/libKPimImportWizard.so.5*
