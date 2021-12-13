@@ -83,6 +83,8 @@ A minimal plasma shell package intended for embedded devices
 %{_kf5_plasmadir}/packages/org.kde.plasma.nano.desktoptoolbox/
 %dir %{_kf5_plasmadir}/shells
 %{_kf5_plasmadir}/shells/org.kde.plasma.nano/
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.nano.desktop
+%{_kf5_servicesdir}/plasma-package-org.kde.plasma.nano.desktoptoolbox.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
