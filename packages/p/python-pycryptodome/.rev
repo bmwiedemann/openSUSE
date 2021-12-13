@@ -193,4 +193,18 @@
     to drop that flag and allow security testing.</comment>
     <requestid>925769</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49efbb1c3713a93120166165cce0dc3d</srcmd5>
+    <version>3.12.0</version>
+    <time>1639424501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.0:
+  * ECC keys in the SEC1 format can be exported and imported.
+  * Add support for KMAC128, KMAC256, TupleHash128, and TupleHash256 (NIST SP-800 185).
+  * Add support for KangarooTwelve.
+  * GH#563: An asymmetric key could not be imported as a ``memoryview``.
+  * GH#566: cSHAKE128/256 generated a wrong output for customization strings
+  * GH#582: CBC decryption generated the wrong plaintext when the input and the output were the same buffer.</comment>
+    <requestid>939588</requestid>
+  </revision>
 </revisionlist>
