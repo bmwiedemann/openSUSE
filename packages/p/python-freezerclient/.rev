@@ -170,4 +170,15 @@
     <comment></comment>
     <requestid>889965</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4ce7b1fd89c2d066502624c4efe1a5be</srcmd5>
+    <version>4.3.0</version>
+    <time>1639424687</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - [ussuri][goal] Update contributor documentation
+  - Fix lower-constraints CI error
+  - Use py3 as the default runtime for tox</comment>
+    <requestid>940198</requestid>
+  </revision>
 </revisionlist>
