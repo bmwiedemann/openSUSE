@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyaml
-Version:        20.4.0
+Version:        21.10.1
 Release:        0
 Summary:        Python module to produce formatted YAML-serialized data
 License:        WTFPL
@@ -50,11 +50,12 @@ PyYAML-based python module to produce formatted YAML-serialized data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest pyaml/tests/dump.py
+%pytest
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pyaml
+%{python_sitelib}/pyaml-%{version}*-info
 
 %changelog
