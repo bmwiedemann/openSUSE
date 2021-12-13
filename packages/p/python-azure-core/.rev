@@ -211,4 +211,15 @@
     CHANGELOG.md file provided with this package (forwarded request 937718 from glaubitz)</comment>
     <requestid>937768</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c003c4dee79a5e96157f6f9152d0c460</srcmd5>
+    <version>1.21.1</version>
+    <time>1639424702</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.21.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 940184 from glaubitz)</comment>
+    <requestid>940238</requestid>
+  </revision>
 </revisionlist>
