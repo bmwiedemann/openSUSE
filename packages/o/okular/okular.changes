@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:23:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Fix implementation of AFNumber_Format (kde#445868)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Presentation: Don't hide toolbar if we're not really leaving the window (kde#444427)
+  * Fix zoom actions not being updated correctly (kde#440173)
+  * okularcore doesn't need dbus
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Markdown: Don't crash on files with html images, alt text, inside links (kde#444971)
+  * markdown: Only remove text if we're going to add something (kde#443057)
+  * Improve dialog text when asking for annotation author name (kde#442381)
+  * Add quick annotation minibar action (kde#425438)
+  * Fixed encoding detection for small texts (up to 3000 bytes) (kde#334733)
+  * Fix non unique KPlugin Id for fictionbook generator (kde#439807)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

@@ -1147,4 +1147,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Gear 21.08.3</comment>
     <requestid>929431</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>3d16d0588070261ca2207662828051ff</srcmd5>
+    <version>21.12.0</version>
+    <time>1639424413</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.0</comment>
+    <requestid>938063</requestid>
+  </revision>
 </revisionlist>
