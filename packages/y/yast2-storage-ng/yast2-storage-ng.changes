@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 10 10:18:05 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Proposal: add support for mount options (related to fate#318196).
+- 4.4.23
+
+-------------------------------------------------------------------
+Thu Dec  9 13:25:29 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- use libstorage-ng to determine whether efibootmgr is available
+  (bsc#937067)
+- 4.4.22
+
+-------------------------------------------------------------------
+Wed Dec  8 10:01:35 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Prepare code for ruby3 - adapt openstruct usage (bsc#1193192)
+- 4.4.21
+
+-------------------------------------------------------------------
 Fri Dec  3 12:21:14 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Fix regression for unit tests: mock the generation of Bcache
