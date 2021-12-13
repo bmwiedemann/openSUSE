@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -33,9 +33,6 @@ Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
-# PATCH-FIX-OPENSUSE kdeconnect-openssh-8.8.patch boo#1191886
-Patch0:         https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/kdeconnect/trunk/kdeconnect-openssh-8.8.patch
-Patch1:         kdeconnect-add-back-ssh-dss.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -161,6 +158,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_datadir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
 %{_datadir}/nautilus-python/extensions/
 %{_kf5_applicationsdir}/*.desktop
+%{_kf5_appstreamdir}/org.kde.kdeconnect.appdata.xml
 %{_kf5_appstreamdir}/org.kde.kdeconnect.kcm.appdata.xml
 %{_kf5_bindir}/kdeconnect-app
 %{_kf5_bindir}/kdeconnect-cli

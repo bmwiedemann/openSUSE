@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix unicode-decoding mistake in isInGsmAlphabet method
+  * Always show notification when receiving files (kde#417823)
+- Drop kdeconnect-add-back-ssh-dss.patch
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes to list here.
+- Drop kdeconnect-openssh-8.8.patch
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
