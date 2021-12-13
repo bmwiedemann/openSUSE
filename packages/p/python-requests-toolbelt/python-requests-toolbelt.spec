@@ -31,6 +31,8 @@ Patch0:         fix-tests.patch
 # PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
 # remove dependency on the external mock package
 Patch1:         remove_mock.patch
+# PATCH-FIX-UPSTREAM requests-toolbelt-pr246-collections.abc.patch -- fix python310 deprecation. gh#requests/toolbelt#246
+Patch2:         https://github.com/requests/toolbelt/pull/246.patch#/requests-toolbelt-pr246-collections.abc.patch
 BuildRequires:  %{python_module requests >= 2.12.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

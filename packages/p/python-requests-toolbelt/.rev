@@ -77,4 +77,12 @@
     <comment>- Regenerate test_certs.p12 due to the upstream certificate expiring</comment>
     <requestid>934445</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e597b1c00db2b1ada336b48a81eeb0cf</srcmd5>
+    <version>0.9.1</version>
+    <time>1639424508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940022</requestid>
+  </revision>
 </revisionlist>
