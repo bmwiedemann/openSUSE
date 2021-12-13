@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Dec 12 11:52:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix pop3 connections:
+  * 0001-POP3-Fix-SSL-connections.patch (kde#446751)
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix POP3 setup wizard defaults to unencrypted connections. (kde#423426)
+  * const'ify pointer
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Fix 444985: Wrong ports in akonadi_pop3_resource.pot (kde#444985)
+  * BUG 442884: Fix DSN support (kde#442884)
+  * fix UI elements being used before initialization (kde#439991)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
