@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalutils
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
