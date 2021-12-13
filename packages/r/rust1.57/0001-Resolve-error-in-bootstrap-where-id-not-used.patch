@@ -1,0 +1,53 @@
+From af9cde238d934c7e25a9a1ef0cbebef50a0febb0 Mon Sep 17 00:00:00 2001
+From: William Brown <wbrown@suse.de>
+Date: Fri, 3 Dec 2021 12:48:20 +1000
+Subject: [PATCH] Resolve error in bootstrap where id not used
+
+---
+ src/bootstrap/lib.rs              | 2 +-
+ src/bootstrap/metadata.rs         | 2 +-
+ src/tools/compiletest/src/json.rs | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/bootstrap/lib.rs b/src/bootstrap/lib.rs
+index 2d4e1527897..58ae72e6a5e 100644
+--- a/src/bootstrap/lib.rs
++++ b/src/bootstrap/lib.rs
+@@ -277,7 +277,7 @@ pub struct Build {
+ struct Crate {
+     name: Interned<String>,
+     deps: HashSet<Interned<String>>,
+-    id: String,
++    _id: String,
+     path: PathBuf,
+ }
+ 
+diff --git a/src/bootstrap/metadata.rs b/src/bootstrap/metadata.rs
+index a38391c7b88..5a30c47ad1d 100644
+--- a/src/bootstrap/metadata.rs
++++ b/src/bootstrap/metadata.rs
+@@ -50,7 +50,7 @@ pub fn build(build: &mut Build) {
+                 .filter(|dep| dep.source.is_none())
+                 .map(|dep| INTERNER.intern_string(dep.name))
+                 .collect();
+-            build.crates.insert(name, Crate { name, id: package.id, deps, path });
++            build.crates.insert(name, Crate { name, _id: package.id, deps, path });
+         }
+     }
+ }
+diff --git a/src/tools/compiletest/src/json.rs b/src/tools/compiletest/src/json.rs
+index dc6d67983c5..f750e7fab7b 100644
+--- a/src/tools/compiletest/src/json.rs
++++ b/src/tools/compiletest/src/json.rs
+@@ -75,7 +75,7 @@ struct DiagnosticCode {
+     /// The code itself.
+     code: String,
+     /// An explanation for the code.
+-    explanation: Option<String>,
++    _explanation: Option<String>,
+ }
+ 
+ pub fn rustfix_diagnostics_only(output: &str) -> String {
+-- 
+2.34.1
+

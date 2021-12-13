@@ -1,0 +1,51 @@
+From 2d5c62beb847950df890bb99f4d3259455c12e45 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 11 Nov 2021 16:05:32 +0100
+Subject: [PATCH] bootstap: create .cargo/config only if not present
+
+In some situations we should want on influence into the .cargo/config
+when we use vendored source.  One example is #90764, when we want to
+workaround some references to crates forked and living in git, that are
+missing in the vendor/ directory.
+
+This commit will create the .cargo/config file only when the .cargo/
+directory needs to be created.
+---
+ src/bootstrap/bootstrap.py | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/src/bootstrap/bootstrap.py b/src/bootstrap/bootstrap.py
+index 38d3c7aec4941..f7a435dd4fd47 100644
+--- a/src/bootstrap/bootstrap.py
++++ b/src/bootstrap/bootstrap.py
+@@ -1119,17 +1119,21 @@ def check_vendored_status(self):
+                     raise Exception("{} not found".format(vendor_dir))
+ 
+         if self.use_vendored_sources:
++            config = ("[source.crates-io]\n"
++                      "replace-with = 'vendored-sources'\n"
++                      "registry = 'https://example.com'\n"
++                      "\n"
++                      "[source.vendored-sources]\n"
++                      "directory = '{}/vendor'\n"
++                      .format(self.rust_root))
+             if not os.path.exists('.cargo'):
+                 os.makedirs('.cargo')
+-            with output('.cargo/config') as cargo_config:
+-                cargo_config.write(
+-                    "[source.crates-io]\n"
+-                    "replace-with = 'vendored-sources'\n"
+-                    "registry = 'https://example.com'\n"
+-                    "\n"
+-                    "[source.vendored-sources]\n"
+-                    "directory = '{}/vendor'\n"
+-                    .format(self.rust_root))
++                with output('.cargo/config') as cargo_config:
++                    cargo_config.write(config)
++            else:
++                print('info: using vendored source, but ./cargo/config is already present.')
++                print('      Reusing the current configuration file')
++                print(config)
+         else:
+             if os.path.exists('.cargo'):
+                 shutil.rmtree('.cargo')
