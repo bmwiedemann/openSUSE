@@ -1,7 +1,7 @@
 #
 # spec file for package pngcheck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           pngcheck
-Version:        3.0.0
+Version:        3.0.3
 Release:        0
 Summary:        PNG file format checker
-License:        HPND AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND HPND
 Group:          Productivity/Graphics/Other
 URL:            http://www.libpng.org/pub/png/apps/pngcheck.html
 Source:         http://www.libpng.org/pub/png/src/pngcheck-%{version}.tar.gz
-Source2:        %{name}.1.gz
 Patch0:         fixbuild.diff
 BuildRequires:  zlib-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -53,7 +52,7 @@ install -m 755 %{name} %{buildroot}%{_bindir}/
 install -m 755 pngsplit %{buildroot}%{_bindir}/
 install -m 755 png-fix-IDAT-windowsize %{buildroot}%{_bindir}/
 install -m 755 -d %{buildroot}%{_mandir}/man1/
-install -m 0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
+install -m 0644 pngcheck.1 %{buildroot}%{_mandir}/man1/
 
 %files
 %defattr(-,root,root)

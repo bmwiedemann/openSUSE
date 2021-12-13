@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Dec 13 11:51:03 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.0.3
+  * 20210124 GRR: released version 3.0.1
+  *               ----------------------
+  * 20201217 BB:  fixed a crash bug (and probable vulnerability) in large (MNG)
+  *               LOOP chunks
+  * 20210131 GRR: updated Makefile.mingw32 for modern versions and added
+  *               Makefile.mingw64 (targets Win64); both are essentially
+  *               UNTESTED, however!
+  * 20210131 GRR: released version 3.0.2
+  *               ----------------------
+  * 20210416 BB:  fixed a divide-by-zero crash bug (and probable vulnerability)
+  *               in interlaced images with extra compressed data beyond the
+  *               nominal end of the image data (found by "chiba of topsec alpha
+  *               lab")
+
+-------------------------------------------------------------------
 Mon Dec 28 16:07:13 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.0.0
