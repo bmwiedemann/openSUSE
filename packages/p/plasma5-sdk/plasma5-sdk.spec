@@ -138,6 +138,8 @@ test Plasma data engines without writing a Plasma applet.
 %{_kf5_appstreamdir}/org.kde.plasma.plasmoidviewershell.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.themeexplorer.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.lookandfeelexplorer.appdata.xml
+%{_kf5_servicesdir}/plasma-package-org.kde.plasma.cuttlefish.desktop
+%{_kf5_servicesdir}/plasma-shell-org.kde.plasma.plasmoidviewershell.desktop
 
 %files -n plasmaengineexplorer5
 %license LICENSES/*
