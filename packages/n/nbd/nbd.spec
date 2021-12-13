@@ -20,7 +20,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           nbd
-Version:        3.22
+Version:        3.23
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later

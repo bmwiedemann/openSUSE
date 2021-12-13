@@ -458,4 +458,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>925976</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>182ebe3230d74c5a3426b8e8b9c51033</srcmd5>
+    <version>3.23</version>
+    <time>1639424694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940210</requestid>
+  </revision>
 </revisionlist>
