@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kanagram
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
@@ -73,7 +72,6 @@ Kanagram is a letter order game.
 
 %files
 %license COPYING*
-%config %{_kf5_configdir}/kanagram.knsrc
 %dir %{_kf5_iconsdir}/hicolor/24x24
 %dir %{_kf5_iconsdir}/hicolor/24x24/apps
 %dir %{_kf5_iconsdir}/hicolor/80x80
@@ -84,6 +82,7 @@ Kanagram is a letter order game.
 %{_kf5_bindir}/kanagram
 %{_kf5_configkcfgdir}/kanagram.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/kanagram*.*
+%{_kf5_knsrcfilesdir}/kanagram.knsrc
 %{_kf5_sharedir}/kanagram/
 
 %if %{with lang}
