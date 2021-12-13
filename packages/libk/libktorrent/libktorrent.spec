@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libktorrent
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -110,7 +110,7 @@ sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 %{_kf5_libdir}/libKF5Torrent.so
 
 %files -n libKF5Torrent%{sonum}
-%license COPYING
+%license LICENSES/*
 %doc ChangeLog RoadMap
 %{_kf5_libdir}/libKF5Torrent.so.*
 
