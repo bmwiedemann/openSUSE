@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knavalbattle
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Battleship game
 License:        GPL-2.0-or-later
@@ -83,11 +82,9 @@ played with friends online via the internet.
   %suse_update_desktop_file -r org.kde.knavalbattle Game BoardGame
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/knavalbattle/
 %{_kf5_applicationsdir}/org.kde.knavalbattle.desktop
-%dir %{_kf5_appsdir}/kconf_update
-%{_kf5_appsdir}/kconf_update/knavalbattle.upd
 %{_kf5_appsdir}/knavalbattle/
 %{_kf5_appstreamdir}/org.kde.knavalbattle.appdata.xml
 %{_kf5_bindir}/knavalbattle
