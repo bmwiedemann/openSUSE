@@ -90,5 +90,6 @@ Plasma applet for software updates using PackageKit.
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
 %{_kf5_notifydir}/
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.pkupdates.desktop
 
 %changelog

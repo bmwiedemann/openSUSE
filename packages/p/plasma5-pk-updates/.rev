@@ -248,4 +248,12 @@
 - Use %cmake_build instead of %make_jobs.</comment>
     <requestid>906910</requestid>
   </revision>
+  <revision rev="25" vrev="12">
+    <srcmd5>c97aef46bbcba3542b687bad1a3ac72e</srcmd5>
+    <version>0.3.2</version>
+    <time>1639424492</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build with plasma-framework 5.89.0.</comment>
+    <requestid>939460</requestid>
+  </revision>
 </revisionlist>
