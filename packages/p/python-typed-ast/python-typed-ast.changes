@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec  5 07:44:32 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- - Release version 1.5.1 (#181)
+   Co-authored-by: hauntsaninja <>
+ - Fix #167: Port ast27 to Python 3.11 (#176)
+   Copy _PyLong_DigitValue table from Python 3.10 as "digitvalue" in
+   ast27/Python/mystrtoul.c. The symbol has been removed from the public
+   Python 3.11 C API.
+ - Bump version to 1.5.1.dev0
+
+-------------------------------------------------------------------
 Thu Nov 18 07:30:17 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-PyUnicode_DecodeUnicodeEscape.patch:

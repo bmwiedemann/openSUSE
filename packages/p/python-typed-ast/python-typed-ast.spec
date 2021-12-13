@@ -19,13 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typed-ast
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A fork of Python 2 and 3 ast modules with type comment support
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python/typed_ast
 Source0:        https://files.pythonhosted.org/packages/source/t/typed_ast/typed_ast-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM use-PyUnicode_DecodeUnicodeEscape.patch gh#python/typed_ast#172 mcepl@suse.com
+# Use PyUnicode_DecodeUnicodeEscape directly
 Patch0:         use-PyUnicode_DecodeUnicodeEscape.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
