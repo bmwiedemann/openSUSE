@@ -177,4 +177,29 @@
   * Fix command-line generation for html2text (PR#619)</comment>
     <requestid>884942</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65fbc1d39fbdfc3ebf646dea1c76897e</srcmd5>
+    <version>2.24</version>
+    <time>1639424715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.24:
+  Added:
+  * The Telegram reporter has gained two new options:
+    silent: Receive message notification without sound
+    monospace: Format message in monospace style
+  * Support for running a subset of jobs by specifying their index
+    on the command line
+  Changed:
+  * Migrated CI pipeline from Travis CI to Github Actions
+  * user_visible_url can now be specified for all job types (#654)
+  * Added a remove-duplicate-lines filter.
+  * Added a csv2text filter.
+  * Set envelope from (-f option) when sending emails using sendmail
+  * It is now possible to override the HTTP method when data is set
+    on a URL job
+  Fixed:
+  * Fix UnboundLocalError when SMTP auth is enabled, but keyring
+    is not installed (#667)</comment>
+    <requestid>940291</requestid>
+  </revision>
 </revisionlist>
