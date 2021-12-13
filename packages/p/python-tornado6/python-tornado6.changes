@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Dec 11 16:16:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Filter Python 3.10 deprecation warnings during testing
+  * ignore-py310-deprecation-warnings.patch
+  * gh#tornadoweb/tornado#3033
+
+-------------------------------------------------------------------
 Thu Aug  5 12:51:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove exec bits from demos: fix boo#1189066
