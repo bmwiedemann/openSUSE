@@ -19,12 +19,11 @@
 %ifarch %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 %bcond_without kdevelop
 %endif
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           umbrello
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later

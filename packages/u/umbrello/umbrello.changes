@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:23:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:12:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * umbrello/dialogs/dialog_utils.cpp function remakeTagEditFields : Address compiler warning about unused parameter `o`.
+  * https://scan.coverity.com/projects/3327 Coverity fixes listed by CID :
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * umbrello/umbrello.kcfg : Minor tweak to UI Options - Line Color.
+  * Fix "Exiting color change popup via Cancel modifies the selected diagram object" (kde#443679)
+  * umbrello/umbrello.kcfg - In group "UI Options" tone down Fill Color and Line Color.
+  * umbrello/menus/listpopupmenu.cpp - In function insert(const MenuType, KMenu*) remove useless comment.
+  * https://scan.coverity.com/projects/3327 Coverity fixes listed by CID :
+  * Address remaining trivial const correctness fixes from attachment 141364.
+    Suggestions that require code change beyond function signature are postponed to a further batch.
+  * Fix for "C++ importer does not recognize 'noexcept' keyword" : (kde#442134)
+  * Const correctness fixes addressing roughly the first half of attachment 141364.
+    Changes that did not succeed offhand are postponed to a second batch.
+
+-------------------------------------------------------------------
 Tue Nov  2 21:35:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
