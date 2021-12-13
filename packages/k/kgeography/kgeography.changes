@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * New usa_mississippi flag (kde#445670)
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Use native names for Ukrainian cities (kde#432503)
+  * Add map for Virginia (USA)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
