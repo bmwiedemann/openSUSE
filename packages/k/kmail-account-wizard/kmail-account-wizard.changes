@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Minor: s/Q_DECL_OVERRIDE/override/
+  * Fix some cppcheck warning + initialize variable in header + const
+  * Not necessary to use qoverload here
+  * Not necessary to use qOverload here
+  * Don't use deprecated method
+  * Add KDE CI file
+  * Use qOverload directly (scripted)
+  * Slightly adjust last commit to make it build
+  * Fix build with 5.85 deprecations on
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
