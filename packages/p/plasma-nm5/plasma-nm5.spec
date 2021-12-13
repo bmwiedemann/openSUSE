@@ -282,6 +282,7 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_plugindir}/kcm_networkmanagement.so
 %{_datadir}/kcm_networkmanagement/
 %{_kf5_servicesdir}/kcm_networkmanagement.desktop
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.networkmanagement.desktop
 
 %files openvpn
 %license LICENSES/*
