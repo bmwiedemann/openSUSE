@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * MAC_USE_OSXKEYCHAIN: Fix compilation errors
+  * MAC_USE_OSXKEYCHAIN: Link against CoreFoundation
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
