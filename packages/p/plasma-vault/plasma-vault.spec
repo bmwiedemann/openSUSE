@@ -101,8 +101,8 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.vault
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
 %{_kf5_plugindir}/kf5/kfileitemaction/plasmavaultfileitemaction.so
-
 %{_kf5_appstreamdir}/
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.vault.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
