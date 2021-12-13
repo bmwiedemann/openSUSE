@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Auto set print orientation
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Use action verb for button to show and hide the thumbnail bar (kde#445203)
+  * Show estimated file size in the resize image dialog (kde#433740)
+  * Use qAsConst
+  * Fix some clazy warning
+  * [ZoomComboBox] Don't switch to Browse mode by pressing Esc while the popup is visible
+  * [ZoomComboBox] Override showPopup instead of mousePressEvent
+  * Convert image to original format to enable correct color correction
+  * Don't change the zoom value unless the user made a selection (kde#441004)
+  * Allow typing a zoom level in the zoom combo
+  * Add KDE CI file
+  * icons: Update to latest Breeze version
+  * icons: Remove old application & action icons
+  * Remove duplicate includes between .cpp/.h
+  * Clean up unneeded JSON parameter in kcoreaddons_add_plugin
+  * Use QDialog::show() instead of exec()
+  * Port to KXMLGUIFactory::showConfigureShortcutsDialog()
+  * Add clang-format bits to CMakeLists.txt
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
