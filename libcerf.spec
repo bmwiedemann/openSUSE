@@ -1,7 +1,7 @@
 #
 # spec file for package libcerf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,28 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libcerf
-Version:        1.5
+Version:        1.17
 Release:        0
 
-Url:            http://apps.jcns.fz-juelich.de/doku/sc/libcerf
-Source:         http://apps.jcns.fz-juelich.de/src/libcerf/%{name}-%{version}.tgz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://jugit.fz-juelich.de/mlz/libcerf
+Source0:        https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 2.patch add cmake export for consumers e.g. libecpint
+# https://jugit.fz-juelich.de/mlz/libcerf/-/merge_requests/2
+Patch0:         https://jugit.fz-juelich.de/mlz/libcerf/-/merge_requests/2.patch
+# PATCH-FIX-OPENSUSE fix_return.patch fix return value in one function
+Patch1:         fix_return.patch
 Summary:        A library that complex error functions
 License:        MIT
 Group:          Development/Libraries/C and C++
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  pkgconfig
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 
 %description
-libcerf is a self-contained numeric library that provides an efficient and accurate implementation of 
+libcerf is a self-contained numeric library that provides an efficient and accurate implementation of
 complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
 %package -n libcerf1
@@ -42,7 +46,7 @@ Summary:        A library that provides complex error functions
 Group:          Development/Libraries/C and C++
 
 %description -n libcerf1
-libcerf is a self-contained numeric library that provides an efficient and accurate implementation of 
+libcerf is a self-contained numeric library that provides an efficient and accurate implementation of
 complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
 %package devel
@@ -51,41 +55,46 @@ Group:          Development/Libraries/C and C++
 Requires:       libcerf1 = %{version}-%{release}
 
 %description devel
-libcerf is a self-contained numeric library that provides an efficient and accurate implementation of 
+libcerf is a self-contained numeric library that provides an efficient and accurate implementation of
 complex error functions, along with Dawson, Faddeeva, and Voigt functions.
 
 This package contains development headers and libraries for libcerf
 
 %prep
-%setup
+%setup -q -n %{name}-v%{version}
+%patch0 -p1
+%patch1 -p0
+# Force cmake to use the paths passed at configure time
+sed -i -e 's|lib/pkgconfig/|%{_lib}/pkgconfig/|' CMakeLists.txt
+sed -i -e 's|DESTINATION lib|DESTINATION %{_lib}|' lib/CMakeLists.txt
+sed -i -e 's|${prefix}/lib|@LIB_INSTALL_DIR@|' libcerf.pc.in
 
 %build
-%configure --enable-tests --enable-doxygen --disable-static
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-%make_install
-rm %{buildroot}%{_libdir}/*.la
-mkdir -p %{buildroot}%{_docdir}
-mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
+%cmake_install
+mkdir -p %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/doc/cerf/* %{buildroot}%{_docdir}/%{name}
 %fdupes %{buildroot}%{_prefix}
 
 %post -n libcerf1 -p /sbin/ldconfig
 %postun -n libcerf1 -p /sbin/ldconfig
 
 %check
-make check
+%ctest
 
 %files -n libcerf1
-%defattr(-,root,root,0755)
+%license LICENSE
 %{_libdir}/libcerf.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/*.h
 %{_libdir}/libcerf.so
 %{_libdir}/pkgconfig/libcerf.pc
 %{_mandir}/man3/*
 %{_docdir}/%{name}
+%{_datadir}/cmake/cerf
 
 %changelog
