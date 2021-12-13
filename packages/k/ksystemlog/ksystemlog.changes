@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Fix crash when duplicating an empty tab (kde#442741)
+  * Add freebsd support
+  * Revert accidental change in docs
+  * Use modern login (now we can do it color disable directly)
+  * Remove unneeded stements from license headers
+  * Download missing SPDX licenses
+  * Remove obsolete COPYING file
+  * Put contact information in angle brackets
+  * Run licensedigger in prettyheader mode
+  * Clean up SPDX license statements
+  * Convert license headers to SPDX
+  * Add kde.ci.yml
+  * Remove qoverload here (as we don't use deprecated method)
+  * Use directly qOverload (as we depend against c++17)
+  * Fix compile
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
