@@ -19,7 +19,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           skanlite
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Image Scanner Application
 License:        LGPL-2.1-or-later
@@ -66,12 +66,13 @@ Skanlite is an image scanner application by KDE.
 chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
 
 %files
-%license src/COPYING
+%license LICENSES/*
 %doc src/TODO
 %doc %lang(en) %{_kf5_htmldir}/en/skanlite/
 %{_kf5_applicationsdir}/org.kde.skanlite.desktop
 %{_kf5_appstreamdir}/org.kde.skanlite.appdata.xml
 %{_kf5_bindir}/skanlite
+%{_kf5_iconsdir}/hicolor/48x48/apps/org.kde.skanlite.svg
 
 %if %{with lang}
 %files lang -f %{name}.lang
