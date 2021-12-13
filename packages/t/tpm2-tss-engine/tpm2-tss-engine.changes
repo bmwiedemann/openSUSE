@@ -2,7 +2,7 @@
 Wed Mar  3 12:29:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - pass --disable-defaultflags to avoid breakage of our gcc-PIE profile (->
-  resulted in non-position-independent executable).
+  resulted in non-position-independent executable) (bsc#1183895).
 
 -------------------------------------------------------------------
 Wed Mar  3 11:51:40 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>

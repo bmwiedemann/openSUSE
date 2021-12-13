@@ -88,4 +88,17 @@
     - Set parent handle to OWNER</comment>
     <requestid>876518</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>26e5cc45da5712be6b6d0d7f61f5394a</srcmd5>
+    <version>1.1.0</version>
+    <time>1639424415</time>
+    <user>dimstar_suse</user>
+    <comment>resulted in non-position-independent executable) (bsc#1183895).
+
+Let's not add dummy changelog entries that makes it hard to understand what is wanted.
+
+All that was intended here was to have the bug ref next to the change responsible to fix it.
+so let's do that: add the bug ref to the change responsible for it. (forwarded request 939078 from dimstar)</comment>
+    <requestid>940279</requestid>
+  </revision>
 </revisionlist>
