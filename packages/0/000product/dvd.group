@@ -215,9 +215,6 @@
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="brasero" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="brasero-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="brasero-nautilus" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="breeze" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze5-cursors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="breeze5-decoration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -263,7 +260,6 @@
     <package name="catfish" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="catfish-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="cd-discid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="cdda2wav" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="cdparanoia" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="cdrdao" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="cdrecord" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1735,7 +1731,7 @@
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcares2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
-    <package name="libcbor0_8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libcbor0_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libccolamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcdda_paranoia0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1893,6 +1889,7 @@
     <package name="libfaxutil7_0_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-4_2_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libfdisk1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libfdk-aac2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfdt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libffi8" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libffmpegthumbnailer4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2115,7 +2112,7 @@
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libicu70" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libicu70-ledata" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libid3tag0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libid3tag0_16_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libidn12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2242,7 +2239,7 @@
     <package name="liblqr-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblrdf2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libltdl7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
+    <package name="liblua5_3-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libluajit-5_1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblunar-calendar-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2388,7 +2385,6 @@
     <package name="libpagemaker-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpango-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpangomm-1_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libparanoia1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libparted-fs-resize0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libparted2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpath_utils1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2807,6 +2803,7 @@
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwebsockets19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwinpr2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwireplumber-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-0_2-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwmf-tools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwnck-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3484,10 +3481,8 @@
     <package name="pinfo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pipewire-media-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pipewire-media-session-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3599,7 +3594,7 @@
     <package name="pulseaudio-module-gsettings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="pulseaudio-module-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="pulseaudio-module-zeroconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="pulseaudio-setup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
+    <package name="pulseaudio-setup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pulseaudio-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3965,16 +3960,13 @@
     <package name="ruby2.7-rubygem-actioncable-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailbox-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailer-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-actionpack-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actiontext-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activejob-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activejob-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activemodel-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activerecord-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activestorage-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4809,6 +4801,8 @@
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="wireplumber-audio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wmctrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wol-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

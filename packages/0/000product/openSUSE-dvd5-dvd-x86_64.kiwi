@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20211211" schemaversion="4.1">
+<image name="OBS__openSUSE___20211212" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20211211</productvar>
+      <productvar name="VERSION">20211212</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211211,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20211212,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211211/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20211212/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -232,9 +232,6 @@
       <repopackage name="bovo"/>
       <repopackage name="bovo-lang"/>
       <repopackage name="branding-openSUSE"/>
-      <repopackage name="brasero"/>
-      <repopackage name="brasero-lang"/>
-      <repopackage name="brasero-nautilus"/>
       <repopackage name="breeze"/>
       <repopackage name="breeze5-cursors"/>
       <repopackage name="breeze5-decoration"/>
@@ -279,7 +276,6 @@
       <repopackage name="catfish"/>
       <repopackage name="catfish-lang"/>
       <repopackage name="cd-discid"/>
-      <repopackage name="cdda2wav"/>
       <repopackage name="cdparanoia"/>
       <repopackage name="cdrdao"/>
       <repopackage name="cdrecord"/>
@@ -1546,7 +1542,7 @@
       <repopackage name="libcap2-32bit" arch="x86_64"/>
       <repopackage name="libcares2"/>
       <repopackage name="libcblas3"/>
-      <repopackage name="libcbor0_8"/>
+      <repopackage name="libcbor0_9"/>
       <repopackage name="libccolamd2"/>
       <repopackage name="libcdda_interface0"/>
       <repopackage name="libcdda_paranoia0"/>
@@ -1722,6 +1718,7 @@
       <repopackage name="libfaxutil7_0_4"/>
       <repopackage name="libfcitx-4_2_9"/>
       <repopackage name="libfdisk1"/>
+      <repopackage name="libfdk-aac2"/>
       <repopackage name="libfdt1"/>
       <repopackage name="libffi8"/>
       <repopackage name="libffi8-32bit" arch="x86_64"/>
@@ -1982,7 +1979,7 @@
       <repopackage name="libICE6-32bit" arch="x86_64"/>
       <repopackage name="libicu70"/>
       <repopackage name="libicu70-ledata"/>
-      <repopackage name="libid3tag0"/>
+      <repopackage name="libid3tag0_16_1"/>
       <repopackage name="libidn12"/>
       <repopackage name="libidn2-0"/>
       <repopackage name="libidn2-0-32bit" arch="x86_64"/>
@@ -2465,7 +2462,6 @@
       <repopackage name="libpango-1_0-0"/>
       <repopackage name="libpango-1_0-0-32bit" arch="x86_64"/>
       <repopackage name="libpangomm-1_4-1"/>
-      <repopackage name="libparanoia1_0"/>
       <repopackage name="libparted-fs-resize0"/>
       <repopackage name="libparted2"/>
       <repopackage name="libpath_utils1"/>
@@ -2997,6 +2993,7 @@
       <repopackage name="libwebrtc_audio_processing1"/>
       <repopackage name="libwebsockets19"/>
       <repopackage name="libwinpr2-2"/>
+      <repopackage name="libwireplumber-0_4-0"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
       <repopackage name="libwnck-3-0"/>
@@ -3827,8 +3824,6 @@
       <repopackage name="pinfo"/>
       <repopackage name="pipewire"/>
       <repopackage name="pipewire-lang"/>
-      <repopackage name="pipewire-media-session"/>
-      <repopackage name="pipewire-media-session-lang"/>
       <repopackage name="pipewire-modules"/>
       <repopackage name="pipewire-pulseaudio"/>
       <repopackage name="pipewire-spa-plugins-0_2"/>
@@ -4334,16 +4329,13 @@
       <repopackage name="ruby2.7-rubygem-actioncable-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionmailbox-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionmailer-6.0"/>
-      <repopackage name="ruby2.7-rubygem-actionpack-5.2"/>
       <repopackage name="ruby2.7-rubygem-actionpack-6.0"/>
       <repopackage name="ruby2.7-rubygem-actiontext-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionview-5.2"/>
       <repopackage name="ruby2.7-rubygem-actionview-6.0"/>
-      <repopackage name="ruby2.7-rubygem-activejob-5.2"/>
       <repopackage name="ruby2.7-rubygem-activejob-6.0"/>
       <repopackage name="ruby2.7-rubygem-activemodel-5.2"/>
       <repopackage name="ruby2.7-rubygem-activemodel-6.0"/>
-      <repopackage name="ruby2.7-rubygem-activerecord-5.2"/>
       <repopackage name="ruby2.7-rubygem-activerecord-6.0"/>
       <repopackage name="ruby2.7-rubygem-activestorage-6.0"/>
       <repopackage name="ruby2.7-rubygem-activesupport-5.2"/>
@@ -5204,6 +5196,8 @@
       <repopackage name="WindowMaker-themes"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
+      <repopackage name="wireplumber"/>
+      <repopackage name="wireplumber-audio"/>
       <repopackage name="wmctrl"/>
       <repopackage name="wol"/>
       <repopackage name="wol-lang"/>
