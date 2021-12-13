@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:57:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * don't load plugins from current working directory, that is even a security issue
+  * export all known languages
+  * apply coding style
+  * Move away from QStringRef
+  * massive speedup, avoid loading the same huge dictionaries several times
+  * only load one instance of a plugin
+  * core: attempt to load local plugins first, makes development easier
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
