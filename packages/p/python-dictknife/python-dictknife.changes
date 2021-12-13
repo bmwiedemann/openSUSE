@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 13:55:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop python 3.6 support since python-google-api-python-client
+  dropped it
+
+-------------------------------------------------------------------
 Mon Aug 17 07:16:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix source url to match up the reality as this was fetched from
