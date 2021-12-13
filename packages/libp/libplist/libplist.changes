@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Dec  6 12:13:55 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop incorrect Provides/Obsoletes of library packages
+- Avoid libplist{,++} capabilities by using the library names directly
+- Use %autosetup
+- Use install with -D instead of mkdir
+
+-------------------------------------------------------------------
 Tue Sep 28 16:56:24 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Obsolete old python 2 plist module. It conflicts with the
