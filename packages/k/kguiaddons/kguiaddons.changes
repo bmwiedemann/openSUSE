@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Include definition of QTWAYLANDCLIENT_VERSION
+  * Add KSystemClipboard to use wlr-data-control transparently in Wayland
+  * Use qGuiApp instead of qApp
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
