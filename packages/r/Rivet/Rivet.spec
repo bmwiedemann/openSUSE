@@ -16,9 +16,10 @@
 #
 
 
-%define so_name lib%{name}-3_1_3
+%define ver 3.1.5
+%define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
-Version:        3.1.3
+Version:        %{ver}
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
@@ -26,8 +27,6 @@ Group:          Productivity/Scientific/Physics
 URL:            https://rivet.hepforge.org/
 Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
-# PATCH-FIX-UPSTREAM Rivet-analysis-compilation.patch badshah400@gmail.com -- Fix analysis compilation errors; patch taken from upstream git commit
-Patch1:         Rivet-analysis-compilation.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  bash-completion
@@ -148,6 +147,7 @@ export PYTHON_VERSION=%{py3_ver}
 %make_build
 
 %install
+export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
 %make_install
 
 # SECTION Fix env based hashbangs in binaries
@@ -170,7 +170,7 @@ chmod -x %{buildroot}%{_datadir}/Rivet/ALICE_2012_I1126966.info \
 sed -E -i '1{/^#!.*env python/d}' %{buildroot}%{python3_sitearch}/rivet/spiresbib.py
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mv %{buildroot}%{_prefix}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/bash-completion/completions/
 
 %fdupes %{buildroot}%{_datadir}/Rivet/
 
