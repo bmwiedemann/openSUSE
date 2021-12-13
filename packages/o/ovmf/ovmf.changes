@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Dec  8 11:26:32 UTC 2021 - jlee@suse.com
+
+- For preparing push to SLE15-SP4, add more notes:
+    - Drop upstreamed ovmf-jscSLE-16075-SEV-ES-fixes.patch from 15-SP4
+	- All patches in the above big patch are in edk2-stable202011
+    - Some changes in ovmf.spec file of 15-SP4:
+	- brotli-v1.0.7-17-g666c328-c.tar.xz and "add brotli" section
+	  be removed because ovmf-disable-brotli.patch.
+	- Using %{_prefix} instead of /usr hard code.
+	- Redundant %defattr(-,root,root) are removed.
+	- BuildRoot be removed because factory doesn't have it.
+    - Sync some differences in the change log between 15-SP3 with openSUSE
+      TW since "Wed Jan 24 06:31:21 UTC 2018":
+	- Add TLS and IPv6 supports for ArmVirtQemu. 
+	- ovmf-bsc1119454-additional-scsi-drivers.patch to support more
+	  SCSI drivers (PvScsi, MptScsi, and LsiScsi) (bsc#1119454)
+		- already in edk2-stable202008
+	- Drop the build requirement of python2
+
+-------------------------------------------------------------------
 Mon Dec  6 16:24:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - cross-i386-binutils and cross-i386-gcc have been dropped from
