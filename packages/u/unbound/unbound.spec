@@ -36,7 +36,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 #
 #
