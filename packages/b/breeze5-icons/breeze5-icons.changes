@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Too many changes since 5.88.0, only listing bugfixes:
+  * Install dark icons via execute_process to use copy command (kde#444095)
+  * BUG 110673 media-write icon fix (kde#110673)
+  * BUG 412029 add preferences-desktop-feedback icon (kde#412029)
+  * BUG 423937 add edit-copy-path icon for dolphin and konsole (kde#423937)
+  * BUG: 414215 add tabs colorful icon (kde#414215)
+  * BUG: 414213 add preferences-scroll icon (kde#414213)
+  * BUG: 437999 add veracrypt app icon (kde#437999)
+  * BUG: 407048 add online account icon for the KCM (kde#407048)
+  * BUG: 409022 update disk-quota icons (kde#409022)
+  * BUG: 372461 update rar mimetype icon (kde#372461)
+  * BUG: 405654 Update input-keyboard-virtual-off (kde#405654)
+  * BUG 110673 add media-write-dvd icon (kde#110673)
+  * BUG 396124 add Crow Translate app icons (kde#396124)
+  * BUG 392534 add missing kmail breeze icons (kde#392534)
+  * Okular sidebar use now colorful icons (kde#412407, kde#412405)
+  * BUG 429737 update view-media-playlist icon and other playlist icons (kde#429737)
+  * BUG 418864 add gajim app icon. status icons can't be used from breeze (kde#418864)
+  * BUG 394023 add gpodder application icon (kde#394023)
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
