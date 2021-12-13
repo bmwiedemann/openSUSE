@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Remove CI from stable branch again
+  * Add CI for real
+  * Enable new GitLab CI on stable branch.
+  * Fix trend icon sizes on the statistics page
+  * Also round the journey query delegate header background
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Also hide the issuer field when not present
+  * Don't color health certificates without a verified signature green
+  * NL CoronaCheck certificates specify no birth year, show that correctly
+  * Handle fields not provided by the NL CoronaCheck certificates
+  * Hide the health certificate swipe view when there are no certificates
+  * Fix opening attached documents
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Add PDF417 barcode support for tickets (kde#444324)
+  * Fix driving side warning for left-side driving countries (kde#440728)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
