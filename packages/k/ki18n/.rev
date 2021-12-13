@@ -819,4 +819,12 @@
     <comment>- Require iso-codes-lang. The -lang package is not optional.</comment>
     <requestid>934383</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>118c743c908286871b15cc25811deb66</srcmd5>
+    <version>5.89.0</version>
+    <time>1639424453</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.89.0 (forwarded request 939175 from cgiboudeaux)</comment>
+    <requestid>939216</requestid>
+  </revision>
 </revisionlist>

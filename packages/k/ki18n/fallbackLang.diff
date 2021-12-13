@@ -1,8 +1,8 @@
-Index: ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp
+Index: ki18n-5.62.0git.20211118T160808~38eafdf/src/i18n/kcatalog.cpp
 ===================================================================
---- ki18n-5.62.0git.20210303T212906~f04cdec.orig/src/i18n/kcatalog.cpp	2021-03-05 06:49:14.921095959 +0100
-+++ ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp	2021-03-05 06:53:45.726852961 +0100
-@@ -138,7 +138,19 @@
+--- ki18n-5.62.0git.20211118T160808~38eafdf.orig/src/i18n/kcatalog.cpp
++++ ki18n-5.62.0git.20211118T160808~38eafdf/src/i18n/kcatalog.cpp
+@@ -139,7 +139,19 @@ static QString androidUnpackCatalog(cons
  
  QString KCatalog::catalogLocaleDir(const QByteArray &domain, const QString &language)
  {
@@ -22,7 +22,7 @@ Index: ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp
  
      {
          QMutexLocker lock(&catalogStaticData->mutex);
-@@ -171,7 +183,22 @@
+@@ -181,7 +193,22 @@ QString KCatalog::catalogLocaleDir(const
  QSet<QString> KCatalog::availableCatalogLanguages(const QByteArray &domain_)
  {
      QString domain = QFile::decodeName(domain_);
@@ -33,16 +33,16 @@ Index: ki18n-5.62.0git.20210303T212906~f04cdec/src/i18n/kcatalog.cpp
 +    // Specific SUSE kf5 location   ; bundle-lang-bla  ; update-translations ; generic
 +    localeDirs << QStringLiteral("/usr/share/locale/kf5") << QStringLiteral("/usr/share/locale-bundle/kf5") << QStringLiteral("/usr/share/locale-bundle") << QStringLiteral("/usr/share/locale-langpack");
 +
-+    for (const QString &localeDir: qAsConst(localeDirs)) {
-+        QDir locDir(localeDir);
-+        if (locDir.exists()) {
-+            localeDirPaths.append(localeDir);
-+        }
-+    }
-+    QStringList localeFallbackDirPaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
-+                                  QStringLiteral("locale"),
-+                                  QStandardPaths::LocateDirectory);
-+    localeDirPaths.append(localeFallbackDirPaths);
- 
-     {
-         QMutexLocker lock(&catalogStaticData->mutex);
++   for (const QString &localeDir: qAsConst(localeDirs)) {
++       QDir locDir(localeDir);
++       if (locDir.exists()) {
++           localeDirPaths.append(localeDir);
++       }
++   }
++   QStringList localeFallbackDirPaths = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
++                                 QStringLiteral("locale"),
++                                 QStandardPaths::LocateDirectory);
++   localeDirPaths.append(localeFallbackDirPaths);
+ #ifdef Q_OS_WIN
+     // QStandardPaths fails on Windows for executables that aren't properly deployed yet, such as unit tests
+     localeDirPaths += QLatin1String(INSTALLED_LOCALE_PREFIX) + QLatin1String("/bin/data/locale/");

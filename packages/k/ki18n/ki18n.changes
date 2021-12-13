@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Document how KLazyLocalizedString is tied to a translation domain
+  * Consider TRANSLATION_DOMAIN when converting to a KLocalizedString
+  * KLazyLocalizedString: add KLocalizedString forward API for convenience
+  * KLazyLocalizedString: allow implicit default constructor
+  * Add KLazyLocalizedString::isEmpty() const
+  * Work around QStandardPaths not working for unit tests on Windows
+  * Fix MSVC warning about inconsistent export macro in forward declaration
+  * Port Kuit keymap away from I18N_NOOP macro usage
+  * Deprecate the I18N_NOOP macros in favor of KLazyLocalizedString
+  * Add KLazyLocalizedString as a replacement for the I18N_NOOP macros
+  * Fix loading a KCatalog with a different language on Windows
+
+-------------------------------------------------------------------
 Sun Nov 28 12:48:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require iso-codes-lang. The -lang package is not optional.
