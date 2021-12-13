@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -107,6 +107,7 @@ browser for news reading.
 %dir %{_kf5_plugindir}/kontact5
 %dir %{_kf5_plugindir}/pim
 %dir %{_kf5_plugindir}/pim/kcms
+%dir %{_kf5_servicesdir}/kontact/
 %{_kf5_applicationsdir}/org.kde.akregator.desktop
 %{_kf5_appstreamdir}/org.kde.akregator.appdata.xml
 %{_kf5_bindir}/akregator*
@@ -123,11 +124,9 @@ browser for news reading.
 %{_kf5_plugindir}/kontact5/kontact_akregatorplugin.so
 %{_kf5_plugindir}/pim/kcms/akregator
 %{_kf5_servicesdir}/akregator_*.desktop
-%{_kf5_servicesdir}/kontact/
+%{_kf5_servicesdir}/kontact/akregatorplugin.desktop
 %{_kf5_servicetypesdir}/akregator_plugin.desktop
 %{_kf5_sharedir}/akregator/
-%{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kontact/
 
 %if %{with lang}
 %files lang -f %{name}.lang

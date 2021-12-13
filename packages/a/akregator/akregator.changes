@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Use action texts for buttons of confirmation dialog
+  * Add search bar option to filter search by read articles
+  * Add dialog box if necessary + fix checkbox status
+  * Private class is not necessary here
+  * Add confirmation dialog when marking feed(s) as read (kde#443122)
+  * initialize variables in headers
+  * Change color of feed title for error fetching status. (kde#150806)
+  * Not necessary to use qOverload here
+  * Add KDE CI file
+  * Use qOverload directly (scripted)
+  * Port to new KPluginFactory::instantiatePlugin
+  * Add i18n context
+  * We depend against 5.84
+  * X-KDE-ParentComponents is not use now.
+  * Now we don't use X-KDE-CfgDlgHierarchy
+  * Drop unused X-KDE-ParentApp entries from kcm desktop files
+  * Remove obsolete setdlg files
+  * Use new constructor
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
