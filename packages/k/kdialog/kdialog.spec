@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdialog
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
