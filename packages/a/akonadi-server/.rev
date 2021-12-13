@@ -725,4 +725,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Gear 21.08.3</comment>
     <requestid>929232</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>4b54c69bd77e2e781962c77a2cc3df0e</srcmd5>
+    <version>21.12.0</version>
+    <time>1639424348</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.12.0</comment>
+    <requestid>937862</requestid>
+  </revision>
 </revisionlist>
