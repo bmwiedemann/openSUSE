@@ -46,7 +46,8 @@ Source1:        README.SUSE
 Source2:        spack-rpmlintrc
 Source3:        run-find-external.sh
 Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
-Source5:        https://docs.python.org/3/objects.inv
+# Source5 is from https://docs.python.org/3/objects.inv, but has permanent changes so using a static version
+Source5:        objects.inv
 Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
 Patch4:         added-target-and-os-calls-to-output-of-spack-spec-co.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Dec 13 08:19:33 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- made objects.inv (Source5) to be static as the online version is changed
+  dynamically
+
+-------------------------------------------------------------------
 Tue Dec  7 15:34:12 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - added leap-container.patch which adds leap15 as os to the
