@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -98,7 +97,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/kalzium/
-%license COPYING*
+%license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.kalzium.desktop
 %{_kf5_applicationsdir}/org.kde.kalzium_cml.desktop
 %{_kf5_appstreamdir}/org.kde.kalzium.appdata.xml

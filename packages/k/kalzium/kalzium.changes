@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Add CI linux
+  * Add SPDX license information for molecules
+  * Add SPDX license information for maps
+  * Convert periodictablestates.h license header to SPDX
+  * Convert remaining LGPL-2.1-or-later license headers to SPDX
+  * Use SPDX-FileContributor instead of 'Some portions' text
+  * Convert  license headers of solver to SPDX
+  * Convert cmake files license information to SPDX
+  * Fixes to contact information of SPDX tags
+  * Remove obsolete COPYING files
+  * Download GFDL-1.2-or-later license
+  * Manual SPDX fixes and cleanup
+  * Convert license headers to SPDX
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
