@@ -922,4 +922,13 @@
     <comment></comment>
     <requestid>920508</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>21b33356066e7a0182833236d0071bea</srcmd5>
+    <version>5.7.4</version>
+    <time>1639424711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.4
+  + Bugfixes</comment>
+    <requestid>940283</requestid>
+  </revision>
 </revisionlist>

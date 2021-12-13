@@ -22,10 +22,10 @@
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 384
+%define releasenumber 396
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.7.2
+Version:        5.7.4
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
