@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5-widgets
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -85,12 +85,12 @@ Development package for baloo5-widgets
 %license COPYING*
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
+%dir %{_kf5_plugindir}/kf5/propertiesdialog
 %{_kf5_bindir}/baloo_filemetadata_temp_extractor
 %{_kf5_debugdir}/baloo-widgets.categories
 %{_kf5_libdir}/libKF5BalooWidgets.so.*
-%{_kf5_plugindir}/baloofilepropertiesplugin.so
+%{_kf5_plugindir}/kf5/propertiesdialog/baloofilepropertiesplugin.so
 %{_kf5_plugindir}/kf5/kfileitemaction/tagsfileitemaction.so
-%{_kf5_servicesdir}/*.desktop
 
 %files devel
 %{_kf5_cmakedir}/KF5BalooWidgets/
