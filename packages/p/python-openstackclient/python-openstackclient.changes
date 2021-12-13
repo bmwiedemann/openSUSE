@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:57:03 UTC 2021 - cloud-devel@suse.de
+
+- removed 0001-Replace-assertItemsEqual-with-assertCountEqual.patch
+- update to version 5.6.0
+  - volume: Re-add accidentally deleted test
+  - network: Add support for vnic-type vdpa
+  - docs: Update cinderclient comparison doc
+  - Replace assertItemsEqual with assertCountEqual
+  - Show "Forced Down" compute service status with --long
+  - Add support for Neutron's L3 conntrack helper resource
+  - volume: Add missing 'volume list --offset' parameter
+  - volume: Allow more versions
+  - compute: Note that '--password' is deployment-specific
+  - Make functional Neutron tests running fine on ML2/OVN environments
+  - L3 conntrack helper: Use singular name consistently
+  - Add pre-commit
+  - Allow to send extra attributes in Neutron related commands
+  - setup.cfg: Replace dashes with underscores
+  - compute: Better help text for 'openstack server set --state'
+  - docs: Update novaclient comparison doc
+  - Hides prefix_length column in subnet show output
+  - Implements hide image
+  - volume: Add 'volume group snapshot *' commands
+  - Remove unnecessary test
+  - docs: Update neutronclient comparison doc
+  - volume: Add 'volume attachment *' commands
+  - volume: Add 'volume message *' commands
+  - docs: Update glanceclient comparison doc
+  - volume: Add missing 'volume backup *' options
+  - cinder: Remove redundant command
+  - compute: Update 'server resize --revert', '--confirm' help
+  - Moving IRC network reference to OFTC
+  - volume: Add 'volume group type *' commands
+  - volume: Add 'volume group *' commands
+  - openstack image create: honor protection/visibility flags
+  - Correct REST API response fields for /os-migrations API
+  - tests: Rename 'FakeType' -> 'FakeVolumeType'
+  - [community goal] Update contributor documentation
+  - volume: Add 'volume transfer request create --(no-)snapshots' option
+  - Fix TestListMigrationV223 test class MIGRATION_COLUMNS
+  - Update volume create documentation
+  - compute: Fix typo
+  - Correct the tox option for skipping sdist generation
+  - Update master for stable/wallaby
+  - hacking: Remove references to encoding
+  - Add Python3 xena unit tests
+  - network: Make 'network qos rule create --type' option required
+  - Add support for token caching
+  - Add check for cinderclient.v2 support
+  - Set ML2/OVS backend explicitly in the devstack jobs
+  - tests: Handle removal of block-storage v2 API
+  - requirements: Drop os-testr
+  - volume: Add more missing 'volume backup *' options
+
+-------------------------------------------------------------------
 Mon May 10 08:46:59 UTC 2021 - cloud-devel@suse.de
 
 - added 0001-Replace-assertItemsEqual-with-assertCountEqual.patch

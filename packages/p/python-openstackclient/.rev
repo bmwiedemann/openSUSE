@@ -532,4 +532,41 @@ update to version 3.1.0
   - Add device profile to ``port``</comment>
     <requestid>891997</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>df8ccbc6e4721345f68f8b0317f172b2</srcmd5>
+    <version>5.6.0</version>
+    <time>1639424686</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Replace-assertItemsEqual-with-assertCountEqual.patch
+- update to version 5.6.0
+  - volume: Re-add accidentally deleted test
+  - network: Add support for vnic-type vdpa
+  - docs: Update cinderclient comparison doc
+  - Replace assertItemsEqual with assertCountEqual
+  - Show &quot;Forced Down&quot; compute service status with --long
+  - Add support for Neutron's L3 conntrack helper resource
+  - volume: Add missing 'volume list --offset' parameter
+  - volume: Allow more versions
+  - compute: Note that '--password' is deployment-specific
+  - Make functional Neutron tests running fine on ML2/OVN environments
+  - L3 conntrack helper: Use singular name consistently
+  - Add pre-commit
+  - Allow to send extra attributes in Neutron related commands
+  - setup.cfg: Replace dashes with underscores
+  - compute: Better help text for 'openstack server set --state'
+  - docs: Update novaclient comparison doc
+  - Hides prefix_length column in subnet show output
+  - Implements hide image
+  - volume: Add 'volume group snapshot *' commands
+  - Remove unnecessary test
+  - docs: Update neutronclient comparison doc
+  - volume: Add 'volume attachment *' commands
+  - volume: Add 'volume message *' commands
+  - docs: Update glanceclient comparison doc
+  - volume: Add missing 'volume backup *' options
+  - cinder: Remove redundant command
+  - compute: Update 'server resize --revert', '--confirm' help
+  - Moving IRC network reference to OFTC</comment>
+    <requestid>940197</requestid>
+  </revision>
 </revisionlist>
