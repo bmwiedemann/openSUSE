@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 13 20:08:16 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 0.4.0 (bsc#1191582)
+  * RNN Layer 2 Support
+  * RNN Bi-directional Output Transformation Support
+  * Removal of non-inclusive IT Terms
+  * RNN Pre-check Support
+  * Optimized zTensor reserved space
+  * Transform optimizations
+  * Minor bug fixes
+- Removed the following obsolete patches
+  * sles15sp4-libzdnn-Fix-initialization-of-CFLAGS_INIT-2.patch
+  * sles15sp4-libzdnn-Limit-symbol-check-to-global-symbols-3.patch
+
+-------------------------------------------------------------------
 Thu Oct 21 18:58:18 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Initial version of the package (jsc#SLE-21645)

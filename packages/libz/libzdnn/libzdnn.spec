@@ -17,15 +17,13 @@
 
 
 Name:           libzdnn
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        IBM Z Deep Learning Library
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/IBM/zDNN
-Source:         zDNN-0.3.1.tar.gz
-Patch1:         sles15sp4-libzdnn-Limit-symbol-check-to-global-symbols-3.patch
-Patch2:         sles15sp4-libzdnn-Fix-initialization-of-CFLAGS_INIT-2.patch
+Source:         zDNN-0.4.0.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390x
@@ -54,6 +52,7 @@ functions for the NNPA instruction primitives.
 
 %package devel
 Summary:        Deep Learning Library development files
+Group:          Development/Libraries/Other
 Requires:       libzdnn0 = %{version}-%{release}
 
 %description devel
@@ -74,11 +73,9 @@ autoconf
 # We don't want/need the static library at this time. That could change.
 rm -vf %{buildroot}/%{_libdir}/libzdnn.a
 
-%post -n libzdnn0
-/sbin/ldconfig
+%post -n libzdnn0 -p /sbin/ldconfig
 
-%postun -n libzdnn0
-/sbin/ldconfig
+%postun -n libzdnn0 -p /sbin/ldconfig
 
 %files -n libzdnn0
 %doc README.md
