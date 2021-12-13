@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec  8 21:57:10 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Configure to use dbus-broker when available.
+- Add libsystemd to BuildRequires: needed for dbus-broker support.
+
+-------------------------------------------------------------------
 Sun Sep 19 19:09:54 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.42.0:

@@ -1563,4 +1563,12 @@
     <comment>Resub after fixing .changes (forwarded request 921026 from iznogood)</comment>
     <requestid>921664</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>605a748b1c143614c567527033d5c535</srcmd5>
+    <version>2.42.0</version>
+    <time>1639424525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937726</requestid>
+  </revision>
 </revisionlist>

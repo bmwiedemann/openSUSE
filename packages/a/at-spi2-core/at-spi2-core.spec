@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.28.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon-x11)
@@ -87,6 +88,8 @@ to develop applications that require these.
 %build
 %meson \
 	--libexecdir="%{_libexecdir}/at-spi2" \
+	-Ddbus_broker=/usr/bin/dbus-broker-launch \
+	-Ddefault_bus=dbus-broker \
 	-Ddocs=true \
 	-Dintrospection=yes \
 	-Dx11=yes \
