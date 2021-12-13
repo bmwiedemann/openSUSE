@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  9 03:06:41 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.043
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.043     2021-12-07
+
+      - Restores backward compatibility (with a warning) when the deprecated
+        $pdf->pageLabel is given an invalid -style option starting with "a" or
+        "r" (report by Johan Vromans).
+
+      - Fix incorrect default in documentation for annotation borders (report and
+        patch by Johan Vromans).
+
+-------------------------------------------------------------------
 Fri Sep 17 03:08:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.042
