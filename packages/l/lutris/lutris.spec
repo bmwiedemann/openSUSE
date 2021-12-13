@@ -41,6 +41,7 @@ Requires:       psmisc
 Requires:       python3-Pillow
 Requires:       python3-PyYAML
 Requires:       python3-cssselect
+Requires:       python3-dbus-python
 # controller support
 Requires:       python3-evdev
 Requires:       python3-gobject

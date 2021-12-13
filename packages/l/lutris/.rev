@@ -271,4 +271,12 @@
   * Fix Steam sync creating duplicate games</comment>
     <requestid>925815</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>af1cb749beb266facc4f2b28d77ca5a8</srcmd5>
+    <version>0.5.9.1</version>
+    <time>1639424675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940180</requestid>
+  </revision>
 </revisionlist>
