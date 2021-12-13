@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kget
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -111,7 +110,6 @@ An advanced download manager by KDE
 %{_kf5_servicetypesdir}/kget_plugin.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.kget.service
 %{_kf5_sharedir}/dolphinpart/
-%{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kget/
 %{_kf5_sharedir}/khtml/
 %{_kf5_sharedir}/kwebkitpart/
