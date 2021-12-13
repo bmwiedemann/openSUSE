@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Dec 13 10:08:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.8.1
+  * Fix transformation (rotation, crop, split, ...) of duplicated
+    pages
+  * Fix some UI glitches
+  * Update some translations
+  * Set minimum pikepdf version to 1.17.0
+  * Fix import of PDF with CropBox
+  * Fix clipboard on Wayland
+  * Remember window position on screen
+  * Fix error with annotations on duplicated pages
+
+-------------------------------------------------------------------
 Mon Apr 12 10:30:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.7.1

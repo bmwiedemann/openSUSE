@@ -26,4 +26,21 @@
   * Fix displayed page range when using paste before</comment>
     <requestid>884623</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4e99c9029e70ca8daeac2c414311e54</srcmd5>
+    <version>1.8.1</version>
+    <time>1639424679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1
+  * Fix transformation (rotation, crop, split, ...) of duplicated
+    pages
+  * Fix some UI glitches
+  * Update some translations
+  * Set minimum pikepdf version to 1.17.0
+  * Fix import of PDF with CropBox
+  * Fix clipboard on Wayland
+  * Remember window position on screen
+  * Fix error with annotations on duplicated pages</comment>
+    <requestid>940186</requestid>
+  </revision>
 </revisionlist>
