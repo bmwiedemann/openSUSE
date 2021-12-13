@@ -1,5 +1,0 @@
-<package name="rubygem-activesupport-5.2" project="openSUSE:Factory">
-  <title>rubygem-activesupport-5.2</title>
-  <description>A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. Rich support for multibyte strings, internationalization, time zones, and testing.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-activesupport-5.2"/>
-</package>
