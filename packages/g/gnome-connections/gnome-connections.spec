@@ -59,6 +59,9 @@ rm %{buildroot}%{_datadir}/gnome-connections/gir-1.0/GtkFrdp-0.1.gir
 rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.deps
 rm %{buildroot}%{_datadir}/gnome-connections/vapi/gtk-frdp-0.1.vapi
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %{_bindir}/gnome-connections
