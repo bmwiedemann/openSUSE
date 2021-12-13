@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Dec 12 20:11:15 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.14.1.
+  * Fixed the implementation of persistent arrays used by the VM
+    and native compute so that it uses a uniform representation.
+    Previously, storing primitive floats inside primitive arrays
+    could cause memory corruption.
+  * Fixed missing registration of universe constraints in Module
+    Type elaboration.
+  * Made `abstract` more robust with respect to Ltac `constr`
+    bindings containing existential variables.
+  * Correct support of trailing `let` by tactic `specialize`.
+  * Fixed an anomaly with `Extraction Conservative Types` when
+    extracting pattern-matching on singleton types.
+  * Regular error instead of an anomaly when calling `Separate
+    Extraction` in a module.
+
+-------------------------------------------------------------------
 Wed Oct 20 21:31:46 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.14.0.

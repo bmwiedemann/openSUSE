@@ -225,4 +225,25 @@
   * For more details, see refman/changes.html in coq-doc.</comment>
     <requestid>926632</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ad21e9ccabba21f5475b6f9a9e074c2b</srcmd5>
+    <version>8.14.1</version>
+    <time>1639424669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.14.1.
+  * Fixed the implementation of persistent arrays used by the VM
+    and native compute so that it uses a uniform representation.
+    Previously, storing primitive floats inside primitive arrays
+    could cause memory corruption.
+  * Fixed missing registration of universe constraints in Module
+    Type elaboration.
+  * Made `abstract` more robust with respect to Ltac `constr`
+    bindings containing existential variables.
+  * Correct support of trailing `let` by tactic `specialize`.
+  * Fixed an anomaly with `Extraction Conservative Types` when
+    extracting pattern-matching on singleton types.
+  * Regular error instead of an anomaly when calling `Separate
+    Extraction` in a module.</comment>
+    <requestid>940115</requestid>
+  </revision>
 </revisionlist>
