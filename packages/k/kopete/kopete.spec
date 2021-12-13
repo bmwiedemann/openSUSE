@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 16.08 in KA, but 16.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kopete
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
@@ -71,7 +70,15 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
+BuildRequires:  pkgconfig(libsrtp)
+%if 0%{?is_opensuse} || !0%{?sle_version}
+BuildRequires:  mediastreamer2-devel
+%endif
+%if 0%{?is_opensuse} || !0%{?sle_version}
+BuildRequires:  pkgconfig(ortp) >= 0.22
+%endif
 
 %description
 Kopete is the KDE instant messenger and supports multiple protocols.
@@ -107,6 +114,7 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %files
 %license COPYING COPYING.DOC
 %doc README
+%doc %lang(en) %{_kf5_htmldir}/en/kopete/
 %{_kf5_applicationsdir}/org.kde.kopete.desktop
 %{_kf5_appsdir}/kconf_update/
 %{_kf5_appsdir}/kopete_history/
@@ -116,7 +124,6 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %{_kf5_configdir}/kopeterc
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/kopete.categories
-%{_kf5_htmldir}/en/kopete/
 %{_kf5_iconsdir}/hicolor/*/*/
 %{_kf5_iconsdir}/oxygen/*/*/
 %{_kf5_kxmlguidir}/kopete*/
