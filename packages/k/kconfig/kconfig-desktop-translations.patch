@@ -16,11 +16,11 @@ https://github.com/openSUSE/desktop-file-translations
  src/core/kdesktopfile.h   |  2 ++
  7 files changed, 78 insertions(+), 6 deletions(-)
 
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig.cpp
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfig.cpp
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kconfig.cpp	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig.cpp	2021-10-21 06:19:57.137385745 +0200
-@@ -1008,6 +1008,19 @@
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kconfig.cpp
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfig.cpp
+@@ -1008,6 +1008,19 @@ void KConfigPrivate::revertEntry(const Q
      }
  }
  
@@ -40,11 +40,11 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig.cpp
  QByteArray KConfigPrivate::lookupData(const QByteArray &group, const char *key, KEntryMap::SearchFlags flags) const
  {
      return lookupInternalEntry(group, key, flags).mValue;
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig_p.h
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfig_p.h
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kconfig_p.h	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig_p.h	2021-10-21 06:19:57.137385745 +0200
-@@ -35,6 +35,7 @@
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kconfig_p.h
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfig_p.h
+@@ -35,6 +35,7 @@ public:
      QString lookupData(const QByteArray &group, const char *key, KEntryMap::SearchFlags flags, bool *expand) const;
      QByteArray lookupData(const QByteArray &group, const char *key, KEntryMap::SearchFlags flags) const;
      KEntry lookupInternalEntry(const QByteArray &group, const char *key, KEntryMap::SearchFlags flags) const;
@@ -52,11 +52,11 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfig_p.h
  
      void putData(const QByteArray &group, const char *key, const QByteArray &value, KConfigBase::WriteConfigFlags flags, bool expand = false);
      void setEntryData(const QByteArray &group, const char *key, const QByteArray &value, KEntryMap::EntryOptions flags)
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfigdata_p.h
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfigdata_p.h
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kconfigdata_p.h	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfigdata_p.h	2021-10-21 06:19:57.137385745 +0200
-@@ -192,6 +192,20 @@
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kconfigdata_p.h
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfigdata_p.h
+@@ -192,6 +192,20 @@ public:
  
      Iterator findEntry(const QByteArray &group, const QByteArray &key = QByteArray(), SearchFlags flags = SearchFlags());
  
@@ -77,11 +77,11 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfigdata_p.h
      ConstIterator findEntry(const QByteArray &group, const QByteArray &key = QByteArray(), SearchFlags flags = SearchFlags()) const
      {
          return constFindEntry(group, key, flags);
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.cpp
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfiggroup.cpp
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kconfiggroup.cpp	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.cpp	2021-10-21 06:19:57.137385745 +0200
-@@ -1163,6 +1163,18 @@
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kconfiggroup.cpp
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfiggroup.cpp
+@@ -1165,6 +1165,18 @@ bool KConfigGroup::hasKey(const char *ke
      return !config()->d_func()->lookupData(d->fullName(), key, flags).isNull();
  }
  
@@ -100,11 +100,11 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.cpp
  bool KConfigGroup::hasKey(const QString &key) const
  {
      return hasKey(key.toUtf8().constData());
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.h
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfiggroup.h
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kconfiggroup.h	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.h	2021-10-21 06:19:57.137385745 +0200
-@@ -707,6 +707,11 @@
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kconfiggroup.h
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kconfiggroup.h
+@@ -707,6 +707,11 @@ public:
       */
      QMap<QString, QString> entryMap() const;
  
@@ -116,10 +116,10 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kconfiggroup.h
  protected:
      bool hasGroupImpl(const QByteArray &group) const override;
      KConfigGroup groupImpl(const QByteArray &b) override;
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.cpp
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kdesktopfile.cpp
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kdesktopfile.cpp	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.cpp	2021-10-21 06:19:57.137385745 +0200
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kdesktopfile.cpp
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kdesktopfile.cpp
 @@ -18,6 +18,7 @@
  #include <QFileInfo>
  #include <QStandardPaths>
@@ -128,7 +128,7 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.cpp
  
  #ifndef Q_OS_WIN
  #include <unistd.h>
-@@ -166,6 +167,33 @@
+@@ -166,6 +167,33 @@ bool KDesktopFile::isAuthorizedDesktopFi
      return false;
  }
  
@@ -162,7 +162,7 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.cpp
  QString KDesktopFile::readType() const
  {
      Q_D(const KDesktopFile);
-@@ -180,20 +208,17 @@
+@@ -180,20 +208,17 @@ QString KDesktopFile::readIcon() const
  
  QString KDesktopFile::readName() const
  {
@@ -186,12 +186,12 @@ Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.cpp
  }
  
  QString KDesktopFile::readPath() const
-Index: kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.h
+Index: kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kdesktopfile.h
 ===================================================================
---- kconfig-5.62.0git.20211020T111249~605383b.orig/src/core/kdesktopfile.h	2021-10-20 11:12:49.000000000 +0200
-+++ kconfig-5.62.0git.20211020T111249~605383b/src/core/kdesktopfile.h	2021-10-21 06:19:57.137385745 +0200
-@@ -243,6 +243,8 @@
-     QStandardPaths::StandardLocation resource() const;
+--- kconfig-5.62.0git.20211128T012443~973dfd4.orig/src/core/kdesktopfile.h
++++ kconfig-5.62.0git.20211128T012443~973dfd4/src/core/kdesktopfile.h
+@@ -252,6 +252,8 @@ public:
+ #endif
  
  private:
 +    QString translatedEntry(const char *) const;
