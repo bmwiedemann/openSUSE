@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Fix loading some zip files (kde#445533)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Emit readiness when creating new archive (kde#445610)
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * zip: Fix detection of backslashed zips (kde#444965)
+  * Remove duplicate include from .cpp/.h
+  * Use KPluginMetaData::findPlugins when we use kf5-5.86
+  * Add license information in SPDX format for icons
+  * Convert remaining MIT licenses to SPDX
+  * Convert missing author statements to SPDX
+  * Clean up excess newlines at end of license headers
+  * Remove unneeded stements from license headers
+  * Remove obsolete COPYING file
+  * Convert license headers to SPDX
+  * Cleaup AddJob on destruction (kde#442774)
+  * Port deprecated method
+  * Add FreeBSD CI
+  * Remove redundant close button at the bottom of the preview window (kde#434517)
+  * Enable Linux CI
+  * Add kde-ci.yml
+  * fix: Dolphin doesn't fully quit after Compress from context menu (kde#441813)
+  * Clean up unneeded JSON parameter in kcoreaddons_add_plugin
+  * We depend against C++17 => we can use std::as_const
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
