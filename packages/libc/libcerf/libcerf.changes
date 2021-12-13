@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  4 18:23:25 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Bump v1.17
+  - Correct pkgconfig installation directory (use GNU install 
+    dirs, install to LIBDIR/pkgconfig
+- added 2.patch from upstream PR#2 to add cmake export
+- added fix_return.patch to fix missing return value
+
+-------------------------------------------------------------------
 Wed Nov 22 16:42:07 UTC 2017 - junghans@votca.org
 
 - Bump to v1.5:

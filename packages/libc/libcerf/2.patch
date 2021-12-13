@@ -1,0 +1,209 @@
+From f791a658b67b1089c578fd510df1bd41996fc684 Mon Sep 17 00:00:00 2001
+From: "Lori A. Burns" <lori.burns@gmail.com>
+Date: Thu, 2 Dec 2021 12:17:15 -0500
+Subject: [PATCH 1/2] start of cmake export
+
+---
+ cmake/cerfConfig.cmake.in | 113 ++++++++++++++++++++++++++++++++++++++
+ lib/CMakeLists.txt        |  23 ++++++++
+ 2 files changed, 136 insertions(+)
+ create mode 100644 cmake/cerfConfig.cmake.in
+
+diff --git a/cmake/cerfConfig.cmake.in b/cmake/cerfConfig.cmake.in
+new file mode 100644
+index 0000000..1606d30
+--- /dev/null
++++ b/cmake/cerfConfig.cmake.in
+@@ -0,0 +1,113 @@
++# cerfConfig.cmake
++# ----------------
++#
++# cerf cmake module.
++# This module sets the following variables in your project:
++#
++# ::
++#
++#   cerf_FOUND - true if cerf and all required components found on the system
++#   cerf_INCLUDE_DIRS - Directory where cerf header is located.
++#   cerf_INCLUDE_DIR - same as DIRS
++#   cerf_LIBRARIES - cerf library to link against.
++#   cerf_LIBRARY - same as LIBRARIES
++#
++#
++# Available components: shared static
++#
++# ::
++#
++#   shared - search for only shared library
++#   static - search for only static library
++#   C - search for C library only
++#   CXX - search for CXX library only
++#
++#
++# Exported targets:
++#
++# ::
++#
++# If cerf is found, this module defines the following :prop_tgt:`IMPORTED`
++# targets. Target is shared _or_ static, so, for both, use separate, not
++# overlapping, installations. ::
++#
++#   cerf::cerf - the main cerf library with header attached.
++#   cerf::cerfcpp - the C++ cerf library
++#
++#
++# Suggested usage:
++#
++# ::
++#
++#   find_package(cerf)
++#   find_package(cerf 1.17.0 EXACT CONFIG REQUIRED COMPONENTS shared C)
++#
++#
++# The following variables can be set to guide the search for this package:
++#
++# ::
++#
++#   cerf_DIR - CMake variable, set to directory containing this Config file
++#   CMAKE_PREFIX_PATH - CMake variable, set to root directory of this package
++#   PATH - environment variable, set to bin directory of this package
++#   CMAKE_DISABLE_FIND_PACKAGE_cerf - CMake variable, disables
++#     find_package(cerf) when not REQUIRED, perhaps to force internal build
++
++@PACKAGE_INIT@
++
++set(PN cerf)
++set (_valid_components
++    static
++    shared
++    C
++    CXX
++)
++
++# check library style component
++if(@BUILD_SHARED_LIBS@)
++    set(${PN}_shared_FOUND 1)
++else()
++    set(${PN}_static_FOUND 1)
++endif()
++list(FIND ${PN}_FIND_COMPONENTS "shared" _seek_shared)
++list(FIND ${PN}_FIND_COMPONENTS "static" _seek_static)
++
++# check library language component
++if(@CERF_CPP@)
++    set(${PN}_CXX_FOUND 1)
++    set(_target "cerfcpp")
++else()
++    set(${PN}_C_FOUND 1)
++    set(_target "cerf")
++endif()
++list(FIND ${PN}_FIND_COMPONENTS "C" _seek_C)
++list(FIND ${PN}_FIND_COMPONENTS "CXX" _seek_CXX)
++
++set(${PN}_DEFINITIONS USING_${PN})
++
++check_required_components(${PN})
++
++#-----------------------------------------------------------------------------
++# Don't include targets if this file is being picked up by another
++# project which has already built this as a subproject
++#-----------------------------------------------------------------------------
++if(NOT TARGET ${PN}::${_target})
++
++    include("${CMAKE_CURRENT_LIST_DIR}/${PN}Targets.cmake")
++
++    get_property(_loc TARGET ${PN}::${_target} PROPERTY LOCATION)
++    set(${PN}_LIBRARY ${_loc})
++    get_property(_ill TARGET ${PN}::${_target} PROPERTY INTERFACE_LINK_LIBRARIES)
++    set(${PN}_LIBRARIES ${_ill})
++
++    get_property(_id TARGET ${PN}::${_target} PROPERTY INCLUDE_DIRECTORIES)
++    set(${PN}_INCLUDE_DIR ${_id})
++    get_property(_iid TARGET ${PN}::${_target} PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
++    set(${PN}_INCLUDE_DIRS ${_iid})
++
++    # message("cerf::${_target}")
++    # message("loc ${_loc}")
++    # message("ill ${_ill}")
++    # message("id  ${_id}")
++    # message("iid ${_iid}")
++endif()
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 47eac92..74bdc45 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ set(lib cerf)
++set(intf "c_interface")
+ if (${CERF_CPP})
+     set(lib cerfcpp)
++    set(intf "cxx_interface")
+ endif()
+ message(STATUS
+     "libcerf/lib: build library ${lib}, CERF_CPP=${CERF_CPP}, shared=${BUILD_SHARED_LIBS}")
+@@ -29,8 +31,12 @@ if(NOT MSVC)
+     target_link_libraries(${lib} m)
+ endif()
+ 
++target_include_directories(${lib} INTERFACE
++  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
++
+ install(
+     TARGETS ${lib}
++    EXPORT ${intf}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+@@ -40,6 +46,23 @@ install(
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+     COMPONENT Headers)
+ 
++include(CMakePackageConfigHelpers)
++# GNUInstallDirs "DATADIR" wrong here; CMake search path wants "share".
++set(CMAKECONFIG_INSTALL_DIR "share/cmake/cerf")
++configure_package_config_file(${cerf_SOURCE_DIR}/cmake/cerfConfig.cmake.in
++  "${CMAKE_CURRENT_BINARY_DIR}/cerfConfig.cmake"
++  INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
++write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/cerfConfigVersion.cmake
++  VERSION ${CERF_VERSION}
++  COMPATIBILITY SameMajorVersion)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cerfConfig.cmake
++  ${CMAKE_CURRENT_BINARY_DIR}/cerfConfigVersion.cmake
++  DESTINATION ${CMAKECONFIG_INSTALL_DIR})
++install(EXPORT ${intf}
++  NAMESPACE "cerf::"
++  FILE "cerfTargets.cmake"
++  DESTINATION ${CMAKECONFIG_INSTALL_DIR})
++
+ set(CPACK_PACKAGE_VENDOR "Forschungszentrum Jülich GmbH")
+ set(CPACK_PACKAGE_VERSION ${CERF_VERSION})
+ set(CPACK_GENERATOR "ZIP")
+-- 
+GitLab
+
+
+From d484b92331b0b337b977bb38ac59b0389b0966bb Mon Sep 17 00:00:00 2001
+From: "Lori A. Burns" <lori.burns@gmail.com>
+Date: Thu, 2 Dec 2021 14:12:40 -0500
+Subject: [PATCH 2/2] fix source dir
+
+---
+ lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 74bdc45..09c0f60 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -49,7 +49,7 @@ install(
+ include(CMakePackageConfigHelpers)
+ # GNUInstallDirs "DATADIR" wrong here; CMake search path wants "share".
+ set(CMAKECONFIG_INSTALL_DIR "share/cmake/cerf")
+-configure_package_config_file(${cerf_SOURCE_DIR}/cmake/cerfConfig.cmake.in
++configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/cerfConfig.cmake.in
+   "${CMAKE_CURRENT_BINARY_DIR}/cerfConfig.cmake"
+   INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
+ write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/cerfConfigVersion.cmake
+-- 
+GitLab
+
