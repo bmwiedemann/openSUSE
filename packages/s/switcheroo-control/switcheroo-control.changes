@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 24 10:11:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_switcheroo-control.service.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 14:22:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4:

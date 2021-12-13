@@ -25,6 +25,7 @@ Group:          Hardware/Other
 URL:            https://gitlab.freedesktop.org/hadess/switcheroo-control
 Source0:        https://gitlab.freedesktop.org/hadess/switcheroo-control/-/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Patch0:	harden_switcheroo-control.service.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
@@ -52,6 +53,7 @@ This package contains the documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson \

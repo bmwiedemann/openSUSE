@@ -1,0 +1,17 @@
+Index: switcheroo-control-2.4/data/switcheroo-control.service.in
+===================================================================
+--- switcheroo-control-2.4.orig/data/switcheroo-control.service.in
++++ switcheroo-control-2.4/data/switcheroo-control.service.in
+@@ -16,6 +16,12 @@ PrivateTmp=true
+ RestrictAddressFamilies=AF_UNIX AF_LOCAL AF_NETLINK
+ MemoryDenyWriteExecute=true
+ RestrictRealtime=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelLogs=true
++# end of automatic additions 
+ 
+ [Install]
+ WantedBy=graphical.target
