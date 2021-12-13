@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Port away from deprecated I18N_NOOP
+  * Add color scheme saving and loading
+  * [KCommandBar] Add placeholder text for empty view
+  * Fix hamburger menu opening as a window on Wayland (kde#442375)
+  * [KCommandBar] Fix rendering of chord shortcuts
+  * [KCommandBar] Dynamic column widths + shortcuts alignment
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
