@@ -23,9 +23,6 @@
 #skip_noarch: 1
 #custom_build: |-
 #./Build build flags=%{?_smp_mflags} --myflag
-custom_test: |-
- echo "ignoring unstable tests"
- echo "https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14"
- rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
- ./Build test
+#custom_test: |-
+#./Build test
 #ignore_requires: Bizarre::Module

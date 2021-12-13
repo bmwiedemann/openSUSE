@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Dec 13 16:23:13 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Enable previously unstable build-tests again
+https://github.com/openSUSE/Mojo-IOLoop-ReadWriteProcess/issues/14
+
+-------------------------------------------------------------------
+Mon Dec 13 14:10:19 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Update project URL references
+
+-------------------------------------------------------------------
 Fri Dec 10 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.32
