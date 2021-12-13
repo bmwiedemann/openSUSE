@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Fix address formatting for country-only addresses
+  * Deprecate countryToISO/ISOToCountry in favor of KCountry
+  * Use local country names when formatting addresses
+  * Add KF6 TODO for turning AddresseeHelper into an implementation detail
+  * Port away from countryToISO/ISOtoCountry
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
