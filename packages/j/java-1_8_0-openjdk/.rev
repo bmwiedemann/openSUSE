@@ -666,4 +666,12 @@
     <comment>October 2021 CPU</comment>
     <requestid>929871</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>0d5f52c856f25328c682e6930e6ff3de</srcmd5>
+    <version>1.8.0.312</version>
+    <time>1639424496</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>939563</requestid>
+  </revision>
 </revisionlist>

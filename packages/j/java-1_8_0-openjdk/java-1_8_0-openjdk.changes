@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Dec  4 07:23:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * fips.patch
+    + When system crypto policy files are not available, use the
+      information from the java.security file that we distribute
+      with OpenJDK as a fallback. (bsc#1193314)
+
+-------------------------------------------------------------------
 Fri Nov  5 18:01:42 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

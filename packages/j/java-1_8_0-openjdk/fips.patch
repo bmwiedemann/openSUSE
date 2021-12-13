@@ -1,5 +1,5 @@
---- openjdk/common/autoconf/configure.ac	2021-10-11 13:43:11.725902128 +0200
-+++ openjdk/common/autoconf/configure.ac	2021-10-11 13:48:52.612077500 +0200
+--- openjdk/common/autoconf/configure.ac	2021-12-04 07:42:42.465816095 +0100
++++ openjdk/common/autoconf/configure.ac	2021-12-04 07:43:01.237927592 +0100
 @@ -212,6 +212,7 @@
  LIB_SETUP_ALSA
  LIB_SETUP_FONTCONFIG
@@ -8,8 +8,8 @@
  LIB_SETUP_STATIC_LINK_LIBSTDCPP
  LIB_SETUP_ON_WINDOWS
  
---- openjdk/common/autoconf/libraries.m4	2021-10-11 13:43:11.729902154 +0200
-+++ openjdk/common/autoconf/libraries.m4	2021-10-11 13:48:52.612077500 +0200
+--- openjdk/common/autoconf/libraries.m4	2021-12-04 07:42:42.465816095 +0100
++++ openjdk/common/autoconf/libraries.m4	2021-12-04 07:43:01.237927592 +0100
 @@ -1334,3 +1334,63 @@
      BASIC_DEPRECATED_ARG_WITH([dxsdk-include])
    fi
@@ -74,8 +74,8 @@
 +  fi
 +  AC_SUBST(USE_SYSCONF_NSS)
 +])
---- openjdk/common/autoconf/spec.gmk.in	2021-10-11 13:43:11.729902154 +0200
-+++ openjdk/common/autoconf/spec.gmk.in	2021-10-11 13:48:52.612077500 +0200
+--- openjdk/common/autoconf/spec.gmk.in	2021-12-04 07:42:42.465816095 +0100
++++ openjdk/common/autoconf/spec.gmk.in	2021-12-04 07:43:01.249927665 +0100
 @@ -313,6 +313,10 @@
  ALSA_LIBS:=@ALSA_LIBS@
  ALSA_CFLAGS:=@ALSA_CFLAGS@
@@ -87,8 +87,8 @@
  PACKAGE_PATH=@PACKAGE_PATH@
  
  # Source file for cacerts
---- openjdk/common/bin/compare_exceptions.sh.incl	2021-10-11 13:43:11.729902154 +0200
-+++ openjdk/common/bin/compare_exceptions.sh.incl	2021-10-11 13:51:59.469288461 +0200
+--- openjdk/common/bin/compare_exceptions.sh.incl	2021-12-04 07:42:42.465816095 +0100
++++ openjdk/common/bin/compare_exceptions.sh.incl	2021-12-04 07:43:01.261927736 +0100
 @@ -280,6 +280,7 @@
  ./jre/lib/i386/libsplashscreen.so
  ./jre/lib/i386/libsunec.so
@@ -121,8 +121,8 @@
  ./jre/lib/sparcv9/libunpack.so
  ./jre/lib/sparcv9/libverify.so
  ./jre/lib/sparcv9/libzip.so
---- openjdk/common/nb_native/nbproject/configurations.xml	2021-10-11 13:43:11.729902154 +0200
-+++ openjdk/common/nb_native/nbproject/configurations.xml	2021-10-11 13:48:52.620077552 +0200
+--- openjdk/common/nb_native/nbproject/configurations.xml	2021-12-04 07:42:42.469816118 +0100
++++ openjdk/common/nb_native/nbproject/configurations.xml	2021-12-04 07:43:01.265927761 +0100
 @@ -53,6 +53,9 @@
                    <in>jvmtiEnterTrace.cpp</in>
                  </df>
@@ -145,8 +145,8 @@
        </item>
        <item path="../../jdk/src/share/native/java/util/TimeZone.c"
              ex="false"
---- openjdk/jdk/make/lib/SecurityLibraries.gmk	2021-10-11 13:43:12.353906101 +0200
-+++ openjdk/jdk/make/lib/SecurityLibraries.gmk	2021-10-11 13:53:00.397683319 +0200
+--- openjdk/jdk/make/lib/SecurityLibraries.gmk	2021-12-04 07:42:43.161820203 +0100
++++ openjdk/jdk/make/lib/SecurityLibraries.gmk	2021-12-04 07:43:01.277927833 +0100
 @@ -300,3 +300,34 @@
  
    endif
@@ -183,7 +183,7 @@
 +endif
 +
 --- openjdk/jdk/make/mapfiles/libsystemconf/mapfile-vers	1970-01-01 01:00:00.000000000 +0100
-+++ openjdk/jdk/make/mapfiles/libsystemconf/mapfile-vers	2021-10-11 13:53:00.397683319 +0200
++++ openjdk/jdk/make/mapfiles/libsystemconf/mapfile-vers	2021-12-04 07:43:01.281927857 +0100
 @@ -0,0 +1,35 @@
 +#
 +# Copyright (c) 2021, Red Hat, Inc.
@@ -220,8 +220,8 @@
 +	local:
 +		*;
 +};
---- openjdk/jdk/src/share/classes/java/security/Security.java	2021-10-11 13:43:12.057904228 +0200
-+++ openjdk/jdk/src/share/classes/java/security/Security.java	2021-10-11 13:48:13.139821694 +0200
+--- openjdk/jdk/src/share/classes/java/security/Security.java	2021-12-04 07:42:43.693823344 +0100
++++ openjdk/jdk/src/share/classes/java/security/Security.java	2021-12-04 10:17:29.503072332 +0100
 @@ -30,6 +30,8 @@
  import java.util.concurrent.ConcurrentHashMap;
  import java.io.*;
@@ -247,17 +247,23 @@
          // doPrivileged here because there are multiple
          // things in initialize that might require privs.
          // (the FileInputStream call and the File.exists call,
-@@ -191,27 +202,7 @@
-         if (disableSystemProps == null &&
-             "true".equalsIgnoreCase(props.getProperty
-                 ("security.useSystemPropertiesFile"))) {
+@@ -188,29 +199,10 @@
+         }
+ 
+         String disableSystemProps = System.getProperty("java.security.disableSystemPropertiesFile");
+-        if (disableSystemProps == null &&
+-            "true".equalsIgnoreCase(props.getProperty
+-                ("security.useSystemPropertiesFile"))) {
 -
 -            // now load the system file, if it exists, so its values
 -            // will win if they conflict with the earlier values
 -            try (BufferedInputStream bis =
 -                 new BufferedInputStream(new FileInputStream(SYSTEM_PROPERTIES))) {
 -                props.load(bis);
--                loadedProps = true;
++        if ((disableSystemProps == null || "false".equalsIgnoreCase(disableSystemProps)) &&
++            "true".equalsIgnoreCase(props.getProperty("security.useSystemPropertiesFile"))) {
++            if (SystemConfigurator.configure(props)) {
+                 loadedProps = true;
 -
 -                if (sdebug != null) {
 -                    sdebug.println("reading system security properties file " +
@@ -271,13 +277,11 @@
 -                         SYSTEM_PROPERTIES);
 -                    e.printStackTrace();
 -                }
--            }
-+            loadedProps = loadedProps && SystemConfigurator.configure(props);
+             }
          }
  
-         if (!loadedProps) {
 --- openjdk/jdk/src/share/classes/java/security/SystemConfigurator.java	1970-01-01 01:00:00.000000000 +0100
-+++ openjdk/jdk/src/share/classes/java/security/SystemConfigurator.java	2021-10-11 13:53:00.397683319 +0200
++++ openjdk/jdk/src/share/classes/java/security/SystemConfigurator.java	2021-12-04 10:17:58.159258084 +0100
 @@ -0,0 +1,212 @@
 +/*
 + * Copyright (c) 2019, 2021, Red Hat, Inc.
@@ -492,7 +496,7 @@
 +    }
 +}
 --- openjdk/jdk/src/share/classes/sun/misc/JavaSecuritySystemConfiguratorAccess.java	1970-01-01 01:00:00.000000000 +0100
-+++ openjdk/jdk/src/share/classes/sun/misc/JavaSecuritySystemConfiguratorAccess.java	2021-10-11 13:47:31.023548751 +0200
++++ openjdk/jdk/src/share/classes/sun/misc/JavaSecuritySystemConfiguratorAccess.java	2021-12-04 07:43:01.285927881 +0100
 @@ -0,0 +1,30 @@
 +/*
 + * Copyright (c) 2020, Red Hat, Inc.
@@ -524,8 +528,8 @@
 +public interface JavaSecuritySystemConfiguratorAccess {
 +    boolean isSystemFipsEnabled();
 +}
---- openjdk/jdk/src/share/classes/sun/misc/SharedSecrets.java	2021-10-11 13:43:12.181905013 +0200
-+++ openjdk/jdk/src/share/classes/sun/misc/SharedSecrets.java	2021-10-11 13:47:31.023548751 +0200
+--- openjdk/jdk/src/share/classes/sun/misc/SharedSecrets.java	2021-12-04 07:42:43.793823935 +0100
++++ openjdk/jdk/src/share/classes/sun/misc/SharedSecrets.java	2021-12-04 07:43:01.285927881 +0100
 @@ -63,6 +63,7 @@
      private static JavaObjectInputStreamReadString javaObjectInputStreamReadString;
      private static JavaObjectInputStreamAccess javaObjectInputStreamAccess;
@@ -547,8 +551,8 @@
 +        return javaSecuritySystemConfiguratorAccess;
 +    }
  }
---- openjdk/jdk/src/share/classes/sun/security/pkcs11/SunPKCS11.java	2021-10-11 13:43:12.209905190 +0200
-+++ openjdk/jdk/src/share/classes/sun/security/pkcs11/SunPKCS11.java	2021-10-11 13:53:42.521956313 +0200
+--- openjdk/jdk/src/share/classes/sun/security/pkcs11/SunPKCS11.java	2021-12-04 07:42:43.821824100 +0100
++++ openjdk/jdk/src/share/classes/sun/security/pkcs11/SunPKCS11.java	2021-12-04 07:43:01.289927905 +0100
 @@ -42,6 +42,8 @@
  import javax.security.auth.callback.PasswordCallback;
  import javax.security.auth.callback.TextOutputCallback;
@@ -593,8 +597,8 @@
          } catch (Exception e) {
              if (config.getHandleStartupErrors() == Config.ERR_IGNORE_ALL) {
                  throw new UnsupportedOperationException
---- openjdk/jdk/src/share/classes/sun/security/ssl/SSLContextImpl.java	2021-10-11 13:43:12.213905215 +0200
-+++ openjdk/jdk/src/share/classes/sun/security/ssl/SSLContextImpl.java	2021-10-11 13:47:31.023548751 +0200
+--- openjdk/jdk/src/share/classes/sun/security/ssl/SSLContextImpl.java	2021-12-04 07:42:43.825824124 +0100
++++ openjdk/jdk/src/share/classes/sun/security/ssl/SSLContextImpl.java	2021-12-04 07:43:01.293927930 +0100
 @@ -31,6 +31,7 @@
  import java.security.cert.*;
  import java.util.*;
@@ -669,8 +673,8 @@
                  return new ProtocolVersion[]{
                          ProtocolVersion.TLS12,
                          ProtocolVersion.TLS11,
---- openjdk/jdk/src/share/classes/sun/security/ssl/SunJSSE.java	2021-10-11 13:43:12.217905240 +0200
-+++ openjdk/jdk/src/share/classes/sun/security/ssl/SunJSSE.java	2021-10-11 13:47:31.023548751 +0200
+--- openjdk/jdk/src/share/classes/sun/security/ssl/SunJSSE.java	2021-12-04 07:42:43.825824124 +0100
++++ openjdk/jdk/src/share/classes/sun/security/ssl/SunJSSE.java	2021-12-04 07:43:01.293927930 +0100
 @@ -30,6 +30,8 @@
  
  import java.security.*;
@@ -694,8 +698,8 @@
          put("SSLContext.TLS",
              "sun.security.ssl.SSLContextImpl$TLSContext");
          if (isfips == false) {
---- openjdk/jdk/src/share/lib/security/java.security-linux	2021-10-11 13:43:12.289905696 +0200
-+++ openjdk/jdk/src/share/lib/security/java.security-linux	2021-10-11 13:46:49.111277230 +0200
+--- openjdk/jdk/src/share/lib/security/java.security-linux	2021-12-04 07:42:43.901824572 +0100
++++ openjdk/jdk/src/share/lib/security/java.security-linux	2021-12-04 07:43:01.297927954 +0100
 @@ -77,6 +77,14 @@
  #security.provider.10=sun.security.pkcs11.SunPKCS11 ${java.home}/lib/security/nss.cfg
  
@@ -724,7 +728,7 @@
  #
  # When set to 'true', the JKS keystore type supports loading
 --- openjdk/jdk/src/solaris/native/java/security/systemconf.c	1970-01-01 01:00:00.000000000 +0100
-+++ openjdk/jdk/src/solaris/native/java/security/systemconf.c	2021-10-11 13:53:00.397683319 +0200
++++ openjdk/jdk/src/solaris/native/java/security/systemconf.c	2021-12-04 07:43:01.297927954 +0100
 @@ -0,0 +1,170 @@
 +/*
 + * Copyright (c) 2021, Red Hat, Inc.
