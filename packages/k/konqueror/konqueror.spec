@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -129,7 +128,7 @@ Development package for the konqueror libraries.
 %postun -n konqueror-plugins -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %config %{_kf5_configdir}/autostart/konqy_preload.desktop
 %{_kf5_debugdir}/konqueror.categories
 %dir %{_kf5_sharedir}/konqsidebartng
@@ -143,6 +142,7 @@ Development package for the konqueror libraries.
 %dir %{_kf5_sharedir}/kwebkitpart/kpartplugins
 %dir %{_kf5_sharedir}/webenginepart/kpartplugins
 %dir %{_kf5_sharedir}/kxmlgui5
+%dir %{_kf5_plugindir}/konqueror_kcms
 %doc %lang(en) %{_kf5_htmldir}/en
 %{_datadir}/kcmcss/
 %{_kf5_applicationsdir}/kfmclient.desktop
@@ -162,20 +162,21 @@ Development package for the konqueror libraries.
 %{_kf5_libdir}/libkdeinit5_kfmclient.so
 %{_kf5_libdir}/libkdeinit5_konqueror.so
 %{_kf5_libdir}/libkonquerorprivate.so.*
-%{_kf5_plugindir}/kcm_bookmarks.so
-%{_kf5_plugindir}/kcm_konq.so
-%{_kf5_plugindir}/kcm_konqhtml.so
-%{_kf5_plugindir}/kcm_performance.so
-%{_kf5_servicesdir}/bookmarks.desktop
-%{_kf5_servicesdir}/filebehavior.desktop
-%{_kf5_servicesdir}/kcmkonqyperformance.desktop
-%{_kf5_servicesdir}/kcmperformance.desktop
-%{_kf5_servicesdir}/khtml_*.desktop
+%{_kf5_plugindir}/konqueror_kcms/kcm_bookmarks.so
+%{_kf5_plugindir}/konqueror_kcms/kcm_konq.so
+%{_kf5_plugindir}/konqueror_kcms/kcm_performance.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_appearance.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_behavior.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_filter.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_general.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_java_js.so
 %{_kf5_servicesdir}/org.kde.konqueror.desktop
 %{_kf5_sharedir}/kconf_update/webenginepart.upd
 %{_kf5_sharedir}/kcontrol/pics/onlyone.png
 %{_kf5_sharedir}/kcontrol/pics/overlapping.png
 %{_kf5_sharedir}/konqueror/
+
+
 
 %files -n webenginepart
 %dir %{_kf5_plugindir}/kf5/
@@ -212,7 +213,7 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/autorefresh.so
 %{_kf5_plugindir}/babelfishplugin.so
 %{_kf5_plugindir}/dirfilterplugin.so
-%{_kf5_plugindir}/kcm_history.so
+%{_kf5_plugindir}/konqueror_kcms/kcm_history.so
 %{_kf5_plugindir}/kf5/parts/fsviewpart.so
 %{_kf5_plugindir}/kf5/parts/konq_sidebar.so
 %{_kf5_plugindir}/khtmlsettingsplugin.so
@@ -228,7 +229,6 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/webarchivethumbnail.so
 %{_kf5_servicesdir}/akregator_konqplugin.desktop
 %{_kf5_servicesdir}/fsview_part.desktop
-%{_kf5_servicesdir}/kcmhistory.desktop
 %{_kf5_servicesdir}/konq_sidebartng.desktop
 %{_kf5_servicesdir}/webarchivethumbnail.desktop
 %{_kf5_sharedir}/akregator/

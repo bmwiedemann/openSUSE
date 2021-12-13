@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Make Konqueror compatible with KIO 5.86.0 (kde#442636)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
