@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Use action texts for buttons of confirmation dialog
+  * Allow to show header in qtc6
+  * Fix build when LDAP isn't found
+  * Use unique_ptr
+  * Remove duplicate find_package
+  * Add KDE CI file
+  * Add more const variable/pointer
+  * Add missing core header for qch
+  * Fix not existing include dir
+  * Fix typo: "authentication"
+  * Port LDAP configuration dialog to QFormLayout
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
