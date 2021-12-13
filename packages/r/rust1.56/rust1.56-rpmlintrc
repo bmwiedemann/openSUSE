@@ -16,4 +16,6 @@ addFilter("no-soname.*/usr/lib/lib*")
 addFilter("potential-bashisms.*/usr/bin/rust-lldb")
 addFilter("position-independent-executable-suggested.*/usr/bin/rust-llvm-dwp")
 
+addFilter("non-devel-file-in-devel-package /usr/lib/.*so")
+addFilter("non-devel-file-in-devel-package /usr/lib/rustlib/.*")
 

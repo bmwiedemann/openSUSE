@@ -16,32 +16,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Test is done in a different multibuild package (rustXXX-test).  This
-# package will replace the local-rust-root and use the systems's one
-# from the rustXXX package itself.  This will exercise the compiler,
-# even tho, the tests will require more compilation.  If we do not
-# agree on this model we can drop the _multibuild option and do the
-# %check as a part of the main spec.
-
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
 
 %global version_suffix 1.56
 %global version_current 1.56.1
 %global version_previous 1.55.0
+# This has to be kept lock step to the rust version.
+%global llvm_version 13
 
 %define obsolete_rust_versioned() \
 Obsoletes:      %{1}1.55%{?2:-%{2}} \
 Obsoletes:      %{1}1.54%{?2:-%{2}} \
 Obsoletes:      %{1}1.53%{?2:-%{2}} \
-Obsoletes:      %{1}1.52%{?2:-%{2}} \
-Obsoletes:      %{1}1.51%{?2:-%{2}}
+Obsoletes:      %{1}1.52%{?2:-%{2}}
 
 # Build the rust target triple.
 # Some rust arches don't match what SUSE labels them.
@@ -117,6 +103,22 @@ Obsoletes:      %{1}1.51%{?2:-%{2}}
 %bcond_without bundled_llvm
 %endif
 
+# Test is done in a different multibuild package (rustXXX-test).  This
+# package will replace the local-rust-root and use the systems's one
+# from the rustXXX package itself.  This will exercise the compiler,
+# even tho, the tests will require more compilation.  If we do not
+# agree on this model we can drop the _multibuild option and do the
+# pct check as a part of the main spec.
+
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test" && ! %with bundled_llvm
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 # """
 # Do not use parallel codegen in order to
 #   a) not exhaust memory on build-machines and
@@ -138,7 +140,6 @@ Obsoletes:      %{1}1.51%{?2:-%{2}}
 # Debuginfo can exhaust memory on these architecture workers
 %ifarch %{arm} %{ix86}
 %define debug_info --debuginfo-level=0 --debuginfo-level-rustc=0 --debuginfo-level-std=0 --debuginfo-level-tools=0 --debuginfo-level-tests=0
-%define strip_debug_flag 1
 %else
 %define debug_info %{nil}
 %endif
@@ -196,7 +197,6 @@ Patch3:         set_the_library_path_in_sysroot-crates-are-unstable.patch
 Patch4:         fix_alloc-optimisation_is_only_for_rust_llvm.patch
 BuildRequires:  curl
 BuildRequires:  fdupes
-BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-base
@@ -211,15 +211,11 @@ BuildRequires:  ccache
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%ifarch  %{arm} %{ix86}
-BuildRequires:  pkgconfig(libgit2)
-BuildRequires:  pkgconfig(libssh2) >= 1.6.0
-%endif
 
 %if !%with bundled_llvm
 # Use distro provided LLVM on Tumbleweed, but pin it to the matching LLVM!
 # For details see boo#1192067
-BuildRequires:  llvm13-devel
+BuildRequires:  llvm%{llvm_version}-devel
 %else
 # Ninja required to drive the bundled llvm build.
 BuildRequires:  ninja
@@ -230,7 +226,7 @@ Recommends:     cargo
 BuildRequires:  cargo%{version_suffix} = %{version}
 BuildRequires:  rust%{version_suffix} = %{version}
 # Required because FileCheck
-BuildRequires:  llvm13-devel
+BuildRequires:  llvm%{llvm_version}-devel
 %endif
 
 %obsolete_rust_versioned rust
@@ -391,26 +387,19 @@ chmod +x library/core/src/unicode/printable.py
 cat > .env.sh <<\EOF
 export RUSTFLAGS="%{rustflags}"
 export DESTDIR=%{buildroot}
-export LIBSSH2_SYS_USE_PKG_CONFIG=1
 export CARGO_FEATURE_VENDORED=1
+unset FFLAGS
 # END EXPORTS
 EOF
 
 %if ! %{with test}
 . ./.env.sh
-
-%if 0%{?strip_debug_flag}
-export CFLAGS="$(echo $RPM_OPT_FLAGS | sed -e 's/ -g$//')"
-%endif
-export CXXFLAGS="$CFLAGS"
-unset FFLAGS
-
 python3 ./x.py build
 %endif
 
 %install
-%if ! %{with test}
 # Reread exports file
+%if ! %{with test}
 . ./.env.sh
 
 python3 ./x.py install
@@ -451,8 +440,8 @@ rm -rf %{buildroot}%{_sysconfdir}
 # cargo does not respect our _libexec setting on Leap:
 if [ ! -f %{buildroot}%{_libexecdir}/cargo-credential-1password ] &&
    [ -f %{buildroot}%{_exec_prefix}/libexec/cargo-credential-1password ]; then
-	mv %{buildroot}%{_exec_prefix}/libexec/cargo-credential-1password	\
-	   %{buildroot}%{_libexecdir}/cargo-credential-1password
+    mv %{buildroot}%{_exec_prefix}/libexec/cargo-credential-1password \
+    %{buildroot}%{_libexecdir}/cargo-credential-1password
 fi
 
 # Remove llvm installation

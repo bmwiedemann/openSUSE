@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Dec  8 02:23:03 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Remove un-needed dependency on git
+- Specfile clean ups
+- Resolve issue with test execution on leap15.3
+- Improve build performance
+
+-------------------------------------------------------------------
 Fri Nov 26 12:38:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable ccache on armv6, since it fails with signal 7
