@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Add icon on button
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Use action texts for buttons of decision/confirmation dialogs
+  * Allow to show header in qtc6
+  * USe for(..:..)
+  * Use for(...:...) + remove unused index variable
+  * Modernize code
+  * cppcheck fix
+  * Create dialog on stack
+  * Add parent
+  * Not necessary to use qOverload here
+  * Remove some qOverload as we remove deprecated qt5.15 signal
+  * Add KDE CI file
+  * Fix some clazy warning
+  * Use qOverload directly (scripted)
+  * Port to QStringView::split
+  * Clean up lib
+  * Port to KPluginFactory::instantiatePlugin
+  * Remove unused includes
+  * Add i18n context
+  * Fix some clazy warning
+  * Signature was changed in qt6
+  * We depend against 5.84
+  * Don't pollute the source directory with generated files
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
