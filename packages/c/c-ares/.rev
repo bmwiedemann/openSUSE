@@ -183,4 +183,25 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
   as part of DNS response (bsc#1190225)</comment>
     <requestid>917731</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4aa422fc7b2dedf7361bbc2879c3f52f</srcmd5>
+    <version>1.18.1</version>
+    <time>1639424522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.18.1. Changes since 1.17.2:
+  * Allow '/' as a valid character for a returned name for
+    CNAME in-addr.arpa delegation
+  * no longer forwards requests for localhost resolution per RFC6761
+  * During a domain search, treat ARES_ENODATA as ARES_NXDOMAIN so
+    that the search process will continue to the next domain
+    in the search.
+  * Provide ares_nameser.h as a public interface as needed by NodeJS
+  * Add support for URI(Uniform Resource Identifier) records via
+    ares_parse_uri_reply()
+- disable unit tests for SLE12 since GCC compiler too old to build
+  unit tests
+- 5c995d5.patch: upstreamed
+- disable-live-tests.patch: refreshed</comment>
+    <requestid>937232</requestid>
+  </revision>
 </revisionlist>

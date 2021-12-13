@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Dec  7 16:57:20 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.18.1. Changes since 1.17.2:
+  * Allow '/' as a valid character for a returned name for
+    CNAME in-addr.arpa delegation
+  * no longer forwards requests for localhost resolution per RFC6761
+  * During a domain search, treat ARES_ENODATA as ARES_NXDOMAIN so
+    that the search process will continue to the next domain
+    in the search.
+  * Provide ares_nameser.h as a public interface as needed by NodeJS
+  * Add support for URI(Uniform Resource Identifier) records via
+    ares_parse_uri_reply()
+
+- disable unit tests for SLE12 since GCC compiler too old to build
+  unit tests
+- 5c995d5.patch: upstreamed
+- disable-live-tests.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Sep  9 12:15:01 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - new upstream website

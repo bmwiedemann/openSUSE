@@ -24,7 +24,7 @@
 %endif
 
 Name:           c-ares
-Version:        1.17.2
+Version:        1.18.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -35,7 +35,6 @@ Source3:        c-ares.keyring
 Source4:        baselibs.conf
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
-Patch2:         https://github.com/c-ares/c-ares/commit/5c995d5.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -88,16 +87,23 @@ to build packages that depend on c-ares.
 %autosetup -p1 -n c-ares-%{version}
 
 %build
-%cmake -DCARES_BUILD_TESTS:BOOL=ON
+%cmake \
+%if 0%{?suse_version} >= 1500
+    -DCARES_BUILD_TESTS:BOOL=ON \
+%endif
+     %nil
+
 %cmake_build
 
 %install
 %cmake_install
 
 %check
+%if 0%{?suse_version} >= 1500
 pushd build
 %cmake_build -C test
 LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
+%endif
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

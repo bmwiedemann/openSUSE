@@ -1,9 +1,10 @@
-diff -Naur c-ares-1.16.1.orig/test/Makefile.inc c-ares-1.16.1/test/Makefile.inc
---- c-ares-1.16.1.orig/test/Makefile.inc	2020-07-08 22:15:36.667605939 +0200
-+++ c-ares-1.16.1/test/Makefile.inc	2020-07-08 22:16:25.407171729 +0200
-@@ -14,7 +14,6 @@
-   ares-test-parse-srv.cc		\
+Index: c-ares-1.18.1/test/Makefile.inc
+===================================================================
+--- c-ares-1.18.1.orig/test/Makefile.inc
++++ c-ares-1.18.1/test/Makefile.inc
+@@ -16,7 +16,6 @@ TESTSOURCES = ares-test-main.cc	\
    ares-test-parse-txt.cc		\
+   ares-test-parse-uri.cc		\
    ares-test-misc.cc			\
 -  ares-test-live.cc			\
    ares-test-mock.cc			\
