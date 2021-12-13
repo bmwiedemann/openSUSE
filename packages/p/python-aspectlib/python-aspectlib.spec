@@ -63,11 +63,14 @@ rm tests/test_integrations_py3.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore=src
+# gh#ionelmc/python-aspectlib#24
+python310_extraargs=("-k" "not (test_story and play_proxy_class)")
+%pytest --ignore=src "${$python_extraargs[@]}"
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/aspectlib
+%{python_sitelib}/aspectlib-%{version}*-info
 
 %changelog

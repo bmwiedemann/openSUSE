@@ -39,4 +39,12 @@
   * Remove some debug leftover prints from `v1.5.0`.</comment>
     <requestid>870729</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>834d012e1116e454d62a67d070e0193a</srcmd5>
+    <version>1.5.2</version>
+    <time>1639424505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940015</requestid>
+  </revision>
 </revisionlist>

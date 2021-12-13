@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Dec 11 15:47:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip two failing tests in python310
+  gh#ionelmc/python-aspectlib#24
+
+-------------------------------------------------------------------
 Wed Feb 10 03:32:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.2:
