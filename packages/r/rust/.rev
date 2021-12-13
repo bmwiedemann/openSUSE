@@ -623,4 +623,12 @@
 - See also sr 930569</comment>
     <requestid>930570</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>fcd30897d8c0ef34c095787b31eefa5a</srcmd5>
+    <version>1.57.0</version>
+    <time>1639424495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.57.0</comment>
+    <requestid>937256</requestid>
+  </revision>
 </revisionlist>
