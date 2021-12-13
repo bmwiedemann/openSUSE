@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Add .kde-ci.yml
+  * Port to new KPluginFactory constructor
+  * Plugins: Always initialize members directly in header
+  * Use getter & setter instead of friend class declaration
+  * Remove version check through virtual method
+  * Port away from KPuginInfo where possible
+  * Remove QCoreApplication::libraryPaths hack
+  * Remove duplicate kde_configure_git_pre_commit_hook call
+  * Remove cross scripting
+  * Remove obsolete COPYING file
+  * Use mkpath() if ~/.local/share/ktorrent/ doesn't exist
+  * Change ProgressBar text color when selected
+  * Paint the background of the PERCENTAGE column
+  * Clarify message about screensaver inhibition.
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

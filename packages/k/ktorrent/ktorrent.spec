@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktorrent
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -108,9 +108,6 @@ cp -a %{SOURCE4} %{buildroot}%{_mandir}/man1
 find %{buildroot} -name "*.py" -perm 0644 -exec grep -l '#!' {} + | \
 	xargs -rd'\n' chmod -f a+x
 
-# E: env-script-interpreter
-find %{buildroot}%{_kf5_sharedir}/ktorrent/scripts -name "*.py" -exec sed -i 's#env kf5kross#kf5kross#' {} \;
-
 %suse_update_desktop_file -r org.kde.ktorrent Qt KDE Network P2P
 
 %fdupes -s %{buildroot}
@@ -124,14 +121,14 @@ find %{buildroot}%{_kf5_sharedir}/ktorrent/scripts -name "*.py" -exec sed -i 's#
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc ChangeLog RoadMap
+%doc %lang(en) %{_kf5_htmldir}/en/ktorrent/
 %{_kf5_applicationsdir}/org.kde.ktorrent.desktop
 %{_kf5_appstreamdir}/org.kde.ktorrent.appdata.xml
 %{_kf5_bindir}/ktmagnetdownloader
 %{_kf5_bindir}/ktorrent
 %{_kf5_bindir}/ktupnptest
-%{_kf5_htmldir}/en/ktorrent/
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_iconsdir}/hicolor/*/*/*.svgz
 %{_kf5_kxmlguidir}/ktorrent/
@@ -140,7 +137,9 @@ find %{buildroot}%{_kf5_sharedir}/ktorrent/scripts -name "*.py" -exec sed -i 's#
 %{_kf5_mandir}/man1/ktupnptest.1%{?ext_man}
 %{_kf5_notifydir}/ktorrent.notifyrc
 %{_kf5_plugindir}/ktorrent/
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 %{_kf5_sharedir}/ktorrent/
+%endif
 
 %if %{with lang}
 %files lang -f %{name}.lang
