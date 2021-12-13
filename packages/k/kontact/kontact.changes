@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Use pluginId as identifier
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * const'ify variables + use auto + using {} as default values
+  * kcmkontact: Fix writing of configured startup module (kde#444170)
+  * kcmkontact: Assume all plugins are enabled by default
+  * Fix showing of kcm_kontact config module
+  * Remove old code
+  * Remove some qOverload as we remove deprecated qt5.15 signal
+  * Correct program copyright dates to 2001 - 2021, instead of 2004 - 2021
+  * Added authors in aboutdata.cpp who were not previously listed in credits.
+  * Add KDE CI file
+  * Use qOverload directly (scripted)
+  * Port to KPluginLoader::findPlugins
+  * Add i18n context
+  * Use KSharedConfig::openStateConfig here too
+  * Fix check
+  * X-KDE-ParentComponents is not use now.
+  * Drop unused X-KDE-ParentApp entries from kcm desktop files
+  * Fix warning about variable type
+  * Remove unused include
+  * Fix check
+  * Use the new KShortCutsDialog constructor
+  * Clean up code from imported class
+  * Rename imported classes to kontact specific names
+  * Use modernize-use-auto clang-tidy fixits for imported classes
+  * Cleanup unused code from imports
+  * Port settings to KPluginMetaData
+  * Import KSettings::Dialog class
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GrantleeTheme)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KontactInterface)
@@ -88,7 +89,6 @@ KOrganizer as views in one window.
 %files
 %license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kontact/
-%{_datadir}/kconf_update/
 %{_datadir}/messageviewer/
 %{_kf5_applicationsdir}/org.kde.kontact.desktop
 %{_kf5_appstreamdir}/org.kde.kontact.appdata.xml
@@ -98,7 +98,10 @@ KOrganizer as views in one window.
 %{_kf5_debugdir}/kontact.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kontact.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kontact.svg
-%{_kf5_plugindir}/kcm_kontact.so
+%dir %{_kf5_plugindir}/pim
+%dir %{_kf5_plugindir}/pim/kcms
+%dir %{_kf5_plugindir}/pim/kcms/kontact
+%{_kf5_plugindir}/pim/kcms/kontact/kcm_kontact.so
 %{_kf5_servicesdir}/kontactconfig.desktop
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kontact.service
