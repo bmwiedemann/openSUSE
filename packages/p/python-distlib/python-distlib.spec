@@ -18,13 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-distlib
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0
-URL:            https://bitbucket.org/pypa/distlib
+URL:            https://github.com/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.zip
-Patch0:         remove-backports.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,24 +39,11 @@ Python distribution utilities.
 %setup -q -n distlib-%{version}
 %autopatch -p1
 
-rm -r tests/unittest2
-
-# tarfile backport is broken
-rm distlib/_backport/tarfile.py
-
-# sysconfig backport is unnecessary and untested
-rm distlib/_backport/sysconfig.*
-
-# These test modules require internet access and are unnecessary
-rm tests/test_locators.py tests/test_sysconfig.py
-
-# Unused
-rm distlib/_backport/misc.*
+# This test module requires internet access and are unnecessary
+sed -i '/from test_locators import LocatorTestCase/d' tests/distlib_tests.py
 
 # Unneeded on Linux
 rm distlib/*.exe
-
-# However, the tests for shutil fail when not using using provided backport
 
 %build
 %python_build
@@ -68,12 +54,13 @@ rm distlib/*.exe
 
 %check
 export LANG=en_US.UTF-8
-# These two tests need internet access
-%pytest -k 'not (test_search or test_package_data)'
+# This file and two tests need internet access
+%pytest --ignore tests/test_locators.py -k 'not (test_search or test_package_data)'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/distlib
+%{python_sitelib}/distlib-%{version}*-info
 
 %changelog
