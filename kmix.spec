@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kmix
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Sound Mixer
 License:        GPL-2.0-or-later
@@ -87,14 +86,13 @@ KMix is a fully featured audio mixer by KDE.
 %files
 %license COPYING*
 %config %{_kf5_configdir}/autostart/*kmix*.desktop
-%dir %{_kf5_htmldir}/en/kmix/
+%doc %lang(en) %{_kf5_htmldir}/en/kmix/
 %{_kf5_applicationsdir}/*kmix*.desktop
 %{_kf5_appstreamdir}/org.kde.kmix.appdata.xml
 %{_kf5_bindir}/kmix*
 %{_kf5_configkcfgdir}/kmixsettings.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.kmix.*
 %{_kf5_debugdir}/kmix.categories
-%{_kf5_htmldir}/en/kmix/*
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/kmix/
 %{_kf5_notifydir}/kmix.notifyrc
