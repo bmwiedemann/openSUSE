@@ -18,7 +18,7 @@
 
 %define         sover 9
 Name:           libiscsi
-Version:        1.19.0+git.20210523
+Version:        1.19.0+git.20210930
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -99,7 +99,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files utils
 %license COPYING
-%doc LICENCE-* README
+%doc LICENCE-* README.md
 %{_bindir}/iscsi-inq
 %{_bindir}/iscsi-ls
 %{_bindir}/iscsi-swp

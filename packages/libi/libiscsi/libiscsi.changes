@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Dec  9 10:48:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20210930:
+  * iscsi-support: fix memory leak
+  * add README.md to dist tarball
+  * add libiscsi.syms.in to dist tarball
+  * test-tool, xcopy: Fix target descriptor handling
+  * iser: Fix a compiler warning triggered by the container_of() definition
+  * configure: Remove -Wno-strict-aliasing
+  * slist: Clean up the slist.h header file
+  * slist: Make this header file compatible with C++
+  * scsi-lowlevel.h: Include <assert.h>
+  * examples/iscsi-dd: use stderr for all error text
+  * examples/iscsi-dd: fix typos
+  * ci: Add a github build action
+  * test: fix ExtendedCopy.Large SKIPPED cases
+  * configure.ac: Quote argument to m4_esyscmd() properly
+  * Fixed several code style problems
+  * test-tool: check that ReceiveCopyResults is implemented
+  * lib: init version for 8Fh VPD page
+  * ci: Enable MinGW
+  * MinGW: Second step of porting to MinGW
+  * configure.ac: Use AC_CONFIG_HEADERS() instead of AC_CONFIG_HEADER()
+  * lib/libiscsi.syms: Sort alphabetically
+  * ci: First phase of adding MingW support
+  * configure.ac: Run autoupdate
+  * README.md: Update
+  * README: Rename into README.md
+  * ci: Switch from Travis to AppVeyor
+  * test-tool: Do not use empty initializers
+
+-------------------------------------------------------------------
 Thu Jun 24 08:10:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20210523:
