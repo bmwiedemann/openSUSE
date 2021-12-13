@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdf
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
@@ -80,7 +79,7 @@ This utility allows you to manage removable media.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/blockdevices/
 %doc %lang(en) %{_kf5_htmldir}/en/kdf/
 %dir %{_kf5_htmldir}/en/kcontrol/
@@ -96,7 +95,7 @@ This utility allows you to manage removable media.
 %{_kf5_servicesdir}/kcmdf.desktop
 
 %files -n kwikdisk
-%license COPYING*
+%license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.kwikdisk.desktop
 %{_kf5_bindir}/kwikdisk
 %{_kf5_iconsdir}/hicolor/*/*/kwikdisk.png
