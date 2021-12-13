@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klettres
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Alphabet Learning Game
 License:        GPL-2.0-or-later
@@ -76,7 +75,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %suse_update_desktop_file org.kde.%{name} Education Languages
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS ChangeLog
 %doc %lang(en) %{_kf5_htmldir}/en/klettres/
 %{_kf5_applicationsdir}/org.kde.klettres.desktop
