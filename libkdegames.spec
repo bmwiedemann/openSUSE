@@ -15,13 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define kf5_version 5.60.0
+%define sover 7
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdegames
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
@@ -40,25 +39,16 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Bookmarks)
-BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Qml)
@@ -69,24 +59,41 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
+Conflicts:      libkf5kdegames6 < %{version}
+# Breaks debuginfo extraction of subpackages
+#BuildArch:      noarch
 
 %description
 This package contains data which is required by the KDE games library.
 
-%package -n libkf5kdegames6
+%package qt5-imports
+Summary:        QML modules for KDE games
+License:        LGPL-2.1-or-later
+Group:          System/GUI/KDE
+Conflicts:      libkf5kdegames6 < %{version}
+
+%description qt5-imports
+This package contains QML modules for KDE games.
+
+%package -n libKF5KDEGames%{sover}
 Summary:        Library for KDE Games
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
-Requires:       libkdegames = %{version}
+Requires:       libkdegames >= %{version}
+Requires:       %{name}-qt5-imports >= %{version}
+# libkf5kdegames6 actually contained libKF5KDEGames.so.7 at some point,
+# so obsolete that explicitly.
+Provides:       libkf5kdegames6 = %{version}
+Obsoletes:      libkf5kdegames6 < %{version}
 
-%description -n libkf5kdegames6
+%description -n libKF5KDEGames%{sover}
 This package contains the KDE games library.
 
 %package devel
 Summary:        Library for KDE Games: Build Environment
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
-Requires:       libkf5kdegames6 = %{version}
+Requires:       libKF5KDEGames%{sover} = %{version}
 Requires:       libsndfile-devel
 Requires:       openal-soft-devel
 Requires:       cmake(KF5Completion)
@@ -125,6 +132,8 @@ BuildArch:      noarch
 %description -n kdegames-carddecks-default
 This package contains the default card deck set for KDE games.
 
+# Should be called libkdegames5-lang, but that requires replacing the
+# macro with the expansion to Provide/Obsolete the old name.
 %lang_package
 
 %prep
@@ -140,23 +149,31 @@ rm -r src/carddecks/svg-konqi-modern
 %install
   %kf5_makeinstall -C build
   %if %{with lang}
-    %find_lang %{name} --with-man --all-name
+    %find_lang libkdegames5
   %endif
-  %fdupes -s %{buildroot}
+  %fdupes %{buildroot}
 
-%post -n libkf5kdegames6 -p /sbin/ldconfig
-%postun -n libkf5kdegames6 -p /sbin/ldconfig
+%post -n libKF5KDEGames%{sover} -p /sbin/ldconfig
+%postun -n libKF5KDEGames%{sover} -p /sbin/ldconfig
 
 %files
+# Unversioned
 %{_kf5_sharedir}/kconf_update/
+%{_kf5_debugdir}/libkdegames.categories
 
-%files -n libkf5kdegames6
+%files -n libkdegames-qt5-imports
+# Qt/KF-versioned
+%license LICENSES/*
+%{_kf5_qmldir}/
+
+%files -n libKF5KDEGames%{sover}
+# sover-versioned
 %license LICENSES/*
 %doc README
-%{_kf5_debugdir}/libkdegames.categories
-%{_kf5_libdir}/libKF5KDEGames.so.*
-%{_kf5_libdir}/libKF5KDEGamesPrivate.so.*
-%{_kf5_qmldir}/
+%{_kf5_libdir}/libKF5KDEGames.so.%{sover}
+%{_kf5_libdir}/libKF5KDEGames.so.%{sover}.*
+%{_kf5_libdir}/libKF5KDEGamesPrivate.so.%{sover}
+%{_kf5_libdir}/libKF5KDEGamesPrivate.so.%{sover}.*
 
 %files devel
 %{_kf5_cmakedir}/KF5KDEGames/
@@ -176,7 +193,7 @@ rm -r src/carddecks/svg-konqi-modern
 %{_kf5_sharedir}/carddecks/svg-oxygen-air
 
 %if %{with lang}
-%files lang -f %{name}.lang
+%files lang -f libkdegames5.lang
 %endif
 
 %changelog
