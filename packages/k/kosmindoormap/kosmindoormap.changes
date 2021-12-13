@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow the platform model to match platforms on all their properties
+  * Add properties to Platform for direct access from QML
+  * Remove the Platform::lines public member
+  * Add dptr to Platform as well
+  * Prepare PlatformSection to become proper public API
+  * Don't attempt platform section merging when there is only one
+  * Fix pinch zoom conflicting with map panning
+  * Consider IFOPT platform ids for merging platform elements
+  * Ignore disused platform elements
+  * Add styling for tourism=gallery
+  * Show details about available rental vehicles
+  * Also expose the available vehicles by type for rental docks
+  * Implement pole of inaccessibility algorithm
+  * Separate dock-based and floating rental vehicles
+  * Port to the new logging category macros
+  * Port from QStringRef to QStringView
+  * Display remaining range of rental vehicles when available
+  * Add corresponding icons for all free-floating rental vehicle types
+  * Give free-floating rental kick scooters their own icon
+  * Add CMakePresets support
+  * It compiles without deprecated method
+  * Upgrade to KDECompilerSettings 5.85
+  * replace "MacOSX" with "macOS"
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
