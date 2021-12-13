@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pim-sieve-editor
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,7 +40,6 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5LibKSieve)
 BuildRequires:  cmake(KF5MailTransport)
@@ -92,7 +90,6 @@ in KDE PIM applications.
 %{_kf5_debugdir}/sieveeditor.categories
 %{_kf5_debugdir}/sieveeditor.renamecategories
 %{_kf5_libdir}/libsieveeditor.so.*
-%{_kf5_sharedir}/kconf_update/
 
 %if %{with lang}
 %files lang -f %{name}.lang

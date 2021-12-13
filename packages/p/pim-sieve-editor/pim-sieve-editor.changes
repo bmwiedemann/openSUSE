@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:23:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Better to use save here
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Use action texts for buttons of confirmation dialog
+  * Allow to show header in qtc6
+  * Remove old kconf_update
+  * Add KDE CI file
+  * Remove not necessary "additional source"
+  * Remove unused KIconThemes dep
+  * Use openStateConfig here too
+  * Add missing sanitizers.supp
+
+-------------------------------------------------------------------
 Tue Nov  2 21:35:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
