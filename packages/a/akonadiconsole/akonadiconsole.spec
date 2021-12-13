@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadiconsole
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -94,6 +94,5 @@ for debugging.
 %{_kf5_debugdir}/akonadiconsole.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/akonadiconsole.png
 %{_kf5_libdir}/libakonadiconsole.so.*
-%{_kf5_sharedir}/kconf_update/
 
 %changelog
