@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -216,9 +216,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_sharedir}/akonadi/agents/
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kmail.service
-%{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kmail2/
-%{_kf5_sharedir}/kontact/
 
 %files application-icons
 %dir %{_kf5_iconsdir}/hicolor/16x16/emblems
