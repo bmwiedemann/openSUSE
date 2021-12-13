@@ -21,7 +21,7 @@
 %define         _desktopname       org.bleachbit.BleachBit
 
 Name:           bleachbit
-Version:        4.4.0
+Version:        4.4.2
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only

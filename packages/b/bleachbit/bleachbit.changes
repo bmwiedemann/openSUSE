@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  9 22:22:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 4.4.2
+  * Separate the cleaning option for site preferences from history
+  * Disable the auto-hide behavior for scrollbars
+  * Report zero bytes as "0B" instead of just "0"
+
+-------------------------------------------------------------------
 Mon Jun 28 07:01:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.4.0:
