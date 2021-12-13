@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Utilize type-safe KPluginMetaData API methods
+  * Utilize KPluginMetaData::value overloads
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
