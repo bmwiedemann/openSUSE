@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Fix git blame for git submodules
+  * Fix blame fails when opening a single file
+  * git-blame: Fix commit summary not available
+  * Introducing Colored Brackets plugin
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Add more options for clangd
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * LSP Completion: use textEdit.newText as a workaround (kde#445085)
+  * Fix compile cpp when path has spaces (kde#443618)
+  * Show LspClient after positioning (kde#443895)
+  * fixes reload dialog on wayland (kde#440583)
+  * avoid crash on session rename (kde#443267)
+  * fix view differences (kde#441120)
+  * save 'Show output view for message type' setting (kde#442707)
+  * Fix infinite recursion in project filter model (kde#443026)
+  * Fix replicode plugin not deleting its toolview (kde#441859)
+  * Delete unfilled entries in tool config group (kde#437419)
+  * KWrite: use KStandardAction::preferences (kde#441505)
+  * Escape shortcut mnemonic markers (&) in tab texts (kde#441340)
+  * Allow multiple tabs for Konsole plugin(s) (kde#437922, kde#419710, kde#435398, kde#200322, kde#145203)
+  * handle nullptr return of screenAt() (kde#439804)
+  * Expand tool view sidebars when they are collapsed (kde#439535)
+  * avoid that tool view split view collapse (kde#439535)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
