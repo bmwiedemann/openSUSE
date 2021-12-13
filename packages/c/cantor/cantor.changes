@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90
+  * Fix build with julia 1.7
+  * build: passthrough CMAKE_VERBOSE_MAKEFILE to embedded discount
+  * build: do not look for Python Interpreter
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Remove obsolete COPYING files
+  * Squach commit of multiple fixes that were done recently in release/21.08 branch. (kde#443177)
+  * [maxima] don't restart maxima's process when the user explicitly has entered quit().
+  * When openning a project containing image entries, don't show the settings dialog for
+    them. Only show this dialog when a new image entry is created via menus.
+  * [R] properly show the results of R's "help commands" appropos(), vignette(), demos() and help.search().
+  * Also show the internal help in R when the user is requesting it via help()
+    and properly react to the "application/octet-stream" output of R.
+  * Fixed multiple issues reported by Coverity.
+  * Fixed a couple of issues reported by cppcheck.
+  * When using KSharedConfig, specify explicitely 'cantrorc' so we also propely
+    read the documentation settings in LabPlot.
+  * Open the default URL for the online documentation in case no local documentation is installed.
+  * Fixed the layout in qalculate settings widget to look the same like the
+    settings widgets for all other backends, moved the autorun options to a
+    new tab and added a tab for the documentation.
+  * Removed the setting "local documentation".
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

@@ -17,12 +17,11 @@
 
 
 %global libMAJOR 28
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -205,7 +204,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_sharedir}/mime/packages/cantor.xml
 
 %files -n libcantorlibs%{libMAJOR}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libcantorlibs.so.*
 
 %if %{with lang}
