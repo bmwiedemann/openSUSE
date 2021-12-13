@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- No code change since 21.11.90
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * kde-ci: use @same so that stable builds use stable libkdegames
+  * Documentation updates
+  * Add a @title:window helper to GUI messages
+  * CI: Fix repo path for libkdegames
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
