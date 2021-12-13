@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Improve MediaPlayListView text
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix i18n arguments for playlist view "N tracks" message
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Pass proper display name to VLC
+  * Don't use Title Case for inhibition reason
+  * Remove min Android SDK version from Manifest
+  * Optional "favorite" style ratings (kde#430196)
+  * Use Math.round() to calculate the height of HeaderBar (kde#443191)
+  * Fix "Now Playing" view's background flickering (kde#431607)
+  * Unify header look between Now Playing page and other pages (kde#442262)
+  * Don't parse HTML in metadata fields (kde#442077)
+  * Added vertical spacing to Playlist bottom toolbar.
+  * Rename "Radios" to "Radio Stations" (kde#441732)
+  * Use text "Add to Playlist" instead of "Enqueue" (kde#441734)
+  * Refine search show/hide button's tooltip (kde#441736)
+  * Use KDECompilerSettings, kf5.85 defines CMAKE_CXX_STANDARD 17 directly
+  * Don't find KIO on Android
+  * we can use as_const
+  * Don't use icons-only buttons in the Playlist
+  * Un-hardcode slider appearance
+  * Make track ratings editable inline (kde#437099)
+  * Allow update track rating in DataListView
+  * export DataTypes to qml such that enums inside it are usable
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
