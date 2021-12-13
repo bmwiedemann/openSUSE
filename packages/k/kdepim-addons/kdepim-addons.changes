@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:21:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Revert changes to the test reference data by code adjustment scripts
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes since 21.08.3, only listing bugfixes:
+  * Reenable lunarphases korganizer plugin, use icon instead of text (kde#30331)
+  * Update KOrganizer POTD plugin for current Wikipedia API (kde#369486)
+
+-------------------------------------------------------------------
 Tue Nov  2 21:33:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

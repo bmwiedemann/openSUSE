@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -121,6 +120,7 @@ themes, and plugins providing extra or advanced functionality.
 %dir %{_kf5_plugindir}/messageviewer/viewercommonplugin
 %dir %{_kf5_plugindir}/messageviewer/viewerplugin
 %dir %{_kf5_plugindir}/messageviewer/checkbeforedeleting
+%dir %{_kf5_plugindir}/messageviewer/configuresettings/
 %dir %{_kf5_qmldir}/org/kde/plasma
 %dir %{_kf5_sharedir}/qtcreator
 %dir %{_kf5_sharedir}/qtcreator/templates/
@@ -134,6 +134,7 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_configdir}/kmail.antivirusrc
 %{_kf5_debugdir}/kdepim-addons.categories
 %{_kf5_debugdir}/kdepim-addons.renamecategories
+%{_kf5_iconsdir}/hicolor/scalable/status/*.svg
 %{_kf5_libdir}/contacteditor/editorpageplugins/cryptopageplugin.so
 %{_kf5_libdir}/libadblocklibprivate.so.*
 %{_kf5_libdir}/libdkimverifyconfigure.so.*
@@ -155,6 +156,8 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libexpireaccounttrashfolderconfig.so.5.*
 %{_kf5_libdir}/libkmailconfirmbeforedeleting.so.5
 %{_kf5_libdir}/libkmailconfirmbeforedeleting.so.5.*
+%{_kf5_libdir}/libscamconfiguresettings.so.5
+%{_kf5_libdir}/libscamconfiguresettings.so.5.*
 %{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
 %{_kf5_plugindir}/kaddressbook/
@@ -182,10 +185,12 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createtodoplugin.so
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_externalscriptplugin.so
 %{_kf5_plugindir}/messageviewer/checkbeforedeleting/kmail_confirmbeforedeletingplugin.so
+%{_kf5_plugindir}/messageviewer/configuresettings/messageviewer_scamconfiguresettingsplugin.so
 %{_kf5_plugindir}/pimcommon/
 %{_kf5_plugindir}/plasmacalendarplugins/
 %{_kf5_plugindir}/templateparser/
 %{_kf5_plugindir}/webengineviewer/
+%{_kf5_plugindir}/korg_lunarphases.so
 %{_kf5_qmldir}/org/kde/plasma/PimCalendars/
 %{_kf5_servicesdir}/korganizer/
 %{_kf5_sharedir}/kconf_update/languagetool_kmail.upd
