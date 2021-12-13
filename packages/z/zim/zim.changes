@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Dec 12 22:07:53 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.74.3:
+  * Fix issue with brioken links on move page
+  * Fix bug in copy-paste
+  * Fix bug on move page for existing textbuffer
+  * Fix bug with saving of notebook editable state
+  * Fix for error while loading plugins
+  * Fix issue with stray unicode character
+  * Fix issue to allow relative document root
+  * Fix hack for rendering sourceview blocks
+  * Add mnemonic keys to open sidepane tabs
+  * Add links and screenshot to macOS app & update README
+    information
+  * Improve inline rendering of equations & make image DPI
+    confingurable
+  * Add box drawing characters to symbols list
+  * Scroll on moving lines with linesorter plugin
+  * Move floating table of contents to overlay layer
+
+-------------------------------------------------------------------
 Mon Nov  8 13:51:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace python3-gobject with python3-gobject-Gdk Requires. This
