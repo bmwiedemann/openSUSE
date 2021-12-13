@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- No code change since 21.11.80
+
+-------------------------------------------------------------------
+Sat Nov 13 17:56:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Allow to show header in qtc6
+  * Use auto + const variable
+  * Allow to show or not dialogbox
+  * Use unique_ptr
+  * Add parent
+  * Remove some qOverload as we remove deprecated qt5.15 signal
+  * Add KDE CI file
+  * Fix version
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3
