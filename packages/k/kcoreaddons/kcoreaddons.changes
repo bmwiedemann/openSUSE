@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * KF5CoreAddonsMacros: Replace "-" with "_" for KPLUGINFACTORY_PLUGIN_CLASS_INTERNAL_NAME
+    compile definition
+  * Compile against Qt6
+  * Allow reading enabled state from KPluginMetaData using templated method
+  * KF5CoreAddonsMacros: Build static plugins as static libs
+  * Store KDE specific static plugin in seperate map
+  * KF5CoreAddonsMacros: Clean up cached plugin names after each CMake run
+  * Make KPluginMetaData::isStaticPlugin public
+  * kcoreaddons_add_plugin: Set property for file name
+  * Add assertion to make sure we have a d-ptr in KPluginMetaData::getStaticPlugin
+  * Create kcoreaddons_target_static_plugins cmake function
+  * Allow KPluginMetaData::findPlugins to return static plugins
+  * kcoreaddons_add_plugin: Allow creation of static plugins
+  * Allow KPluginMetaData to represent static plugins
+  * Create KPluginFactory::create method for loading KPart without keyword
+  * Deprecate KPluginFactory::create overload taking plugin keyword
+  * Deprecate KPluginFactory::registerPlugin(QString, CreateInstance*) methods
+  * Deprecate KPluginFactory::registerPlugin overloads taking keyword
+  * KPluginFactory: Use overload instead of default arg for registerPlugin keyword parameter
+  * Add missing include guard for kjsonutils.h
+  * Deprecate KPluginMetaData::serviceTypes
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
