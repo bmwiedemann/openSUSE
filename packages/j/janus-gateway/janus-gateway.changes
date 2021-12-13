@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Dec 13 12:26:10 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.11.6:
+  * Fixed CVE-2021-4020 (see also boo#1193156):
+    Cross-site Scripting (XSS) vulnerability in some of the demos (#2817)
+  * Added strlcat helper to detect and report truncations (#2792)
+  * Grow buffer as needed when generating SDPs (#2797)
+  * Added DTX support to some plugins (#2789)
+  * Added option to forcibly quit Janus when getting dlopen errors (#2828)
+  * Fixed broken signed tokens in VideoRoom when using UUIDs (#2812)
+  * Added option to choose whether signed tokens should be used in the
+    VideoRoom when enabled in the core (#2825)
+  * Added configurable expected loss to AudioBridge to actually send FEC (#2802)
+  * Added MESSAGE authentication and out-of-dialog MESSAGE support to SIP plugin (#2786)
+  * Fixed potential race conditions in SIP plugin (#2823)
+  * Added basic history support to TextRoom plugin (#2814)
+  * Added support for custom datachannel options in janus.js (#2806)
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Mon Oct 18 16:20:34 UTC 2021 - michael@stroeder.com
 
 - dropped obsolete 0001-include-rand-header-file.patch
