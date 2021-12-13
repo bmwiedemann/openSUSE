@@ -8,9 +8,10 @@ Make sure all manpages are prefixed with "el_" in order to avoid
 file conflicts with readline-doc.
 
 ---
-diff -up libedit-20180525-3.1/doc/Makefile.am.orig libedit-20180525-3.1/doc/Makefile.am
---- libedit-20180525-3.1/doc/Makefile.am.orig	2018-08-06 11:37:52.160085685 +0200
-+++ libedit-20180525-3.1/doc/Makefile.am	2018-08-06 11:39:04.352082128 +0200
+Index: libedit-20210910-3.1/doc/Makefile.am
+===================================================================
+--- libedit-20210910-3.1.orig/doc/Makefile.am
++++ libedit-20210910-3.1/doc/Makefile.am
 @@ -20,14 +20,14 @@ EL_MAN_LINKS = \
  		el_resize.3 \
  		el_set.3 \

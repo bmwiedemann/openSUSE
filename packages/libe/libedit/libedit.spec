@@ -1,7 +1,7 @@
 #
 # spec file for package libedit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,20 @@
 #
 
 
-%define pkg_version 20190324-3.1
-%define soname 0
-%define library_name libedit%{soname}
+%define pkg_version 20210910-3.1
+%define sover 0
 Name:           libedit
-Version:        3.1.snap20180525
+Version:        20210910.3.1
 Release:        0
 Summary:        Command Line Editing and History Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.thrysoee.dk/editline/
-Source:         http://thrysoee.dk/editline/libedit-%{pkg_version}.tar.gz
+URL:            https://www.thrysoee.dk/editline/
+Source0:        https://www.thrysoee.dk/editline/libedit-%{pkg_version}.tar.gz
 Source1:        README.SUSE
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM libedit-20180525-manpage-conflicts.patch
 Patch0:         libedit-20180525-manpage-conflicts.patch
-#BuildRequires:  gcc-c++
 # For patch0
-BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -44,13 +40,13 @@ libedit is a command line editing and history library. It is designed
 to be used by interactive programs that allow the user to type commands
 at a terminal prompt.
 
-%package -n %{library_name}
+%package -n libedit%{sover}
 Summary:        Command Line Editing and History Library
 Group:          System/Libraries
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}
 
-%description -n %{library_name}
+%description -n libedit%{sover}
 libedit is a command line editing and history library. It is designed
 to be used by interactive programs that allow the user to type commands
 at a terminal prompt.
@@ -58,9 +54,9 @@ at a terminal prompt.
 %package -n libedit-devel
 Summary:        Development files for libedit
 Group:          Development/Libraries/C and C++
-Requires:       %{library_name} = %{version}
 Requires:       glibc-devel
-Provides:       %{library_name}-devel = %{version}-%{release}
+Requires:       libedit%{sover} = %{version}
+Provides:       libedit%{sover}-devel = %{version}-%{release}
 
 %description -n libedit-devel
 libedit is a command line editing and history library. It is designed
@@ -70,27 +66,26 @@ at a terminal prompt.
 This package holds the development files for libedit.
 
 %prep
-%setup -q -n %{name}-%{pkg_version}
+%autosetup -p1 -n %{name}-%{pkg_version}
 cp %{SOURCE1} .
-%patch0 -p1
 
 %build
 autoreconf -fiv
 %configure \
   --disable-static \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{library_name} -p /sbin/ldconfig
-%postun -n %{library_name} -p /sbin/ldconfig
+%post   -n libedit%{sover} -p /sbin/ldconfig
+%postun -n libedit%{sover} -p /sbin/ldconfig
 
-%files -n %{library_name}
-%{_libdir}/libedit.so.%{soname}
-%{_libdir}/libedit.so.%{soname}.*
+%files -n libedit%{sover}
+%{_libdir}/libedit.so.%{sover}
+%{_libdir}/libedit.so.%{sover}.*
 %{_mandir}/man5/editrc.5%{?ext_man}
 %license COPYING
 %doc ChangeLog

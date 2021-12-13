@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Dec  5 21:43:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210910:
+  * all: sync with upstream source
+  * see http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libedit
+- drop libedit-20180525-manpage-conflicts.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jul 16 11:04:44 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - autoreconf already runs libtoolize no need to run twice
