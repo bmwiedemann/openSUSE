@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Dec  3 19:22:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Exclude files that hang cppcheck on the CI
+  * Enable new GitLab CI on stable branch.
+
+-------------------------------------------------------------------
+Sat Nov 27 10:11:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Add a new set of VDV certificates
+  * Skip invalid VDV certificates rather than terminating the download
+  * Add SPDX markers for the generated qrc file
+  * Fix the Windows build
+  * Recursively search for a context date from a context MIME node
+
+-------------------------------------------------------------------
+Sat Nov 13 17:55:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Nov  2 21:34:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.3

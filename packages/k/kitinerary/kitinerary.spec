@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kitinerary
-Version:        21.08.3
+Version:        21.12.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -35,6 +35,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  zlib-devel
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5I18n)
@@ -73,6 +74,7 @@ Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5Mime)
 Requires:       cmake(KPimPkPass)
 Requires:       cmake(Qt5Gui)
+Requires:       libqt5-qtdeclarative-private-headers-devel
 
 %description devel
 This package contains all necessary include files and libraries needed
