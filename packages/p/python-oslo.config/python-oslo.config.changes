@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 26 21:36:55 UTC 2021 - cloud-devel@suse.de
+
+- update to version 8.7.1
+  - remove unicode from code
+  - Add Python3 xena unit tests
+  - Adding the missing HostDomain config option
+  - Add the version parameter.
+  - Fix formatting of release list
+  - Move flake8 as a pre-commit local target.
+  - config-generator yaml format doesn't work with i18n fields
+  - setup.cfg: Replace dashes with underscores
+  - update doc url
+  - Ussuri+ is python3 only
+  - Remove references to 'sys.version_info'
+  - Update master for stable/wallaby
+  - tests: Add test for config file priority order
+
+-------------------------------------------------------------------
 Sun May  2 16:34:34 UTC 2021 - cloud-devel@suse.de
 
 - update to version 8.5.0

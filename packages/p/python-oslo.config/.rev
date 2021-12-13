@@ -762,4 +762,25 @@ all changed Requires/Buildrequires seem to be available
     <comment></comment>
     <requestid>889990</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c3db491d4d9a9e4e3247606cb6d098c7</srcmd5>
+    <version>8.7.1</version>
+    <time>1639424684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 8.7.1
+  - remove unicode from code
+  - Add Python3 xena unit tests
+  - Adding the missing HostDomain config option
+  - Add the version parameter.
+  - Fix formatting of release list
+  - Move flake8 as a pre-commit local target.
+  - config-generator yaml format doesn't work with i18n fields
+  - setup.cfg: Replace dashes with underscores
+  - update doc url
+  - Ussuri+ is python3 only
+  - Remove references to 'sys.version_info'
+  - Update master for stable/wallaby
+  - tests: Add test for config file priority order</comment>
+    <requestid>940194</requestid>
+  </revision>
 </revisionlist>
