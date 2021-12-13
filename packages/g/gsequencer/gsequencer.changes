@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Dec 13 11:06:18 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.13.7 fixed dependent code of refactored objects
+  OSSv4 and ALSA device IO.
+- new since 3.13.4 implemented AgsChorusUtil.
+
+-------------------------------------------------------------------
 Thu Dec  9 09:37:33 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.13.3 fixed SIGABRT during termination of
