@@ -776,4 +776,17 @@
 </comment>
     <requestid>903718</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>747f9218583b4271762e5ea02cec9d9c</srcmd5>
+    <version>5.2.0</version>
+    <time>1639424502</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.0:
+  * stop mentioning librabbitmq
+  * Use ANY from unittest instead of case.mock
+  * fix flake8 in kombu/asynchronous/aws/connection.py 
+  * Dont failfast when pypy3 tests fail 
+  * Return empty list instead of InconsistencyError when exchange table is empty</comment>
+    <requestid>939990</requestid>
+  </revision>
 </revisionlist>

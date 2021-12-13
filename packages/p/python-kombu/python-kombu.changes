@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  6 18:40:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * stop mentioning librabbitmq
+  * Use ANY from unittest instead of case.mock
+  * fix flake8 in kombu/asynchronous/aws/connection.py 
+  * Dont failfast when pypy3 tests fail 
+  * Return empty list instead of InconsistencyError when exchange table is empty 
+
+-------------------------------------------------------------------
 Wed Jun 30 09:16:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.0
