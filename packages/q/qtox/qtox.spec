@@ -1,7 +1,7 @@
 #
 # spec file for package qtox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -99,7 +99,7 @@ sed -i -e 's|__TIME__ << __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g'
 CFLAGS="%{optflags} -Wno-error=parentheses"
 mkdir build
 pushd build
-cmake -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_INSTALL_PREFIX=%{_prefix} -DUPDATE_CHECK=False  ..
+cmake -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_INSTALL_PREFIX=%{_prefix} -DUPDATE_CHECK=False -DDESKTOP_NOTIFICATIONS=True ..
 make %{?_smp_mflags} PREFIX=%{_prefix}
 popd
 
