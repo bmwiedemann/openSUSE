@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Dec 13 02:46:02 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.21. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-21-has-been-released/12860
+  boo#1193649
+
+  + Cluster member groups
+  * Reworked cloud-init support
+  + Trust certificate self-renewal
+  + Restricted disk passthrough in projects
+  + Restricted idmap uid/gid in projects
+  + List all lxc commands with --sub-commands
+  + List instances across all projects with --all-projects
+  + New database-leader cluster role
+  * Consistent units for byte sizes.
+  * Routed networking in virtual machines
+  + Support for ipv4.routes and ipv6.routes on routed type NICs
+  + Option to skip records for NAT-ed addresses in network zones
+  + Allow blocking an IP address family with security filtering options
+  + New ceph.rbd.du storage config option to disable potentially slow rbd du
+  * Optimized moving of instances and volumes between projects
+  * Support for copying/moving custom volumes between cluster members
+
+-------------------------------------------------------------------
 Mon Nov  8 03:24:36 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.20. The full upstream changelog is available from:
