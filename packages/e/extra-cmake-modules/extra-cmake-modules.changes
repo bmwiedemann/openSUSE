@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Dec  4 22:56:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Include QtVersionOption before all Qt5 find_package calls
+  * ECMGeneratePkgConfigFile: Add an URL parameter
+  * KDEInstallDirs5: set up KSERVICESDIR alias for KSERVICES5DIR
+  * KDEInstallDirs6: remove deprecated variables from the documentation
+  * KDEInstallDirs6: comment out call to query_qmake, not defined
+  * KDEInstallDirs6: don't set deprecated variable names anymore
+  * PLUGINDIR is based upon QTPLUGINDIR, so only define it after QTPLUGINDIR
+  * Split KDEInstallDirs into a 5 and a 6 variant
+  * AddAppIcon: clarify ksvg2icns role for @2x icons
+  * Add support for specifying private dependencies for pkg-config files
+  * FindEGL add 'lib' prefix for windows.
+
+-------------------------------------------------------------------
 Sun Nov  7 09:13:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Strip 'Source' URL for faster submissions
